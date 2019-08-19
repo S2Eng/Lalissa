@@ -485,7 +485,7 @@ namespace PMDS.Global.db.ERSystem
                 KrankenKasse = (string)dt.Rows[0][1];
                 VersicherungsNr = (string)dt.Rows[0][2];
                 return Name.Trim();
-
+                
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
