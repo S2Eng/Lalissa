@@ -1,0 +1,1027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfAbteilungDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AbteilungDTO" nillable="true" type="tns:AbteilungDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAbteilungDTO" nillable="true" type="tns:ArrayOfAbteilungDTO" />
+  <xs:complexType name="AbteilungDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Basisabteilung_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idklinik_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Reihenfolge_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_RmoptionalJn_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbteilungDTO" nillable="true" type="tns:AbteilungDTO" />
+  <xs:complexType name="ArrayOfAuswahlListeGruppeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuswahlListeGruppeDTO" nillable="true" type="tns:AuswahlListeGruppeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuswahlListeGruppeDTO" nillable="true" type="tns:ArrayOfAuswahlListeGruppeDTO" />
+  <xs:complexType name="AuswahlListeGruppeDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sys_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuswahlListeGruppeDTO" nillable="true" type="tns:AuswahlListeGruppeDTO" />
+  <xs:complexType name="ArrayOfAuswahlListeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuswahlListeDTO" nillable="true" type="tns:AuswahlListeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuswahlListeDTO" nillable="true" type="tns:ArrayOfAuswahlListeDTO" />
+  <xs:complexType name="AuswahlListeDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Beschreibung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaCodeSystem_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaCode_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaDisplayName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaId_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_GehörtzuGruppe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Hierarche_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdauswahlListeGruppe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_IstGruppe_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Reihenfolge_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_Unterdruecken_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuswahlListeDTO" nillable="true" type="tns:AuswahlListeDTO" />
+  <xs:complexType name="ArrayOfBereichDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BereichDTO" nillable="true" type="tns:BereichDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBereichDTO" nillable="true" type="tns:ArrayOfBereichDTO" />
+  <xs:complexType name="BereichDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_AnzahlBetten_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Bereichstyp_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idabteilung_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idbereich_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Reihenfolge_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_UnterAerztlicheFuehrungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BereichDTO" nillable="true" type="tns:BereichDTO" />
+  <xs:complexType name="ArrayOfDBLizenzDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DBLizenzDTO" nillable="true" type="tns:DBLizenzDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDBLizenzDTO" nillable="true" type="tns:ArrayOfDBLizenzDTO" />
+  <xs:complexType name="DBLizenzDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Lizenz_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DBLizenzDTO" nillable="true" type="tns:DBLizenzDTO" />
+  <xs:complexType name="ArrayOfDBVersionDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DBVersionDTO" nillable="true" type="tns:DBVersionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDBVersionDTO" nillable="true" type="tns:ArrayOfDBVersionDTO" />
+  <xs:complexType name="DBVersionDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ScriptVersion_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Version_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DBVersionDTO" nillable="true" type="tns:DBVersionDTO" />
+  <xs:complexType name="ArrayOfDienstzeitenDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DienstzeitenDTO" nillable="true" type="tns:DienstzeitenDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDienstzeitenDTO" nillable="true" type="tns:ArrayOfDienstzeitenDTO" />
+  <xs:complexType name="DienstzeitenDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bis_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idabteilung_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Reihenfolge_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_VerwendenIn_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Von_x003E_k__BackingField" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DienstzeitenDTO" nillable="true" type="tns:DienstzeitenDTO" />
+  <xs:complexType name="ArrayOfEinrichtungDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EinrichtungDTO" nillable="true" type="tns:EinrichtungDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEinrichtungDTO" nillable="true" type="tns:ArrayOfEinrichtungDTO" />
+  <xs:complexType name="EinrichtungDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idadresse_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Text_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EinrichtungDTO" nillable="true" type="tns:EinrichtungDTO" />
+  <xs:complexType name="ArrayOfFormularDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FormularDTO" nillable="true" type="tns:FormularDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFormularDTO" nillable="true" type="tns:ArrayOfFormularDTO" />
+  <xs:complexType name="FormularDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Blop_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Gui_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_InNotfallAnzeigenJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_LstIdberufsgruppe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_NeuanlageSperren_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FormularDTO" nillable="true" type="tns:FormularDTO" />
+  <xs:complexType name="ArrayOfGruppeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GruppeDTO" nillable="true" type="tns:GruppeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGruppeDTO" nillable="true" type="tns:ArrayOfGruppeDTO" />
+  <xs:complexType name="GruppeDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GruppeDTO" nillable="true" type="tns:GruppeDTO" />
+  <xs:complexType name="ArrayOfGruppenRechtDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GruppenRechtDTO" nillable="true" type="tns:GruppenRechtDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGruppenRechtDTO" nillable="true" type="tns:ArrayOfGruppenRechtDTO" />
+  <xs:complexType name="GruppenRechtDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idgruppe_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idrecht_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GruppenRechtDTO" nillable="true" type="tns:GruppenRechtDTO" />
+  <xs:complexType name="ArrayOfLayoutDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LayoutDTO" nillable="true" type="tns:LayoutDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLayoutDTO" nillable="true" type="tns:ArrayOfLayoutDTO" />
+  <xs:complexType name="LayoutDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_AllUsers_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_AutoFitStyleGrid_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AutoSizeWidthColumns_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_CaptionVisible_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_CreateAt_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_CreateFrom_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_GridAutoNewline_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_GridRowMaxHeigth_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_GridRowMinHeigth_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Key_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_LayoutName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ShowAlwaysGroupBy_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LayoutDTO" nillable="true" type="tns:LayoutDTO" />
+  <xs:complexType name="ArrayOfLayoutGridsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LayoutGridsDTO" nillable="true" type="tns:LayoutGridsDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLayoutGridsDTO" nillable="true" type="tns:ArrayOfLayoutGridsDTO" />
+  <xs:complexType name="LayoutGridsDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_AutoSizeHeigthColumn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Band_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ColMaxHeigth_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ColMinHeigth_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ColumnCaption_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ColumnName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ColumnWith_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Desc_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_GridAutoNewline_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_GridName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_GroupBy_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idlayout_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_OrderBy_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Sort_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_TypeCol_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TypeUi_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_Visible_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LayoutGridsDTO" nillable="true" type="tns:LayoutGridsDTO" />
+  <xs:complexType name="ArrayOfLinkDokumenteDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LinkDokumenteDTO" nillable="true" type="tns:LinkDokumenteDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLinkDokumenteDTO" nillable="true" type="tns:ArrayOfLinkDokumenteDTO" />
+  <xs:complexType name="LinkDokumenteDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Aenderungsdatum_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Beschreibung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Erstellungsdatum_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Gruppe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdbenutzerErstellt_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdbenutzerGeaendert_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_LinkName_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LinkDokumenteDTO" nillable="true" type="tns:LinkDokumenteDTO" />
+  <xs:complexType name="ArrayOfMassnahmenserienDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MassnahmenserienDTO" nillable="true" type="tns:MassnahmenserienDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMassnahmenserienDTO" nillable="true" type="tns:ArrayOfMassnahmenserienDTO" />
+  <xs:complexType name="MassnahmenserienDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Z0_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Z1_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Z2_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Z3_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Z4_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Z5_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Z6_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Z7_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MassnahmenserienDTO" nillable="true" type="tns:MassnahmenserienDTO" />
+  <xs:complexType name="ArrayOfRessourcenDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RessourcenDTO" nillable="true" type="tns:RessourcenDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRessourcenDTO" nillable="true" type="tns:ArrayOfRessourcenDTO" />
+  <xs:complexType name="RessourcenDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Classification_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CreatedUser_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Created_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_English_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FileBytes_x003E_k__BackingField" nillable="true" type="xs:base64Binary" />
+      <xs:element name="_x003C_FileType_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_German_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idapplication_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdlanguageUser_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idparticipant_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idres_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ImageHeigth_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ImageWidth_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Image_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_LastChange_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_ResGroup_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TypeSub_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_User_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RessourcenDTO" nillable="true" type="tns:RessourcenDTO" />
+  <xs:complexType name="ArrayOfStandardProzedurenDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StandardProzedurenDTO" nillable="true" type="tns:StandardProzedurenDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStandardProzedurenDTO" nillable="true" type="tns:ArrayOfStandardProzedurenDTO" />
+  <xs:complexType name="StandardProzedurenDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_NotfallJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_ShowPrintDialog_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Unterdrücken_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StandardProzedurenDTO" nillable="true" type="tns:StandardProzedurenDTO" />
+  <xs:complexType name="ArrayOfStandardzeitenDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StandardzeitenDTO" nillable="true" type="tns:StandardzeitenDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStandardzeitenDTO" nillable="true" type="tns:ArrayOfStandardzeitenDTO" />
+  <xs:complexType name="StandardzeitenDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Zeitpunkt_x003E_k__BackingField" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StandardzeitenDTO" nillable="true" type="tns:StandardzeitenDTO" />
+  <xs:complexType name="ArrayOfTextbausteineDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TextbausteineDTO" nillable="true" type="tns:TextbausteineDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTextbausteineDTO" nillable="true" type="tns:ArrayOfTextbausteineDTO" />
+  <xs:complexType name="TextbausteineDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Berufsgruppen_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ErstelltAm_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_ErstelltVon_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Kurzbezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TextbausteineDTO" nillable="true" type="tns:TextbausteineDTO" />
+  <xs:complexType name="ArrayOfZeitbereichDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeitbereichDTO" nillable="true" type="tns:ZeitbereichDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeitbereichDTO" nillable="true" type="tns:ArrayOfZeitbereichDTO" />
+  <xs:complexType name="ZeitbereichDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bis_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Von_x003E_k__BackingField" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZeitbereichDTO" nillable="true" type="tns:ZeitbereichDTO" />
+  <xs:complexType name="ArrayOfZeitbereichSerienDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeitbereichSerienDTO" nillable="true" type="tns:ZeitbereichSerienDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeitbereichSerienDTO" nillable="true" type="tns:ArrayOfZeitbereichSerienDTO" />
+  <xs:complexType name="ZeitbereichSerienDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich0_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich1_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich2_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich3_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich4_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich5_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich6_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idzeitbereich7_x003E_k__BackingField" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZeitbereichSerienDTO" nillable="true" type="tns:ZeitbereichSerienDTO" />
+  <xs:complexType name="ArrayOfarchOrdnerDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="archOrdnerDTO" nillable="true" type="tns:archOrdnerDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfarchOrdnerDTO" nillable="true" type="tns:ArrayOfarchOrdnerDTO" />
+  <xs:complexType name="archOrdnerDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ErstelltAm_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_ErstelltVon_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Extern_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Icon_x003E_k__BackingField" nillable="true" type="xs:base64Binary" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdordnerMain_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idsystemordner_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="archOrdnerDTO" nillable="true" type="tns:archOrdnerDTO" />
+  <xs:complexType name="ArrayOftblAutoDokuDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblAutoDokuDTO" nillable="true" type="tns:tblAutoDokuDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblAutoDokuDTO" nillable="true" type="tns:ArrayOftblAutoDokuDTO" />
+  <xs:complexType name="tblAutoDokuDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_DocuRtf_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ErstelltAm_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_ErstelltVon_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Html_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdresTitle_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Language_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Txt_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Typ_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblAutoDokuDTO" nillable="true" type="tns:tblAutoDokuDTO" />
+  <xs:complexType name="ArrayOftblInteropDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblInteropDTO" nillable="true" type="tns:tblInteropDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblInteropDTO" nillable="true" type="tns:ArrayOftblInteropDTO" />
+  <xs:complexType name="tblInteropDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_CreatedAt_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_DbPar_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Deleted_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_DoAt_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_DoneAt_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Done_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_FromClient_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FromUser_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_ReplyError_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ReplyToUser_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_ReplyTxtDetail_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ReplyTxt_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TypAction_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblInteropDTO" nillable="true" type="tns:tblInteropDTO" />
+  <xs:complexType name="ArrayOftblParameterDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblParameterDTO" nillable="true" type="tns:tblParameterDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblParameterDTO" nillable="true" type="tns:ArrayOftblParameterDTO" />
+  <xs:complexType name="tblParameterDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SqlParameter_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TextParameter_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblParameterDTO" nillable="true" type="tns:tblParameterDTO" />
+  <xs:complexType name="ArrayOftblPfadDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblPfadDTO" nillable="true" type="tns:tblPfadDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblPfadDTO" nillable="true" type="tns:ArrayOftblPfadDTO" />
+  <xs:complexType name="tblPfadDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Archivpfad_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblPfadDTO" nillable="true" type="tns:tblPfadDTO" />
+  <xs:complexType name="ArrayOftblProvKonfigDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblProvKonfigDTO" nillable="true" type="tns:tblProvKonfigDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblProvKonfigDTO" nillable="true" type="tns:ArrayOftblProvKonfigDTO" />
+  <xs:complexType name="tblProvKonfigDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Key_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Value_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblProvKonfigDTO" nillable="true" type="tns:tblProvKonfigDTO" />
+  <xs:complexType name="ArrayOftblQueriesDefDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblQueriesDefDTO" nillable="true" type="tns:tblQueriesDefDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblQueriesDefDTO" nillable="true" type="tns:ArrayOftblQueriesDefDTO" />
+  <xs:complexType name="tblQueriesDefDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_All_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_ApplicationOwn_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CombinationEnd_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Combination_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ComboAsDropDownCondition_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ComboAsDropDown_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Condition_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ControlType_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CriteriaApplication_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CriteriaFldShort_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FreeSql_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FunctionPar_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdselList_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_IsSqlserverField_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Label_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MaxIdres_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Max_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ParticipantOwn_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_QryColumn_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_QryTable_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sort_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_SpecialDefinitionMax_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SpecialDefinition_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Typ_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_UserInput_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_ValueMinIdres_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ValueMin_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblQueriesDefDTO" nillable="true" type="tns:tblQueriesDefDTO" />
+  <xs:complexType name="ArrayOftblRechteOrdnerDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblRechteOrdnerDTO" nillable="true" type="tns:tblRechteOrdnerDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblRechteOrdnerDTO" nillable="true" type="tns:ArrayOftblRechteOrdnerDTO" />
+  <xs:complexType name="tblRechteOrdnerDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idgruppe_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idordner_x003E_k__BackingField" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblRechteOrdnerDTO" nillable="true" type="tns:tblRechteOrdnerDTO" />
+  <xs:complexType name="ArrayOftblRedistDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblRedistDTO" nillable="true" type="tns:tblRedistDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblRedistDTO" nillable="true" type="tns:ArrayOftblRedistDTO" />
+  <xs:complexType name="tblRedistDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_ActivatedAt_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_InUse_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_InstallDir_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_LastActivation_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_LastCall_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_LastInstall_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_PortNr_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ServiceName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sort_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_VersionsNr_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Wcfurl_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblRedistDTO" nillable="true" type="tns:tblRedistDTO" />
+  <xs:complexType name="ArrayOftblSelListEntriesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblSelListEntriesDTO" nillable="true" type="tns:tblSelListEntriesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblSelListEntriesDTO" nillable="true" type="tns:ArrayOftblSelListEntriesDTO" />
+  <xs:complexType name="tblSelListEntriesDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Classification_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CreatedUser_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Created_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Extern_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_FldShortColumn_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Idgroup_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdownInt_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_IdownStr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idparticipant_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idressource_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_IsMain_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_LicenseKey_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Picture_x003E_k__BackingField" nillable="true" type="xs:base64Binary" />
+      <xs:element name="_x003C_Private_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Published_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_Sort_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_Sql_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SubQuery_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Table_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TypeQry_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TypeStr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Uitype_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_VersionNrFrom_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_VersionNrTo_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblSelListEntriesDTO" nillable="true" type="tns:tblSelListEntriesDTO" />
+  <xs:complexType name="ArrayOftblSelListGroupDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblSelListGroupDTO" nillable="true" type="tns:tblSelListGroupDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblSelListGroupDTO" nillable="true" type="tns:ArrayOftblSelListGroupDTO" />
+  <xs:complexType name="tblSelListGroupDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Classification_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Idapplication_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_IdgroupStr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idguid_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idparticipant_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Idressource_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SortColumn_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sublist_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sys_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_TypeEnum_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_VersionNrFrom_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_VersionNrTo_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblSelListGroupDTO" nillable="true" type="tns:tblSelListGroupDTO" />
+  <xs:complexType name="ArrayOftblTextTemplatesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblTextTemplatesDTO" nillable="true" type="tns:tblTextTemplatesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblTextTemplatesDTO" nillable="true" type="tns:ArrayOftblTextTemplatesDTO" />
+  <xs:complexType name="tblTextTemplatesDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_An_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bcc_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Betreff_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Cc_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ErstelltAm_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_ErstelltVon_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FromPostfach_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_LstCategories_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_LstIdbenutzer_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_LstIdpatienten_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Txt_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblTextTemplatesDTO" nillable="true" type="tns:tblTextTemplatesDTO" />
+  <xs:complexType name="ArrayOftblTextTemplatesFilesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblTextTemplatesFilesDTO" nillable="true" type="tns:tblTextTemplatesFilesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblTextTemplatesFilesDTO" nillable="true" type="tns:ArrayOftblTextTemplatesFilesDTO" />
+  <xs:complexType name="tblTextTemplatesFilesDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Docu_x003E_k__BackingField" nillable="true" type="xs:base64Binary" />
+      <xs:element name="_x003C_FileType_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdtextTemplate_x003E_k__BackingField" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblTextTemplatesFilesDTO" nillable="true" type="tns:tblTextTemplatesFilesDTO" />
+  <xs:complexType name="ArrayOftblUserAccountsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblUserAccountsDTO" nillable="true" type="tns:tblUserAccountsDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblUserAccountsDTO" nillable="true" type="tns:ArrayOftblUserAccountsDTO" />
+  <xs:complexType name="tblUserAccountsDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_AdrFrom_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AdrTo_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idaccount_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_LastReceive_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_OutlookWebApi_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Port_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PostOfficeBoxForAll_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_PreferPostOfficeBoxForAll_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_PwdAuthentication_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Server_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Ssl_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Typ_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_UsrAuthentication_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Usr_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tblUserAccountsDTO" nillable="true" type="tns:tblUserAccountsDTO" />
+  <xs:complexType name="AdresseDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_LandKz_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Ort_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Plz_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Region_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Strasse_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdresseDTO" nillable="true" type="tns:AdresseDTO" />
+  <xs:complexType name="AerzteDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Fachrichtung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idadresse_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Nachname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Titel_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Vorname_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AerzteDTO" nillable="true" type="tns:AerzteDTO" />
+  <xs:complexType name="KontaktDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Andere_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Ansprechpartner_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Email_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Fax_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Mobil_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Tel_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Zusatz1_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Zusatz2_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Zusatz3_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KontaktDTO" nillable="true" type="tns:KontaktDTO" />
+  <xs:complexType name="BenutzerDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_AktivJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_ArztabrechnungJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Austrittsdatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_BarcodeId_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Benutzer1_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Eintrittsdatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Elgaactive_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_ElgaautoLogin_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_ElgaautostartSession_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_ElgapatId_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Elgauser_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgavalidTrough_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idadresse_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idarzt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idberufsstand_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IsGeneric_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Nachname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Passwort_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PflegerJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_SmtpAbsender_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SmtpAuthentStandard_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_SmtpPort_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_SmtpPwd_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SmtpSrv_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Vorname_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BenutzerDTO" nillable="true" type="tns:BenutzerDTO" />
+  <xs:complexType name="KlinikDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bereich_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_EinrichtungsleiterTitel_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_EinrichtungsleiterVorname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Einrichtungsleiter_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FormatRechNr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FormatStornoNr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FormatZahlungsbestätigung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idadresse_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idbank_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_MitAerztlicheAufsichtJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_MitAerztlicheLeitungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_MitPaedagischeLeitungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_MitPflegedienstleitungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_RechnungsformularDepot_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Rechnungsformular_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Zvr_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KlinikDTO" nillable="true" type="tns:KlinikDTO" />
+  <xs:complexType name="ArrayOfBenutzerRechteDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BenutzerRechteDTO" nillable="true" type="tns:BenutzerRechteDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBenutzerRechteDTO" nillable="true" type="tns:ArrayOfBenutzerRechteDTO" />
+  <xs:complexType name="BenutzerRechteDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idbenutzer_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idrecht_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BenutzerRechteDTO" nillable="true" type="tns:BenutzerRechteDTO" />
+  <xs:complexType name="ArrayOfRechtDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RechtDTO" nillable="true" type="tns:RechtDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRechtDTO" nillable="true" type="tns:ArrayOfRechtDTO" />
+  <xs:complexType name="RechtDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Bezeichnung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Elga_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RechtDTO" nillable="true" type="tns:RechtDTO" />
+  <xs:complexType name="AufenthaltDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_AbwesenheitBeendet_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_AufnahmeArt_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_Aufnahmezeitpunkt_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Ausgleichszahlung_x003E_k__BackingField" type="xs:double" />
+      <xs:element name="_x003C_BarcodeId_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_BegleitungVon_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Bermerkung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Besuchsregelung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgacontactId_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Elgasoogrund_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Elgasooiduser_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Elgasoojn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Elgassoodatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Entlassungsbemerkung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Entlassungszeitpunkt_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Erwartungen_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Fallnummer_x003E_k__BackingField" nillable="true" type="xs:double" />
+      <xs:element name="_x003C_Gewicht_x003E_k__BackingField" nillable="true" type="xs:double" />
+      <xs:element name="_x003C_Gruppenkennzahl_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idabteilung_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdaufenthaltVerlauf_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdbenutzerAufnahme_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IdbenutzerEntlassung_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idbereich_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdeinrichtungAufnahme_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdeinrichtungEntlassung_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Iderstkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idklinik_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idpatient_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idurlaub_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_NaechsteEvaluierungBemerkung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_NaechsteEvaluierung_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Postregelung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PsychischeAuff_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SofortMassnahmen_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SomatischeAuff_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SonstigeBesonderheiten_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SonstigeRegelung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Soozeitpunkt_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_TaschegeldVortragDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_TaschengeldSollstand_x003E_k__BackingField" nillable="true" type="xs:double" />
+      <xs:element name="_x003C_TaschengeldVortragBetrag_x003E_k__BackingField" nillable="true" type="xs:double" />
+      <xs:element name="_x003C_Verfuegungsdatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_VerhaltenAufnahme_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ZeitpunktBlisterlisteAufnahme_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_ZeitpunktBlisterlisteEntlassung_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AufenthaltDTO" nillable="true" type="tns:AufenthaltDTO" />
+  <xs:complexType name="UrlaubVerlaufDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_DatumErstellt_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_DatumGeaendert_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_EndeDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idaufenthalt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdbenutzerErstellt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdbenutzerGeaendert_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_StartDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Text_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ZeitpunktBlisterlisteBeginn_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_ZeitpunktBlisterlisteEnde_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UrlaubVerlaufDTO" nillable="true" type="tns:UrlaubVerlaufDTO" />
+  <xs:complexType name="PatientDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_AbwesenheitenHändBerech_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Adelstitel_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AktuellerDienstgeber_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AmputationProzent_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_Anatomie_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Angehörige_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Anrede_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ArbeitslosBezSeit_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Augenfarbe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AuszugswunschDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Behindertenausweis_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_BesondereAeusserlicheKennzeichen_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Besonderheit_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Betreuer_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_BetreuungsstufeAb_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_BetreuungsstufeBis_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Betreuungsstufe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_BewerberBemerkung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_BewerberJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_BewerbungDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_BewerbungaktivJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_BewerbungsGrund_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_BlutGruppe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Datenschutz_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_DatumPensionsteilungsantrag_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_DatumPflegegeldantrag_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Depotinjektion_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_DerzeitigerBeruf_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Dnr_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_EinverständniserklärungFileType_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Einzelzimmer_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_EinzugswunschDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_ErlernterBeruf_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Familienstand_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_FernsehgebuehrbefreiungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_Fibukonto_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Geburtsdatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Geburtsort_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Groesse_x003E_k__BackingField" nillable="true" type="xs:int" />
+      <xs:element name="_x003C_Haarfarbe_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Hauptversicherung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Hausarzt_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Haustier_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Idabteilung_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdadresseSub_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idadresse_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idbenutzer_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idbereich_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IdkontaktSub_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_Initialberuehrung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Kennwort_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Klasse_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Klientennummer_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Klingeln_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_KommunionJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_Konfision_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Kosename_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_KrankenKasse_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_KrankengeldSeit_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_KrankensalbungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_Kzueberlebender_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_KürzungLetzterTagAnwesenheit_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_LedigerName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_LiftJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_LstSprachen_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Milieubetreuung_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_MinSaldo_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Nachname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Namenstag_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Palliativ_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_PatientenverfuegungBeachtlichJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_PatientenverfuegungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_PatientverfuegungAnmerkung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PatientverfuegungDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_PensionsteilungsantragJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_PflegeArt_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PflegegeldantragJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Prioritaet_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PrivPolNr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Privatversicherung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ReligionWunsch_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Resusfaktor_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_RezGebBefAnmerkung_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_RezGebBefBefristetAb_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_RezGebBefBefristetBis_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_RezGebBefBefristetJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_RezGebBefRegoAb_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_RezGebBefRegoBis_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_RezGebBefRegoJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_RezGebBefSachwalterJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_RezGebBefUnbefristetJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_RezGebBefWiderrufGrund_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_RezGebBefWiderrufJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_RezeptgebuehrbefreiungJn_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_RollungBis_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_RollungVon_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_SachWalterBelange_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SachWalterBis_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_SachWalterVon_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Sachwalter_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Selbstzahler_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Sexus_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sollstand_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_SonstigeWuensche_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Sozialcard_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Staatsb_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Stationswunsch_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Statur_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SterbeDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_SterbeRegel_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_TageAbweseneheitOhneKuerzung_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_TelefongebuehrbefreiungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_Titel_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Todeszeitpunkt_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_Vermerk_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_VersicherungsNr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Verstorben_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Voraufenthalt_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Vorname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_WaescheMarkiert_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_WaescheWaschen_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Wohnsituation_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_WohnungAbgemeldetJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_Zimmerwunsch_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ZustaendigeStelle_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientDTO" nillable="true" type="tns:PatientDTO" />
+</xs:schema>

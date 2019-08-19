@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAutoDocu" targetNamespace="http://tempuri.org/dsAutoDocu.xsd" xmlns:mstns="http://tempuri.org/dsAutoDocu.xsd" xmlns="http://tempuri.org/dsAutoDocu.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAutoDocu" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAutoDocu" msprop:Generator_UserDSName="dsAutoDocu">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblAutoDoku" msprop:Generator_TableClassName="tblAutoDokuDataTable" msprop:Generator_TableVarName="tabletblAutoDoku" msprop:Generator_RowChangedName="tblAutoDokuRowChanged" msprop:Generator_TablePropName="tblAutoDoku" msprop:Generator_RowDeletingName="tblAutoDokuRowDeleting" msprop:Generator_RowChangingName="tblAutoDokuRowChanging" msprop:Generator_RowEvHandlerName="tblAutoDokuRowChangeEventHandler" msprop:Generator_RowDeletedName="tblAutoDokuRowDeleted" msprop:Generator_RowClassName="tblAutoDokuRow" msprop:Generator_UserTableName="tblAutoDoku" msprop:Generator_RowEvArgName="tblAutoDokuRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="typ" msprop:Generator_ColumnVarNameInTable="columntyp" msprop:Generator_ColumnPropNameInRow="typ" msprop:Generator_ColumnPropNameInTable="typColumn" msprop:Generator_UserColumnName="typ">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="70" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="docuRtf" msprop:Generator_ColumnVarNameInTable="columndocuRtf" msprop:Generator_ColumnPropNameInRow="docuRtf" msprop:Generator_ColumnPropNameInTable="docuRtfColumn" msprop:Generator_UserColumnName="docuRtf" type="xs:string" />
+              <xs:element name="ErstelltAm" msprop:Generator_ColumnVarNameInTable="columnErstelltAm" msprop:Generator_ColumnPropNameInRow="ErstelltAm" msprop:Generator_ColumnPropNameInTable="ErstelltAmColumn" msprop:Generator_UserColumnName="ErstelltAm" type="xs:dateTime" />
+              <xs:element name="ErstelltVon" msprop:Generator_ColumnVarNameInTable="columnErstelltVon" msprop:Generator_ColumnPropNameInRow="ErstelltVon" msprop:Generator_ColumnPropNameInTable="ErstelltVonColumn" msprop:Generator_UserColumnName="ErstelltVon">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Html" msprop:Generator_ColumnVarNameInTable="columnHtml" msprop:Generator_ColumnPropNameInRow="Html" msprop:Generator_ColumnPropNameInTable="HtmlColumn" msprop:Generator_UserColumnName="Html" type="xs:string" />
+              <xs:element name="Txt" msprop:Generator_ColumnVarNameInTable="columnTxt" msprop:Generator_ColumnPropNameInRow="Txt" msprop:Generator_ColumnPropNameInTable="TxtColumn" msprop:Generator_UserColumnName="Txt" type="xs:string" />
+              <xs:element name="IDResTitle" msprop:Generator_ColumnVarNameInTable="columnIDResTitle" msprop:Generator_ColumnPropNameInRow="IDResTitle" msprop:Generator_ColumnPropNameInTable="IDResTitleColumn" msprop:Generator_UserColumnName="IDResTitle">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Language" msprop:Generator_ColumnVarNameInTable="columnLanguage" msprop:Generator_ColumnPropNameInRow="Language" msprop:Generator_ColumnPropNameInTable="LanguageColumn" msprop:Generator_UserColumnName="Language">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="typAutoDocu" msprop:Generator_TableClassName="typAutoDocuDataTable" msprop:Generator_TableVarName="tabletypAutoDocu" msprop:Generator_RowChangedName="typAutoDocuRowChanged" msprop:Generator_TablePropName="typAutoDocu" msprop:Generator_RowDeletingName="typAutoDocuRowDeleting" msprop:Generator_RowChangingName="typAutoDocuRowChanging" msprop:Generator_RowEvHandlerName="typAutoDocuRowChangeEventHandler" msprop:Generator_RowDeletedName="typAutoDocuRowDeleted" msprop:Generator_RowClassName="typAutoDocuRow" msprop:Generator_UserTableName="typAutoDocu" msprop:Generator_RowEvArgName="typAutoDocuRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="typ" msprop:Generator_ColumnVarNameInTable="columntyp" msprop:Generator_ColumnPropNameInRow="typ" msprop:Generator_ColumnPropNameInTable="typColumn" msprop:Generator_UserColumnName="typ" type="xs:string" />
+              <xs:element name="SubType" msprop:Generator_ColumnVarNameInTable="columnSubType" msprop:Generator_ColumnPropNameInRow="SubType" msprop:Generator_ColumnPropNameInTable="SubTypeColumn" msprop:Generator_UserColumnName="SubType" type="xs:string" />
+              <xs:element name="ObjectType" msprop:Generator_ColumnVarNameInTable="columnObjectType" msprop:Generator_ColumnPropNameInRow="ObjectType" msprop:Generator_ColumnPropNameInTable="ObjectTypeColumn" msprop:Generator_UserColumnName="ObjectType" type="xs:string" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tblTextTemplates" msprop:Generator_TableClassName="tblTextTemplatesDataTable" msprop:Generator_TableVarName="tabletblTextTemplates" msprop:Generator_RowChangedName="tblTextTemplatesRowChanged" msprop:Generator_TablePropName="tblTextTemplates" msprop:Generator_RowDeletingName="tblTextTemplatesRowDeleting" msprop:Generator_RowChangingName="tblTextTemplatesRowChanging" msprop:Generator_RowEvHandlerName="tblTextTemplatesRowChangeEventHandler" msprop:Generator_RowDeletedName="tblTextTemplatesRowDeleted" msprop:Generator_RowClassName="tblTextTemplatesRow" msprop:Generator_UserTableName="tblTextTemplates" msprop:Generator_RowEvArgName="tblTextTemplatesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="400" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Txt" msprop:Generator_ColumnVarNameInTable="columnTxt" msprop:Generator_ColumnPropNameInRow="Txt" msprop:Generator_ColumnPropNameInTable="TxtColumn" msprop:Generator_UserColumnName="Txt" type="xs:string" />
+              <xs:element name="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_UserColumnName="Type">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErstelltAm" msprop:Generator_ColumnVarNameInTable="columnErstelltAm" msprop:Generator_ColumnPropNameInRow="ErstelltAm" msprop:Generator_ColumnPropNameInTable="ErstelltAmColumn" msprop:Generator_UserColumnName="ErstelltAm" type="xs:dateTime" />
+              <xs:element name="ErstelltVon" msprop:Generator_ColumnVarNameInTable="columnErstelltVon" msprop:Generator_ColumnPropNameInRow="ErstelltVon" msprop:Generator_ColumnPropNameInTable="ErstelltVonColumn" msprop:Generator_UserColumnName="ErstelltVon">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Betreff" msprop:Generator_ColumnVarNameInTable="columnBetreff" msprop:Generator_ColumnPropNameInRow="Betreff" msprop:Generator_ColumnPropNameInTable="BetreffColumn" msprop:Generator_UserColumnName="Betreff">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="400" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="An" msprop:Generator_ColumnVarNameInTable="columnAn" msprop:Generator_ColumnPropNameInRow="An" msprop:Generator_ColumnPropNameInTable="AnColumn" msprop:Generator_UserColumnName="An" type="xs:string" />
+              <xs:element name="CC" msprop:Generator_ColumnVarNameInTable="columnCC" msprop:Generator_ColumnPropNameInRow="CC" msprop:Generator_ColumnPropNameInTable="CCColumn" msprop:Generator_UserColumnName="CC" type="xs:string" />
+              <xs:element name="BCC" msprop:Generator_ColumnVarNameInTable="columnBCC" msprop:Generator_ColumnPropNameInRow="BCC" msprop:Generator_ColumnPropNameInTable="BCCColumn" msprop:Generator_UserColumnName="BCC" type="xs:string" />
+              <xs:element name="FromPostfach" msprop:Generator_ColumnVarNameInTable="columnFromPostfach" msprop:Generator_ColumnPropNameInRow="FromPostfach" msprop:Generator_ColumnPropNameInTable="FromPostfachColumn" msprop:Generator_UserColumnName="FromPostfach" type="xs:string" />
+              <xs:element name="lstIDPatienten" msprop:Generator_ColumnVarNameInTable="columnlstIDPatienten" msprop:Generator_ColumnPropNameInRow="lstIDPatienten" msprop:Generator_ColumnPropNameInTable="lstIDPatientenColumn" msprop:Generator_UserColumnName="lstIDPatienten" type="xs:string" />
+              <xs:element name="lstIDBenutzer" msprop:Generator_ColumnVarNameInTable="columnlstIDBenutzer" msprop:Generator_ColumnPropNameInRow="lstIDBenutzer" msprop:Generator_ColumnPropNameInTable="lstIDBenutzerColumn" msprop:Generator_UserColumnName="lstIDBenutzer" type="xs:string" />
+              <xs:element name="lstCategories" msprop:Generator_ColumnVarNameInTable="columnlstCategories" msprop:Generator_ColumnPropNameInRow="lstCategories" msprop:Generator_ColumnPropNameInTable="lstCategoriesColumn" msprop:Generator_UserColumnName="lstCategories" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tblTextTemplatesFiles" msprop:Generator_TableClassName="tblTextTemplatesFilesDataTable" msprop:Generator_TableVarName="tabletblTextTemplatesFiles" msprop:Generator_RowChangedName="tblTextTemplatesFilesRowChanged" msprop:Generator_TablePropName="tblTextTemplatesFiles" msprop:Generator_RowDeletingName="tblTextTemplatesFilesRowDeleting" msprop:Generator_RowChangingName="tblTextTemplatesFilesRowChanging" msprop:Generator_RowEvHandlerName="tblTextTemplatesFilesRowChangeEventHandler" msprop:Generator_RowDeletedName="tblTextTemplatesFilesRowDeleted" msprop:Generator_RowClassName="tblTextTemplatesFilesRow" msprop:Generator_UserTableName="tblTextTemplatesFiles" msprop:Generator_RowEvArgName="tblTextTemplatesFilesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDTextTemplate" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDTextTemplate" msprop:Generator_ColumnPropNameInRow="IDTextTemplate" msprop:Generator_ColumnPropNameInTable="IDTextTemplateColumn" msprop:Generator_UserColumnName="IDTextTemplate" type="xs:string" />
+              <xs:element name="Docu" msprop:Generator_ColumnVarNameInTable="columnDocu" msprop:Generator_ColumnPropNameInRow="Docu" msprop:Generator_ColumnPropNameInTable="DocuColumn" msprop:Generator_UserColumnName="Docu" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FileType" msprop:Generator_ColumnVarNameInTable="columnFileType" msprop:Generator_ColumnPropNameInRow="FileType" msprop:Generator_ColumnPropNameInTable="FileTypeColumn" msprop:Generator_UserColumnName="FileType">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="400" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblAutoDoku" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="typAutoDocuKey1">
+      <xs:selector xpath=".//mstns:typAutoDocu" />
+      <xs:field xpath="mstns:typ" />
+    </xs:unique>
+    <xs:unique name="tblTextTemplates_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblTextTemplates" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="tblTextTemplatesFiles_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblTextTemplatesFiles" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

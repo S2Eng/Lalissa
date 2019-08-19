@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAnamneseBiografie2" targetNamespace="http://tempuri.org/dsAnamneseBiografie2.xsd" xmlns:mstns="http://tempuri.org/dsAnamneseBiografie2.xsd" xmlns="http://tempuri.org/dsAnamneseBiografie2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAnamneseBiografie2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsAnamneseBiografie2" msprop:Generator_UserDSName="dsAnamneseBiografie2" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Anamnese_Biografie" msprop:Generator_UserTableName="Anamnese_Biografie" msprop:Generator_RowDeletedName="Anamnese_BiografieRowDeleted" msprop:Generator_TableClassName="Anamnese_BiografieDataTable" msprop:Generator_RowChangedName="Anamnese_BiografieRowChanged" msprop:Generator_RowClassName="Anamnese_BiografieRow" msprop:Generator_RowChangingName="Anamnese_BiografieRowChanging" msprop:Generator_RowEvArgName="Anamnese_BiografieRowChangeEvent" msprop:Generator_RowEvHandlerName="Anamnese_BiografieRowChangeEventHandler" msprop:Generator_TablePropName="Anamnese_Biografie" msprop:Generator_TableVarName="tableAnamnese_Biografie" msprop:Generator_RowDeletingName="Anamnese_BiografieRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" type="xs:string" />
+              <xs:element name="IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer" msprop:Generator_ColumnPropNameInRow="IDBenutzer" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer" msprop:Generator_ColumnPropNameInTable="IDBenutzerColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ErstelltAm" msprop:Generator_UserColumnName="ErstelltAm" msprop:Generator_ColumnPropNameInRow="ErstelltAm" msprop:Generator_ColumnVarNameInTable="columnErstelltAm" msprop:Generator_ColumnPropNameInTable="ErstelltAmColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Anamnese_Biografie" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

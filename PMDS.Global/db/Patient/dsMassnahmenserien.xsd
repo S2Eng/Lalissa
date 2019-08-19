@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsMassnahmenserien" targetNamespace="http://www.tempuri.org/dsMassnahmenserien.xsd" xmlns:mstns="http://www.tempuri.org/dsMassnahmenserien.xsd" xmlns="http://www.tempuri.org/dsMassnahmenserien.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsMassnahmenserien" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_UserDSName="dsMassnahmenserien" msprop:Generator_DataSetName="dsMassnahmenserien">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Massnahmenserien" msprop:Generator_UserTableName="Massnahmenserien" msprop:Generator_RowDeletedName="MassnahmenserienRowDeleted" msprop:Generator_TableClassName="MassnahmenserienDataTable" msprop:Generator_RowChangedName="MassnahmenserienRowChanged" msprop:Generator_RowClassName="MassnahmenserienRow" msprop:Generator_RowChangingName="MassnahmenserienRowChanging" msprop:Generator_RowEvArgName="MassnahmenserienRowChangeEvent" msprop:Generator_RowEvHandlerName="MassnahmenserienRowChangeEventHandler" msprop:Generator_TablePropName="Massnahmenserien" msprop:Generator_TableVarName="tableMassnahmenserien" msprop:Generator_RowDeletingName="MassnahmenserienRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" type="xs:string" />
+              <xs:element name="Z0" msprop:Generator_UserColumnName="Z0" msprop:Generator_ColumnPropNameInRow="Z0" msprop:Generator_ColumnVarNameInTable="columnZ0" msprop:Generator_ColumnPropNameInTable="Z0Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Z1" msprop:Generator_UserColumnName="Z1" msprop:Generator_ColumnPropNameInRow="Z1" msprop:Generator_ColumnVarNameInTable="columnZ1" msprop:Generator_ColumnPropNameInTable="Z1Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Z2" msprop:Generator_UserColumnName="Z2" msprop:Generator_ColumnPropNameInRow="Z2" msprop:Generator_ColumnVarNameInTable="columnZ2" msprop:Generator_ColumnPropNameInTable="Z2Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Z3" msprop:Generator_UserColumnName="Z3" msprop:Generator_ColumnPropNameInRow="Z3" msprop:Generator_ColumnVarNameInTable="columnZ3" msprop:Generator_ColumnPropNameInTable="Z3Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Z4" msprop:Generator_UserColumnName="Z4" msprop:Generator_ColumnPropNameInRow="Z4" msprop:Generator_ColumnVarNameInTable="columnZ4" msprop:Generator_ColumnPropNameInTable="Z4Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Z5" msprop:Generator_UserColumnName="Z5" msprop:Generator_ColumnPropNameInRow="Z5" msprop:Generator_ColumnVarNameInTable="columnZ5" msprop:Generator_ColumnPropNameInTable="Z5Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Z6" msprop:Generator_UserColumnName="Z6" msprop:Generator_ColumnPropNameInRow="Z6" msprop:Generator_ColumnVarNameInTable="columnZ6" msprop:Generator_ColumnPropNameInTable="Z6Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Z7" msprop:Generator_UserColumnName="Z7" msprop:Generator_ColumnPropNameInRow="Z7" msprop:Generator_ColumnVarNameInTable="columnZ7" msprop:Generator_ColumnPropNameInTable="Z7Column" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Massnahmenserien" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

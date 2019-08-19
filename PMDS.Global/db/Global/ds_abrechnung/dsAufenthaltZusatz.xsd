@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAufenthaltZusatz" targetNamespace="http://tempuri.org/dsAufenthaltZusatz.xsd" xmlns:mstns="http://tempuri.org/dsAufenthaltZusatz.xsd" xmlns="http://tempuri.org/dsAufenthaltZusatz.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=S2STY002\TEST;Initial Catalog=PMDS_Hall;User ID=pmds;Password=pmds" IsAppSettingsProperty="False" Modifier="Assembly" Name="s2sty002\test.PMDS_Hall.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAufenthaltZusatz" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsAufenthaltZusatz" msprop:Generator_DataSetName="dsAufenthaltZusatz">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AufenthaltZusatz" msprop:Generator_UserTableName="AufenthaltZusatz" msprop:Generator_RowDeletedName="AufenthaltZusatzRowDeleted" msprop:Generator_TableClassName="AufenthaltZusatzDataTable" msprop:Generator_RowChangedName="AufenthaltZusatzRowChanged" msprop:Generator_RowClassName="AufenthaltZusatzRow" msprop:Generator_RowChangingName="AufenthaltZusatzRowChanging" msprop:Generator_RowEvArgName="AufenthaltZusatzRowChangeEvent" msprop:Generator_RowEvHandlerName="AufenthaltZusatzRowChangeEventHandler" msprop:Generator_TablePropName="AufenthaltZusatz" msprop:Generator_TableVarName="tableAufenthaltZusatz" msprop:Generator_RowDeletingName="AufenthaltZusatzRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDAufenthalt" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAufenthalt" msprop:Generator_ColumnPropNameInRow="IDAufenthalt" msprop:Generator_ColumnVarNameInTable="columnIDAufenthalt" msprop:Generator_ColumnPropNameInTable="IDAufenthaltColumn" type="xs:string" />
+              <xs:element name="Zimmernummer" msprop:Generator_UserColumnName="Zimmernummer" msprop:Generator_ColumnPropNameInRow="Zimmernummer" msprop:Generator_ColumnVarNameInTable="columnZimmernummer" msprop:Generator_ColumnPropNameInTable="ZimmernummerColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SozialhilfeAntragDatum" msprop:Generator_UserColumnName="SozialhilfeAntragDatum" msprop:Generator_ColumnPropNameInRow="SozialhilfeAntragDatum" msprop:Generator_ColumnVarNameInTable="columnSozialhilfeAntragDatum" msprop:Generator_ColumnPropNameInTable="SozialhilfeAntragDatumColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SozialhilfeBescheidJN" msprop:Generator_UserColumnName="SozialhilfeBescheidJN" msprop:Generator_ColumnPropNameInRow="SozialhilfeBescheidJN" msprop:Generator_ColumnVarNameInTable="columnSozialhilfeBescheidJN" msprop:Generator_ColumnPropNameInTable="SozialhilfeBescheidJNColumn" type="xs:boolean" />
+              <xs:element name="MinSaldo" msprop:Generator_UserColumnName="MinSaldo" msprop:Generator_ColumnPropNameInRow="MinSaldo" msprop:Generator_ColumnVarNameInTable="columnMinSaldo" msprop:Generator_ColumnPropNameInTable="MinSaldoColumn" type="xs:double" />
+              <xs:element name="OffeneRechnungJN" msprop:Generator_UserColumnName="OffeneRechnungJN" msprop:Generator_ColumnPropNameInRow="OffeneRechnungJN" msprop:Generator_ColumnVarNameInTable="columnOffeneRechnungJN" msprop:Generator_ColumnPropNameInTable="OffeneRechnungJNColumn" type="xs:boolean" />
+              <xs:element name="SozialhilfeBescheidGZ" msprop:Generator_UserColumnName="SozialhilfeBescheidGZ" msprop:Generator_ColumnPropNameInRow="SozialhilfeBescheidGZ" msprop:Generator_ColumnVarNameInTable="columnSozialhilfeBescheidGZ" msprop:Generator_ColumnPropNameInTable="SozialhilfeBescheidGZColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AufenthaltZusatz" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

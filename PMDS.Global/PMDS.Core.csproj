@@ -1,0 +1,3896 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1D2BCCF-DCF5-4363-B0DD-630382F190A5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PMDS.Global</RootNamespace>
+    <AssemblyName>PMDS.Core</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\PMDS.Main\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bullzip.PDFWriter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=041d71cacb6e853c, processorArchitecture=MSIL" />
+    <Reference Include="ChilkatDotNet4, Version=9.5.0.0, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DllsNoRedist\ChilkatDotNet4.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\CrystalDecisions.CrystalReports.Engine\10.5.3700.0__692fbea5521e1304\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\CrystalDecisions.ReportSource\10.5.3700.0__692fbea5521e1304\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\CrystalDecisions.Shared\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\CrystalDecisions.Windows.Forms\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ghostscript.NET">
+      <HintPath>..\Dlls\Ghostscript.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Excel.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Excel.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.IO.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.IO.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Reports.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Reports.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.CSharp.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.CSharp.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.TSql.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.TSql.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.VisualBasic.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.VisualBasic.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Word.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Word.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Math.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Math.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Adomd.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Adomd.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Flat.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Flat.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Xmla.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Xmla.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Flat.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Flat.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Mdx.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Mdx.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Xmla.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Xmla.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Undo.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Undo.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.AppStylistSupport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.AppStylistSupport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.Barcode.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Barcode.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Shared.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraDataChart.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraDataChart.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraGauges.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGauges.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraGeographicMap.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGeographicMap.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraSparkline.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraSparkline.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Misc.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Misc.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Portable.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Portable.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.SupportDialogs.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.SupportDialogs.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraChart.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraChart.v17.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraGauge.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraGauge.v17.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v17.2.FormulaBuilder, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v17.2.FormulaBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCarousel.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCarousel.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinChart.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinChart.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDataSource.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDock.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDock.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinExplorerBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinExplorerBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinFormattedText.WordWriter.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinFormattedText.WordWriter.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGanttView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGanttView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGauge.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGauge.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.DocumentExport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.DocumentExport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.ExcelExport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.WordWriter.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.WordWriter.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinInkProvider.Ink17.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinInkProvider.Ink17.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinLiveTileView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinLiveTileView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinMaskedEdit.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinMaskedEdit.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinOfficeNavBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinOfficeNavBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinPivotGrid.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPivotGrid.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPrintPreviewDialog.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinRadialMenu.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinRadialMenu.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSchedule.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSchedule.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSpellChecker.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpellChecker.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSpreadsheet.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpreadsheet.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinStatusBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabbedMdi.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabControl.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinToolbars.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTree.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTree.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Patagames.Pdf, Version=3.10.5.2704, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\PMDS.Main\packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.WinForms, Version=3.10.5.0, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\PMDS.Main\packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.Wpf, Version=3.10.5.0, Culture=neutral, PublicKeyToken=37f2796639c62e77, processorArchitecture=MSIL">
+      <HintPath>..\PMDS.Main\packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PMDS.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\PMDS.db.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.core, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.core.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.core.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.core.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.db.Entities">
+      <HintPath>..\Dlls\QS2.db.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.design.auto, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.Txteditor, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.Txteditor.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.UI.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.UI.cs.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.UI.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.UI.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.functions.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.functions.cs.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Logging.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Logging.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.sitemap, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.sitemap.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.sitemap.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.sitemap.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.ui.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui.comm.scan">
+      <HintPath>..\Dlls\qs2.ui.comm.scan.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.ui.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryExpress, Version=1.0.4713.31774, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QueryExpress.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.1400.0.41, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TXDocumentServer, Version=25.0.1100.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDocumentServer.Windows.Forms, Version=25.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing, Version=25.0.300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing.Windows.Forms, Version=25.0.300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXSpell, Version=7.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXSpell.Windows.Forms, Version=7.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl, Version=25.0.1800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl.Server, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl.Windows.Forms, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WCFServicePMDS">
+      <HintPath>..\Dlls\WCFServicePMDS.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppException.cs" />
+    <Compile Include="db\ERSystem\dsAsyncCommData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAsyncCommData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsKlient.cs">
+      <DependentUpon>dsKlient.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsKlient.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsKlient.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsManage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsManage.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsPlanungIntervention.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPlanungIntervention.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsVO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsVO.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\PMDSBusinessComm.cs" />
+    <Compile Include="db\ERSystem\PMDSBusinessRAM.cs" />
+    <Compile Include="db\ERSystem\PMDSBusinessStructures.cs" />
+    <Compile Include="db\ERSystem\PMDSBusinessUI.cs" />
+    <Compile Include="db\ERSystem\sqlKlient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlKlient.Designer.cs">
+      <DependentUpon>sqlKlient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlMedDaten.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlMedDaten.Designer.cs">
+      <DependentUpon>sqlMedDaten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlPlanungIntervention.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlPlanungIntervention.Designer.cs">
+      <DependentUpon>sqlPlanungIntervention.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlVO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlVO.Designer.cs">
+      <DependentUpon>sqlVO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMDSClient\PMDSClientWrapper.cs" />
+    <Compile Include="PMDSClient\WCFService\WcfDTOs.cs" />
+    <Compile Include="PMDSClient\WCFService\WCFServiceClient.cs" />
+    <Compile Include="db\Global\ds_abrechnung\dsKostentraeger.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsKostentraeger.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientKostentraeger.cs">
+      <DependentUpon>dsPatientKostentraeger.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientKostentraeger.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPatientKostentraeger.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\unwichtig\dsKlientenKostentraeger.cs">
+      <DependentUpon>dsKlientenKostentraeger.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\unwichtig\dsKlientenKostentraeger.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsKlientenKostentraeger.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\unwichtig\dsPatientKostentraegerByID.cs">
+      <DependentUpon>dsPatientKostentraegerByID.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\unwichtig\dsPatientKostentraegerByID.Designer.cs">
+      <DependentUpon>dsPatientKostentraegerByID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\unwichtig\dsPatientKostentraegerByID1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPatientKostentraegerByID.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsDienstZeiten.cs">
+      <DependentUpon>dsDienstZeiten.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientNichtAufgenommen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPatientNichtAufgenommen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\RBU\CommandLineCollection.cs" />
+    <Compile Include="db\RBU\ConfigFile.cs" />
+    <Compile Include="db\RBU\ENVRBU.cs" />
+    <Compile Include="db\ERSystem\BusinessClassesTests.cs" />
+    <Compile Include="db\ERSystem\dsDokumente2Abteilungen.cs">
+      <DependentUpon>dsDokumente2Abteilungen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsDokumente2Abteilungen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDokumente2Abteilungen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsFormular.cs">
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsFormular.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsKlientenliste.cs">
+      <DependentUpon>dsKlientenliste.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsKlientenliste.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsKlientenliste.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsTermine.cs">
+      <DependentUpon>dsTermine.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\dsTermine.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTermine.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\BusinessHelp.cs" />
+    <Compile Include="db\ERSystem\EFEntities.cs" />
+    <Compile Include="db\ERSystem\ERHelper.cs" />
+    <Compile Include="db\ERSystem\FrmStatusAndProtocoll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="db\ERSystem\FrmStatusAndProtocoll.Designer.cs">
+      <DependentUpon>FrmStatusAndProtocoll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\PredicateBuilder2.cs" />
+    <Compile Include="db\ERSystem\PredicateBuilder.cs" />
+    <Compile Include="db\ERSystem\SendUnterbringung.cs" />
+    <Compile Include="db\ERSystem\sqlManange.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlManange.Designer.cs">
+      <DependentUpon>sqlManange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlTermine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\ERSystem\sqlTermine.Designer.cs">
+      <DependentUpon>sqlTermine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\ERSystem\TestUnits.cs" />
+    <Compile Include="db\ERSystem\UISitemaps.cs" />
+    <Compile Include="db\RBU\frmShowError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="db\RBU\frmShowError.designer.cs">
+      <DependentUpon>frmShowError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsAerzte.cs">
+      <DependentUpon>dsAerzte.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsAuswahlGruppe.cs">
+      <DependentUpon>dsAuswahlGruppe.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsAuswahlGruppe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAuswahlGruppe.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsBenutzer.cs">
+      <DependentUpon>dsBenutzer.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsBenutzer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsBenutzer.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsFormular.cs">
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsQuickFilter.cs">
+      <DependentUpon>dsQuickFilter.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsQuickFilter.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsQuickFilter.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\RBU\Log.cs" />
+    <Compile Include="db\RBU\RBU.cs" />
+    <Compile Include="db\RBU\RBUSF.cs" />
+    <Compile Include="db\RBU\SingleTextEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="db\RBU\User.cs" />
+    <Compile Include="db\Sys\cSys.cs" />
+    <Compile Include="db\Sys\dsRessourcenITSCont.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRessourcenITSCont.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Sys\sqlSys.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Sys\sqlSys.Designer.cs">
+      <DependentUpon>sqlSys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ENV\Exceptions.cs" />
+    <Compile Include="generic.cs" />
+    <Compile Include="Heimvertraege\cHeimvertraege.cs" />
+    <Compile Include="ImportMedDaten.cs" />
+    <Compile Include="KlientByKostentr?ger.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KlientByKostentr?ger.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Other\cConfig.cs" />
+    <Compile Include="Other\Config.cs" />
+    <Compile Include="Other\Impersonation.cs" />
+    <Compile Include="PMDSClient\ENV\ENVClient.cs" />
+    <Compile Include="print\FDF.cs" />
+    <Compile Include="UI\Ansichtinfo.cs" />
+    <Compile Include="Pdx_Aszm\ASZMSelectionArgs.cs" />
+    <Compile Include="print\BerichtParameter.cs" />
+    <Compile Include="Other\cHistorie.cs" />
+    <Compile Include="db\dbBase.cs" />
+    <Compile Include="Other\DBPep.cs" />
+    <Compile Include="db\DBTransaction.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\AufenthaltZusatz.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\Depotgeldkonto.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\Leistungskatalog.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\PatientEinkommen.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\PatientLeistungsplan.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\PatientPflegestufe.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\PatientSonderleistung.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\PatientTaschengeldKostentraeger.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\Pflegegeldstufe.cs" />
+    <Compile Include="db\BusinessLogic\abrechnung\SonderleistungsKatalog.cs" />
+    <Compile Include="db\BusinessLogic\Abteilung.cs" />
+    <Compile Include="db\BusinessLogic\Adresse.cs" />
+    <Compile Include="db\BusinessLogic\AdresseKontaktBasis.cs" />
+    <Compile Include="db\BusinessLogic\Aerzte.cs" />
+    <Compile Include="db\BusinessLogic\Arzt.cs" />
+    <Compile Include="db\BusinessLogic\ASZMTransfer.cs" />
+    <Compile Include="db\BusinessLogic\Aufenthalt.cs" />
+    <Compile Include="db\BusinessLogic\AufenthaltVerlauf.cs" />
+    <Compile Include="db\BusinessLogic\AuswahlGruppe.cs" />
+    <Compile Include="db\BusinessLogic\Bank.cs" />
+    <Compile Include="db\BusinessLogic\Belegung.cs" />
+    <Compile Include="db\BusinessLogic\Benutzer.cs" />
+    <Compile Include="db\BusinessLogic\BusinessBase.cs" />
+    <Compile Include="db\BusinessLogic\BUtil.cs" />
+    <Compile Include="db\BusinessLogic\DatabaseHelper.cs" />
+    <Compile Include="db\BusinessLogic\DienstZeitenManager.cs" />
+    <Compile Include="db\BusinessLogic\Einrichtung.cs" />
+    <Compile Include="db\BusinessLogic\Eintrag.cs" />
+    <Compile Include="db\BusinessLogic\EintragStandardprozeduren.cs" />
+    <Compile Include="db\BusinessLogic\EintragZusatz.cs" />
+    <Compile Include="db\BusinessLogic\Essen.cs" />
+    <Compile Include="db\BusinessLogic\FormularDatenManager.cs" />
+    <Compile Include="db\BusinessLogic\FormularManager.cs" />
+    <Compile Include="db\BusinessLogic\Gruppe.cs" />
+    <Compile Include="db\BusinessLogic\Katalog.cs" />
+    <Compile Include="db\BusinessLogic\Klinik.cs" />
+    <Compile Include="db\BusinessLogic\KlinikAbteilungen.cs" />
+    <Compile Include="db\BusinessLogic\KlinikBereiche.cs" />
+    <Compile Include="db\BusinessLogic\Kontakt.cs" />
+    <Compile Include="db\BusinessLogic\LinkDokumente.cs" />
+    <Compile Include="db\BusinessLogic\Massnahmenserien.cs" />
+    <Compile Include="db\BusinessLogic\Medikament.cs" />
+    <Compile Include="db\BusinessLogic\Medikation.cs" />
+    <Compile Include="db\BusinessLogic\MedizinischeDaten.cs" />
+    <Compile Include="db\BusinessLogic\MedizinischeDatenLayout.cs" />
+    <Compile Include="db\BusinessLogic\MedizinischeTypen.cs" />
+    <Compile Include="db\BusinessLogic\Patient.cs" />
+    <Compile Include="db\BusinessLogic\PatientenBemerkung.cs" />
+    <Compile Include="db\BusinessLogic\PDx.cs" />
+    <Compile Include="db\BusinessLogic\PDXPflegemodelle.cs" />
+    <Compile Include="db\BusinessLogic\PflegeEintrag.cs" />
+    <Compile Include="db\BusinessLogic\Pflegemodelle.cs" />
+    <Compile Include="db\BusinessLogic\PflegePlan.cs" />
+    <Compile Include="db\BusinessLogic\QM.cs" />
+    <Compile Include="db\BusinessLogic\QuickFilterManager.cs" />
+    <Compile Include="db\BusinessLogic\QuickMeldungManager.cs" />
+    <Compile Include="db\BusinessLogic\Rezept.cs" />
+    <Compile Include="db\BusinessLogic\SP.cs" />
+    <Compile Include="db\BusinessLogic\StandardProzeduren.cs" />
+    <Compile Include="db\BusinessLogic\Standardzeiten.cs" />
+    <Compile Include="db\BusinessLogic\Tools.cs" />
+    <Compile Include="db\BusinessLogic\UrlaubVerlauf.cs" />
+    <Compile Include="db\BusinessLogic\Wunde.cs" />
+    <Compile Include="db\BusinessLogic\Zeitbereich.cs" />
+    <Compile Include="db\BusinessLogic\ZusatzEintrag.cs" />
+    <Compile Include="db\BusinessLogic\ZusatzGruppe.cs" />
+    <Compile Include="db\BusinessLogic\ZusatzWert.cs" />
+    <Compile Include="db\BusinessLogic\ZusatzWertVerlauf.cs" />
+    <Compile Include="db\Global\AbgegebenHelper.cs" />
+    <Compile Include="db\db.cs" />
+    <Compile Include="db\Global\DBAerzte.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBAerzte.Designer.cs">
+      <DependentUpon>DBAerzte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBAuswahlGruppe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBAutoUI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBAutoUI.Designer.cs">
+      <DependentUpon>DBAutoUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBBank.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBBank.Designer.cs">
+      <DependentUpon>DBBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBBaseEntries.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBBelegung.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBBelegung.Designer.cs">
+      <DependentUpon>DBBelegung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBBenutzer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBDokumente.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBDokumente.Designer.cs">
+      <DependentUpon>DBDokumente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBEssen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBEssen.Designer.cs">
+      <DependentUpon>DBEssen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\DBException.cs" />
+    <Compile Include="db\Global\DBFormular.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBFormularDaten.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBGemeinsameFunktionen.cs" />
+    <Compile Include="db\Global\DBLinkDokumente.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBLinkDokumente.Designer.cs">
+      <DependentUpon>DBLinkDokumente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBMedikation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBMedikation.Designer.cs">
+      <DependentUpon>DBMedikation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBMedizinischeDaten.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBMedizinischeDaten.Designer.cs">
+      <DependentUpon>DBMedizinischeDaten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBMedizinischeDatenLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBMedizinischeDatenLayout.Designer.cs">
+      <DependentUpon>DBMedizinischeDatenLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBMedizinischeTypen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBMedizinischeTypen.Designer.cs">
+      <DependentUpon>DBMedizinischeTypen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBNachricht.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBNachricht.Designer.cs">
+      <DependentUpon>DBNachricht.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBPatientAerzte.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBPatientAerzte.Designer.cs">
+      <DependentUpon>DBPatientAerzte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBPrintPflegebericht.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBPrintZusatzwert.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBQuickFilter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBQuickMeldung.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBRezept.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBSP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBSP.Designer.cs">
+      <DependentUpon>DBSP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBStandardProzeduren.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBStandardProzeduren.Designer.cs">
+      <DependentUpon>DBStandardProzeduren.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBStandardzeiten.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBStandardzeiten.Designer.cs">
+      <DependentUpon>DBStandardzeiten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBSturz.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBSturz.Designer.cs">
+      <DependentUpon>DBSturz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBTermine.cs" />
+    <Compile Include="db\Global\DBUtil.cs" />
+    <Compile Include="db\Global\DBVerwaltung.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBVerwaltung.Designer.cs">
+      <DependentUpon>DBVerwaltung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBWunde.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBWunde.Designer.cs">
+      <DependentUpon>DBWunde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBZeitbereich.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBZeitbereich.Designer.cs">
+      <DependentUpon>DBZeitbereich.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBZeitbereichSerien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBZeitbereichSerien.Designer.cs">
+      <DependentUpon>DBZeitbereichSerien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DBZusatzEintrag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBZusatzGruppe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DBZusatzWert.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBAufenthaltZusatz.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBAufenthaltZusatz.Designer.cs">
+      <DependentUpon>DBAufenthaltZusatz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBKostentraeger.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBLeistungskatalog.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBManBuchungen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBManBuchungen.Designer.cs">
+      <DependentUpon>DBManBuchungen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientAbwesenheit.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientEinkommen.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientKostentraeger.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientLeistungsplan.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientPflegestufe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientSonderleistung.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientTaschengeldKostentraeger.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPatientTaschengeldKostentraeger.Designer.cs">
+      <DependentUpon>DBPatientTaschengeldKostentraeger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBPflegegeldstufe.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBSonderleistungsKatalog.cs">
+      <CustomToolNamespace>PMDS.Abrechnung.DB</CustomToolNamespace>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBTaschengeld.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Global\DB_abrechnung\DBTaschengeld.Designer.cs">
+      <DependentUpon>DBTaschengeld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsAerzte.Designer.cs">
+      <DependentUpon>dsAerzte.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsAlleKostF?rKlient.Designer.cs">
+      <DependentUpon>dsAlleKostF?rKlient.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsBank.Designer.cs">
+      <DependentUpon>dsBank.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsBeleg.Designer.cs">
+      <DependentUpon>dsBeleg.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsBelegung.cs">
+      <DependentUpon>dsBelegung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsBelegung.Designer.cs">
+      <DependentUpon>dsBelegung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsBenutzerAbteilung.cs">
+      <DependentUpon>dsBenutzerAbteilung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsBenutzerAbteilung.Designer.cs">
+      <DependentUpon>dsBenutzerAbteilung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsBenutzerBezug.Designer.cs">
+      <DependentUpon>dsBenutzerBezug.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsBenutzerGruppe.cs">
+      <DependentUpon>dsBenutzerGruppe.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsBenutzerGruppe.Designer.cs">
+      <DependentUpon>dsBenutzerGruppe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsDatenQuellen.Designer.cs">
+      <DependentUpon>dsDatenQuellen.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsDokumente.Designer.cs">
+      <DependentUpon>dsDokumente.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsEssen.Designer.cs">
+      <DependentUpon>dsEssen.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsFormular.Designer.cs">
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsFormularDaten.Designer.cs">
+      <DependentUpon>dsFormularDaten.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsGUIDListe.cs">
+      <DependentUpon>dsGUIDListe.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsGUIDListe.Designer.cs">
+      <DependentUpon>dsGUIDListe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsGuidListeNoKey.Designer.cs">
+      <DependentUpon>dsGuidListeNoKey.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsIDListe.Designer.cs">
+      <DependentUpon>dsIDListe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsIDTextBezeichnung.Designer.cs">
+      <DependentUpon>dsIDTextBezeichnung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsINTListe.Designer.cs">
+      <DependentUpon>dsINTListe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsKlientenListeByMedikament.Designer.cs">
+      <DependentUpon>dsKlientenListeByMedikament.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsLinkDokumente.Designer.cs">
+      <DependentUpon>dsLinkDokumente.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsMedikationVonBis.cs">
+      <DependentUpon>dsMedikationVonBis.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsMedikationVonBis.Designer.cs">
+      <DependentUpon>dsMedikationVonBis.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsMedizinischeDaten.Designer.cs">
+      <DependentUpon>dsMedizinischeDaten.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsMedizinischeDatenLayout.cs">
+      <DependentUpon>dsMedizinischeDatenLayout.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsMedizinischeDatenLayout.Designer.cs">
+      <DependentUpon>dsMedizinischeDatenLayout.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsMedizinischeTypen.Designer.cs">
+      <DependentUpon>dsMedizinischeTypen.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsNachricht.Designer.cs">
+      <DependentUpon>dsNachricht.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsPatientAerzte.Designer.cs">
+      <DependentUpon>dsPatientAerzte.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsPatientBankliste.cs">
+      <DependentUpon>dsPatientBankliste.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsPatientBankliste.Designer.cs">
+      <DependentUpon>dsPatientBankliste.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsPatientBereich.Designer.cs">
+      <DependentUpon>dsPatientBereich.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsPatientBewerber.cs">
+      <DependentUpon>dsPatientBewerber.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsPatientBewerber.Designer.cs">
+      <DependentUpon>dsPatientBewerber.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsPflgePlanZusatzGruppeEintrag.Designer.cs">
+      <DependentUpon>dsPflgePlanZusatzGruppeEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsQuickMeldung.Designer.cs">
+      <DependentUpon>dsQuickMeldung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRepAufgabe.Designer.cs">
+      <DependentUpon>dsRepAufgabe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRepMedikamentenBlatt.cs">
+      <DependentUpon>dsRepMedikamentenBlatt.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsRepMedikamentenBlatt.Designer.cs">
+      <DependentUpon>dsRepMedikamentenBlatt.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRepPflegebericht.Designer.cs">
+      <DependentUpon>dsRepPflegebericht.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRepPflegebrief.cs">
+      <DependentUpon>dsRepPflegebrief.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsRepPflegebrief.Designer.cs">
+      <DependentUpon>dsRepPflegebrief.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRepZusatzWert.Designer.cs">
+      <DependentUpon>dsRepZusatzWert.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRezept.Designer.cs">
+      <DependentUpon>dsRezept.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRezeptEintrag.cs">
+      <DependentUpon>dsRezeptEintrag.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsRezeptEintrag.Designer.cs">
+      <DependentUpon>dsRezeptEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsRowLayout.Designer.cs">
+      <DependentUpon>dsRowLayout.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsSP.Designer.cs">
+      <DependentUpon>dsSP.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsStandardProzeduren.cs">
+      <DependentUpon>dsStandardProzeduren.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsStandardProzeduren.Designer.cs">
+      <DependentUpon>dsStandardProzeduren.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsStandardZeiten.Designer.cs">
+      <DependentUpon>dsStandardZeiten.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsVerwaltung.Designer.cs">
+      <DependentUpon>dsVerwaltung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\ERSystem\PMDSBusiness.cs" />
+    <Compile Include="db\Global\dsWunde.cs">
+      <DependentUpon>dsWunde.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsWunde.Designer.cs">
+      <DependentUpon>dsWunde.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZeitbereich.Designer.cs">
+      <DependentUpon>dsZeitbereich.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZeitbereichSerien.Designer.cs">
+      <DependentUpon>dsZeitbereichSerien.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZusatzEintrag.Designer.cs">
+      <DependentUpon>dsZusatzEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZusatzGruppe.cs">
+      <DependentUpon>dsZusatzGruppe.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\dsZusatzGruppe.Designer.cs">
+      <DependentUpon>dsZusatzGruppe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZusatzGruppeEintrag.Designer.cs">
+      <DependentUpon>dsZusatzGruppeEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZusatzVerlauf.Designer.cs">
+      <DependentUpon>dsZusatzVerlauf.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZusatzVerlaufAll.Designer.cs">
+      <DependentUpon>dsZusatzVerlaufAll.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\dsZusatzWert.Designer.cs">
+      <DependentUpon>dsZusatzWert.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsAufenthaltZusatz.Designer.cs">
+      <DependentUpon>dsAufenthaltZusatz.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsInfo.Designer.cs">
+      <DependentUpon>dsInfo.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsKlientenSelAbrechDepot.Designer.cs">
+      <DependentUpon>dsKlientenSelAbrechDepot.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsKlientenTaschengeld.Designer.cs">
+      <DependentUpon>dsKlientenTaschengeld.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsLeistungskatalog.Designer.cs">
+      <DependentUpon>dsLeistungskatalog.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsManBuch.cs">
+      <DependentUpon>dsManBuch.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsManBuch.Designer.cs">
+      <DependentUpon>dsManBuch.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientAbwesenheit.cs">
+      <DependentUpon>dsPatientAbwesenheit.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientAbwesenheit.Designer.cs">
+      <DependentUpon>dsPatientAbwesenheit.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientEinkommen.Designer.cs">
+      <DependentUpon>dsPatientEinkommen.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientKostentr?gerG?ltigBis.cs">
+      <DependentUpon>dsPatientKostentr?gerG?ltigBis.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientKostentr?gerG?ltigBis.Designer.cs">
+      <DependentUpon>dsPatientKostentr?gerG?ltigBis.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientLeistungsplan.Designer.cs">
+      <DependentUpon>dsPatientLeistungsplan.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientLeistungsplanG?ltigBis.Designer.cs">
+      <DependentUpon>dsPatientLeistungsplanG?ltigBis.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientPflegestufe.Designer.cs">
+      <DependentUpon>dsPatientPflegestufe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientSonderleistung.cs">
+      <DependentUpon>dsPatientSonderleistung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientSonderleistung.Designer.cs">
+      <DependentUpon>dsPatientSonderleistung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraeger.cs">
+      <DependentUpon>dsPatientTaschengeldKostentraeger.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraeger.Designer.cs">
+      <DependentUpon>dsPatientTaschengeldKostentraeger.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerG?ltigBis.cs">
+      <DependentUpon>dsPatientTaschengeldKostentraegerG?ltigBis.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerG?ltigBis.Designer.cs">
+      <DependentUpon>dsPatientTaschengeldKostentraegerG?ltigBis.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPflegegeldstufe.Designer.cs">
+      <DependentUpon>dsPflegegeldstufe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsPrintTaschengeld.Designer.cs">
+      <DependentUpon>dsPrintTaschengeld.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsSonderleistungsKatalog.Designer.cs">
+      <DependentUpon>dsSonderleistungsKatalog.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsTaschengeld.cs">
+      <DependentUpon>dsTaschengeld.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Global\ds_abrechnung\dsTaschengeld.Designer.cs">
+      <DependentUpon>dsTaschengeld.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\DBAbteilung.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBAdresse.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBAufenthalt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBAufenthaltPDx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBAufenthaltVerlauf.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBBenutzerEinrichtung.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBBenutzerEinrichtung.Designer.cs">
+      <DependentUpon>DBBenutzerEinrichtung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\DBDienstZeiten.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBEinrichtung.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBGruppe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBKlinik.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBKlinikAbteilungen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBKlinikBereiche.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBKontakt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBMassnahmenserien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBMedikament.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBPatient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\DBPatientenBemerkung.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\dbQueries.cs" />
+    <Compile Include="db\Patient\DBUrlaubVerlauf.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Patient\dsAbteilung.cs">
+      <DependentUpon>dsAbteilung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsAbteilung.Designer.cs">
+      <DependentUpon>dsAbteilung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsAdresse.Designer.cs">
+      <DependentUpon>dsAdresse.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsAnamnesen.cs">
+      <DependentUpon>dsAnamnesen.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsAnamnesen.Designer.cs">
+      <DependentUpon>dsAnamnesen.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsAufenthalt.Designer.cs">
+      <DependentUpon>dsAufenthalt.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsAufenthaltPDx.Designer.cs">
+      <DependentUpon>dsAufenthaltPDx.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsAufenthaltVerlauf.Designer.cs">
+      <DependentUpon>dsAufenthaltVerlauf.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsBenutzerEinrichtung.Designer.cs">
+      <DependentUpon>dsBenutzerEinrichtung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsBereich.Designer.cs">
+      <DependentUpon>dsBereich.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsDienstZeiten.Designer.cs">
+      <DependentUpon>dsDienstZeiten.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsEinrichtung.Designer.cs">
+      <DependentUpon>dsEinrichtung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsGruppe.Designer.cs">
+      <DependentUpon>dsGruppe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsGruppenRecht.Designer.cs">
+      <DependentUpon>dsGruppenRecht.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsKlinik.Designer.cs">
+      <DependentUpon>dsKlinik.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsKontakt.Designer.cs">
+      <DependentUpon>dsKontakt.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsMassnahmenserien.Designer.cs">
+      <DependentUpon>dsMassnahmenserien.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsMedikament.cs">
+      <DependentUpon>dsMedikament.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsMedikament.Designer.cs">
+      <DependentUpon>dsMedikament.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsPatient.Designer.cs">
+      <DependentUpon>dsPatient.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientenBemerkung.cs">
+      <DependentUpon>dsPatientenBemerkung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientenBemerkung.Designer.cs">
+      <DependentUpon>dsPatientenBemerkung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientFoto.Designer.cs">
+      <DependentUpon>dsPatientFoto.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientName.Designer.cs">
+      <DependentUpon>dsPatientName.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientStation.Designer.cs">
+      <DependentUpon>dsPatientStation.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientZusa?tzlicheDatenByID.cs">
+      <DependentUpon>dsPatientZusa?tzlicheDatenByID.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsPatientZusa?tzlicheDatenByID.Designer.cs">
+      <DependentUpon>dsPatientZusa?tzlicheDatenByID.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsRezeptBestellung.Designer.cs">
+      <DependentUpon>dsRezeptBestellung.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsUrlaubVerlauf.Designer.cs">
+      <DependentUpon>dsUrlaubVerlauf.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Patient\dsVitalwerte.cs">
+      <DependentUpon>dsVitalwerte.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Patient\dsVitalwerte.Designer.cs">
+      <DependentUpon>dsVitalwerte.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBEintrag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBEintragStandardprozeduren.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBEintragStandardprozeduren.Designer.cs">
+      <DependentUpon>DBEintragStandardprozeduren.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBEintragZusatz.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPDx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPDxEintrag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPDXPflegemodelle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPDXPflegemodelle.Designer.cs">
+      <DependentUpon>DBPDXPflegemodelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPflegeEintrag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPflegemodelle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPflegemodelle.Designer.cs">
+      <DependentUpon>DBPflegemodelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPflegePlan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBPflegePlanPDx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBQM.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="db\Pflegeplan\DBQM.Designer.cs">
+      <DependentUpon>DBQM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsEintrag.Designer.cs">
+      <DependentUpon>dsEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsEintragStandardprozeduren.Designer.cs">
+      <DependentUpon>dsEintragStandardprozeduren.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsEintragZusatz.Designer.cs">
+      <DependentUpon>dsEintragZusatz.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPDx.Designer.cs">
+      <DependentUpon>dsPDx.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPDxEintraege.Designer.cs">
+      <DependentUpon>dsPDxEintraege.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPDxEintrag.Designer.cs">
+      <DependentUpon>dsPDxEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPDxGruppe.Designer.cs">
+      <DependentUpon>dsPDxGruppe.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPDxGruppeEintrag.Designer.cs">
+      <DependentUpon>dsPDxGruppeEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPDXPflegemodelle.Designer.cs">
+      <DependentUpon>dsPDXPflegemodelle.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPDxText.Designer.cs">
+      <DependentUpon>dsPDxText.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegeEintrag.Designer.cs">
+      <DependentUpon>dsPflegeEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegemodelle.Designer.cs">
+      <DependentUpon>dsPflegemodelle.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegePlan.cs">
+      <DependentUpon>dsPflegePlan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegePlan.Designer.cs">
+      <DependentUpon>dsPflegePlan.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegePlanH.Designer.cs">
+      <DependentUpon>dsPflegePlanH.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegePlanPDx.Designer.cs">
+      <DependentUpon>dsPflegePlanPDx.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegePlanZeitpunkte.Designer.cs">
+      <DependentUpon>dsPflegePlanZeitpunkte.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsPflegePlanZusatzEintraege.Designer.cs">
+      <DependentUpon>dsPflegePlanZusatzEintraege.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsZielePDx.Designer.cs">
+      <DependentUpon>dsZielePDx.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="db\Pflegeplan\dsZusatzwerteForEintrag.Designer.cs">
+      <DependentUpon>dsZusatzwerteForEintrag.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Export\exportCsv.cs" />
+    <Compile Include="Other\GenericFunctions.cs" />
+    <Compile Include="UI\Befunde\dsEDIFACT.cs">
+      <DependentUpon>dsEDIFACT.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Befunde\dsEDIFACT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEDIFACT.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Befunde\EDIFact.cs" />
+    <Compile Include="UI\Befunde\EDIFactStruc.cs" />
+    <Compile Include="UI\Befunde\contEdiFactViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Befunde\contEdiFactViewer.designer.cs">
+      <DependentUpon>contEdiFactViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Befunde\frmImportBefunde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Befunde\frmImportBefunde.Designer.cs">
+      <DependentUpon>frmImportBefunde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Befunde\frmEdiFactViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Befunde\frmEdiFactViewer.Designer.cs">
+      <DependentUpon>frmEdiFactViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ELGA\contCDAViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ELGA\contCDAViewer.Designer.cs">
+      <DependentUpon>contCDAViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ELGA\frmCDAViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ELGA\frmCDAViewer.Designer.cs">
+      <DependentUpon>frmCDAViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmInputText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmInputText.Designer.cs">
+      <DependentUpon>frmInputText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Interfaces.cs" />
+    <Compile Include="PMDSResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMDSResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="print\frmPrintPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="print\PrinterSettings.cs" />
+    <Compile Include="print\ReportManager.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Other\retFkt.cs" />
+    <Compile Include="EMail\clSMTP.cs" />
+    <Compile Include="ENV\DelegateArguments.cs" />
+    <Compile Include="ENV\Enum.cs" />
+    <Compile Include="ENV\ENV.cs" />
+    <Compile Include="Calc\abrech.cs" />
+    <Compile Include="ENV\ENVCOLOR.cs" />
+    <Compile Include="ENV\EnvPflegePlan.cs" />
+    <Compile Include="UI\frmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Other\Helper.cs" />
+    <Compile Include="Other\MedDatenArgs.cs" />
+    <Compile Include="Pdx_Aszm\PDXDef.cs" />
+    <Compile Include="Pdx_Aszm\PDXGruppeDef.cs" />
+    <Compile Include="Pdx_Aszm\PDXGruppeEintragDef.cs" />
+    <Compile Include="Pdx_Aszm\PDXPflegemodellDef.cs" />
+    <Compile Include="Pdx_Aszm\PDxResource.cs" />
+    <Compile Include="Pdx_Aszm\PDxSelectionArgs.cs" />
+    <Compile Include="UI\frmPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPDF.Designer.cs">
+      <DependentUpon>frmPDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmPictureViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPictureViewer.Designer.cs">
+      <DependentUpon>frmPictureViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PMDSMenuEntry.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Res.cs" />
+    <Compile Include="EMail\EMail.cs" />
+    <Compile Include="Other\StringOperate.cs" />
+    <Compile Include="Other\Tools.cs" />
+    <Compile Include="UI\UIGlobal.cs" />
+    <Compile Include="Web References\BIDS_EDIService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="db\ERSystem\FrmStatusAndProtocoll.resx">
+      <DependentUpon>FrmStatusAndProtocoll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\ERSystem\sqlKlient.resx">
+      <DependentUpon>sqlKlient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\ERSystem\sqlManange.resx">
+      <DependentUpon>sqlManange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\ERSystem\sqlMedDaten.resx">
+      <DependentUpon>sqlMedDaten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\ERSystem\sqlPlanungIntervention.resx">
+      <DependentUpon>sqlPlanungIntervention.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\ERSystem\sqlTermine.resx">
+      <DependentUpon>sqlTermine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\ERSystem\sqlVO.resx">
+      <DependentUpon>sqlVO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\RBU\frmShowError.resx">
+      <DependentUpon>frmShowError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBAerzte.resx">
+      <DependentUpon>DBAerzte.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBAuswahlGruppe.resx">
+      <DependentUpon>DBAuswahlGruppe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBAutoUI.resx">
+      <DependentUpon>DBAutoUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBBank.resx">
+      <DependentUpon>DBBank.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBBase.resx">
+      <DependentUpon>DBBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBBaseEntries.resx">
+      <DependentUpon>DBBaseEntries.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBBelegung.resx">
+      <DependentUpon>DBBelegung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBBenutzer.resx">
+      <DependentUpon>DBBenutzer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBDokumente.resx">
+      <DependentUpon>DBDokumente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBEssen.resx">
+      <DependentUpon>DBEssen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBFormular.resx">
+      <DependentUpon>DBFormular.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBFormularDaten.resx">
+      <DependentUpon>DBFormularDaten.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBLinkDokumente.resx">
+      <DependentUpon>DBLinkDokumente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBMedikation.resx">
+      <DependentUpon>DBMedikation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBMedizinischeDaten.resx">
+      <DependentUpon>DBMedizinischeDaten.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBMedizinischeDatenLayout.resx">
+      <DependentUpon>DBMedizinischeDatenLayout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBMedizinischeTypen.resx">
+      <DependentUpon>DBMedizinischeTypen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBNachricht.resx">
+      <DependentUpon>DBNachricht.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBPatientAerzte.resx">
+      <DependentUpon>DBPatientAerzte.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBPrintPflegebericht.resx">
+      <DependentUpon>DBPrintPflegebericht.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBPrintZusatzwert.resx">
+      <DependentUpon>DBPrintZusatzwert.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBQuickFilter.resx">
+      <DependentUpon>DBQuickFilter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBQuickMeldung.resx">
+      <DependentUpon>DBQuickMeldung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBRezept.resx">
+      <DependentUpon>DBRezept.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBSP.resx">
+      <DependentUpon>DBSP.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBStandardProzeduren.resx">
+      <DependentUpon>DBStandardProzeduren.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBStandardzeiten.resx">
+      <DependentUpon>DBStandardzeiten.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBSturz.resx">
+      <DependentUpon>DBSturz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBTermine.resx">
+      <DependentUpon>DBTermine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBVerwaltung.resx">
+      <DependentUpon>DBVerwaltung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBWunde.resx">
+      <DependentUpon>DBWunde.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBZeitbereich.resx">
+      <DependentUpon>DBZeitbereich.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBZeitbereichSerien.resx">
+      <DependentUpon>DBZeitbereichSerien.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBZusatzEintrag.resx">
+      <DependentUpon>DBZusatzEintrag.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBZusatzGruppe.resx">
+      <DependentUpon>DBZusatzGruppe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DBZusatzWert.resx">
+      <DependentUpon>DBZusatzWert.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBAufenthaltZusatz.resx">
+      <DependentUpon>DBAufenthaltZusatz.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBKostentraeger.resx">
+      <DependentUpon>DBKostentraeger.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBLeistungskatalog.resx">
+      <DependentUpon>DBLeistungskatalog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBManBuchungen.resx">
+      <DependentUpon>DBManBuchungen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPatientAbwesenheit.resx">
+      <DependentUpon>DBPatientAbwesenheit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPatientEinkommen.resx">
+      <DependentUpon>DBPatientEinkommen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPatientKostentraeger.resx">
+      <DependentUpon>DBPatientKostentraeger.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPatientLeistungsplan.resx">
+      <DependentUpon>DBPatientLeistungsplan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPatientPflegestufe.resx">
+      <DependentUpon>DBPatientPflegestufe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPatientSonderleistung.resx">
+      <DependentUpon>DBPatientSonderleistung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPatientTaschengeldKostentraeger.resx">
+      <DependentUpon>DBPatientTaschengeldKostentraeger.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBPflegegeldstufe.resx">
+      <DependentUpon>DBPflegegeldstufe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBSonderleistungsKatalog.resx">
+      <DependentUpon>DBSonderleistungsKatalog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Global\DB_abrechnung\DBTaschengeld.resx">
+      <DependentUpon>DBTaschengeld.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBAbteilung.resx">
+      <DependentUpon>DBAbteilung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBAdresse.resx">
+      <DependentUpon>DBAdresse.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBAufenthalt.resx">
+      <DependentUpon>DBAufenthalt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBAufenthaltPDx.resx">
+      <DependentUpon>DBAufenthaltPDx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBAufenthaltVerlauf.resx">
+      <DependentUpon>DBAufenthaltVerlauf.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBBenutzerEinrichtung.resx">
+      <DependentUpon>DBBenutzerEinrichtung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBDienstZeiten.resx">
+      <DependentUpon>DBDienstZeiten.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBEinrichtung.resx">
+      <DependentUpon>DBEinrichtung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBGruppe.resx">
+      <DependentUpon>DBGruppe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBKlinik.resx">
+      <DependentUpon>DBKlinik.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBKlinikAbteilungen.resx">
+      <DependentUpon>DBKlinikAbteilungen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBKlinikBereiche.resx">
+      <DependentUpon>DBKlinikBereiche.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBKontakt.resx">
+      <DependentUpon>DBKontakt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBMassnahmenserien.resx">
+      <DependentUpon>DBMassnahmenserien.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBMedikament.resx">
+      <DependentUpon>DBMedikament.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBPatient.resx">
+      <DependentUpon>DBPatient.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBPatientenBemerkung.resx">
+      <DependentUpon>DBPatientenBemerkung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Patient\DBUrlaubVerlauf.resx">
+      <DependentUpon>DBUrlaubVerlauf.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBEintrag.resx">
+      <DependentUpon>DBEintrag.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBEintragStandardprozeduren.resx">
+      <DependentUpon>DBEintragStandardprozeduren.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBEintragZusatz.resx">
+      <DependentUpon>DBEintragZusatz.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBPDx.resx">
+      <DependentUpon>DBPDx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBPDxEintrag.resx">
+      <DependentUpon>DBPDxEintrag.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBPDXPflegemodelle.resx">
+      <DependentUpon>DBPDXPflegemodelle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBPflegeEintrag.resx">
+      <DependentUpon>DBPflegeEintrag.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBPflegemodelle.resx">
+      <DependentUpon>DBPflegemodelle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBPflegePlan.resx">
+      <DependentUpon>DBPflegePlan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBPflegePlanPDx.resx">
+      <DependentUpon>DBPflegePlanPDx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Pflegeplan\DBQM.resx">
+      <DependentUpon>DBQM.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\RBU\SingleTextEditForm.resx">
+      <DependentUpon>SingleTextEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="db\Sys\sqlSys.resx">
+      <DependentUpon>sqlSys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Befunde\contEdiFactViewer.resx">
+      <DependentUpon>contEdiFactViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Befunde\frmImportBefunde.resx">
+      <DependentUpon>frmImportBefunde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Befunde\frmEdiFactViewer.resx">
+      <DependentUpon>frmEdiFactViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ELGA\contCDAViewer.resx">
+      <DependentUpon>contCDAViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ELGA\frmCDAViewer.resx">
+      <DependentUpon>frmCDAViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmBase.resx">
+      <DependentUpon>frmBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMDSResource.resx">
+      <SubType>Designer</SubType>
+      <LastGenOutput>PMDSResource.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPDF.resx">
+      <DependentUpon>frmPDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPictureViewer.resx">
+      <DependentUpon>frmPictureViewer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\frmInfo.resx">
+      <DependentUpon>frmInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmInputText.resx">
+      <DependentUpon>frmInputText.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="print\frmPrintPreview.resx">
+      <DependentUpon>frmPrintPreview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMDS.Abrechnung.Logik\PMDS.Calc.Logic.vbproj">
+      <Project>{b339c14c-b89c-4089-97aa-81d118a737b4}</Project>
+      <Name>PMDS.Calc.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Desktop.Ressources.Auto10\QS2.Desktop.ControlManagment.vbproj">
+      <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
+      <Name>QS2.Desktop.ControlManagment</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pdx_Aszm\FormularGenLib\" />
+    <Folder Include="PMDSClient\UISitemap\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\ERSystem\dsAsyncCommData.xsc">
+      <DependentUpon>dsAsyncCommData.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsAsyncCommData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAsyncCommData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsAsyncCommData.xss">
+      <DependentUpon>dsAsyncCommData.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsDokumente2Abteilungen.xsc">
+      <DependentUpon>dsDokumente2Abteilungen.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsDokumente2Abteilungen.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDokumente2Abteilungen.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsDokumente2Abteilungen.xss">
+      <DependentUpon>dsDokumente2Abteilungen.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsFormular.xsc">
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsFormular.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFormular.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsFormular.xss">
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsKlient.xsc">
+      <DependentUpon>dsKlient.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsKlient.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKlient.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsKlient.xss">
+      <DependentUpon>dsKlient.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsManage.xsc">
+      <DependentUpon>dsManage.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsManage.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsManage.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsManage.xss">
+      <DependentUpon>dsManage.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsPlanungIntervention.xsc">
+      <DependentUpon>dsPlanungIntervention.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsPlanungIntervention.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPlanungIntervention.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsPlanungIntervention.xss">
+      <DependentUpon>dsPlanungIntervention.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsVO.xsc">
+      <DependentUpon>dsVO.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsVO.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVO.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsVO.xss">
+      <DependentUpon>dsVO.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKostentraeger.xsc">
+      <DependentUpon>dsKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKostentraeger.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKostentraeger.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKostentraeger.xss">
+      <DependentUpon>dsKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostentraeger.xsc">
+      <DependentUpon>dsPatientKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostentraeger.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientKostentraeger.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostentraeger.xss">
+      <DependentUpon>dsPatientKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\unwichtig\dsKlientenKostentraeger.xsc">
+      <DependentUpon>dsKlientenKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\unwichtig\dsKlientenKostentraeger.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKlientenKostentraeger.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\unwichtig\dsKlientenKostentraeger.xss">
+      <DependentUpon>dsKlientenKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\unwichtig\dsPatientKostentraegerByID.xsc">
+      <DependentUpon>dsPatientKostentraegerByID.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\unwichtig\dsPatientKostentraegerByID.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientKostentraegerByID1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\unwichtig\dsPatientKostentraegerByID.xss">
+      <DependentUpon>dsPatientKostentraegerByID.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientNichtAufgenommen.xsc">
+      <DependentUpon>dsPatientNichtAufgenommen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientNichtAufgenommen.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientNichtAufgenommen.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\Patient\dsPatientNichtAufgenommen.xss">
+      <DependentUpon>dsPatientNichtAufgenommen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Sys\dsRessourcenITSCont.xsc">
+      <DependentUpon>dsRessourcenITSCont.xsd</DependentUpon>
+    </None>
+    <None Include="db\Sys\dsRessourcenITSCont.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRessourcenITSCont.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\Sys\dsRessourcenITSCont.xss">
+      <DependentUpon>dsRessourcenITSCont.xsd</DependentUpon>
+    </None>
+    <None Include="Diagramm Main-Functions.cd" />
+    <None Include="db\ERSystem\dsKlientenliste.xsc">
+      <DependentUpon>dsKlientenliste.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsKlientenliste.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKlientenliste.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsKlientenliste.xss">
+      <DependentUpon>dsKlientenliste.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsTermine.xsc">
+      <DependentUpon>dsTermine.xsd</DependentUpon>
+    </None>
+    <None Include="db\ERSystem\dsTermine.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTermine.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\ERSystem\dsTermine.xss">
+      <DependentUpon>dsTermine.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsAerzte.xsc">
+      <DependentUpon>dsAerzte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsAerzte.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAerzte.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsAerzte.xss">
+      <DependentUpon>dsAerzte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsAlleKostF?rKlient.xsc">
+      <DependentUpon>dsAlleKostF?rKlient.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsAlleKostF?rKlient.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAlleKostF?rKlient.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsAlleKostF?rKlient.xss">
+      <DependentUpon>dsAlleKostF?rKlient.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsAuswahlGruppe.xsc">
+      <DependentUpon>dsAuswahlGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsAuswahlGruppe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>dsAuswahlGruppe.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\Global\dsAuswahlGruppe.xss">
+      <DependentUpon>dsAuswahlGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBank.xsc">
+      <DependentUpon>dsBank.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBank.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBank.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsBank.xss">
+      <DependentUpon>dsBank.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBeleg.xsc">
+      <DependentUpon>dsBeleg.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBeleg.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBeleg.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsBeleg.xss">
+      <DependentUpon>dsBeleg.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBelegung.xsc">
+      <DependentUpon>dsBelegung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBelegung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBelegung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsBelegung.xss">
+      <DependentUpon>dsBelegung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzer.xsc">
+      <DependentUpon>dsBenutzer.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzer.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBenutzer.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\Global\dsBenutzer.xss">
+      <DependentUpon>dsBenutzer.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzerAbteilung.xsc">
+      <DependentUpon>dsBenutzerAbteilung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzerAbteilung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBenutzerAbteilung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsBenutzerAbteilung.xss">
+      <DependentUpon>dsBenutzerAbteilung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzerBezug.xsc">
+      <DependentUpon>dsBenutzerBezug.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzerBezug.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBenutzerBezug.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsBenutzerBezug.xss">
+      <DependentUpon>dsBenutzerBezug.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzerGruppe.xsc">
+      <DependentUpon>dsBenutzerGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsBenutzerGruppe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBenutzerGruppe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsBenutzerGruppe.xss">
+      <DependentUpon>dsBenutzerGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsDatenQuellen.xsc">
+      <DependentUpon>dsDatenQuellen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsDatenQuellen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDatenQuellen.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsDatenQuellen.xss">
+      <DependentUpon>dsDatenQuellen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsDokumente.xsc">
+      <DependentUpon>dsDokumente.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsDokumente.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDokumente.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsDokumente.xss">
+      <DependentUpon>dsDokumente.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsEssen.xsc">
+      <DependentUpon>dsEssen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsEssen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEssen.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsEssen.xss">
+      <DependentUpon>dsEssen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsFormular.xsc">
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsFormular.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFormular.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsFormular.xss">
+      <DependentUpon>dsFormular.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsFormularDaten.xsc">
+      <DependentUpon>dsFormularDaten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsFormularDaten.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFormularDaten.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsFormularDaten.xss">
+      <DependentUpon>dsFormularDaten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsGUIDListe.xsc">
+      <DependentUpon>dsGUIDListe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsGUIDListe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsGUIDListe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsGUIDListe.xss">
+      <DependentUpon>dsGUIDListe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsGuidListeNoKey.xsc">
+      <DependentUpon>dsGuidListeNoKey.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsGuidListeNoKey.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsGuidListeNoKey.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsGuidListeNoKey.xss">
+      <DependentUpon>dsGuidListeNoKey.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsIDListe.xsc">
+      <DependentUpon>dsIDListe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsIDListe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsIDListe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsIDListe.xss">
+      <DependentUpon>dsIDListe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsIDTextBezeichnung.xsc">
+      <DependentUpon>dsIDTextBezeichnung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsIDTextBezeichnung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsIDTextBezeichnung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsIDTextBezeichnung.xss">
+      <DependentUpon>dsIDTextBezeichnung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsINTListe.xsc">
+      <DependentUpon>dsINTListe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsINTListe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsINTListe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsINTListe.xss">
+      <DependentUpon>dsINTListe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsKlientenListeByMedikament.xsc">
+      <DependentUpon>dsKlientenListeByMedikament.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsKlientenListeByMedikament.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKlientenListeByMedikament.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsKlientenListeByMedikament.xss">
+      <DependentUpon>dsKlientenListeByMedikament.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsLinkDokumente.xsc">
+      <DependentUpon>dsLinkDokumente.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsLinkDokumente.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsLinkDokumente.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsLinkDokumente.xss">
+      <DependentUpon>dsLinkDokumente.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedikationVonBis.xsc">
+      <DependentUpon>dsMedikationVonBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedikationVonBis.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMedikationVonBis.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsMedikationVonBis.xss">
+      <DependentUpon>dsMedikationVonBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedizinischeDaten.xsc">
+      <DependentUpon>dsMedizinischeDaten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedizinischeDaten.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMedizinischeDaten.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsMedizinischeDaten.xss">
+      <DependentUpon>dsMedizinischeDaten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedizinischeDatenLayout.xsc">
+      <DependentUpon>dsMedizinischeDatenLayout.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedizinischeDatenLayout.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMedizinischeDatenLayout.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsMedizinischeDatenLayout.xss">
+      <DependentUpon>dsMedizinischeDatenLayout.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedizinischeTypen.xsc">
+      <DependentUpon>dsMedizinischeTypen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsMedizinischeTypen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMedizinischeTypen.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsMedizinischeTypen.xss">
+      <DependentUpon>dsMedizinischeTypen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsNachricht.xsc">
+      <DependentUpon>dsNachricht.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsNachricht.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsNachricht.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsNachricht.xss">
+      <DependentUpon>dsNachricht.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientAerzte.xsc">
+      <DependentUpon>dsPatientAerzte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientAerzte.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientAerzte.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsPatientAerzte.xss">
+      <DependentUpon>dsPatientAerzte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientBankliste.xsc">
+      <DependentUpon>dsPatientBankliste.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientBankliste.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientBankliste.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsPatientBankliste.xss">
+      <DependentUpon>dsPatientBankliste.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientBereich.xsc">
+      <DependentUpon>dsPatientBereich.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientBereich.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientBereich.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.Patient</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsPatientBereich.xss">
+      <DependentUpon>dsPatientBereich.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientBewerber.xsc">
+      <DependentUpon>dsPatientBewerber.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPatientBewerber.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientBewerber.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsPatientBewerber.xss">
+      <DependentUpon>dsPatientBewerber.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPflgePlanZusatzGruppeEintrag.xsc">
+      <DependentUpon>dsPflgePlanZusatzGruppeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsPflgePlanZusatzGruppeEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflgePlanZusatzGruppeEintrag.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsPflgePlanZusatzGruppeEintrag.xss">
+      <DependentUpon>dsPflgePlanZusatzGruppeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsQuickFilter.xsc">
+      <DependentUpon>dsQuickFilter.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsQuickFilter.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsQuickFilter.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="db\Global\dsQuickFilter.xss">
+      <DependentUpon>dsQuickFilter.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsQuickMeldung.xsc">
+      <DependentUpon>dsQuickMeldung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsQuickMeldung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsQuickMeldung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsQuickMeldung.xss">
+      <DependentUpon>dsQuickMeldung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepAufgabe.xsc">
+      <DependentUpon>dsRepAufgabe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepAufgabe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRepAufgabe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRepAufgabe.xss">
+      <DependentUpon>dsRepAufgabe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepMedikamentenBlatt.xsc">
+      <DependentUpon>dsRepMedikamentenBlatt.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepMedikamentenBlatt.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRepMedikamentenBlatt.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRepMedikamentenBlatt.xss">
+      <DependentUpon>dsRepMedikamentenBlatt.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepPflegebericht.xsc">
+      <DependentUpon>dsRepPflegebericht.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepPflegebericht.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRepPflegebericht.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRepPflegebericht.xss">
+      <DependentUpon>dsRepPflegebericht.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepPflegebrief.xsc">
+      <DependentUpon>dsRepPflegebrief.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepPflegebrief.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRepPflegebrief.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRepPflegebrief.xss">
+      <DependentUpon>dsRepPflegebrief.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepZusatzWert.xsc">
+      <DependentUpon>dsRepZusatzWert.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRepZusatzWert.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRepZusatzWert.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRepZusatzWert.xss">
+      <DependentUpon>dsRepZusatzWert.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRezept.xsc">
+      <DependentUpon>dsRezept.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRezept.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRezept.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRezept.xss">
+      <DependentUpon>dsRezept.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRezeptEintrag.xsc">
+      <DependentUpon>dsRezeptEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRezeptEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRezeptEintrag.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRezeptEintrag.xss">
+      <DependentUpon>dsRezeptEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRowLayout.xsc">
+      <DependentUpon>dsRowLayout.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsRowLayout.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRowLayout.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsRowLayout.xss">
+      <DependentUpon>dsRowLayout.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsSP.xsc">
+      <DependentUpon>dsSP.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsSP.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSP.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsSP.xss">
+      <DependentUpon>dsSP.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsStandardProzeduren.xsc">
+      <DependentUpon>dsStandardProzeduren.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsStandardProzeduren.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsStandardProzeduren.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsStandardProzeduren.xss">
+      <DependentUpon>dsStandardProzeduren.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsStandardZeiten.xsc">
+      <DependentUpon>dsStandardZeiten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsStandardZeiten.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsStandardZeiten.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsStandardZeiten.xss">
+      <DependentUpon>dsStandardZeiten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsVerwaltung.xsc">
+      <DependentUpon>dsVerwaltung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsVerwaltung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVerwaltung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsVerwaltung.xss">
+      <DependentUpon>dsVerwaltung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsWunde.xsc">
+      <DependentUpon>dsWunde.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsWunde.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsWunde.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsWunde.xss">
+      <DependentUpon>dsWunde.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZeitbereich.xsc">
+      <DependentUpon>dsZeitbereich.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZeitbereich.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZeitbereich.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZeitbereich.xss">
+      <DependentUpon>dsZeitbereich.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZeitbereichSerien.xsc">
+      <DependentUpon>dsZeitbereichSerien.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZeitbereichSerien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZeitbereichSerien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZeitbereichSerien.xss">
+      <DependentUpon>dsZeitbereichSerien.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzEintrag.xsc">
+      <DependentUpon>dsZusatzEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZusatzEintrag.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZusatzEintrag.xss">
+      <DependentUpon>dsZusatzEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzGruppe.xsc">
+      <DependentUpon>dsZusatzGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzGruppe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZusatzGruppe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZusatzGruppe.xss">
+      <DependentUpon>dsZusatzGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzGruppeEintrag.xsc">
+      <DependentUpon>dsZusatzGruppeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzGruppeEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZusatzGruppeEintrag.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZusatzGruppeEintrag.xss">
+      <DependentUpon>dsZusatzGruppeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzVerlauf.xsc">
+      <DependentUpon>dsZusatzVerlauf.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzVerlauf.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZusatzVerlauf.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZusatzVerlauf.xss">
+      <DependentUpon>dsZusatzVerlauf.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzVerlaufAll.xsc">
+      <DependentUpon>dsZusatzVerlaufAll.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzVerlaufAll.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZusatzVerlaufAll.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZusatzVerlaufAll.xss">
+      <DependentUpon>dsZusatzVerlaufAll.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzWert.xsc">
+      <DependentUpon>dsZusatzWert.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\dsZusatzWert.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZusatzWert.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\dsZusatzWert.xss">
+      <DependentUpon>dsZusatzWert.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsAufenthaltZusatz.xsc">
+      <DependentUpon>dsAufenthaltZusatz.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsAufenthaltZusatz.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAufenthaltZusatz.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsAufenthaltZusatz.xss">
+      <DependentUpon>dsAufenthaltZusatz.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsInfo.xsc">
+      <DependentUpon>dsInfo.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsInfo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInfo.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsInfo.xss">
+      <DependentUpon>dsInfo.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKlientenSelAbrechDepot.xsc">
+      <DependentUpon>dsKlientenSelAbrechDepot.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKlientenSelAbrechDepot.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKlientenSelAbrechDepot.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKlientenSelAbrechDepot.xss">
+      <DependentUpon>dsKlientenSelAbrechDepot.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKlientenTaschengeld.xsc">
+      <DependentUpon>dsKlientenTaschengeld.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKlientenTaschengeld.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKlientenTaschengeld.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsKlientenTaschengeld.xss">
+      <DependentUpon>dsKlientenTaschengeld.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsLeistungskatalog.xsc">
+      <DependentUpon>dsLeistungskatalog.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsLeistungskatalog.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsLeistungskatalog.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsLeistungskatalog.xss">
+      <DependentUpon>dsLeistungskatalog.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsManBuch.xsc">
+      <DependentUpon>dsManBuch.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsManBuch.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsManBuch.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsManBuch.xss">
+      <DependentUpon>dsManBuch.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientAbwesenheit.xsc">
+      <DependentUpon>dsPatientAbwesenheit.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientAbwesenheit.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientAbwesenheit.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientAbwesenheit.xss">
+      <DependentUpon>dsPatientAbwesenheit.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientEinkommen.xsc">
+      <DependentUpon>dsPatientEinkommen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientEinkommen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientEinkommen.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientEinkommen.xss">
+      <DependentUpon>dsPatientEinkommen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostentr?gerG?ltigBis.xsc">
+      <DependentUpon>dsPatientKostentr?gerG?ltigBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostentr?gerG?ltigBis.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientKostentr?gerG?ltigBis.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostentr?gerG?ltigBis.xss">
+      <DependentUpon>dsPatientKostentr?gerG?ltigBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplan.xsc">
+      <DependentUpon>dsPatientLeistungsplan.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplan.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientLeistungsplan.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplan.xss">
+      <DependentUpon>dsPatientLeistungsplan.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanG?ltigBis.xsc">
+      <DependentUpon>dsPatientLeistungsplanG?ltigBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanG?ltigBis.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientLeistungsplanG?ltigBis.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanG?ltigBis.xss">
+      <DependentUpon>dsPatientLeistungsplanG?ltigBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientPflegestufe.xsc">
+      <DependentUpon>dsPatientPflegestufe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientPflegestufe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientPflegestufe.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientPflegestufe.xss">
+      <DependentUpon>dsPatientPflegestufe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientSonderleistung.xsc">
+      <DependentUpon>dsPatientSonderleistung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientSonderleistung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientSonderleistung.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientSonderleistung.xss">
+      <DependentUpon>dsPatientSonderleistung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraeger.xsc">
+      <DependentUpon>dsPatientTaschengeldKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraeger.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientTaschengeldKostentraeger.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraeger.xss">
+      <DependentUpon>dsPatientTaschengeldKostentraeger.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerG?ltigBis.xsc">
+      <DependentUpon>dsPatientTaschengeldKostentraegerG?ltigBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerG?ltigBis.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientTaschengeldKostentraegerG?ltigBis.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerG?ltigBis.xss">
+      <DependentUpon>dsPatientTaschengeldKostentraegerG?ltigBis.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPflegegeldstufe.xsc">
+      <DependentUpon>dsPflegegeldstufe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPflegegeldstufe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegegeldstufe.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPflegegeldstufe.xss">
+      <DependentUpon>dsPflegegeldstufe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPrintTaschengeld.xsc">
+      <DependentUpon>dsPrintTaschengeld.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPrintTaschengeld.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPrintTaschengeld.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsPrintTaschengeld.xss">
+      <DependentUpon>dsPrintTaschengeld.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsSonderleistungsKatalog.xsc">
+      <DependentUpon>dsSonderleistungsKatalog.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsSonderleistungsKatalog.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSonderleistungsKatalog.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Abrechnung.Global</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsSonderleistungsKatalog.xss">
+      <DependentUpon>dsSonderleistungsKatalog.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsTaschengeld.xsc">
+      <DependentUpon>dsTaschengeld.xsd</DependentUpon>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsTaschengeld.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTaschengeld.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Global\ds_abrechnung\dsTaschengeld.xss">
+      <DependentUpon>dsTaschengeld.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAbteilung.xsc">
+      <DependentUpon>dsAbteilung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAbteilung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAbteilung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsAbteilung.xss">
+      <DependentUpon>dsAbteilung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAdresse.xsc">
+      <DependentUpon>dsAdresse.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAdresse.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAdresse.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsAdresse.xss">
+      <DependentUpon>dsAdresse.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAnamnesen.xsc">
+      <DependentUpon>dsAnamnesen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAnamnesen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAnamnesen.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsAnamnesen.xss">
+      <DependentUpon>dsAnamnesen.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAufenthalt.xsc">
+      <DependentUpon>dsAufenthalt.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAufenthalt.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAufenthalt.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.Patient</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsAufenthalt.xss">
+      <DependentUpon>dsAufenthalt.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAufenthaltPDx.xsc">
+      <DependentUpon>dsAufenthaltPDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAufenthaltPDx.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAufenthaltPDx.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.Patient</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsAufenthaltPDx.xss">
+      <DependentUpon>dsAufenthaltPDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAufenthaltVerlauf.xsc">
+      <DependentUpon>dsAufenthaltVerlauf.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsAufenthaltVerlauf.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAufenthaltVerlauf.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsAufenthaltVerlauf.xss">
+      <DependentUpon>dsAufenthaltVerlauf.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsBenutzerEinrichtung.xsc">
+      <DependentUpon>dsBenutzerEinrichtung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsBenutzerEinrichtung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBenutzerEinrichtung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsBenutzerEinrichtung.xss">
+      <DependentUpon>dsBenutzerEinrichtung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsBereich.xsc">
+      <DependentUpon>dsBereich.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsBereich.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsBereich.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsBereich.xss">
+      <DependentUpon>dsBereich.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsDienstZeiten.xsc">
+      <DependentUpon>dsDienstZeiten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsDienstZeiten.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDienstZeiten.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsDienstZeiten.xss">
+      <DependentUpon>dsDienstZeiten.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsEinrichtung.xsc">
+      <DependentUpon>dsEinrichtung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsEinrichtung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEinrichtung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsEinrichtung.xss">
+      <DependentUpon>dsEinrichtung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsGruppe.xsc">
+      <DependentUpon>dsGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsGruppe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsGruppe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsGruppe.xss">
+      <DependentUpon>dsGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsGruppenRecht.xsc">
+      <DependentUpon>dsGruppenRecht.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsGruppenRecht.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsGruppenRecht.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsGruppenRecht.xss">
+      <DependentUpon>dsGruppenRecht.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsKlinik.xsc">
+      <DependentUpon>dsKlinik.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsKlinik.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKlinik.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsKlinik.xss">
+      <DependentUpon>dsKlinik.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsKontakt.xsc">
+      <DependentUpon>dsKontakt.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsKontakt.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsKontakt.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsKontakt.xss">
+      <DependentUpon>dsKontakt.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsMassnahmenserien.xsc">
+      <DependentUpon>dsMassnahmenserien.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsMassnahmenserien.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMassnahmenserien.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsMassnahmenserien.xss">
+      <DependentUpon>dsMassnahmenserien.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsMedikament.xsc">
+      <DependentUpon>dsMedikament.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsMedikament.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMedikament.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsMedikament.xss">
+      <DependentUpon>dsMedikament.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatient.xsc">
+      <DependentUpon>dsPatient.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatient.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatient.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsPatient.xss">
+      <DependentUpon>dsPatient.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientenBemerkung.xsc">
+      <DependentUpon>dsPatientenBemerkung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientenBemerkung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientenBemerkung.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsPatientenBemerkung.xss">
+      <DependentUpon>dsPatientenBemerkung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientFoto.xsc">
+      <DependentUpon>dsPatientFoto.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientFoto.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientFoto.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsPatientFoto.xss">
+      <DependentUpon>dsPatientFoto.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientName.xsc">
+      <DependentUpon>dsPatientName.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientName.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientName.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsPatientName.xss">
+      <DependentUpon>dsPatientName.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientStation.xsc">
+      <DependentUpon>dsPatientStation.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientStation.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientStation.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsPatientStation.xss">
+      <DependentUpon>dsPatientStation.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientZusa?tzlicheDatenByID.xsc">
+      <DependentUpon>dsPatientZusa?tzlicheDatenByID.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsPatientZusa?tzlicheDatenByID.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPatientZusa?tzlicheDatenByID.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsPatientZusa?tzlicheDatenByID.xss">
+      <DependentUpon>dsPatientZusa?tzlicheDatenByID.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsRezeptBestellung.xsc">
+      <DependentUpon>dsRezeptBestellung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsRezeptBestellung.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRezeptBestellung.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.Patient</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsRezeptBestellung.xss">
+      <DependentUpon>dsRezeptBestellung.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsUrlaubVerlauf.xsc">
+      <DependentUpon>dsUrlaubVerlauf.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsUrlaubVerlauf.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUrlaubVerlauf.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsUrlaubVerlauf.xss">
+      <DependentUpon>dsUrlaubVerlauf.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsVitalwerte.xsc">
+      <DependentUpon>dsVitalwerte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Patient\dsVitalwerte.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsVitalwerte.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Patient\dsVitalwerte.xss">
+      <DependentUpon>dsVitalwerte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsEintrag.xsc">
+      <DependentUpon>dsEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEintrag.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsEintrag.xss">
+      <DependentUpon>dsEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsEintragStandardprozeduren.xsc">
+      <DependentUpon>dsEintragStandardprozeduren.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsEintragStandardprozeduren.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEintragStandardprozeduren.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsEintragStandardprozeduren.xss">
+      <DependentUpon>dsEintragStandardprozeduren.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsEintragZusatz.xsc">
+      <DependentUpon>dsEintragZusatz.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsEintragZusatz.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEintragZusatz.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsEintragZusatz.xss">
+      <DependentUpon>dsEintragZusatz.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDx.xsc">
+      <DependentUpon>dsPDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDx.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPDx.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPDx.xss">
+      <DependentUpon>dsPDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxEintraege.xsc">
+      <DependentUpon>dsPDxEintraege.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxEintraege.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPDxEintraege.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.PflegePlan</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxEintraege.xss">
+      <DependentUpon>dsPDxEintraege.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxEintrag.xsc">
+      <DependentUpon>dsPDxEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPDxEintrag.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxEintrag.xss">
+      <DependentUpon>dsPDxEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxGruppe.xsc">
+      <DependentUpon>dsPDxGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxGruppe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPDxGruppe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxGruppe.xss">
+      <DependentUpon>dsPDxGruppe.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxGruppeEintrag.xsc">
+      <DependentUpon>dsPDxGruppeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxGruppeEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPDxGruppeEintrag.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxGruppeEintrag.xss">
+      <DependentUpon>dsPDxGruppeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDXPflegemodelle.xsc">
+      <DependentUpon>dsPDXPflegemodelle.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDXPflegemodelle.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPDXPflegemodelle.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPDXPflegemodelle.xss">
+      <DependentUpon>dsPDXPflegemodelle.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxText.xsc">
+      <DependentUpon>dsPDxText.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxText.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPDxText.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPDxText.xss">
+      <DependentUpon>dsPDxText.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegeEintrag.xsc">
+      <DependentUpon>dsPflegeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegeEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegeEintrag.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.PflegePlan</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegeEintrag.xss">
+      <DependentUpon>dsPflegeEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegemodelle.xsc">
+      <DependentUpon>dsPflegemodelle.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegemodelle.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegemodelle.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegemodelle.xss">
+      <DependentUpon>dsPflegemodelle.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlan.xsc">
+      <DependentUpon>dsPflegePlan.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlan.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegePlan.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.PflegePlan</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlan.xss">
+      <DependentUpon>dsPflegePlan.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanH.xsc">
+      <DependentUpon>dsPflegePlanH.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanH.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegePlanH.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PMDS.Data.PflegePlan</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanH.xss">
+      <DependentUpon>dsPflegePlanH.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanPDx.xsc">
+      <DependentUpon>dsPflegePlanPDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanPDx.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegePlanPDx.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanPDx.xss">
+      <DependentUpon>dsPflegePlanPDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanZeitpunkte.xsc">
+      <DependentUpon>dsPflegePlanZeitpunkte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanZeitpunkte.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegePlanZeitpunkte.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanZeitpunkte.xss">
+      <DependentUpon>dsPflegePlanZeitpunkte.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanZusatzEintraege.xsc">
+      <DependentUpon>dsPflegePlanZusatzEintraege.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanZusatzEintraege.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPflegePlanZusatzEintraege.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsPflegePlanZusatzEintraege.xss">
+      <DependentUpon>dsPflegePlanZusatzEintraege.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsZielePDx.xsc">
+      <DependentUpon>dsZielePDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsZielePDx.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZielePDx.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsZielePDx.xss">
+      <DependentUpon>dsZielePDx.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsZusatzwerteForEintrag.xsc">
+      <DependentUpon>dsZusatzwerteForEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="db\Pflegeplan\dsZusatzwerteForEintrag.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsZusatzwerteForEintrag.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db\Pflegeplan\dsZusatzwerteForEintrag.xss">
+      <DependentUpon>dsZusatzwerteForEintrag.xsd</DependentUpon>
+    </None>
+    <None Include="KlientByKostentr?ger.xsc">
+      <DependentUpon>KlientByKostentr?ger.xsd</DependentUpon>
+    </None>
+    <None Include="KlientByKostentr?ger.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KlientByKostentr?ger.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KlientByKostentr?ger.xss">
+      <DependentUpon>KlientByKostentr?ger.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\Befunde\dsEDIFACT.xsc">
+      <DependentUpon>dsEDIFACT.xsd</DependentUpon>
+    </None>
+    <None Include="UI\Befunde\dsEDIFACT.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEDIFACT.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="UI\Befunde\dsEDIFACT.xss">
+      <DependentUpon>dsEDIFACT.xsd</DependentUpon>
+    </None>
+    <None Include="Web References\BIDS_EDIService\BIDS_EDIService.wsdl" />
+    <None Include="Web References\BIDS_EDIService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://195.64.10.25/BIDS_EDIService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\BIDS_EDIService\</RelPath>
+      <UpdateFromURL>https://195.64.10.25/BIDS_EDIService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PMDS_Core_BIDS_EDIService_BIDS_EDI_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "ls '$(SolutionDir)\packages\GhostScriptSharp.*\Tools\gsdll32.dll' | Sort -Descending | Select -First 1 | cp -Destination '$(TargetDir)'; exit 0"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

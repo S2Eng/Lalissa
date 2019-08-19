@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsBereich" targetNamespace="http://www.tempuri.org/dsBereich.xsd" xmlns:mstns="http://www.tempuri.org/dsBereich.xsd" xmlns="http://www.tempuri.org/dsBereich.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsBereich" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsBereich" msprop:Generator_UserDSName="dsBereich">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Bereich" msprop:Generator_TableClassName="BereichDataTable" msprop:Generator_RowEvArgName="BereichRowChangeEvent" msprop:Generator_TablePropName="Bereich" msprop:Generator_TableVarName="tableBereich" msprop:Generator_RowEvHandlerName="BereichRowChangeEventHandler" msprop:Generator_RowDeletingName="BereichRowDeleting" msprop:Generator_RowChangingName="BereichRowChanging" msprop:Generator_RowDeletedName="BereichRowDeleted" msprop:Generator_UserTableName="Bereich" msprop:Generator_RowChangedName="BereichRowChanged" msprop:Generator_RowClassName="BereichRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" msprop:Generator_UserColumnName="IDAbteilung" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBereich" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBereich" msprop:Generator_ColumnPropNameInRow="IDBereich" msprop:Generator_ColumnPropNameInTable="IDBereichColumn" msprop:Generator_UserColumnName="IDBereich" type="xs:string" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" minOccurs="0" />
+              <xs:element name="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" msprop:Generator_UserColumnName="Reihenfolge" type="xs:int" minOccurs="0" />
+              <xs:element name="Bereichstyp" msprop:Generator_ColumnVarNameInTable="columnBereichstyp" msprop:Generator_ColumnPropNameInRow="Bereichstyp" msprop:Generator_ColumnPropNameInTable="BereichstypColumn" msprop:Generator_UserColumnName="Bereichstyp">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnzahlBetten" msprop:Generator_ColumnVarNameInTable="columnAnzahlBetten" msprop:Generator_ColumnPropNameInRow="AnzahlBetten" msprop:Generator_ColumnPropNameInTable="AnzahlBettenColumn" msprop:Generator_UserColumnName="AnzahlBetten" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Bereich" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

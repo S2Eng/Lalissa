@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPflegePlanZeitpunkte" targetNamespace="http://tempuri.org/dsPflegePlanZeitpunkte.xsd" xmlns:mstns="http://tempuri.org/dsPflegePlanZeitpunkte.xsd" xmlns="http://tempuri.org/dsPflegePlanZeitpunkte.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPflegePlanZeitpunkte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPflegePlanZeitpunkte" msprop:Generator_DataSetName="dsPflegePlanZeitpunkte">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PflegePlanZeitpunkte" msprop:Generator_UserTableName="PflegePlanZeitpunkte" msprop:Generator_RowDeletedName="PflegePlanZeitpunkteRowDeleted" msprop:Generator_RowChangedName="PflegePlanZeitpunkteRowChanged" msprop:Generator_RowClassName="PflegePlanZeitpunkteRow" msprop:Generator_RowChangingName="PflegePlanZeitpunkteRowChanging" msprop:Generator_RowEvArgName="PflegePlanZeitpunkteRowChangeEvent" msprop:Generator_RowEvHandlerName="PflegePlanZeitpunkteRowChangeEventHandler" msprop:Generator_TableClassName="PflegePlanZeitpunkteDataTable" msprop:Generator_TableVarName="tablePflegePlanZeitpunkte" msprop:Generator_RowDeletingName="PflegePlanZeitpunkteRowDeleting" msprop:Generator_TablePropName="PflegePlanZeitpunkte">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDpflegePlan" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDpflegePlan" msprop:Generator_ColumnPropNameInRow="IDpflegePlan" msprop:Generator_ColumnVarNameInTable="columnIDpflegePlan" msprop:Generator_ColumnPropNameInTable="IDpflegePlanColumn" type="xs:string" />
+              <xs:element name="Zeitpunkt" msprop:Generator_UserColumnName="Zeitpunkt" msprop:Generator_ColumnVarNameInTable="columnZeitpunkt" msprop:Generator_ColumnPropNameInRow="Zeitpunkt" msprop:Generator_ColumnPropNameInTable="ZeitpunktColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDZeitbereich" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich" msprop:Generator_ColumnPropNameInRow="IDZeitbereich" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich" msprop:Generator_ColumnPropNameInTable="IDZeitbereichColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Anmerkung" msprop:Generator_UserColumnName="Anmerkung" msprop:Generator_ColumnVarNameInTable="columnAnmerkung" msprop:Generator_ColumnPropNameInRow="Anmerkung" msprop:Generator_ColumnPropNameInTable="AnmerkungColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

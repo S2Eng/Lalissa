@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTaschengeld" targetNamespace="http://tempuri.org/dsTaschengeld.xsd" xmlns:mstns="http://tempuri.org/dsTaschengeld.xsd" xmlns="http://tempuri.org/dsTaschengeld.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTaschengeld" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsTaschengeld" msprop:Generator_UserDSName="dsTaschengeld">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Taschengeld" msprop:Generator_UserTableName="Taschengeld" msprop:Generator_RowEvArgName="TaschengeldRowChangeEvent" msprop:Generator_TableVarName="tableTaschengeld" msprop:Generator_TablePropName="Taschengeld" msprop:Generator_RowDeletingName="TaschengeldRowDeleting" msprop:Generator_RowChangingName="TaschengeldRowChanging" msprop:Generator_RowDeletedName="TaschengeldRowDeleted" msprop:Generator_TableClassName="TaschengeldDataTable" msprop:Generator_RowChangedName="TaschengeldRowChanged" msprop:Generator_RowEvHandlerName="TaschengeldRowChangeEventHandler" msprop:Generator_RowClassName="TaschengeldRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzerdurchgefuehrt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzerdurchgefuehrt" msprop:Generator_ColumnPropNameInRow="IDBenutzerdurchgefuehrt" msprop:Generator_ColumnPropNameInTable="IDBenutzerdurchgefuehrtColumn" msprop:Generator_UserColumnName="IDBenutzerdurchgefuehrt" type="xs:string" minOccurs="0" />
+              <xs:element name="BelegNr" msprop:Generator_ColumnVarNameInTable="columnBelegNr" msprop:Generator_ColumnPropNameInRow="BelegNr" msprop:Generator_ColumnPropNameInTable="BelegNrColumn" msprop:Generator_UserColumnName="BelegNr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Datum" msprop:Generator_ColumnVarNameInTable="columnDatum" msprop:Generator_ColumnPropNameInRow="Datum" msprop:Generator_ColumnPropNameInTable="DatumColumn" msprop:Generator_UserColumnName="Datum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Grund" msprop:Generator_ColumnVarNameInTable="columnGrund" msprop:Generator_ColumnPropNameInRow="Grund" msprop:Generator_ColumnPropNameInTable="GrundColumn" msprop:Generator_UserColumnName="Grund" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Einzahlung" msprop:Generator_ColumnVarNameInTable="columnEinzahlung" msprop:Generator_ColumnPropNameInRow="Einzahlung" msprop:Generator_ColumnPropNameInTable="EinzahlungColumn" msprop:Generator_UserColumnName="Einzahlung" type="xs:double" minOccurs="0" />
+              <xs:element name="Auszahlung" msprop:Generator_ColumnVarNameInTable="columnAuszahlung" msprop:Generator_ColumnPropNameInRow="Auszahlung" msprop:Generator_ColumnPropNameInTable="AuszahlungColumn" msprop:Generator_UserColumnName="Auszahlung" type="xs:double" minOccurs="0" />
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:double" minOccurs="0" />
+              <xs:element name="Lieferant" msprop:Generator_ColumnVarNameInTable="columnLieferant" msprop:Generator_ColumnPropNameInRow="Lieferant" msprop:Generator_ColumnPropNameInTable="LieferantColumn" msprop:Generator_UserColumnName="Lieferant" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bemerkung" msprop:Generator_ColumnVarNameInTable="columnBemerkung" msprop:Generator_ColumnPropNameInRow="Bemerkung" msprop:Generator_ColumnPropNameInTable="BemerkungColumn" msprop:Generator_UserColumnName="Bemerkung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Zahlart" msprop:Generator_ColumnVarNameInTable="columnZahlart" msprop:Generator_ColumnPropNameInRow="Zahlart" msprop:Generator_ColumnPropNameInTable="ZahlartColumn" msprop:Generator_UserColumnName="Zahlart" type="xs:int" minOccurs="0" />
+              <xs:element name="AbgerechnetJN" msprop:Generator_ColumnVarNameInTable="columnAbgerechnetJN" msprop:Generator_ColumnPropNameInRow="AbgerechnetJN" msprop:Generator_ColumnPropNameInTable="AbgerechnetJNColumn" msprop:Generator_UserColumnName="AbgerechnetJN" type="xs:boolean" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Taschengeld" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

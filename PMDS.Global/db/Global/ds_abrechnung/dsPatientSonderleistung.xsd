@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientSonderleistung" targetNamespace="http://tempuri.org/dsPatientSonderleistung.xsd" xmlns:mstns="http://tempuri.org/dsPatientSonderleistung.xsd" xmlns="http://tempuri.org/dsPatientSonderleistung.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.S2STY002\TEST.PMDS_Hall" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientSonderleistung" msdata:IsDataSet="true" msdata:Locale="en-US" msprop:Generator_DataSetName="dsPatientSonderleistung" msprop:Generator_UserDSName="dsPatientSonderleistung">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PatientSonderleistung" msprop:Generator_TableClassName="PatientSonderleistungDataTable" msprop:Generator_RowEvArgName="PatientSonderleistungRowChangeEvent" msprop:Generator_TableVarName="tablePatientSonderleistung" msprop:Generator_TablePropName="PatientSonderleistung" msprop:Generator_RowDeletingName="PatientSonderleistungRowDeleting" msprop:Generator_UserTableName="PatientSonderleistung" msprop:Generator_RowChangingName="PatientSonderleistungRowChanging" msprop:Generator_RowDeletedName="PatientSonderleistungRowDeleted" msprop:Generator_RowChangedName="PatientSonderleistungRowChanged" msprop:Generator_RowEvHandlerName="PatientSonderleistungRowChangeEventHandler" msprop:Generator_RowClassName="PatientSonderleistungRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Anzahl" msprop:Generator_ColumnVarNameInTable="columnAnzahl" msprop:Generator_ColumnPropNameInRow="Anzahl" msprop:Generator_ColumnPropNameInTable="AnzahlColumn" msprop:Generator_UserColumnName="Anzahl" type="xs:int" />
+              <xs:element name="Betrag" msprop:Generator_ColumnVarNameInTable="columnBetrag" msprop:Generator_ColumnPropNameInRow="Betrag" msprop:Generator_ColumnPropNameInTable="BetragColumn" msprop:Generator_UserColumnName="Betrag" type="xs:decimal" minOccurs="0" />
+              <xs:element name="MWST" msprop:Generator_ColumnVarNameInTable="columnMWST" msprop:Generator_ColumnPropNameInRow="MWST" msprop:Generator_ColumnPropNameInTable="MWSTColumn" msprop:Generator_UserColumnName="MWST" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Datum" msprop:Generator_ColumnVarNameInTable="columnDatum" msprop:Generator_ColumnPropNameInRow="Datum" msprop:Generator_ColumnPropNameInTable="DatumColumn" msprop:Generator_UserColumnName="Datum" type="xs:dateTime" />
+              <xs:element name="AbgerechnetJN" msprop:Generator_ColumnVarNameInTable="columnAbgerechnetJN" msprop:Generator_ColumnPropNameInRow="AbgerechnetJN" msprop:Generator_ColumnPropNameInTable="AbgerechnetJNColumn" msprop:Generator_UserColumnName="AbgerechnetJN" type="xs:boolean" />
+              <xs:element name="IDSonderleistungskatalog" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDSonderleistungskatalog" msprop:Generator_ColumnPropNameInRow="IDSonderleistungskatalog" msprop:Generator_ColumnPropNameInTable="IDSonderleistungskatalogColumn" msprop:Generator_UserColumnName="IDSonderleistungskatalog" type="xs:string" minOccurs="0" />
+              <xs:element name="Belegnummer" msprop:Generator_ColumnVarNameInTable="columnBelegnummer" msprop:Generator_ColumnPropNameInRow="Belegnummer" msprop:Generator_ColumnPropNameInTable="BelegnummerColumn" msprop:Generator_UserColumnName="Belegnummer">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JahrAbrechnung" msprop:Generator_ColumnVarNameInTable="columnJahrAbrechnung" msprop:Generator_ColumnPropNameInRow="JahrAbrechnung" msprop:Generator_ColumnPropNameInTable="JahrAbrechnungColumn" msprop:Generator_UserColumnName="JahrAbrechnung" type="xs:int" minOccurs="0" />
+              <xs:element name="MonatAbrechnung" msprop:Generator_ColumnVarNameInTable="columnMonatAbrechnung" msprop:Generator_ColumnPropNameInRow="MonatAbrechnung" msprop:Generator_ColumnPropNameInTable="MonatAbrechnungColumn" msprop:Generator_UserColumnName="MonatAbrechnung" type="xs:int" minOccurs="0" />
+              <xs:element name="EinzelPreis" msprop:Generator_ColumnVarNameInTable="columnEinzelPreis" msprop:Generator_ColumnPropNameInRow="EinzelPreis" msprop:Generator_ColumnPropNameInTable="EinzelPreisColumn" msprop:Generator_UserColumnName="EinzelPreis" type="xs:double" minOccurs="0" />
+              <xs:element name="datumVerrech" msprop:Generator_ColumnVarNameInTable="columndatumVerrech" msprop:Generator_ColumnPropNameInRow="datumVerrech" msprop:Generator_ColumnPropNameInTable="datumVerrechColumn" msprop:Generator_UserColumnName="datumVerrech" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PatientSonderleistung" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

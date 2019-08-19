@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsZusatzGruppeEintrag" targetNamespace="http://www.tempuri.org/dsZusatzGruppeEintrag.xsd" xmlns:mstns="http://www.tempuri.org/dsZusatzGruppeEintrag.xsd" xmlns="http://www.tempuri.org/dsZusatzGruppeEintrag.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsZusatzGruppeEintrag" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_UserDSName="dsZusatzGruppeEintrag" msprop:Generator_DataSetName="dsZusatzGruppeEintrag">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ZusatzGruppeEintrag" msprop:Generator_UserTableName="ZusatzGruppeEintrag" msprop:Generator_RowDeletedName="ZusatzGruppeEintragRowDeleted" msprop:Generator_TableClassName="ZusatzGruppeEintragDataTable" msprop:Generator_RowChangedName="ZusatzGruppeEintragRowChanged" msprop:Generator_RowClassName="ZusatzGruppeEintragRow" msprop:Generator_RowChangingName="ZusatzGruppeEintragRowChanging" msprop:Generator_RowEvArgName="ZusatzGruppeEintragRowChangeEvent" msprop:Generator_RowEvHandlerName="ZusatzGruppeEintragRowChangeEventHandler" msprop:Generator_TablePropName="ZusatzGruppeEintrag" msprop:Generator_TableVarName="tableZusatzGruppeEintrag" msprop:Generator_RowDeletingName="ZusatzGruppeEintragRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDZusatzGruppe" msprop:Generator_UserColumnName="IDZusatzGruppe" msprop:Generator_ColumnPropNameInRow="IDZusatzGruppe" msprop:Generator_ColumnVarNameInTable="columnIDZusatzGruppe" msprop:Generator_ColumnPropNameInTable="IDZusatzGruppeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZusatzEintrag" msprop:Generator_UserColumnName="IDZusatzEintrag" msprop:Generator_ColumnPropNameInRow="IDZusatzEintrag" msprop:Generator_ColumnVarNameInTable="columnIDZusatzEintrag" msprop:Generator_ColumnPropNameInTable="IDZusatzEintragColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDObjekt" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDObjekt" msprop:Generator_ColumnPropNameInRow="IDObjekt" msprop:Generator_ColumnVarNameInTable="columnIDObjekt" msprop:Generator_ColumnPropNameInTable="IDObjektColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDFilter" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDFilter" msprop:Generator_ColumnPropNameInRow="IDFilter" msprop:Generator_ColumnVarNameInTable="columnIDFilter" msprop:Generator_ColumnPropNameInTable="IDFilterColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OptionalJN" msprop:Generator_UserColumnName="OptionalJN" msprop:Generator_ColumnPropNameInRow="OptionalJN" msprop:Generator_ColumnVarNameInTable="columnOptionalJN" msprop:Generator_ColumnPropNameInTable="OptionalJNColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="DruckenJN" msprop:Generator_UserColumnName="DruckenJN" msprop:Generator_ColumnPropNameInRow="DruckenJN" msprop:Generator_ColumnVarNameInTable="columnDruckenJN" msprop:Generator_ColumnPropNameInTable="DruckenJNColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Reihenfolge" msprop:Generator_UserColumnName="Reihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ZusatzGruppeEintrag" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDokumenteintrag" targetNamespace="http://www.tempuri.org/dsDokumenteintrag.xsd" xmlns:mstns="http://www.tempuri.org/dsDokumenteintrag.xsd" xmlns="http://www.tempuri.org/dsDokumenteintrag.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDokumenteintrag" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_DataSetName="dsDokumenteintrag" msprop:Generator_UserDSName="dsDokumenteintrag">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblDokumenteintrag" msprop:Generator_TableClassName="tblDokumenteintragDataTable" msprop:Generator_TableVarName="tabletblDokumenteintrag" msprop:Generator_TablePropName="tblDokumenteintrag" msprop:Generator_RowDeletingName="tblDokumenteintragRowDeleting" msprop:Generator_RowChangingName="tblDokumenteintragRowChanging" msprop:Generator_RowEvHandlerName="tblDokumenteintragRowChangeEventHandler" msprop:Generator_RowDeletedName="tblDokumenteintragRowDeleted" msprop:Generator_UserTableName="tblDokumenteintrag" msprop:Generator_RowChangedName="tblDokumenteintragRowChanged" msprop:Generator_RowEvArgName="tblDokumenteintragRowChangeEvent" msprop:Generator_RowClassName="tblDokumenteintragRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDOrdner" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDOrdner" msprop:Generator_ColumnPropNameInRow="IDOrdner" msprop:Generator_ColumnPropNameInTable="IDOrdnerColumn" msprop:Generator_UserColumnName="IDOrdner" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="600" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Notiz" msprop:Generator_ColumnVarNameInTable="columnNotiz" msprop:Generator_ColumnPropNameInRow="Notiz" msprop:Generator_ColumnPropNameInTable="NotizColumn" msprop:Generator_UserColumnName="Notiz" type="xs:string" />
+              <xs:element name="NotizRTF" msprop:Generator_ColumnVarNameInTable="columnNotizRTF" msprop:Generator_ColumnPropNameInRow="NotizRTF" msprop:Generator_ColumnPropNameInTable="NotizRTFColumn" msprop:Generator_UserColumnName="NotizRTF" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="GültigVon" msprop:Generator_ColumnVarNameInTable="columnGültigVon" msprop:Generator_ColumnPropNameInRow="GültigVon" msprop:Generator_ColumnPropNameInTable="GültigVonColumn" msprop:Generator_UserColumnName="GültigVon" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="GültigBis" msprop:Generator_ColumnVarNameInTable="columnGültigBis" msprop:Generator_ColumnPropNameInRow="GültigBis" msprop:Generator_ColumnPropNameInTable="GültigBisColumn" msprop:Generator_UserColumnName="GültigBis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Wichtigkeit" msprop:Generator_ColumnVarNameInTable="columnWichtigkeit" msprop:Generator_ColumnPropNameInRow="Wichtigkeit" msprop:Generator_ColumnPropNameInTable="WichtigkeitColumn" msprop:Generator_UserColumnName="Wichtigkeit" type="xs:string" />
+              <xs:element name="ErstelltAm" msprop:Generator_ColumnVarNameInTable="columnErstelltAm" msprop:Generator_ColumnPropNameInRow="ErstelltAm" msprop:Generator_ColumnPropNameInTable="ErstelltAmColumn" msprop:Generator_UserColumnName="ErstelltAm" type="xs:dateTime" />
+              <xs:element name="ErstelltVon" msprop:Generator_ColumnVarNameInTable="columnErstelltVon" msprop:Generator_ColumnPropNameInRow="ErstelltVon" msprop:Generator_ColumnPropNameInTable="ErstelltVonColumn" msprop:Generator_UserColumnName="ErstelltVon" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblDokumenteintrag" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

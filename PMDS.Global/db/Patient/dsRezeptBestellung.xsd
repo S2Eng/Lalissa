@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRezeptBestellung" targetNamespace="http://tempuri.org/dsRezeptBestellung.xsd" xmlns:mstns="http://tempuri.org/dsRezeptBestellung.xsd" xmlns="http://tempuri.org/dsRezeptBestellung.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRezeptBestellung" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsRezeptBestellung" msprop:Generator_UserDSName="dsRezeptBestellung">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RezeptBestellungPos" msprop:Generator_TableClassName="RezeptBestellungPosDataTable" msprop:Generator_TableVarName="tableRezeptBestellungPos" msprop:Generator_TablePropName="RezeptBestellungPos" msprop:Generator_RowDeletingName="RezeptBestellungPosRowDeleting" msprop:Generator_RowChangingName="RezeptBestellungPosRowChanging" msprop:Generator_RowEvHandlerName="RezeptBestellungPosRowChangeEventHandler" msprop:Generator_RowDeletedName="RezeptBestellungPosRowDeleted" msprop:Generator_UserTableName="RezeptBestellungPos" msprop:Generator_RowChangedName="RezeptBestellungPosRowChanged" msprop:Generator_RowEvArgName="RezeptBestellungPosRowChangeEvent" msprop:Generator_RowClassName="RezeptBestellungPosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDRezeptEintrag" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDRezeptEintrag" msprop:Generator_ColumnPropNameInRow="IDRezeptEintrag" msprop:Generator_ColumnPropNameInTable="IDRezeptEintragColumn" msprop:Generator_UserColumnName="IDRezeptEintrag" type="xs:string" />
+              <xs:element name="Dringend" msprop:Generator_ColumnVarNameInTable="columnDringend" msprop:Generator_ColumnPropNameInRow="Dringend" msprop:Generator_ColumnPropNameInTable="DringendColumn" msprop:Generator_UserColumnName="Dringend" type="xs:boolean" />
+              <xs:element name="BestelltJN" msprop:Generator_ColumnVarNameInTable="columnBestelltJN" msprop:Generator_ColumnPropNameInRow="BestelltJN" msprop:Generator_ColumnPropNameInTable="BestelltJNColumn" msprop:Generator_UserColumnName="BestelltJN" type="xs:boolean" />
+              <xs:element name="DatumBestellt" msprop:Generator_ColumnVarNameInTable="columnDatumBestellt" msprop:Generator_ColumnPropNameInRow="DatumBestellt" msprop:Generator_ColumnPropNameInTable="DatumBestelltColumn" msprop:Generator_UserColumnName="DatumBestellt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="GedrucktJN" msprop:Generator_ColumnVarNameInTable="columnGedrucktJN" msprop:Generator_ColumnPropNameInRow="GedrucktJN" msprop:Generator_ColumnPropNameInTable="GedrucktJNColumn" msprop:Generator_UserColumnName="GedrucktJN" type="xs:boolean" />
+              <xs:element name="DatumGedruckt" msprop:Generator_ColumnVarNameInTable="columnDatumGedruckt" msprop:Generator_ColumnPropNameInRow="DatumGedruckt" msprop:Generator_ColumnPropNameInTable="DatumGedrucktColumn" msprop:Generator_UserColumnName="DatumGedruckt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RezeptAngefordertJN" msprop:Generator_ColumnVarNameInTable="columnRezeptAngefordertJN" msprop:Generator_ColumnPropNameInRow="RezeptAngefordertJN" msprop:Generator_ColumnPropNameInTable="RezeptAngefordertJNColumn" msprop:Generator_UserColumnName="RezeptAngefordertJN" type="xs:boolean" />
+              <xs:element name="RezeptAngefordertDatum" msprop:Generator_ColumnVarNameInTable="columnRezeptAngefordertDatum" msprop:Generator_ColumnPropNameInRow="RezeptAngefordertDatum" msprop:Generator_ColumnPropNameInTable="RezeptAngefordertDatumColumn" msprop:Generator_UserColumnName="RezeptAngefordertDatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RezeptAnforderungDatum" msprop:Generator_ColumnVarNameInTable="columnRezeptAnforderungDatum" msprop:Generator_ColumnPropNameInRow="RezeptAnforderungDatum" msprop:Generator_ColumnPropNameInTable="RezeptAnforderungDatumColumn" msprop:Generator_UserColumnName="RezeptAnforderungDatum" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RezeptBestellungPos" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

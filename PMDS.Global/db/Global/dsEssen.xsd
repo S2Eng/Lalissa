@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsEssen" targetNamespace="http://tempuri.org/dsEssen.xsd" xmlns:mstns="http://tempuri.org/dsEssen.xsd" xmlns="http://tempuri.org/dsEssen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsEssen" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsEssen" msprop:Generator_DataSetName="dsEssen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Essen" msprop:Generator_UserTableName="Essen" msprop:Generator_RowDeletedName="EssenRowDeleted" msprop:Generator_RowChangedName="EssenRowChanged" msprop:Generator_RowClassName="EssenRow" msprop:Generator_RowChangingName="EssenRowChanging" msprop:Generator_RowEvArgName="EssenRowChangeEvent" msprop:Generator_RowEvHandlerName="EssenRowChangeEventHandler" msprop:Generator_TableClassName="EssenDataTable" msprop:Generator_TableVarName="tableEssen" msprop:Generator_RowDeletingName="EssenRowDeleting" msprop:Generator_TablePropName="Essen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Tag" msprop:Generator_UserColumnName="Tag" msprop:Generator_ColumnVarNameInTable="columnTag" msprop:Generator_ColumnPropNameInRow="Tag" msprop:Generator_ColumnPropNameInTable="TagColumn" type="xs:dateTime" />
+              <xs:element name="AnzahlBetten" msprop:Generator_UserColumnName="AnzahlBetten" msprop:Generator_ColumnVarNameInTable="columnAnzahlBetten" msprop:Generator_ColumnPropNameInRow="AnzahlBetten" msprop:Generator_ColumnPropNameInTable="AnzahlBettenColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Belegung" msprop:Generator_UserColumnName="Belegung" msprop:Generator_ColumnVarNameInTable="columnBelegung" msprop:Generator_ColumnPropNameInRow="Belegung" msprop:Generator_ColumnPropNameInTable="BelegungColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="EssenPersonal" msprop:Generator_UserColumnName="EssenPersonal" msprop:Generator_ColumnVarNameInTable="columnEssenPersonal" msprop:Generator_ColumnPropNameInRow="EssenPersonal" msprop:Generator_ColumnPropNameInTable="EssenPersonalColumn" type="xs:int" />
+              <xs:element name="EssenGaeste" msprop:Generator_UserColumnName="EssenGaeste" msprop:Generator_ColumnVarNameInTable="columnEssenGaeste" msprop:Generator_ColumnPropNameInRow="EssenGaeste" msprop:Generator_ColumnPropNameInTable="EssenGaesteColumn" type="xs:int" />
+              <xs:element name="Urlaube" msprop:Generator_UserColumnName="Urlaube" msprop:Generator_ColumnPropNameInRow="Urlaube" msprop:Generator_ColumnVarNameInTable="columnUrlaube" msprop:Generator_ColumnPropNameInTable="UrlaubeColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Essen" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

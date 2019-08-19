@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsIDListe" targetNamespace="http://www.tempuri.org/dsIDListe.xsd" xmlns:mstns="http://www.tempuri.org/dsIDListe.xsd" xmlns="http://www.tempuri.org/dsIDListe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsIDListe" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsIDListe" msprop:Generator_UserDSName="dsIDListe">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="IDListe" msprop:Generator_TableClassName="IDListeDataTable" msprop:Generator_TableVarName="tableIDListe" msprop:Generator_TablePropName="IDListe" msprop:Generator_RowDeletingName="IDListeRowDeleting" msprop:Generator_RowChangingName="IDListeRowChanging" msprop:Generator_RowEvHandlerName="IDListeRowChangeEventHandler" msprop:Generator_RowDeletedName="IDListeRowDeleted" msprop:Generator_UserTableName="IDListe" msprop:Generator_RowChangedName="IDListeRowChanged" msprop:Generator_RowEvArgName="IDListeRowChangeEvent" msprop:Generator_RowClassName="IDListeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="TEXT" msprop:Generator_ColumnVarNameInTable="columnTEXT" msprop:Generator_ColumnPropNameInRow="TEXT" msprop:Generator_ColumnPropNameInTable="TEXTColumn" msprop:Generator_UserColumnName="TEXT" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:IDListe" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

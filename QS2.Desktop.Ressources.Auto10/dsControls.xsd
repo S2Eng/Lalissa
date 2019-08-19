@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsControls" targetNamespace="http://tempuri.org/dsControls.xsd" xmlns:mstns="http://tempuri.org/dsControls.xsd" xmlns="http://tempuri.org/dsControls.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsControls" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsControls" msprop:Generator_UserDSName="dsControls">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Controls" msprop:Generator_TableClassName="ControlsDataTable" msprop:Generator_TableVarName="tableControls" msprop:Generator_RowChangedName="ControlsRowChanged" msprop:Generator_TablePropName="Controls" msprop:Generator_RowDeletingName="ControlsRowDeleting" msprop:Generator_RowChangingName="ControlsRowChanging" msprop:Generator_RowEvHandlerName="ControlsRowChangeEventHandler" msprop:Generator_RowDeletedName="ControlsRowDeleted" msprop:Generator_RowClassName="ControlsRow" msprop:Generator_UserTableName="Controls" msprop:Generator_RowEvArgName="ControlsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDRes" msprop:Generator_ColumnVarNameInTable="columnIDRes" msprop:Generator_ColumnPropNameInRow="IDRes" msprop:Generator_ColumnPropNameInTable="IDResColumn" msprop:Generator_UserColumnName="IDRes" type="xs:string" />
+              <xs:element name="Created" msprop:Generator_ColumnVarNameInTable="columnCreated" msprop:Generator_ColumnPropNameInRow="Created" msprop:Generator_ColumnPropNameInTable="CreatedColumn" msprop:Generator_UserColumnName="Created" type="xs:dateTime" />
+              <xs:element name="ControlText" msprop:Generator_ColumnVarNameInTable="columnControlText" msprop:Generator_ColumnPropNameInRow="ControlText" msprop:Generator_ColumnPropNameInTable="ControlTextColumn" msprop:Generator_UserColumnName="ControlText" type="xs:string" />
+              <xs:element name="IsStandardControl" msprop:Generator_ColumnVarNameInTable="columnIsStandardControl" msprop:Generator_ColumnPropNameInRow="IsStandardControl" msprop:Generator_ColumnPropNameInTable="IsStandardControlColumn" msprop:Generator_UserColumnName="IsStandardControl" type="xs:boolean" />
+              <xs:element name="ActionPerformed" msprop:Generator_ColumnVarNameInTable="columnActionPerformed" msprop:Generator_ColumnPropNameInRow="ActionPerformed" msprop:Generator_ColumnPropNameInTable="ActionPerformedColumn" msprop:Generator_UserColumnName="ActionPerformed" type="xs:boolean" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" />
+              <xs:element name="ControlTypeShort" msdata:Caption="ControlType" msprop:Generator_ColumnVarNameInTable="columnControlTypeShort" msprop:Generator_ColumnPropNameInRow="ControlTypeShort" msprop:Generator_ColumnPropNameInTable="ControlTypeShortColumn" msprop:Generator_UserColumnName="ControlTypeShort" type="xs:string" />
+              <xs:element name="ControlType" msprop:Generator_ColumnVarNameInTable="columnControlType" msprop:Generator_ColumnPropNameInRow="ControlType" msprop:Generator_ColumnPropNameInTable="ControlTypeColumn" msprop:Generator_UserColumnName="ControlType" type="xs:string" />
+              <xs:element name="Ctrl" msprop:Generator_ColumnVarNameInTable="columnCtrl" msprop:Generator_ColumnPropNameInRow="Ctrl" msprop:Generator_ColumnPropNameInTable="CtrlColumn" msprop:Generator_UserColumnName="Ctrl" type="xs:anyType" minOccurs="0" />
+              <xs:element name="HandleEvent" msprop:Generator_ColumnVarNameInTable="columnHandleEvent" msprop:Generator_ColumnPropNameInRow="HandleEvent" msprop:Generator_ColumnPropNameInTable="HandleEventColumn" msprop:Generator_UserColumnName="HandleEvent" type="xs:anyType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Protocoll" msprop:Generator_TableClassName="ProtocollDataTable" msprop:Generator_TableVarName="tableProtocoll" msprop:Generator_TablePropName="Protocoll" msprop:Generator_RowDeletingName="ProtocollRowDeleting" msprop:Generator_RowChangingName="ProtocollRowChanging" msprop:Generator_RowEvHandlerName="ProtocollRowChangeEventHandler" msprop:Generator_RowDeletedName="ProtocollRowDeleted" msprop:Generator_UserTableName="Protocoll" msprop:Generator_RowChangedName="ProtocollRowChanged" msprop:Generator_RowEvArgName="ProtocollRowChangeEvent" msprop:Generator_RowClassName="ProtocollRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="ControlKey" msprop:Generator_ColumnVarNameInTable="columnControlKey" msprop:Generator_ColumnPropNameInRow="ControlKey" msprop:Generator_ColumnPropNameInTable="ControlKeyColumn" msprop:Generator_UserColumnName="ControlKey" type="xs:string" />
+              <xs:element name="IDRes" msprop:Generator_ColumnVarNameInTable="columnIDRes" msprop:Generator_ColumnPropNameInRow="IDRes" msprop:Generator_ColumnPropNameInTable="IDResColumn" msprop:Generator_UserColumnName="IDRes" type="xs:string" />
+              <xs:element name="Txt" msprop:Generator_ColumnVarNameInTable="columnTxt" msprop:Generator_ColumnPropNameInRow="Txt" msprop:Generator_ColumnPropNameInTable="TxtColumn" msprop:Generator_UserColumnName="Txt" type="xs:string" />
+              <xs:element name="dat" msprop:Generator_ColumnVarNameInTable="columndat" msprop:Generator_ColumnPropNameInRow="dat" msprop:Generator_ColumnPropNameInTable="datColumn" msprop:Generator_UserColumnName="dat" type="xs:dateTime" />
+              <xs:element name="Cont" msprop:Generator_ColumnVarNameInTable="columnCont" msprop:Generator_ColumnPropNameInRow="Cont" msprop:Generator_ColumnPropNameInTable="ContColumn" msprop:Generator_UserColumnName="Cont" type="xs:anyType" />
+              <xs:element name="ControlType" msprop:Generator_ColumnVarNameInTable="columnControlType" msprop:Generator_ColumnPropNameInRow="ControlType" msprop:Generator_ColumnPropNameInTable="ControlTypeColumn" msprop:Generator_UserColumnName="ControlType" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Controls" />
+      <xs:field xpath="mstns:IDRes" />
+    </xs:unique>
+    <xs:unique name="Protocoll_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Protocoll" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

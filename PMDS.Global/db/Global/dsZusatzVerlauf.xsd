@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsZusatzVerlauf" targetNamespace="http://www.tempuri.org/dsZusatzVerlauf.xsd" xmlns:mstns="http://www.tempuri.org/dsZusatzVerlauf.xsd" xmlns="http://www.tempuri.org/dsZusatzVerlauf.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsZusatzVerlauf" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsZusatzVerlauf" msprop:Generator_UserDSName="dsZusatzVerlauf">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ZusatzWert" msprop:Generator_TableClassName="ZusatzWertDataTable" msprop:Generator_TableVarName="tableZusatzWert" msprop:Generator_TablePropName="ZusatzWert" msprop:Generator_RowDeletingName="ZusatzWertRowDeleting" msprop:Generator_RowChangingName="ZusatzWertRowChanging" msprop:Generator_RowEvHandlerName="ZusatzWertRowChangeEventHandler" msprop:Generator_RowDeletedName="ZusatzWertRowDeleted" msprop:Generator_UserTableName="ZusatzWert" msprop:Generator_RowChangedName="ZusatzWertRowChanged" msprop:Generator_RowEvArgName="ZusatzWertRowChangeEvent" msprop:Generator_RowClassName="ZusatzWertRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Zeitpunkt" msprop:Generator_ColumnVarNameInTable="columnZeitpunkt" msprop:Generator_ColumnPropNameInRow="Zeitpunkt" msprop:Generator_ColumnPropNameInTable="ZeitpunktColumn" msprop:Generator_UserColumnName="Zeitpunkt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Wert" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnWert" msprop:Generator_ColumnPropNameInRow="Wert" msprop:Generator_ColumnPropNameInTable="WertColumn" msprop:Generator_UserColumnName="Wert" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Eintrag" msprop:Generator_ColumnVarNameInTable="columnEintrag" msprop:Generator_ColumnPropNameInRow="Eintrag" msprop:Generator_ColumnPropNameInTable="EintragColumn" msprop:Generator_UserColumnName="Eintrag" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Massnahme" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMassnahme" msprop:Generator_ColumnPropNameInRow="Massnahme" msprop:Generator_ColumnPropNameInTable="MassnahmeColumn" msprop:Generator_UserColumnName="Massnahme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Liste" msprop:Generator_ColumnVarNameInTable="columnListe" msprop:Generator_ColumnPropNameInRow="Liste" msprop:Generator_ColumnPropNameInTable="ListeColumn" msprop:Generator_UserColumnName="Liste" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDEintrag" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDEintrag" msprop:Generator_ColumnPropNameInRow="IDEintrag" msprop:Generator_ColumnPropNameInTable="IDEintragColumn" msprop:Generator_UserColumnName="IDEintrag" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

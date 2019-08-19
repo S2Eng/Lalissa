@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="daPatientKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbDeleteCommand1.CommandText" xml:space="preserve">
+    <value>DELETE FROM [PatientKostentraeger] WHERE (([ID] = ?) AND ([IDPatient] = ?) AND ([IDKostentraeger] = ?) AND ([GueltigAb] = ?) AND ((? = 1 AND [GueltigBis] IS NULL) OR ([GueltigBis] = ?)) AND ([enumKostentraegerart] = ?) AND ([BetragErrechnetJN] = ?) AND ((? = 1 AND [Betrag] IS NULL) OR ([Betrag] = ?)) AND ((? = 1 AND [ErfasstAm] IS NULL) OR ([ErfasstAm] = ?)) AND ((? = 1 AND [IDBenutzer] IS NULL) OR ([IDBenutzer] = ?)) AND ((? = 1 AND [AbgerechnetBis] IS NULL) OR ([AbgerechnetBis] = ?)) AND ([VorauszahlungJN] = ?) AND ([RechnungJN] = ?) AND ([RechnungTyp] = ?))</value>
+  </data>
+  <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbInsertCommand.CommandText" xml:space="preserve">
+    <value>INSERT INTO [PatientKostentraeger] ([ID], [IDPatient], [IDKostentraeger], [GueltigAb], [GueltigBis], [enumKostentraegerart], [BetragErrechnetJN], [Betrag], [ErfasstAm], [IDBenutzer], [AbgerechnetBis], [VorauszahlungJN], [RechnungJN], [RechnungTyp]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
+  <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
+    <value>SELECT     ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, 
+                      VorauszahlungJN, RechnungJN, RechnungTyp 
+FROM         PatientKostentraeger
+WHERE     (IDPatient = ?)
+ORDER BY GueltigAb</value>
+  </data>
+  <metadata name="oleDbUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [PatientKostentraeger] SET [ID] = ?, [IDPatient] = ?, [IDKostentraeger] = ?, [GueltigAb] = ?, [GueltigBis] = ?, [enumKostentraegerart] = ?, [BetragErrechnetJN] = ?, [Betrag] = ?, [ErfasstAm] = ?, [IDBenutzer] = ?, [AbgerechnetBis] = ?, [VorauszahlungJN] = ?, [RechnungJN] = ?, [RechnungTyp] = ? WHERE (([ID] = ?) AND ([IDPatient] = ?) AND ([IDKostentraeger] = ?) AND ([GueltigAb] = ?) AND ((? = 1 AND [GueltigBis] IS NULL) OR ([GueltigBis] = ?)) AND ([enumKostentraegerart] = ?) AND ([BetragErrechnetJN] = ?) AND ((? = 1 AND [Betrag] IS NULL) OR ([Betrag] = ?)) AND ((? = 1 AND [ErfasstAm] IS NULL) OR ([ErfasstAm] = ?)) AND ((? = 1 AND [IDBenutzer] IS NULL) OR ([IDBenutzer] = ?)) AND ((? = 1 AND [AbgerechnetBis] IS NULL) OR ([AbgerechnetBis] = ?)) AND ([VorauszahlungJN] = ?) AND ([RechnungJN] = ?) AND ([RechnungTyp] = ?))</value>
+  </data>
+  <metadata name="daPatientKostentraegerByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="oleDbCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand3.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand3.CommandText" xml:space="preserve">
+    <value>SELECT     PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, 
+                      PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, 
+                      Kostentraeger.Name, Kostentraeger.Strasse, Kostentraeger.PLZ, Kostentraeger.Ort, Kostentraeger.Rechnungsempfaenger, 
+                      Kostentraeger.Rechnungsanschrift, Kostentraeger.BLZ, Kostentraeger.Kontonr, Kostentraeger.Bank, Kostentraeger.FIBUKonto, 
+                      Kostentraeger.ErlagscheingebuehrJN
+FROM         PatientKostentraeger INNER JOIN
+                      Kostentraeger ON PatientKostentraeger.IDKostentraeger = Kostentraeger.ID
+WHERE     (PatientKostentraeger.ID = ?)</value>
+  </data>
+  <metadata name="daByKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <metadata name="oleDbCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand4.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand4.CommandText" xml:space="preserve">
+    <value>SELECT     PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, 
+                      PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, 
+                      PatientKostentraeger.ErfasstAm, PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis, PatientKostentraeger.VorauszahlungJN, 
+                      PatientKostentraeger.RechnungJN
+FROM         PatientKostentraeger INNER JOIN
+                      Patient ON PatientKostentraeger.IDPatient = Patient.ID
+WHERE     (PatientKostentraeger.IDKostentraeger = ?)
+ORDER BY Patient.Nachname, Patient.Vorname, PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis</value>
+  </data>
+  <metadata name="daKostentraegerByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 212</value>
+  </metadata>
+  <metadata name="oleDbCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand5.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand5.CommandText" xml:space="preserve">
+    <value>SELECT     ID, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, Betrag, 
+                      TransferleistungJN, TaschengeldJN, Zahlart, PatientbezogenJN
+FROM         Kostentraeger
+WHERE     (ID = ?)</value>
+  </data>
+  <metadata name="daPatientStation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="oleDbCommand7.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand7.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand7.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand7.CommandText" xml:space="preserve">
+    <value>SELECT        Patient.ID, Patient.Nachname + '  ' + Patient.Vorname AS Name, Patient.Geburtsdatum, Abteilung.Bezeichnung AS Abteilung, Bereich.Bezeichnung AS Bereich, 
+                         UrlaubVerlauf.Text AS UrlaubText, Abteilung.ID AS IDAbteilung, Aufenthalt.IDBereich, Aufenthalt.IDKlinik, Aufenthalt.ID AS IDAufenthalt
+FROM            UrlaubVerlauf RIGHT OUTER JOIN
+                         Aufenthalt ON UrlaubVerlauf.ID = Aufenthalt.IDUrlaub LEFT OUTER JOIN
+                         AufenthaltVerlauf INNER JOIN
+                         Abteilung ON AufenthaltVerlauf.IDAbteilung_Nach = Abteilung.ID LEFT OUTER JOIN
+                         Bereich ON AufenthaltVerlauf.IDBereich = Bereich.ID ON Aufenthalt.IDAufenthaltVerlauf = AufenthaltVerlauf.ID RIGHT OUTER JOIN
+                         Patient ON Aufenthalt.IDPatient = Patient.ID INNER JOIN
+                         PatientKostentraeger ON Patient.ID = PatientKostentraeger.IDPatient INNER JOIN
+                         Kostentraeger ON Kostentraeger.ID = PatientKostentraeger.IDKostentraeger
+WHERE        (Kostentraeger.ID = ?) AND (Aufenthalt.Entlassungszeitpunkt IS NULL)
+ORDER BY Name</value>
+  </data>
+  <metadata name="daAllgemKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 290</value>
+  </metadata>
+  <metadata name="oleDbCommand8.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand8.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand8.CommandText" xml:space="preserve">
+    <value>SELECT     ID, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, Betrag, 
+                      TransferleistungJN, TaschengeldJN, Zahlart, PatientbezogenJN
+FROM         Kostentraeger
+WHERE     (PatientbezogenJN = 0) AND (TransferleistungJN = 0)
+ORDER BY Name</value>
+  </data>
+  <metadata name="daAllEntries.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 329</value>
+  </metadata>
+  <metadata name="oleDbCommand10.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand10.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand10.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand10.CommandText" xml:space="preserve">
+    <value>SELECT     PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, 
+                      PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, 
+                      PatientKostentraeger.ErfasstAm, PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis, PatientKostentraeger.VorauszahlungJN, 
+                      PatientKostentraeger.RechnungJN, RechnungTyp 
+FROM         PatientKostentraeger INNER JOIN
+                      Patient ON PatientKostentraeger.IDPatient = Patient.ID
+ORDER BY Patient.Nachname + ' ' + Patient.Vorname, PatientKostentraeger.GueltigAb</value>
+  </data>
+  <metadata name="daKostentraegerXXXX.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 368</value>
+  </metadata>
+  <metadata name="oleDbCommand6.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand6.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand6.CommandText" xml:space="preserve">
+    <value>SELECT DISTINCT 
+                      Kostentraeger.ID, Kostentraeger.Name, Kostentraeger.Strasse, Kostentraeger.PLZ, Kostentraeger.Ort, Kostentraeger.Rechnungsempfaenger, 
+                      Kostentraeger.Rechnungsanschrift, Kostentraeger.BLZ, Kostentraeger.Kontonr, Kostentraeger.Bank, Kostentraeger.FIBUKonto, 
+                      Kostentraeger.ErlagscheingebuehrJN, Kostentraeger.Betrag, Kostentraeger.TransferleistungJN, Kostentraeger.TaschengeldJN, Kostentraeger.Zahlart, 
+                      Kostentraeger.PatientbezogenJN
+FROM         Kostentraeger INNER JOIN
+                      PatientKostentraeger ON Kostentraeger.ID = PatientKostentraeger.IDKostentraeger
+WHERE     (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &lt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
+                      (PatientKostentraeger.GueltigBis &lt;= ?) AND (Kostentraeger.PatientbezogenJN = 0) OR
+                      (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &gt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
+                      (PatientKostentraeger.GueltigBis &lt;= ?) AND (Kostentraeger.PatientbezogenJN = 0) OR
+                      (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &gt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
+                      (Kostentraeger.PatientbezogenJN = 0) AND (PatientKostentraeger.GueltigAb &lt;= ?) OR
+                      (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &lt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
+                      (Kostentraeger.PatientbezogenJN = 0)</value>
+  </data>
+  <metadata name="daByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 407</value>
+  </metadata>
+  <metadata name="oleDbCommand12.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand12.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand12.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand12.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, 
+                         VorauszahlungJN, RechnungJN, RechnungTyp
+FROM            PatientKostentraeger
+WHERE        (ID = ?)</value>
+  </data>
+  <metadata name="daDistinctPatientenMonatJahrAbrechnung.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 446</value>
+  </metadata>
+  <metadata name="oleDbCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand9.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daKlientenAlleSelbstzahler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 485</value>
+  </metadata>
+  <metadata name="oleDbCommand11.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand11.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand11.CommandText" xml:space="preserve">
+    <value>SELECT        TOP (100) PERCENT Patient.ID, Patient.Nachname + '  ' + Patient.Vorname AS Name, Patient.Geburtsdatum, Abteilung.Bezeichnung AS Abteilung, 
+                         Bereich.Bezeichnung AS Bereich, UrlaubVerlauf.Text AS UrlaubText, Abteilung.ID AS IDAbteilung, Aufenthalt.IDBereich, Aufenthalt.IDKlinik, 
+                         Aufenthalt.ID AS IDAufenthalt
+FROM            UrlaubVerlauf RIGHT OUTER JOIN
+                         Aufenthalt ON UrlaubVerlauf.ID = Aufenthalt.IDUrlaub LEFT OUTER JOIN
+                         AufenthaltVerlauf INNER JOIN
+                         Abteilung ON AufenthaltVerlauf.IDAbteilung_Nach = Abteilung.ID LEFT OUTER JOIN
+                         Bereich ON AufenthaltVerlauf.IDBereich = Bereich.ID ON AufenthaltVerlauf.ID = Aufenthalt.IDAufenthaltVerlauf RIGHT OUTER JOIN
+                         Patient ON Patient.ID = Aufenthalt.IDPatient
+WHERE        (NOT (Aufenthalt.ID IS NULL)) AND (Aufenthalt.Entlassungszeitpunkt IS NULL) AND
+                             ((SELECT        COUNT(*) AS anz
+                                 FROM            PatientKostentraeger AS k2 INNER JOIN
+                                                          Kostentraeger AS Kostentraeger_1 ON k2.IDKostentraeger = Kostentraeger_1.ID
+                                 WHERE        (k2.IDPatient = Patient.ID) AND (Kostentraeger_1.TransferleistungJN = 0) AND (Kostentraeger_1.PatientbezogenJN = 0)) = 0)
+GROUP BY Patient.ID, Patient.Nachname, Patient.Vorname, Patient.Geburtsdatum, Abteilung.Bezeichnung, Bereich.Bezeichnung, UrlaubVerlauf.Text, Abteilung.ID, 
+                         Aufenthalt.IDBereich, Aufenthalt.IDKlinik, Aufenthalt.ID
+ORDER BY Name</value>
+  </data>
+  <metadata name="daPatKostenträgerGültigBis.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 524</value>
+  </metadata>
+  <metadata name="oleDbCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand13.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand13.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand14.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand14.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand14.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daPatientLeistungsplanGültigBis.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 563</value>
+  </metadata>
+  <metadata name="oleDbCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand15.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>531, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand15.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand16.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand16.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>262, 556</value>
+  </metadata>
+  <metadata name="oleDbCommand16.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand17.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand17.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>416, 556</value>
+  </metadata>
+  <metadata name="oleDbCommand17.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daPatientTaschengeldKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 602</value>
+  </metadata>
+  <metadata name="oleDbCommand18.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand18.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand18.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand19.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand19.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>796, 556</value>
+  </metadata>
+  <metadata name="oleDbCommand19.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand20.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand20.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand20.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>

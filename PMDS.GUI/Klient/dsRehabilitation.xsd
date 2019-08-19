@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRehabilitation" targetNamespace="http://tempuri.org/dsRehabilitation.xsd" xmlns:mstns="http://tempuri.org/dsRehabilitation.xsd" xmlns="http://tempuri.org/dsRehabilitation.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI.1;Data Source=s2sty076;User ID=pmds;Initial Catalog=PMDS_3_5_0" IsAppSettingsProperty="False" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRehabilitation" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRehabilitation" msprop:Generator_DataSetName="dsRehabilitation">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Rehabilitation" msprop:Generator_UserTableName="Rehabilitation" msprop:Generator_RowDeletedName="RehabilitationRowDeleted" msprop:Generator_TableClassName="RehabilitationDataTable" msprop:Generator_RowChangedName="RehabilitationRowChanged" msprop:Generator_RowClassName="RehabilitationRow" msprop:Generator_RowChangingName="RehabilitationRowChanging" msprop:Generator_RowEvArgName="RehabilitationRowChangeEvent" msprop:Generator_RowEvHandlerName="RehabilitationRowChangeEventHandler" msprop:Generator_TablePropName="Rehabilitation" msprop:Generator_TableVarName="tableRehabilitation" msprop:Generator_RowDeletingName="RehabilitationRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Beschreibung" msprop:Generator_UserColumnName="Beschreibung" msprop:Generator_ColumnPropNameInRow="Beschreibung" msprop:Generator_ColumnVarNameInTable="columnBeschreibung" msprop:Generator_ColumnPropNameInTable="BeschreibungColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ziel" msprop:Generator_UserColumnName="Ziel" msprop:Generator_ColumnPropNameInRow="Ziel" msprop:Generator_ColumnVarNameInTable="columnZiel" msprop:Generator_ColumnPropNameInTable="ZielColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Institution" msprop:Generator_UserColumnName="Institution" msprop:Generator_ColumnPropNameInRow="Institution" msprop:Generator_ColumnVarNameInTable="columnInstitution" msprop:Generator_ColumnPropNameInTable="InstitutionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Von" msprop:Generator_UserColumnName="Von" msprop:Generator_ColumnPropNameInRow="Von" msprop:Generator_ColumnVarNameInTable="columnVon" msprop:Generator_ColumnPropNameInTable="VonColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Bis" msprop:Generator_UserColumnName="Bis" msprop:Generator_ColumnPropNameInRow="Bis" msprop:Generator_ColumnVarNameInTable="columnBis" msprop:Generator_ColumnPropNameInTable="BisColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EndeGrund" msprop:Generator_UserColumnName="EndeGrund" msprop:Generator_ColumnPropNameInRow="EndeGrund" msprop:Generator_ColumnVarNameInTable="columnEndeGrund" msprop:Generator_ColumnPropNameInTable="EndeGrundColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bemerkung" msprop:Generator_UserColumnName="Bemerkung" msprop:Generator_ColumnPropNameInRow="Bemerkung" msprop:Generator_ColumnVarNameInTable="columnBemerkung" msprop:Generator_ColumnPropNameInTable="BemerkungColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MassnahmeJN" msprop:Generator_UserColumnName="MassnahmeJN" msprop:Generator_ColumnPropNameInRow="MassnahmeJN" msprop:Generator_ColumnVarNameInTable="columnMassnahmeJN" msprop:Generator_ColumnPropNameInTable="MassnahmeJNColumn" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Rehabilitation" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

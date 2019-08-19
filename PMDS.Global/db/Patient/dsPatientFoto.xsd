@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientFoto" targetNamespace="http://tempuri.org/dsPatientFoto.xsd" xmlns:mstns="http://tempuri.org/dsPatientFoto.xsd" xmlns="http://tempuri.org/dsPatientFoto.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientFoto" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPatientFoto" msprop:Generator_DataSetName="dsPatientFoto">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Patient" msprop:Generator_UserTableName="Patient" msprop:Generator_RowDeletedName="PatientRowDeleted" msprop:Generator_TableClassName="PatientDataTable" msprop:Generator_RowChangedName="PatientRowChanged" msprop:Generator_RowClassName="PatientRow" msprop:Generator_RowChangingName="PatientRowChanging" msprop:Generator_RowEvArgName="PatientRowChangeEvent" msprop:Generator_RowEvHandlerName="PatientRowChangeEventHandler" msprop:Generator_TablePropName="Patient" msprop:Generator_TableVarName="tablePatient" msprop:Generator_RowDeletingName="PatientRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Foto" msprop:Generator_UserColumnName="Foto" msprop:Generator_ColumnPropNameInRow="Foto" msprop:Generator_ColumnVarNameInTable="columnFoto" msprop:Generator_ColumnPropNameInTable="FotoColumn" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

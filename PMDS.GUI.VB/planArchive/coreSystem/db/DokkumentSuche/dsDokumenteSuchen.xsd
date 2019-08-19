@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDokumenteSuchen" targetNamespace="http://www.tempuri.org/dsDokumenteSuchen.xsd" xmlns:mstns="http://www.tempuri.org/dsDokumenteSuchen.xsd" xmlns="http://www.tempuri.org/dsDokumenteSuchen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDokumenteSuchen" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_UserDSName="dsDokumenteSuchen" msprop:Generator_DataSetName="dsDokumenteSuchen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblDokumente" msprop:Generator_UserTableName="tblDokumente" msprop:Generator_RowDeletedName="tblDokumenteRowDeleted" msprop:Generator_RowChangedName="tblDokumenteRowChanged" msprop:Generator_RowClassName="tblDokumenteRow" msprop:Generator_RowChangingName="tblDokumenteRowChanging" msprop:Generator_RowEvArgName="tblDokumenteRowChangeEvent" msprop:Generator_RowEvHandlerName="tblDokumenteRowChangeEventHandler" msprop:Generator_TableClassName="tblDokumenteDataTable" msprop:Generator_TableVarName="tabletblDokumente" msprop:Generator_RowDeletingName="tblDokumenteRowDeleting" msprop:Generator_TablePropName="tblDokumente">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="BezeichnungOrdner" msprop:Generator_UserColumnName="BezeichnungOrdner" msprop:Generator_ColumnPropNameInRow="BezeichnungOrdner" msprop:Generator_ColumnVarNameInTable="columnBezeichnungOrdner" msprop:Generator_ColumnPropNameInTable="BezeichnungOrdnerColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Patient" msprop:Generator_UserColumnName="Patient" msprop:Generator_ColumnPropNameInRow="Patient" msprop:Generator_ColumnVarNameInTable="columnPatient" msprop:Generator_ColumnPropNameInTable="PatientColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="DokumentErstellt" msprop:Generator_UserColumnName="DokumentErstellt" msprop:Generator_ColumnPropNameInRow="DokumentErstellt" msprop:Generator_ColumnVarNameInTable="columnDokumentErstellt" msprop:Generator_ColumnPropNameInTable="DokumentErstelltColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ErstelltAm" msprop:Generator_UserColumnName="ErstelltAm" msprop:Generator_ColumnPropNameInRow="ErstelltAm" msprop:Generator_ColumnVarNameInTable="columnErstelltAm" msprop:Generator_ColumnPropNameInTable="ErstelltAmColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ErstelltVon" msprop:Generator_UserColumnName="ErstelltVon" msprop:Generator_ColumnPropNameInRow="ErstelltVon" msprop:Generator_ColumnVarNameInTable="columnErstelltVon" msprop:Generator_ColumnPropNameInTable="ErstelltVonColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="GültigVon" msprop:Generator_UserColumnName="GültigVon" msprop:Generator_ColumnPropNameInRow="GültigVon" msprop:Generator_ColumnVarNameInTable="columnGültigVon" msprop:Generator_ColumnPropNameInTable="GültigVonColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="GültigBis" msprop:Generator_UserColumnName="GültigBis" msprop:Generator_ColumnPropNameInRow="GültigBis" msprop:Generator_ColumnVarNameInTable="columnGültigBis" msprop:Generator_ColumnPropNameInTable="GültigBisColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Wichtigkeit" msprop:Generator_UserColumnName="Wichtigkeit" msprop:Generator_ColumnPropNameInRow="Wichtigkeit" msprop:Generator_ColumnVarNameInTable="columnWichtigkeit" msprop:Generator_ColumnPropNameInTable="WichtigkeitColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Notiz" msprop:Generator_UserColumnName="Notiz" msprop:Generator_ColumnPropNameInRow="Notiz" msprop:Generator_ColumnVarNameInTable="columnNotiz" msprop:Generator_ColumnPropNameInTable="NotizColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Winzip" msprop:Generator_UserColumnName="Winzip" msprop:Generator_ColumnPropNameInRow="Winzip" msprop:Generator_ColumnVarNameInTable="columnWinzip" msprop:Generator_ColumnPropNameInTable="WinzipColumn" type="xs:boolean" default="false" />
+              <xs:element name="DateinameArchiv" msprop:Generator_UserColumnName="DateinameArchiv" msprop:Generator_ColumnPropNameInRow="DateinameArchiv" msprop:Generator_ColumnVarNameInTable="columnDateinameArchiv" msprop:Generator_ColumnPropNameInTable="DateinameArchivColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DateinameTyp" msprop:Generator_UserColumnName="DateinameTyp" msprop:Generator_ColumnPropNameInRow="DateinameTyp" msprop:Generator_ColumnVarNameInTable="columnDateinameTyp" msprop:Generator_ColumnPropNameInTable="DateinameTypColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DokumentGröße" msprop:Generator_UserColumnName="DokumentGröße" msprop:Generator_ColumnPropNameInRow="DokumentGröße" msprop:Generator_ColumnVarNameInTable="columnDokumentGröße" msprop:Generator_ColumnPropNameInTable="DokumentGrößeColumn" type="xs:double" />
+              <xs:element name="DokumentGeändert" msprop:Generator_UserColumnName="DokumentGeändert" msprop:Generator_ColumnPropNameInRow="DokumentGeändert" msprop:Generator_ColumnVarNameInTable="columnDokumentGeändert" msprop:Generator_ColumnPropNameInTable="DokumentGeändertColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Archivordner" msprop:Generator_UserColumnName="Archivordner" msprop:Generator_ColumnPropNameInRow="Archivordner" msprop:Generator_ColumnVarNameInTable="columnArchivordner" msprop:Generator_ColumnPropNameInTable="ArchivordnerColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="VerzeichnisOrig" msprop:Generator_UserColumnName="VerzeichnisOrig" msprop:Generator_ColumnPropNameInRow="VerzeichnisOrig" msprop:Generator_ColumnVarNameInTable="columnVerzeichnisOrig" msprop:Generator_ColumnPropNameInTable="VerzeichnisOrigColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DateinameOrig" msprop:Generator_UserColumnName="DateinameOrig" msprop:Generator_ColumnPropNameInRow="DateinameOrig" msprop:Generator_ColumnVarNameInTable="columnDateinameOrig" msprop:Generator_ColumnPropNameInTable="DateinameOrigColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDDokumenteintrag" msprop:Generator_UserColumnName="IDDokumenteintrag" msprop:Generator_ColumnPropNameInRow="IDDokumenteintrag" msprop:Generator_ColumnVarNameInTable="columnIDDokumenteintrag" msprop:Generator_ColumnPropNameInTable="IDDokumenteintragColumn" type="xs:string" />
+              <xs:element name="IDDokument" msprop:Generator_UserColumnName="IDDokument" msprop:Generator_ColumnPropNameInRow="IDDokument" msprop:Generator_ColumnVarNameInTable="columnIDDokument" msprop:Generator_ColumnPropNameInTable="IDDokumentColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDOrdner" msprop:Generator_UserColumnName="IDOrdner" msprop:Generator_ColumnPropNameInRow="IDOrdner" msprop:Generator_ColumnVarNameInTable="columnIDOrdner" msprop:Generator_ColumnPropNameInTable="IDOrdnerColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDObject" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:Caption="Winzip" msprop:Generator_UserColumnName="IDObject" msprop:Generator_ColumnPropNameInRow="IDObject" msprop:Generator_ColumnVarNameInTable="columnIDObject" msprop:Generator_ColumnPropNameInTable="IDObjectColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="dsDokumenteSuchenKey11">
+      <xs:selector xpath=".//mstns:tblDokumente" />
+      <xs:field xpath="mstns:IDDokumenteintrag" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

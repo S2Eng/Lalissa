@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="dsRepPflegebericht" targetNamespace="http://www.tempuri.org/dsRepPflegebericht.xsd" xmlns:mstns="http://www.tempuri.org/dsRepPflegebericht.xsd" xmlns="http://www.tempuri.org/dsRepPflegebericht.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="dsRepPflegebericht" msdata:IsDataSet="true" msdata:Locale="de-AT">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Bericht">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" />
+              <xs:element name="Vorname" type="xs:string" minOccurs="0" />
+              <xs:element name="Nachname" type="xs:string" minOccurs="0" />
+              <xs:element name="Geburtsdatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Aufnahmezeitpunkt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Zeitpunkt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Text" type="xs:string" minOccurs="0" />
+              <xs:element name="PflegePlanText" type="xs:string" minOccurs="0" />
+              <xs:element name="Ersteller" msdata:ReadOnly="true" type="xs:string" minOccurs="0" />
+              <xs:element name="EintragText" type="xs:string" minOccurs="0" />
+              <xs:element name="OriginalJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EintragGruppe" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAufenthalt" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              <xs:element name="Benutzer" type="xs:string" minOccurs="0" />
+              <xs:element name="IDPflegeEintrag" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" />
+              <xs:element name="EintragsTyp" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

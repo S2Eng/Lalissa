@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Diese Datei wird automatisch vom XML-Schema-Designer generiert. Sie enthält Layoutinformationen für Komponenten auf der Designeroberfläche.-->
+<XSDDesignerLayout layoutVersion="2" viewPortLeft="0" viewPortTop="0" zoom="100">
+    <tblDokumente_XmlElement left="2434" top="1138" width="8784" height="11007" selected="0" zOrder="1" index="0" expanded="1" />
+    <tblObjekt_XmlElement left="15611" top="4101" width="7355" height="6774" selected="0" zOrder="2" index="1" expanded="1" />
+    <tblDokumenteneintragSchlagwörter_XmlElement left="2302" top="14076" width="11536" height="4657" selected="0" zOrder="3" index="2" expanded="1" />
+</XSDDesignerLayout>

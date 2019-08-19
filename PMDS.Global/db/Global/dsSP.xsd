@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSP" targetNamespace="http://tempuri.org/dsSP.xsd" xmlns:mstns="http://tempuri.org/dsSP.xsd" xmlns="http://tempuri.org/dsSP.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSP" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsSP" msprop:Generator_DataSetName="dsSP">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SPPOS" msprop:Generator_UserTableName="SPPOS" msprop:Generator_RowDeletedName="SPPOSRowDeleted" msprop:Generator_RowChangedName="SPPOSRowChanged" msprop:Generator_RowClassName="SPPOSRow" msprop:Generator_RowChangingName="SPPOSRowChanging" msprop:Generator_RowEvArgName="SPPOSRowChangeEvent" msprop:Generator_RowEvHandlerName="SPPOSRowChangeEventHandler" msprop:Generator_TableClassName="SPPOSDataTable" msprop:Generator_TableVarName="tableSPPOS" msprop:Generator_RowDeletingName="SPPOSRowDeleting" msprop:Generator_TablePropName="SPPOS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDSP" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDSP" msprop:Generator_ColumnPropNameInRow="IDSP" msprop:Generator_ColumnVarNameInTable="columnIDSP" msprop:Generator_ColumnPropNameInTable="IDSPColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDEintrag" msprop:Generator_ColumnPropNameInRow="IDEintrag" msprop:Generator_ColumnVarNameInTable="columnIDEintrag" msprop:Generator_ColumnPropNameInTable="IDEintragColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="oefterJN" msprop:Generator_UserColumnName="oefterJN" msprop:Generator_ColumnPropNameInRow="oefterJN" msprop:Generator_ColumnVarNameInTable="columnoefterJN" msprop:Generator_ColumnPropNameInTable="oefterJNColumn" type="xs:boolean" />
+              <xs:element name="Anmerkung" msprop:Generator_UserColumnName="Anmerkung" msprop:Generator_ColumnPropNameInRow="Anmerkung" msprop:Generator_ColumnVarNameInTable="columnAnmerkung" msprop:Generator_ColumnPropNameInTable="AnmerkungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDBenutzer_Erstellt" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Erstellt" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInTable="IDBenutzer_ErstelltColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzer_Geaendert" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Geaendert" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInTable="IDBenutzer_GeaendertColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DatumGeaendert" msprop:Generator_UserColumnName="DatumGeaendert" msprop:Generator_ColumnPropNameInRow="DatumGeaendert" msprop:Generator_ColumnVarNameInTable="columnDatumGeaendert" msprop:Generator_ColumnPropNameInTable="DatumGeaendertColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DatumErstellt" msprop:Generator_UserColumnName="DatumErstellt" msprop:Generator_ColumnPropNameInRow="DatumErstellt" msprop:Generator_ColumnVarNameInTable="columnDatumErstellt" msprop:Generator_ColumnPropNameInTable="DatumErstelltColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="aktivJN" msprop:Generator_UserColumnName="aktivJN" msprop:Generator_ColumnPropNameInRow="aktivJN" msprop:Generator_ColumnVarNameInTable="columnaktivJN" msprop:Generator_ColumnPropNameInTable="aktivJNColumn" type="xs:boolean" />
+              <xs:element name="wiederumam" msprop:Generator_UserColumnName="wiederumam" msprop:Generator_ColumnVarNameInTable="columnwiederumam" msprop:Generator_ColumnPropNameInRow="wiederumam" msprop:Generator_ColumnPropNameInTable="wiederumamColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SPPE" msprop:Generator_UserTableName="SPPE" msprop:Generator_RowDeletedName="SPPERowDeleted" msprop:Generator_RowChangedName="SPPERowChanged" msprop:Generator_RowClassName="SPPERow" msprop:Generator_RowChangingName="SPPERowChanging" msprop:Generator_RowEvArgName="SPPERowChangeEvent" msprop:Generator_RowEvHandlerName="SPPERowChangeEventHandler" msprop:Generator_TableClassName="SPPEDataTable" msprop:Generator_TableVarName="tableSPPE" msprop:Generator_RowDeletingName="SPPERowDeleting" msprop:Generator_TablePropName="SPPE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDSP" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDSP" msprop:Generator_ColumnVarNameInTable="columnIDSP" msprop:Generator_ColumnPropNameInRow="IDSP" msprop:Generator_ColumnPropNameInTable="IDSPColumn" type="xs:string" />
+              <xs:element name="IDPflegeEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPflegeEintrag" msprop:Generator_ColumnVarNameInTable="columnIDPflegeEintrag" msprop:Generator_ColumnPropNameInRow="IDPflegeEintrag" msprop:Generator_ColumnPropNameInTable="IDPflegeEintragColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SP" msprop:Generator_UserTableName="SP" msprop:Generator_RowDeletedName="SPRowDeleted" msprop:Generator_RowChangedName="SPRowChanged" msprop:Generator_RowClassName="SPRow" msprop:Generator_RowChangingName="SPRowChanging" msprop:Generator_RowEvArgName="SPRowChangeEvent" msprop:Generator_RowEvHandlerName="SPRowChangeEventHandler" msprop:Generator_TableClassName="SPDataTable" msprop:Generator_TableVarName="tableSP" msprop:Generator_RowDeletingName="SPRowDeleting" msprop:Generator_TablePropName="SP">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Zeitpunkt" msprop:Generator_UserColumnName="Zeitpunkt" msprop:Generator_ColumnPropNameInRow="Zeitpunkt" msprop:Generator_ColumnVarNameInTable="columnZeitpunkt" msprop:Generator_ColumnPropNameInTable="ZeitpunktColumn" type="xs:dateTime" />
+              <xs:element name="IDStandardProzeduren" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDStandardProzeduren" msprop:Generator_ColumnPropNameInRow="IDStandardProzeduren" msprop:Generator_ColumnVarNameInTable="columnIDStandardProzeduren" msprop:Generator_ColumnPropNameInTable="IDStandardProzedurenColumn" type="xs:string" />
+              <xs:element name="Anmerkung" msprop:Generator_UserColumnName="Anmerkung" msprop:Generator_ColumnPropNameInRow="Anmerkung" msprop:Generator_ColumnVarNameInTable="columnAnmerkung" msprop:Generator_ColumnPropNameInTable="AnmerkungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2048" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDBenutzer_Erstellt" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Erstellt" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInTable="IDBenutzer_ErstelltColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzer_Geaendert" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Geaendert" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInTable="IDBenutzer_GeaendertColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DatumGeaendert" msprop:Generator_UserColumnName="DatumGeaendert" msprop:Generator_ColumnPropNameInRow="DatumGeaendert" msprop:Generator_ColumnVarNameInTable="columnDatumGeaendert" msprop:Generator_ColumnPropNameInTable="DatumGeaendertColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DatumErstellt" msprop:Generator_UserColumnName="DatumErstellt" msprop:Generator_ColumnPropNameInRow="DatumErstellt" msprop:Generator_ColumnVarNameInTable="columnDatumErstellt" msprop:Generator_ColumnPropNameInTable="DatumErstelltColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="offenJN" msprop:Generator_UserColumnName="offenJN" msprop:Generator_ColumnPropNameInRow="offenJN" msprop:Generator_ColumnVarNameInTable="columnoffenJN" msprop:Generator_ColumnPropNameInTable="offenJNColumn" type="xs:boolean" />
+              <xs:element name="IDAufenthalt" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAufenthalt" msprop:Generator_ColumnPropNameInRow="IDAufenthalt" msprop:Generator_ColumnVarNameInTable="columnIDAufenthalt" msprop:Generator_ColumnPropNameInTable="IDAufenthaltColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EreignisZeitpunkt" msprop:Generator_UserColumnName="EreignisZeitpunkt" msprop:Generator_ColumnPropNameInRow="EreignisZeitpunkt" msprop:Generator_ColumnVarNameInTable="columnEreignisZeitpunkt" msprop:Generator_ColumnPropNameInTable="EreignisZeitpunktColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SPPOS" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="SPPE_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SPPE" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="SP_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SP" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

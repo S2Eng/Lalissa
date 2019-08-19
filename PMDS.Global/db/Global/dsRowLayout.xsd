@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRowLayout" targetNamespace="http://www.tempuri.org/dsRowLayout.xsd" xmlns:mstns="http://www.tempuri.org/dsRowLayout.xsd" xmlns="http://www.tempuri.org/dsRowLayout.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRowLayout" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_UserDSName="dsRowLayout" msprop:Generator_DataSetName="dsRowLayout">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RowLayout" msprop:Generator_UserTableName="RowLayout" msprop:Generator_RowDeletedName="RowLayoutRowDeleted" msprop:Generator_TableClassName="RowLayoutDataTable" msprop:Generator_RowChangedName="RowLayoutRowChanged" msprop:Generator_RowClassName="RowLayoutRow" msprop:Generator_RowChangingName="RowLayoutRowChanging" msprop:Generator_RowEvArgName="RowLayoutRowChangeEvent" msprop:Generator_RowEvHandlerName="RowLayoutRowChangeEventHandler" msprop:Generator_TablePropName="RowLayout" msprop:Generator_TableVarName="tableRowLayout" msprop:Generator_RowDeletingName="RowLayoutRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Key" msprop:Generator_UserColumnName="Key" msprop:Generator_ColumnPropNameInRow="Key" msprop:Generator_ColumnVarNameInTable="columnKey" msprop:Generator_ColumnPropNameInTable="KeyColumn" type="xs:string" />
+              <xs:element name="Reihenfolge" msprop:Generator_UserColumnName="Reihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sichtbar" msprop:Generator_UserColumnName="Sichtbar" msprop:Generator_ColumnPropNameInRow="Sichtbar" msprop:Generator_ColumnVarNameInTable="columnSichtbar" msprop:Generator_ColumnPropNameInTable="SichtbarColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Info" msprop:Generator_UserColumnName="Info" msprop:Generator_ColumnPropNameInRow="Info" msprop:Generator_ColumnVarNameInTable="columnInfo" msprop:Generator_ColumnPropNameInTable="InfoColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AutoTextUmbruch" msprop:Generator_UserColumnName="AutoTextUmbruch" msprop:Generator_ColumnPropNameInRow="AutoTextUmbruch" msprop:Generator_ColumnVarNameInTable="columnAutoTextUmbruch" msprop:Generator_ColumnPropNameInTable="AutoTextUmbruchColumn" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RowLayout" />
+      <xs:field xpath="mstns:Key" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

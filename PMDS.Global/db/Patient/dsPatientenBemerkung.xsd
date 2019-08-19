@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientenBemerkung" targetNamespace="http://www.tempuri.org/dsPatientenBemerkung.xsd" xmlns:mstns="http://www.tempuri.org/dsPatientenBemerkung.xsd" xmlns="http://www.tempuri.org/dsPatientenBemerkung.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientenBemerkung" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_UserDSName="dsPatientenBemerkung" msprop:Generator_DataSetName="dsPatientenBemerkung">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PatientenBemerkung" msprop:Generator_UserTableName="PatientenBemerkung" msprop:Generator_RowDeletedName="PatientenBemerkungRowDeleted" msprop:Generator_RowChangedName="PatientenBemerkungRowChanged" msprop:Generator_RowClassName="PatientenBemerkungRow" msprop:Generator_RowChangingName="PatientenBemerkungRowChanging" msprop:Generator_RowEvArgName="PatientenBemerkungRowChangeEvent" msprop:Generator_RowEvHandlerName="PatientenBemerkungRowChangeEventHandler" msprop:Generator_TableClassName="PatientenBemerkungDataTable" msprop:Generator_TableVarName="tablePatientenBemerkung" msprop:Generator_RowDeletingName="PatientenBemerkungRowDeleting" msprop:Generator_TablePropName="PatientenBemerkung">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Datum" msprop:Generator_UserColumnName="Datum" msprop:Generator_ColumnPropNameInRow="Datum" msprop:Generator_ColumnVarNameInTable="columnDatum" msprop:Generator_ColumnPropNameInTable="DatumColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Benutzer" msprop:Generator_UserColumnName="Benutzer" msprop:Generator_ColumnPropNameInRow="Benutzer" msprop:Generator_ColumnVarNameInTable="columnBenutzer" msprop:Generator_ColumnPropNameInTable="BenutzerColumn" type="xs:string" default="&quot;&quot;" minOccurs="0" />
+              <xs:element name="Bemerkung" msprop:Generator_UserColumnName="Bemerkung" msprop:Generator_ColumnPropNameInRow="Bemerkung" msprop:Generator_ColumnVarNameInTable="columnBemerkung" msprop:Generator_ColumnPropNameInTable="BemerkungColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer" msprop:Generator_ColumnPropNameInRow="IDBenutzer" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer" msprop:Generator_ColumnPropNameInTable="IDBenutzerColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IstDekurs" msprop:Generator_UserColumnName="IstDekurs" msprop:Generator_ColumnPropNameInRow="IstDekurs" msprop:Generator_ColumnVarNameInTable="columnIstDekurs" msprop:Generator_ColumnPropNameInTable="IstDekursColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Patient" msprop:Generator_UserColumnName="Patient" msprop:Generator_ColumnPropNameInRow="Patient" msprop:Generator_ColumnVarNameInTable="columnPatient" msprop:Generator_ColumnPropNameInTable="PatientColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PatientenBemerkung" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

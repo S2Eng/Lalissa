@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsZeitbereichSerien" targetNamespace="http://tempuri.org/dsZeitbereichSerien.xsd" xmlns:mstns="http://tempuri.org/dsZeitbereichSerien.xsd" xmlns="http://tempuri.org/dsZeitbereichSerien.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsZeitbereichSerien" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsZeitbereichSerien" msprop:Generator_DataSetName="dsZeitbereichSerien">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ZeitbereichSerien" msprop:Generator_UserTableName="ZeitbereichSerien" msprop:Generator_RowDeletedName="ZeitbereichSerienRowDeleted" msprop:Generator_TableClassName="ZeitbereichSerienDataTable" msprop:Generator_RowChangedName="ZeitbereichSerienRowChanged" msprop:Generator_RowClassName="ZeitbereichSerienRow" msprop:Generator_RowChangingName="ZeitbereichSerienRowChanging" msprop:Generator_RowEvArgName="ZeitbereichSerienRowChangeEvent" msprop:Generator_RowEvHandlerName="ZeitbereichSerienRowChangeEventHandler" msprop:Generator_TablePropName="ZeitbereichSerien" msprop:Generator_TableVarName="tableZeitbereichSerien" msprop:Generator_RowDeletingName="ZeitbereichSerienRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDZeitbereich0" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich0" msprop:Generator_ColumnPropNameInRow="IDZeitbereich0" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich0" msprop:Generator_ColumnPropNameInTable="IDZeitbereich0Column" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZeitbereich1" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich1" msprop:Generator_ColumnPropNameInRow="IDZeitbereich1" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich1" msprop:Generator_ColumnPropNameInTable="IDZeitbereich1Column" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZeitbereich2" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich2" msprop:Generator_ColumnPropNameInRow="IDZeitbereich2" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich2" msprop:Generator_ColumnPropNameInTable="IDZeitbereich2Column" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZeitbereich3" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich3" msprop:Generator_ColumnPropNameInRow="IDZeitbereich3" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich3" msprop:Generator_ColumnPropNameInTable="IDZeitbereich3Column" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZeitbereich4" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich4" msprop:Generator_ColumnPropNameInRow="IDZeitbereich4" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich4" msprop:Generator_ColumnPropNameInTable="IDZeitbereich4Column" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZeitbereich5" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich5" msprop:Generator_ColumnPropNameInRow="IDZeitbereich5" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich5" msprop:Generator_ColumnPropNameInTable="IDZeitbereich5Column" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZeitbereich6" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich6" msprop:Generator_ColumnPropNameInRow="IDZeitbereich6" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich6" msprop:Generator_ColumnPropNameInTable="IDZeitbereich6Column" type="xs:string" minOccurs="0" />
+              <xs:element name="IDZeitbereich7" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZeitbereich7" msprop:Generator_ColumnPropNameInRow="IDZeitbereich7" msprop:Generator_ColumnVarNameInTable="columnIDZeitbereich7" msprop:Generator_ColumnPropNameInTable="IDZeitbereich7Column" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ZeitbereichSerien" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

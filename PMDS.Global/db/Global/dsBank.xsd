@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsBank" targetNamespace="http://tempuri.org/dsBank.xsd" xmlns:mstns="http://tempuri.org/dsBank.xsd" xmlns="http://tempuri.org/dsBank.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=S2STY002\TEST;Initial Catalog=PMDS_Hall;User ID=pmds" IsAppSettingsProperty="false" Modifier="Assembly" Name="s2sty002\test.PMDS_Hall.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsBank" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsBank" msprop:Generator_DataSetName="dsBank">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Bank" msprop:Generator_UserTableName="Bank" msprop:Generator_RowDeletedName="BankRowDeleted" msprop:Generator_TableClassName="BankDataTable" msprop:Generator_RowChangedName="BankRowChanged" msprop:Generator_RowClassName="BankRow" msprop:Generator_RowChangingName="BankRowChanging" msprop:Generator_RowEvArgName="BankRowChangeEvent" msprop:Generator_RowEvHandlerName="BankRowChangeEventHandler" msprop:Generator_TablePropName="Bank" msprop:Generator_TableVarName="tableBank" msprop:Generator_RowDeletingName="BankRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Kontonummer" msprop:Generator_UserColumnName="Kontonummer" msprop:Generator_ColumnPropNameInRow="Kontonummer" msprop:Generator_ColumnVarNameInTable="columnKontonummer" msprop:Generator_ColumnPropNameInTable="KontonummerColumn" type="xs:int" />
+              <xs:element name="BLZ" msprop:Generator_UserColumnName="BLZ" msprop:Generator_ColumnPropNameInRow="BLZ" msprop:Generator_ColumnVarNameInTable="columnBLZ" msprop:Generator_ColumnPropNameInTable="BLZColumn" type="xs:int" />
+              <xs:element name="IBAN" msprop:Generator_UserColumnName="IBAN" msprop:Generator_ColumnPropNameInRow="IBAN" msprop:Generator_ColumnVarNameInTable="columnIBAN" msprop:Generator_ColumnPropNameInTable="IBANColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BIC" msprop:Generator_UserColumnName="BIC" msprop:Generator_ColumnPropNameInRow="BIC" msprop:Generator_ColumnVarNameInTable="columnBIC" msprop:Generator_ColumnPropNameInTable="BICColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Bank" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

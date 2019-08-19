@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="file:///G:/hannes/it/develop1/develop.s2/develop1.s2/project.PMDS/PMDS/pmds/PMDS.Main/bin/Config/BIDS_EDIService.xml" filename="BIDS_EDIService.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,3935 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="GENERATOR" content="VSdocman - documentation generator; http://www.helixoft.com" />
+	<title>KlientDetails Class</title>
+
+	<link rel="stylesheet" type="text/css" href="msdn2017/msdn2017.css"></link>
+	<script src="msdn2017/msdn2017.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shCore_helixoft.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushVb.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushCSharp.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushFSharp.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushCpp.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushJScript.js" type="text/javascript"></script>
+	<link href="SyntaxHighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+	<link href="SyntaxHighlighter/styles/shThemeMsdnLW.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>				
+
+	<script type="text/javascript">
+<!--
+if (self.name != "vbdocright") {
+	if (location.search != "?toc=no") {
+		var filename = location.pathname.replace(/\\/g, "/");
+		filename = filename.substring(filename.lastIndexOf('/')+1);
+		location.replace("index.html#" + filename);
+	} 
+}
+
+function replaceTitleAndUrl(win, title, url) {
+	if(history.replaceState) {
+		win.history.replaceState(null, title, url);
+	} else {
+		win.document.title = document.title;
+		win.location.replace(url);
+	}
+}
+//-->
+	</script>	
+</head>
+
+<body style="direction: ltr;">
+	<script type="text/javascript">
+		try {
+			if (location.search != "?toc=no") {
+				parent.document.title = document.title;
+				var filename = location.pathname.replace(/\\/g, "/");
+				filename = filename.substring(filename.lastIndexOf('/')+1);
+				if (window.parent.location.search == null || window.parent.location.search != "?" + filename) {
+					if (window.parent.location.hash == null || window.parent.location.hash != "#" + filename) {
+						replaceTitleAndUrl(window.parent, document.title, "index.html#" + filename);
+					}
+				}
+			}
+		} catch (ex) {}
+	</script>
+	<div id="topic">
+<!--HEADER START-->
+  <div id="header">
+  	<div id="runningHeaderText">PMDS.GUI Reference</div>
+  	<h1 class="title">KlientDetails Class</h1>
+  	<div id="headerLinks">
+
+	<a href="#seeAlsoSection">See Also</a>
+
+		</div>
+		<hr />
+	</div>
+<!--HEADER END-->
+    
+		<div id="mainSection">
+      <div id="mainBody">
+        <p />
+       
+
+
+        <p /><strong>Namespace:</strong>
+<a href="topic_0000000000000688.html">PMDS.BusinessLogic</a>
+
+
+
+
+        <br /><strong>Assembly:</strong> PMDS.GUI (in PMDS.GUI.dll)
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Syntax</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="syntaxSection" class="section">	
+	
+	
+	<div id="syntaxCodeBlocks">
+		<div class="codeSnippetContainer">		
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCornerActive">
+				</div>
+				<div class="codeSnippetTab csFirstTab csActiveTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csLastTab csNaTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCorner">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeVB">
+					<pre xml:space="preserve" class="brush: vb">Public Class KlientDetails</pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+		
+		<div class="codeSnippetContainer">
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCorner">
+				</div>
+				<div class="codeSnippetTab csFirstTab csNaTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csActiveTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csLastTab csNaTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCorner">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeCsharp">
+					<pre xml:space="preserve" class="brush: csharp">public class KlientDetails</pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+
+
+		<div class="codeSnippetContainer">
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCorner">
+				</div>
+				<div class="codeSnippetTab csFirstTab csNaTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csActiveTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csLastTab csNaTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCorner">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeCpp">
+					<pre xml:space="preserve" class="brush: cpp">public ref class KlientDetails </pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+		
+		<div class="codeSnippetContainer">
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCorner">
+				</div>
+				<div class="codeSnippetTab csFirstTab csNaTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csActiveTab csLastTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCornerActive">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeJScript">
+					<pre xml:space="preserve" class="brush: js">public class KlientDetails</pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</div>
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Constructors</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="ConstructorsSection" class="section">	
+  <table class="memberListTable">
+    <tr>
+      <th></th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+
+
+							<tr class="
+	
+	
+	">
+	  <td>
+    <img alt="Public constructor" title="Public constructor" src="msdn2017/pubmethod.png"></img>
+
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_00000000000028C3.html">KlientDetails()</a>
+
+	  </td>
+	  <td>
+	
+	
+	
+		</td>
+	</tr>
+						<tr class="
+	
+	
+	">
+	  <td>
+    <img alt="Public constructor" title="Public constructor" src="msdn2017/pubmethod.png"></img>
+
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_00000000000028C4.html">KlientDetails(Guid, Guid, bool)</a>
+
+	  </td>
+	  <td>
+	
+	Konstruktor zum lesen eines bestimmten Eintrages
+	
+		</td>
+	</tr>
+		
+	
+
+
+  </table>
+
+  <a href="#mainBody">
+    Top
+  </a>
+
+	</div>					
+</div>
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Properties</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="PropertiesSection" class="section">	
+  <table class="memberListTable">
+    <tr>
+      <th></th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D6.html">Adresse</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000293E.html">Anatomie</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028EC.html">Angehörige</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028EA.html">Anrede</a>
+
+	</td>
+	<td>
+
+Liefert Herr oder Frau
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028FD.html">ArbeitslosBezSeit</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D9.html">Aufenthalt</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028CC.html">AufenthaltZusatz</a>
+
+	</td>
+	<td>
+
+Aufenthal Zusatzinformationen
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002918.html">Augenfarbe</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000292B.html">AuszugswunschDatum</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002942.html">Behindertenausweis</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000291C.html">BesondereAeusserlicheKennzeichen</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028EE.html">Besonderheit</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028ED.html">Betreuer</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000292F.html">BewerberBemerkung</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002927.html">BewerbungDatum</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002926.html">BewerbungaktivJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000292C.html">BewerbungsGrund</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028EF.html">BlutGruppe</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028EB.html">Briefname</a>
+
+	</td>
+	<td>
+
+Liefert Titel, Vorname, Nachname
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028DB.html">CLASS_AERZTE</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000290B.html">DNR</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000290E.html">DatumPensionsteilungsantrag</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000290C.html">DatumPflegegeldantrag</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F1.html">Depotinjektion</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000293F.html">Einzelzimmer</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000292A.html">EinzugswunschDatum</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028FB.html">ErlernterBeruf</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000290F.html">FIBUKonto</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F5.html">Familienstand</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000291A.html">FernsehgebuehrbefreiungJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D3.html">FullInfo</a>
+
+	</td>
+	<td>
+
+wichtige Informationen
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D4.html">FullInfoNoAge</a>
+
+	</td>
+	<td>
+
+wichtige Informationen
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D2.html">FullName</a>
+
+	</td>
+	<td>
+
+vollständiger Name
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028DF.html">GEGENSTAENDE</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002904.html">Geburtsdatum</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F9.html">Geburtsort</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002912.html">Groesse</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002919.html">Haarfarbe</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028FE.html">Hauptversicherung</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F2.html">Hausarzt</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002925.html">Haustier</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E1.html">ID</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000293A.html">IDAbteilung</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E2.html">IDAdresse</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E3.html">IDAdresseSub</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028C6.html">IDAuenthalt</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E5.html">IDBenutzer</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000293B.html">IDBereich</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E6.html">IDKontakt</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E4.html">IDKontaktSub</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028C5.html">IDPatient</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000291D.html">Initialberuehrung</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028C8.html">KLIENT_DIENSTLEISTER</a>
+
+	</td>
+	<td>
+
+Alle Dienstleiste eines Klients
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028C7.html">KLIENT_KONTAKTPERSONEN</a>
+
+	</td>
+	<td>
+
+Alle Kontaktpersonen eines Klients
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028C9.html">KLIENT_SACHWALTER</a>
+
+	</td>
+	<td>
+
+Alle Sachwalter eines Klients
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028DA.html">KLINIK</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028CA.html">KONTAKTPERSONEN</a>
+
+	</td>
+	<td>
+
+Liste alle Kontaktpersonen eines Klients
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000293D.html">KZUeberlebender</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000291E.html">Kennwort</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F8.html">Klasse</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002939.html">Klientennummer</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002924.html">Klingeln</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002934.html">KommunionJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F4.html">Konfision</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D7.html">Kontakt</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002915.html">Kosename</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F6.html">KrankenKasse</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028FC.html">KrankengeldSeit</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000291F.html">Krankenkasse</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002933.html">KrankensalbungJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002941.html">KürzungLetzterTagAnwesenheit</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028CB.html">LIST_SACHWALTER</a>
+
+	</td>
+	<td>
+
+Liste alle Sachwalter eines Klients
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028FA.html">LedigerName</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002921.html">LiftJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028DC.html">MEDIZINISCHE_DATEN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000293C.html">Milieubetreuung</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E7.html">Nachname</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002914.html">Namenstag</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028DD.html">PATIENTPFLEGESTUFE</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002936.html">PatientenverfuegungBeachtlichJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002935.html">PatientenverfuegungJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002938.html">PatientverfuegungAnmerkung</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002937.html">PatientverfuegungDatum</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000290D.html">PensionsteilungsantragJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002929.html">PflegeArt</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002908.html">PflegegeldantragJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002928.html">Prioritaet</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002917.html">PrivPolNr</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002916.html">Privatversicherung</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028DE.html">REHABILITATION</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002932.html">ReligionWunsch</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002907.html">RezeptGebuehrbefreiungJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F0.html">Rhesusfaktor</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002911.html">RollungBis</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002910.html">RollungVon</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002902.html">SachWalterBelange</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002906.html">SachWalterBis</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002905.html">SachWalterVon</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002901.html">Sachwalter</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002940.html">Selbstzahler</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002903.html">Sexus</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000292E.html">SonstigeWuensche</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002943.html">Sozialcard</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F3.html">Staatsb</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002913.html">Statur</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028FF.html">SterbeRegel</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000291B.html">TelefongebuehrbefreiungJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E9.html">Titel</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000290A.html">Todeszeitpunkt</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E0.html">UNTERBRINGUNG</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002900.html">Vermerk</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028F7.html">VersicherungsNr</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002909.html">Verstorben</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028E8.html">Vorname</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002930.html">WaescheMarkiert</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002931.html">WaescheWaschen</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002922.html">Wohnsituation</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002920.html">WohnungAbgemeldetJN</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_000000000000292D.html">Zimmerwunsch</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+	
+		<tr class="
+
+
+">
+	<td>
+<img alt="Public property" title="Public property" src="msdn2017/pubproperty.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_0000000000002923.html">Zustaendigestelle</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+	
+
+
+  </table>
+
+  <a href="#mainBody">
+    Top
+  </a>
+
+	</div>					
+</div>
+
+
+
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Methods</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="MethodsSection" class="section">	
+  <table class="memberListTable">
+    <tr>
+      <th></th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+
+
+
+
+	<tr class="
+inheritedMember 
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a target="_top" href="http://msdn2.microsoft.com/en-us/library/bsc2ak47.aspx">Equals(Object)</a>
+
+	</td>
+	<td>
+
+Determines whether the specified object is equal to the current object.
+(inherited from <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">Object</a>).
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+inheritedMember 
+
+
+">
+	<td>
+  <img alt="Protected method" title="Protected method" src="msdn2017/protmethod.png"></img>
+
+    
+	  
+
+    
+	</td>
+	<td>
+	<a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.finalize.aspx">Finalize</a>
+
+	</td>
+	<td>
+
+Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
+(inherited from <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">Object</a>).
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D5.html">FullInfoWithFormat(string)</a>
+
+	</td>
+	<td>
+
+wichtige Informationen mit Formatierung ausgeben
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+inheritedMember 
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.gethashcode.aspx">GetHashCode</a>
+
+	</td>
+	<td>
+
+Serves as the default hash function.
+(inherited from <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">Object</a>).
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+inheritedMember 
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.gettype.aspx">GetType</a>
+
+	</td>
+	<td>
+
+Gets the <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.type.aspx">Type</a> of the current instance.
+(inherited from <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">Object</a>).
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D1.html">GetkontalPersonen(bool)</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+inheritedMember 
+
+
+">
+	<td>
+  <img alt="Protected method" title="Protected method" src="msdn2017/protmethod.png"></img>
+
+    
+	  
+
+    
+	</td>
+	<td>
+	<a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.memberwiseclone.aspx">MemberwiseClone</a>
+
+	</td>
+	<td>
+
+Creates a shallow copy of the current <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">Object</a>.
+(inherited from <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">Object</a>).
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028CE.html">New()</a>
+
+	</td>
+	<td>
+
+Neues Eintrag
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028CD.html">Read()</a>
+
+	</td>
+	<td>
+
+Daten lesen
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+inheritedMember 
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.tostring.aspx">ToString</a>
+
+	</td>
+	<td>
+
+Returns a string that represents the current object.
+(inherited from <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">Object</a>).
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028CF.html">Write(bool, bool, bool)</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D0.html">WriteAufenthalt(bool)</a>
+
+	</td>
+	<td>
+
+
+
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+	<tr class="
+
+
+">
+	<td>
+<img alt="Public method" title="Public method" src="msdn2017/pubmethod.png"></img>
+	  
+
+    
+	</td>
+	<td>
+	<a href="topic_00000000000028D8.html">newAufenthalt()</a>
+
+	</td>
+	<td>
+
+aktueller Aufenthalt
+
+	</td>
+</tr>
+
+
+
+
+
+
+  </table>
+
+  <a href="#mainBody">
+    Top
+  </a>
+
+	</div>					
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<!-- Classes -->
+
+<!-- Classes End -->
+
+<!-- Standard Modules -->
+
+<!-- Standard Modules End -->
+
+  
+
+
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Fields</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="FieldsSection" class="section">	
+  <table class="memberListTable">
+    <tr>
+      <th></th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+
+	<tr class="
+	
+	
+	">
+	  <td>
+		    <img alt="Public field" title="Public field" src="msdn2017/pubfield.png"></img>
+	    
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_00000000000028C0.html">_Aerzte</a>
+	  </td>
+	  <td>
+	
+	
+	
+		</td>
+	</tr>
+	<tr class="
+	
+	
+	">
+	  <td>
+		    <img alt="Public field" title="Public field" src="msdn2017/pubfield.png"></img>
+	    
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_00000000000028BF.html">_unterbringung</a>
+	  </td>
+	  <td>
+	
+	
+	
+		</td>
+	</tr>
+	<tr class="
+	
+	
+	">
+	  <td>
+		    <img alt="Public field" title="Public field" src="msdn2017/pubfield.png"></img>
+	    
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_00000000000028C1.html">b</a>
+	  </td>
+	  <td>
+	
+	
+	
+		</td>
+	</tr>
+	<tr class="
+	
+	
+	">
+	  <td>
+		    <img alt="Public field" title="Public field" src="msdn2017/pubfield.png"></img>
+	    
+		    <img alt="Static" title="Static" src="msdn2017/static.png"></img>
+	
+	    
+	  </td>
+	  <td>
+	    <a href="topic_00000000000028C2.html">searchLastEntlassenenAufenthalt</a>
+	  </td>
+	  <td>
+	
+	
+	
+		</td>
+	</tr>
+
+  </table>
+
+  <a href="#mainBody">
+    Top
+  </a>
+
+	</div>					
+</div>
+
+
+
+
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Inheritance Hierarchy</a></span>
+		<div><hr /></div>
+	</div>
+
+<div id="inheritanceHierarchySection" class="section">
+
+<div style="padding-left:0em;"><a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.object.aspx">System.Object</a>
+</div>
+
+
+
+<div style="padding-left:1em;">PMDS.BusinessLogic.KlientDetails</div>
+
+				
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Applies to</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="frameworksSection" class="section">	
+  <h4 class="subHeading">.NET Framework</h4>Supported in: 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1<br />
+
+
+
+
+
+
+
+
+
+
+	
+	
+	</div>					
+</div>
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">See Also</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="seeAlsoSection" class="section">	
+		<div>
+	<a href="topic_0000000000000688.html">PMDS.BusinessLogic Namespace</a><br />
+
+
+	
+
+		</div>
+	</div>					
+</div>
+			</div>
+			</div>
+      <div id="footer">
+      	<p><span style="color: #FF0000;">Generated with unregistered version of <a target="_top" href="http://www.helixoft.com/vsdocman/overview.html">VSdocman</a></span>&nbsp;<br />Your own footer text will only be shown in registered version.</p>
+      </div>
+    </div>
+  	<script type="text/javascript">
+<!--
+	try {
+		parent.frames["vbdocswitch"].expandLinkInToc(location.href);
+	} catch (ex) {}
+//-->
+		</script>	
+  </body>
+</html>
+

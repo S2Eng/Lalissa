@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDokumentendaten" targetNamespace="http://tempuri.org/dsDokumentendaten.xsd" xmlns:mstns="http://tempuri.org/dsDokumentendaten.xsd" xmlns="http://tempuri.org/dsDokumentendaten.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDokumentendaten" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsDokumentendaten" msprop:Generator_DataSetName="dsDokumentendaten">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblDokumente" msprop:Generator_UserTableName="tblDokumente" msprop:Generator_RowDeletedName="tblDokumenteRowDeleted" msprop:Generator_TableClassName="tblDokumenteDataTable" msprop:Generator_RowChangedName="tblDokumenteRowChanged" msprop:Generator_RowClassName="tblDokumenteRow" msprop:Generator_RowChangingName="tblDokumenteRowChanging" msprop:Generator_RowEvArgName="tblDokumenteRowChangeEvent" msprop:Generator_RowEvHandlerName="tblDokumenteRowChangeEventHandler" msprop:Generator_TablePropName="tblDokumente" msprop:Generator_TableVarName="tabletblDokumente" msprop:Generator_RowDeletingName="tblDokumenteRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDOrdner" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDOrdner" msprop:Generator_ColumnPropNameInRow="IDOrdner" msprop:Generator_ColumnVarNameInTable="columnIDOrdner" msprop:Generator_ColumnPropNameInTable="IDOrdnerColumn" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Notiz" msprop:Generator_UserColumnName="Notiz" msprop:Generator_ColumnPropNameInRow="Notiz" msprop:Generator_ColumnVarNameInTable="columnNotiz" msprop:Generator_ColumnPropNameInTable="NotizColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GültigVon" msprop:Generator_UserColumnName="GültigVon" msprop:Generator_ColumnPropNameInRow="GültigVon" msprop:Generator_ColumnVarNameInTable="columnGültigVon" msprop:Generator_ColumnPropNameInTable="GültigVonColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="GültigBis" msprop:Generator_UserColumnName="GültigBis" msprop:Generator_ColumnPropNameInRow="GültigBis" msprop:Generator_ColumnVarNameInTable="columnGültigBis" msprop:Generator_ColumnPropNameInTable="GültigBisColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Wichtigkeit" msprop:Generator_UserColumnName="Wichtigkeit" msprop:Generator_ColumnPropNameInRow="Wichtigkeit" msprop:Generator_ColumnVarNameInTable="columnWichtigkeit" msprop:Generator_ColumnPropNameInTable="WichtigkeitColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErstelltAm" msprop:Generator_UserColumnName="ErstelltAm" msprop:Generator_ColumnPropNameInRow="ErstelltAm" msprop:Generator_ColumnVarNameInTable="columnErstelltAm" msprop:Generator_ColumnPropNameInTable="ErstelltAmColumn" type="xs:dateTime" />
+              <xs:element name="ErstelltVon" msprop:Generator_UserColumnName="ErstelltVon" msprop:Generator_ColumnPropNameInRow="ErstelltVon" msprop:Generator_ColumnVarNameInTable="columnErstelltVon" msprop:Generator_ColumnPropNameInTable="ErstelltVonColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BezeichnungOrdner" msprop:Generator_UserColumnName="BezeichnungOrdner" msprop:Generator_ColumnPropNameInRow="BezeichnungOrdner" msprop:Generator_ColumnVarNameInTable="columnBezeichnungOrdner" msprop:Generator_ColumnPropNameInTable="BezeichnungOrdnerColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateinameArchiv" msprop:Generator_UserColumnName="DateinameArchiv" msprop:Generator_ColumnPropNameInRow="DateinameArchiv" msprop:Generator_ColumnVarNameInTable="columnDateinameArchiv" msprop:Generator_ColumnPropNameInTable="DateinameArchivColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateinameTyp" msprop:Generator_UserColumnName="DateinameTyp" msprop:Generator_ColumnPropNameInRow="DateinameTyp" msprop:Generator_ColumnVarNameInTable="columnDateinameTyp" msprop:Generator_ColumnPropNameInTable="DateinameTypColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Archivordner" msprop:Generator_UserColumnName="Archivordner" msprop:Generator_ColumnPropNameInRow="Archivordner" msprop:Generator_ColumnVarNameInTable="columnArchivordner" msprop:Generator_ColumnPropNameInTable="ArchivordnerColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DokumentGröße" msprop:Generator_UserColumnName="DokumentGröße" msprop:Generator_ColumnPropNameInRow="DokumentGröße" msprop:Generator_ColumnVarNameInTable="columnDokumentGröße" msprop:Generator_ColumnPropNameInTable="DokumentGrößeColumn" type="xs:double" />
+              <xs:element name="IDDokument" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDDokument" msprop:Generator_ColumnPropNameInRow="IDDokument" msprop:Generator_ColumnVarNameInTable="columnIDDokument" msprop:Generator_ColumnPropNameInTable="IDDokumentColumn" type="xs:string" />
+              <xs:element name="IDDokumenteintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDDokumenteintrag" msprop:Generator_ColumnPropNameInRow="IDDokumenteintrag" msprop:Generator_ColumnVarNameInTable="columnIDDokumenteintrag" msprop:Generator_ColumnPropNameInTable="IDDokumenteintragColumn" type="xs:string" />
+              <xs:element name="IDFach" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDFach" msprop:Generator_ColumnPropNameInRow="IDFach" msprop:Generator_ColumnVarNameInTable="columnIDFach" msprop:Generator_ColumnPropNameInTable="IDFachColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblDokumente" />
+      <xs:field xpath="mstns:IDDokument" />
+      <xs:field xpath="mstns:IDDokumenteintrag" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

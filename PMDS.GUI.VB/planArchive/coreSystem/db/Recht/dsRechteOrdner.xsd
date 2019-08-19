@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRechteOrdner" targetNamespace="http://tempuri.org/dsRechteOrdner.xsd" xmlns:mstns="http://tempuri.org/dsRechteOrdner.xsd" xmlns="http://tempuri.org/dsRechteOrdner.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRechteOrdner" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsRechteOrdner" msprop:Generator_DataSetName="dsRechteOrdner">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblRechteOrdner" msprop:Generator_UserTableName="tblRechteOrdner" msprop:Generator_RowDeletedName="tblRechteOrdnerRowDeleted" msprop:Generator_TableClassName="tblRechteOrdnerDataTable" msprop:Generator_RowChangedName="tblRechteOrdnerRowChanged" msprop:Generator_RowClassName="tblRechteOrdnerRow" msprop:Generator_RowChangingName="tblRechteOrdnerRowChanging" msprop:Generator_RowEvArgName="tblRechteOrdnerRowChangeEvent" msprop:Generator_RowEvHandlerName="tblRechteOrdnerRowChangeEventHandler" msprop:Generator_TablePropName="tblRechteOrdner" msprop:Generator_TableVarName="tabletblRechteOrdner" msprop:Generator_RowDeletingName="tblRechteOrdnerRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDOrdner" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDOrdner" msprop:Generator_ColumnPropNameInRow="IDOrdner" msprop:Generator_ColumnVarNameInTable="columnIDOrdner" msprop:Generator_ColumnPropNameInTable="IDOrdnerColumn" type="xs:string" />
+              <xs:element name="IDGruppe" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDGruppe" msprop:Generator_ColumnPropNameInRow="IDGruppe" msprop:Generator_ColumnVarNameInTable="columnIDGruppe" msprop:Generator_ColumnPropNameInTable="IDGruppeColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblRechteOrdner" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsFormular" targetNamespace="http://www.tempuri.org/dsFormular.xsd" xmlns:mstns="http://www.tempuri.org/dsFormular.xsd" xmlns="http://www.tempuri.org/dsFormular.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsFormular" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_DataSetName="dsFormular" msprop:Generator_UserDSName="dsFormular">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Formular" msprop:Generator_TableClassName="FormularDataTable" msprop:Generator_TableVarName="tableFormular" msprop:Generator_TablePropName="Formular" msprop:Generator_RowDeletingName="FormularRowDeleting" msprop:Generator_RowChangingName="FormularRowChanging" msprop:Generator_RowEvHandlerName="FormularRowChangeEventHandler" msprop:Generator_RowDeletedName="FormularRowDeleted" msprop:Generator_UserTableName="Formular" msprop:Generator_RowChangedName="FormularRowChanged" msprop:Generator_RowEvArgName="FormularRowChangeEvent" msprop:Generator_RowClassName="FormularRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" />
+              <xs:element name="BLOP" msprop:Generator_ColumnVarNameInTable="columnBLOP" msprop:Generator_ColumnPropNameInRow="BLOP" msprop:Generator_ColumnPropNameInTable="BLOPColumn" msprop:Generator_UserColumnName="BLOP" type="xs:string" />
+              <xs:element name="GUI" msprop:Generator_ColumnVarNameInTable="columnGUI" msprop:Generator_ColumnPropNameInRow="GUI" msprop:Generator_ColumnPropNameInTable="GUIColumn" msprop:Generator_UserColumnName="GUI" type="xs:boolean" />
+              <xs:element name="InNotfallAnzeigenJN" msprop:Generator_ColumnVarNameInTable="columnInNotfallAnzeigenJN" msprop:Generator_ColumnPropNameInRow="InNotfallAnzeigenJN" msprop:Generator_ColumnPropNameInTable="InNotfallAnzeigenJNColumn" msprop:Generator_UserColumnName="InNotfallAnzeigenJN" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Formular" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

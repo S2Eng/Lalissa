@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_Service1_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.Main" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Service1_initService_InputMessage">
+    <wsdl:part name="parameters" element="tns:initService" />
+  </wsdl:message>
+  <wsdl:message name="Service1_initService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:initServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_sendExceptionAsSMTPEMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendExceptionAsSMTPEMail" />
+  </wsdl:message>
+  <wsdl:message name="Service1_sendExceptionAsSMTPEMail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendExceptionAsSMTPEMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_testRep_InputMessage">
+    <wsdl:part name="parameters" element="tns:testRep" />
+  </wsdl:message>
+  <wsdl:message name="Service1_testRep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testRepResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getLastStammdaten_InputMessage">
+    <wsdl:part name="parameters" element="tns:getLastStammdaten" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getLastStammdaten_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getLastStammdatenResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getLastBenutzer_InputMessage">
+    <wsdl:part name="parameters" element="tns:getLastBenutzer" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getLastBenutzer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getLastBenutzerResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getLastPatienten_InputMessage">
+    <wsdl:part name="parameters" element="tns:getLastPatienten" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getLastPatienten_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getLastPatientenResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_genCDA_InputMessage">
+    <wsdl:part name="parameters" element="tns:genCDA" />
+  </wsdl:message>
+  <wsdl:message name="Service1_genCDA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:genCDAResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_Export_InputMessage">
+    <wsdl:part name="parameters" element="tns:Export" />
+  </wsdl:message>
+  <wsdl:message name="Service1_Export_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_DynReportsInitStructure_InputMessage">
+    <wsdl:part name="parameters" element="tns:DynReportsInitStructure" />
+  </wsdl:message>
+  <wsdl:message name="Service1_DynReportsInitStructure_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DynReportsInitStructureResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_testPDFIum_InputMessage">
+    <wsdl:part name="parameters" element="tns:testPDFIum" />
+  </wsdl:message>
+  <wsdl:message name="Service1_testPDFIum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testPDFIumResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getDataSerialized_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDataSerialized" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getDataSerialized_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDataSerializedResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getvKlientenliste_InputMessage">
+    <wsdl:part name="parameters" element="tns:getvKlientenliste" />
+  </wsdl:message>
+  <wsdl:message name="Service1_getvKlientenliste_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getvKlientenlisteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1">
+    <wsdl:operation name="initService">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/initService" message="tns:Service1_initService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/initServiceResponse" message="tns:Service1_initService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendExceptionAsSMTPEMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/sendExceptionAsSMTPEMail" message="tns:Service1_sendExceptionAsSMTPEMail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/sendExceptionAsSMTPEMailResponse" message="tns:Service1_sendExceptionAsSMTPEMail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="testRep">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/testRep" message="tns:Service1_testRep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/testRepResponse" message="tns:Service1_testRep_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getLastStammdaten">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/getLastStammdaten" message="tns:Service1_getLastStammdaten_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/getLastStammdatenResponse" message="tns:Service1_getLastStammdaten_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getLastBenutzer">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/getLastBenutzer" message="tns:Service1_getLastBenutzer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/getLastBenutzerResponse" message="tns:Service1_getLastBenutzer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getLastPatienten">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/getLastPatienten" message="tns:Service1_getLastPatienten_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/getLastPatientenResponse" message="tns:Service1_getLastPatienten_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="genCDA">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/genCDA" message="tns:Service1_genCDA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/genCDAResponse" message="tns:Service1_genCDA_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Export">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/Export" message="tns:Service1_Export_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ExportResponse" message="tns:Service1_Export_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DynReportsInitStructure">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/DynReportsInitStructure" message="tns:Service1_DynReportsInitStructure_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/DynReportsInitStructureResponse" message="tns:Service1_DynReportsInitStructure_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="testPDFIum">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/testPDFIum" message="tns:Service1_testPDFIum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/testPDFIumResponse" message="tns:Service1_testPDFIum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDataSerialized">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/getDataSerialized" message="tns:Service1_getDataSerialized_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/getDataSerializedResponse" message="tns:Service1_getDataSerialized_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getvKlientenliste">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/getvKlientenliste" message="tns:Service1_getvKlientenliste_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/getvKlientenlisteResponse" message="tns:Service1_getvKlientenliste_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_Service1" type="tns:Service1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="initService">
+      <soap:operation soapAction="http://tempuri.org/Service1/initService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendExceptionAsSMTPEMail">
+      <soap:operation soapAction="http://tempuri.org/Service1/sendExceptionAsSMTPEMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testRep">
+      <soap:operation soapAction="http://tempuri.org/Service1/testRep" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastStammdaten">
+      <soap:operation soapAction="http://tempuri.org/Service1/getLastStammdaten" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastBenutzer">
+      <soap:operation soapAction="http://tempuri.org/Service1/getLastBenutzer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastPatienten">
+      <soap:operation soapAction="http://tempuri.org/Service1/getLastPatienten" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="genCDA">
+      <soap:operation soapAction="http://tempuri.org/Service1/genCDA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Export">
+      <soap:operation soapAction="http://tempuri.org/Service1/Export" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DynReportsInitStructure">
+      <soap:operation soapAction="http://tempuri.org/Service1/DynReportsInitStructure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testPDFIum">
+      <soap:operation soapAction="http://tempuri.org/Service1/testPDFIum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataSerialized">
+      <soap:operation soapAction="http://tempuri.org/Service1/getDataSerialized" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getvKlientenliste">
+      <soap:operation soapAction="http://tempuri.org/Service1/getvKlientenliste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_Service1" type="tns:Service1">
+    <wsp:PolicyReference URI="#NetTcpBinding_Service1_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="initService">
+      <soap12:operation soapAction="http://tempuri.org/Service1/initService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendExceptionAsSMTPEMail">
+      <soap12:operation soapAction="http://tempuri.org/Service1/sendExceptionAsSMTPEMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testRep">
+      <soap12:operation soapAction="http://tempuri.org/Service1/testRep" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastStammdaten">
+      <soap12:operation soapAction="http://tempuri.org/Service1/getLastStammdaten" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastBenutzer">
+      <soap12:operation soapAction="http://tempuri.org/Service1/getLastBenutzer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLastPatienten">
+      <soap12:operation soapAction="http://tempuri.org/Service1/getLastPatienten" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="genCDA">
+      <soap12:operation soapAction="http://tempuri.org/Service1/genCDA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Export">
+      <soap12:operation soapAction="http://tempuri.org/Service1/Export" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DynReportsInitStructure">
+      <soap12:operation soapAction="http://tempuri.org/Service1/DynReportsInitStructure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testPDFIum">
+      <soap12:operation soapAction="http://tempuri.org/Service1/testPDFIum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDataSerialized">
+      <soap12:operation soapAction="http://tempuri.org/Service1/getDataSerialized" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getvKlientenliste">
+      <soap12:operation soapAction="http://tempuri.org/Service1/getvKlientenliste" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_Service1" binding="tns:BasicHttpBinding_Service1">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/" />
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_Service1" binding="tns:NetTcpBinding_Service1">
+      <soap12:address location="net.tcp://localhost:8734/Design_Time_Addresses/WCFServicePMDS/Service1/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8734/Design_Time_Addresses/WCFServicePMDS/Service1/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>STYHL2\Lettn</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

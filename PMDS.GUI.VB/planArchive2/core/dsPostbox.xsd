@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPostbox" targetNamespace="http://tempuri.org/dsPostbox.xsd" xmlns:mstns="http://tempuri.org/dsPostbox.xsd" xmlns="http://tempuri.org/dsPostbox.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPostbox" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPostbox" msprop:Generator_DataSetName="dsPostbox" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblPostbox" msprop:Generator_UserTableName="tblPostbox" msprop:Generator_RowDeletedName="tblPostboxRowDeleted" msprop:Generator_RowChangedName="tblPostboxRowChanged" msprop:Generator_RowClassName="tblPostboxRow" msprop:Generator_RowChangingName="tblPostboxRowChanging" msprop:Generator_RowEvArgName="tblPostboxRowChangeEvent" msprop:Generator_RowEvHandlerName="tblPostboxRowChangeEventHandler" msprop:Generator_TableClassName="tblPostboxDataTable" msprop:Generator_TableVarName="tabletblPostbox" msprop:Generator_RowDeletingName="tblPostboxRowDeleting" msprop:Generator_TablePropName="tblPostbox">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Übernehmen" msprop:Generator_UserColumnName="Übernehmen" msprop:Generator_ColumnVarNameInTable="columnÜbernehmen" msprop:Generator_ColumnPropNameInRow="Übernehmen" msprop:Generator_ColumnPropNameInTable="ÜbernehmenColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Datei" msprop:Generator_UserColumnName="Datei" msprop:Generator_ColumnVarNameInTable="columnDatei" msprop:Generator_ColumnPropNameInRow="Datei" msprop:Generator_ColumnPropNameInTable="DateiColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="DateiMitPfad" msprop:Generator_UserColumnName="DateiMitPfad" msprop:Generator_ColumnVarNameInTable="columnDateiMitPfad" msprop:Generator_ColumnPropNameInRow="DateiMitPfad" msprop:Generator_ColumnPropNameInTable="DateiMitPfadColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Erstellt" msprop:Generator_UserColumnName="Erstellt" msprop:Generator_ColumnVarNameInTable="columnErstellt" msprop:Generator_ColumnPropNameInRow="Erstellt" msprop:Generator_ColumnPropNameInTable="ErstelltColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Grösse" msprop:Generator_UserColumnName="Grösse" msprop:Generator_ColumnVarNameInTable="columnGrösse" msprop:Generator_ColumnPropNameInRow="Grösse" msprop:Generator_ColumnPropNameInTable="GrösseColumn" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

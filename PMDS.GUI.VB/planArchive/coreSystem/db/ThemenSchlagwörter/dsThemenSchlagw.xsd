@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="dsThemen" targetNamespace="http://www.tempuri.org/dsThemen.xsd" xmlns:mstns="http://www.tempuri.org/dsThemen.xsd"
+	xmlns="http://www.tempuri.org/dsThemen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="dsThemen" msdata:IsDataSet="true" msdata:Locale="de-DE">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="tblThemen">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+								type="xs:string" />
+							<xs:element name="Thema" type="xs:string" />
+							<xs:element name="ErstelltAm" type="xs:dateTime" />
+							<xs:element name="ErstelltVon" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="tblSchlagwörter">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+								type="xs:string" />
+							<xs:element name="IDThema" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+								type="xs:string" />
+							<xs:element name="Schlagwort" type="xs:string" />
+							<xs:element name="ErstelltAm" type="xs:dateTime" />
+							<xs:element name="ErstelltVon" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="Constraint1" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:tblThemen" />
+			<xs:field xpath="mstns:ID" />
+		</xs:unique>
+		<xs:unique name="dsThemenKey1" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:tblSchlagwörter" />
+			<xs:field xpath="mstns:ID" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

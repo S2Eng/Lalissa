@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSonderleistungsKatalog" targetNamespace="http://tempuri.org/dsSonderleistungsKatalog.xsd" xmlns:mstns="http://tempuri.org/dsSonderleistungsKatalog.xsd" xmlns="http://tempuri.org/dsSonderleistungsKatalog.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSonderleistungsKatalog" msdata:IsDataSet="true" msdata:Locale="en-US" msprop:Generator_DataSetName="dsSonderleistungsKatalog" msprop:Generator_UserDSName="dsSonderleistungsKatalog">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SonderleistungsKatalog" msprop:Generator_TableClassName="SonderleistungsKatalogDataTable" msprop:Generator_TableVarName="tableSonderleistungsKatalog" msprop:Generator_RowChangedName="SonderleistungsKatalogRowChanged" msprop:Generator_TablePropName="SonderleistungsKatalog" msprop:Generator_RowDeletingName="SonderleistungsKatalogRowDeleting" msprop:Generator_RowChangingName="SonderleistungsKatalogRowChanging" msprop:Generator_RowEvHandlerName="SonderleistungsKatalogRowChangeEventHandler" msprop:Generator_RowDeletedName="SonderleistungsKatalogRowDeleted" msprop:Generator_RowClassName="SonderleistungsKatalogRow" msprop:Generator_UserTableName="SonderleistungsKatalog" msprop:Generator_RowEvArgName="SonderleistungsKatalogRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" />
+              <xs:element name="Betrag" msprop:Generator_ColumnVarNameInTable="columnBetrag" msprop:Generator_ColumnPropNameInRow="Betrag" msprop:Generator_ColumnPropNameInTable="BetragColumn" msprop:Generator_UserColumnName="Betrag" type="xs:double" />
+              <xs:element name="Mwst" msprop:Generator_ColumnVarNameInTable="columnMwst" msprop:Generator_ColumnPropNameInRow="Mwst" msprop:Generator_ColumnPropNameInTable="MwstColumn" msprop:Generator_UserColumnName="Mwst" type="xs:int" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+              <xs:element name="FIBU" msprop:Generator_ColumnVarNameInTable="columnFIBU" msprop:Generator_ColumnPropNameInRow="FIBU" msprop:Generator_ColumnPropNameInTable="FIBUColumn" msprop:Generator_UserColumnName="FIBU">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="dsSonderleistungsKatalogKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SonderleistungsKatalog" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPDXAnamnese" targetNamespace="http://tempuri.org/dsPDXAnamnese.xsd" xmlns:mstns="http://tempuri.org/dsPDXAnamnese.xsd" xmlns="http://tempuri.org/dsPDXAnamnese.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI.1;Data Source=s2sty076;User ID=pmds;Initial Catalog=PMDS_3_5_0" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPDXAnamnese" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPDXAnamnese" msprop:Generator_DataSetName="dsPDXAnamnese">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PDXAnamnese" msprop:Generator_UserTableName="PDXAnamnese" msprop:Generator_RowDeletedName="PDXAnamneseRowDeleted" msprop:Generator_TableClassName="PDXAnamneseDataTable" msprop:Generator_RowChangedName="PDXAnamneseRowChanged" msprop:Generator_RowClassName="PDXAnamneseRow" msprop:Generator_RowChangingName="PDXAnamneseRowChanging" msprop:Generator_RowEvArgName="PDXAnamneseRowChangeEvent" msprop:Generator_RowEvHandlerName="PDXAnamneseRowChangeEventHandler" msprop:Generator_TablePropName="PDXAnamnese" msprop:Generator_TableVarName="tablePDXAnamnese" msprop:Generator_RowDeletingName="PDXAnamneseRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Modell" msprop:Generator_UserColumnName="Modell" msprop:Generator_ColumnPropNameInRow="Modell" msprop:Generator_ColumnVarNameInTable="columnModell" msprop:Generator_ColumnPropNameInTable="ModellColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Modellgruppe" msprop:Generator_UserColumnName="Modellgruppe" msprop:Generator_ColumnPropNameInRow="Modellgruppe" msprop:Generator_ColumnVarNameInTable="columnModellgruppe" msprop:Generator_ColumnPropNameInTable="ModellgruppeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IDAnamneseKrohwinkel" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAnamneseKrohwinkel" msprop:Generator_ColumnPropNameInRow="IDAnamneseKrohwinkel" msprop:Generator_ColumnVarNameInTable="columnIDAnamneseKrohwinkel" msprop:Generator_ColumnPropNameInTable="IDAnamneseKrohwinkelColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAnamneseOrem" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAnamneseOrem" msprop:Generator_ColumnPropNameInRow="IDAnamneseOrem" msprop:Generator_ColumnVarNameInTable="columnIDAnamneseOrem" msprop:Generator_ColumnPropNameInTable="IDAnamneseOremColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAnamneseNanda" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAnamneseNanda" msprop:Generator_ColumnPropNameInRow="IDAnamneseNanda" msprop:Generator_ColumnVarNameInTable="columnIDAnamneseNanda" msprop:Generator_ColumnPropNameInTable="IDAnamneseNandaColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAnamneseRT" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAnamneseRT" msprop:Generator_ColumnPropNameInRow="IDAnamneseRT" msprop:Generator_ColumnVarNameInTable="columnIDAnamneseRT" msprop:Generator_ColumnPropNameInTable="IDAnamneseRTColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAnamneseJuchli" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAnamneseJuchli" msprop:Generator_ColumnPropNameInRow="IDAnamneseJuchli" msprop:Generator_ColumnVarNameInTable="columnIDAnamneseJuchli" msprop:Generator_ColumnPropNameInTable="IDAnamneseJuchliColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAnamneseRAI" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAnamneseRAI" msprop:Generator_ColumnPropNameInRow="IDAnamneseRAI" msprop:Generator_ColumnVarNameInTable="columnIDAnamneseRAI" msprop:Generator_ColumnPropNameInTable="IDAnamneseRAIColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDPDX" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPDX" msprop:Generator_ColumnPropNameInRow="IDPDX" msprop:Generator_ColumnVarNameInTable="columnIDPDX" msprop:Generator_ColumnPropNameInTable="IDPDXColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Resourceklient" msprop:Generator_UserColumnName="Resourceklient" msprop:Generator_ColumnPropNameInRow="Resourceklient" msprop:Generator_ColumnVarNameInTable="columnResourceklient" msprop:Generator_ColumnPropNameInTable="ResourceklientColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2028" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDAnamnesePOP" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAnamnesePOP" msprop:Generator_ColumnPropNameInRow="IDAnamnesePOP" msprop:Generator_ColumnVarNameInTable="columnIDAnamnesePOP" msprop:Generator_ColumnPropNameInTable="IDAnamnesePOPColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PDXAnamnese" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

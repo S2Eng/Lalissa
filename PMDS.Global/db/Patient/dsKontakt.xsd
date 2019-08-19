@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes" ?>
+<xs:schema id="dsKontakt" targetNamespace="http://www.tempuri.org/dsKontakt.xsd" xmlns:mstns="http://www.tempuri.org/dsKontakt.xsd"
+	xmlns="http://www.tempuri.org/dsKontakt.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+	<xs:element name="dsKontakt" msdata:IsDataSet="true" msdata:Locale="de-AT">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Kontakt">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+								type="xs:string" />
+							<xs:element name="Tel" type="xs:string" minOccurs="0" />
+							<xs:element name="Fax" type="xs:string" minOccurs="0" />
+							<xs:element name="Mobil" type="xs:string" minOccurs="0" />
+							<xs:element name="Andere" type="xs:string" minOccurs="0" />
+							<xs:element name="Email" type="xs:string" minOccurs="0" />
+							<xs:element name="Ansprechpartner" type="xs:string" minOccurs="0" />
+							<xs:element name="Zusatz1" type="xs:string" minOccurs="0" />
+							<xs:element name="Zusatz2" type="xs:string" minOccurs="0" />
+							<xs:element name="Zusatz3" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="Constraint1" msdata:PrimaryKey="true">
+			<xs:selector xpath=".//mstns:Kontakt" />
+			<xs:field xpath="mstns:ID" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

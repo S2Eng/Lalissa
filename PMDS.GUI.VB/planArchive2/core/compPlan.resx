@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="dbConn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="daPlan.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbInsertCommand1.CommandText" xml:space="preserve">
+    <value>INSERT INTO [plan] ([ID], [Betreff], [BeginntAm], [FälligAm], [IDArt], [Priorität], [Status], [readed], [deleted], [design], [Text], [Zusatz], [MailFrom], [MailAn], [MailCC], [MailBcc], [html], [Für], [gesendetAm], [empfangenAm], [wichtig], [remembJN], [remembMinut], [Teilnehmer], [ErstelltVon], [ErstelltAm], [IDActivity], [IDStatus], [IDTyp], [KommStatus], [db], [IDUserAccount], [MessageId], [DetailsMIME], [IDPlanMain], [AwaitingResponse], [ReplyTxt], [IsOwner], [IDFolder], [ID1Tmp], [ID2Tmp], [ID3Tmp], [SendWithPostOfficeBoxForAll], [OutlookAPI], [ConversationID], [IDoutlook], [IDoutlookTicks], [Category], [Folder], [LastChangeITSCont], [LastSyncToExchange], [Wochentage], [nTenMonat], [SerienterminType], [IDSerientermin], [TagWochenMonat], [WiedWertJeden], [EndetAm], [Dauer], [GanzerTag], [IsSerientermin], [SerienterminEndetAm], [IDKlinik]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
+  <metadata name="OleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand1.CommandText" xml:space="preserve">
+    <value>SELECT        ID, Betreff, BeginntAm, FälligAm, IDArt, Priorität, Status, readed, deleted, design, Text, Zusatz, MailFrom, MailAn, MailCC, MailBcc, html, Für, gesendetAm, empfangenAm, wichtig, remembJN, remembMinut, Teilnehmer, 
+                         ErstelltVon, ErstelltAm, IDActivity, IDStatus, IDTyp, KommStatus, db, IDUserAccount, MessageId, DetailsMIME, IDPlanMain, AwaitingResponse, ReplyTxt, IsOwner, IDFolder, ID1Tmp, ID2Tmp, ID3Tmp, 
+                         SendWithPostOfficeBoxForAll, OutlookAPI, ConversationID, IDoutlook, IDoutlookTicks, Category, Folder, LastChangeITSCont, LastSyncToExchange, Wochentage, nTenMonat, SerienterminType, IDSerientermin, 
+                         TagWochenMonat, WiedWertJeden, EndetAm, Dauer, GanzerTag, IsSerientermin, SerienterminEndetAm, IDKlinik
+FROM            [plan]</value>
+  </data>
+  <metadata name="OleDbUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [plan] SET [ID] = ?, [Betreff] = ?, [BeginntAm] = ?, [FälligAm] = ?, [IDArt] = ?, [Priorität] = ?, [Status] = ?, [readed] = ?, [deleted] = ?, [design] = ?, [Text] = ?, [Zusatz] = ?, [MailFrom] = ?, [MailAn] = ?, [MailCC] = ?, [MailBcc] = ?, [html] = ?, [Für] = ?, [gesendetAm] = ?, [empfangenAm] = ?, [wichtig] = ?, [remembJN] = ?, [remembMinut] = ?, [Teilnehmer] = ?, [ErstelltVon] = ?, [ErstelltAm] = ?, [IDActivity] = ?, [IDStatus] = ?, [IDTyp] = ?, [KommStatus] = ?, [db] = ?, [IDUserAccount] = ?, [MessageId] = ?, [DetailsMIME] = ?, [IDPlanMain] = ?, [AwaitingResponse] = ?, [ReplyTxt] = ?, [IsOwner] = ?, [IDFolder] = ?, [ID1Tmp] = ?, [ID2Tmp] = ?, [ID3Tmp] = ?, [SendWithPostOfficeBoxForAll] = ?, [OutlookAPI] = ?, [ConversationID] = ?, [IDoutlook] = ?, [IDoutlookTicks] = ?, [Category] = ?, [Folder] = ?, [LastChangeITSCont] = ?, [LastSyncToExchange] = ?, [Wochentage] = ?, [nTenMonat] = ?, [SerienterminType] = ?, [IDSerientermin] = ?, [TagWochenMonat] = ?, [WiedWertJeden] = ?, [EndetAm] = ?, [Dauer] = ?, [GanzerTag] = ?, [IsSerientermin] = ?, [SerienterminEndetAm] = ?, [IDKlinik] = ? WHERE (([ID] = ?))</value>
+  </data>
+  <metadata name="daPlanAnhang.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="OleDbCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand3.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand4.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daPlanObject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>614, 134</value>
+  </metadata>
+  <metadata name="OleDbCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand5.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand6.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand6.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand7.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand7.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand7.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand8.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand8.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daPlanSearch.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>906, 134</value>
+  </metadata>
+  <metadata name="OleDbCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand15.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand15.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbCommand15.CommandText" xml:space="preserve">
+    <value>SELECT        Betreff, BeginntAm, FälligAm, IDArt, Priorität, Status, Text, Zusatz, MailAn, MailCC, html, Für, gesendetAm, remembJN, remembMinut, wichtig, Teilnehmer, ErstelltVon, ErstelltAm, ID, IDActivity, IDStatus, IDTyp, KommStatus, db, 
+                         deleted,
+                             (SELECT        COUNT(*) AS anzObjects
+                               FROM            planObject
+                               WHERE        ([plan].ID = IDPlan)) AS anzObjects, design, MailBcc, IDUserAccount, MailFrom, readed, empfangenAm, MessageId,
+                             (SELECT        COUNT(*) AS anzAnhänge
+                               FROM            planAnhang
+                               WHERE        ([plan].ID = IDPlan)) AS anzAnhänge, IDPlanMain, ReplyTxt, IsOwner, AwaitingResponse, IDFolder, SendWithPostOfficeBoxForAll, OutlookAPI, ConversationID, IDoutlook, IDoutlookTicks, Category, Folder, 
+                         LastChangeITSCont, LastSyncToExchange, Wochentage, nTenMonat, SerienterminType, IDSerientermin, TagWochenMonat, WiedWertJeden, EndetAm, Dauer, GanzerTag, IsSerientermin, SerienterminEndetAm, 
+                         '' AS PatientName, '00000000-0000-0000-0000-000000000000' AS IDPatient, 0 AS WithPatients, '' as DauerStr , '' as ObjectStatus 
+FROM            [plan]</value>
+  </data>
+  <metadata name="daPlanStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>310, 134</value>
+  </metadata>
+  <metadata name="OleDbCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand13.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand13.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand14.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand14.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand14.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand16.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand16.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>454, 251</value>
+  </metadata>
+  <metadata name="OleDbCommand16.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand17.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand17.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand17.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daPlanSearchPatients.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>738, 134</value>
+  </metadata>
+  <metadata name="OleDbCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand9.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbCommand9.CommandText" xml:space="preserve">
+    <value>SELECT        [plan].Betreff, [plan].BeginntAm, [plan].FälligAm, [plan].IDArt, [plan].Priorität, [plan].Status, [plan].Text, [plan].Zusatz, [plan].MailAn, [plan].MailCC, [plan].html, [plan].Für, [plan].gesendetAm, [plan].remembJN, [plan].remembMinut, 
+                         [plan].wichtig, [plan].Teilnehmer, [plan].ErstelltVon, [plan].ErstelltAm, [plan].ID, [plan].IDActivity, [plan].IDStatus, [plan].IDTyp, [plan].KommStatus, [plan].db, [plan].deleted,
+                             (SELECT        COUNT(*) AS anzObjects
+                               FROM            planObject
+                               WHERE        ([plan].ID = IDPlan)) AS anzObjects, [plan].design, [plan].MailBcc, [plan].IDUserAccount, [plan].MailFrom, [plan].readed, [plan].empfangenAm, [plan].MessageId,
+                             (SELECT        COUNT(*) AS anzAnhänge
+                               FROM            planAnhang
+                               WHERE        ([plan].ID = IDPlan)) AS anzAnhänge, [plan].IDPlanMain, [plan].ReplyTxt, [plan].IsOwner, [plan].AwaitingResponse, [plan].IDFolder, [plan].SendWithPostOfficeBoxForAll, [plan].OutlookAPI, [plan].ConversationID, 
+                         [plan].IDoutlook, [plan].IDoutlookTicks, [plan].Category, [plan].Folder, [plan].LastChangeITSCont, [plan].LastSyncToExchange, [plan].Wochentage, [plan].nTenMonat, [plan].SerienterminType, [plan].IDSerientermin, 
+                         [plan].TagWochenMonat, [plan].WiedWertJeden, [plan].EndetAm, [plan].Dauer, [plan].GanzerTag, [plan].IsSerientermin, [plan].SerienterminEndetAm, Patient.Nachname + ' ' + Patient.Vorname AS PatientName, 
+                         Patient.ID AS IDPatient, 1 AS WithPatients, '' AS DauerStr, planObject_1.Status AS ObjectStatus
+FROM            [plan] INNER JOIN
+                         planObject AS planObject_1 ON [plan].ID = planObject_1.IDPlan INNER JOIN
+                         Patient ON planObject_1.IDObject = Patient.ID</value>
+  </data>
+  <metadata name="OleDbSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand2.CommandText" xml:space="preserve">
+    <value>SELECT        [plan].Betreff, [plan].BeginntAm, [plan].FälligAm, [plan].IDArt, [plan].Priorität, [plan].Status, [plan].Text, [plan].Zusatz, [plan].MailAn, [plan].MailCC, [plan].html, [plan].Für, [plan].gesendetAm, [plan].remembJN, [plan].remembMinut, 
+                         [plan].wichtig, [plan].Teilnehmer, [plan].ErstelltVon, [plan].ErstelltAm, [plan].ID, [plan].IDActivity, [plan].IDStatus, [plan].IDTyp, [plan].KommStatus, [plan].db, [plan].deleted,
+                             (SELECT        COUNT(*) AS anzObjects
+                               FROM            planObject
+                               WHERE        ([plan].ID = IDPlan)) AS anzObjects, [plan].design, [plan].MailBcc, [plan].IDUserAccount, [plan].MailFrom, [plan].readed, [plan].empfangenAm, [plan].MessageId,
+                             (SELECT        COUNT(*) AS anzAnhänge
+                               FROM            planAnhang
+                               WHERE        ([plan].ID = IDPlan)) AS anzAnhänge, [plan].IDPlanMain, [plan].ReplyTxt, [plan].IsOwner, [plan].AwaitingResponse, [plan].IDFolder, [plan].SendWithPostOfficeBoxForAll, [plan].OutlookAPI, [plan].ConversationID, 
+                         [plan].IDoutlook, [plan].IDoutlookTicks, [plan].Category, [plan].Folder, [plan].LastChangeITSCont, [plan].LastSyncToExchange, [plan].Wochentage, [plan].nTenMonat, [plan].SerienterminType, [plan].IDSerientermin, 
+                         [plan].TagWochenMonat, [plan].WiedWertJeden, [plan].EndetAm, [plan].Dauer, [plan].GanzerTag, [plan].IsSerientermin, [plan].SerienterminEndetAm, Patient.Nachname + ' ' + Patient.Vorname AS PatientName, 
+                         Patient.ID AS IDPatient, 1 AS WithPatients, '' AS DauerStr, planObject_1.Status AS ObjectStatus
+FROM            Patient LEFT OUTER JOIN
+                         planObject AS planObject_1 ON Patient.ID = planObject_1.IDObject RIGHT OUTER JOIN
+                         [plan] ON planObject_1.IDPlan = [plan].ID</value>
+  </data>
+  <metadata name="daPlanSearchPatientsAll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>432, 134</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>

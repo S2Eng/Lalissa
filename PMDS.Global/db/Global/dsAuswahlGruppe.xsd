@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAuswahlGruppe" targetNamespace="http://www.tempuri.org/dsAuswahlGruppe.xsd" xmlns:mstns="http://www.tempuri.org/dsAuswahlGruppe.xsd" xmlns="http://www.tempuri.org/dsAuswahlGruppe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAuswahlGruppe" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsAuswahlGruppe" msprop:Generator_UserDSName="dsAuswahlGruppe">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AuswahlListeGruppe" msprop:Generator_TableClassName="AuswahlListeGruppeDataTable" msprop:Generator_TableVarName="tableAuswahlListeGruppe" msprop:Generator_TablePropName="AuswahlListeGruppe" msprop:Generator_RowDeletingName="AuswahlListeGruppeRowDeleting" msprop:Generator_RowChangingName="AuswahlListeGruppeRowChanging" msprop:Generator_RowEvHandlerName="AuswahlListeGruppeRowChangeEventHandler" msprop:Generator_RowDeletedName="AuswahlListeGruppeRowDeleted" msprop:Generator_UserTableName="AuswahlListeGruppe" msprop:Generator_RowChangedName="AuswahlListeGruppeRowChanged" msprop:Generator_RowEvArgName="AuswahlListeGruppeRowChangeEvent" msprop:Generator_RowClassName="AuswahlListeGruppeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" minOccurs="0" />
+              <xs:element name="sys" msprop:Generator_ColumnVarNameInTable="columnsys" msprop:Generator_ColumnPropNameInRow="sys" msprop:Generator_ColumnPropNameInTable="sysColumn" msprop:Generator_UserColumnName="sys" type="xs:boolean" />
+              <xs:element name="ExactMatch" msprop:Generator_ColumnVarNameInTable="columnExactMatch" msprop:Generator_ColumnPropNameInRow="ExactMatch" msprop:Generator_ColumnPropNameInTable="ExactMatchColumn" msprop:Generator_UserColumnName="ExactMatch" type="xs:boolean" />
+              <xs:element name="PflichtJN" msprop:Generator_ColumnVarNameInTable="columnPflichtJN" msprop:Generator_ColumnPropNameInRow="PflichtJN" msprop:Generator_ColumnPropNameInTable="PflichtJNColumn" msprop:Generator_UserColumnName="PflichtJN" type="xs:boolean" />
+              <xs:element name="ElgaJN" msprop:Generator_ColumnVarNameInTable="columnElgaJN" msprop:Generator_ColumnPropNameInRow="ElgaJN" msprop:Generator_ColumnPropNameInTable="ElgaJNColumn" msprop:Generator_UserColumnName="ElgaJN" type="xs:boolean" />
+              <xs:element name="IntID" msprop:Generator_ColumnVarNameInTable="columnIntID" msprop:Generator_ColumnPropNameInRow="IntID" msprop:Generator_ColumnPropNameInTable="IntIDColumn" msprop:Generator_UserColumnName="IntID" type="xs:int" />
+              <xs:element name="ELGA_UseMeaning" msprop:Generator_ColumnVarNameInTable="columnELGA_UseMeaning" msprop:Generator_ColumnPropNameInRow="ELGA_UseMeaning" msprop:Generator_ColumnPropNameInTable="ELGA_UseMeaningColumn" msprop:Generator_UserColumnName="ELGA_UseMeaning" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AuswahlListe" msprop:Generator_TableClassName="AuswahlListeDataTable" msprop:Generator_TableVarName="tableAuswahlListe" msprop:Generator_TablePropName="AuswahlListe" msprop:Generator_RowDeletingName="AuswahlListeRowDeleting" msprop:Generator_RowChangingName="AuswahlListeRowChanging" msprop:Generator_RowEvHandlerName="AuswahlListeRowChangeEventHandler" msprop:Generator_RowDeletedName="AuswahlListeRowDeleted" msprop:Generator_UserTableName="AuswahlListe" msprop:Generator_RowChangedName="AuswahlListeRowChanged" msprop:Generator_RowEvArgName="AuswahlListeRowChangeEvent" msprop:Generator_RowClassName="AuswahlListeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDAuswahlListeGruppe" msprop:Generator_ColumnVarNameInTable="columnIDAuswahlListeGruppe" msprop:Generator_ColumnPropNameInRow="IDAuswahlListeGruppe" msprop:Generator_ColumnPropNameInTable="IDAuswahlListeGruppeColumn" msprop:Generator_UserColumnName="IDAuswahlListeGruppe" type="xs:string" minOccurs="0" />
+              <xs:element name="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" msprop:Generator_UserColumnName="Reihenfolge" type="xs:int" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" minOccurs="0" />
+              <xs:element name="IstGruppe" msprop:Generator_ColumnVarNameInTable="columnIstGruppe" msprop:Generator_ColumnPropNameInRow="IstGruppe" msprop:Generator_ColumnPropNameInTable="IstGruppeColumn" msprop:Generator_UserColumnName="IstGruppe" type="xs:boolean" />
+              <xs:element name="GehörtzuGruppe" msprop:Generator_ColumnVarNameInTable="columnGehörtzuGruppe" msprop:Generator_ColumnPropNameInRow="GehörtzuGruppe" msprop:Generator_ColumnPropNameInTable="GehörtzuGruppeColumn" msprop:Generator_UserColumnName="GehörtzuGruppe">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Hierarche" msprop:Generator_ColumnVarNameInTable="columnHierarche" msprop:Generator_ColumnPropNameInRow="Hierarche" msprop:Generator_ColumnPropNameInTable="HierarcheColumn" msprop:Generator_UserColumnName="Hierarche" type="xs:int" />
+              <xs:element name="Beschreibung" msprop:Generator_ColumnVarNameInTable="columnBeschreibung" msprop:Generator_ColumnPropNameInRow="Beschreibung" msprop:Generator_ColumnPropNameInTable="BeschreibungColumn" msprop:Generator_UserColumnName="Beschreibung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Unterdruecken" msprop:Generator_ColumnVarNameInTable="columnUnterdruecken" msprop:Generator_ColumnPropNameInRow="Unterdruecken" msprop:Generator_ColumnPropNameInTable="UnterdrueckenColumn" msprop:Generator_UserColumnName="Unterdruecken" type="xs:boolean" />
+              <xs:element name="ELGA_ID" msprop:Generator_ColumnVarNameInTable="columnELGA_ID" msprop:Generator_ColumnPropNameInRow="ELGA_ID" msprop:Generator_ColumnPropNameInTable="ELGA_IDColumn" msprop:Generator_UserColumnName="ELGA_ID" type="xs:int" />
+              <xs:element name="ELGA_Code" msprop:Generator_ColumnVarNameInTable="columnELGA_Code" msprop:Generator_ColumnPropNameInRow="ELGA_Code" msprop:Generator_ColumnPropNameInTable="ELGA_CodeColumn" msprop:Generator_UserColumnName="ELGA_Code">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGA_CodeSystem" msprop:Generator_ColumnVarNameInTable="columnELGA_CodeSystem" msprop:Generator_ColumnPropNameInRow="ELGA_CodeSystem" msprop:Generator_ColumnPropNameInTable="ELGA_CodeSystemColumn" msprop:Generator_UserColumnName="ELGA_CodeSystem">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGA_DisplayName" msprop:Generator_ColumnVarNameInTable="columnELGA_DisplayName" msprop:Generator_ColumnPropNameInRow="ELGA_DisplayName" msprop:Generator_ColumnPropNameInTable="ELGA_DisplayNameColumn" msprop:Generator_UserColumnName="ELGA_DisplayName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGA_Version" msprop:Generator_ColumnVarNameInTable="columnELGA_Version" msprop:Generator_ColumnPropNameInRow="ELGA_Version" msprop:Generator_ColumnPropNameInTable="ELGA_VersionColumn" msprop:Generator_UserColumnName="ELGA_Version">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AuswahlListeGruppe" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="AuswahlListe_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AuswahlListe" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

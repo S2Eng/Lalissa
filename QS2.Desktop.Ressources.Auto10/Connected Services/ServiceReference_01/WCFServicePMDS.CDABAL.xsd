@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="CDA.CDAIN">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDAufenthalt" type="ser:guid" />
+      <xs:element minOccurs="0" name="IDBenutzer" type="ser:guid" />
+      <xs:element minOccurs="0" name="IDBenutzerVidierung" type="ser:guid" />
+      <xs:element minOccurs="0" name="IDDocument" type="ser:guid" />
+      <xs:element minOccurs="0" name="IDEinrichtungEmpfänger" type="ser:guid" />
+      <xs:element minOccurs="0" name="IDSet" type="ser:guid" />
+      <xs:element minOccurs="0" name="TypeCDA" type="tns:CDA.eTypeCDA" />
+      <xs:element minOccurs="0" name="VersionsNr" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CDA.CDAIN" nillable="true" type="tns:CDA.CDAIN" />
+  <xs:simpleType name="CDA.eTypeCDA">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Entlassungsbrief" />
+      <xs:enumeration value="Pflegesituationbericht" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CDA.eTypeCDA" nillable="true" type="tns:CDA.eTypeCDA" />
+  <xs:complexType name="CDA.CDABack">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="docu" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CDA.CDABack" nillable="true" type="tns:CDA.CDABack" />
+</xs:schema>

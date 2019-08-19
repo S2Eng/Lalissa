@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsKlientPflegestufe" targetNamespace="http://tempuri.org/dsKlientPflegestufe.xsd" xmlns:mstns="http://tempuri.org/dsKlientPflegestufe.xsd" xmlns="http://tempuri.org/dsKlientPflegestufe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsKlientPflegestufe" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsKlientPflegestufe" msprop:Generator_UserDSName="dsKlientPflegestufe">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PatientPflegestufe" msprop:Generator_TableClassName="PatientPflegestufeDataTable" msprop:Generator_RowEvArgName="PatientPflegestufeRowChangeEvent" msprop:Generator_TableVarName="tablePatientPflegestufe" msprop:Generator_TablePropName="PatientPflegestufe" msprop:Generator_RowDeletingName="PatientPflegestufeRowDeleting" msprop:Generator_RowChangingName="PatientPflegestufeRowChanging" msprop:Generator_RowEvHandlerName="PatientPflegestufeRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientPflegestufeRowDeleted" msprop:Generator_RowChangedName="PatientPflegestufeRowChanged" msprop:Generator_UserTableName="PatientPflegestufe" msprop:Generator_RowClassName="PatientPflegestufeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" />
+              <xs:element name="IDPflegegeldstufe" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPflegegeldstufe" msprop:Generator_ColumnPropNameInRow="IDPflegegeldstufe" msprop:Generator_ColumnPropNameInTable="IDPflegegeldstufeColumn" msprop:Generator_UserColumnName="IDPflegegeldstufe" type="xs:string" />
+              <xs:element name="BetragVerwendbar" msprop:Generator_ColumnVarNameInTable="columnBetragVerwendbar" msprop:Generator_ColumnPropNameInRow="BetragVerwendbar" msprop:Generator_ColumnPropNameInTable="BetragVerwendbarColumn" msprop:Generator_UserColumnName="BetragVerwendbar" type="xs:double" />
+              <xs:element name="GutschriftProTagAbwesend" msprop:Generator_ColumnVarNameInTable="columnGutschriftProTagAbwesend" msprop:Generator_ColumnPropNameInRow="GutschriftProTagAbwesend" msprop:Generator_ColumnPropNameInTable="GutschriftProTagAbwesendColumn" msprop:Generator_UserColumnName="GutschriftProTagAbwesend" type="xs:double" />
+              <xs:element name="GueltigAb" msprop:Generator_ColumnVarNameInTable="columnGueltigAb" msprop:Generator_ColumnPropNameInRow="GueltigAb" msprop:Generator_ColumnPropNameInTable="GueltigAbColumn" msprop:Generator_UserColumnName="GueltigAb" type="xs:dateTime" />
+              <xs:element name="AenderungsantragDatum" msprop:Generator_ColumnVarNameInTable="columnAenderungsantragDatum" msprop:Generator_ColumnPropNameInRow="AenderungsantragDatum" msprop:Generator_ColumnPropNameInTable="AenderungsantragDatumColumn" msprop:Generator_UserColumnName="AenderungsantragDatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDPflegegeldstufeAntrag" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPflegegeldstufeAntrag" msprop:Generator_ColumnPropNameInRow="IDPflegegeldstufeAntrag" msprop:Generator_ColumnPropNameInTable="IDPflegegeldstufeAntragColumn" msprop:Generator_UserColumnName="IDPflegegeldstufeAntrag" type="xs:string" minOccurs="0" />
+              <xs:element name="GenehmigungDatum" msprop:Generator_ColumnVarNameInTable="columnGenehmigungDatum" msprop:Generator_ColumnPropNameInRow="GenehmigungDatum" msprop:Generator_ColumnPropNameInTable="GenehmigungDatumColumn" msprop:Generator_UserColumnName="GenehmigungDatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDPflegegeldstufeGenehmigt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPflegegeldstufeGenehmigt" msprop:Generator_ColumnPropNameInRow="IDPflegegeldstufeGenehmigt" msprop:Generator_ColumnPropNameInTable="IDPflegegeldstufeGenehmigtColumn" msprop:Generator_UserColumnName="IDPflegegeldstufeGenehmigt" type="xs:string" minOccurs="0" />
+              <xs:element name="GueltigBis" msprop:Generator_ColumnVarNameInTable="columnGueltigBis" msprop:Generator_ColumnPropNameInRow="GueltigBis" msprop:Generator_ColumnPropNameInTable="GueltigBisColumn" msprop:Generator_UserColumnName="GueltigBis" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PatientPflegestufe" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

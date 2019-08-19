@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAbteilung" targetNamespace="http://www.tempuri.org/dsAbteilung.xsd" xmlns:mstns="http://www.tempuri.org/dsAbteilung.xsd" xmlns="http://www.tempuri.org/dsAbteilung.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAbteilung" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_DataSetName="dsAbteilung" msprop:Generator_UserDSName="dsAbteilung">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Abteilung" msprop:Generator_TableClassName="AbteilungDataTable" msprop:Generator_RowEvArgName="AbteilungRowChangeEvent" msprop:Generator_TableVarName="tableAbteilung" msprop:Generator_TablePropName="Abteilung" msprop:Generator_RowDeletingName="AbteilungRowDeleting" msprop:Generator_RowChangingName="AbteilungRowChanging" msprop:Generator_RowEvHandlerName="AbteilungRowChangeEventHandler" msprop:Generator_RowDeletedName="AbteilungRowDeleted" msprop:Generator_UserTableName="Abteilung" msprop:Generator_RowChangedName="AbteilungRowChanged" msprop:Generator_RowClassName="AbteilungRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" minOccurs="0" />
+              <xs:element name="IDKontakt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKontakt" msprop:Generator_ColumnPropNameInRow="IDKontakt" msprop:Generator_ColumnPropNameInTable="IDKontaktColumn" msprop:Generator_UserColumnName="IDKontakt" type="xs:string" minOccurs="0" />
+              <xs:element name="Tel" msprop:Generator_ColumnVarNameInTable="columnTel" msprop:Generator_ColumnPropNameInRow="Tel" msprop:Generator_ColumnPropNameInTable="TelColumn" msprop:Generator_UserColumnName="Tel" type="xs:string" minOccurs="0" />
+              <xs:element name="Fax" msprop:Generator_ColumnVarNameInTable="columnFax" msprop:Generator_ColumnPropNameInRow="Fax" msprop:Generator_ColumnPropNameInTable="FaxColumn" msprop:Generator_UserColumnName="Fax" type="xs:string" minOccurs="0" />
+              <xs:element name="Mobil" msprop:Generator_ColumnVarNameInTable="columnMobil" msprop:Generator_ColumnPropNameInRow="Mobil" msprop:Generator_ColumnPropNameInTable="MobilColumn" msprop:Generator_UserColumnName="Mobil" type="xs:string" minOccurs="0" />
+              <xs:element name="Andere" msprop:Generator_ColumnVarNameInTable="columnAndere" msprop:Generator_ColumnPropNameInRow="Andere" msprop:Generator_ColumnPropNameInTable="AndereColumn" msprop:Generator_UserColumnName="Andere" type="xs:string" minOccurs="0" />
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" type="xs:string" minOccurs="0" />
+              <xs:element name="Ansprechpartner" msprop:Generator_ColumnVarNameInTable="columnAnsprechpartner" msprop:Generator_ColumnPropNameInRow="Ansprechpartner" msprop:Generator_ColumnPropNameInTable="AnsprechpartnerColumn" msprop:Generator_UserColumnName="Ansprechpartner" type="xs:string" minOccurs="0" />
+              <xs:element name="Zusatz1" msprop:Generator_ColumnVarNameInTable="columnZusatz1" msprop:Generator_ColumnPropNameInRow="Zusatz1" msprop:Generator_ColumnPropNameInTable="Zusatz1Column" msprop:Generator_UserColumnName="Zusatz1" type="xs:string" minOccurs="0" />
+              <xs:element name="Zusatz2" msprop:Generator_ColumnVarNameInTable="columnZusatz2" msprop:Generator_ColumnPropNameInRow="Zusatz2" msprop:Generator_ColumnPropNameInTable="Zusatz2Column" msprop:Generator_UserColumnName="Zusatz2" type="xs:string" minOccurs="0" />
+              <xs:element name="Zusatz3" msprop:Generator_ColumnVarNameInTable="columnZusatz3" msprop:Generator_ColumnPropNameInRow="Zusatz3" msprop:Generator_ColumnPropNameInTable="Zusatz3Column" msprop:Generator_UserColumnName="Zusatz3" type="xs:string" minOccurs="0" />
+              <xs:element name="RMOptionalJN" msprop:Generator_ColumnVarNameInTable="columnRMOptionalJN" msprop:Generator_ColumnPropNameInRow="RMOptionalJN" msprop:Generator_ColumnPropNameInTable="RMOptionalJNColumn" msprop:Generator_UserColumnName="RMOptionalJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" msprop:Generator_UserColumnName="Reihenfolge" type="xs:int" minOccurs="0" />
+              <xs:element name="Basisabteilung" msprop:Generator_ColumnVarNameInTable="columnBasisabteilung" msprop:Generator_ColumnPropNameInRow="Basisabteilung" msprop:Generator_ColumnPropNameInTable="BasisabteilungColumn" msprop:Generator_UserColumnName="Basisabteilung" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Abteilung2" msprop:Generator_TableClassName="Abteilung2DataTable" msprop:Generator_TableVarName="tableAbteilung2" msprop:Generator_TablePropName="Abteilung2" msprop:Generator_RowDeletingName="Abteilung2RowDeleting" msprop:Generator_RowChangingName="Abteilung2RowChanging" msprop:Generator_RowEvHandlerName="Abteilung2RowChangeEventHandler" msprop:Generator_RowDeletedName="Abteilung2RowDeleted" msprop:Generator_UserTableName="Abteilung2" msprop:Generator_RowChangedName="Abteilung2RowChanged" msprop:Generator_RowEvArgName="Abteilung2RowChangeEvent" msprop:Generator_RowClassName="Abteilung2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDKontakt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKontakt" msprop:Generator_ColumnPropNameInRow="IDKontakt" msprop:Generator_ColumnPropNameInTable="IDKontaktColumn" msprop:Generator_UserColumnName="IDKontakt" type="xs:string" minOccurs="0" />
+              <xs:element name="RMOptionalJN" msprop:Generator_ColumnVarNameInTable="columnRMOptionalJN" msprop:Generator_ColumnPropNameInRow="RMOptionalJN" msprop:Generator_ColumnPropNameInTable="RMOptionalJNColumn" msprop:Generator_UserColumnName="RMOptionalJN" type="xs:boolean" />
+              <xs:element name="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" msprop:Generator_UserColumnName="Reihenfolge" type="xs:int" />
+              <xs:element name="Basisabteilung" msprop:Generator_ColumnVarNameInTable="columnBasisabteilung" msprop:Generator_ColumnPropNameInRow="Basisabteilung" msprop:Generator_ColumnPropNameInTable="BasisabteilungColumn" msprop:Generator_UserColumnName="Basisabteilung" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Bereich" msprop:Generator_TableClassName="BereichDataTable" msprop:Generator_TableVarName="tableBereich" msprop:Generator_RowChangedName="BereichRowChanged" msprop:Generator_TablePropName="Bereich" msprop:Generator_RowDeletingName="BereichRowDeleting" msprop:Generator_RowChangingName="BereichRowChanging" msprop:Generator_RowEvHandlerName="BereichRowChangeEventHandler" msprop:Generator_RowDeletedName="BereichRowDeleted" msprop:Generator_RowClassName="BereichRow" msprop:Generator_UserTableName="Bereich" msprop:Generator_RowEvArgName="BereichRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" msprop:Generator_UserColumnName="IDAbteilung" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBereich" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBereich" msprop:Generator_ColumnPropNameInRow="IDBereich" msprop:Generator_ColumnPropNameInTable="IDBereichColumn" msprop:Generator_UserColumnName="IDBereich" type="xs:string" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnterAerztlicheFuehrungJN" msprop:Generator_ColumnVarNameInTable="columnUnterAerztlicheFuehrungJN" msprop:Generator_ColumnPropNameInRow="UnterAerztlicheFuehrungJN" msprop:Generator_ColumnPropNameInTable="UnterAerztlicheFuehrungJNColumn" msprop:Generator_UserColumnName="UnterAerztlicheFuehrungJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" msprop:Generator_UserColumnName="Reihenfolge" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="dsAbteilungKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Abteilung" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Abteilung2" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Bereich_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Bereich" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

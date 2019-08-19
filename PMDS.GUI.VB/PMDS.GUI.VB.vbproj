@@ -1,0 +1,1322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B7669B9A-B0F4-4B3A-8778-67F9FB324635}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PMDS.GUI.VB</RootNamespace>
+    <AssemblyName>PMDS.GUI.VB</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\PMDS.Main\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\PMDS.Main\bin\Debug\</OutputPath>
+    <DocumentationFile>PMDS.GUI.VB.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PMDS.GUI.VB.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>PMDS.GUI.VB.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>PMDS.GUI.VB.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Excel.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Excel.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.IO.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.IO.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Reports.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Reports.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.CSharp.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.CSharp.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.TSql.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.TSql.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.TextDocument.VisualBasic.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.TextDocument.VisualBasic.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Documents.Word.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Word.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Math.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Math.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Adomd.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Adomd.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Flat.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Flat.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataProvider.Xmla.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataProvider.Xmla.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Flat.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Flat.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Mdx.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Mdx.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Olap.DataSource.Xmla.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Olap.DataSource.Xmla.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Undo.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Undo.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.AppStylistSupport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.AppStylistSupport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.Barcode.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Barcode.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.Shared.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.Shared.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraDataChart.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraDataChart.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraGauges.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGauges.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraGeographicMap.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraGeographicMap.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.DataVisualization.UltraSparkline.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.DataVisualization.UltraSparkline.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Misc.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Misc.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Portable.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.Portable.Core.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.SupportDialogs.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.SupportDialogs.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraChart.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraChart.v17.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraGauge.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraGauge.v17.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v17.2.FormulaBuilder, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCalcManager.v17.2.FormulaBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCarousel.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinCarousel.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinChart.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinChart.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDataSource.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDataSource.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinDock.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinDock.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinExplorerBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinExplorerBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinFormattedText.WordWriter.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinFormattedText.WordWriter.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGanttView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGanttView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGauge.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGauge.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.DocumentExport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.DocumentExport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.ExcelExport.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.ExcelExport.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.WordWriter.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGrid.WordWriter.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinInkProvider.Ink17.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinInkProvider.Ink17.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinListView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinListView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinLiveTileView.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinLiveTileView.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinMaskedEdit.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinMaskedEdit.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinOfficeNavBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinOfficeNavBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinPivotGrid.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPivotGrid.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinPrintPreviewDialog.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinRadialMenu.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinRadialMenu.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSchedule.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSchedule.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSpellChecker.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpellChecker.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSpreadsheet.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinSpreadsheet.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinStatusBar.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabbedMdi.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabbedMdi.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTabControl.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinToolbars.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTree.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinTree.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Dlls\Microsoft.mshtml.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf, Version=3.10.5.2704, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\PMDS.Main\packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.WinForms, Version=3.10.5.0, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\PMDS.Main\packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.Wpf, Version=3.10.5.0, Culture=neutral, PublicKeyToken=37f2796639c62e77, processorArchitecture=MSIL">
+      <HintPath>..\PMDS.Main\packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PMDS.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\PMDS.db.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="qs2.core, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.core.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.core.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.core.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.db.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.design.auto, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.Txteditor, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.Txteditor.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.UI.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.UI.cs.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.UI.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.UI.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.functions.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.functions.cs.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Logging.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Logging.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.sitemap, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.sitemap.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.sitemap.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.sitemap.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui">
+      <HintPath>..\Dlls\qs2.ui.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui.comm.scan">
+      <HintPath>..\Dlls\qs2.ui.comm.scan.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui.vb">
+      <HintPath>..\Dlls\qs2.ui.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryExpress, Version=1.0.4713.31774, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QueryExpress.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=16.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\15.1.0.41\precompiledassemblies\15.1.0.41\4.0\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=16.2400.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\15.1.0.41\precompiledassemblies\15.1.0.41\4.0\Syncfusion.PdfViewer.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TXDocumentServer, Version=25.0.1100.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDocumentServer.Windows.Forms, Version=25.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing, Version=25.0.300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing.Windows.Forms, Version=25.0.300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXSpell, Version=7.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXSpell.Windows.Forms, Version=7.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl, Version=25.0.1800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl.Server, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl.Windows.Forms, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WinFormHtmlEditor">
+      <HintPath>..\Dlls\WinFormHtmlEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Biografie\contBiografienVorh.Designer.vb">
+      <DependentUpon>contBiografienVorh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Biografie\contBiografienVorh.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Biografie\frmBiografieAdd.Designer.vb">
+      <DependentUpon>frmBiografieAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Biografie\frmBiografieAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Biografie\ucBiografie.Designer.vb">
+      <DependentUpon>ucBiografie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Biografie\ucBiografie.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="buildUI.vb" />
+    <Compile Include="core\PMDSBusinessVB.vb" />
+    <Compile Include="Gibodat\db\dbBase.vb" />
+    <Compile Include="Gibodat\db\DoImport.vb" />
+    <Compile Include="Gibodat\db\dsGibodat.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsGibodat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Gibodat\db\dsGibodat.vb">
+      <DependentUpon>dsGibodat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Gibodat\db\dsPMDS1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPMDS1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Gibodat\db\daGibodat.Designer.vb">
+      <DependentUpon>daGibodat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gibodat\db\daGibodat.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gibodat\db\daPMDS.Designer.vb">
+      <DependentUpon>daPMDS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gibodat\db\daPMDS.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="gridExport.designer.vb">
+      <DependentUpon>gridExport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gridExport.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gibodat\frmImportGibodat.Designer.vb">
+      <DependentUpon>frmImportGibodat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Gibodat\frmImportGibodat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="planArchive2\archive\contArchAbleg.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\contArchMain.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\contArchSuch.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\contEditDocument.designer.vb">
+      <DependentUpon>contEditDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\contEditDocument.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\contOrdner.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\contSelectDocuName.designer.vb">
+      <DependentUpon>contSelectDocuName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\contSelectDocuName.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\contStammDat.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\dropDownGridSelList.designer.vb">
+      <DependentUpon>dropDownGridSelList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\dropDownGridSelList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmArchAbleg.designer.vb">
+      <DependentUpon>frmArchAbleg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmArchAbleg.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmArchiv.designer.vb">
+      <DependentUpon>frmArchiv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmArchiv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmEditDocu.designer.vb">
+      <DependentUpon>frmEditDocu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmEditDocu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmSelectDocuName.designer.vb">
+      <DependentUpon>frmSelectDocuName.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmSelectDocuName.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmStammDat.designer.vb">
+      <DependentUpon>frmStammDat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmStammDat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmUserInput.designer.vb">
+      <DependentUpon>frmUserInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\archive\frmUserInput.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\archive\UIElements.vb" />
+    <Compile Include="planArchive2\core\clPlan.vb" />
+    <Compile Include="planArchive2\core\compAutoDocu.Designer.vb">
+      <DependentUpon>compAutoDocu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\compAutoDocu.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="planArchive2\core\compDoku.Designer.vb">
+      <DependentUpon>compDoku.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\compDoku.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="planArchive2\core\compInterop.Designer.vb">
+      <DependentUpon>compInterop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\compInterop.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="planArchive2\core\compPlan.Designer.vb">
+      <DependentUpon>compPlan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\compPlan.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="planArchive2\core\compUserAccounts.Designer.vb">
+      <DependentUpon>compUserAccounts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\compUserAccounts.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="planArchive2\core\cOutlookWebAPI.vb" />
+    <Compile Include="planArchive2\core\dbArchiv.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbArchiv.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dbArchiv.vb">
+      <DependentUpon>dbArchiv.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\doDoc.vb" />
+    <Compile Include="planArchive2\core\doUI.vb" />
+    <Compile Include="planArchive2\core\dsAuswahllisten.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAuswahllisten.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsAuswahllisten.vb">
+      <DependentUpon>dsAuswahllisten.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsAutoDocu.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAutoDocu.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsClipboard.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsClipboard.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsDokuSearch.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDokuSearch.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsInterop.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInterop.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsInteropPar.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInteropPar.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsPlan.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPlan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsPlanSearch.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPlanSearch.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\dsUserAccounts.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUserAccounts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\core\General.vb" />
+    <Compile Include="planArchive2\core\HandleMessage.vb" />
+    <Compile Include="planArchive2\core\sucheDoku.vb" />
+    <Compile Include="planArchive2\core\suchePlan.vb" />
+    <Compile Include="planArchive2\plan\contComboUserAccounts2.designer.vb">
+      <DependentUpon>contComboUserAccounts2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contComboUserAccounts2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contListeAnhang2.designer.vb">
+      <DependentUpon>contListeAnhang2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contListeAnhang2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contListTextTemplates.designer.vb">
+      <DependentUpon>contListTextTemplates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contListTextTemplates.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contMailInputSrv.designer.vb">
+      <DependentUpon>contMailInputSrv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contMailInputSrv.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contPlanungData.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contPlanungMain.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contSelectPatientenBenutzer.Designer.vb">
+      <DependentUpon>contSelectPatientenBenutzer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contSelectPatientenBenutzer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contSelectSelList.Designer.vb">
+      <DependentUpon>contSelectSelList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contSelectSelList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contTextTemplateFiles.designer.vb">
+      <DependentUpon>contTextTemplateFiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contTextTemplateFiles.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contTextTemplates.designer.vb">
+      <DependentUpon>contTextTemplates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contTextTemplates.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\contUserAccouts.designer.vb">
+      <DependentUpon>contUserAccouts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\contUserAccouts.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmInputDate.Designer.vb">
+      <DependentUpon>frmInputDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmInputDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmInputPwdHour.designer.vb">
+      <DependentUpon>frmInputPwdHour.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmInputPwdHour.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmMailInputSrv.designer.vb">
+      <DependentUpon>frmMailInputSrv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmMailInputSrv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmNachricht3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmPdfViewer.Designer.vb">
+      <DependentUpon>frmPdfViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmPdfViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmSelectUsr.designer.vb">
+      <DependentUpon>frmSelectUsr.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmSelectUsr.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmTextTemplates.designer.vb">
+      <DependentUpon>frmTextTemplates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmTextTemplates.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmUserAccounts.Designer.vb">
+      <DependentUpon>frmUserAccounts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\plan\frmUserAccounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\plan\IExplorer.xaml.vb">
+      <DependentUpon>IExplorer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive\coreSystem\db\compSql.Designer.vb">
+      <DependentUpon>compSql.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive\coreSystem\db\compSql.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="planArchive\coreSystem\db\dsPlanArchive.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPlanArchive.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive\coreSystem\GeneralArchiv.vb" />
+    <Compile Include="planArchive2\core\cArchive.vb" />
+    <Compile Include="planArchive\archiv\Forms\contArchivAbleg.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\contArchivMain.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\contArchivSuch.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\contMultiTIFFEditor.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\contOrdner.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\contStammdaten.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\contZwischenablage.Designer.vb">
+      <DependentUpon>contZwischenablage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\contZwischenablage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmArchivAbleg.Designer.vb">
+      <DependentUpon>frmArchivAbleg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmArchivAbleg.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmInfoDoku.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmPostbox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmStammdaten.Designer.vb">
+      <DependentUpon>frmStammdaten.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmStammdaten.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\core\clFolder.vb" />
+    <Compile Include="planArchive\coreSystem\clStringOperate.vb" />
+    <Compile Include="planArchive2\core\db.vb" />
+    <Compile Include="Biografie\sqlBiografien.vb" />
+    <Compile Include="planArchive\coreSystem\frmInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="planArchive2\core\UI.vb" />
+    <Compile Include="planArchive\coreSystem\UIElements.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Biografie\contBiografienVorh.resx">
+      <DependentUpon>contBiografienVorh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Biografie\frmBiografieAdd.resx">
+      <DependentUpon>frmBiografieAdd.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Biografie\ucBiografie.resx">
+      <DependentUpon>ucBiografie.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gibodat\db\daGibodat.resx">
+      <DependentUpon>daGibodat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gibodat\db\daPMDS.resx">
+      <DependentUpon>daPMDS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gridExport.resx">
+      <DependentUpon>gridExport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gibodat\frmImportGibodat.resx">
+      <DependentUpon>frmImportGibodat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\contArchAbleg.resx">
+      <DependentUpon>contArchAbleg.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\contArchMain.resx">
+      <DependentUpon>contArchMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\contArchSuch.resx">
+      <DependentUpon>contArchSuch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\contEditDocument.resx">
+      <DependentUpon>contEditDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\contOrdner.resx">
+      <DependentUpon>contOrdner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\contSelectDocuName.resx">
+      <DependentUpon>contSelectDocuName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\contStammDat.resx">
+      <DependentUpon>contStammDat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\dropDownGridSelList.resx">
+      <DependentUpon>dropDownGridSelList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\frmArchAbleg.resx">
+      <DependentUpon>frmArchAbleg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\frmArchiv.resx">
+      <DependentUpon>frmArchiv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\frmEditDocu.resx">
+      <DependentUpon>frmEditDocu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\frmInfo.resx">
+      <DependentUpon>frmInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\frmSelectDocuName.resx">
+      <DependentUpon>frmSelectDocuName.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\frmStammDat.resx">
+      <DependentUpon>frmStammDat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\archive\frmUserInput.resx">
+      <DependentUpon>frmUserInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\core\compAutoDocu.resx">
+      <DependentUpon>compAutoDocu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\core\compDoku.resx">
+      <DependentUpon>compDoku.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\core\compInterop.resx">
+      <DependentUpon>compInterop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\core\compPlan.resx">
+      <DependentUpon>compPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\core\compUserAccounts.resx">
+      <DependentUpon>compUserAccounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contComboUserAccounts2.resx">
+      <DependentUpon>contComboUserAccounts2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contListeAnhang2.resx">
+      <DependentUpon>contListeAnhang2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contListTextTemplates.resx">
+      <DependentUpon>contListTextTemplates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contMailInputSrv.resx">
+      <DependentUpon>contMailInputSrv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contPlanungData.resx">
+      <DependentUpon>contPlanungData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contPlanungMain.resx">
+      <DependentUpon>contPlanungMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contSelectPatientenBenutzer.resx">
+      <DependentUpon>contSelectPatientenBenutzer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contSelectSelList.resx">
+      <DependentUpon>contSelectSelList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contTextTemplateFiles.resx">
+      <DependentUpon>contTextTemplateFiles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contTextTemplates.resx">
+      <DependentUpon>contTextTemplates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\contUserAccouts.resx">
+      <DependentUpon>contUserAccouts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmInputDate.resx">
+      <DependentUpon>frmInputDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmInputPwdHour.resx">
+      <DependentUpon>frmInputPwdHour.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmMailInputSrv.resx">
+      <DependentUpon>frmMailInputSrv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmNachricht3.resx">
+      <DependentUpon>frmNachricht3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmPdfViewer.resx">
+      <DependentUpon>frmPdfViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmSelectUsr.resx">
+      <DependentUpon>frmSelectUsr.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmTextTemplates.resx">
+      <DependentUpon>frmTextTemplates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\plan\frmUserAccounts.resx">
+      <DependentUpon>frmUserAccounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\coreSystem\db\compSql.resx">
+      <DependentUpon>compSql.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\contArchivAbleg.resx">
+      <DependentUpon>contArchivAbleg.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\contArchivMain.resx">
+      <DependentUpon>contArchivMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\contArchivSuch.resx">
+      <DependentUpon>contArchivSuch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\contMultiTIFFEditor.resx">
+      <DependentUpon>contMultiTIFFEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\contOrdner.resx">
+      <DependentUpon>contOrdner.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\contStammdaten.resx">
+      <DependentUpon>contStammdaten.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\contZwischenablage.resx">
+      <DependentUpon>contZwischenablage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\frmArchivAbleg.resx">
+      <DependentUpon>frmArchivAbleg.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\frmInfoDoku.resx">
+      <DependentUpon>frmInfoDoku.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\frmPostbox.resx">
+      <DependentUpon>frmPostbox.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\frmStammdaten.resx">
+      <DependentUpon>frmStammdaten.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\coreSystem\frmInfo.resx">
+      <DependentUpon>frmInfo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Gibodat\db\DB_Update.sql" />
+    <None Include="Gibodat\db\dsGibodat.xsc">
+      <DependentUpon>dsGibodat.xsd</DependentUpon>
+    </None>
+    <None Include="Gibodat\db\dsGibodat.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsGibodat.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Gibodat\db\dsGibodat.xss">
+      <DependentUpon>dsGibodat.xsd</DependentUpon>
+    </None>
+    <None Include="Gibodat\db\dsPMDS1.xsc">
+      <DependentUpon>dsPMDS1.xsd</DependentUpon>
+    </None>
+    <None Include="Gibodat\db\dsPMDS1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPMDS1.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Gibodat\db\dsPMDS1.xss">
+      <DependentUpon>dsPMDS1.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\PMDS.db.Entities.tblSelListEntries.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="planArchive2\core\dbArchiv.xsc">
+      <DependentUpon>dbArchiv.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dbArchiv.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbArchiv.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dbArchiv.xss">
+      <DependentUpon>dbArchiv.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsAuswahllisten.xsc">
+      <DependentUpon>dsAuswahllisten.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsAuswahllisten.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAuswahllisten.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsAuswahllisten.xss">
+      <DependentUpon>dsAuswahllisten.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsAutoDocu.xsc">
+      <DependentUpon>dsAutoDocu.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsAutoDocu.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAutoDocu.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsAutoDocu.xss">
+      <DependentUpon>dsAutoDocu.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsClipboard.xsc">
+      <DependentUpon>dsClipboard.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsClipboard.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsClipboard.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsClipboard.xss">
+      <DependentUpon>dsClipboard.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsDokuSearch.xsc">
+      <DependentUpon>dsDokuSearch.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsDokuSearch.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDokuSearch.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsDokuSearch.xss">
+      <DependentUpon>dsDokuSearch.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsInterop.xsc">
+      <DependentUpon>dsInterop.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsInterop.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInterop.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsInterop.xss">
+      <DependentUpon>dsInterop.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsInteropPar.xsc">
+      <DependentUpon>dsInteropPar.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsInteropPar.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInteropPar.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsInteropPar.xss">
+      <DependentUpon>dsInteropPar.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsPlan.xsc">
+      <DependentUpon>dsPlan.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsPlan.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPlan.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsPlan.xss">
+      <DependentUpon>dsPlan.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsPlanSearch.xsc">
+      <DependentUpon>dsPlanSearch.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsPlanSearch.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPlanSearch.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsPlanSearch.xss">
+      <DependentUpon>dsPlanSearch.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsUserAccounts.xsc">
+      <DependentUpon>dsUserAccounts.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive2\core\dsUserAccounts.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUserAccounts.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="planArchive2\core\dsUserAccounts.xss">
+      <DependentUpon>dsUserAccounts.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive\coreSystem\db\dsPlanArchive.xsc">
+      <DependentUpon>dsPlanArchive.xsd</DependentUpon>
+    </None>
+    <None Include="planArchive\coreSystem\db\dsPlanArchive.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPlanArchive.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="planArchive\coreSystem\db\dsPlanArchive.xss">
+      <DependentUpon>dsPlanArchive.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMDS.Abrechnung.Logik\PMDS.Calc.Logic.vbproj">
+      <Project>{b339c14c-b89c-4089-97aa-81d118a737b4}</Project>
+      <Name>PMDS.Calc.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMDS.Global\PMDS.Core.csproj">
+      <Project>{b1d2bccf-dcf5-4363-b0dd-630382f190a5}</Project>
+      <Name>PMDS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Desktop.Ressources.Auto10\QS2.Desktop.ControlManagment.vbproj">
+      <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
+      <Name>QS2.Desktop.ControlManagment</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gibodat\db\dsGibodat.cs">
+      <DependentUpon>dsGibodat.xsd</DependentUpon>
+    </Content>
+    <Content Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\ico_about.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Page Include="planArchive2\plan\IExplorer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

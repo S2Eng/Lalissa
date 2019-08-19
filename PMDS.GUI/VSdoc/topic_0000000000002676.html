@@ -1,0 +1,1690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="GENERATOR" content="VSdocman - documentation generator; http://www.helixoft.com" />
+	<title>UnterbringungDataTable.AddUnterbringungRow (Guid, Guid, String, DateTime, Int32, String, DateTime, DateTime, Boolean, Boolean, String, DateTime, String, Int32, String, Boolean, Boolean, String, String, Boolean, Boolean, String, String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, String, Boolean, Boolean, Boolean, String, Boolean, Boolean, Boolean, String, Boolean, Boolean, String, Boolean, String, Boolean, Boolean, Boolean, Boolean, Boolean, Int32, Int32, String, Int32, String, Boolean, Boolean, Boolean, Boolean, DateTime, Int32, Int32, String, DateTime, Boolean, Boolean, Boolean, Int32, String, String, String, String, String, String, Boolean, DateTime, Guid, String, String, String, String, String, Int32, Int32, Boolean, Boolean, Boolean, Int32, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, String, Boolean, String) Method</title>
+
+	<link rel="stylesheet" type="text/css" href="msdn2017/msdn2017.css"></link>
+	<script src="msdn2017/msdn2017.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shCore_helixoft.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushVb.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushCSharp.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushFSharp.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushCpp.js" type="text/javascript"></script>
+	<script src="SyntaxHighlighter/scripts/shBrushJScript.js" type="text/javascript"></script>
+	<link href="SyntaxHighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+	<link href="SyntaxHighlighter/styles/shThemeMsdnLW.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>				
+
+	<script type="text/javascript">
+<!--
+if (self.name != "vbdocright") {
+	if (location.search != "?toc=no") {
+		var filename = location.pathname.replace(/\\/g, "/");
+		filename = filename.substring(filename.lastIndexOf('/')+1);
+		location.replace("index.html#" + filename);
+	} 
+}
+
+function replaceTitleAndUrl(win, title, url) {
+	if(history.replaceState) {
+		win.history.replaceState(null, title, url);
+	} else {
+		win.document.title = document.title;
+		win.location.replace(url);
+	}
+}
+//-->
+	</script>	
+</head>
+
+<body style="direction: ltr;">
+	<script type="text/javascript">
+		try {
+			if (location.search != "?toc=no") {
+				parent.document.title = document.title;
+				var filename = location.pathname.replace(/\\/g, "/");
+				filename = filename.substring(filename.lastIndexOf('/')+1);
+				if (window.parent.location.search == null || window.parent.location.search != "?" + filename) {
+					if (window.parent.location.hash == null || window.parent.location.hash != "#" + filename) {
+						replaceTitleAndUrl(window.parent, document.title, "index.html#" + filename);
+					}
+				}
+			}
+		} catch (ex) {}
+	</script>
+	<div id="topic">
+<!--HEADER START-->
+  <div id="header">
+  	<div id="runningHeaderText">PMDS.GUI Reference</div>
+  	<h1 class="title">UnterbringungDataTable.AddUnterbringungRow (Guid, Guid, String, DateTime, Int32, String, DateTime, DateTime, Boolean, Boolean, String, DateTime, String, Int32, String, Boolean, Boolean, String, String, Boolean, Boolean, String, String, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, String, Boolean, Boolean, Boolean, String, Boolean, Boolean, Boolean, String, Boolean, Boolean, String, Boolean, String, Boolean, Boolean, Boolean, Boolean, Boolean, Int32, Int32, String, Int32, String, Boolean, Boolean, Boolean, Boolean, DateTime, Int32, Int32, String, DateTime, Boolean, Boolean, Boolean, Int32, String, String, String, String, String, String, Boolean, DateTime, Guid, String, String, String, String, String, Int32, Int32, Boolean, Boolean, Boolean, Int32, Int32, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, String, Boolean, String) Method</h1>
+  	<div id="headerLinks">
+
+	<a href="#seeAlsoSection">See Also</a>
+
+		</div>
+		<hr />
+	</div>
+<!--HEADER END-->
+    
+		<div id="mainSection">
+      <div id="mainBody">
+        <p />
+       
+
+
+        <p /><strong>Namespace:</strong>
+<a href="topic_0000000000002083.html">PMDS.GUI.Klient</a>
+
+
+
+
+        <br /><strong>Assembly:</strong> PMDS.GUI (in PMDS.GUI.dll)
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Syntax</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="syntaxSection" class="section">	
+	
+	
+	<div id="syntaxCodeBlocks">
+		<div class="codeSnippetContainer">		
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCornerActive">
+				</div>
+				<div class="codeSnippetTab csFirstTab csActiveTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csLastTab csNaTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCorner">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeVB">
+					<pre xml:space="preserve" class="brush: vb">&lt;global::System.Diagnostics.DebuggerNonUserCode()&gt; _&nbsp;<br />&lt;global::System.CodeDom.Compiler.GeneratedCode(&quot;System.Data.Design.TypedDataSetGenerator&quot;, &quot;15.0.0.0&quot;)&gt; _&nbsp;<br />Public Function AddUnterbringungRow( _&nbsp;<br />   ByVal <i>ID</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a>, _&nbsp;<br />   ByVal <i>IDAufenthalt</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a>, _&nbsp;<br />   ByVal <i>Grund</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>Beginn</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">Date</a>, _&nbsp;<br />   ByVal <i>Dauer</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>AngeordnetVon</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AngeordnetAm</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">Date</a>, _&nbsp;<br />   ByVal <i>AufgehobenAm</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">Date</a>, _&nbsp;<br />   ByVal <i>GefahrFuerLebenGesundheitJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>EingriffUnerlaesslichJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>AufgehobenVon</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>TatsaechlicheEnde</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">Date</a>, _&nbsp;<br />   ByVal <i>Aktion</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>VoraussichtlicheDauer</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>Zeitraum</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>PsychischekrankheitJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>GeistigeBehinderungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>MedDiagnICD</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>MedizinischeDiagnose</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>ErheblicheSelbstgefaehrdungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>ErheblicheFremdgefaehrdungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>EingriffUnerlaesslichBeschreibung</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>Einrichtungsleiter</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>ElektronischesUeberwachungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>ZurueckhaltensandrohungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>VerschlosseneTuerJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>DrehknopfJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>CodierungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>LabyrinthJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>BaulicheMassnahmen</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>HindernRollstuhlGurtenJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernRollstuhTischJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernRollstuhTherapietischJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernRollstuhl</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelGurtenJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelTischJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelTherapietischJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelegenheit</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettSeitenteilenJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettGurtenJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernBettVerlassen</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>MedikFreihBeschraenkungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>MedikBezeichnung</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>GesendetAnBewohnervertreterJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>GesendetAnGesetzVertreterJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>GesendetAnSelbstGewVertreterJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>GesendetAnVertrauenspersonJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>KlientZustimmungJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>AufgehobeneMassnahmeInfo</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>Berufsgruppe</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>Anmerkung</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>ENDEBerufsgruppe</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>ENDEAngeordnetVon</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>ENDEGesendetAnBewohnervertreterJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>ENDEGesendetAnGesetzVertreterJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>ENDEGesendetAnSelbstGewVertreterJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>ENDEGesendetAnVertrauenspersonJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>VoraussichtlichesEnde</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">Date</a>, _&nbsp;<br />   ByVal <i>Info</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>AerztlDokumentArt</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>AerztlDokumentArzt</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AerztlDokumentDatum</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">Date</a>, _&nbsp;<br />   ByVal <i>HindernRollstuhlBremsenJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernRollstuhlSitzhoseJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettHandmanschettenJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>TatsaechlicheEndeGrund</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>AerztlDokumentArztTitel</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AerztlDokumentArztVorname</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AngeordnetVonTitel</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AngeordnetVonVorname</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AufgehobenVonTitel</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AufgehobenVonVorname</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelSitzhoseJN</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>EDI_Datum</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">Date</a>, _&nbsp;<br />   ByVal <i>EDI_Benutzer</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a>, _&nbsp;<br />   ByVal <i>EinrichtungsleiterTitel</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>EinrichtungsleiterVorname</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>EDI_Protokoll</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AnmerkungGutachten_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>AnmerkungVerhalten_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettHandArmgurte_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettFussBeingurte_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettAndereJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettBauchgurtJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernVerlassenBettElektronischJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelHandArmgurte_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelFussBeingurte_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">Integer</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelAndereJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelBauchgurtJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernSitzgelBrustgurtJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernBereichFesthaltenJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernBereichBarriereJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernBereichVersperrterBereichJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernBereichVersperrtesZimmerJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernBereichHinderAmFortbewegenJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>HindernBereichAndereJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>EinzelfallmedikationJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>Einzelfallmedikation_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>, _&nbsp;<br />   ByVal <i>DauermedikationJN_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">Boolean</a>, _&nbsp;<br />   ByVal <i>Dauermedikation_2016</i> As <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a> _&nbsp;<br />) As <a target="_top" href="topic_0000000000002683.html" onclick="this.target='';return true;">UnterbringungRow</a></pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+		
+		<div class="codeSnippetContainer">
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCorner">
+				</div>
+				<div class="codeSnippetTab csFirstTab csNaTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csActiveTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csLastTab csNaTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCorner">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeCsharp">
+					<pre xml:space="preserve" class="brush: csharp">[global::System.Diagnostics.DebuggerNonUserCode()]&nbsp;<br />[global::System.CodeDom.Compiler.GeneratedCode(&quot;System.Data.Design.TypedDataSetGenerator&quot;, &quot;15.0.0.0&quot;)]&nbsp;<br />public <a target="_top" href="topic_0000000000002683.html" onclick="this.target='';return true;">UnterbringungRow</a> AddUnterbringungRow(&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> <i>ID</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> <i>IDAufenthalt</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>Grund</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>Beginn</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>Dauer</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AngeordnetVon</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>AngeordnetAm</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>AufgehobenAm</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GefahrFuerLebenGesundheitJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>EingriffUnerlaesslichJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AufgehobenVon</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>TatsaechlicheEnde</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>Aktion</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>VoraussichtlicheDauer</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>Zeitraum</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>PsychischekrankheitJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GeistigeBehinderungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>MedDiagnICD</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>MedizinischeDiagnose</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ErheblicheSelbstgefaehrdungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ErheblicheFremdgefaehrdungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>EingriffUnerlaesslichBeschreibung</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>Einrichtungsleiter</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ElektronischesUeberwachungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ZurueckhaltensandrohungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>VerschlosseneTuerJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>DrehknopfJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>CodierungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>LabyrinthJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>BaulicheMassnahmen</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhlGurtenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhTischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhTherapietischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>HindernRollstuhl</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelGurtenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelTischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelTherapietischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>HindernSitzgelegenheit</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettSeitenteilenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettGurtenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>HindernBettVerlassen</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>MedikFreihBeschraenkungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>MedikBezeichnung</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnBewohnervertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnGesetzVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnSelbstGewVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnVertrauenspersonJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>KlientZustimmungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>AufgehobeneMassnahmeInfo</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>Berufsgruppe</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>Anmerkung</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>ENDEBerufsgruppe</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>ENDEAngeordnetVon</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnBewohnervertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnGesetzVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnSelbstGewVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnVertrauenspersonJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>VoraussichtlichesEnde</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>Info</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>AerztlDokumentArt</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AerztlDokumentArzt</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>AerztlDokumentDatum</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhlBremsenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhlSitzhoseJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettHandmanschettenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>TatsaechlicheEndeGrund</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AerztlDokumentArztTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AerztlDokumentArztVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AngeordnetVonTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AngeordnetVonVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AufgehobenVonTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AufgehobenVonVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelSitzhoseJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>EDI_Datum</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> <i>EDI_Benutzer</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>EinrichtungsleiterTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>EinrichtungsleiterVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>EDI_Protokoll</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AnmerkungGutachten_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>AnmerkungVerhalten_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernVerlassenBettHandArmgurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernVerlassenBettFussBeingurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettAndereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettBauchgurtJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettElektronischJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernSitzgelHandArmgurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernSitzgelFussBeingurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelAndereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelBauchgurtJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelBrustgurtJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichFesthaltenJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichBarriereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichVersperrterBereichJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichVersperrtesZimmerJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichHinderAmFortbewegenJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichAndereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>EinzelfallmedikationJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>Einzelfallmedikation_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>DauermedikationJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> <i>Dauermedikation_2016</i>&nbsp;<br />)</pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+
+
+		<div class="codeSnippetContainer">
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCorner">
+				</div>
+				<div class="codeSnippetTab csFirstTab csNaTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csActiveTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csLastTab csNaTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCorner">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeCpp">
+					<pre xml:space="preserve" class="brush: cpp">[global::System.Diagnostics.DebuggerNonUserCode()]&nbsp;<br />[global::System.CodeDom.Compiler.GeneratedCode(&quot;System.Data.Design.TypedDataSetGenerator&quot;, &quot;15.0.0.0&quot;)]&nbsp;<br />public: &nbsp;<br /><a target="_top" href="topic_0000000000002683.html" onclick="this.target='';return true;">UnterbringungRow</a>^ AddUnterbringungRow(&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> <i>ID</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> <i>IDAufenthalt</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>Grund</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>Beginn</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>Dauer</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AngeordnetVon</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>AngeordnetAm</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>AufgehobenAm</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GefahrFuerLebenGesundheitJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>EingriffUnerlaesslichJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AufgehobenVon</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>TatsaechlicheEnde</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>Aktion</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>VoraussichtlicheDauer</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>Zeitraum</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>PsychischekrankheitJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GeistigeBehinderungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>MedDiagnICD</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>MedizinischeDiagnose</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ErheblicheSelbstgefaehrdungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ErheblicheFremdgefaehrdungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>EingriffUnerlaesslichBeschreibung</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>Einrichtungsleiter</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ElektronischesUeberwachungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ZurueckhaltensandrohungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>VerschlosseneTuerJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>DrehknopfJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>CodierungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>LabyrinthJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>BaulicheMassnahmen</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhlGurtenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhTischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhTherapietischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>HindernRollstuhl</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelGurtenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelTischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelTherapietischJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>HindernSitzgelegenheit</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettSeitenteilenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettGurtenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>HindernBettVerlassen</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>MedikFreihBeschraenkungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>MedikBezeichnung</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnBewohnervertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnGesetzVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnSelbstGewVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>GesendetAnVertrauenspersonJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>KlientZustimmungJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>AufgehobeneMassnahmeInfo</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>Berufsgruppe</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>Anmerkung</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>ENDEBerufsgruppe</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>ENDEAngeordnetVon</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnBewohnervertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnGesetzVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnSelbstGewVertreterJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>ENDEGesendetAnVertrauenspersonJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>VoraussichtlichesEnde</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>Info</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>AerztlDokumentArt</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AerztlDokumentArzt</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>AerztlDokumentDatum</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhlBremsenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernRollstuhlSitzhoseJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettHandmanschettenJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>TatsaechlicheEndeGrund</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AerztlDokumentArztTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AerztlDokumentArztVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AngeordnetVonTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AngeordnetVonVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AufgehobenVonTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AufgehobenVonVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelSitzhoseJN</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> <i>EDI_Datum</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> <i>EDI_Benutzer</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>EinrichtungsleiterTitel</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>EinrichtungsleiterVorname</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>EDI_Protokoll</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AnmerkungGutachten_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>AnmerkungVerhalten_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernVerlassenBettHandArmgurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernVerlassenBettFussBeingurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettAndereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettBauchgurtJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernVerlassenBettElektronischJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernSitzgelHandArmgurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> <i>HindernSitzgelFussBeingurte_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelAndereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelBauchgurtJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernSitzgelBrustgurtJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichFesthaltenJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichBarriereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichVersperrterBereichJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichVersperrtesZimmerJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichHinderAmFortbewegenJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>HindernBereichAndereJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>EinzelfallmedikationJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>Einzelfallmedikation_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> <i>DauermedikationJN_2016</i>,&nbsp;<br />   <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>^ <i>Dauermedikation_2016</i>&nbsp;<br />) </pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+		
+		<div class="codeSnippetContainer">
+			<div class="codeSnippetTabs">
+				<div class="codeSnippetTabLeftCorner">
+				</div>
+				<div class="codeSnippetTab csFirstTab csNaTab codeVB">
+					<a>VB</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Csharp');">C#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeFsharp">
+					<a href="javascript: CodeSnippet_SetLanguage('Fsharp');">F#</a>
+				</div>
+				<div class="codeSnippetTab csNaTab codeCpp">
+					<a href="javascript: CodeSnippet_SetLanguage('Cpp');">C++</a>
+				</div>
+				<div class="codeSnippetTab csActiveTab csLastTab codeJScript">
+					<a href="javascript: CodeSnippet_SetLanguage('JScript');">JScript</a>
+				</div>
+				<div class="codeSnippetTabRightCornerActive">
+				</div>
+				<div style="clear:both;">
+				</div>
+			</div>
+	
+			<div class="codeSnippetCodeCollection">
+				<div class="codeSnippetToolbar">
+					<a title="Copy to clipboard." href="javascript:void(0)" onclick="CopyCode(this);">Copy</a>
+				</div>
+				
+				<div class="codeSnippetCode codeJScript">
+					<pre xml:space="preserve" class="brush: js">public &nbsp;<br />   global::System.Diagnostics.DebuggerNonUserCode()&nbsp;<br />   global::System.CodeDom.Compiler.GeneratedCode(&quot;System.Data.Design.TypedDataSetGenerator&quot;, &quot;15.0.0.0&quot;)&nbsp;<br />function AddUnterbringungRow(&nbsp;<br />    <i>ID</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a>,&nbsp;<br />    <i>IDAufenthalt</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a>,&nbsp;<br />    <i>Grund</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>Beginn</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a>,&nbsp;<br />    <i>Dauer</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>AngeordnetVon</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AngeordnetAm</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a>,&nbsp;<br />    <i>AufgehobenAm</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a>,&nbsp;<br />    <i>GefahrFuerLebenGesundheitJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>EingriffUnerlaesslichJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>AufgehobenVon</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>TatsaechlicheEnde</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a>,&nbsp;<br />    <i>Aktion</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>VoraussichtlicheDauer</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>Zeitraum</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>PsychischekrankheitJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>GeistigeBehinderungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>MedDiagnICD</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>MedizinischeDiagnose</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>ErheblicheSelbstgefaehrdungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>ErheblicheFremdgefaehrdungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>EingriffUnerlaesslichBeschreibung</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>Einrichtungsleiter</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>ElektronischesUeberwachungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>ZurueckhaltensandrohungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>VerschlosseneTuerJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>DrehknopfJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>CodierungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>LabyrinthJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>BaulicheMassnahmen</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>HindernRollstuhlGurtenJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernRollstuhTischJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernRollstuhTherapietischJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernRollstuhl</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>HindernSitzgelGurtenJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernSitzgelTischJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernSitzgelTherapietischJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernSitzgelegenheit</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>HindernVerlassenBettSeitenteilenJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernVerlassenBettGurtenJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernBettVerlassen</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>MedikFreihBeschraenkungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>MedikBezeichnung</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>GesendetAnBewohnervertreterJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>GesendetAnGesetzVertreterJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>GesendetAnSelbstGewVertreterJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>GesendetAnVertrauenspersonJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>KlientZustimmungJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>AufgehobeneMassnahmeInfo</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>Berufsgruppe</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>Anmerkung</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>ENDEBerufsgruppe</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>ENDEAngeordnetVon</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>ENDEGesendetAnBewohnervertreterJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>ENDEGesendetAnGesetzVertreterJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>ENDEGesendetAnSelbstGewVertreterJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>ENDEGesendetAnVertrauenspersonJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>VoraussichtlichesEnde</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a>,&nbsp;<br />    <i>Info</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>AerztlDokumentArt</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>AerztlDokumentArzt</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AerztlDokumentDatum</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a>,&nbsp;<br />    <i>HindernRollstuhlBremsenJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernRollstuhlSitzhoseJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernVerlassenBettHandmanschettenJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>TatsaechlicheEndeGrund</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>AerztlDokumentArztTitel</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AerztlDokumentArztVorname</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AngeordnetVonTitel</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AngeordnetVonVorname</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AufgehobenVonTitel</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AufgehobenVonVorname</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>HindernSitzgelSitzhoseJN</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>EDI_Datum</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a>,&nbsp;<br />    <i>EDI_Benutzer</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a>,&nbsp;<br />    <i>EinrichtungsleiterTitel</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>EinrichtungsleiterVorname</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>EDI_Protokoll</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AnmerkungGutachten_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>AnmerkungVerhalten_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>HindernVerlassenBettHandArmgurte_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>HindernVerlassenBettFussBeingurte_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>HindernVerlassenBettAndereJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernVerlassenBettBauchgurtJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernVerlassenBettElektronischJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernSitzgelHandArmgurte_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>HindernSitzgelFussBeingurte_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a>,&nbsp;<br />    <i>HindernSitzgelAndereJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernSitzgelBauchgurtJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernSitzgelBrustgurtJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernBereichFesthaltenJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernBereichBarriereJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernBereichVersperrterBereichJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernBereichVersperrtesZimmerJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernBereichHinderAmFortbewegenJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>HindernBereichAndereJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>EinzelfallmedikationJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>Einzelfallmedikation_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>,&nbsp;<br />    <i>DauermedikationJN_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">boolean</a>,&nbsp;<br />    <i>Dauermedikation_2016</i> : <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">String</a>&nbsp;<br />) : <a target="_top" href="topic_0000000000002683.html" onclick="this.target='';return true;">UnterbringungRow</a>;</pre>			
+				</div>
+				<div class="codeSnippetCode codeNA">
+					<pre xml:space="preserve">This language is not supported or no code example is available.</pre>			
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+<h4 class="subHeading">
+	Parameters</h4><dl paramName="ID">
+	<dt>
+		<span class="parameter">
+			ID
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="IDAufenthalt">
+	<dt>
+		<span class="parameter">
+			IDAufenthalt
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Grund">
+	<dt>
+		<span class="parameter">
+			Grund
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Beginn">
+	<dt>
+		<span class="parameter">
+			Beginn
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Dauer">
+	<dt>
+		<span class="parameter">
+			Dauer
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AngeordnetVon">
+	<dt>
+		<span class="parameter">
+			AngeordnetVon
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AngeordnetAm">
+	<dt>
+		<span class="parameter">
+			AngeordnetAm
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AufgehobenAm">
+	<dt>
+		<span class="parameter">
+			AufgehobenAm
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="GefahrFuerLebenGesundheitJN">
+	<dt>
+		<span class="parameter">
+			GefahrFuerLebenGesundheitJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EingriffUnerlaesslichJN">
+	<dt>
+		<span class="parameter">
+			EingriffUnerlaesslichJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AufgehobenVon">
+	<dt>
+		<span class="parameter">
+			AufgehobenVon
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="TatsaechlicheEnde">
+	<dt>
+		<span class="parameter">
+			TatsaechlicheEnde
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Aktion">
+	<dt>
+		<span class="parameter">
+			Aktion
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="VoraussichtlicheDauer">
+	<dt>
+		<span class="parameter">
+			VoraussichtlicheDauer
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Zeitraum">
+	<dt>
+		<span class="parameter">
+			Zeitraum
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="PsychischekrankheitJN">
+	<dt>
+		<span class="parameter">
+			PsychischekrankheitJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="GeistigeBehinderungJN">
+	<dt>
+		<span class="parameter">
+			GeistigeBehinderungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="MedDiagnICD">
+	<dt>
+		<span class="parameter">
+			MedDiagnICD
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="MedizinischeDiagnose">
+	<dt>
+		<span class="parameter">
+			MedizinischeDiagnose
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ErheblicheSelbstgefaehrdungJN">
+	<dt>
+		<span class="parameter">
+			ErheblicheSelbstgefaehrdungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ErheblicheFremdgefaehrdungJN">
+	<dt>
+		<span class="parameter">
+			ErheblicheFremdgefaehrdungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EingriffUnerlaesslichBeschreibung">
+	<dt>
+		<span class="parameter">
+			EingriffUnerlaesslichBeschreibung
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Einrichtungsleiter">
+	<dt>
+		<span class="parameter">
+			Einrichtungsleiter
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ElektronischesUeberwachungJN">
+	<dt>
+		<span class="parameter">
+			ElektronischesUeberwachungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ZurueckhaltensandrohungJN">
+	<dt>
+		<span class="parameter">
+			ZurueckhaltensandrohungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="VerschlosseneTuerJN">
+	<dt>
+		<span class="parameter">
+			VerschlosseneTuerJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="DrehknopfJN">
+	<dt>
+		<span class="parameter">
+			DrehknopfJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="CodierungJN">
+	<dt>
+		<span class="parameter">
+			CodierungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="LabyrinthJN">
+	<dt>
+		<span class="parameter">
+			LabyrinthJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="BaulicheMassnahmen">
+	<dt>
+		<span class="parameter">
+			BaulicheMassnahmen
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernRollstuhlGurtenJN">
+	<dt>
+		<span class="parameter">
+			HindernRollstuhlGurtenJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernRollstuhTischJN">
+	<dt>
+		<span class="parameter">
+			HindernRollstuhTischJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernRollstuhTherapietischJN">
+	<dt>
+		<span class="parameter">
+			HindernRollstuhTherapietischJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernRollstuhl">
+	<dt>
+		<span class="parameter">
+			HindernRollstuhl
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelGurtenJN">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelGurtenJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelTischJN">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelTischJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelTherapietischJN">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelTherapietischJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelegenheit">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelegenheit
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettSeitenteilenJN">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettSeitenteilenJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettGurtenJN">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettGurtenJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernBettVerlassen">
+	<dt>
+		<span class="parameter">
+			HindernBettVerlassen
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="MedikFreihBeschraenkungJN">
+	<dt>
+		<span class="parameter">
+			MedikFreihBeschraenkungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="MedikBezeichnung">
+	<dt>
+		<span class="parameter">
+			MedikBezeichnung
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="GesendetAnBewohnervertreterJN">
+	<dt>
+		<span class="parameter">
+			GesendetAnBewohnervertreterJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="GesendetAnGesetzVertreterJN">
+	<dt>
+		<span class="parameter">
+			GesendetAnGesetzVertreterJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="GesendetAnSelbstGewVertreterJN">
+	<dt>
+		<span class="parameter">
+			GesendetAnSelbstGewVertreterJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="GesendetAnVertrauenspersonJN">
+	<dt>
+		<span class="parameter">
+			GesendetAnVertrauenspersonJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="KlientZustimmungJN">
+	<dt>
+		<span class="parameter">
+			KlientZustimmungJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AufgehobeneMassnahmeInfo">
+	<dt>
+		<span class="parameter">
+			AufgehobeneMassnahmeInfo
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Berufsgruppe">
+	<dt>
+		<span class="parameter">
+			Berufsgruppe
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Anmerkung">
+	<dt>
+		<span class="parameter">
+			Anmerkung
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ENDEBerufsgruppe">
+	<dt>
+		<span class="parameter">
+			ENDEBerufsgruppe
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ENDEAngeordnetVon">
+	<dt>
+		<span class="parameter">
+			ENDEAngeordnetVon
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ENDEGesendetAnBewohnervertreterJN">
+	<dt>
+		<span class="parameter">
+			ENDEGesendetAnBewohnervertreterJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ENDEGesendetAnGesetzVertreterJN">
+	<dt>
+		<span class="parameter">
+			ENDEGesendetAnGesetzVertreterJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ENDEGesendetAnSelbstGewVertreterJN">
+	<dt>
+		<span class="parameter">
+			ENDEGesendetAnSelbstGewVertreterJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="ENDEGesendetAnVertrauenspersonJN">
+	<dt>
+		<span class="parameter">
+			ENDEGesendetAnVertrauenspersonJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="VoraussichtlichesEnde">
+	<dt>
+		<span class="parameter">
+			VoraussichtlichesEnde
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Info">
+	<dt>
+		<span class="parameter">
+			Info
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AerztlDokumentArt">
+	<dt>
+		<span class="parameter">
+			AerztlDokumentArt
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AerztlDokumentArzt">
+	<dt>
+		<span class="parameter">
+			AerztlDokumentArzt
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AerztlDokumentDatum">
+	<dt>
+		<span class="parameter">
+			AerztlDokumentDatum
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernRollstuhlBremsenJN">
+	<dt>
+		<span class="parameter">
+			HindernRollstuhlBremsenJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernRollstuhlSitzhoseJN">
+	<dt>
+		<span class="parameter">
+			HindernRollstuhlSitzhoseJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettHandmanschettenJN">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettHandmanschettenJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="TatsaechlicheEndeGrund">
+	<dt>
+		<span class="parameter">
+			TatsaechlicheEndeGrund
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AerztlDokumentArztTitel">
+	<dt>
+		<span class="parameter">
+			AerztlDokumentArztTitel
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AerztlDokumentArztVorname">
+	<dt>
+		<span class="parameter">
+			AerztlDokumentArztVorname
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AngeordnetVonTitel">
+	<dt>
+		<span class="parameter">
+			AngeordnetVonTitel
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AngeordnetVonVorname">
+	<dt>
+		<span class="parameter">
+			AngeordnetVonVorname
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AufgehobenVonTitel">
+	<dt>
+		<span class="parameter">
+			AufgehobenVonTitel
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AufgehobenVonVorname">
+	<dt>
+		<span class="parameter">
+			AufgehobenVonVorname
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelSitzhoseJN">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelSitzhoseJN
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EDI_Datum">
+	<dt>
+		<span class="parameter">
+			EDI_Datum
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.datetime.aspx">DateTime</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EDI_Benutzer">
+	<dt>
+		<span class="parameter">
+			EDI_Benutzer
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.guid.aspx">Guid</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EinrichtungsleiterTitel">
+	<dt>
+		<span class="parameter">
+			EinrichtungsleiterTitel
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EinrichtungsleiterVorname">
+	<dt>
+		<span class="parameter">
+			EinrichtungsleiterVorname
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EDI_Protokoll">
+	<dt>
+		<span class="parameter">
+			EDI_Protokoll
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AnmerkungGutachten_2016">
+	<dt>
+		<span class="parameter">
+			AnmerkungGutachten_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="AnmerkungVerhalten_2016">
+	<dt>
+		<span class="parameter">
+			AnmerkungVerhalten_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettHandArmgurte_2016">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettHandArmgurte_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettFussBeingurte_2016">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettFussBeingurte_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettAndereJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettAndereJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettBauchgurtJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettBauchgurtJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernVerlassenBettElektronischJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernVerlassenBettElektronischJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelHandArmgurte_2016">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelHandArmgurte_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelFussBeingurte_2016">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelFussBeingurte_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.int32.aspx">int</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelAndereJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelAndereJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelBauchgurtJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelBauchgurtJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernSitzgelBrustgurtJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernSitzgelBrustgurtJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernBereichFesthaltenJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernBereichFesthaltenJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernBereichBarriereJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernBereichBarriereJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernBereichVersperrterBereichJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernBereichVersperrterBereichJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernBereichVersperrtesZimmerJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernBereichVersperrtesZimmerJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernBereichHinderAmFortbewegenJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernBereichHinderAmFortbewegenJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="HindernBereichAndereJN_2016">
+	<dt>
+		<span class="parameter">
+			HindernBereichAndereJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="EinzelfallmedikationJN_2016">
+	<dt>
+		<span class="parameter">
+			EinzelfallmedikationJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Einzelfallmedikation_2016">
+	<dt>
+		<span class="parameter">
+			Einzelfallmedikation_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="DauermedikationJN_2016">
+	<dt>
+		<span class="parameter">
+			DauermedikationJN_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.boolean.aspx">bool</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+<dl paramName="Dauermedikation_2016">
+	<dt>
+		<span class="parameter">
+			Dauermedikation_2016
+		</span>
+	</dt>
+	<dd>
+		Type: <a target="_top" href="http://msdn2.microsoft.com/en-us/library/system.string.aspx">string</a> 
+		<p>
+			 
+		</p>
+	</dd>
+</dl>
+
+<p />
+
+	<h4 class="subHeading">
+		Return Value</h4>
+	Type: <a target="_top" href="topic_0000000000002683.html" onclick="this.target='';return true;">UnterbringungRow</a> 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">Applies to</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="frameworksSection" class="section">	
+  <h4 class="subHeading">.NET Framework</h4>Supported in: 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1<br />
+
+
+
+
+
+
+
+
+
+
+	
+	
+	</div>					
+</div>
+
+<div class="section_container">
+	<div class="section_heading">
+		<span><a href="javascript:void(0)" title="Collapse" onclick="toggleSection(this);">See Also</a></span>
+		<div><hr /></div>
+	</div>
+
+	<div id="seeAlsoSection" class="section">	
+		<div>
+			<a href="topic_0000000000002608.html">UnterbringungDataTable Class</a><br />
+
+
+
+<a href="topic_0000000000002083.html">PMDS.GUI.Klient Namespace</a><br />
+
+
+			
+
+		</div>
+	</div>					
+</div>
+			</div>
+			</div>
+      <div id="footer">
+      	<p><span style="color: #FF0000;">Generated with unregistered version of <a target="_top" href="http://www.helixoft.com/vsdocman/overview.html">VSdocman</a></span>&nbsp;<br />Your own footer text will only be shown in registered version.</p>
+      </div>
+    </div>
+  	<script type="text/javascript">
+<!--
+	try {
+		parent.frames["vbdocswitch"].expandLinkInToc(location.href);
+	} catch (ex) {}
+//-->
+		</script>	
+  </body>
+</html>
+

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsKlientenSelAbrechDepot" targetNamespace="http://tempuri.org/dsKlientenSelAbrechDepot.xsd" xmlns:mstns="http://tempuri.org/dsKlientenSelAbrechDepot.xsd" xmlns="http://tempuri.org/dsKlientenSelAbrechDepot.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsKlientenSelAbrechDepot" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsKlientenSelAbrechDepot" msprop:Generator_UserDSName="dsKlientenSelAbrechDepot">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Klienten" msprop:Generator_UserTableName="Klienten" msprop:Generator_RowEvArgName="KlientenRowChangeEvent" msprop:Generator_TableVarName="tableKlienten" msprop:Generator_TablePropName="Klienten" msprop:Generator_RowDeletingName="KlientenRowDeleting" msprop:Generator_RowChangingName="KlientenRowChanging" msprop:Generator_RowDeletedName="KlientenRowDeleted" msprop:Generator_TableClassName="KlientenDataTable" msprop:Generator_RowChangedName="KlientenRowChanged" msprop:Generator_RowEvHandlerName="KlientenRowChangeEventHandler" msprop:Generator_RowClassName="KlientenRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Auswahl" msprop:Generator_ColumnVarNameInTable="columnAuswahl" msprop:Generator_ColumnPropNameInRow="Auswahl" msprop:Generator_ColumnPropNameInTable="AuswahlColumn" msprop:Generator_UserColumnName="Auswahl" type="xs:boolean" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
+              <xs:element name="Sollstand" msprop:Generator_ColumnVarNameInTable="columnSollstand" msprop:Generator_ColumnPropNameInRow="Sollstand" msprop:Generator_ColumnPropNameInTable="SollstandColumn" msprop:Generator_UserColumnName="Sollstand" type="xs:decimal" />
+              <xs:element name="MinSaldo" msdata:Caption="Sollstand" msprop:Generator_ColumnVarNameInTable="columnMinSaldo" msprop:Generator_ColumnPropNameInRow="MinSaldo" msprop:Generator_ColumnPropNameInTable="MinSaldoColumn" msprop:Generator_UserColumnName="MinSaldo" type="xs:decimal" />
+              <xs:element name="AlterSaldo" msdata:Caption="Sollstand" msprop:Generator_ColumnVarNameInTable="columnAlterSaldo" msprop:Generator_ColumnPropNameInRow="AlterSaldo" msprop:Generator_ColumnPropNameInTable="AlterSaldoColumn" msprop:Generator_UserColumnName="AlterSaldo" type="xs:decimal" />
+              <xs:element name="NeuerSaldo" msdata:Caption="Sollstand" msprop:Generator_ColumnVarNameInTable="columnNeuerSaldo" msprop:Generator_ColumnPropNameInRow="NeuerSaldo" msprop:Generator_ColumnPropNameInTable="NeuerSaldoColumn" msprop:Generator_UserColumnName="NeuerSaldo" type="xs:decimal" />
+              <xs:element name="Zahlungsbetrag" msdata:Caption="Sollstand" msprop:Generator_ColumnVarNameInTable="columnZahlungsbetrag" msprop:Generator_ColumnPropNameInRow="Zahlungsbetrag" msprop:Generator_ColumnPropNameInTable="ZahlungsbetragColumn" msprop:Generator_UserColumnName="Zahlungsbetrag" type="xs:decimal" />
+              <xs:element name="WarnungMinStand" msprop:Generator_ColumnVarNameInTable="columnWarnungMinStand" msprop:Generator_ColumnPropNameInRow="WarnungMinStand" msprop:Generator_ColumnPropNameInTable="WarnungMinStandColumn" msprop:Generator_UserColumnName="WarnungMinStand" type="xs:boolean" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Klienten" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

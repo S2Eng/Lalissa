@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsEinrichtung" targetNamespace="http://www.tempuri.org/dsEinrichtung.xsd" xmlns:mstns="http://www.tempuri.org/dsEinrichtung.xsd" xmlns="http://www.tempuri.org/dsEinrichtung.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsEinrichtung" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsEinrichtung" msprop:Generator_UserDSName="dsEinrichtung">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Einrichtung" msprop:Generator_UserTableName="Einrichtung" msprop:Generator_RowEvArgName="EinrichtungRowChangeEvent" msprop:Generator_TableVarName="tableEinrichtung" msprop:Generator_TablePropName="Einrichtung" msprop:Generator_RowDeletingName="EinrichtungRowDeleting" msprop:Generator_RowChangingName="EinrichtungRowChanging" msprop:Generator_RowDeletedName="EinrichtungRowDeleted" msprop:Generator_RowEvHandlerName="EinrichtungRowChangeEventHandler" msprop:Generator_TableClassName="EinrichtungDataTable" msprop:Generator_RowChangedName="EinrichtungRowChanged" msprop:Generator_RowClassName="EinrichtungRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Text" msprop:Generator_ColumnVarNameInTable="columnText" msprop:Generator_ColumnPropNameInRow="Text" msprop:Generator_ColumnPropNameInTable="TextColumn" msprop:Generator_UserColumnName="Text" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAdresse" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAdresse" msprop:Generator_ColumnPropNameInRow="IDAdresse" msprop:Generator_ColumnPropNameInTable="IDAdresseColumn" msprop:Generator_UserColumnName="IDAdresse" type="xs:string" minOccurs="0" />
+              <xs:element name="IDKontakt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKontakt" msprop:Generator_ColumnPropNameInRow="IDKontakt" msprop:Generator_ColumnPropNameInTable="IDKontaktColumn" msprop:Generator_UserColumnName="IDKontakt" type="xs:string" minOccurs="0" />
+              <xs:element name="ELGA_OID" msprop:Generator_ColumnVarNameInTable="columnELGA_OID" msprop:Generator_ColumnPropNameInRow="ELGA_OID" msprop:Generator_ColumnPropNameInTable="ELGA_OIDColumn" msprop:Generator_UserColumnName="ELGA_OID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGAAbgeglichen" msprop:Generator_ColumnVarNameInTable="columnELGAAbgeglichen" msprop:Generator_ColumnPropNameInRow="ELGAAbgeglichen" msprop:Generator_ColumnPropNameInTable="ELGAAbgeglichenColumn" msprop:Generator_UserColumnName="ELGAAbgeglichen" type="xs:boolean" />
+              <xs:element name="IstKrankenkasse" msprop:Generator_ColumnVarNameInTable="columnIstKrankenkasse" msprop:Generator_ColumnPropNameInRow="IstKrankenkasse" msprop:Generator_ColumnPropNameInTable="IstKrankenkasseColumn" msprop:Generator_UserColumnName="IstKrankenkasse" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Einrichtung" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDPatient, IDBenutzerErstellt, Groesse, Gewicht, BMI, ZahnersatzOKJN, ZahnersatzUKJN, SehhilfeBrilleJN, SehhilfeKontaktlinsenJN, HoergeraetRechtsJN, 
+                         HoergeraetLinksJN, SonstigeHilfen, ErstelltAm, DurchgefuehrtMit, DepositenJN, Allergie, ReligioeseBeduerfnisse, MobileKrankenpflege, SozialeDienste, 
+                         VerstaendigungAn, Sonstiges, RaucherJN, AtemProblemeJN, AtemProbleme, AtemProblemeSeit, AtemProblemeAuftretung, SonstigeAtemProblemeAuftretung, 
+                         AtemProblemeHilfeMassnahmenHilfsMittel, Tracheostoma, TracheostomaBeschreibung, BeobachtungenAtemProbleme, FluessigkeitsproblemeJN, 
+                         Fluessigkeitsprobleme, FluessigkeitsproblemeSeit, Durstgefuehl, Trinkmenge, ZungeAussehen, Trinkhilfen, Hautturgor, Oedeme, 
+                         BeobachtungFluessigkeitsprobleme, ErnaehrungProblemeJN, ErnaehrungProbleme, ErnaehrungProblemeSeit, Diaet, DiaetSeit, Essgewohnheiten, 
+                         ZahnKieferzustand, ErnaehrungParenteralEnteral, ErnaehrungArt, GelegtAm, Stillgewohnheiten, KauSchluckVerhalten, BeobachtungErnaehrungProbleme, 
+                         StuhlgangProblemeJN, StuhlgangProbleme, StuhlgangProblemeSeit, LetzterStuhlAm, StuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeit, 
+                         StuhlgangAuffaelligkeitenVeraenderungBezFarbe, StuhlgangAuffaelligkeitenVeraenderungBezKonsistenz, StuhlgangAuffaelligkeitenVeraenderungBezMenge, 
+                         StuhlgangAuffaelligkeitenVeraenderungBezGeruch, Abfuehrhilfen, KuenstlicheAusgang, KuenstlicheAusgangSeit, StuhlgangBesondereGewohnheiten, 
+                         BeobachtungenStuhlgangProbleme, UrinausscheidungProblemeJN, UrinausscheidungProbleme, UrinausscheidungProblemeSeit, 
+                         UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber, UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand, 
+                         UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts, UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand, 
+                         UrinAuffaelligkeitenVeraenderungBezMenge, UrinAuffaelligkeitenVeraenderungBezFarbe, UrinAuffaelligkeitenVeraenderungBezGeruch, HarnableitungssystemArt, 
+                         HarnableitungssystemGelegtAm, HarnableitungssystemGrosse, BeobachtungenUrinausscheidungProbleme, HautProblemeJN, HautProbleme, 
+                         AusschlagartigeHautveraendJN, AusschlagartigeHautveraendIn, AusschlagartigeHautveraend, IntertrigoJN, IntertrigoIn, Intertrigo, MundschleimhautZustand, 
+                         HaematomaPetechienBlutungenJN, HaematomaPetechienBlutungenIn, HaematomaPetechienBlutungen, AnderWundenHautlaesionenJN, 
+                         AnderWundenHautlaesionenIn, AnderWundenHautlaesionen, DecubitusSkala, DecubitusPunkte, DecubitusFoto, Decubitus, Schweisssekretion, SchweissHaeufigkeit, 
+                         SchweissBesonderheiten, BeobachtungenAusscheidung, SichBewegenProblemeJN, SichBewegenProbleme, SichBewegenProblemeSeit, 
+                         BeobachtungenSichBewegen, MobilitaetBeeintraechtigtJN, MobilitaetBeeintraechtigt, MobilitaetBeeintraechtigtSeit, BeobachtungenMobilitaetBeeintraechtigt, 
+                         BewegungImBett, BewegungImBettBeschreibung, TransferBettAussehalb, TransferBettAussehalbBeschreibung, MobilImRollstuhl, MobilImRollstuhlBeschreibung, 
+                         FortbewegungZuFuss, FortbewegungZuFussBeschreibung, BeobachtungSichBewegen, SelbstpflegedefizitJN, EssenTrinken, EssenTrinkenBeschreibung, 
+                         Koerperpflege, KoerperpflegeBeschreibung, Kleiden, KleidenBeschreibung, SelbstpflegeHarnTag, SelbstpflegeHarnNacht, SelbstpflegeStuhlTag, 
+                         SelbstpflegeStuhlNacht, SelbstpflegedefizitBeschreibung, SelbstorganisationJN, Selbstorganisation, SelbstorganisationtBeschreibung, Haushalt, 
+                         HaushaltBeschreibung, Beschaeftigung, BeschaeftigungBeschreibung, Freizeit, FreizeitBeschreibung, SelbstpflegedefizitGewohnheiten, 
+                         BeobachtungenSelbstpflegedefizit, SchlafproblemeJN, Schlafprobleme, SchlafproblemeSeit, BeobachtungenSchlafprobleme, KommunikationProblemeJN, 
+                         KommunikationProbleme, KommunikationSelbsthilfe, BeobachtungenKommunikationProbleme, FamBeziehSozialeSituation, FamBeziehSozialeProblemeJN, 
+                         FamBeziehSozialeProbleme, Bezugsperson, AbhaengigePersonenJN, AbhaengigePersonen, ZuHauseAllesRegelnKoennenJN, ZuHauseNichtRegelnKoennen, 
+                         Besuchswuensche, Situationsauswirkung, BeobachtungenSozialesituation, HinweiseKoerpPsychGewalteinwirkungenJN, HinweiseKoerpPsychGewalteinwirkungen, 
+                         EinschneidendeLebenssituationsveraenderungen, Suizidversuche, BeobachtungenGewalteinwirkungen, Sexualitaet, BeobachtungenSexualitaet, InfektionsgefahrJN, 
+                         Infektionsgefahr, KoerperTempGefaehrdungJN, KoerperTempVeraendertJN, KoerperTempVeraenderung, KoerperTemp, KoerperTempVeraenderungSeit, 
+                         BeobachtungenKoerperTemp, VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN, BeobachtungenVorVerletzugen, BeobachtungenErsticken, 
+                         FluessigkeitenNahrungAspirationsrisikoJN, BeobachtungenAspirationsrisiko, BlutzirkulationStoerungenJN, BlutzirkulationStoerungen, BeobachtungenBlutzirkulation, 
+                         SchmerzenJN, SchmerzenLokalisation, SchmerzenSeit, SchmerzenHaeufigkeit, SchmerzenArt, SchmerzenIntensitaet, SchmerzenAustrahlung, 
+                         SchmerzausloesendeFaktoren, SchmerzverstaerkendeFaktoren, SchmerzlinderndeFaktoren, BeobachtungenSchmerzen, 
+                         FaehigkeitGesundheitszustandUmzugehenJN, FaehigkeitGesundheitszustandAngaben, BeobachtungenFaehigkeitGesundheitszustand, 
+                         FaehigkeitVorhandeneRessourcenZuErkennenJN, BeobachtungenFaehigkeitVorhandeneRessourcen, KannBehandlungsprogrammAkzeptierenJN, 
+                         BeobachtungenBehandlungsprogramm, ErkenntGesungheitsfoerdendeMassnahmenJN, GesungheitsfoerdendeMassnahmen, 
+                         BeobachtungenGesungheitsfoerdendeMassnahmen, FaehigkeitEntscheidungenZuTreffenJN, FaehigkeitEntscheidungenZuTreffenAngaben, 
+                         FaehigkeitLebensanforderungenBegegnenZuKoennenJN, BeobachtungenLebensanforderungen, AeusserungenVonVerzweiflungVeraenderteLebensenergienJN, 
+                         AeusserungenVonVerzweiflungVeraenderteLebensenergien, BeobachtungenVeraenderteLebensenergien, MoeglichkeitUmgebungsveraenderungAnzupassenJN, 
+                         BeobachtungenUmgebungsveraenderung, EigeneKoerperAkzeptanzJN, EigeneKoerperAkzeptanzAngaben, EigenPersonFaehigkeitenWertschaetzungen, 
+                         BeobachtungenEigenPersonFaehigkeitenWertschaetzungen, UmfeldRealitaetsbezug, SinneswahrnehmungUngestoertJN, Sinneswahrnehmung, 
+                         SinneswahrnehmungSonstigeAngaben, KannInfoZurSituationUmsetzenJN, BeobachtungenInfoZurSituationUmsetzen, FaehigkeitGedankenRichtigZuVerarbeitenJN, 
+                         BeobachtungenGedankenRichtigZuVerarbeiten, BemerkbareTrauerreaktionJN, BemerkbareTrauerreaktionSeit, BemerkbareTrauerreaktion, 
+                         SubjektivesSinneerlebenAngaben, BeobachtungenSubjektivesSinneerleben, HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN, 
+                         HinweiseVermehrteBeschaeftigung, AngstzustaendeJN, Angstzustaende, SituationVorDerSichFuerchtenJN, SituationVorDerSichFuerchten, Verwandschaftsverhältnis, 
+                         WeitereBeteiligte, BelastendeFaktoren, BeobachtungenAngehoerige, FamilieZusammensetzung, FamilieBeeintraechtigungen, 
+                         BeobachtungenFamilieBeeintraechtigungen, FamilieBereitschaft, BeobachtungenFamilieBereitschaft
+FROM            Anamnese_POP
+WHERE        (IDPatient = ?)
+ORDER BY ErstelltAm DESC</value>
+  </data>
+  <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbInsertCommand1.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Anamnese_POP] ([ID], [IDPatient], [IDBenutzerErstellt], [Groesse], [Gewicht], [BMI], [ZahnersatzOKJN], [ZahnersatzUKJN], [SehhilfeBrilleJN], [SehhilfeKontaktlinsenJN], [HoergeraetRechtsJN], [HoergeraetLinksJN], [SonstigeHilfen], [ErstelltAm], [DurchgefuehrtMit], [DepositenJN], [Allergie], [ReligioeseBeduerfnisse], [MobileKrankenpflege], [SozialeDienste], [VerstaendigungAn], [Sonstiges], [RaucherJN], [AtemProblemeJN], [AtemProbleme], [AtemProblemeSeit], [AtemProblemeAuftretung], [SonstigeAtemProblemeAuftretung], [AtemProblemeHilfeMassnahmenHilfsMittel], [Tracheostoma], [TracheostomaBeschreibung], [BeobachtungenAtemProbleme], [FluessigkeitsproblemeJN], [Fluessigkeitsprobleme], [FluessigkeitsproblemeSeit], [Durstgefuehl], [Trinkmenge], [ZungeAussehen], [Trinkhilfen], [Hautturgor], [Oedeme], [BeobachtungFluessigkeitsprobleme], [ErnaehrungProblemeJN], [ErnaehrungProbleme], [ErnaehrungProblemeSeit], [Diaet], [DiaetSeit], [Essgewohnheiten], [ZahnKieferzustand], [ErnaehrungParenteralEnteral], [ErnaehrungArt], [GelegtAm], [Stillgewohnheiten], [KauSchluckVerhalten], [BeobachtungErnaehrungProbleme], [StuhlgangProblemeJN], [StuhlgangProbleme], [StuhlgangProblemeSeit], [LetzterStuhlAm], [StuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeit], [StuhlgangAuffaelligkeitenVeraenderungBezFarbe], [StuhlgangAuffaelligkeitenVeraenderungBezKonsistenz], [StuhlgangAuffaelligkeitenVeraenderungBezMenge], [StuhlgangAuffaelligkeitenVeraenderungBezGeruch], [Abfuehrhilfen], [KuenstlicheAusgang], [KuenstlicheAusgangSeit], [StuhlgangBesondereGewohnheiten], [BeobachtungenStuhlgangProbleme], [UrinausscheidungProblemeJN], [UrinausscheidungProbleme], [UrinausscheidungProblemeSeit], [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber], [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand], [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts], [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand], [UrinAuffaelligkeitenVeraenderungBezMenge], [UrinAuffaelligkeitenVeraenderungBezFarbe], [UrinAuffaelligkeitenVeraenderungBezGeruch], [HarnableitungssystemArt], [HarnableitungssystemGelegtAm], [HarnableitungssystemGrosse], [BeobachtungenUrinausscheidungProbleme], [HautProblemeJN], [HautProbleme], [AusschlagartigeHautveraendJN], [AusschlagartigeHautveraendIn], [AusschlagartigeHautveraend], [IntertrigoJN], [IntertrigoIn], [Intertrigo], [MundschleimhautZustand], [HaematomaPetechienBlutungenJN], [HaematomaPetechienBlutungenIn], [HaematomaPetechienBlutungen], [AnderWundenHautlaesionenJN], [AnderWundenHautlaesionenIn], [AnderWundenHautlaesionen], [DecubitusSkala], [DecubitusPunkte], [DecubitusFoto], [Decubitus], [Schweisssekretion], [SchweissHaeufigkeit], [SchweissBesonderheiten], [BeobachtungenAusscheidung], [SichBewegenProblemeJN], [SichBewegenProbleme], [SichBewegenProblemeSeit], [BeobachtungenSichBewegen], [MobilitaetBeeintraechtigtJN], [MobilitaetBeeintraechtigt], [MobilitaetBeeintraechtigtSeit], [BeobachtungenMobilitaetBeeintraechtigt], [BewegungImBett], [BewegungImBettBeschreibung], [TransferBettAussehalb], [TransferBettAussehalbBeschreibung], [MobilImRollstuhl], [MobilImRollstuhlBeschreibung], [FortbewegungZuFuss], [FortbewegungZuFussBeschreibung], [BeobachtungSichBewegen], [SelbstpflegedefizitJN], [EssenTrinken], [EssenTrinkenBeschreibung], [Koerperpflege], [KoerperpflegeBeschreibung], [Kleiden], [KleidenBeschreibung], [SelbstpflegeHarnTag], [SelbstpflegeHarnNacht], [SelbstpflegeStuhlTag], [SelbstpflegeStuhlNacht], [SelbstpflegedefizitBeschreibung], [SelbstorganisationJN], [Selbstorganisation], [SelbstorganisationtBeschreibung], [Haushalt], [HaushaltBeschreibung], [Beschaeftigung], [BeschaeftigungBeschreibung], [Freizeit], [FreizeitBeschreibung], [SelbstpflegedefizitGewohnheiten], [BeobachtungenSelbstpflegedefizit], [SchlafproblemeJN], [Schlafprobleme], [SchlafproblemeSeit], [BeobachtungenSchlafprobleme], [KommunikationProblemeJN], [KommunikationProbleme], [KommunikationSelbsthilfe], [BeobachtungenKommunikationProbleme], [FamBeziehSozialeSituation], [FamBeziehSozialeProblemeJN], [FamBeziehSozialeProbleme], [Bezugsperson], [AbhaengigePersonenJN], [AbhaengigePersonen], [ZuHauseAllesRegelnKoennenJN], [ZuHauseNichtRegelnKoennen], [Besuchswuensche], [Situationsauswirkung], [BeobachtungenSozialesituation], [HinweiseKoerpPsychGewalteinwirkungenJN], [HinweiseKoerpPsychGewalteinwirkungen], [EinschneidendeLebenssituationsveraenderungen], [Suizidversuche], [BeobachtungenGewalteinwirkungen], [Sexualitaet], [BeobachtungenSexualitaet], [InfektionsgefahrJN], [Infektionsgefahr], [KoerperTempGefaehrdungJN], [KoerperTempVeraendertJN], [KoerperTempVeraenderung], [KoerperTemp], [KoerperTempVeraenderungSeit], [BeobachtungenKoerperTemp], [VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN], [BeobachtungenVorVerletzugen], [BeobachtungenErsticken], [FluessigkeitenNahrungAspirationsrisikoJN], [BeobachtungenAspirationsrisiko], [BlutzirkulationStoerungenJN], [BlutzirkulationStoerungen], [BeobachtungenBlutzirkulation], [SchmerzenJN], [SchmerzenLokalisation], [SchmerzenSeit], [SchmerzenHaeufigkeit], [SchmerzenArt], [SchmerzenIntensitaet], [SchmerzenAustrahlung], [SchmerzausloesendeFaktoren], [SchmerzverstaerkendeFaktoren], [SchmerzlinderndeFaktoren], [BeobachtungenSchmerzen], [FaehigkeitGesundheitszustandUmzugehenJN], [FaehigkeitGesundheitszustandAngaben], [BeobachtungenFaehigkeitGesundheitszustand], [FaehigkeitVorhandeneRessourcenZuErkennenJN], [BeobachtungenFaehigkeitVorhandeneRessourcen], [KannBehandlungsprogrammAkzeptierenJN], [BeobachtungenBehandlungsprogramm], [ErkenntGesungheitsfoerdendeMassnahmenJN], [GesungheitsfoerdendeMassnahmen], [BeobachtungenGesungheitsfoerdendeMassnahmen], [FaehigkeitEntscheidungenZuTreffenJN], [FaehigkeitEntscheidungenZuTreffenAngaben], [FaehigkeitLebensanforderungenBegegnenZuKoennenJN], [BeobachtungenLebensanforderungen], [AeusserungenVonVerzweiflungVeraenderteLebensenergienJN], [AeusserungenVonVerzweiflungVeraenderteLebensenergien], [BeobachtungenVeraenderteLebensenergien], [MoeglichkeitUmgebungsveraenderungAnzupassenJN], [BeobachtungenUmgebungsveraenderung], [EigeneKoerperAkzeptanzJN], [EigeneKoerperAkzeptanzAngaben], [EigenPersonFaehigkeitenWertschaetzungen], [BeobachtungenEigenPersonFaehigkeitenWertschaetzungen], [UmfeldRealitaetsbezug], [SinneswahrnehmungUngestoertJN], [Sinneswahrnehmung], [SinneswahrnehmungSonstigeAngaben], [KannInfoZurSituationUmsetzenJN], [BeobachtungenInfoZurSituationUmsetzen], [FaehigkeitGedankenRichtigZuVerarbeitenJN], [BeobachtungenGedankenRichtigZuVerarbeiten], [BemerkbareTrauerreaktionJN], [BemerkbareTrauerreaktionSeit], [BemerkbareTrauerreaktion], [SubjektivesSinneerlebenAngaben], [BeobachtungenSubjektivesSinneerleben], [HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN], [HinweiseVermehrteBeschaeftigung], [AngstzustaendeJN], [Angstzustaende], [SituationVorDerSichFuerchtenJN], [SituationVorDerSichFuerchten], [Verwandschaftsverhältnis], [WeitereBeteiligte], [BelastendeFaktoren], [BeobachtungenAngehoerige], [FamilieZusammensetzung], [FamilieBeeintraechtigungen], [BeobachtungenFamilieBeeintraechtigungen], [FamilieBereitschaft], [BeobachtungenFamilieBereitschaft]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
+  <metadata name="oleDbUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [Anamnese_POP] SET [ID] = ?, [IDPatient] = ?, [IDBenutzerErstellt] = ?, [Groesse] = ?, [Gewicht] = ?, [BMI] = ?, [ZahnersatzOKJN] = ?, [ZahnersatzUKJN] = ?, [SehhilfeBrilleJN] = ?, [SehhilfeKontaktlinsenJN] = ?, [HoergeraetRechtsJN] = ?, [HoergeraetLinksJN] = ?, [SonstigeHilfen] = ?, [ErstelltAm] = ?, [DurchgefuehrtMit] = ?, [DepositenJN] = ?, [Allergie] = ?, [ReligioeseBeduerfnisse] = ?, [MobileKrankenpflege] = ?, [SozialeDienste] = ?, [VerstaendigungAn] = ?, [Sonstiges] = ?, [RaucherJN] = ?, [AtemProblemeJN] = ?, [AtemProbleme] = ?, [AtemProblemeSeit] = ?, [AtemProblemeAuftretung] = ?, [SonstigeAtemProblemeAuftretung] = ?, [AtemProblemeHilfeMassnahmenHilfsMittel] = ?, [Tracheostoma] = ?, [TracheostomaBeschreibung] = ?, [BeobachtungenAtemProbleme] = ?, [FluessigkeitsproblemeJN] = ?, [Fluessigkeitsprobleme] = ?, [FluessigkeitsproblemeSeit] = ?, [Durstgefuehl] = ?, [Trinkmenge] = ?, [ZungeAussehen] = ?, [Trinkhilfen] = ?, [Hautturgor] = ?, [Oedeme] = ?, [BeobachtungFluessigkeitsprobleme] = ?, [ErnaehrungProblemeJN] = ?, [ErnaehrungProbleme] = ?, [ErnaehrungProblemeSeit] = ?, [Diaet] = ?, [DiaetSeit] = ?, [Essgewohnheiten] = ?, [ZahnKieferzustand] = ?, [ErnaehrungParenteralEnteral] = ?, [ErnaehrungArt] = ?, [GelegtAm] = ?, [Stillgewohnheiten] = ?, [KauSchluckVerhalten] = ?, [BeobachtungErnaehrungProbleme] = ?, [StuhlgangProblemeJN] = ?, [StuhlgangProbleme] = ?, [StuhlgangProblemeSeit] = ?, [LetzterStuhlAm] = ?, [StuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeit] = ?, [StuhlgangAuffaelligkeitenVeraenderungBezFarbe] = ?, [StuhlgangAuffaelligkeitenVeraenderungBezKonsistenz] = ?, [StuhlgangAuffaelligkeitenVeraenderungBezMenge] = ?, [StuhlgangAuffaelligkeitenVeraenderungBezGeruch] = ?, [Abfuehrhilfen] = ?, [KuenstlicheAusgang] = ?, [KuenstlicheAusgangSeit] = ?, [StuhlgangBesondereGewohnheiten] = ?, [BeobachtungenStuhlgangProbleme] = ?, [UrinausscheidungProblemeJN] = ?, [UrinausscheidungProbleme] = ?, [UrinausscheidungProblemeSeit] = ?, [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber] = ?, [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand] = ?, [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts] = ?, [UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand] = ?, [UrinAuffaelligkeitenVeraenderungBezMenge] = ?, [UrinAuffaelligkeitenVeraenderungBezFarbe] = ?, [UrinAuffaelligkeitenVeraenderungBezGeruch] = ?, [HarnableitungssystemArt] = ?, [HarnableitungssystemGelegtAm] = ?, [HarnableitungssystemGrosse] = ?, [BeobachtungenUrinausscheidungProbleme] = ?, [HautProblemeJN] = ?, [HautProbleme] = ?, [AusschlagartigeHautveraendJN] = ?, [AusschlagartigeHautveraendIn] = ?, [AusschlagartigeHautveraend] = ?, [IntertrigoJN] = ?, [IntertrigoIn] = ?, [Intertrigo] = ?, [MundschleimhautZustand] = ?, [HaematomaPetechienBlutungenJN] = ?, [HaematomaPetechienBlutungenIn] = ?, [HaematomaPetechienBlutungen] = ?, [AnderWundenHautlaesionenJN] = ?, [AnderWundenHautlaesionenIn] = ?, [AnderWundenHautlaesionen] = ?, [DecubitusSkala] = ?, [DecubitusPunkte] = ?, [DecubitusFoto] = ?, [Decubitus] = ?, [Schweisssekretion] = ?, [SchweissHaeufigkeit] = ?, [SchweissBesonderheiten] = ?, [BeobachtungenAusscheidung] = ?, [SichBewegenProblemeJN] = ?, [SichBewegenProbleme] = ?, [SichBewegenProblemeSeit] = ?, [BeobachtungenSichBewegen] = ?, [MobilitaetBeeintraechtigtJN] = ?, [MobilitaetBeeintraechtigt] = ?, [MobilitaetBeeintraechtigtSeit] = ?, [BeobachtungenMobilitaetBeeintraechtigt] = ?, [BewegungImBett] = ?, [BewegungImBettBeschreibung] = ?, [TransferBettAussehalb] = ?, [TransferBettAussehalbBeschreibung] = ?, [MobilImRollstuhl] = ?, [MobilImRollstuhlBeschreibung] = ?, [FortbewegungZuFuss] = ?, [FortbewegungZuFussBeschreibung] = ?, [BeobachtungSichBewegen] = ?, [SelbstpflegedefizitJN] = ?, [EssenTrinken] = ?, [EssenTrinkenBeschreibung] = ?, [Koerperpflege] = ?, [KoerperpflegeBeschreibung] = ?, [Kleiden] = ?, [KleidenBeschreibung] = ?, [SelbstpflegeHarnTag] = ?, [SelbstpflegeHarnNacht] = ?, [SelbstpflegeStuhlTag] = ?, [SelbstpflegeStuhlNacht] = ?, [SelbstpflegedefizitBeschreibung] = ?, [SelbstorganisationJN] = ?, [Selbstorganisation] = ?, [SelbstorganisationtBeschreibung] = ?, [Haushalt] = ?, [HaushaltBeschreibung] = ?, [Beschaeftigung] = ?, [BeschaeftigungBeschreibung] = ?, [Freizeit] = ?, [FreizeitBeschreibung] = ?, [SelbstpflegedefizitGewohnheiten] = ?, [BeobachtungenSelbstpflegedefizit] = ?, [SchlafproblemeJN] = ?, [Schlafprobleme] = ?, [SchlafproblemeSeit] = ?, [BeobachtungenSchlafprobleme] = ?, [KommunikationProblemeJN] = ?, [KommunikationProbleme] = ?, [KommunikationSelbsthilfe] = ?, [BeobachtungenKommunikationProbleme] = ?, [FamBeziehSozialeSituation] = ?, [FamBeziehSozialeProblemeJN] = ?, [FamBeziehSozialeProbleme] = ?, [Bezugsperson] = ?, [AbhaengigePersonenJN] = ?, [AbhaengigePersonen] = ?, [ZuHauseAllesRegelnKoennenJN] = ?, [ZuHauseNichtRegelnKoennen] = ?, [Besuchswuensche] = ?, [Situationsauswirkung] = ?, [BeobachtungenSozialesituation] = ?, [HinweiseKoerpPsychGewalteinwirkungenJN] = ?, [HinweiseKoerpPsychGewalteinwirkungen] = ?, [EinschneidendeLebenssituationsveraenderungen] = ?, [Suizidversuche] = ?, [BeobachtungenGewalteinwirkungen] = ?, [Sexualitaet] = ?, [BeobachtungenSexualitaet] = ?, [InfektionsgefahrJN] = ?, [Infektionsgefahr] = ?, [KoerperTempGefaehrdungJN] = ?, [KoerperTempVeraendertJN] = ?, [KoerperTempVeraenderung] = ?, [KoerperTemp] = ?, [KoerperTempVeraenderungSeit] = ?, [BeobachtungenKoerperTemp] = ?, [VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN] = ?, [BeobachtungenVorVerletzugen] = ?, [BeobachtungenErsticken] = ?, [FluessigkeitenNahrungAspirationsrisikoJN] = ?, [BeobachtungenAspirationsrisiko] = ?, [BlutzirkulationStoerungenJN] = ?, [BlutzirkulationStoerungen] = ?, [BeobachtungenBlutzirkulation] = ?, [SchmerzenJN] = ?, [SchmerzenLokalisation] = ?, [SchmerzenSeit] = ?, [SchmerzenHaeufigkeit] = ?, [SchmerzenArt] = ?, [SchmerzenIntensitaet] = ?, [SchmerzenAustrahlung] = ?, [SchmerzausloesendeFaktoren] = ?, [SchmerzverstaerkendeFaktoren] = ?, [SchmerzlinderndeFaktoren] = ?, [BeobachtungenSchmerzen] = ?, [FaehigkeitGesundheitszustandUmzugehenJN] = ?, [FaehigkeitGesundheitszustandAngaben] = ?, [BeobachtungenFaehigkeitGesundheitszustand] = ?, [FaehigkeitVorhandeneRessourcenZuErkennenJN] = ?, [BeobachtungenFaehigkeitVorhandeneRessourcen] = ?, [KannBehandlungsprogrammAkzeptierenJN] = ?, [BeobachtungenBehandlungsprogramm] = ?, [ErkenntGesungheitsfoerdendeMassnahmenJN] = ?, [GesungheitsfoerdendeMassnahmen] = ?, [BeobachtungenGesungheitsfoerdendeMassnahmen] = ?, [FaehigkeitEntscheidungenZuTreffenJN] = ?, [FaehigkeitEntscheidungenZuTreffenAngaben] = ?, [FaehigkeitLebensanforderungenBegegnenZuKoennenJN] = ?, [BeobachtungenLebensanforderungen] = ?, [AeusserungenVonVerzweiflungVeraenderteLebensenergienJN] = ?, [AeusserungenVonVerzweiflungVeraenderteLebensenergien] = ?, [BeobachtungenVeraenderteLebensenergien] = ?, [MoeglichkeitUmgebungsveraenderungAnzupassenJN] = ?, [BeobachtungenUmgebungsveraenderung] = ?, [EigeneKoerperAkzeptanzJN] = ?, [EigeneKoerperAkzeptanzAngaben] = ?, [EigenPersonFaehigkeitenWertschaetzungen] = ?, [BeobachtungenEigenPersonFaehigkeitenWertschaetzungen] = ?, [UmfeldRealitaetsbezug] = ?, [SinneswahrnehmungUngestoertJN] = ?, [Sinneswahrnehmung] = ?, [SinneswahrnehmungSonstigeAngaben] = ?, [KannInfoZurSituationUmsetzenJN] = ?, [BeobachtungenInfoZurSituationUmsetzen] = ?, [FaehigkeitGedankenRichtigZuVerarbeitenJN] = ?, [BeobachtungenGedankenRichtigZuVerarbeiten] = ?, [BemerkbareTrauerreaktionJN] = ?, [BemerkbareTrauerreaktionSeit] = ?, [BemerkbareTrauerreaktion] = ?, [SubjektivesSinneerlebenAngaben] = ?, [BeobachtungenSubjektivesSinneerleben] = ?, [HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN] = ?, [HinweiseVermehrteBeschaeftigung] = ?, [AngstzustaendeJN] = ?, [Angstzustaende] = ?, [SituationVorDerSichFuerchtenJN] = ?, [SituationVorDerSichFuerchten] = ?, [Verwandschaftsverhältnis] = ?, [WeitereBeteiligte] = ?, [BelastendeFaktoren] = ?, [BeobachtungenAngehoerige] = ?, [FamilieZusammensetzung] = ?, [FamilieBeeintraechtigungen] = ?, [BeobachtungenFamilieBeeintraechtigungen] = ?, [FamilieBereitschaft] = ?, [BeobachtungenFamilieBereitschaft] = ? WHERE (([ID] = ?) AND ([IDPatient] = ?) AND ([IDBenutzerErstellt] = ?) AND ([Groesse] = ?) AND ([Gewicht] = ?) AND ([BMI] = ?) AND ([ZahnersatzOKJN] = ?) AND ([ZahnersatzUKJN] = ?) AND ([SehhilfeBrilleJN] = ?) AND ([SehhilfeKontaktlinsenJN] = ?) AND ([HoergeraetRechtsJN] = ?) AND ([HoergeraetLinksJN] = ?) AND ([ErstelltAm] = ?) AND ([DepositenJN] = ?) AND ([RaucherJN] = ?) AND ([AtemProblemeJN] = ?) AND ((? = 1 AND [AtemProblemeSeit] IS NULL) OR ([AtemProblemeSeit] = ?)) AND ([AtemProblemeAuftretung] = ?) AND ([Tracheostoma] = ?) AND ([FluessigkeitsproblemeJN] = ?) AND ((? = 1 AND [FluessigkeitsproblemeSeit] IS NULL) OR ([FluessigkeitsproblemeSeit] = ?)) AND ([Durstgefuehl] = ?) AND ([Trinkmenge] = ?) AND ([ErnaehrungProblemeJN] = ?) AND ((? = 1 AND [ErnaehrungProblemeSeit] IS NULL) OR ([ErnaehrungProblemeSeit] = ?)) AND ((? = 1 AND [DiaetSeit] IS NULL) OR ([DiaetSeit] = ?)) AND ([ErnaehrungParenteralEnteral] = ?) AND ((? = 1 AND [GelegtAm] IS NULL) OR ([GelegtAm] = ?)) AND ([StuhlgangProblemeJN] = ?) AND ((? = 1 AND [StuhlgangProblemeSeit] IS NULL) OR ([StuhlgangProblemeSeit] = ?)) AND ((? = 1 AND [LetzterStuhlAm] IS NULL) OR ([LetzterStuhlAm] = ?)) AND ((? = 1 AND [KuenstlicheAusgangSeit] IS NULL) OR ([KuenstlicheAusgangSeit] = ?)) AND ([UrinausscheidungProblemeJN] = ?) AND ((? = 1 AND [UrinausscheidungProblemeSeit] IS NULL) OR ([UrinausscheidungProblemeSeit] = ?)) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber] = ?) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand] = ?) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts] = ?) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand] = ?) AND ((? = 1 AND [HarnableitungssystemGelegtAm] IS NULL) OR ([HarnableitungssystemGelegtAm] = ?)) AND ([HarnableitungssystemGrosse] = ?) AND ([HautProblemeJN] = ?) AND ([AusschlagartigeHautveraendJN] = ?) AND ([IntertrigoJN] = ?) AND ([HaematomaPetechienBlutungenJN] = ?) AND ([AnderWundenHautlaesionenJN] = ?) AND ([DecubitusPunkte] = ?) AND ([DecubitusFoto] = ?) AND ([Schweisssekretion] = ?) AND ((? = 1 AND [SchweissHaeufigkeit] IS NULL) OR ([SchweissHaeufigkeit] = ?)) AND ([SichBewegenProblemeJN] = ?) AND ((? = 1 AND [SichBewegenProblemeSeit] IS NULL) OR ([SichBewegenProblemeSeit] = ?)) AND ([MobilitaetBeeintraechtigtJN] = ?) AND ((? = 1 AND [MobilitaetBeeintraechtigtSeit] IS NULL) OR ([MobilitaetBeeintraechtigtSeit] = ?)) AND ([BewegungImBett] = ?) AND ([TransferBettAussehalb] = ?) AND ([MobilImRollstuhl] = ?) AND ([FortbewegungZuFuss] = ?) AND ([SelbstpflegedefizitJN] = ?) AND ([EssenTrinken] = ?) AND ([Koerperpflege] = ?) AND ([Kleiden] = ?) AND ([SelbstpflegeHarnTag] = ?) AND ([SelbstpflegeHarnNacht] = ?) AND ([SelbstpflegeStuhlTag] = ?) AND ([SelbstpflegeStuhlNacht] = ?) AND ([SelbstorganisationJN] = ?) AND ([Selbstorganisation] = ?) AND ([Haushalt] = ?) AND ([Beschaeftigung] = ?) AND ([Freizeit] = ?) AND ([SchlafproblemeJN] = ?) AND ((? = 1 AND [SchlafproblemeSeit] IS NULL) OR ([SchlafproblemeSeit] = ?)) AND ([KommunikationProblemeJN] = ?) AND ([FamBeziehSozialeProblemeJN] = ?) AND ([AbhaengigePersonenJN] = ?) AND ([ZuHauseAllesRegelnKoennenJN] = ?) AND ([HinweiseKoerpPsychGewalteinwirkungenJN] = ?) AND ([InfektionsgefahrJN] = ?) AND ([KoerperTempGefaehrdungJN] = ?) AND ([KoerperTempVeraendertJN] = ?) AND ([KoerperTempVeraenderung] = ?) AND ([KoerperTemp] = ?) AND ((? = 1 AND [KoerperTempVeraenderungSeit] IS NULL) OR ([KoerperTempVeraenderungSeit] = ?)) AND ([VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN] = ?) AND ([FluessigkeitenNahrungAspirationsrisikoJN] = ?) AND ([BlutzirkulationStoerungenJN] = ?) AND ([SchmerzenJN] = ?) AND ((? = 1 AND [SchmerzenSeit] IS NULL) OR ([SchmerzenSeit] = ?)) AND ([SchmerzenIntensitaet] = ?) AND ([FaehigkeitGesundheitszustandUmzugehenJN] = ?) AND ([FaehigkeitVorhandeneRessourcenZuErkennenJN] = ?) AND ([KannBehandlungsprogrammAkzeptierenJN] = ?) AND ([ErkenntGesungheitsfoerdendeMassnahmenJN] = ?) AND ([FaehigkeitEntscheidungenZuTreffenJN] = ?) AND ([FaehigkeitLebensanforderungenBegegnenZuKoennenJN] = ?) AND ([AeusserungenVonVerzweiflungVeraenderteLebensenergienJN] = ?) AND ([MoeglichkeitUmgebungsveraenderungAnzupassenJN] = ?) AND ([EigeneKoerperAkzeptanzJN] = ?) AND ([EigenPersonFaehigkeitenWertschaetzungen] = ?) AND ([SinneswahrnehmungUngestoertJN] = ?) AND ([KannInfoZurSituationUmsetzenJN] = ?) AND ([FaehigkeitGedankenRichtigZuVerarbeitenJN] = ?) AND ([BemerkbareTrauerreaktionJN] = ?) AND ((? = 1 AND [BemerkbareTrauerreaktionSeit] IS NULL) OR ([BemerkbareTrauerreaktionSeit] = ?)) AND ([HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN] = ?) AND ([AngstzustaendeJN] = ?) AND ([SituationVorDerSichFuerchtenJN] = ?))</value>
+  </data>
+  <metadata name="oleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbDeleteCommand1.CommandText" xml:space="preserve">
+    <value>DELETE FROM [Anamnese_POP] WHERE (([ID] = ?) AND ([IDPatient] = ?) AND ([IDBenutzerErstellt] = ?) AND ([Groesse] = ?) AND ([Gewicht] = ?) AND ([BMI] = ?) AND ([ZahnersatzOKJN] = ?) AND ([ZahnersatzUKJN] = ?) AND ([SehhilfeBrilleJN] = ?) AND ([SehhilfeKontaktlinsenJN] = ?) AND ([HoergeraetRechtsJN] = ?) AND ([HoergeraetLinksJN] = ?) AND ([ErstelltAm] = ?) AND ([DepositenJN] = ?) AND ([RaucherJN] = ?) AND ([AtemProblemeJN] = ?) AND ((? = 1 AND [AtemProblemeSeit] IS NULL) OR ([AtemProblemeSeit] = ?)) AND ([AtemProblemeAuftretung] = ?) AND ([Tracheostoma] = ?) AND ([FluessigkeitsproblemeJN] = ?) AND ((? = 1 AND [FluessigkeitsproblemeSeit] IS NULL) OR ([FluessigkeitsproblemeSeit] = ?)) AND ([Durstgefuehl] = ?) AND ([Trinkmenge] = ?) AND ([ErnaehrungProblemeJN] = ?) AND ((? = 1 AND [ErnaehrungProblemeSeit] IS NULL) OR ([ErnaehrungProblemeSeit] = ?)) AND ((? = 1 AND [DiaetSeit] IS NULL) OR ([DiaetSeit] = ?)) AND ([ErnaehrungParenteralEnteral] = ?) AND ((? = 1 AND [GelegtAm] IS NULL) OR ([GelegtAm] = ?)) AND ([StuhlgangProblemeJN] = ?) AND ((? = 1 AND [StuhlgangProblemeSeit] IS NULL) OR ([StuhlgangProblemeSeit] = ?)) AND ((? = 1 AND [LetzterStuhlAm] IS NULL) OR ([LetzterStuhlAm] = ?)) AND ((? = 1 AND [KuenstlicheAusgangSeit] IS NULL) OR ([KuenstlicheAusgangSeit] = ?)) AND ([UrinausscheidungProblemeJN] = ?) AND ((? = 1 AND [UrinausscheidungProblemeSeit] IS NULL) OR ([UrinausscheidungProblemeSeit] = ?)) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber] = ?) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand] = ?) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts] = ?) AND ([UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand] = ?) AND ((? = 1 AND [HarnableitungssystemGelegtAm] IS NULL) OR ([HarnableitungssystemGelegtAm] = ?)) AND ([HarnableitungssystemGrosse] = ?) AND ([HautProblemeJN] = ?) AND ([AusschlagartigeHautveraendJN] = ?) AND ([IntertrigoJN] = ?) AND ([HaematomaPetechienBlutungenJN] = ?) AND ([AnderWundenHautlaesionenJN] = ?) AND ([DecubitusPunkte] = ?) AND ([DecubitusFoto] = ?) AND ([Schweisssekretion] = ?) AND ((? = 1 AND [SchweissHaeufigkeit] IS NULL) OR ([SchweissHaeufigkeit] = ?)) AND ([SichBewegenProblemeJN] = ?) AND ((? = 1 AND [SichBewegenProblemeSeit] IS NULL) OR ([SichBewegenProblemeSeit] = ?)) AND ([MobilitaetBeeintraechtigtJN] = ?) AND ((? = 1 AND [MobilitaetBeeintraechtigtSeit] IS NULL) OR ([MobilitaetBeeintraechtigtSeit] = ?)) AND ([BewegungImBett] = ?) AND ([TransferBettAussehalb] = ?) AND ([MobilImRollstuhl] = ?) AND ([FortbewegungZuFuss] = ?) AND ([SelbstpflegedefizitJN] = ?) AND ([EssenTrinken] = ?) AND ([Koerperpflege] = ?) AND ([Kleiden] = ?) AND ([SelbstpflegeHarnTag] = ?) AND ([SelbstpflegeHarnNacht] = ?) AND ([SelbstpflegeStuhlTag] = ?) AND ([SelbstpflegeStuhlNacht] = ?) AND ([SelbstorganisationJN] = ?) AND ([Selbstorganisation] = ?) AND ([Haushalt] = ?) AND ([Beschaeftigung] = ?) AND ([Freizeit] = ?) AND ([SchlafproblemeJN] = ?) AND ((? = 1 AND [SchlafproblemeSeit] IS NULL) OR ([SchlafproblemeSeit] = ?)) AND ([KommunikationProblemeJN] = ?) AND ([FamBeziehSozialeProblemeJN] = ?) AND ([AbhaengigePersonenJN] = ?) AND ([ZuHauseAllesRegelnKoennenJN] = ?) AND ([HinweiseKoerpPsychGewalteinwirkungenJN] = ?) AND ([InfektionsgefahrJN] = ?) AND ([KoerperTempGefaehrdungJN] = ?) AND ([KoerperTempVeraendertJN] = ?) AND ([KoerperTempVeraenderung] = ?) AND ([KoerperTemp] = ?) AND ((? = 1 AND [KoerperTempVeraenderungSeit] IS NULL) OR ([KoerperTempVeraenderungSeit] = ?)) AND ([VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN] = ?) AND ([FluessigkeitenNahrungAspirationsrisikoJN] = ?) AND ([BlutzirkulationStoerungenJN] = ?) AND ([SchmerzenJN] = ?) AND ((? = 1 AND [SchmerzenSeit] IS NULL) OR ([SchmerzenSeit] = ?)) AND ([SchmerzenIntensitaet] = ?) AND ([FaehigkeitGesundheitszustandUmzugehenJN] = ?) AND ([FaehigkeitVorhandeneRessourcenZuErkennenJN] = ?) AND ([KannBehandlungsprogrammAkzeptierenJN] = ?) AND ([ErkenntGesungheitsfoerdendeMassnahmenJN] = ?) AND ([FaehigkeitEntscheidungenZuTreffenJN] = ?) AND ([FaehigkeitLebensanforderungenBegegnenZuKoennenJN] = ?) AND ([AeusserungenVonVerzweiflungVeraenderteLebensenergienJN] = ?) AND ([MoeglichkeitUmgebungsveraenderungAnzupassenJN] = ?) AND ([EigeneKoerperAkzeptanzJN] = ?) AND ([EigenPersonFaehigkeitenWertschaetzungen] = ?) AND ([SinneswahrnehmungUngestoertJN] = ?) AND ([KannInfoZurSituationUmsetzenJN] = ?) AND ([FaehigkeitGedankenRichtigZuVerarbeitenJN] = ?) AND ([BemerkbareTrauerreaktionJN] = ?) AND ((? = 1 AND [BemerkbareTrauerreaktionSeit] IS NULL) OR ([BemerkbareTrauerreaktionSeit] = ?)) AND ([HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN] = ?) AND ([AngstzustaendeJN] = ?) AND ([SituationVorDerSichFuerchtenJN] = ?))</value>
+  </data>
+  <metadata name="daAnamnesePOP.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="dsPDXByPflegeModell1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="daPDXByPflegemodell.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbSelectCommand2.CommandText" xml:space="preserve">
+    <value>SELECT        PDX.ID AS IDPDX, PDX.Klartext, PDX.Code, PDX.LokalisierungsTyp, Pflegemodelle.ID AS IDPflegemodelle, Pflegemodelle.Modell, Pflegemodelle.Modellgruppe, 
+                         Pflegemodelle.Reihenfolge
+FROM            PDX INNER JOIN
+                         PDXPflegemodelle ON PDX.ID = PDXPflegemodelle.IDPDX INNER JOIN
+                         Pflegemodelle ON PDXPflegemodelle.IDPflegemodelle = Pflegemodelle.ID
+WHERE        (Pflegemodelle.Modell = ?)</value>
+  </data>
+  <metadata name="dsPflegemodelle1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 212</value>
+  </metadata>
+  <metadata name="daPflegeModell.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand3.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>

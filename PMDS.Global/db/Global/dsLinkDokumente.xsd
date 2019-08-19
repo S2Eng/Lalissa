@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsLinkDokumente" targetNamespace="http://tempuri.org/dsLinkDokumente.xsd" xmlns:mstns="http://tempuri.org/dsLinkDokumente.xsd" xmlns="http://tempuri.org/dsLinkDokumente.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsLinkDokumente" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsLinkDokumente" msprop:Generator_DataSetName="dsLinkDokumente">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LinkDokumente" msprop:Generator_UserTableName="LinkDokumente" msprop:Generator_RowDeletedName="LinkDokumenteRowDeleted" msprop:Generator_TableClassName="LinkDokumenteDataTable" msprop:Generator_RowChangedName="LinkDokumenteRowChanged" msprop:Generator_RowClassName="LinkDokumenteRow" msprop:Generator_RowChangingName="LinkDokumenteRowChanging" msprop:Generator_RowEvArgName="LinkDokumenteRowChangeEvent" msprop:Generator_RowEvHandlerName="LinkDokumenteRowChangeEventHandler" msprop:Generator_TablePropName="LinkDokumente" msprop:Generator_TableVarName="tableLinkDokumente" msprop:Generator_RowDeletingName="LinkDokumenteRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Beschreibung" msprop:Generator_UserColumnName="Beschreibung" msprop:Generator_ColumnPropNameInRow="Beschreibung" msprop:Generator_ColumnVarNameInTable="columnBeschreibung" msprop:Generator_ColumnPropNameInTable="BeschreibungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LinkName" msprop:Generator_UserColumnName="LinkName" msprop:Generator_ColumnPropNameInRow="LinkName" msprop:Generator_ColumnVarNameInTable="columnLinkName" msprop:Generator_ColumnPropNameInTable="LinkNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2048" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Dokument" msprop:Generator_UserColumnName="Dokument" msprop:Generator_ColumnPropNameInRow="Dokument" msprop:Generator_ColumnVarNameInTable="columnDokument" msprop:Generator_ColumnPropNameInTable="DokumentColumn" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Gruppe" msprop:Generator_UserColumnName="Gruppe" msprop:Generator_ColumnPropNameInRow="Gruppe" msprop:Generator_ColumnVarNameInTable="columnGruppe" msprop:Generator_ColumnPropNameInTable="GruppeColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Erstellungsdatum" msprop:Generator_UserColumnName="Erstellungsdatum" msprop:Generator_ColumnPropNameInRow="Erstellungsdatum" msprop:Generator_ColumnVarNameInTable="columnErstellungsdatum" msprop:Generator_ColumnPropNameInTable="ErstellungsdatumColumn" type="xs:dateTime" />
+              <xs:element name="Aenderungsdatum" msprop:Generator_UserColumnName="Aenderungsdatum" msprop:Generator_ColumnPropNameInRow="Aenderungsdatum" msprop:Generator_ColumnVarNameInTable="columnAenderungsdatum" msprop:Generator_ColumnPropNameInTable="AenderungsdatumColumn" type="xs:dateTime" />
+              <xs:element name="IDBenutzer_Erstellt" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Erstellt" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInTable="IDBenutzer_ErstelltColumn" type="xs:string" />
+              <xs:element name="IDBenutzer_Geaendert" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Geaendert" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInTable="IDBenutzer_GeaendertColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LinkDokumente" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

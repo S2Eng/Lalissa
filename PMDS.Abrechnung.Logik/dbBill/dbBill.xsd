@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dbBill" targetNamespace="http://tempuri.org/dbBill.xsd" xmlns:mstns="http://tempuri.org/dbBill.xsd" xmlns="http://tempuri.org/dbBill.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dbBill" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dbBill" msprop:Generator_DataSetName="dbBill" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="fields" msprop:Generator_UserTableName="fields" msprop:Generator_RowDeletedName="fieldsRowDeleted" msprop:Generator_RowChangedName="fieldsRowChanged" msprop:Generator_RowClassName="fieldsRow" msprop:Generator_RowChangingName="fieldsRowChanging" msprop:Generator_RowEvArgName="fieldsRowChangeEvent" msprop:Generator_RowEvHandlerName="fieldsRowChangeEventHandler" msprop:Generator_TableClassName="fieldsDataTable" msprop:Generator_TableVarName="tablefields" msprop:Generator_RowDeletingName="fieldsRowDeleting" msprop:Generator_TablePropName="fields">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="txt" msprop:Generator_UserColumnName="txt" msprop:Generator_ColumnPropNameInRow="txt" msprop:Generator_ColumnVarNameInTable="columntxt" msprop:Generator_ColumnPropNameInTable="txtColumn" type="xs:string" />
+              <xs:element name="dec" msprop:Generator_UserColumnName="dec" msprop:Generator_ColumnPropNameInRow="dec" msprop:Generator_ColumnVarNameInTable="columndec" msprop:Generator_ColumnPropNameInTable="decColumn" type="xs:decimal" />
+              <xs:element name="dbl" msprop:Generator_UserColumnName="dbl" msprop:Generator_ColumnPropNameInRow="dbl" msprop:Generator_ColumnVarNameInTable="columndbl" msprop:Generator_ColumnPropNameInTable="dblColumn" type="xs:double" />
+              <xs:element name="dat" msprop:Generator_UserColumnName="dat" msprop:Generator_ColumnPropNameInRow="dat" msprop:Generator_ColumnVarNameInTable="columndat" msprop:Generator_ColumnPropNameInTable="datColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="bool" msprop:Generator_UserColumnName="bool" msprop:Generator_ColumnPropNameInRow="bool" msprop:Generator_ColumnVarNameInTable="columnbool" msprop:Generator_ColumnPropNameInTable="boolColumn" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:fields" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

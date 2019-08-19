@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsInfo" targetNamespace="http://tempuri.org/dsInfo.xsd" xmlns:mstns="http://tempuri.org/dsInfo.xsd" xmlns="http://tempuri.org/dsInfo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsInfo" msprop:Generator_DataSetName="dsInfo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Info" msprop:Generator_UserTableName="Info" msprop:Generator_RowDeletedName="InfoRowDeleted" msprop:Generator_TableClassName="InfoDataTable" msprop:Generator_RowChangedName="InfoRowChanged" msprop:Generator_RowClassName="InfoRow" msprop:Generator_RowChangingName="InfoRowChanging" msprop:Generator_RowEvArgName="InfoRowChangeEvent" msprop:Generator_RowEvHandlerName="InfoRowChangeEventHandler" msprop:Generator_TablePropName="Info" msprop:Generator_TableVarName="tableInfo" msprop:Generator_RowDeletingName="InfoRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="kurz" msprop:Generator_UserColumnName="kurz" msprop:Generator_ColumnPropNameInRow="kurz" msprop:Generator_ColumnVarNameInTable="columnkurz" msprop:Generator_ColumnPropNameInTable="kurzColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2048" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lang" msprop:Generator_UserColumnName="lang" msprop:Generator_ColumnPropNameInRow="lang" msprop:Generator_ColumnVarNameInTable="columnlang" msprop:Generator_ColumnPropNameInTable="langColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4096" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="typ" msprop:Generator_UserColumnName="typ" msprop:Generator_ColumnPropNameInRow="typ" msprop:Generator_ColumnVarNameInTable="columntyp" msprop:Generator_ColumnPropNameInTable="typColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Info" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsGegenstaende" targetNamespace="http://tempuri.org/dsGegenstaende.xsd" xmlns:mstns="http://tempuri.org/dsGegenstaende.xsd" xmlns="http://tempuri.org/dsGegenstaende.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI.1;Data Source=s2sty076;user id=pmds;initial catalog=PMDS_3_5_0" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsGegenstaende" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsGegenstaende" msprop:Generator_UserDSName="dsGegenstaende">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Gegenstaende" msprop:Generator_TableClassName="GegenstaendeDataTable" msprop:Generator_RowEvArgName="GegenstaendeRowChangeEvent" msprop:Generator_TableVarName="tableGegenstaende" msprop:Generator_TablePropName="Gegenstaende" msprop:Generator_RowDeletingName="GegenstaendeRowDeleting" msprop:Generator_RowChangingName="GegenstaendeRowChanging" msprop:Generator_RowEvHandlerName="GegenstaendeRowChangeEventHandler" msprop:Generator_RowDeletedName="GegenstaendeRowDeleted" msprop:Generator_RowChangedName="GegenstaendeRowChanged" msprop:Generator_UserTableName="Gegenstaende" msprop:Generator_RowClassName="GegenstaendeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDAufenthalt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAufenthalt" msprop:Generator_ColumnPropNameInRow="IDAufenthalt" msprop:Generator_ColumnPropNameInTable="IDAufenthaltColumn" msprop:Generator_UserColumnName="IDAufenthalt" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzerausgegeben" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzerausgegeben" msprop:Generator_ColumnPropNameInRow="IDBenutzerausgegeben" msprop:Generator_ColumnPropNameInTable="IDBenutzerausgegebenColumn" msprop:Generator_UserColumnName="IDBenutzerausgegeben" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzerzurueck" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzerzurueck" msprop:Generator_ColumnPropNameInRow="IDBenutzerzurueck" msprop:Generator_ColumnPropNameInTable="IDBenutzerzurueckColumn" msprop:Generator_UserColumnName="IDBenutzerzurueck" type="xs:string" minOccurs="0" />
+              <xs:element name="Beschreibung" msprop:Generator_ColumnVarNameInTable="columnBeschreibung" msprop:Generator_ColumnPropNameInRow="Beschreibung" msprop:Generator_ColumnPropNameInTable="BeschreibungColumn" msprop:Generator_UserColumnName="Beschreibung" type="xs:string" minOccurs="0" />
+              <xs:element name="Nr" msprop:Generator_ColumnVarNameInTable="columnNr" msprop:Generator_ColumnPropNameInRow="Nr" msprop:Generator_ColumnPropNameInTable="NrColumn" msprop:Generator_UserColumnName="Nr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="155" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Von" msprop:Generator_ColumnVarNameInTable="columnVon" msprop:Generator_ColumnPropNameInRow="Von" msprop:Generator_ColumnPropNameInTable="VonColumn" msprop:Generator_UserColumnName="Von" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Bis" msprop:Generator_ColumnVarNameInTable="columnBis" msprop:Generator_ColumnPropNameInRow="Bis" msprop:Generator_ColumnPropNameInTable="BisColumn" msprop:Generator_UserColumnName="Bis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Eigentuemer" msprop:Generator_ColumnVarNameInTable="columnEigentuemer" msprop:Generator_ColumnPropNameInRow="Eigentuemer" msprop:Generator_ColumnPropNameInTable="EigentuemerColumn" msprop:Generator_UserColumnName="Eigentuemer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bemerkung" msprop:Generator_ColumnVarNameInTable="columnBemerkung" msprop:Generator_ColumnPropNameInRow="Bemerkung" msprop:Generator_ColumnPropNameInTable="BemerkungColumn" msprop:Generator_UserColumnName="Bemerkung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HilfesmittelJN" msprop:Generator_ColumnVarNameInTable="columnHilfesmittelJN" msprop:Generator_ColumnPropNameInRow="HilfesmittelJN" msprop:Generator_ColumnPropNameInTable="HilfesmittelJNColumn" msprop:Generator_UserColumnName="HilfesmittelJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EigentumKlinikJN" msprop:Generator_ColumnVarNameInTable="columnEigentumKlinikJN" msprop:Generator_ColumnPropNameInRow="EigentumKlinikJN" msprop:Generator_ColumnPropNameInTable="EigentumKlinikJNColumn" msprop:Generator_UserColumnName="EigentumKlinikJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EigentumKlientJN" msprop:Generator_ColumnVarNameInTable="columnEigentumKlientJN" msprop:Generator_ColumnPropNameInRow="EigentumKlientJN" msprop:Generator_ColumnPropNameInTable="EigentumKlientJNColumn" msprop:Generator_UserColumnName="EigentumKlientJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="MieteJN" msprop:Generator_ColumnVarNameInTable="columnMieteJN" msprop:Generator_ColumnPropNameInRow="MieteJN" msprop:Generator_ColumnPropNameInTable="MieteJNColumn" msprop:Generator_UserColumnName="MieteJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="LetzteUeberpruefungAm" msprop:Generator_ColumnVarNameInTable="columnLetzteUeberpruefungAm" msprop:Generator_ColumnPropNameInRow="LetzteUeberpruefungAm" msprop:Generator_ColumnPropNameInTable="LetzteUeberpruefungAmColumn" msprop:Generator_UserColumnName="LetzteUeberpruefungAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NaechsteUeberpruefungAm" msprop:Generator_ColumnVarNameInTable="columnNaechsteUeberpruefungAm" msprop:Generator_ColumnPropNameInRow="NaechsteUeberpruefungAm" msprop:Generator_ColumnPropNameInTable="NaechsteUeberpruefungAmColumn" msprop:Generator_UserColumnName="NaechsteUeberpruefungAm" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Gegenstaende" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

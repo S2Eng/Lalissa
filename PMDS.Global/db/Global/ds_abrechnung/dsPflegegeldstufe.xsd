@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPflegegeldstufe" targetNamespace="http://www.tempuri.org/dsPflegegeldstufe.xsd" xmlns:mstns="http://www.tempuri.org/dsPflegegeldstufe.xsd" xmlns="http://www.tempuri.org/dsPflegegeldstufe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="False" Modifier="Assembly" Name="SQLNCLI.S2STY002\TEST.PMDS_Hall" Provider="System.Data.OleDb">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPflegegeldstufe" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_UserDSName="dsPflegegeldstufe" msprop:Generator_DataSetName="dsPflegegeldstufe">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Pflegegeldstufe" msprop:Generator_UserTableName="Pflegegeldstufe" msprop:Generator_RowDeletedName="PflegegeldstufeRowDeleted" msprop:Generator_TableClassName="PflegegeldstufeDataTable" msprop:Generator_RowChangedName="PflegegeldstufeRowChanged" msprop:Generator_RowClassName="PflegegeldstufeRow" msprop:Generator_RowChangingName="PflegegeldstufeRowChanging" msprop:Generator_RowEvArgName="PflegegeldstufeRowChangeEvent" msprop:Generator_RowEvHandlerName="PflegegeldstufeRowChangeEventHandler" msprop:Generator_TablePropName="Pflegegeldstufe" msprop:Generator_TableVarName="tablePflegegeldstufe" msprop:Generator_RowDeletingName="PflegegeldstufeRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="StufeNr" msprop:Generator_UserColumnName="StufeNr" msprop:Generator_ColumnPropNameInRow="StufeNr" msprop:Generator_ColumnVarNameInTable="columnStufeNr" msprop:Generator_ColumnPropNameInTable="StufeNrColumn" type="xs:int" />
+              <xs:element name="Divisor" msprop:Generator_UserColumnName="Divisor" msprop:Generator_ColumnPropNameInRow="Divisor" msprop:Generator_ColumnVarNameInTable="columnDivisor" msprop:Generator_ColumnPropNameInTable="DivisorColumn" type="xs:int" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PflegegeldstufeGueltig" msprop:Generator_UserTableName="PflegegeldstufeGueltig" msprop:Generator_RowDeletedName="PflegegeldstufeGueltigRowDeleted" msprop:Generator_TableClassName="PflegegeldstufeGueltigDataTable" msprop:Generator_RowChangedName="PflegegeldstufeGueltigRowChanged" msprop:Generator_RowClassName="PflegegeldstufeGueltigRow" msprop:Generator_RowChangingName="PflegegeldstufeGueltigRowChanging" msprop:Generator_RowEvArgName="PflegegeldstufeGueltigRowChangeEvent" msprop:Generator_RowEvHandlerName="PflegegeldstufeGueltigRowChangeEventHandler" msprop:Generator_TablePropName="PflegegeldstufeGueltig" msprop:Generator_TableVarName="tablePflegegeldstufeGueltig" msprop:Generator_RowDeletingName="PflegegeldstufeGueltigRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDPflegegeldstufe" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPflegegeldstufe" msprop:Generator_ColumnPropNameInRow="IDPflegegeldstufe" msprop:Generator_ColumnVarNameInTable="columnIDPflegegeldstufe" msprop:Generator_ColumnPropNameInTable="IDPflegegeldstufeColumn" type="xs:string" />
+              <xs:element name="GueltigAb" msprop:Generator_UserColumnName="GueltigAb" msprop:Generator_ColumnPropNameInRow="GueltigAb" msprop:Generator_ColumnVarNameInTable="columnGueltigAb" msprop:Generator_ColumnPropNameInTable="GueltigAbColumn" type="xs:dateTime" />
+              <xs:element name="Betrag" msprop:Generator_UserColumnName="Betrag" msprop:Generator_ColumnPropNameInRow="Betrag" msprop:Generator_ColumnVarNameInTable="columnBetrag" msprop:Generator_ColumnPropNameInTable="BetragColumn" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Pflegegeldstufe" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="PflegegeldstufeGueltig_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PflegegeldstufeGueltig" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:keyref name="FK_Pflegegeldstufe_PflegegeldstufeGueltig" refer="Constraint1" msprop:rel_Generator_UserRelationName="FK_Pflegegeldstufe_PflegegeldstufeGueltig" msprop:rel_Generator_RelationVarName="relationFK_Pflegegeldstufe_PflegegeldstufeGueltig" msprop:rel_Generator_UserChildTable="PflegegeldstufeGueltig" msprop:rel_Generator_UserParentTable="Pflegegeldstufe" msprop:rel_Generator_ParentPropName="PflegegeldstufeRow" msprop:rel_Generator_ChildPropName="GetPflegegeldstufeGueltigRows">
+      <xs:selector xpath=".//mstns:PflegegeldstufeGueltig" />
+      <xs:field xpath="mstns:IDPflegegeldstufe" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

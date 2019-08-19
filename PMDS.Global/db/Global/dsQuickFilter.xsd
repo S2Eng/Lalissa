@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsQuickFilter" targetNamespace="http://tempuri.org/dsQuickFilter.xsd" xmlns:mstns="http://tempuri.org/dsQuickFilter.xsd" xmlns="http://tempuri.org/dsQuickFilter.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsQuickFilter" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsQuickFilter" msprop:Generator_UserDSName="dsQuickFilter">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="QuickFilter" msprop:Generator_TableClassName="QuickFilterDataTable" msprop:Generator_TableVarName="tableQuickFilter" msprop:Generator_RowChangedName="QuickFilterRowChanged" msprop:Generator_TablePropName="QuickFilter" msprop:Generator_RowDeletingName="QuickFilterRowDeleting" msprop:Generator_RowChangingName="QuickFilterRowChanging" msprop:Generator_RowEvHandlerName="QuickFilterRowChangeEventHandler" msprop:Generator_RowDeletedName="QuickFilterRowDeleted" msprop:Generator_RowClassName="QuickFilterRow" msprop:Generator_UserTableName="QuickFilter" msprop:Generator_RowEvArgName="QuickFilterRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MassnahmeJN" msprop:Generator_ColumnVarNameInTable="columnMassnahmeJN" msprop:Generator_ColumnPropNameInRow="MassnahmeJN" msprop:Generator_ColumnPropNameInTable="MassnahmeJNColumn" msprop:Generator_UserColumnName="MassnahmeJN" type="xs:boolean" />
+              <xs:element name="IDEintrag" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDEintrag" msprop:Generator_ColumnPropNameInRow="IDEintrag" msprop:Generator_ColumnPropNameInTable="IDEintragColumn" msprop:Generator_UserColumnName="IDEintrag" type="xs:string" minOccurs="0" />
+              <xs:element name="BezugspersonJN" msprop:Generator_ColumnVarNameInTable="columnBezugspersonJN" msprop:Generator_ColumnPropNameInRow="BezugspersonJN" msprop:Generator_ColumnPropNameInTable="BezugspersonJNColumn" msprop:Generator_UserColumnName="BezugspersonJN" type="xs:boolean" />
+              <xs:element name="IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer" msprop:Generator_ColumnPropNameInRow="IDBenutzer" msprop:Generator_ColumnPropNameInTable="IDBenutzerColumn" msprop:Generator_UserColumnName="IDBenutzer" type="xs:string" minOccurs="0" />
+              <xs:element name="ZeitraumJN" msprop:Generator_ColumnVarNameInTable="columnZeitraumJN" msprop:Generator_ColumnPropNameInRow="ZeitraumJN" msprop:Generator_ColumnPropNameInTable="ZeitraumJNColumn" msprop:Generator_UserColumnName="ZeitraumJN" type="xs:boolean" />
+              <xs:element name="Tagevorher" msprop:Generator_ColumnVarNameInTable="columnTagevorher" msprop:Generator_ColumnPropNameInRow="Tagevorher" msprop:Generator_ColumnPropNameInTable="TagevorherColumn" msprop:Generator_UserColumnName="Tagevorher" type="xs:int" />
+              <xs:element name="Tagenachher" msprop:Generator_ColumnVarNameInTable="columnTagenachher" msprop:Generator_ColumnPropNameInRow="Tagenachher" msprop:Generator_ColumnPropNameInTable="TagenachherColumn" msprop:Generator_UserColumnName="Tagenachher" type="xs:int" />
+              <xs:element name="RueckgemeldeteTermineJN" msprop:Generator_ColumnVarNameInTable="columnRueckgemeldeteTermineJN" msprop:Generator_ColumnPropNameInRow="RueckgemeldeteTermineJN" msprop:Generator_ColumnPropNameInTable="RueckgemeldeteTermineJNColumn" msprop:Generator_UserColumnName="RueckgemeldeteTermineJN" type="xs:boolean" />
+              <xs:element name="AbwBerufstandJN" msprop:Generator_ColumnVarNameInTable="columnAbwBerufstandJN" msprop:Generator_ColumnPropNameInRow="AbwBerufstandJN" msprop:Generator_ColumnPropNameInTable="AbwBerufstandJNColumn" msprop:Generator_UserColumnName="AbwBerufstandJN" type="xs:boolean" />
+              <xs:element name="Massnahmen" msprop:Generator_ColumnVarNameInTable="columnMassnahmen" msprop:Generator_ColumnPropNameInRow="Massnahmen" msprop:Generator_ColumnPropNameInTable="MassnahmenColumn" msprop:Generator_UserColumnName="Massnahmen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TypJN" msprop:Generator_ColumnVarNameInTable="columnTypJN" msprop:Generator_ColumnPropNameInRow="TypJN" msprop:Generator_ColumnPropNameInTable="TypJNColumn" msprop:Generator_UserColumnName="TypJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EintragTyp" msprop:Generator_ColumnVarNameInTable="columnEintragTyp" msprop:Generator_ColumnPropNameInRow="EintragTyp" msprop:Generator_ColumnPropNameInTable="EintragTypColumn" msprop:Generator_UserColumnName="EintragTyp" type="xs:int" minOccurs="0" />
+              <xs:element name="Tooltip" msprop:Generator_ColumnVarNameInTable="columnTooltip" msprop:Generator_ColumnPropNameInRow="Tooltip" msprop:Generator_ColumnPropNameInTable="TooltipColumn" msprop:Generator_UserColumnName="Tooltip" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" msprop:Generator_UserColumnName="IDAbteilung" type="xs:string" />
+              <xs:element name="BenutzenInInterventionJN" msprop:Generator_ColumnVarNameInTable="columnBenutzenInInterventionJN" msprop:Generator_ColumnPropNameInRow="BenutzenInInterventionJN" msprop:Generator_ColumnPropNameInTable="BenutzenInInterventionJNColumn" msprop:Generator_UserColumnName="BenutzenInInterventionJN" type="xs:boolean" />
+              <xs:element name="BenutzenInEvaluierungJN" msprop:Generator_ColumnVarNameInTable="columnBenutzenInEvaluierungJN" msprop:Generator_ColumnPropNameInRow="BenutzenInEvaluierungJN" msprop:Generator_ColumnPropNameInTable="BenutzenInEvaluierungJNColumn" msprop:Generator_UserColumnName="BenutzenInEvaluierungJN" type="xs:boolean" />
+              <xs:element name="OhneZeitBezug" msprop:Generator_ColumnVarNameInTable="columnOhneZeitBezug" msprop:Generator_ColumnPropNameInRow="OhneZeitBezug" msprop:Generator_ColumnPropNameInTable="OhneZeitBezugColumn" msprop:Generator_UserColumnName="OhneZeitBezug" type="xs:int" />
+              <xs:element name="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" msprop:Generator_UserColumnName="Reihenfolge" type="xs:int" />
+              <xs:element name="KeyLayout" msprop:Generator_ColumnVarNameInTable="columnKeyLayout" msprop:Generator_ColumnPropNameInRow="KeyLayout" msprop:Generator_ColumnPropNameInTable="KeyLayoutColumn" msprop:Generator_UserColumnName="KeyLayout">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KeyQuickFilter" msprop:Generator_ColumnVarNameInTable="columnKeyQuickFilter" msprop:Generator_ColumnPropNameInRow="KeyQuickFilter" msprop:Generator_ColumnPropNameInTable="KeyQuickFilterColumn" msprop:Generator_UserColumnName="KeyQuickFilter">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BereichIntervention" msprop:Generator_ColumnVarNameInTable="columnBereichIntervention" msprop:Generator_ColumnPropNameInRow="BereichIntervention" msprop:Generator_ColumnPropNameInTable="BereichInterventionColumn" msprop:Generator_UserColumnName="BereichIntervention" type="xs:boolean" />
+              <xs:element name="BereichÜbergabe" msprop:Generator_ColumnVarNameInTable="columnBereichÜbergabe" msprop:Generator_ColumnPropNameInRow="BereichÜbergabe" msprop:Generator_ColumnPropNameInTable="BereichÜbergabeColumn" msprop:Generator_UserColumnName="BereichÜbergabe" type="xs:boolean" />
+              <xs:element name="BenutzenInDekursJN" msprop:Generator_ColumnVarNameInTable="columnBenutzenInDekursJN" msprop:Generator_ColumnPropNameInRow="BenutzenInDekursJN" msprop:Generator_ColumnPropNameInTable="BenutzenInDekursJNColumn" msprop:Generator_UserColumnName="BenutzenInDekursJN" type="xs:boolean" />
+              <xs:element name="BereichDekurs" msprop:Generator_ColumnVarNameInTable="columnBereichDekurs" msprop:Generator_ColumnPropNameInRow="BereichDekurs" msprop:Generator_ColumnPropNameInTable="BereichDekursColumn" msprop:Generator_UserColumnName="BereichDekurs" type="xs:boolean" />
+              <xs:element name="LstErstelltVonBerufgruppe" msprop:Generator_ColumnVarNameInTable="columnLstErstelltVonBerufgruppe" msprop:Generator_ColumnPropNameInRow="LstErstelltVonBerufgruppe" msprop:Generator_ColumnPropNameInTable="LstErstelltVonBerufgruppeColumn" msprop:Generator_UserColumnName="LstErstelltVonBerufgruppe" type="xs:string" />
+              <xs:element name="LstWichtigFürBerufsgruppe" msprop:Generator_ColumnVarNameInTable="columnLstWichtigFürBerufsgruppe" msprop:Generator_ColumnPropNameInRow="LstWichtigFürBerufsgruppe" msprop:Generator_ColumnPropNameInTable="LstWichtigFürBerufsgruppeColumn" msprop:Generator_UserColumnName="LstWichtigFürBerufsgruppe" type="xs:string" />
+              <xs:element name="ShowCC" msprop:Generator_ColumnVarNameInTable="columnShowCC" msprop:Generator_ColumnPropNameInRow="ShowCC" msprop:Generator_ColumnPropNameInTable="ShowCCColumn" msprop:Generator_UserColumnName="ShowCC" type="xs:int" />
+              <xs:element name="LstZusatzwerte" msprop:Generator_ColumnVarNameInTable="columnLstZusatzwerte" msprop:Generator_ColumnPropNameInRow="LstZusatzwerte" msprop:Generator_ColumnPropNameInTable="LstZusatzwerteColumn" msprop:Generator_UserColumnName="LstZusatzwerte" type="xs:string" />
+              <xs:element name="LstZeitbezug" msprop:Generator_ColumnVarNameInTable="columnLstZeitbezug" msprop:Generator_ColumnPropNameInRow="LstZeitbezug" msprop:Generator_ColumnPropNameInTable="LstZeitbezugColumn" msprop:Generator_UserColumnName="LstZeitbezug" type="xs:string" />
+              <xs:element name="LstHerkunftPlanungsEintrag" msprop:Generator_ColumnVarNameInTable="columnLstHerkunftPlanungsEintrag" msprop:Generator_ColumnPropNameInRow="LstHerkunftPlanungsEintrag" msprop:Generator_ColumnPropNameInTable="LstHerkunftPlanungsEintragColumn" msprop:Generator_UserColumnName="LstHerkunftPlanungsEintrag" type="xs:string" />
+              <xs:element name="LstInterventionsTyp" msprop:Generator_ColumnVarNameInTable="columnLstInterventionsTyp" msprop:Generator_ColumnPropNameInRow="LstInterventionsTyp" msprop:Generator_ColumnPropNameInTable="LstInterventionsTypColumn" msprop:Generator_UserColumnName="LstInterventionsTyp" type="xs:string" />
+              <xs:element name="AbzeichnenJN" msprop:Generator_ColumnVarNameInTable="columnAbzeichnenJN" msprop:Generator_ColumnPropNameInRow="AbzeichnenJN" msprop:Generator_ColumnPropNameInTable="AbzeichnenJNColumn" msprop:Generator_UserColumnName="AbzeichnenJN" type="xs:int" />
+              <xs:element name="IsStandard" msprop:Generator_ColumnVarNameInTable="columnIsStandard" msprop:Generator_ColumnPropNameInRow="IsStandard" msprop:Generator_ColumnPropNameInTable="IsStandardColumn" msprop:Generator_UserColumnName="IsStandard" type="xs:boolean" />
+              <xs:element name="LstBSQuickfilter" msprop:Generator_ColumnVarNameInTable="columnLstBSQuickfilter" msprop:Generator_ColumnPropNameInRow="LstBSQuickfilter" msprop:Generator_ColumnPropNameInTable="LstBSQuickfilterColumn" msprop:Generator_UserColumnName="LstBSQuickfilter" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="QuickFilterSmall" msprop:Generator_TableClassName="QuickFilterSmallDataTable" msprop:Generator_TableVarName="tableQuickFilterSmall" msprop:Generator_TablePropName="QuickFilterSmall" msprop:Generator_RowDeletingName="QuickFilterSmallRowDeleting" msprop:Generator_RowChangingName="QuickFilterSmallRowChanging" msprop:Generator_RowEvHandlerName="QuickFilterSmallRowChangeEventHandler" msprop:Generator_RowDeletedName="QuickFilterSmallRowDeleted" msprop:Generator_UserTableName="QuickFilterSmall" msprop:Generator_RowChangedName="QuickFilterSmallRowChanged" msprop:Generator_RowEvArgName="QuickFilterSmallRowChangeEvent" msprop:Generator_RowClassName="QuickFilterSmallRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BenutzenInInterventionJN" msprop:Generator_ColumnVarNameInTable="columnBenutzenInInterventionJN" msprop:Generator_ColumnPropNameInRow="BenutzenInInterventionJN" msprop:Generator_ColumnPropNameInTable="BenutzenInInterventionJNColumn" msprop:Generator_UserColumnName="BenutzenInInterventionJN" type="xs:boolean" />
+              <xs:element name="BenutzenInEvaluierungJN" msprop:Generator_ColumnVarNameInTable="columnBenutzenInEvaluierungJN" msprop:Generator_ColumnPropNameInRow="BenutzenInEvaluierungJN" msprop:Generator_ColumnPropNameInTable="BenutzenInEvaluierungJNColumn" msprop:Generator_UserColumnName="BenutzenInEvaluierungJN" type="xs:boolean" />
+              <xs:element name="BenutzenInDekursJN" msprop:Generator_ColumnVarNameInTable="columnBenutzenInDekursJN" msprop:Generator_ColumnPropNameInRow="BenutzenInDekursJN" msprop:Generator_ColumnPropNameInTable="BenutzenInDekursJNColumn" msprop:Generator_UserColumnName="BenutzenInDekursJN" type="xs:boolean" />
+              <xs:element name="BereichIntervention" msprop:Generator_ColumnVarNameInTable="columnBereichIntervention" msprop:Generator_ColumnPropNameInRow="BereichIntervention" msprop:Generator_ColumnPropNameInTable="BereichInterventionColumn" msprop:Generator_UserColumnName="BereichIntervention" type="xs:boolean" />
+              <xs:element name="BereichÜbergabe" msprop:Generator_ColumnVarNameInTable="columnBereichÜbergabe" msprop:Generator_ColumnPropNameInRow="BereichÜbergabe" msprop:Generator_ColumnPropNameInTable="BereichÜbergabeColumn" msprop:Generator_UserColumnName="BereichÜbergabe" type="xs:boolean" />
+              <xs:element name="BereichDekurs" msprop:Generator_ColumnVarNameInTable="columnBereichDekurs" msprop:Generator_ColumnPropNameInRow="BereichDekurs" msprop:Generator_ColumnPropNameInTable="BereichDekursColumn" msprop:Generator_UserColumnName="BereichDekurs" type="xs:boolean" />
+              <xs:element name="KeyQuickFilter" msprop:Generator_ColumnVarNameInTable="columnKeyQuickFilter" msprop:Generator_ColumnPropNameInRow="KeyQuickFilter" msprop:Generator_ColumnPropNameInTable="KeyQuickFilterColumn" msprop:Generator_UserColumnName="KeyQuickFilter">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:QuickFilter" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="QuickFilterSmall_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:QuickFilterSmall" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

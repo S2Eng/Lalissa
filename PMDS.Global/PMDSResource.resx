@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ResNotFound" xml:space="preserve">
+    <value>Der Resource String {0} wurde nicht gefunden</value>
+  </data>
+  <data name="GenAppError" xml:space="preserve">
+    <value>Genereller Applikationsfehler</value>
+  </data>
+  <data name="CommandLineInfo" xml:space="preserve">
+    <value>Argumente für PMDS.exe
+/?	ruft die Hilfe auf
+/c	[Config datei] (Default=.\\PMDS.Config)</value>
+  </data>
+  <data name="A" xml:space="preserve">
+    <value>Ätiologien</value>
+  </data>
+  <data name="S" xml:space="preserve">
+    <value>Symptome</value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value>Ziele</value>
+  </data>
+  <data name="M" xml:space="preserve">
+    <value>Maßnahmen</value>
+  </data>
+  <data name="KeineAbteilung" xml:space="preserve">
+    <value>für alle Abteilungen</value>
+  </data>
+  <data name="DB.E_ID_NOT_FOUND" xml:space="preserve">
+    <value>{0} '{1}' in DB nicht gefunden!</value>
+  </data>
+  <data name="ZugeordneteMassnahmen" xml:space="preserve">
+    <value>Zugeordnete Maßnahmen für {0} -- Ä:{1}</value>
+  </data>
+  <data name="CBPatient" xml:space="preserve">
+    <value>Klient</value>
+  </data>
+  <data name="CBPfleger" xml:space="preserve">
+    <value>Pfleger</value>
+  </data>
+  <data name="ERROR_BEZEICHNUNG" xml:space="preserve">
+    <value>Geben Sie eine Bezeichnung ein</value>
+  </data>
+  <data name="ERROR_PDXDEF" xml:space="preserve">
+    <value>Geben Sie die PDx Definition ein</value>
+  </data>
+  <data name="ERROR_PDXCODE" xml:space="preserve">
+    <value>Geben Sie den PDx Code ein</value>
+  </data>
+  <data name="ERROR_MISSINGFIELDS" xml:space="preserve">
+    <value>Ein oder mehrere Felder sind nicht korrekt befüllt.
+Zeigen Sie mit der Maus auf das rote i um mehr Informationen zu erhalten.</value>
+  </data>
+  <data name="DIALOGTITLE_INPUTERROR" xml:space="preserve">
+    <value>Eingabefehler</value>
+  </data>
+  <data name="ERROR_PDX_CODE_EXISTS" xml:space="preserve">
+    <value>Dieser Pdx - Code ist bereits in der Datenbank vorhanden
+wählen Sie einen anderen.</value>
+  </data>
+  <data name="DIALOGTITLE_DELETEPDX" xml:space="preserve">
+    <value>PDx löschen</value>
+  </data>
+  <data name="QUESTION_DELETEPDX" xml:space="preserve">
+    <value>Wollen Sie die PDx {0} wirklich löschen?</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>Ätiologien / Risikofaktoren / Symptome / Ressourcen / Ziele / Maßnahmen</value>
+  </data>
+  <data name="QUESTION_ADDENTRY_PDX" xml:space="preserve">
+    <value>{0} Elemente hinzufügen zu:</value>
+  </data>
+  <data name="QUESTION_DELETEPDXEINTRAG" xml:space="preserve">
+    <value>Wollen Sie die Zuordnung  {0} / {1} wirklich löschen?</value>
+  </data>
+  <data name="DIALOGTITLE_DELETEPDXEINTRAG" xml:space="preserve">
+    <value>Zuordnung löschen</value>
+  </data>
+  <data name="DIALOGTITLE_NEWTOPTENGROP" xml:space="preserve">
+    <value>Bitte geben Sie die neue Top 10 Gruppe ein</value>
+  </data>
+  <data name="QUESTION_DELETEPDXGRUPPE" xml:space="preserve">
+    <value>Wollen Sie die Top10 Gruppe {0} wirklich löschen?</value>
+  </data>
+  <data name="DIALOGTITLE_DELETEPDXGRUPPE" xml:space="preserve">
+    <value>Top 10 Gruppe löschen</value>
+  </data>
+  <data name="MESSAGE_NO_MOREEINTRAGZUSATZ" xml:space="preserve">
+    <value>Es sind bereits alle Abteilungen definiert. 
+Sie können keine neue Zuordnung hinzufügen</value>
+  </data>
+  <data name="DIALOGTITLE_NO_MOREEINTRAGZUSATZ" xml:space="preserve">
+    <value>Keine weitere Zuordnung mehr möglich</value>
+  </data>
+  <data name="ERROR_BERUFSSTAND" xml:space="preserve">
+    <value>Berufsstand muss eingegeben werden</value>
+  </data>
+  <data name="ERROR_INTERVALL" xml:space="preserve">
+    <value>Intervall muss eingegeben werden</value>
+  </data>
+  <data name="GUI.E_NO_TEXT" xml:space="preserve">
+    <value>Feld muss angegeben werden!</value>
+  </data>
+  <data name="GUI.E_USER_EXIST" xml:space="preserve">
+    <value>Dieser Benutzername existiert bereits!</value>
+  </data>
+  <data name="GUI.E_PASSWORD" xml:space="preserve">
+    <value>Das Passwort muss mit der Bestätigung identisch sein!</value>
+  </data>
+  <data name="GUI.E_ZUSATZ_ENTRY" xml:space="preserve">
+    <value>Ein Zusatzeintrag mit dieser ID existiert bereits!</value>
+  </data>
+  <data name="VERWALTUNG.QUESTION_SAVECHANGES" xml:space="preserve">
+    <value>Sollen alle Änderungen gespeichert werden?</value>
+  </data>
+  <data name="VERWALTUNG.DIALOGTITLE_SAVECHANGES" xml:space="preserve">
+    <value>Änderungen speichern ...</value>
+  </data>
+  <data name="VERWALTUNG.QUESTION_DELETE" xml:space="preserve">
+    <value>Wollen Sie den '{0}' wirklich löschen?</value>
+  </data>
+  <data name="VERWALTUNG.DIALOGTITLE_DELETE" xml:space="preserve">
+    <value>Eintrag löschen</value>
+  </data>
+  <data name="GUI.E_KLINIK_DIALOGTITLE" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten ....</value>
+  </data>
+  <data name="GUI.E_KLINIK_EXCEPTION" xml:space="preserve">
+    <value>Eventuell werden einige Informationen noch von
+anderen Daten benötigt!
+
+Mögliche Ursache ist die Beziehung:
+{0}</value>
+  </data>
+  <data name="GUI.E_ZUSATZGRUPPE_DIALOGTITLE" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten ....</value>
+  </data>
+  <data name="GUI.E_ZUSATZGRUPPE_EXCEPTION" xml:space="preserve">
+    <value>Eventuell wurde kein Eintrag zugewiesen oder ein Eintrag 
+ist mehrmals der selben Abteilung zugewiesen!
+
+Mögliche Ursache ist die Beziehung:
+{0}</value>
+  </data>
+  <data name="INFO_ALL_ABTEILUNG" xml:space="preserve">
+    <value>Für alle Abteilungen:</value>
+  </data>
+  <data name="INFO_CUR_ABTEILUNG" xml:space="preserve">
+    <value>Für aktuelle Abteilung:</value>
+  </data>
+  <data name="ERROR_MISSING_KOERPERTEIL" xml:space="preserve">
+    <value>Der Körperteil muss angegebne werden</value>
+  </data>
+  <data name="ERROR_MISSING_SEITE" xml:space="preserve">
+    <value>Die betroffene Seite muss angegeben werden</value>
+  </data>
+  <data name="GUI.E_INVALID_PASSWORD" xml:space="preserve">
+    <value>Das von Ihnen angegebene Passwort ist nicht korrekt!</value>
+  </data>
+  <data name="GUI.E_INVALID_USER" xml:space="preserve">
+    <value>Der Benutzer existiert nicht!</value>
+  </data>
+  <data name="PATIENT.INFO" xml:space="preserve">
+    <value>{0} {1} {2}, {3}, geboren am: {4}, Alter: {5}</value>
+  </data>
+  <data name="OREM.NO_DESCRIPTION" xml:space="preserve">
+    <value>&gt; unbekanntes OREM &lt;</value>
+  </data>
+  <data name="GUI.E_GENERAL_EXCEPTION" xml:space="preserve">
+    <value>Eventuell werden einige Informationen noch von
+anderen Daten benötigt!
+
+Mögliche Ursache ist die Beziehung:
+{0}</value>
+  </data>
+  <data name="GUI.E_GENERAL_DIALOGTITLE" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten ....</value>
+  </data>
+  <data name="DB.E_INVALID_TERMIN_PARAMETER" xml:space="preserve">
+    <value>Dieser TerminTyp '{0}' ist nicht erlaubt!</value>
+  </data>
+  <data name="TERMINE.WRONG_INTERVAL" xml:space="preserve">
+    <value>Der Zeitraum ist größer als {0} Tage!
+Drücken Sie OK um trozdem forzufahren!
+</value>
+  </data>
+  <data name="TERMINE.DIALOGTITLE_WRONG_INTERVAL" xml:space="preserve">
+    <value>Achtung Zeitraum ...</value>
+  </data>
+  <data name="EVAL_TEXT" xml:space="preserve">
+    <value>Eval. {0}</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.NONE" xml:space="preserve">
+    <value>_</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.VERMERK" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.NOTFALL" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.MASSNAHME" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.EVALUIERUNG" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.UNEXP_MASSNAHME" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="PFLEGEEINTRAGWICHTIG.NONE" xml:space="preserve">
+    <value>_</value>
+  </data>
+  <data name="PFLEGEEINTRAGWICHTIG.PFLEGER" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="PFLEGEEINTRAGWICHTIG.PFLEGER_ARZT" xml:space="preserve">
+    <value>A+P</value>
+  </data>
+  <data name="MAIN.FUNC.NONE" xml:space="preserve">
+    <value>Beschreibung der Funktion ...</value>
+  </data>
+  <data name="MAIN.FUNC.User" xml:space="preserve">
+    <value>Benutzer / Pfleger - Daten</value>
+  </data>
+  <data name="MAIN.FUNC.Auswahl" xml:space="preserve">
+    <value>Auswahlgruppen</value>
+  </data>
+  <data name="MAIN.FUNC.Klinik" xml:space="preserve">
+    <value>Klinik</value>
+  </data>
+  <data name="MAIN.FUNC.Einrichtung" xml:space="preserve">
+    <value>Einrichtungen</value>
+  </data>
+  <data name="MAIN.FUNC.Patient" xml:space="preserve">
+    <value>Klienten - Daten</value>
+  </data>
+  <data name="MAIN.FUNC.ZusatzEintrag" xml:space="preserve">
+    <value>Zusatz - Einträge</value>
+  </data>
+  <data name="MAIN.FUNC.Zusatz" xml:space="preserve">
+    <value>Zusatz - Gruppen</value>
+  </data>
+  <data name="MAIN.FUNC.Gruppe" xml:space="preserve">
+    <value>Gruppenrechte</value>
+  </data>
+  <data name="MAIN.FUNC.BenRechte" xml:space="preserve">
+    <value>Benutzerrechte</value>
+  </data>
+  <data name="MAIN.FUNC.Top10" xml:space="preserve">
+    <value>TOP 10 - Verwaltung</value>
+  </data>
+  <data name="MAIN.FUNC.ASZM" xml:space="preserve">
+    <value>Ätiologie (Risikofaktoren), Symptome, Ressourcen, Ziele, Maßnahmen - Verwaltung</value>
+  </data>
+  <data name="MAIN.FUNC.PDX" xml:space="preserve">
+    <value>PDX - Verwaltung</value>
+  </data>
+  <data name="MAIN.FUNC.PatTermin" xml:space="preserve">
+    <value>Klienten - Termine</value>
+  </data>
+  <data name="GUI.E_NO_FUTURE_ZEITPUNKT" xml:space="preserve">
+    <value>Der angegebene Zeitpunkt ist nicht erlaubt! 
+Es darf kein Zeitpunkt in der Zukunft angegeben werden!</value>
+  </data>
+  <data name="GUI.E_USER_DISABLED" xml:space="preserve">
+    <value>Ihr Benutzer-Konto ist im Moment nicht aktiv!
+Bitte melden Sie sich beim zuständigen Administrator!</value>
+  </data>
+  <data name="OREM.NO_THEMATIC" xml:space="preserve">
+    <value>Dem Pflegeplan des gewählten Patienten sind keine 
+OREM relevanten Pflegediagnosen zugeordnet!</value>
+  </data>
+  <data name="OREM.DIALOGTITLE_NO_THEMATIC" xml:space="preserve">
+    <value>OREM Gruppen ...</value>
+  </data>
+  <data name="REPORT.NO_DATA" xml:space="preserve">
+    <value>Keine Daten für Report vorhanden!</value>
+  </data>
+  <data name="REPORT.DIALOGTITLE_NO_DATA" xml:space="preserve">
+    <value>Report ...</value>
+  </data>
+  <data name="DIALOGTITLE_MISSINGPDXSELECTION" xml:space="preserve">
+    <value>Sie haben keine Pflegedefinitionen ausgewählt</value>
+  </data>
+  <data name="MESSAGE_NO_SELECTION" xml:space="preserve">
+    <value>Sie haben keine Auswahl getroffen</value>
+  </data>
+  <data name="END_PDX" xml:space="preserve">
+    <value>Pflegeproblem beenden</value>
+  </data>
+  <data name="END_ASZ" xml:space="preserve">
+    <value>Ätiologie /Risikofaktor / Symptom / Ziel</value>
+  </data>
+  <data name="END_M" xml:space="preserve">
+    <value>Maßnahme beenden</value>
+  </data>
+  <data name="GUI.TERMIN_TITEL" xml:space="preserve">
+    <value>Termine für {0}</value>
+  </data>
+  <data name="GUI.E_NO_EMPTY_LINES" xml:space="preserve">
+    <value>Bitte alle Zeilen mit Daten befüllen oder 
+leere Zeilen löschen!</value>
+  </data>
+  <data name="GUI.STATUS_DB" xml:space="preserve">
+    <value>Datenbank: {0}</value>
+  </data>
+  <data name="GUI.STATUS_USER" xml:space="preserve">
+    <value>Benutzer: {0}</value>
+  </data>
+  <data name="GUI.STATUS_ABT" xml:space="preserve">
+    <value>Abteilung: {0}</value>
+  </data>
+  <data name="GUI.E_NO_IMAGE" xml:space="preserve">
+    <value>Bild muss geladen werden!</value>
+  </data>
+  <data name="GUI.E_OREM_ZEITPUNKT" xml:space="preserve">
+    <value>Der angegebene Zeitpunkt ist nicht erlaubt! 
+Es darf kein Zeitpunkt in der Zukunft angegeben werden!</value>
+  </data>
+  <data name="GUI.NO_CONFIG" xml:space="preserve">
+    <value>Keine IConfig für {0} gefunden!</value>
+  </data>
+  <data name="GUI.E_MISSING_ENTRY" xml:space="preserve">
+    <value>Einige Einträge sind überfällig aufgrund später makierte Rückmeldungen. 
+Die überfälligen Rückmeldungen sind farblich hervorgehoben.</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.TERMIN" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="DIALOGTITLE_TERMIN_DELETE" xml:space="preserve">
+    <value>Termin löschen</value>
+  </data>
+  <data name="QUESTION_TERMIN_DELETE" xml:space="preserve">
+    <value>Wollen Sie den Termin wirklich löschen?</value>
+  </data>
+  <data name="GUI_E_ALL_TERMINE_REQUIRED" xml:space="preserve">
+    <value>Alle Termine müssen abgezeichnet werden.</value>
+  </data>
+  <data name="GUI.E_NO_FUTURE_DATE" xml:space="preserve">
+    <value>Der angegebene Zeitpunkt ist nicht erlaubt! 
+Es darf kein Zeitpunkt in der Zukunft angegeben werden!</value>
+  </data>
+  <data name="DIALOGTITLE_AUFGABE_EDIT" xml:space="preserve">
+    <value>Aufgabe bearbeiten</value>
+  </data>
+  <data name="MESSAGE_NO_AUFGABE_EDIT" xml:space="preserve">
+    <value>Eine beendete Aufgabe kann nicht mehr bearbeitet werden</value>
+  </data>
+  <data name="QUESTION_AUFGABE_DELETE" xml:space="preserve">
+    <value>Wollen Sie die Aufgabe wirklich löschen?</value>
+  </data>
+  <data name="DIALOGTITLE_AUFGABE_DELETE" xml:space="preserve">
+    <value>Aufgabe löschen</value>
+  </data>
+  <data name="GUI.PATIENT_URLAUB" xml:space="preserve">
+    <value>Achtung: Der Klient ist abwesend!</value>
+  </data>
+  <data name="GUI.DIALOGTITLE_PATIENT_URLAUB" xml:space="preserve">
+    <value>Klient im Urlaub ...</value>
+  </data>
+  <data name="GUI.E_PATIENT_ALREADY_EXISTS" xml:space="preserve">
+    <value>Der von Ihnen angegebene Klient existiert bereits!</value>
+  </data>
+  <data name="MESSAGE_CANNOT_DELETE_DEFAULT_EINTRAGZUSATZ" xml:space="preserve">
+    <value>Der Eintrag für die generelle Abteilung kann nicht gelöscht werden</value>
+  </data>
+  <data name="MAIN.BACKUP.SUCCESS" xml:space="preserve">
+    <value>Die Datenbank wurde erfolgreich nach {0} gesichert</value>
+  </data>
+  <data name="MAIN.BACKUP.SUCCESSTITLE" xml:space="preserve">
+    <value>Datenbank gesichert</value>
+  </data>
+  <data name="MAIN.ASK_FOR_CLOSE" xml:space="preserve">
+    <value>Wollen Sie das Programm wirklich verlassen?</value>
+  </data>
+  <data name="MAIN.DIALOGTITLE_ASK_FOR_CLOSE" xml:space="preserve">
+    <value>Programm beenden ...</value>
+  </data>
+  <data name="GUI.E_LOGIN_ABTEILUNG" xml:space="preserve">
+    <value>Feld muss angegeben werden oder es sind für Sie keine Abteilungen definiert</value>
+  </data>
+  <data name="GUI.NEW_PATIENT" xml:space="preserve">
+    <value>Klient(in) wird im System neu erfasst (keine Wiederaufnahme)</value>
+  </data>
+  <data name="GUI.NEW_PATIENT_AUFNAHME" xml:space="preserve">
+    <value>Neuaufnahme</value>
+  </data>
+  <data name="GUI.AUFNAHME_DATEN" xml:space="preserve">
+    <value>Aufnahmedaten</value>
+  </data>
+  <data name="GUI.AUFNAHME_STATUS" xml:space="preserve">
+    <value>Aufnahmestatus</value>
+  </data>
+  <data name="GUI.AUFNAHME_STATUSBLATT" xml:space="preserve">
+    <value>Aufnahmestatusblatt</value>
+  </data>
+  <data name="GUI.AUFNAHME_ZUSATZ" xml:space="preserve">
+    <value>Aufnahmezusatz</value>
+  </data>
+  <data name="SHOW_ALL_OREM" xml:space="preserve">
+    <value>Alle OREM anzeigen</value>
+  </data>
+  <data name="GUI.NO_EVAL_WITH_ONCE" xml:space="preserve">
+    <value>Bei einmaligen Maßnahmen ist keine Evaluierung möglich</value>
+  </data>
+  <data name="QUESTION_TERMIN_END" xml:space="preserve">
+    <value>Wollen Sie den Termin wirklich beenden?</value>
+  </data>
+  <data name="DIALOGTITLE_TERMIN_END" xml:space="preserve">
+    <value>Termin beenden</value>
+  </data>
+  <data name="WEEK_DAYS_SET" xml:space="preserve">
+    <value>MDMDFSS</value>
+  </data>
+  <data name="WEEK_DAYS_CLR" xml:space="preserve">
+    <value>_______</value>
+  </data>
+  <data name="INTERVALL_TYPES" xml:space="preserve">
+    <value>Woche,Tag,Std</value>
+  </data>
+  <data name="INTERVALL_TYPES_EXT" xml:space="preserve">
+    <value>n,e,</value>
+  </data>
+  <data name="TERMIN_DONE" xml:space="preserve">
+    <value>Abgezeichnete Termine können nicht mehr bearbeitet werden</value>
+  </data>
+  <data name="GUI_AREA_SITEMAP" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="GUI.SEARCH_INFO" xml:space="preserve">
+    <value>{0} gefundene Elemente</value>
+  </data>
+  <data name="GUI.SEARCH_MASSNAHME" xml:space="preserve">
+    <value>Maßnahmen suchen ...</value>
+  </data>
+  <data name="GUI_AREA_SITEMAP_PATIENT" xml:space="preserve">
+    <value>Klient</value>
+  </data>
+  <data name="GUI.SEARCH_PATIENT" xml:space="preserve">
+    <value>Klienten suchen ...</value>
+  </data>
+  <data name="GUI_AREA_TERMINLISTE" xml:space="preserve">
+    <value>Interventionsliste</value>
+  </data>
+  <data name="GUI_AREA_UEBERGABE" xml:space="preserve">
+    <value>Übergabe</value>
+  </data>
+  <data name="GUI_AREA_TERMINPLAN" xml:space="preserve">
+    <value>Terminplan</value>
+  </data>
+  <data name="SiteGroups.Prog" xml:space="preserve">
+    <value>Allgemeines</value>
+  </data>
+  <data name="SiteEvents.Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="SiteEvents.Lock" xml:space="preserve">
+    <value>Arbeitsstation sperren</value>
+  </data>
+  <data name="SiteEvents.End" xml:space="preserve">
+    <value>Programm verlassen</value>
+  </data>
+  <data name="SiteEvents.LogOn" xml:space="preserve">
+    <value>Benutzerwechsel</value>
+  </data>
+  <data name="SiteEvents.Password" xml:space="preserve">
+    <value>Eigenes Passwort ändern</value>
+  </data>
+  <data name="SiteGroups.Patient" xml:space="preserve">
+    <value>Klienten</value>
+  </data>
+  <data name="SiteEvents.Aufnahme" xml:space="preserve">
+    <value>Wiederaufnahme eines Klienten</value>
+  </data>
+  <data name="GUI.STATUS_VERSION" xml:space="preserve">
+    <value>Version: {0}</value>
+  </data>
+  <data name="SiteEvents.About" xml:space="preserve">
+    <value>Über PMDS</value>
+  </data>
+  <data name="SiteEvents.Neuaufnahme" xml:space="preserve">
+    <value>Neuaufnahme eines Klienten</value>
+  </data>
+  <data name="GUI.BULK_ABZEICHNEN" xml:space="preserve">
+    <value>Damit die abgezeichneten Einträge gespeichert werden, muss das Fenster mit
+OK beendet werden (mit Abbrechen werden alle, während dieses Vorganges, 
+abgezeichneten Einträge nicht gespeichert).</value>
+  </data>
+  <data name="SiteEvents.Refresh" xml:space="preserve">
+    <value>&amp;Aktualisieren</value>
+  </data>
+  <data name="SiteEvents.Vermerk" xml:space="preserve">
+    <value>Freier Bericht</value>
+  </data>
+  <data name="SiteGroups.Termine" xml:space="preserve">
+    <value>Termine</value>
+  </data>
+  <data name="SiteGroups.Print" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="SiteEvents.Massnahme" xml:space="preserve">
+    <value>Ungepl. M. abz.</value>
+  </data>
+  <data name="SiteEvents.Stapelrueckmeldung" xml:space="preserve">
+    <value>Stapelrückmeldung</value>
+  </data>
+  <data name="SiteEvents.Pflegeplan" xml:space="preserve">
+    <value>Pflegeplan ändern</value>
+  </data>
+  <data name="SiteEvents.PrintBrief" xml:space="preserve">
+    <value>Pflegebrief</value>
+  </data>
+  <data name="SiteEvents.PrintAufgaben" xml:space="preserve">
+    <value>Aufgaben</value>
+  </data>
+  <data name="SiteEvents.MeldungM" xml:space="preserve">
+    <value>M. rückmelden</value>
+  </data>
+  <data name="SiteEvents.MeldungE" xml:space="preserve">
+    <value>E. rückmelden</value>
+  </data>
+  <data name="SiteEvents.MeldungShow" xml:space="preserve">
+    <value>Rückmeldung anzeigen</value>
+  </data>
+  <data name="SiteGroups.Termine2" xml:space="preserve">
+    <value>Sondertermine</value>
+  </data>
+  <data name="SiteEvents.TerminNew" xml:space="preserve">
+    <value>Erzeugen</value>
+  </data>
+  <data name="SiteEvents.TerminEdit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="SiteEvents.TerminDelete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="SiteEvents.TerminEnd" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="SiteEvents.MeldungT" xml:space="preserve">
+    <value>Termin rückmelden</value>
+  </data>
+  <data name="SiteEvents.DruckenPflegeplan" xml:space="preserve">
+    <value>Gesamter Pflegeplan</value>
+  </data>
+  <data name="SiteEvents.DruckenPflegeplanOnlyOpen" xml:space="preserve">
+    <value>Aktueller Pflegeplan</value>
+  </data>
+  <data name="GUI.FILTER_DONE" xml:space="preserve">
+    <value>abgezeichnet</value>
+  </data>
+  <data name="GUI.FILTER_BERUFSSTAND" xml:space="preserve">
+    <value>abw. Beruf</value>
+  </data>
+  <data name="GUI.FILTER_EINTRAG" xml:space="preserve">
+    <value>Maßnahme</value>
+  </data>
+  <data name="GUI.FILTER_BEZUG" xml:space="preserve">
+    <value>Bezugsperson</value>
+  </data>
+  <data name="GUI.FILTER_NONE" xml:space="preserve">
+    <value>(Standard)</value>
+  </data>
+  <data name="PATIENT.STATUS_UNKNOWN" xml:space="preserve">
+    <value>(konnte nicht ermittelt werden)</value>
+  </data>
+  <data name="PATIENT.STATUS_NOABT" xml:space="preserve">
+    <value>nicht aufgenommen</value>
+  </data>
+  <data name="PATIENT.STATUS_ABT" xml:space="preserve">
+    <value>aufgenommen</value>
+  </data>
+  <data name="PATIENT.STATUS_ABTURLAUB" xml:space="preserve">
+    <value>beurlaubt</value>
+  </data>
+  <data name="GUI.OHNE_ZUORDNUNG" xml:space="preserve">
+    <value>ohne Zuordnung</value>
+  </data>
+  <data name="QUESTION_DELETEASZM" xml:space="preserve">
+    <value>Wollen Sie {0} "{1}" wirklich löschen?</value>
+  </data>
+  <data name="DIALOGTITLE_DELETEASZM" xml:space="preserve">
+    <value>{0} löschen</value>
+  </data>
+  <data name="QUESTION_PDXAUSWAHL_ZUORDNEN" xml:space="preserve">
+    <value>Wollen Sie die ausgewählten PDX zur TOP 10 Gruppe zuordnen? </value>
+  </data>
+  <data name="DIALOGTITLE_PDXAUSWAHL_ZUORDNEN" xml:space="preserve">
+    <value>PDX zuordnen</value>
+  </data>
+  <data name="QUESTION_ASZMAUSWAHL_ZUORDNEN" xml:space="preserve">
+    <value>Wollen Sie die ausgewählten ASZM zur PDX zuordnen? </value>
+  </data>
+  <data name="DIALOGTITLE_ASZMAUSWAHL_ZUORDNEN" xml:space="preserve">
+    <value>ASZM zuordnen</value>
+  </data>
+  <data name="ERROR_TOP10_NAME_EXISTS" xml:space="preserve">
+    <value>Es exisiert bereits einen TOP 10 mit diesem Namen!</value>
+  </data>
+  <data name="MESSAGE_AM_ZUGEORDNET" xml:space="preserve">
+    <value>Diese Maßnahme wurde bereits zugeordnet </value>
+  </data>
+  <data name="New_M" xml:space="preserve">
+    <value>Neue Maßnahme</value>
+  </data>
+  <data name="New_S" xml:space="preserve">
+    <value>Neues Symptom</value>
+  </data>
+  <data name="New_A" xml:space="preserve">
+    <value>Neue Ätiologie / Risikofaktor</value>
+  </data>
+  <data name="New_Z" xml:space="preserve">
+    <value>Neues Ziel</value>
+  </data>
+  <data name="ADD" xml:space="preserve">
+    <value>erfassen</value>
+  </data>
+  <data name="EDIT" xml:space="preserve">
+    <value>bearbeiten</value>
+  </data>
+  <data name="ZSingle" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
+  <data name="MSingle" xml:space="preserve">
+    <value>Maßnahme</value>
+  </data>
+  <data name="SSingle" xml:space="preserve">
+    <value>Symptom</value>
+  </data>
+  <data name="ASZM_TO_PDX" xml:space="preserve">
+    <value>zur Pflegediagnose hinzufügen</value>
+  </data>
+  <data name="INPUT_SEARCH_STING" xml:space="preserve">
+    <value>Geben Sie hier den Suchtext ein: </value>
+  </data>
+  <data name="KATALOG_LIMITED" xml:space="preserve">
+    <value> Sie haben den Katalog auf die {0} eingeschränkt!</value>
+  </data>
+  <data name="KATALOG_UNLIMITED" xml:space="preserve">
+    <value>Sie suchen in allen Ätiologien, Symptomen, Zielen und Maßnahmen</value>
+  </data>
+  <data name="AMZugeordnet" xml:space="preserve">
+    <value>Zur gewählten Ätiologie sind {0} Maßnahmen zugeordnet!</value>
+  </data>
+  <data name="LIST" xml:space="preserve">
+    <value>Liste aller </value>
+  </data>
+  <data name="Mzugeordnet" xml:space="preserve">
+    <value>Zugeordnete Maßnahmen</value>
+  </data>
+  <data name="S_Select" xml:space="preserve">
+    <value>Symptomwahl:</value>
+  </data>
+  <data name="A_Select" xml:space="preserve">
+    <value>Ätiologie / Risikofaktor:</value>
+  </data>
+  <data name="M_Select" xml:space="preserve">
+    <value>Maßnahmenwahl:</value>
+  </data>
+  <data name="Z_Select" xml:space="preserve">
+    <value>Zielwahl:</value>
+  </data>
+  <data name="SEARCH" xml:space="preserve">
+    <value>suchen</value>
+  </data>
+  <data name="DIE" xml:space="preserve">
+    <value>die</value>
+  </data>
+  <data name="DAS" xml:space="preserve">
+    <value>das</value>
+  </data>
+  <data name="PDXzugeordnet" xml:space="preserve">
+    <value>Zur Pflegediagnose zugeordnete </value>
+  </data>
+  <data name="ASingle" xml:space="preserve">
+    <value>Ätiologie / Risikofaktor</value>
+  </data>
+  <data name="ASZMausgeblendet" xml:space="preserve">
+    <value> zugeordnete {0} ausgeblendet</value>
+  </data>
+  <data name="ASZMangezeigt" xml:space="preserve">
+    <value> zugeordnete {0} angezeigt</value>
+  </data>
+  <data name="SHOW_AM_Maßnahmen" xml:space="preserve">
+    <value>Ätiologiebezogene / Risikofaktorbezogene Maßnahmen anzeigen</value>
+  </data>
+  <data name="HIDE_AM_Maßnahmen" xml:space="preserve">
+    <value>Ätiologiebezogene / Risikobezogene Maßnahmen nicht anzeigen</value>
+  </data>
+  <data name="ASZM_Zuordnung_impossible" xml:space="preserve">
+    <value>Sie haben alle Gruppen ausgeblendet, eine Zuordnung ist nicht mehr möglich!</value>
+  </data>
+  <data name="GUI.RM_NOTALLOWED" xml:space="preserve">
+    <value>Zur Zeit ist keine Rückmeldung/Bearbeitung möglich.
+Möglicherweise befinden Sie sich in der falschen Abteilung 
+oder sie sind im Bearbeitungsmodus Dienstübergabe oder 
+Terminplan</value>
+  </data>
+  <data name="SiteEvents.PrintTerminListe" xml:space="preserve">
+    <value>Interventionsliste</value>
+  </data>
+  <data name="SiteGroups.Medikamente" xml:space="preserve">
+    <value>Medikamente</value>
+  </data>
+  <data name="SiteEvents.MedikamentHinzufuegen" xml:space="preserve">
+    <value>&amp;Hinzufügen</value>
+  </data>
+  <data name="SiteEvents.MedikamentLoeschen" xml:space="preserve">
+    <value>&amp;Löschen</value>
+  </data>
+  <data name="SiteEvents.Tabellenansicht" xml:space="preserve">
+    <value>&amp;Tabellenansicht</value>
+  </data>
+  <data name="SiteEvents.Einzelansicht" xml:space="preserve">
+    <value>&amp;Einzelansicht</value>
+  </data>
+  <data name="SiteGroups.MedikamenteTabelle" xml:space="preserve">
+    <value>Medikamente</value>
+  </data>
+  <data name="SiteGroups.MedikamentenVerwaltung" xml:space="preserve">
+    <value>Medikamentenverwaltung</value>
+  </data>
+  <data name="SiteEvents.MedikamentenVerwaltungBeenden" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
+  <data name="GUI.SEARCH_MEDIKAMENT" xml:space="preserve">
+    <value>Medikament suchen</value>
+  </data>
+  <data name="QUESTION_MEDIKAMENT_DELETE" xml:space="preserve">
+    <value>Wollen Sie das Medikament {0} wirklich löschen</value>
+  </data>
+  <data name="GUI.DIALOGTITLE_MEDIKAMENT_LOESCHEN" xml:space="preserve">
+    <value>Medikament löschen</value>
+  </data>
+  <data name="GUI.E_FLOAT_OUTOFRANGE" xml:space="preserve">
+    <value>Der Wert muss zwischen {0} und {1} liegen!</value>
+  </data>
+  <data name="ERROR_MISSING_ZEITPUNKT" xml:space="preserve">
+    <value>Für die benutzerdefinierten Maßnahmenserien müssen Sie die Zeitpunkte eingeben</value>
+  </data>
+  <data name="ERROR_MASSNAHMENSERIE" xml:space="preserve">
+    <value>Bei untertägigkeit müssen Sie eine Serie angeben</value>
+  </data>
+  <data name="GUI.MISSING_MELDUNG_UPTO_NOW" xml:space="preserve">
+    <value>{0} Meldung(en) bis Heute ausständig.</value>
+  </data>
+  <data name="SHOW_ALL_MASSNAHMEN" xml:space="preserve">
+    <value>Alle Maßnahmen anzeigen</value>
+  </data>
+  <data name="EINZELSPENDER" xml:space="preserve">
+    <value>Einzelspender</value>
+  </data>
+  <data name="TAGESSPENDER" xml:space="preserve">
+    <value>Tagesspender</value>
+  </data>
+  <data name="WOCHENSPENDER" xml:space="preserve">
+    <value>Wochenspender</value>
+  </data>
+  <data name="SiteEvents.RezepteVerwalten" xml:space="preserve">
+    <value>Rezepte verwalten</value>
+  </data>
+  <data name="SiteEvents.MedikamenteVorbereiten" xml:space="preserve">
+    <value>Medikamente vorbereiten</value>
+  </data>
+  <data name="GUI.E_REZEPTE_ABG_VON" xml:space="preserve">
+    <value>Von-Zeitpunkt darf erst nach dem Ausstellungsdatum gewählt werden.</value>
+  </data>
+  <data name="GUI.E_REZEPTE_ABG_BIS" xml:space="preserve">
+    <value>Bis-Zeitpunkt darf nicht vor dem Von-Zeitpunkt gewählt werden.</value>
+  </data>
+  <data name="GUI.E_REZEPTE_MED" xml:space="preserve">
+    <value>Es ist kein Medikament zugeordnet!</value>
+  </data>
+  <data name="GUI.E_REZEPTE_ZP" xml:space="preserve">
+    <value>Es muss mindestens eine Abgabenmenge eingetragen werden!</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.MEDIKAMENT" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="SiteEvents.MeldungS" xml:space="preserve">
+    <value>Spender rückmelden</value>
+  </data>
+  <data name="GUI.WRONG_SPENTERTYP" xml:space="preserve">
+    <value>Die beaufsichtigte Verabreichung von Medikamenten
+bedingt die Auswahl eines Einzelspenders. Der Wert wird
+automatisch gesetzt.</value>
+  </data>
+  <data name="SPENDERABGABE" xml:space="preserve">
+    <value>Abgabe eines {0}</value>
+  </data>
+  <data name="QUESTION_VORBEREITEN" xml:space="preserve">
+    <value>Wollen Sie die Vorbereitung starten?</value>
+  </data>
+  <data name="DIALOGTITLE_VORBEREITEN" xml:space="preserve">
+    <value>Vorbereitung starten</value>
+  </data>
+  <data name="QUESTION_SAVECHANGES_VORBEREITUNG" xml:space="preserve">
+    <value>Wollen Sie die Vorbereitungen generieren?
+Drücken Sie Ja um die Vorbereitungen zu generieren oder
+Nein wenn Sie die Änderungen nicht vorbereiten wollen</value>
+  </data>
+  <data name="PATIENT.INFO2" xml:space="preserve">
+    <value>{0} {1} {2}, {3},
+ geboren am: {4}, Alter: {5}</value>
+  </data>
+  <data name="SiteEvents.PrintTerminListeBarcode" xml:space="preserve">
+    <value>Interventionsliste für Barcode</value>
+  </data>
+  <data name="BARCODE.MISSINGUSERID" xml:space="preserve">
+    <value>Es wurde festgestellt dass ein Pflegerticket für die Barcodeverarbeitung fehlt.
+Bitte ergänzen Sie die fehlenden Pflegerinformationen (als ********* gekennzeichnet) in der Tabelle.</value>
+  </data>
+  <data name="QUESTION_BARCODE_CANCEL" xml:space="preserve">
+    <value>Wollen Sie den Vorgang wirklich abbrechen und alle 
+vorgenommenen Rückmeldungen und eventuell vorgenommene
+Pflegerzuweisungen rückgängig machen?</value>
+  </data>
+  <data name="DIALOGTITLE_BARCODE_CANCEL" xml:space="preserve">
+    <value>Barcodeverarbeitung abbrechen?</value>
+  </data>
+  <data name="BARCODE_LOCKED" xml:space="preserve">
+    <value>Die Barcodeverarbeitung wird zur Zeit woanders ausgeführt und kann damit nicht gestartet werden.
+gesperrt von {0} seit {1}</value>
+  </data>
+  <data name="DIALOGTITLE_DELETEFORMULAR" xml:space="preserve">
+    <value>Formular löschen</value>
+  </data>
+  <data name="QUESTION_DELETEFORMULAR" xml:space="preserve">
+    <value>Wollen Sie das Formular wirklich löschen?</value>
+  </data>
+  <data name="SiteEvents.DruckenPflegeplanPDx" xml:space="preserve">
+    <value>Pflegeplan gesamt</value>
+  </data>
+  <data name="SiteEvents.DruckenPflegeplanPDxOnlyOpen" xml:space="preserve">
+    <value>Pflegeplan aktuell</value>
+  </data>
+  <data name="DIALOGTITLE_NEWQUICKFILTER" xml:space="preserve">
+    <value>Quickfilter hinzufügen</value>
+  </data>
+  <data name="DIALOGTITLE_NEWQUICKMELDUNG" xml:space="preserve">
+    <value>Quickmeldung hinzufügen</value>
+  </data>
+  <data name="ERROR_MISSMATCH_DBVERSION" xml:space="preserve">
+    <value>Die Datenbankversion {0} passt nicht der erwarteten Version {1}
+Informieren Sie ihren Systemadministrator.
+Die Applikation wird beendet</value>
+  </data>
+  <data name="ERROR_MISSING_EINTRAG_IN_PP" xml:space="preserve">
+    <value>Die Maßnahme {0} konnte im Pflegeplan des Patienten {1} nicht gefunden werden.</value>
+  </data>
+  <data name="DIALOGTITLE_MISSING_EINTRAG_IN_PP" xml:space="preserve">
+    <value>Die Maßnahme  konnte im Pflegeplan nicht gefunden werden.</value>
+  </data>
+  <data name="GUI.FILTER_TYP" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="QUESTION_SCHLIESSENMITAUSWAHL" xml:space="preserve">
+    <value>Sie haben noch eine Auswahl getroffen.
+wollen Sie das Fenster trotzdem schließen?</value>
+  </data>
+  <data name="DIALOGTITLE_SCHLIESSENMITAUSWAHL" xml:space="preserve">
+    <value>Fenster schließen</value>
+  </data>
+  <data name="MESSAGE_SAVE_BEVORE_PRINT" xml:space="preserve">
+    <value>Sie müssen zuerst speichern bevor Sie drucken können</value>
+  </data>
+  <data name="END_ASZMINFO" xml:space="preserve">
+    <value>Folgende ASZM werden beendet</value>
+  </data>
+  <data name="END_NOT_ASZMINFO" xml:space="preserve">
+    <value>Folgende ASZM werden nur in der Pflegedefinitionszuordnung beendet weil sie noch anderen Pflegeproblemen zugeordnet sind</value>
+  </data>
+  <data name="MESSAGE_SAVE_BEVORE" xml:space="preserve">
+    <value>Sie müssen zuerst speichern</value>
+  </data>
+  <data name="GUI.E_NO_SELECTION" xml:space="preserve">
+    <value>Bitte treffen Sie eine Auswahl</value>
+  </data>
+  <data name="DIALOGTITLE_NEWDIENSTZEITEN" xml:space="preserve">
+    <value>Dienstzeit hinzufügen</value>
+  </data>
+  <data name="USERDEFINED" xml:space="preserve">
+    <value>Benutzerdefiniert</value>
+  </data>
+  <data name="PP_ORIGINAL_TEXT_CHANGED" xml:space="preserve">
+    <value>Sie haben den Originaltext modifiziert. 
+Diese Massnahme wir dann ROT im Pflegeplan dargestellt.
+Wollen Sie fortfahren und die Änderungen übernehmen?</value>
+  </data>
+  <data name="DIALOGTITLE_PP_ORIGINAL_TEXT_CHANGED" xml:space="preserve">
+    <value>Originaltext wurde modifiziert</value>
+  </data>
+  <data name="AUFNAHME_CHANGES_NOT_POSSIBLE" xml:space="preserve">
+    <value>Aufnahme Daten können nur innerhalb von 48 Stunden bearbeitet werden</value>
+  </data>
+  <data name="SiteEvents.ShowEmptyEntries" xml:space="preserve">
+    <value>Leere Einträge anzeigen</value>
+  </data>
+  <data name="SiteEvents.HideEmptyEntries" xml:space="preserve">
+    <value>Leere Einträge ausblenden</value>
+  </data>
+  <data name="ERROR_MISSING_LICENCE" xml:space="preserve">
+    <value>Dieses Programm ist nicht lizenziert. Bitte wenden Sie sich an einen Systemadministrator</value>
+  </data>
+  <data name="GUI_AREA_SITEMAP_START" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="SiteEvents.Patient" xml:space="preserve">
+    <value>Klientenaktionen</value>
+  </data>
+  <data name="SiteEvents.Klientenuebersicht" xml:space="preserve">
+    <value>Klientenübersicht</value>
+  </data>
+  <data name="INFO_NO_KLINETSELECTED" xml:space="preserve">
+    <value>Kein Klient gewählt ...</value>
+  </data>
+  <data name="SiteEvents.Stammdaten" xml:space="preserve">
+    <value>Stammdaten</value>
+  </data>
+  <data name="SiteGroups.Stammdaten" xml:space="preserve">
+    <value>Stammdaten</value>
+  </data>
+  <data name="PATIENT.INFO_NOAGE" xml:space="preserve">
+    <value>{0} {1} {2}, {3}, geboren am: {4}</value>
+  </data>
+  <data name="PATIENT_BASEINFO" xml:space="preserve">
+    <value>{0} {1} {2}</value>
+  </data>
+  <data name="CBArzt" xml:space="preserve">
+    <value>Arzt</value>
+  </data>
+  <data name="M_single" xml:space="preserve">
+    <value>Maßnahme</value>
+  </data>
+  <data name="S_single" xml:space="preserve">
+    <value>Symptom</value>
+  </data>
+  <data name="Z_single" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
+  <data name="SiteEvents.BedarfsMedikationMelden" xml:space="preserve">
+    <value>Bedarfsmedikation</value>
+  </data>
+  <data name="SiteEvents.SchnellRueckmeldung" xml:space="preserve">
+    <value>Schnellabzeichnung</value>
+  </data>
+  <data name="SiteEvents.AlleMarkieren" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="SiteEvents.KeineMarkieren" xml:space="preserve">
+    <value>Keine</value>
+  </data>
+  <data name="SiteGroups.Markieren" xml:space="preserve">
+    <value>Auswählen</value>
+  </data>
+  <data name="INFO_KEINE_RESOURCEN" xml:space="preserve">
+    <value>Es sind keine Resourcen definiert</value>
+  </data>
+  <data name="WIEDERHOLUNGSEINHEIT_S" xml:space="preserve">
+    <value>Stunden</value>
+  </data>
+  <data name="WIEDERHOLUNGSEINHEIT_T" xml:space="preserve">
+    <value>Tage</value>
+  </data>
+  <data name="WIEDERHOLUNGSEINHEIT_W" xml:space="preserve">
+    <value>Wochen</value>
+  </data>
+  <data name="WIEDERHOLUNGSTYP_A" xml:space="preserve">
+    <value>alle</value>
+  </data>
+  <data name="WIEDERHOLUNGSTYP_J" xml:space="preserve">
+    <value>jeden {0} .ten des Monats</value>
+  </data>
+  <data name="WIEDERHOLUNGSTYP_T" xml:space="preserve">
+    <value>täglich</value>
+  </data>
+  <data name="PDX_ANORDNUNGEN" xml:space="preserve">
+    <value>Ärztliches</value>
+  </data>
+  <data name="WEEK_DAYS_SET_2" xml:space="preserve">
+    <value>Mo_Di_Mi_Do_Fr_Sa_So</value>
+  </data>
+  <data name="SiteEvents.PrintTerminListeBarcodeUnregelmaessig" xml:space="preserve">
+    <value>Unregelmäßige Barcodeliste</value>
+  </data>
+  <data name="GUI_Bestellen" xml:space="preserve">
+    <value>Bestellen</value>
+  </data>
+  <data name="GUI_BestellungAufheben" xml:space="preserve">
+    <value>Bestellung aufheben</value>
+  </data>
+  <data name="SiteEvents.PrintNotfall" xml:space="preserve">
+    <value>Notfall</value>
+  </data>
+  <data name="ABRECHNUNG_ROLLEN_TEXT" xml:space="preserve">
+    <value>Achtung, Abrechnungen der folgenden Monate müssen gerollt werden:</value>
+  </data>
+  <data name="ERROR_MS_ORZB" xml:space="preserve">
+    <value>Bitte wählen Sie einen Zeitbereich oder Zeitpunkte - beides ist nicht erlaubt</value>
+  </data>
+  <data name="ZAHLART_BAR" xml:space="preserve">
+    <value>Betrag dankend erhalten.</value>
+  </data>
+  <data name="ZAHLART_ERLAGSCHEIN" xml:space="preserve">
+    <value>Wir ersuchen um Überweisung des Rechnungsbetrags {0} mittels beiliegendem Erlagschein auf unser Konto.</value>
+  </data>
+  <data name="SiteEvents.PrintPflegestandard" xml:space="preserve">
+    <value>Pflegestandard</value>
+  </data>
+  <data name="ZAHLART_BANKEINZUG" xml:space="preserve">
+    <value>Wir haben uns erlaubt, obigen Rechnungsbetrag von Ihrem Konto {0} einzuziehen.</value>
+  </data>
+  <data name="ZAHLART_UEBERWEISUNG" xml:space="preserve">
+    <value>Wir ersuchen um Überweisung des Rechnungsbetrags {0} auf unser Konto.</value>
+  </data>
+  <data name="SiteEvents.historieRefresh" xml:space="preserve">
+    <value>Termine</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>Beeinflussende Faktoren</value>
+  </data>
+  <data name="R" xml:space="preserve">
+    <value>Ressourcen</value>
+  </data>
+  <data name="New_R" xml:space="preserve">
+    <value>Neue Ressource</value>
+  </data>
+  <data name="RSingle" xml:space="preserve">
+    <value>Ressource</value>
+  </data>
+  <data name="Rzugeordnet" xml:space="preserve">
+    <value>Tugeordnete Ressourcen</value>
+  </data>
+  <data name="R_Select" xml:space="preserve">
+    <value>Ressourcenwahl:</value>
+  </data>
+  <data name="R_single" xml:space="preserve">
+    <value>Ressource</value>
+  </data>
+  <data name="PFLEGEEINTRAGTYP.ÄRZTLICHERDEKURS" xml:space="preserve">
+    <value>ÄD</value>
+  </data>
+  <data name="A_RF" xml:space="preserve">
+    <value>Ätiologie bzw. Risikofaktor</value>
+  </data>
+  <data name="A_RFs" xml:space="preserve">
+    <value>Ätiologien bzw. Risikofaktoren</value>
+  </data>
+  <data name="RF" xml:space="preserve">
+    <value>Risikofaktor</value>
+  </data>
+  <data name="RFs" xml:space="preserve">
+    <value>Risikofaktoren</value>
+  </data>
+</root>

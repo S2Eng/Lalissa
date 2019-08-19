@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfAbteilungDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfAbteilungDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q1:ArrayOfAbteilungDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfAbteilungDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfAbteilungDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfAuswahlListeGruppeDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfAuswahlListeGruppeDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q2:ArrayOfAuswahlListeGruppeDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfAuswahlListeGruppeDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfAuswahlListeGruppeDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfAuswahlListeDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfAuswahlListeDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q3:ArrayOfAuswahlListeDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfAuswahlListeDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfAuswahlListeDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfBereichDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfBereichDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q4:ArrayOfBereichDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfBereichDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfBereichDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfDBLizenzDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfDBLizenzDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q5:ArrayOfDBLizenzDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfDBLizenzDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfDBLizenzDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfDBVersionDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfDBVersionDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q6:ArrayOfDBVersionDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfDBVersionDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfDBVersionDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfDienstzeitenDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfDienstzeitenDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q7:ArrayOfDienstzeitenDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfDienstzeitenDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfDienstzeitenDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfEinrichtungDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfEinrichtungDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q8:ArrayOfEinrichtungDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfEinrichtungDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfEinrichtungDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfFormularDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfFormularDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q9:ArrayOfFormularDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfFormularDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfFormularDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfGruppeDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfGruppeDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q10:ArrayOfGruppeDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfGruppeDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfGruppeDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfGruppenRechtDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfGruppenRechtDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q11:ArrayOfGruppenRechtDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfGruppenRechtDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfGruppenRechtDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfLayoutDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfLayoutDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q12:ArrayOfLayoutDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfLayoutDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfLayoutDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfLayoutGridsDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfLayoutGridsDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q13:ArrayOfLayoutGridsDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfLayoutGridsDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfLayoutGridsDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfLinkDokumenteDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfLinkDokumenteDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q14:ArrayOfLinkDokumenteDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfLinkDokumenteDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfLinkDokumenteDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfMassnahmenserienDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfMassnahmenserienDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q15:ArrayOfMassnahmenserienDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfMassnahmenserienDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfMassnahmenserienDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfRessourcenDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfRessourcenDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q16:ArrayOfRessourcenDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfRessourcenDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfRessourcenDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfStandardProzedurenDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfStandardProzedurenDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q17:ArrayOfStandardProzedurenDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfStandardProzedurenDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfStandardProzedurenDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfStandardzeitenDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfStandardzeitenDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q18:ArrayOfStandardzeitenDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfStandardzeitenDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfStandardzeitenDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfTextbausteineDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfTextbausteineDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q19:ArrayOfTextbausteineDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfTextbausteineDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfTextbausteineDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfZeitbereichDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfZeitbereichDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q20:ArrayOfZeitbereichDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfZeitbereichDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfZeitbereichDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfZeitbereichSerienDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfZeitbereichSerienDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q21:ArrayOfZeitbereichSerienDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfZeitbereichSerienDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfZeitbereichSerienDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOfarchOrdnerDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOfarchOrdnerDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q22:ArrayOfarchOrdnerDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOfarchOrdnerDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOfarchOrdnerDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblAutoDokuDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblAutoDokuDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q23:ArrayOftblAutoDokuDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblAutoDokuDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblAutoDokuDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblInteropDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblInteropDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q24:ArrayOftblInteropDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblInteropDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblInteropDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblParameterDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblParameterDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q25:ArrayOftblParameterDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblParameterDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblParameterDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblPfadDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblPfadDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q26:ArrayOftblPfadDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblPfadDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblPfadDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblProvKonfigDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblProvKonfigDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q27:ArrayOftblProvKonfigDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblProvKonfigDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblProvKonfigDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblQueriesDefDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblQueriesDefDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q28:ArrayOftblQueriesDefDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblQueriesDefDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblQueriesDefDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblRechteOrdnerDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblRechteOrdnerDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q29:ArrayOftblRechteOrdnerDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblRechteOrdnerDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblRechteOrdnerDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblRedistDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblRedistDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q30:ArrayOftblRedistDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblRedistDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblRedistDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblSelListEntriesDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblSelListEntriesDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q31:ArrayOftblSelListEntriesDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblSelListEntriesDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblSelListEntriesDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblSelListGroupDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblSelListGroupDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q32:ArrayOftblSelListGroupDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblSelListGroupDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblSelListGroupDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblTextTemplatesDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblTextTemplatesDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q33:ArrayOftblTextTemplatesDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblTextTemplatesDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblTextTemplatesDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblTextTemplatesFilesDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblTextTemplatesFilesDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q34:ArrayOftblTextTemplatesFilesDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblTextTemplatesFilesDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblTextTemplatesFilesDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfKeyValueOfdateTimeArrayOftblUserAccountsDTOyE8ceCq1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfdateTimeArrayOftblUserAccountsDTOyE8ceCq1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:dateTime" />
+            <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="Value" nillable="true" type="q35:ArrayOftblUserAccountsDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfdateTimeArrayOftblUserAccountsDTOyE8ceCq1" nillable="true" type="tns:ArrayOfKeyValueOfdateTimeArrayOftblUserAccountsDTOyE8ceCq1" />
+  <xs:complexType name="ArrayOfbase64Binary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfbase64Binary" nillable="true" type="tns:ArrayOfbase64Binary" />
+</xs:schema>

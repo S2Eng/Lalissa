@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientStation" targetNamespace="http://www.tempuri.org/dsPatientStation.xsd" xmlns:mstns="http://www.tempuri.org/dsPatientStation.xsd" xmlns="http://www.tempuri.org/dsPatientStation.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientStation" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsPatientStation" msprop:Generator_UserDSName="dsPatientStation">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Patient" msprop:Generator_UserTableName="Patient" msprop:Generator_RowEvArgName="PatientRowChangeEvent" msprop:Generator_TableVarName="tablePatient" msprop:Generator_TablePropName="Patient" msprop:Generator_RowDeletingName="PatientRowDeleting" msprop:Generator_RowChangingName="PatientRowChanging" msprop:Generator_RowDeletedName="PatientRowDeleted" msprop:Generator_TableClassName="PatientDataTable" msprop:Generator_RowChangedName="PatientRowChanged" msprop:Generator_RowEvHandlerName="PatientRowChangeEventHandler" msprop:Generator_RowClassName="PatientRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Geburtsdatum" msprop:Generator_ColumnVarNameInTable="columnGeburtsdatum" msprop:Generator_ColumnPropNameInRow="Geburtsdatum" msprop:Generator_ColumnPropNameInTable="GeburtsdatumColumn" msprop:Generator_UserColumnName="Geburtsdatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Abteilung" msprop:Generator_ColumnVarNameInTable="columnAbteilung" msprop:Generator_ColumnPropNameInRow="Abteilung" msprop:Generator_ColumnPropNameInTable="AbteilungColumn" msprop:Generator_UserColumnName="Abteilung" type="xs:string" minOccurs="0" />
+              <xs:element name="Bereich" msprop:Generator_ColumnVarNameInTable="columnBereich" msprop:Generator_ColumnPropNameInRow="Bereich" msprop:Generator_ColumnPropNameInTable="BereichColumn" msprop:Generator_UserColumnName="Bereich" type="xs:string" minOccurs="0" />
+              <xs:element name="UrlaubText" msprop:Generator_ColumnVarNameInTable="columnUrlaubText" msprop:Generator_ColumnPropNameInRow="UrlaubText" msprop:Generator_ColumnPropNameInTable="UrlaubTextColumn" msprop:Generator_UserColumnName="UrlaubText" type="xs:string" minOccurs="0" />
+              <xs:element name="NaechsteEvaluierung" msprop:Generator_ColumnVarNameInTable="columnNaechsteEvaluierung" msprop:Generator_ColumnPropNameInRow="NaechsteEvaluierung" msprop:Generator_ColumnPropNameInTable="NaechsteEvaluierungColumn" msprop:Generator_UserColumnName="NaechsteEvaluierung" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBezugsPfleger" msprop:Generator_ColumnVarNameInTable="columnIDBezugsPfleger" msprop:Generator_ColumnPropNameInRow="IDBezugsPfleger" msprop:Generator_ColumnPropNameInTable="IDBezugsPflegerColumn" msprop:Generator_UserColumnName="IDBezugsPfleger" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" msprop:Generator_UserColumnName="IDAbteilung" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBereich" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBereich" msprop:Generator_ColumnPropNameInRow="IDBereich" msprop:Generator_ColumnPropNameInTable="IDBereichColumn" msprop:Generator_UserColumnName="IDBereich" type="xs:string" minOccurs="0" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAufenthalt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAufenthalt" msprop:Generator_ColumnPropNameInRow="IDAufenthalt" msprop:Generator_ColumnPropNameInTable="IDAufenthaltColumn" msprop:Generator_UserColumnName="IDAufenthalt" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

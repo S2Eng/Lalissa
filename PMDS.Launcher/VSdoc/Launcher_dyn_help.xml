@@ -1,0 +1,1321 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DynamicHelp xmlns="http://msdn.microsoft.com/vsdata/xsd/vsdh.xsd" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="http://msdn.microsoft.com/vsdata/xsd/vsdh.xsd">	
+   <LINKGROUP ID="Launcher" Title="Launcher Reference Help" Priority="2100">
+      <GLYPH Expanded="vs:/ctxhelp_show.gif" Collapsed="vs:/ctxhelp_hide.gif"/>
+   </LINKGROUP>
+
+
+   <Context>
+      <Keywords>
+         <KItem Name="" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000088.html" LinkGroup="Launcher"><default> Namespace</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRowChangeEvent.Action" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000046.html" LinkGroup="Launcher">Action Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.ActualVersion" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000063.html" LinkGroup="Launcher">ActualVersion Field</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.AddconfigRow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000033_overloads--.html" LinkGroup="Launcher">AddconfigRow Method</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.AddconfigRow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000032_overloads--.html" LinkGroup="Launcher">AddconfigRow Method</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.CfgFile" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000000C_overloads--.html" LinkGroup="Launcher">CfgFile Constructor</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.CfgFile" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000000D_overloads--.html" LinkGroup="Launcher">CfgFile Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000000B.html" LinkGroup="Launcher">CfgFile Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.ClientConfigPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000062.html" LinkGroup="Launcher">ClientConfigPath Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.ClientConfigPath_Orig" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000073.html" LinkGroup="Launcher">ClientConfigPath_Orig Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.ClientProgramPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000061.html" LinkGroup="Launcher">ClientProgramPath Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.ClientProgramPath_Orig" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000072.html" LinkGroup="Launcher">ClientProgramPath_Orig Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.Clone" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000035.html" LinkGroup="Launcher">Clone Method {Launcher.dsConfig.configDataTable}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.Clone" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000020.html" LinkGroup="Launcher">Clone Method {Launcher.dsConfig}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.CopyFile" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000007C.html" LinkGroup="Launcher">CopyFile Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.Count" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000002C.html" LinkGroup="Launcher">Count Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.CreateInstance" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000036.html" LinkGroup="Launcher">CreateInstance Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.DeleteDirectory" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000081.html" LinkGroup="Launcher">DeleteDirectory Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.FindBykey" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000034.html" LinkGroup="Launcher">FindBykey Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.FindWindow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000004C.html" LinkGroup="Launcher">FindWindow Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.GetRowType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000039.html" LinkGroup="Launcher">GetRowType Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.GetSchemaSerializable" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000024.html" LinkGroup="Launcher">GetSchemaSerializable Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.GetTypedDataSetSchema" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000025.html" LinkGroup="Launcher">GetTypedDataSetSchema Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.GetTypedTableSchema" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000003F.html" LinkGroup="Launcher">GetTypedTableSchema Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.InfoUpdate" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000065.html" LinkGroup="Launcher">InfoUpdate Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.InitializeDerivedDataSet" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000001F.html" LinkGroup="Launcher">InitializeDerivedDataSet Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.InstNext_Config" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000075.html" LinkGroup="Launcher">InstNext_Config Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.InstNext_Root" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000074.html" LinkGroup="Launcher">InstNext_Root Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.Item" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000002D.html" LinkGroup="Launcher">Item Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000000.html" LinkGroup="Launcher">Launcher Namespace</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher Reference" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000087.html" LinkGroup="Launcher">Launcher Reference</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.NewRowFromBuilder" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000038.html" LinkGroup="Launcher">NewRowFromBuilder Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.NewconfigRow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000037.html" LinkGroup="Launcher">NewconfigRow Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.OnRowChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000003A.html" LinkGroup="Launcher">OnRowChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.OnRowChanging" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000003B.html" LinkGroup="Launcher">OnRowChanging Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.OnRowDeleted" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000003C.html" LinkGroup="Launcher">OnRowDeleted Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.OnRowDeleting" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000003D.html" LinkGroup="Launcher">OnRowDeleting Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.Program" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000059.html" LinkGroup="Launcher">Program Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.ReadXmlSerializable" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000023.html" LinkGroup="Launcher">ReadXmlSerializable Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.Relations" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000001E.html" LinkGroup="Launcher">Relations Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.RemoveconfigRow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000003E.html" LinkGroup="Launcher">RemoveconfigRow Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRowChangeEvent.Row" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000045.html" LinkGroup="Launcher">Row Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.SHGetMalloc" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000004B.html" LinkGroup="Launcher">SHGetMalloc Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.Save" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000000E.html" LinkGroup="Launcher">Save Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.SchemaSerializationMode" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000001C.html" LinkGroup="Launcher">SchemaSerializationMode Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.SendMessageTimeoutFlags" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000004D.html" LinkGroup="Launcher">SendMessageTimeoutFlags Enumeration</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.ServerConfigPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000060.html" LinkGroup="Launcher">ServerConfigPath Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.ServerProgramPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000005F.html" LinkGroup="Launcher">ServerProgramPath Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.ShouldSerializeRelations" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000022.html" LinkGroup="Launcher">ShouldSerializeRelations Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.ShouldSerializeTables" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000021.html" LinkGroup="Launcher">ShouldSerializeTables Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.StartFromShare" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000005E.html" LinkGroup="Launcher">StartFromShare Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.Tables" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000001D.html" LinkGroup="Launcher">Tables Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.ThrowMessage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000053.html" LinkGroup="Launcher">ThrowMessage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.UpdateVersion" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000064.html" LinkGroup="Launcher">UpdateVersion Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.WaitMilli" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000085.html" LinkGroup="Launcher">WaitMilli Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.checkPMDSIsRunning" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000082.html" LinkGroup="Launcher">checkPMDSIsRunning Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.checkPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000083.html" LinkGroup="Launcher">checkPath Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.checkUpdate" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000054.html" LinkGroup="Launcher">checkUpdate Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.commentValue" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000011.html" LinkGroup="Launcher">commentValue Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000001.html" LinkGroup="Launcher">config Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.config" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000005.html" LinkGroup="Launcher">config Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.config" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000001B.html" LinkGroup="Launcher">config Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.config1" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000069.html" LinkGroup="Launcher">config1 Field</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.configDataTable" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000028_overloads--.html" LinkGroup="Launcher">configDataTable Constructor</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.configDataTable" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000029_overloads--.html" LinkGroup="Launcher">configDataTable Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000027.html" LinkGroup="Launcher">configDataTable Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.configFile" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000002.html" LinkGroup="Launcher">configFile Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.configRootPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000004.html" LinkGroup="Launcher">configRootPath Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000040.html" LinkGroup="Launcher">configRow Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRowChangeEvent" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000043.html" LinkGroup="Launcher">configRowChangeEvent Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRowChangeEvent.configRowChangeEvent" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000044.html" LinkGroup="Launcher">configRowChangeEvent Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRowChangeEventHandler" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000026.html" LinkGroup="Launcher">configRowChangeEventHandler Delegate</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.configRowChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000002F.html" LinkGroup="Launcher">configRowChanged Event</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.configRowChanging" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000002E.html" LinkGroup="Launcher">configRowChanging Event</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.configRowDeleted" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000031.html" LinkGroup="Launcher">configRowDeleted Event</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.configRowDeleting" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000030.html" LinkGroup="Launcher">configRowDeleting Event</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.copyFileType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000066.html" LinkGroup="Launcher">copyFileType Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.copyFolder_rek" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000007B.html" LinkGroup="Launcher">copyFolder_rek Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.debugmode" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000004A.html" LinkGroup="Launcher">debugmode Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.deleteValue" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000012.html" LinkGroup="Launcher">deleteValue Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.dirVersionInstalled_Config" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000071.html" LinkGroup="Launcher">dirVersionInstalled_Config Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.dirVersionInstalled_Root" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000070.html" LinkGroup="Launcher">dirVersionInstalled_Root Field</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.dsConfig" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000019_overloads--.html" LinkGroup="Launcher">dsConfig Constructor</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.dsConfig" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000001A_overloads--.html" LinkGroup="Launcher">dsConfig Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000018.html" LinkGroup="Launcher">dsConfig Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.dsconfigAll" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000003.html" LinkGroup="Launcher">dsconfigAll Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.exportToXml" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000017.html" LinkGroup="Launcher">exportToXml Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.fileName" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000000F.html" LinkGroup="Launcher">fileName Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmInstallingNewVersion" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000047.html" LinkGroup="Launcher">frmInstallingNewVersion Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmInstallingNewVersion.frmInstallingNewVersion" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000048.html" LinkGroup="Launcher">frmInstallingNewVersion Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000049.html" LinkGroup="Launcher">frmLauncher2 Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.frmLauncher2" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000052.html" LinkGroup="Launcher">frmLauncher2 Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.getAllCaptions" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000016.html" LinkGroup="Launcher">getAllCaptions Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.getCaption" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000015.html" LinkGroup="Launcher">getCaption Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.getDirectory" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000010.html" LinkGroup="Launcher">getDirectory Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.getKey" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000007.html" LinkGroup="Launcher">getKey Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.getProgramRoot" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000009.html" LinkGroup="Launcher">getProgramRoot Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.getProgramRootRoot" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000000A.html" LinkGroup="Launcher">getProgramRootRoot Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.getValue" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000013.html" LinkGroup="Launcher">getValue Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRow.key" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000041.html" LinkGroup="Launcher">key Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.keyColumn" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000002A.html" LinkGroup="Launcher">keyColumn Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.log" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000056.html" LinkGroup="Launcher">log Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.logPathPMDS" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000068.html" LinkGroup="Launcher">logPathPMDS Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.logPathUpdate" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000067.html" LinkGroup="Launcher">logPathUpdate Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.lstVersionsRemoveConfig" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000006F.html" LinkGroup="Launcher">lstVersionsRemoveConfig Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.lstVersionsRemoveRoot" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000006E.html" LinkGroup="Launcher">lstVersionsRemoveRoot Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="ui.msgBox" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000005C.html" LinkGroup="Launcher">msgBox Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.readAll" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000006.html" LinkGroup="Launcher">readAll Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.run" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000078.html" LinkGroup="Launcher">run Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.runGarbColl" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000086.html" LinkGroup="Launcher">runGarbColl Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.sConfigFile" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000006B.html" LinkGroup="Launcher">sConfigFile Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.sConfigPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000006A.html" LinkGroup="Launcher">sConfigPath Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.sProgramFile" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000006D.html" LinkGroup="Launcher">sProgramFile Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.sProgramPath" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000006C.html" LinkGroup="Launcher">sProgramPath Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.config.searchKeyArg" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000008.html" LinkGroup="Launcher">searchKeyArg Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.searchLastVersionToInstall" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000079.html" LinkGroup="Launcher">searchLastVersionToInstall Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.searchNewNextFolder" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000007A.html" LinkGroup="Launcher">searchNewNextFolder Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.CfgFile.setValue" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000014.html" LinkGroup="Launcher">setValue Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.showSplash" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000084.html" LinkGroup="Launcher">showSplash Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.thStart_CopyActInstToNext" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000007F.html" LinkGroup="Launcher">thStart_CopyActInstToNext Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.thStart_removePMDSInstallation" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000007D.html" LinkGroup="Launcher">thStart_removePMDSInstallation Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.th_CopyActInstToNext" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000080.html" LinkGroup="Launcher">th_CopyActInstToNext Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.th_removePMDSInstallation" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000007E.html" LinkGroup="Launcher">th_removePMDSInstallation Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.thread_CopyNextInstReady" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000077.html" LinkGroup="Launcher">thread_CopyNextInstReady Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update.thread_RemoveOldInst" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000076.html" LinkGroup="Launcher">thread_RemoveOldInst Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="ui" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000005B.html" LinkGroup="Launcher">ui Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.update" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000005D.html" LinkGroup="Launcher">update Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configRow.val" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000042.html" LinkGroup="Launcher">val Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.dsConfig.configDataTable.valColumn" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_000000000000002B.html" LinkGroup="Launcher">valColumn Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.frmLauncher2.waitUntilUpdateThreadsReady" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000055.html" LinkGroup="Launcher">waitUntilUpdateThreadsReady Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.log.writeEventLog" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000058.html" LinkGroup="Launcher">writeEventLog Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="Launcher.log.writeLog" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:Launcher.chm::/topic_0000000000000057.html" LinkGroup="Launcher">writeLog Method</LItem>
+      </Links>
+   </Context>
+   
+
+</DynamicHelp>
+

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsEDIFACT" targetNamespace="http://tempuri.org/dsEDIFACT.xsd" xmlns:mstns="http://tempuri.org/dsEDIFACT.xsd" xmlns="http://tempuri.org/dsEDIFACT.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsEDIFACT" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsEDIFACT" msprop:Generator_UserDSName="dsEDIFACT">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EDIFACT" msprop:Generator_TableClassName="EDIFACTDataTable" msprop:Generator_TableVarName="tableEDIFACT" msprop:Generator_RowChangedName="EDIFACTRowChanged" msprop:Generator_TablePropName="EDIFACT" msprop:Generator_RowDeletingName="EDIFACTRowDeleting" msprop:Generator_RowChangingName="EDIFACTRowChanging" msprop:Generator_RowEvHandlerName="EDIFACTRowChangeEventHandler" msprop:Generator_RowDeletedName="EDIFACTRowDeleted" msprop:Generator_RowClassName="EDIFACTRow" msprop:Generator_UserTableName="EDIFACT" msprop:Generator_RowEvArgName="EDIFACTRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Select" msprop:Generator_ColumnVarNameInTable="columnSelect" msprop:Generator_ColumnPropNameInRow="Select" msprop:Generator_ColumnPropNameInTable="SelectColumn" msprop:Generator_UserColumnName="Select" type="xs:boolean" />
+              <xs:element name="NameBefund" msprop:Generator_ColumnVarNameInTable="columnNameBefund" msprop:Generator_ColumnPropNameInRow="NameBefund" msprop:Generator_ColumnPropNameInTable="NameBefundColumn" msprop:Generator_UserColumnName="NameBefund" type="xs:string" />
+              <xs:element name="Beschreibung" msdata:Caption="NameBefund" msprop:Generator_ColumnVarNameInTable="columnBeschreibung" msprop:Generator_ColumnPropNameInRow="Beschreibung" msprop:Generator_ColumnPropNameInTable="BeschreibungColumn" msprop:Generator_UserColumnName="Beschreibung" type="xs:string" />
+              <xs:element name="LaborJN" msprop:Generator_ColumnVarNameInTable="columnLaborJN" msprop:Generator_ColumnPropNameInRow="LaborJN" msprop:Generator_ColumnPropNameInTable="LaborJNColumn" msprop:Generator_UserColumnName="LaborJN" type="xs:boolean" />
+              <xs:element name="Hinweis" msprop:Generator_ColumnVarNameInTable="columnHinweis" msprop:Generator_ColumnPropNameInRow="Hinweis" msprop:Generator_ColumnPropNameInTable="HinweisColumn" msprop:Generator_UserColumnName="Hinweis" type="xs:string" />
+              <xs:element name="Klient" msprop:Generator_ColumnVarNameInTable="columnKlient" msprop:Generator_ColumnPropNameInRow="Klient" msprop:Generator_ColumnPropNameInTable="KlientColumn" msprop:Generator_UserColumnName="Klient" type="xs:string" />
+              <xs:element name="obj" msprop:Generator_ColumnVarNameInTable="columnobj" msprop:Generator_ColumnPropNameInRow="obj" msprop:Generator_ColumnPropNameInTable="objColumn" msprop:Generator_UserColumnName="obj" type="xs:anyType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EDIFACT" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

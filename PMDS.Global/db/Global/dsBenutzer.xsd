@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsBenutzer" targetNamespace="http://tempuri.org/dsBenutzer.xsd" xmlns:mstns="http://tempuri.org/dsBenutzer.xsd" xmlns="http://tempuri.org/dsBenutzer.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsBenutzer" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsBenutzer" msprop:Generator_UserDSName="dsBenutzer">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Benutzer" msprop:Generator_TableClassName="BenutzerDataTable" msprop:Generator_TableVarName="tableBenutzer" msprop:Generator_TablePropName="Benutzer" msprop:Generator_RowDeletingName="BenutzerRowDeleting" msprop:Generator_RowChangingName="BenutzerRowChanging" msprop:Generator_RowEvHandlerName="BenutzerRowChangeEventHandler" msprop:Generator_RowDeletedName="BenutzerRowDeleted" msprop:Generator_UserTableName="Benutzer" msprop:Generator_RowChangedName="BenutzerRowChanged" msprop:Generator_RowEvArgName="BenutzerRowChangeEvent" msprop:Generator_RowClassName="BenutzerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDAdresse" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAdresse" msprop:Generator_ColumnPropNameInRow="IDAdresse" msprop:Generator_ColumnPropNameInTable="IDAdresseColumn" msprop:Generator_UserColumnName="IDAdresse" type="xs:string" minOccurs="0" />
+              <xs:element name="IDKontakt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKontakt" msprop:Generator_ColumnPropNameInRow="IDKontakt" msprop:Generator_ColumnPropNameInTable="IDKontaktColumn" msprop:Generator_UserColumnName="IDKontakt" type="xs:string" minOccurs="0" />
+              <xs:element name="Vorname" msprop:Generator_ColumnVarNameInTable="columnVorname" msprop:Generator_ColumnPropNameInRow="Vorname" msprop:Generator_ColumnPropNameInTable="VornameColumn" msprop:Generator_UserColumnName="Vorname" type="xs:string" minOccurs="0" />
+              <xs:element name="Nachname" msprop:Generator_ColumnVarNameInTable="columnNachname" msprop:Generator_ColumnPropNameInRow="Nachname" msprop:Generator_ColumnPropNameInTable="NachnameColumn" msprop:Generator_UserColumnName="Nachname" type="xs:string" minOccurs="0" />
+              <xs:element name="Benutzer" msprop:Generator_ColumnVarNameInTable="columnBenutzer" msprop:Generator_ColumnPropNameInRow="Benutzer" msprop:Generator_ColumnPropNameInTable="BenutzerColumn" msprop:Generator_UserColumnName="Benutzer" type="xs:string" minOccurs="0" />
+              <xs:element name="Passwort" msprop:Generator_ColumnVarNameInTable="columnPasswort" msprop:Generator_ColumnPropNameInRow="Passwort" msprop:Generator_ColumnPropNameInTable="PasswortColumn" msprop:Generator_UserColumnName="Passwort" type="xs:string" minOccurs="0" />
+              <xs:element name="AktivJN" msprop:Generator_ColumnVarNameInTable="columnAktivJN" msprop:Generator_ColumnPropNameInRow="AktivJN" msprop:Generator_ColumnPropNameInTable="AktivJNColumn" msprop:Generator_UserColumnName="AktivJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="PflegerJN" msprop:Generator_ColumnVarNameInTable="columnPflegerJN" msprop:Generator_ColumnPropNameInRow="PflegerJN" msprop:Generator_ColumnPropNameInTable="PflegerJNColumn" msprop:Generator_UserColumnName="PflegerJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IDBerufsstand" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBerufsstand" msprop:Generator_ColumnPropNameInRow="IDBerufsstand" msprop:Generator_ColumnPropNameInTable="IDBerufsstandColumn" msprop:Generator_UserColumnName="IDBerufsstand" type="xs:string" minOccurs="0" />
+              <xs:element name="BarcodeID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnBarcodeID" msprop:Generator_ColumnPropNameInRow="BarcodeID" msprop:Generator_ColumnPropNameInTable="BarcodeIDColumn" msprop:Generator_UserColumnName="BarcodeID" type="xs:int" />
+              <xs:element name="Eintrittsdatum" msprop:Generator_ColumnVarNameInTable="columnEintrittsdatum" msprop:Generator_ColumnPropNameInRow="Eintrittsdatum" msprop:Generator_ColumnPropNameInTable="EintrittsdatumColumn" msprop:Generator_UserColumnName="Eintrittsdatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Austrittsdatum" msprop:Generator_ColumnVarNameInTable="columnAustrittsdatum" msprop:Generator_ColumnPropNameInRow="Austrittsdatum" msprop:Generator_ColumnPropNameInTable="AustrittsdatumColumn" msprop:Generator_UserColumnName="Austrittsdatum" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="smtpSrv" msprop:Generator_ColumnVarNameInTable="columnsmtpSrv" msprop:Generator_ColumnPropNameInRow="smtpSrv" msprop:Generator_ColumnPropNameInTable="smtpSrvColumn" msprop:Generator_UserColumnName="smtpSrv">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="smtpPort" msprop:Generator_ColumnVarNameInTable="columnsmtpPort" msprop:Generator_ColumnPropNameInRow="smtpPort" msprop:Generator_ColumnPropNameInTable="smtpPortColumn" msprop:Generator_UserColumnName="smtpPort" type="xs:int" />
+              <xs:element name="smtpAbsender" msprop:Generator_ColumnVarNameInTable="columnsmtpAbsender" msprop:Generator_ColumnPropNameInRow="smtpAbsender" msprop:Generator_ColumnPropNameInTable="smtpAbsenderColumn" msprop:Generator_UserColumnName="smtpAbsender">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="smtpPwd" msprop:Generator_ColumnVarNameInTable="columnsmtpPwd" msprop:Generator_ColumnPropNameInRow="smtpPwd" msprop:Generator_ColumnPropNameInTable="smtpPwdColumn" msprop:Generator_UserColumnName="smtpPwd">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="smtpAuthentStandard" msprop:Generator_ColumnVarNameInTable="columnsmtpAuthentStandard" msprop:Generator_ColumnPropNameInRow="smtpAuthentStandard" msprop:Generator_ColumnPropNameInTable="smtpAuthentStandardColumn" msprop:Generator_UserColumnName="smtpAuthentStandard" type="xs:boolean" />
+              <xs:element name="IsGeneric" msprop:Generator_ColumnVarNameInTable="columnIsGeneric" msprop:Generator_ColumnPropNameInRow="IsGeneric" msprop:Generator_ColumnPropNameInTable="IsGenericColumn" msprop:Generator_UserColumnName="IsGeneric" type="xs:boolean" />
+              <xs:element name="IDArzt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDArzt" msprop:Generator_ColumnPropNameInRow="IDArzt" msprop:Generator_ColumnPropNameInTable="IDArztColumn" msprop:Generator_UserColumnName="IDArzt" type="xs:string" minOccurs="0" />
+              <xs:element name="ArztabrechnungJN" msprop:Generator_ColumnVarNameInTable="columnArztabrechnungJN" msprop:Generator_ColumnPropNameInRow="ArztabrechnungJN" msprop:Generator_ColumnPropNameInTable="ArztabrechnungJNColumn" msprop:Generator_UserColumnName="ArztabrechnungJN" type="xs:boolean" />
+              <xs:element name="Signatur" msprop:Generator_ColumnVarNameInTable="columnSignatur" msprop:Generator_ColumnPropNameInRow="Signatur" msprop:Generator_ColumnPropNameInTable="SignaturColumn" msprop:Generator_UserColumnName="Signatur" type="xs:string" />
+              <xs:element name="ELGAUser" msprop:Generator_ColumnVarNameInTable="columnELGAUser" msprop:Generator_ColumnPropNameInRow="ELGAUser" msprop:Generator_ColumnPropNameInTable="ELGAUserColumn" msprop:Generator_UserColumnName="ELGAUser">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGAPatID" msprop:Generator_ColumnVarNameInTable="columnELGAPatID" msprop:Generator_ColumnPropNameInRow="ELGAPatID" msprop:Generator_ColumnPropNameInTable="ELGAPatIDColumn" msprop:Generator_UserColumnName="ELGAPatID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGAActive" msprop:Generator_ColumnVarNameInTable="columnELGAActive" msprop:Generator_ColumnPropNameInRow="ELGAActive" msprop:Generator_ColumnPropNameInTable="ELGAActiveColumn" msprop:Generator_UserColumnName="ELGAActive" type="xs:boolean" />
+              <xs:element name="ELGAAutoLogin" msprop:Generator_ColumnVarNameInTable="columnELGAAutoLogin" msprop:Generator_ColumnPropNameInRow="ELGAAutoLogin" msprop:Generator_ColumnPropNameInTable="ELGAAutoLoginColumn" msprop:Generator_UserColumnName="ELGAAutoLogin" type="xs:boolean" />
+              <xs:element name="ELGAAutostartSession" msprop:Generator_ColumnVarNameInTable="columnELGAAutostartSession" msprop:Generator_ColumnPropNameInRow="ELGAAutostartSession" msprop:Generator_ColumnPropNameInTable="ELGAAutostartSessionColumn" msprop:Generator_UserColumnName="ELGAAutostartSession" type="xs:boolean" />
+              <xs:element name="ELGAValidTrough" msprop:Generator_ColumnVarNameInTable="columnELGAValidTrough" msprop:Generator_ColumnPropNameInRow="ELGAValidTrough" msprop:Generator_ColumnPropNameInTable="ELGAValidTroughColumn" msprop:Generator_UserColumnName="ELGAValidTrough" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ELGA_AuthorSpeciality" msprop:Generator_ColumnVarNameInTable="columnELGA_AuthorSpeciality" msprop:Generator_ColumnPropNameInRow="ELGA_AuthorSpeciality" msprop:Generator_ColumnPropNameInTable="ELGA_AuthorSpecialityColumn" msprop:Generator_UserColumnName="ELGA_AuthorSpeciality">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Benutzer" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.Main" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.Main" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" />
+  <xs:complexType name="StammdatenDTO">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lAbteilung" nillable="true" type="q1:ArrayOfKeyValuePairOfdateTimeArrayOfAbteilungDTOyE8ceCq1" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lAuswahlListeGruppe" nillable="true" type="q2:ArrayOfKeyValuePairOfdateTimeArrayOfAuswahlListeGruppeDTOyE8ceCq1" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lAuswahlliste" nillable="true" type="q3:ArrayOfKeyValuePairOfdateTimeArrayOfAuswahlListeDTOyE8ceCq1" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lBereichDTO" nillable="true" type="q4:ArrayOfKeyValuePairOfdateTimeArrayOfBereichDTOyE8ceCq1" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lDBLizenzDTO" nillable="true" type="q5:ArrayOfKeyValuePairOfdateTimeArrayOfDBLizenzDTOyE8ceCq1" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lDBVersion" nillable="true" type="q6:ArrayOfKeyValuePairOfdateTimeArrayOfDBVersionDTOyE8ceCq1" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lDienstzeiten" nillable="true" type="q7:ArrayOfKeyValuePairOfdateTimeArrayOfDienstzeitenDTOyE8ceCq1" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lEinrichtung" nillable="true" type="q8:ArrayOfKeyValuePairOfdateTimeArrayOfEinrichtungDTOyE8ceCq1" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lFormular" nillable="true" type="q9:ArrayOfKeyValuePairOfdateTimeArrayOfFormularDTOyE8ceCq1" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lGruppe" nillable="true" type="q10:ArrayOfKeyValuePairOfdateTimeArrayOfGruppeDTOyE8ceCq1" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lGruppenRecht" nillable="true" type="q11:ArrayOfKeyValuePairOfdateTimeArrayOfGruppenRechtDTOyE8ceCq1" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lLayout" nillable="true" type="q12:ArrayOfKeyValuePairOfdateTimeArrayOfLayoutDTOyE8ceCq1" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lLayoutGrids" nillable="true" type="q13:ArrayOfKeyValuePairOfdateTimeArrayOfLayoutGridsDTOyE8ceCq1" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lLinkDokumente" nillable="true" type="q14:ArrayOfKeyValuePairOfdateTimeArrayOfLinkDokumenteDTOyE8ceCq1" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lMassnahmenserien" nillable="true" type="q15:ArrayOfKeyValuePairOfdateTimeArrayOfMassnahmenserienDTOyE8ceCq1" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lRessourcenDTO" nillable="true" type="q16:ArrayOfKeyValuePairOfdateTimeArrayOfRessourcenDTOyE8ceCq1" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lStandardProzeduren" nillable="true" type="q17:ArrayOfKeyValuePairOfdateTimeArrayOfStandardProzedurenDTOyE8ceCq1" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lStandardzeiten" nillable="true" type="q18:ArrayOfKeyValuePairOfdateTimeArrayOfStandardzeitenDTOyE8ceCq1" />
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lTextbausteine" nillable="true" type="q19:ArrayOfKeyValuePairOfdateTimeArrayOfTextbausteineDTOyE8ceCq1" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lZeitbereich" nillable="true" type="q20:ArrayOfKeyValuePairOfdateTimeArrayOfZeitbereichDTOyE8ceCq1" />
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="lZeitbereichSerien" nillable="true" type="q21:ArrayOfKeyValuePairOfdateTimeArrayOfZeitbereichSerienDTOyE8ceCq1" />
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="larchOrdner" nillable="true" type="q22:ArrayOfKeyValuePairOfdateTimeArrayOfarchOrdnerDTOyE8ceCq1" />
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblAutoDoku" nillable="true" type="q23:ArrayOfKeyValuePairOfdateTimeArrayOftblAutoDokuDTOyE8ceCq1" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblInterop" nillable="true" type="q24:ArrayOfKeyValuePairOfdateTimeArrayOftblInteropDTOyE8ceCq1" />
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblParameter" nillable="true" type="q25:ArrayOfKeyValuePairOfdateTimeArrayOftblParameterDTOyE8ceCq1" />
+      <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblPfad" nillable="true" type="q26:ArrayOfKeyValuePairOfdateTimeArrayOftblPfadDTOyE8ceCq1" />
+      <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblProvKonfig" nillable="true" type="q27:ArrayOfKeyValuePairOfdateTimeArrayOftblProvKonfigDTOyE8ceCq1" />
+      <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblQueriesDef" nillable="true" type="q28:ArrayOfKeyValuePairOfdateTimeArrayOftblQueriesDefDTOyE8ceCq1" />
+      <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblRechteOrdner" nillable="true" type="q29:ArrayOfKeyValuePairOfdateTimeArrayOftblRechteOrdnerDTOyE8ceCq1" />
+      <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblRedis" nillable="true" type="q30:ArrayOfKeyValuePairOfdateTimeArrayOftblRedistDTOyE8ceCq1" />
+      <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblSelListEntries" nillable="true" type="q31:ArrayOfKeyValuePairOfdateTimeArrayOftblSelListEntriesDTOyE8ceCq1" />
+      <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblSelListGroup" nillable="true" type="q32:ArrayOfKeyValuePairOfdateTimeArrayOftblSelListGroupDTOyE8ceCq1" />
+      <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblTextTemplates" nillable="true" type="q33:ArrayOfKeyValuePairOfdateTimeArrayOftblTextTemplatesDTOyE8ceCq1" />
+      <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblTextTemplatesFiles" nillable="true" type="q34:ArrayOfKeyValuePairOfdateTimeArrayOftblTextTemplatesFilesDTOyE8ceCq1" />
+      <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="ltblUserAccounts" nillable="true" type="q35:ArrayOfKeyValuePairOfdateTimeArrayOftblUserAccountsDTOyE8ceCq1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StammdatenDTO" nillable="true" type="tns:StammdatenDTO" />
+  <xs:complexType name="ArrayOfBenutzerMainDTO.BenutzerDt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BenutzerMainDTO.BenutzerDt" nillable="true" type="tns:BenutzerMainDTO.BenutzerDt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBenutzerMainDTO.BenutzerDt" nillable="true" type="tns:ArrayOfBenutzerMainDTO.BenutzerDt" />
+  <xs:complexType name="BenutzerMainDTO.BenutzerDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q36:BaseDt">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IDBenutzer" type="ser:guid" />
+          <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="adresse" nillable="true" type="q37:AdresseDTO" />
+          <xs:element minOccurs="0" name="aerzt" nillable="true" type="tns:BenutzerMainDTO.AerztDt" />
+          <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="ben" nillable="true" type="q38:BenutzerDTO" />
+          <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="kontakt" nillable="true" type="q39:KontaktDTO" />
+          <xs:element minOccurs="0" name="lAbteilung" nillable="true" type="tns:ArrayOfBenutzerMainDTO.AbteilungDt" />
+          <xs:element minOccurs="0" name="lBereich" nillable="true" type="tns:ArrayOfBenutzerMainDTO.BereichDt" />
+          <xs:element minOccurs="0" name="lKlinik" nillable="true" type="tns:ArrayOfBenutzerMainDTO.KlinikDt" />
+          <xs:element minOccurs="0" name="recht" nillable="true" type="tns:BenutzerMainDTO.RechtDt" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BenutzerMainDTO.BenutzerDt" nillable="true" type="tns:BenutzerMainDTO.BenutzerDt" />
+  <xs:complexType name="BenutzerMainDTO.AerztDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q40:BaseDt">
+        <xs:sequence>
+          <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="adresse" nillable="true" type="q41:AdresseDTO" />
+          <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="aerzt" nillable="true" type="q42:AerzteDTO" />
+          <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="kontakt" nillable="true" type="q43:KontaktDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BenutzerMainDTO.AerztDt" nillable="true" type="tns:BenutzerMainDTO.AerztDt" />
+  <xs:complexType name="ArrayOfBenutzerMainDTO.AbteilungDt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BenutzerMainDTO.AbteilungDt" nillable="true" type="tns:BenutzerMainDTO.AbteilungDt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBenutzerMainDTO.AbteilungDt" nillable="true" type="tns:ArrayOfBenutzerMainDTO.AbteilungDt" />
+  <xs:complexType name="BenutzerMainDTO.AbteilungDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q44="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q44:BaseDt">
+        <xs:sequence>
+          <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="abteilung" nillable="true" type="q45:AbteilungDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BenutzerMainDTO.AbteilungDt" nillable="true" type="tns:BenutzerMainDTO.AbteilungDt" />
+  <xs:complexType name="ArrayOfBenutzerMainDTO.BereichDt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BenutzerMainDTO.BereichDt" nillable="true" type="tns:BenutzerMainDTO.BereichDt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBenutzerMainDTO.BereichDt" nillable="true" type="tns:ArrayOfBenutzerMainDTO.BereichDt" />
+  <xs:complexType name="BenutzerMainDTO.BereichDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q46="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q46:BaseDt">
+        <xs:sequence>
+          <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="abteilung" nillable="true" type="q47:AbteilungDTO" />
+          <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="bereich" nillable="true" type="q48:BereichDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BenutzerMainDTO.BereichDt" nillable="true" type="tns:BenutzerMainDTO.BereichDt" />
+  <xs:complexType name="ArrayOfBenutzerMainDTO.KlinikDt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BenutzerMainDTO.KlinikDt" nillable="true" type="tns:BenutzerMainDTO.KlinikDt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBenutzerMainDTO.KlinikDt" nillable="true" type="tns:ArrayOfBenutzerMainDTO.KlinikDt" />
+  <xs:complexType name="BenutzerMainDTO.KlinikDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q49="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q49:BaseDt">
+        <xs:sequence>
+          <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="klinik" nillable="true" type="q50:KlinikDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BenutzerMainDTO.KlinikDt" nillable="true" type="tns:BenutzerMainDTO.KlinikDt" />
+  <xs:complexType name="BenutzerMainDTO.RechtDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q51="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q51:BaseDt">
+        <xs:sequence>
+          <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="benutzerRechte" nillable="true" type="q52:ArrayOfBenutzerRechteDTO" />
+          <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="recht" nillable="true" type="q53:ArrayOfRechtDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BenutzerMainDTO.RechtDt" nillable="true" type="tns:BenutzerMainDTO.RechtDt" />
+  <xs:complexType name="ArrayOfPatientMainDTO.PatientDt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PatientMainDTO.PatientDt" nillable="true" type="tns:PatientMainDTO.PatientDt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPatientMainDTO.PatientDt" nillable="true" type="tns:ArrayOfPatientMainDTO.PatientDt" />
+  <xs:complexType name="PatientMainDTO.PatientDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q54="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q54:BaseDt">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IDPatient" type="ser:guid" />
+          <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="adresse" nillable="true" type="q55:AdresseDTO" />
+          <xs:element minOccurs="0" name="aufenthaltAct" nillable="true" type="tns:PatientMainDTO.AufenthaltDt" />
+          <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="kontakt" nillable="true" type="q56:KontaktDTO" />
+          <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="patient" nillable="true" type="q57:PatientDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PatientMainDTO.PatientDt" nillable="true" type="tns:PatientMainDTO.PatientDt" />
+  <xs:complexType name="PatientMainDTO.AufenthaltDt">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q58="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL" base="q58:BaseDt">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Urlaub" type="xs:boolean" />
+          <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="aufenthalt" nillable="true" type="q59:AufenthaltDTO" />
+          <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="urlaubVerlauf" nillable="true" type="q60:UrlaubVerlaufDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PatientMainDTO.AufenthaltDt" nillable="true" type="tns:PatientMainDTO.AufenthaltDt" />
+</xs:schema>

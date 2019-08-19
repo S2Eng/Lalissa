@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="dsAnamneseKrohwinkel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
+    <value>SELECT     ID, IDPatient, IDBenutzer, ErstelltAm, BrilleJN, HoergeraetJN, KannMitteilenJN, KommunizierenTagesstuktur, KommunizierenPflegeplanung, 
+                      Wuensche, SchwerhoerigTaubStummBlind, HoergeraetNichtHandhaben, Sprachstoerungen, Sichtfeldeinschraenkungen, 
+                      IstZeitloertlSituativZurPersonNichtOrientiert, KannSelbstBewegenJN, GehentJN, StehenJN, SitzenJN, TreppenSteigenJN, LaufenJN, HinsetzenJN, 
+                      HinlegenJN, HilfsmittelBenutzenJN, SpatzierenGehenJN, WannWieOftSpatzieren, KoerperlicheaktivitaetenJN, AktivitaetenBeschreibung, 
+                      BewegenTagesstrukturJN, BewegenPflegeplanung, KontrakturenvorhandenJN, SpitzfussstellungJN, MaxGebEllenbogenJN, KniegelenkJN, 
+                      GefausteteHandJN, KontrakturenBeschreibung, DekubitusVorhandenJN, DekubitusBeschreibung, SturtzgefahrJN, Bewegungseinschraenkung, 
+                      KannNichtAlleinGehen, KannNichtAlleinLageImBettVeraendern, IstBettlaegerig, TransferAufstehenHinlegen, 
+                      BlutdruckZuckerRegelmaessigGemessenJN, KompressionsstruempfeJN, Zimmertemperatur, MedikamenteRegelmaessigJN, Medikamente, 
+                      VitaleFunkTagesstrukturJN, VitaleFunkPflegeplanungJN, ErhoehteErnidriegteBlutdruck, Durchblutungsstoerungen, FriertLeicht, 
+                      DiabetesUnterUeberZucker, Sauerstoffmangel, BronchialsekretSchlechtAbhusten, StarkeAuswurf, AtemnotleichterAnstrengung, 
+                      HilfeMedikamentenversorgung, WieHandhabenMitDuschenBaden, Koerperpflegemittel, KoerperpflegemittelVersorger, Rasieren, Haarpflege, 
+                      ZahnFusspflegeHilfeJN, SchminkenJN, SichPflegenTagesstrukturJN, SichPflegenPflegeplanungJN, HilfebWaschenDuschenBaden, 
+                      HilfebHaareOberUnterkoerper, HilfebRasur, HilfebFussFingernagelpflege, HilfebIntimpflege, HilfebHautGesichtspflege, HilfebOhrenNasenAugenpflege, 
+                      HilfebMundZahnpflege, HilfebHautdefekte, Starkschwitzen, SpeisenGetraenke, SpeisenGetraenkeAblehnen, AnzahlLiterTrinken, 
+                      MahlzeitInDerGemeinschaftJN, FruehstueckSpaetFruehEinnehmen, DiatSchonkostSondenernaehrung, AnzahlMalzeiten, EssenTrinkenTagesstrukturJN, 
+                      EssenTrinkenPflegeplanungJN, NotwendigkeitEsssenTrinken, NotwendigkeitDiaet, KauSchluckstoerungen, IsstSehrlangsamm, 
+                      NahrungMundgerechtZubereiten, MahlzeiteinnahmeHilfestellung, SondePEGKomplett, SondenernaehrungKombinationmitOralerFluessigkeitsaufnahme, 
+                      UnterstuezungUeberwachungFluessigkeitsaufnahme, HaufigErbrechen, KannBlaseDarmKontrollierenJN, ZeitenToiletteAufsuchen, 
+                      ToilettengangHilfeJN, ToilettenHilfsmittel, MedikamenteBlasenDarmfunktion, AusscheidenTagesstrukturJN, AusscheidenPflegeplanungJN, 
+                      IstZeitweiseUrinStuhlinkontinent, UrinStuhlKrankheit, ZeitlUrinStuhlKrankheit, VerstopfungenDurchfaellen, VerstopfungDurchfallKrakheit, 
+                      ZeitlVerstopfungDurchfallKrakheit, DauerSuprapubischenkatheter, NeigtZuInfektionen, HatAnusPraeter, KannToiletteNichtSelbstaendigBenutzen, 
+                      UnterstuetzungEinnahmeAbfuehrmittel, Kleidung, Waeschewechsel, SichKleidenTagesstrukturJN, SichKleidenPflegeplanungJN, KleiderauswahlHilfe, 
+                      WegenDesoriontiertheitOefterAusziehen, FehlendeEinsichtFuerAngemesseneKleidung, FehlendeEinsichtFuerNotwendigeWaeschewechsel, 
+                      KannVerschluesseNichtHandhaben, KannNichtKleidungUeberKopfAusziehen, KannNichtKleidungUeberFusseAnziehen, SchlafenVonBis, 
+                      MittagsschlafJN, NachtsNachschauenJN, SchlafBesonderheiten, SchlafMedikamente, SchlafGewohnheiten, SchlafTagesstrukturJN, 
+                      SchlafPflegeplanungJN, HateinschlafDurchschlafstoerungen, HatPsychischeKrankheitsbedingteSchlafstoerungen, HatGestoertenTagNachtrhytmus, 
+                      Beruf, GerneBeschaeftigtMit, Tagsablauf, TagesablaufsgestaltungHilfeJN, TagesablaufsgestaltungHilfe, SichBeschaeftigenTagesstrukturJN, 
+                      SichBeschaeftigenPflegeplanungJN, TagesablaufNachFrueherenGewohnheiten, ZeitpunktAufstehenBettGehenAbstimmen, 
+                      IntegrationInTaeglicheAblaufe, MaennlicheWeiblichePflegeperson, MakeUpSchmuck, HaarBarttracht, SichFuehlenTagesstrukturJN, 
+                      SichFuehlenpflegeplanungJN, SchagefuehlIntimepflegeBeruecksichtigen, WuenschtMaennlicheWeiblicheBestimmtePflegeperson, 
+                      KannFrisurNichtSelbstHerrichten, KannSchmuckNichtSelbstAnlegen, HilfsmittelZurMobilitaetJN, BettgitterJN, ZimmerVerschlossen, HilfeHerbeirufenJN, 
+                      OhneHilfeZurechtJN, UmgebungTagesstrukturJN, UmgebungPflegeplanungJN, KannGefahrenNichtEinschaetzen, InDerEinrichtungVerirrn, Sicherheit, 
+                      MedikamenteneinnahmeUeberwachen, Kontakte, Keinekontakte, ZeitKeineBesuche, AndereKontakte, KontakteSelbsstaendigHerstellenJN, 
+                      SozialeTagesstrukturJN, SozialePflegeplanungJN, BewohnerBenoetigtAktivierung, HilfeBeiDerKontakpflege, InBetreuungImHausIntegrieren, 
+                      SterbephaseBetreuung, Versorger, ErfahrungenTagesstrukturJN, ErfahrungenPflegeplanungJN, KannKrankheitBehinderungNichtAkzeptieren, 
+                      LeidetAnVerlust, LeidetAnVerlustVon, IstMisstraurisch, IstMisstraurischGegen, HatSchmerzen, Schmerzen, HatAngst, AngstVon, Biographie, 
+                      BiographieTagesstrukturJN, BiographiePflegeplanungJN, UnbewaeltigtenLebenserfahrungen, Vermisst, VermisstBeschreibung, HatSorge, 
+                      SorgeUm
+FROM       Anamnese_Krohwinkel WHERE     (IDPatient = ?) ORDER BY ErstelltAm DESC</value>
+  </data>
+  <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbInsertCommand1.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Anamnese_Krohwinkel] ([ID], [IDPatient], [IDBenutzer], [ErstelltAm], [BrilleJN], [HoergeraetJN], [KannMitteilenJN], [KommunizierenTagesstuktur], [KommunizierenPflegeplanung], [Wuensche], [SchwerhoerigTaubStummBlind], [HoergeraetNichtHandhaben], [Sprachstoerungen], [Sichtfeldeinschraenkungen], [IstZeitloertlSituativZurPersonNichtOrientiert], [KannSelbstBewegenJN], [GehentJN], [StehenJN], [SitzenJN], [TreppenSteigenJN], [LaufenJN], [HinsetzenJN], [HinlegenJN], [HilfsmittelBenutzenJN], [SpatzierenGehenJN], [WannWieOftSpatzieren], [KoerperlicheaktivitaetenJN], [AktivitaetenBeschreibung], [BewegenTagesstrukturJN], [BewegenPflegeplanung], [KontrakturenvorhandenJN], [SpitzfussstellungJN], [MaxGebEllenbogenJN], [KniegelenkJN], [GefausteteHandJN], [KontrakturenBeschreibung], [DekubitusVorhandenJN], [DekubitusBeschreibung], [SturtzgefahrJN], [Bewegungseinschraenkung], [KannNichtAlleinGehen], [KannNichtAlleinLageImBettVeraendern], [IstBettlaegerig], [TransferAufstehenHinlegen], [BlutdruckZuckerRegelmaessigGemessenJN], [KompressionsstruempfeJN], [Zimmertemperatur], [MedikamenteRegelmaessigJN], [Medikamente], [VitaleFunkTagesstrukturJN], [VitaleFunkPflegeplanungJN], [ErhoehteErnidriegteBlutdruck], [Durchblutungsstoerungen], [FriertLeicht], [DiabetesUnterUeberZucker], [Sauerstoffmangel], [BronchialsekretSchlechtAbhusten], [StarkeAuswurf], [AtemnotleichterAnstrengung], [HilfeMedikamentenversorgung], [WieHandhabenMitDuschenBaden], [Koerperpflegemittel], [KoerperpflegemittelVersorger], [Rasieren], [Haarpflege], [ZahnFusspflegeHilfeJN], [SchminkenJN], [SichPflegenTagesstrukturJN], [SichPflegenPflegeplanungJN], [HilfebWaschenDuschenBaden], [HilfebHaareOberUnterkoerper], [HilfebRasur], [HilfebFussFingernagelpflege], [HilfebIntimpflege], [HilfebHautGesichtspflege], [HilfebOhrenNasenAugenpflege], [HilfebMundZahnpflege], [HilfebHautdefekte], [Starkschwitzen], [SpeisenGetraenke], [SpeisenGetraenkeAblehnen], [AnzahlLiterTrinken], [MahlzeitInDerGemeinschaftJN], [FruehstueckSpaetFruehEinnehmen], [DiatSchonkostSondenernaehrung], [AnzahlMalzeiten], [EssenTrinkenTagesstrukturJN], [EssenTrinkenPflegeplanungJN], [NotwendigkeitEsssenTrinken], [NotwendigkeitDiaet], [KauSchluckstoerungen], [IsstSehrlangsamm], [NahrungMundgerechtZubereiten], [MahlzeiteinnahmeHilfestellung], [SondePEGKomplett], [SondenernaehrungKombinationmitOralerFluessigkeitsaufnahme], [UnterstuezungUeberwachungFluessigkeitsaufnahme], [HaufigErbrechen], [KannBlaseDarmKontrollierenJN], [ZeitenToiletteAufsuchen], [ToilettengangHilfeJN], [ToilettenHilfsmittel], [MedikamenteBlasenDarmfunktion], [AusscheidenTagesstrukturJN], [AusscheidenPflegeplanungJN], [IstZeitweiseUrinStuhlinkontinent], [UrinStuhlKrankheit], [ZeitlUrinStuhlKrankheit], [VerstopfungenDurchfaellen], [VerstopfungDurchfallKrakheit], [ZeitlVerstopfungDurchfallKrakheit], [DauerSuprapubischenkatheter], [NeigtZuInfektionen], [HatAnusPraeter], [KannToiletteNichtSelbstaendigBenutzen], [UnterstuetzungEinnahmeAbfuehrmittel], [Kleidung], [Waeschewechsel], [SichKleidenTagesstrukturJN], [SichKleidenPflegeplanungJN], [KleiderauswahlHilfe], [WegenDesoriontiertheitOefterAusziehen], [FehlendeEinsichtFuerAngemesseneKleidung], [FehlendeEinsichtFuerNotwendigeWaeschewechsel], [KannVerschluesseNichtHandhaben], [KannNichtKleidungUeberKopfAusziehen], [KannNichtKleidungUeberFusseAnziehen], [SchlafenVonBis], [MittagsschlafJN], [NachtsNachschauenJN], [SchlafBesonderheiten], [SchlafMedikamente], [SchlafGewohnheiten], [SchlafTagesstrukturJN], [SchlafPflegeplanungJN], [HateinschlafDurchschlafstoerungen], [HatPsychischeKrankheitsbedingteSchlafstoerungen], [HatGestoertenTagNachtrhytmus], [Beruf], [GerneBeschaeftigtMit], [Tagsablauf], [TagesablaufsgestaltungHilfeJN], [TagesablaufsgestaltungHilfe], [SichBeschaeftigenTagesstrukturJN], [SichBeschaeftigenPflegeplanungJN], [TagesablaufNachFrueherenGewohnheiten], [ZeitpunktAufstehenBettGehenAbstimmen], [IntegrationInTaeglicheAblaufe], [MaennlicheWeiblichePflegeperson], [MakeUpSchmuck], [HaarBarttracht], [SichFuehlenTagesstrukturJN], [SichFuehlenpflegeplanungJN], [SchagefuehlIntimepflegeBeruecksichtigen], [WuenschtMaennlicheWeiblicheBestimmtePflegeperson], [KannFrisurNichtSelbstHerrichten], [KannSchmuckNichtSelbstAnlegen], [HilfsmittelZurMobilitaetJN], [BettgitterJN], [ZimmerVerschlossen], [HilfeHerbeirufenJN], [OhneHilfeZurechtJN], [UmgebungTagesstrukturJN], [UmgebungPflegeplanungJN], [KannGefahrenNichtEinschaetzen], [InDerEinrichtungVerirrn], [Sicherheit], [MedikamenteneinnahmeUeberwachen], [Kontakte], [Keinekontakte], [ZeitKeineBesuche], [AndereKontakte], [KontakteSelbsstaendigHerstellenJN], [SozialeTagesstrukturJN], [SozialePflegeplanungJN], [BewohnerBenoetigtAktivierung], [HilfeBeiDerKontakpflege], [InBetreuungImHausIntegrieren], [SterbephaseBetreuung], [Versorger], [ErfahrungenTagesstrukturJN], [ErfahrungenPflegeplanungJN], [KannKrankheitBehinderungNichtAkzeptieren], [LeidetAnVerlust], [LeidetAnVerlustVon], [IstMisstraurisch], [IstMisstraurischGegen], [HatSchmerzen], [Schmerzen], [HatAngst], [AngstVon], [Biographie], [BiographieTagesstrukturJN], [BiographiePflegeplanungJN], [UnbewaeltigtenLebenserfahrungen], [Vermisst], [VermisstBeschreibung], [HatSorge], [SorgeUm]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
+  <metadata name="oleDbUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [Anamnese_Krohwinkel] SET [ID] = ?, [IDPatient] = ?, [IDBenutzer] = ?, [ErstelltAm] = ?, [BrilleJN] = ?, [HoergeraetJN] = ?, [KannMitteilenJN] = ?, [KommunizierenTagesstuktur] = ?, [KommunizierenPflegeplanung] = ?, [Wuensche] = ?, [SchwerhoerigTaubStummBlind] = ?, [HoergeraetNichtHandhaben] = ?, [Sprachstoerungen] = ?, [Sichtfeldeinschraenkungen] = ?, [IstZeitloertlSituativZurPersonNichtOrientiert] = ?, [KannSelbstBewegenJN] = ?, [GehentJN] = ?, [StehenJN] = ?, [SitzenJN] = ?, [TreppenSteigenJN] = ?, [LaufenJN] = ?, [HinsetzenJN] = ?, [HinlegenJN] = ?, [HilfsmittelBenutzenJN] = ?, [SpatzierenGehenJN] = ?, [WannWieOftSpatzieren] = ?, [KoerperlicheaktivitaetenJN] = ?, [AktivitaetenBeschreibung] = ?, [BewegenTagesstrukturJN] = ?, [BewegenPflegeplanung] = ?, [KontrakturenvorhandenJN] = ?, [SpitzfussstellungJN] = ?, [MaxGebEllenbogenJN] = ?, [KniegelenkJN] = ?, [GefausteteHandJN] = ?, [KontrakturenBeschreibung] = ?, [DekubitusVorhandenJN] = ?, [DekubitusBeschreibung] = ?, [SturtzgefahrJN] = ?, [Bewegungseinschraenkung] = ?, [KannNichtAlleinGehen] = ?, [KannNichtAlleinLageImBettVeraendern] = ?, [IstBettlaegerig] = ?, [TransferAufstehenHinlegen] = ?, [BlutdruckZuckerRegelmaessigGemessenJN] = ?, [KompressionsstruempfeJN] = ?, [Zimmertemperatur] = ?, [MedikamenteRegelmaessigJN] = ?, [Medikamente] = ?, [VitaleFunkTagesstrukturJN] = ?, [VitaleFunkPflegeplanungJN] = ?, [ErhoehteErnidriegteBlutdruck] = ?, [Durchblutungsstoerungen] = ?, [FriertLeicht] = ?, [DiabetesUnterUeberZucker] = ?, [Sauerstoffmangel] = ?, [BronchialsekretSchlechtAbhusten] = ?, [StarkeAuswurf] = ?, [AtemnotleichterAnstrengung] = ?, [HilfeMedikamentenversorgung] = ?, [WieHandhabenMitDuschenBaden] = ?, [Koerperpflegemittel] = ?, [KoerperpflegemittelVersorger] = ?, [Rasieren] = ?, [Haarpflege] = ?, [ZahnFusspflegeHilfeJN] = ?, [SchminkenJN] = ?, [SichPflegenTagesstrukturJN] = ?, [SichPflegenPflegeplanungJN] = ?, [HilfebWaschenDuschenBaden] = ?, [HilfebHaareOberUnterkoerper] = ?, [HilfebRasur] = ?, [HilfebFussFingernagelpflege] = ?, [HilfebIntimpflege] = ?, [HilfebHautGesichtspflege] = ?, [HilfebOhrenNasenAugenpflege] = ?, [HilfebMundZahnpflege] = ?, [HilfebHautdefekte] = ?, [Starkschwitzen] = ?, [SpeisenGetraenke] = ?, [SpeisenGetraenkeAblehnen] = ?, [AnzahlLiterTrinken] = ?, [MahlzeitInDerGemeinschaftJN] = ?, [FruehstueckSpaetFruehEinnehmen] = ?, [DiatSchonkostSondenernaehrung] = ?, [AnzahlMalzeiten] = ?, [EssenTrinkenTagesstrukturJN] = ?, [EssenTrinkenPflegeplanungJN] = ?, [NotwendigkeitEsssenTrinken] = ?, [NotwendigkeitDiaet] = ?, [KauSchluckstoerungen] = ?, [IsstSehrlangsamm] = ?, [NahrungMundgerechtZubereiten] = ?, [MahlzeiteinnahmeHilfestellung] = ?, [SondePEGKomplett] = ?, [SondenernaehrungKombinationmitOralerFluessigkeitsaufnahme] = ?, [UnterstuezungUeberwachungFluessigkeitsaufnahme] = ?, [HaufigErbrechen] = ?, [KannBlaseDarmKontrollierenJN] = ?, [ZeitenToiletteAufsuchen] = ?, [ToilettengangHilfeJN] = ?, [ToilettenHilfsmittel] = ?, [MedikamenteBlasenDarmfunktion] = ?, [AusscheidenTagesstrukturJN] = ?, [AusscheidenPflegeplanungJN] = ?, [IstZeitweiseUrinStuhlinkontinent] = ?, [UrinStuhlKrankheit] = ?, [ZeitlUrinStuhlKrankheit] = ?, [VerstopfungenDurchfaellen] = ?, [VerstopfungDurchfallKrakheit] = ?, [ZeitlVerstopfungDurchfallKrakheit] = ?, [DauerSuprapubischenkatheter] = ?, [NeigtZuInfektionen] = ?, [HatAnusPraeter] = ?, [KannToiletteNichtSelbstaendigBenutzen] = ?, [UnterstuetzungEinnahmeAbfuehrmittel] = ?, [Kleidung] = ?, [Waeschewechsel] = ?, [SichKleidenTagesstrukturJN] = ?, [SichKleidenPflegeplanungJN] = ?, [KleiderauswahlHilfe] = ?, [WegenDesoriontiertheitOefterAusziehen] = ?, [FehlendeEinsichtFuerAngemesseneKleidung] = ?, [FehlendeEinsichtFuerNotwendigeWaeschewechsel] = ?, [KannVerschluesseNichtHandhaben] = ?, [KannNichtKleidungUeberKopfAusziehen] = ?, [KannNichtKleidungUeberFusseAnziehen] = ?, [SchlafenVonBis] = ?, [MittagsschlafJN] = ?, [NachtsNachschauenJN] = ?, [SchlafBesonderheiten] = ?, [SchlafMedikamente] = ?, [SchlafGewohnheiten] = ?, [SchlafTagesstrukturJN] = ?, [SchlafPflegeplanungJN] = ?, [HateinschlafDurchschlafstoerungen] = ?, [HatPsychischeKrankheitsbedingteSchlafstoerungen] = ?, [HatGestoertenTagNachtrhytmus] = ?, [Beruf] = ?, [GerneBeschaeftigtMit] = ?, [Tagsablauf] = ?, [TagesablaufsgestaltungHilfeJN] = ?, [TagesablaufsgestaltungHilfe] = ?, [SichBeschaeftigenTagesstrukturJN] = ?, [SichBeschaeftigenPflegeplanungJN] = ?, [TagesablaufNachFrueherenGewohnheiten] = ?, [ZeitpunktAufstehenBettGehenAbstimmen] = ?, [IntegrationInTaeglicheAblaufe] = ?, [MaennlicheWeiblichePflegeperson] = ?, [MakeUpSchmuck] = ?, [HaarBarttracht] = ?, [SichFuehlenTagesstrukturJN] = ?, [SichFuehlenpflegeplanungJN] = ?, [SchagefuehlIntimepflegeBeruecksichtigen] = ?, [WuenschtMaennlicheWeiblicheBestimmtePflegeperson] = ?, [KannFrisurNichtSelbstHerrichten] = ?, [KannSchmuckNichtSelbstAnlegen] = ?, [HilfsmittelZurMobilitaetJN] = ?, [BettgitterJN] = ?, [ZimmerVerschlossen] = ?, [HilfeHerbeirufenJN] = ?, [OhneHilfeZurechtJN] = ?, [UmgebungTagesstrukturJN] = ?, [UmgebungPflegeplanungJN] = ?, [KannGefahrenNichtEinschaetzen] = ?, [InDerEinrichtungVerirrn] = ?, [Sicherheit] = ?, [MedikamenteneinnahmeUeberwachen] = ?, [Kontakte] = ?, [Keinekontakte] = ?, [ZeitKeineBesuche] = ?, [AndereKontakte] = ?, [KontakteSelbsstaendigHerstellenJN] = ?, [SozialeTagesstrukturJN] = ?, [SozialePflegeplanungJN] = ?, [BewohnerBenoetigtAktivierung] = ?, [HilfeBeiDerKontakpflege] = ?, [InBetreuungImHausIntegrieren] = ?, [SterbephaseBetreuung] = ?, [Versorger] = ?, [ErfahrungenTagesstrukturJN] = ?, [ErfahrungenPflegeplanungJN] = ?, [KannKrankheitBehinderungNichtAkzeptieren] = ?, [LeidetAnVerlust] = ?, [LeidetAnVerlustVon] = ?, [IstMisstraurisch] = ?, [IstMisstraurischGegen] = ?, [HatSchmerzen] = ?, [Schmerzen] = ?, [HatAngst] = ?, [AngstVon] = ?, [Biographie] = ?, [BiographieTagesstrukturJN] = ?, [BiographiePflegeplanungJN] = ?, [UnbewaeltigtenLebenserfahrungen] = ?, [Vermisst] = ?, [VermisstBeschreibung] = ?, [HatSorge] = ?, [SorgeUm] = ? WHERE (([ID] = ?))</value>
+  </data>
+  <metadata name="oleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daAnamneseKrohwinkel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="dsPDXByPflegeModell1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <metadata name="daPDXByPflegemodell.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 212</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbSelectCommand2.CommandText" xml:space="preserve">
+    <value>SELECT PDX.ID AS IDPDX,
+       PDX.Klartext AS Klartext,
+       PDX.Code AS Code, PDX.LokalisierungsTyp AS LokalisierungsTyp, Pflegemodelle.ID AS IDPflegemodelle, 
+                      Pflegemodelle.Modell AS Modell, Pflegemodelle.Modellgruppe AS Modellgruppe,
+Pflegemodelle.Reihenfolge AS Reihenfolge
+FROM         PDX INNER JOIN
+                      PDXPflegemodelle ON PDX.ID = PDXPflegemodelle.IDPDX INNER JOIN
+                      Pflegemodelle ON PDXPflegemodelle.IDPflegemodelle = Pflegemodelle.ID
+WHERE     (Pflegemodelle.Modell = ?)</value>
+  </data>
+  <metadata name="dsPflegemodelle1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="daPflegeModell.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 290</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbSelectCommand3.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>

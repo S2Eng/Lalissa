@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsClipboard" targetNamespace="http://tempuri.org/dsClipboard.xsd" xmlns:mstns="http://tempuri.org/dsClipboard.xsd" xmlns="http://tempuri.org/dsClipboard.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsClipboard" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsClipboard" msprop:Generator_UserDSName="dsClipboard">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="clipboard" msprop:Generator_TableClassName="clipboardDataTable" msprop:Generator_TableVarName="tableclipboard" msprop:Generator_TablePropName="clipboard" msprop:Generator_RowDeletingName="clipboardRowDeleting" msprop:Generator_RowChangingName="clipboardRowChanging" msprop:Generator_RowEvHandlerName="clipboardRowChangeEventHandler" msprop:Generator_RowDeletedName="clipboardRowDeleted" msprop:Generator_UserTableName="clipboard" msprop:Generator_RowChangedName="clipboardRowChanged" msprop:Generator_RowEvArgName="clipboardRowChangeEvent" msprop:Generator_RowClassName="clipboardRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Txt" msprop:Generator_ColumnVarNameInTable="columnTxt" msprop:Generator_ColumnPropNameInRow="Txt" msprop:Generator_ColumnPropNameInTable="TxtColumn" msprop:Generator_UserColumnName="Txt" type="xs:string" />
+              <xs:element name="data" msprop:Generator_ColumnVarNameInTable="columndata" msprop:Generator_ColumnPropNameInRow="data" msprop:Generator_ColumnPropNameInTable="dataColumn" msprop:Generator_UserColumnName="data" type="xs:anyType" />
+              <xs:element name="ToolTip" msprop:Generator_ColumnVarNameInTable="columnToolTip" msprop:Generator_ColumnPropNameInRow="ToolTip" msprop:Generator_ColumnPropNameInTable="ToolTipColumn" msprop:Generator_UserColumnName="ToolTip" type="xs:string" />
+              <xs:element name="TypEntry" msprop:Generator_ColumnVarNameInTable="columnTypEntry" msprop:Generator_ColumnPropNameInRow="TypEntry" msprop:Generator_ColumnPropNameInTable="TypEntryColumn" msprop:Generator_UserColumnName="TypEntry" type="xs:string" minOccurs="0" />
+              <xs:element name="dataSub" msprop:Generator_ColumnVarNameInTable="columndataSub" msprop:Generator_ColumnPropNameInRow="dataSub" msprop:Generator_ColumnPropNameInTable="dataSubColumn" msprop:Generator_UserColumnName="dataSub" type="xs:anyType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tblSelListEntriesTmp" msprop:Generator_TableClassName="tblSelListEntriesTmpDataTable" msprop:Generator_TableVarName="tabletblSelListEntriesTmp" msprop:Generator_RowChangedName="tblSelListEntriesTmpRowChanged" msprop:Generator_TablePropName="tblSelListEntriesTmp" msprop:Generator_RowDeletingName="tblSelListEntriesTmpRowDeleting" msprop:Generator_RowChangingName="tblSelListEntriesTmpRowChanging" msprop:Generator_RowEvHandlerName="tblSelListEntriesTmpRowChangeEventHandler" msprop:Generator_RowDeletedName="tblSelListEntriesTmpRowDeleted" msprop:Generator_RowClassName="tblSelListEntriesTmpRow" msprop:Generator_UserTableName="tblSelListEntriesTmp" msprop:Generator_RowEvArgName="tblSelListEntriesTmpRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" type="xs:string" />
+              <xs:element name="IDOwnInt" msprop:Generator_ColumnVarNameInTable="columnIDOwnInt" msprop:Generator_ColumnPropNameInRow="IDOwnInt" msprop:Generator_ColumnPropNameInTable="IDOwnIntColumn" msprop:Generator_UserColumnName="IDOwnInt" type="xs:int" />
+              <xs:element name="IDOwnStr" msprop:Generator_ColumnVarNameInTable="columnIDOwnStr" msprop:Generator_ColumnPropNameInRow="IDOwnStr" msprop:Generator_ColumnPropNameInTable="IDOwnStrColumn" msprop:Generator_UserColumnName="IDOwnStr" type="xs:string" />
+              <xs:element name="IDGuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDGuid" msprop:Generator_ColumnPropNameInRow="IDGuid" msprop:Generator_ColumnPropNameInTable="IDGuidColumn" msprop:Generator_UserColumnName="IDGuid" type="xs:string" minOccurs="0" />
+              <xs:element name="IDGroup" msprop:Generator_ColumnVarNameInTable="columnIDGroup" msprop:Generator_ColumnPropNameInRow="IDGroup" msprop:Generator_ColumnPropNameInTable="IDGroupColumn" msprop:Generator_UserColumnName="IDGroup" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblSelListEntriesTmp" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

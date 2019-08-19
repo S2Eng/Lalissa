@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Diese Datei wird automatisch vom XML-Schema-Designer generiert. Sie enthält Layoutinformationen für Komponenten auf der Designeroberfläche.-->
+<XSDDesignerLayout layoutVersion="2" viewPortLeft="0" viewPortTop="0" zoom="100">
+    <dsPostbox_XmlElement left="5794" top="3149" width="10848" height="2963" selected="0" zOrder="1" index="0" expanded="1">
+        <tblPostbox_XmlElement left="5318" top="6620" width="11800" height="5503" selected="0" zOrder="2" index="0" expanded="1" />
+    </dsPostbox_XmlElement>
+</XSDDesignerLayout>

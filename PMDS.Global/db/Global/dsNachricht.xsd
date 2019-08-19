@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsNachricht" targetNamespace="http://tempuri.org/dsNachricht.xsd" xmlns:mstns="http://tempuri.org/dsNachricht.xsd" xmlns="http://tempuri.org/dsNachricht.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="False" Modifier="Assembly" Name="SQLNCLI.S2STY002\TEST.PMDS_Hall" Provider="System.Data.OleDb">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsNachricht" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsNachricht" msprop:Generator_DataSetName="dsNachricht">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbl_Nachricht" msprop:Generator_UserTableName="tbl_Nachricht" msprop:Generator_RowDeletedName="tbl_NachrichtRowDeleted" msprop:Generator_TableClassName="tbl_NachrichtDataTable" msprop:Generator_RowChangedName="tbl_NachrichtRowChanged" msprop:Generator_RowClassName="tbl_NachrichtRow" msprop:Generator_RowChangingName="tbl_NachrichtRowChanging" msprop:Generator_RowEvArgName="tbl_NachrichtRowChangeEvent" msprop:Generator_RowEvHandlerName="tbl_NachrichtRowChangeEventHandler" msprop:Generator_TablePropName="tbl_Nachricht" msprop:Generator_TableVarName="tabletbl_Nachricht" msprop:Generator_RowDeletingName="tbl_NachrichtRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDPflegePlan" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPflegePlan" msprop:Generator_ColumnPropNameInRow="IDPflegePlan" msprop:Generator_ColumnVarNameInTable="columnIDPflegePlan" msprop:Generator_ColumnPropNameInTable="IDPflegePlanColumn" type="xs:string" />
+              <xs:element name="IDEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDEintrag" msprop:Generator_ColumnPropNameInRow="IDEintrag" msprop:Generator_ColumnVarNameInTable="columnIDEintrag" msprop:Generator_ColumnPropNameInTable="IDEintragColumn" type="xs:string" />
+              <xs:element name="IDBenutzerFrom" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzerFrom" msprop:Generator_ColumnPropNameInRow="IDBenutzerFrom" msprop:Generator_ColumnVarNameInTable="columnIDBenutzerFrom" msprop:Generator_ColumnPropNameInTable="IDBenutzerFromColumn" type="xs:string" />
+              <xs:element name="IDBerufsstandFrom" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBerufsstandFrom" msprop:Generator_ColumnPropNameInRow="IDBerufsstandFrom" msprop:Generator_ColumnVarNameInTable="columnIDBerufsstandFrom" msprop:Generator_ColumnPropNameInTable="IDBerufsstandFromColumn" type="xs:string" />
+              <xs:element name="IDBenutzerTo" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBenutzerTo" msprop:Generator_ColumnPropNameInRow="IDBenutzerTo" msprop:Generator_ColumnVarNameInTable="columnIDBenutzerTo" msprop:Generator_ColumnPropNameInTable="IDBenutzerToColumn" type="xs:string" />
+              <xs:element name="IDBerufsstandTo" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDBerufsstandTo" msprop:Generator_ColumnPropNameInRow="IDBerufsstandTo" msprop:Generator_ColumnVarNameInTable="columnIDBerufsstandTo" msprop:Generator_ColumnPropNameInTable="IDBerufsstandToColumn" type="xs:string" />
+              <xs:element name="StartDatum" msprop:Generator_UserColumnName="StartDatum" msprop:Generator_ColumnPropNameInRow="StartDatum" msprop:Generator_ColumnVarNameInTable="columnStartDatum" msprop:Generator_ColumnPropNameInTable="StartDatumColumn" type="xs:dateTime" />
+              <xs:element name="Zeitpunkt" msprop:Generator_UserColumnName="Zeitpunkt" msprop:Generator_ColumnPropNameInRow="Zeitpunkt" msprop:Generator_ColumnVarNameInTable="columnZeitpunkt" msprop:Generator_ColumnPropNameInTable="ZeitpunktColumn" type="xs:dateTime" />
+              <xs:element name="TerminTyp" msprop:Generator_UserColumnName="TerminTyp" msprop:Generator_ColumnPropNameInRow="TerminTyp" msprop:Generator_ColumnVarNameInTable="columnTerminTyp" msprop:Generator_ColumnPropNameInTable="TerminTypColumn" type="xs:int" />
+              <xs:element name="EintragsTyp" msprop:Generator_UserColumnName="EintragsTyp" msprop:Generator_ColumnPropNameInRow="EintragsTyp" msprop:Generator_ColumnVarNameInTable="columnEintragsTyp" msprop:Generator_ColumnPropNameInTable="EintragsTypColumn" type="xs:int" />
+              <xs:element name="Zeitstempel" msprop:Generator_UserColumnName="Zeitstempel" msprop:Generator_ColumnPropNameInRow="Zeitstempel" msprop:Generator_ColumnVarNameInTable="columnZeitstempel" msprop:Generator_ColumnPropNameInTable="ZeitstempelColumn" type="xs:dateTime" />
+              <xs:element name="Nachricht" msprop:Generator_UserColumnName="Nachricht" msprop:Generator_ColumnPropNameInRow="Nachricht" msprop:Generator_ColumnVarNameInTable="columnNachricht" msprop:Generator_ColumnPropNameInTable="NachrichtColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tbl_Nachricht" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

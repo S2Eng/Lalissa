@@ -1,0 +1,964 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="daPatientByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_PatientByID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_PatientByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_PatientByID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand_PatientByID.CommandText" xml:space="preserve">
+    <value>SELECT        Patient.IDAdresse, Patient.IDKontakt AS IDKontakt , Patient.Vorname, Patient.Nachname, Patient.Geburtsdatum, Patient.Titel, Patient.Sexus, Patient.Konfision, 
+                         Patient.Familienstand, Patient.Staatsb, Patient.Klasse, Patient.KrankenKasse, Patient.BlutGruppe, Patient.Resusfaktor, Patient.LedigerName, 
+                         Patient.Geburtsort, Patient.Voraufenthalt, Patient.Angehörige, Patient.VersicherungsNr, Patient.ArbeitslosBezSeit, Patient.KrankengeldSeit, 
+                         Patient.Hauptversicherung, Patient.ErlernterBeruf, Patient.Besonderheit, Patient.Betreuer, Patient.Sachwalter, Patient.SachWalterBelange, 
+                         Patient.SachWalterVon, Patient.SachWalterBis, Patient.SterbeRegel, Patient.Depotinjektion, Patient.Hausarzt, Patient.Vermerk, Patient.SterbeDatum, 
+                         Patient.AktuellerDienstgeber, Patient.DerzeitigerBeruf, Patient.RezeptgebuehrbefreiungJN, Patient.PflegegeldantragJN, Patient.DatumPflegegeldantrag, 
+                         Patient.PensionsteilungsantragJN, Patient.DatumPensionsteilungsantrag, Patient.FIBUKonto, Patient.RollungVon, Patient.RollungBis, Patient.Adelstitel, 
+                         Patient.Anrede, Patient.Initialberuehrung, Patient.Klingeln, Patient.Wohnsituation, Patient.Haustier, Patient.LiftJN, Patient.WohnungAbgemeldetJN, 
+                         Patient.Haarfarbe, Patient.Augenfarbe, Patient.BesondereAeusserlicheKennzeichen, Patient.Foto, Patient.FernsehgebuehrbefreiungJN, 
+                         Patient.TelefongebuehrbefreiungJN, Patient.BewerberJN, Patient.BewerbungaktivJN, Patient.PflegeArt, Patient.BewerbungDatum, 
+                         Patient.EinzugswunschDatum, Patient.AuszugswunschDatum, Patient.Zimmerwunsch, Patient.Stationswunsch, Patient.SonstigeWuensche, 
+                         Patient.BewerbungsGrund, Patient.Prioritaet, Patient.ReligionWunsch, Patient.KommunionJN, Patient.KrankensalbungJN, Patient.BewerberBemerkung, 
+                         Patient.WaescheMarkiert, Patient.WaescheWaschen, Patient.Zustaendige_Stelle, Patient.Groesse, Patient.Statur, Patient.Namenstag, Patient.Kosename, 
+                         Patient.Privatversicherung, Patient.PrivPolNr, Patient.IDBenutzer, Patient.PatientenverfuegungJN, Patient.PatientenverfuegungBeachtlichJN, 
+                         Patient.PatientverfuegungDatum, Patient.PatientverfuegungAnmerkung, Patient.Klientennummer, Patient.IDAbteilung, Patient.abwesenheitenHändBerech, 
+                         Abteilung.Bezeichnung AS Abteilung, Adresse.Strasse, Adresse.Plz, Adresse.Ort, Adresse.Region, Adresse.LandKZ, Kontakt.Tel, Kontakt.Fax, Kontakt.Mobil, 
+                         Kontakt.Andere, Kontakt.Email, Kontakt.Ansprechpartner, Kontakt.Zusatz1, Kontakt.Zusatz2, Kontakt.Zusatz3, Patient.ID AS IDPatient, 
+                         Adresse.ID AS IDAdresse, Kontakt.ID AS IDKontakt
+FROM            Patient INNER JOIN
+                         Adresse ON Patient.IDAdresse = Adresse.ID INNER JOIN
+                         Kontakt ON Patient.IDKontakt = Kontakt.ID INNER JOIN
+                         Abteilung ON Patient.IDAbteilung = Abteilung.ID
+WHERE        (Patient.ID = ?)
+ORDER BY Patient.Nachname</value>
+  </data>
+  <metadata name="daDokumenteGelesen_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daAlleDokumenteGelesenJN.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 1070</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDokumenteGelesenJN.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDokumenteGelesenJN.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>223, 134</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDokumenteGelesenJN.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand_AlleDokumenteGelesenJN.CommandText" xml:space="preserve">
+    <value>SELECT     tblDokumenteintrag.ID AS IDDokumenteneintrag, tblDokumenteintrag.Bezeichnung, tblDokumenteintrag.GültigVon, tblDokumenteintrag.GültigBis, 
+                      tblDokumenteintrag.ErstelltAm, tblDokumenteintrag.ErstelltVon, tblOrdner.Bezeichnung AS BezeichnungOrdner, tblDokumenteGelesen.gelesen, 
+                      tblDokumente.ID AS IDDokument, tblDokumente.Archivordner, tblDokumente.DateinameArchiv, tblDokumente.DateinameTyp
+FROM         tblDokumenteGelesen INNER JOIN
+                      tblDokumenteintrag ON tblDokumenteGelesen.IDDokumenteneintrag = tblDokumenteintrag.ID INNER JOIN
+                      tblDokumente ON tblDokumenteintrag.ID = tblDokumente.IDDokumenteintrag INNER JOIN
+                      tblOrdner ON tblDokumenteintrag.IDOrdner = tblOrdner.ID where   tblDokumenteGelesen.gelesen = ? </value>
+  </data>
+  <metadata name="daAlleDokumenteGelesenJaNein.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDokumenteGelesenJaNein.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDokumenteGelesenJaNein.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDokumenteGelesenJaNein.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand_AlleDokumenteGelesenJaNein.CommandText" xml:space="preserve">
+    <value>SELECT     tblDokumenteintrag.ID AS IDDokumenteneintrag, tblDokumente.ID AS IDDokument, tblOrdner.ID AS IDOrdner, tblDokumenteintrag.Bezeichnung, 
+                      tblDokumenteintrag.GültigVon, tblDokumenteintrag.GültigBis, tblDokumenteintrag.ErstelltAm, tblDokumenteintrag.ErstelltVon, 
+                      tblDokumente.Archivordner, tblDokumente.DateinameArchiv, tblDokumente.DateinameTyp, tblDokumenteGelesen.gelesen
+FROM         tblDokumenteGelesen INNER JOIN
+                      tblDokumenteintrag ON tblDokumenteGelesen.IDDokumenteneintrag = tblDokumenteintrag.ID INNER JOIN
+                      tblDokumente ON tblDokumenteintrag.ID = tblDokumente.IDDokumenteintrag INNER JOIN
+                      tblOrdner ON tblDokumenteintrag.IDOrdner = tblOrdner.ID where tblDokumenteGelesen.gelesen = ?</value>
+  </data>
+  <metadata name="daDokumente_IDDokueintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 1031</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumente_IDDokueintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumente_IDDokueintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumente_IDDokueintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand_Dokumente_IDDokueintrag.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDDokumenteintrag, DateinameOrig, VerzeichnisOrig, DokumentGröße, DokumentErstellt, DokumentGeändert, ErstelltAm, ErstelltVon, Winzip, Archivordner, DateinameArchiv, DateinameTyp
+FROM            tblDokumente
+WHERE        (IDDokumenteintrag = ?)</value>
+  </data>
+  <metadata name="dbConn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 836</value>
+  </metadata>
+  <metadata name="daDokumenteintrag_anzahl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 758</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteintrag_anzahl.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteintrag_anzahl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteintrag_anzahl.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daDokumenteintrag_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 992</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumenteintrag_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumenteintrag_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumenteintrag_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumenteintrag_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumenteintrag_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumenteintrag_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteintrag_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteintrag_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>959, 207</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteintrag_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumenteintrag_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumenteintrag_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumenteintrag_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbUpdateCommand_Dokumenteintrag_ID.CommandText" xml:space="preserve">
+    <value>UPDATE [tblDokumenteintrag] SET [ID] = ?, [IDOrdner] = ?, [Bezeichnung] = ?, [Notiz] = ?, [NotizRTF] = ?, [GültigVon] = ?, [GültigBis] = ?, [Wichtigkeit] = ?, [ErstelltAm] = ?, [ErstelltVon] = ? WHERE (([ID] = ?))</value>
+  </data>
+  <metadata name="daDokumente_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 953</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumente_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumente_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumente_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumente_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumente_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumente_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbInsertCommand_Dokumente_ID.CommandText" xml:space="preserve">
+    <value>INSERT INTO tblDokumente(ID, IDDokumenteintrag, DateinameOrig, VerzeichnisOrig, DokumentGröße, DokumentErstellt, DokumentGeändert, ErstelltAm, ErstelltVon, Winzip, Archivordner, DateinameArchiv, DateinameTyp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
+  <metadata name="OleDbSelectCommand_Dokumente_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumente_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumente_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand_Dokumente_ID.CommandText" xml:space="preserve">
+    <value>SELECT ID, IDDokumenteintrag, DateinameOrig, VerzeichnisOrig, DokumentGröße, DokumentErstellt, DokumentGeändert, ErstelltAm, ErstelltVon, Winzip, Archivordner, DateinameArchiv, DateinameTyp FROM tblDokumente WHERE (ID = ?)</value>
+  </data>
+  <metadata name="OleDbUpdateCommand_Dokumente_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumente_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumente_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbUpdateCommand_Dokumente_ID.CommandText" xml:space="preserve">
+    <value>UPDATE tblDokumente SET ID = ?, IDDokumenteintrag = ?, DateinameOrig = ?, VerzeichnisOrig = ?, DokumentGröße = ?, DokumentErstellt = ?, DokumentGeändert = ?, ErstelltAm = ?, ErstelltVon = ?, Winzip = ?, Archivordner = ?, DateinameArchiv = ?, DateinameTyp = ? WHERE (ID = ?)</value>
+  </data>
+  <metadata name="daPfad.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 914</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Pfad.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Pfad.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Pfad.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Pfad.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Pfad.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Pfad.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Pfad.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Pfad.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Pfad.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Pfad.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Pfad.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Pfad.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daRechteOrdner_IDOrdnerIDGruppe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 875</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_RechteOrdner_IDOrdnerIDGruppe.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_RechteOrdner_IDOrdnerIDGruppe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>725, 329</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_RechteOrdner_IDOrdnerIDGruppe.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_RechteOrdner_IDOrdnerIDGruppe.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_RechteOrdner_IDOrdnerIDGruppe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_RechteOrdner_IDOrdnerIDGruppe.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_RechteOrdner_IDOrdnerIDGruppe.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_RechteOrdner_IDOrdnerIDGruppe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_RechteOrdner_IDOrdnerIDGruppe.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_RechteOrdner_IDOrdnerIDGruppe.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_RechteOrdner_IDOrdnerIDGruppe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>380, 368</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_RechteOrdner_IDOrdnerIDGruppe.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daRechteOrdner_IDOrdner.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 719</value>
+  </metadata>
+  <metadata name="OLEBSelectCommand_RechteOrdner_IDOrdner.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OLEBSelectCommand_RechteOrdner_IDOrdner.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OLEBSelectCommand_RechteOrdner_IDOrdner.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daSchränkeAlle.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 797</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schränke.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schränke.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schränke.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schränke.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schränke.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schränke.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schränke.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schränke.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schränke.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schränke.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schränke.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schränke.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbUpdateCommand_Schränke.CommandText" xml:space="preserve">
+    <value>UPDATE [tblSchrank] SET [ID] = ?, [Bezeichnung] = ?, [ErstelltAm] = ?, [ErstelltVon] = ?, [Extern] = ? WHERE (([ID] = ?) AND ([Bezeichnung] = ?) AND ([ErstelltAm] = ?) AND ([ErstelltVon] = ?) AND ([Extern] = ?))</value>
+  </data>
+  <metadata name="daFächer_IDSchrank.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 368</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Fächer_IDSchrank.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Fächer_IDSchrank.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 407</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Fächer_IDSchrank.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Fächer_IDSchrank.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Fächer_IDSchrank.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>296, 407</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Fächer_IDSchrank.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Fächer_IDSchrank.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Fächer_IDSchrank.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Fächer_IDSchrank.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Fächer_IDSchrank.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Fächer_IDSchrank.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Fächer_IDSchrank.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbUpdateCommand_Fächer_IDSchrank.CommandText" xml:space="preserve">
+    <value>UPDATE [tblFach] SET [ID] = ?, [Bezeichnung] = ?, [IDSchrank] = ?, [ErstelltAm] = ?, [ErstelltVon] = ?, [Extern] = ? WHERE (([ID] = ?) AND ([Bezeichnung] = ?) AND ([IDSchrank] = ?) AND ([ErstelltAm] = ?) AND ([ErstelltVon] = ?) AND ([Extern] = ?))</value>
+  </data>
+  <metadata name="daOrdner_IDFach.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 524</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Ordner_IDFach.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Ordner_IDFach.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Ordner_IDFach.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Ordner_IDFach.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Ordner_IDFach.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>854, 407</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Ordner_IDFach.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Ordner_IDFach.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Ordner_IDFach.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Ordner_IDFach.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Ordner_IDFach.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Ordner_IDFach.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>278, 446</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Ordner_IDFach.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daFächer_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 680</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Fächer_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Fächer_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>547, 446</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Fächer_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Fächer_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Fächer_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>783, 446</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Fächer_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Fächer_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Fächer_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1014, 446</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Fächer_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Fächer_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Fächer_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Fächer_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daSchrank_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 641</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schrank_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schrank_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schrank_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schrank_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schrank_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schrank_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schrank_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schrank_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schrank_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schrank_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schrank_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schrank_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daAlleDateienPapierkorb.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 602</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDateienPapierkorb.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDateienPapierkorb.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>497, 485</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_AlleDateienPapierkorb.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand_AlleDateienPapierkorb.CommandText" xml:space="preserve">
+    <value>SELECT     tblOrdner.IDSystemordner, tblDokumenteintrag.ID AS IDDokumenteintrag, tblDokumenteintrag.IDOrdner, tblDokumenteintrag.Bezeichnung, 
+                      tblDokumente.ID AS IDDokumente
+FROM         tblDokumenteintrag INNER JOIN
+                      tblDokumente ON tblDokumenteintrag.ID = tblDokumente.IDDokumenteintrag INNER JOIN
+                      tblOrdner ON tblDokumenteintrag.IDOrdner = tblOrdner.ID
+WHERE     (tblOrdner.IDSystemordner = 1)</value>
+  </data>
+  <metadata name="daDokumentendaten_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 485</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumentendaten_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumentendaten_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>799, 485</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumentendaten_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbSelectCommand_Dokumentendaten_IDDokumenteneintrag.CommandText" xml:space="preserve">
+    <value>SELECT     tblDokumenteintrag.IDOrdner, tblDokumenteintrag.Bezeichnung, tblDokumenteintrag.Notiz, tblDokumenteintrag.GültigVon, 
+                      tblDokumenteintrag.GültigBis, tblDokumenteintrag.Wichtigkeit, tblDokumenteintrag.ErstelltAm, tblDokumenteintrag.ErstelltVon, 
+                      tblOrdner.Bezeichnung AS BezeichnungOrdner, tblDokumente.DateinameArchiv, tblDokumente.DateinameTyp, tblDokumente.Archivordner, 
+                      tblDokumente.DokumentGröße, tblDokumente.ID AS IDDokument, tblDokumenteintrag.ID AS IDDokumenteintrag, tblOrdner.IDFach
+FROM         tblDokumenteintrag INNER JOIN
+                      tblDokumente ON tblDokumenteintrag.ID = tblDokumente.IDDokumenteintrag INNER JOIN
+                      tblOrdner ON tblDokumenteintrag.IDOrdner = tblOrdner.ID
+WHERE     (tblDokumenteintrag.ID = ?)</value>
+  </data>
+  <metadata name="daSchlagwort_IDThema.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 563</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schlagwort_IDThema.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schlagwort_IDThema.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Schlagwort_IDThema.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schlagwort_IDThema.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schlagwort_IDThema.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Schlagwort_IDThema.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_IDThema.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_IDThema.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>152, 524</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_IDThema.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schlagwort_IDThema.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schlagwort_IDThema.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Schlagwort_IDThema.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daThema_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 446</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Thema_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Thema_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Thema_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Thema_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Thema_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Thema_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Thema_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Thema_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>447, 524</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Thema_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Thema_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Thema_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Thema_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daSchlagwort_All.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 407</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_All.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_All.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_All.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daDokumenteneintrag_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 329</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumenteneintrag_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumenteneintrag_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Dokumenteneintrag_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumenteneintrag_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumenteneintrag_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Dokumenteneintrag_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteneintrag_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteneintrag_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Dokumenteneintrag_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumenteneintrag_IDDokumenteneintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumenteneintrag_IDDokumenteneintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Dokumenteneintrag_IDDokumenteneintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daDokumenteneintragSchlagwörter_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 212</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_DokumenteneintragSchlagwörter_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_DokumenteneintragSchlagwörter_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_DokumenteneintragSchlagwörter_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_DokumenteneintragSchlagwörter_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_DokumenteneintragSchlagwörter_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_DokumenteneintragSchlagwörter_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_DokumenteneintragSchlagwörter_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_DokumenteneintragSchlagwörter_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>393, 602</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_DokumenteneintragSchlagwörter_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_DokumenteneintragSchlagwörter_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_DokumenteneintragSchlagwörter_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_DokumenteneintragSchlagwörter_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daSchlagwort_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_ID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_ID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Schlagwort_ID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daThema_All.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Thema_All.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Thema_All.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_Thema_All.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Thema_All.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Thema_All.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_Thema_All.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Thema_All.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Thema_All.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_Thema_All.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Thema_All.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Thema_All.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_Thema_All.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daObjects_IDDokumenteintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 290</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_IDDokumenteintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_IDDokumenteintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbDeleteCommand_IDDokumenteintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbDeleteCommand_IDDokumenteintrag.CommandText" xml:space="preserve">
+    <value>DELETE FROM [tblObjekt] WHERE (([ID] = ?) AND ([IDDokumenteintrag] = ?) AND ([Datenbankidentität] = ?) AND ((? = 1 AND [Server] IS NULL) OR ([Server] = ?)) AND ((? = 1 AND [Datenbank] IS NULL) OR ([Datenbank] = ?)) AND ((? = 1 AND [Benutzer] IS NULL) OR ([Benutzer] = ?)) AND ((? = 1 AND [Passwort] IS NULL) OR ([Passwort] = ?)) AND ([IDTyp] = ?) AND ((? = 1 AND [ID_guid] IS NULL) OR ([ID_guid] = ?)) AND ((? = 1 AND [ID_str] IS NULL) OR ([ID_str] = ?)) AND ((? = 1 AND [ID_int] IS NULL) OR ([ID_int] = ?)) AND ([bezeichnung] = ?))</value>
+  </data>
+  <metadata name="OleDbInsertCommand_IDDokumenteintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_IDDokumenteintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbInsertCommand_IDDokumenteintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbInsertCommand_IDDokumenteintrag.CommandText" xml:space="preserve">
+    <value>INSERT INTO [tblObjekt] ([ID], [IDDokumenteintrag], [Datenbankidentität], [Server], [Datenbank], [Benutzer], [Passwort], [IDTyp], [ID_guid], [ID_str], [ID_int], [bezeichnung]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
+  <metadata name="OleDbSelectCommand_IDDokumenteintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_IDDokumenteintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbSelectCommand_IDDokumenteintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_IDDokumenteintrag.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_IDDokumenteintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbUpdateCommand_IDDokumenteintrag.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbUpdateCommand_IDDokumenteintrag.CommandText" xml:space="preserve">
+    <value>UPDATE [tblObjekt] SET [ID] = ?, [IDDokumenteintrag] = ?, [Datenbankidentität] = ?, [Server] = ?, [Datenbank] = ?, [Benutzer] = ?, [Passwort] = ?, [IDTyp] = ?, [ID_guid] = ?, [ID_str] = ?, [ID_int] = ?, [bezeichnung] = ? WHERE (([ID] = ?) AND ([IDDokumenteintrag] = ?) AND ([Datenbankidentität] = ?) AND ((? = 1 AND [Server] IS NULL) OR ([Server] = ?)) AND ((? = 1 AND [Datenbank] IS NULL) OR ([Datenbank] = ?)) AND ((? = 1 AND [Benutzer] IS NULL) OR ([Benutzer] = ?)) AND ((? = 1 AND [Passwort] IS NULL) OR ([Passwort] = ?)) AND ([IDTyp] = ?) AND ((? = 1 AND [ID_guid] IS NULL) OR ([ID_guid] = ?)) AND ((? = 1 AND [ID_str] IS NULL) OR ([ID_str] = ?)) AND ((? = 1 AND [ID_int] IS NULL) OR ([ID_int] = ?)) AND ([bezeichnung] = ?))</value>
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>

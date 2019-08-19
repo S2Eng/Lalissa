@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPDx" targetNamespace="http://www.tempuri.org/dsPDx.xsd" xmlns:mstns="http://www.tempuri.org/dsPDx.xsd" xmlns="http://www.tempuri.org/dsPDx.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPDx" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_UserDSName="dsPDx" msprop:Generator_DataSetName="dsPDx">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PDX" msprop:Generator_UserTableName="PDX" msprop:Generator_RowDeletedName="PDXRowDeleted" msprop:Generator_RowChangedName="PDXRowChanged" msprop:Generator_RowClassName="PDXRow" msprop:Generator_RowChangingName="PDXRowChanging" msprop:Generator_RowEvArgName="PDXRowChangeEvent" msprop:Generator_RowEvHandlerName="PDXRowChangeEventHandler" msprop:Generator_TableClassName="PDXDataTable" msprop:Generator_TableVarName="tablePDX" msprop:Generator_RowDeletingName="PDXRowDeleting" msprop:Generator_TablePropName="PDX">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Klartext" msprop:Generator_UserColumnName="Klartext" msprop:Generator_ColumnVarNameInTable="columnKlartext" msprop:Generator_ColumnPropNameInRow="Klartext" msprop:Generator_ColumnPropNameInTable="KlartextColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Code" msprop:Generator_UserColumnName="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ThematischeID" msprop:Generator_UserColumnName="ThematischeID" msprop:Generator_ColumnVarNameInTable="columnThematischeID" msprop:Generator_ColumnPropNameInRow="ThematischeID" msprop:Generator_ColumnPropNameInTable="ThematischeIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="EntferntJN" msprop:Generator_UserColumnName="EntferntJN" msprop:Generator_ColumnVarNameInTable="columnEntferntJN" msprop:Generator_ColumnPropNameInRow="EntferntJN" msprop:Generator_ColumnPropNameInTable="EntferntJNColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Definition" msprop:Generator_UserColumnName="Definition" msprop:Generator_ColumnVarNameInTable="columnDefinition" msprop:Generator_ColumnPropNameInRow="Definition" msprop:Generator_ColumnPropNameInTable="DefinitionColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Gruppe" msprop:Generator_UserColumnName="Gruppe" msprop:Generator_ColumnVarNameInTable="columnGruppe" msprop:Generator_ColumnPropNameInRow="Gruppe" msprop:Generator_ColumnPropNameInTable="GruppeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="LokalisierungsTyp" msprop:Generator_UserColumnName="LokalisierungsTyp" msprop:Generator_ColumnPropNameInRow="LokalisierungsTyp" msprop:Generator_ColumnVarNameInTable="columnLokalisierungsTyp" msprop:Generator_ColumnPropNameInTable="LokalisierungsTypColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="WundeJN" msprop:Generator_UserColumnName="WundeJN" msprop:Generator_ColumnVarNameInTable="columnWundeJN" msprop:Generator_ColumnPropNameInRow="WundeJN" msprop:Generator_ColumnPropNameInTable="WundeJNColumn" type="xs:boolean" />
+              <xs:element name="PDXKuerzel" msprop:Generator_UserColumnName="PDXKuerzel" msprop:Generator_ColumnPropNameInRow="PDXKuerzel" msprop:Generator_ColumnVarNameInTable="columnPDXKuerzel" msprop:Generator_ColumnPropNameInTable="PDXKuerzelColumn" type="xs:string" default="''" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PDXGruppe" msprop:Generator_UserTableName="PDXGruppe" msprop:Generator_RowDeletedName="PDXGruppeRowDeleted" msprop:Generator_RowChangedName="PDXGruppeRowChanged" msprop:Generator_RowClassName="PDXGruppeRow" msprop:Generator_RowChangingName="PDXGruppeRowChanging" msprop:Generator_RowEvArgName="PDXGruppeRowChangeEvent" msprop:Generator_RowEvHandlerName="PDXGruppeRowChangeEventHandler" msprop:Generator_TableClassName="PDXGruppeDataTable" msprop:Generator_TableVarName="tablePDXGruppe" msprop:Generator_RowDeletingName="PDXGruppeRowDeleting" msprop:Generator_TablePropName="PDXGruppe">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAbteilung" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Reihenfolge" msprop:Generator_UserColumnName="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PDX" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="PDXGruppe_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PDXGruppe" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

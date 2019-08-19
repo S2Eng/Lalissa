@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientEinkommen" targetNamespace="http://tempuri.org/dsPatientEinkommen.xsd" xmlns:mstns="http://tempuri.org/dsPatientEinkommen.xsd" xmlns="http://tempuri.org/dsPatientEinkommen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.S2STY002\TEST.PMDS_Hall" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientEinkommen" msdata:IsDataSet="true" msdata:Locale="en-US" msprop:Generator_DataSetName="dsPatientEinkommen" msprop:Generator_UserDSName="dsPatientEinkommen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PatientEinkommen" msprop:Generator_UserTableName="PatientEinkommen" msprop:Generator_RowEvArgName="PatientEinkommenRowChangeEvent" msprop:Generator_TableVarName="tablePatientEinkommen" msprop:Generator_TablePropName="PatientEinkommen" msprop:Generator_RowDeletingName="PatientEinkommenRowDeleting" msprop:Generator_RowChangingName="PatientEinkommenRowChanging" msprop:Generator_RowDeletedName="PatientEinkommenRowDeleted" msprop:Generator_TableClassName="PatientEinkommenDataTable" msprop:Generator_RowChangedName="PatientEinkommenRowChanged" msprop:Generator_RowEvHandlerName="PatientEinkommenRowChangeEventHandler" msprop:Generator_RowClassName="PatientEinkommenRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BetragVerwendbar" msprop:Generator_ColumnVarNameInTable="columnBetragVerwendbar" msprop:Generator_ColumnPropNameInRow="BetragVerwendbar" msprop:Generator_ColumnPropNameInTable="BetragVerwendbarColumn" msprop:Generator_UserColumnName="BetragVerwendbar" type="xs:double" />
+              <xs:element name="GueltigAb" msprop:Generator_ColumnVarNameInTable="columnGueltigAb" msprop:Generator_ColumnPropNameInRow="GueltigAb" msprop:Generator_ColumnPropNameInTable="GueltigAbColumn" msprop:Generator_UserColumnName="GueltigAb" type="xs:dateTime" />
+              <xs:element name="GueltigBis" msprop:Generator_ColumnVarNameInTable="columnGueltigBis" msprop:Generator_ColumnPropNameInRow="GueltigBis" msprop:Generator_ColumnPropNameInTable="GueltigBisColumn" msprop:Generator_UserColumnName="GueltigBis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TransferleistungJN" msprop:Generator_ColumnVarNameInTable="columnTransferleistungJN" msprop:Generator_ColumnPropNameInRow="TransferleistungJN" msprop:Generator_ColumnPropNameInTable="TransferleistungJNColumn" msprop:Generator_UserColumnName="TransferleistungJN" type="xs:boolean" />
+              <xs:element name="SelbstzahlerJN" msprop:Generator_ColumnVarNameInTable="columnSelbstzahlerJN" msprop:Generator_ColumnPropNameInRow="SelbstzahlerJN" msprop:Generator_ColumnPropNameInTable="SelbstzahlerJNColumn" msprop:Generator_UserColumnName="SelbstzahlerJN" type="xs:boolean" />
+              <xs:element name="ErfasstAm" msprop:Generator_ColumnVarNameInTable="columnErfasstAm" msprop:Generator_ColumnPropNameInRow="ErfasstAm" msprop:Generator_ColumnPropNameInTable="ErfasstAmColumn" msprop:Generator_UserColumnName="ErfasstAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer" msprop:Generator_ColumnPropNameInRow="IDBenutzer" msprop:Generator_ColumnPropNameInTable="IDBenutzerColumn" msprop:Generator_UserColumnName="IDBenutzer" type="xs:string" minOccurs="0" />
+              <xs:element name="AbgerechnetBis" msprop:Generator_ColumnVarNameInTable="columnAbgerechnetBis" msprop:Generator_ColumnPropNameInRow="AbgerechnetBis" msprop:Generator_ColumnPropNameInTable="AbgerechnetBisColumn" msprop:Generator_UserColumnName="AbgerechnetBis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDKostentraeger" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKostentraeger" msprop:Generator_ColumnPropNameInRow="IDKostentraeger" msprop:Generator_ColumnPropNameInTable="IDKostentraegerColumn" msprop:Generator_UserColumnName="IDKostentraeger" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBankliste" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBankliste" msprop:Generator_ColumnPropNameInRow="IDBankliste" msprop:Generator_ColumnPropNameInTable="IDBanklisteColumn" msprop:Generator_UserColumnName="IDBankliste" type="xs:string" minOccurs="0" />
+              <xs:element name="Zahlart" msprop:Generator_ColumnVarNameInTable="columnZahlart" msprop:Generator_ColumnPropNameInRow="Zahlart" msprop:Generator_ColumnPropNameInTable="ZahlartColumn" msprop:Generator_UserColumnName="Zahlart" type="xs:int" minOccurs="0" />
+              <xs:element name="RechnungJN" msprop:Generator_ColumnVarNameInTable="columnRechnungJN" msprop:Generator_ColumnPropNameInRow="RechnungJN" msprop:Generator_ColumnPropNameInTable="RechnungJNColumn" msprop:Generator_UserColumnName="RechnungJN" type="xs:boolean" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PatientEinkommen" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

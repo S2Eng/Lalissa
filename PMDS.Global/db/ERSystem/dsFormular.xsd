@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsFormular" targetNamespace="http://tempuri.org/dsFormular.xsd" xmlns:mstns="http://tempuri.org/dsFormular.xsd" xmlns="http://tempuri.org/dsFormular.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsFormular" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsFormular" msprop:Generator_UserDSName="dsFormular">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FormularData" msprop:Generator_TableClassName="FormularDataDataTable" msprop:Generator_TableVarName="tableFormularData" msprop:Generator_TablePropName="FormularData" msprop:Generator_RowDeletingName="FormularDataRowDeleting" msprop:Generator_RowChangingName="FormularDataRowChanging" msprop:Generator_RowEvHandlerName="FormularDataRowChangeEventHandler" msprop:Generator_RowDeletedName="FormularDataRowDeleted" msprop:Generator_UserTableName="FormularData" msprop:Generator_RowChangedName="FormularDataRowChanged" msprop:Generator_RowEvArgName="FormularDataRowChangeEvent" msprop:Generator_RowClassName="FormularDataRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="f_FormularName" msprop:Generator_ColumnVarNameInTable="columnf_FormularName" msprop:Generator_ColumnPropNameInRow="f_FormularName" msprop:Generator_ColumnPropNameInTable="f_FormularNameColumn" msprop:Generator_UserColumnName="f_FormularName" type="xs:string" minOccurs="0" />
+              <xs:element name="PageNr" msprop:Generator_ColumnVarNameInTable="columnPageNr" msprop:Generator_ColumnPropNameInRow="PageNr" msprop:Generator_ColumnPropNameInTable="PageNrColumn" msprop:Generator_UserColumnName="PageNr" type="xs:string" />
+              <xs:element name="Field" msprop:Generator_ColumnVarNameInTable="columnField" msprop:Generator_ColumnPropNameInRow="Field" msprop:Generator_ColumnPropNameInTable="FieldColumn" msprop:Generator_UserColumnName="Field" type="xs:string" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:string" />
+              <xs:element name="f_IDFormular" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnf_IDFormular" msprop:Generator_ColumnPropNameInRow="f_IDFormular" msprop:Generator_ColumnPropNameInTable="f_IDFormularColumn" msprop:Generator_UserColumnName="f_IDFormular" type="xs:string" />
+              <xs:element name="f_DatumErstelltVon" msdata:Caption="f_DatumErstellt" msprop:Generator_ColumnVarNameInTable="columnf_DatumErstelltVon" msprop:Generator_ColumnPropNameInRow="f_DatumErstelltVon" msprop:Generator_ColumnPropNameInTable="f_DatumErstelltVonColumn" msprop:Generator_UserColumnName="f_DatumErstelltVon" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="f_DatumErstelltBis" msprop:Generator_ColumnVarNameInTable="columnf_DatumErstelltBis" msprop:Generator_ColumnPropNameInRow="f_DatumErstelltBis" msprop:Generator_ColumnPropNameInTable="f_DatumErstelltBisColumn" msprop:Generator_UserColumnName="f_DatumErstelltBis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="f_IDKlient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnf_IDKlient" msprop:Generator_ColumnPropNameInRow="f_IDKlient" msprop:Generator_ColumnPropNameInTable="f_IDKlientColumn" msprop:Generator_UserColumnName="f_IDKlient" type="xs:string" minOccurs="0" />
+              <xs:element name="f_IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnf_IDBenutzer" msprop:Generator_ColumnPropNameInRow="f_IDBenutzer" msprop:Generator_ColumnPropNameInTable="f_IDBenutzerColumn" msprop:Generator_UserColumnName="f_IDBenutzer" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAbteilung_current" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung_current" msprop:Generator_ColumnPropNameInRow="IDAbteilung_current" msprop:Generator_ColumnPropNameInTable="IDAbteilung_currentColumn" msprop:Generator_UserColumnName="IDAbteilung_current" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAufenthalt_current" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAufenthalt_current" msprop:Generator_ColumnPropNameInRow="IDAufenthalt_current" msprop:Generator_ColumnPropNameInTable="IDAufenthalt_currentColumn" msprop:Generator_UserColumnName="IDAufenthalt_current" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBereich_current" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBereich_current" msprop:Generator_ColumnPropNameInRow="IDBereich_current" msprop:Generator_ColumnPropNameInTable="IDBereich_currentColumn" msprop:Generator_UserColumnName="IDBereich_current" type="xs:string" minOccurs="0" />
+              <xs:element name="IDKlient_current" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlient_current" msprop:Generator_ColumnPropNameInRow="IDKlient_current" msprop:Generator_ColumnPropNameInTable="IDKlient_currentColumn" msprop:Generator_UserColumnName="IDKlient_current" type="xs:string" minOccurs="0" />
+              <xs:element name="IDKlinik_current" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik_current" msprop:Generator_ColumnPropNameInRow="IDKlinik_current" msprop:Generator_ColumnPropNameInTable="IDKlinik_currentColumn" msprop:Generator_UserColumnName="IDKlinik_current" type="xs:string" minOccurs="0" />
+              <xs:element name="IDUser_current" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDUser_current" msprop:Generator_ColumnPropNameInRow="IDUser_current" msprop:Generator_ColumnPropNameInTable="IDUser_currentColumn" msprop:Generator_UserColumnName="IDUser_current" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FormularData" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

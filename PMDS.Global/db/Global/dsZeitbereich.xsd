@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsZeitbereich" targetNamespace="http://tempuri.org/dsZeitbereich.xsd" xmlns:mstns="http://tempuri.org/dsZeitbereich.xsd" xmlns="http://tempuri.org/dsZeitbereich.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsZeitbereich" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsZeitbereich" msprop:Generator_DataSetName="dsZeitbereich">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Zeitbereich" msprop:Generator_UserTableName="Zeitbereich" msprop:Generator_RowDeletedName="ZeitbereichRowDeleted" msprop:Generator_TableClassName="ZeitbereichDataTable" msprop:Generator_RowChangedName="ZeitbereichRowChanged" msprop:Generator_RowClassName="ZeitbereichRow" msprop:Generator_RowChangingName="ZeitbereichRowChanging" msprop:Generator_RowEvArgName="ZeitbereichRowChangeEvent" msprop:Generator_RowEvHandlerName="ZeitbereichRowChangeEventHandler" msprop:Generator_TablePropName="Zeitbereich" msprop:Generator_TableVarName="tableZeitbereich" msprop:Generator_RowDeletingName="ZeitbereichRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="von" msprop:Generator_UserColumnName="von" msprop:Generator_ColumnPropNameInRow="von" msprop:Generator_ColumnVarNameInTable="columnvon" msprop:Generator_ColumnPropNameInTable="vonColumn" type="xs:dateTime" />
+              <xs:element name="bis" msprop:Generator_UserColumnName="bis" msprop:Generator_ColumnPropNameInRow="bis" msprop:Generator_ColumnVarNameInTable="columnbis" msprop:Generator_ColumnPropNameInTable="bisColumn" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Zeitbereich" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

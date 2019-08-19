@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsGuidListeNoKey" targetNamespace="http://tempuri.org/dsGuidListeNoKey.xsd" xmlns:mstns="http://tempuri.org/dsGuidListeNoKey.xsd" xmlns="http://tempuri.org/dsGuidListeNoKey.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsGuidListeNoKey" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsGuidListeNoKey" msprop:Generator_DataSetName="dsGuidListeNoKey">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="IDListe" msprop:Generator_UserTableName="IDListe" msprop:Generator_RowDeletedName="IDListeRowDeleted" msprop:Generator_TableClassName="IDListeDataTable" msprop:Generator_RowChangedName="IDListeRowChanged" msprop:Generator_RowClassName="IDListeRow" msprop:Generator_RowChangingName="IDListeRowChanging" msprop:Generator_RowEvArgName="IDListeRowChangeEvent" msprop:Generator_RowEvHandlerName="IDListeRowChangeEventHandler" msprop:Generator_TablePropName="IDListe" msprop:Generator_TableVarName="tableIDListe" msprop:Generator_RowDeletingName="IDListeRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="TEXT" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TEXT" msprop:Generator_ColumnPropNameInRow="TEXT" msprop:Generator_ColumnVarNameInTable="columnTEXT" msprop:Generator_ColumnPropNameInTable="TEXTColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

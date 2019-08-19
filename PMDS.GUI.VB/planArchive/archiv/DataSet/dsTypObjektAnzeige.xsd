@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="dsTypObjektAnzeige" targetNamespace="http://www.tempuri.org/dsTypObjektAnzeige.xsd" xmlns:mstns="http://www.tempuri.org/dsTypObjektAnzeige.xsd" xmlns="http://www.tempuri.org/dsTypObjektAnzeige.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="dsTypObjektAnzeige" msdata:IsDataSet="true" msdata:Locale="de-DE">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="tblTypObjekt">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:int" />
+              <xs:element name="Bezeichnung" type="xs:string" />
+              <xs:element name="ErstelltAm" type="xs:dateTime" />
+              <xs:element name="ErstelltVon" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblTypObjekt" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

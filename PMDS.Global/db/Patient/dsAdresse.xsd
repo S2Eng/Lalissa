@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAdresse" targetNamespace="http://www.tempuri.org/dsAdresse.xsd" xmlns:mstns="http://www.tempuri.org/dsAdresse.xsd" xmlns="http://www.tempuri.org/dsAdresse.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAdresse" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsAdresse" msprop:Generator_UserDSName="dsAdresse">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Adresse" msprop:Generator_TableClassName="AdresseDataTable" msprop:Generator_TableVarName="tableAdresse" msprop:Generator_RowChangedName="AdresseRowChanged" msprop:Generator_TablePropName="Adresse" msprop:Generator_RowDeletingName="AdresseRowDeleting" msprop:Generator_RowChangingName="AdresseRowChanging" msprop:Generator_RowEvHandlerName="AdresseRowChangeEventHandler" msprop:Generator_RowDeletedName="AdresseRowDeleted" msprop:Generator_RowClassName="AdresseRow" msprop:Generator_UserTableName="Adresse" msprop:Generator_RowEvArgName="AdresseRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Strasse" msprop:Generator_ColumnVarNameInTable="columnStrasse" msprop:Generator_ColumnPropNameInRow="Strasse" msprop:Generator_ColumnPropNameInTable="StrasseColumn" msprop:Generator_UserColumnName="Strasse" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Plz" msprop:Generator_ColumnVarNameInTable="columnPlz" msprop:Generator_ColumnPropNameInRow="Plz" msprop:Generator_ColumnPropNameInTable="PlzColumn" msprop:Generator_UserColumnName="Plz" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ort" msprop:Generator_ColumnVarNameInTable="columnOrt" msprop:Generator_ColumnPropNameInRow="Ort" msprop:Generator_ColumnPropNameInTable="OrtColumn" msprop:Generator_UserColumnName="Ort" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Region" msprop:Generator_ColumnVarNameInTable="columnRegion" msprop:Generator_ColumnPropNameInRow="Region" msprop:Generator_ColumnPropNameInTable="RegionColumn" msprop:Generator_UserColumnName="Region" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LandKZ" msprop:Generator_ColumnVarNameInTable="columnLandKZ" msprop:Generator_ColumnPropNameInRow="LandKZ" msprop:Generator_ColumnPropNameInTable="LandKZColumn" msprop:Generator_UserColumnName="LandKZ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Adresse" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPDxEintraege" targetNamespace="http://tempuri.org/dsPDxEintraege.xsd" xmlns:mstns="http://tempuri.org/dsPDxEintraege.xsd" xmlns="http://tempuri.org/dsPDxEintraege.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI.1;Data Source=S2STY076\PMDS;Integrated Security=SSPI;Initial Catalog=PMDS_OS_Test080704" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.S2STY076\PMDS.PMDS_OS_Test080704" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPDxEintraege" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPDxEintraege" msprop:Generator_DataSetName="dsPDxEintraege" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PDXEintraege" msprop:Generator_UserTableName="PDXEintraege" msprop:Generator_RowDeletedName="PDXEintraegeRowDeleted" msprop:Generator_RowChangedName="PDXEintraegeRowChanged" msprop:Generator_RowClassName="PDXEintraegeRow" msprop:Generator_RowChangingName="PDXEintraegeRowChanging" msprop:Generator_RowEvArgName="PDXEintraegeRowChangeEvent" msprop:Generator_RowEvHandlerName="PDXEintraegeRowChangeEventHandler" msprop:Generator_TableClassName="PDXEintraegeDataTable" msprop:Generator_TableVarName="tablePDXEintraege" msprop:Generator_RowDeletingName="PDXEintraegeRowDeleting" msprop:Generator_TablePropName="PDXEintraege">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDPDx" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPDx" msprop:Generator_ColumnVarNameInTable="columnIDPDx" msprop:Generator_ColumnPropNameInRow="IDPDx" msprop:Generator_ColumnPropNameInTable="IDPDxColumn" type="xs:string" />
+              <xs:element name="TEXT" msprop:Generator_UserColumnName="TEXT" msprop:Generator_ColumnVarNameInTable="columnTEXT" msprop:Generator_ColumnPropNameInRow="TEXT" msprop:Generator_ColumnPropNameInTable="TEXTColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Definition" msprop:Generator_UserColumnName="Definition" msprop:Generator_ColumnVarNameInTable="columnDefinition" msprop:Generator_ColumnPropNameInRow="Definition" msprop:Generator_ColumnPropNameInTable="DefinitionColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2048" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDPDXEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPDXEintrag" msprop:Generator_ColumnVarNameInTable="columnIDPDXEintrag" msprop:Generator_ColumnPropNameInRow="IDPDXEintrag" msprop:Generator_ColumnPropNameInTable="IDPDXEintragColumn" type="xs:string" />
+              <xs:element name="IDEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDEintrag" msprop:Generator_ColumnVarNameInTable="columnIDEintrag" msprop:Generator_ColumnPropNameInRow="IDEintrag" msprop:Generator_ColumnPropNameInTable="IDEintragColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAbteilung" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EintragGruppe" msprop:Generator_UserColumnName="EintragGruppe" msprop:Generator_ColumnVarNameInTable="columnEintragGruppe" msprop:Generator_ColumnPropNameInRow="EintragGruppe" msprop:Generator_ColumnPropNameInTable="EintragGruppeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EintragText" msprop:Generator_UserColumnName="EintragText" msprop:Generator_ColumnVarNameInTable="columnEintragText" msprop:Generator_ColumnPropNameInRow="EintragText" msprop:Generator_ColumnPropNameInTable="EintragTextColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Warnhinweis" msprop:Generator_UserColumnName="Warnhinweis" msprop:Generator_ColumnVarNameInTable="columnWarnhinweis" msprop:Generator_ColumnPropNameInRow="Warnhinweis" msprop:Generator_ColumnPropNameInTable="WarnhinweisColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sicht" msprop:Generator_UserColumnName="Sicht" msprop:Generator_ColumnVarNameInTable="columnSicht" msprop:Generator_ColumnPropNameInRow="Sicht" msprop:Generator_ColumnPropNameInTable="SichtColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDLinkDokument" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDLinkDokument" msprop:Generator_ColumnVarNameInTable="columnIDLinkDokument" msprop:Generator_ColumnPropNameInRow="IDLinkDokument" msprop:Generator_ColumnPropNameInTable="IDLinkDokumentColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="OhneZeitBezug" msprop:Generator_UserColumnName="OhneZeitBezug" msprop:Generator_ColumnVarNameInTable="columnOhneZeitBezug" msprop:Generator_ColumnPropNameInRow="OhneZeitBezug" msprop:Generator_ColumnPropNameInTable="OhneZeitBezugColumn" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PDXEintraege" />
+      <xs:field xpath="mstns:IDPDx" />
+      <xs:field xpath="mstns:IDPDXEintrag" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

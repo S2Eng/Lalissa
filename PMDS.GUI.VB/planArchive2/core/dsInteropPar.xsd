@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsInteropPar" targetNamespace="http://tempuri.org/dsInteropPar.xsd" xmlns:mstns="http://tempuri.org/dsInteropPar.xsd" xmlns="http://tempuri.org/dsInteropPar.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsInteropPar" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsInteropPar" msprop:Generator_UserDSName="dsInteropPar">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="InteropPar" msprop:Generator_TableClassName="InteropParDataTable" msprop:Generator_TableVarName="tableInteropPar" msprop:Generator_TablePropName="InteropPar" msprop:Generator_RowDeletingName="InteropParRowDeleting" msprop:Generator_UserTableName="InteropPar" msprop:Generator_RowChangingName="InteropParRowChanging" msprop:Generator_RowEvHandlerName="InteropParRowChangeEventHandler" msprop:Generator_RowDeletedName="InteropParRowDeleted" msprop:Generator_RowEvArgName="InteropParRowChangeEvent" msprop:Generator_RowChangedName="InteropParRowChanged" msprop:Generator_RowClassName="InteropParRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDGuid" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDGuid" msprop:Generator_ColumnPropNameInRow="IDGuid" msprop:Generator_ColumnPropNameInTable="IDGuidColumn" msprop:Generator_UserColumnName="IDGuid" type="xs:string" minOccurs="0" />
+              <xs:element name="IDStr" msprop:Generator_ColumnVarNameInTable="columnIDStr" msprop:Generator_ColumnPropNameInRow="IDStr" msprop:Generator_ColumnPropNameInTable="IDStrColumn" msprop:Generator_UserColumnName="IDStr" type="xs:string" />
+              <xs:element name="IDGuidParent" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDGuidParent" msprop:Generator_ColumnPropNameInRow="IDGuidParent" msprop:Generator_ColumnPropNameInTable="IDGuidParentColumn" msprop:Generator_UserColumnName="IDGuidParent" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientBereich" targetNamespace="http://tempuri.org/dsPatientBereich.xsd" xmlns:mstns="http://tempuri.org/dsPatientBereich.xsd" xmlns="http://tempuri.org/dsPatientBereich.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="False" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientBereich" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPatientBereich" msprop:Generator_DataSetName="dsPatientBereich">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Patient" msprop:Generator_UserTableName="Patient" msprop:Generator_RowDeletedName="PatientRowDeleted" msprop:Generator_RowChangedName="PatientRowChanged" msprop:Generator_RowClassName="PatientRow" msprop:Generator_RowChangingName="PatientRowChanging" msprop:Generator_RowEvArgName="PatientRowChangeEvent" msprop:Generator_RowEvHandlerName="PatientRowChangeEventHandler" msprop:Generator_TableClassName="PatientDataTable" msprop:Generator_TableVarName="tablePatient" msprop:Generator_RowDeletingName="PatientRowDeleting" msprop:Generator_TablePropName="Patient">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Geburtsdatum" msprop:Generator_UserColumnName="Geburtsdatum" msprop:Generator_ColumnVarNameInTable="columnGeburtsdatum" msprop:Generator_ColumnPropNameInRow="Geburtsdatum" msprop:Generator_ColumnPropNameInTable="GeburtsdatumColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Abteilung" msprop:Generator_UserColumnName="Abteilung" msprop:Generator_ColumnVarNameInTable="columnAbteilung" msprop:Generator_ColumnPropNameInRow="Abteilung" msprop:Generator_ColumnPropNameInTable="AbteilungColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Bereich" msprop:Generator_UserColumnName="Bereich" msprop:Generator_ColumnVarNameInTable="columnBereich" msprop:Generator_ColumnPropNameInRow="Bereich" msprop:Generator_ColumnPropNameInTable="BereichColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Aufnahmezeitpunkt" msprop:Generator_UserColumnName="Aufnahmezeitpunkt" msprop:Generator_ColumnVarNameInTable="columnAufnahmezeitpunkt" msprop:Generator_ColumnPropNameInRow="Aufnahmezeitpunkt" msprop:Generator_ColumnPropNameInTable="AufnahmezeitpunktColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

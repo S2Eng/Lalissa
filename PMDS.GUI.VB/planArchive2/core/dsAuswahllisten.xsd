@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAuswahllisten" targetNamespace="http://tempuri.org/dsAuswahllisten.xsd" xmlns:mstns="http://tempuri.org/dsAuswahllisten.xsd" xmlns="http://tempuri.org/dsAuswahllisten.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAuswahllisten" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAuswahllisten" msprop:Generator_UserDSName="dsAuswahllisten">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SelListHelper" msprop:Generator_TableClassName="SelListHelperDataTable" msprop:Generator_TableVarName="tableSelListHelper" msprop:Generator_TablePropName="SelListHelper" msprop:Generator_RowDeletingName="SelListHelperRowDeleting" msprop:Generator_RowChangingName="SelListHelperRowChanging" msprop:Generator_RowEvHandlerName="SelListHelperRowChangeEventHandler" msprop:Generator_RowDeletedName="SelListHelperRowDeleted" msprop:Generator_UserTableName="SelListHelper" msprop:Generator_RowChangedName="SelListHelperRowChanged" msprop:Generator_RowEvArgName="SelListHelperRowChangeEvent" msprop:Generator_RowClassName="SelListHelperRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="IDGuid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDGuid" msprop:Generator_ColumnPropNameInRow="IDGuid" msprop:Generator_ColumnPropNameInTable="IDGuidColumn" msprop:Generator_UserColumnName="IDGuid" type="xs:string" />
+              <xs:element name="IDOwnInt" msprop:Generator_ColumnVarNameInTable="columnIDOwnInt" msprop:Generator_ColumnPropNameInRow="IDOwnInt" msprop:Generator_ColumnPropNameInTable="IDOwnIntColumn" msprop:Generator_UserColumnName="IDOwnInt" type="xs:int" minOccurs="0" />
+              <xs:element name="IDOwnStr" msprop:Generator_ColumnVarNameInTable="columnIDOwnStr" msprop:Generator_ColumnPropNameInRow="IDOwnStr" msprop:Generator_ColumnPropNameInTable="IDOwnStrColumn" msprop:Generator_UserColumnName="IDOwnStr" type="xs:string" />
+              <xs:element name="IDRessource" msprop:Generator_ColumnVarNameInTable="columnIDRessource" msprop:Generator_ColumnPropNameInRow="IDRessource" msprop:Generator_ColumnPropNameInTable="IDRessourceColumn" msprop:Generator_UserColumnName="IDRessource" type="xs:string" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SelListHelper" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

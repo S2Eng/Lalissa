@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsZusatzwerteForEintrag" targetNamespace="http://tempuri.org/dsZusatzwerteForEintrag.xsd" xmlns:mstns="http://tempuri.org/dsZusatzwerteForEintrag.xsd" xmlns="http://tempuri.org/dsZusatzwerteForEintrag.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsZusatzwerteForEintrag" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsZusatzwerteForEintrag" msprop:Generator_DataSetName="dsZusatzwerteForEintrag">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ZusatzEintrag" msprop:Generator_UserTableName="ZusatzEintrag" msprop:Generator_RowDeletedName="ZusatzEintragRowDeleted" msprop:Generator_TableClassName="ZusatzEintragDataTable" msprop:Generator_RowChangedName="ZusatzEintragRowChanged" msprop:Generator_RowClassName="ZusatzEintragRow" msprop:Generator_RowChangingName="ZusatzEintragRowChanging" msprop:Generator_RowEvArgName="ZusatzEintragRowChangeEvent" msprop:Generator_RowEvHandlerName="ZusatzEintragRowChangeEventHandler" msprop:Generator_TablePropName="ZusatzEintrag" msprop:Generator_TableVarName="tableZusatzEintrag" msprop:Generator_RowDeletingName="ZusatzEintragRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Typ" msprop:Generator_UserColumnName="Typ" msprop:Generator_ColumnPropNameInRow="Typ" msprop:Generator_ColumnVarNameInTable="columnTyp" msprop:Generator_ColumnPropNameInTable="TypColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ListenEintraege" msprop:Generator_UserColumnName="ListenEintraege" msprop:Generator_ColumnPropNameInRow="ListenEintraege" msprop:Generator_ColumnVarNameInTable="columnListenEintraege" msprop:Generator_ColumnPropNameInTable="ListenEintraegeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bezeichnung" msprop:Generator_UserColumnName="Bezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MinValue" msprop:Generator_UserColumnName="MinValue" msprop:Generator_ColumnPropNameInRow="MinValue" msprop:Generator_ColumnVarNameInTable="columnMinValue" msprop:Generator_ColumnPropNameInTable="MinValueColumn" type="xs:double" />
+              <xs:element name="MaxValue" msprop:Generator_UserColumnName="MaxValue" msprop:Generator_ColumnPropNameInRow="MaxValue" msprop:Generator_ColumnVarNameInTable="columnMaxValue" msprop:Generator_ColumnPropNameInTable="MaxValueColumn" type="xs:double" />
+              <xs:element name="FeldNr" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="FeldNr" msprop:Generator_ColumnPropNameInRow="FeldNr" msprop:Generator_ColumnVarNameInTable="columnFeldNr" msprop:Generator_ColumnPropNameInTable="FeldNrColumn" type="xs:int" />
+              <xs:element name="OptionalJN" msprop:Generator_UserColumnName="OptionalJN" msprop:Generator_ColumnPropNameInRow="OptionalJN" msprop:Generator_ColumnVarNameInTable="columnOptionalJN" msprop:Generator_ColumnPropNameInTable="OptionalJNColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="DruckenJN" msprop:Generator_UserColumnName="DruckenJN" msprop:Generator_ColumnPropNameInRow="DruckenJN" msprop:Generator_ColumnVarNameInTable="columnDruckenJN" msprop:Generator_ColumnPropNameInTable="DruckenJNColumn" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Reihenfolge" msprop:Generator_UserColumnName="Reihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" type="xs:string" />
+              <xs:element name="IDZusatzGruppeEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDZusatzGruppeEintrag" msprop:Generator_ColumnPropNameInRow="IDZusatzGruppeEintrag" msprop:Generator_ColumnVarNameInTable="columnIDZusatzGruppeEintrag" msprop:Generator_ColumnPropNameInTable="IDZusatzGruppeEintragColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

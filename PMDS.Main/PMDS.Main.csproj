@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E934495D-0F9D-4A75-AAD7-79CDED878FDD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PMDS.Main</RootNamespace>
+    <AssemblyName>PMDS.Main</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>ICO_pmds.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>25D503E10C53435EFA9F73714823AEA663356B14</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="anycpu_deployment">
+      <HintPath>..\Dlls\anycpu_deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\CrystalDecisions.CrystalReports.Engine\10.5.3700.0__692fbea5521e1304\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\CrystalDecisions.ReportSource\10.5.3700.0__692fbea5521e1304\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\CrystalDecisions.Shared\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\CrystalDecisions.Windows.Forms\10.5.3700.0__692fbea5521e1304\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v17.2.Design, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Patagames.Pdf, Version=3.10.5.2704, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.WinForms, Version=3.10.5.0, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.Wpf, Version=3.10.5.0, Culture=neutral, PublicKeyToken=37f2796639c62e77, processorArchitecture=MSIL">
+      <HintPath>packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PMDS.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\PMDS.db.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.core, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.core.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.core.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.core.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.db.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.design.auto, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.design.auto.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.Txteditor, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.Txteditor.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.UI.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.UI.cs.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.UI.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Desktop.UI.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.functions.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.functions.cs.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.functions.vb, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Logging.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Logging.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.sitemap, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.sitemap.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.sitemap.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.sitemap.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.ui.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui.comm.scan, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.ui.comm.scan.dll</HintPath>
+    </Reference>
+    <Reference Include="qs2.ui.vb, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\qs2.ui.vb.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryExpress, Version=1.0.4713.31774, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QueryExpress.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TXDocumentServer, Version=25.0.1100.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDocumentServer.Windows.Forms, Version=25.0.800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing, Version=25.0.300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXDrawing.Windows.Forms, Version=25.0.300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXSpell, Version=7.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXSpell.Windows.Forms, Version=7.0.600.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl, Version=25.0.1800.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl.Server, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+    <Reference Include="TXTextControl.Windows.Forms, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainEntry.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include=".vsdoc" />
+    <None Include="bin\Barcode\CS1504_PMDS.ini" />
+    <None Include="bin\Barcode\global.ini" />
+    <None Include="bin\Barcode\pl2303.cat" />
+    <None Include="bin\Barcode\ser2pl.sys" />
+    <None Include="bin\Doku\PMDS_Handbuch.pdf" />
+    <None Include="bin\DynReportsAbrechnung\1. Klienten\1.1 Aufnahme und Entlassung\Klientenstammdatenblatt.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Abwesende Klienten.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Abwesenheitsliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Aktuelle Belegung.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Bewerberliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Depotgeldliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Entlassene Klienten.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Evidenzliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Geburtstagsliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Hilfsmittel.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Jubil?umsliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Klienten je Arzt.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Klientenliste alphabetisch.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Klientenliste Termin.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Verwahrte Gegenst?nde.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.1 Benutzer\Benutzer je Gruppe.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.1 Benutzer\Benutzergruppen-Rechte.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.1 Benutzer\Benutzerliste kurz.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.1 Benutzer\Benutzerliste lang.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.2 Konfiguration\Auswahlgruppen.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.3 PDx und ASZM\Ma?nahmenliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.3 PDx und ASZM\PDX alphabetisch.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.3 PDx und ASZM\PDX nach Krohwinkel.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.3 PDx und ASZM\PDX nach Orem.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.3 PDx und ASZM\Symptomliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.3 PDx und ASZM\Zielliste.dynreportlink" />
+    <None Include="bin\DynReportsAbrechnung\3. Systemdaten\3.3 PDx und ASZM\?thiologieliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\1. Klienten\1.1 Pflegerisches\Anamnesen.dynreportlink" />
+    <None Include="bin\DynReportsExtras\1. Klienten\1.1 Pflegerisches\Assessments.dynreportlink" />
+    <None Include="bin\DynReportsExtras\1. Klienten\1.1 Pflegerisches\Kostformliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\1. Klienten\1.1 Pflegerisches\?bergabebericht %28ZiNr.%29.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Abwesende Klienten.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Abwesenheitsliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Aktuelle Belegung.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\AnforderungVisite.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Bewerberliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Depotgeldliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Entlassene Klienten.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Evidenzliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Geburtstagsliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Hilfsmittel.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Jubil?umsliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Klienten je Arzt.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Klientenliste alphabetisch.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Klientenliste Termin.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Kostformliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\LaufendeUnterbringungen.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Notfallliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Verwahrte Gegenst?nde.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.1 Listen\Wundbericht.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Aktuelle Pflegestufen.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Altersstruktur.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Aufenthaltsdauer.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Infektionen.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Kontrolle_RM.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Personalschl?sselAbteilung_Stmk.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Personalschl?sselAbteilung_Tirol.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Pflegestufenbericht.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Statistik.dynreportlink.no" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Wundbericht.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.2 Statistiken\Zeitstatistik.dynreportlink.no" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.3 Vertr?ge usw\Heimvertrag.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.3 Vertr?ge usw\Meldezettel.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.4 Abrechnungsinfo\Kostentr?gerliste %28allgemein%29.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.4 Abrechnungsinfo\Kostentr?gerliste f?r Klienten.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.4 Abrechnungsinfo\Leistungskatalog.dynreportlink" />
+    <None Include="bin\DynReportsExtras\2. Verwaltung\2.4 Abrechnungsinfo\Sonderleistungskatalog.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.1 Benutzer\Benutzer je Gruppe.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.1 Benutzer\Benutzergruppen-Rechte.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.1 Benutzer\Benutzerliste kurz.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.1 Benutzer\Benutzerliste lang.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.2 Konfiguration\Auswahlgruppen.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.3 PDx und ASZM\Ma?nahmenliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.3 PDx und ASZM\PDX alphabetisch.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.3 PDx und ASZM\PDX nach Krohwinkel.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.3 PDx und ASZM\PDX nach Orem.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.3 PDx und ASZM\Symptomliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.3 PDx und ASZM\Zielliste.dynreportlink" />
+    <None Include="bin\DynReportsExtras\3. Systemdaten\3.3 PDx und ASZM\?thiologieliste.dynreportlink" />
+    <None Include="bin\DynReportsMedikamente\Mitverantwortlicher Bereich\Dekurse.dynreportlink" />
+    <None Include="bin\DynReportsMedikamente\Mitverantwortlicher Bereich\Medikamentenbestellung.dynreportlink" />
+    <None Include="bin\DynReportsMedikamente\Mitverantwortlicher Bereich\Medikamentenblatt.dynreportlink" />
+    <None Include="bin\DynReportsMedikamente\Mitverantwortlicher Bereich\Rezeptdruck.dynreportlink" />
+    <None Include="bin\DynReportsMedikamente\Mitverantwortlicher Bereich\Vitalzeichen.dynreportlink" />
+    <None Include="bin\DynReportsPEP\Konten\Buchungsliste.dynreportlink" />
+    <None Include="bin\DynReportsPEP\Konten\Konto?bersicht.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Anamnese Krohwinkel.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Anamnese OREM.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Anamnese POP.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Klientenbericht.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Klientenstammdatenblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Pflegebegleitschreiben.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Unterbringung.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\Unterbringung2010.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Aufnahme und Entlassung\UnterbringungenKlient.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Mitverantwortlicher Bereich\Medikamentenblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Pflegerisches\Evaluierungsbericht.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Pflegerisches\Mobilisierungsprotokoll.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Pflegerisches\Notfall.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Pflegerisches\Pflegeplan.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Pflegerisches\Standardprozedur.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Aufnahmebase\Klienten\Pflegerisches\Wunddokumentation.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Anamnese Krohwinkel.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Anamnese OREM.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Anamnese POP.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Klientenbericht.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Klientenstammdatenblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Pflegebegleitschreiben.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Unterbringung.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\Unterbringung2010.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Aufnahme und Entlassung\UnterbringungenKlient.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Mitverantwortlicher Bereich\Medikamentenbestellung.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Mitverantwortlicher Bereich\Medikamentenblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Mitverantwortlicher Bereich\Rezeptdruck.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Mitverantwortlicher Bereich\?rztlDekurs.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Bilanzblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Evaluierungsbericht.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Mobilisierungsprotokoll.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Notfall.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Pflegebericht - PD basiert.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Pflegebericht - terminbasiert.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Pflegeliste.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Pflegeplan.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Standardprozedur.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Entlassungbase\Klienten\Pflegerisches\Wunddokumentation.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Anamnese Krohwinkel.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Anamnese OREM.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Anamnese POP.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Klientenbericht.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Klientenstammdatenblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Pflegebegleitschreiben.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Unterbringung.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\Unterbringung2010.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Aufnahme und Entlassung\UnterbringungenKlient.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Mitverantwortlicher Bereich\Medikamentenblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Mitverantwortlicher Bereich\Rezeptdruck.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Pflegerisches\Evaluierungsbericht.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Pflegerisches\Mobilisierungsprotokoll.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Pflegerisches\Notfall.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Pflegerisches\Pflegeplan.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Pflegerisches\Standardprozedur.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Klienten\Pflegerisches\Wunddokumentation.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Sturz\Klientenstammblatt.dynreportlink" />
+    <None Include="bin\DynReportsProzeduren\Sturzbase\Sturz\Notfall.dynreportlink" />
+    <None Include="bin\DynReportsWunde\1. Protokolle\Wundbericht.dynreportlink" />
+    <None Include="bin\DynReportsWunde\1. Protokolle\Wunddokumentation.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Anamnese Krohwinkel.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Anamnese OREM.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Anamnese POP.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Klientenbericht.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Klientenstammdatenblatt.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Pflegebegleitschreiben.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Unterbringung.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\Unterbringung2010.dynreportlink" />
+    <None Include="bin\DynReports\Aufnahme und Entlassung\UnterbringungenKlient.dynreportlink" />
+    <None Include="bin\DynReports\Mitverantwortlicher Bereich\Dekurse.dynreportlink" />
+    <None Include="bin\DynReports\Mitverantwortlicher Bereich\Medikamentenblatt.dynreportlink" />
+    <None Include="bin\DynReports\Mitverantwortlicher Bereich\VerabreichteMedikamente.dynreportlink" />
+    <None Include="bin\DynReports\Mitverantwortlicher Bereich\Vitalzeichen.dynreportlink" />
+    <None Include="bin\DynReports\Pflegerisches\Evaluierungsbericht.dynreportlink" />
+    <None Include="bin\DynReports\Pflegerisches\Mobilisierungsprotokoll.dynreportlink" />
+    <None Include="bin\DynReports\Pflegerisches\Notfall.dynreportlink" />
+    <None Include="bin\DynReports\Pflegerisches\Pflegeplan.dynreportlink" />
+    <None Include="bin\DynReports\Pflegerisches\Standardprozedur.dynreportlink" />
+    <None Include="bin\DynReports\Pflegerisches\Wunddokumentation.dynreportlink" />
+    <None Include="bin\Forms\Analyse Pflegedokumentation.S2frm" />
+    <None Include="bin\Forms\AnalysePflegedokumentation.pdf" />
+    <None Include="bin\Forms\AnlassbezogeneHygienevisite.S2frm" />
+    <None Include="bin\Forms\Anlassbezogene_Hygienevisite.pdf" />
+    <None Include="bin\Forms\BarthelIndex.pdf" />
+    <None Include="bin\Forms\Biografie.rtf" />
+    <None Include="bin\Forms\Biografie_MZ.rtf" />
+    <None Include="bin\Forms\Biografie_MZ_2016.rtf" />
+    <None Include="bin\Forms\Biographie_OdilienInstitut.rtf" />
+    <None Include="bin\Forms\Braden 2011.pdf" />
+    <None Include="bin\Forms\CMAI.pdf" />
+    <None Include="bin\Forms\Dekubitus_Norton.pdf" />
+    <None Include="bin\Forms\Doloplus2.pdf" />
+    <None Include="bin\Forms\Fallbesprechung.pdf" />
+    <None Include="bin\Forms\GDS.pdf" />
+    <None Include="bin\Forms\Hauser-Abgangsanzeige.pdf" />
+    <None Include="bin\Forms\Hauser-AbgangsanzeigeSelbstzahler.pdf" />
+    <None Include="bin\Forms\Hauser-Aufnahmeanzeige.pdf" />
+    <None Include="bin\Forms\Hauser-AufnahmeanzeigeSelbstzahler.pdf" />
+    <None Include="bin\Forms\HMB-M.pdf" />
+    <None Include="bin\Forms\Karnofsky-Skala.pdf" />
+    <None Include="bin\Forms\MMSE.pdf" />
+    <None Include="bin\Forms\MNA.pdf" />
+    <None Include="bin\Forms\Morse.pdf" />
+    <None Include="bin\Forms\MZ-Assessment.pdf" />
+    <None Include="bin\Forms\MZ-Di?tologie-Assessment.pdf" />
+    <None Include="bin\Forms\MZ-Di?tologie-Aufbauphase.pdf" />
+    <None Include="bin\Forms\MZ-Di?tologie-Ern?hrungsplan.pdf" />
+    <None Include="bin\Forms\MZ-Di?tologie-Evaluierung.pdf" />
+    <None Include="bin\Forms\MZ-Revers-Kurz.pdf" />
+    <None Include="bin\Forms\MZ-Revers.pdf" />
+    <None Include="bin\Forms\Pflegevisite.pdf" />
+    <None Include="bin\Forms\Pflegevisite2.pdf" />
+    <None Include="bin\Forms\S2FormsMapping.xlsx" />
+    <None Include="bin\Forms\S2FormsMapping_Ern?hrungsplan.xlsx" />
+    <None Include="bin\Forms\Schmerz.pdf" />
+    <None Include="bin\Forms\Sturz.pdf" />
+    <None Include="bin\Forms\Sturzprotokoll.pdf" />
+    <None Include="bin\Forms\Sturzprotokoll2.pdf" />
+    <None Include="bin\Forms\Tinetti.pdf" />
+    <None Include="bin\Handbuch\PMDS_Handbuch.pdf" />
+    <None Include="bin\Handbuch\PMDS_Handbuch4_0_0_22a.doc" />
+    <None Include="bin\Handbuch\PMDS_Handbuch4_1_0_0.docx" />
+    <None Include="bin\Handbuch\PMDS_Handbuch4_1_0_1.docx" />
+    <None Include="bin\OnlineFormulare\Config.ini" />
+    <None Include="bin\OnlineFormulare\Config_Allgemein.ini" />
+    <None Include="bin\OnlineFormulare\Fax-Formular_2010.pdf" />
+    <None Include="bin\Reports.Config\Abwesende Klienten.config" />
+    <None Include="bin\Reports.Config\Abwesenheitsliste.config" />
+    <None Include="bin\Reports.Config\Aethiologieliste.config" />
+    <None Include="bin\Reports.Config\AktuelleBelegung.config" />
+    <None Include="bin\Reports.Config\AktuellePflegeStufeBericht.config" />
+    <None Include="bin\Reports.Config\AktuellePflegeStufen.config" />
+    <None Include="bin\Reports.Config\Altersstruktur.config" />
+    <None Include="bin\Reports.Config\Anamnesen.config" />
+    <None Include="bin\Reports.Config\AnforderungVisite.config" />
+    <None Include="bin\Reports.Config\Assessments.config" />
+    <None Include="bin\Reports.Config\Aufenthaltsdauer.config" />
+    <None Include="bin\Reports.Config\Auswahlgruppen.config" />
+    <None Include="bin\Reports.Config\Belegungsliste.config" />
+    <None Include="bin\Reports.Config\Benutzer je Gruppe.config" />
+    <None Include="bin\Reports.Config\Benutzergruppen-Rechte.config" />
+    <None Include="bin\Reports.Config\Benutzerliste kurz.config" />
+    <None Include="bin\Reports.Config\Benutzerliste lang.config" />
+    <None Include="bin\Reports.Config\Bewerberliste.config" />
+    <None Include="bin\Reports.Config\Bewerberstammdatenblatt.config" />
+    <None Include="bin\Reports.Config\Bilanzblatt.config" />
+    <None Include="bin\Reports.Config\Dekurse.config" />
+    <None Include="bin\Reports.Config\Dekurse_Klinik.config" />
+    <None Include="bin\Reports.Config\Depotgeldliste.config" />
+    <None Include="bin\Reports.Config\Depotgeldsaldi.config" />
+    <None Include="bin\Reports.Config\Entlassene Klienten.config" />
+    <None Include="bin\Reports.Config\Evaluierungsbericht.config" />
+    <None Include="bin\Reports.Config\Evidenzliste.config" />
+    <None Include="bin\Reports.Config\Geburtstagsliste.config" />
+    <None Include="bin\Reports.Config\HausarztMedikamentenblaetter.config" />
+    <None Include="bin\Reports.Config\Heimvertrag.config" />
+    <None Include="bin\Reports.Config\Hilfsmittel.config" />
+    <None Include="bin\Reports.Config\Infektionen.config" />
+    <None Include="bin\Reports.Config\Infektionsstatistik.config" />
+    <None Include="bin\Reports.Config\Jubilaeumsliste.config" />
+    <None Include="bin\Reports.Config\Klienten je Arzt.config" />
+    <None Include="bin\Reports.Config\Klientenbericht.config" />
+    <None Include="bin\Reports.Config\Klientenliste alphabetisch.config" />
+    <None Include="bin\Reports.Config\Klientenliste Termin.config" />
+    <None Include="bin\Reports.Config\Klientenstammdatenblatt.config" />
+    <None Include="bin\Reports.Config\Kontrolle_RM.config" />
+    <None Include="bin\Reports.Config\Kostentraegerliste %28allgemein%29.config" />
+    <None Include="bin\Reports.Config\Kostentraegerliste fuer Klienten.config" />
+    <None Include="bin\Reports.Config\Kostformliste.config" />
+    <None Include="bin\Reports.Config\Krohwinkel.config" />
+    <None Include="bin\Reports.Config\LaufendeUnterbringungen.config" />
+    <None Include="bin\Reports.Config\Leistungskatalog.config" />
+    <None Include="bin\Reports.Config\Massnahmenliste.config" />
+    <None Include="bin\Reports.Config\Medikamentenblatt.config" />
+    <None Include="bin\Reports.Config\Meldezettel.config" />
+    <None Include="bin\Reports.Config\Mobilisierungsprotokoll.config" />
+    <None Include="bin\Reports.Config\Notfall.config" />
+    <None Include="bin\Reports.Config\Notfallliste.config" />
+    <None Include="bin\Reports.Config\OREM1.config" />
+    <None Include="bin\Reports.Config\PDX alphabetisch.config" />
+    <None Include="bin\Reports.Config\PDX nach Krohwinkel.config" />
+    <None Include="bin\Reports.Config\PDX nach OREM.config" />
+    <None Include="bin\Reports.Config\Personalschl?ssel.config" />
+    <None Include="bin\Reports.Config\Personalschl?sselAbteilung_Stmk.config" />
+    <None Include="bin\Reports.Config\Personalschl?sselAbteilung_Tirol.config" />
+    <None Include="bin\Reports.Config\Personalschl?ssel_Stmk.config" />
+    <None Include="bin\Reports.Config\Personalschl?ssel_Tirol.config" />
+    <None Include="bin\Reports.Config\Pflegebegleitschreiben.config" />
+    <None Include="bin\Reports.Config\Pflegebericht.config" />
+    <None Include="bin\Reports.Config\Pflegebericht_Klinik.config" />
+    <None Include="bin\Reports.Config\Pflegeplan.config" />
+    <None Include="bin\Reports.Config\PflegestufenBericht.config" />
+    <None Include="bin\Reports.Config\POP.config" />
+    <None Include="bin\Reports.Config\Rezeptdruck.config" />
+    <None Include="bin\Reports.Config\rptBuchungsliste.config" />
+    <None Include="bin\Reports.Config\rptKonto?bersicht.config" />
+    <None Include="bin\Reports.Config\SonderLeistungskatalog.config" />
+    <None Include="bin\Reports.Config\Standardprozedur.config" />
+    <None Include="bin\Reports.Config\Statistik.config" />
+    <None Include="bin\Reports.Config\Symptomliste.config" />
+    <None Include="bin\Reports.Config\Uebergabebericht.config" />
+    <None Include="bin\Reports.Config\Uebergabebericht_SortZiNr.config" />
+    <None Include="bin\Reports.Config\Unterbringung.config" />
+    <None Include="bin\Reports.Config\Unterbringung2010.config" />
+    <None Include="bin\Reports.Config\UnterbringungenKlient.config" />
+    <None Include="bin\Reports.Config\VerabreichteMedikamente.config" />
+    <None Include="bin\Reports.Config\VerrechnetePflegestufen.config" />
+    <None Include="bin\Reports.Config\Verwahrte Gegenst?nde.config" />
+    <None Include="bin\Reports.Config\Vitalzeichen.config" />
+    <None Include="bin\Reports.Config\Vitalzeichen_Klinik.config" />
+    <None Include="bin\Reports.Config\Wundbericht.config" />
+    <None Include="bin\Reports.Config\Wunddokumentation.config" />
+    <None Include="bin\Reports.Config\Wundstatistik.config" />
+    <None Include="bin\Reports.Config\Zeitstatistik.config" />
+    <None Include="bin\Reports.Config\Zielliste.config" />
+    <None Include="bin\Reports\.vsdoc" />
+    <None Include="bin\Reports\Abwesende Klienten.rpt" />
+    <None Include="bin\Reports\Abwesenheitsliste.rpt" />
+    <None Include="bin\Reports\Aethiologieliste.rpt" />
+    <None Include="bin\Reports\AktuelleBelegung.rpt" />
+    <None Include="bin\Reports\AktuellePflegeStufen.rpt" />
+    <None Include="bin\Reports\AktuellerPflegebedarf.rpt" />
+    <None Include="bin\Reports\Altersstruktur Durchschnitt.rpt" />
+    <None Include="bin\Reports\Altersstruktur.rpt" />
+    <None Include="bin\Reports\Anamnesen.rpt" />
+    <None Include="bin\Reports\AnforderungRezepte.rpt" />
+    <None Include="bin\Reports\AnforderungVisite.rpt" />
+    <None Include="bin\Reports\Anmeldung Fu?pflege.pdf" />
+    <None Include="bin\Reports\Anmeldungen.rpt" />
+    <None Include="bin\Reports\Arztabrechnung-Statistik.rpt" />
+    <None Include="bin\Reports\Arztabrechnung.rpt" />
+    <None Include="bin\Reports\Arztbrief.rpt" />
+    <None Include="bin\Reports\Assessments.rpt" />
+    <None Include="bin\Reports\Aufenthaltsdauer.rpt" />
+    <None Include="bin\Reports\Auswahlgruppen.rpt" />
+    <None Include="bin\Reports\Belegungsliste.rpt" />
+    <None Include="bin\Reports\Benutzer je Gruppe.rpt" />
+    <None Include="bin\Reports\Benutzergruppen-Rechte.rpt" />
+    <None Include="bin\Reports\Benutzerliste kurz.rpt" />
+    <None Include="bin\Reports\Benutzerliste lang.rpt" />
+    <None Include="bin\Reports\BestellungMedikamente.rpt" />
+    <None Include="bin\Reports\Bewerberliste.rpt" />
+    <None Include="bin\Reports\Bewerberstammdatenblatt.rpt" />
+    <None Include="bin\Reports\Bewohnerkartei.rpt" />
+    <None Include="bin\Reports\Biografie.rtf" />
+    <None Include="bin\Reports\Blisterliste.rpt" />
+    <None Include="bin\Reports\BMI-Jahresbericht_Monat.rpt" />
+    <None Include="bin\Reports\BMI-Jahresbericht_Woche.rpt" />
+    <None Include="bin\Reports\bookings.rtf" />
+    <None Include="bin\Reports\daylist.rtf" />
+    <None Include="bin\Reports\Dekurse.rpt" />
+    <None Include="bin\Reports\DekursEntw?rfe.rpt" />
+    <None Include="bin\Reports\Dekurse_Klinik.rpt" />
+    <None Include="bin\Reports\Depotgeldliste.rpt" />
+    <None Include="bin\Reports\DepotgeldSaldi.rpt" />
+    <None Include="bin\Reports\Diagnoseliste.rpt" />
+    <None Include="bin\Reports\DiagnosenUndMedikamente.rpt" />
+    <None Include="bin\Reports\Dienst?bergabe.rpt" />
+    <None Include="bin\Reports\DruckRezepte.rpt" />
+    <None Include="bin\Reports\Entlassene Klienten.rpt" />
+    <None Include="bin\Reports\Evaluierungsbericht.rpt" />
+    <None Include="bin\Reports\Evidenzliste.rpt" />
+    <None Include="bin\Reports\Geburtstagsliste.rpt" />
+    <None Include="bin\Reports\HausarztMedikamentenblaetter.rpt" />
+    <None Include="bin\Reports\Heimvertrag.rpt" />
+    <None Include="bin\Reports\HeimvertragFSW_T2016_29_05_2017_PMDS.pdf" />
+    <None Include="bin\Reports\HeimvertragFSW_T2016_29_05_2017_PMDS.RTF" />
+    <None Include="bin\Reports\HeimvertragHauser.pdf" />
+    <None Include="bin\Reports\HeimvertragHauser.rtf" />
+    <None Include="bin\Reports\HeimvertragSB_T2016_29_05_2017_PMDS.pdf" />
+    <None Include="bin\Reports\HeimvertragSB_T2016_29_05_2017_PMDS.RTF" />
+    <None Include="bin\Reports\Hilfsmittel.rpt" />
+    <None Include="bin\Reports\Impfliste.rpt" />
+    <None Include="bin\Reports\Infektionen.rpt" />
+    <None Include="bin\Reports\Infektionsstatistik.rpt" />
+    <None Include="bin\Reports\jahresAb.rtf" />
+    <None Include="bin\Reports\Jubilaeumsliste.rpt" />
+    <None Include="bin\Reports\Klienten je Arzt.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0010.Assessments.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0020.Aufenthaltsverlauf.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0030.?rztlicherDekursMedikation.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0040.Notfallliste.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0050.Pflegeplan.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0060.Pflegebericht.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0070.Evaluierung.rpt" />
+    <None Include="bin\Reports\Klientenbericht.0090.Wunddokumentation.rpt" />
+    <None Include="bin\Reports\Klientenbericht.rpt" />
+    <None Include="bin\Reports\Klientenbericht_v0.1.rpt" />
+    <None Include="bin\Reports\Klientenliste alphabetisch.rpt" />
+    <None Include="bin\Reports\Klientenliste Termin.rpt" />
+    <None Include="bin\Reports\Klientenstammdatenblatt.rpt" />
+    <None Include="bin\Reports\Klienten_Sprachliste.rpt" />
+    <None Include="bin\Reports\Klinikadresse.rpt" />
+    <None Include="bin\Reports\Kontrolle_RM.rpt" />
+    <None Include="bin\Reports\Kostentraegerliste %28allgemein%29.rpt" />
+    <None Include="bin\Reports\Kostentraegerliste fuer Klienten.rpt" />
+    <None Include="bin\Reports\Kostformliste.rpt" />
+    <None Include="bin\Reports\Krohwinkel.rpt" />
+    <None Include="bin\Reports\LaufendeUnterbringungen.rpt" />
+    <None Include="bin\Reports\Leistungskatalog.rpt" />
+    <None Include="bin\Reports\manBuchungen.rpt" />
+    <None Include="bin\Reports\Massnahmenliste.rpt" />
+    <None Include="bin\Reports\MedikamentenAusgabe.rpt" />
+    <None Include="bin\Reports\Medikamentenblatt.rpt" />
+    <None Include="bin\Reports\MedikamentVorbereitung.rpt" />
+    <None Include="bin\Reports\Meldezettel.rpt" />
+    <None Include="bin\Reports\Mobilisierungsprotokoll.rpt" />
+    <None Include="bin\Reports\MZ_Biografie_Angehoerige.pdf" />
+    <None Include="bin\Reports\MZ_Gerontopsychiatrie_Medikation.rpt" />
+    <None Include="bin\Reports\Notfall.rpt" />
+    <None Include="bin\Reports\Notfallliste.rpt" />
+    <None Include="bin\Reports\OREM1.rpt" />
+    <None Include="bin\Reports\PDX alphabetisch.rpt" />
+    <None Include="bin\Reports\PDX nach Krohwinkel.rpt" />
+    <None Include="bin\Reports\PDX nach OREM.rpt" />
+    <None Include="bin\Reports\Personalschl?sselAbteilung_Stmk.rpt" />
+    <None Include="bin\Reports\Personalschl?sselAbteilung_Tirol.rpt" />
+    <None Include="bin\Reports\Personalschl?ssel_Bgld.rpt" />
+    <None Include="bin\Reports\Personalschl?ssel_Stmk.rpt" />
+    <None Include="bin\Reports\Personalschl?ssel_Tirol.rpt" />
+    <None Include="bin\Reports\Pflegebegleitschreiben.rpt" />
+    <None Include="bin\Reports\Pflegebericht.rpt" />
+    <None Include="bin\Reports\Pflegebericht_Klinik.rpt" />
+    <None Include="bin\Reports\Pflegebericht_Zimmernummer.rpt" />
+    <None Include="bin\Reports\PflegegeldantragKontrolle.rpt" />
+    <None Include="bin\Reports\Pflegeplan.rpt" />
+    <None Include="bin\Reports\Pflegequalit?t.rpt" />
+    <None Include="bin\Reports\PflegeStufenBericht.rpt" />
+    <None Include="bin\Reports\PflegeStufenBericht1.rpt" />
+    <None Include="bin\Reports\PflegeStufenBerichtOhneKlinik.rpt" />
+    <None Include="bin\Reports\POP - Entwicklungsumgebung.rpt" />
+    <None Include="bin\Reports\POP.rpt" />
+    <None Include="bin\Reports\rechnung.rtf" />
+    <None Include="bin\Reports\rechnungHauser.rtf" />
+    <None Include="bin\Reports\Rechnung_adcura.rtf" />
+    <None Include="bin\Reports\Rechnung_adcura_Bernstein.rtf" />
+    <None Include="bin\Reports\Rechnung_Hauser.rtf" />
+    <None Include="bin\Reports\Rechnung_Standard.rtf" />
+    <None Include="bin\Reports\Rezeptgeb?hrenbefreiung.rpt" />
+    <None Include="bin\Reports\Rezeptgeb?hrenbefreiungAlphabetisch.rpt" />
+    <None Include="bin\Reports\rptAufgabenListe.rpt" />
+    <None Include="bin\Reports\rptAufgabenListeBarcode.rpt" />
+    <None Include="bin\Reports\rptBuchungsliste.rpt" />
+    <None Include="bin\Reports\rptDienstplan.rpt" />
+    <None Include="bin\Reports\rptKonto?bersicht.rpt" />
+    <None Include="bin\Reports\rptPflegerKarte.rpt" />
+    <None Include="bin\Reports\rptSubMedDaten.rpt" />
+    <None Include="bin\Reports\rptsubMedikamentenblatt.rpt" />
+    <None Include="bin\Reports\SonderLeistungskatalog.rpt" />
+    <None Include="bin\Reports\Standardprozedur.rpt" />
+    <None Include="bin\Reports\Standardprozedurenliste.rpt" />
+    <None Include="bin\Reports\Statistik.rpt" />
+    <None Include="bin\Reports\Suchtgiftschrankschl?sselliste.rpt" />
+    <None Include="bin\Reports\Symptomliste.rpt" />
+    <None Include="bin\Reports\Taschengeld.rpt" />
+    <None Include="bin\Reports\Termine.rpt" />
+    <None Include="bin\Reports\Termine1.rpt" />
+    <None Include="bin\Reports\Termine2.rpt" />
+    <None Include="bin\Reports\Termine3.rpt" />
+    <None Include="bin\Reports\Termine4.rpt" />
+    <None Include="bin\Reports\test.xls" />
+    <None Include="bin\Reports\Uebergabebericht_SortZiNr.rpt" />
+    <None Include="bin\Reports\Unterbringung.rpt" />
+    <None Include="bin\Reports\Unterbringung2010.rpt" />
+    <None Include="bin\Reports\UnterbringungenKlient.rpt" />
+    <None Include="bin\Reports\VerabreichteMedikamente.rpt" />
+    <None Include="bin\Reports\VerrechnetePflegestufen.rpt" />
+    <None Include="bin\Reports\Verwahrte Gegenst?nde.rpt" />
+    <None Include="bin\Reports\Vitalzeichen_Klinik.rpt" />
+    <None Include="bin\Reports\VOBestellvorschl?ge.rpt" />
+    <None Include="bin\Reports\VOErfassen.rpt" />
+    <None Include="bin\Reports\VOLieferungen.rpt" />
+    <None Include="bin\Reports\Wundbericht.rpt" />
+    <None Include="bin\Reports\Wunddokumentation.rpt" />
+    <None Include="bin\Reports\Zeitstatistik.rpt" />
+    <None Include="bin\Reports\Zielliste.rpt" />
+    <None Include="bin\SubReports\Wundtherapie.rpt" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Verrechnete Pflegestufen.dynreportlink" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Barcode\idc_light_v414_update.exe" />
+    <Content Include="bin\Barcode\ser2pl.inf" />
+    <Content Include="bin\Database\Formulare.sql" />
+    <Content Include="bin\Database\GridLayouts.sql" />
+    <Content Include="bin\Database\PMDS_110214_Bis_131128.sql" />
+    <Content Include="bin\Database\PMDS_131129_Bis_140115.sql" />
+    <Content Include="bin\Database\PMDS_140115_Bis_140317.sql" />
+    <Content Include="bin\Database\PMDS_140318_Bis_140416.sql" />
+    <Content Include="bin\Database\PMDS_140417_Bis_laufend.sql" />
+    <Content Include="bin\Database\PMDS_3700_Bis_110214.sql" />
+    <Content Include="bin\Database\PMDS_INDIZES.sql" />
+    <Content Include="bin\Database\PMDS_INDIZES_2.sql" />
+    <Content Include="bin\Database\PMDS_INDIZES_3.sql" />
+    <Content Include="bin\Database\PMDS_PEP_120319.sql" />
+    <Content Include="bin\Database\PMDS_PEP_DEL_OPTIMIERUNGSTABELLEN.sql" />
+    <Content Include="bin\Database\PMDS_QS2_130525.sql" />
+    <Content Include="bin\Database\PMDS_QS2_Einspielung.sql" />
+    <Content Include="bin\Database\POP-RessourcenEinf?gen.sql" />
+    <Content Include="bin\Database\POP.sql" />
+    <Content Include="bin\Database\QS2-Abfragen.sql" />
+    <Content Include="bin\Database\ReplacePOPMa?nahmen.sql" />
+    <Content Include="bin\Forms\Analyse Pflegedokumentation.jpg" />
+    <Content Include="bin\Forms\Anamnese .. nach Krohwinkel _AEDL_.jpg" />
+    <Content Include="bin\Forms\Anamnese .. nach Orem.jpg" />
+    <Content Include="bin\Forms\Anamnese .. nach POP.jpg" />
+    <Content Include="bin\Forms\Anlassbezogene_Hygienevisite.jpg" />
+    <Content Include="bin\Forms\Barthel.jpg" />
+    <Content Include="bin\Forms\Biografie.jpg" />
+    <Content Include="bin\Forms\Braden.jpg" />
+    <Content Include="bin\Forms\CMAI.JPG" />
+    <Content Include="bin\Forms\Dekubitus Braden 2010.jpg" />
+    <Content Include="bin\Forms\Dekubitus Braden.jpg" />
+    <Content Include="bin\Forms\Dekubitus Norton.jpg" />
+    <Content Include="bin\Forms\Doloplus2.jpg" />
+    <Content Include="bin\Forms\Fallbesprechung.jpg" />
+    <Content Include="bin\Forms\GDS.jpg" />
+    <Content Include="bin\Forms\Hauser-Abgangsanzeige.jpg" />
+    <Content Include="bin\Forms\Hauser-AbgangsanzeigeSelbstzahler.jpg" />
+    <Content Include="bin\Forms\Hauser-Aufnahmeanzeige.jpg" />
+    <Content Include="bin\Forms\Hauser-AufnahmeanzeigeSelbstzahler.jpg" />
+    <Content Include="bin\Forms\HMB-M.jpg" />
+    <Content Include="bin\Forms\IGAP.jpg" />
+    <Content Include="bin\Forms\Karnofsky-Skala.jpg" />
+    <Content Include="bin\Forms\MMSE.jpg" />
+    <Content Include="bin\Forms\MNA.jpg" />
+    <Content Include="bin\Forms\Morse.jpg" />
+    <Content Include="bin\Forms\MZ-Assessment.JPG" />
+    <Content Include="bin\Forms\MZ-Di?tologie-Assessment.jpg" />
+    <Content Include="bin\Forms\MZ-Di?tologie-Aufbauphase.jpg" />
+    <Content Include="bin\Forms\MZ-Di?tologie-Ern?hrungsplan.jpg" />
+    <Content Include="bin\Forms\MZ-Revers-Kurz.jpg" />
+    <Content Include="bin\Forms\MZ-Revers.jpg" />
+    <Content Include="bin\Forms\MZ-Sturzprotokoll.jpg" />
+    <Content Include="bin\Forms\Norton.jpg" />
+    <Content Include="bin\Forms\Pflegevisite.jpg" />
+    <Content Include="bin\Forms\Pflegevisite2.jpg" />
+    <Content Include="bin\Forms\Schmerz.jpg" />
+    <Content Include="bin\Forms\Sturz.jpg" />
+    <Content Include="bin\Forms\Sturzprotokoll.jpg" />
+    <Content Include="bin\Forms\Sturzprotokoll2.jpg" />
+    <Content Include="bin\Forms\Tinetti.jpg" />
+    <Content Include="bin\Launcher\Launcher.exe" />
+    <Content Include="bin\OnlineFormulare\Allgemein.jpg" />
+    <Content Include="bin\OnlineFormulare\Behindertenausweis.jpg" />
+    <Content Include="bin\OnlineFormulare\IGSplitter40.ocx" />
+    <Content Include="bin\OnlineFormulare\OnlineForms.exe" />
+    <Content Include="bin\OnlineFormulare\Pflegegeld1.jpg" />
+    <Content Include="bin\OnlineFormulare\Pflegegeld2.jpg" />
+    <Content Include="bin\OnlineFormulare\Sozialhilfe.jpg" />
+    <Content Include="bin\OnlineFormulare\TirolBehindertenausweis.jpg" />
+    <Content Include="bin\OnlineFormulare\TirolGrundsicherungAlte.jpg" />
+    <Content Include="bin\OnlineFormulare\TirolGrundsicherungErkl?rung.jpg" />
+    <Content Include="bin\OnlineFormulare\TirolGrundsicherungNiederschrift.jpg" />
+    <Content Include="bin\OnlineFormulare\TirolGrundsicherungPflege.jpg" />
+    <Content Include="bin\OnlineFormulare\TirolMain.jpg" />
+    <Content Include="bin\Reports\Abwesende Klienten.jpg" />
+    <Content Include="bin\Reports\Abwesenheitsliste.jpg" />
+    <Content Include="bin\Reports\Aethiologieliste.jpg" />
+    <Content Include="bin\Reports\AktuelleBelegung.JPG" />
+    <Content Include="bin\Reports\AktuellePflegeStufen.jpg" />
+    <Content Include="bin\Reports\Altersstruktur Durchschnitt.jpg" />
+    <Content Include="bin\Reports\Altersstruktur.jpg" />
+    <Content Include="bin\Reports\Anamnesen.jpg" />
+    <Content Include="bin\Reports\AnforderungVisite.jpg" />
+    <Content Include="bin\Reports\Anmeldung Fu?pflege.JPG" />
+    <Content Include="bin\Reports\Arztabrechnung-Statistik.jpg" />
+    <Content Include="bin\Reports\Arztabrechnung.jpg" />
+    <Content Include="bin\Reports\Assessments.jpg" />
+    <Content Include="bin\Reports\Aufenthaltsdauer.jpg" />
+    <Content Include="bin\Reports\Auswahlgruppen.jpg" />
+    <Content Include="bin\Reports\Belegungsliste.JPG" />
+    <Content Include="bin\Reports\Benutzer je Gruppe.jpg" />
+    <Content Include="bin\Reports\Benutzergruppen-Rechte.jpg" />
+    <Content Include="bin\Reports\Benutzerliste kurz.jpg" />
+    <Content Include="bin\Reports\Benutzerliste lang.jpg" />
+    <Content Include="bin\Reports\BestellungMedikamente.xml" />
+    <Content Include="bin\Reports\Bewerberliste.jpg" />
+    <Content Include="bin\Reports\Bewerberstammdatenblatt.jpg" />
+    <Content Include="bin\Reports\Bewohnerkartei.jpg" />
+    <Content Include="bin\Reports\Biografie.jpg" />
+    <Content Include="bin\Reports\BMI-Jahresbericht_Monat.jpg" />
+    <Content Include="bin\Reports\BMI-Jahresbericht_Woche.jpg" />
+    <Content Include="bin\Reports\Dekurse.jpg" />
+    <Content Include="bin\Reports\Dekurse_Klinik.jpg" />
+    <Content Include="bin\Reports\DepotgeldListe.JPG" />
+    <Content Include="bin\Reports\DiagnosenUndMedikamente.jpg" />
+    <Content Include="bin\Reports\Dienst?bergabe.jpg" />
+    <Content Include="bin\Reports\dsRepMedikamentenBlatt.xml" />
+    <Content Include="bin\Reports\Entlassene Klienten.jpg" />
+    <Content Include="bin\Reports\Evaluierungsbericht.jpg" />
+    <Content Include="bin\Reports\Evidenzliste.JPG" />
+    <Content Include="bin\Reports\Geburtstagsliste.jpg" />
+    <Content Include="bin\Reports\Heimvertrag.jpg" />
+    <Content Include="bin\Reports\Hilfsmittel.jpg" />
+    <Content Include="bin\Reports\Impfliste.jpg" />
+    <Content Include="bin\Reports\Infektionen.jpg" />
+    <Content Include="bin\Reports\Infektionsstatistik.jpg" />
+    <Content Include="bin\Reports\Jubilaeumsliste.jpg" />
+    <Content Include="bin\Reports\Klienten je Arzt.jpg" />
+    <Content Include="bin\Reports\Klientenbericht.jpg" />
+    <Content Include="bin\Reports\Klientenliste alphabetisch.jpg" />
+    <Content Include="bin\Reports\Klientenliste Termin.jpg" />
+    <Content Include="bin\Reports\Klientenstammdatenblatt.jpg" />
+    <Content Include="bin\Reports\Klienten_Sprachliste.jpg" />
+    <Content Include="bin\Reports\Kontrolle_RM.jpg" />
+    <Content Include="bin\Reports\Kostentraegerliste %28allgemein%29.jpg" />
+    <Content Include="bin\Reports\Kostentraegerliste fuer Klienten.jpg" />
+    <Content Include="bin\Reports\Kostformliste.jpg" />
+    <Content Include="bin\Reports\Krohwinkel.jpg" />
+    <Content Include="bin\Reports\LaufendeUnterbringungen.jpg" />
+    <Content Include="bin\Reports\Leistungskatalog.jpg" />
+    <Content Include="bin\Reports\Massnahmenliste.jpg" />
+    <Content Include="bin\Reports\Medikamentenblatt.JPG" />
+    <Content Include="bin\Reports\Meldezettel.jpg" />
+    <Content Include="bin\Reports\Mobilisierungsprotokoll.JPG" />
+    <Content Include="bin\Reports\MZ_Biografie_Angehoerige.jpg" />
+    <Content Include="bin\Reports\Notfall.JPG" />
+    <Content Include="bin\Reports\Notfallliste.jpg" />
+    <Content Include="bin\Reports\Orem1.jpg" />
+    <Content Include="bin\Reports\PDX alphabetisch.jpg" />
+    <Content Include="bin\Reports\PDX nach Krohwinkel.jpg" />
+    <Content Include="bin\Reports\PDX nach Orem.jpg" />
+    <Content Include="bin\Reports\Personalschl?sselAbteilung_Stmk.jpg" />
+    <Content Include="bin\Reports\Personalschl?sselAbteilung_Tirol.jpg" />
+    <Content Include="bin\Reports\Personalschl?ssel_Bgld.jpg" />
+    <Content Include="bin\Reports\Personalschl?ssel_Stmk.jpg" />
+    <Content Include="bin\Reports\Personalschl?ssel_Tirol.jpg" />
+    <Content Include="bin\Reports\Pflegebegleitschreiben.jpg" />
+    <Content Include="bin\Reports\Pflegebericht.jpg" />
+    <Content Include="bin\Reports\Pflegebericht_Klinik.JPG" />
+    <Content Include="bin\Reports\PflegegeldantragKontrolle.jpg" />
+    <Content Include="bin\Reports\Pflegeplan.jpg" />
+    <Content Include="bin\Reports\Pflegequalit?t.jpg" />
+    <Content Include="bin\Reports\PflegestufenBericht.jpg" />
+    <Content Include="bin\Reports\Pflegevisite.xml" />
+    <Content Include="bin\Reports\POP.jpg" />
+    <Content Include="bin\Reports\Rezeptgeb?hrenbefreiung.jpg" />
+    <Content Include="bin\Reports\Rezeptgeb?hrenbefreiungAlphabetisch.jpg" />
+    <Content Include="bin\Reports\rptBuchungsliste.jpg" />
+    <Content Include="bin\Reports\rptKonto?bersicht.jpg" />
+    <Content Include="bin\Reports\SonderLeistungskatalog.jpg" />
+    <Content Include="bin\Reports\Standardprozedur.JPG" />
+    <Content Include="bin\Reports\Standardprozedurenliste.jpg" />
+    <Content Include="bin\Reports\Statistik.jpg" />
+    <Content Include="bin\Reports\Suchtgiftschrankschl?sselliste.jpg" />
+    <Content Include="bin\Reports\Symptomliste.jpg" />
+    <Content Include="bin\Reports\Termine.xml" />
+    <Content Include="bin\Reports\Uebergabebericht_SortZiNr.JPG" />
+    <Content Include="bin\Reports\Unterbringung.jpg" />
+    <Content Include="bin\Reports\Unterbringung2010.jpg" />
+    <Content Include="bin\Reports\UnterbringungenKlient.JPG" />
+    <Content Include="bin\Reports\VerabreichteMedikamente.JPG" />
+    <Content Include="bin\Reports\VerrechnetePflegestufen.jpg" />
+    <Content Include="bin\Reports\Verwahrte Gegenst?nde.JPG" />
+    <Content Include="bin\Reports\Vitalzeichen_Klinik.JPG" />
+    <Content Include="bin\Reports\Wundbericht.JPG" />
+    <Content Include="bin\Reports\Wunddokumentation.JPG" />
+    <Content Include="bin\Reports\Zeitstatistik.jpg" />
+    <Content Include="bin\Reports\Zielliste.jpg" />
+    <Content Include="changes Runtime.txt" />
+    <Content Include="ICO_pmds.ico" />
+    <Content Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="sql.hl\PMDS.hl.sql" />
+    <None Include="sql.hl\old\sql.hl.20130212.sql" />
+    <None Include="sql.hl\old\sql.hl.20120213.sql" />
+    <None Include="app.config" />
+    <None Include="db.sql" />
+    <None Include="launcherVorlage.Config" />
+    <None Include="PMDSVorlage.Config" />
+    <None Include="sql.hl\old\sql.hl.20120101.sql" />
+    <None Include="sql.hl\old\sql.hl.20120111.sql" />
+    <None Include="sql.hl\old\sql.hl.20120202.sql" />
+    <None Include="sql.hl\sql.hl.sonstigeSkripts\AllePatientenL?schen.os.sql" />
+    <None Include="sql.hl\sql.hl.sonstigeSkripts\DatenbankLeeren.os.sql" />
+    <None Include="sql.hl\sql.hl.sonstigeSkripts\os_db_111129_2011.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMDS.Abrechnung.Logik\PMDS.Calc.Logic.vbproj">
+      <Project>{b339c14c-b89c-4089-97aa-81d118a737b4}</Project>
+      <Name>PMDS.Calc.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMDS.Global\PMDS.Core.csproj">
+      <Project>{b1d2bccf-dcf5-4363-b0dd-630382f190a5}</Project>
+      <Name>PMDS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMDS.GUI.VB\PMDS.GUI.VB.vbproj">
+      <Project>{b7669b9a-b0f4-4b3a-8778-67f9fb324635}</Project>
+      <Name>PMDS.GUI.VB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMDS.GUI\PMDS.GUI.csproj">
+      <Project>{b9ad1f88-a785-4d1d-9062-2de8572c2126}</Project>
+      <Name>PMDS.GUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QS2.Desktop.Ressources.Auto10\QS2.Desktop.ControlManagment.vbproj">
+      <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
+      <Name>QS2.Desktop.ControlManagment</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+</Project>

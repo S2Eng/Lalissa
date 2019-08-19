@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Index</title>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+	<style>
+		html,body {
+			margin: 0; padding: 0px;
+			height:100%; 
+			min-height:100%;
+			background-color: rgb(233,232,220);
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			color: black;
+		}
+
+		body {font-size:75%;position:relative; margin-top:-1px; border-style: solid solid solid solid;	border-color: rgb(172,168,153);	border-width: 0px 0px 1px 0px;}
+		a { text-decoration:none; color:#06c }
+		form {padding:5px; margin:0px;}
+	</style>
+</head>
+<body style="direction: ltr;">
+	<form>
+	Look for:<br /><input style="width:100%" onKeyDown="check_input(this.value,get_match)" onKeyUp="check_input(this.value,get_match)"/>
+	</form>
+
+	<script>
+		var words = new Array(
+"&lt;default&gt; Namespace","Action Property","ActualVersion Field","AddconfigRow (String, String) Method","AddconfigRow (configRow) Method","CfgFile  Constructor","CfgFile (String) Constructor","CfgFile Class","ClientConfigPath Field","ClientConfigPath_Orig Field","ClientProgramPath Field","ClientProgramPath_Orig Field","Clone Method {Launcher.dsConfig.configDataTable}","Clone Method {Launcher.dsConfig}","CopyFile Method","Count Property","CreateInstance Method","DeleteDirectory Method","FindBykey Method","FindWindow Method","GetRowType Method","GetSchemaSerializable Method","GetTypedDataSetSchema Method","GetTypedTableSchema Method","InfoUpdate Field","InitializeDerivedDataSet Method","InstNext_Config Field","InstNext_Root Field","Item Property","Launcher Namespace","Launcher Reference","NewRowFromBuilder Method","NewconfigRow Method","OnRowChanged Method","OnRowChanging Method","OnRowDeleted Method","OnRowDeleting Method","Program Class","ReadXmlSerializable Method","Relations Property","RemoveconfigRow Method","Row Property","SHGetMalloc Method","Save Method","SchemaSerializationMode Property","SendMessageTimeoutFlags Enumeration","ServerConfigPath Field","ServerProgramPath Field","ShouldSerializeRelations Method","ShouldSerializeTables Method","StartFromShare Field","Tables Property","ThrowMessage Method","UpdateVersion Field","WaitMilli Method","checkPMDSIsRunning Method","checkPath Method","checkUpdate Method","commentValue Method","config Class","config Constructor","config Property","config1 Field","configDataTable  Constructor","configDataTable (SerializationInfo, StreamingContext) Constructor","configDataTable Class","configFile Field","configRootPath Field","configRow Class","configRowChangeEvent Class","configRowChangeEvent Constructor","configRowChangeEventHandler Delegate","configRowChanged Event","configRowChanging Event","configRowDeleted Event","configRowDeleting Event","copyFileType Field","copyFolder_rek Method","debugmode Field","deleteValue Method","dirVersionInstalled_Config Field","dirVersionInstalled_Root Field","dsConfig  Constructor","dsConfig (SerializationInfo, StreamingContext) Constructor","dsConfig Class","dsconfigAll Field","exportToXml Method","fileName Property","frmInstallingNewVersion Class","frmInstallingNewVersion Constructor","frmLauncher2 Class","frmLauncher2 Constructor","getAllCaptions Method","getCaption Method","getDirectory Method","getKey Method","getProgramRoot Method","getProgramRootRoot Method","getValue Method","key Property","keyColumn Property","log Class","logPathPMDS Field","logPathUpdate Field","lstVersionsRemoveConfig Field","lstVersionsRemoveRoot Field","msgBox Method","readAll Method","run Method","runGarbColl Method","sConfigFile Field","sConfigPath Field","sProgramFile Field","sProgramPath Field","searchKeyArg Method","searchLastVersionToInstall Method","searchNewNextFolder Method","setValue Method","showSplash Method","thStart_CopyActInstToNext Method","thStart_removePMDSInstallation Method","th_CopyActInstToNext Method","th_removePMDSInstallation Method","thread_CopyNextInstReady Field","thread_RemoveOldInst Field","ui Class","update Class","val Property","valColumn Property","waitUntilUpdateThreadsReady Method","writeEventLog Method","writeLog Method"
+		);
+		
+		
+		var oldHighlight = 0;
+		var oldKey = "";
+		
+		function get_match(text) {
+		    var ltext = text.toLowerCase();
+		    for(i in words) {
+		        if(words[i].toLowerCase().indexOf(ltext) == "0") {
+		            return words[i];
+		        }
+		    }
+		    return "";
+		}
+		
+		function highlight(keyword) {
+		    if(oldHighlight) oldHighlight.className = "";
+		    var el = parent.frames['zindex'].document.getElementById("w_"+keyword);
+		    el.className="highlighted";
+		    oldHighlight = el;
+		}
+		
+		function check_input(text, matchfun) {
+		    if(text!=oldKey) {
+		        var keyword = matchfun(text);
+		        if(keyword) {       
+		            highlight(keyword);
+		            parent.frames['zindex'].document.getElementById('w_'+keyword).scrollIntoView();
+		        }
+		        oldKey = text;
+		    }
+		}
+	</script>
+</body>
+</html>
+

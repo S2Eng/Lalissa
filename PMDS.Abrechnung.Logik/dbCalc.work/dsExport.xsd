@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsExport" targetNamespace="http://tempuri.org/dsExport.xsd" xmlns:mstns="http://tempuri.org/dsExport.xsd" xmlns="http://tempuri.org/dsExport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsExport" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsExport" msprop:Generator_UserDSName="dsExport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ExportKostentraeger" msprop:Generator_UserTableName="ExportKostentraeger" msprop:Generator_RowEvArgName="ExportKostentraegerRowChangeEvent" msprop:Generator_TableVarName="tableExportKostentraeger" msprop:Generator_TablePropName="ExportKostentraeger" msprop:Generator_RowDeletingName="ExportKostentraegerRowDeleting" msprop:Generator_RowChangingName="ExportKostentraegerRowChanging" msprop:Generator_RowDeletedName="ExportKostentraegerRowDeleted" msprop:Generator_RowEvHandlerName="ExportKostentraegerRowChangeEventHandler" msprop:Generator_TableClassName="ExportKostentraegerDataTable" msprop:Generator_RowChangedName="ExportKostentraegerRowChanged" msprop:Generator_RowClassName="ExportKostentraegerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KontoNr" msprop:Generator_ColumnVarNameInTable="columnKontoNr" msprop:Generator_ColumnPropNameInRow="KontoNr" msprop:Generator_ColumnPropNameInTable="KontoNrColumn" msprop:Generator_UserColumnName="KontoNr" type="xs:string" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
+              <xs:element name="Message" msprop:Generator_ColumnVarNameInTable="columnMessage" msprop:Generator_ColumnPropNameInRow="Message" msprop:Generator_ColumnPropNameInTable="MessageColumn" msprop:Generator_UserColumnName="Message" type="xs:string" />
+              <xs:element name="Matchcode" msprop:Generator_ColumnVarNameInTable="columnMatchcode" msprop:Generator_ColumnPropNameInRow="Matchcode" msprop:Generator_ColumnPropNameInTable="MatchcodeColumn" msprop:Generator_UserColumnName="Matchcode" type="xs:string" />
+              <xs:element name="Strasse" msprop:Generator_ColumnVarNameInTable="columnStrasse" msprop:Generator_ColumnPropNameInRow="Strasse" msprop:Generator_ColumnPropNameInTable="StrasseColumn" msprop:Generator_UserColumnName="Strasse" type="xs:string" />
+              <xs:element name="Postltz" msprop:Generator_ColumnVarNameInTable="columnPostltz" msprop:Generator_ColumnPropNameInRow="Postltz" msprop:Generator_ColumnPropNameInTable="PostltzColumn" msprop:Generator_UserColumnName="Postltz" type="xs:string" />
+              <xs:element name="Ort" msprop:Generator_ColumnVarNameInTable="columnOrt" msprop:Generator_ColumnPropNameInRow="Ort" msprop:Generator_ColumnPropNameInTable="OrtColumn" msprop:Generator_UserColumnName="Ort" type="xs:string" />
+              <xs:element name="Platzhalter" msprop:Generator_ColumnVarNameInTable="columnPlatzhalter" msprop:Generator_ColumnPropNameInRow="Platzhalter" msprop:Generator_ColumnPropNameInTable="PlatzhalterColumn" msprop:Generator_UserColumnName="Platzhalter" type="xs:string" />
+              <xs:element name="Sammelkonto" msprop:Generator_ColumnVarNameInTable="columnSammelkonto" msprop:Generator_ColumnPropNameInRow="Sammelkonto" msprop:Generator_ColumnPropNameInTable="SammelkontoColumn" msprop:Generator_UserColumnName="Sammelkonto" type="xs:string" />
+              <xs:element name="IDKostenträger" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKostenträger" msprop:Generator_ColumnPropNameInRow="IDKostenträger" msprop:Generator_ColumnPropNameInTable="IDKostenträgerColumn" msprop:Generator_UserColumnName="IDKostenträger" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ExportBMD" msprop:Generator_UserTableName="ExportBMD" msprop:Generator_RowEvArgName="ExportBMDRowChangeEvent" msprop:Generator_TableVarName="tableExportBMD" msprop:Generator_TablePropName="ExportBMD" msprop:Generator_RowDeletingName="ExportBMDRowDeleting" msprop:Generator_RowChangingName="ExportBMDRowChanging" msprop:Generator_RowDeletedName="ExportBMDRowDeleted" msprop:Generator_RowEvHandlerName="ExportBMDRowChangeEventHandler" msprop:Generator_TableClassName="ExportBMDDataTable" msprop:Generator_RowChangedName="ExportBMDRowChanged" msprop:Generator_RowClassName="ExportBMDRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="satzart" msdata:Caption="Satzart" msprop:Generator_ColumnVarNameInTable="columnSatzart" msprop:Generator_ColumnPropNameInRow="Satzart" msprop:Generator_ColumnPropNameInTable="SatzartColumn" msprop:Generator_UserColumnName="satzart" type="xs:int" />
+              <xs:element name="konto" msprop:Generator_ColumnVarNameInTable="columnkonto" msprop:Generator_ColumnPropNameInRow="konto" msprop:Generator_ColumnPropNameInTable="kontoColumn" msprop:Generator_UserColumnName="konto" type="xs:string" />
+              <xs:element name="buchdatum" msprop:Generator_ColumnVarNameInTable="columnbuchdatum" msprop:Generator_ColumnPropNameInRow="buchdatum" msprop:Generator_ColumnPropNameInTable="buchdatumColumn" msprop:Generator_UserColumnName="buchdatum" type="xs:string" />
+              <xs:element name="gkonto" msprop:Generator_ColumnVarNameInTable="columngkonto" msprop:Generator_ColumnPropNameInRow="gkonto" msprop:Generator_ColumnPropNameInTable="gkontoColumn" msprop:Generator_UserColumnName="gkonto" type="xs:string" />
+              <xs:element name="belegnr" msprop:Generator_ColumnVarNameInTable="columnbelegnr" msprop:Generator_ColumnPropNameInRow="belegnr" msprop:Generator_ColumnPropNameInTable="belegnrColumn" msprop:Generator_UserColumnName="belegnr" type="xs:string" />
+              <xs:element name="belegdatum" msprop:Generator_ColumnVarNameInTable="columnbelegdatum" msprop:Generator_ColumnPropNameInRow="belegdatum" msprop:Generator_ColumnPropNameInTable="belegdatumColumn" msprop:Generator_UserColumnName="belegdatum" type="xs:string" />
+              <xs:element name="steuercode" msprop:Generator_ColumnVarNameInTable="columnsteuercode" msprop:Generator_ColumnPropNameInRow="steuercode" msprop:Generator_ColumnPropNameInTable="steuercodeColumn" msprop:Generator_UserColumnName="steuercode" type="xs:int" />
+              <xs:element name="prozent" msprop:Generator_ColumnVarNameInTable="columnprozent" msprop:Generator_ColumnPropNameInRow="prozent" msprop:Generator_ColumnPropNameInTable="prozentColumn" msprop:Generator_UserColumnName="prozent" type="xs:int" />
+              <xs:element name="buchcode" msprop:Generator_ColumnVarNameInTable="columnbuchcode" msprop:Generator_ColumnPropNameInRow="buchcode" msprop:Generator_ColumnPropNameInTable="buchcodeColumn" msprop:Generator_UserColumnName="buchcode" type="xs:string" />
+              <xs:element name="betrag" msprop:Generator_ColumnVarNameInTable="columnbetrag" msprop:Generator_ColumnPropNameInRow="betrag" msprop:Generator_ColumnPropNameInTable="betragColumn" msprop:Generator_UserColumnName="betrag" type="xs:decimal" />
+              <xs:element name="steuer" msprop:Generator_ColumnVarNameInTable="columnsteuer" msprop:Generator_ColumnPropNameInRow="steuer" msprop:Generator_ColumnPropNameInTable="steuerColumn" msprop:Generator_UserColumnName="steuer" type="xs:decimal" />
+              <xs:element name="text" msprop:Generator_ColumnVarNameInTable="columntext" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_UserColumnName="text" type="xs:string" />
+              <xs:element name="zziel" msprop:Generator_ColumnVarNameInTable="columnzziel" msprop:Generator_ColumnPropNameInRow="zziel" msprop:Generator_ColumnPropNameInTable="zzielColumn" msprop:Generator_UserColumnName="zziel" type="xs:string" />
+              <xs:element name="skontopz" msprop:Generator_ColumnVarNameInTable="columnskontopz" msprop:Generator_ColumnPropNameInRow="skontopz" msprop:Generator_ColumnPropNameInTable="skontopzColumn" msprop:Generator_UserColumnName="skontopz" type="xs:string" />
+              <xs:element name="skontotage" msprop:Generator_ColumnVarNameInTable="columnskontotage" msprop:Generator_ColumnPropNameInRow="skontotage" msprop:Generator_ColumnPropNameInTable="skontotageColumn" msprop:Generator_UserColumnName="skontotage" type="xs:string" />
+              <xs:element name="buchsymbol" msprop:Generator_ColumnVarNameInTable="columnbuchsymbol" msprop:Generator_ColumnPropNameInRow="buchsymbol" msprop:Generator_ColumnPropNameInTable="buchsymbolColumn" msprop:Generator_UserColumnName="buchsymbol" type="xs:string" />
+              <xs:element name="TypBill" msprop:Generator_ColumnVarNameInTable="columnTypBill" msprop:Generator_ColumnPropNameInRow="TypBill" msprop:Generator_ColumnPropNameInTable="TypBillColumn" msprop:Generator_UserColumnName="TypBill" type="xs:string" />
+              <xs:element name="ExportiertJN" msprop:Generator_ColumnVarNameInTable="columnExportiertJN" msprop:Generator_ColumnPropNameInRow="ExportiertJN" msprop:Generator_ColumnPropNameInTable="ExportiertJNColumn" msprop:Generator_UserColumnName="ExportiertJN" type="xs:boolean" />
+              <xs:element name="IDBillHeader" msprop:Generator_ColumnVarNameInTable="columnIDBillHeader" msprop:Generator_ColumnPropNameInRow="IDBillHeader" msprop:Generator_ColumnPropNameInTable="IDBillHeaderColumn" msprop:Generator_UserColumnName="IDBillHeader" type="xs:string" />
+              <xs:element name="IDBill" msprop:Generator_ColumnVarNameInTable="columnIDBill" msprop:Generator_ColumnPropNameInRow="IDBill" msprop:Generator_ColumnPropNameInTable="IDBillColumn" msprop:Generator_UserColumnName="IDBill" type="xs:string" />
+              <xs:element name="IDKostIntern" msprop:Generator_ColumnVarNameInTable="columnIDKostIntern" msprop:Generator_ColumnPropNameInRow="IDKostIntern" msprop:Generator_ColumnPropNameInTable="IDKostInternColumn" msprop:Generator_UserColumnName="IDKostIntern" type="xs:string" />
+              <xs:element name="IDSR" msprop:Generator_ColumnVarNameInTable="columnIDSR" msprop:Generator_ColumnPropNameInRow="IDSR" msprop:Generator_ColumnPropNameInTable="IDSRColumn" msprop:Generator_UserColumnName="IDSR" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="dsBenutzerBezug" targetNamespace="http://www.tempuri.org/dsBenutzerBezug.xsd" xmlns:mstns="http://www.tempuri.org/dsBenutzerBezug.xsd" xmlns="http://www.tempuri.org/dsBenutzerBezug.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="dsBenutzerBezug" msdata:IsDataSet="true" msdata:Locale="de-AT">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="BenutzerBezug">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" />
+              <xs:element name="IDAufenthaltVerlauf" msdata:DataType="System.Guid, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:BenutzerBezug" />
+      <xs:field xpath="mstns:IDBenutzer" />
+      <xs:field xpath="mstns:IDAufenthaltVerlauf" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

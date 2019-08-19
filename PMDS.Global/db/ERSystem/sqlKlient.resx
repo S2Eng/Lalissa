@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="sqlSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlSelectCommand1.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDAdresse, IDKontakt, Vorname, Nachname, Geburtsdatum, Titel, Sexus, Konfision, Familienstand, Staatsb, Klasse, KrankenKasse, BlutGruppe, Resusfaktor, LedigerName, Geburtsort, Voraufenthalt, Angehörige, 
+                         VersicherungsNr, ArbeitslosBezSeit, KrankengeldSeit, Hauptversicherung, ErlernterBeruf, Besonderheit, Betreuer, Sachwalter, SachWalterBelange, SachWalterVon, SachWalterBis, SterbeRegel, Depotinjektion, Hausarzt, 
+                         Vermerk, SterbeDatum, AktuellerDienstgeber, DerzeitigerBeruf, RezeptgebuehrbefreiungJN, PflegegeldantragJN, DatumPflegegeldantrag, PensionsteilungsantragJN, DatumPensionsteilungsantrag, FIBUKonto, RollungVon, 
+                         RollungBis, Adelstitel, Anrede, Initialberuehrung, Klingeln, Wohnsituation, Haustier, LiftJN, WohnungAbgemeldetJN, Haarfarbe, Augenfarbe, BesondereAeusserlicheKennzeichen, Foto, FernsehgebuehrbefreiungJN, 
+                         TelefongebuehrbefreiungJN, BewerberJN, BewerbungaktivJN, PflegeArt, BewerbungDatum, EinzugswunschDatum, AuszugswunschDatum, Zimmerwunsch, Stationswunsch, SonstigeWuensche, BewerbungsGrund, Prioritaet, 
+                         ReligionWunsch, KommunionJN, KrankensalbungJN, BewerberBemerkung, WaescheMarkiert, WaescheWaschen, Zustaendige_Stelle, Groesse, Statur, Namenstag, Kosename, Privatversicherung, PrivPolNr, IDBenutzer, 
+                         PatientenverfuegungJN, PatientenverfuegungBeachtlichJN, PatientverfuegungDatum, PatientverfuegungAnmerkung, Klientennummer, IDAbteilung, abwesenheitenHändBerech, Sollstand, minSaldo, Kennwort, 
+                         blob_Einverständniserklärung, EinverständniserklärungFileType, jpg_Einverständniserklärung, Verstorben, Todeszeitpunkt, DNR, Milieubetreuung, KZUeberlebender, Anatomie, Einzelzimmer, Selbstzahler, IDBereich, 
+                         KürzungLetzterTagAnwesenheit, Behindertenausweis, Sozialcard, IDAdresseSub, IDKontaktSub, Betreuungsstufe, BetreuungsstufeAb, BetreuungsstufeBis, lstSprachen, RezGebBef_RegoAb, RezGebBef_RegoBis, 
+                         RezGebBef_UnbefristetJN, RezGebBef_BefristetJN, RezGebBef_BefristetBis, RezGebBef_WiderrufJN, RezGebBef_WiderrufGrund, RezGebBef_RegoJN, RezGebBef_BefristetAb, RezGebBef_SachwalterJN
+FROM            Patient</value>
+  </data>
+  <metadata name="sqlConn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="sqlInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlInsertCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlInsertCommand1.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Patient] ([ID], [IDAdresse], [IDKontakt], [Vorname], [Nachname], [Geburtsdatum], [Titel], [Sexus], [Konfision], [Familienstand], [Staatsb], [Klasse], [KrankenKasse], [BlutGruppe], [Resusfaktor], [LedigerName], [Geburtsort], [Voraufenthalt], [Angehörige], [VersicherungsNr], [ArbeitslosBezSeit], [KrankengeldSeit], [Hauptversicherung], [ErlernterBeruf], [Besonderheit], [Betreuer], [Sachwalter], [SachWalterBelange], [SachWalterVon], [SachWalterBis], [SterbeRegel], [Depotinjektion], [Hausarzt], [Vermerk], [SterbeDatum], [AktuellerDienstgeber], [DerzeitigerBeruf], [RezeptgebuehrbefreiungJN], [PflegegeldantragJN], [DatumPflegegeldantrag], [PensionsteilungsantragJN], [DatumPensionsteilungsantrag], [FIBUKonto], [RollungVon], [RollungBis], [Adelstitel], [Anrede], [Initialberuehrung], [Klingeln], [Wohnsituation], [Haustier], [LiftJN], [WohnungAbgemeldetJN], [Haarfarbe], [Augenfarbe], [BesondereAeusserlicheKennzeichen], [Foto], [FernsehgebuehrbefreiungJN], [TelefongebuehrbefreiungJN], [BewerberJN], [BewerbungaktivJN], [PflegeArt], [BewerbungDatum], [EinzugswunschDatum], [AuszugswunschDatum], [Zimmerwunsch], [Stationswunsch], [SonstigeWuensche], [BewerbungsGrund], [Prioritaet], [ReligionWunsch], [KommunionJN], [KrankensalbungJN], [BewerberBemerkung], [WaescheMarkiert], [WaescheWaschen], [Zustaendige_Stelle], [Groesse], [Statur], [Namenstag], [Kosename], [Privatversicherung], [PrivPolNr], [IDBenutzer], [PatientenverfuegungJN], [PatientenverfuegungBeachtlichJN], [PatientverfuegungDatum], [PatientverfuegungAnmerkung], [Klientennummer], [IDAbteilung], [abwesenheitenHändBerech], [Sollstand], [minSaldo], [Kennwort], [blob_Einverständniserklärung], [EinverständniserklärungFileType], [jpg_Einverständniserklärung], [Verstorben], [Todeszeitpunkt], [DNR], [Milieubetreuung], [KZUeberlebender], [Anatomie], [Einzelzimmer], [Selbstzahler], [IDBereich], [KürzungLetzterTagAnwesenheit], [Behindertenausweis], [Sozialcard], [IDAdresseSub], [IDKontaktSub], [Betreuungsstufe], [BetreuungsstufeAb], [BetreuungsstufeBis], [lstSprachen], [RezGebBef_RegoAb], [RezGebBef_RegoBis], [RezGebBef_UnbefristetJN], [RezGebBef_BefristetJN], [RezGebBef_BefristetBis], [RezGebBef_WiderrufJN], [RezGebBef_WiderrufGrund], [RezGebBef_RegoJN], [RezGebBef_BefristetAb], [RezGebBef_SachwalterJN]) VALUES (@ID, @IDAdresse, @IDKontakt, @Vorname, @Nachname, @Geburtsdatum, @Titel, @Sexus, @Konfision, @Familienstand, @Staatsb, @Klasse, @KrankenKasse, @BlutGruppe, @Resusfaktor, @LedigerName, @Geburtsort, @Voraufenthalt, @Angehörige, @VersicherungsNr, @ArbeitslosBezSeit, @KrankengeldSeit, @Hauptversicherung, @ErlernterBeruf, @Besonderheit, @Betreuer, @Sachwalter, @SachWalterBelange, @SachWalterVon, @SachWalterBis, @SterbeRegel, @Depotinjektion, @Hausarzt, @Vermerk, @SterbeDatum, @AktuellerDienstgeber, @DerzeitigerBeruf, @RezeptgebuehrbefreiungJN, @PflegegeldantragJN, @DatumPflegegeldantrag, @PensionsteilungsantragJN, @DatumPensionsteilungsantrag, @FIBUKonto, @RollungVon, @RollungBis, @Adelstitel, @Anrede, @Initialberuehrung, @Klingeln, @Wohnsituation, @Haustier, @LiftJN, @WohnungAbgemeldetJN, @Haarfarbe, @Augenfarbe, @BesondereAeusserlicheKennzeichen, @Foto, @FernsehgebuehrbefreiungJN, @TelefongebuehrbefreiungJN, @BewerberJN, @BewerbungaktivJN, @PflegeArt, @BewerbungDatum, @EinzugswunschDatum, @AuszugswunschDatum, @Zimmerwunsch, @Stationswunsch, @SonstigeWuensche, @BewerbungsGrund, @Prioritaet, @ReligionWunsch, @KommunionJN, @KrankensalbungJN, @BewerberBemerkung, @WaescheMarkiert, @WaescheWaschen, @Zustaendige_Stelle, @Groesse, @Statur, @Namenstag, @Kosename, @Privatversicherung, @PrivPolNr, @IDBenutzer, @PatientenverfuegungJN, @PatientenverfuegungBeachtlichJN, @PatientverfuegungDatum, @PatientverfuegungAnmerkung, @Klientennummer, @IDAbteilung, @abwesenheitenHändBerech, @Sollstand, @minSaldo, @Kennwort, @blob_Einverständniserklärung, @EinverständniserklärungFileType, @jpg_Einverständniserklärung, @Verstorben, @Todeszeitpunkt, @DNR, @Milieubetreuung, @KZUeberlebender, @Anatomie, @Einzelzimmer, @Selbstzahler, @IDBereich, @KürzungLetzterTagAnwesenheit, @Behindertenausweis, @Sozialcard, @IDAdresseSub, @IDKontaktSub, @Betreuungsstufe, @BetreuungsstufeAb, @BetreuungsstufeBis, @lstSprachen, @RezGebBef_RegoAb, @RezGebBef_RegoBis, @RezGebBef_UnbefristetJN, @RezGebBef_BefristetJN, @RezGebBef_BefristetBis, @RezGebBef_WiderrufJN, @RezGebBef_WiderrufGrund, @RezGebBef_RegoJN, @RezGebBef_BefristetAb, @RezGebBef_SachwalterJN)</value>
+  </data>
+  <metadata name="sqlUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [Patient] SET [ID] = @ID, [IDAdresse] = @IDAdresse, [IDKontakt] = @IDKontakt, [Vorname] = @Vorname, [Nachname] = @Nachname, [Geburtsdatum] = @Geburtsdatum, [Titel] = @Titel, [Sexus] = @Sexus, [Konfision] = @Konfision, [Familienstand] = @Familienstand, [Staatsb] = @Staatsb, [Klasse] = @Klasse, [KrankenKasse] = @KrankenKasse, [BlutGruppe] = @BlutGruppe, [Resusfaktor] = @Resusfaktor, [LedigerName] = @LedigerName, [Geburtsort] = @Geburtsort, [Voraufenthalt] = @Voraufenthalt, [Angehörige] = @Angehörige, [VersicherungsNr] = @VersicherungsNr, [ArbeitslosBezSeit] = @ArbeitslosBezSeit, [KrankengeldSeit] = @KrankengeldSeit, [Hauptversicherung] = @Hauptversicherung, [ErlernterBeruf] = @ErlernterBeruf, [Besonderheit] = @Besonderheit, [Betreuer] = @Betreuer, [Sachwalter] = @Sachwalter, [SachWalterBelange] = @SachWalterBelange, [SachWalterVon] = @SachWalterVon, [SachWalterBis] = @SachWalterBis, [SterbeRegel] = @SterbeRegel, [Depotinjektion] = @Depotinjektion, [Hausarzt] = @Hausarzt, [Vermerk] = @Vermerk, [SterbeDatum] = @SterbeDatum, [AktuellerDienstgeber] = @AktuellerDienstgeber, [DerzeitigerBeruf] = @DerzeitigerBeruf, [RezeptgebuehrbefreiungJN] = @RezeptgebuehrbefreiungJN, [PflegegeldantragJN] = @PflegegeldantragJN, [DatumPflegegeldantrag] = @DatumPflegegeldantrag, [PensionsteilungsantragJN] = @PensionsteilungsantragJN, [DatumPensionsteilungsantrag] = @DatumPensionsteilungsantrag, [FIBUKonto] = @FIBUKonto, [RollungVon] = @RollungVon, [RollungBis] = @RollungBis, [Adelstitel] = @Adelstitel, [Anrede] = @Anrede, [Initialberuehrung] = @Initialberuehrung, [Klingeln] = @Klingeln, [Wohnsituation] = @Wohnsituation, [Haustier] = @Haustier, [LiftJN] = @LiftJN, [WohnungAbgemeldetJN] = @WohnungAbgemeldetJN, [Haarfarbe] = @Haarfarbe, [Augenfarbe] = @Augenfarbe, [BesondereAeusserlicheKennzeichen] = @BesondereAeusserlicheKennzeichen, [Foto] = @Foto, [FernsehgebuehrbefreiungJN] = @FernsehgebuehrbefreiungJN, [TelefongebuehrbefreiungJN] = @TelefongebuehrbefreiungJN, [BewerberJN] = @BewerberJN, [BewerbungaktivJN] = @BewerbungaktivJN, [PflegeArt] = @PflegeArt, [BewerbungDatum] = @BewerbungDatum, [EinzugswunschDatum] = @EinzugswunschDatum, [AuszugswunschDatum] = @AuszugswunschDatum, [Zimmerwunsch] = @Zimmerwunsch, [Stationswunsch] = @Stationswunsch, [SonstigeWuensche] = @SonstigeWuensche, [BewerbungsGrund] = @BewerbungsGrund, [Prioritaet] = @Prioritaet, [ReligionWunsch] = @ReligionWunsch, [KommunionJN] = @KommunionJN, [KrankensalbungJN] = @KrankensalbungJN, [BewerberBemerkung] = @BewerberBemerkung, [WaescheMarkiert] = @WaescheMarkiert, [WaescheWaschen] = @WaescheWaschen, [Zustaendige_Stelle] = @Zustaendige_Stelle, [Groesse] = @Groesse, [Statur] = @Statur, [Namenstag] = @Namenstag, [Kosename] = @Kosename, [Privatversicherung] = @Privatversicherung, [PrivPolNr] = @PrivPolNr, [IDBenutzer] = @IDBenutzer, [PatientenverfuegungJN] = @PatientenverfuegungJN, [PatientenverfuegungBeachtlichJN] = @PatientenverfuegungBeachtlichJN, [PatientverfuegungDatum] = @PatientverfuegungDatum, [PatientverfuegungAnmerkung] = @PatientverfuegungAnmerkung, [Klientennummer] = @Klientennummer, [IDAbteilung] = @IDAbteilung, [abwesenheitenHändBerech] = @abwesenheitenHändBerech, [Sollstand] = @Sollstand, [minSaldo] = @minSaldo, [Kennwort] = @Kennwort, [blob_Einverständniserklärung] = @blob_Einverständniserklärung, [EinverständniserklärungFileType] = @EinverständniserklärungFileType, [jpg_Einverständniserklärung] = @jpg_Einverständniserklärung, [Verstorben] = @Verstorben, [Todeszeitpunkt] = @Todeszeitpunkt, [DNR] = @DNR, [Milieubetreuung] = @Milieubetreuung, [KZUeberlebender] = @KZUeberlebender, [Anatomie] = @Anatomie, [Einzelzimmer] = @Einzelzimmer, [Selbstzahler] = @Selbstzahler, [IDBereich] = @IDBereich, [KürzungLetzterTagAnwesenheit] = @KürzungLetzterTagAnwesenheit, [Behindertenausweis] = @Behindertenausweis, [Sozialcard] = @Sozialcard, [IDAdresseSub] = @IDAdresseSub, [IDKontaktSub] = @IDKontaktSub, [Betreuungsstufe] = @Betreuungsstufe, [BetreuungsstufeAb] = @BetreuungsstufeAb, [BetreuungsstufeBis] = @BetreuungsstufeBis, [lstSprachen] = @lstSprachen, [RezGebBef_RegoAb] = @RezGebBef_RegoAb, [RezGebBef_RegoBis] = @RezGebBef_RegoBis, [RezGebBef_UnbefristetJN] = @RezGebBef_UnbefristetJN, [RezGebBef_BefristetJN] = @RezGebBef_BefristetJN, [RezGebBef_BefristetBis] = @RezGebBef_BefristetBis, [RezGebBef_WiderrufJN] = @RezGebBef_WiderrufJN, [RezGebBef_WiderrufGrund] = @RezGebBef_WiderrufGrund, [RezGebBef_RegoJN] = @RezGebBef_RegoJN, [RezGebBef_BefristetAb] = @RezGebBef_BefristetAb, [RezGebBef_SachwalterJN] = @RezGebBef_SachwalterJN WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="sqlDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="daPatient.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="daAufenthalt.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 173</value>
+  </metadata>
+  <metadata name="sqlCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand2.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand2.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Aufenthalt] ([ID], [IDPatient], [IDAbteilung], [IDAufenthaltVerlauf], [IDBenutzer_Aufnahme], [IDBenutzer_Entlassung], [IDEinrichtung_Aufnahme], [IDEinrichtung_Entlassung], [Aufnahmezeitpunkt], [Entlassungszeitpunkt], [AufnahmeArt], [BegleitungVon], [Entlassungsbemerkung], [SomatischeAuff], [PsychischeAuff], [VerhaltenAufnahme], [SonstigeBesonderheiten], [SofortMassnahmen], [IDUrlaub], [Fallnummer], [Gruppenkennzahl], [Verfuegungsdatum], [Bermerkung], [Besuchsregelung], [Postregelung], [SonstigeRegelung], [Erwartungen], [IDErstkontakt], [Gewicht], [NaechsteEvaluierung], [NaechsteEvaluierungBemerkung], [TaschengeldSollstand], [TaschegeldVortragDatum], [TaschengeldVortragBetrag], [Ausgleichszahlung], [IDKlinik], [IDBereich]) VALUES (@ID, @IDPatient, @IDAbteilung, @IDAufenthaltVerlauf, @IDBenutzer_Aufnahme, @IDBenutzer_Entlassung, @IDEinrichtung_Aufnahme, @IDEinrichtung_Entlassung, @Aufnahmezeitpunkt, @Entlassungszeitpunkt, @AufnahmeArt, @BegleitungVon, @Entlassungsbemerkung, @SomatischeAuff, @PsychischeAuff, @VerhaltenAufnahme, @SonstigeBesonderheiten, @SofortMassnahmen, @IDUrlaub, @Fallnummer, @Gruppenkennzahl, @Verfuegungsdatum, @Bermerkung, @Besuchsregelung, @Postregelung, @SonstigeRegelung, @Erwartungen, @IDErstkontakt, @Gewicht, @NaechsteEvaluierung, @NaechsteEvaluierungBemerkung, @TaschengeldSollstand, @TaschegeldVortragDatum, @TaschengeldVortragBetrag, @Ausgleichszahlung, @IDKlinik, @IDBereich)</value>
+  </data>
+  <metadata name="sqlCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand3.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand3.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDPatient, IDAbteilung, IDAufenthaltVerlauf, IDBenutzer_Aufnahme, IDBenutzer_Entlassung, IDEinrichtung_Aufnahme, IDEinrichtung_Entlassung, Aufnahmezeitpunkt, Entlassungszeitpunkt, AufnahmeArt, BegleitungVon, 
+                         Entlassungsbemerkung, SomatischeAuff, PsychischeAuff, VerhaltenAufnahme, SonstigeBesonderheiten, SofortMassnahmen, IDUrlaub, BarcodeID, Fallnummer, Gruppenkennzahl, Verfuegungsdatum, Bermerkung, 
+                         Besuchsregelung, Postregelung, SonstigeRegelung, Erwartungen, IDErstkontakt, Gewicht, NaechsteEvaluierung, NaechsteEvaluierungBemerkung, TaschengeldSollstand, TaschegeldVortragDatum, TaschengeldVortragBetrag, 
+                         Ausgleichszahlung, IDKlinik, IDBereich
+FROM            Aufenthalt</value>
+  </data>
+  <metadata name="sqlCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand4.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand4.CommandText" xml:space="preserve">
+    <value>UPDATE [Aufenthalt] SET [ID] = @ID, [IDPatient] = @IDPatient, [IDAbteilung] = @IDAbteilung, [IDAufenthaltVerlauf] = @IDAufenthaltVerlauf, [IDBenutzer_Aufnahme] = @IDBenutzer_Aufnahme, [IDBenutzer_Entlassung] = @IDBenutzer_Entlassung, [IDEinrichtung_Aufnahme] = @IDEinrichtung_Aufnahme, [IDEinrichtung_Entlassung] = @IDEinrichtung_Entlassung, [Aufnahmezeitpunkt] = @Aufnahmezeitpunkt, [Entlassungszeitpunkt] = @Entlassungszeitpunkt, [AufnahmeArt] = @AufnahmeArt, [BegleitungVon] = @BegleitungVon, [Entlassungsbemerkung] = @Entlassungsbemerkung, [SomatischeAuff] = @SomatischeAuff, [PsychischeAuff] = @PsychischeAuff, [VerhaltenAufnahme] = @VerhaltenAufnahme, [SonstigeBesonderheiten] = @SonstigeBesonderheiten, [SofortMassnahmen] = @SofortMassnahmen, [IDUrlaub] = @IDUrlaub, [Fallnummer] = @Fallnummer, [Gruppenkennzahl] = @Gruppenkennzahl, [Verfuegungsdatum] = @Verfuegungsdatum, [Bermerkung] = @Bermerkung, [Besuchsregelung] = @Besuchsregelung, [Postregelung] = @Postregelung, [SonstigeRegelung] = @SonstigeRegelung, [Erwartungen] = @Erwartungen, [IDErstkontakt] = @IDErstkontakt, [Gewicht] = @Gewicht, [NaechsteEvaluierung] = @NaechsteEvaluierung, [NaechsteEvaluierungBemerkung] = @NaechsteEvaluierungBemerkung, [TaschengeldSollstand] = @TaschengeldSollstand, [TaschegeldVortragDatum] = @TaschegeldVortragDatum, [TaschengeldVortragBetrag] = @TaschengeldVortragBetrag, [Ausgleichszahlung] = @Ausgleichszahlung, [IDKlinik] = @IDKlinik, [IDBereich] = @IDBereich WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="daAufenthaltVerlauf.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="sqlCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand5.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand6.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>521, 17</value>
+  </metadata>
+  <metadata name="sqlCommand6.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand6.CommandText" xml:space="preserve">
+    <value>INSERT INTO [AufenthaltVerlauf] ([ID], [IDAufenthalt], [IDBenutzer], [IDAbteilung_Von], [IDAbteilung_Nach], [IDBereich], [Bemerkung], [Datum], [ZuweisenderArzt], [AufnahmeArzt], [Aufnahmegespraech], [Abschlussbemerkung], [AufnahmeStatus]) VALUES (@ID, @IDAufenthalt, @IDBenutzer, @IDAbteilung_Von, @IDAbteilung_Nach, @IDBereich, @Bemerkung, @Datum, @ZuweisenderArzt, @AufnahmeArzt, @Aufnahmegespraech, @Abschlussbemerkung, @AufnahmeStatus)</value>
+  </data>
+  <metadata name="sqlCommand7.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand7.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand7.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand7.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDAufenthalt, IDBenutzer, IDAbteilung_Von, IDAbteilung_Nach, IDBereich, Bemerkung, Datum, ZuweisenderArzt, AufnahmeArzt, Aufnahmegespraech, Abschlussbemerkung, AufnahmeStatus
+FROM            AufenthaltVerlauf</value>
+  </data>
+  <metadata name="sqlCommand8.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand8.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand8.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand8.CommandText" xml:space="preserve">
+    <value>UPDATE [AufenthaltVerlauf] SET [ID] = @ID, [IDAufenthalt] = @IDAufenthalt, [IDBenutzer] = @IDBenutzer, [IDAbteilung_Von] = @IDAbteilung_Von, [IDAbteilung_Nach] = @IDAbteilung_Nach, [IDBereich] = @IDBereich, [Bemerkung] = @Bemerkung, [Datum] = @Datum, [ZuweisenderArzt] = @ZuweisenderArzt, [AufnahmeArzt] = @AufnahmeArzt, [Aufnahmegespraech] = @Aufnahmegespraech, [Abschlussbemerkung] = @Abschlussbemerkung, [AufnahmeStatus] = @AufnahmeStatus WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="daAbteilung.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 212</value>
+  </metadata>
+  <metadata name="sqlCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand9.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand10.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand10.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand10.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand10.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Abteilung] ([ID], [Bezeichnung], [IDKlinik], [IDKontakt], [RMOptionalJN], [Reihenfolge], [Basisabteilung]) VALUES (@ID, @Bezeichnung, @IDKlinik, @IDKontakt, @RMOptionalJN, @Reihenfolge, @Basisabteilung)</value>
+  </data>
+  <metadata name="sqlCommand11.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 173</value>
+  </metadata>
+  <metadata name="sqlCommand11.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand12.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand12.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand12.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand12.CommandText" xml:space="preserve">
+    <value>UPDATE [Abteilung] SET [ID] = @ID, [Bezeichnung] = @Bezeichnung, [IDKlinik] = @IDKlinik, [IDKontakt] = @IDKontakt, [RMOptionalJN] = @RMOptionalJN, [Reihenfolge] = @Reihenfolge, [Basisabteilung] = @Basisabteilung WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="daBereich.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 251</value>
+  </metadata>
+  <metadata name="sqlCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand13.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand13.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand14.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand14.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>556, 173</value>
+  </metadata>
+  <metadata name="sqlCommand14.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand14.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Bereich] ([ID], [IDAbteilung], [IDBereich], [Bezeichnung], [UnterAerztlicheFuehrungJN], [Reihenfolge]) VALUES (@ID, @IDAbteilung, @IDBereich, @Bezeichnung, @UnterAerztlicheFuehrungJN, @Reihenfolge)</value>
+  </data>
+  <metadata name="sqlCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand15.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand15.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand16.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand16.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="sqlCommand16.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="sqlCommand16.CommandText" xml:space="preserve">
+    <value>UPDATE [Bereich] SET [ID] = @ID, [IDAbteilung] = @IDAbteilung, [IDBereich] = @IDBereich, [Bezeichnung] = @Bezeichnung, [UnterAerztlicheFuehrungJN] = @UnterAerztlicheFuehrungJN, [Reihenfolge] = @Reihenfolge WHERE (([ID] = @Original_ID))</value>
+  </data>
+  <metadata name="daPatientSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>533, 251</value>
+  </metadata>
+  <metadata name="sqlCommand19.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlCommand19.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>259, 251</value>
+  </metadata>
+  <metadata name="sqlCommand19.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+</root>

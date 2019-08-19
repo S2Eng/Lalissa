@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsInterop" targetNamespace="http://tempuri.org/dsInterop.xsd" xmlns:mstns="http://tempuri.org/dsInterop.xsd" xmlns="http://tempuri.org/dsInterop.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsInterop" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsInterop" msprop:Generator_UserDSName="dsInterop">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblInterop" msprop:Generator_TableClassName="tblInteropDataTable" msprop:Generator_TableVarName="tabletblInterop" msprop:Generator_RowChangedName="tblInteropRowChanged" msprop:Generator_TablePropName="tblInterop" msprop:Generator_RowDeletingName="tblInteropRowDeleting" msprop:Generator_RowChangingName="tblInteropRowChanging" msprop:Generator_RowEvHandlerName="tblInteropRowChangeEventHandler" msprop:Generator_RowDeletedName="tblInteropRowDeleted" msprop:Generator_RowClassName="tblInteropRow" msprop:Generator_UserTableName="tblInterop" msprop:Generator_RowEvArgName="tblInteropRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="createdAt" msprop:Generator_ColumnVarNameInTable="columncreatedAt" msprop:Generator_ColumnPropNameInRow="createdAt" msprop:Generator_ColumnPropNameInTable="createdAtColumn" msprop:Generator_UserColumnName="createdAt" type="xs:dateTime" />
+              <xs:element name="doAt" msprop:Generator_ColumnVarNameInTable="columndoAt" msprop:Generator_ColumnPropNameInRow="doAt" msprop:Generator_ColumnPropNameInTable="doAtColumn" msprop:Generator_UserColumnName="doAt" type="xs:dateTime" />
+              <xs:element name="typAction" msprop:Generator_ColumnVarNameInTable="columntypAction" msprop:Generator_ColumnPropNameInRow="typAction" msprop:Generator_ColumnPropNameInTable="typActionColumn" msprop:Generator_UserColumnName="typAction">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fromUser" msprop:Generator_ColumnVarNameInTable="columnfromUser" msprop:Generator_ColumnPropNameInRow="fromUser" msprop:Generator_ColumnPropNameInTable="fromUserColumn" msprop:Generator_UserColumnName="fromUser">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fromClient" msprop:Generator_ColumnVarNameInTable="columnfromClient" msprop:Generator_ColumnPropNameInRow="fromClient" msprop:Generator_ColumnPropNameInTable="fromClientColumn" msprop:Generator_UserColumnName="fromClient">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dbPar" msprop:Generator_ColumnVarNameInTable="columndbPar" msprop:Generator_ColumnPropNameInRow="dbPar" msprop:Generator_ColumnPropNameInTable="dbParColumn" msprop:Generator_UserColumnName="dbPar" type="xs:string" />
+              <xs:element name="done" msprop:Generator_ColumnVarNameInTable="columndone" msprop:Generator_ColumnPropNameInRow="done" msprop:Generator_ColumnPropNameInTable="doneColumn" msprop:Generator_UserColumnName="done" type="xs:boolean" />
+              <xs:element name="doneAt" msprop:Generator_ColumnVarNameInTable="columndoneAt" msprop:Generator_ColumnPropNameInRow="doneAt" msprop:Generator_ColumnPropNameInTable="doneAtColumn" msprop:Generator_UserColumnName="doneAt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ReplyToUser" msprop:Generator_ColumnVarNameInTable="columnReplyToUser" msprop:Generator_ColumnPropNameInRow="ReplyToUser" msprop:Generator_ColumnPropNameInTable="ReplyToUserColumn" msprop:Generator_UserColumnName="ReplyToUser" type="xs:boolean" />
+              <xs:element name="ReplyTxt" msprop:Generator_ColumnVarNameInTable="columnReplyTxt" msprop:Generator_ColumnPropNameInRow="ReplyTxt" msprop:Generator_ColumnPropNameInTable="ReplyTxtColumn" msprop:Generator_UserColumnName="ReplyTxt" type="xs:string" />
+              <xs:element name="ReplyTxtDetail" msprop:Generator_ColumnVarNameInTable="columnReplyTxtDetail" msprop:Generator_ColumnPropNameInRow="ReplyTxtDetail" msprop:Generator_ColumnPropNameInTable="ReplyTxtDetailColumn" msprop:Generator_UserColumnName="ReplyTxtDetail" type="xs:string" />
+              <xs:element name="ReplyError" msprop:Generator_ColumnVarNameInTable="columnReplyError" msprop:Generator_ColumnPropNameInRow="ReplyError" msprop:Generator_ColumnPropNameInTable="ReplyErrorColumn" msprop:Generator_UserColumnName="ReplyError" type="xs:string" />
+              <xs:element name="deleted" msprop:Generator_ColumnVarNameInTable="columndeleted" msprop:Generator_ColumnPropNameInRow="deleted" msprop:Generator_ColumnPropNameInTable="deletedColumn" msprop:Generator_UserColumnName="deleted" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tblInteropSmall" msprop:Generator_TableClassName="tblInteropSmallDataTable" msprop:Generator_TableVarName="tabletblInteropSmall" msprop:Generator_RowChangedName="tblInteropSmallRowChanged" msprop:Generator_TablePropName="tblInteropSmall" msprop:Generator_RowDeletingName="tblInteropSmallRowDeleting" msprop:Generator_RowChangingName="tblInteropSmallRowChanging" msprop:Generator_RowEvHandlerName="tblInteropSmallRowChangeEventHandler" msprop:Generator_RowDeletedName="tblInteropSmallRowDeleted" msprop:Generator_RowClassName="tblInteropSmallRow" msprop:Generator_UserTableName="tblInteropSmall" msprop:Generator_RowEvArgName="tblInteropSmallRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="createdAt" msprop:Generator_ColumnVarNameInTable="columncreatedAt" msprop:Generator_ColumnPropNameInRow="createdAt" msprop:Generator_ColumnPropNameInTable="createdAtColumn" msprop:Generator_UserColumnName="createdAt" type="xs:dateTime" />
+              <xs:element name="doAt" msprop:Generator_ColumnVarNameInTable="columndoAt" msprop:Generator_ColumnPropNameInRow="doAt" msprop:Generator_ColumnPropNameInTable="doAtColumn" msprop:Generator_UserColumnName="doAt" type="xs:dateTime" />
+              <xs:element name="typAction" msprop:Generator_ColumnVarNameInTable="columntypAction" msprop:Generator_ColumnPropNameInRow="typAction" msprop:Generator_ColumnPropNameInTable="typActionColumn" msprop:Generator_UserColumnName="typAction">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fromUser" msprop:Generator_ColumnVarNameInTable="columnfromUser" msprop:Generator_ColumnPropNameInRow="fromUser" msprop:Generator_ColumnPropNameInTable="fromUserColumn" msprop:Generator_UserColumnName="fromUser">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fromClient" msprop:Generator_ColumnVarNameInTable="columnfromClient" msprop:Generator_ColumnPropNameInRow="fromClient" msprop:Generator_ColumnPropNameInTable="fromClientColumn" msprop:Generator_UserColumnName="fromClient">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dbPar" msprop:Generator_ColumnVarNameInTable="columndbPar" msprop:Generator_ColumnPropNameInRow="dbPar" msprop:Generator_ColumnPropNameInTable="dbParColumn" msprop:Generator_UserColumnName="dbPar" type="xs:string" />
+              <xs:element name="done" msprop:Generator_ColumnVarNameInTable="columndone" msprop:Generator_ColumnPropNameInRow="done" msprop:Generator_ColumnPropNameInTable="doneColumn" msprop:Generator_UserColumnName="done" type="xs:boolean" />
+              <xs:element name="doneAt" msprop:Generator_ColumnVarNameInTable="columndoneAt" msprop:Generator_ColumnPropNameInRow="doneAt" msprop:Generator_ColumnPropNameInTable="doneAtColumn" msprop:Generator_UserColumnName="doneAt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ReplyToUser" msprop:Generator_ColumnVarNameInTable="columnReplyToUser" msprop:Generator_ColumnPropNameInRow="ReplyToUser" msprop:Generator_ColumnPropNameInTable="ReplyToUserColumn" msprop:Generator_UserColumnName="ReplyToUser" type="xs:boolean" />
+              <xs:element name="ReplyTxt" msprop:Generator_ColumnVarNameInTable="columnReplyTxt" msprop:Generator_ColumnPropNameInRow="ReplyTxt" msprop:Generator_ColumnPropNameInTable="ReplyTxtColumn" msprop:Generator_UserColumnName="ReplyTxt" type="xs:string" />
+              <xs:element name="deleted" msprop:Generator_ColumnVarNameInTable="columndeleted" msprop:Generator_ColumnPropNameInRow="deleted" msprop:Generator_ColumnPropNameInTable="deletedColumn" msprop:Generator_UserColumnName="deleted" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblInterop" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="tblInteropSmall_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblInteropSmall" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsUserAccounts" targetNamespace="http://tempuri.org/dsUserAccounts.xsd" xmlns:mstns="http://tempuri.org/dsUserAccounts.xsd" xmlns="http://tempuri.org/dsUserAccounts.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsUserAccounts" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsUserAccounts" msprop:Generator_UserDSName="dsUserAccounts">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblUserAccounts" msprop:Generator_TableClassName="tblUserAccountsDataTable" msprop:Generator_TableVarName="tabletblUserAccounts" msprop:Generator_RowChangedName="tblUserAccountsRowChanged" msprop:Generator_TablePropName="tblUserAccounts" msprop:Generator_RowDeletingName="tblUserAccountsRowDeleting" msprop:Generator_RowChangingName="tblUserAccountsRowChanging" msprop:Generator_RowEvHandlerName="tblUserAccountsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblUserAccountsRowDeleted" msprop:Generator_RowClassName="tblUserAccountsRow" msprop:Generator_UserTableName="tblUserAccounts" msprop:Generator_RowEvArgName="tblUserAccountsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Usr" msprop:Generator_ColumnVarNameInTable="columnUsr" msprop:Generator_ColumnPropNameInRow="Usr" msprop:Generator_ColumnPropNameInTable="UsrColumn" msprop:Generator_UserColumnName="Usr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="typ" msprop:Generator_ColumnVarNameInTable="columntyp" msprop:Generator_ColumnPropNameInRow="typ" msprop:Generator_ColumnPropNameInTable="typColumn" msprop:Generator_UserColumnName="typ">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AdrFrom" msprop:Generator_ColumnVarNameInTable="columnAdrFrom" msprop:Generator_ColumnPropNameInRow="AdrFrom" msprop:Generator_ColumnPropNameInTable="AdrFromColumn" msprop:Generator_UserColumnName="AdrFrom">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AdrTo" msprop:Generator_ColumnVarNameInTable="columnAdrTo" msprop:Generator_ColumnPropNameInRow="AdrTo" msprop:Generator_ColumnPropNameInTable="AdrToColumn" msprop:Generator_UserColumnName="AdrTo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Server" msprop:Generator_ColumnVarNameInTable="columnServer" msprop:Generator_ColumnPropNameInRow="Server" msprop:Generator_ColumnPropNameInTable="ServerColumn" msprop:Generator_UserColumnName="Server">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UsrAuthentication" msprop:Generator_ColumnVarNameInTable="columnUsrAuthentication" msprop:Generator_ColumnPropNameInRow="UsrAuthentication" msprop:Generator_ColumnPropNameInTable="UsrAuthenticationColumn" msprop:Generator_UserColumnName="UsrAuthentication">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PwdAuthentication" msprop:Generator_ColumnVarNameInTable="columnPwdAuthentication" msprop:Generator_ColumnPropNameInRow="PwdAuthentication" msprop:Generator_ColumnPropNameInTable="PwdAuthenticationColumn" msprop:Generator_UserColumnName="PwdAuthentication">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Port" msprop:Generator_ColumnVarNameInTable="columnPort" msprop:Generator_ColumnPropNameInRow="Port" msprop:Generator_ColumnPropNameInTable="PortColumn" msprop:Generator_UserColumnName="Port">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SSL" msprop:Generator_ColumnVarNameInTable="columnSSL" msprop:Generator_ColumnPropNameInRow="SSL" msprop:Generator_ColumnPropNameInTable="SSLColumn" msprop:Generator_UserColumnName="SSL" type="xs:boolean" />
+              <xs:element name="IDAccount" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAccount" msprop:Generator_ColumnPropNameInRow="IDAccount" msprop:Generator_ColumnPropNameInTable="IDAccountColumn" msprop:Generator_UserColumnName="IDAccount" type="xs:string" minOccurs="0" />
+              <xs:element name="lastReceive" msprop:Generator_ColumnVarNameInTable="columnlastReceive" msprop:Generator_ColumnPropNameInRow="lastReceive" msprop:Generator_ColumnPropNameInTable="lastReceiveColumn" msprop:Generator_UserColumnName="lastReceive" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PostOfficeBoxForAll" msprop:Generator_ColumnVarNameInTable="columnPostOfficeBoxForAll" msprop:Generator_ColumnPropNameInRow="PostOfficeBoxForAll" msprop:Generator_ColumnPropNameInTable="PostOfficeBoxForAllColumn" msprop:Generator_UserColumnName="PostOfficeBoxForAll" type="xs:boolean" />
+              <xs:element name="PreferPostOfficeBoxForAll" msprop:Generator_ColumnVarNameInTable="columnPreferPostOfficeBoxForAll" msprop:Generator_ColumnPropNameInRow="PreferPostOfficeBoxForAll" msprop:Generator_ColumnPropNameInTable="PreferPostOfficeBoxForAllColumn" msprop:Generator_UserColumnName="PreferPostOfficeBoxForAll" type="xs:boolean" />
+              <xs:element name="OutlookWebAPI" msprop:Generator_ColumnVarNameInTable="columnOutlookWebAPI" msprop:Generator_ColumnPropNameInRow="OutlookWebAPI" msprop:Generator_ColumnPropNameInTable="OutlookWebAPIColumn" msprop:Generator_UserColumnName="OutlookWebAPI" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tblUserAccounts" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

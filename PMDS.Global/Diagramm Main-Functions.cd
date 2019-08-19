@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PMDS.DB.PMDSBusiness">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="PMDS.DB.PMDSBusiness.cPdx" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.DB.PMDSBusiness.cASZM" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.DB.PMDSBusiness.cDoubledTmp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.DB.PMDSBusiness.cPMDSList" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="PMDS.DB.PMDSBusiness.eModeUpdateNächstesDatum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="PMDS.DB.PMDSBusiness.cListpflegepläne" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.DB.PMDSBusiness.cField" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="PMDS.DB.PMDSBusiness.cModeDb" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="PMDS.DB.PMDSBusiness.cZeitpunkte" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.DB.PMDSBusiness.cListDoubledTmp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.DB.PMDSBusiness.retBusiness" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.DB.PMDSBusiness.cInfoPdx" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\businessFramework.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>FUgKJkASFCJzRw4F+WAhAEH1IAAJCIVdECCKSYwgDTc=</HashCode>
+      <FileName>db\ERSystem\businessFramework.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMDS.DB.BusinessHelp">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAAAAAAAgBA=</HashCode>
+      <FileName>db\ERSystem\BusinessHelp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMDS.Global.db.ERSystem.sqlManange">
+    <Position X="4" Y="2.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="PMDS.Global.db.ERSystem.sqlManange.eTypeAnmeldungen" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\sqlManange.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAIgKACABAAAAgAKAAAACAAAQgAAEAABIAIAAgAA=</HashCode>
+      <FileName>db\ERSystem\sqlManange.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMDS.Global.ImportMedDaten">
+    <Position X="4" Y="5.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="PMDS.Global.ImportMedDaten.VariablesFile" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ImportMedDaten.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="PMDS.Global.ImportMedDaten.VariableFile" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ImportMedDaten.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAoEAIAAAAAAAAAAAAEAAAAACAAAACAAAACAAAAA=</HashCode>
+      <FileName>ImportMedDaten.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDIFact.EDIFact">
+    <Position X="7" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAACAAAAAEAAAAACAAABEAAABAAAgAIAAAAAEA=</HashCode>
+      <FileName>UI\Befunde\EDIFact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EDIFact.strucEDIFACT">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="EDIFact.strucEDIFACT.eSegmente" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UI\Befunde\EDIFactStruc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="EDIFact.strucEDIFACT.Segmente" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UI\Befunde\EDIFactStruc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Befunde\EDIFactStruc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMDS.Global.db.ERSystem.SendUnterbringung">
+    <Position X="4" Y="8" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="PMDS.Global.db.ERSystem.SendUnterbringung.eMeldungstyp" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\SendUnterbringung.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="PMDS.Global.db.ERSystem.SendUnterbringung.retSendUnterbringung" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>db\ERSystem\SendUnterbringung.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>db\ERSystem\SendUnterbringung.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

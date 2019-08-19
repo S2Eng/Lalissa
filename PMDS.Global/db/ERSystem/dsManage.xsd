@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsManage" targetNamespace="http://tempuri.org/dsManage.xsd" xmlns:mstns="http://tempuri.org/dsManage.xsd" xmlns="http://tempuri.org/dsManage.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsManage" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsManage" msprop:Generator_UserDSName="dsManage">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="rechNr" msprop:Generator_TableClassName="rechNrDataTable" msprop:Generator_TableVarName="tablerechNr" msprop:Generator_RowChangedName="rechNrRowChanged" msprop:Generator_TablePropName="rechNr" msprop:Generator_RowDeletingName="rechNrRowDeleting" msprop:Generator_RowChangingName="rechNrRowChanging" msprop:Generator_RowEvHandlerName="rechNrRowChangeEventHandler" msprop:Generator_RowDeletedName="rechNrRowDeleted" msprop:Generator_RowClassName="rechNrRow" msprop:Generator_UserTableName="rechNr" msprop:Generator_RowEvArgName="rechNrRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="typ" msprop:Generator_ColumnVarNameInTable="columntyp" msprop:Generator_ColumnPropNameInRow="typ" msprop:Generator_ColumnPropNameInTable="typColumn" msprop:Generator_UserColumnName="typ">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nr" msprop:Generator_ColumnVarNameInTable="columnnr" msprop:Generator_ColumnPropNameInRow="nr" msprop:Generator_ColumnPropNameInTable="nrColumn" msprop:Generator_UserColumnName="nr" type="xs:int" />
+              <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MedizinischeTypen" msprop:Generator_TableClassName="MedizinischeTypenDataTable" msprop:Generator_TableVarName="tableMedizinischeTypen" msprop:Generator_RowChangedName="MedizinischeTypenRowChanged" msprop:Generator_TablePropName="MedizinischeTypen" msprop:Generator_RowDeletingName="MedizinischeTypenRowDeleting" msprop:Generator_RowChangingName="MedizinischeTypenRowChanging" msprop:Generator_RowEvHandlerName="MedizinischeTypenRowChangeEventHandler" msprop:Generator_RowDeletedName="MedizinischeTypenRowDeleted" msprop:Generator_RowClassName="MedizinischeTypenRow" msprop:Generator_UserTableName="MedizinischeTypen" msprop:Generator_RowEvArgName="MedizinischeTypenRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Nummer" msprop:Generator_ColumnVarNameInTable="columnNummer" msprop:Generator_ColumnPropNameInRow="Nummer" msprop:Generator_ColumnPropNameInTable="NummerColumn" msprop:Generator_UserColumnName="Nummer" type="xs:int" />
+              <xs:element name="MedizinischerTyp" msprop:Generator_ColumnVarNameInTable="columnMedizinischerTyp" msprop:Generator_ColumnPropNameInRow="MedizinischerTyp" msprop:Generator_ColumnPropNameInTable="MedizinischerTypColumn" msprop:Generator_UserColumnName="MedizinischerTyp" type="xs:int" />
+              <xs:element name="Beschreibung" msprop:Generator_ColumnVarNameInTable="columnBeschreibung" msprop:Generator_ColumnPropNameInRow="Beschreibung" msprop:Generator_ColumnPropNameInTable="BeschreibungColumn" msprop:Generator_UserColumnName="Beschreibung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Icon" msprop:Generator_ColumnVarNameInTable="columnIcon" msprop:Generator_ColumnPropNameInRow="Icon" msprop:Generator_ColumnPropNameInTable="IconColumn" msprop:Generator_UserColumnName="Icon" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="IconOFF" msprop:Generator_ColumnVarNameInTable="columnIconOFF" msprop:Generator_ColumnPropNameInRow="IconOFF" msprop:Generator_ColumnPropNameInTable="IconOFFColumn" msprop:Generator_UserColumnName="IconOFF" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="bVisible" msprop:Generator_ColumnVarNameInTable="columnbVisible" msprop:Generator_ColumnPropNameInRow="bVisible" msprop:Generator_ColumnPropNameInTable="bVisibleColumn" msprop:Generator_UserColumnName="bVisible" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="WundePosBilder" msprop:Generator_TableClassName="WundePosBilderDataTable" msprop:Generator_TableVarName="tableWundePosBilder" msprop:Generator_TablePropName="WundePosBilder" msprop:Generator_RowDeletingName="WundePosBilderRowDeleting" msprop:Generator_RowChangingName="WundePosBilderRowChanging" msprop:Generator_RowEvHandlerName="WundePosBilderRowChangeEventHandler" msprop:Generator_RowDeletedName="WundePosBilderRowDeleted" msprop:Generator_UserTableName="WundePosBilder" msprop:Generator_RowChangedName="WundePosBilderRowChanged" msprop:Generator_RowEvArgName="WundePosBilderRowChangeEvent" msprop:Generator_RowClassName="WundePosBilderRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDWundePos" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDWundePos" msprop:Generator_ColumnPropNameInRow="IDWundePos" msprop:Generator_ColumnPropNameInTable="IDWundePosColumn" msprop:Generator_UserColumnName="IDWundePos" type="xs:string" />
+              <xs:element name="Bild" msprop:Generator_ColumnVarNameInTable="columnBild" msprop:Generator_ColumnPropNameInRow="Bild" msprop:Generator_ColumnPropNameInTable="BildColumn" msprop:Generator_UserColumnName="Bild" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Thumbnail" msprop:Generator_ColumnVarNameInTable="columnThumbnail" msprop:Generator_ColumnPropNameInRow="Thumbnail" msprop:Generator_ColumnPropNameInTable="ThumbnailColumn" msprop:Generator_UserColumnName="Thumbnail" type="xs:base64Binary" />
+              <xs:element name="Reihenfolge" msprop:Generator_ColumnVarNameInTable="columnReihenfolge" msprop:Generator_ColumnPropNameInRow="Reihenfolge" msprop:Generator_ColumnPropNameInTable="ReihenfolgeColumn" msprop:Generator_UserColumnName="Reihenfolge" type="xs:int" />
+              <xs:element name="druckenJN" msprop:Generator_ColumnVarNameInTable="columndruckenJN" msprop:Generator_ColumnPropNameInRow="druckenJN" msprop:Generator_ColumnPropNameInTable="druckenJNColumn" msprop:Generator_UserColumnName="druckenJN" type="xs:boolean" />
+              <xs:element name="Beschreibung" msprop:Generator_ColumnVarNameInTable="columnBeschreibung" msprop:Generator_ColumnPropNameInRow="Beschreibung" msprop:Generator_ColumnPropNameInTable="BeschreibungColumn" msprop:Generator_UserColumnName="Beschreibung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZeitpunktBild" msprop:Generator_ColumnVarNameInTable="columnZeitpunktBild" msprop:Generator_ColumnPropNameInRow="ZeitpunktBild" msprop:Generator_ColumnPropNameInTable="ZeitpunktBildColumn" msprop:Generator_UserColumnName="ZeitpunktBild" type="xs:dateTime" />
+              <xs:element name="IDBenutzer_Erstellt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Erstellt" msprop:Generator_ColumnPropNameInTable="IDBenutzer_ErstelltColumn" msprop:Generator_UserColumnName="IDBenutzer_Erstellt" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzer_Geaendert" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInRow="IDBenutzer_Geaendert" msprop:Generator_ColumnPropNameInTable="IDBenutzer_GeaendertColumn" msprop:Generator_UserColumnName="IDBenutzer_Geaendert" type="xs:string" minOccurs="0" />
+              <xs:element name="DatumErstellt" msprop:Generator_ColumnVarNameInTable="columnDatumErstellt" msprop:Generator_ColumnPropNameInRow="DatumErstellt" msprop:Generator_ColumnPropNameInTable="DatumErstelltColumn" msprop:Generator_UserColumnName="DatumErstellt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DatumGeaendert" msprop:Generator_ColumnVarNameInTable="columnDatumGeaendert" msprop:Generator_ColumnPropNameInRow="DatumGeaendert" msprop:Generator_ColumnPropNameInTable="DatumGeaendertColumn" msprop:Generator_UserColumnName="DatumGeaendert" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BildOrig" msprop:Generator_ColumnVarNameInTable="columnBildOrig" msprop:Generator_ColumnPropNameInRow="BildOrig" msprop:Generator_ColumnPropNameInTable="BildOrigColumn" msprop:Generator_UserColumnName="BildOrig" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rechNr" />
+      <xs:field xpath="mstns:typ" />
+      <xs:field xpath="mstns:year" />
+    </xs:unique>
+    <xs:unique name="MedizinischeTypen_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MedizinischeTypen" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="WundePosBilder_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:WundePosBilder" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

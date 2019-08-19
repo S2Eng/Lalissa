@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDatenQuellen" targetNamespace="http://tempuri.org/dsDatenQuellen.xsd" xmlns:mstns="http://tempuri.org/dsDatenQuellen.xsd" xmlns="http://tempuri.org/dsDatenQuellen.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDatenQuellen" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsDatenQuellen" msprop:Generator_DataSetName="dsDatenQuellen">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DatenQuellen" msprop:Generator_UserTableName="DatenQuellen" msprop:Generator_RowDeletedName="DatenQuellenRowDeleted" msprop:Generator_TableClassName="DatenQuellenDataTable" msprop:Generator_RowChangedName="DatenQuellenRowChanged" msprop:Generator_RowClassName="DatenQuellenRow" msprop:Generator_RowChangingName="DatenQuellenRowChanging" msprop:Generator_RowEvArgName="DatenQuellenRowChangeEvent" msprop:Generator_RowEvHandlerName="DatenQuellenRowChangeEventHandler" msprop:Generator_TablePropName="DatenQuellen" msprop:Generator_TableVarName="tableDatenQuellen" msprop:Generator_RowDeletingName="DatenQuellenRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Bereich" msprop:Generator_UserColumnName="Bereich" msprop:Generator_ColumnPropNameInRow="Bereich" msprop:Generator_ColumnVarNameInTable="columnBereich" msprop:Generator_ColumnPropNameInTable="BereichColumn" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Klasse" msprop:Generator_UserColumnName="Klasse" msprop:Generator_ColumnPropNameInRow="Klasse" msprop:Generator_ColumnVarNameInTable="columnKlasse" msprop:Generator_ColumnPropNameInTable="KlasseColumn" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientZusaätzlicheDatenByID" targetNamespace="http://tempuri.org/dsPatientZusaätzlicheDatenByID.xsd" xmlns:mstns="http://tempuri.org/dsPatientZusaätzlicheDatenByID.xsd" xmlns="http://tempuri.org/dsPatientZusaätzlicheDatenByID.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientZusaätzlicheDatenByID" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPatientZusaätzlicheDatenByID" msprop:Generator_DataSetName="dsPatientZusaätzlicheDatenByID">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Patient" msprop:Generator_UserTableName="Patient" msprop:Generator_RowDeletedName="PatientRowDeleted" msprop:Generator_TableClassName="PatientDataTable" msprop:Generator_RowChangedName="PatientRowChanged" msprop:Generator_RowClassName="PatientRow" msprop:Generator_RowChangingName="PatientRowChanging" msprop:Generator_RowEvArgName="PatientRowChangeEvent" msprop:Generator_RowEvHandlerName="PatientRowChangeEventHandler" msprop:Generator_TablePropName="Patient" msprop:Generator_TableVarName="tablePatient" msprop:Generator_RowDeletingName="PatientRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="Sollstand" msprop:Generator_UserColumnName="Sollstand" msprop:Generator_ColumnPropNameInRow="Sollstand" msprop:Generator_ColumnVarNameInTable="columnSollstand" msprop:Generator_ColumnPropNameInTable="SollstandColumn" type="xs:decimal" />
+              <xs:element name="minSaldo" msprop:Generator_UserColumnName="minSaldo" msprop:Generator_ColumnPropNameInRow="minSaldo" msprop:Generator_ColumnVarNameInTable="columnminSaldo" msprop:Generator_ColumnPropNameInTable="minSaldoColumn" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Patient" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

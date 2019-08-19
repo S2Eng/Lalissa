@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientAbwesenheit" targetNamespace="http://www.tempuri.org/dsPatientAbwesenheit.xsd" xmlns:mstns="http://www.tempuri.org/dsPatientAbwesenheit.xsd" xmlns="http://www.tempuri.org/dsPatientAbwesenheit.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=S2STY002\TEST;Initial Catalog=PMDS_Hall;User ID=pmds" IsAppSettingsProperty="false" Modifier="Assembly" Name="s2sty002\test.PMDS_Hall.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientAbwesenheit" msdata:IsDataSet="true" msdata:Locale="en-US" msprop:Generator_DataSetName="dsPatientAbwesenheit" msprop:Generator_UserDSName="dsPatientAbwesenheit">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PatientAbwesenheit" msprop:Generator_TableClassName="PatientAbwesenheitDataTable" msprop:Generator_RowEvArgName="PatientAbwesenheitRowChangeEvent" msprop:Generator_TableVarName="tablePatientAbwesenheit" msprop:Generator_TablePropName="PatientAbwesenheit" msprop:Generator_RowDeletingName="PatientAbwesenheitRowDeleting" msprop:Generator_UserTableName="PatientAbwesenheit" msprop:Generator_RowChangingName="PatientAbwesenheitRowChanging" msprop:Generator_RowDeletedName="PatientAbwesenheitRowDeleted" msprop:Generator_RowChangedName="PatientAbwesenheitRowChanged" msprop:Generator_RowEvHandlerName="PatientAbwesenheitRowChangeEventHandler" msprop:Generator_RowClassName="PatientAbwesenheitRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" />
+              <xs:element name="Von" msprop:Generator_ColumnVarNameInTable="columnVon" msprop:Generator_ColumnPropNameInRow="Von" msprop:Generator_ColumnPropNameInTable="VonColumn" msprop:Generator_UserColumnName="Von" type="xs:dateTime" />
+              <xs:element name="Bis" msprop:Generator_ColumnVarNameInTable="columnBis" msprop:Generator_ColumnPropNameInRow="Bis" msprop:Generator_ColumnPropNameInTable="BisColumn" msprop:Generator_UserColumnName="Bis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BetrifftPflegegeldJN" msprop:Generator_ColumnVarNameInTable="columnBetrifftPflegegeldJN" msprop:Generator_ColumnPropNameInRow="BetrifftPflegegeldJN" msprop:Generator_ColumnPropNameInTable="BetrifftPflegegeldJNColumn" msprop:Generator_UserColumnName="BetrifftPflegegeldJN" type="xs:boolean" />
+              <xs:element name="abTagN" msprop:Generator_ColumnVarNameInTable="columnabTagN" msprop:Generator_ColumnPropNameInRow="abTagN" msprop:Generator_ColumnPropNameInTable="abTagNColumn" msprop:Generator_UserColumnName="abTagN" type="xs:int" />
+              <xs:element name="Grund" msprop:Generator_ColumnVarNameInTable="columnGrund" msprop:Generator_ColumnPropNameInRow="Grund" msprop:Generator_ColumnPropNameInTable="GrundColumn" msprop:Generator_UserColumnName="Grund">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErfasstAm" msprop:Generator_ColumnVarNameInTable="columnErfasstAm" msprop:Generator_ColumnPropNameInRow="ErfasstAm" msprop:Generator_ColumnPropNameInTable="ErfasstAmColumn" msprop:Generator_UserColumnName="ErfasstAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer" msprop:Generator_ColumnPropNameInRow="IDBenutzer" msprop:Generator_ColumnPropNameInTable="IDBenutzerColumn" msprop:Generator_UserColumnName="IDBenutzer" type="xs:string" minOccurs="0" />
+              <xs:element name="AbgerechnetBis" msprop:Generator_ColumnVarNameInTable="columnAbgerechnetBis" msprop:Generator_ColumnPropNameInRow="AbgerechnetBis" msprop:Generator_ColumnPropNameInTable="AbgerechnetBisColumn" msprop:Generator_UserColumnName="AbgerechnetBis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDÜber" msprop:Generator_ColumnVarNameInTable="columnIDÜber" msprop:Generator_ColumnPropNameInRow="IDÜber" msprop:Generator_ColumnPropNameInTable="IDÜberColumn" msprop:Generator_UserColumnName="IDÜber">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Übersp" msprop:Generator_ColumnVarNameInTable="columnÜbersp" msprop:Generator_ColumnPropNameInRow="Übersp" msprop:Generator_ColumnPropNameInTable="ÜberspColumn" msprop:Generator_UserColumnName="Übersp" type="xs:boolean" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PatientAbwesenheit" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

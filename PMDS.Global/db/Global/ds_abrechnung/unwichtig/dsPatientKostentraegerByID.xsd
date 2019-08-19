@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPatientKostentraegerByID" targetNamespace="http://tempuri.org/dsPatientKostentraegerByID.xsd" xmlns:mstns="http://tempuri.org/dsPatientKostentraegerByID.xsd" xmlns="http://tempuri.org/dsPatientKostentraegerByID.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPatientKostentraegerByID" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsPatientKostentraegerByID" msprop:Generator_UserDSName="dsPatientKostentraegerByID">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Kostentraeger" msprop:Generator_TableClassName="KostentraegerDataTable" msprop:Generator_RowEvArgName="KostentraegerRowChangeEvent" msprop:Generator_TablePropName="Kostentraeger" msprop:Generator_TableVarName="tableKostentraeger" msprop:Generator_RowEvHandlerName="KostentraegerRowChangeEventHandler" msprop:Generator_RowDeletingName="KostentraegerRowDeleting" msprop:Generator_RowChangingName="KostentraegerRowChanging" msprop:Generator_RowDeletedName="KostentraegerRowDeleted" msprop:Generator_UserTableName="Kostentraeger" msprop:Generator_RowChangedName="KostentraegerRowChanged" msprop:Generator_RowClassName="KostentraegerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" />
+              <xs:element name="IDKostentraeger" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKostentraeger" msprop:Generator_ColumnPropNameInRow="IDKostentraeger" msprop:Generator_ColumnPropNameInTable="IDKostentraegerColumn" msprop:Generator_UserColumnName="IDKostentraeger" type="xs:string" />
+              <xs:element name="GueltigAb" msprop:Generator_ColumnVarNameInTable="columnGueltigAb" msprop:Generator_ColumnPropNameInRow="GueltigAb" msprop:Generator_ColumnPropNameInTable="GueltigAbColumn" msprop:Generator_UserColumnName="GueltigAb" type="xs:dateTime" />
+              <xs:element name="GueltigBis" msprop:Generator_ColumnVarNameInTable="columnGueltigBis" msprop:Generator_ColumnPropNameInRow="GueltigBis" msprop:Generator_ColumnPropNameInTable="GueltigBisColumn" msprop:Generator_UserColumnName="GueltigBis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="enumKostentraegerart" msprop:Generator_ColumnVarNameInTable="columnenumKostentraegerart" msprop:Generator_ColumnPropNameInRow="enumKostentraegerart" msprop:Generator_ColumnPropNameInTable="enumKostentraegerartColumn" msprop:Generator_UserColumnName="enumKostentraegerart" type="xs:int" />
+              <xs:element name="BetragErrechnetJN" msprop:Generator_ColumnVarNameInTable="columnBetragErrechnetJN" msprop:Generator_ColumnPropNameInRow="BetragErrechnetJN" msprop:Generator_ColumnPropNameInTable="BetragErrechnetJNColumn" msprop:Generator_UserColumnName="BetragErrechnetJN" type="xs:boolean" />
+              <xs:element name="Betrag" msprop:Generator_ColumnVarNameInTable="columnBetrag" msprop:Generator_ColumnPropNameInRow="Betrag" msprop:Generator_ColumnPropNameInTable="BetragColumn" msprop:Generator_UserColumnName="Betrag" type="xs:double" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Strasse" msprop:Generator_ColumnVarNameInTable="columnStrasse" msprop:Generator_ColumnPropNameInRow="Strasse" msprop:Generator_ColumnPropNameInTable="StrasseColumn" msprop:Generator_UserColumnName="Strasse">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PLZ" msprop:Generator_ColumnVarNameInTable="columnPLZ" msprop:Generator_ColumnPropNameInRow="PLZ" msprop:Generator_ColumnPropNameInTable="PLZColumn" msprop:Generator_UserColumnName="PLZ">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ort" msprop:Generator_ColumnVarNameInTable="columnOrt" msprop:Generator_ColumnPropNameInRow="Ort" msprop:Generator_ColumnPropNameInTable="OrtColumn" msprop:Generator_UserColumnName="Ort">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Rechnungsempfaenger" msprop:Generator_ColumnVarNameInTable="columnRechnungsempfaenger" msprop:Generator_ColumnPropNameInRow="Rechnungsempfaenger" msprop:Generator_ColumnPropNameInTable="RechnungsempfaengerColumn" msprop:Generator_UserColumnName="Rechnungsempfaenger">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Rechnungsanschrift" msprop:Generator_ColumnVarNameInTable="columnRechnungsanschrift" msprop:Generator_ColumnPropNameInRow="Rechnungsanschrift" msprop:Generator_ColumnPropNameInTable="RechnungsanschriftColumn" msprop:Generator_UserColumnName="Rechnungsanschrift">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BLZ" msprop:Generator_ColumnVarNameInTable="columnBLZ" msprop:Generator_ColumnPropNameInRow="BLZ" msprop:Generator_ColumnPropNameInTable="BLZColumn" msprop:Generator_UserColumnName="BLZ">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Kontonr" msprop:Generator_ColumnVarNameInTable="columnKontonr" msprop:Generator_ColumnPropNameInRow="Kontonr" msprop:Generator_ColumnPropNameInTable="KontonrColumn" msprop:Generator_UserColumnName="Kontonr">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bank" msprop:Generator_ColumnVarNameInTable="columnBank" msprop:Generator_ColumnPropNameInRow="Bank" msprop:Generator_ColumnPropNameInTable="BankColumn" msprop:Generator_UserColumnName="Bank">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FIBUKonto" msprop:Generator_ColumnVarNameInTable="columnFIBUKonto" msprop:Generator_ColumnPropNameInRow="FIBUKonto" msprop:Generator_ColumnPropNameInTable="FIBUKontoColumn" msprop:Generator_UserColumnName="FIBUKonto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErlagscheingebuehrJN" msprop:Generator_ColumnVarNameInTable="columnErlagscheingebuehrJN" msprop:Generator_ColumnPropNameInRow="ErlagscheingebuehrJN" msprop:Generator_ColumnPropNameInTable="ErlagscheingebuehrJNColumn" msprop:Generator_UserColumnName="ErlagscheingebuehrJN" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Kostentraeger" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

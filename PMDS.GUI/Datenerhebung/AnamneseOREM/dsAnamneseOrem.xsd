@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAnamneseOrem" targetNamespace="http://tempuri.org/dsAnamneseOrem.xsd" xmlns:mstns="http://tempuri.org/dsAnamneseOrem.xsd" xmlns="http://tempuri.org/dsAnamneseOrem.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI.1;Data Source=s2sty076;user id=pmds;initial catalog=PMDS_3_5_0" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAnamneseOrem" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsAnamneseOrem" msprop:Generator_UserDSName="dsAnamneseOrem">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Anamnese_Orem" msprop:Generator_TableClassName="Anamnese_OremDataTable" msprop:Generator_RowEvArgName="Anamnese_OremRowChangeEvent" msprop:Generator_TablePropName="Anamnese_Orem" msprop:Generator_TableVarName="tableAnamnese_Orem" msprop:Generator_RowEvHandlerName="Anamnese_OremRowChangeEventHandler" msprop:Generator_RowDeletingName="Anamnese_OremRowDeleting" msprop:Generator_RowChangingName="Anamnese_OremRowChanging" msprop:Generator_RowDeletedName="Anamnese_OremRowDeleted" msprop:Generator_UserTableName="Anamnese_Orem" msprop:Generator_RowChangedName="Anamnese_OremRowChanged" msprop:Generator_RowClassName="Anamnese_OremRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" />
+              <xs:element name="IDBenutzerErstellt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzerErstellt" msprop:Generator_ColumnPropNameInRow="IDBenutzerErstellt" msprop:Generator_ColumnPropNameInTable="IDBenutzerErstelltColumn" msprop:Generator_UserColumnName="IDBenutzerErstellt" type="xs:string" />
+              <xs:element name="ErstelltAm" msprop:Generator_ColumnVarNameInTable="columnErstelltAm" msprop:Generator_ColumnPropNameInRow="ErstelltAm" msprop:Generator_ColumnPropNameInTable="ErstelltAmColumn" msprop:Generator_UserColumnName="ErstelltAm" type="xs:dateTime" />
+              <xs:element name="DurchgefuehrtMit" msprop:Generator_ColumnVarNameInTable="columnDurchgefuehrtMit" msprop:Generator_ColumnPropNameInRow="DurchgefuehrtMit" msprop:Generator_ColumnPropNameInTable="DurchgefuehrtMitColumn" msprop:Generator_UserColumnName="DurchgefuehrtMit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DepositenJN" msprop:Generator_ColumnVarNameInTable="columnDepositenJN" msprop:Generator_ColumnPropNameInRow="DepositenJN" msprop:Generator_ColumnPropNameInTable="DepositenJNColumn" msprop:Generator_UserColumnName="DepositenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Allergie" msprop:Generator_ColumnVarNameInTable="columnAllergie" msprop:Generator_ColumnPropNameInRow="Allergie" msprop:Generator_ColumnPropNameInTable="AllergieColumn" msprop:Generator_UserColumnName="Allergie" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MobileKrankenpflage" msprop:Generator_ColumnVarNameInTable="columnMobileKrankenpflage" msprop:Generator_ColumnPropNameInRow="MobileKrankenpflage" msprop:Generator_ColumnPropNameInTable="MobileKrankenpflageColumn" msprop:Generator_UserColumnName="MobileKrankenpflage" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SozialeDienste" msprop:Generator_ColumnVarNameInTable="columnSozialeDienste" msprop:Generator_ColumnPropNameInRow="SozialeDienste" msprop:Generator_ColumnPropNameInTable="SozialeDiensteColumn" msprop:Generator_UserColumnName="SozialeDienste" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VerstaendigungAn" msprop:Generator_ColumnVarNameInTable="columnVerstaendigungAn" msprop:Generator_ColumnPropNameInRow="VerstaendigungAn" msprop:Generator_ColumnPropNameInTable="VerstaendigungAnColumn" msprop:Generator_UserColumnName="VerstaendigungAn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sonstiges" msprop:Generator_ColumnVarNameInTable="columnSonstiges" msprop:Generator_ColumnPropNameInRow="Sonstiges" msprop:Generator_ColumnPropNameInTable="SonstigesColumn" msprop:Generator_UserColumnName="Sonstiges" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RaucherJN" msprop:Generator_ColumnVarNameInTable="columnRaucherJN" msprop:Generator_ColumnPropNameInRow="RaucherJN" msprop:Generator_ColumnPropNameInTable="RaucherJNColumn" msprop:Generator_UserColumnName="RaucherJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AtemProblemeJN" msprop:Generator_ColumnVarNameInTable="columnAtemProblemeJN" msprop:Generator_ColumnPropNameInRow="AtemProblemeJN" msprop:Generator_ColumnPropNameInTable="AtemProblemeJNColumn" msprop:Generator_UserColumnName="AtemProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AtemProbleme" msprop:Generator_ColumnVarNameInTable="columnAtemProbleme" msprop:Generator_ColumnPropNameInRow="AtemProbleme" msprop:Generator_ColumnPropNameInTable="AtemProblemeColumn" msprop:Generator_UserColumnName="AtemProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AtemProblemeSeit" msprop:Generator_ColumnVarNameInTable="columnAtemProblemeSeit" msprop:Generator_ColumnPropNameInRow="AtemProblemeSeit" msprop:Generator_ColumnPropNameInTable="AtemProblemeSeitColumn" msprop:Generator_UserColumnName="AtemProblemeSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AtemProblemeAuftretung" msprop:Generator_ColumnVarNameInTable="columnAtemProblemeAuftretung" msprop:Generator_ColumnPropNameInRow="AtemProblemeAuftretung" msprop:Generator_ColumnPropNameInTable="AtemProblemeAuftretungColumn" msprop:Generator_UserColumnName="AtemProblemeAuftretung" type="xs:int" minOccurs="0" />
+              <xs:element name="SonstigeAtemProblemeAuftretung" msprop:Generator_ColumnVarNameInTable="columnSonstigeAtemProblemeAuftretung" msprop:Generator_ColumnPropNameInRow="SonstigeAtemProblemeAuftretung" msprop:Generator_ColumnPropNameInTable="SonstigeAtemProblemeAuftretungColumn" msprop:Generator_UserColumnName="SonstigeAtemProblemeAuftretung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AtemProblemeHilfeMassnahmenHilfsMittel" msprop:Generator_ColumnVarNameInTable="columnAtemProblemeHilfeMassnahmenHilfsMittel" msprop:Generator_ColumnPropNameInRow="AtemProblemeHilfeMassnahmenHilfsMittel" msprop:Generator_ColumnPropNameInTable="AtemProblemeHilfeMassnahmenHilfsMittelColumn" msprop:Generator_UserColumnName="AtemProblemeHilfeMassnahmenHilfsMittel" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tracheostoma" msprop:Generator_ColumnVarNameInTable="columnTracheostoma" msprop:Generator_ColumnPropNameInRow="Tracheostoma" msprop:Generator_ColumnPropNameInTable="TracheostomaColumn" msprop:Generator_UserColumnName="Tracheostoma" type="xs:int" minOccurs="0" />
+              <xs:element name="TracheostomaBeschreibung" msprop:Generator_ColumnVarNameInTable="columnTracheostomaBeschreibung" msprop:Generator_ColumnPropNameInRow="TracheostomaBeschreibung" msprop:Generator_ColumnPropNameInTable="TracheostomaBeschreibungColumn" msprop:Generator_UserColumnName="TracheostomaBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenAtemProbleme" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenAtemProbleme" msprop:Generator_ColumnPropNameInRow="BeobachtungenAtemProbleme" msprop:Generator_ColumnPropNameInTable="BeobachtungenAtemProblemeColumn" msprop:Generator_UserColumnName="BeobachtungenAtemProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FluessigkeitsproblemeJN" msprop:Generator_ColumnVarNameInTable="columnFluessigkeitsproblemeJN" msprop:Generator_ColumnPropNameInRow="FluessigkeitsproblemeJN" msprop:Generator_ColumnPropNameInTable="FluessigkeitsproblemeJNColumn" msprop:Generator_UserColumnName="FluessigkeitsproblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Fluessigkeitsprobleme" msprop:Generator_ColumnVarNameInTable="columnFluessigkeitsprobleme" msprop:Generator_ColumnPropNameInRow="Fluessigkeitsprobleme" msprop:Generator_ColumnPropNameInTable="FluessigkeitsproblemeColumn" msprop:Generator_UserColumnName="Fluessigkeitsprobleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FluessigkeitsproblemeSeit" msprop:Generator_ColumnVarNameInTable="columnFluessigkeitsproblemeSeit" msprop:Generator_ColumnPropNameInRow="FluessigkeitsproblemeSeit" msprop:Generator_ColumnPropNameInTable="FluessigkeitsproblemeSeitColumn" msprop:Generator_UserColumnName="FluessigkeitsproblemeSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Durstgefuehl" msprop:Generator_ColumnVarNameInTable="columnDurstgefuehl" msprop:Generator_ColumnPropNameInRow="Durstgefuehl" msprop:Generator_ColumnPropNameInTable="DurstgefuehlColumn" msprop:Generator_UserColumnName="Durstgefuehl" type="xs:int" minOccurs="0" />
+              <xs:element name="Trinkmenge" msprop:Generator_ColumnVarNameInTable="columnTrinkmenge" msprop:Generator_ColumnPropNameInRow="Trinkmenge" msprop:Generator_ColumnPropNameInTable="TrinkmengeColumn" msprop:Generator_UserColumnName="Trinkmenge" type="xs:double" minOccurs="0" />
+              <xs:element name="ZungeAussehen" msprop:Generator_ColumnVarNameInTable="columnZungeAussehen" msprop:Generator_ColumnPropNameInRow="ZungeAussehen" msprop:Generator_ColumnPropNameInTable="ZungeAussehenColumn" msprop:Generator_UserColumnName="ZungeAussehen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Trinkhilfen" msprop:Generator_ColumnVarNameInTable="columnTrinkhilfen" msprop:Generator_ColumnPropNameInRow="Trinkhilfen" msprop:Generator_ColumnPropNameInTable="TrinkhilfenColumn" msprop:Generator_UserColumnName="Trinkhilfen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Hautturgor" msprop:Generator_ColumnVarNameInTable="columnHautturgor" msprop:Generator_ColumnPropNameInRow="Hautturgor" msprop:Generator_ColumnPropNameInTable="HautturgorColumn" msprop:Generator_UserColumnName="Hautturgor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Oedeme" msprop:Generator_ColumnVarNameInTable="columnOedeme" msprop:Generator_ColumnPropNameInRow="Oedeme" msprop:Generator_ColumnPropNameInTable="OedemeColumn" msprop:Generator_UserColumnName="Oedeme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungFluessigkeitsprobleme" msprop:Generator_ColumnVarNameInTable="columnBeobachtungFluessigkeitsprobleme" msprop:Generator_ColumnPropNameInRow="BeobachtungFluessigkeitsprobleme" msprop:Generator_ColumnPropNameInTable="BeobachtungFluessigkeitsproblemeColumn" msprop:Generator_UserColumnName="BeobachtungFluessigkeitsprobleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErnaehrungProblemeJN" msprop:Generator_ColumnVarNameInTable="columnErnaehrungProblemeJN" msprop:Generator_ColumnPropNameInRow="ErnaehrungProblemeJN" msprop:Generator_ColumnPropNameInTable="ErnaehrungProblemeJNColumn" msprop:Generator_UserColumnName="ErnaehrungProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ErnaehrungProbleme" msprop:Generator_ColumnVarNameInTable="columnErnaehrungProbleme" msprop:Generator_ColumnPropNameInRow="ErnaehrungProbleme" msprop:Generator_ColumnPropNameInTable="ErnaehrungProblemeColumn" msprop:Generator_UserColumnName="ErnaehrungProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErnaehrungProblemeSeit" msprop:Generator_ColumnVarNameInTable="columnErnaehrungProblemeSeit" msprop:Generator_ColumnPropNameInRow="ErnaehrungProblemeSeit" msprop:Generator_ColumnPropNameInTable="ErnaehrungProblemeSeitColumn" msprop:Generator_UserColumnName="ErnaehrungProblemeSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Diaet" msprop:Generator_ColumnVarNameInTable="columnDiaet" msprop:Generator_ColumnPropNameInRow="Diaet" msprop:Generator_ColumnPropNameInTable="DiaetColumn" msprop:Generator_UserColumnName="Diaet" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DiaetSeit" msprop:Generator_ColumnVarNameInTable="columnDiaetSeit" msprop:Generator_ColumnPropNameInRow="DiaetSeit" msprop:Generator_ColumnPropNameInTable="DiaetSeitColumn" msprop:Generator_UserColumnName="DiaetSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Essgewohnheiten" msprop:Generator_ColumnVarNameInTable="columnEssgewohnheiten" msprop:Generator_ColumnPropNameInRow="Essgewohnheiten" msprop:Generator_ColumnPropNameInTable="EssgewohnheitenColumn" msprop:Generator_UserColumnName="Essgewohnheiten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZahnKieferzustand" msprop:Generator_ColumnVarNameInTable="columnZahnKieferzustand" msprop:Generator_ColumnPropNameInRow="ZahnKieferzustand" msprop:Generator_ColumnPropNameInTable="ZahnKieferzustandColumn" msprop:Generator_UserColumnName="ZahnKieferzustand" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MundschleimhautZustand" msprop:Generator_ColumnVarNameInTable="columnMundschleimhautZustand" msprop:Generator_ColumnPropNameInRow="MundschleimhautZustand" msprop:Generator_ColumnPropNameInTable="MundschleimhautZustandColumn" msprop:Generator_UserColumnName="MundschleimhautZustand" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErnaehrungParenteralEnteral" msprop:Generator_ColumnVarNameInTable="columnErnaehrungParenteralEnteral" msprop:Generator_ColumnPropNameInRow="ErnaehrungParenteralEnteral" msprop:Generator_ColumnPropNameInTable="ErnaehrungParenteralEnteralColumn" msprop:Generator_UserColumnName="ErnaehrungParenteralEnteral" type="xs:int" minOccurs="0" />
+              <xs:element name="ErnaehrungArt" msprop:Generator_ColumnVarNameInTable="columnErnaehrungArt" msprop:Generator_ColumnPropNameInRow="ErnaehrungArt" msprop:Generator_ColumnPropNameInTable="ErnaehrungArtColumn" msprop:Generator_UserColumnName="ErnaehrungArt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GelegtAm" msprop:Generator_ColumnVarNameInTable="columnGelegtAm" msprop:Generator_ColumnPropNameInRow="GelegtAm" msprop:Generator_ColumnPropNameInTable="GelegtAmColumn" msprop:Generator_UserColumnName="GelegtAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Stillgewohnheiten" msprop:Generator_ColumnVarNameInTable="columnStillgewohnheiten" msprop:Generator_ColumnPropNameInRow="Stillgewohnheiten" msprop:Generator_ColumnPropNameInTable="StillgewohnheitenColumn" msprop:Generator_UserColumnName="Stillgewohnheiten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungErnaehrungProbleme" msprop:Generator_ColumnVarNameInTable="columnBeobachtungErnaehrungProbleme" msprop:Generator_ColumnPropNameInRow="BeobachtungErnaehrungProbleme" msprop:Generator_ColumnPropNameInTable="BeobachtungErnaehrungProblemeColumn" msprop:Generator_UserColumnName="BeobachtungErnaehrungProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StuhlgangProblemeJN" msprop:Generator_ColumnVarNameInTable="columnStuhlgangProblemeJN" msprop:Generator_ColumnPropNameInRow="StuhlgangProblemeJN" msprop:Generator_ColumnPropNameInTable="StuhlgangProblemeJNColumn" msprop:Generator_UserColumnName="StuhlgangProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="StuhlgangProbleme" msprop:Generator_ColumnVarNameInTable="columnStuhlgangProbleme" msprop:Generator_ColumnPropNameInRow="StuhlgangProbleme" msprop:Generator_ColumnPropNameInTable="StuhlgangProblemeColumn" msprop:Generator_UserColumnName="StuhlgangProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StuhlgangProblemeSeit" msprop:Generator_ColumnVarNameInTable="columnStuhlgangProblemeSeit" msprop:Generator_ColumnPropNameInRow="StuhlgangProblemeSeit" msprop:Generator_ColumnPropNameInTable="StuhlgangProblemeSeitColumn" msprop:Generator_UserColumnName="StuhlgangProblemeSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LetzterStuhlAm" msprop:Generator_ColumnVarNameInTable="columnLetzterStuhlAm" msprop:Generator_ColumnPropNameInRow="LetzterStuhlAm" msprop:Generator_ColumnPropNameInTable="LetzterStuhlAmColumn" msprop:Generator_UserColumnName="LetzterStuhlAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="StuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeit" msprop:Generator_ColumnVarNameInTable="columnStuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeit" msprop:Generator_ColumnPropNameInRow="StuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeit" msprop:Generator_ColumnPropNameInTable="StuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeitColumn" msprop:Generator_UserColumnName="StuhlgangAuffaelligkeitenVeraenderungBezHaeufigkeit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StuhlgangAuffaelligkeitenVeraenderungBezFarbe" msprop:Generator_ColumnVarNameInTable="columnStuhlgangAuffaelligkeitenVeraenderungBezFarbe" msprop:Generator_ColumnPropNameInRow="StuhlgangAuffaelligkeitenVeraenderungBezFarbe" msprop:Generator_ColumnPropNameInTable="StuhlgangAuffaelligkeitenVeraenderungBezFarbeColumn" msprop:Generator_UserColumnName="StuhlgangAuffaelligkeitenVeraenderungBezFarbe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StuhlgangAuffaelligkeitenVeraenderungBezKonsistenz" msprop:Generator_ColumnVarNameInTable="columnStuhlgangAuffaelligkeitenVeraenderungBezKonsistenz" msprop:Generator_ColumnPropNameInRow="StuhlgangAuffaelligkeitenVeraenderungBezKonsistenz" msprop:Generator_ColumnPropNameInTable="StuhlgangAuffaelligkeitenVeraenderungBezKonsistenzColumn" msprop:Generator_UserColumnName="StuhlgangAuffaelligkeitenVeraenderungBezKonsistenz" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StuhlgangAuffaelligkeitenVeraenderungBezMenge" msprop:Generator_ColumnVarNameInTable="columnStuhlgangAuffaelligkeitenVeraenderungBezMenge" msprop:Generator_ColumnPropNameInRow="StuhlgangAuffaelligkeitenVeraenderungBezMenge" msprop:Generator_ColumnPropNameInTable="StuhlgangAuffaelligkeitenVeraenderungBezMengeColumn" msprop:Generator_UserColumnName="StuhlgangAuffaelligkeitenVeraenderungBezMenge" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StuhlgangAuffaelligkeitenVeraenderungBezGeruch" msprop:Generator_ColumnVarNameInTable="columnStuhlgangAuffaelligkeitenVeraenderungBezGeruch" msprop:Generator_ColumnPropNameInRow="StuhlgangAuffaelligkeitenVeraenderungBezGeruch" msprop:Generator_ColumnPropNameInTable="StuhlgangAuffaelligkeitenVeraenderungBezGeruchColumn" msprop:Generator_UserColumnName="StuhlgangAuffaelligkeitenVeraenderungBezGeruch" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Abfuehrhilfen" msprop:Generator_ColumnVarNameInTable="columnAbfuehrhilfen" msprop:Generator_ColumnPropNameInRow="Abfuehrhilfen" msprop:Generator_ColumnPropNameInTable="AbfuehrhilfenColumn" msprop:Generator_UserColumnName="Abfuehrhilfen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KuenstlicheAusgang" msprop:Generator_ColumnVarNameInTable="columnKuenstlicheAusgang" msprop:Generator_ColumnPropNameInRow="KuenstlicheAusgang" msprop:Generator_ColumnPropNameInTable="KuenstlicheAusgangColumn" msprop:Generator_UserColumnName="KuenstlicheAusgang" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KuenstlicheAusgangSeit" msprop:Generator_ColumnVarNameInTable="columnKuenstlicheAusgangSeit" msprop:Generator_ColumnPropNameInRow="KuenstlicheAusgangSeit" msprop:Generator_ColumnPropNameInTable="KuenstlicheAusgangSeitColumn" msprop:Generator_UserColumnName="KuenstlicheAusgangSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="StuhlgangBesondereGewohnheiten" msprop:Generator_ColumnVarNameInTable="columnStuhlgangBesondereGewohnheiten" msprop:Generator_ColumnPropNameInRow="StuhlgangBesondereGewohnheiten" msprop:Generator_ColumnPropNameInTable="StuhlgangBesondereGewohnheitenColumn" msprop:Generator_UserColumnName="StuhlgangBesondereGewohnheiten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenStuhlgangProbleme" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenStuhlgangProbleme" msprop:Generator_ColumnPropNameInRow="BeobachtungenStuhlgangProbleme" msprop:Generator_ColumnPropNameInTable="BeobachtungenStuhlgangProblemeColumn" msprop:Generator_UserColumnName="BeobachtungenStuhlgangProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrinausscheidungProblemeJN" msprop:Generator_ColumnVarNameInTable="columnUrinausscheidungProblemeJN" msprop:Generator_ColumnPropNameInRow="UrinausscheidungProblemeJN" msprop:Generator_ColumnPropNameInTable="UrinausscheidungProblemeJNColumn" msprop:Generator_UserColumnName="UrinausscheidungProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="UrinausscheidungProbleme" msprop:Generator_ColumnVarNameInTable="columnUrinausscheidungProbleme" msprop:Generator_ColumnPropNameInRow="UrinausscheidungProbleme" msprop:Generator_ColumnPropNameInTable="UrinausscheidungProblemeColumn" msprop:Generator_UserColumnName="UrinausscheidungProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrinausscheidungProblemeSeit" msprop:Generator_ColumnVarNameInTable="columnUrinausscheidungProblemeSeit" msprop:Generator_ColumnPropNameInRow="UrinausscheidungProblemeSeit" msprop:Generator_ColumnPropNameInTable="UrinausscheidungProblemeSeitColumn" msprop:Generator_UserColumnName="UrinausscheidungProblemeSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber" msprop:Generator_ColumnVarNameInTable="columnUrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber" msprop:Generator_ColumnPropNameInRow="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber" msprop:Generator_ColumnPropNameInTable="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberColumn" msprop:Generator_UserColumnName="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueber" type="xs:int" minOccurs="0" />
+              <xs:element name="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand" msprop:Generator_ColumnVarNameInTable="columnUrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand" msprop:Generator_ColumnPropNameInRow="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand" msprop:Generator_ColumnPropNameInTable="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstandColumn" msprop:Generator_UserColumnName="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitTagsueberZeitabstand" type="xs:int" minOccurs="0" />
+              <xs:element name="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts" msprop:Generator_ColumnVarNameInTable="columnUrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts" msprop:Generator_ColumnPropNameInRow="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts" msprop:Generator_ColumnPropNameInTable="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsColumn" msprop:Generator_UserColumnName="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachts" type="xs:int" minOccurs="0" />
+              <xs:element name="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand" msprop:Generator_ColumnVarNameInTable="columnUrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand" msprop:Generator_ColumnPropNameInRow="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand" msprop:Generator_ColumnPropNameInTable="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstandColumn" msprop:Generator_UserColumnName="UrinAuffaelligkeitenVeraenderungBezHaeufigkeitNachtsZeitabstand" type="xs:int" minOccurs="0" />
+              <xs:element name="UrinAuffaelligkeitenVeraenderungBezMenge" msprop:Generator_ColumnVarNameInTable="columnUrinAuffaelligkeitenVeraenderungBezMenge" msprop:Generator_ColumnPropNameInRow="UrinAuffaelligkeitenVeraenderungBezMenge" msprop:Generator_ColumnPropNameInTable="UrinAuffaelligkeitenVeraenderungBezMengeColumn" msprop:Generator_UserColumnName="UrinAuffaelligkeitenVeraenderungBezMenge" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrinAuffaelligkeitenVeraenderungBezFarbe" msprop:Generator_ColumnVarNameInTable="columnUrinAuffaelligkeitenVeraenderungBezFarbe" msprop:Generator_ColumnPropNameInRow="UrinAuffaelligkeitenVeraenderungBezFarbe" msprop:Generator_ColumnPropNameInTable="UrinAuffaelligkeitenVeraenderungBezFarbeColumn" msprop:Generator_UserColumnName="UrinAuffaelligkeitenVeraenderungBezFarbe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UrinAuffaelligkeitenVeraenderungBezGeruch" msprop:Generator_ColumnVarNameInTable="columnUrinAuffaelligkeitenVeraenderungBezGeruch" msprop:Generator_ColumnPropNameInRow="UrinAuffaelligkeitenVeraenderungBezGeruch" msprop:Generator_ColumnPropNameInTable="UrinAuffaelligkeitenVeraenderungBezGeruchColumn" msprop:Generator_UserColumnName="UrinAuffaelligkeitenVeraenderungBezGeruch" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HarnableitungssystemArt" msprop:Generator_ColumnVarNameInTable="columnHarnableitungssystemArt" msprop:Generator_ColumnPropNameInRow="HarnableitungssystemArt" msprop:Generator_ColumnPropNameInTable="HarnableitungssystemArtColumn" msprop:Generator_UserColumnName="HarnableitungssystemArt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HarnableitungssystemGelegtAm" msprop:Generator_ColumnVarNameInTable="columnHarnableitungssystemGelegtAm" msprop:Generator_ColumnPropNameInRow="HarnableitungssystemGelegtAm" msprop:Generator_ColumnPropNameInTable="HarnableitungssystemGelegtAmColumn" msprop:Generator_UserColumnName="HarnableitungssystemGelegtAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="HarnableitungssystemGrosse" msprop:Generator_ColumnVarNameInTable="columnHarnableitungssystemGrosse" msprop:Generator_ColumnPropNameInRow="HarnableitungssystemGrosse" msprop:Generator_ColumnPropNameInTable="HarnableitungssystemGrosseColumn" msprop:Generator_UserColumnName="HarnableitungssystemGrosse" type="xs:int" minOccurs="0" />
+              <xs:element name="BeobachtungenUrinausscheidungProbleme" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenUrinausscheidungProbleme" msprop:Generator_ColumnPropNameInRow="BeobachtungenUrinausscheidungProbleme" msprop:Generator_ColumnPropNameInTable="BeobachtungenUrinausscheidungProblemeColumn" msprop:Generator_UserColumnName="BeobachtungenUrinausscheidungProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HautProblemeJN" msprop:Generator_ColumnVarNameInTable="columnHautProblemeJN" msprop:Generator_ColumnPropNameInRow="HautProblemeJN" msprop:Generator_ColumnPropNameInTable="HautProblemeJNColumn" msprop:Generator_UserColumnName="HautProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="HautProbleme" msprop:Generator_ColumnVarNameInTable="columnHautProbleme" msprop:Generator_ColumnPropNameInRow="HautProbleme" msprop:Generator_ColumnPropNameInTable="HautProblemeColumn" msprop:Generator_UserColumnName="HautProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AussclagartigeHautveraendJN" msprop:Generator_ColumnVarNameInTable="columnAussclagartigeHautveraendJN" msprop:Generator_ColumnPropNameInRow="AussclagartigeHautveraendJN" msprop:Generator_ColumnPropNameInTable="AussclagartigeHautveraendJNColumn" msprop:Generator_UserColumnName="AussclagartigeHautveraendJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AussclagartigeHautveraendIn" msprop:Generator_ColumnVarNameInTable="columnAussclagartigeHautveraendIn" msprop:Generator_ColumnPropNameInRow="AussclagartigeHautveraendIn" msprop:Generator_ColumnPropNameInTable="AussclagartigeHautveraendInColumn" msprop:Generator_UserColumnName="AussclagartigeHautveraendIn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AussclagartigeHautveraend" msprop:Generator_ColumnVarNameInTable="columnAussclagartigeHautveraend" msprop:Generator_ColumnPropNameInRow="AussclagartigeHautveraend" msprop:Generator_ColumnPropNameInTable="AussclagartigeHautveraendColumn" msprop:Generator_UserColumnName="AussclagartigeHautveraend" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IntertrigoJN" msprop:Generator_ColumnVarNameInTable="columnIntertrigoJN" msprop:Generator_ColumnPropNameInRow="IntertrigoJN" msprop:Generator_ColumnPropNameInTable="IntertrigoJNColumn" msprop:Generator_UserColumnName="IntertrigoJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IntertrigoIn" msprop:Generator_ColumnVarNameInTable="columnIntertrigoIn" msprop:Generator_ColumnPropNameInRow="IntertrigoIn" msprop:Generator_ColumnPropNameInTable="IntertrigoInColumn" msprop:Generator_UserColumnName="IntertrigoIn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Intertrigo" msprop:Generator_ColumnVarNameInTable="columnIntertrigo" msprop:Generator_ColumnPropNameInRow="Intertrigo" msprop:Generator_ColumnPropNameInTable="IntertrigoColumn" msprop:Generator_UserColumnName="Intertrigo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HaematomaPetechienBlutungenJN" msprop:Generator_ColumnVarNameInTable="columnHaematomaPetechienBlutungenJN" msprop:Generator_ColumnPropNameInRow="HaematomaPetechienBlutungenJN" msprop:Generator_ColumnPropNameInTable="HaematomaPetechienBlutungenJNColumn" msprop:Generator_UserColumnName="HaematomaPetechienBlutungenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="HaematomaPetechienBlutungenIN" msprop:Generator_ColumnVarNameInTable="columnHaematomaPetechienBlutungenIN" msprop:Generator_ColumnPropNameInRow="HaematomaPetechienBlutungenIN" msprop:Generator_ColumnPropNameInTable="HaematomaPetechienBlutungenINColumn" msprop:Generator_UserColumnName="HaematomaPetechienBlutungenIN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HaematomaPetechienBlutungen" msprop:Generator_ColumnVarNameInTable="columnHaematomaPetechienBlutungen" msprop:Generator_ColumnPropNameInRow="HaematomaPetechienBlutungen" msprop:Generator_ColumnPropNameInTable="HaematomaPetechienBlutungenColumn" msprop:Generator_UserColumnName="HaematomaPetechienBlutungen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnderWundenHautlaesionenJN" msprop:Generator_ColumnVarNameInTable="columnAnderWundenHautlaesionenJN" msprop:Generator_ColumnPropNameInRow="AnderWundenHautlaesionenJN" msprop:Generator_ColumnPropNameInTable="AnderWundenHautlaesionenJNColumn" msprop:Generator_UserColumnName="AnderWundenHautlaesionenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AnderWundenHautlaesionenIn" msprop:Generator_ColumnVarNameInTable="columnAnderWundenHautlaesionenIn" msprop:Generator_ColumnPropNameInRow="AnderWundenHautlaesionenIn" msprop:Generator_ColumnPropNameInTable="AnderWundenHautlaesionenInColumn" msprop:Generator_UserColumnName="AnderWundenHautlaesionenIn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AnderWundenHautlaesionen" msprop:Generator_ColumnVarNameInTable="columnAnderWundenHautlaesionen" msprop:Generator_ColumnPropNameInRow="AnderWundenHautlaesionen" msprop:Generator_ColumnPropNameInTable="AnderWundenHautlaesionenColumn" msprop:Generator_UserColumnName="AnderWundenHautlaesionen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Decubitus" msprop:Generator_ColumnVarNameInTable="columnDecubitus" msprop:Generator_ColumnPropNameInRow="Decubitus" msprop:Generator_ColumnPropNameInTable="DecubitusColumn" msprop:Generator_UserColumnName="Decubitus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Schweisssekretion" msprop:Generator_ColumnVarNameInTable="columnSchweisssekretion" msprop:Generator_ColumnPropNameInRow="Schweisssekretion" msprop:Generator_ColumnPropNameInTable="SchweisssekretionColumn" msprop:Generator_UserColumnName="Schweisssekretion" type="xs:int" minOccurs="0" />
+              <xs:element name="SchweissHaeufigkeit" msprop:Generator_ColumnVarNameInTable="columnSchweissHaeufigkeit" msprop:Generator_ColumnPropNameInRow="SchweissHaeufigkeit" msprop:Generator_ColumnPropNameInTable="SchweissHaeufigkeitColumn" msprop:Generator_UserColumnName="SchweissHaeufigkeit" type="xs:int" minOccurs="0" />
+              <xs:element name="SchweissBesonderheiten" msprop:Generator_ColumnVarNameInTable="columnSchweissBesonderheiten" msprop:Generator_ColumnPropNameInRow="SchweissBesonderheiten" msprop:Generator_ColumnPropNameInTable="SchweissBesonderheitenColumn" msprop:Generator_UserColumnName="SchweissBesonderheiten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenAusscheidung" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenAusscheidung" msprop:Generator_ColumnPropNameInRow="BeobachtungenAusscheidung" msprop:Generator_ColumnPropNameInTable="BeobachtungenAusscheidungColumn" msprop:Generator_UserColumnName="BeobachtungenAusscheidung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SichBewegenProblemeJN" msprop:Generator_ColumnVarNameInTable="columnSichBewegenProblemeJN" msprop:Generator_ColumnPropNameInRow="SichBewegenProblemeJN" msprop:Generator_ColumnPropNameInTable="SichBewegenProblemeJNColumn" msprop:Generator_UserColumnName="SichBewegenProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SichBewegenProbleme" msprop:Generator_ColumnVarNameInTable="columnSichBewegenProbleme" msprop:Generator_ColumnPropNameInRow="SichBewegenProbleme" msprop:Generator_ColumnPropNameInTable="SichBewegenProblemeColumn" msprop:Generator_UserColumnName="SichBewegenProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SichBewegenProblemeSeit" msprop:Generator_ColumnVarNameInTable="columnSichBewegenProblemeSeit" msprop:Generator_ColumnPropNameInRow="SichBewegenProblemeSeit" msprop:Generator_ColumnPropNameInTable="SichBewegenProblemeSeitColumn" msprop:Generator_UserColumnName="SichBewegenProblemeSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BeobachtungenSichBewegen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenSichBewegen" msprop:Generator_ColumnPropNameInRow="BeobachtungenSichBewegen" msprop:Generator_ColumnPropNameInTable="BeobachtungenSichBewegenColumn" msprop:Generator_UserColumnName="BeobachtungenSichBewegen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BewegungImBett" msprop:Generator_ColumnVarNameInTable="columnBewegungImBett" msprop:Generator_ColumnPropNameInRow="BewegungImBett" msprop:Generator_ColumnPropNameInTable="BewegungImBettColumn" msprop:Generator_UserColumnName="BewegungImBett" type="xs:int" minOccurs="0" />
+              <xs:element name="BewegungImBettBeschreibung" msprop:Generator_ColumnVarNameInTable="columnBewegungImBettBeschreibung" msprop:Generator_ColumnPropNameInRow="BewegungImBettBeschreibung" msprop:Generator_ColumnPropNameInTable="BewegungImBettBeschreibungColumn" msprop:Generator_UserColumnName="BewegungImBettBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TransferBettAussehalb" msprop:Generator_ColumnVarNameInTable="columnTransferBettAussehalb" msprop:Generator_ColumnPropNameInRow="TransferBettAussehalb" msprop:Generator_ColumnPropNameInTable="TransferBettAussehalbColumn" msprop:Generator_UserColumnName="TransferBettAussehalb" type="xs:int" minOccurs="0" />
+              <xs:element name="TransferBettAussehalbBeschreibung" msprop:Generator_ColumnVarNameInTable="columnTransferBettAussehalbBeschreibung" msprop:Generator_ColumnPropNameInRow="TransferBettAussehalbBeschreibung" msprop:Generator_ColumnPropNameInTable="TransferBettAussehalbBeschreibungColumn" msprop:Generator_UserColumnName="TransferBettAussehalbBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MobilImRollstuhl" msprop:Generator_ColumnVarNameInTable="columnMobilImRollstuhl" msprop:Generator_ColumnPropNameInRow="MobilImRollstuhl" msprop:Generator_ColumnPropNameInTable="MobilImRollstuhlColumn" msprop:Generator_UserColumnName="MobilImRollstuhl" type="xs:int" minOccurs="0" />
+              <xs:element name="MobilImRollstuhlBeschreibung" msprop:Generator_ColumnVarNameInTable="columnMobilImRollstuhlBeschreibung" msprop:Generator_ColumnPropNameInRow="MobilImRollstuhlBeschreibung" msprop:Generator_ColumnPropNameInTable="MobilImRollstuhlBeschreibungColumn" msprop:Generator_UserColumnName="MobilImRollstuhlBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FortbewegungZuFuss" msprop:Generator_ColumnVarNameInTable="columnFortbewegungZuFuss" msprop:Generator_ColumnPropNameInRow="FortbewegungZuFuss" msprop:Generator_ColumnPropNameInTable="FortbewegungZuFussColumn" msprop:Generator_UserColumnName="FortbewegungZuFuss" type="xs:int" minOccurs="0" />
+              <xs:element name="FortbewegungZuFussBeschreibung" msprop:Generator_ColumnVarNameInTable="columnFortbewegungZuFussBeschreibung" msprop:Generator_ColumnPropNameInRow="FortbewegungZuFussBeschreibung" msprop:Generator_ColumnPropNameInTable="FortbewegungZuFussBeschreibungColumn" msprop:Generator_UserColumnName="FortbewegungZuFussBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungSichBewegen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungSichBewegen" msprop:Generator_ColumnPropNameInRow="BeobachtungSichBewegen" msprop:Generator_ColumnPropNameInTable="BeobachtungSichBewegenColumn" msprop:Generator_UserColumnName="BeobachtungSichBewegen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RueckenmarklaesionProbleme" msprop:Generator_ColumnVarNameInTable="columnRueckenmarklaesionProbleme" msprop:Generator_ColumnPropNameInRow="RueckenmarklaesionProbleme" msprop:Generator_ColumnPropNameInTable="RueckenmarklaesionProblemeColumn" msprop:Generator_UserColumnName="RueckenmarklaesionProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EssenTrinken" msprop:Generator_ColumnVarNameInTable="columnEssenTrinken" msprop:Generator_ColumnPropNameInRow="EssenTrinken" msprop:Generator_ColumnPropNameInTable="EssenTrinkenColumn" msprop:Generator_UserColumnName="EssenTrinken" type="xs:int" minOccurs="0" />
+              <xs:element name="EssenTrinkenBeschreibung" msprop:Generator_ColumnVarNameInTable="columnEssenTrinkenBeschreibung" msprop:Generator_ColumnPropNameInRow="EssenTrinkenBeschreibung" msprop:Generator_ColumnPropNameInTable="EssenTrinkenBeschreibungColumn" msprop:Generator_UserColumnName="EssenTrinkenBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Koerperpflage" msprop:Generator_ColumnVarNameInTable="columnKoerperpflage" msprop:Generator_ColumnPropNameInRow="Koerperpflage" msprop:Generator_ColumnPropNameInTable="KoerperpflageColumn" msprop:Generator_UserColumnName="Koerperpflage" type="xs:int" minOccurs="0" />
+              <xs:element name="KoerperpflageBeschreibung" msprop:Generator_ColumnVarNameInTable="columnKoerperpflageBeschreibung" msprop:Generator_ColumnPropNameInRow="KoerperpflageBeschreibung" msprop:Generator_ColumnPropNameInTable="KoerperpflageBeschreibungColumn" msprop:Generator_UserColumnName="KoerperpflageBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Kleiden" msprop:Generator_ColumnVarNameInTable="columnKleiden" msprop:Generator_ColumnPropNameInRow="Kleiden" msprop:Generator_ColumnPropNameInTable="KleidenColumn" msprop:Generator_UserColumnName="Kleiden" type="xs:int" minOccurs="0" />
+              <xs:element name="KleidenBeschreibung" msprop:Generator_ColumnVarNameInTable="columnKleidenBeschreibung" msprop:Generator_ColumnPropNameInRow="KleidenBeschreibung" msprop:Generator_ColumnPropNameInTable="KleidenBeschreibungColumn" msprop:Generator_UserColumnName="KleidenBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SelbstpflageHarnTag" msprop:Generator_ColumnVarNameInTable="columnSelbstpflageHarnTag" msprop:Generator_ColumnPropNameInRow="SelbstpflageHarnTag" msprop:Generator_ColumnPropNameInTable="SelbstpflageHarnTagColumn" msprop:Generator_UserColumnName="SelbstpflageHarnTag" type="xs:int" minOccurs="0" />
+              <xs:element name="SelbstpflageHarnNacht" msprop:Generator_ColumnVarNameInTable="columnSelbstpflageHarnNacht" msprop:Generator_ColumnPropNameInRow="SelbstpflageHarnNacht" msprop:Generator_ColumnPropNameInTable="SelbstpflageHarnNachtColumn" msprop:Generator_UserColumnName="SelbstpflageHarnNacht" type="xs:int" minOccurs="0" />
+              <xs:element name="SelbstpflageStuhlTag" msprop:Generator_ColumnVarNameInTable="columnSelbstpflageStuhlTag" msprop:Generator_ColumnPropNameInRow="SelbstpflageStuhlTag" msprop:Generator_ColumnPropNameInTable="SelbstpflageStuhlTagColumn" msprop:Generator_UserColumnName="SelbstpflageStuhlTag" type="xs:int" minOccurs="0" />
+              <xs:element name="SelbstpflageStuhlNacht" msprop:Generator_ColumnVarNameInTable="columnSelbstpflageStuhlNacht" msprop:Generator_ColumnPropNameInRow="SelbstpflageStuhlNacht" msprop:Generator_ColumnPropNameInTable="SelbstpflageStuhlNachtColumn" msprop:Generator_UserColumnName="SelbstpflageStuhlNacht" type="xs:int" minOccurs="0" />
+              <xs:element name="SelbstpflagedefizitBeschreibung" msprop:Generator_ColumnVarNameInTable="columnSelbstpflagedefizitBeschreibung" msprop:Generator_ColumnPropNameInRow="SelbstpflagedefizitBeschreibung" msprop:Generator_ColumnPropNameInTable="SelbstpflagedefizitBeschreibungColumn" msprop:Generator_UserColumnName="SelbstpflagedefizitBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Haushalt" msprop:Generator_ColumnVarNameInTable="columnHaushalt" msprop:Generator_ColumnPropNameInRow="Haushalt" msprop:Generator_ColumnPropNameInTable="HaushaltColumn" msprop:Generator_UserColumnName="Haushalt" type="xs:int" minOccurs="0" />
+              <xs:element name="HaushaltBeschreibung" msprop:Generator_ColumnVarNameInTable="columnHaushaltBeschreibung" msprop:Generator_ColumnPropNameInRow="HaushaltBeschreibung" msprop:Generator_ColumnPropNameInTable="HaushaltBeschreibungColumn" msprop:Generator_UserColumnName="HaushaltBeschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Freizeit" msprop:Generator_ColumnVarNameInTable="columnFreizeit" msprop:Generator_ColumnPropNameInRow="Freizeit" msprop:Generator_ColumnPropNameInTable="FreizeitColumn" msprop:Generator_UserColumnName="Freizeit" type="xs:int" minOccurs="0" />
+              <xs:element name="FreizeitBerschreibung" msprop:Generator_ColumnVarNameInTable="columnFreizeitBerschreibung" msprop:Generator_ColumnPropNameInRow="FreizeitBerschreibung" msprop:Generator_ColumnPropNameInTable="FreizeitBerschreibungColumn" msprop:Generator_UserColumnName="FreizeitBerschreibung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SelbstpflagedefizitGewohnheiten" msprop:Generator_ColumnVarNameInTable="columnSelbstpflagedefizitGewohnheiten" msprop:Generator_ColumnPropNameInRow="SelbstpflagedefizitGewohnheiten" msprop:Generator_ColumnPropNameInTable="SelbstpflagedefizitGewohnheitenColumn" msprop:Generator_UserColumnName="SelbstpflagedefizitGewohnheiten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenSelbstpflagedefizit" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenSelbstpflagedefizit" msprop:Generator_ColumnPropNameInRow="BeobachtungenSelbstpflagedefizit" msprop:Generator_ColumnPropNameInTable="BeobachtungenSelbstpflagedefizitColumn" msprop:Generator_UserColumnName="BeobachtungenSelbstpflagedefizit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchlafproblemeJN" msprop:Generator_ColumnVarNameInTable="columnSchlafproblemeJN" msprop:Generator_ColumnPropNameInRow="SchlafproblemeJN" msprop:Generator_ColumnPropNameInTable="SchlafproblemeJNColumn" msprop:Generator_UserColumnName="SchlafproblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Schlafprobleme" msprop:Generator_ColumnVarNameInTable="columnSchlafprobleme" msprop:Generator_ColumnPropNameInRow="Schlafprobleme" msprop:Generator_ColumnPropNameInTable="SchlafproblemeColumn" msprop:Generator_UserColumnName="Schlafprobleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchlafproblemeSeit" msprop:Generator_ColumnVarNameInTable="columnSchlafproblemeSeit" msprop:Generator_ColumnPropNameInRow="SchlafproblemeSeit" msprop:Generator_ColumnPropNameInTable="SchlafproblemeSeitColumn" msprop:Generator_UserColumnName="SchlafproblemeSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BeobachtungenSchlafprobleme" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenSchlafprobleme" msprop:Generator_ColumnPropNameInRow="BeobachtungenSchlafprobleme" msprop:Generator_ColumnPropNameInTable="BeobachtungenSchlafproblemeColumn" msprop:Generator_UserColumnName="BeobachtungenSchlafprobleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KommunikationProblemeJN" msprop:Generator_ColumnVarNameInTable="columnKommunikationProblemeJN" msprop:Generator_ColumnPropNameInRow="KommunikationProblemeJN" msprop:Generator_ColumnPropNameInTable="KommunikationProblemeJNColumn" msprop:Generator_UserColumnName="KommunikationProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="KommunikationProbleme" msprop:Generator_ColumnVarNameInTable="columnKommunikationProbleme" msprop:Generator_ColumnPropNameInRow="KommunikationProbleme" msprop:Generator_ColumnPropNameInTable="KommunikationProblemeColumn" msprop:Generator_UserColumnName="KommunikationProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KommunikationSelbsthilfe" msprop:Generator_ColumnVarNameInTable="columnKommunikationSelbsthilfe" msprop:Generator_ColumnPropNameInRow="KommunikationSelbsthilfe" msprop:Generator_ColumnPropNameInTable="KommunikationSelbsthilfeColumn" msprop:Generator_UserColumnName="KommunikationSelbsthilfe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenKommunikationProbleme" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenKommunikationProbleme" msprop:Generator_ColumnPropNameInRow="BeobachtungenKommunikationProbleme" msprop:Generator_ColumnPropNameInTable="BeobachtungenKommunikationProblemeColumn" msprop:Generator_UserColumnName="BeobachtungenKommunikationProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FamBeziehSozialeSituation" msprop:Generator_ColumnVarNameInTable="columnFamBeziehSozialeSituation" msprop:Generator_ColumnPropNameInRow="FamBeziehSozialeSituation" msprop:Generator_ColumnPropNameInTable="FamBeziehSozialeSituationColumn" msprop:Generator_UserColumnName="FamBeziehSozialeSituation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FamBeziehSozialeProblemeJN" msprop:Generator_ColumnVarNameInTable="columnFamBeziehSozialeProblemeJN" msprop:Generator_ColumnPropNameInRow="FamBeziehSozialeProblemeJN" msprop:Generator_ColumnPropNameInTable="FamBeziehSozialeProblemeJNColumn" msprop:Generator_UserColumnName="FamBeziehSozialeProblemeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FamBeziehSozialeProbleme" msprop:Generator_ColumnVarNameInTable="columnFamBeziehSozialeProbleme" msprop:Generator_ColumnPropNameInRow="FamBeziehSozialeProbleme" msprop:Generator_ColumnPropNameInTable="FamBeziehSozialeProblemeColumn" msprop:Generator_UserColumnName="FamBeziehSozialeProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Bezugsperson" msprop:Generator_ColumnVarNameInTable="columnBezugsperson" msprop:Generator_ColumnPropNameInRow="Bezugsperson" msprop:Generator_ColumnPropNameInTable="BezugspersonColumn" msprop:Generator_UserColumnName="Bezugsperson" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AbhaengigePersonenJN" msprop:Generator_ColumnVarNameInTable="columnAbhaengigePersonenJN" msprop:Generator_ColumnPropNameInRow="AbhaengigePersonenJN" msprop:Generator_ColumnPropNameInTable="AbhaengigePersonenJNColumn" msprop:Generator_UserColumnName="AbhaengigePersonenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AbhaengigePersonen" msprop:Generator_ColumnVarNameInTable="columnAbhaengigePersonen" msprop:Generator_ColumnPropNameInRow="AbhaengigePersonen" msprop:Generator_ColumnPropNameInTable="AbhaengigePersonenColumn" msprop:Generator_UserColumnName="AbhaengigePersonen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZuHauseAllesRegelnKoennenJN" msprop:Generator_ColumnVarNameInTable="columnZuHauseAllesRegelnKoennenJN" msprop:Generator_ColumnPropNameInRow="ZuHauseAllesRegelnKoennenJN" msprop:Generator_ColumnPropNameInTable="ZuHauseAllesRegelnKoennenJNColumn" msprop:Generator_UserColumnName="ZuHauseAllesRegelnKoennenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ZuHauseNichtRegelnKoennen" msprop:Generator_ColumnVarNameInTable="columnZuHauseNichtRegelnKoennen" msprop:Generator_ColumnPropNameInRow="ZuHauseNichtRegelnKoennen" msprop:Generator_ColumnPropNameInTable="ZuHauseNichtRegelnKoennenColumn" msprop:Generator_UserColumnName="ZuHauseNichtRegelnKoennen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Besuchswuensche" msprop:Generator_ColumnVarNameInTable="columnBesuchswuensche" msprop:Generator_ColumnPropNameInRow="Besuchswuensche" msprop:Generator_ColumnPropNameInTable="BesuchswuenscheColumn" msprop:Generator_UserColumnName="Besuchswuensche" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Situationsauswirkung" msprop:Generator_ColumnVarNameInTable="columnSituationsauswirkung" msprop:Generator_ColumnPropNameInRow="Situationsauswirkung" msprop:Generator_ColumnPropNameInTable="SituationsauswirkungColumn" msprop:Generator_UserColumnName="Situationsauswirkung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenSozialesituation" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenSozialesituation" msprop:Generator_ColumnPropNameInRow="BeobachtungenSozialesituation" msprop:Generator_ColumnPropNameInTable="BeobachtungenSozialesituationColumn" msprop:Generator_UserColumnName="BeobachtungenSozialesituation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HinweiseKoerpPsychGewalteinwirkungenJN" msprop:Generator_ColumnVarNameInTable="columnHinweiseKoerpPsychGewalteinwirkungenJN" msprop:Generator_ColumnPropNameInRow="HinweiseKoerpPsychGewalteinwirkungenJN" msprop:Generator_ColumnPropNameInTable="HinweiseKoerpPsychGewalteinwirkungenJNColumn" msprop:Generator_UserColumnName="HinweiseKoerpPsychGewalteinwirkungenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="HinweiseKoerpPsychGewalteinwirkungen" msprop:Generator_ColumnVarNameInTable="columnHinweiseKoerpPsychGewalteinwirkungen" msprop:Generator_ColumnPropNameInRow="HinweiseKoerpPsychGewalteinwirkungen" msprop:Generator_ColumnPropNameInTable="HinweiseKoerpPsychGewalteinwirkungenColumn" msprop:Generator_UserColumnName="HinweiseKoerpPsychGewalteinwirkungen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EinschneidendeLebenssituationsveraenderungen" msprop:Generator_ColumnVarNameInTable="columnEinschneidendeLebenssituationsveraenderungen" msprop:Generator_ColumnPropNameInRow="EinschneidendeLebenssituationsveraenderungen" msprop:Generator_ColumnPropNameInTable="EinschneidendeLebenssituationsveraenderungenColumn" msprop:Generator_UserColumnName="EinschneidendeLebenssituationsveraenderungen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Suizidversuche" msprop:Generator_ColumnVarNameInTable="columnSuizidversuche" msprop:Generator_ColumnPropNameInRow="Suizidversuche" msprop:Generator_ColumnPropNameInTable="SuizidversucheColumn" msprop:Generator_UserColumnName="Suizidversuche" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenGewalteinwirkungen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenGewalteinwirkungen" msprop:Generator_ColumnPropNameInRow="BeobachtungenGewalteinwirkungen" msprop:Generator_ColumnPropNameInTable="BeobachtungenGewalteinwirkungenColumn" msprop:Generator_UserColumnName="BeobachtungenGewalteinwirkungen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sexualitaet" msprop:Generator_ColumnVarNameInTable="columnSexualitaet" msprop:Generator_ColumnPropNameInRow="Sexualitaet" msprop:Generator_ColumnPropNameInTable="SexualitaetColumn" msprop:Generator_UserColumnName="Sexualitaet" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenSexualitaet" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenSexualitaet" msprop:Generator_ColumnPropNameInRow="BeobachtungenSexualitaet" msprop:Generator_ColumnPropNameInTable="BeobachtungenSexualitaetColumn" msprop:Generator_UserColumnName="BeobachtungenSexualitaet" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="InfektionsgefahrJN" msprop:Generator_ColumnVarNameInTable="columnInfektionsgefahrJN" msprop:Generator_ColumnPropNameInRow="InfektionsgefahrJN" msprop:Generator_ColumnPropNameInTable="InfektionsgefahrJNColumn" msprop:Generator_UserColumnName="InfektionsgefahrJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Infektionsgefahr" msprop:Generator_ColumnVarNameInTable="columnInfektionsgefahr" msprop:Generator_ColumnPropNameInRow="Infektionsgefahr" msprop:Generator_ColumnPropNameInTable="InfektionsgefahrColumn" msprop:Generator_UserColumnName="Infektionsgefahr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KoerperTempGefaehrdungJN" msprop:Generator_ColumnVarNameInTable="columnKoerperTempGefaehrdungJN" msprop:Generator_ColumnPropNameInRow="KoerperTempGefaehrdungJN" msprop:Generator_ColumnPropNameInTable="KoerperTempGefaehrdungJNColumn" msprop:Generator_UserColumnName="KoerperTempGefaehrdungJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="KoerperTempVeraendertJN" msprop:Generator_ColumnVarNameInTable="columnKoerperTempVeraendertJN" msprop:Generator_ColumnPropNameInRow="KoerperTempVeraendertJN" msprop:Generator_ColumnPropNameInTable="KoerperTempVeraendertJNColumn" msprop:Generator_UserColumnName="KoerperTempVeraendertJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="KoerperTempVeraenderung" msprop:Generator_ColumnVarNameInTable="columnKoerperTempVeraenderung" msprop:Generator_ColumnPropNameInRow="KoerperTempVeraenderung" msprop:Generator_ColumnPropNameInTable="KoerperTempVeraenderungColumn" msprop:Generator_UserColumnName="KoerperTempVeraenderung" type="xs:int" minOccurs="0" />
+              <xs:element name="KoerperTemp" msprop:Generator_ColumnVarNameInTable="columnKoerperTemp" msprop:Generator_ColumnPropNameInRow="KoerperTemp" msprop:Generator_ColumnPropNameInTable="KoerperTempColumn" msprop:Generator_UserColumnName="KoerperTemp" type="xs:double" minOccurs="0" />
+              <xs:element name="KoerperTempVeraenderungSeit" msprop:Generator_ColumnVarNameInTable="columnKoerperTempVeraenderungSeit" msprop:Generator_ColumnPropNameInRow="KoerperTempVeraenderungSeit" msprop:Generator_ColumnPropNameInTable="KoerperTempVeraenderungSeitColumn" msprop:Generator_UserColumnName="KoerperTempVeraenderungSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BeobachtungenKoerperTemp" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenKoerperTemp" msprop:Generator_ColumnPropNameInRow="BeobachtungenKoerperTemp" msprop:Generator_ColumnPropNameInTable="BeobachtungenKoerperTempColumn" msprop:Generator_UserColumnName="BeobachtungenKoerperTemp" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN" msprop:Generator_ColumnVarNameInTable="columnVorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN" msprop:Generator_ColumnPropNameInRow="VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN" msprop:Generator_ColumnPropNameInTable="VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJNColumn" msprop:Generator_UserColumnName="VorVerletzSturzKrankheitVergiftungSelbstSchuetzenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenVorVerletzugen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenVorVerletzugen" msprop:Generator_ColumnPropNameInRow="BeobachtungenVorVerletzugen" msprop:Generator_ColumnPropNameInTable="BeobachtungenVorVerletzugenColumn" msprop:Generator_UserColumnName="BeobachtungenVorVerletzugen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErstickenErhoehtesRisikoJN" msprop:Generator_ColumnVarNameInTable="columnErstickenErhoehtesRisikoJN" msprop:Generator_ColumnPropNameInRow="ErstickenErhoehtesRisikoJN" msprop:Generator_ColumnPropNameInTable="ErstickenErhoehtesRisikoJNColumn" msprop:Generator_UserColumnName="ErstickenErhoehtesRisikoJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenErsticken" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenErsticken" msprop:Generator_ColumnPropNameInRow="BeobachtungenErsticken" msprop:Generator_ColumnPropNameInTable="BeobachtungenErstickenColumn" msprop:Generator_UserColumnName="BeobachtungenErsticken" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FluessigkeitenNahrungAspirationsrisikoJN" msprop:Generator_ColumnVarNameInTable="columnFluessigkeitenNahrungAspirationsrisikoJN" msprop:Generator_ColumnPropNameInRow="FluessigkeitenNahrungAspirationsrisikoJN" msprop:Generator_ColumnPropNameInTable="FluessigkeitenNahrungAspirationsrisikoJNColumn" msprop:Generator_UserColumnName="FluessigkeitenNahrungAspirationsrisikoJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenAspirationsrisiko" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenAspirationsrisiko" msprop:Generator_ColumnPropNameInRow="BeobachtungenAspirationsrisiko" msprop:Generator_ColumnPropNameInTable="BeobachtungenAspirationsrisikoColumn" msprop:Generator_UserColumnName="BeobachtungenAspirationsrisiko" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KannBehandlungsprogrammAkzeptierenJN" msprop:Generator_ColumnVarNameInTable="columnKannBehandlungsprogrammAkzeptierenJN" msprop:Generator_ColumnPropNameInRow="KannBehandlungsprogrammAkzeptierenJN" msprop:Generator_ColumnPropNameInTable="KannBehandlungsprogrammAkzeptierenJNColumn" msprop:Generator_UserColumnName="KannBehandlungsprogrammAkzeptierenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenBehandlungsprogramm" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenBehandlungsprogramm" msprop:Generator_ColumnPropNameInRow="BeobachtungenBehandlungsprogramm" msprop:Generator_ColumnPropNameInTable="BeobachtungenBehandlungsprogrammColumn" msprop:Generator_UserColumnName="BeobachtungenBehandlungsprogramm" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErkenntGesungheitsfoerdendeMassnahmenJN" msprop:Generator_ColumnVarNameInTable="columnErkenntGesungheitsfoerdendeMassnahmenJN" msprop:Generator_ColumnPropNameInRow="ErkenntGesungheitsfoerdendeMassnahmenJN" msprop:Generator_ColumnPropNameInTable="ErkenntGesungheitsfoerdendeMassnahmenJNColumn" msprop:Generator_UserColumnName="ErkenntGesungheitsfoerdendeMassnahmenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="GesungheitsfoerdendeMassnahmen" msprop:Generator_ColumnVarNameInTable="columnGesungheitsfoerdendeMassnahmen" msprop:Generator_ColumnPropNameInRow="GesungheitsfoerdendeMassnahmen" msprop:Generator_ColumnPropNameInTable="GesungheitsfoerdendeMassnahmenColumn" msprop:Generator_UserColumnName="GesungheitsfoerdendeMassnahmen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenGesungheitsfoerdendeMassnahmen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenGesungheitsfoerdendeMassnahmen" msprop:Generator_ColumnPropNameInRow="BeobachtungenGesungheitsfoerdendeMassnahmen" msprop:Generator_ColumnPropNameInTable="BeobachtungenGesungheitsfoerdendeMassnahmenColumn" msprop:Generator_UserColumnName="BeobachtungenGesungheitsfoerdendeMassnahmen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BlutzirkulationStoerungenJN" msprop:Generator_ColumnVarNameInTable="columnBlutzirkulationStoerungenJN" msprop:Generator_ColumnPropNameInRow="BlutzirkulationStoerungenJN" msprop:Generator_ColumnPropNameInTable="BlutzirkulationStoerungenJNColumn" msprop:Generator_UserColumnName="BlutzirkulationStoerungenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BlutzirkulationStoerungen" msprop:Generator_ColumnVarNameInTable="columnBlutzirkulationStoerungen" msprop:Generator_ColumnPropNameInRow="BlutzirkulationStoerungen" msprop:Generator_ColumnPropNameInTable="BlutzirkulationStoerungenColumn" msprop:Generator_UserColumnName="BlutzirkulationStoerungen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenBlutzirkulation" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenBlutzirkulation" msprop:Generator_ColumnPropNameInRow="BeobachtungenBlutzirkulation" msprop:Generator_ColumnPropNameInTable="BeobachtungenBlutzirkulationColumn" msprop:Generator_UserColumnName="BeobachtungenBlutzirkulation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchmerzenJN" msprop:Generator_ColumnVarNameInTable="columnSchmerzenJN" msprop:Generator_ColumnPropNameInRow="SchmerzenJN" msprop:Generator_ColumnPropNameInTable="SchmerzenJNColumn" msprop:Generator_UserColumnName="SchmerzenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SchmerzenLokalisation" msprop:Generator_ColumnVarNameInTable="columnSchmerzenLokalisation" msprop:Generator_ColumnPropNameInRow="SchmerzenLokalisation" msprop:Generator_ColumnPropNameInTable="SchmerzenLokalisationColumn" msprop:Generator_UserColumnName="SchmerzenLokalisation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchmerzenSeit" msprop:Generator_ColumnVarNameInTable="columnSchmerzenSeit" msprop:Generator_ColumnPropNameInRow="SchmerzenSeit" msprop:Generator_ColumnPropNameInTable="SchmerzenSeitColumn" msprop:Generator_UserColumnName="SchmerzenSeit" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SchmerzenHaeufigkeit" msprop:Generator_ColumnVarNameInTable="columnSchmerzenHaeufigkeit" msprop:Generator_ColumnPropNameInRow="SchmerzenHaeufigkeit" msprop:Generator_ColumnPropNameInTable="SchmerzenHaeufigkeitColumn" msprop:Generator_UserColumnName="SchmerzenHaeufigkeit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchmerzenArt" msprop:Generator_ColumnVarNameInTable="columnSchmerzenArt" msprop:Generator_ColumnPropNameInRow="SchmerzenArt" msprop:Generator_ColumnPropNameInTable="SchmerzenArtColumn" msprop:Generator_UserColumnName="SchmerzenArt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchmerzenIntensitaet" msprop:Generator_ColumnVarNameInTable="columnSchmerzenIntensitaet" msprop:Generator_ColumnPropNameInRow="SchmerzenIntensitaet" msprop:Generator_ColumnPropNameInTable="SchmerzenIntensitaetColumn" msprop:Generator_UserColumnName="SchmerzenIntensitaet" type="xs:int" minOccurs="0" />
+              <xs:element name="SchmerzenAustrahlung" msprop:Generator_ColumnVarNameInTable="columnSchmerzenAustrahlung" msprop:Generator_ColumnPropNameInRow="SchmerzenAustrahlung" msprop:Generator_ColumnPropNameInTable="SchmerzenAustrahlungColumn" msprop:Generator_UserColumnName="SchmerzenAustrahlung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchmerzausloesendeFaktoren" msprop:Generator_ColumnVarNameInTable="columnSchmerzausloesendeFaktoren" msprop:Generator_ColumnPropNameInRow="SchmerzausloesendeFaktoren" msprop:Generator_ColumnPropNameInTable="SchmerzausloesendeFaktorenColumn" msprop:Generator_UserColumnName="SchmerzausloesendeFaktoren" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchmerzverstaerkendeFaktoren" msprop:Generator_ColumnVarNameInTable="columnSchmerzverstaerkendeFaktoren" msprop:Generator_ColumnPropNameInRow="SchmerzverstaerkendeFaktoren" msprop:Generator_ColumnPropNameInTable="SchmerzverstaerkendeFaktorenColumn" msprop:Generator_UserColumnName="SchmerzverstaerkendeFaktoren" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchmerzlinderndeFaktoren" msprop:Generator_ColumnVarNameInTable="columnSchmerzlinderndeFaktoren" msprop:Generator_ColumnPropNameInRow="SchmerzlinderndeFaktoren" msprop:Generator_ColumnPropNameInTable="SchmerzlinderndeFaktorenColumn" msprop:Generator_UserColumnName="SchmerzlinderndeFaktoren" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenSchmerzen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenSchmerzen" msprop:Generator_ColumnPropNameInRow="BeobachtungenSchmerzen" msprop:Generator_ColumnPropNameInTable="BeobachtungenSchmerzenColumn" msprop:Generator_UserColumnName="BeobachtungenSchmerzen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FaehigkeitGesundheitszustandUmzugehenJN" msprop:Generator_ColumnVarNameInTable="columnFaehigkeitGesundheitszustandUmzugehenJN" msprop:Generator_ColumnPropNameInRow="FaehigkeitGesundheitszustandUmzugehenJN" msprop:Generator_ColumnPropNameInTable="FaehigkeitGesundheitszustandUmzugehenJNColumn" msprop:Generator_UserColumnName="FaehigkeitGesundheitszustandUmzugehenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FaehigkeitGesundheitszustandAngaben" msprop:Generator_ColumnVarNameInTable="columnFaehigkeitGesundheitszustandAngaben" msprop:Generator_ColumnPropNameInRow="FaehigkeitGesundheitszustandAngaben" msprop:Generator_ColumnPropNameInTable="FaehigkeitGesundheitszustandAngabenColumn" msprop:Generator_UserColumnName="FaehigkeitGesundheitszustandAngaben" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenFaehigkeitGesundheitszustand" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenFaehigkeitGesundheitszustand" msprop:Generator_ColumnPropNameInRow="BeobachtungenFaehigkeitGesundheitszustand" msprop:Generator_ColumnPropNameInTable="BeobachtungenFaehigkeitGesundheitszustandColumn" msprop:Generator_UserColumnName="BeobachtungenFaehigkeitGesundheitszustand" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FaehigkeitVorhandeneRessourcenZuErkennenJN" msprop:Generator_ColumnVarNameInTable="columnFaehigkeitVorhandeneRessourcenZuErkennenJN" msprop:Generator_ColumnPropNameInRow="FaehigkeitVorhandeneRessourcenZuErkennenJN" msprop:Generator_ColumnPropNameInTable="FaehigkeitVorhandeneRessourcenZuErkennenJNColumn" msprop:Generator_UserColumnName="FaehigkeitVorhandeneRessourcenZuErkennenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenFaehigkeitVorhandeneRessourcen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenFaehigkeitVorhandeneRessourcen" msprop:Generator_ColumnPropNameInRow="BeobachtungenFaehigkeitVorhandeneRessourcen" msprop:Generator_ColumnPropNameInTable="BeobachtungenFaehigkeitVorhandeneRessourcenColumn" msprop:Generator_UserColumnName="BeobachtungenFaehigkeitVorhandeneRessourcen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AngehoerigeBetreuungskonzeptMiteinbeziehenJN" msprop:Generator_ColumnVarNameInTable="columnAngehoerigeBetreuungskonzeptMiteinbeziehenJN" msprop:Generator_ColumnPropNameInRow="AngehoerigeBetreuungskonzeptMiteinbeziehenJN" msprop:Generator_ColumnPropNameInTable="AngehoerigeBetreuungskonzeptMiteinbeziehenJNColumn" msprop:Generator_UserColumnName="AngehoerigeBetreuungskonzeptMiteinbeziehenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BetreuungskonseptAngaben" msprop:Generator_ColumnVarNameInTable="columnBetreuungskonseptAngaben" msprop:Generator_ColumnPropNameInRow="BetreuungskonseptAngaben" msprop:Generator_ColumnPropNameInTable="BetreuungskonseptAngabenColumn" msprop:Generator_UserColumnName="BetreuungskonseptAngaben" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FaehigkeitEntscheidungenZuTreffenJN" msprop:Generator_ColumnVarNameInTable="columnFaehigkeitEntscheidungenZuTreffenJN" msprop:Generator_ColumnPropNameInRow="FaehigkeitEntscheidungenZuTreffenJN" msprop:Generator_ColumnPropNameInTable="FaehigkeitEntscheidungenZuTreffenJNColumn" msprop:Generator_UserColumnName="FaehigkeitEntscheidungenZuTreffenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FaehigkeitEntscheidungenZuTreffenAngaben" msprop:Generator_ColumnVarNameInTable="columnFaehigkeitEntscheidungenZuTreffenAngaben" msprop:Generator_ColumnPropNameInRow="FaehigkeitEntscheidungenZuTreffenAngaben" msprop:Generator_ColumnPropNameInTable="FaehigkeitEntscheidungenZuTreffenAngabenColumn" msprop:Generator_UserColumnName="FaehigkeitEntscheidungenZuTreffenAngaben" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FaehigkeitLebensanforderungenBegegnenZuKoennenJN" msprop:Generator_ColumnVarNameInTable="columnFaehigkeitLebensanforderungenBegegnenZuKoennenJN" msprop:Generator_ColumnPropNameInRow="FaehigkeitLebensanforderungenBegegnenZuKoennenJN" msprop:Generator_ColumnPropNameInTable="FaehigkeitLebensanforderungenBegegnenZuKoennenJNColumn" msprop:Generator_UserColumnName="FaehigkeitLebensanforderungenBegegnenZuKoennenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenLebensanforderungen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenLebensanforderungen" msprop:Generator_ColumnPropNameInRow="BeobachtungenLebensanforderungen" msprop:Generator_ColumnPropNameInTable="BeobachtungenLebensanforderungenColumn" msprop:Generator_UserColumnName="BeobachtungenLebensanforderungen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MoeglichkeitUmgebungsveraenderungAnzupassenJN" msprop:Generator_ColumnVarNameInTable="columnMoeglichkeitUmgebungsveraenderungAnzupassenJN" msprop:Generator_ColumnPropNameInRow="MoeglichkeitUmgebungsveraenderungAnzupassenJN" msprop:Generator_ColumnPropNameInTable="MoeglichkeitUmgebungsveraenderungAnzupassenJNColumn" msprop:Generator_UserColumnName="MoeglichkeitUmgebungsveraenderungAnzupassenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenUmgebungsveraenderung" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenUmgebungsveraenderung" msprop:Generator_ColumnPropNameInRow="BeobachtungenUmgebungsveraenderung" msprop:Generator_ColumnPropNameInTable="BeobachtungenUmgebungsveraenderungColumn" msprop:Generator_UserColumnName="BeobachtungenUmgebungsveraenderung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EigeneKoerperAkzeptanzJN" msprop:Generator_ColumnVarNameInTable="columnEigeneKoerperAkzeptanzJN" msprop:Generator_ColumnPropNameInRow="EigeneKoerperAkzeptanzJN" msprop:Generator_ColumnPropNameInTable="EigeneKoerperAkzeptanzJNColumn" msprop:Generator_UserColumnName="EigeneKoerperAkzeptanzJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="EigeneKoerperAkzeptanzAngaben" msprop:Generator_ColumnVarNameInTable="columnEigeneKoerperAkzeptanzAngaben" msprop:Generator_ColumnPropNameInRow="EigeneKoerperAkzeptanzAngaben" msprop:Generator_ColumnPropNameInTable="EigeneKoerperAkzeptanzAngabenColumn" msprop:Generator_UserColumnName="EigeneKoerperAkzeptanzAngaben" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EigenPersonFaehigkeitenWertschaetzungen" msprop:Generator_ColumnVarNameInTable="columnEigenPersonFaehigkeitenWertschaetzungen" msprop:Generator_ColumnPropNameInRow="EigenPersonFaehigkeitenWertschaetzungen" msprop:Generator_ColumnPropNameInTable="EigenPersonFaehigkeitenWertschaetzungenColumn" msprop:Generator_UserColumnName="EigenPersonFaehigkeitenWertschaetzungen" type="xs:int" minOccurs="0" />
+              <xs:element name="BeobachtungenEigenPersonFaehigkeitenWertschaetzungen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenEigenPersonFaehigkeitenWertschaetzungen" msprop:Generator_ColumnPropNameInRow="BeobachtungenEigenPersonFaehigkeitenWertschaetzungen" msprop:Generator_ColumnPropNameInTable="BeobachtungenEigenPersonFaehigkeitenWertschaetzungenColumn" msprop:Generator_UserColumnName="BeobachtungenEigenPersonFaehigkeitenWertschaetzungen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UmfeldRealitaetsbezug" msprop:Generator_ColumnVarNameInTable="columnUmfeldRealitaetsbezug" msprop:Generator_ColumnPropNameInRow="UmfeldRealitaetsbezug" msprop:Generator_ColumnPropNameInTable="UmfeldRealitaetsbezugColumn" msprop:Generator_UserColumnName="UmfeldRealitaetsbezug" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SinneswahrnehmungUngestoertJN" msprop:Generator_ColumnVarNameInTable="columnSinneswahrnehmungUngestoertJN" msprop:Generator_ColumnPropNameInRow="SinneswahrnehmungUngestoertJN" msprop:Generator_ColumnPropNameInTable="SinneswahrnehmungUngestoertJNColumn" msprop:Generator_UserColumnName="SinneswahrnehmungUngestoertJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Sinneswahrnehmung" msprop:Generator_ColumnVarNameInTable="columnSinneswahrnehmung" msprop:Generator_ColumnPropNameInRow="Sinneswahrnehmung" msprop:Generator_ColumnPropNameInTable="SinneswahrnehmungColumn" msprop:Generator_UserColumnName="Sinneswahrnehmung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SinneswahrnehmungSonstigeAngaben" msprop:Generator_ColumnVarNameInTable="columnSinneswahrnehmungSonstigeAngaben" msprop:Generator_ColumnPropNameInRow="SinneswahrnehmungSonstigeAngaben" msprop:Generator_ColumnPropNameInTable="SinneswahrnehmungSonstigeAngabenColumn" msprop:Generator_UserColumnName="SinneswahrnehmungSonstigeAngaben" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AeusserungenVonVerzweiflungVeraenderteLebensenergien" msprop:Generator_ColumnVarNameInTable="columnAeusserungenVonVerzweiflungVeraenderteLebensenergien" msprop:Generator_ColumnPropNameInRow="AeusserungenVonVerzweiflungVeraenderteLebensenergien" msprop:Generator_ColumnPropNameInTable="AeusserungenVonVerzweiflungVeraenderteLebensenergienColumn" msprop:Generator_UserColumnName="AeusserungenVonVerzweiflungVeraenderteLebensenergien" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeobachtungenVeraenderteLebensenergien" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenVeraenderteLebensenergien" msprop:Generator_ColumnPropNameInRow="BeobachtungenVeraenderteLebensenergien" msprop:Generator_ColumnPropNameInTable="BeobachtungenVeraenderteLebensenergienColumn" msprop:Generator_UserColumnName="BeobachtungenVeraenderteLebensenergien" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KannInfoZurSituationUmsetzenJN" msprop:Generator_ColumnVarNameInTable="columnKannInfoZurSituationUmsetzenJN" msprop:Generator_ColumnPropNameInRow="KannInfoZurSituationUmsetzenJN" msprop:Generator_ColumnPropNameInTable="KannInfoZurSituationUmsetzenJNColumn" msprop:Generator_UserColumnName="KannInfoZurSituationUmsetzenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenInfoZurSituationUmsetzen" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenInfoZurSituationUmsetzen" msprop:Generator_ColumnPropNameInRow="BeobachtungenInfoZurSituationUmsetzen" msprop:Generator_ColumnPropNameInTable="BeobachtungenInfoZurSituationUmsetzenColumn" msprop:Generator_UserColumnName="BeobachtungenInfoZurSituationUmsetzen" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FaehigkeitGedankenRichtigZuVerarbeitenJN" msprop:Generator_ColumnVarNameInTable="columnFaehigkeitGedankenRichtigZuVerarbeitenJN" msprop:Generator_ColumnPropNameInRow="FaehigkeitGedankenRichtigZuVerarbeitenJN" msprop:Generator_ColumnPropNameInTable="FaehigkeitGedankenRichtigZuVerarbeitenJNColumn" msprop:Generator_UserColumnName="FaehigkeitGedankenRichtigZuVerarbeitenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BeobachtungenGedankenRichtigZuVerarbeiten" msprop:Generator_ColumnVarNameInTable="columnBeobachtungenGedankenRichtigZuVerarbeiten" msprop:Generator_ColumnPropNameInRow="BeobachtungenGedankenRichtigZuVerarbeiten" msprop:Generator_ColumnPropNameInTable="BeobachtungenGedankenRichtigZuVerarbeitenColumn" msprop:Generator_UserColumnName="BeobachtungenGedankenRichtigZuVerarbeiten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BemerkbareTrauerreaktionJN" msprop:Generator_ColumnVarNameInTable="columnBemerkbareTrauerreaktionJN" msprop:Generator_ColumnPropNameInRow="BemerkbareTrauerreaktionJN" msprop:Generator_ColumnPropNameInTable="BemerkbareTrauerreaktionJNColumn" msprop:Generator_UserColumnName="BemerkbareTrauerreaktionJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BemerkbareTrauerreaktion" msprop:Generator_ColumnVarNameInTable="columnBemerkbareTrauerreaktion" msprop:Generator_ColumnPropNameInRow="BemerkbareTrauerreaktion" msprop:Generator_ColumnPropNameInTable="BemerkbareTrauerreaktionColumn" msprop:Generator_UserColumnName="BemerkbareTrauerreaktion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN" msprop:Generator_ColumnVarNameInTable="columnHinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN" msprop:Generator_ColumnPropNameInRow="HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN" msprop:Generator_ColumnPropNameInTable="HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJNColumn" msprop:Generator_UserColumnName="HinweiseVermehrteBeschaeftigungMitSeelischeTraumaJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="HinweiseVermehrteBeschaeftigung" msprop:Generator_ColumnVarNameInTable="columnHinweiseVermehrteBeschaeftigung" msprop:Generator_ColumnPropNameInRow="HinweiseVermehrteBeschaeftigung" msprop:Generator_ColumnPropNameInTable="HinweiseVermehrteBeschaeftigungColumn" msprop:Generator_UserColumnName="HinweiseVermehrteBeschaeftigung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AngstzustaendeJN" msprop:Generator_ColumnVarNameInTable="columnAngstzustaendeJN" msprop:Generator_ColumnPropNameInRow="AngstzustaendeJN" msprop:Generator_ColumnPropNameInTable="AngstzustaendeJNColumn" msprop:Generator_UserColumnName="AngstzustaendeJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Angstzustaende" msprop:Generator_ColumnVarNameInTable="columnAngstzustaende" msprop:Generator_ColumnPropNameInRow="Angstzustaende" msprop:Generator_ColumnPropNameInTable="AngstzustaendeColumn" msprop:Generator_UserColumnName="Angstzustaende" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SituationVorDerSichFuerchtenJN" msprop:Generator_ColumnVarNameInTable="columnSituationVorDerSichFuerchtenJN" msprop:Generator_ColumnPropNameInRow="SituationVorDerSichFuerchtenJN" msprop:Generator_ColumnPropNameInTable="SituationVorDerSichFuerchtenJNColumn" msprop:Generator_UserColumnName="SituationVorDerSichFuerchtenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SituationVorDerSichFuerchten" msprop:Generator_ColumnVarNameInTable="columnSituationVorDerSichFuerchten" msprop:Generator_ColumnPropNameInRow="SituationVorDerSichFuerchten" msprop:Generator_ColumnPropNameInTable="SituationVorDerSichFuerchtenColumn" msprop:Generator_UserColumnName="SituationVorDerSichFuerchten" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PflegendenAngehoerigeProbleme" msprop:Generator_ColumnVarNameInTable="columnPflegendenAngehoerigeProbleme" msprop:Generator_ColumnPropNameInRow="PflegendenAngehoerigeProbleme" msprop:Generator_ColumnPropNameInTable="PflegendenAngehoerigeProblemeColumn" msprop:Generator_UserColumnName="PflegendenAngehoerigeProbleme" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Groesse" msprop:Generator_ColumnVarNameInTable="columnGroesse" msprop:Generator_ColumnPropNameInRow="Groesse" msprop:Generator_ColumnPropNameInTable="GroesseColumn" msprop:Generator_UserColumnName="Groesse" type="xs:int" minOccurs="0" />
+              <xs:element name="Gewicht" msprop:Generator_ColumnVarNameInTable="columnGewicht" msprop:Generator_ColumnPropNameInRow="Gewicht" msprop:Generator_ColumnPropNameInTable="GewichtColumn" msprop:Generator_UserColumnName="Gewicht" type="xs:double" minOccurs="0" />
+              <xs:element name="Konfision" msprop:Generator_ColumnVarNameInTable="columnKonfision" msprop:Generator_ColumnPropNameInRow="Konfision" msprop:Generator_ColumnPropNameInTable="KonfisionColumn" msprop:Generator_UserColumnName="Konfision" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZahnersatzOKJN" msprop:Generator_ColumnVarNameInTable="columnZahnersatzOKJN" msprop:Generator_ColumnPropNameInRow="ZahnersatzOKJN" msprop:Generator_ColumnPropNameInTable="ZahnersatzOKJNColumn" msprop:Generator_UserColumnName="ZahnersatzOKJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ZahnersatzUKJN" msprop:Generator_ColumnVarNameInTable="columnZahnersatzUKJN" msprop:Generator_ColumnPropNameInRow="ZahnersatzUKJN" msprop:Generator_ColumnPropNameInTable="ZahnersatzUKJNColumn" msprop:Generator_UserColumnName="ZahnersatzUKJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SehhilfeBrilleJN" msprop:Generator_ColumnVarNameInTable="columnSehhilfeBrilleJN" msprop:Generator_ColumnPropNameInRow="SehhilfeBrilleJN" msprop:Generator_ColumnPropNameInTable="SehhilfeBrilleJNColumn" msprop:Generator_UserColumnName="SehhilfeBrilleJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="SehhilfeKontaktlinsenJN" msprop:Generator_ColumnVarNameInTable="columnSehhilfeKontaktlinsenJN" msprop:Generator_ColumnPropNameInRow="SehhilfeKontaktlinsenJN" msprop:Generator_ColumnPropNameInTable="SehhilfeKontaktlinsenJNColumn" msprop:Generator_UserColumnName="SehhilfeKontaktlinsenJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="HoergeraetRechtsJN" msprop:Generator_ColumnVarNameInTable="columnHoergeraetRechtsJN" msprop:Generator_ColumnPropNameInRow="HoergeraetRechtsJN" msprop:Generator_ColumnPropNameInTable="HoergeraetRechtsJNColumn" msprop:Generator_UserColumnName="HoergeraetRechtsJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="HoergeraetLinksJN" msprop:Generator_ColumnVarNameInTable="columnHoergeraetLinksJN" msprop:Generator_ColumnPropNameInRow="HoergeraetLinksJN" msprop:Generator_ColumnPropNameInTable="HoergeraetLinksJNColumn" msprop:Generator_UserColumnName="HoergeraetLinksJN" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Anamnese_Orem" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

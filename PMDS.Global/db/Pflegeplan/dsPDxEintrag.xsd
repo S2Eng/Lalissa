@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPDxEintrag" targetNamespace="http://www.tempuri.org/dsPDxEintrag.xsd" xmlns:mstns="http://www.tempuri.org/dsPDxEintrag.xsd" xmlns="http://www.tempuri.org/dsPDxEintrag.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPDxEintrag" msdata:IsDataSet="true" msdata:Locale="de-DE" msprop:Generator_UserDSName="dsPDxEintrag" msprop:Generator_DataSetName="dsPDxEintrag">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PDXEintrag" msprop:Generator_UserTableName="PDXEintrag" msprop:Generator_RowDeletedName="PDXEintragRowDeleted" msprop:Generator_TableClassName="PDXEintragDataTable" msprop:Generator_RowChangedName="PDXEintragRowChanged" msprop:Generator_RowClassName="PDXEintragRow" msprop:Generator_RowChangingName="PDXEintragRowChanging" msprop:Generator_RowEvArgName="PDXEintragRowChangeEvent" msprop:Generator_RowEvHandlerName="PDXEintragRowChangeEventHandler" msprop:Generator_TablePropName="PDXEintrag" msprop:Generator_TableVarName="tablePDXEintrag" msprop:Generator_RowDeletingName="PDXEintragRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDPDX" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPDX" msprop:Generator_ColumnPropNameInRow="IDPDX" msprop:Generator_ColumnVarNameInTable="columnIDPDX" msprop:Generator_ColumnPropNameInTable="IDPDXColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDEintrag" msprop:Generator_ColumnPropNameInRow="IDEintrag" msprop:Generator_ColumnVarNameInTable="columnIDEintrag" msprop:Generator_ColumnPropNameInTable="IDEintragColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="EintragGruppe" msprop:Generator_UserColumnName="EintragGruppe" msprop:Generator_ColumnPropNameInRow="EintragGruppe" msprop:Generator_ColumnVarNameInTable="columnEintragGruppe" msprop:Generator_ColumnPropNameInTable="EintragGruppeColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Text" msprop:Generator_UserColumnName="Text" msprop:Generator_ColumnPropNameInRow="Text" msprop:Generator_ColumnVarNameInTable="columnText" msprop:Generator_ColumnPropNameInTable="TextColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Klartext" msprop:Generator_UserColumnName="Klartext" msprop:Generator_ColumnPropNameInRow="Klartext" msprop:Generator_ColumnVarNameInTable="columnKlartext" msprop:Generator_ColumnPropNameInTable="KlartextColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Warnhinweis" msprop:Generator_UserColumnName="Warnhinweis" msprop:Generator_ColumnPropNameInRow="Warnhinweis" msprop:Generator_ColumnVarNameInTable="columnWarnhinweis" msprop:Generator_ColumnPropNameInTable="WarnhinweisColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Sicht" msprop:Generator_UserColumnName="Sicht" msprop:Generator_ColumnPropNameInRow="Sicht" msprop:Generator_ColumnVarNameInTable="columnSicht" msprop:Generator_ColumnPropNameInTable="SichtColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="IDLinkDokument" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDLinkDokument" msprop:Generator_ColumnPropNameInRow="IDLinkDokument" msprop:Generator_ColumnVarNameInTable="columnIDLinkDokument" msprop:Generator_ColumnPropNameInTable="IDLinkDokumentColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PDXEintrag" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

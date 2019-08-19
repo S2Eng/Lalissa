@@ -1,0 +1,37 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PMDS.Global.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PMDS_Core_BIDS_EDIService_BIDS_EDI_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://195.64.10.25/BIDS_EDIService.asmx</Value>
+    </Setting>
+    <Setting Name="CertPass" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CellentEDItest_ediServiceHttp_BIDS_EDI_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.100.3.3:8012/BIDS_EDIService.asmx</Value>
+    </Setting>
+    <Setting Name="ServerUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://195.64.10.25/BIDS_EDIService.asmx</Value>
+    </Setting>
+    <Setting Name="UsePW4Cert" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PMDSDevConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=STYSRV10V;Initial Catalog=PMDSDev;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=STYSRV10V;Initial Catalog=PMDSDev;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="ConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Provider=SQLNCLI11;Data Source=STYSRV10V;Integrated Security=SSPI;Initial Catalog=PMDSDev&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.OleDb&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Provider=SQLNCLI11;Data Source=STYSRV10V;Integrated Security=SSPI;Initial Catalog=PMDSDev</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

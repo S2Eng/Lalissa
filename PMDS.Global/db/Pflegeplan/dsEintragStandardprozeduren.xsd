@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsEintragStandardprozeduren" targetNamespace="http://tempuri.org/dsEintragStandardprozeduren.xsd" xmlns:mstns="http://tempuri.org/dsEintragStandardprozeduren.xsd" xmlns="http://tempuri.org/dsEintragStandardprozeduren.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Provider=SQLNCLI.1;Data Source=s2sty076;User ID=pmds;Initial Catalog=PMDS_3_5_0" IsAppSettingsProperty="False" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsEintragStandardprozeduren" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsEintragStandardprozeduren" msprop:Generator_DataSetName="dsEintragStandardprozeduren">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EintragStandardprozeduren" msprop:Generator_UserTableName="EintragStandardprozeduren" msprop:Generator_RowDeletedName="EintragStandardprozedurenRowDeleted" msprop:Generator_TableClassName="EintragStandardprozedurenDataTable" msprop:Generator_RowChangedName="EintragStandardprozedurenRowChanged" msprop:Generator_RowClassName="EintragStandardprozedurenRow" msprop:Generator_RowChangingName="EintragStandardprozedurenRowChanging" msprop:Generator_RowEvArgName="EintragStandardprozedurenRowChangeEvent" msprop:Generator_RowEvHandlerName="EintragStandardprozedurenRowChangeEventHandler" msprop:Generator_TablePropName="EintragStandardprozeduren" msprop:Generator_TableVarName="tableEintragStandardprozeduren" msprop:Generator_RowDeletingName="EintragStandardprozedurenRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
+              <xs:element name="IDEintrag" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDEintrag" msprop:Generator_ColumnPropNameInRow="IDEintrag" msprop:Generator_ColumnVarNameInTable="columnIDEintrag" msprop:Generator_ColumnPropNameInTable="IDEintragColumn" type="xs:string" />
+              <xs:element name="IDStandardProzeduren" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDStandardProzeduren" msprop:Generator_ColumnPropNameInRow="IDStandardProzeduren" msprop:Generator_ColumnVarNameInTable="columnIDStandardProzeduren" msprop:Generator_ColumnPropNameInTable="IDStandardProzedurenColumn" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EintragStandardprozeduren" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
