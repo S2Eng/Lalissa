@@ -262,17 +262,16 @@ namespace PMDS.GUI
             this.cboELGA_AuthorSpeciality.AddEmptyEntry = false;
             this.cboELGA_AuthorSpeciality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboELGA_AuthorSpeciality.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            this.cboELGA_AuthorSpeciality.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cboELGA_AuthorSpeciality.AutoOpenCBO = true;
             this.cboELGA_AuthorSpeciality.BerufsstandGruppeJNA = 0;
-            this.cboELGA_AuthorSpeciality.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboELGA_AuthorSpeciality.ExactMatch = false;
-            this.cboELGA_AuthorSpeciality.Group = "ROL";
+            this.cboELGA_AuthorSpeciality.ExactMatch = true;
+            this.cboELGA_AuthorSpeciality.Group = "FAR";
             this.cboELGA_AuthorSpeciality.ID_PEP = -1;
             this.cboELGA_AuthorSpeciality.Location = new System.Drawing.Point(90, 290);
             this.cboELGA_AuthorSpeciality.Name = "cboELGA_AuthorSpeciality";
             this.cboELGA_AuthorSpeciality.PflichtJN = false;
-            this.cboELGA_AuthorSpeciality.ShowAddButton = true;
+            this.cboELGA_AuthorSpeciality.ShowAddButton = false;
             this.cboELGA_AuthorSpeciality.Size = new System.Drawing.Size(232, 24);
             this.cboELGA_AuthorSpeciality.sys = false;
             this.cboELGA_AuthorSpeciality.TabIndex = 19;
@@ -529,14 +528,14 @@ namespace PMDS.GUI
             benutzer1.ELGAPatID = "";
             benutzer1.ELGAUser = "";
             benutzer1.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 11);
-            benutzer1.ID = new System.Guid("d70196ce-aa92-4c74-b3ca-f8a91ae514e8");
+            benutzer1.ID = new System.Guid("86b8252e-7801-46cd-9970-c133d78443a2");
             benutzer1.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDArzt = null;
             benutzer1.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IsGeneric = false;
             benutzer1.Nachname = "";
-            benutzer1.Passwort = "058AC048D3471B168A05DE12D16D9437";
+            benutzer1.Passwort = "2974823A83DDA417760D3749D65978D6";
             benutzer1.PflegerJN = false;
             benutzer1.Vorname = "";
             this.ucBenutzerGruppe1.Benutzer = benutzer1;
@@ -609,14 +608,14 @@ namespace PMDS.GUI
             benutzer2.ELGAPatID = "";
             benutzer2.ELGAUser = "";
             benutzer2.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 13);
-            benutzer2.ID = new System.Guid("cf6e85f5-5a07-44f7-92ab-aace18fa633c");
+            benutzer2.ID = new System.Guid("f54f03dc-1d10-4044-beef-d0cc4081420c");
             benutzer2.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDArzt = null;
             benutzer2.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IsGeneric = false;
             benutzer2.Nachname = "";
-            benutzer2.Passwort = "3F6E6B05CD1BF8A12DFA588DFFC516B3";
+            benutzer2.Passwort = "9B48851A89013424F93095676E3F2833";
             benutzer2.PflegerJN = false;
             benutzer2.Vorname = "";
             this.ucBenutzerAbteilung1.Benutzer = benutzer2;
@@ -1145,7 +1144,8 @@ namespace PMDS.GUI
             bool cbBerufsgruppeOK = PMDSBusinessUI.checkCboBox(this.cbBerufsstand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Berufsst."), true, ref MsgTxt);
             bool cbELGAAutSpOK =  PMDSBusinessUI.checkCboBox(this.cboELGA_AuthorSpeciality, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA Author speciality"), true, ref MsgTxt);
             bool cbLandOK = PMDSBusinessUI.checkCboBox(this.ucAdresse1.cboLand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Land"), true, ref MsgTxt);
-            if (!cbBerufsgruppeOK || !cbELGAAutSpOK || !cbLandOK)
+            bool cbFunktionOK = PMDSBusinessUI.checkCboBox(this.cboELGA_AuthorSpeciality, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA_AuthorSpeciality"), true, ref MsgTxt);
+            if (!cbBerufsgruppeOK || !cbELGAAutSpOK || !cbLandOK || !cbFunktionOK)
             {
                 bError = true;
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);
