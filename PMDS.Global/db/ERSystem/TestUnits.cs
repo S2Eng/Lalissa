@@ -608,6 +608,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Einheit");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Darreichungsformform");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Fachrichtung");
             }
             catch (Exception ex)
             {

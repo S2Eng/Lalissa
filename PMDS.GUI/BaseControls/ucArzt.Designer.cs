@@ -54,7 +54,6 @@
             this.txtFax = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblFax = new QS2.Desktop.ControlManagment.BaseLabel();
             this.grpAdresse = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.txtLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.lblLand = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblOrt = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtOrt = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -69,6 +68,7 @@
             this.lblAkdGrad = new QS2.Desktop.ControlManagment.BaseLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cbFachrichtung = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.txtLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cmbAkdGrad = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             ((System.ComponentModel.ISupportInitialize)(this.grpKontaktdaten)).BeginInit();
             this.grpKontaktdaten.SuspendLayout();
@@ -83,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpAdresse)).BeginInit();
             this.grpAdresse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).BeginInit();
@@ -91,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNachname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbFachrichtung)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAkdGrad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -309,20 +309,6 @@
             this.grpAdresse.TabIndex = 142;
             this.grpAdresse.Text = "Adresse";
             // 
-            // txtLand
-            // 
-            this.txtLand.AddEmptyEntry = true;
-            this.txtLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.txtLand.BerufsstandGruppeJNA = -1;
-            this.txtLand.Group = "LND";
-            this.txtLand.ID_PEP = -1;
-            this.txtLand.Location = new System.Drawing.Point(185, 68);
-            this.txtLand.MaxLength = 20;
-            this.txtLand.Name = "txtLand";
-            this.txtLand.ShowAddButton = true;
-            this.txtLand.Size = new System.Drawing.Size(256, 21);
-            this.txtLand.TabIndex = 119;
-            // 
             // lblLand
             // 
             this.lblLand.AutoSize = true;
@@ -437,29 +423,55 @@
             // cbFachrichtung
             // 
             this.cbFachrichtung.AddEmptyEntry = false;
-            this.cbFachrichtung.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cbFachrichtung.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cbFachrichtung.AutoOpenCBO = true;
             this.cbFachrichtung.BerufsstandGruppeJNA = -1;
+            this.cbFachrichtung.ExactMatch = true;
             this.cbFachrichtung.Group = "FAR";
             this.cbFachrichtung.ID_PEP = -1;
             this.cbFachrichtung.Location = new System.Drawing.Point(101, 53);
             this.cbFachrichtung.MaxLength = 255;
             this.cbFachrichtung.Name = "cbFachrichtung";
+            this.cbFachrichtung.PflichtJN = false;
             this.cbFachrichtung.ShowAddButton = true;
             this.cbFachrichtung.Size = new System.Drawing.Size(346, 21);
+            this.cbFachrichtung.sys = false;
             this.cbFachrichtung.TabIndex = 4;
+            // 
+            // txtLand
+            // 
+            this.txtLand.AddEmptyEntry = true;
+            this.txtLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.txtLand.AutoOpenCBO = false;
+            this.txtLand.BerufsstandGruppeJNA = -1;
+            this.txtLand.ExactMatch = false;
+            this.txtLand.Group = "LND";
+            this.txtLand.ID_PEP = -1;
+            this.txtLand.Location = new System.Drawing.Point(185, 68);
+            this.txtLand.MaxLength = 20;
+            this.txtLand.Name = "txtLand";
+            this.txtLand.PflichtJN = false;
+            this.txtLand.ShowAddButton = true;
+            this.txtLand.Size = new System.Drawing.Size(256, 21);
+            this.txtLand.sys = false;
+            this.txtLand.TabIndex = 119;
             // 
             // cmbAkdGrad
             // 
             this.cmbAkdGrad.AddEmptyEntry = false;
             this.cmbAkdGrad.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbAkdGrad.AutoOpenCBO = false;
             this.cmbAkdGrad.BerufsstandGruppeJNA = -1;
+            this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
             this.cmbAkdGrad.ID_PEP = -1;
             this.cmbAkdGrad.Location = new System.Drawing.Point(353, 22);
             this.cmbAkdGrad.MaxLength = 40;
             this.cmbAkdGrad.Name = "cmbAkdGrad";
+            this.cmbAkdGrad.PflichtJN = false;
             this.cmbAkdGrad.ShowAddButton = true;
             this.cmbAkdGrad.Size = new System.Drawing.Size(94, 21);
+            this.cmbAkdGrad.sys = false;
             this.cmbAkdGrad.TabIndex = 3;
             // 
             // ucArzt
@@ -494,7 +506,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpAdresse)).EndInit();
             this.grpAdresse.ResumeLayout(false);
             this.grpAdresse.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).EndInit();
@@ -502,6 +513,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNachname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbFachrichtung)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAkdGrad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
