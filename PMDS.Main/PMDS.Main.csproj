@@ -154,13 +154,13 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Patagames.Pdf, Version=3.10.5.2704, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
-      <HintPath>packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.dll</HintPath>
+      <HintPath>..\packages\Pdfium.Net.SDK.3.10.5\lib\net47\Patagames.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="Patagames.Pdf.WinForms, Version=3.10.5.0, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
-      <HintPath>packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.WinForms.dll</HintPath>
+      <HintPath>..\packages\Pdfium.Net.SDK.3.10.5\lib\net47\Patagames.Pdf.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Patagames.Pdf.Wpf, Version=3.10.5.0, Culture=neutral, PublicKeyToken=37f2796639c62e77, processorArchitecture=MSIL">
-      <HintPath>packages\Pdfium.Net.SDK.3.10.5\lib\net40\Patagames.Pdf.Wpf.dll</HintPath>
+      <HintPath>..\packages\Pdfium.Net.SDK.3.10.5\lib\net47\Patagames.Pdf.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="PMDS.db.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1030,7 +1030,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
+      <UserProperties BuildVersion_AssemblyInfoFilename="Assembly.info" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_StartDate="2010/11/23" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

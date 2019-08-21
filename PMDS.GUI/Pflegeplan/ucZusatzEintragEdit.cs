@@ -167,7 +167,6 @@ namespace PMDS.GUI
             zusatzEintrag2.Bezeichnung = "";
             zusatzEintrag2.ELGA_Code = "";
             zusatzEintrag2.ELGA_CodeSystem = "";
-            zusatzEintrag2.ELGA_Version = "";
             zusatzEintrag2.ELGA_DisplayName = "";
             zusatzEintrag2.ELGA_ID = -1;
             zusatzEintrag2.ELGA_Unit = "";
