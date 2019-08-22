@@ -154,13 +154,13 @@ namespace PMDS.GUI
                 ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
             string MsgTxt2 = "";
+            bool cbFachrichtungOK = PMDSBusinessUI.checkCboBox(this.cbFachrichtung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Fachrichtung"), true, ref MsgTxt2, true);
             bool cbLandOK = PMDSBusinessUI.checkCboBox(this.txtLand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Land"), true, ref MsgTxt2);
-            if (!cbLandOK)
+            if (!cbFachrichtungOK || !cbLandOK)
             {
                 bError = true;
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt2, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);
             }
-
             return !bError;
         }
 
