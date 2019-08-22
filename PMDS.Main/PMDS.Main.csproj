@@ -757,7 +757,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Verrechnete Pflegestufen.dynreportlink" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Barcode\idc_light_v414_update.exe" />
@@ -947,19 +946,10 @@
     <Content Include="x86\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="sql.hl\PMDS.hl.sql" />
-    <None Include="sql.hl\old\sql.hl.20130212.sql" />
-    <None Include="sql.hl\old\sql.hl.20120213.sql" />
     <None Include="app.config" />
-    <None Include="db.sql" />
     <None Include="launcherVorlage.Config" />
     <None Include="PMDSVorlage.Config" />
-    <None Include="sql.hl\old\sql.hl.20120101.sql" />
-    <None Include="sql.hl\old\sql.hl.20120111.sql" />
-    <None Include="sql.hl\old\sql.hl.20120202.sql" />
     <None Include="sql.hl\sql.hl.sonstigeSkripts\AllePatientenL?schen.os.sql" />
-    <None Include="sql.hl\sql.hl.sonstigeSkripts\DatenbankLeeren.os.sql" />
-    <None Include="sql.hl\sql.hl.sonstigeSkripts\os_db_111129_2011.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PMDS.Abrechnung.Logik\PMDS.Calc.Logic.vbproj">
@@ -1030,7 +1020,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_AssemblyInfoFilename="Assembly.info" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_StartDate="2010/11/23" />
+      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
