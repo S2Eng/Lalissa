@@ -49,14 +49,6 @@ namespace PMDS.GUI.Messenger
 
         public QS2.Desktop.Txteditor.doEditor doEditor = new QS2.Desktop.Txteditor.doEditor();
 
-
-
-
-
-
-
-
-
         public contMessenger()
         {
             InitializeComponent();
@@ -180,11 +172,13 @@ namespace PMDS.GUI.Messenger
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
+
+                    bool UIAusgang = this.optPostEinAusgang.Value.ToString().Equals("A");
+
+
                     DateTime dFromTmp = new DateTime(1900, 1, 1, 0, 0, 0);
-                    if (this.udteFrom.Value != null)
-                    {
-                        dFromTmp = this.udteFrom.DateTime.Date;
-                    }
+
+
                     DateTime dToTmp = new DateTime(3000, 1, 1, 0, 0, 0);
                     if (this.udteTo.Value != null)
                     {
@@ -196,24 +190,37 @@ namespace PMDS.GUI.Messenger
                     IQueryable<PMDS.db.Entities.Protocol> tProtMessages = null;
                     string sMarkerReadedForUser = "readed_" + ENV.USERID.ToString() + ";";
 
-                    bool UIAusgang = false;
-                    if (this.optPostEinAusgang.Value.ToString().Trim().ToLower().Equals(("A").Trim().ToLower()))
+                    
+                    if (UIAusgang)
                     {
-                        tProtMessages = db.Protocol.Where(o => o.Type == ClientsMessage && o.sKey == TypeMessage && o.IDGuidObject == ENV.USERID && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
-                        UIAusgang = true;
-                    }
-                    else if (this.optPostEinAusgang.Value.ToString().Trim().ToLower().Equals(("E").Trim().ToLower()))
-                    {
-                        if (this.optReaded.Value.ToString().Trim().ToLower().Equals(("U").Trim().ToLower()))
+                        if (this.udteFrom.Value != null)
                         {
+                            dFromTmp = this.udteFrom.DateTime.Date;
+                        }
+                        tProtMessages = db.Protocol.Where(o => o.Type == ClientsMessage && o.sKey == TypeMessage && o.IDGuidObject == ENV.USERID && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
+                        this.btnDelete.Visible = true;
+                    }
+                    else 
+                    {
+                        this.btnDelete.Visible = false;
+
+                        if (this.optReaded.Value.ToString().Equals("U"))
+                        {                   
+                            this.udteFrom.Value = null;
+                            dFromTmp = new DateTime(1900, 1, 1, 0, 0, 0);
                             tProtMessages = db.Protocol.Where(o => o.Type == ClientsMessage && o.sKey == TypeMessage && o.Classification.Contains(ENV.USERID.ToString()) && !o.progress.Contains(sMarkerReadedForUser) && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
                         }
-                        else if (this.optReaded.Value.ToString().Trim().ToLower().Equals(("G").Trim().ToLower()))
+                        else if (this.optReaded.Value.ToString().Equals("G") || this.optReaded.Value.ToString().Equals("A"))
                         {
-                            tProtMessages = db.Protocol.Where(o => o.Type == ClientsMessage && o.sKey == TypeMessage && o.Classification.Contains(ENV.USERID.ToString()) && o.progress.Contains(sMarkerReadedForUser) && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
-                        }
-                        else if (this.optReaded.Value.ToString().Trim().ToLower().Equals(("A").Trim().ToLower()))
-                        {
+                            if (this.udteFrom.Value != null)
+                            {
+                                dFromTmp = this.udteFrom.DateTime.Date;
+                            }
+                            else
+                            {
+                                this.udteFrom.DateTime = DateTime.Now.AddMonths(-1);
+                                dFromTmp = this.udteFrom.DateTime.Date;
+                            }
                             tProtMessages = db.Protocol.Where(o => o.Type == ClientsMessage && o.sKey == TypeMessage && o.Classification.Contains(ENV.USERID.ToString()) && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
                         }
                         else
@@ -221,23 +228,6 @@ namespace PMDS.GUI.Messenger
                             throw new Exception("loadTreeMessages: this.optReaded.Value. '" + this.optReaded.Value.ToString().Trim() + "' not allowed!");
                         }
                     }
-                    else
-                    {
-                        throw new Exception("loadTreeMessages: this.optPostEinAusgang.Value. '" + this.optPostEinAusgang.Value.ToString().Trim() + "' not allowed!");
-                    }
-
-                    //var tProtMessages = (from a2 in db.Protocol
-                    //               where a2.Classification.Contains(ENV.USERID.ToString()) && a2.progress == sWhereReadUnread && a2.CreatedDay > dFromTmp.Date && a2.CreatedDay <= dToTmp.Date
-                    //                     select new
-                    //               {
-                    //                         IDProtocoll = a2.IDGuid,
-                    //                         Title = a2.Info,
-                    //                         MessageTxt = a2.Protocol1,
-                    //                         FromUser = a2.User,
-                    //                         Created = a2.Created,
-                    //                         progress = a2.progress,
-                    //                         db = a2.Db
-                    //                     }).ToList();
 
                     if (tProtMessages.Count() >= 1)
                     {
@@ -288,23 +278,6 @@ namespace PMDS.GUI.Messenger
                                 {
                                     sTitleTmp = rNewtMessage.MessageTxt.Trim();
                                 }
-                            }
-
-                            if (!UIAusgang)
-                            {
-                                //string sMarkReadedForUser = this.getMarkerForReadedUserLoggedIn();
-                                //if (!rProtMessage.progress.Trim().ToLower().Contains(sMarkReadedForUser.Trim().ToLower()))
-                                //{
-                                //    nod.Override.NodeAppearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
-                                //}
-                            }
-                            else
-                            {
-                                //dsAsyncCommData.ToUsersRow[] tToUsersNotReaded = (dsAsyncCommData.ToUsersRow[])tgTree.dsAsyncCommData1.ToUsers.Select("Readed=0", "");
-                                //if (tToUsersNotReaded.Length > 0)
-                                //{
-                                //    nod.Override.NodeAppearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
-                                //}
                             }
                         }
                     }
