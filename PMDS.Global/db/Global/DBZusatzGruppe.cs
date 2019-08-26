@@ -105,8 +105,8 @@ namespace PMDS.DB
             this.oleDbInsertCommand4 = new System.Data.OleDb.OleDbCommand();
             this.oleDbSelectCommand6 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand4 = new System.Data.OleDb.OleDbCommand();
-            this.dsZusatzGruppeEintrag1 = new dsZusatzGruppeEintrag();
-            this.dsZusatzGruppe1 = new dsZusatzGruppe();
+            this.dsZusatzGruppeEintrag1 = new PMDS.Global.db.Global.dsZusatzGruppeEintrag();
+            this.dsZusatzGruppe1 = new PMDS.Global.db.Global.dsZusatzGruppe();
             this.daZusatzByGruppeAbteilung = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand2 = new System.Data.OleDb.OleDbCommand();
@@ -122,7 +122,8 @@ namespace PMDS.DB
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=192.168.80.210;Integrated Security=SSPI;Initial Ca" +
+    "talog=PMDSDev";
             // 
             // daZusatzGruppeByID
             // 
@@ -193,35 +194,22 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("IDFilter", "IDFilter"),
                         new System.Data.Common.DataColumnMapping("OptionalJN", "OptionalJN"),
                         new System.Data.Common.DataColumnMapping("DruckenJN", "DruckenJN"),
-                        new System.Data.Common.DataColumnMapping("Reihenfolge", "Reihenfolge")})});
+                        new System.Data.Common.DataColumnMapping("Reihenfolge", "Reihenfolge"),
+                        new System.Data.Common.DataColumnMapping("AktivJN", "AktivJN")})});
             this.daZusatzByGruppe.UpdateCommand = this.oleDbUpdateCommand4;
             // 
             // oleDbDeleteCommand4
             // 
-            this.oleDbDeleteCommand4.CommandText = resources.GetString("oleDbDeleteCommand4.CommandText");
+            this.oleDbDeleteCommand4.CommandText = "DELETE FROM [ZusatzGruppeEintrag] WHERE (([ID] = ?))";
             this.oleDbDeleteCommand4.Connection = this.oleDbConnection1;
             this.oleDbDeleteCommand4.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzGruppe", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzGruppe", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzEintrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzEintrag", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDObjekt", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDObjekt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDFilter", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDFilter", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_OptionalJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_DruckenJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbInsertCommand4
             // 
             this.oleDbInsertCommand4.CommandText = "INSERT INTO [ZusatzGruppeEintrag] ([ID], [IDZusatzGruppe], [IDZusatzEintrag], [ID" +
-                "Objekt], [IDFilter], [OptionalJN], [DruckenJN], [Reihenfolge]) VALUES (?, ?, ?, " +
-                "?, ?, ?, ?, ?)";
+    "Objekt], [IDFilter], [OptionalJN], [DruckenJN], [Reihenfolge], [AktivJN]) VALUES" +
+    " (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this.oleDbInsertCommand4.Connection = this.oleDbConnection1;
             this.oleDbInsertCommand4.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -231,13 +219,12 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDFilter", System.Data.OleDb.OleDbType.Guid, 0, "IDFilter"),
             new System.Data.OleDb.OleDbParameter("OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OptionalJN"),
             new System.Data.OleDb.OleDbParameter("DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, "DruckenJN"),
-            new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge")});
+            new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
+            new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN")});
             // 
             // oleDbSelectCommand6
             // 
-            this.oleDbSelectCommand6.CommandText = "SELECT     ID, IDZusatzGruppe, IDZusatzEintrag, IDObjekt, IDFilter, OptionalJN, D" +
-                "ruckenJN, Reihenfolge\r\nFROM         ZusatzGruppeEintrag\r\nWHERE     (IDZusatzGrup" +
-                "pe = ?) AND (IDFilter = ?)";
+            this.oleDbSelectCommand6.CommandText = resources.GetString("oleDbSelectCommand6.CommandText");
             this.oleDbSelectCommand6.Connection = this.oleDbConnection1;
             this.oleDbSelectCommand6.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDZusatzGruppe", System.Data.OleDb.OleDbType.Char, 6, "IDZusatzGruppe"),
@@ -256,21 +243,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OptionalJN"),
             new System.Data.OleDb.OleDbParameter("DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, "DruckenJN"),
             new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzGruppe", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzGruppe", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzEintrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzEintrag", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDObjekt", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDObjekt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDFilter", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDFilter", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_OptionalJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_DruckenJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // dsZusatzGruppeEintrag1
             // 
@@ -298,35 +272,22 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("IDFilter", "IDFilter"),
                         new System.Data.Common.DataColumnMapping("OptionalJN", "OptionalJN"),
                         new System.Data.Common.DataColumnMapping("DruckenJN", "DruckenJN"),
-                        new System.Data.Common.DataColumnMapping("Reihenfolge", "Reihenfolge")})});
+                        new System.Data.Common.DataColumnMapping("Reihenfolge", "Reihenfolge"),
+                        new System.Data.Common.DataColumnMapping("AktivJN", "AktivJN")})});
             this.daZusatzByGruppeAbteilung.UpdateCommand = this.oleDbCommand4;
             // 
             // oleDbCommand1
             // 
-            this.oleDbCommand1.CommandText = resources.GetString("oleDbCommand1.CommandText");
+            this.oleDbCommand1.CommandText = "DELETE FROM [ZusatzGruppeEintrag] WHERE (([ID] = ?))";
             this.oleDbCommand1.Connection = this.oleDbConnection1;
             this.oleDbCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzGruppe", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzGruppe", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzEintrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzEintrag", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDObjekt", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDObjekt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDFilter", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDFilter", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_OptionalJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_DruckenJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbCommand2
             // 
             this.oleDbCommand2.CommandText = "INSERT INTO [ZusatzGruppeEintrag] ([ID], [IDZusatzGruppe], [IDZusatzEintrag], [ID" +
-                "Objekt], [IDFilter], [OptionalJN], [DruckenJN], [Reihenfolge]) VALUES (?, ?, ?, " +
-                "?, ?, ?, ?, ?)";
+    "Objekt], [IDFilter], [OptionalJN], [DruckenJN], [Reihenfolge], [AktivJN]) VALUES" +
+    " (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this.oleDbCommand2.Connection = this.oleDbConnection1;
             this.oleDbCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -336,7 +297,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDFilter", System.Data.OleDb.OleDbType.Guid, 0, "IDFilter"),
             new System.Data.OleDb.OleDbParameter("OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OptionalJN"),
             new System.Data.OleDb.OleDbParameter("DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, "DruckenJN"),
-            new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge")});
+            new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
+            new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN")});
             // 
             // oleDbCommand3
             // 
@@ -360,21 +322,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OptionalJN"),
             new System.Data.OleDb.OleDbParameter("DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, "DruckenJN"),
             new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzGruppe", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzGruppe", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzEintrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzEintrag", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDObjekt", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDObjekt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDFilter", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDFilter", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_OptionalJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_DruckenJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // daZusatzgruppeEintragByID
             // 
@@ -390,35 +339,22 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("IDFilter", "IDFilter"),
                         new System.Data.Common.DataColumnMapping("OptionalJN", "OptionalJN"),
                         new System.Data.Common.DataColumnMapping("DruckenJN", "DruckenJN"),
-                        new System.Data.Common.DataColumnMapping("Reihenfolge", "Reihenfolge")})});
+                        new System.Data.Common.DataColumnMapping("Reihenfolge", "Reihenfolge"),
+                        new System.Data.Common.DataColumnMapping("AktivJN", "AktivJN")})});
             this.daZusatzgruppeEintragByID.UpdateCommand = this.oleDbCommand8;
             // 
             // oleDbCommand5
             // 
-            this.oleDbCommand5.CommandText = resources.GetString("oleDbCommand5.CommandText");
+            this.oleDbCommand5.CommandText = "DELETE FROM [ZusatzGruppeEintrag] WHERE (([ID] = ?))";
             this.oleDbCommand5.Connection = this.oleDbConnection1;
             this.oleDbCommand5.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzGruppe", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzGruppe", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzEintrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzEintrag", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDObjekt", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDObjekt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDFilter", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDFilter", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_OptionalJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_DruckenJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbCommand6
             // 
             this.oleDbCommand6.CommandText = "INSERT INTO [ZusatzGruppeEintrag] ([ID], [IDZusatzGruppe], [IDZusatzEintrag], [ID" +
-                "Objekt], [IDFilter], [OptionalJN], [DruckenJN], [Reihenfolge]) VALUES (?, ?, ?, " +
-                "?, ?, ?, ?, ?)";
+    "Objekt], [IDFilter], [OptionalJN], [DruckenJN], [Reihenfolge], [AktivJN]) VALUES" +
+    " (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this.oleDbCommand6.Connection = this.oleDbConnection1;
             this.oleDbCommand6.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -428,13 +364,14 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDFilter", System.Data.OleDb.OleDbType.Guid, 0, "IDFilter"),
             new System.Data.OleDb.OleDbParameter("OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OptionalJN"),
             new System.Data.OleDb.OleDbParameter("DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, "DruckenJN"),
-            new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge")});
+            new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
+            new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN")});
             // 
             // oleDbCommand7
             // 
-            this.oleDbCommand7.CommandText = "SELECT     ID, IDZusatzGruppe, IDZusatzEintrag, IDObjekt, IDFilter, OptionalJN, D" +
-                "ruckenJN, Reihenfolge\r\nFROM         ZusatzGruppeEintrag\r\nWHERE     (IDZusatzGrup" +
-                "pe = ?)";
+            this.oleDbCommand7.CommandText = "SELECT        ID, IDZusatzGruppe, IDZusatzEintrag, IDObjekt, IDFilter, OptionalJN" +
+    ", DruckenJN, Reihenfolge, AktivJN\r\nFROM            ZusatzGruppeEintrag\r\nWHERE   " +
+    "     (IDZusatzGruppe = ?)";
             this.oleDbCommand7.Connection = this.oleDbConnection1;
             this.oleDbCommand7.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDZusatzGruppe", System.Data.OleDb.OleDbType.Char, 6, "IDZusatzGruppe")});
@@ -452,21 +389,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OptionalJN"),
             new System.Data.OleDb.OleDbParameter("DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, "DruckenJN"),
             new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzGruppe", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzGruppe", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzGruppe", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDZusatzEintrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDZusatzEintrag", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDZusatzEintrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDObjekt", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDObjekt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDObjekt", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDFilter", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDFilter", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDFilter", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_OptionalJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_OptionalJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "OptionalJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_DruckenJN", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_DruckenJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "DruckenJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Reihenfolge", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             ((System.ComponentModel.ISupportInitialize)(this.dsZusatzGruppeEintrag1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsZusatzGruppe1)).EndInit();
 
