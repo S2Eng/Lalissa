@@ -498,7 +498,7 @@ namespace PMDS.DB
 		public virtual dsZusatzGruppeEintrag.ZusatzGruppeEintragRow NewEntry()
 		{
 			return SUBITEMS.AddZusatzGruppeEintragRow(Guid.NewGuid(),
-					ITEM[0].ID, "", Guid.Empty, Filter, true, true,0);
+					ITEM[0].ID, "", Guid.Empty, Filter, true, true,0,true);
 		}
 
 		//----------------------------------------------------------------------------

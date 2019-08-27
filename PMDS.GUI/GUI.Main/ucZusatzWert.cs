@@ -216,7 +216,7 @@ namespace PMDS.GUI
                 string Delimter = "\n";
                 this.listControlsEF = new ArrayList();
 
-                IQueryable<db.Entities.ZusatzGruppeEintrag> tZusatzGruppeEintrag = db.ZusatzGruppeEintrag.Where(b => b.IDFilter == IDEintrag).OrderBy(a => a.Reihenfolge);
+                IQueryable<db.Entities.ZusatzGruppeEintrag> tZusatzGruppeEintrag = db.ZusatzGruppeEintrag.Where(b => b.IDFilter == IDEintrag).Where(b => b.AktivJN == true).OrderBy(a => a.Reihenfolge);
                 foreach (db.Entities.ZusatzGruppeEintrag rZusatzGruppeEintrag in tZusatzGruppeEintrag)
                 {
                     IQueryable<db.Entities.ZusatzEintrag> tZusatzEintrag = db.ZusatzEintrag.Where(b => b.ID == rZusatzGruppeEintrag.IDZusatzEintrag);

@@ -75,22 +75,25 @@ namespace PMDS.BusinessLogic
 			ArrayList al = new ArrayList();
 
 			// für alle ZusatzGruppenEinträge einen Eintrag erzeugen
-			foreach(dsZusatzGruppeEintrag.ZusatzGruppeEintragRow r in _gruppe.ZusatzEintraege)
+			foreach(dsZusatzGruppeEintrag.ZusatzGruppeEintragRow r in _gruppe.ZusatzEintraege.OrderBy(g => g.Reihenfolge))
 			{
-				ze = new ZusatzEintrag(r.IDZusatzEintrag);
+                if (r.AktivJN)
+                {
+                    ze = new ZusatzEintrag(r.IDZusatzEintrag);
 
-				def = new ZusatzWertPara(r.ID);
-				def.IsOptional	= r.OptionalJN;
-				def.IsPrintable	= r.DruckenJN;
-				def.Bezeichnung	= ze.Bezeichnung;
-				def.Type		= (ZusatzEintragTyp)ze.Typ;
-				def.Liste		= ze.Liste;
-				def.MinValue	= ze.MinValue;
-				def.MaxValue	= ze.MaxValue;
+                    def = new ZusatzWertPara(r.ID);
+                    def.IsOptional = r.OptionalJN;
+                    def.IsPrintable = r.DruckenJN;
+                    def.Bezeichnung = ze.Bezeichnung;
+                    def.Type = (ZusatzEintragTyp)ze.Typ;
+                    def.Liste = ze.Liste;
+                    def.MinValue = ze.MinValue;
+                    def.MaxValue = ze.MaxValue;
 
-				// Element einhängen
-				al.Add(def);
-			}
+                    // Element einhängen
+                    al.Add(def);
+                }
+            }
 
 			return (ZusatzWertPara[])al.ToArray(typeof(ZusatzWertPara));
 		}

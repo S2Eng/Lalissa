@@ -10397,7 +10397,7 @@ namespace PMDS.DB
                                         join zw in db.ZusatzWert on zge.ID equals zw.IDZusatzGruppeEintrag
                                         where zge.IDFilter == rPEOrig.IDEintrag && zw.IDObjekt == rPEOrig.ID
                                               orderby ze.Bezeichnung ascending
-                                        select new{zw.ID, IDZGE = zge.ID, zw.Wert, zw.ZahlenWert, zw.ZahlenWertFloat, zw.RawFormat, zge.IDFilter, zw.IDObjekt, zge.IDZusatzEintrag, zge.IDZusatzGruppe, zge.OptionalJN, zge.DruckenJN, zge.Reihenfolge });
+                                        select new{zw.ID, IDZGE = zge.ID, zw.Wert, zw.ZahlenWert, zw.ZahlenWertFloat, zw.RawFormat, zge.IDFilter, zw.IDObjekt, zge.IDZusatzEintrag, zge.IDZusatzGruppe, zge.OptionalJN, zge.DruckenJN, zge.Reihenfolge.HasValue});
 
                     var tPESameIDGruppe = (from pe in db.PflegeEintrag
                                    where pe.ID != rPEOrig.ID && pe.IDGruppe == rPEOrig.IDGruppe
