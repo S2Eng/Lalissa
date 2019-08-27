@@ -480,7 +480,7 @@ namespace PMDS.GUI
 
 		private void btnDel_Click(object sender, System.EventArgs e)
 		{
-			UltraGridTools.DeleteCurrentSelectedRow(dgAuswahl);
+			UltraGridTools.DeleteCurrentSelectedRow(dgAuswahl, false);
 
 			// Reihenfolge neu vergeben
 			dsAuswahlGruppe.AuswahlListeRow r;

@@ -609,7 +609,10 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Darreichungsformform");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Fachrichtung");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA_AuthorSpeciality"); 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA_AuthorSpeciality");
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den DNR-Status wirklich ändern?", "ACHTUNG!", MessageBoxButtons.YesNoCancel);
+                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wenn Sie diesen Eintrag löschen, werden alle bisher erfassten Zusatzwerte unwiederbringlich gelöscht.\r\nSind Sie Sicher, dass Sie das möchten?", "ACHTUNG!", MessageBoxButtons.YesNo);
             }
             catch (Exception ex)
             {

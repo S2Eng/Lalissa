@@ -255,7 +255,7 @@ namespace PMDS.GUI.PflegePlan2
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            UltraGridTools.DeleteCurrentSelectedRow(dgEintrag);
+            UltraGridTools.DeleteCurrentSelectedRow(dgEintrag, false);
             OnValueChanged(sender, EventArgs.Empty);
             UpdateButtons();
         }

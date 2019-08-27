@@ -23,6 +23,7 @@ using PMDS.DB.Global;
 using PMDS.Global.db.Pflegeplan;
 using PMDS.Global.db.Global;
 using PMDS.Global.db.Patient;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -774,18 +775,34 @@ namespace PMDS.GUI
 				g.DisplayLayout.Bands[0].Columns[sColumn].CellActivation = Activation.AllowEdit;
 		}
 
-		public static void DeleteCurrentSelectedRow(UltraGrid g)
+		public static void DeleteCurrentSelectedRow(UltraGrid g, bool AskForSure)
 		{
 			UltraGridRow r = g.ActiveRow;
 			if((r == null) || (r.ListObject == null))
 				return;
 
-			int iIndex = Math.Min(g.ActiveRow.VisibleIndex, g.Rows.Count-2);
-			r.Delete(false);
-			r = g.Rows.GetRowAtVisibleIndex(iIndex);
-			if(r!=null)
-				g.ActiveRow = r;
-		}
+            DialogResult res = DialogResult.Yes;
+            if (AskForSure)
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    Guid IDZGE = new Guid(r.Cells["ID"].Value.ToString().ToUpper());
+                    if (db.ZusatzWert.Where(a => a.IDZusatzGruppeEintrag == IDZGE).Count() > 0)
+                    {
+                        res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wenn Sie diesen Eintrag löschen, werden alle bisher erfassten Zusatzwerte unwiederbringlich gelöscht.\r\nSind Sie Sicher, dass Sie das möchten?", "ACHTUNG!", MessageBoxButtons.YesNo);
+                    }
+                }
+            }
+
+            if (res == DialogResult.Yes)
+            {
+                int iIndex = Math.Min(g.ActiveRow.VisibleIndex, g.Rows.Count - 2);
+                r.Delete(false);
+                r = g.Rows.GetRowAtVisibleIndex(iIndex);
+                if (r != null)
+                    g.ActiveRow = r;
+            }
+        }
 
 		public static object CurrentSelectedRow(UltraGrid g)
 		{
