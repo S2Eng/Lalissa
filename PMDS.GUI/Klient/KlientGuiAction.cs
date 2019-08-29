@@ -683,6 +683,7 @@ namespace PMDS.GUI
                             }
                         }
 
+
                         PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl newÄrzteMehrfachauswahl = new PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl();
                         newÄrzteMehrfachauswahl.lstPatienteSelected2 = new List<UIGlobal.eSelectedNodes>();
                         newÄrzteMehrfachauswahl.lstPatienteSelected2 = lstPatienteSelected2;
