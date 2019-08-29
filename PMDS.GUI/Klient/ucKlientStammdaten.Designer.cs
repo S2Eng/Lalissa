@@ -5,6 +5,7 @@ using PMDS.Klient;
 
 namespace PMDS.GUI
 {
+
     partial class ucKlientStammdaten
     {
         /// <summary> 
