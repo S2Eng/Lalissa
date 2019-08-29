@@ -107,6 +107,34 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PatientAerzte", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAerzte");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("HausarztJN");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ZuweiserJN");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AufnahmearztJN");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BehandelnderFAJN");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bis");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Von");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_HausarztJN");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Fachrichtung", 1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 2);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EMail", 3);
+            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKlientStammdaten));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance56 = new Infragistics.Win.Appearance();
@@ -1049,7 +1077,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBoxPersonebescheibung);
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
             this.ultraTabPageControl2.Controls.Add(this.chkMilieubetreuung);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(1028, 606);
             this.ultraTabPageControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraTabPageControl2_Paint);
@@ -1911,7 +1939,7 @@ namespace PMDS.GUI
             // ultraTabPageControl3
             // 
             this.ultraTabPageControl3.Controls.Add(this.splitContainer1);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(1028, 606);
             // 
@@ -1987,6 +2015,207 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel2.Name = "ultraGridBagLayoutPanel2";
             this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(996, 121);
             this.ultraGridBagLayoutPanel2.TabIndex = 7;
+            // 
+            // gridAerzte
+            // 
+            this.gridAerzte.AutoWork = true;
+            this.gridAerzte.DataMember = "PatientAerzte";
+            this.gridAerzte.DataSource = this.dsPatientAerzte1;
+            appearance40.BackColor = System.Drawing.Color.White;
+            appearance40.BorderColor = System.Drawing.Color.Black;
+            this.gridAerzte.DisplayLayout.Appearance = appearance40;
+            this.gridAerzte.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
+            ultraGridColumn1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn1.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn1.Header.Editor = null;
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn1.Hidden = true;
+            ultraGridColumn2.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn2.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn2.Header.Editor = null;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn2.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(163, 0);
+            ultraGridColumn21.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn21.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn21.Header.Editor = null;
+            ultraGridColumn21.Header.VisiblePosition = 2;
+            ultraGridColumn21.Hidden = true;
+            ultraGridColumn22.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn22.Header.Caption = "Hausarzt";
+            ultraGridColumn22.Header.Editor = null;
+            ultraGridColumn22.Header.VisiblePosition = 3;
+            ultraGridColumn22.RowLayoutColumnInfo.OriginX = 4;
+            ultraGridColumn22.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn22.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(52, 0);
+            ultraGridColumn22.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn22.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn23.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn23.Header.Caption = "Zuweiser";
+            ultraGridColumn23.Header.Editor = null;
+            ultraGridColumn23.Header.VisiblePosition = 4;
+            ultraGridColumn23.RowLayoutColumnInfo.OriginX = 6;
+            ultraGridColumn23.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn23.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(53, 0);
+            ultraGridColumn23.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn23.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn24.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn24.Header.Caption = "Aufnahmearzt";
+            ultraGridColumn24.Header.Editor = null;
+            ultraGridColumn24.Header.VisiblePosition = 5;
+            ultraGridColumn24.RowLayoutColumnInfo.OriginX = 8;
+            ultraGridColumn24.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn24.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(74, 0);
+            ultraGridColumn24.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn24.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn25.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn25.Header.Caption = "Facharzt";
+            ultraGridColumn25.Header.Editor = null;
+            ultraGridColumn25.Header.VisiblePosition = 6;
+            ultraGridColumn25.RowLayoutColumnInfo.OriginX = 10;
+            ultraGridColumn25.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn25.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(50, 0);
+            ultraGridColumn25.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn25.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn26.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn26.Header.Editor = null;
+            ultraGridColumn26.Header.VisiblePosition = 7;
+            ultraGridColumn26.RowLayoutColumnInfo.OriginX = 12;
+            ultraGridColumn26.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn26.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(84, 0);
+            ultraGridColumn26.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn26.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn27.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn27.Header.Editor = null;
+            ultraGridColumn27.Header.VisiblePosition = 8;
+            ultraGridColumn27.RowLayoutColumnInfo.OriginX = 14;
+            ultraGridColumn27.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn27.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(84, 0);
+            ultraGridColumn27.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn27.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn28.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn28.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn28.Header.Editor = null;
+            ultraGridColumn28.Header.VisiblePosition = 9;
+            ultraGridColumn28.RowLayoutColumnInfo.OriginX = 0;
+            ultraGridColumn28.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn28.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(163, 0);
+            ultraGridColumn28.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn28.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn29.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn29.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn29.Header.Editor = null;
+            ultraGridColumn29.Header.VisiblePosition = 10;
+            ultraGridColumn29.RowLayoutColumnInfo.OriginX = 2;
+            ultraGridColumn29.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn29.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(113, 0);
+            ultraGridColumn29.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn29.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn30.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn30.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn30.Header.Caption = "Tel / Adresse";
+            ultraGridColumn30.Header.Editor = null;
+            ultraGridColumn30.Header.VisiblePosition = 11;
+            ultraGridColumn30.RowLayoutColumnInfo.OriginX = 16;
+            ultraGridColumn30.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn30.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(286, 0);
+            ultraGridColumn30.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn30.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn31.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn31.Header.Caption = "E-Mail";
+            ultraGridColumn31.Header.Editor = null;
+            ultraGridColumn31.Header.VisiblePosition = 12;
+            ultraGridColumn31.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(188, 0);
+            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn21,
+            ultraGridColumn22,
+            ultraGridColumn23,
+            ultraGridColumn24,
+            ultraGridColumn25,
+            ultraGridColumn26,
+            ultraGridColumn27,
+            ultraGridColumn28,
+            ultraGridColumn29,
+            ultraGridColumn30,
+            ultraGridColumn31});
+            ultraGridBand1.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
+            this.gridAerzte.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
+            this.gridAerzte.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.gridAerzte.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance41.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance41.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance41.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance41.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridAerzte.DisplayLayout.GroupByBox.Appearance = appearance41;
+            appearance42.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridAerzte.DisplayLayout.GroupByBox.BandLabelAppearance = appearance42;
+            this.gridAerzte.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.gridAerzte.DisplayLayout.GroupByBox.Hidden = true;
+            appearance43.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance43.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance43.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance43.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.gridAerzte.DisplayLayout.GroupByBox.PromptAppearance = appearance43;
+            this.gridAerzte.DisplayLayout.MaxRowScrollRegions = 1;
+            appearance44.BackColor = System.Drawing.SystemColors.Window;
+            appearance44.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.gridAerzte.DisplayLayout.Override.ActiveCellAppearance = appearance44;
+            appearance45.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance45.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.gridAerzte.DisplayLayout.Override.ActiveRowAppearance = appearance45;
+            this.gridAerzte.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.gridAerzte.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance46.BackColor = System.Drawing.SystemColors.Window;
+            this.gridAerzte.DisplayLayout.Override.CardAreaAppearance = appearance46;
+            appearance47.BackColor = System.Drawing.Color.White;
+            appearance47.BorderColor = System.Drawing.Color.Silver;
+            appearance47.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.gridAerzte.DisplayLayout.Override.CellAppearance = appearance47;
+            this.gridAerzte.DisplayLayout.Override.CellPadding = 0;
+            appearance48.BackColor = System.Drawing.SystemColors.Control;
+            appearance48.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance48.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance48.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance48.BorderColor = System.Drawing.SystemColors.Window;
+            this.gridAerzte.DisplayLayout.Override.GroupByRowAppearance = appearance48;
+            appearance49.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance49.TextHAlignAsString = "Left";
+            this.gridAerzte.DisplayLayout.Override.HeaderAppearance = appearance49;
+            this.gridAerzte.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            this.gridAerzte.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.Standard;
+            appearance50.BackColor = System.Drawing.SystemColors.Window;
+            appearance50.BorderColor = System.Drawing.Color.Silver;
+            this.gridAerzte.DisplayLayout.Override.RowAppearance = appearance50;
+            appearance51.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.gridAerzte.DisplayLayout.Override.TemplateAddRowAppearance = appearance51;
+            this.gridAerzte.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.gridAerzte.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.gridAerzte.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
+            this.gridAerzte.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridAerzte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint1.Insets.Bottom = 5;
+            gridBagConstraint1.Insets.Left = 5;
+            gridBagConstraint1.Insets.Right = 5;
+            gridBagConstraint1.OriginX = 0;
+            gridBagConstraint1.OriginY = 0;
+            this.ultraGridBagLayoutPanel2.SetGridBagConstraint(this.gridAerzte, gridBagConstraint1);
+            this.gridAerzte.Location = new System.Drawing.Point(0, 0);
+            this.gridAerzte.Name = "gridAerzte";
+            this.ultraGridBagLayoutPanel2.SetPreferredSize(this.gridAerzte, new System.Drawing.Size(243, 74));
+            this.gridAerzte.Size = new System.Drawing.Size(996, 121);
+            this.gridAerzte.TabIndex = 2;
+            this.gridAerzte.Text = "ultraGrid2";
+            this.gridAerzte.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.gridAerzte_CellChange);
+            this.gridAerzte.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.gridAerzte_DoubleClickCell);
+            this.gridAerzte.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridAerzte_KeyDown);
+            // 
+            // dsPatientAerzte1
+            // 
+            this.dsPatientAerzte1.DataSetName = "dsPatientAerzte";
+            this.dsPatientAerzte1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panelButtons1
             // 
@@ -3585,7 +3814,6 @@ namespace PMDS.GUI
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl3;
         private QS2.Desktop.ControlManagment.BaseGroupBox ultraGroupBoxAngehörige;
         private QS2.Desktop.ControlManagment.BaseGroupBox ultraGroupBoxÄrtze;
-        private QS2.Desktop.ControlManagment.BaseGrid gridAerzte;
         private QS2.Desktop.ControlManagment.BaseGroupBox ultraGroupBoxSachverwalter;
         private QS2.Desktop.ControlManagment.BaseGrid gridSachwalter;
         private System.Windows.Forms.ErrorProvider errorProvider1;
@@ -3701,9 +3929,5 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseLabel baseLabel3;
         private System.Windows.Forms.Panel panelAufenthalt;
         private System.Windows.Forms.Panel panelBewerbungdsdaten;
-        private QS2.Desktop.ControlManagment.BaseLabel baseLabel4;
-        private QS2.Desktop.ControlManagment.BaseTextEditor txtbPK;
-        private QS2.Desktop.ControlManagment.BaseLabel lblTitelPost;
-        private BaseControls.AuswahlGruppeCombo cboTitelPost;
     }
 }

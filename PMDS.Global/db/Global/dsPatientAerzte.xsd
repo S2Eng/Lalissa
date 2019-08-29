@@ -4,31 +4,29 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="False" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb">
-          </Connection>
+          <Connection ConnectionStringObject="Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev" IsAppSettingsProperty="false" Modifier="Assembly" Name="SQLNCLI.s2sty076.PMDS_3_5_0" Provider="System.Data.OleDb" />
         </Connections>
-        <Tables>
-        </Tables>
-        <Sources>
-        </Sources>
+        <Tables />
+        <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dsPatientAerzte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsPatientAerzte" msprop:Generator_DataSetName="dsPatientAerzte">
+  <xs:element name="dsPatientAerzte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsPatientAerzte" msprop:Generator_UserDSName="dsPatientAerzte">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PatientAerzte" msprop:Generator_UserTableName="PatientAerzte" msprop:Generator_RowDeletedName="PatientAerzteRowDeleted" msprop:Generator_RowChangedName="PatientAerzteRowChanged" msprop:Generator_RowClassName="PatientAerzteRow" msprop:Generator_RowChangingName="PatientAerzteRowChanging" msprop:Generator_RowEvArgName="PatientAerzteRowChangeEvent" msprop:Generator_RowEvHandlerName="PatientAerzteRowChangeEventHandler" msprop:Generator_TableClassName="PatientAerzteDataTable" msprop:Generator_TableVarName="tablePatientAerzte" msprop:Generator_RowDeletingName="PatientAerzteRowDeleting" msprop:Generator_TablePropName="PatientAerzte">
+        <xs:element name="PatientAerzte" msprop:Generator_UserTableName="PatientAerzte" msprop:Generator_RowEvArgName="PatientAerzteRowChangeEvent" msprop:Generator_TableVarName="tablePatientAerzte" msprop:Generator_TablePropName="PatientAerzte" msprop:Generator_RowDeletingName="PatientAerzteRowDeleting" msprop:Generator_RowChangingName="PatientAerzteRowChanging" msprop:Generator_RowDeletedName="PatientAerzteRowDeleted" msprop:Generator_RowEvHandlerName="PatientAerzteRowChangeEventHandler" msprop:Generator_TableClassName="PatientAerzteDataTable" msprop:Generator_RowChangedName="PatientAerzteRowChanged" msprop:Generator_RowClassName="PatientAerzteRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:string" />
-              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDPatient" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" type="xs:string" />
-              <xs:element name="IDAerzte" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="IDAerzte" msprop:Generator_ColumnVarNameInTable="columnIDAerzte" msprop:Generator_ColumnPropNameInRow="IDAerzte" msprop:Generator_ColumnPropNameInTable="IDAerzteColumn" type="xs:string" />
-              <xs:element name="HausarztJN" msprop:Generator_UserColumnName="HausarztJN" msprop:Generator_ColumnVarNameInTable="columnHausarztJN" msprop:Generator_ColumnPropNameInRow="HausarztJN" msprop:Generator_ColumnPropNameInTable="HausarztJNColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="ZuweiserJN" msprop:Generator_UserColumnName="ZuweiserJN" msprop:Generator_ColumnVarNameInTable="columnZuweiserJN" msprop:Generator_ColumnPropNameInRow="ZuweiserJN" msprop:Generator_ColumnPropNameInTable="ZuweiserJNColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="AufnahmearztJN" msprop:Generator_UserColumnName="AufnahmearztJN" msprop:Generator_ColumnVarNameInTable="columnAufnahmearztJN" msprop:Generator_ColumnPropNameInRow="AufnahmearztJN" msprop:Generator_ColumnPropNameInTable="AufnahmearztJNColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="BehandelnderFAJN" msprop:Generator_UserColumnName="BehandelnderFAJN" msprop:Generator_ColumnVarNameInTable="columnBehandelnderFAJN" msprop:Generator_ColumnPropNameInRow="BehandelnderFAJN" msprop:Generator_ColumnPropNameInTable="BehandelnderFAJNColumn" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Von" msprop:Generator_UserColumnName="Von" msprop:Generator_ColumnVarNameInTable="columnVon" msprop:Generator_ColumnPropNameInRow="Von" msprop:Generator_ColumnPropNameInTable="VonColumn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Bis" msprop:Generator_UserColumnName="Bis" msprop:Generator_ColumnVarNameInTable="columnBis" msprop:Generator_ColumnPropNameInRow="Bis" msprop:Generator_ColumnPropNameInTable="BisColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" />
+              <xs:element name="IDAerzte" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAerzte" msprop:Generator_ColumnPropNameInRow="IDAerzte" msprop:Generator_ColumnPropNameInTable="IDAerzteColumn" msprop:Generator_UserColumnName="IDAerzte" type="xs:string" />
+              <xs:element name="HausarztJN" msprop:Generator_ColumnVarNameInTable="columnHausarztJN" msprop:Generator_ColumnPropNameInRow="HausarztJN" msprop:Generator_ColumnPropNameInTable="HausarztJNColumn" msprop:Generator_UserColumnName="HausarztJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ZuweiserJN" msprop:Generator_ColumnVarNameInTable="columnZuweiserJN" msprop:Generator_ColumnPropNameInRow="ZuweiserJN" msprop:Generator_ColumnPropNameInTable="ZuweiserJNColumn" msprop:Generator_UserColumnName="ZuweiserJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AufnahmearztJN" msprop:Generator_ColumnVarNameInTable="columnAufnahmearztJN" msprop:Generator_ColumnPropNameInRow="AufnahmearztJN" msprop:Generator_ColumnPropNameInTable="AufnahmearztJNColumn" msprop:Generator_UserColumnName="AufnahmearztJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="BehandelnderFAJN" msprop:Generator_ColumnVarNameInTable="columnBehandelnderFAJN" msprop:Generator_ColumnPropNameInRow="BehandelnderFAJN" msprop:Generator_ColumnPropNameInTable="BehandelnderFAJNColumn" msprop:Generator_UserColumnName="BehandelnderFAJN" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Bis" msprop:Generator_ColumnVarNameInTable="columnBis" msprop:Generator_ColumnPropNameInRow="Bis" msprop:Generator_ColumnPropNameInTable="BisColumn" msprop:Generator_UserColumnName="Bis" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Von" msprop:Generator_ColumnVarNameInTable="columnVon" msprop:Generator_ColumnPropNameInRow="Von" msprop:Generator_ColumnPropNameInTable="VonColumn" msprop:Generator_UserColumnName="Von" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ELGA_HausarztJN" msprop:Generator_ColumnVarNameInTable="columnELGA_HausarztJN" msprop:Generator_ColumnPropNameInRow="ELGA_HausarztJN" msprop:Generator_ColumnPropNameInTable="ELGA_HausarztJNColumn" msprop:Generator_UserColumnName="ELGA_HausarztJN" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

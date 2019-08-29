@@ -1244,6 +1244,59 @@ namespace PMDS.GUI
                 return sJa;
         }
 
+
+        public static bool checkAerzteELGAHausarztOKInDB(Guid IDPatient, ref UltraGrid gridÄrzte)
+        {
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+            {
+                var t = db.PatientAerzte.Where(o => o.IDPatient == IDPatient && o.ELGA_HausarztJN == true);
+                if (t.Count() != 0)
+                {
+                    DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten existiert bereits ein ELGA-Hausarzt!" + "\r\n" +
+                                                                                                    "Soll dieser als Hausarzt gespeichert werden und der neue Arzt als ELGA-Hausarzt gespeichert werden?", "", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        if (gridÄrzte != null)
+                        {
+                            foreach (Infragistics.Win.UltraWinGrid.UltraGridRow rGrid in gridÄrzte.Rows)
+                            {
+                                DataRowView v = (DataRowView)rGrid.ListObject;
+                                var rPatAerzte = (PMDS.Global.db.Global.dsPatientAerzte.PatientAerzteRow)v.Row;
+                                if (rPatAerzte.RowState != DataRowState.Deleted)
+                                {
+                                    if (rPatAerzte.ELGA_HausarztJN)
+                                    {
+                                        rPatAerzte.ELGA_HausarztJN = false;
+                                        rPatAerzte.HausarztJN = true;
+                                    }
+                                }
+                            }
+
+                            gridÄrzte.Refresh();
+                        }
+
+                        db.SaveChanges();
+                        return true;
+
+                        //System.Collections.Generic.List<Guid> lÄrzteChanged = new List<Guid>();
+                        //foreach (var r in t)
+                        //{
+                        //    r.ELGA_HausarztJN = false;
+                        //    r.HausarztJN = true;
+                        //    lÄrzteChanged.Add(r.IDAerzte);
+                        //}
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                    return true;
+            }
+        }
+
+
     }
 
 }
