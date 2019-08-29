@@ -5,7 +5,6 @@ using PMDS.Klient;
 
 namespace PMDS.GUI
 {
-
     partial class ucKlientStammdaten
     {
         /// <summary> 
@@ -119,8 +118,9 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ZuweiserJN");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AufnahmearztJN");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BehandelnderFAJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Von");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bis");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Von");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_HausarztJN");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Fachrichtung", 1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 2);
@@ -138,34 +138,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PatientAerzte", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAerzte");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("HausarztJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ZuweiserJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AufnahmearztJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BehandelnderFAJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bis");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Von");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA_HausarztJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Fachrichtung", 1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 2);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EMail", 3);
-            Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKlientStammdaten));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance54 = new Infragistics.Win.Appearance();
@@ -2369,14 +2341,6 @@ namespace PMDS.GUI
             ultraGridColumn9.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(50, 0);
             ultraGridColumn9.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn9.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn10.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
-            ultraGridColumn10.Header.Editor = null;
-            ultraGridColumn10.Header.VisiblePosition = 7;
-            ultraGridColumn10.RowLayoutColumnInfo.OriginX = 12;
-            ultraGridColumn10.RowLayoutColumnInfo.OriginY = 0;
-            ultraGridColumn10.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(84, 0);
-            ultraGridColumn10.RowLayoutColumnInfo.SpanX = 2;
-            ultraGridColumn10.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn11.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn11.Header.Editor = null;
             ultraGridColumn11.Header.VisiblePosition = 8;
@@ -2385,10 +2349,20 @@ namespace PMDS.GUI
             ultraGridColumn11.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(84, 0);
             ultraGridColumn11.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn11.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn10.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn10.Header.Editor = null;
+            ultraGridColumn10.Header.VisiblePosition = 7;
+            ultraGridColumn10.RowLayoutColumnInfo.OriginX = 12;
+            ultraGridColumn10.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn10.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(84, 0);
+            ultraGridColumn10.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn10.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn1.Header.Editor = null;
+            ultraGridColumn1.Header.VisiblePosition = 9;
             ultraGridColumn12.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn12.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 9;
+            ultraGridColumn12.Header.VisiblePosition = 10;
             ultraGridColumn12.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn12.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn12.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(163, 0);
@@ -2397,7 +2371,7 @@ namespace PMDS.GUI
             ultraGridColumn13.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn13.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 10;
+            ultraGridColumn13.Header.VisiblePosition = 11;
             ultraGridColumn13.RowLayoutColumnInfo.OriginX = 2;
             ultraGridColumn13.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn13.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(113, 0);
@@ -2407,7 +2381,7 @@ namespace PMDS.GUI
             ultraGridColumn14.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn14.Header.Caption = "Tel / Adresse";
             ultraGridColumn14.Header.Editor = null;
-            ultraGridColumn14.Header.VisiblePosition = 11;
+            ultraGridColumn14.Header.VisiblePosition = 12;
             ultraGridColumn14.RowLayoutColumnInfo.OriginX = 16;
             ultraGridColumn14.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn14.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(286, 0);
@@ -2416,7 +2390,7 @@ namespace PMDS.GUI
             ultraGridColumn15.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn15.Header.Caption = "E-Mail";
             ultraGridColumn15.Header.Editor = null;
-            ultraGridColumn15.Header.VisiblePosition = 12;
+            ultraGridColumn15.Header.VisiblePosition = 13;
             ultraGridColumn15.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(188, 0);
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn3,
@@ -2426,8 +2400,9 @@ namespace PMDS.GUI
             ultraGridColumn7,
             ultraGridColumn8,
             ultraGridColumn9,
-            ultraGridColumn10,
             ultraGridColumn11,
+            ultraGridColumn10,
+            ultraGridColumn1,
             ultraGridColumn12,
             ultraGridColumn13,
             ultraGridColumn14,
@@ -3621,7 +3596,7 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseComboEditor cmbBenutzer;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private  dsKontaktpersonen dsKontaktpersonen1;
+        private dsKontaktpersonen dsKontaktpersonen1;
         private dsKlientSachwalter dsKlientSachwalter1;
         private QS2.Desktop.ControlManagment.BaseMaskEdit txtFallzahl;
         private QS2.Desktop.ControlManagment.BaseMaskEdit txtGewicht;
@@ -3733,5 +3708,6 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseTextEditor txtbPK;
         private QS2.Desktop.ControlManagment.BaseLabel lblTitelPost;
         private BaseControls.AuswahlGruppeCombo cboTitelPost;
+        public QS2.Desktop.ControlManagment.BaseGrid gridAerzte;
     }
 }
