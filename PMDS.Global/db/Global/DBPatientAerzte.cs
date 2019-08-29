@@ -85,6 +85,7 @@ namespace PMDS.DB.Global
             r.AufnahmearztJN = false;
             r.BehandelnderFAJN = false;
             r.HausarztJN = false;
+            r.ELGA_HausarztJN = false;
             r.ZuweiserJN = false;
             dsPatientAerzte1.PatientAerzte.AddPatientAerzteRow(r);
             return r;

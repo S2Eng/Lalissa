@@ -1,10 +1,3 @@
-//----------------------------------------------------------------------------
-/// <summary>
-///	ucBenutzerEdit.cs
-/// Erstellt am:	22.9.2004
-/// Erstellt von:	EHO
-/// </summary>
-//----------------------------------------------------------------------------
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -21,6 +14,7 @@ using PMDS.Global.db.Global;
 using System.Collections.Generic;
 using PMDS.DB;
 using System.Linq;
+
 
 namespace PMDS.GUI
 {

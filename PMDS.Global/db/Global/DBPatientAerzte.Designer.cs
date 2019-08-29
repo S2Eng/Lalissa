@@ -29,32 +29,35 @@ namespace PMDS.DB.Global
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DBPatientAerzte));
             this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbConnection1 = new System.Data.OleDb.OleDbConnection();
             this.oleDbInsertCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbUpdateCommand1 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDeleteCommand1 = new System.Data.OleDb.OleDbCommand();
             this.daPatientAerzte = new System.Data.OleDb.OleDbDataAdapter();
-            this.dsPatientAerzte1 = new dsPatientAerzte();
+            this.dsPatientAerzte1 = new PMDS.Global.db.Global.dsPatientAerzte();
             ((System.ComponentModel.ISupportInitialize)(this.dsPatientAerzte1)).BeginInit();
             // 
             // oleDbSelectCommand1
             // 
-            this.oleDbSelectCommand1.CommandText = "SELECT     ID, IDPatient, IDAerzte, HausarztJN, ZuweiserJN, AufnahmearztJN, Behan" +
-                "delnderFAJN, Von, Bis\r\nFROM         PatientAerzte\r\nWHERE     (IDPatient = ?)";
+            this.oleDbSelectCommand1.CommandText = "SELECT        ID, IDPatient, IDAerzte, HausarztJN, ZuweiserJN, AufnahmearztJN, Be" +
+    "handelnderFAJN, Von, Bis, ELGA_HausarztJN\r\nFROM            PatientAerzte\r\nWHERE " +
+    "       (IDPatient = ?)";
             this.oleDbSelectCommand1.Connection = this.oleDbConnection1;
             this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient")});
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;User ID=hl;In" +
+    "itial Catalog=PMDSDev";
             // 
             // oleDbInsertCommand1
             // 
             this.oleDbInsertCommand1.CommandText = "INSERT INTO [PatientAerzte] ([ID], [IDPatient], [IDAerzte], [HausarztJN], [Zuweis" +
-                "erJN], [AufnahmearztJN], [BehandelnderFAJN], [Von], [Bis]) VALUES (?, ?, ?, ?, ?" +
-                ", ?, ?, ?, ?)";
+    "erJN], [AufnahmearztJN], [BehandelnderFAJN], [Von], [Bis], [ELGA_HausarztJN]) VA" +
+    "LUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this.oleDbInsertCommand1.Connection = this.oleDbConnection1;
             this.oleDbInsertCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -65,13 +68,12 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("AufnahmearztJN", System.Data.OleDb.OleDbType.Boolean, 0, "AufnahmearztJN"),
             new System.Data.OleDb.OleDbParameter("BehandelnderFAJN", System.Data.OleDb.OleDbType.Boolean, 0, "BehandelnderFAJN"),
             new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis")});
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("ELGA_HausarztJN", System.Data.OleDb.OleDbType.Boolean, 0, "ELGA_HausarztJN")});
             // 
             // oleDbUpdateCommand1
             // 
-            this.oleDbUpdateCommand1.CommandText = "UPDATE [PatientAerzte] SET [ID] = ?, [IDPatient] = ?, [IDAerzte] = ?, [HausarztJN" +
-                "] = ?, [ZuweiserJN] = ?, [AufnahmearztJN] = ?, [BehandelnderFAJN] = ?, [Von] = ?" +
-                ", [Bis] = ? WHERE (([ID] = ?))";
+            this.oleDbUpdateCommand1.CommandText = resources.GetString("oleDbUpdateCommand1.CommandText");
             this.oleDbUpdateCommand1.Connection = this.oleDbConnection1;
             this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -83,6 +85,7 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("BehandelnderFAJN", System.Data.OleDb.OleDbType.Boolean, 0, "BehandelnderFAJN"),
             new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
             new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("ELGA_HausarztJN", System.Data.OleDb.OleDbType.Boolean, 0, "ELGA_HausarztJN"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand1
@@ -107,7 +110,8 @@ namespace PMDS.DB.Global
                         new System.Data.Common.DataColumnMapping("AufnahmearztJN", "AufnahmearztJN"),
                         new System.Data.Common.DataColumnMapping("BehandelnderFAJN", "BehandelnderFAJN"),
                         new System.Data.Common.DataColumnMapping("Von", "Von"),
-                        new System.Data.Common.DataColumnMapping("Bis", "Bis")})});
+                        new System.Data.Common.DataColumnMapping("Bis", "Bis"),
+                        new System.Data.Common.DataColumnMapping("ELGA_HausarztJN", "ELGA_HausarztJN")})});
             this.daPatientAerzte.UpdateCommand = this.oleDbUpdateCommand1;
             // 
             // dsPatientAerzte1

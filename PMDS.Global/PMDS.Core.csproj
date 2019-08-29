@@ -555,6 +555,9 @@
     <Compile Include="db\ERSystem\sqlVO.Designer.cs">
       <DependentUpon>sqlVO.cs</DependentUpon>
     </Compile>
+    <Compile Include="db\Global\dsPatientAerzte.cs">
+      <DependentUpon>dsPatientAerzte.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PMDSClient\PMDSClientWrapper.cs" />
     <Compile Include="PMDSClient\WCFService\WcfDTOs.cs" />
     <Compile Include="PMDSClient\WCFService\WCFServiceClient.cs" />
