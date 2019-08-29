@@ -137,7 +137,7 @@
             this.t0.ownFormat = "";
             this.t0.ownMaskInput = "";
             this.t0.Size = new System.Drawing.Size(53, 21);
-            this.t0.TabIndex = 158;
+            this.t0.TabIndex = 1;
             this.t0.Value = null;
             this.t0.ValueChanged += new System.EventHandler(this.t0_ValueChanged);
             // 
@@ -180,7 +180,7 @@
             this.t4.ownFormat = "";
             this.t4.ownMaskInput = "";
             this.t4.Size = new System.Drawing.Size(53, 21);
-            this.t4.TabIndex = 162;
+            this.t4.TabIndex = 5;
             this.t4.Value = null;
             this.t4.ValueChanged += new System.EventHandler(this.t0_ValueChanged);
             // 
@@ -191,13 +191,13 @@
             this.t3.Appearance = appearance9;
             this.t3.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.t3.DropDownButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Never;
-            this.t3.Location = new System.Drawing.Point(114, 3);
+            this.t3.Location = new System.Drawing.Point(169, 3);
             this.t3.MaskInput = "hh:mm";
             this.t3.Name = "t3";
             this.t3.ownFormat = "";
             this.t3.ownMaskInput = "";
             this.t3.Size = new System.Drawing.Size(53, 21);
-            this.t3.TabIndex = 161;
+            this.t3.TabIndex = 4;
             this.t3.Value = null;
             this.t3.ValueChanged += new System.EventHandler(this.t0_ValueChanged);
             // 
@@ -208,13 +208,13 @@
             this.t2.Appearance = appearance10;
             this.t2.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.t2.DropDownButtonDisplayStyle = Infragistics.Win.ButtonDisplayStyle.Never;
-            this.t2.Location = new System.Drawing.Point(169, 3);
+            this.t2.Location = new System.Drawing.Point(114, 3);
             this.t2.MaskInput = "hh:mm";
             this.t2.Name = "t2";
             this.t2.ownFormat = "";
             this.t2.ownMaskInput = "";
             this.t2.Size = new System.Drawing.Size(53, 21);
-            this.t2.TabIndex = 160;
+            this.t2.TabIndex = 3;
             this.t2.Value = null;
             this.t2.ValueChanged += new System.EventHandler(this.t0_ValueChanged);
             // 
@@ -231,7 +231,7 @@
             this.t1.ownFormat = "";
             this.t1.ownMaskInput = "";
             this.t1.Size = new System.Drawing.Size(53, 21);
-            this.t1.TabIndex = 159;
+            this.t1.TabIndex = 2;
             this.t1.Value = null;
             this.t1.ValueChanged += new System.EventHandler(this.t0_ValueChanged);
             // 
