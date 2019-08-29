@@ -469,6 +469,9 @@ namespace PMDS.GUI
             this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Value = null;
             this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
 
+            this.cboTitelPost.Text = "";
+            this.txtbPK.Text = "";
+
             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
             {
                 if (this.b.checkPatientExists(Klient.ID, db))
@@ -509,6 +512,9 @@ namespace PMDS.GUI
 
                     this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.setUIVersNr(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim());
                     this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.setUIMitversichertBei(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim());
+
+                    this.cboTitelPost.Text = rPatient.TitelPost;
+                    this.txtbPK.Text = rPatient.bPK;
                 }
 
                 if (b.checkAufenthaltExists(Klient.Aufenthalt.ID, db))
@@ -1158,7 +1164,19 @@ namespace PMDS.GUI
                             this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text = "";
                         }
 
-                        db.SaveChanges();
+                        if (rPatient.TitelPost.Trim() != this.cboTitelPost.Text.Trim())
+                        {
+                            sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Titel nachgestellt: ") + rPatient.TitelPost + " -> " + this.cboTitelPost.Text);
+                            rPatient.TitelPost = this.cboTitelPost.Text.Trim();
+                        }
+
+                        if (rPatient.bPK.Trim() != this.txtbPK.Text.Trim())
+                        {
+                            sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Bereichsspez. Personenkennz.: ") + rPatient.bPK + " -> " + this.txtbPK.Text);
+                            rPatient.bPK = this.txtbPK.Text.Trim();
+                        }
+
+                        db.SaveChanges();   
                     }
 
                     if (b.checkAufenthaltExists(IDAufenthaltAct, db))
@@ -2341,8 +2359,6 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
-
-
     }
 
 }
