@@ -609,7 +609,18 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Darreichungsformform");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Fachrichtung");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA_AuthorSpeciality"); 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA_AuthorSpeciality");
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten existiert bereits ein ELGA-Hausarzt!" + "\r\n" +
+                                                                                "Soll dieser als Hausarzt gespeichert werden und der neue Arzt als ELGA-Hausarzt gespeichert werden?", "", MessageBoxButtons.YesNo);
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten wurden mehr als ein ELGA-Hausarzt angegeben!" + "\r\n" +
+                                                            "", "", MessageBoxButtons.OK);
+
+
+
+
+
             }
             catch (Exception ex)
             {

@@ -641,7 +641,7 @@ namespace PMDS.GUI
         }
 
         public void doUIDienstübergabe(ref System.Collections.Generic.List<PMDS.Global.UIGlobal.eSelectedNodes> lstPatienteSelected2 , ref System.Collections.Generic.List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl> lstÄrzteMehrfachauswahlReturn,
-                                        Guid IDAertzeToAdd, dsPatientAerzte.PatientAerzteRow rNewPatientÄrzte)
+                                        Guid IDAertzeToAdd, dsPatientAerzte.PatientAerzteRow rNewPatientÄrzte, UltraGrid gridÄrzte)
         {
             try
             {
@@ -669,6 +669,20 @@ namespace PMDS.GUI
                     frmAerzteEditMehrfachauswahl1.ShowDialog();
                     if (!frmAerzteEditMehrfachauswahl1.abort)
                     {
+                        bool ELGAHausarztExists = false;
+                        if (gridÄrzte != null)
+                        {
+                            if (!PMDSBusinessUI.checkAerzteELGAHausarztOKInDB(ENV.CurrentIDPatient, ref gridÄrzte))
+                            {
+                                ELGAHausarztExists = true;
+                            }
+                            if (frmAerzteEditMehrfachauswahl1.chkHausarztELGAJN.Checked && ELGAHausarztExists)
+                            {
+                                frmAerzteEditMehrfachauswahl1.chkHausarztELGAJN.Checked = false;
+                                frmAerzteEditMehrfachauswahl1.chkHausarztJN.Checked = true;
+                            }
+                        }
+
                         PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl newÄrzteMehrfachauswahl = new PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl();
                         newÄrzteMehrfachauswahl.lstPatienteSelected2 = new List<UIGlobal.eSelectedNodes>();
                         newÄrzteMehrfachauswahl.lstPatienteSelected2 = lstPatienteSelected2;
@@ -678,7 +692,8 @@ namespace PMDS.GUI
                             newÄrzteMehrfachauswahl.IDÄrztePatientMehrfachauswahl = rNewPatientÄrzte.ID;
                         }
 
-                        newÄrzteMehrfachauswahl.HausarztJN = frmAerzteEditMehrfachauswahl1.chkHausarztJN.Checked;
+                        newÄrzteMehrfachauswahl.HausarztJN2 = frmAerzteEditMehrfachauswahl1.chkHausarztJN.Checked;
+                        newÄrzteMehrfachauswahl.HausarztELGAJN = frmAerzteEditMehrfachauswahl1.chkHausarztELGAJN.Checked;
                         newÄrzteMehrfachauswahl.ZuweiserJN = frmAerzteEditMehrfachauswahl1.chkZuweiserJN.Checked;
                         newÄrzteMehrfachauswahl.AufnahmearztJN = frmAerzteEditMehrfachauswahl1.chkAufnahmearztJN.Checked;
                         newÄrzteMehrfachauswahl.BehandelnderFAJN = frmAerzteEditMehrfachauswahl1.chkBehandelnderFAJN.Checked;
@@ -689,7 +704,8 @@ namespace PMDS.GUI
 
                         if (rNewPatientÄrzte != null)
                         {
-                            rNewPatientÄrzte.HausarztJN = newÄrzteMehrfachauswahl.HausarztJN;
+                            rNewPatientÄrzte.HausarztJN = newÄrzteMehrfachauswahl.HausarztJN2;
+                            rNewPatientÄrzte.ELGA_HausarztJN = newÄrzteMehrfachauswahl.HausarztELGAJN;
                             rNewPatientÄrzte.ZuweiserJN = newÄrzteMehrfachauswahl.ZuweiserJN;
                             rNewPatientÄrzte.AufnahmearztJN = newÄrzteMehrfachauswahl.AufnahmearztJN;
                             rNewPatientÄrzte.BehandelnderFAJN = newÄrzteMehrfachauswahl.BehandelnderFAJN;

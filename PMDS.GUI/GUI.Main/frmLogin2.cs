@@ -409,17 +409,19 @@ namespace PMDS.GUI
 			// Benutzer vorhanden
 			if (User != null)
 			{
-				// txtPasswort
-				GuiUtil.ValidateField(txtPasswort, (txtPasswort.Text.Length > 0),
-					ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                if (!PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
+                {
+                    // txtPasswort
+                    GuiUtil.ValidateField(txtPasswort, (txtPasswort.Text.Length > 0),
+                        ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
-				if (txtPasswort.Text.Length > 0)
-				{
-					// txtPasswort korrekt
-					GuiUtil.ValidateField(txtPasswort, User.HasPasswort(txtPasswort.Text),
-						ENV.String("GUI.E_INVALID_PASSWORD"), ref bError, bInfo, errorProvider1);
-				}
-
+                    if (txtPasswort.Text.Length > 0)
+                    {
+                        // txtPasswort korrekt
+                        GuiUtil.ValidateField(txtPasswort, User.HasPasswort(txtPasswort.Text),
+                            ENV.String("GUI.E_INVALID_PASSWORD"), ref bError, bInfo, errorProvider1);
+                    }
+                }
 			}
 
 			return !bError;
