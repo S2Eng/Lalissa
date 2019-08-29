@@ -340,6 +340,25 @@ namespace PMDS.GUI
                     return false;
                 }
 
+                int iELGAHausarzt = 0;
+                foreach (Infragistics.Win.UltraWinGrid.UltraGridRow rGrid in this.ucKlient1.ucKlientStammdaten1.gridAerzte.Rows)
+                {
+                    DataRowView v = (DataRowView)rGrid.ListObject;
+                    var rPatAerzte = (PMDS.Global.db.Global.dsPatientAerzte.PatientAerzteRow)v.Row;
+                    if (rPatAerzte.RowState != DataRowState.Deleted)
+                    {
+                        if (rPatAerzte.ELGA_HausarztJN)
+                            iELGAHausarzt += 1;
+                    }
+                }
+                if (iELGAHausarzt > 1)
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten wurden mehr als ein ELGA-Hausarzt angegeben!" + "\r\n" +
+                                                                                "", "", MessageBoxButtons.OK);
+                    return false;
+                }
+
+
                 return true;
             }
             catch (Exception ex)

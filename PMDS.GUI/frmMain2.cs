@@ -2421,7 +2421,7 @@ namespace PMDS
                         if (res == DialogResult.OK)
                         {
                             KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
-                            KlientGuiAction1.doUIDienstübergabe(ref frmAerzteEdit1.lstPatienteSelected2, ref lstÄrzteMehrfachauswahl, frmAerzteEdit1.CurrentArztRow.ID, null);
+                            KlientGuiAction1.doUIDienstübergabe(ref frmAerzteEdit1.lstPatienteSelected2, ref lstÄrzteMehrfachauswahl, frmAerzteEdit1.CurrentArztRow.ID, null, null);
                             KlientGuiAction1.checkWriteÄrzteMehrfachauswahl(ref lstÄrzteMehrfachauswahl, null);
                         }
                         break;

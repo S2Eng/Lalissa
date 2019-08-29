@@ -197,7 +197,8 @@ namespace PMDS.DB
             public Nullable<Guid> IDÄrztePatientMehrfachauswahl = null;
             public System.Collections.Generic.List<PMDS.Global.UIGlobal.eSelectedNodes> lstPatienteSelected2 = new List<PMDS.Global.UIGlobal.eSelectedNodes>();
 
-            public bool HausarztJN = false;
+            public bool HausarztJN2 = false;
+            public bool HausarztELGAJN = false;
             public bool ZuweiserJN = false;
             public bool AufnahmearztJN = false;
             public bool BehandelnderFAJN = false;
@@ -1776,7 +1777,8 @@ namespace PMDS.DB
                         //rNewPatientAerzte.Von = rPatientAerzte.Von;
                         //rNewPatientAerzte.Bis = rPatientAerzte.Bis;
 
-                        rNewPatientAerzte.HausarztJN = cÄrzteMehrfachauswahlAct.HausarztJN;
+                        rNewPatientAerzte.HausarztJN = cÄrzteMehrfachauswahlAct.HausarztJN2;
+                        rNewPatientAerzte.ELGA_HausarztJN = cÄrzteMehrfachauswahlAct.HausarztELGAJN;
                         rNewPatientAerzte.ZuweiserJN = cÄrzteMehrfachauswahlAct.ZuweiserJN;
                         rNewPatientAerzte.AufnahmearztJN = cÄrzteMehrfachauswahlAct.AufnahmearztJN;
                         rNewPatientAerzte.BehandelnderFAJN = cÄrzteMehrfachauswahlAct.BehandelnderFAJN;

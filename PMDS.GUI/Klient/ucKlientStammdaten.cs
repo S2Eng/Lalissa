@@ -22,6 +22,7 @@ using System.Drawing.Imaging;
 using System.Security.Permissions;
 using System.Security;
 
+
 namespace PMDS.GUI
 {
 
@@ -1586,6 +1587,7 @@ namespace PMDS.GUI
                 dsPatientAerzte.PatientAerzteRow  rNewPatientÄrzte = Klient.CLASS_AERZTE.NewPatientAerzte(frm.CurrentArztRow.ID);
                 KlientGuiAction.RefreshListPatientAerzte(gridAerzte, Klient);
 
+
                 //HL_AddPE_KontaktPatient_06
                 string title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt hinzugefügt für Patient {0}");
                 string txt = "";
@@ -1601,7 +1603,7 @@ namespace PMDS.GUI
                 }
 
                 KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
-                KlientGuiAction1.doUIDienstübergabe(ref frm.lstPatienteSelected2, ref this.lstÄrzteMehrfachauswahl, frm.CurrentArztRow.ID, rNewPatientÄrzte);
+                KlientGuiAction1.doUIDienstübergabe(ref frm.lstPatienteSelected2, ref this.lstÄrzteMehrfachauswahl, frm.CurrentArztRow.ID, rNewPatientÄrzte, (UltraGrid)this.gridAerzte);
                 return true;
             }
             
