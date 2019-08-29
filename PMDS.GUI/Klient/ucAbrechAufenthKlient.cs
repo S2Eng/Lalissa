@@ -765,7 +765,7 @@ namespace PMDS.GUI
         {
             if (CurrentPatientPflegestufeRow != null) //Neu nach 27.04.2007
             {
-                UltraGridTools.DeleteCurrentSelectedRow(gridPatPflegestufen);
+                UltraGridTools.DeleteCurrentSelectedRow(gridPatPflegestufen, false);
                 if (PMDS.Global.historie.HistorieOn)
                 {
                     this.MainWindow.MainWindow.MainWindow.Save();

@@ -310,7 +310,7 @@ namespace PMDS.GUI
 		//----------------------------------------------------------------------------
 		private void btnDel_Click(object sender, System.EventArgs e)
 		{
-			UltraGridTools.DeleteCurrentSelectedRow(dgSerien);
+			UltraGridTools.DeleteCurrentSelectedRow(dgSerien, false);
 			OnValueChanged(sender, EventArgs.Empty);
 			UpdateButtons();
 		}
