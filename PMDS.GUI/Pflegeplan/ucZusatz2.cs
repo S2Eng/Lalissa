@@ -70,7 +70,10 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDFilter");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("OptionalJN");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DruckenJN");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Reihenfolge");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AktivJN");
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucZusatz2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -86,13 +89,16 @@ namespace PMDS.GUI
             this.dgEintrag.DisplayLayout.AddNewBox.Prompt = "Add ...";
             this.dgEintrag.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns;
             ultraGridColumn1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn1.Hidden = true;
             ultraGridColumn2.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn2.Hidden = true;
             ultraGridColumn3.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn3.Header.Caption = "Eintrag";
+            ultraGridColumn3.Header.Editor = null;
             ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn3.MaxLength = 6;
             ultraGridColumn3.RowLayoutColumnInfo.OriginX = 2;
@@ -103,6 +109,7 @@ namespace PMDS.GUI
             ultraGridColumn3.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ultraGridColumn4.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn4.Header.Caption = "Abteilung";
+            ultraGridColumn4.Header.Editor = null;
             ultraGridColumn4.Header.VisiblePosition = 3;
             ultraGridColumn4.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn4.RowLayoutColumnInfo.OriginY = 0;
@@ -111,10 +118,12 @@ namespace PMDS.GUI
             ultraGridColumn4.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn4.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
             ultraGridColumn5.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn5.Header.Editor = null;
             ultraGridColumn5.Header.VisiblePosition = 4;
             ultraGridColumn5.Hidden = true;
             ultraGridColumn6.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn6.Header.Caption = "Optional";
+            ultraGridColumn6.Header.Editor = null;
             ultraGridColumn6.Header.VisiblePosition = 5;
             ultraGridColumn6.RowLayoutColumnInfo.OriginX = 4;
             ultraGridColumn6.RowLayoutColumnInfo.OriginY = 0;
@@ -123,12 +132,18 @@ namespace PMDS.GUI
             ultraGridColumn6.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn7.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn7.Header.Caption = "Drucken";
+            ultraGridColumn7.Header.Editor = null;
             ultraGridColumn7.Header.VisiblePosition = 6;
             ultraGridColumn7.RowLayoutColumnInfo.OriginX = 6;
             ultraGridColumn7.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn7.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(61, 0);
             ultraGridColumn7.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn7.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn8.Header.Editor = null;
+            ultraGridColumn8.Header.VisiblePosition = 7;
+            ultraGridColumn8.Nullable = Infragistics.Win.UltraWinGrid.Nullable.Disallow;
+            ultraGridColumn9.Header.Editor = null;
+            ultraGridColumn9.Header.VisiblePosition = 8;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
@@ -136,7 +151,9 @@ namespace PMDS.GUI
             ultraGridColumn4,
             ultraGridColumn5,
             ultraGridColumn6,
-            ultraGridColumn7});
+            ultraGridColumn7,
+            ultraGridColumn8,
+            ultraGridColumn9});
             ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgEintrag.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.dgEintrag.DisplayLayout.GroupByBox.Hidden = true;
@@ -168,64 +185,93 @@ namespace PMDS.GUI
             // btnNew
             // 
             this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance1.Image = 2;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
             appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnNew.Appearance = appearance1;
+            this.btnNew.AutoWorkLayout = false;
+            this.btnNew.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnNew.DoOnClick = true;
+            this.btnNew.IsStandardControl = true;
             this.btnNew.Location = new System.Drawing.Point(6, 160);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(96, 32);
             this.btnNew.TabIndex = 21;
-            this.btnNew.Text = "&Hinzufügen";
+            this.btnNew.TabStop = false;
+            this.btnNew.Text = "Hinzufügen";
             this.btnNew.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
+            this.btnNew.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnUndo
             // 
             this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.Image = 1;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
             appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnUndo.Appearance = appearance2;
+            this.btnUndo.AutoWorkLayout = false;
+            this.btnUndo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnUndo.DoOnClick = true;
             this.btnUndo.Enabled = false;
+            this.btnUndo.IsStandardControl = true;
             this.btnUndo.Location = new System.Drawing.Point(265, 160);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(96, 32);
             this.btnUndo.TabIndex = 23;
-            this.btnUndo.Text = "&Rückgängig";
+            this.btnUndo.TabStop = false;
+            this.btnUndo.Text = "Rückgängig";
             this.btnUndo.TYPE = PMDS.GUI.ucButton.ButtonType.Undo;
+            this.btnUndo.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.Image = 0;
+            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
             appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnSave.Appearance = appearance3;
+            this.btnSave.AutoWorkLayout = false;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSave.DoOnClick = true;
             this.btnSave.Enabled = false;
+            this.btnSave.IsStandardControl = true;
             this.btnSave.Location = new System.Drawing.Point(362, 160);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 32);
             this.btnSave.TabIndex = 24;
-            this.btnSave.Text = "&Speichern";
+            this.btnSave.TabStop = false;
+            this.btnSave.Text = "Speichern";
             this.btnSave.TYPE = PMDS.GUI.ucButton.ButtonType.Save;
+            this.btnSave.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance4.Image = 3;
+            appearance4.Image = ((object)(resources.GetObject("appearance4.Image")));
             appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnDelete.Appearance = appearance4;
+            this.btnDelete.AutoWorkLayout = false;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnDelete.DoOnClick = true;
             this.btnDelete.Enabled = false;
+            this.btnDelete.IsStandardControl = true;
             this.btnDelete.Location = new System.Drawing.Point(103, 160);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(96, 32);
             this.btnDelete.TabIndex = 22;
-            this.btnDelete.Text = "&Entfernen";
+            this.btnDelete.TabStop = false;
+            this.btnDelete.Text = "Entfernen";
             this.btnDelete.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
+            this.btnDelete.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // ucZusatz2
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.btnSave);
@@ -284,7 +330,13 @@ namespace PMDS.GUI
 
 		private void btnSave_Click(object sender, System.EventArgs e)
 		{
-			this.Write();
+            foreach (var x in ZusatzGruppe.ZusatzEintraege)
+            {
+                if (x.IsReihenfolgeNull())
+                    x.Reihenfolge = 0;
+            }
+
+            this.Write();
 			btnUndo.Enabled = false;
 			btnSave.Enabled = false;
 			contentChanged = false;

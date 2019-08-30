@@ -132,6 +132,12 @@ namespace PMDS.GUI
 			{
 				mID = value;
 				ucZusatz21.ZusatzGruppe = new PMDS.BusinessLogic.ZusatzGruppe("MASS",mID);	
+
+                foreach(var x in ucZusatz21.ZusatzGruppe.ZusatzEintraege)
+                {
+                    if (x.IsReihenfolgeNull())
+                        x.Reihenfolge = 0;
+                }
 			}
 		}
 
