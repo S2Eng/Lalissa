@@ -162,7 +162,7 @@
               <xs:element name="LandKZ" msprop:Generator_ColumnVarNameInTable="columnLandKZ" msprop:Generator_ColumnPropNameInRow="LandKZ" msprop:Generator_ColumnPropNameInTable="LandKZColumn" msprop:Generator_UserColumnName="LandKZ" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="3" />
+                    <xs:maxLength value="300" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -494,28 +494,28 @@
               <xs:element name="Titel" msprop:Generator_ColumnVarNameInTable="columnTitel" msprop:Generator_ColumnPropNameInRow="Titel" msprop:Generator_ColumnPropNameInTable="TitelColumn" msprop:Generator_UserColumnName="Titel" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="40" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Sexus" msprop:Generator_ColumnVarNameInTable="columnSexus" msprop:Generator_ColumnPropNameInRow="Sexus" msprop:Generator_ColumnPropNameInTable="SexusColumn" msprop:Generator_UserColumnName="Sexus" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Familienstand" msprop:Generator_ColumnVarNameInTable="columnFamilienstand" msprop:Generator_ColumnPropNameInRow="Familienstand" msprop:Generator_ColumnPropNameInTable="FamilienstandColumn" msprop:Generator_UserColumnName="Familienstand" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Staatsb" msprop:Generator_ColumnVarNameInTable="columnStaatsb" msprop:Generator_ColumnPropNameInRow="Staatsb" msprop:Generator_ColumnPropNameInTable="StaatsbColumn" msprop:Generator_UserColumnName="Staatsb" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -529,14 +529,14 @@
               <xs:element name="KrankenKasse" msprop:Generator_ColumnVarNameInTable="columnKrankenKasse" msprop:Generator_ColumnPropNameInRow="KrankenKasse" msprop:Generator_ColumnPropNameInTable="KrankenKasseColumn" msprop:Generator_UserColumnName="KrankenKasse" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="40" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Anrede" msprop:Generator_ColumnVarNameInTable="columnAnrede" msprop:Generator_ColumnPropNameInRow="Anrede" msprop:Generator_ColumnPropNameInTable="AnredeColumn" msprop:Generator_UserColumnName="Anrede" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -565,7 +565,7 @@
               <xs:element name="LandKZ" msprop:Generator_ColumnVarNameInTable="columnLandKZ" msprop:Generator_ColumnPropNameInRow="LandKZ" msprop:Generator_ColumnPropNameInTable="LandKZColumn" msprop:Generator_UserColumnName="LandKZ" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
