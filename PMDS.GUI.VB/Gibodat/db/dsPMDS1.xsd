@@ -251,7 +251,7 @@ FROM            Abteilung</CommandText>
               <xs:element name="LandKZ" msprop:Generator_ColumnVarNameInTable="columnLandKZ" msprop:Generator_ColumnPropNameInRow="LandKZ" msprop:Generator_ColumnPropNameInTable="LandKZColumn" msprop:Generator_UserColumnName="LandKZ" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="3" />
+                    <xs:maxLength value="300" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

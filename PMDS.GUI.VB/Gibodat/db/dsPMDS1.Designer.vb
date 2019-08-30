@@ -1886,7 +1886,7 @@ Partial Public Class dsPMDS1
             Me.columnPlz.MaxLength = 6
             Me.columnOrt.MaxLength = 50
             Me.columnRegion.MaxLength = 20
-            Me.columnLandKZ.MaxLength = 3
+            Me.columnLandKZ.MaxLength = 300
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
