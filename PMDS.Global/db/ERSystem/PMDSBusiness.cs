@@ -6967,6 +6967,26 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getAdresse: " + ex.ToString());
             }
         }
+        public Adresse getCheckAdresse(Guid IDAdresse, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                System.Linq.IQueryable<Adresse> tAdresse = db.Adresse.Where(o => o.ID == IDAdresse);
+                if (tAdresse.Count() > 0)
+                    return tAdresse.First();
+                else
+                    return null;
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getCheckAdresse: " + ex.ToString());
+            }
+        }
         public Adresse getAdresse2(Guid IDAdresse, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
@@ -7006,6 +7026,26 @@ namespace PMDS.DB
             catch (Exception ex)
             {
                 throw new Exception("PMDSBusiness.getKontakt: " + ex.ToString());
+            }
+        }
+        public Kontakt getCheckKontakt(Guid IDKontakt, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                System.Linq.IQueryable<Kontakt> tKontakt = db.Kontakt.Where(o => o.ID == IDKontakt);
+                if (tKontakt.Count() > 0)
+                    return tKontakt.First();
+                else
+                    return null;
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getCheckKontakt: " + ex.ToString());
             }
         }
         public System.Linq.IQueryable<Kontaktperson> getKontaktpersonen(Guid IDPatient, PMDS.db.Entities.ERModellPMDSEntities db)

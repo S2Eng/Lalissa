@@ -870,6 +870,7 @@ namespace PMDS.GUI
         }
 
 
+
         public void initcontrol()
         {
             if (!this.IsInitialized)
@@ -953,6 +954,8 @@ namespace PMDS.GUI
             this.ucRechtBenutzer1.initControl();
             this.ucRechtBenutzer1.IDBenutzer = this.Benutzer.ID;
             this.ucRechtBenutzer1.loadData();
+
+            //this.contELGAUser1.contELGASettings1.loadData(this.Benutzer.ID, false );
         }
         public void clearUI()
         {
@@ -985,6 +988,8 @@ namespace PMDS.GUI
             this.ucRechtBenutzer1.initControl();
             //this.ucRechtBenutzer1.IDBenutzer = System.Guid.NewGuid();
             this.ucRechtBenutzer1.clearCheckBoxes ();
+
+            this.contELGAUser1.contELGASettings1.clearUI();
         }
 
 
@@ -1014,7 +1019,6 @@ namespace PMDS.GUI
                 Benutzer.IDArzt = null;
             else
                 Benutzer.IDArzt = (Guid)this.cboAerzte.Value;
-
         }
         public void writeSMTPData(System.Guid IDBenutzer)
         {
@@ -1163,6 +1167,10 @@ namespace PMDS.GUI
             {
                 bError = true;
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);
+            }
+
+            if (!this.contELGAUser1.contELGASettings1.validateData()) {
+                bError = true;
             }
 
             return !bError;
