@@ -308,6 +308,7 @@ namespace PMDS.GUI.PMDSClient
          //setUIToHistorie(PMDS.Global.historie.HistorieOn, false );
             RefreshPatientInfo(bSelectKlient, false, clickGridTermine);
 
+            this.lblAufenthalt.Text = "";
             if (ENV.CurrentIDPatient != System.Guid.Empty)
             {
                 if (PMDS.Global.historie.HistorieOn)
@@ -318,11 +319,6 @@ namespace PMDS.GUI.PMDSClient
                         this.lblAufenthalt.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Aufenthalt von ") + pat.Aufenthalt.Aufnahmezeitpunkt.ToString("dd.MM.yyyy") + QS2.Desktop.ControlManagment.ControlManagment.getRes(" bis ") + ((DateTime)pat.Aufenthalt.Entlassungszeitpunkt).ToString("dd.MM.yyyy");
                     }
                 }
-
-            }
-            else
-            {
-                this.lblAufenthalt.Text = "";
             }
 
             if (!this.Visible)
