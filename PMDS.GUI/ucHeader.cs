@@ -309,8 +309,9 @@ namespace PMDS.GUI
          //setUIToHistorie(PMDS.Global.historie.HistorieOn, false );
             RefreshPatientInfo(bSelectKlient, false, clickGridTermine);
 
+            this.lblAufenthalt.Text = "";
             if (ENV.CurrentIDPatient != System.Guid.Empty)
-            {
+            {                
                 if (PMDS.Global.historie.HistorieOn)
                 {
                     Patient pat = new Patient(ENV.CurrentIDPatient);
@@ -320,10 +321,6 @@ namespace PMDS.GUI
                     }
                 }
 
-            }
-            else
-            {
-                this.lblAufenthalt.Text = "";
             }
 
             if (!this.Visible)
