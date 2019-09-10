@@ -1001,6 +1001,24 @@
     <Compile Include="ELGA\frmELGALogIn.Designer.cs">
       <DependentUpon>frmELGALogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="ELGA\ManageSettings\contELGAProtocoll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\ManageSettings\contELGAProtocoll.Designer.cs">
+      <DependentUpon>contELGAProtocoll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\ManageSettings\contELGARights.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\ManageSettings\contELGARights.Designer.cs">
+      <DependentUpon>contELGARights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\ManageSettings\contELGASettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\ManageSettings\contELGASettings.Designer.cs">
+      <DependentUpon>contELGASettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fortbildung\frmInputBezeichnung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3910,6 +3928,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\frmELGALogIn.resx">
       <DependentUpon>frmELGALogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\ManageSettings\contELGAProtocoll.resx">
+      <DependentUpon>contELGAProtocoll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\ManageSettings\contELGARights.resx">
+      <DependentUpon>contELGARights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\ManageSettings\contELGASettings.resx">
+      <DependentUpon>contELGASettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fortbildung\frmInputBezeichnung.resx">
       <DependentUpon>frmInputBezeichnung.cs</DependentUpon>

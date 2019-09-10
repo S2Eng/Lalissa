@@ -39,6 +39,10 @@ namespace PMDS.GUI.ELGA
             {
                 if (!this.IsInitialized)
                 {
+                    this.contELGASettings1.initControl();
+                    this.contELGARights1.initControl();
+                    this.contELGAProtocoll1.initControl();
+
 
 
                     this.IsInitialized = true;
@@ -99,7 +103,6 @@ namespace PMDS.GUI.ELGA
                 throw new Exception("contELGAUserAdmin.saveData: " + ex.ToString());
             }
         }
-
 
     }
 

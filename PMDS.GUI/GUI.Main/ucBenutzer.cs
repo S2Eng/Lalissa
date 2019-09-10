@@ -73,6 +73,7 @@ namespace PMDS.GUI
         private Panel panelELGA;
         private BaseControls.AuswahlGruppeCombo cboELGA_AuthorSpeciality;
         private QS2.Desktop.ControlManagment.BaseLabel lblELGA_AuthorSpeciality;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkELGAActive;
         public ucBenutzerEdit mainWindow = null;
 
 
@@ -188,6 +189,7 @@ namespace PMDS.GUI
             this.ultraTabControl1 = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.chkELGAActive = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.ultraTabPageControl1.SuspendLayout();
             this.grpBenutzer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboELGA_AuthorSpeciality)).BeginInit();
@@ -216,6 +218,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
             this.ultraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkELGAActive)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
@@ -231,6 +234,7 @@ namespace PMDS.GUI
             // 
             // grpBenutzer
             // 
+            this.grpBenutzer.Controls.Add(this.chkELGAActive);
             this.grpBenutzer.Controls.Add(this.cboELGA_AuthorSpeciality);
             this.grpBenutzer.Controls.Add(this.lblELGA_AuthorSpeciality);
             this.grpBenutzer.Controls.Add(this.chkArztabrechnungJN);
@@ -528,14 +532,14 @@ namespace PMDS.GUI
             benutzer1.ELGAPatID = "";
             benutzer1.ELGAUser = "";
             benutzer1.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 11);
-            benutzer1.ID = new System.Guid("86b8252e-7801-46cd-9970-c133d78443a2");
+            benutzer1.ID = new System.Guid("d343877c-1102-4981-afe5-ca4aedfb9508");
             benutzer1.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDArzt = null;
             benutzer1.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IsGeneric = false;
             benutzer1.Nachname = "";
-            benutzer1.Passwort = "2974823A83DDA417760D3749D65978D6";
+            benutzer1.Passwort = "9A0AC00DC0C25DF0A6530949833CF949";
             benutzer1.PflegerJN = false;
             benutzer1.Vorname = "";
             this.ucBenutzerGruppe1.Benutzer = benutzer1;
@@ -608,14 +612,14 @@ namespace PMDS.GUI
             benutzer2.ELGAPatID = "";
             benutzer2.ELGAUser = "";
             benutzer2.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 13);
-            benutzer2.ID = new System.Guid("f54f03dc-1d10-4044-beef-d0cc4081420c");
+            benutzer2.ID = new System.Guid("f2504d4d-b10e-4e0b-885b-f2d4da0898f7");
             benutzer2.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDArzt = null;
             benutzer2.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IsGeneric = false;
             benutzer2.Nachname = "";
-            benutzer2.Passwort = "9B48851A89013424F93095676E3F2833";
+            benutzer2.Passwort = "4B03D12D6891043808A52A8A01DB9282";
             benutzer2.PflegerJN = false;
             benutzer2.Vorname = "";
             this.ucBenutzerAbteilung1.Benutzer = benutzer2;
@@ -813,6 +817,15 @@ namespace PMDS.GUI
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // chkELGAActive
+            // 
+            this.chkELGAActive.Location = new System.Drawing.Point(90, 322);
+            this.chkELGAActive.Name = "chkELGAActive";
+            this.chkELGAActive.Size = new System.Drawing.Size(137, 20);
+            this.chkELGAActive.TabIndex = 20;
+            this.chkELGAActive.Text = "Elga Aktiv";
+            this.chkELGAActive.CheckedChanged += new System.EventHandler(this.ChkELGAActive_CheckedChanged);
+            // 
             // ucBenutzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -851,9 +864,11 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
             this.ultraTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkELGAActive)).EndInit();
             this.ResumeLayout(false);
 
         }
+
 
 
         public void initcontrol()
@@ -939,6 +954,8 @@ namespace PMDS.GUI
             this.ucRechtBenutzer1.initControl();
             this.ucRechtBenutzer1.IDBenutzer = this.Benutzer.ID;
             this.ucRechtBenutzer1.loadData();
+
+            //this.contELGAUser1.contELGASettings1.loadData(this.Benutzer.ID, false );
         }
         public void clearUI()
         {
@@ -971,6 +988,8 @@ namespace PMDS.GUI
             this.ucRechtBenutzer1.initControl();
             //this.ucRechtBenutzer1.IDBenutzer = System.Guid.NewGuid();
             this.ucRechtBenutzer1.clearCheckBoxes ();
+
+            this.contELGAUser1.contELGASettings1.clearUI();
         }
 
 
@@ -1000,7 +1019,6 @@ namespace PMDS.GUI
                 Benutzer.IDArzt = null;
             else
                 Benutzer.IDArzt = (Guid)this.cboAerzte.Value;
-
         }
         public void writeSMTPData(System.Guid IDBenutzer)
         {
@@ -1151,6 +1169,10 @@ namespace PMDS.GUI
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);
             }
 
+            if (!this.contELGAUser1.contELGASettings1.validateData()) {
+                bError = true;
+            }
+
             return !bError;
         }
 
@@ -1251,6 +1273,31 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
+
+        private void ChkELGAActive_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                if (this.chkELGAActive.Focused)
+                {
+                    object o = new object();
+                    EventArgs evArg = new EventArgs();
+                    this.OnValueChanged(o, evArg);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
 
 
     }

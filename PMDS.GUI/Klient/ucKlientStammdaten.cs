@@ -1592,11 +1592,17 @@ namespace PMDS.GUI
                 PMDS.DB.PMDSBusiness b = new PMDSBusiness();
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    PMDS.db.Entities.Adresse rAdress = b.getAdresse(frm.CurrentArztRow.IDAdresse, db);
-                    PMDS.db.Entities.Kontakt rKontakt = b.getKontakt(frm.CurrentArztRow.IDKontakt, db);
+                    PMDS.db.Entities.Adresse rAdress = b.getCheckAdresse(frm.CurrentArztRow.IDAdresse, db);
+                    PMDS.db.Entities.Kontakt rKontakt = b.getCheckKontakt(frm.CurrentArztRow.IDKontakt, db);
                     txt += "Name: " + frm.CurrentArztRow.Nachname.Trim() + " " + frm.CurrentArztRow.Vorname.Trim() + "\r\n";
-                    txt += "Adress: " + rAdress.Plz.Trim() + " " + rAdress.Ort.Trim() + ", " + rAdress.Strasse.Trim() + "\r\n";
-                    txt += "E-Mail: " + rKontakt.Email.Trim();
+                    if (rAdress != null)
+                    {
+                        txt += "Adress: " + rAdress.Plz.Trim() + " " + rAdress.Ort.Trim() + ", " + rAdress.Strasse.Trim() + "\r\n";
+                    }
+                    if (rKontakt != null)
+                    {
+                        txt += "E-Mail: " + rKontakt.Email.Trim();
+                    }
                     KlientGuiAction.addKontakteChanged2(title, txt, Klient.IDPatient);
                 }
 
