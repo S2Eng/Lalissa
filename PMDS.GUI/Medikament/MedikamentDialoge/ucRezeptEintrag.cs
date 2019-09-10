@@ -33,12 +33,7 @@ namespace PMDS.GUI
         private object temp_dtpAbgebenVon_Value;
 
         public PMDS.Global.db.ERSystem.PMDSBusinessUI PMDSBusinessUI1 = new Global.db.ERSystem.PMDSBusinessUI();
-
-
-
-
-
-
+        public bool _bIsStorno = false;
 
 
         public ucRezeptEintrag()
@@ -542,6 +537,10 @@ namespace PMDS.GUI
             bool bError = false;
             bool bInfo = true;
             this.errorProvider1.SetError(this.cmbApplikationsform, "");
+
+            _bIsStorno = false;
+            bool bRechtStorno = ENV.adminSecure || PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.RezepteintragLöschen);
+            TimeSpan diff = this.RezeptEintrag.AbzugebenVon - dtpAbgebenBis.DateTime.Date.AddDays(1).AddSeconds(-1);
             //this.cmbApplikationsform.Appearance.BackColor = Color.White;
 
             if (this.txtMedikament.Tag == null)
@@ -559,11 +558,17 @@ namespace PMDS.GUI
 
             if (this.EintragBearbeitungsmodus == BearbeitungsModus.edit)
             {
-                if (dtpAbgebenVon.Value != null && dtpAbgebenVon.DateTime.Date < this.RezeptEintrag.AbzugebenVon.Date)
-                {
-                    this.errorProvider1.SetError(this.dtpAbgebenVon, "Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an.");
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an.", "PMDS", MessageBoxButtons.OK);
-                    return false;
+                if (dtpAbgebenVon.Value != null && diff.TotalSeconds > 0)                {
+                    if (bRechtStorno && diff.TotalSeconds == 1)
+                    {
+                        _bIsStorno = true;
+                    }
+                    else
+                    {
+                        this.errorProvider1.SetError(this.dtpAbgebenVon, "Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an.");
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an.", "PMDS", MessageBoxButtons.OK);
+                        return false;
+                    }
                 }
             }
 
@@ -573,13 +578,13 @@ namespace PMDS.GUI
                 this.errorProvider1.SetError(this.cmbApplikationsform, "Applikationsform: Auswahl erforderlich!");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Applikationsform: Auswahl erforderlich!", "PMDS", MessageBoxButtons.OK);
                 return false;
+            }            
+
+            if (!_bIsStorno)
+            {
+                GuiUtil.ValidateField(dtpAbgebenBis, (((DateTime)dtpAbgebenBis.Value).Date >= ((DateTime)dtpAbgebenVon.Value).Date),
+                     ENV.String("GUI.E_REZEPTE_ABG_BIS"), ref bError, bInfo, errorProvider1);
             }
-            
-
-
-
-            GuiUtil.ValidateField(dtpAbgebenBis, (((DateTime)dtpAbgebenBis.Value).Date >= ((DateTime)dtpAbgebenVon.Value).Date),
-                 ENV.String("GUI.E_REZEPTE_ABG_BIS"), ref bError, bInfo, errorProvider1);
 
             //Wiederholungstyp
             if (opWiederholungstyp.Value != null)

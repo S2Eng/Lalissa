@@ -623,8 +623,8 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten wurden mehr als ein ELGA-Hausarzt angegeben!" + "\r\n" +
                                                             "", "", MessageBoxButtons.OK);
 
-
-
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikation");
 
 
             }
