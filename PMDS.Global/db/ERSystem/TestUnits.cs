@@ -625,7 +625,11 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikation");
-
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Bei Storno ist eine Anmerkung erforderlich!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Applikationsform: Auswahl erforderlich!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament: Auswahl erforderlich!");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bei Storno ist eine Anmerkung erforderlich!", "", MessageBoxButtons.OK);
 
             }
             catch (Exception ex)

@@ -241,6 +241,7 @@ namespace PMDS.Global
         public static bool lic_VOLager = false;
         public static bool lic_WundtherapieOffenWarnung = false;
         public static bool lic_ELGA = false;
+        public static bool lic_RezepteintragStorno = false;
 
         //---------------------------------------------
 
@@ -1581,6 +1582,8 @@ namespace PMDS.Global
                 ENV.lic_VOLager = setLicValue("lic_VOLager");
                 ENV.lic_ELGA = setLicValue("lic_ELGA");
                 ENV.lic_WundtherapieOffenWarnung = setLicValue("lic_WundtherapieOffenWarnung");
+                ENV.lic_RezepteintragStorno = setLicValue("lic_RezepteintragStorno");
+
                 return true;
 
             }

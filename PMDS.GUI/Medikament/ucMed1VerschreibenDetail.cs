@@ -191,7 +191,7 @@ namespace PMDS.GUI
             UltraGridTools.AddValueList(dgEintraege, "IDMedikament", "MED", PMDS.DB.DBMedikament._dsMedikament.MedikamentSmall, "ID", "Bezeichnung");
         }
 
-        private void InitRezeptEintraege()
+        private void InitRezeptEintraege(bool bSetFirstRow)
         {
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
             {
@@ -214,7 +214,8 @@ namespace PMDS.GUI
                     r.Cells[PMDS.DynReportsForms.MedikamentenBlattDataSource.colHerrichtenSortierung.Trim()].Value = PMDS.DynReportsForms.MedikamentenBlattDataSource.orderByHerrichten(rRezeptEintrag.Herrichten);
                 }
 
-                SetFirstRow();
+                if (bSetFirstRow)
+                    SetFirstRow();
                 db.Configuration.AutoDetectChangesEnabled = true;
             }
         }
@@ -285,12 +286,12 @@ namespace PMDS.GUI
                     copyRezeptEintragMedDatenGesplittet = true;
                 }
 
-                InitRezeptEintraege();
+                InitRezeptEintraege(false);
 
                 if (frm.NewRezeptEintrag != null)
                     SetActiveRow(frm.NewRezeptEintrag.ID);
 
-                r = (dsRezeptEintrag.RezeptEintragRow)UltraGridTools.CurrentSelectedRow(dgEintraege);
+                //r = (dsRezeptEintrag.RezeptEintragRow)UltraGridTools.CurrentSelectedRow(dgEintraege);
 
                 OnValueChanged(sender, EventArgs.Empty);
                 RefreshMedikamentValueList(true);
@@ -300,10 +301,19 @@ namespace PMDS.GUI
                 
                 this.mainWindow.Save();
 
-                string sAktion = (frm.ucRezeptEintrag1._bIsStorno ? QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") : QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert")) + " ";
-                sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + frm.ucRezeptEintrag1.dtpAbgebenVon.Value.ToString() + " ";    
-                if (((DateTime)frm.ucRezeptEintrag1.dtpAbgebenBis.Value).Year != 3000)
-                    sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + frm.ucRezeptEintrag1.dtpAbgebenBis.Value.ToString() + " ";
+                string sAktion = "";
+                if (frm.ucRezeptEintrag1._bIsStorno)
+                {
+                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ") ";
+                }
+                else
+                {
+                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert");
+                }
+
+                sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + r.AbzugebenVon.ToString() + " ";    
+                if (r.AbzugebenBis.Year != 3000)
+                    sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + r.AbzugebenBis.ToString() + " ";
                 sAktion +=  r.DosierungASString ;
 
                 PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, r.IDMedikament, sAktion, frm.ucRezeptEintrag1.chkGegenzeichnen.Checked,
@@ -781,7 +791,7 @@ namespace PMDS.GUI
         {
             Rezept rez = new Rezept();
             dgEintraege.DataSource = rez.Read(_aufenthalt);         
-            InitRezeptEintraege();
+            InitRezeptEintraege(true);
             UpdateButtons();
             RefreshAbzugebenBisValueList();
         
@@ -997,7 +1007,7 @@ namespace PMDS.GUI
                 if (!r.IsGroupByRow)
                 {
                     //if ((DateTime)r.Cells["AbzugebenBis"].Value < DateTime.Now.Date.AddDays(1))
-                    if ((DateTime)r.Cells["AbzugebenBis"].Value < DateTime.Now)
+                    if ((DateTime)r.Cells["AbzugebenBis"].Value < DateTime.Now || (DateTime)r.Cells["AbzugebenBis"].Value  < (DateTime)r.Cells["AbzugebenVon"].Value)
                         hide = true;
                 }
 
