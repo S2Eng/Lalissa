@@ -1462,12 +1462,6 @@
     <Compile Include="Misc\Convert_S2Frm_FDF.Designer.cs">
       <DependentUpon>Convert_S2Frm_FDF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Misc\frmBlisterliste2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Misc\frmBlisterliste2.Designer.cs">
-      <DependentUpon>frmBlisterliste2.cs</DependentUpon>
-    </Compile>
     <Compile Include="PatientUserPicker\contAbtBereiche.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -4185,9 +4179,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Misc\Convert_S2Frm_FDF.resx">
       <DependentUpon>Convert_S2Frm_FDF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Misc\frmBlisterliste2.resx">
-      <DependentUpon>frmBlisterliste2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientUserPicker\contAbtBereiche.resx">
       <DependentUpon>contAbtBereiche.cs</DependentUpon>
