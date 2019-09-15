@@ -1123,8 +1123,7 @@ namespace PMDS.Global
                     {
                    
                         sLizenz = RBUSF.Decrypt(sLizenz.Trim(), "12345678");
-                        string test1 = RBUSF.Encrypt(false, DateTime.Now, "12345678");
-
+                        
                         string[] sa = sLizenz.Split(';');
                         if (sa.Length != 2)
                         {

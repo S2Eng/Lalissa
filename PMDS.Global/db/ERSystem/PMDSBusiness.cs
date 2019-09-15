@@ -2511,6 +2511,29 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.GetDBVersion: " + ex.ToString());
             }
         }
+
+        public bool UpdateDBLizenz(string Lizenz, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                DBLizenz rDBLizenz = db.DBLizenz.Where(l => l.ID == 1).First();
+                if (rDBLizenz != null)
+                {
+                    rDBLizenz.Lizenz = Lizenz;
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.UpdateDBLizenz: " + ex.ToString());
+            }
+        }
+
         public PMDS.db.Entities.DBLizenz GetDBLizenz(PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try

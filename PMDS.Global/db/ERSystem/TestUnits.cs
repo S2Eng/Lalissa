@@ -959,6 +959,9 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datenschutz ist aktiviert. Sie dürfen kein Foto hinzufügen.", "Hinweis", MessageBoxButtons.OK);
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuen Lizenzstring in die Datenbank schreiben?", "Sind Sie sicher?", MessageBoxButtons.YesNo);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuer Lizenzstring wurde in die Datenbank geschrieben", "Hinweis", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuer Lizenzstring wurde NICHT in die Datenbank geschrieben", "Hinweis", MessageBoxButtons.OK);
 
             }
 
