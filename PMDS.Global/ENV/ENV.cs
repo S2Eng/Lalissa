@@ -1108,14 +1108,23 @@ namespace PMDS.Global
             QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("ERROR_MISSING_LICENCE"), "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
 
-        private static bool CkeckLicense()
+
+        public static string MakeLicenseString(DateTime ValidThrough)
+        {
+            return RBUSF.MakeLicenseString(ValidThrough);
+        }
+
+        public static bool CheckLicense()
         {
             try
             {
                 string sLizenz = PMDS.DB.DBUtil.GetDBLizenz().Lizenz;
                     if (sLizenz != "")
                     {
-                        sLizenz = RBUSF.DE(sLizenz.Trim(), "12345678");
+                   
+                        sLizenz = RBUSF.Decrypt(sLizenz.Trim(), "12345678");
+                        string test1 = RBUSF.Encrypt(false, DateTime.Now, "12345678");
+
                         string[] sa = sLizenz.Split(';');
                         if (sa.Length != 2)
                         {
