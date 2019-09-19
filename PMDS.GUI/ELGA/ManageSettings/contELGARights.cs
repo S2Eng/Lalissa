@@ -19,8 +19,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
         public bool IsInitialized = false;
 
 
-
-
+        
         public contELGARights()
         {
             InitializeComponent();

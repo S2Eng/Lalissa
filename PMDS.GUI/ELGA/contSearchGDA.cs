@@ -8,27 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PMDS.GUI.ELGA.ManageSettings
+
+namespace PMDS.GUI.ELGA
 {
 
-    public partial class contELGAProtocoll : UserControl
+    public partial class contSearchGDA : UserControl
     {
-
-        public contELGAUser mainWindow = null;
+        public frmSearchGDA mainWindow = null;
         public bool IsInitialized = false;
 
-        
 
 
-        public contELGAProtocoll()
+        public contSearchGDA()
         {
             InitializeComponent();
         }
 
-        private void ContELGAProtocoll_Load(object sender, EventArgs e)
+        private void ContSearchGDA_Load(object sender, EventArgs e)
         {
 
         }
+
 
 
         public void initControl()
@@ -45,16 +45,32 @@ namespace PMDS.GUI.ELGA.ManageSettings
             }
             catch (Exception ex)
             {
-                throw new Exception("contELGAProtocoll.initControl: " + ex.ToString());
+                throw new Exception("contSearchGDA.contELGARights: " + ex.ToString());
+            }
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
 
 
-        private void GridProtocoll_BeforeCellActivate(object sender, Infragistics.Win.UltraWinGrid.CancelableCellEventArgs e)
-        {
 
-        }
-        private void GridProtocoll_BeforeRowsDeleted(object sender, Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventArgs e)
+        private void GridProtocoll_BeforeCellActivate(object sender, Infragistics.Win.UltraWinGrid.CancelableCellEventArgs e)
         {
 
         }

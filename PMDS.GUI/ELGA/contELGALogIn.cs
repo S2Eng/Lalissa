@@ -100,7 +100,6 @@ namespace PMDS.GUI.ELGA
         }
 
 
-
         private void btnAbort_Click(object sender, EventArgs e)
         {
             try
