@@ -888,7 +888,7 @@ namespace PMDS.GUI
                         else cmbHerrichten.Text = "";
 
                         if (!((dsMedikament.MedikamentRow)t.Rows[0]).IsEinheitNull())
-                            cmbEinheit.Text = ((dsMedikament.MedikamentRow)t.Rows[0]).Einheit.Trim();
+                            cmbEinheit.Text = ((dsMedikament.MedikamentRow)t.Rows[0]).Packungseinheit.Trim();
 
 
 
