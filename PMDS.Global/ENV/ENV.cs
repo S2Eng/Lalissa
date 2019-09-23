@@ -241,6 +241,7 @@ namespace PMDS.Global
         public static bool lic_VOLager = false;
         public static bool lic_WundtherapieOffenWarnung = false;
         public static bool lic_ELGA = false;
+        public static bool lic_RezepteintragStorno = false;
 
         //---------------------------------------------
 
@@ -1107,14 +1108,22 @@ namespace PMDS.Global
             QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("ERROR_MISSING_LICENCE"), "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
 
-        private static bool CkeckLicense()
+
+        public static string MakeLicenseString(DateTime ValidThrough)
+        {
+            return RBUSF.MakeLicenseString(ValidThrough);
+        }
+
+        public static bool CheckLicense()
         {
             try
             {
                 string sLizenz = PMDS.DB.DBUtil.GetDBLizenz().Lizenz;
                     if (sLizenz != "")
                     {
-                        sLizenz = RBUSF.DE(sLizenz.Trim(), "12345678");
+                   
+                        sLizenz = RBUSF.Decrypt(sLizenz.Trim(), "12345678");
+                        
                         string[] sa = sLizenz.Split(';');
                         if (sa.Length != 2)
                         {
@@ -1581,6 +1590,8 @@ namespace PMDS.Global
                 ENV.lic_VOLager = setLicValue("lic_VOLager");
                 ENV.lic_ELGA = setLicValue("lic_ELGA");
                 ENV.lic_WundtherapieOffenWarnung = setLicValue("lic_WundtherapieOffenWarnung");
+                ENV.lic_RezepteintragStorno = setLicValue("lic_RezepteintragStorno");
+
                 return true;
 
             }

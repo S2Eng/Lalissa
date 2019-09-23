@@ -33,12 +33,7 @@ namespace PMDS.GUI
         private object temp_dtpAbgebenVon_Value;
 
         public PMDS.Global.db.ERSystem.PMDSBusinessUI PMDSBusinessUI1 = new Global.db.ERSystem.PMDSBusinessUI();
-
-
-
-
-
-
+        public bool _bIsStorno = false;
 
 
         public ucRezeptEintrag()
@@ -542,44 +537,81 @@ namespace PMDS.GUI
             bool bError = false;
             bool bInfo = true;
             this.errorProvider1.SetError(this.cmbApplikationsform, "");
+
+            _bIsStorno = false;
+            bool bRechtStorno = ENV.adminSecure || (PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.RezepteintragLöschen) && ENV.lic_RezepteintragStorno);
+            TimeSpan diff = this.RezeptEintrag.AbzugebenVon - dtpAbgebenBis.DateTime.Date.AddDays(1).AddSeconds(-1);
             //this.cmbApplikationsform.Appearance.BackColor = Color.White;
 
             if (this.txtMedikament.Tag == null)
             {
-                this.errorProvider1.SetError(this.txtMedikament, "Medikament: Auswahl erforderlich!");
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Medikament: Auswahl erforderlich!", "PMDS", MessageBoxButtons.OK);
+                string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament: Auswahl erforderlich!"); 
+                this.errorProvider1.SetError(this.txtMedikament, sText);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
                 return false;
             }
+
             if ((System.Guid)this.txtMedikament.Tag == System.Guid.Empty)
             {
-                this.errorProvider1.SetError(this.txtMedikament, "Medikament: Auswahl erforderlich!");
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Medikament: Auswahl erforderlich!", "PMDS", MessageBoxButtons.OK);
+                string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament: Auswahl erforderlich!");
+                this.errorProvider1.SetError(this.txtMedikament, sText);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
                 return false;
             }
 
             if (this.EintragBearbeitungsmodus == BearbeitungsModus.edit)
             {
-                if (dtpAbgebenVon.Value != null && dtpAbgebenVon.DateTime.Date < this.RezeptEintrag.AbzugebenVon.Date)
+                if (dtpAbgebenVon.Value != null && diff.TotalSeconds > 0)
                 {
-                    this.errorProvider1.SetError(this.dtpAbgebenVon, "Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an.");
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an.", "PMDS", MessageBoxButtons.OK);
-                    return false;
+                    if (bRechtStorno && diff.TotalSeconds == 1)
+                    {
+                        _bIsStorno = true;
+                    }
+                    else
+                    {
+                        string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an."); ;
+                        this.errorProvider1.SetError(this.dtpAbgebenVon, sText);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
+                        return false;
+                    }
                 }
             }
 
             if (this.cmbApplikationsform.Value == null)
             {
-                //this.cmbApplikationsform.Appearance.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
-                this.errorProvider1.SetError(this.cmbApplikationsform, "Applikationsform: Auswahl erforderlich!");
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Applikationsform: Auswahl erforderlich!", "PMDS", MessageBoxButtons.OK);
+                string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Applikationsform: Auswahl erforderlich!"); 
+                this.errorProvider1.SetError(this.cmbApplikationsform, sText);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox(Text, "PMDS", MessageBoxButtons.OK);
                 return false;
+            }            
+
+            if (!_bIsStorno)
+            {
+                GuiUtil.ValidateField(dtpAbgebenBis, (((DateTime)dtpAbgebenBis.Value).Date >= ((DateTime)dtpAbgebenVon.Value).Date),
+                     ENV.String("GUI.E_REZEPTE_ABG_BIS"), ref bError, bInfo, errorProvider1);
             }
-            
+            else
+            {
+                string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bei Storno ist eine Anmerkung erforderlich!");
+                PMDS.GUI.BaseControls.frmTextInput frm = new BaseControls.frmTextInput();
+                frm.Text = sText;
+                frm.txtText.Text = "";
+                frm.StartPosition = FormStartPosition.CenterParent;
+                frm.ShowDialog(this);
+                string sReason = frm.txtText.Text.Trim();
 
-
-
-            GuiUtil.ValidateField(dtpAbgebenBis, (((DateTime)dtpAbgebenBis.Value).Date >= ((DateTime)dtpAbgebenVon.Value).Date),
-                 ENV.String("GUI.E_REZEPTE_ABG_BIS"), ref bError, bInfo, errorProvider1);
+                if (sReason == "")
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bei Storno ist eine Anmerkung erforderlich!", "", MessageBoxButtons.OK);
+                    return false;
+                }
+                else
+                {
+                    if (this.txtAnmerkung.Text.Trim() != "")
+                        this.txtAnmerkung.Text += "\r\n";
+                    this.txtAnmerkung.Text += sReason;
+                }
+            }
 
             //Wiederholungstyp
             if (opWiederholungstyp.Value != null)
@@ -856,7 +888,7 @@ namespace PMDS.GUI
                         else cmbHerrichten.Text = "";
 
                         if (!((dsMedikament.MedikamentRow)t.Rows[0]).IsEinheitNull())
-                            cmbEinheit.Text = ((dsMedikament.MedikamentRow)t.Rows[0]).Einheit.Trim();
+                            cmbEinheit.Text = ((dsMedikament.MedikamentRow)t.Rows[0]).Packungseinheit.Trim();
 
 
 

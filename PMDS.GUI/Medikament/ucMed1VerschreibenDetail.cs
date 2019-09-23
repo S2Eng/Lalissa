@@ -191,7 +191,7 @@ namespace PMDS.GUI
             UltraGridTools.AddValueList(dgEintraege, "IDMedikament", "MED", PMDS.DB.DBMedikament._dsMedikament.MedikamentSmall, "ID", "Bezeichnung");
         }
 
-        private void InitRezeptEintraege()
+        private void InitRezeptEintraege(bool bSetFirstRow)
         {
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
             {
@@ -214,7 +214,8 @@ namespace PMDS.GUI
                     r.Cells[PMDS.DynReportsForms.MedikamentenBlattDataSource.colHerrichtenSortierung.Trim()].Value = PMDS.DynReportsForms.MedikamentenBlattDataSource.orderByHerrichten(rRezeptEintrag.Herrichten);
                 }
 
-                SetFirstRow();
+                if (bSetFirstRow)
+                    SetFirstRow();
                 db.Configuration.AutoDetectChangesEnabled = true;
             }
         }
@@ -285,20 +286,37 @@ namespace PMDS.GUI
                     copyRezeptEintragMedDatenGesplittet = true;
                 }
 
-                InitRezeptEintraege();
+                InitRezeptEintraege(false);
 
                 if (frm.NewRezeptEintrag != null)
-                    SetActiveRow(frm.NewRezeptEintrag.ID);                   
-                
+                    SetActiveRow(frm.NewRezeptEintrag.ID);
+
+                //r = (dsRezeptEintrag.RezeptEintragRow)UltraGridTools.CurrentSelectedRow(dgEintraege);
+
                 OnValueChanged(sender, EventArgs.Empty);
                 RefreshMedikamentValueList(true);
                 RefreshAerzteValueList("IDAerzte", "AERZTE");
                 RefreshAerzteValueList("IDArztAbgesetzt", "IDArztAbgesetzt");
                 UpdateButtons();
                 
-                this.mainWindow.Save();  
-                
-                PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, r.IDMedikament, QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert"), frm.ucRezeptEintrag1.chkGegenzeichnen.Checked,
+                this.mainWindow.Save();
+
+                string sAktion = "";
+                if (frm.ucRezeptEintrag1._bIsStorno)
+                {
+                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ") ";
+                }
+                else
+                {
+                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert");
+                }
+
+                sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + r.AbzugebenVon.ToString() + " ";    
+                if (r.AbzugebenBis.Year != 3000)
+                    sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + r.AbzugebenBis.ToString() + " ";
+                sAktion +=  r.DosierungASString ;
+
+                PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, r.IDMedikament, sAktion, frm.ucRezeptEintrag1.chkGegenzeichnen.Checked,
                                                             frm.ucRezeptEintrag1.cbImportant.ID, frm.ucRezeptEintrag1.chkHAGPflichtigJN.Checked);
 
                 if (r.AbzugebenBis.Year != 3000)
@@ -434,12 +452,16 @@ namespace PMDS.GUI
                     RefreshAerzteValueList("IDArztAbgesetzt", "IDArztAbgesetzt");
                     UpdateButtons();
                     
-                    this.mainWindow.Save();  
-                    PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, row.IDMedikament, QS2.Desktop.ControlManagment.ControlManagment.getRes("angeordnet"), false, System.Guid.Empty,
+                    this.mainWindow.Save();
+
+                    string sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("angeordnet") + " ";
+                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + row.AbzugebenVon.ToString() + " ";
+                    if (row.AbzugebenBis.Date.Year != 3000)
+                        sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + row.AbzugebenBis.ToString() + " ";
+                    sAktion += row.DosierungASString;
+
+                    PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, row.IDMedikament, sAktion, false, System.Guid.Empty,
                                                                 frm.ucRezeptEintrag1.RezeptEintrag.HAGPflichtigJN);
-
-                    //this.InfoAbgesetzt(row);
-
                 }
 
             }
@@ -769,7 +791,7 @@ namespace PMDS.GUI
         {
             Rezept rez = new Rezept();
             dgEintraege.DataSource = rez.Read(_aufenthalt);         
-            InitRezeptEintraege();
+            InitRezeptEintraege(true);
             UpdateButtons();
             RefreshAbzugebenBisValueList();
         
@@ -985,7 +1007,7 @@ namespace PMDS.GUI
                 if (!r.IsGroupByRow)
                 {
                     //if ((DateTime)r.Cells["AbzugebenBis"].Value < DateTime.Now.Date.AddDays(1))
-                    if ((DateTime)r.Cells["AbzugebenBis"].Value < DateTime.Now)
+                    if ((DateTime)r.Cells["AbzugebenBis"].Value < DateTime.Now || (DateTime)r.Cells["AbzugebenBis"].Value  < (DateTime)r.Cells["AbzugebenVon"].Value)
                         hide = true;
                 }
 

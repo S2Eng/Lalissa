@@ -100,7 +100,6 @@
             this.lblPackungsanzahl = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblTagesbeginn = new QS2.Desktop.ControlManagment.BaseLableWin();
             this.lblTagesende = new QS2.Desktop.ControlManagment.BaseLableWin();
-            this.dsMedikament1 = new PMDS.Global.db.Patient.dsMedikament();
             this.txtMedikament = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.btnSearchMedikament = new QS2.Desktop.ControlManagment.BaseButton();
             this.lblArztAbgesetzt = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -118,6 +117,7 @@
             this.cmbEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.ucStandardZeiten1 = new PMDS.GUI.ucStandardZeiten();
             this.ucWochenTage21 = new PMDS.GUI.ucWochenTage2();
+            this.dsMedikament1 = new PMDS.Global.db.Patient.dsMedikament();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opWiederholungstyp)).BeginInit();
@@ -129,7 +129,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRezeptDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbPackungsanzahl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedikament)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAerzteAbgesetzt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkGegenzeichnen)).BeginInit();
@@ -141,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVerschreibungVon
@@ -576,12 +576,6 @@
             this.lblTagesende.TabIndex = 193;
             this.lblTagesende.Text = "23:59:59 Uhr";
             // 
-            // dsMedikament1
-            // 
-            this.dsMedikament1.DataSetName = "dsMedikament";
-            this.dsMedikament1.Locale = new System.Globalization.CultureInfo("de-DE");
-            this.dsMedikament1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // txtMedikament
             // 
             appearance19.BackColor = System.Drawing.Color.White;
@@ -787,6 +781,12 @@
             this.ucWochenTage21.WOCHENTAGE = 127;
             this.ucWochenTage21.ValueChanged += new System.EventHandler(this.ucWochenTage21_ValueChanged);
             // 
+            // dsMedikament1
+            // 
+            this.dsMedikament1.DataSetName = "dsMedikament";
+            this.dsMedikament1.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsMedikament1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // ucRezeptEintrag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -858,7 +858,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRezeptDaten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbPackungsanzahl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMedikament)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAerzteAbgesetzt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkGegenzeichnen)).EndInit();
@@ -870,6 +869,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -878,8 +878,6 @@
         #endregion
 
         private QS2.Desktop.ControlManagment.BaseLabel lblVerschreibungVon;
-        private QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpAbgebenVon;
-        private QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpAbgebenBis;
         private QS2.Desktop.ControlManagment.BaseLabel lblApplikationsform;
         private QS2.Desktop.ControlManagment.BaseOptionSet opWiederholungstyp;
         private QS2.Desktop.ControlManagment.BaseMaskEdit txtWiedWertAlle;
@@ -932,5 +930,7 @@
         protected QS2.Desktop.ControlManagment.BaseLabel lblWichtigFür;
         public BaseControls.AuswahlGruppeCombo cbImportant;
         public QS2.Desktop.ControlManagment.BaseCheckBox chkHAGPflichtigJN;
+        public QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpAbgebenVon;
+        public QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpAbgebenBis;
     }
 }

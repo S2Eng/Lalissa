@@ -128,8 +128,8 @@ namespace PMDS.BusinessLogic
             if (rusrLoggedOn.IDBerufsstand != null)
                 pe.IDBerufsstand = ENV.BERUFID;
             pe.EintragsTyp = PflegeEintragTyp.MEDIKAMENT;
-            pe.PflegeplanText = "Medikation";
-            pe.Text = "Medikation " + Aktion + ": " + Medikament;
+            pe.PflegeplanText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikation"); ;
+            pe.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikation") + " " + Medikament + " " + Aktion;
             if (IDWichtigFür != System.Guid.Empty)
                 pe.IDWichtig = IDWichtigFür;
             pe.AbzeichnenJN = GegenzeichnenJN;

@@ -50,7 +50,6 @@ namespace PMDS
         private ToolStripMenuItem formulareInPDFKonvertierenToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem5;
         private ToolStripMenuItem sytemAdministrationToolStripMenuItem;
-        private ToolStripMenuItem blisterlisteToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem6;
         private ToolStripMenuItem loadAllDataIntoRAMToolStripMenuItem;
         private QS2.Desktop.ControlManagment.BaseLabel lblVersionGuid;
@@ -177,7 +176,6 @@ namespace PMDS
             this.runGACToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.formulareInPDFKonvertierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.blisterlisteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.sytemAdministrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
@@ -223,7 +221,6 @@ namespace PMDS
             this.runGACToolStripMenuItem,
             this.toolStripMenuItem3,
             this.formulareInPDFKonvertierenToolStripMenuItem,
-            this.blisterlisteToolStripMenuItem,
             this.toolStripMenuItem5,
             this.sytemAdministrationToolStripMenuItem,
             this.toolStripMenuItem6,
@@ -299,13 +296,6 @@ namespace PMDS
             this.formulareInPDFKonvertierenToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
             this.formulareInPDFKonvertierenToolStripMenuItem.Text = "Formulare in PDF konvertieren";
             this.formulareInPDFKonvertierenToolStripMenuItem.Click += new System.EventHandler(this.formulareInPDFKonvertierenToolStripMenuItem_Click);
-            // 
-            // blisterlisteToolStripMenuItem
-            // 
-            this.blisterlisteToolStripMenuItem.Name = "blisterlisteToolStripMenuItem";
-            this.blisterlisteToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
-            this.blisterlisteToolStripMenuItem.Text = "Blisterliste";
-            this.blisterlisteToolStripMenuItem.Click += new System.EventHandler(this.blisterlisteToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -927,27 +917,6 @@ namespace PMDS
             {
                 this.Cursor = Cursors.Default;
             }
-        }
-
-        private void blisterlisteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-                PMDS.GUI.Misc.frmBlisterliste2 fBlisterliste = new GUI.Misc.frmBlisterliste2();
-                fBlisterliste.Show();
-
-            }
-            catch (Exception ex)
-            {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-
         }
 
         private void sytemAdministrationToolStripMenuItem_Click(object sender, EventArgs e)

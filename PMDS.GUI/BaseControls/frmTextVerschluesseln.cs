@@ -6,11 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
+using PMDS.db.Entities;
 
 namespace PMDS.GUI.BaseControls
 {
     public partial class frmTextVerschluesseln : Form
     {
+
+        private bool _bPrepareDBLizenz = false;
+
         public frmTextVerschluesseln()
         {
             InitializeComponent();
@@ -40,6 +45,7 @@ namespace PMDS.GUI.BaseControls
 
         private void btnLoadLicense_Click(object sender, EventArgs e)
         {
+            _bPrepareDBLizenz = false;
             this.hideLicenseControls();
             this.txtKlartext.Text = PMDS.Global.ENV.License;
             this.txtVerschluesselterText.Text = PMDS.BusinessLogic.BUtil.EncryptString(this.txtKlartext.Text);
@@ -67,23 +73,76 @@ namespace PMDS.GUI.BaseControls
             {
                 hideLicenseControls();
             }
+            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.L)
+            {
+
+                _bPrepareDBLizenz = true;
+                this.txtPassword.Visible = true;
+            }
         }
 
         private void txtPassword_KeyUp(object sender, KeyEventArgs e)
         {
             if (this.txtPassword.Text == "*s2eng_" + DateTime.Now.ToString("HH"))
-                this.btnLoadLicense.Visible = true;
+            {
+                if (_bPrepareDBLizenz)
+                {
+                    //Lizenzstring in DBLizenz schreiben
+                    _bPrepareDBLizenz = false;
+                    DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuen Lizenzstring in die Datenbank schreiben?", "Sind Sie sicher?", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                        {
+                            PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
+                            if (PMDSBusiness1.UpdateDBLizenz(this.txtKlartext.Text, db))
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuer Lizenzstring wurde in die Datenbank geschrieben", "Hinweis", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuer Lizenzstring wurde NICHT in die Datenbank geschrieben", "Hinweis", MessageBoxButtons.OK);
+                            }
+                        }
+                    }
+                    hideLicenseControls();
+                }
+                else
+                {
+                    pnlControls.Visible = true;
+                }
+            }
             else
-                this.btnLoadLicense.Visible = false;
+            {
+                pnlControls.Visible = false;
+            }
         }
 
         private void hideLicenseControls()
         {
             this.txtPassword.Visible = false;
-            this.btnLoadLicense.Visible = false;
+            pnlControls.Visible = false;
             this.txtPassword.Text = "";
             this.txtKlartext.Text = "";
             this.txtVerschluesselterText.Text = "";
+        }
+
+        private void DtValidThrough_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BaseLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DtValidThrough_Leave(object sender, EventArgs e)
+        {
+            this.hideLicenseControls();
+            this.txtKlartext.Text = PMDS.Global.ENV.MakeLicenseString(this.dtValidThrough.DateTime);
+            this.txtVerschluesselterText.Text = PMDS.BusinessLogic.BUtil.EncryptString(this.txtKlartext.Text);
+            _bPrepareDBLizenz = true;
         }
     }
 }
