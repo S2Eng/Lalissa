@@ -31,8 +31,7 @@ namespace PMDS.GUI.ELGA
 
         }
 
-
-
+        
         public void initControl()
         {
             try

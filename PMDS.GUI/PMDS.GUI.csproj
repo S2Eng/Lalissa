@@ -1001,11 +1001,23 @@
     <Compile Include="ELGA\contELGAUser.Designer.cs">
       <DependentUpon>contELGAUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="ELGA\contSearchGDA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\contSearchGDA.Designer.cs">
+      <DependentUpon>contSearchGDA.cs</DependentUpon>
+    </Compile>
     <Compile Include="ELGA\frmELGALogIn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ELGA\frmELGALogIn.Designer.cs">
       <DependentUpon>frmELGALogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\frmSearchGDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELGA\frmSearchGDA.Designer.cs">
+      <DependentUpon>frmSearchGDA.cs</DependentUpon>
     </Compile>
     <Compile Include="ELGA\ManageSettings\contELGAProtocoll.cs">
       <SubType>UserControl</SubType>
@@ -3929,8 +3941,14 @@
     <EmbeddedResource Include="ELGA\contELGAUser.resx">
       <DependentUpon>contELGAUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\contSearchGDA.resx">
+      <DependentUpon>contSearchGDA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ELGA\frmELGALogIn.resx">
       <DependentUpon>frmELGALogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\frmSearchGDA.resx">
+      <DependentUpon>frmSearchGDA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\ManageSettings\contELGAProtocoll.resx">
       <DependentUpon>contELGAProtocoll.cs</DependentUpon>

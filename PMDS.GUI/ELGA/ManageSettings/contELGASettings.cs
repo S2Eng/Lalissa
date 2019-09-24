@@ -101,8 +101,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
             {
                 this._IDPatient = IDPatient;
                 this._IsNew = isNew;
-
-
+                
                 
 
             }
