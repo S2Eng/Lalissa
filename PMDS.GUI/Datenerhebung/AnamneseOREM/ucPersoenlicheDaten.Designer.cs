@@ -327,7 +327,7 @@
             appearance16.FontData.SizeInPoints = 8F;
             this.ultraLabel4.Appearance = appearance16;
             this.ultraLabel4.AutoSize = true;
-            this.ultraLabel4.Location = new System.Drawing.Point(451, 46);
+            this.ultraLabel4.Location = new System.Drawing.Point(352, 46);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(62, 14);
             this.ultraLabel4.TabIndex = 193;
@@ -340,14 +340,18 @@
             appearance17.ForeColorDisabled = System.Drawing.Color.Black;
             this.cmbRelegion.Appearance = appearance17;
             this.cmbRelegion.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbRelegion.AutoOpenCBO = false;
             this.cmbRelegion.BerufsstandGruppeJNA = -1;
+            this.cmbRelegion.ExactMatch = false;
             this.cmbRelegion.Group = "KON";
             this.cmbRelegion.ID_PEP = -1;
-            this.cmbRelegion.Location = new System.Drawing.Point(513, 43);
+            this.cmbRelegion.Location = new System.Drawing.Point(420, 43);
             this.cmbRelegion.MaxLength = 255;
             this.cmbRelegion.Name = "cmbRelegion";
+            this.cmbRelegion.PflichtJN = false;
             this.cmbRelegion.ShowAddButton = true;
-            this.cmbRelegion.Size = new System.Drawing.Size(194, 21);
+            this.cmbRelegion.Size = new System.Drawing.Size(287, 21);
+            this.cmbRelegion.sys = false;
             this.cmbRelegion.TabIndex = 4;
             this.cmbRelegion.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -355,12 +359,14 @@
             // 
             appearance18.BackColorDisabled = System.Drawing.Color.White;
             appearance18.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance18.TextHAlignAsString = "Center";
             this.tbGroesse.Appearance = appearance18;
             this.tbGroesse.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
-            this.tbGroesse.Location = new System.Drawing.Point(313, 43);
+            this.tbGroesse.InputMask = "nnn";
+            this.tbGroesse.Location = new System.Drawing.Point(255, 44);
             this.tbGroesse.Name = "tbGroesse";
             this.tbGroesse.NonAutoSizeHeight = 20;
-            this.tbGroesse.Size = new System.Drawing.Size(56, 20);
+            this.tbGroesse.Size = new System.Drawing.Size(42, 20);
             this.tbGroesse.TabIndex = 3;
             this.tbGroesse.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -370,7 +376,7 @@
             appearance19.FontData.SizeInPoints = 8F;
             this.ultraLabel3.Appearance = appearance19;
             this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(260, 46);
+            this.ultraLabel3.Location = new System.Drawing.Point(211, 46);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(38, 14);
             this.ultraLabel3.TabIndex = 190;
@@ -380,12 +386,14 @@
             // 
             appearance20.BackColorDisabled = System.Drawing.Color.White;
             appearance20.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance20.TextHAlignAsString = "Center";
             this.tbGewicht.Appearance = appearance20;
             this.tbGewicht.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
+            this.tbGewicht.InputMask = "nnn.n";
             this.tbGewicht.Location = new System.Drawing.Point(118, 43);
             this.tbGewicht.Name = "tbGewicht";
             this.tbGewicht.NonAutoSizeHeight = 20;
-            this.tbGewicht.Size = new System.Drawing.Size(87, 20);
+            this.tbGewicht.Size = new System.Drawing.Size(48, 20);
             this.tbGewicht.TabIndex = 2;
             this.tbGewicht.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -508,7 +516,7 @@
             appearance30.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance30;
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(208, 46);
+            this.ultraLabel6.Location = new System.Drawing.Point(172, 47);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(23, 14);
             this.ultraLabel6.TabIndex = 213;
@@ -520,7 +528,7 @@
             appearance31.FontData.SizeInPoints = 8F;
             this.ultraLabel15.Appearance = appearance31;
             this.ultraLabel15.AutoSize = true;
-            this.ultraLabel15.Location = new System.Drawing.Point(373, 46);
+            this.ultraLabel15.Location = new System.Drawing.Point(303, 47);
             this.ultraLabel15.Name = "ultraLabel15";
             this.ultraLabel15.Size = new System.Drawing.Size(26, 14);
             this.ultraLabel15.TabIndex = 214;

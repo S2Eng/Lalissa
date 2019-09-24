@@ -333,8 +333,10 @@
             // 
             appearance16.BackColorDisabled = System.Drawing.Color.White;
             appearance16.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance16.TextHAlignAsString = "Center";
             this.tbGroesse.Appearance = appearance16;
             this.tbGroesse.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
+            this.tbGroesse.InputMask = "nnn";
             this.tbGroesse.Location = new System.Drawing.Point(263, 43);
             this.tbGroesse.Name = "tbGroesse";
             this.tbGroesse.NonAutoSizeHeight = 20;
@@ -349,7 +351,7 @@
             appearance17.FontData.SizeInPoints = 8F;
             this.ultraLabel3.Appearance = appearance17;
             this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(219, 46);
+            this.ultraLabel3.Location = new System.Drawing.Point(219, 47);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(38, 14);
             this.ultraLabel3.TabIndex = 190;
@@ -359,12 +361,14 @@
             // 
             appearance18.BackColorDisabled = System.Drawing.Color.White;
             appearance18.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance18.TextHAlignAsString = "Center";
             this.tbGewicht.Appearance = appearance18;
             this.tbGewicht.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
+            this.tbGewicht.InputMask = "nnn.n";
             this.tbGewicht.Location = new System.Drawing.Point(118, 43);
             this.tbGewicht.Name = "tbGewicht";
             this.tbGewicht.NonAutoSizeHeight = 20;
-            this.tbGewicht.Size = new System.Drawing.Size(66, 20);
+            this.tbGewicht.Size = new System.Drawing.Size(48, 20);
             this.tbGewicht.TabIndex = 2;
             this.tbGewicht.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             this.tbGewicht.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbGewicht_KeyUp);
@@ -488,7 +492,7 @@
             appearance28.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance28;
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(190, 46);
+            this.ultraLabel6.Location = new System.Drawing.Point(172, 46);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(23, 14);
             this.ultraLabel6.TabIndex = 213;
@@ -549,12 +553,14 @@
             // 
             appearance32.BackColorDisabled = System.Drawing.Color.White;
             appearance32.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance32.TextHAlignAsString = "Center";
             this.tbBMI.Appearance = appearance32;
             this.tbBMI.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.tbBMI.Location = new System.Drawing.Point(395, 44);
+            this.tbBMI.InputMask = "nnn.n";
+            this.tbBMI.Location = new System.Drawing.Point(384, 44);
             this.tbBMI.Name = "tbBMI";
             this.tbBMI.NonAutoSizeHeight = 20;
-            this.tbBMI.Size = new System.Drawing.Size(50, 20);
+            this.tbBMI.Size = new System.Drawing.Size(45, 20);
             this.tbBMI.TabIndex = 4;
             // 
             // ultraLabel16

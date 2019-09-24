@@ -147,12 +147,18 @@ namespace PMDS.GUI
 
         private void tbGewicht_KeyUp(object sender, KeyEventArgs e)
         {
-            tbBMI.Text = CalculateBMI(System.Convert.ToDouble(tbGroesse.Text != "" ? tbGroesse.Text : "0"), System.Convert.ToDouble(tbGewicht.Text != "" ? tbGewicht.Text : "0")).ToString("#0.#");
+            if (tbGewicht.Text == "" || tbGroesse.Text == "")
+                tbBMI.Text = "0";
+            else
+                tbBMI.Text = CalculateBMI(System.Convert.ToDouble(tbGroesse.Text != "" ? tbGroesse.Text : "0"), System.Convert.ToDouble(tbGewicht.Text != "" ? tbGewicht.Text : "0")).ToString("#0.#");
         }
 
         private void tbGroesse_KeyUp(object sender, KeyEventArgs e)
         {
-            tbBMI.Text = CalculateBMI(System.Convert.ToDouble(tbGroesse.Text != "" ? tbGroesse.Text : "0"), System.Convert.ToDouble(tbGewicht.Text != "" ? tbGewicht.Text : "0")).ToString("#0.#");
+            if (tbGewicht.Text == "" || tbGroesse.Text == "")
+                tbBMI.Text = "0";
+            else
+                tbBMI.Text = CalculateBMI(System.Convert.ToDouble(tbGroesse.Text != "" ? tbGroesse.Text : "0"), System.Convert.ToDouble(tbGewicht.Text != "" ? tbGewicht.Text : "0")).ToString("#0.#");
         }
     }
 }
