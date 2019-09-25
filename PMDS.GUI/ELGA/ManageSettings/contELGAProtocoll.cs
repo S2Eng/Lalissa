@@ -50,6 +50,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
         }
 
 
+
         private void GridProtocoll_BeforeCellActivate(object sender, Infragistics.Win.UltraWinGrid.CancelableCellEventArgs e)
         {
 

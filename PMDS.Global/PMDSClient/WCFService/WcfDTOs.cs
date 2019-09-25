@@ -20,6 +20,7 @@ namespace PMDS.Global.PMDSClient.WCFService
 
 
 
+
         public static ConcurrentDictionary<DateTime, WCFServicePMDS.BAL.Main.StammdatenDTO.lastStammdaten> sd
         {
             get => _sd;

@@ -54,7 +54,6 @@ namespace PMDS.GUI.ELGA
             }
         }
 
-
         public void loadData()
         {
             try

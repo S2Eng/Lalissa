@@ -124,7 +124,6 @@ namespace PMDS.GUI.ELGA.ManageSettings
             }
         }
 
-
     }
 
 }
