@@ -8922,6 +8922,8 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnCreatedUser;
             
+            private global::System.Data.DataColumn columnIDPatient;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ELGAProtocollDataTable() {
@@ -9029,6 +9031,14 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDPatientColumn {
+                get {
+                    return this.columnIDPatient;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -9064,7 +9074,7 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ELGAProtocollRow AddELGAProtocollRow(System.Guid ID, string Type, string Title, string Protocoll, string ELGAFunctions, string ELGAErrors, string Characteristics, System.DateTime CreatedAt, string CreatedUser) {
+            public ELGAProtocollRow AddELGAProtocollRow(System.Guid ID, string Type, string Title, string Protocoll, string ELGAFunctions, string ELGAErrors, string Characteristics, System.DateTime CreatedAt, string CreatedUser, System.Guid IDPatient) {
                 ELGAProtocollRow rowELGAProtocollRow = ((ELGAProtocollRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -9075,7 +9085,8 @@ namespace PMDS.Global.db.ERSystem {
                         ELGAErrors,
                         Characteristics,
                         CreatedAt,
-                        CreatedUser};
+                        CreatedUser,
+                        IDPatient};
                 rowELGAProtocollRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowELGAProtocollRow);
                 return rowELGAProtocollRow;
@@ -9114,6 +9125,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnCharacteristics = base.Columns["Characteristics"];
                 this.columnCreatedAt = base.Columns["CreatedAt"];
                 this.columnCreatedUser = base.Columns["CreatedUser"];
+                this.columnIDPatient = base.Columns["IDPatient"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9137,6 +9149,8 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnCreatedAt);
                 this.columnCreatedUser = new global::System.Data.DataColumn("CreatedUser", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreatedUser);
+                this.columnIDPatient = new global::System.Data.DataColumn("IDPatient", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDPatient);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -9155,6 +9169,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnCreatedAt.AllowDBNull = false;
                 this.columnCreatedUser.AllowDBNull = false;
                 this.columnCreatedUser.MaxLength = 100;
+                this.columnIDPatient.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14527,6 +14542,17 @@ namespace PMDS.Global.db.ERSystem {
                 }
                 set {
                     this[this.tableELGAProtocoll.CreatedUserColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDPatient {
+                get {
+                    return ((global::System.Guid)(this[this.tableELGAProtocoll.IDPatientColumn]));
+                }
+                set {
+                    this[this.tableELGAProtocoll.IDPatientColumn] = value;
                 }
             }
         }
