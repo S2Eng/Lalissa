@@ -93,6 +93,16 @@
             this.oleDbCommand43 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand44 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand45 = new System.Data.OleDb.OleDbCommand();
+            this.daRecht = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbCommand46 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand47 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand48 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand49 = new System.Data.OleDb.OleDbCommand();
+            this.daELGAProtocoll = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbCommand50 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand51 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand52 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand53 = new System.Data.OleDb.OleDbCommand();
             // 
             // oleDbCommand14
             // 
@@ -948,6 +958,115 @@
             new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumGeaendert"),
             new System.Data.OleDb.OleDbParameter("BildOrig", System.Data.OleDb.OleDbType.LongVarBinary, 0, "BildOrig"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // daRecht
+            // 
+            this.daRecht.DeleteCommand = this.oleDbCommand46;
+            this.daRecht.InsertCommand = this.oleDbCommand47;
+            this.daRecht.SelectCommand = this.oleDbCommand48;
+            this.daRecht.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+            new System.Data.Common.DataTableMapping("Table", "Recht", new System.Data.Common.DataColumnMapping[] {
+                        new System.Data.Common.DataColumnMapping("ID", "ID"),
+                        new System.Data.Common.DataColumnMapping("Bezeichnung", "Bezeichnung"),
+                        new System.Data.Common.DataColumnMapping("ELGA", "ELGA")})});
+            this.daRecht.UpdateCommand = this.oleDbCommand49;
+            // 
+            // oleDbCommand46
+            // 
+            this.oleDbCommand46.CommandText = "DELETE FROM [Recht] WHERE (([ID] = ?))";
+            this.oleDbCommand46.Connection = this.oleDbConnection1;
+            this.oleDbCommand46.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // oleDbCommand47
+            // 
+            this.oleDbCommand47.CommandText = "INSERT INTO [Recht] ([ID], [Bezeichnung], [ELGA]) VALUES (?, ?, ?)";
+            this.oleDbCommand47.Connection = this.oleDbConnection1;
+            this.oleDbCommand47.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Integer, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
+            new System.Data.OleDb.OleDbParameter("ELGA", System.Data.OleDb.OleDbType.Boolean, 0, "ELGA")});
+            // 
+            // oleDbCommand48
+            // 
+            this.oleDbCommand48.CommandText = "SELECT        ID, Bezeichnung, ELGA\r\nFROM            Recht";
+            this.oleDbCommand48.Connection = this.oleDbConnection1;
+            // 
+            // oleDbCommand49
+            // 
+            this.oleDbCommand49.CommandText = "UPDATE [Recht] SET [ID] = ?, [Bezeichnung] = ?, [ELGA] = ? WHERE (([ID] = ?))";
+            this.oleDbCommand49.Connection = this.oleDbConnection1;
+            this.oleDbCommand49.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Integer, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
+            new System.Data.OleDb.OleDbParameter("ELGA", System.Data.OleDb.OleDbType.Boolean, 0, "ELGA"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // daELGAProtocoll
+            // 
+            this.daELGAProtocoll.DeleteCommand = this.oleDbCommand50;
+            this.daELGAProtocoll.InsertCommand = this.oleDbCommand51;
+            this.daELGAProtocoll.SelectCommand = this.oleDbCommand52;
+            this.daELGAProtocoll.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+            new System.Data.Common.DataTableMapping("Table", "ELGAProtocoll", new System.Data.Common.DataColumnMapping[] {
+                        new System.Data.Common.DataColumnMapping("ID", "ID"),
+                        new System.Data.Common.DataColumnMapping("Type", "Type"),
+                        new System.Data.Common.DataColumnMapping("Title", "Title"),
+                        new System.Data.Common.DataColumnMapping("Protocoll", "Protocoll"),
+                        new System.Data.Common.DataColumnMapping("ELGAFunctions", "ELGAFunctions"),
+                        new System.Data.Common.DataColumnMapping("ELGAErrors", "ELGAErrors"),
+                        new System.Data.Common.DataColumnMapping("Characteristics", "Characteristics"),
+                        new System.Data.Common.DataColumnMapping("CreatedAt", "CreatedAt"),
+                        new System.Data.Common.DataColumnMapping("CreatedUser", "CreatedUser")})});
+            this.daELGAProtocoll.UpdateCommand = this.oleDbCommand53;
+            // 
+            // oleDbCommand50
+            // 
+            this.oleDbCommand50.CommandText = "DELETE FROM [ELGAProtocoll] WHERE (([ID] = ?))";
+            this.oleDbCommand50.Connection = this.oleDbConnection1;
+            this.oleDbCommand50.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // oleDbCommand51
+            // 
+            this.oleDbCommand51.CommandText = "INSERT INTO [ELGAProtocoll] ([ID], [Type], [Title], [Protocoll], [ELGAFunctions]," +
+    " [ELGAErrors], [Characteristics], [CreatedAt], [CreatedUser]) VALUES (?, ?, ?, ?" +
+    ", ?, ?, ?, ?, ?)";
+            this.oleDbCommand51.Connection = this.oleDbConnection1;
+            this.oleDbCommand51.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("Type", System.Data.OleDb.OleDbType.VarWChar, 0, "Type"),
+            new System.Data.OleDb.OleDbParameter("Title", System.Data.OleDb.OleDbType.VarWChar, 0, "Title"),
+            new System.Data.OleDb.OleDbParameter("Protocoll", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Protocoll"),
+            new System.Data.OleDb.OleDbParameter("ELGAFunctions", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGAFunctions"),
+            new System.Data.OleDb.OleDbParameter("ELGAErrors", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGAErrors"),
+            new System.Data.OleDb.OleDbParameter("Characteristics", System.Data.OleDb.OleDbType.VarWChar, 0, "Characteristics"),
+            new System.Data.OleDb.OleDbParameter("CreatedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedAt"),
+            new System.Data.OleDb.OleDbParameter("CreatedUser", System.Data.OleDb.OleDbType.WChar, 0, "CreatedUser")});
+            // 
+            // oleDbCommand52
+            // 
+            this.oleDbCommand52.CommandText = "SELECT        ID, Type, Title, Protocoll, ELGAFunctions, ELGAErrors, Characterist" +
+    "ics, CreatedAt, CreatedUser\r\nFROM            ELGAProtocoll";
+            this.oleDbCommand52.Connection = this.oleDbConnection1;
+            // 
+            // oleDbCommand53
+            // 
+            this.oleDbCommand53.CommandText = "UPDATE [ELGAProtocoll] SET [ID] = ?, [Type] = ?, [Title] = ?, [Protocoll] = ?, [E" +
+    "LGAFunctions] = ?, [ELGAErrors] = ?, [Characteristics] = ?, [CreatedAt] = ?, [Cr" +
+    "eatedUser] = ? WHERE (([ID] = ?))";
+            this.oleDbCommand53.Connection = this.oleDbConnection1;
+            this.oleDbCommand53.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("Type", System.Data.OleDb.OleDbType.VarWChar, 0, "Type"),
+            new System.Data.OleDb.OleDbParameter("Title", System.Data.OleDb.OleDbType.VarWChar, 0, "Title"),
+            new System.Data.OleDb.OleDbParameter("Protocoll", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Protocoll"),
+            new System.Data.OleDb.OleDbParameter("ELGAFunctions", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGAFunctions"),
+            new System.Data.OleDb.OleDbParameter("ELGAErrors", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGAErrors"),
+            new System.Data.OleDb.OleDbParameter("Characteristics", System.Data.OleDb.OleDbType.VarWChar, 0, "Characteristics"),
+            new System.Data.OleDb.OleDbParameter("CreatedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedAt"),
+            new System.Data.OleDb.OleDbParameter("CreatedUser", System.Data.OleDb.OleDbType.WChar, 0, "CreatedUser"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
 
         }
 
@@ -1017,5 +1136,15 @@
         private System.Data.OleDb.OleDbCommand oleDbCommand43;
         private System.Data.OleDb.OleDbCommand oleDbCommand44;
         private System.Data.OleDb.OleDbCommand oleDbCommand45;
+        public System.Data.OleDb.OleDbDataAdapter daRecht;
+        private System.Data.OleDb.OleDbCommand oleDbCommand46;
+        private System.Data.OleDb.OleDbCommand oleDbCommand47;
+        private System.Data.OleDb.OleDbCommand oleDbCommand48;
+        private System.Data.OleDb.OleDbCommand oleDbCommand49;
+        public System.Data.OleDb.OleDbDataAdapter daELGAProtocoll;
+        private System.Data.OleDb.OleDbCommand oleDbCommand50;
+        private System.Data.OleDb.OleDbCommand oleDbCommand51;
+        private System.Data.OleDb.OleDbCommand oleDbCommand52;
+        private System.Data.OleDb.OleDbCommand oleDbCommand53;
     }
 }

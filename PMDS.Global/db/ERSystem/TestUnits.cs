@@ -631,6 +631,16 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikament: Auswahl erforderlich!");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bei Storno ist eine Anmerkung erforderlich!", "", MessageBoxButtons.OK);
 
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Benutzer: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Die beiden Passwort-Eingaben sind nicht gleich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Für das Passwort sind mindestens 5 Zeichen erforderlich!", "", MessageBoxButtons.OK);
+
+
+
+
+
             }
             catch (Exception ex)
             {
