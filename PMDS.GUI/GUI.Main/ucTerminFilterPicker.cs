@@ -33,17 +33,17 @@ namespace PMDS.GUI
 
 
 		private Infragistics.Win.Misc.UltraPopupControlContainer popupContainer;
-		private QS2.Desktop.ControlManagment.BasePanel pAll;
-		private Infragistics.Win.Misc.UltraDropDownButton btn;
-		private PMDS.GUI.BaseControls.PflegerCombo cbBezug;
+        public QS2.Desktop.ControlManagment.BasePanel pAll;
+        public Infragistics.Win.Misc.UltraDropDownButton btn;
+        private PMDS.GUI.BaseControls.PflegerCombo cbBezug;
         private QS2.Desktop.ControlManagment.BaseCheckBox chkBezugJN;
 		private QS2.Desktop.ControlManagment.BaseCheckBox chkMaﬂnahme;
 		private QS2.Desktop.ControlManagment.BaseButton btnClose;
 		private PMDS.GUI.ucPicker ucPicker1;
 		private Infragistics.Win.Misc.UltraPopupControlContainer popupContainer2;
 		private QS2.Desktop.ControlManagment.BasePanel pMassnahme;
-		private QS2.Desktop.ControlManagment.BaseButton btnClose3;
-		private Infragistics.Win.Misc.UltraDropDownButton btnEintragMaﬂnahme;
+        public QS2.Desktop.ControlManagment.BaseButton btnClose3;
+        private Infragistics.Win.Misc.UltraDropDownButton btnEintragMaﬂnahme;
 		private dsEintrag dsEintrag1;
         private System.Windows.Forms.ListBox lbMaﬂnahme;
         private QS2.Desktop.ControlManagment.BaseComboEditor cbAbzeichnen;
@@ -51,7 +51,7 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BasePanel panelButtonsUnten;
         public QS2.Desktop.ControlManagment.BasePanel panelAktualisieren;
         public QS2.Desktop.ControlManagment.BasePanel panelClose;
-        private QS2.Desktop.ControlManagment.BaseButton btnClose2;
+        public QS2.Desktop.ControlManagment.BaseButton btnClose2;
         public QS2.Desktop.ControlManagment.BaseCheckBox chkBerufsgruppeJN;
         public BaseControls.AuswahlGruppeComboMulti cboBerufsstandMulti;
         public BaseControls.AuswahlGruppeComboMulti cboWichtigF¸rMulti;
@@ -194,8 +194,6 @@ namespace PMDS.GUI
             this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn.Location = new System.Drawing.Point(0, 0);
             this.btn.Name = "btn";
-            this.btn.PopupItemKey = "pAll";
-            this.btn.PopupItemProvider = this.popupContainer;
             this.btn.Size = new System.Drawing.Size(902, 24);
             this.btn.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.btn.TabIndex = 0;
@@ -208,8 +206,7 @@ namespace PMDS.GUI
             // 
             // pAll
             // 
-            this.pAll.BackColor = System.Drawing.Color.Gainsboro;
-            this.pAll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pAll.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pAll.Controls.Add(this.cboZeitbezugJNAMulti);
             this.pAll.Controls.Add(this.chkZeitbezugJN);
             this.pAll.Controls.Add(this.panelCombos);
@@ -217,7 +214,7 @@ namespace PMDS.GUI
             this.pAll.Controls.Add(this.panelButtonsUnten);
             this.pAll.Location = new System.Drawing.Point(0, 24);
             this.pAll.Name = "pAll";
-            this.pAll.Size = new System.Drawing.Size(421, 518);
+            this.pAll.Size = new System.Drawing.Size(420, 518);
             this.pAll.TabIndex = 1;
             this.pAll.Visible = false;
             // 
@@ -229,7 +226,7 @@ namespace PMDS.GUI
             this.cboZeitbezugJNAMulti.Enabled = false;
             this.cboZeitbezugJNAMulti.Location = new System.Drawing.Point(8, 396);
             this.cboZeitbezugJNAMulti.Name = "cboZeitbezugJNAMulti";
-            this.cboZeitbezugJNAMulti.Size = new System.Drawing.Size(363, 23);
+            this.cboZeitbezugJNAMulti.Size = new System.Drawing.Size(364, 23);
             this.cboZeitbezugJNAMulti.TabIndex = 13;
             this.cboZeitbezugJNAMulti.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.ZeitbezugJNA;
             // 
@@ -265,7 +262,7 @@ namespace PMDS.GUI
             this.panelCombos.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCombos.Location = new System.Drawing.Point(0, 145);
             this.panelCombos.Name = "panelCombos";
-            this.panelCombos.Size = new System.Drawing.Size(419, 339);
+            this.panelCombos.Size = new System.Drawing.Size(420, 339);
             this.panelCombos.TabIndex = 1;
             // 
             // cboHerkunftPlanungseintrag
@@ -276,7 +273,7 @@ namespace PMDS.GUI
             this.cboHerkunftPlanungseintrag.Enabled = false;
             this.cboHerkunftPlanungseintrag.Location = new System.Drawing.Point(8, 313);
             this.cboHerkunftPlanungseintrag.Name = "cboHerkunftPlanungseintrag";
-            this.cboHerkunftPlanungseintrag.Size = new System.Drawing.Size(363, 23);
+            this.cboHerkunftPlanungseintrag.Size = new System.Drawing.Size(364, 23);
             this.cboHerkunftPlanungseintrag.TabIndex = 25;
             this.cboHerkunftPlanungseintrag.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.ZeitbezugJNA;
             // 
@@ -334,7 +331,7 @@ namespace PMDS.GUI
             valueListItem6});
             this.cbAbzeichnen.Location = new System.Drawing.Point(8, 56);
             this.cbAbzeichnen.Name = "cbAbzeichnen";
-            this.cbAbzeichnen.Size = new System.Drawing.Size(363, 21);
+            this.cbAbzeichnen.Size = new System.Drawing.Size(364, 21);
             this.cbAbzeichnen.TabIndex = 3;
             this.cbAbzeichnen.ValueChanged += new System.EventHandler(this.cbAbzeichnen_ValueChanged);
             // 
@@ -355,7 +352,7 @@ namespace PMDS.GUI
             this.cboZusatzwerteMulti.Enabled = false;
             this.cboZusatzwerteMulti.Location = new System.Drawing.Point(8, 211);
             this.cboZusatzwerteMulti.Name = "cboZusatzwerteMulti";
-            this.cboZusatzwerteMulti.Size = new System.Drawing.Size(363, 23);
+            this.cboZusatzwerteMulti.Size = new System.Drawing.Size(364, 23);
             this.cboZusatzwerteMulti.TabIndex = 11;
             this.cboZusatzwerteMulti.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.Zusatzwerte;
             // 
@@ -377,7 +374,7 @@ namespace PMDS.GUI
             this.cboBerufsstandMulti.Enabled = false;
             this.cboBerufsstandMulti.Location = new System.Drawing.Point(8, 133);
             this.cboBerufsstandMulti.Name = "cboBerufsstandMulti";
-            this.cboBerufsstandMulti.Size = new System.Drawing.Size(363, 23);
+            this.cboBerufsstandMulti.Size = new System.Drawing.Size(364, 23);
             this.cboBerufsstandMulti.TabIndex = 7;
             this.cboBerufsstandMulti.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.Berufsgruppe;
             // 
@@ -389,7 +386,7 @@ namespace PMDS.GUI
             this.cboPlanungsEintr‰geMulti.Enabled = false;
             this.cboPlanungsEintr‰geMulti.Location = new System.Drawing.Point(8, 94);
             this.cboPlanungsEintr‰geMulti.Name = "cboPlanungsEintr‰geMulti";
-            this.cboPlanungsEintr‰geMulti.Size = new System.Drawing.Size(363, 23);
+            this.cboPlanungsEintr‰geMulti.Size = new System.Drawing.Size(364, 23);
             this.cboPlanungsEintr‰geMulti.TabIndex = 5;
             this.cboPlanungsEintr‰geMulti.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.TypePlanungseintrag;
             // 
@@ -411,7 +408,7 @@ namespace PMDS.GUI
             this.cboWichtigF¸rMulti.Enabled = false;
             this.cboWichtigF¸rMulti.Location = new System.Drawing.Point(8, 172);
             this.cboWichtigF¸rMulti.Name = "cboWichtigF¸rMulti";
-            this.cboWichtigF¸rMulti.Size = new System.Drawing.Size(363, 23);
+            this.cboWichtigF¸rMulti.Size = new System.Drawing.Size(364, 23);
             this.cboWichtigF¸rMulti.TabIndex = 9;
             this.cboWichtigF¸rMulti.TypeMulti = PMDS.GUI.BaseControls.AuswahlGruppeComboMulti.eTypeMulti.Berufsgruppe;
             // 
@@ -444,7 +441,7 @@ namespace PMDS.GUI
             this.cbBezug.Location = new System.Drawing.Point(8, 19);
             this.cbBezug.MaxDropDownItems = 30;
             this.cbBezug.Name = "cbBezug";
-            this.cbBezug.Size = new System.Drawing.Size(363, 21);
+            this.cbBezug.Size = new System.Drawing.Size(364, 21);
             this.cbBezug.TabIndex = 1;
             this.cbBezug.ValueChanged += new System.EventHandler(this.cb_ValueChanged);
             // 
@@ -468,7 +465,7 @@ namespace PMDS.GUI
             this.panelMaﬂnahme.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMaﬂnahme.Location = new System.Drawing.Point(0, 0);
             this.panelMaﬂnahme.Name = "panelMaﬂnahme";
-            this.panelMaﬂnahme.Size = new System.Drawing.Size(419, 145);
+            this.panelMaﬂnahme.Size = new System.Drawing.Size(420, 145);
             this.panelMaﬂnahme.TabIndex = 0;
             // 
             // btnDelMaﬂnahme
@@ -476,7 +473,7 @@ namespace PMDS.GUI
             this.btnDelMaﬂnahme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelMaﬂnahme.AutoWorkLayout = false;
             this.btnDelMaﬂnahme.IsStandardControl = false;
-            this.btnDelMaﬂnahme.Location = new System.Drawing.Point(346, 5);
+            this.btnDelMaﬂnahme.Location = new System.Drawing.Point(347, 5);
             this.btnDelMaﬂnahme.Name = "btnDelMaﬂnahme";
             this.btnDelMaﬂnahme.Size = new System.Drawing.Size(66, 19);
             this.btnDelMaﬂnahme.TabIndex = 2;
@@ -506,7 +503,7 @@ namespace PMDS.GUI
             this.btnEintragMaﬂnahme.Name = "btnEintragMaﬂnahme";
             this.btnEintragMaﬂnahme.PopupItemKey = "ucPicker1";
             this.btnEintragMaﬂnahme.PopupItemProvider = this.popupContainer2;
-            this.btnEintragMaﬂnahme.Size = new System.Drawing.Size(404, 21);
+            this.btnEintragMaﬂnahme.Size = new System.Drawing.Size(405, 21);
             this.btnEintragMaﬂnahme.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.btnEintragMaﬂnahme.TabIndex = 4;
             this.btnEintragMaﬂnahme.Text = "Maﬂnahmen einf¸gen";
@@ -572,7 +569,7 @@ namespace PMDS.GUI
             this.lbMaﬂnahme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbMaﬂnahme.Location = new System.Drawing.Point(8, 24);
             this.lbMaﬂnahme.Name = "lbMaﬂnahme";
-            this.lbMaﬂnahme.Size = new System.Drawing.Size(404, 93);
+            this.lbMaﬂnahme.Size = new System.Drawing.Size(405, 93);
             this.lbMaﬂnahme.TabIndex = 3;
             this.lbMaﬂnahme.SelectedIndexChanged += new System.EventHandler(this.lbM_SelectedIndexChanged);
             // 
@@ -581,16 +578,16 @@ namespace PMDS.GUI
             this.panelButtonsUnten.Controls.Add(this.panelClose);
             this.panelButtonsUnten.Controls.Add(this.panelAktualisieren);
             this.panelButtonsUnten.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtonsUnten.Location = new System.Drawing.Point(0, 486);
+            this.panelButtonsUnten.Location = new System.Drawing.Point(0, 488);
             this.panelButtonsUnten.Name = "panelButtonsUnten";
-            this.panelButtonsUnten.Size = new System.Drawing.Size(419, 30);
+            this.panelButtonsUnten.Size = new System.Drawing.Size(420, 30);
             this.panelButtonsUnten.TabIndex = 100;
             // 
             // panelClose
             // 
             this.panelClose.Controls.Add(this.btnClose2);
             this.panelClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelClose.Location = new System.Drawing.Point(199, 0);
+            this.panelClose.Location = new System.Drawing.Point(200, 0);
             this.panelClose.Name = "panelClose";
             this.panelClose.Size = new System.Drawing.Size(120, 30);
             this.panelClose.TabIndex = 0;
@@ -601,7 +598,7 @@ namespace PMDS.GUI
             this.btnClose2.Appearance = appearance3;
             this.btnClose2.AutoWorkLayout = false;
             this.btnClose2.IsStandardControl = false;
-            this.btnClose2.Location = new System.Drawing.Point(47, 2);
+            this.btnClose2.Location = new System.Drawing.Point(45, 2);
             this.btnClose2.Name = "btnClose2";
             this.btnClose2.Size = new System.Drawing.Size(70, 25);
             this.btnClose2.TabIndex = 0;
@@ -612,7 +609,7 @@ namespace PMDS.GUI
             // 
             this.panelAktualisieren.Controls.Add(this.btnClose);
             this.panelAktualisieren.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelAktualisieren.Location = new System.Drawing.Point(319, 0);
+            this.panelAktualisieren.Location = new System.Drawing.Point(320, 0);
             this.panelAktualisieren.Name = "panelAktualisieren";
             this.panelAktualisieren.Size = new System.Drawing.Size(100, 30);
             this.panelAktualisieren.TabIndex = 1;
@@ -635,7 +632,7 @@ namespace PMDS.GUI
             // ucTerminFilterPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.pAll);
             this.Controls.Add(this.pMassnahme);
             this.Controls.Add(this.btn);
@@ -672,7 +669,7 @@ namespace PMDS.GUI
 
 
 
-        public void initControl(bool IsQuickfilter, eUITypeTermine UITypeTermine)
+        public void initControl(bool IsQuickfilter, eUITypeTermine UITypeTermine, bool isTerminpicker)
         {
             try
             {
@@ -682,6 +679,9 @@ namespace PMDS.GUI
 
                 if (!this.IsInitialized)
                 {
+                    if (isTerminpicker)
+                        this.btn.PopupItem = this.popupContainer;
+
                     this.initCombos();
                     this.cboBerufsstandMulti.initControl(BaseControls.AuswahlGruppeComboMulti.eTypeMulti.Berufsgruppe, UITypeTermine, IsQuickfilter, -1, -100000, false);
                     this.cboWichtigF¸rMulti.initControl(BaseControls.AuswahlGruppeComboMulti.eTypeMulti.Berufsgruppe, UITypeTermine, IsQuickfilter, -1, -100000, false);

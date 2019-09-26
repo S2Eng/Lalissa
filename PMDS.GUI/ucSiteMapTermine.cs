@@ -295,7 +295,7 @@ namespace PMDS.GUI
                 TermineExTmp.SetControlNameGrid(ref UITypeTermine);
 
                 this._TermineEx.ucTerminTimePicker1.initControl();
-                this._TermineEx.ucTerminFilterPicker1.initControl(false, UITypeTermine);
+                this._TermineEx.ucTerminFilterPicker1.initControl(false, UITypeTermine, true);
 
                 if (PMDS.Global.historie.HistorieOn)
                 {
