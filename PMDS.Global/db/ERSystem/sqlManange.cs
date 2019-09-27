@@ -1289,7 +1289,7 @@ namespace PMDS.Global.db.ERSystem
 
                 if (eTypeSel == eTypeELGAProtocoll.AllForUser)
                 {
-                    string sqlWhere = " where ELGA=1 " + " order by Bezeichnung asc";
+                    string sqlWhere = " where IDBenutzer='" + IDUser.ToString() + "'" + " order by CreatedAt desc";
                     this.daELGAProtocoll.SelectCommand.CommandText += sqlWhere;
                 }
                 else

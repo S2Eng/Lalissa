@@ -19,6 +19,7 @@ namespace PMDS.GUI
         public event EventHandler ValueChanged;
 
         public bool IsInitialized = false;
+        public bool IsInitialized2 = false;
         public contELGAUser contELGAUser1 = null;
 
         public bool BenutzerdatenELGAVerwalten = false;
@@ -98,6 +99,8 @@ namespace PMDS.GUI
             ucSiteMapPMDS1.getAllÄrzte((Infragistics.Win.UltraWinEditors.UltraComboEditor)this.cboAerzte, false, null);
 
             this.btnDeleteArzt.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32);
+
+            IsInitialized2 = true;
         }
 
         private void ucBenutzer_Load(object sender, System.EventArgs e)
@@ -963,16 +966,21 @@ namespace PMDS.GUI
 
             if (ENV.lic_ELGA)
             {
-                this.setUIELGA(this.Benutzer.ELGAActive && !this.Benutzer.IsGeneric);
-                this.contELGAUser1.loadData(this.Benutzer.ID, false, this.BenutzerdatenELGAVerwalten);
+                this.setUIELGA(this.Benutzer.ELGAActive && !this.Benutzer.IsGeneric, true);
+                if (IsInitialized2)
+                {
+                    this.contELGAUser1.loadData(this.Benutzer.ID, false, this.BenutzerdatenELGAVerwalten);
+                }
             }
         }
 
-        public void setUIELGA(bool bOn)
+        public void setUIELGA(bool bOn, bool clearUI)
         {
             this.ultraTabControl1.Tabs["ELGA"].Visible = bOn;
-            this.contELGAUser1.clearUI();
-
+            if (clearUI)
+            {
+                this.contELGAUser1.clearUI();
+            }
             if (bOn)
             {
 
@@ -1330,7 +1338,7 @@ namespace PMDS.GUI
 
                     if (ENV.lic_ELGA)
                     {
-                        this.setUIELGA(this.chkELGAActive.Checked && !this.chkAnonym.Checked);
+                        this.setUIELGA(this.chkELGAActive.Checked && !this.chkAnonym.Checked, false);
                     }
                 }
 
@@ -1358,7 +1366,7 @@ namespace PMDS.GUI
 
                     if (ENV.lic_ELGA)
                     {
-                        this.setUIELGA(this.chkELGAActive.Checked && !this.chkAnonym.Checked);
+                        this.setUIELGA(this.chkELGAActive.Checked && !this.chkAnonym.Checked, false);
                     }
                 }
 
