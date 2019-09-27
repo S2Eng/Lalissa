@@ -46,6 +46,7 @@ namespace PMDS.Global.db.ERSystem
             public bool IsGeneric { get; set; }
             //public string Signatur { get; set; }
             public string Elgauser { get; set; }
+            public string ELGAPwd { get; set; }
             public string ElgapatId { get; set; }
             public bool Elgaactive { get; set; }
             public bool ElgaautoLogin { get; set; }
@@ -58,28 +59,6 @@ namespace PMDS.Global.db.ERSystem
 
 
 
-
-        public static bool ELGALogIn()
-        {
-            try
-            {
-                if (ENV.lic_ELGA)
-                {
-                    ELGABusiness elga = new ELGABusiness();
-                    ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(ENV.USERID);
-                    if (ben.Elgaactive && !ben.IsGeneric)
-                    {
-
-                    }
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ELGABusiness.ELGALogIn: " + ex.ToString());
-            }
-        }
 
         public static void saveELGAProtocoll(string Title, System.Collections.Generic.List<ProtVar> flds, eTypeProt TypeProt, eELGAFunctions ELGAFunctions, string table = "", string ELGAErrors = "")
         {
@@ -140,6 +119,7 @@ namespace PMDS.Global.db.ERSystem
                                                        Idberufsstand = b.IDBerufsstand,
                                                        IsGeneric = b.IsGeneric,
                                                        Elgauser = b.ELGAUser,
+                                                       ELGAPwd = b.ELGAPwd,
                                                        ElgapatId = b.ELGAPatID,
                                                        Elgaactive = b.ELGAActive,
                                                        ElgaautoLogin = b.ELGAAutoLogin,
