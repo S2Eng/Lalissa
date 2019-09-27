@@ -369,6 +369,11 @@ namespace PMDS.GUI
                 this.ucBenutzer2.ucRechtBenutzer1.saveData();
                 PMDS.Global.ENV.evBenutzerSMTPDatenSpeichern((System.Guid)this.ucBenutzer2.Benutzer.ID);
 
+                if (ENV.lic_ELGA)
+                {
+                    this.ucBenutzer2.contELGAUser1.saveData();
+                }
+
                 this.cbBenutzer.DataSource = this._verwaltung._details.All();
                 foreach (Infragistics.Win.ValueListItem valList in this.cbBenutzer.Items)
                 {

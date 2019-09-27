@@ -1058,12 +1058,6 @@ namespace PMDS.GUI
                 Benutzer.IDArzt = (Guid)this.cboAerzte.Value;
 
             this.Benutzer.ELGAActive = this.chkELGAActive.Checked;
-
-            //if (ENV.lic_ELGA)
-            //{
-            //    this.contELGAUser1.saveData();
-            //}
-
         }
         public void writeSMTPData(System.Guid IDBenutzer)
         {
