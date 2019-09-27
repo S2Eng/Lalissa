@@ -4751,6 +4751,28 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.LogggedOnUser: " + ex.ToString());
             }
         }
+        public string getUserName(Guid IDUsr)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    var rUsr = (from b in db.Benutzer
+                                where b.ID == IDUsr
+                                select new
+                                {
+                                    ID = b.ID,
+                                    Benutzer1 = b.Benutzer1
+                                }).First();
+                    return rUsr.Benutzer1.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getUserName: " + ex.ToString());
+            }
+        }
+
         public PMDS.db.Entities.Benutzer LogggedOnUser(PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try

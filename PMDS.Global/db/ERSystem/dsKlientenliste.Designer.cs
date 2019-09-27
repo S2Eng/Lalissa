@@ -8924,6 +8924,10 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnIDPatient;
             
+            private global::System.Data.DataColumn columnIDAufenthalt;
+            
+            private global::System.Data.DataColumn columnIDBenutzer;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ELGAProtocollDataTable() {
@@ -9039,6 +9043,22 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDAufenthaltColumn {
+                get {
+                    return this.columnIDAufenthalt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDBenutzerColumn {
+                get {
+                    return this.columnIDBenutzer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -9074,7 +9094,7 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ELGAProtocollRow AddELGAProtocollRow(System.Guid ID, string Type, string Title, string Protocoll, string ELGAFunctions, string ELGAErrors, string Characteristics, System.DateTime CreatedAt, string CreatedUser, System.Guid IDPatient) {
+            public ELGAProtocollRow AddELGAProtocollRow(System.Guid ID, string Type, string Title, string Protocoll, string ELGAFunctions, string ELGAErrors, string Characteristics, System.DateTime CreatedAt, string CreatedUser, System.Guid IDPatient, System.Guid IDAufenthalt, System.Guid IDBenutzer) {
                 ELGAProtocollRow rowELGAProtocollRow = ((ELGAProtocollRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -9086,7 +9106,9 @@ namespace PMDS.Global.db.ERSystem {
                         Characteristics,
                         CreatedAt,
                         CreatedUser,
-                        IDPatient};
+                        IDPatient,
+                        IDAufenthalt,
+                        IDBenutzer};
                 rowELGAProtocollRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowELGAProtocollRow);
                 return rowELGAProtocollRow;
@@ -9126,6 +9148,8 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnCreatedAt = base.Columns["CreatedAt"];
                 this.columnCreatedUser = base.Columns["CreatedUser"];
                 this.columnIDPatient = base.Columns["IDPatient"];
+                this.columnIDAufenthalt = base.Columns["IDAufenthalt"];
+                this.columnIDBenutzer = base.Columns["IDBenutzer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9151,6 +9175,10 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnCreatedUser);
                 this.columnIDPatient = new global::System.Data.DataColumn("IDPatient", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIDPatient);
+                this.columnIDAufenthalt = new global::System.Data.DataColumn("IDAufenthalt", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDAufenthalt);
+                this.columnIDBenutzer = new global::System.Data.DataColumn("IDBenutzer", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDBenutzer);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -9169,7 +9197,6 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnCreatedAt.AllowDBNull = false;
                 this.columnCreatedUser.AllowDBNull = false;
                 this.columnCreatedUser.MaxLength = 100;
-                this.columnIDPatient.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14549,11 +14576,84 @@ namespace PMDS.Global.db.ERSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.Guid IDPatient {
                 get {
-                    return ((global::System.Guid)(this[this.tableELGAProtocoll.IDPatientColumn]));
+                    try {
+                        return ((global::System.Guid)(this[this.tableELGAProtocoll.IDPatientColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDPatient in Tabelle ELGAProtocoll ist DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableELGAProtocoll.IDPatientColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDAufenthalt {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableELGAProtocoll.IDAufenthaltColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDAufenthalt in Tabelle ELGAProtocoll ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableELGAProtocoll.IDAufenthaltColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDBenutzer {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableELGAProtocoll.IDBenutzerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDBenutzer in Tabelle ELGAProtocoll ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableELGAProtocoll.IDBenutzerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDPatientNull() {
+                return this.IsNull(this.tableELGAProtocoll.IDPatientColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDPatientNull() {
+                this[this.tableELGAProtocoll.IDPatientColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDAufenthaltNull() {
+                return this.IsNull(this.tableELGAProtocoll.IDAufenthaltColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDAufenthaltNull() {
+                this[this.tableELGAProtocoll.IDAufenthaltColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDBenutzerNull() {
+                return this.IsNull(this.tableELGAProtocoll.IDBenutzerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDBenutzerNull() {
+                this[this.tableELGAProtocoll.IDBenutzerColumn] = global::System.Convert.DBNull;
             }
         }
         

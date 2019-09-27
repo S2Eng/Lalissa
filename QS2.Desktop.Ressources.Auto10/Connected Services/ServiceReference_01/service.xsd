@@ -3,6 +3,7 @@
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.Main" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" />
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="initService">
@@ -86,24 +87,56 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ELGALogInHCP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usr" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="session" nillable="true" type="q6:ELGASessionDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ELGALogInHCPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ELGALogInHCPResult" type="xs:boolean" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="session" nillable="true" type="q7:ELGASessionDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ELGALogOut">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="session" nillable="true" type="q8:ELGASessionDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ELGALogOutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ELGALogOutResult" type="xs:boolean" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="session" nillable="true" type="q9:ELGASessionDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="genCDA">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="vars" nillable="true" type="q6:CDA.CDAIN" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="vars" nillable="true" type="q10:CDA.CDAIN" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="genCDAResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="genCDAResult" nillable="true" type="q7:CDA.CDABack" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="genCDAResult" nillable="true" type="q11:CDA.CDABack" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Export">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="IDPatient" type="q8:guid" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="IDPatient" type="q12:guid" />
         <xs:element minOccurs="0" name="ArchivPath" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="IsTest" type="xs:boolean" />
       </xs:sequence>
@@ -151,7 +184,7 @@
   <xs:element name="getDataSerializedResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getDataSerializedResult" nillable="true" type="q9:ArrayOfbase64Binary" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getDataSerializedResult" nillable="true" type="q13:ArrayOfbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -163,7 +196,7 @@
   <xs:element name="getvKlientenlisteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getvKlientenlisteResult" nillable="true" type="q10:ArrayOfbase64Binary" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getvKlientenlisteResult" nillable="true" type="q14:ArrayOfbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

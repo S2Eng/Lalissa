@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using PMDS.DB;
 
 namespace PMDS.GUI.ELGA
 {
@@ -18,6 +18,10 @@ namespace PMDS.GUI.ELGA
         public bool abort = true;
         public frmELGALogIn mainWindow = null;
         public bool IsInitialized = false;
+
+        public PMDS.db.Entities.ERModellPMDSEntities _db = null;
+        public PMDSBusiness b = new PMDSBusiness();
+        qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
 
 
 

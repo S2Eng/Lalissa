@@ -1305,6 +1305,33 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("sqlManange.getELGAProtocoll: " + ex.ToString());
             }
         }
+
+        public PMDS.Global.db.ERSystem.dsKlientenliste.ELGAProtocollRow getNewELGAProtocoll(ref PMDS.Global.db.ERSystem.dsKlientenliste ds)
+        {
+            try
+            {
+                PMDS.Global.db.ERSystem.dsKlientenliste.ELGAProtocollRow rNew = (PMDS.Global.db.ERSystem.dsKlientenliste.ELGAProtocollRow)ds.ELGAProtocoll.NewRow();
+                rNew.ID = System.Guid.NewGuid();
+                rNew.Type = "";
+                rNew.Title = "";
+                rNew.Protocoll = "";
+                rNew.ELGAFunctions = "";
+                rNew.Characteristics = "";
+                rNew.CreatedAt = DateTime.Now;
+                rNew.CreatedUser = "";
+                rNew.SetIDPatientNull();
+                rNew.SetIDAufenthaltNull();
+                rNew.SetIDBenutzerNull();
+               
+                ds.ELGAProtocoll.Rows.Add(rNew);
+                return rNew;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sqlManange.getNewELGAProtocoll: " + ex.ToString());
+            }
+        }
+
     }
 
 }

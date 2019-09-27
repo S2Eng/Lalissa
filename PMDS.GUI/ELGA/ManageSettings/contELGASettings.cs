@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PMDS.DB;
 using PMDS.Global;
+using PMDS.Global.db.ERSystem;
+
 
 namespace PMDS.GUI.ELGA.ManageSettings
 {
@@ -16,11 +18,13 @@ namespace PMDS.GUI.ELGA.ManageSettings
     public partial class contELGASettings : UserControl
     {
 
+        public List<ELGABusiness.ProtVar> lProt = new List<ELGABusiness.ProtVar>();
         public contELGAUser mainWindow = null;
         public bool IsInitialized = false;
 
         public PMDS.db.Entities.ERModellPMDSEntities _db = null;
         public PMDSBusiness b = new PMDSBusiness();
+        public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
 
         public bool Isinitialized = false;
 
@@ -29,6 +33,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
         public bool _Editable = false;
 
       
+
 
 
 
@@ -93,9 +98,17 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 PMDS.db.Entities.Benutzer rUsr = this._db.Benutzer.Where(o => o.ID == this._IDUser.Value).First();
 
                 this.txtELGAUser.Text = rUsr.ELGAUser.Trim();
-                this.txtELGAPwd.Text = rUsr.ELGAPwd.Trim();
-                this.txtELGAPwd.Text = rUsr.ELGAPwd.Trim();
+
+                string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                this.txtELGAPwd.Text = ELGAPwdDecrypted;
+                this.txtELGAPwd.Text = ELGAPwdDecrypted;
                 this.chkELGAAutostartSession.Checked = rUsr.ELGAAutoLogin;
+
+                lProt = new List<ELGABusiness.ProtVar>()
+                        {
+                            new ELGABusiness.ProtVar(){ Fld= "ELGAUser", oValOrig = rUsr.ELGAUser.Trim(), oValNew = "", Table = "Patient"  },
+                            new ELGABusiness.ProtVar(){ Fld= "ELGAAutoLogin", oValOrig = rUsr.ELGAAutoLogin.ToString(), oValNew = "", Table = "Patient"  }
+                        };
 
             }
             catch (Exception ex)
@@ -135,7 +148,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                             return false;
                         }
                         else
-                        { 
+                        {
                             if (txtELGAPwd.Text.Trim() != this.txtELGAPwdWdhlg.Text.Trim())
                             {
                                 this.errorProvider1.SetError(this.txtELGAPwd, "Error");
@@ -180,7 +193,8 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 rUsr.ELGAUser = this.txtELGAUser.Text.Trim();
                 if (!this.chkELGAAutostartSession.Checked)
                 {
-                    rUsr.ELGAPwd = this.txtELGAPwd.Text.Trim();
+                    string ELGAPwdEncrypted = Encryption1.StringDecrypt(this.txtELGAPwd.Text.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    rUsr.ELGAPwd = ELGAPwdEncrypted;
                 }
                 else
                 {
@@ -189,6 +203,13 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 }
 
                 this._db.SaveChanges();
+
+                var rP = lProt.Where(e => e.Fld == "ELGAUser").First();
+                rP.oValNew = rUsr.ELGAUser;
+                rP = lProt.Where(e => e.Fld == "ELGAAutoLogin").First();
+                rP.oValNew = rUsr.ELGAAutoLogin.ToString();
+
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert"), lProt, ELGABusiness.eTypeProt.UserSettingsChanged, ELGABusiness.eELGAFunctions.none, "Benutzer");
 
                 return true;
             }

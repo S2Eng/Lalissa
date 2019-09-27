@@ -1,10 +1,3 @@
-//----------------------------------------------------------------------------
-/// <summary>
-///	frmMainModern.cs
-/// Erstellt am:	13.7.2005
-/// Erstellt von:	RBU
-/// </summary>
-//----------------------------------------------------------------------------
 using System;
 using System.Drawing;
 using System.Collections;
@@ -39,7 +32,8 @@ using System.IO;
 using PMDS.Global.db.Patient;
 using System.Diagnostics;
 using PMDS.Global.Remote;
-
+using PMDS.GUI.ELGA;
+using PMDSClient.Sitemap;
 
 namespace PMDS
 {
@@ -118,7 +112,9 @@ namespace PMDS
             public bool SuchtgiftschrankSchluessel = false;
         }
 
+        public ELGABusiness bElga = new ELGABusiness();
 
+        public static bool IsInitialized = false;
 
 
 
@@ -246,6 +242,14 @@ namespace PMDS
 
             AnyMenüItemVerwaltung = (frmMain.Rights.Aufnahme || frmMain.Rights.Bewerber || frmMain.Rights.ImportGibodat || frmMain.Rights.QS2 || frmMain.Rights.KlientenberichtDrucken ||
                             frmMain.Rights.btnTransferCalcData || frmMain.Rights.btnExportCalculations || frmMain.Rights.btnVerordnungen || frmMain.Rights.btnPatientAufenthalteLöschen || frmMain.Rights.SuchtgiftschrankSchluessel);
+
+            if (!IsInitialized)
+            {
+                ELGABusiness.BenutzerDTOS1 ben = bElga.getELGASettingsForUser(ENV.USERID);
+                ultraToolbarsManager1.Tools["btnELGAPasswortÄndern"].SharedProps.Visible = ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric;
+                IsInitialized = true;
+            }
+
         }
 
         public void action(bool bOnOff)
@@ -535,6 +539,7 @@ namespace PMDS
             ultraToolbarsManager1.Tools["Arbeitsstationsperren"].SharedProps.Visible = true;  //bKlientenListeOnTop;
         }
 
+
         //----------------------------------------------------------------------------
         /// <summary>
         /// Handler wenn die Patientenauswahl geändert wird
@@ -611,6 +616,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Klientenliste");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Benutzerwechsel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Passwort");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool186 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnELGAPasswortÄndern");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Arbeitsstationsperren");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool135 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnLoadDesignMode");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool168 = new Infragistics.Win.UltraWinToolbars.ButtonTool("TextVerschluesseln");
@@ -812,6 +818,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool180 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPatientAufenthalteLöschen");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool181 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnWundBilderScale");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool185 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Blackout-Prävention");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool187 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnELGAPasswortÄndern");
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -976,6 +983,7 @@ namespace PMDS
             buttonTool1,
             buttonTool2,
             buttonTool4,
+            buttonTool186,
             buttonTool3,
             buttonTool135,
             buttonTool168,
@@ -1209,6 +1217,7 @@ namespace PMDS
             buttonTool180.SharedPropsInternal.Caption = "Patient und Aufenthalte löschen";
             buttonTool181.SharedPropsInternal.Caption = "Wundbilder skalieren";
             buttonTool185.SharedPropsInternal.Caption = "Blackout-Prävention";
+            buttonTool187.SharedPropsInternal.Caption = "ELGA-Passwort ändern";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool9,
             buttonTool7,
@@ -1323,7 +1332,8 @@ namespace PMDS
             buttonTool179,
             buttonTool180,
             buttonTool181,
-            buttonTool185});
+            buttonTool185,
+            buttonTool187});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // _frmBase_Toolbars_Dock_Area_Right
@@ -2077,6 +2087,9 @@ namespace PMDS
                         PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                         PMDSBusiness1.checkEndAnonymLogIn();
                         remotingSrv.killProcessIPCClient();
+
+                        WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+                        WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
                     }
                     else
                     {
@@ -2102,6 +2115,9 @@ namespace PMDS
                         PMDS.DB.PMDSBusinessComm.threadLoadData = null;
                         remotingSrv.killProcessIPCClient();
                         //Process.GetCurrentProcess().Kill();
+
+                        WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+                        WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
                     }
                 }
 
@@ -2472,7 +2488,7 @@ namespace PMDS
                             //this._SitemapStart.ucPatientPicker1.RefreshList();
                         }
                         break;
-                            
+                        
                     case "Arbeitsstationsperren":
                         this.Visible = false;
                         frmLock frmLock1 = new frmLock();
@@ -2480,7 +2496,17 @@ namespace PMDS
                         this.Visible = true;
                         //ucQuickNavigator1_SiteMapEvent(SiteEvents.LogOn, ref bUsed);
                         break;
-                    
+
+                    case "btnELGAPasswortÄndern":
+                        frmELGAChangePassword frmELGAChangePassword1 = new frmELGAChangePassword();
+                        frmELGAChangePassword1.initControl();
+                        frmELGAChangePassword1.ShowDialog(this);
+                        if (!frmELGAChangePassword1.contELGAChangePassword1.abort)
+                        {
+
+                        }
+                        break;
+
                     case "Benutzerwechsel":
                         PMDS.Global.UIGlobal.NewLogIn("pmds", true);
                         //ucQuickNavigator1_SiteMapEvent(SiteEvents.LogOn, ref bUsed);

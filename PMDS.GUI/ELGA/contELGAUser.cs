@@ -102,8 +102,8 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
-
-
+                this.contELGASettings1.saveData();
+                this.contELGARights1.saveData();
 
                 return true;
 

@@ -89,7 +89,6 @@
             this.txtELGAUser.BackColor = System.Drawing.Color.White;
             this.txtELGAUser.Location = new System.Drawing.Point(82, 14);
             this.txtELGAUser.Name = "txtELGAUser";
-            this.txtELGAUser.ReadOnly = true;
             this.txtELGAUser.Size = new System.Drawing.Size(275, 21);
             this.txtELGAUser.TabIndex = 0;
             // 
@@ -111,7 +110,6 @@
             this.txtELGAPwd.Location = new System.Drawing.Point(82, 37);
             this.txtELGAPwd.Name = "txtELGAPwd";
             this.txtELGAPwd.PasswordChar = '*';
-            this.txtELGAPwd.ReadOnly = true;
             this.txtELGAPwd.Size = new System.Drawing.Size(275, 21);
             this.txtELGAPwd.TabIndex = 1;
             // 

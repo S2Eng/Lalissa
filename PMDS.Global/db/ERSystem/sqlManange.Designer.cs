@@ -1018,7 +1018,9 @@
                         new System.Data.Common.DataColumnMapping("Characteristics", "Characteristics"),
                         new System.Data.Common.DataColumnMapping("CreatedAt", "CreatedAt"),
                         new System.Data.Common.DataColumnMapping("CreatedUser", "CreatedUser"),
-                        new System.Data.Common.DataColumnMapping("IDPatient", "IDPatient")})});
+                        new System.Data.Common.DataColumnMapping("IDPatient", "IDPatient"),
+                        new System.Data.Common.DataColumnMapping("IDAufenthalt", "IDAufenthalt"),
+                        new System.Data.Common.DataColumnMapping("IDBenutzer", "IDBenutzer")})});
             this.daELGAProtocoll.UpdateCommand = this.oleDbCommand53;
             // 
             // oleDbCommand50
@@ -1030,9 +1032,7 @@
             // 
             // oleDbCommand51
             // 
-            this.oleDbCommand51.CommandText = "INSERT INTO [ELGAProtocoll] ([ID], [Type], [Title], [Protocoll], [ELGAFunctions]," +
-    " [ELGAErrors], [Characteristics], [CreatedAt], [CreatedUser], [IDPatient]) VALUE" +
-    "S (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this.oleDbCommand51.CommandText = resources.GetString("oleDbCommand51.CommandText");
             this.oleDbCommand51.Connection = this.oleDbConnection1;
             this.oleDbCommand51.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -1044,12 +1044,15 @@
             new System.Data.OleDb.OleDbParameter("Characteristics", System.Data.OleDb.OleDbType.VarWChar, 0, "Characteristics"),
             new System.Data.OleDb.OleDbParameter("CreatedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedAt"),
             new System.Data.OleDb.OleDbParameter("CreatedUser", System.Data.OleDb.OleDbType.WChar, 0, "CreatedUser"),
-            new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient")});
+            new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
+            new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
+            new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer")});
             // 
             // oleDbCommand52
             // 
             this.oleDbCommand52.CommandText = "SELECT        ID, Type, Title, Protocoll, ELGAFunctions, ELGAErrors, Characterist" +
-    "ics, CreatedAt, CreatedUser, IDPatient\r\nFROM            ELGAProtocoll";
+    "ics, CreatedAt, CreatedUser, IDPatient, IDAufenthalt, IDBenutzer\r\nFROM          " +
+    "  ELGAProtocoll";
             this.oleDbCommand52.Connection = this.oleDbConnection1;
             // 
             // oleDbCommand53
@@ -1067,6 +1070,8 @@
             new System.Data.OleDb.OleDbParameter("CreatedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedAt"),
             new System.Data.OleDb.OleDbParameter("CreatedUser", System.Data.OleDb.OleDbType.WChar, 0, "CreatedUser"),
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
+            new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
+            new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
 
         }

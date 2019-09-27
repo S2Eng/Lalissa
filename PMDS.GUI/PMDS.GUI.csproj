@@ -446,6 +446,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.functions.vb.dll</HintPath>
     </Reference>
+    <Reference Include="QS2.license.core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
+    </Reference>
     <Reference Include="QS2.Logging.Win, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Logging.Win.dll</HintPath>
@@ -977,6 +981,12 @@
       <DependentUpon>ucDatenErhebungMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Datenerhebung\ValueListItemOwn.cs" />
+    <Compile Include="ELGA\contELGAChangePassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\contELGAChangePassword.Designer.cs">
+      <DependentUpon>contELGAChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="ELGA\contELGAKlient.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -988,6 +998,12 @@
     </Compile>
     <Compile Include="ELGA\contELGALogIn.Designer.cs">
       <DependentUpon>contELGALogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\frmELGAChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELGA\frmELGAChangePassword.Designer.cs">
+      <DependentUpon>frmELGAChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="ELGA\ManageSettings\contELGAProtocoll.cs">
       <SubType>UserControl</SubType>
@@ -3923,11 +3939,17 @@
     <EmbeddedResource Include="Datenerhebung\ucDatenErhebungMain.resx">
       <DependentUpon>ucDatenErhebungMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\contELGAChangePassword.resx">
+      <DependentUpon>contELGAChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ELGA\contELGAKlient.resx">
       <DependentUpon>contELGAKlient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\contELGALogIn.resx">
       <DependentUpon>contELGALogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\frmELGAChangePassword.resx">
+      <DependentUpon>frmELGAChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\ManageSettings\contELGAProtocoll.resx">
       <DependentUpon>contELGAProtocoll.cs</DependentUpon>

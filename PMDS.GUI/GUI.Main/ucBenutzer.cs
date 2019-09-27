@@ -1204,10 +1204,6 @@ namespace PMDS.GUI
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);
             }
 
-            if (this.contELGAUser1 != null && !this.contELGAUser1.contELGASettings1.validateData()) {
-                bError = true;
-            }
-
             if (ENV.lic_ELGA)
             {
                 if (this.Benutzer.ELGAActive)

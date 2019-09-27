@@ -41,6 +41,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CreatedAt", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CreatedUser");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAufenthalt");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBenutzer");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -115,6 +117,12 @@
             ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 9;
             ultraGridColumn1.Hidden = true;
+            ultraGridColumn2.Header.Editor = null;
+            ultraGridColumn2.Header.VisiblePosition = 10;
+            ultraGridColumn2.Hidden = true;
+            ultraGridColumn3.Header.Editor = null;
+            ultraGridColumn3.Header.VisiblePosition = 11;
+            ultraGridColumn3.Hidden = true;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn5,
             ultraGridColumn6,
@@ -125,7 +133,9 @@
             ultraGridColumn11,
             ultraGridColumn12,
             ultraGridColumn13,
-            ultraGridColumn1});
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn3});
             this.gridRights.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridRights.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridRights.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;

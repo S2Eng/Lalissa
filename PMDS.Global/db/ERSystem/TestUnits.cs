@@ -638,6 +638,18 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Für das Passwort sind mindestens 5 Zeichen erforderlich!", "", MessageBoxButtons.OK);
 
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Altes Passwort: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Altes Passwort ist falsch!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neues ELGA-Passwort: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neues ELGA-Passwort: Das neue Passwort muss mindestens 5 Zeichen lang sein!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neues ELGA-Passwort Wiederholung: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neues ELGA-Passwort: Die beiden Passwort-Eingaben stimmen nicht überein!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Altes und neues Passwort sind zu ähnlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Benutzer kann kein Passwort erfasst werden, da die Anmeldung des Benutzers in ELGA automatisch erfolgt!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort wurde geändert");
+
 
 
 

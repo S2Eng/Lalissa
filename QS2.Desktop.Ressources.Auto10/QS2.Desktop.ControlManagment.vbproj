@@ -685,6 +685,15 @@
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.DynReportsInitStructureResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGALogInHCPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGALogOutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGASessionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ExportResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -702,6 +711,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.BAL.Main.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.BAL2.ELGABAL.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.CDABAL.xsd">
