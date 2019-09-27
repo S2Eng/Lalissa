@@ -1319,6 +1319,7 @@ namespace PMDS.Global.db.ERSystem
                 rNew.Characteristics = "";
                 rNew.CreatedAt = DateTime.Now;
                 rNew.CreatedUser = "";
+                rNew.ELGAErrors = "";
                 rNew.SetIDPatientNull();
                 rNew.SetIDAufenthaltNull();
                 rNew.SetIDBenutzerNull();

@@ -1205,8 +1205,7 @@ namespace PMDS.GUI
             bool cbBerufsgruppeOK = PMDSBusinessUI.checkCboBox(this.cbBerufsstand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Berufsst."), true, ref MsgTxt);
             bool cbELGAAutSpOK =  PMDSBusinessUI.checkCboBox(this.cboELGA_AuthorSpeciality, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA Author speciality"), true, ref MsgTxt);
             bool cbLandOK = PMDSBusinessUI.checkCboBox(this.ucAdresse1.cboLand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Land"), true, ref MsgTxt);
-            bool cbFunktionOK = PMDSBusinessUI.checkCboBox(this.cboELGA_AuthorSpeciality, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA_AuthorSpeciality"), true, ref MsgTxt);
-            if (!cbBerufsgruppeOK || !cbELGAAutSpOK || !cbLandOK || !cbFunktionOK)
+            if (!cbBerufsgruppeOK || !cbELGAAutSpOK || !cbLandOK)
             {
                 bError = true;
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);

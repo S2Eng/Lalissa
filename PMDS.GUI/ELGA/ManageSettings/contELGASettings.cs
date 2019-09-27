@@ -106,7 +106,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
 
                 lProt = new List<ELGABusiness.ProtVar>()
                         {
-                            new ELGABusiness.ProtVar(){ Fld= "ELGAUser", oValOrig = rUsr.ELGAUser.Trim(), oValNew = "", Table = "Patient"  },
+                            new ELGABusiness.ProtVar(){ Fld= "ELGAUser", oValOrig = rUsr.ELGAUser.ToString().Trim(), oValNew = "", Table = "Patient"  },
                             new ELGABusiness.ProtVar(){ Fld= "ELGAAutoLogin", oValOrig = rUsr.ELGAAutoLogin.ToString(), oValNew = "", Table = "Patient"  }
                         };
 
@@ -204,10 +204,10 @@ namespace PMDS.GUI.ELGA.ManageSettings
 
                 this._db.SaveChanges();
 
-                var rP = lProt.Where(e => e.Fld == "ELGAUser").First();
-                rP.oValNew = rUsr.ELGAUser;
-                rP = lProt.Where(e => e.Fld == "ELGAAutoLogin").First();
-                rP.oValNew = rUsr.ELGAAutoLogin.ToString();
+                var rP1 = lProt.Where(e => e.Fld == "ELGAUser").First();
+                rP1.oValNew = rUsr.ELGAUser.ToString();
+                var rP2 = lProt.Where(e => e.Fld == "ELGAAutoLogin").First();
+                rP2.oValNew = rUsr.ELGAAutoLogin.ToString();
 
                 ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert"), lProt, ELGABusiness.eTypeProt.UserSettingsChanged, ELGABusiness.eELGAFunctions.none, "Benutzer");
 
