@@ -52,6 +52,7 @@
             // 
             this.txtELGAPwd.Location = new System.Drawing.Point(146, 41);
             this.txtELGAPwd.Name = "txtELGAPwd";
+            this.txtELGAPwd.PasswordChar = '*';
             this.txtELGAPwd.Size = new System.Drawing.Size(197, 21);
             this.txtELGAPwd.TabIndex = 1;
             // 
@@ -94,6 +95,7 @@
             // 
             this.txtELGAPwdWdhlg.Location = new System.Drawing.Point(146, 65);
             this.txtELGAPwdWdhlg.Name = "txtELGAPwdWdhlg";
+            this.txtELGAPwdWdhlg.PasswordChar = '*';
             this.txtELGAPwdWdhlg.Size = new System.Drawing.Size(197, 21);
             this.txtELGAPwdWdhlg.TabIndex = 2;
             // 
