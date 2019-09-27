@@ -60,7 +60,8 @@ namespace PMDS.Global.db.ERSystem
 
 
 
-        public static void saveELGAProtocoll(string Title, System.Collections.Generic.List<ProtVar> flds, eTypeProt TypeProt, eELGAFunctions ELGAFunctions, string table = "", string ELGAErrors = "")
+        public static void saveELGAProtocoll(string Title, System.Collections.Generic.List<ProtVar> flds, eTypeProt TypeProt, eELGAFunctions ELGAFunctions, 
+                                                string table = "", string ELGAErrors = "", Nullable<Guid> IDBenutzer = null, Nullable<Guid> IDPatient = null, Nullable<Guid> IDAufenthalt = null)
         {
             try
             {
@@ -77,19 +78,37 @@ namespace PMDS.Global.db.ERSystem
                 }
 
                 PMDSBusiness b = new PMDSBusiness();
-                dsKlientenliste ds = new dsKlientenliste();
-                sqlManange sqlManage1 = new sqlManange();
-                sqlManage1.initControl();
-                
-                dsKlientenliste.ELGAProtocollRow rNewProt = sqlManage1.getNewELGAProtocoll(ref ds);
-                rNewProt.Title = Title.Trim();
-                rNewProt.Protocoll = sProt;
-                rNewProt.CreatedUser = b.LogggedOnUser().Benutzer1.Trim();
-                rNewProt.Type = TypeProt.ToString();
-                rNewProt.ELGAFunctions = ELGAFunctions.ToString();
-                rNewProt.ELGAErrors = ELGAErrors.Trim();
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    PMDS.db.Entities.ELGAProtocoll rNewELGAProtocoll = PMDS.Global.db.ERSystem.EFEntities.newELGAProtocoll(db);
+                    rNewELGAProtocoll.ID = System.Guid.NewGuid();
+                    rNewELGAProtocoll.Type = TypeProt.ToString();
+                    rNewELGAProtocoll.Title = Title.Trim();
+                    rNewELGAProtocoll.Protocoll = sProt;
+                    rNewELGAProtocoll.ELGAFunctions = ELGAFunctions.ToString();
+                    rNewELGAProtocoll.Characteristics = "";
+                    rNewELGAProtocoll.CreatedAt = DateTime.Now;
+                    rNewELGAProtocoll.CreatedUser = b.getUserName(ENV.USERID);
+                    rNewELGAProtocoll.ELGAErrors = ELGAErrors.Trim();
 
-                sqlManage1.daELGAProtocoll.Update(ds.ELGAProtocoll);
+                    if (IDBenutzer != null)
+                        rNewELGAProtocoll.IDBenutzer = IDBenutzer;
+                    else
+                        rNewELGAProtocoll.IDBenutzer = null;
+
+                    if (IDPatient != null)
+                        rNewELGAProtocoll.IDPatient = IDPatient;
+                    else
+                        rNewELGAProtocoll.IDPatient = null;
+
+                    if (IDAufenthalt != null)
+                        rNewELGAProtocoll.IDAufenthalt = IDAufenthalt;
+                    else
+                        rNewELGAProtocoll.IDAufenthalt = null;
+
+                    db.ELGAProtocoll.Add(rNewELGAProtocoll);
+                    db.SaveChanges();
+                }
 
             }
             catch (Exception ex)

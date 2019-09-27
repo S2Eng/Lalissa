@@ -176,7 +176,8 @@ namespace PMDS.GUI.ELGA
                     db.SaveChanges();
 
                     string sProt = "User " + b.getUserName(ENV.USERID) + " has changed password.";
-                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort wurde geändert"), null, ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "");
+                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort wurde geändert"), null, 
+                                                    ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID);
                 }
 
                 return true;

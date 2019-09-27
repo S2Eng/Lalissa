@@ -209,7 +209,8 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 var rP2 = lProt.Where(e => e.Fld == "ELGAAutoLogin").First();
                 rP2.oValNew = rUsr.ELGAAutoLogin.ToString();
 
-                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert"), lProt, ELGABusiness.eTypeProt.UserSettingsChanged, ELGABusiness.eELGAFunctions.none, "Benutzer");
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert"), lProt, 
+                                                ELGABusiness.eTypeProt.UserSettingsChanged, ELGABusiness.eELGAFunctions.none, "Benutzer", "", this._IDUser);
 
                 return true;
             }

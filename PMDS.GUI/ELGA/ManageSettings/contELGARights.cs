@@ -135,12 +135,24 @@ namespace PMDS.GUI.ELGA.ManageSettings
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    var tUsrRights = db.BenutzerRechte.Where(o => o.IDBenutzer == this._IDUser.Value);
-                    foreach (PMDS.db.Entities.BenutzerRechte rUsrRights in tUsrRights)
+                    var tUsrRights = (from br in db.BenutzerRechte
+                                         join r in db.Recht on br.IDRecht equals r.ID
+                               where br.IDBenutzer == this._IDUser.Value && r.ELGA == true
+                                         select new
+                               {
+                                    IDBenutzerRecht = br.ID,
+                                    Bezeichnung = r.Bezeichnung
+                               });
+
+                    if (tUsrRights.Count() > 0)
                     {
-                        db.BenutzerRechte.Remove(rUsrRights);
+                        foreach (var r in tUsrRights)
+                        {
+                            var rUsrRights = db.BenutzerRechte.Where(o => o.ID == r.IDBenutzerRecht).First();
+                            db.BenutzerRechte.Remove(rUsrRights);
+                        }
+                        db.SaveChanges();
                     }
-                    db.SaveChanges();
 
                     foreach (Infragistics.Win.UltraWinGrid.UltraGridRow rGrid in this.gridRights.Rows)
                     {
