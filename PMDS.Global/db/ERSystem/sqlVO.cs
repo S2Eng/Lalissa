@@ -236,7 +236,9 @@ namespace PMDS.Global.db.ERSystem
                     throw new Exception("sqlVO.getVO: selType '" + selType.ToString() + "' not supported!");
                 }
 
-                this.daVO.Fill(ds.VO);
+                if (ds.VO.Count > 0)
+                    this.daVO.Fill(ds.VO);
+
                 return true;
             }
             catch (Exception ex)
