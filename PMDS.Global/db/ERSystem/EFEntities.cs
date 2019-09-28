@@ -5427,7 +5427,43 @@ namespace PMDS.Global.db.ERSystem
                 return null;
             }
         }
+        private static IEnumerable<PMDS.db.Entities.ELGAProtocoll> _ELGAProtocoll = null;
+        public static IEnumerable<PMDS.db.Entities.ELGAProtocoll> ELGAProtocoll
+        {
+            get
+            {
+                return EFEntities._ELGAProtocoll;
+            }
+            set
+            {
+                EFEntities._ELGAProtocoll = value;
+            }
+        }
+        public static PMDS.db.Entities.ELGAProtocoll newELGAProtocoll(PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            string FctName = "PMDSBusiness.ELGAProtocoll";
+            int FctNr = 250106;
+            try
+            {
+                EFEntities EFEntities1 = new ERSystem.EFEntities();
+                //System.Guid gNewGuid = System.Guid.NewGuid();
+                //EFEntities.PflegeEintrag = from p in db.PflegeEintrag.AsEnumerable() where p.ID == gNewGuid select p;
+                PMDS.db.Entities.ELGAProtocoll newELGAProtocoll = new PMDS.db.Entities.ELGAProtocoll();
+                EFEntities1.efNewRow(ref EFEntities.lstEfTables, db, newELGAProtocoll, newELGAProtocoll.GetType().Name.Trim(), EFEntities.ELGAProtocoll);
+                return newELGAProtocoll;
 
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                PMDS.Global.AppException.throwException(PMDS.DB.PMDSBusiness.getDbEntityValidationException2(ex, FctName), FctNr);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.AppException.throwException(FctName + ": " + ex.ToString(), FctNr);
+                return null;
+            }
+        }
         private static IEnumerable<PMDS.db.Entities.Protocol> _Protocol = null;
         public static IEnumerable<PMDS.db.Entities.Protocol> Protocol
         {

@@ -527,6 +527,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsVO.xsd</DependentUpon>
     </Compile>
+    <Compile Include="db\ERSystem\ELGABusiness.cs" />
     <Compile Include="db\ERSystem\PMDSBusinessComm.cs" />
     <Compile Include="db\ERSystem\PMDSBusinessRAM.cs" />
     <Compile Include="db\ERSystem\PMDSBusinessStructures.cs" />

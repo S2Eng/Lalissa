@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Recht", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn81 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn82 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Bezeichnung", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn83 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGA");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Select", 0);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -40,18 +46,55 @@
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.gridRights = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.dsKlientenliste1 = new PMDS.Global.db.ERSystem.dsKlientenliste();
+            this.sqlManange1 = new PMDS.Global.db.ERSystem.sqlManange(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRights)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsKlientenliste1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ultraToolTipManager1
+            // 
+            this.ultraToolTipManager1.ContainingControl = this;
             // 
             // gridRights
             // 
             this.gridRights.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridRights.DataMember = "Recht";
+            this.gridRights.DataSource = this.dsKlientenliste1;
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.gridRights.DisplayLayout.Appearance = appearance1;
+            this.gridRights.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
+            ultraGridColumn81.Header.Editor = null;
+            ultraGridColumn81.Header.VisiblePosition = 0;
+            ultraGridColumn81.Hidden = true;
+            ultraGridColumn82.Header.Editor = null;
+            ultraGridColumn82.Header.VisiblePosition = 2;
+            ultraGridColumn82.Width = 298;
+            ultraGridColumn83.Header.Editor = null;
+            ultraGridColumn83.Header.VisiblePosition = 3;
+            ultraGridColumn83.Hidden = true;
+            ultraGridColumn41.DataType = typeof(bool);
+            ultraGridColumn41.Header.Caption = "Auswahl";
+            ultraGridColumn41.Header.Editor = null;
+            ultraGridColumn41.Header.VisiblePosition = 1;
+            ultraGridColumn41.Width = 75;
+            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn81,
+            ultraGridColumn82,
+            ultraGridColumn83,
+            ultraGridColumn41});
+            this.gridRights.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridRights.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.gridRights.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -112,6 +155,12 @@
             this.gridRights.Click += new System.EventHandler(this.GridRights_Click);
             this.gridRights.DoubleClick += new System.EventHandler(this.GridRights_DoubleClick);
             // 
+            // dsKlientenliste1
+            // 
+            this.dsKlientenliste1.DataSetName = "dsKlientenliste";
+            this.dsKlientenliste1.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsKlientenliste1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // contELGARights
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,7 +170,9 @@
             this.Name = "contELGARights";
             this.Size = new System.Drawing.Size(630, 479);
             this.Load += new System.EventHandler(this.ContELGARights_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRights)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsKlientenliste1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -129,5 +180,9 @@
         #endregion
 
         private Infragistics.Win.UltraWinGrid.UltraGrid gridRights;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
+        private Global.db.ERSystem.dsKlientenliste dsKlientenliste1;
+        private Global.db.ERSystem.sqlManange sqlManange1;
     }
 }

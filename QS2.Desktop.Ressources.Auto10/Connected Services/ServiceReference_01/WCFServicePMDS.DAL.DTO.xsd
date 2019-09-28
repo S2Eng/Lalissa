@@ -47,6 +47,7 @@
       <xs:element name="_x003C_ElgaCode_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_ElgaDisplayName_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_ElgaId_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_ElgaVersion_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_GehörtzuGruppe_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Hierarche_x003E_k__BackingField" type="xs:int" />
       <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
@@ -715,10 +716,16 @@
   <xs:element name="AdresseDTO" nillable="true" type="tns:AdresseDTO" />
   <xs:complexType name="AerzteDTO">
     <xs:sequence>
+      <xs:element name="_x003C_ElgaOid_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaOrganizationName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaOrganizationOid_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Elgaabgeglichen_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Elgahausarzt_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_Fachrichtung_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
       <xs:element name="_x003C_Idadresse_x003E_k__BackingField" nillable="true" type="ser:guid" />
       <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IstOrganisation_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_Nachname_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Titel_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Vorname_x003E_k__BackingField" nillable="true" type="xs:string" />
@@ -779,6 +786,8 @@
       <xs:element name="_x003C_EinrichtungsleiterTitel_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_EinrichtungsleiterVorname_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Einrichtungsleiter_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaAuthorSpeciality_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaOid_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_FormatRechNr_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_FormatStornoNr_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_FormatZahlungsbestätigung_x003E_k__BackingField" nillable="true" type="xs:string" />
@@ -904,6 +913,7 @@
       <xs:element name="_x003C_ArbeitslosBezSeit_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Augenfarbe_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_AuszugswunschDatum_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_BPk_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Behindertenausweis_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_BesondereAeusserlicheKennzeichen_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Besonderheit_x003E_k__BackingField" nillable="true" type="xs:string" />
@@ -1000,6 +1010,9 @@
       <xs:element name="_x003C_Sexus_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Sollstand_x003E_k__BackingField" type="xs:decimal" />
       <xs:element name="_x003C_SonstigeWuensche_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SozVersLeerGrund_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SozVersMitversichertBei_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SozVersStatus_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Sozialcard_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_Staatsb_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Stationswunsch_x003E_k__BackingField" nillable="true" type="xs:string" />
@@ -1008,6 +1021,7 @@
       <xs:element name="_x003C_SterbeRegel_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_TageAbweseneheitOhneKuerzung_x003E_k__BackingField" type="xs:int" />
       <xs:element name="_x003C_TelefongebuehrbefreiungJn_x003E_k__BackingField" nillable="true" type="xs:boolean" />
+      <xs:element name="_x003C_TitelPost_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Titel_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Todeszeitpunkt_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
       <xs:element name="_x003C_Vermerk_x003E_k__BackingField" nillable="true" type="xs:string" />

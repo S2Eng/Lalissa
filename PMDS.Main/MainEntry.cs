@@ -283,6 +283,7 @@ namespace PMDS
                     {
                         if (ENV.PMDSNew)
                         {
+                            throw new Exception("ENV.PMDSNew: ENV-Var not activated!");
                             infoStartMain.Close();
                             infoStartMain = null;
                             PMDS.GUI.PMDSClient.startPMDSMain start = new GUI.PMDSClient.startPMDSMain();

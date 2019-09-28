@@ -37,6 +37,7 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.Main" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" />
     </xsd:schema>
   </wsdl:types>
@@ -75,6 +76,18 @@
   </wsdl:message>
   <wsdl:message name="Service1_getLastPatienten_OutputMessage">
     <wsdl:part name="parameters" element="tns:getLastPatientenResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGALogInHCP_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGALogInHCP" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGALogInHCP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGALogInHCPResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGALogOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGALogOut" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGALogOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGALogOutResponse" />
   </wsdl:message>
   <wsdl:message name="Service1_genCDA_InputMessage">
     <wsdl:part name="parameters" element="tns:genCDA" />
@@ -136,6 +149,14 @@
     <wsdl:operation name="getLastPatienten">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/getLastPatienten" message="tns:Service1_getLastPatienten_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/getLastPatientenResponse" message="tns:Service1_getLastPatienten_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGALogInHCP">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGALogInHCP" message="tns:Service1_ELGALogInHCP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGALogInHCPResponse" message="tns:Service1_ELGALogInHCP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGALogOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGALogOut" message="tns:Service1_ELGALogOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGALogOutResponse" message="tns:Service1_ELGALogOut_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="genCDA">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/genCDA" message="tns:Service1_genCDA_InputMessage" />
@@ -211,6 +232,24 @@
     </wsdl:operation>
     <wsdl:operation name="getLastPatienten">
       <soap:operation soapAction="http://tempuri.org/Service1/getLastPatienten" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGALogInHCP">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGALogInHCP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGALogOut">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGALogOut" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -323,6 +362,24 @@
     </wsdl:operation>
     <wsdl:operation name="getLastPatienten">
       <soap12:operation soapAction="http://tempuri.org/Service1/getLastPatienten" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGALogInHCP">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGALogInHCP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGALogOut">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGALogOut" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -8,6 +8,7 @@
       <xs:element minOccurs="0" name="IDBenutzerVidierung" type="ser:guid" />
       <xs:element minOccurs="0" name="IDDocument" type="ser:guid" />
       <xs:element minOccurs="0" name="IDEinrichtungEmpfänger" type="ser:guid" />
+      <xs:element minOccurs="0" name="IDEmpfänger" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IDSet" type="ser:guid" />
       <xs:element minOccurs="0" name="TypeCDA" type="tns:CDA.eTypeCDA" />
       <xs:element minOccurs="0" name="VersionsNr" type="xs:int" />

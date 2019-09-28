@@ -129,12 +129,13 @@
   <xs:element name="ArrayOfPatientMainDTO.PatientDt" nillable="true" type="tns:ArrayOfPatientMainDTO.PatientDt" />
   <xs:complexType name="PatientMainDTO.PatientDt">
     <xs:sequence>
-      <xs:element name="IDPatient" type="ser:guid" />
       <xs:element name="_x003C_DtoFrom_x003E_k__BackingField" type="xs:dateTime" />
-      <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="adresse" nillable="true" type="q48:AdresseDTO" />
-      <xs:element name="aufenthaltAct" nillable="true" type="tns:PatientMainDTO.AufenthaltDt" />
-      <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="kontakt" nillable="true" type="q49:KontaktDTO" />
-      <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="patient" nillable="true" type="q50:PatientDTO" />
+      <xs:element name="_x003C_IDPatient_x003E_k__BackingField" type="ser:guid" />
+      <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="_x003C_abteilung_x003E_k__BackingField" nillable="true" type="q48:AbteilungDTO" />
+      <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="_x003C_adresse_x003E_k__BackingField" nillable="true" type="q49:AdresseDTO" />
+      <xs:element name="_x003C_aufenthaltAct_x003E_k__BackingField" nillable="true" type="tns:PatientMainDTO.AufenthaltDt" />
+      <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="_x003C_kontakt_x003E_k__BackingField" nillable="true" type="q50:KontaktDTO" />
+      <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="_x003C_patient_x003E_k__BackingField" nillable="true" type="q51:PatientDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PatientMainDTO.PatientDt" nillable="true" type="tns:PatientMainDTO.PatientDt" />
@@ -142,8 +143,8 @@
     <xs:sequence>
       <xs:element name="Urlaub" type="xs:boolean" />
       <xs:element name="_x003C_DtoFrom_x003E_k__BackingField" type="xs:dateTime" />
-      <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="aufenthalt" nillable="true" type="q51:AufenthaltDTO" />
-      <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="urlaubVerlauf" nillable="true" type="q52:UrlaubVerlaufDTO" />
+      <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="aufenthalt" nillable="true" type="q52:AufenthaltDTO" />
+      <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" name="urlaubVerlauf" nillable="true" type="q53:UrlaubVerlaufDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PatientMainDTO.AufenthaltDt" nillable="true" type="tns:PatientMainDTO.AufenthaltDt" />

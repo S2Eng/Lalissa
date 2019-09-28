@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -35,22 +36,24 @@
             this.lblELGAPwd = new Infragistics.Win.Misc.UltraLabel();
             this.txtELGAUser = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblELGAUser = new Infragistics.Win.Misc.UltraLabel();
-            this.chkELGAActive = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.chkELGAAutostartSession = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtELGAPwdWdhlg = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblELGAPwdWdhlg = new Infragistics.Win.Misc.UltraLabel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAPwd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkELGAActive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGAAutostartSession)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAPwdWdhlg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtELGAPwd
             // 
-            this.txtELGAPwd.Location = new System.Drawing.Point(80, 41);
+            this.txtELGAPwd.Location = new System.Drawing.Point(146, 41);
             this.txtELGAPwd.Name = "txtELGAPwd";
-            this.txtELGAPwd.Size = new System.Drawing.Size(155, 21);
+            this.txtELGAPwd.PasswordChar = '*';
+            this.txtELGAPwd.Size = new System.Drawing.Size(197, 21);
             this.txtELGAPwd.TabIndex = 1;
             // 
             // lblELGAPwd
@@ -65,9 +68,9 @@
             // 
             // txtELGAUser
             // 
-            this.txtELGAUser.Location = new System.Drawing.Point(80, 17);
+            this.txtELGAUser.Location = new System.Drawing.Point(146, 17);
             this.txtELGAUser.Name = "txtELGAUser";
-            this.txtELGAUser.Size = new System.Drawing.Size(155, 21);
+            this.txtELGAUser.Size = new System.Drawing.Size(197, 21);
             this.txtELGAUser.TabIndex = 0;
             // 
             // lblELGAUser
@@ -80,17 +83,9 @@
             this.lblELGAUser.TabIndex = 3;
             this.lblELGAUser.Text = "Benutzer";
             // 
-            // chkELGAActive
-            // 
-            this.chkELGAActive.Location = new System.Drawing.Point(80, 89);
-            this.chkELGAActive.Name = "chkELGAActive";
-            this.chkELGAActive.Size = new System.Drawing.Size(155, 21);
-            this.chkELGAActive.TabIndex = 3;
-            this.chkELGAActive.Text = "Aktiv";
-            // 
             // chkELGAAutostartSession
             // 
-            this.chkELGAAutostartSession.Location = new System.Drawing.Point(80, 110);
+            this.chkELGAAutostartSession.Location = new System.Drawing.Point(146, 92);
             this.chkELGAAutostartSession.Name = "chkELGAAutostartSession";
             this.chkELGAAutostartSession.Size = new System.Drawing.Size(155, 21);
             this.chkELGAAutostartSession.TabIndex = 4;
@@ -98,9 +93,10 @@
             // 
             // txtELGAPwdWdhlg
             // 
-            this.txtELGAPwdWdhlg.Location = new System.Drawing.Point(80, 65);
+            this.txtELGAPwdWdhlg.Location = new System.Drawing.Point(146, 65);
             this.txtELGAPwdWdhlg.Name = "txtELGAPwdWdhlg";
-            this.txtELGAPwdWdhlg.Size = new System.Drawing.Size(155, 21);
+            this.txtELGAPwdWdhlg.PasswordChar = '*';
+            this.txtELGAPwdWdhlg.Size = new System.Drawing.Size(197, 21);
             this.txtELGAPwdWdhlg.TabIndex = 2;
             // 
             // lblELGAPwdWdhlg
@@ -109,9 +105,17 @@
             this.lblELGAPwdWdhlg.Appearance = appearance3;
             this.lblELGAPwdWdhlg.Location = new System.Drawing.Point(21, 66);
             this.lblELGAPwdWdhlg.Name = "lblELGAPwdWdhlg";
-            this.lblELGAPwdWdhlg.Size = new System.Drawing.Size(95, 18);
+            this.lblELGAPwdWdhlg.Size = new System.Drawing.Size(124, 18);
             this.lblELGAPwdWdhlg.TabIndex = 5;
-            this.lblELGAPwdWdhlg.Text = "Passwort";
+            this.lblELGAPwdWdhlg.Text = "Passwort Wiederholung";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ultraToolTipManager1
+            // 
+            this.ultraToolTipManager1.ContainingControl = this;
             // 
             // contELGASettings
             // 
@@ -123,7 +127,6 @@
             this.Controls.Add(this.txtELGAUser);
             this.Controls.Add(this.txtELGAPwd);
             this.Controls.Add(this.chkELGAAutostartSession);
-            this.Controls.Add(this.chkELGAActive);
             this.Controls.Add(this.lblELGAUser);
             this.Controls.Add(this.lblELGAPwd);
             this.Name = "contELGASettings";
@@ -131,9 +134,9 @@
             this.Load += new System.EventHandler(this.ContELGASettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAPwd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkELGAActive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGAAutostartSession)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAPwdWdhlg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,9 +148,10 @@
         public Infragistics.Win.Misc.UltraLabel lblELGAPwd;
         public Infragistics.Win.UltraWinEditors.UltraTextEditor txtELGAUser;
         public Infragistics.Win.Misc.UltraLabel lblELGAUser;
-        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkELGAActive;
         public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkELGAAutostartSession;
         public Infragistics.Win.UltraWinEditors.UltraTextEditor txtELGAPwdWdhlg;
         public Infragistics.Win.Misc.UltraLabel lblELGAPwdWdhlg;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
     }
 }

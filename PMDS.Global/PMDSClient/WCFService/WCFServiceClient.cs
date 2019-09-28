@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PMDS.DB;
+using PMDS.Global.db.ERSystem;
 using PMDS.Global.PMDSClient;
 using PMDS.Global.PMDSClient.WCFService;
 using PMDS.GUI.ELGA;
@@ -15,10 +16,8 @@ using QS2.Desktop.ControlManagment;
 using QS2.Desktop.ControlManagment.ServiceReference_01;
 using WCFServicePMDS;
 
-
 namespace PMDSClient.Sitemap
 {
-
 
     public class WCFServiceClient
     {
@@ -193,6 +192,61 @@ namespace PMDSClient.Sitemap
             catch (Exception ex)
             {
                 throw new Exception("WCFServiceClientPMDS.getAllStammdaten: " + ex.ToString());
+            }
+        }
+
+        public bool ELGALogIn(Guid IDUser, bool lic_ELGA)
+        {
+            try
+            {
+                if (lic_ELGA && PMDSClientWrapper.WCFServiceOnOff)
+                {
+                    ELGABusiness elga = new ELGABusiness();
+                    ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
+                    if (ben.Elgaactive && !ben.IsGeneric)
+                    {
+                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                        ELGASessionDTO session = new ELGASessionDTO();
+                        session.IDUserk__BackingField = IDUser;
+                        bool bOk = client.ELGALogInHCP(ben.Elgauser, ben.ELGAPwd, ref session);
+                        return bOk;
+                    }
+                    else
+                        return true;
+                }
+                else
+                {
+                    return true;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGALogIn: " + ex.ToString());
+            }
+        }
+        public bool ELGALogOut(Guid IDUser, bool lic_ELGA)
+        {
+            try
+            {
+                if (lic_ELGA && PMDSClientWrapper.WCFServiceOnOff)
+                {
+                    ELGABusiness elga = new ELGABusiness();
+                    ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
+                    if (ben.Elgaactive && !ben.IsGeneric)
+                    {
+                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                        ELGASessionDTO session = new ELGASessionDTO();
+                        session.IDUserk__BackingField = IDUser;
+                        client.ELGALogOut(ref session);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGALogOut: " + ex.ToString());
             }
         }
 

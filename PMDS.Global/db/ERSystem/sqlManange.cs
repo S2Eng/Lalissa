@@ -31,7 +31,8 @@ namespace PMDS.Global.db.ERSystem
         public string daSelEintrag = "";
         public string daSelMedizinischeDaten = "";
         public string daSelWundBilder = "";
-
+        public string daSelRecht = "";
+        public string daSelELGAProtocoll = "";
 
 
         public enum eTypeAnmeldungen
@@ -77,7 +78,17 @@ namespace PMDS.Global.db.ERSystem
         {
             ID = 0
         }
+        public enum eTypeRecht
+        {
+            AllForUser = 0
+        }
+        public enum eTypeELGAProtocoll
+        {
+            AllForUser = 0
+        }
 
+
+        
 
         public bool isInitialized = false;
 
@@ -120,7 +131,8 @@ namespace PMDS.Global.db.ERSystem
                     this.daSelEintrag = this.daEintrag.SelectCommand.CommandText;
                     this.daSelMedizinischeDaten = this.daMedizinischeDaten.SelectCommand.CommandText;
                     this.daSelWundBilder = this.daWundePosBilder.SelectCommand.CommandText;
-
+                    this.daSelRecht = this.daRecht.SelectCommand.CommandText;
+                    this.daSelELGAProtocoll = this.daELGAProtocoll.SelectCommand.CommandText;
                     this.isInitialized = true;
                 }
             }
@@ -1240,6 +1252,60 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("sqlManange.getWundeBilder: " + ex.ToString());
             }
         }
+
+        public bool getRecht(PMDS.Global.db.ERSystem.dsKlientenliste ds, Guid IDUser, eTypeRecht eTypeSel)
+        {
+            try
+            {
+                this.daRecht.SelectCommand.CommandText = this.daSelRecht;
+                this.daRecht.SelectCommand.Parameters.Clear();
+                PMDS.Global.dbBase.setConnection(this.daRecht, RBU.DataBase.CONNECTION);
+
+                if (eTypeSel == eTypeRecht.AllForUser)
+                {
+                    string sqlWhere = " where ELGA=1 " + " order by Bezeichnung asc";
+                    this.daRecht.SelectCommand.CommandText += sqlWhere;
+                }
+                else
+                {
+                    throw new Exception("getRecht: eTypeSel '" + eTypeSel.ToString() + "' not allowed!");
+                }
+
+                this.daRecht.Fill(ds.Recht);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sqlManange.getRecht: " + ex.ToString());
+            }
+        }
+        public bool getELGAProtocoll(PMDS.Global.db.ERSystem.dsKlientenliste ds, Guid IDUser, eTypeELGAProtocoll eTypeSel)
+        {
+            try
+            {
+                this.daELGAProtocoll.SelectCommand.CommandText = this.daSelELGAProtocoll;
+                this.daELGAProtocoll.SelectCommand.Parameters.Clear();
+                PMDS.Global.dbBase.setConnection(this.daELGAProtocoll, RBU.DataBase.CONNECTION);
+
+                if (eTypeSel == eTypeELGAProtocoll.AllForUser)
+                {
+                    string sqlWhere = " where IDBenutzer='" + IDUser.ToString() + "'" + " order by CreatedAt desc";
+                    this.daELGAProtocoll.SelectCommand.CommandText += sqlWhere;
+                }
+                else
+                {
+                    throw new Exception("getELGAProtocoll: eTypeSel '" + eTypeSel.ToString() + "' not allowed!");
+                }
+
+                this.daELGAProtocoll.Fill(ds.ELGAProtocoll);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sqlManange.getELGAProtocoll: " + ex.ToString());
+            }
+        }
+
     }
 
 }

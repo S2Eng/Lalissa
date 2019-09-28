@@ -732,6 +732,75 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Recht" msprop:Generator_TableClassName="RechtDataTable" msprop:Generator_TableVarName="tableRecht" msprop:Generator_RowChangedName="RechtRowChanged" msprop:Generator_TablePropName="Recht" msprop:Generator_RowDeletingName="RechtRowDeleting" msprop:Generator_RowChangingName="RechtRowChanging" msprop:Generator_RowEvHandlerName="RechtRowChangeEventHandler" msprop:Generator_RowDeletedName="RechtRowDeleted" msprop:Generator_RowClassName="RechtRow" msprop:Generator_UserTableName="Recht" msprop:Generator_RowEvArgName="RechtRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Bezeichnung" msprop:Generator_ColumnVarNameInTable="columnBezeichnung" msprop:Generator_ColumnPropNameInRow="Bezeichnung" msprop:Generator_ColumnPropNameInTable="BezeichnungColumn" msprop:Generator_UserColumnName="Bezeichnung" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGA" msprop:Generator_ColumnVarNameInTable="columnELGA" msprop:Generator_ColumnPropNameInRow="ELGA" msprop:Generator_ColumnPropNameInTable="ELGAColumn" msprop:Generator_UserColumnName="ELGA" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ELGAProtocoll" msprop:Generator_TableClassName="ELGAProtocollDataTable" msprop:Generator_TableVarName="tableELGAProtocoll" msprop:Generator_TablePropName="ELGAProtocoll" msprop:Generator_RowDeletingName="ELGAProtocollRowDeleting" msprop:Generator_RowChangingName="ELGAProtocollRowChanging" msprop:Generator_RowEvHandlerName="ELGAProtocollRowChangeEventHandler" msprop:Generator_RowDeletedName="ELGAProtocollRowDeleted" msprop:Generator_UserTableName="ELGAProtocoll" msprop:Generator_RowChangedName="ELGAProtocollRowChanged" msprop:Generator_RowEvArgName="ELGAProtocollRowChangeEvent" msprop:Generator_RowClassName="ELGAProtocollRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_UserColumnName="Type">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Protocoll" msprop:Generator_ColumnVarNameInTable="columnProtocoll" msprop:Generator_ColumnPropNameInRow="Protocoll" msprop:Generator_ColumnPropNameInTable="ProtocollColumn" msprop:Generator_UserColumnName="Protocoll" type="xs:string" />
+              <xs:element name="ELGAFunctions" msprop:Generator_ColumnVarNameInTable="columnELGAFunctions" msprop:Generator_ColumnPropNameInRow="ELGAFunctions" msprop:Generator_ColumnPropNameInTable="ELGAFunctionsColumn" msprop:Generator_UserColumnName="ELGAFunctions">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGAErrors" msprop:Generator_ColumnVarNameInTable="columnELGAErrors" msprop:Generator_ColumnPropNameInRow="ELGAErrors" msprop:Generator_ColumnPropNameInTable="ELGAErrorsColumn" msprop:Generator_UserColumnName="ELGAErrors">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Characteristics" msprop:Generator_ColumnVarNameInTable="columnCharacteristics" msprop:Generator_ColumnPropNameInRow="Characteristics" msprop:Generator_ColumnPropNameInTable="CharacteristicsColumn" msprop:Generator_UserColumnName="Characteristics">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CreatedAt" msprop:Generator_ColumnVarNameInTable="columnCreatedAt" msprop:Generator_ColumnPropNameInRow="CreatedAt" msprop:Generator_ColumnPropNameInTable="CreatedAtColumn" msprop:Generator_UserColumnName="CreatedAt" type="xs:dateTime" />
+              <xs:element name="CreatedUser" msprop:Generator_ColumnVarNameInTable="columnCreatedUser" msprop:Generator_ColumnPropNameInRow="CreatedUser" msprop:Generator_ColumnPropNameInTable="CreatedUserColumn" msprop:Generator_UserColumnName="CreatedUser">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDPatient" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPatient" msprop:Generator_ColumnPropNameInRow="IDPatient" msprop:Generator_ColumnPropNameInTable="IDPatientColumn" msprop:Generator_UserColumnName="IDPatient" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAufenthalt" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAufenthalt" msprop:Generator_ColumnPropNameInRow="IDAufenthalt" msprop:Generator_ColumnPropNameInTable="IDAufenthaltColumn" msprop:Generator_UserColumnName="IDAufenthalt" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBenutzer" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBenutzer" msprop:Generator_ColumnPropNameInRow="IDBenutzer" msprop:Generator_ColumnPropNameInTable="IDBenutzerColumn" msprop:Generator_UserColumnName="IDBenutzer" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -796,6 +865,14 @@
     </xs:unique>
     <xs:unique name="MedizinischeDaten_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:MedizinischeDaten" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Recht_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Recht" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="ELGAProtocoll_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ELGAProtocoll" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
