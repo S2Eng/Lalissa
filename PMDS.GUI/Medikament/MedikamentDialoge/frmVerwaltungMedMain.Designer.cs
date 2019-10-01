@@ -40,6 +40,7 @@
             this.cboImportType = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.lblImportTyp = new Infragistics.Win.Misc.UltraLabel();
             this.btnDeleteMedikamenteNotUsed = new QS2.Desktop.ControlManagment.BaseButton();
+            this.lblStatus = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.cboImportType)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnImport.AutoWorkLayout = false;
             this.btnImport.IsStandardControl = false;
-            this.btnImport.Location = new System.Drawing.Point(205, 534);
+            this.btnImport.Location = new System.Drawing.Point(291, 523);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(90, 33);
             this.btnImport.TabIndex = 11;
@@ -71,7 +72,7 @@
             this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(777, 534);
+            this.btnAbort.Location = new System.Drawing.Point(777, 523);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(94, 33);
             this.btnAbort.TabIndex = 12;
@@ -83,7 +84,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.AutoWorkLayout = false;
             this.btnSave.IsStandardControl = false;
-            this.btnSave.Location = new System.Drawing.Point(683, 534);
+            this.btnSave.Location = new System.Drawing.Point(678, 523);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 33);
             this.btnSave.TabIndex = 13;
@@ -97,7 +98,7 @@
             this.btnClose.Appearance = appearance1;
             this.btnClose.AutoWorkLayout = false;
             this.btnClose.IsStandardControl = false;
-            this.btnClose.Location = new System.Drawing.Point(906, 534);
+            this.btnClose.Location = new System.Drawing.Point(908, 523);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(37, 33);
             this.btnClose.TabIndex = 14;
@@ -114,7 +115,7 @@
             this.cboImportType.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem1,
             valueListItem2});
-            this.cboImportType.Location = new System.Drawing.Point(17, 540);
+            this.cboImportType.Location = new System.Drawing.Point(90, 528);
             this.cboImportType.Name = "cboImportType";
             this.cboImportType.Size = new System.Drawing.Size(182, 21);
             this.cboImportType.TabIndex = 15;
@@ -122,7 +123,7 @@
             // lblImportTyp
             // 
             this.lblImportTyp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblImportTyp.Location = new System.Drawing.Point(17, 526);
+            this.lblImportTyp.Location = new System.Drawing.Point(17, 532);
             this.lblImportTyp.Name = "lblImportTyp";
             this.lblImportTyp.Size = new System.Drawing.Size(67, 17);
             this.lblImportTyp.TabIndex = 16;
@@ -133,12 +134,19 @@
             this.btnDeleteMedikamenteNotUsed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDeleteMedikamenteNotUsed.AutoWorkLayout = false;
             this.btnDeleteMedikamenteNotUsed.IsStandardControl = false;
-            this.btnDeleteMedikamenteNotUsed.Location = new System.Drawing.Point(331, 534);
+            this.btnDeleteMedikamenteNotUsed.Location = new System.Drawing.Point(387, 523);
             this.btnDeleteMedikamenteNotUsed.Name = "btnDeleteMedikamenteNotUsed";
             this.btnDeleteMedikamenteNotUsed.Size = new System.Drawing.Size(144, 33);
             this.btnDeleteMedikamenteNotUsed.TabIndex = 17;
             this.btnDeleteMedikamenteNotUsed.Text = "Nicht verwendete Medikamente löschen";
             this.btnDeleteMedikamenteNotUsed.Click += new System.EventHandler(this.btnDeleteMedikamenteNotUsed_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Location = new System.Drawing.Point(90, 562);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(441, 21);
+            this.lblStatus.TabIndex = 18;
             // 
             // frmMedikamentenVerwaltung
             // 
@@ -146,6 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(957, 583);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnDeleteMedikamenteNotUsed);
             this.Controls.Add(this.cboImportType);
             this.Controls.Add(this.lblImportTyp);
@@ -175,5 +184,6 @@
         private Infragistics.Win.UltraWinEditors.UltraComboEditor cboImportType;
         private Infragistics.Win.Misc.UltraLabel lblImportTyp;
         private QS2.Desktop.ControlManagment.BaseButton btnDeleteMedikamenteNotUsed;
+        public Infragistics.Win.Misc.UltraLabel lblStatus;
     }
 }

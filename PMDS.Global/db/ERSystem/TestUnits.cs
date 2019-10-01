@@ -650,6 +650,9 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort wurde geändert");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente daktiviert: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert verarbeitet.");
 
 
 

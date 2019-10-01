@@ -5,11 +5,11 @@ using PMDS.DB.Global;
 using PMDS.Data.Global;
 using System.Net;
 using System.IO;
+using System.Linq;
 
 using PMDS.Global.db.Patient;
 using PMDS.DB;
-
-
+using System.Windows.Forms;
 
 namespace PMDS.Global
 {
@@ -22,6 +22,9 @@ namespace PMDS.Global
 
         public dsMedikament dsMedikamentUpdateExisting = new dsMedikament();
         public DBMedikament DBMedikamentUpdateExisting = new DBMedikament();
+
+        private dsMedikament dsMedikamentImportGesamt = new dsMedikament();
+
 
         public class VariablesFile
         {
@@ -50,12 +53,7 @@ namespace PMDS.Global
             public int _iEnd = -1;
         }
 
-
-
-
-
-
-        public bool run(ref DateTime datStart, ref DateTime datEnd, ref int CountUpdated, ref string FileName, ref string FromNetworkDrive)
+        public bool run(ref Infragistics.Win.Misc.UltraLabel lbl, ref DateTime datStart, ref DateTime datEnd, out int CountUpdated, out int CountDeactivated, ref string FileName, ref string FromNetworkDrive)
         {
             try
             {
@@ -66,6 +64,8 @@ namespace PMDS.Global
                 this.DBMedikamentUpdateExisting.initControl();
                 this.dsMedikamentUpdateExisting.Clear();
                 this.DBMedikamentUpdateExisting.getMedikament(System.Guid.NewGuid(), this.dsMedikamentUpdateExisting, DBMedikament.eTypeSelMedikament.ID, "", "");
+
+                this.dsMedikamentImportGesamt.Clear();
 
                 datStart = DateTime.Now;
                 string sFile = "";
@@ -81,6 +81,12 @@ namespace PMDS.Global
                     }
                 }
 
+                int lines = sFile.Split(new char[] { '\n' }).Count();           // big array
+                
+
+                CountUpdated = 0;
+                CountDeactivated = 0;
+
                 int LineNr = 0;
                 string line = null;
                 System.IO.TextReader readFile = new StringReader(sFile);
@@ -89,6 +95,9 @@ namespace PMDS.Global
                 {
                     line = readFile.ReadLine();
                     LineNr += 1;
+                    CountUpdated += 1;
+                    setStatus(CountUpdated, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet." + " (" + lines.ToString() + ")"));
+
                     if (line != null)
                     {
                         if (line.Trim() != "")
@@ -107,11 +116,15 @@ namespace PMDS.Global
                                 this.dsMedikamentUpdate.Clear();
                                 this.dsMedikamentUpdateExisting.Clear();
                                 this.DBMedikamentUpdateExisting.getMedikament(System.Guid.Empty, this.dsMedikamentUpdateExisting, DBMedikament.eTypeSelMedikament.ExternIDOrderByGültigkeitsdatumDesc, val_EXT_ID.Trim(), "");
+                                dsMedikamentUpdateExisting.Medikament.OrderByDescending(o => o.Gültigkeitsdatum);
 
                                 bool IsOk = false;
                                 dsMedikament.MedikamentRow rNewMedikmant = null;
                                 if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 0)
                                 {
+                                    //Importierte Medikamente in dsMedikamentImportGesamt sammeln
+                                    dsMedikamentImportGesamt.Medikament.ImportRow(dsMedikamentUpdateExisting.Medikament.OrderByDescending(o =>o.Gültigkeitsdatum).First());   //Neuesten auswählen, wenn meht als einer aktuell ist
+
                                     int iAktuellMedikmaneteFound = 0;
                                     dsMedikament.MedikamentRow rExistingMedikmant = (dsMedikament.MedikamentRow)this.dsMedikamentUpdateExisting.Medikament.Rows[0];
                                     rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
@@ -119,8 +132,18 @@ namespace PMDS.Global
                                     bool GültigkeitsdatumExistsInDbForMedikament = false;
                                     dsMedikament.MedikamentRow rExistingMedLastDate = null;
 
-                                    if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1)
+                                    if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1)      //Ältere Einträge auf "Nicht aktuell" setzen
                                     {
+                                        //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                                        //{
+                                        //    for (int i = 1; i < this.dsMedikamentUpdateExisting.Medikament.Rows.Count; i++)
+                                        //    {
+                                        //        Guid ID = dsMedikamentUpdateExisting.Medikament[i].ID;
+                                        //        db.Medikament.Where(m => m.ID == ID).First().Aktuell = false;
+                                        //    }
+                                        //    db.SaveChanges();
+                                        //}
+
                                         throw new Exception("ImportMedDaten.run: this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1 for IDExtern='" + val_EXT_ID.Trim() + "'!");
                                     }
 
@@ -157,31 +180,12 @@ namespace PMDS.Global
                                     {
                                         IsOk = false;
                                     }
-                                    
-                                    //foreach (dsMedikament.MedikamentRow rExistingMed in arrMedExisting)
-                                    //{
-                                    //    if (rExistingMed.Aktuell)
-                                    //    {
-                                    //        rNewMedikmant.ItemArray = rExistingMedikmant.ItemArray;
-                                    //        rNewMedikmant.ID = System.Guid.NewGuid();
-                                    //        iAktuellMedikmaneteFound += 1;
-                                    //    }
-                                    //    rExistingMed.Aktuell = false;
-                                    //}
-                                    if (iAktuellMedikmaneteFound != 1)
-                                    {
-                                        //throw new Exception("ImportMedDaten.run: iAktuellMedikmaneteFound > 1 for IDExtern='" + val_EXT_ID.Trim() + "'!");
-                                    }
                                 }
                                 else if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count == 0)
                                 {
                                     rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
                                     IsOk = true;
                                 }
-                                //else if (this.dsMedikamentWork.Medikament.Rows.Count > 1)
-                                //{
-                                //    throw new Exception("ImportMedDaten.run: this.dsMedikamentUpdate.Medikament.Rows.Count > 1 for IDExtern='" + val_EXT_ID.Trim() + "'!");
-                                //}
 
                                 string val_Kassenzeichen = this.getVar(ref vars.Kassenzeichen, ref line).Trim();   
                                 if (val_Kassenzeichen.Trim() == "VN" || val_Kassenzeichen.Trim() == "VNW" || val_Kassenzeichen.Trim() == "VT" ||
@@ -222,10 +226,10 @@ namespace PMDS.Global
 
                                     string val_Erstattungscode = this.getVar(ref vars.Erstattungscode, ref line);
                                     rNewMedikmant.Erstattungscode = val_Erstattungscode.Trim();
-                                    if (rNewMedikmant.Erstattungscode.Trim() != "")
-                                    {
-                                        string xy = "";
-                                    }
+                                    //if (rNewMedikmant.Erstattungscode.Trim() != "")
+                                    //{
+                                    //    string xy = "";
+                                    //}
 
                                     string val_LastVar = this.getVar(ref vars.LastVar, ref line);
 
@@ -238,8 +242,6 @@ namespace PMDS.Global
                                     {
                                         this.DBMedikamentUpdateExisting.daMedikament2.Update(this.dsMedikamentUpdateExisting.Medikament);
                                     }
-
-                                    CountUpdated += 1;
                                 }
                             }
                         }
@@ -253,16 +255,50 @@ namespace PMDS.Global
                         doWhile = false;
                     }
                 }
-
                 readFile.Close();
                 readFile = null;
-                datEnd = DateTime.Now;
 
+                if (FileName == "APGDA.001")
+                {
+                    //os: 30-09-2019: Bereits importierte, aber im aktuellen Katalog nicht mehr vorhandene Einträge auf inaktiv setzen
+                    //für jedes Medikament (importiert = 1, Aktuell = 1) prüfen, ob das Medikament im File enthalten ist. Wenn nein -> Aktuell auf 0 setzen.
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                    {
+                        var medToCheck = db.Medikament.Where(m => m.Importiert == true && m.Aktuell == true).ToList();
+                        var medImport = (from r in dsMedikamentImportGesamt.Medikament select r).ToList();
+
+                        //Alle aktiven, importierten Rows, die in medToCheck sind, aber nicht im Importfile
+                        var medUpdate = (from c in medToCheck
+                                         where !(from o in medImport select o.Zulassungsnummer).Contains(c.Zulassungsnummer)
+                                         select c).ToList();
+
+                        CountDeactivated = medUpdate.Count();   //Extra, damit die Anzahl der deaktivierten Rows zurückgegeben werden kann.
+                        setStatus(CountDeactivated, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert verarbeitet."));
+                        medUpdate.ForEach(x => x.Aktuell = false);
+                        db.SaveChanges();
+                    }
+                }
+
+                setStatus(0, lbl, "");
+                datEnd = DateTime.Now;
                 return true;
             }
             catch (Exception ex)
             {
                 throw new Exception("ImportMedDaten.run: " + ex.ToString());
+            }
+        }
+
+        public void setStatus(int i, Infragistics.Win.Misc.UltraLabel lbl, string txt)
+        {
+            if (i % 100 == 0 || txt == "")
+            {
+                if (lbl != null)
+                {
+                    string sText = (txt == "" ? "" :  (i.ToString() + " " + txt).Trim());
+                    lbl.Invoke((MethodInvoker)delegate { lbl.Text = sText; });
+                }
+                Application.DoEvents();
             }
         }
 
