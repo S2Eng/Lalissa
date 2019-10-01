@@ -458,29 +458,11 @@ Public Class workCalcDb
                                 'sProt += rBill.RechNr.Trim() + " - Brutto Export <> (Rech.Betrag+Rech.MwSt) = 0" + vbNewLine
                             End If
                         End If
-                        'If rCalcDocu(Me.dbCalcTemp.KostenKostenträger.KennungColumn.ColumnName) = eTypProt.MWStSatz.ToString() Then
-
-                        '    Dim lineExport1 As New lineExport()
-                        '    lineExport1.expMwst = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.MWStSatzColumn.ColumnName)
-                        '    lineExport1.expBetrag = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempBruttoColumn.ColumnName)
-                        '    lineExport1.expSteuer = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempMWStColumn.ColumnName) * -1
-                        '    lineExport1.expMWStSatzKonto = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempKontoExportColumn.ColumnName)
-                        '    lineExport1.expOpbetrag = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempBruttoColumn.ColumnName)
-                        '    If billStatus = eBillStatus.storniert Then
-                        '        lineExport1.expBetrag *= -1
-                        '        'lineExport1.expSteuer *= -1
-                        '    End If
-                        '    linesToExport.Add(lineExport1)
-                        'End If
                     Next
 
                 ElseIf billTyp = eBillTyp.Sammelrechnung Then
                     Using db As PMDS.db.Entities.ERModellPMDSEntities = calculation.delgetDBContext.Invoke()
                         For Each rCalcDocu As DataRow In arrCalcDocu
-                            If rCalcDocu(Me.dbCalcTemp.KostenKostenträger.BezeichnungColumn.ColumnName).ToString().Trim().ToLower().Contains(("Kaufmann").Trim().ToLower) Then
-                                Dim bStop As Boolean = True
-                            End If
-
                             If rCalcDocu(Me.dbCalcTemp.KostenKostenträger.KennungColumn.ColumnName) = eTypProt.LZ.ToString() Then
                                 Dim lineExport1 As New lineExport()
                                 lineExport1.expMwst = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.MWStColumn.ColumnName)
@@ -523,7 +505,7 @@ Public Class workCalcDb
                                         Dim Mwst As Double = 0
                                         If rCalcDocu(Me.dbCalcTemp.KostenKostenträger.MWStColumn.ColumnName) <> 0 Then
                                             Mwst = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName) * (rCalcDocu(Me.dbCalcTemp.KostenKostenträger.MWStColumn.ColumnName) / 100), 2)
-                                            lineExport1.expBetrag = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName), 2) + Mwst
+                                            lineExport1.expBetrag = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName) + Mwst, 2)
                                         Else
                                             lineExport1.expBetrag = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName), 2)
                                         End If
@@ -556,8 +538,9 @@ Public Class workCalcDb
                                                 bZahlerFound = True
                                             Next
                                         Next
-                                        lineExport1.expBetrag = Math.Round(expBetragOrig, 2) + Math.Round(expSteuerOrig, 2)
                                         lineExport1.expSteuer = Math.Round(expSteuerOrig, 2)
+                                        lineExport1.expBetrag = Math.Round(expBetragOrig + lineExport1.expSteuer, 2)
+
 
                                         If Not bZahlerFound Then
                                             sProt += "Fehler: Sammelrechnung " + rBill.RechNr.Trim() + " bei Klient '" + rBill.KlientName + "' Für LZ " + rCalcDocu(Me.dbCalcTemp.KostenKostenträger.BezeichnungColumn.ColumnName).ToString() + " wurde kein Zahler gefunden! Bitte überprüfen Sie den Export!" + vbNewLine
@@ -567,7 +550,7 @@ Public Class workCalcDb
                                     Dim Mwst As Double = 0
                                     If rCalcDocu(Me.dbCalcTemp.KostenKostenträger.MWStColumn.ColumnName) <> 0 Then
                                         Mwst = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName) * (rCalcDocu(Me.dbCalcTemp.KostenKostenträger.MWStColumn.ColumnName) / 100), 2)
-                                        lineExport1.expBetrag = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName), 2) + Mwst
+                                        lineExport1.expBetrag = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName) + Mwst, 2)
                                     Else
                                         lineExport1.expBetrag = Math.Round(rCalcDocu(Me.dbCalcTemp.KostenKostenträger.NettoColumn.ColumnName), 2)
                                     End If
@@ -594,17 +577,6 @@ Public Class workCalcDb
                                     lstSRFibuDistinct.Add(lineExport1.FIBU.Trim())
                                 End If
                             End If
-
-                            'Dim lineExport1 As New lineExport()
-                            'If rCalcDocu(Me.dbCalcTemp.KostenKostenträger.KennungColumn.ColumnName) = eTypProt.MWStSatz.ToString() Then
-                            '    lineExport1.expMwst = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.MWStSatzColumn.ColumnName)
-                            '    lineExport1.expBetrag = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempBruttoColumn.ColumnName)
-                            '    lineExport1.expSteuer = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempMWStColumn.ColumnName) * -1
-                            '    lineExport1.expMWStSatzKonto = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempKontoExportColumn.ColumnName)
-                            '    lineExport1.expOpbetrag = rCalcDocu(Me.dbCalcTemp.KostenKostenträger.tempBruttoColumn.ColumnName)
-                            '    linesToExport.Add(lineExport1)
-
-                            'End If
                         Next
                     End Using
                 End If
@@ -778,7 +750,7 @@ Public Class workCalcDb
 
             rNewRowExport.buchcode = "1"
             rNewRowExport.betrag = lineExport1.expBetrag
-            rNewRowExport.steuer = lineExport1.expSteuer
+            rNewRowExport.steuer = Math.Round(((lineExport1.expBetrag * -1) / (100 + lineExport1.expMwst)) * lineExport1.expMwst, 2, MidpointRounding.ToEven)
 
             rNewRowExport.text = "RE " + NameKost.Trim()
             If rNewRowExport.text.Length > 18 Then
