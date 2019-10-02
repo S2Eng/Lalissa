@@ -23,8 +23,22 @@ namespace PMDS.Global
         public dsMedikament dsMedikamentUpdateExisting = new dsMedikament();
         public DBMedikament DBMedikamentUpdateExisting = new DBMedikament();
 
-        private dsMedikament dsMedikamentImportGesamt = new dsMedikament();
+        //private dsMedikament dsMedikamentImportGesamt = new dsMedikament();
+        List<string> lstImport_ExtID = new List<string>();
 
+        private Dictionary<string, string> dictMEH = new Dictionary<string, string>()
+                                            {
+                                                {"HB","Hub/Hübe"},
+                                                {"CM", "Zentimeter"},
+                                                {"PK","Packung(en)"},
+                                                {"L","Liter"},
+                                                {"ST","Stück"},
+                                                {"FL","Flasche(n)"},
+                                                {"G","Gramm"},
+                                                {"KG","Kilogramm"},
+                                                {"ML","Milliliter"},
+                                                {"M","Meter"}
+                                            };
 
         public class VariablesFile
         {
@@ -53,7 +67,7 @@ namespace PMDS.Global
             public int _iEnd = -1;
         }
 
-        public bool run(ref Infragistics.Win.Misc.UltraLabel lbl, ref DateTime datStart, ref DateTime datEnd, out int CountUpdated, out int CountDeactivated, ref string FileName, ref string FromNetworkDrive)
+        public bool run(bool TranslateELGA, ref Infragistics.Win.Misc.UltraLabel lbl, ref DateTime datStart, ref DateTime datEnd, out int CountUpdated, out int CountDeactivated, ref string FileName, ref string FromNetworkDrive)
         {
             try
             {
@@ -64,8 +78,6 @@ namespace PMDS.Global
                 this.DBMedikamentUpdateExisting.initControl();
                 this.dsMedikamentUpdateExisting.Clear();
                 this.DBMedikamentUpdateExisting.getMedikament(System.Guid.NewGuid(), this.dsMedikamentUpdateExisting, DBMedikament.eTypeSelMedikament.ID, "", "");
-
-                this.dsMedikamentImportGesamt.Clear();
 
                 datStart = DateTime.Now;
                 string sFile = "";
@@ -81,182 +93,107 @@ namespace PMDS.Global
                     }
                 }
 
-                int lines = sFile.Split(new char[] { '\n' }).Count();           // big array
+                //sFile = System.IO.File.ReadAllText("C:\\TEMP\\APGDA.001");
+                string[] aImport = sFile.Split(new char[] { '\n' });
+                int lines = aImport.Count();
                 
-
                 CountUpdated = 0;
                 CountDeactivated = 0;
-
                 int LineNr = 0;
-                string line = null;
-                System.IO.TextReader readFile = new StringReader(sFile);
-                bool doWhile = true;
-                while (doWhile)
-                {
-                    line = readFile.ReadLine();
-                    LineNr += 1;
-                    CountUpdated += 1;
-                    setStatus(CountUpdated, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet." + " (" + lines.ToString() + ")"));
 
-                    if (line != null)
+                VariablesFile vars = new VariablesFile();
+
+                foreach (string line in aImport)
+                {                    
+                    setStatus(LineNr++, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet." + " (" + lines.ToString() + ")"));
+
+                    if (!String.IsNullOrEmpty(line))
                     {
-                        if (line.Trim() != "")
+                        //Veterinärprodukt oder Druckunterdrückung nicht bearbeiten
+                        string val_Kassenzeichen = this.getVar(ref vars.Kassenzeichen, line).Trim();
+                        string val_Druckunterdrückung = this.getVar(ref vars.Druckunterdrückung, line).Trim();
+                        if (val_Kassenzeichen.Trim() == "VN" || val_Kassenzeichen.Trim() == "VNW" || val_Kassenzeichen.Trim() == "VT" ||
+                            val_Kassenzeichen.Trim() == "VTW" || val_Druckunterdrückung.Trim() == "D")  
                         {
-                            VariablesFile vars = new VariablesFile();
+                            continue;
+                        }
 
-                            string val_EXT_ID = this.getVar(ref vars.EXT_ID, ref line);
+                        CountUpdated += 1;
+                        string val_EXT_ID = this.getVar(ref vars.EXT_ID, line);
+                        string val_Gültigkeitsdatum = this.getVar(ref vars.Gültigkeitsdatum, line).Trim();
+                        int iYear = System.Convert.ToInt32(val_Gültigkeitsdatum.Substring(2, 2)) + 2000;
+                        int iMonth = System.Convert.ToInt32(val_Gültigkeitsdatum.Substring(0, 2));
+                        DateTime datGültigkeitsdatum = new DateTime(iYear, iMonth, 1);
 
-                            string val_Gültigkeitsdatum = this.getVar(ref vars.Gültigkeitsdatum, ref line);
-                            int iYear = System.Convert.ToInt32(val_Gültigkeitsdatum.Trim().Substring(2, 2)) + 2000;
-                            int iMonth = System.Convert.ToInt32(val_Gültigkeitsdatum.Trim().Substring(0, 2));
-                            DateTime datGültigkeitsdatum = new DateTime(iYear, iMonth, 1);
+                        if (val_EXT_ID != "")
+                        {
+                            this.dsMedikamentUpdate.Clear();
+                            this.dsMedikamentUpdateExisting.Clear();
+                            this.DBMedikamentUpdateExisting.getMedikament(System.Guid.Empty, this.dsMedikamentUpdateExisting, DBMedikament.eTypeSelMedikament.ExternIDOrderByGültigkeitsdatumDesc, val_EXT_ID, "");
 
-                            if (val_EXT_ID.Trim() != "")
-                            { 
-                                this.dsMedikamentUpdate.Clear();
-                                this.dsMedikamentUpdateExisting.Clear();
-                                this.DBMedikamentUpdateExisting.getMedikament(System.Guid.Empty, this.dsMedikamentUpdateExisting, DBMedikament.eTypeSelMedikament.ExternIDOrderByGültigkeitsdatumDesc, val_EXT_ID.Trim(), "");
-                                dsMedikamentUpdateExisting.Medikament.OrderByDescending(o => o.Gültigkeitsdatum);
+                            // Es darf nicht mehr als einen aktiven Eintrag pro Ext_ID geben!
+                            if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1)
+                            {
+                                throw new Exception("ImportMedDaten.run: this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1 for IDExtern='" + val_EXT_ID + "'!");
+                            }
 
-                                bool IsOk = false;
-                                dsMedikament.MedikamentRow rNewMedikmant = null;
-                                if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 0)
+                            lstImport_ExtID.Add(val_EXT_ID); //alle EXT_IDs aus ImportFile sammeln (fürs Deaktivieren von nicht mehr vorhandenen Medikamenten in der DB) bei Gesamtimport
+
+                            bool bAddNewMedikament = false;
+                            dsMedikament.MedikamentRow rNewMedikmant = null;
+                            if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count == 1) //Update bestehendes Medikament
+                            {                                
+                                dsMedikament.MedikamentRow rExistingMedikmant = (dsMedikament.MedikamentRow)this.dsMedikamentUpdateExisting.Medikament.Rows[0];
+                                rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
+
+                                var rAktuell = dsMedikamentUpdateExisting.Medikament.First();                                
+                                if (rAktuell.IsGültigkeitsdatumNull() || rAktuell.Gültigkeitsdatum < datGültigkeitsdatum) //Neueres Gültigkeitsdatum gefunden
                                 {
-                                    //Importierte Medikamente in dsMedikamentImportGesamt sammeln
-                                    dsMedikamentImportGesamt.Medikament.ImportRow(dsMedikamentUpdateExisting.Medikament.OrderByDescending(o =>o.Gültigkeitsdatum).First());   //Neuesten auswählen, wenn meht als einer aktuell ist
-
-                                    int iAktuellMedikmaneteFound = 0;
-                                    dsMedikament.MedikamentRow rExistingMedikmant = (dsMedikament.MedikamentRow)this.dsMedikamentUpdateExisting.Medikament.Rows[0];
-                                    rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
-
-                                    bool GültigkeitsdatumExistsInDbForMedikament = false;
-                                    dsMedikament.MedikamentRow rExistingMedLastDate = null;
-
-                                    if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1)      //Ältere Einträge auf "Nicht aktuell" setzen
-                                    {
-                                        //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                                        //{
-                                        //    for (int i = 1; i < this.dsMedikamentUpdateExisting.Medikament.Rows.Count; i++)
-                                        //    {
-                                        //        Guid ID = dsMedikamentUpdateExisting.Medikament[i].ID;
-                                        //        db.Medikament.Where(m => m.ID == ID).First().Aktuell = false;
-                                        //    }
-                                        //    db.SaveChanges();
-                                        //}
-
-                                        throw new Exception("ImportMedDaten.run: this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1 for IDExtern='" + val_EXT_ID.Trim() + "'!");
-                                    }
-
-                                    dsMedikament.MedikamentRow[] arrMedExisting = (dsMedikament.MedikamentRow[])this.dsMedikamentUpdateExisting.Medikament.Select("", this.dsMedikamentUpdateExisting.Medikament.GültigkeitsdatumColumn.ColumnName + " desc ");
-                                    foreach (dsMedikament.MedikamentRow rExistingMed in arrMedExisting)
-                                    {
-                                        if (!rExistingMed.IsGültigkeitsdatumNull())
-                                        {
-                                            if (rExistingMed.Gültigkeitsdatum.Day != 1)
-                                            {
-                                                throw new Exception("ImportMedDaten.run: rExistingMed.Gültigkeitsdatum.Day != 1 for IDExtern='" + val_EXT_ID.Trim() + "'!");
-                                            }
-                                            if (rExistingMed.Gültigkeitsdatum >= datGültigkeitsdatum)
-                                            {
-                                                GültigkeitsdatumExistsInDbForMedikament = true;
-                                            }
-                                        }
-                                    }
-                                    if (!GültigkeitsdatumExistsInDbForMedikament)
-                                    {
-
-                                        rExistingMedLastDate = (dsMedikament.MedikamentRow)arrMedExisting[0];
-                                        rNewMedikmant.ItemArray = rExistingMedLastDate.ItemArray;
-                                        rNewMedikmant.ID = System.Guid.NewGuid();
-                                        iAktuellMedikmaneteFound += 1;
-
-                                        foreach (dsMedikament.MedikamentRow rExistingMed in arrMedExisting)
-                                        {
-                                            rExistingMed.Aktuell = false;
-                                        }
-                                        IsOk = true;
-                                    }
-                                    else
-                                    {
-                                        IsOk = false;
-                                    }
-                                }
-                                else if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count == 0)
-                                {
-                                    rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
-                                    IsOk = true;
-                                }
-
-                                string val_Kassenzeichen = this.getVar(ref vars.Kassenzeichen, ref line).Trim();   
-                                if (val_Kassenzeichen.Trim() == "VN" || val_Kassenzeichen.Trim() == "VNW" || val_Kassenzeichen.Trim() == "VT" ||
-                                    val_Kassenzeichen.Trim() == "VTW")  // ==> Veterinärprodukt
-                                {
-                                    IsOk = false;
-                                }
-                                string val_Druckunterdrückung = this.getVar(ref vars.Druckunterdrückung, ref line).Trim();
-                                if (val_Druckunterdrückung.Trim() == "D")
-                                {
-                                    IsOk = false;
-                                }
-                                
-                                if (IsOk)
-                                {
-                                    rNewMedikmant.EXT_ID = val_EXT_ID.Trim();
-                                    rNewMedikmant.Kassenzeichen = val_Kassenzeichen;
-
-                                    string val_Zulassungsnummer = this.getVar(ref vars.Zulassungsnummer, ref line);
-                                    rNewMedikmant.Zulassungsnummer = val_Zulassungsnummer.Trim();
-
-                                    rNewMedikmant.Gültigkeitsdatum = datGültigkeitsdatum.Date;
-
-                                    string val_Lagervorschrift = this.getVar(ref vars.Lagervorschrift, ref line);
-                                    rNewMedikmant.Lagervorschrift = val_Lagervorschrift.Trim();
-
-                                    string val_Bezeichnung = this.getVar(ref vars.Bezeichnung, ref line);
-                                    rNewMedikmant.Bezeichnung = val_Bezeichnung.Trim();
-
-                                    string val_Packungsgroesse = this.getVar(ref vars.Packungsgroesse, ref line);
-                                    rNewMedikmant.Packungsgroesse = System.Convert.ToDouble(val_Packungsgroesse.Trim());
-
-                                    string val_Packungseinheit = this.getVar(ref vars.Packungseinheit, ref line);
-                                    rNewMedikmant.Packungseinheit = val_Packungseinheit.Trim();
-
-                                    if (rNewMedikmant.Packungseinheit.Equals("ST", StringComparison.CurrentCultureIgnoreCase))
-                                        rNewMedikmant.Herrichten = (int)medHerrichten.langfristig;               
-
-                                    string val_Erstattungscode = this.getVar(ref vars.Erstattungscode, ref line);
-                                    rNewMedikmant.Erstattungscode = val_Erstattungscode.Trim();
-                                    //if (rNewMedikmant.Erstattungscode.Trim() != "")
-                                    //{
-                                    //    string xy = "";
-                                    //}
-
-                                    string val_LastVar = this.getVar(ref vars.LastVar, ref line);
-
-                                    rNewMedikmant.ImportiertAm = datStart;
-                                    rNewMedikmant.Importiert = true;
-                                    rNewMedikmant.Aktuell = true;
-
-                                    this.DBMedikamentUpdate.daMedikament2.Update(this.dsMedikamentUpdate.Medikament);
-                                    if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 0)
-                                    {
-                                        this.DBMedikamentUpdateExisting.daMedikament2.Update(this.dsMedikamentUpdateExisting.Medikament);
-                                    }
+                                    rAktuell.Aktuell = false;
+                                    bAddNewMedikament = true;
                                 }
                             }
-                        }
-                        else
-                        {
-                            doWhile = false;
-                        }
-                    }
-                    else
-                    {
-                        doWhile = false;
+                            else if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count == 0)  // Neues Medikament
+                            {                               
+                                bAddNewMedikament = true;
+                            }
+
+                            if (bAddNewMedikament)
+                            {
+                                rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
+
+                                rNewMedikmant.EXT_ID = val_EXT_ID.Trim();
+                                rNewMedikmant.Kassenzeichen = val_Kassenzeichen;
+                                rNewMedikmant.Zulassungsnummer = this.getVar(ref vars.Zulassungsnummer, line);
+                                rNewMedikmant.Gültigkeitsdatum = datGültigkeitsdatum.Date;
+                                rNewMedikmant.Lagervorschrift = this.getVar(ref vars.Lagervorschrift, line);
+                                rNewMedikmant.Bezeichnung = this.getVar(ref vars.Bezeichnung, line);
+                                rNewMedikmant.Packungsgroesse = System.Convert.ToDouble(this.getVar(ref vars.Packungsgroesse, line));
+                                rNewMedikmant.Erstattungscode = this.getVar(ref vars.Erstattungscode, line);
+
+                                if (TranslateELGA)
+                                    rNewMedikmant.Packungseinheit = dictMEH[this.getVar(ref vars.Packungseinheit, line)];
+                                else
+                                    rNewMedikmant.Packungseinheit = this.getVar(ref vars.Packungseinheit, line);
+
+                                if (rNewMedikmant.Packungseinheit.Equals("ST", StringComparison.CurrentCultureIgnoreCase) || rNewMedikmant.Packungseinheit.Equals("Stück", StringComparison.CurrentCultureIgnoreCase))
+                                    rNewMedikmant.Herrichten = (int)medHerrichten.langfristig;
+
+                                //string val_LastVar = this.getVar(ref vars.LastVar, line);
+
+                                rNewMedikmant.ImportiertAm = datStart;
+                                rNewMedikmant.Importiert = true;
+                                rNewMedikmant.Aktuell = true;
+
+                                this.DBMedikamentUpdate.daMedikament2.Update(this.dsMedikamentUpdate.Medikament);
+                                if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 0)
+                                {
+                                    this.DBMedikamentUpdateExisting.daMedikament2.Update(this.dsMedikamentUpdateExisting.Medikament);
+                                }
+                            }
+                        }                        
                     }
                 }
-                readFile.Close();
-                readFile = null;
 
                 if (FileName == "APGDA.001")
                 {
@@ -265,11 +202,10 @@ namespace PMDS.Global
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
                         var medToCheck = db.Medikament.Where(m => m.Importiert == true && m.Aktuell == true).ToList();
-                        var medImport = (from r in dsMedikamentImportGesamt.Medikament select r).ToList();
 
                         //Alle aktiven, importierten Rows, die in medToCheck sind, aber nicht im Importfile
                         var medUpdate = (from c in medToCheck
-                                         where !(from o in medImport select o.Zulassungsnummer).Contains(c.Zulassungsnummer)
+                                         where !(from o in lstImport_ExtID select o).Contains(c.EXT_ID)
                                          select c).ToList();
 
                         CountDeactivated = medUpdate.Count();   //Extra, damit die Anzahl der deaktivierten Rows zurückgegeben werden kann.
@@ -302,16 +238,12 @@ namespace PMDS.Global
             }
         }
 
-        public string getVar(ref VariableFile var, ref string line)
+        public string getVar(ref VariableFile var, string line)
         {
             try
             {
                 string sValue = "";
-                //if (line.Length >= var._iEnd - 1)
-                //{
-                    sValue = line.Substring(var._iStart - 1, var._iEnd - var._iStart + 1);
-                //}
-
+                sValue = line.Substring(var._iStart - 1, var._iEnd - var._iStart + 1);
                 return sValue.Trim();
             }
             catch (Exception ex)

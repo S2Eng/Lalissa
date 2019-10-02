@@ -147,7 +147,7 @@ namespace PMDS.GUI
                     int CountDeactivated = 0;
 
                     string SelFileName = this.cboImportType.SelectedItem.DataValue.ToString();
-                    if (ImportMedDaten1.run(ref this.lblStatus, ref datStart, ref datEnd, out CountUpdated, out CountDeactivated, ref SelFileName, ref PMDS.Global.ENV.MedikamenteImportType))
+                    if (ImportMedDaten1.run(this.chkELGATranslate.Checked, ref this.lblStatus, ref datStart, ref datEnd, out CountUpdated, out CountDeactivated, ref SelFileName, ref PMDS.Global.ENV.MedikamenteImportType))
                     {
                         this.ucVerwaltungMedTabelle1.ProcessSearch();
 

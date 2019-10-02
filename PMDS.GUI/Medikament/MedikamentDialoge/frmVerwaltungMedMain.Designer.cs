@@ -41,7 +41,9 @@
             this.lblImportTyp = new Infragistics.Win.Misc.UltraLabel();
             this.btnDeleteMedikamenteNotUsed = new QS2.Desktop.ControlManagment.BaseButton();
             this.lblStatus = new Infragistics.Win.Misc.UltraLabel();
+            this.chkELGATranslate = new QS2.Desktop.ControlManagment.BaseCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.cboImportType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkELGATranslate)).BeginInit();
             this.SuspendLayout();
             // 
             // ucVerwaltungMedTabelle1
@@ -60,7 +62,7 @@
             this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnImport.AutoWorkLayout = false;
             this.btnImport.IsStandardControl = false;
-            this.btnImport.Location = new System.Drawing.Point(291, 523);
+            this.btnImport.Location = new System.Drawing.Point(421, 523);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(90, 33);
             this.btnImport.TabIndex = 11;
@@ -134,7 +136,7 @@
             this.btnDeleteMedikamenteNotUsed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDeleteMedikamenteNotUsed.AutoWorkLayout = false;
             this.btnDeleteMedikamenteNotUsed.IsStandardControl = false;
-            this.btnDeleteMedikamenteNotUsed.Location = new System.Drawing.Point(387, 523);
+            this.btnDeleteMedikamenteNotUsed.Location = new System.Drawing.Point(517, 523);
             this.btnDeleteMedikamenteNotUsed.Name = "btnDeleteMedikamenteNotUsed";
             this.btnDeleteMedikamenteNotUsed.Size = new System.Drawing.Size(144, 33);
             this.btnDeleteMedikamenteNotUsed.TabIndex = 17;
@@ -148,12 +150,21 @@
             this.lblStatus.Size = new System.Drawing.Size(441, 21);
             this.lblStatus.TabIndex = 18;
             // 
+            // chkELGATranslate
+            // 
+            this.chkELGATranslate.Location = new System.Drawing.Point(278, 530);
+            this.chkELGATranslate.Name = "chkELGATranslate";
+            this.chkELGATranslate.Size = new System.Drawing.Size(137, 19);
+            this.chkELGATranslate.TabIndex = 19;
+            this.chkELGATranslate.Text = "ELGA-MEH benutzen";
+            // 
             // frmMedikamentenVerwaltung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(957, 583);
+            this.Controls.Add(this.chkELGATranslate);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnDeleteMedikamenteNotUsed);
             this.Controls.Add(this.cboImportType);
@@ -169,6 +180,7 @@
             this.Text = "Medikamentenverwaltung";
             this.Load += new System.EventHandler(this.frmMedikamentenVerwaltung2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cboImportType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkELGATranslate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +197,6 @@
         private Infragistics.Win.Misc.UltraLabel lblImportTyp;
         private QS2.Desktop.ControlManagment.BaseButton btnDeleteMedikamenteNotUsed;
         public Infragistics.Win.Misc.UltraLabel lblStatus;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkELGATranslate;
     }
 }
