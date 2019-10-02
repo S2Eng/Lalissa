@@ -221,5 +221,9 @@ namespace PMDS.GUI.BaseControls
 
         }
 
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
