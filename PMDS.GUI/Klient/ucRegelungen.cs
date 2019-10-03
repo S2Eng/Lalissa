@@ -11,9 +11,7 @@ using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.Klient;
 using PMDS.GUI.Klient;
-
-
-
+using PMDS.DB;
 
 namespace PMDS.GUI
 {
@@ -26,7 +24,7 @@ namespace PMDS.GUI
         private bool _readOnly = false;
         public ucSiteMapKlientenDetails ucSiteMapKlientenDetailsMain = null;
 
-
+        private PMDSBusiness b = new PMDSBusiness();
 
 
 
@@ -104,6 +102,15 @@ namespace PMDS.GUI
             cmbPostregel.Text               = Klient.Aufenthalt == null ? "" : Klient.Aufenthalt.Postregelung.Trim();
             txtSonstRegel.Text              = Klient.Aufenthalt == null ? "" : Klient.Aufenthalt.SonstigeRegelung.Trim();
             gridUnterbringung.DataSource    = Klient.UNTERBRINGUNG.ALL ;
+
+
+            foreach (UltraGridRow rGrid in this.gridUnterbringung.Rows)
+            {
+                DataRowView v = (DataRowView)rGrid.ListObject;
+                dsUnterbringung.UnterbringungRow rUnterb = (dsUnterbringung.UnterbringungRow)v.Row;
+                if (!rUnterb.IsEDI_BenutzerNull())
+                    rGrid.Cells["EDI_BenutzerGesendet"].Value = b.getUser(rUnterb.EDI_Benutzer).Nachname + " " + b.getUser(rUnterb.EDI_Benutzer).Vorname;
+            }
 
             if (Klient.UNTERBRINGUNG.ALL.Unterbringung.Rows.Count == 0)
             {
