@@ -650,20 +650,6 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort wurde geändert");
 
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Rechte wurde geändert");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung aktiv");
-
-
-                DialogResult res2 = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" +
-                                                                                            "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?", "ELGA", MessageBoxButtons.YesNo);
-
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Die ELGA-Sitzung läuft in {0} Minuten ab." + "\r\n" +
-                                                                        "Soll die ELGA-Sitzung automatisch verlängert werden?");
-
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung - keine Verlängerung mehr möglich");
-
-
-
 
 
 

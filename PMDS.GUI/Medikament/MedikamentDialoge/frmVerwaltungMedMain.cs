@@ -137,19 +137,23 @@ namespace PMDS.GUI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
+                
                 PMDS.Global.ImportMedDaten ImportMedDaten1 = new PMDS.Global.ImportMedDaten();
                 if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie die Medikamente wirklich neu importieren?", "Importieren", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     DateTime datStart = new DateTime();
                     DateTime datEnd = new DateTime();
                     int CountUpdated = 0;
+                    int CountDeactivated = 0;
+
                     string SelFileName = this.cboImportType.SelectedItem.DataValue.ToString();
-                    if (ImportMedDaten1.run(ref datStart, ref datEnd, ref CountUpdated, ref SelFileName, ref PMDS.Global.ENV.MedikamenteImportType))
+                    if (ImportMedDaten1.run(this.chkELGATranslate.Checked, ref this.lblStatus, ref datStart, ref datEnd, out CountUpdated, out CountDeactivated, ref SelFileName, ref PMDS.Global.ENV.MedikamenteImportType))
                     {
                         this.ucVerwaltungMedTabelle1.ProcessSearch();
 
-                        string txtInfo = "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente eingespielt: ") + CountUpdated.ToString() + "\r\n" + "\r\n";
+                        string txtInfo = "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente eingespielt: ") + CountUpdated.ToString();
+                        txtInfo += "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente daktiviert: ") + CountDeactivated.ToString() + "\r\n" + "\r\n";
+
                         txtInfo += QS2.Desktop.ControlManagment.ControlManagment.getRes("Start: ") + datStart.ToString() + "\r\n";
                         txtInfo += QS2.Desktop.ControlManagment.ControlManagment.getRes("Ende: ") + datEnd.ToString() + "";
 
