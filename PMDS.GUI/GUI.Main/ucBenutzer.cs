@@ -885,7 +885,10 @@ namespace PMDS.GUI
                 {
                     this.contELGAUser1 = new contELGAUser();
                     this.contELGAUser1.Dock = DockStyle.Fill;
+                    this.contELGAUser1.mainWindow = this;
                     this.contELGAUser1.initControl();
+                    this.contELGAUser1.contELGASettings1.mainWindowBenutzer = this;
+                    this.contELGAUser1.contELGARights1.mainWindowBenutzer = this;
                     this.panelELGA.Controls.Add(this.contELGAUser1);
                     this.ultraTabControl1.Tabs["ELGA"].Visible = true;
 
@@ -1149,7 +1152,7 @@ namespace PMDS.GUI
             Benutzer = new Benutzer();
         }
 
-        protected void OnValueChanged(object sender, EventArgs args)
+        public void OnValueChanged(object sender, EventArgs args)
         {
             if (_valueChangeEnabled && (ValueChanged != null))
             {
@@ -1200,8 +1203,8 @@ namespace PMDS.GUI
             string MsgTxt = "";
             bool cbBerufsgruppeOK = PMDSBusinessUI.checkCboBox(this.cbBerufsstand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Berufsst."), true, ref MsgTxt);
             bool cbELGAAutSpOK =  PMDSBusinessUI.checkCboBox(this.cboELGA_AuthorSpeciality, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA Author speciality"), true, ref MsgTxt);
-            bool cbLandOK = PMDSBusinessUI.checkCboBox(this.ucAdresse1.cboLand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Land"), true, ref MsgTxt);
-            if (!cbBerufsgruppeOK || !cbELGAAutSpOK || !cbLandOK)
+      /*      bool cbLandOK = PMDSBusinessUI.checkCboBox(this.ucAdresse1.cboLand, QS2.Desktop.ControlManagment.ControlManagment.getRes("Land"), true, ref MsgTxt)*/;
+            if (!cbBerufsgruppeOK || !cbELGAAutSpOK)
             {
                 bError = true;
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);

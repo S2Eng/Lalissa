@@ -15,7 +15,7 @@ namespace PMDS.GUI.ELGA
     public partial class contELGAUser : UserControl
     {
 
-        public ucBenutzerEdit mainWindow = null;
+        public ucBenutzer mainWindow = null;
         public bool IsInitialized = false;
 
 
@@ -104,6 +104,12 @@ namespace PMDS.GUI.ELGA
             {
                 this.contELGASettings1.saveData();
                 this.contELGARights1.saveData();
+
+                this.loadData(this.contELGASettings1._IDUser.Value, this.contELGASettings1._IsNew, this.contELGASettings1._Editable);
+
+                //this.mainWindow.contELGAUser1.contELGAProtocoll1.loadData(this.mainWindow.contELGAUser1.contELGAProtocoll1._IDUser, 
+                //                                                                        this.mainWindow.contELGAUser1.contELGAProtocoll1._IsNew, 
+                //                                                                        this.mainWindow.contELGAUser1.contELGAProtocoll1._Editable);
 
                 return true;
 

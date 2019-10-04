@@ -4751,6 +4751,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.LogggedOnUser: " + ex.ToString());
             }
         }
+
         public string getUserName(Guid IDUsr)
         {
             try

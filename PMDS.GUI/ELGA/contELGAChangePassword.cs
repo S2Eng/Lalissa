@@ -42,7 +42,10 @@ namespace PMDS.GUI.ELGA
             {
                 if (!this.IsInitialized)
                 {
+                    this.mainWindow.AcceptButton = this.btnSave;
+                    this.mainWindow.CancelButton = this.btnAbort;
 
+                    this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
 
                     this.IsInitialized = true;
                 }
@@ -171,13 +174,13 @@ namespace PMDS.GUI.ELGA
                 {
                     PMDS.db.Entities.Benutzer rUsr = db.Benutzer.Where(o => o.ID == ENV.USERID).First();
 
-                    string ELGAPwdEncrypted = Encryption1.StringDecrypt(this.txtELGAPwdNew.Text.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    string ELGAPwdEncrypted = Encryption1.StringEncrypt(this.txtELGAPwdNew.Text.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
                     rUsr.ELGAPwd = ELGAPwdEncrypted;
                     db.SaveChanges();
 
                     string sProt = "User " + b.getUserName(ENV.USERID) + " has changed password.";
                     ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort wurde geändert"), null, 
-                                                    ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID);
+                                                    ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
                 }
 
                 return true;

@@ -40,7 +40,7 @@
             this.txtELGAPwdOld = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblELGAPwdOld = new Infragistics.Win.Misc.UltraLabel();
             this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
-            this.btnELGALogIn = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnSave = new QS2.Desktop.ControlManagment.BaseButton();
             this.txtELGAPwdNew = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblELGAPwdNew = new Infragistics.Win.Misc.UltraLabel();
             this.txtELGAPwdNewWdhlg = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -93,22 +93,22 @@
             this.btnAbort.Text = "Abbrechen";
             this.btnAbort.Click += new System.EventHandler(this.BtnAbort_Click);
             // 
-            // btnELGALogIn
+            // btnSave
             // 
-            this.btnELGALogIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnELGALogIn.Appearance = appearance4;
-            this.btnELGALogIn.AutoWorkLayout = false;
-            this.btnELGALogIn.IsStandardControl = false;
-            this.btnELGALogIn.Location = new System.Drawing.Point(226, 96);
-            this.btnELGALogIn.Margin = new System.Windows.Forms.Padding(4);
-            this.btnELGALogIn.Name = "btnELGALogIn";
-            this.btnELGALogIn.Size = new System.Drawing.Size(93, 28);
-            this.btnELGALogIn.TabIndex = 123;
-            this.btnELGALogIn.Tag = "";
-            this.btnELGALogIn.Text = "LogIn ELGA";
-            this.btnELGALogIn.Click += new System.EventHandler(this.BtnELGALogIn_Click);
+            this.btnSave.Appearance = appearance4;
+            this.btnSave.AutoWorkLayout = false;
+            this.btnSave.IsStandardControl = false;
+            this.btnSave.Location = new System.Drawing.Point(226, 96);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(93, 28);
+            this.btnSave.TabIndex = 123;
+            this.btnSave.Tag = "";
+            this.btnSave.Text = "Speichern";
+            this.btnSave.Click += new System.EventHandler(this.BtnELGALogIn_Click);
             // 
             // txtELGAPwdNew
             // 
@@ -176,7 +176,7 @@
             this.Controls.Add(this.txtELGAPwdOld);
             this.Controls.Add(this.lblELGAPwdOld);
             this.Controls.Add(this.btnAbort);
-            this.Controls.Add(this.btnELGALogIn);
+            this.Controls.Add(this.btnSave);
             this.Name = "contELGAChangePassword";
             this.Size = new System.Drawing.Size(423, 132);
             this.Load += new System.EventHandler(this.ContELGAChangePassword_Load);
@@ -194,7 +194,7 @@
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtELGAPwdOld;
         private Infragistics.Win.Misc.UltraLabel lblELGAPwdOld;
         public QS2.Desktop.ControlManagment.BaseButton btnAbort;
-        public QS2.Desktop.ControlManagment.BaseButton btnELGALogIn;
+        public QS2.Desktop.ControlManagment.BaseButton btnSave;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtELGAPwdNew;
         private Infragistics.Win.Misc.UltraLabel lblELGAPwdNew;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtELGAPwdNewWdhlg;

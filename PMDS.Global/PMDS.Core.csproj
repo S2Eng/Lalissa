@@ -1837,6 +1837,12 @@
     <Compile Include="UI\Befunde\frmEdiFactViewer.Designer.cs">
       <DependentUpon>frmEdiFactViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\contELGALogIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\contELGALogIn.Designer.cs">
+      <DependentUpon>contELGALogIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ELGA\contCDAViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1848,6 +1854,12 @@
     </Compile>
     <Compile Include="UI\ELGA\frmCDAViewer.Designer.cs">
       <DependentUpon>frmCDAViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmELGALogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmELGALogIn.Designer.cs">
+      <DependentUpon>frmELGALogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmInfo.cs">
       <SubType>Form</SubType>
@@ -2275,6 +2287,9 @@
     <EmbeddedResource Include="UI\Befunde\frmEdiFactViewer.resx">
       <DependentUpon>frmEdiFactViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\contELGALogIn.resx">
+      <DependentUpon>contELGALogIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ELGA\contCDAViewer.resx">
       <DependentUpon>contCDAViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -2289,6 +2304,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>PMDSResource.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmELGALogIn.resx">
+      <DependentUpon>frmELGALogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmPDF.resx">
       <DependentUpon>frmPDF.cs</DependentUpon>
@@ -2330,7 +2348,6 @@
   <ItemGroup>
     <Folder Include="Pdx_Aszm\FormularGenLib\" />
     <Folder Include="PMDSClient\UISitemap\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -3877,6 +3894,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -30,8 +30,9 @@ namespace PMDS.GUI.ELGA.ManageSettings
         public string colSelect = "Select";
 
         public UIGlobal UIGlobal1 = new UIGlobal();
+        public ucBenutzer mainWindowBenutzer = null;
 
-
+        public bool AnyChange = false;
 
 
 
@@ -103,7 +104,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                         dsKlientenliste.RechtRow rRecht = (dsKlientenliste.RechtRow)v.Row;
                         foreach (PMDS.db.Entities.BenutzerRechte rUsrRights in tUsrRights)
                         {
-                            if (rUsrRights.ID.Equals(rRecht.ID))
+                            if (rUsrRights.IDRecht.Equals(rRecht.ID))
                             {
                                 rGrid.Cells["Select"].Value = true;
                             }
@@ -111,6 +112,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                     }
                 }
 
+                this.AnyChange = false;
             }
             catch (Exception ex)
             {
@@ -135,6 +137,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
+                    string sProtDetail = "";
                     var tUsrRights = (from br in db.BenutzerRechte
                                          join r in db.Recht on br.IDRecht equals r.ID
                                where br.IDBenutzer == this._IDUser.Value && r.ELGA == true
@@ -150,10 +153,11 @@ namespace PMDS.GUI.ELGA.ManageSettings
                         {
                             var rUsrRights = db.BenutzerRechte.Where(o => o.ID == r.IDBenutzerRecht).First();
                             db.BenutzerRechte.Remove(rUsrRights);
+                            sProtDetail += "Right " + r.Bezeichnung.Trim() + " deleted" + "\r\n";
                         }
                         db.SaveChanges();
                     }
-
+                    bool anyChangesSave = false;
                     foreach (Infragistics.Win.UltraWinGrid.UltraGridRow rGrid in this.gridRights.Rows)
                     {
                         DataRowView v = (DataRowView)rGrid.ListObject;
@@ -166,7 +170,20 @@ namespace PMDS.GUI.ELGA.ManageSettings
                             rNewBenRecht.IDBenutzer = this._IDUser.Value;
                             rNewBenRecht.IDRecht = rRecht.ID;
                             db.BenutzerRechte.Add(rNewBenRecht);
+
+                            sProtDetail += "Right " + rRecht.Bezeichnung.Trim() + " added" + "\r\n";
+                            anyChangesSave = true;
                         }
+                    }
+                    if (anyChangesSave)
+                    {
+                        db.SaveChanges();
+                    }
+                    
+                    if (this.AnyChange && anyChangesSave)
+                    {
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Rechte wurde geändert"), null,
+                                                        ELGABusiness.eTypeProt.UserRightsChanged, ELGABusiness.eELGAFunctions.none, "Benutzer", "", this._IDUser, null, null, sProtDetail);
                     }
                 }
 
@@ -250,5 +267,17 @@ namespace PMDS.GUI.ELGA.ManageSettings
             }
         }
 
+        private void GridRights_CellChange(object sender, CellEventArgs e)
+        {
+            try
+            {
+                this.mainWindowBenutzer.OnValueChanged(sender, e);
+                this.AnyChange = true;
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+        }
     }
 }

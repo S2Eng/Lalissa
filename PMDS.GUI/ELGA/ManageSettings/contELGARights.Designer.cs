@@ -150,6 +150,7 @@
             this.gridRights.Size = new System.Drawing.Size(624, 473);
             this.gridRights.TabIndex = 3;
             this.gridRights.Text = "ultraGrid1";
+            this.gridRights.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.GridRights_CellChange);
             this.gridRights.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.GridRights_BeforeCellActivate);
             this.gridRights.BeforeRowsDeleted += new Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventHandler(this.GridRights_BeforeRowsDeleted);
             this.gridRights.Click += new System.EventHandler(this.GridRights_Click);
