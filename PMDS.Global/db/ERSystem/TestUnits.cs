@@ -582,14 +582,11 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Status");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("SV Status");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("[Kein Name]");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Land");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Land Hauptwohnsitz");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Land Nebenwohnsitz");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Berechtigung zum Abzeichnen für folgende Berufsgruppen:");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine!");
@@ -601,7 +598,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Wundart");
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den DNR-Status wirklich ändern?", "ACHTUNG!", MessageBoxButtons.YesNoCancel);
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den Palliativ-Status wirklich auf ändern?", "ACHTUNG!", MessageBoxButtons.YesNoCancel);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den Palliativ-Status wirklich ändern?", "ACHTUNG!", MessageBoxButtons.YesNoCancel);
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Applikationsform");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Packungseinheit");
@@ -611,7 +608,6 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Fachrichtung");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA_AuthorSpeciality");
 
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den DNR-Status wirklich ändern?", "ACHTUNG!", MessageBoxButtons.YesNoCancel);
                 DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wenn Sie diesen Eintrag löschen, werden alle bisher erfassten Zusatzwerte unwiederbringlich gelöscht.\r\nSind Sie Sicher, dass Sie das möchten?", "ACHTUNG!", MessageBoxButtons.YesNo);
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Titel nachgestellt: ");
@@ -663,20 +659,9 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung - keine Verlängerung mehr möglich");
 
-
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente daktiviert: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente deaktiviert: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet.");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert verarbeitet.");
-
-
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente daktiviert: ");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet.");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert verarbeitet.");
-
-
-
-
-
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert.");
 
             }
             catch (Exception ex)

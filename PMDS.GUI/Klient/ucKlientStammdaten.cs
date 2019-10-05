@@ -2285,7 +2285,7 @@ namespace PMDS.GUI
                     if (ENV.HasRight(UserRights.DNR_Palliativ))
                     {
 
-                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den Palliativ-Status wirklich ändern?", "ACHTUNG!", MessageBoxButtons.YesNo);
+                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den Palliativ-Status wirklich ändern?", "ACHTUNG!", MessageBoxButtons.YesNoCancel);
                         if (res == DialogResult.Yes)
                         {
                             if (this.chkPalliativ.Checked == true && this.chkDNR.Checked == true)

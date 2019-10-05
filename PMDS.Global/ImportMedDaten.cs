@@ -210,7 +210,7 @@ namespace PMDS.Global
                                          select c).ToList();
 
                         CountDeactivated = medUpdate.Count();   //Extra, damit die Anzahl der deaktivierten Rows zurückgegeben werden kann.
-                        setStatus(CountDeactivated, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert verarbeitet."));
+                        setStatus(CountDeactivated, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert."));
                         medUpdate.ForEach(x => x.Aktuell = false);
                         db.SaveChanges();
                     }

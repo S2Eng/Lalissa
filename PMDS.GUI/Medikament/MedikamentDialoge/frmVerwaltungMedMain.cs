@@ -152,7 +152,7 @@ namespace PMDS.GUI
                         this.ucVerwaltungMedTabelle1.ProcessSearch();
 
                         string txtInfo = "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente eingespielt: ") + CountUpdated.ToString();
-                        txtInfo += "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente daktiviert: ") + CountDeactivated.ToString() + "\r\n" + "\r\n";
+                        txtInfo += "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente deaktiviert: ") + CountDeactivated.ToString() + "\r\n" + "\r\n";
 
                         txtInfo += QS2.Desktop.ControlManagment.ControlManagment.getRes("Start: ") + datStart.ToString() + "\r\n";
                         txtInfo += QS2.Desktop.ControlManagment.ControlManagment.getRes("Ende: ") + datEnd.ToString() + "";
