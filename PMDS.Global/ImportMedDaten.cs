@@ -67,7 +67,8 @@ namespace PMDS.Global
             public int _iEnd = -1;
         }
 
-        public bool run(bool TranslateELGA, ref Infragistics.Win.Misc.UltraLabel lbl, ref DateTime datStart, ref DateTime datEnd, out int CountUpdated, out int CountDeactivated, ref string FileName, ref string FromNetworkDrive)
+        public bool run(bool TranslateELGA, ref Infragistics.Win.Misc.UltraLabel lbl, ref DateTime datStart, ref DateTime datEnd, out int CountUpdated, out int CountDeactivated, 
+                            ref string FileName, ref string FromNetworkDrive)
         {
             try
             {

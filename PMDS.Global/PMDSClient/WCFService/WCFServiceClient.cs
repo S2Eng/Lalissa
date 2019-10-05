@@ -23,6 +23,7 @@ namespace PMDSClient.Sitemap
     {
 
         public static string urlWCFServiceDefault = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
+       
 
         public class cParsWCF
         {
@@ -40,10 +41,17 @@ namespace PMDSClient.Sitemap
             set => _IsInitialized = value;
         }
 
+        public class ELGALogInDto
+        {
+            public bool LogInOK { get; set; }
+            public ELGASessionDTO session { get; set; }
+        }
 
 
 
-        
+
+
+
 
 
 
@@ -368,6 +376,7 @@ namespace PMDSClient.Sitemap
                 PMDS.Global.ENV.HandleException(exTmp, "WCFException");
             }
         }
+
         private void openCDAViewer(string xml, string typeFile)
         {
             frmCDAViewer frm = new frmCDAViewer();
@@ -376,8 +385,53 @@ namespace PMDSClient.Sitemap
         }
 
 
+        public ELGALogInDto logInELGA(Guid UserID, string ELGAUsr, string ELGAPwd, bool lic_ELGA)
+        {
+            Task<ELGALogInDto> t = this.TLogInElga(UserID, ELGAUsr, ELGAPwd, lic_ELGA);
+            return t.Result;
+            //t.Wait();
+            //return t.Result;
+        }
+        private async Task<ELGALogInDto> TLogInElga(Guid UserID, string ELGAUsr, string ELGAPwd, bool lic_ELGA)
+        {
+            ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
+            try
+            {
+                bool LogInELGAOK = false;
+                string xml = "";
 
+                await Task.Run(() =>
+                {
+                    try
+                    {
+                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                        //Thread.Sleep(5000);
+                        ELGASessionDTO session = new ELGASessionDTO();
+                        session.IDUserk__BackingField = UserID;
+                        LogInELGAOK = client.ELGALogInHCP(ELGAUsr, ELGAPwd, ref session);
+                        ELGALogInDto1.session = session;
+                        ELGALogInDto1.LogInOK = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("TLogInElga: Task => " + ex.ToString());
+                    }
 
+                }).ContinueWith((t) =>
+                {
+                    if (t.IsFaulted) throw t.Exception;
+                    if (t.IsCompleted) { }
+                });
+
+                return ELGALogInDto1;
+            }
+            catch (Exception ex)
+            {
+                Exception exTmp = new Exception("TLogInElga - " + ex.ToString());
+                PMDS.Global.ENV.HandleException(exTmp, "WCFException");
+                return ELGALogInDto1;
+            }
+        }
 
 
 

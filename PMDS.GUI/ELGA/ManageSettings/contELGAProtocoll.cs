@@ -173,7 +173,24 @@ namespace PMDS.GUI.ELGA
             }
         }
 
+        private void MarkierteZelleKopierenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.gridRights.ActiveCell != null)
+                {
+                    if (this.gridRights.ActiveCell.Value != null)
+                    {
+                        Clipboard.SetDataObject(this.gridRights.ActiveCell.Value.ToString());
+                    }
+                }
 
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+        }
     }
 
 }

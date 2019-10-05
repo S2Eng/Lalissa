@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             this.txtELGAPwd = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblELGAPwd = new Infragistics.Win.Misc.UltraLabel();
             this.txtELGAUser = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -55,11 +55,12 @@
             this.txtELGAPwd.PasswordChar = '*';
             this.txtELGAPwd.Size = new System.Drawing.Size(197, 21);
             this.txtELGAPwd.TabIndex = 1;
+            this.txtELGAPwd.ValueChanged += new System.EventHandler(this.TxtELGAPwd_ValueChanged);
             // 
             // lblELGAPwd
             // 
-            appearance1.TextVAlignAsString = "Middle";
-            this.lblELGAPwd.Appearance = appearance1;
+            appearance7.TextVAlignAsString = "Middle";
+            this.lblELGAPwd.Appearance = appearance7;
             this.lblELGAPwd.Location = new System.Drawing.Point(21, 42);
             this.lblELGAPwd.Name = "lblELGAPwd";
             this.lblELGAPwd.Size = new System.Drawing.Size(95, 18);
@@ -72,11 +73,12 @@
             this.txtELGAUser.Name = "txtELGAUser";
             this.txtELGAUser.Size = new System.Drawing.Size(197, 21);
             this.txtELGAUser.TabIndex = 0;
+            this.txtELGAUser.ValueChanged += new System.EventHandler(this.TxtELGAUser_ValueChanged);
             // 
             // lblELGAUser
             // 
-            appearance2.TextVAlignAsString = "Middle";
-            this.lblELGAUser.Appearance = appearance2;
+            appearance8.TextVAlignAsString = "Middle";
+            this.lblELGAUser.Appearance = appearance8;
             this.lblELGAUser.Location = new System.Drawing.Point(21, 18);
             this.lblELGAUser.Name = "lblELGAUser";
             this.lblELGAUser.Size = new System.Drawing.Size(95, 18);
@@ -90,6 +92,7 @@
             this.chkELGAAutostartSession.Size = new System.Drawing.Size(155, 21);
             this.chkELGAAutostartSession.TabIndex = 4;
             this.chkELGAAutostartSession.Text = "Autostart";
+            this.chkELGAAutostartSession.CheckedChanged += new System.EventHandler(this.ChkELGAAutostartSession_CheckedChanged);
             // 
             // txtELGAPwdWdhlg
             // 
@@ -98,11 +101,12 @@
             this.txtELGAPwdWdhlg.PasswordChar = '*';
             this.txtELGAPwdWdhlg.Size = new System.Drawing.Size(197, 21);
             this.txtELGAPwdWdhlg.TabIndex = 2;
+            this.txtELGAPwdWdhlg.ValueChanged += new System.EventHandler(this.TxtELGAPwdWdhlg_ValueChanged);
             // 
             // lblELGAPwdWdhlg
             // 
-            appearance3.TextVAlignAsString = "Middle";
-            this.lblELGAPwdWdhlg.Appearance = appearance3;
+            appearance9.TextVAlignAsString = "Middle";
+            this.lblELGAPwdWdhlg.Appearance = appearance9;
             this.lblELGAPwdWdhlg.Location = new System.Drawing.Point(21, 66);
             this.lblELGAPwdWdhlg.Name = "lblELGAPwdWdhlg";
             this.lblELGAPwdWdhlg.Size = new System.Drawing.Size(124, 18);

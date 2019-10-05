@@ -19,7 +19,7 @@ namespace PMDS.GUI.BaseControls
     /// Verwaltung der Medizinischen typen
     /// </summary>
     //----------------------------------------------------------------------------
-    public partial class frmEditLinkDokumente : QS2.Desktop.ControlManagment.baseForm 
+    public partial class frmEditLinkDokumente : QS2.Desktop.ControlManagment.baseForm
     {
         private LinkDokumente _doc = new LinkDokumente();
         private dsLinkDokumente.LinkDokumenteDataTable _dt;
@@ -55,7 +55,7 @@ namespace PMDS.GUI.BaseControls
         {
             bindingSource1.DataSource = _dt;
             bindingSource1.DataMember = "";
-            
+
         }
 
         private void bindingSource1_AddingNew(object sender, AddingNewEventArgs e)
@@ -106,7 +106,7 @@ namespace PMDS.GUI.BaseControls
         //----------------------------------------------------------------------------
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.CurrentRow != null) 
+            if (dataGridView1.CurrentRow != null)
             {
                 DataRowView v = (DataRowView)dataGridView1.CurrentRow.DataBoundItem;
                 dsLinkDokumente.LinkDokumenteRow r = (dsLinkDokumente.LinkDokumenteRow)v.Row;
@@ -130,7 +130,7 @@ namespace PMDS.GUI.BaseControls
             string sFile = openFileDialog1.FileName;
             if (!File.Exists(sFile))
             {
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei "  + sFile +" existiert nicht");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei " + sFile + " existiert nicht");
                 return;
             }
 
@@ -150,7 +150,7 @@ namespace PMDS.GUI.BaseControls
             CURRENT.SetDokumentNull();
         }
 
-       
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

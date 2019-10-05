@@ -993,12 +993,6 @@
     <Compile Include="ELGA\contELGAKlient.Designer.cs">
       <DependentUpon>contELGAKlient.cs</DependentUpon>
     </Compile>
-    <Compile Include="ELGA\contELGALogIn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ELGA\contELGALogIn.Designer.cs">
-      <DependentUpon>contELGALogIn.cs</DependentUpon>
-    </Compile>
     <Compile Include="ELGA\frmELGAChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1022,12 +1016,6 @@
     </Compile>
     <Compile Include="ELGA\contSearchGDA.Designer.cs">
       <DependentUpon>contSearchGDA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ELGA\frmELGALogIn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ELGA\frmELGALogIn.Designer.cs">
-      <DependentUpon>frmELGALogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="ELGA\frmSearchGDA.cs">
       <SubType>Form</SubType>
@@ -3945,9 +3933,6 @@
     <EmbeddedResource Include="ELGA\contELGAKlient.resx">
       <DependentUpon>contELGAKlient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ELGA\contELGALogIn.resx">
-      <DependentUpon>contELGALogIn.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ELGA\frmELGAChangePassword.resx">
       <DependentUpon>frmELGAChangePassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -3959,9 +3944,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\contSearchGDA.resx">
       <DependentUpon>contSearchGDA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ELGA\frmELGALogIn.resx">
-      <DependentUpon>frmELGALogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\frmSearchGDA.resx">
       <DependentUpon>frmSearchGDA.cs</DependentUpon>
