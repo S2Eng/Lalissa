@@ -60,6 +60,9 @@ namespace PMDS.Global.db.ERSystem
             public DateTime? ElgavalidTrough { get; set; }
             public string ELGA_AuthorSpeciality { get; set; }
         }
+
+        public static string LoggedInBenutzer = "";
+
         public static bool? ELGALogInInitializedAtStart { get; set; }
         public static ELGABusiness.BenutzerDTOS1 ElgaDtoUsr { get; set; }
 
@@ -87,6 +90,7 @@ namespace PMDS.Global.db.ERSystem
         public static WCFServiceClient WCFServiceClient1 { get; set; }
         public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
         public static bool MsgBoxVerlängerungActive = false;
+        public PMDSBusiness b = new PMDSBusiness();
 
 
 
@@ -101,6 +105,7 @@ namespace PMDS.Global.db.ERSystem
             if (ElgaDtoUsr == null)
             {
                 ElgaDtoUsr = this.getELGASettingsForUser(ENV.USERID);
+                LoggedInBenutzer = b.getUserName(ENV.USERID);
             }
             if (ELGAStatusbarStatus == null)
             {
@@ -111,7 +116,6 @@ namespace PMDS.Global.db.ERSystem
                 WCFServiceClient1 = new WCFServiceClient();
             }
         }
-
 
 
         public static void saveELGAProtocoll(string Title, System.Collections.Generic.List<ProtVar> flds, eTypeProt TypeProt, eELGAFunctions ELGAFunctions,
@@ -364,6 +368,10 @@ namespace PMDS.Global.db.ERSystem
                 ELGAStatusbarStatus.ELGASessionEnd = ELGAStatusbarStatus.ELGASessionStarted.Value.AddMinutes(ENV.ELGAStatusGreen);
                 ELGAStatusbarStatus.Active = true;
 
+                string sProt = "Benutzer " + LoggedInBenutzer.Trim() + " hat sich in ELGA angemeldet";
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer hat sich angemeldet"), null,
+                                                ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
+
             }
             catch (Exception ex)
             {
@@ -388,6 +396,10 @@ namespace PMDS.Global.db.ERSystem
 
                 statBar.Panels["statELGA"].Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine ELGA-Sitzung aktiv");
                 panelELGA.Appearance.Image = null;
+
+                string sProt = "Benutzer " + LoggedInBenutzer.Trim() + " hat sich aus ELGA abgemeldet";
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer hat sich abgemeldet"), null,
+                                                ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
 
             }
             catch (Exception ex)
