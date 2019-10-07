@@ -388,6 +388,11 @@ namespace PMDS.GUI
                 ucKlient1.UpdateDATA();
                 ucKlient1.Write();
 
+                if (!this.ucKlient1.isBewerberJN && !this.ucKlient1.ucKlientStammdaten1._isAbrechnung && this.ucKlient1.ucKlientStammdaten1._mainSystem && PMDS.Global.ENV.lic_ELGA)
+                {
+                    this.ucKlient1.ucKlientStammdaten1.contELGAKlient1.saveData();
+                }
+
                 bool writeDekursSprachenChanged = false;
                 bool abweseneheitBeendetChanged = false;
                 string txtSprachenGeändert = "";

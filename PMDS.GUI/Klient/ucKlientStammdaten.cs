@@ -37,9 +37,9 @@ namespace PMDS.GUI
         private bool _readOnly = false;
 
 
-        private bool _mainSystem = false;
-        private bool _isAbrechnung = false;
-        private bool _isBewerberJN = false;
+        public bool _mainSystem = false;
+        public bool _isAbrechnung = false;
+        public bool _isBewerberJN = false;
 
         private bool _lockValueChanges = false;
 
@@ -70,6 +70,13 @@ namespace PMDS.GUI
         private Bitmap _Bitmap = null;
 
         public bool AufenthaltIsInitialized = false;
+        public PMDS.Global.db.ERSystem.ELGABusiness bELGA = new Global.db.ERSystem.ELGABusiness();
+
+
+
+
+
+
 
 
 
@@ -118,6 +125,14 @@ namespace PMDS.GUI
 
             this.tabStammdaten.Tabs["VOErfassen"].Visible = PMDS.Global.ENV.lic_VO;
 
+            bELGA.init();
+            this.setTabELGAOnIff(false);
+            this.contELGAKlient1.initControl();
+        }
+
+        public void setTabELGAOnIff(bool abgemeldetJN)
+        {
+            this.tabStammdaten.Tabs["ELGA"].Visible = !this._isBewerberJN && !this._isAbrechnung && PMDS.Global.ENV.lic_ELGA && this._mainSystem && !abgemeldetJN;
         }
 
         public void initKlientenstammdatenDokumente()
@@ -470,6 +485,7 @@ namespace PMDS.GUI
 
             this.cboTitelPost.Text = "";
             this.txtbPK.Text = "";
+            this.chkELGAAbgemeldet.Checked = false;
 
             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
             {
@@ -514,6 +530,16 @@ namespace PMDS.GUI
 
                     this.cboTitelPost.Text = rPatient.TitelPost;
                     this.txtbPK.Text = rPatient.bPK;
+                    if (rPatient.ELGAAbgemeldet != null)
+                    {
+                        this.chkELGAAbgemeldet.Checked = rPatient.ELGAAbgemeldet.Value;
+                        this.setTabELGAOnIff(rPatient.ELGAAbgemeldet.Value);
+                    } 
+                    else
+                    {
+                        this.setTabELGAOnIff(false);
+                    }
+
                 }
 
                 if (b.checkAufenthaltExists(Klient.Aufenthalt.ID, db))
@@ -554,6 +580,10 @@ namespace PMDS.GUI
             this.panelVerstorben.Visible = PMDS.Global.historie.HistorieOn;
 
             this.ucVOErfassen1.search2(this.Klient.Aufenthalt.ID, null, null, null);
+            if (!this._isBewerberJN && !this._isAbrechnung && PMDS.Global.ENV.lic_ELGA && this._mainSystem)
+            {
+                this.contELGAKlient1.loadData(Klient.ID);
+            }
 
         }
         public void UpdateGridSachwalter()
@@ -932,6 +962,7 @@ namespace PMDS.GUI
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ") + rPatient.PrivPolNr.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPolzNr.Text.Trim());
                     }
                 }
+
             }
 
 
@@ -1142,6 +1173,7 @@ namespace PMDS.GUI
                         rPatient.SozVersStatus = this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim();
                         rPatient.SozVersLeerGrund = this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim();
                         rPatient.SozVersMitversichertBei = this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim();
+                        rPatient.ELGAAbgemeldet = this.chkELGAAbgemeldet.Checked;
 
                         if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim() != "")
                         {
@@ -1376,7 +1408,12 @@ namespace PMDS.GUI
                 }
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt2, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);
             }
-            
+
+            if (!this._isBewerberJN && !this._isAbrechnung && this._mainSystem)
+            {
+                this.contELGAKlient1.validateData();
+            }
+
             return !bError;
         }
 
@@ -2351,6 +2388,32 @@ namespace PMDS.GUI
                         frmKlientFoto1.initControl(Klient.ID, this._isBewerberJN);
                         frmKlientFoto1.ShowDialog(this);
                     }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void ChkELGAAbgemeldet_CheckedChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                if (this.chkELGAAbgemeldet.Focused)
+                {
+                    this.setTabELGAOnIff(this.chkELGAAbgemeldet.Checked);
+
+                    object send = null;
+                    EventArgs arg = new EventArgs();
+                    this.OnValueChanged(send, arg);
                 }
 
             }

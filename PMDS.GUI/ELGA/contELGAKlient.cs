@@ -19,6 +19,8 @@ namespace PMDS.GUI.ELGA
         public ucKlient mainWindow = null;
         public bool IsInitialized = false;
 
+        public Guid _IDKlient;
+
 
 
 
@@ -39,7 +41,6 @@ namespace PMDS.GUI.ELGA
                 if (!this.IsInitialized)
                 {
 
-
                     this.IsInitialized = true;
                 }
 
@@ -51,10 +52,11 @@ namespace PMDS.GUI.ELGA
         }
 
 
-        public void loadData()
+        public void loadData(Guid IDKlient)
         {
             try
             {
+                this._IDKlient = IDKlient;
 
 
             }
@@ -87,7 +89,6 @@ namespace PMDS.GUI.ELGA
                 {
                     return false;
                 }
-
 
 
                 return true;
