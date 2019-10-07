@@ -85,6 +85,7 @@ namespace PMDS.Global.db.ERSystem
 
         public static WCFServiceClient WCFServiceClient1 { get; set; }
         public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+        public static bool MsgBoxVerlängerungActive = false;
 
 
 
@@ -414,20 +415,26 @@ namespace PMDS.Global.db.ERSystem
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.red;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_red, 32, 32);
 
-                        string sMsgBoxTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Die ELGA-Sitzung läuft in {0} Minuten ab." + "\r\n" +
-                                                                                                "Soll die ELGA-Sitzung automatisch verlängert werden?");
-                        sMsgBoxTxt = string.Format(sMsgBoxTxt, span.TotalMinutes.ToString());
-                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTxt, "ELGA", MessageBoxButtons.YesNo);
-                        if (res == DialogResult.Yes)
+                        if (!MsgBoxVerlängerungActive)
                         {
-                            this.LogInELGA(statBar, panelELGA);
-                            this.setTxtStatusbarTime(statBar, panelELGA, span);
-                            ELGAStatusbarStatus.iVerlängerungen += 1;
+                            MsgBoxVerlängerungActive = true;
+                            string sMsgBoxTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Die ELGA-Sitzung läuft in {0} Minuten ab." + "\r\n" +
+                                                                        "Soll die ELGA-Sitzung automatisch verlängert werden?");
+                            sMsgBoxTxt = string.Format(sMsgBoxTxt, span.TotalMinutes.ToString());
+                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTxt, "ELGA", MessageBoxButtons.YesNo);
+                            if (res == DialogResult.Yes)
+                            {
+                                this.LogInELGA(statBar, panelELGA);
+                                this.setTxtStatusbarTime(statBar, panelELGA, span);
+                                ELGAStatusbarStatus.iVerlängerungen += 1;
+                            }
+                            else
+                            {
+                                this.LogOutELGA(statBar, panelELGA);
+                            }
+                            MsgBoxVerlängerungActive = false;
                         }
-                        else
-                        {
-                            this.LogOutELGA(statBar, panelELGA);
-                        }
+
                     }
                 }
                 else if (ELGAStatusbarStatus.iVerlängerungen == 1)
@@ -462,6 +469,7 @@ namespace PMDS.Global.db.ERSystem
             }
             catch (Exception ex)
             {
+                MsgBoxVerlängerungActive = false;
                 throw new Exception("ELGABusiness.updateTxtStatusbarLogIn: " + ex.ToString());
             }
         }
