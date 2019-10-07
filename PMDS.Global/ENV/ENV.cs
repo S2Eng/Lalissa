@@ -1305,6 +1305,7 @@ namespace PMDS.Global
                         ENV.PMDSNew = true;
                     }
                 }
+                //Test für Änderung
 
                 stemp = _Log.ConfigFile.GetStringValue("ELGAStatusGreen");
                 if (stemp.Length > 0)
