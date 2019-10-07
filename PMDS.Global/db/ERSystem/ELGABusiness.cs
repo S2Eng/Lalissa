@@ -419,8 +419,8 @@ namespace PMDS.Global.db.ERSystem
                         {
                             MsgBoxVerlängerungActive = true;
                             string sMsgBoxTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Die ELGA-Sitzung läuft in {0} Minuten ab." + "\r\n" +
-                                                                        "Soll die ELGA-Sitzung automatisch verlängert werden?");
-                            sMsgBoxTxt = string.Format(sMsgBoxTxt, span.TotalMinutes.ToString());
+                                                                                                        "Soll die ELGA-Sitzung automatisch verlängert werden?");
+                            sMsgBoxTxt = string.Format(sMsgBoxTxt, System.Convert.ToInt32(span.TotalMinutes).ToString());
                             DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTxt, "ELGA", MessageBoxButtons.YesNo);
                             if (res == DialogResult.Yes)
                             {
@@ -477,7 +477,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                string sDiff = span.Minutes.ToString();
+                string sDiff = System.Convert.ToInt32(span.Minutes).ToString();
 
                 string sTxt = "";
                 if (txtAlternat.Trim() != "")
@@ -489,7 +489,7 @@ namespace PMDS.Global.db.ERSystem
                     sTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung aktiv");
                 }
                 
-                sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} aktiv)");
+                sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} min aktiv)");
                 sTxt = string.Format(sTxt, sDiff);
                 statBar.Panels["statELGA"].Text = sTxt;
 
