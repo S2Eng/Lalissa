@@ -153,7 +153,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                         {
                             var rUsrRights = db.BenutzerRechte.Where(o => o.ID == r.IDBenutzerRecht).First();
                             db.BenutzerRechte.Remove(rUsrRights);
-                            sProtDetail += "Right " + r.Bezeichnung.Trim() + " deleted" + "\r\n";
+                            sProtDetail += "Recht " + r.Bezeichnung.Trim() + " wurde gelöscht" + "\r\n";
                         }
                         db.SaveChanges();
                     }
@@ -171,7 +171,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                             rNewBenRecht.IDRecht = rRecht.ID;
                             db.BenutzerRechte.Add(rNewBenRecht);
 
-                            sProtDetail += "Right " + rRecht.Bezeichnung.Trim() + " added" + "\r\n";
+                            sProtDetail += "Recht " + rRecht.Bezeichnung.Trim() + " wurde hinzugefügt" + "\r\n";
                             anyChangesSave = true;
                         }
                     }
@@ -182,7 +182,7 @@ namespace PMDS.GUI.ELGA.ManageSettings
                     
                     if (this.AnyChange && anyChangesSave)
                     {
-                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Rechte wurde geändert"), null,
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Rechte wurden geändert"), null,
                                                         ELGABusiness.eTypeProt.UserRightsChanged, ELGABusiness.eELGAFunctions.none, "Benutzer", "", this._IDUser, null, null, sProtDetail);
                     }
                 }

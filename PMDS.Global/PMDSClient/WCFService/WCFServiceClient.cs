@@ -384,7 +384,7 @@ namespace PMDSClient.Sitemap
             frm.ShowDialog();
         }
 
-        public ELGALogInDto LogInElga(Guid UserID, string ELGAUsr, string ELGAPwd, bool lic_ELGA)
+        public ELGALogInDto LogInElga(Guid IDUser)
         {
             try
             {
@@ -393,8 +393,8 @@ namespace PMDSClient.Sitemap
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
                 //Thread.Sleep(5000);
                 ELGASessionDTO session = new ELGASessionDTO();
-                session.IDUserk__BackingField = UserID;
-                ELGALogInDto1.LogInOK = client.ELGALogInHCP(ELGAUsr, ELGAPwd, ref session);
+                session.IDUserk__BackingField = IDUser;
+                ELGALogInDto1.LogInOK = client.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), ref session);
                 ELGALogInDto1.session = session;
 
                 return ELGALogInDto1;

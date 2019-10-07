@@ -95,7 +95,7 @@
             ultraGridColumn5.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;
             ultraGridColumn6.Header.Caption = "Typ";
             ultraGridColumn6.Header.Editor = null;
-            ultraGridColumn6.Header.VisiblePosition = 3;
+            ultraGridColumn6.Header.VisiblePosition = 8;
             ultraGridColumn6.Width = 105;
             ultraGridColumn7.Header.Caption = "Titel";
             ultraGridColumn7.Header.Editor = null;
@@ -103,15 +103,15 @@
             ultraGridColumn7.Width = 239;
             ultraGridColumn8.Header.Caption = "Protokoll";
             ultraGridColumn8.Header.Editor = null;
-            ultraGridColumn8.Header.VisiblePosition = 8;
+            ultraGridColumn8.Header.VisiblePosition = 7;
             ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 5;
+            ultraGridColumn9.Header.VisiblePosition = 4;
             ultraGridColumn9.Hidden = true;
             ultraGridColumn10.Header.Editor = null;
-            ultraGridColumn10.Header.VisiblePosition = 6;
+            ultraGridColumn10.Header.VisiblePosition = 5;
             ultraGridColumn10.Hidden = true;
             ultraGridColumn11.Header.Editor = null;
-            ultraGridColumn11.Header.VisiblePosition = 7;
+            ultraGridColumn11.Header.VisiblePosition = 6;
             ultraGridColumn11.Hidden = true;
             appearance2.TextHAlignAsString = "Center";
             ultraGridColumn12.CellAppearance = appearance2;
@@ -124,7 +124,7 @@
             ultraGridColumn12.Width = 126;
             ultraGridColumn13.Header.Caption = "Benutzer erstellt";
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 4;
+            ultraGridColumn13.Header.VisiblePosition = 3;
             ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 9;
             ultraGridColumn1.Hidden = true;

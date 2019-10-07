@@ -135,10 +135,12 @@ namespace PMDS.Global
 
         private static ResourceManager _resources = null;
 
+        public static int ELGAStatusGreen = 240;
         public static int ELGAStatusYellow = 30;
-        public static int ELGAStatusRedMin = 10;
+        public static int ELGAStatusRed = 10;
 
-
+        public static string ELGAUser = "s2-engineering";
+        public static string ELGAPwd = "KLqHC0hznj91OH0PiCIWBw==";
 
 
 
@@ -1304,17 +1306,34 @@ namespace PMDS.Global
                     }
                 }
 
+                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusGreen");
+                if (stemp.Length > 0)
+                {
+                    ENV.ELGAStatusGreen = System.Convert.ToInt32(stemp);
+                }
                 stemp = _Log.ConfigFile.GetStringValue("ELGAStatusYellow");
                 if (stemp.Length > 0)
                 {
                     ENV.ELGAStatusYellow = System.Convert.ToInt32(stemp);
                 }
-                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusRedMin");
+                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusRed");
                 if (stemp.Length > 0)
                 {
-                    ENV.ELGAStatusRedMin = System.Convert.ToInt32(stemp);
+                    ENV.ELGAStatusRed = System.Convert.ToInt32(stemp);
                 }
-
+                
+                stemp = _Log.ConfigFile.GetStringValue("ELGAUser");
+                if (stemp.Length > 0)
+                {
+                    ENV.ELGAUser = stemp.Trim();
+                }
+                stemp = _Log.ConfigFile.GetStringValue("ELGAPwd");
+                if (stemp.Length > 0)
+                {
+                    qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    ENV.ELGAPwd = ELGAPwdDecrypted.Trim();
+                }
 
                 stemp = _Log.ConfigFile.GetStringValue("OnlyOneFavoritenComboinPlanung");
                 if (stemp.Length > 0 && stemp == "0")

@@ -118,6 +118,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
+                bool AnyChange = false;
                 string sProt = "";
                 if (flds != null)
                 {
@@ -125,48 +126,56 @@ namespace PMDS.Global.db.ERSystem
                     {
                         if (!r.changedNoValue && !r.oValNew.Equals(r.oValOrig))
                         {
-                            sProt += (table.Trim() == "" ? r.Table.Trim() : table) + "." + r.Fld.Trim() + " changed from " + r.oValOrig.ToString() + " to " + r.oValNew.ToString() + "" + "\r\n";
+                            sProt += (table.Trim() == "" ? r.Table.Trim() : table) + "." + r.Fld.Trim() + " wurde von " + r.oValOrig.ToString() + " auf " + r.oValNew.ToString() + " geändert" + "\r\n";
+                            AnyChange = true;
                         }
                         else if (r.changedNoValue)
                         {
                             sProt += (table.Trim() == "" ? r.Table.Trim() : table) + "." + r.Fld.Trim() + " changed" + "\r\n";
+                            AnyChange = true;
                         }
                     }
                 }
                 if (sProtAltern.Trim() != "")
-                    sProt = sProtAltern.Trim();
-
-                PMDSBusiness b = new PMDSBusiness();
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    PMDS.db.Entities.ELGAProtocoll rNewELGAProtocoll = PMDS.Global.db.ERSystem.EFEntities.newELGAProtocoll(db);
-                    rNewELGAProtocoll.ID = System.Guid.NewGuid();
-                    rNewELGAProtocoll.Type = TypeProt.ToString();
-                    rNewELGAProtocoll.Title = Title.Trim();
-                    rNewELGAProtocoll.Protocoll = sProt;
-                    rNewELGAProtocoll.ELGAFunctions = ELGAFunctions.ToString();
-                    rNewELGAProtocoll.Characteristics = "";
-                    rNewELGAProtocoll.CreatedAt = DateTime.Now;
-                    rNewELGAProtocoll.CreatedUser = b.getUserName(ENV.USERID);
-                    rNewELGAProtocoll.ELGAErrors = ELGAErrors.Trim();
+                    sProt = sProtAltern.Trim();
+                    AnyChange = true;
+                }
 
-                    if (IDBenutzer != null)
-                        rNewELGAProtocoll.IDBenutzer = IDBenutzer;
-                    else
-                        rNewELGAProtocoll.IDBenutzer = null;
+                if (AnyChange)
+                {
+                    PMDSBusiness b = new PMDSBusiness();
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        PMDS.db.Entities.ELGAProtocoll rNewELGAProtocoll = PMDS.Global.db.ERSystem.EFEntities.newELGAProtocoll(db);
+                        rNewELGAProtocoll.ID = System.Guid.NewGuid();
+                        rNewELGAProtocoll.Type = TypeProt.ToString();
+                        rNewELGAProtocoll.Title = Title.Trim();
+                        rNewELGAProtocoll.Protocoll = sProt;
+                        rNewELGAProtocoll.ELGAFunctions = ELGAFunctions.ToString();
+                        rNewELGAProtocoll.Characteristics = "";
+                        rNewELGAProtocoll.CreatedAt = DateTime.Now;
+                        rNewELGAProtocoll.CreatedUser = b.getUserName(ENV.USERID);
+                        rNewELGAProtocoll.ELGAErrors = ELGAErrors.Trim();
 
-                    if (IDPatient != null)
-                        rNewELGAProtocoll.IDPatient = IDPatient;
-                    else
-                        rNewELGAProtocoll.IDPatient = null;
+                        if (IDBenutzer != null)
+                            rNewELGAProtocoll.IDBenutzer = IDBenutzer;
+                        else
+                            rNewELGAProtocoll.IDBenutzer = null;
 
-                    if (IDAufenthalt != null)
-                        rNewELGAProtocoll.IDAufenthalt = IDAufenthalt;
-                    else
-                        rNewELGAProtocoll.IDAufenthalt = null;
+                        if (IDPatient != null)
+                            rNewELGAProtocoll.IDPatient = IDPatient;
+                        else
+                            rNewELGAProtocoll.IDPatient = null;
 
-                    db.ELGAProtocoll.Add(rNewELGAProtocoll);
-                    db.SaveChanges();
+                        if (IDAufenthalt != null)
+                            rNewELGAProtocoll.IDAufenthalt = IDAufenthalt;
+                        else
+                            rNewELGAProtocoll.IDAufenthalt = null;
+
+                        db.ELGAProtocoll.Add(rNewELGAProtocoll);
+                        db.SaveChanges();
+                    }
                 }
 
             }
@@ -338,11 +347,11 @@ namespace PMDS.Global.db.ERSystem
             try
             {
                 string sTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung aktiv");
-                sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(Noch 4h aktiv)");
+                sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch " + ENV.ELGAStatusGreen.ToString() + " min aktiv)");
                 statBar.Panels["statELGA"].Text = sTxt;
 
                 panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_green, 32, 32);
-                ELGAStatusbarStatus.ELGALogInDto = WCFServiceClient1.LogInElga(ENV.USERID, ElgaDtoUsr.Elgauser, ElgaDtoUsr.ELGAPwd, ENV.lic_ELGA);
+                ELGAStatusbarStatus.ELGALogInDto = WCFServiceClient1.LogInElga(ENV.USERID);
                 if (!ELGAStatusbarStatus.ELGALogInDto.LogInOK)
                 {
                     throw new Exception("ELGABusiness.handleLogIn: WCFServiceClient1.logInELGA failed!");
@@ -350,7 +359,7 @@ namespace PMDS.Global.db.ERSystem
                 
                 ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.green;
                 ELGAStatusbarStatus.ELGASessionStarted = DateTime.Now;
-                ELGAStatusbarStatus.ELGASessionEnd = ELGAStatusbarStatus.ELGASessionStarted.Value.AddHours(4);
+                ELGAStatusbarStatus.ELGASessionEnd = ELGAStatusbarStatus.ELGASessionStarted.Value.AddMinutes(ENV.ELGAStatusGreen);
                 ELGAStatusbarStatus.Active = true;
 
             }
@@ -395,12 +404,12 @@ namespace PMDS.Global.db.ERSystem
 
                 if (ELGAStatusbarStatus.iVerlängerungen == 0)
                 {
-                    if (span.TotalMinutes <= ENV.ELGAStatusYellow && span.TotalMinutes > ENV.ELGAStatusRedMin)
+                    if (span.TotalMinutes <= ENV.ELGAStatusYellow && span.TotalMinutes > ENV.ELGAStatusRed)
                     {
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.yellow;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_yellow, 32, 32);
                     }
-                    else if (span.TotalMinutes <= ENV.ELGAStatusRedMin || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
+                    else if (span.TotalMinutes <= ENV.ELGAStatusRed || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                     {
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.red;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_red, 32, 32);
@@ -425,7 +434,7 @@ namespace PMDS.Global.db.ERSystem
                 {
                     if (!ELGAStatusbarStatus.VerlängerungStatusRed)
                     {
-                        if (span.TotalMinutes <= ENV.ELGAStatusRedMin || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
+                        if (span.TotalMinutes <= ENV.ELGAStatusRed || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                         {
                             this.setTxtStatusbarTime(statBar, panelELGA, span, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung - keine Verlängerung mehr möglich"));
                             ELGAStatusbarStatus.VerlängerungStatusRed = true;
@@ -460,7 +469,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                string sDiff = string.Format("{0} : {1}", span.Hours, span.Minutes);
+                string sDiff = span.Minutes.ToString();
 
                 string sTxt = "";
                 if (txtAlternat.Trim() != "")
@@ -472,7 +481,7 @@ namespace PMDS.Global.db.ERSystem
                     sTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung aktiv");
                 }
                 
-                sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(Noch {0} aktiv)");
+                sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} aktiv)");
                 sTxt = string.Format(sTxt, sDiff);
                 statBar.Panels["statELGA"].Text = sTxt;
 
