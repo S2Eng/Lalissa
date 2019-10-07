@@ -277,7 +277,7 @@ namespace PMDS.Global.db.ERSystem
                                                                                                     "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?", "ELGA", MessageBoxButtons.YesNo);
                                 if (res == DialogResult.Yes)
                                 {
-                                    this.LogOutELGA(statBar, panelELGA);
+                                    this.LogOutELGA(statBar, panelELGA, false);
                                 }
                             }
                             else if (ELGAStatusbarStatus.TypeStatusELGA == eTypeStatusELGA.yellow)
@@ -342,7 +342,7 @@ namespace PMDS.Global.db.ERSystem
                 statBar.Panels["statELGA"].Text = sTxt;
 
                 panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_green, 32, 32);
-                ELGAStatusbarStatus.ELGALogInDto = WCFServiceClient1.logInELGA(ENV.USERID, ElgaDtoUsr.Elgauser, ElgaDtoUsr.ELGAPwd, ENV.lic_ELGA);
+                ELGAStatusbarStatus.ELGALogInDto = WCFServiceClient1.LogInElga(ENV.USERID, ElgaDtoUsr.Elgauser, ElgaDtoUsr.ELGAPwd, ENV.lic_ELGA);
                 if (!ELGAStatusbarStatus.ELGALogInDto.LogInOK)
                 {
                     throw new Exception("ELGABusiness.handleLogIn: WCFServiceClient1.logInELGA failed!");
@@ -363,8 +363,11 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                if (setSessionStopped)
-                    ELGAStatusbarStatus.SessionStopped = true;
+                //if (setSessionStopped)
+                    //ELGAStatusbarStatus.SessionStopped = true;
+
+                WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+                WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
 
                 ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.off;
                 ELGAStatusbarStatus.ELGASessionStarted = null;
@@ -392,12 +395,12 @@ namespace PMDS.Global.db.ERSystem
 
                 if (ELGAStatusbarStatus.iVerlängerungen == 0)
                 {
-                    if (span.TotalMinutes <= 30 && span.TotalMinutes > 10)
+                    if (span.TotalMinutes <= ENV.ELGAStatusYellow && span.TotalMinutes > ENV.ELGAStatusRedMin)
                     {
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.yellow;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_yellow, 32, 32);
                     }
-                    else if (span.TotalMinutes <= 10 || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
+                    else if (span.TotalMinutes <= ENV.ELGAStatusRedMin || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                     {
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.red;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_red, 32, 32);
@@ -422,7 +425,7 @@ namespace PMDS.Global.db.ERSystem
                 {
                     if (!ELGAStatusbarStatus.VerlängerungStatusRed)
                     {
-                        if (span.TotalMinutes <= 10 || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
+                        if (span.TotalMinutes <= ENV.ELGAStatusRedMin || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                         {
                             this.setTxtStatusbarTime(statBar, panelELGA, span, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung - keine Verlängerung mehr möglich"));
                             ELGAStatusbarStatus.VerlängerungStatusRed = true;

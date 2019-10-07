@@ -135,13 +135,16 @@ namespace PMDS.Global
 
         private static ResourceManager _resources = null;
 
+        public static int ELGAStatusYellow = 30;
+        public static int ELGAStatusRedMin = 10;
 
 
 
-    
 
 
-    
+
+
+
 
 
 
@@ -1300,6 +1303,18 @@ namespace PMDS.Global
                         ENV.PMDSNew = true;
                     }
                 }
+
+                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusYellow");
+                if (stemp.Length > 0)
+                {
+                    ENV.ELGAStatusYellow = System.Convert.ToInt32(stemp);
+                }
+                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusRedMin");
+                if (stemp.Length > 0)
+                {
+                    ENV.ELGAStatusRedMin = System.Convert.ToInt32(stemp);
+                }
+
 
                 stemp = _Log.ConfigFile.GetStringValue("OnlyOneFavoritenComboinPlanung");
                 if (stemp.Length > 0 && stemp == "0")

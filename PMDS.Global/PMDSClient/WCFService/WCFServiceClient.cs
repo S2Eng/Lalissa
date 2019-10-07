@@ -384,56 +384,26 @@ namespace PMDSClient.Sitemap
             frm.ShowDialog();
         }
 
-
-        public ELGALogInDto logInELGA(Guid UserID, string ELGAUsr, string ELGAPwd, bool lic_ELGA)
+        public ELGALogInDto LogInElga(Guid UserID, string ELGAUsr, string ELGAPwd, bool lic_ELGA)
         {
-            Task<ELGALogInDto> t = this.TLogInElga(UserID, ELGAUsr, ELGAPwd, lic_ELGA);
-            return t.Result;
-            //t.Wait();
-            //return t.Result;
-        }
-        private async Task<ELGALogInDto> TLogInElga(Guid UserID, string ELGAUsr, string ELGAPwd, bool lic_ELGA)
-        {
-            ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
             try
             {
-                bool LogInELGAOK = false;
-                string xml = "";
+                ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
 
-                await Task.Run(() =>
-                {
-                    try
-                    {
-                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
-                        //Thread.Sleep(5000);
-                        ELGASessionDTO session = new ELGASessionDTO();
-                        session.IDUserk__BackingField = UserID;
-                        LogInELGAOK = client.ELGALogInHCP(ELGAUsr, ELGAPwd, ref session);
-                        ELGALogInDto1.session = session;
-                        ELGALogInDto1.LogInOK = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("TLogInElga: Task => " + ex.ToString());
-                    }
-
-                }).ContinueWith((t) =>
-                {
-                    if (t.IsFaulted) throw t.Exception;
-                    if (t.IsCompleted) { }
-                });
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                //Thread.Sleep(5000);
+                ELGASessionDTO session = new ELGASessionDTO();
+                session.IDUserk__BackingField = UserID;
+                ELGALogInDto1.LogInOK = client.ELGALogInHCP(ELGAUsr, ELGAPwd, ref session);
+                ELGALogInDto1.session = session;
 
                 return ELGALogInDto1;
             }
             catch (Exception ex)
             {
-                Exception exTmp = new Exception("TLogInElga - " + ex.ToString());
-                PMDS.Global.ENV.HandleException(exTmp, "WCFException");
-                return ELGALogInDto1;
+               throw new Exception("LogInElga: " + ex.ToString());
             }
         }
-
-
 
 
 
