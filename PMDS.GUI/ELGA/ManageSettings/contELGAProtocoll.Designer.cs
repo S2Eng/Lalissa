@@ -95,7 +95,7 @@
             ultraGridColumn5.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;
             ultraGridColumn6.Header.Caption = "Typ";
             ultraGridColumn6.Header.Editor = null;
-            ultraGridColumn6.Header.VisiblePosition = 8;
+            ultraGridColumn6.Header.VisiblePosition = 7;
             ultraGridColumn6.Width = 105;
             ultraGridColumn7.Header.Caption = "Titel";
             ultraGridColumn7.Header.Editor = null;
@@ -103,7 +103,7 @@
             ultraGridColumn7.Width = 239;
             ultraGridColumn8.Header.Caption = "Protokoll";
             ultraGridColumn8.Header.Editor = null;
-            ultraGridColumn8.Header.VisiblePosition = 7;
+            ultraGridColumn8.Header.VisiblePosition = 8;
             ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 4;
             ultraGridColumn9.Hidden = true;
