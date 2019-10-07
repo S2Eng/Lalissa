@@ -135,8 +135,9 @@ namespace PMDS.Global
 
         private static ResourceManager _resources = null;
 
+        public static int ELGAStatusGreen = 240;
         public static int ELGAStatusYellow = 30;
-        public static int ELGAStatusRedMin = 10;
+        public static int ELGAStatusRed = 10;
 
 
 
@@ -1304,6 +1305,11 @@ namespace PMDS.Global
                     }
                 }
 
+                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusGreen");
+                if (stemp.Length > 0)
+                {
+                    ENV.ELGAStatusGreen = System.Convert.ToInt32(stemp);
+                }
                 stemp = _Log.ConfigFile.GetStringValue("ELGAStatusYellow");
                 if (stemp.Length > 0)
                 {
@@ -1312,7 +1318,7 @@ namespace PMDS.Global
                 stemp = _Log.ConfigFile.GetStringValue("ELGAStatusRedMin");
                 if (stemp.Length > 0)
                 {
-                    ENV.ELGAStatusRedMin = System.Convert.ToInt32(stemp);
+                    ENV.ELGAStatusRed = System.Convert.ToInt32(stemp);
                 }
 
 

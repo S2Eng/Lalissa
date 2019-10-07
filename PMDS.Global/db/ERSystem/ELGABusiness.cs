@@ -395,12 +395,12 @@ namespace PMDS.Global.db.ERSystem
 
                 if (ELGAStatusbarStatus.iVerlängerungen == 0)
                 {
-                    if (span.TotalMinutes <= ENV.ELGAStatusYellow && span.TotalMinutes > ENV.ELGAStatusRedMin)
+                    if (span.TotalMinutes <= ENV.ELGAStatusYellow && span.TotalMinutes > ENV.ELGAStatusRed)
                     {
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.yellow;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_yellow, 32, 32);
                     }
-                    else if (span.TotalMinutes <= ENV.ELGAStatusRedMin || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
+                    else if (span.TotalMinutes <= ENV.ELGAStatusRed || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                     {
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.red;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_red, 32, 32);
@@ -425,7 +425,7 @@ namespace PMDS.Global.db.ERSystem
                 {
                     if (!ELGAStatusbarStatus.VerlängerungStatusRed)
                     {
-                        if (span.TotalMinutes <= ENV.ELGAStatusRedMin || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
+                        if (span.TotalMinutes <= ENV.ELGAStatusRed || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                         {
                             this.setTxtStatusbarTime(statBar, panelELGA, span, QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung - keine Verlängerung mehr möglich"));
                             ELGAStatusbarStatus.VerlängerungStatusRed = true;
