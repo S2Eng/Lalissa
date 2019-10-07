@@ -31,9 +31,9 @@ namespace PMDS.GUI.BaseControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditLinkDokumente));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditLinkDokumente));
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.beschreibungDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,8 +67,8 @@ namespace PMDS.GUI.BaseControls
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -221,10 +221,10 @@ namespace PMDS.GUI.BaseControls
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(750, 13);
+            this.label1.Size = new System.Drawing.Size(753, 13);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Verwalten Sie hier die Dokumente. Nutzen Sie die rechte Maustaste um Dokumente ho" +
-    "chzuladen oder geben Sie in der Spalte LinkName einen Hyperlink ein.";
+            this.label1.Text = "Verwalten Sie hier die Dokumente. Nutzen Sie die rechte Maustaste, um Dokumente h" +
+    "ochzuladen oder geben Sie in der Spalte LinkName einen Hyperlink ein.";
             this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // btnShow
@@ -257,10 +257,10 @@ namespace PMDS.GUI.BaseControls
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance3;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance1;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -278,10 +278,10 @@ namespace PMDS.GUI.BaseControls
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance1;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance2;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
