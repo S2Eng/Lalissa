@@ -1,5 +1,6 @@
 ﻿using Infragistics.Win.UltraWinStatusBar;
 using PMDS.DB;
+using PMDS.GUI.ELGA;
 using PMDSClient.Sitemap;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,8 @@ namespace PMDS.Global.db.ERSystem
         public qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
         public static bool MsgBoxVerlängerungActive = false;
         public PMDSBusiness b = new PMDSBusiness();
+
+        public static Dictionary<Guid, frmELGAMsgBox> lElgaMsgBoxOpend = new Dictionary<Guid, frmELGAMsgBox>();
 
 
 
@@ -200,26 +203,26 @@ namespace PMDS.Global.db.ERSystem
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     List<BenutzerDTOS1> tUsr = (from b in db.Benutzer
-                                                   where b.ID == IDUsr
-                                                   select new BenutzerDTOS1
-                                                   {
-                                                       Id = b.ID,
-                                                       Vorname = b.Vorname,
-                                                       Nachname = b.Nachname,
-                                                       Benutzer1 = b.Benutzer1,
-                                                       AktivJn = b.AktivJN,
-                                                       PflegerJn = b.PflegerJN,
-                                                       Idberufsstand = b.IDBerufsstand,
-                                                       IsGeneric = b.IsGeneric,
-                                                       Elgauser = b.ELGAUser,
-                                                       ELGAPwd = b.ELGAPwd,
-                                                       ElgapatId = b.ELGAPatID,
-                                                       Elgaactive = b.ELGAActive,
-                                                       ElgaautoLogin = b.ELGAAutoLogin,
-                                                       ElgaautostartSession = b.ELGAAutostartSession,
-                                                       ElgavalidTrough = b.ELGAValidTrough,
-                                                       ELGA_AuthorSpeciality = b.ELGA_AuthorSpeciality
-                                                   }).ToList();
+                                                where b.ID == IDUsr
+                                                select new BenutzerDTOS1
+                                                {
+                                                    Id = b.ID,
+                                                    Vorname = b.Vorname,
+                                                    Nachname = b.Nachname,
+                                                    Benutzer1 = b.Benutzer1,
+                                                    AktivJn = b.AktivJN,
+                                                    PflegerJn = b.PflegerJN,
+                                                    Idberufsstand = b.IDBerufsstand,
+                                                    IsGeneric = b.IsGeneric,
+                                                    Elgauser = b.ELGAUser,
+                                                    ELGAPwd = b.ELGAPwd,
+                                                    ElgapatId = b.ELGAPatID,
+                                                    Elgaactive = b.ELGAActive,
+                                                    ElgaautoLogin = b.ELGAAutoLogin,
+                                                    ElgaautostartSession = b.ELGAAutostartSession,
+                                                    ElgavalidTrough = b.ELGAValidTrough,
+                                                    ELGA_AuthorSpeciality = b.ELGA_AuthorSpeciality
+                                                }).ToList();
 
                     string ELGAPwdDecrypted = Encryption1.StringDecrypt(tUsr.First().ELGAPwd.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
                     tUsr.First().ELGAPwd = ELGAPwdDecrypted.Trim();
@@ -288,33 +291,27 @@ namespace PMDS.Global.db.ERSystem
                         {
                             if (ELGAStatusbarStatus.TypeStatusELGA == eTypeStatusELGA.green)
                             {
-                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" +
-                                                                                                    "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?", "ELGA", MessageBoxButtons.YesNo);
-                                if (res == DialogResult.Yes)
+                                if (this.ElgaMessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" + "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?"))
                                 {
-                                    this.LogOutELGA(statBar, panelELGA, false);
+                                    this.LogOutELGA(statBar, panelELGA, true, false);
                                 }
                             }
                             else if (ELGAStatusbarStatus.TypeStatusELGA == eTypeStatusELGA.yellow)
                             {
                                 string sMsgBoxTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die ELGA-Sitzung verlängern?");
-                                DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTxt, "ELGA", MessageBoxButtons.YesNo);
-                                if (res == DialogResult.Yes)
+                                if (this.ElgaMessageBox(sMsgBoxTxt))
                                 {
                                     this.LogInELGA(statBar, panelELGA);
                                     ELGAStatusbarStatus.iVerlängerungen += 1;
                                 }
                                 else
                                 {
-                                    DialogResult res3 = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" +
-                                                                                         "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?", "ELGA", MessageBoxButtons.YesNo);
-                                    if (res3 == DialogResult.Yes)
+                                    if (this.ElgaMessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" + "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?"))
                                     {
-                                        this.LogOutELGA(statBar, panelELGA);
+                                        this.LogOutELGA(statBar, panelELGA, true);
                                     }
                                 }
                             }
-
                         }
                     }
                 }
@@ -329,7 +326,7 @@ namespace PMDS.Global.db.ERSystem
                         }
                         else
                         {
-                            this.LogOutELGA(statBar, panelELGA, false);
+                            this.LogOutELGA(statBar, panelELGA, true, false);
                         }
 
                         //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
@@ -362,7 +359,7 @@ namespace PMDS.Global.db.ERSystem
                 {
                     throw new Exception("ELGABusiness.handleLogIn: WCFServiceClient1.logInELGA failed!");
                 }
-                
+
                 ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.green;
                 ELGAStatusbarStatus.ELGASessionStarted = DateTime.Now;
                 ELGAStatusbarStatus.ELGASessionEnd = ELGAStatusbarStatus.ELGASessionStarted.Value.AddMinutes(ENV.ELGAStatusGreen);
@@ -378,13 +375,17 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.LogInELGA: " + ex.ToString());
             }
         }
-        public void LogOutELGA(UltraStatusBar statBar, UltraStatusPanel panelELGA, bool setSessionStopped = true)
+        public void LogOutELGA(UltraStatusBar statBar, UltraStatusPanel panelELGA, bool CloseAllElgaMsgBoxes, bool setSessionStopped = true)
         {
             try
             {
                 //if (setSessionStopped)
-                    //ELGAStatusbarStatus.SessionStopped = true;
+                //ELGAStatusbarStatus.SessionStopped = true;
 
+                if (CloseAllElgaMsgBoxes)
+                {
+                    this.closeOpendElgaMsgBoxes();
+                }
                 WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                 WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
 
@@ -420,11 +421,13 @@ namespace PMDS.Global.db.ERSystem
                 {
                     if (span.TotalMinutes <= ENV.ELGAStatusYellow && span.TotalMinutes > ENV.ELGAStatusRed)
                     {
+                        this.setTxtStatusbarTime(statBar, panelELGA, span);
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.yellow;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_yellow, 32, 32);
                     }
-                    else if (span.TotalMinutes <= ENV.ELGAStatusRed || dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
+                    else if (span.TotalMinutes <= ENV.ELGAStatusRed && dNow <= ELGAStatusbarStatus.ELGASessionEnd.Value)
                     {
+                        this.setTxtStatusbarTime(statBar, panelELGA, span);
                         ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.red;
                         panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_red, 32, 32);
 
@@ -434,8 +437,7 @@ namespace PMDS.Global.db.ERSystem
                             string sMsgBoxTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Die ELGA-Sitzung läuft in {0} Minuten ab." + "\r\n" +
                                                                                                         "Soll die ELGA-Sitzung automatisch verlängert werden?");
                             sMsgBoxTxt = string.Format(sMsgBoxTxt, System.Convert.ToInt32(span.TotalMinutes).ToString());
-                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTxt, "ELGA", MessageBoxButtons.YesNo);
-                            if (res == DialogResult.Yes)
+                            if (this.ElgaMessageBox(sMsgBoxTxt))
                             {
                                 this.LogInELGA(statBar, panelELGA);
                                 this.setTxtStatusbarTime(statBar, panelELGA, span);
@@ -443,11 +445,18 @@ namespace PMDS.Global.db.ERSystem
                             }
                             else
                             {
-                                this.LogOutELGA(statBar, panelELGA);
+                                this.LogOutELGA(statBar, panelELGA, true);
                             }
                             MsgBoxVerlängerungActive = false;
                         }
-
+                    }
+                    else if (dNow > ELGAStatusbarStatus.ELGASessionEnd.Value)
+                    {
+                        this.LogOutELGA(statBar, panelELGA, true, false);
+                    }
+                    else
+                    {
+                        this.setTxtStatusbarTime(statBar, panelELGA, span);
                     }
                 }
                 else if (ELGAStatusbarStatus.iVerlängerungen == 1)
@@ -468,9 +477,10 @@ namespace PMDS.Global.db.ERSystem
                     }
                     else
                     {
+                        this.setTxtStatusbarTime(statBar, panelELGA, span);
                         if (dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                         {
-                            this.LogOutELGA(statBar, panelELGA);
+                            this.LogOutELGA(statBar, panelELGA, true);
                         }
                     }
                 }
@@ -490,7 +500,15 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                string sDiff = System.Convert.ToInt32(span.Minutes).ToString();
+                string sDiff = "";
+                if (ENV.adminSecure)
+                {
+                    sDiff = System.Convert.ToInt32(span.Minutes).ToString() + " min (" +System.Convert.ToInt32(span.TotalSeconds).ToString() + " sec)";
+                }
+                else
+                {
+                    sDiff = System.Convert.ToInt32(span.Minutes).ToString();
+                }
 
                 string sTxt = "";
                 if (txtAlternat.Trim() != "")
@@ -500,10 +518,10 @@ namespace PMDS.Global.db.ERSystem
                 else
                 {
                     sTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung aktiv");
+                    sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} aktiv)");
+                    sTxt = string.Format(sTxt, sDiff);
                 }
-                
-                sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} min aktiv)");
-                sTxt = string.Format(sTxt, sDiff);
+
                 statBar.Panels["statELGA"].Text = sTxt;
 
             }
@@ -553,6 +571,47 @@ namespace PMDS.Global.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("ELGABusiness.setStatusbarOnOff: " + ex.ToString());
+            }
+        }
+
+        public bool ElgaMessageBox(string Message)
+        {
+            try
+            {
+                frmELGAMsgBox frmELGAMsgBox1 = new frmELGAMsgBox();
+                frmELGAMsgBox1.initControl(Message);
+                lElgaMsgBoxOpend.Add(frmELGAMsgBox1.ID, frmELGAMsgBox1);
+                frmELGAMsgBox1.ShowDialog();
+                if (!frmELGAMsgBox1.abort)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.ElgaMessageBox: " + ex.ToString());
+            }
+        }
+
+        public void closeOpendElgaMsgBoxes()
+        {
+            try
+            {
+                foreach (var pair in lElgaMsgBoxOpend)
+                {
+                    pair.Value.Close();
+                }
+
+                lElgaMsgBoxOpend = new Dictionary<Guid, frmELGAMsgBox>();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.closeOpendElgaMsgBoxes: " + ex.ToString());
             }
         }
 

@@ -1861,6 +1861,12 @@
     <Compile Include="UI\frmELGALogIn.Designer.cs">
       <DependentUpon>frmELGALogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmELGAMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmELGAMsgBox.Designer.cs">
+      <DependentUpon>frmELGAMsgBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2307,6 +2313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmELGALogIn.resx">
       <DependentUpon>frmELGALogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmELGAMsgBox.resx">
+      <DependentUpon>frmELGAMsgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmPDF.resx">
       <DependentUpon>frmPDF.cs</DependentUpon>
