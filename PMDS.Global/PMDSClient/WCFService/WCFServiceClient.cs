@@ -337,7 +337,8 @@ namespace PMDSClient.Sitemap
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrk__BackingField = SozVersNr.Trim() };
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrk__BackingField = SozVersNr.Trim(), NachNameFirmak__BackingField = "", Vornamek__BackingField = "", 
+                                                                    Zipk__BackingField = "", Cityk__BackingField = "", Streetk__BackingField = "", StreetNrk__BackingField = "" };
                 ELGAParOutDto parOutDto = client.ELGAQueryPatients(ref parsIn);
 
                 if (parOutDto.bErrorsFoundk__BackingField)
@@ -494,10 +495,7 @@ namespace PMDSClient.Sitemap
 
 
 
-
-
-
-
+        
 
 
 
