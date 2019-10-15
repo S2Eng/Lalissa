@@ -118,6 +118,7 @@ namespace PMDS.GUI.ELGA
                                }).First();
 
                     this.txtSozVersNr.Text = rPatient.VersicherungsNr.Trim();
+                    this.txtSozVersNr.Text = "SVNR01";
                 }
 
             }

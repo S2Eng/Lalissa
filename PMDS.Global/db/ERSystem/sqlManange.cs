@@ -1311,7 +1311,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow)ds.MedizinischeTypen.NewRow();
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow)ds.ELGASearchPatients.NewRow();
                 rNew.ID = System.Guid.NewGuid();
                 rNew.NachnameFirma = "";
                 rNew.Vorname = "";
@@ -1335,7 +1335,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow)ds.MedizinischeTypen.NewRow();
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow)ds.ELGASearchGDAs.NewRow();
                 rNew.ID = System.Guid.NewGuid();
                 rNew.NachnameFirma = "";
                 rNew.Vorname = "";
@@ -1358,7 +1358,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)ds.MedizinischeTypen.NewRow();
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)ds.ELGASearchDocuments.NewRow();
                 rNew.ID = System.Guid.NewGuid();
                 rNew.Dokument = "";
                 rNew.SetErstelltAmNull();
