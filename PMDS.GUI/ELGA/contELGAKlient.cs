@@ -20,6 +20,7 @@ namespace PMDS.GUI.ELGA
         public bool IsInitialized = false;
 
         public Guid _IDKlient;
+        public Guid _IDAufenthalt;
 
 
 
@@ -32,6 +33,7 @@ namespace PMDS.GUI.ELGA
         {
 
         }
+
 
 
         public void initControl()
@@ -52,11 +54,12 @@ namespace PMDS.GUI.ELGA
         }
 
 
-        public void loadData(Guid IDKlient)
+        public void loadData(Guid IDKlient, Guid IDAufenthalt)
         {
             try
             {
                 this._IDKlient = IDKlient;
+                this._IDAufenthalt = IDAufenthalt;
 
 
             }
@@ -97,6 +100,72 @@ namespace PMDS.GUI.ELGA
             catch (Exception ex)
             {
                 throw new Exception("contELGAKlient.saveData: " + ex.ToString());
+            }
+        }
+
+
+
+
+        private void BtnKoontaktbestätigungStorno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                if (this.saveData())
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+        private void BtnDoKontaktbestätigung_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                frmELGASearchPatient frmELGASearchPatient1 = new frmELGASearchPatient();
+                frmELGASearchPatient1.initControl(this._IDKlient, this._IDAufenthalt, true);
+                frmELGASearchPatient1.ShowDialog();
+                if (!frmELGASearchPatient1.contELGASearchPatient1.abort)
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void BtnSetSOO_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.loadData(this._IDKlient, this._IDAufenthalt);
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
 

@@ -582,7 +582,7 @@ namespace PMDS.GUI
             this.ucVOErfassen1.search2(this.Klient.Aufenthalt.ID, null, null, null);
             if (!this._isBewerberJN && !this._isAbrechnung && PMDS.Global.ENV.lic_ELGA && this._mainSystem)
             {
-                this.contELGAKlient1.loadData(Klient.ID);
+                this.contELGAKlient1.loadData(Klient.ID, Klient.IDAuenthalt);
             }
 
         }

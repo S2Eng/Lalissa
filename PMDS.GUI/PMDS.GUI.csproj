@@ -993,11 +993,47 @@
     <Compile Include="ELGA\contELGAKlient.Designer.cs">
       <DependentUpon>contELGAKlient.cs</DependentUpon>
     </Compile>
+    <Compile Include="ELGA\contELGASearchDocuments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\contELGASearchDocuments.Designer.cs">
+      <DependentUpon>contELGASearchDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\contELGASearchGDA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\contELGASearchGDA.Designer.cs">
+      <DependentUpon>contELGASearchGDA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\contELGASearchPatient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ELGA\contELGASearchPatient.Designer.cs">
+      <DependentUpon>contELGASearchPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="ELGA\frmELGAChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ELGA\frmELGAChangePassword.Designer.cs">
       <DependentUpon>frmELGAChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\frmELGASearchDocuments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELGA\frmELGASearchDocuments.Designer.cs">
+      <DependentUpon>frmELGASearchDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\frmELGASearchGDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELGA\frmELGASearchGDA.Designer.cs">
+      <DependentUpon>frmELGASearchGDA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ELGA\frmELGASearchPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELGA\frmELGASearchPatient.Designer.cs">
+      <DependentUpon>frmELGASearchPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="ELGA\ManageSettings\contELGAProtocoll.cs">
       <SubType>UserControl</SubType>
@@ -3933,8 +3969,26 @@
     <EmbeddedResource Include="ELGA\contELGAKlient.resx">
       <DependentUpon>contELGAKlient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\contELGASearchDocuments.resx">
+      <DependentUpon>contELGASearchDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\contELGASearchGDA.resx">
+      <DependentUpon>contELGASearchGDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\contELGASearchPatient.resx">
+      <DependentUpon>contELGASearchPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ELGA\frmELGAChangePassword.resx">
       <DependentUpon>frmELGAChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\frmELGASearchDocuments.resx">
+      <DependentUpon>frmELGASearchDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\frmELGASearchGDA.resx">
+      <DependentUpon>frmELGASearchGDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\frmELGASearchPatient.resx">
+      <DependentUpon>frmELGASearchPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\ManageSettings\contELGAProtocoll.resx">
       <DependentUpon>contELGAProtocoll.cs</DependentUpon>

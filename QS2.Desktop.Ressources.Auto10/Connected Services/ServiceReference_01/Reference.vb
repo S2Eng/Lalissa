@@ -11719,6 +11719,1906 @@ Namespace ServiceReference_01
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ELGAParInDto", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ELGAParInDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private DocumentAddk__BackingFieldField As ServiceReference_01.DocumentAddDto
+        
+        Private IDDocuInternk__BackingFieldField As System.Guid
+        
+        Private IDPatientInternk__BackingFieldField As System.Guid
+        
+        Private sDocumentsDtok__BackingFieldField As ServiceReference_01.DocumentSearchDto
+        
+        Private sObjectDtok__BackingFieldField As ServiceReference_01.ObjectDTO
+        
+        Private sessionk__BackingFieldField As ServiceReference_01.ELGASessionDTO
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<DocumentAdd>k__BackingField", IsRequired:=true)>  _
+        Public Property DocumentAddk__BackingField() As ServiceReference_01.DocumentAddDto
+            Get
+                Return Me.DocumentAddk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DocumentAddk__BackingFieldField, value) <> true) Then
+                    Me.DocumentAddk__BackingFieldField = value
+                    Me.RaisePropertyChanged("DocumentAddk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDDocuIntern>k__BackingField", IsRequired:=true)>  _
+        Public Property IDDocuInternk__BackingField() As System.Guid
+            Get
+                Return Me.IDDocuInternk__BackingFieldField
+            End Get
+            Set
+                If (Me.IDDocuInternk__BackingFieldField.Equals(value) <> true) Then
+                    Me.IDDocuInternk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDDocuInternk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDPatientIntern>k__BackingField", IsRequired:=true)>  _
+        Public Property IDPatientInternk__BackingField() As System.Guid
+            Get
+                Return Me.IDPatientInternk__BackingFieldField
+            End Get
+            Set
+                If (Me.IDPatientInternk__BackingFieldField.Equals(value) <> true) Then
+                    Me.IDPatientInternk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDPatientInternk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<sDocumentsDto>k__BackingField", IsRequired:=true)>  _
+        Public Property sDocumentsDtok__BackingField() As ServiceReference_01.DocumentSearchDto
+            Get
+                Return Me.sDocumentsDtok__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.sDocumentsDtok__BackingFieldField, value) <> true) Then
+                    Me.sDocumentsDtok__BackingFieldField = value
+                    Me.RaisePropertyChanged("sDocumentsDtok__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<sObjectDto>k__BackingField", IsRequired:=true)>  _
+        Public Property sObjectDtok__BackingField() As ServiceReference_01.ObjectDTO
+            Get
+                Return Me.sObjectDtok__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.sObjectDtok__BackingFieldField, value) <> true) Then
+                    Me.sObjectDtok__BackingFieldField = value
+                    Me.RaisePropertyChanged("sObjectDtok__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<session>k__BackingField", IsRequired:=true)>  _
+        Public Property sessionk__BackingField() As ServiceReference_01.ELGASessionDTO
+            Get
+                Return Me.sessionk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.sessionk__BackingFieldField, value) <> true) Then
+                    Me.sessionk__BackingFieldField = value
+                    Me.RaisePropertyChanged("sessionk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DocumentAddDto", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DocumentAddDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private Authork__BackingFieldField As String
+        
+        Private ClinicalDocumentSetIDk__BackingFieldField As String
+        
+        Private Descriptionk__BackingFieldField As String
+        
+        Private Documentnamek__BackingFieldField As String
+        
+        Private IDCDAk__BackingFieldField As System.Guid
+        
+        Private KlinikNamek__BackingFieldField As String
+        
+        Private KlinikOIDk__BackingFieldField As String
+        
+        Private Personk__BackingFieldField As String
+        
+        Private bDocumentk__BackingFieldField() As Byte
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Author>k__BackingField", IsRequired:=true)>  _
+        Public Property Authork__BackingField() As String
+            Get
+                Return Me.Authork__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Authork__BackingFieldField, value) <> true) Then
+                    Me.Authork__BackingFieldField = value
+                    Me.RaisePropertyChanged("Authork__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ClinicalDocumentSetID>k__BackingField", IsRequired:=true)>  _
+        Public Property ClinicalDocumentSetIDk__BackingField() As String
+            Get
+                Return Me.ClinicalDocumentSetIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClinicalDocumentSetIDk__BackingFieldField, value) <> true) Then
+                    Me.ClinicalDocumentSetIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ClinicalDocumentSetIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Description>k__BackingField", IsRequired:=true)>  _
+        Public Property Descriptionk__BackingField() As String
+            Get
+                Return Me.Descriptionk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Descriptionk__BackingFieldField, value) <> true) Then
+                    Me.Descriptionk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Descriptionk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Documentname>k__BackingField", IsRequired:=true)>  _
+        Public Property Documentnamek__BackingField() As String
+            Get
+                Return Me.Documentnamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Documentnamek__BackingFieldField, value) <> true) Then
+                    Me.Documentnamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("Documentnamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDCDA>k__BackingField", IsRequired:=true)>  _
+        Public Property IDCDAk__BackingField() As System.Guid
+            Get
+                Return Me.IDCDAk__BackingFieldField
+            End Get
+            Set
+                If (Me.IDCDAk__BackingFieldField.Equals(value) <> true) Then
+                    Me.IDCDAk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDCDAk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<KlinikName>k__BackingField", IsRequired:=true)>  _
+        Public Property KlinikNamek__BackingField() As String
+            Get
+                Return Me.KlinikNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.KlinikNamek__BackingFieldField, value) <> true) Then
+                    Me.KlinikNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("KlinikNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<KlinikOID>k__BackingField", IsRequired:=true)>  _
+        Public Property KlinikOIDk__BackingField() As String
+            Get
+                Return Me.KlinikOIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.KlinikOIDk__BackingFieldField, value) <> true) Then
+                    Me.KlinikOIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("KlinikOIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Person>k__BackingField", IsRequired:=true)>  _
+        Public Property Personk__BackingField() As String
+            Get
+                Return Me.Personk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Personk__BackingFieldField, value) <> true) Then
+                    Me.Personk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Personk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<bDocument>k__BackingField", IsRequired:=true)>  _
+        Public Property bDocumentk__BackingField() As Byte()
+            Get
+                Return Me.bDocumentk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.bDocumentk__BackingFieldField, value) <> true) Then
+                    Me.bDocumentk__BackingFieldField = value
+                    Me.RaisePropertyChanged("bDocumentk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DocumentSearchDto", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DocumentSearchDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private Authork__BackingFieldField As String
+        
+        Private CreatedFromk__BackingFieldField As System.Nullable(Of Date)
+        
+        Private CreatedTok__BackingFieldField As System.Nullable(Of Date)
+        
+        Private DocumentStatusk__BackingFieldField As String
+        
+        Private Documentnamek__BackingFieldField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Author>k__BackingField", IsRequired:=true)>  _
+        Public Property Authork__BackingField() As String
+            Get
+                Return Me.Authork__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Authork__BackingFieldField, value) <> true) Then
+                    Me.Authork__BackingFieldField = value
+                    Me.RaisePropertyChanged("Authork__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<CreatedFrom>k__BackingField", IsRequired:=true)>  _
+        Public Property CreatedFromk__BackingField() As System.Nullable(Of Date)
+            Get
+                Return Me.CreatedFromk__BackingFieldField
+            End Get
+            Set
+                If (Me.CreatedFromk__BackingFieldField.Equals(value) <> true) Then
+                    Me.CreatedFromk__BackingFieldField = value
+                    Me.RaisePropertyChanged("CreatedFromk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<CreatedTo>k__BackingField", IsRequired:=true)>  _
+        Public Property CreatedTok__BackingField() As System.Nullable(Of Date)
+            Get
+                Return Me.CreatedTok__BackingFieldField
+            End Get
+            Set
+                If (Me.CreatedTok__BackingFieldField.Equals(value) <> true) Then
+                    Me.CreatedTok__BackingFieldField = value
+                    Me.RaisePropertyChanged("CreatedTok__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<DocumentStatus>k__BackingField", IsRequired:=true)>  _
+        Public Property DocumentStatusk__BackingField() As String
+            Get
+                Return Me.DocumentStatusk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DocumentStatusk__BackingFieldField, value) <> true) Then
+                    Me.DocumentStatusk__BackingFieldField = value
+                    Me.RaisePropertyChanged("DocumentStatusk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Documentname>k__BackingField", IsRequired:=true)>  _
+        Public Property Documentnamek__BackingField() As String
+            Get
+                Return Me.Documentnamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Documentnamek__BackingFieldField, value) <> true) Then
+                    Me.Documentnamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("Documentnamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ObjectDTO", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ObjectDTO
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private Cityk__BackingFieldField As String
+        
+        Private Countryk__BackingFieldField As String
+        
+        Private IDELgaGdak__BackingFieldField As String
+        
+        Private NachNameFirmak__BackingFieldField As String
+        
+        Private SozVersNrk__BackingFieldField As String
+        
+        Private StreetNrk__BackingFieldField As String
+        
+        Private Streetk__BackingFieldField As String
+        
+        Private Telk__BackingFieldField As String
+        
+        Private Titlek__BackingFieldField As String
+        
+        Private Vornamek__BackingFieldField As String
+        
+        Private Zipk__BackingFieldField As String
+        
+        Private birthdatek__BackingFieldField As System.Nullable(Of Date)
+        
+        Private isOrganisationk__BackingFieldField As Boolean
+        
+        Private lAdressesk__BackingFieldField() As ServiceReference_01.AdressDto
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<City>k__BackingField", IsRequired:=true)>  _
+        Public Property Cityk__BackingField() As String
+            Get
+                Return Me.Cityk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Cityk__BackingFieldField, value) <> true) Then
+                    Me.Cityk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Cityk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Country>k__BackingField", IsRequired:=true)>  _
+        Public Property Countryk__BackingField() As String
+            Get
+                Return Me.Countryk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Countryk__BackingFieldField, value) <> true) Then
+                    Me.Countryk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Countryk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDELgaGda>k__BackingField", IsRequired:=true)>  _
+        Public Property IDELgaGdak__BackingField() As String
+            Get
+                Return Me.IDELgaGdak__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.IDELgaGdak__BackingFieldField, value) <> true) Then
+                    Me.IDELgaGdak__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDELgaGdak__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<NachNameFirma>k__BackingField", IsRequired:=true)>  _
+        Public Property NachNameFirmak__BackingField() As String
+            Get
+                Return Me.NachNameFirmak__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NachNameFirmak__BackingFieldField, value) <> true) Then
+                    Me.NachNameFirmak__BackingFieldField = value
+                    Me.RaisePropertyChanged("NachNameFirmak__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<SozVersNr>k__BackingField", IsRequired:=true)>  _
+        Public Property SozVersNrk__BackingField() As String
+            Get
+                Return Me.SozVersNrk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SozVersNrk__BackingFieldField, value) <> true) Then
+                    Me.SozVersNrk__BackingFieldField = value
+                    Me.RaisePropertyChanged("SozVersNrk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<StreetNr>k__BackingField", IsRequired:=true)>  _
+        Public Property StreetNrk__BackingField() As String
+            Get
+                Return Me.StreetNrk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.StreetNrk__BackingFieldField, value) <> true) Then
+                    Me.StreetNrk__BackingFieldField = value
+                    Me.RaisePropertyChanged("StreetNrk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Street>k__BackingField", IsRequired:=true)>  _
+        Public Property Streetk__BackingField() As String
+            Get
+                Return Me.Streetk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Streetk__BackingFieldField, value) <> true) Then
+                    Me.Streetk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Streetk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Tel>k__BackingField", IsRequired:=true)>  _
+        Public Property Telk__BackingField() As String
+            Get
+                Return Me.Telk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Telk__BackingFieldField, value) <> true) Then
+                    Me.Telk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Telk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Title>k__BackingField", IsRequired:=true)>  _
+        Public Property Titlek__BackingField() As String
+            Get
+                Return Me.Titlek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Titlek__BackingFieldField, value) <> true) Then
+                    Me.Titlek__BackingFieldField = value
+                    Me.RaisePropertyChanged("Titlek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Vorname>k__BackingField", IsRequired:=true)>  _
+        Public Property Vornamek__BackingField() As String
+            Get
+                Return Me.Vornamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Vornamek__BackingFieldField, value) <> true) Then
+                    Me.Vornamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("Vornamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Zip>k__BackingField", IsRequired:=true)>  _
+        Public Property Zipk__BackingField() As String
+            Get
+                Return Me.Zipk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Zipk__BackingFieldField, value) <> true) Then
+                    Me.Zipk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Zipk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<birthdate>k__BackingField", IsRequired:=true)>  _
+        Public Property birthdatek__BackingField() As System.Nullable(Of Date)
+            Get
+                Return Me.birthdatek__BackingFieldField
+            End Get
+            Set
+                If (Me.birthdatek__BackingFieldField.Equals(value) <> true) Then
+                    Me.birthdatek__BackingFieldField = value
+                    Me.RaisePropertyChanged("birthdatek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<isOrganisation>k__BackingField", IsRequired:=true)>  _
+        Public Property isOrganisationk__BackingField() As Boolean
+            Get
+                Return Me.isOrganisationk__BackingFieldField
+            End Get
+            Set
+                If (Me.isOrganisationk__BackingFieldField.Equals(value) <> true) Then
+                    Me.isOrganisationk__BackingFieldField = value
+                    Me.RaisePropertyChanged("isOrganisationk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<lAdresses>k__BackingField", IsRequired:=true)>  _
+        Public Property lAdressesk__BackingField() As ServiceReference_01.AdressDto()
+            Get
+                Return Me.lAdressesk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lAdressesk__BackingFieldField, value) <> true) Then
+                    Me.lAdressesk__BackingFieldField = value
+                    Me.RaisePropertyChanged("lAdressesk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="AdressDto", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class AdressDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private Cityk__BackingFieldField As String
+        
+        Private Countryk__BackingFieldField As String
+        
+        Private IDk__BackingFieldField As String
+        
+        Private Statek__BackingFieldField As String
+        
+        Private Statusk__BackingFieldField As String
+        
+        Private StreetNrk__BackingFieldField As String
+        
+        Private Streetk__BackingFieldField As String
+        
+        Private Telk__BackingFieldField As String
+        
+        Private Zipk__BackingFieldField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<City>k__BackingField", IsRequired:=true)>  _
+        Public Property Cityk__BackingField() As String
+            Get
+                Return Me.Cityk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Cityk__BackingFieldField, value) <> true) Then
+                    Me.Cityk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Cityk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Country>k__BackingField", IsRequired:=true)>  _
+        Public Property Countryk__BackingField() As String
+            Get
+                Return Me.Countryk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Countryk__BackingFieldField, value) <> true) Then
+                    Me.Countryk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Countryk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ID>k__BackingField", IsRequired:=true)>  _
+        Public Property IDk__BackingField() As String
+            Get
+                Return Me.IDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.IDk__BackingFieldField, value) <> true) Then
+                    Me.IDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<State>k__BackingField", IsRequired:=true)>  _
+        Public Property Statek__BackingField() As String
+            Get
+                Return Me.Statek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Statek__BackingFieldField, value) <> true) Then
+                    Me.Statek__BackingFieldField = value
+                    Me.RaisePropertyChanged("Statek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Status>k__BackingField", IsRequired:=true)>  _
+        Public Property Statusk__BackingField() As String
+            Get
+                Return Me.Statusk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Statusk__BackingFieldField, value) <> true) Then
+                    Me.Statusk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Statusk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<StreetNr>k__BackingField", IsRequired:=true)>  _
+        Public Property StreetNrk__BackingField() As String
+            Get
+                Return Me.StreetNrk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.StreetNrk__BackingFieldField, value) <> true) Then
+                    Me.StreetNrk__BackingFieldField = value
+                    Me.RaisePropertyChanged("StreetNrk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Street>k__BackingField", IsRequired:=true)>  _
+        Public Property Streetk__BackingField() As String
+            Get
+                Return Me.Streetk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Streetk__BackingFieldField, value) <> true) Then
+                    Me.Streetk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Streetk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Tel>k__BackingField", IsRequired:=true)>  _
+        Public Property Telk__BackingField() As String
+            Get
+                Return Me.Telk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Telk__BackingFieldField, value) <> true) Then
+                    Me.Telk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Telk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Zip>k__BackingField", IsRequired:=true)>  _
+        Public Property Zipk__BackingField() As String
+            Get
+                Return Me.Zipk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Zipk__BackingFieldField, value) <> true) Then
+                    Me.Zipk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Zipk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ELGAParOutDto", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ELGAParOutDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private Errorsk__BackingFieldField As String
+        
+        Private LocalIDk__BackingFieldField As String
+        
+        Private bErrorsFoundk__BackingFieldField As Boolean
+        
+        Private bOKk__BackingFieldField As Boolean
+        
+        Private iRowsFoundk__BackingFieldField As Integer
+        
+        Private lDocumentsk__BackingFieldField() As ServiceReference_01.ELGADocumentsDTO
+        
+        Private lGDAsk__BackingFieldField() As ServiceReference_01.ObjectDTO
+        
+        Private lPatientsk__BackingFieldField() As ServiceReference_01.ELGAPatientDTO
+        
+        Private lstErrorsk__BackingFieldField() As ServiceReference_01.ELGAErrorDTO
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Errors>k__BackingField", IsRequired:=true)>  _
+        Public Property Errorsk__BackingField() As String
+            Get
+                Return Me.Errorsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Errorsk__BackingFieldField, value) <> true) Then
+                    Me.Errorsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Errorsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<LocalID>k__BackingField", IsRequired:=true)>  _
+        Public Property LocalIDk__BackingField() As String
+            Get
+                Return Me.LocalIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LocalIDk__BackingFieldField, value) <> true) Then
+                    Me.LocalIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("LocalIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<bErrorsFound>k__BackingField", IsRequired:=true)>  _
+        Public Property bErrorsFoundk__BackingField() As Boolean
+            Get
+                Return Me.bErrorsFoundk__BackingFieldField
+            End Get
+            Set
+                If (Me.bErrorsFoundk__BackingFieldField.Equals(value) <> true) Then
+                    Me.bErrorsFoundk__BackingFieldField = value
+                    Me.RaisePropertyChanged("bErrorsFoundk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<bOK>k__BackingField", IsRequired:=true)>  _
+        Public Property bOKk__BackingField() As Boolean
+            Get
+                Return Me.bOKk__BackingFieldField
+            End Get
+            Set
+                If (Me.bOKk__BackingFieldField.Equals(value) <> true) Then
+                    Me.bOKk__BackingFieldField = value
+                    Me.RaisePropertyChanged("bOKk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<iRowsFound>k__BackingField", IsRequired:=true)>  _
+        Public Property iRowsFoundk__BackingField() As Integer
+            Get
+                Return Me.iRowsFoundk__BackingFieldField
+            End Get
+            Set
+                If (Me.iRowsFoundk__BackingFieldField.Equals(value) <> true) Then
+                    Me.iRowsFoundk__BackingFieldField = value
+                    Me.RaisePropertyChanged("iRowsFoundk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<lDocuments>k__BackingField", IsRequired:=true)>  _
+        Public Property lDocumentsk__BackingField() As ServiceReference_01.ELGADocumentsDTO()
+            Get
+                Return Me.lDocumentsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lDocumentsk__BackingFieldField, value) <> true) Then
+                    Me.lDocumentsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("lDocumentsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<lGDAs>k__BackingField", IsRequired:=true)>  _
+        Public Property lGDAsk__BackingField() As ServiceReference_01.ObjectDTO()
+            Get
+                Return Me.lGDAsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lGDAsk__BackingFieldField, value) <> true) Then
+                    Me.lGDAsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("lGDAsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<lPatients>k__BackingField", IsRequired:=true)>  _
+        Public Property lPatientsk__BackingField() As ServiceReference_01.ELGAPatientDTO()
+            Get
+                Return Me.lPatientsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lPatientsk__BackingFieldField, value) <> true) Then
+                    Me.lPatientsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("lPatientsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<lstErrors>k__BackingField", IsRequired:=true)>  _
+        Public Property lstErrorsk__BackingField() As ServiceReference_01.ELGAErrorDTO()
+            Get
+                Return Me.lstErrorsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lstErrorsk__BackingFieldField, value) <> true) Then
+                    Me.lstErrorsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("lstErrorsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ELGADocumentsDTO", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ELGADocumentsDTO
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private Authork__BackingFieldField As String
+        
+        Private CreationTimek__BackingFieldField As String
+        
+        Private Descriptionk__BackingFieldField As String
+        
+        Private DocStatusk__BackingFieldField As String
+        
+        Private Documentnamek__BackingFieldField As String
+        
+        Private LogicalIdk__BackingFieldField As String
+        
+        Private ReferenceIdListk__BackingFieldField() As String
+        
+        Private Sizek__BackingFieldField As Integer
+        
+        Private UUIDk__BackingFieldField As String
+        
+        Private UniqueIdk__BackingFieldField As String
+        
+        Private Versionk__BackingFieldField As String
+        
+        Private bdocumentk__BackingFieldField() As Byte
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Author>k__BackingField", IsRequired:=true)>  _
+        Public Property Authork__BackingField() As String
+            Get
+                Return Me.Authork__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Authork__BackingFieldField, value) <> true) Then
+                    Me.Authork__BackingFieldField = value
+                    Me.RaisePropertyChanged("Authork__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<CreationTime>k__BackingField", IsRequired:=true)>  _
+        Public Property CreationTimek__BackingField() As String
+            Get
+                Return Me.CreationTimek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.CreationTimek__BackingFieldField, value) <> true) Then
+                    Me.CreationTimek__BackingFieldField = value
+                    Me.RaisePropertyChanged("CreationTimek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Description>k__BackingField", IsRequired:=true)>  _
+        Public Property Descriptionk__BackingField() As String
+            Get
+                Return Me.Descriptionk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Descriptionk__BackingFieldField, value) <> true) Then
+                    Me.Descriptionk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Descriptionk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<DocStatus>k__BackingField", IsRequired:=true)>  _
+        Public Property DocStatusk__BackingField() As String
+            Get
+                Return Me.DocStatusk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DocStatusk__BackingFieldField, value) <> true) Then
+                    Me.DocStatusk__BackingFieldField = value
+                    Me.RaisePropertyChanged("DocStatusk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Documentname>k__BackingField", IsRequired:=true)>  _
+        Public Property Documentnamek__BackingField() As String
+            Get
+                Return Me.Documentnamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Documentnamek__BackingFieldField, value) <> true) Then
+                    Me.Documentnamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("Documentnamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<LogicalId>k__BackingField", IsRequired:=true)>  _
+        Public Property LogicalIdk__BackingField() As String
+            Get
+                Return Me.LogicalIdk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.LogicalIdk__BackingFieldField, value) <> true) Then
+                    Me.LogicalIdk__BackingFieldField = value
+                    Me.RaisePropertyChanged("LogicalIdk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ReferenceIdList>k__BackingField", IsRequired:=true)>  _
+        Public Property ReferenceIdListk__BackingField() As String()
+            Get
+                Return Me.ReferenceIdListk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ReferenceIdListk__BackingFieldField, value) <> true) Then
+                    Me.ReferenceIdListk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ReferenceIdListk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Size>k__BackingField", IsRequired:=true)>  _
+        Public Property Sizek__BackingField() As Integer
+            Get
+                Return Me.Sizek__BackingFieldField
+            End Get
+            Set
+                If (Me.Sizek__BackingFieldField.Equals(value) <> true) Then
+                    Me.Sizek__BackingFieldField = value
+                    Me.RaisePropertyChanged("Sizek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<UUID>k__BackingField", IsRequired:=true)>  _
+        Public Property UUIDk__BackingField() As String
+            Get
+                Return Me.UUIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UUIDk__BackingFieldField, value) <> true) Then
+                    Me.UUIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("UUIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<UniqueId>k__BackingField", IsRequired:=true)>  _
+        Public Property UniqueIdk__BackingField() As String
+            Get
+                Return Me.UniqueIdk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UniqueIdk__BackingFieldField, value) <> true) Then
+                    Me.UniqueIdk__BackingFieldField = value
+                    Me.RaisePropertyChanged("UniqueIdk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Version>k__BackingField", IsRequired:=true)>  _
+        Public Property Versionk__BackingField() As String
+            Get
+                Return Me.Versionk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Versionk__BackingFieldField, value) <> true) Then
+                    Me.Versionk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Versionk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<bdocument>k__BackingField", IsRequired:=true)>  _
+        Public Property bdocumentk__BackingField() As Byte()
+            Get
+                Return Me.bdocumentk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.bdocumentk__BackingFieldField, value) <> true) Then
+                    Me.bdocumentk__BackingFieldField = value
+                    Me.RaisePropertyChanged("bdocumentk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ELGAPatientDTO", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ELGAPatientDTO
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private ELGADocumentsk__BackingFieldField() As ServiceReference_01.ELGADocumentsDTO
+        
+        Private ELGAPidsk__BackingFieldField() As ServiceReference_01.ELGAPidsDTO
+        
+        Private IDPatientDBk__BackingFieldField As System.Nullable(Of System.Guid)
+        
+        Private IDk__BackingFieldField As System.Guid
+        
+        Private birthdatek__BackingFieldField As String
+        
+        Private businessPhonek__BackingFieldField As String
+        
+        Private citizenshipk__BackingFieldField As String
+        
+        Private cityk__BackingFieldField As String
+        
+        Private countryk__BackingFieldField As String
+        
+        Private deathdatek__BackingFieldField As String
+        
+        Private degreek__BackingFieldField As String
+        
+        Private emailBusinessk__BackingFieldField As String
+        
+        Private emailHomek__BackingFieldField As String
+        
+        Private ethnicGroupk__BackingFieldField As String
+        
+        Private familyNamek__BackingFieldField As String
+        
+        Private givenNamek__BackingFieldField As String
+        
+        Private homePhonek__BackingFieldField As String
+        
+        Private lastUpdtateTimeSpecifiedk__BackingFieldField As Boolean
+        
+        Private lastUpdtateTimek__BackingFieldField As System.Nullable(Of Date)
+        
+        Private maritalStatusk__BackingFieldField As String
+        
+        Private middleNamek__BackingFieldField As String
+        
+        Private nameTypeCodek__BackingFieldField As String
+        
+        Private nationalityk__BackingFieldField As String
+        
+        Private secondFamilyNamek__BackingFieldField As String
+        
+        Private secondGivenNamek__BackingFieldField As String
+        
+        Private secondMiddleNamek__BackingFieldField As String
+        
+        Private sexk__BackingFieldField As String
+        
+        Private statek__BackingFieldField As String
+        
+        Private streetAddressk__BackingFieldField As String
+        
+        Private zipk__BackingFieldField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ELGADocuments>k__BackingField", IsRequired:=true)>  _
+        Public Property ELGADocumentsk__BackingField() As ServiceReference_01.ELGADocumentsDTO()
+            Get
+                Return Me.ELGADocumentsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ELGADocumentsk__BackingFieldField, value) <> true) Then
+                    Me.ELGADocumentsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ELGADocumentsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ELGAPids>k__BackingField", IsRequired:=true)>  _
+        Public Property ELGAPidsk__BackingField() As ServiceReference_01.ELGAPidsDTO()
+            Get
+                Return Me.ELGAPidsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ELGAPidsk__BackingFieldField, value) <> true) Then
+                    Me.ELGAPidsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ELGAPidsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDPatientDB>k__BackingField", IsRequired:=true)>  _
+        Public Property IDPatientDBk__BackingField() As System.Nullable(Of System.Guid)
+            Get
+                Return Me.IDPatientDBk__BackingFieldField
+            End Get
+            Set
+                If (Me.IDPatientDBk__BackingFieldField.Equals(value) <> true) Then
+                    Me.IDPatientDBk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDPatientDBk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ID>k__BackingField", IsRequired:=true)>  _
+        Public Property IDk__BackingField() As System.Guid
+            Get
+                Return Me.IDk__BackingFieldField
+            End Get
+            Set
+                If (Me.IDk__BackingFieldField.Equals(value) <> true) Then
+                    Me.IDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<birthdate>k__BackingField", IsRequired:=true)>  _
+        Public Property birthdatek__BackingField() As String
+            Get
+                Return Me.birthdatek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.birthdatek__BackingFieldField, value) <> true) Then
+                    Me.birthdatek__BackingFieldField = value
+                    Me.RaisePropertyChanged("birthdatek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<businessPhone>k__BackingField", IsRequired:=true)>  _
+        Public Property businessPhonek__BackingField() As String
+            Get
+                Return Me.businessPhonek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.businessPhonek__BackingFieldField, value) <> true) Then
+                    Me.businessPhonek__BackingFieldField = value
+                    Me.RaisePropertyChanged("businessPhonek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<citizenship>k__BackingField", IsRequired:=true)>  _
+        Public Property citizenshipk__BackingField() As String
+            Get
+                Return Me.citizenshipk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.citizenshipk__BackingFieldField, value) <> true) Then
+                    Me.citizenshipk__BackingFieldField = value
+                    Me.RaisePropertyChanged("citizenshipk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<city>k__BackingField", IsRequired:=true)>  _
+        Public Property cityk__BackingField() As String
+            Get
+                Return Me.cityk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.cityk__BackingFieldField, value) <> true) Then
+                    Me.cityk__BackingFieldField = value
+                    Me.RaisePropertyChanged("cityk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<country>k__BackingField", IsRequired:=true)>  _
+        Public Property countryk__BackingField() As String
+            Get
+                Return Me.countryk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.countryk__BackingFieldField, value) <> true) Then
+                    Me.countryk__BackingFieldField = value
+                    Me.RaisePropertyChanged("countryk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<deathdate>k__BackingField", IsRequired:=true)>  _
+        Public Property deathdatek__BackingField() As String
+            Get
+                Return Me.deathdatek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.deathdatek__BackingFieldField, value) <> true) Then
+                    Me.deathdatek__BackingFieldField = value
+                    Me.RaisePropertyChanged("deathdatek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<degree>k__BackingField", IsRequired:=true)>  _
+        Public Property degreek__BackingField() As String
+            Get
+                Return Me.degreek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.degreek__BackingFieldField, value) <> true) Then
+                    Me.degreek__BackingFieldField = value
+                    Me.RaisePropertyChanged("degreek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<emailBusiness>k__BackingField", IsRequired:=true)>  _
+        Public Property emailBusinessk__BackingField() As String
+            Get
+                Return Me.emailBusinessk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.emailBusinessk__BackingFieldField, value) <> true) Then
+                    Me.emailBusinessk__BackingFieldField = value
+                    Me.RaisePropertyChanged("emailBusinessk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<emailHome>k__BackingField", IsRequired:=true)>  _
+        Public Property emailHomek__BackingField() As String
+            Get
+                Return Me.emailHomek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.emailHomek__BackingFieldField, value) <> true) Then
+                    Me.emailHomek__BackingFieldField = value
+                    Me.RaisePropertyChanged("emailHomek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ethnicGroup>k__BackingField", IsRequired:=true)>  _
+        Public Property ethnicGroupk__BackingField() As String
+            Get
+                Return Me.ethnicGroupk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ethnicGroupk__BackingFieldField, value) <> true) Then
+                    Me.ethnicGroupk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ethnicGroupk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<familyName>k__BackingField", IsRequired:=true)>  _
+        Public Property familyNamek__BackingField() As String
+            Get
+                Return Me.familyNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.familyNamek__BackingFieldField, value) <> true) Then
+                    Me.familyNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("familyNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<givenName>k__BackingField", IsRequired:=true)>  _
+        Public Property givenNamek__BackingField() As String
+            Get
+                Return Me.givenNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.givenNamek__BackingFieldField, value) <> true) Then
+                    Me.givenNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("givenNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<homePhone>k__BackingField", IsRequired:=true)>  _
+        Public Property homePhonek__BackingField() As String
+            Get
+                Return Me.homePhonek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.homePhonek__BackingFieldField, value) <> true) Then
+                    Me.homePhonek__BackingFieldField = value
+                    Me.RaisePropertyChanged("homePhonek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<lastUpdtateTimeSpecified>k__BackingField", IsRequired:=true)>  _
+        Public Property lastUpdtateTimeSpecifiedk__BackingField() As Boolean
+            Get
+                Return Me.lastUpdtateTimeSpecifiedk__BackingFieldField
+            End Get
+            Set
+                If (Me.lastUpdtateTimeSpecifiedk__BackingFieldField.Equals(value) <> true) Then
+                    Me.lastUpdtateTimeSpecifiedk__BackingFieldField = value
+                    Me.RaisePropertyChanged("lastUpdtateTimeSpecifiedk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<lastUpdtateTime>k__BackingField", IsRequired:=true)>  _
+        Public Property lastUpdtateTimek__BackingField() As System.Nullable(Of Date)
+            Get
+                Return Me.lastUpdtateTimek__BackingFieldField
+            End Get
+            Set
+                If (Me.lastUpdtateTimek__BackingFieldField.Equals(value) <> true) Then
+                    Me.lastUpdtateTimek__BackingFieldField = value
+                    Me.RaisePropertyChanged("lastUpdtateTimek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<maritalStatus>k__BackingField", IsRequired:=true)>  _
+        Public Property maritalStatusk__BackingField() As String
+            Get
+                Return Me.maritalStatusk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.maritalStatusk__BackingFieldField, value) <> true) Then
+                    Me.maritalStatusk__BackingFieldField = value
+                    Me.RaisePropertyChanged("maritalStatusk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<middleName>k__BackingField", IsRequired:=true)>  _
+        Public Property middleNamek__BackingField() As String
+            Get
+                Return Me.middleNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.middleNamek__BackingFieldField, value) <> true) Then
+                    Me.middleNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("middleNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<nameTypeCode>k__BackingField", IsRequired:=true)>  _
+        Public Property nameTypeCodek__BackingField() As String
+            Get
+                Return Me.nameTypeCodek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.nameTypeCodek__BackingFieldField, value) <> true) Then
+                    Me.nameTypeCodek__BackingFieldField = value
+                    Me.RaisePropertyChanged("nameTypeCodek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<nationality>k__BackingField", IsRequired:=true)>  _
+        Public Property nationalityk__BackingField() As String
+            Get
+                Return Me.nationalityk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.nationalityk__BackingFieldField, value) <> true) Then
+                    Me.nationalityk__BackingFieldField = value
+                    Me.RaisePropertyChanged("nationalityk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<secondFamilyName>k__BackingField", IsRequired:=true)>  _
+        Public Property secondFamilyNamek__BackingField() As String
+            Get
+                Return Me.secondFamilyNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.secondFamilyNamek__BackingFieldField, value) <> true) Then
+                    Me.secondFamilyNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("secondFamilyNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<secondGivenName>k__BackingField", IsRequired:=true)>  _
+        Public Property secondGivenNamek__BackingField() As String
+            Get
+                Return Me.secondGivenNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.secondGivenNamek__BackingFieldField, value) <> true) Then
+                    Me.secondGivenNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("secondGivenNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<secondMiddleName>k__BackingField", IsRequired:=true)>  _
+        Public Property secondMiddleNamek__BackingField() As String
+            Get
+                Return Me.secondMiddleNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.secondMiddleNamek__BackingFieldField, value) <> true) Then
+                    Me.secondMiddleNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("secondMiddleNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<sex>k__BackingField", IsRequired:=true)>  _
+        Public Property sexk__BackingField() As String
+            Get
+                Return Me.sexk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.sexk__BackingFieldField, value) <> true) Then
+                    Me.sexk__BackingFieldField = value
+                    Me.RaisePropertyChanged("sexk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<state>k__BackingField", IsRequired:=true)>  _
+        Public Property statek__BackingField() As String
+            Get
+                Return Me.statek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.statek__BackingFieldField, value) <> true) Then
+                    Me.statek__BackingFieldField = value
+                    Me.RaisePropertyChanged("statek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<streetAddress>k__BackingField", IsRequired:=true)>  _
+        Public Property streetAddressk__BackingField() As String
+            Get
+                Return Me.streetAddressk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.streetAddressk__BackingFieldField, value) <> true) Then
+                    Me.streetAddressk__BackingFieldField = value
+                    Me.RaisePropertyChanged("streetAddressk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<zip>k__BackingField", IsRequired:=true)>  _
+        Public Property zipk__BackingField() As String
+            Get
+                Return Me.zipk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.zipk__BackingFieldField, value) <> true) Then
+                    Me.zipk__BackingFieldField = value
+                    Me.RaisePropertyChanged("zipk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ELGAErrorDTO", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ELGAErrorDTO
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private classCodek__BackingFieldField As String
+        
+        Private codek__BackingFieldField As String
+        
+        Private errTxtk__BackingFieldField As String
+        
+        Private locationk__BackingFieldField As String
+        
+        Private moodCodek__BackingFieldField As String
+        
+        Private queryResponseCodek__BackingFieldField As String
+        
+        Private typeCodek__BackingFieldField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<classCode>k__BackingField", IsRequired:=true)>  _
+        Public Property classCodek__BackingField() As String
+            Get
+                Return Me.classCodek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.classCodek__BackingFieldField, value) <> true) Then
+                    Me.classCodek__BackingFieldField = value
+                    Me.RaisePropertyChanged("classCodek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<code>k__BackingField", IsRequired:=true)>  _
+        Public Property codek__BackingField() As String
+            Get
+                Return Me.codek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.codek__BackingFieldField, value) <> true) Then
+                    Me.codek__BackingFieldField = value
+                    Me.RaisePropertyChanged("codek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<errTxt>k__BackingField", IsRequired:=true)>  _
+        Public Property errTxtk__BackingField() As String
+            Get
+                Return Me.errTxtk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.errTxtk__BackingFieldField, value) <> true) Then
+                    Me.errTxtk__BackingFieldField = value
+                    Me.RaisePropertyChanged("errTxtk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<location>k__BackingField", IsRequired:=true)>  _
+        Public Property locationk__BackingField() As String
+            Get
+                Return Me.locationk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.locationk__BackingFieldField, value) <> true) Then
+                    Me.locationk__BackingFieldField = value
+                    Me.RaisePropertyChanged("locationk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<moodCode>k__BackingField", IsRequired:=true)>  _
+        Public Property moodCodek__BackingField() As String
+            Get
+                Return Me.moodCodek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.moodCodek__BackingFieldField, value) <> true) Then
+                    Me.moodCodek__BackingFieldField = value
+                    Me.RaisePropertyChanged("moodCodek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<queryResponseCode>k__BackingField", IsRequired:=true)>  _
+        Public Property queryResponseCodek__BackingField() As String
+            Get
+                Return Me.queryResponseCodek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.queryResponseCodek__BackingFieldField, value) <> true) Then
+                    Me.queryResponseCodek__BackingFieldField = value
+                    Me.RaisePropertyChanged("queryResponseCodek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<typeCode>k__BackingField", IsRequired:=true)>  _
+        Public Property typeCodek__BackingField() As String
+            Get
+                Return Me.typeCodek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.typeCodek__BackingFieldField, value) <> true) Then
+                    Me.typeCodek__BackingFieldField = value
+                    Me.RaisePropertyChanged("typeCodek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ELGAPidsDTO", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class ELGAPidsDTO
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        Private IDELGAPatientsk__BackingFieldField As String
+        
+        Private IDk__BackingFieldField As System.Guid
+        
+        Private ehrPIDTypek__BackingFieldField As Integer
+        
+        Private patientIDTypek__BackingFieldField As String
+        
+        Private patientIDk__BackingFieldField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDELGAPatients>k__BackingField", IsRequired:=true)>  _
+        Public Property IDELGAPatientsk__BackingField() As String
+            Get
+                Return Me.IDELGAPatientsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.IDELGAPatientsk__BackingFieldField, value) <> true) Then
+                    Me.IDELGAPatientsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDELGAPatientsk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ID>k__BackingField", IsRequired:=true)>  _
+        Public Property IDk__BackingField() As System.Guid
+            Get
+                Return Me.IDk__BackingFieldField
+            End Get
+            Set
+                If (Me.IDk__BackingFieldField.Equals(value) <> true) Then
+                    Me.IDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ehrPIDType>k__BackingField", IsRequired:=true)>  _
+        Public Property ehrPIDTypek__BackingField() As Integer
+            Get
+                Return Me.ehrPIDTypek__BackingFieldField
+            End Get
+            Set
+                If (Me.ehrPIDTypek__BackingFieldField.Equals(value) <> true) Then
+                    Me.ehrPIDTypek__BackingFieldField = value
+                    Me.RaisePropertyChanged("ehrPIDTypek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<patientIDType>k__BackingField", IsRequired:=true)>  _
+        Public Property patientIDTypek__BackingField() As String
+            Get
+                Return Me.patientIDTypek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.patientIDTypek__BackingFieldField, value) <> true) Then
+                    Me.patientIDTypek__BackingFieldField = value
+                    Me.RaisePropertyChanged("patientIDTypek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<patientID>k__BackingField", IsRequired:=true)>  _
+        Public Property patientIDk__BackingField() As String
+            Get
+                Return Me.patientIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.patientIDk__BackingFieldField, value) <> true) Then
+                    Me.patientIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("patientIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
      System.Runtime.Serialization.DataContractAttribute(Name:="CDA.CDAIN", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL"),  _
      System.SerializableAttribute()>  _
     Partial Public Class CDACDAIN
@@ -11960,17 +13860,23 @@ Namespace ServiceReference_01
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/initService", ReplyAction:="http://tempuri.org/Service1/initServiceResponse")>  _
         Function initServiceAsync(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As System.Threading.Tasks.Task(Of Boolean)
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testRep", ReplyAction:="http://tempuri.org/Service1/testRepResponse")>  _
+        Sub testRep()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testRep", ReplyAction:="http://tempuri.org/Service1/testRepResponse")>  _
+        Function testRepAsync() As System.Threading.Tasks.Task
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/sendExceptionAsSMTPEMail", ReplyAction:="http://tempuri.org/Service1/sendExceptionAsSMTPEMailResponse")>  _
         Function sendExceptionAsSMTPEMail(ByVal except As String, ByVal client As String, ByVal User As String, ByVal dAt As Date) As Boolean
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/sendExceptionAsSMTPEMail", ReplyAction:="http://tempuri.org/Service1/sendExceptionAsSMTPEMailResponse")>  _
         Function sendExceptionAsSMTPEMailAsync(ByVal except As String, ByVal client As String, ByVal User As String, ByVal dAt As Date) As System.Threading.Tasks.Task(Of Boolean)
         
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testRep", ReplyAction:="http://tempuri.org/Service1/testRepResponse")>  _
-        Sub testRep()
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getDataSerialized", ReplyAction:="http://tempuri.org/Service1/getDataSerializedResponse")>  _
+        Function getDataSerialized() As Byte()()
         
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testRep", ReplyAction:="http://tempuri.org/Service1/testRepResponse")>  _
-        Function testRepAsync() As System.Threading.Tasks.Task
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getDataSerialized", ReplyAction:="http://tempuri.org/Service1/getDataSerializedResponse")>  _
+        Function getDataSerializedAsync() As System.Threading.Tasks.Task(Of Byte()())
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getLastStammdaten", ReplyAction:="http://tempuri.org/Service1/getLastStammdatenResponse")>  _
         Function getLastStammdaten() As ServiceReference_01.StammdatenDTO
@@ -12004,6 +13910,55 @@ Namespace ServiceReference_01
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGALogOut", ReplyAction:="http://tempuri.org/Service1/ELGALogOutResponse")>  _
         Function ELGALogOutAsync(ByVal request As ServiceReference_01.ELGALogOutRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGALogOutResponse)
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryPatients", ReplyAction:="http://tempuri.org/Service1/ELGAQueryPatientsResponse")>  _
+        Function ELGAQueryPatients(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As ServiceReference_01.ELGAQueryPatientsResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryPatients", ReplyAction:="http://tempuri.org/Service1/ELGAQueryPatientsResponse")>  _
+        Function ELGAQueryPatientsAsync(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryPatientsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAPatientCreateLocalID", ReplyAction:="http://tempuri.org/Service1/ELGAPatientCreateLocalIDResponse")>  _
+        Function ELGAPatientCreateLocalID(ByVal request As ServiceReference_01.ELGAPatientCreateLocalIDRequest) As ServiceReference_01.ELGAPatientCreateLocalIDResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAPatientCreateLocalID", ReplyAction:="http://tempuri.org/Service1/ELGAPatientCreateLocalIDResponse")>  _
+        Function ELGAPatientCreateLocalIDAsync(ByVal request As ServiceReference_01.ELGAPatientCreateLocalIDRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAPatientCreateLocalIDResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryGDAs", ReplyAction:="http://tempuri.org/Service1/ELGAQueryGDAsResponse")>  _
+        Function ELGAQueryGDAs(ByVal request As ServiceReference_01.ELGAQueryGDAsRequest) As ServiceReference_01.ELGAQueryGDAsResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryGDAs", ReplyAction:="http://tempuri.org/Service1/ELGAQueryGDAsResponse")>  _
+        Function ELGAQueryGDAsAsync(ByVal request As ServiceReference_01.ELGAQueryGDAsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryGDAsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryDocuments", ReplyAction:="http://tempuri.org/Service1/ELGAQueryDocumentsResponse")>  _
+        Function ELGAQueryDocuments(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As ServiceReference_01.ELGAQueryDocumentsResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryDocuments", ReplyAction:="http://tempuri.org/Service1/ELGAQueryDocumentsResponse")>  _
+        Function ELGAQueryDocumentsAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGARetrieveDocument", ReplyAction:="http://tempuri.org/Service1/ELGARetrieveDocumentResponse")>  _
+        Function ELGARetrieveDocument(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As ServiceReference_01.ELGARetrieveDocumentResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGARetrieveDocument", ReplyAction:="http://tempuri.org/Service1/ELGARetrieveDocumentResponse")>  _
+        Function ELGARetrieveDocumentAsync(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGARetrieveDocumentResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAAddDocument", ReplyAction:="http://tempuri.org/Service1/ELGAAddDocumentResponse")>  _
+        Function ELGAAddDocument(ByVal request As ServiceReference_01.ELGAAddDocumentRequest) As ServiceReference_01.ELGAAddDocumentResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAAddDocument", ReplyAction:="http://tempuri.org/Service1/ELGAAddDocumentResponse")>  _
+        Function ELGAAddDocumentAsync(ByVal request As ServiceReference_01.ELGAAddDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAAddDocumentResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAUpdateDocument", ReplyAction:="http://tempuri.org/Service1/ELGAUpdateDocumentResponse")>  _
+        Function ELGAUpdateDocument(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As ServiceReference_01.ELGAUpdateDocumentResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAUpdateDocument", ReplyAction:="http://tempuri.org/Service1/ELGAUpdateDocumentResponse")>  _
+        Function ELGAUpdateDocumentAsync(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAUpdateDocumentResponse)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/genCDA", ReplyAction:="http://tempuri.org/Service1/genCDAResponse")>  _
         Function genCDA(ByVal vars As ServiceReference_01.CDACDAIN) As ServiceReference_01.CDACDABack
         
@@ -12024,23 +13979,17 @@ Namespace ServiceReference_01
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/DynReportsInitStructure", ReplyAction:="http://tempuri.org/Service1/DynReportsInitStructureResponse")>  _
         Function DynReportsInitStructureAsync(ByVal request As ServiceReference_01.DynReportsInitStructureRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.DynReportsInitStructureResponse)
         
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testPDFIum", ReplyAction:="http://tempuri.org/Service1/testPDFIumResponse")>  _
-        Sub testPDFIum()
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testPDFIum", ReplyAction:="http://tempuri.org/Service1/testPDFIumResponse")>  _
-        Function testPDFIumAsync() As System.Threading.Tasks.Task
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getDataSerialized", ReplyAction:="http://tempuri.org/Service1/getDataSerializedResponse")>  _
-        Function getDataSerialized() As Byte()()
-        
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getDataSerialized", ReplyAction:="http://tempuri.org/Service1/getDataSerializedResponse")>  _
-        Function getDataSerializedAsync() As System.Threading.Tasks.Task(Of Byte()())
-        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getvKlientenliste", ReplyAction:="http://tempuri.org/Service1/getvKlientenlisteResponse")>  _
         Function getvKlientenliste() As Byte()()
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getvKlientenliste", ReplyAction:="http://tempuri.org/Service1/getvKlientenlisteResponse")>  _
         Function getvKlientenlisteAsync() As System.Threading.Tasks.Task(Of Byte()())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testPDFIum", ReplyAction:="http://tempuri.org/Service1/testPDFIumResponse")>  _
+        Sub testPDFIum()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testPDFIum", ReplyAction:="http://tempuri.org/Service1/testPDFIumResponse")>  _
+        Function testPDFIumAsync() As System.Threading.Tasks.Task
     End Interface
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
@@ -12128,6 +14077,286 @@ Namespace ServiceReference_01
             MyBase.New
             Me.ELGALogOutResult = ELGALogOutResult
             Me.session = session
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryPatients", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAQueryPatientsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryPatientsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAQueryPatientsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGAQueryPatientsResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGAQueryPatientsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGAQueryPatientsResult = ELGAQueryPatientsResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAPatientCreateLocalID", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAPatientCreateLocalIDRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAPatientCreateLocalIDResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAPatientCreateLocalIDResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGAPatientCreateLocalIDResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGAPatientCreateLocalIDResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGAPatientCreateLocalIDResult = ELGAPatientCreateLocalIDResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryGDAs", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAQueryGDAsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryGDAsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAQueryGDAsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGAQueryGDAsResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGAQueryGDAsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGAQueryGDAsResult = ELGAQueryGDAsResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocuments", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAQueryDocumentsRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocumentsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAQueryDocumentsResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGAQueryDocumentsResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGAQueryDocumentsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGAQueryDocumentsResult = ELGAQueryDocumentsResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGARetrieveDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGARetrieveDocumentRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGARetrieveDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGARetrieveDocumentResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGARetrieveDocumentResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGARetrieveDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGARetrieveDocumentResult = ELGARetrieveDocumentResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAAddDocumentRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAAddDocumentResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGAAddDocumentResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGAAddDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGAAddDocumentResult = ELGAAddDocumentResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdateDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAUpdateDocumentRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdateDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAUpdateDocumentResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGAUpdateDocumentResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGAUpdateDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGAUpdateDocumentResult = ELGAUpdateDocumentResult
+            Me.parsIn = parsIn
         End Sub
     End Class
     
@@ -12262,6 +14491,14 @@ Namespace ServiceReference_01
             Return MyBase.Channel.initServiceAsync(client, user, checkVersion, VersionNrClient, clientVars)
         End Function
         
+        Public Sub testRep() Implements ServiceReference_01.Service1.testRep
+            MyBase.Channel.testRep
+        End Sub
+        
+        Public Function testRepAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testRepAsync
+            Return MyBase.Channel.testRepAsync
+        End Function
+        
         Public Function sendExceptionAsSMTPEMail(ByVal except As String, ByVal client As String, ByVal User As String, ByVal dAt As Date) As Boolean Implements ServiceReference_01.Service1.sendExceptionAsSMTPEMail
             Return MyBase.Channel.sendExceptionAsSMTPEMail(except, client, User, dAt)
         End Function
@@ -12270,12 +14507,12 @@ Namespace ServiceReference_01
             Return MyBase.Channel.sendExceptionAsSMTPEMailAsync(except, client, User, dAt)
         End Function
         
-        Public Sub testRep() Implements ServiceReference_01.Service1.testRep
-            MyBase.Channel.testRep
-        End Sub
+        Public Function getDataSerialized() As Byte()() Implements ServiceReference_01.Service1.getDataSerialized
+            Return MyBase.Channel.getDataSerialized
+        End Function
         
-        Public Function testRepAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testRepAsync
-            Return MyBase.Channel.testRepAsync
+        Public Function getDataSerializedAsync() As System.Threading.Tasks.Task(Of Byte()()) Implements ServiceReference_01.Service1.getDataSerializedAsync
+            Return MyBase.Channel.getDataSerializedAsync
         End Function
         
         Public Function getLastStammdaten() As ServiceReference_01.StammdatenDTO Implements ServiceReference_01.Service1.getLastStammdaten
@@ -12338,6 +14575,125 @@ Namespace ServiceReference_01
             Return MyBase.Channel.ELGALogOutAsync(request)
         End Function
         
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGAQueryPatients(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As ServiceReference_01.ELGAQueryPatientsResponse Implements ServiceReference_01.Service1.ELGAQueryPatients
+            Return MyBase.Channel.ELGAQueryPatients(request)
+        End Function
+        
+        Public Function ELGAQueryPatients(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGAQueryPatientsRequest = New ServiceReference_01.ELGAQueryPatientsRequest()
+            inValue.parsIn = parsIn
+            Dim retVal As ServiceReference_01.ELGAQueryPatientsResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryPatients(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGAQueryPatientsResult
+        End Function
+        
+        Public Function ELGAQueryPatientsAsync(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryPatientsResponse) Implements ServiceReference_01.Service1.ELGAQueryPatientsAsync
+            Return MyBase.Channel.ELGAQueryPatientsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGAPatientCreateLocalID(ByVal request As ServiceReference_01.ELGAPatientCreateLocalIDRequest) As ServiceReference_01.ELGAPatientCreateLocalIDResponse Implements ServiceReference_01.Service1.ELGAPatientCreateLocalID
+            Return MyBase.Channel.ELGAPatientCreateLocalID(request)
+        End Function
+        
+        Public Function ELGAPatientCreateLocalID(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGAPatientCreateLocalIDRequest = New ServiceReference_01.ELGAPatientCreateLocalIDRequest()
+            inValue.parsIn = parsIn
+            Dim retVal As ServiceReference_01.ELGAPatientCreateLocalIDResponse = CType(Me,ServiceReference_01.Service1).ELGAPatientCreateLocalID(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGAPatientCreateLocalIDResult
+        End Function
+        
+        Public Function ELGAPatientCreateLocalIDAsync(ByVal request As ServiceReference_01.ELGAPatientCreateLocalIDRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAPatientCreateLocalIDResponse) Implements ServiceReference_01.Service1.ELGAPatientCreateLocalIDAsync
+            Return MyBase.Channel.ELGAPatientCreateLocalIDAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGAQueryGDAs(ByVal request As ServiceReference_01.ELGAQueryGDAsRequest) As ServiceReference_01.ELGAQueryGDAsResponse Implements ServiceReference_01.Service1.ELGAQueryGDAs
+            Return MyBase.Channel.ELGAQueryGDAs(request)
+        End Function
+        
+        Public Function ELGAQueryGDAs(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGAQueryGDAsRequest = New ServiceReference_01.ELGAQueryGDAsRequest()
+            inValue.parsIn = parsIn
+            Dim retVal As ServiceReference_01.ELGAQueryGDAsResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryGDAs(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGAQueryGDAsResult
+        End Function
+        
+        Public Function ELGAQueryGDAsAsync(ByVal request As ServiceReference_01.ELGAQueryGDAsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryGDAsResponse) Implements ServiceReference_01.Service1.ELGAQueryGDAsAsync
+            Return MyBase.Channel.ELGAQueryGDAsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGAQueryDocuments(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As ServiceReference_01.ELGAQueryDocumentsResponse Implements ServiceReference_01.Service1.ELGAQueryDocuments
+            Return MyBase.Channel.ELGAQueryDocuments(request)
+        End Function
+        
+        Public Function ELGAQueryDocuments(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGAQueryDocumentsRequest = New ServiceReference_01.ELGAQueryDocumentsRequest()
+            inValue.parsIn = parsIn
+            Dim retVal As ServiceReference_01.ELGAQueryDocumentsResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryDocuments(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGAQueryDocumentsResult
+        End Function
+        
+        Public Function ELGAQueryDocumentsAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsResponse) Implements ServiceReference_01.Service1.ELGAQueryDocumentsAsync
+            Return MyBase.Channel.ELGAQueryDocumentsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGARetrieveDocument(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As ServiceReference_01.ELGARetrieveDocumentResponse Implements ServiceReference_01.Service1.ELGARetrieveDocument
+            Return MyBase.Channel.ELGARetrieveDocument(request)
+        End Function
+        
+        Public Function ELGARetrieveDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGARetrieveDocumentRequest = New ServiceReference_01.ELGARetrieveDocumentRequest()
+            inValue.parsIn = parsIn
+            Dim retVal As ServiceReference_01.ELGARetrieveDocumentResponse = CType(Me,ServiceReference_01.Service1).ELGARetrieveDocument(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGARetrieveDocumentResult
+        End Function
+        
+        Public Function ELGARetrieveDocumentAsync(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGARetrieveDocumentResponse) Implements ServiceReference_01.Service1.ELGARetrieveDocumentAsync
+            Return MyBase.Channel.ELGARetrieveDocumentAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGAAddDocument(ByVal request As ServiceReference_01.ELGAAddDocumentRequest) As ServiceReference_01.ELGAAddDocumentResponse Implements ServiceReference_01.Service1.ELGAAddDocument
+            Return MyBase.Channel.ELGAAddDocument(request)
+        End Function
+        
+        Public Function ELGAAddDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGAAddDocumentRequest = New ServiceReference_01.ELGAAddDocumentRequest()
+            inValue.parsIn = parsIn
+            Dim retVal As ServiceReference_01.ELGAAddDocumentResponse = CType(Me,ServiceReference_01.Service1).ELGAAddDocument(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGAAddDocumentResult
+        End Function
+        
+        Public Function ELGAAddDocumentAsync(ByVal request As ServiceReference_01.ELGAAddDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAAddDocumentResponse) Implements ServiceReference_01.Service1.ELGAAddDocumentAsync
+            Return MyBase.Channel.ELGAAddDocumentAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGAUpdateDocument(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As ServiceReference_01.ELGAUpdateDocumentResponse Implements ServiceReference_01.Service1.ELGAUpdateDocument
+            Return MyBase.Channel.ELGAUpdateDocument(request)
+        End Function
+        
+        Public Function ELGAUpdateDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGAUpdateDocumentRequest = New ServiceReference_01.ELGAUpdateDocumentRequest()
+            inValue.parsIn = parsIn
+            Dim retVal As ServiceReference_01.ELGAUpdateDocumentResponse = CType(Me,ServiceReference_01.Service1).ELGAUpdateDocument(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGAUpdateDocumentResult
+        End Function
+        
+        Public Function ELGAUpdateDocumentAsync(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAUpdateDocumentResponse) Implements ServiceReference_01.Service1.ELGAUpdateDocumentAsync
+            Return MyBase.Channel.ELGAUpdateDocumentAsync(request)
+        End Function
+        
         Public Function genCDA(ByVal vars As ServiceReference_01.CDACDAIN) As ServiceReference_01.CDACDABack Implements ServiceReference_01.Service1.genCDA
             Return MyBase.Channel.genCDA(vars)
         End Function
@@ -12383,28 +14739,20 @@ Namespace ServiceReference_01
             Return MyBase.Channel.DynReportsInitStructureAsync(request)
         End Function
         
-        Public Sub testPDFIum() Implements ServiceReference_01.Service1.testPDFIum
-            MyBase.Channel.testPDFIum
-        End Sub
-        
-        Public Function testPDFIumAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testPDFIumAsync
-            Return MyBase.Channel.testPDFIumAsync
-        End Function
-        
-        Public Function getDataSerialized() As Byte()() Implements ServiceReference_01.Service1.getDataSerialized
-            Return MyBase.Channel.getDataSerialized
-        End Function
-        
-        Public Function getDataSerializedAsync() As System.Threading.Tasks.Task(Of Byte()()) Implements ServiceReference_01.Service1.getDataSerializedAsync
-            Return MyBase.Channel.getDataSerializedAsync
-        End Function
-        
         Public Function getvKlientenliste() As Byte()() Implements ServiceReference_01.Service1.getvKlientenliste
             Return MyBase.Channel.getvKlientenliste
         End Function
         
         Public Function getvKlientenlisteAsync() As System.Threading.Tasks.Task(Of Byte()()) Implements ServiceReference_01.Service1.getvKlientenlisteAsync
             Return MyBase.Channel.getvKlientenlisteAsync
+        End Function
+        
+        Public Sub testPDFIum() Implements ServiceReference_01.Service1.testPDFIum
+            MyBase.Channel.testPDFIum
+        End Sub
+        
+        Public Function testPDFIumAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testPDFIumAsync
+            Return MyBase.Channel.testPDFIumAsync
         End Function
     End Class
 End Namespace

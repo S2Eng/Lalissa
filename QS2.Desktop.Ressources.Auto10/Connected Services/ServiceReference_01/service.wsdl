@@ -34,8 +34,8 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.Main" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.Main" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" />
@@ -47,17 +47,23 @@
   <wsdl:message name="Service1_initService_OutputMessage">
     <wsdl:part name="parameters" element="tns:initServiceResponse" />
   </wsdl:message>
+  <wsdl:message name="Service1_testRep_InputMessage">
+    <wsdl:part name="parameters" element="tns:testRep" />
+  </wsdl:message>
+  <wsdl:message name="Service1_testRep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testRepResponse" />
+  </wsdl:message>
   <wsdl:message name="Service1_sendExceptionAsSMTPEMail_InputMessage">
     <wsdl:part name="parameters" element="tns:sendExceptionAsSMTPEMail" />
   </wsdl:message>
   <wsdl:message name="Service1_sendExceptionAsSMTPEMail_OutputMessage">
     <wsdl:part name="parameters" element="tns:sendExceptionAsSMTPEMailResponse" />
   </wsdl:message>
-  <wsdl:message name="Service1_testRep_InputMessage">
-    <wsdl:part name="parameters" element="tns:testRep" />
+  <wsdl:message name="Service1_getDataSerialized_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDataSerialized" />
   </wsdl:message>
-  <wsdl:message name="Service1_testRep_OutputMessage">
-    <wsdl:part name="parameters" element="tns:testRepResponse" />
+  <wsdl:message name="Service1_getDataSerialized_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDataSerializedResponse" />
   </wsdl:message>
   <wsdl:message name="Service1_getLastStammdaten_InputMessage">
     <wsdl:part name="parameters" element="tns:getLastStammdaten" />
@@ -89,6 +95,48 @@
   <wsdl:message name="Service1_ELGALogOut_OutputMessage">
     <wsdl:part name="parameters" element="tns:ELGALogOutResponse" />
   </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryPatients_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryPatients" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryPatients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryPatientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAPatientCreateLocalID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAPatientCreateLocalID" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAPatientCreateLocalID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAPatientCreateLocalIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryGDAs_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryGDAs" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryGDAs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryGDAsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryDocuments" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGARetrieveDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGARetrieveDocument" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGARetrieveDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGARetrieveDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAAddDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAAddDocument" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAAddDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAAddDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAUpdateDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAUpdateDocument" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAUpdateDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAUpdateDocumentResponse" />
+  </wsdl:message>
   <wsdl:message name="Service1_genCDA_InputMessage">
     <wsdl:part name="parameters" element="tns:genCDA" />
   </wsdl:message>
@@ -107,36 +155,34 @@
   <wsdl:message name="Service1_DynReportsInitStructure_OutputMessage">
     <wsdl:part name="parameters" element="tns:DynReportsInitStructureResponse" />
   </wsdl:message>
-  <wsdl:message name="Service1_testPDFIum_InputMessage">
-    <wsdl:part name="parameters" element="tns:testPDFIum" />
-  </wsdl:message>
-  <wsdl:message name="Service1_testPDFIum_OutputMessage">
-    <wsdl:part name="parameters" element="tns:testPDFIumResponse" />
-  </wsdl:message>
-  <wsdl:message name="Service1_getDataSerialized_InputMessage">
-    <wsdl:part name="parameters" element="tns:getDataSerialized" />
-  </wsdl:message>
-  <wsdl:message name="Service1_getDataSerialized_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getDataSerializedResponse" />
-  </wsdl:message>
   <wsdl:message name="Service1_getvKlientenliste_InputMessage">
     <wsdl:part name="parameters" element="tns:getvKlientenliste" />
   </wsdl:message>
   <wsdl:message name="Service1_getvKlientenliste_OutputMessage">
     <wsdl:part name="parameters" element="tns:getvKlientenlisteResponse" />
   </wsdl:message>
+  <wsdl:message name="Service1_testPDFIum_InputMessage">
+    <wsdl:part name="parameters" element="tns:testPDFIum" />
+  </wsdl:message>
+  <wsdl:message name="Service1_testPDFIum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testPDFIumResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1">
     <wsdl:operation name="initService">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/initService" message="tns:Service1_initService_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/initServiceResponse" message="tns:Service1_initService_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="testRep">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/testRep" message="tns:Service1_testRep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/testRepResponse" message="tns:Service1_testRep_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="sendExceptionAsSMTPEMail">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/sendExceptionAsSMTPEMail" message="tns:Service1_sendExceptionAsSMTPEMail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/sendExceptionAsSMTPEMailResponse" message="tns:Service1_sendExceptionAsSMTPEMail_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="testRep">
-      <wsdl:input wsaw:Action="http://tempuri.org/Service1/testRep" message="tns:Service1_testRep_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/Service1/testRepResponse" message="tns:Service1_testRep_OutputMessage" />
+    <wsdl:operation name="getDataSerialized">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/getDataSerialized" message="tns:Service1_getDataSerialized_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/getDataSerializedResponse" message="tns:Service1_getDataSerialized_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getLastStammdaten">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/getLastStammdaten" message="tns:Service1_getLastStammdaten_InputMessage" />
@@ -158,6 +204,34 @@
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGALogOut" message="tns:Service1_ELGALogOut_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGALogOutResponse" message="tns:Service1_ELGALogOut_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ELGAQueryPatients">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAQueryPatients" message="tns:Service1_ELGAQueryPatients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAQueryPatientsResponse" message="tns:Service1_ELGAQueryPatients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAPatientCreateLocalID">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAPatientCreateLocalID" message="tns:Service1_ELGAPatientCreateLocalID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAPatientCreateLocalIDResponse" message="tns:Service1_ELGAPatientCreateLocalID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryGDAs">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAQueryGDAs" message="tns:Service1_ELGAQueryGDAs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAQueryGDAsResponse" message="tns:Service1_ELGAQueryGDAs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryDocuments">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAQueryDocuments" message="tns:Service1_ELGAQueryDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAQueryDocumentsResponse" message="tns:Service1_ELGAQueryDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGARetrieveDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGARetrieveDocument" message="tns:Service1_ELGARetrieveDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGARetrieveDocumentResponse" message="tns:Service1_ELGARetrieveDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAAddDocument" message="tns:Service1_ELGAAddDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAAddDocumentResponse" message="tns:Service1_ELGAAddDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAUpdateDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAUpdateDocument" message="tns:Service1_ELGAUpdateDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAUpdateDocumentResponse" message="tns:Service1_ELGAUpdateDocument_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="genCDA">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/genCDA" message="tns:Service1_genCDA_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/genCDAResponse" message="tns:Service1_genCDA_OutputMessage" />
@@ -170,23 +244,28 @@
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/DynReportsInitStructure" message="tns:Service1_DynReportsInitStructure_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/DynReportsInitStructureResponse" message="tns:Service1_DynReportsInitStructure_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="testPDFIum">
-      <wsdl:input wsaw:Action="http://tempuri.org/Service1/testPDFIum" message="tns:Service1_testPDFIum_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/Service1/testPDFIumResponse" message="tns:Service1_testPDFIum_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getDataSerialized">
-      <wsdl:input wsaw:Action="http://tempuri.org/Service1/getDataSerialized" message="tns:Service1_getDataSerialized_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/Service1/getDataSerializedResponse" message="tns:Service1_getDataSerialized_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="getvKlientenliste">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/getvKlientenliste" message="tns:Service1_getvKlientenliste_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/getvKlientenlisteResponse" message="tns:Service1_getvKlientenliste_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="testPDFIum">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/testPDFIum" message="tns:Service1_testPDFIum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/testPDFIumResponse" message="tns:Service1_testPDFIum_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Service1" type="tns:Service1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="initService">
       <soap:operation soapAction="http://tempuri.org/Service1/initService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testRep">
+      <soap:operation soapAction="http://tempuri.org/Service1/testRep" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -203,8 +282,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="testRep">
-      <soap:operation soapAction="http://tempuri.org/Service1/testRep" style="document" />
+    <wsdl:operation name="getDataSerialized">
+      <soap:operation soapAction="http://tempuri.org/Service1/getDataSerialized" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -257,6 +336,69 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ELGAQueryPatients">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAQueryPatients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAPatientCreateLocalID">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAPatientCreateLocalID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryGDAs">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAQueryGDAs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryDocuments">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAQueryDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGARetrieveDocument">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGARetrieveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddDocument">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAAddDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAUpdateDocument">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAUpdateDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="genCDA">
       <soap:operation soapAction="http://tempuri.org/Service1/genCDA" style="document" />
       <wsdl:input>
@@ -284,26 +426,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="testPDFIum">
-      <soap:operation soapAction="http://tempuri.org/Service1/testPDFIum" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDataSerialized">
-      <soap:operation soapAction="http://tempuri.org/Service1/getDataSerialized" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getvKlientenliste">
       <soap:operation soapAction="http://tempuri.org/Service1/getvKlientenliste" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testPDFIum">
+      <soap:operation soapAction="http://tempuri.org/Service1/testPDFIum" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -324,6 +457,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="testRep">
+      <soap12:operation soapAction="http://tempuri.org/Service1/testRep" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="sendExceptionAsSMTPEMail">
       <soap12:operation soapAction="http://tempuri.org/Service1/sendExceptionAsSMTPEMail" style="document" />
       <wsdl:input>
@@ -333,8 +475,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="testRep">
-      <soap12:operation soapAction="http://tempuri.org/Service1/testRep" style="document" />
+    <wsdl:operation name="getDataSerialized">
+      <soap12:operation soapAction="http://tempuri.org/Service1/getDataSerialized" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -387,6 +529,69 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ELGAQueryPatients">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAQueryPatients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAPatientCreateLocalID">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAPatientCreateLocalID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryGDAs">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAQueryGDAs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryDocuments">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAQueryDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGARetrieveDocument">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGARetrieveDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddDocument">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAAddDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAUpdateDocument">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAUpdateDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="genCDA">
       <soap12:operation soapAction="http://tempuri.org/Service1/genCDA" style="document" />
       <wsdl:input>
@@ -414,26 +619,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="testPDFIum">
-      <soap12:operation soapAction="http://tempuri.org/Service1/testPDFIum" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDataSerialized">
-      <soap12:operation soapAction="http://tempuri.org/Service1/getDataSerialized" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getvKlientenliste">
       <soap12:operation soapAction="http://tempuri.org/Service1/getvKlientenliste" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testPDFIum">
+      <soap12:operation soapAction="http://tempuri.org/Service1/testPDFIum" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

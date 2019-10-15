@@ -685,13 +685,40 @@
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.DynReportsInitStructureResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAAddDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGALogInHCPResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGALogOutResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAParInDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAParOutDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAPatientCreateLocalIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryDocumentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryGDAsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryPatientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGARetrieveDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGASessionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAUpdateDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ExportResponse.datasource">

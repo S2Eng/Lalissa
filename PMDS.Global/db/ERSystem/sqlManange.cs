@@ -1306,6 +1306,73 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
+
+        public PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow getNewELGAPatient(ref PMDS.Global.db.ERSystem.dsManage ds)
+        {
+            try
+            {
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow)ds.MedizinischeTypen.NewRow();
+                rNew.ID = System.Guid.NewGuid();
+                rNew.NachnameFirma = "";
+                rNew.Vorname = "";
+                rNew.Strasse = "";
+                rNew.PLZ = "";
+                rNew.Ort = "";
+                rNew.Land = "";
+                rNew.Tel = "";
+                rNew.SozVersNr = "";
+                rNew.IDElga = "";
+
+                ds.ELGASearchPatients.Rows.Add(rNew);
+                return rNew;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sqlManange.getNewELGAPatient: " + ex.ToString());
+            }
+        }
+        public PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow getNewELGAGDA(ref PMDS.Global.db.ERSystem.dsManage ds)
+        {
+            try
+            {
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow)ds.MedizinischeTypen.NewRow();
+                rNew.ID = System.Guid.NewGuid();
+                rNew.NachnameFirma = "";
+                rNew.Vorname = "";
+                rNew.Strasse = "";
+                rNew.PLZ = "";
+                rNew.Ort = "";
+                rNew.Land = "";
+                rNew.Tel = "";
+                rNew.IDElga = "";
+
+                ds.ELGASearchGDAs.Rows.Add(rNew);
+                return rNew;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sqlManange.getNewELGAGDA: " + ex.ToString());
+            }
+        }
+        public PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow getNewELGADocument(ref PMDS.Global.db.ERSystem.dsManage ds)
+        {
+            try
+            {
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)ds.MedizinischeTypen.NewRow();
+                rNew.ID = System.Guid.NewGuid();
+                rNew.Dokument = "";
+                rNew.SetErstelltAmNull();
+                rNew.IDElga = "";
+
+                ds.ELGASearchDocuments.Rows.Add(rNew);
+                return rNew;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sqlManange.getNewELGADocument: " + ex.ToString());
+            }
+        }
+
     }
 
 }
