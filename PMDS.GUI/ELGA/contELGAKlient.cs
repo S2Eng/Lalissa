@@ -103,7 +103,7 @@ namespace PMDS.GUI.ELGA
 
                     if (rAufenthalt.ELGAKontaktbestätigungJN)
                     {
-                        string sTxtKontaktbestätigung = QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum") + ": " + rAufenthalt.ELGAKontaktbestätigungDatum.Value.ToString("dd.MM.yyyy HH:mm:ss") +
+                        string sTxtKontaktbestätigung = QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum") + ": " + rAufenthalt.ELGAKontaktbestätigungDatum.Value.ToString("dd.MM.yyyy HH:mm:ss") + ", " + 
                                                             QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer") + ": " + rAufenthalt.ELGAKontaktbestätigungUser.Trim() + 
                                                             " - " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung hergestellt!");
                         this.txtKontaktbestätigung.Text = sTxtKontaktbestätigung.Trim();
@@ -182,7 +182,6 @@ namespace PMDS.GUI.ELGA
 
                             rPatientUpdate.bPK = frmELGASearchPatient1.contELGASearchPatient1._rSelRow.IDElga;
                             rPatientUpdate.ELGAKontaktbestätigungLocalID = parOut.LocalIDk__BackingField.Trim();
-                            rPatientUpdate.ELGAAbgemeldet = false;
 
                             rAufenthaltUpdate.ELGAKontaktbestätigungJN = true;
                             rAufenthaltUpdate.ELGAKontaktbestätigungDatum = DateTime.Now;
@@ -240,7 +239,6 @@ namespace PMDS.GUI.ELGA
 
                     //rPatientUpdate.bPK = "";
                     //rPatientUpdate.ELGAKontaktbestätigungLocalID = "";
-                    rPatientUpdate.ELGAAbgemeldet = true;
 
                     rAufenthaltUpdate.ELGAKontaktbestätigungJN = false;
                     //rAufenthaltUpdate.ELGAKontaktbestätigungDatum = null;

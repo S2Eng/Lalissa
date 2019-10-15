@@ -181,6 +181,7 @@ namespace PMDS.GUI.ELGA
                         rPatientFound.Ort = elgaPatient.cityk__BackingField.Trim();
                         rPatientFound.Land = elgaPatient.countryk__BackingField.Trim();
                         rPatientFound.Strasse = elgaPatient.streetAddressk__BackingField.Trim();
+                        
                         if (!string.IsNullOrEmpty(elgaPatient.businessPhonek__BackingField.Trim()))
                         {
                             rPatientFound.Tel = elgaPatient.businessPhonek__BackingField.Trim();
@@ -195,6 +196,7 @@ namespace PMDS.GUI.ELGA
                             if (rPid.patientIDTypek__BackingField.ToLower() == ("HC").ToLower())
                             {
                                 rPatientFound.IDElga = rPid.patientIDk__BackingField.Trim();
+                                rPatientFound.SozVersNr = rPatientFound.IDElga;
                             }
                         }
                     }
