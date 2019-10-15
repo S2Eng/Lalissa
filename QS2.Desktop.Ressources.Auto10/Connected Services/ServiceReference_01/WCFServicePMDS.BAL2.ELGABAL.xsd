@@ -5,6 +5,7 @@
   <xs:complexType name="ELGASessionDTO">
     <xs:sequence>
       <xs:element name="_x003C_ELGAStateID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_IDUser_x003E_k__BackingField" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>

@@ -127,7 +127,7 @@ namespace PMDS.GUI
 
             bELGA.init();
             this.setTabELGAOnIff(false);
-            this.contELGAKlient1.initControl();
+            this.contELGAKlient1.initControl(false);
         }
 
         public void setTabELGAOnIff(bool abgemeldetJN)
@@ -1409,7 +1409,7 @@ namespace PMDS.GUI
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt2, QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern"), MessageBoxButtons.OK);
             }
 
-            if (!this._isBewerberJN && !this._isAbrechnung && this._mainSystem)
+            if (PMDS.Global.ENV.lic_ELGA && !this._isBewerberJN && !this._isAbrechnung && this._mainSystem)
             {
                 this.contELGAKlient1.validateData();
             }

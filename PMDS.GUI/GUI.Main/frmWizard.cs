@@ -15,20 +15,17 @@ using System.Windows.Forms;
 using PMDS.BusinessLogic;
 using PMDS.Global;
 
+
 namespace PMDS.GUI
 {
-	//----------------------------------------------------------------------------
-	/// <summary>
-	/// Form für Wizard-Funktionalität
-	/// </summary>
-	//----------------------------------------------------------------------------
+
 	public class frmWizard : frmBase
 	{
 		private bool			_bCanClose = true;
 		private ArrayList		_pages = new ArrayList();	// Pages in deren Reihenfolge
 		private ArrayList		_info = new ArrayList();	// Page-Beschreibung
 		private int				_pageIdx = 0;				// aktuelle Page Index
-		private UserControl		_activePage = null;			// aktive Page
+		public UserControl		_activePage = null;			// aktive Page
 
 		private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpBottom;
 		private QS2.Desktop.ControlManagment.BasePanel panelButtons;
@@ -48,11 +45,6 @@ namespace PMDS.GUI
 
 
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Default Konstruktor
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public frmWizard()
 		{
 			InitializeComponent();
@@ -63,11 +55,6 @@ namespace PMDS.GUI
             }
         }
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dispose
-		/// </summary>
-		//----------------------------------------------------------------------------
 		protected override void Dispose( bool disposing )
 		{
 			if( disposing )

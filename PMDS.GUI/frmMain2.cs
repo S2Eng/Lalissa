@@ -76,7 +76,7 @@ namespace PMDS
         private Timer timerCheckConnectionAndNetwork;
         public static qs2.ui.frmMain frmMainQS2 = null;
         private Panel PanelStatusbar;
-        protected UltraStatusBar ultraStatusBar1;
+        public UltraStatusBar ultraStatusBar1;
         public Infragistics.Win.Misc.UltraLabel lblTxtMemory;
         public Syncfusion.Windows.Forms.Tools.ProgressBarAdv pBarMemoryUsage;
         private Panel panelBottomRight;
@@ -600,16 +600,16 @@ namespace PMDS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar3 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("MainMenu");
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("MainMenu");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Programm");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuKlient");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool4 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Verwaltung");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool5 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Grunddaten");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool6 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("NotfallprozedurenListe");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool7 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("StandardprozedurenListe");
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar4 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("tbMain");
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar2 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("tbMain");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool8 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("mnuKlient");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool9 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Programm");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Klientenliste");
@@ -625,7 +625,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Beenden");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Beenden");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Arbeitsstationsperren");
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Benutzerwechsel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool10 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Passwort");
@@ -818,21 +818,21 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool181 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnWundBilderScale");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool185 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Blackout-Prävention");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool187 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnELGAPasswortÄndern");
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel2 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel3 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel4 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel8 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel5 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel6 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel9 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
             Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel7 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.ultraPopupControlContainer1 = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
             this.contextMenuStripLogging = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -927,47 +927,47 @@ namespace PMDS
             // 
             // ultraToolbarsManager1
             // 
-            appearance9.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance9.FontData.Name = "Microsoft Sans Serif";
-            appearance9.FontData.SizeInPoints = 10F;
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            this.ultraToolbarsManager1.Appearance = appearance9;
+            appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance1.FontData.Name = "Microsoft Sans Serif";
+            appearance1.FontData.SizeInPoints = 10F;
+            appearance1.ForeColor = System.Drawing.Color.Black;
+            this.ultraToolbarsManager1.Appearance = appearance1;
             this.ultraToolbarsManager1.DesignerFlags = 1;
             this.ultraToolbarsManager1.DockWithinContainer = this;
             this.ultraToolbarsManager1.DockWithinContainerBaseType = typeof(PMDS.GUI.frmBase);
             this.ultraToolbarsManager1.LockToolbars = true;
-            appearance13.BackColor = System.Drawing.Color.White;
-            this.ultraToolbarsManager1.MenuSettings.Appearance = appearance13;
+            appearance8.BackColor = System.Drawing.Color.White;
+            this.ultraToolbarsManager1.MenuSettings.Appearance = appearance8;
             this.ultraToolbarsManager1.RuntimeCustomizationOptions = Infragistics.Win.UltraWinToolbars.RuntimeCustomizationOptions.None;
             this.ultraToolbarsManager1.ShowFullMenusDelay = 500;
-            ultraToolbar3.DockedColumn = 0;
-            ultraToolbar3.DockedRow = 0;
-            ultraToolbar3.FloatingLocation = new System.Drawing.Point(337, 244);
-            ultraToolbar3.FloatingSize = new System.Drawing.Size(165, 99);
-            ultraToolbar3.IsMainMenuBar = true;
-            ultraToolbar3.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ultraToolbar1.DockedColumn = 0;
+            ultraToolbar1.DockedRow = 0;
+            ultraToolbar1.FloatingLocation = new System.Drawing.Point(337, 244);
+            ultraToolbar1.FloatingSize = new System.Drawing.Size(165, 99);
+            ultraToolbar1.IsMainMenuBar = true;
+            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool1,
             popupMenuTool2,
             popupMenuTool4,
             popupMenuTool5,
             popupMenuTool6,
             popupMenuTool7});
-            ultraToolbar3.Settings.AllowCustomize = Infragistics.Win.DefaultableBoolean.False;
-            ultraToolbar3.Settings.AllowFloating = Infragistics.Win.DefaultableBoolean.False;
-            ultraToolbar3.Settings.AllowHiding = Infragistics.Win.DefaultableBoolean.False;
-            ultraToolbar3.Text = "MainMenu";
-            ultraToolbar4.DockedColumn = 0;
-            ultraToolbar4.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Floating;
-            ultraToolbar4.DockedRow = 0;
-            ultraToolbar4.FloatingLocation = new System.Drawing.Point(542, 354);
-            ultraToolbar4.FloatingSize = new System.Drawing.Size(102, 40);
-            ultraToolbar4.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ultraToolbar1.Settings.AllowCustomize = Infragistics.Win.DefaultableBoolean.False;
+            ultraToolbar1.Settings.AllowFloating = Infragistics.Win.DefaultableBoolean.False;
+            ultraToolbar1.Settings.AllowHiding = Infragistics.Win.DefaultableBoolean.False;
+            ultraToolbar1.Text = "MainMenu";
+            ultraToolbar2.DockedColumn = 0;
+            ultraToolbar2.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Floating;
+            ultraToolbar2.DockedRow = 0;
+            ultraToolbar2.FloatingLocation = new System.Drawing.Point(542, 354);
+            ultraToolbar2.FloatingSize = new System.Drawing.Size(102, 40);
+            ultraToolbar2.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool8});
-            ultraToolbar4.Text = "tbMain";
-            ultraToolbar4.Visible = false;
+            ultraToolbar2.Text = "tbMain";
+            ultraToolbar2.Visible = false;
             this.ultraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar3,
-            ultraToolbar4});
+            ultraToolbar1,
+            ultraToolbar2});
             this.ultraToolbarsManager1.ToolbarSettings.AllowCustomize = Infragistics.Win.DefaultableBoolean.False;
             this.ultraToolbarsManager1.ToolbarSettings.AllowFloating = Infragistics.Win.DefaultableBoolean.False;
             this.ultraToolbarsManager1.ToolbarSettings.AllowHiding = Infragistics.Win.DefaultableBoolean.False;
@@ -994,8 +994,8 @@ namespace PMDS
             buttonTool6});
             buttonTool7.SharedPropsInternal.Caption = "Beenden";
             buttonTool7.SharedPropsInternal.Category = "Programm";
-            appearance14.Image = ((object)(resources.GetObject("appearance14.Image")));
-            buttonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance14;
+            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
+            buttonTool8.SharedPropsInternal.AppearancesSmall.Appearance = appearance9;
             buttonTool8.SharedPropsInternal.Caption = "Arbeitsstation sperren";
             buttonTool8.SharedPropsInternal.Category = "Programm";
             buttonTool9.SharedPropsInternal.Caption = "Abmelden";
@@ -1421,10 +1421,10 @@ namespace PMDS
             // 
             // lblIsLoading
             // 
-            appearance4.ForeColor = System.Drawing.Color.Gray;
-            appearance4.TextHAlignAsString = "Center";
-            appearance4.TextVAlignAsString = "Middle";
-            this.lblIsLoading.Appearance = appearance4;
+            appearance7.ForeColor = System.Drawing.Color.Gray;
+            appearance7.TextHAlignAsString = "Center";
+            appearance7.TextVAlignAsString = "Middle";
+            this.lblIsLoading.Appearance = appearance7;
             this.lblIsLoading.BackColorInternal = System.Drawing.Color.Transparent;
             this.lblIsLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblIsLoading.Location = new System.Drawing.Point(0, 0);
@@ -1486,14 +1486,14 @@ namespace PMDS
             // 
             // ultraStatusBar1
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            appearance5.ForeColor = System.Drawing.Color.Black;
-            this.ultraStatusBar1.Appearance = appearance5;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.ForeColor = System.Drawing.Color.Black;
+            this.ultraStatusBar1.Appearance = appearance3;
             this.ultraStatusBar1.ContextMenuStrip = this.contextMenuStripLogging;
             this.ultraStatusBar1.Location = new System.Drawing.Point(0, 4);
             this.ultraStatusBar1.Name = "ultraStatusBar1";
-            appearance6.BorderColor = System.Drawing.Color.White;
-            this.ultraStatusBar1.PanelAppearance = appearance6;
+            appearance4.BorderColor = System.Drawing.Color.White;
+            this.ultraStatusBar1.PanelAppearance = appearance4;
             ultraStatusPanel1.Key = "User";
             ultraStatusPanel1.ToolTipText = "Angemeldeter Benutzer";
             ultraStatusPanel1.Width = 200;
@@ -1507,14 +1507,14 @@ namespace PMDS
             ultraStatusPanel8.Key = "UnreadedMessages";
             ultraStatusPanel8.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel8.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
-            appearance17.FontData.SizeInPoints = 7F;
-            ultraStatusPanel5.Appearance = appearance17;
+            appearance5.FontData.SizeInPoints = 7F;
+            ultraStatusPanel5.Appearance = appearance5;
             ultraStatusPanel5.Key = "Config";
             ultraStatusPanel5.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel5.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
             ultraStatusPanel5.Text = "Config";
-            appearance18.FontData.SizeInPoints = 7F;
-            ultraStatusPanel6.Appearance = appearance18;
+            appearance6.FontData.SizeInPoints = 7F;
+            ultraStatusPanel6.Appearance = appearance6;
             ultraStatusPanel6.Key = "Laden";
             ultraStatusPanel6.SizingMode = Infragistics.Win.UltraWinStatusBar.PanelSizingMode.Automatic;
             ultraStatusPanel6.Style = Infragistics.Win.UltraWinStatusBar.PanelStyle.Button;
@@ -1542,10 +1542,10 @@ namespace PMDS
             // 
             // lblTxtMemory
             // 
-            appearance11.BackColor = System.Drawing.Color.Transparent;
-            appearance11.FontData.SizeInPoints = 8F;
-            appearance11.TextHAlignAsString = "Right";
-            this.lblTxtMemory.Appearance = appearance11;
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.FontData.SizeInPoints = 8F;
+            appearance2.TextHAlignAsString = "Right";
+            this.lblTxtMemory.Appearance = appearance2;
             this.lblTxtMemory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTxtMemory.Location = new System.Drawing.Point(10, 5);
             this.lblTxtMemory.Name = "lblTxtMemory";

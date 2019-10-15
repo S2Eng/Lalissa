@@ -16,6 +16,7 @@ using QS2.Desktop.ControlManagment;
 using QS2.Desktop.ControlManagment.ServiceReference_01;
 using WCFServicePMDS;
 
+
 namespace PMDSClient.Sitemap
 {
 
@@ -23,8 +24,7 @@ namespace PMDSClient.Sitemap
     {
 
         public static string urlWCFServiceDefault = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
-       
-
+ 
         public class cParsWCF
         {
             public string MachineName = "";
@@ -46,6 +46,7 @@ namespace PMDSClient.Sitemap
             public bool LogInOK { get; set; }
             public ELGASessionDTO session { get; set; }
         }
+
 
 
 
@@ -203,61 +204,6 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public bool ELGALogIn(Guid IDUser, bool lic_ELGA)
-        {
-            try
-            {
-                if (lic_ELGA && PMDSClientWrapper.WCFServiceOnOff)
-                {
-                    ELGABusiness elga = new ELGABusiness();
-                    ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
-                    if (ben.Elgaactive && !ben.IsGeneric)
-                    {
-                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
-                        ELGASessionDTO session = new ELGASessionDTO();
-                        session.IDUserk__BackingField = IDUser;
-                        bool bOk = client.ELGALogInHCP(ben.Elgauser, ben.ELGAPwd, ref session);
-                        return bOk;
-                    }
-                    else
-                        return true;
-                }
-                else
-                {
-                    return true;
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("WCFServiceClientPMDS.ELGALogIn: " + ex.ToString());
-            }
-        }
-        public bool ELGALogOut(Guid IDUser, bool lic_ELGA)
-        {
-            try
-            {
-                if (lic_ELGA && PMDSClientWrapper.WCFServiceOnOff)
-                {
-                    ELGABusiness elga = new ELGABusiness();
-                    ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
-                    if (ben.Elgaactive && !ben.IsGeneric)
-                    {
-                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
-                        ELGASessionDTO session = new ELGASessionDTO();
-                        session.IDUserk__BackingField = IDUser;
-                        client.ELGALogOut(ref session);
-                    }
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("WCFServiceClientPMDS.ELGALogOut: " + ex.ToString());
-            }
-        }
-
         public bool genUrlWCFService(ref string urlWCFServiceBack)
         {
             try
@@ -323,6 +269,133 @@ namespace PMDSClient.Sitemap
         }
 
 
+
+
+
+
+        public ELGALogInDto ELGALogInHCP(Guid IDUser, String OIDGDA, Guid IDKlinik, string NameGDA, string Rolle)
+        {
+            try
+            {
+                ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
+
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                //Thread.Sleep(5000);
+                ELGASessionDTO session = new ELGASessionDTO();
+                session.IDUserk__BackingField = IDUser;
+                ELGALogInDto1.LogInOK = client.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session);
+                if (session.Errorsk__BackingField != null)
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: Error ELGA-LogIn - " + "\r\n" + "\r\n" + ELGALogInDto1.session.Errorsk__BackingField.Trim());
+                }
+                ELGALogInDto1.session = session;
+
+                return ELGALogInDto1;
+            }
+            catch (Exception ex)
+            {
+               throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: " + ex.ToString());
+            }
+        }
+        public bool ELGALogOut(Guid IDUser, bool lic_ELGA)
+        {
+            try
+            {
+                if (lic_ELGA && PMDSClientWrapper.WCFServiceOnOff)
+                {
+                    ELGABusiness elga = new ELGABusiness();
+                    ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
+                    if (ben.Elgaactive && !ben.IsGeneric)
+                    {
+                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                        if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.ELGALogInDto != null)
+                        {
+                            ELGASessionDTO session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                            client.ELGALogOut(ref session);
+                        }
+                        //else
+                        //{
+                        //    ELGASessionDTO session = new ELGASessionDTO();
+                        //    session.IDUserk__BackingField = IDUser;
+                        //    client.ELGALogOut(ref session);
+                        //}
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGALogOut: " + ex.ToString());
+            }
+        }
+
+        public ELGAParOutDto ELGAQueryPatients(string SozVersNr)
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrk__BackingField = SozVersNr.Trim() };
+                ELGAParOutDto parOutDto = client.ELGAQueryPatients(ref parsIn);
+
+                if (parOutDto.bErrorsFoundk__BackingField)
+                {
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAQueryPatients");
+                    throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                }
+
+                if (parOutDto.bOKk__BackingField)
+                {
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: " + ex.ToString());
+            }
+        }
+        public ELGAParOutDto ELGAPatientCreateLocalID(Guid IDPatientIntern)
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.IDPatientInternk__BackingField = IDPatientIntern;
+                ELGAParOutDto parOutDto = client.ELGAPatientCreateLocalID(ref parsIn);
+
+                if (parOutDto.bErrorsFoundk__BackingField)
+                {
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAPatientCreateLocalID");
+                    throw new Exception("WCFServiceClientPMDS.ELGAPatientCreateLocalID: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                }
+
+                if (parOutDto.bOKk__BackingField)
+                {
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGAPatientCreateLocalID: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGAPatientCreateLocalID: " + ex.ToString());
+            }
+        }
+
+
+
+
         public void genCDA(CDAeTypeCDA CDAeTypeCDA, Guid IDEinrichtungEmpfänger, Guid IDDocument, Guid IDSet, int VersionsNr)
         {
             this.TgenCDA(CDAeTypeCDA, IDEinrichtungEmpfänger, IDDocument, IDSet, VersionsNr);
@@ -372,7 +445,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                Exception exTmp = new Exception("TgenCDA - " + ex.ToString());
+                Exception exTmp = new Exception("WCFServiceClientPMDS.TgenCDA - " + ex.ToString());
                 PMDS.Global.ENV.HandleException(exTmp, "WCFException");
             }
         }
@@ -384,26 +457,41 @@ namespace PMDSClient.Sitemap
             frm.ShowDialog();
         }
 
-        public ELGALogInDto LogInElga(Guid IDUser)
+
+
+
+
+
+
+
+
+
+
+        public string getELGAErrors(ELGAParOutDto parOutDto, string functionName)
         {
             try
             {
-                ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
+                string sElgaErrors = "";
+                foreach (ELGAErrorDTO rError in parOutDto.lstErrorsk__BackingField)
+                {
+                    sElgaErrors += "errTxt: " + rError.errTxtk__BackingField + ", Code: " + rError.codek__BackingField + ", Location: " + rError.locationk__BackingField + ", TypeCode: " +
+                                        rError.typeCodek__BackingField + ", ClassCode: " + rError.classCodek__BackingField + ", MoodCode" + rError.moodCodek__BackingField + ", queryResponseCode: " +
+                                        rError.queryResponseCodek__BackingField + "" +
+                                        "\r\n" + "\r\n";
+                }
 
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
-                //Thread.Sleep(5000);
-                ELGASessionDTO session = new ELGASessionDTO();
-                session.IDUserk__BackingField = IDUser;
-                ELGALogInDto1.LogInOK = client.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), ref session);
-                ELGALogInDto1.session = session;
-
-                return ELGALogInDto1;
+                throw new Exception("WCFServiceClientPMDS." + functionName.Trim() + ": ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
             }
             catch (Exception ex)
             {
-               throw new Exception("LogInElga: " + ex.ToString());
+                throw new Exception("WCFServiceClientPMDS.getELGAErrors: " + ex.ToString());
             }
         }
+
+
+
+
+
 
 
 

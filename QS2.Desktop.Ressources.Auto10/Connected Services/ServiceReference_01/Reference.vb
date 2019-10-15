@@ -11669,6 +11669,8 @@ Namespace ServiceReference_01
         
         Private ELGAStateIDk__BackingFieldField As String
         
+        Private Errorsk__BackingFieldField As String
+        
         Private IDUserk__BackingFieldField As System.Guid
         
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
@@ -11690,6 +11692,19 @@ Namespace ServiceReference_01
                 If (Object.ReferenceEquals(Me.ELGAStateIDk__BackingFieldField, value) <> true) Then
                     Me.ELGAStateIDk__BackingFieldField = value
                     Me.RaisePropertyChanged("ELGAStateIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Errors>k__BackingField", IsRequired:=true)>  _
+        Public Property Errorsk__BackingField() As String
+            Get
+                Return Me.Errorsk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.Errorsk__BackingFieldField, value) <> true) Then
+                    Me.Errorsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Errorsk__BackingField")
                 End If
             End Set
         End Property
@@ -14004,16 +14019,28 @@ Namespace ServiceReference_01
         Public pwd As String
         
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public NameGDA As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
+        Public Rolle As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
+        Public IDKlinik As System.Guid
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
         Public session As ServiceReference_01.ELGASessionDTO
         
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal usr As String, ByVal pwd As String, ByVal session As ServiceReference_01.ELGASessionDTO)
+        Public Sub New(ByVal usr As String, ByVal pwd As String, ByVal NameGDA As String, ByVal Rolle As String, ByVal IDKlinik As System.Guid, ByVal session As ServiceReference_01.ELGASessionDTO)
             MyBase.New
             Me.usr = usr
             Me.pwd = pwd
+            Me.NameGDA = NameGDA
+            Me.Rolle = Rolle
+            Me.IDKlinik = IDKlinik
             Me.session = session
         End Sub
     End Class
@@ -14544,10 +14571,13 @@ Namespace ServiceReference_01
             Return MyBase.Channel.ELGALogInHCP(request)
         End Function
         
-        Public Function ELGALogInHCP(ByVal usr As String, ByVal pwd As String, ByRef session As ServiceReference_01.ELGASessionDTO) As Boolean
+        Public Function ELGALogInHCP(ByVal usr As String, ByVal pwd As String, ByVal NameGDA As String, ByVal Rolle As String, ByVal IDKlinik As System.Guid, ByRef session As ServiceReference_01.ELGASessionDTO) As Boolean
             Dim inValue As ServiceReference_01.ELGALogInHCPRequest = New ServiceReference_01.ELGALogInHCPRequest()
             inValue.usr = usr
             inValue.pwd = pwd
+            inValue.NameGDA = NameGDA
+            inValue.Rolle = Rolle
+            inValue.IDKlinik = IDKlinik
             inValue.session = session
             Dim retVal As ServiceReference_01.ELGALogInHCPResponse = CType(Me,ServiceReference_01.Service1).ELGALogInHCP(inValue)
             session = retVal.session

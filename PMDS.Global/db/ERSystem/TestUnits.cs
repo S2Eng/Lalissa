@@ -663,6 +663,29 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert.");
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche nach Soz.Vers.Nr '{0}' durchgeführt");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO für Patient {0} von Benutzer {1} durchgeführt.");
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es ist keine ELGA-Sitzung aktiv" + "\r\n" +
+                                                                            "Aktion kann nicht ausgeführt werden.", "ELGA", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient wurde über seine Rechte belehrt: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient stimmt dem situativem Opt-Out zu: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung hergestellt!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer");
+
+
+
             }
             catch (Exception ex)
             {

@@ -31,6 +31,16 @@ namespace PMDS.Global.db.ERSystem
             UserSettingsChanged = 0,
             NewPassword = 1,
             UserRightsChanged = 2,
+            QueryPatients = 3,
+            Kontaktbestätigung = 4,
+            KontaktbestätigungStorno = 5,
+            SOO = 6,
+            ELGAQueryGDAs = 7,
+            ELGAQueryDocuments = 8,
+            ELGARetrieveDocument = 9,
+            ELGAAddDocument = 10,
+            ELGAUpdateDocument = 11,
+            genCDA = 12,
             none = -100,
         }
 
@@ -94,6 +104,19 @@ namespace PMDS.Global.db.ERSystem
         public PMDSBusiness b = new PMDSBusiness();
 
         public static Dictionary<Guid, frmELGAMsgBox> lElgaMsgBoxOpend = new Dictionary<Guid, frmELGAMsgBox>();
+
+        public enum eELGARight
+        {
+            ELGAAktionen = 105,
+            ELGADokumenteErstellen = 106,
+            ELGADokumenteSenden = 108,
+            ELGADokumenteVidieren = 107,
+            ELGAMedikamente = 102,
+            ELGAPatientenSuchen = 101,
+            ELGAPflegerischerEntlassungsbrief = 103,
+            ELGAPflegezustandsbericht = 104
+        }
+
 
 
 
@@ -353,21 +376,35 @@ namespace PMDS.Global.db.ERSystem
                 sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch " + ENV.ELGAStatusGreen.ToString() + " min aktiv)");
                 statBar.Panels["statELGA"].Text = sTxt;
 
-                panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_green, 32, 32);
-                ELGAStatusbarStatus.ELGALogInDto = WCFServiceClient1.LogInElga(ENV.USERID);
-                if (!ELGAStatusbarStatus.ELGALogInDto.LogInOK)
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    throw new Exception("ELGABusiness.handleLogIn: WCFServiceClient1.logInELGA failed!");
+                    db.Configuration.LazyLoadingEnabled = false;
+                    var rKlinik = (from k in db.Klinik
+                               where k.ID == ENV.IDKlinik
+                               select new
+                               {
+                                    k.ID,
+                                    k.Bezeichnung,
+                                    k.ELGA_OID,
+                                    k.ELGA_OrganizationName
+                               }).First();
+
+                    panelELGA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_green, 32, 32);
+                    ELGAStatusbarStatus.ELGALogInDto = WCFServiceClient1.ELGALogInHCP(ENV.USERID, rKlinik.ELGA_OID, rKlinik.ID, rKlinik.ELGA_OrganizationName, "Pflegeeinrichtung");
+                    if (!ELGAStatusbarStatus.ELGALogInDto.LogInOK)
+                    {
+                        throw new Exception("ELGABusiness.handleLogIn: WCFServiceClient1.logInELGA failed!");
+                    }
+
+                    ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.green;
+                    ELGAStatusbarStatus.ELGASessionStarted = DateTime.Now;
+                    ELGAStatusbarStatus.ELGASessionEnd = ELGAStatusbarStatus.ELGASessionStarted.Value.AddMinutes(ENV.ELGAStatusGreen);
+                    ELGAStatusbarStatus.Active = true;
+
+                    string sProt = "Benutzer " + LoggedInBenutzer.Trim() + " hat sich in ELGA angemeldet";
+                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer hat sich angemeldet"), null,
+                                                    ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
                 }
-
-                ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.green;
-                ELGAStatusbarStatus.ELGASessionStarted = DateTime.Now;
-                ELGAStatusbarStatus.ELGASessionEnd = ELGAStatusbarStatus.ELGASessionStarted.Value.AddMinutes(ENV.ELGAStatusGreen);
-                ELGAStatusbarStatus.Active = true;
-
-                string sProt = "Benutzer " + LoggedInBenutzer.Trim() + " hat sich in ELGA angemeldet";
-                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer hat sich angemeldet"), null,
-                                                ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
 
             }
             catch (Exception ex)
@@ -612,6 +649,70 @@ namespace PMDS.Global.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("ELGABusiness.closeOpendElgaMsgBoxes: " + ex.ToString());
+            }
+        }
+
+
+
+
+        public static bool HasELGARight(eELGARight ELGARight, bool WithMsgBox)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    int iRight = System.Convert.ToInt32(ELGARight);
+                    var tUsrRights = (from br in db.BenutzerRechte
+                                      join r in db.Recht on br.IDRecht equals r.ID
+                                      where br.IDBenutzer == ENV.USERID && r.ELGA == true && r.ID == iRight
+                                      select new
+                                      {
+                                          IDBenutzerRecht = br.ID,
+                                          Bezeichnung = r.Bezeichnung
+                                      });
+
+                    if (tUsrRights.Count() > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        if (WithMsgBox)
+                        {
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Benutzer hat für diese ELGA-Aktivität kein Recht!", "ELGA", MessageBoxButtons.OK);
+                        }
+                        return false;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.HasELGARight: " + ex.ToString());
+            }
+        }
+        public static bool checkELGASessionActive(bool WithMsgBox)
+        {
+            try
+            {
+                if (ELGABusiness.ELGAStatusbarStatus.ELGALogInDto == null)
+                {
+                    if (WithMsgBox)
+                    {
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es ist keine ELGA-Sitzung aktiv" + "\r\n" + 
+                                                                                "Aktion kann nicht ausgeführt werden.", "ELGA", MessageBoxButtons.OK);
+                    }
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.checkELGASessionActive: " + ex.ToString());
             }
         }
 

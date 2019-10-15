@@ -1,10 +1,3 @@
-//----------------------------------------------------------------------------
-/// <summary>
-///	GuiAction.cs
-/// Erstellt am:	16.11.2004
-/// Erstellt von:	EHO
-/// </summary>
-//----------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -34,17 +27,17 @@ using Syncfusion.Compression;
 using Patagames.Pdf.Net;
 using PMDS.Global.Remote;
 using PMDS.GUI.Quickfilter;
+using PMDS.GUI.ELGA;
+using static PMDS.Global.db.ERSystem.ELGABusiness;
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
 
     public delegate void GuiActionDoneDelegate(SiteEvents ev);
 
-	//----------------------------------------------------------------------------
-	/// <summary>
-	/// Allgemeine nützliche Abläufe
-	/// </summary>
-	//----------------------------------------------------------------------------
+
+
 	public class GuiAction
 	{
         public static event GuiActionDoneDelegate GuiActionDone;      // Signalisiert dass eine Gewisse Aktion durchgeführt worden ist;
@@ -67,11 +60,7 @@ namespace PMDS.GUI
 		{
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Patienten Aufnahme mit Picker
-		/// </summary>
-		//----------------------------------------------------------------------------
+
 		public static bool PatientAufnahme()
 		{
 			frmPatientAufnahme auf = new frmPatientAufnahme();
@@ -86,22 +75,13 @@ namespace PMDS.GUI
 			return (bOK);
 		}
         	
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Terminsystem
-        /// Guid.Empty == Gesamtterminsystem
-        /// </summary>
-        //----------------------------------------------------------------------------
+
         public static void archivTerminMail(bool gesamt, bool headerEin, bool ShowKlientenarchiv)
         {
             GuiWorkflow.ShowArchivPlanung(gesamt, headerEin, ShowKlientenarchiv);
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Berichte
-        /// </summary>
-        //----------------------------------------------------------------------------
+
         public static bool Berichte()
         {
             frmDynReports frm = new frmDynReports(ENV.DynReportExtrasPath);
@@ -110,11 +90,7 @@ namespace PMDS.GUI
             return true;
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Berichte
-        /// </summary>
-        //----------------------------------------------------------------------------
+
         public static bool BerichteWunde()
         {
             frmDynReports frm = new frmDynReports(ENV.DynReportWundePath);
@@ -621,8 +597,24 @@ namespace PMDS.GUI
                 }
             }
             pat.Write();
-
             LastAufnahmePatientID = pat.ID;
+
+            if (wizard._activePage.GetType() == typeof(ucPatientNew))
+            {          
+                if (((ucPatientNew)wizard._activePage).chkKontaktbestätigung.Checked)
+                {
+                    ELGABusiness bELGA = new ELGABusiness();
+                    BenutzerDTOS1 ben = bELGA.getELGASettingsForUser(ENV.USERID);
+                    if (ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric)
+                    {
+                        frmELGAKlient frmELGAKlient1 = new frmELGAKlient();
+                        frmELGAKlient1.initControl();
+                        frmELGAKlient1.contELGAKlient1.loadData(pat.ID, pat.Aufenthalt.ID);
+                        frmELGAKlient1.ShowDialog();
+                    }
+                }
+            }
+
             return true;
         }
 
