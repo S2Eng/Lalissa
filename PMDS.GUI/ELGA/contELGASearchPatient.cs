@@ -118,7 +118,7 @@ namespace PMDS.GUI.ELGA
                                }).First();
 
                     this.txtSozVersNr.Text = rPatient.VersicherungsNr.Trim();
-                    this.txtSozVersNr.Text = "SVNR01";
+                    //this.txtSozVersNr.Text = "SVNR01";
                 }
 
             }
@@ -140,7 +140,12 @@ namespace PMDS.GUI.ELGA
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Eingabe erforderlich!", "", MessageBoxButtons.OK);
                     return false;
                 }
-
+                if (this.txtSozVersNr.Text.Trim().Length < 2)
+                {
+                    this.errorProvider1.SetError(this.txtSozVersNr, "Error");
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Mind. 2 Zeichen Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                    return false;
+                }
 
 
                 return true;
@@ -167,7 +172,7 @@ namespace PMDS.GUI.ELGA
                 this.dsManage1.ELGASearchPatients.Clear();
                 this.gridFound.Refresh();
 
-                ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryPatients(this.txtSozVersNr.Text.Trim());
+                ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryPatients(this.txtSozVersNr.Text.Trim(), ELGABALeTypeQueryPatients.SozVersNr, false);
                 if (parOuot.lPatientsk__BackingField.Count() > 0)
                 {
                     foreach (ELGAPatientDTO elgaPatient in parOuot.lPatientsk__BackingField)

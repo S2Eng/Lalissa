@@ -330,16 +330,16 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public ELGAParOutDto ELGAQueryPatients(string SozVersNr)
+        public ELGAParOutDto ELGAQueryPatients(string SozVersNrLocalPatID, ELGABALeTypeQueryPatients ELGABALeTypeQueryPatients, bool checkOneRowMustFound)
         {
             try
             {
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrk__BackingField = SozVersNr.Trim(), NachNameFirmak__BackingField = "", Vornamek__BackingField = "", 
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = SozVersNrLocalPatID.Trim(), NachNameFirmak__BackingField = "", Vornamek__BackingField = "", 
                                                                     Zipk__BackingField = "", Cityk__BackingField = "", Streetk__BackingField = "", StreetNrk__BackingField = "" };
-                ELGAParOutDto parOutDto = client.ELGAQueryPatients(ref parsIn);
+                ELGAParOutDto parOutDto = client.ELGAQueryPatients(ref parsIn, ELGABALeTypeQueryPatients, checkOneRowMustFound);
 
                 if (parOutDto.bErrorsFoundk__BackingField)
                 {
@@ -362,20 +362,21 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAPatientCreateLocalID(Guid IDPatientIntern)
+        public ELGAParOutDto ELGAUpdatePatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, ELGABALeTypeUpdatePatients ELGABALeTypeUpdatePatients)
         {
             try
             {
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.IDPatientInternk__BackingField = IDPatientIntern;
-                ELGAParOutDto parOutDto = client.ELGAPatientCreateLocalID(ref parsIn);
+                parsIn.IDPatientInternk__BackingField = IDPatientInternWcf;
+                parsIn.LocalPatientIDk__BackingField = LocalPatientIDWrite;
+                ELGAParOutDto parOutDto = client.ELGAUpdatePatient(ref parsIn, ELGABALeTypeUpdatePatients);
 
                 if (parOutDto.bErrorsFoundk__BackingField)
                 {
-                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAPatientCreateLocalID");
-                    throw new Exception("WCFServiceClientPMDS.ELGAPatientCreateLocalID: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAUpdatePatient");
+                    throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
                 if (parOutDto.bOKk__BackingField)
@@ -384,17 +385,112 @@ namespace PMDSClient.Sitemap
                 }
                 else
                 {
-                    throw new Exception("WCFServiceClientPMDS.ELGAPatientCreateLocalID: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                    throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
               
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAPatientCreateLocalID: " + ex.ToString());
+                throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: " + ex.ToString());
             }
         }
+        public ELGAParOutDto ELGAAddContactAdmission(string LocalPatientID)
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDtok__BackingField.SozVersNrLocalPatIDk__BackingField = LocalPatientID;
+                ELGAParOutDto parOutDto = client.ELGAAddContactAdmission(ref parsIn);
 
+                if (parOutDto.bErrorsFoundk__BackingField)
+                {
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAUddContactAdmission");
+                    throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                }
 
+                if (parOutDto.bOKk__BackingField)
+                {
+                    if (parOutDto.ContactIDk__BackingField.Trim() == "")
+                    {
+                        throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.ContactID='" + parOutDto.ContactIDk__BackingField.ToString()+ "' not allowed!");
+                    }
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: " + ex.ToString());
+            }
+        }
+        public ELGAParOutDto ELGAInvalidateContact(string ContactID)
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.ContactIDk__BackingField = ContactID.Trim();
+                ELGAParOutDto parOutDto = client.ELGAInvalidateContact(ref parsIn);
+
+                if (parOutDto.bErrorsFoundk__BackingField)
+                {
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAInvalidateContact");
+                    throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                }
+
+                if (parOutDto.bOKk__BackingField)
+                {
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: " + ex.ToString());
+            }
+        }
+        public ELGAParOutDto ELGAAddContactDischarge(string ContactID)
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.ContactIDk__BackingField = ContactID.Trim();
+                ELGAParOutDto parOutDto = client.ELGAAddContactDischarge(ref parsIn);
+
+                if (parOutDto.bErrorsFoundk__BackingField)
+                {
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAAddContactDischarge");
+                    throw new Exception("WCFServiceClientPMDS.ELGAAddContactDischarge: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                }
+
+                if (parOutDto.bOKk__BackingField)
+                {
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGAAddContactDischarge: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGAAddContactDischarge: " + ex.ToString());
+            }
+        }
 
 
         public void genCDA(CDAeTypeCDA CDAeTypeCDA, Guid IDEinrichtungEmpfänger, Guid IDDocument, Guid IDSet, int VersionsNr)

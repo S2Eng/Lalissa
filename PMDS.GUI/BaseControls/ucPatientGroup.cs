@@ -932,7 +932,7 @@ namespace PMDS.GUI
                         if (this.mainWindow != null && this.mainWindow.mainWindow != null)
                         {
                             ELGABusiness bELGA = new ELGABusiness();
-                            bELGA.LogOutELGA(this.mainWindow.mainWindow.ultraStatusBar1, this.mainWindow.mainWindow.ultraStatusBar1.Panels["statELGA"], true, false);
+                            bELGA.LogOutELGA(this.mainWindow.mainWindow.ultraStatusBar1, this.mainWindow.mainWindow.ultraStatusBar1.Panels["statELGA"], true, true, false);
                         }
                     }
                     return ( dsKlinik.KlinikRow)item.Tag;

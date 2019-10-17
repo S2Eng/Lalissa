@@ -101,11 +101,35 @@
   <wsdl:message name="Service1_ELGAQueryPatients_OutputMessage">
     <wsdl:part name="parameters" element="tns:ELGAQueryPatientsResponse" />
   </wsdl:message>
-  <wsdl:message name="Service1_ELGAPatientCreateLocalID_InputMessage">
-    <wsdl:part name="parameters" element="tns:ELGAPatientCreateLocalID" />
+  <wsdl:message name="Service1_ELGAUpdatePatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAUpdatePatient" />
   </wsdl:message>
-  <wsdl:message name="Service1_ELGAPatientCreateLocalID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ELGAPatientCreateLocalIDResponse" />
+  <wsdl:message name="Service1_ELGAUpdatePatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAUpdatePatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAAddContactAdmission_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAAddContactAdmission" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAAddContactAdmission_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAAddContactAdmissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAInvalidateContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAInvalidateContact" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAInvalidateContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAInvalidateContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAAddContactDischarge_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAAddContactDischarge" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAAddContactDischarge_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAAddContactDischargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAListContacts_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAListContacts" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAListContacts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAListContactsResponse" />
   </wsdl:message>
   <wsdl:message name="Service1_ELGAQueryGDAs_InputMessage">
     <wsdl:part name="parameters" element="tns:ELGAQueryGDAs" />
@@ -208,9 +232,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAQueryPatients" message="tns:Service1_ELGAQueryPatients_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAQueryPatientsResponse" message="tns:Service1_ELGAQueryPatients_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ELGAPatientCreateLocalID">
-      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAPatientCreateLocalID" message="tns:Service1_ELGAPatientCreateLocalID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAPatientCreateLocalIDResponse" message="tns:Service1_ELGAPatientCreateLocalID_OutputMessage" />
+    <wsdl:operation name="ELGAUpdatePatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAUpdatePatient" message="tns:Service1_ELGAUpdatePatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAUpdatePatientResponse" message="tns:Service1_ELGAUpdatePatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddContactAdmission">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAAddContactAdmission" message="tns:Service1_ELGAAddContactAdmission_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAAddContactAdmissionResponse" message="tns:Service1_ELGAAddContactAdmission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAInvalidateContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAInvalidateContact" message="tns:Service1_ELGAInvalidateContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAInvalidateContactResponse" message="tns:Service1_ELGAInvalidateContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddContactDischarge">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAAddContactDischarge" message="tns:Service1_ELGAAddContactDischarge_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAAddContactDischargeResponse" message="tns:Service1_ELGAAddContactDischarge_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAListContacts">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAListContacts" message="tns:Service1_ELGAListContacts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAListContactsResponse" message="tns:Service1_ELGAListContacts_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ELGAQueryGDAs">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAQueryGDAs" message="tns:Service1_ELGAQueryGDAs_InputMessage" />
@@ -345,8 +385,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ELGAPatientCreateLocalID">
-      <soap:operation soapAction="http://tempuri.org/Service1/ELGAPatientCreateLocalID" style="document" />
+    <wsdl:operation name="ELGAUpdatePatient">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAUpdatePatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddContactAdmission">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAAddContactAdmission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAInvalidateContact">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAInvalidateContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddContactDischarge">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAAddContactDischarge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAListContacts">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAListContacts" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -538,8 +614,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ELGAPatientCreateLocalID">
-      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAPatientCreateLocalID" style="document" />
+    <wsdl:operation name="ELGAUpdatePatient">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAUpdatePatient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddContactAdmission">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAAddContactAdmission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAInvalidateContact">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAInvalidateContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAAddContactDischarge">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAAddContactDischarge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAListContacts">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAListContacts" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

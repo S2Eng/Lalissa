@@ -4,4 +4,18 @@
     <xs:sequence />
   </xs:complexType>
   <xs:element name="ENVClientDto" nillable="true" type="tns:ENVClientDto" />
+  <xs:simpleType name="ELGABAL.eTypeQueryPatients">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SozVersNr" />
+      <xs:enumeration value="LocalID" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ELGABAL.eTypeQueryPatients" nillable="true" type="tns:ELGABAL.eTypeQueryPatients" />
+  <xs:simpleType name="ELGABAL.eTypeUpdatePatients">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CreateLocalPatientID" />
+      <xs:enumeration value="UpdatePatientData" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ELGABAL.eTypeUpdatePatients" nillable="true" type="tns:ELGABAL.eTypeUpdatePatients" />
 </xs:schema>

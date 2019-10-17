@@ -316,7 +316,7 @@ namespace PMDS.Global.db.ERSystem
                             {
                                 if (this.ElgaMessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" + "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?"))
                                 {
-                                    this.LogOutELGA(statBar, panelELGA, true, false);
+                                    this.LogOutELGA(statBar, panelELGA, true, false, false);
                                 }
                             }
                             else if (ELGAStatusbarStatus.TypeStatusELGA == eTypeStatusELGA.yellow)
@@ -331,7 +331,7 @@ namespace PMDS.Global.db.ERSystem
                                 {
                                     if (this.ElgaMessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" + "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?"))
                                     {
-                                        this.LogOutELGA(statBar, panelELGA, true);
+                                        this.LogOutELGA(statBar, panelELGA, true, false);
                                     }
                                 }
                             }
@@ -349,7 +349,7 @@ namespace PMDS.Global.db.ERSystem
                         }
                         else
                         {
-                            this.LogOutELGA(statBar, panelELGA, true, false);
+                            this.LogOutELGA(statBar, panelELGA, true, true, false);
                         }
 
                         //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
@@ -412,7 +412,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.LogInELGA: " + ex.ToString());
             }
         }
-        public void LogOutELGA(UltraStatusBar statBar, UltraStatusPanel panelELGA, bool CloseAllElgaMsgBoxes, bool setSessionStopped = true)
+        public void LogOutELGA(UltraStatusBar statBar, UltraStatusPanel panelELGA, bool CloseAllElgaMsgBoxes, bool LogOutAuto, bool setSessionStopped = true)
         {
             try
             {
@@ -423,8 +423,6 @@ namespace PMDS.Global.db.ERSystem
                 {
                     this.closeOpendElgaMsgBoxes();
                 }
-                WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
-                WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
 
                 ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.off;
                 ELGAStatusbarStatus.ELGASessionStarted = null;
@@ -435,9 +433,21 @@ namespace PMDS.Global.db.ERSystem
                 statBar.Panels["statELGA"].Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine ELGA-Sitzung aktiv");
                 panelELGA.Appearance.Image = null;
 
-                string sProt = "Benutzer " + LoggedInBenutzer.Trim() + " hat sich aus ELGA abgemeldet";
-                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer hat sich abgemeldet"), null,
-                                                ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
+                WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+                WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
+
+                if (LogOutAuto)
+                {
+                    string sProt = "Benutzer " + LoggedInBenutzer.Trim() + " wurde automatisch von ELGA abgemeldet";
+                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer hat sich abgemeldet"), null,
+                                                    ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
+                }
+                else
+                {
+                    string sProt = "Benutzer " + LoggedInBenutzer.Trim() + " hat sich aus ELGA abgemeldet";
+                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer hat sich abgemeldet"), null,
+                                                    ELGABusiness.eTypeProt.NewPassword, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
+                }
 
             }
             catch (Exception ex)
@@ -482,14 +492,14 @@ namespace PMDS.Global.db.ERSystem
                             }
                             else
                             {
-                                this.LogOutELGA(statBar, panelELGA, true);
+                                this.LogOutELGA(statBar, panelELGA, true, false);
                             }
                             MsgBoxVerlängerungActive = false;
                         }
                     }
                     else if (dNow > ELGAStatusbarStatus.ELGASessionEnd.Value)
                     {
-                        this.LogOutELGA(statBar, panelELGA, true, false);
+                        this.LogOutELGA(statBar, panelELGA, true, true, false);
                     }
                     else
                     {
@@ -517,7 +527,7 @@ namespace PMDS.Global.db.ERSystem
                         this.setTxtStatusbarTime(statBar, panelELGA, span);
                         if (dNow >= ELGAStatusbarStatus.ELGASessionEnd.Value)
                         {
-                            this.LogOutELGA(statBar, panelELGA, true);
+                            this.LogOutELGA(statBar, panelELGA, true, true);
                         }
                     }
                 }

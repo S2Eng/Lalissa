@@ -684,6 +684,11 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer");
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Mind. 2 Zeichen Eingabe erforderlich!", "", MessageBoxButtons.OK);
+
+
+
+
 
 
             }

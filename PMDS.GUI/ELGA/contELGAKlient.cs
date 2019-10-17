@@ -162,9 +162,24 @@ namespace PMDS.GUI.ELGA
                 frmELGASearchPatient1.ShowDialog();
                 if (!frmELGASearchPatient1.contELGASearchPatient1.abort)
                 {
-                    ELGAParOutDto parOut = this.WCFServiceClient1.ELGAPatientCreateLocalID(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID);
+                    ELGAParOutDto parOut = this.WCFServiceClient1.ELGAUpdatePatient(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID, this._IDAufenthalt.ToString().ToLower(), ELGABALeTypeUpdatePatients.CreateLocalPatientID);
                     if (parOut.bOKk__BackingField)
                     {
+                        string ELGALocalIDStored = "";
+                        foreach (ELGAPidsDTO rPid in parOut.lPatientsk__BackingField[0].ELGAPidsk__BackingField)
+                        {
+                            if (rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower())
+                            {
+                                ELGALocalIDStored = rPid.IDELGAPatientsk__BackingField.Trim();
+                            }
+                        }
+
+                        ELGAParOutDto parOutContact = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
+                        if (!parOutContact.bOKk__BackingField)
+                        {
+                            throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
+                        }
+
                         using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                         {
                             var rBenutzer = (from b in db.Benutzer
@@ -177,12 +192,22 @@ namespace PMDS.GUI.ELGA
                                                  b.Benutzer1
                                              }).First();
 
-                            PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
+                            var rPatient = (from p in db.Patient
+                                             where p.ID == this._IDKlient
+                                             select new
+                                             {
+                                                 p.ID,
+                                                 p.Nachname,
+                                                 p.Vorname
+                                             }).First();
+
+                            //PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
                             PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
 
-                            rPatientUpdate.bPK = frmELGASearchPatient1.contELGASearchPatient1._rSelRow.IDElga;
-                            rPatientUpdate.ELGAKontaktbestätigungLocalID = parOut.LocalIDk__BackingField.Trim();
+                            //rPatientUpdate.bPK = frmELGASearchPatient1.contELGASearchPatient1._rSelRow.IDElga;
 
+                            rAufenthaltUpdate.ELGALocalID = ELGALocalIDStored.Trim();
+                            rAufenthaltUpdate.ELGAKontaktbestätigungContactID = parOutContact.ContactIDk__BackingField.Trim();
                             rAufenthaltUpdate.ELGAKontaktbestätigungJN = true;
                             rAufenthaltUpdate.ELGAKontaktbestätigungDatum = DateTime.Now;
                             rAufenthaltUpdate.ELGAKontaktbestätigungUser = rBenutzer.Benutzer1.Trim();
@@ -194,7 +219,7 @@ namespace PMDS.GUI.ELGA
 
 
                             string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
-                            sProt = string.Format(sProt, rPatientUpdate.Nachname.Trim() + " " + rPatientUpdate.Vorname.Trim(), rBenutzer.Benutzer1.Trim());
+                            sProt = string.Format(sProt, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), rBenutzer.Benutzer1.Trim());
                             ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung"), null,
                                                             ELGABusiness.eTypeProt.Kontaktbestätigung, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this._IDKlient, this._IDAufenthalt, sProt);
 
@@ -224,6 +249,15 @@ namespace PMDS.GUI.ELGA
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
+                    //PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
+                    PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
+
+                    ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGAKontaktbestätigungContactID.Trim());
+                    if (!parOutInvContact.bOKk__BackingField)
+                    {
+                        throw new Exception("contELGAKlient.doKontaktbestätigungStorno: parOutInvContact.bOK=false not allowed - Error WCF-Service ELGAInvalidateContact!");
+                    }
+
                     var rBenutzer = (from b in db.Benutzer
                                         where b.ID == ENV.USERID
                                         select new
@@ -234,14 +268,17 @@ namespace PMDS.GUI.ELGA
                                             b.Benutzer1
                                         }).First();
 
-                    PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
-                    PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
-
-                    //rPatientUpdate.bPK = "";
-                    //rPatientUpdate.ELGAKontaktbestätigungLocalID = "";
+                    var rPatient = (from p in db.Patient
+                                    where p.ID == this._IDKlient
+                                    select new
+                                    {
+                                        p.ID,
+                                        p.Nachname,
+                                        p.Vorname
+                                    }).First();
 
                     rAufenthaltUpdate.ELGAKontaktbestätigungJN = false;
-                    //rAufenthaltUpdate.ELGAKontaktbestätigungDatum = null;
+                    rAufenthaltUpdate.ELGAKontaktbestätigungDatum = null;
                     rAufenthaltUpdate.ELGAKontaktbestätigungUser = rBenutzer.Benutzer1.Trim();
                     rAufenthaltUpdate.ELGAKontaktbestätigungStornoDatum = DateTime.Now;
                     rAufenthaltUpdate.ELGAKontaktbestätigungStornoJN = true;
@@ -251,7 +288,7 @@ namespace PMDS.GUI.ELGA
 
 
                     string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
-                    sProt = string.Format(sProt, rPatientUpdate.Nachname.Trim() + " " + rPatientUpdate.Vorname.Trim(), rBenutzer.Benutzer1.Trim());
+                    sProt = string.Format(sProt, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), rBenutzer.Benutzer1.Trim());
                     ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung"), null,
                                                     ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this._IDKlient, this._IDAufenthalt, sProt);
 
