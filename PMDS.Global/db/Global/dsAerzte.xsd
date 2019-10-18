@@ -14,7 +14,7 @@
   <xs:element name="dsAerzte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsAerzte" msprop:Generator_UserDSName="dsAerzte">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Aerzte" msprop:Generator_TableClassName="AerzteDataTable" msprop:Generator_TableVarName="tableAerzte" msprop:Generator_TablePropName="Aerzte" msprop:Generator_RowDeletingName="AerzteRowDeleting" msprop:Generator_RowChangingName="AerzteRowChanging" msprop:Generator_RowEvHandlerName="AerzteRowChangeEventHandler" msprop:Generator_RowDeletedName="AerzteRowDeleted" msprop:Generator_UserTableName="Aerzte" msprop:Generator_RowChangedName="AerzteRowChanged" msprop:Generator_RowEvArgName="AerzteRowChangeEvent" msprop:Generator_RowClassName="AerzteRow">
+        <xs:element name="Aerzte" msprop:Generator_TableClassName="AerzteDataTable" msprop:Generator_TableVarName="tableAerzte" msprop:Generator_RowChangedName="AerzteRowChanged" msprop:Generator_TablePropName="Aerzte" msprop:Generator_RowDeletingName="AerzteRowDeleting" msprop:Generator_RowChangingName="AerzteRowChanging" msprop:Generator_RowEvHandlerName="AerzteRowChangeEventHandler" msprop:Generator_RowDeletedName="AerzteRowDeleted" msprop:Generator_RowClassName="AerzteRow" msprop:Generator_UserTableName="Aerzte" msprop:Generator_RowEvArgName="AerzteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -48,6 +48,30 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="ELGAAbgeglichen" msprop:Generator_ColumnVarNameInTable="columnELGAAbgeglichen" msprop:Generator_ColumnPropNameInRow="ELGAAbgeglichen" msprop:Generator_ColumnPropNameInTable="ELGAAbgeglichenColumn" msprop:Generator_UserColumnName="ELGAAbgeglichen" type="xs:boolean" />
+              <xs:element name="ELGAHausarzt" msprop:Generator_ColumnVarNameInTable="columnELGAHausarzt" msprop:Generator_ColumnPropNameInRow="ELGAHausarzt" msprop:Generator_ColumnPropNameInTable="ELGAHausarztColumn" msprop:Generator_UserColumnName="ELGAHausarzt" type="xs:boolean" />
+              <xs:element name="ELGA_OID" msprop:Generator_ColumnVarNameInTable="columnELGA_OID" msprop:Generator_ColumnPropNameInRow="ELGA_OID" msprop:Generator_ColumnPropNameInTable="ELGA_OIDColumn" msprop:Generator_UserColumnName="ELGA_OID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGA_OrganizationOID" msprop:Generator_ColumnVarNameInTable="columnELGA_OrganizationOID" msprop:Generator_ColumnPropNameInRow="ELGA_OrganizationOID" msprop:Generator_ColumnPropNameInTable="ELGA_OrganizationOIDColumn" msprop:Generator_UserColumnName="ELGA_OrganizationOID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ELGA_OrganizationName" msprop:Generator_ColumnVarNameInTable="columnELGA_OrganizationName" msprop:Generator_ColumnPropNameInRow="ELGA_OrganizationName" msprop:Generator_ColumnPropNameInTable="ELGA_OrganizationNameColumn" msprop:Generator_UserColumnName="ELGA_OrganizationName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="300" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IstOrganisation" msprop:Generator_ColumnVarNameInTable="columnIstOrganisation" msprop:Generator_ColumnPropNameInRow="IstOrganisation" msprop:Generator_ColumnPropNameInTable="IstOrganisationColumn" msprop:Generator_UserColumnName="IstOrganisation" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

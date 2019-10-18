@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PMDSClient.Sitemap.WCFServiceClient;
 
 namespace PMDS.GUI.ELGA
 {
@@ -28,14 +29,14 @@ namespace PMDS.GUI.ELGA
 
 
 
-        public void initControl()
+        public void initControl(Nullable<Guid> IDPatient, Nullable<Guid> IDAufenthalt, cSearchGdaFlds FieldsSearch, contELGASearchGDA.eTypeUI TypeUI)
         {
             try
             {
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
 
                 this.contELGASearchGDA1.mainWindow = this;
-                this.contELGASearchGDA1.initControl();
+                this.contELGASearchGDA1.initControl(IDPatient, IDAufenthalt, FieldsSearch, TypeUI);
 
             }
             catch (Exception ex)

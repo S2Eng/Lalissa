@@ -48,6 +48,13 @@ namespace PMDS.DB.Global
         {
             dsAerzte.AerzteRow r = dsAerzte1.Aerzte.NewAerzteRow();
             r.ID = Guid.NewGuid();
+            r.ELGAAbgeglichen = false;
+            r.ELGAHausarzt = false;
+            r.ELGA_OID = "";
+            r.ELGA_OrganizationName = "";
+            r.ELGA_OrganizationOID = "";
+            r.IstOrganisation = false;
+
             dsAerzte1.Aerzte.AddAerzteRow(r);
             return r;
         }
@@ -103,7 +110,7 @@ namespace PMDS.DB.Global
             OleDbCommand cmd = new OleDbCommand();
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
 
-            cmd.CommandText = "SELECT ID, IDAdresse, IDKontakt, Titel, Nachname, Vorname, Fachrichtung FROM Aerzte Where ID=?";
+            cmd.CommandText = "SELECT ID, IDAdresse, IDKontakt, Titel, Nachname, Vorname, Fachrichtung, ELGAAbgeglichen, ELGAHausarzt, ELGA_OID, ELGA_OrganizationOID, ELGA_OrganizationName, IstOrganisation FROM Aerzte Where ID=?";
             da.SelectCommand.Parameters.AddWithValue("ID", IDArzt);
             DataBase.Fill(da, aerzte.Aerzte);
 

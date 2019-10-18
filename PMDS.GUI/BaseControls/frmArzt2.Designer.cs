@@ -45,7 +45,7 @@
             this.ucArzt1.Location = new System.Drawing.Point(3, 2);
             this.ucArzt1.Margin = new System.Windows.Forms.Padding(4);
             this.ucArzt1.Name = "ucArzt1";
-            this.ucArzt1.Size = new System.Drawing.Size(613, 511);
+            this.ucArzt1.Size = new System.Drawing.Size(613, 565);
             this.ucArzt1.TabIndex = 0;
             // 
             // btnCancel
@@ -60,7 +60,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(425, 545);
+            this.btnCancel.Location = new System.Drawing.Point(425, 563);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(117, 39);
@@ -83,7 +83,7 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(545, 545);
+            this.btnOK.Location = new System.Drawing.Point(545, 563);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(64, 39);
@@ -100,7 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(627, 592);
+            this.ClientSize = new System.Drawing.Size(627, 610);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);

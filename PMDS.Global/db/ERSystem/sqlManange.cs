@@ -1339,11 +1339,15 @@ namespace PMDS.Global.db.ERSystem
                 rNew.ID = System.Guid.NewGuid();
                 rNew.NachnameFirma = "";
                 rNew.Vorname = "";
-                rNew.Strasse = "";
+                rNew.Title = "";
                 rNew.PLZ = "";
                 rNew.Ort = "";
                 rNew.Land = "";
-                rNew.Tel = "";
+                rNew.Strasse = "";
+                rNew.StrasseNr = "";
+                rNew.IsOrganisation = false;
+                rNew.Status = "";
+                rNew.State = "";
                 rNew.IDElga = "";
 
                 ds.ELGASearchGDAs.Rows.Add(rNew);

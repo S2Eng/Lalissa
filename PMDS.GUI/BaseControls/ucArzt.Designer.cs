@@ -32,6 +32,8 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.lblArzt = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblFachrichtung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.grpKontaktdaten = new QS2.Desktop.ControlManagment.BaseGroupBox();
@@ -54,6 +56,7 @@
             this.txtFax = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblFax = new QS2.Desktop.ControlManagment.BaseLabel();
             this.grpAdresse = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.txtLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.lblLand = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblOrt = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtOrt = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -67,8 +70,10 @@
             this.lblNachname = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblAkdGrad = new QS2.Desktop.ControlManagment.BaseLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnELGASearchGDA = new QS2.Desktop.ControlManagment.BaseButton();
+            this.txtELGAGdaOid = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.lblELGAGdaID = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cbFachrichtung = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
-            this.txtLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cmbAkdGrad = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             ((System.ComponentModel.ISupportInitialize)(this.grpKontaktdaten)).BeginInit();
             this.grpKontaktdaten.SuspendLayout();
@@ -83,14 +88,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpAdresse)).BeginInit();
             this.grpAdresse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVorname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNachname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGAGdaOid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbFachrichtung)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAkdGrad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -309,6 +315,24 @@
             this.grpAdresse.TabIndex = 142;
             this.grpAdresse.Text = "Adresse";
             // 
+            // txtLand
+            // 
+            this.txtLand.AddEmptyEntry = true;
+            this.txtLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.txtLand.AutoOpenCBO = false;
+            this.txtLand.BerufsstandGruppeJNA = -1;
+            this.txtLand.ExactMatch = false;
+            this.txtLand.Group = "LND";
+            this.txtLand.ID_PEP = -1;
+            this.txtLand.Location = new System.Drawing.Point(185, 68);
+            this.txtLand.MaxLength = 20;
+            this.txtLand.Name = "txtLand";
+            this.txtLand.PflichtJN = false;
+            this.txtLand.ShowAddButton = true;
+            this.txtLand.Size = new System.Drawing.Size(256, 21);
+            this.txtLand.sys = false;
+            this.txtLand.TabIndex = 119;
+            // 
             // lblLand
             // 
             this.lblLand.AutoSize = true;
@@ -420,6 +444,45 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnELGASearchGDA
+            // 
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnELGASearchGDA.Appearance = appearance5;
+            this.btnELGASearchGDA.AutoWorkLayout = false;
+            this.btnELGASearchGDA.IsStandardControl = false;
+            this.btnELGASearchGDA.Location = new System.Drawing.Point(101, 405);
+            this.btnELGASearchGDA.Margin = new System.Windows.Forms.Padding(4);
+            this.btnELGASearchGDA.Name = "btnELGASearchGDA";
+            this.btnELGASearchGDA.Size = new System.Drawing.Size(91, 30);
+            this.btnELGASearchGDA.TabIndex = 147;
+            this.btnELGASearchGDA.Tag = "";
+            this.btnELGASearchGDA.Text = "Suche ELGA";
+            this.btnELGASearchGDA.Click += new System.EventHandler(this.btnELGASearchGDA_Click);
+            // 
+            // txtELGAGdaOid
+            // 
+            appearance4.BackColor = System.Drawing.Color.White;
+            this.txtELGAGdaOid.Appearance = appearance4;
+            this.txtELGAGdaOid.BackColor = System.Drawing.Color.White;
+            this.txtELGAGdaOid.Location = new System.Drawing.Point(101, 374);
+            this.txtELGAGdaOid.MaxLength = 75;
+            this.txtELGAGdaOid.Name = "txtELGAGdaOid";
+            this.txtELGAGdaOid.ReadOnly = true;
+            this.txtELGAGdaOid.Size = new System.Drawing.Size(346, 21);
+            this.txtELGAGdaOid.TabIndex = 148;
+            this.txtELGAGdaOid.ValueChanged += new System.EventHandler(this.txtELGAGdaOid_ValueChanged);
+            // 
+            // lblELGAGdaID
+            // 
+            this.lblELGAGdaID.AutoSize = true;
+            this.lblELGAGdaID.Location = new System.Drawing.Point(21, 378);
+            this.lblELGAGdaID.Name = "lblELGAGdaID";
+            this.lblELGAGdaID.Size = new System.Drawing.Size(77, 14);
+            this.lblELGAGdaID.TabIndex = 149;
+            this.lblELGAGdaID.Text = "ELGA GDA-ID";
+            this.lblELGAGdaID.Click += new System.EventHandler(this.lblELGAGdaID_Click);
+            // 
             // cbFachrichtung
             // 
             this.cbFachrichtung.AddEmptyEntry = false;
@@ -437,24 +500,6 @@
             this.cbFachrichtung.Size = new System.Drawing.Size(346, 21);
             this.cbFachrichtung.sys = false;
             this.cbFachrichtung.TabIndex = 4;
-            // 
-            // txtLand
-            // 
-            this.txtLand.AddEmptyEntry = true;
-            this.txtLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.txtLand.AutoOpenCBO = false;
-            this.txtLand.BerufsstandGruppeJNA = -1;
-            this.txtLand.ExactMatch = false;
-            this.txtLand.Group = "LND";
-            this.txtLand.ID_PEP = -1;
-            this.txtLand.Location = new System.Drawing.Point(185, 68);
-            this.txtLand.MaxLength = 20;
-            this.txtLand.Name = "txtLand";
-            this.txtLand.PflichtJN = false;
-            this.txtLand.ShowAddButton = true;
-            this.txtLand.Size = new System.Drawing.Size(256, 21);
-            this.txtLand.sys = false;
-            this.txtLand.TabIndex = 119;
             // 
             // cmbAkdGrad
             // 
@@ -478,6 +523,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtELGAGdaOid);
+            this.Controls.Add(this.lblELGAGdaID);
+            this.Controls.Add(this.btnELGASearchGDA);
             this.Controls.Add(this.lblArzt);
             this.Controls.Add(this.cbFachrichtung);
             this.Controls.Add(this.lblFachrichtung);
@@ -490,7 +538,8 @@
             this.Controls.Add(this.lblNachname);
             this.Controls.Add(this.lblAkdGrad);
             this.Name = "ucArzt";
-            this.Size = new System.Drawing.Size(460, 376);
+            this.Size = new System.Drawing.Size(460, 455);
+            this.Load += new System.EventHandler(this.ucArzt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grpKontaktdaten)).EndInit();
             this.grpKontaktdaten.ResumeLayout(false);
             this.grpKontaktdaten.PerformLayout();
@@ -506,14 +555,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpAdresse)).EndInit();
             this.grpAdresse.ResumeLayout(false);
             this.grpAdresse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVorname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNachname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGAGdaOid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbFachrichtung)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAkdGrad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -560,5 +610,8 @@
         private QS2.Desktop.ControlManagment.BaseLabel lblAkdGrad;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private PMDS.GUI.BaseControls.AuswahlGruppeCombo txtLand;
+        public QS2.Desktop.ControlManagment.BaseButton btnELGASearchGDA;
+        private QS2.Desktop.ControlManagment.BaseTextEditor txtELGAGdaOid;
+        private QS2.Desktop.ControlManagment.BaseLabel lblELGAGdaID;
     }
 }

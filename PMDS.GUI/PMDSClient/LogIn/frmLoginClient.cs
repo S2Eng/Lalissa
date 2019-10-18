@@ -48,7 +48,6 @@ namespace PMDS.GUI.PMDSClient
             PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
             QS2.Desktop.ControlManagment.ENV.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
 
-
             return bRet;
 		}
 

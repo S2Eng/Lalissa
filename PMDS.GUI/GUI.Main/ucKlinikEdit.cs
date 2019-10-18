@@ -9,6 +9,8 @@ using PMDS.BusinessLogic;
 using PMDS.Global;
 using PMDS.GUI.Engines;
 using PMDS.Global.db.Patient;
+using PMDS.GUI.ELGA;
+using static PMDSClient.Sitemap.WCFServiceClient;
 
 namespace PMDS.GUI
 {
@@ -25,6 +27,7 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseLabel lblAuswahlEinrichtung;
         private ucButton btnDel;
         public QS2.Desktop.ControlManagment.BaseButton btnSave2;
+        public QS2.Desktop.ControlManagment.BaseButton btnELGASearchGDA;
         private QS2.Desktop.ControlManagment.BaseComboEditor cbKlinik;
 
 
@@ -63,6 +66,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             this.btnUndo = new PMDS.GUI.ucButton(this.components);
             this.cbKlinik = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.btnAdd = new PMDS.GUI.ucButton(this.components);
@@ -70,6 +74,7 @@ namespace PMDS.GUI
             this.lblAuswahlEinrichtung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnDel = new PMDS.GUI.ucButton(this.components);
             this.btnSave2 = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnELGASearchGDA = new QS2.Desktop.ControlManagment.BaseButton();
             ((System.ComponentModel.ISupportInitialize)(this.cbKlinik)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,7 +166,7 @@ namespace PMDS.GUI
             this.btnDel.Size = new System.Drawing.Size(96, 32);
             this.btnDel.TabIndex = 115;
             this.btnDel.TabStop = false;
-            this.btnDel.Text = "Löschen";
+            this.btnDel.Text = "Entfernen";
             this.btnDel.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
             this.btnDel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
@@ -184,9 +189,27 @@ namespace PMDS.GUI
             this.btnSave2.Text = "Speichern";
             this.btnSave2.Click += new System.EventHandler(this.btnSave2_Click);
             // 
+            // btnELGASearchGDA
+            // 
+            this.btnELGASearchGDA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnELGASearchGDA.Appearance = appearance5;
+            this.btnELGASearchGDA.AutoWorkLayout = false;
+            this.btnELGASearchGDA.IsStandardControl = false;
+            this.btnELGASearchGDA.Location = new System.Drawing.Point(200, 565);
+            this.btnELGASearchGDA.Margin = new System.Windows.Forms.Padding(4);
+            this.btnELGASearchGDA.Name = "btnELGASearchGDA";
+            this.btnELGASearchGDA.Size = new System.Drawing.Size(98, 32);
+            this.btnELGASearchGDA.TabIndex = 1003;
+            this.btnELGASearchGDA.Tag = "";
+            this.btnELGASearchGDA.Text = "Suche ELGA";
+            this.btnELGASearchGDA.Click += new System.EventHandler(this.btnELGASearchGDA_Click);
+            // 
             // ucKlinikEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Controls.Add(this.btnELGASearchGDA);
             this.Controls.Add(this.cbKlinik);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.lblAuswahlEinrichtung);
@@ -214,11 +237,15 @@ namespace PMDS.GUI
 
                 this.ucKlinik1.mainWindow = this;
 
-				// wenn ucKlinik zugänglich dann Add Button verstecken
+                this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
+
+                this.btnELGASearchGDA.Visible = PMDS.Global.ENV.lic_ELGA;
+
+                // wenn ucKlinik zugänglich dann Add Button verstecken
                 //if (ucKlinik1.Enabled)
                 //    btnAdd.Visible = false;
-			}
-			catch(Exception ex)
+            }
+            catch (Exception ex)
 			{
 				ENV.HandleException(ex);
 			}
@@ -302,6 +329,44 @@ namespace PMDS.GUI
             }
         }
 
+        private void btnELGASearchGDA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                cSearchGdaFlds FieldsSearch = new cSearchGdaFlds()
+                {
+                    NachnameFirma = this.ucKlinik1.txtKlinik.Text.Trim(),
+                    Vorname = "",
+                    Ort = this.ucKlinik1.ucAdresse1.txtOrt.Text.Trim(),
+                    PLZ = this.ucKlinik1.ucAdresse1.txtPLZ.Text.Trim(),
+                    Strasse = this.ucKlinik1.ucAdresse1.txtStrasse.Text.Trim(),
+                    StrasseNr = ""
+                };
+
+                frmELGASearchGDA frmELGASearchGDA1 = new frmELGASearchGDA();
+                frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.Kliniken);
+                frmELGASearchGDA1.ShowDialog();
+                if (!frmELGASearchGDA1.contELGASearchGDA1.abort)
+                {
+                    this.ucKlinik1.txtKlinik.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.NachnameFirma.Trim();
+                    this.ucKlinik1.ucAdresse1.txtOrt.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Ort.Trim();
+                    this.ucKlinik1.ucAdresse1.txtPLZ.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.PLZ.Trim();
+                    this.ucKlinik1.ucAdresse1.txtStrasse.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Strasse.Trim() + " " + frmELGASearchGDA1.contELGASearchGDA1._rSelRow.StrasseNr.Trim();
+                    this.ucKlinik1.txtELGAGdaOid.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.IDElga.Trim();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
     }
 
 }

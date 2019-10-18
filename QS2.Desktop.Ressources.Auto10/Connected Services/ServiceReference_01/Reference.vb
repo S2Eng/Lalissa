@@ -12590,6 +12590,10 @@ Namespace ServiceReference_01
         
         Private LocalIDk__BackingFieldField As String
         
+        Private MessageExceptionNrk__BackingFieldField As Integer
+        
+        Private MessageExceptionk__BackingFieldField As String
+        
         Private bErrorsFoundk__BackingFieldField As Boolean
         
         Private bOKk__BackingFieldField As Boolean
@@ -12651,6 +12655,32 @@ Namespace ServiceReference_01
                 If (Object.ReferenceEquals(Me.LocalIDk__BackingFieldField, value) <> true) Then
                     Me.LocalIDk__BackingFieldField = value
                     Me.RaisePropertyChanged("LocalIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<MessageExceptionNr>k__BackingField", IsRequired:=true)>  _
+        Public Property MessageExceptionNrk__BackingField() As Integer
+            Get
+                Return Me.MessageExceptionNrk__BackingFieldField
+            End Get
+            Set
+                If (Me.MessageExceptionNrk__BackingFieldField.Equals(value) <> true) Then
+                    Me.MessageExceptionNrk__BackingFieldField = value
+                    Me.RaisePropertyChanged("MessageExceptionNrk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<MessageException>k__BackingField", IsRequired:=true)>  _
+        Public Property MessageExceptionk__BackingField() As String
+            Get
+                Return Me.MessageExceptionk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MessageExceptionk__BackingFieldField, value) <> true) Then
+                    Me.MessageExceptionk__BackingFieldField = value
+                    Me.RaisePropertyChanged("MessageExceptionk__BackingField")
                 End If
             End Set
         End Property

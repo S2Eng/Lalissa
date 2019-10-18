@@ -50,19 +50,17 @@ namespace PMDS.DB.Global
             // 
             // oleDbSelectCommand1
             // 
-            this.oleDbSelectCommand1.CommandText = "SELECT        ID, IDAdresse, IDKontakt, Titel, Nachname, Vorname, Fachrichtung\r\nF" +
-    "ROM            Aerzte\r\nORDER BY Vorname, Nachname";
+            this.oleDbSelectCommand1.CommandText = resources.GetString("oleDbSelectCommand1.CommandText");
             this.oleDbSelectCommand1.Connection = this.oleDbConnection1;
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initi" +
-    "al Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
+    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
             // 
             // oleDbInsertCommand1
             // 
-            this.oleDbInsertCommand1.CommandText = "INSERT INTO [Aerzte] ([ID], [IDAdresse], [IDKontakt], [Titel], [Nachname], [Vorna" +
-    "me], [Fachrichtung]) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            this.oleDbInsertCommand1.CommandText = resources.GetString("oleDbInsertCommand1.CommandText");
             this.oleDbInsertCommand1.Connection = this.oleDbConnection1;
             this.oleDbInsertCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -71,12 +69,17 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("Titel", System.Data.OleDb.OleDbType.VarChar, 0, "Titel"),
             new System.Data.OleDb.OleDbParameter("Nachname", System.Data.OleDb.OleDbType.VarChar, 0, "Nachname"),
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
-            new System.Data.OleDb.OleDbParameter("Fachrichtung", System.Data.OleDb.OleDbType.VarChar, 0, "Fachrichtung")});
+            new System.Data.OleDb.OleDbParameter("Fachrichtung", System.Data.OleDb.OleDbType.VarChar, 0, "Fachrichtung"),
+            new System.Data.OleDb.OleDbParameter("ELGAAbgeglichen", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAbgeglichen"),
+            new System.Data.OleDb.OleDbParameter("ELGAHausarzt", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAHausarzt"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationOID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationOID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationName", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationName"),
+            new System.Data.OleDb.OleDbParameter("IstOrganisation", System.Data.OleDb.OleDbType.Boolean, 0, "IstOrganisation")});
             // 
             // oleDbUpdateCommand1
             // 
-            this.oleDbUpdateCommand1.CommandText = "UPDATE [Aerzte] SET [ID] = ?, [IDAdresse] = ?, [IDKontakt] = ?, [Titel] = ?, [Nac" +
-    "hname] = ?, [Vorname] = ?, [Fachrichtung] = ? WHERE (([ID] = ?))";
+            this.oleDbUpdateCommand1.CommandText = resources.GetString("oleDbUpdateCommand1.CommandText");
             this.oleDbUpdateCommand1.Connection = this.oleDbConnection1;
             this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -86,6 +89,12 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("Nachname", System.Data.OleDb.OleDbType.VarChar, 0, "Nachname"),
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
             new System.Data.OleDb.OleDbParameter("Fachrichtung", System.Data.OleDb.OleDbType.VarChar, 0, "Fachrichtung"),
+            new System.Data.OleDb.OleDbParameter("ELGAAbgeglichen", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAbgeglichen"),
+            new System.Data.OleDb.OleDbParameter("ELGAHausarzt", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAHausarzt"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationOID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationOID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationName", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationName"),
+            new System.Data.OleDb.OleDbParameter("IstOrganisation", System.Data.OleDb.OleDbType.Boolean, 0, "IstOrganisation"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand1
@@ -108,7 +117,13 @@ namespace PMDS.DB.Global
                         new System.Data.Common.DataColumnMapping("Titel", "Titel"),
                         new System.Data.Common.DataColumnMapping("Nachname", "Nachname"),
                         new System.Data.Common.DataColumnMapping("Vorname", "Vorname"),
-                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung")})});
+                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung"),
+                        new System.Data.Common.DataColumnMapping("ELGAAbgeglichen", "ELGAAbgeglichen"),
+                        new System.Data.Common.DataColumnMapping("ELGAHausarzt", "ELGAHausarzt"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OID", "ELGA_OID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationOID", "ELGA_OrganizationOID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationName", "ELGA_OrganizationName"),
+                        new System.Data.Common.DataColumnMapping("IstOrganisation", "IstOrganisation")})});
             this.daAerzte.UpdateCommand = this.oleDbUpdateCommand1;
             // 
             // oleDbSelectCommand2
@@ -129,7 +144,13 @@ namespace PMDS.DB.Global
                         new System.Data.Common.DataColumnMapping("Titel", "Titel"),
                         new System.Data.Common.DataColumnMapping("Nachname", "Nachname"),
                         new System.Data.Common.DataColumnMapping("Vorname", "Vorname"),
-                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung")})});
+                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung"),
+                        new System.Data.Common.DataColumnMapping("ELGAAbgeglichen", "ELGAAbgeglichen"),
+                        new System.Data.Common.DataColumnMapping("ELGAHausarzt", "ELGAHausarzt"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OID", "ELGA_OID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationOID", "ELGA_OrganizationOID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationName", "ELGA_OrganizationName"),
+                        new System.Data.Common.DataColumnMapping("IstOrganisation", "IstOrganisation")})});
             // 
             // dsAerzte1
             // 
@@ -154,7 +175,13 @@ namespace PMDS.DB.Global
                         new System.Data.Common.DataColumnMapping("Titel", "Titel"),
                         new System.Data.Common.DataColumnMapping("Nachname", "Nachname"),
                         new System.Data.Common.DataColumnMapping("Vorname", "Vorname"),
-                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung")})});
+                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung"),
+                        new System.Data.Common.DataColumnMapping("ELGAAbgeglichen", "ELGAAbgeglichen"),
+                        new System.Data.Common.DataColumnMapping("ELGAHausarzt", "ELGAHausarzt"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OID", "ELGA_OID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationOID", "ELGA_OrganizationOID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationName", "ELGA_OrganizationName"),
+                        new System.Data.Common.DataColumnMapping("IstOrganisation", "IstOrganisation")})});
             this.daAerzteByID.UpdateCommand = this.oleDbUpdateCommand;
             // 
             // oleDbDeleteCommand
@@ -166,8 +193,7 @@ namespace PMDS.DB.Global
             // 
             // oleDbInsertCommand
             // 
-            this.oleDbInsertCommand.CommandText = "INSERT INTO [Aerzte] ([ID], [IDAdresse], [IDKontakt], [Titel], [Nachname], [Vorna" +
-    "me], [Fachrichtung]) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            this.oleDbInsertCommand.CommandText = resources.GetString("oleDbInsertCommand.CommandText");
             this.oleDbInsertCommand.Connection = this.oleDbConnection1;
             this.oleDbInsertCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -176,20 +202,24 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("Titel", System.Data.OleDb.OleDbType.VarChar, 0, "Titel"),
             new System.Data.OleDb.OleDbParameter("Nachname", System.Data.OleDb.OleDbType.VarChar, 0, "Nachname"),
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
-            new System.Data.OleDb.OleDbParameter("Fachrichtung", System.Data.OleDb.OleDbType.VarChar, 0, "Fachrichtung")});
+            new System.Data.OleDb.OleDbParameter("Fachrichtung", System.Data.OleDb.OleDbType.VarChar, 0, "Fachrichtung"),
+            new System.Data.OleDb.OleDbParameter("ELGAAbgeglichen", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAbgeglichen"),
+            new System.Data.OleDb.OleDbParameter("ELGAHausarzt", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAHausarzt"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationOID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationOID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationName", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationName"),
+            new System.Data.OleDb.OleDbParameter("IstOrganisation", System.Data.OleDb.OleDbType.Boolean, 0, "IstOrganisation")});
             // 
             // oleDbCommand1
             // 
-            this.oleDbCommand1.CommandText = "SELECT     Aerzte.ID, Aerzte.IDAdresse,Aerzte.IDKontakt, Aerzte.Titel, Aerzte.Nac" +
-    "hname, Aerzte.Vorname, Aerzte.Fachrichtung\r\nFROM         Aerzte  \r\nWHERE   ID=?";
+            this.oleDbCommand1.CommandText = resources.GetString("oleDbCommand1.CommandText");
             this.oleDbCommand1.Connection = this.oleDbConnection1;
             this.oleDbCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID")});
             // 
             // oleDbUpdateCommand
             // 
-            this.oleDbUpdateCommand.CommandText = "UPDATE [Aerzte] SET [ID] = ?, [IDAdresse] = ?, [IDKontakt] = ?, [Titel] = ?, [Nac" +
-    "hname] = ?, [Vorname] = ?, [Fachrichtung] = ? WHERE (([ID] = ?))";
+            this.oleDbUpdateCommand.CommandText = resources.GetString("oleDbUpdateCommand.CommandText");
             this.oleDbUpdateCommand.Connection = this.oleDbConnection1;
             this.oleDbUpdateCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
@@ -199,6 +229,12 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("Nachname", System.Data.OleDb.OleDbType.VarChar, 0, "Nachname"),
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
             new System.Data.OleDb.OleDbParameter("Fachrichtung", System.Data.OleDb.OleDbType.VarChar, 0, "Fachrichtung"),
+            new System.Data.OleDb.OleDbParameter("ELGAAbgeglichen", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAbgeglichen"),
+            new System.Data.OleDb.OleDbParameter("ELGAHausarzt", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAHausarzt"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationOID", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationOID"),
+            new System.Data.OleDb.OleDbParameter("ELGA_OrganizationName", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_OrganizationName"),
+            new System.Data.OleDb.OleDbParameter("IstOrganisation", System.Data.OleDb.OleDbType.Boolean, 0, "IstOrganisation"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             ((System.ComponentModel.ISupportInitialize)(this.dsAerzte1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsAerzte2)).EndInit();

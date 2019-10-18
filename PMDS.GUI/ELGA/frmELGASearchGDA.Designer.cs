@@ -37,7 +37,7 @@
             this.contELGASearchGDA1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contELGASearchGDA1.Location = new System.Drawing.Point(0, 0);
             this.contELGASearchGDA1.Name = "contELGASearchGDA1";
-            this.contELGASearchGDA1.Size = new System.Drawing.Size(712, 440);
+            this.contELGASearchGDA1.Size = new System.Drawing.Size(827, 452);
             this.contELGASearchGDA1.TabIndex = 0;
             // 
             // frmELGASearchGDA
@@ -45,7 +45,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(712, 440);
+            this.ClientSize = new System.Drawing.Size(827, 452);
             this.Controls.Add(this.contELGASearchGDA1);
             this.Name = "frmELGASearchGDA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

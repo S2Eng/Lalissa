@@ -686,7 +686,23 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Mind. 2 Zeichen Eingabe erforderlich!", "", MessageBoxButtons.OK);
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: Mind. 3 Zeichen Eingabe erforderlich!", "", MessageBoxButtons.OK);
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA-Suche");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Gda-Suche wurde durchgeführt");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA's gefunden");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr");
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: *-Zeichen darf nur einmal und nur am Ende der Eingabe vorkommen!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: *-Zeichen darf nur am Ende der Eingabe vorkommen!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("PLZ darf nur Ziffern enthalten!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachname/Firma");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorname");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur einmal in der Eingabe vorkommen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur einmal und nur am Ende in der Eingabe vorkommen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur am Ende in der Eingabe vorkommen!");
 
 
 

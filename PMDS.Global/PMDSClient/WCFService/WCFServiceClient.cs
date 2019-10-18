@@ -47,7 +47,15 @@ namespace PMDSClient.Sitemap
             public ELGASessionDTO session { get; set; }
         }
 
-
+        public class cSearchGdaFlds
+        {
+            public string NachnameFirma { get; set; }
+            public string Vorname { get; set; }
+            public string PLZ { get; set; }
+            public string Ort { get; set; }
+            public string Strasse { get; set; }
+            public string StrasseNr { get; set; }
+        }
 
 
 
@@ -524,7 +532,7 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public ELGAParOutDto ELGAQueryGDAs()
+        public ELGAParOutDto ELGAQueryGDAs(cSearchGdaFlds SearchGdaFlds)
         {
             try
             {
@@ -535,12 +543,12 @@ namespace PMDSClient.Sitemap
                 parsIn.sObjectDtok__BackingField = new ObjectDTO()
                 {
                     SozVersNrLocalPatIDk__BackingField = "",
-                    NachNameFirmak__BackingField = "",
-                    Vornamek__BackingField = "",
-                    Zipk__BackingField = "",
-                    Cityk__BackingField = "",
-                    Streetk__BackingField = "",
-                    StreetNrk__BackingField = ""
+                    NachNameFirmak__BackingField = SearchGdaFlds.NachnameFirma.Trim(),
+                    Vornamek__BackingField = SearchGdaFlds.Vorname.Trim(),
+                    Zipk__BackingField = SearchGdaFlds.PLZ.Trim(),
+                    Cityk__BackingField = SearchGdaFlds.Ort.Trim(),
+                    Streetk__BackingField = SearchGdaFlds.Strasse.Trim(),
+                    StreetNrk__BackingField = SearchGdaFlds.StrasseNr.Trim()
                 };
 
                 ELGAParOutDto parOutDto = client.ELGAQueryGDAs(ref parsIn);

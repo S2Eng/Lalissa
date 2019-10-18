@@ -91,6 +91,8 @@
       <xs:element name="_x003C_ContactID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_LocalID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MessageExceptionNr_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_MessageException_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_bErrorsFound_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_bOK_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_iRowsFound_x003E_k__BackingField" type="xs:int" />

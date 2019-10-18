@@ -29,7 +29,8 @@ using PMDS.Global.db.Global;
 using PMDS.DB.Global;
 using PMDS.DB;
 using PMDS.Calc.UI.Admin;
-
+using PMDS.GUI.ELGA;
+using System.Text.RegularExpressions;
 
 namespace PMDS.GUI
 {
@@ -1296,6 +1297,38 @@ namespace PMDS.GUI
             }
         }
 
+        public bool checkTexteditorForStern(UltraTextEditor txtEditor, ErrorProvider errorProvider1, string NameField)
+        {
+            try
+            {
+                if (txtEditor.Text.Trim().Contains(("*")))
+                {
+                    int posStern = Regex.Matches(txtEditor.Text.Trim(), Regex.Escape("*")).Count;
+                    if (posStern > 1)
+                    {
+                        errorProvider1.SetError(txtEditor, "Error");
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(NameField + QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur einmal und nur am Ende in der Eingabe vorkommen!"), true);
+                        return false;
+                    }
+                    else if (posStern == 1)
+                    {
+                        int posStern2 = txtEditor.Text.Trim().IndexOf("*");
+                        if (posStern2 != txtEditor.Text.Trim().Length - 1)
+                        {
+                            errorProvider1.SetError(txtEditor, "Error");
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(NameField + QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur am Ende in der Eingabe vorkommen!"), true);
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusinessUI.checkTexteditorForStern: " + ex.ToString());
+            }
+        }
 
     }
 

@@ -1914,7 +1914,7 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnVorname;
             
-            private global::System.Data.DataColumn columnStrasse;
+            private global::System.Data.DataColumn columnTitle;
             
             private global::System.Data.DataColumn columnPLZ;
             
@@ -1922,7 +1922,15 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnLand;
             
-            private global::System.Data.DataColumn columnTel;
+            private global::System.Data.DataColumn columnStrasse;
+            
+            private global::System.Data.DataColumn columnStrasseNr;
+            
+            private global::System.Data.DataColumn columnIsOrganisation;
+            
+            private global::System.Data.DataColumn columnStatus;
+            
+            private global::System.Data.DataColumn columnState;
             
             private global::System.Data.DataColumn columnIDElga;
             
@@ -1979,9 +1987,9 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn StrasseColumn {
+            public global::System.Data.DataColumn TitleColumn {
                 get {
-                    return this.columnStrasse;
+                    return this.columnTitle;
                 }
             }
             
@@ -2011,9 +2019,41 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn TelColumn {
+            public global::System.Data.DataColumn StrasseColumn {
                 get {
-                    return this.columnTel;
+                    return this.columnStrasse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StrasseNrColumn {
+                get {
+                    return this.columnStrasseNr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IsOrganisationColumn {
+                get {
+                    return this.columnIsOrganisation;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StatusColumn {
+                get {
+                    return this.columnStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StateColumn {
+                get {
+                    return this.columnState;
                 }
             }
             
@@ -2070,16 +2110,20 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ELGASearchGDAsRow AddELGASearchGDAsRow(string NachnameFirma, string Vorname, string Strasse, string PLZ, string Ort, string Land, string Tel, string IDElga, System.Guid ID) {
+            public ELGASearchGDAsRow AddELGASearchGDAsRow(string NachnameFirma, string Vorname, string Title, string PLZ, string Ort, string Land, string Strasse, string StrasseNr, bool IsOrganisation, string Status, string State, string IDElga, System.Guid ID) {
                 ELGASearchGDAsRow rowELGASearchGDAsRow = ((ELGASearchGDAsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NachnameFirma,
                         Vorname,
-                        Strasse,
+                        Title,
                         PLZ,
                         Ort,
                         Land,
-                        Tel,
+                        Strasse,
+                        StrasseNr,
+                        IsOrganisation,
+                        Status,
+                        State,
                         IDElga,
                         ID};
                 rowELGASearchGDAsRow.ItemArray = columnValuesArray;
@@ -2106,11 +2150,15 @@ namespace PMDS.Global.db.ERSystem {
             internal void InitVars() {
                 this.columnNachnameFirma = base.Columns["NachnameFirma"];
                 this.columnVorname = base.Columns["Vorname"];
-                this.columnStrasse = base.Columns["Strasse"];
+                this.columnTitle = base.Columns["Title"];
                 this.columnPLZ = base.Columns["PLZ"];
                 this.columnOrt = base.Columns["Ort"];
                 this.columnLand = base.Columns["Land"];
-                this.columnTel = base.Columns["Tel"];
+                this.columnStrasse = base.Columns["Strasse"];
+                this.columnStrasseNr = base.Columns["StrasseNr"];
+                this.columnIsOrganisation = base.Columns["IsOrganisation"];
+                this.columnStatus = base.Columns["Status"];
+                this.columnState = base.Columns["State"];
                 this.columnIDElga = base.Columns["IDElga"];
                 this.columnID = base.Columns["ID"];
             }
@@ -2122,16 +2170,24 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnNachnameFirma);
                 this.columnVorname = new global::System.Data.DataColumn("Vorname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVorname);
-                this.columnStrasse = new global::System.Data.DataColumn("Strasse", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStrasse);
+                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTitle);
                 this.columnPLZ = new global::System.Data.DataColumn("PLZ", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPLZ);
                 this.columnOrt = new global::System.Data.DataColumn("Ort", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrt);
                 this.columnLand = new global::System.Data.DataColumn("Land", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLand);
-                this.columnTel = new global::System.Data.DataColumn("Tel", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTel);
+                this.columnStrasse = new global::System.Data.DataColumn("Strasse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStrasse);
+                this.columnStrasseNr = new global::System.Data.DataColumn("StrasseNr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStrasseNr);
+                this.columnIsOrganisation = new global::System.Data.DataColumn("IsOrganisation", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsOrganisation);
+                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatus);
+                this.columnState = new global::System.Data.DataColumn("State", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnState);
                 this.columnIDElga = new global::System.Data.DataColumn("IDElga", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIDElga);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
@@ -2140,11 +2196,15 @@ namespace PMDS.Global.db.ERSystem {
                                 this.columnID}, false));
                 this.columnNachnameFirma.AllowDBNull = false;
                 this.columnVorname.AllowDBNull = false;
-                this.columnStrasse.AllowDBNull = false;
+                this.columnTitle.AllowDBNull = false;
                 this.columnPLZ.AllowDBNull = false;
                 this.columnOrt.AllowDBNull = false;
                 this.columnLand.AllowDBNull = false;
-                this.columnTel.AllowDBNull = false;
+                this.columnStrasse.AllowDBNull = false;
+                this.columnStrasseNr.AllowDBNull = false;
+                this.columnIsOrganisation.AllowDBNull = false;
+                this.columnStatus.AllowDBNull = false;
+                this.columnState.AllowDBNull = false;
                 this.columnIDElga.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
@@ -3166,12 +3226,12 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Strasse {
+            public string Title {
                 get {
-                    return ((string)(this[this.tableELGASearchGDAs.StrasseColumn]));
+                    return ((string)(this[this.tableELGASearchGDAs.TitleColumn]));
                 }
                 set {
-                    this[this.tableELGASearchGDAs.StrasseColumn] = value;
+                    this[this.tableELGASearchGDAs.TitleColumn] = value;
                 }
             }
             
@@ -3210,12 +3270,56 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Tel {
+            public string Strasse {
                 get {
-                    return ((string)(this[this.tableELGASearchGDAs.TelColumn]));
+                    return ((string)(this[this.tableELGASearchGDAs.StrasseColumn]));
                 }
                 set {
-                    this[this.tableELGASearchGDAs.TelColumn] = value;
+                    this[this.tableELGASearchGDAs.StrasseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string StrasseNr {
+                get {
+                    return ((string)(this[this.tableELGASearchGDAs.StrasseNrColumn]));
+                }
+                set {
+                    this[this.tableELGASearchGDAs.StrasseNrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsOrganisation {
+                get {
+                    return ((bool)(this[this.tableELGASearchGDAs.IsOrganisationColumn]));
+                }
+                set {
+                    this[this.tableELGASearchGDAs.IsOrganisationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Status {
+                get {
+                    return ((string)(this[this.tableELGASearchGDAs.StatusColumn]));
+                }
+                set {
+                    this[this.tableELGASearchGDAs.StatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string State {
+                get {
+                    return ((string)(this[this.tableELGASearchGDAs.StateColumn]));
+                }
+                set {
+                    this[this.tableELGASearchGDAs.StateColumn] = value;
                 }
             }
             

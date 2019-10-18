@@ -705,7 +705,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                if (ELGABusiness.ELGAStatusbarStatus.ELGALogInDto == null)
+                if (ELGABusiness.ELGAStatusbarStatus == null || ELGABusiness.ELGAStatusbarStatus.ELGALogInDto == null)
                 {
                     if (WithMsgBox)
                     {

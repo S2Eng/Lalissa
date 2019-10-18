@@ -9,6 +9,8 @@ using PMDS.BusinessLogic;
 using PMDS.Global;
 using PMDS.Data.Global;
 using PMDS.Global.db.Global;
+using PMDS.GUI.ELGA;
+using static PMDSClient.Sitemap.WCFServiceClient;
 
 namespace PMDS.GUI
 {
@@ -26,11 +28,14 @@ namespace PMDS.GUI
             RequiredFields();
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Arzt setzen/auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
+        private void ucArzt_Load(object sender, EventArgs e)
+        {
+            this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
+            this.btnELGASearchGDA.Visible = PMDS.Global.ENV.lic_ELGA;
+
+        }
+
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Arzt Arzt
@@ -98,6 +103,8 @@ namespace PMDS.GUI
             if(!AerzteRow.IsFachrichtungNull())
                 cbFachrichtung.Text = AerzteRow.Fachrichtung.Trim();
 
+            this.txtELGAGdaOid.Text = AerzteRow.ELGA_OID.Trim();
+
             txtStrasse.Text = Arzt.Adresse.Strasse.Trim();
             txtPLZ.Text = Arzt.Adresse.Plz.Trim();
             txtOrt.Text = Arzt.Adresse.Ort.Trim();
@@ -122,6 +129,7 @@ namespace PMDS.GUI
             AerzteRow.Nachname = txtNachname.Text.Trim();
             AerzteRow.Titel = cmbAkdGrad.Text.Trim();
             AerzteRow.Fachrichtung = cbFachrichtung.Text.Trim();
+            AerzteRow.ELGA_OID = this.txtELGAGdaOid.Text.Trim();
             Arzt.Adresse.Strasse = txtStrasse.Text.Trim();
             Arzt.Adresse.Plz = txtPLZ.Text.Trim();
             Arzt.Adresse.Ort = txtOrt.Text.Trim();
@@ -135,6 +143,7 @@ namespace PMDS.GUI
             Arzt.Kontakt.Zusatz1 = txtZusats1.Text.Trim();
             Arzt.Kontakt.Zusatz2 = txtZusats2.Text.Trim();
             Arzt.Kontakt.Zusatz3 = txtZusats3.Text.Trim();
+            
         }
 
         /// <summary>
@@ -199,5 +208,57 @@ namespace PMDS.GUI
             if (!ReadOnly)
                 RequiredFields();
         }
+
+        private void btnELGASearchGDA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                cSearchGdaFlds FieldsSearch = new cSearchGdaFlds() {  
+                    NachnameFirma = this.txtNachname.Text.Trim(), 
+                    Vorname = this.txtVorname.Text.Trim(), 
+                    Ort = this.txtOrt.Text.Trim(), 
+                    PLZ = this.txtPLZ.Text.Trim(), 
+                    Strasse = this.txtStrasse.Text.Trim(), 
+                    StrasseNr = ""
+                };
+
+                frmELGASearchGDA frmELGASearchGDA1 = new frmELGASearchGDA();
+                frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.Ärzte);
+                frmELGASearchGDA1.ShowDialog();
+                if (!frmELGASearchGDA1.contELGASearchGDA1.abort)
+                {
+                    this.txtNachname.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.NachnameFirma.Trim();
+                    this.txtVorname.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Vorname.Trim();
+                    this.cmbAkdGrad.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Title.Trim();
+                    this.txtOrt.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Ort.Trim();
+                    this.txtPLZ.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.PLZ.Trim();
+                    this.txtStrasse.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Strasse.Trim() + " " + frmELGASearchGDA1.contELGASearchGDA1._rSelRow.StrasseNr.Trim();
+                    this.txtELGAGdaOid.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.IDElga.Trim(); ;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void txtELGAGdaOid_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblELGAGdaID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
