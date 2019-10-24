@@ -34,8 +34,8 @@ namespace PMDS.DynReportsForms
 	{
 		private bool _canClose = false;
 		private QS2.Desktop.ControlManagment.BaseLabel lblAnEinrichtung;
-		private PMDS.GUI.BaseControls.EinrichtungsCombo cbETo;
-		private PMDS.GUI.ucButton btnCancel;
+        public EinrichtungsCombo cbETo;
+        private PMDS.GUI.ucButton btnCancel;
 		private PMDS.GUI.ucButton btnOK;
 		private System.Windows.Forms.ErrorProvider errorProvider1;
 		private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpWichtigeInformationen;
@@ -1846,7 +1846,8 @@ namespace PMDS.DynReportsForms
                     return;
 
                 WCFServiceClient s = new WCFServiceClient();
-                s.genCDA(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, (Guid)this.cbETo.Value, System.Guid.NewGuid(), System.Guid.NewGuid(), 0);
+                s.genCDA(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, (Guid)this.cbETo.Value, System.Guid.NewGuid(), 
+                            System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Entlassungsbrief");
 
             }
             catch (Exception ex)
@@ -1868,7 +1869,8 @@ namespace PMDS.DynReportsForms
                     return;
 
                 WCFServiceClient s = new WCFServiceClient();
-                s.genCDA(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, (Guid)this.cbETo.Value, System.Guid.NewGuid(), System.Guid.NewGuid(), 0);
+                s.genCDA(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, (Guid)this.cbETo.Value, System.Guid.NewGuid(), 
+                            System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Pflegesituationsbericht");
 
             }
             catch (Exception ex)
@@ -1895,6 +1897,8 @@ namespace PMDS.DynReportsForms
         private void FrmPrintPflegebegleitschreibenInfo_Load(object sender, EventArgs e)
         {
             this.contextMenuStrip1 = this.contextMenuStrip1;
+            this.cDAPflegesituationsberichtToolStripMenuItem.Visible = ENV.adminSecure;
+            this.cDAEntlassungsbriefToolStripMenuItem.Visible = ENV.adminSecure;
         }
     }
 

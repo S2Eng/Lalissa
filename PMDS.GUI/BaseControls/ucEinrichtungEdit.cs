@@ -19,6 +19,7 @@ using PMDS.GUI.Engines;
 using PMDS.Global.db.Global;
 using PMDS.GUI.ELGA;
 using static PMDSClient.Sitemap.WCFServiceClient;
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -282,8 +283,13 @@ namespace PMDS.GUI
 					btnAdd,  this.btnDel, btnUndo, btnSave);
 
                 this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
-                this.btnELGASearchGDA.Visible = PMDS.Global.ENV.lic_ELGA;
 
+                ELGABusiness bELGA = new ELGABusiness();
+                if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
+                {
+                    this.btnELGASearchGDA.Visible = true;
+                }
+               
             }
 			catch(Exception ex)
 			{

@@ -2,9 +2,11 @@
 using PMDS.DB;
 using PMDS.GUI.ELGA;
 using PMDSClient.Sitemap;
+using QS2.Desktop.ControlManagment.ServiceReference_01;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +42,8 @@ namespace PMDS.Global.db.ERSystem
             ELGARetrieveDocument = 9,
             ELGAAddDocument = 10,
             ELGAUpdateDocument = 11,
-            genCDA = 12,
+            ELGADocumentSavedDB = 12,
+            genCDA = 13,
             none = -100,
         }
 
@@ -116,6 +119,8 @@ namespace PMDS.Global.db.ERSystem
             ELGAPflegerischerEntlassungsbrief = 103,
             ELGAPflegezustandsbericht = 104
         }
+
+        public PMDSBusiness PMDSBusiness1 = new PMDSBusiness();
 
 
 
@@ -258,7 +263,6 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.getELGASettingsForUser: " + ex.ToString());
             }
         }
-
 
 
         public void handleLogIn(UltraStatusBar statBar, bool UsrClicked, bool IsTimer)
@@ -723,6 +727,315 @@ namespace PMDS.Global.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("ELGABusiness.checkELGASessionActive: " + ex.ToString());
+            }
+        }
+
+        public bool saveDocuToELGA(Guid IDPatient, Guid IDAufenthalt, string DocumentName, string DocuXML, byte[] bDocuXML, string Stylesheet, string ClinicalDocumentSetID,
+                                     QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA)
+        {
+            try
+            {
+                string ArchivePath = "";
+                Nullable<Guid> IDOrdnerArchiv = null;
+                if (!this.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
+                {
+                    return false;
+                }
+
+                WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+                DateTime dNow = DateTime.Now;
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var rBenutzer = (from b in db.Benutzer
+                                   where b.ID == ENV.USERID
+                                   select new
+                                   {
+                                       b.ID,
+                                       b.Nachname,
+                                       b.Vorname,
+                                       b.Benutzer1
+                                   }).First();
+
+                    var rKlinik = (from k in db.Klinik
+                                   where k.ID == ENV.IDKlinik
+                                   select new
+                                   {
+                                       k.ID,
+                                       k.Bezeichnung,
+                                       k.ELGA_OrganizationOID,
+                                       k.ELGA_OrganizationName
+                                   }).First();
+
+                    var rPatient = (from p in db.Patient
+                                   where p.ID == IDPatient
+                                   select new
+                                   {
+                                       p.ID,
+                                       p.Nachname,
+                                       p.Vorname
+                                   }).First();
+
+                    var rAufenthalt = (from a in db.Aufenthalt
+                                    where a.ID == IDAufenthalt
+                                    select new
+                                    {
+                                        a.ID,
+                                        a.ELGALocalID
+                                    }).First();
+
+                    Byte[] bDocu = bDocuXML;            //Encoding.UTF8.GetBytes(DocuXML.Trim());
+                    Guid IDDocumenteneintrag = System.Guid.NewGuid();
+                    ELGAParOutDto parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.ELGA_OrganizationName.Trim(), rKlinik.ELGA_OrganizationOID.Trim(), rBenutzer.Benutzer1.Trim(),
+                                                                                DocumentName, bDocu, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), "", IDDocumenteneintrag.ToString(), ClinicalDocumentSetID.Trim());
+
+                    if (CDAeTypeCDA == CDAeTypeCDA.Pflegesituationbericht)
+                    {
+                        string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht für Patient {0} wurde nach ELGA übertragen");
+                        sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht übertragen"), null,
+                                                        ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                    }
+                    else if (CDAeTypeCDA == CDAeTypeCDA.Entlassungsbrief)
+                    {
+                        string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
+                        sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief übertragen"), null,
+                                                        ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                    }
+
+                    bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, IDAufenthalt,
+                                                        IDPatient, parOut.DocuUUIDk__BackingField.Trim(), rAufenthalt.ELGALocalID.Trim(), DocumentName.Trim(), Stylesheet.Trim(), true, 1);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.saveDocuToELGA: " + ex.ToString());
+            }
+        }
+        public bool saveELGADocuToArchive(ref System.Collections.Generic.List<PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow> lDocusSelected)
+        {
+            try
+            {
+                string ArchivePath = "";
+                Nullable<Guid> IDOrdnerArchiv = null;
+                if (!this.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
+                {
+                    return false;
+                }
+
+                WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+                DateTime dNow = DateTime.Now;
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    foreach (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rELGADocu in lDocusSelected)
+                    {
+                        bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, rELGADocu.IDAufenthalt, 
+                                            rELGADocu.IDPatient, rELGADocu.UUID, rELGADocu.ELGAPatientLocalID.Trim(), rELGADocu.Dokument, rELGADocu.Stylesheet, true, -1);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.saveELGADocuToArchive: " + ex.ToString());
+            }
+        }
+        public bool saveELGADocuToDB(ref string ArchivePath, ref Nullable<Guid> IDOrdnerArchiv, PMDS.db.Entities.ERModellPMDSEntities db, ref DateTime dNow, 
+                                    ref WCFServiceClient WCFServiceClient1, Guid IDAufenthalt, Guid IDPatient, 
+                                    string ELGAUUID, string ELGAPatientLocalID, string NameDokument, string Stylesheet,
+                                    bool IsELGADocu = false, int ELGAÜbertragen = -1)
+        {
+            try
+            {
+                //var rAufenthalt = (from a in db.Aufenthalt
+                //                    where a.ID == IDAufenthalt
+                //                    select new
+                //                    {
+                //                        a.ID,
+                //                        a.ELGALocalID
+                //                    }).First();
+
+                var rPatient = (from p in db.Patient
+                                where p.ID == IDPatient
+                                select new
+                                {
+                                    p.ID,
+                                    p.Nachname,
+                                    p.Vorname
+                                }).First();
+
+                ELGAParOutDto parOuot = WCFServiceClient1.ELGARetrieveDocument(ELGAPatientLocalID.Trim(), ELGAUUID.Trim());
+                if (parOuot.lDocumentsk__BackingField.Length != 1)
+                {
+                    throw new Exception("saveELGADocu: parOuot.lDocumentsk__BackingField.Length != 1 -> ELGA-Document for UUID '" + ELGAUUID.Trim() + "' not found!");
+                }
+                string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokumentenstream wurde für Patient {0} gelesen");
+                sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokumentenstream wurde gelesen"), null,
+                                                ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+
+
+                string FileNameELGA = @"ELGA_Docu_" + System.Guid.NewGuid().ToString() + ".xml";
+                string DirFileNameELGA = @PMDS.Global.ENV.path_Temp;
+                using (Stream file = File.OpenWrite(DirFileNameELGA + "\\" + FileNameELGA))
+                {
+                    file.Write(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField, 0, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length);
+                }
+
+                PMDS.db.Entities.MedizinischeDaten rMedizinischeDaten = EFEntities.newMedizinischeDaten(db);
+                rMedizinischeDaten.ID = System.Guid.NewGuid();
+                rMedizinischeDaten.MedizinischerTyp = 15;
+                rMedizinischeDaten.IDPatient = IDPatient;
+                rMedizinischeDaten.Von = dNow;
+                rMedizinischeDaten.Bis = null;
+
+                rMedizinischeDaten.Beschreibung = "";
+                rMedizinischeDaten.Bemerkung = "";
+                rMedizinischeDaten.Beendigungsgrund = "";
+                rMedizinischeDaten.LetzteVersorgung = null;
+                rMedizinischeDaten.NaechsteVersorgung = null;
+
+                rMedizinischeDaten.Modell = "";
+                rMedizinischeDaten.Handling = "";
+                rMedizinischeDaten.Therapie = "";
+                rMedizinischeDaten.ICDCode = "";
+                rMedizinischeDaten.AufnahmediagnoseJN = false;
+                rMedizinischeDaten.AntikoaguliertJN = false;
+                rMedizinischeDaten.Typ = "";
+                rMedizinischeDaten.Anzahl = 0;
+                rMedizinischeDaten.NuechternJN = false;
+                rMedizinischeDaten.Groesse = "";
+                rMedizinischeDaten.IDBenutzergeaendert = ENV.USERID;
+
+                db.MedizinischeDaten.Add(rMedizinischeDaten);
+                db.SaveChanges();
+
+                Guid IDDokumenteintragReturn = System.Guid.NewGuid();
+                bool bDocuAdded = PMDSBusiness1.SaveDokumentinArchiv(FileNameELGA, DirFileNameELGA, IDOrdnerArchiv.Value, NameDokument.Trim(), ".cda",
+                                                    dNow, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length,
+                                                    IDPatient, ArchivePath, ref IDDokumenteintragReturn, "", Stylesheet.Trim(), ELGAUUID.Trim(), IsELGADocu, ELGAÜbertragen);
+
+                string sProt2 = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument {0} für Patient {1} wurde im Archiv abgelegt");
+                sProt2 = string.Format(sProt2, NameDokument, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument wurde im Archiv abgelegt"), null,
+                                                ELGABusiness.eTypeProt.ELGADocumentSavedDB, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt2);
+
+                return true;
+
+                //PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.saveELGADocuToDB: " + ex.ToString());
+            }
+        }
+        public bool checkArchivesystem(ref string ArchivePath, ref Nullable<Guid> IDOrdnerArchiv)
+        {
+            try
+            {
+                if (!PMDSBusiness1.checkArchivePath(ref ArchivePath))
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurde kein Archivpfad fürs Archivsystem angegeben","", System.Windows.Forms.MessageBoxButtons.OK);
+                    return false;
+                }
+                if (!System.IO.Directory.Exists(ArchivePath))
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(QS2.Desktop.ControlManagment.ControlManagment.getRes("Archivpfad '") + ArchivePath.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' existiert nicht!"), "", System.Windows.Forms.MessageBoxButtons.OK, true);
+                    return false;
+                }
+                string ErrorText = "";
+                if (!PMDSBusiness1.checkArchivordner(ENV.ImportBefundeArchivOrdner.Trim(), ref ErrorText, ref IDOrdnerArchiv))
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ErrorText, QS2.Desktop.ControlManagment.ControlManagment.getRes("Import Befunde"), System.Windows.Forms.MessageBoxButtons.OK, true);
+                    return false;
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.checkArchivesystem: " + ex.ToString());
+            }
+        }
+
+
+        public void openCDADocument(string ELGADocuUUID, string ELGAPatientLocalID, string Stylesheet, string typeFile)
+        {
+            try
+            {
+                ELGAParOutDto parOuot = WCFServiceClient1.ELGARetrieveDocument(ELGAPatientLocalID.Trim(), ELGADocuUUID.Trim());
+                if (parOuot.lDocumentsk__BackingField.Length != 1)
+                {
+                    throw new Exception("ELGABusiness.openCDADocument: parOuot.lDocumentsk__BackingField.Length != 1 -> ELGA-Document for UUID '" + ELGADocuUUID.Trim() + "' not found!");
+                }
+                string sFileXML = System.Text.Encoding.UTF8.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField);
+
+                frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
+                frmCDAViewer1.initControl(parOuot.lDocumentsk__BackingField[0].Documentnamek__BackingField.Trim(), parOuot.lDocumentsk__BackingField[0].UUIDk__BackingField.Trim(),
+                                            "", sFileXML, typeFile, Stylesheet, contCDAViewer.eTypeUI.saveToArchive);
+                frmCDAViewer1.ShowDialog();
+                if (!frmCDAViewer1.contCDAViewer1.abort)
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.openCDADocument: " + ex.ToString());
+            }
+        }
+
+        public bool ELGAIsActive(Guid IDPatient, Guid IDAufenthalt, bool withMsgBox)
+        {
+            try
+            {
+                if (ENV.lic_ELGA)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rPatient = (from p in db.Patient
+                                        where p.ID == IDPatient
+                                        select new
+                                        {
+                                            p.ID,
+                                            p.Nachname,
+                                            p.Vorname,
+                                            p.ELGAAbgemeldet
+                                        }).First();
+
+                        var rAufenthalt = (from a in db.Aufenthalt
+                                            where a.ID == IDAufenthalt
+                                           select new
+                                            {
+                                                a.ID,
+                                                a.ELGALocalID,
+                                                a.ELGAKontaktbestätigungJN,
+                                            }).First();
+
+                        if (!rPatient.ELGAAbgemeldet.Value && rAufenthalt.ELGAKontaktbestätigungJN && rAufenthalt.ELGALocalID.Trim() != "")
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                if (withMsgBox)
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA ist für diesen Patienten nicht aktiviert oder Patient hat keine Kontaktbestätigung!", "", MessageBoxButtons.OK);
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.ELGAIsActive: " + ex.ToString());
             }
         }
 

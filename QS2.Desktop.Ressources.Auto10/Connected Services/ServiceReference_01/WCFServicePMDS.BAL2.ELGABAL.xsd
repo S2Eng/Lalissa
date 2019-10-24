@@ -29,7 +29,7 @@
       <xs:element name="_x003C_ClinicalDocumentSetID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Documentname_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_IDCDA_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IDCDA_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_KlinikName_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_KlinikOID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Person_x003E_k__BackingField" nillable="true" type="xs:string" />
@@ -44,6 +44,7 @@
       <xs:element name="_x003C_CreatedTo_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
       <xs:element name="_x003C_DocumentStatus_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Documentname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_UUID_x003E_k__BackingField" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DocumentSearchDto" nillable="true" type="tns:DocumentSearchDto" />
@@ -89,6 +90,7 @@
   <xs:complexType name="ELGAParOutDto">
     <xs:sequence>
       <xs:element name="_x003C_ContactID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_DocuUUID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_LocalID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_MessageExceptionNr_x003E_k__BackingField" type="xs:int" />

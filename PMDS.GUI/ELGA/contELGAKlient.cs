@@ -417,7 +417,6 @@ namespace PMDS.GUI.ELGA
 
 
 
-
         private void BtnDoKontaktbestätigung_Click(object sender, EventArgs e)
         {
             try

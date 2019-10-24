@@ -41,6 +41,10 @@ namespace PMDS.GUI.ELGA
             ExtEinrichtungen = 2
         }
 
+        public ELGABusiness bELGA = new ELGABusiness();
+
+
+
 
 
 
@@ -203,6 +207,10 @@ namespace PMDS.GUI.ELGA
             try
             {
                 if (!ELGABusiness.checkELGASessionActive(true))
+                {
+                    return false;
+                }
+                if (!this.bELGA.ELGAIsActive(this._IDPatient.Value, ENV.IDAUFENTHALT, true))
                 {
                     return false;
                 }

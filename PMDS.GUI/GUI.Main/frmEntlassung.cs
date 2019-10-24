@@ -30,7 +30,7 @@ namespace PMDS.GUI
 		private PMDS.GUI.ucButton btnCancel;
 		private PMDS.GUI.ucButton btnOK;
 		private QS2.Desktop.ControlManagment.BaseLabel labInfo;
-        private PMDS.GUI.ucEntlassung ucEntlassung1;
+        public ucEntlassung ucEntlassung1;
         private Infragistics.Win.Misc.UltraLabel lblWarning;
         private Infragistics.Win.Misc.UltraLabel lblKlientenWirklichEntlassen;
 		private System.ComponentModel.IContainer components;

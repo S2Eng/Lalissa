@@ -143,6 +143,12 @@
   <wsdl:message name="Service1_ELGAQueryDocuments_OutputMessage">
     <wsdl:part name="parameters" element="tns:ELGAQueryDocumentsResponse" />
   </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryDocumentsByUid_InputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryDocumentsByUid" />
+  </wsdl:message>
+  <wsdl:message name="Service1_ELGAQueryDocumentsByUid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ELGAQueryDocumentsByUidResponse" />
+  </wsdl:message>
   <wsdl:message name="Service1_ELGARetrieveDocument_InputMessage">
     <wsdl:part name="parameters" element="tns:ELGARetrieveDocument" />
   </wsdl:message>
@@ -259,6 +265,10 @@
     <wsdl:operation name="ELGAQueryDocuments">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAQueryDocuments" message="tns:Service1_ELGAQueryDocuments_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAQueryDocumentsResponse" message="tns:Service1_ELGAQueryDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryDocumentsByUid">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGAQueryDocumentsByUid" message="tns:Service1_ELGAQueryDocumentsByUid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/ELGAQueryDocumentsByUidResponse" message="tns:Service1_ELGAQueryDocumentsByUid_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ELGARetrieveDocument">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/ELGARetrieveDocument" message="tns:Service1_ELGARetrieveDocument_InputMessage" />
@@ -441,6 +451,15 @@
     </wsdl:operation>
     <wsdl:operation name="ELGAQueryDocuments">
       <soap:operation soapAction="http://tempuri.org/Service1/ELGAQueryDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryDocumentsByUid">
+      <soap:operation soapAction="http://tempuri.org/Service1/ELGAQueryDocumentsByUid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -670,6 +689,15 @@
     </wsdl:operation>
     <wsdl:operation name="ELGAQueryDocuments">
       <soap12:operation soapAction="http://tempuri.org/Service1/ELGAQueryDocuments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ELGAQueryDocumentsByUid">
+      <soap12:operation soapAction="http://tempuri.org/Service1/ELGAQueryDocumentsByUid" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

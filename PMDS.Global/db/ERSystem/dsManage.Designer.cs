@@ -2345,9 +2345,33 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnErstelltAm;
             
-            private global::System.Data.DataColumn columnIDElga;
+            private global::System.Data.DataColumn columnUUID;
+            
+            private global::System.Data.DataColumn columnUniqueID;
+            
+            private global::System.Data.DataColumn columnLocigalID;
+            
+            private global::System.Data.DataColumn columnAuthor;
+            
+            private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnDocStatus;
+            
+            private global::System.Data.DataColumn columnVersion;
+            
+            private global::System.Data.DataColumn columnStylesheet;
+            
+            private global::System.Data.DataColumn columnCreationTime;
+            
+            private global::System.Data.DataColumn columnSize;
+            
+            private global::System.Data.DataColumn columnELGAPatientLocalID;
             
             private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnIDPatient;
+            
+            private global::System.Data.DataColumn columnIDAufenthalt;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2400,9 +2424,89 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IDElgaColumn {
+            public global::System.Data.DataColumn UUIDColumn {
                 get {
-                    return this.columnIDElga;
+                    return this.columnUUID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UniqueIDColumn {
+                get {
+                    return this.columnUniqueID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LocigalIDColumn {
+                get {
+                    return this.columnLocigalID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AuthorColumn {
+                get {
+                    return this.columnAuthor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DocStatusColumn {
+                get {
+                    return this.columnDocStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn VersionColumn {
+                get {
+                    return this.columnVersion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StylesheetColumn {
+                get {
+                    return this.columnStylesheet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CreationTimeColumn {
+                get {
+                    return this.columnCreationTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SizeColumn {
+                get {
+                    return this.columnSize;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ELGAPatientLocalIDColumn {
+                get {
+                    return this.columnELGAPatientLocalID;
                 }
             }
             
@@ -2411,6 +2515,22 @@ namespace PMDS.Global.db.ERSystem {
             public global::System.Data.DataColumn IDColumn {
                 get {
                     return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDPatientColumn {
+                get {
+                    return this.columnIDPatient;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDAufenthaltColumn {
+                get {
+                    return this.columnIDAufenthalt;
                 }
             }
             
@@ -2451,13 +2571,41 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ELGASearchDocumentsRow AddELGASearchDocumentsRow(string Dokument, System.DateTime ErstelltAm, string IDElga, System.Guid ID) {
+            public ELGASearchDocumentsRow AddELGASearchDocumentsRow(
+                        string Dokument, 
+                        System.DateTime ErstelltAm, 
+                        string UUID, 
+                        string UniqueID, 
+                        string LocigalID, 
+                        string Author, 
+                        string Description, 
+                        string DocStatus, 
+                        string Version, 
+                        string Stylesheet, 
+                        string CreationTime, 
+                        int Size, 
+                        string ELGAPatientLocalID, 
+                        System.Guid ID, 
+                        System.Guid IDPatient, 
+                        System.Guid IDAufenthalt) {
                 ELGASearchDocumentsRow rowELGASearchDocumentsRow = ((ELGASearchDocumentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Dokument,
                         ErstelltAm,
-                        IDElga,
-                        ID};
+                        UUID,
+                        UniqueID,
+                        LocigalID,
+                        Author,
+                        Description,
+                        DocStatus,
+                        Version,
+                        Stylesheet,
+                        CreationTime,
+                        Size,
+                        ELGAPatientLocalID,
+                        ID,
+                        IDPatient,
+                        IDAufenthalt};
                 rowELGASearchDocumentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowELGASearchDocumentsRow);
                 return rowELGASearchDocumentsRow;
@@ -2482,8 +2630,20 @@ namespace PMDS.Global.db.ERSystem {
             internal void InitVars() {
                 this.columnDokument = base.Columns["Dokument"];
                 this.columnErstelltAm = base.Columns["ErstelltAm"];
-                this.columnIDElga = base.Columns["IDElga"];
+                this.columnUUID = base.Columns["UUID"];
+                this.columnUniqueID = base.Columns["UniqueID"];
+                this.columnLocigalID = base.Columns["LocigalID"];
+                this.columnAuthor = base.Columns["Author"];
+                this.columnDescription = base.Columns["Description"];
+                this.columnDocStatus = base.Columns["DocStatus"];
+                this.columnVersion = base.Columns["Version"];
+                this.columnStylesheet = base.Columns["Stylesheet"];
+                this.columnCreationTime = base.Columns["CreationTime"];
+                this.columnSize = base.Columns["Size"];
+                this.columnELGAPatientLocalID = base.Columns["ELGAPatientLocalID"];
                 this.columnID = base.Columns["ID"];
+                this.columnIDPatient = base.Columns["IDPatient"];
+                this.columnIDAufenthalt = base.Columns["IDAufenthalt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2493,14 +2653,48 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnDokument);
                 this.columnErstelltAm = new global::System.Data.DataColumn("ErstelltAm", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnErstelltAm);
-                this.columnIDElga = new global::System.Data.DataColumn("IDElga", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIDElga);
+                this.columnUUID = new global::System.Data.DataColumn("UUID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUUID);
+                this.columnUniqueID = new global::System.Data.DataColumn("UniqueID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUniqueID);
+                this.columnLocigalID = new global::System.Data.DataColumn("LocigalID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocigalID);
+                this.columnAuthor = new global::System.Data.DataColumn("Author", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAuthor);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnDocStatus = new global::System.Data.DataColumn("DocStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDocStatus);
+                this.columnVersion = new global::System.Data.DataColumn("Version", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVersion);
+                this.columnStylesheet = new global::System.Data.DataColumn("Stylesheet", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStylesheet);
+                this.columnCreationTime = new global::System.Data.DataColumn("CreationTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCreationTime);
+                this.columnSize = new global::System.Data.DataColumn("Size", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSize);
+                this.columnELGAPatientLocalID = new global::System.Data.DataColumn("ELGAPatientLocalID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnELGAPatientLocalID);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint111", new global::System.Data.DataColumn[] {
+                this.columnIDPatient = new global::System.Data.DataColumn("IDPatient", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDPatient);
+                this.columnIDAufenthalt = new global::System.Data.DataColumn("IDAufenthalt", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDAufenthalt);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1111", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnDokument.AllowDBNull = false;
-                this.columnIDElga.AllowDBNull = false;
+                this.columnUUID.AllowDBNull = false;
+                this.columnUniqueID.AllowDBNull = false;
+                this.columnLocigalID.AllowDBNull = false;
+                this.columnAuthor.AllowDBNull = false;
+                this.columnDescription.AllowDBNull = false;
+                this.columnDocStatus.AllowDBNull = false;
+                this.columnVersion.AllowDBNull = false;
+                this.columnStylesheet.AllowDBNull = false;
+                this.columnCreationTime.AllowDBNull = false;
+                this.columnSize.AllowDBNull = false;
+                this.columnELGAPatientLocalID.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
             }
@@ -3389,12 +3583,122 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string IDElga {
+            public string UUID {
                 get {
-                    return ((string)(this[this.tableELGASearchDocuments.IDElgaColumn]));
+                    return ((string)(this[this.tableELGASearchDocuments.UUIDColumn]));
                 }
                 set {
-                    this[this.tableELGASearchDocuments.IDElgaColumn] = value;
+                    this[this.tableELGASearchDocuments.UUIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string UniqueID {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.UniqueIDColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.UniqueIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string LocigalID {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.LocigalIDColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.LocigalIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Author {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.AuthorColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.AuthorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Description {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.DescriptionColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string DocStatus {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.DocStatusColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.DocStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Version {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.VersionColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.VersionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Stylesheet {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.StylesheetColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.StylesheetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CreationTime {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.CreationTimeColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.CreationTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Size {
+                get {
+                    return ((int)(this[this.tableELGASearchDocuments.SizeColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.SizeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ELGAPatientLocalID {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.ELGAPatientLocalIDColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.ELGAPatientLocalIDColumn] = value;
                 }
             }
             
@@ -3411,6 +3715,38 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDPatient {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableELGASearchDocuments.IDPatientColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDPatient in Tabelle ELGASearchDocuments ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableELGASearchDocuments.IDPatientColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDAufenthalt {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableELGASearchDocuments.IDAufenthaltColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDAufenthalt in Tabelle ELGASearchDocuments ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableELGASearchDocuments.IDAufenthaltColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsErstelltAmNull() {
                 return this.IsNull(this.tableELGASearchDocuments.ErstelltAmColumn);
             }
@@ -3419,6 +3755,30 @@ namespace PMDS.Global.db.ERSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetErstelltAmNull() {
                 this[this.tableELGASearchDocuments.ErstelltAmColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDPatientNull() {
+                return this.IsNull(this.tableELGASearchDocuments.IDPatientColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDPatientNull() {
+                this[this.tableELGASearchDocuments.IDPatientColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDAufenthaltNull() {
+                return this.IsNull(this.tableELGASearchDocuments.IDAufenthaltColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDAufenthaltNull() {
+                this[this.tableELGASearchDocuments.IDAufenthaltColumn] = global::System.Convert.DBNull;
             }
         }
         

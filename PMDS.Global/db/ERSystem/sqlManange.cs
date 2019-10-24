@@ -1366,7 +1366,17 @@ namespace PMDS.Global.db.ERSystem
                 rNew.ID = System.Guid.NewGuid();
                 rNew.Dokument = "";
                 rNew.SetErstelltAmNull();
-                rNew.IDElga = "";
+                rNew.UUID = "";
+                rNew.UniqueID = "";
+                rNew.LocigalID = "";
+                rNew.Author = "";
+                rNew.Description = "";
+                rNew.DocStatus = "";
+                rNew.Version = "";
+                rNew.CreationTime = "";
+                rNew.Size = 0;
+                rNew.Stylesheet = "";
+                rNew.ELGAPatientLocalID = "";
 
                 ds.ELGASearchDocuments.Rows.Add(rNew);
                 return rNew;

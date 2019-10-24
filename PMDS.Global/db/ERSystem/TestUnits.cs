@@ -703,6 +703,38 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur einmal in der Eingabe vorkommen!");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur einmal und nur am Ende in der Eingabe vorkommen!");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur am Ende in der Eingabe vorkommen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentensuche wurde durchgeführt");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentensuche");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden keine Dokumente ausgewählt!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA ist für diesen Patienten nicht aktiviert oder Patient hat keine Kontaktbestätigung!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegerischer Entlassungsbrief");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegezustandsbericht");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Es kann später jederzeit im Dokumentenarchiv nachübertragen werden!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Das ELGA-Dokument wurde nicht nach ELGA übertragen, da Sie hierfür keine Rechte besitzen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Das ELGA-Dokument wurde nicht nach ELGA übertragen!");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Archivpfad ist nicht korrekt angegeben!" + "\r\n" + "Bitte wenden Sie sich an den Administrator!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Elga-Kontakt für Patient wurde erfolgreich beendet!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("CDA-Dokument wurde erfogreich generiert, nach ELGA hochgeladen und im Dokumentenarchiv gespeichert!");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief übertragen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht für Patient {0} wurde nach ELGA übertragen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht übertragen");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt für Patient {0} wurde beendet");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt beendet");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokumentenstream wurde gelesen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokumentenstream wurde für Patient {0} gelesen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument {0} für Patient {1} wurde im Archiv abgelegt");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument wurde im Archiv abgelegt");
+
+
+
 
 
 
