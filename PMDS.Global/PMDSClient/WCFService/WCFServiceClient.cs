@@ -385,6 +385,7 @@ namespace PMDSClient.Sitemap
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.IDPatientInternk__BackingField = IDPatientInternWcf;
                 parsIn.LocalPatientIDk__BackingField = LocalPatientIDWrite;
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() {SozVersNrLocalPatIDk__BackingField = LocalPatientIDWrite.Trim()};
                 ELGAParOutDto parOutDto = client.ELGAUpdatePatient(ref parsIn, ELGABALeTypeUpdatePatients);
 
                 if (parOutDto.bErrorsFoundk__BackingField)
