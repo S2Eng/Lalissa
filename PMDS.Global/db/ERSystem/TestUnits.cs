@@ -995,6 +995,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuer Lizenzstring wurde in die Datenbank geschrieben", "Hinweis", MessageBoxButtons.OK);
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neuer Lizenzstring wurde NICHT in die Datenbank geschrieben", "Hinweis", MessageBoxButtons.OK);
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sie haben für diese Aktion nicht die erforderlichen Rechte!", "Hinweis", MessageBoxButtons.OK);
             }
 
             catch (Exception ex)

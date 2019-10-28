@@ -304,13 +304,14 @@ namespace PMDS.GUI
                 string sAktion = "";
                 if (frm.ucRezeptEintrag1._bIsStorno)
                 {
-                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ") ";
+                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ")";
                 }
                 else
                 {
                     sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert");
                 }
 
+                sAktion += " ";
                 sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + r.AbzugebenVon.ToString() + " ";    
                 if (r.AbzugebenBis.Year != 3000)
                     sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + r.AbzugebenBis.ToString() + " ";
@@ -411,6 +412,13 @@ namespace PMDS.GUI
         {
             try
             {
+                if ((e.Cell.Column.Key.ToLower() == "bestellenjn" || e.Cell.Column.Key.ToLower() == "dringend") && !ENV.HasRight(UserRights.RezepteBestellen))
+                {
+                    e.Cell.Value = false;
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sie haben für diese Aktion nicht die erforderlichen Rechte!", "Hinweis", MessageBoxButtons.OK);
+                    return;
+                }
+
                 if (PMDS.Global.historie.HistorieOn) return;
                 OnValueChanged(sender, EventArgs.Empty);
             }

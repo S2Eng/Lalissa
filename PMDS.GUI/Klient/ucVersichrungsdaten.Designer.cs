@@ -30,8 +30,11 @@ namespace PMDS.GUI
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
@@ -41,14 +44,14 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             this.ultraGroupBoxVersicherungsdaten = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.txtVersNr = new QS2.Desktop.ControlManagment.BaseMaskEdit();
+            this.cboSozVersLeerGrund = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.lblSozVersLeerGrund = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cboSozVersStatus = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.lblSozVersStatus = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cboEinrichtungen = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
+            this.cmbKlasse = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.txtPolzNr = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblPolNr = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtPrivatVers = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -59,19 +62,16 @@ namespace PMDS.GUI
             this.txtSozVersMitversichertBei = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblSozVersMitversichertBei = new QS2.Desktop.ControlManagment.BaseLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cboSozVersLeerGrund = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
-            this.cboSozVersStatus = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
-            this.cmbKlasse = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxVersicherungsdaten)).BeginInit();
             this.ultraGroupBoxVersicherungsdaten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersLeerGrund)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEinrichtungen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbKlasse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPolzNr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrivatVers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSozVersMitversichertBei)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersLeerGrund)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbKlasse)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraGroupBoxVersicherungsdaten
@@ -115,6 +115,31 @@ namespace PMDS.GUI
             this.txtVersNr.TabIndex = 0;
             this.txtVersNr.ValueChanged += new System.EventHandler(this.TxtVersNr_ValueChanged);
             // 
+            // cboSozVersLeerGrund
+            // 
+            this.cboSozVersLeerGrund.AddEmptyEntry = false;
+            this.cboSozVersLeerGrund.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance2.BackColor = System.Drawing.Color.White;
+            this.cboSozVersLeerGrund.Appearance = appearance2;
+            this.cboSozVersLeerGrund.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cboSozVersLeerGrund.AutoOpenCBO = true;
+            this.cboSozVersLeerGrund.BackColor = System.Drawing.Color.White;
+            this.cboSozVersLeerGrund.BerufsstandGruppeJNA = -1;
+            this.cboSozVersLeerGrund.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cboSozVersLeerGrund.ExactMatch = false;
+            this.cboSozVersLeerGrund.Group = "SVE";
+            this.cboSozVersLeerGrund.ID_PEP = -1;
+            this.cboSozVersLeerGrund.Location = new System.Drawing.Point(106, 43);
+            this.cboSozVersLeerGrund.MaxLength = 25;
+            this.cboSozVersLeerGrund.Name = "cboSozVersLeerGrund";
+            this.cboSozVersLeerGrund.PflichtJN = false;
+            this.cboSozVersLeerGrund.ShowAddButton = true;
+            this.cboSozVersLeerGrund.Size = new System.Drawing.Size(441, 21);
+            this.cboSozVersLeerGrund.sys = false;
+            this.cboSozVersLeerGrund.TabIndex = 1;
+            this.cboSozVersLeerGrund.ValueChanged += new System.EventHandler(this.CboSozVersLeerGrund_ValueChanged);
+            // 
             // lblSozVersLeerGrund
             // 
             this.lblSozVersLeerGrund.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -127,6 +152,31 @@ namespace PMDS.GUI
             this.lblSozVersLeerGrund.Size = new System.Drawing.Size(80, 14);
             this.lblSozVersLeerGrund.TabIndex = 88;
             this.lblSozVersLeerGrund.Text = "SV-Nr leer weil ";
+            // 
+            // cboSozVersStatus
+            // 
+            this.cboSozVersStatus.AddEmptyEntry = false;
+            this.cboSozVersStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance4.BackColor = System.Drawing.Color.White;
+            this.cboSozVersStatus.Appearance = appearance4;
+            this.cboSozVersStatus.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cboSozVersStatus.AutoOpenCBO = true;
+            this.cboSozVersStatus.BackColor = System.Drawing.Color.White;
+            this.cboSozVersStatus.BerufsstandGruppeJNA = -1;
+            this.cboSozVersStatus.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cboSozVersStatus.ExactMatch = false;
+            this.cboSozVersStatus.Group = "SVS";
+            this.cboSozVersStatus.ID_PEP = -1;
+            this.cboSozVersStatus.Location = new System.Drawing.Point(106, 93);
+            this.cboSozVersStatus.MaxLength = 25;
+            this.cboSozVersStatus.Name = "cboSozVersStatus";
+            this.cboSozVersStatus.PflichtJN = false;
+            this.cboSozVersStatus.ShowAddButton = true;
+            this.cboSozVersStatus.Size = new System.Drawing.Size(441, 21);
+            this.cboSozVersStatus.sys = false;
+            this.cboSozVersStatus.TabIndex = 3;
+            this.cboSozVersStatus.ValueChanged += new System.EventHandler(this.CboSozVersStatus_ValueChanged);
             // 
             // lblSozVersStatus
             // 
@@ -152,6 +202,30 @@ namespace PMDS.GUI
             this.cboEinrichtungen.Size = new System.Drawing.Size(441, 21);
             this.cboEinrichtungen.TabIndex = 2;
             this.cboEinrichtungen.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // cmbKlasse
+            // 
+            this.cmbKlasse.AddEmptyEntry = false;
+            this.cmbKlasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance6.BackColor = System.Drawing.Color.White;
+            this.cmbKlasse.Appearance = appearance6;
+            this.cmbKlasse.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbKlasse.AutoOpenCBO = true;
+            this.cmbKlasse.BackColor = System.Drawing.Color.White;
+            this.cmbKlasse.BerufsstandGruppeJNA = -1;
+            this.cmbKlasse.ExactMatch = false;
+            this.cmbKlasse.Group = "KLA";
+            this.cmbKlasse.ID_PEP = -1;
+            this.cmbKlasse.Location = new System.Drawing.Point(106, 168);
+            this.cmbKlasse.MaxLength = 25;
+            this.cmbKlasse.Name = "cmbKlasse";
+            this.cmbKlasse.PflichtJN = false;
+            this.cmbKlasse.ShowAddButton = true;
+            this.cmbKlasse.Size = new System.Drawing.Size(278, 21);
+            this.cmbKlasse.sys = false;
+            this.cmbKlasse.TabIndex = 6;
+            this.cmbKlasse.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // txtPolzNr
             // 
@@ -249,7 +323,7 @@ namespace PMDS.GUI
             this.txtSozVersMitversichertBei.Appearance = appearance14;
             this.txtSozVersMitversichertBei.BackColor = System.Drawing.Color.White;
             this.txtSozVersMitversichertBei.Location = new System.Drawing.Point(106, 118);
-            this.txtSozVersMitversichertBei.MaxLength = 20;
+            this.txtSozVersMitversichertBei.MaxLength = 255;
             this.txtSozVersMitversichertBei.Name = "txtSozVersMitversichertBei";
             this.txtSozVersMitversichertBei.Size = new System.Drawing.Size(441, 21);
             this.txtSozVersMitversichertBei.TabIndex = 4;
@@ -272,80 +346,6 @@ namespace PMDS.GUI
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // cboSozVersLeerGrund
-            // 
-            this.cboSozVersLeerGrund.AddEmptyEntry = false;
-            this.cboSozVersLeerGrund.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.BackColor = System.Drawing.Color.White;
-            this.cboSozVersLeerGrund.Appearance = appearance2;
-            this.cboSozVersLeerGrund.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.cboSozVersLeerGrund.AutoOpenCBO = true;
-            this.cboSozVersLeerGrund.BackColor = System.Drawing.Color.White;
-            this.cboSozVersLeerGrund.BerufsstandGruppeJNA = -1;
-            this.cboSozVersLeerGrund.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboSozVersLeerGrund.ExactMatch = false;
-            this.cboSozVersLeerGrund.Group = "SVE";
-            this.cboSozVersLeerGrund.ID_PEP = -1;
-            this.cboSozVersLeerGrund.Location = new System.Drawing.Point(106, 43);
-            this.cboSozVersLeerGrund.MaxLength = 25;
-            this.cboSozVersLeerGrund.Name = "cboSozVersLeerGrund";
-            this.cboSozVersLeerGrund.PflichtJN = false;
-            this.cboSozVersLeerGrund.ShowAddButton = true;
-            this.cboSozVersLeerGrund.Size = new System.Drawing.Size(441, 21);
-            this.cboSozVersLeerGrund.sys = false;
-            this.cboSozVersLeerGrund.TabIndex = 1;
-            this.cboSozVersLeerGrund.ValueChanged += new System.EventHandler(this.CboSozVersLeerGrund_ValueChanged);
-            // 
-            // cboSozVersStatus
-            // 
-            this.cboSozVersStatus.AddEmptyEntry = false;
-            this.cboSozVersStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance4.BackColor = System.Drawing.Color.White;
-            this.cboSozVersStatus.Appearance = appearance4;
-            this.cboSozVersStatus.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.cboSozVersStatus.AutoOpenCBO = true;
-            this.cboSozVersStatus.BackColor = System.Drawing.Color.White;
-            this.cboSozVersStatus.BerufsstandGruppeJNA = -1;
-            this.cboSozVersStatus.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboSozVersStatus.ExactMatch = false;
-            this.cboSozVersStatus.Group = "SVS";
-            this.cboSozVersStatus.ID_PEP = -1;
-            this.cboSozVersStatus.Location = new System.Drawing.Point(106, 93);
-            this.cboSozVersStatus.MaxLength = 25;
-            this.cboSozVersStatus.Name = "cboSozVersStatus";
-            this.cboSozVersStatus.PflichtJN = false;
-            this.cboSozVersStatus.ShowAddButton = true;
-            this.cboSozVersStatus.Size = new System.Drawing.Size(441, 21);
-            this.cboSozVersStatus.sys = false;
-            this.cboSozVersStatus.TabIndex = 3;
-            this.cboSozVersStatus.ValueChanged += new System.EventHandler(this.CboSozVersStatus_ValueChanged);
-            // 
-            // cmbKlasse
-            // 
-            this.cmbKlasse.AddEmptyEntry = false;
-            this.cmbKlasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance6.BackColor = System.Drawing.Color.White;
-            this.cmbKlasse.Appearance = appearance6;
-            this.cmbKlasse.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.cmbKlasse.AutoOpenCBO = true;
-            this.cmbKlasse.BackColor = System.Drawing.Color.White;
-            this.cmbKlasse.BerufsstandGruppeJNA = -1;
-            this.cmbKlasse.ExactMatch = false;
-            this.cmbKlasse.Group = "KLA";
-            this.cmbKlasse.ID_PEP = -1;
-            this.cmbKlasse.Location = new System.Drawing.Point(106, 168);
-            this.cmbKlasse.MaxLength = 25;
-            this.cmbKlasse.Name = "cmbKlasse";
-            this.cmbKlasse.PflichtJN = false;
-            this.cmbKlasse.ShowAddButton = true;
-            this.cmbKlasse.Size = new System.Drawing.Size(278, 21);
-            this.cmbKlasse.sys = false;
-            this.cmbKlasse.TabIndex = 6;
-            this.cmbKlasse.ValueChanged += new System.EventHandler(this.OnValueChanged);
-            // 
             // ucVersichrungsdaten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,14 +357,14 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxVersicherungsdaten)).EndInit();
             this.ultraGroupBoxVersicherungsdaten.ResumeLayout(false);
             this.ultraGroupBoxVersicherungsdaten.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersLeerGrund)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEinrichtungen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbKlasse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPolzNr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrivatVers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSozVersMitversichertBei)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersLeerGrund)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboSozVersStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbKlasse)).EndInit();
             this.ResumeLayout(false);
 
         }
