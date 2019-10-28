@@ -12,7 +12,8 @@ using PMDS.BusinessLogic;
 using PMDS.GUI.Klient;
 using PMDS.DB;
 using System.Linq;
-
+using PMDS.GUI.ELGA;
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -45,7 +46,7 @@ namespace PMDS.GUI
 
         public string colBenutzerGeändert = "BenutzerGeändert";
 
-
+        public ELGABusiness bELGA = new ELGABusiness();
 
 
 
@@ -62,6 +63,7 @@ namespace PMDS.GUI
             this.grid.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             this.btnMedikamente.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS2.ico_Medikamente_01, QS2.Resources.getRes.ePicTyp.ico);
             this.btnVOErfassen.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS2.ico_Verordnungen_03, QS2.Resources.getRes.ePicTyp.ico);
+            this.btnSearchELGADocuments.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, QS2.Resources.getRes.ePicTyp.ico);
             this.btnVOErfassen.Visible = PMDS.Global.ENV.lic_VO;
         }
 
@@ -408,6 +410,7 @@ namespace PMDS.GUI
             {
                 this.alleZeilenEinerZelleKopierenToolStripMenuItem.Click += new System.EventHandler(this.alleZeilenEinerZelleKopierenToolStripMenuItem_Click);
                 this.contextMenuStrip1.Items.Add(this.alleZeilenEinerZelleKopierenToolStripMenuItem);
+
                 IsInitialiyed = true;
             }
         }
@@ -829,5 +832,34 @@ namespace PMDS.GUI
             }
         }
 
+        private void btnSearchELGADocuments_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (!ELGABusiness.checkELGASessionActive(true))
+                {
+                    return;
+                }
+
+                frmELGASearchDocuments frmELGASearchDocuments1 = new frmELGASearchDocuments();
+                frmELGASearchDocuments1.initControl(ENV.USERID);
+                frmELGASearchDocuments1.ShowDialog();
+                if (!frmELGASearchDocuments1.contELGASearchDocuments1.abort)
+                {
+                    this.bELGA.saveELGADocuToArchive(ref frmELGASearchDocuments1.contELGASearchDocuments1.lDocusSelected);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
     }
 }

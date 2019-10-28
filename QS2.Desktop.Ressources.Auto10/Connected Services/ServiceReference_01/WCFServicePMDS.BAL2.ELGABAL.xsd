@@ -5,15 +5,18 @@
   <xs:complexType name="ELGASessionDTO">
     <xs:sequence>
       <xs:element name="_x003C_ELGAStateID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_IDUser_x003E_k__BackingField" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ELGASessionDTO" nillable="true" type="tns:ELGASessionDTO" />
   <xs:complexType name="ELGAParInDto">
     <xs:sequence>
+      <xs:element name="_x003C_ContactID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_DocumentAdd_x003E_k__BackingField" nillable="true" type="tns:DocumentAddDto" />
       <xs:element name="_x003C_IDDocuIntern_x003E_k__BackingField" type="ser:guid" />
       <xs:element name="_x003C_IDPatientIntern_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_LocalPatientID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_sDocumentsDto_x003E_k__BackingField" nillable="true" type="tns:DocumentSearchDto" />
       <xs:element name="_x003C_sObjectDto_x003E_k__BackingField" nillable="true" type="tns:ObjectDTO" />
       <xs:element name="_x003C_session_x003E_k__BackingField" nillable="true" type="tns:ELGASessionDTO" />
@@ -26,7 +29,7 @@
       <xs:element name="_x003C_ClinicalDocumentSetID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Documentname_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_IDCDA_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_IDCDA_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_KlinikName_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_KlinikOID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Person_x003E_k__BackingField" nillable="true" type="xs:string" />
@@ -41,6 +44,7 @@
       <xs:element name="_x003C_CreatedTo_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
       <xs:element name="_x003C_DocumentStatus_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Documentname_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_UUID_x003E_k__BackingField" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DocumentSearchDto" nillable="true" type="tns:DocumentSearchDto" />
@@ -50,7 +54,7 @@
       <xs:element name="_x003C_Country_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_IDELgaGda_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_NachNameFirma_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_SozVersNr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SozVersNrLocalPatID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_StreetNr_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Street_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Tel_x003E_k__BackingField" nillable="true" type="xs:string" />
@@ -85,11 +89,16 @@
   <xs:element name="AdressDto" nillable="true" type="tns:AdressDto" />
   <xs:complexType name="ELGAParOutDto">
     <xs:sequence>
+      <xs:element name="_x003C_ContactID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_DocuUUID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_LocalID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MessageExceptionNr_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_MessageException_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PatientLocalID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_bErrorsFound_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_bOK_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_iRowsFound_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_lContacts_x003E_k__BackingField" nillable="true" type="tns:ArrayOfELGAContactsDto" />
       <xs:element name="_x003C_lDocuments_x003E_k__BackingField" nillable="true" type="tns:ArrayOfELGADocumentsDTO" />
       <xs:element name="_x003C_lGDAs_x003E_k__BackingField" nillable="true" type="tns:ArrayOfObjectDTO" />
       <xs:element name="_x003C_lPatients_x003E_k__BackingField" nillable="true" type="tns:ArrayOfELGAPatientDTO" />
@@ -97,6 +106,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ELGAParOutDto" nillable="true" type="tns:ELGAParOutDto" />
+  <xs:complexType name="ArrayOfELGAContactsDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ELGAContactsDto" nillable="true" type="tns:ELGAContactsDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfELGAContactsDto" nillable="true" type="tns:ArrayOfELGAContactsDto" />
+  <xs:complexType name="ELGAContactsDto">
+    <xs:sequence>
+      <xs:element name="_x003C_IDElga_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_PatientID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_creationDate_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_status_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_type_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ELGAContactsDto" nillable="true" type="tns:ELGAContactsDto" />
   <xs:complexType name="ArrayOfELGADocumentsDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ELGADocumentsDTO" nillable="true" type="tns:ELGADocumentsDTO" />
@@ -177,6 +202,7 @@
     <xs:sequence>
       <xs:element name="_x003C_IDELGAPatients_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_ID_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_authUniversalID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_ehrPIDType_x003E_k__BackingField" type="xs:int" />
       <xs:element name="_x003C_patientIDType_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_patientID_x003E_k__BackingField" nillable="true" type="xs:string" />

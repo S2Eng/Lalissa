@@ -663,6 +663,82 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert.");
 
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche nach Soz.Vers.Nr '{0}' durchgeführt");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO für Patient {0} von Benutzer {1} durchgeführt.");
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es ist keine ELGA-Sitzung aktiv" + "\r\n" +
+                                                                            "Aktion kann nicht ausgeführt werden.", "ELGA", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient wurde über seine Rechte belehrt: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient stimmt dem situativem Opt-Out zu: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung hergestellt!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer");
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Mind. 2 Zeichen Eingabe erforderlich!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: Mind. 3 Zeichen Eingabe erforderlich!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA-Suche");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Gda-Suche wurde durchgeführt");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA's gefunden");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr");
+
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: *-Zeichen darf nur einmal und nur am Ende der Eingabe vorkommen!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nachname/Firma: *-Zeichen darf nur am Ende der Eingabe vorkommen!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("PLZ darf nur Ziffern enthalten!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachname/Firma");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorname");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur einmal in der Eingabe vorkommen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur einmal und nur am Ende in der Eingabe vorkommen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes(": *-Zeichen darf nur am Ende in der Eingabe vorkommen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentensuche wurde durchgeführt");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentensuche");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden keine Dokumente ausgewählt!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA ist für diesen Patienten nicht aktiviert oder Patient hat keine Kontaktbestätigung!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegerischer Entlassungsbrief");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegezustandsbericht");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Es kann später jederzeit im Dokumentenarchiv nachübertragen werden!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Das ELGA-Dokument wurde nicht nach ELGA übertragen, da Sie hierfür keine Rechte besitzen!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Das ELGA-Dokument wurde nicht nach ELGA übertragen!");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Archivpfad ist nicht korrekt angegeben!" + "\r\n" + "Bitte wenden Sie sich an den Administrator!", "", MessageBoxButtons.OK);
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Elga-Kontakt für Patient wurde erfolgreich beendet!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("CDA-Dokument wurde erfogreich generiert, nach ELGA hochgeladen und im Dokumentenarchiv gespeichert!");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief übertragen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht für Patient {0} wurde nach ELGA übertragen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht übertragen");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt für Patient {0} wurde beendet");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt beendet");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokumentenstream wurde gelesen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokumentenstream wurde für Patient {0} gelesen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument {0} für Patient {1} wurde im Archiv abgelegt");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument wurde im Archiv abgelegt");
+
+
+
+
+
+
+
             }
             catch (Exception ex)
             {

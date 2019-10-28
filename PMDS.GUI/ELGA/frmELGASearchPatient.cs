@@ -27,14 +27,14 @@ namespace PMDS.GUI.ELGA
 
 
 
-        public void initControl(Guid IDPatient, Guid IDAufenthalt, bool SozVersNrEditable)
+        public void initControl(Guid IDPatient, Guid IDAufenthalt, bool SozVersNrEditable, string AuthUniversalID)
         {
             try
             {
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
 
                 this.contELGASearchPatient1.mainWindow = this;
-                this.contELGASearchPatient1.initControl(IDPatient, IDAufenthalt, SozVersNrEditable);
+                this.contELGASearchPatient1.initControl(IDPatient, IDAufenthalt, SozVersNrEditable, AuthUniversalID);
 
             }
             catch (Exception ex)

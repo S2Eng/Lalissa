@@ -43,7 +43,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Land");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tel");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SozVersNr");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDElga");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PatientLocalID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -192,9 +192,9 @@
             ultraGridColumn18.Header.Caption = "Soz.Vers.Nr";
             ultraGridColumn18.Header.Editor = null;
             ultraGridColumn18.Header.VisiblePosition = 0;
-            ultraGridColumn19.Header.Editor = null;
-            ultraGridColumn19.Header.VisiblePosition = 8;
-            ultraGridColumn19.Hidden = true;
+            ultraGridColumn1.Header.Editor = null;
+            ultraGridColumn1.Header.VisiblePosition = 8;
+            ultraGridColumn1.Hidden = true;
             ultraGridColumn20.Header.Editor = null;
             ultraGridColumn20.Header.VisiblePosition = 9;
             ultraGridColumn20.Hidden = true;
@@ -207,7 +207,7 @@
             ultraGridColumn16,
             ultraGridColumn17,
             ultraGridColumn18,
-            ultraGridColumn19,
+            ultraGridColumn1,
             ultraGridColumn20});
             this.gridFound.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridFound.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;

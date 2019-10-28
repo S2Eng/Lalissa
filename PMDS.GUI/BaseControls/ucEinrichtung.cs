@@ -23,20 +23,20 @@ namespace PMDS.GUI
 		private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpEinrichtungAdresse;
 		private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpKontakt;
 		private QS2.Desktop.ControlManagment.BaseLabel lblBezeichnung;
-		private QS2.Desktop.ControlManagment.BaseTextEditor txtEinrichtung;
-		private QS2.Desktop.ControlManagment.BaseTextEditor txtRegion;
-		private QS2.Desktop.ControlManagment.BaseTextEditor txtOrt;
-		private QS2.Desktop.ControlManagment.BaseTextEditor txtPLZ;
-		private QS2.Desktop.ControlManagment.BaseTextEditor txtStrasse;
-		private QS2.Desktop.ControlManagment.BaseLabel lblRegion;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtEinrichtung;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtRegion;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtOrt;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtPLZ;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtStrasse;
+        private QS2.Desktop.ControlManagment.BaseLabel lblRegion;
 		private QS2.Desktop.ControlManagment.BaseLabel lblOrt;
 		private QS2.Desktop.ControlManagment.BaseLabel lblPLZ;
 		private System.Windows.Forms.ErrorProvider errorProvider1;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkIstKrankenkasse;
-        private QS2.Desktop.ControlManagment.BaseTextEditor txtELGA_OID;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtELGAGdaOid;
         private QS2.Desktop.ControlManagment.BaseLabel lblELGA_OID;
-        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkELGAAbgeglichen;
-        private BaseControls.AuswahlGruppeCombo cboLand;
+        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkELGAAbgeglichen;
+        public BaseControls.AuswahlGruppeCombo cboLand;
         private QS2.Desktop.ControlManagment.BaseLabel lblLand;
         private QS2.Desktop.ControlManagment.BaseLabel lblStrasse;
 
@@ -73,11 +73,12 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.grpEinrichtungAdresse = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
             this.lblLand = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cboLand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.chkELGAAbgeglichen = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.txtELGA_OID = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.txtELGAGdaOid = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lblELGA_OID = new QS2.Desktop.ControlManagment.BaseLabel();
             this.chkIstKrankenkasse = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.txtOrt = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -96,7 +97,7 @@ namespace PMDS.GUI
             this.grpEinrichtungAdresse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboLand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGAAbgeglichen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtELGA_OID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGAGdaOid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIstKrankenkasse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).BeginInit();
@@ -114,7 +115,7 @@ namespace PMDS.GUI
             this.grpEinrichtungAdresse.Controls.Add(this.lblLand);
             this.grpEinrichtungAdresse.Controls.Add(this.cboLand);
             this.grpEinrichtungAdresse.Controls.Add(this.chkELGAAbgeglichen);
-            this.grpEinrichtungAdresse.Controls.Add(this.txtELGA_OID);
+            this.grpEinrichtungAdresse.Controls.Add(this.txtELGAGdaOid);
             this.grpEinrichtungAdresse.Controls.Add(this.lblELGA_OID);
             this.grpEinrichtungAdresse.Controls.Add(this.chkIstKrankenkasse);
             this.grpEinrichtungAdresse.Controls.Add(this.txtOrt);
@@ -154,11 +155,11 @@ namespace PMDS.GUI
             this.cboLand.ExactMatch = false;
             this.cboLand.Group = "LND";
             this.cboLand.ID_PEP = -1;
-            this.cboLand.Location = new System.Drawing.Point(93, 108);
+            this.cboLand.Location = new System.Drawing.Point(100, 108);
             this.cboLand.Name = "cboLand";
             this.cboLand.PflichtJN = false;
             this.cboLand.ShowAddButton = true;
-            this.cboLand.Size = new System.Drawing.Size(346, 24);
+            this.cboLand.Size = new System.Drawing.Size(339, 24);
             this.cboLand.sys = false;
             this.cboLand.TabIndex = 4;
             this.cboLand.ValueChanged += new System.EventHandler(this.OnValueChanged);
@@ -166,37 +167,40 @@ namespace PMDS.GUI
             // chkELGAAbgeglichen
             // 
             this.chkELGAAbgeglichen.Enabled = false;
-            this.chkELGAAbgeglichen.Location = new System.Drawing.Point(93, 188);
+            this.chkELGAAbgeglichen.Location = new System.Drawing.Point(100, 188);
             this.chkELGAAbgeglichen.Name = "chkELGAAbgeglichen";
-            this.chkELGAAbgeglichen.Size = new System.Drawing.Size(180, 23);
+            this.chkELGAAbgeglichen.Size = new System.Drawing.Size(173, 23);
             this.chkELGAAbgeglichen.TabIndex = 7;
             this.chkELGAAbgeglichen.Text = "Mit Elga abgeglichen";
             // 
-            // txtELGA_OID
+            // txtELGAGdaOid
             // 
-            this.txtELGA_OID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtELGAGdaOid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtELGA_OID.Location = new System.Drawing.Point(93, 216);
-            this.txtELGA_OID.MaxLength = 20;
-            this.txtELGA_OID.Name = "txtELGA_OID";
-            this.txtELGA_OID.ReadOnly = true;
-            this.txtELGA_OID.Size = new System.Drawing.Size(346, 24);
-            this.txtELGA_OID.TabIndex = 8;
+            appearance1.BackColor = System.Drawing.Color.White;
+            this.txtELGAGdaOid.Appearance = appearance1;
+            this.txtELGAGdaOid.BackColor = System.Drawing.Color.White;
+            this.txtELGAGdaOid.Location = new System.Drawing.Point(100, 216);
+            this.txtELGAGdaOid.MaxLength = 20;
+            this.txtELGAGdaOid.Name = "txtELGAGdaOid";
+            this.txtELGAGdaOid.ReadOnly = true;
+            this.txtELGAGdaOid.Size = new System.Drawing.Size(339, 24);
+            this.txtELGAGdaOid.TabIndex = 8;
             // 
             // lblELGA_OID
             // 
             this.lblELGA_OID.AutoSize = true;
             this.lblELGA_OID.Location = new System.Drawing.Point(9, 220);
             this.lblELGA_OID.Name = "lblELGA_OID";
-            this.lblELGA_OID.Size = new System.Drawing.Size(61, 17);
+            this.lblELGA_OID.Size = new System.Drawing.Size(93, 17);
             this.lblELGA_OID.TabIndex = 12;
-            this.lblELGA_OID.Text = "Elga OID";
+            this.lblELGA_OID.Text = "ELGA GDA-ID";
             // 
             // chkIstKrankenkasse
             // 
-            this.chkIstKrankenkasse.Location = new System.Drawing.Point(93, 165);
+            this.chkIstKrankenkasse.Location = new System.Drawing.Point(100, 165);
             this.chkIstKrankenkasse.Name = "chkIstKrankenkasse";
-            this.chkIstKrankenkasse.Size = new System.Drawing.Size(180, 23);
+            this.chkIstKrankenkasse.Size = new System.Drawing.Size(173, 23);
             this.chkIstKrankenkasse.TabIndex = 6;
             this.chkIstKrankenkasse.Text = "Ist Krankenkasse";
             this.chkIstKrankenkasse.CheckedChanged += new System.EventHandler(this.ChkIstKrankenkasse_CheckedChanged);
@@ -205,10 +209,10 @@ namespace PMDS.GUI
             // 
             this.txtOrt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOrt.Location = new System.Drawing.Point(192, 80);
+            this.txtOrt.Location = new System.Drawing.Point(199, 80);
             this.txtOrt.MaxLength = 50;
             this.txtOrt.Name = "txtOrt";
-            this.txtOrt.Size = new System.Drawing.Size(247, 24);
+            this.txtOrt.Size = new System.Drawing.Size(240, 24);
             this.txtOrt.TabIndex = 3;
             this.txtOrt.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -216,10 +220,10 @@ namespace PMDS.GUI
             // 
             this.txtStrasse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStrasse.Location = new System.Drawing.Point(93, 52);
+            this.txtStrasse.Location = new System.Drawing.Point(100, 52);
             this.txtStrasse.MaxLength = 50;
             this.txtStrasse.Name = "txtStrasse";
-            this.txtStrasse.Size = new System.Drawing.Size(346, 24);
+            this.txtStrasse.Size = new System.Drawing.Size(339, 24);
             this.txtStrasse.TabIndex = 1;
             this.txtStrasse.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -227,16 +231,16 @@ namespace PMDS.GUI
             // 
             this.txtEinrichtung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEinrichtung.Location = new System.Drawing.Point(93, 24);
+            this.txtEinrichtung.Location = new System.Drawing.Point(100, 24);
             this.txtEinrichtung.MaxLength = 255;
             this.txtEinrichtung.Name = "txtEinrichtung";
-            this.txtEinrichtung.Size = new System.Drawing.Size(346, 24);
+            this.txtEinrichtung.Size = new System.Drawing.Size(339, 24);
             this.txtEinrichtung.TabIndex = 0;
             this.txtEinrichtung.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // txtPLZ
             // 
-            this.txtPLZ.Location = new System.Drawing.Point(93, 80);
+            this.txtPLZ.Location = new System.Drawing.Point(100, 80);
             this.txtPLZ.MaxLength = 6;
             this.txtPLZ.Name = "txtPLZ";
             this.txtPLZ.Size = new System.Drawing.Size(66, 24);
@@ -255,7 +259,7 @@ namespace PMDS.GUI
             // lblOrt
             // 
             this.lblOrt.AutoSize = true;
-            this.lblOrt.Location = new System.Drawing.Point(163, 84);
+            this.lblOrt.Location = new System.Drawing.Point(172, 84);
             this.lblOrt.Name = "lblOrt";
             this.lblOrt.Size = new System.Drawing.Size(24, 17);
             this.lblOrt.TabIndex = 7;
@@ -292,10 +296,10 @@ namespace PMDS.GUI
             // 
             this.txtRegion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRegion.Location = new System.Drawing.Point(93, 137);
+            this.txtRegion.Location = new System.Drawing.Point(100, 137);
             this.txtRegion.MaxLength = 20;
             this.txtRegion.Name = "txtRegion";
-            this.txtRegion.Size = new System.Drawing.Size(346, 24);
+            this.txtRegion.Size = new System.Drawing.Size(339, 24);
             this.txtRegion.TabIndex = 5;
             this.txtRegion.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -340,7 +344,7 @@ namespace PMDS.GUI
             this.grpEinrichtungAdresse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboLand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGAAbgeglichen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtELGA_OID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGAGdaOid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIstKrankenkasse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).EndInit();
@@ -385,7 +389,7 @@ namespace PMDS.GUI
 			txtRegion.Text		= Einrichtung.Adresse.Region;
             cboLand.Value = Einrichtung.Adresse.LandKZ.Trim();
 
-            this.txtELGA_OID.Text = Einrichtung.ELGA_OID;
+            this.txtELGAGdaOid.Text = Einrichtung.ELGA_OID;
             this.chkELGAAbgeglichen.Checked = Einrichtung.ELGAAbgeglichen;
             this.chkIstKrankenkasse.Checked = Einrichtung.IstKrankenkasse;
         }
@@ -401,7 +405,7 @@ namespace PMDS.GUI
 			Einrichtung.Adresse.Region  = txtRegion.Text;
             Einrichtung.Adresse.LandKZ = cboLand.Value.ToString().Trim();
 
-            Einrichtung.ELGA_OID = this.txtELGA_OID.Text.Trim();
+            Einrichtung.ELGA_OID = this.txtELGAGdaOid.Text.Trim();
             Einrichtung.ELGAAbgeglichen = this.chkELGAAbgeglichen.Checked;
             Einrichtung.IstKrankenkasse = this.chkIstKrankenkasse.Checked;
         }

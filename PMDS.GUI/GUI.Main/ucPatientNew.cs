@@ -54,6 +54,7 @@ namespace PMDS.GUI
         protected QS2.Desktop.ControlManagment.BaseLabel lblAbteilung;
         private PMDS.GUI.BaseControls.ucAbteilungBereichSelektor cbAbteilung;
         private QS2.Desktop.ControlManagment.BaseMaskEdit tbSVNr;
+        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkKontaktbestätigung;
         private IContainer components;
 
 		//----------------------------------------------------------------------------
@@ -158,6 +159,7 @@ namespace PMDS.GUI
             this.cbAbteilung = new PMDS.GUI.BaseControls.ucAbteilungBereichSelektor();
             this.txtTitel = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.txtSexus = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.chkKontaktbestätigung = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.dtpGebDatum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
@@ -168,6 +170,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dtpAufnahmedatum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTitel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSexus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpGebDatum
@@ -406,9 +409,18 @@ namespace PMDS.GUI
             this.txtSexus.TabIndex = 2;
             this.txtSexus.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
+            // chkKontaktbestätigung
+            // 
+            this.chkKontaktbestätigung.Location = new System.Drawing.Point(13, 296);
+            this.chkKontaktbestätigung.Name = "chkKontaktbestätigung";
+            this.chkKontaktbestätigung.Size = new System.Drawing.Size(228, 18);
+            this.chkKontaktbestätigung.TabIndex = 22;
+            this.chkKontaktbestätigung.Text = "Kontaktbestätigung";
+            // 
             // ucPatientNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Controls.Add(this.chkKontaktbestätigung);
             this.Controls.Add(this.tbSVNr);
             this.Controls.Add(this.cbAbteilung);
             this.Controls.Add(this.lblAbteilung);
@@ -432,7 +444,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.txtNachname);
             this.Controls.Add(this.lblNachname);
             this.Name = "ucPatientNew";
-            this.Size = new System.Drawing.Size(304, 287);
+            this.Size = new System.Drawing.Size(304, 381);
             this.Load += new System.EventHandler(this.ucPatientNew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtpGebDatum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).EndInit();
@@ -444,6 +456,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dtpAufnahmedatum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTitel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSexus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkKontaktbestätigung)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

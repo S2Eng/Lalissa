@@ -1,10 +1,3 @@
-//----------------------------------------------------------------------------
-/// <summary>
-///	GuiAction.cs
-/// Erstellt am:	16.11.2004
-/// Erstellt von:	EHO
-/// </summary>
-//----------------------------------------------------------------------------
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -34,17 +27,17 @@ using Syncfusion.Compression;
 using Patagames.Pdf.Net;
 using PMDS.Global.Remote;
 using PMDS.GUI.Quickfilter;
+using PMDS.GUI.ELGA;
+using static PMDS.Global.db.ERSystem.ELGABusiness;
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
 
     public delegate void GuiActionDoneDelegate(SiteEvents ev);
 
-	//----------------------------------------------------------------------------
-	/// <summary>
-	/// Allgemeine nützliche Abläufe
-	/// </summary>
-	//----------------------------------------------------------------------------
+
+
 	public class GuiAction
 	{
         public static event GuiActionDoneDelegate GuiActionDone;      // Signalisiert dass eine Gewisse Aktion durchgeführt worden ist;
@@ -67,11 +60,7 @@ namespace PMDS.GUI
 		{
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Patienten Aufnahme mit Picker
-		/// </summary>
-		//----------------------------------------------------------------------------
+
 		public static bool PatientAufnahme()
 		{
 			frmPatientAufnahme auf = new frmPatientAufnahme();
@@ -86,22 +75,13 @@ namespace PMDS.GUI
 			return (bOK);
 		}
         	
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Terminsystem
-        /// Guid.Empty == Gesamtterminsystem
-        /// </summary>
-        //----------------------------------------------------------------------------
+
         public static void archivTerminMail(bool gesamt, bool headerEin, bool ShowKlientenarchiv)
         {
             GuiWorkflow.ShowArchivPlanung(gesamt, headerEin, ShowKlientenarchiv);
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Berichte
-        /// </summary>
-        //----------------------------------------------------------------------------
+
         public static bool Berichte()
         {
             frmDynReports frm = new frmDynReports(ENV.DynReportExtrasPath);
@@ -110,11 +90,7 @@ namespace PMDS.GUI
             return true;
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Berichte
-        /// </summary>
-        //----------------------------------------------------------------------------
+
         public static bool BerichteWunde()
         {
             frmDynReports frm = new frmDynReports(ENV.DynReportWundePath);
@@ -122,12 +98,6 @@ namespace PMDS.GUI
             return true;
         }
 
-        //Neu nach 08.06.2007 MDA
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Formular für Medizinischedaten Layout anzeigen
-        /// </summary>
-        //----------------------------------------------------------------------------
         public static bool MedizinischeDialoge()
         {
             frmMedizinischeDatenLayout frm = new frmMedizinischeDatenLayout();
@@ -135,12 +105,6 @@ namespace PMDS.GUI
             return true;
         }
 
-        //Neu nach 11.06.2007 MDA
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Formular für Standardprozeduren anzeigen
-        /// </summary>
-        //----------------------------------------------------------------------------
         public static bool Standardprozeduren()
         {
             frmStandardProzeduren frm = new frmStandardProzeduren();
@@ -150,12 +114,6 @@ namespace PMDS.GUI
             return true;
         }
 
-        //Neu nach 26.06.2007 MDA
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Formular für Bewerberverwaltung anzeigen
-        /// </summary>
-        //----------------------------------------------------------------------------
         public static bool Bewerberverwaltung()
         {
             frmBewerber frm = new frmBewerber();
@@ -164,12 +122,6 @@ namespace PMDS.GUI
             return true;
         }
 
-        //Neu nach 28.09.2007 MDA
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Patienten Versetzung
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public static bool PatientVersetzung(Guid idPatient, dsKlinik.KlinikRow rKlinik)
 		{
 			Patient pat = new Patient(idPatient);
@@ -189,46 +141,60 @@ namespace PMDS.GUI
             return false;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Patienten Entlassung
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public static bool PatientEntlassung2(Guid idPatient, ucMain mainWindow)
 		{
-			Patient pat = new Patient(idPatient);
+            try
+            {
+                if (ENV.lic_ELGA)
+                {
+                    ELGABusiness bElga = new ELGABusiness();
+                    string ArchivePath = "";
+                    Nullable<Guid> IDOrdnerArchiv = null;
+                    if (!bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
+                    {
+                        return false;
+                    }
 
-			// Hinweis bei Entlassung, wenn Patient im Urlaub
-			if (pat.Aufenthalt.HasUrlaub)
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("GUI.PATIENT_URLAUB"),ENV.String("GUI.DIALOGTITLE_PATIENT_URLAUB"), 
-                                                                                MessageBoxButtons.OK,MessageBoxIcon.Stop, true);
+                    //if (!ELGABusiness.checkELGASessionActive(true))
+                    //{
+                    //    return false;
+                    //}
+                }
 
-			frmEntlassung ent = new frmEntlassung(pat);
-            ent.mainWindow = mainWindow;
-            bool bOK = (ent.ShowDialog() == DialogResult.OK);
+                Patient pat = new Patient(idPatient);
+
+			    // Hinweis bei Entlassung, wenn Patient im Urlaub
+			    if (pat.Aufenthalt.HasUrlaub)
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("GUI.PATIENT_URLAUB"),ENV.String("GUI.DIALOGTITLE_PATIENT_URLAUB"), 
+                                                                                    MessageBoxButtons.OK,MessageBoxIcon.Stop, true);
+
+			    frmEntlassung ent = new frmEntlassung(pat);
+                ent.mainWindow = mainWindow;
+                bool bOK = (ent.ShowDialog() == DialogResult.OK);
             
-            if (bOK && GuiActionDone != null)
-                GuiActionDone(SiteEvents.Entlassen);
-			
-            return (bOK);
-		}
+                if (bOK && GuiActionDone != null)
+                {
+                    PMDSBusinessUI bUI = new PMDSBusinessUI();
+                    bUI.genCDA(idPatient, pat.Aufenthalt.ID, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked);
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Patienten Aufenthalts informationen
-		/// </summary>
-		//----------------------------------------------------------------------------
+                    GuiActionDone(SiteEvents.Entlassen);
+                }
+            
+                return (bOK);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GuiAction.PatientEntlassung2: " + ex.ToString());
+            }
+        }
+
 		public static bool PatientAufenthaltInfo(Guid idPatient)
 		{
             PMDS.GUI.frmPatientHistorie auf = new PMDS.GUI.frmPatientHistorie(idPatient, false);
 			return (auf.ShowDialog() == DialogResult.OK);
 		}                              
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Klientenbericht drucken
-        /// </summary>
-        //----------------------------------------------------------------------------
         public static bool Datenarchivierung(TXTextControl.TextControl  txtEditor)   // für alle Klienten
         {
             bool DocuSuccessfullyGenerated = false;
@@ -621,8 +587,24 @@ namespace PMDS.GUI
                 }
             }
             pat.Write();
-
             LastAufnahmePatientID = pat.ID;
+
+            if (wizard._activePage.GetType() == typeof(ucPatientNew))
+            {          
+                if (((ucPatientNew)wizard._activePage).chkKontaktbestätigung.Checked)
+                {
+                    ELGABusiness bELGA = new ELGABusiness();
+                    BenutzerDTOS1 ben = bELGA.getELGASettingsForUser(ENV.USERID);
+                    if (ENV.lic_ELGA && ben.Elgaactive && !ben.IsGeneric)
+                    {
+                        frmELGAKlient frmELGAKlient1 = new frmELGAKlient();
+                        frmELGAKlient1.initControl();
+                        frmELGAKlient1.contELGAKlient1.loadData(pat.ID, pat.Aufenthalt.ID);
+                        frmELGAKlient1.ShowDialog();
+                    }
+                }
+            }
+
             return true;
         }
 
@@ -946,12 +928,26 @@ namespace PMDS.GUI
 		{
             try
             {
+                if (ENV.lic_ELGA)
+                {
+                    ELGABusiness bElga = new ELGABusiness();
+                    string ArchivePath = "";
+                    Nullable<Guid> IDOrdnerArchiv = null;
+                    if (!bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
+                    {
+                        return false;
+                    }
+                }
+
                 GUI.Main.frmUrlaub2 frmUrlaub = new GUI.Main.frmUrlaub2();
                 frmUrlaub.initControl(idPatient);
                 frmUrlaub.ucUrlaub21.loadData();
                 frmUrlaub.ShowDialog();
                 if (!frmUrlaub.ucUrlaub21.abort)
                 {
+                    PMDSBusinessUI bUI = new PMDSBusinessUI();
+                    bUI.genCDA(idPatient, ENV.IDAUFENTHALT, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false);
+
                     if (GuiActionDone != null)
                         GuiActionDone(SiteEvents.Urlaub);
 
@@ -990,7 +986,7 @@ namespace PMDS.GUI
             }
             catch (Exception ex)
             {
-                throw new Exception("PatientUrlaub: " + ex.ToString());
+                throw new Exception("GuiAction.PatientUrlaub: " + ex.ToString());
             }
 		}
 

@@ -11,20 +11,16 @@ using System.Windows.Forms;
 
 namespace PMDS.GUI.ELGA
 {
-
-    public partial class frmSearchGDA : Form
+    public partial class frmELGAKlient : Form
     {
 
-        public bool IsInitialized = false;
 
-
-
-        public frmSearchGDA()
+        public frmELGAKlient()
         {
             InitializeComponent();
         }
 
-        private void FrmSearchGDA_Load(object sender, EventArgs e)
+        private void frmELGAKlient_Load(object sender, EventArgs e)
         {
 
         }
@@ -33,14 +29,19 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
+                this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
 
+                this.contELGAKlient1.mainWindowAufnahme = this;
+                this.contELGAKlient1.initControl(true);
 
             }
             catch (Exception ex)
             {
-                throw new Exception("frmSearchGDA.contELGARights: " + ex.ToString());
+                throw new Exception("frmELGAKlient.frmELGALogIn: " + ex.ToString());
             }
         }
 
     }
+
 }
+

@@ -1,6 +1,6 @@
 ﻿namespace PMDS.GUI.ELGA
 {
-    partial class frmSearchGDA
+    partial class frmELGAKlient
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.contSearchGDA1 = new PMDS.GUI.ELGA.contSearchGDA();
+            this.contELGAKlient1 = new PMDS.GUI.ELGA.contELGAKlient();
             this.SuspendLayout();
             // 
-            // contSearchGDA1
+            // contELGAKlient1
             // 
-            this.contSearchGDA1.BackColor = System.Drawing.Color.Transparent;
-            this.contSearchGDA1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contSearchGDA1.Location = new System.Drawing.Point(0, 0);
-            this.contSearchGDA1.Name = "contSearchGDA1";
-            this.contSearchGDA1.Size = new System.Drawing.Size(607, 477);
-            this.contSearchGDA1.TabIndex = 0;
+            this.contELGAKlient1.BackColor = System.Drawing.Color.White;
+            this.contELGAKlient1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contELGAKlient1.Location = new System.Drawing.Point(0, 0);
+            this.contELGAKlient1.Name = "contELGAKlient1";
+            this.contELGAKlient1.Size = new System.Drawing.Size(743, 242);
+            this.contELGAKlient1.TabIndex = 0;
             // 
-            // frmSearchGDA
+            // frmELGAKlient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(607, 477);
-            this.Controls.Add(this.contSearchGDA1);
-            this.Name = "frmSearchGDA";
+            this.ClientSize = new System.Drawing.Size(743, 242);
+            this.Controls.Add(this.contELGAKlient1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmELGAKlient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Suche GDA";
-            this.Load += new System.EventHandler(this.FrmSearchGDA_Load);
+            this.Text = "ELGA - Klient";
+            this.Load += new System.EventHandler(this.frmELGAKlient_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private contSearchGDA contSearchGDA1;
+        public contELGAKlient contELGAKlient1;
     }
 }

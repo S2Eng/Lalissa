@@ -72,23 +72,25 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Verordnungen erfassen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Medikamente zuordnen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Verordnungen erfassen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Medikamente zuordnen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMedTypDaten));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Entfernen", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Beenden", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Beenden", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Hinzufügen", Infragistics.Win.ToolTipImage.Default, "", Infragistics.Win.DefaultableBoolean.Default);
             this.dsMedizinischeDaten1 = new PMDS.GUI.Klient.dsMedizinischeDaten();
             this.grpBox = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.grid = new QS2.Desktop.ControlManagment.BaseGrid();
             this.panelButtons = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnSearchELGADocuments = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnVOErfassen = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnMedikamente = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnDel = new PMDS.GUI.ucButton(this.components);
@@ -358,6 +360,7 @@ namespace PMDS.GUI
             // 
             // panelButtons
             // 
+            this.panelButtons.Controls.Add(this.btnSearchELGADocuments);
             this.panelButtons.Controls.Add(this.btnVOErfassen);
             this.panelButtons.Controls.Add(this.btnMedikamente);
             this.panelButtons.Controls.Add(this.btnDel);
@@ -370,13 +373,30 @@ namespace PMDS.GUI
             this.panelButtons.Size = new System.Drawing.Size(827, 24);
             this.panelButtons.TabIndex = 40;
             // 
-            // btnVOErfassen
+            // btnSearchELGADocuments
             // 
-            this.btnVOErfassen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchELGADocuments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             appearance14.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance14.TextHAlignAsString = "Left";
             appearance14.TextVAlignAsString = "Middle";
-            this.btnVOErfassen.Appearance = appearance14;
+            this.btnSearchELGADocuments.Appearance = appearance14;
+            this.btnSearchELGADocuments.AutoWorkLayout = false;
+            this.btnSearchELGADocuments.IsStandardControl = false;
+            this.btnSearchELGADocuments.Location = new System.Drawing.Point(501, -1);
+            this.btnSearchELGADocuments.Name = "btnSearchELGADocuments";
+            this.btnSearchELGADocuments.Size = new System.Drawing.Size(157, 24);
+            this.btnSearchELGADocuments.TabIndex = 102;
+            this.btnSearchELGADocuments.Text = "Suche ELGA-Dokumente";
+            this.btnSearchELGADocuments.Visible = false;
+            this.btnSearchELGADocuments.Click += new System.EventHandler(this.btnSearchELGADocuments_Click);
+            // 
+            // btnVOErfassen
+            // 
+            this.btnVOErfassen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance15.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance15.TextHAlignAsString = "Left";
+            appearance15.TextVAlignAsString = "Middle";
+            this.btnVOErfassen.Appearance = appearance15;
             this.btnVOErfassen.AutoWorkLayout = false;
             this.btnVOErfassen.IsStandardControl = false;
             this.btnVOErfassen.Location = new System.Drawing.Point(666, -1);
@@ -390,10 +410,10 @@ namespace PMDS.GUI
             // btnMedikamente
             // 
             this.btnMedikamente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance15.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance15.TextHAlignAsString = "Left";
-            appearance15.TextVAlignAsString = "Middle";
-            this.btnMedikamente.Appearance = appearance15;
+            appearance16.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance16.TextHAlignAsString = "Left";
+            appearance16.TextVAlignAsString = "Middle";
+            this.btnMedikamente.Appearance = appearance16;
             this.btnMedikamente.AutoWorkLayout = false;
             this.btnMedikamente.IsStandardControl = false;
             this.btnMedikamente.Location = new System.Drawing.Point(690, -1);
@@ -407,11 +427,11 @@ namespace PMDS.GUI
             // btnDel
             // 
             this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            appearance16.Image = ((object)(resources.GetObject("appearance16.Image")));
-            appearance16.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance16.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDel.Appearance = appearance16;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            appearance17.Image = ((object)(resources.GetObject("appearance17.Image")));
+            appearance17.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance17.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDel.Appearance = appearance17;
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDel.DoOnClick = true;
@@ -431,10 +451,10 @@ namespace PMDS.GUI
             // btnEnd
             // 
             this.btnEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance17.Image = ((object)(resources.GetObject("appearance17.Image")));
-            appearance17.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance17.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnEnd.Appearance = appearance17;
+            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
+            appearance18.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance18.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnEnd.Appearance = appearance18;
             this.btnEnd.AutoWorkLayout = false;
             this.btnEnd.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnEnd.IsStandardControl = false;
@@ -449,10 +469,10 @@ namespace PMDS.GUI
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance18.Image = ((object)(resources.GetObject("appearance18.Image")));
-            appearance18.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance18.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnUpdate.Appearance = appearance18;
+            appearance19.Image = ((object)(resources.GetObject("appearance19.Image")));
+            appearance19.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance19.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnUpdate.Appearance = appearance19;
             this.btnUpdate.AutoWorkLayout = false;
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdate.IsStandardControl = false;
@@ -467,11 +487,11 @@ namespace PMDS.GUI
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            appearance19.Image = ((object)(resources.GetObject("appearance19.Image")));
-            appearance19.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance19.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAdd.Appearance = appearance19;
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            appearance20.Image = ((object)(resources.GetObject("appearance20.Image")));
+            appearance20.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance20.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAdd.Appearance = appearance20;
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAdd.DoOnClick = true;
@@ -535,5 +555,6 @@ namespace PMDS.GUI
         private System.Windows.Forms.ToolStripMenuItem alleZeilenEinerZelleKopierenToolStripMenuItem;
         public QS2.Desktop.ControlManagment.BaseButton btnMedikamente;
         public QS2.Desktop.ControlManagment.BaseButton btnVOErfassen;
+        public QS2.Desktop.ControlManagment.BaseButton btnSearchELGADocuments;
     }
 }

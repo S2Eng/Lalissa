@@ -126,6 +126,11 @@
   <metadata name="oleDbSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDAdresse, IDKontakt, Titel, Nachname, Vorname, Fachrichtung, ELGAAbgeglichen, ELGAHausarzt, ELGA_OID, ELGA_OrganizationOID, ELGA_OrganizationName, IstOrganisation
+FROM            Aerzte
+ORDER BY Vorname, Nachname</value>
+  </data>
   <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
   </metadata>
@@ -138,6 +143,9 @@
   <metadata name="oleDbInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbInsertCommand1.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Aerzte] ([ID], [IDAdresse], [IDKontakt], [Titel], [Nachname], [Vorname], [Fachrichtung], [ELGAAbgeglichen], [ELGAHausarzt], [ELGA_OID], [ELGA_OrganizationOID], [ELGA_OrganizationName], [IstOrganisation]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
   <metadata name="oleDbUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -147,6 +155,9 @@
   <metadata name="oleDbUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbUpdateCommand1.CommandText" xml:space="preserve">
+    <value>UPDATE [Aerzte] SET [ID] = ?, [IDAdresse] = ?, [IDKontakt] = ?, [Titel] = ?, [Nachname] = ?, [Vorname] = ?, [Fachrichtung] = ?, [ELGAAbgeglichen] = ?, [ELGAHausarzt] = ?, [ELGA_OID] = ?, [ELGA_OrganizationOID] = ?, [ELGA_OrganizationName] = ?, [IstOrganisation] = ? WHERE (([ID] = ?))</value>
+  </data>
   <metadata name="oleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -169,10 +180,11 @@
     <value>False</value>
   </metadata>
   <data name="oleDbSelectCommand2.CommandText" xml:space="preserve">
-    <value>SELECT     Aerzte.ID, Aerzte.IDAdresse,Aerzte.IDKontakt, Aerzte.Titel, Aerzte.Nachname, Aerzte.Vorname, Aerzte.Fachrichtung
-FROM         Aerzte INNER JOIN
-                     PatientAerzte ON Aerzte.ID = PatientAerzte.IDAerzte
-WHERE  PatientAerzte.IDPatient=?</value>
+    <value>SELECT        Aerzte.ID, Aerzte.IDAdresse, Aerzte.IDKontakt, Aerzte.Titel, Aerzte.Nachname, Aerzte.Vorname, Aerzte.Fachrichtung, Aerzte.ELGAAbgeglichen, Aerzte.ELGAHausarzt, Aerzte.ELGA_OID, Aerzte.ELGA_OrganizationOID, 
+                         Aerzte.ELGA_OrganizationName, Aerzte.IstOrganisation
+FROM            Aerzte INNER JOIN
+                         PatientAerzte ON Aerzte.ID = PatientAerzte.IDAerzte
+WHERE        (PatientAerzte.IDPatient = ?)</value>
   </data>
   <metadata name="daAerzteByPatient.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 173</value>
@@ -204,6 +216,9 @@ WHERE  PatientAerzte.IDPatient=?</value>
   <metadata name="oleDbInsertCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbInsertCommand.CommandText" xml:space="preserve">
+    <value>INSERT INTO [Aerzte] ([ID], [IDAdresse], [IDKontakt], [Titel], [Nachname], [Vorname], [Fachrichtung], [ELGAAbgeglichen], [ELGAHausarzt], [ELGA_OID], [ELGA_OrganizationOID], [ELGA_OrganizationName], [IstOrganisation]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
   <metadata name="oleDbCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -213,6 +228,11 @@ WHERE  PatientAerzte.IDPatient=?</value>
   <metadata name="oleDbCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbCommand1.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDAdresse, IDKontakt, Titel, Nachname, Vorname, Fachrichtung, ELGAAbgeglichen, ELGAHausarzt, ELGA_OID, ELGA_OrganizationOID, ELGA_OrganizationName, IstOrganisation
+FROM            Aerzte
+WHERE        (ID = ?)</value>
+  </data>
   <metadata name="oleDbUpdateCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -222,6 +242,9 @@ WHERE  PatientAerzte.IDPatient=?</value>
   <metadata name="oleDbUpdateCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <data name="oleDbUpdateCommand.CommandText" xml:space="preserve">
+    <value>UPDATE [Aerzte] SET [ID] = ?, [IDAdresse] = ?, [IDKontakt] = ?, [Titel] = ?, [Nachname] = ?, [Vorname] = ?, [Fachrichtung] = ?, [ELGAAbgeglichen] = ?, [ELGAHausarzt] = ?, [ELGA_OID] = ?, [ELGA_OrganizationOID] = ?, [ELGA_OrganizationName] = ?, [IstOrganisation] = ? WHERE (([ID] = ?))</value>
+  </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>

@@ -853,6 +853,7 @@ namespace PMDS.GUI
                 if (rBenEinr.Default)
                 {
                     this.cbKlinik.SelectedItem = itemKlinik;
+                    //lth klinik changed
                     bKlinikSelected = true;
                 }
                 if (firstKlinik == null)
@@ -925,6 +926,15 @@ namespace PMDS.GUI
                 if (this.cbKlinik.SelectedItem != null)
                 {
                     Infragistics.Win.ValueListItem item = this.cbKlinik.SelectedItem;
+
+                    if (ELGABusiness.ELGALogInInitializedAtStart != null && ELGABusiness.ELGALogInInitializedAtStart.Value)
+                    {
+                        if (this.mainWindow != null && this.mainWindow.mainWindow != null)
+                        {
+                            ELGABusiness bELGA = new ELGABusiness();
+                            bELGA.LogOutELGA(this.mainWindow.mainWindow.ultraStatusBar1, this.mainWindow.mainWindow.ultraStatusBar1.Panels["statELGA"], true, true, false);
+                        }
+                    }
                     return ( dsKlinik.KlinikRow)item.Tag;
                 }
                 else

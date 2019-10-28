@@ -1017,6 +1017,12 @@
     <Compile Include="ELGA\frmELGAChangePassword.Designer.cs">
       <DependentUpon>frmELGAChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="ELGA\frmELGAKlient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELGA\frmELGAKlient.Designer.cs">
+      <DependentUpon>frmELGAKlient.cs</DependentUpon>
+    </Compile>
     <Compile Include="ELGA\frmELGASearchDocuments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1046,18 +1052,6 @@
     </Compile>
     <Compile Include="ELGA\contELGAUser.Designer.cs">
       <DependentUpon>contELGAUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ELGA\contSearchGDA.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ELGA\contSearchGDA.Designer.cs">
-      <DependentUpon>contSearchGDA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ELGA\frmSearchGDA.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ELGA\frmSearchGDA.Designer.cs">
-      <DependentUpon>frmSearchGDA.cs</DependentUpon>
     </Compile>
     <Compile Include="ELGA\ManageSettings\contELGARights.cs">
       <SubType>UserControl</SubType>
@@ -3981,6 +3975,9 @@
     <EmbeddedResource Include="ELGA\frmELGAChangePassword.resx">
       <DependentUpon>frmELGAChangePassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ELGA\frmELGAKlient.resx">
+      <DependentUpon>frmELGAKlient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ELGA\frmELGASearchDocuments.resx">
       <DependentUpon>frmELGASearchDocuments.cs</DependentUpon>
     </EmbeddedResource>
@@ -3995,12 +3992,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\contELGAUser.resx">
       <DependentUpon>contELGAUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ELGA\contSearchGDA.resx">
-      <DependentUpon>contSearchGDA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ELGA\frmSearchGDA.resx">
-      <DependentUpon>frmSearchGDA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\ManageSettings\contELGARights.resx">
       <DependentUpon>contELGARights.cs</DependentUpon>

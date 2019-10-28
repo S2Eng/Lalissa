@@ -17,6 +17,9 @@ using PMDS.Global;
 using PMDS.Data.Global;
 using PMDS.GUI.Engines;
 using PMDS.Global.db.Global;
+using PMDS.GUI.ELGA;
+using static PMDSClient.Sitemap.WCFServiceClient;
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -37,7 +40,8 @@ namespace PMDS.GUI
 		private QS2.Desktop.ControlManagment.BaseLabel lblEinrichtung;
 		private QS2.Desktop.ControlManagment.BaseComboEditor cbEinrichtung;
 		private dsGUIDListe dsGUIDListe1;
-		private System.ComponentModel.IContainer components;
+        public QS2.Desktop.ControlManagment.BaseButton btnELGASearchGDA;
+        private System.ComponentModel.IContainer components;
 
 		//----------------------------------------------------------------------------
 		/// <summary>
@@ -80,6 +84,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             this.ucEinrichtung1 = new PMDS.GUI.ucEinrichtung();
             this.btnAdd = new PMDS.GUI.ucButton(this.components);
             this.btnUndo = new PMDS.GUI.ucButton(this.components);
@@ -88,6 +93,7 @@ namespace PMDS.GUI
             this.lblEinrichtung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cbEinrichtung = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.dsGUIDListe1 = new PMDS.Global.db.Global.dsGUIDListe();
+            this.btnELGASearchGDA = new QS2.Desktop.ControlManagment.BaseButton();
             ((System.ComponentModel.ISupportInitialize)(this.cbEinrichtung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsGUIDListe1)).BeginInit();
             this.SuspendLayout();
@@ -100,11 +106,11 @@ namespace PMDS.GUI
             einrichtung1.Bezeichnung = "";
             einrichtung1.ELGA_OID = "";
             einrichtung1.ELGAAbgeglichen = false;
-            //einrichtung1.ID = new System.Guid("65a68034-f43d-44d4-9c82-5125a22788b7");
-            //einrichtung1.IDAdresse = new System.Guid("d61b88bc-92c2-4188-a1a5-c04438b5d91a");
-            //einrichtung1.IDKontakt = new System.Guid("da8d747c-7ef1-4894-bb88-b60fa3b10450");
+            //einrichtung1.ID = new System.Guid("eda9ce21-41b4-4d21-8427-ea907c3713e4");
+            //einrichtung1.IDAdresse = new System.Guid("87c3f865-69f0-4d18-ac84-dd7881de953a");
+            //einrichtung1.IDKontakt = new System.Guid("ef2feb11-fcad-42e3-9588-e6e89ec7d9c4");
             einrichtung1.IstKrankenkasse = false;
-            //this.ucEinrichtung1.Einrichtung = einrichtung1;
+            this.ucEinrichtung1.Einrichtung = einrichtung1;
             this.ucEinrichtung1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ucEinrichtung1.Location = new System.Drawing.Point(0, 40);
             this.ucEinrichtung1.Name = "ucEinrichtung1";
@@ -224,9 +230,27 @@ namespace PMDS.GUI
             this.dsGUIDListe1.Locale = new System.Globalization.CultureInfo("de-AT");
             this.dsGUIDListe1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // btnELGASearchGDA
+            // 
+            this.btnELGASearchGDA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnELGASearchGDA.Appearance = appearance5;
+            this.btnELGASearchGDA.AutoWorkLayout = false;
+            this.btnELGASearchGDA.IsStandardControl = false;
+            this.btnELGASearchGDA.Location = new System.Drawing.Point(217, 401);
+            this.btnELGASearchGDA.Margin = new System.Windows.Forms.Padding(4);
+            this.btnELGASearchGDA.Name = "btnELGASearchGDA";
+            this.btnELGASearchGDA.Size = new System.Drawing.Size(111, 32);
+            this.btnELGASearchGDA.TabIndex = 150;
+            this.btnELGASearchGDA.Tag = "";
+            this.btnELGASearchGDA.Text = "Suche ELGA";
+            this.btnELGASearchGDA.Click += new System.EventHandler(this.btnELGASearchGDA_Click);
+            // 
             // ucEinrichtungEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.Controls.Add(this.btnELGASearchGDA);
             this.Controls.Add(this.cbEinrichtung);
             this.Controls.Add(this.lblEinrichtung);
             this.Controls.Add(this.btnAdd);
@@ -257,7 +281,16 @@ namespace PMDS.GUI
 			{
 				_verwaltung = new EngineVerwaltung(cbEinrichtung, ucEinrichtung1, 
 					btnAdd,  this.btnDel, btnUndo, btnSave);
-			}
+
+                this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
+
+                ELGABusiness bELGA = new ELGABusiness();
+                if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
+                {
+                    this.btnELGASearchGDA.Visible = true;
+                }
+               
+            }
 			catch(Exception ex)
 			{
 				ENV.HandleException(ex);
@@ -283,5 +316,45 @@ namespace PMDS.GUI
         {
 
         }
+
+        private void btnELGASearchGDA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                cSearchGdaFlds FieldsSearch = new cSearchGdaFlds()
+                {
+                    NachnameFirma = this.ucEinrichtung1.txtEinrichtung.Text.Trim(),
+                    Vorname = "",
+                    Ort = this.ucEinrichtung1.txtOrt.Text.Trim(),
+                    PLZ = this.ucEinrichtung1.txtPLZ.Text.Trim(),
+                    Strasse = this.ucEinrichtung1.txtStrasse.Text.Trim(),
+                    StrasseNr = ""
+                };
+
+                frmELGASearchGDA frmELGASearchGDA1 = new frmELGASearchGDA();
+                frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.ExtEinrichtungen);
+                frmELGASearchGDA1.ShowDialog();
+                if (!frmELGASearchGDA1.contELGASearchGDA1.abort)
+                {
+                    this.ucEinrichtung1.txtEinrichtung.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.NachnameFirma.Trim();
+                    this.ucEinrichtung1.txtOrt.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Ort.Trim();
+                    this.ucEinrichtung1.txtPLZ.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.PLZ.Trim();
+                    this.ucEinrichtung1.txtStrasse.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Strasse.Trim() + " " + frmELGASearchGDA1.contELGASearchGDA1._rSelRow.StrasseNr.Trim();
+                    this.ucEinrichtung1.txtELGAGdaOid.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.IDElga.Trim();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
     }
 }

@@ -21,14 +21,14 @@ namespace PMDS.GUI
         private IContainer components;
         public event EventHandler ValueChanged;
 		private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpKontakt;
-		private PMDS.GUI.ucKontakt ucKontakt1;
-		private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpEinrichtungAdresse;
+        public ucKontakt ucKontakt1;
+        private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpEinrichtungAdresse;
 		private QS2.Desktop.ControlManagment.BaseButton btnBereiche;
 		private QS2.Desktop.ControlManagment.BaseButton btnAbteilungen;
-		private QS2.Desktop.ControlManagment.BaseTextEditor txtKlinik;
-		private QS2.Desktop.ControlManagment.BaseLabel lblEinrichtung;
-		private PMDS.GUI.ucAdresse ucAdresse1;
-		private PMDS.GUI.ucZusatzWert ucZusatzWert1;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtKlinik;
+        private QS2.Desktop.ControlManagment.BaseLabel lblEinrichtung;
+        public ucAdresse ucAdresse1;
+        private PMDS.GUI.ucZusatzWert ucZusatzWert1;
 		private QS2.Desktop.ControlManagment.BaseTabControl tabMain;
 		private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
 		private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
@@ -42,9 +42,9 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseLabel lblZVRUID;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         private QS2.Desktop.ControlManagment.BaseLabel lblBereich;
-        private QS2.Desktop.ControlManagment.BaseTextEditor tbNachname;
+        public QS2.Desktop.ControlManagment.BaseTextEditor tbNachname;
         private QS2.Desktop.ControlManagment.BaseLabel lblNachname;
-        private QS2.Desktop.ControlManagment.BaseTextEditor tbVorname;
+        public QS2.Desktop.ControlManagment.BaseTextEditor tbVorname;
         private QS2.Desktop.ControlManagment.BaseLabel lblVorname;
         private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpSonstigeAngaben;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtRechnungsformular;
@@ -58,7 +58,9 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseMaskEdit txtBereich;
         private QS2.Desktop.ControlManagment.BaseLabel lblELGA_AuthorSpeciality;
         private BaseControls.AuswahlGruppeCombo cboELGA_AuthorSpeciality;
-        private BaseControls.AuswahlGruppeCombo cboTitel;
+        public BaseControls.AuswahlGruppeCombo cboTitel;
+        public QS2.Desktop.ControlManagment.BaseTextEditor txtELGAGdaOid;
+        private QS2.Desktop.ControlManagment.BaseLabel lblELGAGdaID;
         public ucKlinikEdit mainWindow = null;
 
 
@@ -102,6 +104,7 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpSonstigeAngaben = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
             this.txtRechnungsformularDepot = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -138,6 +141,8 @@ namespace PMDS.GUI
             this.tabMain = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+            this.txtELGAGdaOid = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.lblELGAGdaID = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl1.SuspendLayout();
             this.grpSonstigeAngaben.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRechnungsformularDepot)).BeginInit();
@@ -157,17 +162,20 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).BeginInit();
             this.tabMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGAGdaOid)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
             // 
+            this.ultraTabPageControl1.Controls.Add(this.txtELGAGdaOid);
+            this.ultraTabPageControl1.Controls.Add(this.lblELGAGdaID);
             this.ultraTabPageControl1.Controls.Add(this.grpSonstigeAngaben);
             this.ultraTabPageControl1.Controls.Add(this.grpLeitung);
             this.ultraTabPageControl1.Controls.Add(this.grpEinrichtungAdresse);
             this.ultraTabPageControl1.Controls.Add(this.grpKontakt);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(2, 25);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(972, 439);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(972, 477);
             // 
             // grpSonstigeAngaben
             // 
@@ -558,7 +566,7 @@ namespace PMDS.GUI
             this.tabMain.Location = new System.Drawing.Point(3, 3);
             this.tabMain.Name = "tabMain";
             this.tabMain.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tabMain.Size = new System.Drawing.Size(976, 466);
+            this.tabMain.Size = new System.Drawing.Size(976, 504);
             this.tabMain.TabIndex = 2;
             ultraTab1.Key = "Stammdaten";
             ultraTab1.TabPage = this.ultraTabPageControl1;
@@ -581,7 +589,7 @@ namespace PMDS.GUI
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(972, 439);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(972, 477);
             // 
             // ultraToolTipManager1
             // 
@@ -590,13 +598,36 @@ namespace PMDS.GUI
             this.ultraToolTipManager1.DisplayStyle = Infragistics.Win.ToolTipDisplayStyle.WindowsVista;
             this.ultraToolTipManager1.InitialDelay = 0;
             // 
+            // txtELGAGdaOid
+            // 
+            appearance1.BackColor = System.Drawing.Color.White;
+            this.txtELGAGdaOid.Appearance = appearance1;
+            this.txtELGAGdaOid.AutoSize = false;
+            this.txtELGAGdaOid.BackColor = System.Drawing.Color.White;
+            this.txtELGAGdaOid.Location = new System.Drawing.Point(98, 437);
+            this.txtELGAGdaOid.MaxLength = 75;
+            this.txtELGAGdaOid.Name = "txtELGAGdaOid";
+            this.txtELGAGdaOid.ReadOnly = true;
+            this.txtELGAGdaOid.Size = new System.Drawing.Size(300, 26);
+            this.txtELGAGdaOid.TabIndex = 1006;
+            // 
+            // lblELGAGdaID
+            // 
+            this.lblELGAGdaID.AutoSize = true;
+            this.lblELGAGdaID.Location = new System.Drawing.Point(15, 443);
+            this.lblELGAGdaID.Name = "lblELGAGdaID";
+            this.lblELGAGdaID.Size = new System.Drawing.Size(53, 17);
+            this.lblELGAGdaID.TabIndex = 1007;
+            this.lblELGAGdaID.Text = "GDA-ID";
+            // 
             // ucKlinik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Controls.Add(this.tabMain);
             this.Name = "ucKlinik";
-            this.Size = new System.Drawing.Size(982, 469);
+            this.Size = new System.Drawing.Size(982, 507);
             this.ultraTabPageControl1.ResumeLayout(false);
+            this.ultraTabPageControl1.PerformLayout();
             this.grpSonstigeAngaben.ResumeLayout(false);
             this.grpSonstigeAngaben.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRechnungsformularDepot)).EndInit();
@@ -618,6 +649,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).EndInit();
             this.tabMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGAGdaOid)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -676,6 +708,7 @@ namespace PMDS.GUI
             this.tbVorname.Text =   Klinik.DB_ROW.EinrichtungsleiterVorname.Trim();
             this.cboTitel.Text = Klinik.DB_ROW.EinrichtungsleiterTitel.Trim();
             this.cboELGA_AuthorSpeciality.Text = Klinik.DB_ROW.ELGA_AuthorSpeciality;
+            this.txtELGAGdaOid.Text = Klinik.DB_ROW.ELGA_OID.Trim();
 
             txtZVR.Text = Klinik.ZVR.Trim();
 
@@ -685,7 +718,6 @@ namespace PMDS.GUI
                 this.txtRechnungsformular.Text = rKlinik.Rechnungsformular.Trim();
                 this.txtRechnungsformularDepot.Text = rKlinik.RechnungsformularDepot.Trim();
             }
-
         }
 
 		//----------------------------------------------------------------------------
@@ -705,6 +737,7 @@ namespace PMDS.GUI
             Klinik.DB_ROW.Einrichtungsleiter = this.tbNachname.Text.Trim();
             Klinik.DB_ROW.EinrichtungsleiterVorname = this.tbVorname.Text.Trim();
             Klinik.DB_ROW.EinrichtungsleiterTitel = this.cboTitel.Text.Trim();
+            Klinik.DB_ROW.ELGA_OID = this.txtELGAGdaOid.Text.Trim();
 
             Klinik.DB_ROW.MitAerztlicheLeitungJN    = osÄrtzlicheLeitung.CheckedIndex == 0;
             Klinik.DB_ROW.MitAerztlicheAufsichtJN   = osÄrtzlicheLeitung.CheckedIndex == 1;

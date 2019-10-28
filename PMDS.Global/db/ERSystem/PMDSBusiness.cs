@@ -6303,7 +6303,8 @@ namespace PMDS.DB
         }
         public bool SaveDokumentinArchiv(string DateinameOrig, string VerzeichnisOrig, Guid IDOrdner, string BezeichnungFile,
                                         string DateiType, DateTime dNow, long SizeDoku, 
-                                        Guid IDPatient, string PathArchive, ref Guid IDDokumenteintragReturn, string Notiz)
+                                        Guid IDPatient, string PathArchive, ref Guid IDDokumenteintragReturn, string Notiz,
+                                        string FileStylesheet = "", string ELGAUUID = "", bool IsELGADocu = false, int ELGAÜbertragen = -1)
         {
             try
             {
@@ -6341,7 +6342,11 @@ namespace PMDS.DB
                     NewDokumenteintrag.ErstelltAm = dNow;
                     NewDokumenteintrag.ErstelltVon = this.LogggedOnUser().Benutzer1;
                     NewDokumenteintrag.Notiz = Notiz.Trim();
-        
+                    NewDokumenteintrag.FileStylesheet = FileStylesheet.Trim();
+                    NewDokumenteintrag.ELGAUUID = ELGAUUID.Trim();
+                    NewDokumenteintrag.ELGAÜbertragen = ELGAÜbertragen;
+                    NewDokumenteintrag.IsELGADocu = IsELGADocu;
+
                     db.tblDokumenteintrag.Add(NewDokumenteintrag);
 
                     tblDokumente NewDokument = new db.Entities.tblDokumente();

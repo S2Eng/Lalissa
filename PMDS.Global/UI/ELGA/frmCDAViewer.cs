@@ -28,10 +28,10 @@ namespace PMDS.GUI.ELGA
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
         }
 
-        public void initControl(string Xml, string typeFile)
+        public void initControl(string DocumentName, string DocuUUID, string ClinicalDocumentSetID, string Xml, string typeFile, string Stylesheet, contCDAViewer.eTypeUI TypeUI)
         {
             this.contCDAViewer1.mainWindow = this;
-            this.contCDAViewer1.initControl(Xml, typeFile);
+            this.contCDAViewer1.initControl(DocumentName, DocuUUID, ClinicalDocumentSetID, Xml, typeFile, Stylesheet, TypeUI);
         }
 
 

@@ -1311,7 +1311,7 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow)ds.MedizinischeTypen.NewRow();
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow)ds.ELGASearchPatients.NewRow();
                 rNew.ID = System.Guid.NewGuid();
                 rNew.NachnameFirma = "";
                 rNew.Vorname = "";
@@ -1321,7 +1321,7 @@ namespace PMDS.Global.db.ERSystem
                 rNew.Land = "";
                 rNew.Tel = "";
                 rNew.SozVersNr = "";
-                rNew.IDElga = "";
+                rNew.PatientLocalID = "";
 
                 ds.ELGASearchPatients.Rows.Add(rNew);
                 return rNew;
@@ -1335,15 +1335,19 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow)ds.MedizinischeTypen.NewRow();
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchGDAsRow)ds.ELGASearchGDAs.NewRow();
                 rNew.ID = System.Guid.NewGuid();
                 rNew.NachnameFirma = "";
                 rNew.Vorname = "";
-                rNew.Strasse = "";
+                rNew.Title = "";
                 rNew.PLZ = "";
                 rNew.Ort = "";
                 rNew.Land = "";
-                rNew.Tel = "";
+                rNew.Strasse = "";
+                rNew.StrasseNr = "";
+                rNew.IsOrganisation = false;
+                rNew.Status = "";
+                rNew.State = "";
                 rNew.IDElga = "";
 
                 ds.ELGASearchGDAs.Rows.Add(rNew);
@@ -1358,11 +1362,21 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)ds.MedizinischeTypen.NewRow();
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)ds.ELGASearchDocuments.NewRow();
                 rNew.ID = System.Guid.NewGuid();
                 rNew.Dokument = "";
                 rNew.SetErstelltAmNull();
-                rNew.IDElga = "";
+                rNew.UUID = "";
+                rNew.UniqueID = "";
+                rNew.LocigalID = "";
+                rNew.Author = "";
+                rNew.Description = "";
+                rNew.DocStatus = "";
+                rNew.Version = "";
+                rNew.CreationTime = "";
+                rNew.Size = 0;
+                rNew.Stylesheet = "";
+                rNew.ELGAPatientLocalID = "";
 
                 ds.ELGASearchDocuments.Rows.Add(rNew);
                 return rNew;

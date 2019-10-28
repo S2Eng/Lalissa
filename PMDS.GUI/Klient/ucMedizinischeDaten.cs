@@ -9,8 +9,8 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.Klient;
-
-
+using System.Linq;
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -28,6 +28,10 @@ namespace PMDS.GUI
 
         public static Nullable<Guid> IDMedDatenNew = null;
         public ucKlient mainWindow = null;
+
+        public bool IsInitialized = false;
+
+        public ELGABusiness bELGA = new ELGABusiness();
 
 
 
@@ -72,12 +76,6 @@ namespace PMDS.GUI
             }
         }
 
-        //Neu nach 27.04.2007
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// ReadOnly setzen / auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ReadOnly
@@ -90,12 +88,30 @@ namespace PMDS.GUI
             }
         }
 
-        //
-        //lädt die Daten aus einem Businessobject und aktualisiert die GUI.
+        public void initControlxz()
+        {
+            if (!this.IsInitialized)
+            {
+
+                IsInitialized = true;
+            }
+        }
+
         public void UpdateGUI()
         {
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
             {
+                if (this.bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false))
+                {
+                    ucBefunde.btnSearchELGADocuments.Visible = true;
+                }
+                else
+                {
+                    ucBefunde.btnSearchELGADocuments.Visible = false;
+                }
+
+                this.initControlxz();
+
                 tbBlutgruppe.Text = Klient.BlutGruppe;
                 tbRhesusfaktur.Text = Klient.Rhesusfaktor;
 
@@ -114,6 +130,7 @@ namespace PMDS.GUI
                 ucSonstige.loadMEDIZINISCHEDATEN(Klient.MEDIZINISCHE_DATEN.SONSTIGE, db);  
                 ucNuechtern.loadMEDIZINISCHEDATEN(Klient.MEDIZINISCHE_DATEN.NUECHTERN, db); 
                 ucBefunde.loadMEDIZINISCHEDATEN(Klient.MEDIZINISCHE_DATEN.Befunde, db);      //os-Performance   8 Sekunden
+
             }
 
         }
@@ -155,14 +172,11 @@ namespace PMDS.GUI
             Klient.Rhesusfaktor = tbRhesusfaktur.Text.Trim();
         }
 
-        //
-        //prüft ob alle Eingaben richtig sind.
         public bool ValidateFields()
         {
             return true;
         }
 
-        //Neu nach 05.06.2007 MDA
         private PMDS.Global.db.Global.dsMedizinischeDatenLayout.MedizinischeDatenLayoutRow GetMedizinischeDatenLayoutRow(MedizinischerTyp medTyp)
         {
             foreach (PMDS.Global.db.Global.dsMedizinischeDatenLayout.MedizinischeDatenLayoutRow r in _medVerwaltung.ALL.MedizinischeDatenLayout)
@@ -174,11 +188,6 @@ namespace PMDS.GUI
             return null;
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Einschalten
-        /// </summary>
-        //----------------------------------------------------------------------------
         private Guid Einschalten(MedDatenArgs args, Guid IDMedDatenNew, bool SetRowUnmodified)
         {
             try
@@ -197,11 +206,6 @@ namespace PMDS.GUI
             }
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Status aus AUS setzen
-        /// </summary>
-        //----------------------------------------------------------------------------
         private bool Ausschalten(MedDatenArgs args)
         {
             try
@@ -217,11 +221,6 @@ namespace PMDS.GUI
             }
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Speichert die Änderungen
-        /// </summary>
-        //----------------------------------------------------------------------------
         private bool UpdateDaten(MedDatenArgs args)
         {
             try
@@ -239,11 +238,6 @@ namespace PMDS.GUI
             }
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Löscht Daetensätze
-        /// </summary>
-        //----------------------------------------------------------------------------
         private bool DeleteDaten(MedDatenArgs[] args)
         {
             if (args.Length > 0 && ENV.HasRight(UserRights.PatientenVerwalten))
@@ -263,7 +257,6 @@ namespace PMDS.GUI
             return false;
         }
 
-        //neu nach 26.04.2007 MDA
         private void SetReadOnly()
         {
             tbBlutgruppe.ReadOnly = ReadOnly;

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
 using PMDS.Global;
 using PMDS.Global.db.ERSystem;
+using PMDSClient.Sitemap;
+using QS2.Desktop.ControlManagment.ServiceReference_01;
 
 namespace PMDS.GUI.ELGA
 {
@@ -20,11 +22,18 @@ namespace PMDS.GUI.ELGA
         public frmELGASearchPatient mainWindow = null;
         public bool IsInitialized = false;
 
+        public PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow _rSelRow = null;
         public Guid _IDPatient;
         public Guid _IDAufenthalt;
+        public string _AuthUniversalID;
         public bool abort = true;
 
         public UIGlobal UIGlobal1 = new UIGlobal();
+        public WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+
+    
+
+
 
 
 
@@ -42,7 +51,7 @@ namespace PMDS.GUI.ELGA
 
 
 
-        public void initControl(Guid IDPatient, Guid IDAufenthalt, bool SozVersNrEditable)
+        public void initControl(Guid IDPatient, Guid IDAufenthalt, bool SozVersNrEditable, string AuthUniversalID)
         {
             try
             {
@@ -50,6 +59,7 @@ namespace PMDS.GUI.ELGA
                 {
                     this._IDPatient = IDPatient;
                     this._IDAufenthalt = IDAufenthalt;
+                    this._AuthUniversalID = AuthUniversalID;
 
                     this.mainWindow.AcceptButton = this.btnSave;
                     this.mainWindow.CancelButton = this.btnAbort;
@@ -63,6 +73,10 @@ namespace PMDS.GUI.ELGA
                     this.clearUI();
                     this.loadData();
 
+                    if (ENV.adminSecure)
+                    {
+                        this.txtSozVersNr.ReadOnly = false;
+                    }
 
                     this.IsInitialized = true;
                 }
@@ -79,6 +93,8 @@ namespace PMDS.GUI.ELGA
             try
             {
                 this.txtSozVersNr.Text = "";
+                this.dsManage1.ELGASearchPatients.Clear();
+                this.gridFound.Refresh();
             }
             catch (Exception ex)
             {
@@ -104,15 +120,8 @@ namespace PMDS.GUI.ELGA
                                }).First();
 
                     this.txtSozVersNr.Text = rPatient.VersicherungsNr.Trim();
-
-
-
-
-
-
-                    //PMDS.db.Entities.Patient rPatient = db.Patient.Where(o => o.ID == this._IDPatient).First();
+                    //this.txtSozVersNr.Text = "SVNR01";
                 }
-
 
             }
             catch (Exception ex)
@@ -120,21 +129,25 @@ namespace PMDS.GUI.ELGA
                 throw new Exception("contELGASearchPatient.loadData: " + ex.ToString());
             }
         }
+
         public bool validateData()
         {
             try
             {
-                //this.errorProvider1.SetError(this.txtELGAUser, "");
-                //this.errorProvider1.SetError(this.txtELGAPwd, "");
-                //this.errorProvider1.SetError(this.txtELGAPwdWdhlg, "");
+                this.errorProvider1.SetError(this.txtSozVersNr, "");
 
-                //if (this.txtELGAUser.Text.Trim() == "")
-                //{
-                //    this.errorProvider1.SetError(this.txtELGAUser, "Error");
-                //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Benutzer: Eingabe erforderlich!", "", MessageBoxButtons.OK);
-                //    return false;
-                //}
-
+                if (this.txtSozVersNr.Text.Trim() == "")
+                {
+                    this.errorProvider1.SetError(this.txtSozVersNr, "Error");
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                    return false;
+                }
+                if (this.txtSozVersNr.Text.Trim().Length < 2)
+                {
+                    this.errorProvider1.SetError(this.txtSozVersNr, "Error");
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Mind. 2 Zeichen Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                    return false;
+                }
 
 
                 return true;
@@ -144,17 +157,67 @@ namespace PMDS.GUI.ELGA
                 throw new Exception("contELGASearchPatient.validateData: " + ex.ToString());
             }
         }
-
         public bool searchData()
         {
             try
             {
+                if (!ELGABusiness.checkELGASessionActive(true))
+                {
+                    return false;
+                }
+
+                if (!this.validateData())
+                {
+                    return false;
+                }
+
+                this.dsManage1.ELGASearchPatients.Clear();
+                this.gridFound.Refresh();
+
+                ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryPatients(this.txtSozVersNr.Text.Trim(), ELGABALeTypeQueryPatients.SozVersNr, false);
+                if (parOuot.lPatientsk__BackingField.Count() > 0)
+                {
+                    foreach (ELGAPatientDTO elgaPatient in parOuot.lPatientsk__BackingField)
+                    {
+                        dsManage.ELGASearchPatientsRow rPatientFound = this.sqlManange1.getNewELGAPatient(ref this.dsManage1);
+
+                        rPatientFound.ID = elgaPatient.IDk__BackingField;
+                        rPatientFound.NachnameFirma = elgaPatient.familyNamek__BackingField.Trim();
+                        rPatientFound.Vorname = elgaPatient.givenNamek__BackingField.Trim();
+                        rPatientFound.PLZ = elgaPatient.zipk__BackingField.Trim();
+                        rPatientFound.Ort = elgaPatient.cityk__BackingField.Trim();
+                        rPatientFound.Land = elgaPatient.countryk__BackingField.Trim();
+                        rPatientFound.Strasse = elgaPatient.streetAddressk__BackingField.Trim();
+                        
+                        if (!string.IsNullOrEmpty(elgaPatient.businessPhonek__BackingField.Trim()))
+                        {
+                            rPatientFound.Tel = elgaPatient.businessPhonek__BackingField.Trim();
+                        }
+                        else
+                        {
+                            rPatientFound.Tel = elgaPatient.homePhonek__BackingField.Trim();
+                        }
+
+                        foreach (ELGAPidsDTO rPid in elgaPatient.ELGAPidsk__BackingField)
+                        {
+                            if (rPid.authUniversalIDk__BackingField.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDTypek__BackingField.ToLower() == ("HC").ToLower())
+                            {
+                                rPatientFound.SozVersNr = rPid.patientIDk__BackingField.Trim();
+                            }
+                            else if (rPid.authUniversalIDk__BackingField.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower())
+                            {
+                                rPatientFound.PatientLocalID = rPid.patientIDk__BackingField.Trim();
+                            }
+                        }
+                    }
+                }
+                this.gridFound.Refresh();
 
 
-
-
-                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Benutzereinstellungen wurden geändert"), null,
-                                                ELGABusiness.eTypeProt.UserSettingsChanged, ELGABusiness.eELGAFunctions.none, "Benutzer", "", null, this._IDPatient, this._IDAufenthalt, "");
+                string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche nach Soz.Vers.Nr '{0}' durchgeführt");
+                sProt = string.Format(sProt, this.txtSozVersNr.Text.Trim());
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche"), null,
+                                                ELGABusiness.eTypeProt.QueryPatients, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, this._IDAufenthalt, sProt);
 
                 return true;
             }
@@ -165,13 +228,21 @@ namespace PMDS.GUI.ELGA
         }
 
 
-        public bool selectData()
+        public bool selectData(bool withMsgBox)
         {
             try
             {
+                Infragistics.Win.UltraWinGrid.UltraGridRow gridRow = null;
+                this._rSelRow = this.getSelectedRow(withMsgBox, ref gridRow);
+                if (this._rSelRow != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
 
-
-                return true;
             }
             catch (Exception ex)
             {
@@ -251,7 +322,7 @@ namespace PMDS.GUI.ELGA
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                if (this.selectData())
+                if (this.selectData(true))
                 {
                     this.abort = false;
                     this.mainWindow.Close();
@@ -329,6 +400,11 @@ namespace PMDS.GUI.ELGA
             {
                 if (this.UIGlobal1.evDoubleClickOK(ref sender, ref e, (Infragistics.Win.UltraWinGrid.UltraGrid)this.gridFound))
                 {
+                    if (this.selectData(false))
+                    {
+                        this.abort = false;
+                        this.mainWindow.Close();
+                    }
                 }
 
             }
