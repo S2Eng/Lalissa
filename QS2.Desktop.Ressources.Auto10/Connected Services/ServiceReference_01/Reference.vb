@@ -12605,11 +12605,11 @@ Namespace ServiceReference_01
         
         Private Errorsk__BackingFieldField As String
         
-        Private LocalIDk__BackingFieldField As String
-        
         Private MessageExceptionNrk__BackingFieldField As Integer
         
         Private MessageExceptionk__BackingFieldField As String
+        
+        Private PatientLocalIDk__BackingFieldField As String
         
         Private bErrorsFoundk__BackingFieldField As Boolean
         
@@ -12676,19 +12676,6 @@ Namespace ServiceReference_01
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute(Name:="<LocalID>k__BackingField", IsRequired:=true)>  _
-        Public Property LocalIDk__BackingField() As String
-            Get
-                Return Me.LocalIDk__BackingFieldField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.LocalIDk__BackingFieldField, value) <> true) Then
-                    Me.LocalIDk__BackingFieldField = value
-                    Me.RaisePropertyChanged("LocalIDk__BackingField")
-                End If
-            End Set
-        End Property
-        
         <System.Runtime.Serialization.DataMemberAttribute(Name:="<MessageExceptionNr>k__BackingField", IsRequired:=true)>  _
         Public Property MessageExceptionNrk__BackingField() As Integer
             Get
@@ -12711,6 +12698,19 @@ Namespace ServiceReference_01
                 If (Object.ReferenceEquals(Me.MessageExceptionk__BackingFieldField, value) <> true) Then
                     Me.MessageExceptionk__BackingFieldField = value
                     Me.RaisePropertyChanged("MessageExceptionk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<PatientLocalID>k__BackingField", IsRequired:=true)>  _
+        Public Property PatientLocalIDk__BackingField() As String
+            Get
+                Return Me.PatientLocalIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PatientLocalIDk__BackingFieldField, value) <> true) Then
+                    Me.PatientLocalIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("PatientLocalIDk__BackingField")
                 End If
             End Set
         End Property
@@ -13778,6 +13778,8 @@ Namespace ServiceReference_01
         
         Private IDk__BackingFieldField As System.Guid
         
+        Private authUniversalIDk__BackingFieldField As String
+        
         Private ehrPIDTypek__BackingFieldField As Integer
         
         Private patientIDTypek__BackingFieldField As String
@@ -13816,6 +13818,19 @@ Namespace ServiceReference_01
                 If (Me.IDk__BackingFieldField.Equals(value) <> true) Then
                     Me.IDk__BackingFieldField = value
                     Me.RaisePropertyChanged("IDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<authUniversalID>k__BackingField", IsRequired:=true)>  _
+        Public Property authUniversalIDk__BackingField() As String
+            Get
+                Return Me.authUniversalIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.authUniversalIDk__BackingFieldField, value) <> true) Then
+                    Me.authUniversalIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("authUniversalIDk__BackingField")
                 End If
             End Set
         End Property

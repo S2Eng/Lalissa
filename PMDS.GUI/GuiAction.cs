@@ -174,11 +174,8 @@ namespace PMDS.GUI
             
                 if (bOK && GuiActionDone != null)
                 {
-                    if (ent.ucEntlassung1.chkVerstorben.Checked)
-                    {
-                        PMDSBusinessUI bUI = new PMDSBusinessUI();
-                        bUI.genCDA(idPatient, pat.Aufenthalt.ID, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief);
-                    }
+                    PMDSBusinessUI bUI = new PMDSBusinessUI();
+                    bUI.genCDA(idPatient, pat.Aufenthalt.ID, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked);
 
                     GuiActionDone(SiteEvents.Entlassen);
                 }
@@ -949,7 +946,7 @@ namespace PMDS.GUI
                 if (!frmUrlaub.ucUrlaub21.abort)
                 {
                     PMDSBusinessUI bUI = new PMDSBusinessUI();
-                    bUI.genCDA(idPatient, ENV.IDAUFENTHALT, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht);
+                    bUI.genCDA(idPatient, ENV.IDAUFENTHALT, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false);
 
                     if (GuiActionDone != null)
                         GuiActionDone(SiteEvents.Urlaub);

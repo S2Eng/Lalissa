@@ -157,49 +157,74 @@ namespace PMDS.GUI.ELGA
                     return;
                 }
 
-                frmELGASearchPatient frmELGASearchPatient1 = new frmELGASearchPatient();
-                frmELGASearchPatient1.initControl(this._IDKlient, this._IDAufenthalt, true);
-                frmELGASearchPatient1.ShowDialog();
-                if (!frmELGASearchPatient1.contELGASearchPatient1.abort)
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    ELGAParOutDto parOut = this.WCFServiceClient1.ELGAUpdatePatient(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID, this._IDAufenthalt.ToString().ToLower(), ELGABALeTypeUpdatePatients.CreateLocalPatientID);
-                    if (parOut.bOKk__BackingField)
+                    var rKlinik = (from k in db.Klinik
+                                   where k.ID == ENV.IDKlinik
+                                   select new
+                                   {
+                                       k.ID,
+                                       k.ELGA_OID,
+                                       k.AuthUniversalID,
+                                   }).First();
+                    if (rKlinik.AuthUniversalID.Trim() == "")
                     {
+                        throw new Exception("doKontaktbestätigung: rKlinik.AuthUniversalID='' not allowed!");
+                    }
+
+                    frmELGASearchPatient frmELGASearchPatient1 = new frmELGASearchPatient();
+                    frmELGASearchPatient1.initControl(this._IDKlient, this._IDAufenthalt, true, rKlinik.AuthUniversalID.Trim());
+                    frmELGASearchPatient1.ShowDialog();
+                    if (!frmELGASearchPatient1.contELGASearchPatient1.abort)
+                    {
+                        bool bPatientLocalIDOK = false;
                         string ELGALocalIDStored = "";
-                        foreach (ELGAPidsDTO rPid in parOut.lPatientsk__BackingField[0].ELGAPidsk__BackingField)
+                        if (frmELGASearchPatient1.contELGASearchPatient1._rSelRow.PatientLocalID.Trim() == "")
                         {
-                            if (rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower())
+                            ELGAParOutDto parOut = this.WCFServiceClient1.ELGAUpdatePatient(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID, this._IDAufenthalt.ToString().ToLower(), ELGABALeTypeUpdatePatients.CreateLocalPatientID);
+                            if (parOut.bOKk__BackingField)
                             {
-                                ELGALocalIDStored = rPid.IDELGAPatientsk__BackingField.Trim();
+                                foreach (ELGAPidsDTO rPid in parOut.lPatientsk__BackingField[0].ELGAPidsk__BackingField)
+                                {
+                                    if (rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower())
+                                    {
+                                        ELGALocalIDStored = rPid.IDELGAPatientsk__BackingField.Trim();
+                                        bPatientLocalIDOK = true;
+                                    }
+                                }
                             }
                         }
-
-                        ELGAParOutDto parOutContact = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
-                        if (!parOutContact.bOKk__BackingField)
+                        else
                         {
-                            throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
+                            ELGALocalIDStored = frmELGASearchPatient1.contELGASearchPatient1._rSelRow.PatientLocalID.Trim();
+                            bPatientLocalIDOK = true;
                         }
-
-                        using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                        if (bPatientLocalIDOK)
                         {
+                            ELGAParOutDto parOutContact = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
+                            if (!parOutContact.bOKk__BackingField)
+                            {
+                                throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
+                            }
+
                             var rBenutzer = (from b in db.Benutzer
-                                             where b.ID == ENV.USERID
-                                             select new
-                                             {
-                                                 b.ID,
-                                                 b.Nachname,
-                                                 b.Vorname,
-                                                 b.Benutzer1
-                                             }).First();
+                                                where b.ID == ENV.USERID
+                                                select new
+                                                {
+                                                    b.ID,
+                                                    b.Nachname,
+                                                    b.Vorname,
+                                                    b.Benutzer1
+                                                }).First();
 
                             var rPatient = (from p in db.Patient
-                                             where p.ID == this._IDKlient
-                                             select new
-                                             {
-                                                 p.ID,
-                                                 p.Nachname,
-                                                 p.Vorname
-                                             }).First();
+                                                where p.ID == this._IDKlient
+                                                select new
+                                                {
+                                                    p.ID,
+                                                    p.Nachname,
+                                                    p.Vorname
+                                                }).First();
 
                             //PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
                             PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
@@ -225,10 +250,10 @@ namespace PMDS.GUI.ELGA
 
                             this.loadData(this._IDKlient, this._IDAufenthalt);
                         }
-                    }
-                    else
-                    {
-                        bool bAborted = true;
+                        else
+                        {
+                            throw new Exception("contELGAKlient.doKontaktbestätigung: PatientLocalID not ok for IDKlient '" + this._IDKlient.ToString() + "'!");
+                        }
                     }
                 }
 

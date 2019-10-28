@@ -25,6 +25,7 @@ namespace PMDS.GUI.ELGA
         public PMDS.Global.db.ERSystem.dsManage.ELGASearchPatientsRow _rSelRow = null;
         public Guid _IDPatient;
         public Guid _IDAufenthalt;
+        public string _AuthUniversalID;
         public bool abort = true;
 
         public UIGlobal UIGlobal1 = new UIGlobal();
@@ -50,7 +51,7 @@ namespace PMDS.GUI.ELGA
 
 
 
-        public void initControl(Guid IDPatient, Guid IDAufenthalt, bool SozVersNrEditable)
+        public void initControl(Guid IDPatient, Guid IDAufenthalt, bool SozVersNrEditable, string AuthUniversalID)
         {
             try
             {
@@ -58,6 +59,7 @@ namespace PMDS.GUI.ELGA
                 {
                     this._IDPatient = IDPatient;
                     this._IDAufenthalt = IDAufenthalt;
+                    this._AuthUniversalID = AuthUniversalID;
 
                     this.mainWindow.AcceptButton = this.btnSave;
                     this.mainWindow.CancelButton = this.btnAbort;
@@ -198,10 +200,13 @@ namespace PMDS.GUI.ELGA
 
                         foreach (ELGAPidsDTO rPid in elgaPatient.ELGAPidsk__BackingField)
                         {
-                            if (rPid.patientIDTypek__BackingField.ToLower() == ("HC").ToLower())
+                            if (rPid.authUniversalIDk__BackingField.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDTypek__BackingField.ToLower() == ("HC").ToLower())
                             {
-                                rPatientFound.IDElga = rPid.patientIDk__BackingField.Trim();
-                                rPatientFound.SozVersNr = rPatientFound.IDElga;
+                                rPatientFound.SozVersNr = rPid.patientIDk__BackingField.Trim();
+                            }
+                            else if (rPid.authUniversalIDk__BackingField.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower())
+                            {
+                                rPatientFound.PatientLocalID = rPid.patientIDk__BackingField.Trim();
                             }
                         }
                     }

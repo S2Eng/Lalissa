@@ -512,6 +512,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsKlient.xsd</DependentUpon>
     </Compile>
+    <Compile Include="db\ERSystem\dsManage.cs">
+      <DependentUpon>dsManage.xsd</DependentUpon>
+    </Compile>
     <Compile Include="db\ERSystem\dsManage.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

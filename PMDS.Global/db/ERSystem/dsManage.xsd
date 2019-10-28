@@ -82,7 +82,7 @@
               <xs:element name="Land" msprop:Generator_ColumnVarNameInTable="columnLand" msprop:Generator_ColumnPropNameInRow="Land" msprop:Generator_ColumnPropNameInTable="LandColumn" msprop:Generator_UserColumnName="Land" type="xs:string" />
               <xs:element name="Tel" msprop:Generator_ColumnVarNameInTable="columnTel" msprop:Generator_ColumnPropNameInRow="Tel" msprop:Generator_ColumnPropNameInTable="TelColumn" msprop:Generator_UserColumnName="Tel" type="xs:string" />
               <xs:element name="SozVersNr" msprop:Generator_ColumnVarNameInTable="columnSozVersNr" msprop:Generator_ColumnPropNameInRow="SozVersNr" msprop:Generator_ColumnPropNameInTable="SozVersNrColumn" msprop:Generator_UserColumnName="SozVersNr" type="xs:string" />
-              <xs:element name="IDElga" msprop:Generator_ColumnVarNameInTable="columnIDElga" msprop:Generator_ColumnPropNameInRow="IDElga" msprop:Generator_ColumnPropNameInTable="IDElgaColumn" msprop:Generator_UserColumnName="IDElga" type="xs:string" />
+              <xs:element name="PatientLocalID" msprop:Generator_ColumnVarNameInTable="columnPatientLocalID" msprop:Generator_ColumnPropNameInRow="PatientLocalID" msprop:Generator_ColumnPropNameInTable="PatientLocalIDColumn" msprop:Generator_UserColumnName="PatientLocalID" type="xs:string" />
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
             </xs:sequence>
           </xs:complexType>

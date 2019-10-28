@@ -1333,7 +1333,7 @@ namespace PMDS.GUI
             }
         }
 
-        public void genCDA(Guid IDPatient, Guid IDAufenthalt, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA)
+        public void genCDA(Guid IDPatient, Guid IDAufenthalt, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA, bool verstorbenJN)
         {
             try
             {
@@ -1389,7 +1389,7 @@ namespace PMDS.GUI
                         bool hasRight = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPflegerischerEntlassungsbrief, false);
 
                         this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight, 
-                                                    null);
+                                                    null, verstorbenJN);
 
                         if (rAufenthalt.ELGAKontaktbestätigungJN)
                         {
@@ -1416,12 +1416,12 @@ namespace PMDS.GUI
                         if (res != DialogResult.OK && !frmPrintPflegebegleitschreibenInfo1.saveToArchive)
                         {
                             this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                        (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value);
+                                                        (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN);
                         }
                         else
                         {
                             this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                        null);
+                                                        null, verstorbenJN);
                         }
                     }
                     else
@@ -1439,7 +1439,7 @@ namespace PMDS.GUI
         public void prieviewSendSaveCDA(Guid IDPatient, Guid IDAufenthalt, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA, 
                                         Guid IDDocument, string ClinicalDocumentSetID, int VersionsNr,
                                         string Documentname, string Stylesheet, string PatientELGALocalID, PMDS.db.Entities.ERModellPMDSEntities db, DateTime dNow,
-                                        bool hasRight, Nullable<Guid> IDEinrichtungEmpfänger)
+                                        bool hasRight, Nullable<Guid> IDEinrichtungEmpfänger, bool verstorbenJN)
         {
             try
             {
@@ -1459,6 +1459,7 @@ namespace PMDS.GUI
                 string msg1 = "";
                 frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
                 frmCDAViewer1.initControl(Documentname, "", ClinicalDocumentSetID, resCda.xml, CDAeTypeCDA.ToString(), Stylesheet, contCDAViewer.eTypeUI.SaveToElga);
+                frmCDAViewer1.contCDAViewer1.btnSaveDocuToELGA.Visible = !verstorbenJN;
                 frmCDAViewer1.ShowDialog();
                 if (!frmCDAViewer1.contCDAViewer1.abort)
                 {

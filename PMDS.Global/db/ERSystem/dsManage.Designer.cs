@@ -1540,7 +1540,7 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnSozVersNr;
             
-            private global::System.Data.DataColumn columnIDElga;
+            private global::System.Data.DataColumn columnPatientLocalID;
             
             private global::System.Data.DataColumn columnID;
             
@@ -1643,9 +1643,9 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IDElgaColumn {
+            public global::System.Data.DataColumn PatientLocalIDColumn {
                 get {
-                    return this.columnIDElga;
+                    return this.columnPatientLocalID;
                 }
             }
             
@@ -1694,7 +1694,7 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ELGASearchPatientsRow AddELGASearchPatientsRow(string NachnameFirma, string Vorname, string Strasse, string PLZ, string Ort, string Land, string Tel, string SozVersNr, string IDElga, System.Guid ID) {
+            public ELGASearchPatientsRow AddELGASearchPatientsRow(string NachnameFirma, string Vorname, string Strasse, string PLZ, string Ort, string Land, string Tel, string SozVersNr, string PatientLocalID, System.Guid ID) {
                 ELGASearchPatientsRow rowELGASearchPatientsRow = ((ELGASearchPatientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NachnameFirma,
@@ -1705,7 +1705,7 @@ namespace PMDS.Global.db.ERSystem {
                         Land,
                         Tel,
                         SozVersNr,
-                        IDElga,
+                        PatientLocalID,
                         ID};
                 rowELGASearchPatientsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowELGASearchPatientsRow);
@@ -1737,7 +1737,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnLand = base.Columns["Land"];
                 this.columnTel = base.Columns["Tel"];
                 this.columnSozVersNr = base.Columns["SozVersNr"];
-                this.columnIDElga = base.Columns["IDElga"];
+                this.columnPatientLocalID = base.Columns["PatientLocalID"];
                 this.columnID = base.Columns["ID"];
             }
             
@@ -1760,8 +1760,8 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnTel);
                 this.columnSozVersNr = new global::System.Data.DataColumn("SozVersNr", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSozVersNr);
-                this.columnIDElga = new global::System.Data.DataColumn("IDElga", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIDElga);
+                this.columnPatientLocalID = new global::System.Data.DataColumn("PatientLocalID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPatientLocalID);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
@@ -1774,7 +1774,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnLand.AllowDBNull = false;
                 this.columnTel.AllowDBNull = false;
                 this.columnSozVersNr.AllowDBNull = false;
-                this.columnIDElga.AllowDBNull = false;
+                this.columnPatientLocalID.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
             }
@@ -3361,12 +3361,12 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string IDElga {
+            public string PatientLocalID {
                 get {
-                    return ((string)(this[this.tableELGASearchPatients.IDElgaColumn]));
+                    return ((string)(this[this.tableELGASearchPatients.PatientLocalIDColumn]));
                 }
                 set {
-                    this[this.tableELGASearchPatients.IDElgaColumn] = value;
+                    this[this.tableELGASearchPatients.PatientLocalIDColumn] = value;
                 }
             }
             
