@@ -559,6 +559,8 @@
     <Compile Include="db\ERSystem\sqlVO.Designer.cs">
       <DependentUpon>sqlVO.cs</DependentUpon>
     </Compile>
+    <Compile Include="db\ERSystem\TestUnitsHL.cs" />
+    <Compile Include="db\ERSystem\TestUnitsOS.cs" />
     <Compile Include="db\Global\dsPatientAerzte.cs">
       <DependentUpon>dsPatientAerzte.xsd</DependentUpon>
     </Compile>

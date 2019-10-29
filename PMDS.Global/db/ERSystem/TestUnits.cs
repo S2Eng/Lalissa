@@ -31,6 +31,11 @@ namespace PMDS.Global.db.ERSystem
                 //this.newRessources2018();
                 //this.newRessources2019();
 
+                TestUnitsOS TestUnitsOS1 = new TestUnitsOS();
+                TestUnitsHL TestUnitsHL1 = new TestUnitsHL();
+                //TestUnitsOS1.newRessources();
+                //TestUnitsHL1.newRessources();
+
                 //PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
                 //string sPfadArchiv = b.getPfadArchiv();
 
