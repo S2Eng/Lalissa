@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelAutoUpdateResFromITSCont = new System.Windows.Forms.Panel();
             this.txtResFileToImport = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -39,6 +41,7 @@
             this.lblSourceDB = new Infragistics.Win.Misc.UltraLabel();
             this.lblResFileToImport = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.btnUpdatePEBerufsstände = new Infragistics.Win.Misc.UltraButton();
             this.btnCheckVOAndUpdate = new Infragistics.Win.Misc.UltraButton();
             this.chkNoProtocol = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.lblInfoOperation = new Infragistics.Win.Misc.UltraLabel();
@@ -47,6 +50,11 @@
             this.btnCopyOldPlansIntoNewSystemAndDeleteOldPlans = new Infragistics.Win.Misc.UltraButton();
             this.ultraTabControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.lblInfo = new Infragistics.Win.Misc.UltraLabel();
+            this.udteFrom = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
+            this.udteTo = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
+            this.lblFrom = new Infragistics.Win.Misc.UltraLabel();
+            this.lblTo = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTabPageControl1.SuspendLayout();
             this.panelAutoUpdateResFromITSCont.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtResFileToImport)).BeginInit();
@@ -55,6 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoProtocol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
             this.ultraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.udteFrom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udteTo)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
@@ -129,6 +139,12 @@
             // 
             // ultraTabPageControl2
             // 
+            this.ultraTabPageControl2.Controls.Add(this.udteTo);
+            this.ultraTabPageControl2.Controls.Add(this.udteFrom);
+            this.ultraTabPageControl2.Controls.Add(this.lblTo);
+            this.ultraTabPageControl2.Controls.Add(this.lblFrom);
+            this.ultraTabPageControl2.Controls.Add(this.lblInfo);
+            this.ultraTabPageControl2.Controls.Add(this.btnUpdatePEBerufsstände);
             this.ultraTabPageControl2.Controls.Add(this.btnCheckVOAndUpdate);
             this.ultraTabPageControl2.Controls.Add(this.chkNoProtocol);
             this.ultraTabPageControl2.Controls.Add(this.lblInfoOperation);
@@ -138,6 +154,15 @@
             this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(921, 609);
+            // 
+            // btnUpdatePEBerufsstände
+            // 
+            this.btnUpdatePEBerufsstände.Location = new System.Drawing.Point(11, 226);
+            this.btnUpdatePEBerufsstände.Name = "btnUpdatePEBerufsstände";
+            this.btnUpdatePEBerufsstände.Size = new System.Drawing.Size(394, 32);
+            this.btnUpdatePEBerufsstände.TabIndex = 107;
+            this.btnUpdatePEBerufsstände.Text = "PE - Update IDBerufsstand alle Datensätze wo Null";
+            this.btnUpdatePEBerufsstände.Click += new System.EventHandler(this.btnUpdatePEBerufsstände_Click);
             // 
             // btnCheckVOAndUpdate
             // 
@@ -163,9 +188,9 @@
             // 
             this.lblInfoOperation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            appearance1.TextVAlignAsString = "Middle";
-            this.lblInfoOperation.Appearance = appearance1;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.TextVAlignAsString = "Middle";
+            this.lblInfoOperation.Appearance = appearance3;
             this.lblInfoOperation.Location = new System.Drawing.Point(8, 581);
             this.lblInfoOperation.Name = "lblInfoOperation";
             this.lblInfoOperation.Size = new System.Drawing.Size(908, 25);
@@ -225,6 +250,50 @@
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(921, 609);
             // 
+            // lblInfo
+            // 
+            this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblInfo.Location = new System.Drawing.Point(8, 572);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(908, 34);
+            this.lblInfo.TabIndex = 108;
+            this.lblInfo.Text = "Info";
+            // 
+            // udteFrom
+            // 
+            this.udteFrom.Location = new System.Drawing.Point(60, 201);
+            this.udteFrom.Name = "udteFrom";
+            this.udteFrom.Size = new System.Drawing.Size(94, 21);
+            this.udteFrom.TabIndex = 109;
+            // 
+            // udteTo
+            // 
+            this.udteTo.Location = new System.Drawing.Point(200, 201);
+            this.udteTo.Name = "udteTo";
+            this.udteTo.Size = new System.Drawing.Size(94, 21);
+            this.udteTo.TabIndex = 110;
+            // 
+            // lblFrom
+            // 
+            appearance2.TextVAlignAsString = "Middle";
+            this.lblFrom.Appearance = appearance2;
+            this.lblFrom.Location = new System.Drawing.Point(12, 201);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Size = new System.Drawing.Size(45, 21);
+            this.lblFrom.TabIndex = 111;
+            this.lblFrom.Text = "Von:";
+            // 
+            // lblTo
+            // 
+            appearance1.TextVAlignAsString = "Middle";
+            this.lblTo.Appearance = appearance1;
+            this.lblTo.Location = new System.Drawing.Point(169, 201);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(45, 21);
+            this.lblTo.TabIndex = 112;
+            this.lblTo.Text = "bis";
+            // 
             // frmSys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,9 +310,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtResFileToImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSourceDB)).EndInit();
             this.ultraTabPageControl2.ResumeLayout(false);
+            this.ultraTabPageControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkNoProtocol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
             this.ultraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.udteFrom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udteTo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -266,5 +338,11 @@
         public Infragistics.Win.Misc.UltraLabel lblInfoOperation;
         private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkNoProtocol;
         private Infragistics.Win.Misc.UltraButton btnCheckVOAndUpdate;
+        private Infragistics.Win.Misc.UltraButton btnUpdatePEBerufsstände;
+        private Infragistics.Win.Misc.UltraLabel lblInfo;
+        private Infragistics.Win.UltraWinEditors.UltraDateTimeEditor udteTo;
+        private Infragistics.Win.UltraWinEditors.UltraDateTimeEditor udteFrom;
+        private Infragistics.Win.Misc.UltraLabel lblTo;
+        private Infragistics.Win.Misc.UltraLabel lblFrom;
     }
 }

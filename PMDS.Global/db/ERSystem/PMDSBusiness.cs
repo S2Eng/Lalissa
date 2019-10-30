@@ -33,6 +33,15 @@ namespace PMDS.DB
 
     public class PMDSBusiness
     {
+        public class PEs
+        {
+            public Guid IDPe { get; set; }
+            public Guid IDBenutzer { get; set; }
+            public Guid IDAufenthalt { get; set; }
+
+        }
+
+
 
         public class retBusiness
         {
@@ -10474,6 +10483,77 @@ namespace PMDS.DB
             catch (Exception ex)
             {
                 throw new Exception("PMDSBusiness.checkVO: " + ex.ToString());
+            }
+        }
+
+
+
+        public void sys_PEUpdateIDBerusstandWhereNull(DateTime dFrom, DateTime dTo, PMDS.db.Entities.ERModellPMDSEntities db, Infragistics.Win.Misc.UltraLabel lbl,
+                                                       ref System.Collections.Generic.List<Guid> lPEOK, ref System.Collections.Generic.List<Guid> lPEError)
+        {
+            Nullable<Guid> IDPETmp = null;
+            try
+            {
+                var tPE = (from pe in db.PflegeEintrag
+                           where pe.Zeitpunkt >= dFrom.Date && pe.Zeitpunkt <= dTo.Date && pe.IDBerufsstand == null
+                           select new
+                           {
+                               pe.ID,
+                               pe.IDBenutzer,
+                               pe.IDAufenthalt
+                           });
+
+                System.Collections.Generic.Dictionary<Guid, PEs> lPe2 = new System.Collections.Generic.Dictionary<Guid, PEs>();
+                foreach (var r in tPE)
+                {
+                    lPe2.Add(System.Guid.NewGuid(), new PEs() { IDPe = r.ID, IDBenutzer = r.IDBenutzer.Value,  IDAufenthalt  = r.IDAufenthalt });
+                }
+
+                string iTotal = tPE.Count().ToString();
+                int iCounter = 0;
+                if (lPe2.Count() > 0)
+                {
+                    foreach (var valPair2 in lPe2)
+                    {
+                        try
+                        {
+                            IDPETmp = valPair2.Key;
+
+                            var rBen = (from b in db.Benutzer where b.ID == valPair2.Value.IDBenutzer
+                                                select new
+                                                {
+                                                    b.ID,
+                                                    b.IDBerufsstand
+                                                }).First();
+
+                            var rPEUpdate = db.PflegeEintrag.Where(p => p.ID == valPair2.Value.IDPe &&  p.IDAufenthalt == valPair2.Value.IDAufenthalt).First();
+                            rPEUpdate.IDBerufsstand = rBen.IDBerufsstand;
+                            db.SaveChanges();
+
+                            iCounter += 1;
+                            lPEOK.Add(valPair2.Key);
+                            lbl.Invoke(new Action(() => lbl.Text = "DS " + iCounter.ToString() + " from " + iTotal));
+                            System.Windows.Forms.Application.DoEvents();
+                        }
+                        catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                        {
+                            lPEError.Add(IDPETmp.Value);
+                        }
+                        catch (Exception ex)
+                        {
+                            lPEError.Add(IDPETmp.Value);
+                        }
+                    }
+                }
+                
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(PMDS.DB.PMDSBusiness.getDbEntityValidationException2(ex, "PMDSBusinessUI.sys_PEUpdateIDBerusstandWhereNull()"));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sys_PEUpdateIDBerusstandWhereNull.checkVO: " + ex.ToString());
             }
         }
         public void copyUpdateZusatzwertePEIDGruppe2(Guid IDPEOrig2, PMDS.db.Entities.ERModellPMDSEntities db)
