@@ -402,7 +402,7 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-              
+                
             }
             catch (Exception ex)
             {

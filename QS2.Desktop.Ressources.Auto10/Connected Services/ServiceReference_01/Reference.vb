@@ -12609,8 +12609,6 @@ Namespace ServiceReference_01
         
         Private MessageExceptionk__BackingFieldField As String
         
-        Private PatientLocalIDk__BackingFieldField As String
-        
         Private bErrorsFoundk__BackingFieldField As Boolean
         
         Private bOKk__BackingFieldField As Boolean
@@ -12698,19 +12696,6 @@ Namespace ServiceReference_01
                 If (Object.ReferenceEquals(Me.MessageExceptionk__BackingFieldField, value) <> true) Then
                     Me.MessageExceptionk__BackingFieldField = value
                     Me.RaisePropertyChanged("MessageExceptionk__BackingField")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(Name:="<PatientLocalID>k__BackingField", IsRequired:=true)>  _
-        Public Property PatientLocalIDk__BackingField() As String
-            Get
-                Return Me.PatientLocalIDk__BackingFieldField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.PatientLocalIDk__BackingFieldField, value) <> true) Then
-                    Me.PatientLocalIDk__BackingFieldField = value
-                    Me.RaisePropertyChanged("PatientLocalIDk__BackingField")
                 End If
             End Set
         End Property
