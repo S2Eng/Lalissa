@@ -30,6 +30,8 @@ namespace PMDS.GUI.GUI.Main
         private void frmSys_Load(object sender, EventArgs e)
         {
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
+            this.udteFrom.DateTime = DateTime.Now;
+            this.udteTo.DateTime = DateTime.Now;
         }
 
         private void btnImportResFile_Click(object sender, EventArgs e)
@@ -239,5 +241,35 @@ namespace PMDS.GUI.GUI.Main
                 this.Cursor = Cursors.Default;
             }
         }
+
+        private void btnUpdatePEBerufsstände_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                System.Collections.Generic.List<Guid> lUpdated = new List<Guid>();
+                System.Collections.Generic.List<Guid> lErrors = new List<Guid>();
+                PMDSBusiness b = new PMDSBusiness();
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    b.sys_PEUpdateIDBerusstandWhereNull(this.udteFrom.DateTime.Date, this.udteTo.DateTime.Date, db, this.lblInfo, ref lUpdated, ref lErrors);
+                }
+
+                string sMsgBox = "Erfolgreich beendet!" + "\r\n" + "\r\n" + "Anzahl PEs upgedated: " + lUpdated.Count().ToString() + "\r\n" + "Anzahl Errors: " + lErrors.Count().ToString() + "";
+                System.Windows.Forms.MessageBox.Show(sMsgBox, "Update PE - IDBerufsstand", MessageBoxButtons.OK);
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
     }
 }

@@ -439,7 +439,7 @@ namespace PMDS.GUI
                         PMDS.db.Entities.PflegeEintrag rPEeOriginal = lstPEorig.First();
                         rPEeOriginal.IDGruppe = IDGruppe;
                         db.SaveChanges();
-
+                        
                         System.Collections.Generic.List<Guid> lstPEToCopy = new System.Collections.Generic.List<Guid>();
                         this.ucPflegeEintrag1.auswahlGruppeComboMulti1.AddCC2(this.ucPflegeEintrag1.Eintrag.ID, this.ucPflegeEintrag1.IsNew,
                                                                                 this.ucPflegeEintrag1.chkAlsDekursKopieren.Checked, this.ucPflegeEintrag1.Eintrag.AbzeichnenJN,

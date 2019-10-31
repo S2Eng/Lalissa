@@ -391,6 +391,25 @@ namespace PMDS
 
                         b.initUserCanSign();
 
+                        var tBenAbt = from ba in db.BenutzerAbteilung
+                                               where ba.IDBenutzer == rBenutzer.ID
+                                               select new 
+                                               { 
+                                                   ba.ID,
+                                                   ba.IDBenutzer,
+                                                   ba.IDAbteilung
+                                               };
+
+                        ENV.CurrentUserAbteilungen.Clear();
+                        foreach (var rbenAbt in tBenAbt)
+                            ENV.CurrentUserAbteilungen.Add(rbenAbt.IDAbteilung);
+
+                        ENV.UserWithAbteilungLoggedOn(rBenutzer.ID, rBenutzer.IDBerufsstand.Value, Gruppe.ByBenutzer(rBenutzer.ID), rBenutzer.PflegerJN.Value);
+
+                        ENV.COMMANDLINE_USER = "";
+                        ENV.COMMANDLINE_PWD = "";
+
+
                         QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
                         qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
                         RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
