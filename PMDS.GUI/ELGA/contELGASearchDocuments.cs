@@ -364,7 +364,7 @@ namespace PMDS.GUI.ELGA
                 PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelDocu = this.getSelectedRow(true, ref gridRow);
                 if (rSelDocu != null)
                 {
-                    this.bELGA.openCDADocument(rSelDocu.UUID.Trim(), rSelDocu.ELGAPatientLocalID.Trim(), rSelDocu.Stylesheet.Trim(), "");
+                    this.bELGA.openCDADocument(rSelDocu.UniqueID.Trim(), rSelDocu.ELGAPatientLocalID.Trim(), rSelDocu.Stylesheet.Trim(), "");
                 }
 
             }

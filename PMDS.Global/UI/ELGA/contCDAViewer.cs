@@ -18,7 +18,7 @@ namespace PMDS.GUI.ELGA
     public partial class contCDAViewer : UserControl
     {
         private string _DocumentName = "";
-        private string _DocuUUID = "";
+        private string _ELGADocuUniqueId = "";
         private string _ClinicalDocumentSetID = "";
         private string _Xml = "";
         private string _typeFile = "";
@@ -44,13 +44,13 @@ namespace PMDS.GUI.ELGA
             InitializeComponent();
         }
 
-        public void initControl(string DocumentName, string DocuUUID, string ClinicalDocumentSetID, string Xml, string typeFile, string Stylesheet,
+        public void initControl(string DocumentName, string ELGADocuUniqueId, string ClinicalDocumentSetID, string Xml, string typeFile, string Stylesheet,
                                 eTypeUI TypeUI)
         {
             try
             {
                 this._DocumentName = DocumentName;
-                this._DocuUUID = DocuUUID;
+                this._ELGADocuUniqueId = ELGADocuUniqueId;
                 this._ClinicalDocumentSetID = ClinicalDocumentSetID;
                 this._Xml = Xml;
                 this._typeFile = typeFile;
@@ -143,9 +143,9 @@ namespace PMDS.GUI.ELGA
                 string ArchivePath = "";
                 Nullable<Guid> IDOrdnerArchiv = null;
 
-                if (this._DocuUUID.Trim() == "")
+                if (this._ELGADocuUniqueId.Trim() == "")
                 {
-                    throw new Exception("contCDAViewer.saveDocuToArchive: _DocuUUID='' not allowed!");
+                    throw new Exception("contCDAViewer.saveDocuToArchive: _ELGADocuUniqueId='' not allowed!");
                 }
                 if (this._DocumentName.Trim() == "")
                 {
@@ -177,7 +177,7 @@ namespace PMDS.GUI.ELGA
                     }
 
                     return this.bELGA.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
-                                                    ENV.CurrentIDPatient, this._DocuUUID.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(), true, -1);
+                                                    ENV.CurrentIDPatient, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(), true, -1);
                 }
 
             }
