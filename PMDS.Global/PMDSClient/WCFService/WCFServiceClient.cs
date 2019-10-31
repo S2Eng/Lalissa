@@ -475,7 +475,7 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAAddContactDischarge(string ContactID)
+        public ELGAParOutDto ELGAAddContactDischarge(string LocalPatientID)
         {
             try
             {
@@ -483,7 +483,7 @@ namespace PMDSClient.Sitemap
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.ContactIDk__BackingField = ContactID.Trim();
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim() };
                 ELGAParOutDto parOutDto = client.ELGAAddContactDischarge(ref parsIn);
 
                 if (parOutDto.bErrorsFoundk__BackingField)

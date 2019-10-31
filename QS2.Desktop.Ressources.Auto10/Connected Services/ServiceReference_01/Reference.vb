@@ -12599,6 +12599,8 @@ Namespace ServiceReference_01
         <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
+        Private ContactExistsk__BackingFieldField As Boolean
+        
         Private ContactIDk__BackingFieldField As String
         
         Private DocuUUIDk__BackingFieldField As String
@@ -12632,6 +12634,19 @@ Namespace ServiceReference_01
             End Get
             Set
                 Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ContactExists>k__BackingField", IsRequired:=true)>  _
+        Public Property ContactExistsk__BackingField() As Boolean
+            Get
+                Return Me.ContactExistsk__BackingFieldField
+            End Get
+            Set
+                If (Me.ContactExistsk__BackingFieldField.Equals(value) <> true) Then
+                    Me.ContactExistsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ContactExistsk__BackingField")
+                End If
             End Set
         End Property
         

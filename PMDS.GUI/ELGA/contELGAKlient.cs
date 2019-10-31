@@ -223,9 +223,6 @@ namespace PMDS.GUI.ELGA
                             //PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
                             PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
 
-                            ELGAParOutDto parOutListContacts = this.WCFServiceClient1.ELGAQueryPatients(ELGALocalIDStored.Trim(), ELGABALeTypeQueryPatients.LocalID, true);
-                            //parOutListContacts.lPatientsk__BackingField[0].IDk__BackingField
-
                             //ELGAParOutDto parOutListContacts = this.WCFServiceClient1.ELGAListContacts(ELGALocalIDStored);
                             //ELGAParOutDto parOutListContacts = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGAKontaktbestätigungContactID.Trim());
 
@@ -233,6 +230,15 @@ namespace PMDS.GUI.ELGA
                             if (!parOutContact.bOKk__BackingField)
                             {
                                 throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
+                            }
+                            if (parOutContact.ContactExistsk__BackingField)
+                            {
+                                ELGAParOutDto parOutContactDischarge = this.WCFServiceClient1.ELGAAddContactDischarge(ELGALocalIDStored);
+                                ELGAParOutDto parOutContact2 = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
+                                if (!parOutContact2.bOKk__BackingField)
+                                {
+                                    throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact2.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
+                                }
                             }
 
                             //rPatientUpdate.bPK = frmELGASearchPatient1.contELGASearchPatient1._rSelRow.IDElga;

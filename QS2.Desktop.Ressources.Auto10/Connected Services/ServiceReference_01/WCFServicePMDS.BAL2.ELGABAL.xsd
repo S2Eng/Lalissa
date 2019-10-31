@@ -89,6 +89,7 @@
   <xs:element name="AdressDto" nillable="true" type="tns:AdressDto" />
   <xs:complexType name="ELGAParOutDto">
     <xs:sequence>
+      <xs:element name="_x003C_ContactExists_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_ContactID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_DocuUUID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
