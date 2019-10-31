@@ -6343,7 +6343,7 @@ namespace PMDS.DB
                     NewDokumenteintrag.ErstelltVon = this.LogggedOnUser().Benutzer1;
                     NewDokumenteintrag.Notiz = Notiz.Trim();
                     NewDokumenteintrag.FileStylesheet = FileStylesheet.Trim();
-                    NewDokumenteintrag.ELGAUUID = ELGAUniqueId.Trim();
+                    NewDokumenteintrag.ELGAUniqueID = ELGAUniqueId.Trim();
                     NewDokumenteintrag.ELGAÜbertragen = ELGAÜbertragen;
                     NewDokumenteintrag.IsELGADocu = IsELGADocu;
 
