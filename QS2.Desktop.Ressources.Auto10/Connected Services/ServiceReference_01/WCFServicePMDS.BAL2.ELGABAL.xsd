@@ -44,7 +44,7 @@
       <xs:element name="_x003C_CreatedTo_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
       <xs:element name="_x003C_DocumentStatus_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Documentname_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_UUID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_UniqueID_x003E_k__BackingField" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DocumentSearchDto" nillable="true" type="tns:DocumentSearchDto" />
@@ -91,7 +91,7 @@
     <xs:sequence>
       <xs:element name="_x003C_ContactExists_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_ContactID_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_DocuUUID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_DocuUniqueId_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_MessageExceptionNr_x003E_k__BackingField" type="xs:int" />
       <xs:element name="_x003C_MessageException_x003E_k__BackingField" nillable="true" type="xs:string" />

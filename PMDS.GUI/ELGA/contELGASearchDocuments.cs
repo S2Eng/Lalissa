@@ -173,7 +173,7 @@ namespace PMDS.GUI.ELGA
                     PMDSBusiness b = new PMDSBusiness();
                     PMDS.db.Entities.Aufenthalt rActAuf= b.getAktuellerAufenthaltPatient(this._IDPatient, false, db);
 
-                    ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryDocuments(rActAuf.ELGALocalID.Trim(), dCreatedFrom, dCreatedTo);
+                    ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryDocuments(rActAuf.ELGALocalID.Trim(), dCreatedFrom, dCreatedTo, false, "");
 
                     string sFieldsSearchingGda = "Felder:" + "\r\n";
                     if (this.udteCreatedFrom.Value != null)

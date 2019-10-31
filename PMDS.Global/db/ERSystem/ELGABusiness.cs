@@ -805,7 +805,7 @@ namespace PMDS.Global.db.ERSystem
                     }
 
                     bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, IDAufenthalt,
-                                                        IDPatient, parOut.DocuUUIDk__BackingField.Trim(), rAufenthalt.ELGALocalID.Trim(), DocumentName.Trim(), Stylesheet.Trim(), true, 1);
+                                                        IDPatient, parOut.DocuUniqueIdk__BackingField.Trim(), rAufenthalt.ELGALocalID.Trim(), DocumentName.Trim(), Stylesheet.Trim(), true, 1);
                 }
 
                 return true;
@@ -847,7 +847,7 @@ namespace PMDS.Global.db.ERSystem
         }
         public bool saveELGADocuToDB(ref string ArchivePath, ref Nullable<Guid> IDOrdnerArchiv, PMDS.db.Entities.ERModellPMDSEntities db, ref DateTime dNow, 
                                     ref WCFServiceClient WCFServiceClient1, Guid IDAufenthalt, Guid IDPatient, 
-                                    string ELGAUUID, string ELGAPatientLocalID, string NameDokument, string Stylesheet,
+                                    string UniqueId, string ELGAPatientLocalID, string NameDokument, string Stylesheet,
                                     bool IsELGADocu = false, int ELGAÜbertragen = -1)
         {
             try
@@ -869,10 +869,10 @@ namespace PMDS.Global.db.ERSystem
                                     p.Vorname
                                 }).First();
 
-                ELGAParOutDto parOuot = WCFServiceClient1.ELGARetrieveDocument(ELGAPatientLocalID.Trim(), ELGAUUID.Trim());
+                ELGAParOutDto parOuot = WCFServiceClient1.ELGARetrieveDocument(ELGAPatientLocalID.Trim(), UniqueId.Trim());
                 if (parOuot.lDocumentsk__BackingField.Length != 1)
                 {
-                    throw new Exception("saveELGADocu: parOuot.lDocumentsk__BackingField.Length != 1 -> ELGA-Document for UUID '" + ELGAUUID.Trim() + "' not found!");
+                    throw new Exception("saveELGADocu: parOuot.lDocumentsk__BackingField.Length != 1 -> ELGA-Document for UniqueId '" + UniqueId.Trim() + "' not found!");
                 }
                 string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokumentenstream wurde für Patient {0} gelesen");
                 sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
@@ -918,7 +918,7 @@ namespace PMDS.Global.db.ERSystem
                 Guid IDDokumenteintragReturn = System.Guid.NewGuid();
                 bool bDocuAdded = PMDSBusiness1.SaveDokumentinArchiv(FileNameELGA, DirFileNameELGA, IDOrdnerArchiv.Value, NameDokument.Trim(), ".cda",
                                                     dNow, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length,
-                                                    IDPatient, ArchivePath, ref IDDokumenteintragReturn, "", Stylesheet.Trim(), ELGAUUID.Trim(), IsELGADocu, ELGAÜbertragen);
+                                                    IDPatient, ArchivePath, ref IDDokumenteintragReturn, "", Stylesheet.Trim(), UniqueId.Trim(), IsELGADocu, ELGAÜbertragen);
 
                 string sProt2 = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument {0} für Patient {1} wurde im Archiv abgelegt");
                 sProt2 = string.Format(sProt2, NameDokument, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
