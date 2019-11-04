@@ -844,7 +844,7 @@ namespace PMDS.GUI
                 }
 
                 frmELGASearchDocuments frmELGASearchDocuments1 = new frmELGASearchDocuments();
-                frmELGASearchDocuments1.initControl(ENV.USERID);
+                frmELGASearchDocuments1.initControl(ENV.CurrentIDPatient);
                 frmELGASearchDocuments1.ShowDialog();
                 if (!frmELGASearchDocuments1.contELGASearchDocuments1.abort)
                 {
