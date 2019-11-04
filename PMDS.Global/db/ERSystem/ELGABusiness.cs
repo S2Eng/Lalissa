@@ -1019,7 +1019,7 @@ namespace PMDS.Global.db.ERSystem
                                                 a.ELGAKontaktbestätigungJN,
                                             }).First();
 
-                        if (!rPatient.ELGAAbgemeldet.Value && rAufenthalt.ELGAKontaktbestätigungJN && rAufenthalt.ELGALocalID.Trim() != "")
+                        if ((rPatient.ELGAAbgemeldet == null || !rPatient.ELGAAbgemeldet.Value) && rAufenthalt.ELGAKontaktbestätigungJN && rAufenthalt.ELGALocalID.Trim() != "")
                         {
                             return true;
                         }

@@ -427,9 +427,16 @@ namespace PMDSClient.Sitemap
 
                 if (parOutDto.bOKk__BackingField)
                 {
-                    if (parOutDto.ContactIDk__BackingField.Trim() == "")
+                    if (parOutDto.ContactExistsk__BackingField)
                     {
-                        throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.ContactID='" + parOutDto.ContactIDk__BackingField.ToString()+ "' not allowed!");
+                        return parOutDto;
+                    }
+                    else
+                    {
+                        if (parOutDto.ContactIDk__BackingField != null && parOutDto.ContactIDk__BackingField.Trim() == "")
+                        {
+                            throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.ContactID='" + parOutDto.ContactIDk__BackingField.ToString() + "' not allowed!");
+                        }
                     }
                     return parOutDto;
                 }

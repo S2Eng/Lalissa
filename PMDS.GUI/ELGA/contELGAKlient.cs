@@ -234,8 +234,15 @@ namespace PMDS.GUI.ELGA
                             if (parOutContact.ContactExistsk__BackingField)
                             {
                                 ELGAParOutDto parOutContactDischarge = this.WCFServiceClient1.ELGAAddContactDischarge(ELGALocalIDStored);
-                                ELGAParOutDto parOutContact2 = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
-                                if (!parOutContact2.bOKk__BackingField)
+
+                                string sProtStorno = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung-Storno für Patient {0} von Benutzer {1} durchgeführt.");
+                                sProtStorno = string.Format(sProtStorno, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), rBenutzer.Benutzer1.Trim());
+                                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung Storno"), null,
+                                                                ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this._IDKlient, this._IDAufenthalt, sProtStorno);
+
+
+                                parOutContact = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
+                                if (!parOutContact.bOKk__BackingField)
                                 {
                                     throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact2.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
                                 }
@@ -289,7 +296,7 @@ namespace PMDS.GUI.ELGA
                     //PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
                     PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
 
-                    ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGAKontaktbestätigungContactID.Trim());
+                    ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAAddContactDischarge(rAufenthaltUpdate.ELGALocalID.Trim());
                     if (!parOutInvContact.bOKk__BackingField)
                     {
                         throw new Exception("contELGAKlient.doKontaktbestätigungStorno: parOutInvContact.bOK=false not allowed - Error WCF-Service ELGAInvalidateContact!");
