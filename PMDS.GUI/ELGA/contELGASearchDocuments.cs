@@ -201,17 +201,17 @@ namespace PMDS.GUI.ELGA
                             foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocumentsk__BackingField)
                             {
                                 dsManage.ELGASearchDocumentsRow rDocu = this.sqlManange1.getNewELGADocument(ref this.dsManage1);
-                                rDocu.Dokument = rDocu.Dokument.Trim();
+                                rDocu.Dokument = elgaDocu.Documentnamek__BackingField.Trim();
                                 rDocu.SetErstelltAmNull();
-                                rDocu.UUID = rDocu.UUID.Trim();
-                                rDocu.UniqueID = rDocu.UniqueID.Trim();
-                                rDocu.LocigalID = rDocu.LocigalID.Trim();
-                                rDocu.Author = rDocu.Author.Trim();
-                                rDocu.Description = rDocu.Description.Trim();
-                                rDocu.DocStatus = rDocu.DocStatus.Trim();
-                                rDocu.Version = rDocu.Version.Trim();
-                                rDocu.CreationTime = rDocu.CreationTime.Trim();
-                                rDocu.Size = rDocu.Size;
+                                rDocu.UUID = elgaDocu.UUIDk__BackingField.Trim();
+                                rDocu.UniqueID = elgaDocu.UniqueIdk__BackingField.Trim();
+                                rDocu.LocigalID = elgaDocu.LogicalIdk__BackingField.Trim();
+                                rDocu.Author = elgaDocu.Authork__BackingField.Trim();
+                                rDocu.Description = elgaDocu.Descriptionk__BackingField.Trim();
+                                rDocu.DocStatus = elgaDocu.DocStatusk__BackingField.Trim();
+                                rDocu.Version = elgaDocu.Versionk__BackingField.Trim();
+                                rDocu.CreationTime = elgaDocu.CreationTimek__BackingField.Trim();
+                                rDocu.Size = elgaDocu.Sizek__BackingField;
                                 rDocu.Stylesheet = this.Stylesheet.Trim();
                                 rDocu.IDPatient = rPatient.ID;
                                 rDocu.IDAufenthalt = rActAuf.ID;
