@@ -6311,9 +6311,10 @@ namespace PMDS.DB
             }
         }
         public bool SaveDokumentinArchiv(string DateinameOrig, string VerzeichnisOrig, Guid IDOrdner, string BezeichnungFile,
-                                        string DateiType, DateTime dNow, long SizeDoku, 
-                                        Guid IDPatient, string PathArchive, ref Guid IDDokumenteintragReturn, string Notiz,
-                                        string FileStylesheet = "", string ELGAUniqueId = "", bool IsELGADocu = false, int ELGAÜbertragen = -1)
+                                            string DateiType, DateTime dNow, long SizeDoku, 
+                                            Guid IDPatient, string PathArchive, ref Guid IDDokumenteintragReturn, string Notiz,
+                                            string FileStylesheet = "", string ELGAUniqueId = "", bool IsELGADocu = false, int ELGAÜbertragen = -1, 
+                                            Nullable<Guid> IDAufenthalt = null, Nullable<Guid> IDUrlaub = null)
         {
             try
             {
@@ -6322,13 +6323,13 @@ namespace PMDS.DB
                     string FileWithPathOrig = VerzeichnisOrig.Trim() + "\\" + DateinameOrig.Trim();
                     if (!System.IO.File.Exists(FileWithPathOrig))
                     {
-                        return false;
-                        //throw new Exception("SaveDokumentinArchiv: File '" + FileWithPathOrig + "' nicht vorhanden!");
+                        //return false;
+                        throw new Exception("SaveDokumentinArchiv: File '" + FileWithPathOrig + "' nicht vorhanden!");
                     }
 
                     string SubArchivordner = dNow.Year.ToString() + "_" + dNow.Month.ToString();
                     string Archivordner = System.IO.Path.Combine(PathArchive.Trim(), SubArchivordner);
-                    string FileWithPathArchive = System.IO.Path.Combine(Archivordner, BezeichnungFile + DateiType);
+                    string FileWithPathArchive = System.IO.Path.Combine(Archivordner, BezeichnungFile + "_" + System.Guid.NewGuid().ToString() + DateiType);
                     if (!System.IO.Directory.Exists(Archivordner))
                     {
                         System.IO.Directory.CreateDirectory(Archivordner);
@@ -6353,8 +6354,11 @@ namespace PMDS.DB
                     NewDokumenteintrag.Notiz = Notiz.Trim();
                     NewDokumenteintrag.FileStylesheet = FileStylesheet.Trim();
                     NewDokumenteintrag.ELGAUniqueID = ELGAUniqueId.Trim();
+                    NewDokumenteintrag.ELGAUUID = "";
                     NewDokumenteintrag.ELGAÜbertragen = ELGAÜbertragen;
                     NewDokumenteintrag.IsELGADocu = IsELGADocu;
+                    NewDokumenteintrag.IDAufenthalt = IDAufenthalt;
+                    NewDokumenteintrag.IDUrlaub = IDUrlaub;
 
                     db.tblDokumenteintrag.Add(NewDokumenteintrag);
 
@@ -10114,7 +10118,7 @@ namespace PMDS.DB
                 rMedizinischeDaten.NuechternJN = nuechtern;
                 rMedizinischeDaten.Groesse = groesse;
                 rMedizinischeDaten.IDBenutzergeaendert = ENV.USERID;
-
+                
                 if (IsNew)
                     db.MedizinischeDaten.Add(rMedizinischeDaten);
 

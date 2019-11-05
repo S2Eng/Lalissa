@@ -213,6 +213,7 @@ namespace PMDS.GUI.ELGA
                                 rDocu.CreationTime = elgaDocu.CreationTimek__BackingField.Trim();
                                 rDocu.Size = elgaDocu.Sizek__BackingField;
                                 rDocu.Stylesheet = this.Stylesheet.Trim();
+                                rDocu.TypeFile = elgaDocu.TypeFilek__BackingField.Trim();
                                 rDocu.IDPatient = rPatient.ID;
                                 rDocu.IDAufenthalt = rActAuf.ID;
                                 rDocu.ELGAPatientLocalID = rActAuf.ELGALocalID.Trim();
@@ -364,7 +365,7 @@ namespace PMDS.GUI.ELGA
                 PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelDocu = this.getSelectedRow(true, ref gridRow);
                 if (rSelDocu != null)
                 {
-                    this.bELGA.openCDADocument(rSelDocu.UniqueID.Trim(), rSelDocu.ELGAPatientLocalID.Trim(), rSelDocu.Stylesheet.Trim(), "");
+                    this.bELGA.openCDADocument(rSelDocu.UniqueID.Trim(), rSelDocu.ELGAPatientLocalID.Trim(), rSelDocu.Stylesheet.Trim(), rSelDocu.TypeFile.Trim(), rSelDocu.Dokument.Trim());
                 }
 
             }

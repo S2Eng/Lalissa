@@ -36,8 +36,9 @@ namespace PMDS.GUI
             DekursEntwurfAlias = 2
         }
 
-
-
+        public bool IsELGADocu = false;
+        public bool Storniert = false;
+        
 
 
 
@@ -358,6 +359,35 @@ namespace PMDS.GUI
             else
             {
                 this.btnOpenBefund.Visible = false; 
+            }
+            this.btnBefundStorno.Visible = false;
+
+            using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+            {
+                var rMedDaten = (from p in db.MedizinischeDaten
+                                where p.ID == _row.ID
+                                select new
+                                {
+                                    p.ID,
+                                    p.IDDocu
+                                }).FirstOrDefault();
+
+                if (rMedDaten != null && rMedDaten.IDDocu != null)
+                {
+                    var rDocuEintrag = (from de in db.tblDokumenteintrag
+                                     where de.ID ==  rMedDaten.IDDocu
+                                     select new
+                                     {
+                                         de.ID,
+                                         de.ELGAStorniert,
+                                         de.ELGAStorniertDatum,
+                                         de.ELGAStorniertUser
+                                     }).FirstOrDefault();
+
+                    this.IsELGADocu = true;
+                    this.btnOpenBefund.Visible = true;
+                    this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert;
+                }
             }
         }
 
@@ -902,25 +932,6 @@ namespace PMDS.GUI
             }
         }
 
-        private void btnOpenBefund_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-
-                EDIFact.EDIFact EDIFact1 = new EDIFact.EDIFact();
-                EDIFact1.openBefund(_row.IDBefund);
-
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-            finally
-            {
-                Cursor.Current = Cursors.Default;
-            }
-        }
 
 
         private void btnDekursEntwurfErstellen_Click(object sender, EventArgs e)
@@ -980,5 +991,86 @@ namespace PMDS.GUI
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
         }
 
+
+        private void btnOpenBefund_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (this.IsELGADocu)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rMedDaten = (from p in db.MedizinischeDaten
+                                         where p.ID == _row.ID
+                                         select new
+                                         {
+                                             p.ID,
+                                             p.IDDocu
+                                         }).FirstOrDefault();
+
+                        if (rMedDaten != null && rMedDaten.IDDocu != null)
+                        {
+                            PMDSBusinessUI bUi = new PMDSBusinessUI();
+                            bUi.openELGADocu(rMedDaten.IDDocu.Value);
+                        }
+                    }
+                }
+                else
+                {
+                    EDIFact.EDIFact EDIFact1 = new EDIFact.EDIFact();
+                    EDIFact1.openBefund(_row.IDBefund);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void btnBefundStorno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (this.IsELGADocu)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rMedDaten = (from p in db.MedizinischeDaten
+                                         where p.ID == _row.ID
+                                         select new
+                                         {
+                                             p.ID,
+                                             p.IDDocu
+                                         }).FirstOrDefault();
+
+                        if (rMedDaten != null && rMedDaten.IDDocu != null)
+                        {
+                            PMDSBusinessUI bUi = new PMDSBusinessUI();
+                            bUi.StornoELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
+                            this.btnBefundStorno.Visible = false;
+                            this.Storniert = true;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
     }
 }

@@ -46,6 +46,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Version");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Stylesheet");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CreationTime");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TypeFile");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Size");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGAPatientLocalID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -208,11 +209,11 @@
             ultraGridColumn4.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;
             ultraGridColumn4.Width = 114;
             ultraGridColumn5.Header.Editor = null;
-            ultraGridColumn5.Header.VisiblePosition = 9;
+            ultraGridColumn5.Header.VisiblePosition = 8;
             ultraGridColumn5.Hidden = true;
             ultraGridColumn5.Width = 111;
             ultraGridColumn6.Header.Editor = null;
-            ultraGridColumn6.Header.VisiblePosition = 11;
+            ultraGridColumn6.Header.VisiblePosition = 10;
             ultraGridColumn6.Hidden = true;
             ultraGridColumn6.Width = 121;
             ultraGridColumn7.Header.Editor = null;
@@ -223,7 +224,7 @@
             ultraGridColumn8.Width = 132;
             ultraGridColumn9.Header.Caption = "Beschreibung";
             ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 7;
+            ultraGridColumn9.Header.VisiblePosition = 15;
             ultraGridColumn9.Width = 327;
             ultraGridColumn10.Header.Caption = "Status";
             ultraGridColumn10.Header.Editor = null;
@@ -233,24 +234,28 @@
             ultraGridColumn11.Header.VisiblePosition = 6;
             ultraGridColumn11.Width = 70;
             ultraGridColumn16.Header.Editor = null;
-            ultraGridColumn16.Header.VisiblePosition = 10;
+            ultraGridColumn16.Header.VisiblePosition = 9;
             ultraGridColumn12.Header.Caption = "Erstellt am";
             ultraGridColumn12.Header.Editor = null;
             ultraGridColumn12.Header.VisiblePosition = 2;
             ultraGridColumn12.Width = 113;
+            ultraGridColumn18.Header.Caption = "Dateityp";
+            ultraGridColumn18.Header.Editor = null;
+            ultraGridColumn18.Header.VisiblePosition = 11;
             ultraGridColumn13.Header.Caption = "Grösse";
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 8;
+            ultraGridColumn13.Header.VisiblePosition = 7;
             ultraGridColumn17.Header.Editor = null;
             ultraGridColumn17.Header.VisiblePosition = 14;
+            ultraGridColumn17.Hidden = true;
             ultraGridColumn14.Header.Editor = null;
             ultraGridColumn14.Header.VisiblePosition = 12;
             ultraGridColumn14.Hidden = true;
             ultraGridColumn2.Header.Editor = null;
-            ultraGridColumn2.Header.VisiblePosition = 15;
+            ultraGridColumn2.Header.VisiblePosition = 16;
             ultraGridColumn2.Hidden = true;
             ultraGridColumn15.Header.Editor = null;
-            ultraGridColumn15.Header.VisiblePosition = 16;
+            ultraGridColumn15.Header.VisiblePosition = 17;
             ultraGridColumn15.Hidden = true;
             ultraGridColumn1.DataType = typeof(bool);
             ultraGridColumn1.Header.Caption = "Auswahl";
@@ -269,6 +274,7 @@
             ultraGridColumn11,
             ultraGridColumn16,
             ultraGridColumn12,
+            ultraGridColumn18,
             ultraGridColumn13,
             ultraGridColumn17,
             ultraGridColumn14,

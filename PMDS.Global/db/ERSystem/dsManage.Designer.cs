@@ -2363,6 +2363,8 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnCreationTime;
             
+            private global::System.Data.DataColumn columnTypeFile;
+            
             private global::System.Data.DataColumn columnSize;
             
             private global::System.Data.DataColumn columnELGAPatientLocalID;
@@ -2496,6 +2498,14 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TypeFileColumn {
+                get {
+                    return this.columnTypeFile;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn SizeColumn {
                 get {
                     return this.columnSize;
@@ -2583,6 +2593,7 @@ namespace PMDS.Global.db.ERSystem {
                         string Version, 
                         string Stylesheet, 
                         string CreationTime, 
+                        string TypeFile, 
                         int Size, 
                         string ELGAPatientLocalID, 
                         System.Guid ID, 
@@ -2601,6 +2612,7 @@ namespace PMDS.Global.db.ERSystem {
                         Version,
                         Stylesheet,
                         CreationTime,
+                        TypeFile,
                         Size,
                         ELGAPatientLocalID,
                         ID,
@@ -2639,6 +2651,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnVersion = base.Columns["Version"];
                 this.columnStylesheet = base.Columns["Stylesheet"];
                 this.columnCreationTime = base.Columns["CreationTime"];
+                this.columnTypeFile = base.Columns["TypeFile"];
                 this.columnSize = base.Columns["Size"];
                 this.columnELGAPatientLocalID = base.Columns["ELGAPatientLocalID"];
                 this.columnID = base.Columns["ID"];
@@ -2671,6 +2684,8 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnStylesheet);
                 this.columnCreationTime = new global::System.Data.DataColumn("CreationTime", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCreationTime);
+                this.columnTypeFile = new global::System.Data.DataColumn("TypeFile", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTypeFile);
                 this.columnSize = new global::System.Data.DataColumn("Size", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSize);
                 this.columnELGAPatientLocalID = new global::System.Data.DataColumn("ELGAPatientLocalID", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2693,6 +2708,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnVersion.AllowDBNull = false;
                 this.columnStylesheet.AllowDBNull = false;
                 this.columnCreationTime.AllowDBNull = false;
+                this.columnTypeFile.AllowDBNull = false;
                 this.columnSize.AllowDBNull = false;
                 this.columnELGAPatientLocalID.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
@@ -3677,6 +3693,17 @@ namespace PMDS.Global.db.ERSystem {
                 }
                 set {
                     this[this.tableELGASearchDocuments.CreationTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TypeFile {
+                get {
+                    return ((string)(this[this.tableELGASearchDocuments.TypeFileColumn]));
+                }
+                set {
+                    this[this.tableELGASearchDocuments.TypeFileColumn] = value;
                 }
             }
             

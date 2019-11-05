@@ -12962,6 +12962,8 @@ Namespace ServiceReference_01
         
         Private Sizek__BackingFieldField As Integer
         
+        Private TypeFilek__BackingFieldField As String
+        
         Private UUIDk__BackingFieldField As String
         
         Private UniqueIdk__BackingFieldField As String
@@ -13080,6 +13082,19 @@ Namespace ServiceReference_01
                 If (Me.Sizek__BackingFieldField.Equals(value) <> true) Then
                     Me.Sizek__BackingFieldField = value
                     Me.RaisePropertyChanged("Sizek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<TypeFile>k__BackingField", IsRequired:=true)>  _
+        Public Property TypeFilek__BackingField() As String
+            Get
+                Return Me.TypeFilek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TypeFilek__BackingFieldField, value) <> true) Then
+                    Me.TypeFilek__BackingFieldField = value
+                    Me.RaisePropertyChanged("TypeFilek__BackingField")
                 End If
             End Set
         End Property

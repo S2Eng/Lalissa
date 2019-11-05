@@ -176,8 +176,8 @@ namespace PMDS.GUI.ELGA
                         throw new Exception("contCDAViewer.saveDocuToArchive: rAufenthalt.ELGALocalID.Trim()='' not allowed!");
                     }
 
-                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
-                                                    ENV.CurrentIDPatient, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(), true, -1);
+                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, this._typeFile, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
+                                                    ENV.CurrentIDPatient, null, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(), true, -1);
                 }
 
             }

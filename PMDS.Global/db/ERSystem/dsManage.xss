@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:WundePosBilder" ZOrder="4" X="674" Y="66" Height="257" Width="162" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
     <Shape ID="DesignTable:ELGASearchPatients" ZOrder="2" X="458" Y="391" Height="219" Width="181" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="273" />
     <Shape ID="DesignTable:ELGASearchGDAs" ZOrder="1" X="671" Y="387" Height="315" Width="176" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="272" />
-    <Shape ID="DesignTable:ELGASearchDocuments" ZOrder="3" X="888" Y="391" Height="333" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="348" />
+    <Shape ID="DesignTable:ELGASearchDocuments" ZOrder="3" X="888" Y="391" Height="352" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="348" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

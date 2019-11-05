@@ -310,6 +310,10 @@ namespace PMDS.GUI
                     frm.IDMedDaten = row.ID;
                     frm.btnOK.ContextMenuStrip = null;
                     DialogResult res = frm.ShowDialog();
+                    if (frm.Storniert)
+                    {
+                        return true;
+                    }
                     if (res != DialogResult.OK)
                     {
                         return false;
@@ -849,6 +853,7 @@ namespace PMDS.GUI
                 if (!frmELGASearchDocuments1.contELGASearchDocuments1.abort)
                 {
                     this.bELGA.saveELGADocuToArchive(ref frmELGASearchDocuments1.contELGASearchDocuments1.lDocusSelected);
+                    this._mainWindow.mainWindow.MainWindow.RefreshPatient();
                 }
 
             }

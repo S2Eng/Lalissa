@@ -730,8 +730,8 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public bool saveDocuToELGA(Guid IDPatient, Guid IDAufenthalt, string DocumentName, string DocuXML, byte[] bDocuXML, string Stylesheet, string ClinicalDocumentSetID,
-                                     QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA)
+        public bool saveDocuToELGA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, string DocumentName, string DocuXML, byte[] bDocuXML, string Stylesheet, string ClinicalDocumentSetID,
+                                     QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA, string FileType)
         {
             try
             {
@@ -804,8 +804,8 @@ namespace PMDS.Global.db.ERSystem
                                                         ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
                     }
 
-                    bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, IDAufenthalt,
-                                                        IDPatient, parOut.DocuUniqueIdk__BackingField.Trim(), rAufenthalt.ELGALocalID.Trim(), DocumentName.Trim(), Stylesheet.Trim(), true, 1);
+                    bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, FileType, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, IDAufenthalt,
+                                                        IDPatient, IDUrlaub, parOut.DocuUniqueIdk__BackingField.Trim(), rAufenthalt.ELGALocalID.Trim(), DocumentName.Trim(), Stylesheet.Trim(), true, 1);
                 }
 
                 return true;
@@ -833,8 +833,8 @@ namespace PMDS.Global.db.ERSystem
                 {
                     foreach (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rELGADocu in lDocusSelected)
                     {
-                        bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, rELGADocu.IDAufenthalt, 
-                                            rELGADocu.IDPatient, rELGADocu.UniqueID, rELGADocu.ELGAPatientLocalID.Trim(), rELGADocu.Dokument, rELGADocu.Stylesheet, true, -1);
+                        bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, rELGADocu.TypeFile, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, rELGADocu.IDAufenthalt, 
+                                            rELGADocu.IDPatient, null, rELGADocu.UniqueID, rELGADocu.ELGAPatientLocalID.Trim(), rELGADocu.Dokument, rELGADocu.Stylesheet, true, -1);
                     }
                 }
 
@@ -845,8 +845,8 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.saveELGADocuToArchive: " + ex.ToString());
             }
         }
-        public bool saveELGADocuToDB(ref string ArchivePath, ref Nullable<Guid> IDOrdnerArchiv, PMDS.db.Entities.ERModellPMDSEntities db, ref DateTime dNow, 
-                                    ref WCFServiceClient WCFServiceClient1, Guid IDAufenthalt, Guid IDPatient, 
+        public bool saveELGADocuToDB(ref string ArchivePath, string FileType, ref Nullable<Guid> IDOrdnerArchiv, PMDS.db.Entities.ERModellPMDSEntities db, ref DateTime dNow, 
+                                    ref WCFServiceClient WCFServiceClient1, Guid IDAufenthalt, Guid IDPatient, Nullable<Guid> IDUrlaub,
                                     string UniqueId, string ELGAPatientLocalID, string NameDokument, string Stylesheet,
                                     bool IsELGADocu = false, int ELGAÜbertragen = -1)
         {
@@ -880,7 +880,7 @@ namespace PMDS.Global.db.ERSystem
                                                 ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
 
 
-                string FileNameELGA = @"ELGA_Docu_" + System.Guid.NewGuid().ToString() + ".xml";
+                string FileNameELGA = @"ELGA_Docu_" + System.Guid.NewGuid().ToString() + "" + FileType.Trim();
                 string DirFileNameELGA = @PMDS.Global.ENV.path_Temp;
                 using (Stream file = File.OpenWrite(DirFileNameELGA + "\\" + FileNameELGA))
                 {
@@ -911,14 +911,18 @@ namespace PMDS.Global.db.ERSystem
                 rMedizinischeDaten.NuechternJN = false;
                 rMedizinischeDaten.Groesse = "";
                 rMedizinischeDaten.IDBenutzergeaendert = ENV.USERID;
+                
+                Guid IDDokumenteintragReturn = System.Guid.NewGuid();
+                bool bDocuAdded = PMDSBusiness1.SaveDokumentinArchiv(FileNameELGA, DirFileNameELGA, IDOrdnerArchiv.Value, NameDokument.Trim(), ".xml",
+                                                    dNow, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length,
+                                                    IDPatient, ArchivePath, ref IDDokumenteintragReturn, "", Stylesheet.Trim(), UniqueId.Trim(), IsELGADocu, ELGAÜbertragen,
+                                                    IDAufenthalt, IDUrlaub);
 
+                rMedizinischeDaten.IDDocu = IDDokumenteintragReturn;
+                rMedizinischeDaten.Beschreibung = NameDokument.Trim();
+                rMedizinischeDaten.Bemerkung = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument");
                 db.MedizinischeDaten.Add(rMedizinischeDaten);
                 db.SaveChanges();
-
-                Guid IDDokumenteintragReturn = System.Guid.NewGuid();
-                bool bDocuAdded = PMDSBusiness1.SaveDokumentinArchiv(FileNameELGA, DirFileNameELGA, IDOrdnerArchiv.Value, NameDokument.Trim(), ".cda",
-                                                    dNow, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length,
-                                                    IDPatient, ArchivePath, ref IDDokumenteintragReturn, "", Stylesheet.Trim(), UniqueId.Trim(), IsELGADocu, ELGAÜbertragen);
 
                 string sProt2 = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument {0} für Patient {1} wurde im Archiv abgelegt");
                 sProt2 = string.Format(sProt2, NameDokument, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
@@ -965,7 +969,7 @@ namespace PMDS.Global.db.ERSystem
         }
 
 
-        public void openCDADocument(string ELGADocuUniqueId, string ELGAPatientLocalID, string Stylesheet, string typeFile)
+        public void openCDADocument(string ELGADocuUniqueId, string ELGAPatientLocalID, string Stylesheet, string typeFile, string DocumentName)
         {
             try
             {
@@ -974,10 +978,15 @@ namespace PMDS.Global.db.ERSystem
                 {
                     throw new Exception("ELGABusiness.openCDADocument: parOuot.lDocumentsk__BackingField.Length != 1 -> ELGA-Document for ELGADocuUniqueId '" + ELGADocuUniqueId.Trim() + "' not found!");
                 }
-                string sFileXML = System.Text.Encoding.UTF8.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField);
+
+                //byte[] bDocu = parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField;
+                //string base64String2 = Convert.ToBase64String(bDocu, 0, bDocu.Length);
+                //string base64String = Encoding.UTF8.GetString(bDocu, 0, bDocu.Length);
+
+                string sFileXML = System.Text.Encoding.Default.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField);
 
                 frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
-                frmCDAViewer1.initControl(parOuot.lDocumentsk__BackingField[0].Documentnamek__BackingField.Trim(), parOuot.lDocumentsk__BackingField[0].UniqueIdk__BackingField.Trim(),
+                frmCDAViewer1.initControl(DocumentName.Trim(), parOuot.lDocumentsk__BackingField[0].UniqueIdk__BackingField.Trim(),
                                             "", sFileXML, typeFile, Stylesheet, contCDAViewer.eTypeUI.saveToArchive);
                 frmCDAViewer1.ShowDialog();
                 if (!frmCDAViewer1.contCDAViewer1.abort)

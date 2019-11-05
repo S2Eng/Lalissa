@@ -15,12 +15,14 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung-Storno für Patient {0} von Benutzer {1} durchgeführt.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung Storno");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Storniert");
+
+
 
                 //QS2.Desktop.ControlManagment.ControlManagment.MessageBox("DemoTxt!", "", MessageBoxButtons.OK);
-
 
             }
             catch (Exception ex)

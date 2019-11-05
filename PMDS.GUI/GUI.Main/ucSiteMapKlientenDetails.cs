@@ -680,7 +680,7 @@ namespace PMDS.GUI
             }
         }
 
-        private void RefreshPatient()
+        public void RefreshPatient()
         {
             try
             {
