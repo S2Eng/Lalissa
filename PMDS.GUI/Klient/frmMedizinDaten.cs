@@ -385,14 +385,27 @@ namespace PMDS.GUI
                                          de.ELGAStorniertDatum,
                                          de.ELGAStorniertUser,
                                          de.ELGAÜbertragen,
-                                         de.IsELGADocu
+                                         de.IsELGADocu,
+                                         de.ELGADocuType
                                      }).FirstOrDefault();
+
+                    var rAufenthalt = (from a in db.Aufenthalt
+                                        where a.ID == ENV.IDAUFENTHALT
+                                       select new
+                                        {
+                                            a.ID,
+                                            a.ELGASOOJN,
+                                            a.ELGAKontaktbestätigungStornoJN,
+                                            a.ELGALocalID
+                                        }).FirstOrDefault();
 
                     this.IsELGADocu = true;
                     this.btnOpenBefund.Visible = true;
                     this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert;
 
-                    if (rDocuEintrag.ELGAÜbertragen == 0)
+                    if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
+                        (rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht.ToString().Trim().ToLower()) || 
+                        rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief.ToString().Trim().ToLower())))
                     {
                         this.btnBefundSend.Visible = true;
                     }
