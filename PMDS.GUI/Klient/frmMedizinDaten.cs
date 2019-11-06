@@ -10,7 +10,7 @@ using PMDS.GUI.Klient;
 using PMDS.Klient;
 using PMDS.DB;
 using System.Linq;
-
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -37,8 +37,9 @@ namespace PMDS.GUI
         }
 
         public bool IsELGADocu = false;
-        public bool Storniert = false;
-        
+        public bool Storniert2 = false;
+        public bool Gesendet = false;
+
 
 
 
@@ -361,6 +362,7 @@ namespace PMDS.GUI
                 this.btnOpenBefund.Visible = false; 
             }
             this.btnBefundStorno.Visible = false;
+            this.btnBefundSend.Visible = false;
 
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
             {
@@ -381,12 +383,19 @@ namespace PMDS.GUI
                                          de.ID,
                                          de.ELGAStorniert,
                                          de.ELGAStorniertDatum,
-                                         de.ELGAStorniertUser
+                                         de.ELGAStorniertUser,
+                                         de.ELGAÜbertragen,
+                                         de.IsELGADocu
                                      }).FirstOrDefault();
 
                     this.IsELGADocu = true;
                     this.btnOpenBefund.Visible = true;
                     this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert;
+
+                    if (rDocuEintrag.ELGAÜbertragen == 0)
+                    {
+                        this.btnBefundSend.Visible = true;
+                    }
                 }
             }
         }
@@ -1012,7 +1021,7 @@ namespace PMDS.GUI
 
                         if (rMedDaten != null && rMedDaten.IDDocu != null)
                         {
-                            PMDSBusinessUI bUi = new PMDSBusinessUI();
+                            ELGAPMDSBusinessUI bUi = new ELGAPMDSBusinessUI();
                             bUi.openELGADocu(rMedDaten.IDDocu.Value);
                         }
                     }
@@ -1054,10 +1063,11 @@ namespace PMDS.GUI
 
                         if (rMedDaten != null && rMedDaten.IDDocu != null)
                         {
-                            PMDSBusinessUI bUi = new PMDSBusinessUI();
-                            bUi.StornoELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
+                            ELGABusiness bElga = new ELGABusiness();
+                            bElga.StornoELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
                             this.btnBefundStorno.Visible = false;
-                            this.Storniert = true;
+                            this.Storniert2 = true;
+                            this.Close();
                         }
                     }
                 }
@@ -1072,5 +1082,45 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.Default;
             }
         }
+        private void btnBefundSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (this.IsELGADocu)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rMedDaten = (from p in db.MedizinischeDaten
+                                         where p.ID == _row.ID
+                                         select new
+                                         {
+                                             p.ID,
+                                             p.IDDocu
+                                         }).FirstOrDefault();
+
+                        if (rMedDaten != null && rMedDaten.IDDocu != null)
+                        {
+                            ELGABusiness bElga = new ELGABusiness();
+                            bElga.SendELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
+                            this.btnBefundSend.Visible = false;
+                            this.Gesendet = true;
+                            this.Close();
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
     }
 }

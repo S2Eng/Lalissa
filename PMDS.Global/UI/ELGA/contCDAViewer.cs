@@ -81,6 +81,23 @@ namespace PMDS.GUI.ELGA
                     this.btnSaveDocuToELGA.Visible = true;
                     this.btnClose.Visible = false;
                     this.btnAbort.Visible = true;
+
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rAufenthalt = (from a in db.Aufenthalt
+                                           where a.ID == ENV.IDAUFENTHALT
+                                           select new
+                                           {
+                                               a.ID,
+                                               a.ELGALocalID,
+                                               a.ELGASOOJN
+                                           }).First();
+
+                        if (rAufenthalt.ELGASOOJN)
+                        {
+                            this.btnSaveDocuToELGA.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern");
+                        }
+                    }
                 }
                 else
                 {
@@ -176,8 +193,10 @@ namespace PMDS.GUI.ELGA
                         throw new Exception("contCDAViewer.saveDocuToArchive: rAufenthalt.ELGALocalID.Trim()='' not allowed!");
                     }
 
-                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, this._typeFile, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
-                                                    ENV.CurrentIDPatient, null, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(), true, -1);
+                    Guid IDDocumenteneintrag = System.Guid.NewGuid();
+                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, this._typeFile, ref IDOrdnerArchiv, "", db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
+                                                    ENV.CurrentIDPatient, null, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(),
+                                                    ref IDDocumenteneintrag, true, -1);
                 }
 
             }

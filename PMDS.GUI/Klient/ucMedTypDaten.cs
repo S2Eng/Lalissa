@@ -310,7 +310,7 @@ namespace PMDS.GUI
                     frm.IDMedDaten = row.ID;
                     frm.btnOK.ContextMenuStrip = null;
                     DialogResult res = frm.ShowDialog();
-                    if (frm.Storniert)
+                    if (frm.Storniert2 || frm.Gesendet)
                     {
                         return true;
                     }

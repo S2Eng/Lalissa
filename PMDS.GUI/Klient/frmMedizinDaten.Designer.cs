@@ -35,12 +35,13 @@
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedizinDaten));
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.lblHeader = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -103,6 +104,7 @@
             this.lblGroesse = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbGroesse = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.btnBefundStorno = new Infragistics.Win.Misc.UltraButton();
+            this.btnBefundSend = new Infragistics.Win.Misc.UltraButton();
             this.contextMenuStripSavexyxy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbICDCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbAufnDiagn)).BeginInit();
@@ -636,17 +638,17 @@
             // btnTerminErstellen
             // 
             this.btnTerminErstellen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance11.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance11.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnTerminErstellen.Appearance = appearance11;
+            appearance12.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance12.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnTerminErstellen.Appearance = appearance12;
             this.btnTerminErstellen.AutoWorkLayout = false;
             this.btnTerminErstellen.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnTerminErstellen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnTerminErstellen.DoOnClick = true;
             this.btnTerminErstellen.IsStandardControl = true;
-            this.btnTerminErstellen.Location = new System.Drawing.Point(243, 691);
+            this.btnTerminErstellen.Location = new System.Drawing.Point(235, 691);
             this.btnTerminErstellen.Name = "btnTerminErstellen";
-            this.btnTerminErstellen.Size = new System.Drawing.Size(102, 33);
+            this.btnTerminErstellen.Size = new System.Drawing.Size(122, 33);
             this.btnTerminErstellen.TabIndex = 68;
             this.btnTerminErstellen.TabStop = false;
             this.btnTerminErstellen.Text = "Termin erstellen";
@@ -657,9 +659,9 @@
             // btnDekursErstellen
             // 
             this.btnDekursErstellen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance10.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDekursErstellen.Appearance = appearance10;
+            appearance11.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance11.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDekursErstellen.Appearance = appearance11;
             this.btnDekursErstellen.AutoWorkLayout = false;
             this.btnDekursErstellen.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDekursErstellen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -678,12 +680,12 @@
             // btnOpenBefund
             // 
             this.btnOpenBefund.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance9.BorderColor = System.Drawing.Color.Black;
-            this.btnOpenBefund.Appearance = appearance9;
+            appearance10.BorderColor = System.Drawing.Color.Black;
+            this.btnOpenBefund.Appearance = appearance10;
             this.btnOpenBefund.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnOpenBefund.Location = new System.Drawing.Point(347, 691);
+            this.btnOpenBefund.Location = new System.Drawing.Point(8, 657);
             this.btnOpenBefund.Name = "btnOpenBefund";
-            this.btnOpenBefund.Size = new System.Drawing.Size(59, 33);
+            this.btnOpenBefund.Size = new System.Drawing.Size(100, 33);
             this.btnOpenBefund.TabIndex = 70;
             this.btnOpenBefund.Tag = "";
             this.btnOpenBefund.Text = "Befund";
@@ -709,11 +711,11 @@
             // 
             // btnDekursEntwurfErstellenAs
             // 
-            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance6.TextHAlignAsString = "Left";
-            appearance6.TextVAlignAsString = "Middle";
-            this.btnDekursEntwurfErstellenAs.Appearance = appearance6;
+            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance7.TextHAlignAsString = "Left";
+            appearance7.TextVAlignAsString = "Middle";
+            this.btnDekursEntwurfErstellenAs.Appearance = appearance7;
             this.btnDekursEntwurfErstellenAs.AutoWorkLayout = false;
             this.btnDekursEntwurfErstellenAs.IsStandardControl = false;
             this.btnDekursEntwurfErstellenAs.Location = new System.Drawing.Point(4, 27);
@@ -725,11 +727,11 @@
             // 
             // btnDekursEntwurfErstellen
             // 
-            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance7.TextHAlignAsString = "Left";
-            appearance7.TextVAlignAsString = "Middle";
-            this.btnDekursEntwurfErstellen.Appearance = appearance7;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance8.TextHAlignAsString = "Left";
+            appearance8.TextVAlignAsString = "Middle";
+            this.btnDekursEntwurfErstellen.Appearance = appearance8;
             this.btnDekursEntwurfErstellen.AutoWorkLayout = false;
             this.btnDekursEntwurfErstellen.IsStandardControl = false;
             this.btnDekursEntwurfErstellen.Location = new System.Drawing.Point(4, 3);
@@ -742,15 +744,15 @@
             // uDropDownDekursEntwürfe
             // 
             this.uDropDownDekursEntwürfe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
-            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
-            this.uDropDownDekursEntwürfe.Appearance = appearance8;
-            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(111, 693);
+            appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.uDropDownDekursEntwürfe.Appearance = appearance9;
+            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(111, 692);
             this.uDropDownDekursEntwürfe.Name = "uDropDownDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemKey = "PanelDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemProvider = this.ultraPopupControlContainerDekursEntwürfe;
             this.uDropDownDekursEntwürfe.RightAlignPopup = Infragistics.Win.DefaultableBoolean.False;
-            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(122, 30);
+            this.uDropDownDekursEntwürfe.Size = new System.Drawing.Size(122, 31);
             this.uDropDownDekursEntwürfe.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.uDropDownDekursEntwürfe.TabIndex = 93;
             this.uDropDownDekursEntwürfe.Text = "Dekurs Entwurf";
@@ -760,9 +762,9 @@
             // btnKlientenMehrfachauswahl
             // 
             this.btnKlientenMehrfachauswahl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnKlientenMehrfachauswahl.Appearance = appearance5;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnKlientenMehrfachauswahl.Appearance = appearance6;
             this.btnKlientenMehrfachauswahl.AutoWorkLayout = false;
             this.btnKlientenMehrfachauswahl.IsStandardControl = false;
             this.btnKlientenMehrfachauswahl.Location = new System.Drawing.Point(479, 691);
@@ -805,17 +807,32 @@
             // btnBefundStorno
             // 
             this.btnBefundStorno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance4.BorderColor = System.Drawing.Color.Black;
-            this.btnBefundStorno.Appearance = appearance4;
+            appearance5.BorderColor = System.Drawing.Color.Black;
+            this.btnBefundStorno.Appearance = appearance5;
             this.btnBefundStorno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBefundStorno.Location = new System.Drawing.Point(408, 691);
+            this.btnBefundStorno.Location = new System.Drawing.Point(111, 657);
             this.btnBefundStorno.Name = "btnBefundStorno";
-            this.btnBefundStorno.Size = new System.Drawing.Size(69, 33);
+            this.btnBefundStorno.Size = new System.Drawing.Size(122, 33);
             this.btnBefundStorno.TabIndex = 97;
             this.btnBefundStorno.Tag = "";
             this.btnBefundStorno.Text = "Befund stornieren";
             this.btnBefundStorno.Visible = false;
             this.btnBefundStorno.Click += new System.EventHandler(this.btnBefundStorno_Click);
+            // 
+            // btnBefundSend
+            // 
+            this.btnBefundSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            appearance4.BorderColor = System.Drawing.Color.Black;
+            this.btnBefundSend.Appearance = appearance4;
+            this.btnBefundSend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnBefundSend.Location = new System.Drawing.Point(235, 657);
+            this.btnBefundSend.Name = "btnBefundSend";
+            this.btnBefundSend.Size = new System.Drawing.Size(122, 33);
+            this.btnBefundSend.TabIndex = 98;
+            this.btnBefundSend.Tag = "";
+            this.btnBefundSend.Text = "Befund senden";
+            this.btnBefundSend.Visible = false;
+            this.btnBefundSend.Click += new System.EventHandler(this.btnBefundSend_Click);
             // 
             // frmMedizinDaten
             // 
@@ -825,6 +842,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(899, 728);
+            this.Controls.Add(this.btnBefundSend);
             this.Controls.Add(this.btnBefundStorno);
             this.Controls.Add(this.pnlGroesse);
             this.Controls.Add(this.btnKlientenMehrfachauswahl);
@@ -964,5 +982,6 @@
         private QS2.Desktop.ControlManagment.BaseLabel lblGroesse;
         private QS2.Desktop.ControlManagment.BaseTextEditor tbGroesse;
         internal Infragistics.Win.Misc.UltraButton btnBefundStorno;
+        internal Infragistics.Win.Misc.UltraButton btnBefundSend;
     }
 }

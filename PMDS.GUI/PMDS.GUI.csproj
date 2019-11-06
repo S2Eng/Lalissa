@@ -981,6 +981,7 @@
       <DependentUpon>ucDatenErhebungMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Datenerhebung\ValueListItemOwn.cs" />
+    <Compile Include="ELGAPMDSBusinessUI.cs" />
     <Compile Include="ELGA\contELGAChangePassword.cs">
       <SubType>UserControl</SubType>
     </Compile>

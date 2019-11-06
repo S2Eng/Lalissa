@@ -6311,7 +6311,7 @@ namespace PMDS.DB
             }
         }
         public bool SaveDokumentinArchiv(string DateinameOrig, string VerzeichnisOrig, Guid IDOrdner, string BezeichnungFile,
-                                            string DateiType, DateTime dNow, long SizeDoku, 
+                                            string DateiType, string ELGADocuType, DateTime dNow, long SizeDoku, 
                                             Guid IDPatient, string PathArchive, ref Guid IDDokumenteintragReturn, string Notiz,
                                             string FileStylesheet = "", string ELGAUniqueId = "", bool IsELGADocu = false, int ELGAÜbertragen = -1, 
                                             Nullable<Guid> IDAufenthalt = null, Nullable<Guid> IDUrlaub = null)
@@ -6359,6 +6359,7 @@ namespace PMDS.DB
                     NewDokumenteintrag.IsELGADocu = IsELGADocu;
                     NewDokumenteintrag.IDAufenthalt = IDAufenthalt;
                     NewDokumenteintrag.IDUrlaub = IDUrlaub;
+                    NewDokumenteintrag.ELGADocuType = ELGADocuType.Trim();
 
                     db.tblDokumenteintrag.Add(NewDokumenteintrag);
 
