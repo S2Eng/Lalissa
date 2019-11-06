@@ -44,7 +44,7 @@
       <xs:element name="_x003C_CreatedTo_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
       <xs:element name="_x003C_DocumentStatus_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Documentname_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_UUID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_UniqueID_x003E_k__BackingField" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DocumentSearchDto" nillable="true" type="tns:DocumentSearchDto" />
@@ -89,12 +89,12 @@
   <xs:element name="AdressDto" nillable="true" type="tns:AdressDto" />
   <xs:complexType name="ELGAParOutDto">
     <xs:sequence>
+      <xs:element name="_x003C_ContactExists_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_ContactID_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_DocuUUID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_DocuUniqueId_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Errors_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_MessageExceptionNr_x003E_k__BackingField" type="xs:int" />
       <xs:element name="_x003C_MessageException_x003E_k__BackingField" nillable="true" type="xs:string" />
-      <xs:element name="_x003C_PatientLocalID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_bErrorsFound_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_bOK_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_iRowsFound_x003E_k__BackingField" type="xs:int" />
@@ -138,6 +138,7 @@
       <xs:element name="_x003C_LogicalId_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="_x003C_ReferenceIdList_x003E_k__BackingField" nillable="true" type="q1:ArrayOfstring" />
       <xs:element name="_x003C_Size_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_TypeFile_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_UUID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_UniqueId_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Version_x003E_k__BackingField" nillable="true" type="xs:string" />

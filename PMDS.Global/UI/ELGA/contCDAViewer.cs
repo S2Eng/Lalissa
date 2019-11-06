@@ -18,7 +18,7 @@ namespace PMDS.GUI.ELGA
     public partial class contCDAViewer : UserControl
     {
         private string _DocumentName = "";
-        private string _DocuUUID = "";
+        private string _ELGADocuUniqueId = "";
         private string _ClinicalDocumentSetID = "";
         private string _Xml = "";
         private string _typeFile = "";
@@ -44,13 +44,13 @@ namespace PMDS.GUI.ELGA
             InitializeComponent();
         }
 
-        public void initControl(string DocumentName, string DocuUUID, string ClinicalDocumentSetID, string Xml, string typeFile, string Stylesheet,
+        public void initControl(string DocumentName, string ELGADocuUniqueId, string ClinicalDocumentSetID, string Xml, string typeFile, string Stylesheet,
                                 eTypeUI TypeUI)
         {
             try
             {
                 this._DocumentName = DocumentName;
-                this._DocuUUID = DocuUUID;
+                this._ELGADocuUniqueId = ELGADocuUniqueId;
                 this._ClinicalDocumentSetID = ClinicalDocumentSetID;
                 this._Xml = Xml;
                 this._typeFile = typeFile;
@@ -81,6 +81,23 @@ namespace PMDS.GUI.ELGA
                     this.btnSaveDocuToELGA.Visible = true;
                     this.btnClose.Visible = false;
                     this.btnAbort.Visible = true;
+
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rAufenthalt = (from a in db.Aufenthalt
+                                           where a.ID == ENV.IDAUFENTHALT
+                                           select new
+                                           {
+                                               a.ID,
+                                               a.ELGALocalID,
+                                               a.ELGASOOJN
+                                           }).First();
+
+                        if (rAufenthalt.ELGASOOJN)
+                        {
+                            this.btnSaveDocuToELGA.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern");
+                        }
+                    }
                 }
                 else
                 {
@@ -143,9 +160,9 @@ namespace PMDS.GUI.ELGA
                 string ArchivePath = "";
                 Nullable<Guid> IDOrdnerArchiv = null;
 
-                if (this._DocuUUID.Trim() == "")
+                if (this._ELGADocuUniqueId.Trim() == "")
                 {
-                    throw new Exception("contCDAViewer.saveDocuToArchive: _DocuUUID='' not allowed!");
+                    throw new Exception("contCDAViewer.saveDocuToArchive: _ELGADocuUniqueId='' not allowed!");
                 }
                 if (this._DocumentName.Trim() == "")
                 {
@@ -176,8 +193,10 @@ namespace PMDS.GUI.ELGA
                         throw new Exception("contCDAViewer.saveDocuToArchive: rAufenthalt.ELGALocalID.Trim()='' not allowed!");
                     }
 
-                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, ref IDOrdnerArchiv, db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
-                                                    ENV.CurrentIDPatient, this._DocuUUID.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(), true, -1);
+                    Guid IDDocumenteneintrag = System.Guid.NewGuid();
+                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, this._typeFile, ref IDOrdnerArchiv, "", db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
+                                                    ENV.CurrentIDPatient, null, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(),
+                                                    ref IDDocumenteneintrag, true, -1);
                 }
 
             }

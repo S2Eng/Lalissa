@@ -12070,7 +12070,7 @@ Namespace ServiceReference_01
         
         Private Documentnamek__BackingFieldField As String
         
-        Private UUIDk__BackingFieldField As String
+        Private UniqueIDk__BackingFieldField As String
         
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
@@ -12147,15 +12147,15 @@ Namespace ServiceReference_01
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute(Name:="<UUID>k__BackingField", IsRequired:=true)>  _
-        Public Property UUIDk__BackingField() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<UniqueID>k__BackingField", IsRequired:=true)>  _
+        Public Property UniqueIDk__BackingField() As String
             Get
-                Return Me.UUIDk__BackingFieldField
+                Return Me.UniqueIDk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.UUIDk__BackingFieldField, value) <> true) Then
-                    Me.UUIDk__BackingFieldField = value
-                    Me.RaisePropertyChanged("UUIDk__BackingField")
+                If (Object.ReferenceEquals(Me.UniqueIDk__BackingFieldField, value) <> true) Then
+                    Me.UniqueIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("UniqueIDk__BackingField")
                 End If
             End Set
         End Property
@@ -12599,17 +12599,17 @@ Namespace ServiceReference_01
         <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
+        Private ContactExistsk__BackingFieldField As Boolean
+        
         Private ContactIDk__BackingFieldField As String
         
-        Private DocuUUIDk__BackingFieldField As String
+        Private DocuUniqueIdk__BackingFieldField As String
         
         Private Errorsk__BackingFieldField As String
         
         Private MessageExceptionNrk__BackingFieldField As Integer
         
         Private MessageExceptionk__BackingFieldField As String
-        
-        Private PatientLocalIDk__BackingFieldField As String
         
         Private bErrorsFoundk__BackingFieldField As Boolean
         
@@ -12637,6 +12637,19 @@ Namespace ServiceReference_01
             End Set
         End Property
         
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ContactExists>k__BackingField", IsRequired:=true)>  _
+        Public Property ContactExistsk__BackingField() As Boolean
+            Get
+                Return Me.ContactExistsk__BackingFieldField
+            End Get
+            Set
+                If (Me.ContactExistsk__BackingFieldField.Equals(value) <> true) Then
+                    Me.ContactExistsk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ContactExistsk__BackingField")
+                End If
+            End Set
+        End Property
+        
         <System.Runtime.Serialization.DataMemberAttribute(Name:="<ContactID>k__BackingField", IsRequired:=true)>  _
         Public Property ContactIDk__BackingField() As String
             Get
@@ -12650,15 +12663,15 @@ Namespace ServiceReference_01
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute(Name:="<DocuUUID>k__BackingField", IsRequired:=true)>  _
-        Public Property DocuUUIDk__BackingField() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<DocuUniqueId>k__BackingField", IsRequired:=true)>  _
+        Public Property DocuUniqueIdk__BackingField() As String
             Get
-                Return Me.DocuUUIDk__BackingFieldField
+                Return Me.DocuUniqueIdk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.DocuUUIDk__BackingFieldField, value) <> true) Then
-                    Me.DocuUUIDk__BackingFieldField = value
-                    Me.RaisePropertyChanged("DocuUUIDk__BackingField")
+                If (Object.ReferenceEquals(Me.DocuUniqueIdk__BackingFieldField, value) <> true) Then
+                    Me.DocuUniqueIdk__BackingFieldField = value
+                    Me.RaisePropertyChanged("DocuUniqueIdk__BackingField")
                 End If
             End Set
         End Property
@@ -12698,19 +12711,6 @@ Namespace ServiceReference_01
                 If (Object.ReferenceEquals(Me.MessageExceptionk__BackingFieldField, value) <> true) Then
                     Me.MessageExceptionk__BackingFieldField = value
                     Me.RaisePropertyChanged("MessageExceptionk__BackingField")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(Name:="<PatientLocalID>k__BackingField", IsRequired:=true)>  _
-        Public Property PatientLocalIDk__BackingField() As String
-            Get
-                Return Me.PatientLocalIDk__BackingFieldField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.PatientLocalIDk__BackingFieldField, value) <> true) Then
-                    Me.PatientLocalIDk__BackingFieldField = value
-                    Me.RaisePropertyChanged("PatientLocalIDk__BackingField")
                 End If
             End Set
         End Property
@@ -12962,6 +12962,8 @@ Namespace ServiceReference_01
         
         Private Sizek__BackingFieldField As Integer
         
+        Private TypeFilek__BackingFieldField As String
+        
         Private UUIDk__BackingFieldField As String
         
         Private UniqueIdk__BackingFieldField As String
@@ -13080,6 +13082,19 @@ Namespace ServiceReference_01
                 If (Me.Sizek__BackingFieldField.Equals(value) <> true) Then
                     Me.Sizek__BackingFieldField = value
                     Me.RaisePropertyChanged("Sizek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<TypeFile>k__BackingField", IsRequired:=true)>  _
+        Public Property TypeFilek__BackingField() As String
+            Get
+                Return Me.TypeFilek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TypeFilek__BackingFieldField, value) <> true) Then
+                    Me.TypeFilek__BackingFieldField = value
+                    Me.RaisePropertyChanged("TypeFilek__BackingField")
                 End If
             End Set
         End Property
@@ -14276,13 +14291,6 @@ Namespace ServiceReference_01
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryDocuments", ReplyAction:="http://tempuri.org/Service1/ELGAQueryDocumentsResponse")>  _
         Function ELGAQueryDocumentsAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsResponse)
         
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryDocumentsByUid", ReplyAction:="http://tempuri.org/Service1/ELGAQueryDocumentsByUidResponse")>  _
-        Function ELGAQueryDocumentsByUid(ByVal request As ServiceReference_01.ELGAQueryDocumentsByUidRequest) As ServiceReference_01.ELGAQueryDocumentsByUidResponse
-        
-        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryDocumentsByUid", ReplyAction:="http://tempuri.org/Service1/ELGAQueryDocumentsByUidResponse")>  _
-        Function ELGAQueryDocumentsByUidAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsByUidRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsByUidResponse)
-        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGARetrieveDocument", ReplyAction:="http://tempuri.org/Service1/ELGARetrieveDocumentResponse")>  _
         Function ELGARetrieveDocument(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As ServiceReference_01.ELGARetrieveDocumentResponse
         
@@ -14303,6 +14311,13 @@ Namespace ServiceReference_01
         'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAUpdateDocument", ReplyAction:="http://tempuri.org/Service1/ELGAUpdateDocumentResponse")>  _
         Function ELGAUpdateDocumentAsync(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAUpdateDocumentResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ElgaDeprecateDocument", ReplyAction:="http://tempuri.org/Service1/ElgaDeprecateDocumentResponse")>  _
+        Function ElgaDeprecateDocument(ByVal request As ServiceReference_01.ElgaDeprecateDocumentRequest) As ServiceReference_01.ElgaDeprecateDocumentResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ElgaDeprecateDocument", ReplyAction:="http://tempuri.org/Service1/ElgaDeprecateDocumentResponse")>  _
+        Function ElgaDeprecateDocumentAsync(ByVal request As ServiceReference_01.ElgaDeprecateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ElgaDeprecateDocumentResponse)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/genCDA", ReplyAction:="http://tempuri.org/Service1/genCDAResponse")>  _
         Function genCDA(ByVal vars As ServiceReference_01.CDACDAIN) As ServiceReference_01.CDACDABack
@@ -14737,13 +14752,21 @@ Namespace ServiceReference_01
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
         
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public OnlyOneDoc As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UniqueId As String
+        
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String)
             MyBase.New
             Me.parsIn = parsIn
+            Me.OnlyOneDoc = OnlyOneDoc
+            Me.UniqueId = UniqueId
         End Sub
     End Class
     
@@ -14765,46 +14788,6 @@ Namespace ServiceReference_01
         Public Sub New(ByVal ELGAQueryDocumentsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAQueryDocumentsResult = ELGAQueryDocumentsResult
-            Me.parsIn = parsIn
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocumentsByUid", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ELGAQueryDocumentsByUidRequest
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public parsIn As ServiceReference_01.ELGAParInDto
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
-            MyBase.New
-            Me.parsIn = parsIn
-        End Sub
-    End Class
-    
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocumentsByUidResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
-    Partial Public Class ELGAQueryDocumentsByUidResponse
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public ELGAQueryDocumentsByUidResult As ServiceReference_01.ELGAParOutDto
-        
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public parsIn As ServiceReference_01.ELGAParInDto
-        
-        Public Sub New()
-            MyBase.New
-        End Sub
-        
-        Public Sub New(ByVal ELGAQueryDocumentsByUidResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
-            MyBase.New
-            Me.ELGAQueryDocumentsByUidResult = ELGAQueryDocumentsByUidResult
             Me.parsIn = parsIn
         End Sub
     End Class
@@ -14897,13 +14880,17 @@ Namespace ServiceReference_01
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
         
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UniqueId As String
+        
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String)
             MyBase.New
             Me.parsIn = parsIn
+            Me.UniqueId = UniqueId
         End Sub
     End Class
     
@@ -14925,6 +14912,50 @@ Namespace ServiceReference_01
         Public Sub New(ByVal ELGAUpdateDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAUpdateDocumentResult = ELGAUpdateDocumentResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ElgaDeprecateDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ElgaDeprecateDocumentRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public UniqueId As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String)
+            MyBase.New
+            Me.parsIn = parsIn
+            Me.UniqueId = UniqueId
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ElgaDeprecateDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ElgaDeprecateDocumentResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ElgaDeprecateDocumentResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ElgaDeprecateDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ElgaDeprecateDocumentResult = ElgaDeprecateDocumentResult
             Me.parsIn = parsIn
         End Sub
     End Class
@@ -15274,9 +15305,11 @@ Namespace ServiceReference_01
             Return MyBase.Channel.ELGAQueryDocuments(request)
         End Function
         
-        Public Function ELGAQueryDocuments(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+        Public Function ELGAQueryDocuments(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAQueryDocumentsRequest = New ServiceReference_01.ELGAQueryDocumentsRequest()
             inValue.parsIn = parsIn
+            inValue.OnlyOneDoc = OnlyOneDoc
+            inValue.UniqueId = UniqueId
             Dim retVal As ServiceReference_01.ELGAQueryDocumentsResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryDocuments(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAQueryDocumentsResult
@@ -15284,23 +15317,6 @@ Namespace ServiceReference_01
         
         Public Function ELGAQueryDocumentsAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsResponse) Implements ServiceReference_01.Service1.ELGAQueryDocumentsAsync
             Return MyBase.Channel.ELGAQueryDocumentsAsync(request)
-        End Function
-        
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Function ServiceReference_01_Service1_ELGAQueryDocumentsByUid(ByVal request As ServiceReference_01.ELGAQueryDocumentsByUidRequest) As ServiceReference_01.ELGAQueryDocumentsByUidResponse Implements ServiceReference_01.Service1.ELGAQueryDocumentsByUid
-            Return MyBase.Channel.ELGAQueryDocumentsByUid(request)
-        End Function
-        
-        Public Function ELGAQueryDocumentsByUid(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
-            Dim inValue As ServiceReference_01.ELGAQueryDocumentsByUidRequest = New ServiceReference_01.ELGAQueryDocumentsByUidRequest()
-            inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGAQueryDocumentsByUidResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryDocumentsByUid(inValue)
-            parsIn = retVal.parsIn
-            Return retVal.ELGAQueryDocumentsByUidResult
-        End Function
-        
-        Public Function ELGAQueryDocumentsByUidAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsByUidRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsByUidResponse) Implements ServiceReference_01.Service1.ELGAQueryDocumentsByUidAsync
-            Return MyBase.Channel.ELGAQueryDocumentsByUidAsync(request)
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
@@ -15342,9 +15358,10 @@ Namespace ServiceReference_01
             Return MyBase.Channel.ELGAUpdateDocument(request)
         End Function
         
-        Public Function ELGAUpdateDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
+        Public Function ELGAUpdateDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAUpdateDocumentRequest = New ServiceReference_01.ELGAUpdateDocumentRequest()
             inValue.parsIn = parsIn
+            inValue.UniqueId = UniqueId
             Dim retVal As ServiceReference_01.ELGAUpdateDocumentResponse = CType(Me,ServiceReference_01.Service1).ELGAUpdateDocument(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAUpdateDocumentResult
@@ -15352,6 +15369,24 @@ Namespace ServiceReference_01
         
         Public Function ELGAUpdateDocumentAsync(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAUpdateDocumentResponse) Implements ServiceReference_01.Service1.ELGAUpdateDocumentAsync
             Return MyBase.Channel.ELGAUpdateDocumentAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ElgaDeprecateDocument(ByVal request As ServiceReference_01.ElgaDeprecateDocumentRequest) As ServiceReference_01.ElgaDeprecateDocumentResponse Implements ServiceReference_01.Service1.ElgaDeprecateDocument
+            Return MyBase.Channel.ElgaDeprecateDocument(request)
+        End Function
+        
+        Public Function ElgaDeprecateDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ElgaDeprecateDocumentRequest = New ServiceReference_01.ElgaDeprecateDocumentRequest()
+            inValue.parsIn = parsIn
+            inValue.UniqueId = UniqueId
+            Dim retVal As ServiceReference_01.ElgaDeprecateDocumentResponse = CType(Me,ServiceReference_01.Service1).ElgaDeprecateDocument(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ElgaDeprecateDocumentResult
+        End Function
+        
+        Public Function ElgaDeprecateDocumentAsync(ByVal request As ServiceReference_01.ElgaDeprecateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ElgaDeprecateDocumentResponse) Implements ServiceReference_01.Service1.ElgaDeprecateDocumentAsync
+            Return MyBase.Channel.ElgaDeprecateDocumentAsync(request)
         End Function
         
         Public Function genCDA(ByVal vars As ServiceReference_01.CDACDAIN) As ServiceReference_01.CDACDABack Implements ServiceReference_01.Service1.genCDA

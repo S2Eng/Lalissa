@@ -310,6 +310,10 @@ namespace PMDS.GUI
                     frm.IDMedDaten = row.ID;
                     frm.btnOK.ContextMenuStrip = null;
                     DialogResult res = frm.ShowDialog();
+                    if (frm.Storniert2 || frm.Gesendet)
+                    {
+                        return true;
+                    }
                     if (res != DialogResult.OK)
                     {
                         return false;
@@ -844,11 +848,12 @@ namespace PMDS.GUI
                 }
 
                 frmELGASearchDocuments frmELGASearchDocuments1 = new frmELGASearchDocuments();
-                frmELGASearchDocuments1.initControl(ENV.USERID);
+                frmELGASearchDocuments1.initControl(ENV.CurrentIDPatient);
                 frmELGASearchDocuments1.ShowDialog();
                 if (!frmELGASearchDocuments1.contELGASearchDocuments1.abort)
                 {
                     this.bELGA.saveELGADocuToArchive(ref frmELGASearchDocuments1.contELGASearchDocuments1.lDocusSelected);
+                    this._mainWindow.mainWindow.MainWindow.RefreshPatient();
                 }
 
             }

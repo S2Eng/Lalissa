@@ -694,6 +694,9 @@
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAAddDocumentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ElgaDeprecateDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAInvalidateContactResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -710,9 +713,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAParOutDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryDocumentsByUidResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryDocumentsResponse.datasource">

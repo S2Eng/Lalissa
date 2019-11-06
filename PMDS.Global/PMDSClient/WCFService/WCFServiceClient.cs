@@ -402,7 +402,7 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-              
+                
             }
             catch (Exception ex)
             {
@@ -427,9 +427,16 @@ namespace PMDSClient.Sitemap
 
                 if (parOutDto.bOKk__BackingField)
                 {
-                    if (parOutDto.ContactIDk__BackingField.Trim() == "")
+                    if (parOutDto.ContactExistsk__BackingField)
                     {
-                        throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.ContactID='" + parOutDto.ContactIDk__BackingField.ToString()+ "' not allowed!");
+                        return parOutDto;
+                    }
+                    else
+                    {
+                        if (parOutDto.ContactIDk__BackingField != null && parOutDto.ContactIDk__BackingField.Trim() == "")
+                        {
+                            throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.ContactID='" + parOutDto.ContactIDk__BackingField.ToString() + "' not allowed!");
+                        }
                     }
                     return parOutDto;
                 }
@@ -475,7 +482,7 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAAddContactDischarge(string ContactID)
+        public ELGAParOutDto ELGAAddContactDischarge(string LocalPatientID)
         {
             try
             {
@@ -483,7 +490,7 @@ namespace PMDSClient.Sitemap
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.ContactIDk__BackingField = ContactID.Trim();
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim() };
                 ELGAParOutDto parOutDto = client.ELGAAddContactDischarge(ref parsIn);
 
                 if (parOutDto.bErrorsFoundk__BackingField)
@@ -582,7 +589,7 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public ELGAParOutDto ELGAQueryDocuments(string ELGAPatientLocalID, Nullable<DateTime> dCreatedFrom, Nullable<DateTime> dCreatedTo)
+        public ELGAParOutDto ELGAQueryDocuments(string ELGAPatientLocalID, Nullable<DateTime> dCreatedFrom, Nullable<DateTime> dCreatedTo, bool OnlyOneDoc, string UniqueId)
         {
             try
             {
@@ -593,7 +600,7 @@ namespace PMDSClient.Sitemap
                 parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
                 parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto() {  CreatedFromk__BackingField = dCreatedFrom, CreatedTok__BackingField = dCreatedTo};
 
-                ELGAParOutDto parOutDto = client.ELGAQueryDocuments(ref parsIn);
+                ELGAParOutDto parOutDto = client.ELGAQueryDocuments(ref parsIn, OnlyOneDoc, UniqueId);
 
                 if (parOutDto.bErrorsFoundk__BackingField)
                 {
@@ -615,7 +622,7 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGAQueryDocuments: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAQueryDocumentsByUid(string ELGAPatientLocalID, string UUIDDocu)
+        public ELGAParOutDto ELGARetrieveDocument(string ELGAPatientLocalID, string UniqueID)
         {
             try
             {
@@ -624,40 +631,7 @@ namespace PMDSClient.Sitemap
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
-                parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto() { UUIDk__BackingField = UUIDDocu.Trim() };
-
-                ELGAParOutDto parOutDto = client.ELGAQueryDocumentsByUid(ref parsIn);
-
-                if (parOutDto.bErrorsFoundk__BackingField)
-                {
-                    throw new Exception("WCFServiceClientPMDS.ELGAQueryDocumentsByUid: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errorsk__BackingField.Trim());
-                }
-
-                if (parOutDto.bOKk__BackingField)
-                {
-                    return parOutDto;
-                }
-                else
-                {
-                    throw new Exception("WCFServiceClientPMDS.ELGAQueryDocumentsByUid: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("WCFServiceClientPMDS.ELGAQueryDocumentsByUid: " + ex.ToString());
-            }
-        }
-        public ELGAParOutDto ELGARetrieveDocument(string ELGAPatientLocalID, string UUIDDocu)
-        {
-            try
-            {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
-
-                ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
-                parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto() { UUIDk__BackingField = UUIDDocu.Trim() };
+                parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto() { UniqueIDk__BackingField = UniqueID.Trim() };
 
                 ELGAParOutDto parOutDto = client.ELGARetrieveDocument(ref parsIn);
 
@@ -727,7 +701,43 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGAAddDocument: " + ex.ToString());
             }
         }
+        public ELGAParOutDto ElgaDeprecateDocument(string ELGAPatientLocalID, string DocuUniqueId)
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
 
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
+                parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto()
+                {
+                    Documentnamek__BackingField = "", UniqueIDk__BackingField = "", Authork__BackingField = "", CreatedFromk__BackingField = null, CreatedTok__BackingField = null,
+                    DocumentStatusk__BackingField = ""
+                };
+
+                ELGAParOutDto parOutDto = client.ElgaDeprecateDocument(ref parsIn, DocuUniqueId);
+
+                if (parOutDto.bErrorsFoundk__BackingField)
+                {
+                    throw new Exception("WCFServiceClientPMDS.ElgaDeprecateDocument: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errorsk__BackingField.Trim());
+                }
+
+                if (parOutDto.bOKk__BackingField)
+                {
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ElgaDeprecateDocument: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ElgaDeprecateDocument: " + ex.ToString());
+            }
+        }
         public genCDARes genCDA(CDAeTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet, 
                                 Guid IDPatient, Guid IDAufenthalt, string Documentname)
         {

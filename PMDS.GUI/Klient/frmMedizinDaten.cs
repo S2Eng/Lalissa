@@ -10,7 +10,7 @@ using PMDS.GUI.Klient;
 using PMDS.Klient;
 using PMDS.DB;
 using System.Linq;
-
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -36,7 +36,9 @@ namespace PMDS.GUI
             DekursEntwurfAlias = 2
         }
 
-
+        public bool IsELGADocu = false;
+        public bool Storniert2 = false;
+        public bool Gesendet = false;
 
 
 
@@ -358,6 +360,56 @@ namespace PMDS.GUI
             else
             {
                 this.btnOpenBefund.Visible = false; 
+            }
+            this.btnBefundStorno.Visible = false;
+            this.btnBefundSend.Visible = false;
+
+            using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+            {
+                var rMedDaten = (from p in db.MedizinischeDaten
+                                where p.ID == _row.ID
+                                select new
+                                {
+                                    p.ID,
+                                    p.IDDocu
+                                }).FirstOrDefault();
+
+                if (rMedDaten != null && rMedDaten.IDDocu != null)
+                {
+                    var rDocuEintrag = (from de in db.tblDokumenteintrag
+                                     where de.ID ==  rMedDaten.IDDocu
+                                     select new
+                                     {
+                                         de.ID,
+                                         de.ELGAStorniert,
+                                         de.ELGAStorniertDatum,
+                                         de.ELGAStorniertUser,
+                                         de.ELGAÜbertragen,
+                                         de.IsELGADocu,
+                                         de.ELGADocuType
+                                     }).FirstOrDefault();
+
+                    var rAufenthalt = (from a in db.Aufenthalt
+                                        where a.ID == ENV.IDAUFENTHALT
+                                       select new
+                                        {
+                                            a.ID,
+                                            a.ELGASOOJN,
+                                            a.ELGAKontaktbestätigungStornoJN,
+                                            a.ELGALocalID
+                                        }).FirstOrDefault();
+
+                    this.IsELGADocu = true;
+                    this.btnOpenBefund.Visible = true;
+                    this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert;
+
+                    if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
+                        (rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht.ToString().Trim().ToLower()) || 
+                        rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief.ToString().Trim().ToLower())))
+                    {
+                        this.btnBefundSend.Visible = true;
+                    }
+                }
             }
         }
 
@@ -902,25 +954,6 @@ namespace PMDS.GUI
             }
         }
 
-        private void btnOpenBefund_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-
-                EDIFact.EDIFact EDIFact1 = new EDIFact.EDIFact();
-                EDIFact1.openBefund(_row.IDBefund);
-
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-            finally
-            {
-                Cursor.Current = Cursors.Default;
-            }
-        }
 
 
         private void btnDekursEntwurfErstellen_Click(object sender, EventArgs e)
@@ -978,6 +1011,128 @@ namespace PMDS.GUI
         private void frmMedizinDaten_Load(object sender, EventArgs e)
         {
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
+        }
+
+
+        private void btnOpenBefund_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (this.IsELGADocu)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rMedDaten = (from p in db.MedizinischeDaten
+                                         where p.ID == _row.ID
+                                         select new
+                                         {
+                                             p.ID,
+                                             p.IDDocu
+                                         }).FirstOrDefault();
+
+                        if (rMedDaten != null && rMedDaten.IDDocu != null)
+                        {
+                            ELGAPMDSBusinessUI bUi = new ELGAPMDSBusinessUI();
+                            bUi.openELGADocu(rMedDaten.IDDocu.Value);
+                        }
+                    }
+                }
+                else
+                {
+                    EDIFact.EDIFact EDIFact1 = new EDIFact.EDIFact();
+                    EDIFact1.openBefund(_row.IDBefund);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void btnBefundStorno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (this.IsELGADocu)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rMedDaten = (from p in db.MedizinischeDaten
+                                         where p.ID == _row.ID
+                                         select new
+                                         {
+                                             p.ID,
+                                             p.IDDocu
+                                         }).FirstOrDefault();
+
+                        if (rMedDaten != null && rMedDaten.IDDocu != null)
+                        {
+                            ELGABusiness bElga = new ELGABusiness();
+                            bElga.StornoELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
+                            this.btnBefundStorno.Visible = false;
+                            this.Storniert2 = true;
+                            this.Close();
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+        private void btnBefundSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                if (this.IsELGADocu)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rMedDaten = (from p in db.MedizinischeDaten
+                                         where p.ID == _row.ID
+                                         select new
+                                         {
+                                             p.ID,
+                                             p.IDDocu
+                                         }).FirstOrDefault();
+
+                        if (rMedDaten != null && rMedDaten.IDDocu != null)
+                        {
+                            ELGABusiness bElga = new ELGABusiness();
+                            bElga.SendELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
+                            this.btnBefundSend.Visible = false;
+                            this.Gesendet = true;
+                            this.Close();
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
     }

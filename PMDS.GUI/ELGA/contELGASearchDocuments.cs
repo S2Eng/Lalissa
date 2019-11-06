@@ -173,7 +173,7 @@ namespace PMDS.GUI.ELGA
                     PMDSBusiness b = new PMDSBusiness();
                     PMDS.db.Entities.Aufenthalt rActAuf= b.getAktuellerAufenthaltPatient(this._IDPatient, false, db);
 
-                    ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryDocuments(rActAuf.ELGALocalID.Trim(), dCreatedFrom, dCreatedTo);
+                    ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryDocuments(rActAuf.ELGALocalID.Trim(), dCreatedFrom, dCreatedTo, false, "");
 
                     string sFieldsSearchingGda = "Felder:" + "\r\n";
                     if (this.udteCreatedFrom.Value != null)
@@ -201,18 +201,19 @@ namespace PMDS.GUI.ELGA
                             foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocumentsk__BackingField)
                             {
                                 dsManage.ELGASearchDocumentsRow rDocu = this.sqlManange1.getNewELGADocument(ref this.dsManage1);
-                                rDocu.Dokument = rDocu.Dokument.Trim();
+                                rDocu.Dokument = elgaDocu.Documentnamek__BackingField.Trim();
                                 rDocu.SetErstelltAmNull();
-                                rDocu.UUID = rDocu.UUID.Trim();
-                                rDocu.UniqueID = rDocu.UniqueID.Trim();
-                                rDocu.LocigalID = rDocu.LocigalID.Trim();
-                                rDocu.Author = rDocu.Author.Trim();
-                                rDocu.Description = rDocu.Description.Trim();
-                                rDocu.DocStatus = rDocu.DocStatus.Trim();
-                                rDocu.Version = rDocu.Version.Trim();
-                                rDocu.CreationTime = rDocu.CreationTime.Trim();
-                                rDocu.Size = rDocu.Size;
+                                rDocu.UUID = elgaDocu.UUIDk__BackingField.Trim();
+                                rDocu.UniqueID = elgaDocu.UniqueIdk__BackingField.Trim();
+                                rDocu.LocigalID = elgaDocu.LogicalIdk__BackingField.Trim();
+                                rDocu.Author = elgaDocu.Authork__BackingField.Trim();
+                                rDocu.Description = elgaDocu.Descriptionk__BackingField.Trim();
+                                rDocu.DocStatus = elgaDocu.DocStatusk__BackingField.Trim();
+                                rDocu.Version = elgaDocu.Versionk__BackingField.Trim();
+                                rDocu.CreationTime = elgaDocu.CreationTimek__BackingField.Trim();
+                                rDocu.Size = elgaDocu.Sizek__BackingField;
                                 rDocu.Stylesheet = this.Stylesheet.Trim();
+                                rDocu.TypeFile = elgaDocu.TypeFilek__BackingField.Trim();
                                 rDocu.IDPatient = rPatient.ID;
                                 rDocu.IDAufenthalt = rActAuf.ID;
                                 rDocu.ELGAPatientLocalID = rActAuf.ELGALocalID.Trim();
@@ -364,7 +365,7 @@ namespace PMDS.GUI.ELGA
                 PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelDocu = this.getSelectedRow(true, ref gridRow);
                 if (rSelDocu != null)
                 {
-                    this.bELGA.openCDADocument(rSelDocu.UUID.Trim(), rSelDocu.ELGAPatientLocalID.Trim(), rSelDocu.Stylesheet.Trim(), "");
+                    this.bELGA.openCDADocument(rSelDocu.UniqueID.Trim(), rSelDocu.ELGAPatientLocalID.Trim(), rSelDocu.Stylesheet.Trim(), rSelDocu.TypeFile.Trim(), rSelDocu.Dokument.Trim());
                 }
 
             }

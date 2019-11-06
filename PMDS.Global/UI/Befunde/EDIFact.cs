@@ -652,7 +652,7 @@ namespace EDIFact
 
                             string tmpDateiType = Befund.IsDicomStudy ? ENV.BefundTypText(eBefundTyp.ZIP) : Befund.DateiType;
 
-                            bool bAddNewBefund = PMDSBusiness1.SaveDokumentinArchiv(Dateiname,Befund.Verzeichnis, Befund.IDOrdnerArchiv, BezeichnungFile, tmpDateiType,
+                            bool bAddNewBefund = PMDSBusiness1.SaveDokumentinArchiv(Dateiname,Befund.Verzeichnis, Befund.IDOrdnerArchiv, BezeichnungFile, tmpDateiType, "",
                                         dNow, Befund.SizeDoku, Befund.IDPatient, Befund.ArchivePath, ref IDDokumenteintragReturn, Befund.NameAbsender.Trim());
 
                             if (bAddNewBefund)          //Nur wenn der Befund neu ist

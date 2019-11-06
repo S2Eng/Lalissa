@@ -1377,6 +1377,7 @@ namespace PMDS.Global.db.ERSystem
                 rNew.Size = 0;
                 rNew.Stylesheet = "";
                 rNew.ELGAPatientLocalID = "";
+                rNew.TypeFile = "";
 
                 ds.ELGASearchDocuments.Rows.Add(rNew);
                 return rNew;
