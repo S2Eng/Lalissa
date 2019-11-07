@@ -148,6 +148,12 @@ namespace PMDS.GUI
                 if (ENV.lic_ELGA)
                 {
                     ELGABusiness bElga = new ELGABusiness();
+
+                    if (!bElga.checkKontaktbestätigung(idPatient, ENV.IDAUFENTHALT, true))
+                    {
+                        return false;
+                    }
+
                     string ArchivePath = "";
                     Nullable<Guid> IDOrdnerArchiv = null;
                     if (!bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
@@ -171,7 +177,7 @@ namespace PMDS.GUI
 			    frmEntlassung ent = new frmEntlassung(pat);
                 ent.mainWindow = mainWindow;
                 bool bOK = (ent.ShowDialog() == DialogResult.OK);
-            
+                
                 if (bOK && GuiActionDone != null)
                 {
                     ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
@@ -179,9 +185,8 @@ namespace PMDS.GUI
 
                     GuiActionDone(SiteEvents.Entlassen);
                 }
-            
+                
                 return (bOK);
-
             }
             catch (Exception ex)
             {
@@ -931,6 +936,12 @@ namespace PMDS.GUI
                 if (ENV.lic_ELGA)
                 {
                     ELGABusiness bElga = new ELGABusiness();
+
+                    if (!bElga.checkKontaktbestätigung(idPatient, ENV.IDAUFENTHALT, true))
+                    {
+                        return false;
+                    }
+
                     string ArchivePath = "";
                     Nullable<Guid> IDOrdnerArchiv = null;
                     if (!bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
@@ -948,7 +959,7 @@ namespace PMDS.GUI
                     if (!frmUrlaub.ucUrlaub21.IsAbwesend)
                     {
                         ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                        bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub.Value, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false);
+                        bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false);
                     }
 
                     if (GuiActionDone != null)

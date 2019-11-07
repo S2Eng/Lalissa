@@ -7,8 +7,7 @@ using System.Drawing;
 using Infragistics.Win.Misc;
 using Infragistics.Win;
 using Infragistics.Win.UltraWinGrid ;
-
-
+using PMDS.BusinessLogic;
 
 namespace PMDS.Global
 {
@@ -401,6 +400,71 @@ namespace PMDS.Global
                     return true;
 
             return false;
+        }
+
+        public string ParameterHelper_ReplaceString(string StringToReplace)
+        {
+            string sRet = StringToReplace;
+
+            // Vordefinierte Werte ersetzen
+            if (StringToReplace.Contains("{{{IDKlient_current}}}"))
+                sRet = sRet.Replace("{{{IDKlient_current}}}", ENV.CurrentIDPatient.ToString());
+
+            if (StringToReplace.Contains("{{{IDUser_current}}}"))
+                sRet = sRet.Replace("{{{IDUser_current}}}", ENV.USERID.ToString());
+
+            if (StringToReplace.Contains("{{{IDAufenthalt_current}}}"))
+            {
+                Patient p = new Patient(ENV.CurrentIDPatient);
+                sRet = sRet.Replace("{{{IDAufenthalt_current}}}", p.Aufenthalt.ID.ToString());
+            }
+
+            if (StringToReplace.Contains("{{{IDAbteilung_current}}}"))
+            {
+                Patient p = new Patient(ENV.CurrentIDPatient);
+                sRet = sRet.Replace("{{{IDAbteilung_current}}}", p.Aufenthalt.IDAbteilung.ToString());
+            }
+
+            if (StringToReplace.Contains("{{{IDKlinik_current}}}"))
+            {
+                Patient p = new Patient(ENV.CurrentIDPatient);
+                sRet = sRet.Replace("{{{IDKlinik_current}}}", p.Aufenthalt.IDKlinik.ToString());
+            }
+
+            //// Alle Parameter iterieren
+            //foreach (IBerichtParameterGUI u in this.pnlParameter.Controls)
+            //{
+            //    string sField = "{{{" + string.Format("{0}.Wert", u.BERICHTPARAMETER.Name) + "}}}";
+            //    string sField1 = "{{{" + string.Format("{0}.Text", u.BERICHTPARAMETER.Name) + "}}}";
+            //    if (StringToReplace.Contains(sField))
+            //    {
+            //        try
+            //        {
+            //            sRet = sRet.Replace(sField, u.VALUE.ToString());
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            string sMsgTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Der erforderliche Berichtsparameter '{0}' hat einen ungültigen Wert!\n\rBitte geben Sie einen gültigen Wert ein.");
+            //            sMsgTxt = string.Format(sMsgTxt, u.BERICHTPARAMETER.Name);
+            //            System.Windows.Forms.MessageBox.Show(sMsgTxt);
+            //        }
+            //    }
+
+            //    if (StringToReplace.Contains(sField1))
+            //    {
+            //        try
+            //        {
+            //            sRet = sRet.Replace(sField1, u.VALUE_TEXT);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            string sMsgTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Der erforderliche Berichtsparameter '{0}' hat einen ungültigen Wert!\n\rBitte geben Sie einen gültigen Wert ein.");
+            //            sMsgTxt = string.Format(sMsgTxt, u.BERICHTPARAMETER.Name);
+            //            System.Windows.Forms.MessageBox.Show(sMsgTxt);
+            //        }
+            //    }
+            //}
+            return sRet;
         }
 
     }

@@ -2626,7 +2626,7 @@ namespace PMDS.Calc.UI.Admin
                     }
                     else
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Kostenträger wurden erfogreich geprüft!", "Kostenträger prüfen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Kostenträger wurden erfolgreich geprüft!", "Kostenträger prüfen", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
 

@@ -22,6 +22,9 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Speichern");
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Das Dokument wurde erfolgreich nach ELGA übertragen!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für den Patienten wurde noch keine ELGA-Kontaktbestätigung durchgeführt!", "", MessageBoxButtons.OK);
+
+
 
             }
             catch (Exception ex)

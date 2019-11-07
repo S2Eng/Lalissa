@@ -57,18 +57,27 @@ namespace PMDS.GUI
                 {
                     return;
                 }
-
-                ELGABusiness bElga = new ELGABusiness();
-                if (!bElga.ELGAIsActive(IDPatient, IDAufenthalt, false))
-                {
-                    return;
-                }
-
-                WCFServiceClient wcf = new WCFServiceClient();
-                DateTime dNow = DateTime.Now;
-
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
+                    var rAufenthalt = (from a in db.Aufenthalt
+                                   where a.ID == IDAufenthalt
+                                   select new
+                                   {
+                                       a.ID,
+                                       a.ELGALocalID,
+                                       a.ELGAKontaktbestätigungJN,
+                                       a.ELGAKontaktbestätigungContactID
+                                   }).First();
+
+                    ELGABusiness bElga = new ELGABusiness();
+                    if (!bElga.ELGAIsActive(IDPatient, IDAufenthalt, false))
+                    {
+                        return;
+                    }
+
+                    WCFServiceClient wcf = new WCFServiceClient();
+                    DateTime dNow = DateTime.Now;
+
                     string ClinicalDocumentSetID = System.Guid.NewGuid().ToString();
                     Guid IDDocument = System.Guid.NewGuid();
                     int VersionsNr = 0;
@@ -83,16 +92,6 @@ namespace PMDS.GUI
                                         p.ELGAAbgemeldet
                                     }).First();
 
-                    var rAufenthalt = (from a in db.Aufenthalt
-                                       where a.ID == IDAufenthalt
-                                       select new
-                                       {
-                                           a.ID,
-                                           a.ELGALocalID,
-                                           a.ELGAKontaktbestätigungJN,
-                                           a.ELGAKontaktbestätigungContactID
-                                       }).First();
-
                     if (CDAeTypeCDA == QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief)
                     {
                         string Documentname = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegerischer Entlassungsbrief");
@@ -104,7 +103,7 @@ namespace PMDS.GUI
 
                         if (rAufenthalt.ELGAKontaktbestätigungJN)
                         {
-                            ELGAParOutDto parOuot = wcf.ELGAAddContactDischarge(rAufenthalt.ELGAKontaktbestätigungContactID.Trim());
+                            ELGAParOutDto parOuot = wcf.ELGAAddContactDischarge(rAufenthalt.ELGALocalID.Trim());
 
                             string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt für Patient {0} wurde beendet");
                             sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
@@ -121,18 +120,21 @@ namespace PMDS.GUI
                         string Stylesheet = "ELGA_Stylesheet_v1.0.xsl";
                         bool hasRight = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPflegezustandsbericht, false);
 
+                        BaseControls.BerichtParameterReplaceDelegate _delegate = new BaseControls.BerichtParameterReplaceDelegate(new UIGlobal().ParameterHelper_ReplaceString);
+                        BaseControls.ParameterHelper.ReplaceString += _delegate;
                         frmPrintPflegebegleitschreibenInfo frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
                         frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = true;
+                        BaseControls.ParameterHelper.ReplaceString -= _delegate;
                         DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
                         if (res != DialogResult.OK && !frmPrintPflegebegleitschreibenInfo1.saveToArchive)
                         {
                             this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                        (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
+                                                        null, verstorbenJN, FileType);
                         }
                         else
                         {
                             this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                        null, verstorbenJN, FileType);
+                                                        (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
                         }
                     }
                     else
@@ -164,7 +166,7 @@ namespace PMDS.GUI
                     throw new Exception("ELGAPMDSBusinessUI.prieviewSendSaveCDA: ArchivePath not correct!" + "\r\n" + "Please contact your Administrator!");
                 }
 
-                WCFServiceClient.genCDARes resCda = wcf.genCDA(CDAeTypeCDA, IDEinrichtungEmpfänger, IDDocument, ClinicalDocumentSetID, VersionsNr, Stylesheet, IDPatient, IDAufenthalt, Documentname);
+                WCFServiceClient.genCDARes resCda = wcf.genCDA2(CDAeTypeCDA, IDEinrichtungEmpfänger, IDDocument, ClinicalDocumentSetID, VersionsNr, Stylesheet, IDPatient, IDAufenthalt, Documentname);
 
                 Guid IDDocumenteneintrag = System.Guid.NewGuid();
                 bool SavedToELGA = false;
@@ -180,7 +182,7 @@ namespace PMDS.GUI
                         if (hasRight)
                         {
                             bool bSaveDocuOK = bElga.saveDocuToELGA(IDPatient, IDAufenthalt, IDUrlaub, Documentname, resCda.xml, resCda.bXml, Stylesheet, ClinicalDocumentSetID, CDAeTypeCDA, FileType, verstorbenJN);
-                            string msgOK = QS2.Desktop.ControlManagment.ControlManagment.getRes("CDA-Dokument wurde erfogreich generiert, nach ELGA hochgeladen und im Dokumentenarchiv gespeichert!");
+                            string msgOK = QS2.Desktop.ControlManagment.ControlManagment.getRes("CDA-Dokument wurde erfolgreich generiert, nach ELGA hochgeladen und im Dokumentenarchiv gespeichert!");
                             QS2.Desktop.ControlManagment.ControlManagment.MessageBox(msgOK, "", MessageBoxButtons.OK, true);
                             SavedToELGA = true;
                         }
@@ -188,21 +190,21 @@ namespace PMDS.GUI
                         {
                             msg1 = QS2.Desktop.ControlManagment.ControlManagment.getRes("Das ELGA-Dokument wurde nicht nach ELGA übertragen, da Sie hierfür keine Rechte besitzen!");
                             bool bDocuOK = bElga.saveELGADocuToDB(ref ArchivePath, FileType, ref IDOrdnerArchiv, CDAeTypeCDA.ToString(), db, ref dNow, ref wcf, IDAufenthalt,
-                                                                    IDPatient, IDUrlaub, "", PatientELGALocalID.Trim(), Documentname.Trim(), Stylesheet.Trim(), ref IDDocumenteneintrag, true, 0);
+                                                                    IDPatient, IDUrlaub, "", PatientELGALocalID.Trim(), Documentname.Trim(), Stylesheet.Trim(), ref IDDocumenteneintrag, false, resCda.xml, true, 0);
                         }
                     }
                     else
                     {
                         msg1 = QS2.Desktop.ControlManagment.ControlManagment.getRes("Das ELGA-Dokument wurde nicht nach ELGA übertragen!");
                         bool bDocuOK = bElga.saveELGADocuToDB(ref ArchivePath, FileType, ref IDOrdnerArchiv, CDAeTypeCDA.ToString(), db, ref dNow, ref wcf, IDAufenthalt,
-                                                                    IDPatient, IDUrlaub, "", PatientELGALocalID.Trim(), Documentname.Trim(), Stylesheet.Trim(), ref IDDocumenteneintrag, true, 0);
+                                                                    IDPatient, IDUrlaub, "", PatientELGALocalID.Trim(), Documentname.Trim(), Stylesheet.Trim(), ref IDDocumenteneintrag, false, resCda.xml, true, 0);
                     }
                 }
                 else
                 {
                     msg1 = QS2.Desktop.ControlManagment.ControlManagment.getRes("Das ELGA-Dokument wurde nicht nach ELGA übertragen!");
                     bool bDocuOK = bElga.saveELGADocuToDB(ref ArchivePath, FileType, ref IDOrdnerArchiv, CDAeTypeCDA.ToString(), db, ref dNow, ref wcf, IDAufenthalt,
-                                                                    IDPatient, IDUrlaub, "", PatientELGALocalID.Trim(), Documentname.Trim(), Stylesheet.Trim(), ref IDDocumenteneintrag, true, 0);
+                                                                    IDPatient, IDUrlaub, "", PatientELGALocalID.Trim(), Documentname.Trim(), Stylesheet.Trim(), ref IDDocumenteneintrag, false, resCda.xml, true, 0);
                 }
 
                 if (!SavedToELGA)
@@ -255,7 +257,7 @@ namespace PMDS.GUI
                                      p.Archivpfad
                                  }).First();
 
-                    string FileArchive = Path.Combine(rPfad.Archivpfad.Trim(), rDocu.Archivordner.Trim(), rDocu.DateinameArchiv.Trim() + "" + rDocu.DateinameTyp.Trim());
+                    string FileArchive = Path.Combine(rPfad.Archivpfad.Trim(), rDocu.Archivordner.Trim(), rDocu.DateinameArchiv.Trim());
                     //string FileTmp = rDocu.DateinameArchiv.Trim() + "_" + System.Guid.NewGuid().ToString() + rDocu.DateinameTyp.Trim()
                     //string FilePathTmp = System.IO.Path.Combine(ENV.path_Temp, "CDA");
                     //File.Copy(FileArchive, System.IO.Path.Combine(FilePathTmp, FileTmp));

@@ -166,7 +166,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(753, 692);
+            this.btnCancel.Location = new System.Drawing.Point(753, 715);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 13;
@@ -189,7 +189,7 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(843, 692);
+            this.btnOK.Location = new System.Drawing.Point(843, 715);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(48, 32);
             this.btnOK.TabIndex = 14;
@@ -646,7 +646,7 @@
             this.btnTerminErstellen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnTerminErstellen.DoOnClick = true;
             this.btnTerminErstellen.IsStandardControl = true;
-            this.btnTerminErstellen.Location = new System.Drawing.Point(235, 691);
+            this.btnTerminErstellen.Location = new System.Drawing.Point(235, 714);
             this.btnTerminErstellen.Name = "btnTerminErstellen";
             this.btnTerminErstellen.Size = new System.Drawing.Size(122, 33);
             this.btnTerminErstellen.TabIndex = 68;
@@ -667,7 +667,7 @@
             this.btnDekursErstellen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnDekursErstellen.DoOnClick = true;
             this.btnDekursErstellen.IsStandardControl = true;
-            this.btnDekursErstellen.Location = new System.Drawing.Point(8, 691);
+            this.btnDekursErstellen.Location = new System.Drawing.Point(8, 714);
             this.btnDekursErstellen.Name = "btnDekursErstellen";
             this.btnDekursErstellen.Size = new System.Drawing.Size(100, 33);
             this.btnDekursErstellen.TabIndex = 69;
@@ -683,7 +683,7 @@
             appearance10.BorderColor = System.Drawing.Color.Black;
             this.btnOpenBefund.Appearance = appearance10;
             this.btnOpenBefund.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnOpenBefund.Location = new System.Drawing.Point(8, 657);
+            this.btnOpenBefund.Location = new System.Drawing.Point(8, 680);
             this.btnOpenBefund.Name = "btnOpenBefund";
             this.btnOpenBefund.Size = new System.Drawing.Size(100, 33);
             this.btnOpenBefund.TabIndex = 70;
@@ -703,7 +703,7 @@
             this.PanelDekursEntwürfe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelDekursEntwürfe.Controls.Add(this.btnDekursEntwurfErstellenAs);
             this.PanelDekursEntwürfe.Controls.Add(this.btnDekursEntwurfErstellen);
-            this.PanelDekursEntwürfe.Location = new System.Drawing.Point(644, 693);
+            this.PanelDekursEntwürfe.Location = new System.Drawing.Point(644, 716);
             this.PanelDekursEntwürfe.Name = "PanelDekursEntwürfe";
             this.PanelDekursEntwürfe.Size = new System.Drawing.Size(103, 54);
             this.PanelDekursEntwürfe.TabIndex = 94;
@@ -747,7 +747,7 @@
             appearance9.Image = ((object)(resources.GetObject("appearance9.Image")));
             appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.uDropDownDekursEntwürfe.Appearance = appearance9;
-            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(111, 692);
+            this.uDropDownDekursEntwürfe.Location = new System.Drawing.Point(111, 715);
             this.uDropDownDekursEntwürfe.Name = "uDropDownDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemKey = "PanelDekursEntwürfe";
             this.uDropDownDekursEntwürfe.PopupItemProvider = this.ultraPopupControlContainerDekursEntwürfe;
@@ -767,7 +767,7 @@
             this.btnKlientenMehrfachauswahl.Appearance = appearance6;
             this.btnKlientenMehrfachauswahl.AutoWorkLayout = false;
             this.btnKlientenMehrfachauswahl.IsStandardControl = false;
-            this.btnKlientenMehrfachauswahl.Location = new System.Drawing.Point(479, 691);
+            this.btnKlientenMehrfachauswahl.Location = new System.Drawing.Point(479, 714);
             this.btnKlientenMehrfachauswahl.Name = "btnKlientenMehrfachauswahl";
             this.btnKlientenMehrfachauswahl.Size = new System.Drawing.Size(127, 33);
             this.btnKlientenMehrfachauswahl.TabIndex = 95;
@@ -810,7 +810,7 @@
             appearance5.BorderColor = System.Drawing.Color.Black;
             this.btnBefundStorno.Appearance = appearance5;
             this.btnBefundStorno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBefundStorno.Location = new System.Drawing.Point(111, 657);
+            this.btnBefundStorno.Location = new System.Drawing.Point(111, 680);
             this.btnBefundStorno.Name = "btnBefundStorno";
             this.btnBefundStorno.Size = new System.Drawing.Size(122, 33);
             this.btnBefundStorno.TabIndex = 97;
@@ -825,7 +825,7 @@
             appearance4.BorderColor = System.Drawing.Color.Black;
             this.btnBefundSend.Appearance = appearance4;
             this.btnBefundSend.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBefundSend.Location = new System.Drawing.Point(235, 657);
+            this.btnBefundSend.Location = new System.Drawing.Point(235, 680);
             this.btnBefundSend.Name = "btnBefundSend";
             this.btnBefundSend.Size = new System.Drawing.Size(122, 33);
             this.btnBefundSend.TabIndex = 98;
@@ -841,7 +841,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(899, 728);
+            this.ClientSize = new System.Drawing.Size(899, 751);
             this.Controls.Add(this.btnBefundSend);
             this.Controls.Add(this.btnBefundStorno);
             this.Controls.Add(this.pnlGroesse);

@@ -63,6 +63,7 @@ namespace PMDS.GUI.ELGA
 
                 if (this._TypeUI == eTypeUI.saveToArchive)
                 {
+                    this.panelBottom.Visible = true;
                     if (ENV.adminSecure)
                     {
                         this.btnSaveIntoArchive.Visible = true;
@@ -77,6 +78,7 @@ namespace PMDS.GUI.ELGA
                 }
                 else if (this._TypeUI == eTypeUI.SaveToElga)
                 {
+                    this.panelBottom.Visible = true;
                     this.btnSaveIntoArchive.Visible = false;
                     this.btnSaveDocuToELGA.Visible = true;
                     this.btnClose.Visible = false;
@@ -196,7 +198,7 @@ namespace PMDS.GUI.ELGA
                     Guid IDDocumenteneintrag = System.Guid.NewGuid();
                     return this.bELGA.saveELGADocuToDB(ref ArchivePath, this._typeFile, ref IDOrdnerArchiv, "", db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
                                                     ENV.CurrentIDPatient, null, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(),
-                                                    ref IDDocumenteneintrag, true, -1);
+                                                    ref IDDocumenteneintrag, true, "", true, -1);
                 }
 
             }
