@@ -764,6 +764,7 @@ namespace PMDS.Global.db.ERSystem
                                        k.ID,
                                        k.Bezeichnung,
                                        k.ELGA_OrganizationOID,
+                                       k.ELGA_OID,
                                        k.ELGA_OrganizationName
                                    }).First();
 
@@ -795,7 +796,7 @@ namespace PMDS.Global.db.ERSystem
                     ELGAParOutDto parOut = new ELGAParOutDto() { DocuUniqueIdk__BackingField = "" };
                     if (sendDocu)
                     {
-                        parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.ELGA_OrganizationName.Trim(), rKlinik.ELGA_OrganizationOID.Trim(), rBenutzer.Benutzer1.Trim(),
+                        parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.Bezeichnung.Trim(), rKlinik.ELGA_OID.Trim(), rBenutzer.Benutzer1.Trim(),
                                                                                 DocumentName, bDocu, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), "", IDDocumenteneintrag.ToString(), ClinicalDocumentSetID.Trim());
 
                         if (CDAeTypeCDA == CDAeTypeCDA.Pflegesituationbericht)
@@ -1005,14 +1006,22 @@ namespace PMDS.Global.db.ERSystem
                 }
 
                 //byte[] bDocu = parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField;
-                //string base64String2 = Convert.ToBase64String(bDocu, 0, bDocu.Length);
                 //string base64String = Encoding.UTF8.GetString(bDocu, 0, bDocu.Length);
+                //string sFileXMLTest = System.Text.Encoding.Default.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField);
+                //string sFileXMLTest2 = Convert.ToBase64String(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField, 0, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length);
 
-                string sFileXML = System.Text.Encoding.Default.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField);
+                string sFileXML = Encoding.UTF8.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField, 0, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length);
+
+                int posStartXml = sFileXML.Trim().IndexOf("<?xml version");
+                string sFileXmlTmp = sFileXML.Trim().Substring(posStartXml, sFileXML.Trim().Length - posStartXml);
+
+                int posStylesheetStart = sFileXmlTmp.Trim().IndexOf("<?xml-stylesheet href = \"");
+                int posStylesheetEnd = sFileXmlTmp.Trim().IndexOf("\" type", posStylesheetStart);
+                string sStylesheetTmp = sFileXmlTmp.Trim().Substring(posStylesheetStart + 25, posStylesheetEnd - (posStylesheetStart + 25));
 
                 frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
                 frmCDAViewer1.initControl(DocumentName.Trim(), parOuot.lDocumentsk__BackingField[0].UniqueIdk__BackingField.Trim(),
-                                            "", sFileXML, typeFile, Stylesheet, contCDAViewer.eTypeUI.saveToArchive);
+                                            "", sFileXmlTmp, typeFile, sStylesheetTmp, contCDAViewer.eTypeUI.saveToArchive);
                 frmCDAViewer1.ShowDialog();
                 if (!frmCDAViewer1.contCDAViewer1.abort)
                 {

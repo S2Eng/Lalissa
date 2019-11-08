@@ -151,7 +151,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ELGAUpdatePatient">
+  <xs:element name="ELGAinsertPatient">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q16:ELGAParInDto" />
@@ -159,93 +159,109 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ELGAinsertPatientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAinsertPatientResult" nillable="true" type="q18:ELGAParOutDto" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q19:ELGAParInDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ELGAUpdatePatient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q20:ELGAParInDto" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WCFServicePMDS" minOccurs="0" name="TypeUpdatePatients" type="q21:ELGABAL.eTypeUpdatePatients" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ELGAUpdatePatientResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAUpdatePatientResult" nillable="true" type="q18:ELGAParOutDto" />
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q19:ELGAParInDto" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAUpdatePatientResult" nillable="true" type="q22:ELGAParOutDto" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q23:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAAddContactAdmission">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q20:ELGAParInDto" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q24:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAAddContactAdmissionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAAddContactAdmissionResult" nillable="true" type="q21:ELGAParOutDto" />
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q22:ELGAParInDto" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAAddContactAdmissionResult" nillable="true" type="q25:ELGAParOutDto" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q26:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAInvalidateContact">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q23:ELGAParInDto" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q27:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAInvalidateContactResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAInvalidateContactResult" nillable="true" type="q24:ELGAParOutDto" />
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q25:ELGAParInDto" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAInvalidateContactResult" nillable="true" type="q28:ELGAParOutDto" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q29:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAAddContactDischarge">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q26:ELGAParInDto" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q30:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAAddContactDischargeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAAddContactDischargeResult" nillable="true" type="q27:ELGAParOutDto" />
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q28:ELGAParInDto" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAAddContactDischargeResult" nillable="true" type="q31:ELGAParOutDto" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q32:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAListContacts">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q29:ELGAParInDto" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q33:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAListContactsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAListContactsResult" nillable="true" type="q30:ELGAParOutDto" />
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q31:ELGAParInDto" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAListContactsResult" nillable="true" type="q34:ELGAParOutDto" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q35:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAQueryGDAs">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q32:ELGAParInDto" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q36:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAQueryGDAsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAQueryGDAsResult" nillable="true" type="q33:ELGAParOutDto" />
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q34:ELGAParInDto" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAQueryGDAsResult" nillable="true" type="q37:ELGAParOutDto" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q38:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAQueryDocuments">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q35:ELGAParInDto" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q39:ELGAParInDto" />
         <xs:element minOccurs="0" name="OnlyOneDoc" type="xs:boolean" />
         <xs:element minOccurs="0" name="UniqueId" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -254,45 +270,45 @@
   <xs:element name="ELGAQueryDocumentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAQueryDocumentsResult" nillable="true" type="q36:ELGAParOutDto" />
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q37:ELGAParInDto" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAQueryDocumentsResult" nillable="true" type="q40:ELGAParOutDto" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q41:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGARetrieveDocument">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q38:ELGAParInDto" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q42:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGARetrieveDocumentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGARetrieveDocumentResult" nillable="true" type="q39:ELGAParOutDto" />
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q40:ELGAParInDto" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGARetrieveDocumentResult" nillable="true" type="q43:ELGAParOutDto" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q44:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAAddDocument">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q41:ELGAParInDto" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q45:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAAddDocumentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAAddDocumentResult" nillable="true" type="q42:ELGAParOutDto" />
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q43:ELGAParInDto" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAAddDocumentResult" nillable="true" type="q46:ELGAParOutDto" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q47:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ELGAUpdateDocument">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q44:ELGAParInDto" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q48:ELGAParInDto" />
         <xs:element minOccurs="0" name="UniqueId" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -300,15 +316,15 @@
   <xs:element name="ELGAUpdateDocumentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAUpdateDocumentResult" nillable="true" type="q45:ELGAParOutDto" />
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q46:ELGAParInDto" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ELGAUpdateDocumentResult" nillable="true" type="q49:ELGAParOutDto" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q50:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ElgaDeprecateDocument">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q47:ELGAParInDto" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q51:ELGAParInDto" />
         <xs:element minOccurs="0" name="UniqueId" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -316,29 +332,29 @@
   <xs:element name="ElgaDeprecateDocumentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ElgaDeprecateDocumentResult" nillable="true" type="q48:ELGAParOutDto" />
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q49:ELGAParInDto" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="ElgaDeprecateDocumentResult" nillable="true" type="q52:ELGAParOutDto" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" minOccurs="0" name="parsIn" nillable="true" type="q53:ELGAParInDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="genCDA">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="vars" nillable="true" type="q50:CDA.CDAIN" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="vars" nillable="true" type="q54:CDA.CDAIN" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="genCDAResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="genCDAResult" nillable="true" type="q51:CDA.CDABack" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" minOccurs="0" name="genCDAResult" nillable="true" type="q55:CDA.CDABack" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Export">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="IDPatient" type="q52:guid" />
+        <xs:element xmlns:q56="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="IDPatient" type="q56:guid" />
         <xs:element minOccurs="0" name="ArchivPath" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="IsTest" type="xs:boolean" />
       </xs:sequence>
@@ -376,7 +392,7 @@
   <xs:element name="getvKlientenlisteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getvKlientenlisteResult" nillable="true" type="q53:ArrayOfbase64Binary" />
+        <xs:element xmlns:q57="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getvKlientenlisteResult" nillable="true" type="q57:ArrayOfbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

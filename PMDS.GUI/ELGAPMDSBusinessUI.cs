@@ -248,7 +248,7 @@ namespace PMDS.GUI
                                      de.DateinameTyp,
                                      de.IDDokumenteintrag,
                                      de.DateinameArchiv,
-                                     de.Archivordner
+                                     de.Archivordner,
                                  }).First();
 
                     var rPfad = (from p in db.tblPfad
@@ -279,7 +279,7 @@ namespace PMDS.GUI
                     }
 
                     frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
-                    frmCDAViewer1.initControl(rDocuEintrag.Bezeichnung.Trim(), rDocuEintrag.ELGAUniqueID.Trim(), xmlFile, "", rDocu.DateinameTyp, rDocuEintrag.FileStylesheet.Trim(), contCDAViewer.eTypeUI.saveToArchive);
+                    frmCDAViewer1.initControl(rDocuEintrag.Bezeichnung.Trim(), rDocuEintrag.ELGAUniqueID.Trim(), "", xmlFile, rDocu.DateinameTyp, rDocuEintrag.FileStylesheet.Trim(), contCDAViewer.eTypeUI.saveToArchive);
                     frmCDAViewer1.contCDAViewer1.btnSaveIntoArchive.Visible = false;
                     frmCDAViewer1.contCDAViewer1.btnSaveDocuToELGA.Visible = false;
                     frmCDAViewer1.contCDAViewer1.btnAbort.Visible = false;

@@ -17,6 +17,7 @@
       <xs:element name="_x003C_IDDocuIntern_x003E_k__BackingField" type="ser:guid" />
       <xs:element name="_x003C_IDPatientIntern_x003E_k__BackingField" type="ser:guid" />
       <xs:element name="_x003C_LocalPatientID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_authUniversalID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_sDocumentsDto_x003E_k__BackingField" nillable="true" type="tns:DocumentSearchDto" />
       <xs:element name="_x003C_sObjectDto_x003E_k__BackingField" nillable="true" type="tns:ObjectDTO" />
       <xs:element name="_x003C_session_x003E_k__BackingField" nillable="true" type="tns:ELGASessionDTO" />
@@ -201,7 +202,6 @@
   <xs:element name="ArrayOfELGAPidsDTO" nillable="true" type="tns:ArrayOfELGAPidsDTO" />
   <xs:complexType name="ELGAPidsDTO">
     <xs:sequence>
-      <xs:element name="_x003C_IDELGAPatients_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_ID_x003E_k__BackingField" type="ser:guid" />
       <xs:element name="_x003C_authUniversalID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_ehrPIDType_x003E_k__BackingField" type="xs:int" />

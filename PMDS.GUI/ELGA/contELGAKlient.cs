@@ -181,14 +181,15 @@ namespace PMDS.GUI.ELGA
                         string ELGALocalIDStored = "";
                         if (frmELGASearchPatient1.contELGASearchPatient1._rSelRow.PatientLocalID.Trim() == "")
                         {
-                            ELGAParOutDto parOut = this.WCFServiceClient1.ELGAUpdatePatient(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID, this._IDAufenthalt.ToString().ToLower(), ELGABALeTypeUpdatePatients.CreateLocalPatientID);
+                            string LocalPatientIDWriteELGA = ("S2Int." + System.Guid.NewGuid().ToString() + "").ToLower();
+                            ELGAParOutDto parOut = this.WCFServiceClient1.ELGAInsertPatient(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID, LocalPatientIDWriteELGA.Trim(), rKlinik.AuthUniversalID.Trim(), ELGABALeTypeUpdatePatients.CreateLocalPatientID);
                             if (parOut.bOKk__BackingField)
                             {
                                 foreach (ELGAPidsDTO rPid in parOut.lPatientsk__BackingField[0].ELGAPidsk__BackingField)
                                 {
-                                    if (rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower())
+                                    if (rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower() && rPid.authUniversalIDk__BackingField.Trim() == rKlinik.AuthUniversalID.Trim())
                                     {
-                                        ELGALocalIDStored = rPid.IDELGAPatientsk__BackingField.Trim();
+                                        ELGALocalIDStored = rPid.patientIDk__BackingField.Trim();
                                         bPatientLocalIDOK = true;
                                     }
                                 }

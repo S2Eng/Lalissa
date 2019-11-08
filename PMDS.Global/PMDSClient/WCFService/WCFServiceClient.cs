@@ -376,6 +376,40 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: " + ex.ToString());
             }
         }
+        public ELGAParOutDto ELGAInsertPatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, string authUniversalID, ELGABALeTypeUpdatePatients ELGABALeTypeUpdatePatients)
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.IDPatientInternk__BackingField = IDPatientInternWcf;
+                parsIn.LocalPatientIDk__BackingField = LocalPatientIDWrite;
+                parsIn.authUniversalIDk__BackingField = authUniversalID.Trim();
+                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientIDWrite.Trim() };
+                ELGAParOutDto parOutDto = client.ELGAinsertPatient(ref parsIn, ELGABALeTypeUpdatePatients);
+
+                if (parOutDto.bErrorsFoundk__BackingField)
+                {
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAUpdatePatient");
+                    throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                }
+
+                if (parOutDto.bOKk__BackingField)
+                {
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: " + ex.ToString());
+            }
+        }
         public ELGAParOutDto ELGAUpdatePatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, ELGABALeTypeUpdatePatients ELGABALeTypeUpdatePatients)
         {
             try

@@ -31,7 +31,7 @@ namespace PMDS.GUI.ELGA
         public WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
 
         public string colSelect = "Select";
-        public string Stylesheet = "ELGA_Stylesheet_v1.0.xsl";
+        public string Stylesheet2 = "ELGA_Stylesheet_v1.0.xsl";
 
         public ELGABusiness bELGA = new ELGABusiness();
 
@@ -212,7 +212,7 @@ namespace PMDS.GUI.ELGA
                                 rDocu.Version = elgaDocu.Versionk__BackingField.Trim();
                                 rDocu.CreationTime = elgaDocu.CreationTimek__BackingField.Trim();
                                 rDocu.Size = elgaDocu.Sizek__BackingField;
-                                rDocu.Stylesheet = this.Stylesheet.Trim();
+                                rDocu.Stylesheet = "";                              //this.Stylesheet.Trim();
                                 rDocu.TypeFile = elgaDocu.TypeFilek__BackingField.Trim();
                                 rDocu.IDPatient = rPatient.ID;
                                 rDocu.IDAufenthalt = rActAuf.ID;
