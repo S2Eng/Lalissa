@@ -85,9 +85,14 @@ namespace PMDS.BusinessLogic
 
             string name = "";
             Patient p = new Patient(IDpatient);
-            if (p.Sexus.Trim() != "")
-                name = p.Sexus.Trim() == "weiblich" ? "Frau " : "Herrn ";
-            name += p.Vorname + " " + p.Nachname;
+
+            string sTitel = p.Titel;
+            string sAnrede = "";
+            if (p.Sexus.Contains("eib"))
+                sAnrede = "Frau";
+            else if (p.Sexus.Contains("nn"))
+                sAnrede = "Herrn";
+            name = (sAnrede + " " + sTitel + "" + p.Vorname + " " + p.Nachname).Trim();
             
             PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
             dsKlinik.KlinikRow rKlinikActuell = DBKlinik1.loadKlinik(PMDS.Global.ENV.IDKlinik, true);
