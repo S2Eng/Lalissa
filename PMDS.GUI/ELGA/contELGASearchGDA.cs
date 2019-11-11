@@ -212,97 +212,107 @@ namespace PMDS.GUI.ELGA
                 {
                     return false;
                 }
-                if (!this.bELGA.ELGAIsActive(this._IDPatient.Value, ENV.IDAUFENTHALT, true))
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    return false;
-                }
-
-                if (!this.validateData())
-                {
-                    return false;
-                }
-
-                cSearchGdaFlds FieldsSearchingWcf = new cSearchGdaFlds()
-                {
-                    NachnameFirma = this.txtNachname.Text.Trim(),
-                    Vorname = this.txtVorname.Text.Trim(),
-                    PLZ = this.txtPLZ.Text.Trim(),
-                    Ort = "",
-                    Strasse = "",
-                    StrasseNr = ""
-                };
-
-                //cSearchGdaFlds FieldsSearchingWcf = new cSearchGdaFlds() { 
-                //    NachnameFirma = this.txtNachname.Text.Trim(),
-                //    Vorname = this.txtVorname.Text.Trim(), 
-                //    Ort = this.txtOrt.Text.Trim(),
-                //    PLZ = this.txtPLZ.Text.Trim(), 
-                //    Strasse = this.txtStrasse.Text.Trim(),
-                //    StrasseNr = this.txtStrasseNr.Text.Trim()
-                //};
-
-                this.dsManage1.Clear();
-                this.gridFound.Refresh();
-
-                ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryGDAs(FieldsSearchingWcf);
-
-                string sFieldsSearchingGda = "Felder:" + "\r\n";
-                sFieldsSearchingGda += "Nachname/Firma: " + FieldsSearchingWcf.NachnameFirma.Trim() + "\r\n";
-                sFieldsSearchingGda += "Vorname: " + FieldsSearchingWcf.Vorname.Trim() + "\r\n";
-                sFieldsSearchingGda += "PLZ: " + FieldsSearchingWcf.PLZ.Trim() + "\r\n";
-                //sFieldsSearchingGda += "Ort: " + FieldsSearchingWcf.Ort.Trim() + "\r\n";
-                //sFieldsSearchingGda += "Strasse: " + FieldsSearchingWcf.Strasse.Trim() + "\r\n";
-                //sFieldsSearchingGda += "StrasseNr: " + FieldsSearchingWcf.StrasseNr.Trim() + "\r\n";
-
-                string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Gda-Suche wurde durchgeführt") + "\r\n" + sFieldsSearchingGda;
-                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA-Suche") + " " + this._TypeUI.ToString(), null,
-                                                ELGABusiness.eTypeProt.ELGAQueryGDAs, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, this._IDAufenthalt, sProt);
-
-                if (parOuot.MessageExceptionk__BackingField != null && parOuot.MessageExceptionk__BackingField.Trim() != "")
-                {
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageExceptionk__BackingField.Trim() + "\r\n" + "\r\n" + 
-                                                                QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNrk__BackingField.ToString(), "ELGA", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    if (parOuot.lGDAsk__BackingField.Count() > 0)
+                    var rAufenthalt = (from p in db.Aufenthalt
+                                    where p.ID == ENV.IDAUFENTHALT
+                                       select new
+                                    {
+                                        p.ID,
+                                        p.IDPatient
+                                    }).First();
+                    
+                    if (!this.bELGA.ELGAIsActive(rAufenthalt.IDPatient.Value, ENV.IDAUFENTHALT, true))
                     {
-                        foreach (ObjectDTO elgaPatient in parOuot.lGDAsk__BackingField)
+                        return false;
+                    }
+
+                    if (!this.validateData())
+                    {
+                        return false;
+                    }
+
+                    cSearchGdaFlds FieldsSearchingWcf = new cSearchGdaFlds()
+                    {
+                        NachnameFirma = this.txtNachname.Text.Trim(),
+                        Vorname = this.txtVorname.Text.Trim(),
+                        PLZ = this.txtPLZ.Text.Trim(),
+                        Ort = "",
+                        Strasse = "",
+                        StrasseNr = ""
+                    };
+
+                    //cSearchGdaFlds FieldsSearchingWcf = new cSearchGdaFlds() { 
+                    //    NachnameFirma = this.txtNachname.Text.Trim(),
+                    //    Vorname = this.txtVorname.Text.Trim(), 
+                    //    Ort = this.txtOrt.Text.Trim(),
+                    //    PLZ = this.txtPLZ.Text.Trim(), 
+                    //    Strasse = this.txtStrasse.Text.Trim(),
+                    //    StrasseNr = this.txtStrasseNr.Text.Trim()
+                    //};
+
+                    this.dsManage1.Clear();
+                    this.gridFound.Refresh();
+
+                    ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryGDAs(FieldsSearchingWcf);
+
+                    string sFieldsSearchingGda = "Felder:" + "\r\n";
+                    sFieldsSearchingGda += "Nachname/Firma: " + FieldsSearchingWcf.NachnameFirma.Trim() + "\r\n";
+                    sFieldsSearchingGda += "Vorname: " + FieldsSearchingWcf.Vorname.Trim() + "\r\n";
+                    sFieldsSearchingGda += "PLZ: " + FieldsSearchingWcf.PLZ.Trim() + "\r\n";
+                    //sFieldsSearchingGda += "Ort: " + FieldsSearchingWcf.Ort.Trim() + "\r\n";
+                    //sFieldsSearchingGda += "Strasse: " + FieldsSearchingWcf.Strasse.Trim() + "\r\n";
+                    //sFieldsSearchingGda += "StrasseNr: " + FieldsSearchingWcf.StrasseNr.Trim() + "\r\n";
+
+                    string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Gda-Suche wurde durchgeführt") + "\r\n" + sFieldsSearchingGda;
+                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA-Suche") + " " + this._TypeUI.ToString(), null,
+                                                    ELGABusiness.eTypeProt.ELGAQueryGDAs, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, this._IDAufenthalt, sProt);
+
+                    if (parOuot.MessageExceptionk__BackingField != null && parOuot.MessageExceptionk__BackingField.Trim() != "")
+                    {
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageExceptionk__BackingField.Trim() + "\r\n" + "\r\n" + 
+                                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNrk__BackingField.ToString(), "ELGA", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        if (parOuot.lGDAsk__BackingField.Count() > 0)
                         {
-                            foreach (AdressDto elgaAdressGda in elgaPatient.lAdressesk__BackingField)
+                            foreach (ObjectDTO elgaPatient in parOuot.lGDAsk__BackingField)
                             {
-                                dsManage.ELGASearchGDAsRow rGda = this.sqlManange1.getNewELGAGDA(ref this.dsManage1);
+                                foreach (AdressDto elgaAdressGda in elgaPatient.lAdressesk__BackingField)
+                                {
+                                    dsManage.ELGASearchGDAsRow rGda = this.sqlManange1.getNewELGAGDA(ref this.dsManage1);
 
-                                rGda.ID = System.Guid.NewGuid();
-                                rGda.IDElga = elgaPatient.IDELgaGdak__BackingField.Trim();
-                                rGda.NachnameFirma = elgaPatient.NachNameFirmak__BackingField.Trim();
-                                rGda.Vorname = elgaPatient.Vornamek__BackingField.Trim();
-                                rGda.Title = elgaPatient.Titlek__BackingField.Trim();
-                                rGda.IsOrganisation = elgaPatient.isOrganisationk__BackingField;
+                                    rGda.ID = System.Guid.NewGuid();
+                                    rGda.IDElga = elgaPatient.IDELgaGdak__BackingField.Trim();
+                                    rGda.NachnameFirma = elgaPatient.NachNameFirmak__BackingField.Trim();
+                                    rGda.Vorname = elgaPatient.Vornamek__BackingField.Trim();
+                                    rGda.Title = elgaPatient.Titlek__BackingField.Trim();
+                                    rGda.IsOrganisation = elgaPatient.isOrganisationk__BackingField;
 
-                                rGda.PLZ = elgaAdressGda.Zipk__BackingField.Trim();
-                                rGda.Ort = elgaAdressGda.Cityk__BackingField.Trim();
-                                rGda.Land = elgaAdressGda.Countryk__BackingField.Trim();
-                                rGda.Strasse = elgaAdressGda.Streetk__BackingField.Trim();
-                                rGda.StrasseNr = elgaAdressGda.StreetNrk__BackingField.Trim();
+                                    rGda.PLZ = elgaAdressGda.Zipk__BackingField.Trim();
+                                    rGda.Ort = elgaAdressGda.Cityk__BackingField.Trim();
+                                    rGda.Land = elgaAdressGda.Countryk__BackingField.Trim();
+                                    rGda.Strasse = elgaAdressGda.Streetk__BackingField.Trim();
+                                    rGda.StrasseNr = elgaAdressGda.StreetNrk__BackingField.Trim();
 
-                                rGda.Status = elgaAdressGda.Statusk__BackingField.Trim();
-                                rGda.State = elgaAdressGda.Statek__BackingField.Trim();
+                                    rGda.Status = elgaAdressGda.Statusk__BackingField.Trim();
+                                    rGda.State = elgaAdressGda.Statek__BackingField.Trim();
+                                }
                             }
                         }
                     }
+
+                    this.gridFound.Refresh();
+                    this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA's gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
+                    return true;
+
+
+                    //List<ELGABusiness.ProtVar> lProt = new List<ELGABusiness.ProtVar>()
+                    //        {
+                    //            new ELGABusiness.ProtVar(){ Fld= "xy", oValOrig = "", oValNew = "", Table = "Patienxyt"  },
+                    //        };
                 }
-
-                this.gridFound.Refresh();
-                this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA's gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
-                return true;
-
-
-                //List<ELGABusiness.ProtVar> lProt = new List<ELGABusiness.ProtVar>()
-                //        {
-                //            new ELGABusiness.ProtVar(){ Fld= "xy", oValOrig = "", oValNew = "", Table = "Patienxyt"  },
-                //        };
-
             }
             catch (Exception ex)
             {
