@@ -54,9 +54,14 @@ namespace PMDS.GUI.ELGA
             {
                 if (!this.IsInitialized)
                 {
+                    this.btnSearch.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
+
                     this.sqlManange1.initControl();
                     this._db = PMDSBusiness.getDBContext();
                     this.clearUI();
+
+                    this.udteFrom.DateTime = DateTime.Now.AddMonths(-6);
+                    this.udteTo.DateTime = DateTime.Now;
 
                     this.IsInitialized = true;
                 }
@@ -92,8 +97,19 @@ namespace PMDS.GUI.ELGA
                 this._IsNew = isNew;
                 this._Editable = editable;
 
+                Nullable<DateTime> dFrom = null;
+                if (this.udteFrom.Value != null)
+                {
+                    dFrom = this.udteFrom.DateTime.Date;
+                }
+                Nullable<DateTime> dTo = null;
+                if (this.udteTo.Value != null)
+                {
+                    dTo = this.udteTo.DateTime.Date;
+                }
+
                 this.dsKlientenliste1.Clear();
-                this.sqlManange1.getELGAProtocoll(this.dsKlientenliste1, this._IDUser.Value, Global.db.ERSystem.sqlManange.eTypeELGAProtocoll.AllForUser);
+                this.sqlManange1.getELGAProtocoll(this.dsKlientenliste1, this._IDUser.Value, dFrom, dTo, Global.db.ERSystem.sqlManange.eTypeELGAProtocoll.AllForUser);
                 this.gridRights.Refresh();
 
             }
@@ -189,6 +205,24 @@ namespace PMDS.GUI.ELGA
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.loadData(this._IDUser, this._IsNew, this._Editable);
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
     }

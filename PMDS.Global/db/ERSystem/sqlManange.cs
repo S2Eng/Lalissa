@@ -1279,7 +1279,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("sqlManange.getRecht: " + ex.ToString());
             }
         }
-        public bool getELGAProtocoll(PMDS.Global.db.ERSystem.dsKlientenliste ds, Guid IDUser, eTypeELGAProtocoll eTypeSel)
+        public bool getELGAProtocoll(PMDS.Global.db.ERSystem.dsKlientenliste ds, Guid IDUser, Nullable<DateTime> dCreatedFrom, Nullable<DateTime> dCreatedTo, eTypeELGAProtocoll eTypeSel)
         {
             try
             {
@@ -1289,8 +1289,27 @@ namespace PMDS.Global.db.ERSystem
 
                 if (eTypeSel == eTypeELGAProtocoll.AllForUser)
                 {
-                    string sqlWhere = " where IDBenutzer='" + IDUser.ToString() + "'" + " order by CreatedAt desc";
-                    this.daELGAProtocoll.SelectCommand.CommandText += sqlWhere;
+                    string sqlWhere = " where IDBenutzer='" + IDUser.ToString() + "' ";
+                    if (dCreatedFrom != null)
+                    {
+                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " CreatedAt>=? ";
+                    }
+                    if (dCreatedTo != null)
+                    {
+                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " CreatedAt<=? ";
+                    }
+
+                    string sqlOrderBy = " order by CreatedAt desc";
+                    this.daELGAProtocoll.SelectCommand.CommandText += sqlWhere + " " + sqlOrderBy;
+                    if (dCreatedFrom != null)
+                    {
+                        this.daELGAProtocoll.SelectCommand.Parameters.Add("CreatedAt", System.Data.OleDb.OleDbType.Date, 16, "CreatedAt").Value = dCreatedFrom.Value;
+                    }
+                    if (dCreatedTo != null)
+                    {
+                        DateTime dToTmp = new DateTime(dCreatedTo.Value.Year, dCreatedTo.Value.Month, dCreatedTo.Value.Day, 23, 59, 59, 59);
+                        this.daELGAProtocoll.SelectCommand.Parameters.Add("CreatedAt", System.Data.OleDb.OleDbType.Date, 16, "CreatedAt").Value = dToTmp;
+                    }
                 }
                 else
                 {

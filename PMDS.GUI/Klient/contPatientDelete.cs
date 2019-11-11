@@ -209,7 +209,7 @@ namespace PMDS.GUI.Klient
                             }
                             else
                             {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Abbruch Patient löschen!" + "\r\n" + "Klientenbereicht konnte nicht erfogreich erstellt!", "PMDS", MessageBoxButtons.OK);
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Abbruch Patient löschen!" + "\r\n" + "Klientenbereicht konnte nicht erfolgreich erstellt!", "PMDS", MessageBoxButtons.OK);
                                 return false;
                             }
                         }

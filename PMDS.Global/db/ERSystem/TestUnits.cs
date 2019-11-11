@@ -325,7 +325,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Ins Archiv ablegen");
 
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Kostenträger wurden erfogreich geprüft!", "Kostenträger prüfen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Kostenträger wurden erfolgreich geprüft!", "Kostenträger prüfen", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Kostenträger prüfen");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("FIBU {0} für Kostenträger {1} kommt in Datenbank mehrfach vor");
@@ -371,13 +371,13 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die eingegebene ID-Patient ist falsch!", "", MessageBoxButtons.OK);
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sollen die Patientendaten als PDF gesichert werden?", "PMDS", MessageBoxButtons.YesNo);
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Patient wurde erfogreich gelöscht!", "PMDS", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Patient wurde erfolgreich gelöscht!", "PMDS", MessageBoxButtons.OK);
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient und Aufenthalte löschen");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient {0} wurde gelöscht");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Patient kann nicht gelöscht werden, da der letzte Entlassungszeitpunkt weniger als 10 Jahre zurückliegt!", "PMDS", MessageBoxButtons.OK);
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Letztes Entlassungsdatum");
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Abbruch Patient löschen!" + "\r\n" + "Klientenbereicht konnte nicht erfogreich erstellt!", "PMDS", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Abbruch Patient löschen!" + "\r\n" + "Klientenbereicht konnte nicht erfolgreich erstellt!", "PMDS", MessageBoxButtons.OK);
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie das generierte PDF-Dokument mit den Patientendaten öffnen?", "PMDS", MessageBoxButtons.YesNo);
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("keines");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Patient wurde erfolgreich gelöscht!", "PMDS", MessageBoxButtons.OK);
@@ -724,7 +724,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Archivpfad ist nicht korrekt angegeben!" + "\r\n" + "Bitte wenden Sie sich an den Administrator!", "", MessageBoxButtons.OK);
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Elga-Kontakt für Patient wurde erfolgreich beendet!");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("CDA-Dokument wurde erfogreich generiert, nach ELGA hochgeladen und im Dokumentenarchiv gespeichert!");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("CDA-Dokument wurde erfolgreich generiert, nach ELGA hochgeladen und im Dokumentenarchiv gespeichert!");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief übertragen");

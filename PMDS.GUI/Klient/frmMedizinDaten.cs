@@ -1080,6 +1080,7 @@ namespace PMDS.GUI
                             bElga.StornoELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
                             this.btnBefundStorno.Visible = false;
                             this.Storniert2 = true;
+                            this._canClose = true;
                             this.Close();
                         }
                     }
@@ -1119,6 +1120,7 @@ namespace PMDS.GUI
                             bElga.SendELGADocu(rMedDaten.IDDocu.Value, rMedDaten.ID);
                             this.btnBefundSend.Visible = false;
                             this.Gesendet = true;
+                            this._canClose = true;
                             this.Close();
                         }
                     }

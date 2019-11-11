@@ -419,7 +419,7 @@ namespace PMDS.GUI
         /// Eine Platzhalterersetzung wird von irgendjemanden angefordert
         /// </summary>
         //----------------------------------------------------------------------------
-        string ParameterHelper_ReplaceString(string StringToReplace)
+        public string ParameterHelper_ReplaceString(string StringToReplace)
         {
             string sRet = StringToReplace;
 

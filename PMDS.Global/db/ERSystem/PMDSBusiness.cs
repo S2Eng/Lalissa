@@ -6360,6 +6360,9 @@ namespace PMDS.DB
                     NewDokumenteintrag.IDAufenthalt = IDAufenthalt;
                     NewDokumenteintrag.IDUrlaub = IDUrlaub;
                     NewDokumenteintrag.ELGADocuType = ELGADocuType.Trim();
+                    NewDokumenteintrag.ELGAStorniert = false;
+                    NewDokumenteintrag.ELGAStorniertDatum = null;
+                    NewDokumenteintrag.ELGAStorniertUser = "";
 
                     db.tblDokumenteintrag.Add(NewDokumenteintrag);
 

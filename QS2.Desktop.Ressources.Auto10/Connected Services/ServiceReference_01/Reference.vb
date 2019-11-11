@@ -11753,6 +11753,8 @@ Namespace ServiceReference_01
         
         Private LocalPatientIDk__BackingFieldField As String
         
+        Private authUniversalIDk__BackingFieldField As String
+        
         Private sDocumentsDtok__BackingFieldField As ServiceReference_01.DocumentSearchDto
         
         Private sObjectDtok__BackingFieldField As ServiceReference_01.ObjectDTO
@@ -11830,6 +11832,19 @@ Namespace ServiceReference_01
                 If (Object.ReferenceEquals(Me.LocalPatientIDk__BackingFieldField, value) <> true) Then
                     Me.LocalPatientIDk__BackingFieldField = value
                     Me.RaisePropertyChanged("LocalPatientIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<authUniversalID>k__BackingField", IsRequired:=true)>  _
+        Public Property authUniversalIDk__BackingField() As String
+            Get
+                Return Me.authUniversalIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.authUniversalIDk__BackingFieldField, value) <> true) Then
+                    Me.authUniversalIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("authUniversalIDk__BackingField")
                 End If
             End Set
         End Property
@@ -13789,8 +13804,6 @@ Namespace ServiceReference_01
         <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
-        Private IDELGAPatientsk__BackingFieldField As String
-        
         Private IDk__BackingFieldField As System.Guid
         
         Private authUniversalIDk__BackingFieldField As String
@@ -13808,19 +13821,6 @@ Namespace ServiceReference_01
             End Get
             Set
                 Me.extensionDataField = value
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDELGAPatients>k__BackingField", IsRequired:=true)>  _
-        Public Property IDELGAPatientsk__BackingField() As String
-            Get
-                Return Me.IDELGAPatientsk__BackingFieldField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.IDELGAPatientsk__BackingFieldField, value) <> true) Then
-                    Me.IDELGAPatientsk__BackingFieldField = value
-                    Me.RaisePropertyChanged("IDELGAPatientsk__BackingField")
-                End If
             End Set
         End Property
         
@@ -14242,6 +14242,13 @@ Namespace ServiceReference_01
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryPatients", ReplyAction:="http://tempuri.org/Service1/ELGAQueryPatientsResponse")>  _
         Function ELGAQueryPatientsAsync(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryPatientsResponse)
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAinsertPatient", ReplyAction:="http://tempuri.org/Service1/ELGAinsertPatientResponse")>  _
+        Function ELGAinsertPatient(ByVal request As ServiceReference_01.ELGAinsertPatientRequest) As ServiceReference_01.ELGAinsertPatientResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAinsertPatient", ReplyAction:="http://tempuri.org/Service1/ELGAinsertPatientResponse")>  _
+        Function ELGAinsertPatientAsync(ByVal request As ServiceReference_01.ELGAinsertPatientRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAinsertPatientResponse)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAUpdatePatient", ReplyAction:="http://tempuri.org/Service1/ELGAUpdatePatientResponse")>  _
         Function ELGAUpdatePatient(ByVal request As ServiceReference_01.ELGAUpdatePatientRequest) As ServiceReference_01.ELGAUpdatePatientResponse
         
@@ -14496,6 +14503,50 @@ Namespace ServiceReference_01
         Public Sub New(ByVal ELGAQueryPatientsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAQueryPatientsResult = ELGAQueryPatientsResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAinsertPatient", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAinsertPatientRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients)
+            MyBase.New
+            Me.parsIn = parsIn
+            Me.TypeUpdatePatients = TypeUpdatePatients
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAinsertPatientResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class ELGAinsertPatientResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public ELGAinsertPatientResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal ELGAinsertPatientResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.ELGAinsertPatientResult = ELGAinsertPatientResult
             Me.parsIn = parsIn
         End Sub
     End Class
@@ -15195,6 +15246,24 @@ Namespace ServiceReference_01
         
         Public Function ELGAQueryPatientsAsync(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryPatientsResponse) Implements ServiceReference_01.Service1.ELGAQueryPatientsAsync
             Return MyBase.Channel.ELGAQueryPatientsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_ELGAinsertPatient(ByVal request As ServiceReference_01.ELGAinsertPatientRequest) As ServiceReference_01.ELGAinsertPatientResponse Implements ServiceReference_01.Service1.ELGAinsertPatient
+            Return MyBase.Channel.ELGAinsertPatient(request)
+        End Function
+        
+        Public Function ELGAinsertPatient(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.ELGAinsertPatientRequest = New ServiceReference_01.ELGAinsertPatientRequest()
+            inValue.parsIn = parsIn
+            inValue.TypeUpdatePatients = TypeUpdatePatients
+            Dim retVal As ServiceReference_01.ELGAinsertPatientResponse = CType(Me,ServiceReference_01.Service1).ELGAinsertPatient(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.ELGAinsertPatientResult
+        End Function
+        
+        Public Function ELGAinsertPatientAsync(ByVal request As ServiceReference_01.ELGAinsertPatientRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAinsertPatientResponse) Implements ServiceReference_01.Service1.ELGAinsertPatientAsync
+            Return MyBase.Channel.ELGAinsertPatientAsync(request)
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
