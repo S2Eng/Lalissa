@@ -120,7 +120,8 @@ namespace PMDS.GUI.ELGA
                 string StyleSheetNameTmp = "";
                 if (this._Stylesheet.Trim() == "")
                 {
-                    StyleSheetNameTmp = "ELGA_Stylesheet_v1.0.xsl";
+                    throw new Exception("loadFileIntoViewer: this._Stylesheet '" + this._Stylesheet.Trim() + "' not allowed!");
+                    //StyleSheetNameTmp = "ELGA_Stylesheet_v1.0.xsl";
                 }
                 else
                 {

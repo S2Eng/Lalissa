@@ -796,29 +796,46 @@ namespace PMDS.Global.db.ERSystem
                     ELGAParOutDto parOut = new ELGAParOutDto() { DocuUniqueIdk__BackingField = "" };
                     if (sendDocu)
                     {
-                        parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.Bezeichnung.Trim(), rKlinik.ELGA_OID.Trim(), rBenutzer.Benutzer1.Trim(),
-                                                                                DocumentName, bDocu, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), "", IDDocumenteneintrag.ToString(), ClinicalDocumentSetID.Trim());
+                        try
+                        {
+                            parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.Bezeichnung.Trim(), rKlinik.ELGA_OID.Trim(), rBenutzer.Benutzer1.Trim(),
+                                                                                    DocumentName, bDocu, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), "", IDDocumenteneintrag.ToString(), ClinicalDocumentSetID.Trim());
 
-                        if (CDAeTypeCDA == CDAeTypeCDA.Pflegesituationbericht)
-                        {
-                            string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht für Patient {0} wurde nach ELGA übertragen");
-                            sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
-                            ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht übertragen"), null,
-                                                            ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                            if (CDAeTypeCDA == CDAeTypeCDA.Pflegesituationbericht)
+                            {
+                                string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht für Patient {0} wurde nach ELGA übertragen");
+                                sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht übertragen"), null,
+                                                                ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                            }
+                            else if (CDAeTypeCDA == CDAeTypeCDA.Entlassungsbrief)
+                            {
+                                string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
+                                sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief übertragen"), null,
+                                                                ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                            }
+
+                            PMDS.db.Entities.tblDokumenteintrag rDocuEintragUpdate = db.tblDokumenteintrag.Where(o => o.ID == IDDocumenteneintrag).First();
+                            rDocuEintragUpdate.ELGAÜbertragen = 1;
+                            rDocuEintragUpdate.ELGAUniqueID = parOut.DocuUniqueIdk__BackingField.Trim();
+                            db.SaveChanges();
                         }
-                        else if (CDAeTypeCDA == CDAeTypeCDA.Entlassungsbrief)
+                        catch (Exception ex)
                         {
-                            string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
-                            sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
-                            ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief übertragen"), null,
-                                                            ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                            string sExcept = "ELGABusiness.saveDocuToELGA: Error send Docu to ELGA for IDDocu='" + IDDocumenteneintrag.ToString() + "'" + "\r\n" + "\r\n" +  ex.ToString();
+                            ENV.HandleException(new Exception(sExcept));
+                            //throw new Exception(sExcept);
                         }
                     }
-
-                    PMDS.db.Entities.tblDokumenteintrag rDocuEintragUpdate = db.tblDokumenteintrag.Where(o => o.ID == IDDocumenteneintrag).First();
-                    rDocuEintragUpdate.ELGAÜbertragen = (sendDocu ? 1 : -1);
-                    rDocuEintragUpdate.ELGAUniqueID = parOut.DocuUniqueIdk__BackingField.Trim();
-                    db.SaveChanges();
+                    else
+                    {
+                        bool bNotSent = true;
+                        //PMDS.db.Entities.tblDokumenteintrag rDocuEintragUpdate = db.tblDokumenteintrag.Where(o => o.ID == IDDocumenteneintrag).First();
+                        //rDocuEintragUpdate.ELGAÜbertragen = -1;
+                        //rDocuEintragUpdate.ELGAUniqueID = "";
+                        //db.SaveChanges();
+                    }
                 }
 
                 return true;
@@ -897,6 +914,11 @@ namespace PMDS.Global.db.ERSystem
                                                     ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
 
                     xmlDocu = System.Text.Encoding.Default.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField);
+
+                    string sFileXmlTmp = "";
+                    string sStylesheetTmp = this.getStylesheetAndXmlFromELGAXmlDocu(xmlDocu, ref sFileXmlTmp);
+                    xmlDocu = sFileXmlTmp.Trim();
+                    Stylesheet = sStylesheetTmp.Trim();
                 }
                 else
                 {
@@ -911,7 +933,7 @@ namespace PMDS.Global.db.ERSystem
                 }
                 //using (Stream file = File.OpenWrite(DirFileNameELGA + "\\" + FileNameELGA))
                 //{
-                //    file.Write(xmlDocu, 0, xmlDocu.Length);
+                //    file.Write(sFileXmlTmp, 0, xmlDocu.Length);
                 //}
 
                 PMDS.db.Entities.MedizinischeDaten rMedizinischeDaten = EFEntities.newMedizinischeDaten(db);
@@ -1012,12 +1034,8 @@ namespace PMDS.Global.db.ERSystem
 
                 string sFileXML = Encoding.UTF8.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField, 0, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length);
 
-                int posStartXml = sFileXML.Trim().IndexOf("<?xml version");
-                string sFileXmlTmp = sFileXML.Trim().Substring(posStartXml, sFileXML.Trim().Length - posStartXml);
-
-                int posStylesheetStart = sFileXmlTmp.Trim().IndexOf("<?xml-stylesheet href = \"");
-                int posStylesheetEnd = sFileXmlTmp.Trim().IndexOf("\" type", posStylesheetStart);
-                string sStylesheetTmp = sFileXmlTmp.Trim().Substring(posStylesheetStart + 25, posStylesheetEnd - (posStylesheetStart + 25));
+                string sFileXmlTmp = "";
+                string sStylesheetTmp = this.getStylesheetAndXmlFromELGAXmlDocu(sFileXML, ref sFileXmlTmp);
 
                 frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
                 frmCDAViewer1.initControl(DocumentName.Trim(), parOuot.lDocumentsk__BackingField[0].UniqueIdk__BackingField.Trim(),
@@ -1034,7 +1052,25 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.openCDADocument: " + ex.ToString());
             }
         }
+        public string getStylesheetAndXmlFromELGAXmlDocu(string Xml, ref string XmlBack)
+        {
+            try
+            {
+                int posStartXml = Xml.Trim().IndexOf("<?xml version");
+                string sFileXmlTmp = Xml.Trim().Substring(posStartXml, Xml.Trim().Length - posStartXml);
 
+                int posStylesheetStart = sFileXmlTmp.Trim().IndexOf("<?xml-stylesheet href = \"");
+                int posStylesheetEnd = sFileXmlTmp.Trim().IndexOf("\" type", posStylesheetStart);
+                string sStylesheetTmp = sFileXmlTmp.Trim().Substring(posStylesheetStart + 25, posStylesheetEnd - (posStylesheetStart + 25));
+
+                XmlBack = sFileXmlTmp.Trim();
+                return sStylesheetTmp.Trim();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.getStylesheetAndXmlFromELGAXmlDocu: " + ex.ToString());
+            }
+        }
         public bool ELGAIsActive(Guid IDPatient, Guid IDAufenthalt, bool withMsgBox)
         {
             try
@@ -1232,15 +1268,15 @@ namespace PMDS.Global.db.ERSystem
                                      p.Archivpfad
                                  }).First();
 
-                    string FileArchive = Path.Combine(rPfad.Archivpfad.Trim(), rDocu.Archivordner.Trim(), rDocu.DateinameArchiv.Trim() + "" + rDocu.DateinameTyp.Trim());
+                    string FileArchive = Path.Combine(rPfad.Archivpfad.Trim(), rDocu.Archivordner.Trim(), rDocu.DateinameArchiv.Trim() + "");
                     string xmlFile = "";
                     using (StreamReader sr = File.OpenText(FileArchive))
                     {
                         xmlFile = sr.ReadToEnd();
                     }
 
-                    if (!rDocuEintragUpdate.ELGADocuType.Trim().ToLower().Equals(CDAeTypeCDA.Pflegesituationbericht.ToString()) &&
-                        !rDocuEintragUpdate.ELGADocuType.Trim().ToLower().Equals(CDAeTypeCDA.Entlassungsbrief.ToString()))
+                    if (!rDocuEintragUpdate.ELGADocuType.Trim().ToLower().Equals(CDAeTypeCDA.Pflegesituationbericht.ToString().ToLower()) &&
+                        !rDocuEintragUpdate.ELGADocuType.Trim().ToLower().Equals(CDAeTypeCDA.Entlassungsbrief.ToString().ToLower()))
                     {
                         throw new Exception("PMDSBusinessUI.SendELGADocu:  rDocuEintragUpdate.ELGADocuType '" + rDocuEintragUpdate.ELGADocuType.Trim() + "' not allowed send to ELGA!");
                     }

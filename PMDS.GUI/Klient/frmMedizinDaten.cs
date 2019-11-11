@@ -1035,7 +1035,7 @@ namespace PMDS.GUI
                         if (rMedDaten != null && rMedDaten.IDDocu != null)
                         {
                             ELGAPMDSBusinessUI bUi = new ELGAPMDSBusinessUI();
-                            bUi.openELGADocu(rMedDaten.IDDocu.Value);
+                            bUi.openELGADocuFromArchive(rMedDaten.IDDocu.Value);
                         }
                     }
                 }

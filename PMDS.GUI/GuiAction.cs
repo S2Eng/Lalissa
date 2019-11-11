@@ -180,9 +180,16 @@ namespace PMDS.GUI
                 
                 if (bOK && GuiActionDone != null)
                 {
-                    ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                    bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked);
-
+                    try
+                    {
+                        ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
+                        bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked);
+                    }
+                    catch (Exception ex3)
+                    {
+                        string sExcept = "GuidAction.PatientEntlassung2: Error genCDA() for IDPatient='" + idPatient.ToString() + "'" + "\r\n" + "\r\n" + ex3.ToString();
+                        ENV.HandleException(new Exception(sExcept));
+                    }
                     GuiActionDone(SiteEvents.Entlassen);
                 }
                 
@@ -958,8 +965,16 @@ namespace PMDS.GUI
                 {
                     if (!frmUrlaub.ucUrlaub21.IsAbwesend)
                     {
-                        ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                        bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false);
+                        try
+                        {
+                            ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
+                            bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false);
+                        }
+                        catch (Exception ex3)
+                        {
+                            string sExcept = "GuidAction.PatientUrlaub: Error genCDA() for IDPatient='" + idPatient.ToString() + "'" + "\r\n" + "\r\n" + ex3.ToString();
+                            ENV.HandleException(new Exception(sExcept));
+                        }
                     }
 
                     if (GuiActionDone != null)

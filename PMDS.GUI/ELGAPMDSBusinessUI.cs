@@ -103,15 +103,25 @@ namespace PMDS.GUI
 
                         if (rAufenthalt.ELGAKontaktbestätigungJN)
                         {
-                            ELGAParOutDto parOuot = wcf.ELGAAddContactDischarge(rAufenthalt.ELGALocalID.Trim());
+                            try
+                            {
+                                ELGAParOutDto parOuot = wcf.ELGAAddContactDischarge(rAufenthalt.ELGALocalID.Trim());
 
-                            string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt für Patient {0} wurde beendet");
-                            sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
-                            ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt beendet"), null,
-                                                            ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                                string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt für Patient {0} wurde beendet");
+                                sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt beendet"), null,
+                                                                ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
 
-                            string msgOKEndContact = QS2.Desktop.ControlManagment.ControlManagment.getRes("Elga-Kontakt für Patient wurde erfolgreich beendet!");
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(msgOKEndContact, "", MessageBoxButtons.OK, true);
+                                string msgOKEndContact = QS2.Desktop.ControlManagment.ControlManagment.getRes("Elga-Kontakt für Patient wurde erfolgreich beendet!");
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox(msgOKEndContact, "", MessageBoxButtons.OK, true);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                string sExcept = "ELGAPMDSBusinessUI.genCDA: Error ELGAAddContactDischarge for IDPatient='" + IDPatient.ToString() + "'" + "\r\n" + "\r\n" + ex.ToString();
+                                ENV.HandleException(new Exception(sExcept));
+                                //throw new Exception(sExcept);
+                            }
                         }
                     }
                     else if (CDAeTypeCDA == QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht)
@@ -129,7 +139,7 @@ namespace PMDS.GUI
                         if (res != DialogResult.OK && !frmPrintPflegebegleitschreibenInfo1.saveToArchive)
                         {
                             this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                        null, verstorbenJN, FileType);
+                                                        (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
                         }
                         else
                         {
@@ -172,7 +182,11 @@ namespace PMDS.GUI
                 bool SavedToELGA = false;
                 string msg1 = "";
                 frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
-                frmCDAViewer1.initControl(Documentname, "", ClinicalDocumentSetID, resCda.xml, CDAeTypeCDA.ToString(), Stylesheet, contCDAViewer.eTypeUI.SaveToElga);
+
+                string sFileXmlTmp = "";
+                string sStylesheetTmp = bElga.getStylesheetAndXmlFromELGAXmlDocu(resCda.xml, ref sFileXmlTmp);
+
+                frmCDAViewer1.initControl(Documentname, "", ClinicalDocumentSetID, sFileXmlTmp, CDAeTypeCDA.ToString(), sStylesheetTmp, contCDAViewer.eTypeUI.SaveToElga);
                 frmCDAViewer1.contCDAViewer1.btnSaveDocuToELGA.Visible = !verstorbenJN;
                 frmCDAViewer1.ShowDialog();
                 if (!frmCDAViewer1.contCDAViewer1.abort)
@@ -220,7 +234,7 @@ namespace PMDS.GUI
             }
         }
 
-        public void openELGADocu(Nullable<Guid> IDDokumenteneintrag)
+        public void openELGADocuFromArchive(Nullable<Guid> IDDokumenteneintrag)
         {
             try
             {
@@ -278,8 +292,12 @@ namespace PMDS.GUI
                         xmlFile = sr.ReadToEnd();
                     }
 
+                    ELGABusiness bElga = new ELGABusiness();
+                    string sFileXmlTmp = "";
+                    string sStylesheetTmp = bElga.getStylesheetAndXmlFromELGAXmlDocu(xmlFile, ref sFileXmlTmp);
+
                     frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
-                    frmCDAViewer1.initControl(rDocuEintrag.Bezeichnung.Trim(), rDocuEintrag.ELGAUniqueID.Trim(), "", xmlFile, rDocu.DateinameTyp, rDocuEintrag.FileStylesheet.Trim(), contCDAViewer.eTypeUI.saveToArchive);
+                    frmCDAViewer1.initControl(rDocuEintrag.Bezeichnung.Trim(), rDocuEintrag.ELGAUniqueID.Trim(), "", sFileXmlTmp, rDocu.DateinameTyp, sStylesheetTmp.Trim(), contCDAViewer.eTypeUI.saveToArchive);
                     frmCDAViewer1.contCDAViewer1.btnSaveIntoArchive.Visible = false;
                     frmCDAViewer1.contCDAViewer1.btnSaveDocuToELGA.Visible = false;
                     frmCDAViewer1.contCDAViewer1.btnAbort.Visible = false;
@@ -289,7 +307,7 @@ namespace PMDS.GUI
             }
             catch (Exception ex)
             {
-                throw new Exception("ELGAPMDSBusinessUI.openELGADocu: " + ex.ToString());
+                throw new Exception("ELGAPMDSBusinessUI.openELGADocuFromArchive: " + ex.ToString());
             }
         }
 

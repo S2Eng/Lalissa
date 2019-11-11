@@ -6337,7 +6337,8 @@ namespace PMDS.DB
 
                     if (System.IO.File.Exists(FileWithPathArchive))
                     {
-                        return false;
+                        throw new Exception("PMDSBuisness.SaveDokumentinArchiv: FileWithPathArchive '" + FileWithPathArchive.Trim() + "' already exists!");
+                        //return false;
                     }
 
                     tblDokumenteintrag NewDokumenteintrag = new db.Entities.tblDokumenteintrag();

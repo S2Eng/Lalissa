@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnSaveDocuToELGA = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnClose = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnSaveIntoArchive = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelCenter = new System.Windows.Forms.Panel();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelBottom.SuspendLayout();
             this.panelCenter.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,24 @@
             this.panelBottom.TabIndex = 1;
             this.panelBottom.Visible = false;
             // 
+            // btnAbort
+            // 
+            this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAbort.Appearance = appearance1;
+            this.btnAbort.AutoWorkLayout = false;
+            this.btnAbort.IsStandardControl = false;
+            this.btnAbort.Location = new System.Drawing.Point(398, 4);
+            this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAbort.Name = "btnAbort";
+            this.btnAbort.Size = new System.Drawing.Size(91, 30);
+            this.btnAbort.TabIndex = 133;
+            this.btnAbort.Tag = "";
+            this.btnAbort.Text = "Abbrechen";
+            this.btnAbort.Visible = false;
+            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
+            // 
             // btnSaveDocuToELGA
             // 
             this.btnSaveDocuToELGA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -90,7 +108,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnClose.Appearance = appearance3;
             this.btnClose.AutoWorkLayout = false;
@@ -139,24 +157,6 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(1051, 726);
             this.webBrowser1.TabIndex = 2;
-            // 
-            // btnAbort
-            // 
-            this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAbort.Appearance = appearance1;
-            this.btnAbort.AutoWorkLayout = false;
-            this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(398, 4);
-            this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(91, 30);
-            this.btnAbort.TabIndex = 133;
-            this.btnAbort.Tag = "";
-            this.btnAbort.Text = "Abbrechen";
-            this.btnAbort.Visible = false;
-            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
             // 
             // contCDAViewer
             // 
