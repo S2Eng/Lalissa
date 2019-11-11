@@ -91,7 +91,7 @@ namespace PMDS.BusinessLogic
             if (p.Sexus.Contains("eib"))
                 sAnrede = "Frau";
             else if (p.Sexus.Contains("nn"))
-                sAnrede = "Herr";
+                sAnrede = "Herrn";
             name = (sAnrede + " " + sTitel + "" + p.Vorname + " " + p.Nachname).Trim();
             
             PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
