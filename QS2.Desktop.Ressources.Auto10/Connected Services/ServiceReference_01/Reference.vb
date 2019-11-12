@@ -11923,6 +11923,8 @@ Namespace ServiceReference_01
         
         Private KlinikOIDk__BackingFieldField As String
         
+        Private KlinikOrganisationIDk__BackingFieldField As String
+        
         Private Personk__BackingFieldField As String
         
         Private bDocumentk__BackingFieldField() As Byte
@@ -12024,6 +12026,19 @@ Namespace ServiceReference_01
                 If (Object.ReferenceEquals(Me.KlinikOIDk__BackingFieldField, value) <> true) Then
                     Me.KlinikOIDk__BackingFieldField = value
                     Me.RaisePropertyChanged("KlinikOIDk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<KlinikOrganisationID>k__BackingField", IsRequired:=true)>  _
+        Public Property KlinikOrganisationIDk__BackingField() As String
+            Get
+                Return Me.KlinikOrganisationIDk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.KlinikOrganisationIDk__BackingFieldField, value) <> true) Then
+                    Me.KlinikOrganisationIDk__BackingFieldField = value
+                    Me.RaisePropertyChanged("KlinikOrganisationIDk__BackingField")
                 End If
             End Set
         End Property
@@ -14298,6 +14313,13 @@ Namespace ServiceReference_01
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGAQueryDocuments", ReplyAction:="http://tempuri.org/Service1/ELGAQueryDocumentsResponse")>  _
         Function ELGAQueryDocumentsAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsResponse)
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/queryPatientContent", ReplyAction:="http://tempuri.org/Service1/queryPatientContentResponse")>  _
+        Function queryPatientContent(ByVal request As ServiceReference_01.queryPatientContentRequest) As ServiceReference_01.queryPatientContentResponse
+        
+        'CODEGEN: Der Nachrichtenvertrag wird generiert, da der Vorgang mehrere Rückgabewerte aufweist.
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/queryPatientContent", ReplyAction:="http://tempuri.org/Service1/queryPatientContentResponse")>  _
+        Function queryPatientContentAsync(ByVal request As ServiceReference_01.queryPatientContentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.queryPatientContentResponse)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/ELGARetrieveDocument", ReplyAction:="http://tempuri.org/Service1/ELGARetrieveDocumentResponse")>  _
         Function ELGARetrieveDocument(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As ServiceReference_01.ELGARetrieveDocumentResponse
         
@@ -14845,6 +14867,54 @@ Namespace ServiceReference_01
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="queryPatientContent", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class queryPatientContentRequest
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public OnlyOneDoc As Boolean
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public UniqueId As String
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String)
+            MyBase.New
+            Me.parsIn = parsIn
+            Me.OnlyOneDoc = OnlyOneDoc
+            Me.UniqueId = UniqueId
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="queryPatientContentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
+    Partial Public Class queryPatientContentResponse
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
+        Public queryPatientContentResult As ServiceReference_01.ELGAParOutDto
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public parsIn As ServiceReference_01.ELGAParInDto
+        
+        Public Sub New()
+            MyBase.New
+        End Sub
+        
+        Public Sub New(ByVal queryPatientContentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
+            MyBase.New
+            Me.queryPatientContentResult = queryPatientContentResult
+            Me.parsIn = parsIn
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.MessageContractAttribute(WrapperName:="ELGARetrieveDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGARetrieveDocumentRequest
         
@@ -15386,6 +15456,25 @@ Namespace ServiceReference_01
         
         Public Function ELGAQueryDocumentsAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsResponse) Implements ServiceReference_01.Service1.ELGAQueryDocumentsAsync
             Return MyBase.Channel.ELGAQueryDocumentsAsync(request)
+        End Function
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Function ServiceReference_01_Service1_queryPatientContent(ByVal request As ServiceReference_01.queryPatientContentRequest) As ServiceReference_01.queryPatientContentResponse Implements ServiceReference_01.Service1.queryPatientContent
+            Return MyBase.Channel.queryPatientContent(request)
+        End Function
+        
+        Public Function queryPatientContent(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
+            Dim inValue As ServiceReference_01.queryPatientContentRequest = New ServiceReference_01.queryPatientContentRequest()
+            inValue.parsIn = parsIn
+            inValue.OnlyOneDoc = OnlyOneDoc
+            inValue.UniqueId = UniqueId
+            Dim retVal As ServiceReference_01.queryPatientContentResponse = CType(Me,ServiceReference_01.Service1).queryPatientContent(inValue)
+            parsIn = retVal.parsIn
+            Return retVal.queryPatientContentResult
+        End Function
+        
+        Public Function queryPatientContentAsync(ByVal request As ServiceReference_01.queryPatientContentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.queryPatientContentResponse) Implements ServiceReference_01.Service1.queryPatientContentAsync
+            Return MyBase.Channel.queryPatientContentAsync(request)
         End Function
         
         <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _

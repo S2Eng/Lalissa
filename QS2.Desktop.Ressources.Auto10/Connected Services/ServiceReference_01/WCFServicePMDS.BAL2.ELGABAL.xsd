@@ -33,6 +33,7 @@
       <xs:element name="_x003C_IDCDA_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_KlinikName_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_KlinikOID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_KlinikOrganisationID_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_Person_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_bDocument_x003E_k__BackingField" nillable="true" type="xs:base64Binary" />
     </xs:sequence>

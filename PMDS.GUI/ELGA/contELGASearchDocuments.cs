@@ -222,6 +222,17 @@ namespace PMDS.GUI.ELGA
                     }
 
                     this.gridFound.Refresh();
+                    foreach (UltraGridRow rGrid in this.gridFound.Rows)
+                    {
+                        DataRowView v = (DataRowView)rGrid.ListObject;
+                        PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelRow = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)v.Row;
+
+                        if (rSelRow.DocStatus.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
+                        {
+                            rGrid.Cells["Storniert"].Value = true;
+                        }
+                    }
+
                     this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
                     return true;
                 }

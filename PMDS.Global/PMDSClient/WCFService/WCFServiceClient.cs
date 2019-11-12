@@ -689,7 +689,7 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGARetrieveDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAAddDocument(string ELGAPatientLocalID, string KlinikName, string KlinikOID, string Author, string DocumentName, Byte[] bDocu, string Person, string Description,
+        public ELGAParOutDto ELGAAddDocument(string ELGAPatientLocalID, string KlinikName, string KlinikOrganisationOID, string Author, string DocumentName, Byte[] bDocu, string Person, string Description,
                                                 string IDCA, string ClinicalDocumentSetID)
         {
             try
@@ -703,7 +703,7 @@ namespace PMDSClient.Sitemap
                 parsIn.DocumentAddk__BackingField = new DocumentAddDto()
                 {
                     KlinikNamek__BackingField = KlinikName.Trim(),
-                    KlinikOIDk__BackingField = KlinikOID.Trim(),
+                    KlinikOrganisationIDk__BackingField = KlinikOrganisationOID.Trim(),
                     Authork__BackingField = Author.Trim(),
                     Documentnamek__BackingField  = DocumentName.Trim(),
                     bDocumentk__BackingField = bDocu,
@@ -735,7 +735,7 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.ELGAAddDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ElgaDeprecateDocument(string ELGAPatientLocalID, string DocuUniqueId)
+        public ELGAParOutDto ElgaDeprecateDocument(string ELGAPatientLocalID, string DocuUniqueId, string KlinikName, string KlinikOrganisationOID)
         {
             try
             {
@@ -748,6 +748,11 @@ namespace PMDSClient.Sitemap
                 {
                     UniqueIDk__BackingField = DocuUniqueId, Documentnamek__BackingField = "",  Authork__BackingField = "", CreatedFromk__BackingField = null, CreatedTok__BackingField = null,
                     DocumentStatusk__BackingField = ""
+                };
+                parsIn.DocumentAddk__BackingField = new DocumentAddDto()
+                {
+                    KlinikNamek__BackingField = KlinikName.Trim(),
+                    KlinikOrganisationIDk__BackingField = KlinikOrganisationOID.Trim()
                 };
 
                 ELGAParOutDto parOutDto = client.ElgaDeprecateDocument(ref parsIn, DocuUniqueId);

@@ -53,6 +53,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAufenthalt");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Select", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Storniert", 1);
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
@@ -204,64 +205,68 @@
             ultraGridColumn3.Width = 328;
             ultraGridColumn4.Header.Caption = "Erstellt am";
             ultraGridColumn4.Header.Editor = null;
-            ultraGridColumn4.Header.VisiblePosition = 3;
+            ultraGridColumn4.Header.VisiblePosition = 4;
             ultraGridColumn4.Hidden = true;
             ultraGridColumn4.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;
             ultraGridColumn4.Width = 114;
             ultraGridColumn5.Header.Editor = null;
-            ultraGridColumn5.Header.VisiblePosition = 8;
+            ultraGridColumn5.Header.VisiblePosition = 9;
             ultraGridColumn5.Hidden = true;
             ultraGridColumn5.Width = 111;
             ultraGridColumn6.Header.Editor = null;
-            ultraGridColumn6.Header.VisiblePosition = 10;
+            ultraGridColumn6.Header.VisiblePosition = 11;
             ultraGridColumn6.Hidden = true;
             ultraGridColumn6.Width = 121;
             ultraGridColumn7.Header.Editor = null;
-            ultraGridColumn7.Header.VisiblePosition = 13;
+            ultraGridColumn7.Header.VisiblePosition = 14;
             ultraGridColumn7.Hidden = true;
             ultraGridColumn8.Header.Editor = null;
-            ultraGridColumn8.Header.VisiblePosition = 4;
+            ultraGridColumn8.Header.VisiblePosition = 5;
             ultraGridColumn8.Width = 132;
             ultraGridColumn9.Header.Caption = "Beschreibung";
             ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 15;
+            ultraGridColumn9.Header.VisiblePosition = 16;
             ultraGridColumn9.Width = 327;
             ultraGridColumn10.Header.Caption = "Status";
             ultraGridColumn10.Header.Editor = null;
-            ultraGridColumn10.Header.VisiblePosition = 5;
+            ultraGridColumn10.Header.VisiblePosition = 6;
             ultraGridColumn10.Width = 108;
             ultraGridColumn11.Header.Editor = null;
-            ultraGridColumn11.Header.VisiblePosition = 6;
+            ultraGridColumn11.Header.VisiblePosition = 7;
             ultraGridColumn11.Width = 70;
             ultraGridColumn16.Header.Editor = null;
-            ultraGridColumn16.Header.VisiblePosition = 9;
+            ultraGridColumn16.Header.VisiblePosition = 10;
             ultraGridColumn12.Header.Caption = "Erstellt am";
             ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 2;
+            ultraGridColumn12.Header.VisiblePosition = 3;
             ultraGridColumn12.Width = 113;
             ultraGridColumn18.Header.Caption = "Dateityp";
             ultraGridColumn18.Header.Editor = null;
-            ultraGridColumn18.Header.VisiblePosition = 11;
+            ultraGridColumn18.Header.VisiblePosition = 12;
             ultraGridColumn13.Header.Caption = "Grösse";
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 7;
+            ultraGridColumn13.Header.VisiblePosition = 8;
             ultraGridColumn17.Header.Editor = null;
-            ultraGridColumn17.Header.VisiblePosition = 14;
+            ultraGridColumn17.Header.VisiblePosition = 15;
             ultraGridColumn17.Hidden = true;
             ultraGridColumn14.Header.Editor = null;
-            ultraGridColumn14.Header.VisiblePosition = 12;
+            ultraGridColumn14.Header.VisiblePosition = 13;
             ultraGridColumn14.Hidden = true;
             ultraGridColumn2.Header.Editor = null;
-            ultraGridColumn2.Header.VisiblePosition = 16;
+            ultraGridColumn2.Header.VisiblePosition = 17;
             ultraGridColumn2.Hidden = true;
             ultraGridColumn15.Header.Editor = null;
-            ultraGridColumn15.Header.VisiblePosition = 17;
+            ultraGridColumn15.Header.VisiblePosition = 18;
             ultraGridColumn15.Hidden = true;
             ultraGridColumn1.DataType = typeof(bool);
             ultraGridColumn1.Header.Caption = "Auswahl";
             ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn1.Width = 60;
+            ultraGridColumn19.DataType = typeof(bool);
+            ultraGridColumn19.Header.Editor = null;
+            ultraGridColumn19.Header.VisiblePosition = 2;
+            ultraGridColumn19.Width = 62;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn3,
             ultraGridColumn4,
@@ -280,7 +285,8 @@
             ultraGridColumn14,
             ultraGridColumn2,
             ultraGridColumn15,
-            ultraGridColumn1});
+            ultraGridColumn1,
+            ultraGridColumn19});
             this.gridFound.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridFound.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             appearance6.BackColor = System.Drawing.SystemColors.ActiveBorder;

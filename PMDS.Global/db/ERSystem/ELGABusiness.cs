@@ -798,7 +798,7 @@ namespace PMDS.Global.db.ERSystem
                     {
                         try
                         {
-                            parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.Bezeichnung.Trim(), rKlinik.ELGA_OID.Trim(), rBenutzer.Benutzer1.Trim(),
+                            parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.Bezeichnung.Trim(), rKlinik.ELGA_OrganizationOID.Trim(), rBenutzer.Benutzer1.Trim(),
                                                                                     DocumentName, bDocu, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), "", IDDocumenteneintrag.ToString(), ClinicalDocumentSetID.Trim());
 
                             if (CDAeTypeCDA == CDAeTypeCDA.Pflegesituationbericht)
@@ -1182,8 +1182,19 @@ namespace PMDS.Global.db.ERSystem
 
                                        }).First();
 
+                    var rKlinik = (from k in db.Klinik
+                                   where k.ID == ENV.IDKlinik
+                                   select new
+                                   {
+                                       k.ID,
+                                       k.Bezeichnung,
+                                       k.ELGA_OrganizationOID,
+                                       k.ELGA_OID,
+                                       k.ELGA_OrganizationName
+
+                                   }).First();
                     WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
-                    ELGAParOutDto parOuot = WCFServiceClient1.ElgaDeprecateDocument(rAufenthalt.ELGALocalID.Trim(), rDocuEintragUpdate.ELGAUniqueID.Trim());
+                    ELGAParOutDto parOuot = WCFServiceClient1.ElgaDeprecateDocument(rAufenthalt.ELGALocalID.Trim(), rDocuEintragUpdate.ELGAUniqueID.Trim(), rKlinik.Bezeichnung.Trim(), rKlinik.ELGA_OrganizationOID.Trim());
 
                     rDocuEintragUpdate.ELGAStorniert = true;
                     rDocuEintragUpdate.ELGAStorniertUser = new PMDSBusiness().LogggedOnUser(db).Benutzer1;
