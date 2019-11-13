@@ -284,7 +284,14 @@ namespace PMDS.GUI
 
                 this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
 
-                this.btnELGASearchGDA.Visible = true;
+                if (ENV.lic_ELGA)
+                {
+                    this.btnELGASearchGDA.Visible = true;
+                }
+                else
+                {
+                    this.btnELGASearchGDA.Visible = false;
+                }
                 //ELGABusiness bELGA = new ELGABusiness();
                 //if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
                 //{

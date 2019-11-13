@@ -33,17 +33,24 @@ namespace PMDS.GUI
         {
             this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
 
-            if (ENV.CurrentIDPatient.Equals(System.Guid.Empty) || ENV.IDAUFENTHALT.Equals(System.Guid.Empty))
+            if (ENV.lic_ELGA)
             {
-                this.btnELGASearchGDA.Visible = true;
-            }
-            else
-            {
-                ELGABusiness bELGA = new ELGABusiness();
-                if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
+                if (ENV.CurrentIDPatient.Equals(System.Guid.Empty) || ENV.IDAUFENTHALT.Equals(System.Guid.Empty))
                 {
                     this.btnELGASearchGDA.Visible = true;
                 }
+                else
+                {
+                    ELGABusiness bELGA = new ELGABusiness();
+                    if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
+                    {
+                        this.btnELGASearchGDA.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                this.btnELGASearchGDA.Visible = false;
             }
 
         }
