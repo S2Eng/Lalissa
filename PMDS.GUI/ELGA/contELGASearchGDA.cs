@@ -68,7 +68,7 @@ namespace PMDS.GUI.ELGA
             {
                 if (!this.IsInitialized)
                 {
-                    this.mainWindow.AcceptButton = this.btnOK;
+                    this.mainWindow.AcceptButton = this.btnSearch;
                     this.mainWindow.CancelButton = this.btnAbort;
 
                     this.btnSearch.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
@@ -214,18 +214,18 @@ namespace PMDS.GUI.ELGA
                 }
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    var rAufenthalt = (from p in db.Aufenthalt
-                                    where p.ID == ENV.IDAUFENTHALT
-                                       select new
-                                    {
-                                        p.ID,
-                                        p.IDPatient
-                                    }).First();
+                    //var rAufenthalt = (from p in db.Aufenthalt
+                    //                where p.ID == ENV.IDAUFENTHALT
+                    //                   select new
+                    //                {
+                    //                    p.ID,
+                    //                    p.IDPatient
+                    //                }).First();
                     
-                    if (!this.bELGA.ELGAIsActive(rAufenthalt.IDPatient.Value, ENV.IDAUFENTHALT, true))
-                    {
-                        return false;
-                    }
+                    //if (!this.bELGA.ELGAIsActive(rAufenthalt.IDPatient.Value, ENV.IDAUFENTHALT, true))
+                    //{
+                    //    return false;
+                    //}
 
                     if (!this.validateData())
                     {

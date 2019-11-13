@@ -240,11 +240,20 @@ namespace PMDS.GUI
 
                 this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
 
-                ELGABusiness bELGA = new ELGABusiness();
-                if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
-                {
-                    this.btnELGASearchGDA.Visible = true;
-                }
+                this.btnELGASearchGDA.Visible = true;
+                //ELGABusiness bELGA = new ELGABusiness();
+                //if (ENV.CurrentIDPatient.Equals(System.Guid.Empty) || ENV.IDAUFENTHALT.Equals(System.Guid.Empty))
+                //{
+                //    this.btnELGASearchGDA.Visible = true;
+                //}
+                //else
+                //{
+                //    if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
+                //    {
+                //        this.btnELGASearchGDA.Visible = true;
+                //    }
+                //}
+
 
                 // wenn ucKlinik zugänglich dann Add Button verstecken
                 //if (ucKlinik1.Enabled)

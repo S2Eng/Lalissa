@@ -1077,6 +1077,11 @@ namespace PMDS.Global.db.ERSystem
             {
                 if (ENV.lic_ELGA)
                 {
+                    //if (IDPatient.Equals(System.Guid.Empty) || IDAufenthalt.Equals(System.Guid.Empty))
+                    //{
+                    //    return false;
+                    //}
+
                     using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                     {
                         var rPatient = (from p in db.Patient
