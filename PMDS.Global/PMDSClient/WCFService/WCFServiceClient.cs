@@ -391,7 +391,7 @@ namespace PMDSClient.Sitemap
 
                 if (parOutDto.bErrorsFoundk__BackingField)
                 {
-                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAUpdatePatient");
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAInsertPatient");
                     throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
