@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 758</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="daPatientListe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 719</value>
+    <value>17, 134</value>
   </metadata>
   <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -133,7 +133,7 @@
     <value>False</value>
   </metadata>
   <metadata name="daPatientByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 680</value>
+    <value>17, 290</value>
   </metadata>
   <metadata name="oleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -145,7 +145,7 @@
     <value>False</value>
   </metadata>
   <metadata name="oleDbConnection2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 641</value>
+    <value>17, 407</value>
   </metadata>
   <metadata name="oleDbInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -194,7 +194,7 @@ WHERE        (ID = ?)</value>
     <value>UPDATE [Patient] SET [ID] = ?, [IDAdresse] = ?, [IDKontakt] = ?, [Vorname] = ?, [Nachname] = ?, [Geburtsdatum] = ?, [Titel] = ?, [Sexus] = ?, [Konfision] = ?, [Familienstand] = ?, [Staatsb] = ?, [Klasse] = ?, [KrankenKasse] = ?, [BlutGruppe] = ?, [Resusfaktor] = ?, [LedigerName] = ?, [Geburtsort] = ?, [Voraufenthalt] = ?, [Angehörige] = ?, [VersicherungsNr] = ?, [ArbeitslosBezSeit] = ?, [KrankengeldSeit] = ?, [Hauptversicherung] = ?, [ErlernterBeruf] = ?, [Besonderheit] = ?, [Betreuer] = ?, [Sachwalter] = ?, [SachWalterBelange] = ?, [SachWalterVon] = ?, [SachWalterBis] = ?, [SterbeRegel] = ?, [Depotinjektion] = ?, [Hausarzt] = ?, [Vermerk] = ?, [SterbeDatum] = ?, [AktuellerDienstgeber] = ?, [DerzeitigerBeruf] = ?, [RezeptgebuehrbefreiungJN] = ?, [PflegegeldantragJN] = ?, [DatumPflegegeldantrag] = ?, [PensionsteilungsantragJN] = ?, [DatumPensionsteilungsantrag] = ?, [FIBUKonto] = ?, [RollungVon] = ?, [RollungBis] = ?, [Klientennummer] = ?, [IDAbteilung] = ?, [abwesenheitenHändBerech] = ?, [Sollstand] = ?, [minSaldo] = ?, [Kennwort] = ?, [blob_Einverständniserklärung] = ?, [EinverständniserklärungFileType] = ?, [jpg_Einverständniserklärung] = ?, [Verstorben] = ?, [Todeszeitpunkt] = ?, [DNR] = ?, [Adelstitel] = ?, [Anrede] = ?, [Initialberuehrung] = ?, [Klingeln] = ?, [Wohnsituation] = ?, [Haustier] = ?, [LiftJN] = ?, [WohnungAbgemeldetJN] = ?, [Haarfarbe] = ?, [Augenfarbe] = ?, [BesondereAeusserlicheKennzeichen] = ?, [FernsehgebuehrbefreiungJN] = ?, [TelefongebuehrbefreiungJN] = ?, [BewerberJN] = ?, [BewerbungaktivJN] = ?, [PflegeArt] = ?, [BewerbungDatum] = ?, [EinzugswunschDatum] = ?, [AuszugswunschDatum] = ?, [Zimmerwunsch] = ?, [Stationswunsch] = ?, [SonstigeWuensche] = ?, [BewerbungsGrund] = ?, [Prioritaet] = ?, [ReligionWunsch] = ?, [KommunionJN] = ?, [KrankensalbungJN] = ?, [BewerberBemerkung] = ?, [WaescheMarkiert] = ?, [WaescheWaschen] = ?, [Zustaendige_Stelle] = ?, [Groesse] = ?, [Statur] = ?, [Namenstag] = ?, [Kosename] = ?, [Privatversicherung] = ?, [PrivPolNr] = ?, [IDBenutzer] = ?, [PatientenverfuegungJN] = ?, [PatientenverfuegungBeachtlichJN] = ?, [PatientverfuegungDatum] = ?, [PatientverfuegungAnmerkung] = ?, [Milieubetreuung] = ?, [KZUeberlebender] = ?, [Anatomie] = ?, [Einzelzimmer] = ?, [Selbstzahler] = ?, [IDBereich] = ?, [KürzungLetzterTagAnwesenheit] = ?, [Behindertenausweis] = ?, [Sozialcard] = ?, [IDAdresseSub] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daPatientListeFilter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 602</value>
+    <value>17, 446</value>
   </metadata>
   <metadata name="oleDbSelectCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -216,7 +216,7 @@ FROM            UrlaubVerlauf RIGHT OUTER JOIN
                          Patient ON Aufenthalt.IDPatient = Patient.ID</value>
   </data>
   <metadata name="daPatientListeFilterMitEntlassenen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 329</value>
+    <value>17, 485</value>
   </metadata>
   <metadata name="oleDbCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -250,17 +250,16 @@ ORDER BY dbo.Patient.Nachname + '  ' + dbo.Patient.Vorname, dbo.AufenthaltVerlau
     <value>False</value>
   </metadata>
   <data name="oleDbCommand2.CommandText" xml:space="preserve">
-    <value>SELECT distinct Aerzte.ID, Aerzte.IDAdresse, Aerzte.IDKontakt, Aerzte.Titel, Aerzte.Nachname, Aerzte.Vorname, Aerzte.Fachrichtung
-FROM Aerzte
-inner join PatientAerzte on PatientAerzte.IDAerzte=Aerzte.ID
-WHERE     (PatientAerzte.IDPatient = ?) AND (PatientAerzte.Von IS NULL OR
-                     PatientAerzte.Von &lt;= ?) AND (PatientAerzte.Bis IS NULL OR
-                      PatientAerzte.Bis &gt;= ?)
-order by    Aerzte.Nachname,  Aerzte.Vorname</value>
+    <value>SELECT DISTINCT 
+                         Aerzte.ID, Aerzte.IDAdresse, Aerzte.IDKontakt, Aerzte.Titel, Aerzte.Nachname, Aerzte.Vorname, Aerzte.Fachrichtung, Aerzte.ELGAAbgeglichen, Aerzte.ELGAHausarzt, Aerzte.ELGA_OID, Aerzte.ELGA_OrganizationOID, 
+                         Aerzte.ELGA_OrganizationName, Aerzte.IstOrganisation
+FROM            Aerzte INNER JOIN
+                         PatientAerzte ON PatientAerzte.IDAerzte = Aerzte.ID
+WHERE        (PatientAerzte.IDPatient = ?) AND (PatientAerzte.Von IS NULL OR
+                         PatientAerzte.Von &lt;= ?) AND (PatientAerzte.Bis IS NULL OR
+                         PatientAerzte.Bis &gt;= ?)
+ORDER BY Aerzte.Nachname, Aerzte.Vorname</value>
   </data>
-  <metadata name="dsAerzte1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 524</value>
-  </metadata>
   <metadata name="oleDbSelectCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
@@ -280,10 +279,10 @@ WHERE        (NOT (ID IN
 ORDER BY Nachname</value>
   </data>
   <metadata name="daPatientNichtAufgenommen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 485</value>
+    <value>17, 641</value>
   </metadata>
   <metadata name="daPatientListeFilterMitBezugsPfleger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 446</value>
+    <value>17, 719</value>
   </metadata>
   <metadata name="oleDbCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -306,7 +305,7 @@ FROM         Bereich RIGHT OUTER JOIN
                       Patient ON Aufenthalt.IDPatient = Patient.ID</value>
   </data>
   <metadata name="daPatientFoto.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 407</value>
+    <value>17, 758</value>
   </metadata>
   <metadata name="oleDbSelectCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -318,13 +317,13 @@ FROM         Bereich RIGHT OUTER JOIN
     <value>False</value>
   </metadata>
   <metadata name="daPatientByNr.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 368</value>
+    <value>17, 680</value>
   </metadata>
   <metadata name="oleDbCommand4.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <metadata name="oleDbCommand4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
+    <value>17, 212</value>
   </metadata>
   <data name="oleDbCommand4.CommandText" xml:space="preserve">
     <value>SELECT  ID, Nachname + '  ' + Vorname AS Name, Geburtsdatum, '' AS Abteilung, 
@@ -334,7 +333,7 @@ where Patient.Klientennummer = ?
 order by Name</value>
   </data>
   <metadata name="daIDPatientListeFilter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 290</value>
+    <value>17, 524</value>
   </metadata>
   <metadata name="oleDbCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -355,7 +354,7 @@ FROM         UrlaubVerlauf RIGHT OUTER JOIN
                       Patient ON Aufenthalt.IDPatient = Patient.ID</value>
   </data>
   <metadata name="daKlientenlisteGrid.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
+    <value>17, 173</value>
   </metadata>
   <metadata name="oleDbCommand6.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -383,7 +382,7 @@ FROM         (SELECT     IDAufenthalt, MIN(VoraussichtlichesEnde) AS fruehestesU
                       Patient ON Aufenthalt.IDPatient = Patient.ID</value>
   </data>
   <metadata name="daKlientenlisteGridMitBezugsPfleger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 251</value>
+    <value>17, 368</value>
   </metadata>
   <metadata name="oleDbCommand7.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -413,7 +412,7 @@ FROM         UrlaubVerlauf RIGHT OUTER JOIN
                       Patient ON Aufenthalt.IDPatient = Patient.ID</value>
   </data>
   <metadata name="daKlientenlisteGridHistorie.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 212</value>
+    <value>17, 329</value>
   </metadata>
   <metadata name="oleDbCommand8.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -446,7 +445,7 @@ FROM         (SELECT     TOP (100) PERCENT Aufenthalt.ID AS IDAufenthalt, Aufent
                                               Patient ON Aufenthalt.IDPatient = Patient.ID) AS derivedtbl_1</value>
   </data>
   <metadata name="daPatientZusaätzlicheDatenByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 173</value>
+    <value>17, 251</value>
   </metadata>
   <metadata name="oleDbCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -485,7 +484,7 @@ FROM         (SELECT     TOP (100) PERCENT Aufenthalt.ID AS IDAufenthalt, Aufent
     <value>False</value>
   </metadata>
   <metadata name="daPatientNurBewerber.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="oleDbCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -506,6 +505,9 @@ FROM             Patient
   </data>
   <metadata name="dsPatient1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>426, 17</value>
+  </metadata>
+  <metadata name="dsAerzte1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 602</value>
   </metadata>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>

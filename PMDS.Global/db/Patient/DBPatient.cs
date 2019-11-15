@@ -149,7 +149,6 @@ namespace PMDS.DB
             this.oleDbCommand1 = new System.Data.OleDb.OleDbCommand();
             this.daAerzteByPatient = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand2 = new System.Data.OleDb.OleDbCommand();
-            this.dsAerzte1 = new PMDS.Global.db.Global.dsAerzte();
             this.oleDbSelectCommand4 = new System.Data.OleDb.OleDbCommand();
             this.daPatientNichtAufgenommen = new System.Data.OleDb.OleDbDataAdapter();
             this.daPatientListeFilterMitBezugsPfleger = new System.Data.OleDb.OleDbDataAdapter();
@@ -174,8 +173,9 @@ namespace PMDS.DB
             this.daPatientNurBewerber = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand13 = new System.Data.OleDb.OleDbCommand();
             this.dsPatient1 = new PMDS.Global.db.Patient.dsPatient();
-            ((System.ComponentModel.ISupportInitialize)(this.dsAerzte1)).BeginInit();
+            this.dsAerzte1 = new PMDS.Global.db.Global.dsAerzte();
             ((System.ComponentModel.ISupportInitialize)(this.dsPatient1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAerzte1)).BeginInit();
             // 
             // oleDbConnection1
             // 
@@ -613,7 +613,13 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("Titel", "Titel"),
                         new System.Data.Common.DataColumnMapping("Nachname", "Nachname"),
                         new System.Data.Common.DataColumnMapping("Vorname", "Vorname"),
-                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung")})});
+                        new System.Data.Common.DataColumnMapping("Fachrichtung", "Fachrichtung"),
+                        new System.Data.Common.DataColumnMapping("ELGAAbgeglichen", "ELGAAbgeglichen"),
+                        new System.Data.Common.DataColumnMapping("ELGAHausarzt", "ELGAHausarzt"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OID", "ELGA_OID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationOID", "ELGA_OrganizationOID"),
+                        new System.Data.Common.DataColumnMapping("ELGA_OrganizationName", "ELGA_OrganizationName"),
+                        new System.Data.Common.DataColumnMapping("IstOrganisation", "IstOrganisation")})});
             // 
             // oleDbCommand2
             // 
@@ -623,11 +629,6 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient"),
             new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Von"),
             new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Bis")});
-            // 
-            // dsAerzte1
-            // 
-            this.dsAerzte1.DataSetName = "dsAerzte";
-            this.dsAerzte1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // oleDbSelectCommand4
             // 
@@ -868,8 +869,13 @@ namespace PMDS.DB
             this.dsPatient1.DataSetName = "dsPatient";
             this.dsPatient1.Locale = new System.Globalization.CultureInfo("de-AT");
             this.dsPatient1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            ((System.ComponentModel.ISupportInitialize)(this.dsAerzte1)).EndInit();
+            // 
+            // dsAerzte1
+            // 
+            this.dsAerzte1.DataSetName = "dsAerzte";
+            this.dsAerzte1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             ((System.ComponentModel.ISupportInitialize)(this.dsPatient1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAerzte1)).EndInit();
 
 		}
 		#endregion
