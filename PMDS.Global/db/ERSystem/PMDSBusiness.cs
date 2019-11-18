@@ -1955,7 +1955,7 @@ namespace PMDS.DB
                 rNewPE.IDWichtig = IDWichtig;
                 rNewPE.IDEvaluierung = null;
                 rNewPE.EvalStatus = 0;
-                rNewPE.PflegeplanText = PflegeplanText.Trim();
+                rNewPE.PflegeplanText = (PflegeplanText.Trim().Length <= 255 ? PflegeplanText.Trim() : PflegeplanText.Trim().Substring(0,251) + "...");
                 rNewPE.IDSollberufsstand = null;
                 rNewPE.IDPflegePlanBerufsstand = null;
                 rNewPE.IDPflegeplanH = IDPflegeplanH;
