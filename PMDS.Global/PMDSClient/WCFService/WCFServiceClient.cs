@@ -24,7 +24,9 @@ namespace PMDSClient.Sitemap
     {
 
         public static string urlWCFServiceDefault = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
- 
+
+
+
         public class cParsWCF
         {
             public string MachineName = "";
@@ -70,6 +72,7 @@ namespace PMDSClient.Sitemap
 
 
 
+
         public static void init()
         {
             try
@@ -77,20 +80,6 @@ namespace PMDSClient.Sitemap
                 if (!PMDSClientWrapper.WCFServiceOnOff)
                 {
                     return;
-                }
-
-                string strCmdText;
-                strCmdText = "";
-                
-                string sWCFServiceName = "";
-                if (PMDS.Global.ENV.WCFServicePMDSAsConsole)
-                {
-                    //sWCFServiceName = @PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() + @"\WCFServicePMDS.exe";
-                    //System.Diagnostics.Process.Start(sWCFServiceName, strCmdText);
-                }
-                else
-                {
-
                 }
 
                 DateTime dNow = DateTime.Now;
@@ -102,12 +91,11 @@ namespace PMDSClient.Sitemap
                 Thread threadSendExcept = new Thread(WCFServiceClientPMDS1.thread_initWCFService);
                 threadSendExcept.IsBackground = true;
                 threadSendExcept.Start(ParsWCF);
-                
+
 
                 //QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client("BasicHttpBinding_IService1", ENV.UrlWCFServicePMDS.Trim());
                 //bool bCheckOK = Service1Client1.TestService(System.Environment.MachineName.Trim(), ENV.LoginInNameFrei, ENV.VersionNr);
                 //bool CallOK = true;
-
             }
             catch (Exception ex)
             {
@@ -115,21 +103,46 @@ namespace PMDSClient.Sitemap
             }
         }
 
+        
         public void thread_initWCFService(object pars)
         {
             try
             {
-               if (PMDSClientWrapper.UrlWCFServicePMDS.Trim() == "")
+                if (PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() == "")
                 {
-                    string urlWCFServiceBack = "";
-                    bool bUrlFound = this.genUrlWCFService(ref urlWCFServiceBack);
-                    PMDSClientWrapper.UrlWCFServicePMDS = urlWCFServiceBack.Trim();
+                    PMDS.Global.ENV.WCFServicePMDSDebugPath = PMDS.Global.ENV.path_bin.Trim();
                 }
-                
+
+                if (!PMDS.Global.ENV.WCFServiceDebugMode)
+                {
+                    this.stopCheckWCFServiceLocal(false);
+
+                    string urlWCFServiceBack = "";
+                    if (!PMDS.Global.ENV.WCFServiceOnlyLocal)
+                    {
+                        bool bUrlFound = this.genUrlWCFService(ref urlWCFServiceBack);
+                    }
+                    else
+                    {
+                        urlWCFServiceBack = urlWCFServiceDefault.Trim();
+                    }
+
+                    PMDSClientWrapper.UrlWCFServicePMDS = urlWCFServiceBack.Trim();
+                    string sWCFServiceName = @PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() + "\\" + @PMDS.Global.ENV.WCFHostManager.Trim();
+                    System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
+                }
+
                 cParsWCF ParsWCF = (cParsWCF)pars;
                 //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_Service1", ENV.UrlWCFServicePMDS.Trim());
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = WCFServiceClient.getWCFClient(true);
                 bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, null);
+
+                if (!PMDS.Global.ENV.WCFServiceDebugMode)
+                {
+                    QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1ClientCentral = WCFServiceClient.getWCFClient(false);
+                    bool bCheckCentralOK = Service1ClientCentral.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, null);
+                }
+
                 this.getAllStammdaten(ref Service1Client1);
                 WCFServiceClient.IsInitialized = true;
 
@@ -139,14 +152,60 @@ namespace PMDSClient.Sitemap
                 PMDS.Global.ENV.HandleException(ex, "Exception", true);
             }
         }
-        public static QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client getWCFClient()
+        public bool stopCheckWCFServiceLocal(bool onlyCheckIsRunning)
         {
             try
             {
+                System.Collections.Generic.List<Process> lstPMDSRunning = new List<Process>();
+
+                bool WCFServiceIsRunningTmp = false;
+                Process[] processes = Process.GetProcesses();
+                foreach (Process process in processes)
+                {
+                    if (process.ProcessName.Trim().ToLower().Equals(@PMDS.Global.ENV.WCFHostManager.Trim().Trim().ToLower()))
+                    {
+                        WCFServiceIsRunningTmp = true;
+                        lstPMDSRunning.Add(process);
+                    }
+                }
+
+                if (!onlyCheckIsRunning && lstPMDSRunning.Count > 0)
+                {
+                    foreach (Process process in lstPMDSRunning)
+                    {
+                        process.Kill();
+                    }
+                }
+
+                return WCFServiceIsRunningTmp;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.stopCheckWCFServiceLocal: " + ex.ToString());
+            }
+        }
+        public static QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client getWCFClient(bool localService)
+        {
+            try
+            {
+                if (PMDS.Global.ENV.WCFServiceDebugMode)
+                {
+                    localService = true;
+                }
+                string UrlTmp = "";
+                if (localService)
+                {
+                    UrlTmp = urlWCFServiceDefault.Trim();
+                }
+                else
+                {
+                    UrlTmp = PMDSClientWrapper.UrlWCFServicePMDS.Trim();
+                }
+
                 TimeSpan t10 = new TimeSpan(10, 0, 0);
                 TimeSpan t24 = new TimeSpan(23, 59, 59);
 
-                if (PMDSClientWrapper.UrlWCFServicePMDS.Trim().ToLower().StartsWith(("http://").Trim().ToLower()))
+                if (UrlTmp.Trim().ToLower().StartsWith(("http://").Trim().ToLower()))
                 {
                     var binding = new BasicHttpBinding()
                     {
@@ -157,14 +216,14 @@ namespace PMDSClient.Sitemap
                         ReceiveTimeout = t10,
                         SendTimeout = t24
                     };
-                    var endpoint = new EndpointAddress(PMDSClientWrapper.UrlWCFServicePMDS.Trim());
+                    var endpoint = new EndpointAddress(UrlTmp);
                     QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client(binding, endpoint);
                     //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
                     return client;
 
                     //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_Service1", ENV.UrlWCFServicePMDS.Trim());
                 }
-                else if (PMDSClientWrapper.UrlWCFServicePMDS.Trim().ToLower().StartsWith(("net.tcp://").Trim().ToLower()))
+                else if (UrlTmp.Trim().ToLower().StartsWith(("net.tcp://").Trim().ToLower()))
                 {
                     var binding = new NetTcpBinding()
                     {
@@ -175,7 +234,7 @@ namespace PMDSClient.Sitemap
                         ReceiveTimeout = t10,
                         SendTimeout = t24
                     };
-                    var endpoint = new EndpointAddress(PMDSClientWrapper.UrlWCFServicePMDS.Trim());
+                    var endpoint = new EndpointAddress(UrlTmp);
                     QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client(binding, endpoint);
                     //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
                     return client;
@@ -196,7 +255,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
                 //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
 
                 //var res = client.getDataSerialized();
@@ -273,7 +332,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client clientWcf = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client clientWcf = WCFServiceClient.getWCFClient(false);
                 clientWcf.sendExceptionAsSMTPEMail(except, client, (Haus.Trim() == "" ? "" : Haus + "::") + User, At);
             }
             catch (Exception ex)
@@ -293,7 +352,7 @@ namespace PMDSClient.Sitemap
             {
                 ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
 
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 //Thread.Sleep(5000);
                 ELGASessionDTO session = new ELGASessionDTO();
                 session.IDUserk__BackingField = IDUser;
@@ -321,7 +380,7 @@ namespace PMDSClient.Sitemap
                     ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
                     if (ben.Elgaactive && !ben.IsGeneric)
                     {
-                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                         if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.ELGALogInDto != null)
                         {
                             ELGASessionDTO session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
@@ -348,7 +407,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = SozVersNrLocalPatID.Trim(), NachNameFirmak__BackingField = "", Vornamek__BackingField = "", 
@@ -380,7 +439,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.IDPatientInternk__BackingField = IDPatientInternWcf;
@@ -414,7 +473,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.IDPatientInternk__BackingField = IDPatientInternWcf;
@@ -447,7 +506,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim() };
@@ -489,7 +548,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.ContactIDk__BackingField = ContactID.Trim();
@@ -521,7 +580,7 @@ namespace PMDSClient.Sitemap
             try
             {
                 //Entlassung
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim() };
@@ -552,7 +611,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDtok__BackingField = new ObjectDTO() {  SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim()};
@@ -584,7 +643,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
 
@@ -627,7 +686,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
 
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
@@ -660,7 +719,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
 
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
@@ -695,7 +754,7 @@ namespace PMDSClient.Sitemap
             try
             {
                 //IDCA = ID aus PMDS-DB, eigenen IDDocument     ClinicalDocumentSetID = Kommt aus DCA-Dokdument
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
 
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
@@ -739,7 +798,7 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
 
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
@@ -784,7 +843,7 @@ namespace PMDSClient.Sitemap
             try
             {
                 string xml = "";
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 //Thread.Sleep(5000);
                 CDACDAIN vars = new CDACDAIN()
                 {
@@ -888,7 +947,7 @@ namespace PMDSClient.Sitemap
                 {
                     try
                     {
-                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient();
+                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                         //Thread.Sleep(5000);
                         CDACDAIN vars = new CDACDAIN()
                         {

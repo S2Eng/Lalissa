@@ -1335,8 +1335,7 @@ namespace PMDS.Global.db.ERSystem
 
         public static bool checkClientsS2()
         {
-            if (Application.StartupPath.Trim().EndsWith(("Debug").Trim(), StringComparison.CurrentCultureIgnoreCase) && 
-                (Environment.MachineName.Trim().ToLower().Equals(("styhl2").Trim().ToLower()) || Environment.MachineName.Trim().ToLower().Equals(("sty041").Trim().ToLower())))
+            if (Application.StartupPath.Trim().EndsWith(("Debug").Trim(), StringComparison.CurrentCultureIgnoreCase) && PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
             {
                 return true;
             }
@@ -1345,7 +1344,6 @@ namespace PMDS.Global.db.ERSystem
                 return false;
             }
         }
-
 
     }
 
