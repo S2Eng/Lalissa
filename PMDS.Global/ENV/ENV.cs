@@ -2875,7 +2875,7 @@ namespace PMDS.Global
         [Description("DNR/Palliativ")]
         DNR_Palliativ = 109,
         //[Description("Rezepte bestellen")]
-        //RezepteBestellen = 110
+        RezepteBestellen = 110
 
 
 
