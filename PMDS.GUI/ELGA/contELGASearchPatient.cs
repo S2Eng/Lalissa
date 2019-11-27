@@ -77,6 +77,7 @@ namespace PMDS.GUI.ELGA
                     {
                         this.txtSozVersNr.ReadOnly = false;
                     }
+                    this.txtSozVersNr.ReadOnly = false;    //lth
 
                     this.IsInitialized = true;
                 }

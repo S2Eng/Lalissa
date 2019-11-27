@@ -5947,6 +5947,16 @@ namespace PMDS.DB
                                     (BeideGleicherBerufsgruppeAngehörig && HierarchieUserErstelltGrößerUserLoggedOn && PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.WundeÄndern));
                             }
                         }
+                        else if (EintragsTyp == PflegeEintragTyp.Verordnungen)
+                        {
+                            //Verordnungen: 1. Benutzer selbst, 
+                            //              2. Vorgesetzter innerhalb der gleichen Berufsgruppe und Recht Verordnung löchen darf Verordnung von Untergebenen ändern
+                            if (PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.WundeÄndern))
+                            {
+                                UserCanEdit = IDBenutzerToCheck == rUsrLoggedOn.ID ||
+                                    (BeideGleicherBerufsgruppeAngehörig && HierarchieUserErstelltGrößerUserLoggedOn && PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.VOLöschen));
+                            }
+                        }
                         else
                         {
                             //Rückmeldungen: 3 Oder Bedingungen

@@ -1233,7 +1233,8 @@ namespace PMDS.GUI.Verordnungen
                 }
                 else
                 {
-                    frmVOErfassenDetail1.ucVOErfassenDetail1._bEditable = bEditable;
+                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
+                    frmVOErfassenDetail1.ucVOErfassenDetail1._bEditable = PMDSBusiness1.UserCanEdit(ENV.USERID,PflegeEintragTyp.Verordnungen);
                     frmVOErfassenDetail1.initControl(this._TypeUI, false, rSelRow.ID, this._IDAufenthalt, this._IDPflegeplan, this._IDMedDaten, this._IDWundeKopf, WithPatientSelektor, this._Einzelansicht, TypDefault);
                 }
 
