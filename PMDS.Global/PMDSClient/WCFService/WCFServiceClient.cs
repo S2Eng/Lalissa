@@ -152,38 +152,7 @@ namespace PMDSClient.Sitemap
                 PMDS.Global.ENV.HandleException(ex, "Exception", true);
             }
         }
-        public bool stopCheckWCFServiceLocal(bool onlyCheckIsRunning)
-        {
-            try
-            {
-                System.Collections.Generic.List<Process> lstPMDSRunning = new List<Process>();
 
-                bool WCFServiceIsRunningTmp = false;
-                Process[] processes = Process.GetProcesses();
-                foreach (Process process in processes)
-                {
-                    if (process.ProcessName.Trim().ToLower().Equals(@PMDS.Global.ENV.WCFHostManager.Trim().Trim().ToLower()))
-                    {
-                        WCFServiceIsRunningTmp = true;
-                        lstPMDSRunning.Add(process);
-                    }
-                }
-
-                if (!onlyCheckIsRunning && lstPMDSRunning.Count > 0)
-                {
-                    foreach (Process process in lstPMDSRunning)
-                    {
-                        process.Kill();
-                    }
-                }
-
-                return WCFServiceIsRunningTmp;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("WCFServiceClientPMDS.stopCheckWCFServiceLocal: " + ex.ToString());
-            }
-        }
         public static QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client getWCFClient(bool localService)
         {
             try
@@ -896,8 +865,59 @@ namespace PMDSClient.Sitemap
             }
         }
 
+        public void stopCheckWCFServiceLocal(bool onlyCheckIsRunning)
+        {
+            try
+            {
+                System.Collections.Generic.List<Process> lstWCFSServiceRunning = new List<Process>();
 
+                bool WCFServiceIsRunningTmp = false;
+                Process[] processes = Process.GetProcesses();
+                foreach (Process process in processes)
+                {
+                    if (process.ProcessName.Trim().ToLower().Equals(@PMDS.Global.ENV.WCFHostManager.Trim().Trim().ToLower()))
+                    {
+                        WCFServiceIsRunningTmp = true;
+                        lstWCFSServiceRunning.Add(process);
+                    }
+                }
 
+                int iPMDSRunning = this.checkPMDSRunning();
+                if (!onlyCheckIsRunning && iPMDSRunning <= 1 && lstWCFSServiceRunning.Count > 0)
+                {
+                    foreach (Process process in lstWCFSServiceRunning)
+                    {
+                        process.Kill();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.stopCheckWCFServiceLocal: " + ex.ToString());
+            }
+        }
+        public int checkPMDSRunning()
+        {
+            try
+            {
+                int iPMDSRunning = 0;
+                Process[] processes = Process.GetProcesses();
+                foreach (Process process in processes)
+                {
+                    if (process.ProcessName.Trim().ToLower().Equals(("PMDS.Main").Trim().Trim().ToLower()))
+                    {
+                        iPMDSRunning += 1;
+                    }
+                }
+
+                return iPMDSRunning;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.checkPMDSRunning: " + ex.ToString());
+            }
+        }
 
 
 
