@@ -54,13 +54,10 @@ namespace PMDS.Global.PMDSClient
         {
             get
             {
-                _UrlWCFServicePMDS = ENV.UrlWCFServicePMDS;
                 return _UrlWCFServicePMDS;
             }
             set
             {
-                _UrlWCFServicePMDS = value;
-                ENV.UrlWCFServicePMDS = _UrlWCFServicePMDS;
                 _UrlWCFServicePMDS = value;
             }
         }
@@ -111,7 +108,7 @@ namespace PMDS.Global.PMDSClient
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client clientWcf = WCFServiceClient.getWCFClient();
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client clientWcf = WCFServiceClient.getWCFClient(false);
                 clientWcf.sendExceptionAsSMTPEMail(except, client, (Haus.Trim() == "" ? "" : Haus + "::") + User, At);
             }
             catch (Exception ex)

@@ -199,8 +199,9 @@ namespace PMDS.Global
         public static string path_Temp = "";
 
         public static bool WCFServiceOnOff = false;
-        public static string UrlWCFServicePMDS = "";
-        public static bool WCFServicePMDSAsConsole = false;
+        public static bool WCFServiceDebugMode = false;
+        public static bool WCFServiceOnlyLocal = false;
+        public static string WCFHostManager = "WCFHostManager";
         public static string WCFServicePMDSDebugPath = "";
 
         public static string SchnellrückmeldungAsProcess = "1";
@@ -1586,20 +1587,23 @@ namespace PMDS.Global
                         ENV.WCFServiceOnOff = true;
                     }
                 }
-
-                string UrlWCFServicePMDSTmp = _Log.ConfigFile.GetStringValue("UrlWCFServicePMDS");
-                if (UrlWCFServicePMDSTmp.Trim() != "")
+                string WCFServiceDebugModeTmp = _Log.ConfigFile.GetStringValue("WCFServiceDebugMode");
+                if (WCFServiceDebugModeTmp.Trim() != "")
                 {
-                    ENV.UrlWCFServicePMDS = UrlWCFServicePMDSTmp.Trim();
-                }
-                string WCFServicePMDSAsConsoleTmp = _Log.ConfigFile.GetStringValue("WCFServicePMDSAsConsole");
-                if (WCFServicePMDSAsConsoleTmp.Trim() != "")
-                {
-                    if (WCFServicePMDSAsConsoleTmp.Trim().Equals(("1")))
+                    if (WCFServiceDebugModeTmp.Trim().Equals(("1")))
                     {
-                        ENV.WCFServicePMDSAsConsole = true;
+                        ENV.WCFServiceDebugMode = true;
                     }
                 }
+                string WCFServiceOnlyLocalTmp = _Log.ConfigFile.GetStringValue("WCFServiceOnlyLocal");
+                if (WCFServiceOnlyLocalTmp.Trim() != "")
+                {
+                    if (WCFServiceOnlyLocalTmp.Trim().Equals(("1")))
+                    {
+                        ENV.WCFServiceOnlyLocal = true;
+                    }
+                }
+
                 string WCFServicePMDSDebugPathTmp = _Log.ConfigFile.GetStringValue("WCFServicePMDSDebugPath");
                 if (WCFServicePMDSDebugPathTmp.Trim() != "")
                 {

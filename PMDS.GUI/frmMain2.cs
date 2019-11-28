@@ -2089,11 +2089,6 @@ namespace PMDS
 
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Close Event - Benutzerrückfrage
-        /// </summary>
-        //----------------------------------------------------------------------------
         private void frmMainModern_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
@@ -2111,6 +2106,12 @@ namespace PMDS
 
                         WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                         WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
+
+                        if (!PMDS.Global.ENV.WCFServiceDebugMode)
+                        {
+                            WCFServiceClient wcf = new WCFServiceClient();
+                            wcf.stopCheckWCFServiceLocal(false);
+                        }
                     }
                     else
                     {
@@ -2828,6 +2829,7 @@ namespace PMDS
         {
             try
             {
+
             }
             catch (Exception ex)
             {
