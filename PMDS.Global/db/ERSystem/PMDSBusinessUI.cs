@@ -1335,7 +1335,8 @@ namespace PMDS.Global.db.ERSystem
 
         public static bool checkClientsS2()
         {
-            if (Application.StartupPath.Trim().EndsWith(("Debug").Trim(), StringComparison.CurrentCultureIgnoreCase) && PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
+            if (Application.StartupPath.Trim().EndsWith("Debug", StringComparison.CurrentCultureIgnoreCase) &&
+                Environment.MachineName.Equals("styhl2", StringComparison.CurrentCultureIgnoreCase) || Environment.MachineName.Equals("sty041", StringComparison.CurrentCultureIgnoreCase))
             {
                 return true;
             }
