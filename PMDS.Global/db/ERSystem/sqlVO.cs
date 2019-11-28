@@ -186,6 +186,10 @@ namespace PMDS.Global.db.ERSystem
                                 PMDS.db.Entities.PflegePlan rPflegeplan = this.b.getPflegeplan(IDPflegeplan.Value, db);
                                 //IQueryable<PMDS.db.Entities.PflegePlanPDx> tPflegePlanPDx = db.PflegePlanPDx.Where(o => o.IDPflegePlan == IDPflegeplan.Value);
                                 //PMDS.db.Entities.PflegePlanPDx rPflegePlanPDx = tPflegePlanPDx.First();
+                                if (rPflegeplan.EintragGruppe.Equals("T"))      //Keine VO zu Terminen möglich
+                                    return true;
+                                
+                                
                                 string sqlWhereTmp = " (VO.ID IN (Select IDVerordnung from VO_PflegeplanPDX where IDUntertaegigeGruppe='" + rPflegeplan.IDUntertaegigeGruppe.ToString() + "') ";
                                 if (IDAufenthalt != null)
                                 {
@@ -236,8 +240,7 @@ namespace PMDS.Global.db.ERSystem
                     throw new Exception("sqlVO.getVO: selType '" + selType.ToString() + "' not supported!");
                 }
 
-                if (ds.VO.Count > 0)
-                    this.daVO.Fill(ds.VO);
+                this.daVO.Fill(ds.VO);
 
                 return true;
             }

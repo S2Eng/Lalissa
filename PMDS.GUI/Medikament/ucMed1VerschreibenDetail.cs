@@ -412,14 +412,13 @@ namespace PMDS.GUI
         {
             try
             {
-                /* Wird doch nicht benötigt
+                
                 if ((e.Cell.Column.Key.ToLower() == "bestellenjn" || e.Cell.Column.Key.ToLower() == "dringend") && !ENV.HasRight(UserRights.RezepteBestellen))
                 {
                     e.Cell.Value = false;
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sie haben für diese Aktion nicht die erforderlichen Rechte!", "Hinweis", MessageBoxButtons.OK);
                     return;
                 }
-                */
 
                 if (PMDS.Global.historie.HistorieOn) return;
                 OnValueChanged(sender, EventArgs.Empty);

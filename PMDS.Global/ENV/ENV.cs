@@ -2878,8 +2878,8 @@ namespace PMDS.Global
         BenutzerdatenELGAVerwalten = 100,
         [Description("DNR/Palliativ")]
         DNR_Palliativ = 109,
-        //[Description("Rezepte bestellen")]
-        //RezepteBestellen = 110
+        [Description("Rezepte bestellen")]
+        RezepteBestellen = 110
 
 
 
