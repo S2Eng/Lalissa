@@ -695,7 +695,7 @@ namespace PMDS.Abrechnung.Global {
                 this.columnBLZ.AllowDBNull = false;
                 this.columnBLZ.MaxLength = 100;
                 this.columnKontonr.AllowDBNull = false;
-                this.columnKontonr.MaxLength = 20;
+                this.columnKontonr.MaxLength = 255;
                 this.columnBank.AllowDBNull = false;
                 this.columnBank.MaxLength = 100;
                 this.columnFIBUKonto.AllowDBNull = false;

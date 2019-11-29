@@ -370,7 +370,7 @@
               <xs:element name="Kontonr" msprop:Generator_ColumnVarNameInTable="columnKontonr" msprop:Generator_ColumnPropNameInRow="Kontonr" msprop:Generator_ColumnPropNameInTable="KontonrColumn" msprop:Generator_UserColumnName="Kontonr">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -716,7 +716,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Aufenthalt" msprop:Generator_TableClassName="AufenthaltDataTable" msprop:Generator_TableVarName="tableAufenthalt" msprop:Generator_TablePropName="Aufenthalt" msprop:Generator_RowDeletingName="AufenthaltRowDeleting" msprop:Generator_RowChangingName="AufenthaltRowChanging" msprop:Generator_RowEvHandlerName="AufenthaltRowChangeEventHandler" msprop:Generator_RowDeletedName="AufenthaltRowDeleted" msprop:Generator_UserTableName="Aufenthalt" msprop:Generator_RowChangedName="AufenthaltRowChanged" msprop:Generator_RowEvArgName="AufenthaltRowChangeEvent" msprop:Generator_RowClassName="AufenthaltRow">
+        <xs:element name="Aufenthalt" msprop:Generator_TableClassName="AufenthaltDataTable" msprop:Generator_TableVarName="tableAufenthalt" msprop:Generator_RowChangedName="AufenthaltRowChanged" msprop:Generator_TablePropName="Aufenthalt" msprop:Generator_RowDeletingName="AufenthaltRowDeleting" msprop:Generator_RowChangingName="AufenthaltRowChanging" msprop:Generator_RowEvHandlerName="AufenthaltRowChangeEventHandler" msprop:Generator_RowDeletedName="AufenthaltRowDeleted" msprop:Generator_RowClassName="AufenthaltRow" msprop:Generator_UserTableName="Aufenthalt" msprop:Generator_RowEvArgName="AufenthaltRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -735,7 +735,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="billsUpdate" msprop:Generator_TableClassName="billsUpdateDataTable" msprop:Generator_TableVarName="tablebillsUpdate" msprop:Generator_TablePropName="billsUpdate" msprop:Generator_RowDeletingName="billsUpdateRowDeleting" msprop:Generator_RowChangingName="billsUpdateRowChanging" msprop:Generator_RowEvHandlerName="billsUpdateRowChangeEventHandler" msprop:Generator_RowDeletedName="billsUpdateRowDeleted" msprop:Generator_UserTableName="billsUpdate" msprop:Generator_RowChangedName="billsUpdateRowChanged" msprop:Generator_RowEvArgName="billsUpdateRowChangeEvent" msprop:Generator_RowClassName="billsUpdateRow">
+        <xs:element name="billsUpdate" msprop:Generator_TableClassName="billsUpdateDataTable" msprop:Generator_TableVarName="tablebillsUpdate" msprop:Generator_RowChangedName="billsUpdateRowChanged" msprop:Generator_TablePropName="billsUpdate" msprop:Generator_RowDeletingName="billsUpdateRowDeleting" msprop:Generator_RowChangingName="billsUpdateRowChanging" msprop:Generator_RowEvHandlerName="billsUpdateRowChangeEventHandler" msprop:Generator_RowDeletedName="billsUpdateRowDeleted" msprop:Generator_RowClassName="billsUpdateRow" msprop:Generator_UserTableName="billsUpdate" msprop:Generator_RowEvArgName="billsUpdateRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID">
@@ -836,7 +836,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="billHeaderUpdate" msprop:Generator_TableClassName="billHeaderUpdateDataTable" msprop:Generator_TableVarName="tablebillHeaderUpdate" msprop:Generator_TablePropName="billHeaderUpdate" msprop:Generator_RowDeletingName="billHeaderUpdateRowDeleting" msprop:Generator_RowChangingName="billHeaderUpdateRowChanging" msprop:Generator_RowEvHandlerName="billHeaderUpdateRowChangeEventHandler" msprop:Generator_RowDeletedName="billHeaderUpdateRowDeleted" msprop:Generator_UserTableName="billHeaderUpdate" msprop:Generator_RowChangedName="billHeaderUpdateRowChanged" msprop:Generator_RowEvArgName="billHeaderUpdateRowChangeEvent" msprop:Generator_RowClassName="billHeaderUpdateRow">
+        <xs:element name="billHeaderUpdate" msprop:Generator_TableClassName="billHeaderUpdateDataTable" msprop:Generator_TableVarName="tablebillHeaderUpdate" msprop:Generator_RowChangedName="billHeaderUpdateRowChanged" msprop:Generator_TablePropName="billHeaderUpdate" msprop:Generator_RowDeletingName="billHeaderUpdateRowDeleting" msprop:Generator_RowChangingName="billHeaderUpdateRowChanging" msprop:Generator_RowEvHandlerName="billHeaderUpdateRowChangeEventHandler" msprop:Generator_RowDeletedName="billHeaderUpdateRowDeleted" msprop:Generator_RowClassName="billHeaderUpdateRow" msprop:Generator_UserTableName="billHeaderUpdate" msprop:Generator_RowEvArgName="billHeaderUpdateRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID">
@@ -894,7 +894,7 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Kostentraeger_Patient" msdata:parent="Kostentraeger" msdata:child="Patient" msdata:parentkey="ID" msdata:childkey="IDKost" msprop:Generator_UserChildTable="Patient" msprop:Generator_ChildPropName="GetPatientRows" msprop:Generator_UserRelationName="Kostentraeger_Patient" msprop:Generator_RelationVarName="relationKostentraeger_Patient" msprop:Generator_UserParentTable="Kostentraeger" msprop:Generator_ParentPropName="KostentraegerRow" />
+      <msdata:Relationship name="Kostentraeger_Patient" msdata:parent="Kostentraeger" msdata:child="Patient" msdata:parentkey="ID" msdata:childkey="IDKost" msprop:Generator_UserChildTable="Patient" msprop:Generator_ChildPropName="GetPatientRows" msprop:Generator_UserRelationName="Kostentraeger_Patient" msprop:Generator_ParentPropName="KostentraegerRow" msprop:Generator_RelationVarName="relationKostentraeger_Patient" msprop:Generator_UserParentTable="Kostentraeger" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

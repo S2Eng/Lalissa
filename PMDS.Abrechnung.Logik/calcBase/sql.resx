@@ -458,6 +458,23 @@ FROM            bills</value>
   <metadata name="OleDbCommand12.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <metadata name="OleDbDataAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>178, 563</value>
+  </metadata>
+  <metadata name="OleDbCommand14.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand14.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand14.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbCommand14.CommandText" xml:space="preserve">
+    <value>SELECT        LOWER(CAST(ID AS Varchar(50))) AS ID, Anrede, Vorname, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, LOWER(CAST(IDPatient AS Varchar(50))) 
+                         AS IDPatient, Betrag, TransferleistungJN, TaschengeldJN, ZahlartOld, Zahlart, PatientbezogenJN, SammelabrechnungJN, UIDNr, GSBG, IDKlinik, IDKostentraegerSub
+FROM            Kostentraeger</value>
+  </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>

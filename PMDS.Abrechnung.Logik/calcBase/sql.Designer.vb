@@ -83,6 +83,8 @@
         Me.OleDbCommand2 = New System.Data.OleDb.OleDbCommand()
         Me.OleDbCommand4 = New System.Data.OleDb.OleDbCommand()
         Me.OleDbCommand12 = New System.Data.OleDb.OleDbCommand()
+        Me.OleDbDataAdapter1 = New System.Data.OleDb.OleDbDataAdapter()
+        Me.OleDbCommand14 = New System.Data.OleDb.OleDbCommand()
         '
         'OleDbSelectCommand1
         '
@@ -91,8 +93,8 @@
         '
         'dbConn
         '
-        Me.dbConn.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Integrated Security=SSPI;Initial Catalog" &
-    "=PMDSDev"
+        Me.dbConn.ConnectionString = "Provider=SQLNCLI11;Data Source=sty041;Integrated Security=SSPI;Initial Catalog=PM" &
+    "DS_Bernstein"
         '
         'OleDbInsertCommand1
         '
@@ -325,6 +327,16 @@
     "HERE (([ID] = ?))"
         Me.OleDbCommand12.Connection = Me.dbConn
         Me.OleDbCommand12.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.VarChar, 0, "ID"), New System.Data.OleDb.OleDbParameter("dbCalc", System.Data.OleDb.OleDbType.LongVarWChar, 0, "dbCalc"), New System.Data.OleDb.OleDbParameter("protokoll", System.Data.OleDb.OleDbType.LongVarWChar, 0, "protokoll"), New System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"), New System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ID", System.Data.DataRowVersion.Original, Nothing)})
+        '
+        'OleDbDataAdapter1
+        '
+        Me.OleDbDataAdapter1.SelectCommand = Me.OleDbCommand14
+        Me.OleDbDataAdapter1.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "Kostentraeger", New System.Data.Common.DataColumnMapping() {New System.Data.Common.DataColumnMapping("ID", "ID"), New System.Data.Common.DataColumnMapping("Anrede", "Anrede"), New System.Data.Common.DataColumnMapping("Vorname", "Vorname"), New System.Data.Common.DataColumnMapping("Name", "Name"), New System.Data.Common.DataColumnMapping("Strasse", "Strasse"), New System.Data.Common.DataColumnMapping("PLZ", "PLZ"), New System.Data.Common.DataColumnMapping("Ort", "Ort"), New System.Data.Common.DataColumnMapping("Rechnungsempfaenger", "Rechnungsempfaenger"), New System.Data.Common.DataColumnMapping("Rechnungsanschrift", "Rechnungsanschrift"), New System.Data.Common.DataColumnMapping("BLZ", "BLZ"), New System.Data.Common.DataColumnMapping("Kontonr", "Kontonr"), New System.Data.Common.DataColumnMapping("Bank", "Bank"), New System.Data.Common.DataColumnMapping("FIBUKonto", "FIBUKonto"), New System.Data.Common.DataColumnMapping("ErlagscheingebuehrJN", "ErlagscheingebuehrJN"), New System.Data.Common.DataColumnMapping("IDPatient", "IDPatient"), New System.Data.Common.DataColumnMapping("Betrag", "Betrag"), New System.Data.Common.DataColumnMapping("TransferleistungJN", "TransferleistungJN"), New System.Data.Common.DataColumnMapping("TaschengeldJN", "TaschengeldJN"), New System.Data.Common.DataColumnMapping("ZahlartOld", "ZahlartOld"), New System.Data.Common.DataColumnMapping("Zahlart", "Zahlart"), New System.Data.Common.DataColumnMapping("PatientbezogenJN", "PatientbezogenJN"), New System.Data.Common.DataColumnMapping("SammelabrechnungJN", "SammelabrechnungJN"), New System.Data.Common.DataColumnMapping("UIDNr", "UIDNr"), New System.Data.Common.DataColumnMapping("GSBG", "GSBG"), New System.Data.Common.DataColumnMapping("IDKlinik", "IDKlinik"), New System.Data.Common.DataColumnMapping("IDKostentraegerSub", "IDKostentraegerSub")})})
+        '
+        'OleDbCommand14
+        '
+        Me.OleDbCommand14.CommandText = resources.GetString("OleDbCommand14.CommandText")
+        Me.OleDbCommand14.Connection = Me.dbConn
 
     End Sub
     Friend WithEvents OleDbSelectCommand1 As System.Data.OleDb.OleDbCommand
@@ -368,4 +380,6 @@
     Friend WithEvents OleDbCommand12 As OleDb.OleDbCommand
     Public WithEvents daBillUpdate As OleDb.OleDbDataAdapter
     Public WithEvents daBillHeaderUpdate As OleDb.OleDbDataAdapter
+    Friend WithEvents OleDbDataAdapter1 As OleDb.OleDbDataAdapter
+    Friend WithEvents OleDbCommand14 As OleDb.OleDbCommand
 End Class

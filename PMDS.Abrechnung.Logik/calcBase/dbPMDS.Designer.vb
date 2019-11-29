@@ -4236,7 +4236,7 @@ Partial Public Class dbPMDS
             Me.columnBLZ.AllowDBNull = false
             Me.columnBLZ.MaxLength = 100
             Me.columnKontonr.AllowDBNull = false
-            Me.columnKontonr.MaxLength = 20
+            Me.columnKontonr.MaxLength = 255
             Me.columnBank.AllowDBNull = false
             Me.columnBank.MaxLength = 100
             Me.columnFIBUKonto.AllowDBNull = false

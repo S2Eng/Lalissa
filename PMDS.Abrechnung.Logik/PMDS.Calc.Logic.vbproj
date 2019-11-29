@@ -185,6 +185,11 @@
     <Compile Include="calcBase\calc\doSr.vb" />
     <Compile Include="calcBase\calc\klient\anwesenheit.vb" />
     <Compile Include="calcBase\calcData.vb" />
+    <Compile Include="DataSet1xy.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1xy.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dbCalc.work\dbExport.vb" />
     <Compile Include="dbCalc.work\dsExport.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -300,6 +305,17 @@
     </None>
     <None Include="calcBase\dbPMDS.xss">
       <DependentUpon>dbPMDS.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1xy.xsc">
+      <DependentUpon>DataSet1xy.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1xy.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1xy.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1xy.xss">
+      <DependentUpon>DataSet1xy.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
