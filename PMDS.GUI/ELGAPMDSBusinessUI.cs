@@ -42,7 +42,8 @@ namespace PMDS.GUI
     {
 
 
-        public void genCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA, bool verstorbenJN)
+        public void genCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA, bool verstorbenJN,
+                           Nullable<Guid> IDEinrichtungEmpfänger = null)
         {
             try
             {
@@ -99,7 +100,7 @@ namespace PMDS.GUI
                         bool hasRight = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPflegerischerEntlassungsbrief, false);
 
                         this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                    null, verstorbenJN, FileType);
+                                                    IDEinrichtungEmpfänger, verstorbenJN, FileType);
 
                         if (rAufenthalt.ELGAKontaktbestätigungJN)
                         {
