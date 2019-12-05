@@ -75,6 +75,7 @@ namespace PMDS.GUI.ELGA
                     this.btnSaveDocuToELGA.Visible = false;
                     this.btnClose.Visible = true;
                     this.btnAbort.Visible = false;
+                    this.chkUploadToELGA.Visible = false;
                 }
                 else if (this._TypeUI == eTypeUI.SaveToElga)
                 {
@@ -82,7 +83,8 @@ namespace PMDS.GUI.ELGA
                     this.btnSaveIntoArchive.Visible = false;
                     this.btnSaveDocuToELGA.Visible = true;
                     this.btnClose.Visible = false;
-                    this.btnAbort.Visible = true;
+                    this.btnAbort.Visible = false;
+                    this.chkUploadToELGA.Visible = true;
 
                     using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                     {

@@ -683,7 +683,7 @@ namespace PMDS.Global.db.ERSystem
                                                                             "Aktion kann nicht ausgeführt werden.", "ELGA", MessageBoxButtons.OK);
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient wurde über seine Rechte belehrt: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient stimmt dem situativem Opt-Out zu: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient stimmt dem situativen Opt-Out zu: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung hergestellt!");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum");

@@ -189,8 +189,9 @@ namespace PMDS.GUI
 
                 frmCDAViewer1.initControl(Documentname, "", ClinicalDocumentSetID, sFileXmlTmp, CDAeTypeCDA.ToString(), sStylesheetTmp, contCDAViewer.eTypeUI.SaveToElga);
                 frmCDAViewer1.contCDAViewer1.btnSaveDocuToELGA.Visible = !verstorbenJN;
+                frmCDAViewer1.ControlBox = false;
                 frmCDAViewer1.ShowDialog();
-                if (!frmCDAViewer1.contCDAViewer1.abort)
+                if (frmCDAViewer1.contCDAViewer1.chkUploadToELGA.Checked)
                 {
                     if (frmCDAViewer1.contCDAViewer1.saveToElgaClicked)
                     {

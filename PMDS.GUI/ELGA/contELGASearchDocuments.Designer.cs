@@ -35,24 +35,24 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("ELGASearchDocuments", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Dokument", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ErstelltAm");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UUID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UniqueID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LocigalID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Author", -1, null, 1, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Description");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DocStatus");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Version");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Stylesheet");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CreationTime");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TypeFile");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Dokument", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ErstelltAm");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UUID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UniqueID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LocigalID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Author", -1, null, 1, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Description");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("DocStatus");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Version");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Stylesheet");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CreationTime");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TypeFile");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Size");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGAPatientLocalID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAufenthalt");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Select", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ELGAPatientLocalID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAufenthalt");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Select", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Storniert", 1);
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
@@ -75,18 +75,19 @@
             this.lblCreatedFom = new Infragistics.Win.Misc.UltraLabel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.gridFound = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.contextMenuStripGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cDADokumentÖffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridFound = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.dsManage1 = new PMDS.Global.db.ERSystem.dsManage();
             this.sqlManange1 = new PMDS.Global.db.ERSystem.sqlManange(this.components);
+            this.btnOpenCDADocu = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.grpSearch)).BeginInit();
             this.grpSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udteCreatedTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteCreatedFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFound)).BeginInit();
             this.contextMenuStripGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManage1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -188,6 +189,19 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // contextMenuStripGrid
+            // 
+            this.contextMenuStripGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cDADokumentÖffnenToolStripMenuItem});
+            this.contextMenuStripGrid.Name = "contextMenuStripGrid";
+            this.contextMenuStripGrid.Size = new System.Drawing.Size(198, 26);
+            // 
+            // cDADokumentÖffnenToolStripMenuItem
+            // 
+            this.cDADokumentÖffnenToolStripMenuItem.Name = "cDADokumentÖffnenToolStripMenuItem";
+            this.cDADokumentÖffnenToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.cDADokumentÖffnenToolStripMenuItem.Text = "CDA-Dokument öffnen";
+            // 
             // gridFound
             // 
             this.gridFound.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -200,74 +214,76 @@
             appearance5.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.gridFound.DisplayLayout.Appearance = appearance5;
             this.gridFound.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
+            ultraGridColumn1.Header.Editor = null;
+            ultraGridColumn1.Header.VisiblePosition = 1;
+            ultraGridColumn1.Width = 328;
+            ultraGridColumn2.Header.Caption = "Erstellt am";
+            ultraGridColumn2.Header.Editor = null;
+            ultraGridColumn2.Header.VisiblePosition = 4;
+            ultraGridColumn2.Hidden = true;
+            ultraGridColumn2.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;
+            ultraGridColumn2.Width = 114;
             ultraGridColumn3.Header.Editor = null;
-            ultraGridColumn3.Header.VisiblePosition = 1;
-            ultraGridColumn3.Width = 328;
-            ultraGridColumn4.Header.Caption = "Erstellt am";
+            ultraGridColumn3.Header.VisiblePosition = 8;
+            ultraGridColumn3.Hidden = true;
+            ultraGridColumn3.Width = 111;
             ultraGridColumn4.Header.Editor = null;
-            ultraGridColumn4.Header.VisiblePosition = 4;
+            ultraGridColumn4.Header.VisiblePosition = 10;
             ultraGridColumn4.Hidden = true;
-            ultraGridColumn4.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;
-            ultraGridColumn4.Width = 114;
+            ultraGridColumn4.Width = 121;
             ultraGridColumn5.Header.Editor = null;
-            ultraGridColumn5.Header.VisiblePosition = 9;
+            ultraGridColumn5.Header.VisiblePosition = 13;
             ultraGridColumn5.Hidden = true;
-            ultraGridColumn5.Width = 111;
             ultraGridColumn6.Header.Editor = null;
-            ultraGridColumn6.Header.VisiblePosition = 11;
-            ultraGridColumn6.Hidden = true;
-            ultraGridColumn6.Width = 121;
+            ultraGridColumn6.Header.VisiblePosition = 5;
+            ultraGridColumn6.Width = 132;
+            ultraGridColumn7.Header.Caption = "Beschreibung";
             ultraGridColumn7.Header.Editor = null;
-            ultraGridColumn7.Header.VisiblePosition = 14;
-            ultraGridColumn7.Hidden = true;
+            ultraGridColumn7.Header.VisiblePosition = 15;
+            ultraGridColumn7.Width = 340;
+            ultraGridColumn8.Header.Caption = "Status";
             ultraGridColumn8.Header.Editor = null;
-            ultraGridColumn8.Header.VisiblePosition = 5;
-            ultraGridColumn8.Width = 132;
-            ultraGridColumn9.Header.Caption = "Beschreibung";
+            ultraGridColumn8.Header.VisiblePosition = 16;
+            ultraGridColumn8.Width = 185;
             ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 16;
-            ultraGridColumn9.Width = 327;
-            ultraGridColumn10.Header.Caption = "Status";
+            ultraGridColumn9.Header.VisiblePosition = 6;
+            ultraGridColumn9.Width = 70;
             ultraGridColumn10.Header.Editor = null;
-            ultraGridColumn10.Header.VisiblePosition = 6;
-            ultraGridColumn10.Width = 108;
+            ultraGridColumn10.Header.VisiblePosition = 9;
+            ultraGridColumn11.Header.Caption = "Erstellt am";
             ultraGridColumn11.Header.Editor = null;
-            ultraGridColumn11.Header.VisiblePosition = 7;
-            ultraGridColumn11.Width = 70;
-            ultraGridColumn16.Header.Editor = null;
-            ultraGridColumn16.Header.VisiblePosition = 10;
-            ultraGridColumn12.Header.Caption = "Erstellt am";
+            ultraGridColumn11.Header.VisiblePosition = 3;
+            ultraGridColumn11.Width = 113;
+            ultraGridColumn12.Header.Caption = "Dateityp";
             ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 3;
-            ultraGridColumn12.Width = 113;
-            ultraGridColumn18.Header.Caption = "Dateityp";
-            ultraGridColumn18.Header.Editor = null;
-            ultraGridColumn18.Header.VisiblePosition = 12;
+            ultraGridColumn12.Header.VisiblePosition = 11;
             ultraGridColumn13.Header.Caption = "Grösse";
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 8;
-            ultraGridColumn17.Header.Editor = null;
-            ultraGridColumn17.Header.VisiblePosition = 15;
-            ultraGridColumn17.Hidden = true;
+            ultraGridColumn13.Header.VisiblePosition = 7;
             ultraGridColumn14.Header.Editor = null;
-            ultraGridColumn14.Header.VisiblePosition = 13;
+            ultraGridColumn14.Header.VisiblePosition = 14;
             ultraGridColumn14.Hidden = true;
-            ultraGridColumn2.Header.Editor = null;
-            ultraGridColumn2.Header.VisiblePosition = 17;
-            ultraGridColumn2.Hidden = true;
             ultraGridColumn15.Header.Editor = null;
-            ultraGridColumn15.Header.VisiblePosition = 18;
+            ultraGridColumn15.Header.VisiblePosition = 12;
             ultraGridColumn15.Hidden = true;
-            ultraGridColumn1.DataType = typeof(bool);
-            ultraGridColumn1.Header.Caption = "Auswahl";
-            ultraGridColumn1.Header.Editor = null;
-            ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn1.Width = 60;
+            ultraGridColumn16.Header.Editor = null;
+            ultraGridColumn16.Header.VisiblePosition = 17;
+            ultraGridColumn16.Hidden = true;
+            ultraGridColumn17.Header.Editor = null;
+            ultraGridColumn17.Header.VisiblePosition = 18;
+            ultraGridColumn17.Hidden = true;
+            ultraGridColumn18.DataType = typeof(bool);
+            ultraGridColumn18.Header.Caption = "Auswahl";
+            ultraGridColumn18.Header.Editor = null;
+            ultraGridColumn18.Header.VisiblePosition = 0;
+            ultraGridColumn18.Width = 60;
             ultraGridColumn19.DataType = typeof(bool);
             ultraGridColumn19.Header.Editor = null;
             ultraGridColumn19.Header.VisiblePosition = 2;
             ultraGridColumn19.Width = 62;
             ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn1,
+            ultraGridColumn2,
             ultraGridColumn3,
             ultraGridColumn4,
             ultraGridColumn5,
@@ -277,15 +293,13 @@
             ultraGridColumn9,
             ultraGridColumn10,
             ultraGridColumn11,
-            ultraGridColumn16,
             ultraGridColumn12,
-            ultraGridColumn18,
             ultraGridColumn13,
-            ultraGridColumn17,
             ultraGridColumn14,
-            ultraGridColumn2,
             ultraGridColumn15,
-            ultraGridColumn1,
+            ultraGridColumn16,
+            ultraGridColumn17,
+            ultraGridColumn18,
             ultraGridColumn19});
             this.gridFound.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridFound.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
@@ -347,30 +361,27 @@
             this.gridFound.Click += new System.EventHandler(this.GridFound_Click);
             this.gridFound.DoubleClick += new System.EventHandler(this.GridFound_DoubleClick);
             // 
-            // contextMenuStripGrid
-            // 
-            this.contextMenuStripGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cDADokumentÖffnenToolStripMenuItem});
-            this.contextMenuStripGrid.Name = "contextMenuStripGrid";
-            this.contextMenuStripGrid.Size = new System.Drawing.Size(198, 26);
-            // 
-            // cDADokumentÖffnenToolStripMenuItem
-            // 
-            this.cDADokumentÖffnenToolStripMenuItem.Name = "cDADokumentÖffnenToolStripMenuItem";
-            this.cDADokumentÖffnenToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.cDADokumentÖffnenToolStripMenuItem.Text = "CDA-Dokument öffnen";
-            this.cDADokumentÖffnenToolStripMenuItem.Click += new System.EventHandler(this.cDADokumentÖffnenToolStripMenuItem_Click);
-            // 
             // dsManage1
             // 
             this.dsManage1.DataSetName = "dsManage";
             this.dsManage1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnOpenCDADocu
+            // 
+            this.btnOpenCDADocu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenCDADocu.Location = new System.Drawing.Point(750, 46);
+            this.btnOpenCDADocu.Name = "btnOpenCDADocu";
+            this.btnOpenCDADocu.Size = new System.Drawing.Size(132, 22);
+            this.btnOpenCDADocu.TabIndex = 131;
+            this.btnOpenCDADocu.Text = "CDA-Dokument öffnen";
+            this.btnOpenCDADocu.Click += new System.EventHandler(this.btnOpenCDADocu_Click);
             // 
             // contELGASearchDocuments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnOpenCDADocu);
             this.Controls.Add(this.gridFound);
             this.Controls.Add(this.btnAbort);
             this.Controls.Add(this.btnOK);
@@ -384,8 +395,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.udteCreatedTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteCreatedFrom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFound)).EndInit();
             this.contextMenuStripGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridFound)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManage1)).EndInit();
             this.ResumeLayout(false);
 
@@ -408,5 +419,6 @@
         private Infragistics.Win.Misc.UltraLabel lblCreatedTo;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripGrid;
         private System.Windows.Forms.ToolStripMenuItem cDADokumentÖffnenToolStripMenuItem;
+        private Infragistics.Win.Misc.UltraButton btnOpenCDADocu;
     }
 }
