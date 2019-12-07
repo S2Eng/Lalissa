@@ -3910,7 +3910,7 @@ namespace PMDS.Data.Patient {
                 this.columnAngstzustaende.MaxLength = 2147483647;
                 this.columnSituationVorDerSichFuerchten.MaxLength = 2147483647;
                 this.columnPflegendenAngehoerigeProbleme.MaxLength = 2147483647;
-                this.columnKonfision.MaxLength = 20;
+                this.columnKonfision.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

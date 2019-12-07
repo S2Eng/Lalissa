@@ -1960,6 +1960,7 @@ namespace PMDS.GUI
             catch (Exception ex)
             {
                 throw new Exception("neuerTermin: " + ex.ToString());
+                //Keine Änderung
             }
 
         }

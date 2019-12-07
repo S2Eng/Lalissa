@@ -5313,7 +5313,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnIDPatient.AllowDBNull = false;
                 this.columnIDBenutzer.AllowDBNull = false;
                 this.columnKrankenkasse.AllowDBNull = false;
-                this.columnKrankenkasse.MaxLength = 100;
+                this.columnKrankenkasse.MaxLength = 255;
                 this.columnSVNr.AllowDBNull = false;
                 this.columnSVNr.MaxLength = 100;
             }

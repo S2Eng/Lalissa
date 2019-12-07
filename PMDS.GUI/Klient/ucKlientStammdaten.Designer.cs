@@ -1348,7 +1348,7 @@ namespace PMDS.GUI
             this.cmbStaatsB.Group = "SBS";
             this.cmbStaatsB.ID_PEP = -1;
             this.cmbStaatsB.Location = new System.Drawing.Point(309, 181);
-            this.cmbStaatsB.MaxLength = 15;
+            this.cmbStaatsB.MaxLength = 255;
             this.cmbStaatsB.Name = "cmbStaatsB";
             this.cmbStaatsB.PflichtJN = false;
             this.cmbStaatsB.ShowAddButton = true;
