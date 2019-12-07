@@ -958,7 +958,7 @@ namespace PMDS.GUI.PMDSClient
             buttonTool8.SharedPropsInternal.Category = "Programm";
             buttonTool9.SharedPropsInternal.Caption = "Abmelden";
             buttonTool9.SharedPropsInternal.Category = "Programm";
-            buttonTool10.SharedPropsInternal.Caption = "Eigenes Passwort ändern";
+            buttonTool10.SharedPropsInternal.Caption = "PMDS-Passwort ändern";
             buttonTool10.SharedPropsInternal.Category = "Programm";
             buttonTool11.SharedPropsInternal.Caption = "Über PMDS";
             buttonTool11.SharedPropsInternal.Category = "Programm";

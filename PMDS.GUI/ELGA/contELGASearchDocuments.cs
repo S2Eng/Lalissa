@@ -366,12 +366,10 @@ namespace PMDS.GUI.ELGA
             }
         }
 
-        private void cDADokumentÖffnenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openCDADocument()
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-
                 Infragistics.Win.UltraWinGrid.UltraGridRow gridRow = null;
                 PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelDocu = this.getSelectedRow(true, ref gridRow);
                 if (rSelDocu != null)
@@ -382,11 +380,7 @@ namespace PMDS.GUI.ELGA
             }
             catch (Exception ex)
             {
-                PMDS.Global.ENV.HandleException(ex);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
+                throw new Exception("contELGASearchDocuments.openCDADocument: " + ex.ToString());
             }
         }
 
@@ -464,6 +458,23 @@ namespace PMDS.GUI.ELGA
             }
         }
 
+        private void btnOpenCDADocu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.openCDADocument();
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
     }
 
 }

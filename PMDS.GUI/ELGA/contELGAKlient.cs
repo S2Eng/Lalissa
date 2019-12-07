@@ -329,6 +329,12 @@ namespace PMDS.GUI.ELGA
                     rAufenthaltUpdate.ELGAKontaktbestätigungStornoJN = true;
                     rAufenthaltUpdate.ELGAKontaktbestätigungStornoUser = rBenutzer.Benutzer1.Trim();
 
+                    rAufenthaltUpdate.ELGASOOJN = false;
+                    rAufenthaltUpdate.ELGASOOZeitpunkt = null;
+                    rAufenthaltUpdate.ELGASSOODatum = null;
+                    rAufenthaltUpdate.ELGASOOUser = "";
+                    rAufenthaltUpdate.ELGASOOGrund = "";
+
                     db.SaveChanges();
 
 
@@ -338,6 +344,8 @@ namespace PMDS.GUI.ELGA
                                                     ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this._IDKlient, this._IDAufenthalt, sProt);
 
                     this.loadData(this._IDKlient, this._IDAufenthalt);
+
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Kontakt wurde storniert!", "", MessageBoxButtons.OK);
                 }
 
             }
@@ -363,7 +371,7 @@ namespace PMDS.GUI.ELGA
                 if (!this.chkZustimmungSOO.Checked)
                 {
                     this.errorProvider1.SetError(this.chkZustimmungSOO, "Error");
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient stimmt dem situativem Opt-Out zu: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Patient stimmt dem situativen Opt-Out zu: Bestätigung erforderlich!", "", MessageBoxButtons.OK);
                     return false;
                 }
 
@@ -382,42 +390,47 @@ namespace PMDS.GUI.ELGA
                 {
                     return;
                 }
-                if (!this.validateDataSOO())
+
+                if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie das Situative Opt-Out wirklich durchführen? Die Aktion kann nicht mehr rückgängig gemacht werden!", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    return;
-                }
+                    if (!this.validateDataSOO())
+                    {
+                        return;
+                    }
 
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                {
-                    var rBenutzer = (from b in db.Benutzer
-                                     where b.ID == ENV.USERID
-                                     select new
-                                     {
-                                         b.ID,
-                                         b.Nachname,
-                                         b.Vorname,
-                                         b.Benutzer1
-                                     }).First();
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rBenutzer = (from b in db.Benutzer
+                                         where b.ID == ENV.USERID
+                                         select new
+                                         {
+                                             b.ID,
+                                             b.Nachname,
+                                             b.Vorname,
+                                             b.Benutzer1
+                                         }).First();
 
-                    PMDS.db.Entities.Patient rPatient = db.Patient.Where(o => o.ID == this._IDKlient).First();
-                    PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
+                        PMDS.db.Entities.Patient rPatient = db.Patient.Where(o => o.ID == this._IDKlient).First();
+                        PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
 
-                    rAufenthaltUpdate.ELGASOOJN = true;
-                    DateTime dNow = DateTime.Now;
-                    rAufenthaltUpdate.ELGASOOZeitpunkt = dNow;
-                    rAufenthaltUpdate.ELGASSOODatum = dNow;
-                    rAufenthaltUpdate.ELGASOOUser = rBenutzer.Benutzer1.Trim();
-                    rAufenthaltUpdate.ELGASOOGrund = "";
+                        rAufenthaltUpdate.ELGASOOJN = true;
+                        DateTime dNow = DateTime.Now;
+                        rAufenthaltUpdate.ELGASOOZeitpunkt = dNow;
+                        rAufenthaltUpdate.ELGASSOODatum = dNow;
+                        rAufenthaltUpdate.ELGASOOUser = rBenutzer.Benutzer1.Trim();
+                        rAufenthaltUpdate.ELGASOOGrund = "";
 
-                    db.SaveChanges();
+                        db.SaveChanges();
 
+                        string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO für Patient {0} von Benutzer {1} durchgeführt.");
+                        sProt = string.Format(sProt, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), rBenutzer.Benutzer1.Trim());
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO"), null,
+                                                        ELGABusiness.eTypeProt.SOO, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this._IDKlient, this._IDAufenthalt, sProt);
 
-                    string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO für Patient {0} von Benutzer {1} durchgeführt.");
-                    sProt = string.Format(sProt, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), rBenutzer.Benutzer1.Trim());
-                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO"), null,
-                                                    ELGABusiness.eTypeProt.SOO, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this._IDKlient, this._IDAufenthalt, sProt);
+                        this.loadData(this._IDKlient, this._IDAufenthalt);
 
-                    this.loadData(this._IDKlient, this._IDAufenthalt);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Das situative Opt-Out wurde durchgeführt!", "", MessageBoxButtons.OK);
+                    }
                 }
 
             }

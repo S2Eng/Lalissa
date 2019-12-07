@@ -71,12 +71,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             appearance5.BackColor = System.Drawing.Color.White;
+            appearance5.BackColor2 = System.Drawing.Color.White;
+            appearance5.BackColorDisabled = System.Drawing.Color.White;
+            appearance5.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance5.ForeColor = System.Drawing.Color.Black;
+            appearance5.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtKontaktbestätigung.Appearance = appearance5;
             this.txtKontaktbestätigung.BackColor = System.Drawing.Color.White;
+            this.txtKontaktbestätigung.Enabled = false;
             this.txtKontaktbestätigung.Location = new System.Drawing.Point(9, 19);
             this.txtKontaktbestätigung.Multiline = true;
             this.txtKontaktbestätigung.Name = "txtKontaktbestätigung";
-            this.txtKontaktbestätigung.ReadOnly = true;
             this.txtKontaktbestätigung.Size = new System.Drawing.Size(706, 33);
             this.txtKontaktbestätigung.TabIndex = 0;
             // 
@@ -167,7 +172,7 @@
             this.chkZustimmungSOO.Name = "chkZustimmungSOO";
             this.chkZustimmungSOO.Size = new System.Drawing.Size(284, 16);
             this.chkZustimmungSOO.TabIndex = 128;
-            this.chkZustimmungSOO.Text = "Patient stimmt dem situativem Opt-Out zu";
+            this.chkZustimmungSOO.Text = "Patient stimmt dem situativen Opt-Out zu";
             // 
             // panelBottom
             // 

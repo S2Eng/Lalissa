@@ -35,6 +35,7 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.chkUploadToELGA = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnSaveDocuToELGA = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnClose = new QS2.Desktop.ControlManagment.BaseButton();
@@ -42,6 +43,7 @@
             this.panelCenter = new System.Windows.Forms.Panel();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panelBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkUploadToELGA)).BeginInit();
             this.panelCenter.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +60,7 @@
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.Color.Transparent;
+            this.panelBottom.Controls.Add(this.chkUploadToELGA);
             this.panelBottom.Controls.Add(this.btnAbort);
             this.panelBottom.Controls.Add(this.btnSaveDocuToELGA);
             this.panelBottom.Controls.Add(this.btnClose);
@@ -69,6 +72,17 @@
             this.panelBottom.TabIndex = 1;
             this.panelBottom.Visible = false;
             // 
+            // chkUploadToELGA
+            // 
+            this.chkUploadToELGA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkUploadToELGA.Checked = true;
+            this.chkUploadToELGA.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUploadToELGA.Location = new System.Drawing.Point(374, 10);
+            this.chkUploadToELGA.Name = "chkUploadToELGA";
+            this.chkUploadToELGA.Size = new System.Drawing.Size(111, 18);
+            this.chkUploadToELGA.TabIndex = 134;
+            this.chkUploadToELGA.Text = "ELGA hochladen";
+            // 
             // btnAbort
             // 
             this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -77,7 +91,7 @@
             this.btnAbort.Appearance = appearance1;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(398, 4);
+            this.btnAbort.Location = new System.Drawing.Point(4, 4);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(91, 30);
@@ -170,6 +184,7 @@
             this.Size = new System.Drawing.Size(1051, 806);
             this.VisibleChanged += new System.EventHandler(this.ContCDAViewer_VisibleChanged);
             this.panelBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkUploadToELGA)).EndInit();
             this.panelCenter.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -185,5 +200,6 @@
         public QS2.Desktop.ControlManagment.BaseButton btnClose;
         public QS2.Desktop.ControlManagment.BaseButton btnSaveDocuToELGA;
         public QS2.Desktop.ControlManagment.BaseButton btnAbort;
+        public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkUploadToELGA;
     }
 }

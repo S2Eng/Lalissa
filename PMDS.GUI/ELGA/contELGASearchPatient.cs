@@ -61,7 +61,7 @@ namespace PMDS.GUI.ELGA
                     this._IDAufenthalt = IDAufenthalt;
                     this._AuthUniversalID = AuthUniversalID;
 
-                    this.mainWindow.AcceptButton = this.btnSave;
+                    this.mainWindow.AcceptButton = this.btnSearch;
                     this.mainWindow.CancelButton = this.btnAbort;
 
                     this.btnSearch.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
@@ -214,11 +214,15 @@ namespace PMDS.GUI.ELGA
                 }
                 this.gridFound.Refresh();
 
-
                 string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche nach Soz.Vers.Nr '{0}' durchgeführt");
                 sProt = string.Format(sProt, this.txtSozVersNr.Text.Trim());
                 ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche"), null,
                                                 ELGABusiness.eTypeProt.QueryPatients, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, this._IDAufenthalt, sProt);
+
+                if (this.gridFound.Rows.Count == 0)
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Daten gefunden!", "", MessageBoxButtons.OK);
+                }
 
                 return true;
             }

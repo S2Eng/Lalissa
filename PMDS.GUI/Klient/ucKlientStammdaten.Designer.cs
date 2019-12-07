@@ -3334,7 +3334,7 @@ namespace PMDS.GUI
             ultraTab10.Text = "Verordnungen";
             ultraTab11.Key = "ELGA";
             ultraTab11.TabPage = this.ultraTabPageControl10;
-            ultraTab11.Text = "Elga";
+            ultraTab11.Text = "ELGA";
             this.tabStammdaten.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab4,

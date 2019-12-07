@@ -150,10 +150,11 @@ namespace PMDS.GUI.ELGA.ManageSettings
                     }
                     else
                     {
-                        if (this.txtELGAPwd.Text.Trim().Length < 2)
+                        int iMinLength = (ENV.adminSecure ? 5 : 2);
+                        if (this.txtELGAPwd.Text.Trim().Length < iMinLength)
                         {
                             this.errorProvider1.SetError(this.txtELGAPwd, "Error");
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Für das Passwort sind mindestens 5 Zeichen erforderlich!", "", MessageBoxButtons.OK);
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Für das Passwort sind mindestens " + iMinLength.ToString() + " Zeichen erforderlich!", "", MessageBoxButtons.OK);
                             return false;
                         }
                         else

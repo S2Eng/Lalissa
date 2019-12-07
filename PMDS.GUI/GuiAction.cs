@@ -183,7 +183,8 @@ namespace PMDS.GUI
                     try
                     {
                         ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                        bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked);
+                        bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked,
+                          (Guid)ent.ucEntlassung1.cbEinrichtung.Value);
                     }
                     catch (Exception ex3)
                     {

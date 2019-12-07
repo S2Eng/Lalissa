@@ -118,10 +118,11 @@ namespace PMDS.GUI.ELGA
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neues ELGA-Passwort: Eingabe erforderlich!", "", MessageBoxButtons.OK);
                         return false;
                     }
-                    if (this.txtELGAPwdNew.Text.Trim().Length < 5)
+                    int iMinLength = (ENV.adminSecure ? 5 : 2);
+                    if (this.txtELGAPwdNew.Text.Trim().Length < iMinLength)
                     {
                         this.errorProvider1.SetError(this.txtELGAPwdNew, "Error");
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neues ELGA-Passwort: Das neue Passwort muss mindestens 5 Zeichen lang sein!", "", MessageBoxButtons.OK);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Neues ELGA-Passwort: Das neue Passwort muss mindestens " + iMinLength.ToString() + " Zeichen lang sein!", "", MessageBoxButtons.OK);
                         return false;
                     }
                     if (this.txtELGAPwdNewWdhlg.Text.Trim() == "")
