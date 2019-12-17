@@ -614,6 +614,12 @@ namespace PMDS.DB
                 ITEM[0].Solldauer = r.IsDauerNull() ? 0 : r.Dauer;         //Keine Unterscheidung mehr zwischen uwischen Soll und Plan 
                 
             }
+            else if (ITEM[0].EintragsTyp == (int) PflegeEintragTyp.UNEXP_MASSNAHME && ENV.BERUFID != null)
+            {
+                ITEM[0].IDPflegePlanBerufsstand = ENV.BERUFID;
+                ITEM[0].IDSollberufsstand = ENV.BERUFID;
+            }
+
 
 
             PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();

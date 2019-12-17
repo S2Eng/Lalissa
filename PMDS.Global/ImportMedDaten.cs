@@ -171,6 +171,7 @@ namespace PMDS.Global
                                 rNewMedikmant.Bezeichnung = this.getVar(ref vars.Bezeichnung, line);
                                 rNewMedikmant.Packungsgroesse = System.Convert.ToDouble(this.getVar(ref vars.Packungsgroesse, line));
                                 rNewMedikmant.Erstattungscode = this.getVar(ref vars.Erstattungscode, line);
+                                rNewMedikmant.Packungsanzahl = 1;
 
                                 if (TranslateELGA)
                                     rNewMedikmant.Packungseinheit = dictMEH[this.getVar(ref vars.Packungseinheit, line)];

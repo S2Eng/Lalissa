@@ -451,6 +451,8 @@ namespace PMDS.GUI
 
                 if (res == DialogResult.OK)
                 {
+                    if (row.Packungsanzahl == 0)
+                        row.Packungsanzahl = 1;
                     REZEPTEINTRAEGE.Rows.Add(row);
                     SetActiveRow(row.ID);
                     InitDosierung(dgEintraege.ActiveRow);
