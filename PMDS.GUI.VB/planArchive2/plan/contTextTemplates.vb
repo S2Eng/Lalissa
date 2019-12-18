@@ -196,16 +196,19 @@ Public Class contTextTemplates
             If Not Me.validate() Then Return False
             If Not Me.ContTextTemplateFiles1.validate() Then Return False
 
-            rAutoDocu.Betreff = Me.txtBetreff.Text.Trim()
-            rAutoDocu.An = Me.txtMailAn.Text.Trim()
-            rAutoDocu.CC = Me.txtMailCC.Text.Trim()
-            rAutoDocu.BCC = Me.txtMailBCC.Text.Trim()
+            If Not IsNothing(rAutoDocu) Then
+                rAutoDocu.Betreff = Me.txtBetreff.Text.Trim()
+                rAutoDocu.An = Me.txtMailAn.Text.Trim()
+                rAutoDocu.CC = Me.txtMailCC.Text.Trim()
+                rAutoDocu.BCC = Me.txtMailBCC.Text.Trim()
 
-            Me.rTextTemplateSelected.lstIDPatienten = Me.contSelectPatienten.getDataColl()
-            Me.rTextTemplateSelected.lstIDBenutzer = Me.contSelectBenutzer.getDataColl()
+                Me.rTextTemplateSelected.lstIDPatienten = Me.contSelectPatienten.getDataColl()
+                Me.rTextTemplateSelected.lstIDBenutzer = Me.contSelectBenutzer.getDataColl()
 
-            Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
-            Me.rTextTemplateSelected.lstCategories = Me.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
+                Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
+                Me.rTextTemplateSelected.lstCategories = Me.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
+            End If
+
 
             Me.CompAutoDocu1.daTextTemplates.Update(Me.DsAutoDocu1.tblTextTemplates)
             Me.ContTextTemplateFiles1.saveData()
