@@ -98,6 +98,7 @@ Public Class contPlanungData
         DekursEntwurfErstellenAls = 2
         ErledigtSetzenUndDekursErstellen = 3
         ErledigtSetzen = 4
+        StorniertSetzen = 5
     End Enum
 
 
@@ -142,6 +143,7 @@ Public Class contPlanungData
     Friend WithEvents TermineErledigenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
     Friend WithEvents ListeLeerenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TermineStornierenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PanelKalender As System.Windows.Forms.Panel
 
 
@@ -285,6 +287,7 @@ Public Class contPlanungData
         Me.ContextMenuStripNeu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TermineErledigenUndDekursSchreibenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TermineErledigenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TermineStornierenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EMailsSendenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.LöschenToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -316,9 +319,7 @@ Public Class contPlanungData
         Me._PanelKalender_Toolbars_Dock_Area_Top = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me.PanelAnzeige = New System.Windows.Forms.Panel()
         Me.PanelEditorToWork = New System.Windows.Forms.Panel()
-        Dim currentCultureInfo As System.Globalization.CultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture
         Me.TextControlToWork = New TXTextControl.TextControl()
-        System.Threading.Thread.CurrentThread.CurrentCulture = currentCultureInfo
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.PanelBody = New System.Windows.Forms.Panel()
         Me.PanelTxtEditor = New System.Windows.Forms.Panel()
@@ -377,10 +378,6 @@ Public Class contPlanungData
         Me.ultraMonth.VisibleWeeks = 4
         Me.ultraMonth.WeekHeaderDisplayStyle = Infragistics.Win.UltraWinSchedule.WeekHeaderDisplayStyle.WeekNumber
         '
-        'UltraCalendarInfo
-        '
-        Me.UltraCalendarInfo.WeekRule = System.Globalization.CalendarWeekRule.FirstFourDayWeek
-        '
         'UltraCalendarLook
         '
         Me.UltraCalendarLook.ViewStyle = Infragistics.Win.UltraWinSchedule.ViewStyle.Office2007
@@ -388,9 +385,9 @@ Public Class contPlanungData
         'ContextMenuStripNeu
         '
         Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.TermineErledigenToolStripMenuItem, Me.EMailsSendenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
+        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.TermineErledigenToolStripMenuItem, Me.TermineStornierenToolStripMenuItem, Me.EMailsSendenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
         Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
-        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(292, 226)
+        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(292, 270)
         '
         'TermineErledigenUndDekursSchreibenToolStripMenuItem
         '
@@ -405,6 +402,13 @@ Public Class contPlanungData
         Me.TermineErledigenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
         Me.TermineErledigenToolStripMenuItem.Tag = "ResID.TermineErledigen"
         Me.TermineErledigenToolStripMenuItem.Text = "Termine erledigen"
+        '
+        'TermineStornierenToolStripMenuItem
+        '
+        Me.TermineStornierenToolStripMenuItem.Name = "TermineStornierenToolStripMenuItem"
+        Me.TermineStornierenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.TermineStornierenToolStripMenuItem.Tag = "ResID.TermineStornieren"
+        Me.TermineStornierenToolStripMenuItem.Text = "Termine stornieren"
         '
         'EMailsSendenToolStripMenuItem
         '
@@ -531,31 +535,39 @@ Public Class contPlanungData
         Appearance1.BackColor2 = System.Drawing.Color.White
         Me.gridPlans.DisplayLayout.Appearance = Appearance1
         UltraGridColumn24.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn24.Header.Editor = Nothing
         UltraGridColumn24.Header.VisiblePosition = 10
         UltraGridColumn24.Width = 412
         UltraGridColumn25.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn25.Header.Caption = "Beginnt am"
+        UltraGridColumn25.Header.Editor = Nothing
         UltraGridColumn25.Header.VisiblePosition = 3
         UltraGridColumn25.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime
         UltraGridColumn25.Width = 111
         UltraGridColumn26.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn26.Header.Caption = "Fällig am"
+        UltraGridColumn26.Header.Editor = Nothing
         UltraGridColumn26.Header.VisiblePosition = 4
         UltraGridColumn26.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTimeWithoutDropDown
         UltraGridColumn26.Width = 111
         UltraGridColumn27.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn27.Header.Caption = "Art"
+        UltraGridColumn27.Header.Editor = Nothing
         UltraGridColumn27.Header.VisiblePosition = 28
         UltraGridColumn27.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList
         UltraGridColumn27.Width = 154
         UltraGridColumn28.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn28.Header.Editor = Nothing
         UltraGridColumn28.Header.VisiblePosition = 32
         UltraGridColumn29.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn29.Header.Editor = Nothing
         UltraGridColumn29.Header.VisiblePosition = 13
         UltraGridColumn30.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn30.Header.Editor = Nothing
         UltraGridColumn30.Header.VisiblePosition = 14
         UltraGridColumn30.Hidden = True
         UltraGridColumn31.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn31.Header.Editor = Nothing
         UltraGridColumn31.Header.VisiblePosition = 15
         UltraGridColumn31.Hidden = True
         UltraGridColumn32.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
@@ -564,147 +576,204 @@ Public Class contPlanungData
         Appearance3.TextHAlignAsString = "Left"
         UltraGridColumn32.Header.Appearance = Appearance3
         UltraGridColumn32.Header.Caption = "An (E-Mail Adresse)"
+        UltraGridColumn32.Header.Editor = Nothing
         UltraGridColumn32.Header.VisiblePosition = 8
         UltraGridColumn32.Width = 187
         UltraGridColumn33.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn33.Header.Editor = Nothing
         UltraGridColumn33.Header.VisiblePosition = 16
         UltraGridColumn33.Hidden = True
         UltraGridColumn34.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn34.Header.Editor = Nothing
         UltraGridColumn34.Header.VisiblePosition = 17
         UltraGridColumn34.Hidden = True
         UltraGridColumn36.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
         UltraGridColumn36.Header.Caption = "An Sachb."
+        UltraGridColumn36.Header.Editor = Nothing
         UltraGridColumn36.Header.VisiblePosition = 11
         UltraGridColumn36.Width = 140
         UltraGridColumn37.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
         UltraGridColumn37.Format = ""
         UltraGridColumn37.Header.Caption = "Gesendet am"
+        UltraGridColumn37.Header.Editor = Nothing
         UltraGridColumn37.Header.VisiblePosition = 6
         UltraGridColumn37.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTimeWithoutDropDown
         UltraGridColumn37.Width = 107
         UltraGridColumn38.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn38.Header.Editor = Nothing
         UltraGridColumn38.Header.VisiblePosition = 18
         UltraGridColumn38.Hidden = True
         UltraGridColumn39.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn39.Header.Editor = Nothing
         UltraGridColumn39.Header.VisiblePosition = 19
         UltraGridColumn39.Hidden = True
         UltraGridColumn40.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
         UltraGridColumn40.Header.Caption = "Wichtig"
+        UltraGridColumn40.Header.Editor = Nothing
         UltraGridColumn40.Header.VisiblePosition = 20
         UltraGridColumn41.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn41.Header.Editor = Nothing
         UltraGridColumn41.Header.VisiblePosition = 21
         UltraGridColumn41.Hidden = True
         UltraGridColumn81.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
         UltraGridColumn81.Header.Caption = "Erstellt Von"
+        UltraGridColumn81.Header.Editor = Nothing
         UltraGridColumn81.Header.VisiblePosition = 33
         UltraGridColumn82.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
         UltraGridColumn82.Format = ""
         UltraGridColumn82.Header.Caption = "Erstellt am"
+        UltraGridColumn82.Header.Editor = Nothing
         UltraGridColumn82.Header.VisiblePosition = 9
         UltraGridColumn82.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTimeWithoutDropDown
         UltraGridColumn82.Width = 110
         UltraGridColumn83.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn83.Header.Editor = Nothing
         UltraGridColumn83.Header.VisiblePosition = 22
         UltraGridColumn83.Hidden = True
         UltraGridColumn84.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn84.Header.Editor = Nothing
         UltraGridColumn84.Header.VisiblePosition = 23
         UltraGridColumn84.Hidden = True
         UltraGridColumn85.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn85.Header.Caption = "Fortschritt"
+        UltraGridColumn85.Header.Editor = Nothing
         UltraGridColumn85.Header.VisiblePosition = 24
         UltraGridColumn85.Width = 148
         UltraGridColumn86.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn86.Header.Caption = "Typ"
+        UltraGridColumn86.Header.Editor = Nothing
         UltraGridColumn86.Header.VisiblePosition = 25
         UltraGridColumn86.Hidden = True
         UltraGridColumn86.Width = 148
         UltraGridColumn87.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn87.Header.Caption = "Kom.Status"
+        UltraGridColumn87.Header.Editor = Nothing
         UltraGridColumn87.Header.VisiblePosition = 26
         UltraGridColumn87.Width = 141
         UltraGridColumn88.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn88.Header.Editor = Nothing
         UltraGridColumn88.Header.VisiblePosition = 34
         UltraGridColumn88.Hidden = True
         UltraGridColumn89.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn89.Header.Editor = Nothing
         UltraGridColumn89.Header.VisiblePosition = 35
         UltraGridColumn89.Hidden = True
         UltraGridColumn90.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn90.Header.Caption = "Anz. Beziehungen"
+        UltraGridColumn90.Header.Editor = Nothing
         UltraGridColumn90.Header.VisiblePosition = 27
         UltraGridColumn91.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn91.Header.Editor = Nothing
         UltraGridColumn91.Header.VisiblePosition = 36
         UltraGridColumn91.Hidden = True
         UltraGridColumn92.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn92.Header.Caption = "Mail Bcc"
+        UltraGridColumn92.Header.Editor = Nothing
         UltraGridColumn92.Header.VisiblePosition = 12
         UltraGridColumn92.Hidden = True
         UltraGridColumn93.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn93.Header.Editor = Nothing
         UltraGridColumn93.Header.VisiblePosition = 37
         UltraGridColumn93.Hidden = True
         UltraGridColumn94.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn94.Header.Caption = "E-Mail von"
+        UltraGridColumn94.Header.Editor = Nothing
         UltraGridColumn94.Header.VisiblePosition = 7
         UltraGridColumn94.Width = 205
         UltraGridColumn95.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn95.Header.Caption = "Gelesen"
+        UltraGridColumn95.Header.Editor = Nothing
         UltraGridColumn95.Header.VisiblePosition = 0
         UltraGridColumn95.Width = 51
         UltraGridColumn96.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn96.Format = "dd.MM.yyyy HH:mm:ss"
         UltraGridColumn96.Header.Caption = "Empfangen Am"
+        UltraGridColumn96.Header.Editor = Nothing
         UltraGridColumn96.Header.VisiblePosition = 5
         UltraGridColumn96.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTimeWithoutDropDown
         UltraGridColumn96.Width = 154
         UltraGridColumn97.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn97.Header.Editor = Nothing
         UltraGridColumn97.Header.VisiblePosition = 38
         UltraGridColumn97.Hidden = True
         UltraGridColumn98.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn98.Header.Caption = ""
+        UltraGridColumn98.Header.Editor = Nothing
         UltraGridColumn98.Header.VisiblePosition = 1
         UltraGridColumn98.Width = 20
         UltraGridColumn99.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn99.Header.Editor = Nothing
         UltraGridColumn99.Header.VisiblePosition = 39
         UltraGridColumn99.Hidden = True
         UltraGridColumn100.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn100.Header.Editor = Nothing
         UltraGridColumn100.Header.VisiblePosition = 40
         UltraGridColumn100.Hidden = True
         UltraGridColumn101.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn101.Header.Caption = "Besitzer"
+        UltraGridColumn101.Header.Editor = Nothing
         UltraGridColumn101.Header.VisiblePosition = 2
         UltraGridColumn101.Width = 56
         UltraGridColumn102.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn102.Header.Editor = Nothing
         UltraGridColumn102.Header.VisiblePosition = 41
         UltraGridColumn102.Hidden = True
         UltraGridColumn103.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
+        UltraGridColumn103.Header.Editor = Nothing
         UltraGridColumn103.Header.VisiblePosition = 31
         UltraGridColumn103.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList
         UltraGridColumn103.Width = 296
+        UltraGridColumn104.Header.Editor = Nothing
         UltraGridColumn104.Header.VisiblePosition = 42
+        UltraGridColumn105.Header.Editor = Nothing
         UltraGridColumn105.Header.VisiblePosition = 43
+        UltraGridColumn106.Header.Editor = Nothing
         UltraGridColumn106.Header.VisiblePosition = 44
+        UltraGridColumn107.Header.Editor = Nothing
         UltraGridColumn107.Header.VisiblePosition = 45
+        UltraGridColumn108.Header.Editor = Nothing
         UltraGridColumn108.Header.VisiblePosition = 46
+        UltraGridColumn109.Header.Editor = Nothing
         UltraGridColumn109.Header.VisiblePosition = 30
         UltraGridColumn109.Width = 162
+        UltraGridColumn110.Header.Editor = Nothing
         UltraGridColumn110.Header.VisiblePosition = 29
         UltraGridColumn110.Width = 248
+        UltraGridColumn111.Header.Editor = Nothing
         UltraGridColumn111.Header.VisiblePosition = 47
+        UltraGridColumn112.Header.Editor = Nothing
         UltraGridColumn112.Header.VisiblePosition = 48
+        UltraGridColumn113.Header.Editor = Nothing
         UltraGridColumn113.Header.VisiblePosition = 49
+        UltraGridColumn114.Header.Editor = Nothing
         UltraGridColumn114.Header.VisiblePosition = 50
+        UltraGridColumn115.Header.Editor = Nothing
         UltraGridColumn115.Header.VisiblePosition = 51
+        UltraGridColumn116.Header.Editor = Nothing
         UltraGridColumn116.Header.VisiblePosition = 52
+        UltraGridColumn117.Header.Editor = Nothing
         UltraGridColumn117.Header.VisiblePosition = 53
+        UltraGridColumn118.Header.Editor = Nothing
         UltraGridColumn118.Header.VisiblePosition = 54
+        UltraGridColumn119.Header.Editor = Nothing
         UltraGridColumn119.Header.VisiblePosition = 55
+        UltraGridColumn120.Header.Editor = Nothing
         UltraGridColumn120.Header.VisiblePosition = 56
+        UltraGridColumn121.Header.Editor = Nothing
         UltraGridColumn121.Header.VisiblePosition = 57
+        UltraGridColumn122.Header.Editor = Nothing
         UltraGridColumn122.Header.VisiblePosition = 58
+        UltraGridColumn123.Header.Editor = Nothing
         UltraGridColumn123.Header.VisiblePosition = 59
+        UltraGridColumn124.Header.Editor = Nothing
         UltraGridColumn124.Header.VisiblePosition = 60
+        UltraGridColumn125.Header.Editor = Nothing
         UltraGridColumn125.Header.VisiblePosition = 61
+        UltraGridColumn126.Header.Editor = Nothing
         UltraGridColumn126.Header.VisiblePosition = 62
+        UltraGridColumn1.Header.Editor = Nothing
         UltraGridColumn1.Header.VisiblePosition = 63
+        UltraGridColumn2.Header.Editor = Nothing
         UltraGridColumn2.Header.VisiblePosition = 64
         UltraGridBand1.Columns.AddRange(New Object() {UltraGridColumn24, UltraGridColumn25, UltraGridColumn26, UltraGridColumn27, UltraGridColumn28, UltraGridColumn29, UltraGridColumn30, UltraGridColumn31, UltraGridColumn32, UltraGridColumn33, UltraGridColumn34, UltraGridColumn36, UltraGridColumn37, UltraGridColumn38, UltraGridColumn39, UltraGridColumn40, UltraGridColumn41, UltraGridColumn81, UltraGridColumn82, UltraGridColumn83, UltraGridColumn84, UltraGridColumn85, UltraGridColumn86, UltraGridColumn87, UltraGridColumn88, UltraGridColumn89, UltraGridColumn90, UltraGridColumn91, UltraGridColumn92, UltraGridColumn93, UltraGridColumn94, UltraGridColumn95, UltraGridColumn96, UltraGridColumn97, UltraGridColumn98, UltraGridColumn99, UltraGridColumn100, UltraGridColumn101, UltraGridColumn102, UltraGridColumn103, UltraGridColumn104, UltraGridColumn105, UltraGridColumn106, UltraGridColumn107, UltraGridColumn108, UltraGridColumn109, UltraGridColumn110, UltraGridColumn111, UltraGridColumn112, UltraGridColumn113, UltraGridColumn114, UltraGridColumn115, UltraGridColumn116, UltraGridColumn117, UltraGridColumn118, UltraGridColumn119, UltraGridColumn120, UltraGridColumn121, UltraGridColumn122, UltraGridColumn123, UltraGridColumn124, UltraGridColumn125, UltraGridColumn126, UltraGridColumn1, UltraGridColumn2})
         Me.gridPlans.DisplayLayout.BandsSerializer.Add(UltraGridBand1)
@@ -822,7 +891,7 @@ Public Class contPlanungData
         Me.ultraMonthMulti.CalendarLook = Me.UltraCalendarLook
         Me.ultraMonthMulti.ContextMenuStrip = Me.ContextMenuStripNeu
         Me.ultraMonthMulti.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ultraMonthMulti.Location = New System.Drawing.Point(0, 23)
+        Me.ultraMonthMulti.Location = New System.Drawing.Point(0, 25)
         Me.ultraMonthMulti.MonthDimensions = New System.Drawing.Size(1, 4)
         Me.ultraMonthMulti.Name = "ultraMonthMulti"
         Me.ultraMonthMulti.Size = New System.Drawing.Size(142, 496)
@@ -890,9 +959,9 @@ Public Class contPlanungData
         Me._PanelKalender_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.Transparent
         Me._PanelKalender_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
         Me._PanelKalender_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelKalender_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 23)
+        Me._PanelKalender_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 25)
         Me._PanelKalender_Toolbars_Dock_Area_Left.Name = "_PanelKalender_Toolbars_Dock_Area_Left"
-        Me._PanelKalender_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 527)
+        Me._PanelKalender_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 525)
         Me._PanelKalender_Toolbars_Dock_Area_Left.ToolbarsManager = Me.UToolbarsManagerKalender
         '
         'UToolbarsManagerKalender
@@ -923,9 +992,9 @@ Public Class contPlanungData
         Me._PanelKalender_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.Transparent
         Me._PanelKalender_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
         Me._PanelKalender_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelKalender_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(148, 23)
+        Me._PanelKalender_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(148, 25)
         Me._PanelKalender_Toolbars_Dock_Area_Right.Name = "_PanelKalender_Toolbars_Dock_Area_Right"
-        Me._PanelKalender_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 527)
+        Me._PanelKalender_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 525)
         Me._PanelKalender_Toolbars_Dock_Area_Right.ToolbarsManager = Me.UToolbarsManagerKalender
         '
         '_PanelKalender_Toolbars_Dock_Area_Bottom
@@ -947,7 +1016,7 @@ Public Class contPlanungData
         Me._PanelKalender_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
         Me._PanelKalender_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
         Me._PanelKalender_Toolbars_Dock_Area_Top.Name = "_PanelKalender_Toolbars_Dock_Area_Top"
-        Me._PanelKalender_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(148, 23)
+        Me._PanelKalender_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(148, 25)
         Me._PanelKalender_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UToolbarsManagerKalender
         '
         'PanelAnzeige
@@ -982,6 +1051,7 @@ Public Class contPlanungData
         Me.TextControlToWork.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.TextControlToWork.Size = New System.Drawing.Size(26, 18)
         Me.TextControlToWork.TabIndex = 617
+        Me.TextControlToWork.UserNames = Nothing
         '
         'SplitContainer1
         '
@@ -1499,12 +1569,15 @@ Public Class contPlanungData
 
             Dim sqlErledigt As String = ""
             Dim sqlPriorität As String = ""
-            Dim sStatusTmp As String = Me.mainWindow.getStatus()
-            If sStatusTmp.Trim().ToLower().Equals(("Erledigt").Trim().ToLower()) Then
-                sqlErledigt = " planObject_1.Status='Erledigt' "
-            ElseIf sStatusTmp.Trim().ToLower().Equals(("Offen").Trim().ToLower()) Then
-                sqlErledigt = " planObject_1.Status<>'Erledigt' "
-            End If
+
+            Select Case Me.mainWindow.getStatus()
+                Case "Erledigt"
+                    sqlErledigt = " planObject_1.Status='Erledigt' "
+                Case "Storniert"
+                    sqlErledigt = " planObject_1.Status='Storniert' "
+                Case "Offen"
+                    sqlErledigt = " (planObject_1.Status<>'Erledigt' AND planObject_1.Status<>'Storniert') "
+            End Select
 
             Dim sqlEMailGesendet As String = ""
             If Me.mainWindow.getStatMail = General.eAuswahlStatusMail.gesendet Then
@@ -1886,7 +1959,9 @@ Public Class contPlanungData
                 Dim doEditor1 As New QS2.Desktop.Txteditor.doEditor()
 
                 For Each cSelEntries1 As cSelEntries In selectedApp
-                    If TypeDekursErstellen = eTypeDekursErstellen.DekursErstellen Or TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellen Or TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellenAls Or
+                    If TypeDekursErstellen = eTypeDekursErstellen.DekursErstellen Or
+                        TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellen Or
+                        TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellenAls Or
                         TypeDekursErstellen = eTypeDekursErstellen.ErledigtSetzenUndDekursErstellen Then
 
                         If Not cSelEntries1.rPlanSel.IsIDPatientNull() AndAlso (Not cSelEntries1.rPlanSel.IDPatient.Equals(System.Guid.Empty)) Then
@@ -1926,6 +2001,7 @@ Public Class contPlanungData
                             End If
                             anz += 1
                         End If
+
                     ElseIf TypeDekursErstellen = eTypeDekursErstellen.ErledigtSetzen Then
                         If cSelEntries1.rPlanSel.IsIDPatientNull() Then
                             Me.compPlan1.updatePlanStatus(cSelEntries1.rPlanSel.ID, "Erledigt")
@@ -1933,11 +2009,21 @@ Public Class contPlanungData
                             Me.compPlan1.updatePlanObjectStatus(cSelEntries1.rPlanSel.ID, cSelEntries1.rPlanSel.IDPatient, "Erledigt")
                         End If
                         anz += 1
+
+                    ElseIf TypeDekursErstellen = eTypeDekursErstellen.StorniertSetzen Then
+                        If cSelEntries1.rPlanSel.IsIDPatientNull() Then
+                            Me.compPlan1.updatePlanStatus(cSelEntries1.rPlanSel.ID, "Storniert")
+                        Else
+                            Me.compPlan1.updatePlanObjectStatus(cSelEntries1.rPlanSel.ID, cSelEntries1.rPlanSel.IDPatient, "Storniert")
+                        End If
+                        anz += 1
                     End If
                 Next
 
-                If TypeDekursErstellen = eTypeDekursErstellen.DekursErstellen Or TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellen Or TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellenAls Or
-                   TypeDekursErstellen = eTypeDekursErstellen.ErledigtSetzenUndDekursErstellen Then
+                If TypeDekursErstellen = eTypeDekursErstellen.DekursErstellen Or
+                    TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellen Or
+                    TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellenAls Or
+                    TypeDekursErstellen = eTypeDekursErstellen.ErledigtSetzenUndDekursErstellen Then
 
                     If lstPlansSelected.Count > 0 Then
                         Dim callMainFctPlan As New PMDS.Global.ENV.eCallMainFctPlan()
@@ -1947,7 +2033,8 @@ Public Class contPlanungData
                             Dekursinfo.Txt = InfoPlan.Txt.Trim()
                             callMainFctPlan.lstDekursInfo.Add(Dekursinfo)
                         Next
-                        If TypeDekursErstellen = eTypeDekursErstellen.DekursErstellen Or TypeDekursErstellen = eTypeDekursErstellen.ErledigtSetzenUndDekursErstellen Then
+                        If TypeDekursErstellen = eTypeDekursErstellen.DekursErstellen Or
+                            TypeDekursErstellen = eTypeDekursErstellen.ErledigtSetzenUndDekursErstellen Then
                             Me.gen.callMainFctPMDS([Global].ENV.eFctCallMainFctPlan.Dekurs, callMainFctPlan)
 
                         ElseIf TypeDekursErstellen = eTypeDekursErstellen.DekursEntwurfErstellen Then
@@ -1973,6 +2060,11 @@ Public Class contPlanungData
                     doUI.doMessageBoxTranslated(strText, "", "!")
                     Me.search(True, False, True, False)
 
+                ElseIf TypeDekursErstellen = eTypeDekursErstellen.StorniertSetzen Then
+                    Dim strText As String = doUI.getRes("ActivityPerformed2")
+                    strText = String.Format(strText, anz.ToString())
+                    doUI.doMessageBoxTranslated(strText, "", "!")
+                    Me.search(True, False, True, False)
                 End If
             Else
                 If withMsgBox Then
@@ -3101,6 +3193,19 @@ Public Class contPlanungData
         Try
             Me.Cursor = Cursors.WaitCursor
             Me.DekursErstellen(True, eTypeDekursErstellen.ErledigtSetzen)
+            'Me.doAction(eTypAction.DekursErstellen, True)
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub TermineStornierenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TermineStornierenToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.DekursErstellen(True, eTypeDekursErstellen.StorniertSetzen)
             'Me.doAction(eTypAction.DekursErstellen, True)
 
         Catch ex As Exception

@@ -107,6 +107,7 @@
             this.chkGegenzeichnen = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lblWichtigFür = new QS2.Desktop.ControlManagment.BaseLabel();
             this.chkHAGPflichtigJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.dsMedikament1 = new PMDS.Global.db.Patient.dsMedikament();
             this.cbImportant = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.ucPatientAerzte1 = new PMDS.GUI.ucPatientAerzte();
             this.cbPackungsEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
@@ -117,7 +118,6 @@
             this.cmbEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.ucStandardZeiten1 = new PMDS.GUI.ucStandardZeiten();
             this.ucWochenTage21 = new PMDS.GUI.ucWochenTage2();
-            this.dsMedikament1 = new PMDS.Global.db.Patient.dsMedikament();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opWiederholungstyp)).BeginInit();
@@ -133,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboAerzteAbgesetzt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkGegenzeichnen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkHAGPflichtigJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbImportant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbPackungsEinheit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userCombo1)).BeginInit();
@@ -140,7 +141,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVerschreibungVon
@@ -156,27 +156,31 @@
             // 
             // dtpAbgebenVon
             // 
+            this.dtpAbgebenVon.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
             this.dtpAbgebenVon.DateTime = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
             this.dtpAbgebenVon.FormatString = "";
             this.dtpAbgebenVon.Location = new System.Drawing.Point(116, 31);
-            this.dtpAbgebenVon.MaskInput = "";
+            this.dtpAbgebenVon.MaskInput = "dd.mm.yyyy hh:mm:ss";
+            this.dtpAbgebenVon.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.dtpAbgebenVon.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.dtpAbgebenVon.Name = "dtpAbgebenVon";
             this.dtpAbgebenVon.ownFormat = "";
             this.dtpAbgebenVon.ownMaskInput = "";
-            this.dtpAbgebenVon.Size = new System.Drawing.Size(94, 21);
+            this.dtpAbgebenVon.Size = new System.Drawing.Size(145, 21);
             this.dtpAbgebenVon.TabIndex = 1;
             this.dtpAbgebenVon.Value = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
             // 
             // dtpAbgebenBis
             // 
+            this.dtpAbgebenBis.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
             this.dtpAbgebenBis.DateTime = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpAbgebenBis.FormatString = "";
             this.dtpAbgebenBis.Location = new System.Drawing.Point(115, 58);
-            this.dtpAbgebenBis.MaskInput = "";
+            this.dtpAbgebenBis.MaskInput = "dd.mm.yyyy hh:mm:ss";
             this.dtpAbgebenBis.Name = "dtpAbgebenBis";
             this.dtpAbgebenBis.ownFormat = "";
             this.dtpAbgebenBis.ownMaskInput = "";
-            this.dtpAbgebenBis.Size = new System.Drawing.Size(94, 21);
+            this.dtpAbgebenBis.Size = new System.Drawing.Size(146, 21);
             this.dtpAbgebenBis.TabIndex = 4;
             this.dtpAbgebenBis.Value = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             // 
@@ -561,20 +565,22 @@
             // lblTagesbeginn
             // 
             this.lblTagesbeginn.AutoSize = true;
-            this.lblTagesbeginn.Location = new System.Drawing.Point(212, 35);
+            this.lblTagesbeginn.Location = new System.Drawing.Point(596, 226);
             this.lblTagesbeginn.Name = "lblTagesbeginn";
             this.lblTagesbeginn.Size = new System.Drawing.Size(54, 13);
             this.lblTagesbeginn.TabIndex = 192;
             this.lblTagesbeginn.Text = "00:00 Uhr";
+            this.lblTagesbeginn.Visible = false;
             // 
             // lblTagesende
             // 
             this.lblTagesende.AutoSize = true;
-            this.lblTagesende.Location = new System.Drawing.Point(211, 62);
+            this.lblTagesende.Location = new System.Drawing.Point(581, 239);
             this.lblTagesende.Name = "lblTagesende";
             this.lblTagesende.Size = new System.Drawing.Size(69, 13);
             this.lblTagesende.TabIndex = 193;
             this.lblTagesende.Text = "23:59:59 Uhr";
+            this.lblTagesende.Visible = false;
             // 
             // txtMedikament
             // 
@@ -654,6 +660,12 @@
             this.chkHAGPflichtigJN.Size = new System.Drawing.Size(186, 22);
             this.chkHAGPflichtigJN.TabIndex = 119;
             this.chkHAGPflichtigJN.Text = "HAG-Pflichtig JA";
+            // 
+            // dsMedikament1
+            // 
+            this.dsMedikament1.DataSetName = "dsMedikament";
+            this.dsMedikament1.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsMedikament1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cbImportant
             // 
@@ -781,12 +793,6 @@
             this.ucWochenTage21.WOCHENTAGE = 127;
             this.ucWochenTage21.ValueChanged += new System.EventHandler(this.ucWochenTage21_ValueChanged);
             // 
-            // dsMedikament1
-            // 
-            this.dsMedikament1.DataSetName = "dsMedikament";
-            this.dsMedikament1.Locale = new System.Globalization.CultureInfo("de-DE");
-            this.dsMedikament1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // ucRezeptEintrag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -862,6 +868,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboAerzteAbgesetzt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkGegenzeichnen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkHAGPflichtigJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbImportant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbPackungsEinheit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userCombo1)).EndInit();
@@ -869,7 +876,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsMedikament1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

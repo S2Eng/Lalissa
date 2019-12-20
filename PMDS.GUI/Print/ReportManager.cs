@@ -661,21 +661,22 @@ namespace PMDS.Print
 
                 ReportDocument rpt = new ReportDocument();
                 string ReportFile = "";
-                if (Quickbutton.Trim().ToLower().Equals(("ResID.PatientBeginn ").Trim().ToLower()))
+
+                string strCheck = Quickbutton.Trim().ToLower();
+                switch (strCheck)
                 {
-                    ReportFile = ENV.ReportPath + "\\" + "Termine1.rpt";
-                }
-                else if (Quickbutton.Trim().ToLower().Equals(("ResID.PatientKategorie ").Trim().ToLower()))
-                {
-                    ReportFile = ENV.ReportPath + "\\" + "Termine2.rpt";
-                }
-                else if (Quickbutton.Trim().ToLower().Equals(("ResID.KategoriePatient ").Trim().ToLower()))
-                {
-                    ReportFile = ENV.ReportPath + "\\" + "Termine3.rpt";
-                }
-                else if (Quickbutton.Trim().ToLower().Equals(("ResID.Beginn ").Trim().ToLower()))
-                {
-                    ReportFile = ENV.ReportPath + "\\" + "Termine4.rpt";
+                    case "resid.patientbeginn":
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine1.rpt");
+                        break;
+                    case "resid.patientkategorie":
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine2.rpt");
+                        break;
+                    case "resid.kategoriepatient":
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine3.rpt");
+                        break;
+                    default:
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine4.rpt");
+                        break;
                 }
 
                 rpt.Load(ReportFile);

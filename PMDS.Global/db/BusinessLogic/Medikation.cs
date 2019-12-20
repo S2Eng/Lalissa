@@ -25,7 +25,9 @@ namespace PMDS.BusinessLogic
             dsMedikationVonBis.MedikationDataTable dtret = new dsMedikationVonBis.MedikationDataTable();
             foreach (Guid id in IDAufenthalt)
             {
-                dsMedikationVonBis.MedikationDataTable dt = ReadValidEntries(dtvon.Date, dtbis.Date.AddDays(1), id);    // immer 24 Stunden ende lesen
+                //osMed
+                dsMedikationVonBis.MedikationDataTable dt = ReadValidEntries(dtvon, dtbis, id);    // ausgewählten Bereich lesen
+                //dsMedikationVonBis.MedikationDataTable dt = ReadValidEntries(dtvon.Date, dtbis.Date.AddDays(1), id);    // immer 24 Stunden ende lesen
                 SplitAndAdd(ref dt, ref dtret, mode, dtvon, dtbis, id);
             }
             return dtret;
@@ -52,11 +54,23 @@ namespace PMDS.BusinessLogic
         {
             DateTime dt = dtvon;
             List<DateTime> adt = new List<DateTime>();                                      // Liste aller zu verarbeitenden Tage aufbauen
+
+            //os191220
+            int iFullDays = (int)(dtbis - dtvon).TotalDays;
+            for (int i = 0; i <= iFullDays; i++)
+            {
+                if (i == 0)
+                    adt.Add(dt);
+                else
+                    adt.Add(dt.Date.AddDays(i));
+            }
+            /*
             while (dt < dtbis)
             {
                 adt.Add(dt);
                 dt = dt.AddDays(1);
             }
+            */
 
             //lthMedikation
             dsMedikationVonBis.MedikationDataTable dttemp = new dsMedikationVonBis.MedikationDataTable();
@@ -64,7 +78,7 @@ namespace PMDS.BusinessLogic
             {
                 foreach (DateTime dtWork in adt)                                            // Jeden Tag durchgehen
                 {
-                    if (!RandbedingungOK(r, dtWork, mode))                                  // Prüfen ob Ds in das schema passt zB nur MO oder jeden 4ten des Monats etc
+                    if (!RandbedingungOK(r, dtWork, dtbis, mode))                                  // Prüfen ob Ds in das schema passt zB nur MO oder jeden 4ten des Monats etc
                         continue;
                     
                     // Randbedingung ok ==> Datensatz erzeugen je nach herrichten und mode
@@ -74,7 +88,7 @@ namespace PMDS.BusinessLogic
                        )
                         CopyOnly(r, ref dttemp, dtWork);
                     else
-                        Split(r, ref dttemp, dtWork);
+                        Split(r, ref dttemp, dtWork, dtvon, dtbis);
                     
                 }
             }
@@ -168,7 +182,7 @@ namespace PMDS.BusinessLogic
         ///	Alle Werte welche nebeneinander stehen werden nun als eine Zeile dargestellt und der Zeitpunkt 
         /// in Zeitpunkt0 geschrieben (Abgabedatum mit Uhrzeit) 
         /// Abgabe im Dispenser
-        private void Split(dsMedikationVonBis.MedikationRow r, ref dsMedikationVonBis.MedikationDataTable dtret, DateTime dtWork)
+        private void Split(dsMedikationVonBis.MedikationRow r, ref dsMedikationVonBis.MedikationDataTable dtret, DateTime dtWork, DateTime dtvon, DateTime dtbis)
         {
             bool bNuechtern = (r.ZP0 != 0 && r.StandardzeitenJN);
 
@@ -191,23 +205,31 @@ namespace PMDS.BusinessLogic
             int iCount = -1;
             foreach (DateTime dt in al)
             {
+
+                DateTime dtZeitpunkt = new DateTime(dtWork.Year, dtWork.Month, dtWork.Day, dt.Hour, dt.Minute, 0);
                 dsMedikationVonBis.MedikationRow rnew = (dsMedikationVonBis.MedikationRow)dtret.Rows.Add(r.ItemArray);
-                rnew.Zeitpunkt0 = new DateTime(dtWork.Year, dtWork.Month, dtWork.Day, dt.Hour, dt.Minute,0);
-                rnew.SetZeitpunkt1Null();
-                rnew.SetZeitpunkt2Null();
-                rnew.SetZeitpunkt3Null();
-                rnew.SetZeitpunkt4Null();
-                
-                rnew.ZP0 = avalues[++iCount];
-                rnew.ZP1 = 0;
-                rnew.ZP2 = 0;
-                rnew.ZP3 = 0;
-                rnew.ZP4 = 0;
-                
-                rnew.UntertaegigJN      = false;
-                rnew.StandardzeitenJN   = false || bNuechtern;                  // wird benötigt dass die nüchtern Information für die folgeprozesse nicht verloren geht nüchtern == Standardzeiten und ZP0 belegt
-                rnew.MedikationDatum    = dtWork.Date.AddHours(dt.Hour).AddMinutes(dt.Minute);
-                rnew.ZeitenText         = Tools.ToStringFromMediaktionRow(rnew);
+
+                if (rnew.AbzugebenVon <= dtZeitpunkt && dtZeitpunkt  <= rnew.AbzugebenBis)
+                {
+                    rnew.Zeitpunkt0 = dtZeitpunkt;
+                    rnew.SetZeitpunkt1Null();
+                    rnew.SetZeitpunkt2Null();
+                    rnew.SetZeitpunkt3Null();
+                    rnew.SetZeitpunkt4Null();
+
+                    rnew.ZP0 = avalues[++iCount];
+                    rnew.ZP1 = 0;
+                    rnew.ZP2 = 0;
+                    rnew.ZP3 = 0;
+                    rnew.ZP4 = 0;
+
+                    rnew.UntertaegigJN = false;
+                    rnew.StandardzeitenJN = false || bNuechtern;                  // wird benötigt dass die nüchtern Information für die folgeprozesse nicht verloren geht nüchtern == Standardzeiten und ZP0 belegt
+                    rnew.MedikationDatum = dtWork.Date.AddHours(dt.Hour).AddMinutes(dt.Minute);
+                    rnew.ZeitenText = Tools.ToStringFromMediaktionRow(rnew);
+                }
+                else
+                    dtret.Rows.Remove(rnew);
             }
         }
         
@@ -237,13 +259,21 @@ namespace PMDS.BusinessLogic
         ///     "Ärztliche Vorbereitung" wird nicht vorbereitet nur abgegeben
         ///     Herrichten "nein" bedeutet dass das Medikament unmittelbar bei der Abgabe hergerichtet wird (Augentropfen)
         ///     Alles außer Bedarfsmedikamente werden in der GUI gefiltert
-        private bool RandbedingungOK(dsMedikationVonBis.MedikationRow r, DateTime dt, MedikationListenMode mode)
+        private bool RandbedingungOK(dsMedikationVonBis.MedikationRow r, DateTime dt, DateTime dtbis, MedikationListenMode mode)
         {
             if (r.Herrichten == (int)medHerrichten.beiBedarf)
                 return false;
 
-            if (r.AbzugebenVon > dt || r.AbzugebenBis < dt)                         // Verschreibungszeitraum berücksichtigen
+            //Verschreibungszeitraum berücksichtigen
+            //os191202
+            if (r.AbzugebenVon > dtbis || r.AbzugebenBis < dt)
                 return false;
+
+            if (dt.Date == r.AbzugebenVon.Date && dt.TimeOfDay > r.AbzugebenVon.TimeOfDay)
+                return false;
+
+            //if (r.AbzugebenVon > dt || r.AbzugebenBis < dt)                         
+            //    return false;
 
             medWiederholungstypen wtype = (medWiederholungstypen)r.Wiederholungstyp;
             switch (wtype)

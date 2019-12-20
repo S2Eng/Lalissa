@@ -225,7 +225,7 @@ namespace PMDS.GUI
                     _Medikation = new Medikation();
 
                 dgMain.DataMember = "";
-                dgMain.DataSource = _Medikation.GetAlleAufbereiteten(dtpFrom.Value.Date, dtpTo.Value, PMDS.GUI.Medikament.cMedListKlienten._lIDAufenthalt, _mode);
+                dgMain.DataSource = _Medikation.GetAlleAufbereiteten(dtpFrom.Value, dtpTo.Value, PMDS.GUI.Medikament.cMedListKlienten._lIDAufenthalt, _mode);
                
                 RefreshFilter(false);
                 PrepareTimeColumns();

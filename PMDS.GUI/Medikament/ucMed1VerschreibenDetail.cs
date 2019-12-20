@@ -137,8 +137,9 @@ namespace PMDS.GUI
                     DateTime dtbis = (DateTime)r.Cells["AbzugebenBis"].Value;
                     if (dtbis.Year >= 3000)
                         continue;
-                    if (!vl.ValueListItems.Contains(dtbis))
-                        vl.ValueListItems.Add(dtbis, dtbis.ToShortDateString());
+                    //os191220
+                    //if (!vl.ValueListItems.Contains(dtbis))
+                    //    vl.ValueListItems.Add(dtbis, dtbis.ToShortDateString());
                 }
 
             }

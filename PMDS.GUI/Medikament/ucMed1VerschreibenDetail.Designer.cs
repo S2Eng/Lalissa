@@ -339,6 +339,7 @@
             ultraGridColumn55.Header.Caption = "Von";
             ultraGridColumn55.Header.Editor = null;
             ultraGridColumn55.Header.VisiblePosition = 2;
+            ultraGridColumn55.MaskInput = "{date} {time}";
             ultraGridColumn55.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn55.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn55.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(71, 0);
@@ -349,7 +350,7 @@
             ultraGridColumn56.Header.Caption = "Bis";
             ultraGridColumn56.Header.Editor = null;
             ultraGridColumn56.Header.VisiblePosition = 3;
-            ultraGridColumn56.MaskInput = "{LOC}mm/dd/yy";
+            ultraGridColumn56.MaskInput = "{date} {time}";
             ultraGridColumn56.RowLayoutColumnInfo.OriginX = 2;
             ultraGridColumn56.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn56.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(71, 0);

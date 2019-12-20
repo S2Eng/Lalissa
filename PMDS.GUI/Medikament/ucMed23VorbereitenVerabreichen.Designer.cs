@@ -293,7 +293,7 @@ namespace PMDS.GUI
             // 
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.btnTimes.Appearance = appearance2;
-            this.btnTimes.Location = new System.Drawing.Point(154, 19);
+            this.btnTimes.Location = new System.Drawing.Point(159, 18);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.ShowFocusRect = false;
             this.btnTimes.Size = new System.Drawing.Size(21, 20);
@@ -308,7 +308,7 @@ namespace PMDS.GUI
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.Location = new System.Drawing.Point(34, 19);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(116, 20);
+            this.dtpFrom.Size = new System.Drawing.Size(121, 20);
             this.dtpFrom.TabIndex = 0;
             this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
@@ -318,7 +318,7 @@ namespace PMDS.GUI
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.Location = new System.Drawing.Point(34, 42);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(116, 20);
+            this.dtpTo.Size = new System.Drawing.Size(120, 20);
             this.dtpTo.TabIndex = 1;
             this.dtpTo.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
