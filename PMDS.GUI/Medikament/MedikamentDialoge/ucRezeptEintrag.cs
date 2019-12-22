@@ -588,27 +588,51 @@ namespace PMDS.GUI
                 {
                         _bIsStorno = true;
                 }
-                else if ( ((DateTime)dtpAbgebenVon.Value - dtStartAction).TotalSeconds < 0 && r.AbzugebenVon != (DateTime)dtpAbgebenVon.Value)
+                else if ((int)((DateTime)dtpAbgebenVon.Value - dtStartAction).TotalSeconds < 0 && r.AbzugebenVon != (DateTime)dtpAbgebenVon.Value)
                 {
-                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an."); ;
+                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Ändern (von-Datum) nicht erlaubt.");
                     this.errorProvider1.SetError(this.dtpAbgebenVon, sText);
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
                     return false;
                 }
-                else if (((DateTime)dtpAbgebenBis.Value - dtStartAction).TotalSeconds > 0  && r.AbzugebenBis != (DateTime)dtpAbgebenBis.Value && r.AbzugebenBis != new DateTime(3000,1,1,23,59,59))
+                else if ((int)((DateTime)dtpAbgebenBis.Value - dtStartAction).TotalSeconds > 0 && r.AbzugebenBis != (DateTime)dtpAbgebenBis.Value && r.AbzugebenBis != new DateTime(3000,1,1,23,59,59))
                 {
-                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an."); ;
+                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Ändern (bis-Datum) nicht erlaubt.");
                     this.errorProvider1.SetError(this.dtpAbgebenBis, sText);
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
                     return false;
                 }
             }
+
+            if (this.EintragBearbeitungsmodus == BearbeitungsModus.neu)
+            {
+                dsRezeptEintrag.RezeptEintragRow r = RezeptEintrag;
+                if ((int)((DateTime)dtpAbgebenVon.Value - dtStartAction).TotalSeconds < (ENV.RezeptModifyTime * -1))
+                {
+                    string sText = "";
+                    if (ENV.RezeptModifyTime == 0)
+                    {
+                        sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Anordnen (von-Datum) nicht erlaubt.");
+                    }
+                    else                    
+                    {
+                        string sMinDate = dtStartAction.AddSeconds(ENV.RezeptModifyTime * -1).ToString("dd.MM.yyyy HH:mm.ss");
+                        sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Anordnen (von-Datum) nur bis {0} erlaubt.");
+                        sText = string.Format(sText, sMinDate);
+                    }
+
+                    this.errorProvider1.SetError(this.dtpAbgebenVon, sText);
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
+                    return false;
+                }
+            }
+
             /*
             if (this.EintragBearbeitungsmodus == BearbeitungsModus.edit)
             {
                 if (dtpAbgebenVon.Value != null && diff == 1)
                 {
-                    
+
                     if (bRechtStorno && diff == 1 )
                     {
                         _bIsStorno = true;
@@ -945,7 +969,8 @@ namespace PMDS.GUI
 
 
                         txtPackGr.Value = ((dsMedikament.MedikamentRow)t.Rows[0]).Packungsgroesse;
-                        cbPackungsanzahl.Value = ((dsMedikament.MedikamentRow)t.Rows[0]).Packungsanzahl;
+
+                        cbPackungsanzahl.Value = (((dsMedikament.MedikamentRow)t.Rows[0]).Packungsanzahl == 0 ? 1 : ((dsMedikament.MedikamentRow)t.Rows[0]).Packungsanzahl);
                         cbPackungsEinheit.Text = ((dsMedikament.MedikamentRow)t.Rows[0]).Packungseinheit.Trim();
 
                         errorProvider1.Clear();

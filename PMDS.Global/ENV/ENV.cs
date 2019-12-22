@@ -215,6 +215,8 @@ namespace PMDS.Global
         public static bool ShowAufnahmeButton = false;                              // Signalisiert ob der Aufnahmebutton gezeigt werden soll oder nicht
         public static int RezeptDruck = -1;
         public static int RezeptBestellModus = -1;
+        public static uint RezeptModifyTime = 0;
+
 
         public static bool OnlyOneFavoritenComboinPlanung = true;
         public static bool BezugspersonenJN = false;
@@ -1577,6 +1579,11 @@ namespace PMDS.Global
                 stemp = _Log.ConfigFile.GetStringValue("WundverlaufModifyTime");
                 if (stemp.Length > 0)
                     uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.WundverlaufModifyTime);
+
+                stemp = _Log.ConfigFile.GetStringValue("RezeptModifyTime");
+                if (stemp.Length > 0)
+                    uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.RezeptModifyTime);
+
 
 
                 string WCFServiceOnOffTmp = _Log.ConfigFile.GetStringValue("WCFServiceOnOff");

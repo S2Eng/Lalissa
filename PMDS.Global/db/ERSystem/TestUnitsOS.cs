@@ -18,6 +18,12 @@ namespace PMDS.Global.db.ERSystem
 
                 //QS2.Desktop.ControlManagment.ControlManagment.MessageBox("DemoTxt!", "", MessageBoxButtons.OK);
                 //QS2.Desktop.ControlManagment.ControlManagment.getRes("DemoTxt: ");
+                //2019
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Ändern (von-Datum) nicht erlaubt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Ändern (bis-Datum) nicht erlaubt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Anordnen (von-Datum) nicht erlaubt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Anordnen (von-Datum) nur bis {0} erlaubt.");
 
 
             }
