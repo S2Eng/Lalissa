@@ -233,7 +233,7 @@ namespace PMDS.GUI
 
                 if (refreshPicker)
                 {
-                    PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
+                    //PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
                     if (ucHeader.bKlinikChanged)
                     {
                         if (this.contPatientUserPicker1.contSelectPatienten != null)

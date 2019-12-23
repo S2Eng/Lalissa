@@ -816,8 +816,47 @@ namespace PMDS.Global.db.ERSystem
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    PMDS.db.Entities.Patient rPatient = b.getPatientByIDAufenthalt(IDAufenthalt, db);
-                    return showInfoRezeptgebührbefreiungByPat(ref rPatient, ref TitleBack, ref TxtBack, newLineWithBR);
+
+                    var rPatMedDaten = (from p in db.Patient join a in db.Aufenthalt on p.ID equals a.IDPatient
+                                        where a.ID == IDAufenthalt
+                                        select new
+                                        {
+                                            p.ID,
+                                            p.Datenschutz,
+                                            p.DNR,
+                                            p.Palliativ,
+                                            p.KZUeberlebender,
+
+                                            p.RezeptgebuehrbefreiungJN,
+                                            p.RezGebBef_RegoJN,
+                                            p.RezGebBef_RegoAb,
+                                            p.RezGebBef_RegoBis,
+                                            p.RezGebBef_UnbefristetJN,
+                                            p.RezGebBef_BefristetJN,
+                                            p.RezGebBef_BefristetAb,
+                                            p.RezGebBef_BefristetBis,
+                                            p.RezGebBef_WiderrufJN,
+                                            p.RezGebBef_WiderrufGrund,
+                                            p.RezGebBef_SachwalterJN,
+                                            p.RezGebBef_Anmerkung,
+
+                                            p.Geburtsdatum
+                                        }).First();
+
+                    return showInfoRezeptgebührbefreiungByPat(
+                        rPatMedDaten.RezeptgebuehrbefreiungJN,
+                        rPatMedDaten.RezGebBef_RegoJN,
+                        rPatMedDaten.RezGebBef_RegoAb,
+                        rPatMedDaten.RezGebBef_RegoBis,
+                        rPatMedDaten.RezGebBef_UnbefristetJN,
+                        rPatMedDaten.RezGebBef_BefristetJN,
+                        rPatMedDaten.RezGebBef_BefristetAb,
+                        rPatMedDaten.RezGebBef_BefristetBis,
+                        rPatMedDaten.RezGebBef_WiderrufJN,
+                        rPatMedDaten.RezGebBef_WiderrufGrund,
+                        rPatMedDaten.RezGebBef_SachwalterJN,
+                        rPatMedDaten.RezGebBef_Anmerkung, 
+                        ref TitleBack, ref TxtBack, newLineWithBR);
                 }
 
             }
@@ -828,7 +867,20 @@ namespace PMDS.Global.db.ERSystem
         }
 
 
-        public bool showInfoRezeptgebührbefreiungByPat(ref PMDS.db.Entities.Patient rPatient, ref string TitleBack, ref string TxtBack, bool newLineWithBR)
+        public bool showInfoRezeptgebührbefreiungByPat(
+                bool RezeptgebuehrbefreiungJN,
+                bool RezGebBef_RegoJN,
+                DateTime? RezGebBef_RegoAb,
+                DateTime? RezGebBef_RegoBis,
+                bool RezGebBef_UnbefristetJN,
+                bool RezGebBef_BefristetJN,
+                DateTime? RezGebBef_BefristetAb,
+                DateTime? RezGebBef_BefristetBis,
+                bool RezGebBef_WiderrufJN,
+                string RezGebBef_WiderrufGrund,
+                bool RezGebBef_SachwalterJN,
+                string RezGebBef_Anmerkung, 
+                ref string TitleBack, ref string TxtBack, bool newLineWithBR)
         {
             try
             {
@@ -845,55 +897,55 @@ namespace PMDS.Global.db.ERSystem
 
                 string sInfoTxt = "";
 
-                if (rPatient.RezeptgebuehrbefreiungJN)
+                if (RezeptgebuehrbefreiungJN)
                 {
                     sInfoTxt += QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient ist rezeptgebührenbefreit");
 
-                    if (rPatient.RezGebBef_RegoJN)
+                    if (RezGebBef_RegoJN)
                     {
                         sInfoTxt += sZU + QS2.Desktop.ControlManagment.ControlManagment.getRes("Rego");
-                        if (rPatient.RezGebBef_RegoAb != null)
+                        if (RezGebBef_RegoAb != null)
                         {
-                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + rPatient.RezGebBef_RegoAb.Value.ToString("dd.MM.yyyy");
+                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + RezGebBef_RegoAb.Value.ToString("dd.MM.yyyy");
                         }
-                        if (rPatient.RezGebBef_RegoBis != null)
+                        if (RezGebBef_RegoBis != null)
                         {
-                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + rPatient.RezGebBef_RegoBis.Value.ToString("dd.MM.yyyy");
+                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + RezGebBef_RegoBis.Value.ToString("dd.MM.yyyy");
                         }
                     }
 
-                    if (rPatient.RezGebBef_UnbefristetJN)
+                    if (RezGebBef_UnbefristetJN)
                     {
                         sInfoTxt += sZU + QS2.Desktop.ControlManagment.ControlManagment.getRes("Unbefristet");
                     }
 
-                    if (rPatient.RezGebBef_BefristetJN)
+                    if (RezGebBef_BefristetJN)
                     {
                         sInfoTxt += sZU + QS2.Desktop.ControlManagment.ControlManagment.getRes("Befristet");
-                        if (rPatient.RezGebBef_BefristetAb != null)
+                        if (RezGebBef_BefristetAb != null)
                         {
-                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("von") + " " + rPatient.RezGebBef_BefristetAb.Value.ToString("dd.MM.yyyy");
+                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("von") + " " + RezGebBef_BefristetAb.Value.ToString("dd.MM.yyyy");
                         }
-                        if (rPatient.RezGebBef_BefristetBis != null)
+                        if (RezGebBef_BefristetBis != null)
                         {
-                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + rPatient.RezGebBef_BefristetBis.Value.ToString("dd.MM.yyyy");
+                            sInfoTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + RezGebBef_BefristetBis.Value.ToString("dd.MM.yyyy");
                         }
                     }
 
-                    if (rPatient.RezGebBef_WiderrufJN && rPatient.RezGebBef_WiderrufGrund.Trim() != "")
+                    if (RezGebBef_WiderrufJN && RezGebBef_WiderrufGrund.Trim() != "")
                     {
-                        sInfoTxt += sZU + QS2.Desktop.ControlManagment.ControlManagment.getRes("Wegen") + ": " + rPatient.RezGebBef_WiderrufGrund.Trim();
+                        sInfoTxt += sZU + QS2.Desktop.ControlManagment.ControlManagment.getRes("Wegen") + ": " + RezGebBef_WiderrufGrund.Trim();
                     }
 
-                    if (rPatient.RezGebBef_SachwalterJN)
+                    if (RezGebBef_SachwalterJN)
                     {
                         sInfoTxt += sZU + QS2.Desktop.ControlManagment.ControlManagment.getRes("Sachwalter");
                     }
                 }
 
-                if (rPatient.RezGebBef_Anmerkung.Trim() != "")
+                if (RezGebBef_Anmerkung.Trim() != "")
                 {
-                    sInfoTxt += (sInfoTxt == "" ? "" : sZU) + rPatient.RezGebBef_Anmerkung.Trim().Replace("\r\n", sZU);
+                    sInfoTxt += (sInfoTxt == "" ? "" : sZU) + RezGebBef_Anmerkung.Trim().Replace("\r\n", sZU);
                 }
 
                 if (sInfoTxt == "")

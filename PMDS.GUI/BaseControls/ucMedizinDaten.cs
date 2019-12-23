@@ -241,7 +241,34 @@ namespace PMDS.GUI.BaseControls
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    _rPatient = this.b.getPatient(this._IDPatient, db);
+                    //_rPatient = this.b.getPatient(this._IDPatient, db);
+
+                    var rPatMedDaten = (from p in db.Patient
+                                where p.ID == IDPatient
+                                select new
+                                {
+                                    p.ID,
+                                    p.Datenschutz,
+                                    p.DNR,
+                                    p.Palliativ,
+                                    p.KZUeberlebender,
+
+                                    p.RezeptgebuehrbefreiungJN,
+                                    p.RezGebBef_RegoJN,
+                                    p.RezGebBef_RegoAb,
+                                    p.RezGebBef_RegoBis,
+                                    p.RezGebBef_UnbefristetJN,
+                                    p.RezGebBef_BefristetJN,
+                                    p.RezGebBef_BefristetAb,
+                                    p.RezGebBef_BefristetBis,
+                                    p.RezGebBef_WiderrufJN,
+                                    p.RezGebBef_WiderrufGrund,
+                                    p.RezGebBef_SachwalterJN,
+                                    p.RezGebBef_Anmerkung,
+
+                                    p.Geburtsdatum
+                                }).First();
+
 
                     if (ENV.IDAUFENTHALT != null)
                     {
@@ -258,60 +285,74 @@ namespace PMDS.GUI.BaseControls
                     }
                     else
                         throw new Exception("ucMedizinDaten.Refresh: ENV.IDAufenthalt = null!");
-                }
+                
 
-                if ((clickGridTermine && this._IDPatientLast != System.Guid.Empty && this._IDPatientLast == this._IDPatient) || this._IDPatient.Equals(System.Guid.Empty))
-                {
-                    return;
-                }
+                    if ((clickGridTermine && this._IDPatientLast != System.Guid.Empty && this._IDPatientLast == this._IDPatient) || this._IDPatient.Equals(System.Guid.Empty))
+                    {
+                        return;
+                    }
 
-                SP sp = new SP();
-                if (_rAufenthalt != null && sp.HasOpen(_rAufenthalt.ID))
-                {
-                    this.clearMedDatenIcon(this._ucNotfall);
-                    this._ucNotfall.Visible = true;                         }
-                else
-                {
-                    this.clearMedDatenIcon(this._ucNotfall);
-                }
+                    SP sp = new SP();
+                    if (_rAufenthalt != null && sp.HasOpen(_rAufenthalt.ID))
+                    {
+                        this.clearMedDatenIcon(this._ucNotfall);
+                        this._ucNotfall.Visible = true;                         }
+                    else
+                    {
+                        this.clearMedDatenIcon(this._ucNotfall);
+                    }
 
-                if (this._ucDatenschutz != null)
-                {
-                    this.setDatenschutzIcon(this._ucDatenschutz, _rPatient.Datenschutz);
-                }
-                if (this._ucDNR != null)
-                {
-                    this.SetDNRIcon(this._ucDNR, _rPatient.DNR, _rPatient.Palliativ, _rPatient.ID);
-                }
-                if (this._ucAbwesenheit != null)
-                {
-                    this.setAbwesenheitIcon(this._ucAbwesenheit, ref _rPatient, ref _rUrlaubVerlaufLast);
-                }
-                if (this._ucHolocoust != null)
-                {
-                    this.setHolocaustIcon(this._ucHolocoust, _rPatient.KZUeberlebender);
-                }
-                if (this._ucRezeptgebührenbefreit != null)
-                {
-                    this.setRezeptgebührenbefreitIcon(this._ucRezeptgebührenbefreit, ref _rAufenthalt, ref _rPatient);
-                }
-                if (this._ucAbwesenheitBeendet != null)
-                {
-                    this.setAbwesenheitBeendetIcon(this._ucAbwesenheitBeendet, ref _rAufenthalt, _bPatIsAbwesend);
-                }
-                if (this._ucGeburtstag != null)
-                {
-                    this.setGeburtstagIcon(this._ucGeburtstag, ref _rPatient);
-                }
-                if (this._ucWunde != null)
-                {
-                    this.setWundeIcon(this._ucWunde, _rPatient.ID);
-                }
-                if (this._ucWichtigeInformation != null)
-                {
-                    this.setWichtigeinformationenIcon(this._ucWichtigeInformation, ref _rAufenthalt);
-                }
+                    if (this._ucDatenschutz != null)
+                    {
+                        this.setDatenschutzIcon(this._ucDatenschutz, rPatMedDaten.Datenschutz);
+                    }
+                    if (this._ucDNR != null)
+                    {
+                        this.SetDNRIcon(this._ucDNR, rPatMedDaten.DNR, rPatMedDaten.Palliativ, rPatMedDaten.ID);
+                    }
+                    if (this._ucAbwesenheit != null)
+                    {
+                        this.setAbwesenheitIcon(this._ucAbwesenheit, ref _rUrlaubVerlaufLast);
+                    }
+                    if (this._ucHolocoust != null)
+                    {
+                        this.setHolocaustIcon(this._ucHolocoust, rPatMedDaten.KZUeberlebender);
+                    }
+                    if (this._ucRezeptgebührenbefreit != null)
+                    {
+                        this.setRezeptgebührenbefreitIcon(this._ucRezeptgebührenbefreit, ref _rAufenthalt,
 
+                            rPatMedDaten.RezeptgebuehrbefreiungJN,
+                            rPatMedDaten.RezGebBef_RegoJN,
+                            rPatMedDaten.RezGebBef_RegoAb,
+                            rPatMedDaten.RezGebBef_RegoBis,
+                            rPatMedDaten.RezGebBef_UnbefristetJN,
+                            rPatMedDaten.RezGebBef_BefristetJN,
+                            rPatMedDaten.RezGebBef_BefristetAb,
+                            rPatMedDaten.RezGebBef_BefristetBis,
+                            rPatMedDaten.RezGebBef_WiderrufJN,
+                            rPatMedDaten.RezGebBef_WiderrufGrund,
+                            rPatMedDaten.RezGebBef_SachwalterJN,
+                            rPatMedDaten.RezGebBef_Anmerkung);
+                    }
+                    if (this._ucAbwesenheitBeendet != null)
+                    {
+                        this.setAbwesenheitBeendetIcon(this._ucAbwesenheitBeendet, ref _rAufenthalt, _bPatIsAbwesend);
+                    }
+                    if (this._ucGeburtstag != null)
+                    {
+                        this.setGeburtstagIcon(this._ucGeburtstag, (DateTime) rPatMedDaten.Geburtsdatum);
+                    }
+                    if (this._ucWunde != null)
+                    {
+                        this.setWundeIcon(this._ucWunde, rPatMedDaten.ID);
+                    }
+                    if (this._ucWichtigeInformation != null)
+                    {
+                        this.setWichtigeinformationenIcon(this._ucWichtigeInformation, ref _rAufenthalt);
+                    }
+
+                }
                 //this.getDataPatientStandardIcons();
                 foreach (ucMedizinData uc in pnlMain.Controls)
                 {
@@ -469,7 +510,7 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
-        public void setAbwesenheitIcon(ucMedizinData ucMedizinDataAct, ref PMDS.db.Entities.Patient rPatient, ref PMDS.db.Entities.UrlaubVerlauf rUrlaubVerlaufLast)
+        public void setAbwesenheitIcon(ucMedizinData ucMedizinDataAct, ref PMDS.db.Entities.UrlaubVerlauf rUrlaubVerlaufLast)
         {
             try
             {
@@ -512,7 +553,20 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
-        private void setRezeptgebührenbefreitIcon(ucMedizinData ucMedizinDataAct, ref PMDS.db.Entities.Aufenthalt rAufenthalt, ref PMDS.db.Entities.Patient rPatient)
+        private void setRezeptgebührenbefreitIcon(ucMedizinData ucMedizinDataAct, ref PMDS.db.Entities.Aufenthalt rAufenthalt,
+                bool RezeptgebuehrbefreiungJN,
+                bool RezGebBef_RegoJN,
+                DateTime? RezGebBef_RegoAb,
+                DateTime? RezGebBef_RegoBis,
+                bool RezGebBef_UnbefristetJN,
+                bool RezGebBef_BefristetJN,
+                DateTime? RezGebBef_BefristetAb,
+                DateTime? RezGebBef_BefristetBis,
+                bool RezGebBef_WiderrufJN,
+                string RezGebBef_WiderrufGrund,
+                bool RezGebBef_SachwalterJN,
+                string RezGebBef_Anmerkung
+            )
         {
             try
             {
@@ -521,7 +575,20 @@ namespace PMDS.GUI.BaseControls
                     PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
                     string TitleRezeptgebührenbefreit = "";
                     string InfoRezeptgebührenbefreit = "";
-                    bool bIsRezeptgebührenbefreit = bUI.showInfoRezeptgebührbefreiungByPat(ref rPatient, ref TitleRezeptgebührenbefreit, ref InfoRezeptgebührenbefreit, false);
+                    bool bIsRezeptgebührenbefreit = bUI.showInfoRezeptgebührbefreiungByPat(
+                        RezeptgebuehrbefreiungJN,
+                        RezGebBef_RegoJN,
+                        RezGebBef_RegoAb,
+                        RezGebBef_RegoBis,
+                        RezGebBef_UnbefristetJN,
+                        RezGebBef_BefristetJN,
+                        RezGebBef_BefristetAb,
+                        RezGebBef_BefristetBis,
+                        RezGebBef_WiderrufJN,
+                        RezGebBef_WiderrufGrund,
+                        RezGebBef_SachwalterJN,
+                        RezGebBef_Anmerkung, 
+                        ref TitleRezeptgebührenbefreit, ref InfoRezeptgebührenbefreit, false);
                     if (bIsRezeptgebührenbefreit)
                     {
    
@@ -566,11 +633,10 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
-        private void setGeburtstagIcon(ucMedizinData ucMedizinDataAct, ref PMDS.db.Entities.Patient rPatient)
+        private void setGeburtstagIcon(ucMedizinData ucMedizinDataAct, DateTime GebDat)
         {
             try
             {
-                DateTime GebDat = (DateTime)rPatient.Geburtsdatum;
                 DateTime dNow = DateTime.Now.Date;
                 DateTime dGeburtstagHeuer = new DateTime(dNow.Year, GebDat.Month, GebDat.Day, 0, 0, 0);
                 if (!DateTime.IsLeapYear(dNow.Year) && dGeburtstagHeuer.Day == 29 && dGeburtstagHeuer.Month == 2)
