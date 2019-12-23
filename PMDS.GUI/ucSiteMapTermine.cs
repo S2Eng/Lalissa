@@ -247,7 +247,6 @@ namespace PMDS.GUI
                     // Patientenänderung signalisieren
                     if (IDPatient != this.LastSelectedPatient || IDPatient == Guid.Empty)
                     {
-                        //this.LastSelectedPatient = IDPatient;
                         if (this._UITypeTermine == eUITypeTermine.Interventionen)
                         {
                             if (IDPatient == Guid.Empty)
@@ -266,11 +265,11 @@ namespace PMDS.GUI
                         {
                             this._TermineEx.ClearMedizinischeButtons();
                         }
+
                         SignalPatientSelectionChanged();
-                        //if (IDPatient != Guid.Empty)  this._termine.RefreshQuickFilterButtons();
+                        this.LastSelectedPatient = IDPatient;
                     }
                 }
-
             }
             catch (Exception ex)
             {

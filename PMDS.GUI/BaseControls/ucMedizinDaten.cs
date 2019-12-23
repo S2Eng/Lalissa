@@ -575,7 +575,7 @@ namespace PMDS.GUI.BaseControls
                     PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
                     string TitleRezeptgebührenbefreit = "";
                     string InfoRezeptgebührenbefreit = "";
-                    bool bIsRezeptgebührenbefreit = bUI.showInfoRezeptgebührbefreiungByPat(
+                    bool bIsRezeptgebührenbefreit = bUI.showInfoRezeptgebührbefreiungInfo(
                         RezeptgebuehrbefreiungJN,
                         RezGebBef_RegoJN,
                         RezGebBef_RegoAb,

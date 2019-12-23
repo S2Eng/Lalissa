@@ -843,7 +843,7 @@ namespace PMDS.Global.db.ERSystem
                                             p.Geburtsdatum
                                         }).First();
 
-                    return showInfoRezeptgebührbefreiungByPat(
+                    return showInfoRezeptgebührbefreiungInfo(
                         rPatMedDaten.RezeptgebuehrbefreiungJN,
                         rPatMedDaten.RezGebBef_RegoJN,
                         rPatMedDaten.RezGebBef_RegoAb,
@@ -867,7 +867,7 @@ namespace PMDS.Global.db.ERSystem
         }
 
 
-        public bool showInfoRezeptgebührbefreiungByPat(
+        public bool showInfoRezeptgebührbefreiungInfo(
                 bool RezeptgebuehrbefreiungJN,
                 bool RezGebBef_RegoJN,
                 DateTime? RezGebBef_RegoAb,
