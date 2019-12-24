@@ -257,7 +257,7 @@ namespace PMDS.GUI
             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
             {
                 PMDS.DB.PMDSBusiness b = new PMDSBusiness();
-                PMDS.db .Entities .Patient rPatient = b.getPatient(pat.ID, db);
+                PMDS.db.Entities.Patient rPatient = b.getPatient(pat.ID, db);
                 rPatient.IDAbteilung = auf.IDAbteilung;
                 rPatient.IDBereich = auf.IDBereich;
                 db.SaveChanges();

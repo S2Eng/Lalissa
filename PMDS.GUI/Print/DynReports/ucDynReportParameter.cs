@@ -23,6 +23,7 @@ using PMDS.BusinessLogic;
 using PMDS.GUI.BaseControls;
 using PMDS.DB;
 using PMDS.GUI.VB;
+using System.Linq;
 
 
 namespace PMDS.GUI
@@ -361,15 +362,18 @@ namespace PMDS.GUI
                     {
                         VB.PMDSBusinessVB bVB = new VB.PMDSBusinessVB();
                         PMDS.db.Entities.Benutzer rUsrLoggedOn = b.LogggedOnUser();
-                        PMDS.db.Entities.Patient rPatient = b.getPatient(ENV.CurrentIDPatient, db);
 
-                        if (bVB.SaveFileToArchive(sFileNameExport, QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für") + " " + rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), "Pflegebegleitschreiben"))
+                        //os191224
+                        var rPatInfo = (from p in db.Patient
+                                        where p.ID == ENV.CurrentIDPatient
+                                        select new
+                                        { p.Nachname, p.Vorname }
+                                       ).First();
+                        //PMDS.db.Entities.Patient rPatient = b.getPatient(ENV.CurrentIDPatient, db);
+
+                        if (bVB.SaveFileToArchive(sFileNameExport, QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(), "Pflegebegleitschreiben"))
                         {
                             QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Pflegebegleitschreiben wurde ins Archiv abgelegt!");
-
-                            //frmPdfViewer frmPdfViewer1 = new frmPdfViewer();
-                            //frmPdfViewer1.Show();
-                            //frmPdfViewer1.initControl(ref sFileFullNameExported);
 
                             PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
                             byte[] bPDF;

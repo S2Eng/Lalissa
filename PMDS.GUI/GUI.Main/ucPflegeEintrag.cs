@@ -802,8 +802,16 @@ namespace PMDS.GUI
                     PMDS.db.Entities.PflegeEintragEntwurf rPflegeEintragEntwurf = tPflegeEintragEntwurf.First();
 
                     PMDS.db.Entities.Aufenthalt rAufenthalt = PMDSBusiness2.getAufenthalt(rPflegeEintragEntwurf.IDAufenthalt, db);
-                    PMDS.db.Entities.Patient rPatient = PMDSBusiness2.getPatient(rAufenthalt.IDPatient.Value, db);
-                    this.IDPatientEntwurf = rPatient.ID;
+                    //os191224
+                    Guid IDPatient = new Guid(rAufenthalt.IDPatient.Value.ToString());
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == IDPatient
+                                    select new
+                                    { p.Nachname, p.Vorname }
+                                   ).First();
+                    //PMDS.db.Entities.Patient rPatient = PMDSBusiness2.getPatient(rAufenthalt.IDPatient.Value, db);
+                    
+                    this.IDPatientEntwurf = IDPatient;
                     if (rPflegeEintragEntwurf.FuerUserErstellt != null)
                     {
                         this.IDFuerUserErstellt = rPflegeEintragEntwurf.FuerUserErstellt.Value;
@@ -813,7 +821,7 @@ namespace PMDS.GUI
                     this.Eintrag.IDAufenthalt = rPflegeEintragEntwurf.IDAufenthalt;
 
                     this.frmPatientVermerkMainWindow.labInfo.Text = "Dekurs für {0}";
-                    this.frmPatientVermerkMainWindow.labInfo.Text = string.Format(this.frmPatientVermerkMainWindow.labInfo.Text, rPatient.Vorname.Trim() + " " + rPatient.Nachname.Trim());
+                    this.frmPatientVermerkMainWindow.labInfo.Text = string.Format(this.frmPatientVermerkMainWindow.labInfo.Text, rPatInfo.Vorname.Trim() + " " + rPatInfo.Nachname.Trim());
                     if (IDFuerUserErstellt != null)
                     {
                         PMDS.db.Entities.Benutzer rBenutzerFür = PMDSBusiness2.getUser(IDFuerUserErstellt.Value, db);
@@ -914,7 +922,7 @@ namespace PMDS.GUI
                     //}
 
                     PMDS.Global.UIGlobal UIGlobal1 = new UIGlobal();
-                    UIGlobal1.removeDoubledPatients(ref this.frmPatientVermerkMainWindow.lstPatienteSelected2);
+                    UIGlobal1.removeDoubledPatients(this.frmPatientVermerkMainWindow.lstPatienteSelected2);
                 }
             }
 

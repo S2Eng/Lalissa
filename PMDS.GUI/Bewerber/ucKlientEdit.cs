@@ -9,6 +9,7 @@ using PMDS.BusinessLogic;
 using PMDS.Global;
 using PMDS.Print;
 using PMDS.GUI.BaseControls;
+using System.Linq;
 
 
 
@@ -389,14 +390,24 @@ namespace PMDS.GUI
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
-                    PMDS.db.Entities.Patient rPatient = PMDSBusiness1.getPatient((Guid)IDPatient, db);
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == (Guid)IDPatient
+                                    select new
+                                    { p.Nachname, 
+                                        p.Vorname,
+                                        p.IDAbteilung,
+                                        p.IDBereich,
+                                        p.Selbstzahler}
+                                    ).First();
+                    //PMDS.db.Entities.Patient rPatient = PMDSBusiness1.getPatient((Guid)IDPatient, db);
 
                     PMDS.db.Entities.Abteilung a = new PMDS.db.Entities.Abteilung();
-                    a.Bezeichnung = rPatient.IDAbteilung != null ? PMDSBusiness1.getAbteilung((Guid)rPatient.IDAbteilung, db).Bezeichnung.ToString().Trim() : "";
+                    a.Bezeichnung = rPatInfo.IDAbteilung != null ? PMDSBusiness1.getAbteilung((Guid)rPatInfo.IDAbteilung, db).Bezeichnung.ToString().Trim() : "";
 
                     PMDS.db.Entities.Bereich b = new PMDS.db.Entities.Bereich();
-                    if (rPatient.IDBereich != null && rPatient.IDBereich != Guid.Empty)
-                        b.Bezeichnung = rPatient.IDBereich != null ? PMDSBusiness1.getBereich((Guid)rPatient.IDBereich, db).Bezeichnung.ToString().Trim() : "";
+                    if (rPatInfo.IDBereich != null && rPatInfo.IDBereich != Guid.Empty)
+                        b.Bezeichnung = rPatInfo.IDBereich != null ? PMDSBusiness1.getBereich((Guid)rPatInfo.IDBereich, db).Bezeichnung.ToString().Trim() : "";
                     else
                         b.Bezeichnung = "";
 
@@ -419,7 +430,7 @@ namespace PMDS.GUI
                             //Body += "Adresse: " + Stammblatt.Adresse;
                             Body += QS2.Desktop.ControlManagment.ControlManagment.getRes("Staatsangehörigkeit: ") + Stammblatt.Staastangehörigkeit.Trim() + lb;
                             Body += QS2.Desktop.ControlManagment.ControlManagment.getRes("Pension:") + lb;
-                            Body += QS2.Desktop.ControlManagment.ControlManagment.getRes("Versichert: ") + Stammblatt.versichert.Trim() + (rPatient.Selbstzahler ? " (Selbstzahler)" : "") + lb;
+                            Body += QS2.Desktop.ControlManagment.ControlManagment.getRes("Versichert: ") + Stammblatt.versichert.Trim() + (rPatInfo.Selbstzahler ? " (Selbstzahler)" : "") + lb;
                             Body += QS2.Desktop.ControlManagment.ControlManagment.getRes("Rezeptgebührenbefreiung: ") + Stammblatt.Rezeptgebührenbefreiung.Trim() + lb;
                             Body += QS2.Desktop.ControlManagment.ControlManagment.getRes("Zusatzversicherung: ") + Stammblatt.Zusatzversicherung.Trim() + lb;
 

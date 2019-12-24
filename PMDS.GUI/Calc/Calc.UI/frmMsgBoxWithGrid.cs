@@ -126,8 +126,16 @@ namespace PMDS.GUI.Calc.Calc.UI
                             }
                             else
                             {
-                                PMDS.db.Entities.Patient rPatient = this.b.getPatient(new Guid(cBill.rBillToStorno.IDKlient.ToString()), db);
-                                rNewUI.ID2 = rPatient.ID;
+                            //os191224
+
+                            Guid IDPatient = new Guid(cBill.rBillToStorno.IDKlient.ToString());
+                            var rPatInfo = (from p in db.Patient
+                                            where p.ID == IDPatient
+                                            select new
+                                            { p.ID, p.Nachname, p.Vorname }
+                                               ).First();
+                                //PMDS.db.Entities.Patient rPatient = this.b.getPatient(new Guid(cBill.rBillToStorno.IDKlient.ToString()), db);
+                                rNewUI.ID2 = rPatInfo.ID;
                                 string sTxtTmp = "";
                                 if (cBill.rBillToStorno.Typ == (int)eBillTyp.Rechnung)
                                 {
@@ -139,7 +147,7 @@ namespace PMDS.GUI.Calc.Calc.UI
                                 }
                                 
                                 sMessage = sTxtTmp + " " + cBill.rBillToStorno.datum.Year.ToString() + "-" + cBill.rBillToStorno.datum.Month.ToString() + " " +
-                                                QS2.Desktop.ControlManagment.ControlManagment.getRes("für Patient") + " " + rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim() + " " +
+                                                QS2.Desktop.ControlManagment.ControlManagment.getRes("für Patient") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + " " +
                                                 QS2.Desktop.ControlManagment.ControlManagment.getRes("gefunden");
                             }
 

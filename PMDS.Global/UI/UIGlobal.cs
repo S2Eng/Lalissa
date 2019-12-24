@@ -42,7 +42,7 @@ namespace PMDS.Global
 
 
 
-        public void removeDoubledPatients(ref System.Collections.Generic.List<PMDS.Global.UIGlobal.eSelectedNodes> lstPatienteSelected)
+        public void removeDoubledPatients(System.Collections.Generic.List<PMDS.Global.UIGlobal.eSelectedNodes> lstPatienteSelected)
         {
             try
             {

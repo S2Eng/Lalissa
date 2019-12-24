@@ -79,10 +79,17 @@ namespace PMDS.GUI.Klient
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    PMDS.db.Entities.Patient rPatient = this.b.getPatient(this._IDPatient, db);
-                    this.lblInfoPatientname.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient") + ": " + rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim();
 
-                    PMDS.db.Entities.Aufenthalt rActAufenthalt = this.b.getAktuellerAufenthaltPatient(rPatient.ID, true, db);
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == this._IDPatient
+                                    select new
+                                    { p.ID, p.Nachname, p.Vorname }
+                                       ).First();
+
+                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(this._IDPatient, db);
+                    this.lblInfoPatientname.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient") + ": " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim();
+
+                    PMDS.db.Entities.Aufenthalt rActAufenthalt = this.b.getAktuellerAufenthaltPatient(rPatInfo.ID, true, db);
                     DateTime datFor10Years = DateTime.Now.Date.AddYears(-10);
                     PMDS.db.Entities.Aufenthalt rAufenthaltLastEntlassen = this.b.getLastAufenthaltEntlassen2(this._IDPatient, db);
                     if (rActAufenthalt != null)
@@ -127,7 +134,7 @@ namespace PMDS.GUI.Klient
                             this.btnDelete.Enabled = true;
                         }
 
-                        this.lblIDPatientInfo.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("ID-Patient") + ": " + rPatient.ID.ToString();
+                        this.lblIDPatientInfo.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("ID-Patient") + ": " + rPatInfo.ID.ToString();
                     }
                 }
 
@@ -191,7 +198,13 @@ namespace PMDS.GUI.Klient
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(this._IDPatient, db);
+                        //os191224
+                        var rPatInfo = (from p in db.Patient
+                                        where p.ID == this._IDPatient
+                                        select new
+                                        { p.Nachname, p.Vorname }
+                                           ).First();
+                        //PMDS.db.Entities.Patient rPatient = this.b.getPatient(this._IDPatient, db);
 
                         if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sollen die Patientendaten als PDF gesichert werden?", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
@@ -217,7 +230,7 @@ namespace PMDS.GUI.Klient
                         this.b.sys_deletePatient(this._IDPatient, db);
                         string protTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient und Aufenthalte löschen");
                         string protTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient {0} wurde gelöscht");
-                        protTxt = string.Format(protTxt, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim());
+                        protTxt = string.Format(protTxt, rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim());
                         this.b.saveProtocol(db, protTitle, protTxt);
 
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Patient wurde erfolgreich gelöscht!", "PMDS", MessageBoxButtons.OK);

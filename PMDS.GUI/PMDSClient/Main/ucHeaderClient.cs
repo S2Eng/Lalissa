@@ -16,7 +16,7 @@ using Infragistics.Win.UltraWinToolbars;
 using PMDS.Global.db.Patient;
 using PMDS.GUI.Arztabrechnung;
 using PMDS.DB;
-
+using System.Linq;
 
 namespace PMDS.GUI.PMDSClient
 {
@@ -361,8 +361,14 @@ namespace PMDS.GUI.PMDSClient
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(this.IDPATIENT, db);
-                        this.lblPatName.Text = rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim();
+                        //os191224
+                        var rPatInfo = (from p in db.Patient
+                                        where p.ID == IDPatient
+                                        select new
+                                        { p.Nachname, p.Vorname }
+                                           ).First();
+                        //PMDS.db.Entities.Patient rPatient = this.b.getPatient(this.IDPATIENT, db);
+                        this.lblPatName.Text = rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim();
                     }
                 }
                 else
@@ -385,10 +391,8 @@ namespace PMDS.GUI.PMDSClient
                     lblHistorie.Text = "";
                 }
                 this.btnArztabrechnung.Visible = this._ArztabrechnungJN;         
-
             }
-        }
-        
+        }        
 
         private void ShowHideButtons()
         {

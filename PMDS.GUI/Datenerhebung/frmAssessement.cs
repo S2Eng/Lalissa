@@ -84,8 +84,14 @@ namespace PMDS.GUI.Datenerhebung
                     System.Linq.IQueryable<PMDS.db.Entities.FormularDaten> tFormularDaten = b.getFormularDatenByID(this._IDFormulardata, db);
                     PMDS.db.Entities.FormularDaten rFormularDaten = tFormularDaten.First();
 
-                    PMDS.db.Entities.Patient rPatient = b.getPatient(this._IDPatient, db);
-                    this.Text = rFormular.Bezeichnung .Trim () + " " +  QS2.Desktop.ControlManagment.ControlManagment.getRes("vom") + " " + rFormularDaten.Datumerstellt.ToString("dd.MM.yyyy HH:mm:ss") + " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("für") + " " + rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim() + "";
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == IDPatient
+                                    select new
+                                    { p.Nachname, p.Vorname }
+                                       ).First();
+                    //PMDS.db.Entities.Patient rPatient = b.getPatient(this._IDPatient, db);
+                    this.Text = rFormular.Bezeichnung .Trim () + " " +  QS2.Desktop.ControlManagment.ControlManagment.getRes("vom") + " " + rFormularDaten.Datumerstellt.ToString("dd.MM.yyyy HH:mm:ss") + " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("für") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + "";
 
                     this.pdfViewer1.LoadDocument(rFormular.PDF_BLOP);
                     PdfForms formFDF = pdfViewer1.Document.FormFill;

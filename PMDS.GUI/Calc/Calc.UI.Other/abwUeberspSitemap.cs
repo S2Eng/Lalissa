@@ -4,7 +4,7 @@ using System.Text;
 using PMDS.DB;
 using PMDS.Global.db.Patient;
 using PMDS.GUI.Calc.Calc.UI.Other;
-
+using System.Linq;
 
 
 namespace PMDS.Calc.UI.Admin.abwÜbersp
@@ -141,10 +141,16 @@ namespace PMDS.Calc.UI.Admin.abwÜbersp
                         rNew.IDÜber =  rGef.IDUrlaubVerlauf.ToLower();
                         rNew.IDKlinik = rGef.IDKlinik;
 
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(rNew.IDPatient, db);
-                        if (rPatient.TageAbweseneheitOhneKuerzung >= 0)
+                        var rPatInfo = (from p in db.Patient
+                                        where p.ID == rNew.IDPatient
+                                        select new
+                                        { p.TageAbweseneheitOhneKuerzung }
+                                        ).First();
+
+                        //PMDS.db.Entities.Patient rPatient = this.b.getPatient(rNew.IDPatient, db);
+                        if (rPatInfo.TageAbweseneheitOhneKuerzung >= 0)
                         {
-                            rNew.abTagN = rPatient.TageAbweseneheitOhneKuerzung;
+                            rNew.abTagN = rPatInfo.TageAbweseneheitOhneKuerzung;
                         }
 
                         if (eingespDelete)

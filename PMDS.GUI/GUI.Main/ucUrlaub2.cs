@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using PMDS.DB;
 using PMDS.Global;
 using PMDS.db.Entities;
-
+using System.Linq;
 
 
 namespace PMDS.GUI.GUI.Main
@@ -72,8 +72,20 @@ namespace PMDS.GUI.GUI.Main
         {
             try
             {
-                this.rPatient = this.b.getPatient(this._IDPatient, this.db2);
-                this.labInfo.Text = System.String.Format(labInfo.Text, this.rPatient.Nachname.Trim() + " " + this.rPatient.Vorname.Trim());
+                //191224
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    var rPatName = (from p in db.Patient
+                                        where p.ID == this._IDPatient
+                                    select new
+                                            {p.Nachname, p.Vorname}
+                                        ).First();
+
+                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(this.IDPATIENT, db);
+                    this.labInfo.Text = System.String.Format(labInfo.Text, this.rPatient.Nachname.Trim() + " " + this.rPatient.Vorname.Trim());
+                }
+                //this.rPatient = this.b.getPatient(this._IDPatient, this.db2);
+                //this.labInfo.Text = System.String.Format(labInfo.Text, this.rPatient.Nachname.Trim() + " " + this.rPatient.Vorname.Trim());
 
                 this.rAufenthaltAct = this.b.getAktuellerAufenthaltPatient(this._IDPatient, false, this.db2);
                 this.IsAbwesend = this.b.KlientIsAbwesend(this.db2, rAufenthaltAct.ID);

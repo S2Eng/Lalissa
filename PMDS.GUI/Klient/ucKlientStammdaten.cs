@@ -21,6 +21,7 @@ using PMDS.GUI.Klient;
 using System.Drawing.Imaging;
 using System.Security.Permissions;
 using System.Security;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -491,49 +492,79 @@ namespace PMDS.GUI
             {
                 if (this.b.checkPatientExists(Klient.ID, db))
                 {
-                    PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
-                    this.cboSprachenMulti.setSelectedRows(rPatient.lstSprachen.Trim());
-                    
-                    this.chkRezGebBef_RegoJN.Checked = rPatient.RezGebBef_RegoJN;
-                    if (rPatient.RezGebBef_RegoAb != null)
-                    {
-                        this.datRezGebBef_RegoAb.Value = rPatient.RezGebBef_RegoAb.Value;
-                    }
-                    if (rPatient.RezGebBef_RegoBis != null)
-                    {
-                        this.datRezGebBef_RegoBis.Value = rPatient.RezGebBef_RegoBis.Value;
-                    }
-                    this.chkRezGebBef_UnbefristetJN.Checked = rPatient.RezGebBef_UnbefristetJN;
-                    this.chkRezGebBef_BefristetJN.Checked = rPatient.RezGebBef_BefristetJN;
-                    if (rPatient.RezGebBef_BefristetAb != null)
-                    {
-                        this.datRezGebBef_BefristetAb.Value = rPatient.RezGebBef_BefristetAb.Value;
-                    }
-                    if (rPatient.RezGebBef_BefristetBis != null)
-                    {
-                        this.datRezGebBef_BefristetBis.Value = rPatient.RezGebBef_BefristetBis.Value;
-                    }
-                    this.chkRezGebBef_WiderrufJN.Checked = rPatient.RezGebBef_WiderrufJN;
-                    this.cboRezGebBef_WiderrufGrund.Text = rPatient.RezGebBef_WiderrufGrund;
-                    this.chkRezGebBef_SachwalterJN.Checked = rPatient.RezGebBef_SachwalterJN;
-                    this.editorRezGebBef_Anmerkung.Text = rPatient.RezGebBef_Anmerkung;
-                    this.chkDatenschutz.Checked = rPatient.Datenschutz;
-                    this.chkPalliativ.Checked = rPatient.Palliativ;
-                    this.intAmputation_Prozent.Value = rPatient.Amputation_Prozent;
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == Klient.ID
+                                    select new
+                                    { p.Nachname, p.Vorname,
+                                        p.lstSprachen,
+                                        p.RezGebBef_RegoJN,
+                                        p.RezGebBef_RegoAb,
+                                        p.RezGebBef_RegoBis,
+                                        p.RezGebBef_UnbefristetJN,
+                                        p.RezGebBef_BefristetJN,
+                                        p.RezGebBef_BefristetAb,
+                                        p.RezGebBef_BefristetBis,
+                                        p.RezGebBef_WiderrufJN,
+                                        p.RezGebBef_WiderrufGrund,
+                                        p.RezGebBef_SachwalterJN,
+                                        p.RezGebBef_Anmerkung,
+                                        p.DNR,
+                                        p.Palliativ,
+                                        p.Datenschutz,
+                                        p.Amputation_Prozent,
+                                        p.SozVersStatus,
+                                        p.SozVersMitversichertBei,
+                                        p.SozVersLeerGrund,
+                                        p.TitelPost,
+                                        p.ELGAAbgemeldet,
+                                        p.bPK
+                                    }
+                                   ).First();
 
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = rPatient.SozVersStatus;
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text = rPatient.SozVersLeerGrund;
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = rPatient.SozVersMitversichertBei;
+                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
+                    this.cboSprachenMulti.setSelectedRows(rPatInfo.lstSprachen.Trim());
+                    
+                    this.chkRezGebBef_RegoJN.Checked = rPatInfo.RezGebBef_RegoJN;
+                    if (rPatInfo.RezGebBef_RegoAb != null)
+                    {
+                        this.datRezGebBef_RegoAb.Value = rPatInfo.RezGebBef_RegoAb.Value;
+                    }
+                    if (rPatInfo.RezGebBef_RegoBis != null)
+                    {
+                        this.datRezGebBef_RegoBis.Value = rPatInfo.RezGebBef_RegoBis.Value;
+                    }
+                    this.chkRezGebBef_UnbefristetJN.Checked = rPatInfo.RezGebBef_UnbefristetJN;
+                    this.chkRezGebBef_BefristetJN.Checked = rPatInfo.RezGebBef_BefristetJN;
+                    if (rPatInfo.RezGebBef_BefristetAb != null)
+                    {
+                        this.datRezGebBef_BefristetAb.Value = rPatInfo.RezGebBef_BefristetAb.Value;
+                    }
+                    if (rPatInfo.RezGebBef_BefristetBis != null)
+                    {
+                        this.datRezGebBef_BefristetBis.Value = rPatInfo.RezGebBef_BefristetBis.Value;
+                    }
+                    this.chkRezGebBef_WiderrufJN.Checked = rPatInfo.RezGebBef_WiderrufJN;
+                    this.cboRezGebBef_WiderrufGrund.Text = rPatInfo.RezGebBef_WiderrufGrund;
+                    this.chkRezGebBef_SachwalterJN.Checked = rPatInfo.RezGebBef_SachwalterJN;
+                    this.editorRezGebBef_Anmerkung.Text = rPatInfo.RezGebBef_Anmerkung;
+                    this.chkDatenschutz.Checked = rPatInfo.Datenschutz;
+                    this.chkPalliativ.Checked = rPatInfo.Palliativ;
+                    this.intAmputation_Prozent.Value = rPatInfo.Amputation_Prozent;
+
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = rPatInfo.SozVersStatus;
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text = rPatInfo.SozVersLeerGrund;
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = rPatInfo.SozVersMitversichertBei;
 
                     this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.setUIVersNr(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim());
                     this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.setUIMitversichertBei(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim());
 
-                    this.cboTitelPost.Text = rPatient.TitelPost;
-                    this.txtbPK.Text = rPatient.bPK;
-                    if (rPatient.ELGAAbgemeldet != null)
+                    this.cboTitelPost.Text = rPatInfo.TitelPost;
+                    this.txtbPK.Text = rPatInfo.bPK;
+                    if (rPatInfo.ELGAAbgemeldet != null)
                     {
-                        this.chkELGAAbgemeldet.Checked = rPatient.ELGAAbgemeldet.Value;
-                        this.setTabELGAOnIff(rPatient.ELGAAbgemeldet.Value);
+                        this.chkELGAAbgemeldet.Checked = rPatInfo.ELGAAbgemeldet.Value;
+                        this.setTabELGAOnIff(rPatInfo.ELGAAbgemeldet.Value);
                     } 
                     else
                     {
@@ -610,28 +641,39 @@ namespace PMDS.GUI
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    PMDSBusiness b = new PMDSBusiness();
-                    PMDS.db.Entities.Patient rPatient = null;
-                    if (this._isBewerberJN)
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == this.Klient.ID
+                                    select new
+                                    { p.Nachname, p.Vorname,
+                                        p.PatientenverfuegungJN,
+                                        p.PatientverfuegungDatum,
+                                        p.PatientenverfuegungBeachtlichJN,
+                                        p.PatientverfuegungAnmerkung
+                                    }
+                                   );
+                    //PMDSBusiness b = new PMDSBusiness();
+                    //PMDS.db.Entities.Patient rPatient = null;
+                    //if (this._isBewerberJN)
+                    //{
+                    //    rPatient = b.getPatient2(this.Klient.ID, db);
+                    //}
+                    //else
+                    //{
+                    //    rPatient = b.getPatient(this.Klient.ID, db);
+                    //}
+
+                    if (rPatInfo.Count() == 1)
                     {
-                        rPatient = b.getPatient2(this.Klient.ID, db);
-                    }
-                    else
-                    {
-                        rPatient = b.getPatient(this.Klient.ID, db);
-                    }
-                    
-                    if (rPatient != null)
-                    {
-                        if (rPatient.PatientenverfuegungJN != null && rPatient.PatientenverfuegungJN.Value == true)
+                        if (rPatInfo.First().PatientenverfuegungJN != null && rPatInfo.First().PatientenverfuegungJN.Value == true)
                         {
                             this.InfoPatientenverfügung = "";
-                            if (rPatient.PatientverfuegungDatum != null)
+                            if (rPatInfo.First().PatientverfuegungDatum != null)
                             {
-                                this.InfoPatientenverfügung += (this.InfoPatientenverfügung.Trim() == "" ? "" : ", ") + QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum") + ":" + rPatient.PatientverfuegungDatum.Value.ToString("dd.MM.yyyy");
+                                this.InfoPatientenverfügung += (this.InfoPatientenverfügung.Trim() == "" ? "" : ", ") + QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum") + ":" + rPatInfo.First().PatientverfuegungDatum.Value.ToString("dd.MM.yyyy");
                             }
 
-                            if (rPatient.PatientenverfuegungBeachtlichJN != null && rPatient.PatientenverfuegungBeachtlichJN.Value == true)
+                            if (rPatInfo.First().PatientenverfuegungBeachtlichJN != null && rPatInfo.First().PatientenverfuegungBeachtlichJN.Value == true)
                             {
                                 this.InfoPatientenverfügung += (this.InfoPatientenverfügung.Trim() == "" ? "" : ", ") + QS2.Desktop.ControlManagment.ControlManagment.getRes("Beachtlich");
                             }
@@ -640,9 +682,9 @@ namespace PMDS.GUI
                                 this.InfoPatientenverfügung += (this.InfoPatientenverfügung.Trim() == "" ? "" : ", ") + QS2.Desktop.ControlManagment.ControlManagment.getRes("Verbindlich");
                             }
 
-                            if (rPatient.PatientverfuegungAnmerkung != null && rPatient.PatientverfuegungAnmerkung.Trim() != "")
+                            if (rPatInfo.First().PatientverfuegungAnmerkung != null && rPatInfo.First().PatientverfuegungAnmerkung.Trim() != "")
                             {
-                                this.InfoPatientenverfügung += "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anmerkung") + ":" + "\r\n" + rPatient.PatientverfuegungAnmerkung.Trim();
+                                this.InfoPatientenverfügung += "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anmerkung") + ":" + "\r\n" + rPatInfo.First().PatientverfuegungAnmerkung.Trim();
                             }
 
                             this.lblPatientenverfügung.Visible = true;
@@ -653,9 +695,7 @@ namespace PMDS.GUI
                             this.lblPatientenverfügung.Visible = false;
                         }
                     }
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -927,39 +967,53 @@ namespace PMDS.GUI
             {
                 if (this.b.checkPatientExists(Klient.ID, db))
                 {
-                    PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == Klient.ID
+                                    select new
+                                    { p.Nachname, 
+                                        p.Vorname,
+                                        p.SozVersLeerGrund,
+                                        p.KrankenKasse,
+                                        p.SozVersStatus,
+                                        p.SozVersMitversichertBei,
+                                        p.Privatversicherung,
+                                        p.PrivPolNr,
+                                        p.Klasse}
+                                       ).First();
+                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
 
                     if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim() != Klient.VersicherungsNr.Trim())
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr: ") + Klient.VersicherungsNr + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim() != rPatient.SozVersLeerGrund.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim() != rPatInfo.SozVersLeerGrund.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil : ") + rPatient.SozVersLeerGrund.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil : ") + rPatInfo.SozVersLeerGrund.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboEinrichtungen.Text.Trim() != rPatient.KrankenKasse.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboEinrichtungen.Text.Trim() != rPatInfo.KrankenKasse.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse: ") + rPatient.KrankenKasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboEinrichtungen.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse: ") + rPatInfo.KrankenKasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboEinrichtungen.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim() != rPatient.SozVersStatus.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim() != rPatInfo.SozVersStatus.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Status: ") + rPatient.SozVersStatus.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Status: ") + rPatInfo.SozVersStatus.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim() != rPatient.SozVersMitversichertBei.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim() != rPatInfo.SozVersMitversichertBei.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Mitversichert bei: ") + rPatient.SozVersMitversichertBei.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Mitversichert bei: ") + rPatInfo.SozVersMitversichertBei.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPrivatVers.Text.Trim() != rPatient.Privatversicherung.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPrivatVers.Text.Trim() != rPatInfo.Privatversicherung.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Zusatzvers.: ") + rPatient.Privatversicherung.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPrivatVers.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Zusatzvers.: ") + rPatInfo.Privatversicherung.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPrivatVers.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text.Trim() != rPatient.Klasse.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text.Trim() != rPatInfo.Klasse.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse: ") + rPatient.Klasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse: ") + rPatInfo.Klasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPolzNr.Text.Trim() != rPatient.PrivPolNr.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPolzNr.Text.Trim() != rPatInfo.PrivPolNr.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ") + rPatient.PrivPolNr.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPolzNr.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ") + rPatInfo.PrivPolNr.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPolzNr.Text.Trim());
                     }
                 }
 

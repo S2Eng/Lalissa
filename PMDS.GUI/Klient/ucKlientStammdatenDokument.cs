@@ -231,8 +231,14 @@ namespace PMDS.GUI.Klient
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    PMDS.db.Entities.Patient rPatient = this.b.getPatient(ENV.CurrentIDPatient, db);
-                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokument für Klient '") + rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' hinterlegt");
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == ENV.CurrentIDPatient
+                                    select new
+                                    { p.Nachname, p.Vorname }
+                                       ).First();
+                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(ENV.CurrentIDPatient, db);
+                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokument für Klient '") + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' hinterlegt");
                     PMDS.db.Entities.Benutzer rUsr = this.b.LogggedOnUser();
 
                     IQueryable<PMDS.db.Entities.Aufenthalt> tAufenthalt = db.Aufenthalt.Where(a => a.ID == PMDS.Global.ENV.IDAUFENTHALT);

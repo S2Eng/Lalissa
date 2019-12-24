@@ -184,9 +184,10 @@ namespace PMDS.GUI.BaseControls
 
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        db.Entities.Patient rPatient = PMDSBusiness1.getPatient(id, db);
-                        db.Entities.Aufenthalt rAufenthalt = PMDSBusiness1.getAktuellerAufenthaltPatient(rPatient.ID, false, null);
-                        PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.getOpenTermine(rPatient.ID, rAufenthalt.ID, dNow, ENV.IDKlinik);
+                        //os191224
+                        //db.Entities.Patient rPatient = PMDSBusiness1.getPatient(id, db);
+                        db.Entities.Aufenthalt rAufenthalt = PMDSBusiness1.getAktuellerAufenthaltPatient(id, false, null);
+                        PMDS.DB.PMDSBusiness.retBusiness resCheck = PMDSBusiness1.getOpenTermine(id, rAufenthalt.ID, dNow, ENV.IDKlinik);
                         if (resCheck.tInerventionen.Rows.Count > 0)
                         {
                             ((ucClickableImage)uc).BACKCOLOR = REDCOLOR;

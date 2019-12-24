@@ -10,7 +10,7 @@ using PMDS.BusinessLogic;
 using PMDS.Data.Patient;
 using PMDS.Klient;
 using PMDS.GUI.Klient;
-
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -82,10 +82,16 @@ namespace PMDS.GUI
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    PMDS.db .Entities.Patient rPatient = this.b.getPatient(this.Klient.ID, db);
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == this.Klient.ID
+                                    select new
+                                    { p.Amputation_Prozent }
+                                       ).First();
+                    //PMDS.db .Entities.Patient rPatient = this.b.getPatient(this.Klient.ID, db);
                     if (HeightCm != 0)
                     {
-                        double BMI = Math.Round((WeightKg * (double)(100 - rPatient.Amputation_Prozent) / 100) / System.Math.Pow((HeightCm / 100), 2), 1);
+                        double BMI = Math.Round((WeightKg * (double)(100 - rPatInfo.Amputation_Prozent) / 100) / System.Math.Pow((HeightCm / 100), 2), 1);
                         return BMI;
                     }
                     else

@@ -166,8 +166,13 @@ Public Class clPlan
                     If rPlanObject.RowState <> DataRowState.Deleted Then
                         If getInfoPatients Then
                             If b.checkIDIsPatient(rPlanObject.IDObject, db) Then
-                                Dim rPatient As PMDS.db.Entities.Patient = b.getPatient(rPlanObject.IDObject, db)
-                                sInfo += rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim() + ", "
+                                'os191224
+                                Dim rPatInfo = (From p In db.Patient
+                                                Where p.ID = rPlanObject.IDObject
+                                                Select New With
+                                                {p.Nachname, p.Vorname}).First()
+                                'Dim rPatient As PMDS.db.Entities.Patient = b.getPatient(rPlanObject.IDObject, db)
+                                sInfo += rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + ", "
                                 iCounter += 1
                             End If
                         ElseIf getInfoUsers Then

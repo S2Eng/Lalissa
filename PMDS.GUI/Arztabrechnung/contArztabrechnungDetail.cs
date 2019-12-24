@@ -529,10 +529,19 @@ namespace PMDS.GUI.Arztabrechnung
                     }
                 }
 
-                Patient rPatient = this.b.getPatient(this.rArztabrechnung.IDPatient, this.db);
-                this.rArztabrechnung.Krankenkasse = rPatient.KrankenKasse.Trim();
-                this.rArztabrechnung.SVNr = rPatient.VersicherungsNr.Trim();
-                
+                //os191224
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == this.rArztabrechnung.IDPatient
+                                    select new
+                                    { p.KrankenKasse, p.VersicherungsNr }
+                                       ).First();
+                    this.rArztabrechnung.Krankenkasse = rPatInfo.KrankenKasse.Trim();
+                    this.rArztabrechnung.SVNr = rPatInfo.VersicherungsNr.Trim();
+                }                
+                //Patient rPatient = this.b.getPatient(this.rArztabrechnung.IDPatient, this.db);
+
                 if (iCounterLeistungenChecked > 0)
                 {
                     this.sqlManange1.daArztabrechnung.Update(this.dsKlientenliste1.Arztabrechnung);
@@ -545,38 +554,13 @@ namespace PMDS.GUI.Arztabrechnung
                         }
                     }
                 }
-
                 return true;
-
-                //int iCounterDataSaved = 0;
-                //foreach (UltraListViewItem listItem in this.lvPatienten.Items)
-                //{
-                //    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                //    {
-                //        bool AnyDataChanged = false;
-
-                //        cTgPatient tgPatient = (cTgPatient)listItem.Tag;
-                //        if (listItem.CheckState == CheckState.Checked)
-                //        {
-
-                //            AnyDataChanged = true;
-                //        }
-
-                //        if (AnyDataChanged)
-                //        {
-                //            db.SaveChanges();
-                //            iCounterDataSaved += 1;
-                //        }
-                //    }
-                //}
-
             }
             catch (Exception ex)
             {
                 throw new Exception("contArztabrechnung.saveData: " + ex.ToString());
             }
         }
-
 
         public void selectLeistungen(CheckState bOn)
         {

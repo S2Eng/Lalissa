@@ -72,14 +72,28 @@ namespace PMDS.Global.Heimverträge
                     System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
 
                     PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-                    PMDS.db.Entities.Patient rPatient = b.getPatient(ENV.CurrentIDPatient, db);
-                    PMDS.db.Entities.Aufenthalt rActAufenthalt = b.getAktuellerAufenthaltPatient(rPatient.ID, false, db);
+
+                        var rPatInfo = (from p in db.Patient
+                                        where p.ID == ENV.CurrentIDPatient
+                                        select new
+                                        { p.ID, 
+                                            p.Nachname, 
+                                            p.Vorname,
+                                            p.WohnungAbgemeldetJN,
+                                            p.IDAdresse,
+                                            p.IDKontakt,
+                                            p.Geburtsdatum,
+                                            p.Geburtsort}
+                                       ).First();
+
+                    //PMDS.db.Entities.Patient rPatient = b.getPatient(ENV.CurrentIDPatient, db);
+                    PMDS.db.Entities.Aufenthalt rActAufenthalt = b.getAktuellerAufenthaltPatient(rPatInfo.ID, false, db);
 
                     string sPatientStraßeGassePlatzNrStgTür = "";
                     string sPatientPLZOrt = "";
                     string sPatientTelefon = "";
 
-                    if (rPatient.WohnungAbgemeldetJN != null && rPatient.WohnungAbgemeldetJN.Value == true)
+                    if (rPatInfo.WohnungAbgemeldetJN != null && rPatInfo.WohnungAbgemeldetJN.Value == true)
                     {
                         PMDS.db.Entities.Klinik rKlinik = b.getKlinik(ENV.IDKlinik, db);
                         PMDS.db.Entities.Adresse rKlinikAdress = null;
@@ -98,16 +112,16 @@ namespace PMDS.Global.Heimverträge
                     }
                     else
                     {
-                        PMDS.db.Entities.Adresse rAdressPatient = b.getAdresse2(rPatient.IDAdresse.Value, db);
+                        PMDS.db.Entities.Adresse rAdressPatient = b.getAdresse2(rPatInfo.IDAdresse.Value, db);
                         if (rAdressPatient != null)
                         {
                             sPatientStraßeGassePlatzNrStgTür = rAdressPatient.Strasse.Trim();
                             sPatientPLZOrt = rAdressPatient.Plz.Trim() + " " + rAdressPatient.Ort.Trim();
                         }
-                        if (rPatient.IDKontakt != null)
+                        if (rPatInfo.IDKontakt != null)
                         {
                             PMDS.db.Entities.Kontakt rPatientKontakt = null;
-                            rPatientKontakt = b.getKontakt(rPatient.IDKontakt.Value, db);
+                            rPatientKontakt = b.getKontakt(rPatInfo.IDKontakt.Value, db);
                             sPatientTelefon = rPatientKontakt.Tel.Trim();
                         }
                     }
@@ -162,7 +176,7 @@ namespace PMDS.Global.Heimverträge
                         sVertretungEMail = rVertrauenspersonKontakt.Email.Trim();
                     }
 
-                    string sPatientVornameNachname = rPatient.Vorname.Trim() + " " + rPatient.Nachname.Trim();
+                    string sPatientVornameNachname = rPatInfo.Vorname.Trim() + " " + rPatInfo.Nachname.Trim();
 
                     DateTime dAm = DateTime.Now.Date;
 
@@ -206,11 +220,11 @@ namespace PMDS.Global.Heimverträge
                     byte[] bPDF;
                     if (frmPDF.OpenPDF(fileFullName, out bPDF))
                     {
-                        frmPDF.SetValue("PatientVorname", rPatient.Vorname);
-                        frmPDF.SetValue("PatientNachname", rPatient.Nachname);
-                        if (rPatient.Geburtsdatum != null)
-                            frmPDF.SetValue("PatientGeburtsdatum", rPatient.Geburtsdatum.Value.ToString("dd.MM.yyyy") ?? "");
-                        frmPDF.SetValue("PatientGeburtsort", rPatient.Geburtsort);
+                        frmPDF.SetValue("PatientVorname", rPatInfo.Vorname);
+                        frmPDF.SetValue("PatientNachname", rPatInfo.Nachname);
+                        if (rPatInfo.Geburtsdatum != null)
+                            frmPDF.SetValue("PatientGeburtsdatum", rPatInfo.Geburtsdatum.Value.ToString("dd.MM.yyyy") ?? "");
+                        frmPDF.SetValue("PatientGeburtsort", rPatInfo.Geburtsort);
                         frmPDF.SetValue("PatientStraßeGassePlatzNrStgTür", sPatientStraßeGassePlatzNrStgTür);
                         frmPDF.SetValue("PatientPLZOrt", sPatientPLZOrt);
                         frmPDF.SetValue("PatientTelefon", sPatientTelefon);
@@ -267,13 +281,13 @@ namespace PMDS.Global.Heimverträge
                         TXTextControl.LoadSettings settings = new TXTextControl.LoadSettings();
                         editor.Load(fileFullName, TXTextControl.StreamType.RichTextFormat, settings);
 
-                        this.setTextFrame("[PatientVorname]", rPatient.Vorname.Trim(), editor);
-                        this.setTextFrame("[PatientNachname]", rPatient.Nachname.Trim(), editor);
-                        if (rPatient.Geburtsdatum != null)
-                            this.setTextFrame("[PatientGeburtsdatum]", rPatient.Geburtsdatum.Value.ToString("dd.MM.yyyy"), editor);
+                        this.setTextFrame("[PatientVorname]", rPatInfo.Vorname.Trim(), editor);
+                        this.setTextFrame("[PatientNachname]", rPatInfo.Nachname.Trim(), editor);
+                        if (rPatInfo.Geburtsdatum != null)
+                            this.setTextFrame("[PatientGeburtsdatum]", rPatInfo.Geburtsdatum.Value.ToString("dd.MM.yyyy"), editor);
                         else
                             this.setTextFrame("[PatientGeburtsdatum]", "", editor);
-                        this.setTextFrame("[PatientGeburtsort]", rPatient.Geburtsort.Trim(), editor);
+                        this.setTextFrame("[PatientGeburtsort]", rPatInfo.Geburtsort.Trim(), editor);
                         this.setTextFrame("[PatientStraßeGassePlatzNrStgTür]", sPatientStraßeGassePlatzNrStgTür, editor);
                         this.setTextFrame("[PatientPLZOrt]", sPatientPLZOrt.Trim(), editor);
                         this.setTextFrame("[PatientTelefon]", sPatientTelefon.Trim(), editor);

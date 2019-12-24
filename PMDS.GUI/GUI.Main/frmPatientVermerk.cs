@@ -772,8 +772,14 @@ namespace PMDS.GUI
                     {
                         foreach (PMDS.Global.UIGlobal.eSelectedNodes SelectedNodes in this.lstPatienteSelected2)
                         {
-                            PMDS.db.Entities.Patient rPatient = b1.getPatient(SelectedNodes.IDKlient.Value, db);
-                            sInfoPatients += rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim() + "\r\n";
+                            Guid IDPatient = new Guid(SelectedNodes.IDKlient.Value.ToString());
+                            var rPatInfo = (from p in db.Patient
+                                            where p.ID == IDPatient
+                                            select new
+                                            { p.Nachname, p.Vorname }
+                                               ).First();
+                            //PMDS.db.Entities.Patient rPatient = b1.getPatient(SelectedNodes.IDKlient.Value, db);
+                            sInfoPatients += rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + "\r\n";
                         }
                     }
 

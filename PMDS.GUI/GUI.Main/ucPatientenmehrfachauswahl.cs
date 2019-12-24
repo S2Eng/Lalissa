@@ -78,7 +78,7 @@ namespace PMDS.GUI.GUI.Main
                 this.lvPatients.Refresh();
 
                 PMDS.Global.UIGlobal UIGlobal1 = new UIGlobal();
-                UIGlobal1.removeDoubledPatients(ref this.lstPatienteSelected);
+                UIGlobal1.removeDoubledPatients(this.lstPatienteSelected);
 
                 Global.db.Patient.dsKlinik.KlinikRow rKlinik = this.ucPatientGroup1.getSelKlinik(true);
                 if (rKlinik != null)

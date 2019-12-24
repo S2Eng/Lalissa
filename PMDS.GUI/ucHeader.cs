@@ -17,6 +17,8 @@ using PMDS.Global.db.Patient;
 using PMDS.GUI.Arztabrechnung;
 using PMDS.DB;
 
+using System.Linq;
+
 
 namespace PMDS.GUI
 {
@@ -361,10 +363,17 @@ namespace PMDS.GUI
                 }
                 if (this.IDPATIENT != System.Guid.Empty)
                 {
+                    //os191224
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(this.IDPATIENT, db);
-                        this.lblPatName.Text = rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim();
+                        var rPatName = (from p in db.Patient
+                                            where p.ID == IDPatient
+                                            select new
+                                                {p.Nachname, p.Vorname}
+                                           ).First();
+
+                        //PMDS.db.Entities.Patient rPatient = this.b.getPatient(this.IDPATIENT, db);
+                        this.lblPatName.Text = rPatName.Nachname.Trim() + " " + rPatName.Vorname.Trim();
                     }
                 }
                 else

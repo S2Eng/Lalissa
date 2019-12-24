@@ -147,7 +147,15 @@ namespace PMDS.GUI.GUI.Main
                     foreach (PflegeEintragEntwurf rPflegeEintragEntwurf in tPflegeEintragEntwurf)
                     {
                         PMDS.db.Entities.Aufenthalt rAufenthalt = this.b.getAufenthalt(rPflegeEintragEntwurf.IDAufenthalt, db);
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(rAufenthalt.IDPatient.Value, db);
+
+                        //os191224
+                        Guid IDPatient = new Guid(rAufenthalt.IDPatient.Value.ToString());
+                        var rPatInfo = (from p in db.Patient
+                                        where p.ID == IDPatient
+                                        select new
+                                        { p.Nachname, p.Vorname }
+                                           ).First();
+                        //PMDS.db.Entities.Patient rPatient = this.b.getPatient(rAufenthalt.IDPatient.Value, db);
 
                         PMDS.Global.db.ERSystem.dsKlientenliste.DekurseEntwürfeRow rNewDekursEntwurf = this.sqlManange1.getNewDekursEntwürfe(ref this.dsKlientenliste1);
                         rNewDekursEntwurf.IDPEEntwurf = rPflegeEintragEntwurf.ID;
@@ -156,7 +164,7 @@ namespace PMDS.GUI.GUI.Main
                             rNewDekursEntwurf.Zeitpunkt = rPflegeEintragEntwurf.Zeitpunkt.Value;
                         }
                         rNewDekursEntwurf.IDAufenthalt = rAufenthalt.ID;
-                        rNewDekursEntwurf.Patient = rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim();
+                        rNewDekursEntwurf.Patient = rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim();
                         rNewDekursEntwurf.DatumErstellt = rPflegeEintragEntwurf.DatumErstellt.Value;
                         PMDS.db.Entities.Benutzer rBenutzer = this.b.getUser(rPflegeEintragEntwurf.IDBenutzer.Value, db);
                         rNewDekursEntwurf.ErstelltVon = rBenutzer.Benutzer1.Trim();

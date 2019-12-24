@@ -255,33 +255,44 @@ namespace PMDS.GUI
                 {
                     if (this.b.checkPatientExists(Klient.ID, db))
                     {
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
-                        if (rPatient.Betreuungsstufe.Trim() != "")
+                    //os191224
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == Klient.ID
+                                    select new
+                                    { p.Nachname, 
+                                        p.Vorname,
+                                        p.Betreuungsstufe,
+                                        p.BetreuungsstufeAb,
+                                        p.BetreuungsstufeBis,
+                                        p.TageAbweseneheitOhneKuerzung}
+                                       ).First();
+                    //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
+                        if (rPatInfo.Betreuungsstufe.Trim() != "")
                         {
-                            this.cmbBetreuungsstufe.Text = rPatient.Betreuungsstufe.Trim();
+                            this.cmbBetreuungsstufe.Text = rPatInfo.Betreuungsstufe.Trim();
                         }
                         else
                         {
                             this.cmbBetreuungsstufe.Value = null;
                         }
-                        if (rPatient.BetreuungsstufeAb != null)
+                        if (rPatInfo.BetreuungsstufeAb != null)
                         {
-                            this.udteBetreuungsstufeAb.DateTime = rPatient.BetreuungsstufeAb.Value;
+                            this.udteBetreuungsstufeAb.DateTime = rPatInfo.BetreuungsstufeAb.Value;
                         }
                         else
                         {
                             this.udteBetreuungsstufeAb.Value = null;
                         }
-                        if (rPatient.BetreuungsstufeBis != null)
+                        if (rPatInfo.BetreuungsstufeBis != null)
                         {
-                            this.udteBetreuungsstufBis.DateTime = rPatient.BetreuungsstufeBis.Value;
+                            this.udteBetreuungsstufBis.DateTime = rPatInfo.BetreuungsstufeBis.Value;
                         }
                         else
                         {
                             this.udteBetreuungsstufBis.Value = null;
                         }
 
-                        this.numTageAbweseneheitOhneKuerzung.Value = rPatient.TageAbweseneheitOhneKuerzung;
+                        this.numTageAbweseneheitOhneKuerzung.Value = rPatInfo.TageAbweseneheitOhneKuerzung;
 
                         if (PMDS.Global.historie.HistorieOn)
                         {
