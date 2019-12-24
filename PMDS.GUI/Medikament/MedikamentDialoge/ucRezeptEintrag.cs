@@ -20,7 +20,7 @@ namespace PMDS.GUI
     public partial class ucRezeptEintrag : QS2.Desktop.ControlManagment.BaseControl
     {
 
-        private DateTime dtStartAction = DateTime.Now;
+        private DateTime dtStartAction;
         private PMDS.BusinessLogic.Medikament _medikament = new PMDS.BusinessLogic.Medikament();
         private dsRezeptEintrag.RezeptEintragRow _RezeptEintrag;
         private DateTime _ausstellungsDatum = DateTime.MinValue;
@@ -36,6 +36,9 @@ namespace PMDS.GUI
         public PMDS.Global.db.ERSystem.PMDSBusinessUI PMDSBusinessUI1 = new Global.db.ERSystem.PMDSBusinessUI();
         public bool _bIsStorno = false;
 
+        private DateTime dtFrom;
+        private DateTime dtBis;
+        private DateTime dtInfinity = new DateTime(3000, 1, 1, 23, 59, 59);
 
         public ucRezeptEintrag()
         {
@@ -43,6 +46,34 @@ namespace PMDS.GUI
             RequiredFields();
             if (!DesignMode && ENV.AppRunning)
             {
+
+                if (ENV.RezeptUseSeconds)
+                {
+
+                    dtpAbgebenVon.MaskInput = "dd.mm.yyyy hh:mm:ss";
+                    dtpAbgebenVon.Size = new Size(145, 21);
+                    dtStartAction = DateTime.Now;
+                    dtFrom = DateTime.Now;
+                    lblTagesbeginn.Visible = false;
+
+                    dtpAbgebenBis.MaskInput = "dd.mm.yyyy hh:mm:ss";
+                    dtpAbgebenBis.Size = new Size(145, 21);
+                    lblTagesende.Visible = false;
+                }
+                else
+                {
+                    dtpAbgebenVon.MaskInput = "dd.mm.yyyy";
+                    dtpAbgebenVon.Size = new Size(90, 21);
+                    dtStartAction = DateTime.Now.Date;
+                    dtFrom = DateTime.Now.Date;
+                    lblTagesbeginn.Visible = true;
+
+                    dtpAbgebenBis.MaskInput = "dd.mm.yyyy";
+                    dtpAbgebenBis.Size = new Size(90, 21);
+                    lblTagesende.Visible = false;
+                }
+
+
                 this.cbImportant._SupressLevelHierarchie = PMDSBusinessUI.SupressLevelHierarchieActiveInUI;
                 this.cbImportant.Group = "BER";
                 this.cbImportant.RefreshList();
@@ -56,8 +87,7 @@ namespace PMDS.GUI
                 cbBis.Checked = false;
 
                 //os191220
-                dtpAbgebenVon.DateTime = DateTime.Now;
-                //dtpAbgebenVon.DateTime = DateTime.Now.Date;
+                dtpAbgebenVon.DateTime = dtFrom;
 
                 this.PMDSBusinessUI1.loadCboPackungsanzahl((Infragistics.Win.UltraWinEditors.UltraComboEditor)this.cbPackungsanzahl, null);
             }
@@ -177,12 +207,15 @@ namespace PMDS.GUI
 
             txtAnmerkung.Text = RezeptEintrag.Bemerkung.Trim();
 
-            cbBis.Checked = (RezeptEintrag.AbzugebenBis < new DateTime(3000, 1, 1, 23, 59, 59));
+            cbBis.Checked = (RezeptEintrag.AbzugebenBis < dtInfinity);
             //os191220
-            dtpAbgebenBis.Value = RezeptEintrag.AbzugebenBis;
-            //dtpAbgebenBis.Value = RezeptEintrag.AbzugebenBis.Date.Add(new TimeSpan(23, 59, 59));
+            if (ENV.RezeptUseSeconds)
+                dtpAbgebenBis.Value = RezeptEintrag.AbzugebenBis;
+            else
+                dtpAbgebenBis.Value = RezeptEintrag.AbzugebenBis.Date.Add(new TimeSpan(23, 59, 59));
+            
             dtpAbgebenBis.Visible = cbBis.Checked;
-            lblTagesende.Visible = cbBis.Checked;
+            lblTagesende.Visible = cbBis.Checked && !ENV.RezeptUseSeconds;
 
             if (RezeptEintrag.Wiederholungstyp == (int)medWiederholungstypen.alle_x_Tage_Wochen)
             {
@@ -413,8 +446,10 @@ namespace PMDS.GUI
                 if (this.cbBis.Checked)         //Beim Absetzen den bestehenden Datensatz verändern
                 {
                     //os191220
-                    RezeptEintrag.AbzugebenBis = dtpAbgebenBis.DateTime;
-                    //RezeptEintrag.AbzugebenBis = dtpAbgebenBis.DateTime.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+                    if (ENV.RezeptUseSeconds)
+                        RezeptEintrag.AbzugebenBis = dtpAbgebenBis.DateTime;
+                    else
+                        RezeptEintrag.AbzugebenBis = dtpAbgebenBis.DateTime.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
                     RezeptEintrag.IDArztAbgesetzt = this.ucPatientAerzte1.SelctedIDAerzte;
                     RezeptEintrag.DatumGeaendert = DateTime.Now;
                     RezeptEintrag.IDBenutzer_Geaendert = ENV.USERID;
@@ -426,22 +461,24 @@ namespace PMDS.GUI
                     rToUpdate = _newRezeptEintrag;
                     _newRezeptEintrag.ID = Guid.NewGuid();
 
-                    // Das bis Datum des alten Datensatzes manipulieren
                     //os191220
-                    if (RezeptEintrag.AbzugebenVon > dtpAbgebenVon.DateTime)
-                    //if (RezeptEintrag.AbzugebenVon > dtpAbgebenVon.DateTime.Date.AddDays(-1))
+                    //Das bis Datum des alten Datensatzes manipulieren
+                    if (ENV.RezeptUseSeconds)
                     {
-                        RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime.Date;
-                        RezeptEintrag.IDArztAbgesetzt = this.ucPatientAerzte1.SelctedIDAerzte;
+                        if (RezeptEintrag.AbzugebenVon > dtpAbgebenVon.DateTime)
+                            RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime.Date;
+                        else
+                            RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime;
                     }
                     else
                     {
-                        //os191220
-                        RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime;
-                        //RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime.Date.AddSeconds(-1);
-                        RezeptEintrag.IDArztAbgesetzt = this.ucPatientAerzte1.SelctedIDAerzte;
+                        if (RezeptEintrag.AbzugebenVon > dtpAbgebenVon.DateTime.Date.AddDays(-1))
+                            RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime.Date;
+                        else
+                            RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime.Date.AddSeconds(-1);                        
                     }
 
+                    RezeptEintrag.IDArztAbgesetzt = this.ucPatientAerzte1.SelctedIDAerzte;
                     RezeptEintrag.DatumGeaendert = DateTime.Now;
                     RezeptEintrag.IDBenutzer_Geaendert = ENV.USERID;
 
@@ -583,6 +620,20 @@ namespace PMDS.GUI
             //os191202
             if (this.EintragBearbeitungsmodus == BearbeitungsModus.edit)
             {
+                if (dtpAbgebenVon.Value == null)
+                {
+                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Von-Datum darf nicht leer sein.");
+                    this.errorProvider1.SetError(this.dtpAbgebenVon, sText);
+                    return false;
+                }
+
+                if (dtpAbgebenBis.Value == null)
+                {
+                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bis-Datum darf nicht leer sein.");
+                    this.errorProvider1.SetError(this.dtpAbgebenBis, sText);
+                    return false;
+                }
+
                 dsRezeptEintrag.RezeptEintragRow r = RezeptEintrag;
                 if (dtpAbgebenVon.Value != null && diff == 1 && bRechtStorno)
                 {
@@ -595,7 +646,7 @@ namespace PMDS.GUI
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
                     return false;
                 }
-                else if ((int)((DateTime)dtpAbgebenBis.Value - dtStartAction).TotalSeconds > 0 && r.AbzugebenBis != (DateTime)dtpAbgebenBis.Value && r.AbzugebenBis != new DateTime(3000,1,1,23,59,59))
+                else if ((int)((DateTime)dtpAbgebenBis.Value - dtStartAction).TotalSeconds < 0 && r.AbzugebenBis != (DateTime)dtpAbgebenBis.Value && r.AbzugebenBis != new DateTime(3000,1,1,23,59,59))
                 {
                     string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Ändern (bis-Datum) nicht erlaubt.");
                     this.errorProvider1.SetError(this.dtpAbgebenBis, sText);
@@ -1037,8 +1088,12 @@ namespace PMDS.GUI
             if (_UpdateGuiInProgress)
                 return;
             dtpAbgebenBis.Visible = cbBis.Checked;
-            lblTagesende.Visible = cbBis.Checked;
-            dtpAbgebenBis.Value = cbBis.Checked ? DateTime.Now : new DateTime(3000, 1, 1, 23, 59, 59);
+            lblTagesende.Visible = cbBis.Checked && !ENV.RezeptUseSeconds;
+            if (ENV.RezeptUseSeconds)
+                dtpAbgebenBis.DateTime = cbBis.Checked ? DateTime.Now : dtInfinity;
+            else
+                dtpAbgebenBis.DateTime = cbBis.Checked ? DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59) : dtInfinity;
+
 
             this.cboAerzteAbgesetzt.Visible = cbBis.Checked;
             this.lblArztAbgesetzt.Visible = cbBis.Checked;
@@ -1132,6 +1187,23 @@ namespace PMDS.GUI
 
         }
 
+        private void dtpAbgebenVon_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ENV.RezeptUseSeconds)
+            {
+                //Uhrzeit nicht erlauben
+                //dtpAbgebenVon.Value = dtpAbgebenVon.DateTime.Date;
+            }
+        }
 
+        private void dtpAbgebenBis_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ENV.RezeptUseSeconds && dtpAbgebenBis.DateTime != dtInfinity)
+            {
+                //Uhrzeit nicht erlauben
+                //dtpAbgebenBis.Value = dtpAbgebenBis .DateTime.Date;
+            }
+
+        }
     }
 }

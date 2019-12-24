@@ -156,7 +156,6 @@
             // 
             // dtpAbgebenVon
             // 
-            this.dtpAbgebenVon.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
             this.dtpAbgebenVon.DateTime = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
             this.dtpAbgebenVon.FormatString = "";
             this.dtpAbgebenVon.Location = new System.Drawing.Point(116, 31);
@@ -169,10 +168,10 @@
             this.dtpAbgebenVon.Size = new System.Drawing.Size(145, 21);
             this.dtpAbgebenVon.TabIndex = 1;
             this.dtpAbgebenVon.Value = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
+            this.dtpAbgebenVon.ValueChanged += new System.EventHandler(this.dtpAbgebenVon_ValueChanged);
             // 
             // dtpAbgebenBis
             // 
-            this.dtpAbgebenBis.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.CurrentTime;
             this.dtpAbgebenBis.DateTime = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpAbgebenBis.FormatString = "";
             this.dtpAbgebenBis.Location = new System.Drawing.Point(115, 58);
@@ -183,6 +182,7 @@
             this.dtpAbgebenBis.Size = new System.Drawing.Size(146, 21);
             this.dtpAbgebenBis.TabIndex = 4;
             this.dtpAbgebenBis.Value = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpAbgebenBis.ValueChanged += new System.EventHandler(this.dtpAbgebenBis_ValueChanged);
             // 
             // lblApplikationsform
             // 
@@ -565,17 +565,17 @@
             // lblTagesbeginn
             // 
             this.lblTagesbeginn.AutoSize = true;
-            this.lblTagesbeginn.Location = new System.Drawing.Point(596, 226);
+            this.lblTagesbeginn.Location = new System.Drawing.Point(209, 35);
             this.lblTagesbeginn.Name = "lblTagesbeginn";
-            this.lblTagesbeginn.Size = new System.Drawing.Size(54, 13);
+            this.lblTagesbeginn.Size = new System.Drawing.Size(69, 13);
             this.lblTagesbeginn.TabIndex = 192;
-            this.lblTagesbeginn.Text = "00:00 Uhr";
+            this.lblTagesbeginn.Text = "00:00:00 Uhr";
             this.lblTagesbeginn.Visible = false;
             // 
             // lblTagesende
             // 
             this.lblTagesende.AutoSize = true;
-            this.lblTagesende.Location = new System.Drawing.Point(581, 239);
+            this.lblTagesende.Location = new System.Drawing.Point(209, 63);
             this.lblTagesende.Name = "lblTagesende";
             this.lblTagesende.Size = new System.Drawing.Size(69, 13);
             this.lblTagesende.TabIndex = 193;

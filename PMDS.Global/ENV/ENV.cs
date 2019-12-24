@@ -216,6 +216,7 @@ namespace PMDS.Global
         public static int RezeptDruck = -1;
         public static int RezeptBestellModus = -1;
         public static uint RezeptModifyTime = 0;
+        public static bool RezeptUseSeconds = false;
 
 
         public static bool OnlyOneFavoritenComboinPlanung = true;
@@ -1584,7 +1585,9 @@ namespace PMDS.Global
                 if (stemp.Length > 0)
                     uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.RezeptModifyTime);
 
-
+                stemp = _Log.ConfigFile.GetStringValue("RezeptUseSeconds");
+                if (stemp.Length > 0 && stemp == "1")
+                    PMDS.Global.ENV.RezeptUseSeconds = true;
 
                 string WCFServiceOnOffTmp = _Log.ConfigFile.GetStringValue("WCFServiceOnOff");
                 if (WCFServiceOnOffTmp.Trim() != "")
