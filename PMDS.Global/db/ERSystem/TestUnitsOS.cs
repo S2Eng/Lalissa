@@ -26,6 +26,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren beim Anordnen (von-Datum) nur bis {0} erlaubt.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Von-Datum darf nicht leer sein.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Bis-Datum darf nicht leer sein.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("n.A.");
 
             }
             catch (Exception ex)

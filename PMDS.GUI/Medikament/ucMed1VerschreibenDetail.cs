@@ -148,33 +148,56 @@ namespace PMDS.GUI
 
         private void RefreshAerzteValueList(string colName, string NameValueList)
         {
-            ValueListsCollection vlc = dgEintraege.DisplayLayout.ValueLists;
 
-            ValueList vl = null;
-            if (vlc.Exists(NameValueList))
+            try
             {
-                vl = vlc[NameValueList];
-            }
-            else                                                       
-            {
-                vl = vlc.Add(NameValueList);
-                UltraGridColumn c = dgEintraege.DisplayLayout.Bands[0].Columns[colName];
-                c.ValueList = vl;
-            }
+                ValueListsCollection vlc = dgEintraege.DisplayLayout.ValueLists;
 
-            foreach (UltraGridRow r in dgEintraege.Rows)
-            {
-                if (!r.IsGroupByRow)
+                ValueList vl = null;
+                if (vlc.Exists(NameValueList))
                 {
-                    if (r.Cells[colName].Value !=  System .DBNull.Value)
+                    vl = vlc[NameValueList];
+                }
+                else
+                {
+                    vl = vlc.Add(NameValueList);
+                    UltraGridColumn c = dgEintraege.DisplayLayout.Bands[0].Columns[colName];
+                    c.ValueList = vl;
+                }
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                {
+                    //Ärzte nur einmal lesen
+                    var lstArztInfo = (from a in db.Aerzte
+                                       select new
+                                       { a.ID, a.Nachname, a.Vorname }
+                        ).ToList();
+
+                    foreach (UltraGridRow r in dgEintraege.Rows)
                     {
-                        Guid IDArzt = (Guid)r.Cells[colName].Value;
-                        if (!vl.ValueListItems.Contains(IDArzt))
-                            vl.ValueListItems.Add(IDArzt, Aerzte.GetArztName(IDArzt));
+                        if (!r.IsGroupByRow)
+                        {
+                            if (r.Cells[colName].Value != System.DBNull.Value)
+                            {
+                                Guid IDArzt = (Guid)r.Cells[colName].Value;
+                                if (!vl.ValueListItems.Contains(IDArzt))
+                                {
+                                    var rArzt = (from a in lstArztInfo
+                                                 select new
+                                                 { a.ID, a.Nachname, a.Vorname }
+                                                ).Where(a => a.ID == (Guid)r.Cells[colName].Value).FirstOrDefault();
+                                    if (rArzt != null)
+                                        vl.ValueListItems.Add(IDArzt, rArzt.Nachname + " " + rArzt.Vorname);
+                                }
+                            }
+                        }
                     }
                 }
             }
-
+            catch (Exception ex)
+            {
+                throw new Exception("ucMed1VerschriebenDetails.refreshAerzteValueList " + ex.ToString());
+            }
         }
 
         private void RefreshMedikamentValueList(bool removeValueList)
@@ -199,19 +222,28 @@ namespace PMDS.GUI
                 db.Configuration.AutoDetectChangesEnabled = false;
                 foreach (UltraGridRow r in dgEintraege.Rows)
                 {
-                    InitDosierung(r);
+                    //InitDosierung(r);
                     InitAnmerkung(r);
                     HideRezepteintraege(r);      
 
                     DataRowView v = (DataRowView)r.ListObject;
                     dsRezeptEintrag.RezeptEintragRow rRezeptEintrag = (dsRezeptEintrag.RezeptEintragRow)v.Row;
 
-                    string sErstattungscode = "";
-                    string sKassenzeichen = "";
-                    this.b.getColMedikamenteForGrid(db, rRezeptEintrag.IDMedikament, ref sErstattungscode, ref sKassenzeichen);
-                    r.Cells["Erstattungscode"].Value = sErstattungscode;
-                    r.Cells["Kassenzeichen"].Value = sKassenzeichen;
+                    r.Cells["Dosierung"].Value = rRezeptEintrag.DosierungASString;
 
+                    if (ENV.RezeptUseErstattungscode)
+                    {
+                        PMDS.db.Entities.Medikament rMedikament = db.Medikament.Where(a => a.ID == rRezeptEintrag.IDMedikament).First();
+                        r.Cells["Erstattungscode"].Value = rMedikament.Erstattungscode;
+                        r.Cells["Kassenzeichen"].Value = rMedikament.Kassenzeichen;
+                    }
+                    else
+                    {
+                        r.Cells["Erstattungscode"].Value = QS2.Desktop.ControlManagment.ControlManagment.getRes("n.A.");
+                        r.Cells["Kassenzeichen"].Value = QS2.Desktop.ControlManagment.ControlManagment.getRes("n.A.");
+                    }
+
+                    
                     r.Cells[PMDS.DynReportsForms.MedikamentenBlattDataSource.colHerrichtenSortierung.Trim()].Value = PMDS.DynReportsForms.MedikamentenBlattDataSource.orderByHerrichten(rRezeptEintrag.Herrichten);
                 }
 
@@ -803,12 +835,12 @@ namespace PMDS.GUI
         {
             Rezept rez = new Rezept();
             dgEintraege.DataSource = rez.Read(_aufenthalt);         
-            InitRezeptEintraege(true);
+            InitRezeptEintraege(true);  //663
             UpdateButtons();
             RefreshAbzugebenBisValueList();
         
-            RefreshAerzteValueList("IDAerzte", "AERZTE");
-            RefreshAerzteValueList("IDArztAbgesetzt", "IDArztAbgesetzt");
+            RefreshAerzteValueList("IDAerzte", "AERZTE");   //740   ->   14 
+            RefreshAerzteValueList("IDArztAbgesetzt", "IDArztAbgesetzt");   //626   ->  10
             
             this.setBezeichnungStandardzeiten();
 

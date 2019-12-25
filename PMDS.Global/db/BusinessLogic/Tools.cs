@@ -166,7 +166,7 @@ namespace PMDS.BusinessLogic
             }
             else
             {
-                if (!bnuechtern) sb.Append("Dosierung prüfen");
+                if (!bnuechtern) sb.Append("Dosierung beachten!");
             }
 
             sb.Append(" ");
@@ -226,7 +226,7 @@ namespace PMDS.BusinessLogic
             }
             catch
             {
-                return "Menge prüfen.";
+                return "Signatur prüfen.";
             }
 
         }

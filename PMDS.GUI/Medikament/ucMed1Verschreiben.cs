@@ -106,7 +106,7 @@ namespace PMDS.GUI
         private void ucRezeptEdit2_VisibleChanged(object sender, EventArgs e)
         {
             //this._RefreshNeeded = true;
-            RefreshControl();
+            //RefreshControl(); //os191225
         }
 
         public void Write()

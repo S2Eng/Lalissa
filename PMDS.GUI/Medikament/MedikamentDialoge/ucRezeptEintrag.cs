@@ -47,7 +47,7 @@ namespace PMDS.GUI
             if (!DesignMode && ENV.AppRunning)
             {
 
-                if (ENV.RezeptUseSeconds)
+                if (ENV.RezeptUseTimeOfDay)
                 {
 
                     dtpAbgebenVon.MaskInput = "dd.mm.yyyy hh:mm:ss";
@@ -209,13 +209,13 @@ namespace PMDS.GUI
 
             cbBis.Checked = (RezeptEintrag.AbzugebenBis < dtInfinity);
             //os191220
-            if (ENV.RezeptUseSeconds)
+            if (ENV.RezeptUseTimeOfDay)
                 dtpAbgebenBis.Value = RezeptEintrag.AbzugebenBis;
             else
                 dtpAbgebenBis.Value = RezeptEintrag.AbzugebenBis.Date.Add(new TimeSpan(23, 59, 59));
             
             dtpAbgebenBis.Visible = cbBis.Checked;
-            lblTagesende.Visible = cbBis.Checked && !ENV.RezeptUseSeconds;
+            lblTagesende.Visible = cbBis.Checked && !ENV.RezeptUseTimeOfDay;
 
             if (RezeptEintrag.Wiederholungstyp == (int)medWiederholungstypen.alle_x_Tage_Wochen)
             {
@@ -446,7 +446,7 @@ namespace PMDS.GUI
                 if (this.cbBis.Checked)         //Beim Absetzen den bestehenden Datensatz verändern
                 {
                     //os191220
-                    if (ENV.RezeptUseSeconds)
+                    if (ENV.RezeptUseTimeOfDay)
                         RezeptEintrag.AbzugebenBis = dtpAbgebenBis.DateTime;
                     else
                         RezeptEintrag.AbzugebenBis = dtpAbgebenBis.DateTime.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
@@ -463,7 +463,7 @@ namespace PMDS.GUI
 
                     //os191220
                     //Das bis Datum des alten Datensatzes manipulieren
-                    if (ENV.RezeptUseSeconds)
+                    if (ENV.RezeptUseTimeOfDay)
                     {
                         if (RezeptEintrag.AbzugebenVon > dtpAbgebenVon.DateTime)
                             RezeptEintrag.AbzugebenBis = dtpAbgebenVon.DateTime.Date;
@@ -1088,8 +1088,8 @@ namespace PMDS.GUI
             if (_UpdateGuiInProgress)
                 return;
             dtpAbgebenBis.Visible = cbBis.Checked;
-            lblTagesende.Visible = cbBis.Checked && !ENV.RezeptUseSeconds;
-            if (ENV.RezeptUseSeconds)
+            lblTagesende.Visible = cbBis.Checked && !ENV.RezeptUseTimeOfDay;
+            if (ENV.RezeptUseTimeOfDay)
                 dtpAbgebenBis.DateTime = cbBis.Checked ? DateTime.Now : dtInfinity;
             else
                 dtpAbgebenBis.DateTime = cbBis.Checked ? DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59) : dtInfinity;
@@ -1189,7 +1189,7 @@ namespace PMDS.GUI
 
         private void dtpAbgebenVon_ValueChanged(object sender, EventArgs e)
         {
-            if (!ENV.RezeptUseSeconds)
+            if (!ENV.RezeptUseTimeOfDay)
             {
                 //Uhrzeit nicht erlauben
                 //dtpAbgebenVon.Value = dtpAbgebenVon.DateTime.Date;
@@ -1198,7 +1198,7 @@ namespace PMDS.GUI
 
         private void dtpAbgebenBis_ValueChanged(object sender, EventArgs e)
         {
-            if (!ENV.RezeptUseSeconds && dtpAbgebenBis.DateTime != dtInfinity)
+            if (!ENV.RezeptUseTimeOfDay && dtpAbgebenBis.DateTime != dtInfinity)
             {
                 //Uhrzeit nicht erlauben
                 //dtpAbgebenBis.Value = dtpAbgebenBis .DateTime.Date;

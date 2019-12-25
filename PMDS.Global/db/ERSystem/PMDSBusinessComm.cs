@@ -70,12 +70,17 @@ namespace PMDS.DB
         {
             try
             {
-                PMDSBusinessComm.threadLoadData = new Thread(new ParameterizedThreadStart(this.threadCheckLoadingData));
-                object objThread = new object();
-                objThread = 0;
-                PMDSBusinessComm.threadLoadData.Start(objThread);
+                if (ENV.AsynCommCheckMessagesSeconds > 0 )
+                {
+                    PMDSBusinessComm.threadLoadData = new Thread(new ParameterizedThreadStart(this.threadCheckLoadingData));
+                    object objThread = new object();
+                    objThread = 0;
+                    PMDSBusinessComm.threadLoadData.Start(objThread);
+                    return true;
+                }
 
-                return true;
+                return false;
+
             }
             catch (Exception ex)
             {

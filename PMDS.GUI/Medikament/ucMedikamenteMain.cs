@@ -524,14 +524,7 @@ namespace PMDS.GUI
         }
         public bool ActiveControlIsReports()
         {
-            if (CURRENTOBJECT.GetType().Name.ToString().Trim().Equals("ucDynReports", StringComparison.CurrentCultureIgnoreCase))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return CURRENTOBJECT.GetType().Name.ToString().Trim().Equals("ucDynReports", StringComparison.CurrentCultureIgnoreCase);
         }
         public bool ActiveControlIsMedikamenteBestellen()
         {
