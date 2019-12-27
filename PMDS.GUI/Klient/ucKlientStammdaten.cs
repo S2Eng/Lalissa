@@ -73,11 +73,7 @@ namespace PMDS.GUI
         public bool AufenthaltIsInitialized = false;
         public PMDS.Global.db.ERSystem.ELGABusiness bELGA = new Global.db.ERSystem.ELGABusiness();
 
-
-
-
-
-
+        private string _DNRAnmerkung = "";
 
 
 
@@ -486,6 +482,8 @@ namespace PMDS.GUI
 
             this.cboTitelPost.Text = "";
             this.txtbPK.Text = "";
+            this.txtDNRAnmerkung.Text = "";
+            this._DNRAnmerkung = "";
             this.chkELGAAbgemeldet.Checked = false;
 
             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
@@ -510,6 +508,7 @@ namespace PMDS.GUI
                                         p.RezGebBef_SachwalterJN,
                                         p.RezGebBef_Anmerkung,
                                         p.DNR,
+                                        p.DNRAnmerkung,
                                         p.Palliativ,
                                         p.Datenschutz,
                                         p.Amputation_Prozent,
@@ -561,6 +560,8 @@ namespace PMDS.GUI
 
                     this.cboTitelPost.Text = rPatInfo.TitelPost;
                     this.txtbPK.Text = rPatInfo.bPK;
+                    this.txtDNRAnmerkung.Text = rPatInfo.DNRAnmerkung;
+                    this._DNRAnmerkung = rPatInfo.DNRAnmerkung;
                     if (rPatInfo.ELGAAbgemeldet != null)
                     {
                         this.chkELGAAbgemeldet.Checked = rPatInfo.ELGAAbgemeldet.Value;
@@ -1254,6 +1255,13 @@ namespace PMDS.GUI
                             sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Titel nachgestellt: ") + rPatient.TitelPost + " -> " + this.cboTitelPost.Text);
                             rPatient.TitelPost = this.cboTitelPost.Text.Trim();
                         }
+
+                        if (rPatient.DNRAnmerkung.Trim() != this.txtDNRAnmerkung.Text.Trim())
+                        {
+                            sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("DNR/Palliativ Anmerkung: ") + rPatient.DNRAnmerkung + " -> " + this.txtDNRAnmerkung.Text);
+                            rPatient.DNRAnmerkung = this.txtDNRAnmerkung.Text.Trim();
+                        }
+
 
                         if (rPatient.bPK.Trim() != this.txtbPK.Text.Trim())
                         {
@@ -2480,7 +2488,26 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
-    }
 
+        private void txtDNRAnmerkung_ValueChanged(object sender, EventArgs e)
+        {
+            if (this.txtDNRAnmerkung.Focused)
+            {
+                if (this.txtDNRAnmerkung.Text.Trim() != this._DNRAnmerkung)
+                {
+                    if (!ENV.HasRight(UserRights.DNR_Palliativ))
+                    {
+                        //QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sie haben kein Recht, dieses Feld zu bearbeiten.");
+                        this.txtDNRAnmerkung.Text = this._DNRAnmerkung;                       
+                    }
+                    else
+                    {
+                        this._DNRAnmerkung = this.txtDNRAnmerkung.Text;
+                        OnValueChanged(sender, e);
+                    }
+                }
+            }
+        }
+    }
 }
 

@@ -251,6 +251,7 @@ namespace PMDS.GUI.BaseControls
                                     p.Datenschutz,
                                     p.DNR,
                                     p.Palliativ,
+                                    p.DNRAnmerkung,
                                     p.KZUeberlebender,
 
                                     p.RezeptgebuehrbefreiungJN,
@@ -308,7 +309,7 @@ namespace PMDS.GUI.BaseControls
                     }
                     if (this._ucDNR != null)
                     {
-                        this.SetDNRIcon(this._ucDNR, rPatMedDaten.DNR, rPatMedDaten.Palliativ, rPatMedDaten.ID);
+                        this.SetDNRIcon(this._ucDNR, rPatMedDaten.DNR, rPatMedDaten.Palliativ, rPatMedDaten.ID, rPatMedDaten.DNRAnmerkung);
                     }
                     if (this._ucAbwesenheit != null)
                     {
@@ -479,7 +480,7 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
-        public void SetDNRIcon(ucMedizinData ucMedizinDataAct, bool bDNR, bool bPalliativ, Guid IDPatient)
+        public void SetDNRIcon(ucMedizinData ucMedizinDataAct, bool bDNR, bool bPalliativ, Guid IDPatient, string DNRAnmerkung)
         {
             try
             {
@@ -489,14 +490,12 @@ namespace PMDS.GUI.BaseControls
                 if (bDNR && !bPalliativ)
                 {
                     string ToolTipTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("DNR");
-                    string ToolTipText = " ";
-                    this.setMedDatenIcon(ucMedizinDataAct, "DNR", System.Drawing.Color.Gray, System.Drawing.Color.Black, ToolTipTitle, ToolTipText, System.Drawing.Color.Gray, Infragistics.Win.UIElementBorderStyle.Solid);
+                    this.setMedDatenIcon(ucMedizinDataAct, "DNR", System.Drawing.Color.Gray, System.Drawing.Color.Black, ToolTipTitle, DNRAnmerkung, System.Drawing.Color.Gray, Infragistics.Win.UIElementBorderStyle.Solid);
                 }
                 else if (!bDNR && bPalliativ)
                 {
                     string ToolTipTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Palliativ");
-                    string ToolTipText = " ";
-                    this.setMedDatenIcon(ucMedizinDataAct, "P", System.Drawing.Color.Gray, System.Drawing.Color.Black, ToolTipTitle, ToolTipText, System.Drawing.Color.Gray, Infragistics.Win.UIElementBorderStyle.Solid);
+                    this.setMedDatenIcon(ucMedizinDataAct, "P", System.Drawing.Color.LightGray, System.Drawing.Color.Black, ToolTipTitle, DNRAnmerkung, System.Drawing.Color.Gray, Infragistics.Win.UIElementBorderStyle.Solid);
                 }
                 else if (bDNR && bPalliativ)
                 {
