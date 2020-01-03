@@ -28,6 +28,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Bis-Datum darf nicht leer sein.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("n.A.");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("DNR / Palliativ Anmerkung: ");
             }
             catch (Exception ex)
             {

@@ -22,6 +22,7 @@ using PMDS.Global.db.Patient;
 using PMDS.Global.db.ERSystem;
 using PMDS.DB;
 using PMDS.Global.db.Global;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -488,19 +489,20 @@ namespace PMDS.GUI
                 }
                 finally
                 {
-                    tree.ExpandAll();
                     tree.EndUpdate();
-
                     UltraTreeTools.ActivateNodeKeyOrFirst(tree, key);
                     this._lockSelectedKlinik = false;
                     this. _TreeRefreshed = true;
                 }
 		}
+
         private void loadKlinik( dsKlinik.KlinikRow rSelectKlinik, TreeNodesCollection nodes, 
                                     bool expandNode)         //<20120202>
         {
             try
             {
+                List<string> lstSupressChildsOf = new List<string>();
+
                 UltraTreeNode node;
                 TreeNodesCollection nodesA;
                 //<20120202-2>
@@ -538,11 +540,10 @@ namespace PMDS.GUI
                             ////node.Override.NodeAppearance.Image = this.imageList1.Images[1];
                             node.Tag = new PatientGroupSelection(rAbt.Bezeichnung, true, rAbt.ID, rAbt.Bezeichnung, rSelectKlinik.ID, rSelectKlinik.Bezeichnung.Trim(), "", false);
                             nodesA = node.Nodes;
-
-                            if (expandNode)
-                                node.Parent.ExpandAll();
-                            else
-                                node.Parent.CollapseAll();
+                            if (!rAbt.IsReihenfolgeNull() &&  rAbt.Reihenfolge > 100 && rAbt.Reihenfolge.ToString().Substring(rAbt.Reihenfolge.ToString().Length - 1) == "1")
+                            {
+                                lstSupressChildsOf.Add(node.FullPath);
+                            }
 
                             // Bereiche einhängen
                             foreach (dsBereich.BereichRow br in KlinikBereiche.ByAbteilung(rAbt.ID))
@@ -564,11 +565,6 @@ namespace PMDS.GUI
                                         node = nodesA.Add(System.Guid.NewGuid().ToString(), br.Bezeichnung);
                                         node.Tag = new PatientGroupSelection(br.Bezeichnung, true, rAbt.ID, br.ID, rAbt.Bezeichnung, br.Bezeichnung, rSelectKlinik.ID, rSelectKlinik.Bezeichnung.Trim(), "", false);
                                         //node.Override.NodeAppearance.Image = this.imageList1.Images[2];
-
-                                        if (expandNode)
-                                            node.Parent.ExpandAll();
-                                        else
-                                            node.Parent.CollapseAll();
                                     }
                                 }
                             } 
@@ -576,18 +572,24 @@ namespace PMDS.GUI
                     }
                 }
 
+                
                 if (expandNode)
-                    tree.ExpandAll();
+                {
+                    tree.ExpandAll();                    
+                    foreach (UltraTreeNode nodeEinrichtung in tree.Nodes)
+                    {
+                        foreach (UltraTreeNode nodeAbteilung in nodeEinrichtung.Nodes)
+                        {
+                            if (lstSupressChildsOf.Where(c => c.Contains(nodeAbteilung.FullPath)).Count() == 1)
+                            {
+                                nodeAbteilung.CollapseAll();
+                            }
+                        }
+                    }
+                }
                 else
                     node.CollapseAll();
 
-                foreach (UltraTreeNode nodeFound in tree.Nodes)
-                {
-                    if (expandNode)
-                        tree.ExpandAll();
-                    else
-                        tree.CollapseAll();
-                }
             }
             catch (Exception e)
             {
