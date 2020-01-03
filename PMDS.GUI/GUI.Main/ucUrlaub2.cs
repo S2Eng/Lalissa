@@ -82,7 +82,7 @@ namespace PMDS.GUI.GUI.Main
                                         ).First();
 
                     //PMDS.db.Entities.Patient rPatient = this.b.getPatient(this.IDPATIENT, db);
-                    this.labInfo.Text = System.String.Format(labInfo.Text, this.rPatient.Nachname.Trim() + " " + this.rPatient.Vorname.Trim());
+                    this.labInfo.Text = System.String.Format(labInfo.Text, rPatName.Nachname.Trim() + " " + rPatName.Vorname.Trim());
                 }
                 //this.rPatient = this.b.getPatient(this._IDPatient, this.db2);
                 //this.labInfo.Text = System.String.Format(labInfo.Text, this.rPatient.Nachname.Trim() + " " + this.rPatient.Vorname.Trim());
