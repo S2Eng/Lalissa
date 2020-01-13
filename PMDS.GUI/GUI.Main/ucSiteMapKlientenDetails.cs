@@ -14,7 +14,7 @@ using Infragistics.Win.UltraWinExplorerBar;
 using PMDS.Print;
 using PMDS.Data.Global;
 using CrystalDecisions.CrystalReports.Engine;
-
+using System.Linq;
 
 
 
@@ -443,7 +443,7 @@ namespace PMDS.GUI
                     b.AddPflegeeintragSimple2(KontakteChanged.txt, KontakteChanged.title, PflegeEintragTyp.DEKURS, KontakteChanged.IDPatient, this.ucKlient1.isBewerberJN);
                 }
                 ucKlientStammdaten.lstKontakteChanged.Clear();
-                this.writePEForRezeptgebührbefreiung();
+                //this.CheckForRezeptgebührbefreiung(this.ucKlient1.Klient.ID);     //wird beim Refresh durchgeführt
                 this.ucKlient1.ucKlientStammdaten1.KlientUIEventsLocked = false;
 
                 this.ucKlient1.checkWriteDekurs(ref writeDekursSprachenChanged, ref txtSprachenGeändert);
@@ -461,7 +461,7 @@ namespace PMDS.GUI
             }
         }
 
-        public void writePEForRezeptgebührbefreiung()
+        public void CheckForRezeptgebührbefreiung(Guid IDKlient)
         {
             try
             {
@@ -471,38 +471,68 @@ namespace PMDS.GUI
                     {
                         using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                         {
-                            Patient pat = new Patient(this.ucKlient1.Klient.ID);
+                            var rPatInfo = (from p in db.Patient
+                                            where p.ID == IDKlient
+                                            select new
+                                            { p.Nachname, p.Vorname }
+                                        ).First();
+                            
+                            //Patient pat = new Patient(this.ucKlient1.Klient.ID);
                             Nullable<Guid> IDAbteilung = null;
                             Nullable<Guid> IDBereich = null;
                             if (!this.ucKlient1.isBewerberJN)
-                                this.b.getIDAbteilungIDBereichNachAnsichtsmodus(ref IDAbteilung, ref IDBereich, pat.ID, db);
+                                this.b.getIDAbteilungIDBereichNachAnsichtsmodus(ref IDAbteilung, ref IDBereich, IDKlient, db);
                             
-                            PMDS.db.Entities.PflegeEintrag rPflegeEintrag = b.AddPflegeeintrag(db, QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient: '") + pat.FullName.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' - Rezeptgebührenbefreiung Rego abgelaufen!"), DateTime.Now, null, IDBereich,
+                            PMDS.db.Entities.PflegeEintrag rPflegeEintrag = b.AddPflegeeintrag(db, rPatInfo.Vorname + " " + rPatInfo.Nachname + QS2.Desktop.ControlManagment.ControlManagment.getRes(" - Rezeptgebührenbefreiung Rego abgelaufen!"), DateTime.Now, null, IDBereich,
                                             ENV.IDAUFENTHALT, null, PflegeEintragTyp.Klient,
                                             null, IDAbteilung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datenänderung"));
                             db.SaveChanges();
 
-                            PMDS.db.Entities.Patient rPatient = b.getPatient2(pat.ID, db);
+                            PMDS.db.Entities.Patient rPatient = b.getPatient2(IDKlient, db);
                             rPatient.RezeptgebuehrbefreiungJN = false;
                             rPatient.RezGebBef_RegoJN = false;
                             rPatient.RezGebBef_RegoAb = null;
                             rPatient.RezGebBef_RegoBis = null;
+
+                            //Oberfläche korrigieren
+                            this.ucKlient1.ucKlientStammdaten1.chkRezGebBef_RegoJN.Checked = false;
+                            this.ucKlient1.ucKlientStammdaten1.cbRezeptGeb.Checked = false;
                             db.SaveChanges();
+
                         }
                     }
+
                     if (this.ucKlient1.ucKlientStammdaten1.chkRezGebBef_BefristetJN.Checked && this.ucKlient1.ucKlientStammdaten1.datRezGebBef_BefristetBis.DateTime.Date < DateTime.Now.Date)
                     {
-                        Patient pat = new Patient(this.ucKlient1.Klient.ID);
+                        //Patient pat = new Patient(this.ucKlient1.Klient.ID);
                         using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                         {
+                            var rPatInfo = (from p in db.Patient
+                                            where p.ID == IDKlient
+                                            select new
+                                            { p.Nachname, p.Vorname }
+                                           ).First();
                             Nullable<Guid> IDAbteilung = null;
                             Nullable<Guid> IDBereich = null;
                             if (!this.ucKlient1.isBewerberJN)
-                                this.b.getIDAbteilungIDBereichNachAnsichtsmodus(ref IDAbteilung, ref IDBereich, pat.ID, db);
+                                this.b.getIDAbteilungIDBereichNachAnsichtsmodus(ref IDAbteilung, ref IDBereich, IDKlient, db);
 
-                            PMDS.db.Entities.PflegeEintrag rPflegeEintrag = b.AddPflegeeintrag(db, QS2.Desktop.ControlManagment.ControlManagment.getRes("Patient: '") + pat.FullName.Trim() + QS2.Desktop.ControlManagment.ControlManagment.getRes("' - Rezeptgebührenbefreiung befristet abgelaufen!"), DateTime.Now, null, IDBereich,
+                            string sMsgText = rPatInfo.Vorname + " " + rPatInfo.Nachname + 
+                                    QS2.Desktop.ControlManagment.ControlManagment.getRes(" - Rezeptgebührenbefreiung befristet abgelaufen!") +
+                                    " (" + this.ucKlient1.ucKlientStammdaten1.datRezGebBef_BefristetBis.DateTime.Date.ToString("dd.MM.yyyy") + ")";
+                           
+                            PMDS.db.Entities.PflegeEintrag rPflegeEintrag = b.AddPflegeeintrag(db,sMsgText, DateTime.Now, null, IDBereich,
                                             ENV.IDAUFENTHALT, null, PflegeEintragTyp.Klient,
                                             null, IDAbteilung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datenänderung"));
+                            db.SaveChanges();
+
+                            PMDS.db.Entities.Patient rPatient = b.getPatient2(IDKlient, db);
+                            rPatient.RezeptgebuehrbefreiungJN = false;
+                            rPatient.RezGebBef_BefristetJN = false;
+
+                            //Oberfläche korrigieren
+                            this.ucKlient1.ucKlientStammdaten1.chkRezGebBef_BefristetJN.Checked = false;
+                            this.ucKlient1.ucKlientStammdaten1.cbRezeptGeb.Checked = false;
                             db.SaveChanges();
                         }
                     }
@@ -694,6 +724,7 @@ namespace PMDS.GUI
                 {
                     KlientDetails klient = new KlientDetails(ENV.CurrentIDPatient, Aufenthalt.LastByPatient(ENV.CurrentIDPatient), true);
                     ucKlient1.Klient = klient;          //os-Performance !!!!!!
+                    CheckForRezeptgebührbefreiung(ucKlient1.Klient.ID);
                     ucKlient1.ResumeLayout();
                     ucKlient1.Visible = true;
  
