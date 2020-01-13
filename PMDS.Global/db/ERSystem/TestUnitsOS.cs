@@ -29,6 +29,11 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("n.A.");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("DNR / Palliativ Anmerkung: ");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Restliche Sperrzeit: eine Minute.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Restliche Sperrzeit: {0} Minuten.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Sperrzeit ist abgelaufen!");
+
             }
             catch (Exception ex)
             {

@@ -116,11 +116,7 @@ namespace PMDS
         private Timer timerELGA;
         public static bool IsInitialized = false;
 
-
-
-
-
-
+        public bool CloseAnyway = false;
 
         public frmMain()
         {
@@ -2095,7 +2091,9 @@ namespace PMDS
             {
                 int iDekursEntwürfeOffen = 0;
                 bool bEndPMDS = false;
-                this.checkListeDekursEntwürfe(ref iDekursEntwürfeOffen, ref bEndPMDS);
+                
+                this.checkListeDekursEntwürfe(ref iDekursEntwürfeOffen, ref bEndPMDS, this.CloseAnyway);
+                
                 if (iDekursEntwürfeOffen > 0)
                 {
                     if (bEndPMDS)
@@ -2120,16 +2118,22 @@ namespace PMDS
                 }
                 else
                 {
-                    DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("MAIN.ASK_FOR_CLOSE"),
-                                                        ENV.String("MAIN.DIALOGTITLE_ASK_FOR_CLOSE"),
-                                                        MessageBoxButtons.YesNo,
-                                                        MessageBoxIcon.Question, true);
 
-                    if (res == DialogResult.No)
+                    if (this.CloseAnyway)
                     {
-                        e.Cancel = true;
+                        e.Cancel = false;
                     }
                     else
+                    {
+                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("MAIN.ASK_FOR_CLOSE"),
+                                                            ENV.String("MAIN.DIALOGTITLE_ASK_FOR_CLOSE"),
+                                                            MessageBoxButtons.YesNo,
+                                                            MessageBoxIcon.Question, true);
+
+                        e.Cancel = (res == DialogResult.No ? true : false);
+                    }
+
+                    if (!e.Cancel)
                     {
                         PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                         PMDSBusiness1.checkEndAnonymLogIn();
@@ -2149,8 +2153,16 @@ namespace PMDS
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
-        public void checkListeDekursEntwürfe(ref int iDekursEntwürfeOffen, ref bool bEndPMDS, Nullable<DateTime> IDTimeRepeat = null)
+        public void checkListeDekursEntwürfe(ref int iDekursEntwürfeOffen, ref bool bEndPMDS, bool CloseAnyway, Nullable<DateTime> IDTimeRepeat = null)
         {
+
+            if (CloseAnyway)
+            {
+                iDekursEntwürfeOffen = 0;
+                bEndPMDS = true;
+                return;
+            }
+
             Nullable<DateTime> IDTime = null;
             if (IDTimeRepeat != null)
             {
@@ -2197,7 +2209,7 @@ namespace PMDS
             {
                 if (PMDS.DB.PMDSBusiness.handleExceptionsServerNotReachable(ref IDTime, ex, "frmMain2.checkListeDekursEntwürfe"))
                 {
-                    this.checkListeDekursEntwürfe(ref iDekursEntwürfeOffen, ref bEndPMDS, IDTime);
+                    this.checkListeDekursEntwürfe(ref iDekursEntwürfeOffen, ref bEndPMDS, true, IDTime);
                 }
             }
         }
@@ -2515,7 +2527,14 @@ namespace PMDS
                         this.Visible = false;
                         frmLock frmLock1 = new frmLock();
                         frmLock1.ShowDialog(this);
-                        this.Visible = true;
+                        if (frmLock1.TimeOutElapsed)
+                        {                            
+                            this.CloseAnyway = true;
+                            this.Close();
+                        }
+                        else
+                            this.Visible = true;
+                        frmLock1.Dispose();
                         //ucQuickNavigator1_SiteMapEvent(SiteEvents.LogOn, ref bUsed);
                         break;
 

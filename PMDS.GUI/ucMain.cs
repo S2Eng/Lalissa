@@ -1300,6 +1300,11 @@ namespace PMDS.GUI
             }
         }
 
+        void HandleExternalCloseEvent(object sender, EventArgs e)
+        {
+            // Do something useful here.  
+        }
+
         private void checkUserActivity(object sender, EventArgs e)
         {
             if (this.mainWindow.Visible == true)
@@ -1327,8 +1332,14 @@ namespace PMDS.GUI
                     this.mainWindow.Visible = false;
                     PMDS.GUI.frmLock frmLock1 = new frmLock();
                     frmLock1.ShowDialog(this.mainWindow);
-                    frmLock1.Close();
-                    this.mainWindow.Visible = true;
+                    if (frmLock1.TimeOutElapsed)
+                    {
+                        this.mainWindow.CloseAnyway = true;
+                        this.mainWindow.Close();
+                    }
+                    else
+                        this.mainWindow.Visible = true;
+                    frmLock1.Dispose();
                 }
                 else
                 {

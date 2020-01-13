@@ -1326,7 +1326,11 @@ namespace PMDS.GUI.PMDSClient
                     this.mainWindow.Visible = false;
                     PMDS.GUI.frmLock frmLock1 = new frmLock();
                     frmLock1.ShowDialog(this.mainWindow);
-                    frmLock1.Close();
+                    if (frmLock1.TimeOutElapsed)
+                    {
+                        this.mainWindow.Close();
+                    }
+                    frmLock1.Dispose();
                     this.mainWindow.Visible = true;
                 }
                 else

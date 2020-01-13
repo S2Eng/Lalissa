@@ -2320,6 +2320,12 @@ namespace PMDS.GUI.PMDSClient
 			}
 		}
 
+        void HandleExternalCloseEvent(object sender, EventArgs e)
+        {
+            Form.ActiveForm.Close();
+            // Do something useful here.  
+        }
+
         private void ultraToolbarsManager1_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
             try
@@ -2407,9 +2413,15 @@ namespace PMDS.GUI.PMDSClient
                             
                     case "Arbeitsstationsperren":
                         this.Visible = false;
-                        frmLock frmLock1 = new frmLock();
+                        frmLock frmLock1 = new frmLock();                    
                         frmLock1.ShowDialog(this);
-                        this.Visible = true;
+                        if (frmLock1.TimeOutElapsed)
+                        {
+                            this.Close();
+                        }
+                        else
+                            this.Visible = true;
+                        frmLock1.Dispose();
                         //ucQuickNavigator1_SiteMapEvent(SiteEvents.LogOn, ref bUsed);
                         break;
                     

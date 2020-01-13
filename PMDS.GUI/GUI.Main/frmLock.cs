@@ -28,18 +28,18 @@ namespace PMDS.GUI
 
 
 
-
         protected QS2.Desktop.ControlManagment.BaseLabel lblPasswort;
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtPasswort;
 		protected System.Windows.Forms.ErrorProvider errorProvider1;
 		protected PMDS.GUI.ucButton btnNewLogIn;
         protected PMDS.GUI.ucButton btnOK;
         private QS2.Desktop.ControlManagment.BaseLabel lblInfoLocked;
-		private System.ComponentModel.IContainer components;
-
-
-        
-
+        private Timer timerCloseApp;
+        private System.ComponentModel.IContainer components;
+        private QS2.Desktop.ControlManagment.BaseLabel lblTimeRemaining;
+        private int iTimeOut = 120;    //120 Minuten
+        private int iTicks = 60000;      //Prod = 60000;
+        public bool TimeOutElapsed = false;
 
         public frmLock()
 		{
@@ -58,6 +58,15 @@ namespace PMDS.GUI
 		{
 			try
 			{
+
+                this.timerCloseApp.Enabled = true;
+                this.timerCloseApp.Interval = iTicks; //Minuten zum herunterzählen
+                this.timerCloseApp.Start();
+
+                string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Restliche Sperrzeit: {0} Minuten.");
+                sText = string.Format(sText, iTimeOut.ToString());
+                this.lblTimeRemaining.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes(sText);
+
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
                 
 				//Text = string.Format(Text, ENV.DATABASE);
@@ -111,6 +120,8 @@ namespace PMDS.GUI
             this.btnOK = new PMDS.GUI.ucButton(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblInfoLocked = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.timerCloseApp = new System.Windows.Forms.Timer(this.components);
+            this.lblTimeRemaining = new QS2.Desktop.ControlManagment.BaseLabel();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -145,7 +156,7 @@ namespace PMDS.GUI
             this.btnNewLogIn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnNewLogIn.DoOnClick = true;
             this.btnNewLogIn.IsStandardControl = true;
-            this.btnNewLogIn.Location = new System.Drawing.Point(79, 82);
+            this.btnNewLogIn.Location = new System.Drawing.Point(79, 117);
             this.btnNewLogIn.Name = "btnNewLogIn";
             this.btnNewLogIn.Size = new System.Drawing.Size(99, 28);
             this.btnNewLogIn.TabIndex = 14;
@@ -169,7 +180,7 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(181, 82);
+            this.btnOK.Location = new System.Drawing.Point(181, 117);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(74, 28);
             this.btnOK.TabIndex = 15;
@@ -193,9 +204,20 @@ namespace PMDS.GUI
             this.lblInfoLocked.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfoLocked.Location = new System.Drawing.Point(7, 14);
             this.lblInfoLocked.Name = "lblInfoLocked";
-            this.lblInfoLocked.Size = new System.Drawing.Size(248, 23);
+            this.lblInfoLocked.Size = new System.Drawing.Size(257, 23);
             this.lblInfoLocked.TabIndex = 17;
             this.lblInfoLocked.Text = "Gesperrt";
+            // 
+            // timerCloseApp
+            // 
+            this.timerCloseApp.Tick += new System.EventHandler(this.timerCloseApp_Tick);
+            // 
+            // lblTimeRemaining
+            // 
+            this.lblTimeRemaining.Location = new System.Drawing.Point(81, 80);
+            this.lblTimeRemaining.Name = "lblTimeRemaining";
+            this.lblTimeRemaining.Size = new System.Drawing.Size(173, 21);
+            this.lblTimeRemaining.TabIndex = 18;
             // 
             // frmLock
             // 
@@ -203,7 +225,8 @@ namespace PMDS.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnNewLogIn;
-            this.ClientSize = new System.Drawing.Size(259, 115);
+            this.ClientSize = new System.Drawing.Size(268, 150);
+            this.Controls.Add(this.lblTimeRemaining);
             this.Controls.Add(this.lblPasswort);
             this.Controls.Add(this.lblInfoLocked);
             this.Controls.Add(this.txtPasswort);
@@ -255,7 +278,7 @@ namespace PMDS.GUI
 		
 		private void btnOK_Click(object sender, System.EventArgs e)
 		{
-			if (ValidateFields())
+			if (TimeOutElapsed || ValidateFields())
 				_bCanclose = true;
 		}
 
@@ -286,6 +309,29 @@ namespace PMDS.GUI
             }
         }
 
-		
-	}
+        private void timerCloseApp_Tick(object sender, EventArgs e)
+        {
+            iTimeOut--;
+            if (iTimeOut <= 0)
+            {
+                this.lblPasswort.Visible = false;
+                this.txtPasswort.Visible = false;
+                this.btnNewLogIn.Visible = false;
+                this.lblTimeRemaining.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Sperrzeit ist abgelaufen!");
+                TimeOutElapsed = true;
+                btnOK_Click(sender, e);
+            }
+            else
+            {
+                if (iTimeOut == 1)
+                    this.lblTimeRemaining.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Restliche Sperrzeit: eine Minute."); 
+                else
+                {
+                    string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Restliche Sperrzeit: {0} Minuten.");
+                    sText = string.Format(sText, iTimeOut.ToString());
+                    this.lblTimeRemaining.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes(sText);
+                }
+            }
+        }
+    }
 }
