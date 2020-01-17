@@ -37,7 +37,7 @@ namespace PMDS.GUI
         private Timer timerCloseApp;
         private System.ComponentModel.IContainer components;
         private QS2.Desktop.ControlManagment.BaseLabel lblTimeRemaining;
-        private int iTimeOut = 120;    //120 Minuten
+        private int iTimeOut = ENV.AutoCloseTime;  
         private int iTicks = 60000;      //Prod = 60000;
         public bool TimeOutElapsed = false;
 

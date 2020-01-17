@@ -15,6 +15,8 @@ using RBU;
 using PMDS.Data.Global;
 using PMDS.Global.db.Pflegeplan;
 using PMDS.Global.db.Global;
+using System.Linq;
+using System.Data;
 
 namespace PMDS.DB
 {
@@ -56,23 +58,48 @@ namespace PMDS.DB
         //----------------------------------------------------------------------------
         public dsZusatzwerteForEintrag.ZusatzEintragDataTable GetZusatzwerte(Guid IDEintrag, Guid IDAbteilung)
         {
+
             dsZusatzwerteForEintrag.ZusatzEintragDataTable dt = new dsZusatzwerteForEintrag.ZusatzEintragDataTable();
             daZusatzwerteForEintrag.SelectCommand.Parameters[0].Value = IDEintrag;
             DataBase.Fill(daZusatzwerteForEintrag, dt);
-            List<dsZusatzwerteForEintrag.ZusatzEintragRow> al = new List<dsZusatzwerteForEintrag.ZusatzEintragRow>();
-            foreach (dsZusatzwerteForEintrag.ZusatzEintragRow r in dt)
+
+            if (dt.Count() == 0)
+                return dt;
+
+            List < dsZusatzwerteForEintrag.ZusatzEintragRow > al = new List<dsZusatzwerteForEintrag.ZusatzEintragRow>();
+
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
             {
-                if (r.IDAbteilung == Guid.Empty)                            // Generelle Abteilung immer drinnen lassen
-                    continue;
-                if (r.IDAbteilung != IDAbteilung)                           // Die nicht zur Abteilung gehörenden FIltern
+                //Liste der nicht aktiven Zusatzeinträge holen
+                var lstZE_Inaktiv = (from ze in db.ZusatzEintrag
+                                join zge in db.ZusatzGruppeEintrag on ze.ID equals zge.IDZusatzEintrag
+                                where zge.AktivJN == false                                
+                                select new
+                                {
+                                    zge.ID
+                                }).ToList();
+
+                foreach (dsZusatzwerteForEintrag.ZusatzEintragRow r in dt)
                 {
-                    al.Add(r);
-                    continue;
+                    if (!lstZE_Inaktiv.Any(item => item.ID == r.IDZusatzGruppeEintrag))
+                    {
+                        if (r.IDAbteilung == Guid.Empty)                            // Generelle Abteilung immer drinnen lassen
+                            continue;
+                        if (r.IDAbteilung != IDAbteilung)                           // Die nicht zur Abteilung gehörenden FIltern
+                        {
+                            al.Add(r);
+                            continue;
+                        }
+
+                        if (r.Typ == (int)ZusatzEintragTyp.IMAGE || r.Typ == (int)ZusatzEintragTyp.LABEL)       // Image und label nicht bei Zusatzwerte in der BigRM
+                            al.Add(r);
+                    }
+                    else
+                    {
+                        al.Add(r);
+                        continue;
+                    }
                 }
-
-                if (r.Typ == (int)ZusatzEintragTyp.IMAGE || r.Typ == (int)ZusatzEintragTyp.LABEL)       // Image und label nicht bei Zusatzwerte in der BigRM
-                    al.Add(r);
-
             }
 
             foreach (dsZusatzwerteForEintrag.ZusatzEintragRow rdel in al)
@@ -80,6 +107,7 @@ namespace PMDS.DB
             dt.AcceptChanges();
 
             return dt;
+
         }
 
         //----------------------------------------------------------------------------

@@ -109,6 +109,7 @@ namespace PMDS.Global
         public static PasswordScore PasswordStrength = PasswordScore.Blank;
         public static int MaxPasswordAge = 0;
         public static uint MaxIdleTime = 0;
+        public static int AutoCloseTime = 120;  //min = 10, max = 720)
         public static int ToleranzIntervall = 0;
 
         public static string LoginInNameFrei = "";
@@ -1448,6 +1449,14 @@ namespace PMDS.Global
                 stemp = _Log.ConfigFile.GetStringValue("MaxIdleTime");
                 if (stemp.Length > 0)
                     uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.MaxIdleTime);
+
+                stemp = _Log.ConfigFile.GetStringValue("AutoCloseTime");
+                if (stemp.Length > 0)
+                {
+                    int.TryParse(stemp.Trim(), out PMDS.Global.ENV.AutoCloseTime);
+                    if (PMDS.Global.ENV.AutoCloseTime < 10) PMDS.Global.ENV.AutoCloseTime = 120;
+                    if (PMDS.Global.ENV.AutoCloseTime > 720) PMDS.Global.ENV.AutoCloseTime = 120;
+                }
 
                 stemp = _Log.ConfigFile.GetStringValue("ToleranzIntervall");
                 if (stemp.Length > 0)

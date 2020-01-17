@@ -43,7 +43,8 @@
             // 
             // oleDbConnection1
             // 
-            oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev";
+            oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=sty041;Integrated Security=SSPI;Initial Catalog=PM" +
+    "DS_DemoGross";
             // 
             // oleDbSelectCommand1
             // 
@@ -130,7 +131,9 @@
                         new System.Data.Common.DataColumnMapping("OptionalJN", "OptionalJN"),
                         new System.Data.Common.DataColumnMapping("DruckenJN", "DruckenJN"),
                         new System.Data.Common.DataColumnMapping("Reihenfolge", "Reihenfolge"),
-                        new System.Data.Common.DataColumnMapping("IDAbteilung", "IDAbteilung")})});
+                        new System.Data.Common.DataColumnMapping("IDAbteilung", "IDAbteilung"),
+                        new System.Data.Common.DataColumnMapping("IDZusatzGruppeEintrag", "IDZusatzGruppeEintrag"),
+                        new System.Data.Common.DataColumnMapping("AktivJN", "AktivJN")})});
             // 
             // oleDbSelectCommand3
             // 

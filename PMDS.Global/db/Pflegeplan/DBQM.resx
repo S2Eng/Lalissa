@@ -121,7 +121,7 @@
     <value>False</value>
   </metadata>
   <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 60</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -142,7 +142,7 @@ WHERE  (IDAufenthalt = ?) AND (GeloeschtJN = 0) AND (ErledigtJN = 0) AND (Eintra
 ORDER BY IDAufenthalt, IDUntertaegigeGruppe DESC, IDEintrag, StartDatum</value>
   </data>
   <metadata name="daPflegePlanByAufenthalt_Gruppe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>20, 104</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="oleDbSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -156,15 +156,17 @@ ORDER BY IDAufenthalt, IDUntertaegigeGruppe DESC, IDEintrag, StartDatum</value>
   <data name="oleDbSelectCommand2.CommandText" xml:space="preserve">
     <value>SELECT     TOP 100 PERCENT ZusatzEintrag.Typ, ZusatzEintrag.ListenEintraege, ZusatzEintrag.Bezeichnung, ZusatzEintrag.MinValue, ZusatzEintrag.MaxValue, 
                       ZusatzEintrag.FeldNr, ZusatzGruppeEintrag.OptionalJN, ZusatzGruppeEintrag.DruckenJN, ZusatzGruppeEintrag.Reihenfolge, 
-                      Abteilung.ID AS IDAbteilung, ZusatzGruppeEintrag.ID AS IDZusatzGruppeEintrag
+                      Abteilung.ID AS IDAbteilung, ZusatzGruppeEintrag.ID AS IDZusatzGruppeEintrag,
+ZusatzGruppeEintrag.AktivJN
 FROM         Eintrag INNER JOIN
                       ZusatzGruppeEintrag ON Eintrag.ID = ZusatzGruppeEintrag.IDFilter INNER JOIN
                       ZusatzEintrag ON ZusatzGruppeEintrag.IDZusatzEintrag = ZusatzEintrag.ID INNER JOIN
                       Abteilung ON ZusatzGruppeEintrag.IDObjekt = Abteilung.ID
-WHERE     (Eintrag.EntferntJN = 0) AND (Eintrag.ID = ?)</value>
+WHERE     (Eintrag.EntferntJN = 0) AND (Eintrag.ID = ?)
+ORDER BY ZusatzGruppeEintrag.Reihenfolge</value>
   </data>
   <metadata name="daZusatzwerteForEintrag.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 146</value>
+    <value>29, 135</value>
   </metadata>
   <metadata name="oleDbSelectCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
