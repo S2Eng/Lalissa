@@ -8,7 +8,7 @@ using Microsoft.Win32;
 using System.Runtime.InteropServices;    //Für das Setzen des Standard-Druckers (Klientenbericht)
 using System.IO;
 
-using Bullzip.PdfWriter;
+//using Bullzip.PdfWriter;
 
 
 
