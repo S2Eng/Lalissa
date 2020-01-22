@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace Launcher
                     System.IO.Directory.CreateDirectory(update.logPathUpdate);
                 }
 
-                string logFile = update.logPathUpdate + "\\Launcher_" + System.Environment.MachineName + ".log";
+                string logFile = Path.Combine(update.logPathUpdate,  "Launcher_" + System.Environment.MachineName + ".log");
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(logFile, true))
                 {
                     if (isException)
@@ -34,19 +35,6 @@ namespace Launcher
                         file.WriteLine(DateTime.Now.ToString() + " - " + "Info: " + txt + "\r\n" + "\r\n");
                     }
                 }
-
-                update.runGarbColl();
-
-                //if (!System.IO.File.Exists(logFile))
-                //{
-                //    System.IO.File.Create(logFile);
-                //}
-
-                //txt = "\r\n" + "\r\n" + txt + "\r\n" + "\r\n";
-                //System.IO.StreamWriter sw = new System.IO.StreamWriter(logFile, true);
-                //sw.Write(txt);
-                //sw.Flush();
-                //sw.Close();
             }
             catch (Exception ex)
             {
@@ -58,7 +46,6 @@ namespace Launcher
 
         public static void writeEventLog(string LogTxt)
         {
-            //string LogName = System.Windows.Forms.Application.ProductName;
             using (EventLog eventLog = new EventLog("Application"))
             {
                 eventLog.Source = "Application";

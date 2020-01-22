@@ -55,11 +55,6 @@ namespace Launcher
 
 
 
-
-
-
-
-
         public bool run(string CommandLine, ref bool StartFromShareBack, bool WithMsgBox, ref bool abortBack, ref bool FirstInstallation)
         {
             string eExceptInfo = "Client: " + System.Environment.MachineName;
@@ -71,22 +66,19 @@ namespace Launcher
                 CfgFile ConfigFile = new CfgFile(Launcher.config.configFile);
 
                 update.StartFromShare = ConfigFile.getValue("Main", "StartFromShare", false);
-                if (!update.StartFromShare.Trim().ToLower().Equals(("0").Trim().ToLower()))
+                if (!update.StartFromShare.Trim().Equals("0"))
                 {
                     StartFromShareBack = true;
                     return true;
                 }
 
-
-                update.ServerProgramPath = @ConfigFile.getValue("Main", "ServerProgramPath", false);
-                update.logPathUpdate = @System.IO.Directory.GetParent(update.ServerProgramPath) + "\\log";
+                update.ServerProgramPath = ConfigFile.getValue("Main", "ServerProgramPath", false);
+                update.logPathUpdate = Path.Combine(System.IO.Directory.GetParent(update.ServerProgramPath).FullName, "log");
                 this.checkPath(update.logPathUpdate, "logPathUpdate is emtpy in launcher.config", false, true);
-                
-                update.ServerConfigPath = @ConfigFile.getValue("Main", "ServerConfigPath", false);
-                update.ServerConfigPath += "\\PMDS";
-                update.ClientProgramPath = @ConfigFile.getValue("Main", "ClientProgramPath", false);
-                update.ClientConfigPath = @ConfigFile.getValue("Main", "ClientConfigPath", false);
-                update.ClientConfigPath += "\\PMDS";
+
+                update.ServerConfigPath = Path.Combine(ConfigFile.getValue("Main", "ServerConfigPath", false), "PMDS");
+                update.ClientProgramPath = ConfigFile.getValue("Main", "ClientProgramPath", false);
+                update.ClientConfigPath = Path.Combine(ConfigFile.getValue("Main", "ClientConfigPath", false), "PMDS");
 
                 update.ClientProgramPath_Orig = update.ClientProgramPath;
                 update.ClientConfigPath_Orig = update.ClientConfigPath;
@@ -96,24 +88,25 @@ namespace Launcher
                 string newMoveNextFolder = "";
                 string LastMoveNextFolder = "";
                 this.searchNewNextFolder(ref update.ClientProgramPath, ref update.ClientConfigPath, ref newMoveNextFolder, ref LastMoveNextFolder, ref update.lstVersionsRemoveRoot, ref update.lstVersionsRemoveConfig);
-                update.InstNext_Root = update.ClientProgramPath_Orig + "\\" + newMoveNextFolder;
-                update.InstNext_Config = update.ClientConfigPath_Orig + "\\" + newMoveNextFolder;
+
+                update.InstNext_Root = Path.Combine(update.ClientProgramPath_Orig, newMoveNextFolder);
+                update.InstNext_Config = Path.Combine(update.ClientConfigPath_Orig, newMoveNextFolder);
 
                 string lastInstNext_Root = "";
                 string lastInstNext_Config = "";
                 if (LastMoveNextFolder.Trim() != "")
                 {
-                    lastInstNext_Root = update.ClientProgramPath_Orig + "\\" + LastMoveNextFolder;
-                    lastInstNext_Config = update.ClientConfigPath_Orig + "\\" + LastMoveNextFolder;
+                    lastInstNext_Root = Path.Combine(update.ClientProgramPath_Orig, LastMoveNextFolder);
+                    lastInstNext_Config = Path.Combine(update.ClientConfigPath_Orig, LastMoveNextFolder);
                 }
 
-                update.logPathPMDS = @update.ServerConfigPath + "\\log";
+                update.logPathPMDS = Path.Combine(update.ServerConfigPath, "log");
                 this.checkPath(update.logPathPMDS, "logPathPMDS is emtpy in launcher.config", false, true);
                 update.logPathUpdate = update.logPathPMDS;
 
-                update.ActualVersion = @ConfigFile.getValue("Main", "ActualVersion", false);
-                update.UpdateVersion     = @ConfigFile.getValue("Main", "UpdateVersion", false);
-                update.InfoUpdate = @ConfigFile.getValue("Main", "InfoUpdate", false);
+                update.ActualVersion = ConfigFile.getValue("Main", "ActualVersion", false);
+                update.UpdateVersion = ConfigFile.getValue("Main", "UpdateVersion", false);
+                update.InfoUpdate = ConfigFile.getValue("Main", "InfoUpdate", false);
 
                 this.checkPath(update.ServerProgramPath, "ServerProgramPath not exists or is emtpy in launcher.config", true, false);
                 this.checkPath(update.ServerConfigPath, "ServerConfigPath not exists or is emtpy in launcher.config", true, false);
@@ -126,17 +119,14 @@ namespace Launcher
                 string ActualVersionTmp = update.ActualVersion;
                 if (update.UpdateVersion.Trim() != "")
                 {
-                    //string sActVersion = update.ClientProgramPath + "\\" + update.ActualVersion;
-                    //if (System.IO.Directory.Exists(sActVersion))
-                    //{
-                        if (!update.InfoUpdate.Trim().ToLower().Equals(("1").Trim().ToLower()))
-                        {
-                            bShowInfoUpdate = false;
-                        }
-                        update.ActualVersion = update.UpdateVersion.Trim();
-                        bDoUpdate = true;
-                    //}
+                    if (!update.InfoUpdate.Trim().Equals("1"))
+                    {
+                        bShowInfoUpdate = false;
+                    }
+                    update.ActualVersion = update.UpdateVersion.Trim();
+                    bDoUpdate = true;
                 }
+
                 if (update.ActualVersion.Trim() == "")
                 {
                     StartFromShareBack = false;
@@ -148,15 +138,7 @@ namespace Launcher
                     return false;
                 }
 
-                //bool abort = false;
                 bool installUpdate = true;
-                //this.checkPMDSIsRunning(ref abort, ref installUpdate);
-                //if (abort)
-                //{
-                //    abortBack = abort;
-                //    return false;
-                //}
-
                 bool bSwitchedBackToActualVersion = false;
                 if (installUpdate)
                 {
@@ -169,7 +151,6 @@ namespace Launcher
                             bShowInfoUpdate = true;
                             bSwitchedBackToActualVersion = true;
                             FirstInstallation = true;
-                            //throw new Exception("update.run: bDoUpdate - Directory '" + lastInstNext_Root + "' on client not exists!");
                         }
                         if (lastInstNext_Config.Trim() == "" || !System.IO.Directory.Exists(lastInstNext_Config))
                         {
@@ -178,37 +159,25 @@ namespace Launcher
                             bShowInfoUpdate = true;
                             bSwitchedBackToActualVersion = true;
                             FirstInstallation = true;
-                            //throw new Exception("update.run: bDoUpdate - Directory '" + lastInstNext_Config + "' on client not exists!");
                         }
 
                         if (!bSwitchedBackToActualVersion)
                         {
-                            string InstPathRoot = update.ClientProgramPath + "\\" + update.ActualVersion.Trim();
-                            string InstPathConfig = update.ClientConfigPath + "\\" + update.ActualVersion.Trim();
-                            //if (System.IO.Directory.Exists(InstPathRoot))
-                            //{
-                            //    throw new Exception("update.run: bDoUpdate - Root-Directory '" + InstPathRoot + "' for new installation on client not exists!");
-                            //}
-                            //if (System.IO.Directory.Exists(InstPathConfig))
-                            //{
-                            //    throw new Exception("update.run: bDoUpdate - Config-directory '" + InstPathConfig + "' for new installation on client not exists!");
-                            //}
+                            string InstPathRoot = Path.Combine(update.ClientProgramPath, update.ActualVersion.Trim());
+                            string InstPathConfig = Path.Combine(update.ClientConfigPath, update.ActualVersion.Trim());
 
                             if (!System.IO.Directory.Exists(InstPathRoot.Trim()))
                             {
-                                update.runGarbColl();
                                 System.IO.Directory.Move(lastInstNext_Root, InstPathRoot);
-                                update.runGarbColl();
                             }
                             else
                             {
                                 bDoUpdate = false;
                             }
+
                             if (!System.IO.Directory.Exists(InstPathConfig.Trim()))
                             {
-                                update.runGarbColl();
                                 System.IO.Directory.Move(lastInstNext_Config, InstPathConfig);
-                                update.runGarbColl();
                             }
                             else
                             {
@@ -235,7 +204,7 @@ namespace Launcher
                     {
                         StartFromShareBack = false;
                         abortBack = true;
-                        System.Windows.Forms.MessageBox.Show("Version '" + update.ActualVersion.Trim()  + "' zum Starten am Server nicht gefunden!", "PMDS", MessageBoxButtons.OK);
+                        System.Windows.Forms.MessageBox.Show("Version '" + update.ActualVersion.Trim() + "' zum Starten am Server nicht gefunden!", "PMDS", MessageBoxButtons.OK);
                         return false;
                     }
 
@@ -244,11 +213,11 @@ namespace Launcher
                     frmInstallingNewVersion frmSplash = null;
                     if (dLastVersionFoundRoot != null)
                     {
-                        update.ClientProgramPath += "\\" + dirToInstallRoot;
+                        update.ClientProgramPath = Path.Combine(update.ClientProgramPath, dirToInstallRoot);
                         if (!System.IO.Directory.Exists(update.ClientProgramPath) || bDoUpdate)
                         {
                             this.showSplash(ref frmSplash, bShowInfoUpdate);
-                            this.copyFolder_rek(update.ServerProgramPath + "\\" + dirToInstallRoot, ref update.ClientProgramPath, ref iCounterCopySuccessfull, ref iCounterCopyError);
+                            this.copyFolder_rek(Path.Combine(update.ServerProgramPath, dirToInstallRoot), ref update.ClientProgramPath, ref iCounterCopySuccessfull, ref iCounterCopyError);
                             bNewVersionRootInstalled = true;
                             log.writeLog("Update sucessfully installed on machine " + System.Environment.MachineName.Trim() + " (Version root: " + dirToInstallRoot + ", Files copied to client:" + iCounterCopySuccessfull.ToString() + ")!", false);
                             update.dirVersionInstalled_Root = update.ClientProgramPath;
@@ -261,17 +230,11 @@ namespace Launcher
 
                     if (dLastVersionFoundConfig != null)
                     {
-                        //var file = new FileInfo(@update.ClientConfigPath );
-                        //var parentDir1 = file.Directory.FullName;
-
-                        //file = new FileInfo(parentDir1);
-                        //var parentDir2 = file.Directory.FullName;
-                        //var FoldernameConfig = file.Directory.Name;
-                        update.ClientConfigPath += "\\" + dirToInstallConfig;
+                        update.ClientConfigPath = Path.Combine(update.ClientConfigPath, dirToInstallConfig);
                         if (!System.IO.Directory.Exists(update.ClientConfigPath) || bDoUpdate)
                         {
                             this.showSplash(ref frmSplash, bShowInfoUpdate);
-                            this.copyFolder_rek(update.ServerConfigPath + "\\" + dirToInstallConfig, ref update.ClientConfigPath, ref iCounterCopySuccessfull, ref iCounterCopyError);
+                            this.copyFolder_rek(Path.Combine(update.ServerConfigPath, dirToInstallConfig), ref update.ClientConfigPath, ref iCounterCopySuccessfull, ref iCounterCopyError);
                             bNewVersionConfigInstalled = true;
                             log.writeLog("Update sucessfully installed on machine " + System.Environment.MachineName.Trim() + " (Version config: " + dirToInstallRoot + ", Files copied to client:" + iCounterCopySuccessfull.ToString() + ")!", false);
                             update.dirVersionInstalled_Config = update.ClientConfigPath;
@@ -287,14 +250,8 @@ namespace Launcher
                         frmSplash.Close();
                     }
 
-                    //update.ClientConfigPath  += "\\config";
-                    update.sProgramPath = update.ClientProgramPath + "\\bin";
-                    update.sConfigPath = update.ClientConfigPath + "\\Config";
-
-                    //update.ClientConfigPath  ClientConfig += "\\pmds\\pmds\\config";
-                    //update.sProgramPath = update.ClientProgramPath  + "\\bin";
-                    ////update.sConfigPath = update.ClientConfigPath  + "\\pmds\\pmds\\config" + "\\config";
-                    //update.sConfigPath = @System.IO.Directory.GetParent(update.ClientConfigPath ) + "";
+                    update.sProgramPath = Path.Combine(update.ClientProgramPath, "bin");
+                    update.sConfigPath = Path.Combine(update.ClientConfigPath, "Config");
 
                     if (iCounterCopyError > 0)
                     {
@@ -331,8 +288,8 @@ namespace Launcher
                 }
                 else
                 {
-                    update.sProgramPath = update.ClientProgramPath + "\\bin";
-                    update.sConfigPath = update.ClientConfigPath + "\\Config";
+                    update.sProgramPath = Path.Combine(update.ClientProgramPath, "bin");
+                    update.sConfigPath = Path.Combine(update.ClientConfigPath, "Config");
                 }
 
                 if (update.dirVersionInstalled_Root.Trim() != "" && update.dirVersionInstalled_Config.Trim() != "")
@@ -360,19 +317,21 @@ namespace Launcher
             try
             {
                 SortedList<string, string> lstVersionsFound = new SortedList<string, string>();
-                System.IO.DirectoryInfo dirSearchInfoServer = new DirectoryInfo(@FolderFromTmp);
+                System.IO.DirectoryInfo dirSearchInfoServer = new DirectoryInfo(FolderFromTmp);
                 foreach (DirectoryInfo dirInfo in dirSearchInfoServer.GetDirectories())
                 {
                     try
                     {
-                        if (dirInfo.Name.Trim().ToLower().StartsWith(("Recent.x86").Trim().ToLower()) &&
-                            !dirInfo.Name.Trim().ToLower().Contains(("Copy").Trim().ToLower()) && !dirInfo.Name.Trim().ToLower().Contains(("Kopie").Trim().ToLower()) &&
-                            dirInfo.Name.Trim().ToLower().Equals(update.ActualVersion.Trim().ToLower()))
+                        string dirInfoName = dirInfo.Name.Trim().ToLower();
+                        if (dirInfoName.StartsWith(("recent.x86"))
+                            && !dirInfoName.Contains("copy")
+                            && !dirInfoName.Contains("kopie")
+                            && dirInfoName.Equals(update.ActualVersion.Trim().ToLower()))
                         {
                             lstVersionsFound.Add(dirInfo.Name.Trim(), dirInfo.Name.Trim());
                             ActualVersionFoundOnServer = true;
                         }
-                        
+
                     }
                     catch (Exception ex2)
                     {
@@ -385,10 +344,11 @@ namespace Launcher
                 {
                     try
                     {
-                        if (dirInfo.Name.Trim().ToLower().StartsWith(("Recent.x86").Trim().ToLower()) &&
-                            !dirInfo.Name.Trim().ToLower().Equals(update.ActualVersion.Trim().ToLower()))
+                        string dirInfoName = dirInfo.Name.Trim().ToLower();
+                        if (dirInfoName.StartsWith("recent.x86")
+                            && !dirInfoName.Equals(update.ActualVersion.Trim().ToLower()))
                         {
-                            lstVersionsRemove.Add(dirInfo.Name.Trim(), FolderToTmp + "\\" + dirInfo.Name.Trim());
+                            lstVersionsRemove.Add(dirInfo.Name.Trim(), Path.Combine(FolderToTmp, dirInfo.Name.Trim()));
                         }
 
                     }
@@ -402,53 +362,38 @@ namespace Launcher
                 string sDirToinstall = "";
                 foreach (KeyValuePair<string, string> dirPair in lstVersionsFound)
                 {
-                    string dir = dirPair.Key;
-                    int lastPoint = dir.Trim().LastIndexOf(".");
-                    string sDate = dir.Trim().Substring(lastPoint + 1, dir.Trim().Length - lastPoint - 1);
-                    //if (sDate.Length == 6)
-                    //{
-                        string sYear = "20" + sDate.Trim().Substring(0, 2);
-                        string sMonth = sDate.Trim().Substring(2, 2);
-                        string sDay = sDate.Trim().Substring(4, 2);
-                        //int iVersionNumberDay = -1;
-                        //if (sDate.Length == 8)
-                        //{
-                        //    string sVersionNumberDay = sDate.Trim().Substring(7, 1);
-                        //    iVersionNumberDay = System.Convert.ToInt32(sVersionNumberDay.Trim());
-                        //}
+                    string dir = dirPair.Key.Trim();
+                    string sDate = dirPair.Key.Split('.').Last().Trim();
 
-                        DateTime dVersion = new DateTime(System.Convert.ToInt32(sYear), System.Convert.ToInt32(sMonth), System.Convert.ToInt32(sDay), 0, 0, 0);
-                        if (dLastVersion == null)
+                    string sYear = "20" + sDate.Substring(0, 2);
+                    string sMonth = sDate.Substring(2, 2);
+                    string sDay = sDate.Substring(4, 2);
+
+                    DateTime dVersion = new DateTime(System.Convert.ToInt32(sYear), System.Convert.ToInt32(sMonth), System.Convert.ToInt32(sDay), 0, 0, 0);
+                    if (dLastVersion == null)
+                    {
+                        dLastVersion = dVersion.Date;
+                        sDirToinstall = dir;
+                    }
+                    else
+                    {
+                        if (dVersion.Date >= dLastVersion.Value.Date)
                         {
                             dLastVersion = dVersion.Date;
-                            sDirToinstall = dir.Trim();
+                            sDirToinstall = dir;
                         }
-                        else
-                        {
-                            if (dVersion.Date >= dLastVersion.Value.Date)
-                            {
-                                dLastVersion = dVersion.Date;
-                                sDirToinstall = dir.Trim();
-                            }
-                        }
-
-                    //}
-                    //else
-                    //{
-                    //    throw new Exception("Launcher.update.searchLastVersionToInstall: sDate.Length!=6 in dir '" + dir +"'!");
-                    //}
+                    }
                 }
 
                 dVersionFoundBack = dLastVersion;
                 dirToInstallBack = sDirToinstall.Trim();
-
             }
             catch (Exception ex)
             {
-                throw new Exception("Launcher.update.searchLastVersionToInstall: Folder search " + FolderFromTmp +  " - " + "\r\n" + ex.ToString());
+                throw new Exception("Launcher.update.searchLastVersionToInstall: Folder search " + FolderFromTmp + " - " + "\r\n" + ex.ToString());
             }
         }
-        public void searchNewNextFolder(ref string FolderRootToTmp, ref string FolderConfigToTmp, ref string newMoveNextFolder, ref string LastMoveNextFolder, ref SortedList<string, 
+        public void searchNewNextFolder(ref string FolderRootToTmp, ref string FolderConfigToTmp, ref string newMoveNextFolder, ref string LastMoveNextFolder, ref SortedList<string,
                                         string> lstVersionsRemoveRootTmp, ref SortedList<string, string> lstVersionsRemoveConfigTmp)
         {
             try
@@ -462,8 +407,10 @@ namespace Launcher
                     {
                         try
                         {
-                            if (dirInfo.Name.Trim().ToLower().StartsWith(("Next.Recent.x86.").Trim().ToLower()) &&
-                                !dirInfo.Name.Trim().ToLower().Contains(("Copy").Trim().ToLower()) && !dirInfo.Name.Trim().ToLower().Contains(("Kopie").Trim().ToLower()))
+                            string dirInfoName = dirInfo.Name.Trim().ToLower();
+                            if (dirInfoName.StartsWith("next.recent.x86.")
+                                && !dirInfoName.Contains("copy")
+                                && !dirInfoName.Contains("kopie"))
                             {
                                 string dir = dirInfo.FullName.Trim();
                                 int lastPoint = dir.Trim().LastIndexOf(".");
@@ -493,15 +440,14 @@ namespace Launcher
                 {
                     lastNrDirMoveNext += 1;
                 }
-                newMoveNextFolder = "\\Next.Recent.x86." + lastNrDirMoveNext.ToString();
+                newMoveNextFolder = "Next.Recent.x86." + lastNrDirMoveNext.ToString();
 
 
                 foreach (KeyValuePair<string, string> dirMoveNextPair in lstMoveNextDirs)
                 {
-                    lstVersionsRemoveRootTmp.Add(dirMoveNextPair.Key.Trim(), FolderRootToTmp + "\\" + dirMoveNextPair.Key.Trim());
-                    lstVersionsRemoveConfigTmp.Add(dirMoveNextPair.Key.Trim(), FolderConfigToTmp + "\\" + dirMoveNextPair.Key.Trim());
+                    lstVersionsRemoveRootTmp.Add(dirMoveNextPair.Key.Trim(), Path.Combine(FolderRootToTmp, dirMoveNextPair.Key.Trim()));
+                    lstVersionsRemoveConfigTmp.Add(dirMoveNextPair.Key.Trim(), Path.Combine(FolderConfigToTmp, dirMoveNextPair.Key.Trim()));
                 }
-
             }
             catch (Exception ex)
             {
@@ -533,7 +479,6 @@ namespace Launcher
                 {
                     try
                     {
-                        //System.IO.File.Copy(file_name, FolderToTmp + file_name.Substring(FolderFromTmp.Length));
                         string onlyFileName = System.IO.Path.GetFileName(FileInFolderFound.Trim());
                         string OrigDirName = System.IO.Path.GetDirectoryName(FileInFolderFound.Trim());
                         this.CopyFile(ref OrigDirName, ref FolderToTmp, ref onlyFileName,
@@ -548,64 +493,53 @@ namespace Launcher
 
                 foreach (string SubFolder in System.IO.Directory.GetDirectories(FolderFromTmp, "*", System.IO.SearchOption.TopDirectoryOnly))
                 {
-                    int iLastFolder = SubFolder.Trim().LastIndexOf("\\");
-                    string LastDir = SubFolder.Substring(iLastFolder + 1, SubFolder.Trim().Length - iLastFolder - 1);
 
-                    if (!LastDir.Trim().ToLower().Equals(("Log").Trim().ToLower()) && !LastDir.Trim().ToLower().Equals(("HAG_Zertifikat").Trim().ToLower()))
+                    string LastDir = new DirectoryInfo(SubFolder).Name.Trim().ToLower();
+                    if (!LastDir.Equals("log")
+                         && !LastDir.Equals("hag_zertifikat"))
                     {
                         string FolderToTmpSub = System.IO.Path.Combine(FolderToTmp, LastDir);
-
                         this.copyFolder_rek(SubFolder, ref FolderToTmpSub, ref iCounterCopySuccessfull, ref iCounterCopyError);
-                        //System.IO.Directory.CreateDirectory(FolderToTmp + dir.Substring(FolderFromTmp.Length));
-                    }
-                    else
-                    {
-                        bool bDirDoNotCopy = true;
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("Launcher.update.copyFolder_rek:" + ex.ToString());
             }
         }
-
-        public void CopyFile(ref string FolderFromTmp, ref string FolderToTmp, ref string FileName, 
+        public void CopyFile(ref string FolderFromTmp, ref string FolderToTmp, ref string FileName,
                                 ref int iCounterCopySuccessfull, ref int iCounterCopyError)
         {
             try
             {
                 try
                 {
-                    if (FolderFromTmp.Trim() == "")
+                    string sFolderFromTmp = FolderFromTmp.Trim().ToLower();
+                    string sFolderToTmp = FolderToTmp.Trim().ToLower();
+                    string sFileName = FileName.Trim().ToLower();
+
+                    if (sFolderFromTmp == "")
                     {
                         throw new Exception("Launcher.update.CopyFile: FolderFromTmp is empty");
                     }
-                    if (FolderToTmp.Trim() == "")
+
+                    if (sFolderToTmp == "")
                     {
                         throw new Exception("Launcher.update.CopyFile: FolderToTmp is empty");
                     }
-                    if (FolderFromTmp.Trim().ToLower().Equals(FolderToTmp.Trim().ToLower()))
+
+                    if (FolderFromTmp.Equals(FolderToTmp))
                     {
                         throw new Exception("Launcher.update.CopyFile: Error FolderFromTmp = FolderToTmp !");
                     }
+
                     string fileFrom = "";
                     string fileTo = "";
-                    fileFrom = FolderFromTmp.Trim() + "\\" + FileName.Trim() + "";
-                    //if (!System.IO.File.Exists(fileFrom))
-                    //{
-                    //    throw new Exception("Launcher.update.CopyFile: fileFrom '" + fileFrom + "' not exists!");
-                    //}
+                    fileFrom = Path.Combine(FolderFromTmp.Trim(), FileName.Trim());
                     System.IO.FileInfo FileInfoFrom = new System.IO.FileInfo(fileFrom);
                     FileInfoFrom.IsReadOnly = false;
-
-                    fileTo = FolderToTmp.Trim() + "\\" + FileName.Trim() + "";
-
-                    //if (!System.IO.Directory.Exists(FolderToTmp))
-                    //{
-                    //    System.IO.Directory.CreateDirectory(FolderToTmp);
-                    //}
+                    fileTo = Path.Combine(FolderToTmp.Trim(), FileName.Trim());
 
                     if (System.IO.File.Exists(fileTo))
                     {
@@ -627,28 +561,6 @@ namespace Launcher
                     {
                         throw new Exception("Launcher.update.CopyFile: error copy file '" + fileTo + "' to client '" + System.Environment.MachineName + "' when install new version!" + "\r\n" + "\r\n" + ex5.ToString());
                     }
-          
-                    //if (!System.IO.File.Exists(fileTo))
-                    //{
-                    //    throw new Exception("Launcher.update.CopyFile: fileTo '" + fileTo + "' not copied!");
-                    //}
-                    //else
-                    //{
-                    //    System.IO.FileInfo FileInfoTo = new System.IO.FileInfo(fileTo);
-                    //    if (FileInfoTo.Length != FileInfoFrom.Length)
-                    //    {
-                    //        throw new Exception("Launcher.update.CopyFile: client '" + System.Environment.MachineName + "' - Length of fileFrom '" + fileFrom + "' and fileTo '" + fileTo + "' not the same!");
-                    //    }
-                    //    if (FileInfoTo.LastWriteTime != FileInfoFrom.LastWriteTime)
-                    //    {
-                    //        throw new Exception("Launcher.update.CopyFile: client '" + System.Environment.MachineName + "' - LastWriteTime of fileFrom '" + fileFrom + "' and fileTo '" + fileTo + "' not the same!");
-                    //    }
-                    //    if (FileInfoTo.LastWriteTimeUtc != FileInfoFrom.LastWriteTimeUtc)
-                    //    {
-                    //        throw new Exception("Launcher.update.CopyFile: client '" + System.Environment.MachineName + "' - LastWriteTimeUtc of fileFrom '" + fileFrom + "' and fileTo '" + fileTo + "' not the same!");
-                    //    }
-                    //}
-
                     iCounterCopySuccessfull += 1;
 
                 }
@@ -656,10 +568,6 @@ namespace Launcher
                 {
                     throw new Exception("Launcher.update.CopyFile:" + ex.ToString());
                 }
-
-                //update.runGarbColl();
-                //Application.DoEvents();
-
             }
             catch (Exception ex)
             {
@@ -694,43 +602,37 @@ namespace Launcher
                         bool bClearInst = true;
                         try
                         {
-                            string sCheckPMDSMainDir = dirPairRoot.Value + "\\bin";
+                            string sCheckPMDSMainDir = Path.Combine(dirPairRoot.Value, "bin");
                             if (System.IO.Directory.Exists(sCheckPMDSMainDir))
                             {
-                                string sExeFile = sCheckPMDSMainDir + "\\PMDS.Main.exe";
+                                string sExeFile = Path.Combine(sCheckPMDSMainDir, "PMDS.Main.exe");
                                 System.IO.File.Delete(sExeFile.Trim());
                             }
                         }
+
+                        catch (UnauthorizedAccessException ex)
+                        {
+                            bClearInst = false;
+                        }
+
                         catch (Exception ex3)
                         {
-                            string sExcept = ex3.ToString();
-                            if (sExcept.Trim().ToLower().Contains(("System.UnauthorizedAccessException").Trim().ToLower()))
-                            {
-                                bClearInst = false;
-                            }
-                            else
-                            {
-                                throw new Exception("th_removePMDSInstallation: " + ex3.ToString());
-                            }
+                            throw new Exception("th_removePMDSInstallation: " + ex3.ToString());
                         }
 
                         if (bClearInst)
                         {
-                            //System.Windows.Forms.MessageBox.Show("Root: " + dirPairRoot.Value);
                             if (System.IO.Directory.Exists(dirPairRoot.Value))
                             {
                                 this.DeleteDirectory(dirPairRoot.Value);
                             }
-                            
-                            //System.IO.Directory.Delete(dirPairRoot.Value, true);
+
                             if (update.lstVersionsRemoveConfig.ContainsKey(dirPairRoot.Key))
                             {
                                 string fullPathConfigToDelete = update.lstVersionsRemoveConfig[dirPairRoot.Key];
-                                //System.Windows.Forms.MessageBox.Show("Config: " + fullPathConfigToDelete);
                                 if (System.IO.Directory.Exists(fullPathConfigToDelete))
                                 {
                                     this.DeleteDirectory(fullPathConfigToDelete);
-                                    //System.IO.Directory.Delete(fullPathConfigToDelete, true);
                                 }
                             }
                         }
@@ -740,10 +642,8 @@ namespace Launcher
                     {
                         string sExcept45 = "Launcher.update.th_removePMDSInstallation:" + ex45.ToString();
                         log.writeLog(sExcept45, true);
-                        //throw new Exception("Launcher.update.th_removePMDSInstallation:" + ex45.ToString());
                     }
                 }
-
                 update.thread_RemoveOldInst = true;
 
             }
@@ -762,8 +662,6 @@ namespace Launcher
             {
                 Thread t = new Thread(new ThreadStart(this.th_CopyActInstToNext));
                 t.Start();
-
-                //this.th_CopyActInstToNext();
             }
             catch (Exception ex)
             {
@@ -775,33 +673,25 @@ namespace Launcher
             try
             {
                 update.thread_CopyNextInstReady = false;
-                update.runGarbColl();
 
                 if (System.IO.Directory.Exists(update.InstNext_Root))
                 {
-                    update.runGarbColl();
                     this.DeleteDirectory(update.InstNext_Root);
-                    update.runGarbColl();
-                }
-                update.runGarbColl();
-                if (System.IO.Directory.Exists(update.InstNext_Config))
-                {
-                    update.runGarbColl();
-                    this.DeleteDirectory(update.InstNext_Config);
-                    update.runGarbColl();
                 }
 
-                update.runGarbColl();
+                if (System.IO.Directory.Exists(update.InstNext_Config))
+                {
+                    this.DeleteDirectory(update.InstNext_Config);
+                }
+
                 int iCounterCopySuccessfull = 0;
                 int iCounterCopyError = 0;
                 this.copyFolder_rek(update.dirVersionInstalled_Root.Trim(), ref update.InstNext_Root, ref iCounterCopySuccessfull, ref iCounterCopyError);
 
-                update.runGarbColl();
                 iCounterCopySuccessfull = 0;
                 iCounterCopyError = 0;
                 this.copyFolder_rek(update.dirVersionInstalled_Config.Trim(), ref update.InstNext_Config, ref iCounterCopySuccessfull, ref iCounterCopyError);
 
-                //System.GC.Collect();
                 update.thread_CopyNextInstReady = true;
             }
             catch (Exception ex)
@@ -813,7 +703,6 @@ namespace Launcher
             }
         }
 
-
         public void DeleteDirectory(string path)
         {
             try
@@ -824,20 +713,12 @@ namespace Launcher
                     info.Attributes = FileAttributes.Normal;
                 }
                 directory.Delete(true);
-                //System.GC.Collect();
-
-                //File.SetAttributes(@"C:\temp\TestDelete", FileAttributes.Normal);
-                ////FileInfo fileRoot = new FileInfo(@"C:\temp\TestDelete");
-                ////fileRoot.IsReadOnly = false;
-                //System.IO.Directory.Delete(@"C:\temp\TestDelete", true);
-
             }
             catch (Exception ex)
             {
                 throw new Exception("DeleteDirectory: " + ex.ToString());
             }
         }
-
 
         public void checkPMDSIsRunning(ref bool abort, ref bool installUpdate)
         {
@@ -848,7 +729,7 @@ namespace Launcher
                 Process[] processes = Process.GetProcesses();
                 foreach (Process process in processes)
                 {
-                    if (process.ProcessName.Trim().ToLower().Equals(("PMDS.Main").Trim().ToLower()))
+                    if (process.ProcessName.Trim().ToLower().Equals("pmds.main"))
                     {
                         lstPMDSRunning.Add(process);
                     }
@@ -856,7 +737,7 @@ namespace Launcher
 
                 if (lstPMDSRunning.Count > 0)
                 {
-                    DialogResult dialogRes = System.Windows.Forms.MessageBox.Show("Eine neue Version von PMDS wurde zur Installation gefunden!" + "\r\n" + 
+                    DialogResult dialogRes = System.Windows.Forms.MessageBox.Show("Eine neue Version von PMDS wurde zur Installation gefunden!" + "\r\n" +
                                                                                     "Soll PMDS beendet werden und das Update durchgeführt werden?", "PMDS Update", MessageBoxButtons.YesNoCancel);
                     if (dialogRes == DialogResult.Yes)
                     {
@@ -883,7 +764,6 @@ namespace Launcher
                 throw new Exception("Launcher.update.checkPMDSIsRunning:" + ex.ToString());
             }
         }
-
         public void checkPath(string sPath, string Excepinfo, bool checkPathExist, bool createPath)
         {
             try
@@ -923,7 +803,6 @@ namespace Launcher
             }
         }
 
-
         public void showSplash(ref frmInstallingNewVersion frmSplash, bool bShowInfoUpdate)
         {
             try
@@ -956,19 +835,5 @@ namespace Launcher
                 System.Threading.Thread.Sleep(1);
             }
         }
-
-        public static void runGarbColl()
-        {
-            try
-            {
-                //System.GC.Collect();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Launcher.update.runGarbColl:" + ex.ToString());
-            }
-        }
-
     }
-
 }

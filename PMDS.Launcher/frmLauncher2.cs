@@ -382,11 +382,7 @@ namespace Launcher
                             else
                                 return;
 
-                        string Version = "";
-                        Version = this.config.getProgramRoot(update.sProgramPath);
-                        Version = Version.Substring(Version.LastIndexOf("\\") + 1);
-
-
+                        string Version = new DirectoryInfo(this.config.getProgramRoot(update.sProgramPath)).Name;
 
                         //Prüfen, ob Config-File vorhanden ist
                         string tstConfigPath = update.sConfigPath.ToString();
