@@ -320,7 +320,6 @@ namespace PMDSClient.Sitemap
             try
             {
                 ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
-                throw new Exception("Test Error");
 
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 //Thread.Sleep(5000);
