@@ -654,7 +654,7 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Rechte wurde geändert");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung aktiv");
-
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} min aktiv)");
 
                 DialogResult res2 = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Derzeit ist eine ELGA-Sitzung aktiv." + "\r\n" +
                                                                                             "Wollen Sie sich von der ELGA-Sitzung wirklich abmelden?", "ELGA", MessageBoxButtons.YesNo);

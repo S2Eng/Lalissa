@@ -99,7 +99,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.init: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Wcf-Service initialisieren fehlgeschlagen!") + "WCFServiceClientPMDS.init: " + ex.ToString());
             }
         }
 
@@ -149,7 +149,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                PMDS.Global.ENV.HandleException(ex, "Exception", true);
+                PMDS.Global.ENV.HandleException(ex, "Exception", true, true, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wcf-Service per Thread initialisieren fehlgeschlagen!"));
             }
         }
 
@@ -216,7 +216,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.getWCFClient: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Wcf-Client-Objekt erstellen fehlgeschlagen!") + "WCFServiceClientPMDS.getWCFClient: " + ex.ToString());
             }
         }
 
@@ -242,7 +242,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.getAllStammdaten: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Stammdaten vom Wcf-Service abholen fehlgeschlagen!") + "WCFServiceClientPMDS.getAllStammdaten: " + ex.ToString());
             }
         }
 
@@ -293,7 +293,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.genUrlWCFService: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Url für WCF-Service generieren fehlgeschlagen!") + "WCFServiceClientPMDS.genUrlWCFService: " + ex.ToString());
             }
         }
 
@@ -306,7 +306,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.sendExceptionAsSMTPEMail: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Exception per Wcf-Service versenden fehlgeschlagen!") + "WCFServiceClientPMDS.sendExceptionAsSMTPEMail: " + ex.ToString());
             }
         }
 
@@ -320,6 +320,7 @@ namespace PMDSClient.Sitemap
             try
             {
                 ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
+                throw new Exception("Test Error");
 
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(false);
                 //Thread.Sleep(5000);
@@ -336,7 +337,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-               throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Login ELGA fehlgeschlagen!") + "WCFServiceClientPMDS.ELGALogInHCP: " + ex.ToString());
             }
         }
         public bool ELGALogOut(Guid IDUser, bool lic_ELGA)
@@ -368,7 +369,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGALogOut: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Logout ELGA fehlgeschlagen!") + "WCFServiceClientPMDS.ELGALogOut: " + ex.ToString());
             }
         }
 
@@ -401,7 +402,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Suche Patienten in ELGA fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAQueryPatients: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGAInsertPatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, string authUniversalID, ELGABALeTypeUpdatePatients ELGABALeTypeUpdatePatients)
@@ -435,7 +436,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Patient in ELGA einfügen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAInsertPatient: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGAUpdatePatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, ELGABALeTypeUpdatePatients ELGABALeTypeUpdatePatients)
@@ -468,7 +469,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Patient in ELGA updaten fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAUpdatePatient: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGAAddContactAdmission(string LocalPatientID)
@@ -510,7 +511,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Patientenkontakt in ELGA hinzufügen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAAddContactAdmission: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGAInvalidateContact(string ContactID)
@@ -541,7 +542,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Patientenkontakt aus ELGA löschen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAInvalidateContact: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGAAddContactDischarge(string LocalPatientID)
@@ -573,7 +574,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAAddContactDischarge: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Patientenkontakt in ELGA deaktivieren fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAAddContactDischarge: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGAListContacts(string LocalPatientID)
@@ -604,7 +605,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAListContacts: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Patientenkontakte aus ELGA abfragen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAListContacts: " + ex.ToString());
             }
         }
 
@@ -647,7 +648,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAQueryGDAs: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Suche GDA in ELGA fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAQueryGDAs: " + ex.ToString());
             }
         }
 
@@ -681,7 +682,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAQueryDocuments: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Suche Dokumente in ELGA fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAQueryDocuments: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGARetrieveDocument(string ELGAPatientLocalID, string UniqueID)
@@ -714,7 +715,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGARetrieveDocument: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Dokumentinhalt aus ELGA abholen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGARetrieveDocument: " + ex.ToString());
             }
         }
         public ELGAParOutDto ELGAAddDocument(string ELGAPatientLocalID, string KlinikName, string KlinikOrganisationOID, string Author, string DocumentName, Byte[] bDocu, string Person, string Description,
@@ -760,7 +761,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ELGAAddDocument: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Dokument in ELGA ablegen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAAddDocument: " + ex.ToString());
             }
         }
         public ELGAParOutDto ElgaDeprecateDocument(string ELGAPatientLocalID, string DocuUniqueId, string KlinikName, string KlinikOrganisationOID)
@@ -802,7 +803,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.ElgaDeprecateDocument: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Dokument in ELGA stornieren fehlgeschlagen!") + "WCFServiceClientPMDS.ElgaDeprecateDocument: " + ex.ToString());
             }
         }
         public genCDARes genCDA2(CDAeTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
@@ -840,7 +841,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("CDA-Dokument generieren fehlgeschlagen!") + "WCFServiceClientPMDS.genCDA2" + ex.ToString());
             }
         }
 
@@ -894,7 +895,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServiceClientPMDS.stopCheckWCFServiceLocal: " + ex.ToString());
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Lokales WCF-Service beenden fehlgeschlagen!") + "WCFServiceClientPMDS.stopCheckWCFServiceLocal: " + ex.ToString());
             }
         }
         public int checkPMDSRunning()

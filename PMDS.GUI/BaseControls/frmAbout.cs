@@ -773,7 +773,7 @@ namespace PMDS
             }
             catch (Exception ex)
             {
-                PMDS.Global.ENV.HandleException(ex);
+                PMDS.Global.ENV.HandleException(ex, "", true, true, "Error in a Text-Function!");
             }
             finally
             {
