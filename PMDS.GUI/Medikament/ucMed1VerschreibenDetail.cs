@@ -369,6 +369,7 @@ namespace PMDS.GUI
                     }
                 }
 
+                this.LoadRezeptEintraege();
                 //this.InfoAbgesetzt(r);
             }
         }
@@ -506,6 +507,8 @@ namespace PMDS.GUI
 
                     PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, row.IDMedikament, sAktion, false, System.Guid.Empty,
                                                                 frm.ucRezeptEintrag1.RezeptEintrag.HAGPflichtigJN);
+
+                    this.LoadRezeptEintraege();
                 }
 
             }
