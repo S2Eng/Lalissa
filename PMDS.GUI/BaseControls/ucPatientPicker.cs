@@ -101,6 +101,7 @@ namespace PMDS.GUI
                 v = this.getNewValueListForGrid("MT13", QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_MedizinischeTypen.ico_Diabetes));
                 v = this.getNewValueListForGrid("MT14", QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_MedizinischeTypen.ico_Nuechtern));
                 v = this.getNewValueListForGrid("MT15", QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_MedizinischeTypen.ico_Befunde));
+                v = this.getNewValueListForGrid("SofortmassnahmeJN", QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenakt.ico_Ausrufezeichen));
 
                 this.setValueNotfall("Notfall");
                 this.SetValueToColor("WundeJN", "W", Color.DarkTurquoise, Color.Black);

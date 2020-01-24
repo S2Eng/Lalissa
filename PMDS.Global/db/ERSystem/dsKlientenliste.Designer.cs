@@ -990,6 +990,10 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnPalliativ;
             
+            private global::System.Data.DataColumn columnKlientennummer;
+            
+            private global::System.Data.DataColumn columnSofortmassnahmeJN;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public vKlientenlisteDataTable() {
@@ -1345,6 +1349,22 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KlientennummerColumn {
+                get {
+                    return this.columnKlientennummer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SofortmassnahmeJNColumn {
+                get {
+                    return this.columnSofortmassnahmeJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1420,7 +1440,9 @@ namespace PMDS.Global.db.ERSystem {
                         int Datenschutz, 
                         int Anatomie, 
                         int KZUeberlebender, 
-                        int Palliativ) {
+                        int Palliativ, 
+                        string Klientennummer, 
+                        int SofortmassnahmeJN) {
                 vKlientenlisteRow rowvKlientenlisteRow = ((vKlientenlisteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PatientName,
@@ -1462,7 +1484,9 @@ namespace PMDS.Global.db.ERSystem {
                         Datenschutz,
                         Anatomie,
                         KZUeberlebender,
-                        Palliativ};
+                        Palliativ,
+                        Klientennummer,
+                        SofortmassnahmeJN};
                 rowvKlientenlisteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowvKlientenlisteRow);
                 return rowvKlientenlisteRow;
@@ -1532,6 +1556,8 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnAnatomie = base.Columns["Anatomie"];
                 this.columnKZUeberlebender = base.Columns["KZUeberlebender"];
                 this.columnPalliativ = base.Columns["Palliativ"];
+                this.columnKlientennummer = base.Columns["Klientennummer"];
+                this.columnSofortmassnahmeJN = base.Columns["SofortmassnahmeJN"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1617,6 +1643,10 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnKZUeberlebender);
                 this.columnPalliativ = new global::System.Data.DataColumn("Palliativ", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPalliativ);
+                this.columnKlientennummer = new global::System.Data.DataColumn("Klientennummer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKlientennummer);
+                this.columnSofortmassnahmeJN = new global::System.Data.DataColumn("SofortmassnahmeJN", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSofortmassnahmeJN);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIDAufenthalt}, true));
                 this.columnPatientName.MaxLength = 100;
@@ -1628,6 +1658,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnAbwesenheit.MaxLength = 1000;
                 this.columnIDAufenthalt.AllowDBNull = false;
                 this.columnIDAufenthalt.Unique = true;
+                this.columnKlientennummer.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5313,7 +5344,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnIDPatient.AllowDBNull = false;
                 this.columnIDBenutzer.AllowDBNull = false;
                 this.columnKrankenkasse.AllowDBNull = false;
-                this.columnKrankenkasse.MaxLength = 255;
+                this.columnKrankenkasse.MaxLength = 100;
                 this.columnSVNr.AllowDBNull = false;
                 this.columnSVNr.MaxLength = 100;
             }
@@ -9975,6 +10006,38 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Klientennummer {
+                get {
+                    try {
+                        return ((string)(this[this.tablevKlientenliste.KlientennummerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Klientennummer in Tabelle vKlientenliste ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevKlientenliste.KlientennummerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int SofortmassnahmeJN {
+                get {
+                    try {
+                        return ((int)(this[this.tablevKlientenliste.SofortmassnahmeJNColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte SofortmassnahmeJN in Tabelle vKlientenliste ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablevKlientenliste.SofortmassnahmeJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsPatientNameNull() {
                 return this.IsNull(this.tablevKlientenliste.PatientNameColumn);
             }
@@ -10439,6 +10502,30 @@ namespace PMDS.Global.db.ERSystem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPalliativNull() {
                 this[this.tablevKlientenliste.PalliativColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsKlientennummerNull() {
+                return this.IsNull(this.tablevKlientenliste.KlientennummerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetKlientennummerNull() {
+                this[this.tablevKlientenliste.KlientennummerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSofortmassnahmeJNNull() {
+                return this.IsNull(this.tablevKlientenliste.SofortmassnahmeJNColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSofortmassnahmeJNNull() {
+                this[this.tablevKlientenliste.SofortmassnahmeJNColumn] = global::System.Convert.DBNull;
             }
         }
         
