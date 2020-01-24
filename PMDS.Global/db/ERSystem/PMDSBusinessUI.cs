@@ -1036,13 +1036,16 @@ namespace PMDS.Global.db.ERSystem
                 string[] FilesFoundInDirectory = System.IO.Directory.GetFiles(ConfigPath, "*.config", System.IO.SearchOption.TopDirectoryOnly);
                 foreach (string fil in FilesFoundInDirectory)
                 {
-                    string onlyFileName = System.IO.Path.GetFileName(fil.Trim());
+                    string onlyFileName = System.IO.Path.GetFileName(fil.Trim()).ToLower();
                     string OrigDirName = System.IO.Path.GetDirectoryName(fil.Trim());
-                    string sExtension = System.IO.Path.GetExtension(fil.Trim());
+                    string sExtension = System.IO.Path.GetExtension(fil.Trim()).ToLower();
 
-                    if (sExtension.Trim().ToLower().Equals((".config").Trim().ToLower()) && onlyFileName.Trim().ToLower().Contains(("PMDS").Trim().ToLower()) &&
-                        !onlyFileName.Trim().ToLower().Contains(("qs2").Trim().ToLower()) && !onlyFileName.Trim().ToLower().Contains(("Abrechnung").Trim().ToLower()) &&
-                        !onlyFileName.Trim().ToLower().Equals(("PMDS.Main.exe.config").Trim().ToLower()) && !onlyFileName.Trim().ToLower().Equals(("QS2.exe.config").Trim().ToLower()))
+                    if (sExtension.Equals(".config") 
+                        && onlyFileName.Contains("pmds") 
+                        && !onlyFileName.Contains("qs2") 
+                        && !onlyFileName.Contains("abrechnung") 
+                        && !onlyFileName.Equals("pmds.main.exe.config") 
+                        && !onlyFileName.Equals("qS2.exe.config"))
                     {
                         if (cboConfigFiles != null)
                         {

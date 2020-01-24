@@ -5638,67 +5638,67 @@ namespace PMDS.Global.db.ERSystem
                             IsNullable = true;
                         }
 
-                        if (infoCol.PrimitiveType.ToString().ToLower().EndsWith(("varchar").Trim().ToLower()))
+                        if (infoCol.PrimitiveType.ToString().EndsWith("varchar", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().ToLower().EndsWith(("varchar(max)").Trim().ToLower()))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("varchar(max)", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().ToLower().EndsWith(("nchar").Trim().ToLower()))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("nchar", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().ToLower().EndsWith(("char").Trim().ToLower()))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("char", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().ToLower().EndsWith(("nvarchar(max)").Trim().ToLower()))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("nvarchar(max)", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().ToLower().EndsWith(("text").Trim().ToLower()))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("text", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("bit").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("bit", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tBoolean;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("int").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("int", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tInteger;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("float").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("float", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tFloat;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("numeric").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("numeric", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tNumeric;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("decimal").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("decimal", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDecimal1;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("datetime").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("datetime", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDateTime;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("date").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("date", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDateTime;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("uniqueidentifier").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("uniqueidentifier", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tGuid;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("image").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("image"))
                         {
                             TypeCol = eTypeCol.tImage;
                         }
-                        else if (infoCol.TypeName.Trim().ToLower().EndsWith(("varbinary(max)").Trim().ToLower()))
+                        else if (infoCol.TypeName.Trim().EndsWith("varbinary(max)", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tBinary;
                         }
