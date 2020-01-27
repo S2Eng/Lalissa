@@ -103,6 +103,8 @@ Public Class contArchivSuch
     Public WithEvents UCheckEditorImGesamtarchivSuchen As Infragistics.Win.UltraWinEditors.UltraCheckEditor
     Public WithEvents PanelBenutzerauswahl As System.Windows.Forms.Panel
     Public WithEvents UGridSchlagwortkatalog As Infragistics.Win.UltraWinGrid.UltraGrid
+    Friend WithEvents DokumentenbezeichnungÄndernToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents DokumentenbezeichnungÄndernToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UGridDokumenteGefunden3 As Infragistics.Win.UltraWinGrid.UltraGrid
 
 
@@ -261,6 +263,8 @@ Public Class contArchivSuch
         Me.lasySucheSchlagwortkatalog2 = New Infragistics.Win.Misc.UltraGridBagLayoutManager(Me.components)
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UltraTabPageControl4.SuspendLayout()
         Me.PanelGrid.SuspendLayout()
         CType(Me.UGridDokumenteGefunden3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -365,14 +369,14 @@ Public Class contArchivSuch
         '
         'ContextMenuDokumenteListeC
         '
-        Me.ContextMenuDokumenteListeC.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DokumentHinzufügenToolStripMenuItem1, Me.ÖffnenLToolStripMenuItem, Me.MItemSpeichernUnterListeS, Me.ToolStripMenuItem5, Me.InDenPapierkorbLIToolStripMenuItem, Me.MItemDokumentLöschenOhnePapierkorbListeS, Me.ToolStripMenuItem3, Me.MItemInfoDokumentListeS})
+        Me.ContextMenuDokumenteListeC.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DokumentHinzufügenToolStripMenuItem1, Me.ÖffnenLToolStripMenuItem, Me.MItemSpeichernUnterListeS, Me.ToolStripMenuItem5, Me.DokumentenbezeichnungÄndernToolStripMenuItem1, Me.InDenPapierkorbLIToolStripMenuItem, Me.MItemDokumentLöschenOhnePapierkorbListeS, Me.ToolStripMenuItem3, Me.MItemInfoDokumentListeS})
         Me.ContextMenuDokumenteListeC.Name = "ContextMenuDokumenteExplorerS"
-        Me.ContextMenuDokumenteListeC.Size = New System.Drawing.Size(234, 148)
+        Me.ContextMenuDokumenteListeC.Size = New System.Drawing.Size(252, 192)
         '
         'DokumentHinzufügenToolStripMenuItem1
         '
         Me.DokumentHinzufügenToolStripMenuItem1.Name = "DokumentHinzufügenToolStripMenuItem1"
-        Me.DokumentHinzufügenToolStripMenuItem1.Size = New System.Drawing.Size(233, 22)
+        Me.DokumentHinzufügenToolStripMenuItem1.Size = New System.Drawing.Size(251, 22)
         Me.DokumentHinzufügenToolStripMenuItem1.Text = "Dokument hinzufügen"
         Me.DokumentHinzufügenToolStripMenuItem1.Visible = False
         '
@@ -380,44 +384,44 @@ Public Class contArchivSuch
         '
         Me.ÖffnenLToolStripMenuItem.Image = CType(resources.GetObject("ÖffnenLToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ÖffnenLToolStripMenuItem.Name = "ÖffnenLToolStripMenuItem"
-        Me.ÖffnenLToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.ÖffnenLToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.ÖffnenLToolStripMenuItem.Text = "Datei öffnen"
         '
         'MItemSpeichernUnterListeS
         '
         Me.MItemSpeichernUnterListeS.Image = CType(resources.GetObject("MItemSpeichernUnterListeS.Image"), System.Drawing.Image)
         Me.MItemSpeichernUnterListeS.Name = "MItemSpeichernUnterListeS"
-        Me.MItemSpeichernUnterListeS.Size = New System.Drawing.Size(233, 22)
+        Me.MItemSpeichernUnterListeS.Size = New System.Drawing.Size(251, 22)
         Me.MItemSpeichernUnterListeS.Text = "Datei speichern"
         '
         'ToolStripMenuItem5
         '
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(230, 6)
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(248, 6)
         '
         'InDenPapierkorbLIToolStripMenuItem
         '
         Me.InDenPapierkorbLIToolStripMenuItem.Name = "InDenPapierkorbLIToolStripMenuItem"
-        Me.InDenPapierkorbLIToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.InDenPapierkorbLIToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.InDenPapierkorbLIToolStripMenuItem.Text = "In den Papierkorb verschieben"
         '
         'MItemDokumentLöschenOhnePapierkorbListeS
         '
         Me.MItemDokumentLöschenOhnePapierkorbListeS.Image = CType(resources.GetObject("MItemDokumentLöschenOhnePapierkorbListeS.Image"), System.Drawing.Image)
         Me.MItemDokumentLöschenOhnePapierkorbListeS.Name = "MItemDokumentLöschenOhnePapierkorbListeS"
-        Me.MItemDokumentLöschenOhnePapierkorbListeS.Size = New System.Drawing.Size(233, 22)
+        Me.MItemDokumentLöschenOhnePapierkorbListeS.Size = New System.Drawing.Size(251, 22)
         Me.MItemDokumentLöschenOhnePapierkorbListeS.Text = "Löschen"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(230, 6)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(248, 6)
         '
         'MItemInfoDokumentListeS
         '
         Me.MItemInfoDokumentListeS.Image = CType(resources.GetObject("MItemInfoDokumentListeS.Image"), System.Drawing.Image)
         Me.MItemInfoDokumentListeS.Name = "MItemInfoDokumentListeS"
-        Me.MItemInfoDokumentListeS.Size = New System.Drawing.Size(233, 22)
+        Me.MItemInfoDokumentListeS.Size = New System.Drawing.Size(251, 22)
         Me.MItemInfoDokumentListeS.Text = "Info Dokument"
         '
         'UltraTabPageControl6
@@ -930,14 +934,14 @@ Public Class contArchivSuch
         '
         'ContextMenuDokumenteExplorerS
         '
-        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
+        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.DokumentenbezeichnungÄndernToolStripMenuItem, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
         Me.ContextMenuDokumenteExplorerS.Name = "ContextMenuDokumenteExplorerS"
-        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(318, 220)
+        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(319, 220)
         '
         'DokumentHinzufügenToolStripMenuItem
         '
         Me.DokumentHinzufügenToolStripMenuItem.Name = "DokumentHinzufügenToolStripMenuItem"
-        Me.DokumentHinzufügenToolStripMenuItem.Size = New System.Drawing.Size(317, 22)
+        Me.DokumentHinzufügenToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
         Me.DokumentHinzufügenToolStripMenuItem.Text = "Dokument hinzufügen ..."
         Me.DokumentHinzufügenToolStripMenuItem.Visible = False
         '
@@ -945,61 +949,61 @@ Public Class contArchivSuch
         '
         Me.ÖffnenEXToolStripMenuItem.Image = CType(resources.GetObject("ÖffnenEXToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ÖffnenEXToolStripMenuItem.Name = "ÖffnenEXToolStripMenuItem"
-        Me.ÖffnenEXToolStripMenuItem.Size = New System.Drawing.Size(317, 22)
+        Me.ÖffnenEXToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
         Me.ÖffnenEXToolStripMenuItem.Text = "Datei öffnen"
         '
         'MtemSpcihernUnterExplorerS
         '
         Me.MtemSpcihernUnterExplorerS.Image = CType(resources.GetObject("MtemSpcihernUnterExplorerS.Image"), System.Drawing.Image)
         Me.MtemSpcihernUnterExplorerS.Name = "MtemSpcihernUnterExplorerS"
-        Me.MtemSpcihernUnterExplorerS.Size = New System.Drawing.Size(317, 22)
+        Me.MtemSpcihernUnterExplorerS.Size = New System.Drawing.Size(318, 22)
         Me.MtemSpcihernUnterExplorerS.Text = "Datei speichern"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(314, 6)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(315, 6)
         '
         'InDenPapierkorbEXToolStripMenuItem
         '
         Me.InDenPapierkorbEXToolStripMenuItem.Name = "InDenPapierkorbEXToolStripMenuItem"
-        Me.InDenPapierkorbEXToolStripMenuItem.Size = New System.Drawing.Size(317, 22)
+        Me.InDenPapierkorbEXToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
         Me.InDenPapierkorbEXToolStripMenuItem.Text = "In den Papierkorb verschieben"
         '
         'MItemLöschenOhnePapierkorbExplorerS
         '
         Me.MItemLöschenOhnePapierkorbExplorerS.Image = CType(resources.GetObject("MItemLöschenOhnePapierkorbExplorerS.Image"), System.Drawing.Image)
         Me.MItemLöschenOhnePapierkorbExplorerS.Name = "MItemLöschenOhnePapierkorbExplorerS"
-        Me.MItemLöschenOhnePapierkorbExplorerS.Size = New System.Drawing.Size(317, 22)
+        Me.MItemLöschenOhnePapierkorbExplorerS.Size = New System.Drawing.Size(318, 22)
         Me.MItemLöschenOhnePapierkorbExplorerS.Text = "Löschen"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(314, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(315, 6)
         '
         'MtemInfoDateiDokumentS
         '
         Me.MtemInfoDateiDokumentS.Image = CType(resources.GetObject("MtemInfoDateiDokumentS.Image"), System.Drawing.Image)
         Me.MtemInfoDateiDokumentS.Name = "MtemInfoDateiDokumentS"
-        Me.MtemInfoDateiDokumentS.Size = New System.Drawing.Size(317, 22)
+        Me.MtemInfoDateiDokumentS.Size = New System.Drawing.Size(318, 22)
         Me.MtemInfoDateiDokumentS.Text = "Info Dokument"
         '
         'ToolStripMenuItem6
         '
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(314, 6)
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(315, 6)
         '
         'MItemVerzeichnisRausspielenBezeichnungS
         '
         Me.MItemVerzeichnisRausspielenBezeichnungS.Name = "MItemVerzeichnisRausspielenBezeichnungS"
-        Me.MItemVerzeichnisRausspielenBezeichnungS.Size = New System.Drawing.Size(317, 22)
+        Me.MItemVerzeichnisRausspielenBezeichnungS.Size = New System.Drawing.Size(318, 22)
         Me.MItemVerzeichnisRausspielenBezeichnungS.Text = "Ordner mit Dokumenten exportieren"
         '
         'MItemVerzeichnisRausspielenDateinameOriginalS
         '
         Me.MItemVerzeichnisRausspielenDateinameOriginalS.Name = "MItemVerzeichnisRausspielenDateinameOriginalS"
-        Me.MItemVerzeichnisRausspielenDateinameOriginalS.Size = New System.Drawing.Size(317, 22)
+        Me.MItemVerzeichnisRausspielenDateinameOriginalS.Size = New System.Drawing.Size(318, 22)
         Me.MItemVerzeichnisRausspielenDateinameOriginalS.Text = "Verzeichnis exportieren (mit orig. Dateinamen)"
         Me.MItemVerzeichnisRausspielenDateinameOriginalS.Visible = False
         '
@@ -1099,6 +1103,18 @@ Public Class contArchivSuch
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(807, 431)
         Me.Panel2.TabIndex = 467
+        '
+        'DokumentenbezeichnungÄndernToolStripMenuItem
+        '
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem.Name = "DokumentenbezeichnungÄndernToolStripMenuItem"
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem.Text = "Dokumentenbezeichnung ändern"
+        '
+        'DokumentenbezeichnungÄndernToolStripMenuItem1
+        '
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem1.Name = "DokumentenbezeichnungÄndernToolStripMenuItem1"
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem1.Size = New System.Drawing.Size(251, 22)
+        Me.DokumentenbezeichnungÄndernToolStripMenuItem1.Text = "Dokumentenbezeichnung ändern"
         '
         'contArchivSuch
         '
@@ -2394,6 +2410,56 @@ Public Class contArchivSuch
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
+        End Try
+    End Sub
+
+    Private Sub DokumentenbezeichnungÄndernToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DokumentenbezeichnungÄndernToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+
+            Dim IDOrdner As New System.Guid
+            IDOrdner = Me.contOrdnerErgebniss.GetSelectedOrd_dokument()
+            If gen.IsNull(IDOrdner) Then Exit Sub
+
+            Dim cTag As New clTagSchrankFachOrdner
+            cTag = Me.contOrdnerErgebniss.GetSelTagInfo
+            If gen.IsNull(cTag) Then Exit Sub
+            If cTag.typ = clTagSchrankFachOrdner.eTyp.typDateiSuchen Then
+                If Not gen.IsNull(cTag.ID) Then
+                    If Not gen.IsNull(cTag.ID) Then
+                        Dim frm As New frmDocuEdit()
+                        frm.initForm(cTag.ID)
+                        frm.ShowDialog()
+                        If Not frm.abort Then
+                            Me.DokumentSuchen(False, False, False)
+                        End If
+                    End If
+                End If
+            End If
+
+        Catch ex As Exception
+            gen.GetEcxeptionArchiv(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+    Private Sub DokumentenbezeichnungÄndernToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DokumentenbezeichnungÄndernToolStripMenuItem1.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            If Not gen.IsNull(Me.UGridDokumenteGefunden3.ActiveRow) Then
+                Dim IDDokument As New System.Guid(Me.UGridDokumenteGefunden3.ActiveRow.Cells("IDDokumenteintrag").Value.ToString)
+                Dim frm As New frmDocuEdit()
+                frm.initForm(IDDokument)
+                frm.ShowDialog()
+                If Not frm.abort Then
+                    Me.DokumentSuchen(False, False, False)
+                End If
+            End If
+
+        Catch ex As Exception
+            gen.GetEcxeptionArchiv(ex)
+        Finally
+            Me.Cursor = Cursors.Default
         End Try
     End Sub
 

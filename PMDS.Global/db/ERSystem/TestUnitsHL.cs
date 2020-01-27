@@ -53,6 +53,9 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("CDA-Dokument generieren fehlgeschlagen!");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Lokales WCF-Service beenden fehlgeschlagen!");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentenbezeichnung: Eingabe erforderlich!");
+
+
 
 
 
