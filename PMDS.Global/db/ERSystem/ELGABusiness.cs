@@ -554,11 +554,13 @@ namespace PMDS.Global.db.ERSystem
                 string sDiff = "";
                 if (ENV.adminSecure)
                 {
-                    sDiff = System.Convert.ToInt32(span.Minutes).ToString() + " min (" +System.Convert.ToInt32(span.TotalSeconds).ToString() + " sec)";
+                    int iDiff = System.Convert.ToInt32(span.Minutes) + 1;
+                    sDiff = System.Convert.ToInt32(iDiff).ToString() + " min (" +System.Convert.ToInt32(span.TotalSeconds).ToString() + " sec)";
                 }
                 else
                 {
-                    sDiff = System.Convert.ToInt32(span.Minutes).ToString();
+                    int iDiff = System.Convert.ToInt32(span.Minutes) + 1;
+                    sDiff = System.Convert.ToInt32(iDiff).ToString();
                 }
 
                 string sTxt = "";
@@ -569,7 +571,7 @@ namespace PMDS.Global.db.ERSystem
                 else
                 {
                     sTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Sitzung aktiv");
-                    sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} aktiv)");
+                    sTxt += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("(noch {0} min aktiv)");
                     sTxt = string.Format(sTxt, sDiff);
                 }
 

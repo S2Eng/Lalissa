@@ -162,7 +162,9 @@
                         new System.Data.Common.DataColumnMapping("Datenschutz", "Datenschutz"),
                         new System.Data.Common.DataColumnMapping("Anatomie", "Anatomie"),
                         new System.Data.Common.DataColumnMapping("KZUeberlebender", "KZUeberlebender"),
-                        new System.Data.Common.DataColumnMapping("Palliativ", "Palliativ")})});
+                        new System.Data.Common.DataColumnMapping("Palliativ", "Palliativ"),
+                        new System.Data.Common.DataColumnMapping("Klientennummer", "Klientennummer"),
+                        new System.Data.Common.DataColumnMapping("SofortmassnahmeJN", "SofortmassnahmeJN")})});
             // 
             // daAnmeldungen
             // 

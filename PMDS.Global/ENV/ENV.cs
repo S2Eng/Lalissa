@@ -2263,12 +2263,37 @@ namespace PMDS.Global
 
 
 
-        public static void HandleException(Exception e, string sType = "Exception", bool ShowMsgBox = true, bool checkOutOfMemory = true)
+        public static string getTitleExcept(string Title)
+        {
+            string sTitleTmp = "?Title=" + QS2.Desktop.ControlManagment.ControlManagment.getRes(Title) + ";";
+            return sTitleTmp.Trim();
+        }
+
+        public static void HandleException(Exception e, string sType = "Exception", bool ShowMsgBox = true, bool checkOutOfMemory = true, string TitleAlternative = null)
         {
             QS2.Logging.ENV.init(ENV.LOGPATH, true, qs2.core.ENV.adminSecure);
             string sHostName = System.Net.Dns.GetHostName();
-
             string IPAdress = "";
+
+            if (e.ToString().Contains("?Title="))
+            {
+                int pFrom = e.ToString().Trim().IndexOf("?Title=");
+                int pTo = -1;
+                if (pFrom != -1)
+                    pTo = e.ToString().Trim().IndexOf(";", pFrom);
+
+                if (pFrom != -1 && pTo != -1)
+                {
+                    string sTitleTmp = e.ToString().Trim().Substring(pFrom + 7, pTo - pFrom - 7);
+                    TitleAlternative += (string.IsNullOrEmpty(TitleAlternative) ? "" : ", ") + sTitleTmp;
+                }
+                else if (pFrom != -1 && pTo == -1)
+                {
+                    string sTitleTmp = e.ToString().Trim().Substring(pFrom + 7, e.ToString().Trim().Length - pFrom - 7);
+                    TitleAlternative += (string.IsNullOrEmpty(TitleAlternative) ? "" : ", ") + sTitleTmp;
+                }
+            }
+
             try
             {
                 System.Net.IPAddress[] localIPs = System.Net.Dns.GetHostAddresses(sHostName.Trim());
@@ -2325,7 +2350,8 @@ namespace PMDS.Global
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    string sExcept6 = "Host: " + sHostName.Trim() + ", IPAdress: " + IPAdress.Trim() + ", User: " + sUsrLoggedIn.Trim() + ", Type:" + sType.Trim() + "\r\n" + "\r\n" + e.ToString();
+                    string sExcept6 = "Host: " + sHostName.Trim() + ", IPAdress: " + IPAdress.Trim() + ", User: " + sUsrLoggedIn.Trim() + ", Type:" + sType.Trim() + "\r\n" + "\r\n" + e.ToString() + 
+                                        "\r\n" + "\r\n" + (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim());
                     
                     PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
                     b.saveProtocol(db, "ExceptionPMDS", sExcept6.Trim());
@@ -2343,7 +2369,7 @@ namespace PMDS.Global
                 //{
                     ENV ENV1 = new ENV();
                     cParsSendException ParsSendException = new cParsSendException();
-                    ParsSendException.sException = e.ToString();
+                    ParsSendException.sException = e.ToString() + "\r\n" + "\r\n" + (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim());
                     ParsSendException.client = sHostName + "::" + IPAdress;
                     ParsSendException.user = sUsrLoggedIn;
                     ParsSendException.haus = KlinikBezeichnung;
@@ -2371,14 +2397,16 @@ namespace PMDS.Global
                     }
                     sExceptNr += NewLine + NewLine;
                 }
-                QS2.Logging.ENV.doLog2(sExceptNr + e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox);
+                QS2.Logging.ENV.doLog2(sExceptNr + e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
+                                        (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim()));
                 //QS2.Logging.ENV.doLog(sExceptNr + e.ToString(), "", "PMDS-System", true);
                 if (checkOutOfMemory)
                     ENV.checkExceptionOutOfMemory(e.ToString(), sType, ShowMsgBox);
             }
             else
             {
-                QS2.Logging.ENV.doLog2(e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox);
+                QS2.Logging.ENV.doLog2(e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
+                                        (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim()));
                 if (checkOutOfMemory)
                     ENV.checkExceptionOutOfMemory(e.ToString(), sType, ShowMsgBox);
             }

@@ -843,6 +843,12 @@
     <Compile Include="planArchive2\plan\IExplorer.xaml.vb">
       <DependentUpon>IExplorer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmDocuEdit.Designer.vb">
+      <DependentUpon>frmDocuEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive\archiv\Forms\frmDocuEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="planArchive\coreSystem\db\compSql.Designer.vb">
       <DependentUpon>compSql.vb</DependentUpon>
     </Compile>
@@ -1058,6 +1064,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="planArchive2\plan\frmUserAccounts.resx">
       <DependentUpon>frmUserAccounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive\archiv\Forms\frmDocuEdit.resx">
+      <DependentUpon>frmDocuEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="planArchive\coreSystem\db\compSql.resx">
       <DependentUpon>compSql.vb</DependentUpon>

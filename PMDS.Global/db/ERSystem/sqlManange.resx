@@ -139,7 +139,8 @@ FROM            vKlientenliste</value>
   </metadata>
   <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
     <value>SELECT        PatientName, Geburtsdatum, Klinik, Abteilung, Bereich, MT1, MT2, MT3, MT4, MT5, MT6, MT7, MT8, MT9, MT10, MT11, MT12, MT13, MT14, [Nächste Evaluierung], Notfall, Abwesenheit, BezugspersonenIDs, IDKlinik, 
-                         IDAbteilung, IDBereich, IDKlient, IDAufenthalt, GesamtesHausJN, MT15, WundeJN, HAG_VoraussichtichesEnde, DNR, Verstorben, Todeszeitpunkt, AbwesenheitBeendet, Datenschutz, Anatomie, KZUeberlebender, Palliativ
+                         IDAbteilung, IDBereich, IDKlient, IDAufenthalt, GesamtesHausJN, MT15, WundeJN, HAG_VoraussichtichesEnde, DNR, Verstorben, Todeszeitpunkt, AbwesenheitBeendet, Datenschutz, Anatomie, KZUeberlebender, Palliativ, 
+                         Klientennummer, SofortmassnahmeJN
 FROM            vKlientenliste</value>
   </data>
   <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -10924,6 +10924,24 @@ namespace PMDS.DB
             }
         }
 
+        public PMDS.db.Entities.tblDokumenteintrag getDokumenteneintrag(Guid ID, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                PMDS.db.Entities.tblDokumenteintrag rDokumenteneintrag = db.tblDokumenteintrag.Where(a => a.ID == ID).First();
+                return rDokumenteneintrag;
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getDokumenteneintrag: " + ex.ToString());
+            }
+        }
+
         public void deleteNotUsedMedikamente(ref int iCounterDeletedBack, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
