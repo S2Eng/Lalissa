@@ -210,7 +210,7 @@ namespace PMDS.GUI
         }
         public void setControlsAktivDisable(bool bOn)
         {
-            if (ucAbrechAufenthKlient1 != null) this.ucAbrechAufenthKlient1.setControlsAktivDisable(bOn);
+            if (ucAbrechAufenthKlient1 != null) this.ucAbrechAufenthKlient1.setControlsAktivDisable2(bOn);
            
             PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxOben, bOn);
             PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBoxAllgemein1, bOn);
@@ -319,8 +319,8 @@ namespace PMDS.GUI
             GuiUtil.resetColor2(cmbstatur);
             GuiUtil.resetColor2(txtLand);
             GuiUtil.resetColor2(txtLandNWS);
-            GuiUtil.resetColor2(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboEinrichtungen);
-            GuiUtil.resetColor2(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse);
+            GuiUtil.resetColor2(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboEinrichtungen);
+            GuiUtil.resetColor2(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse);
 
             GuiUtil.resetColor2(txtNachname);
             GuiUtil.resetColor2(txtVorname);
@@ -474,11 +474,11 @@ namespace PMDS.GUI
             this.chkPalliativ.Checked = false;
             this.intAmputation_Prozent.Value = 0;
 
-            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = "";
-            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Value = null;
-            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
-            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Value = null;
-            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
+            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text = "";
+            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Value = null;
+            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text = "";
+            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Value = null;
+            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text = "";
 
             this.cboTitelPost.Text = "";
             this.txtbPK.Text = "";
@@ -551,12 +551,12 @@ namespace PMDS.GUI
                     this.chkPalliativ.Checked = rPatInfo.Palliativ;
                     this.intAmputation_Prozent.Value = rPatInfo.Amputation_Prozent;
 
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = rPatInfo.SozVersStatus;
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text = rPatInfo.SozVersLeerGrund;
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = rPatInfo.SozVersMitversichertBei;
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text = rPatInfo.SozVersStatus;
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text = rPatInfo.SozVersLeerGrund;
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text = rPatInfo.SozVersMitversichertBei;
 
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.setUIVersNr(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim());
-                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.setUIMitversichertBei(this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim());
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.setUIVersNr(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text.Trim());
+                    this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.setUIMitversichertBei(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim());
 
                     this.cboTitelPost.Text = rPatInfo.TitelPost;
                     this.txtbPK.Text = rPatInfo.bPK;
@@ -984,37 +984,37 @@ namespace PMDS.GUI
                                        ).First();
                     //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
 
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim() != Klient.VersicherungsNr.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text.Trim() != Klient.VersicherungsNr.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr: ") + Klient.VersicherungsNr + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr: ") + Klient.VersicherungsNr + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim() != rPatInfo.SozVersLeerGrund.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text.Trim() != rPatInfo.SozVersLeerGrund.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil : ") + rPatInfo.SozVersLeerGrund.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil : ") + rPatInfo.SozVersLeerGrund.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboEinrichtungen.Text.Trim() != rPatInfo.KrankenKasse.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboEinrichtungen.Text.Trim() != rPatInfo.KrankenKasse.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse: ") + rPatInfo.KrankenKasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboEinrichtungen.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse: ") + rPatInfo.KrankenKasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboEinrichtungen.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim() != rPatInfo.SozVersStatus.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim() != rPatInfo.SozVersStatus.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Status: ") + rPatInfo.SozVersStatus.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Status: ") + rPatInfo.SozVersStatus.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim() != rPatInfo.SozVersMitversichertBei.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text.Trim() != rPatInfo.SozVersMitversichertBei.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Mitversichert bei: ") + rPatInfo.SozVersMitversichertBei.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Mitversichert bei: ") + rPatInfo.SozVersMitversichertBei.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPrivatVers.Text.Trim() != rPatInfo.Privatversicherung.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPrivatVers.Text.Trim() != rPatInfo.Privatversicherung.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Zusatzvers.: ") + rPatInfo.Privatversicherung.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPrivatVers.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Zusatzvers.: ") + rPatInfo.Privatversicherung.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPrivatVers.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text.Trim() != rPatInfo.Klasse.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse.Text.Trim() != rPatInfo.Klasse.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse: ") + rPatInfo.Klasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse: ") + rPatInfo.Klasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPolzNr.Text.Trim() != rPatInfo.PrivPolNr.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPolzNr.Text.Trim() != rPatInfo.PrivPolNr.Trim())
                     {
-                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ") + rPatInfo.PrivPolNr.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtPolzNr.Text.Trim());
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ") + rPatInfo.PrivPolNr.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPolzNr.Text.Trim());
                     }
                 }
 
@@ -1225,19 +1225,19 @@ namespace PMDS.GUI
                         rPatient.Amputation_Prozent = (int)this.intAmputation_Prozent.Value;
                         rPatient.TageAbweseneheitOhneKuerzung = (int)this.ucAbrechAufenthKlient1.numTageAbweseneheitOhneKuerzung.Value;
 
-                        rPatient.SozVersStatus = this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim();
-                        rPatient.SozVersLeerGrund = this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim();
-                        rPatient.SozVersMitversichertBei = this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim();
+                        rPatient.SozVersStatus = this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim();
+                        rPatient.SozVersLeerGrund = this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text.Trim();
+                        rPatient.SozVersMitversichertBei = this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text.Trim();
                         rPatient.ELGAAbgemeldet = this.chkELGAAbgemeldet.Checked;
 
-                        if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtVersNr.Text.Trim() != "")
+                        if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text.Trim() != "")
                         {
                             rPatient.SozVersLeerGrund = "";
-                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
-                            if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim().ToLower() != ("mitversichert").Trim().ToLower())
+                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text = "";
+                            if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim().ToLower() != ("mitversichert").Trim().ToLower())
                             {
                                 rPatient.SozVersMitversichertBei = "";
-                                this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
+                                this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text = "";
                             }
                         }
                         else
@@ -1245,9 +1245,9 @@ namespace PMDS.GUI
                             //rPatient.SozVersStatus = "";
                             //this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = "";
                             rPatient.SozVersMitversichertBei = "";
-                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
+                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text = "";
                             rPatient.Klasse = "";
-                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cmbKlasse.Text = "";
+                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse.Text = "";
                         }
 
                         if (rPatient.TitelPost.Trim() != this.cboTitelPost.Text.Trim())

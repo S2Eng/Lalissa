@@ -38,12 +38,12 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PatientPflegestufe", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPflegegeldstufe", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPflegegeldstufe");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BetragVerwendbar");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GutschriftProTagAbwesend");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GueltigAb");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AenderungsantragDatum");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPflegegeldstufeAntrag");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPflegegeldstufeAntrag", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GenehmigungDatum");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPflegegeldstufeGenehmigt");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GueltigBis");
@@ -58,6 +58,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
@@ -83,7 +84,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelGrundleistung = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -96,6 +96,7 @@ namespace PMDS.GUI
             this.dsKlientPflegestufe1 = new PMDS.GUI.Klient.dsKlientPflegestufe();
             this.ultraGroupBox9 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.grpBetreuungsstufe = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.cmbBetreuungsstufe = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.lblBetreueungsstufeBis = new QS2.Desktop.ControlManagment.BaseLabel();
             this.udteBetreuungsstufBis = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblBetreueungsstufeAb = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -128,6 +129,7 @@ namespace PMDS.GUI
             this.btnHistorie = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelMitte = new QS2.Desktop.ControlManagment.BasePanel();
             this.baseGroupBox1 = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.ucVersichrungsdaten12 = new PMDS.GUI.ucVersichrungsdaten();
             this.panelUnten = new QS2.Desktop.ControlManagment.BasePanel();
             this.numTageAbweseneheitOhneKuerzung = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.lblTageAbweseneheitOhneKuerzung = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -137,8 +139,6 @@ namespace PMDS.GUI
             this.ultraTabControlZahler = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ucVersichrungsdaten1 = new PMDS.GUI.ucVersichrungsdaten();
-            this.cmbBetreuungsstufe = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.ultraTabPageControl1.SuspendLayout();
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtPensTeilAntrag)).BeginInit();
@@ -151,6 +151,7 @@ namespace PMDS.GUI
             this.ultraGroupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpBetreuungsstufe)).BeginInit();
             this.grpBetreuungsstufe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufeAb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEinzelzimmer)).BeginInit();
@@ -179,7 +180,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControlZahler)).BeginInit();
             this.ultraTabControlZahler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
@@ -485,6 +485,28 @@ namespace PMDS.GUI
             this.grpBetreuungsstufe.Size = new System.Drawing.Size(271, 81);
             this.grpBetreuungsstufe.TabIndex = 138;
             this.grpBetreuungsstufe.Text = "Betreuungsstufe";
+            // 
+            // cmbBetreuungsstufe
+            // 
+            this.cmbBetreuungsstufe.AddEmptyEntry = false;
+            appearance16.BackColor = System.Drawing.Color.White;
+            this.cmbBetreuungsstufe.Appearance = appearance16;
+            this.cmbBetreuungsstufe.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbBetreuungsstufe.AutoOpenCBO = false;
+            this.cmbBetreuungsstufe.BackColor = System.Drawing.Color.White;
+            this.cmbBetreuungsstufe.BerufsstandGruppeJNA = -1;
+            this.cmbBetreuungsstufe.ExactMatch = false;
+            this.cmbBetreuungsstufe.Group = "BST";
+            this.cmbBetreuungsstufe.ID_PEP = -1;
+            this.cmbBetreuungsstufe.Location = new System.Drawing.Point(9, 19);
+            this.cmbBetreuungsstufe.MaxLength = 40;
+            this.cmbBetreuungsstufe.Name = "cmbBetreuungsstufe";
+            this.cmbBetreuungsstufe.PflichtJN = false;
+            this.cmbBetreuungsstufe.ShowAddButton = true;
+            this.cmbBetreuungsstufe.Size = new System.Drawing.Size(248, 24);
+            this.cmbBetreuungsstufe.sys = false;
+            this.cmbBetreuungsstufe.TabIndex = 218;
+            this.cmbBetreuungsstufe.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblBetreueungsstufeBis
             // 
@@ -894,7 +916,7 @@ namespace PMDS.GUI
             // panelMitte
             // 
             this.panelMitte.Controls.Add(this.baseGroupBox1);
-            this.panelMitte.Controls.Add(this.ucVersichrungsdaten1);
+            this.panelMitte.Controls.Add(this.ucVersichrungsdaten12);
             this.panelMitte.Controls.Add(this.ultraGroupBox9);
             this.panelMitte.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMitte.Location = new System.Drawing.Point(0, 32);
@@ -912,6 +934,21 @@ namespace PMDS.GUI
             this.baseGroupBox1.Name = "baseGroupBox1";
             this.baseGroupBox1.Size = new System.Drawing.Size(1064, 155);
             this.baseGroupBox1.TabIndex = 137;
+            // 
+            // ucVersichrungsdaten12
+            // 
+            this.ucVersichrungsdaten12.BackColor = System.Drawing.Color.Transparent;
+            this.ucVersichrungsdaten12.Location = new System.Drawing.Point(9, -3);
+            this.ucVersichrungsdaten12.Margin = new System.Windows.Forms.Padding(4);
+            this.ucVersichrungsdaten12.Name = "ucVersichrungsdaten12";
+            this.ucVersichrungsdaten12.Size = new System.Drawing.Size(550, 241);
+            this.ucVersichrungsdaten12.TabIndex = 3;
+            this.ucVersichrungsdaten12.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            this.ucVersichrungsdaten12.KrankenkasseChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.SVNrChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.KlasseChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.PrivatversicherungChanged += new System.EventHandler(this.OnVersDatenChanged);
+            this.ucVersichrungsdaten12.PolNrChanged += new System.EventHandler(this.OnVersDatenChanged);
             // 
             // panelUnten
             // 
@@ -1016,39 +1053,6 @@ namespace PMDS.GUI
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ucVersichrungsdaten1
-            // 
-            this.ucVersichrungsdaten1.BackColor = System.Drawing.Color.Transparent;
-            this.ucVersichrungsdaten1.Location = new System.Drawing.Point(9, -3);
-            this.ucVersichrungsdaten1.Margin = new System.Windows.Forms.Padding(4);
-            this.ucVersichrungsdaten1.Name = "ucVersichrungsdaten1";
-            this.ucVersichrungsdaten1.Size = new System.Drawing.Size(550, 241);
-            this.ucVersichrungsdaten1.TabIndex = 3;
-            this.ucVersichrungsdaten1.ValueChanged += new System.EventHandler(this.OnValueChanged);
-            this.ucVersichrungsdaten1.KrankenkasseChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten1.SVNrChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten1.KlasseChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten1.PrivatversicherungChanged += new System.EventHandler(this.OnVersDatenChanged);
-            this.ucVersichrungsdaten1.PolNrChanged += new System.EventHandler(this.OnVersDatenChanged);
-            // 
-            // cmbBetreuungsstufe
-            // 
-            this.cmbBetreuungsstufe.AddEmptyEntry = false;
-            appearance16.BackColor = System.Drawing.Color.White;
-            this.cmbBetreuungsstufe.Appearance = appearance16;
-            this.cmbBetreuungsstufe.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
-            this.cmbBetreuungsstufe.BackColor = System.Drawing.Color.White;
-            this.cmbBetreuungsstufe.BerufsstandGruppeJNA = -1;
-            this.cmbBetreuungsstufe.Group = "BST";
-            this.cmbBetreuungsstufe.ID_PEP = -1;
-            this.cmbBetreuungsstufe.Location = new System.Drawing.Point(9, 19);
-            this.cmbBetreuungsstufe.MaxLength = 40;
-            this.cmbBetreuungsstufe.Name = "cmbBetreuungsstufe";
-            this.cmbBetreuungsstufe.ShowAddButton = true;
-            this.cmbBetreuungsstufe.Size = new System.Drawing.Size(248, 24);
-            this.cmbBetreuungsstufe.TabIndex = 218;
-            this.cmbBetreuungsstufe.ValueChanged += new System.EventHandler(this.OnValueChanged);
-            // 
             // ucAbrechAufenthKlient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1078,6 +1082,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.grpBetreuungsstufe)).EndInit();
             this.grpBetreuungsstufe.ResumeLayout(false);
             this.grpBetreuungsstufe.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufBis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteBetreuungsstufeAb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEinzelzimmer)).EndInit();
@@ -1109,7 +1114,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControlZahler)).EndInit();
             this.ultraTabControlZahler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBetreuungsstufe)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1170,6 +1174,6 @@ namespace PMDS.GUI
         public Infragistics.Win.UltraWinEditors.UltraNumericEditor numTageAbweseneheitOhneKuerzung;
         private QS2.Desktop.ControlManagment.BaseLabel lblEntlassungszeitpunkt;
         public QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpEntlassungszeitpunkt;
-        public ucVersichrungsdaten ucVersichrungsdaten1;
+        public ucVersichrungsdaten ucVersichrungsdaten12;
     }
 }

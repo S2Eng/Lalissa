@@ -1333,7 +1333,7 @@ namespace PMDS.GUI
             }
         }
 
-        public bool validateDataVersNr(ucVersichrungsdaten ucVersichrungsdaten1, ucAbrechAufenthKlient MainWindow)
+        public bool validateDataVersNr(ref string MessageTxt, bool withMsgBox, ucVersichrungsdaten ucVersichrungsdaten1, ucAbrechAufenthKlient MainWindow)
         {
             try
             {
@@ -1410,84 +1410,59 @@ namespace PMDS.GUI
             {
                 throw new Exception("PMDSBusinessUI.validateDataVersNr: " + ex.ToString());
             }
-        }
 
-        public bool SaveVersicherungsdaten(Guid IDPatient, ref ucVersichrungsdaten ucVersichrungsdaten1)
-        {
-            try
+            public bool SaveVersicherungsdaten(ref Guid IDPatient, ucVersichrungsdaten ucVersichrungsdaten1)
             {
-                string sJa = QS2.Desktop.ControlManagment.ControlManagment.getRes("Ja");
-                string sNein = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nein");
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                try
                 {
-                    if (this.b.checkPatientExists(IDPatient, db))
+                    string sJa = QS2.Desktop.ControlManagment.ControlManagment.getRes("Ja");
+                    string sNein = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nein");
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                     {
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(IDPatient, db);
-
-                        rPatient.SozVersStatus = ucVersichrungsdaten1.cboSozVersStatus.Text.Trim();
-                        rPatient.SozVersLeerGrund = ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim();
-                        rPatient.SozVersMitversichertBei = ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim();
-                        //rPatient.ELGAAbgemeldet = this.chkELGAAbgemeldet.Checked;
-
-                        if (ucVersichrungsdaten1.txtVersNr.Text.Trim() != "")
+                        if (this.b.checkPatientExists(IDPatient, db))
                         {
-                            rPatient.SozVersLeerGrund = "";
-                            ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
-                            if (ucVersichrungsdaten1.cboSozVersStatus.Text.Trim().ToLower() != ("mitversichert").Trim().ToLower())
+                            PMDS.db.Entities.Patient rPatient = this.b.getPatient(IDPatient, db);
+
+                            rPatient.SozVersStatus = ucVersichrungsdaten1.cboSozVersStatus.Text.Trim();
+                            rPatient.SozVersLeerGrund = ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim();
+                            rPatient.SozVersMitversichertBei = ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim();
+                            //rPatient.ELGAAbgemeldet = this.chkELGAAbgemeldet.Checked;
+
+                            if (ucVersichrungsdaten1.txtVersNr.Text.Trim() != "")
                             {
+                                rPatient.SozVersLeerGrund = "";
+                                ucVersichrungsdaten1.cboSozVersLeerGrund.Text = "";
+                                if (ucVersichrungsdaten1.cboSozVersStatus.Text.Trim().ToLower() != ("mitversichert").Trim().ToLower())
+                                {
+                                    rPatient.SozVersMitversichertBei = "";
+                                    ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
+                                }
+                            }
+                            else
+                            {
+                                //rPatient.SozVersStatus = "";
+                                //this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = "";
                                 rPatient.SozVersMitversichertBei = "";
                                 ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
+                                rPatient.Klasse = "";
+                                ucVersichrungsdaten1.cmbKlasse.Text = "";
                             }
-                        }
-                        else
-                        {
-                            //rPatient.SozVersStatus = "";
-                            //this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = "";
-                            rPatient.SozVersMitversichertBei = "";
-                            ucVersichrungsdaten1.txtSozVersMitversichertBei.Text = "";
-                            rPatient.Klasse = "";
-                            ucVersichrungsdaten1.cmbKlasse.Text = "";
-                        }
 
-                        db.SaveChanges();
+                            db.SaveChanges();
+                        }
                     }
-                }
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("PMDSBusinessUI.SaveVersicherungsdaten: " + ex.ToString());
-            }
-        }
-        public bool SaveVersicherungsdaten2(Guid IDPatient, ref ucVersichrungsdaten ucVersichrungsdaten1)
-        {
-            try
-            {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                    return true;
+                }
+                catch (Exception ex)
                 {
-                    if (this.b.checkPatientExists(IDPatient, db))
-                    {
-                        PMDS.db.Entities.Patient rPatient = this.b.getPatient(IDPatient, db);
-
-                        rPatient.KrankenKasse = ucVersichrungsdaten1.Krankenkasse.Trim();
-                        rPatient.VersicherungsNr = ucVersichrungsdaten1.VersicherungsNr.Trim();
-                        rPatient.Klasse = ucVersichrungsdaten1.Klasse.Trim();
-                        rPatient.Privatversicherung = ucVersichrungsdaten1.Privatversicherung.Trim();
-                        rPatient.PrivPolNr = ucVersichrungsdaten1.PrivPolNr.Trim();
-
-                        db.SaveChanges();
-                    }
+                    throw new Exception("PMDSBusinessUI.SaveVersicherungsdaten: " + ex.ToString());
                 }
+            }
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("PMDSBusinessUI.SaveVersicherungsdaten2: " + ex.ToString());
-            }
         }
 
     }
 
 }
+

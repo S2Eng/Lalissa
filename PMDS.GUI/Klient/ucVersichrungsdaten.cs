@@ -12,6 +12,7 @@ using PMDS.Klient;
 using System.Linq;
 using PMDS.DB;
 
+
 namespace PMDS.GUI
 {
     public partial class ucVersichrungsdaten : QS2.Desktop.ControlManagment.BaseControl, IWizardPage, IReadOnly
@@ -32,17 +33,16 @@ namespace PMDS.GUI
 
 
 
+        
+
 
         public ucVersichrungsdaten()
         {
             InitializeComponent();
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Klient setzen/auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
+
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public KlientDetails Klient
@@ -53,7 +53,6 @@ namespace PMDS.GUI
                     _klient = new KlientDetails();
                 return _klient;
             }
-
             set
             {
                 _valueChangeEnabled = false;
@@ -63,6 +62,24 @@ namespace PMDS.GUI
                 UpdateGUI();
                 _valueChangeEnabled = true;
             }
+        }
+        public void initNoKlient()
+        {
+            _valueChangeEnabled = false;
+            this.initControl();
+            InitFields();
+
+            this._lockValueChanges = true;
+
+            this.cboEinrichtungen.Text = "";
+            txtVersNr.Text = "";
+            cmbKlasse.Text = "";
+            txtPrivatVers.Text = "";
+            txtPolzNr.Text = "";
+
+            this._lockValueChanges = false;
+
+            _valueChangeEnabled = true;
         }
 
         public void initControl()
@@ -104,11 +121,6 @@ namespace PMDS.GUI
 
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Klient setzen/auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Krankenkasse
@@ -124,11 +136,6 @@ namespace PMDS.GUI
             }
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Klient setzen/auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string VersicherungsNr
@@ -144,11 +151,6 @@ namespace PMDS.GUI
             }
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Klient setzen/auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Klasse
@@ -164,11 +166,6 @@ namespace PMDS.GUI
             }
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Klient setzen/auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Privatversicherung
@@ -184,11 +181,6 @@ namespace PMDS.GUI
             }
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Klient setzen/auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string PrivPolNr
@@ -204,12 +196,6 @@ namespace PMDS.GUI
             }
         }
 
-        //Neu nach 26.04.2007
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// ReadOnly setzen / auslesen
-        /// </summary>
-        //----------------------------------------------------------------------------
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ReadOnly
@@ -222,9 +208,6 @@ namespace PMDS.GUI
             }
         }
 
-        /// <summary>
-        /// lädt die Daten aus einem Businessobject und aktualisiert die GUI.
-        /// </summary>
         public void UpdateGUI()
         {
             this._lockValueChanges = true;
@@ -240,9 +223,6 @@ namespace PMDS.GUI
             this._lockValueChanges = false;
         }
 
-        /// <summary>
-        /// Aktualisiert die Gui Daten über das Businessobject in die Datenbank.
-        /// </summary>
         public void UpdateDATA()
         {
             Klient.Krankenkasse = this.cboEinrichtungen.Text.Trim();
@@ -250,18 +230,13 @@ namespace PMDS.GUI
             Klient.Klasse = cmbKlasse.Text.Trim();
             Klient.Privatversicherung = txtPrivatVers.Text.Trim();
             Klient.PrivPolNr = txtPolzNr.Text.Trim();
-
         }
 
-        //Errorprovider initialisieren
         private void InitFields()
         {
             errorProvider1.SetError(txtVersNr, "");
         }
 
-        /// <summary>
-        /// prüft ob alle Eingaben richtig sind.
-        /// </summary>
         public bool ValidateFields()
         {
             bool bError = false;
@@ -274,7 +249,6 @@ namespace PMDS.GUI
             return bError;
         }
 
-        //Änderungen am 26.04.2007 MDA
         private void SetReadOnly()
         {
             this.cboEinrichtungen.ReadOnly = ReadOnly;
@@ -287,21 +261,11 @@ namespace PMDS.GUI
                 RequiredFields();
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Benötigte Felder setzen
-        /// </summary>
-        //----------------------------------------------------------------------------
         protected void RequiredFields()
         {
             GuiUtil.ValidateRequired(txtVersNr);
         }
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Daten-Änderungs signalisieren
-        /// </summary>
-        //----------------------------------------------------------------------------
         protected void OnValueChanged(object sender, EventArgs args)
         {
             if (this._lockValueChanges) return;
@@ -468,7 +432,6 @@ namespace PMDS.GUI
             }
         }
 
-
         private void TxtVersNr_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -480,7 +443,6 @@ namespace PMDS.GUI
                     OnValueChanged(sender, e);
                     this.setUIVersNr(this.txtVersNr.Text.Trim());
                 }
-
             }
             catch (Exception ex)
             {
@@ -491,6 +453,7 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void TxtSozVersMitversichertBei_ValueChanged(object sender, EventArgs e)
         {
             try
