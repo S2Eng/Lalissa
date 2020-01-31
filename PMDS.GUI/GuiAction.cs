@@ -581,6 +581,15 @@ namespace PMDS.GUI
             wizard.Width = 590;
             wizard.Height = 730;
 
+            if (ELGABusiness.checkELGASessionActive(false))     //&& ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, false)
+            {
+                wizard.ucPatientNew1.chkKontaktbestätigung.Visible = true;
+            }
+            else
+            {
+                wizard.ucPatientNew1.chkKontaktbestätigung.Visible = false;
+            }
+
             if (wizard.ShowDialog() != DialogResult.OK)
                 return false;
 
