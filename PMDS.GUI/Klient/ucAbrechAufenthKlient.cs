@@ -118,7 +118,7 @@ namespace PMDS.GUI
             {
                 _valueChangeEnabled = false;
                 _klient = value;
-                ucVersichrungsdaten1.Klient = value;
+                ucVersichrungsdaten12.Klient = value;
                 _pflegestufe = new KlientPflegegeldstufe();
                 UpdateGUI();
                 if (this._isAbrechnungControlAlone)
@@ -140,7 +140,7 @@ namespace PMDS.GUI
         {
             get
             {
-                return ucVersichrungsdaten1;
+                return ucVersichrungsdaten12;
             }
         }
 
@@ -162,19 +162,19 @@ namespace PMDS.GUI
             set
             {
                 _readOnly = value;
-                ucVersichrungsdaten1.ReadOnly = value;
+                ucVersichrungsdaten12.ReadOnly = value;
                 SetReadOnly();
             }
         }
 
         public void resetColor()
         {
-            GuiUtil.resetColor2(this.ucVersichrungsdaten1.txtVersNr);
-            GuiUtil.resetColor2(this.ucVersichrungsdaten1.cboSozVersStatus);
-            GuiUtil.resetColor2(this.ucVersichrungsdaten1.cboSozVersLeerGrund);
-            GuiUtil.resetColor2(this.ucVersichrungsdaten1.txtSozVersMitversichertBei);
-            GuiUtil.resetColor2(this.ucVersichrungsdaten1.cboEinrichtungen);
-            GuiUtil.resetColor2(this.ucVersichrungsdaten1.cmbKlasse);
+            GuiUtil.resetColor2(this.ucVersichrungsdaten12.txtVersNr);
+            GuiUtil.resetColor2(this.ucVersichrungsdaten12.cboSozVersStatus);
+            GuiUtil.resetColor2(this.ucVersichrungsdaten12.cboSozVersLeerGrund);
+            GuiUtil.resetColor2(this.ucVersichrungsdaten12.txtSozVersMitversichertBei);
+            GuiUtil.resetColor2(this.ucVersichrungsdaten12.cboEinrichtungen);
+            GuiUtil.resetColor2(this.ucVersichrungsdaten12.cmbKlasse);
         }
 
 
@@ -392,7 +392,7 @@ namespace PMDS.GUI
             Klient.Sozialcard = this.chkSozialcard.Checked;
             //Klient.IDAdresseSub = Nullable<Guid> IDAdresseSub;
 
-            ucVersichrungsdaten1.UpdateDATA();
+            ucVersichrungsdaten12.UpdateDATA();
 
             //Patient pat = new Patient();
             //pat.updatePatient(Klient.ID , this.uCheckEditorAbwesenheitenHändischBerech.Checked);
@@ -478,74 +478,9 @@ namespace PMDS.GUI
         {
             try
             {
-                bool showTabAufenthalt = false;
-                if (!this.ucVersichrungsdaten1.validateVerNr(this.ucVersichrungsdaten1.txtVersNr.Text, true))
-                {
-                    this.ucVersichrungsdaten1.txtVersNr.Appearance.BackColor = Color.Yellow;
-                    this.ucVersichrungsdaten1.txtVersNr.UseAppStyling = false;
-                    this.ucVersichrungsdaten1.txtVersNr.Focus();
-                    showTabAufenthalt = true;
-                    return false;
-                }
-            
-                string MsgTxt = "";
-                if (this.ucVersichrungsdaten1.txtVersNr.Text.Trim() != "")
-                {
-                    if (this.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim() == "")
-                    {
-                        this.ucVersichrungsdaten1.cboSozVersStatus.Appearance.BackColor = Color.Yellow;
-                        this.ucVersichrungsdaten1.cboSozVersStatus.UseAppStyling = false;
-                        MsgTxt += QS2.Desktop.ControlManagment.ControlManagment.getRes("SV Status: Feld darf nicht leer sein!") + "\r\n";
-                        this.ucVersichrungsdaten1.cboSozVersStatus.Focus();
-                        showTabAufenthalt = true;
-                    }
-                    else
-                    {
-                        PMDSBusinessUI.checkCboBoxWrongInput(this.ucVersichrungsdaten1.cboSozVersStatus, QS2.Desktop.ControlManagment.ControlManagment.getRes("SV Status"), true, ref MsgTxt, true);
-                    }
-                }
-                if (this.ucVersichrungsdaten1.txtVersNr.Text.Trim() == "")
-                {
-                    if (this.ucVersichrungsdaten1.cboSozVersLeerGrund.Text.Trim() == "")
-                    {
-                        this.ucVersichrungsdaten1.cboSozVersLeerGrund.Appearance.BackColor = Color.Yellow;
-                        this.ucVersichrungsdaten1.cboSozVersLeerGrund.UseAppStyling = false;
-                        MsgTxt += QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil: Feld darf nicht leer sein!") + "\r\n";
-                        this.ucVersichrungsdaten1.cboSozVersLeerGrund.Focus();
-                        showTabAufenthalt = true;
-                    }
-                    else
-                    {
-                        PMDSBusinessUI.checkCboBoxWrongInput(this.ucVersichrungsdaten1.cboSozVersLeerGrund, QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil"), true, ref MsgTxt, true);
-                    }
-                }
-                if (this.ucVersichrungsdaten1.txtVersNr.Text.Trim() != ""  && this.ucVersichrungsdaten1.cboSozVersStatus.Text.Trim().ToLower() == ("mitversichert").Trim().ToLower())
-                {
-                    if (this.ucVersichrungsdaten1.txtSozVersMitversichertBei.Text.Trim() == "")
-                    {
-                        this.ucVersichrungsdaten1.txtSozVersMitversichertBei.Appearance.BackColor = Color.Yellow;
-                        this.ucVersichrungsdaten1.txtSozVersMitversichertBei.UseAppStyling = false;
-                        MsgTxt += QS2.Desktop.ControlManagment.ControlManagment.getRes("SV Mitversichert bei: Feld darf nicht leer sein!") + "\r\n";
-                        this.ucVersichrungsdaten1.txtSozVersMitversichertBei.Focus();
-                        showTabAufenthalt = true;
-                    }
-                }
-
-                bool cbEinrichtungenOK = PMDSBusinessUI.checkCboBoxWrongInput(this.ucVersichrungsdaten1.cboEinrichtungen, QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse"), true, ref MsgTxt, true);
-                bool cbKlasseOK = PMDSBusinessUI.checkCboBox(this.ucVersichrungsdaten1.cmbKlasse, QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse"), true, ref MsgTxt, true);
-                if (MsgTxt.Trim() != "" || !cbKlasseOK || !cbEinrichtungenOK)
-                {
-                    if (showTabAufenthalt)
-                        if (this.MainWindow != null) this.MainWindow.tabStammdaten.SelectedTab = this.MainWindow.tabStammdaten.Tabs["Aufenthalt"];
-                    else
-                        if (this.MainWindow != null) this.MainWindow.tabStammdaten.SelectedTab = this.MainWindow.tabStammdaten.Tabs["PersoenlicheDaten"];
-
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(MsgTxt, "Speichern");
-                    //this.MainWindow.tabStammdaten.SelectedTab = this.MainWindow.tabStammdaten.Tabs["Aufenthalt"];
-                    return false;
-                }
-
-                return true;
+                PMDSBusinessUI bUI = new PMDSBusinessUI();
+                return bUI.validateDataVersNr(this.ucVersichrungsdaten12, this);
+                
             }
             catch (Exception ex)
             {
@@ -739,13 +674,13 @@ namespace PMDS.GUI
             if (_valueChangeEnabled && (ValueChanged != null))
                 ValueChanged(sender, e);
         }
-        public void setControlsAktivDisable(bool bOn)
+        public void setControlsAktivDisable2(bool bOn)
         {
             if (this._isMainSystem)
             {
                 PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
                 PMDS.GUI.BaseControls.historie.OnOffControls(ultraGroupBox9, bOn);
-                PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten1.ultraGroupBoxVersicherungsdaten, bOn);
+                PMDS.GUI.BaseControls.historie.OnOffControls(this.ucVersichrungsdaten12.ultraGroupBoxVersicherungsdaten, bOn);
 
                 PMDS.GUI.BaseControls.historie.OnOffControls(this, bOn);
 

@@ -30,7 +30,6 @@ namespace PMDS.GUI
 
 
 
-
         private QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpGebDatum;
 		private QS2.Desktop.ControlManagment.BaseLabel lblGebDatum;
 		private QS2.Desktop.ControlManagment.BaseTextEditor txtOrt;
@@ -48,10 +47,12 @@ namespace PMDS.GUI
 		private System.Windows.Forms.ErrorProvider errorProvider1;
 		private PMDS.GUI.BaseControls.AuswahlGruppeCombo txtSexus;
         private PMDS.GUI.BaseControls.AuswahlGruppeCombo txtTitel;
+        private QS2.Desktop.ControlManagment.BaseLabel lblSVNr;
         private QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpAufnahmedatum;
         private QS2.Desktop.ControlManagment.BaseLabel lblAufnahmedatum;
         protected QS2.Desktop.ControlManagment.BaseLabel lblAbteilung;
         private PMDS.GUI.BaseControls.ucAbteilungBereichSelektor cbAbteilung;
+        private QS2.Desktop.ControlManagment.BaseMaskEdit tbSVNr;
         public Infragistics.Win.UltraWinEditors.UltraCheckEditor chkKontaktbestätigung;
         public ucVersichrungsdaten ucVersichrungsdaten1;
         private IContainer components;
@@ -78,6 +79,7 @@ namespace PMDS.GUI
             RequiredFields();
 		}
 
+        
 		private void ucPatientNew_Load(object sender, System.EventArgs e)
 		{
             if (DesignMode || !ENV.AppRunning)
@@ -97,6 +99,7 @@ namespace PMDS.GUI
                 txtStrasse.ReadOnly       = value;
                 txtTitel.ReadOnly         = value;
                 txtVorname.ReadOnly       = value;
+                tbSVNr.ReadOnly           = false;
                 dtpGebDatum.ReadOnly      = value;
             }
         }
@@ -136,6 +139,8 @@ namespace PMDS.GUI
             this.lblNachname = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblGeschlecht = new QS2.Desktop.ControlManagment.BaseLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblSVNr = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.tbSVNr = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.dtpAufnahmedatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblAufnahmedatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblAbteilung = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -292,6 +297,28 @@ namespace PMDS.GUI
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // lblSVNr
+            // 
+            this.lblSVNr.AutoSize = true;
+            this.lblSVNr.Location = new System.Drawing.Point(13, 247);
+            this.lblSVNr.Name = "lblSVNr";
+            this.lblSVNr.Size = new System.Drawing.Size(41, 14);
+            this.lblSVNr.TabIndex = 16;
+            this.lblSVNr.Text = "SV Nr.:";
+            // 
+            // tbSVNr
+            // 
+            this.tbSVNr.ClipMode = Infragistics.Win.UltraWinMaskedEdit.MaskMode.Raw;
+            this.tbSVNr.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.UseSpecifiedMask;
+            this.tbSVNr.InputMask = "nnnn nnnnnn";
+            this.tbSVNr.Location = new System.Drawing.Point(101, 246);
+            this.tbSVNr.Name = "tbSVNr";
+            this.tbSVNr.NonAutoSizeHeight = 20;
+            this.tbSVNr.NullText = "<SV-Nr eingeben>";
+            this.tbSVNr.Size = new System.Drawing.Size(189, 20);
+            this.tbSVNr.TabIndex = 21;
+            this.tbSVNr.Text = " ";
+            // 
             // dtpAufnahmedatum
             // 
             this.dtpAufnahmedatum.AutoFillTime = Infragistics.Win.UltraWinMaskedEdit.AutoFillTime.Midnight;
@@ -373,7 +400,7 @@ namespace PMDS.GUI
             // 
             // chkKontaktbestätigung
             // 
-            this.chkKontaktbestätigung.Location = new System.Drawing.Point(13, 507);
+            this.chkKontaktbestätigung.Location = new System.Drawing.Point(13, 520);
             this.chkKontaktbestätigung.Name = "chkKontaktbestätigung";
             this.chkKontaktbestätigung.Size = new System.Drawing.Size(228, 18);
             this.chkKontaktbestätigung.TabIndex = 22;
@@ -382,7 +409,7 @@ namespace PMDS.GUI
             // ucVersichrungsdaten1
             // 
             this.ucVersichrungsdaten1.BackColor = System.Drawing.Color.Transparent;
-            this.ucVersichrungsdaten1.Location = new System.Drawing.Point(12, 257);
+            this.ucVersichrungsdaten1.Location = new System.Drawing.Point(12, 272);
             this.ucVersichrungsdaten1.Margin = new System.Windows.Forms.Padding(4);
             this.ucVersichrungsdaten1.Name = "ucVersichrungsdaten1";
             this.ucVersichrungsdaten1.Size = new System.Drawing.Size(550, 241);
@@ -399,10 +426,12 @@ namespace PMDS.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Controls.Add(this.ucVersichrungsdaten1);
             this.Controls.Add(this.chkKontaktbestätigung);
+            this.Controls.Add(this.tbSVNr);
             this.Controls.Add(this.cbAbteilung);
             this.Controls.Add(this.lblAbteilung);
             this.Controls.Add(this.dtpAufnahmedatum);
             this.Controls.Add(this.lblAufnahmedatum);
+            this.Controls.Add(this.lblSVNr);
             this.Controls.Add(this.txtTitel);
             this.Controls.Add(this.txtSexus);
             this.Controls.Add(this.lblGeschlecht);
@@ -486,6 +515,7 @@ namespace PMDS.GUI
 			txtPLZ.Text			       = Patient.Adresse.Plz;
 			txtOrt.Text			       = Patient.Adresse.Ort;
 			dtpGebDatum.Value	       = Patient.Geburtsdatum;
+            tbSVNr.Text                = Patient.VersicherungsNr;
 		}
 
 		public void UpdateDATA()
@@ -508,6 +538,7 @@ namespace PMDS.GUI
 			Patient.Adresse.Plz		             = txtPLZ.Text;
 			Patient.Adresse.Ort		             = txtOrt.Text;
 			Patient.Geburtsdatum	             = dtpGebDatum.Value;
+            Patient.VersicherungsNr              = tbSVNr.Text.Trim();
 
             if (Patient.Aufenthalt.IDAbteilung == null)
             {
@@ -544,6 +575,7 @@ namespace PMDS.GUI
 			GuiUtil.ValidateRequired(txtVorname);
 			GuiUtil.ValidateRequired(txtNachname);
 			GuiUtil.ValidateRequired(dtpGebDatum);
+            GuiUtil.ValidateRequired(tbSVNr);
 		}
 
 		private bool _bmodifymode = false;
@@ -585,6 +617,11 @@ namespace PMDS.GUI
 			GuiUtil.ValidateField(dtpGebDatum, (dtpGebDatum.Text.Length > 0),
 				ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
+            // Versicherungsnummer
+            GuiUtil.ValidateField(tbSVNr, (tbSVNr.Text.Trim().Length > 0),
+                ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+
+			// Patient darf noch nicht existieren nur bei neuanlage
 			if (!_bmodifymode && !bError && Patient.IsUserDefined(txtVorname.Text, txtNachname.Text, dtpGebDatum.DateTime))
 			{
 				QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("GUI.E_PATIENT_ALREADY_EXISTS"), true);
@@ -598,12 +635,11 @@ namespace PMDS.GUI
 
 
 
-
-        public bool validateDataVersNr(bool withMsgBox)
+        public bool validateDataVersNr(ref string MessageTxt, bool withMsgBox)
         {
             try
             {
-                return bUI.validateDataVersNr(this.ucVersichrungsdaten1, null);
+                return bUI.validateDataVersNr(ref MessageTxt, withMsgBox, this.ucVersichrungsdaten1, null);
 
             }
             catch (Exception ex)
@@ -626,6 +662,7 @@ namespace PMDS.GUI
                 OnValueChanged(sender, args);
         }
 
+
         public bool ReadOnlyVersDat
         {
             get { return ucVersichrungsdaten1.ReadOnly; }
@@ -640,6 +677,4 @@ namespace PMDS.GUI
         }
 
     }
-
 }
-

@@ -1,10 +1,3 @@
-//----------------------------------------------------------------------------
-/// <summary>
-///	frmWizard.cs
-/// Erstellt am:	12.04.2005
-/// Erstellt von:	EHO
-/// </summary>
-//----------------------------------------------------------------------------
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -26,8 +19,10 @@ namespace PMDS.GUI
 		private ArrayList		_info = new ArrayList();	// Page-Beschreibung
 		private int				_pageIdx = 0;				// aktuelle Page Index
 		public UserControl		_activePage = null;			// aktive Page
+        public ucPatientNew ucPatientNew1 = null;
 
-		private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpBottom;
+
+        private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpBottom;
 		private QS2.Desktop.ControlManagment.BasePanel panelButtons;
 		private QS2.Desktop.ControlManagment.BaseLableWin lblKlickenSieWeiter;
 		private QS2.Desktop.ControlManagment.BasePanel panelPage;
@@ -37,7 +32,6 @@ namespace PMDS.GUI
 		private QS2.Desktop.ControlManagment.BaseButton btnNext;
 		private QS2.Desktop.ControlManagment.BaseButton btnPrev;
 		private QS2.Desktop.ControlManagment.BaseLabel labInfo;				
-
 
 
 
@@ -238,22 +232,13 @@ namespace PMDS.GUI
 		}
 		#endregion
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Description
-		/// </summary>
-		//----------------------------------------------------------------------------
+
 		public string Description
 		{
 			get	{	return labInfo.Text;	}
 			set	{	labInfo.Text = value;	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// WizardPage einhängen, muss eine IWizardPage Schnittstelle besitzen
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public void AddPage(string info, UserControl page)
 		{
 			if (page == null)
@@ -266,72 +251,37 @@ namespace PMDS.GUI
 			_pages.Add(page);
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// WizardPage anhand des Index ermitteln
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public UserControl this[int idx]
 		{
 			get	{	return (UserControl)_pages[idx];	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// ActiveIndex
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public int ActiveIndex
 		{
 			get	{	return _pageIdx;	}
 			set	{	_pageIdx = value;	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// PageCount
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public int PageCount
 		{
 			get	{	return _pages.Count;	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// HasPages
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public bool HasPages
 		{
 			get	{	return PageCount > 0;	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// IsFirstPage 
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public bool IsFirstPage
 		{
 			get	{	return ActiveIndex == 0;	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// IsLastPage 
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public bool IsLastPage
 		{
 			get	{	return !HasPages || (ActiveIndex == PageCount-1);	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Page mit Index aktivieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public void ActivatePage(int i)
 		{
 			ActivatePage(i, true);
@@ -360,11 +310,6 @@ namespace PMDS.GUI
 			UpdateButtons();
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// IsActivePageValid
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private bool IsActivePageValid
 		{
 			get
@@ -376,11 +321,6 @@ namespace PMDS.GUI
 			}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Wizard mit erster Page initialisieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void ucWizard_Load(object sender, System.EventArgs e)
 		{
 			// erste Page aktivieren
@@ -390,33 +330,18 @@ namespace PMDS.GUI
 			UpdateButtons();
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// vorangegangene Page aktivieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnPrev_Click(object sender, System.EventArgs e)
 		{
 			if (!IsFirstPage)
 				ActivatePage(ActiveIndex-1, false);
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// nächste Page aktivieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnNext_Click(object sender, System.EventArgs e)
 		{
 			if (!IsLastPage)
 				ActivatePage(ActiveIndex+1);
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Wizard fertigstellen
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnOk_Click(object sender, System.EventArgs e)
 		{
 			_bCanClose = false;
@@ -427,6 +352,11 @@ namespace PMDS.GUI
 			if (!IsActivePageValid)
 				return;
 
+            if (!this.ucPatientNew1.validateDataVersNr(true))
+            {
+                return;
+            }
+
 			foreach(IWizardPage page in _pages)
 				page.UpdateDATA();
 
@@ -434,20 +364,10 @@ namespace PMDS.GUI
 
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Wizard abbrechen
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnCancel_Click(object sender, System.EventArgs e)
 		{
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Wizard schließen überwachen
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void frmWizard_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			if (!_bCanClose)
@@ -456,11 +376,6 @@ namespace PMDS.GUI
 			_bCanClose = true;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Buttons aktualieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void UpdateButtons()
 		{
 			btnOk.Visible		= IsLastPage;
@@ -475,8 +390,8 @@ namespace PMDS.GUI
 				lblKlickenSieWeiter.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Klicken Sie auf \"OK\", um den Vorgang abzuschließen");
             else
 				lblKlickenSieWeiter.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Klicken Sie auf \"Weiter\", um den Vorgang fortzusetzen");
-
         }
 
 	}
+
 }

@@ -1,10 +1,3 @@
-//----------------------------------------------------------------------------
-/// <summary>
-///	frmPatientNew.cs
-/// Erstellt am:	12.10.2004
-/// Erstellt von:	EHO
-/// </summary>
-//----------------------------------------------------------------------------
 using System;
 using System.Drawing;
 using System.Collections;
@@ -15,13 +8,10 @@ using System.Data;
 using PMDS.BusinessLogic;
 using PMDS.Global;
 
+
 namespace PMDS.GUI
 {
-	//----------------------------------------------------------------------------
-	/// <summary>
-	/// Form zum Erzeugung eines neuen Patienten
-	/// </summary>
-	//----------------------------------------------------------------------------
+
 	public class frmPatientNew : frmBase
 	{
 		private bool _canClose = false;
@@ -33,11 +23,7 @@ namespace PMDS.GUI
 		private QS2.Desktop.ControlManagment.BaseLabel labInfo;
 		private System.ComponentModel.IContainer components;
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Konstruktor
-		/// </summary>
-		//----------------------------------------------------------------------------
+
 		public frmPatientNew(Patient pat)
 		{
 			InitializeComponent();
@@ -51,11 +37,6 @@ namespace PMDS.GUI
             ucPatientNew1.Patient = pat;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dispose
-		/// </summary>
-		//----------------------------------------------------------------------------
 		protected override void Dispose( bool disposing )
 		{
 			if( disposing )
@@ -102,7 +83,7 @@ namespace PMDS.GUI
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(418, 48);
+            this.labInfo.Size = new System.Drawing.Size(729, 48);
             this.labInfo.TabIndex = 0;
             this.labInfo.Text = "Neuaufnahme";
             // 
@@ -116,7 +97,7 @@ namespace PMDS.GUI
             this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo1.Location = new System.Drawing.Point(0, 64);
             this.lblInfo1.Name = "lblInfo1";
-            this.lblInfo1.Size = new System.Drawing.Size(418, 24);
+            this.lblInfo1.Size = new System.Drawing.Size(729, 24);
             this.lblInfo1.TabIndex = 1;
             this.lblInfo1.Text = "Klient(in) wird im System neu erfasst";
             // 
@@ -130,7 +111,7 @@ namespace PMDS.GUI
             this.lblInfo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo2.Location = new System.Drawing.Point(0, 88);
             this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(418, 32);
+            this.lblInfo2.Size = new System.Drawing.Size(729, 32);
             this.lblInfo2.TabIndex = 2;
             this.lblInfo2.Text = "(keine Wiederaufnahme)";
             // 
@@ -164,6 +145,7 @@ namespace PMDS.GUI
             patient1.ID = new System.Guid("c8bf197a-7f07-4ec8-a1fc-5ff78ca72f74");
             patient1.IDAbteilung = null;
             patient1.IDAdresse = new System.Guid("5fa4373a-dce3-4188-b2d6-7ee19dbcd1a5");
+            patient1.IDBereich = null;
             patient1.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             patient1.jpg_Einverständniserklärung = null;
             patient1.Kennwort = "";
@@ -202,8 +184,9 @@ namespace PMDS.GUI
             patient1.VersicherungsNr = "";
             patient1.Verstorben = false;
             patient1.Vorname = "";
+            patient1.WohnungAbgemeldetJN = false;
             this.ucPatientNew1.Patient = patient1;
-            this.ucPatientNew1.Size = new System.Drawing.Size(420, 276);
+            this.ucPatientNew1.Size = new System.Drawing.Size(731, 276);
             this.ucPatientNew1.TabIndex = 0;
             // 
             // btnCancel
@@ -218,7 +201,7 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(268, 431);
+            this.btnCancel.Location = new System.Drawing.Point(579, 706);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 2;
@@ -240,7 +223,7 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(364, 431);
+            this.btnOK.Location = new System.Drawing.Point(675, 706);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(48, 32);
             this.btnOK.TabIndex = 1;
@@ -254,7 +237,7 @@ namespace PMDS.GUI
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(418, 475);
+            this.ClientSize = new System.Drawing.Size(729, 750);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -275,21 +258,12 @@ namespace PMDS.GUI
 		}
 		#endregion
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dialog schließen überwachen
-		/// </summary>
-		//----------------------------------------------------------------------------
+
 		private void frm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			e.Cancel = !_canClose;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dialog akzeptieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnOK_Click(object sender, System.EventArgs e)
 		{
 			if (!ucPatientNew1.ValidateFields())
@@ -300,11 +274,6 @@ namespace PMDS.GUI
 			_canClose = true;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dialog abbrechen
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnCancel_Click(object sender, System.EventArgs e)
 		{
 			_canClose = true;
@@ -314,5 +283,8 @@ namespace PMDS.GUI
         {
 
         }
+
 	}
+
 }
+
