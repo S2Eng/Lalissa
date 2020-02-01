@@ -1007,7 +1007,12 @@ namespace PMDS.GUI
                             cmbApplikationsform.Text = ((dsMedikament.MedikamentRow)t.Rows[0]).Applikationsform.Trim();
 
                         if (!((dsMedikament.MedikamentRow)t.Rows[0]).IsVerabreichungsartNull())
-                            cmbVerabreichungsart.Value = ((dsMedikament.MedikamentRow)t.Rows[0]).Verabreichungsart;
+                        {
+                            if (ENV.MedVerabreichenDefault != -1)
+                                cmbVerabreichungsart.Value = ENV.MedVerabreichenDefault;
+                            else
+                                cmbVerabreichungsart.Value = ((dsMedikament.MedikamentRow)t.Rows[0]).Verabreichungsart;
+                        }
                         else cmbVerabreichungsart.Text = "";
 
                         if (!((dsMedikament.MedikamentRow)t.Rows[0]).IsHerrichtenNull())
