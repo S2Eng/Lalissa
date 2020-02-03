@@ -3025,6 +3025,16 @@ namespace PMDS.Global
         [Description("ELGA-Dokumente senden")]
         ELGADokumenteSenden = 108,
 
+        [Description("ELGA-Kontaktbestätigung")]
+        ELGAKontaktbestätigung = 111,
+        [Description("ELGA-Storno")]
+        ELGAStorno = 112,
+        [Description("ELGA-Situatives OptOut")]
+        ELGASituativesOptOut = 113,
+        [Description("ELGA-Suche Ärzte")]
+        ELGASucheÄrzte = 114,
+        [Description("ELGA-Suche externe Einrichtungen")]
+        ELGASucheExterneEinrichtungen = 115,
     }
 
     public enum eCurrentPatientChange
