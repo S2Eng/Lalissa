@@ -107,6 +107,8 @@ Public Class contArchivSuch
     Friend WithEvents DokumentenbezeichnungÄndernToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LayoutmanagerToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem7 As ToolStripSeparator
+    Friend WithEvents LayoutmanagerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
     Friend WithEvents gridDocuArchive As QS2.Desktop.ControlManagment.BaseGrid
 
 
@@ -244,6 +246,8 @@ Public Class contArchivSuch
         Me.UTabDokumenteGefunden = New Infragistics.Win.UltraWinTabControl.UltraTabControl()
         Me.UltraTabSharedControlsPage2 = New Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage()
         Me.ContextMenuDokumenteExplorerS = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.LayoutmanagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
         Me.DokumentHinzufügenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ÖffnenEXToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MtemSpcihernUnterExplorerS = New System.Windows.Forms.ToolStripMenuItem()
@@ -956,9 +960,20 @@ Public Class contArchivSuch
         '
         'ContextMenuDokumenteExplorerS
         '
-        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.DokumentenbezeichnungÄndernToolStripMenuItem, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
+        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LayoutmanagerToolStripMenuItem, Me.ToolStripMenuItem4, Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.DokumentenbezeichnungÄndernToolStripMenuItem, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
         Me.ContextMenuDokumenteExplorerS.Name = "ContextMenuDokumenteExplorerS"
-        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(319, 220)
+        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(319, 248)
+        '
+        'LayoutmanagerToolStripMenuItem
+        '
+        Me.LayoutmanagerToolStripMenuItem.Name = "LayoutmanagerToolStripMenuItem"
+        Me.LayoutmanagerToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.LayoutmanagerToolStripMenuItem.Text = "Layoutmanager"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(315, 6)
         '
         'DokumentHinzufügenToolStripMenuItem
         '
@@ -1389,7 +1404,6 @@ Public Class contArchivSuch
     Public Sub DokumentSuchen(ByVal leerAnzeigen As Boolean, ByVal nurPapierkorb As Boolean, doInit As Boolean)
         Try
             Me.dataDokumenteSuchen.Clear()
-            Me.gridDocuArchive.Visible = False
 
             Me.UTabDokumenteGefunden.Tabs(0).Text = "Liste"
             Dim IDSchlagwörter As New ArrayList
@@ -1467,15 +1481,13 @@ Public Class contArchivSuch
                 End If
             End If
 
-            Me.gridDocuArchive.Visible = True
-
             Dim LayoutFound As Boolean = False
             Dim compLayout1 As QS2.core.vb.compLayout = New QS2.core.vb.compLayout()
+
             compLayout1.initControl()
             compLayout1.doLayoutGrid(Me.gridDocuArchive, Me.gridDocuArchive.Name.Trim(), Nothing, LayoutFound, True, Not PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources)
 
         Catch ex As Exception
-            Me.gridDocuArchive.Visible = False
             Throw New Exception("DokumentSuchen: " + ex.ToString())
         End Try
     End Sub
@@ -1589,116 +1601,116 @@ Public Class contArchivSuch
     Public Sub initGridDokumenteGefunden(ByRef dataDokumenteSuchen As dsPlanArchive)
         Try
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Width = 350
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.BackColor = System.Drawing.Color.Wheat
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ForeColor = System.Drawing.Color.Black
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Header.Caption = "Bezeichnung"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Width = 350
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.BackColor = System.Drawing.Color.Wheat
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ForeColor = System.Drawing.Color.Black
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Header.Caption = "Bezeichnung"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").DataType.GetType("System.String")
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Header.Caption = "Grösse (Byte)"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").DataType.GetType("System.Int32")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Format = "###,###,##0"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Header.Caption = "Grösse (Byte)"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").DataType.GetType("System.Int32")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Format = "###,###,##0"
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Width = 110
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Header.Caption = "Abgelegt am"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Format = "yyyy-MM-dd HH:mm"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Width = 110
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Header.Caption = "Abgelegt am"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Format = "yyyy-MM-dd HH:mm"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Width = 150
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Header.Caption = "Von"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Width = 150
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Header.Caption = "Von"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").DataType.GetType("System.String")
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Header.Caption = "Wichtigkeit"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Header.Caption = "Wichtigkeit"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Width = 50
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Header.Caption = "Winzip"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").DataType.GetType("System.Boolean")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Width = 50
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Header.Caption = "Winzip"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").DataType.GetType("System.Boolean")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Width = 50
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Header.Caption = "Extern"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").DataType.GetType("System.Boolean")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Width = 50
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Header.Caption = "Extern"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").DataType.GetType("System.Boolean")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Width = 100
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Caption = "Datei erstellt am"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            '' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Appearance.Image = ImageList.Images(10)
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Width = 100
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Caption = "Datei erstellt am"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            ' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Appearance.Image = ImageList.Images(10)
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Width = 110
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Caption = "Letzt Änderung am"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            '' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Appearance.Image = ImageList.Images(10)
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Width = 110
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Caption = "Letzt Änderung am"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            ' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Appearance.Image = ImageList.Images(10)
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Header.Caption = "Gültig von"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Header.Caption = "Gültig von"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Header.Caption = "Gültig bis"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Header.Caption = "Gültig bis"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Width = 140
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Gültig bis"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Ordner"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Width = 140
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Gültig bis"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Ordner"
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Width = 50
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Header.Caption = "Typ"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Width = 50
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Header.Caption = "Typ"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameOrig").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("VerzeichnisOrig").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokumenteintrag").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokument").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDOrdner").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameOrig").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("VerzeichnisOrig").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokumenteintrag").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokument").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDOrdner").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Archivordner").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameArchiv").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Notiz").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Archivordner").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameArchiv").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Notiz").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDObject").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ID_guid").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDObject").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ID_guid").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Width = 170
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Header.Caption = "Klient"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Width = 170
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Header.Caption = "Klient"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
 
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).HeaderVisible = False
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).ColHeadersVisible = False
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).HeaderVisible = False
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).ColHeadersVisible = False
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
 
-            ''UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
-            ''UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.RowAppearance.BorderColor = System.Drawing.Color.White
+            'UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
+            'UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.RowAppearance.BorderColor = System.Drawing.Color.White
 
             Me.gridDocuArchive.DisplayLayout.Appearance.BackColor = Color.White
             Me.gridDocuArchive.DisplayLayout.Appearance.BackColor2 = Color.White
@@ -2488,6 +2500,17 @@ Public Class contArchivSuch
         End Try
     End Sub
 
+    Private Sub LayoutmanagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LayoutmanagerToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            QS2.Desktop.ControlManagment.ControlManagment.openLayoutmanager(Me.gridDocuArchive, Me.gridDocuArchive.Name)
+
+        Catch ex As Exception
+            gen.GetEcxeptionArchiv(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
     Private Sub LayoutmanagerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LayoutmanagerToolStripMenuItem1.Click
         Try
             Me.Cursor = Cursors.WaitCursor

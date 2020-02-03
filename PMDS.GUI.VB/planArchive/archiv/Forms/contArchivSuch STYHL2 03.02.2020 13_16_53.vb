@@ -107,6 +107,8 @@ Public Class contArchivSuch
     Friend WithEvents DokumentenbezeichnungÄndernToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LayoutmanagerToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem7 As ToolStripSeparator
+    Friend WithEvents LayoutmanagerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
     Friend WithEvents gridDocuArchive As QS2.Desktop.ControlManagment.BaseGrid
 
 
@@ -244,6 +246,8 @@ Public Class contArchivSuch
         Me.UTabDokumenteGefunden = New Infragistics.Win.UltraWinTabControl.UltraTabControl()
         Me.UltraTabSharedControlsPage2 = New Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage()
         Me.ContextMenuDokumenteExplorerS = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.LayoutmanagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
         Me.DokumentHinzufügenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ÖffnenEXToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MtemSpcihernUnterExplorerS = New System.Windows.Forms.ToolStripMenuItem()
@@ -344,7 +348,7 @@ Public Class contArchivSuch
         '
         'gridDocuArchive
         '
-        Me.gridDocuArchive.AutoWork = False
+        Me.gridDocuArchive.AutoWork = True
         Me.gridDocuArchive.ContextMenuStrip = Me.ContextMenuDokumenteListeC
         Appearance1.BackColor = System.Drawing.Color.White
         Appearance1.BackColor2 = System.Drawing.Color.White
@@ -956,9 +960,20 @@ Public Class contArchivSuch
         '
         'ContextMenuDokumenteExplorerS
         '
-        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.DokumentenbezeichnungÄndernToolStripMenuItem, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
+        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LayoutmanagerToolStripMenuItem, Me.ToolStripMenuItem4, Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.DokumentenbezeichnungÄndernToolStripMenuItem, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
         Me.ContextMenuDokumenteExplorerS.Name = "ContextMenuDokumenteExplorerS"
-        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(319, 220)
+        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(319, 248)
+        '
+        'LayoutmanagerToolStripMenuItem
+        '
+        Me.LayoutmanagerToolStripMenuItem.Name = "LayoutmanagerToolStripMenuItem"
+        Me.LayoutmanagerToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.LayoutmanagerToolStripMenuItem.Text = "Layoutmanager"
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(315, 6)
         '
         'DokumentHinzufügenToolStripMenuItem
         '
@@ -1467,12 +1482,12 @@ Public Class contArchivSuch
                 End If
             End If
 
-            Me.gridDocuArchive.Visible = True
-
             Dim LayoutFound As Boolean = False
             Dim compLayout1 As QS2.core.vb.compLayout = New QS2.core.vb.compLayout()
             compLayout1.initControl()
             compLayout1.doLayoutGrid(Me.gridDocuArchive, Me.gridDocuArchive.Name.Trim(), Nothing, LayoutFound, True, Not PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources)
+
+            Me.gridDocuArchive.Visible = True
 
         Catch ex As Exception
             Me.gridDocuArchive.Visible = False
@@ -2488,6 +2503,17 @@ Public Class contArchivSuch
         End Try
     End Sub
 
+    Private Sub LayoutmanagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LayoutmanagerToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            QS2.Desktop.ControlManagment.ControlManagment.openLayoutmanager(Me.gridDocuArchive, Me.gridDocuArchive.Name)
+
+        Catch ex As Exception
+            gen.GetEcxeptionArchiv(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
     Private Sub LayoutmanagerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LayoutmanagerToolStripMenuItem1.Click
         Try
             Me.Cursor = Cursors.WaitCursor

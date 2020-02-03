@@ -107,7 +107,9 @@ Public Class contArchivSuch
     Friend WithEvents DokumentenbezeichnungÄndernToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LayoutmanagerToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem7 As ToolStripSeparator
-    Friend WithEvents gridDocuArchive As QS2.Desktop.ControlManagment.BaseGrid
+    Friend WithEvents LayoutmanagerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem4 As ToolStripSeparator
+    Friend WithEvents gridDocuArchive As Infragistics.Win.UltraWinGrid.UltraGrid
 
 
 
@@ -152,9 +154,9 @@ Public Class contArchivSuch
         Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(contArchivSuch))
         Dim UltraExplorerBarGroup1 As Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarGroup = New Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarGroup()
-        Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim GridBagConstraint4 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
-        Dim GridBagConstraint1 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
+        Dim Appearance51 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim GridBagConstraint12 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
+        Dim GridBagConstraint11 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
         Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -168,21 +170,21 @@ Public Class contArchivSuch
         Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim GridBagConstraint2 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
-        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim GridBagConstraint3 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
-        Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim GridBagConstraint5 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
-        Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim GridBagConstraint13 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
+        Dim Appearance53 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance54 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance55 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance56 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance52 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim GridBagConstraint9 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
+        Dim Appearance57 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim GridBagConstraint14 As Infragistics.Win.Layout.GridBagConstraint = New Infragistics.Win.Layout.GridBagConstraint()
+        Dim Appearance58 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance59 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance60 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance61 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance62 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance63 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim EditorButton1 As Infragistics.Win.UltraWinEditors.EditorButton = New Infragistics.Win.UltraWinEditors.EditorButton("Löschen")
         Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -199,7 +201,7 @@ Public Class contArchivSuch
         Me.UltraExplorerBarContainerControl3 = New Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarContainerControl()
         Me.UltraTabPageControl4 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.PanelGrid = New System.Windows.Forms.Panel()
-        Me.gridDocuArchive = New QS2.Desktop.ControlManagment.BaseGrid()
+        Me.gridDocuArchive = New Infragistics.Win.UltraWinGrid.UltraGrid()
         Me.ContextMenuDokumenteListeC = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DokumentHinzufügenToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ÖffnenLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -210,8 +212,6 @@ Public Class contArchivSuch
         Me.MItemDokumentLöschenOhnePapierkorbListeS = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.MItemInfoDokumentListeS = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.LayoutmanagerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UltraTabPageControl6 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.PanelOrdnerErgebniss = New System.Windows.Forms.Panel()
         Me.UExplBarZeitpunktAbgerechnet = New Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar()
@@ -269,6 +269,10 @@ Public Class contArchivSuch
         Me.lasySucheSchlagwortkatalog2 = New Infragistics.Win.Misc.UltraGridBagLayoutManager(Me.components)
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.LayoutmanagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LayoutmanagerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripSeparator()
         Me.UltraTabPageControl4.SuspendLayout()
         Me.PanelGrid.SuspendLayout()
         CType(Me.gridDocuArchive, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -344,7 +348,6 @@ Public Class contArchivSuch
         '
         'gridDocuArchive
         '
-        Me.gridDocuArchive.AutoWork = False
         Me.gridDocuArchive.ContextMenuStrip = Me.ContextMenuDokumenteListeC
         Appearance1.BackColor = System.Drawing.Color.White
         Appearance1.BackColor2 = System.Drawing.Color.White
@@ -435,17 +438,6 @@ Public Class contArchivSuch
         Me.MItemInfoDokumentListeS.Size = New System.Drawing.Size(251, 22)
         Me.MItemInfoDokumentListeS.Text = "Info Dokument"
         '
-        'ToolStripMenuItem7
-        '
-        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(248, 6)
-        '
-        'LayoutmanagerToolStripMenuItem1
-        '
-        Me.LayoutmanagerToolStripMenuItem1.Name = "LayoutmanagerToolStripMenuItem1"
-        Me.LayoutmanagerToolStripMenuItem1.Size = New System.Drawing.Size(251, 22)
-        Me.LayoutmanagerToolStripMenuItem1.Text = "Layoutmanager"
-        '
         'UltraTabPageControl6
         '
         Me.UltraTabPageControl6.Controls.Add(Me.PanelOrdnerErgebniss)
@@ -488,16 +480,16 @@ Public Class contArchivSuch
         '
         'UltraGroupBoxSucheInOrdnern
         '
-        Appearance6.BackColor = System.Drawing.Color.Transparent
-        Appearance6.BorderColor = System.Drawing.Color.Black
-        Me.UltraGroupBoxSucheInOrdnern.Appearance = Appearance6
+        Appearance51.BackColor = System.Drawing.Color.Transparent
+        Appearance51.BorderColor = System.Drawing.Color.Black
+        Me.UltraGroupBoxSucheInOrdnern.Appearance = Appearance51
         Me.UltraGroupBoxSucheInOrdnern.Controls.Add(Me.PanelSucheOrdner)
-        GridBagConstraint4.Fill = Infragistics.Win.Layout.FillType.Both
-        GridBagConstraint4.Insets.Bottom = 5
-        GridBagConstraint4.Insets.Right = 5
-        GridBagConstraint4.Insets.Top = 5
-        GridBagConstraint4.OriginY = 1
-        Me.lasySucheSchlagwortkatalog.SetGridBagConstraint(Me.UltraGroupBoxSucheInOrdnern, GridBagConstraint4)
+        GridBagConstraint12.Fill = Infragistics.Win.Layout.FillType.Both
+        GridBagConstraint12.Insets.Bottom = 5
+        GridBagConstraint12.Insets.Right = 5
+        GridBagConstraint12.Insets.Top = 5
+        GridBagConstraint12.OriginY = 1
+        Me.lasySucheSchlagwortkatalog.SetGridBagConstraint(Me.UltraGroupBoxSucheInOrdnern, GridBagConstraint12)
         Me.UltraGroupBoxSucheInOrdnern.Location = New System.Drawing.Point(0, 242)
         Me.UltraGroupBoxSucheInOrdnern.Name = "UltraGroupBoxSucheInOrdnern"
         Me.lasySucheSchlagwortkatalog.SetPreferredSize(Me.UltraGroupBoxSucheInOrdnern, New System.Drawing.Size(232, 215))
@@ -509,12 +501,12 @@ Public Class contArchivSuch
         '
         Me.PanelSucheOrdner.BackColor = System.Drawing.Color.White
         Me.PanelSucheOrdner.Controls.Add(Me.UDropDownButtonErweiterteSuche)
-        GridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both
-        GridBagConstraint1.Insets.Bottom = 5
-        GridBagConstraint1.Insets.Left = 5
-        GridBagConstraint1.Insets.Right = 5
-        GridBagConstraint1.Insets.Top = 5
-        Me.laySucheInOrdner.SetGridBagConstraint(Me.PanelSucheOrdner, GridBagConstraint1)
+        GridBagConstraint11.Fill = Infragistics.Win.Layout.FillType.Both
+        GridBagConstraint11.Insets.Bottom = 5
+        GridBagConstraint11.Insets.Left = 5
+        GridBagConstraint11.Insets.Right = 5
+        GridBagConstraint11.Insets.Top = 5
+        Me.laySucheInOrdner.SetGridBagConstraint(Me.PanelSucheOrdner, GridBagConstraint11)
         Me.PanelSucheOrdner.Location = New System.Drawing.Point(8, 21)
         Me.PanelSucheOrdner.Name = "PanelSucheOrdner"
         Me.laySucheInOrdner.SetPreferredSize(Me.PanelSucheOrdner, New System.Drawing.Size(490, 24))
@@ -612,12 +604,12 @@ Public Class contArchivSuch
         Me.UGridSchlagwortkatalog.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.None
         Me.UGridSchlagwortkatalog.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.UGridSchlagwortkatalog.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
-        GridBagConstraint2.Fill = Infragistics.Win.Layout.FillType.Both
-        GridBagConstraint2.Insets.Bottom = 5
-        GridBagConstraint2.Insets.Left = 5
-        GridBagConstraint2.Insets.Right = 5
-        GridBagConstraint2.Insets.Top = 5
-        Me.lasySucheSchlagwortkatalog2.SetGridBagConstraint(Me.UGridSchlagwortkatalog, GridBagConstraint2)
+        GridBagConstraint13.Fill = Infragistics.Win.Layout.FillType.Both
+        GridBagConstraint13.Insets.Bottom = 5
+        GridBagConstraint13.Insets.Left = 5
+        GridBagConstraint13.Insets.Right = 5
+        GridBagConstraint13.Insets.Top = 5
+        Me.lasySucheSchlagwortkatalog2.SetGridBagConstraint(Me.UGridSchlagwortkatalog, GridBagConstraint13)
         Me.UGridSchlagwortkatalog.Location = New System.Drawing.Point(8, 21)
         Me.UGridSchlagwortkatalog.Name = "UGridSchlagwortkatalog"
         Me.lasySucheSchlagwortkatalog2.SetPreferredSize(Me.UGridSchlagwortkatalog, New System.Drawing.Size(116, 77))
@@ -627,8 +619,8 @@ Public Class contArchivSuch
         '
         'UDateAbgelegtBis
         '
-        Appearance21.BackColor = System.Drawing.Color.White
-        Me.UDateAbgelegtBis.Appearance = Appearance21
+        Appearance53.BackColor = System.Drawing.Color.White
+        Me.UDateAbgelegtBis.Appearance = Appearance53
         Me.UDateAbgelegtBis.BackColor = System.Drawing.Color.White
         Me.UDateAbgelegtBis.DateTime = New Date(2005, 9, 2, 0, 0, 0, 0)
         Me.UDateAbgelegtBis.Location = New System.Drawing.Point(211, 38)
@@ -639,8 +631,8 @@ Public Class contArchivSuch
         '
         'UDateAbgelegtVon
         '
-        Appearance22.BackColor = System.Drawing.Color.White
-        Me.UDateAbgelegtVon.Appearance = Appearance22
+        Appearance54.BackColor = System.Drawing.Color.White
+        Me.UDateAbgelegtVon.Appearance = Appearance54
         Me.UDateAbgelegtVon.BackColor = System.Drawing.Color.White
         Me.UDateAbgelegtVon.DateTime = New Date(2005, 9, 2, 0, 0, 0, 0)
         Me.UDateAbgelegtVon.Location = New System.Drawing.Point(90, 38)
@@ -651,8 +643,8 @@ Public Class contArchivSuch
         '
         'UltraLabel7
         '
-        Appearance23.BackColor = System.Drawing.Color.Transparent
-        Me.UltraLabel7.Appearance = Appearance23
+        Appearance55.BackColor = System.Drawing.Color.Transparent
+        Me.UltraLabel7.Appearance = Appearance55
         Me.UltraLabel7.Location = New System.Drawing.Point(188, 40)
         Me.UltraLabel7.Name = "UltraLabel7"
         Me.UltraLabel7.Size = New System.Drawing.Size(24, 16)
@@ -661,8 +653,8 @@ Public Class contArchivSuch
         '
         'lblAbgelegtVon
         '
-        Appearance24.BackColor = System.Drawing.Color.Transparent
-        Me.lblAbgelegtVon.Appearance = Appearance24
+        Appearance56.BackColor = System.Drawing.Color.Transparent
+        Me.lblAbgelegtVon.Appearance = Appearance56
         Me.lblAbgelegtVon.Location = New System.Drawing.Point(10, 40)
         Me.lblAbgelegtVon.Name = "lblAbgelegtVon"
         Me.lblAbgelegtVon.Size = New System.Drawing.Size(76, 16)
@@ -671,15 +663,15 @@ Public Class contArchivSuch
         '
         'UltraGroupBoxSchlagwörter
         '
-        Appearance7.BackColor = System.Drawing.Color.Transparent
-        Appearance7.BorderColor = System.Drawing.Color.Black
-        Me.UltraGroupBoxSchlagwörter.Appearance = Appearance7
+        Appearance52.BackColor = System.Drawing.Color.Transparent
+        Appearance52.BorderColor = System.Drawing.Color.Black
+        Me.UltraGroupBoxSchlagwörter.Appearance = Appearance52
         Me.UltraGroupBoxSchlagwörter.Controls.Add(Me.UGridSchlagwortkatalog)
-        GridBagConstraint3.Fill = Infragistics.Win.Layout.FillType.Both
-        GridBagConstraint3.Insets.Bottom = 5
-        GridBagConstraint3.Insets.Right = 5
-        GridBagConstraint3.Insets.Top = 5
-        Me.lasySucheSchlagwortkatalog.SetGridBagConstraint(Me.UltraGroupBoxSchlagwörter, GridBagConstraint3)
+        GridBagConstraint9.Fill = Infragistics.Win.Layout.FillType.Both
+        GridBagConstraint9.Insets.Bottom = 5
+        GridBagConstraint9.Insets.Right = 5
+        GridBagConstraint9.Insets.Top = 5
+        Me.lasySucheSchlagwortkatalog.SetGridBagConstraint(Me.UltraGroupBoxSchlagwörter, GridBagConstraint9)
         Me.UltraGroupBoxSchlagwörter.Location = New System.Drawing.Point(0, 5)
         Me.UltraGroupBoxSchlagwörter.Name = "UltraGroupBoxSchlagwörter"
         Me.lasySucheSchlagwortkatalog.SetPreferredSize(Me.UltraGroupBoxSchlagwörter, New System.Drawing.Size(265, 264))
@@ -699,9 +691,9 @@ Public Class contArchivSuch
         '
         'UltraGroupBoxSucheInOrdner
         '
-        Appearance25.BackColor = System.Drawing.Color.Transparent
-        Appearance25.BorderColor = System.Drawing.Color.Black
-        Me.UltraGroupBoxSucheInOrdner.Appearance = Appearance25
+        Appearance57.BackColor = System.Drawing.Color.Transparent
+        Appearance57.BorderColor = System.Drawing.Color.Black
+        Me.UltraGroupBoxSucheInOrdner.Appearance = Appearance57
         Me.UltraGroupBoxSucheInOrdner.Controls.Add(Me.PanelBenutzerauswahl)
         Me.UltraGroupBoxSucheInOrdner.Controls.Add(Me.UCheckEditorImGesamtarchivSuchen)
         Me.UltraGroupBoxSucheInOrdner.Controls.Add(Me.grpAnzeigeBaumansicht)
@@ -715,12 +707,12 @@ Public Class contArchivSuch
         Me.UltraGroupBoxSucheInOrdner.Controls.Add(Me.lblWichtigkeit)
         Me.UltraGroupBoxSucheInOrdner.Controls.Add(Me.UDateGültigVon)
         Me.UltraGroupBoxSucheInOrdner.Controls.Add(Me.UComboWichtigkeit)
-        GridBagConstraint5.Fill = Infragistics.Win.Layout.FillType.Both
-        GridBagConstraint5.Insets.Bottom = 2
-        GridBagConstraint5.Insets.Left = 5
-        GridBagConstraint5.Insets.Right = 5
-        GridBagConstraint5.Insets.Top = 5
-        Me.layErwSuchangaben.SetGridBagConstraint(Me.UltraGroupBoxSucheInOrdner, GridBagConstraint5)
+        GridBagConstraint14.Fill = Infragistics.Win.Layout.FillType.Both
+        GridBagConstraint14.Insets.Bottom = 2
+        GridBagConstraint14.Insets.Left = 5
+        GridBagConstraint14.Insets.Right = 5
+        GridBagConstraint14.Insets.Top = 5
+        Me.layErwSuchangaben.SetGridBagConstraint(Me.UltraGroupBoxSucheInOrdner, GridBagConstraint14)
         Me.UltraGroupBoxSucheInOrdner.Location = New System.Drawing.Point(5, 5)
         Me.UltraGroupBoxSucheInOrdner.Name = "UltraGroupBoxSucheInOrdner"
         Me.layErwSuchangaben.SetPreferredSize(Me.UltraGroupBoxSucheInOrdner, New System.Drawing.Size(301, 218))
@@ -772,8 +764,8 @@ Public Class contArchivSuch
         '
         'grpAnzeigeBaumansicht
         '
-        Appearance26.BackColor = System.Drawing.Color.Transparent
-        Me.grpAnzeigeBaumansicht.Appearance = Appearance26
+        Appearance58.BackColor = System.Drawing.Color.Transparent
+        Me.grpAnzeigeBaumansicht.Appearance = Appearance58
         Me.grpAnzeigeBaumansicht.Controls.Add(Me.PanelAnzeigeBaumansicht)
         Me.grpAnzeigeBaumansicht.Location = New System.Drawing.Point(321, 24)
         Me.grpAnzeigeBaumansicht.Name = "grpAnzeigeBaumansicht"
@@ -825,8 +817,8 @@ Public Class contArchivSuch
         '
         'lblGültigkeitVon
         '
-        Appearance27.BackColor = System.Drawing.Color.Transparent
-        Me.lblGültigkeitVon.Appearance = Appearance27
+        Appearance59.BackColor = System.Drawing.Color.Transparent
+        Me.lblGültigkeitVon.Appearance = Appearance59
         Me.lblGültigkeitVon.Location = New System.Drawing.Point(9, 63)
         Me.lblGültigkeitVon.Name = "lblGültigkeitVon"
         Me.lblGültigkeitVon.Size = New System.Drawing.Size(76, 16)
@@ -835,8 +827,8 @@ Public Class contArchivSuch
         '
         'UDateGültigBis
         '
-        Appearance28.BackColor = System.Drawing.Color.White
-        Me.UDateGültigBis.Appearance = Appearance28
+        Appearance60.BackColor = System.Drawing.Color.White
+        Me.UDateGültigBis.Appearance = Appearance60
         Me.UDateGültigBis.AutoSize = False
         Me.UDateGültigBis.BackColor = System.Drawing.Color.White
         Me.UDateGültigBis.DateTime = New Date(2005, 9, 2, 0, 0, 0, 0)
@@ -848,8 +840,8 @@ Public Class contArchivSuch
         '
         'UltraLabel6
         '
-        Appearance29.BackColor = System.Drawing.Color.Transparent
-        Me.UltraLabel6.Appearance = Appearance29
+        Appearance61.BackColor = System.Drawing.Color.Transparent
+        Me.UltraLabel6.Appearance = Appearance61
         Me.UltraLabel6.Location = New System.Drawing.Point(188, 63)
         Me.UltraLabel6.Name = "UltraLabel6"
         Me.UltraLabel6.Size = New System.Drawing.Size(24, 16)
@@ -858,9 +850,9 @@ Public Class contArchivSuch
         '
         'lblWichtigkeit
         '
-        Appearance30.BackColor = System.Drawing.Color.Transparent
-        Appearance30.ForeColor = System.Drawing.Color.Black
-        Me.lblWichtigkeit.Appearance = Appearance30
+        Appearance62.BackColor = System.Drawing.Color.Transparent
+        Appearance62.ForeColor = System.Drawing.Color.Black
+        Me.lblWichtigkeit.Appearance = Appearance62
         Me.lblWichtigkeit.Location = New System.Drawing.Point(9, 103)
         Me.lblWichtigkeit.Name = "lblWichtigkeit"
         Me.lblWichtigkeit.Size = New System.Drawing.Size(64, 16)
@@ -869,8 +861,8 @@ Public Class contArchivSuch
         '
         'UDateGültigVon
         '
-        Appearance31.BackColor = System.Drawing.Color.White
-        Me.UDateGültigVon.Appearance = Appearance31
+        Appearance63.BackColor = System.Drawing.Color.White
+        Me.UDateGültigVon.Appearance = Appearance63
         Me.UDateGültigVon.AutoSize = False
         Me.UDateGültigVon.BackColor = System.Drawing.Color.White
         Me.UDateGültigVon.DateTime = New Date(2005, 9, 2, 0, 0, 0, 0)
@@ -956,9 +948,9 @@ Public Class contArchivSuch
         '
         'ContextMenuDokumenteExplorerS
         '
-        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.DokumentenbezeichnungÄndernToolStripMenuItem, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
+        Me.ContextMenuDokumenteExplorerS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LayoutmanagerToolStripMenuItem, Me.ToolStripMenuItem4, Me.DokumentHinzufügenToolStripMenuItem, Me.ÖffnenEXToolStripMenuItem, Me.MtemSpcihernUnterExplorerS, Me.ToolStripMenuItem2, Me.DokumentenbezeichnungÄndernToolStripMenuItem, Me.InDenPapierkorbEXToolStripMenuItem, Me.MItemLöschenOhnePapierkorbExplorerS, Me.ToolStripMenuItem1, Me.MtemInfoDateiDokumentS, Me.ToolStripMenuItem6, Me.MItemVerzeichnisRausspielenBezeichnungS, Me.MItemVerzeichnisRausspielenDateinameOriginalS})
         Me.ContextMenuDokumenteExplorerS.Name = "ContextMenuDokumenteExplorerS"
-        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(319, 220)
+        Me.ContextMenuDokumenteExplorerS.Size = New System.Drawing.Size(319, 248)
         '
         'DokumentHinzufügenToolStripMenuItem
         '
@@ -1131,6 +1123,28 @@ Public Class contArchivSuch
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(807, 431)
         Me.Panel2.TabIndex = 467
+        '
+        'ToolStripMenuItem4
+        '
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(315, 6)
+        '
+        'LayoutmanagerToolStripMenuItem
+        '
+        Me.LayoutmanagerToolStripMenuItem.Name = "LayoutmanagerToolStripMenuItem"
+        Me.LayoutmanagerToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.LayoutmanagerToolStripMenuItem.Text = "Layoutmanager"
+        '
+        'LayoutmanagerToolStripMenuItem1
+        '
+        Me.LayoutmanagerToolStripMenuItem1.Name = "LayoutmanagerToolStripMenuItem1"
+        Me.LayoutmanagerToolStripMenuItem1.Size = New System.Drawing.Size(251, 22)
+        Me.LayoutmanagerToolStripMenuItem1.Text = "Layoutmanager"
+        '
+        'ToolStripMenuItem7
+        '
+        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(248, 6)
         '
         'contArchivSuch
         '
@@ -1389,7 +1403,6 @@ Public Class contArchivSuch
     Public Sub DokumentSuchen(ByVal leerAnzeigen As Boolean, ByVal nurPapierkorb As Boolean, doInit As Boolean)
         Try
             Me.dataDokumenteSuchen.Clear()
-            Me.gridDocuArchive.Visible = False
 
             Me.UTabDokumenteGefunden.Tabs(0).Text = "Liste"
             Dim IDSchlagwörter As New ArrayList
@@ -1467,15 +1480,13 @@ Public Class contArchivSuch
                 End If
             End If
 
-            Me.gridDocuArchive.Visible = True
-
             Dim LayoutFound As Boolean = False
             Dim compLayout1 As QS2.core.vb.compLayout = New QS2.core.vb.compLayout()
+
             compLayout1.initControl()
             compLayout1.doLayoutGrid(Me.gridDocuArchive, Me.gridDocuArchive.Name.Trim(), Nothing, LayoutFound, True, Not PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources)
 
         Catch ex As Exception
-            Me.gridDocuArchive.Visible = False
             Throw New Exception("DokumentSuchen: " + ex.ToString())
         End Try
     End Sub
@@ -1589,116 +1600,116 @@ Public Class contArchivSuch
     Public Sub initGridDokumenteGefunden(ByRef dataDokumenteSuchen As dsPlanArchive)
         Try
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Width = 350
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.BackColor = System.Drawing.Color.Wheat
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ForeColor = System.Drawing.Color.Black
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Header.Caption = "Bezeichnung"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Width = 350
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.BackColor = System.Drawing.Color.Wheat
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("").Header.Appearance.ForeColor = System.Drawing.Color.Black
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").Header.Caption = "Bezeichnung"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Bezeichnung").DataType.GetType("System.String")
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Header.Caption = "Grösse (Byte)"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").DataType.GetType("System.Int32")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Format = "###,###,##0"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Header.Caption = "Grösse (Byte)"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").DataType.GetType("System.Int32")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Right
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Format = "###,###,##0"
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Width = 110
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Header.Caption = "Abgelegt am"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Format = "yyyy-MM-dd HH:mm"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Width = 110
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Header.Caption = "Abgelegt am"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").Format = "yyyy-MM-dd HH:mm"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltAm").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Width = 150
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Header.Caption = "Von"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Width = 150
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").Header.Caption = "Von"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ErstelltVon").DataType.GetType("System.String")
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Header.Caption = "Wichtigkeit"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Header.Caption = "Wichtigkeit"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Width = 50
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Header.Caption = "Winzip"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").DataType.GetType("System.Boolean")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Width = 50
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Header.Caption = "Winzip"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").DataType.GetType("System.Boolean")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Width = 50
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Header.Caption = "Extern"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").DataType.GetType("System.Boolean")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Width = 50
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Header.Caption = "Extern"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").DataType.GetType("System.Boolean")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Width = 100
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Caption = "Datei erstellt am"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            '' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Appearance.Image = ImageList.Images(10)
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Width = 100
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Caption = "Datei erstellt am"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            ' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentErstellt").Header.Appearance.Image = ImageList.Images(10)
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Width = 110
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Caption = "Letzt Änderung am"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
-            '' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Appearance.Image = ImageList.Images(10)
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Width = 110
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Caption = "Letzt Änderung am"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            ' Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Columns("DokumentGeändert").Header.Appearance.Image = ImageList.Images(10)
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Header.Caption = "Gültig von"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Header.Caption = "Gültig von"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigVon").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Width = 80
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Header.Caption = "Gültig bis"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").DataType.GetType("System.Date")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Format = "yyyy-MM-dd"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Width = 80
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Header.Caption = "Gültig bis"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").DataType.GetType("System.Date")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").Format = "yyyy-MM-dd"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("GültigBis").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Width = 140
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Gültig bis"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Ordner"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Width = 140
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Gültig bis"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("BezeichnungOrdner").Header.Caption = "Ordner"
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Width = 50
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Header.Caption = "Typ"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Width = 50
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").Header.Caption = "Typ"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameTyp").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Center
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameOrig").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("VerzeichnisOrig").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokumenteintrag").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokument").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDOrdner").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameOrig").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("VerzeichnisOrig").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokumenteintrag").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDDokument").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDOrdner").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Archivordner").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameArchiv").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Notiz").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Archivordner").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DateinameArchiv").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Notiz").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGröße").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Wichtigkeit").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Winzip").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDObject").Hidden = True
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ID_guid").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Extern").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentErstellt").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("DokumentGeändert").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("IDObject").Hidden = True
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("ID_guid").Hidden = True
 
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Width = 170
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Header.Caption = "Klient"
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").DataType.GetType("System.String")
-            'Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Width = 170
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").Header.Caption = "Klient"
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").DataType.GetType("System.String")
+            Me.gridDocuArchive.DisplayLayout.Bands(0).Columns("Patient").CellAppearance.TextHAlign = Infragistics.Win.HAlign.Left
 
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).HeaderVisible = False
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).ColHeadersVisible = False
-            ''Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).HeaderVisible = False
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).ColHeadersVisible = False
+            'Me.UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
 
-            ''UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
-            ''UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.RowAppearance.BorderColor = System.Drawing.Color.White
+            'UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.None
+            'UGridDokumenteGefunden3.DisplayLayout.Bands(0).Override.RowAppearance.BorderColor = System.Drawing.Color.White
 
             Me.gridDocuArchive.DisplayLayout.Appearance.BackColor = Color.White
             Me.gridDocuArchive.DisplayLayout.Appearance.BackColor2 = Color.White
@@ -2488,6 +2499,17 @@ Public Class contArchivSuch
         End Try
     End Sub
 
+    Private Sub LayoutmanagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LayoutmanagerToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            QS2.Desktop.ControlManagment.ControlManagment.openLayoutmanager(Me.gridDocuArchive, Me.gridDocuArchive.Name)
+
+        Catch ex As Exception
+            gen.GetEcxeptionArchiv(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
     Private Sub LayoutmanagerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LayoutmanagerToolStripMenuItem1.Click
         Try
             Me.Cursor = Cursors.WaitCursor
