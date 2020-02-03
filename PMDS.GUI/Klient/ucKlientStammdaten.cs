@@ -410,7 +410,10 @@ namespace PMDS.GUI
             this.chkKZUeberlebender.Checked = Klient.KZUeberlebender;
             this.chkAnatomie.Checked = Klient.Anatomie;
             this.txtBesonderheit2.Text = Klient.Besonderheit.Trim();
-            
+
+            lbleMailKlient.Text = Klient.Kontakt.Email;
+            lblMobilTelNrKlient.Text = Klient.Kontakt.Mobil;
+
             //lthPatientAdresseSub
             this.txtStrasseNWS.Text = "";
             this.txtPLZNWS.Text = "";
@@ -2507,6 +2510,11 @@ namespace PMDS.GUI
                     }
                 }
             }
+        }
+
+        private void baseLabel4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

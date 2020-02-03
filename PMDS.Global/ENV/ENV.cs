@@ -143,6 +143,7 @@ namespace PMDS.Global
         public static string ELGAUser = "s2-engineering";
         public static string ELGAPwd = "KLqHC0hznj91OH0PiCIWBw==";
 
+        public static int MedVerabreichenDefault = -1;
 
 
 
@@ -1601,6 +1602,11 @@ namespace PMDS.Global
                 stemp = _Log.ConfigFile.GetStringValue("RezeptUseErstattungscode");
                 if (stemp.Length > 0 && stemp == "0")
                     PMDS.Global.ENV.RezeptUseErstattungscode = false;
+
+                stemp = _Log.ConfigFile.GetStringValue("MedVerabreichenDefault");
+                if (stemp.Length > 0)
+                    int.TryParse(stemp.Trim(), out PMDS.Global.ENV.MedVerabreichenDefault);
+
 
                 string WCFServiceOnOffTmp = _Log.ConfigFile.GetStringValue("WCFServiceOnOff");
                 if (WCFServiceOnOffTmp.Trim() != "")
