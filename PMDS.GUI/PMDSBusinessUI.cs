@@ -934,6 +934,35 @@ namespace PMDS.GUI
             }
         }
 
+        public static string getTxtVerabreichungsart(int iVerabreichungsart)
+        {
+            try
+            {
+                string txtVerabreichen = "";
+
+                if (iVerabreichungsart == 0)
+                {
+                    txtVerabreichen = QS2.Desktop.ControlManagment.ControlManagment.getRes("wie hergerichtet");
+                }
+                else if (iVerabreichungsart == 1)
+                {
+                    txtVerabreichen = QS2.Desktop.ControlManagment.ControlManagment.getRes("einzeln");
+                }
+                else
+                {
+                    throw new Exception("getTxtVerabreichungsart: Text for iVerabreichungsart '" + iVerabreichungsart.ToString() + "' not defined!");
+                }
+
+                return txtVerabreichen.Trim();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusinessUI.getTxtVerabreichungsart: " + ex.ToString());
+            }
+        }
+
+
         public static bool checkCboBox(PMDS.GUI.BaseControls.AuswahlGruppeCombo cbo, string TitleMsg, bool getOnlyMsgTxt, ref string MsgTxtBack, bool useColorWrong = false)
         {
             try

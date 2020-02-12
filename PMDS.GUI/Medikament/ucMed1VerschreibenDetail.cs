@@ -302,14 +302,26 @@ namespace PMDS.GUI
         }
         private void UpdateCurrentRow(object sender)
         {
-            dsRezeptEintrag.RezeptEintragRow r = (dsRezeptEintrag.RezeptEintragRow)UltraGridTools.CurrentSelectedRow(dgEintraege);
-            if (r == null)
-                return;
+            Guid IDRezeptAlt = Guid.Empty;
+            Guid IDRezeptNeu = Guid.Empty;
 
+            List<dsRezeptEintrag.RezeptEintragRow> lRows = new List<dsRezeptEintrag.RezeptEintragRow>();
+            dsRezeptEintrag.RezeptEintragRow rAlt = (dsRezeptEintrag.RezeptEintragRow)UltraGridTools.CurrentSelectedRow(dgEintraege);
+            if (rAlt == null)
+                return;
+            else
+            {
+                lRows.Add(rAlt);
+                IDRezeptAlt = rAlt.ID;
+            }
+
+            //Application.DoEvents();
             frmRezeptEintrag frm = new frmRezeptEintrag(GetCurrentRezeptEintragRow(), BearbeitungsModus.edit);
             frm.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Änderung einer Medikation!");
 
             DialogResult res = frm.ShowDialog();
+
+
             if (res == DialogResult.OK)
             {
                 bool copyRezeptEintragMedDatenGesplittet = false;
@@ -317,6 +329,8 @@ namespace PMDS.GUI
                 {
                     CURRENT_DT.Rows.Add(frm.NewRezeptEintrag.ItemArray);        // Kopieren
                     copyRezeptEintragMedDatenGesplittet = true;
+                    lRows.Add(frm.NewRezeptEintrag);
+                    IDRezeptNeu = frm.NewRezeptEintrag.ID;
                 }
 
                 InitRezeptEintraege(false);
@@ -328,44 +342,54 @@ namespace PMDS.GUI
 
                 OnValueChanged(sender, EventArgs.Empty);
                 RefreshMedikamentValueList(true);
-                RefreshAerzteValueList("IDAerzte", "AERZTE");
-                RefreshAerzteValueList("IDArztAbgesetzt", "IDArztAbgesetzt");
+                //RefreshAerzteValueList("IDAerzte", "AERZTE");
+                //RefreshAerzteValueList("IDArztAbgesetzt", "IDArztAbgesetzt");
                 UpdateButtons();
-                
+
                 this.mainWindow.Save();
 
-                string sAktion = "";
-                if (frm.ucRezeptEintrag1._bIsStorno)
+                foreach (dsRezeptEintrag.RezeptEintragRow r in lRows)
                 {
-                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ")";
-                }
-                else
-                {
-                    sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert");
-                }
-
-                sAktion += " ";
-                sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + r.AbzugebenVon.ToString() + " ";    
-                if (r.AbzugebenBis.Year != 3000)
-                    sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + r.AbzugebenBis.ToString() + " ";
-                sAktion +=  r.DosierungASString ;
-
-                PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, r.IDMedikament, sAktion, frm.ucRezeptEintrag1.chkGegenzeichnen.Checked,
-                                                            frm.ucRezeptEintrag1.cbImportant.ID, frm.ucRezeptEintrag1.chkHAGPflichtigJN.Checked);
-
-                if (r.AbzugebenBis.Year != 3000)
-                {
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                    string sAktion = "";
+                    if (frm.ucRezeptEintrag1._bIsStorno)
                     {
-                        b2.checkRezeptEintragAbgesetzt(r.ID, db);
+                        sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ")";
+                    }
+                    else
+                    {
+                        sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("geändert");
+                    }
+
+                    sAktion += " ";
+                    sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("ab") + " " + r.AbzugebenVon.ToString() + " ";
+                    if (r.AbzugebenBis.Year != 3000)
+                        sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + r.AbzugebenBis.ToString() + " ";
+                    sAktion += r.DosierungASString;
+                    sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Herrichten: ") + PMDS.GUI.PMDSBusinessUI.getTxtHerrichten(r.Herrichten);
+                    sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Verabreichung: ") + PMDS.GUI.PMDSBusinessUI.getTxtVerabreichungsart(r.Verabreichungsart);
+                    if (r.HAGPflichtigJN)
+                        sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("HAG-Pflichtig");
+
+
+                    PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, r.IDMedikament, sAktion, frm.ucRezeptEintrag1.chkGegenzeichnen.Checked,
+                                                                frm.ucRezeptEintrag1.cbImportant.ID, r.HAGPflichtigJN);
+
+                    //Wenn Medikament abgesetzt wurde (nicht bei Änderung)
+                    if (r.AbzugebenBis.Year != 3000 && !copyRezeptEintragMedDatenGesplittet)
+                    {
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                        {
+                            b2.checkRezeptEintragAbgesetzt(r.ID, db);
+                        }
                     }
                 }
 
-                if (copyRezeptEintragMedDatenGesplittet) 
+                //Bei Änderung für den neuen Datensatz die Verknüpfungen des alten kopieren
+                if (copyRezeptEintragMedDatenGesplittet)
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                     {
-                        this.b.copyRezeptEintragMedDaten(r.ID, frm.NewRezeptEintrag.ID, db);
+                        this.b.copyRezeptEintragMedDaten(IDRezeptAlt, IDRezeptNeu, db);
                     }
                 }
 
@@ -485,8 +509,7 @@ namespace PMDS.GUI
 
                 if (res == DialogResult.OK)
                 {
-                    if (row.Packungsanzahl == 0)
-                        row.Packungsanzahl = 1;
+                    row.Packungsanzahl = Math.Max(1, row.Packungsanzahl);
                     REZEPTEINTRAEGE.Rows.Add(row);
                     SetActiveRow(row.ID);
                     InitDosierung(dgEintraege.ActiveRow);
@@ -504,6 +527,10 @@ namespace PMDS.GUI
                     if (row.AbzugebenBis.Date.Year != 3000)
                         sAktion += QS2.Desktop.ControlManagment.ControlManagment.getRes("bis") + " " + row.AbzugebenBis.ToString() + " ";
                     sAktion += row.DosierungASString;
+                    sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Herrichten: ") + PMDS.GUI.PMDSBusinessUI.getTxtHerrichten(row.Herrichten);
+                    sAktion += ", " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Verabreichung: ") + PMDS.GUI.PMDSBusinessUI.getTxtVerabreichungsart(row.Verabreichungsart);
+                    if (row.HAGPflichtigJN)
+                        sAktion += " " + QS2.Desktop.ControlManagment.ControlManagment.getRes("HAG-Pflichtig");
 
                     PflegeEintrag.NewRezeptAenderungEinfuegen(IDAufenthalt, DateTime.Now, row.IDMedikament, sAktion, false, System.Guid.Empty,
                                                                 frm.ucRezeptEintrag1.RezeptEintrag.HAGPflichtigJN);

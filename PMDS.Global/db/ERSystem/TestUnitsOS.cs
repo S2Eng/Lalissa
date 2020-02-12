@@ -34,6 +34,10 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Restliche Sperrzeit: {0} Minuten.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Sperrzeit ist abgelaufen!");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("HAG-Pflichtig");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Herrichten: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Verabreichung: ");
+
             }
             catch (Exception ex)
             {
