@@ -134,6 +134,8 @@
             // 
             // cmbRuecknahme
             // 
+            this.cmbRuecknahme.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbRuecknahme.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cmbRuecknahme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cmbRuecknahme.Location = new System.Drawing.Point(425, 358);
             this.cmbRuecknahme.Name = "cmbRuecknahme";
@@ -142,6 +144,8 @@
             // 
             // cmbAusgegebenVon
             // 
+            this.cmbAusgegebenVon.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbAusgegebenVon.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cmbAusgegebenVon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cmbAusgegebenVon.Location = new System.Drawing.Point(425, 142);
             this.cmbAusgegebenVon.Name = "cmbAusgegebenVon";
@@ -176,6 +180,8 @@
             this.dtpBis.Location = new System.Drawing.Point(126, 358);
             this.dtpBis.MaskInput = "";
             this.dtpBis.Name = "dtpBis";
+            this.dtpBis.ownFormat = "";
+            this.dtpBis.ownMaskInput = "";
             this.dtpBis.Size = new System.Drawing.Size(176, 24);
             this.dtpBis.TabIndex = 11;
             this.dtpBis.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
@@ -198,6 +204,8 @@
             this.dtpVon.Location = new System.Drawing.Point(126, 142);
             this.dtpVon.MaskInput = "";
             this.dtpVon.Name = "dtpVon";
+            this.dtpVon.ownFormat = "";
+            this.dtpVon.ownMaskInput = "";
             this.dtpVon.Size = new System.Drawing.Size(176, 24);
             this.dtpVon.TabIndex = 3;
             this.dtpVon.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
@@ -286,6 +294,8 @@
             this.dtLetzteUeberpruefungAm.Location = new System.Drawing.Point(308, 273);
             this.dtLetzteUeberpruefungAm.MaskInput = "";
             this.dtLetzteUeberpruefungAm.Name = "dtLetzteUeberpruefungAm";
+            this.dtLetzteUeberpruefungAm.ownFormat = "";
+            this.dtLetzteUeberpruefungAm.ownMaskInput = "";
             this.dtLetzteUeberpruefungAm.Size = new System.Drawing.Size(176, 24);
             this.dtLetzteUeberpruefungAm.TabIndex = 9;
             this.dtLetzteUeberpruefungAm.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
@@ -308,6 +318,8 @@
             this.dtNaechsteUeberpruefungAm.Location = new System.Drawing.Point(308, 303);
             this.dtNaechsteUeberpruefungAm.MaskInput = "";
             this.dtNaechsteUeberpruefungAm.Name = "dtNaechsteUeberpruefungAm";
+            this.dtNaechsteUeberpruefungAm.ownFormat = "";
+            this.dtNaechsteUeberpruefungAm.ownMaskInput = "";
             this.dtNaechsteUeberpruefungAm.Size = new System.Drawing.Size(176, 24);
             this.dtNaechsteUeberpruefungAm.TabIndex = 10;
             this.dtNaechsteUeberpruefungAm.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);

@@ -47,6 +47,22 @@ namespace PMDS.GUI
             }
         }
 
+        private void SetColorBenutzer(QS2.Desktop.ControlManagment.BaseComboEditor cb )
+        {
+            foreach (Infragistics.Win.ValueListItem valList in cb.Items)
+            {
+                Benutzer ben2 = new Benutzer((Guid)valList.DataValue);
+                if (ben2.AktivJN)
+                {
+                    valList.Appearance.ForeColor = Color.DarkGreen;
+                }
+                else
+                {
+                    valList.Appearance.ForeColor = Color.DarkRed;
+                }
+            }
+        }
+
         private void Init()
         {
             cmbAusgegebenVon.Items.Clear();
@@ -57,6 +73,8 @@ namespace PMDS.GUI
                 cmbAusgegebenVon.Items.Add(r["ID"], (string)r["TEXT"]);
                 cmbRuecknahme.Items.Add(r["ID"], (string)r["TEXT"]);
             }
+            SetColorBenutzer(cmbAusgegebenVon);
+            SetColorBenutzer(cmbRuecknahme);
 
             dtpVon.Value = null;
             dtpBis.Value = null;

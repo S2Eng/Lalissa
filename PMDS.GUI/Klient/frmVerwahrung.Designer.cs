@@ -100,6 +100,8 @@
             this.dtpVon.Location = new System.Drawing.Point(117, 393);
             this.dtpVon.MaskInput = "";
             this.dtpVon.Name = "dtpVon";
+            this.dtpVon.ownFormat = "";
+            this.dtpVon.ownMaskInput = "";
             this.dtpVon.Size = new System.Drawing.Size(176, 21);
             this.dtpVon.TabIndex = 2;
             this.dtpVon.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
@@ -124,6 +126,8 @@
             this.dtpBis.Location = new System.Drawing.Point(117, 419);
             this.dtpBis.MaskInput = "";
             this.dtpBis.Name = "dtpBis";
+            this.dtpBis.ownFormat = "";
+            this.dtpBis.ownMaskInput = "";
             this.dtpBis.Size = new System.Drawing.Size(176, 24);
             this.dtpBis.TabIndex = 4;
             this.dtpBis.Value = new System.DateTime(2007, 1, 22, 0, 0, 0, 0);
@@ -153,21 +157,25 @@
             // cmbAusgegebenVon
             // 
             this.cmbAusgegebenVon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbAusgegebenVon.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbAusgegebenVon.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cmbAusgegebenVon.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbAusgegebenVon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cmbAusgegebenVon.Location = new System.Drawing.Point(430, 389);
             this.cmbAusgegebenVon.Name = "cmbAusgegebenVon";
-            this.cmbAusgegebenVon.Size = new System.Drawing.Size(188, 24);
+            this.cmbAusgegebenVon.Size = new System.Drawing.Size(270, 24);
             this.cmbAusgegebenVon.TabIndex = 3;
             // 
             // cmbRuecknahme
             // 
             this.cmbRuecknahme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbRuecknahme.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cmbRuecknahme.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cmbRuecknahme.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cmbRuecknahme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cmbRuecknahme.Location = new System.Drawing.Point(430, 419);
             this.cmbRuecknahme.Name = "cmbRuecknahme";
-            this.cmbRuecknahme.Size = new System.Drawing.Size(188, 24);
+            this.cmbRuecknahme.Size = new System.Drawing.Size(270, 24);
             this.cmbRuecknahme.TabIndex = 5;
             // 
             // tbBeschreibung
