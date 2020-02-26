@@ -40,6 +40,7 @@ namespace PMDS.GUI
         private int iTimeOut = ENV.AutoCloseTime;  
         private int iTicks = 60000;      //Prod = 60000;
         public bool TimeOutElapsed = false;
+        public bool PasswordOk = false;
 
         public frmLock()
 		{
@@ -258,6 +259,7 @@ namespace PMDS.GUI
 		{
 			bool bError = false;
 			bool bInfo = true;
+            PasswordOk = false;
 
 			txtPasswort.Text = txtPasswort.Text.Trim();
             PMDS.BusinessLogic.Benutzer usr = new PMDS.BusinessLogic.Benutzer(ENV.USERID);
@@ -272,13 +274,13 @@ namespace PMDS.GUI
 				    ENV.String("GUI.E_INVALID_PASSWORD"), ref bError, bInfo, errorProvider1);
 		    }
 
-
-			return !bError;
+            PasswordOk = !bError;
+            return !bError;
 		}
 		
 		private void btnOK_Click(object sender, System.EventArgs e)
 		{
-			if (TimeOutElapsed || ValidateFields())
+			if (TimeOutElapsed | ValidateFields())
 				_bCanclose = true;
 		}
 

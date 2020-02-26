@@ -2415,7 +2415,7 @@ namespace PMDS.GUI.PMDSClient
                         this.Visible = false;
                         frmLock frmLock1 = new frmLock();                    
                         frmLock1.ShowDialog(this);
-                        if (frmLock1.TimeOutElapsed)
+                        if (frmLock1.TimeOutElapsed && !frmLock1.PasswordOk)
                         {
                             this.Close();
                         }
