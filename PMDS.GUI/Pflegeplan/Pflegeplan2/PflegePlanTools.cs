@@ -405,7 +405,8 @@ namespace PMDS.GUI
 
             // StartDatum
             bError = pdxSA.StartDatum == new DateTime(1900, 1, 1);
-            if (bError) return !bError;
+            if (bError) 
+                return !bError;
 
             //Lokalisierung
             bool lokPruefen = false;

@@ -21,8 +21,7 @@ namespace PMDS.GUI
 
         private bool _SaveChanges = true;
         private bool _CanClose = true;
-        
-
+        public bool _CanModify = true;
 
 
 
@@ -106,6 +105,16 @@ namespace PMDS.GUI
         public dsAerzte.AerzteRow CurrentArztRow
         {
             get {return ucArztEdit1.CurrentArztRow;}
+        }
+
+        public bool CanModify
+        {
+            get { return _CanModify; }
+            set
+            {
+                _CanModify = value;
+                ucArztEdit1.CanModify = _CanModify; ;
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)

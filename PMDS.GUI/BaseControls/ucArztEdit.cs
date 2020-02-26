@@ -16,6 +16,7 @@ namespace PMDS.GUI
         private Aerzte _Aerzte;
         private Guid _IDPatient = Guid.Empty;
         private bool _ShowAuswahlColumn = false;
+        private bool _CanModify = true;
         private Guid[] _listPatientAerzte;
         
         public ucArztEdit()
@@ -41,6 +42,16 @@ namespace PMDS.GUI
             {
                 _ShowAuswahlColumn = value;
                 ShowOrHideAuswahlColumn();
+            }
+        }
+
+        public bool CanModify
+        {
+            get { return _CanModify; }
+            set
+            {
+                _CanModify = value;
+                ShowHideModifyButtons();
             }
         }
 
@@ -177,6 +188,12 @@ namespace PMDS.GUI
             gridAerzte.EndUpdate();
         }
 
+
+        private void ShowHideModifyButtons()
+        {
+            btnAdd.Visible = _CanModify;
+            btnUpdate.Visible = _CanModify;
+        }
         //----------------------------------------------------------------------------
         /// <summary>
         /// Suchen Verarbeiten

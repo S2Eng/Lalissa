@@ -1652,6 +1652,7 @@ namespace PMDS.GUI
             frm.Aerzte = Klient.CLASS_AERZTE.GetPatientAerzte();
             frm.SaveChanges = false;
             frm.CLASS_AERZTE = Klient.CLASS_AERZTE;
+            frm.CanModify = false;
             DialogResult res = frm.ShowDialog();
             
             if (res != DialogResult.OK)
