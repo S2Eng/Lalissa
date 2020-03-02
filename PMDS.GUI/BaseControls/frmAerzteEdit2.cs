@@ -21,7 +21,7 @@ namespace PMDS.GUI
 
         private bool _SaveChanges = true;
         private bool _CanClose = true;
-        public bool _CanModify = true;
+        private bool _CanModify = true;
 
 
 
@@ -113,7 +113,7 @@ namespace PMDS.GUI
             set
             {
                 _CanModify = value;
-                ucArztEdit1.CanModify = _CanModify; ;
+                ucArztEdit1.CanModify = _CanModify;
             }
         }
 
