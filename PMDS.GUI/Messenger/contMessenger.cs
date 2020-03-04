@@ -180,8 +180,7 @@ namespace PMDS.GUI.Messenger
                     }
 
                     string ClientsMessage = PMDSBusinessComm.eClientsMessage.MessageToAllClients.ToString();
-                    string TypeMessage = PMDSBusinessComm.eTypeMessage.Message.ToString();
-
+                    string TypeMessage = "Message";
                     MessagesDto lM;
                     if (UIAusgang)
                     {
@@ -605,7 +604,7 @@ namespace PMDS.GUI.Messenger
                     //    sToUsers += rUser.Benutzer1.Trim() + ";";
                     //}
 
-                    PMDS.DB.PMDSBusinessComm.newMessageToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.Message, db,
+                    PMDS.DB.PMDSBusinessComm.newMessageToClients2(PMDSBusinessComm.eClientsMessage.MessageToAllClients, db,
                                                                     ENV.USERID, lstToUsers, this.txtTitle.Text.Trim(), this.textControlMessage.Text.Trim());
                 }
 
