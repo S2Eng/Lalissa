@@ -103,6 +103,16 @@
             this.oleDbCommand51 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand52 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand53 = new System.Data.OleDb.OleDbCommand();
+            this.daMessages = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbCommand54 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand55 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand56 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand57 = new System.Data.OleDb.OleDbCommand();
+            this.daMessagesToUsers = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbCommand58 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand59 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand60 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbCommand61 = new System.Data.OleDb.OleDbCommand();
             // 
             // oleDbCommand14
             // 
@@ -1075,6 +1085,139 @@
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // daMessages
+            // 
+            this.daMessages.DeleteCommand = this.oleDbCommand54;
+            this.daMessages.InsertCommand = this.oleDbCommand55;
+            this.daMessages.SelectCommand = this.oleDbCommand56;
+            this.daMessages.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+            new System.Data.Common.DataTableMapping("Table", "Messages", new System.Data.Common.DataColumnMapping[] {
+                        new System.Data.Common.DataColumnMapping("ID", "ID"),
+                        new System.Data.Common.DataColumnMapping("Title", "Title"),
+                        new System.Data.Common.DataColumnMapping("Text", "Text"),
+                        new System.Data.Common.DataColumnMapping("UserFrom", "UserFrom"),
+                        new System.Data.Common.DataColumnMapping("Created", "Created"),
+                        new System.Data.Common.DataColumnMapping("UserFromID", "UserFromID"),
+                        new System.Data.Common.DataColumnMapping("ClientsMessage", "ClientsMessage"),
+                        new System.Data.Common.DataColumnMapping("TypeMessage", "TypeMessage"),
+                        new System.Data.Common.DataColumnMapping("Progress", "Progress"),
+                        new System.Data.Common.DataColumnMapping("Db", "Db"),
+                        new System.Data.Common.DataColumnMapping("IDGuidObject", "IDGuidObject"),
+                        new System.Data.Common.DataColumnMapping("Classification", "Classification"),
+                        new System.Data.Common.DataColumnMapping("sKey", "sKey"),
+                        new System.Data.Common.DataColumnMapping("CreatedDay", "CreatedDay")})});
+            this.daMessages.UpdateCommand = this.oleDbCommand57;
+            // 
+            // oleDbCommand54
+            // 
+            this.oleDbCommand54.CommandText = "DELETE FROM [Messages] WHERE (([ID] = ?))";
+            this.oleDbCommand54.Connection = this.oleDbConnection1;
+            this.oleDbCommand54.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // oleDbCommand55
+            // 
+            this.oleDbCommand55.CommandText = resources.GetString("oleDbCommand55.CommandText");
+            this.oleDbCommand55.Connection = this.oleDbConnection1;
+            this.oleDbCommand55.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("Title", System.Data.OleDb.OleDbType.VarWChar, 0, "Title"),
+            new System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Text"),
+            new System.Data.OleDb.OleDbParameter("UserFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "UserFrom"),
+            new System.Data.OleDb.OleDbParameter("Created", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Created"),
+            new System.Data.OleDb.OleDbParameter("UserFromID", System.Data.OleDb.OleDbType.Guid, 0, "UserFromID"),
+            new System.Data.OleDb.OleDbParameter("ClientsMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "ClientsMessage"),
+            new System.Data.OleDb.OleDbParameter("TypeMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "TypeMessage"),
+            new System.Data.OleDb.OleDbParameter("Progress", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Progress"),
+            new System.Data.OleDb.OleDbParameter("Db", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Db"),
+            new System.Data.OleDb.OleDbParameter("IDGuidObject", System.Data.OleDb.OleDbType.Guid, 0, "IDGuidObject"),
+            new System.Data.OleDb.OleDbParameter("Classification", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Classification"),
+            new System.Data.OleDb.OleDbParameter("sKey", System.Data.OleDb.OleDbType.VarWChar, 0, "sKey"),
+            new System.Data.OleDb.OleDbParameter("CreatedDay", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedDay")});
+            // 
+            // oleDbCommand56
+            // 
+            this.oleDbCommand56.CommandText = "SELECT        ID, Title, Text, UserFrom, Created, UserFromID, ClientsMessage, Typ" +
+    "eMessage, Progress, Db, IDGuidObject, Classification, sKey, CreatedDay\r\nFROM    " +
+    "        Messages";
+            this.oleDbCommand56.Connection = this.oleDbConnection1;
+            // 
+            // oleDbCommand57
+            // 
+            this.oleDbCommand57.CommandText = resources.GetString("oleDbCommand57.CommandText");
+            this.oleDbCommand57.Connection = this.oleDbConnection1;
+            this.oleDbCommand57.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("Title", System.Data.OleDb.OleDbType.VarWChar, 0, "Title"),
+            new System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Text"),
+            new System.Data.OleDb.OleDbParameter("UserFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "UserFrom"),
+            new System.Data.OleDb.OleDbParameter("Created", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Created"),
+            new System.Data.OleDb.OleDbParameter("UserFromID", System.Data.OleDb.OleDbType.Guid, 0, "UserFromID"),
+            new System.Data.OleDb.OleDbParameter("ClientsMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "ClientsMessage"),
+            new System.Data.OleDb.OleDbParameter("TypeMessage", System.Data.OleDb.OleDbType.VarWChar, 0, "TypeMessage"),
+            new System.Data.OleDb.OleDbParameter("Progress", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Progress"),
+            new System.Data.OleDb.OleDbParameter("Db", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Db"),
+            new System.Data.OleDb.OleDbParameter("IDGuidObject", System.Data.OleDb.OleDbType.Guid, 0, "IDGuidObject"),
+            new System.Data.OleDb.OleDbParameter("Classification", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Classification"),
+            new System.Data.OleDb.OleDbParameter("sKey", System.Data.OleDb.OleDbType.VarWChar, 0, "sKey"),
+            new System.Data.OleDb.OleDbParameter("CreatedDay", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedDay"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // daMessagesToUsers
+            // 
+            this.daMessagesToUsers.DeleteCommand = this.oleDbCommand58;
+            this.daMessagesToUsers.InsertCommand = this.oleDbCommand59;
+            this.daMessagesToUsers.SelectCommand = this.oleDbCommand60;
+            this.daMessagesToUsers.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+            new System.Data.Common.DataTableMapping("Table", "MessagesToUsers", new System.Data.Common.DataColumnMapping[] {
+                        new System.Data.Common.DataColumnMapping("ID", "ID"),
+                        new System.Data.Common.DataColumnMapping("IDMessages", "IDMessages"),
+                        new System.Data.Common.DataColumnMapping("Readed", "Readed"),
+                        new System.Data.Common.DataColumnMapping("ReadedAt", "ReadedAt"),
+                        new System.Data.Common.DataColumnMapping("IDUser", "IDUser"),
+                        new System.Data.Common.DataColumnMapping("Username", "Username")})});
+            this.daMessagesToUsers.UpdateCommand = this.oleDbCommand61;
+            // 
+            // oleDbCommand58
+            // 
+            this.oleDbCommand58.CommandText = "DELETE FROM [MessagesToUsers] WHERE (([ID] = ?))";
+            this.oleDbCommand58.Connection = this.oleDbConnection1;
+            this.oleDbCommand58.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // oleDbCommand59
+            // 
+            this.oleDbCommand59.CommandText = "INSERT INTO [MessagesToUsers] ([ID], [IDMessages], [Readed], [ReadedAt], [IDUser]" +
+    ", [Username]) VALUES (?, ?, ?, ?, ?, ?)";
+            this.oleDbCommand59.Connection = this.oleDbConnection1;
+            this.oleDbCommand59.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("IDMessages", System.Data.OleDb.OleDbType.Guid, 0, "IDMessages"),
+            new System.Data.OleDb.OleDbParameter("Readed", System.Data.OleDb.OleDbType.Boolean, 0, "Readed"),
+            new System.Data.OleDb.OleDbParameter("ReadedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ReadedAt"),
+            new System.Data.OleDb.OleDbParameter("IDUser", System.Data.OleDb.OleDbType.Guid, 0, "IDUser"),
+            new System.Data.OleDb.OleDbParameter("Username", System.Data.OleDb.OleDbType.VarWChar, 0, "Username")});
+            // 
+            // oleDbCommand60
+            // 
+            this.oleDbCommand60.CommandText = "SELECT        ID, IDMessages, Readed, ReadedAt, IDUser, Username\r\nFROM           " +
+    " MessagesToUsers";
+            this.oleDbCommand60.Connection = this.oleDbConnection1;
+            // 
+            // oleDbCommand61
+            // 
+            this.oleDbCommand61.CommandText = "UPDATE [MessagesToUsers] SET [ID] = ?, [IDMessages] = ?, [Readed] = ?, [ReadedAt]" +
+    " = ?, [IDUser] = ?, [Username] = ? WHERE (([ID] = ?))";
+            this.oleDbCommand61.Connection = this.oleDbConnection1;
+            this.oleDbCommand61.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("IDMessages", System.Data.OleDb.OleDbType.Guid, 0, "IDMessages"),
+            new System.Data.OleDb.OleDbParameter("Readed", System.Data.OleDb.OleDbType.Boolean, 0, "Readed"),
+            new System.Data.OleDb.OleDbParameter("ReadedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ReadedAt"),
+            new System.Data.OleDb.OleDbParameter("IDUser", System.Data.OleDb.OleDbType.Guid, 0, "IDUser"),
+            new System.Data.OleDb.OleDbParameter("Username", System.Data.OleDb.OleDbType.VarWChar, 0, "Username"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
 
         }
 
@@ -1154,5 +1297,15 @@
         private System.Data.OleDb.OleDbCommand oleDbCommand51;
         private System.Data.OleDb.OleDbCommand oleDbCommand52;
         private System.Data.OleDb.OleDbCommand oleDbCommand53;
+        public System.Data.OleDb.OleDbDataAdapter daMessages;
+        private System.Data.OleDb.OleDbCommand oleDbCommand54;
+        private System.Data.OleDb.OleDbCommand oleDbCommand55;
+        private System.Data.OleDb.OleDbCommand oleDbCommand56;
+        private System.Data.OleDb.OleDbCommand oleDbCommand57;
+        public System.Data.OleDb.OleDbDataAdapter daMessagesToUsers;
+        private System.Data.OleDb.OleDbCommand oleDbCommand58;
+        private System.Data.OleDb.OleDbCommand oleDbCommand59;
+        private System.Data.OleDb.OleDbCommand oleDbCommand60;
+        private System.Data.OleDb.OleDbCommand oleDbCommand61;
     }
 }

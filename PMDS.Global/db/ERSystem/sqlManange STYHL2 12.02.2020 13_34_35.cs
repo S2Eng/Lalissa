@@ -33,8 +33,6 @@ namespace PMDS.Global.db.ERSystem
         public string daSelWundBilder = "";
         public string daSelRecht = "";
         public string daSelELGAProtocoll = "";
-        public string daSelMessage = "";
-        public string daSelMessageToClient = "";
 
 
         public enum eTypeAnmeldungen
@@ -88,14 +86,9 @@ namespace PMDS.Global.db.ERSystem
         {
             AllForUser = 0
         }
-        public enum eTypeMessages
-        {
-            ID = 0,
-            All = 1,
-            MessagesUnreaded = 2
-        }
 
 
+        
 
         public bool isInitialized = false;
 
@@ -140,9 +133,6 @@ namespace PMDS.Global.db.ERSystem
                     this.daSelWundBilder = this.daWundePosBilder.SelectCommand.CommandText;
                     this.daSelRecht = this.daRecht.SelectCommand.CommandText;
                     this.daSelELGAProtocoll = this.daELGAProtocoll.SelectCommand.CommandText;
-                    this.daSelMessage = this.daMessages.SelectCommand.CommandText;
-                    this.daSelMessageToClient = this.daMessagesToUsers.SelectCommand.CommandText;
-
                     this.isInitialized = true;
                 }
             }
@@ -1418,44 +1408,7 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public bool getMessage2(PMDS.Global.db.ERSystem.dsManage ds, Nullable<Guid> ID, eTypeMessages TypeSel, string ClientsMessage, string TypeMessage)
-        {
-            try
-            {
-                this.daMessages.SelectCommand.CommandText = this.daSelMessage;
-                this.daMessages.SelectCommand.Parameters.Clear();
-                PMDS.Global.dbBase.setConnection(this.daMessages, RBU.DataBase.CONNECTION);
-
-                if (TypeSel == eTypeMessages.ID)
-                {
-                    string sqlWhere = " where ID='" + ID.Value.ToString() + "' order by Title asc";
-                    this.daMessages.SelectCommand.CommandText += sqlWhere;
-                }
-                else if (TypeSel == eTypeMessages.All)
-                {
-                    string sqlWhere = " order by Title asc";
-                    this.daMessages.SelectCommand.CommandText += sqlWhere;
-                }
-                else if (TypeSel == eTypeMessages.MessagesUnreaded)
-                {
-                    string sqlWhere = " where ClientsMessage='" + ClientsMessage.ToString() + "' and TypeMessage='" + TypeMessage.ToString() + "' and " +
-                                      " Classification like '%" + ENV.USERID.ToString() + "%' and(not Progress like '%readed_" + ENV.USERID.ToString() + "%') order by Title asc";
-                    this.daMessages.SelectCommand.CommandText += sqlWhere;
-                }
-                else
-                {
-                    throw new Exception("getMessage2: TypeSel '" + TypeSel.ToString() + "' not allowed!");
-                }
-
-                this.daMessages.Fill(ds.Messages2);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("sqlManange.getMessage2: " + ex.ToString());
-            }
-        }
-        public PMDS.Global.db.ERSystem.dsManage.Messages2Row addNewMessages2(ref PMDS.Global.db.ERSystem.dsManage ds)
+        public PMDS.Global.db.ERSystem.dsManage.Messages2Row getNewMessages(ref PMDS.Global.db.ERSystem.dsManage ds)
         {
             try
             {
@@ -1465,73 +1418,50 @@ namespace PMDS.Global.db.ERSystem
                 rNew.Text = "";
                 rNew.UserFrom = "";
                 rNew.Created = DateTime.Now;
-                rNew.UserFromID = System.Guid.NewGuid();
-                rNew.ClientsMessage = "";
-                rNew.TypeMessage = "";
-                rNew.Progress = "";
-                rNew.Db = "";
-                rNew.SetIDGuidObjectNull();
-                rNew.Classification = "";
-                rNew.sKey = "";
-                rNew.CreatedDay = rNew.Created.Date;
+                rNew.Ort = "";
+                rNew.Land = "";
+                rNew.Strasse = "";
+                rNew.StrasseNr = "";
+                rNew.IsOrganisation = false;
+                rNew.Status = "";
+                rNew.State = "";
+                rNew.IDElga = "";
 
-                ds.Messages2.Rows.Add(rNew);
+                ds.ELGASearchGDAs.Rows.Add(rNew);
                 return rNew;
             }
             catch (Exception ex)
             {
-                throw new Exception("sqlManange.addNewMessages2: " + ex.ToString());
+                throw new Exception("sqlManange.getNewMessages: " + ex.ToString());
             }
         }
-        public bool getMessages2ToUser(PMDS.Global.db.ERSystem.dsManage ds, Nullable<Guid> ID, eTypeMessages TypeSel)
+        public PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow getNewELGADocument(ref PMDS.Global.db.ERSystem.dsManage ds)
         {
             try
             {
-                this.daMessagesToUsers.SelectCommand.CommandText = this.daSelMessageToClient;
-                this.daMessagesToUsers.SelectCommand.Parameters.Clear();
-                PMDS.Global.dbBase.setConnection(this.daMessagesToUsers, RBU.DataBase.CONNECTION);
-                
-                if (TypeSel == eTypeMessages.ID)
-                {
-                    string sqlWhere = " where ID='" + ID.ToString() + "' ";
-                    this.daMessagesToUsers.SelectCommand.CommandText += sqlWhere;
-                }
-                else if (TypeSel == eTypeMessages.All)
-                {
-                    string sqlWhere = " ";
-                    this.daMessagesToUsers.SelectCommand.CommandText += sqlWhere;
-                }
-                else
-                {
-                    throw new Exception("getMessage2: TypeSel '" + TypeSel.ToString() + "' not allowed!");
-                }
-
-                this.daMessagesToUsers.Fill(ds.Messages2ToUsers);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("sqlManange.getMessage2: " + ex.ToString());
-            }
-        }
-        public PMDS.Global.db.ERSystem.dsManage.Messages2ToUsersRow addNewMessages2ToUser(ref PMDS.Global.db.ERSystem.dsManage ds)
-        {
-            try
-            {
-                PMDS.Global.db.ERSystem.dsManage.Messages2ToUsersRow rNew = (PMDS.Global.db.ERSystem.dsManage.Messages2ToUsersRow)ds.Messages2ToUsers.NewRow();
+                PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rNew = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)ds.ELGASearchDocuments.NewRow();
                 rNew.ID = System.Guid.NewGuid();
-                rNew.IDMessages = System.Guid.NewGuid();
-                rNew.Readed = false;
-                rNew.ReadedAt = DateTime.Now;
-                rNew.IDUser = System.Guid.NewGuid();
-                rNew.Username = "";
+                rNew.Dokument = "";
+                rNew.SetErstelltAmNull();
+                rNew.UUID = "";
+                rNew.UniqueID = "";
+                rNew.LocigalID = "";
+                rNew.Author = "";
+                rNew.Description = "";
+                rNew.DocStatus = "";
+                rNew.Version = "";
+                rNew.CreationTime = "";
+                rNew.Size = 0;
+                rNew.Stylesheet = "";
+                rNew.ELGAPatientLocalID = "";
+                rNew.TypeFile = "";
 
-                ds.Messages2ToUsers.Rows.Add(rNew);
+                ds.ELGASearchDocuments.Rows.Add(rNew);
                 return rNew;
             }
             catch (Exception ex)
             {
-                throw new Exception("sqlManange.addNewMessages2ToUser: " + ex.ToString());
+                throw new Exception("sqlManange.getNewELGADocument: " + ex.ToString());
             }
         }
 

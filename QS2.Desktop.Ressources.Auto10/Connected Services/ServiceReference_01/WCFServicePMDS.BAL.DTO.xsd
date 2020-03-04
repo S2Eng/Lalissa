@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" />
+  <xs:complexType name="MessagesDto">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="lMessages" nillable="true" type="q1:ArrayOfMessagesDTO" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" minOccurs="0" name="lMessagesToUsers" nillable="true" type="q2:ArrayOfMessagesToUsersDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessagesDto" nillable="true" type="tns:MessagesDto" />
+</xs:schema>

@@ -498,11 +498,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppException.cs" />
-    <Compile Include="db\ERSystem\dsAsyncCommData.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsAsyncCommData.xsd</DependentUpon>
-    </Compile>
     <Compile Include="db\ERSystem\dsKlient.cs">
       <DependentUpon>dsKlient.xsd</DependentUpon>
     </Compile>
@@ -2365,17 +2360,6 @@
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="db\ERSystem\dsAsyncCommData.xsc">
-      <DependentUpon>dsAsyncCommData.xsd</DependentUpon>
-    </None>
-    <None Include="db\ERSystem\dsAsyncCommData.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsAsyncCommData.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="db\ERSystem\dsAsyncCommData.xss">
-      <DependentUpon>dsAsyncCommData.xsd</DependentUpon>
     </None>
     <None Include="db\ERSystem\dsDokumente2Abteilungen.xsc">
       <DependentUpon>dsDokumente2Abteilungen.xsd</DependentUpon>

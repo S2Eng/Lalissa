@@ -27,6 +27,24 @@ Namespace ServiceReference_01
         <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DbField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IDClientField As System.Guid
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PwdField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SrvField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UsrField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private trustedField As Boolean
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -34,6 +52,84 @@ Namespace ServiceReference_01
             End Get
             Set
                 Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Db() As String
+            Get
+                Return Me.DbField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DbField, value) <> true) Then
+                    Me.DbField = value
+                    Me.RaisePropertyChanged("Db")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IDClient() As System.Guid
+            Get
+                Return Me.IDClientField
+            End Get
+            Set
+                If (Me.IDClientField.Equals(value) <> true) Then
+                    Me.IDClientField = value
+                    Me.RaisePropertyChanged("IDClient")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Pwd() As String
+            Get
+                Return Me.PwdField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.PwdField, value) <> true) Then
+                    Me.PwdField = value
+                    Me.RaisePropertyChanged("Pwd")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Srv() As String
+            Get
+                Return Me.SrvField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SrvField, value) <> true) Then
+                    Me.SrvField = value
+                    Me.RaisePropertyChanged("Srv")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Usr() As String
+            Get
+                Return Me.UsrField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UsrField, value) <> true) Then
+                    Me.UsrField = value
+                    Me.RaisePropertyChanged("Usr")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property trusted() As Boolean
+            Get
+                Return Me.trustedField
+            End Get
+            Set
+                If (Me.trustedField.Equals(value) <> true) Then
+                    Me.trustedField = value
+                    Me.RaisePropertyChanged("trusted")
+                End If
             End Set
         End Property
         
@@ -1556,11 +1652,21 @@ Namespace ServiceReference_01
         <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
+        Private ElgaOidk__BackingFieldField As String
+        
+        Private ElgaOrganizationNamek__BackingFieldField As String
+        
+        Private ElgaOrganizationOidk__BackingFieldField As String
+        
+        Private Elgaabgeglichenk__BackingFieldField As Boolean
+        
         Private Idk__BackingFieldField As System.Guid
         
         Private Idadressek__BackingFieldField As System.Nullable(Of System.Guid)
         
         Private Idkontaktk__BackingFieldField As System.Nullable(Of System.Guid)
+        
+        Private IstKrankenkassek__BackingFieldField As System.Nullable(Of Boolean)
         
         Private Textk__BackingFieldField As String
         
@@ -1571,6 +1677,58 @@ Namespace ServiceReference_01
             End Get
             Set
                 Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ElgaOid>k__BackingField", IsRequired:=true)>  _
+        Public Property ElgaOidk__BackingField() As String
+            Get
+                Return Me.ElgaOidk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ElgaOidk__BackingFieldField, value) <> true) Then
+                    Me.ElgaOidk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ElgaOidk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ElgaOrganizationName>k__BackingField", IsRequired:=true)>  _
+        Public Property ElgaOrganizationNamek__BackingField() As String
+            Get
+                Return Me.ElgaOrganizationNamek__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ElgaOrganizationNamek__BackingFieldField, value) <> true) Then
+                    Me.ElgaOrganizationNamek__BackingFieldField = value
+                    Me.RaisePropertyChanged("ElgaOrganizationNamek__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ElgaOrganizationOid>k__BackingField", IsRequired:=true)>  _
+        Public Property ElgaOrganizationOidk__BackingField() As String
+            Get
+                Return Me.ElgaOrganizationOidk__BackingFieldField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ElgaOrganizationOidk__BackingFieldField, value) <> true) Then
+                    Me.ElgaOrganizationOidk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ElgaOrganizationOidk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Elgaabgeglichen>k__BackingField", IsRequired:=true)>  _
+        Public Property Elgaabgeglichenk__BackingField() As Boolean
+            Get
+                Return Me.Elgaabgeglichenk__BackingFieldField
+            End Get
+            Set
+                If (Me.Elgaabgeglichenk__BackingFieldField.Equals(value) <> true) Then
+                    Me.Elgaabgeglichenk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Elgaabgeglichenk__BackingField")
+                End If
             End Set
         End Property
         
@@ -1609,6 +1767,19 @@ Namespace ServiceReference_01
                 If (Me.Idkontaktk__BackingFieldField.Equals(value) <> true) Then
                     Me.Idkontaktk__BackingFieldField = value
                     Me.RaisePropertyChanged("Idkontaktk__BackingField")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IstKrankenkasse>k__BackingField", IsRequired:=true)>  _
+        Public Property IstKrankenkassek__BackingField() As System.Nullable(Of Boolean)
+            Get
+                Return Me.IstKrankenkassek__BackingFieldField
+            End Get
+            Set
+                If (Me.IstKrankenkassek__BackingFieldField.Equals(value) <> true) Then
+                    Me.IstKrankenkassek__BackingFieldField = value
+                    Me.RaisePropertyChanged("IstKrankenkassek__BackingField")
                 End If
             End Set
         End Property
@@ -13949,6 +14120,9 @@ Namespace ServiceReference_01
         Private IDBenutzerVidierungField As System.Guid
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IDClientField As System.Guid
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private IDDocumentField As System.Guid
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
@@ -14027,6 +14201,19 @@ Namespace ServiceReference_01
                 If (Me.IDBenutzerVidierungField.Equals(value) <> true) Then
                     Me.IDBenutzerVidierungField = value
                     Me.RaisePropertyChanged("IDBenutzerVidierung")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IDClient() As System.Guid
+            Get
+                Return Me.IDClientField
+            End Get
+            Set
+                If (Me.IDClientField.Equals(value) <> true) Then
+                    Me.IDClientField = value
+                    Me.RaisePropertyChanged("IDClient")
                 End If
             End Set
         End Property
@@ -14190,6 +14377,467 @@ Namespace ServiceReference_01
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="MessagesDto", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.DTO"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class MessagesDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private lMessagesField() As ServiceReference_01.MessagesDTO1
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private lMessagesToUsersField() As ServiceReference_01.MessagesToUsersDTO
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property lMessages() As ServiceReference_01.MessagesDTO1()
+            Get
+                Return Me.lMessagesField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lMessagesField, value) <> true) Then
+                    Me.lMessagesField = value
+                    Me.RaisePropertyChanged("lMessages")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property lMessagesToUsers() As ServiceReference_01.MessagesToUsersDTO()
+            Get
+                Return Me.lMessagesToUsersField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lMessagesToUsersField, value) <> true) Then
+                    Me.lMessagesToUsersField = value
+                    Me.RaisePropertyChanged("lMessagesToUsers")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="MessagesDTO", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class MessagesDTO1
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClassificationField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ClientsMessageField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CreatedField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CreatedDayField As Date
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DbField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdField As System.Guid
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdguidObjectField As System.Nullable(Of System.Guid)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ProgressField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SKeyField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TextField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TitleField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TypeMessageField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UserFromField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UserFromIdField As System.Guid
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private lMessagesToUsersField() As ServiceReference_01.MessagesToUsersDTO
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Classification() As String
+            Get
+                Return Me.ClassificationField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClassificationField, value) <> true) Then
+                    Me.ClassificationField = value
+                    Me.RaisePropertyChanged("Classification")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ClientsMessage() As String
+            Get
+                Return Me.ClientsMessageField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ClientsMessageField, value) <> true) Then
+                    Me.ClientsMessageField = value
+                    Me.RaisePropertyChanged("ClientsMessage")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Created() As Date
+            Get
+                Return Me.CreatedField
+            End Get
+            Set
+                If (Me.CreatedField.Equals(value) <> true) Then
+                    Me.CreatedField = value
+                    Me.RaisePropertyChanged("Created")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CreatedDay() As Date
+            Get
+                Return Me.CreatedDayField
+            End Get
+            Set
+                If (Me.CreatedDayField.Equals(value) <> true) Then
+                    Me.CreatedDayField = value
+                    Me.RaisePropertyChanged("CreatedDay")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Db() As String
+            Get
+                Return Me.DbField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DbField, value) <> true) Then
+                    Me.DbField = value
+                    Me.RaisePropertyChanged("Db")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Id() As System.Guid
+            Get
+                Return Me.IdField
+            End Get
+            Set
+                If (Me.IdField.Equals(value) <> true) Then
+                    Me.IdField = value
+                    Me.RaisePropertyChanged("Id")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IdguidObject() As System.Nullable(Of System.Guid)
+            Get
+                Return Me.IdguidObjectField
+            End Get
+            Set
+                If (Me.IdguidObjectField.Equals(value) <> true) Then
+                    Me.IdguidObjectField = value
+                    Me.RaisePropertyChanged("IdguidObject")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Progress() As String
+            Get
+                Return Me.ProgressField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ProgressField, value) <> true) Then
+                    Me.ProgressField = value
+                    Me.RaisePropertyChanged("Progress")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SKey() As String
+            Get
+                Return Me.SKeyField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SKeyField, value) <> true) Then
+                    Me.SKeyField = value
+                    Me.RaisePropertyChanged("SKey")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Text() As String
+            Get
+                Return Me.TextField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TextField, value) <> true) Then
+                    Me.TextField = value
+                    Me.RaisePropertyChanged("Text")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Title() As String
+            Get
+                Return Me.TitleField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TitleField, value) <> true) Then
+                    Me.TitleField = value
+                    Me.RaisePropertyChanged("Title")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TypeMessage() As String
+            Get
+                Return Me.TypeMessageField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TypeMessageField, value) <> true) Then
+                    Me.TypeMessageField = value
+                    Me.RaisePropertyChanged("TypeMessage")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UserFrom() As String
+            Get
+                Return Me.UserFromField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UserFromField, value) <> true) Then
+                    Me.UserFromField = value
+                    Me.RaisePropertyChanged("UserFrom")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UserFromId() As System.Guid
+            Get
+                Return Me.UserFromIdField
+            End Get
+            Set
+                If (Me.UserFromIdField.Equals(value) <> true) Then
+                    Me.UserFromIdField = value
+                    Me.RaisePropertyChanged("UserFromId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property lMessagesToUsers() As ServiceReference_01.MessagesToUsersDTO()
+            Get
+                Return Me.lMessagesToUsersField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.lMessagesToUsersField, value) <> true) Then
+                    Me.lMessagesToUsersField = value
+                    Me.RaisePropertyChanged("lMessagesToUsers")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="MessagesToUsersDTO", [Namespace]:="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class MessagesToUsersDTO
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdField As System.Guid
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdmessagesField As System.Guid
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IduserField As System.Guid
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ReadedField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ReadedAtField As System.Nullable(Of Date)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UsernameField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Id() As System.Guid
+            Get
+                Return Me.IdField
+            End Get
+            Set
+                If (Me.IdField.Equals(value) <> true) Then
+                    Me.IdField = value
+                    Me.RaisePropertyChanged("Id")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Idmessages() As System.Guid
+            Get
+                Return Me.IdmessagesField
+            End Get
+            Set
+                If (Me.IdmessagesField.Equals(value) <> true) Then
+                    Me.IdmessagesField = value
+                    Me.RaisePropertyChanged("Idmessages")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Iduser() As System.Guid
+            Get
+                Return Me.IduserField
+            End Get
+            Set
+                If (Me.IduserField.Equals(value) <> true) Then
+                    Me.IduserField = value
+                    Me.RaisePropertyChanged("Iduser")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Readed() As Boolean
+            Get
+                Return Me.ReadedField
+            End Get
+            Set
+                If (Me.ReadedField.Equals(value) <> true) Then
+                    Me.ReadedField = value
+                    Me.RaisePropertyChanged("Readed")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ReadedAt() As System.Nullable(Of Date)
+            Get
+                Return Me.ReadedAtField
+            End Get
+            Set
+                If (Me.ReadedAtField.Equals(value) <> true) Then
+                    Me.ReadedAtField = value
+                    Me.RaisePropertyChanged("ReadedAt")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Username() As String
+            Get
+                Return Me.UsernameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UsernameField, value) <> true) Then
+                    Me.UsernameField = value
+                    Me.RaisePropertyChanged("Username")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="ServiceReference_01.Service1")>  _
     Public Interface Service1
@@ -14201,10 +14849,10 @@ Namespace ServiceReference_01
         Function initServiceAsync(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As System.Threading.Tasks.Task(Of Boolean)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testRep", ReplyAction:="http://tempuri.org/Service1/testRepResponse")>  _
-        Sub testRep()
+        Sub testRep(ByVal IDClient As System.Guid)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testRep", ReplyAction:="http://tempuri.org/Service1/testRepResponse")>  _
-        Function testRepAsync() As System.Threading.Tasks.Task
+        Function testRepAsync(ByVal IDClient As System.Guid) As System.Threading.Tasks.Task
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/sendExceptionAsSMTPEMail", ReplyAction:="http://tempuri.org/Service1/sendExceptionAsSMTPEMailResponse")>  _
         Function sendExceptionAsSMTPEMail(ByVal except As String, ByVal client As String, ByVal User As String, ByVal dAt As Date) As Boolean
@@ -14369,16 +15017,40 @@ Namespace ServiceReference_01
         Function DynReportsInitStructureAsync(ByVal request As ServiceReference_01.DynReportsInitStructureRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.DynReportsInitStructureResponse)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getvKlientenliste", ReplyAction:="http://tempuri.org/Service1/getvKlientenlisteResponse")>  _
-        Function getvKlientenliste() As Byte()()
+        Function getvKlientenliste(ByVal IDClient As System.Guid) As Byte()()
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/getvKlientenliste", ReplyAction:="http://tempuri.org/Service1/getvKlientenlisteResponse")>  _
-        Function getvKlientenlisteAsync() As System.Threading.Tasks.Task(Of Byte()())
+        Function getvKlientenlisteAsync(ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of Byte()())
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testPDFIum", ReplyAction:="http://tempuri.org/Service1/testPDFIumResponse")>  _
         Sub testPDFIum()
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testPDFIum", ReplyAction:="http://tempuri.org/Service1/testPDFIumResponse")>  _
         Function testPDFIumAsync() As System.Threading.Tasks.Task
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/messagesSent", ReplyAction:="http://tempuri.org/Service1/messagesSentResponse")>  _
+        Function messagesSent(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/messagesSent", ReplyAction:="http://tempuri.org/Service1/messagesSentResponse")>  _
+        Function messagesSentAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/messagesUnreadedUsr", ReplyAction:="http://tempuri.org/Service1/messagesUnreadedUsrResponse")>  _
+        Function messagesUnreadedUsr(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/messagesUnreadedUsr", ReplyAction:="http://tempuri.org/Service1/messagesUnreadedUsrResponse")>  _
+        Function messagesUnreadedUsrAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/messagesAllUsr", ReplyAction:="http://tempuri.org/Service1/messagesAllUsrResponse")>  _
+        Function messagesAllUsr(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/messagesAllUsr", ReplyAction:="http://tempuri.org/Service1/messagesAllUsrResponse")>  _
+        Function messagesAllUsrAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/addMessage", ReplyAction:="http://tempuri.org/Service1/addMessageResponse")>  _
+        Function addMessage(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDTO1
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/addMessage", ReplyAction:="http://tempuri.org/Service1/addMessageResponse")>  _
+        Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1)
     End Interface
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
@@ -15087,20 +15759,24 @@ Namespace ServiceReference_01
     Partial Public Class ExportRequest
         
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
-        Public IDPatient As System.Guid
+        Public IDClient As System.Guid
         
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
-        Public ArchivPath As String
+        Public IDPatient As System.Guid
         
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
+        Public ArchivPath As String
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
         Public IsTest As Boolean
         
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal IDPatient As System.Guid, ByVal ArchivPath As String, ByVal IsTest As Boolean)
+        Public Sub New(ByVal IDClient As System.Guid, ByVal IDPatient As System.Guid, ByVal ArchivPath As String, ByVal IsTest As Boolean)
             MyBase.New
+            Me.IDClient = IDClient
             Me.IDPatient = IDPatient
             Me.ArchivPath = ArchivPath
             Me.IsTest = IsTest
@@ -15141,13 +15817,17 @@ Namespace ServiceReference_01
         <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public RootPath As String
         
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
+        Public IDClient As System.Guid
+        
         Public Sub New()
             MyBase.New
         End Sub
         
-        Public Sub New(ByVal RootPath As String)
+        Public Sub New(ByVal RootPath As String, ByVal IDClient As System.Guid)
             MyBase.New
             Me.RootPath = RootPath
+            Me.IDClient = IDClient
         End Sub
     End Class
     
@@ -15212,12 +15892,12 @@ Namespace ServiceReference_01
             Return MyBase.Channel.initServiceAsync(client, user, checkVersion, VersionNrClient, clientVars)
         End Function
         
-        Public Sub testRep() Implements ServiceReference_01.Service1.testRep
-            MyBase.Channel.testRep
+        Public Sub testRep(ByVal IDClient As System.Guid) Implements ServiceReference_01.Service1.testRep
+            MyBase.Channel.testRep(IDClient)
         End Sub
         
-        Public Function testRepAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testRepAsync
-            Return MyBase.Channel.testRepAsync
+        Public Function testRepAsync(ByVal IDClient As System.Guid) As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testRepAsync
+            Return MyBase.Channel.testRepAsync(IDClient)
         End Function
         
         Public Function sendExceptionAsSMTPEMail(ByVal except As String, ByVal client As String, ByVal User As String, ByVal dAt As Date) As Boolean Implements ServiceReference_01.Service1.sendExceptionAsSMTPEMail
@@ -15560,8 +16240,9 @@ Namespace ServiceReference_01
             Return MyBase.Channel.Export(request)
         End Function
         
-        Public Function Export(ByVal IDPatient As System.Guid, ByRef ArchivPath As String, ByVal IsTest As Boolean, <System.Runtime.InteropServices.OutAttribute()> ByRef FileNameXMLDocumentBack As String) As Boolean
+        Public Function Export(ByVal IDClient As System.Guid, ByVal IDPatient As System.Guid, ByRef ArchivPath As String, ByVal IsTest As Boolean, <System.Runtime.InteropServices.OutAttribute()> ByRef FileNameXMLDocumentBack As String) As Boolean
             Dim inValue As ServiceReference_01.ExportRequest = New ServiceReference_01.ExportRequest()
+            inValue.IDClient = IDClient
             inValue.IDPatient = IDPatient
             inValue.ArchivPath = ArchivPath
             inValue.IsTest = IsTest
@@ -15580,9 +16261,10 @@ Namespace ServiceReference_01
             Return MyBase.Channel.DynReportsInitStructure(request)
         End Function
         
-        Public Function DynReportsInitStructure(ByRef RootPath As String) As Boolean
+        Public Function DynReportsInitStructure(ByRef RootPath As String, ByVal IDClient As System.Guid) As Boolean
             Dim inValue As ServiceReference_01.DynReportsInitStructureRequest = New ServiceReference_01.DynReportsInitStructureRequest()
             inValue.RootPath = RootPath
+            inValue.IDClient = IDClient
             Dim retVal As ServiceReference_01.DynReportsInitStructureResponse = CType(Me,ServiceReference_01.Service1).DynReportsInitStructure(inValue)
             RootPath = retVal.RootPath
             Return retVal.DynReportsInitStructureResult
@@ -15592,12 +16274,12 @@ Namespace ServiceReference_01
             Return MyBase.Channel.DynReportsInitStructureAsync(request)
         End Function
         
-        Public Function getvKlientenliste() As Byte()() Implements ServiceReference_01.Service1.getvKlientenliste
-            Return MyBase.Channel.getvKlientenliste
+        Public Function getvKlientenliste(ByVal IDClient As System.Guid) As Byte()() Implements ServiceReference_01.Service1.getvKlientenliste
+            Return MyBase.Channel.getvKlientenliste(IDClient)
         End Function
         
-        Public Function getvKlientenlisteAsync() As System.Threading.Tasks.Task(Of Byte()()) Implements ServiceReference_01.Service1.getvKlientenlisteAsync
-            Return MyBase.Channel.getvKlientenlisteAsync
+        Public Function getvKlientenlisteAsync(ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of Byte()()) Implements ServiceReference_01.Service1.getvKlientenlisteAsync
+            Return MyBase.Channel.getvKlientenlisteAsync(IDClient)
         End Function
         
         Public Sub testPDFIum() Implements ServiceReference_01.Service1.testPDFIum
@@ -15606,6 +16288,38 @@ Namespace ServiceReference_01
         
         Public Function testPDFIumAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testPDFIumAsync
             Return MyBase.Channel.testPDFIumAsync
+        End Function
+        
+        Public Function messagesSent(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto Implements ServiceReference_01.Service1.messagesSent
+            Return MyBase.Channel.messagesSent(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
+        End Function
+        
+        Public Function messagesSentAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto) Implements ServiceReference_01.Service1.messagesSentAsync
+            Return MyBase.Channel.messagesSentAsync(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
+        End Function
+        
+        Public Function messagesUnreadedUsr(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto Implements ServiceReference_01.Service1.messagesUnreadedUsr
+            Return MyBase.Channel.messagesUnreadedUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
+        End Function
+        
+        Public Function messagesUnreadedUsrAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto) Implements ServiceReference_01.Service1.messagesUnreadedUsrAsync
+            Return MyBase.Channel.messagesUnreadedUsrAsync(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
+        End Function
+        
+        Public Function messagesAllUsr(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto Implements ServiceReference_01.Service1.messagesAllUsr
+            Return MyBase.Channel.messagesAllUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
+        End Function
+        
+        Public Function messagesAllUsrAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto) Implements ServiceReference_01.Service1.messagesAllUsrAsync
+            Return MyBase.Channel.messagesAllUsrAsync(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
+        End Function
+        
+        Public Function addMessage(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDTO1 Implements ServiceReference_01.Service1.addMessage
+            Return MyBase.Channel.addMessage(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, IDClient)
+        End Function
+        
+        Public Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1) Implements ServiceReference_01.Service1.addMessageAsync
+            Return MyBase.Channel.addMessageAsync(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, IDClient)
         End Function
     End Class
 End Namespace

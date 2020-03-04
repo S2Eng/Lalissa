@@ -312,6 +312,98 @@ namespace PMDS.DB
 
                     PMDSClient.Sitemap.WCFServiceClient wcf = new PMDSClient.Sitemap.WCFServiceClient();
                     MessagesDTO1 lM = wcf.addMessage(rUserFrom.IDBenutzer, rUserFrom.Benutzer.Trim(), Title.Trim(), Message.Trim(), ClientsMessage.ToString(), TypeMessage.ToString(), lstToUsers.ToArray());
+
+
+
+                    //string CmdReturn = "";
+                    ////qs2.core.vb.dsProtocol dsProtocol1 = new qs2.core.vb.dsProtocol();
+                    ////qs2.core.vb.sqlProtocoll sqlProtocoll = new qs2.core.vb.sqlProtocoll();
+                    ////sqlProtocoll.getProtocol(System.Guid.NewGuid(), ref dsProtocol1, qs2.core.vb.sqlProtocoll.eSelProtocoll.ID, "", System.Guid.NewGuid(), -1, "", "", null, null, "", ref CmdReturn);
+
+                    //dsManage dsManage1 = new dsManage();
+                    //sqlManange sqlManange1 = new sqlManange();
+                    //sqlManange1.initControl();
+                    //sqlManange1.getMessage2(dsManage1, System.Guid.NewGuid(), sqlManange.eTypeMessages.ID, "", "");
+
+                    //dsAsyncCommData dsAsyncCommData1 = new dsAsyncCommData();
+                    ////dsAsyncCommData.DataGenericRow NewFromUser = PMDSBusinessComm.newDataGeneric(dsAsyncCommData1);
+
+                    //var rUserFrom = (from b in db.Benutzer
+                    //               where b.ID == FromIDUser.Value
+                    //              select new
+                    //               {
+                    //                   IDBenutzer = b.ID,
+                    //                   Benutzer = b.Benutzer1
+                    //               }).First();
+
+                    ////NewFromUser.FromUser = rUserFrom.Benutzer.Trim();
+                    ////NewFromUser.FromIDUser = rUserFrom.IDBenutzer;
+                    ////NewFromUser.Created = dNow;
+                    ////NewFromUser.Title = Title.Trim();
+                    ////NewFromUser.Txt = Message.Trim();
+
+                    //dsManage.Messages2Row rNew = sqlManange1.addNewMessages2(ref dsManage1);
+                    //rNew.ID = System.Guid.NewGuid();
+                    //rNew.Title = Title.Trim(); ;
+                    //rNew.Text = Message.Trim();
+                    //rNew.UserFrom = rUserFrom.Benutzer.Trim();
+                    //rNew.Created = dNow;
+                    //rNew.UserFromID = System.Guid.NewGuid();
+                    //rNew.ClientsMessage = ClientsMessage.ToString();
+                    //rNew.TypeMessage = TypeMessage.ToString();
+                    //rNew.Progress = "";
+                    //rNew.Db = "";
+                    //rNew.IDGuidObject = rUserFrom.IDBenutzer;
+
+                    //string xml = "";
+                    //System.IO.StringWriter xmlStrWriter = new System.IO.StringWriter();
+                    //System.Xml.XmlTextWriter xmlWriter = new System.Xml.XmlTextWriter(xmlStrWriter);
+                    //xmlWriter.WriteStartDocument(true);
+                    //dsAsyncCommData1.WriteXml(xmlWriter, XmlWriteMode.WriteSchema);
+                    //xml = xmlStrWriter.ToString();
+                    //xmlWriter.Close();
+                    //rNew.Db = xml;
+
+                    //sqlManange1.daMessages.Update(dsManage1.Messages2);
+
+                    //string sIDUsersBySemikolon = "";
+                    //foreach (Guid ToIDUser in lstToUsers)
+                    //{
+                    //    var rUserTo = (from b in db.Benutzer
+                    //                 where b.ID == ToIDUser
+                    //                 select new
+                    //                 {
+                    //                     IDBenutzer = b.ID,
+                    //                     Benutzer = b.Benutzer1
+                    //                 }).First();
+
+                    //    sqlManange1.getMessages2ToUser(dsManage1, System.Guid.NewGuid(), sqlManange.eTypeMessages.ID);
+                    //    PMDS.Global.db.ERSystem.dsManage.Messages2ToUsersRow rNewMsgUser = sqlManange1.addNewMessages2ToUser(ref dsManage1);
+                    //    rNewMsgUser.ID = System.Guid.NewGuid();
+                    //    rNewMsgUser.IDMessages = rNew.ID;
+                    //    rNewMsgUser.IDUser = rUserTo.IDBenutzer;
+                    //    rNewMsgUser.Username = rUserTo.Benutzer.Trim();
+                    //    sIDUsersBySemikolon += rUserTo.IDBenutzer.ToString() + ";";
+
+                    //    sqlManange1.daMessagesToUsers.Update(dsManage1.Messages2ToUsers);
+
+                    //    //dsAsyncCommData.ToUsersRow NewToUser = PMDSBusinessComm.newRowToUsers(dsAsyncCommData1);
+                    //    //NewToUser.User = rUserTo.Benutzer.Trim();
+                    //    //NewToUser.IDUser = rUserTo.IDBenutzer;
+                    //}
+
+                    ////rNewMsg.ID = System.Guid.NewGuid();
+                    ////rNewMsg.Type = ClientsMessage.ToString();
+                    ////rNewMsg.IDApplication = "PMDS";
+                    ////rNewMsg.Title = Title.Trim();
+                    ////rNewMsg.Text = Message.Trim();
+                    ////rNewMsg.sKey = TypeMessage.ToString();
+                    ////rNewMsg.Created = dNow;
+                    ////rNewMsg.CreatedDay = dNow.Date;
+                    ////rNewMsg.User = rUserFrom.Benutzer.Trim();
+                    ////rNewMsg.IDGuidObject = rUserFrom.IDBenutzer;
+                    ////rNewMsg.Progress = "";
+                    ////rNewMsg.Classification = sIDUsersBySemikolon.Trim();
                 }
 
             }
@@ -431,8 +523,8 @@ namespace PMDS.DB
                 {
                     var tMUnreaded2 = from m in db.Messages
                                  join mu in (from o in db.MessagesToUsers
-                                               where !o.Readed && o.IDUser == ENV.USERID
-                                             select o)
+                                               where o.Readed
+                                               select o)
                                     on m.ID equals mu.IDMessages
                                  select new { m.ID};
 
@@ -500,6 +592,49 @@ namespace PMDS.DB
             catch (Exception ex)
             {
                 throw new Exception("PMDSBusinessComm.getEnumTypeMessage: " + ex.ToString());
+            }
+        }
+
+
+
+
+
+        public static dsAsyncCommData.DataGenericRow newDataGeneric(dsAsyncCommData ds)
+        {
+            try
+            {
+                dsAsyncCommData.DataGenericRow rNew = (dsAsyncCommData.DataGenericRow)ds.DataGeneric.NewRow();
+                rNew.FromUser = "";
+                rNew.FromIDUser = System.Guid.NewGuid();
+                rNew.Title = "";
+                rNew.Txt = "";
+                rNew.Created = DateTime.Now;
+
+                ds.DataGeneric.Rows.Add(rNew);
+                return rNew;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusinessComm.newRowToUsers: " + ex.ToString());
+            }
+        }
+
+        public static dsAsyncCommData.ToUsersRow newRowToUsers(dsAsyncCommData ds)
+        {
+            try
+            {
+                dsAsyncCommData.ToUsersRow rNew = (dsAsyncCommData.ToUsersRow)ds.ToUsers.NewRow();
+                rNew.User = "";
+                rNew.IDUser = System.Guid.NewGuid();
+                rNew.Readed = false;
+                rNew.SetReadedAtNull();
+
+                ds.ToUsers.Rows.Add(rNew);
+                return rNew;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusinessComm.newRowToUsers: " + ex.ToString());
             }
         }
 

@@ -35,7 +35,6 @@
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -68,6 +67,7 @@
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             this.textControlMessage = new TXTextControl.TextControl();
             this.txtTitle = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblTitle = new Infragistics.Win.Misc.UltraLabel();
@@ -77,10 +77,8 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnSend = new Infragistics.Win.Misc.UltraButton();
             this.optReaded = new Infragistics.Win.UltraWinEditors.UltraOptionSet();
-            this.btnRefresh = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnAnswerAll = new Infragistics.Win.Misc.UltraButton();
             this.btnAnswerSender = new Infragistics.Win.Misc.UltraButton();
-            this.btnDelete = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelButtonsTop = new System.Windows.Forms.Panel();
             this.btnNewMessage = new Infragistics.Win.Misc.UltraButton();
             this.udteTo = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
@@ -103,6 +101,8 @@
             this.lblNewMessages = new Infragistics.Win.Misc.UltraLabel();
             this.btnPrint = new QS2.Desktop.ControlManagment.BaseButton();
             this.optPostEinAusgang = new Infragistics.Win.UltraWinEditors.UltraOptionSet();
+            this.btnDelete = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnRefresh = new QS2.Desktop.ControlManagment.BaseButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.sqlManange1 = new PMDS.Global.db.ERSystem.sqlManange(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtTitle)).BeginInit();
@@ -136,6 +136,7 @@
             this.textControlMessage.Name = "textControlMessage";
             this.textControlMessage.Size = new System.Drawing.Size(886, 291);
             this.textControlMessage.TabIndex = 1;
+            this.textControlMessage.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.textControlMessage.UserNames = null;
             this.textControlMessage.ViewMode = TXTextControl.ViewMode.Normal;
             // 
@@ -221,19 +222,6 @@
             this.optReaded.Text = "Ungelesen";
             this.optReaded.ValueChanged += new System.EventHandler(this.optReaded_ValueChanged);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.AutoWorkLayout = false;
-            this.btnRefresh.IsStandardControl = false;
-            this.btnRefresh.Location = new System.Drawing.Point(7, 3);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(158, 26);
-            this.btnRefresh.TabIndex = 0;
-            this.btnRefresh.Tag = "";
-            this.btnRefresh.Text = "Nachrichten aktualisieren";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // btnAnswerAll
             // 
             this.btnAnswerAll.Location = new System.Drawing.Point(194, 0);
@@ -253,22 +241,6 @@
             this.btnAnswerSender.Tag = "";
             this.btnAnswerSender.Text = "Absender antworten";
             this.btnAnswerSender.Click += new System.EventHandler(this.btnAnswerSender_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance23.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDelete.Appearance = appearance23;
-            this.btnDelete.AutoWorkLayout = false;
-            this.btnDelete.IsStandardControl = false;
-            this.btnDelete.Location = new System.Drawing.Point(861, 47);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(28, 26);
-            this.btnDelete.TabIndex = 100;
-            this.btnDelete.Tag = "";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // panelButtonsTop
             // 
@@ -640,6 +612,35 @@
             this.optPostEinAusgang.TabIndex = 0;
             this.optPostEinAusgang.Text = "Posteingang";
             this.optPostEinAusgang.ValueChanged += new System.EventHandler(this.optPostEinAusgang_ValueChanged);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance23.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance23.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDelete.Appearance = appearance23;
+            this.btnDelete.AutoWorkLayout = false;
+            this.btnDelete.IsStandardControl = false;
+            this.btnDelete.Location = new System.Drawing.Point(861, 47);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(28, 26);
+            this.btnDelete.TabIndex = 100;
+            this.btnDelete.Tag = "";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AutoWorkLayout = false;
+            this.btnRefresh.IsStandardControl = false;
+            this.btnRefresh.Location = new System.Drawing.Point(7, 3);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(158, 26);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.Tag = "";
+            this.btnRefresh.Text = "Nachrichten aktualisieren";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // panel1
             // 

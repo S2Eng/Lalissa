@@ -307,7 +307,7 @@ namespace PMDS.GUI.ELGA
                 throw new Exception("contELGASearchDocuments.getSelectedRow: " + ex.ToString());
             }
         }
-
+          
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {

@@ -554,12 +554,12 @@ namespace PMDS.Global.db.ERSystem
                 string sDiff = "";
                 if (ENV.adminSecure)
                 {
-                    int iDiff = System.Convert.ToInt32(span.Minutes) + 1;
+                    int iDiff = System.Convert.ToInt32(span.TotalMinutes);
                     sDiff = System.Convert.ToInt32(iDiff).ToString() + " min (" +System.Convert.ToInt32(span.TotalSeconds).ToString() + " sec)";
                 }
                 else
                 {
-                    int iDiff = System.Convert.ToInt32(span.Minutes) + 1;
+                    int iDiff = System.Convert.ToInt32(span.TotalMinutes);
                     sDiff = System.Convert.ToInt32(iDiff).ToString();
                 }
 

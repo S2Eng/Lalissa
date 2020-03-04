@@ -39,6 +39,7 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.DAL.DTO" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL2.ELGABAL" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.CDABAL" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WCFServicePMDS.BAL.DTO" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="Service1_initService_InputMessage">
@@ -209,6 +210,30 @@
   <wsdl:message name="Service1_testPDFIum_OutputMessage">
     <wsdl:part name="parameters" element="tns:testPDFIumResponse" />
   </wsdl:message>
+  <wsdl:message name="Service1_messagesSent_InputMessage">
+    <wsdl:part name="parameters" element="tns:messagesSent" />
+  </wsdl:message>
+  <wsdl:message name="Service1_messagesSent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:messagesSentResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_messagesUnreadedUsr_InputMessage">
+    <wsdl:part name="parameters" element="tns:messagesUnreadedUsr" />
+  </wsdl:message>
+  <wsdl:message name="Service1_messagesUnreadedUsr_OutputMessage">
+    <wsdl:part name="parameters" element="tns:messagesUnreadedUsrResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_messagesAllUsr_InputMessage">
+    <wsdl:part name="parameters" element="tns:messagesAllUsr" />
+  </wsdl:message>
+  <wsdl:message name="Service1_messagesAllUsr_OutputMessage">
+    <wsdl:part name="parameters" element="tns:messagesAllUsrResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_addMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:addMessage" />
+  </wsdl:message>
+  <wsdl:message name="Service1_addMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addMessageResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1">
     <wsdl:operation name="initService">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/initService" message="tns:Service1_initService_InputMessage" />
@@ -321,6 +346,22 @@
     <wsdl:operation name="testPDFIum">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/testPDFIum" message="tns:Service1_testPDFIum_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/testPDFIumResponse" message="tns:Service1_testPDFIum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="messagesSent">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/messagesSent" message="tns:Service1_messagesSent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/messagesSentResponse" message="tns:Service1_messagesSent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="messagesUnreadedUsr">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/messagesUnreadedUsr" message="tns:Service1_messagesUnreadedUsr_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/messagesUnreadedUsrResponse" message="tns:Service1_messagesUnreadedUsr_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="messagesAllUsr">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/messagesAllUsr" message="tns:Service1_messagesAllUsr_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/messagesAllUsrResponse" message="tns:Service1_messagesAllUsr_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/addMessage" message="tns:Service1_addMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/addMessageResponse" message="tns:Service1_addMessage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Service1" type="tns:Service1">
@@ -577,6 +618,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="messagesSent">
+      <soap:operation soapAction="http://tempuri.org/Service1/messagesSent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesUnreadedUsr">
+      <soap:operation soapAction="http://tempuri.org/Service1/messagesUnreadedUsr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesAllUsr">
+      <soap:operation soapAction="http://tempuri.org/Service1/messagesAllUsr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMessage">
+      <soap:operation soapAction="http://tempuri.org/Service1/addMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_Service1" type="tns:Service1">
     <wsp:PolicyReference URI="#NetTcpBinding_Service1_policy" />
@@ -826,6 +903,42 @@
     </wsdl:operation>
     <wsdl:operation name="testPDFIum">
       <soap12:operation soapAction="http://tempuri.org/Service1/testPDFIum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesSent">
+      <soap12:operation soapAction="http://tempuri.org/Service1/messagesSent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesUnreadedUsr">
+      <soap12:operation soapAction="http://tempuri.org/Service1/messagesUnreadedUsr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="messagesAllUsr">
+      <soap12:operation soapAction="http://tempuri.org/Service1/messagesAllUsr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addMessage">
+      <soap12:operation soapAction="http://tempuri.org/Service1/addMessage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
