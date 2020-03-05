@@ -10571,6 +10571,138 @@ namespace PMDS.DB
                 throw new Exception("sys_PEUpdateIDBerusstandWhereNull.checkVO: " + ex.ToString());
             }
         }
+        public void sys_MigrateOldMessages(PMDS.db.Entities.ERModellPMDSEntities db, Infragistics.Win.Misc.UltraLabel lbl,
+                                               ref System.Collections.Generic.List<Guid> lOK, ref System.Collections.Generic.List<Guid> lError)
+        {
+            Nullable<Guid> IDProt = null;
+            try
+            {
+                var tProt2 = (from pe in db.Protocol
+                        where pe.sKey == "Message"
+                        select new
+                        {
+                            pe.IDGuid
+                        }).ToList();
+
+                System.Collections.Generic.List<Guid> lPs = new List<Guid>();
+                foreach (var rProt in tProt2)
+                {
+                    lPs.Add(rProt.IDGuid);
+                }
+
+                if (lPs.Count() > 0)
+                {
+                    foreach (var IDProt2 in lPs)
+                    {
+                        try
+                        {
+                            var rProt = (from pe in db.Protocol
+                                         where pe.IDGuid == IDProt2
+                                         select new
+                                         {
+                                             pe.IDGuid,
+                                             pe.Info,
+                                             pe.Protocol1,
+                                             pe.progress,
+                                             pe.IDGuidObject,
+                                             pe.sKey,
+                                             pe.Created,
+                                             pe.CreatedDay,
+                                             pe.User,
+                                             pe.Db
+                                         }).First();
+
+
+                            IDProt = rProt.IDGuid;
+
+                            dsAsyncCommData.DataGenericRow rDataGeneric = null;
+                            dsAsyncCommData.ToUsersRow[] tToUsers = null;
+                            this.getXMLDatabaseForMessage(rProt.Db, ref rDataGeneric, ref tToUsers, rProt.IDGuid);
+
+                            Messages rM = new Messages();
+                            rM.ID = System.Guid.NewGuid();
+                            rM.Title = rProt.Info;
+                            rM.Text = rProt.Protocol1;
+                            rM.IDGuidObject = rProt.IDGuidObject;
+                            rM.Created = rProt.Created;
+                            rM.CreatedDay = rProt.CreatedDay;
+                            rM.TypeMessage = "Message";
+                            rM.ClientsMessage = "MessageToAllClients";
+                            rM.UserFrom = rProt.User;
+                            rM.UserFromID = rProt.IDGuidObject.Value;
+                            rM.Progress = "";
+                            rM.Db = "";
+                            rM.Classification = "";
+                            rM.sKey = "";
+
+                            db.Messages.Add(rM);
+
+                            foreach (dsAsyncCommData.ToUsersRow rUsr in tToUsers)
+                            {
+                                MessagesToUsers rMU = new MessagesToUsers();
+                                rMU.ID = System.Guid.NewGuid();
+                                rMU.IDMessages = rM.ID;
+                                rMU.Readed = rUsr.Readed;
+                                rMU.IDUser = rUsr.IDUser;
+                                rMU.Username = rUsr.User;
+                                if (!rUsr.IsReadedAtNull())
+                                    rMU.ReadedAt = rUsr.ReadedAt;
+
+                                db.MessagesToUsers.Add(rMU);
+                            }
+
+                            db.SaveChanges();
+                            lOK.Add(rProt.IDGuid);
+
+                        }
+                        catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                        {
+                            lError.Add(IDProt.Value);
+                        }
+                        catch (Exception ex)
+                        {
+                            lError.Add(IDProt.Value);
+                        }
+                    }
+                }
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(PMDS.DB.PMDSBusiness.getDbEntityValidationException2(ex, "PMDSBusinessUI.sys_MigrateOldMessages()"));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusinessUI.sys_MigrateOldMessages: " + ex.ToString());
+            }
+        }
+        public void getXMLDatabaseForMessage(string db, ref dsAsyncCommData.DataGenericRow rDataGeneric, ref dsAsyncCommData.ToUsersRow[] tToUsers, Guid IDProt)
+        {
+            try
+            {
+                dsAsyncCommData dsAsyncCommData1 = new dsAsyncCommData();
+
+                System.IO.StringReader xmlStringReader = new System.IO.StringReader(db);
+                System.Xml.XmlTextReader xmlReader = new System.Xml.XmlTextReader(xmlStringReader);
+                dsAsyncCommData1.ReadXml(xmlReader);
+                xmlReader.Close();
+
+                dsAsyncCommData.DataGenericRow[] tDataGeneric = (dsAsyncCommData.DataGenericRow[])dsAsyncCommData1.DataGeneric.Select("", "");
+                if (tDataGeneric.Length != 1)
+                {
+                    throw new Exception("contMessenger.loadTreeMessages: tDataGeneric.Length != 1 not allowed for IDProtocoll '" + IDProt.ToString() + "'!");
+                }
+
+                rDataGeneric = tDataGeneric[0];
+                tToUsers = (dsAsyncCommData.ToUsersRow[])dsAsyncCommData1.ToUsers.Select("", dsAsyncCommData1.ToUsers.UserColumn.ColumnName + " asc");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusinessUI.getXMLDatabaseForMessage: " + ex.ToString());
+            }
+        }
+
         public void copyUpdateZusatzwertePEIDGruppe2(Guid IDPEOrig2, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
