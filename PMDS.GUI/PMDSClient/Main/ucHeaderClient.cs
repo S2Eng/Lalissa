@@ -186,7 +186,7 @@ namespace PMDS.GUI.PMDSClient
                 this.ucMedizinDaten1.Refresh(IDPATIENT, false);
                 //this.ucMedizinDaten2.Refresh(IDPATIENT);
 
-                PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
+                PMDSBusinessComm.checkCommAsyncForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
                 if (ucHeader.bKlinikChanged)
                 {
                     if (this.contPatientUserPicker1.contSelectPatienten != null)
@@ -232,7 +232,7 @@ namespace PMDS.GUI.PMDSClient
 
                 if (refreshPicker)
                 {
-                    PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
+                    PMDSBusinessComm.checkCommAsyncForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
                     if (ucHeader.bKlinikChanged)
                     {
                         if (this.contPatientUserPicker1.contSelectPatienten != null)

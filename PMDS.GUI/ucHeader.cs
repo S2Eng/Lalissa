@@ -189,7 +189,7 @@ namespace PMDS.GUI
                 this.ucMedizinDaten1.Refresh(IDPATIENT, false);
                 //this.ucMedizinDaten2.Refresh(IDPATIENT);
 
-                PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
+                PMDSBusinessComm.checkCommAsyncForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
                 if (ucHeader.bKlinikChanged)
                 {
                     if (this.contPatientUserPicker1.contSelectPatienten != null)

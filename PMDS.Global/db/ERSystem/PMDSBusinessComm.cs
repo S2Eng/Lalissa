@@ -45,8 +45,7 @@ namespace PMDS.DB
         }
         public enum eTypeMessage
         {
-            ReloadRAMAll = 0,
-            none = 1000
+            ReloadRAMAll = 0
         }
         
         public static Thread threadLoadData = null;
@@ -97,12 +96,12 @@ namespace PMDS.DB
                         System.TimeSpan datDiff = DateTime.Now - lastStart;
                         if (datDiff.TotalSeconds > ENV.AsynCommCheckMessagesSeconds)
                         {
-                            PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
-                            Thread.Sleep(200);
+                            PMDSBusinessComm.checkCommAsyncForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
+                            Thread.Sleep(800);
                             PMDSBusinessComm.checkMessageForClient2();
                             lastStart = DateTime.Now;
                         }
-                        Thread.Sleep(100);     //Thread.Sleep(5000);
+                        Thread.Sleep(10000);  
                         if (PMDS.DB.PMDSBusinessComm.closeAllThreads)
                         {
                             bEnd = true;
@@ -168,7 +167,7 @@ namespace PMDS.DB
                     throw new Exception("PMDSBusinessComm.setUniqueIDMachine: Environment.MachineName is null or '' not allowed!");
                 }
 
-                PMDSBusinessComm.uniqueIDMachine = "__________" + Environment.MachineName.Trim() + "_" + PMDSBusinessComm.GetLocalIPAddress() + "_" + macAddr.ToString() + "__________";
+                PMDSBusinessComm.uniqueIDMachine = "" + Environment.MachineName.Trim() + "_" + PMDSBusinessComm.GetLocalIPAddress() + "_" + macAddr.ToString() + "";
 
             }
             catch (Exception ex)
@@ -188,49 +187,11 @@ namespace PMDS.DB
             }
             throw new Exception("PMDSBusinessComm.GetLocalIPAddress: No network adapters with an IPv4 address in the system!");
         }
+
         public static void registerClient(string uniqueIDMachine)
         {
             try
             {
-                DateTime dNow = DateTime.Now;
-                //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                //{
-                qs2.core.vb.dsProtocol dsProtocol1 = new qs2.core.vb.dsProtocol();
-                qs2.core.vb.sqlProtocoll sqlProtocoll = new qs2.core.vb.sqlProtocoll();
-                sqlProtocoll.initControl();
-                string CmdReturn = "";
-                sqlProtocoll.getProtocol(PMDSBusinessComm.IDMachinesProtocoll, ref dsProtocol1, qs2.core.vb.sqlProtocoll.eSelProtocoll.ID, "", System.Guid.NewGuid(), -1, "", "", null, null, "", ref CmdReturn);
-
-                qs2.core.vb.dsProtocol.ProtocolRow rNewProt = null;
-                if (dsProtocol1.Protocol.Rows.Count == 0)
-                {
-                    rNewProt = (qs2.core.vb.dsProtocol.ProtocolRow)sqlProtocoll.newProtocol(ref dsProtocol1);
-                    rNewProt.IDGuid = PMDSBusinessComm.IDMachinesProtocoll;
-                    rNewProt.Type = "AllMachines";
-                    rNewProt.IDApplication = "PMDS";
-                    rNewProt.Info = "";
-                    rNewProt.Protocol = "";
-                    rNewProt.Created = dNow;
-                    rNewProt.CreatedDay = dNow.Date;
-                    rNewProt.User = "System";
-
-                    sqlProtocoll.daProtocol.Update(dsProtocol1.Protocol);
-                }
-                else if (dsProtocol1.Protocol.Rows.Count == 1)
-                {
-                    rNewProt = (qs2.core.vb.dsProtocol.ProtocolRow)dsProtocol1.Protocol.Rows[0];
-                }
-                else if (dsProtocol1.Protocol.Rows.Count > 1)
-                {
-                    throw new Exception("PMDSBusinessComm.registerClients: dsProtocol1.Protocol.Rows.Count > 1 not allowed!");
-                }
-
-                if (!rNewProt.Info.Contains(uniqueIDMachine.Trim()))
-                {
-                    rNewProt.Info += uniqueIDMachine.Trim();
-                    sqlProtocoll.daProtocol.Update(dsProtocol1.Protocol);
-                }
-                //}
 
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -242,7 +203,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusinessComm.registerClients: " + ex.ToString());
             }
         }
-        public static void newMessageToClients(eClientsMessage ClientsMessage, eTypeMessage TypeMessage,  PMDS.db.Entities.ERModellPMDSEntities db, Nullable<Guid> FromIDUser = null,
+        public static void newCommAsyncToClients(eClientsMessage ClientsMessage, eTypeMessage TypeMessage,  PMDS.db.Entities.ERModellPMDSEntities db, Nullable<Guid> FromIDUser = null,
                                                 List<Guid> lstToUsers = null, string Title = "", string Message = "", Nullable<DateTime> IDTimeRepeat = null)
         {
             Nullable<DateTime> IDTime = null;
@@ -252,39 +213,21 @@ namespace PMDS.DB
             }
             try
             {
-                DateTime dNow = DateTime.Now;
+                CommAsync newComm = new CommAsync();
+                newComm.ID = System.Guid.NewGuid();
+                newComm.Info = "";
+                newComm.UserFrom = "";
+                newComm.UserFromID = ENV.USERID; 
+                newComm.ClientsMessage = ClientsMessage.ToString();
+                newComm.TypeMessage = TypeMessage.ToString();
+                newComm.Created = DateTime.Now;
+                newComm.CreatedDay = DateTime.Now.Date;
 
-                string CmdReturn = "";
-                qs2.core.vb.dsProtocol dsProtocol1 = new qs2.core.vb.dsProtocol();
-                qs2.core.vb.sqlProtocoll sqlProtocoll = new qs2.core.vb.sqlProtocoll();
-                sqlProtocoll.initControl();
-                sqlProtocoll.getProtocol(PMDSBusinessComm.IDMachinesProtocoll, ref dsProtocol1, qs2.core.vb.sqlProtocoll.eSelProtocoll.ID, "", System.Guid.NewGuid(), -1, "", "", null, null, "", ref CmdReturn);
-                if (dsProtocol1.Protocol.Rows.Count != 1)
-                {
-                    throw new Exception("PMDSBusinessComm.registerClients: dsProtocol1.Protocol.Rows.Count != 1 not allowed!");
-                }
-                qs2.core.vb.dsProtocol.ProtocolRow rProtAllMachines = (qs2.core.vb.dsProtocol.ProtocolRow)dsProtocol1.Protocol.Rows[0];
-                string AllMachines = rProtAllMachines.Info.Trim();
+                db.CommAsync.Add(newComm);
+                db.SaveChanges();
 
-                CmdReturn = "";
-                dsProtocol1 = new qs2.core.vb.dsProtocol();
-                sqlProtocoll = new qs2.core.vb.sqlProtocoll();
-                sqlProtocoll.getProtocol(System.Guid.NewGuid(), ref dsProtocol1, qs2.core.vb.sqlProtocoll.eSelProtocoll.ID, "", System.Guid.NewGuid(), -1, "", "", null, null, "", ref CmdReturn);
-
-                qs2.core.vb.dsProtocol.ProtocolRow rNewProt = (qs2.core.vb.dsProtocol.ProtocolRow)sqlProtocoll.newProtocol(ref dsProtocol1);
-                rNewProt.IDGuid = System.Guid.NewGuid();
-                rNewProt.Type = ClientsMessage.ToString();
-                rNewProt.IDApplication = "PMDS";
-                rNewProt.Info = AllMachines.Trim();
-                rNewProt.sKey = TypeMessage.ToString();
-                rNewProt.Created = dNow;
-                rNewProt.CreatedDay = dNow.Date;
-                rNewProt.User = "System";
-
-                sqlProtocoll.daProtocol.Update(dsProtocol1.Protocol);
-
-                DateTime dDat = DateTime.Now.AddMonths(-1).Date;
-                string strSQlUpdate = "delete from qs2.Protocol where CreatedDay<=@CreatedDay and Type='" + ClientsMessage.ToString() + "'";
+                DateTime dDat = DateTime.Now.AddDays(-5).Date;
+                string strSQlUpdate = "delete from CommAsync where CreatedDay<=@CreatedDay and ClientsMessage='" + ClientsMessage.ToString() + "'";
                 System.Data.SqlClient.SqlCommand cmdUpdate = new System.Data.SqlClient.SqlCommand();
                 cmdUpdate.CommandText = strSQlUpdate;
                 cmdUpdate.Parameters.AddWithValue("@CreatedDay", dDat);
@@ -292,18 +235,16 @@ namespace PMDS.DB
                     RBU.DataBase.CONNECTION.Open();
                 cmdUpdate.Connection = RBU.DataBase.CONNECTIONSqlClient;
                 cmdUpdate.CommandTimeout = 0;
-
                 cmdUpdate.ExecuteNonQuery();
-
 
             }
             catch (Exception ex)
             {
-                if (PMDS.DB.PMDSBusiness.handleExceptionsServerNotReachable(ref IDTime, ex, "PMDSBusinessComm.newMessageToClients"))
+                if (PMDS.DB.PMDSBusiness.handleExceptionsServerNotReachable(ref IDTime, ex, "PMDSBusinessComm.newCommAsyncToClients"))
                 {
-                    PMDSBusinessComm.newMessageToClients(ClientsMessage, TypeMessage, db, FromIDUser, lstToUsers, Title, Message, IDTime);
+                    PMDSBusinessComm.newCommAsyncToClients(ClientsMessage, TypeMessage, db, FromIDUser, lstToUsers, Title, Message, IDTime);
                 }
-                throw new Exception("PMDSBusinessComm.newMessageToClients: " + ex.ToString());
+                throw new Exception("PMDSBusinessComm.newCommAsyncToClients: " + ex.ToString());
             }
         }
         public static void newMessageToClients2(eClientsMessage ClientsMessage, PMDS.db.Entities.ERModellPMDSEntities db, Nullable<Guid> FromIDUser = null,
@@ -340,86 +281,66 @@ namespace PMDS.DB
             }
         }
 
-        public static bool checkMessageForClient(eClientsMessage ClientsMessage, eTypeMessage TypeMessage)
+        public static bool checkCommAsyncForClient(eClientsMessage ClientsMessage, eTypeMessage TypeMessage)
         {
             try
             {
-                DateTime dSince = DateTime.Now.AddDays(-14).Date;
-                string strSQl = "";
-
-                strSQl = "Select IDGuid, [Type], Info, progress, sKey, Created from qs2.Protocol where Type='" + ClientsMessage.ToString() + "' and sKey='" + TypeMessage.ToString() + "' and " +
-                                "CreatedDay>=@CreatedDay and Info like '%" + PMDSBusinessComm.uniqueIDMachine.Trim() + "%' and (progress not like '%" + PMDSBusinessComm.uniqueIDMachine.Trim() + "%')";
-
-                dsKlientenliste dsKlientenliste1 = new dsKlientenliste();
-                System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter();
-                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-
-                cmd.CommandText = strSQl;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTIONSqlClient;
-                cmd.CommandTimeout = 0;
-                cmd.CommandTimeout = 0;
-                da.SelectCommand = cmd;
-                da.SelectCommand.Parameters.AddWithValue("@CreatedDay", dSince);
-                da.Fill(dsKlientenliste1.tProtocol);
-
-                if (dsKlientenliste1.tProtocol.Rows.Count > 0)
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    eTypeMessage TypeMessageAction = eTypeMessage.none;
-                    foreach (dsKlientenliste.tProtocolRow rProt in dsKlientenliste1.tProtocol)
+                    string sClientsMessage = ClientsMessage.ToString();
+                    string sTypeMessage = TypeMessage.ToString();
+
+                    var rComm = (from c in db.CommAsync
+                                 where c.ClientsMessage == sClientsMessage && c.TypeMessage == sTypeMessage
+                                 orderby c.Created descending
+                                 select new {c.ID}).First();
+
+                    if (rComm != null)
                     {
-                        TypeMessageAction = (eTypeMessage)PMDSBusinessComm.getEnumTypeMessage(rProt.sKey.Trim());
-                        if (TypeMessageAction == eTypeMessage.ReloadRAMAll)
+                        var rCommClients = (from cc in db.CommAsyncClients
+                                   where cc.IDCommAsync == rComm.ID && cc.IDClient == PMDSBusinessComm.uniqueIDMachine.Trim() && cc.Done
+                                            select new
+                                   { cc.ID }).FirstOrDefault();
+                        if (rCommClients == null)
                         {
-                            rProt.progress += PMDSBusinessComm.uniqueIDMachine.Trim();
+                            CommAsyncClients newCommClients = new CommAsyncClients();
+                            newCommClients.ID = System.Guid.NewGuid();
+                            newCommClients.IDCommAsync = rComm.ID;
+                            newCommClients.IDClient = PMDSBusinessComm.uniqueIDMachine.Trim();
+                            newCommClients.Done = true;
+                            newCommClients.DoneAt = DateTime.Now;
+                            db.CommAsyncClients.Add(newCommClients);
+                            db.SaveChanges();
 
-                            string strSQlUpdate = "Update qs2.Protocol set progress = '" + rProt.progress + "' where IDGuid='" + rProt.IDGuid.ToString() + "'";
-                            System.Data.SqlClient.SqlCommand cmdUpdate = new System.Data.SqlClient.SqlCommand();
-                            cmdUpdate.CommandText = strSQlUpdate;
-                            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                                RBU.DataBase.CONNECTION.Open();
-                            cmdUpdate.Connection = RBU.DataBase.CONNECTIONSqlClient;
-                            cmdUpdate.CommandTimeout = 0;
+                            if (TypeMessage == eTypeMessage.ReloadRAMAll)
+                            {
+                                PMDSBusinessRAM bRAm = new PMDSBusinessRAM();
+                                bRAm.loadDataStart(false, true, true, false);
+                            }
+                            else
+                            {
+                                throw new Exception("PMDSBusinessComm.checkCommAsyncForClient: TypeMessage - no action defined for TypeMessage '" + TypeMessage.ToString() + "'!");
+                            }
 
-                            cmdUpdate.ExecuteNonQuery();
+                            return true;
                         }
-                    }
-
-                    if (TypeMessageAction == eTypeMessage.ReloadRAMAll)
-                    {
-                        PMDSBusinessRAM bRAm = new PMDSBusinessRAM();
-                        bRAm.loadDataStart(false, true, true, false);
+                        else
+                            return false;
                     }
                     else
-                    {
-                        throw new Exception("PMDSBusinessComm.checkMessageForClient: TypeMessageAction - no action defined for TypeMessageAction '" + TypeMessageAction.ToString() + "'!");
-                    }
-
-                    return true;
-                }
-                else
-                {
-                    return false;
+                        return false;
                 }
 
             }
             catch (Exception ex)
             {
-                throw new Exception("PMDSBusinessComm.checkMessageForClient: " + ex.ToString());
+                throw new Exception("PMDSBusinessComm.checkCommAsyncForClient: " + ex.ToString());
             }
         }
         public static bool checkMessageForClient2()
         {
             try
             {
-                DateTime dSince = DateTime.Now.AddDays(-14).Date;
-
-                //dsManage dsManage1 = new dsManage();
-                //sqlManange sqlManange1 = new sqlManange();
-                //sqlManange1.initControl();
-                //sqlManange1.getMessage2(dsManage1, System.Guid.NewGuid(), sqlManange.eTypeMessages.MessagesUnreaded, ClientsMessage.ToString(), TypeMessage.ToString());
-
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     var tMUnreaded2 = from m in db.Messages
@@ -433,25 +354,9 @@ namespace PMDS.DB
 
                     if (tMU3.Count() > 0)
                     {
-                        eTypeMessage TypeMessageAction = eTypeMessage.none;
-                        foreach (var rProt in tMU3)
-                        {
-                            //TypeMessageAction = (eTypeMessage)PMDSBusinessComm.getEnumTypeMessage(rProt.sKey.Trim());
-                            //if (TypeMessageAction == eTypeMessage.ReloadRAMAll)
-                            //{
-                            //    rProt.Progress += PMDSBusinessComm.uniqueIDMachine.Trim();
-
-                            //    //string strSQlUpdate = "Update dbo.Messages set Progress = '" + rProt.Progress + "' where ID='" + rProt.ID.ToString() + "'";
-                            //    //System.Data.SqlClient.SqlCommand cmdUpdate = new System.Data.SqlClient.SqlCommand();
-                            //    //cmdUpdate.CommandText = strSQlUpdate;
-                            //    //if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                            //    //    RBU.DataBase.CONNECTION.Open();
-                            //    //cmdUpdate.Connection = RBU.DataBase.CONNECTIONSqlClient;
-                            //    //cmdUpdate.CommandTimeout = 0;
-
-                            //    //cmdUpdate.ExecuteNonQuery();
-                            //}
-                        }
+                        //foreach (var rProt in tMU3)
+                        //{
+                        //}
 
                         cParDelegSendMain ParDelegSendMain = new cParDelegSendMain();
                         ParDelegSendMain.foundUnreadedMessages = tMU3.Count();
@@ -472,27 +377,6 @@ namespace PMDS.DB
             catch (Exception ex)
             {
                 throw new Exception("PMDSBusinessComm.checkMessageForClient2: " + ex.ToString());
-            }
-        }
-
-        public static int getEnumTypeMessage(string TypeToSearch)
-        {
-            try
-            {
-                foreach (int val in Enum.GetValues(typeof(eTypeMessage)))
-                {
-                    string sResTyp = Enum.GetName(typeof(eTypeMessage), val);
-                    if (sResTyp.Trim().ToLower().Equals((TypeToSearch).Trim().ToLower()))
-                    {
-                        return val;
-                    }
-                }
-
-                throw new Exception("PMDSBusinessComm.getEnumTypeMessage: TypeToSearch '" + TypeToSearch.ToString() + "' not found in Enum!");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("PMDSBusinessComm.getEnumTypeMessage: " + ex.ToString());
             }
         }
 
