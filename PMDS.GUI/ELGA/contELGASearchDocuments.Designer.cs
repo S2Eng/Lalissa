@@ -81,6 +81,7 @@
             this.dsManage1 = new PMDS.Global.db.ERSystem.dsManage();
             this.sqlManange1 = new PMDS.Global.db.ERSystem.sqlManange(this.components);
             this.btnOpenCDADocu = new Infragistics.Win.Misc.UltraButton();
+            this.chkStorniert = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             ((System.ComponentModel.ISupportInitialize)(this.grpSearch)).BeginInit();
             this.grpSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udteCreatedTo)).BeginInit();
@@ -89,6 +90,7 @@
             this.contextMenuStripGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridFound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStorniert)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAbort
@@ -127,6 +129,7 @@
             // 
             // grpSearch
             // 
+            this.grpSearch.Controls.Add(this.chkStorniert);
             this.grpSearch.Controls.Add(this.udteCreatedTo);
             this.grpSearch.Controls.Add(this.lblCreatedTo);
             this.grpSearch.Controls.Add(this.udteCreatedFrom);
@@ -134,7 +137,7 @@
             this.grpSearch.Controls.Add(this.lblCreatedFom);
             this.grpSearch.Location = new System.Drawing.Point(7, 5);
             this.grpSearch.Name = "grpSearch";
-            this.grpSearch.Size = new System.Drawing.Size(444, 60);
+            this.grpSearch.Size = new System.Drawing.Size(495, 60);
             this.grpSearch.TabIndex = 127;
             this.grpSearch.Text = "Suche";
             // 
@@ -164,7 +167,8 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(354, 16);
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.Location = new System.Drawing.Point(406, 17);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(77, 36);
             this.btnSearch.TabIndex = 10;
@@ -376,6 +380,14 @@
             this.btnOpenCDADocu.Text = "CDA-Dokument öffnen";
             this.btnOpenCDADocu.Click += new System.EventHandler(this.btnOpenCDADocu_Click);
             // 
+            // chkStorniert
+            // 
+            this.chkStorniert.Location = new System.Drawing.Point(321, 23);
+            this.chkStorniert.Name = "chkStorniert";
+            this.chkStorniert.Size = new System.Drawing.Size(70, 21);
+            this.chkStorniert.TabIndex = 132;
+            this.chkStorniert.Text = "Storniert";
+            // 
             // contELGASearchDocuments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,6 +410,7 @@
             this.contextMenuStripGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridFound)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStorniert)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,5 +433,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripGrid;
         private System.Windows.Forms.ToolStripMenuItem cDADokumentÖffnenToolStripMenuItem;
         private Infragistics.Win.Misc.UltraButton btnOpenCDADocu;
+        private Infragistics.Win.UltraWinEditors.UltraCheckEditor chkStorniert;
     }
 }

@@ -386,7 +386,8 @@ namespace PMDS.GUI
                                          de.ELGAStorniertUser,
                                          de.ELGAÜbertragen,
                                          de.IsELGADocu,
-                                         de.ELGADocuType
+                                         de.ELGADocuType,
+                                         de.ELGACreatedInPMDS
                                      }).FirstOrDefault();
 
                     var rAufenthalt = (from a in db.Aufenthalt
@@ -401,7 +402,7 @@ namespace PMDS.GUI
 
                     this.IsELGADocu = true;
                     this.btnOpenBefund.Visible = true;
-                    this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert;
+                    this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert && rDocuEintrag.ELGACreatedInPMDS;
 
                     if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
                         (rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht.ToString().Trim().ToLower()) || 

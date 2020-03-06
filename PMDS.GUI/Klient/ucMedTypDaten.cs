@@ -137,18 +137,52 @@ namespace PMDS.GUI
                             Vorname = bg?.Vorname ?? "",
                             Benutzer1 = bg?.Benutzer1 ?? ""
                         };
-
-            foreach (dsMedizinischeDaten.MedizinischeDatenRow rMedDaten in _dsMedizinischeDaten.MedizinischeDaten)
+            using (PMDS.db.Entities.ERModellPMDSEntities db2 = PMDSBusiness.getDBContext())
             {
-                rMedDaten[this.colBenutzerGeändert] = "";
-
-                if (!rMedDaten.IsIDBenutzergeaendertNull())
+                foreach (dsMedizinischeDaten.MedizinischeDatenRow rMedDaten in _dsMedizinischeDaten.MedizinischeDaten)
                 {
-                    var rUser = (from ben in md_ex0
-                                 where ben.ID == rMedDaten.ID
-                                 select new { ben.Nachname, ben.Vorname, ben.Benutzer1 }).First();
+                    rMedDaten[this.colBenutzerGeändert] = "";
 
-                    rMedDaten[this.colBenutzerGeändert] = rUser.Nachname.Trim() + " " + rUser.Vorname.Trim() + " (" + rUser.Benutzer1 + ")";
+                    if (!rMedDaten.IsIDBenutzergeaendertNull())
+                    {
+                        var rUser = (from ben in md_ex0
+                                     where ben.ID == rMedDaten.ID
+                                     select new { ben.Nachname, ben.Vorname, ben.Benutzer1 }).First();
+
+                        rMedDaten[this.colBenutzerGeändert] = rUser.Nachname.Trim() + " " + rUser.Vorname.Trim() + " (" + rUser.Benutzer1 + ")";
+                    }
+
+                    if (_medTyp == MedizinischerTyp.Befunde)
+                    {
+                        var rMedDatEf = (from d in db2.MedizinischeDaten
+                                     where d.ID == rMedDaten.ID
+                                     select new { d.IDDocu}).First();
+
+                        if (rMedDatEf.IDDocu != null)
+                        {
+                            var rDocu = (from d in db2.tblDokumenteintrag
+                                         where d.ID == rMedDatEf.IDDocu
+                                         select new { d.ID, d.ErstelltVon, d.ELGACreatedInPMDS, d.ELGAÜbertragen, d.ELGAÜbertragenAt, d.ELGAStorniert, d.ELGAStorniertDatum, d.ELGAStorniertUser}).First();
+
+                            if (rDocu.ELGACreatedInPMDS)
+                            {
+                                if (rDocu.ELGAÜbertragen == 1)
+                                {
+                                    rMedDaten.Handling = QS2.Desktop.ControlManagment.ControlManagment.getRes("Gesendet am") + ": " + rDocu.ELGAÜbertragenAt.Value.ToString("dd.MM.yyyy HH:mm");
+                                }
+                                else if (rDocu.ELGAÜbertragen == 0)
+                                {
+                                    rMedDaten.Handling = QS2.Desktop.ControlManagment.ControlManagment.getRes("Noch nicht gesendet");
+                                }
+                                if (rDocu.ELGAStorniert)
+                                {
+                                    rMedDaten.Handling = QS2.Desktop.ControlManagment.ControlManagment.getRes("Storniert am") + ": " + rDocu.ELGAStorniertDatum.Value.ToString("dd.MM.yyyy HH:mm");
+                                }
+
+                                rMedDaten.Bemerkung += " (" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Ersteller") + ": " + rDocu.ErstelltVon.Trim() + ")";
+                            }
+                        }
+                    }
                 }
             }
 

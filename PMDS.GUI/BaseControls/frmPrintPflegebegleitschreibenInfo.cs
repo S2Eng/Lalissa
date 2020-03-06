@@ -1654,49 +1654,36 @@ namespace PMDS.DynReportsForms
 		}
 		#endregion
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dialog schließen überwachen
-		/// </summary>
-		//----------------------------------------------------------------------------
+
+
+
 		private void frm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			e.Cancel = !_canClose;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Benötigte Felder setzen
-		/// </summary>
-		//----------------------------------------------------------------------------
 		protected void RequiredFields()
 		{
             GuiUtil.ValidateRequired(cbETo);
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Felder validieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private bool ValidateFields()
 		{
             bool bError = false;
-           /*ool bInfo = true;
+            //bool bInfo = true;
+            //GuiUtil.ValidateField(cbETo, (cbETo.Value != null),
+            //ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
-            // cbETo
-            GuiUtil.ValidateField(cbETo, (cbETo.Value != null),
-                ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);*/
+            if (this.cbETo.Value == null)
+            {
+                this.errorProvider1.SetError(this.cbETo, "Error");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("An Einrichtung: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                return false;
+            }
 
-            return !bError;
-            			
+            return true;		
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dialog akzeptieren
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnOK_Click(object sender, System.EventArgs e)
 		{
 			if (!ValidateFields())
@@ -1706,31 +1693,16 @@ namespace PMDS.DynReportsForms
             _canClose = true;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Dialog abbrechen
-		/// </summary>
-		//----------------------------------------------------------------------------
 		private void btnCancel_Click(object sender, System.EventArgs e)
 		{
 			_canClose = true;
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Einrichtung
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public Guid Einrichtung
 		{
 			get	{	return (Guid)cbETo.Value;	}
 		}
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Bemerkung
-		/// </summary>
-		//----------------------------------------------------------------------------
 		public string Bemerkung
 		{
 			get	{	return txtBemerkung.Text;	}
@@ -1750,9 +1722,6 @@ namespace PMDS.DynReportsForms
         {
             if (v62.Checked == true) vDMTyp.Visible = true;
             else vDMTyp.Visible = false;
-
-
-
        }
 
         private void vHilfsm_ValueChanged(object sender, EventArgs e)
@@ -1896,7 +1865,7 @@ namespace PMDS.DynReportsForms
 
         private void FrmPrintPflegebegleitschreibenInfo_Load(object sender, EventArgs e)
         {
-            this.contextMenuStrip1 = this.contextMenuStrip1;
+            this.btnSaveToArchive.ContextMenuStrip = this.contextMenuStrip1;
             this.cDAPflegesituationsberichtToolStripMenuItem.Visible = ENV.adminSecure;
             this.cDAEntlassungsbriefToolStripMenuItem.Visible = ENV.adminSecure;
         }

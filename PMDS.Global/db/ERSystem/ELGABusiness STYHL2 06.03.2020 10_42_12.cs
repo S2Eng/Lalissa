@@ -820,8 +820,7 @@ namespace PMDS.Global.db.ERSystem
 
                             PMDS.db.Entities.tblDokumenteintrag rDocuEintragUpdate = db.tblDokumenteintrag.Where(o => o.ID == IDDocumenteneintrag).First();
                             rDocuEintragUpdate.ELGAÜbertragen = 1;
-                            rDocuEintragUpdate.ELGAÜbertragenAt = dNow;
-                            rDocuEintragUpdate.ELGACreatedInPMDS = true;
+                            rDocuEintragUpdate.at
                             rDocuEintragUpdate.ELGAUniqueID = parOut.DocuUniqueIdk__BackingField.Trim();
                             db.SaveChanges();
                         }
@@ -871,13 +870,6 @@ namespace PMDS.Global.db.ERSystem
                         bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, rELGADocu.TypeFile, ref IDOrdnerArchiv, "", db, ref dNow, ref WCFServiceClient1, rELGADocu.IDAufenthalt, 
                                                                 rELGADocu.IDPatient, null, rELGADocu.UniqueID, rELGADocu.ELGAPatientLocalID.Trim(), rELGADocu.Dokument, rELGADocu.Stylesheet,
                                                                 ref IDDocumenteneintrag,true , "", true, -1);
-
-                        if (rELGADocu.DocStatus.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
-                        {
-                            var rDocu = db.tblDokumenteintrag.Where(pe => pe.ID == IDDocumenteneintrag).First();
-                            rDocu.ELGAStorniert = true;
-                            db.SaveChanges();
-                        }
                     }
                 }
 
@@ -1329,8 +1321,6 @@ namespace PMDS.Global.db.ERSystem
                     }
 
                     rDocuEintragUpdate.ELGAÜbertragen = 1;
-                    rDocuEintragUpdate.ELGAÜbertragenAt = dNow;
-                    rDocuEintragUpdate.ELGACreatedInPMDS = true;
                     db.SaveChanges();
 
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Das Dokument wurde erfolgreich nach ELGA übertragen!", "", MessageBoxButtons.OK);

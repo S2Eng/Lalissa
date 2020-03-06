@@ -158,7 +158,7 @@ namespace PMDS.DB
                 //{
                 //    throw new Exception("PMDSBusinessComm.setUniqueIDMachine: macAddr is null or '' not allowed!");
                 //}
-                //os, 2018-06-13: Natürlich ist macAddr == "" erlaubt (wenn es keine Netzwerkverbindung gibt, ist das ein korrekter Zustand)
+                
                 if (macAddr == null || macAddr.ToString() == "")
                     macAddr = "not detected";
 
