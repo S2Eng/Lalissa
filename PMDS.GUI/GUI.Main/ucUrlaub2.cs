@@ -312,7 +312,7 @@ namespace PMDS.GUI.GUI.Main
                 }
 
                 this.db2.SaveChanges();
-                PMDS.DB.PMDSBusinessComm.newMessageToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, this.db2);
+                PMDS.DB.PMDSBusinessComm.newCommAsyncToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, this.db2);
 
                 return true;
 

@@ -904,7 +904,7 @@ namespace PMDS.GUI
                             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                             {
                                 this.RefreshGUI(this._allKliniken, this._onlyKlinikenUsr, false, this._adminModusAlleKliniken);
-                                PMDS.DB.PMDSBusinessComm.newMessageToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, db);
+                                PMDS.DB.PMDSBusinessComm.newCommAsyncToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, db);
                                 ucHeader.bKlinikChanged = true;
                             }
                         }

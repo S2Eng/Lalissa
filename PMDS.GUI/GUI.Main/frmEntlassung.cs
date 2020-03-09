@@ -415,7 +415,7 @@ namespace PMDS.GUI
             sqlProtocoll.daProtocol.Update(dsProtocol1.Protocol);
             using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
             {
-                PMDS.DB.PMDSBusinessComm.newMessageToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, db);
+                PMDS.DB.PMDSBusinessComm.newCommAsyncToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll, db);
             }
 
             _canClose = true;

@@ -39,6 +39,13 @@ namespace PMDS.GUI.Messenger
             NewMessage = 3
         }
 
+        public class eTgTree
+        {          
+            public dsAsyncCommData dsAsyncCommData1 = new dsAsyncCommData();
+            public dsAsyncCommData.DataGenericRow rDataGeneric = null;
+            public dsAsyncCommData.ToUsersRow[] tToUsers = null;
+        }
+
         public string newLine = "\r\n";
         public string newLineOrig = "----------------- {0} -------------------------------";
 
@@ -48,8 +55,6 @@ namespace PMDS.GUI.Messenger
         {
             InitializeComponent();
         }
-
-
 
 
 
@@ -160,6 +165,18 @@ namespace PMDS.GUI.Messenger
             }
         }
 
+        //[Serializable()]
+        //public class MessagesDTO
+        //{
+        //    public Guid Id { get; set; }
+        //    public Guid? Idpatient { get; set; }
+        //    public Guid? Idadresse { get; set; }
+        //    public Guid? Idkontakt { get; set; }
+        //    public string Titel { get; set; }
+        //    public string Nachname { get; set; }
+        //    public string Vorname { get; set; }
+        //}
+
         public void loadTreeMessages()
         {
             try
@@ -180,8 +197,11 @@ namespace PMDS.GUI.Messenger
                     }
 
                     string ClientsMessage = PMDSBusinessComm.eClientsMessage.MessageToAllClients.ToString();
-                    string TypeMessage = "Message";
+                    string TypeMessage = PMDSBusinessComm.eTypeMessage.Message.ToString();
+                    //IQueryable<PMDS.db.Entities.Messages> tProtMessages = null;
+                    //string sMarkerReadedForUser = "readed_" + ENV.USERID.ToString() + ";";
                     MessagesDto lM;
+
                     if (UIAusgang)
                     {
                         if (this.udteFrom.Value != null)
@@ -191,6 +211,39 @@ namespace PMDS.GUI.Messenger
 
                         WCFServiceClient wcf = new WCFServiceClient();
                         lM = wcf.messagesSent(ClientsMessage, TypeMessage, ENV.USERID, dFromTmp.Date, dToTmp.Date);
+
+                        //tProtMessages = db.Messages.Where(o => o.ClientsMessage == ClientsMessage && o.TypeMessage == TypeMessage && o.IDGuidObject == ENV.USERID && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
+                        
+                        //var tM = (from m in db.Messages
+                        //          join mu in db.MessagesToUsers on m.ID equals mu.IDMessages
+                        //          where m.ClientsMessage == ClientsMessage && m.TypeMessage == TypeMessage && m.IDGuidObject == ENV.USERID &&
+                        //                   m.CreatedDay >= dFromTmp.Date && m.CreatedDay <= dToTmp.Date
+                        //          orderby m.Created ascending
+                        //          select new
+                        //          {
+                        //              m.ID,
+                        //              m.IDGuidObject,
+                        //              m.MessagesToUsers,
+                        //              m.Progress,
+                        //              m.sKey,
+                        //              m.Text,
+                        //              m.Title,
+                        //              m.UserFrom,
+                        //              m.UserFromID,
+                        //              m.ClientsMessage,
+                        //              m.Db,
+                        //              m.CreatedDay,
+                        //              m.Created,
+                        //              m.Classification
+                        //          });
+
+                        //public List<SachwalterS1DTO> SachwalterS1(Guid idpatient, DateTime d)
+                        //{
+                        //    return (from o in this._repoWrapper.dbcontext.Patient
+                        //            join s in this._repoWrapper.dbcontext.Sachwalter on o.Id equals s.Idpatient
+                        //            where o.Id == idpatient && s.Von <= d.Date && (s.Bis >= d.Date || s.Bis == null) && s.SachwalterJn == true
+                        //            select new SachwalterS1DTO { Id = s.Id, Idpatient = s.Idpatient, Nachname = s.Nachname, Vorname = s.Vorname, Titel = s.Titel, Idadresse = s.Idadresse, Idkontakt = s.Idkontakt }).ToList();
+                        //}
 
                         this.btnDelete.Visible = true;
                     }
@@ -202,6 +255,8 @@ namespace PMDS.GUI.Messenger
                         {                   
                             this.udteFrom.Value = null;
                             dFromTmp = new DateTime(1900, 1, 1, 0, 0, 0);
+                            //tProtMessages = db.Messages.Where(o => o.TypeMessage == ClientsMessage && o.TypeMessage == TypeMessage && o.Classification.Contains(ENV.USERID.ToString()) && 
+                            //                                    !o.Progress.Contains(sMarkerReadedForUser) && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
 
                             WCFServiceClient wcf = new WCFServiceClient();
                             lM = wcf.messagesUnreadedUsr(ClientsMessage, TypeMessage, ENV.USERID, dFromTmp.Date, dToTmp.Date);
@@ -217,6 +272,8 @@ namespace PMDS.GUI.Messenger
                                 this.udteFrom.DateTime = DateTime.Now.AddMonths(-1);
                                 dFromTmp = this.udteFrom.DateTime.Date;
                             }
+                            //tProtMessages = db.Messages.Where(o => o.TypeMessage == ClientsMessage && o.TypeMessage == TypeMessage && o.Classification.Contains(ENV.USERID.ToString()) && 
+                            //                                    o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
 
                             WCFServiceClient wcf = new WCFServiceClient();
                             lM = wcf.messagesAllUsr(ClientsMessage, TypeMessage, ENV.USERID, dFromTmp.Date, dToTmp.Date);
@@ -231,70 +288,50 @@ namespace PMDS.GUI.Messenger
                     {
                         foreach (var rM in lM.lMessages)
                         {
-                            bool bOK = false;
-                            if (this.optReaded.Value.ToString().Equals("G"))
+                            PMDS.Global.db.ERSystem.dsKlientenliste.tMessagesRow  rNewtMessage = this.sqlManange1.getNewttMessages(ref this.dsKlientenliste1);
+
+                            var rUserFrom = (from b in db.Benutzer
+                                             where b.ID == rM.IdguidObject
+                                             select new
+                                             {
+                                                 IDBenutzer = b.ID,
+                                                 Benutzer = b.Benutzer1,
+                                                 Nachname = b.Nachname,
+                                                 Vorname = b.Vorname
+                                             }).First();
+
+                            rNewtMessage.IDProtocoll = rM.Id;
+                            rNewtMessage.Absender = rUserFrom.Nachname.Trim() + " " + rUserFrom.Vorname.Trim() + " (" + rUserFrom.Benutzer.Trim() + ")";
+                            rNewtMessage.UserIDFrom = rUserFrom.IDBenutzer;
+                            rNewtMessage.UserFrom = rNewtMessage.Absender.Trim();
+                            rNewtMessage.Title = rM.Title.Trim();
+                            rNewtMessage.MessageTxt = rM.Text.Trim();
+
+                            //byte[] byt = null;
+                            //this.textControl1.Text = "";
+                            //this.doEditor.showText(rProtMessage.Protocol1.Trim(), TXTextControl.StreamType.PlainText, false, TXTextControl.ViewMode.Normal, this.textControl1, ref byt, ref byt);
+                            //string sHTMLMessage = this.doEditor.getText(TXTextControl.StringStreamType.HTMLFormat, this.textControl1);
+                            //rNewtMessage.MessageTxt = sHTMLMessage.Trim();
+
+                            //string sNewLine = "\n";
+                            //rNewtMessage.MessageTxt = "aaaaa" + sNewLine + "bbbbb" + sNewLine + "ccccc";
+
+                            rNewtMessage.Created = rM.Created;
+
+                            string sTitleTmp = "";
+                            if (rNewtMessage.Title.Trim() != "")
                             {
-                                var lMuCheck = (from mu in lM.lMessagesToUsers
-                                                where mu.Idmessages == rM.Id && mu.Iduser == ENV.USERID && mu.Readed
-                                                select new
-                                                {
-                                                    ID = mu.Id
-                                                });
-                                if (lMuCheck.Count() > 0)
-                                    bOK = true;
+                                sTitleTmp = rNewtMessage.Title.Trim();
                             }
                             else
                             {
-                                bOK = true;
-                            }
-
-                            if (bOK)
-                            {
-                                PMDS.Global.db.ERSystem.dsKlientenliste.tMessagesRow  rNewtMessage = this.sqlManange1.getNewttMessages(ref this.dsKlientenliste1);
-
-                                var rUserFrom = (from b in db.Benutzer
-                                                 where b.ID == rM.IdguidObject
-                                                 select new
-                                                 {
-                                                     IDBenutzer = b.ID,
-                                                     Benutzer = b.Benutzer1,
-                                                     Nachname = b.Nachname,
-                                                     Vorname = b.Vorname
-                                                 }).First();
-
-                                rNewtMessage.IDProtocoll = rM.Id;
-                                rNewtMessage.Absender = rUserFrom.Nachname.Trim() + " " + rUserFrom.Vorname.Trim() + " (" + rUserFrom.Benutzer.Trim() + ")";
-                                rNewtMessage.UserIDFrom = rUserFrom.IDBenutzer;
-                                rNewtMessage.UserFrom = rNewtMessage.Absender.Trim();
-                                rNewtMessage.Title = rM.Title.Trim();
-                                rNewtMessage.MessageTxt = rM.Text.Trim();
-
-                                //byte[] byt = null;
-                                //this.textControl1.Text = "";
-                                //this.doEditor.showText(rProtMessage.Protocol1.Trim(), TXTextControl.StreamType.PlainText, false, TXTextControl.ViewMode.Normal, this.textControl1, ref byt, ref byt);
-                                //string sHTMLMessage = this.doEditor.getText(TXTextControl.StringStreamType.HTMLFormat, this.textControl1);
-                                //rNewtMessage.MessageTxt = sHTMLMessage.Trim();
-
-                                //string sNewLine = "\n";
-                                //rNewtMessage.MessageTxt = "aaaaa" + sNewLine + "bbbbb" + sNewLine + "ccccc";
-
-                                rNewtMessage.Created = rM.Created;
-
-                                string sTitleTmp = "";
-                                if (rNewtMessage.Title.Trim() != "")
+                                if (rNewtMessage.MessageTxt.Trim().Length >= 120)
                                 {
-                                    sTitleTmp = rNewtMessage.Title.Trim();
+                                    sTitleTmp = rNewtMessage.MessageTxt.Trim().Substring(0, 120);
                                 }
                                 else
                                 {
-                                    if (rNewtMessage.MessageTxt.Trim().Length >= 120)
-                                    {
-                                        sTitleTmp = rNewtMessage.MessageTxt.Trim().Substring(0, 120);
-                                    }
-                                    else
-                                    {
-                                        sTitleTmp = rNewtMessage.MessageTxt.Trim();
-                                    }
+                                    sTitleTmp = rNewtMessage.MessageTxt.Trim();
                                 }
                             }
                         }
@@ -313,30 +350,62 @@ namespace PMDS.GUI.Messenger
                                     ID = mu.Id, mu.Idmessages, mu.Iduser, mu.Readed, mu.ReadedAt
                                 });
 
-                        if (!UIAusgang)
+                        if (lMu.Count() > 0)
                         {
-                            if (lMu.Count() > 0 && !lMu.First().Readed)
+                            if (!UIAusgang)
                             {
-                                rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
-                                rtMessageAct.Readed = false;
+                                if (!lMu.First().Readed)
+                                {
+                                    rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                                    rtMessageAct.Readed = false;
+                                }
+                                else
+                                {
+                                    rtMessageAct.Readed = true;
+                                }
                             }
                             else
                             {
-                                rtMessageAct.Readed = true;
+
                             }
                         }
-                        else
-                        {
-                            if (lMu.Count() > 0 && !lMu.First().Readed)
-                            {
-                                rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
-                                rtMessageAct.Readed = false;
-                            }
-                            else
-                            {
-                                rtMessageAct.Readed = true;
-                            }
-                        }
+
+                        //var rProtocol = (from p in db.Messages
+                        //                 where p.ID == rtMessageAct.IDProtocoll
+                        //                 select new
+                        //                 {
+                        //                     IDProtocol = p.ID,
+                        //                     progress = p.Progress,
+                        //                     db = p.Db
+                        //                 }).First();
+
+                        //if (!UIAusgang)
+                        //{
+                        //    //string sMarkReadedForUser = this.getMarkerForReadedUserLoggedIn();
+                        //    if (!rMu.Readed)
+                        //    {
+                        //        rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                        //        rtMessageAct.Readed = false;
+                        //    }
+                        //    else
+                        //    {
+                        //        rtMessageAct.Readed = true;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    //eTgTree tgTree2 = this.getXMLDatabaseForMessage(rProtocol.IDProtocol, db);
+                        //    //dsAsyncCommData.ToUsersRow[] tToUsersNotReaded = (dsAsyncCommData.ToUsersRow[])tgTree2.dsAsyncCommData1.ToUsers.Select("Readed=0", "");
+                        //    if (!rMu.Readed)
+                        //    {
+                        //        rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                        //        rtMessageAct.Readed = false;
+                        //    }
+                        //    else
+                        //    {
+                        //        rtMessageAct.Readed = true;
+                        //    }
+                        //}
                     }
 
                     this.gridMessages.Refresh();
@@ -361,7 +430,228 @@ namespace PMDS.GUI.Messenger
                 throw new Exception("contMessenger.loadTreeMessages: " + ex.ToString());
             }
         }
-    
+        public void loadTreeMessagesOrig()
+        {
+            try
+            {
+                this.setUI(eTypeUI.ShowMessage);
+                this.clearErrorProvider();
+                this.clearUITree(true);
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    bool UIAusgang = this.optPostEinAusgang.Value.ToString().Equals("A");
+
+                    DateTime dFromTmp = new DateTime(1900, 1, 1, 0, 0, 0);
+                    DateTime dToTmp = new DateTime(3000, 1, 1, 0, 0, 0);
+                    if (this.udteTo.Value != null)
+                    {
+                        dToTmp = this.udteTo.DateTime.Date;
+                    }
+
+                    string ClientsMessage = PMDSBusinessComm.eClientsMessage.MessageToAllClients.ToString();
+                    string TypeMessage = PMDSBusinessComm.eTypeMessage.Message.ToString();
+                    IQueryable<PMDS.db.Entities.Messages> tProtMessages = null;
+                    string sMarkerReadedForUser = "readed_" + ENV.USERID.ToString() + ";";
+
+                    if (UIAusgang)
+                    {
+                        if (this.udteFrom.Value != null)
+                        {
+                            dFromTmp = this.udteFrom.DateTime.Date;
+                        }
+                        tProtMessages = db.Messages.Where(o => o.ClientsMessage == ClientsMessage && o.TypeMessage == TypeMessage && o.IDGuidObject == ENV.USERID && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
+
+                        WCFServiceClient wcf = new WCFServiceClient();
+                        MessagesDto lM = wcf.messagesSent(ClientsMessage, TypeMessage, ENV.USERID, dFromTmp.Date, dToTmp.Date);
+
+
+                        //var tM = (from m in db.Messages
+                        //          join mu in db.MessagesToUsers on m.ID equals mu.IDMessages
+                        //          where m.ClientsMessage == ClientsMessage && m.TypeMessage == TypeMessage && m.IDGuidObject == ENV.USERID &&
+                        //                   m.CreatedDay >= dFromTmp.Date && m.CreatedDay <= dToTmp.Date
+                        //          orderby m.Created ascending
+                        //          select new
+                        //          {
+                        //              m.ID,
+                        //              m.IDGuidObject,
+                        //              m.MessagesToUsers,
+                        //              m.Progress,
+                        //              m.sKey,
+                        //              m.Text,
+                        //              m.Title,
+                        //              m.UserFrom,
+                        //              m.UserFromID,
+                        //              m.ClientsMessage,
+                        //              m.Db,
+                        //              m.CreatedDay,
+                        //              m.Created,
+                        //              m.Classification
+                        //          });
+
+                        //public List<SachwalterS1DTO> SachwalterS1(Guid idpatient, DateTime d)
+                        //{
+                        //    return (from o in this._repoWrapper.dbcontext.Patient
+                        //            join s in this._repoWrapper.dbcontext.Sachwalter on o.Id equals s.Idpatient
+                        //            where o.Id == idpatient && s.Von <= d.Date && (s.Bis >= d.Date || s.Bis == null) && s.SachwalterJn == true
+                        //            select new SachwalterS1DTO { Id = s.Id, Idpatient = s.Idpatient, Nachname = s.Nachname, Vorname = s.Vorname, Titel = s.Titel, Idadresse = s.Idadresse, Idkontakt = s.Idkontakt }).ToList();
+                        //}
+
+                        this.btnDelete.Visible = true;
+                    }
+                    else
+                    {
+                        this.btnDelete.Visible = false;
+
+                        if (this.optReaded.Value.ToString().Equals("U"))
+                        {
+                            this.udteFrom.Value = null;
+                            dFromTmp = new DateTime(1900, 1, 1, 0, 0, 0);
+                            tProtMessages = db.Messages.Where(o => o.TypeMessage == ClientsMessage && o.TypeMessage == TypeMessage && o.Classification.Contains(ENV.USERID.ToString()) &&
+                                                                !o.Progress.Contains(sMarkerReadedForUser) && o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
+                        }
+                        else if (this.optReaded.Value.ToString().Equals("G") || this.optReaded.Value.ToString().Equals("A"))
+                        {
+                            if (this.udteFrom.Value != null)
+                            {
+                                dFromTmp = this.udteFrom.DateTime.Date;
+                            }
+                            else
+                            {
+                                this.udteFrom.DateTime = DateTime.Now.AddMonths(-1);
+                                dFromTmp = this.udteFrom.DateTime.Date;
+                            }
+                            tProtMessages = db.Messages.Where(o => o.TypeMessage == ClientsMessage && o.TypeMessage == TypeMessage && o.Classification.Contains(ENV.USERID.ToString()) &&
+                                                                o.CreatedDay >= dFromTmp.Date && o.CreatedDay <= dToTmp.Date).OrderByDescending(o => o.Created);
+                        }
+                        else
+                        {
+                            throw new Exception("loadTreeMessages: this.optReaded.Value. '" + this.optReaded.Value.ToString().Trim() + "' not allowed!");
+                        }
+                    }
+
+                    if (tProtMessages.Count() >= 1)
+                    {
+                        foreach (PMDS.db.Entities.Messages rProtMessage in tProtMessages)
+                        {
+                            PMDS.Global.db.ERSystem.dsKlientenliste.tMessagesRow rNewtMessage = this.sqlManange1.getNewttMessages(ref this.dsKlientenliste1);
+
+                            var rUserFrom = (from b in db.Benutzer
+                                             where b.ID == rProtMessage.IDGuidObject
+                                             select new
+                                             {
+                                                 IDBenutzer = b.ID,
+                                                 Benutzer = b.Benutzer1,
+                                                 Nachname = b.Nachname,
+                                                 Vorname = b.Vorname
+                                             }).First();
+
+                            rNewtMessage.IDProtocoll = rProtMessage.ID;
+                            rNewtMessage.Absender = rUserFrom.Nachname.Trim() + " " + rUserFrom.Vorname.Trim() + " (" + rUserFrom.Benutzer.Trim() + ")";
+                            rNewtMessage.UserIDFrom = rUserFrom.IDBenutzer;
+                            rNewtMessage.UserFrom = rNewtMessage.Absender.Trim();
+                            rNewtMessage.Title = rProtMessage.Title.Trim();
+                            rNewtMessage.MessageTxt = rProtMessage.Text.Trim();
+
+                            //byte[] byt = null;
+                            //this.textControl1.Text = "";
+                            //this.doEditor.showText(rProtMessage.Protocol1.Trim(), TXTextControl.StreamType.PlainText, false, TXTextControl.ViewMode.Normal, this.textControl1, ref byt, ref byt);
+                            //string sHTMLMessage = this.doEditor.getText(TXTextControl.StringStreamType.HTMLFormat, this.textControl1);
+                            //rNewtMessage.MessageTxt = sHTMLMessage.Trim();
+
+                            //string sNewLine = "\n";
+                            //rNewtMessage.MessageTxt = "aaaaa" + sNewLine + "bbbbb" + sNewLine + "ccccc";
+
+                            rNewtMessage.Created = rProtMessage.Created;
+
+                            string sTitleTmp = "";
+                            if (rNewtMessage.Title.Trim() != "")
+                            {
+                                sTitleTmp = rNewtMessage.Title.Trim();
+                            }
+                            else
+                            {
+                                if (rNewtMessage.MessageTxt.Trim().Length >= 120)
+                                {
+                                    sTitleTmp = rNewtMessage.MessageTxt.Trim().Substring(0, 120);
+                                }
+                                else
+                                {
+                                    sTitleTmp = rNewtMessage.MessageTxt.Trim();
+                                }
+                            }
+                        }
+                    }
+                    this.gridMessages.Refresh();
+
+                    foreach (UltraGridRow rSelGridRow in this.gridMessages.Rows)
+                    {
+                        DataRowView v = (DataRowView)rSelGridRow.ListObject;
+                        dsKlientenliste.tMessagesRow rtMessageAct = (dsKlientenliste.tMessagesRow)v.Row;
+
+                        var rProtocol = (from p in db.Messages
+                                         where p.ID == rtMessageAct.IDProtocoll
+                                         select new
+                                         {
+                                             IDProtocol = p.ID,
+                                             progress = p.Progress,
+                                             db = p.Db
+                                         }).First();
+
+                        if (!UIAusgang)
+                        {
+                            string sMarkReadedForUser = this.getMarkerForReadedUserLoggedIn();
+                            if (!rProtocol.progress.Trim().ToLower().Contains(sMarkReadedForUser.Trim().ToLower()))
+                            {
+                                rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                                rtMessageAct.Readed = false;
+                            }
+                            else
+                            {
+                                rtMessageAct.Readed = true;
+                            }
+                        }
+                        else
+                        {
+                            eTgTree tgTree2 = this.getXMLDatabaseForMessage(rProtocol.IDProtocol, db);
+                            dsAsyncCommData.ToUsersRow[] tToUsersNotReaded = (dsAsyncCommData.ToUsersRow[])tgTree2.dsAsyncCommData1.ToUsers.Select("Readed=0", "");
+                            if (tToUsersNotReaded.Length > 0)
+                            {
+                                rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                                rtMessageAct.Readed = false;
+                            }
+                            else
+                            {
+                                rtMessageAct.Readed = true;
+                            }
+                        }
+
+                    }
+
+                    this.gridMessages.Refresh();
+                    //this.lblMessages.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten") + " (" + this.treeMessages.Nodes.Count.ToString() + ")";
+                }
+
+                if (this.gridMessages.Rows.Count > 0)
+                {
+                    UltraGridRow rFirstGridRow = this.gridMessages.Rows[0];
+                    DataRowView v = (DataRowView)this.gridMessages.Rows[0].ListObject;
+                    dsKlientenliste.tMessagesRow rFirstRow = (dsKlientenliste.tMessagesRow)v.Row;
+
+                    this.loadMessageDetail(rFirstRow, rFirstGridRow, false);
+                    this.gridMessages.ActiveRow = this.gridMessages.Rows[0];
+                }
+
+                this.lblNewMessages.Visible = false;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("contMessenger.loadTreeMessages: " + ex.ToString());
+            }
+        }
+
+
         public void loadMessageDetail(dsKlientenliste.tMessagesRow rSelMessage, UltraGridRow rSelGridRow, bool updateMessageReaded)
         {
             try
@@ -420,6 +710,23 @@ namespace PMDS.GUI.Messenger
                             string sTransTxtInfomessageBottom = QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} von {1} Empfängern haben die Nachricht gelesen") + "";
                             sTransTxtInfomessageBottom = string.Format(sTransTxtInfomessageBottom, tMUReaded.Count().ToString(), tMessagesToUsers.Count.ToString());
                             this.lblInfoMessageBottom.Text = sTransTxtInfomessageBottom.Trim();
+
+                            //lthxy
+                            //dsAsyncCommData.ToUsersRow[] tToUsersNotReaded = (dsAsyncCommData.ToUsersRow[])tgTree2.dsAsyncCommData1.ToUsers.Select("Readed=0", "");
+                            //if (tToUsersNotReaded.Length > 0)
+                            //{
+                            //    rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                            //    rSelMessage.Readed = false;
+                            //}
+                            //else
+                            //{
+                            //    rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.False;
+                            //    rSelMessage.Readed = true;
+                            //}
+                            //dsAsyncCommData.ToUsersRow[] tToUsersReaded = (dsAsyncCommData.ToUsersRow[])tgTree2.dsAsyncCommData1.ToUsers.Select("Readed=1", "");
+                            //string sTransTxtInfomessageBottom = QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} von {1} Empfängern haben die Nachricht gelesen") + "";
+                            //sTransTxtInfomessageBottom = string.Format(sTransTxtInfomessageBottom, tToUsersReaded.Length.ToString(), tgTree2.dsAsyncCommData1.ToUsers.Count.ToString());
+                            //this.lblInfoMessageBottom.Text = sTransTxtInfomessageBottom.Trim();
                         }
                         else if (this.optPostEinAusgang.Value.ToString().Trim().ToLower().Equals(("E").Trim().ToLower()))
                         {
@@ -459,7 +766,44 @@ namespace PMDS.GUI.Messenger
             }
         }
 
-      
+        public eTgTree getXMLDatabaseForMessage(Guid IDProtocol, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                var rProtocol = (from p in db.Messages
+                                 where p.ID == IDProtocol
+                                 select new
+                                 {
+                                     IDProtocol = p.ID,
+                                     progress = p.Progress,
+                                     db = p.Db
+                                 }).First();
+
+                eTgTree tgTree = new eTgTree();
+                tgTree.dsAsyncCommData1 = new dsAsyncCommData();
+
+                System.IO.StringReader xmlStringReader = new System.IO.StringReader(rProtocol.db);
+                System.Xml.XmlTextReader xmlReader = new System.Xml.XmlTextReader(xmlStringReader);
+                tgTree.dsAsyncCommData1.ReadXml(xmlReader);
+                xmlReader.Close();
+
+                dsAsyncCommData.DataGenericRow[] tDataGeneric = (dsAsyncCommData.DataGenericRow[])tgTree.dsAsyncCommData1.DataGeneric.Select("", "");
+                if (tDataGeneric.Length != 1)
+                {
+                    throw new Exception("contMessenger.loadTreeMessages: tDataGeneric.Length != 1 not allowed for IDProtocoll '" + IDProtocol.ToString() + "'!");
+                }
+
+                tgTree.rDataGeneric = tDataGeneric[0];
+                tgTree.tToUsers = (dsAsyncCommData.ToUsersRow[])tgTree.dsAsyncCommData1.ToUsers.Select("", tgTree.dsAsyncCommData1.ToUsers.UserColumn.ColumnName + " asc");
+
+                return tgTree;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("contMessenger.getXMLDatabaseForMessage: " + ex.ToString());
+            }
+        }
+
         public void setUIUserFrom(Guid IDUser, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
@@ -522,6 +866,56 @@ namespace PMDS.GUI.Messenger
                 throw new Exception("contMessenger.setAllUsersMessageToUserPicker: " + ex.ToString());
             }
         }
+
+        public void checkTreeItemReadedxy(Guid IDUser, List<PMDS.db.Entities.MessagesToUsers> tMessagesToUsers, PMDS.db.Entities.Messages rProtMessage, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                //    string sMarkReadedForUser = this.getMarkerForReadedUserLoggedIn();
+                //    if (!rProtMessage.Progress.Trim().ToLower().Contains(sMarkReadedForUser.Trim().ToLower()))
+                //    {
+                //        dsAsyncCommData.ToUsersRow[] tToUsers = (dsAsyncCommData.ToUsersRow[])tgTree.dsAsyncCommData1.ToUsers.Select("IDUser='" + IDUser.ToString() + "'", "");
+                //        if (tToUsers.Length != 1)
+                //        {
+                //            throw new Exception("contMessenger.loadMessageDetail: tToUsers.Length != 1 not allowed for IDUser '" + IDUser.ToString() + "'!");
+                //        }
+                //        dsAsyncCommData.ToUsersRow rToUsers = tToUsers[0];
+                //        rToUsers.Readed = true;
+                //        rToUsers.ReadedAt = DateTime.Now;
+
+                //        string xml = "";
+                //        System.IO.StringWriter xmlStrWriter = new System.IO.StringWriter();
+                //        System.Xml.XmlTextWriter xmlWriter = new System.Xml.XmlTextWriter(xmlStrWriter);
+                //        xmlWriter.WriteStartDocument(true);
+                //        tgTree.dsAsyncCommData1.WriteXml(xmlWriter, XmlWriteMode.WriteSchema);
+                //        xml = xmlStrWriter.ToString();
+                //        xmlWriter.Close();
+                //        rProtMessage.Db = xml;
+
+                //        rProtMessage.Progress += sMarkReadedForUser;
+                //        db.SaveChanges();
+                //    }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("contMessenger.checkTreeItemReaded: " + ex.ToString());
+            }
+        }
+
+        public string getMarkerForReadedUserLoggedIn()
+        {
+            try
+            {
+                return "readed_" + ENV.USERID.ToString() + ";";
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("contMessenger.getMarkerForReadedUserLoggedIn: " + ex.ToString());
+            }
+        }
+
 
         public void clearErrorProvider()
         {
@@ -604,7 +998,7 @@ namespace PMDS.GUI.Messenger
                     //    sToUsers += rUser.Benutzer1.Trim() + ";";
                     //}
 
-                    PMDS.DB.PMDSBusinessComm.newMessageToClients2(PMDSBusinessComm.eClientsMessage.MessageToAllClients, db,
+                    PMDS.DB.PMDSBusinessComm.newMessageToClients(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.Message, db,
                                                                     ENV.USERID, lstToUsers, this.txtTitle.Text.Trim(), this.textControlMessage.Text.Trim());
                 }
 
@@ -711,8 +1105,6 @@ namespace PMDS.GUI.Messenger
                         {
                             this.clearUIDetail();
                             PMDS.db.Entities.Messages rProtMessage = db.Messages.Where(o => o.ID == rSelMessage.IDProtocoll).First();
-                            List<PMDS.db.Entities.MessagesToUsers> tMessagesToUsers = db.MessagesToUsers.Where(o => o.IDMessages == rSelMessage.IDProtocoll).ToList();
-
                             this.setTextAnswerAllSender(rProtMessage, db);
 
                             this.panelButtonsTop.Visible = false;
@@ -720,7 +1112,8 @@ namespace PMDS.GUI.Messenger
                             this.txtTitle.Enabled = true;
                             this.textControlMessage.EditMode = TXTextControl.EditMode.Edit;
 
-                            this.setAllUsersMessageToUserPicker(tMessagesToUsers, rProtMessage, false, db);        //lthxy
+                            eTgTree tgTree2 = this.getXMLDatabaseForMessage(rProtMessage.ID, db);
+                            //this.setAllUsersMessageToUserPicker(tgTree2, rProtMessage, false, db);        //lthxy
                             this.contSelectPatientenBenutzer1._UserCanChangeBenutzerPatients = true;
 
                             //this.textControl1.SelectionViewMode = TXTextControl.SelectionViewMode.Classic;
@@ -780,8 +1173,8 @@ namespace PMDS.GUI.Messenger
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        PMDS.db.Entities.Messages rM = db.Messages.Where(o => o.ID == rSelMessage.IDProtocoll).First();
-                        db.Messages.Remove(rM);
+                        PMDS.db.Entities.Protocol rProtMessage = db.Protocol.Where(o => o.IDGuid == rSelMessage.IDProtocoll).First();
+                        db.Protocol.Remove(rProtMessage);
                         db.SaveChanges();
 
                         this.clearUIDetail();
@@ -807,7 +1200,7 @@ namespace PMDS.GUI.Messenger
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    List<PMDS.db.Entities.MessagesToUsers> tMessagesToUsers = db.MessagesToUsers.Where(o => o.IDMessages == rSelMessage.IDProtocoll).ToList();
+                    eTgTree tgTree2 = this.getXMLDatabaseForMessage(rSelMessage.IDProtocoll, db);
 
                     string sTxtMessageForPrint = "";
                     sTxtMessageForPrint += QS2.Desktop.ControlManagment.ControlManagment.getRes("Absender") + ": " + rSelMessage.Absender + newLine +
@@ -815,7 +1208,7 @@ namespace PMDS.GUI.Messenger
                                             QS2.Desktop.ControlManagment.ControlManagment.getRes("Betreff") + ": " + rSelMessage.Title.Trim() + sNewLine;
 
                     string UserSended = QS2.Desktop.ControlManagment.ControlManagment.getRes("Gesendet an:") + newLine;
-                    foreach (var rUserSended in tMessagesToUsers)
+                    foreach (var rUserSended in tgTree2.tToUsers)
                     {
                         var rUserFrom = (from b in db.Benutzer
                                             where b.ID == rUserSended.IDUser

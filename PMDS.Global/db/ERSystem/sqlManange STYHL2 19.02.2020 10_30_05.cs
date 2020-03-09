@@ -1473,7 +1473,6 @@ namespace PMDS.Global.db.ERSystem
                 rNew.SetIDGuidObjectNull();
                 rNew.Classification = "";
                 rNew.sKey = "";
-                rNew.CreatedDay = rNew.Created.Date;
 
                 ds.Messages2.Rows.Add(rNew);
                 return rNew;
@@ -1493,12 +1492,12 @@ namespace PMDS.Global.db.ERSystem
                 
                 if (TypeSel == eTypeMessages.ID)
                 {
-                    string sqlWhere = " where ID='" + ID.ToString() + "' ";
+                    string sqlWhere = " where ID='" + ID.ToString() + "' order by Title asc";
                     this.daMessagesToUsers.SelectCommand.CommandText += sqlWhere;
                 }
                 else if (TypeSel == eTypeMessages.All)
                 {
-                    string sqlWhere = " ";
+                    string sqlWhere = " order by Title asc";
                     this.daMessagesToUsers.SelectCommand.CommandText += sqlWhere;
                 }
                 else

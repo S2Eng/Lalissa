@@ -2370,9 +2370,9 @@
       <DependentUpon>dsAsyncCommData.xsd</DependentUpon>
     </None>
     <None Include="db\ERSystem\dsAsyncCommData.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsAsyncCommData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="db\ERSystem\dsAsyncCommData.xss">
       <DependentUpon>dsAsyncCommData.xsd</DependentUpon>

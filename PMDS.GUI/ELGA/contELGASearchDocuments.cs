@@ -200,23 +200,31 @@ namespace PMDS.GUI.ELGA
                         {
                             foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocumentsk__BackingField)
                             {
-                                dsManage.ELGASearchDocumentsRow rDocu = this.sqlManange1.getNewELGADocument(ref this.dsManage1);
-                                rDocu.Dokument = elgaDocu.Documentnamek__BackingField.Trim();
-                                rDocu.SetErstelltAmNull();
-                                rDocu.UUID = elgaDocu.UUIDk__BackingField.Trim();
-                                rDocu.UniqueID = elgaDocu.UniqueIdk__BackingField.Trim();
-                                rDocu.LocigalID = elgaDocu.LogicalIdk__BackingField.Trim();
-                                rDocu.Author = elgaDocu.Authork__BackingField.Trim();
-                                rDocu.Description = elgaDocu.Descriptionk__BackingField.Trim();
-                                rDocu.DocStatus = elgaDocu.DocStatusk__BackingField.Trim();
-                                rDocu.Version = elgaDocu.Versionk__BackingField.Trim();
-                                rDocu.CreationTime = elgaDocu.CreationTimek__BackingField.Trim();
-                                rDocu.Size = elgaDocu.Sizek__BackingField;
-                                rDocu.Stylesheet = "";                              //this.Stylesheet.Trim();
-                                rDocu.TypeFile = elgaDocu.TypeFilek__BackingField.Trim();
-                                rDocu.IDPatient = rPatient.ID;
-                                rDocu.IDAufenthalt = rActAuf.ID;
-                                rDocu.ELGAPatientLocalID = rActAuf.ELGALocalID.Trim();
+                                bool bDocuOK = true;
+                                if (!this.chkStorniert.Checked && elgaDocu.DocStatusk__BackingField.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
+                                {
+                                    bDocuOK = false;
+                                }
+                                if (bDocuOK)
+                                {
+                                    dsManage.ELGASearchDocumentsRow rDocu = this.sqlManange1.getNewELGADocument(ref this.dsManage1);
+                                    rDocu.Dokument = elgaDocu.Documentnamek__BackingField.Trim();
+                                    rDocu.SetErstelltAmNull();
+                                    rDocu.UUID = elgaDocu.UUIDk__BackingField.Trim();
+                                    rDocu.UniqueID = elgaDocu.UniqueIdk__BackingField.Trim();
+                                    rDocu.LocigalID = elgaDocu.LogicalIdk__BackingField.Trim();
+                                    rDocu.Author = elgaDocu.Authork__BackingField.Trim();
+                                    rDocu.Description = elgaDocu.Descriptionk__BackingField.Trim();
+                                    rDocu.DocStatus = elgaDocu.DocStatusk__BackingField.Trim();
+                                    rDocu.Version = elgaDocu.Versionk__BackingField.Trim();
+                                    rDocu.CreationTime = elgaDocu.CreationTimek__BackingField.Trim();
+                                    rDocu.Size = elgaDocu.Sizek__BackingField;
+                                    rDocu.Stylesheet = "";                              //this.Stylesheet.Trim();
+                                    rDocu.TypeFile = elgaDocu.TypeFilek__BackingField.Trim();
+                                    rDocu.IDPatient = rPatient.ID;
+                                    rDocu.IDAufenthalt = rActAuf.ID;
+                                    rDocu.ELGAPatientLocalID = rActAuf.ELGALocalID.Trim();
+                                }
                             }
                         }
                     }
@@ -307,7 +315,7 @@ namespace PMDS.GUI.ELGA
                 throw new Exception("contELGASearchDocuments.getSelectedRow: " + ex.ToString());
             }
         }
-
+          
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {

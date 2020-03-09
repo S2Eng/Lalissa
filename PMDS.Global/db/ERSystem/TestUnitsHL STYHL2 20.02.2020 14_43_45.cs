@@ -56,15 +56,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentenbezeichnung: Eingabe erforderlich!");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten senden fehlgeschlagen!");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungelesene Nachrichten Benutzer lesen fehlgeschlagen!");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Alle Nachrichten Benutzer lesen fehlgeschlagen!");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Nachrichten hinzufügen!");
-
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Gesendet am");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Noch nicht gesendet");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Storniert am");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Ersteller");
-
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungelesene Nachrichten lesen fehlgeschlagen!");
 
 
 

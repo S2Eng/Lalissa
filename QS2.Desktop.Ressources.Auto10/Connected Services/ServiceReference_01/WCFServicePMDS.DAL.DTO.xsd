@@ -132,9 +132,14 @@
   <xs:element name="ArrayOfEinrichtungDTO" nillable="true" type="tns:ArrayOfEinrichtungDTO" />
   <xs:complexType name="EinrichtungDTO">
     <xs:sequence>
+      <xs:element name="_x003C_ElgaOid_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaOrganizationName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ElgaOrganizationOid_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Elgaabgeglichen_x003E_k__BackingField" type="xs:boolean" />
       <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
       <xs:element name="_x003C_Idadresse_x003E_k__BackingField" nillable="true" type="ser:guid" />
       <xs:element name="_x003C_Idkontakt_x003E_k__BackingField" nillable="true" type="ser:guid" />
+      <xs:element name="_x003C_IstKrankenkasse_x003E_k__BackingField" nillable="true" type="xs:boolean" />
       <xs:element name="_x003C_Text_x003E_k__BackingField" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -1038,4 +1043,47 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PatientDTO" nillable="true" type="tns:PatientDTO" />
+  <xs:complexType name="ArrayOfMessagesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessagesDTO" nillable="true" type="tns:MessagesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessagesDTO" nillable="true" type="tns:ArrayOfMessagesDTO" />
+  <xs:complexType name="MessagesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Classification" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientsMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedDay" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Db" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="IdguidObject" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Progress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserFromId" type="ser:guid" />
+      <xs:element minOccurs="0" name="lMessagesToUsers" nillable="true" type="tns:ArrayOfMessagesToUsersDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessagesDTO" nillable="true" type="tns:MessagesDTO" />
+  <xs:complexType name="ArrayOfMessagesToUsersDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessagesToUsersDTO" nillable="true" type="tns:MessagesToUsersDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessagesToUsersDTO" nillable="true" type="tns:ArrayOfMessagesToUsersDTO" />
+  <xs:complexType name="MessagesToUsersDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Idmessages" type="ser:guid" />
+      <xs:element minOccurs="0" name="Iduser" type="ser:guid" />
+      <xs:element minOccurs="0" name="Readed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ReadedAt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessagesToUsersDTO" nillable="true" type="tns:MessagesToUsersDTO" />
 </xs:schema>
