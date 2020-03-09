@@ -163,8 +163,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDREF", System.Data.OleDb.OleDbType.Guid, 16, "IDREF"),
             new System.Data.OleDb.OleDbParameter("FormularName", System.Data.OleDb.OleDbType.VarChar, 255, "FormularName"),
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.VarChar, 2147483647, "BLOP"),
-            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datumerstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.Date, 8, "Datumerstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 8, "DatumGeaendert"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Geaendert")});
             // 
@@ -188,8 +188,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDREF", System.Data.OleDb.OleDbType.Guid, 16, "IDREF"),
             new System.Data.OleDb.OleDbParameter("FormularName", System.Data.OleDb.OleDbType.VarChar, 255, "FormularName"),
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.VarChar, 2147483647, "BLOP"),
-            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datumerstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.Date, 8, "Datumerstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 8, "DatumGeaendert"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Geaendert"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
@@ -235,8 +235,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDREF", System.Data.OleDb.OleDbType.Guid, 16, "IDREF"),
             new System.Data.OleDb.OleDbParameter("FormularName", System.Data.OleDb.OleDbType.VarChar, 255, "FormularName"),
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.VarChar, 2147483647, "BLOP"),
-            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datumerstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.Date, 8, "Datumerstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 8, "DatumGeaendert"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Geaendert")});
             // 
@@ -261,8 +261,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDREF", System.Data.OleDb.OleDbType.Guid, 16, "IDREF"),
             new System.Data.OleDb.OleDbParameter("FormularName", System.Data.OleDb.OleDbType.VarChar, 255, "FormularName"),
             new System.Data.OleDb.OleDbParameter("BLOP", System.Data.OleDb.OleDbType.VarChar, 2147483647, "BLOP"),
-            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datumerstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("Datumerstellt", System.Data.OleDb.OleDbType.Date, 8, "Datumerstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 8, "DatumGeaendert"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Geaendert"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});

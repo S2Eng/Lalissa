@@ -119,21 +119,21 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("Original_Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Bezeichnung", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z0", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z0", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z0", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z0", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z0", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z0", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z1", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z1", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z1", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z1", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z1", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z1", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z2", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z2", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z2", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z2", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z2", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z2", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z3", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z3", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z3", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z3", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z3", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z3", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z4", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z4", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z4", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z4", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z4", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z4", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z5", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z5", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z5", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z5", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z5", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z5", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z6", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z6", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z6", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z6", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z6", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z6", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z7", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z7", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z7", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z7", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("Original_Z7", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z7", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbInsertCommand1
             // 
@@ -143,14 +143,14 @@ namespace PMDS.DB
             this.oleDbInsertCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
-            new System.Data.OleDb.OleDbParameter("Z0", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z0"),
-            new System.Data.OleDb.OleDbParameter("Z1", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z1"),
-            new System.Data.OleDb.OleDbParameter("Z2", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z2"),
-            new System.Data.OleDb.OleDbParameter("Z3", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z3"),
-            new System.Data.OleDb.OleDbParameter("Z4", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z4"),
-            new System.Data.OleDb.OleDbParameter("Z5", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z5"),
-            new System.Data.OleDb.OleDbParameter("Z6", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z6"),
-            new System.Data.OleDb.OleDbParameter("Z7", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z7")});
+            new System.Data.OleDb.OleDbParameter("Z0", System.Data.OleDb.OleDbType.Date, 16, "Z0"),
+            new System.Data.OleDb.OleDbParameter("Z1", System.Data.OleDb.OleDbType.Date, 16, "Z1"),
+            new System.Data.OleDb.OleDbParameter("Z2", System.Data.OleDb.OleDbType.Date, 16, "Z2"),
+            new System.Data.OleDb.OleDbParameter("Z3", System.Data.OleDb.OleDbType.Date, 16, "Z3"),
+            new System.Data.OleDb.OleDbParameter("Z4", System.Data.OleDb.OleDbType.Date, 16, "Z4"),
+            new System.Data.OleDb.OleDbParameter("Z5", System.Data.OleDb.OleDbType.Date, 16, "Z5"),
+            new System.Data.OleDb.OleDbParameter("Z6", System.Data.OleDb.OleDbType.Date, 16, "Z6"),
+            new System.Data.OleDb.OleDbParameter("Z7", System.Data.OleDb.OleDbType.Date, 16, "Z7")});
             // 
             // oleDbSelectCommand1
             // 
@@ -165,32 +165,32 @@ namespace PMDS.DB
             this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
-            new System.Data.OleDb.OleDbParameter("Z0", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z0"),
-            new System.Data.OleDb.OleDbParameter("Z1", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z1"),
-            new System.Data.OleDb.OleDbParameter("Z2", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z2"),
-            new System.Data.OleDb.OleDbParameter("Z3", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z3"),
-            new System.Data.OleDb.OleDbParameter("Z4", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z4"),
-            new System.Data.OleDb.OleDbParameter("Z5", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z5"),
-            new System.Data.OleDb.OleDbParameter("Z6", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z6"),
-            new System.Data.OleDb.OleDbParameter("Z7", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Z7"),
+            new System.Data.OleDb.OleDbParameter("Z0", System.Data.OleDb.OleDbType.Date, 16, "Z0"),
+            new System.Data.OleDb.OleDbParameter("Z1", System.Data.OleDb.OleDbType.Date, 16, "Z1"),
+            new System.Data.OleDb.OleDbParameter("Z2", System.Data.OleDb.OleDbType.Date, 16, "Z2"),
+            new System.Data.OleDb.OleDbParameter("Z3", System.Data.OleDb.OleDbType.Date, 16, "Z3"),
+            new System.Data.OleDb.OleDbParameter("Z4", System.Data.OleDb.OleDbType.Date, 16, "Z4"),
+            new System.Data.OleDb.OleDbParameter("Z5", System.Data.OleDb.OleDbType.Date, 16, "Z5"),
+            new System.Data.OleDb.OleDbParameter("Z6", System.Data.OleDb.OleDbType.Date, 16, "Z6"),
+            new System.Data.OleDb.OleDbParameter("Z7", System.Data.OleDb.OleDbType.Date, 16, "Z7"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("Original_Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Bezeichnung", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z0", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z0", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z0", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z0", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z0", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z0", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z1", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z1", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z1", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z1", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z1", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z1", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z2", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z2", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z2", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z2", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z2", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z2", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z3", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z3", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z3", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z3", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z3", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z3", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z4", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z4", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z4", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z4", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z4", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z4", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z5", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z5", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z5", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z5", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z5", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z5", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z6", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z6", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z6", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z6", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Z6", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z6", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Z7", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Z7", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Z7", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z7", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("Original_Z7", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Z7", System.Data.DataRowVersion.Original, null)});
             // 
             // dsMassnahmenserien1
             // 

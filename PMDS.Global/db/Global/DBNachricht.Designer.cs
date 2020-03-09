@@ -69,11 +69,11 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("IDBerufsstandFrom", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandFrom"),
             new System.Data.OleDb.OleDbParameter("IDBenutzerTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerTo"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstandTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandTo"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 16, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt"),
             new System.Data.OleDb.OleDbParameter("TerminTyp", System.Data.OleDb.OleDbType.Integer, 0, "TerminTyp"),
             new System.Data.OleDb.OleDbParameter("EintragsTyp", System.Data.OleDb.OleDbType.Integer, 0, "EintragsTyp"),
-            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitstempel"),
+            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.Date, 16, "Zeitstempel"),
             new System.Data.OleDb.OleDbParameter("Nachricht", System.Data.OleDb.OleDbType.LongVarChar, 0, "Nachricht")});
             // 
             // oleDbUpdateCommand1
@@ -88,11 +88,11 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("IDBerufsstandFrom", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandFrom"),
             new System.Data.OleDb.OleDbParameter("IDBenutzerTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerTo"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstandTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandTo"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 16, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt"),
             new System.Data.OleDb.OleDbParameter("TerminTyp", System.Data.OleDb.OleDbType.Integer, 0, "TerminTyp"),
             new System.Data.OleDb.OleDbParameter("EintragsTyp", System.Data.OleDb.OleDbType.Integer, 0, "EintragsTyp"),
-            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitstempel"),
+            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.Date, 16, "Zeitstempel"),
             new System.Data.OleDb.OleDbParameter("Nachricht", System.Data.OleDb.OleDbType.LongVarChar, 0, "Nachricht"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
@@ -176,11 +176,11 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("IDBerufsstandFrom", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandFrom"),
             new System.Data.OleDb.OleDbParameter("IDBenutzerTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerTo"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstandTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandTo"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 16, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt"),
             new System.Data.OleDb.OleDbParameter("TerminTyp", System.Data.OleDb.OleDbType.Integer, 0, "TerminTyp"),
             new System.Data.OleDb.OleDbParameter("EintragsTyp", System.Data.OleDb.OleDbType.Integer, 0, "EintragsTyp"),
-            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitstempel"),
+            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.Date, 16, "Zeitstempel"),
             new System.Data.OleDb.OleDbParameter("Nachricht", System.Data.OleDb.OleDbType.LongVarChar, 0, "Nachricht")});
             // 
             // oleDbCommand3
@@ -192,8 +192,8 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("IDBenutzerTo", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzerTo"),
             new System.Data.OleDb.OleDbParameter("IDPflegePlan", System.Data.OleDb.OleDbType.Guid, 16, "IDPflegePlan"),
             new System.Data.OleDb.OleDbParameter("IDEintrag", System.Data.OleDb.OleDbType.Guid, 16, "IDEintrag"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Zeitpunkt")});
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 8, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 8, "Zeitpunkt")});
             // 
             // oleDbCommand4
             // 
@@ -207,11 +207,11 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("IDBerufsstandFrom", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandFrom"),
             new System.Data.OleDb.OleDbParameter("IDBenutzerTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerTo"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstandTo", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstandTo"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 16, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt"),
             new System.Data.OleDb.OleDbParameter("TerminTyp", System.Data.OleDb.OleDbType.Integer, 0, "TerminTyp"),
             new System.Data.OleDb.OleDbParameter("EintragsTyp", System.Data.OleDb.OleDbType.Integer, 0, "EintragsTyp"),
-            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitstempel"),
+            new System.Data.OleDb.OleDbParameter("Zeitstempel", System.Data.OleDb.OleDbType.Date, 16, "Zeitstempel"),
             new System.Data.OleDb.OleDbParameter("Nachricht", System.Data.OleDb.OleDbType.LongVarChar, 0, "Nachricht"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             ((System.ComponentModel.ISupportInitialize)(this.dsNachricht1)).EndInit();

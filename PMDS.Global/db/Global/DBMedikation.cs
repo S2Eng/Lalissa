@@ -110,11 +110,11 @@ namespace PMDS.DB.Global
 
             _cmdSelect.CommandText = "SELECT Benutzer.Benutzer FROM MedikationAbgabe LEFT OUTER JOIN Benutzer ON MedikationAbgabe.IDBenutzer = Benutzer.ID where IDRezepteintrag = ? and Zeitpunkt = ?";
             _cmdSelect.Parameters.Add("IDRezepteintrag", OleDbType.Guid);
-            _cmdSelect.Parameters.Add("Zeitpunkt", OleDbType.DBTimeStamp);
+            _cmdSelect.Parameters.Add("Zeitpunkt", OleDbType.Date, 16, "Zeitpunkt");
 
             _cmdInsert.CommandText = "insert into MedikationAbgabe (IDRezepteintrag, Zeitpunkt, IDBenutzer, MedikamentText, IDAufenthalt, TagesspenderJN) values(?,?,?,?,?,?)";
             _cmdInsert.Parameters.Add("IDRezepteintrag", OleDbType.Guid);
-            _cmdInsert.Parameters.Add("Zeitpunkt", OleDbType.DBTimeStamp);
+            _cmdInsert.Parameters.Add("Zeitpunkt", OleDbType.Date, 16, "Zeitpunkt");
             _cmdInsert.Parameters.Add("IDBenutzer", OleDbType.Guid);
             _cmdInsert.Parameters.Add("MedikamentText", OleDbType.VarChar);
             _cmdInsert.Parameters.Add("IDAufenthalt", OleDbType.Guid);

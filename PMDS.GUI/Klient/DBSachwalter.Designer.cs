@@ -72,10 +72,10 @@ namespace PMDS.Klient
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
             new System.Data.OleDb.OleDbParameter("SachwalterJN", System.Data.OleDb.OleDbType.Boolean, 0, "SachwalterJN"),
             new System.Data.OleDb.OleDbParameter("Belange", System.Data.OleDb.OleDbType.VarChar, 0, "Belange"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("Gericht", System.Data.OleDb.OleDbType.VarChar, 0, "Gericht"),
-            new System.Data.OleDb.OleDbParameter("BestimmtAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BestimmtAm"),
+            new System.Data.OleDb.OleDbParameter("BestimmtAm", System.Data.OleDb.OleDbType.Date, 16, "BestimmtAm"),
             new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung")});
             // 
             // oleDbUpdateCommand1
@@ -92,10 +92,10 @@ namespace PMDS.Klient
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
             new System.Data.OleDb.OleDbParameter("SachwalterJN", System.Data.OleDb.OleDbType.Boolean, 0, "SachwalterJN"),
             new System.Data.OleDb.OleDbParameter("Belange", System.Data.OleDb.OleDbType.VarChar, 0, "Belange"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("Gericht", System.Data.OleDb.OleDbType.VarChar, 0, "Gericht"),
-            new System.Data.OleDb.OleDbParameter("BestimmtAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BestimmtAm"),
+            new System.Data.OleDb.OleDbParameter("BestimmtAm", System.Data.OleDb.OleDbType.Date, 16, "BestimmtAm"),
             new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 

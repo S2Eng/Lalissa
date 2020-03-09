@@ -246,7 +246,7 @@ namespace PMDS.DB
 			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("IDAbteilung_Nach", System.Data.OleDb.OleDbType.Guid, 16, "IDAbteilung_Nach"));
 			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("IDBereich", System.Data.OleDb.OleDbType.Guid, 16, "IDBereich"));
 			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 2147483647, "Bemerkung"));
-			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datum"));
+			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 8, "Datum"));
 			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("ZuweisenderArzt", System.Data.OleDb.OleDbType.VarChar, 50, "ZuweisenderArzt"));
 			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("AufnahmeArzt", System.Data.OleDb.OleDbType.VarChar, 50, "AufnahmeArzt"));
 			this.oleDbInsertCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Aufnahmegespraech", System.Data.OleDb.OleDbType.VarChar, 2147483647, "Aufnahmegespraech"));
@@ -264,7 +264,7 @@ namespace PMDS.DB
 			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("IDAbteilung_Nach", System.Data.OleDb.OleDbType.Guid, 16, "IDAbteilung_Nach"));
 			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("IDBereich", System.Data.OleDb.OleDbType.Guid, 16, "IDBereich"));
 			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 2147483647, "Bemerkung"));
-			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datum"));
+			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 8, "Datum"));
 			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("ZuweisenderArzt", System.Data.OleDb.OleDbType.VarChar, 50, "ZuweisenderArzt"));
 			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("AufnahmeArzt", System.Data.OleDb.OleDbType.VarChar, 50, "AufnahmeArzt"));
 			this.oleDbUpdateCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Aufnahmegespraech", System.Data.OleDb.OleDbType.VarChar, 2147483647, "Aufnahmegespraech"));

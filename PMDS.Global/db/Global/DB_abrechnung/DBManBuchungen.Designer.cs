@@ -46,8 +46,8 @@
             this.oleDbSelectCommand1.Connection = this.oleDbConnection1;
             this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDKlient", System.Data.OleDb.OleDbType.Guid, 16, "IDKlient"),
-            new System.Data.OleDb.OleDbParameter("datum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "datum"),
-            new System.Data.OleDb.OleDbParameter("datum1", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "datum"),
+            new System.Data.OleDb.OleDbParameter("datum", System.Data.OleDb.OleDbType.Date, 8, "datum"),
+            new System.Data.OleDb.OleDbParameter("datum1", System.Data.OleDb.OleDbType.Date, 8, "datum"),
             new System.Data.OleDb.OleDbParameter("abgerechJN", System.Data.OleDb.OleDbType.Boolean, 1, "abgerechJN"),
             new System.Data.OleDb.OleDbParameter("abgerechJN1", System.Data.OleDb.OleDbType.Boolean, 1, "abgerechJN"),
             new System.Data.OleDb.OleDbParameter("typ", System.Data.OleDb.OleDbType.Integer, 4, "typ"),
@@ -64,7 +64,7 @@
             this.oleDbInsertCommand1.Connection = this.oleDbConnection1;
             this.oleDbInsertCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "datum"),
+            new System.Data.OleDb.OleDbParameter("datum", System.Data.OleDb.OleDbType.Date, 16, "datum"),
             new System.Data.OleDb.OleDbParameter("ReNr", System.Data.OleDb.OleDbType.VarChar, 0, "ReNr"),
             new System.Data.OleDb.OleDbParameter("abrechGruppe", System.Data.OleDb.OleDbType.Integer, 0, "abrechGruppe"),
             new System.Data.OleDb.OleDbParameter("gruppeTxt", System.Data.OleDb.OleDbType.VarChar, 0, "gruppeTxt"),
@@ -75,9 +75,9 @@
             new System.Data.OleDb.OleDbParameter("buchText", System.Data.OleDb.OleDbType.VarChar, 0, "buchText"),
             new System.Data.OleDb.OleDbParameter("IDKlient", System.Data.OleDb.OleDbType.Guid, 0, "IDKlient"),
             new System.Data.OleDb.OleDbParameter("abgerechJN", System.Data.OleDb.OleDbType.Boolean, 0, "abgerechJN"),
-            new System.Data.OleDb.OleDbParameter("abgerechAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "abgerechAm"),
+            new System.Data.OleDb.OleDbParameter("abgerechAm", System.Data.OleDb.OleDbType.Date, 16, "abgerechAm"),
             new System.Data.OleDb.OleDbParameter("erfasst", System.Data.OleDb.OleDbType.VarChar, 0, "erfasst"),
-            new System.Data.OleDb.OleDbParameter("am", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "am"),
+            new System.Data.OleDb.OleDbParameter("am", System.Data.OleDb.OleDbType.Date, 16, "am"),
             new System.Data.OleDb.OleDbParameter("Zeitraumdetail", System.Data.OleDb.OleDbType.VarChar, 0, "Zeitraumdetail"),
             new System.Data.OleDb.OleDbParameter("typ", System.Data.OleDb.OleDbType.Integer, 0, "typ"),
             new System.Data.OleDb.OleDbParameter("RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungTyp"),
@@ -90,7 +90,7 @@
             this.oleDbUpdateCommand1.Connection = this.oleDbConnection1;
             this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "datum"),
+            new System.Data.OleDb.OleDbParameter("datum", System.Data.OleDb.OleDbType.Date, 16, "datum"),
             new System.Data.OleDb.OleDbParameter("ReNr", System.Data.OleDb.OleDbType.VarChar, 0, "ReNr"),
             new System.Data.OleDb.OleDbParameter("abrechGruppe", System.Data.OleDb.OleDbType.Integer, 0, "abrechGruppe"),
             new System.Data.OleDb.OleDbParameter("gruppeTxt", System.Data.OleDb.OleDbType.VarChar, 0, "gruppeTxt"),
@@ -101,9 +101,9 @@
             new System.Data.OleDb.OleDbParameter("buchText", System.Data.OleDb.OleDbType.VarChar, 0, "buchText"),
             new System.Data.OleDb.OleDbParameter("IDKlient", System.Data.OleDb.OleDbType.Guid, 0, "IDKlient"),
             new System.Data.OleDb.OleDbParameter("abgerechJN", System.Data.OleDb.OleDbType.Boolean, 0, "abgerechJN"),
-            new System.Data.OleDb.OleDbParameter("abgerechAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "abgerechAm"),
+            new System.Data.OleDb.OleDbParameter("abgerechAm", System.Data.OleDb.OleDbType.Date, 16, "abgerechAm"),
             new System.Data.OleDb.OleDbParameter("erfasst", System.Data.OleDb.OleDbType.VarChar, 0, "erfasst"),
-            new System.Data.OleDb.OleDbParameter("am", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "am"),
+            new System.Data.OleDb.OleDbParameter("am", System.Data.OleDb.OleDbType.Date, 16, "am"),
             new System.Data.OleDb.OleDbParameter("Zeitraumdetail", System.Data.OleDb.OleDbType.VarChar, 0, "Zeitraumdetail"),
             new System.Data.OleDb.OleDbParameter("typ", System.Data.OleDb.OleDbType.Integer, 0, "typ"),
             new System.Data.OleDb.OleDbParameter("RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungTyp"),

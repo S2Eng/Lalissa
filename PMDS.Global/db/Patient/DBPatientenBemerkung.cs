@@ -134,7 +134,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IsNull_IDBenutzer", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, true, null),
             new System.Data.OleDb.OleDbParameter("Original_IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Datum", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Datum", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Datum", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Datum", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Datum", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("Original_IstDekurs", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IstDekurs", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbInsertCommand1
@@ -147,7 +147,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
             new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
-            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum"),
             new System.Data.OleDb.OleDbParameter("IstDekurs", System.Data.OleDb.OleDbType.Boolean, 0, "IstDekurs")});
             // 
             // oleDbSelectCommand2
@@ -167,7 +167,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
             new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
-            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum"),
             new System.Data.OleDb.OleDbParameter("IstDekurs", System.Data.OleDb.OleDbType.Boolean, 0, "IstDekurs"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_IDPatient", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDPatient", System.Data.DataRowVersion.Original, true, null),
@@ -177,7 +177,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IsNull_IDBenutzer", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, true, null),
             new System.Data.OleDb.OleDbParameter("Original_IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_Datum", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Datum", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Datum", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_Datum", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Datum", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("Original_IstDekurs", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IstDekurs", System.Data.DataRowVersion.Original, null)});
             // 
             // dsPatientenBemerkung1

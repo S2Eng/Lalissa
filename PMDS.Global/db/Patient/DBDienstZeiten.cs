@@ -201,8 +201,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("IDAbteilung", System.Data.OleDb.OleDbType.Guid, 0, "IDAbteilung"),
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
             new System.Data.OleDb.OleDbParameter("VerwendenIn", System.Data.OleDb.OleDbType.VarChar, 0, "VerwendenIn")});
             // 
@@ -238,8 +238,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("IDAbteilung", System.Data.OleDb.OleDbType.Guid, 0, "IDAbteilung"),
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("Reihenfolge", System.Data.OleDb.OleDbType.Integer, 0, "Reihenfolge"),
             new System.Data.OleDb.OleDbParameter("VerwendenIn", System.Data.OleDb.OleDbType.VarChar, 0, "VerwendenIn"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});

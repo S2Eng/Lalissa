@@ -117,13 +117,13 @@ namespace PMDS.DB
             this.oleDbInsertCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID"),
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 16, "IDAufenthalt"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "EndeDatum"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 8, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.Date, 8, "EndeDatum"),
             new System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.VarChar, 255, "Text"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumErstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumGeaendert")});
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 8, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 8, "DatumGeaendert")});
             // 
             // oleDbSelectCommand2
             // 
@@ -142,13 +142,13 @@ namespace PMDS.DB
             this.oleDbUpdateCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID"),
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 16, "IDAufenthalt"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "EndeDatum"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 8, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.Date, 8, "EndeDatum"),
             new System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.VarChar, 255, "Text"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 16, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumErstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 8, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 8, "DatumGeaendert"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // daAlleUrlaube
@@ -171,8 +171,8 @@ namespace PMDS.DB
             this.oleDbCommand1.CommandText = resources.GetString("oleDbCommand1.CommandText");
             this.oleDbCommand1.Connection = this.oleDbConnection1;
             this.oleDbCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("StartDatum1", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 8, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("StartDatum1", System.Data.OleDb.OleDbType.Date, 8, "StartDatum"),
             new System.Data.OleDb.OleDbParameter("Param2", System.Data.OleDb.OleDbType.Guid, 16)});
             ((System.ComponentModel.ISupportInitialize)(this.dsUrlaubVerlauf1)).EndInit();
 

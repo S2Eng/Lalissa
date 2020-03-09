@@ -197,8 +197,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN"),
             new System.Data.OleDb.OleDbParameter("PflegerJN", System.Data.OleDb.OleDbType.Boolean, 0, "PflegerJN"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstand", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstand"),
-            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Eintrittsdatum"),
-            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Austrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Eintrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Austrittsdatum"),
             new System.Data.OleDb.OleDbParameter("smtpSrv", System.Data.OleDb.OleDbType.VarChar, 0, "smtpSrv"),
             new System.Data.OleDb.OleDbParameter("smtpPort", System.Data.OleDb.OleDbType.Integer, 0, "smtpPort"),
             new System.Data.OleDb.OleDbParameter("smtpAbsender", System.Data.OleDb.OleDbType.VarChar, 0, "smtpAbsender"),
@@ -213,7 +213,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("ELGAActive", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAActive"),
             new System.Data.OleDb.OleDbParameter("ELGAAutoLogin", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutoLogin"),
             new System.Data.OleDb.OleDbParameter("ELGAAutostartSession", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutostartSession"),
-            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ELGAValidTrough"),
+            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.Date, 16, "ELGAValidTrough"),
             new System.Data.OleDb.OleDbParameter("ELGA_AuthorSpeciality", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_AuthorSpeciality")});
             // 
             // oleDbSelectCommand2
@@ -238,8 +238,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN"),
             new System.Data.OleDb.OleDbParameter("PflegerJN", System.Data.OleDb.OleDbType.Boolean, 0, "PflegerJN"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstand", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstand"),
-            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Eintrittsdatum"),
-            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Austrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Eintrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Austrittsdatum"),
             new System.Data.OleDb.OleDbParameter("smtpSrv", System.Data.OleDb.OleDbType.VarChar, 0, "smtpSrv"),
             new System.Data.OleDb.OleDbParameter("smtpPort", System.Data.OleDb.OleDbType.Integer, 0, "smtpPort"),
             new System.Data.OleDb.OleDbParameter("smtpAbsender", System.Data.OleDb.OleDbType.VarChar, 0, "smtpAbsender"),
@@ -254,7 +254,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("ELGAActive", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAActive"),
             new System.Data.OleDb.OleDbParameter("ELGAAutoLogin", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutoLogin"),
             new System.Data.OleDb.OleDbParameter("ELGAAutostartSession", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutostartSession"),
-            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ELGAValidTrough"),
+            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.Date, 16, "ELGAValidTrough"),
             new System.Data.OleDb.OleDbParameter("ELGA_AuthorSpeciality", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_AuthorSpeciality"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 

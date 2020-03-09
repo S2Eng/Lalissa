@@ -67,8 +67,8 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("ZuweiserJN", System.Data.OleDb.OleDbType.Boolean, 0, "ZuweiserJN"),
             new System.Data.OleDb.OleDbParameter("AufnahmearztJN", System.Data.OleDb.OleDbType.Boolean, 0, "AufnahmearztJN"),
             new System.Data.OleDb.OleDbParameter("BehandelnderFAJN", System.Data.OleDb.OleDbType.Boolean, 0, "BehandelnderFAJN"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("ELGA_HausarztJN", System.Data.OleDb.OleDbType.Boolean, 0, "ELGA_HausarztJN")});
             // 
             // oleDbUpdateCommand1
@@ -83,8 +83,8 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("ZuweiserJN", System.Data.OleDb.OleDbType.Boolean, 0, "ZuweiserJN"),
             new System.Data.OleDb.OleDbParameter("AufnahmearztJN", System.Data.OleDb.OleDbType.Boolean, 0, "AufnahmearztJN"),
             new System.Data.OleDb.OleDbParameter("BehandelnderFAJN", System.Data.OleDb.OleDbType.Boolean, 0, "BehandelnderFAJN"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("ELGA_HausarztJN", System.Data.OleDb.OleDbType.Boolean, 0, "ELGA_HausarztJN"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 

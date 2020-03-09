@@ -62,8 +62,8 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("Gruppe", System.Data.OleDb.OleDbType.VarChar, 0, "Gruppe"),
             new System.Data.OleDb.OleDbParameter("SortOrder", System.Data.OleDb.OleDbType.Integer, 0, "SortOrder"),
             new System.Data.OleDb.OleDbParameter("Inhalt", System.Data.OleDb.OleDbType.LongVarBinary, 0, "Inhalt"),
-            new System.Data.OleDb.OleDbParameter("Erstellungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Erstellungsdatum"),
-            new System.Data.OleDb.OleDbParameter("Aenderungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Aenderungsdatum"),
+            new System.Data.OleDb.OleDbParameter("Erstellungsdatum", System.Data.OleDb.OleDbType.Date, 16, "Erstellungsdatum"),
+            new System.Data.OleDb.OleDbParameter("Aenderungsdatum", System.Data.OleDb.OleDbType.Date, 16, "Aenderungsdatum"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert")});
             // 
@@ -77,8 +77,8 @@ namespace PMDS.DB.Global
             new System.Data.OleDb.OleDbParameter("Gruppe", System.Data.OleDb.OleDbType.VarChar, 0, "Gruppe"),
             new System.Data.OleDb.OleDbParameter("SortOrder", System.Data.OleDb.OleDbType.Integer, 0, "SortOrder"),
             new System.Data.OleDb.OleDbParameter("Inhalt", System.Data.OleDb.OleDbType.LongVarBinary, 0, "Inhalt"),
-            new System.Data.OleDb.OleDbParameter("Erstellungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Erstellungsdatum"),
-            new System.Data.OleDb.OleDbParameter("Aenderungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Aenderungsdatum"),
+            new System.Data.OleDb.OleDbParameter("Erstellungsdatum", System.Data.OleDb.OleDbType.Date, 16, "Erstellungsdatum"),
+            new System.Data.OleDb.OleDbParameter("Aenderungsdatum", System.Data.OleDb.OleDbType.Date, 16, "Aenderungsdatum"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});

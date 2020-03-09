@@ -46,8 +46,8 @@
                 "FROM         Essen\r\nWHERE     (Tag >= ?) AND (Tag <= ?)";
             this.oleDbSelectCommand1.Connection = oleDbConnection1;
             this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Tag"),
-            new System.Data.OleDb.OleDbParameter("Tag1", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Tag")});
+            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.Date, 8, "Tag"),
+            new System.Data.OleDb.OleDbParameter("Tag1", System.Data.OleDb.OleDbType.Date, 8, "Tag")});
             // 
             // oleDbInsertCommand1
             // 
@@ -56,7 +56,7 @@
             this.oleDbInsertCommand1.Connection = oleDbConnection1;
             this.oleDbInsertCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Tag"),
+            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.Date, 16, "Tag"),
             new System.Data.OleDb.OleDbParameter("AnzahlBetten", System.Data.OleDb.OleDbType.Integer, 0, "AnzahlBetten"),
             new System.Data.OleDb.OleDbParameter("Belegung", System.Data.OleDb.OleDbType.Integer, 0, "Belegung"),
             new System.Data.OleDb.OleDbParameter("EssenPersonal", System.Data.OleDb.OleDbType.Integer, 0, "EssenPersonal"),
@@ -70,7 +70,7 @@
             this.oleDbUpdateCommand1.Connection = oleDbConnection1;
             this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Tag"),
+            new System.Data.OleDb.OleDbParameter("Tag", System.Data.OleDb.OleDbType.Date, 16, "Tag"),
             new System.Data.OleDb.OleDbParameter("AnzahlBetten", System.Data.OleDb.OleDbType.Integer, 0, "AnzahlBetten"),
             new System.Data.OleDb.OleDbParameter("Belegung", System.Data.OleDb.OleDbType.Integer, 0, "Belegung"),
             new System.Data.OleDb.OleDbParameter("EssenPersonal", System.Data.OleDb.OleDbType.Integer, 0, "EssenPersonal"),
