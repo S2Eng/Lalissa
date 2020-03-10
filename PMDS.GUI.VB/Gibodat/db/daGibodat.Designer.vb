@@ -86,7 +86,7 @@
         '
         Me.OleDbInsertCommand1.CommandText = "INSERT INTO [tSync_PMDS] ([LastUpdate]) VALUES (?)"
         Me.OleDbInsertCommand1.Connection = Me.OleDbConnection1
-        Me.OleDbInsertCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("LastUpdate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LastUpdate")})
+        Me.OleDbInsertCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("LastUpdate", System.Data.OleDb.OleDbType.Date, 16, "LastUpdate")})
         '
         'daSyncPMDS
         '
@@ -100,13 +100,13 @@
         '
         Me.OleDbDeleteCommand.CommandText = "DELETE FROM [tSync_PMDS] WHERE (([LastUpdate] = ?))"
         Me.OleDbDeleteCommand.Connection = Me.OleDbConnection1
-        Me.OleDbDeleteCommand.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("Original_LastUpdate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "LastUpdate", System.Data.DataRowVersion.Original, Nothing)})
+        Me.OleDbDeleteCommand.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("Original_LastUpdate", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "LastUpdate", System.Data.DataRowVersion.Original, Nothing)})
         '
         'OleDbUpdateCommand
         '
         Me.OleDbUpdateCommand.CommandText = "UPDATE [tSync_PMDS] SET [LastUpdate] = ? WHERE (([LastUpdate] = ?))"
         Me.OleDbUpdateCommand.Connection = Me.OleDbConnection1
-        Me.OleDbUpdateCommand.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("LastUpdate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LastUpdate"), New System.Data.OleDb.OleDbParameter("Original_LastUpdate", System.Data.OleDb.OleDbType.DBTimeStamp, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "LastUpdate", System.Data.DataRowVersion.Original, Nothing)})
+        Me.OleDbUpdateCommand.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("LastUpdate", System.Data.OleDb.OleDbType.Date, 16, "LastUpdate"), New System.Data.OleDb.OleDbParameter("Original_LastUpdate", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "LastUpdate", System.Data.DataRowVersion.Original, Nothing)})
 
     End Sub
     Friend WithEvents OleDbConnection1 As System.Data.OleDb.OleDbConnection

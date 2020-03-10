@@ -150,8 +150,8 @@ namespace PMDS.DB
             this.oleDbSelectCommand1.Connection = this.oleDbConnection1;
             this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 16, "IDAufenthalt"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Zeitpunkt"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 8, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.Date, 8, "Zeitpunkt"),
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Char, 6, "ID")});
             // 
             // daZusatzVerlaufAll

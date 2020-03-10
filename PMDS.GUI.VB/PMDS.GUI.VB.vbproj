@@ -860,6 +860,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsPlanArchive.xsd</DependentUpon>
     </Compile>
+    <Compile Include="planArchive\coreSystem\db\dsPlanArchive.vb">
+      <DependentUpon>dsPlanArchive.xsd</DependentUpon>
+    </Compile>
     <Compile Include="planArchive\coreSystem\GeneralArchiv.vb" />
     <Compile Include="planArchive2\core\cArchive.vb" />
     <Compile Include="planArchive\archiv\Forms\contArchivAbleg.vb">

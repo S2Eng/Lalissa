@@ -134,8 +134,8 @@ namespace PMDS.DB
 			this.oleDbCommand1.CommandText = @"SELECT Patient.ID, Patient.Vorname, Patient.Nachname, Patient.Geburtsdatum, Aufenthalt.Aufnahmezeitpunkt, PflegeEintrag.Zeitpunkt, PflegeEintrag.Text, PflegePlan.Text AS PflegePlanText, Benutzer.Nachname + ' ' + Benutzer.Vorname AS Ersteller, Eintrag.Text AS EintragText, PflegePlan.OriginalJN, PflegePlan.EintragGruppe, PflegeEintrag.IDAufenthalt, Benutzer.Benutzer, PflegeEintrag.ID AS IDPflegeEintrag, PflegeEintrag.EintragsTyp FROM Patient INNER JOIN Aufenthalt ON Patient.ID = Aufenthalt.IDPatient INNER JOIN PflegeEintrag ON Aufenthalt.ID = PflegeEintrag.IDAufenthalt INNER JOIN Benutzer ON PflegeEintrag.IDBenutzer = Benutzer.ID LEFT OUTER JOIN Eintrag ON PflegeEintrag.IDEintrag = Eintrag.ID LEFT OUTER JOIN PflegePlan ON PflegeEintrag.IDPflegePlan = PflegePlan.ID WHERE (Aufenthalt.ID = ?) AND (PflegeEintrag.Zeitpunkt >= ?) AND (PflegeEintrag.Zeitpunkt <= ?) ORDER BY PflegeEintrag.Zeitpunkt";
 			this.oleDbCommand1.Connection = this.oleDbConnection1;
 			this.oleDbCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID"));
-			this.oleDbCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Zeitpunkt"));
-			this.oleDbCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Zeitpunkt"));
+			this.oleDbCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 8, "Zeitpunkt"));
+			this.oleDbCommand1.Parameters.Add(new System.Data.OleDb.OleDbParameter("Zeitpunkt1", System.Data.OleDb.OleDbType.Date, 8, "Zeitpunkt"));
 			// 
 			// daRepAufgabe
 			// 

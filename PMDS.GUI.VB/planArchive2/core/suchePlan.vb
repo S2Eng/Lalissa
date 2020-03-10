@@ -161,34 +161,34 @@ Public Class suchePlan
             Dim cmd As New OleDbCommand()
             If iTyp = 1 Then
                 If Not gen.IsNull(VonTmp) Then
-                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("empfangenAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "empfangenAm")).Value = VonTmp
+                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("empfangenAm", System.Data.OleDb.OleDbType.Date, 16, "empfangenAm")).Value = VonTmp
                 End If
                 If Not gen.IsNull(BisTmp) Then
-                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("empfangenAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "empfangenAm")).Value = BisTmp
+                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("empfangenAm", System.Data.OleDb.OleDbType.Date, 16, "empfangenAm")).Value = BisTmp
                 End If
 
             ElseIf iTyp = 2 Then
                 If tDesign = 1 Then
                     If Not gen.IsNull(VonTmp) Then
-                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BeginntAm")).Value = VonTmp
+                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = VonTmp
                     End If
                     If Not gen.IsNull(BisTmp) Then
-                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BeginntAm")).Value = BisTmp
+                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = BisTmp
                     End If
                 ElseIf tDesign = 0 Then
                     If Not gen.IsNull(VonTmp) Then
-                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("gesendetAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "gesendetAm")).Value = VonTmp
+                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("gesendetAm", System.Data.OleDb.OleDbType.Date, 16, "gesendetAm")).Value = VonTmp
                     End If
                     If Not gen.IsNull(BisTmp) Then
-                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("gesendetAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "gesendetAm")).Value = BisTmp
+                        cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("gesendetAm", System.Data.OleDb.OleDbType.Date, 16, "gesendetAm")).Value = BisTmp
                     End If
                 End If
             Else
                 If Not gen.IsNull(VonTmp) Then
-                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BeginntAm")).Value = VonTmp
+                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = VonTmp
                 End If
                 If Not gen.IsNull(BisTmp) Then
-                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BeginntAm")).Value = BisTmp
+                    cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = BisTmp
                 End If
             End If
 

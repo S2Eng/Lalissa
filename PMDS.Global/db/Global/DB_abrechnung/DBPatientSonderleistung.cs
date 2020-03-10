@@ -87,14 +87,14 @@ namespace PMDS.Calc.Admin.DB
             new System.Data.OleDb.OleDbParameter("Anzahl", System.Data.OleDb.OleDbType.Integer, 0, "Anzahl"),
             new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Betrag", System.Data.DataRowVersion.Current, null),
             new System.Data.OleDb.OleDbParameter("MWST", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "MWST", System.Data.DataRowVersion.Current, null),
-            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum"),
             new System.Data.OleDb.OleDbParameter("AbgerechnetJN", System.Data.OleDb.OleDbType.Boolean, 0, "AbgerechnetJN"),
             new System.Data.OleDb.OleDbParameter("IDSonderleistungskatalog", System.Data.OleDb.OleDbType.Guid, 0, "IDSonderleistungskatalog"),
             new System.Data.OleDb.OleDbParameter("Belegnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Belegnummer"),
             new System.Data.OleDb.OleDbParameter("JahrAbrechnung", System.Data.OleDb.OleDbType.Integer, 0, "JahrAbrechnung"),
             new System.Data.OleDb.OleDbParameter("MonatAbrechnung", System.Data.OleDb.OleDbType.Integer, 0, "MonatAbrechnung"),
             new System.Data.OleDb.OleDbParameter("EinzelPreis", System.Data.OleDb.OleDbType.Double, 0, "EinzelPreis"),
-            new System.Data.OleDb.OleDbParameter("datumVerrech", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "datumVerrech"),
+            new System.Data.OleDb.OleDbParameter("datumVerrech", System.Data.OleDb.OleDbType.Date, 16, "datumVerrech"),
             new System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik")});
             // 
             // oleDbSelectCommand1
@@ -116,14 +116,14 @@ namespace PMDS.Calc.Admin.DB
             new System.Data.OleDb.OleDbParameter("Anzahl", System.Data.OleDb.OleDbType.Integer, 0, "Anzahl"),
             new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Betrag", System.Data.DataRowVersion.Current, null),
             new System.Data.OleDb.OleDbParameter("MWST", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "MWST", System.Data.DataRowVersion.Current, null),
-            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum"),
             new System.Data.OleDb.OleDbParameter("AbgerechnetJN", System.Data.OleDb.OleDbType.Boolean, 0, "AbgerechnetJN"),
             new System.Data.OleDb.OleDbParameter("IDSonderleistungskatalog", System.Data.OleDb.OleDbType.Guid, 0, "IDSonderleistungskatalog"),
             new System.Data.OleDb.OleDbParameter("Belegnummer", System.Data.OleDb.OleDbType.VarChar, 0, "Belegnummer"),
             new System.Data.OleDb.OleDbParameter("JahrAbrechnung", System.Data.OleDb.OleDbType.Integer, 0, "JahrAbrechnung"),
             new System.Data.OleDb.OleDbParameter("MonatAbrechnung", System.Data.OleDb.OleDbType.Integer, 0, "MonatAbrechnung"),
             new System.Data.OleDb.OleDbParameter("EinzelPreis", System.Data.OleDb.OleDbType.Double, 0, "EinzelPreis"),
-            new System.Data.OleDb.OleDbParameter("datumVerrech", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "datumVerrech"),
+            new System.Data.OleDb.OleDbParameter("datumVerrech", System.Data.OleDb.OleDbType.Date, 16, "datumVerrech"),
             new System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
 

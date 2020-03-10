@@ -46,8 +46,8 @@
             this.oleDbSelectCommand1.Connection = this.dbConn;
             this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient"),
-            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datum"),
-            new System.Data.OleDb.OleDbParameter("Datum1", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 8, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum1", System.Data.OleDb.OleDbType.Date, 8, "Datum"),
             new System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 16, "IDKlinik")});
             // 
             // dbConn
@@ -63,7 +63,7 @@
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
             new System.Data.OleDb.OleDbParameter("IDBenutzerdurchgefuehrt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerdurchgefuehrt"),
             new System.Data.OleDb.OleDbParameter("BelegNr", System.Data.OleDb.OleDbType.VarChar, 0, "BelegNr"),
-            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum"),
             new System.Data.OleDb.OleDbParameter("Grund", System.Data.OleDb.OleDbType.VarChar, 0, "Grund"),
             new System.Data.OleDb.OleDbParameter("Einzahlung", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Einzahlung", System.Data.DataRowVersion.Current, null),
             new System.Data.OleDb.OleDbParameter("Auszahlung", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Auszahlung", System.Data.DataRowVersion.Current, null),
@@ -83,7 +83,7 @@
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
             new System.Data.OleDb.OleDbParameter("IDBenutzerdurchgefuehrt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerdurchgefuehrt"),
             new System.Data.OleDb.OleDbParameter("BelegNr", System.Data.OleDb.OleDbType.VarChar, 0, "BelegNr"),
-            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Datum"),
+            new System.Data.OleDb.OleDbParameter("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum"),
             new System.Data.OleDb.OleDbParameter("Grund", System.Data.OleDb.OleDbType.VarChar, 0, "Grund"),
             new System.Data.OleDb.OleDbParameter("Einzahlung", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Einzahlung", System.Data.DataRowVersion.Current, null),
             new System.Data.OleDb.OleDbParameter("Auszahlung", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Auszahlung", System.Data.DataRowVersion.Current, null),

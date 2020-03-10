@@ -336,7 +336,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDKontakt", System.Data.OleDb.OleDbType.Guid, 0, "IDKontakt"),
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
             new System.Data.OleDb.OleDbParameter("Nachname", System.Data.OleDb.OleDbType.VarChar, 0, "Nachname"),
-            new System.Data.OleDb.OleDbParameter("Geburtsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Geburtsdatum"),
+            new System.Data.OleDb.OleDbParameter("Geburtsdatum", System.Data.OleDb.OleDbType.Date, 16, "Geburtsdatum"),
             new System.Data.OleDb.OleDbParameter("Titel", System.Data.OleDb.OleDbType.VarChar, 0, "Titel"),
             new System.Data.OleDb.OleDbParameter("Sexus", System.Data.OleDb.OleDbType.VarChar, 0, "Sexus"),
             new System.Data.OleDb.OleDbParameter("Konfision", System.Data.OleDb.OleDbType.VarChar, 0, "Konfision"),
@@ -359,23 +359,23 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Betreuer", System.Data.OleDb.OleDbType.LongVarChar, 0, "Betreuer"),
             new System.Data.OleDb.OleDbParameter("Sachwalter", System.Data.OleDb.OleDbType.LongVarChar, 0, "Sachwalter"),
             new System.Data.OleDb.OleDbParameter("SachWalterBelange", System.Data.OleDb.OleDbType.VarChar, 0, "SachWalterBelange"),
-            new System.Data.OleDb.OleDbParameter("SachWalterVon", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SachWalterVon"),
-            new System.Data.OleDb.OleDbParameter("SachWalterBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SachWalterBis"),
+            new System.Data.OleDb.OleDbParameter("SachWalterVon", System.Data.OleDb.OleDbType.Date, 16, "SachWalterVon"),
+            new System.Data.OleDb.OleDbParameter("SachWalterBis", System.Data.OleDb.OleDbType.Date, 16, "SachWalterBis"),
             new System.Data.OleDb.OleDbParameter("SterbeRegel", System.Data.OleDb.OleDbType.LongVarChar, 0, "SterbeRegel"),
             new System.Data.OleDb.OleDbParameter("Depotinjektion", System.Data.OleDb.OleDbType.VarChar, 0, "Depotinjektion"),
             new System.Data.OleDb.OleDbParameter("Hausarzt", System.Data.OleDb.OleDbType.LongVarChar, 0, "Hausarzt"),
             new System.Data.OleDb.OleDbParameter("Vermerk", System.Data.OleDb.OleDbType.LongVarChar, 0, "Vermerk"),
-            new System.Data.OleDb.OleDbParameter("SterbeDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SterbeDatum"),
+            new System.Data.OleDb.OleDbParameter("SterbeDatum", System.Data.OleDb.OleDbType.Date, 16, "SterbeDatum"),
             new System.Data.OleDb.OleDbParameter("AktuellerDienstgeber", System.Data.OleDb.OleDbType.VarChar, 0, "AktuellerDienstgeber"),
             new System.Data.OleDb.OleDbParameter("DerzeitigerBeruf", System.Data.OleDb.OleDbType.VarChar, 0, "DerzeitigerBeruf"),
             new System.Data.OleDb.OleDbParameter("RezeptgebuehrbefreiungJN", System.Data.OleDb.OleDbType.Boolean, 0, "RezeptgebuehrbefreiungJN"),
             new System.Data.OleDb.OleDbParameter("PflegegeldantragJN", System.Data.OleDb.OleDbType.Boolean, 0, "PflegegeldantragJN"),
-            new System.Data.OleDb.OleDbParameter("DatumPflegegeldantrag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumPflegegeldantrag"),
+            new System.Data.OleDb.OleDbParameter("DatumPflegegeldantrag", System.Data.OleDb.OleDbType.Date, 16, "DatumPflegegeldantrag"),
             new System.Data.OleDb.OleDbParameter("PensionsteilungsantragJN", System.Data.OleDb.OleDbType.Boolean, 0, "PensionsteilungsantragJN"),
-            new System.Data.OleDb.OleDbParameter("DatumPensionsteilungsantrag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumPensionsteilungsantrag"),
+            new System.Data.OleDb.OleDbParameter("DatumPensionsteilungsantrag", System.Data.OleDb.OleDbType.Date, 16, "DatumPensionsteilungsantrag"),
             new System.Data.OleDb.OleDbParameter("FIBUKonto", System.Data.OleDb.OleDbType.VarChar, 0, "FIBUKonto"),
-            new System.Data.OleDb.OleDbParameter("RollungVon", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "RollungVon"),
-            new System.Data.OleDb.OleDbParameter("RollungBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "RollungBis"),
+            new System.Data.OleDb.OleDbParameter("RollungVon", System.Data.OleDb.OleDbType.Date, 16, "RollungVon"),
+            new System.Data.OleDb.OleDbParameter("RollungBis", System.Data.OleDb.OleDbType.Date, 16, "RollungBis"),
             new System.Data.OleDb.OleDbParameter("Klientennummer", System.Data.OleDb.OleDbType.VarChar, 0, "Klientennummer"),
             new System.Data.OleDb.OleDbParameter("IDAbteilung", System.Data.OleDb.OleDbType.Guid, 0, "IDAbteilung"),
             new System.Data.OleDb.OleDbParameter("abwesenheitenHändBerech", System.Data.OleDb.OleDbType.Boolean, 0, "abwesenheitenHändBerech"),
@@ -386,7 +386,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("EinverständniserklärungFileType", System.Data.OleDb.OleDbType.VarWChar, 0, "EinverständniserklärungFileType"),
             new System.Data.OleDb.OleDbParameter("jpg_Einverständniserklärung", System.Data.OleDb.OleDbType.LongVarBinary, 0, "jpg_Einverständniserklärung"),
             new System.Data.OleDb.OleDbParameter("Verstorben", System.Data.OleDb.OleDbType.Boolean, 0, "Verstorben"),
-            new System.Data.OleDb.OleDbParameter("Todeszeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Todeszeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("Todeszeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Todeszeitpunkt"),
             new System.Data.OleDb.OleDbParameter("DNR", System.Data.OleDb.OleDbType.Boolean, 0, "DNR"),
             new System.Data.OleDb.OleDbParameter("Adelstitel", System.Data.OleDb.OleDbType.VarChar, 0, "Adelstitel"),
             new System.Data.OleDb.OleDbParameter("Anrede", System.Data.OleDb.OleDbType.VarChar, 0, "Anrede"),
@@ -404,9 +404,9 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("BewerberJN", System.Data.OleDb.OleDbType.Boolean, 0, "BewerberJN"),
             new System.Data.OleDb.OleDbParameter("BewerbungaktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "BewerbungaktivJN"),
             new System.Data.OleDb.OleDbParameter("PflegeArt", System.Data.OleDb.OleDbType.VarChar, 0, "PflegeArt"),
-            new System.Data.OleDb.OleDbParameter("BewerbungDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BewerbungDatum"),
-            new System.Data.OleDb.OleDbParameter("EinzugswunschDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EinzugswunschDatum"),
-            new System.Data.OleDb.OleDbParameter("AuszugswunschDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "AuszugswunschDatum"),
+            new System.Data.OleDb.OleDbParameter("BewerbungDatum", System.Data.OleDb.OleDbType.Date, 16, "BewerbungDatum"),
+            new System.Data.OleDb.OleDbParameter("EinzugswunschDatum", System.Data.OleDb.OleDbType.Date, 16, "EinzugswunschDatum"),
+            new System.Data.OleDb.OleDbParameter("AuszugswunschDatum", System.Data.OleDb.OleDbType.Date, 16, "AuszugswunschDatum"),
             new System.Data.OleDb.OleDbParameter("Zimmerwunsch", System.Data.OleDb.OleDbType.VarChar, 0, "Zimmerwunsch"),
             new System.Data.OleDb.OleDbParameter("Stationswunsch", System.Data.OleDb.OleDbType.VarChar, 0, "Stationswunsch"),
             new System.Data.OleDb.OleDbParameter("SonstigeWuensche", System.Data.OleDb.OleDbType.VarChar, 0, "SonstigeWuensche"),
@@ -421,14 +421,14 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Zustaendige_Stelle", System.Data.OleDb.OleDbType.VarChar, 0, "Zustaendige_Stelle"),
             new System.Data.OleDb.OleDbParameter("Groesse", System.Data.OleDb.OleDbType.Integer, 0, "Groesse"),
             new System.Data.OleDb.OleDbParameter("Statur", System.Data.OleDb.OleDbType.VarChar, 0, "Statur"),
-            new System.Data.OleDb.OleDbParameter("Namenstag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Namenstag"),
+            new System.Data.OleDb.OleDbParameter("Namenstag", System.Data.OleDb.OleDbType.Date, 16, "Namenstag"),
             new System.Data.OleDb.OleDbParameter("Kosename", System.Data.OleDb.OleDbType.VarChar, 0, "Kosename"),
             new System.Data.OleDb.OleDbParameter("Privatversicherung", System.Data.OleDb.OleDbType.VarChar, 0, "Privatversicherung"),
             new System.Data.OleDb.OleDbParameter("PrivPolNr", System.Data.OleDb.OleDbType.VarChar, 0, "PrivPolNr"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
             new System.Data.OleDb.OleDbParameter("PatientenverfuegungJN", System.Data.OleDb.OleDbType.Boolean, 0, "PatientenverfuegungJN"),
             new System.Data.OleDb.OleDbParameter("PatientenverfuegungBeachtlichJN", System.Data.OleDb.OleDbType.Boolean, 0, "PatientenverfuegungBeachtlichJN"),
-            new System.Data.OleDb.OleDbParameter("PatientverfuegungDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "PatientverfuegungDatum"),
+            new System.Data.OleDb.OleDbParameter("PatientverfuegungDatum", System.Data.OleDb.OleDbType.Date, 16, "PatientverfuegungDatum"),
             new System.Data.OleDb.OleDbParameter("PatientverfuegungAnmerkung", System.Data.OleDb.OleDbType.VarChar, 0, "PatientverfuegungAnmerkung"),
             new System.Data.OleDb.OleDbParameter("Milieubetreuung", System.Data.OleDb.OleDbType.Boolean, 0, "Milieubetreuung"),
             new System.Data.OleDb.OleDbParameter("KZUeberlebender", System.Data.OleDb.OleDbType.Boolean, 0, "KZUeberlebender"),
@@ -458,7 +458,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDKontakt", System.Data.OleDb.OleDbType.Guid, 0, "IDKontakt"),
             new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
             new System.Data.OleDb.OleDbParameter("Nachname", System.Data.OleDb.OleDbType.VarChar, 0, "Nachname"),
-            new System.Data.OleDb.OleDbParameter("Geburtsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Geburtsdatum"),
+            new System.Data.OleDb.OleDbParameter("Geburtsdatum", System.Data.OleDb.OleDbType.Date, 16, "Geburtsdatum"),
             new System.Data.OleDb.OleDbParameter("Titel", System.Data.OleDb.OleDbType.VarChar, 0, "Titel"),
             new System.Data.OleDb.OleDbParameter("Sexus", System.Data.OleDb.OleDbType.VarChar, 0, "Sexus"),
             new System.Data.OleDb.OleDbParameter("Konfision", System.Data.OleDb.OleDbType.VarChar, 0, "Konfision"),
@@ -481,23 +481,23 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Betreuer", System.Data.OleDb.OleDbType.LongVarChar, 0, "Betreuer"),
             new System.Data.OleDb.OleDbParameter("Sachwalter", System.Data.OleDb.OleDbType.LongVarChar, 0, "Sachwalter"),
             new System.Data.OleDb.OleDbParameter("SachWalterBelange", System.Data.OleDb.OleDbType.VarChar, 0, "SachWalterBelange"),
-            new System.Data.OleDb.OleDbParameter("SachWalterVon", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SachWalterVon"),
-            new System.Data.OleDb.OleDbParameter("SachWalterBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SachWalterBis"),
+            new System.Data.OleDb.OleDbParameter("SachWalterVon", System.Data.OleDb.OleDbType.Date, 16, "SachWalterVon"),
+            new System.Data.OleDb.OleDbParameter("SachWalterBis", System.Data.OleDb.OleDbType.Date, 16, "SachWalterBis"),
             new System.Data.OleDb.OleDbParameter("SterbeRegel", System.Data.OleDb.OleDbType.LongVarChar, 0, "SterbeRegel"),
             new System.Data.OleDb.OleDbParameter("Depotinjektion", System.Data.OleDb.OleDbType.VarChar, 0, "Depotinjektion"),
             new System.Data.OleDb.OleDbParameter("Hausarzt", System.Data.OleDb.OleDbType.LongVarChar, 0, "Hausarzt"),
             new System.Data.OleDb.OleDbParameter("Vermerk", System.Data.OleDb.OleDbType.LongVarChar, 0, "Vermerk"),
-            new System.Data.OleDb.OleDbParameter("SterbeDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SterbeDatum"),
+            new System.Data.OleDb.OleDbParameter("SterbeDatum", System.Data.OleDb.OleDbType.Date, 16, "SterbeDatum"),
             new System.Data.OleDb.OleDbParameter("AktuellerDienstgeber", System.Data.OleDb.OleDbType.VarChar, 0, "AktuellerDienstgeber"),
             new System.Data.OleDb.OleDbParameter("DerzeitigerBeruf", System.Data.OleDb.OleDbType.VarChar, 0, "DerzeitigerBeruf"),
             new System.Data.OleDb.OleDbParameter("RezeptgebuehrbefreiungJN", System.Data.OleDb.OleDbType.Boolean, 0, "RezeptgebuehrbefreiungJN"),
             new System.Data.OleDb.OleDbParameter("PflegegeldantragJN", System.Data.OleDb.OleDbType.Boolean, 0, "PflegegeldantragJN"),
-            new System.Data.OleDb.OleDbParameter("DatumPflegegeldantrag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumPflegegeldantrag"),
+            new System.Data.OleDb.OleDbParameter("DatumPflegegeldantrag", System.Data.OleDb.OleDbType.Date, 16, "DatumPflegegeldantrag"),
             new System.Data.OleDb.OleDbParameter("PensionsteilungsantragJN", System.Data.OleDb.OleDbType.Boolean, 0, "PensionsteilungsantragJN"),
-            new System.Data.OleDb.OleDbParameter("DatumPensionsteilungsantrag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumPensionsteilungsantrag"),
+            new System.Data.OleDb.OleDbParameter("DatumPensionsteilungsantrag", System.Data.OleDb.OleDbType.Date, 16, "DatumPensionsteilungsantrag"),
             new System.Data.OleDb.OleDbParameter("FIBUKonto", System.Data.OleDb.OleDbType.VarChar, 0, "FIBUKonto"),
-            new System.Data.OleDb.OleDbParameter("RollungVon", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "RollungVon"),
-            new System.Data.OleDb.OleDbParameter("RollungBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "RollungBis"),
+            new System.Data.OleDb.OleDbParameter("RollungVon", System.Data.OleDb.OleDbType.Date, 16, "RollungVon"),
+            new System.Data.OleDb.OleDbParameter("RollungBis", System.Data.OleDb.OleDbType.Date, 16, "RollungBis"),
             new System.Data.OleDb.OleDbParameter("Klientennummer", System.Data.OleDb.OleDbType.VarChar, 0, "Klientennummer"),
             new System.Data.OleDb.OleDbParameter("IDAbteilung", System.Data.OleDb.OleDbType.Guid, 0, "IDAbteilung"),
             new System.Data.OleDb.OleDbParameter("abwesenheitenHändBerech", System.Data.OleDb.OleDbType.Boolean, 0, "abwesenheitenHändBerech"),
@@ -508,7 +508,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("EinverständniserklärungFileType", System.Data.OleDb.OleDbType.VarWChar, 0, "EinverständniserklärungFileType"),
             new System.Data.OleDb.OleDbParameter("jpg_Einverständniserklärung", System.Data.OleDb.OleDbType.LongVarBinary, 0, "jpg_Einverständniserklärung"),
             new System.Data.OleDb.OleDbParameter("Verstorben", System.Data.OleDb.OleDbType.Boolean, 0, "Verstorben"),
-            new System.Data.OleDb.OleDbParameter("Todeszeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Todeszeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("Todeszeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Todeszeitpunkt"),
             new System.Data.OleDb.OleDbParameter("DNR", System.Data.OleDb.OleDbType.Boolean, 0, "DNR"),
             new System.Data.OleDb.OleDbParameter("Adelstitel", System.Data.OleDb.OleDbType.VarChar, 0, "Adelstitel"),
             new System.Data.OleDb.OleDbParameter("Anrede", System.Data.OleDb.OleDbType.VarChar, 0, "Anrede"),
@@ -526,9 +526,9 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("BewerberJN", System.Data.OleDb.OleDbType.Boolean, 0, "BewerberJN"),
             new System.Data.OleDb.OleDbParameter("BewerbungaktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "BewerbungaktivJN"),
             new System.Data.OleDb.OleDbParameter("PflegeArt", System.Data.OleDb.OleDbType.VarChar, 0, "PflegeArt"),
-            new System.Data.OleDb.OleDbParameter("BewerbungDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BewerbungDatum"),
-            new System.Data.OleDb.OleDbParameter("EinzugswunschDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EinzugswunschDatum"),
-            new System.Data.OleDb.OleDbParameter("AuszugswunschDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "AuszugswunschDatum"),
+            new System.Data.OleDb.OleDbParameter("BewerbungDatum", System.Data.OleDb.OleDbType.Date, 16, "BewerbungDatum"),
+            new System.Data.OleDb.OleDbParameter("EinzugswunschDatum", System.Data.OleDb.OleDbType.Date, 16, "EinzugswunschDatum"),
+            new System.Data.OleDb.OleDbParameter("AuszugswunschDatum", System.Data.OleDb.OleDbType.Date, 16, "AuszugswunschDatum"),
             new System.Data.OleDb.OleDbParameter("Zimmerwunsch", System.Data.OleDb.OleDbType.VarChar, 0, "Zimmerwunsch"),
             new System.Data.OleDb.OleDbParameter("Stationswunsch", System.Data.OleDb.OleDbType.VarChar, 0, "Stationswunsch"),
             new System.Data.OleDb.OleDbParameter("SonstigeWuensche", System.Data.OleDb.OleDbType.VarChar, 0, "SonstigeWuensche"),
@@ -543,14 +543,14 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("Zustaendige_Stelle", System.Data.OleDb.OleDbType.VarChar, 0, "Zustaendige_Stelle"),
             new System.Data.OleDb.OleDbParameter("Groesse", System.Data.OleDb.OleDbType.Integer, 0, "Groesse"),
             new System.Data.OleDb.OleDbParameter("Statur", System.Data.OleDb.OleDbType.VarChar, 0, "Statur"),
-            new System.Data.OleDb.OleDbParameter("Namenstag", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Namenstag"),
+            new System.Data.OleDb.OleDbParameter("Namenstag", System.Data.OleDb.OleDbType.Date, 16, "Namenstag"),
             new System.Data.OleDb.OleDbParameter("Kosename", System.Data.OleDb.OleDbType.VarChar, 0, "Kosename"),
             new System.Data.OleDb.OleDbParameter("Privatversicherung", System.Data.OleDb.OleDbType.VarChar, 0, "Privatversicherung"),
             new System.Data.OleDb.OleDbParameter("PrivPolNr", System.Data.OleDb.OleDbType.VarChar, 0, "PrivPolNr"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
             new System.Data.OleDb.OleDbParameter("PatientenverfuegungJN", System.Data.OleDb.OleDbType.Boolean, 0, "PatientenverfuegungJN"),
             new System.Data.OleDb.OleDbParameter("PatientenverfuegungBeachtlichJN", System.Data.OleDb.OleDbType.Boolean, 0, "PatientenverfuegungBeachtlichJN"),
-            new System.Data.OleDb.OleDbParameter("PatientverfuegungDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "PatientverfuegungDatum"),
+            new System.Data.OleDb.OleDbParameter("PatientverfuegungDatum", System.Data.OleDb.OleDbType.Date, 16, "PatientverfuegungDatum"),
             new System.Data.OleDb.OleDbParameter("PatientverfuegungAnmerkung", System.Data.OleDb.OleDbType.VarChar, 0, "PatientverfuegungAnmerkung"),
             new System.Data.OleDb.OleDbParameter("Milieubetreuung", System.Data.OleDb.OleDbType.Boolean, 0, "Milieubetreuung"),
             new System.Data.OleDb.OleDbParameter("KZUeberlebender", System.Data.OleDb.OleDbType.Boolean, 0, "KZUeberlebender"),
@@ -627,8 +627,8 @@ namespace PMDS.DB
             this.oleDbCommand2.Connection = this.oleDbConnection1;
             this.oleDbCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Bis")});
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBDate, 16, "Bis")});
             // 
             // oleDbSelectCommand4
             // 
@@ -1287,7 +1287,7 @@ namespace PMDS.DB
                 cmd.CommandText = "SELECT ID FROM Patient WHERE (Vorname like ?) and (Nachname like ?) and (Geburtsdatum = ?)";
                 cmd.Parameters.Add("VORNAME", OleDbType.VarChar).Value = vorname;
                 cmd.Parameters.Add("NACHNAME", OleDbType.VarChar).Value = nachname;
-                cmd.Parameters.Add("GEBDATUM", OleDbType.DBTimeStamp).Value = gebDatum;
+                cmd.Parameters.Add("GEBDATUM", OleDbType.Date, 16, "GEBDATUM").Value = gebDatum;
                 cmd.Connection = PMDS.Global.dbBase.getConn();
                 System.Data.DataTable dtSelect = new System.Data.DataTable();
                 OleDbDataAdapter da = new OleDbDataAdapter();
@@ -1375,7 +1375,7 @@ namespace PMDS.DB
                 _cmdPflegeStufe = new OleDbCommand();
                 _cmdPflegeStufe.CommandText = "SELECT TOP 1 Pflegegeldstufe.StufeNr FROM PatientPflegestufe INNER JOIN Pflegegeldstufe ON PatientPflegestufe.IDPflegegeldstufe = Pflegegeldstufe.ID WHERE PatientPflegestufe.IDPatient = ? and (CAST(FLOOR(CAST(PatientPflegestufe.GueltigAb AS FLOAT)) AS DATETIME) <= ?) ORDER BY PatientPflegestufe.GueltigAb DESC";
                 _cmdPflegeStufe.Parameters.Add("IDPatient", OleDbType.Guid);
-                _cmdPflegeStufe.Parameters.Add("GueltigAb", OleDbType.DBTimeStamp);
+                _cmdPflegeStufe.Parameters.Add("GueltigAb", OleDbType.Date, 16, "GueltigAb");
             }
 
             _cmdPflegeStufe.Parameters[0].Value = IDPatient;
@@ -1413,9 +1413,9 @@ namespace PMDS.DB
                     _cmdSachwalter = new OleDbCommand();
                     _cmdSachwalter.CommandText = "SELECT Vorname + ' ' + Nachname AS Name, SachwalterJN, Von, Belange FROM Sachwalter WHERE IDPAtient = ? and ( (Von <= ?) AND (Bis IS NULL) OR (Von <= ?) AND (Bis >= ?))";
                     _cmdSachwalter.Parameters.Add("IDPatient", OleDbType.Guid);
-                    _cmdSachwalter.Parameters.Add("V1", OleDbType.DBTimeStamp);
-                    _cmdSachwalter.Parameters.Add("V2", OleDbType.DBTimeStamp);
-                    _cmdSachwalter.Parameters.Add("B1", OleDbType.DBTimeStamp);
+                    _cmdSachwalter.Parameters.Add("V1", OleDbType.Date, 16, "V1");
+                    _cmdSachwalter.Parameters.Add("V2", OleDbType.Date, 16, "V2");
+                    _cmdSachwalter.Parameters.Add("B1", OleDbType.Date, 16, "B1");
                 }
 
                 _cmdSachwalter.Parameters[0].Value = IDPatient;
@@ -1490,8 +1490,8 @@ namespace PMDS.DB
                         " FROM dbo.Unterbringung  where IDAufenthalt = ? and (AufgehobenAm is null or AufgehobenAm > ?) and  Beginn <= ? ";
 
                 _cmdFreiheitsbeschränkung.Parameters.Add("IDAufenthalt", OleDbType.Guid);
-                _cmdFreiheitsbeschränkung.Parameters.Add("AufgehobenAm", OleDbType.DBTimeStamp);
-                _cmdFreiheitsbeschränkung.Parameters.Add("Beginn", OleDbType.DBTimeStamp    );
+                _cmdFreiheitsbeschränkung.Parameters.Add("AufgehobenAm", OleDbType.Date, 16, "AufgehobenAm");
+                _cmdFreiheitsbeschränkung.Parameters.Add("Beginn", OleDbType.Date, 16, "Beginn");
             }
 
             _cmdFreiheitsbeschränkung.Parameters[0].Value = ENV.IDAUFENTHALT;

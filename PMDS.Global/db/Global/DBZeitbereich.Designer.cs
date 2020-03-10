@@ -49,8 +49,8 @@
             this.oleDbInsertCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
-            new System.Data.OleDb.OleDbParameter("von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "von"),
-            new System.Data.OleDb.OleDbParameter("bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "bis")});
+            new System.Data.OleDb.OleDbParameter("von", System.Data.OleDb.OleDbType.Date, 16, "von"),
+            new System.Data.OleDb.OleDbParameter("bis", System.Data.OleDb.OleDbType.Date, 16, "bis")});
             // 
             // oleDbUpdateCommand1
             // 
@@ -60,8 +60,8 @@
             this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("Bezeichnung", System.Data.OleDb.OleDbType.VarChar, 0, "Bezeichnung"),
-            new System.Data.OleDb.OleDbParameter("von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "von"),
-            new System.Data.OleDb.OleDbParameter("bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "bis"),
+            new System.Data.OleDb.OleDbParameter("von", System.Data.OleDb.OleDbType.Date, 16, "von"),
+            new System.Data.OleDb.OleDbParameter("bis", System.Data.OleDb.OleDbType.Date, 16, "bis"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand1

@@ -288,7 +288,7 @@ namespace PMDS.Calc.Admin.DB
             this.oleDbInsertCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("IDLeistungskatalog", System.Data.OleDb.OleDbType.Guid, 0, "IDLeistungskatalog"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigAb"),
+            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.Date, 16, "GueltigAb"),
             new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Double, 0, "Betrag"),
             new System.Data.OleDb.OleDbParameter("MWST", System.Data.OleDb.OleDbType.Double, 0, "MWST"),
             new System.Data.OleDb.OleDbParameter("GutschriftProTagAbwesend", System.Data.OleDb.OleDbType.Double, 0, "GutschriftProTagAbwesend"),
@@ -312,7 +312,7 @@ namespace PMDS.Calc.Admin.DB
             this.oleDbUpdateCommand2.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("IDLeistungskatalog", System.Data.OleDb.OleDbType.Guid, 0, "IDLeistungskatalog"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigAb"),
+            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.Date, 16, "GueltigAb"),
             new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Double, 0, "Betrag"),
             new System.Data.OleDb.OleDbParameter("MWST", System.Data.OleDb.OleDbType.Double, 0, "MWST"),
             new System.Data.OleDb.OleDbParameter("GutschriftProTagAbwesend", System.Data.OleDb.OleDbType.Double, 0, "GutschriftProTagAbwesend"),

@@ -66,16 +66,16 @@
             this.oleDbInsertCommand1.Connection = oleDbConnection1;
             this.oleDbInsertCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt"),
             new System.Data.OleDb.OleDbParameter("IDStandardProzeduren", System.Data.OleDb.OleDbType.Guid, 0, "IDStandardProzeduren"),
             new System.Data.OleDb.OleDbParameter("Anmerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Anmerkung"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
             new System.Data.OleDb.OleDbParameter("offenJN", System.Data.OleDb.OleDbType.Boolean, 0, "offenJN"),
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
-            new System.Data.OleDb.OleDbParameter("EreignisZeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EreignisZeitpunkt")});
+            new System.Data.OleDb.OleDbParameter("EreignisZeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "EreignisZeitpunkt")});
             // 
             // oleDbUpdateCommand1
             // 
@@ -83,16 +83,16 @@
             this.oleDbUpdateCommand1.Connection = oleDbConnection1;
             this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Zeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("Zeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "Zeitpunkt"),
             new System.Data.OleDb.OleDbParameter("IDStandardProzeduren", System.Data.OleDb.OleDbType.Guid, 0, "IDStandardProzeduren"),
             new System.Data.OleDb.OleDbParameter("Anmerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Anmerkung"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
             new System.Data.OleDb.OleDbParameter("offenJN", System.Data.OleDb.OleDbType.Boolean, 0, "offenJN"),
             new System.Data.OleDb.OleDbParameter("IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, "IDAufenthalt"),
-            new System.Data.OleDb.OleDbParameter("EreignisZeitpunkt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EreignisZeitpunkt"),
+            new System.Data.OleDb.OleDbParameter("EreignisZeitpunkt", System.Data.OleDb.OleDbType.Date, 16, "EreignisZeitpunkt"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand1
@@ -143,10 +143,10 @@
             new System.Data.OleDb.OleDbParameter("Anmerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Anmerkung"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
             new System.Data.OleDb.OleDbParameter("aktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "aktivJN"),
-            new System.Data.OleDb.OleDbParameter("wiederumam", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "wiederumam")});
+            new System.Data.OleDb.OleDbParameter("wiederumam", System.Data.OleDb.OleDbType.Date, 16, "wiederumam")});
             // 
             // oleDbUpdateCommand2
             // 
@@ -160,10 +160,10 @@
             new System.Data.OleDb.OleDbParameter("Anmerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Anmerkung"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
             new System.Data.OleDb.OleDbParameter("aktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "aktivJN"),
-            new System.Data.OleDb.OleDbParameter("wiederumam", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "wiederumam"),
+            new System.Data.OleDb.OleDbParameter("wiederumam", System.Data.OleDb.OleDbType.Date, 16, "wiederumam"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand2

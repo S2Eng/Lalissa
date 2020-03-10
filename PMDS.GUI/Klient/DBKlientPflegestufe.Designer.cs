@@ -67,12 +67,12 @@ namespace PMDS.Klient
             new System.Data.OleDb.OleDbParameter("IDPflegegeldstufe", System.Data.OleDb.OleDbType.Guid, 0, "IDPflegegeldstufe"),
             new System.Data.OleDb.OleDbParameter("BetragVerwendbar", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "BetragVerwendbar", System.Data.DataRowVersion.Current, null),
             new System.Data.OleDb.OleDbParameter("GutschriftProTagAbwesend", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(3)), "GutschriftProTagAbwesend", System.Data.DataRowVersion.Current, null),
-            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("AenderungsantragDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "AenderungsantragDatum"),
+            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.Date, 16, "GueltigAb"),
+            new System.Data.OleDb.OleDbParameter("AenderungsantragDatum", System.Data.OleDb.OleDbType.Date, 16, "AenderungsantragDatum"),
             new System.Data.OleDb.OleDbParameter("IDPflegegeldstufeAntrag", System.Data.OleDb.OleDbType.Guid, 0, "IDPflegegeldstufeAntrag"),
-            new System.Data.OleDb.OleDbParameter("GenehmigungDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GenehmigungDatum"),
+            new System.Data.OleDb.OleDbParameter("GenehmigungDatum", System.Data.OleDb.OleDbType.Date, 16, "GenehmigungDatum"),
             new System.Data.OleDb.OleDbParameter("IDPflegegeldstufeGenehmigt", System.Data.OleDb.OleDbType.Guid, 0, "IDPflegegeldstufeGenehmigt"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigBis")});
+            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 16, "GueltigBis")});
             // 
             // oleDbUpdateCommand1
             // 
@@ -84,12 +84,12 @@ namespace PMDS.Klient
             new System.Data.OleDb.OleDbParameter("IDPflegegeldstufe", System.Data.OleDb.OleDbType.Guid, 0, "IDPflegegeldstufe"),
             new System.Data.OleDb.OleDbParameter("BetragVerwendbar", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "BetragVerwendbar", System.Data.DataRowVersion.Current, null),
             new System.Data.OleDb.OleDbParameter("GutschriftProTagAbwesend", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(3)), "GutschriftProTagAbwesend", System.Data.DataRowVersion.Current, null),
-            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("AenderungsantragDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "AenderungsantragDatum"),
+            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.Date, 16, "GueltigAb"),
+            new System.Data.OleDb.OleDbParameter("AenderungsantragDatum", System.Data.OleDb.OleDbType.Date, 16, "AenderungsantragDatum"),
             new System.Data.OleDb.OleDbParameter("IDPflegegeldstufeAntrag", System.Data.OleDb.OleDbType.Guid, 0, "IDPflegegeldstufeAntrag"),
-            new System.Data.OleDb.OleDbParameter("GenehmigungDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GenehmigungDatum"),
+            new System.Data.OleDb.OleDbParameter("GenehmigungDatum", System.Data.OleDb.OleDbType.Date, 16, "GenehmigungDatum"),
             new System.Data.OleDb.OleDbParameter("IDPflegegeldstufeGenehmigt", System.Data.OleDb.OleDbType.Guid, 0, "IDPflegegeldstufeGenehmigt"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigBis"),
+            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 16, "GueltigBis"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand1

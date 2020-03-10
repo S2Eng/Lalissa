@@ -66,16 +66,16 @@
             new System.Data.OleDb.OleDbParameter("IDBenutzerzurueck", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerzurueck"),
             new System.Data.OleDb.OleDbParameter("Beschreibung", System.Data.OleDb.OleDbType.LongVarChar, 0, "Beschreibung"),
             new System.Data.OleDb.OleDbParameter("Nr", System.Data.OleDb.OleDbType.VarChar, 0, "Nr"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("Eigentuemer", System.Data.OleDb.OleDbType.VarChar, 0, "Eigentuemer"),
             new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
             new System.Data.OleDb.OleDbParameter("HilfesmittelJN", System.Data.OleDb.OleDbType.Boolean, 0, "HilfesmittelJN"),
             new System.Data.OleDb.OleDbParameter("EigentumKlinikJN", System.Data.OleDb.OleDbType.Boolean, 0, "EigentumKlinikJN"),
             new System.Data.OleDb.OleDbParameter("EigentumKlientJN", System.Data.OleDb.OleDbType.Boolean, 0, "EigentumKlientJN"),
             new System.Data.OleDb.OleDbParameter("MieteJN", System.Data.OleDb.OleDbType.Boolean, 0, "MieteJN"),
-            new System.Data.OleDb.OleDbParameter("LetzteUeberpruefungAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LetzteUeberpruefungAm"),
-            new System.Data.OleDb.OleDbParameter("NaechsteUeberpruefungAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "NaechsteUeberpruefungAm")});
+            new System.Data.OleDb.OleDbParameter("LetzteUeberpruefungAm", System.Data.OleDb.OleDbType.Date, 16, "LetzteUeberpruefungAm"),
+            new System.Data.OleDb.OleDbParameter("NaechsteUeberpruefungAm", System.Data.OleDb.OleDbType.Date, 16, "NaechsteUeberpruefungAm")});
             // 
             // oleDbUpdateCommand1
             // 
@@ -88,16 +88,16 @@
             new System.Data.OleDb.OleDbParameter("IDBenutzerzurueck", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzerzurueck"),
             new System.Data.OleDb.OleDbParameter("Beschreibung", System.Data.OleDb.OleDbType.LongVarChar, 0, "Beschreibung"),
             new System.Data.OleDb.OleDbParameter("Nr", System.Data.OleDb.OleDbType.VarChar, 0, "Nr"),
-            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Von"),
-            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Bis"),
+            new System.Data.OleDb.OleDbParameter("Von", System.Data.OleDb.OleDbType.Date, 16, "Von"),
+            new System.Data.OleDb.OleDbParameter("Bis", System.Data.OleDb.OleDbType.Date, 16, "Bis"),
             new System.Data.OleDb.OleDbParameter("Eigentuemer", System.Data.OleDb.OleDbType.VarChar, 0, "Eigentuemer"),
             new System.Data.OleDb.OleDbParameter("Bemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "Bemerkung"),
             new System.Data.OleDb.OleDbParameter("HilfesmittelJN", System.Data.OleDb.OleDbType.Boolean, 0, "HilfesmittelJN"),
             new System.Data.OleDb.OleDbParameter("EigentumKlinikJN", System.Data.OleDb.OleDbType.Boolean, 0, "EigentumKlinikJN"),
             new System.Data.OleDb.OleDbParameter("EigentumKlientJN", System.Data.OleDb.OleDbType.Boolean, 0, "EigentumKlientJN"),
             new System.Data.OleDb.OleDbParameter("MieteJN", System.Data.OleDb.OleDbType.Boolean, 0, "MieteJN"),
-            new System.Data.OleDb.OleDbParameter("LetzteUeberpruefungAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LetzteUeberpruefungAm"),
-            new System.Data.OleDb.OleDbParameter("NaechsteUeberpruefungAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "NaechsteUeberpruefungAm"),
+            new System.Data.OleDb.OleDbParameter("LetzteUeberpruefungAm", System.Data.OleDb.OleDbType.Date, 16, "LetzteUeberpruefungAm"),
+            new System.Data.OleDb.OleDbParameter("NaechsteUeberpruefungAm", System.Data.OleDb.OleDbType.Date, 16, "NaechsteUeberpruefungAm"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand1
