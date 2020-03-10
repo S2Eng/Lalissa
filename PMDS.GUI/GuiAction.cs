@@ -959,6 +959,10 @@ namespace PMDS.GUI
                 {
                     ELGABusiness bElga = new ELGABusiness();
 
+                    if (!ELGABusiness.checkELGASessionActive(true))
+                    {
+                        return false;
+                    }
                     if (!bElga.checkKontaktbestätigung(idPatient, ENV.IDAUFENTHALT, true))
                     {
                         return false;
