@@ -31,7 +31,7 @@ namespace PMDS.GUI
     public partial class ucDynReportParameter : QS2.Desktop.ControlManagment.BaseControl
     {
         private bool _ucValueChangedInProgress = false;             // Signalisiert dass alle ucs informiert werden dass sich ein Abhängigkeitswert verändert hat
-        private string _CurrentFormToShow = "";                     // Speichert die evtl. aufzurufende Form
+        public string _CurrentFormToShow = "";                     // Speichert die evtl. aufzurufende Form
         private string _CurrentAssemblyForForm = "";                // Speichert die evtl. aufzurufende Assembly wo die Form zu finden ist
         private string _CurrentAssemblyForDataSources = "";         // Speichert die evtl. aufzurufende Assembly wo die Datenquellen zu finden sind
         private string _CurrentReportFile = "";                     // Speichert die aktuelle Datei
@@ -134,7 +134,8 @@ namespace PMDS.GUI
         /// </summary>
         //----------------------------------------------------------------------------
 
-        public void ProcessPreview(bool bPreview, string ReportFile, PMDS.db.Entities.ERModellPMDSEntities db)
+        public void ProcessPreview(bool bPreview, string ReportFile, PMDS.db.Entities.ERModellPMDSEntities db, 
+                                        ref bool abortWindow, ref Nullable<Guid> IDEinrichtungEmpfänger, ref bool bSaveToArchiv, ref Nullable<Guid> IDDokumenteneintrag)
         {
             try
             {
@@ -296,13 +297,21 @@ namespace PMDS.GUI
                 if (_CurrentFormToShow != "")
                 {
                     frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                    if (ENV.StartupTyp == "auswpep")
-                    {
+                    frmPrintPflegebegleitschreibenInfo1.saveToArchive = bSaveToArchiv;
+                    //if (ENV.StartupTyp == "auswpep")
+                    //{
                         frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = false;
-                    }
+                    //}
                     DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                    if (res != DialogResult.OK && !frmPrintPflegebegleitschreibenInfo1.saveToArchive)
+                    if (res != DialogResult.OK)
+                    {
+                        abortWindow = true;
                         return;
+                    }
+                    else
+                    {
+                        IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
+                    }
                 }
                 
                 List<PMDS.Print.CR.BerichtParameter> lPars = BERICHTPARAMETER;                        // Berichtparameter können 1) von den Parametern und 2) von einer evtl. Form stammen. Diese gemeinsam den Report übergeben
@@ -347,11 +356,10 @@ namespace PMDS.GUI
 
                     }
                     string sFileFullNameExported = "";
-                    bool bSaveToArchiv = false;
                     string sFileNameExport = "";
                     if (frmPrintPflegebegleitschreibenInfo1 != null)
                     {
-                        bSaveToArchiv = frmPrintPflegebegleitschreibenInfo1.saveToArchive;
+                        frmPrintPflegebegleitschreibenInfo1.saveToArchive = bSaveToArchiv;
                         sFileNameExport = sFileFullNameExported;
                     }
                     PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !bSaveToArchiv, lPars, _CurrentBerichtDatenquellen, "",
@@ -370,8 +378,9 @@ namespace PMDS.GUI
                                         { p.Nachname, p.Vorname }
                                        ).First();
                         //PMDS.db.Entities.Patient rPatient = b.getPatient(ENV.CurrentIDPatient, db);
-
-                        if (bVB.SaveFileToArchive(sFileNameExport, QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(), "Pflegebegleitschreiben"))
+                        if (bVB.SaveFileToArchive(sFileNameExport, 
+                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(), 
+                                                    "Pflegebegleitschreiben", ref IDDokumenteneintrag))
                         {
                             QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Pflegebegleitschreiben wurde ins Archiv abgelegt!");
 

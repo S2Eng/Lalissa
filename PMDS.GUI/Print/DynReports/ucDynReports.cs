@@ -159,7 +159,11 @@ namespace PMDS.GUI
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    ucDynReportParameter1.ProcessPreview(true, ucDynReportParameter1.REPORT_FILE, db);
+                    bool abortWindow = false;
+                    Nullable<Guid> IDEinrichtungEmpfänger = null;
+                    bool bSaveToArchiv = false;
+                    Nullable<Guid> IDDokumenteneintrag = null;
+                    ucDynReportParameter1.ProcessPreview(true, ucDynReportParameter1.REPORT_FILE, db, ref abortWindow, ref IDEinrichtungEmpfänger, ref bSaveToArchiv, ref IDDokumenteneintrag);
                     dirTab2.BorderStyle = BorderStyle.None;
                 }
 

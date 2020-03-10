@@ -43,7 +43,7 @@ namespace PMDS.GUI
 
 
         public void genCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA, bool verstorbenJN,
-                           Nullable<Guid> IDEinrichtungEmpfänger = null)
+                           Nullable<Guid> IDEinrichtungEmpfänger = null, Nullable<Guid> IDDokumenteneintrag = null)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace PMDS.GUI
                         bool hasRight = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPflegerischerEntlassungsbrief, false);
 
                         this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                    IDEinrichtungEmpfänger, verstorbenJN, FileType);
+                                                    IDEinrichtungEmpfänger, verstorbenJN, FileType, IDDokumenteneintrag);
 
                         if (rAufenthalt.ELGAKontaktbestätigungJN)
                         {
@@ -131,22 +131,25 @@ namespace PMDS.GUI
                         string Stylesheet = "ELGA_Stylesheet_v1.0.xsl";
                         bool hasRight = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPflegezustandsbericht, false);
 
-                        BaseControls.BerichtParameterReplaceDelegate _delegate = new BaseControls.BerichtParameterReplaceDelegate(new UIGlobal().ParameterHelper_ReplaceString);
-                        BaseControls.ParameterHelper.ReplaceString += _delegate;
-                        frmPrintPflegebegleitschreibenInfo frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                        frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = true;
-                        BaseControls.ParameterHelper.ReplaceString -= _delegate;
-                        DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                        if (res != DialogResult.OK && !frmPrintPflegebegleitschreibenInfo1.saveToArchive)
-                        {
-                            this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                        (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
-                        }
-                        else
-                        {
-                            this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                                                        (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
-                        }
+                        this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
+                                                    IDEinrichtungEmpfänger, verstorbenJN, FileType, IDDokumenteneintrag);
+
+                        //BaseControls.BerichtParameterReplaceDelegate _delegate = new BaseControls.BerichtParameterReplaceDelegate(new UIGlobal().ParameterHelper_ReplaceString);
+                        //BaseControls.ParameterHelper.ReplaceString += _delegate;
+                        //frmPrintPflegebegleitschreibenInfo frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
+                        //frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = true;
+                        //BaseControls.ParameterHelper.ReplaceString -= _delegate;
+                        //DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
+                        //if (res != DialogResult.OK && !frmPrintPflegebegleitschreibenInfo1.saveToArchive)
+                        //{
+                        //    this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
+                        //                                (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
+                        //}
+                        //else
+                        //{
+                        //    this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
+                        //                                (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
+                        //}
                     }
                     else
                     {
@@ -163,7 +166,7 @@ namespace PMDS.GUI
         public void prieviewSendSaveCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA,
                                         Guid IDDocument, string ClinicalDocumentSetID, int VersionsNr,
                                         string Documentname, string Stylesheet, string PatientELGALocalID, PMDS.db.Entities.ERModellPMDSEntities db, DateTime dNow,
-                                        bool hasRight, Nullable<Guid> IDEinrichtungEmpfänger, bool verstorbenJN, string FileType)
+                                        bool hasRight, Nullable<Guid> IDEinrichtungEmpfänger, bool verstorbenJN, string FileType, Nullable<Guid> IDDokumenteneintrag)
         {
             try
             {
@@ -177,7 +180,7 @@ namespace PMDS.GUI
                     throw new Exception("ELGAPMDSBusinessUI.prieviewSendSaveCDA: ArchivePath not correct!" + "\r\n" + "Please contact your Administrator!");
                 }
 
-                WCFServiceClient.genCDARes resCda = wcf.genCDA2(CDAeTypeCDA, IDEinrichtungEmpfänger, IDDocument, ClinicalDocumentSetID, VersionsNr, Stylesheet, IDPatient, IDAufenthalt, Documentname);
+                WCFServiceClient.genCDARes resCda = wcf.genCDA2(CDAeTypeCDA, IDEinrichtungEmpfänger, IDDocument, ClinicalDocumentSetID, VersionsNr, Stylesheet, IDPatient, IDAufenthalt, Documentname, IDDokumenteneintrag);
 
                 Guid IDDocumenteneintrag = System.Guid.NewGuid();
                 bool SavedToELGA = false;

@@ -186,7 +186,7 @@ namespace PMDS.GUI
                     {
                         ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
                         bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked,
-                          (Guid)ent.ucEntlassung1.cbEinrichtung.Value, null);
+                          (Guid)ent.ucEntlassung1.cbEinrichtung.Value);
                     }
                     catch (Exception ex3)
                     {
@@ -974,12 +974,11 @@ namespace PMDS.GUI
 
                 bool IsAbwesend = false;
                 Nullable<Guid> IDEinrichtungEmpfänger = null;
-                Nullable<Guid> IDDokumenteneintrag = null;
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     IsAbwesend = b.KlientIsAbwesend(db, ENV.IDAUFENTHALT);
                 }
-                if (!IsAbwesend)            //if (ENV.lic_ELGA && !IsAbwesend)
+                if (ENV.lic_ELGA && !IsAbwesend)
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
@@ -988,8 +987,7 @@ namespace PMDS.GUI
                         ucDynReportParameter1.REPORT_FILE = ENV.ReportPath + @"\Pflegebegleitschreiben.rpt";
                         ucDynReportParameter1._CurrentFormToShow = "PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo";
                         bool abortWindow = false;
-                        bool bSaveToArchiv = true;
-                        ucDynReportParameter1.ProcessPreview(true, ENV.ReportPath + @"\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger, ref bSaveToArchiv, ref IDDokumenteneintrag);
+                        ucDynReportParameter1.ProcessPreview(true, @"C:\Develop\PMDS.Main\PMDS.Main\bin\Reports\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger);
                         if (abortWindow)
                         {
                             return false;
@@ -1037,7 +1035,7 @@ namespace PMDS.GUI
                         {
                             ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
                             bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false,
-                                        IDEinrichtungEmpfänger, IDDokumenteneintrag);
+                                        IDEinrichtungEmpfänger);
                         }
                         catch (Exception ex3)
                         {

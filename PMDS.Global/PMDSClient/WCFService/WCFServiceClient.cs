@@ -811,7 +811,7 @@ namespace PMDSClient.Sitemap
             }
         }
         public genCDARes genCDA2(CDAeTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
-                                    Guid IDPatient, Guid IDAufenthalt, string Documentname)
+                                    Guid IDPatient, Guid IDAufenthalt, string Documentname, Nullable<Guid> IDDokumenteneintrag)
         {
             genCDARes res = new genCDARes();
             try
@@ -831,7 +831,8 @@ namespace PMDSClient.Sitemap
                     TypeCDA = CDAeTypeCDA,
                     Documentname = Documentname.Trim(),
                     Stylesheet = Stylesheet.Trim(),
-                    IDClient = WCFServiceClient.IDClient
+                    IDClient = WCFServiceClient.IDClient,
+                    IDDokumenteneintrag = IDDokumenteneintrag
                 };
 
                 CDACDABack b = client.genCDA(vars);

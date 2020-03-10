@@ -159,7 +159,7 @@ Public Class PMDSBusinessVB
         End Try
     End Function
 
-    Public Function SaveFileToArchive(fileToSave As String, Bezeichnung As String, sOrdner As String) As Boolean
+    Public Function SaveFileToArchive(fileToSave As String, Bezeichnung As String, sOrdner As String, ByRef IDDokumenteneintrag As Nullable(Of Guid)) As Boolean
         Try
             Dim gen As New GeneralArchiv()
 
@@ -208,6 +208,7 @@ Public Class PMDSBusinessVB
                     Dim ret As New cArchive.clRet
                     ret = clSave.DokumentInsArchivAblegen(arrFile, "", Nothing, Nothing, "M", Nothing, obs, dataSchlagwortKat)
                     If ret.OK Then
+                        IDDokumenteneintrag = ret.arrIDDokumenteneintrag(0)
                         Return True
                     Else
                         Throw New Exception("SaveFileToArchive: Error save file " + fileToSave.Trim() + " to archive!")

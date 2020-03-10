@@ -14126,6 +14126,9 @@ Namespace ServiceReference_01
         Private IDDocumentField As System.Guid
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IDDokumenteneintragField As System.Nullable(Of System.Guid)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private IDEinrichtungEmpfängerField As System.Nullable(Of System.Guid)
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
@@ -14227,6 +14230,19 @@ Namespace ServiceReference_01
                 If (Me.IDDocumentField.Equals(value) <> true) Then
                     Me.IDDocumentField = value
                     Me.RaisePropertyChanged("IDDocument")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IDDokumenteneintrag() As System.Nullable(Of System.Guid)
+            Get
+                Return Me.IDDokumenteneintragField
+            End Get
+            Set
+                If (Me.IDDokumenteneintragField.Equals(value) <> true) Then
+                    Me.IDDokumenteneintragField = value
+                    Me.RaisePropertyChanged("IDDokumenteneintrag")
                 End If
             End Set
         End Property

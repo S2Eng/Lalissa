@@ -72,7 +72,6 @@ namespace PMDS.GUI.GUI.Main
         {
             try
             {
-                //191224
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     var rPatName = (from p in db.Patient

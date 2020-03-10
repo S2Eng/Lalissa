@@ -9,6 +9,7 @@
       <xs:element minOccurs="0" name="IDBenutzerVidierung" type="ser:guid" />
       <xs:element minOccurs="0" name="IDClient" type="ser:guid" />
       <xs:element minOccurs="0" name="IDDocument" type="ser:guid" />
+      <xs:element minOccurs="0" name="IDDokumenteneintrag" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="IDEinrichtungEmpfänger" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="IDEmpfänger" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IDSet" nillable="true" type="xs:string" />

@@ -1541,6 +1541,7 @@ namespace PMDS.DynReportsForms
             this.Controls.Add(this.lblAnEinrichtung);
             this.KeyPreview = true;
             this.Name = "frmPrintPflegebegleitschreibenInfo";
+            this.ShowInTaskbar = false;
             this.Text = "Pflegebegleitschreiben Informationen ...";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.frm_Closing);
             this.Load += new System.EventHandler(this.FrmPrintPflegebegleitschreibenInfo_Load);
@@ -1811,7 +1812,7 @@ namespace PMDS.DynReportsForms
 
                 WCFServiceClient s = new WCFServiceClient();
                 s.genCDA2(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, (Guid)this.cbETo.Value, System.Guid.NewGuid(), 
-                            System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Entlassungsbrief", null);
+                            System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Entlassungsbrief");
 
             }
             catch (Exception ex)
@@ -1834,7 +1835,7 @@ namespace PMDS.DynReportsForms
 
                 WCFServiceClient s = new WCFServiceClient();
                 s.genCDA2(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, (Guid)this.cbETo.Value, System.Guid.NewGuid(), 
-                            System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Pflegesituationsbericht", null);
+                            System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Pflegesituationsbericht");
 
             }
             catch (Exception ex)
