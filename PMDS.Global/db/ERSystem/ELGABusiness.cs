@@ -794,7 +794,7 @@ namespace PMDS.Global.db.ERSystem
                     Guid IDDocumenteneintrag = System.Guid.NewGuid();
                     bool bDocuOK = this.saveELGADocuToDB(ref ArchivePath, FileType, ref IDOrdnerArchiv, CDAeTypeCDA.ToString(), db, ref dNow, ref WCFServiceClient1, IDAufenthalt,
                                                             IDPatient, IDUrlaub, "", rAufenthalt.ELGALocalID.Trim(), DocumentName.Trim(), Stylesheet.Trim(), ref IDDocumenteneintrag, false, DocuXML, true, (sendDocu ? 0 : -1));
-
+                      
                     ELGAParOutDto parOut = new ELGAParOutDto() { DocuUniqueIdk__BackingField = "" };
                     if (sendDocu)
                     {
