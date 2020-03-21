@@ -233,7 +233,7 @@ namespace PMDS.GUI.PMDSClient
             this.ultraToolbarsManager1.Tools["Aufnahme"].SharedProps.Visible = frmMain.Rights.Aufnahme;
             this.ultraToolbarsManager1.Tools["Bewerber"].SharedProps.Visible = frmMain.Rights.Bewerber;
             this.ultraToolbarsManager1.Tools["ImportGibodat"].SharedProps.Visible = frmMain.Rights.ImportGibodat;
-            this.ultraToolbarsManager1.Tools["btnQS2Reports"].SharedProps.Visible = frmMain.Rights.QS2;
+            this.ultraToolbarsManager1.Tools["btnQS2Reports"].SharedProps.Visible = false;
             this.ultraToolbarsManager1.Tools["btnQS2Queries"].SharedProps.Visible = frmMain.Rights.QS2;
             this.ultraToolbarsManager1.Tools["btnQS2ManageQueriesUser"].SharedProps.Visible = frmMain.Rights.QS2;
             this.ultraToolbarsManager1.Tools["DatenarchivierungAlle"].SharedProps.Visible = frmMain.Rights.KlientenberichtDrucken;
@@ -243,7 +243,7 @@ namespace PMDS.GUI.PMDSClient
             this.ultraToolbarsManager1.Tools["btnVerordnungen"].SharedProps.Visible = frmMain.Rights.btnVerordnungen;
             this.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = frmMain.Rights.btnPatientAufenthalteLöschen;
             
-            this.ultraToolbarsManager1.Tools["btnQS2Reports"].SharedProps.Visible = frmMain.Rights.QS2;
+            this.ultraToolbarsManager1.Tools["btnQS2Reports"].SharedProps.Visible = false;
             this.ultraToolbarsManager1.Tools["btnQS2Queries"].SharedProps.Visible = frmMain.Rights.QS2;
             this.ultraToolbarsManager1.Tools["btnQS2ManageQueriesUser"].SharedProps.Visible = frmMain.Rights.QS2;
 
