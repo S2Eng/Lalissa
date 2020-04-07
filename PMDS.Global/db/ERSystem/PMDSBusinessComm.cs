@@ -293,7 +293,7 @@ namespace PMDS.DB
                     var rComm = (from c in db.CommAsync
                                  where c.ClientsMessage == sClientsMessage && c.TypeMessage == sTypeMessage
                                  orderby c.Created descending
-                                 select new {c.ID}).First();
+                                 select new {c.ID}).FirstOrDefault();
 
                     if (rComm != null)
                     {
