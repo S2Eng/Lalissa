@@ -103,7 +103,10 @@ namespace RBU
         {
             try
             {
-                return this[sKey].ToString();
+                if (this[sKey] != null)
+                    return this[sKey].ToString();
+                else
+                    return "";
             }
             catch
             {
