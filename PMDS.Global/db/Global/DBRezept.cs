@@ -628,8 +628,8 @@ namespace PMDS.DB
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandText = sCommand;
                 cmd.Parameters.AddWithValue("@ID", IDAufenthalt);
-                cmd.Parameters.AddWithValue("@von", Tag.ToString());
-                cmd.Parameters.AddWithValue("@bis", Tag.ToString());
+                cmd.Parameters.AddWithValue("@von", Tag);
+                cmd.Parameters.AddWithValue("@bis", Tag);
                 cmd.Connection = PMDS.Global.dbBase.getConn();
                 DataTable dtSelect = new DataTable();
                 OleDbDataAdapter da = new OleDbDataAdapter();
