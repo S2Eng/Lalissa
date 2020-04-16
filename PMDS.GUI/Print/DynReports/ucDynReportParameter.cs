@@ -300,12 +300,12 @@ namespace PMDS.GUI
                     frmPrintPflegebegleitschreibenInfo1.saveToArchive = bSaveToArchiv;
                     //if (ENV.StartupTyp == "auswpep")
                     //{
-                        frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = false;
+                        frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = !bSaveToArchiv;
                     //}
                     DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
                     if (res != DialogResult.OK)
                     {
-                        abortWindow = true;
+                        //abortWindow = true;   //Abwesenheit ohne Pflegebegleitschreiben beginnen
                         return;
                     }
                     else

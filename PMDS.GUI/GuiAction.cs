@@ -992,7 +992,7 @@ namespace PMDS.GUI
                         ucDynReportParameter1.REPORT_FILE = ENV.ReportPath + @"\Pflegebegleitschreiben.rpt";
                         ucDynReportParameter1._CurrentFormToShow = "PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo";
                         bool abortWindow = false;
-                        bool bSaveToArchiv = true;
+                        bool bSaveToArchiv = ENV.SavePflegebegleitschreibenToArchiv;
                         ucDynReportParameter1.ProcessPreview(true, ENV.ReportPath + @"\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger, ref bSaveToArchiv, ref IDDokumenteneintrag);
                         if (abortWindow)
                         {

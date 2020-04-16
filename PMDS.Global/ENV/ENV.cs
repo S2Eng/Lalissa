@@ -144,7 +144,7 @@ namespace PMDS.Global
         public static string ELGAPwd = "KLqHC0hznj91OH0PiCIWBw==";
 
         public static int MedVerabreichenDefault = -1;
-
+        public static bool SavePflegebegleitschreibenToArchiv = true;
 
 
 
@@ -1607,6 +1607,11 @@ namespace PMDS.Global
                 if (stemp.Length > 0)
                     int.TryParse(stemp.Trim(), out PMDS.Global.ENV.MedVerabreichenDefault);
 
+                stemp = _Log.ConfigFile.GetStringValue("SavePflegebegleitschreibenToArchiv");
+                if (stemp.Trim().Equals("0"))
+                {
+                    ENV.SavePflegebegleitschreibenToArchiv = false;
+                }
 
                 string WCFServiceOnOffTmp = _Log.ConfigFile.GetStringValue("WCFServiceOnOff");
                 if (WCFServiceOnOffTmp.Trim() != "")
