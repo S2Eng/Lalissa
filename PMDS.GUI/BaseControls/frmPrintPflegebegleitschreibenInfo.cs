@@ -22,6 +22,7 @@ using PMDS.GUI.BaseControls;
 using System.Reflection;
 using PMDS.Global.db.ERSystem;
 using PMDSClient.Sitemap;
+using System.Linq;
 
 namespace PMDS.DynReportsForms
 {
@@ -32,6 +33,8 @@ namespace PMDS.DynReportsForms
 	//----------------------------------------------------------------------------
 	public class frmPrintPflegebegleitschreibenInfo : DynReportsForm
 	{
+        private bool ReceiverELGA { get; set; } = false;
+
 		private bool _canClose = false;
 		private QS2.Desktop.ControlManagment.BaseLabel lblAnEinrichtung;
         public EinrichtungsCombo cbETo;
@@ -134,12 +137,13 @@ namespace PMDS.DynReportsForms
         private QS2.Desktop.ControlManagment.BaseCheckBox vUK;
         private QS2.Desktop.ControlManagment.BaseCheckBox vOK;
         private QS2.Desktop.ControlManagment.BaseLabel lblMitgegebeneHilfsmittel;
-        public Infragistics.Win.Misc.UltraButton btnSaveToArchive;
         private System.ComponentModel.IContainer components;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem cDAEntlassungsbriefToolStripMenuItem;
+        private QS2.Desktop.ControlManagment.BaseCheckBox chkInsArchiv;
         private ToolStripMenuItem cDAPflegesituationsberichtToolStripMenuItem;
-        public bool saveToArchive = false;
+
+        private bool SavePBSToArchive { set; get; } = false;
 
 
 		//----------------------------------------------------------------------------
@@ -346,10 +350,10 @@ namespace PMDS.DynReportsForms
             this.vTermine = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.vMedika = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.vPP = new QS2.Desktop.ControlManagment.BaseCheckBox();
-            this.btnSaveToArchive = new Infragistics.Win.Misc.UltraButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cDAEntlassungsbriefToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cDAPflegesituationsberichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkInsArchiv = new QS2.Desktop.ControlManagment.BaseCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.cbETo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.grpWichtigeInformationen.SuspendLayout();
@@ -437,6 +441,7 @@ namespace PMDS.DynReportsForms
             ((System.ComponentModel.ISupportInitialize)(this.vMedika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vPP)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkInsArchiv)).BeginInit();
             this.SuspendLayout();
             // 
             // cbETo
@@ -1489,17 +1494,6 @@ namespace PMDS.DynReportsForms
             this.vPP.TabIndex = 11;
             this.vPP.Text = "Pflegeplanung";
             // 
-            // btnSaveToArchive
-            // 
-            this.btnSaveToArchive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveToArchive.ContextMenuStrip = this.contextMenuStrip1;
-            this.btnSaveToArchive.Location = new System.Drawing.Point(574, 736);
-            this.btnSaveToArchive.Name = "btnSaveToArchive";
-            this.btnSaveToArchive.Size = new System.Drawing.Size(111, 32);
-            this.btnSaveToArchive.TabIndex = 9;
-            this.btnSaveToArchive.Text = "Ins Archiv ablegen";
-            this.btnSaveToArchive.Click += new System.EventHandler(this.btnSaveToArchive_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1522,13 +1516,22 @@ namespace PMDS.DynReportsForms
             this.cDAPflegesituationsberichtToolStripMenuItem.Text = "CDA Pflegesituationsbericht";
             this.cDAPflegesituationsberichtToolStripMenuItem.Click += new System.EventHandler(this.CDAPflegesituationsberichtToolStripMenuItem_Click);
             // 
+            // chkInsArchiv
+            // 
+            this.chkInsArchiv.Location = new System.Drawing.Point(537, 742);
+            this.chkInsArchiv.Name = "chkInsArchiv";
+            this.chkInsArchiv.Size = new System.Drawing.Size(153, 20);
+            this.chkInsArchiv.TabIndex = 15;
+            this.chkInsArchiv.Text = "Ins Archiv ablegen";
+            this.chkInsArchiv.CheckedChanged += new System.EventHandler(this.chkInsArchiv_CheckedChanged);
+            // 
             // frmPrintPflegebegleitschreibenInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(860, 776);
             this.ContextMenuStrip = this.contextMenuStrip1;
-            this.Controls.Add(this.btnSaveToArchive);
+            this.Controls.Add(this.chkInsArchiv);
             this.Controls.Add(this.grpAusdruck);
             this.Controls.Add(this.lblSonstiges);
             this.Controls.Add(this.txtSonstiges);
@@ -1643,6 +1646,7 @@ namespace PMDS.DynReportsForms
             ((System.ComponentModel.ISupportInitialize)(this.vMedika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vPP)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkInsArchiv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1683,10 +1687,19 @@ namespace PMDS.DynReportsForms
 		{
 			if (!ValidateFields())
 				return;
-            this.saveToArchive = false;
 
             _canClose = true;
 		}
+
+        public bool GetSavePBSToArchive()
+        {
+            return SavePBSToArchive;
+        }
+
+        public bool GetReceiverHasELGAOID()
+        {
+            return ReceiverELGA;
+        }
 
 		private void btnCancel_Click(object sender, System.EventArgs e)
 		{
@@ -1770,34 +1783,29 @@ namespace PMDS.DynReportsForms
         {
             Guid gui = (Guid)(cbETo.Value);
             vEinrichtungsID.Text = "{"+gui.ToString()+"}";
+
+            using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+            {
+                ReceiverELGA = (from einr in db.Einrichtung
+                                where einr.ID == gui && einr.ELGA_OID != ""
+                                select new { einr.ID}                                     
+                               ).Count() == 1;
+            }
+
+            chkInsArchiv.Visible = !ReceiverELGA && !ENV.SavePflegebegleitschreibenToArchiv;
+
+            if (chkInsArchiv.Visible)
+            {
+                chkInsArchiv.Checked = ENV.SavePflegebegleitschreibenToArchiv;
+                SavePBSToArchive = chkInsArchiv.Checked;
+            }
+            else
+                SavePBSToArchive = true;
         }
 
         private void v34_CheckedChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnSaveToArchive_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-                if (!ValidateFields())
-                    return;
-
-                this.saveToArchive = true;
-                _canClose = true;
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
         }
 
         private void CDAEntlassungsbriefToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1860,10 +1868,14 @@ namespace PMDS.DynReportsForms
 
         private void FrmPrintPflegebegleitschreibenInfo_Load(object sender, EventArgs e)
         {
-            this.btnSaveToArchive.ContextMenuStrip = this.contextMenuStrip1;
             this.cDAPflegesituationsberichtToolStripMenuItem.Visible = ENV.adminSecure;
             this.cDAEntlassungsbriefToolStripMenuItem.Visible = ENV.adminSecure;
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
+        }
+
+        private void chkInsArchiv_CheckedChanged(object sender, EventArgs e)
+        {
+            SavePBSToArchive = chkInsArchiv.Checked;
         }
     }
 

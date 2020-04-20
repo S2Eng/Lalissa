@@ -46,7 +46,7 @@ namespace PMDS.GUI
 
         public PMDS.DB.PMDSBusiness b = new PMDSBusiness();
 
-        
+        private bool SavePBSToArchiv { set; get; } = true;          //Pflegebegleitschreiben auch ins Archiv ablegen
 
 
 
@@ -297,20 +297,16 @@ namespace PMDS.GUI
                 if (_CurrentFormToShow != "")
                 {
                     frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                    frmPrintPflegebegleitschreibenInfo1.saveToArchive = bSaveToArchiv;
-                    //if (ENV.StartupTyp == "auswpep")
-                    //{
-                        frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = !bSaveToArchiv;
-                    //}
                     DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
                     if (res != DialogResult.OK)
                     {
-                        //abortWindow = true;   //Abwesenheit ohne Pflegebegleitschreiben beginnen
+                        abortWindow = frmPrintPflegebegleitschreibenInfo1.GetReceiverHasELGAOID();   //Abwesenheitsprozess sofort beenden
                         return;
                     }
                     else
                     {
                         IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
+                        SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive();
                     }
                 }
                 
@@ -359,14 +355,15 @@ namespace PMDS.GUI
                     string sFileNameExport = "";
                     if (frmPrintPflegebegleitschreibenInfo1 != null)
                     {
-                        frmPrintPflegebegleitschreibenInfo1.saveToArchive = bSaveToArchiv;
                         sFileNameExport = sFileFullNameExported;
                     }
-                    PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !bSaveToArchiv, lPars, _CurrentBerichtDatenquellen, "",
+                    Application.UseWaitCursor = true;
+                    Application.DoEvents();
+                    PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !SavePBSToArchiv, lPars, _CurrentBerichtDatenquellen, "",
                                                                     ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, 
-                                                                    cParFormular, ref sFileNameExport, true, "", bSaveToArchiv);
-
-                    if (bSaveToArchiv && frmPrintPflegebegleitschreibenInfo1 != null)
+                                                                    cParFormular, ref sFileNameExport, true, "", SavePBSToArchiv);
+                    Application.UseWaitCursor = false; ;
+                    if (frmPrintPflegebegleitschreibenInfo1 != null && frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive())
                     {
                         VB.PMDSBusinessVB bVB = new VB.PMDSBusinessVB();
                         PMDS.db.Entities.Benutzer rUsrLoggedOn = b.LogggedOnUser();
@@ -424,6 +421,10 @@ namespace PMDS.GUI
             catch (Exception ex)
             {
                 throw new Exception("ucDynReportParameter.ProcessPreview: " + ex.ToString());
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
             }
         }
         
