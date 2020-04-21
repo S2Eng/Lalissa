@@ -359,9 +359,16 @@ namespace PMDS.GUI
                     }
                     Application.UseWaitCursor = true;
                     Application.DoEvents();
-                    PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !SavePBSToArchiv, lPars, _CurrentBerichtDatenquellen, "",
+
+                    if (frmPrintPflegebegleitschreibenInfo1 == null)
+                        PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, true, lPars, _CurrentBerichtDatenquellen, "",
                                                                     ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, 
-                                                                    cParFormular, ref sFileNameExport, true, "", SavePBSToArchiv);
+                                                                    cParFormular, ref sFileNameExport, true, "", false);
+                    else
+                        PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !SavePBSToArchiv, lPars, _CurrentBerichtDatenquellen, "",
+                                                                        ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD,
+                                                                        cParFormular, ref sFileNameExport, true, "", SavePBSToArchiv);
+
                     Application.UseWaitCursor = false; ;
                     if (frmPrintPflegebegleitschreibenInfo1 != null && frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive())
                     {
