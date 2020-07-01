@@ -533,11 +533,11 @@ namespace PMDS.GUI.Medikament
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                     DataTable tBestellungMedikamente = PMDS.DB.BusinessHelp.ToDataTable(tRezepteBestSelected);
 //#if DEBUG
-//                    DataSet ds = new DataSet();
-//                    ds.DataSetName = "BestellungMedikamente";
-//                    ds.Tables.Add(tBestellungMedikamente);
-//                    ds.WriteXml(System.IO.Path.Combine(ENV.ReportPath,  "BestellungMedikamente.xml"), System.Data.XmlWriteMode.WriteSchema);
-//                    ds.WriteXmlSchema((System.IO.Path.Combine(ENV.ReportPath, "BestellungMedikamente.xsd")));
+//DataSet ds = new DataSet();
+//ds.DataSetName = "BestellungMedikamente";
+//ds.Tables.Add(tBestellungMedikamente);
+//ds.WriteXml(System.IO.Path.Combine(ENV.ReportPath, "BestellungMedikamente.xml"), System.Data.XmlWriteMode.WriteSchema);
+//ds.WriteXmlSchema((System.IO.Path.Combine(ENV.ReportPath, "BestellungMedikamente.xsd")));
 //#endif
                     frmPrintPreview frmPrintPreview1 = null;
                     frmPrintPreview.PrintBestellungMedikamente(ref tBestellungMedikamente,
