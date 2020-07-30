@@ -667,15 +667,19 @@ namespace PMDS.GUI
             // cbImportant
             // 
             this.cbImportant.AddEmptyEntry = false;
+            this.cbImportant.AutoOpenCBO = false;
             this.cbImportant.BerufsstandGruppeJNA = -1;
             this.cbImportant.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbImportant.ExactMatch = false;
             this.cbImportant.Group = "BER";
             this.cbImportant.ID_PEP = -1;
             this.cbImportant.Location = new System.Drawing.Point(95, 37);
             this.cbImportant.Margin = new System.Windows.Forms.Padding(4);
             this.cbImportant.Name = "cbImportant";
+            this.cbImportant.PflichtJN = false;
             this.cbImportant.ShowAddButton = true;
             this.cbImportant.Size = new System.Drawing.Size(76, 24);
+            this.cbImportant.sys = false;
             this.cbImportant.TabIndex = 3;
             this.cbImportant.Visible = false;
             this.cbImportant.ValueChanged += new System.EventHandler(this.OnValueChanged);

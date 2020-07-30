@@ -385,6 +385,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.v17.2.Design.dll</HintPath>
     </Reference>
+    <Reference Include="MARC.Everest">
+      <HintPath>..\Dlls\MARC.Everest.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest.Formatters.XML.Datatypes.R1">
+      <HintPath>..\Dlls\MARC.Everest.Formatters.XML.Datatypes.R1.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest.Formatters.XML.ITS1">
+      <HintPath>..\Dlls\MARC.Everest.Formatters.XML.ITS1.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest.RMIM.UV.CDAr2">
+      <HintPath>..\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -429,6 +442,9 @@
     <Reference Include="QS2.Desktop.Txteditor, Version=2.1.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\QS2.Desktop.Txteditor.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.Desktop.Txteditor2">
+      <HintPath>..\..\..\project.QS2\QS2\dlls\QS2.Desktop.Txteditor2.dll</HintPath>
     </Reference>
     <Reference Include="QS2.Desktop.UI.cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1546,8 +1562,26 @@
     </Compile>
     <Compile Include="PMDSClient\startPMDSMain.cs" />
     <Compile Include="PMDSClient\UIBackgroundWorker\AuswahlListeBW.cs" />
+    <Compile Include="Print\contELGAPrintPflegesituationsbericht.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Print\contELGAPrintPflegesituationsbericht.Designer.cs">
+      <DependentUpon>contELGAPrintPflegesituationsbericht.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print\frmELGAPrintPflegesituationsbericht.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print\frmELGAPrintPflegesituationsbericht.Designer.cs">
+      <DependentUpon>frmELGAPrintPflegesituationsbericht.cs</DependentUpon>
+    </Compile>
     <Compile Include="Print\frmPrintArztbrief.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print\ucELGAPrintPflegesituationsbericht.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Print\ucELGAPrintPflegesituationsbericht.Designer.cs">
+      <DependentUpon>ucELGAPrintPflegesituationsbericht.cs</DependentUpon>
     </Compile>
     <Compile Include="Quickfilter\contLayoutmanager2.cs">
       <SubType>UserControl</SubType>
@@ -4278,6 +4312,9 @@
     <EmbeddedResource Include="PMDSClient\SelList\cboAuswahlListe.resx">
       <DependentUpon>cboAuswahlListe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Print\contELGAPrintPflegesituationsbericht.resx">
+      <DependentUpon>contELGAPrintPflegesituationsbericht.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Print\DynReports\frmDynReports.resx">
       <DependentUpon>frmDynReports.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -4464,6 +4501,9 @@
     <EmbeddedResource Include="Print\DBReport.resx">
       <DependentUpon>DBReport.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\frmELGAPrintPflegesituationsbericht.resx">
+      <DependentUpon>frmELGAPrintPflegesituationsbericht.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Print\frmPrintArztbrief.resx">
       <DependentUpon>frmPrintArztbrief.cs</DependentUpon>
@@ -4778,6 +4818,9 @@
     <EmbeddedResource Include="BaseControls\ucZielEvaluierung.resx">
       <DependentUpon>ucZielEvaluierung.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print\ucELGAPrintPflegesituationsbericht.resx">
+      <DependentUpon>ucELGAPrintPflegesituationsbericht.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Quickfilter\contLayoutmanager2.resx">

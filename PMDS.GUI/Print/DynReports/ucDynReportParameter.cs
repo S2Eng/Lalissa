@@ -24,7 +24,7 @@ using PMDS.GUI.BaseControls;
 using PMDS.DB;
 using PMDS.GUI.VB;
 using System.Linq;
-
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -296,6 +296,12 @@ namespace PMDS.GUI
                 // Dynamische Formularsteuerung ---------------------------------------------------------------------------------------------------
                 if (_CurrentFormToShow != "")
                 {
+                    if (PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
+                    {
+                        PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht PSB = new PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht();
+                        PSB.ShowDialog();
+                    }
+
                     frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
                     DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
                     if (res != DialogResult.OK)
@@ -347,7 +353,7 @@ namespace PMDS.GUI
                     if (IsFormularBericht)
                     {
                         cParFormular = cAssessement1.doReport(ref lPars, ReportFile);
-                        Print.CR.BerichtDatenquelle NewBerichtDatenquelle = new Print.CR.BerichtDatenquelle("", cParFormular.dsFormularAssessment);
+                        PMDS.Print.CR.BerichtDatenquelle NewBerichtDatenquelle = new PMDS.Print.CR.BerichtDatenquelle("", cParFormular.dsFormularAssessment);
                         _CurrentBerichtDatenquellen.Add(NewBerichtDatenquelle);
 
                     }
@@ -406,7 +412,7 @@ namespace PMDS.GUI
                     string UserName = rUserLoggedIn.Nachname.Trim() + " " + rUserLoggedIn.Vorname.Trim() + " (" + rUserLoggedIn.Benutzer1.Trim() + ")"; ;
 
                     string sParms = "";
-                    foreach (Print.CR.BerichtParameter par in lPars)
+                    foreach (PMDS.Print.CR.BerichtParameter par in lPars)
                     {
                         sParms += par.Description.Trim() + ": ";
                         if (par.Value != null)

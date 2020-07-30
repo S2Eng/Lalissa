@@ -1831,6 +1831,7 @@ namespace PMDS.DynReportsForms
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void CDAPflegesituationsberichtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
