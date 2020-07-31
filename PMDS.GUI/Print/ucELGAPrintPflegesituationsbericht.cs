@@ -21,6 +21,7 @@ using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
 using MARC.Everest.Xml;
 using System.Xml;
 using MARC.Everest.Formatters.XML.ITS1;
+using PMDS.Klient;
 
 namespace PMDS.GUI.Print
 {
@@ -67,6 +68,20 @@ namespace PMDS.GUI.Print
             Patientenverfügung = 20,
             AbschliessendeBemerkungen = 21,
             Beilagen = 22
+        }
+
+        private enum RTFTyp
+        {
+            Text = 1,
+            Res = 2,
+            Risk = 3
+        }
+
+        private class RTFTag
+        {
+            public SektionOrder Order;
+            public String Tag;
+            public RTFTyp Typ;
         }
 
         private class templateID
@@ -225,6 +240,8 @@ namespace PMDS.GUI.Print
             LoadPDx();
             LoadRessourcenRisiken();
             LoadVitalparameter();
+            LoadMedDaten();
+            LoadRezepte();
             LoadPatientenverfügung();
             LoadPflegeUndBetreuungsumfang();
         }
@@ -233,28 +250,70 @@ namespace PMDS.GUI.Print
         {
             try
             {
-                rtfBrieftext.Tag = SektionOrder.Brieftext;
-                rtfPFMOB_Text.Tag = SektionOrder.Mobilität;
-                rtfPFKLEI_Text.Tag = SektionOrder.KörperpflegeUndKleiden;
-                rtfPFERN_Text.Tag = SektionOrder.Ernährung;
-                rtfPFAUS_Text.Tag = SektionOrder.Ausscheidung;
-                rtfPFHAUT_Text.Tag = SektionOrder.Hautzustand;
-                rtfPFATM_Text.Tag = SektionOrder.Atmung;
-                rtfPFSCHMERZ_Text.Tag = SektionOrder.Schmerz;
-                rtfPFSCHL_Text.Tag = SektionOrder.Schlaf;
-                rtfPFORIE_Text.Tag = SektionOrder.OrientierungUndBewusstseinslage;
-                rtfPFSOZV_Text.Tag = SektionOrder.SozialeUmständeUndVerhalten;
-                rtfPFKOMM_Text.Tag = SektionOrder.Kommunikation;
-                rtfPFROLL_Text.Tag = SektionOrder.RollenwahnehmungUndSinnfindung;
-                rtfPFMEDBEH_Text.Tag = SektionOrder.PflegerelvanteInforamtionenZurMedizinischenBehandlung;
-                rtfPFMEDBEH_Risk.Tag = SektionOrder.PflegerelvanteInforamtionenZurMedizinischenBehandlung;
-                rtfPFMED_Text.Tag = SektionOrder.Medikamentenverabreichung;
-                rtfPFMED_Risk.Tag = SektionOrder.Medikamentenverabreichung;
-                rtfPUBUMF_Text.Tag = SektionOrder.PflegeUndBetreuungsumfang;
-                rtfANM_Text.Tag = SektionOrder.Anmerkungen;
-                rtfANM_Risk.Tag = SektionOrder.Anmerkungen;
-                rtfPATVERF_Text.Tag = SektionOrder.Patientenverfügung;
-                rtfABBEM_Text.Tag = SektionOrder.AbschliessendeBemerkungen;
+                rtfBRIEFT_Text.Tag = new RTFTag { Order = SektionOrder.Brieftext, Tag = "BRIEFT_TEXT", Typ = RTFTyp.Text };
+
+                rtfPFMOB_Text.Tag = new RTFTag { Order = SektionOrder.Mobilität, Tag = "PFMOB_TEXT", Typ = RTFTyp.Text };
+                rtfPFMOB_Res.Tag = new RTFTag { Order = SektionOrder.Mobilität, Tag = "PFMOB_RES", Typ = RTFTyp.Res };
+                rtfPFMOB_Risk.Tag = new RTFTag { Order = SektionOrder.Mobilität, Tag = "PFMOB_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFKLEI_Text.Tag = new RTFTag { Order = SektionOrder.KörperpflegeUndKleiden, Tag = "PFKLEI_TEXT", Typ = RTFTyp.Text };
+                rtfPFKLEI_Res.Tag = new RTFTag { Order = SektionOrder.KörperpflegeUndKleiden, Tag = "PFKLEI_RES", Typ = RTFTyp.Res };
+                rtfPFKLEI_Risk.Tag = new RTFTag { Order = SektionOrder.KörperpflegeUndKleiden, Tag = "PFKLEI_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFERN_Text.Tag = new RTFTag { Order = SektionOrder.Ernährung, Tag = "PFERN_TEXT", Typ = RTFTyp.Text };
+                rtfPFERN_Res.Tag = new RTFTag { Order = SektionOrder.Ernährung, Tag = "PFERN_RES", Typ = RTFTyp.Res };
+                rtfPFERN_Risk.Tag = new RTFTag { Order = SektionOrder.Ernährung, Tag = "PFERN_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFAUS_Text.Tag = new RTFTag { Order = SektionOrder.Ausscheidung, Tag = "PFAUS_TEXT", Typ = RTFTyp.Text };
+                rtfPFAUS_Res.Tag = new RTFTag { Order = SektionOrder.Ausscheidung, Tag = "PFAUS_RES", Typ = RTFTyp.Res };
+                rtfPFAUS_Risk.Tag = new RTFTag { Order = SektionOrder.Ausscheidung, Tag = "PFAUS_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFHAUT_Text.Tag = new RTFTag { Order = SektionOrder.Hautzustand, Tag = "PFHAUT_TEXT", Typ = RTFTyp.Text };
+                rtfPFHAUT_Res.Tag = new RTFTag { Order = SektionOrder.Hautzustand, Tag = "PFHAUT_RES", Typ = RTFTyp.Res };
+                rtfPFHAUT_Risk.Tag = new RTFTag { Order = SektionOrder.Hautzustand, Tag = "PFHAUT_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFATM_Text.Tag = new RTFTag { Order = SektionOrder.Atmung, Tag = "PFATM_TEXT", Typ = RTFTyp.Text };
+                rtfPFATM_Res.Tag = new RTFTag { Order = SektionOrder.Atmung, Tag = "PFATM_RES", Typ = RTFTyp.Res };
+                rtfPFATM_Risk.Tag = new RTFTag { Order = SektionOrder.Atmung, Tag = "PFATM_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFSCHL_Text.Tag = new RTFTag { Order = SektionOrder.Schlaf, Tag = "PFSCHL_TEXT", Typ = RTFTyp.Text };
+                rtfPFSCHL_Res.Tag = new RTFTag { Order = SektionOrder.Schlaf, Tag = "PFSCHL_RES", Typ = RTFTyp.Res };
+                rtfPFSCHL_Risk.Tag = new RTFTag { Order = SektionOrder.Schlaf, Tag = "PFSCHL_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFSCHMERZ_Text.Tag = new RTFTag { Order = SektionOrder.Schmerz, Tag = "PFSCHMERZ_TEXT", Typ = RTFTyp.Text };
+                rtfPFSCHMERZ_Res.Tag = new RTFTag { Order = SektionOrder.Schmerz, Tag = "PFSCHMERZ_RES", Typ = RTFTyp.Res };
+                rtfPFSCHMERZ_Risk.Tag = new RTFTag { Order = SektionOrder.Schmerz, Tag = "PFSCHMERZ_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFORIE_Text.Tag = new RTFTag { Order = SektionOrder.OrientierungUndBewusstseinslage, Tag = "PFORIE_TEXT", Typ = RTFTyp.Text };
+                rtfPFORIE_Res.Tag = new RTFTag { Order = SektionOrder.OrientierungUndBewusstseinslage, Tag = "PFORIE_RES", Typ = RTFTyp.Res };
+                rtfPFORIE_Risk.Tag = new RTFTag { Order = SektionOrder.OrientierungUndBewusstseinslage, Tag = "PFORIE_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFSOZV_Text.Tag = new RTFTag { Order = SektionOrder.SozialeUmständeUndVerhalten, Tag = "PFSOZV_TEXT", Typ = RTFTyp.Text };
+                rtfPFSOZV_Res.Tag = new RTFTag { Order = SektionOrder.SozialeUmständeUndVerhalten, Tag = "PFSOZV_RES", Typ = RTFTyp.Res };
+                rtfPFSOZV_Risk.Tag = new RTFTag { Order = SektionOrder.SozialeUmständeUndVerhalten, Tag = "PFSOZV_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFKOMM_Text.Tag = new RTFTag { Order = SektionOrder.Kommunikation, Tag = "PFKOMM_TEXT", Typ = RTFTyp.Text };
+                rtfPFKOMM_Res.Tag = new RTFTag { Order = SektionOrder.Kommunikation, Tag = "PFKOMM_RES", Typ = RTFTyp.Res };
+                rtfPFKOMM_Risk.Tag = new RTFTag { Order = SektionOrder.Kommunikation, Tag = "PFKOMM_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFROLL_Text.Tag = new RTFTag { Order = SektionOrder.RollenwahnehmungUndSinnfindung, Tag = "PFROLL_TEXT", Typ = RTFTyp.Text };
+                rtfPFROLL_Res.Tag = new RTFTag { Order = SektionOrder.RollenwahnehmungUndSinnfindung, Tag = "PFROLL_RES", Typ = RTFTyp.Res };
+                rtfPFROLL_Risk.Tag = new RTFTag { Order = SektionOrder.RollenwahnehmungUndSinnfindung, Tag = "PFROLL_RISK", Typ = RTFTyp.Risk };
+
+                rtfPFMEDBEH_Text.Tag = new RTFTag { Order = SektionOrder.PflegerelvanteInforamtionenZurMedizinischenBehandlung, Tag = "PFMEDBEH_TEXT", Typ = RTFTyp.Text };
+                rtfPFMEDBEH_Risk.Tag = new RTFTag { Order = SektionOrder.PflegerelvanteInforamtionenZurMedizinischenBehandlung, Tag = "PFMEDBEH_RISK" };
+
+                rtfPFMED_Text.Tag = new RTFTag { Order = SektionOrder.Medikamentenverabreichung, Tag = "PFMED_TEXT", Typ = RTFTyp.Text };
+                rtfPFMED_Risk.Tag = new RTFTag { Order = SektionOrder.Medikamentenverabreichung, Tag = "PFMED_RISK", Typ = RTFTyp.Risk };
+
+                rtfPUBUMF_Text.Tag = new RTFTag { Order = SektionOrder.PflegeUndBetreuungsumfang, Tag = "PUBUMF_TEXT", Typ = RTFTyp.Text };
+
+                rtfANM_Text.Tag = new RTFTag { Order = SektionOrder.Anmerkungen, Tag = "ANM_TEXT", Typ = RTFTyp.Text };
+                rtfANM_Risk.Tag = new RTFTag { Order = SektionOrder.Anmerkungen, Tag = "ANM_RISK", Typ = RTFTyp.Risk };
+
+                rtfPATVERF_Text.Tag = new RTFTag { Order = SektionOrder.Patientenverfügung, Tag = "PATVERF_TEXT", Typ = RTFTyp.Text };
+
+                rtfABBEM_Text.Tag = new RTFTag { Order = SektionOrder.AbschliessendeBemerkungen, Tag = "ABBEM_TEXT", Typ = RTFTyp.Text };
             }
             catch (Exception ex)
             {
@@ -447,7 +506,7 @@ namespace PMDS.GUI.Print
 
                 sect.Text = new ED();
                 if (sektion.textHTML == null)
-                    sektion.textHTML = "Keine zusätzliche Inforamtion verfügbar.";
+                    sektion.textHTML = "Keine zusätzliche Information verfügbar.";
                 sect.Text.Data = System.Text.Encoding.UTF8.GetBytes(sektion.textHTML);
                 sect.Text.Representation = MARC.Everest.DataTypes.Interfaces.EncapsulatedDataRepresentation.TXT;
                 sect.Text.MediaType = null;
@@ -574,7 +633,7 @@ namespace PMDS.GUI.Print
                         null,
                         sektion.Risiko.code.displayName,
                         null);
-                    sectRisk.Text = sektion.HilfsmittelUndRessourcen.textHTML;
+                    sectRisk.Text = sektion.Risiko.textHTML;
                     sectRisk.Text.Language = null;
                     sectRisk.Text.MediaType = null;
 
@@ -715,7 +774,7 @@ namespace PMDS.GUI.Print
                                         Sektion.HilfsmittelUndRessourcen = Res;
                                     }
                                     Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "<br\\>";
-                                    SetWBTextByTag(this.Controls, R.Code + "_RES", R.Text + "<br\\>");
+                                    SetRTFTextByTag(this.Controls, R.Code + "_RES", R.Text + "\n");
                                 }
 
                                 else if (R.Eintraggruppe == "A")
@@ -726,7 +785,7 @@ namespace PMDS.GUI.Print
                                         Sektion.Risiko = Ris;
                                     }
                                     Sektion.Risiko.textHTML += R.Text + "<br\\>";
-                                    SetWBTextByTag(this.Controls, R.Code + "_RISK", R.Text + "<br\\>");
+                                    SetRTFTextByTag(this.Controls, R.Code + "_RISK", R.Text + "\n");
                                 }
                             }
                         }
@@ -794,7 +853,7 @@ namespace PMDS.GUI.Print
                     {
                         Sektionen[(int)SektionOrder.Vitalparameter].use = true;
                         Sektionen[(int)SektionOrder.Vitalparameter].textHTML = PDxHTML;
-                        SetWBTextByTag(this.Controls, "VITPAR_TEXT", PDxHTML);
+                        wbVitalzeichen.DocumentText = PDxHTML;
                     }
                 }
             }
@@ -804,10 +863,171 @@ namespace PMDS.GUI.Print
             }
         }
 
+        private void LoadMedDaten()
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tMedDaten = (from md in db.MedizinischeDaten
+                                     join p in db.Patient on md.IDPatient equals p.ID
+                                     join a in db.Aufenthalt on p.ID equals a.IDPatient
+                                     join mt in db.MedizinischeTypen on md.MedizinischerTyp equals mt.MedizinischerTyp
+                                     where a.ID == ENV.IDAUFENTHALT
+                                     && mt.MedizinischerTyp != 8 && mt.MedizinischerTyp != 15
+                                     && md.Von < DateTime.Now
+                                     && (md.Bis > DateTime.Now || md.Bis == null)
+                                     orderby(mt.MedizinischerTyp)
+                                     select new
+                                     {
+                                         md.Von,
+                                         md.Bis,
+                                         md.Beschreibung,
+                                         md.Bemerkung,
+                                         md.Typ,
+                                         md.Groesse,
+                                         md.Modell,
+                                         md.LetzteVersorgung,
+                                         md.NaechsteVersorgung,
+                                         md.AntikoaguliertJN,
+                                         MTBeschreibung = mt.Beschreibung
+                                     });
+
+                    string mdText = "";
+                    foreach (var rMedDaten in tMedDaten)
+                    {
+                        DateTime von = (DateTime)rMedDaten.Von;
+                        DateTime bis = new DateTime(1900, 1, 1);
+                        if (rMedDaten.Bis != null) 
+                            bis = (DateTime)rMedDaten.Bis;
+
+                        DateTime letzteVersorung = new DateTime(1900, 1, 1);
+                        if (rMedDaten.LetzteVersorgung != null)
+                            letzteVersorung = (DateTime)rMedDaten.LetzteVersorgung;
+
+                        DateTime naechsteVersorgung = new DateTime(1900, 1, 1);
+                        if (rMedDaten.NaechsteVersorgung != null)
+                            naechsteVersorgung = (DateTime)rMedDaten.NaechsteVersorgung;
+
+                        mdText += rMedDaten.MTBeschreibung + ":";
+                        mdText += " " + von.ToString("dd.MM.yyyy") + " -";
+                        if (bis > new DateTime(1900, 1, 1))
+                            mdText += " "  + bis.ToString("dd.MM.yyyy");
+
+                        if (rMedDaten.Beschreibung != "")
+                            mdText += ", " + rMedDaten.Beschreibung;
+
+                        if (rMedDaten.Typ != null && !String.IsNullOrWhiteSpace(rMedDaten.Typ))
+                            mdText += ", " + rMedDaten.Typ;
+
+                        if (rMedDaten.Modell != null && !String.IsNullOrWhiteSpace(rMedDaten.Modell))
+                            mdText += ", Modell=" + rMedDaten.Modell;
+
+                        if (rMedDaten.Groesse != null && !String.IsNullOrWhiteSpace(rMedDaten.Groesse))
+                            mdText += ", Größe=" + rMedDaten.Groesse;
+
+                        if (letzteVersorung > new DateTime(1900, 1, 1))
+                            mdText += "letzte Versorung " + letzteVersorung.ToString("dd.MM.yyyy");
+
+                        if (naechsteVersorgung > new DateTime(1900, 1, 1))
+                            mdText += "nächste Versorung " + naechsteVersorgung.ToString("d.MM.yyyy");
+
+                        if (rMedDaten.AntikoaguliertJN != null)
+                        {
+                            if ((bool)rMedDaten.AntikoaguliertJN)
+                                mdText += ", antikoaguliert";
+                        }
+
+                        mdText += "\n";
+                        rtfPFMEDBEH_Text.Text = mdText;
+                        CheckSektionUsed(SektionOrder.Patientenverfügung);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadMedDaten: " + ex.ToString());
+            }
+        }
+
+        private void LoadRezepte()
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tRezepte = (from re in db.RezeptEintrag
+                                    join med in db.Medikament on re.IDMedikament equals med.ID
+                                    join ar in db.Aerzte on re.IDAerzte equals ar.ID                                     
+                                    where re.IDAufenthalt == ENV.IDAUFENTHALT
+                                        && re.AbzugebenVon < DateTime.Now
+                                        && re.AbzugebenBis > DateTime.Now
+                                    orderby re.BedarfsMedikationJN, med.Bezeichnung
+                                    select new
+                                    {
+                                        med.Bezeichnung,
+                                        re.DosierungASString,
+                                        re.Einheit,
+                                        re.Applikationsform,
+                                        re.AbzugebenVon,
+                                        re.AbzugebenBis,
+                                        re.Bemerkung,
+                                        re.BedarfsMedikationJN,
+                                        ar.Nachname,
+                                        ar.Vorname,
+                                        ar.Titel,
+                                        re.DatumErstellt
+                                    });
+                    string rez = "Verordnungen:\n";
+                    foreach (var rRezept in tRezepte)
+                    {
+                        DateTime von = (DateTime)rRezept.AbzugebenVon;
+                        DateTime bis = (DateTime)rRezept.AbzugebenBis;
+                        DateTime VoDatum = (DateTime)rRezept.DatumErstellt;
+
+                        rez += rRezept.Bezeichnung + ", ";
+                        rez += rRezept.DosierungASString;
+                        //rez += " " + rRezept.Einheit;
+                        //rez += " " + rRezept.Applikationsform;
+                        rez += " ab " + von.ToString("dd.MM.yyyy HH:mm");
+                        if (bis < new DateTime(3000,1,1,23,59,59))
+                            rez += " - " + rRezept.AbzugebenBis.ToString("dd.MM.yyyy HH:mm");
+
+                        if (rRezept.BedarfsMedikationJN == true)
+                            rez += " (EINZELVERORDUNG)";
+
+                        if (!String.IsNullOrWhiteSpace(rRezept.Bemerkung))
+                            rez += " " + rRezept.Bemerkung;
+
+                        rez += ", verordnet: ";
+                        if (!String.IsNullOrWhiteSpace(rRezept.Titel))
+                            rez += " " + rRezept.Titel;
+
+                        if (!String.IsNullOrWhiteSpace(rRezept.Vorname))
+                            rez += " " + rRezept.Vorname;
+
+                        if (!String.IsNullOrWhiteSpace(rRezept.Nachname))
+                            rez += " " + rRezept.Nachname;
+
+                        rez += " (" + rRezept.DatumErstellt.ToString("dd.MM.yyyy") + ")";
+                        rez += "\n";
+                        rtfPFMED_Text.Text = rez;
+                        CheckSektionUsed(SektionOrder.Medikamentenverabreichung);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadRezepte: " + ex.ToString());
+            }
+        }
+
         private void LoadPatientenverfügung()
         {
             try
             {
+                rtfPATVERF_Text.Text = "";
+
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
                     var rPatInfo = (from p in db.Patient
@@ -825,15 +1045,232 @@ namespace PMDS.GUI.Print
                     if (rPatInfo.PatientenverfuegungJN == true)
                     {
                         DateTime dt = (DateTime)rPatInfo.PatientverfuegungDatum;
-                        rtfPATVERF_Text.Text = "";
-                        if (rPatInfo.PatientenverfuegungBeachtlichJN == true)
-                        {
-                            rtfPATVERF_Text.Text += "Beachtliche ";
-                        }
-                        rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + rPatInfo.PatientverfuegungAnmerkung.ToString();
+                        rtfPATVERF_Text.Text += (rPatInfo.PatientenverfuegungBeachtlichJN == false ? "Beachtliche " : "Verbindliche ");
+                        rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + rPatInfo.PatientverfuegungAnmerkung.ToString() + "\n";
                         Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                     }
                 }
+
+                //Freiheitsbeschr. Maßnahmen
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tHAG = (from u in db.Unterbringung
+                                where u.IDAufenthalt == ENV.IDAUFENTHALT
+                                orderby u.Beginn
+                                select new
+                                {
+                                    u.Aktion,
+                                    u.Beginn,
+
+                                    u.KlientZustimmungJN,
+                                    u.PsychischekrankheitJN,
+                                    u.GeistigeBehinderungJN,
+                                    u.MedizinischeDiagnose,
+                                    u.ErheblicheSelbstgefaehrdungJN,
+                                    u.ErheblicheFremdgefaehrdungJN,
+                                    u.AnmerkungVerhalten_2016,
+                                    u.AnmerkungGutachten_2016,
+
+                                    u.EinzelfallmedikationJN_2016,
+                                    u.Einzelfallmedikation_2016,
+                                    u.DauermedikationJN_2016,
+                                    u.Dauermedikation_2016,
+
+                                    u.HindernVerlassenBettSeitenteilenJN,
+                                    u.HindernVerlassenBettBauchgurtJN_2016,
+                                    u.HindernVerlassenBettElektronischJN_2016,
+                                    u.HindernVerlassenBettHandArmgurte_2016,
+                                    u.HindernVerlassenBettAndereJN_2016,
+                                    u.HindernBettVerlassen,
+
+                                    u.HindernSitzgelSitzhoseJN,
+                                    u.HindernSitzgelBauchgurtJN_2016,
+                                    u.HindernSitzgelBrustgurtJN_2016,
+                                    u.HindernSitzgelTischJN,
+                                    u.HindernSitzgelTherapietischJN,
+                                    u.HindernSitzgelHandArmgurte_2016,
+                                    u.HindernSitzgelFussBeingurte_2016,
+                                    u.HindernSitzgelAndereJN_2016,
+                                    u.HindernSitzgelegenheit,
+
+                                    u.ZurueckhaltensandrohungJN,
+                                    u.HindernBereichFesthaltenJN_2016,
+                                    u.HindernBereichVersperrterBereichJN_2016,
+                                    u.HindernBereichBarriereJN_2016,
+                                    u.ElektronischesUeberwachungJN,
+                                    u.HindernBereichVersperrtesZimmerJN_2016,
+                                    u.HindernBereichHinderAmFortbewegenJN_2016,
+                                    u.HindernBereichAndereJN_2016,
+                                    u.BaulicheMassnahmen
+                                });
+
+                    string txtHAG = rtfPATVERF_Text.Text + "\nFreiheitsbeschränkende Maßnahmen gem. Heimaufenthaltsgesetz\n";
+                    foreach (var rHAG in tHAG)
+                    {
+
+                        bool KlientZustimmungJN = rHAG.KlientZustimmungJN != null && (bool)rHAG.KlientZustimmungJN;
+                        bool PsychischekrankheitJN = rHAG.PsychischekrankheitJN != null && (bool)rHAG.PsychischekrankheitJN;
+                        bool GeistigeBehinderungJN = rHAG.GeistigeBehinderungJN != null && (bool)rHAG.GeistigeBehinderungJN;
+                        bool ErheblicheSelbstgefaehrdungJN = rHAG.ErheblicheSelbstgefaehrdungJN != null && (bool)rHAG.ErheblicheSelbstgefaehrdungJN;
+                        bool ErheblicheFremdgefaehrdungJN = rHAG.ErheblicheFremdgefaehrdungJN != null && (bool)rHAG.ErheblicheFremdgefaehrdungJN;
+
+                        bool EinzelfallmedikationJN_2016 = rHAG.EinzelfallmedikationJN_2016 != null && (bool)rHAG.EinzelfallmedikationJN_2016;
+                        bool DauermedikationJN_2016 = rHAG.DauermedikationJN_2016 != null && (bool)rHAG.DauermedikationJN_2016;
+
+                        bool HindernVerlassenBettSeitenteilenJN = rHAG.HindernVerlassenBettSeitenteilenJN != null && (bool)rHAG.HindernVerlassenBettSeitenteilenJN;
+                        bool HindernVerlassenBettBauchgurtJN_2016 = rHAG.HindernVerlassenBettBauchgurtJN_2016 != null && (bool)rHAG.HindernVerlassenBettBauchgurtJN_2016;
+                        bool HindernVerlassenBettElektronischJN_2016 = rHAG.HindernVerlassenBettElektronischJN_2016 != null && (bool)rHAG.HindernVerlassenBettElektronischJN_2016;
+                        bool HindernVerlassenBettAndereJN_2016 = rHAG.HindernVerlassenBettAndereJN_2016 != null && (bool)rHAG.HindernVerlassenBettAndereJN_2016;
+
+                        bool HindernSitzgelSitzhoseJN = rHAG.HindernSitzgelSitzhoseJN != null && (bool)rHAG.HindernSitzgelSitzhoseJN;
+                        bool HindernSitzgelBauchgurtJN_2016 = rHAG.HindernSitzgelBauchgurtJN_2016 != null && (bool)rHAG.HindernSitzgelBauchgurtJN_2016;
+                        bool HindernSitzgelBrustgurtJN_2016 = rHAG.HindernSitzgelBrustgurtJN_2016 != null && (bool)rHAG.HindernSitzgelBrustgurtJN_2016;
+                        bool HindernSitzgelTischJN = rHAG.HindernSitzgelTischJN != null && (bool)rHAG.HindernSitzgelTischJN;
+                        bool HindernSitzgelTherapietischJN = rHAG.HindernSitzgelTherapietischJN != null && (bool)rHAG.HindernSitzgelTherapietischJN;
+                        bool HindernSitzgelAndereJN_2016 = rHAG.HindernSitzgelAndereJN_2016 != null && (bool)rHAG.HindernSitzgelAndereJN_2016;
+
+                        bool ZurueckhaltensandrohungJN = rHAG.ZurueckhaltensandrohungJN != null && (bool)rHAG.ZurueckhaltensandrohungJN;
+                        bool HindernBereichFesthaltenJN_2016 = rHAG.HindernBereichFesthaltenJN_2016 != null && (bool)rHAG.HindernBereichFesthaltenJN_2016;
+                        bool HindernBereichVersperrterBereichJN_2016 = rHAG.HindernBereichVersperrterBereichJN_2016 != null && (bool)rHAG.HindernBereichVersperrterBereichJN_2016;
+                        bool HindernBereichBarriereJN_2016 = rHAG.HindernBereichBarriereJN_2016 != null && (bool)rHAG.HindernBereichBarriereJN_2016;
+                        bool ElektronischesUeberwachungJN = rHAG.ElektronischesUeberwachungJN != null && (bool)rHAG.ElektronischesUeberwachungJN;
+                        bool HindernBereichVersperrtesZimmerJN_2016 = rHAG.HindernBereichVersperrtesZimmerJN_2016 != null && (bool)rHAG.HindernBereichVersperrtesZimmerJN_2016;
+                        bool HindernBereichHinderAmFortbewegenJN_2016 = rHAG.HindernBereichHinderAmFortbewegenJN_2016 != null && (bool)rHAG.HindernBereichHinderAmFortbewegenJN_2016;
+                        bool HindernBereichAndereJN_2016 = rHAG.HindernBereichAndereJN_2016 != null && (bool)rHAG.HindernBereichAndereJN_2016;
+
+                       DateTime Beginn = (DateTime)rHAG.Beginn;
+                        txtHAG += "Beginn: " + Beginn.ToString("dd.MM.yyyy");
+
+
+                        string txtArt = "Grund der Freiheitsbeschränkung";
+                        if (PsychischekrankheitJN || 
+                            GeistigeBehinderungJN || 
+                            ErheblicheSelbstgefaehrdungJN || 
+                            ErheblicheFremdgefaehrdungJN
+                           )
+                        {
+                            if (KlientZustimmungJN)
+                            {
+                                txtHAG += "\nZustimmung des einsichts- und urteilsfähigen Kienten (Freiheitseinschränkung) liegt vor.";
+                                txtArt = "Grund der Freiheitseinschränkung";
+                            }
+
+                            txtHAG += "\n" + txtArt;
+                            if (PsychischekrankheitJN && GeistigeBehinderungJN)
+                            {
+                                txtHAG += ": Psychische Krankheit und geistige Behinderung,";
+                            }
+
+                            if (PsychischekrankheitJN && !GeistigeBehinderungJN)
+                            {
+                                txtHAG += ": Psychische Krankheit.";
+                            }
+
+                            if (!PsychischekrankheitJN && GeistigeBehinderungJN)
+                            {
+                                txtHAG += ": Geistige Behinderung.";
+                            }
+
+                            if ((PsychischekrankheitJN || GeistigeBehinderungJN) && !String.IsNullOrWhiteSpace(rHAG.MedizinischeDiagnose))
+                                txtHAG += " Begründung: " + rHAG.MedizinischeDiagnose;
+
+                            if (ErheblicheSelbstgefaehrdungJN && ErheblicheFremdgefaehrdungJN)
+                                txtHAG += "\nErhebliche Selbst- und Fremdgfährdung.";
+
+                            if (ErheblicheSelbstgefaehrdungJN && !ErheblicheFremdgefaehrdungJN)
+                                txtHAG += "\nErhebliche Selbstgefährdung.";
+
+                            if (!ErheblicheSelbstgefaehrdungJN && ErheblicheFremdgefaehrdungJN)
+                                txtHAG += "\nErhebliche Fremdgefährdung.";
+                            
+
+                            if ((ErheblicheSelbstgefaehrdungJN || ErheblicheFremdgefaehrdungJN) && !String.IsNullOrWhiteSpace(rHAG.AnmerkungVerhalten_2016))
+                                txtHAG += " Gefährdungsgrund: " + rHAG.AnmerkungVerhalten_2016;
+                        }
+
+                        if (!String.IsNullOrWhiteSpace(rHAG.AnmerkungGutachten_2016))
+                            txtHAG += "\n" + "Ärztliches Gutachten: " + rHAG.AnmerkungGutachten_2016;
+
+                        if (EinzelfallmedikationJN_2016 == true)
+                        {
+                            txtHAG += "\nEinzelfallmedikation";
+                            txtHAG += (!String.IsNullOrWhiteSpace(rHAG.Einzelfallmedikation_2016) ? ": " + rHAG.Einzelfallmedikation_2016 : "");
+                        }
+
+                        if (DauermedikationJN_2016 == true)
+                        {
+                            txtHAG += "\nDauermedikation";
+                            txtHAG += (!String.IsNullOrWhiteSpace(rHAG.Dauermedikation_2016) ? ": " + rHAG.Dauermedikation_2016 : "");
+                        }
+
+                        if (HindernVerlassenBettSeitenteilenJN ||
+                            HindernVerlassenBettBauchgurtJN_2016 ||
+                            HindernVerlassenBettElektronischJN_2016 ||
+                            HindernVerlassenBettAndereJN_2016)
+                        {
+                            txtHAG += "\nHindern am Verlassen des Bettes mittels ";
+                            txtHAG += (HindernVerlassenBettSeitenteilenJN ? "\n  -Seitenteilen " : "");
+                            txtHAG += (HindernVerlassenBettBauchgurtJN_2016 ? "\n  -Bauchgurt " : "");
+                            txtHAG += (HindernVerlassenBettElektronischJN_2016 ? "\n  -elektronischer Maßnahme " : "");
+                            if (HindernVerlassenBettAndereJN_2016)
+                            {
+                                txtHAG += "\n  -anderer Maßnahme";
+                                if (!String.IsNullOrEmpty(rHAG.HindernBettVerlassen))
+                                    txtHAG += ": " + rHAG.HindernBettVerlassen;
+                            }
+                        }
+
+                        if (HindernSitzgelSitzhoseJN || 
+                            HindernSitzgelBauchgurtJN_2016 || 
+                            HindernSitzgelBrustgurtJN_2016 || 
+                            HindernSitzgelTischJN || 
+                            HindernSitzgelTherapietischJN || 
+                            HindernSitzgelAndereJN_2016)
+                        {
+                            txtHAG += "\nHindern am Verlassen von Sitzgelgenheit/Rollstuhl mittels ";
+                            txtHAG += (HindernSitzgelSitzhoseJN ? "\n  -Sitzhose " : "");
+                            txtHAG += (HindernSitzgelBauchgurtJN_2016 ? "\n  -Bauchgurt " : "");
+                            txtHAG += (HindernSitzgelBrustgurtJN_2016 ? "\n  -Brustgurt " : "");
+                            txtHAG += (HindernSitzgelTischJN ? "\n  -Tisch " : "");
+                            txtHAG += (HindernSitzgelTherapietischJN ? "\n  -Therapietisch " : "");
+                            if (HindernSitzgelAndereJN_2016)
+                            {
+                                txtHAG += "\n  -anderer Maßnahme";
+                                if (!String.IsNullOrEmpty(rHAG.HindernSitzgelegenheit))
+                                    txtHAG += ": " + rHAG.HindernSitzgelegenheit;
+                            }
+                        }
+
+                        if (ZurueckhaltensandrohungJN || 
+                            HindernBereichFesthaltenJN_2016 || 
+                            HindernBereichVersperrterBereichJN_2016 || 
+                            HindernBereichBarriereJN_2016 || 
+                            ElektronischesUeberwachungJN || 
+                            HindernBereichVersperrtesZimmerJN_2016 || 
+                            HindernBereichHinderAmFortbewegenJN_2016 || 
+                            HindernBereichAndereJN_2016)
+                        {
+                            txtHAG += "\nHindern am Verlassen eines Bereichs mittels ";
+                            txtHAG += (ZurueckhaltensandrohungJN ? "\n  -Zurückhalten/Androhung des Zurückhaltens " : "");
+                            txtHAG += (HindernBereichFesthaltenJN_2016 ? "\n  -Körperlicher Zugriff/Festhalten " : "");
+                            txtHAG += (HindernBereichVersperrterBereichJN_2016 ? "\n  -versperrter Bereich " : "");
+                            txtHAG += (HindernBereichBarriereJN_2016 ? "\n  -Tür/Raumgestaltung, Barierre " : "");
+                            txtHAG += (ElektronischesUeberwachungJN ? "\n  -Desorientiertenfürsorgesystem/Sensor " : "");
+                            txtHAG += (HindernBereichVersperrtesZimmerJN_2016 ? "\n  -Versperrtes Zimmer " : "");
+                            txtHAG += (HindernBereichHinderAmFortbewegenJN_2016 ? "\n  -Hindern am Fortbewegen mit dem Rollstuhl (Bremsen, ..) " : "");
+                            if (HindernSitzgelAndereJN_2016)
+                            {
+                                txtHAG += "\n  -anderer Maßnahme";
+                                if (!String.IsNullOrEmpty(rHAG.BaulicheMassnahmen))
+                                    txtHAG += ": " + rHAG.BaulicheMassnahmen;
+                            }
+                        }
+                        txtHAG += "\n\n";
+                        rtfPATVERF_Text.Text = txtHAG;
+                        Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
+                    }
+                }
+
             }
             catch (Exception ex)
             {
@@ -973,24 +1410,50 @@ namespace PMDS.GUI.Print
 
         }
 
-        private void SetSektionTextHTML(object contRTF)
+        private void SetRTFTextHTML(object contRTF)
         {
-            System.Windows.Forms.RichTextBox cRtf = (System.Windows.Forms.RichTextBox)contRTF;
-            Sektionen[(int)(SektionOrder)cRtf.Tag].textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>").Replace("\n", "<br\\>");
-            CheckSektionUsed((SektionOrder)cRtf.Tag);
-        }
-
-        private void SetRisikoTextHTML(object contRTF)
-        {
-            System.Windows.Forms.RichTextBox cRtf = (System.Windows.Forms.RichTextBox)contRTF;
-
-            if (Sektionen[(int)(SektionOrder)cRtf.Tag].Risiko == null)
+            try
             {
-                Risiko Risk = new Risiko();
-                Sektionen[(int)(SektionOrder)cRtf.Tag].Risiko = Risk;
+                if (contRTF.GetType() == typeof(System.Windows.Forms.RichTextBox))
+                {
+                    System.Windows.Forms.RichTextBox cRtf = (System.Windows.Forms.RichTextBox)contRTF;
+
+                    if (cRtf.Tag != null && cRtf.Tag.GetType() == typeof(RTFTag))
+                    {
+                        RTFTag cTag = (RTFTag)cRtf.Tag;
+
+                        if (cTag.Typ == RTFTyp.Text)
+                        {
+                            Sektionen[(int)(SektionOrder)cTag.Order].textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>").Replace("\n", "<br\\>");
+                        }
+                        else if (cTag.Typ == RTFTyp.Res)
+                        {
+                            if (Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen == null)
+                                Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen = new HilfsmittelRessourcen();
+
+                            Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen.textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>").Replace("\n", "<br\\>");
+                            
+                            if (String.IsNullOrWhiteSpace(cRtf.Text))
+                                Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen = null;
+                        }
+                        else if (cTag.Typ == RTFTyp.Risk)
+                        {
+                            if (Sektionen[(int)(SektionOrder)cTag.Order].Risiko == null)
+                                Sektionen[(int)(SektionOrder)cTag.Order].Risiko = new Risiko();
+                            Sektionen[(int)(SektionOrder)cTag.Order].Risiko.textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>").Replace("\n", "<br\\>");
+                            
+                            if (String.IsNullOrWhiteSpace(cRtf.Text))
+                                Sektionen[(int)(SektionOrder)cTag.Order].Risiko = null;
+
+                        }
+                        CheckSektionUsed((SektionOrder)cTag.Order);
+                    }
+                }
             }
-            Sektionen[(int)(SektionOrder)cRtf.Tag].Risiko.textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>");
-            CheckSektionUsed((SektionOrder)cRtf.Tag);
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.SetRTFTextHTML: " + ex.ToString());
+            }
         }
 
         private void CheckSektionUsed(SektionOrder Sektion)
@@ -998,79 +1461,79 @@ namespace PMDS.GUI.Print
             switch (Sektion)
             {
                 case SektionOrder.Brieftext:
-                    Sektionen[(int)SektionOrder.Brieftext].use = !String.IsNullOrWhiteSpace(rtfBrieftext.Text);
+                    Sektionen[(int)SektionOrder.Brieftext].use = !String.IsNullOrWhiteSpace(rtfBRIEFT_Text.Text);
                     break;
 
                 case SektionOrder.Mobilität:
                     Sektionen[(int)SektionOrder.Mobilität].use = !String.IsNullOrWhiteSpace(rtfPFMOB_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFMOB_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFMOB_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFMOB_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFMOB_Risk.Text);
                     break;
 
                 case SektionOrder.KörperpflegeUndKleiden:
                     Sektionen[(int)SektionOrder.KörperpflegeUndKleiden].use = !String.IsNullOrWhiteSpace(rtfPFKLEI_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFKLEI_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFKLEI_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFKLEI_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFKLEI_Risk.Text);
                     break;
 
                 case SektionOrder.Ernährung:
                     Sektionen[(int)SektionOrder.Ernährung].use = !String.IsNullOrWhiteSpace(rtfPFERN_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFERN_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFERN_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFERN_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFERN_Risk.Text);
                     break;
 
                 case SektionOrder.Ausscheidung:
                     Sektionen[(int)SektionOrder.Ausscheidung].use = !String.IsNullOrWhiteSpace(rtfPFAUS_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFAUS_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFAUS_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFAUS_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFAUS_Risk.Text);
                     break;
 
                 case SektionOrder.Hautzustand:
                     Sektionen[(int)SektionOrder.Hautzustand].use = !String.IsNullOrWhiteSpace(rtfPFHAUT_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFHAUT_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFHAUT_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFHAUT_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFHAUT_Risk.Text);
                     break;
 
                 case SektionOrder.Atmung:
                     Sektionen[(int)SektionOrder.Atmung].use = !String.IsNullOrWhiteSpace(rtfPFATM_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFATM_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFATM_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFATM_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFATM_Risk.Text);
                     break;
 
                 case SektionOrder.Schlaf:
                     Sektionen[(int)SektionOrder.Schlaf].use = !String.IsNullOrWhiteSpace(rtfPFSCHL_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFSCHL_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFSCHL_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFSCHL_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFSCHL_Risk.Text);
                     break;
 
                 case SektionOrder.Schmerz:
                     Sektionen[(int)SektionOrder.Schmerz].use = !String.IsNullOrWhiteSpace(rtfPFSCHMERZ_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFSCHMERZ_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFSCHMERZ_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFSCHMERZ_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFSCHMERZ_Risk.Text);
                     break;
 
                 case SektionOrder.OrientierungUndBewusstseinslage:
                     Sektionen[(int)SektionOrder.OrientierungUndBewusstseinslage].use = !String.IsNullOrWhiteSpace(rtfPFORIE_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFORIE_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFORIE_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFORIE_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFORIE_Risk.Text);
                     break;
 
                 case SektionOrder.SozialeUmständeUndVerhalten:
                     Sektionen[(int)SektionOrder.SozialeUmständeUndVerhalten].use = !String.IsNullOrWhiteSpace(rtfPFSOZV_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFSOZV_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFSOZV_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFSOZV_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFSOZV_Risk.Text);
                     break;
 
                 case SektionOrder.Kommunikation:
                     Sektionen[(int)SektionOrder.Kommunikation].use = !String.IsNullOrWhiteSpace(rtfPFKOMM_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFKOMM_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFKOMM_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFKOMM_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFKOMM_Risk.Text);
                     break;
 
                 case SektionOrder.RollenwahnehmungUndSinnfindung:
                     Sektionen[(int)SektionOrder.RollenwahnehmungUndSinnfindung].use = !String.IsNullOrWhiteSpace(rtfPFROLL_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFROLL_Res.DocumentText) ||
-                                                                 !String.IsNullOrWhiteSpace(wbPFROLL_Risk.DocumentText);
+                                                                 !String.IsNullOrWhiteSpace(rtfPFROLL_Res.Text) ||
+                                                                 !String.IsNullOrWhiteSpace(rtfPFROLL_Risk.Text);
                     break;
 
                 case SektionOrder.PflegerelvanteInforamtionenZurMedizinischenBehandlung:
@@ -1097,6 +1560,30 @@ namespace PMDS.GUI.Print
             }
         }
 
+        private void SetRTFTextByTag(Control.ControlCollection controls, string Tag, string Text)
+        {
+            foreach (Control c in controls)
+            {
+                if (c.GetType() == typeof(System.Windows.Forms.RichTextBox))  
+                {
+                    if (c.Tag.GetType() == typeof(RTFTag))
+                    {
+                        RTFTag cTag = (RTFTag)c.Tag;
+                        if (cTag.Tag.Equals(Tag, StringComparison.OrdinalIgnoreCase))
+                        {
+                            System.Windows.Forms.RichTextBox cText = (System.Windows.Forms.RichTextBox)c;
+                            cText.Text += Text;
+                            Application.DoEvents();
+                            return;
+                        }
+                    }
+                }
+
+                if (c.HasChildren)
+                    SetRTFTextByTag(c.Controls, Tag, Text); //Rekursiver Aufruf
+            }
+        }
+
         private void SetWBTextByTag(Control.ControlCollection controls, string Tag, string Text)
         {
             foreach (Control c in controls)
@@ -1113,118 +1600,238 @@ namespace PMDS.GUI.Print
                 }
 
                 if (c.HasChildren)
-                    SetWBTextByTag(c.Controls, Tag, Text); //Recursively check all children controls as well; ie groupboxes or tabpages
+                    SetWBTextByTag(c.Controls, Tag, Text); //Rekursiver Aufruf
             }
         }
 
         private void rtfBrieftext_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFMOB_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFMOB_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFMOB_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFKLEI_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFKLEI_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFKLEI_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFERN_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFERN_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFERN_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFAUS_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFAUS_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFAUS_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFHAUT_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFHAUT_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFHAUT_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFATM_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFATM_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFATM_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFSCHL_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFSCHL_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFSCHL_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFSCHMERZ_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFSCHMERZ_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFSCHMERZ_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFORIE_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFORIE_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFORIE_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFSOZV_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFSOZV_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFSOZV_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFKOMM_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFKOMM_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFKOMM_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFROLL_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFROLL_Res_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
+        }
+
+        private void rtfPFROLL_Risk_TextChanged(object sender, EventArgs e)
+        {
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFMEDBEH_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFMED_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFLEGE_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfANM_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPATVERF_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfABBEM_Text_TextChanged(object sender, EventArgs e)
         {
-            SetSektionTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFMEDBEH_Risk_TextChanged(object sender, EventArgs e)
         {
-            SetRisikoTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfPFMED_Risk_TextChanged(object sender, EventArgs e)
         {
-            SetRisikoTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void rtfANM_Risk_TextChanged(object sender, EventArgs e)
         {
-            SetRisikoTextHTML(sender);
+            SetRTFTextHTML(sender);
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -1246,5 +1853,9 @@ namespace PMDS.GUI.Print
             public ST ID { get; set; }
         }
 
+        private void ultraLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
