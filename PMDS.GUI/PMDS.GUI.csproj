@@ -397,6 +397,9 @@
     <Reference Include="MARC.Everest.RMIM.UV.CDAr2">
       <HintPath>..\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll</HintPath>
     </Reference>
+    <Reference Include="MARC.Everest.RMIM.UV.NE2010">
+      <HintPath>..\Dlls\MARC.Everest.RMIM.UV.NE2010.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>

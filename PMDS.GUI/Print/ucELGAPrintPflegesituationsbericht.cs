@@ -18,17 +18,16 @@ using MARC.Everest.DataTypes.Interfaces;
 using MARC.Everest.Formatters.XML.Datatypes.R1;
 using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
 using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
+using MARC.Everest.RMIM.UV.NE2010.Interactions;
 using MARC.Everest.Xml;
 using System.Xml;
 using MARC.Everest.Formatters.XML.ITS1;
+
 using PMDS.Klient;
 using Patagames.Pdf.Enums;
-using Syncfusion.Windows.Forms;
 
 namespace PMDS.GUI.Print
 {
-
-
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
@@ -222,7 +221,6 @@ namespace PMDS.GUI.Print
 
         ClinicalDocument ccda = new ClinicalDocument();
         Component2 compSektionen = new Component2();
-        MARC.Everest.Formatters.XML.ITS1.XmlIts1Formatter fmtr = new MARC.Everest.Formatters.XML.ITS1.XmlIts1Formatter();
         StructuredBody structBody = new StructuredBody();
 
         public ucELGAPrintPflegesituationsbericht()
@@ -232,9 +230,6 @@ namespace PMDS.GUI.Print
 
         public void Init()
         {            
-            //fmtr.RegisterXSITypeName("POCD_MT000040UV.Sender", typeof(ELGAStructuredBody));
-            //fmtr.RegisterXSITypeName("POCD_MT000040UV.Sender", typeof(MyObservationMedia));
-            //fmtr.Settings |= SettingsType.AlwaysCheckForOverrides;
             //Struktur befüllen
             InitRTFTags();
             InitSektionen();
@@ -1124,7 +1119,7 @@ namespace PMDS.GUI.Print
                         bool HindernVerlassenBettElektronischJN_2016 = rHAG.HindernVerlassenBettElektronischJN_2016 != null && (bool)rHAG.HindernVerlassenBettElektronischJN_2016;
                         bool HindernVerlassenBettAndereJN_2016 = rHAG.HindernVerlassenBettAndereJN_2016 != null && (bool)rHAG.HindernVerlassenBettAndereJN_2016;
 
-                        bool HindernSitzgelSitzhoseJN = rHAG.HindernSitzgelSitzhoseJN != null && (bool)rHAG.HindernSitzgelSitzhoseJN;
+                        bool HindernSitzgelSitzhoseJN = (bool)rHAG.HindernSitzgelSitzhoseJN;
                         bool HindernSitzgelBauchgurtJN_2016 = rHAG.HindernSitzgelBauchgurtJN_2016 != null && (bool)rHAG.HindernSitzgelBauchgurtJN_2016;
                         bool HindernSitzgelBrustgurtJN_2016 = rHAG.HindernSitzgelBrustgurtJN_2016 != null && (bool)rHAG.HindernSitzgelBrustgurtJN_2016;
                         bool HindernSitzgelTischJN = rHAG.HindernSitzgelTischJN != null && (bool)rHAG.HindernSitzgelTischJN;
@@ -1365,7 +1360,7 @@ namespace PMDS.GUI.Print
         }
 
         //------------------------------------ Vorbereitete Struktur in CDA-component übertragen -----------------------------------------
-        public void CreateCDA()
+        public Component2 CreateCDAFachlicheSektionen()
         {
             try
             {
@@ -1390,9 +1385,16 @@ namespace PMDS.GUI.Print
 
                 using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\Temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
                 {
-                    DateTime start = DateTime.Now;
+                    XmlIts1Formatter fmtr = new XmlIts1Formatter();
+                    fmtr.ValidateConformance = false;
+                    fmtr.GraphAides.Add(new DatatypeFormatter() { CompatibilityMode = DatatypeFormatterCompatibilityMode.ClinicalDocumentArchitecture });
+                    fmtr.BuildCache(new Type[] { // Using Build Cache will greatly increase performance
+                                                 typeof(PRPA_IN201305UV02),
+                                                 typeof(PRPA_IN201309UV02)
+                                             });
                     var result = fmtr.Graph(xsw, ccda);
                     xsw.Flush();
+                    return compSektionen;
                 }
             }
             catch (Exception ex)

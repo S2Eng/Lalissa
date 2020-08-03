@@ -4,12 +4,23 @@ using PMDSClient.Sitemap;
 using System;
 using System.Windows.Forms;
 
+using MARC.Everest.Attributes;
+using MARC.Everest.DataTypes;
+using MARC.Everest.DataTypes.Interfaces;
+using MARC.Everest.Formatters.XML.Datatypes.R1;
+using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
+using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
+using MARC.Everest.RMIM.UV.NE2010.Interactions;
+using MARC.Everest.Xml;
+using System.Xml;
+using MARC.Everest.Formatters.XML.ITS1;
 
 namespace PMDS.GUI.Print
 {
     public partial class frmELGAPrintPflegesituationsbericht : Form
     {
         private bool _canClose { get; set; } = false;
+        private Component2 compFachlicheSektionen = new Component2();
 
         public frmELGAPrintPflegesituationsbericht()
         {
@@ -47,7 +58,7 @@ namespace PMDS.GUI.Print
         private void frmELGAPrintPflegesituationsbericht_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_canClose)
-                this.ucELGAPrintPflegesituationsbericht1.CreateCDA();
+                compFachlicheSektionen = this.ucELGAPrintPflegesituationsbericht1.CreateCDAFachlicheSektionen();
             e.Cancel = !_canClose;
         }
 
