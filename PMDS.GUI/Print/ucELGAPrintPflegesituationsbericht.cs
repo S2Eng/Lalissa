@@ -1374,7 +1374,6 @@ namespace PMDS.GUI.Print
                 ccda.LanguageCode = new CS<string>("de-AT");
                 compSektionen = new Component2();
                 structBody = new StructuredBody();
-                //structBody.classCode = null;
 
                 foreach (Sektion sektion in Sektionen)
                 {
