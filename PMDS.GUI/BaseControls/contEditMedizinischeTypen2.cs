@@ -16,7 +16,6 @@ using Infragistics.Win.UltraWinGrid;
 using Infragistics.Win.UltraWinListView;
 using PMDS.Global.db.ERSystem;
 using System.Data.OleDb;
-using PMDS.GUI.VB;
 using Infragistics.Win.UltraWinEditors;
 using System.IO;
 using Infragistics.Win;

@@ -22,6 +22,8 @@ using MARC.Everest.Xml;
 using System.Xml;
 using MARC.Everest.Formatters.XML.ITS1;
 using PMDS.Klient;
+using Patagames.Pdf.Enums;
+using Syncfusion.Windows.Forms;
 
 namespace PMDS.GUI.Print
 {
@@ -223,14 +225,13 @@ namespace PMDS.GUI.Print
         MARC.Everest.Formatters.XML.ITS1.XmlIts1Formatter fmtr = new MARC.Everest.Formatters.XML.ITS1.XmlIts1Formatter();
         StructuredBody structBody = new StructuredBody();
 
-
         public ucELGAPrintPflegesituationsbericht()
         {
             InitializeComponent();
         }
 
         public void Init()
-        {
+        {            
             //fmtr.RegisterXSITypeName("POCD_MT000040UV.Sender", typeof(ELGAStructuredBody));
             //fmtr.RegisterXSITypeName("POCD_MT000040UV.Sender", typeof(MyObservationMedia));
             //fmtr.Settings |= SettingsType.AlwaysCheckForOverrides;
@@ -494,7 +495,6 @@ namespace PMDS.GUI.Print
             try
             {
                 Section sect = new Section();
-
                 sect.TemplateId = new LIST<II>();
                 foreach (templateID ID in sektion.templateIDs)
                 {
@@ -575,6 +575,7 @@ namespace PMDS.GUI.Print
                         Act act = entry.GetClinicalStatementIfAct();
                         act.EffectiveTime.Low = new TS(pdEntry.effectiveTime_low_value);
                         act.EffectiveTime.Low.UpdateMode = null;
+                        act.LanguageCode = null;
                         act.EffectiveTime.Value = null;
                         act.EffectiveTime.High = null;
 
@@ -811,7 +812,7 @@ namespace PMDS.GUI.Print
                                         join zw in db.ZusatzWert on pe.ID equals zw.IDObjekt
                                         join zge in db.ZusatzGruppeEintrag on zw.IDZusatzGruppeEintrag equals zge.ID
                                         join ze in db.ZusatzEintrag on zge.IDZusatzEintrag equals ze.ID
-                                        where zge.AktivJN == true && ze.ELGA_ID > 0 && pe.IDAufenthalt == ENV.IDAUFENTHALT
+                                        where zge.AktivJN == true && (ze.ELGA_ID > 0 || ze.ID == "ERF") && pe.IDAufenthalt == ENV.IDAUFENTHALT
 
                                         select new
                                         {
@@ -824,7 +825,8 @@ namespace PMDS.GUI.Print
                                             ELGA_Unit = ze.ELGA_Unit,
                                             ELGA_Code = ze.ELGA_Code,
                                             Zeitpunkt = pe.Zeitpunkt,
-                                            Decimals = ze.MinValue
+                                            Decimals = ze.MinValue,
+                                            ZEID = ze.ID
                                         }).GroupBy(ze => ze.ELGA_Code).Select(g => g.OrderByDescending(pe => pe.Zeitpunkt).FirstOrDefault());
                     ;
 
@@ -909,7 +911,7 @@ namespace PMDS.GUI.Print
                         if (rMedDaten.NaechsteVersorgung != null)
                             naechsteVersorgung = (DateTime)rMedDaten.NaechsteVersorgung;
 
-                        mdText += rMedDaten.MTBeschreibung + ":";
+                        mdText += "- "  + rMedDaten.MTBeschreibung + ":";
                         mdText += " " + von.ToString("dd.MM.yyyy") + " -";
                         if (bis > new DateTime(1900, 1, 1))
                             mdText += " "  + bis.ToString("dd.MM.yyyy");
@@ -985,7 +987,7 @@ namespace PMDS.GUI.Print
                         DateTime bis = (DateTime)rRezept.AbzugebenBis;
                         DateTime VoDatum = (DateTime)rRezept.DatumErstellt;
 
-                        rez += rRezept.Bezeichnung + ", ";
+                        rez += "- " + rRezept.Bezeichnung + ", ";
                         rez += rRezept.DosierungASString;
                         //rez += " " + rRezept.Einheit;
                         //rez += " " + rRezept.Applikationsform;
@@ -1138,9 +1140,8 @@ namespace PMDS.GUI.Print
                         bool HindernBereichHinderAmFortbewegenJN_2016 = rHAG.HindernBereichHinderAmFortbewegenJN_2016 != null && (bool)rHAG.HindernBereichHinderAmFortbewegenJN_2016;
                         bool HindernBereichAndereJN_2016 = rHAG.HindernBereichAndereJN_2016 != null && (bool)rHAG.HindernBereichAndereJN_2016;
 
-                       DateTime Beginn = (DateTime)rHAG.Beginn;
+                        DateTime Beginn = (DateTime)rHAG.Beginn;
                         txtHAG += "Beginn: " + Beginn.ToString("dd.MM.yyyy");
-
 
                         string txtArt = "Grund der Freiheitsbeschränkung";
                         if (PsychischekrankheitJN || 
@@ -1209,12 +1210,12 @@ namespace PMDS.GUI.Print
                             HindernVerlassenBettAndereJN_2016)
                         {
                             txtHAG += "\nHindern am Verlassen des Bettes mittels ";
-                            txtHAG += (HindernVerlassenBettSeitenteilenJN ? "\n  -Seitenteilen " : "");
-                            txtHAG += (HindernVerlassenBettBauchgurtJN_2016 ? "\n  -Bauchgurt " : "");
-                            txtHAG += (HindernVerlassenBettElektronischJN_2016 ? "\n  -elektronischer Maßnahme " : "");
+                            txtHAG += (HindernVerlassenBettSeitenteilenJN ? "\n  - Seitenteilen " : "");
+                            txtHAG += (HindernVerlassenBettBauchgurtJN_2016 ? "\n  - Bauchgurt " : "");
+                            txtHAG += (HindernVerlassenBettElektronischJN_2016 ? "\n  - elektronischer Maßnahme " : "");
                             if (HindernVerlassenBettAndereJN_2016)
                             {
-                                txtHAG += "\n  -anderer Maßnahme";
+                                txtHAG += "\n  - anderer Maßnahme";
                                 if (!String.IsNullOrEmpty(rHAG.HindernBettVerlassen))
                                     txtHAG += ": " + rHAG.HindernBettVerlassen;
                             }
@@ -1228,14 +1229,14 @@ namespace PMDS.GUI.Print
                             HindernSitzgelAndereJN_2016)
                         {
                             txtHAG += "\nHindern am Verlassen von Sitzgelgenheit/Rollstuhl mittels ";
-                            txtHAG += (HindernSitzgelSitzhoseJN ? "\n  -Sitzhose " : "");
-                            txtHAG += (HindernSitzgelBauchgurtJN_2016 ? "\n  -Bauchgurt " : "");
-                            txtHAG += (HindernSitzgelBrustgurtJN_2016 ? "\n  -Brustgurt " : "");
+                            txtHAG += (HindernSitzgelSitzhoseJN ? "\n  - Sitzhose " : "");
+                            txtHAG += (HindernSitzgelBauchgurtJN_2016 ? "\n  - Bauchgurt " : "");
+                            txtHAG += (HindernSitzgelBrustgurtJN_2016 ? "\n  - Brustgurt " : "");
                             txtHAG += (HindernSitzgelTischJN ? "\n  -Tisch " : "");
-                            txtHAG += (HindernSitzgelTherapietischJN ? "\n  -Therapietisch " : "");
+                            txtHAG += (HindernSitzgelTherapietischJN ? "\n  - Therapietisch " : "");
                             if (HindernSitzgelAndereJN_2016)
                             {
-                                txtHAG += "\n  -anderer Maßnahme";
+                                txtHAG += "\n  - anderer Maßnahme";
                                 if (!String.IsNullOrEmpty(rHAG.HindernSitzgelegenheit))
                                     txtHAG += ": " + rHAG.HindernSitzgelegenheit;
                             }
@@ -1251,16 +1252,16 @@ namespace PMDS.GUI.Print
                             HindernBereichAndereJN_2016)
                         {
                             txtHAG += "\nHindern am Verlassen eines Bereichs mittels ";
-                            txtHAG += (ZurueckhaltensandrohungJN ? "\n  -Zurückhalten/Androhung des Zurückhaltens " : "");
-                            txtHAG += (HindernBereichFesthaltenJN_2016 ? "\n  -Körperlicher Zugriff/Festhalten " : "");
-                            txtHAG += (HindernBereichVersperrterBereichJN_2016 ? "\n  -versperrter Bereich " : "");
-                            txtHAG += (HindernBereichBarriereJN_2016 ? "\n  -Tür/Raumgestaltung, Barierre " : "");
-                            txtHAG += (ElektronischesUeberwachungJN ? "\n  -Desorientiertenfürsorgesystem/Sensor " : "");
-                            txtHAG += (HindernBereichVersperrtesZimmerJN_2016 ? "\n  -Versperrtes Zimmer " : "");
-                            txtHAG += (HindernBereichHinderAmFortbewegenJN_2016 ? "\n  -Hindern am Fortbewegen mit dem Rollstuhl (Bremsen, ..) " : "");
+                            txtHAG += (ZurueckhaltensandrohungJN ? "\n  - Zurückhalten/Androhung des Zurückhaltens " : "");
+                            txtHAG += (HindernBereichFesthaltenJN_2016 ? "\n  - Körperlicher Zugriff/Festhalten " : "");
+                            txtHAG += (HindernBereichVersperrterBereichJN_2016 ? "\n  - versperrter Bereich " : "");
+                            txtHAG += (HindernBereichBarriereJN_2016 ? "\n  - Tür/Raumgestaltung, Barierre " : "");
+                            txtHAG += (ElektronischesUeberwachungJN ? "\n  - Desorientiertenfürsorgesystem/Sensor " : "");
+                            txtHAG += (HindernBereichVersperrtesZimmerJN_2016 ? "\n  - Versperrtes Zimmer " : "");
+                            txtHAG += (HindernBereichHinderAmFortbewegenJN_2016 ? "\n  - Hindern am Fortbewegen mit dem Rollstuhl (Bremsen, ..) " : "");
                             if (HindernSitzgelAndereJN_2016)
                             {
-                                txtHAG += "\n  -anderer Maßnahme";
+                                txtHAG += "\n  - anderer Maßnahme";
                                 if (!String.IsNullOrEmpty(rHAG.BaulicheMassnahmen))
                                     txtHAG += ": " + rHAG.BaulicheMassnahmen;
                             }
@@ -1270,7 +1271,6 @@ namespace PMDS.GUI.Print
                         Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -1365,7 +1365,7 @@ namespace PMDS.GUI.Print
         }
 
         //------------------------------------ Vorbereitete Struktur in CDA-component übertragen -----------------------------------------
-        private void CreateCDA()
+        public void CreateCDA()
         {
             try
             {
@@ -1389,25 +1389,17 @@ namespace PMDS.GUI.Print
                 ccda.Component = compSektionen;
                 ccda.Component.ContextConductionInd = null;
 
-
-
-                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\Temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true })))
+                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\Temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
                 {
                     DateTime start = DateTime.Now;
                     var result = fmtr.Graph(xsw, ccda);
                     xsw.Flush();
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.CreateCDA: " + ex.ToString());
             }
-        }
-
-        private void ucELGAPrintPflegesituationsbericht_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void SetRTFTextHTML(object contRTF)
@@ -1851,11 +1843,6 @@ namespace PMDS.GUI.Print
         {
             [Property(Name = "ID", Conformance = PropertyAttribute.AttributeConformanceType.Populated, PropertyType = PropertyAttribute.AttributeAttributeType.Structural)]
             public ST ID { get; set; }
-        }
-
-        private void ultraLabel1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -42,6 +42,18 @@
             this.rtfBRIEFT_Text = new System.Windows.Forms.RichTextBox();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraPanel1 = new Infragistics.Win.Misc.UltraPanel();
+            this.rtfPFATM_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFHAUT_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFAUS_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFERN_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFKLEI_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFMOB_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFATM_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFHAUT_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFAUS_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFERN_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFKLEI_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFMOB_Res = new System.Windows.Forms.RichTextBox();
             this.lblPFATM = new Infragistics.Win.Misc.UltraLabel();
             this.rtfPFATM_Text = new System.Windows.Forms.RichTextBox();
             this.lblPFHAUT = new Infragistics.Win.Misc.UltraLabel();
@@ -59,6 +71,18 @@
             this.lblRessourcen = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTabPageControl5 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraPanel4 = new Infragistics.Win.Misc.UltraPanel();
+            this.rtfPFROLL_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFKOMM_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFSOZV_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFORIE_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFSCHMERZ_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFSCHL_Risk = new System.Windows.Forms.RichTextBox();
+            this.rtfPFROLL_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFKOMM_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFSOZV_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFORIE_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFSCHMERZ_Res = new System.Windows.Forms.RichTextBox();
+            this.rtfPFSCHL_Res = new System.Windows.Forms.RichTextBox();
             this.lblPFSCHL = new Infragistics.Win.Misc.UltraLabel();
             this.rtfPFSCHL_Text = new System.Windows.Forms.RichTextBox();
             this.lblPFROLL = new Infragistics.Win.Misc.UltraLabel();
@@ -101,30 +125,6 @@
             this.rtfANM_Text = new System.Windows.Forms.RichTextBox();
             this.baseTabControl1 = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.rtfPFMOB_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFKLEI_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFERN_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFAUS_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFHAUT_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFATM_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFMOB_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFKLEI_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFERN_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFAUS_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFHAUT_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFATM_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFSCHL_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFSCHMERZ_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFORIE_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFSOZV_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFKOMM_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFROLL_Res = new System.Windows.Forms.RichTextBox();
-            this.rtfPFSCHL_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFSCHMERZ_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFORIE_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFSOZV_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFKOMM_Risk = new System.Windows.Forms.RichTextBox();
-            this.rtfPFROLL_Risk = new System.Windows.Forms.RichTextBox();
             this.ultraTabPageControl1.SuspendLayout();
             this.pnlBrieftext.ClientArea.SuspendLayout();
             this.pnlBrieftext.SuspendLayout();
@@ -147,7 +147,7 @@
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.pnlBrieftext);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -263,6 +263,174 @@
             this.ultraPanel1.Name = "ultraPanel1";
             this.ultraPanel1.Size = new System.Drawing.Size(1256, 648);
             this.ultraPanel1.TabIndex = 0;
+            // 
+            // rtfPFATM_Risk
+            // 
+            this.rtfPFATM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFATM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFATM_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFATM_Risk.Location = new System.Drawing.Point(912, 540);
+            this.rtfPFATM_Risk.Name = "rtfPFATM_Risk";
+            this.rtfPFATM_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFATM_Risk.TabIndex = 17;
+            this.rtfPFATM_Risk.Tag = "PFMOB_RES";
+            this.rtfPFATM_Risk.Text = "";
+            this.rtfPFATM_Risk.TextChanged += new System.EventHandler(this.rtfPFATM_Risk_TextChanged);
+            // 
+            // rtfPFHAUT_Risk
+            // 
+            this.rtfPFHAUT_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFHAUT_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFHAUT_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFHAUT_Risk.Location = new System.Drawing.Point(912, 439);
+            this.rtfPFHAUT_Risk.Name = "rtfPFHAUT_Risk";
+            this.rtfPFHAUT_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFHAUT_Risk.TabIndex = 14;
+            this.rtfPFHAUT_Risk.Tag = "PFMOB_RES";
+            this.rtfPFHAUT_Risk.Text = "";
+            this.rtfPFHAUT_Risk.TextChanged += new System.EventHandler(this.rtfPFHAUT_Risk_TextChanged);
+            // 
+            // rtfPFAUS_Risk
+            // 
+            this.rtfPFAUS_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFAUS_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFAUS_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFAUS_Risk.Location = new System.Drawing.Point(912, 338);
+            this.rtfPFAUS_Risk.Name = "rtfPFAUS_Risk";
+            this.rtfPFAUS_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFAUS_Risk.TabIndex = 11;
+            this.rtfPFAUS_Risk.Tag = "PFMOB_RES";
+            this.rtfPFAUS_Risk.Text = "";
+            this.rtfPFAUS_Risk.TextChanged += new System.EventHandler(this.rtfPFAUS_Risk_TextChanged);
+            // 
+            // rtfPFERN_Risk
+            // 
+            this.rtfPFERN_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFERN_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFERN_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFERN_Risk.Location = new System.Drawing.Point(912, 237);
+            this.rtfPFERN_Risk.Name = "rtfPFERN_Risk";
+            this.rtfPFERN_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFERN_Risk.TabIndex = 8;
+            this.rtfPFERN_Risk.Tag = "PFMOB_RES";
+            this.rtfPFERN_Risk.Text = "";
+            this.rtfPFERN_Risk.TextChanged += new System.EventHandler(this.rtfPFERN_Risk_TextChanged);
+            // 
+            // rtfPFKLEI_Risk
+            // 
+            this.rtfPFKLEI_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFKLEI_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFKLEI_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFKLEI_Risk.Location = new System.Drawing.Point(912, 136);
+            this.rtfPFKLEI_Risk.Name = "rtfPFKLEI_Risk";
+            this.rtfPFKLEI_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFKLEI_Risk.TabIndex = 5;
+            this.rtfPFKLEI_Risk.Tag = "PFMOB_RES";
+            this.rtfPFKLEI_Risk.Text = "";
+            this.rtfPFKLEI_Risk.TextChanged += new System.EventHandler(this.rtfPFKLEI_Risk_TextChanged);
+            // 
+            // rtfPFMOB_Risk
+            // 
+            this.rtfPFMOB_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFMOB_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFMOB_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFMOB_Risk.Location = new System.Drawing.Point(912, 35);
+            this.rtfPFMOB_Risk.Name = "rtfPFMOB_Risk";
+            this.rtfPFMOB_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFMOB_Risk.TabIndex = 2;
+            this.rtfPFMOB_Risk.Tag = "PFMOB_RES";
+            this.rtfPFMOB_Risk.Text = "";
+            this.rtfPFMOB_Risk.TextChanged += new System.EventHandler(this.rtfPFMOB_Risk_TextChanged);
+            // 
+            // rtfPFATM_Res
+            // 
+            this.rtfPFATM_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFATM_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFATM_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFATM_Res.Location = new System.Drawing.Point(558, 540);
+            this.rtfPFATM_Res.Name = "rtfPFATM_Res";
+            this.rtfPFATM_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFATM_Res.TabIndex = 16;
+            this.rtfPFATM_Res.Tag = "PFMOB_RES";
+            this.rtfPFATM_Res.Text = "";
+            this.rtfPFATM_Res.TextChanged += new System.EventHandler(this.rtfPFATM_Res_TextChanged);
+            // 
+            // rtfPFHAUT_Res
+            // 
+            this.rtfPFHAUT_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFHAUT_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFHAUT_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFHAUT_Res.Location = new System.Drawing.Point(558, 439);
+            this.rtfPFHAUT_Res.Name = "rtfPFHAUT_Res";
+            this.rtfPFHAUT_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFHAUT_Res.TabIndex = 13;
+            this.rtfPFHAUT_Res.Tag = "PFMOB_RES";
+            this.rtfPFHAUT_Res.Text = "";
+            this.rtfPFHAUT_Res.TextChanged += new System.EventHandler(this.rtfPFHAUT_Res_TextChanged);
+            // 
+            // rtfPFAUS_Res
+            // 
+            this.rtfPFAUS_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFAUS_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFAUS_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFAUS_Res.Location = new System.Drawing.Point(558, 338);
+            this.rtfPFAUS_Res.Name = "rtfPFAUS_Res";
+            this.rtfPFAUS_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFAUS_Res.TabIndex = 10;
+            this.rtfPFAUS_Res.Tag = "PFMOB_RES";
+            this.rtfPFAUS_Res.Text = "";
+            this.rtfPFAUS_Res.TextChanged += new System.EventHandler(this.rtfPFAUS_Res_TextChanged);
+            // 
+            // rtfPFERN_Res
+            // 
+            this.rtfPFERN_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFERN_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFERN_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFERN_Res.Location = new System.Drawing.Point(558, 237);
+            this.rtfPFERN_Res.Name = "rtfPFERN_Res";
+            this.rtfPFERN_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFERN_Res.TabIndex = 7;
+            this.rtfPFERN_Res.Tag = "PFMOB_RES";
+            this.rtfPFERN_Res.Text = "";
+            this.rtfPFERN_Res.TextChanged += new System.EventHandler(this.rtfPFERN_Res_TextChanged);
+            // 
+            // rtfPFKLEI_Res
+            // 
+            this.rtfPFKLEI_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFKLEI_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFKLEI_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFKLEI_Res.Location = new System.Drawing.Point(558, 136);
+            this.rtfPFKLEI_Res.Name = "rtfPFKLEI_Res";
+            this.rtfPFKLEI_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFKLEI_Res.TabIndex = 4;
+            this.rtfPFKLEI_Res.Tag = "PFMOB_RES";
+            this.rtfPFKLEI_Res.Text = "";
+            this.rtfPFKLEI_Res.TextChanged += new System.EventHandler(this.rtfPFKLEI_Res_TextChanged);
+            // 
+            // rtfPFMOB_Res
+            // 
+            this.rtfPFMOB_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFMOB_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFMOB_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFMOB_Res.Location = new System.Drawing.Point(558, 35);
+            this.rtfPFMOB_Res.Name = "rtfPFMOB_Res";
+            this.rtfPFMOB_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFMOB_Res.TabIndex = 1;
+            this.rtfPFMOB_Res.Tag = "PFMOB_RES";
+            this.rtfPFMOB_Res.Text = "";
+            this.rtfPFMOB_Res.TextChanged += new System.EventHandler(this.rtfPFMOB_Res_TextChanged);
             // 
             // lblPFATM
             // 
@@ -473,6 +641,174 @@
             this.ultraPanel4.Name = "ultraPanel4";
             this.ultraPanel4.Size = new System.Drawing.Size(1256, 648);
             this.ultraPanel4.TabIndex = 0;
+            // 
+            // rtfPFROLL_Risk
+            // 
+            this.rtfPFROLL_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFROLL_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFROLL_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFROLL_Risk.Location = new System.Drawing.Point(912, 540);
+            this.rtfPFROLL_Risk.Name = "rtfPFROLL_Risk";
+            this.rtfPFROLL_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFROLL_Risk.TabIndex = 17;
+            this.rtfPFROLL_Risk.Tag = "PFMOB_RES";
+            this.rtfPFROLL_Risk.Text = "";
+            this.rtfPFROLL_Risk.TextChanged += new System.EventHandler(this.rtfPFROLL_Risk_TextChanged);
+            // 
+            // rtfPFKOMM_Risk
+            // 
+            this.rtfPFKOMM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFKOMM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFKOMM_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFKOMM_Risk.Location = new System.Drawing.Point(912, 439);
+            this.rtfPFKOMM_Risk.Name = "rtfPFKOMM_Risk";
+            this.rtfPFKOMM_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFKOMM_Risk.TabIndex = 14;
+            this.rtfPFKOMM_Risk.Tag = "PFMOB_RES";
+            this.rtfPFKOMM_Risk.Text = "";
+            this.rtfPFKOMM_Risk.TextChanged += new System.EventHandler(this.rtfPFKOMM_Risk_TextChanged);
+            // 
+            // rtfPFSOZV_Risk
+            // 
+            this.rtfPFSOZV_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFSOZV_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFSOZV_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFSOZV_Risk.Location = new System.Drawing.Point(912, 338);
+            this.rtfPFSOZV_Risk.Name = "rtfPFSOZV_Risk";
+            this.rtfPFSOZV_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFSOZV_Risk.TabIndex = 11;
+            this.rtfPFSOZV_Risk.Tag = "PFMOB_RES";
+            this.rtfPFSOZV_Risk.Text = "";
+            this.rtfPFSOZV_Risk.TextChanged += new System.EventHandler(this.rtfPFSOZV_Risk_TextChanged);
+            // 
+            // rtfPFORIE_Risk
+            // 
+            this.rtfPFORIE_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFORIE_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFORIE_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFORIE_Risk.Location = new System.Drawing.Point(912, 237);
+            this.rtfPFORIE_Risk.Name = "rtfPFORIE_Risk";
+            this.rtfPFORIE_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFORIE_Risk.TabIndex = 8;
+            this.rtfPFORIE_Risk.Tag = "PFMOB_RES";
+            this.rtfPFORIE_Risk.Text = "";
+            this.rtfPFORIE_Risk.TextChanged += new System.EventHandler(this.rtfPFORIE_Risk_TextChanged);
+            // 
+            // rtfPFSCHMERZ_Risk
+            // 
+            this.rtfPFSCHMERZ_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFSCHMERZ_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFSCHMERZ_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFSCHMERZ_Risk.Location = new System.Drawing.Point(912, 136);
+            this.rtfPFSCHMERZ_Risk.Name = "rtfPFSCHMERZ_Risk";
+            this.rtfPFSCHMERZ_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFSCHMERZ_Risk.TabIndex = 5;
+            this.rtfPFSCHMERZ_Risk.Tag = "PFMOB_RES";
+            this.rtfPFSCHMERZ_Risk.Text = "";
+            this.rtfPFSCHMERZ_Risk.TextChanged += new System.EventHandler(this.rtfPFSCHMERZ_Risk_TextChanged);
+            // 
+            // rtfPFSCHL_Risk
+            // 
+            this.rtfPFSCHL_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFSCHL_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFSCHL_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFSCHL_Risk.Location = new System.Drawing.Point(912, 35);
+            this.rtfPFSCHL_Risk.Name = "rtfPFSCHL_Risk";
+            this.rtfPFSCHL_Risk.Size = new System.Drawing.Size(336, 95);
+            this.rtfPFSCHL_Risk.TabIndex = 2;
+            this.rtfPFSCHL_Risk.Tag = "PFMOB_RES";
+            this.rtfPFSCHL_Risk.Text = "";
+            this.rtfPFSCHL_Risk.TextChanged += new System.EventHandler(this.rtfPFSCHL_Risk_TextChanged);
+            // 
+            // rtfPFROLL_Res
+            // 
+            this.rtfPFROLL_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFROLL_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFROLL_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFROLL_Res.Location = new System.Drawing.Point(558, 540);
+            this.rtfPFROLL_Res.Name = "rtfPFROLL_Res";
+            this.rtfPFROLL_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFROLL_Res.TabIndex = 16;
+            this.rtfPFROLL_Res.Tag = "PFMOB_RES";
+            this.rtfPFROLL_Res.Text = "";
+            this.rtfPFROLL_Res.TextChanged += new System.EventHandler(this.rtfPFROLL_Res_TextChanged);
+            // 
+            // rtfPFKOMM_Res
+            // 
+            this.rtfPFKOMM_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFKOMM_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFKOMM_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFKOMM_Res.Location = new System.Drawing.Point(558, 439);
+            this.rtfPFKOMM_Res.Name = "rtfPFKOMM_Res";
+            this.rtfPFKOMM_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFKOMM_Res.TabIndex = 13;
+            this.rtfPFKOMM_Res.Tag = "PFMOB_RES";
+            this.rtfPFKOMM_Res.Text = "";
+            this.rtfPFKOMM_Res.TextChanged += new System.EventHandler(this.rtfPFKOMM_Res_TextChanged);
+            // 
+            // rtfPFSOZV_Res
+            // 
+            this.rtfPFSOZV_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFSOZV_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFSOZV_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFSOZV_Res.Location = new System.Drawing.Point(558, 338);
+            this.rtfPFSOZV_Res.Name = "rtfPFSOZV_Res";
+            this.rtfPFSOZV_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFSOZV_Res.TabIndex = 10;
+            this.rtfPFSOZV_Res.Tag = "PFMOB_RES";
+            this.rtfPFSOZV_Res.Text = "";
+            this.rtfPFSOZV_Res.TextChanged += new System.EventHandler(this.rtfPFSOZV_Res_TextChanged);
+            // 
+            // rtfPFORIE_Res
+            // 
+            this.rtfPFORIE_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFORIE_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFORIE_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFORIE_Res.Location = new System.Drawing.Point(558, 237);
+            this.rtfPFORIE_Res.Name = "rtfPFORIE_Res";
+            this.rtfPFORIE_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFORIE_Res.TabIndex = 7;
+            this.rtfPFORIE_Res.Tag = "PFMOB_RES";
+            this.rtfPFORIE_Res.Text = "";
+            this.rtfPFORIE_Res.TextChanged += new System.EventHandler(this.rtfPFORIE_Res_TextChanged);
+            // 
+            // rtfPFSCHMERZ_Res
+            // 
+            this.rtfPFSCHMERZ_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFSCHMERZ_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFSCHMERZ_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFSCHMERZ_Res.Location = new System.Drawing.Point(558, 136);
+            this.rtfPFSCHMERZ_Res.Name = "rtfPFSCHMERZ_Res";
+            this.rtfPFSCHMERZ_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFSCHMERZ_Res.TabIndex = 4;
+            this.rtfPFSCHMERZ_Res.Tag = "PFMOB_RES";
+            this.rtfPFSCHMERZ_Res.Text = "";
+            this.rtfPFSCHMERZ_Res.TextChanged += new System.EventHandler(this.rtfPFSCHMERZ_Res_TextChanged);
+            // 
+            // rtfPFSCHL_Res
+            // 
+            this.rtfPFSCHL_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfPFSCHL_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtfPFSCHL_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfPFSCHL_Res.Location = new System.Drawing.Point(558, 35);
+            this.rtfPFSCHL_Res.Name = "rtfPFSCHL_Res";
+            this.rtfPFSCHL_Res.Size = new System.Drawing.Size(348, 95);
+            this.rtfPFSCHL_Res.TabIndex = 1;
+            this.rtfPFSCHL_Res.Tag = "PFMOB_RES";
+            this.rtfPFSCHL_Res.Text = "";
+            this.rtfPFSCHL_Res.TextChanged += new System.EventHandler(this.rtfPFSCHL_Res_TextChanged);
             // 
             // lblPFSCHL
             // 
@@ -751,7 +1087,6 @@
             this.ultraLabel1.Size = new System.Drawing.Size(507, 23);
             this.ultraLabel1.TabIndex = 15;
             this.ultraLabel1.Text = "Daten aus Klientenakt und Freitext";
-            this.ultraLabel1.Click += new System.EventHandler(this.ultraLabel1_Click);
             // 
             // lblPFMEDBEH
             // 
@@ -809,7 +1144,7 @@
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.ultraPanel3);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -981,342 +1316,6 @@
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1256, 648);
             // 
-            // rtfPFMOB_Res
-            // 
-            this.rtfPFMOB_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFMOB_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFMOB_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFMOB_Res.Location = new System.Drawing.Point(558, 35);
-            this.rtfPFMOB_Res.Name = "rtfPFMOB_Res";
-            this.rtfPFMOB_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFMOB_Res.TabIndex = 1;
-            this.rtfPFMOB_Res.Tag = "PFMOB_RES";
-            this.rtfPFMOB_Res.Text = "";
-            this.rtfPFMOB_Res.TextChanged += new System.EventHandler(this.rtfPFMOB_Res_TextChanged);
-            // 
-            // rtfPFKLEI_Res
-            // 
-            this.rtfPFKLEI_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFKLEI_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFKLEI_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFKLEI_Res.Location = new System.Drawing.Point(558, 136);
-            this.rtfPFKLEI_Res.Name = "rtfPFKLEI_Res";
-            this.rtfPFKLEI_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFKLEI_Res.TabIndex = 4;
-            this.rtfPFKLEI_Res.Tag = "PFMOB_RES";
-            this.rtfPFKLEI_Res.Text = "";
-            this.rtfPFKLEI_Res.TextChanged += new System.EventHandler(this.rtfPFKLEI_Res_TextChanged);
-            // 
-            // rtfPFERN_Res
-            // 
-            this.rtfPFERN_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFERN_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFERN_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFERN_Res.Location = new System.Drawing.Point(558, 237);
-            this.rtfPFERN_Res.Name = "rtfPFERN_Res";
-            this.rtfPFERN_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFERN_Res.TabIndex = 7;
-            this.rtfPFERN_Res.Tag = "PFMOB_RES";
-            this.rtfPFERN_Res.Text = "";
-            this.rtfPFERN_Res.TextChanged += new System.EventHandler(this.rtfPFERN_Res_TextChanged);
-            // 
-            // rtfPFAUS_Res
-            // 
-            this.rtfPFAUS_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFAUS_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFAUS_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFAUS_Res.Location = new System.Drawing.Point(558, 338);
-            this.rtfPFAUS_Res.Name = "rtfPFAUS_Res";
-            this.rtfPFAUS_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFAUS_Res.TabIndex = 10;
-            this.rtfPFAUS_Res.Tag = "PFMOB_RES";
-            this.rtfPFAUS_Res.Text = "";
-            this.rtfPFAUS_Res.TextChanged += new System.EventHandler(this.rtfPFAUS_Res_TextChanged);
-            // 
-            // rtfPFHAUT_Res
-            // 
-            this.rtfPFHAUT_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFHAUT_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFHAUT_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFHAUT_Res.Location = new System.Drawing.Point(558, 439);
-            this.rtfPFHAUT_Res.Name = "rtfPFHAUT_Res";
-            this.rtfPFHAUT_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFHAUT_Res.TabIndex = 13;
-            this.rtfPFHAUT_Res.Tag = "PFMOB_RES";
-            this.rtfPFHAUT_Res.Text = "";
-            this.rtfPFHAUT_Res.TextChanged += new System.EventHandler(this.rtfPFHAUT_Res_TextChanged);
-            // 
-            // rtfPFATM_Res
-            // 
-            this.rtfPFATM_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFATM_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFATM_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFATM_Res.Location = new System.Drawing.Point(558, 540);
-            this.rtfPFATM_Res.Name = "rtfPFATM_Res";
-            this.rtfPFATM_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFATM_Res.TabIndex = 16;
-            this.rtfPFATM_Res.Tag = "PFMOB_RES";
-            this.rtfPFATM_Res.Text = "";
-            this.rtfPFATM_Res.TextChanged += new System.EventHandler(this.rtfPFATM_Res_TextChanged);
-            // 
-            // rtfPFMOB_Risk
-            // 
-            this.rtfPFMOB_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFMOB_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFMOB_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFMOB_Risk.Location = new System.Drawing.Point(912, 35);
-            this.rtfPFMOB_Risk.Name = "rtfPFMOB_Risk";
-            this.rtfPFMOB_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFMOB_Risk.TabIndex = 2;
-            this.rtfPFMOB_Risk.Tag = "PFMOB_RES";
-            this.rtfPFMOB_Risk.Text = "";
-            this.rtfPFMOB_Risk.TextChanged += new System.EventHandler(this.rtfPFMOB_Risk_TextChanged);
-            // 
-            // rtfPFKLEI_Risk
-            // 
-            this.rtfPFKLEI_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFKLEI_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFKLEI_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFKLEI_Risk.Location = new System.Drawing.Point(912, 136);
-            this.rtfPFKLEI_Risk.Name = "rtfPFKLEI_Risk";
-            this.rtfPFKLEI_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFKLEI_Risk.TabIndex = 5;
-            this.rtfPFKLEI_Risk.Tag = "PFMOB_RES";
-            this.rtfPFKLEI_Risk.Text = "";
-            this.rtfPFKLEI_Risk.TextChanged += new System.EventHandler(this.rtfPFKLEI_Risk_TextChanged);
-            // 
-            // rtfPFERN_Risk
-            // 
-            this.rtfPFERN_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFERN_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFERN_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFERN_Risk.Location = new System.Drawing.Point(912, 237);
-            this.rtfPFERN_Risk.Name = "rtfPFERN_Risk";
-            this.rtfPFERN_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFERN_Risk.TabIndex = 8;
-            this.rtfPFERN_Risk.Tag = "PFMOB_RES";
-            this.rtfPFERN_Risk.Text = "";
-            this.rtfPFERN_Risk.TextChanged += new System.EventHandler(this.rtfPFERN_Risk_TextChanged);
-            // 
-            // rtfPFAUS_Risk
-            // 
-            this.rtfPFAUS_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFAUS_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFAUS_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFAUS_Risk.Location = new System.Drawing.Point(912, 338);
-            this.rtfPFAUS_Risk.Name = "rtfPFAUS_Risk";
-            this.rtfPFAUS_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFAUS_Risk.TabIndex = 11;
-            this.rtfPFAUS_Risk.Tag = "PFMOB_RES";
-            this.rtfPFAUS_Risk.Text = "";
-            this.rtfPFAUS_Risk.TextChanged += new System.EventHandler(this.rtfPFAUS_Risk_TextChanged);
-            // 
-            // rtfPFHAUT_Risk
-            // 
-            this.rtfPFHAUT_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFHAUT_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFHAUT_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFHAUT_Risk.Location = new System.Drawing.Point(912, 439);
-            this.rtfPFHAUT_Risk.Name = "rtfPFHAUT_Risk";
-            this.rtfPFHAUT_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFHAUT_Risk.TabIndex = 14;
-            this.rtfPFHAUT_Risk.Tag = "PFMOB_RES";
-            this.rtfPFHAUT_Risk.Text = "";
-            this.rtfPFHAUT_Risk.TextChanged += new System.EventHandler(this.rtfPFHAUT_Risk_TextChanged);
-            // 
-            // rtfPFATM_Risk
-            // 
-            this.rtfPFATM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFATM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFATM_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFATM_Risk.Location = new System.Drawing.Point(912, 540);
-            this.rtfPFATM_Risk.Name = "rtfPFATM_Risk";
-            this.rtfPFATM_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFATM_Risk.TabIndex = 17;
-            this.rtfPFATM_Risk.Tag = "PFMOB_RES";
-            this.rtfPFATM_Risk.Text = "";
-            this.rtfPFATM_Risk.TextChanged += new System.EventHandler(this.rtfPFATM_Risk_TextChanged);
-            // 
-            // rtfPFSCHL_Res
-            // 
-            this.rtfPFSCHL_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFSCHL_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFSCHL_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFSCHL_Res.Location = new System.Drawing.Point(558, 35);
-            this.rtfPFSCHL_Res.Name = "rtfPFSCHL_Res";
-            this.rtfPFSCHL_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFSCHL_Res.TabIndex = 1;
-            this.rtfPFSCHL_Res.Tag = "PFMOB_RES";
-            this.rtfPFSCHL_Res.Text = "";
-            this.rtfPFSCHL_Res.TextChanged += new System.EventHandler(this.rtfPFSCHL_Res_TextChanged);
-            // 
-            // rtfPFSCHMERZ_Res
-            // 
-            this.rtfPFSCHMERZ_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFSCHMERZ_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFSCHMERZ_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFSCHMERZ_Res.Location = new System.Drawing.Point(558, 136);
-            this.rtfPFSCHMERZ_Res.Name = "rtfPFSCHMERZ_Res";
-            this.rtfPFSCHMERZ_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFSCHMERZ_Res.TabIndex = 4;
-            this.rtfPFSCHMERZ_Res.Tag = "PFMOB_RES";
-            this.rtfPFSCHMERZ_Res.Text = "";
-            this.rtfPFSCHMERZ_Res.TextChanged += new System.EventHandler(this.rtfPFSCHMERZ_Res_TextChanged);
-            // 
-            // rtfPFORIE_Res
-            // 
-            this.rtfPFORIE_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFORIE_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFORIE_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFORIE_Res.Location = new System.Drawing.Point(558, 237);
-            this.rtfPFORIE_Res.Name = "rtfPFORIE_Res";
-            this.rtfPFORIE_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFORIE_Res.TabIndex = 7;
-            this.rtfPFORIE_Res.Tag = "PFMOB_RES";
-            this.rtfPFORIE_Res.Text = "";
-            this.rtfPFORIE_Res.TextChanged += new System.EventHandler(this.rtfPFORIE_Res_TextChanged);
-            // 
-            // rtfPFSOZV_Res
-            // 
-            this.rtfPFSOZV_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFSOZV_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFSOZV_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFSOZV_Res.Location = new System.Drawing.Point(558, 338);
-            this.rtfPFSOZV_Res.Name = "rtfPFSOZV_Res";
-            this.rtfPFSOZV_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFSOZV_Res.TabIndex = 10;
-            this.rtfPFSOZV_Res.Tag = "PFMOB_RES";
-            this.rtfPFSOZV_Res.Text = "";
-            this.rtfPFSOZV_Res.TextChanged += new System.EventHandler(this.rtfPFSOZV_Res_TextChanged);
-            // 
-            // rtfPFKOMM_Res
-            // 
-            this.rtfPFKOMM_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFKOMM_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFKOMM_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFKOMM_Res.Location = new System.Drawing.Point(558, 439);
-            this.rtfPFKOMM_Res.Name = "rtfPFKOMM_Res";
-            this.rtfPFKOMM_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFKOMM_Res.TabIndex = 13;
-            this.rtfPFKOMM_Res.Tag = "PFMOB_RES";
-            this.rtfPFKOMM_Res.Text = "";
-            this.rtfPFKOMM_Res.TextChanged += new System.EventHandler(this.rtfPFKOMM_Res_TextChanged);
-            // 
-            // rtfPFROLL_Res
-            // 
-            this.rtfPFROLL_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFROLL_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFROLL_Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFROLL_Res.Location = new System.Drawing.Point(558, 540);
-            this.rtfPFROLL_Res.Name = "rtfPFROLL_Res";
-            this.rtfPFROLL_Res.Size = new System.Drawing.Size(348, 95);
-            this.rtfPFROLL_Res.TabIndex = 16;
-            this.rtfPFROLL_Res.Tag = "PFMOB_RES";
-            this.rtfPFROLL_Res.Text = "";
-            this.rtfPFROLL_Res.TextChanged += new System.EventHandler(this.rtfPFROLL_Res_TextChanged);
-            // 
-            // rtfPFSCHL_Risk
-            // 
-            this.rtfPFSCHL_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFSCHL_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFSCHL_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFSCHL_Risk.Location = new System.Drawing.Point(912, 35);
-            this.rtfPFSCHL_Risk.Name = "rtfPFSCHL_Risk";
-            this.rtfPFSCHL_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFSCHL_Risk.TabIndex = 2;
-            this.rtfPFSCHL_Risk.Tag = "PFMOB_RES";
-            this.rtfPFSCHL_Risk.Text = "";
-            this.rtfPFSCHL_Risk.TextChanged += new System.EventHandler(this.rtfPFSCHL_Risk_TextChanged);
-            // 
-            // rtfPFSCHMERZ_Risk
-            // 
-            this.rtfPFSCHMERZ_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFSCHMERZ_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFSCHMERZ_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFSCHMERZ_Risk.Location = new System.Drawing.Point(912, 136);
-            this.rtfPFSCHMERZ_Risk.Name = "rtfPFSCHMERZ_Risk";
-            this.rtfPFSCHMERZ_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFSCHMERZ_Risk.TabIndex = 5;
-            this.rtfPFSCHMERZ_Risk.Tag = "PFMOB_RES";
-            this.rtfPFSCHMERZ_Risk.Text = "";
-            this.rtfPFSCHMERZ_Risk.TextChanged += new System.EventHandler(this.rtfPFSCHMERZ_Risk_TextChanged);
-            // 
-            // rtfPFORIE_Risk
-            // 
-            this.rtfPFORIE_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFORIE_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFORIE_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFORIE_Risk.Location = new System.Drawing.Point(912, 237);
-            this.rtfPFORIE_Risk.Name = "rtfPFORIE_Risk";
-            this.rtfPFORIE_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFORIE_Risk.TabIndex = 8;
-            this.rtfPFORIE_Risk.Tag = "PFMOB_RES";
-            this.rtfPFORIE_Risk.Text = "";
-            this.rtfPFORIE_Risk.TextChanged += new System.EventHandler(this.rtfPFORIE_Risk_TextChanged);
-            // 
-            // rtfPFSOZV_Risk
-            // 
-            this.rtfPFSOZV_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFSOZV_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFSOZV_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFSOZV_Risk.Location = new System.Drawing.Point(912, 338);
-            this.rtfPFSOZV_Risk.Name = "rtfPFSOZV_Risk";
-            this.rtfPFSOZV_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFSOZV_Risk.TabIndex = 11;
-            this.rtfPFSOZV_Risk.Tag = "PFMOB_RES";
-            this.rtfPFSOZV_Risk.Text = "";
-            this.rtfPFSOZV_Risk.TextChanged += new System.EventHandler(this.rtfPFSOZV_Risk_TextChanged);
-            // 
-            // rtfPFKOMM_Risk
-            // 
-            this.rtfPFKOMM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFKOMM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFKOMM_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFKOMM_Risk.Location = new System.Drawing.Point(912, 439);
-            this.rtfPFKOMM_Risk.Name = "rtfPFKOMM_Risk";
-            this.rtfPFKOMM_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFKOMM_Risk.TabIndex = 14;
-            this.rtfPFKOMM_Risk.Tag = "PFMOB_RES";
-            this.rtfPFKOMM_Risk.Text = "";
-            this.rtfPFKOMM_Risk.TextChanged += new System.EventHandler(this.rtfPFKOMM_Risk_TextChanged);
-            // 
-            // rtfPFROLL_Risk
-            // 
-            this.rtfPFROLL_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfPFROLL_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfPFROLL_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfPFROLL_Risk.Location = new System.Drawing.Point(912, 540);
-            this.rtfPFROLL_Risk.Name = "rtfPFROLL_Risk";
-            this.rtfPFROLL_Risk.Size = new System.Drawing.Size(336, 95);
-            this.rtfPFROLL_Risk.TabIndex = 17;
-            this.rtfPFROLL_Risk.Tag = "PFMOB_RES";
-            this.rtfPFROLL_Risk.Text = "";
-            this.rtfPFROLL_Risk.TextChanged += new System.EventHandler(this.rtfPFROLL_Risk_TextChanged);
-            // 
             // ucELGAPrintPflegesituationsbericht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1325,7 +1324,6 @@
             this.Controls.Add(this.baseTabControl1);
             this.Name = "ucELGAPrintPflegesituationsbericht";
             this.Size = new System.Drawing.Size(1260, 674);
-            this.Load += new System.EventHandler(this.ucELGAPrintPflegesituationsbericht_Load);
             this.ultraTabPageControl1.ResumeLayout(false);
             this.pnlBrieftext.ClientArea.ResumeLayout(false);
             this.pnlBrieftext.ResumeLayout(false);

@@ -90,7 +90,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>25D503E10C53435EFA9F73714823AEA663356B14</ManifestCertificateThumbprint>
@@ -1020,7 +1020,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
+      <UserProperties BuildVersion_AssemblyInfoFilename="Assembly.info" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_StartDate="2010/11/23" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -29,12 +29,13 @@ namespace PMDS.BusinessLogic
 		{
 			string[] sa = sArray.Split(',');
 			ArrayList al = new ArrayList();
-			try 
-			{
-				foreach(string s in sa)
+			if (al.Count > 0)
+            {
+				foreach (string s in sa)
+                {
 					al.Add(new Guid(s));
+				}
 			}
-			catch {}
 			return (Guid[])al.ToArray(typeof(Guid));
 		}
 

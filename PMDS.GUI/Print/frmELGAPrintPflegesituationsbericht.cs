@@ -46,6 +46,8 @@ namespace PMDS.GUI.Print
 
         private void frmELGAPrintPflegesituationsbericht_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (_canClose)
+                this.ucELGAPrintPflegesituationsbericht1.CreateCDA();
             e.Cancel = !_canClose;
         }
 
