@@ -103,12 +103,12 @@ namespace PMDS
                     System.IO.Directory.CreateDirectory(ENV.LOGPATH);
                 }
 
-                string showSplash = searchKeyArg("showSplash", args);
-                if (showSplash.Trim() != "0")
+                ENV.COMMANDLINE_bshowSplash = searchKeyArg("showSplash", args) == "1";
+                if (ENV.COMMANDLINE_bshowSplash)
                 {
                     infoStartMain = new frmInfo();
-                    infoStartMain.TopMost = true;
-                    infoStartMain.ShowInTaskbar = false;
+                    infoStartMain.TopMost = false;
+                    infoStartMain.ShowInTaskbar = true;
                     infoStartMain.StartPosition = FormStartPosition.CenterScreen;
                     infoStartMain.Start();
                 }

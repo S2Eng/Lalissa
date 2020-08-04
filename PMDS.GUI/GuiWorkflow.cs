@@ -63,8 +63,11 @@ namespace PMDS.GUI
             frmInfo info = new frmInfo();
             try
             {
-                info.StartPosition = FormStartPosition.CenterScreen;
-                info.Show();
+                if (ENV.COMMANDLINE_bshowSplash)
+                {
+                    info.StartPosition = FormStartPosition.CenterScreen;
+                    info.Show();
+                }
                 new GuiWorkflow(framework);
                 GuiWorkflow.HeaderMain = ((frmMain)framework).ucHeader1;
                 return true;
@@ -83,8 +86,11 @@ namespace PMDS.GUI
             frmInfo info = new frmInfo();
             try
             {
-                info.StartPosition = FormStartPosition.CenterScreen;
-                info.Show();
+                if (ENV.COMMANDLINE_bshowSplash)
+                {
+                    info.StartPosition = FormStartPosition.CenterScreen;
+                    info.Show();
+                }
                 return true;
             }
             finally

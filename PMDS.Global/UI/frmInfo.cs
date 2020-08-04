@@ -19,7 +19,7 @@ namespace PMDS
 	public class frmInfo : QS2.Desktop.ControlManagment.baseForm 
     {
 
-        public bool closeIfVisible = false;
+        public bool closeIfVisible = !PMDS.Global.ENV.COMMANDLINE_bshowSplash;
 
 
 
@@ -62,13 +62,29 @@ namespace PMDS
 
 		public void Start()
 		{
-			Show();
-		}
+            try
+            {
+                Show();
+            }
+            catch (Exception ex)
+            {
+                //do nothing
+            }
+
+        }
 
 	    public void Stop()
 		{
-            this.Close();
-		}
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                //do nothing
+            }
+
+        }
 
 	    private void frmInfo_Load(object sender, System.EventArgs e)
 		{
@@ -78,7 +94,14 @@ namespace PMDS
         {
             if (closeIfVisible)
             {
-                this.Close();
+                try
+                {
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    //do nothing
+                }
             }
         }
 

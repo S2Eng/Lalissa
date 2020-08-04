@@ -37,6 +37,7 @@ namespace Launcher
         public static string sConfigFile = "";
         public static string sProgramPath = "";
         public static string sProgramFile = "";
+        public static string sshowSplash = "1";
 
         public static SortedList<string, string> lstVersionsRemoveRoot = new SortedList<string, string>();
         public static SortedList<string, string> lstVersionsRemoveConfig = new SortedList<string, string>();
@@ -79,6 +80,8 @@ namespace Launcher
                 update.ServerConfigPath = Path.Combine(ConfigFile.getValue("Main", "ServerConfigPath", false), "PMDS");
                 update.ClientProgramPath = ConfigFile.getValue("Main", "ClientProgramPath", false);
                 update.ClientConfigPath = Path.Combine(ConfigFile.getValue("Main", "ClientConfigPath", false), "PMDS");
+
+                update.sshowSplash = ConfigFile.getValue("Main", "showSplash", false);
 
                 update.ClientProgramPath_Orig = update.ClientProgramPath;
                 update.ClientConfigPath_Orig = update.ClientConfigPath;

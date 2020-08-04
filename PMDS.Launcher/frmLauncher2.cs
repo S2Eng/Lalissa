@@ -447,6 +447,8 @@ namespace Launcher
                             LogPathPMDSTmp = "\"" + LogPathPMDSTmp + "\"";
                         argsRun += " ?LogPathPMDS=" + LogPathPMDSTmp + " ";
 
+                        argsRun += " ?showSplash=" + update.sshowSplash;
+
                         string strExe = System.IO.Path.Combine(update.sProgramPath, update.sProgramFile).ToString();
                         if (strExe.Contains(" "))
                             strExe = "\"" + strExe + "\"";

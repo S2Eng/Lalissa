@@ -148,10 +148,6 @@ namespace PMDS.Global
 
 
 
-
-
-
-
         private static bool _AbteilungRMOptional = false;	            // Flag ob der Rückmeldetext für die Abteilung Optional ist oder nicht
         private static string _dbUser = "";
         private static string _dbPassword = "";
@@ -297,6 +293,7 @@ namespace PMDS.Global
 
         public static string COMMANDLINE_USER = "";                                             // Wenn über die Commandozeile ein Benutzer übergeben wird wird er hier verspeichert
         public static string COMMANDLINE_PWD = "";
+        public static bool COMMANDLINE_bshowSplash = true;
 
         public static event MedizinischeDatenLayoutChangedDelegate MedizinischeDatenLayoutChanged;
         public static event ENVPatientDatenChangedDelegate ENVPatientDatenChanged;

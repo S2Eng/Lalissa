@@ -31,6 +31,7 @@ namespace PMDS.GUI.Print
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+        private string PatientKonfession = "";
 
         private enum eELGATypeSektion
         {
@@ -85,12 +86,6 @@ namespace PMDS.GUI.Print
             public RTFTyp Typ;
         }
 
-        private class templateID
-        {
-            public string root;
-            public string assigningAuthorityName = "ELGA";
-        }
-
         private class ccode
         {
             public string code;
@@ -102,17 +97,14 @@ namespace PMDS.GUI.Print
 
         private class PflegediagnosenObservation
         {
-            public string observation_classCode = "OBS";
-            public string observation_moodCode = "EVN";
-            public string observation_negationInd = "false";
-            public List<templateID> templateIDs = new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.3.6" },
-                                                                         new templateID { root="1.3.6.1.4.1.19376.1.5.3.1.4.5", assigningAuthorityName="IHE PCC" },
-                                                                         new templateID { root="2.16.840.1.113883.10.20.1.28", assigningAuthorityName="HL7 CCD" },
-                                                                      };
+            public List<II> cdatemplateIDs = new List<II> { new II { Root = "1.2.40.0.34.11.1.3.6", AssigningAuthorityName = "ELGA" },
+                                                            new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.5", AssigningAuthorityName="IHE PCC" },
+                                                            new II { Root="2.16.840.1.113883.10.20.1.28", AssigningAuthorityName="HL7 CCD" },
+                                                          };
+
             public Guid id_root;
             public ccode code = new ccode { code = "282291009", displayName = "Diagnosis", codeSystem = "2.16.840.1.113883.6.96", codeSystemName = "SNOMED CT" };
             public string text_reference;
-            public string statusCode_code = "completed";
             public DateTime effectivTime_low_value;
             public string value_xsi_type = "CD";
             public string value_code;
@@ -129,16 +121,24 @@ namespace PMDS.GUI.Print
             public PflegediagnosenObservation observation = new PflegediagnosenObservation();
         }
 
+        private class BeilagenEntry
+        {
+            public string id = "";
+            public string referencedObject = "";
+            public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.3.1", AssigningAuthorityName = "ELGA" } };
+            public string value_mediaType = "application/pdf";
+            public EncapsulatedDataRepresentation value_representation = EncapsulatedDataRepresentation.B64;
+            public byte[] value = null;
+        }
+
         private class PflegediagnoseEntry
         {
-            public string act_classCode = "ACT";
-            public string act_moodeCode = "EVN";
-            public List<templateID> templateIDs = new List<templateID> { new templateID { root = "1.2.40.0.34.11.3.3.1"},
-                                                                         new templateID { root="1.2.40.0.34.11.1.3.5"},
-                                                                         new templateID { root="1.3.6.1.4.1.19376.1.5.3.1.4.5.1", assigningAuthorityName="IHE PCC" },
-                                                                         new templateID { root="1.3.6.1.4.1.19376.1.5.3.1.4.5.2", assigningAuthorityName="IHE PCC" },
-                                                                         new templateID { root="2.16.840.1.113883.10.20.1.27", assigningAuthorityName="HL7 CCD" },
-                                                                      };
+            public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.3.3.1", AssigningAuthorityName = "ELGA" },
+                                                            new II { Root="1.2.40.0.34.11.1.3.5", AssigningAuthorityName = "ELGA" },
+                                                            new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.5.1", AssigningAuthorityName="IHE PCC" },
+                                                            new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.5.2", AssigningAuthorityName="IHE PCC" },
+                                                            new II { Root="2.16.840.1.113883.10.20.1.27", AssigningAuthorityName="HL7 CCD" },
+                                                          };
             public Guid id_root;
             public string code_nullFlavor = "NA";
             public string statusCode_code = "active";
@@ -146,45 +146,39 @@ namespace PMDS.GUI.Print
             public PflegediagnosenEntryRelationship entryRelationship = new PflegediagnosenEntryRelationship();
         }
 
-        private class VitalparameterObservation
-        {
-            public string observation_classCode = "OBS";
-            public string observation_moodCode = "EVN";
-            public string observation_negationInd = "false";
-            public List<templateID> templateIDs = new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.3.4" },
-                                                                         new templateID { root="1.3.6.1.4.1.19376.1.5.3.1.4.13", assigningAuthorityName="IHE PCC" },
-                                                                         new templateID { root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2", assigningAuthorityName="IHE PCC" },
-                                                                         new templateID { root="2.16.840.1.113883.10.20.1.31", assigningAuthorityName="HL7 CCD" },
-                                                                      };
-            public string id_root;
-            public ccode code = new ccode();
-            public string text_reference;
-            public string statusCode_code = "completed";
-            public string value_xsi_type = "PQ";
-            public string value_code;
-            public string value_unit;
-        }
+        //private class VitalparameterObservation
+        //{
+        //    public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.3.4" , AssigningAuthorityName = "ELGA" },
+        //                                                  new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13", AssigningAuthorityName="IHE PCC" },
+        //                                                  new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2", AssigningAuthorityName="IHE PCC" },
+        //                                                  new II { Root="2.16.840.1.113883.10.20.1.31", AssigningAuthorityName="HL7 CCD" }
+        //                                                };
+        //    public string id_root;
+        //    public ccode code = new ccode();
+        //    public string text_reference;
+        //    public string statusCode_code = "completed";
+        //    public string value_xsi_type = "PQ";
+        //    public string value_code;
+        //    public string value_unit;
+        //}
 
-        private class VitalparameterEntry
-        {
-            public string typeCode = "DRIV";
-            public string organizer_classCode = "CLUSTER";
-            public string organizer_moodeCode = "EVN";
-            public List<templateID> templateIDs = new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.3.3"},
-                                                                         new templateID { root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1", assigningAuthorityName="IHE PCC" },
-                                                                         new templateID { root="2.16.840.1.113883.10.20.1.32", assigningAuthorityName="HL7 CCD" },
-                                                                         new templateID { root="2.16.840.1.113883.10.20.1.35", assigningAuthorityName="HL7 CCD" },
-                                                                      };
-            public Guid root;
-            public ccode code = new ccode { code = "46680005", codeSystem = "2.16.840.1.113883.6.96", codeSystemName = "SNOMED CT", displayName = "Vital signs" };
-            public string statusCode_code = "completed";
-            public string effectiveTime;
-            public List<VitalparameterObservation> observations = new List<VitalparameterObservation>();
-        }
+        //private class VitalparameterEntry
+        //{
+        //    public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.3.3", AssigningAuthorityName = "ELGA" },
+        //                                                    new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1", AssigningAuthorityName="IHE PCC" },
+        //                                                    new II { Root="2.16.840.1.113883.10.20.1.32", AssigningAuthorityName="HL7 CCD" },
+        //                                                    new II { Root="2.16.840.1.113883.10.20.1.35", AssigningAuthorityName="HL7 CCD" },
+        //                                                  };
+        //    public Guid root;
+        //    public ccode code = new ccode { code = "46680005", codeSystem = "2.16.840.1.113883.6.96", codeSystemName = "SNOMED CT", displayName = "Vital signs" };
+        //    public CS<ActStatus> statusCode_code = new CS<ActStatus>(ActStatus.Completed);
+        //    public string effectiveTime;
+        //    public List<VitalparameterObservation> observations = new List<VitalparameterObservation>();
+        //}
 
         private class Risiko
         {
-            public List<templateID> templateIDs = new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.8" } };
+            public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.8", AssigningAuthorityName = "ELGA" } };
             public string title = "Risiken";
             public ccode code = new ccode { code = "51898-5", displayName = "Risk factors", codeSystem = "LOINC", codeSystemName = "LOINC" };
             public string textHTML;
@@ -195,7 +189,7 @@ namespace PMDS.GUI.Print
 
         private class HilfsmittelRessourcen
         {
-            public List<templateID> templateIDs = new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.9" } };
+            public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.9", AssigningAuthorityName = "ELGA" } };
             public string title = "Hilfsmittel und Ressourcen";
             public ccode code = new ccode { code = "RES", displayName = "Hilfsmittel und Ressourcen", codeSystem = "1.2.40.0.34.5.40", codeSystemName = "ELGA_Sections" };
             public string textHTML;
@@ -207,13 +201,14 @@ namespace PMDS.GUI.Print
             public bool use = false;
             public eELGATypeSektion typ;
             public string title;
-            public List<templateID> templateIDs;
+            public LIST<II> cdatemplateIDs;
             public ccode code = new ccode { code = "", displayName = "", codeSystem = "", codeSystemName = "" };
             public string textHTML;
             public List<PflegediagnoseEntry> PflegediagnosenEntrys;
             //public VitalparameterEntry VitalparamterEntry;
             public Risiko Risiko;
             public HilfsmittelRessourcen HilfsmittelUndRessourcen;
+            public List<BeilagenEntry> BeilagenEntries;
             public string Tag;
         }
 
@@ -229,7 +224,7 @@ namespace PMDS.GUI.Print
         }
 
         public void Init()
-        {            
+        {
             //Struktur befüllen
             InitRTFTags();
             InitSektionen();
@@ -322,147 +317,156 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.Brieftext,
                                             eELGATypeSektion.Brieftext,
                                             "Brieftext",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.1" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.1", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "BRIEFT", displayName = "Brieftext" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Pflegediagnosen,
                                             eELGATypeSektion.Pflegediagnosen,
                                             "Pflegediagnosen",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.2" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.2", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFDIAG", displayName = "Pflegediagnosen" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Mobilität,
                                             eELGATypeSektion.FachlicheSektion,
-                                            "Mobilität", new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.3" } },
+                                            "Mobilität", 
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.3", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFMOB", displayName = "Mobilität" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.KörperpflegeUndKleiden,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Körperpflege und Kleiden",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.4" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.4", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFKLEI", displayName = "Körperpflege und Kleiden" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Ernährung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Ernährung",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.5" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.5", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFERN", displayName = "Ernährung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Ausscheidung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Ausscheidung",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.6" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.6", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFAUS", displayName = "Ausscheidung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Hautzustand,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Hautzustand",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.7" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.7", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFHAUT", displayName = "Hautzustand" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Atmung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Atmung",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.8" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.8", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFATM", displayName = "Atmung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Schlaf,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Schlaf",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.9" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.9", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFSCHL", displayName = "Schlaf" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Schmerz,
                                             eELGATypeSektion.FachlicheSektion,
-                                            "Schmerz", new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.10" },
-                                                                              new templateID { root = "1.3.6.1.4.1.19376.1.5.3.1.1.20.2.4", assigningAuthorityName = "IHE PCC" } },
+                                            "Schmerz", 
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.10", AssigningAuthorityName = "ELGA" },
+                                                           new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.1.20.2.4", AssigningAuthorityName = "IHE PCC" } },
                                             new ccode { code = "38212-7", displayName = "Pain Assessment Panel", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.OrientierungUndBewusstseinslage,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Orientierung und Bewusstseinslage",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.11" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.11", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFORIE", displayName = "Orientierung und Bewusstseinslage" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.SozialeUmständeUndVerhalten,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Soziale Umstände und Verhalten",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.12" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.12", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFSOZV", displayName = "Soziale Umstände und Verhalten" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Kommunikation,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Kommunikation",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.13" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.13", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFKOMM", displayName = "Kommunikation" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.RollenwahnehmungUndSinnfindung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Rollenwahrnehmung und Sinnfindung",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.14" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.14", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFROLL", displayName = "Rollenwahrnehmung und Sinnfindung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Vitalparameter,
                                             eELGATypeSektion.Vitalparameter,
                                             "Vitalparameter",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.7" },
-                                                                   new templateID { root = "1.3.6.1.4.1.19376.1.5.3.1.3.25", assigningAuthorityName = "IHE PCC" },
-                                                                   new templateID { root = "1.3.6.1.4.1.19376.1.5.3.1.1.5.3.2", assigningAuthorityName = "IHE PCC" },
-                                                                   new templateID { root = "2.16.840.1.113883.10.20.1.16", assigningAuthorityName = "HL7 CCD" }
-                                                                 },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.7", AssigningAuthorityName = "ELGA" },
+                                                           new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.25", AssigningAuthorityName = "IHE PCC" },
+                                                           new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.1.5.3.2", AssigningAuthorityName = "IHE PCC" },
+                                                           new II { Root = "2.16.840.1.113883.10.20.1.16", AssigningAuthorityName = "HL7 CCD" }
+                                                         },
                                             new ccode { code = "8716-3", displayName = "Vital signs", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" },
                                             "VITPAR"));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.PflegerelvanteInforamtionenZurMedizinischenBehandlung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Pflegerelevante Informationen zur medizinischen Behandlung",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.18" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.18", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFMEDBEH", displayName = "Pflegerelevante Informationen zur medizinischen Behandlung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Medikamentenverabreichung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Medikamentenverabreichung",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.15" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.15", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFMED", displayName = "Medikamentenverabreichung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Anmerkungen,
-                                eELGATypeSektion.FachlicheSektion,
-                                "Anmerkungen",
-                                new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.5" } },
-                                new ccode { code = "ANM", displayName = "Anmerkungen" }));
+                                            eELGATypeSektion.FachlicheSektion,
+                                            "Anmerkungen",
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.5", AssigningAuthorityName = "ELGA" } },
+                                            new ccode { code = "ANM", displayName = "Anmerkungen" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.PflegeUndBetreuungsumfang,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Pflege- und Betreuungsumfang",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.22" } },
+                                            new List<II> { new II { Root = "1.2.40.0.34.11.1.2.22", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PUBUMF", displayName = "Pflege- und Betreuungsumfang" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Entlassungsmanagment,
                                             eELGATypeSektion.Enlassungsmanagement,
                                             "Entlassungsmanagement",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.11.3.2.17" },
-                                                                   new templateID { root = "1.3.6.1.4.1.19376.1.5.3.1.3.32", assigningAuthorityName = "IHE PCC" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.17", AssigningAuthorityName = "ELGA" },
+                                                           new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.32", AssigningAuthorityName = "IHE PCC" } 
+                                                         },
                                             new ccode { code = "8650-4", displayName = "Hospital discharge disposition", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" },
                                             "ENTL"));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Patientenverfügung,
-                                eELGATypeSektion.Patientenverfügung,
-                                "Patientenverfügungen und andere juridische Dokumente",
-                                new List<templateID> { new templateID { root = "1.2.40.0.34.11.1.2.4" },
-                                                       new templateID { root = "1.3.6.1.4.1.19376.1.5.3.1.3.34", assigningAuthorityName = "IHE PCC" },
-                                                       new templateID { root = "2.16.840.1.113883.10.20.1.1", assigningAuthorityName = "HL7 CCD" },
-                                                     },
-                                new ccode { code = "42348-3", displayName = "Advance directives", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" },
-                                "PATVERF"));
+                                            eELGATypeSektion.Patientenverfügung,
+                                            "Patientenverfügungen und andere juridische Dokumente",
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.4", AssigningAuthorityName = "ELGA" },
+                                                           new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.34", AssigningAuthorityName = "IHE PCC" },
+                                                           new II { Root = "2.16.840.1.113883.10.20.1.1", AssigningAuthorityName = "HL7 CCD" },
+                                                         },
+                                            new ccode { code = "42348-3", displayName = "Advance directives", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" },
+                                            "PATVERF"));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.AbschliessendeBemerkungen,
                                             eELGATypeSektion.AbschliessendeBemerkung,
                                             "Abschließende Bemerkungen",
-                                            new List<templateID> { new templateID { root = "1.2.40.0.34.5.40" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.5.40", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "ABBEM", displayName = "Abschließende Bemerkungen" }));
+
+            Sektionen.Add(CreateSektion((int)SektionOrder.Beilagen,
+                                            eELGATypeSektion.Beilagen,
+                                            "Beilagen",
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.3", AssigningAuthorityName = "ELGA" } },
+                                            new ccode { code = "BEIL", displayName = "Beilagen" }));
         }
 
-        private Sektion CreateSektion(int order, eELGATypeSektion typ, string title, List<templateID> templateIDs, ccode code, string Tag = "")
+        private Sektion CreateSektion(int order, eELGATypeSektion typ, string title, LIST<II> cdatemplateIDs, ccode code, string Tag = "")
         {
             try
             {
@@ -470,7 +474,7 @@ namespace PMDS.GUI.Print
                 Sektion.order = order;
                 Sektion.typ = typ;
                 Sektion.title = title;
-                Sektion.templateIDs = templateIDs;
+                Sektion.cdatemplateIDs = cdatemplateIDs;
                 Sektion.code = code;
                 if (String.IsNullOrEmpty(Tag))
                     Sektion.Tag = code.code;
@@ -490,11 +494,7 @@ namespace PMDS.GUI.Print
             try
             {
                 Section sect = new Section();
-                sect.TemplateId = new LIST<II>();
-                foreach (templateID ID in sektion.templateIDs)
-                {
-                    sect.TemplateId.Add(new II { Root = ID.root, AssigningAuthorityName = ID.assigningAuthorityName });
-                }
+                sect.TemplateId = sektion.cdatemplateIDs;
                 sect.Code = new CE<string>(sektion.code.code, sektion.code.codeSystem, sektion.code.codeSystemName, null, sektion.code.displayName, null);
                 sect.Title = sektion.title;
                 sect.Title.Language = null;
@@ -515,13 +515,7 @@ namespace PMDS.GUI.Print
                         observation.NegationInd = new BL(false);
                         observation.ClassCode = new CS<ActClassObservation>(ActClassObservation.OBS);
                         observation.Id = new SET<II>(new II(pdEntry.entryRelationship.observation.id_root));
-
-                        LIST<II> ERids = new LIST<II>();
-                        foreach (templateID ID in pdEntry.entryRelationship.observation.templateIDs)
-                        {
-                            ERids.Add(new II { Root = ID.root, AssigningAuthorityName = ID.assigningAuthorityName });
-                        }
-                        observation.TemplateId = ERids;
+                        observation.TemplateId = pdEntry.cdatemplateIDs;
                         observation.Code = new CD<string>(
                             pdEntry.entryRelationship.observation.code.code,
                             pdEntry.entryRelationship.observation.code.codeSystem,
@@ -560,14 +554,10 @@ namespace PMDS.GUI.Print
 
                         entry.SetClinicalStatement(new CS<x_ActClassDocumentEntryAct>(x_ActClassDocumentEntryAct.Act), new CS<x_DocumentActMood>(x_DocumentActMood.Eventoccurrence), null, null, null, null, new CS<ActStatus>(ActStatus.Active), new IVL<TS>(), null, null);
 
-                        LIST<II> ids = new LIST<II>();
-                        foreach (templateID ID in pdEntry.templateIDs)
-                        {
-                            ids.Add(new II { Root = ID.root, AssigningAuthorityName = ID.assigningAuthorityName });
-                        }
-                        entry.GetClinicalStatementIfAct().TemplateId = ids;
+                        entry.GetClinicalStatementIfAct().TemplateId = pdEntry.cdatemplateIDs;
 
                         Act act = entry.GetClinicalStatementIfAct();
+                        act.ClassCode = new CS<x_ActClassDocumentEntryAct>(x_ActClassDocumentEntryAct.Act);
                         act.EffectiveTime.Low = new TS(pdEntry.effectiveTime_low_value);
                         act.EffectiveTime.Low.UpdateMode = null;
                         act.LanguageCode = null;
@@ -588,26 +578,20 @@ namespace PMDS.GUI.Print
                 //Ressourcen und Hilfsmittel
                 if (sektion.HilfsmittelUndRessourcen != null)
                 {
-                    Section sectHUM = new Section();
+                    Section sectRUM = new Section();
+                    sectRUM.TemplateId = sektion.HilfsmittelUndRessourcen.cdatemplateIDs;
 
-                    LIST<II> HUMids = new LIST<II>();
-                    foreach (templateID ID in sektion.HilfsmittelUndRessourcen.templateIDs)
-                    {
-                        HUMids.Add(new II { Root = ID.root, AssigningAuthorityName = ID.assigningAuthorityName });
-                    }
-                    sectHUM.TemplateId = HUMids;
-
-                    sectHUM.Code = new CE<string>(sektion.HilfsmittelUndRessourcen.code.code,
+                    sectRUM.Code = new CE<string>(sektion.HilfsmittelUndRessourcen.code.code,
                         sektion.HilfsmittelUndRessourcen.code.codeSystem,
                         sektion.HilfsmittelUndRessourcen.code.codeSystemName,
                         null,
                         sektion.HilfsmittelUndRessourcen.code.displayName,
                         null);
-                    sectHUM.Text = sektion.HilfsmittelUndRessourcen.textHTML;
-                    sectHUM.Text.Language = null;
-                    sectHUM.Text.MediaType = null;
+                    sectRUM.Text = sektion.HilfsmittelUndRessourcen.textHTML;
+                    sectRUM.Text.Language = null;
+                    sectRUM.Text.MediaType = null;
 
-                    Component5 comp5 = new Component5(null, null, sectHUM);
+                    Component5 comp5 = new Component5(null, null, sectRUM);
                     sect.Component.Add(comp5);
                 }
 
@@ -615,14 +599,7 @@ namespace PMDS.GUI.Print
                 if (sektion.Risiko != null)
                 {
                     Section sectRisk = new Section();
-
-                    LIST<II> Riskids = new LIST<II>();
-                    foreach (templateID ID in sektion.Risiko.templateIDs)
-                    {
-                        Riskids.Add(new II { Root = ID.root, AssigningAuthorityName = ID.assigningAuthorityName });
-                    }
-                    sectRisk.TemplateId = Riskids;
-
+                    sectRisk.TemplateId = sektion.Risiko.cdatemplateIDs;
                     sectRisk.Code = new CE<string>(sektion.Risiko.code.code,
                         sektion.Risiko.code.codeSystem,
                         sektion.Risiko.code.codeSystemName,
@@ -641,6 +618,21 @@ namespace PMDS.GUI.Print
                 //{
                 //    //Wird nicht zwingend benötigt!
                 //}
+
+                //Beilagen
+                if (sektion.BeilagenEntries != null)
+                {
+                    foreach (BeilagenEntry Beilage in sektion.BeilagenEntries)
+                    {
+                        ObservationMedia obs = new ObservationMedia();
+                        obs.Value = new ED { MediaType = Beilage.value_mediaType, Representation = Beilage.value_representation, Data = Beilage.value};
+                        //obs.ID = new ST (Beilage.id);
+                        obs.TemplateId = Beilage.cdatemplateIDs;
+
+                        Entry BeilageEntry = new Entry(null, null, obs);
+                        sect.Entry.Add(BeilageEntry);
+                    }
+                }
 
                 Component3 comp3 = new Component3(null, null, sect);
                 comp3.ContextConductionInd = null;
@@ -1291,7 +1283,8 @@ namespace PMDS.GUI.Print
                                         p.Nachname,
                                         p.Vorname,
                                         ps.Bezeichnung,
-                                        pps.GenehmigungDatum
+                                        pps.GenehmigungDatum,
+                                        Konfession = p.Konfision 
                                     }).FirstOrDefault();
 
                     if (!String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
@@ -1299,6 +1292,25 @@ namespace PMDS.GUI.Print
                         DateTime dt = (DateTime)rPatInfo.GenehmigungDatum;
                         rtfPUBUMF_Text.Text += "Letzte genehmigte Pflegestufe: " + rPatInfo.Bezeichnung + " mit Bescheiddatum vom " + dt.ToString("dd.MM.yyyy") + "\r\n";
                         Sektionen[(int)SektionOrder.PflegeUndBetreuungsumfang].use = true;
+
+                        if (rPatInfo.Konfession.Contains("sraelti"))
+                        {
+                            //Beilage Oberrabinat vorbereiten bei Israeltischer Glaubensgemeinschaft
+                            string refObject = "SchreibenOberrabbinat";
+                            string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead>";
+                            BeilagenHiddenText += "<tbody><tr><td>Schreiben des Oberrabbinats</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
+                            BeilagenHiddenText += "</table>";
+                            Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
+
+                            if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
+                                Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+
+                            BeilagenEntry SchreibenOberrabbinat = new BeilagenEntry();
+                            SchreibenOberrabbinat.value = System.Text.Encoding.UTF8.GetBytes("pdf als b64");
+                            SchreibenOberrabbinat.referencedObject = refObject;
+                            Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(SchreibenOberrabbinat);
+                            Sektionen[(int)SektionOrder.Beilagen].use = true;
+                        };
                     }
 
                     //Rezeptgebührenbefreiung
@@ -1387,6 +1399,10 @@ namespace PMDS.GUI.Print
                 {
                     XmlIts1Formatter fmtr = new XmlIts1Formatter();
                     fmtr.ValidateConformance = false;
+
+                    //fmtr.RegisterXSITypeName("S2.Sender", typeof(MyObservationMedia));
+                    //fmtr.Settings |= SettingsType.AlwaysCheckForOverrides;
+
                     fmtr.GraphAides.Add(new DatatypeFormatter() { CompatibilityMode = DatatypeFormatterCompatibilityMode.ClinicalDocumentArchitecture });
                     fmtr.BuildCache(new Type[] { // Using Build Cache will greatly increase performance
                                                  typeof(PRPA_IN201305UV02),
@@ -1829,17 +1845,10 @@ namespace PMDS.GUI.Print
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            CreateCDA();
+            CreateCDAFachlicheSektionen();
         }
 
-        [Structure(Name = "StructuredBody", StructureType = StructureAttribute.StructureAttributeType.MessageType, IsEntryPoint = false, Model = "POCD_MT000040UV", Publisher = "Copyright (C)2011, Health Level Seven")]
-        public class ELGAStructuredBody : StructuredBody
-        {
-            [Property(Name = "classCode", PropertyType = PropertyAttribute.AttributeAttributeType.Traversable, Conformance = PropertyAttribute.AttributeConformanceType.Optional, SortKey = 0, SupplierDomain = "2.16.840.1.113883.5.6")]
-            public virtual CS<ActClassDocumentBody> classCode { get; set; }
-        }
-
-        [Structure(Name = "ObservationMedia", StructureType = StructureAttribute.StructureAttributeType.MessageType, IsEntryPoint = false, Model = "POCD_MT000040UV", Publisher = "Copyright (C)2011, Health Level Seven")]
+        [Structure(Name = "ObservationMedia", StructureType = StructureAttribute.StructureAttributeType.MessageType, IsEntryPoint = false, Model = "S2")]
         public class MyObservationMedia : ObservationMedia
         {
             [Property(Name = "ID", Conformance = PropertyAttribute.AttributeConformanceType.Populated, PropertyType = PropertyAttribute.AttributeAttributeType.Structural)]
