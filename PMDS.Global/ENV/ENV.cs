@@ -259,7 +259,7 @@ namespace PMDS.Global
 
 
         // ------------- ELGA - Formatter für override  ---------------------
-        public static XmlIts1Formatter fmtr = new XmlIts1Formatter();
+        public static XmlIts1Formatter ELGAFormatter { get; set; } = new XmlIts1Formatter();
 
 
 
@@ -577,11 +577,11 @@ namespace PMDS.Global
 
         public static void initELGAFormatter()
         {
-            fmtr.ValidateConformance = false;
-            fmtr.GraphAides.Add(new DatatypeFormatter() { CompatibilityMode = DatatypeFormatterCompatibilityMode.ClinicalDocumentArchitecture });
-            fmtr.ValidateConformance = false;
-            fmtr.RegisterXSITypeName("POCD_MT000040UV.ObservationMedia", typeof(ELGAObservationMedia));
-            fmtr.Settings |= SettingsType.AlwaysCheckForOverrides;
+            ELGAFormatter.ValidateConformance = false;
+            ELGAFormatter.GraphAides.Add(new DatatypeFormatter() { CompatibilityMode = DatatypeFormatterCompatibilityMode.ClinicalDocumentArchitecture });
+            ELGAFormatter.ValidateConformance = false;
+            ELGAFormatter.RegisterXSITypeName("POCD_MT000040UV.ObservationMedia", typeof(ELGAObservationMedia));
+            ELGAFormatter.Settings |= SettingsType.AlwaysCheckForOverrides;
         }
 
         public static void initClass(string LogPathPMDSFromLauncher)

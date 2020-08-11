@@ -29,6 +29,7 @@ using PMDS.Klient;
 using Patagames.Pdf.Enums;
 using System.Reflection;
 using MARC.Everest.RMIM.UV.NE2010.MCCI_MT100200UV01;
+using System.IO;
 
 namespace PMDS.GUI.Print
 {
@@ -1045,6 +1046,37 @@ namespace PMDS.GUI.Print
                         Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                     }
 
+                    /*
+                    PMDS.GUI.VB.compSql comp = new PMDS.GUI.VB.compSql();
+                    string bezOrdner = "ELGAPflegesituationsbericht";
+                    Guid? IDOrdner = comp.GetOrdnerBiografie(bezOrdner);
+                    if (IDOrdner != null)
+                    {
+                        string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead><tbody>";
+
+                        //foreach Dokument in ordner
+                        string refObject = "SchreibenOberrabbinat";  //linkname aus comp
+                        string txtObject = "Schreiben des Oberrabbinats"; //
+                        BeilagenHiddenText += "<tr><td>" + txtObject  + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
+
+                        if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
+                            Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+
+                        List<BeilagenEntry> Beilagenliste = new List<BeilagenEntry>();
+                        BeilagenEntry Beilage = new BeilagenEntry();
+                        Beilage.id = refObject;
+                        Beilage.value = System.Text.Encoding.UTF8.GetBytes("pdf als b64");
+                        Beilage.referencedObject = refObject;
+
+
+
+                        //end foreach
+                        BeilagenHiddenText += "</tbody></table>";
+                        Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
+
+                    }
+                    */
+
                     //Beilage Oberrabinat vorbereiten bei Israeltischer Glaubensgemeinschaft
                     if (rPatInfo.Konfession.Contains("sraeliti"))
                     {
@@ -1422,9 +1454,9 @@ namespace PMDS.GUI.Print
 
         static void PrintCDA(ref ClinicalDocument ccda)
         {
+            Stream s = null;
             try
             {
-                //ClinicalDocument cda = ClinicalDocument ccda;
                 using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\Temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Fragment })))
                 {
                     //fmtr.AddFormatterAssembly(Assembly.LoadFile(@"C:\Entwicklung\project.PMDS\PMDS.Main\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll"));
@@ -1433,13 +1465,18 @@ namespace PMDS.GUI.Print
                     //                             typeof(PRPA_IN201309UV02)
                     //                         });
 
-                    ENV.fmtr.Graph(xsw, ccda);
+                    ENV.ELGAFormatter.Graph(xsw, ccda);
                     xsw.Flush();
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.PrintCDA: " + ex.ToString());
+            }
+            finally
+            {
+                if (s != null)
+                    s.Close();
             }
         }
 
