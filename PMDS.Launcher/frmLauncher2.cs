@@ -447,14 +447,17 @@ namespace Launcher
                             LogPathPMDSTmp = "\"" + LogPathPMDSTmp + "\"";
                         argsRun += " ?LogPathPMDS=" + LogPathPMDSTmp + " ";
 
-                        argsRun += " ?showSplash=" + update.sshowSplash;
+                        argsRun += (String.IsNullOrWhiteSpace(update.sshowSplash) ? "" : " ?showSplash=" + update.sshowSplash);
 
                         string strExe = System.IO.Path.Combine(update.sProgramPath, update.sProgramFile).ToString();
                         if (strExe.Contains(" "))
                             strExe = "\"" + strExe + "\"";
 
+                        //MessageBox.Show(argsRun);
+
                         System.Diagnostics.Process.Start(strExe, argsRun);
                         this.tbPasswort.Text = "";
+                        Environment.Exit(0);
                     }
 
                     if (!uiIsOn)

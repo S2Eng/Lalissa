@@ -16,23 +16,26 @@ using MARC.Everest.Attributes;
 using MARC.Everest.DataTypes;
 using MARC.Everest.DataTypes.Interfaces;
 using MARC.Everest.Formatters.XML.Datatypes.R1;
+using MARC.Everest.Formatters.XML.Datatypes.R2;
 using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
 using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
 using MARC.Everest.RMIM.UV.NE2010.Interactions;
 using MARC.Everest.Xml;
 using System.Xml;
 using MARC.Everest.Formatters.XML.ITS1;
+using MARC.Everest.Threading;
 
 using PMDS.Klient;
 using Patagames.Pdf.Enums;
+using System.Reflection;
+using MARC.Everest.RMIM.UV.NE2010.MCCI_MT100200UV01;
 
 namespace PMDS.GUI.Print
 {
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
-        private string PatientKonfession = "";
-
+ 
         private enum eELGATypeSektion
         {
             Brieftext = 1,
@@ -624,9 +627,11 @@ namespace PMDS.GUI.Print
                 {
                     foreach (BeilagenEntry Beilage in sektion.BeilagenEntries)
                     {
-                        ObservationMedia obs = new ObservationMedia();
+                        ENV.ELGAObservationMedia obs = new ENV.ELGAObservationMedia();
                         obs.Value = new ED { MediaType = Beilage.value_mediaType, Representation = Beilage.value_representation, Data = Beilage.value};
-                        //obs.ID = new ST (Beilage.id);
+                        obs.ID = new ST (Beilage.id);
+                        //obs.ID = new ST("xyz");
+
                         obs.TemplateId = Beilage.cdatemplateIDs;
 
                         Entry BeilageEntry = new Entry(null, null, obs);
@@ -1029,7 +1034,8 @@ namespace PMDS.GUI.Print
                                         p.PatientenverfuegungJN,
                                         p.PatientverfuegungDatum,
                                         p.PatientenverfuegungBeachtlichJN,
-                                        p.PatientverfuegungAnmerkung
+                                        p.PatientverfuegungAnmerkung,
+                                        Konfession = p.Konfision
                                     }).FirstOrDefault();
                     if (rPatInfo.PatientenverfuegungJN == true)
                     {
@@ -1038,6 +1044,26 @@ namespace PMDS.GUI.Print
                         rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + rPatInfo.PatientverfuegungAnmerkung.ToString() + "\n";
                         Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                     }
+
+                    //Beilage Oberrabinat vorbereiten bei Israeltischer Glaubensgemeinschaft
+                    if (rPatInfo.Konfession.Contains("sraeliti"))
+                    {
+                        string refObject = "SchreibenOberrabbinat";
+                        string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead>";
+                        BeilagenHiddenText += "<tbody><tr><td>Schreiben des Oberrabbinats</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
+                        BeilagenHiddenText += "</table>";
+                        Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
+
+                        if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
+                            Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+
+                        BeilagenEntry SchreibenOberrabbinat = new BeilagenEntry();
+                        SchreibenOberrabbinat.id = refObject;
+                        SchreibenOberrabbinat.value = System.Text.Encoding.UTF8.GetBytes("pdf als b64");
+                        SchreibenOberrabbinat.referencedObject = refObject;
+                        Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(SchreibenOberrabbinat);
+                        Sektionen[(int)SektionOrder.Beilagen].use = true;
+                    };
                 }
 
                 //Freiheitsbeschr. Maßnahmen
@@ -1283,34 +1309,14 @@ namespace PMDS.GUI.Print
                                         p.Nachname,
                                         p.Vorname,
                                         ps.Bezeichnung,
-                                        pps.GenehmigungDatum,
-                                        Konfession = p.Konfision 
+                                        pps.GenehmigungDatum 
                                     }).FirstOrDefault();
 
-                    if (!String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
+                    if (rPatInfo != null && !String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
                     {
                         DateTime dt = (DateTime)rPatInfo.GenehmigungDatum;
                         rtfPUBUMF_Text.Text += "Letzte genehmigte Pflegestufe: " + rPatInfo.Bezeichnung + " mit Bescheiddatum vom " + dt.ToString("dd.MM.yyyy") + "\r\n";
                         Sektionen[(int)SektionOrder.PflegeUndBetreuungsumfang].use = true;
-
-                        if (rPatInfo.Konfession.Contains("sraelti"))
-                        {
-                            //Beilage Oberrabinat vorbereiten bei Israeltischer Glaubensgemeinschaft
-                            string refObject = "SchreibenOberrabbinat";
-                            string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead>";
-                            BeilagenHiddenText += "<tbody><tr><td>Schreiben des Oberrabbinats</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
-                            BeilagenHiddenText += "</table>";
-                            Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
-
-                            if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
-                                Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
-
-                            BeilagenEntry SchreibenOberrabbinat = new BeilagenEntry();
-                            SchreibenOberrabbinat.value = System.Text.Encoding.UTF8.GetBytes("pdf als b64");
-                            SchreibenOberrabbinat.referencedObject = refObject;
-                            Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(SchreibenOberrabbinat);
-                            Sektionen[(int)SektionOrder.Beilagen].use = true;
-                        };
                     }
 
                     //Rezeptgebührenbefreiung
@@ -1376,9 +1382,6 @@ namespace PMDS.GUI.Print
         {
             try
             {
-                ccda = new ClinicalDocument();
-                ccda.RealmCode = new SET<CS<BindingRealm>>(new CS<BindingRealm>(BindingRealm.Austria));
-                ccda.LanguageCode = new CS<string>("de-AT");
                 compSektionen = new Component2();
                 structBody = new StructuredBody();
 
@@ -1391,31 +1394,52 @@ namespace PMDS.GUI.Print
                 }
 
                 compSektionen.SetBodyChoice(structBody);
-                ccda.Component = new Component2();
-                ccda.Component = compSektionen;
-                ccda.Component.ContextConductionInd = null;
-
-                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\Temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
-                {
-                    XmlIts1Formatter fmtr = new XmlIts1Formatter();
-                    fmtr.ValidateConformance = false;
-
-                    //fmtr.RegisterXSITypeName("S2.Sender", typeof(MyObservationMedia));
-                    //fmtr.Settings |= SettingsType.AlwaysCheckForOverrides;
-
-                    fmtr.GraphAides.Add(new DatatypeFormatter() { CompatibilityMode = DatatypeFormatterCompatibilityMode.ClinicalDocumentArchitecture });
-                    fmtr.BuildCache(new Type[] { // Using Build Cache will greatly increase performance
-                                                 typeof(PRPA_IN201305UV02),
-                                                 typeof(PRPA_IN201309UV02)
-                                             });
-                    var result = fmtr.Graph(xsw, ccda);
-                    xsw.Flush();
-                    return compSektionen;
-                }
+                return compSektionen;
             }
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.CreateCDA: " + ex.ToString());
+            }
+        }
+
+        private void OutputCDA(Component2 compSektionen, ref ClinicalDocument ccda)
+        {
+            try
+            {
+                //ccda = new ClinicalDocument();
+                ccda.RealmCode = new SET<CS<BindingRealm>>(new CS<BindingRealm>(BindingRealm.Austria));
+                ccda.LanguageCode = new CS<string>("de-AT");
+                ccda.Component = new Component2();
+                ccda.Component = compSektionen;
+                ccda.Component.ContextConductionInd = null;
+                PrintCDA(ref ccda);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.OutputCDA: " + ex.ToString());
+            }
+        }
+
+        static void PrintCDA(ref ClinicalDocument ccda)
+        {
+            try
+            {
+                //ClinicalDocument cda = ClinicalDocument ccda;
+                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\Temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Fragment })))
+                {
+                    //fmtr.AddFormatterAssembly(Assembly.LoadFile(@"C:\Entwicklung\project.PMDS\PMDS.Main\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll"));
+                    //fmtr.BuildCache(new Type[] { // Using Build Cache will greatly increase performance
+                    //                             typeof(PRPA_IN201305UV02),
+                    //                             typeof(PRPA_IN201309UV02)
+                    //                         });
+
+                    ENV.fmtr.Graph(xsw, ccda);
+                    xsw.Flush();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.PrintCDA: " + ex.ToString());
             }
         }
 
@@ -1845,14 +1869,10 @@ namespace PMDS.GUI.Print
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            CreateCDAFachlicheSektionen();
+            Component2 comp = CreateCDAFachlicheSektionen();
+            ClinicalDocument ccda = new ClinicalDocument();
+            OutputCDA(comp, ref ccda);
         }
 
-        [Structure(Name = "ObservationMedia", StructureType = StructureAttribute.StructureAttributeType.MessageType, IsEntryPoint = false, Model = "S2")]
-        public class MyObservationMedia : ObservationMedia
-        {
-            [Property(Name = "ID", Conformance = PropertyAttribute.AttributeConformanceType.Populated, PropertyType = PropertyAttribute.AttributeAttributeType.Structural)]
-            public ST ID { get; set; }
-        }
     }
 }

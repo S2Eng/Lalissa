@@ -584,10 +584,17 @@ namespace PMDS.GUI.BaseControls
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (!this.Visible || _NotStandardIcon)
-                return;
+            try
+            {
+                if (!this.Visible || _NotStandardIcon)
+                    return;
 
-            RefreshState();
+                RefreshState();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error vucMedizinData.timer2_Tick: " + ex.ToString());
+            }
         }
 
         private void ultraPictureBox1_MouseEnter(object sender, EventArgs e)

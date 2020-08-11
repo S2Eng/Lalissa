@@ -200,6 +200,8 @@ namespace PMDS
                 anycpu_deployment.DLLDispatcher.HookOnCurrentAppDomain();
                 /*<runtime><loadFromRemoteSources enabled="true"/></runtime>  -- Nicht vergessen in Config!  */
 
+                ENV.initELGAFormatter();
+
                 PMDS.GUI.VB.General.MainCallFcts = new GUI.VB.General.dMainCallFcts(ucSiteMapPMDS.MainCallDel);
 
                 if (typ == "abrech")

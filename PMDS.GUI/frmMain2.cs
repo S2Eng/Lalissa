@@ -3063,7 +3063,6 @@ namespace PMDS
                     //PMDS.Data.Global.db.iCounterExceptNetwork = 0;
                     //PMDS.Data.Global.db.checkConnectionAndNetworkTimer();
                 }
-
             }
             catch (Exception ex)
             {

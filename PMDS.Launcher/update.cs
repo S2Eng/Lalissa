@@ -37,7 +37,7 @@ namespace Launcher
         public static string sConfigFile = "";
         public static string sProgramPath = "";
         public static string sProgramFile = "";
-        public static string sshowSplash = "1";
+        public static string sshowSplash = "0";
 
         public static SortedList<string, string> lstVersionsRemoveRoot = new SortedList<string, string>();
         public static SortedList<string, string> lstVersionsRemoveConfig = new SortedList<string, string>();

@@ -45,12 +45,12 @@ namespace PMDS.Print.CR
             this.crystalReportViewer1.EnableDrillDown = false;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.SelectionFormula = "";
+            //this.crystalReportViewer1.SelectionFormula = "";
             this.crystalReportViewer1.ShowCloseButton = false;
             this.crystalReportViewer1.ShowRefreshButton = false;
             this.crystalReportViewer1.Size = new System.Drawing.Size(925, 695);
             this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ViewTimeSelectionFormula = "";
+            //this.crystalReportViewer1.ViewTimeSelectionFormula = "";
             // 
             // frmPrintPreview
             // 

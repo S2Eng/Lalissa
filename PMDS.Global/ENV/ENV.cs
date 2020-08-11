@@ -27,6 +27,11 @@ using System.Linq;
 using PMDS.Global.db.ERSystem;
 using System.Security.Permissions;
 using System.Security;
+using MARC.Everest.Formatters.XML.ITS1;
+using MARC.Everest.Formatters.XML.Datatypes.R1;
+using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
+using MARC.Everest.DataTypes;
+using MARC.Everest.Attributes;
 
 namespace PMDS.Global
 {
@@ -252,6 +257,12 @@ namespace PMDS.Global
 
         //---------------------------------------------
 
+
+        // ------------- ELGA - Formatter für override  ---------------------
+        public static XmlIts1Formatter fmtr = new XmlIts1Formatter();
+
+
+
         public enum pdfDruckTyp
         {
             einzelblatt = 0,
@@ -293,7 +304,7 @@ namespace PMDS.Global
 
         public static string COMMANDLINE_USER = "";                                             // Wenn über die Commandozeile ein Benutzer übergeben wird wird er hier verspeichert
         public static string COMMANDLINE_PWD = "";
-        public static bool COMMANDLINE_bshowSplash = true;
+        public static bool COMMANDLINE_bshowSplash = false;
 
         public static event MedizinischeDatenLayoutChangedDelegate MedizinischeDatenLayoutChanged;
         public static event ENVPatientDatenChangedDelegate ENVPatientDatenChanged;
@@ -554,6 +565,23 @@ namespace PMDS.Global
             {
                 throw new Exception("ENV.CallFctMainSystem: " + ex.ToString());
             }
+        }
+
+        // ------ ELGA-Formatters müssen in der ENV static sein (Threading)
+        [Structure(Name = "ObservationMedia", StructureType = StructureAttribute.StructureAttributeType.MessageType, IsEntryPoint = false, Model = "POCD_MT000040UV", Publisher = "Copyright (C)2011, Health Level Seven")]
+        public class ELGAObservationMedia : ObservationMedia
+        {
+            [Property(Name = "ID", Conformance = PropertyAttribute.AttributeConformanceType.Populated, PropertyType = PropertyAttribute.AttributeAttributeType.Structural)]
+            public ST ID { get; set; }
+        }
+
+        public static void initELGAFormatter()
+        {
+            fmtr.ValidateConformance = false;
+            fmtr.GraphAides.Add(new DatatypeFormatter() { CompatibilityMode = DatatypeFormatterCompatibilityMode.ClinicalDocumentArchitecture });
+            fmtr.ValidateConformance = false;
+            fmtr.RegisterXSITypeName("POCD_MT000040UV.ObservationMedia", typeof(ELGAObservationMedia));
+            fmtr.Settings |= SettingsType.AlwaysCheckForOverrides;
         }
 
         public static void initClass(string LogPathPMDSFromLauncher)
