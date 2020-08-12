@@ -30,13 +30,15 @@ using Patagames.Pdf.Enums;
 using System.Reflection;
 using MARC.Everest.RMIM.UV.NE2010.MCCI_MT100200UV01;
 using System.IO;
+using PMDS.db.Entities;
+using Infragistics.Win.UltraWinListView;
 
 namespace PMDS.GUI.Print
 {
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
- 
+
         private enum eELGATypeSektion
         {
             Brieftext = 1,
@@ -239,6 +241,7 @@ namespace PMDS.GUI.Print
             LoadRezepte();
             LoadPatientenverfügung();
             LoadPflegeUndBetreuungsumfang();
+            LoadBeilagen();
         }
 
         private void InitRTFTags()
@@ -332,7 +335,7 @@ namespace PMDS.GUI.Print
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Mobilität,
                                             eELGATypeSektion.FachlicheSektion,
-                                            "Mobilität", 
+                                            "Mobilität",
                                             new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.3", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFMOB", displayName = "Mobilität" }));
 
@@ -374,7 +377,7 @@ namespace PMDS.GUI.Print
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Schmerz,
                                             eELGATypeSektion.FachlicheSektion,
-                                            "Schmerz", 
+                                            "Schmerz",
                                             new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.10", AssigningAuthorityName = "ELGA" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.1.20.2.4", AssigningAuthorityName = "IHE PCC" } },
                                             new ccode { code = "38212-7", displayName = "Pain Assessment Panel", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" }));
@@ -442,7 +445,7 @@ namespace PMDS.GUI.Print
                                             eELGATypeSektion.Enlassungsmanagement,
                                             "Entlassungsmanagement",
                                             new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.17", AssigningAuthorityName = "ELGA" },
-                                                           new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.32", AssigningAuthorityName = "IHE PCC" } 
+                                                           new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.32", AssigningAuthorityName = "IHE PCC" }
                                                          },
                                             new ccode { code = "8650-4", displayName = "Hospital discharge disposition", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" },
                                             "ENTL"));
@@ -507,7 +510,7 @@ namespace PMDS.GUI.Print
                 if (sektion.textHTML == null)
                     sektion.textHTML = "Keine zusätzliche Information verfügbar.";
                 sect.Text.Data = System.Text.Encoding.UTF8.GetBytes(sektion.textHTML);
-                sect.Text.Representation = MARC.Everest.DataTypes.Interfaces.EncapsulatedDataRepresentation.TXT;
+                sect.Text.Representation = MARC.Everest.DataTypes.Interfaces.EncapsulatedDataRepresentation.XML;
                 sect.Text.MediaType = null;
 
                 //Pflegediagnosen
@@ -569,7 +572,7 @@ namespace PMDS.GUI.Print
                         act.EffectiveTime.High = null;
 
                         CD<string> c = new CD<string>();
-                        c.NullFlavor = MARC.Everest.DataTypes.NullFlavor.NotApplicable; 
+                        c.NullFlavor = MARC.Everest.DataTypes.NullFlavor.NotApplicable;
                         act.Code = c;
 
                         act.EntryRelationship = new List<EntryRelationship>();
@@ -629,8 +632,8 @@ namespace PMDS.GUI.Print
                     foreach (BeilagenEntry Beilage in sektion.BeilagenEntries)
                     {
                         ENV.ELGAObservationMedia obs = new ENV.ELGAObservationMedia();
-                        obs.Value = new ED { MediaType = Beilage.value_mediaType, Representation = Beilage.value_representation, Data = Beilage.value};
-                        obs.ID = new ST (Beilage.id);
+                        obs.Value = new ED { MediaType = Beilage.value_mediaType, Representation = Beilage.value_representation, Data = Beilage.value };
+                        obs.ID = new ST(Beilage.id);
                         //obs.ID = new ST("xyz");
 
                         obs.TemplateId = Beilage.cdatemplateIDs;
@@ -656,8 +659,8 @@ namespace PMDS.GUI.Print
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    string PDxHTML = "<table>\n\r\t<thead>\n\r\t<tr>\n\r\t<th>Diagnose</th>\n\r<th>Lokalisierung</th><th>Zeitpunkt</th></tr></thead>";
-                    PDxHTML += "<tbody>";
+                    string PDxHTML = "<table>\r<thead>\r<tr><th>Diagnose</th><th>Lokalisierung</th><th>Zeitpunkt</th></tr></thead>\r";
+                    PDxHTML += "<tbody>\r";
 
                     var tPDx = (from apdx in db.AufenthaltPDx
                                 join pdx in db.PDX on apdx.IDPDX equals pdx.ID
@@ -684,7 +687,7 @@ namespace PMDS.GUI.Print
                         PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + pdx.Klartext + "</td>";
                         PDxHTML += "<td>" + pdx.Lokalisierung + " " + pdx.LokalisierungSeite + "</td>";
                         PDxHTML += "<td>" + Start.ToString("dd.MM.yyyy") + "</td>";
-                        PDxHTML += "</tr>";
+                        PDxHTML += "</tr>\r";
 
                         PflegediagnoseEntry PDx = new PflegediagnoseEntry();
                         PDx.effectiveTime_low_value = Start;
@@ -703,7 +706,7 @@ namespace PMDS.GUI.Print
                         Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys.Add(PDx);
                         i++;
                     }
-                    PDxHTML += "</tbody></table>";
+                    PDxHTML += "\r</tbody></table>";
                     Sektionen[(int)SektionOrder.Pflegediagnosen].textHTML = PDxHTML;
                     if (i > 0)
                     {
@@ -767,7 +770,7 @@ namespace PMDS.GUI.Print
                                         HilfsmittelRessourcen Res = new HilfsmittelRessourcen();
                                         Sektion.HilfsmittelUndRessourcen = Res;
                                     }
-                                    Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "<br\\>";
+                                    Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "\r";
                                     SetRTFTextByTag(this.Controls, R.Code + "_RES", R.Text + "\n");
                                 }
 
@@ -778,7 +781,7 @@ namespace PMDS.GUI.Print
                                         Risiko Ris = new Risiko();
                                         Sektion.Risiko = Ris;
                                     }
-                                    Sektion.Risiko.textHTML += R.Text + "<br\\>";
+                                    Sektion.Risiko.textHTML += R.Text + "\r";
                                     SetRTFTextByTag(this.Controls, R.Code + "_RISK", R.Text + "\n");
                                 }
                             }
@@ -798,7 +801,7 @@ namespace PMDS.GUI.Print
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    string PDxHTML = "<table>\n\r\t<thead><tr><th>Name</th><th>Wert</th><th>Einheit</th><th>Zeitpunkt</th></tr></thead>";
+                    string PDxHTML = "<table>\r<thead><tr><th>Name</th><th>Wert</th><th>Einheit</th><th>Zeitpunkt</th></tr></thead>";
                     PDxHTML += "<tbody>";
 
                     var tZusatzwerte = (from pe in db.PflegeEintrag
@@ -872,7 +875,7 @@ namespace PMDS.GUI.Print
                                      && mt.MedizinischerTyp != 8 && mt.MedizinischerTyp != 15
                                      && md.Von < DateTime.Now
                                      && (md.Bis > DateTime.Now || md.Bis == null)
-                                     orderby(mt.MedizinischerTyp)
+                                     orderby (mt.MedizinischerTyp)
                                      select new
                                      {
                                          md.Von,
@@ -893,7 +896,7 @@ namespace PMDS.GUI.Print
                     {
                         DateTime von = (DateTime)rMedDaten.Von;
                         DateTime bis = new DateTime(1900, 1, 1);
-                        if (rMedDaten.Bis != null) 
+                        if (rMedDaten.Bis != null)
                             bis = (DateTime)rMedDaten.Bis;
 
                         DateTime letzteVersorung = new DateTime(1900, 1, 1);
@@ -904,10 +907,10 @@ namespace PMDS.GUI.Print
                         if (rMedDaten.NaechsteVersorgung != null)
                             naechsteVersorgung = (DateTime)rMedDaten.NaechsteVersorgung;
 
-                        mdText += "- "  + rMedDaten.MTBeschreibung + ":";
+                        mdText += "- " + rMedDaten.MTBeschreibung + ":";
                         mdText += " " + von.ToString("dd.MM.yyyy") + " -";
                         if (bis > new DateTime(1900, 1, 1))
-                            mdText += " "  + bis.ToString("dd.MM.yyyy");
+                            mdText += " " + bis.ToString("dd.MM.yyyy");
 
                         if (rMedDaten.Beschreibung != "")
                             mdText += ", " + rMedDaten.Beschreibung;
@@ -953,7 +956,7 @@ namespace PMDS.GUI.Print
                 {
                     var tRezepte = (from re in db.RezeptEintrag
                                     join med in db.Medikament on re.IDMedikament equals med.ID
-                                    join ar in db.Aerzte on re.IDAerzte equals ar.ID                                     
+                                    join ar in db.Aerzte on re.IDAerzte equals ar.ID
                                     where re.IDAufenthalt == ENV.IDAUFENTHALT
                                         && re.AbzugebenVon < DateTime.Now
                                         && re.AbzugebenBis > DateTime.Now
@@ -985,7 +988,7 @@ namespace PMDS.GUI.Print
                         //rez += " " + rRezept.Einheit;
                         //rez += " " + rRezept.Applikationsform;
                         rez += " ab " + von.ToString("dd.MM.yyyy HH:mm");
-                        if (bis < new DateTime(3000,1,1,23,59,59))
+                        if (bis < new DateTime(3000, 1, 1, 23, 59, 59))
                             rez += " - " + rRezept.AbzugebenBis.ToString("dd.MM.yyyy HH:mm");
 
                         if (rRezept.BedarfsMedikationJN == true)
@@ -1045,57 +1048,6 @@ namespace PMDS.GUI.Print
                         rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + rPatInfo.PatientverfuegungAnmerkung.ToString() + "\n";
                         Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                     }
-
-                    /*
-                    PMDS.GUI.VB.compSql comp = new PMDS.GUI.VB.compSql();
-                    string bezOrdner = "ELGAPflegesituationsbericht";
-                    Guid? IDOrdner = comp.GetOrdnerBiografie(bezOrdner);
-                    if (IDOrdner != null)
-                    {
-                        string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead><tbody>";
-
-                        //foreach Dokument in ordner
-                        string refObject = "SchreibenOberrabbinat";  //linkname aus comp
-                        string txtObject = "Schreiben des Oberrabbinats"; //
-                        BeilagenHiddenText += "<tr><td>" + txtObject  + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
-
-                        if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
-                            Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
-
-                        List<BeilagenEntry> Beilagenliste = new List<BeilagenEntry>();
-                        BeilagenEntry Beilage = new BeilagenEntry();
-                        Beilage.id = refObject;
-                        Beilage.value = System.Text.Encoding.UTF8.GetBytes("pdf als b64");
-                        Beilage.referencedObject = refObject;
-
-
-
-                        //end foreach
-                        BeilagenHiddenText += "</tbody></table>";
-                        Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
-
-                    }
-                    */
-
-                    //Beilage Oberrabinat vorbereiten bei Israeltischer Glaubensgemeinschaft
-                    if (rPatInfo.Konfession.Contains("sraeliti"))
-                    {
-                        string refObject = "SchreibenOberrabbinat";
-                        string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead>";
-                        BeilagenHiddenText += "<tbody><tr><td>Schreiben des Oberrabbinats</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
-                        BeilagenHiddenText += "</table>";
-                        Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
-
-                        if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
-                            Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
-
-                        BeilagenEntry SchreibenOberrabbinat = new BeilagenEntry();
-                        SchreibenOberrabbinat.id = refObject;
-                        SchreibenOberrabbinat.value = System.Text.Encoding.UTF8.GetBytes("pdf als b64");
-                        SchreibenOberrabbinat.referencedObject = refObject;
-                        Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(SchreibenOberrabbinat);
-                        Sektionen[(int)SektionOrder.Beilagen].use = true;
-                    };
                 }
 
                 //Freiheitsbeschr. Maßnahmen
@@ -1189,9 +1141,9 @@ namespace PMDS.GUI.Print
                         txtHAG += "Beginn: " + Beginn.ToString("dd.MM.yyyy");
 
                         string txtArt = "Grund der Freiheitsbeschränkung";
-                        if (PsychischekrankheitJN || 
-                            GeistigeBehinderungJN || 
-                            ErheblicheSelbstgefaehrdungJN || 
+                        if (PsychischekrankheitJN ||
+                            GeistigeBehinderungJN ||
+                            ErheblicheSelbstgefaehrdungJN ||
                             ErheblicheFremdgefaehrdungJN
                            )
                         {
@@ -1228,7 +1180,7 @@ namespace PMDS.GUI.Print
 
                             if (!ErheblicheSelbstgefaehrdungJN && ErheblicheFremdgefaehrdungJN)
                                 txtHAG += "\nErhebliche Fremdgefährdung.";
-                            
+
 
                             if ((ErheblicheSelbstgefaehrdungJN || ErheblicheFremdgefaehrdungJN) && !String.IsNullOrWhiteSpace(rHAG.AnmerkungVerhalten_2016))
                                 txtHAG += " Gefährdungsgrund: " + rHAG.AnmerkungVerhalten_2016;
@@ -1266,11 +1218,11 @@ namespace PMDS.GUI.Print
                             }
                         }
 
-                        if (HindernSitzgelSitzhoseJN || 
-                            HindernSitzgelBauchgurtJN_2016 || 
-                            HindernSitzgelBrustgurtJN_2016 || 
-                            HindernSitzgelTischJN || 
-                            HindernSitzgelTherapietischJN || 
+                        if (HindernSitzgelSitzhoseJN ||
+                            HindernSitzgelBauchgurtJN_2016 ||
+                            HindernSitzgelBrustgurtJN_2016 ||
+                            HindernSitzgelTischJN ||
+                            HindernSitzgelTherapietischJN ||
                             HindernSitzgelAndereJN_2016)
                         {
                             txtHAG += "\nHindern am Verlassen von Sitzgelgenheit/Rollstuhl mittels ";
@@ -1287,13 +1239,13 @@ namespace PMDS.GUI.Print
                             }
                         }
 
-                        if (ZurueckhaltensandrohungJN || 
-                            HindernBereichFesthaltenJN_2016 || 
-                            HindernBereichVersperrterBereichJN_2016 || 
-                            HindernBereichBarriereJN_2016 || 
-                            ElektronischesUeberwachungJN || 
-                            HindernBereichVersperrtesZimmerJN_2016 || 
-                            HindernBereichHinderAmFortbewegenJN_2016 || 
+                        if (ZurueckhaltensandrohungJN ||
+                            HindernBereichFesthaltenJN_2016 ||
+                            HindernBereichVersperrterBereichJN_2016 ||
+                            HindernBereichBarriereJN_2016 ||
+                            ElektronischesUeberwachungJN ||
+                            HindernBereichVersperrtesZimmerJN_2016 ||
+                            HindernBereichHinderAmFortbewegenJN_2016 ||
                             HindernBereichAndereJN_2016)
                         {
                             txtHAG += "\nHindern am Verlassen eines Bereichs mittels ";
@@ -1341,7 +1293,7 @@ namespace PMDS.GUI.Print
                                         p.Nachname,
                                         p.Vorname,
                                         ps.Bezeichnung,
-                                        pps.GenehmigungDatum 
+                                        pps.GenehmigungDatum
                                     }).FirstOrDefault();
 
                     if (rPatInfo != null && !String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
@@ -1409,6 +1361,61 @@ namespace PMDS.GUI.Print
             }
         }
 
+        private void LoadBeilagen() //alle pdf-Dokumente im Archivordner ELGAPflegesituationsbericht anhängen
+        {
+            try
+            {
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tBeilagen = (from dokein in db.tblDokumenteintrag
+                                     join dok in db.tblDokumente on dokein.ID equals dok.IDDokumenteintrag
+                                     join ordner in db.tblOrdner on dokein.IDOrdner equals ordner.ID
+                                     join obj in db.tblObjekt on dokein.ID equals obj.IDDokumenteintrag
+                                     join pat in db.Patient on obj.ID_guid equals pat.ID
+                                     join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
+
+                                     where auf.ID == ENV.IDAUFENTHALT && ordner.Bezeichnung == "ELGAPflegesituationsbericht" && dok.DateinameTyp == ".pdf"
+                                     && (dokein.GültigVon == null || dokein.GültigVon <= DateTime.Now)
+                                     && (dokein.GültigBis == null || dokein.GültigBis >= DateTime.Now)
+
+                                     select new
+                                     {
+                                         dokein.Bezeichnung,
+                                         dok.Archivordner,
+                                         dok.DateinameArchiv,
+                                         refObject = dok.ID,
+                                         dok.DateinameOrig,
+                                         dokein.Notiz
+                                     });
+
+                    if (tBeilagen.Count() > 0)
+                    {
+                        int iCountBeilagen = 0;
+
+                        foreach (var rBeilage in tBeilagen)
+                        {
+                            string path = Path.Combine(ENV.ArchivPath, rBeilage.Archivordner, rBeilage.DateinameArchiv);
+                            if (File.Exists(path))
+                            {
+                                iCountBeilagen++;
+                                UltraListViewItem it = new UltraListViewItem(rBeilage.Bezeichnung, new object[] { rBeilage.Archivordner, rBeilage.DateinameArchiv, (Guid)rBeilage.refObject, rBeilage.DateinameOrig, rBeilage.Notiz });
+                                it.Key = iCountBeilagen.ToString();
+                                it.Tag = rBeilage.Bezeichnung;
+                                it.CheckState = CheckState.Unchecked;
+                                it.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_PDF, 32, 32);
+                                lvBeilagen.Items.Add(it);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadBeilagen: " + ex.ToString());
+            }
+        }
+
         //------------------------------------ Vorbereitete Struktur in CDA-component übertragen -----------------------------------------
         public Component2 CreateCDAFachlicheSektionen()
         {
@@ -1457,7 +1464,7 @@ namespace PMDS.GUI.Print
             Stream s = null;
             try
             {
-                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\Temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Fragment })))
+                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
                 {
                     //fmtr.AddFormatterAssembly(Assembly.LoadFile(@"C:\Entwicklung\project.PMDS\PMDS.Main\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll"));
                     //fmtr.BuildCache(new Type[] { // Using Build Cache will greatly increase performance
@@ -1494,15 +1501,15 @@ namespace PMDS.GUI.Print
 
                         if (cTag.Typ == RTFTyp.Text)
                         {
-                            Sektionen[(int)(SektionOrder)cTag.Order].textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>").Replace("\n", "<br\\>");
+                            Sektionen[(int)(SektionOrder)cTag.Order].textHTML = cRtf.Text;
                         }
                         else if (cTag.Typ == RTFTyp.Res)
                         {
                             if (Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen == null)
                                 Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen = new HilfsmittelRessourcen();
 
-                            Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen.textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>").Replace("\n", "<br\\>");
-                            
+                            Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen.textHTML = cRtf.Text;
+
                             if (String.IsNullOrWhiteSpace(cRtf.Text))
                                 Sektionen[(int)(SektionOrder)cTag.Order].HilfsmittelUndRessourcen = null;
                         }
@@ -1510,8 +1517,8 @@ namespace PMDS.GUI.Print
                         {
                             if (Sektionen[(int)(SektionOrder)cTag.Order].Risiko == null)
                                 Sektionen[(int)(SektionOrder)cTag.Order].Risiko = new Risiko();
-                            Sektionen[(int)(SektionOrder)cTag.Order].Risiko.textHTML = cRtf.Text.Replace("\n\r", "<br\\>").Replace("\r\n", "<br\\>").Replace("\n", "<br\\>");
-                            
+                            Sektionen[(int)(SektionOrder)cTag.Order].Risiko.textHTML = cRtf.Text;
+
                             if (String.IsNullOrWhiteSpace(cRtf.Text))
                                 Sektionen[(int)(SektionOrder)cTag.Order].Risiko = null;
 
@@ -1634,7 +1641,7 @@ namespace PMDS.GUI.Print
         {
             foreach (Control c in controls)
             {
-                if (c.GetType() == typeof(System.Windows.Forms.RichTextBox))  
+                if (c.GetType() == typeof(System.Windows.Forms.RichTextBox))
                 {
                     if (c.Tag.GetType() == typeof(RTFTag))
                     {
@@ -1904,12 +1911,66 @@ namespace PMDS.GUI.Print
             SetRTFTextHTML(sender);
         }
 
+        private void lvBeilagen_ItemCheckStateChanged(object sender, ItemCheckStateChangedEventArgs e)
+        {
+            try
+            {
+                UltraListView lvSender = (UltraListView)sender;
+                Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = null;
+
+                string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead><tbody>";
+                int iCountBeilagen = 0;
+                foreach (UltraListViewItem rBeilage in lvSender.Items)
+                {
+                    if (rBeilage.CheckState == CheckState.Checked)
+                    {
+                        string path = Path.Combine(ENV.ArchivPath, rBeilage.SubItems["Archivordner"].Value.ToString(), rBeilage.SubItems["DateinameArchiv"].Value.ToString());
+                        if (File.Exists(path))
+                        {
+                            using (StreamReader streamReader = new StreamReader(path))
+                            {
+                                iCountBeilagen++;
+                                string refObject = rBeilage.SubItems["ID"].Value.ToString();
+                                string txtObject = rBeilage.Text;
+                                BeilagenHiddenText += "<tr><td>" + txtObject + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
+
+                                if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
+                                    Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+
+                                List<BeilagenEntry> Beilagenliste = new List<BeilagenEntry>();
+                                BeilagenEntry Beilage = new BeilagenEntry();
+                                Beilage.id = refObject;
+                                Beilage.value = System.Text.Encoding.UTF8.GetBytes(streamReader.ReadToEnd());
+                                Beilage.referencedObject = refObject;
+                                Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(Beilage);
+                            }
+                        }
+                    }
+                    BeilagenHiddenText += "</tbody></table>";
+
+                    if (iCountBeilagen > 0)
+                    {
+                        Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
+                        Sektionen[(int)SektionOrder.Beilagen].use = true;
+                    }
+                    else
+                    {
+                        Sektionen[(int)SektionOrder.Beilagen].textHTML = "";
+                        Sektionen[(int)SektionOrder.Beilagen].use = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.lvBeilagen_ItemCheckStateChanged: " + ex.ToString());
+            }
+        }
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             Component2 comp = CreateCDAFachlicheSektionen();
             ClinicalDocument ccda = new ClinicalDocument();
             OutputCDA(comp, ref ccda);
         }
-
     }
 }

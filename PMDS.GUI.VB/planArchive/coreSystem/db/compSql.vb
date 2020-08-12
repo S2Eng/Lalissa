@@ -1290,7 +1290,7 @@ Public Class compSql
                 Dim typ As New compSql.eTypObj
                 If aktObj.id.GetType.ToString = "System.String" Then
                     Try
-                        Dim ID As New System.Guid(objects.Item(act).ToString)
+                        'Dim ID As New System.Guid(objects.Item(act).ToString)
                         typ = compSql.eTypObj.guid
                         If Not gen.IsNull(aktObj.id) Then
                             Dim Item As Infragistics.Win.UltraWinTree.UltraTreeNode

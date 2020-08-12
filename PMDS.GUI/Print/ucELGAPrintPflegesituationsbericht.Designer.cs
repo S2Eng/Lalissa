@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn1 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("Archivordner");
+            Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn2 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("DateinameArchiv");
+            Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn3 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("ID");
+            Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn4 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("DateinameOrig");
+            Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn5 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("Notiz");
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.pnlBrieftext = new Infragistics.Win.Misc.UltraPanel();
             this.btnGenerate = new Infragistics.Win.Misc.UltraButton();
@@ -123,6 +130,10 @@
             this.lblANM = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.rtfANM_Text = new System.Windows.Forms.RichTextBox();
+            this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.pnlBeilagen = new Infragistics.Win.Misc.UltraPanel();
+            this.lblBeilagen = new Infragistics.Win.Misc.UltraLabel();
+            this.lvBeilagen = new Infragistics.Win.UltraWinListView.UltraListView();
             this.baseTabControl1 = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.ultraTabPageControl1.SuspendLayout();
@@ -140,6 +151,10 @@
             this.ultraTabPageControl4.SuspendLayout();
             this.ultraPanel3.ClientArea.SuspendLayout();
             this.ultraPanel3.SuspendLayout();
+            this.ultraTabPageControl6.SuspendLayout();
+            this.pnlBeilagen.ClientArea.SuspendLayout();
+            this.pnlBeilagen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lvBeilagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.baseTabControl1)).BeginInit();
             this.baseTabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -147,7 +162,7 @@
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.pnlBrieftext);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -1269,6 +1284,70 @@
             this.rtfANM_Text.Text = "";
             this.rtfANM_Text.TextChanged += new System.EventHandler(this.rtfANM_Text_TextChanged);
             // 
+            // ultraTabPageControl6
+            // 
+            this.ultraTabPageControl6.Controls.Add(this.pnlBeilagen);
+            this.ultraTabPageControl6.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl6.Name = "ultraTabPageControl6";
+            this.ultraTabPageControl6.Size = new System.Drawing.Size(1256, 648);
+            // 
+            // pnlBeilagen
+            // 
+            // 
+            // pnlBeilagen.ClientArea
+            // 
+            this.pnlBeilagen.ClientArea.Controls.Add(this.lblBeilagen);
+            this.pnlBeilagen.ClientArea.Controls.Add(this.lvBeilagen);
+            this.pnlBeilagen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBeilagen.Location = new System.Drawing.Point(0, 0);
+            this.pnlBeilagen.Name = "pnlBeilagen";
+            this.pnlBeilagen.Size = new System.Drawing.Size(1256, 648);
+            this.pnlBeilagen.TabIndex = 0;
+            this.pnlBeilagen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            // 
+            // lblBeilagen
+            // 
+            this.lblBeilagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBeilagen.Location = new System.Drawing.Point(4, 35);
+            this.lblBeilagen.Name = "lblBeilagen";
+            this.lblBeilagen.Size = new System.Drawing.Size(141, 91);
+            this.lblBeilagen.TabIndex = 19;
+            this.lblBeilagen.Text = "Beilagen aus dem Archiv";
+            // 
+            // lvBeilagen
+            // 
+            appearance1.BorderColor = System.Drawing.Color.White;
+            this.lvBeilagen.Appearance = appearance1;
+            this.lvBeilagen.Location = new System.Drawing.Point(150, 35);
+            this.lvBeilagen.MainColumn.DataType = typeof(string);
+            this.lvBeilagen.MainColumn.Key = "Bezeichnung";
+            this.lvBeilagen.MainColumn.ShowSortIndicators = Infragistics.Win.DefaultableBoolean.True;
+            this.lvBeilagen.MainColumn.Sorting = Infragistics.Win.UltraWinListView.Sorting.Ascending;
+            this.lvBeilagen.Name = "lvBeilagen";
+            this.lvBeilagen.Size = new System.Drawing.Size(1098, 197);
+            ultraListViewSubItemColumn1.DataType = typeof(string);
+            ultraListViewSubItemColumn1.Key = "Archivordner";
+            ultraListViewSubItemColumn2.DataType = typeof(string);
+            ultraListViewSubItemColumn2.Key = "DateinameArchiv";
+            ultraListViewSubItemColumn3.DataType = typeof(System.Guid);
+            ultraListViewSubItemColumn3.Key = "ID";
+            ultraListViewSubItemColumn4.DataType = typeof(string);
+            ultraListViewSubItemColumn4.Key = "DateinameOrig";
+            ultraListViewSubItemColumn5.DataType = typeof(string);
+            ultraListViewSubItemColumn5.Key = "Notiz";
+            this.lvBeilagen.SubItemColumns.AddRange(new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn[] {
+            ultraListViewSubItemColumn1,
+            ultraListViewSubItemColumn2,
+            ultraListViewSubItemColumn3,
+            ultraListViewSubItemColumn4,
+            ultraListViewSubItemColumn5});
+            this.lvBeilagen.TabIndex = 0;
+            this.lvBeilagen.Text = "ultraListView1";
+            this.lvBeilagen.View = Infragistics.Win.UltraWinListView.UltraListViewStyle.List;
+            this.lvBeilagen.ViewSettingsDetails.CheckBoxStyle = Infragistics.Win.UltraWinListView.CheckBoxStyle.CheckBox;
+            this.lvBeilagen.ViewSettingsList.CheckBoxStyle = Infragistics.Win.UltraWinListView.CheckBoxStyle.CheckBox;
+            this.lvBeilagen.ItemCheckStateChanged += new Infragistics.Win.UltraWinListView.ItemCheckStateChangedEventHandler(this.lvBeilagen_ItemCheckStateChanged);
+            // 
             // baseTabControl1
             // 
             this.baseTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
@@ -1277,6 +1356,7 @@
             this.baseTabControl1.Controls.Add(this.ultraTabPageControl3);
             this.baseTabControl1.Controls.Add(this.ultraTabPageControl4);
             this.baseTabControl1.Controls.Add(this.ultraTabPageControl5);
+            this.baseTabControl1.Controls.Add(this.ultraTabPageControl6);
             this.baseTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.baseTabControl1.Location = new System.Drawing.Point(0, 0);
             this.baseTabControl1.Name = "baseTabControl1";
@@ -1303,12 +1383,17 @@
             ultraTab4.TabPage = this.ultraTabPageControl4;
             ultraTab4.Tag = "TabBemerkungen";
             ultraTab4.Text = "Be- und Anmerkungen";
+            ultraTab6.Key = "tabBeilagen";
+            ultraTab6.TabPage = this.ultraTabPageControl6;
+            ultraTab6.Tag = "Beilagen";
+            ultraTab6.Text = "Beilagen";
             this.baseTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab2,
             ultraTab5,
             ultraTab3,
-            ultraTab4});
+            ultraTab4,
+            ultraTab6});
             // 
             // ultraTabSharedControlsPage1
             // 
@@ -1339,6 +1424,10 @@
             this.ultraTabPageControl4.ResumeLayout(false);
             this.ultraPanel3.ClientArea.ResumeLayout(false);
             this.ultraPanel3.ResumeLayout(false);
+            this.ultraTabPageControl6.ResumeLayout(false);
+            this.pnlBeilagen.ClientArea.ResumeLayout(false);
+            this.pnlBeilagen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lvBeilagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.baseTabControl1)).EndInit();
             this.baseTabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1439,5 +1528,9 @@
         private System.Windows.Forms.RichTextBox rtfPFORIE_Res;
         private System.Windows.Forms.RichTextBox rtfPFSCHMERZ_Res;
         private System.Windows.Forms.RichTextBox rtfPFSCHL_Res;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl6;
+        private Infragistics.Win.Misc.UltraPanel pnlBeilagen;
+        private Infragistics.Win.Misc.UltraLabel lblBeilagen;
+        private Infragistics.Win.UltraWinListView.UltraListView lvBeilagen;
     }
 }
