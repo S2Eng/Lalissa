@@ -127,6 +127,7 @@ namespace PMDS.GUI.Print
             public PflegediagnosenObservation observation = new PflegediagnosenObservation();
         }
 
+
         private class BeilagenEntry
         {
             public string id = "";
@@ -151,6 +152,7 @@ namespace PMDS.GUI.Print
             public DateTime effectiveTime_low_value;
             public PflegediagnosenEntryRelationship entryRelationship = new PflegediagnosenEntryRelationship();
         }
+
 
         //private class VitalparameterObservation
         //{
@@ -522,7 +524,7 @@ namespace PMDS.GUI.Print
                         observation.NegationInd = new BL(false);
                         observation.ClassCode = new CS<ActClassObservation>(ActClassObservation.OBS);
                         observation.Id = new SET<II>(new II(pdEntry.entryRelationship.observation.id_root));
-                        observation.TemplateId = pdEntry.cdatemplateIDs;
+                        observation.TemplateId = pdEntry.entryRelationship.observation.cdatemplateIDs;
                         observation.Code = new CD<string>(
                             pdEntry.entryRelationship.observation.code.code,
                             pdEntry.entryRelationship.observation.code.codeSystem,
@@ -533,7 +535,15 @@ namespace PMDS.GUI.Print
 
                         observation.StatusCode = new CS<ActStatus>(ActStatus.Completed);
                         observation.EffectiveTime = new IVL<TS>(pdEntry.entryRelationship.observation.effectivTime_low_value, pdEntry.entryRelationship.observation.effectivTime_low_value);
-                        observation.EffectiveTime.High.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                        if (pdEntry.entryRelationship.observation.effectivTime_low_value > new DateTime(1, 1, 1))
+                        {
+                            observation.EffectiveTime.High.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                        }
+                        else
+                        {
+                            observation.EffectiveTime.Low.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                            observation.EffectiveTime.High.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                        }                           
                         observation.Value = new CD<string>(
                             pdEntry.entryRelationship.observation.value_code,
                             pdEntry.entryRelationship.observation.value_codeSystem,
@@ -565,11 +575,23 @@ namespace PMDS.GUI.Print
 
                         Act act = entry.GetClinicalStatementIfAct();
                         act.ClassCode = new CS<x_ActClassDocumentEntryAct>(x_ActClassDocumentEntryAct.Act);
-                        act.EffectiveTime.Low = new TS(pdEntry.effectiveTime_low_value);
-                        act.EffectiveTime.Low.UpdateMode = null;
+                        act.Id = new SET<II> { new II(pdEntry.id_root) };
+                        if (pdEntry.effectiveTime_low_value > new DateTime(1,1,1))
+                        {
+                            act.EffectiveTime.Low = new TS(pdEntry.effectiveTime_low_value);
+                            act.EffectiveTime.Low.UpdateMode = null;
+                            act.StatusCode = new CS<ActStatus>(ActStatus.Active);
+                        }
+                        else                        //für Empty PDx
+                        {                            
+                            act.EffectiveTime = new IVL<TS>(pdEntry.entryRelationship.observation.effectivTime_low_value, pdEntry.entryRelationship.observation.effectivTime_low_value);
+                            act.EffectiveTime.Low.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                            act.EffectiveTime.High.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                            act.StatusCode = new CS<ActStatus>(ActStatus.Completed);
+                        }
                         act.LanguageCode = null;
-                        act.EffectiveTime.Value = null;
-                        act.EffectiveTime.High = null;
+//                        act.EffectiveTime.Value = null;
+//                        act.EffectiveTime.High = null;
 
                         CD<string> c = new CD<string>();
                         c.NullFlavor = MARC.Everest.DataTypes.NullFlavor.NotApplicable;
@@ -678,40 +700,70 @@ namespace PMDS.GUI.Print
                                 });
 
                     int i = 0;
-                    foreach (var pdx in tPDx)
+
+                    if (tPDx.Count() > 0)
                     {
-                        DateTime Start = (DateTime)pdx.Startdatum;
-                        Guid Id = (Guid)pdx.ID;
+                        foreach (var pdx in tPDx)
+                        {
+                            DateTime Start = (DateTime)pdx.Startdatum;
+                            Guid Id = (Guid)pdx.ID;
+
+                            PDxHTML += "<tr ID=\"pfdiag" + i.ToString() + "\">";
+                            PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + pdx.Klartext + "</td>";
+                            PDxHTML += "<td>" + pdx.Lokalisierung + " " + pdx.LokalisierungSeite + "</td>";
+                            PDxHTML += "<td>" + Start.ToString("dd.MM.yyyy") + "</td>";
+                            PDxHTML += "</tr>\r";
+
+                            PflegediagnoseEntry PDx = new PflegediagnoseEntry();
+                            PDx.effectiveTime_low_value = Start;
+                            PDx.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
+                            PDx.entryRelationship.observation.id_root = Id;
+                            PDx.entryRelationship.observation.text_reference = "#pfdiag" + i.ToString();
+                            PDx.entryRelationship.observation.effectivTime_low_value = Start;
+                            PDx.entryRelationship.observation.value_code = pdx.Code;
+                            PDx.entryRelationship.observation.value_displayName = pdx.Klartext;
+                            PDx.entryRelationship.observation.value_originalText_reference_value = "#pfdiag_diagnosis" + i.ToString();
+
+                            if (Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys == null)
+                                Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys = new List<PflegediagnoseEntry>();
+
+                            Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys.Add(PDx);
+                            i++;
+                        }
+                    }
+                    else     //Leeres Pflegediagnosenentry (Pflicht-Element)
+                    {
+                        Guid Id = Guid.NewGuid();
 
                         PDxHTML += "<tr ID=\"pfdiag" + i.ToString() + "\">";
-                        PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + pdx.Klartext + "</td>";
-                        PDxHTML += "<td>" + pdx.Lokalisierung + " " + pdx.LokalisierungSeite + "</td>";
-                        PDxHTML += "<td>" + Start.ToString("dd.MM.yyyy") + "</td>";
+                        PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + "Keine Pflegediagnosen" + "</td>";
+                        PDxHTML += "<td></td>";
+                        PDxHTML += "<td></td>";
                         PDxHTML += "</tr>\r";
 
                         PflegediagnoseEntry PDx = new PflegediagnoseEntry();
-                        PDx.effectiveTime_low_value = Start;
-                        PDx.entryRelationship.observation.id_root = Id;
+                        PDx.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
+
+                        PDx.entryRelationship.observation.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
                         PDx.entryRelationship.observation.text_reference = "#pfdiag" + i.ToString();
-                        PDx.entryRelationship.observation.effectivTime_low_value = Start;
-                        PDx.entryRelationship.observation.value_code = pdx.Code;
-                        PDx.entryRelationship.observation.value_displayName = pdx.Klartext;
-                        PDx.entryRelationship.observation.value_originalText_reference_value = "#pfdiag" + i.ToString() + "_diagnosis";
+                        PDx.entryRelationship.observation.value_originalText_reference_value = "#pfdiag_diagnosis" + i.ToString();
+
+                        PDx.entryRelationship.observation.code.code = "160245001";
+                        PDx.entryRelationship.observation.code.displayName = "No current problems or disability";
+                        PDx.entryRelationship.observation.code.codeSystem = "2.16.840.1.113883.6.96";
+                        PDx.entryRelationship.observation.code.codeSystemName = "SNOMED CT";
 
                         if (Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys == null)
-                        {
                             Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys = new List<PflegediagnoseEntry>();
-                        }
 
                         Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys.Add(PDx);
                         i++;
                     }
+
                     PDxHTML += "\r</tbody></table>";
                     Sektionen[(int)SektionOrder.Pflegediagnosen].textHTML = PDxHTML;
-                    if (i > 0)
-                    {
-                        Sektionen[(int)SektionOrder.Pflegediagnosen].use = true;
-                    }
+                    Sektionen[(int)SektionOrder.Pflegediagnosen].use = true;
+
                     wbDiagnosen.DocumentText = PDxHTML;
                 }
 
@@ -1920,6 +1972,10 @@ namespace PMDS.GUI.Print
 
                 string BeilagenHiddenText = "<table><thead><tr><th>Beilagen</th><th>Dokument</th></tr></thead><tbody>";
                 int iCountBeilagen = 0;
+                int iSizeTotal = 0;
+                int iMaxSize = 8000000;
+                string sMaxSize = (iMaxSize / 1000).ToString();
+
                 foreach (UltraListViewItem rBeilage in lvSender.Items)
                 {
                     if (rBeilage.CheckState == CheckState.Checked)
@@ -1929,20 +1985,32 @@ namespace PMDS.GUI.Print
                         {
                             using (StreamReader streamReader = new StreamReader(path))
                             {
-                                iCountBeilagen++;
-                                string refObject = rBeilage.SubItems["ID"].Value.ToString();
-                                string txtObject = rBeilage.Text;
-                                BeilagenHiddenText += "<tr><td>" + txtObject + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
-
-                                if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
-                                    Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
 
                                 List<BeilagenEntry> Beilagenliste = new List<BeilagenEntry>();
                                 BeilagenEntry Beilage = new BeilagenEntry();
-                                Beilage.id = refObject;
                                 Beilage.value = System.Text.Encoding.UTF8.GetBytes(streamReader.ReadToEnd());
-                                Beilage.referencedObject = refObject;
-                                Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(Beilage);
+
+                                iSizeTotal += Beilage.value.Length;
+
+                                if (iSizeTotal < iMaxSize)
+                                {
+                                    iCountBeilagen++;
+                                    string refObject = rBeilage.SubItems["ID"].Value.ToString();
+                                    string txtObject = rBeilage.Text;
+                                    BeilagenHiddenText += "<tr><td>" + txtObject + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
+                                    Beilage.id = refObject;
+                                    Beilage.referencedObject = refObject;
+
+                                    if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
+                                        Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+
+                                    Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(Beilage);
+                                }
+                                else
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Die maximale Größe aller Anhänge darf " + sMaxSize + " kB nicht überschreiten!", MessageBoxButtons.OK, "Wichtiger Hinweis!");
+                                    rBeilage.CheckState = CheckState.Unchecked;
+                                }
                             }
                         }
                     }
@@ -1959,6 +2027,7 @@ namespace PMDS.GUI.Print
                         Sektionen[(int)SektionOrder.Beilagen].use = false;
                     }
                 }
+                lblSize.Text = (Math.Round((float)iSizeTotal / 1000, 1)).ToString() + " kB von max. " + sMaxSize + " kB benutzt.";
             }
             catch (Exception ex)
             {

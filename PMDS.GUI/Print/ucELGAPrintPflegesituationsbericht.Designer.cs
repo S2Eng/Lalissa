@@ -136,6 +136,7 @@
             this.lvBeilagen = new Infragistics.Win.UltraWinListView.UltraListView();
             this.baseTabControl1 = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.lblSize = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTabPageControl1.SuspendLayout();
             this.pnlBrieftext.ClientArea.SuspendLayout();
             this.pnlBrieftext.SuspendLayout();
@@ -1296,6 +1297,7 @@
             // 
             // pnlBeilagen.ClientArea
             // 
+            this.pnlBeilagen.ClientArea.Controls.Add(this.lblSize);
             this.pnlBeilagen.ClientArea.Controls.Add(this.lblBeilagen);
             this.pnlBeilagen.ClientArea.Controls.Add(this.lvBeilagen);
             this.pnlBeilagen.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1310,7 +1312,7 @@
             this.lblBeilagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBeilagen.Location = new System.Drawing.Point(4, 35);
             this.lblBeilagen.Name = "lblBeilagen";
-            this.lblBeilagen.Size = new System.Drawing.Size(141, 91);
+            this.lblBeilagen.Size = new System.Drawing.Size(141, 36);
             this.lblBeilagen.TabIndex = 19;
             this.lblBeilagen.Text = "Beilagen aus dem Archiv";
             // 
@@ -1400,6 +1402,14 @@
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1256, 648);
+            // 
+            // lblSize
+            // 
+            this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSize.Location = new System.Drawing.Point(150, 238);
+            this.lblSize.Name = "lblSize";
+            this.lblSize.Size = new System.Drawing.Size(1098, 28);
+            this.lblSize.TabIndex = 20;
             // 
             // ucELGAPrintPflegesituationsbericht
             // 
@@ -1532,5 +1542,6 @@
         private Infragistics.Win.Misc.UltraPanel pnlBeilagen;
         private Infragistics.Win.Misc.UltraLabel lblBeilagen;
         private Infragistics.Win.UltraWinListView.UltraListView lvBeilagen;
+        private Infragistics.Win.Misc.UltraLabel lblSize;
     }
 }
