@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn1 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("Archivordner");
             Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn2 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("DateinameArchiv");
             Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn ultraListViewSubItemColumn3 = new Infragistics.Win.UltraWinListView.UltraListViewSubItemColumn("ID");
@@ -40,6 +41,8 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucELGAPrintPflegesituationsbericht));
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.pnlBrieftext = new Infragistics.Win.Misc.UltraPanel();
             this.btnGenerate = new Infragistics.Win.Misc.UltraButton();
@@ -132,11 +135,12 @@
             this.rtfANM_Text = new System.Windows.Forms.RichTextBox();
             this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.pnlBeilagen = new Infragistics.Win.Misc.UltraPanel();
+            this.lblSize = new Infragistics.Win.Misc.UltraLabel();
             this.lblBeilagen = new Infragistics.Win.Misc.UltraLabel();
             this.lvBeilagen = new Infragistics.Win.UltraWinListView.UltraListView();
             this.baseTabControl1 = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.lblSize = new Infragistics.Win.Misc.UltraLabel();
+            this.btnAddBeilageFrei = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraTabPageControl1.SuspendLayout();
             this.pnlBrieftext.ClientArea.SuspendLayout();
             this.pnlBrieftext.SuspendLayout();
@@ -223,6 +227,7 @@
             // 
             // rtfBRIEFT_Text
             // 
+            this.rtfBRIEFT_Text.AcceptsTab = true;
             this.rtfBRIEFT_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfBRIEFT_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -282,6 +287,7 @@
             // 
             // rtfPFATM_Risk
             // 
+            this.rtfPFATM_Risk.AcceptsTab = true;
             this.rtfPFATM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFATM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -296,6 +302,7 @@
             // 
             // rtfPFHAUT_Risk
             // 
+            this.rtfPFHAUT_Risk.AcceptsTab = true;
             this.rtfPFHAUT_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFHAUT_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -310,6 +317,7 @@
             // 
             // rtfPFAUS_Risk
             // 
+            this.rtfPFAUS_Risk.AcceptsTab = true;
             this.rtfPFAUS_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFAUS_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -324,6 +332,7 @@
             // 
             // rtfPFERN_Risk
             // 
+            this.rtfPFERN_Risk.AcceptsTab = true;
             this.rtfPFERN_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFERN_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -338,6 +347,7 @@
             // 
             // rtfPFKLEI_Risk
             // 
+            this.rtfPFKLEI_Risk.AcceptsTab = true;
             this.rtfPFKLEI_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFKLEI_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -352,6 +362,7 @@
             // 
             // rtfPFMOB_Risk
             // 
+            this.rtfPFMOB_Risk.AcceptsTab = true;
             this.rtfPFMOB_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFMOB_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -366,6 +377,7 @@
             // 
             // rtfPFATM_Res
             // 
+            this.rtfPFATM_Res.AcceptsTab = true;
             this.rtfPFATM_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFATM_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -380,6 +392,7 @@
             // 
             // rtfPFHAUT_Res
             // 
+            this.rtfPFHAUT_Res.AcceptsTab = true;
             this.rtfPFHAUT_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFHAUT_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -394,6 +407,7 @@
             // 
             // rtfPFAUS_Res
             // 
+            this.rtfPFAUS_Res.AcceptsTab = true;
             this.rtfPFAUS_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFAUS_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -408,6 +422,7 @@
             // 
             // rtfPFERN_Res
             // 
+            this.rtfPFERN_Res.AcceptsTab = true;
             this.rtfPFERN_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFERN_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -422,6 +437,7 @@
             // 
             // rtfPFKLEI_Res
             // 
+            this.rtfPFKLEI_Res.AcceptsTab = true;
             this.rtfPFKLEI_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFKLEI_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -436,6 +452,7 @@
             // 
             // rtfPFMOB_Res
             // 
+            this.rtfPFMOB_Res.AcceptsTab = true;
             this.rtfPFMOB_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFMOB_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -459,6 +476,7 @@
             // 
             // rtfPFATM_Text
             // 
+            this.rtfPFATM_Text.AcceptsTab = true;
             this.rtfPFATM_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFATM_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -482,6 +500,7 @@
             // 
             // rtfPFHAUT_Text
             // 
+            this.rtfPFHAUT_Text.AcceptsTab = true;
             this.rtfPFHAUT_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFHAUT_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -505,6 +524,7 @@
             // 
             // rtfPFAUS_Text
             // 
+            this.rtfPFAUS_Text.AcceptsTab = true;
             this.rtfPFAUS_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFAUS_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -528,6 +548,7 @@
             // 
             // rtfPFERN_Text
             // 
+            this.rtfPFERN_Text.AcceptsTab = true;
             this.rtfPFERN_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFERN_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -551,6 +572,7 @@
             // 
             // rtfPFKLEI_Text
             // 
+            this.rtfPFKLEI_Text.AcceptsTab = true;
             this.rtfPFKLEI_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFKLEI_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -592,6 +614,7 @@
             // 
             // rtfPFMOB_Text
             // 
+            this.rtfPFMOB_Text.AcceptsTab = true;
             this.rtfPFMOB_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFMOB_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -660,6 +683,7 @@
             // 
             // rtfPFROLL_Risk
             // 
+            this.rtfPFROLL_Risk.AcceptsTab = true;
             this.rtfPFROLL_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFROLL_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -674,6 +698,7 @@
             // 
             // rtfPFKOMM_Risk
             // 
+            this.rtfPFKOMM_Risk.AcceptsTab = true;
             this.rtfPFKOMM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFKOMM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -688,6 +713,7 @@
             // 
             // rtfPFSOZV_Risk
             // 
+            this.rtfPFSOZV_Risk.AcceptsTab = true;
             this.rtfPFSOZV_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSOZV_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -702,6 +728,7 @@
             // 
             // rtfPFORIE_Risk
             // 
+            this.rtfPFORIE_Risk.AcceptsTab = true;
             this.rtfPFORIE_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFORIE_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -716,6 +743,7 @@
             // 
             // rtfPFSCHMERZ_Risk
             // 
+            this.rtfPFSCHMERZ_Risk.AcceptsTab = true;
             this.rtfPFSCHMERZ_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSCHMERZ_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -730,6 +758,7 @@
             // 
             // rtfPFSCHL_Risk
             // 
+            this.rtfPFSCHL_Risk.AcceptsTab = true;
             this.rtfPFSCHL_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSCHL_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -744,6 +773,7 @@
             // 
             // rtfPFROLL_Res
             // 
+            this.rtfPFROLL_Res.AcceptsTab = true;
             this.rtfPFROLL_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFROLL_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -758,6 +788,7 @@
             // 
             // rtfPFKOMM_Res
             // 
+            this.rtfPFKOMM_Res.AcceptsTab = true;
             this.rtfPFKOMM_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFKOMM_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -772,6 +803,7 @@
             // 
             // rtfPFSOZV_Res
             // 
+            this.rtfPFSOZV_Res.AcceptsTab = true;
             this.rtfPFSOZV_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSOZV_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -786,6 +818,7 @@
             // 
             // rtfPFORIE_Res
             // 
+            this.rtfPFORIE_Res.AcceptsTab = true;
             this.rtfPFORIE_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFORIE_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -800,6 +833,7 @@
             // 
             // rtfPFSCHMERZ_Res
             // 
+            this.rtfPFSCHMERZ_Res.AcceptsTab = true;
             this.rtfPFSCHMERZ_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSCHMERZ_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -814,6 +848,7 @@
             // 
             // rtfPFSCHL_Res
             // 
+            this.rtfPFSCHL_Res.AcceptsTab = true;
             this.rtfPFSCHL_Res.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSCHL_Res.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -837,6 +872,7 @@
             // 
             // rtfPFSCHL_Text
             // 
+            this.rtfPFSCHL_Text.AcceptsTab = true;
             this.rtfPFSCHL_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSCHL_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -860,6 +896,7 @@
             // 
             // rtfPFROLL_Text
             // 
+            this.rtfPFROLL_Text.AcceptsTab = true;
             this.rtfPFROLL_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFROLL_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -883,6 +920,7 @@
             // 
             // rtfPFKOMM_Text
             // 
+            this.rtfPFKOMM_Text.AcceptsTab = true;
             this.rtfPFKOMM_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFKOMM_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -906,6 +944,7 @@
             // 
             // rtfPFSOZV_Text
             // 
+            this.rtfPFSOZV_Text.AcceptsTab = true;
             this.rtfPFSOZV_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSOZV_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -929,6 +968,7 @@
             // 
             // rtfPFORIE_Text
             // 
+            this.rtfPFORIE_Text.AcceptsTab = true;
             this.rtfPFORIE_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFORIE_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -970,6 +1010,7 @@
             // 
             // rtfPFSCHMERZ_Text
             // 
+            this.rtfPFSCHMERZ_Text.AcceptsTab = true;
             this.rtfPFSCHMERZ_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFSCHMERZ_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1032,6 +1073,7 @@
             // 
             // rtfPUBUMF_Text
             // 
+            this.rtfPUBUMF_Text.AcceptsTab = true;
             this.rtfPUBUMF_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPUBUMF_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1046,6 +1088,7 @@
             // 
             // rtfPFMED_Risk
             // 
+            this.rtfPFMED_Risk.AcceptsTab = true;
             this.rtfPFMED_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFMED_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1069,6 +1112,7 @@
             // 
             // rtfPFMED_Text
             // 
+            this.rtfPFMED_Text.AcceptsTab = true;
             this.rtfPFMED_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFMED_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1083,6 +1127,7 @@
             // 
             // rtfPFMEDBEH_Risk
             // 
+            this.rtfPFMEDBEH_Risk.AcceptsTab = true;
             this.rtfPFMEDBEH_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFMEDBEH_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1124,6 +1169,7 @@
             // 
             // rtfPFMEDBEH_Text
             // 
+            this.rtfPFMEDBEH_Text.AcceptsTab = true;
             this.rtfPFMEDBEH_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPFMEDBEH_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1160,7 +1206,7 @@
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.ultraPanel3);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -1195,6 +1241,7 @@
             // 
             // rtfABBEM_Text
             // 
+            this.rtfABBEM_Text.AcceptsTab = true;
             this.rtfABBEM_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfABBEM_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1218,6 +1265,7 @@
             // 
             // rtfPATVERF_Text
             // 
+            this.rtfPATVERF_Text.AcceptsTab = true;
             this.rtfPATVERF_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfPATVERF_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1232,6 +1280,7 @@
             // 
             // rtfANM_Risk
             // 
+            this.rtfANM_Risk.AcceptsTab = true;
             this.rtfANM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfANM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1273,6 +1322,7 @@
             // 
             // rtfANM_Text
             // 
+            this.rtfANM_Text.AcceptsTab = true;
             this.rtfANM_Text.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtfANM_Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -1288,7 +1338,7 @@
             // ultraTabPageControl6
             // 
             this.ultraTabPageControl6.Controls.Add(this.pnlBeilagen);
-            this.ultraTabPageControl6.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl6.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl6.Name = "ultraTabPageControl6";
             this.ultraTabPageControl6.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -1297,6 +1347,7 @@
             // 
             // pnlBeilagen.ClientArea
             // 
+            this.pnlBeilagen.ClientArea.Controls.Add(this.btnAddBeilageFrei);
             this.pnlBeilagen.ClientArea.Controls.Add(this.lblSize);
             this.pnlBeilagen.ClientArea.Controls.Add(this.lblBeilagen);
             this.pnlBeilagen.ClientArea.Controls.Add(this.lvBeilagen);
@@ -1307,6 +1358,14 @@
             this.pnlBeilagen.TabIndex = 0;
             this.pnlBeilagen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             // 
+            // lblSize
+            // 
+            this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSize.Location = new System.Drawing.Point(150, 238);
+            this.lblSize.Name = "lblSize";
+            this.lblSize.Size = new System.Drawing.Size(1098, 28);
+            this.lblSize.TabIndex = 20;
+            // 
             // lblBeilagen
             // 
             this.lblBeilagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1314,19 +1373,19 @@
             this.lblBeilagen.Name = "lblBeilagen";
             this.lblBeilagen.Size = new System.Drawing.Size(141, 36);
             this.lblBeilagen.TabIndex = 19;
-            this.lblBeilagen.Text = "Beilagen aus dem Archiv";
+            this.lblBeilagen.Text = "Beilagen (PDF)";
             // 
             // lvBeilagen
             // 
-            appearance1.BorderColor = System.Drawing.Color.White;
-            this.lvBeilagen.Appearance = appearance1;
+            appearance2.BorderColor = System.Drawing.Color.White;
+            this.lvBeilagen.Appearance = appearance2;
             this.lvBeilagen.Location = new System.Drawing.Point(150, 35);
             this.lvBeilagen.MainColumn.DataType = typeof(string);
             this.lvBeilagen.MainColumn.Key = "Bezeichnung";
             this.lvBeilagen.MainColumn.ShowSortIndicators = Infragistics.Win.DefaultableBoolean.True;
             this.lvBeilagen.MainColumn.Sorting = Infragistics.Win.UltraWinListView.Sorting.Ascending;
             this.lvBeilagen.Name = "lvBeilagen";
-            this.lvBeilagen.Size = new System.Drawing.Size(1098, 197);
+            this.lvBeilagen.Size = new System.Drawing.Size(1066, 197);
             ultraListViewSubItemColumn1.DataType = typeof(string);
             ultraListViewSubItemColumn1.Key = "Archivordner";
             ultraListViewSubItemColumn2.DataType = typeof(string);
@@ -1403,13 +1462,21 @@
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1256, 648);
             // 
-            // lblSize
+            // btnAddBeilageFrei
             // 
-            this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSize.Location = new System.Drawing.Point(150, 238);
-            this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(1098, 28);
-            this.lblSize.TabIndex = 20;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAddBeilageFrei.Appearance = appearance1;
+            this.btnAddBeilageFrei.AutoWorkLayout = false;
+            this.btnAddBeilageFrei.BackColorInternal = System.Drawing.Color.Transparent;
+            this.btnAddBeilageFrei.ImageSize = new System.Drawing.Size(12, 12);
+            this.btnAddBeilageFrei.IsStandardControl = false;
+            this.btnAddBeilageFrei.Location = new System.Drawing.Point(1222, 35);
+            this.btnAddBeilageFrei.Name = "btnAddBeilageFrei";
+            this.btnAddBeilageFrei.Size = new System.Drawing.Size(26, 29);
+            this.btnAddBeilageFrei.TabIndex = 28;
+            this.btnAddBeilageFrei.Click += new System.EventHandler(this.btnAddBeilageFrei_Click);
             // 
             // ucELGAPrintPflegesituationsbericht
             // 
@@ -1543,5 +1610,6 @@
         private Infragistics.Win.Misc.UltraLabel lblBeilagen;
         private Infragistics.Win.UltraWinListView.UltraListView lvBeilagen;
         private Infragistics.Win.Misc.UltraLabel lblSize;
+        private QS2.Desktop.ControlManagment.BaseButton btnAddBeilageFrei;
     }
 }

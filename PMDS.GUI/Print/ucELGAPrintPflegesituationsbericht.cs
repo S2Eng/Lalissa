@@ -1451,7 +1451,7 @@ namespace PMDS.GUI.Print
                             if (File.Exists(path))
                             {
                                 iCountBeilagen++;
-                                UltraListViewItem it = new UltraListViewItem(rBeilage.Bezeichnung, new object[] { rBeilage.Archivordner, rBeilage.DateinameArchiv, (Guid)rBeilage.refObject, rBeilage.DateinameOrig, rBeilage.Notiz });
+                                UltraListViewItem it = new UltraListViewItem(rBeilage.Bezeichnung, new object[] { Path.Combine( ENV.ArchivPath, rBeilage.Archivordner), rBeilage.DateinameArchiv, (Guid)rBeilage.refObject, rBeilage.DateinameOrig, rBeilage.Notiz });
                                 it.Key = iCountBeilagen.ToString();
                                 it.Tag = rBeilage.Bezeichnung;
                                 it.CheckState = CheckState.Unchecked;
@@ -1980,7 +1980,7 @@ namespace PMDS.GUI.Print
                 {
                     if (rBeilage.CheckState == CheckState.Checked)
                     {
-                        string path = Path.Combine(ENV.ArchivPath, rBeilage.SubItems["Archivordner"].Value.ToString(), rBeilage.SubItems["DateinameArchiv"].Value.ToString());
+                        string path = Path.Combine(rBeilage.SubItems["Archivordner"].Value.ToString(), rBeilage.SubItems["DateinameArchiv"].Value.ToString());
                         if (File.Exists(path))
                         {
                             using (StreamReader streamReader = new StreamReader(path))
@@ -2040,6 +2040,33 @@ namespace PMDS.GUI.Print
             Component2 comp = CreateCDAFachlicheSektionen();
             ClinicalDocument ccda = new ClinicalDocument();
             OutputCDA(comp, ref ccda);
+        }
+
+        private void btnAddBeilageFrei_Click(object sender, EventArgs e)
+        {
+            int iCountBeilagen = lvBeilagen.Items.Count;
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.InitialDirectory = Environment.SpecialFolder.DesktopDirectory.ToString();
+            fileDialog.Title = "Bitte wählen Sie eine Beilage aus";
+            fileDialog.DefaultExt = "pdf";
+            fileDialog.Filter = "PDF-Dateien|*.pdf";
+            fileDialog.CheckFileExists = true;
+            fileDialog.CheckPathExists = true;
+            fileDialog.Multiselect = true;
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach (String file in fileDialog.FileNames)
+                {
+                    iCountBeilagen++;
+                    UltraListViewItem it = new UltraListViewItem(Path.GetFileNameWithoutExtension(file), new object[] { Path.GetDirectoryName(file), Path.GetFileName(file), Guid.NewGuid().ToString(), Path.GetFileName(file), "" });
+                    it.Key = iCountBeilagen.ToString();
+                    it.Tag = Path.GetFileNameWithoutExtension(file);
+                    it.CheckState = CheckState.Unchecked;
+                    it.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_PDF, 32, 32);
+                    lvBeilagen.Items.Add(it);
+                }
+            }
         }
     }
 }
