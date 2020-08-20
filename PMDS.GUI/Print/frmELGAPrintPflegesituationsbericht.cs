@@ -39,7 +39,7 @@ namespace PMDS.GUI.Print
         {
             this.cDAPflegesituationsberichtToolStripMenuItem.Visible = ENV.adminSecure;
             this.cDAEntlassungsbriefToolStripMenuItem.Visible = ENV.adminSecure;
-            this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
+            this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);           
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace PMDS.GUI.Print
         private void frmELGAPrintPflegesituationsbericht_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_canClose)
-                compFachlicheSektionen = this.ucELGAPrintPflegesituationsbericht1.CreateCDAFachlicheSektionen();
+                this.ucELGAPrintPflegesituationsbericht1.btnGenerate_Click(sender, e);
             e.Cancel = !_canClose;
         }
 
@@ -128,8 +128,18 @@ namespace PMDS.GUI.Print
 
         private void frmELGAPrintPflegesituationsbericht_Shown(object sender, EventArgs e)
         {
+            //Application.DoEvents();
+            //Infragistics.Win.ValueListItem sel = this.cbETo.SelectedItem;
+            //if (sel != null)
+            //    ucELGAPrintPflegesituationsbericht1.Init();            
+        }
+
+        private void cbETo_ValueChanged(object sender, EventArgs e)
+        {
             Application.DoEvents();
-            ucELGAPrintPflegesituationsbericht1.Init();
+            Infragistics.Win.ValueListItem sel = this.cbETo.SelectedItem;
+            if (sel != null)
+                ucELGAPrintPflegesituationsbericht1.Init((Guid)sel.DataValue);
         }
     }
 }

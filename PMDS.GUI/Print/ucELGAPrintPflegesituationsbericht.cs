@@ -11,33 +11,40 @@ using System.Runtime.CompilerServices;
 using qs2.core.vb;
 using PMDS.Global;
 using Infragistics.Win.UltraWinGrid;
-
-using MARC.Everest.Attributes;
-using MARC.Everest.DataTypes;
-using MARC.Everest.DataTypes.Interfaces;
-using MARC.Everest.Formatters.XML.Datatypes.R1;
-using MARC.Everest.Formatters.XML.Datatypes.R2;
-using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
-using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
-using MARC.Everest.RMIM.UV.NE2010.Interactions;
-using MARC.Everest.Xml;
-using System.Xml;
-using MARC.Everest.Formatters.XML.ITS1;
-using MARC.Everest.Threading;
-
 using PMDS.Klient;
 using Patagames.Pdf.Enums;
 using System.Reflection;
-using MARC.Everest.RMIM.UV.NE2010.MCCI_MT100200UV01;
+using System.Xml;
 using System.IO;
 using PMDS.db.Entities;
-using Infragistics.Win.UltraWinListView;
+using Infragistics.Win.UltraWinListView;   
+
+using MARC.Everest.DataTypes.Interfaces;
+using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
+using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
+using MARC.Everest.Xml;
+using MARC.Everest.DataTypes;
+using PMDS.DynReportsForms;
+using PMDS.BusinessLogic;
+//using MARC.Everest.RMIM.UV.NE2010.REPC_MT000324UV01;
+
 
 namespace PMDS.GUI.Print
 {
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+        private Guid IDEmpfaenger { get; set; }
+        private List<ccode> ELGACodes = new List<ccode>();
+        private cELGADB.Organistion Klinik = new cELGADB.Organistion();
+        private cELGADB.Person Klient = new cELGADB.Person();
+        private cELGADB.Aufenthalt Aufenthalt = new cELGADB.Aufenthalt();
+        private List<Sektion> Sektionen = new List<Sektion>();
+        private List<cELGADB.Person> lSachwalter = new List<cELGADB.Person>();
+        private cELGADB.Person Benutzer = new cELGADB.Person();
+        private cELGADB.Organistion Empfaenger = new cELGADB.Organistion();
+        private cELGADB.Organistion Hausarzt = new cELGADB.Organistion();
+        private List<cELGADB.Person> Kontaktpersonen = new List<cELGADB.Person>();
 
         private enum eELGATypeSektion
         {
@@ -85,11 +92,36 @@ namespace PMDS.GUI.Print
             Risk = 3
         }
 
+        private enum eTypeCDA
+        {
+            Entlassungsbrief = 0,
+            Pflegesituationbericht = 1
+        }
+
         private class RTFTag
         {
             public SektionOrder Order;
             public String Tag;
             public RTFTyp Typ;
+        }
+
+        private class cdaInfo
+        {
+            public SET<CS<BindingRealm>>  ccdaRealmCode = new SET<CS<BindingRealm>>(new CS<BindingRealm>(BindingRealm.Austria));
+            public II ccdaTypeId = new II { Root = "2.16.840.1.113883.1.3", Extension = "POCD_HD000040" };
+            public II cdaID = new II(Guid.NewGuid());
+            public II cdaSetID = new II(Guid.NewGuid());
+            public int cdaVersion = 1;
+            public ST cdaTitle = new ST("Pflegesituationsbericht");
+            public ccode cdaCode = new ccode { code = "28651-8", displayName = "Nurse Transfer Note", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" };
+            public List<II> cdatemplateIDs = new List<II> { new II { Root="1.2.40.0.34.11.1" , AssigningAuthorityName = "ELGA" },
+                                                            new II { Root="1.2.40.0.34.11.12", AssigningAuthorityName="ELGA" },
+                                                            new II { Root="1.2.40.0.34.11.12.0.3", AssigningAuthorityName="ELGA" }
+                                                          };
+            public TS cdaEffectiveTime = new TS(DateTime.Now);
+            public CE<x_BasicConfidentialityKind>  ccdaConfidentialityCode = new CE<x_BasicConfidentialityKind>(x_BasicConfidentialityKind.Normal, "2.16.840.1.113883.5.25", "HL7:Confidentiality", null);
+            public string ccdaConfidentialityCodeDisplayName = "normal";
+            public CS<string> ccdaLanguageCode = new CS<string>("de-AT");
         }
 
         private class ccode
@@ -99,6 +131,8 @@ namespace PMDS.GUI.Print
             public string codeSystem = "1.2.40.0.34.5.40";
             public string codeSystemName = "ELGA";
             public string originalText;
+            public string IDAuswahllisteGruppe;
+            public string Bezeichnung;
         }
 
         private class PflegediagnosenObservation
@@ -127,7 +161,6 @@ namespace PMDS.GUI.Print
             public PflegediagnosenObservation observation = new PflegediagnosenObservation();
         }
 
-
         private class BeilagenEntry
         {
             public string id = "";
@@ -152,7 +185,6 @@ namespace PMDS.GUI.Print
             public DateTime effectiveTime_low_value;
             public PflegediagnosenEntryRelationship entryRelationship = new PflegediagnosenEntryRelationship();
         }
-
 
         //private class VitalparameterObservation
         //{
@@ -220,9 +252,9 @@ namespace PMDS.GUI.Print
             public string Tag;
         }
 
-        private List<Sektion> Sektionen = new List<Sektion>();
 
-        ClinicalDocument ccda = new ClinicalDocument();
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static ClinicalDocument ccda { get; set; } = new ClinicalDocument();
         Component2 compSektionen = new Component2();
         StructuredBody structBody = new StructuredBody();
 
@@ -231,9 +263,34 @@ namespace PMDS.GUI.Print
             InitializeComponent();
         }
 
-        public void Init()
+        public void Init(Guid pIDEmpfaenger)
         {
-            //Struktur befüllen
+            IDEmpfaenger = pIDEmpfaenger;
+            ReadAllELGACodes();
+            ccda = new ClinicalDocument();
+
+            //Headerdaten aus DB lesen
+            cELGADB.LoadKlinik(ref Klinik);
+            cELGADB.LoadKlient(ref Klient);
+            cELGADB.LoadAufenthalt(ref Aufenthalt);
+            cELGADB.LoadSachwalter(ref lSachwalter);
+            cELGADB.LoadBenutzer(ref Benutzer);
+            cELGADB.LoadEmfaenger(ref Empfaenger);
+            cELGADB.LoadHausarzt(ref Hausarzt);
+            cELGADB.LoadKontaktpersonen(ref Kontaktpersonen);
+
+            ////Headerdaten in CDA-Dokument schreiben
+            //InitCDA();
+            //InitKlient();
+            //InitAuthor();
+            //InitVerwahrer();
+            //InitEmpfaenger();
+            //InitRechtlicherUnterzeichner();
+            //InitAnsprechperson();
+            //InitHausarzt();
+            //InitKontaktpersonen();
+
+            //Klassen für fachliche Sektionen aus DB befüllen
             InitRTFTags();
             InitSektionen();
             LoadPDx();
@@ -244,6 +301,613 @@ namespace PMDS.GUI.Print
             LoadPatientenverfügung();
             LoadPflegeUndBetreuungsumfang();
             LoadBeilagen();
+        }
+
+        private void InitCDA()
+        {
+            try
+            {
+                ccda = new ClinicalDocument();
+                cdaInfo Info = new cdaInfo();
+                ccda.RealmCode = Info.ccdaRealmCode;
+                ccda.TypeId = Info.ccdaTypeId;
+                ccda.TemplateId = Info.cdatemplateIDs;
+                ccda.Id = Info.cdaID;
+                ccda.SetId = Info.cdaSetID;
+                ccda.VersionNumber = Info.cdaVersion;
+                ccda.EffectiveTime = Info.cdaEffectiveTime;
+                ccda.ConfidentialityCode = Info.ccdaConfidentialityCode;
+                ccda.ConfidentialityCode.DisplayName = Info.ccdaConfidentialityCodeDisplayName;
+                ccda.LanguageCode = Info.ccdaLanguageCode;
+                ccda.SetId.AssigningAuthorityName = Klinik.Bezeichnung;      // Klinik.ELGA_OrganizationName?;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitCDA: " + ex.ToString());
+            }
+        }
+
+        private void InitKlient()
+        {
+            try
+            {
+                PatientRole patientRole = new PatientRole();
+
+                patientRole.Id = new SET<II> { new II { Root = Klient.ID.ToString(), AssigningAuthorityName = Klinik.Bezeichnung } };
+
+                if (String.IsNullOrWhiteSpace(Klient.VersicherungsNr) && Klient.SozVersLeerGrund.Equals("Klient hat keine Sozialversicherungsnummer", StringComparison.OrdinalIgnoreCase))
+                {
+                    patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.NoInformation), AssigningAuthorityName = "Österreichische Sozialversicherung" });
+                }
+                else if (String.IsNullOrWhiteSpace(Klient.VersicherungsNr) && Klient.SozVersLeerGrund.Equals("Sozialversicherungsnummer unbekannt", StringComparison.OrdinalIgnoreCase))
+                {
+                    patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.Unknown), AssigningAuthorityName = "Österreichische Sozialversicherung" });
+                }
+                else if (!String.IsNullOrWhiteSpace(Klient.VersicherungsNr))
+                {
+                    patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", Extension = Klient.VersicherungsNr, AssigningAuthorityName = "Österreichische Sozialversicherung" });
+                }
+                else
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Fehler bei der Sozialversicherungsnummer. Dokument kann nicht erstellt werden!", MessageBoxButtons.OK, "Wichtiger Hinweis!");
+                    return;
+                }
+                patientRole.Id.Add(new II { Root = "1.2.40.0.10.2.1.1.149", Extension = Klient.bPK, AssigningAuthorityName = "Österreichische Stammzahlenregisterbehörde" });
+
+
+                if (Klient.WohnungAbgemeldetJN)
+                    patientRole.Addr = NewAdress(PostalAddressUse.PrimaryHome, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                else
+                    patientRole.Addr = NewAdress(PostalAddressUse.PrimaryHome, Klient.Adresse.PLZ, Klient.Adresse.Ort, Klient.Adresse.Strasse, null, Klient.Adresse.Land);
+
+                if (!String.IsNullOrWhiteSpace(Klient.Kontakt.Telefon))
+                {
+                    if (patientRole.Telecom == null)
+                        patientRole.Telecom = new SET<TEL>();
+                    patientRole.Telecom.Add(new TEL(Klient.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klient.Kontakt.TelefonMobil))
+                {
+                    if (patientRole.Telecom == null)
+                        patientRole.Telecom = new SET<TEL>();
+                    patientRole.Telecom.Add(new TEL(Klient.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klient.Kontakt.eMail))
+                {
+                    if (patientRole.Telecom == null)
+                        patientRole.Telecom = new SET<TEL>();
+                    patientRole.Telecom.Add(new TEL(Klient.Kontakt.eMail));
+                }
+
+                MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV.Patient patient = new MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV.Patient();
+
+                patient.Name = MakeNameNode(Klient.Titel, Klient.Vorname, Klient.Nachname, Klient.LedigerName, Klient.TitelPost);
+
+                ccode SEX = SearchELGACode(Klient.Sexus, "SEX");
+                if (SEX != null)
+                    patient.AdministrativeGenderCode = new CE<string> { Code = SEX.code, CodeSystem = SEX.codeSystem, CodeSystemName = "HL7:AdministrativeGender", DisplayName = SEX.displayName };
+                else
+                {
+                    patient.AdministrativeGenderCode.NullFlavor = new MARC.Everest.DataTypes.NullFlavor();
+                    patient.AdministrativeGenderCode.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                }
+
+                patient.BirthTime = new TS(Klient.Geburtsdatum);
+
+                ccode FAM = SearchELGACode(Klient.Familienstand, "FAM");
+                if (FAM != null)
+                    patient.MaritalStatusCode = new CE<string> { Code = FAM.code, CodeSystem = FAM.codeSystem, CodeSystemName = "HL7:MaritalStatus", DisplayName = FAM.displayName };
+                else
+                {
+                    patient.MaritalStatusCode.NullFlavor = new MARC.Everest.DataTypes.NullFlavor();
+                    patient.MaritalStatusCode.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                }
+
+                ccode KON = SearchELGACode(Klient.Konfession, "KON" );
+                if (KON != null)
+                    patient.ReligiousAffiliationCode = new CE<string> { Code = KON.code, CodeSystem = KON.codeSystem, CodeSystemName = "HL7.AT:ReligionAustria", DisplayName = KON.displayName };
+                else
+                {
+                    patient.ReligiousAffiliationCode.NullFlavor = new MARC.Everest.DataTypes.NullFlavor();
+                    patient.ReligiousAffiliationCode.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                }
+
+                List<LanguageCommunication> lLang = new List<LanguageCommunication>();
+                foreach (string sprache in Klient.lstSprachen.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    ccode SPA = SearchELGACode(sprache, "SPA");
+                    if (SPA != null)
+                            patient.LanguageCommunication.Add(new LanguageCommunication(new CS<String>(SPA.code), null, null, null));
+                }
+
+                //---Sachwalter (es gibt nur Personen)
+                foreach (cELGADB.Person pSachwalter in lSachwalter)
+                {
+                    Person sw = new Person();
+                    sw.Name = MakeNameNode(pSachwalter.Titel, pSachwalter.Vorname, pSachwalter.Nachname, pSachwalter.LedigerName, pSachwalter.TitelPost);
+
+                    Guardian Sachwalter = new Guardian();
+                    Sachwalter.GuardianChoice = GuardianChoice.CreatePerson(sw.Name);
+                    Sachwalter.Addr = NewAdress(PostalAddressUse.WorkPlace, pSachwalter.Adresse.PLZ, pSachwalter.Adresse.Ort, pSachwalter.Adresse.Strasse, null, pSachwalter.Adresse.Land);
+
+                    if (!String.IsNullOrWhiteSpace(pSachwalter.Kontakt.Telefon))
+                    {
+                        if (Sachwalter.Telecom == null)
+                            Sachwalter.Telecom = new SET<TEL>();
+                        Sachwalter.Telecom.Add(new TEL(pSachwalter.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(pSachwalter.Kontakt.TelefonMobil))
+                    {
+                        if (Sachwalter.Telecom == null)
+                            Sachwalter.Telecom = new SET<TEL>();
+                        Sachwalter.Telecom.Add(new TEL(pSachwalter.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(pSachwalter.Kontakt.eMail))
+                    {
+                        if (Sachwalter.Telecom == null)
+                            Sachwalter.Telecom = new SET<TEL>();
+                        Sachwalter.Telecom.Add(new TEL(pSachwalter.Kontakt.eMail));
+                    }
+                    patient.Guardian.Add(Sachwalter);
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klient.Geburtsort))
+                {                    
+                    MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV.Birthplace GebOrt = new MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV.Birthplace();
+                    GebOrt.Place = new MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV.Place();
+                    GebOrt.Place.Addr = new AD(new ADXP[] { new ADXP(Klient.Geburtsort, AddressPartType.City) } );                   
+                    patient.Birthplace = GebOrt;
+                }
+
+                patientRole.Patient = patient;
+
+                RecordTarget recordTarget = new RecordTarget();
+                recordTarget.ContextControlCode = ContextControl.OverridingPropagating;
+                recordTarget.PatientRole = patientRole;
+                ccda.RecordTarget.Add(recordTarget);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitKlient: " + ex.ToString());
+            }
+        }
+
+        private void InitAuthor()
+        {
+            try
+            {
+                Author author = new Author();
+                author.AssignedAuthor = new AssignedAuthor(new SET<II> { new II(Benutzer.ID) });
+                author.AssignedAuthor.Id[0].AssigningAuthorityName = Klinik.Bezeichnung;
+                author.AssignedAuthor.Addr = NewAdress(PostalAddressUse.PostalAddress, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);              
+                Person Verfasser = new Person();
+                Verfasser.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
+                author.AssignedAuthor.SetAssignedAuthorChoice(Verfasser);
+
+                Organization AuthorOrg = new Organization();
+                AuthorOrg.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
+
+                ON on = new ON();
+                on.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
+                AuthorOrg.Name = new SET<ON> {(on)};
+                AuthorOrg.Addr = NewAdress(PostalAddressUse.WorkPlace, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
+                {
+                    if (AuthorOrg.Telecom == null)
+                        AuthorOrg.Telecom = new SET<TEL>();
+                    AuthorOrg.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
+                {
+                    if (AuthorOrg.Telecom == null)
+                        AuthorOrg.Telecom = new SET<TEL>();
+                    AuthorOrg.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
+                {
+                    if (AuthorOrg.Telecom == null)
+                        AuthorOrg.Telecom = new SET<TEL>();
+                    AuthorOrg.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
+                }
+                author.AssignedAuthor.RepresentedOrganization = AuthorOrg;
+                author.ContextControlCode = null;
+
+                ccda.Author.Add(author);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitAuthor: " + ex.ToString());
+            }
+        }
+
+        private void InitVerwahrer()
+        {
+            try
+            {
+                CustodianOrganization VerwahrerOrg = new CustodianOrganization();
+                SET<II> II = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
+
+                ON Name = new ON();
+                Name.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
+
+                AD Adresse = new AD();
+                Adresse = NewAdress(PostalAddressUse.WorkPlace, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land).First();
+
+                TEL Telefon = new TEL();
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
+                {
+                    Telefon = new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home);
+                }
+
+                Custodian Verwahrer = new Custodian(new AssignedCustodian());
+                Verwahrer.AssignedCustodian.RepresentedCustodianOrganization = new CustodianOrganization(II, Name, Telefon, Adresse);
+                ccda.Custodian = Verwahrer;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitAuthor: " + ex.ToString());
+            }
+        }
+
+        private void InitEmpfaenger()
+        {
+            try
+            {
+                InformationRecipient Empfaenger = new InformationRecipient(new CS<x_InformationRecipient>(x_InformationRecipient.PRCP));
+
+                IntendedRecipient GeplEmpfänger = new IntendedRecipient();
+                SET<II> iis = new SET<II>();
+                II i = new II();
+
+                if (this.Empfaenger.Bezeichnung.Equals("Hausarzt", StringComparison.OrdinalIgnoreCase))
+                {
+                    i.NullFlavor = NullFlavor.Unknown;
+                    GeplEmpfänger.Id.Add(i);
+                    GeplEmpfänger.InformationRecipient = new Person();
+                    GeplEmpfänger.InformationRecipient.Name = new SET<PN> { new PN("Hausarzt") };
+                    Empfaenger.IntendedRecipient = GeplEmpfänger;
+                }
+                else if (this.Empfaenger.Bezeichnung.Equals("Klient", StringComparison.OrdinalIgnoreCase))
+                {
+                    i.NullFlavor = NullFlavor.NoInformation;
+                    GeplEmpfänger.Id.Add(i);
+                    GeplEmpfänger.InformationRecipient = new Person();
+                    GeplEmpfänger.InformationRecipient.Name = new SET<PN> { new PN("An den Klienten " + (Klient.Titel + Klient.Vorname + " " + Klient.Nachname + " " + Klient.TitelPost).Trim()) };
+                    Empfaenger.IntendedRecipient = GeplEmpfänger;
+                }
+                else
+                {
+                    i.NullFlavor = NullFlavor.Unknown;
+                    GeplEmpfänger.Id = new SET<II> { i};
+                    GeplEmpfänger.InformationRecipient = new Person();
+                    GeplEmpfänger.InformationRecipient.Name = new SET<PN> { new PN("An die Einrichtung") };
+                    Empfaenger.IntendedRecipient = GeplEmpfänger;
+
+                    ON on = new ON();
+                    on.Part.Add(new ENXP(this.Empfaenger.Bezeichnung));
+                    GeplEmpfänger.ReceivedOrganization = new Organization();
+                    GeplEmpfänger.ReceivedOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Empfaenger.ELGA_OID } };
+                    GeplEmpfänger.ReceivedOrganization.Name = new SET<ON> { (on) };
+                    GeplEmpfänger.ReceivedOrganization.Addr = NewAdress(PostalAddressUse.WorkPlace, this.Empfaenger.Adresse.PLZ, this.Empfaenger.Adresse.Ort, this.Empfaenger.Adresse.Strasse, null, this.Empfaenger.Adresse.Land);
+
+                    if (!String.IsNullOrWhiteSpace(this.Empfaenger.Kontakt.Telefon))
+                    {
+                        if (GeplEmpfänger.ReceivedOrganization.Telecom == null)
+                            GeplEmpfänger.ReceivedOrganization.Telecom = new SET<TEL>();
+                        GeplEmpfänger.ReceivedOrganization.Telecom.Add(new TEL(this.Empfaenger.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(this.Empfaenger.Kontakt.TelefonMobil))
+                    {
+                        if (GeplEmpfänger.ReceivedOrganization.Telecom == null)
+                            GeplEmpfänger.ReceivedOrganization.Telecom = new SET<TEL>();
+                        GeplEmpfänger.ReceivedOrganization.Telecom.Add(new TEL(this.Empfaenger.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(this.Empfaenger.Kontakt.eMail))
+                    {
+                        if (GeplEmpfänger.ReceivedOrganization.Telecom == null)
+                            GeplEmpfänger.ReceivedOrganization.Telecom = new SET<TEL>();
+                        GeplEmpfänger.ReceivedOrganization.Telecom.Add(new TEL(this.Empfaenger.Kontakt.eMail));
+                    }
+                }
+
+                ccda.InformationRecipient = new List<InformationRecipient>();
+                ccda.InformationRecipient.Add(Empfaenger);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitEmpfaenger: " + ex.ToString());
+            }
+        }
+
+        private void InitRechtlicherUnterzeichner()
+        {
+            try
+            {
+                LegalAuthenticator Unterzeichner = new LegalAuthenticator();
+                Unterzeichner.Time = new TS(DateTime.Now);
+                Unterzeichner.SignatureCode = new CS<string>("S");
+
+                AssignedEntity assignedEntity = new AssignedEntity(null, null, null, null, null, null);
+                assignedEntity.Id = new SET<II>{ { new II(Benutzer.ID) } };
+                assignedEntity.Id[0].AssigningAuthorityName = Klinik.Bezeichnung;
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
+                {
+                    if (assignedEntity.Telecom == null)
+                        assignedEntity.Telecom = new SET<TEL>();
+                    assignedEntity.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
+                {
+                    if (assignedEntity.Telecom == null)
+                        assignedEntity.Telecom = new SET<TEL>();
+                    assignedEntity.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
+                {
+                    if (assignedEntity.Telecom == null)
+                        assignedEntity.Telecom = new SET<TEL>();
+                    assignedEntity.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
+                }
+
+                assignedEntity.AssignedPerson = new Person();
+                assignedEntity.AssignedPerson.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
+
+                assignedEntity.RepresentedOrganization = new Organization();
+                assignedEntity.RepresentedOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
+
+                ON on = new ON();
+                on.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
+                assignedEntity.RepresentedOrganization.Name = new SET<ON> { (on) };
+                assignedEntity.RepresentedOrganization.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
+                {
+                    if (assignedEntity.RepresentedOrganization.Telecom == null)
+                        assignedEntity.RepresentedOrganization.Telecom = new SET<TEL>();
+                    assignedEntity.RepresentedOrganization.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
+                {
+                    if (assignedEntity.RepresentedOrganization.Telecom == null)
+                        assignedEntity.RepresentedOrganization.Telecom = new SET<TEL>();
+                    assignedEntity.RepresentedOrganization.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
+                {
+                    if (assignedEntity.RepresentedOrganization.Telecom == null)
+                        assignedEntity.RepresentedOrganization.Telecom = new SET<TEL>();
+                    assignedEntity.RepresentedOrganization.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
+                }
+
+                Unterzeichner.AssignedEntity = assignedEntity;
+                ccda.LegalAuthenticator = Unterzeichner;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitRechtlicherUnterzeichner: " + ex.ToString());
+            }
+        }
+
+        private void InitAnsprechperson()
+        {
+            try
+            {
+                Participant1 Ansprechperson = new Participant1(new CS<ParticipationType>(ParticipationType.CallbackContact), null);
+                Ansprechperson.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.1" } };
+                Ansprechperson.AssociatedEntity = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));
+                Ansprechperson.AssociatedEntity.Telecom = new SET<TEL> { new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.WorkPlace)};
+                Ansprechperson.AssociatedEntity.AssociatedPerson = new Person();
+                Ansprechperson.AssociatedEntity.AssociatedPerson.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
+
+                Ansprechperson.AssociatedEntity.ScopingOrganization = new Organization();
+                Ansprechperson.AssociatedEntity.ScopingOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
+
+                ON on = new ON();
+                on.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
+                Ansprechperson.AssociatedEntity.ScopingOrganization.Name = new SET<ON> { (on) };
+                Ansprechperson.AssociatedEntity.ScopingOrganization.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
+                {
+                    if (Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom == null)
+                        Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
+                    Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
+                {
+                    if (Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom == null)
+                        Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
+                    Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
+                {
+                    if (Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom == null)
+                        Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
+                    Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
+                }
+                ccda.Participant.Add(Ansprechperson);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitAnsprechperson: " + ex.ToString());
+            }
+        }
+
+        private void InitHausarzt()
+        {
+            try
+            {
+                if (this.Hausarzt.Rolle == cELGADB.eOrganistionRolle.Arzt)
+                {
+                    Participant1 Hausarzt = new Participant1(new CS<ParticipationType>(ParticipationType.IND), null);
+                    Hausarzt.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.3" } };
+                    Hausarzt.FunctionCode = new CE<string>("PCP", "2.16.840.1.113883.5.88", "HL7:ParticipationFunction", null, "primary care physician", null);
+
+                    Hausarzt.AssociatedEntity = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));
+
+                    if (String.IsNullOrWhiteSpace(this.Hausarzt.Arztdaten.ELGA_OID))
+                        Hausarzt.AssociatedEntity.Id.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                    else
+                    {
+                        Hausarzt.AssociatedEntity.Id = new SET<II> { new II { Root = this.Hausarzt.Arztdaten.ELGA_OID } };
+                    }
+
+                    Hausarzt.AssociatedEntity.AssociatedPerson = new Person();
+                    Hausarzt.AssociatedEntity.AssociatedPerson.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, null, null);
+
+                    Hausarzt.AssociatedEntity.ScopingOrganization = new Organization();
+                    if (String.IsNullOrWhiteSpace(this.Hausarzt.Arztdaten.ELGA_OrganizationOID))
+                        Hausarzt.AssociatedEntity.ScopingOrganization.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                    else
+                        Hausarzt.AssociatedEntity.ScopingOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Hausarzt.Arztdaten.ELGA_OrganizationOID } };
+
+                    ON on = new ON();
+                    on.Part.Add(new ENXP((this.Hausarzt.Arztdaten.Titel + " " + this.Hausarzt.Arztdaten.Vorname + this.Hausarzt.Arztdaten.Nachname).Trim()));
+                    Hausarzt.AssociatedEntity.ScopingOrganization.Name = new SET<ON> { (on) };
+                    Hausarzt.AssociatedEntity.ScopingOrganization.Addr = NewAdress(PostalAddressUse.Public, this.Hausarzt.Adresse.PLZ, this.Hausarzt.Adresse.Ort, this.Hausarzt.Adresse.Strasse, null, this.Hausarzt.Adresse.Land);
+
+                    if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
+                    {
+                        if (Hausarzt.AssociatedEntity.ScopingOrganization.Telecom == null)
+                            Hausarzt.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
+                        Hausarzt.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
+                    {
+                        if (Hausarzt.AssociatedEntity.ScopingOrganization.Telecom == null)
+                            Hausarzt.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
+                        Hausarzt.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
+                    {
+                        if (Hausarzt.AssociatedEntity.ScopingOrganization.Telecom == null)
+                            Hausarzt.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
+                        Hausarzt.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
+                    }
+                    ccda.Participant.Add(Hausarzt);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitHausarzt: " + ex.ToString());
+            }
+        }
+
+        private void InitKontaktpersonen()
+        {
+            try
+            {
+                foreach (cELGADB.Person Kontaktperson in Kontaktpersonen)
+                {
+
+                    if (SearchELGACode(Kontaktperson.Kontaktdaten.Verwandtschaft, "VWV") != null)
+                    {
+                        Participant1 Kontakt = new Participant1(new CS<ParticipationType>(ParticipationType.IND), null);
+                        if (Kontaktperson.Kontaktdaten.VerstaendigenJN)
+                        {
+                            Kontakt.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.4" } };
+                            Kontakt.AssociatedEntity = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.EmergencyContact));
+                        }
+                        else
+                        {
+                            Kontakt.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.5" } };
+                            Kontakt.AssociatedEntity = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.PersonalRelationship));
+                        }
+
+                        Kontakt.FunctionCode = new CE<string>(SearchELGACode(Kontaktperson.Kontaktdaten.Verwandtschaft, "VWV").code, "2.16.840.1.113883.5.111", "HL7:RoleCode", null, SearchELGACode(Kontaktperson.Kontaktdaten.Verwandtschaft, "VWV").displayName, null);
+
+
+                        Kontakt.AssociatedEntity.AssociatedPerson = new Person();
+                        Kontakt.AssociatedEntity.AssociatedPerson.Name = MakeNameNode(Kontaktperson.Titel, Kontaktperson.Vorname, Kontaktperson.Nachname, null, null);
+                        ccda.Participant.Add(Kontakt);
+                    }
+                    else
+                        MessageBox.Show("Verwandtschaftsverhältnis '" + Kontaktperson.Kontaktdaten.Verwandtschaft + "' für " + Kontaktperson.Vorname + " " + Kontaktperson.Nachname + " ist ungültig (entspricht keinem ELGA-konformen Eintrag). Der Kontakt wird nicht im Pflegesituationsbericht übermittelt!");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitKontaktpersonen: " + ex.ToString());
+            }
+        }
+
+        private SET<PN> MakeNameNode(string Titel, string Vorname, string Nachname, string LedigerName, string TitelPost)
+        {
+            try
+            {
+                int iNamensteile = -1;
+                int iPrefix = -1;
+                int iLedigerName = -1;
+                int iPostfix = -1;
+
+                List<ENXP> Namensteile = new List<ENXP>();
+                if (!String.IsNullOrWhiteSpace(Titel))
+                {
+                    iNamensteile++;
+                    Namensteile.Add(new ENXP(Titel));
+                    iPrefix = iNamensteile;
+                }
+
+                Namensteile.Add(new ENXP(Vorname, EntityNamePartType.Given));
+                iNamensteile++;
+
+                Namensteile.Add(new ENXP(Nachname, EntityNamePartType.Family));
+                iNamensteile++;
+
+                if (!String.IsNullOrWhiteSpace(LedigerName))
+                {
+                    iNamensteile++;
+                    Namensteile.Add(new ENXP(LedigerName, EntityNamePartType.Family));
+                    iLedigerName = iNamensteile;
+                }
+
+                if (!String.IsNullOrWhiteSpace(TitelPost))
+                {
+                    iNamensteile++;
+                    Namensteile.Add(new ENXP(TitelPost));
+                    iPostfix = iNamensteile;
+                }
+
+                SET<PN> Name = new SET<PN>(new PN(Namensteile));
+
+                if (iPrefix > -1)
+                {
+                    Name[0].Part[iPrefix].Qualifier = new SET<CS<EntityNamePartQualifier>>() { EntityNamePartQualifier.Academic, EntityNamePartQualifier.Prefix };
+                }
+
+                if (iLedigerName > -1)
+                    Name[0].Part[iLedigerName].Qualifier = new SET<CS<EntityNamePartQualifier>>() { EntityNamePartQualifier.Birth };
+
+                if (iPostfix > -1)
+                    Name[0].Part[iPostfix].Qualifier = new SET<CS<EntityNamePartQualifier>>() { EntityNamePartQualifier.Academic, EntityNamePartQualifier.Suffix };
+
+                return Name;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.MakeNameNode: " + ex.ToString());
+            }
         }
 
         private void InitRTFTags()
@@ -1469,7 +2133,7 @@ namespace PMDS.GUI.Print
         }
 
         //------------------------------------ Vorbereitete Struktur in CDA-component übertragen -----------------------------------------
-        public Component2 CreateCDAFachlicheSektionen()
+        private void CreateCDAFachlicheSektionen()
         {
             try
             {
@@ -1485,7 +2149,9 @@ namespace PMDS.GUI.Print
                 }
 
                 compSektionen.SetBodyChoice(structBody);
-                return compSektionen;
+                ccda.Component = new Component2();
+                ccda.Component = compSektionen;
+                ccda.Component.ContextConductionInd = null;
             }
             catch (Exception ex)
             {
@@ -1493,25 +2159,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void OutputCDA(Component2 compSektionen, ref ClinicalDocument ccda)
-        {
-            try
-            {
-                //ccda = new ClinicalDocument();
-                ccda.RealmCode = new SET<CS<BindingRealm>>(new CS<BindingRealm>(BindingRealm.Austria));
-                ccda.LanguageCode = new CS<string>("de-AT");
-                ccda.Component = new Component2();
-                ccda.Component = compSektionen;
-                ccda.Component.ContextConductionInd = null;
-                PrintCDA(ref ccda);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ucELGAPrintPflegesituationsbericht.OutputCDA: " + ex.ToString());
-            }
-        }
-
-        static void PrintCDA(ref ClinicalDocument ccda)
+        public static void PrintCDA()
         {
             Stream s = null;
             try
@@ -2035,11 +2683,21 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void btnGenerate_Click(object sender, EventArgs e)
+        public void btnGenerate_Click(object sender, EventArgs e)
         {
-            Component2 comp = CreateCDAFachlicheSektionen();
-            ClinicalDocument ccda = new ClinicalDocument();
-            OutputCDA(comp, ref ccda);
+            //Headerdaten in CDA-Dokument schreiben
+            InitCDA();
+            InitKlient();
+            InitAuthor();
+            InitVerwahrer();
+            InitEmpfaenger();
+            InitRechtlicherUnterzeichner();
+            InitAnsprechperson();
+            InitHausarzt();
+            InitKontaktpersonen();
+
+            CreateCDAFachlicheSektionen();
+            PrintCDA();
         }
 
         private void btnAddBeilageFrei_Click(object sender, EventArgs e)
@@ -2059,7 +2717,7 @@ namespace PMDS.GUI.Print
                 foreach (String file in fileDialog.FileNames)
                 {
                     iCountBeilagen++;
-                    UltraListViewItem it = new UltraListViewItem(Path.GetFileNameWithoutExtension(file), new object[] { Path.GetDirectoryName(file), Path.GetFileName(file), Guid.NewGuid().ToString(), Path.GetFileName(file), "" });
+                    UltraListViewItem it = new UltraListViewItem(Path.GetFileNameWithoutExtension(file), new object[] { Path.GetDirectoryName(file), Path.GetFileName(file), Guid.NewGuid().ToString().ToUpper(), Path.GetFileName(file), "" });
                     it.Key = iCountBeilagen.ToString();
                     it.Tag = Path.GetFileNameWithoutExtension(file);
                     it.CheckState = CheckState.Unchecked;
@@ -2068,5 +2726,74 @@ namespace PMDS.GUI.Print
                 }
             }
         }
+
+        private SET<AD> NewAdress(PostalAddressUse Adressart, string ZIP, string City, string Street, string State, string Country)
+        {
+            try
+            {
+                SET<AD> Addr = new SET<AD>(
+                        new AD(Adressart,
+                            new ADXP[]{
+                            new ADXP(Street, AddressPartType.StreetAddressLine),
+                            new ADXP(City, AddressPartType.City),
+                            new ADXP(ZIP, AddressPartType.PostalCode),
+                            new ADXP(Country, AddressPartType.Country)}));
+                return Addr;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServicePMDS.CDABAL.CDA.NewAdress: " + ex.ToString());
+            }
+        }
+
+        private void ReadAllELGACodes()
+        {
+            try
+            {
+                ccode code = new ccode();
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var codes = (from al in db.AuswahlListe
+                                 join alg in db.AuswahlListeGruppe on al.IDAuswahlListeGruppe equals alg.ID
+                                 where alg.ElgaJN == true
+                                 select new
+                                 {
+                                     al.ID,
+                                     al.ELGA_Code,
+                                     al.ELGA_CodeSystem,
+                                     al.ELGA_DisplayName,
+                                     al.ELGA_ID,
+                                     al.ELGA_Version,
+                                     IDAuswahllisteGruppe = alg.ID,
+                                     al.Bezeichnung
+                                 }
+                                ).ToList();
+
+                    foreach (var c in codes)
+                    {
+                        ELGACodes.Add(new ccode { code = c.ELGA_Code, codeSystem = c.ELGA_CodeSystem, displayName = c.ELGA_DisplayName, IDAuswahllisteGruppe = c.IDAuswahllisteGruppe, Bezeichnung = c.Bezeichnung });
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            { 
+                throw new Exception("WCFServicePMDS.CDABAL.CDA.ReadAllELGACodes: " + ex.ToString());
+            }
+        }
+
+        private ccode SearchELGACode(string sBezeichnung, string sAuswahllisteGruppe)
+        {
+            try
+            {
+                return ELGACodes.Where(x => x.Bezeichnung == sBezeichnung && x.IDAuswahllisteGruppe == sAuswahllisteGruppe).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServicePMDS.CDABAL.CDA.SearchELGACode: " + ex.ToString());
+            }
+        }
+
     }
 }

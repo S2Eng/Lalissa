@@ -157,6 +157,7 @@
             this.cbETo.NotKrankenkasse = true;
             this.cbETo.Size = new System.Drawing.Size(736, 21);
             this.cbETo.TabIndex = 1;
+            this.cbETo.ValueChanged += new System.EventHandler(this.cbETo_ValueChanged);
             // 
             // frmELGAPrintPflegesituationsbericht
             // 
