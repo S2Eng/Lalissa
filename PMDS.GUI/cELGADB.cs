@@ -1,5 +1,7 @@
-﻿using MARC.Everest.RMIM.UV.NE2010.COCT_MT840000UV09;
+﻿using Infragistics.Win.UltraWinSchedule.CalendarCombo;
+using MARC.Everest.RMIM.UV.NE2010.COCT_MT840000UV09;
 using PMDS.BusinessLogic;
+using PMDS.DB;
 using PMDS.Global;
 using qs2.core.vb.QS2Service1;
 using System;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PMDS.GUI.Print
 {
-    public  class cELGADB
+    public static class cELGADB
     {
 
         public enum eOrganistionRolle
@@ -19,6 +21,7 @@ namespace PMDS.GUI.Print
             Empfänger = 1,
             Hausarzt = 2,
             Arzt = 3,
+            Krankenkasse = 4,
             Null = 99
         }
 
@@ -59,6 +62,22 @@ namespace PMDS.GUI.Print
             public string ELGA_OrganizationOID;
         }
 
+        public class Versicherungsdaten
+        {
+            public string VersicherungsNr;
+            public string KrankenKasse;
+            public string SozVersStatus;
+            public string SozVersMitversichertBei;
+            public string SozVersLeerGrund;
+        }
+
+        public class Leitungsdaten
+        {
+            public string Titel;
+            public string Vorname;
+            public string Nachname;
+        }
+
         public class Organistion
         {
             public eOrganistionRolle Rolle;
@@ -71,6 +90,7 @@ namespace PMDS.GUI.Print
             public Adresse Adresse = new Adresse();
             public Kontakt Kontakt = new Kontakt();
             public Arztdaten Arztdaten = new Arztdaten();
+            public Leitungsdaten Leitungsdaten = new Leitungsdaten();
         }
 
         public class Kontaktdaten
@@ -84,11 +104,6 @@ namespace PMDS.GUI.Print
         {
             public ePersonRolle Rolle;
             public Guid ID;
-            public string VersicherungsNr;
-            public string KrankenKasse;
-            public string SozVersStatus;
-            public string SozVersMitversichertBei;
-            public string SozVersLeerGrund;
             public bool WohnungAbgemeldetJN;
             public bool ELGAAbgemeldet;
             public string ELGALocalID;
@@ -108,6 +123,7 @@ namespace PMDS.GUI.Print
             public Adresse Adresse = new Adresse();
             public Kontakt Kontakt = new Kontakt();
             public Kontaktdaten Kontaktdaten = new Kontaktdaten();
+            public Versicherungsdaten Versicherungsdaten = new Versicherungsdaten();
         }
 
         public class Aufenthalt
@@ -144,6 +160,9 @@ namespace PMDS.GUI.Print
                                        kon.Tel,
                                        kon.Mobil,
                                        kon.Email,
+                                       kli.EinrichtungsleiterTitel,
+                                       kli.EinrichtungsleiterVorname,
+                                       kli.Einrichtungsleiter,
                                    }
                                    ).First();
 
@@ -161,6 +180,9 @@ namespace PMDS.GUI.Print
                     Klinik.Kontakt.Telefon = rKlinik.Tel;
                     Klinik.Kontakt.TelefonMobil = rKlinik.Mobil;
                     Klinik.Kontakt.eMail = rKlinik.Email;
+                    Klinik.Leitungsdaten.Titel = rKlinik.EinrichtungsleiterTitel;
+                    Klinik.Leitungsdaten.Vorname = rKlinik.EinrichtungsleiterVorname;
+                    Klinik.Leitungsdaten.Nachname = rKlinik.Einrichtungsleiter;
                 }
             }
             catch (Exception ex)
@@ -217,11 +239,6 @@ namespace PMDS.GUI.Print
                     Guid IDKlient = (Guid)rKlient.IDKlient;
                     Klient.Rolle = ePersonRolle.Klient;
                     Klient.ID = IDKlient;
-                    Klient.VersicherungsNr = rKlient.VersicherungsNr;
-                    Klient.KrankenKasse = rKlient.KrankenKasse;
-                    Klient.SozVersStatus = rKlient.SozVersStatus;
-                    Klient.SozVersMitversichertBei = rKlient.SozVersMitversichertBei;
-                    Klient.SozVersLeerGrund = rKlient.SozVersLeerGrund;
                     Klient.Adresse.Strasse = rKlient.Strasse;
                     Klient.Adresse.PLZ = rKlient.Plz;
                     Klient.Adresse.Ort = rKlient.Ort;
@@ -245,6 +262,11 @@ namespace PMDS.GUI.Print
                     Klient.lstSprachen = rKlient.lstSprachen;
                     Klient.bPK = rKlient.bPK;
                     Klient.Familienstand = rKlient.Familienstand;
+                    Klient.Versicherungsdaten.VersicherungsNr = rKlient.VersicherungsNr;
+                    Klient.Versicherungsdaten.KrankenKasse = rKlient.KrankenKasse;
+                    Klient.Versicherungsdaten.SozVersStatus = rKlient.SozVersStatus;
+                    Klient.Versicherungsdaten.SozVersMitversichertBei = rKlient.SozVersMitversichertBei;
+                    Klient.Versicherungsdaten.SozVersLeerGrund = rKlient.SozVersLeerGrund;
                 }
             }
             catch (Exception ex)
@@ -405,6 +427,56 @@ namespace PMDS.GUI.Print
                     Empfaenger.Kontakt.Telefon = rEmpfaenger.Tel;
                     Empfaenger.Kontakt.TelefonMobil = rEmpfaenger.Mobil;
                     Empfaenger.Kontakt.eMail = rEmpfaenger.Email;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitKlinik: " + ex.ToString());
+            }
+        }
+
+        public static void LoadKrankenkasse(ref Organistion Krankenkasse)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var rKrankenkasse = (from krk in db.Einrichtung
+                                       join adr in db.Adresse on krk.IDAdresse equals adr.ID
+                                       join kon in db.Kontakt on krk.IDKontakt equals kon.ID
+                                       join pat in db.Patient on krk.Text equals pat.KrankenKasse
+                                       join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
+                                       where auf.ID == ENV.IDAUFENTHALT
+                                       select new
+                                       {
+                                           IDEmpfaenger = krk.ID,
+                                           Bezeichnung = krk.Text,
+                                           adr.Strasse,
+                                           adr.Plz,
+                                           adr.Ort,
+                                           adr.LandKZ,
+                                           kon.Tel,
+                                           kon.Mobil,
+                                           kon.Email,
+                                       }
+                                   ).FirstOrDefault();
+                    if (rKrankenkasse != null)
+                    {
+                        Krankenkasse.Rolle = eOrganistionRolle.Krankenkasse;
+                        Krankenkasse.ID = (Guid)rKrankenkasse.IDEmpfaenger;
+                        Krankenkasse.Bezeichnung = rKrankenkasse.Bezeichnung;
+                        Krankenkasse.Adresse.Strasse = rKrankenkasse.Strasse;
+                        Krankenkasse.Adresse.PLZ = rKrankenkasse.Plz;
+                        Krankenkasse.Adresse.Ort = rKrankenkasse.Ort;
+                        Krankenkasse.Adresse.Land = rKrankenkasse.LandKZ;
+                        Krankenkasse.Kontakt.Telefon = rKrankenkasse.Tel;
+                        Krankenkasse.Kontakt.TelefonMobil = rKrankenkasse.Mobil;
+                        Krankenkasse.Kontakt.eMail = rKrankenkasse.Email;
+                    }
+                    else
+                    {
+                        Krankenkasse.Rolle = eOrganistionRolle.Null;
+                    }
                 }
             }
             catch (Exception ex)

@@ -139,7 +139,7 @@ namespace PMDS.GUI.Print
             Application.DoEvents();
             Infragistics.Win.ValueListItem sel = this.cbETo.SelectedItem;
             if (sel != null)
-                ucELGAPrintPflegesituationsbericht1.Init((Guid)sel.DataValue);
+                ucELGAPrintPflegesituationsbericht1.Init((Guid)sel.DataValue, @"C:\Temp\Pflegesituationsbericht.xml");
         }
     }
 }

@@ -973,6 +973,7 @@
       <DependentUpon>ucMainCalc.cs</DependentUpon>
     </Compile>
     <Compile Include="Calc\UltraGridTools.cs" />
+    <Compile Include="cELGADB.cs" />
     <Compile Include="Datenerhebung\AnamneseOREM\dsAnamneseOrem.cs">
       <DependentUpon>dsAnamneseOrem.xsd</DependentUpon>
     </Compile>
@@ -1583,9 +1584,7 @@
     <Compile Include="Print\frmPrintArztbrief.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Print\ucELGAPrintPflegesituationsbericht.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Print\ucELGAPrintPflegesituationsbericht.cs" />
     <Compile Include="Print\ucELGAPrintPflegesituationsbericht.Designer.cs">
       <DependentUpon>ucELGAPrintPflegesituationsbericht.cs</DependentUpon>
     </Compile>

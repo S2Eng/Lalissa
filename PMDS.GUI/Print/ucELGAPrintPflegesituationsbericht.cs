@@ -17,7 +17,7 @@ using System.Reflection;
 using System.Xml;
 using System.IO;
 using PMDS.db.Entities;
-using Infragistics.Win.UltraWinListView;   
+using Infragistics.Win.UltraWinListView;
 
 using MARC.Everest.DataTypes.Interfaces;
 using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
@@ -26,6 +26,9 @@ using MARC.Everest.Xml;
 using MARC.Everest.DataTypes;
 using PMDS.DynReportsForms;
 using PMDS.BusinessLogic;
+using Infragistics.Win.UltraWinGanttView;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 //using MARC.Everest.RMIM.UV.NE2010.REPC_MT000324UV01;
 
 
@@ -33,10 +36,13 @@ namespace PMDS.GUI.Print
 {
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
+        private bool DatenOk = true;
+        private DateTime dNow = DateTime.Now;
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
         private Guid IDEmpfaenger { get; set; }
+        public string sFileName { get; set; }
         private List<ccode> ELGACodes = new List<ccode>();
-        private cELGADB.Organistion Klinik = new cELGADB.Organistion();
+        private PMDS.GUI.Print. cELGADB.Organistion Klinik = new cELGADB.Organistion();
         private cELGADB.Person Klient = new cELGADB.Person();
         private cELGADB.Aufenthalt Aufenthalt = new cELGADB.Aufenthalt();
         private List<Sektion> Sektionen = new List<Sektion>();
@@ -45,6 +51,7 @@ namespace PMDS.GUI.Print
         private cELGADB.Organistion Empfaenger = new cELGADB.Organistion();
         private cELGADB.Organistion Hausarzt = new cELGADB.Organistion();
         private List<cELGADB.Person> Kontaktpersonen = new List<cELGADB.Person>();
+        private cELGADB.Organistion Krankenkasse = new cELGADB.Organistion();
 
         private enum eELGATypeSektion
         {
@@ -129,7 +136,7 @@ namespace PMDS.GUI.Print
             public string code;
             public string displayName;
             public string codeSystem = "1.2.40.0.34.5.40";
-            public string codeSystemName = "ELGA";
+            public string codeSystemName = "ELGA_Sections";
             public string originalText;
             public string IDAuswahllisteGruppe;
             public string Bezeichnung;
@@ -220,7 +227,7 @@ namespace PMDS.GUI.Print
         {
             public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.8", AssigningAuthorityName = "ELGA" } };
             public string title = "Risiken";
-            public ccode code = new ccode { code = "51898-5", displayName = "Risk factors", codeSystem = "LOINC", codeSystemName = "LOINC" };
+            public ccode code = new ccode { code = "51898-5", displayName = "Risk factors", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" };
             public string textHTML;
             public string list_listType = "unordered";
             public string list_styleCode = "Disc";
@@ -263,9 +270,11 @@ namespace PMDS.GUI.Print
             InitializeComponent();
         }
 
-        public void Init(Guid pIDEmpfaenger)
+        public void Init(Guid pIDEmpfaenger, string pFileName)
         {
             IDEmpfaenger = pIDEmpfaenger;
+            sFileName = pFileName;
+
             ReadAllELGACodes();
             ccda = new ClinicalDocument();
 
@@ -278,17 +287,7 @@ namespace PMDS.GUI.Print
             cELGADB.LoadEmfaenger(ref Empfaenger);
             cELGADB.LoadHausarzt(ref Hausarzt);
             cELGADB.LoadKontaktpersonen(ref Kontaktpersonen);
-
-            ////Headerdaten in CDA-Dokument schreiben
-            //InitCDA();
-            //InitKlient();
-            //InitAuthor();
-            //InitVerwahrer();
-            //InitEmpfaenger();
-            //InitRechtlicherUnterzeichner();
-            //InitAnsprechperson();
-            //InitHausarzt();
-            //InitKontaktpersonen();
+            cELGADB.LoadKrankenkasse(ref Krankenkasse);
 
             //Klassen für fachliche Sektionen aus DB befüllen
             InitRTFTags();
@@ -320,6 +319,8 @@ namespace PMDS.GUI.Print
                 ccda.ConfidentialityCode.DisplayName = Info.ccdaConfidentialityCodeDisplayName;
                 ccda.LanguageCode = Info.ccdaLanguageCode;
                 ccda.SetId.AssigningAuthorityName = Klinik.Bezeichnung;      // Klinik.ELGA_OrganizationName?;
+                ccda.Title = Info.cdaTitle;
+                ccda.Code = new CE<string> { Code = Info.cdaCode.code, DisplayName = Info.cdaCode.displayName, CodeSystem = Info.cdaCode.codeSystem, CodeSystemName = Info.cdaCode.codeSystemName };
             }
             catch (Exception ex)
             {
@@ -335,17 +336,17 @@ namespace PMDS.GUI.Print
 
                 patientRole.Id = new SET<II> { new II { Root = Klient.ID.ToString(), AssigningAuthorityName = Klinik.Bezeichnung } };
 
-                if (String.IsNullOrWhiteSpace(Klient.VersicherungsNr) && Klient.SozVersLeerGrund.Equals("Klient hat keine Sozialversicherungsnummer", StringComparison.OrdinalIgnoreCase))
+                if (String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr) && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Klient hat keine Sozialversicherungsnummer", StringComparison.OrdinalIgnoreCase))
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.NoInformation), AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
-                else if (String.IsNullOrWhiteSpace(Klient.VersicherungsNr) && Klient.SozVersLeerGrund.Equals("Sozialversicherungsnummer unbekannt", StringComparison.OrdinalIgnoreCase))
+                else if (String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr) && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Sozialversicherungsnummer unbekannt", StringComparison.OrdinalIgnoreCase))
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.Unknown), AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
-                else if (!String.IsNullOrWhiteSpace(Klient.VersicherungsNr))
+                else if (!String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr))
                 {
-                    patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", Extension = Klient.VersicherungsNr, AssigningAuthorityName = "Österreichische Sozialversicherung" });
+                    patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", Extension = Klient.Versicherungsdaten.VersicherungsNr, AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
                 else
                 {
@@ -360,29 +361,9 @@ namespace PMDS.GUI.Print
                 else
                     patientRole.Addr = NewAdress(PostalAddressUse.PrimaryHome, Klient.Adresse.PLZ, Klient.Adresse.Ort, Klient.Adresse.Strasse, null, Klient.Adresse.Land);
 
-                if (!String.IsNullOrWhiteSpace(Klient.Kontakt.Telefon))
-                {
-                    if (patientRole.Telecom == null)
-                        patientRole.Telecom = new SET<TEL>();
-                    patientRole.Telecom.Add(new TEL(Klient.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                }
-
-                if (!String.IsNullOrWhiteSpace(Klient.Kontakt.TelefonMobil))
-                {
-                    if (patientRole.Telecom == null)
-                        patientRole.Telecom = new SET<TEL>();
-                    patientRole.Telecom.Add(new TEL(Klient.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                }
-
-                if (!String.IsNullOrWhiteSpace(Klient.Kontakt.eMail))
-                {
-                    if (patientRole.Telecom == null)
-                        patientRole.Telecom = new SET<TEL>();
-                    patientRole.Telecom.Add(new TEL(Klient.Kontakt.eMail));
-                }
+                patientRole.Telecom = MakeTel(Klient.Kontakt, TelecommunicationAddressUse.Home);
 
                 MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV.Patient patient = new MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV.Patient();
-
                 patient.Name = MakeNameNode(Klient.Titel, Klient.Vorname, Klient.Nachname, Klient.LedigerName, Klient.TitelPost);
 
                 ccode SEX = SearchELGACode(Klient.Sexus, "SEX");
@@ -431,27 +412,7 @@ namespace PMDS.GUI.Print
                     Guardian Sachwalter = new Guardian();
                     Sachwalter.GuardianChoice = GuardianChoice.CreatePerson(sw.Name);
                     Sachwalter.Addr = NewAdress(PostalAddressUse.WorkPlace, pSachwalter.Adresse.PLZ, pSachwalter.Adresse.Ort, pSachwalter.Adresse.Strasse, null, pSachwalter.Adresse.Land);
-
-                    if (!String.IsNullOrWhiteSpace(pSachwalter.Kontakt.Telefon))
-                    {
-                        if (Sachwalter.Telecom == null)
-                            Sachwalter.Telecom = new SET<TEL>();
-                        Sachwalter.Telecom.Add(new TEL(pSachwalter.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                    }
-
-                    if (!String.IsNullOrWhiteSpace(pSachwalter.Kontakt.TelefonMobil))
-                    {
-                        if (Sachwalter.Telecom == null)
-                            Sachwalter.Telecom = new SET<TEL>();
-                        Sachwalter.Telecom.Add(new TEL(pSachwalter.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                    }
-
-                    if (!String.IsNullOrWhiteSpace(pSachwalter.Kontakt.eMail))
-                    {
-                        if (Sachwalter.Telecom == null)
-                            Sachwalter.Telecom = new SET<TEL>();
-                        Sachwalter.Telecom.Add(new TEL(pSachwalter.Kontakt.eMail));
-                    }
+                    Sachwalter.Telecom = MakeTel(pSachwalter.Kontakt, TelecommunicationAddressUse.BadAddress);
                     patient.Guardian.Add(Sachwalter);
                 }
 
@@ -484,44 +445,20 @@ namespace PMDS.GUI.Print
                 Author author = new Author();
                 author.AssignedAuthor = new AssignedAuthor(new SET<II> { new II(Benutzer.ID) });
                 author.AssignedAuthor.Id[0].AssigningAuthorityName = Klinik.Bezeichnung;
-                author.AssignedAuthor.Addr = NewAdress(PostalAddressUse.PostalAddress, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);              
+                //author.AssignedAuthor.Addr = NewAdress(PostalAddressUse.PostalAddress, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);              
                 Person Verfasser = new Person();
                 Verfasser.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
                 author.AssignedAuthor.SetAssignedAuthorChoice(Verfasser);
 
                 Organization AuthorOrg = new Organization();
                 AuthorOrg.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
-
-                ON on = new ON();
-                on.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
-                AuthorOrg.Name = new SET<ON> {(on)};
+                AuthorOrg.Name = MakeOrganistionName(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung);
                 AuthorOrg.Addr = NewAdress(PostalAddressUse.WorkPlace, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                AuthorOrg.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.WorkPlace);
 
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
-                {
-                    if (AuthorOrg.Telecom == null)
-                        AuthorOrg.Telecom = new SET<TEL>();
-                    AuthorOrg.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                }
-
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
-                {
-                    if (AuthorOrg.Telecom == null)
-                        AuthorOrg.Telecom = new SET<TEL>();
-                    AuthorOrg.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                }
-
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
-                {
-                    if (AuthorOrg.Telecom == null)
-                        AuthorOrg.Telecom = new SET<TEL>();
-                    AuthorOrg.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
-                }
                 author.AssignedAuthor.RepresentedOrganization = AuthorOrg;
                 author.ContextControlCode = null;
-
                 ccda.Author.Add(author);
-
             }
             catch (Exception ex)
             {
@@ -545,7 +482,7 @@ namespace PMDS.GUI.Print
                 TEL Telefon = new TEL();
                 if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
                 {
-                    Telefon = new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home);
+                    Telefon = new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.WorkPlace);
                 }
 
                 Custodian Verwahrer = new Custodian(new AssignedCustodian());
@@ -587,38 +524,17 @@ namespace PMDS.GUI.Print
                 else
                 {
                     i.NullFlavor = NullFlavor.Unknown;
-                    GeplEmpfänger.Id = new SET<II> { i};
+                    GeplEmpfänger.Id = new SET<II> { i };
                     GeplEmpfänger.InformationRecipient = new Person();
                     GeplEmpfänger.InformationRecipient.Name = new SET<PN> { new PN("An die Einrichtung") };
                     Empfaenger.IntendedRecipient = GeplEmpfänger;
 
-                    ON on = new ON();
-                    on.Part.Add(new ENXP(this.Empfaenger.Bezeichnung));
-                    GeplEmpfänger.ReceivedOrganization = new Organization();
-                    GeplEmpfänger.ReceivedOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Empfaenger.ELGA_OID } };
-                    GeplEmpfänger.ReceivedOrganization.Name = new SET<ON> { (on) };
-                    GeplEmpfänger.ReceivedOrganization.Addr = NewAdress(PostalAddressUse.WorkPlace, this.Empfaenger.Adresse.PLZ, this.Empfaenger.Adresse.Ort, this.Empfaenger.Adresse.Strasse, null, this.Empfaenger.Adresse.Land);
-
-                    if (!String.IsNullOrWhiteSpace(this.Empfaenger.Kontakt.Telefon))
-                    {
-                        if (GeplEmpfänger.ReceivedOrganization.Telecom == null)
-                            GeplEmpfänger.ReceivedOrganization.Telecom = new SET<TEL>();
-                        GeplEmpfänger.ReceivedOrganization.Telecom.Add(new TEL(this.Empfaenger.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                    }
-
-                    if (!String.IsNullOrWhiteSpace(this.Empfaenger.Kontakt.TelefonMobil))
-                    {
-                        if (GeplEmpfänger.ReceivedOrganization.Telecom == null)
-                            GeplEmpfänger.ReceivedOrganization.Telecom = new SET<TEL>();
-                        GeplEmpfänger.ReceivedOrganization.Telecom.Add(new TEL(this.Empfaenger.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                    }
-
-                    if (!String.IsNullOrWhiteSpace(this.Empfaenger.Kontakt.eMail))
-                    {
-                        if (GeplEmpfänger.ReceivedOrganization.Telecom == null)
-                            GeplEmpfänger.ReceivedOrganization.Telecom = new SET<TEL>();
-                        GeplEmpfänger.ReceivedOrganization.Telecom.Add(new TEL(this.Empfaenger.Kontakt.eMail));
-                    }
+                    Organization org = new Organization();
+                    org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Empfaenger.ELGA_OID } };
+                    org.Name = MakeOrganistionName(this.Empfaenger.Bezeichnung);
+                    org.Addr = NewAdress(PostalAddressUse.WorkPlace, this.Empfaenger.Adresse.PLZ, this.Empfaenger.Adresse.Ort, this.Empfaenger.Adresse.Strasse, null, this.Empfaenger.Adresse.Land);
+                    org.Telecom = MakeTel(this.Empfaenger.Kontakt, TelecommunicationAddressUse.BadAddress);
+                    GeplEmpfänger.ReceivedOrganization = org;
                 }
 
                 ccda.InformationRecipient = new List<InformationRecipient>();
@@ -635,66 +551,25 @@ namespace PMDS.GUI.Print
             try
             {
                 LegalAuthenticator Unterzeichner = new LegalAuthenticator();
-                Unterzeichner.Time = new TS(DateTime.Now);
+                Unterzeichner.Time = new TS(dNow);
                 Unterzeichner.SignatureCode = new CS<string>("S");
 
                 AssignedEntity assignedEntity = new AssignedEntity(null, null, null, null, null, null);
                 assignedEntity.Id = new SET<II>{ { new II(Benutzer.ID) } };
                 assignedEntity.Id[0].AssigningAuthorityName = Klinik.Bezeichnung;
+                assignedEntity.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.WorkPlace);
 
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
-                {
-                    if (assignedEntity.Telecom == null)
-                        assignedEntity.Telecom = new SET<TEL>();
-                    assignedEntity.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                }
+                Person pers = new Person();
+                pers.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
 
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
-                {
-                    if (assignedEntity.Telecom == null)
-                        assignedEntity.Telecom = new SET<TEL>();
-                    assignedEntity.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                }
+                Organization org = new Organization();
+                org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
+                org.Name = MakeOrganistionName(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung);
+                org.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                org.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.BadAddress);
 
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
-                {
-                    if (assignedEntity.Telecom == null)
-                        assignedEntity.Telecom = new SET<TEL>();
-                    assignedEntity.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
-                }
-
-                assignedEntity.AssignedPerson = new Person();
-                assignedEntity.AssignedPerson.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
-
-                assignedEntity.RepresentedOrganization = new Organization();
-                assignedEntity.RepresentedOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
-
-                ON on = new ON();
-                on.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
-                assignedEntity.RepresentedOrganization.Name = new SET<ON> { (on) };
-                assignedEntity.RepresentedOrganization.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
-
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
-                {
-                    if (assignedEntity.RepresentedOrganization.Telecom == null)
-                        assignedEntity.RepresentedOrganization.Telecom = new SET<TEL>();
-                    assignedEntity.RepresentedOrganization.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                }
-
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
-                {
-                    if (assignedEntity.RepresentedOrganization.Telecom == null)
-                        assignedEntity.RepresentedOrganization.Telecom = new SET<TEL>();
-                    assignedEntity.RepresentedOrganization.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                }
-
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
-                {
-                    if (assignedEntity.RepresentedOrganization.Telecom == null)
-                        assignedEntity.RepresentedOrganization.Telecom = new SET<TEL>();
-                    assignedEntity.RepresentedOrganization.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
-                }
-
+                assignedEntity.AssignedPerson = pers;
+                assignedEntity.RepresentedOrganization = org;
                 Unterzeichner.AssignedEntity = assignedEntity;
                 ccda.LegalAuthenticator = Unterzeichner;
             }
@@ -710,39 +585,22 @@ namespace PMDS.GUI.Print
             {
                 Participant1 Ansprechperson = new Participant1(new CS<ParticipationType>(ParticipationType.CallbackContact), null);
                 Ansprechperson.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.1" } };
-                Ansprechperson.AssociatedEntity = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));
-                Ansprechperson.AssociatedEntity.Telecom = new SET<TEL> { new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.WorkPlace)};
-                Ansprechperson.AssociatedEntity.AssociatedPerson = new Person();
-                Ansprechperson.AssociatedEntity.AssociatedPerson.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
 
-                Ansprechperson.AssociatedEntity.ScopingOrganization = new Organization();
-                Ansprechperson.AssociatedEntity.ScopingOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
+                AssociatedEntity assEnt = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));
+                assEnt.Telecom = new SET<TEL> { new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.WorkPlace)};
 
-                ON on = new ON();
-                on.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
-                Ansprechperson.AssociatedEntity.ScopingOrganization.Name = new SET<ON> { (on) };
-                Ansprechperson.AssociatedEntity.ScopingOrganization.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                Person pers = new Person();                
+                pers.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
 
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
-                {
-                    if (Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom == null)
-                        Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
-                    Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                }
+                Organization org = new Organization();
+                org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
+                org.Name = MakeOrganistionName(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung);
+                org.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                org.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.WorkPlace);
 
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
-                {
-                    if (Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom == null)
-                        Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
-                    Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                }
-
-                if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
-                {
-                    if (Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom == null)
-                        Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
-                    Ansprechperson.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
-                }
+                assEnt.AssociatedPerson = pers;
+                assEnt.ScopingOrganization = org;
+                Ansprechperson.AssociatedEntity = assEnt;
                 ccda.Participant.Add(Ansprechperson);
             }
             catch (Exception ex)
@@ -761,49 +619,29 @@ namespace PMDS.GUI.Print
                     Hausarzt.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.3" } };
                     Hausarzt.FunctionCode = new CE<string>("PCP", "2.16.840.1.113883.5.88", "HL7:ParticipationFunction", null, "primary care physician", null);
 
-                    Hausarzt.AssociatedEntity = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));
+                    AssociatedEntity assEnt = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));                   
 
                     if (String.IsNullOrWhiteSpace(this.Hausarzt.Arztdaten.ELGA_OID))
-                        Hausarzt.AssociatedEntity.Id.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                        assEnt.Id.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
                     else
-                    {
-                        Hausarzt.AssociatedEntity.Id = new SET<II> { new II { Root = this.Hausarzt.Arztdaten.ELGA_OID } };
-                    }
+                        assEnt.Id = new SET<II> { new II { Root = this.Hausarzt.Arztdaten.ELGA_OID } };
 
-                    Hausarzt.AssociatedEntity.AssociatedPerson = new Person();
-                    Hausarzt.AssociatedEntity.AssociatedPerson.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, null, null);
+                    Person pers = new Person();
+                    pers.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, null, null);
 
-                    Hausarzt.AssociatedEntity.ScopingOrganization = new Organization();
+                    Organization org = new Organization();
                     if (String.IsNullOrWhiteSpace(this.Hausarzt.Arztdaten.ELGA_OrganizationOID))
-                        Hausarzt.AssociatedEntity.ScopingOrganization.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                        org.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
                     else
-                        Hausarzt.AssociatedEntity.ScopingOrganization.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Hausarzt.Arztdaten.ELGA_OrganizationOID } };
+                        org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Hausarzt.Arztdaten.ELGA_OrganizationOID } };
 
-                    ON on = new ON();
-                    on.Part.Add(new ENXP((this.Hausarzt.Arztdaten.Titel + " " + this.Hausarzt.Arztdaten.Vorname + this.Hausarzt.Arztdaten.Nachname).Trim()));
-                    Hausarzt.AssociatedEntity.ScopingOrganization.Name = new SET<ON> { (on) };
-                    Hausarzt.AssociatedEntity.ScopingOrganization.Addr = NewAdress(PostalAddressUse.Public, this.Hausarzt.Adresse.PLZ, this.Hausarzt.Adresse.Ort, this.Hausarzt.Adresse.Strasse, null, this.Hausarzt.Adresse.Land);
+                    org.Name = MakeOrganistionName((this.Hausarzt.Arztdaten.Titel + " " + this.Hausarzt.Arztdaten.Vorname + this.Hausarzt.Arztdaten.Nachname).Trim());
+                    org.Addr = NewAdress(PostalAddressUse.Public, this.Hausarzt.Adresse.PLZ, this.Hausarzt.Adresse.Ort, this.Hausarzt.Adresse.Strasse, null, this.Hausarzt.Adresse.Land);
+                    org.Telecom = MakeTel(this.Hausarzt.Kontakt, TelecommunicationAddressUse.BadAddress);
 
-                    if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
-                    {
-                        if (Hausarzt.AssociatedEntity.ScopingOrganization.Telecom == null)
-                            Hausarzt.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
-                        Hausarzt.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.Home));
-                    }
-
-                    if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.TelefonMobil))
-                    {
-                        if (Hausarzt.AssociatedEntity.ScopingOrganization.Telecom == null)
-                            Hausarzt.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
-                        Hausarzt.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
-                    }
-
-                    if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.eMail))
-                    {
-                        if (Hausarzt.AssociatedEntity.ScopingOrganization.Telecom == null)
-                            Hausarzt.AssociatedEntity.ScopingOrganization.Telecom = new SET<TEL>();
-                        Hausarzt.AssociatedEntity.ScopingOrganization.Telecom.Add(new TEL(Klinik.Kontakt.eMail));
-                    }
+                    Hausarzt.AssociatedEntity.AssociatedPerson = pers;
+                    Hausarzt.AssociatedEntity.ScopingOrganization = org;
+                    Hausarzt.AssociatedEntity = assEnt;
                     ccda.Participant.Add(Hausarzt);
                 }
             }
@@ -834,7 +672,7 @@ namespace PMDS.GUI.Print
                             Kontakt.AssociatedEntity = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.PersonalRelationship));
                         }
 
-                        Kontakt.FunctionCode = new CE<string>(SearchELGACode(Kontaktperson.Kontaktdaten.Verwandtschaft, "VWV").code, "2.16.840.1.113883.5.111", "HL7:RoleCode", null, SearchELGACode(Kontaktperson.Kontaktdaten.Verwandtschaft, "VWV").displayName, null);
+                        Kontakt.AssociatedEntity.Code = new CE<string>(SearchELGACode(Kontaktperson.Kontaktdaten.Verwandtschaft, "VWV").code, "2.16.840.1.113883.5.111", "HL7:RoleCode", null, SearchELGACode(Kontaktperson.Kontaktdaten.Verwandtschaft, "VWV").displayName, null);
 
 
                         Kontakt.AssociatedEntity.AssociatedPerson = new Person();
@@ -848,6 +686,172 @@ namespace PMDS.GUI.Print
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.InitKontaktpersonen: " + ex.ToString());
+            }
+        }
+
+        private void InitKrankenkasse()
+        {
+            try
+            {
+                Participant1 Krankenkasse = new Participant1(new CS<ParticipationType>(ParticipationType.Holder), null);
+                Krankenkasse.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.6" } };
+
+                AssociatedEntity ascEnt = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.PolicyHolder));
+
+                if (SearchELGACode(Klient.Versicherungsdaten.SozVersStatus, "SVE") != null && SearchELGACode(Klient.Versicherungsdaten.SozVersStatus, "SVE").code == "NI")
+                {
+                    ascEnt.Id.NullFlavor = new CS<NullFlavor>(NullFlavor.NoInformation);
+                }
+                else if (SearchELGACode(Klient.Versicherungsdaten.SozVersStatus, "SVE") != null && SearchELGACode(Klient.Versicherungsdaten.SozVersStatus, "SVS").code == "UNK")
+                {
+                    ascEnt.Id.NullFlavor = new CS<NullFlavor>(NullFlavor.Unknown);
+                }
+                else
+                {
+                    ascEnt.Id = new SET<II>(new II { Root = "1.2.40.0.10.1.4.3.1", Extension = Klient.Versicherungsdaten.VersicherungsNr, AssigningAuthorityName = "Österreichische Sozialversicherung" });
+
+                    ascEnt.Code = new CE<string> { Code = SearchELGACode(Klient.Versicherungsdaten.SozVersStatus, "SVS").code, CodeSystem = "2.16.840.1.113883.5.111", CodeSystemName = "HL7:RoleCode" };
+
+                    if (SearchELGACode(Klient.Versicherungsdaten.SozVersStatus, "SVS").code == "FAMDEP")
+                    {
+                        ascEnt.AssociatedPerson = new Person();
+                        ascEnt.AssociatedPerson.Name = MakeNameNode("", "", Klient.Versicherungsdaten.SozVersMitversichertBei, "", "");
+                    }
+
+                    if (this.Krankenkasse.Rolle == cELGADB.eOrganistionRolle.Krankenkasse)
+                    {
+                        Organization scopOrg = new Organization();
+                        scopOrg.Name = MakeOrganistionName(this.Krankenkasse.Bezeichnung);
+                        scopOrg.Addr = NewAdress(PostalAddressUse.Public, this.Krankenkasse.Adresse.PLZ, this.Krankenkasse.Adresse.Ort, this.Krankenkasse.Adresse.Strasse, null, this.Krankenkasse.Adresse.Land);
+                        scopOrg.Telecom = MakeTel(this.Krankenkasse.Kontakt, TelecommunicationAddressUse.BadAddress);
+                        ascEnt.ScopingOrganization = scopOrg; ;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Krankenkasse '" + Klient.Versicherungsdaten.KrankenKasse + " ist ungültig (entspricht keinem ELGA-konformen Eintrag). Der Pflegesituationsbericht kann nicht fertig gestellt werden.");
+                        DatenOk = false;
+                    }
+                }
+
+                Krankenkasse.AssociatedEntity = ascEnt;
+                ccda.Participant.Add(Krankenkasse);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitKrankenkasse: " + ex.ToString());
+            }
+        }
+
+        private void InitAufenthaltService()
+        {
+            try
+            {
+                DocumentationOf Service = new DocumentationOf(new ServiceEvent());
+                Service.ServiceEvent.Code = new CE<string> { Code = "GDLPUB", DisplayName = "Gesundheitsdienstleistung im Rahmen eines stationären Aufenthalts", CodeSystem = "1.2.40.0.34.5.21", CodeSystemName = "ELGA_ServiceEventsEntlassbrief" };
+                Service.ServiceEvent.EffectiveTime = new IVL<TS>(this.Aufenthalt.Aufnahmezeitpunkt, dNow);
+                Service.ServiceEvent.EffectiveTime.High.NullFlavor = NullFlavor.Unknown;
+                ccda.DocumentationOf.Add(Service);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitAufenthalt: " + ex.ToString());
+            }
+        }
+
+        private void InitAufenthaltInfo()
+        {
+            try
+            {
+                Component1 componentOf = new Component1();
+                EncompassingEncounter encEncounter = new EncompassingEncounter();
+
+                encEncounter.Id = new SET<II> { new II(this.Klient.ID) };
+                encEncounter.Id[0].AssigningAuthorityName = this.Klinik.Bezeichnung;
+                encEncounter.Code = new CE<ActEncounterCode>(ActEncounterCode.InpatientEncounter, "2.16.840.1.113883.5.4", null, null, "inpatient encounter", null);
+                encEncounter.Code.CodeSystemName = "HL7:ActCode";
+                encEncounter.EffectiveTime = new IVL<TS>(this.Aufenthalt.Aufnahmezeitpunkt, dNow);
+
+                ResponsibleParty resParty = new ResponsibleParty();
+                AssignedEntity assEnt = new AssignedEntity();
+                assEnt.Id = new SET<II> { new II(this.Klinik.ID) };
+                assEnt.Id[0].AssigningAuthorityName = this.Klinik.Bezeichnung;
+                assEnt.Telecom = MakeTel(this.Klient.Kontakt, TelecommunicationAddressUse.WorkPlace);
+
+                Person pers = new Person();
+                pers.Name = MakeNameNode(this.Klinik.Leitungsdaten.Titel, this.Klinik.Leitungsdaten.Vorname, this.Klinik.Leitungsdaten.Nachname, null, null);
+
+                Location loc = new Location();
+                HealthCareFacility facility = new HealthCareFacility();
+
+                Organization facOrg = new Organization();
+
+                facOrg.Id = new SET<II> { new II { Root = this.Klinik.ELGA_OID, AssigningAuthorityName = "GDA Index" } };
+                facOrg.Name = MakeOrganistionName(this.Klinik.Bezeichnung);
+                facOrg.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.BadAddress);
+                facOrg.Addr = NewAdress(PostalAddressUse.Public, this.Klinik.Adresse.PLZ, this.Klinik.Adresse.Ort, this.Klinik.Adresse.Strasse, null, this.Klinik.Adresse.Land);
+
+                facility.ServiceProviderOrganization = facOrg;
+                loc.HealthCareFacility = facility;
+                assEnt.AssignedPerson = pers;
+                resParty.AssignedEntity = assEnt;
+                encEncounter.ResponsibleParty = resParty;
+                encEncounter.Location = loc;
+                componentOf.EncompassingEncounter = encEncounter;
+                ccda.ComponentOf = componentOf;              
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitAufenthalt: " + ex.ToString());
+            }
+        }
+
+        private SET<TEL> MakeTel(cELGADB.Kontakt Kontakt, TelecommunicationAddressUse use)
+        {
+            try
+            {
+                SET<TEL> retVal = new SET<TEL>();
+
+                if (!String.IsNullOrWhiteSpace(Kontakt.Telefon))
+                {
+                    if (use != TelecommunicationAddressUse.BadAddress)
+                        retVal.Add(new TEL("tel:" + Kontakt.Telefon, use));
+                    else
+                        retVal.Add(new TEL("tel:" + Kontakt.Telefon));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Kontakt.TelefonMobil))
+                {
+                    retVal.Add(new TEL("tel:" + Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                }
+
+                if (!String.IsNullOrWhiteSpace(Kontakt.eMail))
+                {
+                    retVal.Add(new TEL("mailto:" + Kontakt.eMail));
+                }
+
+                if (retVal.Count > 0)
+                    return retVal;
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.InitAufenthalt: " + ex.ToString());
+            }
+        }
+
+
+        private SET<ON> MakeOrganistionName(string Name)
+        {
+            try
+            {
+                ON on = new ON();
+                on.Part.Add(new ENXP(Name));
+                return new SET<ON> { (on) };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.MakeOrganistionName: " + ex.ToString());
             }
         }
 
@@ -990,92 +994,92 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.Brieftext,
                                             eELGATypeSektion.Brieftext,
                                             "Brieftext",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.1", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.1", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "BRIEFT", displayName = "Brieftext" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Pflegediagnosen,
                                             eELGATypeSektion.Pflegediagnosen,
                                             "Pflegediagnosen",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.2", AssigningAuthorityName = "ELGA" } },
-                                            new ccode { code = "PFDIAG", displayName = "Pflegediagnosen" }));
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.2", AssigningAuthorityName = "ELGA" } },
+                                            new ccode { code = "PFDIAG", displayName = "Pflege- und Betreuungsdiagnosendiagnosen" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Mobilität,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Mobilität",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.3", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.3", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFMOB", displayName = "Mobilität" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.KörperpflegeUndKleiden,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Körperpflege und Kleiden",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.4", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.4", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFKLEI", displayName = "Körperpflege und Kleiden" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Ernährung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Ernährung",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.5", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.5", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFERN", displayName = "Ernährung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Ausscheidung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Ausscheidung",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.6", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.6", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFAUS", displayName = "Ausscheidung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Hautzustand,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Hautzustand",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.7", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.7", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFHAUT", displayName = "Hautzustand" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Atmung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Atmung",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.8", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.8", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFATM", displayName = "Atmung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Schlaf,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Schlaf",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.9", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.9", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFSCHL", displayName = "Schlaf" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Schmerz,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Schmerz",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.10", AssigningAuthorityName = "ELGA" },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.10", AssigningAuthorityName = "ELGA" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.1.20.2.4", AssigningAuthorityName = "IHE PCC" } },
                                             new ccode { code = "38212-7", displayName = "Pain Assessment Panel", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.OrientierungUndBewusstseinslage,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Orientierung und Bewusstseinslage",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.11", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.11", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFORIE", displayName = "Orientierung und Bewusstseinslage" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.SozialeUmständeUndVerhalten,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Soziale Umstände und Verhalten",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.12", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.12", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFSOZV", displayName = "Soziale Umstände und Verhalten" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Kommunikation,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Kommunikation",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.13", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.13", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFKOMM", displayName = "Kommunikation" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.RollenwahnehmungUndSinnfindung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Rollenwahrnehmung und Sinnfindung",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.14", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.14", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFROLL", displayName = "Rollenwahrnehmung und Sinnfindung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Vitalparameter,
                                             eELGATypeSektion.Vitalparameter,
                                             "Vitalparameter",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.7", AssigningAuthorityName = "ELGA" },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.7", AssigningAuthorityName = "ELGA" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.25", AssigningAuthorityName = "IHE PCC" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.1.5.3.2", AssigningAuthorityName = "IHE PCC" },
                                                            new II { Root = "2.16.840.1.113883.10.20.1.16", AssigningAuthorityName = "HL7 CCD" }
@@ -1086,25 +1090,25 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.PflegerelvanteInforamtionenZurMedizinischenBehandlung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Pflegerelevante Informationen zur medizinischen Behandlung",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.18", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.18", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFMEDBEH", displayName = "Pflegerelevante Informationen zur medizinischen Behandlung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Medikamentenverabreichung,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Medikamentenverabreichung",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.15", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.15", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PFMED", displayName = "Medikamentenverabreichung" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Anmerkungen,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Anmerkungen",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.5", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.5", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "ANM", displayName = "Anmerkungen" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.PflegeUndBetreuungsumfang,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Pflege- und Betreuungsumfang",
-                                            new List<II> { new II { Root = "1.2.40.0.34.11.1.2.22", AssigningAuthorityName = "ELGA" } },
+                                            new List<II> { new II { Root = "1.2.40.0.34.11.3.2.22", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PUBUMF", displayName = "Pflege- und Betreuungsumfang" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Entlassungsmanagment,
@@ -1119,7 +1123,7 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.Patientenverfügung,
                                             eELGATypeSektion.Patientenverfügung,
                                             "Patientenverfügungen und andere juridische Dokumente",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.4", AssigningAuthorityName = "ELGA" },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.4", AssigningAuthorityName = "ELGA" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.34", AssigningAuthorityName = "IHE PCC" },
                                                            new II { Root = "2.16.840.1.113883.10.20.1.1", AssigningAuthorityName = "HL7 CCD" },
                                                          },
@@ -1175,7 +1179,7 @@ namespace PMDS.GUI.Print
                 sect.Text = new ED();
                 if (sektion.textHTML == null)
                     sektion.textHTML = "Keine zusätzliche Information verfügbar.";
-                sect.Text.Data = System.Text.Encoding.UTF8.GetBytes(sektion.textHTML);
+                sect.Text.Data = System.Text.Encoding.UTF8.GetBytes(sektion.textHTML.Replace("\n", "|||"));
                 sect.Text.Representation = MARC.Everest.DataTypes.Interfaces.EncapsulatedDataRepresentation.XML;
                 sect.Text.MediaType = null;
 
@@ -1272,6 +1276,7 @@ namespace PMDS.GUI.Print
                 if (sektion.HilfsmittelUndRessourcen != null)
                 {
                     Section sectRUM = new Section();
+                    sectRUM.Title = "Hilfsmittel und Ressourcen";
                     sectRUM.TemplateId = sektion.HilfsmittelUndRessourcen.cdatemplateIDs;
 
                     sectRUM.Code = new CE<string>(sektion.HilfsmittelUndRessourcen.code.code,
@@ -1280,7 +1285,7 @@ namespace PMDS.GUI.Print
                         null,
                         sektion.HilfsmittelUndRessourcen.code.displayName,
                         null);
-                    sectRUM.Text = sektion.HilfsmittelUndRessourcen.textHTML;
+                    sectRUM.Text = sektion.HilfsmittelUndRessourcen.textHTML.Replace("\n", "|||");
                     sectRUM.Text.Language = null;
                     sectRUM.Text.MediaType = null;
 
@@ -1292,6 +1297,7 @@ namespace PMDS.GUI.Print
                 if (sektion.Risiko != null)
                 {
                     Section sectRisk = new Section();
+                    sectRisk.Title = "Risiken";
                     sectRisk.TemplateId = sektion.Risiko.cdatemplateIDs;
                     sectRisk.Code = new CE<string>(sektion.Risiko.code.code,
                         sektion.Risiko.code.codeSystem,
@@ -1299,7 +1305,7 @@ namespace PMDS.GUI.Print
                         null,
                         sektion.Risiko.code.displayName,
                         null);
-                    sectRisk.Text = sektion.Risiko.textHTML;
+                    sectRisk.Text = sektion.Risiko.textHTML.Replace("\n", "|||");
                     sectRisk.Text.Language = null;
                     sectRisk.Text.MediaType = null;
 
@@ -1320,8 +1326,6 @@ namespace PMDS.GUI.Print
                         ENV.ELGAObservationMedia obs = new ENV.ELGAObservationMedia();
                         obs.Value = new ED { MediaType = Beilage.value_mediaType, Representation = Beilage.value_representation, Data = Beilage.value };
                         obs.ID = new ST(Beilage.id);
-                        //obs.ID = new ST("xyz");
-
                         obs.TemplateId = Beilage.cdatemplateIDs;
 
                         Entry BeilageEntry = new Entry(null, null, obs);
@@ -1486,7 +1490,7 @@ namespace PMDS.GUI.Print
                                         HilfsmittelRessourcen Res = new HilfsmittelRessourcen();
                                         Sektion.HilfsmittelUndRessourcen = Res;
                                     }
-                                    Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "\r";
+                                    Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "\n";
                                     SetRTFTextByTag(this.Controls, R.Code + "_RES", R.Text + "\n");
                                 }
 
@@ -1497,7 +1501,7 @@ namespace PMDS.GUI.Print
                                         Risiko Ris = new Risiko();
                                         Sektion.Risiko = Ris;
                                     }
-                                    Sektion.Risiko.textHTML += R.Text + "\r";
+                                    Sektion.Risiko.textHTML += R.Text + "\n";
                                     SetRTFTextByTag(this.Controls, R.Code + "_RISK", R.Text + "\n");
                                 }
                             }
@@ -1557,7 +1561,7 @@ namespace PMDS.GUI.Print
                             Wert = zw.Wert;
                         PDxHTML += "<td>" + Wert + "</td>";
                         PDxHTML += "<td>" + zw.ELGA_Unit + "</td>";
-                        PDxHTML += "<td>" + zw.Zeitpunkt.ToString() + "</td>";
+                        PDxHTML += "<td>" + zw.Zeitpunkt.ToString() + "</td></tr>";
                         i++;
                     }
 
@@ -1741,7 +1745,6 @@ namespace PMDS.GUI.Print
             try
             {
                 rtfPATVERF_Text.Text = "";
-
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
                     var rPatInfo = (from p in db.Patient
@@ -1761,7 +1764,7 @@ namespace PMDS.GUI.Print
                     {
                         DateTime dt = (DateTime)rPatInfo.PatientverfuegungDatum;
                         rtfPATVERF_Text.Text += (rPatInfo.PatientenverfuegungBeachtlichJN == false ? "Beachtliche " : "Verbindliche ");
-                        rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + rPatInfo.PatientverfuegungAnmerkung.ToString() + "\n";
+                        rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + rPatInfo.PatientverfuegungAnmerkung.ToString();
                         Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                     }
                 }
@@ -1870,6 +1873,7 @@ namespace PMDS.GUI.Print
                             }
 
                             txtHAG += "\n" + txtArt;
+
                             if (PsychischekrankheitJN && GeistigeBehinderungJN)
                             {
                                 txtHAG += ": Psychische Krankheit und geistige Behinderung,";
@@ -2159,12 +2163,12 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void PrintCDA()
+        public static void PrintCDA(string sFileName)
         {
             Stream s = null;
             try
             {
-                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create("C:\\temp\\EverestPoC.xml", new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
+                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create(sFileName, new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
                 {
                     //fmtr.AddFormatterAssembly(Assembly.LoadFile(@"C:\Entwicklung\project.PMDS\PMDS.Main\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll"));
                     //fmtr.BuildCache(new Type[] { // Using Build Cache will greatly increase performance
@@ -2184,6 +2188,36 @@ namespace PMDS.GUI.Print
             {
                 if (s != null)
                     s.Close();
+            }
+        }
+
+        public static void UpdateCDA(string sFilename)
+        {
+            try
+            {
+                //Chilkat.Xml xml = new Chilkat.Xml();
+                //xml.LoadXmlFile(sFilename);
+                //xml.AddStyleSheet("<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
+                //xml.SaveXml(sFilename);
+
+                string text = File.ReadAllText(sFilename);
+                text = text.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
+                     text = text.Replace("|||", "<br/>");
+                File.WriteAllText(sFilename, text);
+                
+                /*
+                                byte[] bXml = WCFServicePMDS.Repository.serialize.BinarySerialize<string>(xml.ToString());
+                                b.docu = bXml;
+                                return b;
+                */
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.UpdateCDA: " + ex.ToString());
+            }
+            finally
+            {
+
             }
         }
 
@@ -2695,9 +2729,13 @@ namespace PMDS.GUI.Print
             InitAnsprechperson();
             InitHausarzt();
             InitKontaktpersonen();
+            InitKrankenkasse();
+            InitAufenthaltService();
+            InitAufenthaltInfo();
 
             CreateCDAFachlicheSektionen();
-            PrintCDA();
+            PrintCDA(sFileName);
+            UpdateCDA(sFileName);
         }
 
         private void btnAddBeilageFrei_Click(object sender, EventArgs e)
