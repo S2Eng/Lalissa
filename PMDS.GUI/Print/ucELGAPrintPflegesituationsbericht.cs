@@ -336,15 +336,15 @@ namespace PMDS.GUI.Print
 
                 patientRole.Id = new SET<II> { new II { Root = Klient.ID.ToString(), AssigningAuthorityName = Klinik.Bezeichnung } };
 
-                if (String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr) && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Klient hat keine Sozialversicherungsnummer", StringComparison.OrdinalIgnoreCase))
+                if (Klient.Versicherungsdaten.VersicherungsNr != null && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Klient hat keine Sozialversicherungsnummer", StringComparison.OrdinalIgnoreCase))
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.NoInformation), AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
-                else if (String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr) && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Sozialversicherungsnummer unbekannt", StringComparison.OrdinalIgnoreCase))
+                else if (Klient.Versicherungsdaten.VersicherungsNr != null && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Sozialversicherungsnummer unbekannt", StringComparison.OrdinalIgnoreCase))
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.Unknown), AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
-                else if (!String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr))
+                else if (Klient.Versicherungsdaten.VersicherungsNr == null || String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr))
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", Extension = Klient.Versicherungsdaten.VersicherungsNr, AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
@@ -371,6 +371,7 @@ namespace PMDS.GUI.Print
                     patient.AdministrativeGenderCode = new CE<string> { Code = SEX.code, CodeSystem = SEX.codeSystem, CodeSystemName = "HL7:AdministrativeGender", DisplayName = SEX.displayName };
                 else
                 {
+                    patient.AdministrativeGenderCode = new CE<string> { };
                     patient.AdministrativeGenderCode.NullFlavor = new MARC.Everest.DataTypes.NullFlavor();
                     patient.AdministrativeGenderCode.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
                 }
@@ -2018,8 +2019,12 @@ namespace PMDS.GUI.Print
 
                     if (rPatInfo != null && !String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
                     {
-                        DateTime dt = (DateTime)rPatInfo.GenehmigungDatum;
-                        rtfPUBUMF_Text.Text += "Letzte genehmigte Pflegestufe: " + rPatInfo.Bezeichnung + " mit Bescheiddatum vom " + dt.ToString("dd.MM.yyyy") + "\r\n";
+                        rtfPUBUMF_Text.Text += "Letzte genehmigte Pflegestufe: " + rPatInfo.Bezeichnung;
+                        if (rPatInfo.GenehmigungDatum != null)
+                        {
+                            DateTime dt = (DateTime)rPatInfo.GenehmigungDatum;
+                            rtfPUBUMF_Text.Text += " mit Bescheiddatum vom " + dt.ToString("dd.MM.yyyy") + "\n";
+                        }
                         Sektionen[(int)SektionOrder.PflegeUndBetreuungsumfang].use = true;
                     }
 
