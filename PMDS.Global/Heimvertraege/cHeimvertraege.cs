@@ -220,51 +220,51 @@ namespace PMDS.Global.Heimverträge
                     byte[] bPDF;
                     if (frmPDF.OpenPDF(fileFullName, out bPDF))
                     {
-                        frmPDF.SetValue("PatientVorname", rPatInfo.Vorname);
-                        frmPDF.SetValue("PatientNachname", rPatInfo.Nachname);
+                        frmPDF.SetValue("PatientVorname", rPatInfo.Vorname, frmPDF.form);
+                        frmPDF.SetValue("PatientNachname", rPatInfo.Nachname, frmPDF.form);
                         if (rPatInfo.Geburtsdatum != null)
-                            frmPDF.SetValue("PatientGeburtsdatum", rPatInfo.Geburtsdatum.Value.ToString("dd.MM.yyyy") ?? "");
-                        frmPDF.SetValue("PatientGeburtsort", rPatInfo.Geburtsort);
-                        frmPDF.SetValue("PatientStraßeGassePlatzNrStgTür", sPatientStraßeGassePlatzNrStgTür);
-                        frmPDF.SetValue("PatientPLZOrt", sPatientPLZOrt);
-                        frmPDF.SetValue("PatientTelefon", sPatientTelefon);
+                            frmPDF.SetValue("PatientGeburtsdatum", rPatInfo.Geburtsdatum.Value.ToString("dd.MM.yyyy") ?? "", frmPDF.form);
+                        frmPDF.SetValue("PatientGeburtsort", rPatInfo.Geburtsort, frmPDF.form);
+                        frmPDF.SetValue("PatientStraßeGassePlatzNrStgTür", sPatientStraßeGassePlatzNrStgTür, frmPDF.form);
+                        frmPDF.SetValue("PatientPLZOrt", sPatientPLZOrt, frmPDF.form);
+                        frmPDF.SetValue("PatientTelefon", sPatientTelefon, frmPDF.form);
 
-                        frmPDF.SetValue("Am", dAm.ToString("dd.MM.yyyy"));
+                        frmPDF.SetValue("Am", dAm.ToString("dd.MM.yyyy"), frmPDF.form);
                         if (dVertragVon != null)
-                            frmPDF.SetValue("VertragBeginn", dVertragVon.Value.ToString("dd.MM.yyyy"));
+                            frmPDF.SetValue("VertragBeginn", dVertragVon.Value.ToString("dd.MM.yyyy"), frmPDF.form);
                         if (dVertragBis != null)
-                            frmPDF.SetValue("VertragEnde", dVertragBis.Value.ToString("dd.MM.yyyy"));
+                            frmPDF.SetValue("VertragEnde", dVertragBis.Value.ToString("dd.MM.yyyy"), frmPDF.form);
 
-                        frmPDF.SetValue("VertretungVorname", sVorname);
-                        frmPDF.SetValue("VertretungNachname", sNachname);
-                        frmPDF.SetValue("VertretungStraßeGassePlatzNrStgTür", sVertretungStraßeGassePlatzNrStgTür);
-                        frmPDF.SetValue("VertretungPLZ", sVertretungPlz);
-                        frmPDF.SetValue("VertretungOrt", sVertretungOrt);
-                        frmPDF.SetValue("VertretungTelefon", sVertretungTel);
-                        frmPDF.SetValue("VertretungFax", sVertretungFax);
-                        frmPDF.SetValue("VertretungEMail", sVertretungEMail);
+                        frmPDF.SetValue("VertretungVorname", sVorname, frmPDF.form);
+                        frmPDF.SetValue("VertretungNachname", sNachname, frmPDF.form);
+                        frmPDF.SetValue("VertretungStraßeGassePlatzNrStgTür", sVertretungStraßeGassePlatzNrStgTür, frmPDF.form);
+                        frmPDF.SetValue("VertretungPLZ", sVertretungPlz, frmPDF.form);
+                        frmPDF.SetValue("VertretungOrt", sVertretungOrt, frmPDF.form);
+                        frmPDF.SetValue("VertretungTelefon", sVertretungTel, frmPDF.form);
+                        frmPDF.SetValue("VertretungFax", sVertretungFax, frmPDF.form);
+                        frmPDF.SetValue("VertretungEMail", sVertretungEMail, frmPDF.form);
 
-                        frmPDF.SetValue("VertrPerVorname", VertrPerVorname);
-                        frmPDF.SetValue("VertrPerNachname", VertrPerNachname);
-                        frmPDF.SetValue("VertrPerStraßeGassePlatzNrStgTür", VertrPerStrasse);
-                        frmPDF.SetValue("VertrPerPLZ", VertrPerPlz);
-                        frmPDF.SetValue("VertrPerOrt", VertrPerOrt);
-                        frmPDF.SetValue("VertrPerTelefon", VertrPerTel);
-                        frmPDF.SetValue("VertrPerFax", VertrPerFax);
-                        frmPDF.SetValue("VertrPerEMail", VertrPerEmail);
+                        frmPDF.SetValue("VertrPerVorname", VertrPerVorname, frmPDF.form);
+                        frmPDF.SetValue("VertrPerNachname", VertrPerNachname, frmPDF.form);
+                        frmPDF.SetValue("VertrPerStraßeGassePlatzNrStgTür", VertrPerStrasse, frmPDF.form);
+                        frmPDF.SetValue("VertrPerPLZ", VertrPerPlz, frmPDF.form);
+                        frmPDF.SetValue("VertrPerOrt", VertrPerOrt, frmPDF.form);
+                        frmPDF.SetValue("VertrPerTelefon", VertrPerTel, frmPDF.form);
+                        frmPDF.SetValue("VertrPerFax", VertrPerFax, frmPDF.form);
+                        frmPDF.SetValue("VertrPerEMail", VertrPerEmail, frmPDF.form);
 
                         if (optVertretenDurch.Trim().ToLower().Equals("SachwalterUrkunde".Trim().ToLower()))
-                            frmPDF.SetValue("VertretenDurch", "1");
+                            frmPDF.SetValue("VertretenDurch", "1", frmPDF.form);
                         else if (optVertretenDurch.Trim().ToLower().Equals("EinstweiligerSachwalter".Trim().ToLower()))
-                            frmPDF.SetValue("VertretenDurch", "2");
+                            frmPDF.SetValue("VertretenDurch", "2", frmPDF.form);
                         else if (optVertretenDurch.Trim().ToLower().Equals("SchriftlichBevollmächtigter".Trim().ToLower()))
-                            frmPDF.SetValue("VertretenDurch", "3");
+                            frmPDF.SetValue("VertretenDurch", "3", frmPDF.form);
                         else if (optVertretenDurch.Trim().ToLower().Equals("MündlichBevollmächtigter".Trim().ToLower()))
-                            frmPDF.SetValue("VertretenDurch", "4");
+                            frmPDF.SetValue("VertretenDurch", "4", frmPDF.form);
                         else if (optVertretenDurch.Trim().ToLower().Equals("GeschäftsführerOhneAuftrag".Trim().ToLower()))
-                            frmPDF.SetValue("VertretenDurch", "5");
+                            frmPDF.SetValue("VertretenDurch", "5", frmPDF.form);
                         else if (optVertretenDurch.Trim().ToLower().Equals("Eigenberechtigt".Trim().ToLower()))
-                            frmPDF.SetValue("VertretenDurch", "6");
+                            frmPDF.SetValue("VertretenDurch", "6", frmPDF.form);
 
                         frmPDF.ShowBookmarks = false;
                         frmPDF.ShowOpenDialog = false;

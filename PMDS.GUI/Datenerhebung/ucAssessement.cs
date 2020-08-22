@@ -447,6 +447,7 @@ namespace PMDS.GUI
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
+                    
                     System.Linq.IQueryable<PMDS.db.Entities.Formular> tFormular = b.getFormularByID(_row.ID, db);
                     if (tFormular.Count() != 1)
                     {
@@ -465,12 +466,30 @@ namespace PMDS.GUI
                     txt += " / " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
 
                     DateTime GebDat = (DateTime)pat.Geburtsdatum;
+/*
                     SetHeader("#KLIENT#", pat.Nachname + " " + pat.Vorname, form.InterForm.Fields, "Text");
                     SetHeader("#KLIENTGEBDAT#", GebDat.ToString("dd.MM.yyyy"), form.InterForm.Fields, "Text");
                     SetHeader("#BENUTZERERSTELLT#", ENV.LoginInNameFrei, form.InterForm.Fields, "Text");
                     SetHeader("#DATUMERSTELLT#", DateTime.Now.ToString("dd.MM.yyyy HH:mm"), form.InterForm.Fields, "Text");
                     SetHeader("#DATUMERSTELLTDATE#", DateTime.Now.ToString("dd.MM.yyyy"), form.InterForm.Fields, "Text");
                     SetHeader("#DOCINFO#", txt, form.InterForm.Fields, "DocInfo");
+
+                    SetValue("#KLIENT#", pat.Nachname + " " + pat.Vorname, form);
+                    SetValue("#KLIENTGEBDAT#", GebDat.ToString("dd.MM.yyyy"), form);
+                    SetValue("#BENUTZERERSTELLT#", ENV.LoginInNameFrei, form);
+                    SetValue("#DATUMERSTELLT#", DateTime.Now.ToString("dd.MM.yyyy HH:mm"), form);
+                    SetValue("#DATUMERSTELLTDATE#", DateTime.Now.ToString("dd.MM.yyyy"), form);
+                    SetValue("#DOCINFO#", txt, form);
+*/
+                    PMDS.Global.print.FDF fDF = new Global.print.FDF();
+                    fDF.SetAllFDFFields(ENV.IDAUFENTHALT, form);
+                    PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
+                    frmPDF.SetValue("#KLIENT#", pat.Nachname + " " + pat.Vorname, form);
+                    frmPDF.SetValue("#KLIENTGEBDAT#", GebDat.ToString("dd.MM.yyyy"), form);
+                    frmPDF.SetValue("#BENUTZERERSTELLT#", ENV.LoginInNameFrei, form);
+                    frmPDF.SetValue("#DATUMERSTELLT#", DateTime.Now.ToString("dd.MM.yyyy HH:mm"), form);
+                    frmPDF.SetValue("#DATUMERSTELLTDATE#", DateTime.Now.ToString("dd.MM.yyyy"), form);
+                    frmPDF.SetValue("#DOCINFO#", txt, form);
 
                     Application.DoEvents();
                     this.LockPDFViewer = false;
@@ -544,6 +563,44 @@ namespace PMDS.GUI
             }
         }
 
+        public bool SetValue(string FieldName, string FieldValue, PdfForms form)
+        {
+            try
+            {
+                //Feld in Form suchen
+                foreach (var field in form.InterForm.Fields)
+                {
+                    if (field.FullName.Equals(FieldName, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        if (field.FieldType == Patagames.Pdf.Enums.FormFieldTypes.FPDF_FORMFIELD_TEXTFIELD)
+                        {
+                            field.Value = FieldValue;
+                            return true;
+                        }
+                        else if (field.FieldType == Patagames.Pdf.Enums.FormFieldTypes.FPDF_FORMFIELD_CHECKBOX)
+                        {
+                            for (int j = 0; j < field.Controls.Count(); j++)
+                            {
+                                if (field.Controls[j].ExportValue == FieldValue.ToString())
+                                {
+                                    field.CheckControl(j, true);
+                                    return true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("frmPDF, SetValue: " + ex.ToString());
+            }
+        }
 
 
 

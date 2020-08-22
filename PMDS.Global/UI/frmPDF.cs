@@ -129,7 +129,7 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
-        public bool SetValue(string FieldName, string FieldValue)
+        public bool SetValue(string FieldName, string FieldValue, PdfForms form)
         {
             try
             {
