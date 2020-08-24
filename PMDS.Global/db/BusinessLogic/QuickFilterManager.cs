@@ -27,13 +27,17 @@ namespace PMDS.BusinessLogic
 		// Liefert eine Guid[] aus einem durch , getrennten GUid string[]
 		public static Guid[] GuidArrayFromString(string sArray)
 		{
-			string[] sa = sArray.Split(',');
 			ArrayList al = new ArrayList();
-			if (al.Count > 0)
+			if (!String.IsNullOrWhiteSpace(sArray))
             {
-				foreach (string s in sa)
-                {
-					al.Add(new Guid(s));
+
+				string[] sa = sArray.Split(new char[] { ',' });
+				if (sa.Length > 0)
+				{
+					foreach (string s in sa)
+					{
+						al.Add(new Guid(s));
+					}
 				}
 			}
 			return (Guid[])al.ToArray(typeof(Guid));
