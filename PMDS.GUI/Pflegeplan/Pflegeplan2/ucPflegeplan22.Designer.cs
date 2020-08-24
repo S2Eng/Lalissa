@@ -34,9 +34,9 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucPflegeplan2));
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
@@ -74,10 +74,10 @@
             this.panelButtonOben = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelObenButtonRechts = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnPrint = new PMDS.GUI.ucButton(this.components);
-            this.btnVerordnungen2 = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelVOMedikamente = new System.Windows.Forms.Panel();
             this.btnVerordnungen = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnMedikamente = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnVerordnungen2 = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelButtonsRechtsUnten = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelButtonGesamt = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnRefresh = new PMDS.GUI.ucButton(this.components);
@@ -367,22 +367,8 @@
             this.btnPrint.TabStop = false;
             this.btnPrint.TYPE = PMDS.GUI.ucButton.ButtonType.Print;
             this.btnPrint.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnPrint.Visible = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click_1);
-            // 
-            // btnVerordnungen2
-            // 
-            this.btnVerordnungen2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnVerordnungen2.Appearance = appearance5;
-            this.btnVerordnungen2.AutoWorkLayout = false;
-            this.btnVerordnungen2.IsStandardControl = false;
-            this.btnVerordnungen2.Location = new System.Drawing.Point(627, 5);
-            this.btnVerordnungen2.Name = "btnVerordnungen2";
-            this.btnVerordnungen2.Size = new System.Drawing.Size(26, 25);
-            this.btnVerordnungen2.TabIndex = 27;
-            this.btnVerordnungen2.Visible = false;
-            this.btnVerordnungen2.Click += new System.EventHandler(this.btnVerordnungen2_Click);
             // 
             // panelVOMedikamente
             // 
@@ -421,6 +407,21 @@
             this.btnMedikamente.Size = new System.Drawing.Size(26, 25);
             this.btnMedikamente.TabIndex = 25;
             this.btnMedikamente.Click += new System.EventHandler(this.btnMedikamente_Click);
+            // 
+            // btnVerordnungen2
+            // 
+            this.btnVerordnungen2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnVerordnungen2.Appearance = appearance5;
+            this.btnVerordnungen2.AutoWorkLayout = false;
+            this.btnVerordnungen2.IsStandardControl = false;
+            this.btnVerordnungen2.Location = new System.Drawing.Point(627, 5);
+            this.btnVerordnungen2.Name = "btnVerordnungen2";
+            this.btnVerordnungen2.Size = new System.Drawing.Size(26, 25);
+            this.btnVerordnungen2.TabIndex = 27;
+            this.btnVerordnungen2.Visible = false;
+            this.btnVerordnungen2.Click += new System.EventHandler(this.btnVerordnungen2_Click);
             // 
             // panelButtonsRechtsUnten
             // 

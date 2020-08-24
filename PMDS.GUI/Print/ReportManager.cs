@@ -126,7 +126,7 @@ namespace PMDS.Print
             ReportManager.AddCrystalParameter(rpt, "IDKlinik_current", a.IDKlinik.ToString());
             ReportManager.AddCrystalParameter(rpt, "IDAbteilung_current", a.IDAbteilung.ToString());
 
-            ReportManager.AddCrystalParameter(rpt, "SHOWALL", bBeendeteAnzeigen ? "Y" : "N");
+            ReportManager.AddCrystalParameter(rpt, "SHOWALL", bBeendeteAnzeigen ? true : false);
             frmPrintPreview frm = new frmPrintPreview(rpt);
             frm.Show();
         }
