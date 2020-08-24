@@ -122,9 +122,9 @@ namespace PMDS.Print
 
             Aufenthalt a = new Aufenthalt(IDAufenthalt);
 
-            ReportManager.AddCrystalParameter(rpt, "IDAufenthalt_current", IDAufenthalt.ToString());
-            ReportManager.AddCrystalParameter(rpt, "IDKlinik_current", a.IDKlinik.ToString());
-            ReportManager.AddCrystalParameter(rpt, "IDAbteilung_current", a.IDAbteilung.ToString());
+            ReportManager.AddCrystalParameter(rpt, "IDAufenthalt_current", IDAufenthalt.ToString("B"));
+            ReportManager.AddCrystalParameter(rpt, "IDKlinik_current", a.IDKlinik.ToString("B"));
+            ReportManager.AddCrystalParameter(rpt, "IDAbteilung_current", a.IDAbteilung.ToString("B"));
 
             ReportManager.AddCrystalParameter(rpt, "SHOWALL", bBeendeteAnzeigen ? true : false);
             frmPrintPreview frm = new frmPrintPreview(rpt);
