@@ -367,7 +367,6 @@
             this.btnPrint.TabStop = false;
             this.btnPrint.TYPE = PMDS.GUI.ucButton.ButtonType.Print;
             this.btnPrint.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnPrint.Visible = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click_1);
             // 
             // panelVOMedikamente
