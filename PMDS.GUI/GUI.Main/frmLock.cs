@@ -261,11 +261,14 @@ namespace PMDS.GUI
 			bool bInfo = true;
             PasswordOk = false;
 
-			txtPasswort.Text = txtPasswort.Text.Trim();
             PMDS.BusinessLogic.Benutzer usr = new PMDS.BusinessLogic.Benutzer(ENV.USERID);
-		    // txtPasswort
+
+            // txtPasswort
+            if (txtPasswort.Visible)
 		    GuiUtil.ValidateField(txtPasswort, (txtPasswort.Text.Length > 0),
 			    ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+            else 
+                return true;
 
 		    if (txtPasswort.Text.Length > 0)
 		    {

@@ -47,7 +47,7 @@ namespace PMDS.GUI.Print
             if (!validateCboEinrichtung())
                 return;
 
-            _canClose = true;
+            _canClose = this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(true);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -57,8 +57,6 @@ namespace PMDS.GUI.Print
 
         private void frmELGAPrintPflegesituationsbericht_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_canClose)
-                this.ucELGAPrintPflegesituationsbericht1.btnGenerate_Click(sender, e);
             e.Cancel = !_canClose;
         }
 
@@ -139,7 +137,11 @@ namespace PMDS.GUI.Print
             Application.DoEvents();
             Infragistics.Win.ValueListItem sel = this.cbETo.SelectedItem;
             if (sel != null)
+            {
+                ucELGAPrintPflegesituationsbericht1.Enabled = true;
+                btnOK.Enabled = true;
                 ucELGAPrintPflegesituationsbericht1.Init((Guid)sel.DataValue, @"C:\Temp\Pflegesituationsbericht.xml");
+            }
         }
     }
 }

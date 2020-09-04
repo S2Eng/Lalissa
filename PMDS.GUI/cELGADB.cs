@@ -247,7 +247,8 @@ namespace PMDS.GUI.Print
                     Klient.Kontakt.Telefon = rKlient.Tel;
                     Klient.Kontakt.TelefonMobil = rKlient.Mobil;
                     Klient.Kontakt.eMail = rKlient.Email;
-                    Klient.ELGAAbgemeldet = (bool)rKlient.ELGAAbgemeldet;
+
+                    Klient.ELGAAbgemeldet = (rKlient.ELGAAbgemeldet == null ? true : (bool)rKlient.ELGAAbgemeldet);
                     Klient.ELGALocalID = rKlient.ELGALocalID;
                     Klient.ELGASOOJN = (bool)rKlient.ELGASOOJN;
                     Klient.Titel = rKlient.Titel;
@@ -377,6 +378,7 @@ namespace PMDS.GUI.Print
 
                     Guid IDAufenthalt = (Guid)rAufenthalt.ID;
                     DateTime AufnahmeZeit = (DateTime)rAufenthalt.Aufnahmezeitpunkt;
+                    Aufenthalt.ID = IDAufenthalt;
                     Aufenthalt.Aufnahmezeitpunkt = AufnahmeZeit;
                     Aufenthalt.Abteilung = rAufenthalt.Abteilung.Trim();
                 }
@@ -496,7 +498,7 @@ namespace PMDS.GUI.Print
                                  join kon in db.Kontakt on arzt.IDKontakt equals kon.ID
                                  join ap in db.PatientAerzte on arzt.ID equals ap.IDAerzte
                                  join pat in db.Patient on ap.IDPatient equals pat.ID
-                                 join auf in db.Aufenthalt on pat.ID equals auf.ID
+                                 join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
                                  where auf.ID == ENV.IDAUFENTHALT && arzt.ELGAHausarzt == true
                                  select new
                                  {
