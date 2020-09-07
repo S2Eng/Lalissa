@@ -443,15 +443,11 @@
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Syncfusion\Essential Studio\Windows\18.2.0.44\Assemblies\4.6\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.PdfViewer.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+    <Reference Include="Syncfusion.Pdf.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Syncfusion\Essential Studio\Windows\18.2.0.44\Assemblies\4.6\Syncfusion.PdfViewer.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Shared.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files (x86)\Syncfusion\Essential Studio\Windows\18.2.0.44\Assemblies\4.6\Syncfusion.Shared.Base.dll</HintPath>
+      <HintPath>..\Dlls\Syncfusion.Pdf.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
