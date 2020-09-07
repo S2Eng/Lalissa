@@ -37,12 +37,14 @@ using Syncfusion.Pdf.Interactive;
 using Patagames.Pdf.Net;
 using EnvDTE;
 using Syncfusion.Pdf.Parsing;
+using MARC.Everest.Connectors;
 
 namespace PMDS.GUI.Print
 {
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
-        public bool DatenOk { get; set; } = true;
+        public eStatusResult ReturnCode { get; set; } = eStatusResult.SendToELGA;
+
         private DateTime dNow = DateTime.Now;
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
         private Guid IDEmpfaenger { get; set; }
@@ -58,6 +60,13 @@ namespace PMDS.GUI.Print
         private cELGADB.Organistion Hausarzt = new cELGADB.Organistion();
         private List<cELGADB.Person> Kontaktpersonen = new List<cELGADB.Person>();
         private cELGADB.Organistion Krankenkasse = new cELGADB.Organistion();
+
+        public enum eStatusResult
+        {
+            SendToELGA = 1,
+            SaveToArchiv = 2,
+            MissingData = 3
+        }
 
         private enum eELGATypeSektion
         {
@@ -301,7 +310,7 @@ namespace PMDS.GUI.Print
 
             CheckData();
 
-            if (DatenOk)
+            if (ReturnCode != eStatusResult.MissingData)
             {
                 //Klassen für fachliche Sektionen aus DB befüllen
                 InitRTFTags();
@@ -325,27 +334,28 @@ namespace PMDS.GUI.Print
         {
             try
             {
-                bool isOk = true;
                 if (Klinik.ELGA_OID.Length < 12 || Klinik.ELGA_OID.Substring(0, 12) != "1.2.40.0.34.")
                 {
                     rtfMeldungen.Text += "Fehler: Einrichtung hat keine korrekte ELGA-OID: " + Klinik.ELGA_OID + ". Die Verarbeitung wurde abgebrochen.\r\n";
-                    DatenOk = false;
+                    ReturnCode = eStatusResult.MissingData;
                 }
 
                 if (String.IsNullOrEmpty(Klient.bPK))
                 {
                     rtfMeldungen.Text += "Fehler: Klient hat kein bereichsspezifisches Personenkennzeichen (bPK). Die Verarbeitung wurde abgebrochen.\r\n";
-                    DatenOk = false;
+                    ReturnCode = eStatusResult.MissingData;
                 }
 
                 if (Klient.ELGAAbgemeldet)
                 {
                     rtfMeldungen.Text += "Hinweis: Klient hat sich von ELGA abgemeldet. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
+                    ReturnCode = eStatusResult.SaveToArchiv;
                 }
 
                 if (Klient.ELGASOOJN)
                 {
                     rtfMeldungen.Text += "Hinweis: Klient hat ein situatives OptOut erklärt. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
+                    ReturnCode = eStatusResult.SaveToArchiv;
                 }
             }
             catch (Exception ex)
@@ -403,7 +413,7 @@ namespace PMDS.GUI.Print
                 else
                 {
                     rtfMeldungen.Text += "Fehler bei den Sozialversicherungsdaten. Die Verarbeitung wurde abgebrochen.\r\n";
-                    DatenOk = false;
+                    ReturnCode = eStatusResult.MissingData;
                     return;
                 }
                 patientRole.Id.Add(new II { Root = "1.2.40.0.10.2.1.1.149", Extension = Klient.bPK, AssigningAuthorityName = "Österreichische Stammzahlenregisterbehörde" });
@@ -792,7 +802,7 @@ namespace PMDS.GUI.Print
                     else
                     {
                         rtfMeldungen.Text += "Fehler: Krankenkasse '" + Klient.Versicherungsdaten.KrankenKasse + " ist ungültig (entspricht keinem ELGA-konformen Eintrag)\r\n";
-                        DatenOk = false;
+                        ReturnCode = eStatusResult.MissingData;
                     }
                 }
 
@@ -2931,7 +2941,7 @@ namespace PMDS.GUI.Print
         {
             try
             {
-                if (DatenOk)
+                if (ReturnCode != eStatusResult.MissingData)
                 {
                     //Header schreiben
                     rtfMeldungen2.Text = "";
@@ -2960,7 +2970,9 @@ namespace PMDS.GUI.Print
                 }
                 else
                 {
-                    rtfMeldungen2.Text = "Bitte beheben Sie die kritischen Fehler vor Erstellung eines Pflegesituationsberichts.";
+                    string strMessage = "Bitte beheben Sie die kritischen Fehler vor Erstellung eines Pflegesituationsberichts (siehe Meldungen).";
+                    rtfMeldungen2.Text = strMessage;
+                    MessageBox.Show(strMessage);
                     return false;
                 }
             }

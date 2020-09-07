@@ -96,7 +96,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucELGAPrintPflegesituationsbericht1.AutoScroll = true;
-            this.ucELGAPrintPflegesituationsbericht1.DatenOk = true;
             this.ucELGAPrintPflegesituationsbericht1.Enabled = false;
             this.ucELGAPrintPflegesituationsbericht1.Location = new System.Drawing.Point(12, 39);
             this.ucELGAPrintPflegesituationsbericht1.Name = "ucELGAPrintPflegesituationsbericht1";
