@@ -30,13 +30,19 @@ using Infragistics.Win.UltraWinGanttView;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 //using MARC.Everest.RMIM.UV.NE2010.REPC_MT000324UV01;
+using System.Text.RegularExpressions;
 
+using Patagames.Pdf;
+using Syncfusion.Pdf.Interactive;
+using Patagames.Pdf.Net;
+using EnvDTE;
+using Syncfusion.Pdf.Parsing;
 
 namespace PMDS.GUI.Print
 {
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
-        private bool DatenOk = true;
+        public bool DatenOk { get; set; } = true;
         private DateTime dNow = DateTime.Now;
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
         private Guid IDEmpfaenger { get; set; }
@@ -89,14 +95,16 @@ namespace PMDS.GUI.Print
             Entlassungsmanagment = 19,
             Patientenverfügung = 20,
             AbschliessendeBemerkungen = 21,
-            Beilagen = 22
+            Beilagen = 22,
+            None = 100
         }
 
         private enum RTFTyp
         {
             Text = 1,
             Res = 2,
-            Risk = 3
+            Risk = 3,
+            None = 100
         }
 
         private enum eTypeCDA
@@ -120,12 +128,11 @@ namespace PMDS.GUI.Print
             public II cdaSetID = new II(Guid.NewGuid());
             public int cdaVersion = 1;
             public ST cdaTitle = new ST("Pflegesituationsbericht");
-            public ccode cdaCode = new ccode { code = "28651-8", displayName = "Nurse Transfer Note", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" };
+            public ccode cdaCode = new ccode { code = "28651-8", displayName = "Nurse Transfer note", codeSystem = "2.16.840.1.113883.6.1", codeSystemName = "LOINC" };
             public List<II> cdatemplateIDs = new List<II> { new II { Root="1.2.40.0.34.11.1" , AssigningAuthorityName = "ELGA" },
                                                             new II { Root="1.2.40.0.34.11.12", AssigningAuthorityName="ELGA" },
                                                             new II { Root="1.2.40.0.34.11.12.0.3", AssigningAuthorityName="ELGA" }
                                                           };
-            public TS cdaEffectiveTime = new TS(DateTime.Now);
             public CE<x_BasicConfidentialityKind>  ccdaConfidentialityCode = new CE<x_BasicConfidentialityKind>(x_BasicConfidentialityKind.Normal, "2.16.840.1.113883.5.25", "HL7:Confidentiality", null);
             public string ccdaConfidentialityCodeDisplayName = "normal";
             public CS<string> ccdaLanguageCode = new CS<string>("de-AT");
@@ -176,6 +183,7 @@ namespace PMDS.GUI.Print
             public string value_mediaType = "application/pdf";
             public EncapsulatedDataRepresentation value_representation = EncapsulatedDataRepresentation.B64;
             public byte[] value = null;
+            public string sValue = "";
         }
 
         private class PflegediagnoseEntry
@@ -193,35 +201,36 @@ namespace PMDS.GUI.Print
             public PflegediagnosenEntryRelationship entryRelationship = new PflegediagnosenEntryRelationship();
         }
 
-        //private class VitalparameterObservation
-        //{
-        //    public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.3.4" , AssigningAuthorityName = "ELGA" },
-        //                                                  new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13", AssigningAuthorityName="IHE PCC" },
-        //                                                  new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2", AssigningAuthorityName="IHE PCC" },
-        //                                                  new II { Root="2.16.840.1.113883.10.20.1.31", AssigningAuthorityName="HL7 CCD" }
-        //                                                };
-        //    public string id_root;
-        //    public ccode code = new ccode();
-        //    public string text_reference;
-        //    public string statusCode_code = "completed";
-        //    public string value_xsi_type = "PQ";
-        //    public string value_code;
-        //    public string value_unit;
-        //}
+        private class VitalparameterEntryComponent
+        {
+            public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.3.4" , AssigningAuthorityName = "ELGA" },
+                                                          new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13", AssigningAuthorityName="IHE PCC" },
+                                                          new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2", AssigningAuthorityName="IHE PCC" },
+                                                          new II { Root="2.16.840.1.113883.10.20.1.31", AssigningAuthorityName="HL7 CCD" }
+                                                        };
+            public string id_root;
+            public ccode code = new ccode();
+            public string text_reference;
+            public string originaltext_reference;
+            public string statusCode_code = "completed";
+            public string value_xsi_type = "PQ";
+            public string value_value;
+            public string value_unit;
+            public DateTime effectivetime;
+        }
 
-        //private class VitalparameterEntry
-        //{
-        //    public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.3.3", AssigningAuthorityName = "ELGA" },
-        //                                                    new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1", AssigningAuthorityName="IHE PCC" },
-        //                                                    new II { Root="2.16.840.1.113883.10.20.1.32", AssigningAuthorityName="HL7 CCD" },
-        //                                                    new II { Root="2.16.840.1.113883.10.20.1.35", AssigningAuthorityName="HL7 CCD" },
-        //                                                  };
-        //    public Guid root;
-        //    public ccode code = new ccode { code = "46680005", codeSystem = "2.16.840.1.113883.6.96", codeSystemName = "SNOMED CT", displayName = "Vital signs" };
-        //    public CS<ActStatus> statusCode_code = new CS<ActStatus>(ActStatus.Completed);
-        //    public string effectiveTime;
-        //    public List<VitalparameterObservation> observations = new List<VitalparameterObservation>();
-        //}
+        private class VitalparameterEntry
+        {
+            public LIST<II> cdatemplateIDs = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.3.3", AssigningAuthorityName = "ELGA" },
+                                                            new II { Root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1", AssigningAuthorityName="IHE PCC" },
+                                                            new II { Root="2.16.840.1.113883.10.20.1.32", AssigningAuthorityName="HL7 CCD" },
+                                                            new II { Root="2.16.840.1.113883.10.20.1.35", AssigningAuthorityName="HL7 CCD" },
+                                                          };
+            public Guid root;
+            public ccode code = new ccode { code = "46680005", codeSystem = "2.16.840.1.113883.6.96", codeSystemName = "SNOMED CT", displayName = "Vital signs" };
+            public CS<ActStatus> statusCode_code = new CS<ActStatus>(ActStatus.Completed);
+            public List<VitalparameterEntryComponent> components = new List<VitalparameterEntryComponent>();
+        }
 
         private class Risiko
         {
@@ -252,7 +261,7 @@ namespace PMDS.GUI.Print
             public ccode code = new ccode { code = "", displayName = "", codeSystem = "", codeSystemName = "" };
             public string textHTML;
             public List<PflegediagnoseEntry> PflegediagnosenEntrys;
-            //public VitalparameterEntry VitalparamterEntry;
+            public VitalparameterEntry VitalparamterEntry;
             public Risiko Risiko;
             public HilfsmittelRessourcen HilfsmittelUndRessourcen;
             public List<BeilagenEntry> BeilagenEntries;
@@ -274,6 +283,7 @@ namespace PMDS.GUI.Print
         {
             IDEmpfaenger = pIDEmpfaenger;
             sFileName = pFileName;
+            Patagames.Pdf.Net.PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
 
             ReadAllELGACodes();
             ccda = new ClinicalDocument();
@@ -289,17 +299,59 @@ namespace PMDS.GUI.Print
             cELGADB.LoadKontaktpersonen(ref Kontaktpersonen);
             cELGADB.LoadKrankenkasse(ref Krankenkasse);
 
-            //Klassen für fachliche Sektionen aus DB befüllen
-            InitRTFTags();
-            InitSektionen();
-            LoadPDx();
-            LoadRessourcenRisiken();
-            LoadVitalparameter();
-            LoadMedDaten();
-            LoadRezepte();
-            LoadPatientenverfügung();
-            LoadPflegeUndBetreuungsumfang();
-            LoadBeilagen();
+            CheckData();
+
+            if (DatenOk)
+            {
+                //Klassen für fachliche Sektionen aus DB befüllen
+                InitRTFTags();
+                InitSektionen();
+                LoadPDx();
+                LoadRessourcenRisiken();
+                LoadVitalparameter();
+                LoadMedDaten();
+                LoadRezepte();
+                LoadPatientenverfügung();
+                LoadPflegeUndBetreuungsumfang();
+                LoadBeilagen();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void CheckData()
+        {
+            try
+            {
+                bool isOk = true;
+                if (Klinik.ELGA_OID.Length < 12 || Klinik.ELGA_OID.Substring(0, 12) != "1.2.40.0.34.")
+                {
+                    rtfMeldungen.Text += "Fehler: Einrichtung hat keine korrekte ELGA-OID: " + Klinik.ELGA_OID + ". Die Verarbeitung wurde abgebrochen.\r\n";
+                    DatenOk = false;
+                }
+
+                if (String.IsNullOrEmpty(Klient.bPK))
+                {
+                    rtfMeldungen.Text += "Fehler: Klient hat kein bereichsspezifisches Personenkennzeichen (bPK). Die Verarbeitung wurde abgebrochen.\r\n";
+                    DatenOk = false;
+                }
+
+                if (Klient.ELGAAbgemeldet)
+                {
+                    rtfMeldungen.Text += "Hinweis: Klient hat sich von ELGA abgemeldet. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
+                }
+
+                if (Klient.ELGASOOJN)
+                {
+                    rtfMeldungen.Text += "Hinweis: Klient hat ein situatives OptOut erklärt. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.CheckData: " + ex.ToString());
+            }
         }
 
         private void InitCDA()
@@ -314,7 +366,7 @@ namespace PMDS.GUI.Print
                 ccda.Id = Info.cdaID;
                 ccda.SetId = Info.cdaSetID;
                 ccda.VersionNumber = Info.cdaVersion;
-                ccda.EffectiveTime = Info.cdaEffectiveTime;
+                ccda.EffectiveTime = new TS(dNow, DatePrecision.Second);
                 ccda.ConfidentialityCode = Info.ccdaConfidentialityCode;
                 ccda.ConfidentialityCode.DisplayName = Info.ccdaConfidentialityCodeDisplayName;
                 ccda.LanguageCode = Info.ccdaLanguageCode;
@@ -334,32 +386,33 @@ namespace PMDS.GUI.Print
             {
                 PatientRole patientRole = new PatientRole();
 
-                patientRole.Id = new SET<II> { new II { Root = Klient.ID.ToString(), AssigningAuthorityName = Klinik.Bezeichnung } };
+                patientRole.Id = new SET<II> { new II { Root = Klient.ID.ToString().ToUpper(), AssigningAuthorityName = Klinik.Bezeichnung } };
 
-                if (Klient.Versicherungsdaten.VersicherungsNr != null && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Klient hat keine Sozialversicherungsnummer", StringComparison.OrdinalIgnoreCase))
+                if (SearchELGACode(Klient.Versicherungsdaten.SozVersLeerGrund, "SVE").code == "NI")
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.NoInformation), AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
-                else if (Klient.Versicherungsdaten.VersicherungsNr != null && Klient.Versicherungsdaten.SozVersLeerGrund.Equals("Sozialversicherungsnummer unbekannt", StringComparison.OrdinalIgnoreCase))
+                else if (SearchELGACode(Klient.Versicherungsdaten.SozVersLeerGrund, "SVE").code == "UNK")
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", NullFlavor = new CS<NullFlavor>(NullFlavor.Unknown), AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
-                else if (Klient.Versicherungsdaten.VersicherungsNr == null || String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr))
+                else if (!String.IsNullOrWhiteSpace(Klient.Versicherungsdaten.VersicherungsNr))
                 {
                     patientRole.Id.Add(new II { Root = "1.2.40.0.10.1.4.3.1", Extension = Klient.Versicherungsdaten.VersicherungsNr, AssigningAuthorityName = "Österreichische Sozialversicherung" });
                 }
                 else
                 {
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Fehler bei der Sozialversicherungsnummer. Dokument kann nicht erstellt werden!", MessageBoxButtons.OK, "Wichtiger Hinweis!");
+                    rtfMeldungen.Text += "Fehler bei den Sozialversicherungsdaten. Die Verarbeitung wurde abgebrochen.\r\n";
+                    DatenOk = false;
                     return;
                 }
                 patientRole.Id.Add(new II { Root = "1.2.40.0.10.2.1.1.149", Extension = Klient.bPK, AssigningAuthorityName = "Österreichische Stammzahlenregisterbehörde" });
 
 
                 if (Klient.WohnungAbgemeldetJN)
-                    patientRole.Addr = NewAdress(PostalAddressUse.PrimaryHome, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                    patientRole.Addr = NewAdress(PostalAddressUse.PrimaryHome, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land, "Adresse der Einrichtung (als Wohnsitz des Klienten");
                 else
-                    patientRole.Addr = NewAdress(PostalAddressUse.PrimaryHome, Klient.Adresse.PLZ, Klient.Adresse.Ort, Klient.Adresse.Strasse, null, Klient.Adresse.Land);
+                    patientRole.Addr = NewAdress(PostalAddressUse.PrimaryHome, Klient.Adresse.PLZ, Klient.Adresse.Ort, Klient.Adresse.Strasse, null, Klient.Adresse.Land, "Wohnadresse des Klienten");
 
                 patientRole.Telecom = MakeTel(Klient.Kontakt, TelecommunicationAddressUse.Home);
 
@@ -376,7 +429,7 @@ namespace PMDS.GUI.Print
                     patient.AdministrativeGenderCode.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
                 }
 
-                patient.BirthTime = new TS(Klient.Geburtsdatum);
+                patient.BirthTime = new TS(Klient.Geburtsdatum, DatePrecision.Day);
 
                 ccode FAM = SearchELGACode(Klient.Familienstand, "FAM");
                 if (FAM != null)
@@ -412,7 +465,7 @@ namespace PMDS.GUI.Print
 
                     Guardian Sachwalter = new Guardian();
                     Sachwalter.GuardianChoice = GuardianChoice.CreatePerson(sw.Name);
-                    Sachwalter.Addr = NewAdress(PostalAddressUse.WorkPlace, pSachwalter.Adresse.PLZ, pSachwalter.Adresse.Ort, pSachwalter.Adresse.Strasse, null, pSachwalter.Adresse.Land);
+                    Sachwalter.Addr = NewAdress(PostalAddressUse.WorkPlace, pSachwalter.Adresse.PLZ, pSachwalter.Adresse.Ort, pSachwalter.Adresse.Strasse, null, pSachwalter.Adresse.Land, "Erwachsenenvertreter " + pSachwalter.Nachname + " "  + pSachwalter.Vorname);
                     Sachwalter.Telecom = MakeTel(pSachwalter.Kontakt, TelecommunicationAddressUse.BadAddress);
                     patient.Guardian.Add(Sachwalter);
                 }
@@ -451,10 +504,11 @@ namespace PMDS.GUI.Print
                 Verfasser.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
                 author.AssignedAuthor.SetAssignedAuthorChoice(Verfasser);
 
+                author.Time = new TS(dNow, DatePrecision.Second); ;
                 Organization AuthorOrg = new Organization();
                 AuthorOrg.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
                 AuthorOrg.Name = MakeOrganistionName(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung);
-                AuthorOrg.Addr = NewAdress(PostalAddressUse.WorkPlace, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                AuthorOrg.Addr = NewAdress(PostalAddressUse.WorkPlace, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land, "Adresse der Einrichtung als Autor");
                 AuthorOrg.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.WorkPlace);
 
                 author.AssignedAuthor.RepresentedOrganization = AuthorOrg;
@@ -478,12 +532,13 @@ namespace PMDS.GUI.Print
                 Name.Part.Add(new ENXP(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung));
 
                 AD Adresse = new AD();
-                Adresse = NewAdress(PostalAddressUse.WorkPlace, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land).First();
+                Adresse = NewAdress(PostalAddressUse.WorkPlace, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land, "Adresse der Einrichtung (Verwahrer des Dokuments)").First();
 
                 TEL Telefon = new TEL();
                 if (!String.IsNullOrWhiteSpace(Klinik.Kontakt.Telefon))
                 {
-                    Telefon = new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.WorkPlace);
+                    string tel = Regex.Replace(Klinik.Kontakt.Telefon, "/[0-9-.()+]/g", "").Replace(" ", "");
+                    Telefon = new TEL("tel:" + tel, TelecommunicationAddressUse.WorkPlace);
                 }
 
                 Custodian Verwahrer = new Custodian(new AssignedCustodian());
@@ -530,10 +585,13 @@ namespace PMDS.GUI.Print
                     GeplEmpfänger.InformationRecipient.Name = new SET<PN> { new PN("An die Einrichtung") };
                     Empfaenger.IntendedRecipient = GeplEmpfänger;
 
-                    Organization org = new Organization();
-                    org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Empfaenger.ELGA_OID } };
+                    Organization org = new Organization();    
+                    if (!String.IsNullOrWhiteSpace(this.Empfaenger.ELGA_OID))
+                    {
+                        org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Empfaenger.ELGA_OID } };
+                    }
                     org.Name = MakeOrganistionName(this.Empfaenger.Bezeichnung);
-                    org.Addr = NewAdress(PostalAddressUse.WorkPlace, this.Empfaenger.Adresse.PLZ, this.Empfaenger.Adresse.Ort, this.Empfaenger.Adresse.Strasse, null, this.Empfaenger.Adresse.Land);
+                    org.Addr = NewAdress(PostalAddressUse.WorkPlace, this.Empfaenger.Adresse.PLZ, this.Empfaenger.Adresse.Ort, this.Empfaenger.Adresse.Strasse, null, this.Empfaenger.Adresse.Land, "Geplanter Empfänger des Dokuments (" + this.Empfaenger.Bezeichnung + ")");
                     org.Telecom = MakeTel(this.Empfaenger.Kontakt, TelecommunicationAddressUse.BadAddress);
                     GeplEmpfänger.ReceivedOrganization = org;
                 }
@@ -552,7 +610,7 @@ namespace PMDS.GUI.Print
             try
             {
                 LegalAuthenticator Unterzeichner = new LegalAuthenticator();
-                Unterzeichner.Time = new TS(dNow);
+                Unterzeichner.Time = new TS(dNow, DatePrecision.Second);
                 Unterzeichner.SignatureCode = new CS<string>("S");
 
                 AssignedEntity assignedEntity = new AssignedEntity(null, null, null, null, null, null);
@@ -566,7 +624,7 @@ namespace PMDS.GUI.Print
                 Organization org = new Organization();
                 org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
                 org.Name = MakeOrganistionName(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung);
-                org.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                org.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land, "Adresse der Einrichtung (Rechtlicher Unterzeichner)");
                 org.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.BadAddress);
 
                 assignedEntity.AssignedPerson = pers;
@@ -588,7 +646,7 @@ namespace PMDS.GUI.Print
                 Ansprechperson.TemplateId = new LIST<II> { new II { Root = "1.2.40.0.34.11.1.1.1" } };
 
                 AssociatedEntity assEnt = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));
-                assEnt.Telecom = new SET<TEL> { new TEL(Klinik.Kontakt.Telefon, TelecommunicationAddressUse.WorkPlace)};
+                assEnt.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.WorkPlace);
 
                 Person pers = new Person();                
                 pers.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, Benutzer.LedigerName, Benutzer.TitelPost);
@@ -596,7 +654,7 @@ namespace PMDS.GUI.Print
                 Organization org = new Organization();
                 org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = Klinik.ELGA_OID } };
                 org.Name = MakeOrganistionName(Klinik.Bezeichnung + ", " + Aufenthalt.Abteilung);
-                org.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land);
+                org.Addr = NewAdress(PostalAddressUse.Public, Klinik.Adresse.PLZ, Klinik.Adresse.Ort, Klinik.Adresse.Strasse, null, Klinik.Adresse.Land, "Adresse der Einrichtung (Ansprechperson)");
                 org.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.WorkPlace);
 
                 assEnt.AssociatedPerson = pers;
@@ -637,13 +695,17 @@ namespace PMDS.GUI.Print
                         org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Hausarzt.Arztdaten.ELGA_OrganizationOID } };
 
                     org.Name = MakeOrganistionName((this.Hausarzt.Arztdaten.Titel + " " + this.Hausarzt.Arztdaten.Vorname + this.Hausarzt.Arztdaten.Nachname).Trim());
-                    org.Addr = NewAdress(PostalAddressUse.Public, this.Hausarzt.Adresse.PLZ, this.Hausarzt.Adresse.Ort, this.Hausarzt.Adresse.Strasse, null, this.Hausarzt.Adresse.Land);
+                    org.Addr = NewAdress(PostalAddressUse.Public, this.Hausarzt.Adresse.PLZ, this.Hausarzt.Adresse.Ort, this.Hausarzt.Adresse.Strasse, null, this.Hausarzt.Adresse.Land, "Adresse des Hausarztes " + this.Hausarzt.Arztdaten.Nachname + " " + this.Hausarzt.Arztdaten.Vorname);
                     org.Telecom = MakeTel(this.Hausarzt.Kontakt, TelecommunicationAddressUse.BadAddress);
 
                     Hausarzt.AssociatedEntity.AssociatedPerson = pers;
                     Hausarzt.AssociatedEntity.ScopingOrganization = org;
                     Hausarzt.AssociatedEntity = assEnt;
                     ccda.Participant.Add(Hausarzt);
+                }
+                else
+                {
+                    rtfMeldungen2.Text += "Hinweis: Kein Hausarzt für ELGA gefunden.\r\n";
                 }
             }
             catch (Exception ex)
@@ -723,13 +785,13 @@ namespace PMDS.GUI.Print
                     {
                         Organization scopOrg = new Organization();
                         scopOrg.Name = MakeOrganistionName(this.Krankenkasse.Bezeichnung);
-                        scopOrg.Addr = NewAdress(PostalAddressUse.Public, this.Krankenkasse.Adresse.PLZ, this.Krankenkasse.Adresse.Ort, this.Krankenkasse.Adresse.Strasse, null, this.Krankenkasse.Adresse.Land);
+                        scopOrg.Addr = NewAdress(PostalAddressUse.Public, this.Krankenkasse.Adresse.PLZ, this.Krankenkasse.Adresse.Ort, this.Krankenkasse.Adresse.Strasse, null, this.Krankenkasse.Adresse.Land, "Adresse der Krankenkasse " + this.Krankenkasse.Bezeichnung);
                         scopOrg.Telecom = MakeTel(this.Krankenkasse.Kontakt, TelecommunicationAddressUse.BadAddress);
                         ascEnt.ScopingOrganization = scopOrg; ;
                     }
                     else
                     {
-                        MessageBox.Show("Krankenkasse '" + Klient.Versicherungsdaten.KrankenKasse + " ist ungültig (entspricht keinem ELGA-konformen Eintrag). Der Pflegesituationsbericht kann nicht fertig gestellt werden.");
+                        rtfMeldungen.Text += "Fehler: Krankenkasse '" + Klient.Versicherungsdaten.KrankenKasse + " ist ungültig (entspricht keinem ELGA-konformen Eintrag)\r\n";
                         DatenOk = false;
                     }
                 }
@@ -750,6 +812,7 @@ namespace PMDS.GUI.Print
                 DocumentationOf Service = new DocumentationOf(new ServiceEvent());
                 Service.ServiceEvent.Code = new CE<string> { Code = "GDLPUB", DisplayName = "Gesundheitsdienstleistung im Rahmen eines stationären Aufenthalts", CodeSystem = "1.2.40.0.34.5.21", CodeSystemName = "ELGA_ServiceEventsEntlassbrief" };
                 Service.ServiceEvent.EffectiveTime = new IVL<TS>(this.Aufenthalt.Aufnahmezeitpunkt, dNow);
+                Service.ServiceEvent.EffectiveTime.Low.DateValuePrecision = DatePrecision.Second;
                 Service.ServiceEvent.EffectiveTime.High.NullFlavor = NullFlavor.Unknown;
                 ccda.DocumentationOf.Add(Service);
             }
@@ -766,11 +829,13 @@ namespace PMDS.GUI.Print
                 Component1 componentOf = new Component1();
                 EncompassingEncounter encEncounter = new EncompassingEncounter();
 
-                encEncounter.Id = new SET<II> { new II(this.Klient.ID) };
+                encEncounter.Id = new SET<II> { new II(this.Aufenthalt.ID) };
                 encEncounter.Id[0].AssigningAuthorityName = this.Klinik.Bezeichnung;
-                encEncounter.Code = new CE<ActEncounterCode>(ActEncounterCode.InpatientEncounter, "2.16.840.1.113883.5.4", null, null, "inpatient encounter", null);
+                encEncounter.Code = new CE<ActEncounterCode>(ActEncounterCode.HomeHealth, "2.16.840.1.113883.5.4", null, null, "inpatient encounter", null);
                 encEncounter.Code.CodeSystemName = "HL7:ActCode";
                 encEncounter.EffectiveTime = new IVL<TS>(this.Aufenthalt.Aufnahmezeitpunkt, dNow);
+                encEncounter.EffectiveTime.Low.DateValuePrecision = DatePrecision.Day;               
+                encEncounter.EffectiveTime.High.NullFlavor = NullFlavor.Unknown;
 
                 ResponsibleParty resParty = new ResponsibleParty();
                 AssignedEntity assEnt = new AssignedEntity();
@@ -789,7 +854,7 @@ namespace PMDS.GUI.Print
                 facOrg.Id = new SET<II> { new II { Root = this.Klinik.ELGA_OID, AssigningAuthorityName = "GDA Index" } };
                 facOrg.Name = MakeOrganistionName(this.Klinik.Bezeichnung);
                 facOrg.Telecom = MakeTel(Klinik.Kontakt, TelecommunicationAddressUse.BadAddress);
-                facOrg.Addr = NewAdress(PostalAddressUse.Public, this.Klinik.Adresse.PLZ, this.Klinik.Adresse.Ort, this.Klinik.Adresse.Strasse, null, this.Klinik.Adresse.Land);
+                facOrg.Addr = NewAdress(PostalAddressUse.Public, this.Klinik.Adresse.PLZ, this.Klinik.Adresse.Ort, this.Klinik.Adresse.Strasse, null, this.Klinik.Adresse.Land, "Adresse der Einrichtung (Aufenthaltsinfo)");
 
                 facility.ServiceProviderOrganization = facOrg;
                 loc.HealthCareFacility = facility;
@@ -811,18 +876,20 @@ namespace PMDS.GUI.Print
             try
             {
                 SET<TEL> retVal = new SET<TEL>();
+                string tel = Regex.Replace(Kontakt.Telefon, "/[0-9-.()+]/g", "").Replace(" ", "").Replace("/", "");
+                string mob = Regex.Replace(Kontakt.TelefonMobil, "/[0-9-.()+]/g", "").Replace(" ", "").Replace("/", "");
 
                 if (!String.IsNullOrWhiteSpace(Kontakt.Telefon))
                 {
                     if (use != TelecommunicationAddressUse.BadAddress)
-                        retVal.Add(new TEL("tel:" + Kontakt.Telefon, use));
+                        retVal.Add(new TEL("tel:" + tel, use));
                     else
-                        retVal.Add(new TEL("tel:" + Kontakt.Telefon));
+                        retVal.Add(new TEL("tel:" + tel));
                 }
 
                 if (!String.IsNullOrWhiteSpace(Kontakt.TelefonMobil))
                 {
-                    retVal.Add(new TEL("tel:" + Kontakt.TelefonMobil, TelecommunicationAddressUse.MobileContact));
+                    retVal.Add(new TEL("tel:" + mob));
                 }
 
                 if (!String.IsNullOrWhiteSpace(Kontakt.eMail))
@@ -919,6 +986,9 @@ namespace PMDS.GUI.Print
         {
             try
             {
+                rtfMeldungen.Tag = new RTFTag { Order = SektionOrder.None, Tag = "Meldungen", Typ = RTFTyp.None };
+                rtfMeldungen2.Tag = new RTFTag { Order = SektionOrder.None, Tag = "Meldungen", Typ = RTFTyp.None };
+
                 rtfBRIEFT_Text.Tag = new RTFTag { Order = SektionOrder.Brieftext, Tag = "BRIEFT_TEXT", Typ = RTFTyp.Text };
 
                 rtfPFMOB_Text.Tag = new RTFTag { Order = SektionOrder.Mobilität, Tag = "PFMOB_TEXT", Typ = RTFTyp.Text };
@@ -1080,7 +1150,7 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.Vitalparameter,
                                             eELGATypeSektion.Vitalparameter,
                                             "Vitalparameter",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.7", AssigningAuthorityName = "ELGA" },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.7", AssigningAuthorityName = "ELGA" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.25", AssigningAuthorityName = "IHE PCC" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.1.5.3.2", AssigningAuthorityName = "IHE PCC" },
                                                            new II { Root = "2.16.840.1.113883.10.20.1.16", AssigningAuthorityName = "HL7 CCD" }
@@ -1109,7 +1179,7 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.PflegeUndBetreuungsumfang,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Pflege- und Betreuungsumfang",
-                                            new List<II> { new II { Root = "1.2.40.0.34.11.3.2.22", AssigningAuthorityName = "ELGA" } },
+                                            new List<II> { new II { Root = "1.2.40.0.34.11.12.2.2", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "PUBUMF", displayName = "Pflege- und Betreuungsumfang" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Entlassungsmanagment,
@@ -1124,7 +1194,7 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.Patientenverfügung,
                                             eELGATypeSektion.Patientenverfügung,
                                             "Patientenverfügungen und andere juridische Dokumente",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.4", AssigningAuthorityName = "ELGA" },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.4", AssigningAuthorityName = "ELGA" },
                                                            new II { Root = "1.3.6.1.4.1.19376.1.5.3.1.3.34", AssigningAuthorityName = "IHE PCC" },
                                                            new II { Root = "2.16.840.1.113883.10.20.1.1", AssigningAuthorityName = "HL7 CCD" },
                                                          },
@@ -1207,6 +1277,7 @@ namespace PMDS.GUI.Print
                         if (pdEntry.entryRelationship.observation.effectivTime_low_value > new DateTime(1, 1, 1))
                         {
                             observation.EffectiveTime.High.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
+                            observation.EffectiveTime.Low.DateValuePrecision = DatePrecision.Day;
                         }
                         else
                         {
@@ -1249,6 +1320,7 @@ namespace PMDS.GUI.Print
                         {
                             act.EffectiveTime.Low = new TS(pdEntry.effectiveTime_low_value);
                             act.EffectiveTime.Low.UpdateMode = null;
+                            act.EffectiveTime.Low.DateValuePrecision = DatePrecision.Day;
                             act.StatusCode = new CS<ActStatus>(ActStatus.Active);
                         }
                         else                        //für Empty PDx
@@ -1314,10 +1386,41 @@ namespace PMDS.GUI.Print
                     sect.Component.Add(comp5);
                 }
 
-                //if (sektion.VitalparamterEntry != null)
-                //{
-                //    //Wird nicht zwingend benötigt!
-                //}
+                if (sektion.VitalparamterEntry != null)
+                {
+
+                    foreach (VitalparameterEntryComponent VZcomp in sektion.VitalparamterEntry.components)
+                    {
+                        Entry entry = new Entry();
+                        entry.TypeCode = new CS<x_ActRelationshipEntry>(x_ActRelationshipEntry.DRIV);
+
+                        Organizer organizer = new Organizer(new CS<x_ActClassDocumentEntryOrganizer>(x_ActClassDocumentEntryOrganizer.CLUSTER));
+                        organizer.TemplateId = sektion.VitalparamterEntry.cdatemplateIDs;
+                        organizer.Id = new SET<II>(new II { Root = "O"+ VZcomp.id_root });
+                        organizer.Code = new CD<string> { Code = sektion.VitalparamterEntry.code.code, DisplayName = sektion.VitalparamterEntry.code.displayName, CodeSystem = sektion.VitalparamterEntry.code.codeSystem, CodeSystemName = sektion.VitalparamterEntry.code.codeSystemName }; 
+                        organizer.StatusCode = new CS<ActStatus>(ActStatus.Completed);
+                        organizer.EffectiveTime = new IVL<TS>(new TS(VZcomp.effectivetime, DatePrecision.Second));
+                        //organizer.EffectiveTime.Low.DateValuePrecision = DatePrecision.Second;
+
+                        Observation obs = new Observation();
+                        obs.MoodCode = new CS<x_ActMoodDocumentObservation>(x_ActMoodDocumentObservation.Eventoccurrence);
+                        obs.TemplateId = VZcomp.cdatemplateIDs;
+                        obs.Id = new SET<II>(new II { Root = VZcomp.id_root });
+                        obs.Code = new CD<string> { Code = VZcomp.code.code, DisplayName = VZcomp.code.displayName, CodeSystem = VZcomp.code.codeSystem, CodeSystemName = VZcomp.code.codeSystemName };
+                        obs.Code.OriginalText = new ED();
+                        obs.Code.OriginalText.Reference = "#" + VZcomp.originaltext_reference;
+                        obs.Text = new ED();
+                        obs.Text.Reference = "#" + VZcomp.text_reference;
+                        obs.Value = new PQ { Value = Convert.ToDecimal(VZcomp.value_value), Unit = VZcomp.value_unit };
+                        obs.StatusCode = new CS<ActStatus>(ActStatus.Completed);
+
+                        Component4 comp = new Component4();
+                        comp.ClinicalStatement = obs;
+                        organizer.Component.Add(comp);
+                        entry.ClinicalStatement = organizer;
+                        sect.Entry.Add(entry);
+                    }
+                }
 
                 //Beilagen
                 if (sektion.BeilagenEntries != null)
@@ -1325,9 +1428,14 @@ namespace PMDS.GUI.Print
                     foreach (BeilagenEntry Beilage in sektion.BeilagenEntries)
                     {
                         ENV.ELGAObservationMedia obs = new ENV.ELGAObservationMedia();
-                        obs.Value = new ED { MediaType = Beilage.value_mediaType, Representation = Beilage.value_representation, Data = Beilage.value };
+                        obs.Value = new ED { };
+                        //obs.Value.Data = Beilage.value;
+                        obs.Value.Data = Beilage.value;
+                        obs.Value.MediaType = Beilage.value_mediaType;
+                        obs.Value.Representation = Beilage.value_representation;
                         obs.ID = new ST(Beilage.id);
                         obs.TemplateId = Beilage.cdatemplateIDs;
+                        obs.LanguageCode = null;
 
                         Entry BeilageEntry = new Entry(null, null, obs);
                         sect.Entry.Add(BeilageEntry);
@@ -1402,6 +1510,7 @@ namespace PMDS.GUI.Print
                     }
                     else     //Leeres Pflegediagnosenentry (Pflicht-Element)
                     {
+                        rtfMeldungen.Text += "hinweis: Keine ELGA-konformen Pflegediagnosen gefunden.\r\n";
                         Guid Id = Guid.NewGuid();
 
                         PDxHTML += "<tr ID=\"pfdiag" + i.ToString() + "\">";
@@ -1417,7 +1526,7 @@ namespace PMDS.GUI.Print
                         PDx.entryRelationship.observation.text_reference = "#pfdiag" + i.ToString();
                         PDx.entryRelationship.observation.value_originalText_reference_value = "#pfdiag_diagnosis" + i.ToString();
 
-                        PDx.entryRelationship.observation.code.code = "160245001";
+                        PDx.entryRelationship.observation.code.code = "282291009";
                         PDx.entryRelationship.observation.code.displayName = "No current problems or disability";
                         PDx.entryRelationship.observation.code.codeSystem = "2.16.840.1.113883.6.96";
                         PDx.entryRelationship.observation.code.codeSystemName = "SNOMED CT";
@@ -1539,8 +1648,10 @@ namespace PMDS.GUI.Print
                                             Zahlenwert = zw.ZahlenWert,
                                             ZahlenwertFloat = zw.ZahlenWertFloat,
                                             Typ = ze.Typ,
-                                            ELGA_Unit = ze.ELGA_Unit,
-                                            ELGA_Code = ze.ELGA_Code,
+                                            ze.ELGA_Unit,
+                                            ze.ELGA_Code,
+                                            ze.ELGA_DisplayName,
+                                            ze.ELGA_CodeSystem,
                                             Zeitpunkt = pe.Zeitpunkt,
                                             Decimals = ze.MinValue,
                                             ZEID = ze.ID
@@ -1550,20 +1661,42 @@ namespace PMDS.GUI.Print
                     int i = 1;
                     foreach (var zw in tZusatzwerte)
                     {
-                        PDxHTML += "<tr ID=\"vitsig" + i.ToString() + "\">";
-                        PDxHTML += "<td ID=\"vitsigtype" + i.ToString() + "\">" + zw.Bezeichnung + "</td>";
+                        if (zw.ZEID != "ERF")       //Für Stuhlkontrolle gibt es keine LOINC-Klassifikation, daher muss dieser Eintrag woanders hin
+                        {
+                            if (Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry == null)
+                                Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry = new VitalparameterEntry();
 
-                        string Wert = "?";
-                        if (zw.Typ == 1)
-                            Wert = zw.Zahlenwert.ToString();
-                        else if (zw.Typ == 5)
-                            Wert = Math.Round((float)zw.ZahlenwertFloat, 2, MidpointRounding.AwayFromZero).ToString();
-                        else if (zw.Typ == 0)
-                            Wert = zw.Wert;
-                        PDxHTML += "<td>" + Wert + "</td>";
-                        PDxHTML += "<td>" + zw.ELGA_Unit + "</td>";
-                        PDxHTML += "<td>" + zw.Zeitpunkt.ToString() + "</td></tr>";
-                        i++;
+                            PDxHTML += "<tr ID=\"vitsig" + i.ToString() + "\">";
+                            PDxHTML += "<td ID=\"vitsigtype" + i.ToString() + "\">" + zw.Bezeichnung + "</td>";
+
+                            string Wert = "?";
+                            if (zw.Typ == 1)
+                                Wert = zw.Zahlenwert.ToString();
+                            else if (zw.Typ == 5)
+                                Wert = Math.Round((float)zw.ZahlenwertFloat, 2, MidpointRounding.AwayFromZero).ToString();
+                            else if (zw.Typ == 0)
+                                Wert = zw.Wert;
+                            PDxHTML += "<td>" + Wert + "</td>";
+                            PDxHTML += "<td>" + zw.ELGA_Unit + "</td>";
+                            PDxHTML += "<td>" + zw.Zeitpunkt.ToString() + "</td></tr>";
+                            i++;
+
+                            VitalparameterEntryComponent VZ = new VitalparameterEntryComponent();
+                            VZ.id_root = "VZ" + zw.ID.ToString("N");
+                            VZ.code = new ccode { code = zw.ELGA_Code, displayName = zw.ELGA_DisplayName, codeSystem = zw.ELGA_CodeSystem, codeSystemName = "LOINC" };
+                            VZ.text_reference = "vitsig" + i.ToString();
+                            VZ.originaltext_reference = "vitsigtype" + i.ToString();
+                            VZ.value_value = Wert;
+                            VZ.value_unit = zw.ELGA_Unit;
+                            VZ.effectivetime = (DateTime)zw.Zeitpunkt;
+
+                            Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry.components.Add(VZ);
+                            Sektionen[(int)SektionOrder.Vitalparameter].use = true;
+                        }
+                        else
+                        {
+
+                        }
                     }
 
                     PDxHTML += "</tbody></table>";
@@ -1594,8 +1727,8 @@ namespace PMDS.GUI.Print
                                      join mt in db.MedizinischeTypen on md.MedizinischerTyp equals mt.MedizinischerTyp
                                      where a.ID == ENV.IDAUFENTHALT
                                      && mt.MedizinischerTyp != 8 && mt.MedizinischerTyp != 15
-                                     && md.Von < DateTime.Now
-                                     && (md.Bis > DateTime.Now || md.Bis == null)
+                                     && md.Von < dNow
+                                     && (md.Bis > dNow || md.Bis == null)
                                      orderby (mt.MedizinischerTyp)
                                      select new
                                      {
@@ -1679,8 +1812,8 @@ namespace PMDS.GUI.Print
                                     join med in db.Medikament on re.IDMedikament equals med.ID
                                     join ar in db.Aerzte on re.IDAerzte equals ar.ID
                                     where re.IDAufenthalt == ENV.IDAUFENTHALT
-                                        && re.AbzugebenVon < DateTime.Now
-                                        && re.AbzugebenBis > DateTime.Now
+                                        && re.AbzugebenVon < dNow
+                                        && re.AbzugebenBis > dNow
                                     orderby re.BedarfsMedikationJN, med.Bezeichnung
                                     select new
                                     {
@@ -2101,8 +2234,8 @@ namespace PMDS.GUI.Print
                                      join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
 
                                      where auf.ID == ENV.IDAUFENTHALT && ordner.Bezeichnung == "ELGAPflegesituationsbericht" && dok.DateinameTyp == ".pdf"
-                                     && (dokein.GültigVon == null || dokein.GültigVon <= DateTime.Now)
-                                     && (dokein.GültigBis == null || dokein.GültigBis >= DateTime.Now)
+                                     && (dokein.GültigVon == null || dokein.GültigVon <= dNow)
+                                     && (dokein.GültigBis == null || dokein.GültigBis >= dNow)
 
                                      select new
                                      {
@@ -2208,6 +2341,7 @@ namespace PMDS.GUI.Print
                 string text = File.ReadAllText(sFilename);
                 text = text.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
                      text = text.Replace("|||", "<br/>");
+                text = text.Replace(" representation=\"TXT\"", "");
                 File.WriteAllText(sFilename, text);
                 
                 /*
@@ -2662,6 +2796,7 @@ namespace PMDS.GUI.Print
                 int iSizeTotal = 0;
                 int iMaxSize = 8000000;
                 string sMaxSize = (iMaxSize / 1000).ToString();
+                System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
 
                 foreach (UltraListViewItem rBeilage in lvSender.Items)
                 {
@@ -2670,77 +2805,161 @@ namespace PMDS.GUI.Print
                         string path = Path.Combine(rBeilage.SubItems["Archivordner"].Value.ToString(), rBeilage.SubItems["DateinameArchiv"].Value.ToString());
                         if (File.Exists(path))
                         {
-                            using (StreamReader streamReader = new StreamReader(path))
+                            List<BeilagenEntry> Beilagenliste = new List<BeilagenEntry>();
+                            BeilagenEntry Beilage = new BeilagenEntry();
+
+                            MemoryStream stream = new MemoryStream();
+
+                            PdfLoadedDocument pdf = new PdfLoadedDocument(System.IO.File.ReadAllBytes(path), true);
+
+                            if (pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A)
                             {
-
-                                List<BeilagenEntry> Beilagenliste = new List<BeilagenEntry>();
-                                BeilagenEntry Beilage = new BeilagenEntry();
-                                Beilage.value = System.Text.Encoding.UTF8.GetBytes(streamReader.ReadToEnd());
-
-                                iSizeTotal += Beilage.value.Length;
-
-                                if (iSizeTotal < iMaxSize)
+                                pdf.Save(stream);
+                                pdf.Close();
+                            }
+                            else
+                            {
+                                DialogResult res = DialogResult.Yes;
+                                if (rBeilage.SubItems["NoPDFA1aAccepted"].Value == null || !(bool)rBeilage.SubItems["NoPDFA1aAccepted"].Value)
                                 {
-                                    iCountBeilagen++;
-                                    string refObject = rBeilage.SubItems["ID"].Value.ToString();
-                                    string txtObject = rBeilage.Text;
-                                    BeilagenHiddenText += "<tr><td>" + txtObject + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr></tbody>";
-                                    Beilage.id = refObject;
-                                    Beilage.referencedObject = refObject;
+                                    res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Typ " + pdf.Conformance.ToString() + " des PDF-Dokument ist nicht PDF/A-1a.\nDer gesamte Pflegesituationsbericht kann dadurch ungültig werden.\nWollen Sie das PDF-Dokument dennoch verwenden?", MessageBoxButtons.YesNo, "Wichtiger Hinweis!");
+                                }
 
-                                    if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
-                                        Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+                                if (res == DialogResult.Yes)
+                                {
+                                    rBeilage.SubItems["NoPDFA1aAccepted"].Value = true;
+                                    Syncfusion.Pdf.PdfDocument pdfA1A = new Syncfusion.Pdf.PdfDocument(Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A);
 
-                                    Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(Beilage);
+                                    pdfA1A.ImportPage(pdf, 0);
+                                    pdfA1A.Save("C:\\temp\\pdfA1A_Importpage.pdf");
+
+
+                                    string[] source = { path };
+                                    Syncfusion.Pdf.PdfDocumentBase.Merge(pdfA1A, source);
+                                    pdfA1A.Save(stream);
+                                    pdfA1A.Close();
+                                    //pdfA1A.Save("C:\\temp\\pdfA1A.pdf");
                                 }
                                 else
                                 {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Die maximale Größe aller Anhänge darf " + sMaxSize + " kB nicht überschreiten!", MessageBoxButtons.OK, "Wichtiger Hinweis!");
                                     rBeilage.CheckState = CheckState.Unchecked;
+                                    rBeilage.SubItems["NoPDFA1aAccepted"].Value = false;
                                 }
+                            }
+
+                            Beilage.value = stream.ToArray();
+
+                            //Syncfusion.Pdf.PdfDocument document = new Syncfusion.Pdf.PdfDocument(Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A);
+                            //Syncfusion.Pdf.PdfPage page = document.Pages.Add();
+                            //Syncfusion.Pdf.Graphics.PdfGraphics graphics = page.Graphics;
+                            //Syncfusion.Pdf.Graphics.PdfBrush brush = new Syncfusion.Pdf.Graphics.PdfSolidBrush(Color.Black);
+                            //Font font = new Font("Arial", 20f, FontStyle.Regular);
+                            //Syncfusion.Pdf.Graphics.PdfFont pdfFont = new Syncfusion.Pdf.Graphics.PdfTrueTypeFont(font, FontStyle.Regular, 12, false, true);
+                            //graphics.DrawString("Hello world!", pdfFont, brush, new PointF(20, 20));
+                            //document.Save("C:\\temp\\pdfA1Agen.pdf");
+                            //document.Close(true);
+
+                            //Nur zur Ermittlung der Länge im XML erforderlich
+                            Chilkat.Crypt2 cr = new Chilkat.Crypt2
+                            {
+                                EncodingMode = "Base64"
+                            };
+                            var sb = new StringBuilder(cr.Encode(Beilage.value, "base64"));
+                            iSizeTotal += sb.ToString().Length;
+
+                            if (iSizeTotal < iMaxSize)
+                            {
+                                iCountBeilagen++;
+                                string refObject = "Beilage_" + rBeilage.SubItems["DateinameArchiv"].Value.ToString();
+                                string txtObject = rBeilage.Text;
+                                BeilagenHiddenText += "<tr><td>" + txtObject + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr>";
+                                Beilage.id = refObject;
+                                Beilage.referencedObject = refObject;
+
+                                if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
+                                    Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+
+                                Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(Beilage);
+                            }
+                            else
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Die maximale Größe aller Anhänge darf " + sMaxSize + " kB nicht überschreiten!", MessageBoxButtons.OK, "Wichtiger Hinweis!");
+                                rBeilage.CheckState = CheckState.Unchecked;
                             }
                         }
                     }
-                    BeilagenHiddenText += "</tbody></table>";
-
-                    if (iCountBeilagen > 0)
-                    {
-                        Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
-                        Sektionen[(int)SektionOrder.Beilagen].use = true;
-                    }
                     else
                     {
-                        Sektionen[(int)SektionOrder.Beilagen].textHTML = "";
-                        Sektionen[(int)SektionOrder.Beilagen].use = false;
+                        rBeilage.SubItems["NoPDFA1aAccepted"].Value = false;
                     }
+                }
+
+                BeilagenHiddenText += "</tbody></table>";
+                if (iCountBeilagen > 0)
+                {
+                    Sektionen[(int)SektionOrder.Beilagen].textHTML = BeilagenHiddenText;
+                    Sektionen[(int)SektionOrder.Beilagen].use = true;
+                }
+                else
+                {
+                    Sektionen[(int)SektionOrder.Beilagen].textHTML = "";
+                    Sektionen[(int)SektionOrder.Beilagen].use = false;
                 }
                 lblSize.Text = (Math.Round((float)iSizeTotal / 1000, 1)).ToString() + " kB von max. " + sMaxSize + " kB benutzt.";
             }
+
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.lvBeilagen_ItemCheckStateChanged: " + ex.ToString());
             }
         }
 
+        public bool GenerateCDA(bool Print)
+        {
+            try
+            {
+                if (DatenOk)
+                {
+                    //Header schreiben
+                    rtfMeldungen2.Text = "";
+                    InitCDA();
+                    InitKlient();
+                    InitAuthor();
+                    InitVerwahrer();
+                    InitEmpfaenger();
+                    InitRechtlicherUnterzeichner();
+                    InitAnsprechperson();
+                    InitHausarzt();
+                    InitKontaktpersonen();
+                    InitKrankenkasse();
+                    InitAufenthaltService();
+                    InitAufenthaltInfo();
+
+                    //Fachliche Sektionen schreiben
+                    CreateCDAFachlicheSektionen();
+
+                    if (Print)
+                    {
+                        PrintCDA(sFileName);
+                        UpdateCDA(sFileName);
+                    }
+                    return true;
+                }
+                else
+                {
+                    rtfMeldungen2.Text = "Bitte beheben Sie die kritischen Fehler vor Erstellung eines Pflegesituationsberichts.";
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.GenerateCDA: " + ex.ToString());
+            }
+        }
+
         public void btnGenerate_Click(object sender, EventArgs e)
         {
-            //Headerdaten in CDA-Dokument schreiben
-            InitCDA();
-            InitKlient();
-            InitAuthor();
-            InitVerwahrer();
-            InitEmpfaenger();
-            InitRechtlicherUnterzeichner();
-            InitAnsprechperson();
-            InitHausarzt();
-            InitKontaktpersonen();
-            InitKrankenkasse();
-            InitAufenthaltService();
-            InitAufenthaltInfo();
-
-            CreateCDAFachlicheSektionen();
-            PrintCDA(sFileName);
-            UpdateCDA(sFileName);
+            GenerateCDA(false);
         }
 
         private void btnAddBeilageFrei_Click(object sender, EventArgs e)
@@ -2770,17 +2989,58 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private SET<AD> NewAdress(PostalAddressUse Adressart, string ZIP, string City, string Street, string State, string Country)
+        private SET<AD> NewAdress(PostalAddressUse Adressart, string ZIP, string City, string Street, string State, string Country, string MsgText)
         {
+            ccode cCountry = SearchELGACode(Country, "LND");
+            if (cCountry.code != null)
+                Country = cCountry.code;
             try
             {
+                string sStreet = Street;
+                string sCity = City;
+                string sZIP = ZIP;
+                string sCountry = Country;
+
+                int iErr = 0;
+                string sErr = "";
+                if (String.IsNullOrWhiteSpace(sStreet))
+                {
+                    sStreet = "Unbekannt";
+                    sErr += " - Straße ist leer";
+                    iErr++;
+                }
+
+                if (String.IsNullOrWhiteSpace(sZIP))
+                {
+                    sZIP = "Unbekannt";
+                    sErr +=  " - PLZ ist leer";
+                    iErr++;
+                }
+
+                if (String.IsNullOrWhiteSpace(sCity))
+                {
+                    sCity = "Unbekannt";
+                    sErr += " - Ort ist leer";
+                    iErr++;
+                }
+
+                if (String.IsNullOrWhiteSpace(sCountry))
+                {
+                    sCountry = "Unbekannt";
+                    sErr += " - Land ist leer";
+                    iErr++;
+                }
+
+                if (iErr > 0)
+                    rtfMeldungen2.Text += "Hinweis: " + MsgText + sErr + "\r\n";
+
                 SET<AD> Addr = new SET<AD>(
                         new AD(Adressart,
                             new ADXP[]{
-                            new ADXP(Street, AddressPartType.StreetAddressLine),
-                            new ADXP(City, AddressPartType.City),
-                            new ADXP(ZIP, AddressPartType.PostalCode),
-                            new ADXP(Country, AddressPartType.Country)}));
+                            new ADXP(sStreet, AddressPartType.StreetAddressLine),
+                            new ADXP(sCity, AddressPartType.City),
+                            new ADXP(sZIP, AddressPartType.PostalCode),
+                            new ADXP(sCountry, AddressPartType.Country)}));
                 return Addr;
             }
             catch (Exception ex)
@@ -2830,7 +3090,11 @@ namespace PMDS.GUI.Print
         {
             try
             {
-                return ELGACodes.Where(x => x.Bezeichnung == sBezeichnung && x.IDAuswahllisteGruppe == sAuswahllisteGruppe).FirstOrDefault();
+                ccode c = ELGACodes.Where(x => x.Bezeichnung == sBezeichnung && x.IDAuswahllisteGruppe == sAuswahllisteGruppe).FirstOrDefault();
+                if (c != null)
+                    return c;
+                else
+                    return new ccode();
             }
             catch (Exception ex)
             {
@@ -2838,5 +3102,9 @@ namespace PMDS.GUI.Print
             }
         }
 
+        private void btnCreateDev_Click(object sender, EventArgs e)
+        {
+            GenerateCDA(true);
+        }
     }
 }

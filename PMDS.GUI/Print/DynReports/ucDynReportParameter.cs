@@ -299,7 +299,7 @@ namespace PMDS.GUI
                     if (PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
                     {
                         PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht PSB = new PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht();
-//                        PSB.ShowDialog();
+                        PSB.ShowDialog();
                     }
 
                     frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();

@@ -32,30 +32,21 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmELGAPrintPflegesituationsbericht));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            this.lblAnEinrichtung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cDAEntlassungsbriefToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cDAPflegesituationsberichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkInsArchiv = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.chkInsArchiv = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.lblAnEinrichtung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ucELGAPrintPflegesituationsbericht1 = new PMDS.GUI.Print.ucELGAPrintPflegesituationsbericht();
             this.btnCancel = new PMDS.GUI.ucButton(this.components);
             this.btnOK = new PMDS.GUI.ucButton(this.components);
             this.cbETo = new PMDS.GUI.BaseControls.EinrichtungsCombo();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkInsArchiv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkInsArchiv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbETo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblAnEinrichtung
-            // 
-            this.lblAnEinrichtung.AutoSize = true;
-            this.lblAnEinrichtung.Location = new System.Drawing.Point(12, 15);
-            this.lblAnEinrichtung.Name = "lblAnEinrichtung";
-            this.lblAnEinrichtung.Size = new System.Drawing.Size(81, 14);
-            this.lblAnEinrichtung.TabIndex = 2;
-            this.lblAnEinrichtung.Text = "An Einrichtung:";
             // 
             // contextMenuStrip1
             // 
@@ -77,6 +68,10 @@
             this.cDAPflegesituationsberichtToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.cDAPflegesituationsberichtToolStripMenuItem.Text = "CDA Pflegesituationsbericht";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // chkInsArchiv
             // 
             this.chkInsArchiv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -86,9 +81,14 @@
             this.chkInsArchiv.TabIndex = 18;
             this.chkInsArchiv.Text = "Ins Archiv ablegen";
             // 
-            // errorProvider1
+            // lblAnEinrichtung
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.lblAnEinrichtung.AutoSize = true;
+            this.lblAnEinrichtung.Location = new System.Drawing.Point(12, 15);
+            this.lblAnEinrichtung.Name = "lblAnEinrichtung";
+            this.lblAnEinrichtung.Size = new System.Drawing.Size(81, 14);
+            this.lblAnEinrichtung.TabIndex = 2;
+            this.lblAnEinrichtung.Text = "An Einrichtung:";
             // 
             // ucELGAPrintPflegesituationsbericht1
             // 
@@ -96,8 +96,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucELGAPrintPflegesituationsbericht1.AutoScroll = true;
+            this.ucELGAPrintPflegesituationsbericht1.DatenOk = true;
+            this.ucELGAPrintPflegesituationsbericht1.Enabled = false;
             this.ucELGAPrintPflegesituationsbericht1.Location = new System.Drawing.Point(12, 39);
             this.ucELGAPrintPflegesituationsbericht1.Name = "ucELGAPrintPflegesituationsbericht1";
+            this.ucELGAPrintPflegesituationsbericht1.sFileName = null;
             this.ucELGAPrintPflegesituationsbericht1.Size = new System.Drawing.Size(1264, 677);
             this.ucELGAPrintPflegesituationsbericht1.TabIndex = 19;
             // 
@@ -136,6 +139,7 @@
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
+            this.btnOK.Enabled = false;
             this.btnOK.IsStandardControl = true;
             this.btnOK.Location = new System.Drawing.Point(1180, 722);
             this.btnOK.Name = "btnOK";
@@ -176,8 +180,8 @@
             this.Load += new System.EventHandler(this.frmELGAPrintPflegesituationsbericht_Load);
             this.Shown += new System.EventHandler(this.frmELGAPrintPflegesituationsbericht_Shown);
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkInsArchiv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkInsArchiv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbETo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
