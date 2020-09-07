@@ -23,8 +23,8 @@ namespace PMDSClient.Sitemap
     public class WCFServiceClient
     {
 
-        public static string urlWCFServiceDefault = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
-
+        //public static string urlWCFServiceDefault = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
+        private static string urlWCFServiceDefault2 = "net.pipe://localhost/Design_Time_Addresses/WCFServicePMDS/Service1";
 
 
         public class cParsWCF
@@ -126,12 +126,21 @@ namespace PMDSClient.Sitemap
                     }
                     else
                     {
-                        urlWCFServiceBack = urlWCFServiceDefault.Trim();
+                        urlWCFServiceBack = urlWCFServiceDefault2.Trim();
                     }
 
                     PMDSClientWrapper.UrlWCFServicePMDS = urlWCFServiceBack.Trim();
-                    string sWCFServiceName = @PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() + "\\" + @PMDS.Global.ENV.WCFHostManager.Trim();
-                    System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
+                    string sWCFServiceName = @PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() + "\\" + @PMDS.Global.ENV.WCFHostManager.Trim() + ".exe";
+                    //MessageBox.Show(sWCFServiceName + "\r\n" + urlWCFServiceBack);
+
+                    Process proc = new Process();
+                    proc.StartInfo.FileName = sWCFServiceName;
+                    proc.StartInfo.UseShellExecute = true;
+                    //proc.StartInfo.Verb = "runas";
+                    proc.StartInfo.Arguments = "?typ=Background";
+                    proc.Start();
+
+                    //System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
                 }
 
                 cParsWCF ParsWCF = (cParsWCF)pars;
@@ -169,7 +178,7 @@ namespace PMDSClient.Sitemap
                 string UrlTmp = "";
                 if (localService)
                 {
-                    UrlTmp = urlWCFServiceDefault.Trim();
+                    UrlTmp = urlWCFServiceDefault2.Trim();
                 }
                 else
                 {
@@ -208,6 +217,24 @@ namespace PMDSClient.Sitemap
                         ReceiveTimeout = t10,
                         SendTimeout = t24
                     };
+
+                    var endpoint = new EndpointAddress(UrlTmp);
+                    QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client(binding, endpoint);
+                    //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
+                    return client;
+                }
+                else if (UrlTmp.Trim().ToLower().StartsWith(("net.pipe://").Trim().ToLower()))
+                {
+                    var binding = new NetNamedPipeBinding()
+                    {
+                        Name = "NetPipeBinding_PMDSService1",
+                        MaxBufferSize = 2147483647,
+                        MaxBufferPoolSize = 2147483647,
+                        MaxReceivedMessageSize = 2147483647,
+                        ReceiveTimeout = t10,
+                        SendTimeout = t24
+                    };
+
                     var endpoint = new EndpointAddress(UrlTmp);
                     QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client(binding, endpoint);
                     //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
@@ -274,8 +301,8 @@ namespace PMDSClient.Sitemap
                     {
                         var rRedist = tRedist.First();
                         
-                        urlWCFServiceBack = WCFServiceClient.urlWCFServiceDefault;
-                        urlWCFServiceBack = urlWCFServiceBack.Replace("http://localhost:8733", rRedist.WCFUrl);
+                        urlWCFServiceBack = WCFServiceClient.urlWCFServiceDefault2;
+                        urlWCFServiceBack = urlWCFServiceBack.Replace("net.pipe://localhost", rRedist.WCFUrl);
                         return true;
                     }
                     else if(tRedist.Count() == 0)
