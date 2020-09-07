@@ -1065,7 +1065,7 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.Brieftext,
                                             eELGATypeSektion.Brieftext,
                                             "Brieftext",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.1", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.1", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "BRIEFT", displayName = "Brieftext" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Pflegediagnosen,
@@ -1173,7 +1173,7 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.Anmerkungen,
                                             eELGATypeSektion.FachlicheSektion,
                                             "Anmerkungen",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.3.2.5", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.5", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "ANM", displayName = "Anmerkungen" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.PflegeUndBetreuungsumfang,
@@ -1597,8 +1597,7 @@ namespace PMDS.GUI.Print
                                 {
                                     if (Sektion.HilfsmittelUndRessourcen == null)
                                     {
-                                        HilfsmittelRessourcen Res = new HilfsmittelRessourcen();
-                                        Sektion.HilfsmittelUndRessourcen = Res;
+                                        Sektion.HilfsmittelUndRessourcen = new HilfsmittelRessourcen();
                                     }
                                     Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "\n";
                                     SetRTFTextByTag(this.Controls, R.Code + "_RES", R.Text + "\n");
@@ -1608,8 +1607,7 @@ namespace PMDS.GUI.Print
                                 {
                                     if (Sektion.Risiko == null)
                                     {
-                                        Risiko Ris = new Risiko();
-                                        Sektion.Risiko = Ris;
+                                        Sektion.Risiko = new Risiko();
                                     }
                                     Sektion.Risiko.textHTML += R.Text + "\n";
                                     SetRTFTextByTag(this.Controls, R.Code + "_RISK", R.Text + "\n");
@@ -1655,8 +1653,7 @@ namespace PMDS.GUI.Print
                                             Zeitpunkt = pe.Zeitpunkt,
                                             Decimals = ze.MinValue,
                                             ZEID = ze.ID
-                                        }).GroupBy(ze => ze.ELGA_Code).Select(g => g.OrderByDescending(pe => pe.Zeitpunkt).FirstOrDefault());
-                    ;
+                                        }).GroupBy(ze => ze.ELGA_Code).Select(g => g.OrderByDescending(pe => pe.Zeitpunkt).FirstOrDefault());                    
 
                     int i = 1;
                     foreach (var zw in tZusatzwerte)
@@ -1695,8 +1692,15 @@ namespace PMDS.GUI.Print
                         }
                         else
                         {
+                            //Stuhlkontrolle in Text Ausscheidung eintragen
+                            if (Sektionen[(int)SektionOrder.Ausscheidung].Risiko == null)
+                                Sektionen[(int)SektionOrder.Ausscheidung].Risiko = new Risiko();
 
-                        }
+                            string txtAUS = zw.Bezeichnung + ": " + zw.Wert + " am " + zw.Zeitpunkt.ToString() + "\n";
+                            Sektionen[(int)SektionOrder.Ausscheidung].Risiko.textHTML += txtAUS;
+                            SetRTFTextByTag(this.Controls, "PFAUS_RISK", txtAUS);
+                            Sektionen[(int)SektionOrder.Ausscheidung].use = true;
+                        }        
                     }
 
                     PDxHTML += "</tbody></table>";
@@ -2812,7 +2816,14 @@ namespace PMDS.GUI.Print
 
                             PdfLoadedDocument pdf = new PdfLoadedDocument(System.IO.File.ReadAllBytes(path), true);
 
-                            if (pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A)
+                            if (pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A ||
+                                pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1B ||
+                                pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A2B ||
+                                pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A2A ||
+                                pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A2U ||
+                                pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A3A ||
+                                pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A3B ||
+                                pdf.Conformance == Syncfusion.Pdf.PdfConformanceLevel.Pdf_A3U)
                             {
                                 pdf.Save(stream);
                                 pdf.Close();
@@ -2822,33 +2833,35 @@ namespace PMDS.GUI.Print
                                 DialogResult res = DialogResult.Yes;
                                 if (rBeilage.SubItems["NoPDFA1aAccepted"].Value == null || !(bool)rBeilage.SubItems["NoPDFA1aAccepted"].Value)
                                 {
-                                    res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Typ " + pdf.Conformance.ToString() + " des PDF-Dokument ist nicht PDF/A-1a.\nDer gesamte Pflegesituationsbericht kann dadurch ungültig werden.\nWollen Sie das PDF-Dokument dennoch verwenden?", MessageBoxButtons.YesNo, "Wichtiger Hinweis!");
-                                }
-
-                                if (res == DialogResult.Yes)
-                                {
-                                    rBeilage.SubItems["NoPDFA1aAccepted"].Value = true;
-                                    Syncfusion.Pdf.PdfDocument pdfA1A = new Syncfusion.Pdf.PdfDocument(Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A);
-
-                                    pdfA1A.ImportPage(pdf, 0);
-                                    pdfA1A.Save("C:\\temp\\pdfA1A_Importpage.pdf");
-
-
-                                    string[] source = { path };
-                                    Syncfusion.Pdf.PdfDocumentBase.Merge(pdfA1A, source);
-                                    pdfA1A.Save(stream);
-                                    pdfA1A.Close();
-                                    //pdfA1A.Save("C:\\temp\\pdfA1A.pdf");
-                                }
-                                else
-                                {
+                                    res = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Typ " + pdf.Conformance.ToString() + " des PDF-Dokument ist nicht PDF/A (1A-3B).\nDas PDF-Dokument darf nicht verwendet werden.", MessageBoxButtons.OK, "Wichtiger Hinweis!");
                                     rBeilage.CheckState = CheckState.Unchecked;
-                                    rBeilage.SubItems["NoPDFA1aAccepted"].Value = false;
+                                    rBeilage.SubItems["NoPDFA1aAccepted"].Value = true;
                                 }
+
+                                //if (res == DialogResult.Yes)
+                                //{
+                                //    rBeilage.SubItems["NoPDFA1aAccepted"].Value = true;
+                                //    Syncfusion.Pdf.PdfDocument pdfA1A = new Syncfusion.Pdf.PdfDocument(Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A);
+
+                                //    pdfA1A.ImportPage(pdf, 0);
+                                //    pdfA1A.Save("C:\\temp\\pdfA1A_Importpage.pdf");
+
+
+                                //    string[] source = { path };
+                                //    Syncfusion.Pdf.PdfDocumentBase.Merge(pdfA1A, source);
+                                //    pdfA1A.Save(stream);
+                                //    pdfA1A.Close();
+                                //    //pdfA1A.Save("C:\\temp\\pdfA1A.pdf");
+                                //}
+                                //else
+                                //{
+                                //    rBeilage.CheckState = CheckState.Unchecked;
+                                //    rBeilage.SubItems["NoPDFA1aAccepted"].Value = false;
+                                //}
                             }
 
                             Beilage.value = stream.ToArray();
-
+                            //Beispiel für ein korrektes PDF/A-1A-Dokument
                             //Syncfusion.Pdf.PdfDocument document = new Syncfusion.Pdf.PdfDocument(Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A);
                             //Syncfusion.Pdf.PdfPage page = document.Pages.Add();
                             //Syncfusion.Pdf.Graphics.PdfGraphics graphics = page.Graphics;
