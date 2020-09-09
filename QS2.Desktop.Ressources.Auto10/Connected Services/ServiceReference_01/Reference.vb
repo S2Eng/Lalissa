@@ -28,6 +28,12 @@ Namespace ServiceReference_01
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ConfigFilePMDSField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ConfigPathPMDSField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private DbField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
@@ -52,6 +58,32 @@ Namespace ServiceReference_01
             End Get
             Set
                 Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ConfigFilePMDS() As String
+            Get
+                Return Me.ConfigFilePMDSField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ConfigFilePMDSField, value) <> true) Then
+                    Me.ConfigFilePMDSField = value
+                    Me.RaisePropertyChanged("ConfigFilePMDS")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ConfigPathPMDS() As String
+            Get
+                Return Me.ConfigPathPMDSField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ConfigPathPMDSField, value) <> true) Then
+                    Me.ConfigPathPMDSField = value
+                    Me.RaisePropertyChanged("ConfigPathPMDS")
+                End If
             End Set
         End Property
         

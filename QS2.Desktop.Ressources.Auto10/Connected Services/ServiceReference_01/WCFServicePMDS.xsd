@@ -3,6 +3,8 @@
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ENVClientDto">
     <xs:sequence>
+      <xs:element minOccurs="0" name="ConfigFilePMDS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConfigPathPMDS" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Db" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IDClient" type="ser:guid" />
       <xs:element minOccurs="0" name="Pwd" nillable="true" type="xs:string" />

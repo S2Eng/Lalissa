@@ -146,9 +146,12 @@ namespace PMDSClient.Sitemap
                 cParsWCF ParsWCF = (cParsWCF)pars;
                 //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_Service1", ENV.UrlWCFServicePMDS.Trim());
                 QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = WCFServiceClient.getWCFClient(true);
+                
+                string sConfigPathTmp = System.IO.Path.GetDirectoryName(PMDS.Global.ENV.sConfigFile.Trim());
+                string sConfigFileTmp = System.IO.Path.GetFileName(PMDS.Global.ENV.sConfigFile.Trim());
 
                 WCFServiceClient.IDClient = System.Guid.NewGuid();
-                QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() {IDClient = WCFServiceClient.IDClient, Srv = RBU.DataBase.Srv, Usr = RBU.DataBase.m_sUser, Pwd = RBU.DataBase.m_sPassword, Db = RBU.DataBase.m_Database, trusted = RBU.DataBase.IsTrusted };
+                QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDS = sConfigPathTmp, ConfigFilePMDS = sConfigFileTmp, IDClient = WCFServiceClient.IDClient, Srv = RBU.DataBase.Srv, Usr = RBU.DataBase.m_sUser, Pwd = RBU.DataBase.m_sPassword, Db = RBU.DataBase.m_Database, trusted = RBU.DataBase.IsTrusted };
                 bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto);
 
                 if (!PMDS.Global.ENV.WCFServiceDebugMode)
