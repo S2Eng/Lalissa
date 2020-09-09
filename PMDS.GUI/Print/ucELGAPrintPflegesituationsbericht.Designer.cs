@@ -131,10 +131,8 @@
             this.rtfABBEM_Text = new System.Windows.Forms.RichTextBox();
             this.lblPATVERF = new Infragistics.Win.Misc.UltraLabel();
             this.rtfPATVERF_Text = new System.Windows.Forms.RichTextBox();
-            this.rtfANM_Risk = new System.Windows.Forms.RichTextBox();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.lblANM = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.rtfANM_Text = new System.Windows.Forms.RichTextBox();
             this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.pnlBeilagen = new Infragistics.Win.Misc.UltraPanel();
@@ -1226,7 +1224,7 @@
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.ultraPanel3);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -1239,10 +1237,8 @@
             this.ultraPanel3.ClientArea.Controls.Add(this.rtfABBEM_Text);
             this.ultraPanel3.ClientArea.Controls.Add(this.lblPATVERF);
             this.ultraPanel3.ClientArea.Controls.Add(this.rtfPATVERF_Text);
-            this.ultraPanel3.ClientArea.Controls.Add(this.rtfANM_Risk);
             this.ultraPanel3.ClientArea.Controls.Add(this.ultraLabel2);
             this.ultraPanel3.ClientArea.Controls.Add(this.lblANM);
-            this.ultraPanel3.ClientArea.Controls.Add(this.ultraLabel5);
             this.ultraPanel3.ClientArea.Controls.Add(this.rtfANM_Text);
             this.ultraPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraPanel3.Location = new System.Drawing.Point(0, 0);
@@ -1298,21 +1294,6 @@
             this.rtfPATVERF_Text.Text = "";
             this.rtfPATVERF_Text.TextChanged += new System.EventHandler(this.rtfPATVERF_Text_TextChanged);
             // 
-            // rtfANM_Risk
-            // 
-            this.rtfANM_Risk.AcceptsTab = true;
-            this.rtfANM_Risk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtfANM_Risk.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfANM_Risk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtfANM_Risk.Location = new System.Drawing.Point(712, 36);
-            this.rtfANM_Risk.Name = "rtfANM_Risk";
-            this.rtfANM_Risk.Size = new System.Drawing.Size(539, 170);
-            this.rtfANM_Risk.TabIndex = 1;
-            this.rtfANM_Risk.Tag = "ANM_RISK";
-            this.rtfANM_Risk.Text = "";
-            this.rtfANM_Risk.TextChanged += new System.EventHandler(this.rtfANM_Risk_TextChanged);
-            // 
             // ultraLabel2
             // 
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1331,15 +1312,6 @@
             this.lblANM.TabIndex = 18;
             this.lblANM.Text = "Anmerkungen";
             // 
-            // ultraLabel5
-            // 
-            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel5.Location = new System.Drawing.Point(712, 7);
-            this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(338, 23);
-            this.ultraLabel5.TabIndex = 21;
-            this.ultraLabel5.Text = "Risiken";
-            // 
             // rtfANM_Text
             // 
             this.rtfANM_Text.AcceptsTab = true;
@@ -1349,7 +1321,7 @@
             this.rtfANM_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtfANM_Text.Location = new System.Drawing.Point(150, 35);
             this.rtfANM_Text.Name = "rtfANM_Text";
-            this.rtfANM_Text.Size = new System.Drawing.Size(555, 170);
+            this.rtfANM_Text.Size = new System.Drawing.Size(1098, 170);
             this.rtfANM_Text.TabIndex = 0;
             this.rtfANM_Text.Tag = "ANM_TEXT";
             this.rtfANM_Text.Text = "";
@@ -1358,7 +1330,7 @@
             // ultraTabPageControl6
             // 
             this.ultraTabPageControl6.Controls.Add(this.pnlBeilagen);
-            this.ultraTabPageControl6.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl6.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl6.Name = "ultraTabPageControl6";
             this.ultraTabPageControl6.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -1621,10 +1593,8 @@
         private Infragistics.Win.Misc.UltraLabel lblPUBUMF;
         private System.Windows.Forms.RichTextBox rtfPUBUMF_Text;
         private Infragistics.Win.Misc.UltraPanel ultraPanel3;
-        private System.Windows.Forms.RichTextBox rtfANM_Risk;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
         private Infragistics.Win.Misc.UltraLabel lblANM;
-        private Infragistics.Win.Misc.UltraLabel ultraLabel5;
         private System.Windows.Forms.RichTextBox rtfANM_Text;
         private Infragistics.Win.Misc.UltraLabel lblPFATM;
         private System.Windows.Forms.RichTextBox rtfPFATM_Text;

@@ -38,6 +38,8 @@ using Patagames.Pdf.Net;
 using EnvDTE;
 using Syncfusion.Pdf.Parsing;
 using MARC.Everest.Connectors;
+using System.Xml.XPath;
+using System.Xml.Xsl;
 
 namespace PMDS.GUI.Print
 {
@@ -48,6 +50,7 @@ namespace PMDS.GUI.Print
         private DateTime dNow = DateTime.Now;
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
         private Guid IDEmpfaenger { get; set; }
+        private Guid IDAufenthalt { get; set; }
         public string sFileName { get; set; }
         private List<ccode> ELGACodes = new List<ccode>();
         private PMDS.GUI.Print. cELGADB.Organistion Klinik = new cELGADB.Organistion();
@@ -60,6 +63,14 @@ namespace PMDS.GUI.Print
         private cELGADB.Organistion Hausarzt = new cELGADB.Organistion();
         private List<cELGADB.Person> Kontaktpersonen = new List<cELGADB.Person>();
         private cELGADB.Organistion Krankenkasse = new cELGADB.Organistion();
+
+        private List<cELGADB.PDX> lPDX = new List<cELGADB.PDX>();
+        private List<cELGADB.RessourceRisiko> lRessourcenRisiken = new List<cELGADB.RessourceRisiko>();
+        private List<cELGADB.Vitalparameter> lVitalparameter = new List<cELGADB.Vitalparameter>();
+        private List<cELGADB.MedizinischeDaten> lMedizinischeDaten = new List<cELGADB.MedizinischeDaten>();
+        private List<cELGADB.Rezept> lRezepte = new List<cELGADB.Rezept>();
+        private cELGADB.Patientenverfügung Patientenverfügung = new cELGADB.Patientenverfügung();
+
 
         public enum eStatusResult
         {
@@ -288,9 +299,15 @@ namespace PMDS.GUI.Print
             InitializeComponent();
         }
 
-        public void Init(Guid pIDEmpfaenger, string pFileName)
+        private cELGADB.cParameters pDB = new cELGADB.cParameters();
+
+        public void Init(Guid pIDAufenthalt, Guid pIDEmpfaenger, string pFileName)
         {
-            IDEmpfaenger = pIDEmpfaenger;
+            pDB.IDAufenthalt = pIDAufenthalt;
+            pDB.IDEmpfänger = pIDEmpfaenger;
+            pDB.dNow = dNow;
+            pDB.IDUser = ENV.USERID;
+
             sFileName = pFileName;
             Patagames.Pdf.Net.PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
 
@@ -298,29 +315,38 @@ namespace PMDS.GUI.Print
             ccda = new ClinicalDocument();
 
             //Headerdaten aus DB lesen
-            cELGADB.LoadKlinik(ref Klinik);
-            cELGADB.LoadKlient(ref Klient);
-            cELGADB.LoadAufenthalt(ref Aufenthalt);
-            cELGADB.LoadSachwalter(ref lSachwalter);
-            cELGADB.LoadBenutzer(ref Benutzer);
-            cELGADB.LoadEmfaenger(ref Empfaenger);
-            cELGADB.LoadHausarzt(ref Hausarzt);
-            cELGADB.LoadKontaktpersonen(ref Kontaktpersonen);
-            cELGADB.LoadKrankenkasse(ref Krankenkasse);
+            cELGADB.LoadKlinik(ref Klinik, pDB);
+            cELGADB.LoadKlient(ref Klient, pDB);
+            cELGADB.LoadAufenthalt(ref Aufenthalt, pDB);
+            cELGADB.LoadSachwalter(ref lSachwalter, pDB);
+            cELGADB.LoadBenutzer(ref Benutzer, pDB);
+            cELGADB.LoadEmfaenger(ref Empfaenger, pDB);
+            cELGADB.LoadHausarzt(ref Hausarzt, pDB);
+            cELGADB.LoadKontaktpersonen(ref Kontaktpersonen, pDB);
+            cELGADB.LoadKrankenkasse(ref Krankenkasse, pDB);
+
+            cELGADB.LoadPDX(ref lPDX, pDB);
+            cELGADB.LoadRessourcenRisiken(ref lRessourcenRisiken, pDB);
+            cELGADB.LoadVitalparameter(ref lVitalparameter, pDB);
+            cELGADB.LoadMedizinischeDaten(ref lMedizinischeDaten, pDB);
+            cELGADB.LoadRezepte(ref lRezepte, pDB);
+            cELGADB.LoadPatientenverfügung(ref Patientenverfügung, pDB);
 
             CheckData();
 
             if (ReturnCode != eStatusResult.MissingData)
             {
-                //Klassen für fachliche Sektionen aus DB befüllen
+                //Oberfläche und Strukturen vorbereiten
                 InitRTFTags();
                 InitSektionen();
-                LoadPDx();
-                LoadRessourcenRisiken();
-                LoadVitalparameter();
-                LoadMedDaten();
-                LoadRezepte();
-                LoadPatientenverfügung();
+
+                //Klassen für fachliche Sektionen vorbereiten
+                PreparePDx();
+                PrepareRessourcenRisiken();
+                PrepareVitalparameter();
+                PrepareMedDaten();
+                PrepareRezepte();
+                PreparePatientenverfügung();
                 LoadPflegeUndBetreuungsumfang();
                 LoadBeilagen();
             }
@@ -1056,12 +1082,8 @@ namespace PMDS.GUI.Print
                 rtfPFMED_Risk.Tag = new RTFTag { Order = SektionOrder.Medikamentenverabreichung, Tag = "PFMED_RISK", Typ = RTFTyp.Risk };
 
                 rtfPUBUMF_Text.Tag = new RTFTag { Order = SektionOrder.PflegeUndBetreuungsumfang, Tag = "PUBUMF_TEXT", Typ = RTFTyp.Text };
-
                 rtfANM_Text.Tag = new RTFTag { Order = SektionOrder.Anmerkungen, Tag = "ANM_TEXT", Typ = RTFTyp.Text };
-                rtfANM_Risk.Tag = new RTFTag { Order = SektionOrder.Anmerkungen, Tag = "ANM_RISK", Typ = RTFTyp.Risk };
-
                 rtfPATVERF_Text.Tag = new RTFTag { Order = SektionOrder.Patientenverfügung, Tag = "PATVERF_TEXT", Typ = RTFTyp.Text };
-
                 rtfABBEM_Text.Tag = new RTFTag { Order = SektionOrder.AbschliessendeBemerkungen, Tag = "ABBEM_TEXT", Typ = RTFTyp.Text };
             }
             catch (Exception ex)
@@ -1214,7 +1236,7 @@ namespace PMDS.GUI.Print
             Sektionen.Add(CreateSektion((int)SektionOrder.AbschliessendeBemerkungen,
                                             eELGATypeSektion.AbschliessendeBemerkung,
                                             "Abschließende Bemerkungen",
-                                            new LIST<II> { new II { Root = "1.2.40.0.34.5.40", AssigningAuthorityName = "ELGA" } },
+                                            new LIST<II> { new II { Root = "1.2.40.0.34.11.1.2.2", AssigningAuthorityName = "ELGA" } },
                                             new ccode { code = "ABBEM", displayName = "Abschließende Bemerkungen" }));
 
             Sektionen.Add(CreateSektion((int)SektionOrder.Beilagen,
@@ -1462,84 +1484,36 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadPDx()
+        private void PreparePDx()
         {
             try
             {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                string PDxHTML = "<table>\r<thead>\r<tr><th>Diagnose</th><th>Lokalisierung</th><th>Zeitpunkt</th></tr></thead>\r";
+                PDxHTML += "<tbody>\r";
+
+                int i = 0;
+                if (lPDX.Count() > 0)
                 {
-                    string PDxHTML = "<table>\r<thead>\r<tr><th>Diagnose</th><th>Lokalisierung</th><th>Zeitpunkt</th></tr></thead>\r";
-                    PDxHTML += "<tbody>\r";
-
-                    var tPDx = (from apdx in db.AufenthaltPDx
-                                join pdx in db.PDX on apdx.IDPDX equals pdx.ID
-                                where apdx.IDAufenthalt == ENV.IDAUFENTHALT && (apdx.EndeDatum == null || apdx.ErledigtJN == false)
-                                orderby apdx.wundejn, pdx.Klartext
-                                select new
-                                {
-                                    Klartext = pdx.Klartext,
-                                    Lokalisierung = apdx.Lokalisierung,
-                                    LokalisierungSeite = apdx.LokalisierungSeite,
-                                    WundeJN = apdx.wundejn,
-                                    Startdatum = apdx.StartDatum,
-                                    Code = pdx.Code,
-                                    ID = apdx.ID
-                                });
-
-                    int i = 0;
-
-                    if (tPDx.Count() > 0)
+                    foreach (cELGADB.PDX pdx in lPDX)
                     {
-                        foreach (var pdx in tPDx)
-                        {
-                            DateTime Start = (DateTime)pdx.Startdatum;
-                            Guid Id = (Guid)pdx.ID;
-
-                            PDxHTML += "<tr ID=\"pfdiag" + i.ToString() + "\">";
-                            PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + pdx.Klartext + "</td>";
-                            PDxHTML += "<td>" + pdx.Lokalisierung + " " + pdx.LokalisierungSeite + "</td>";
-                            PDxHTML += "<td>" + Start.ToString("dd.MM.yyyy") + "</td>";
-                            PDxHTML += "</tr>\r";
-
-                            PflegediagnoseEntry PDx = new PflegediagnoseEntry();
-                            PDx.effectiveTime_low_value = Start;
-                            PDx.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
-                            PDx.entryRelationship.observation.id_root = Id;
-                            PDx.entryRelationship.observation.text_reference = "#pfdiag" + i.ToString();
-                            PDx.entryRelationship.observation.effectivTime_low_value = Start;
-                            PDx.entryRelationship.observation.value_code = pdx.Code;
-                            PDx.entryRelationship.observation.value_displayName = pdx.Klartext;
-                            PDx.entryRelationship.observation.value_originalText_reference_value = "#pfdiag_diagnosis" + i.ToString();
-
-                            if (Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys == null)
-                                Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys = new List<PflegediagnoseEntry>();
-
-                            Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys.Add(PDx);
-                            i++;
-                        }
-                    }
-                    else     //Leeres Pflegediagnosenentry (Pflicht-Element)
-                    {
-                        rtfMeldungen.Text += "hinweis: Keine ELGA-konformen Pflegediagnosen gefunden.\r\n";
-                        Guid Id = Guid.NewGuid();
+                        DateTime Start = (DateTime)pdx.Startdatum;
+                        Guid Id = (Guid)pdx.ID;
 
                         PDxHTML += "<tr ID=\"pfdiag" + i.ToString() + "\">";
-                        PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + "Keine Pflegediagnosen" + "</td>";
-                        PDxHTML += "<td></td>";
-                        PDxHTML += "<td></td>";
+                        PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + pdx.Klartext + "</td>";
+                        PDxHTML += "<td>" + pdx.Lokalisierung + " " + pdx.LokalisierungSeite + "</td>";
+                        PDxHTML += "<td>" + Start.ToString("dd.MM.yyyy") + "</td>";
                         PDxHTML += "</tr>\r";
 
                         PflegediagnoseEntry PDx = new PflegediagnoseEntry();
+                        PDx.effectiveTime_low_value = Start;
                         PDx.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
-
-                        PDx.entryRelationship.observation.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
+                        PDx.entryRelationship.observation.id_root = Id;
                         PDx.entryRelationship.observation.text_reference = "#pfdiag" + i.ToString();
+                        PDx.entryRelationship.observation.effectivTime_low_value = Start;
+                        PDx.entryRelationship.observation.value_code = pdx.Code;
+                        PDx.entryRelationship.observation.value_displayName = pdx.Klartext;
                         PDx.entryRelationship.observation.value_originalText_reference_value = "#pfdiag_diagnosis" + i.ToString();
-
-                        PDx.entryRelationship.observation.code.code = "282291009";
-                        PDx.entryRelationship.observation.code.displayName = "No current problems or disability";
-                        PDx.entryRelationship.observation.code.codeSystem = "2.16.840.1.113883.6.96";
-                        PDx.entryRelationship.observation.code.codeSystemName = "SNOMED CT";
 
                         if (Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys == null)
                             Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys = new List<PflegediagnoseEntry>();
@@ -1547,14 +1521,42 @@ namespace PMDS.GUI.Print
                         Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys.Add(PDx);
                         i++;
                     }
+                }
+                else     //Leeres Pflegediagnosenentry (Pflicht-Element)
+                {
+                    rtfMeldungen.Text += "hinweis: Keine ELGA-konformen Pflegediagnosen gefunden.\r\n";
+                    Guid Id = Guid.NewGuid();
 
-                    PDxHTML += "\r</tbody></table>";
-                    Sektionen[(int)SektionOrder.Pflegediagnosen].textHTML = PDxHTML;
-                    Sektionen[(int)SektionOrder.Pflegediagnosen].use = true;
+                    PDxHTML += "<tr ID=\"pfdiag" + i.ToString() + "\">";
+                    PDxHTML += "<td ID=\"pfdiag_diagnosis" + i.ToString() + "\">" + "Keine Pflegediagnosen" + "</td>";
+                    PDxHTML += "<td></td>";
+                    PDxHTML += "<td></td>";
+                    PDxHTML += "</tr>\r";
 
-                    wbDiagnosen.DocumentText = PDxHTML;
+                    PflegediagnoseEntry PDx = new PflegediagnoseEntry();
+                    PDx.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
+
+                    PDx.entryRelationship.observation.id_root = new Guid(Guid.NewGuid().ToString("D").ToUpper());
+                    PDx.entryRelationship.observation.text_reference = "#pfdiag" + i.ToString();
+                    PDx.entryRelationship.observation.value_originalText_reference_value = "#pfdiag_diagnosis" + i.ToString();
+
+                    PDx.entryRelationship.observation.code.code = "282291009";
+                    PDx.entryRelationship.observation.code.displayName = "No current problems or disability";
+                    PDx.entryRelationship.observation.code.codeSystem = "2.16.840.1.113883.6.96";
+                    PDx.entryRelationship.observation.code.codeSystemName = "SNOMED CT";
+
+                    if (Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys == null)
+                        Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys = new List<PflegediagnoseEntry>();
+
+                    Sektionen[(int)SektionOrder.Pflegediagnosen].PflegediagnosenEntrys.Add(PDx);
+                    i++;
                 }
 
+                PDxHTML += "\r</tbody></table>";
+                Sektionen[(int)SektionOrder.Pflegediagnosen].textHTML = PDxHTML;
+                Sektionen[(int)SektionOrder.Pflegediagnosen].use = true;
+
+                    wbDiagnosen.DocumentText = PDxHTML;
             }
             catch (Exception ex)
             {
@@ -1562,70 +1564,39 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadRessourcenRisiken()
+        private void PrepareRessourcenRisiken()
         {
             try
             {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                foreach (cELGADB.RessourceRisiko R in lRessourcenRisiken)
                 {
-                    //Alle Ressourcen (Eintraggruppe = "R") und Risiken (Eintraggruppe = "A") aus Pflegeplan holen
-                    var tR = (from apdx in db.AufenthaltPDx
-                              join pdx in db.PDX on apdx.IDPDX equals pdx.ID
-                              join PDxPM in db.PDXPflegemodelle on pdx.ID equals PDxPM.IDPDX
-                              join PM in db.Pflegemodelle on PDxPM.IDPflegemodelle equals PM.ID
-                              join PPPDx in db.PflegePlanPDx on apdx.ID equals PPPDx.IDAufenthaltPDx
-                              join e in db.Eintrag on PPPDx.IDEintrag equals e.ID
-                              join PP in db.PflegePlan on PPPDx.IDPflegePlan equals PP.ID
-
-                              where apdx.IDAufenthalt == ENV.IDAUFENTHALT &&
-                                    PM.Modell == "ELGA" &&
-                                    apdx.EndeDatum == null &&
-                                    PPPDx.ErledigtJN == false &&
-                                    (e.EintragGruppe == "R" || (e.EintragGruppe == "A" && pdx.Gruppe == 1))
-
-                              orderby e.EintragGruppe descending, PM.code, PP.Text
-
-                              select new
-                              {
-                                  Klartext = pdx.Klartext,
-                                  WundeJN = apdx.wundejn,
-                                  ID = PPPDx.IDPflegePlan,
-                                  Eintraggruppe = e.EintragGruppe,
-                                  Gruppe = pdx.Gruppe,
-                                  Text = PP.Text,
-                                  Code = PM.code
-                              });
-
-                    foreach (var R in tR)
+                    foreach (Sektion Sektion in Sektionen)
                     {
-                        foreach (Sektion Sektion in Sektionen)
+                        if (Sektion.code.code == R.Code)
                         {
-                            if (Sektion.code.code == R.Code)
+                            Sektion.use = true;
+                            if (R.Eintraggruppe == "R")
                             {
-                                Sektion.use = true;
-                                if (R.Eintraggruppe == "R")
+                                if (Sektion.HilfsmittelUndRessourcen == null)
                                 {
-                                    if (Sektion.HilfsmittelUndRessourcen == null)
-                                    {
-                                        Sektion.HilfsmittelUndRessourcen = new HilfsmittelRessourcen();
-                                    }
-                                    Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "\n";
-                                    SetRTFTextByTag(this.Controls, R.Code + "_RES", R.Text + "\n");
+                                    Sektion.HilfsmittelUndRessourcen = new HilfsmittelRessourcen();
                                 }
+                                Sektion.HilfsmittelUndRessourcen.textHTML += R.Text + "\n";
+                                SetRTFTextByTag(this.Controls, R.Code + "_RES", R.Text + "\n");
+                            }
 
-                                else if (R.Eintraggruppe == "A")
+                            else if (R.Eintraggruppe == "A")
+                            {
+                                if (Sektion.Risiko == null)
                                 {
-                                    if (Sektion.Risiko == null)
-                                    {
-                                        Sektion.Risiko = new Risiko();
-                                    }
-                                    Sektion.Risiko.textHTML += R.Text + "\n";
-                                    SetRTFTextByTag(this.Controls, R.Code + "_RISK", R.Text + "\n");
+                                    Sektion.Risiko = new Risiko();
                                 }
+                                Sektion.Risiko.textHTML += R.Text + "\n";
+                                SetRTFTextByTag(this.Controls, R.Code + "_RISK", R.Text + "\n");
                             }
                         }
                     }
-                }
+                }               
             }
             catch (Exception ex)
             {
@@ -1633,94 +1604,67 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadVitalparameter()
+        private void PrepareVitalparameter()
         {
             try
             {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                string PDxHTML = "<table>\r<thead><tr><th>Name</th><th>Wert</th><th>Einheit</th><th>Zeitpunkt</th></tr></thead>";
+                PDxHTML += "<tbody>";
+
+                int i = 0;
+                foreach (cELGADB.Vitalparameter zw in lVitalparameter)
                 {
-                    string PDxHTML = "<table>\r<thead><tr><th>Name</th><th>Wert</th><th>Einheit</th><th>Zeitpunkt</th></tr></thead>";
-                    PDxHTML += "<tbody>";
-
-                    var tZusatzwerte = (from pe in db.PflegeEintrag
-                                        join zw in db.ZusatzWert on pe.ID equals zw.IDObjekt
-                                        join zge in db.ZusatzGruppeEintrag on zw.IDZusatzGruppeEintrag equals zge.ID
-                                        join ze in db.ZusatzEintrag on zge.IDZusatzEintrag equals ze.ID
-                                        where zge.AktivJN == true && (ze.ELGA_ID > 0 || ze.ID == "ERF") && pe.IDAufenthalt == ENV.IDAUFENTHALT
-
-                                        select new
-                                        {
-                                            ID = zw.ID,
-                                            Bezeichnung = ze.Bezeichnung,
-                                            Wert = zw.Wert,
-                                            Zahlenwert = zw.ZahlenWert,
-                                            ZahlenwertFloat = zw.ZahlenWertFloat,
-                                            Typ = ze.Typ,
-                                            ze.ELGA_Unit,
-                                            ze.ELGA_Code,
-                                            ze.ELGA_DisplayName,
-                                            ze.ELGA_CodeSystem,
-                                            Zeitpunkt = pe.Zeitpunkt,
-                                            Decimals = ze.MinValue,
-                                            ZEID = ze.ID
-                                        }).GroupBy(ze => ze.ELGA_Code).Select(g => g.OrderByDescending(pe => pe.Zeitpunkt).FirstOrDefault());                    
-
-                    int i = 1;
-                    foreach (var zw in tZusatzwerte)
+                    if (zw.ZEID != "ERF")       //Für Stuhlkontrolle gibt es keine LOINC-Klassifikation, daher muss dieser in Risiko Ausscheidung
                     {
-                        if (zw.ZEID != "ERF")       //Für Stuhlkontrolle gibt es keine LOINC-Klassifikation, daher muss dieser Eintrag woanders hin
-                        {
-                            if (Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry == null)
-                                Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry = new VitalparameterEntry();
+                        i++;
+                        if (Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry == null)
+                            Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry = new VitalparameterEntry();
 
-                            PDxHTML += "<tr ID=\"vitsig" + i.ToString() + "\">";
-                            PDxHTML += "<td ID=\"vitsigtype" + i.ToString() + "\">" + zw.Bezeichnung + "</td>";
+                        PDxHTML += "<tr ID=\"vitsig" + i.ToString() + "\">";
+                        PDxHTML += "<td ID=\"vitsigtype" + i.ToString() + "\">" + zw.Bezeichnung + "</td>";
 
-                            string Wert = "?";
-                            if (zw.Typ == 1)
-                                Wert = zw.Zahlenwert.ToString();
-                            else if (zw.Typ == 5)
-                                Wert = Math.Round((float)zw.ZahlenwertFloat, 2, MidpointRounding.AwayFromZero).ToString();
-                            else if (zw.Typ == 0)
-                                Wert = zw.Wert;
-                            PDxHTML += "<td>" + Wert + "</td>";
-                            PDxHTML += "<td>" + zw.ELGA_Unit + "</td>";
-                            PDxHTML += "<td>" + zw.Zeitpunkt.ToString() + "</td></tr>";
-                            i++;
+                        string Wert = "?";
+                        if (zw.Typ == 1)
+                            Wert = zw.Zahlenwert.ToString();
+                        else if (zw.Typ == 5)
+                            Wert = Math.Round((float)zw.ZahlenwertFloat, 2, MidpointRounding.AwayFromZero).ToString();
+                        else if (zw.Typ == 0)
+                            Wert = zw.Wert;
+                        PDxHTML += "<td>" + Wert + "</td>";
+                        PDxHTML += "<td>" + zw.ELGA_Unit + "</td>";
+                        PDxHTML += "<td>" + zw.Zeitpunkt.ToString() + "</td></tr>";
 
-                            VitalparameterEntryComponent VZ = new VitalparameterEntryComponent();
-                            VZ.id_root = "VZ" + zw.ID.ToString("N");
-                            VZ.code = new ccode { code = zw.ELGA_Code, displayName = zw.ELGA_DisplayName, codeSystem = zw.ELGA_CodeSystem, codeSystemName = "LOINC" };
-                            VZ.text_reference = "vitsig" + i.ToString();
-                            VZ.originaltext_reference = "vitsigtype" + i.ToString();
-                            VZ.value_value = Wert;
-                            VZ.value_unit = zw.ELGA_Unit;
-                            VZ.effectivetime = (DateTime)zw.Zeitpunkt;
+                        VitalparameterEntryComponent VZ = new VitalparameterEntryComponent();
+                        VZ.id_root = "VZ" + zw.ID.ToString("N");
+                        VZ.code = new ccode { code = zw.ELGA_Code, displayName = zw.ELGA_DisplayName, codeSystem = zw.ELGA_CodeSystem, codeSystemName = "LOINC" };
+                        VZ.text_reference = "vitsig" + i.ToString();
+                        VZ.originaltext_reference = "vitsigtype" + i.ToString();
+                        VZ.value_value = Wert;
+                        VZ.value_unit = zw.ELGA_Unit;
+                        VZ.effectivetime = (DateTime)zw.Zeitpunkt;
 
-                            Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry.components.Add(VZ);
-                            Sektionen[(int)SektionOrder.Vitalparameter].use = true;
-                        }
-                        else
-                        {
-                            //Stuhlkontrolle in Text Ausscheidung eintragen
-                            if (Sektionen[(int)SektionOrder.Ausscheidung].Risiko == null)
-                                Sektionen[(int)SektionOrder.Ausscheidung].Risiko = new Risiko();
-
-                            string txtAUS = zw.Bezeichnung + ": " + zw.Wert + " am " + zw.Zeitpunkt.ToString() + "\n";
-                            Sektionen[(int)SektionOrder.Ausscheidung].Risiko.textHTML += txtAUS;
-                            SetRTFTextByTag(this.Controls, "PFAUS_RISK", txtAUS);
-                            Sektionen[(int)SektionOrder.Ausscheidung].use = true;
-                        }        
-                    }
-
-                    PDxHTML += "</tbody></table>";
-
-                    if (i > 1)
-                    {
+                        Sektionen[(int)SektionOrder.Vitalparameter].VitalparamterEntry.components.Add(VZ);
                         Sektionen[(int)SektionOrder.Vitalparameter].use = true;
-                        Sektionen[(int)SektionOrder.Vitalparameter].textHTML = PDxHTML;
-                        wbVitalzeichen.DocumentText = PDxHTML;
                     }
+                    else
+                    {
+                        //Stuhlkontrolle in Text Ausscheidung eintragen
+                        if (Sektionen[(int)SektionOrder.Ausscheidung].Risiko == null)
+                            Sektionen[(int)SektionOrder.Ausscheidung].Risiko = new Risiko();
+
+                        string txtAUS = zw.Bezeichnung + ": " + zw.Wert + " am " + zw.Zeitpunkt.ToString() + "\n";
+                        Sektionen[(int)SektionOrder.Ausscheidung].Risiko.textHTML += txtAUS;
+                        SetRTFTextByTag(this.Controls, "PFAUS_RISK", txtAUS);
+                        Sektionen[(int)SektionOrder.Ausscheidung].use = true;
+                    }        
+                }
+                PDxHTML += "</tbody></table>";
+
+                if (i > 1)
+                {
+                    Sektionen[(int)SektionOrder.Vitalparameter].use = true;
+                    Sektionen[(int)SektionOrder.Vitalparameter].textHTML = PDxHTML;
+                    wbVitalzeichen.DocumentText = PDxHTML;
                 }
             }
             catch (Exception ex)
@@ -1729,85 +1673,44 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadMedDaten()
+        private void PrepareMedDaten()
         {
             try
-            {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+            {              
+                string mdText = "";
+                foreach (cELGADB.MedizinischeDaten rMedDaten in lMedizinischeDaten)
                 {
-                    var tMedDaten = (from md in db.MedizinischeDaten
-                                     join p in db.Patient on md.IDPatient equals p.ID
-                                     join a in db.Aufenthalt on p.ID equals a.IDPatient
-                                     join mt in db.MedizinischeTypen on md.MedizinischerTyp equals mt.MedizinischerTyp
-                                     where a.ID == ENV.IDAUFENTHALT
-                                     && mt.MedizinischerTyp != 8 && mt.MedizinischerTyp != 15
-                                     && md.Von < dNow
-                                     && (md.Bis > dNow || md.Bis == null)
-                                     orderby (mt.MedizinischerTyp)
-                                     select new
-                                     {
-                                         md.Von,
-                                         md.Bis,
-                                         md.Beschreibung,
-                                         md.Bemerkung,
-                                         md.Typ,
-                                         md.Groesse,
-                                         md.Modell,
-                                         md.LetzteVersorgung,
-                                         md.NaechsteVersorgung,
-                                         md.AntikoaguliertJN,
-                                         MTBeschreibung = mt.Beschreibung
-                                     });
+                    mdText += "- " + rMedDaten.MTBeschreibung + " :";
 
-                    string mdText = "";
-                    foreach (var rMedDaten in tMedDaten)
-                    {
-                        DateTime von = (DateTime)rMedDaten.Von;
-                        DateTime bis = new DateTime(1900, 1, 1);
-                        if (rMedDaten.Bis != null)
-                            bis = (DateTime)rMedDaten.Bis;
+                    if (rMedDaten.Beschreibung != "")
+                        mdText += " " + rMedDaten.Beschreibung;
 
-                        DateTime letzteVersorung = new DateTime(1900, 1, 1);
-                        if (rMedDaten.LetzteVersorgung != null)
-                            letzteVersorung = (DateTime)rMedDaten.LetzteVersorgung;
+                    mdText += (rMedDaten.Bis > new DateTime(1900, 1, 1) ? " von" : " seit");
+                    mdText += " " + rMedDaten.Von.ToString("dd.MM.yyyy");
+                    if (rMedDaten.Bis > new DateTime(1900, 1, 1))
+                        mdText += " bis " + rMedDaten.Bis.ToString("dd.MM.yyyy");
 
-                        DateTime naechsteVersorgung = new DateTime(1900, 1, 1);
-                        if (rMedDaten.NaechsteVersorgung != null)
-                            naechsteVersorgung = (DateTime)rMedDaten.NaechsteVersorgung;
+                    if (rMedDaten.Typ != null && !String.IsNullOrWhiteSpace(rMedDaten.Typ))
+                        mdText += ", " + rMedDaten.Typ;
 
-                        mdText += "- " + rMedDaten.MTBeschreibung + ":";
-                        mdText += " " + von.ToString("dd.MM.yyyy") + " -";
-                        if (bis > new DateTime(1900, 1, 1))
-                            mdText += " " + bis.ToString("dd.MM.yyyy");
+                    if (rMedDaten.Modell != null && !String.IsNullOrWhiteSpace(rMedDaten.Modell))
+                        mdText += ", Modell=" + rMedDaten.Modell;
 
-                        if (rMedDaten.Beschreibung != "")
-                            mdText += ", " + rMedDaten.Beschreibung;
+                    if (rMedDaten.Groesse != null && !String.IsNullOrWhiteSpace(rMedDaten.Groesse))
+                        mdText += ", Größe=" + rMedDaten.Groesse;
 
-                        if (rMedDaten.Typ != null && !String.IsNullOrWhiteSpace(rMedDaten.Typ))
-                            mdText += ", " + rMedDaten.Typ;
+                    if (rMedDaten .LetzteVersorgung> new DateTime(1900, 1, 1))
+                        mdText += "letzte Versorung " + rMedDaten.LetzteVersorgung.ToString("dd.MM.yyyy");
 
-                        if (rMedDaten.Modell != null && !String.IsNullOrWhiteSpace(rMedDaten.Modell))
-                            mdText += ", Modell=" + rMedDaten.Modell;
+                    if (rMedDaten.NaechsteVersorgung > new DateTime(1900, 1, 1))
+                        mdText += "nächste Versorung " + rMedDaten.NaechsteVersorgung.ToString("d.MM.yyyy");
 
-                        if (rMedDaten.Groesse != null && !String.IsNullOrWhiteSpace(rMedDaten.Groesse))
-                            mdText += ", Größe=" + rMedDaten.Groesse;
+                    if (rMedDaten.AntikoaguliertJN)
+                        mdText += ", antikoaguliert!";
 
-                        if (letzteVersorung > new DateTime(1900, 1, 1))
-                            mdText += "letzte Versorung " + letzteVersorung.ToString("dd.MM.yyyy");
-
-                        if (naechsteVersorgung > new DateTime(1900, 1, 1))
-                            mdText += "nächste Versorung " + naechsteVersorgung.ToString("d.MM.yyyy");
-
-                        if (rMedDaten.AntikoaguliertJN != null)
-                        {
-                            if ((bool)rMedDaten.AntikoaguliertJN)
-                                mdText += ", antikoaguliert";
-                        }
-
-                        mdText += "\n";
-                        rtfPFMEDBEH_Text.Text = mdText;
-                        CheckSektionUsed(SektionOrder.Patientenverfügung);
-                    }
+                    mdText += "\n";
+                    rtfPFMEDBEH_Text.Text = mdText;
+                    CheckSektionUsed(SektionOrder.Patientenverfügung);
                 }
             }
             catch (Exception ex)
@@ -1816,71 +1719,46 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadRezepte()
+        private void PrepareRezepte()
         {
             try
             {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                string rez = "Verordnungen:\n";
+                foreach (cELGADB.Rezept rRezept in lRezepte)
                 {
-                    var tRezepte = (from re in db.RezeptEintrag
-                                    join med in db.Medikament on re.IDMedikament equals med.ID
-                                    join ar in db.Aerzte on re.IDAerzte equals ar.ID
-                                    where re.IDAufenthalt == ENV.IDAUFENTHALT
-                                        && re.AbzugebenVon < dNow
-                                        && re.AbzugebenBis > dNow
-                                    orderby re.BedarfsMedikationJN, med.Bezeichnung
-                                    select new
-                                    {
-                                        med.Bezeichnung,
-                                        re.DosierungASString,
-                                        re.Einheit,
-                                        re.Applikationsform,
-                                        re.AbzugebenVon,
-                                        re.AbzugebenBis,
-                                        re.Bemerkung,
-                                        re.BedarfsMedikationJN,
-                                        ar.Nachname,
-                                        ar.Vorname,
-                                        ar.Titel,
-                                        re.DatumErstellt
-                                    });
-                    string rez = "Verordnungen:\n";
-                    foreach (var rRezept in tRezepte)
-                    {
-                        DateTime von = (DateTime)rRezept.AbzugebenVon;
-                        DateTime bis = (DateTime)rRezept.AbzugebenBis;
-                        DateTime VoDatum = (DateTime)rRezept.DatumErstellt;
+                    DateTime von = (DateTime)rRezept.AbzugebenVon;
+                    DateTime bis = (DateTime)rRezept.AbzugebenBis;
+                    DateTime VoDatum = (DateTime)rRezept.DatumErstellt;
 
-                        rez += "- " + rRezept.Bezeichnung + ", ";
-                        rez += rRezept.DosierungASString;
-                        //rez += " " + rRezept.Einheit;
-                        //rez += " " + rRezept.Applikationsform;
-                        rez += " ab " + von.ToString("dd.MM.yyyy HH:mm");
-                        if (bis < new DateTime(3000, 1, 1, 23, 59, 59))
-                            rez += " - " + rRezept.AbzugebenBis.ToString("dd.MM.yyyy HH:mm");
+                    rez += "- " + rRezept.Bezeichnung + ", ";
+                    rez += rRezept.DosierungASString;
+                    //rez += " " + rRezept.Einheit;
+                    //rez += " " + rRezept.Applikationsform;
+                    rez += " ab " + von.ToString("dd.MM.yyyy HH:mm");
+                    if (bis < new DateTime(3000, 1, 1, 23, 59, 59))
+                        rez += " - " + rRezept.AbzugebenBis.ToString("dd.MM.yyyy HH:mm");
 
-                        if (rRezept.BedarfsMedikationJN == true)
-                            rez += " (EINZELVERORDUNG)";
+                    if (rRezept.BedarfsMedikationJN == true)
+                        rez += " (EINZELVERORDUNG)";
 
-                        if (!String.IsNullOrWhiteSpace(rRezept.Bemerkung))
-                            rez += " " + rRezept.Bemerkung;
+                    if (!String.IsNullOrWhiteSpace(rRezept.Bemerkung))
+                        rez += " " + rRezept.Bemerkung;
 
-                        rez += ", verordnet: ";
-                        if (!String.IsNullOrWhiteSpace(rRezept.Titel))
-                            rez += " " + rRezept.Titel;
+                    rez += ", verordnet: ";
+                    if (!String.IsNullOrWhiteSpace(rRezept.Titel))
+                        rez += " " + rRezept.Titel;
 
-                        if (!String.IsNullOrWhiteSpace(rRezept.Vorname))
-                            rez += " " + rRezept.Vorname;
+                    if (!String.IsNullOrWhiteSpace(rRezept.Vorname))
+                        rez += " " + rRezept.Vorname;
 
-                        if (!String.IsNullOrWhiteSpace(rRezept.Nachname))
-                            rez += " " + rRezept.Nachname;
+                    if (!String.IsNullOrWhiteSpace(rRezept.Nachname))
+                        rez += " " + rRezept.Nachname;
 
-                        rez += " (" + rRezept.DatumErstellt.ToString("dd.MM.yyyy") + ")";
-                        rez += "\n";
-                        rtfPFMED_Text.Text = rez;
-                        CheckSektionUsed(SektionOrder.Medikamentenverabreichung);
+                    rez += " (" + rRezept.DatumErstellt.ToString("dd.MM.yyyy") + ")";
+                    rez += "\n";
+                    rtfPFMED_Text.Text = rez;
+                    CheckSektionUsed(SektionOrder.Medikamentenverabreichung);
                     }
-                }
             }
             catch (Exception ex)
             {
@@ -1888,33 +1766,17 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadPatientenverfügung()
+        private void PreparePatientenverfügung()
         {
             try
             {
                 rtfPATVERF_Text.Text = "";
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                if (Patientenverfügung.PatientenverfuegungJN == true)
                 {
-                    var rPatInfo = (from p in db.Patient
-                                    join a in db.Aufenthalt on p.ID equals a.IDPatient
-                                    where a.ID == ENV.IDAUFENTHALT
-                                    select new
-                                    {
-                                        p.Nachname,
-                                        p.Vorname,
-                                        p.PatientenverfuegungJN,
-                                        p.PatientverfuegungDatum,
-                                        p.PatientenverfuegungBeachtlichJN,
-                                        p.PatientverfuegungAnmerkung,
-                                        Konfession = p.Konfision
-                                    }).FirstOrDefault();
-                    if (rPatInfo.PatientenverfuegungJN == true)
-                    {
-                        DateTime dt = (DateTime)rPatInfo.PatientverfuegungDatum;
-                        rtfPATVERF_Text.Text += (rPatInfo.PatientenverfuegungBeachtlichJN == false ? "Beachtliche " : "Verbindliche ");
-                        rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + rPatInfo.PatientverfuegungAnmerkung.ToString();
-                        Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
-                    }
+                    DateTime dt = Patientenverfügung.PatientverfuegungDatum;
+                    rtfPATVERF_Text.Text += (Patientenverfügung.PatientenverfuegungBeachtlichJN == false ? "Beachtliche " : "Verbindliche ");
+                    rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + Patientenverfügung.PatientverfuegungAnmerkung.ToString();
+                    Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                 }
 
                 //Freiheitsbeschr. Maßnahmen
@@ -2357,11 +2219,22 @@ namespace PMDS.GUI.Print
                      text = text.Replace("|||", "<br/>");
                 text = text.Replace(" representation=\"TXT\"", "");
                 File.WriteAllText(sFilename, text);
-                
+
                 /*
                                 byte[] bXml = WCFServicePMDS.Repository.serialize.BinarySerialize<string>(xml.ToString());
                                 b.docu = bXml;
                                 return b;
+                */
+                /*
+                XsltSettings xsltSettings = new XsltSettings(true, false);
+                XPathDocument myXPathDoc = new XPathDocument(sFilename);
+                XslCompiledTransform myXslTrans = new XslCompiledTransform();
+                myXslTrans.Load(Path.Combine(ENV.pathConfig, "ELGA_Stylesheet_v1.0.xsl"), xsltSettings, new XmlUrlResolver());
+                XmlTextWriter myWriter = new XmlTextWriter(@"C:\Temp\ELGA_Pflegesituationsbericht.html", null);
+
+                //XsltArgumentList arList = new XsltArgumentList();
+                //arList.AddParam()
+                myXslTrans.Transform(myXPathDoc, null, myWriter);
                 */
             }
             catch (Exception ex)
@@ -2506,8 +2379,7 @@ namespace PMDS.GUI.Print
                     break;
 
                 case SektionOrder.Anmerkungen:
-                    Sektionen[(int)SektionOrder.Anmerkungen].use = !String.IsNullOrWhiteSpace(rtfANM_Text.Text) ||
-                                                                 !String.IsNullOrWhiteSpace(rtfANM_Risk.Text);
+                    Sektionen[(int)SektionOrder.Anmerkungen].use = !String.IsNullOrWhiteSpace(rtfANM_Text.Text);
                     break;
 
                 case SektionOrder.PflegeUndBetreuungsumfang:
@@ -2789,11 +2661,6 @@ namespace PMDS.GUI.Print
         }
 
         private void rtfPFMED_Risk_TextChanged(object sender, EventArgs e)
-        {
-            SetRTFTextHTML(sender);
-        }
-
-        private void rtfANM_Risk_TextChanged(object sender, EventArgs e)
         {
             SetRTFTextHTML(sender);
         }

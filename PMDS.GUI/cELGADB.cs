@@ -1,4 +1,5 @@
-﻿using Infragistics.Win.UltraWinSchedule.CalendarCombo;
+﻿using Infragistics.Win.UltraWinSchedule;
+using Infragistics.Win.UltraWinSchedule.CalendarCombo;
 using MARC.Everest.RMIM.UV.NE2010.COCT_MT840000UV09;
 using PMDS.BusinessLogic;
 using PMDS.DB;
@@ -31,6 +32,14 @@ namespace PMDS.GUI.Print
             Sachwalter = 1,
             Kontaktperson = 2,
             Benutzer = 3
+        }
+
+        public class cParameters
+        {
+            public Guid IDAufenthalt;
+            public Guid IDEmpfänger;
+            public Guid IDUser;
+            public DateTime dNow;
         }
 
         public class Adresse
@@ -133,7 +142,88 @@ namespace PMDS.GUI.Print
             public string Abteilung;
         }
 
-        public static void LoadKlinik(ref Organistion Klinik)
+        public class PDX
+        {
+            public string Klartext;
+            public string Lokalisierung;
+            public string LokalisierungSeite;
+            public bool WundeJN;
+            public DateTime Startdatum;
+            public string Code;
+            public Guid ID;
+        }
+
+        public class RessourceRisiko
+        {
+            public string Klartext;
+            public bool WundeJN;
+            public Guid ID;
+            public string Eintraggruppe;
+            public int Gruppe;
+            public string Text;
+            public string Code;
+        }
+
+        public class Vitalparameter
+        {
+            public Guid ID;
+            public string Bezeichnung;
+            public string Wert;
+            public int Zahlenwert;
+            public float ZahlenwertFloat;
+            public int Typ;
+            public string ELGA_Unit;
+            public string ELGA_Code;
+            public string ELGA_DisplayName;
+            public string ELGA_CodeSystem;
+            public DateTime Zeitpunkt;
+            public float MinValue;
+            public string ZEID;
+        }
+
+        public class MedizinischeDaten
+        {
+            public DateTime Von;
+            public DateTime Bis;
+            public string Beschreibung;
+            public string Bemerkung;
+            public string Typ;
+            public string Groesse;
+            public string Modell;
+            public DateTime LetzteVersorgung;
+            public DateTime NaechsteVersorgung;
+            public bool AntikoaguliertJN;
+            public string MTBeschreibung;
+        }
+
+        public class Rezept
+        {
+            public string Bezeichnung;
+            public string DosierungASString;
+            public string Einheit;
+            public string Applikationsform;
+            public DateTime AbzugebenVon;
+            public DateTime AbzugebenBis;
+            public string Bemerkung;
+            public bool BedarfsMedikationJN;
+            public string Nachname;
+            public string Vorname;
+            public string Titel;
+            public DateTime DatumErstellt;
+        }
+
+        public class Patientenverfügung
+        {
+            public string Nachname;
+            public string Vorname;
+            public bool PatientenverfuegungJN;
+            public DateTime PatientverfuegungDatum;
+            public bool PatientenverfuegungBeachtlichJN;
+            public string PatientverfuegungAnmerkung;
+            public string Konfession;
+        }
+
+        public static void LoadKlinik(ref Organistion Klinik, cParameters p)
         {
             try
             {
@@ -144,7 +234,7 @@ namespace PMDS.GUI.Print
                                    join kli in db.Klinik on abt.IDKlinik equals kli.ID
                                    join adr in db.Adresse on kli.IDAdresse equals adr.ID
                                    join kon in db.Kontakt on kli.IDKontakt equals kon.ID
-                                   where auf.ID == ENV.IDAUFENTHALT
+                                   where auf.ID == p.IDAufenthalt
                                    select new
                                    {
                                        IDKlinik = kli.ID,
@@ -191,7 +281,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadKlient(ref Person Klient)
+        public static void LoadKlient(ref Person Klient, cParameters p)
         {
             try
             {
@@ -201,7 +291,7 @@ namespace PMDS.GUI.Print
                                    join pat in db.Patient on auf.IDPatient equals pat.ID
                                    join adr in db.Adresse on pat.IDAdresse equals adr.ID
                                    join kon in db.Kontakt on pat.IDKontakt equals kon.ID
-                                   where auf.ID == ENV.IDAUFENTHALT
+                                   where auf.ID == p.IDAufenthalt
                                    select new
                                    {
                                        IDKlient = pat.ID,
@@ -276,7 +366,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadSachwalter(ref List<Person> lSachwalter)
+        public static void LoadSachwalter(ref List<Person> lSachwalter, cParameters p)
         {
             try
             {
@@ -287,7 +377,7 @@ namespace PMDS.GUI.Print
                                    join kon in db.Kontakt on sw.IDKontakt equals kon.ID
                                    join pat in db.Patient on sw.IDPatient equals pat.ID
                                    join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
-                                   where auf.ID == ENV.IDAUFENTHALT
+                                   where auf.ID == p.IDAufenthalt
                                    select new
                                    {
                                        IDSachwalter = sw.ID,
@@ -330,14 +420,14 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadBenutzer(ref Person Benutzer)
+        public static void LoadBenutzer(ref Person Benutzer, cParameters p)
         {
             try
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
                     var rBenutzer = (from ben in db.Benutzer
-                                       where ben.ID == ENV.USERID
+                                       where ben.ID == p.IDUser
                                        select new
                                        {
                                            IDSachwalter = ben.ID,
@@ -359,7 +449,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadAufenthalt(ref Aufenthalt Aufenthalt)
+        public static void LoadAufenthalt(ref Aufenthalt Aufenthalt, cParameters p)
         {
             try
             {
@@ -367,7 +457,7 @@ namespace PMDS.GUI.Print
                 {
                     var rAufenthalt = (from auf in db.Aufenthalt
                                        join abt in db.Abteilung on auf.IDAbteilung equals abt.ID
-                                     where auf.ID == ENV.IDAUFENTHALT
+                                     where auf.ID == p.IDAufenthalt
                                      select new
                                      {
                                          ID = auf.ID,
@@ -389,7 +479,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadEmfaenger(ref Organistion Empfaenger)
+        public static void LoadEmfaenger(ref Organistion Empfaenger, cParameters p)
         {
             try
             {
@@ -398,7 +488,7 @@ namespace PMDS.GUI.Print
                     var rEmpfaenger = (from emp in db.Einrichtung
                                    join adr in db.Adresse on emp.IDAdresse equals adr.ID
                                    join kon in db.Kontakt on emp.IDKontakt equals kon.ID
-                                   where emp.IstKrankenkasse == false
+                                   where emp.ID == p.IDEmpfänger
                                    select new
                                    {
                                        IDEmpfaenger = emp.ID,
@@ -437,7 +527,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadKrankenkasse(ref Organistion Krankenkasse)
+        public static void LoadKrankenkasse(ref Organistion Krankenkasse, cParameters p)
         {
             try
             {
@@ -448,7 +538,7 @@ namespace PMDS.GUI.Print
                                        join kon in db.Kontakt on krk.IDKontakt equals kon.ID
                                        join pat in db.Patient on krk.Text equals pat.KrankenKasse
                                        join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
-                                       where auf.ID == ENV.IDAUFENTHALT
+                                       where auf.ID == p.IDAufenthalt
                                        select new
                                        {
                                            IDEmpfaenger = krk.ID,
@@ -487,7 +577,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadHausarzt(ref Organistion Arzt)
+        public static void LoadHausarzt(ref Organistion Arzt, cParameters p)
         {
             try
             {
@@ -499,7 +589,7 @@ namespace PMDS.GUI.Print
                                  join ap in db.PatientAerzte on arzt.ID equals ap.IDAerzte
                                  join pat in db.Patient on ap.IDPatient equals pat.ID
                                  join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
-                                 where auf.ID == ENV.IDAUFENTHALT && arzt.ELGAHausarzt == true
+                                 where auf.ID == p.IDAufenthalt && arzt.ELGAHausarzt == true
                                  select new
                                  {
                                      ID = arzt.ID,
@@ -549,7 +639,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void LoadKontaktpersonen(ref List<Person> Kontaktpersonen)
+        public static void LoadKontaktpersonen(ref List<Person> Kontaktpersonen, cParameters p)
         {
             try
             {
@@ -560,7 +650,7 @@ namespace PMDS.GUI.Print
                                    join adr in db.Adresse on kp.IDAdresse equals adr.ID
                                    join kon in db.Kontakt on kp.IDKontakt equals kon.ID
                                    join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
-                                   where auf.ID == ENV.IDAUFENTHALT
+                                   where auf.ID == p.IDAufenthalt
                                    select new
                                    {
                                        ID = kp.ID,
@@ -609,8 +699,331 @@ namespace PMDS.GUI.Print
             }
         }
 
+        public static void LoadPDX(ref List<PDX> lPDX, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tPDx = (from apdx in db.AufenthaltPDx
+                                join pdx in db.PDX on apdx.IDPDX equals pdx.ID
+                                where apdx.IDAufenthalt == p.IDAufenthalt && (apdx.EndeDatum == null || apdx.ErledigtJN == false)
+                                orderby apdx.wundejn, pdx.Klartext
+                                select new
+                                {
+                                    Klartext = pdx.Klartext,
+                                    Lokalisierung = apdx.Lokalisierung,
+                                    LokalisierungSeite = apdx.LokalisierungSeite,
+                                    WundeJN = apdx.wundejn,
+                                    Startdatum = apdx.StartDatum,
+                                    Code = pdx.Code,
+                                    ID = apdx.ID
+                                });
 
+                    foreach (var rpdx in tPDx)
+                    {
+                        DateTime Start = (DateTime)rpdx.Startdatum;
+                        Guid Id = (Guid)rpdx.ID;
+
+                        PDX pdx = new PDX();
+                        pdx.Klartext = rpdx.Klartext;
+                        pdx.Lokalisierung = rpdx.Lokalisierung;
+                        pdx.LokalisierungSeite = rpdx.LokalisierungSeite;
+                        pdx.WundeJN = rpdx.WundeJN;
+                        pdx.Startdatum = Start;
+                        pdx.Code = rpdx.Code;
+                        pdx.ID = Id;
+                        lPDX.Add(pdx);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadPDX: " + ex.ToString());
+            }
+        }
+
+        public static void LoadRessourcenRisiken(ref List<RessourceRisiko> lRessourcenRisiken, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    //Alle Ressourcen (Eintraggruppe = "R") und Risiken (Eintraggruppe = "A") aus Pflegeplan holen
+                    var tR = (from apdx in db.AufenthaltPDx
+                              join pdx in db.PDX on apdx.IDPDX equals pdx.ID
+                              join PDxPM in db.PDXPflegemodelle on pdx.ID equals PDxPM.IDPDX
+                              join PM in db.Pflegemodelle on PDxPM.IDPflegemodelle equals PM.ID
+                              join PPPDx in db.PflegePlanPDx on apdx.ID equals PPPDx.IDAufenthaltPDx
+                              join e in db.Eintrag on PPPDx.IDEintrag equals e.ID
+                              join PP in db.PflegePlan on PPPDx.IDPflegePlan equals PP.ID
+
+                              where apdx.IDAufenthalt == p.IDAufenthalt &&
+                                    PM.Modell == "ELGA" &&
+                                    apdx.EndeDatum == null &&
+                                    PPPDx.ErledigtJN == false &&
+                                    (e.EintragGruppe == "R" || (e.EintragGruppe == "A" && pdx.Gruppe == 1))
+
+                              orderby e.EintragGruppe descending, PM.code, PP.Text
+
+                              select new
+                              {
+                                  Klartext = pdx.Klartext,
+                                  WundeJN = apdx.wundejn,
+                                  ID = PPPDx.IDPflegePlan,
+                                  Eintraggruppe = e.EintragGruppe,
+                                  Gruppe = pdx.Gruppe,
+                                  Text = PP.Text,
+                                  Code = PM.code
+                              });
+
+                    foreach (var rr in tR)
+                    {
+                        Guid Id = (Guid)rr.ID;
+
+                        RessourceRisiko r = new RessourceRisiko();
+                        r.Klartext = rr.Klartext;
+                        r.WundeJN = rr.WundeJN;
+                        r.ID = Id;
+                        r.Eintraggruppe = rr.Eintraggruppe;
+                        r.Gruppe = (int)rr.Gruppe;
+                        r.Text = rr.Text;
+                        r.Code = rr.Code;
+                        lRessourcenRisiken.Add(r);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadRessourcenRisiken: " + ex.ToString());
+            }
+        }
+
+        public static void LoadVitalparameter(ref List<Vitalparameter> lVitalparameter, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    //Alle Ressourcen (Eintraggruppe = "R") und Risiken (Eintraggruppe = "A") aus Pflegeplan holen
+                    var tZusatzwerte = (from pe in db.PflegeEintrag
+                                        join zw in db.ZusatzWert on pe.ID equals zw.IDObjekt
+                                        join zge in db.ZusatzGruppeEintrag on zw.IDZusatzGruppeEintrag equals zge.ID
+                                        join ze in db.ZusatzEintrag on zge.IDZusatzEintrag equals ze.ID
+                                        where zge.AktivJN == true && (ze.ELGA_ID > 0 || ze.ID == "ERF") && pe.IDAufenthalt == p.IDAufenthalt
+
+                                        select new
+                                        {
+                                            ID = zw.ID,
+                                            Bezeichnung = ze.Bezeichnung,
+                                            Wert = zw.Wert,
+                                            Zahlenwert = zw.ZahlenWert,
+                                            ZahlenwertFloat = zw.ZahlenWertFloat,
+                                            Typ = ze.Typ,
+                                            ze.ELGA_Unit,
+                                            ze.ELGA_Code,
+                                            ze.ELGA_DisplayName,
+                                            ze.ELGA_CodeSystem,
+                                            Zeitpunkt = pe.Zeitpunkt,
+                                            MinValue = ze.MinValue,
+                                            ZEID = ze.ID
+                                        }).GroupBy(ze => ze.ELGA_Code).Select(g => g.OrderByDescending(pe => pe.Zeitpunkt).FirstOrDefault());
+
+                    foreach (var rzw in tZusatzwerte)
+                    {
+                        //Guid Id = (Guid)rzw.ID;
+                        //DateTime Erhebungszeitpunkt = (DateTime)rzw.Zeitpunkt;
+
+                        Vitalparameter rv = new Vitalparameter();
+                        rv.ID = (Guid)rzw.ID;
+                        rv.Bezeichnung = rzw.Bezeichnung;
+                        rv.Wert = rzw.Wert;
+                        rv.Zahlenwert = (int)rzw.Zahlenwert;
+                        rv.ZahlenwertFloat = (float)rzw.ZahlenwertFloat;
+                        rv.Typ = (int)rzw.Typ;
+                        rv.ELGA_Unit = rzw.ELGA_Unit;
+                        rv.ELGA_Code = rzw.ELGA_Code;
+                        rv.ELGA_DisplayName = rzw.ELGA_DisplayName;
+                        rv.ELGA_CodeSystem = rzw.ELGA_CodeSystem;
+                        rv.Zeitpunkt = (DateTime)rzw.Zeitpunkt;
+                        rv.MinValue = (float)rzw.MinValue;
+                        rv.ZEID = rzw.ZEID;
+                        lVitalparameter.Add(rv);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadVitalparameter: " + ex.ToString());
+            }
+        }
+
+        public static void LoadMedizinischeDaten(ref List<MedizinischeDaten> lMedizinischeDaten, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tMedDaten = (from md in db.MedizinischeDaten
+                                     join par in db.Patient on md.IDPatient equals par.ID
+                                     join a in db.Aufenthalt on par.ID equals a.IDPatient
+                                     join mt in db.MedizinischeTypen on md.MedizinischerTyp equals mt.MedizinischerTyp
+                                     where a.ID == p.IDAufenthalt
+                                     && mt.MedizinischerTyp != 8 && mt.MedizinischerTyp != 15
+                                     && md.Von <p.dNow
+                                     && (md.Bis > p.dNow || md.Bis == null)
+                                     orderby (mt.MedizinischerTyp)
+                                     select new
+                                     {
+                                         md.Von,
+                                         md.Bis,
+                                         md.Beschreibung,
+                                         md.Bemerkung,
+                                         md.Typ,
+                                         md.Groesse,
+                                         md.Modell,
+                                         md.LetzteVersorgung,
+                                         md.NaechsteVersorgung,
+                                         md.AntikoaguliertJN,
+                                         MTBeschreibung = mt.Beschreibung
+                                     });
+
+                    foreach (var rmed in tMedDaten)
+                    {
+                        DateTime von = (DateTime)rmed.Von;
+                        DateTime bis = new DateTime(1900, 1, 1);
+                        if (rmed.Bis != null)
+                            bis = (DateTime)rmed.Bis;
+
+                        DateTime letzteVersorung = new DateTime(1900, 1, 1);
+                        if (rmed.LetzteVersorgung != null)
+                            letzteVersorung = (DateTime)rmed.LetzteVersorgung;
+
+                        DateTime naechsteVersorgung = new DateTime(1900, 1, 1);
+                        if (rmed.NaechsteVersorgung != null)
+                            naechsteVersorgung = (DateTime)rmed.NaechsteVersorgung;
+
+                        bool antikoaguliertjn = false;
+                        if (rmed.AntikoaguliertJN != null)
+                            antikoaguliertjn = (bool)rmed.AntikoaguliertJN;
+
+                        MedizinischeDaten md = new MedizinischeDaten
+                        {
+                            Von = von,
+                            Bis = bis,
+                            Beschreibung = rmed.Beschreibung,
+                            Bemerkung = rmed.Bemerkung,
+                            Typ = rmed.Typ,
+                            Groesse = rmed.Groesse,
+                            Modell = rmed.Modell,
+                            LetzteVersorgung = letzteVersorung,
+                            NaechsteVersorgung = naechsteVersorgung,
+                            AntikoaguliertJN = antikoaguliertjn,
+                            MTBeschreibung = rmed.MTBeschreibung
+                        };
+                        lMedizinischeDaten.Add(md);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadMedizinischeDaten: " + ex.ToString());
+            }
+        }
+
+        public static void LoadRezepte(ref List<Rezept> lRezepte, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tRezepte = (from re in db.RezeptEintrag
+                                    join med in db.Medikament on re.IDMedikament equals med.ID
+                                    join ar in db.Aerzte on re.IDAerzte equals ar.ID
+                                    where re.IDAufenthalt == p.IDAufenthalt
+                                        && re.AbzugebenVon < p.dNow
+                                        && re.AbzugebenBis > p.dNow
+                                    orderby re.BedarfsMedikationJN, med.Bezeichnung
+                                    select new
+                                    {
+                                        med.Bezeichnung,
+                                        re.DosierungASString,
+                                        re.Einheit,
+                                        re.Applikationsform,
+                                        re.AbzugebenVon,
+                                        re.AbzugebenBis,
+                                        re.Bemerkung,
+                                        re.BedarfsMedikationJN,
+                                        ar.Nachname,
+                                        ar.Vorname,
+                                        ar.Titel,
+                                        re.DatumErstellt
+                                    });
+
+                    foreach (var rr in tRezepte)
+                    {
+                        Rezept r = new Rezept
+                        {
+                            Bezeichnung = rr.Bezeichnung,
+                            DosierungASString = rr.DosierungASString,
+                            Einheit = rr.Einheit,
+                            Applikationsform = rr.Applikationsform,
+                            AbzugebenVon = (DateTime)rr.AbzugebenVon,
+                            AbzugebenBis = (DateTime)rr.AbzugebenBis,
+                            Bemerkung = rr.Bemerkung,
+                            BedarfsMedikationJN = (bool)rr.BedarfsMedikationJN,
+                            Nachname = rr.Nachname,
+                            Vorname = rr.Vorname,
+                            Titel = rr.Titel,
+                            DatumErstellt = (DateTime)rr.DatumErstellt
+                        };
+                        lRezepte.Add(r);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadRezepte: " + ex.ToString());
+            }
+        }
+
+        public static void LoadPatientenverfügung(ref Patientenverfügung PatVerf, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var rPatInfo = (from pat in db.Patient
+                                    join a in db.Aufenthalt on pat.ID equals a.IDPatient
+                                    where a.ID == p.IDAufenthalt
+                                    select new
+                                    {
+                                        pat.Nachname,
+                                        pat.Vorname,
+                                        pat.PatientenverfuegungJN,
+                                        pat.PatientverfuegungDatum,
+                                        pat.PatientenverfuegungBeachtlichJN,
+                                        pat.PatientverfuegungAnmerkung,
+                                        Konfession = pat.Konfision
+                                    }).FirstOrDefault();
+
+
+                    PatVerf.Nachname = rPatInfo.Nachname;
+                    PatVerf.Vorname = rPatInfo.Vorname;
+                    PatVerf.PatientenverfuegungJN = (bool)rPatInfo.PatientenverfuegungJN;
+                    if (rPatInfo.PatientverfuegungDatum != null)
+                        PatVerf.PatientverfuegungDatum = (DateTime)rPatInfo.PatientverfuegungDatum;
+                    PatVerf.PatientenverfuegungBeachtlichJN = (bool)rPatInfo.PatientenverfuegungBeachtlichJN;
+                    PatVerf.PatientverfuegungAnmerkung = rPatInfo.PatientverfuegungAnmerkung;
+                    PatVerf.Konfession = rPatInfo.Konfession;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadPatientenverfügung: " + ex.ToString());
+            }
+        }
     }
-
-
 }
+
+

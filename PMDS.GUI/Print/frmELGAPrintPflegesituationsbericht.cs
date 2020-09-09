@@ -140,7 +140,7 @@ namespace PMDS.GUI.Print
             {
                 ucELGAPrintPflegesituationsbericht1.Enabled = true;
                 btnOK.Enabled = true;
-                ucELGAPrintPflegesituationsbericht1.Init((Guid)sel.DataValue, @"C:\Temp\Pflegesituationsbericht.xml");
+                ucELGAPrintPflegesituationsbericht1.Init(ENV.IDAUFENTHALT, (Guid)sel.DataValue, @"C:\Temp\Pflegesituationsbericht.xml");
             }
         }
     }
