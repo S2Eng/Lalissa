@@ -278,9 +278,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="bin\Barcode\CS1504_PMDS.ini" />
     <None Include="bin\Barcode\global.ini" />
     <None Include="bin\Barcode\pl2303.cat" />
