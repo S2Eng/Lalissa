@@ -1615,7 +1615,9 @@
     <Compile Include="Print\frmPrintArztbrief.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Print\ucELGAPrintPflegesituationsbericht.cs" />
+    <Compile Include="Print\ucELGAPrintPflegesituationsbericht.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Print\ucELGAPrintPflegesituationsbericht.Designer.cs">
       <DependentUpon>ucELGAPrintPflegesituationsbericht.cs</DependentUpon>
     </Compile>
