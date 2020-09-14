@@ -140,8 +140,36 @@ namespace PMDS.GUI.Print
             {
                 ucELGAPrintPflegesituationsbericht1.Enabled = true;
                 btnOK.Enabled = true;
+                btnCheck.Enabled = true;
                 ucELGAPrintPflegesituationsbericht1.Init(ENV.IDAUFENTHALT, (Guid)sel.DataValue, @"C:\Temp\Pflegesituationsbericht.xml");
             }
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(false);
+            this.btnOK.Enabled = false;
+            if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode != ucELGAPrintPflegesituationsbericht.eStatusResult.MissingData)
+            {
+                MessageBox.Show("Es wurden keine schwerwiegenden Fehler erkannt.\nprüfen Sie ggf. die Hinweise auf der Seite Meldungen.", "Hinweis", MessageBoxButtons.OK);
+                this.btnPreview.Enabled = true;
+            }
+            else
+            {
+                this.btnPreview.Enabled = false;
+                DialogResult res = MessageBox.Show("Es sind schwerwiegende Fehler erkannt worden, die das Erstellen des Pflegesituationsberichts verhindern.\nBitte überprüfen Sie die Meldungen.\nWollen Sie statt dessen ein Pflegebegleitschreiben erstellen?", "FEHLER", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
+                {
+                    _canClose = true;
+                    this.Close();
+                }
+            }
+        }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(false);
+            btnOK.Enabled = true;
         }
     }
 }

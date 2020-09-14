@@ -5,6 +5,7 @@ using PMDS.BusinessLogic;
 using PMDS.DB;
 using PMDS.Global;
 using qs2.core.vb.QS2Service1;
+using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,12 @@ namespace PMDS.GUI.Print
             Sachwalter = 1,
             Kontaktperson = 2,
             Benutzer = 3
+        }
+
+        public enum eValid
+        {
+            yes = 1,
+            no = 0
         }
 
         public class cParameters
@@ -221,6 +228,98 @@ namespace PMDS.GUI.Print
             public bool PatientenverfuegungBeachtlichJN;
             public string PatientverfuegungAnmerkung;
             public string Konfession;
+        }
+
+        public class Pflegestufe
+        {
+            public string Nachname;
+            public string Vorname;
+            public string Bezeichnung;
+            public DateTime GenehmigungDatum;
+            public eValid eValid = eValid.no;
+        }
+
+        public class Rezeptgebührenbefreiung
+        {
+            public Guid ID;
+            public bool Datenschutz;
+            public bool DNR;
+            public bool Palliativ;
+            public bool KZUeberlebender;
+
+            public bool RezeptgebuehrbefreiungJN;
+            public bool RezGebBef_RegoJN;
+            public DateTime RezGebBef_RegoAb;
+            public DateTime RezGebBef_RegoBis;
+            public bool RezGebBef_UnbefristetJN;
+            public bool RezGebBef_BefristetJN;
+            public DateTime RezGebBef_BefristetAb;
+            public DateTime RezGebBef_BefristetBis;
+            public bool RezGebBef_WiderrufJN;
+            public string RezGebBef_WiderrufGrund;
+            public bool RezGebBef_SachwalterJN;
+            public string RezGebBef_Anmerkung;
+
+            public DateTime Geburtsdatum;
+        }
+
+        public class Freiheitsbeschränkung
+        {
+
+            public string Aktion;
+            public DateTime Beginn;
+            public bool KlientZustimmungJN;
+
+            public bool PsychischekrankheitJN;
+            public bool GeistigeBehinderungJN;
+            public string MedizinischeDiagnose;
+            public bool ErheblicheSelbstgefaehrdungJN;
+            public bool ErheblicheFremdgefaehrdungJN;
+            public string AnmerkungVerhalten_2016;
+            public string AnmerkungGutachten_2016;
+
+            public bool EinzelfallmedikationJN_2016;
+            public string Einzelfallmedikation_2016;
+            public bool DauermedikationJN_2016;
+            public string Dauermedikation_2016;
+
+            public bool HindernVerlassenBettSeitenteilenJN;
+            public bool HindernVerlassenBettBauchgurtJN_2016;
+            public bool HindernVerlassenBettElektronischJN_2016;
+            public int HindernVerlassenBettHandArmgurte_2016;
+            public int HindernVerlassenBettFussBeingurte_2016;
+            public bool HindernVerlassenBettAndereJN_2016;
+            public string HindernBettVerlassen;
+
+            public bool HindernSitzgelSitzhoseJN;
+            public bool HindernSitzgelBauchgurtJN_2016;
+            public bool HindernSitzgelBrustgurtJN_2016;
+            public bool HindernSitzgelTischJN;
+            public bool HindernSitzgelTherapietischJN;
+            public int HindernSitzgelHandArmgurte_2016;
+            public int HindernSitzgelFussBeingurte_2016;
+            public bool HindernSitzgelAndereJN_2016;
+            public string HindernSitzgelegenheit;
+
+            public bool ZurueckhaltensandrohungJN;
+            public bool HindernBereichFesthaltenJN_2016;
+            public bool HindernBereichVersperrterBereichJN_2016;
+            public bool HindernBereichBarriereJN_2016;
+            public bool ElektronischesUeberwachungJN;
+            public bool HindernBereichVersperrtesZimmerJN_2016;
+            public bool HindernBereichHinderAmFortbewegenJN_2016;
+            public bool HindernBereichAndereJN_2016;
+            public string BaulicheMassnahmen;
+        }
+
+        public class Beilage
+        {
+            public string Bezeichnung;
+            public string Archivordner;
+            public string DateinameArchiv;
+            public Guid refObject;
+            public string DateinameOrig;
+            public string Notiz;
         }
 
         public static void LoadKlinik(ref Organistion Klinik, cParameters p)
@@ -589,7 +688,10 @@ namespace PMDS.GUI.Print
                                  join ap in db.PatientAerzte on arzt.ID equals ap.IDAerzte
                                  join pat in db.Patient on ap.IDPatient equals pat.ID
                                  join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
-                                 where auf.ID == p.IDAufenthalt && arzt.ELGAHausarzt == true
+                                 where auf.ID == p.IDAufenthalt &&
+                                    (ap.Von == null || ap.Von <= p.dNow) &&
+                                    (ap.Bis == null || ap.Bis >= p.dNow) &&
+                                    ap.ELGA_HausarztJN == true 
                                  select new
                                  {
                                      ID = arzt.ID,
@@ -1023,6 +1125,273 @@ namespace PMDS.GUI.Print
                 throw new Exception("ucELGAPrintPflegesituationsbericht.LoadPatientenverfügung: " + ex.ToString());
             }
         }
+
+        public static void LoadPflegestufe(ref Pflegestufe PflegStuf, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var rPatInfo = (from pat in db.Patient
+                                    join a in db.Aufenthalt on pat.ID equals a.IDPatient
+                                    join pps in db.PatientPflegestufe on pat.ID equals pps.IDPatient
+                                    join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufe equals ps.ID
+                                    where a.ID == p.IDAufenthalt
+                                    orderby pps.GenehmigungDatum descending
+                                    select new
+                                    {
+                                        pat.Nachname,
+                                        pat.Vorname,
+                                        ps.Bezeichnung,
+                                        pps.GenehmigungDatum
+                                    }).FirstOrDefault();
+
+                    if (!String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
+                    {
+                        PflegStuf.Nachname = rPatInfo.Nachname;
+                        PflegStuf.Vorname = rPatInfo.Vorname;
+                        PflegStuf.Bezeichnung = rPatInfo.Bezeichnung;
+                        if (rPatInfo.GenehmigungDatum != null)
+                            PflegStuf.GenehmigungDatum = (DateTime)rPatInfo.GenehmigungDatum;
+                        PflegStuf.eValid = eValid.yes;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadPflegestufe: " + ex.ToString());
+            }
+        }
+
+        public static void LoadFreiheitsbeschränkungen(ref List<Freiheitsbeschränkung> lFreiBesch, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tHAG = (from u in db.Unterbringung
+                                where u.IDAufenthalt == p.IDAufenthalt
+                                orderby u.Beginn
+                                select new
+                                {
+                                    u.Aktion,
+                                    u.Beginn,
+
+                                    u.KlientZustimmungJN,
+                                    u.PsychischekrankheitJN,
+                                    u.GeistigeBehinderungJN,
+                                    u.MedizinischeDiagnose,
+                                    u.ErheblicheSelbstgefaehrdungJN,
+                                    u.ErheblicheFremdgefaehrdungJN,
+                                    u.AnmerkungVerhalten_2016,
+                                    u.AnmerkungGutachten_2016,
+
+                                    u.EinzelfallmedikationJN_2016,
+                                    u.Einzelfallmedikation_2016,
+                                    u.DauermedikationJN_2016,
+                                    u.Dauermedikation_2016,
+
+                                    u.HindernVerlassenBettSeitenteilenJN,
+                                    u.HindernVerlassenBettBauchgurtJN_2016,
+                                    u.HindernVerlassenBettElektronischJN_2016,
+                                    u.HindernVerlassenBettHandArmgurte_2016,
+                                    u.HindernVerlassenBettFussBeingurte_2016,
+                                    u.HindernVerlassenBettAndereJN_2016,
+                                    u.HindernBettVerlassen,
+
+                                    u.HindernSitzgelSitzhoseJN,
+                                    u.HindernSitzgelBauchgurtJN_2016,
+                                    u.HindernSitzgelBrustgurtJN_2016,
+                                    u.HindernSitzgelTischJN,
+                                    u.HindernSitzgelTherapietischJN,
+                                    u.HindernSitzgelHandArmgurte_2016,
+                                    u.HindernSitzgelFussBeingurte_2016,
+                                    u.HindernSitzgelAndereJN_2016,
+                                    u.HindernSitzgelegenheit,
+
+                                    u.ZurueckhaltensandrohungJN,
+                                    u.HindernBereichFesthaltenJN_2016,
+                                    u.HindernBereichVersperrterBereichJN_2016,
+                                    u.HindernBereichBarriereJN_2016,
+                                    u.ElektronischesUeberwachungJN,
+                                    u.HindernBereichVersperrtesZimmerJN_2016,
+                                    u.HindernBereichHinderAmFortbewegenJN_2016,
+                                    u.HindernBereichAndereJN_2016,
+                                    u.BaulicheMassnahmen
+                                });
+
+                    foreach (var rHAG in tHAG)
+                    {
+                        Freiheitsbeschränkung frbesch = new Freiheitsbeschränkung();
+
+                        frbesch.Aktion = rHAG.Aktion;
+                        frbesch.Beginn = (DateTime)rHAG.Beginn;
+
+                        frbesch.KlientZustimmungJN = rHAG.KlientZustimmungJN ?? false;
+                        frbesch.PsychischekrankheitJN = rHAG.PsychischekrankheitJN ?? false;
+                        frbesch.GeistigeBehinderungJN = rHAG.GeistigeBehinderungJN ?? false;
+                        frbesch.MedizinischeDiagnose = rHAG.MedizinischeDiagnose;
+                        frbesch.ErheblicheSelbstgefaehrdungJN = rHAG.ErheblicheSelbstgefaehrdungJN ?? false;
+                        frbesch.ErheblicheFremdgefaehrdungJN = rHAG.ErheblicheFremdgefaehrdungJN ?? false;
+                        frbesch.AnmerkungVerhalten_2016 = rHAG.AnmerkungVerhalten_2016 ?? "";
+                        frbesch.AnmerkungGutachten_2016 = rHAG.AnmerkungGutachten_2016 ?? "";
+
+                        frbesch.EinzelfallmedikationJN_2016 = rHAG.EinzelfallmedikationJN_2016 ?? false ;
+                        frbesch.Einzelfallmedikation_2016 = rHAG.Einzelfallmedikation_2016 ?? "";
+                        frbesch.DauermedikationJN_2016 = rHAG.DauermedikationJN_2016 ?? false;
+                        frbesch.Dauermedikation_2016 = rHAG.Dauermedikation_2016 ?? "";
+
+                        frbesch.HindernVerlassenBettSeitenteilenJN = rHAG.HindernVerlassenBettSeitenteilenJN ?? false;
+                        frbesch.HindernVerlassenBettBauchgurtJN_2016 = rHAG.HindernVerlassenBettBauchgurtJN_2016 ?? false;
+                        frbesch.HindernVerlassenBettElektronischJN_2016 = rHAG.HindernVerlassenBettElektronischJN_2016 ?? false;
+                        frbesch.HindernVerlassenBettHandArmgurte_2016 = rHAG.HindernVerlassenBettHandArmgurte_2016 ?? 0;
+                        frbesch.HindernVerlassenBettFussBeingurte_2016 = rHAG.HindernVerlassenBettFussBeingurte_2016 ?? 0;
+                        frbesch.HindernVerlassenBettAndereJN_2016 = rHAG.HindernVerlassenBettAndereJN_2016 ?? false;
+                        frbesch.HindernBettVerlassen = rHAG.HindernBettVerlassen ?? "";
+
+                        frbesch.HindernSitzgelSitzhoseJN = rHAG.HindernSitzgelSitzhoseJN;
+                        frbesch.HindernSitzgelBauchgurtJN_2016 = rHAG.HindernSitzgelBauchgurtJN_2016 ?? false;
+                        frbesch.HindernSitzgelBrustgurtJN_2016 = rHAG.HindernSitzgelBrustgurtJN_2016 ?? false;
+                        frbesch.HindernSitzgelTischJN = rHAG.HindernSitzgelTischJN ?? false;
+                        frbesch.HindernSitzgelTherapietischJN = rHAG.HindernSitzgelTherapietischJN ?? false;
+                        frbesch.HindernSitzgelHandArmgurte_2016 = rHAG.HindernSitzgelHandArmgurte_2016 ?? 0;
+                        frbesch.HindernSitzgelFussBeingurte_2016 = rHAG.HindernSitzgelFussBeingurte_2016 ?? 0;
+                        frbesch.HindernSitzgelAndereJN_2016 = rHAG.HindernSitzgelAndereJN_2016 ?? false;
+                        frbesch.HindernSitzgelegenheit = rHAG.HindernSitzgelegenheit ?? "";
+
+                        frbesch.ZurueckhaltensandrohungJN = rHAG.ZurueckhaltensandrohungJN ?? false;
+                        frbesch.HindernBereichFesthaltenJN_2016 = rHAG.HindernBereichFesthaltenJN_2016 ?? false;
+                        frbesch.HindernBereichVersperrterBereichJN_2016 = rHAG.HindernBereichVersperrterBereichJN_2016 ?? false;
+                        frbesch.HindernBereichBarriereJN_2016 = rHAG.HindernBereichBarriereJN_2016 ?? false;
+                        frbesch.ElektronischesUeberwachungJN = rHAG.ElektronischesUeberwachungJN ?? false;
+                        frbesch.HindernBereichVersperrtesZimmerJN_2016 = rHAG.HindernBereichVersperrtesZimmerJN_2016 ?? false;
+                        frbesch.HindernBereichHinderAmFortbewegenJN_2016 = rHAG.HindernBereichHinderAmFortbewegenJN_2016 ?? false;
+                        frbesch.HindernBereichAndereJN_2016 = rHAG.HindernBereichAndereJN_2016 ?? false;
+                        frbesch.BaulicheMassnahmen = rHAG.BaulicheMassnahmen ?? "";
+
+                        lFreiBesch.Add(frbesch);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadFreiheitsbeschränkungen: " + ex.ToString());
+            }
+        }
+
+        public static void LoadRezeptgebührenbefreiung(ref Rezeptgebührenbefreiung RezGeb, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    //Rezeptgebührenbefreiung
+                    var rPatMedDaten = (from pat in db.Patient
+                                        join a in db.Aufenthalt on pat.ID equals a.IDPatient
+                                        where a.ID == p.IDAufenthalt
+                                        select new
+                                        {
+                                            pat.ID,
+                                            pat.Datenschutz,
+                                            pat.DNR,
+                                            pat.Palliativ,
+                                            pat.KZUeberlebender,
+
+                                            pat.RezeptgebuehrbefreiungJN,
+                                            pat.RezGebBef_RegoJN,
+                                            pat.RezGebBef_RegoAb,
+                                            pat.RezGebBef_RegoBis,
+                                            pat.RezGebBef_UnbefristetJN,
+                                            pat.RezGebBef_BefristetJN,
+                                            pat.RezGebBef_BefristetAb,
+                                            pat.RezGebBef_BefristetBis,
+                                            pat.RezGebBef_WiderrufJN,
+                                            pat.RezGebBef_WiderrufGrund,
+                                            pat.RezGebBef_SachwalterJN,
+                                            pat.RezGebBef_Anmerkung,
+
+                                            pat.Geburtsdatum
+                                        }).First();
+
+                    RezGeb.ID = (Guid)rPatMedDaten.ID;
+                    RezGeb.Datenschutz = rPatMedDaten.Datenschutz;
+                    RezGeb.DNR = rPatMedDaten.DNR;
+                    RezGeb.Palliativ = rPatMedDaten.Palliativ;
+                    RezGeb.KZUeberlebender = rPatMedDaten.KZUeberlebender;
+
+                    RezGeb.RezeptgebuehrbefreiungJN = rPatMedDaten.RezeptgebuehrbefreiungJN;
+                    RezGeb.RezGebBef_RegoJN = rPatMedDaten.RezGebBef_RegoJN;
+                    if (rPatMedDaten.RezGebBef_RegoAb != null)
+                        RezGeb.RezGebBef_RegoAb = (DateTime)rPatMedDaten.RezGebBef_RegoAb;
+                    if (rPatMedDaten.RezGebBef_RegoBis != null)
+                        RezGeb.RezGebBef_RegoBis = (DateTime)rPatMedDaten.RezGebBef_RegoBis;
+                    RezGeb.RezGebBef_UnbefristetJN = rPatMedDaten.RezGebBef_UnbefristetJN;
+                    RezGeb.RezGebBef_BefristetJN = rPatMedDaten.RezGebBef_BefristetJN;
+                    if (rPatMedDaten.RezGebBef_RegoAb != null)
+                        RezGeb.RezGebBef_BefristetAb = (DateTime)rPatMedDaten.RezGebBef_BefristetAb;
+                    if (rPatMedDaten.RezGebBef_RegoBis != null)
+                        RezGeb.RezGebBef_BefristetBis = (DateTime)rPatMedDaten.RezGebBef_BefristetBis;
+                    RezGeb.RezGebBef_WiderrufJN = rPatMedDaten.RezGebBef_WiderrufJN;
+                    RezGeb.RezGebBef_WiderrufGrund = rPatMedDaten.RezGebBef_WiderrufGrund;
+                    RezGeb.RezGebBef_SachwalterJN = rPatMedDaten.RezGebBef_SachwalterJN;
+                    RezGeb.RezGebBef_Anmerkung = rPatMedDaten.RezGebBef_Anmerkung;
+
+                    RezGeb.Geburtsdatum = (DateTime)rPatMedDaten.Geburtsdatum;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadRezeptgebührenbefreiung: " + ex.ToString());
+            }
+        }
+
+        public static void LoadBeilagen(ref List<Beilage> lBeilagen, cParameters p)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var tBeilagen = (from dokein in db.tblDokumenteintrag
+                                     join dok in db.tblDokumente on dokein.ID equals dok.IDDokumenteintrag
+                                     join ordner in db.tblOrdner on dokein.IDOrdner equals ordner.ID
+                                     join obj in db.tblObjekt on dokein.ID equals obj.IDDokumenteintrag
+                                     join pat in db.Patient on obj.ID_guid equals pat.ID
+                                     join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
+
+                                     where auf.ID == p.IDAufenthalt && ordner.Bezeichnung == "ELGAPflegesituationsbericht" && dok.DateinameTyp == ".pdf"
+                                     && (dokein.GültigVon == null || dokein.GültigVon <= p.dNow)
+                                     && (dokein.GültigBis == null || dokein.GültigBis >= p.dNow)
+
+                                     select new
+                                     {
+                                         dokein.Bezeichnung,
+                                         dok.Archivordner,
+                                         dok.DateinameArchiv,
+                                         refObject = dok.ID,
+                                         dok.DateinameOrig,
+                                         dokein.Notiz
+                                     });
+
+                    foreach (var rBeilage in tBeilagen)
+                    {
+                        Beilage rBeil = new Beilage();
+                        rBeil.Bezeichnung = rBeilage.Bezeichnung;
+                        rBeil.Archivordner = rBeilage.Archivordner;
+                        rBeil.DateinameArchiv = rBeilage.DateinameArchiv;
+                        rBeil.refObject = (Guid)rBeilage.refObject;
+                        rBeil.DateinameOrig = rBeilage.DateinameOrig;
+                        rBeil.Notiz = rBeilage.Notiz;
+
+                        lBeilagen.Add(rBeil);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.LoadBeilagen: " + ex.ToString());
+            }
+        }
+
     }
 }
 

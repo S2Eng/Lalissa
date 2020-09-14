@@ -74,17 +74,25 @@ namespace PMDS.GUI
             return true;
         }
    
-        public void checkVonBis(bool init)
+        public void checkVonBis(bool init, bool firstToUltimo)
         {
             if (init)
             {
                 this.dtVon.DateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0);
                 this.dtBis.DateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 23, 59, 59);
             }
-            else
+            else if (!init)
             {
-                this.dtVon.DateTime = new DateTime(this.dtVon.DateTime.Year, this.dtVon.DateTime.Month, this.dtVon.DateTime.Day, 0, 0, 0);
-                this.dtBis.DateTime = new DateTime(this.dtBis.DateTime.Year, this.dtBis.DateTime.Month, this.dtBis.DateTime.Day, 23, 59, 59);
+                if (firstToUltimo)
+                {
+                    this.dtVon.DateTime = new DateTime(this.dtVon.DateTime.Year, this.dtVon.DateTime.Month, this.dtVon.DateTime.Day, 0, 0, 0);
+                    this.dtBis.DateTime = new DateTime(this.dtBis.DateTime.Year, this.dtBis.DateTime.Month, DateTime.DaysInMonth(this.dtBis.DateTime.Year, this.dtBis.DateTime.Month), 23, 59, 59);
+                }
+                else
+                {
+                    this.dtVon.DateTime = new DateTime(this.dtVon.DateTime.Year, this.dtVon.DateTime.Month, this.dtVon.DateTime.Day, 0, 0, 0);
+                    this.dtBis.DateTime = new DateTime(this.dtBis.DateTime.Year, this.dtBis.DateTime.Month, this.dtBis.DateTime.Day, 23, 59, 59);
+                }
             }
             tmpSearchVon = this.dtVon.DateTime;
             tmpSearchBis = this.dtBis.DateTime;
@@ -713,7 +721,11 @@ namespace PMDS.GUI
             this.timer1.Interval = 300;
             this.timer1.Stop();
             if (dtBis.DateTime != tmpSearchBis)
+            {
+                checkVonBis(false, true);
                 tmpSearchBis = dtBis.DateTime;
+
+            }
             this.timer1.Start();
         }
     }

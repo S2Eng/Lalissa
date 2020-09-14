@@ -70,7 +70,10 @@ namespace PMDS.GUI.Print
         private List<cELGADB.MedizinischeDaten> lMedizinischeDaten = new List<cELGADB.MedizinischeDaten>();
         private List<cELGADB.Rezept> lRezepte = new List<cELGADB.Rezept>();
         private cELGADB.Patientenverfügung Patientenverfügung = new cELGADB.Patientenverfügung();
-
+        private cELGADB.Pflegestufe Pflegestufe = new cELGADB.Pflegestufe();
+        private List<cELGADB.Freiheitsbeschränkung> lFreiheitsbeschränkungen = new List<cELGADB.Freiheitsbeschränkung>();
+        private cELGADB.Rezeptgebührenbefreiung Rezeptgebührenbefreiung = new cELGADB.Rezeptgebührenbefreiung();
+        private List<cELGADB.Beilage> lBeilagen = new List<cELGADB.Beilage>();
 
         public enum eStatusResult
         {
@@ -325,12 +328,17 @@ namespace PMDS.GUI.Print
             cELGADB.LoadKontaktpersonen(ref Kontaktpersonen, pDB);
             cELGADB.LoadKrankenkasse(ref Krankenkasse, pDB);
 
+            //Sektionsdaten aus DB lesen
             cELGADB.LoadPDX(ref lPDX, pDB);
             cELGADB.LoadRessourcenRisiken(ref lRessourcenRisiken, pDB);
             cELGADB.LoadVitalparameter(ref lVitalparameter, pDB);
             cELGADB.LoadMedizinischeDaten(ref lMedizinischeDaten, pDB);
             cELGADB.LoadRezepte(ref lRezepte, pDB);
             cELGADB.LoadPatientenverfügung(ref Patientenverfügung, pDB);
+            cELGADB.LoadPflegestufe(ref Pflegestufe, pDB);
+            cELGADB.LoadFreiheitsbeschränkungen(ref lFreiheitsbeschränkungen, pDB);
+            cELGADB.LoadRezeptgebührenbefreiung(ref Rezeptgebührenbefreiung, pDB);
+            cELGADB.LoadBeilagen(ref lBeilagen, pDB);
 
             CheckData();
 
@@ -347,8 +355,8 @@ namespace PMDS.GUI.Print
                 PrepareMedDaten();
                 PrepareRezepte();
                 PreparePatientenverfügung();
-                LoadPflegeUndBetreuungsumfang();
-                LoadBeilagen();
+                PreparePflegeUndBetreuungsumfang();
+                PrepareBeilagen();
             }
             else
             {
@@ -416,7 +424,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitKlient()
+        private void MakeCDAKlient()
         {
             try
             {
@@ -528,7 +536,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitAuthor()
+        private void MakeCDAAuthor()
         {
             try
             {
@@ -557,7 +565,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitVerwahrer()
+        private void MakeCDAVerwahrer()
         {
             try
             {
@@ -587,7 +595,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitEmpfaenger()
+        private void MakeCDAEmpfaenger()
         {
             try
             {
@@ -641,7 +649,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitRechtlicherUnterzeichner()
+        private void MakeCDARechtlicherUnterzeichner()
         {
             try
             {
@@ -674,7 +682,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitAnsprechperson()
+        private void MakeCDAAnsprechperson()
         {
             try
             {
@@ -704,7 +712,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitHausarzt()
+        private void MakeCDAHausarzt()
         {
             try
             {
@@ -716,24 +724,26 @@ namespace PMDS.GUI.Print
 
                     AssociatedEntity assEnt = new AssociatedEntity(new CS<RoleClassAssociative>(RoleClassAssociative.HealthcareProvider));                   
 
-                    if (String.IsNullOrWhiteSpace(this.Hausarzt.Arztdaten.ELGA_OID))
-                        assEnt.Id.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
-                    else
-                        assEnt.Id = new SET<II> { new II { Root = this.Hausarzt.Arztdaten.ELGA_OID } };
+                    assEnt.Id = new SET<II> {};
+                    assEnt.Id.NullFlavor = new CS<NullFlavor>(NullFlavor.Unknown);
 
                     Person pers = new Person();
-                    pers.Name = MakeNameNode(Benutzer.Titel, Benutzer.Vorname, Benutzer.Nachname, null, null);
+                    pers.Name = MakeNameNode(this.Hausarzt.Arztdaten.Titel, this.Hausarzt.Arztdaten.Vorname, this.Hausarzt.Arztdaten.Nachname, null, null);
 
                     Organization org = new Organization();
-                    if (String.IsNullOrWhiteSpace(this.Hausarzt.Arztdaten.ELGA_OrganizationOID))
-                        org.NullFlavor = MARC.Everest.DataTypes.NullFlavor.Unknown;
-                    else
+                    if (!String.IsNullOrWhiteSpace(this.Hausarzt.Arztdaten.ELGA_OrganizationOID))
                         org.Id = new SET<II> { new II { AssigningAuthorityName = "GDA Index", Root = this.Hausarzt.Arztdaten.ELGA_OrganizationOID } };
+                    else
+                    {
+                        org.Id = new SET<II> { };
+                        org.Id.NullFlavor = new CS<NullFlavor>(NullFlavor.Unknown);
+                    }
 
-                    org.Name = MakeOrganistionName((this.Hausarzt.Arztdaten.Titel + " " + this.Hausarzt.Arztdaten.Vorname + this.Hausarzt.Arztdaten.Nachname).Trim());
+                    org.Name = MakeOrganistionName((this.Hausarzt.Arztdaten.Titel + " " + this.Hausarzt.Arztdaten.Vorname + " " + this.Hausarzt.Arztdaten.Nachname).Trim());
                     org.Addr = NewAdress(PostalAddressUse.Public, this.Hausarzt.Adresse.PLZ, this.Hausarzt.Adresse.Ort, this.Hausarzt.Adresse.Strasse, null, this.Hausarzt.Adresse.Land, "Adresse des Hausarztes " + this.Hausarzt.Arztdaten.Nachname + " " + this.Hausarzt.Arztdaten.Vorname);
                     org.Telecom = MakeTel(this.Hausarzt.Kontakt, TelecommunicationAddressUse.BadAddress);
 
+                    Hausarzt.AssociatedEntity = assEnt;
                     Hausarzt.AssociatedEntity.AssociatedPerson = pers;
                     Hausarzt.AssociatedEntity.ScopingOrganization = org;
                     Hausarzt.AssociatedEntity = assEnt;
@@ -750,7 +760,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitKontaktpersonen()
+        private void MakeCDAKontaktpersonen()
         {
             try
             {
@@ -788,7 +798,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitKrankenkasse()
+        private void MakeCDAKrankenkasse()
         {
             try
             {
@@ -841,7 +851,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitAufenthaltService()
+        private void MakeCDAAufenthaltService()
         {
             try
             {
@@ -858,7 +868,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void InitAufenthaltInfo()
+        private void MakeCDAAufenthaltInfo()
         {
             try
             {
@@ -1363,8 +1373,6 @@ namespace PMDS.GUI.Print
                             act.StatusCode = new CS<ActStatus>(ActStatus.Completed);
                         }
                         act.LanguageCode = null;
-//                        act.EffectiveTime.Value = null;
-//                        act.EffectiveTime.High = null;
 
                         CD<string> c = new CD<string>();
                         c.NullFlavor = MARC.Everest.DataTypes.NullFlavor.NotApplicable;
@@ -1432,7 +1440,6 @@ namespace PMDS.GUI.Print
                         organizer.Code = new CD<string> { Code = sektion.VitalparamterEntry.code.code, DisplayName = sektion.VitalparamterEntry.code.displayName, CodeSystem = sektion.VitalparamterEntry.code.codeSystem, CodeSystemName = sektion.VitalparamterEntry.code.codeSystemName }; 
                         organizer.StatusCode = new CS<ActStatus>(ActStatus.Completed);
                         organizer.EffectiveTime = new IVL<TS>(new TS(VZcomp.effectivetime, DatePrecision.Second));
-                        //organizer.EffectiveTime.Low.DateValuePrecision = DatePrecision.Second;
 
                         Observation obs = new Observation();
                         obs.MoodCode = new CS<x_ActMoodDocumentObservation>(x_ActMoodDocumentObservation.Eventoccurrence);
@@ -1461,7 +1468,6 @@ namespace PMDS.GUI.Print
                     {
                         ENV.ELGAObservationMedia obs = new ENV.ELGAObservationMedia();
                         obs.Value = new ED { };
-                        //obs.Value.Data = Beilage.value;
                         obs.Value.Data = Beilage.value;
                         obs.Value.MediaType = Beilage.value_mediaType;
                         obs.Value.Representation = Beilage.value_representation;
@@ -1770,233 +1776,149 @@ namespace PMDS.GUI.Print
         {
             try
             {
+                //Patientenverfügung
                 rtfPATVERF_Text.Text = "";
                 if (Patientenverfügung.PatientenverfuegungJN == true)
                 {
                     DateTime dt = Patientenverfügung.PatientverfuegungDatum;
                     rtfPATVERF_Text.Text += (Patientenverfügung.PatientenverfuegungBeachtlichJN == false ? "Beachtliche " : "Verbindliche ");
-                    rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + Patientenverfügung.PatientverfuegungAnmerkung.ToString();
+                    rtfPATVERF_Text.Text = "Patientenverfügung vom " + dt.ToString("dd.MM.yyyy") + ": " + Patientenverfügung.PatientverfuegungAnmerkung.ToString() + "\n";
                     Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                 }
 
-                //Freiheitsbeschr. Maßnahmen
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                //Freiheitsbeschr. Maßnahmen                
+                string txtHAG = rtfPATVERF_Text.Text + "\nFreiheitsbeschränkende Maßnahmen gem. Heimaufenthaltsgesetz\n";
+                foreach (cELGADB.Freiheitsbeschränkung rHAG in lFreiheitsbeschränkungen)
                 {
-                    var tHAG = (from u in db.Unterbringung
-                                where u.IDAufenthalt == ENV.IDAUFENTHALT
-                                orderby u.Beginn
-                                select new
-                                {
-                                    u.Aktion,
-                                    u.Beginn,
+                    txtHAG += "Beginn: " + rHAG.Beginn.ToString("dd.MM.yyyy");
 
-                                    u.KlientZustimmungJN,
-                                    u.PsychischekrankheitJN,
-                                    u.GeistigeBehinderungJN,
-                                    u.MedizinischeDiagnose,
-                                    u.ErheblicheSelbstgefaehrdungJN,
-                                    u.ErheblicheFremdgefaehrdungJN,
-                                    u.AnmerkungVerhalten_2016,
-                                    u.AnmerkungGutachten_2016,
-
-                                    u.EinzelfallmedikationJN_2016,
-                                    u.Einzelfallmedikation_2016,
-                                    u.DauermedikationJN_2016,
-                                    u.Dauermedikation_2016,
-
-                                    u.HindernVerlassenBettSeitenteilenJN,
-                                    u.HindernVerlassenBettBauchgurtJN_2016,
-                                    u.HindernVerlassenBettElektronischJN_2016,
-                                    u.HindernVerlassenBettHandArmgurte_2016,
-                                    u.HindernVerlassenBettAndereJN_2016,
-                                    u.HindernBettVerlassen,
-
-                                    u.HindernSitzgelSitzhoseJN,
-                                    u.HindernSitzgelBauchgurtJN_2016,
-                                    u.HindernSitzgelBrustgurtJN_2016,
-                                    u.HindernSitzgelTischJN,
-                                    u.HindernSitzgelTherapietischJN,
-                                    u.HindernSitzgelHandArmgurte_2016,
-                                    u.HindernSitzgelFussBeingurte_2016,
-                                    u.HindernSitzgelAndereJN_2016,
-                                    u.HindernSitzgelegenheit,
-
-                                    u.ZurueckhaltensandrohungJN,
-                                    u.HindernBereichFesthaltenJN_2016,
-                                    u.HindernBereichVersperrterBereichJN_2016,
-                                    u.HindernBereichBarriereJN_2016,
-                                    u.ElektronischesUeberwachungJN,
-                                    u.HindernBereichVersperrtesZimmerJN_2016,
-                                    u.HindernBereichHinderAmFortbewegenJN_2016,
-                                    u.HindernBereichAndereJN_2016,
-                                    u.BaulicheMassnahmen
-                                });
-
-                    string txtHAG = rtfPATVERF_Text.Text + "\nFreiheitsbeschränkende Maßnahmen gem. Heimaufenthaltsgesetz\n";
-                    foreach (var rHAG in tHAG)
+                    string txtArt = "Grund der Freiheitsbeschränkung";
+                    if (rHAG.PsychischekrankheitJN ||
+                        rHAG.GeistigeBehinderungJN ||
+                        rHAG.ErheblicheSelbstgefaehrdungJN ||
+                        rHAG.ErheblicheFremdgefaehrdungJN
+                        )
                     {
-
-                        bool KlientZustimmungJN = rHAG.KlientZustimmungJN != null && (bool)rHAG.KlientZustimmungJN;
-                        bool PsychischekrankheitJN = rHAG.PsychischekrankheitJN != null && (bool)rHAG.PsychischekrankheitJN;
-                        bool GeistigeBehinderungJN = rHAG.GeistigeBehinderungJN != null && (bool)rHAG.GeistigeBehinderungJN;
-                        bool ErheblicheSelbstgefaehrdungJN = rHAG.ErheblicheSelbstgefaehrdungJN != null && (bool)rHAG.ErheblicheSelbstgefaehrdungJN;
-                        bool ErheblicheFremdgefaehrdungJN = rHAG.ErheblicheFremdgefaehrdungJN != null && (bool)rHAG.ErheblicheFremdgefaehrdungJN;
-
-                        bool EinzelfallmedikationJN_2016 = rHAG.EinzelfallmedikationJN_2016 != null && (bool)rHAG.EinzelfallmedikationJN_2016;
-                        bool DauermedikationJN_2016 = rHAG.DauermedikationJN_2016 != null && (bool)rHAG.DauermedikationJN_2016;
-
-                        bool HindernVerlassenBettSeitenteilenJN = rHAG.HindernVerlassenBettSeitenteilenJN != null && (bool)rHAG.HindernVerlassenBettSeitenteilenJN;
-                        bool HindernVerlassenBettBauchgurtJN_2016 = rHAG.HindernVerlassenBettBauchgurtJN_2016 != null && (bool)rHAG.HindernVerlassenBettBauchgurtJN_2016;
-                        bool HindernVerlassenBettElektronischJN_2016 = rHAG.HindernVerlassenBettElektronischJN_2016 != null && (bool)rHAG.HindernVerlassenBettElektronischJN_2016;
-                        bool HindernVerlassenBettAndereJN_2016 = rHAG.HindernVerlassenBettAndereJN_2016 != null && (bool)rHAG.HindernVerlassenBettAndereJN_2016;
-
-                        bool HindernSitzgelSitzhoseJN = (bool)rHAG.HindernSitzgelSitzhoseJN;
-                        bool HindernSitzgelBauchgurtJN_2016 = rHAG.HindernSitzgelBauchgurtJN_2016 != null && (bool)rHAG.HindernSitzgelBauchgurtJN_2016;
-                        bool HindernSitzgelBrustgurtJN_2016 = rHAG.HindernSitzgelBrustgurtJN_2016 != null && (bool)rHAG.HindernSitzgelBrustgurtJN_2016;
-                        bool HindernSitzgelTischJN = rHAG.HindernSitzgelTischJN != null && (bool)rHAG.HindernSitzgelTischJN;
-                        bool HindernSitzgelTherapietischJN = rHAG.HindernSitzgelTherapietischJN != null && (bool)rHAG.HindernSitzgelTherapietischJN;
-                        bool HindernSitzgelAndereJN_2016 = rHAG.HindernSitzgelAndereJN_2016 != null && (bool)rHAG.HindernSitzgelAndereJN_2016;
-
-                        bool ZurueckhaltensandrohungJN = rHAG.ZurueckhaltensandrohungJN != null && (bool)rHAG.ZurueckhaltensandrohungJN;
-                        bool HindernBereichFesthaltenJN_2016 = rHAG.HindernBereichFesthaltenJN_2016 != null && (bool)rHAG.HindernBereichFesthaltenJN_2016;
-                        bool HindernBereichVersperrterBereichJN_2016 = rHAG.HindernBereichVersperrterBereichJN_2016 != null && (bool)rHAG.HindernBereichVersperrterBereichJN_2016;
-                        bool HindernBereichBarriereJN_2016 = rHAG.HindernBereichBarriereJN_2016 != null && (bool)rHAG.HindernBereichBarriereJN_2016;
-                        bool ElektronischesUeberwachungJN = rHAG.ElektronischesUeberwachungJN != null && (bool)rHAG.ElektronischesUeberwachungJN;
-                        bool HindernBereichVersperrtesZimmerJN_2016 = rHAG.HindernBereichVersperrtesZimmerJN_2016 != null && (bool)rHAG.HindernBereichVersperrtesZimmerJN_2016;
-                        bool HindernBereichHinderAmFortbewegenJN_2016 = rHAG.HindernBereichHinderAmFortbewegenJN_2016 != null && (bool)rHAG.HindernBereichHinderAmFortbewegenJN_2016;
-                        bool HindernBereichAndereJN_2016 = rHAG.HindernBereichAndereJN_2016 != null && (bool)rHAG.HindernBereichAndereJN_2016;
-
-                        DateTime Beginn = (DateTime)rHAG.Beginn;
-                        txtHAG += "Beginn: " + Beginn.ToString("dd.MM.yyyy");
-
-                        string txtArt = "Grund der Freiheitsbeschränkung";
-                        if (PsychischekrankheitJN ||
-                            GeistigeBehinderungJN ||
-                            ErheblicheSelbstgefaehrdungJN ||
-                            ErheblicheFremdgefaehrdungJN
-                           )
+                        if (rHAG.KlientZustimmungJN)
                         {
-                            if (KlientZustimmungJN)
-                            {
-                                txtHAG += "\nZustimmung des einsichts- und urteilsfähigen Kienten (Freiheitseinschränkung) liegt vor.";
-                                txtArt = "Grund der Freiheitseinschränkung";
-                            }
-
-                            txtHAG += "\n" + txtArt;
-
-                            if (PsychischekrankheitJN && GeistigeBehinderungJN)
-                            {
-                                txtHAG += ": Psychische Krankheit und geistige Behinderung,";
-                            }
-
-                            if (PsychischekrankheitJN && !GeistigeBehinderungJN)
-                            {
-                                txtHAG += ": Psychische Krankheit.";
-                            }
-
-                            if (!PsychischekrankheitJN && GeistigeBehinderungJN)
-                            {
-                                txtHAG += ": Geistige Behinderung.";
-                            }
-
-                            if ((PsychischekrankheitJN || GeistigeBehinderungJN) && !String.IsNullOrWhiteSpace(rHAG.MedizinischeDiagnose))
-                                txtHAG += " Begründung: " + rHAG.MedizinischeDiagnose;
-
-                            if (ErheblicheSelbstgefaehrdungJN && ErheblicheFremdgefaehrdungJN)
-                                txtHAG += "\nErhebliche Selbst- und Fremdgfährdung.";
-
-                            if (ErheblicheSelbstgefaehrdungJN && !ErheblicheFremdgefaehrdungJN)
-                                txtHAG += "\nErhebliche Selbstgefährdung.";
-
-                            if (!ErheblicheSelbstgefaehrdungJN && ErheblicheFremdgefaehrdungJN)
-                                txtHAG += "\nErhebliche Fremdgefährdung.";
-
-
-                            if ((ErheblicheSelbstgefaehrdungJN || ErheblicheFremdgefaehrdungJN) && !String.IsNullOrWhiteSpace(rHAG.AnmerkungVerhalten_2016))
-                                txtHAG += " Gefährdungsgrund: " + rHAG.AnmerkungVerhalten_2016;
+                            txtHAG += "\nZustimmung des einsichts- und urteilsfähigen Kienten (Freiheitseinschränkung) liegt vor.";
+                            txtArt = "Grund der Freiheitseinschränkung";
                         }
 
-                        if (!String.IsNullOrWhiteSpace(rHAG.AnmerkungGutachten_2016))
-                            txtHAG += "\n" + "Ärztliches Gutachten: " + rHAG.AnmerkungGutachten_2016;
+                        txtHAG += "\n" + txtArt;
 
-                        if (EinzelfallmedikationJN_2016 == true)
+                        if (rHAG.PsychischekrankheitJN && rHAG.GeistigeBehinderungJN)
                         {
-                            txtHAG += "\nEinzelfallmedikation";
-                            txtHAG += (!String.IsNullOrWhiteSpace(rHAG.Einzelfallmedikation_2016) ? ": " + rHAG.Einzelfallmedikation_2016 : "");
+                            txtHAG += ": Psychische Krankheit und geistige Behinderung,";
                         }
 
-                        if (DauermedikationJN_2016 == true)
+                        if (rHAG.PsychischekrankheitJN && !rHAG.GeistigeBehinderungJN)
                         {
-                            txtHAG += "\nDauermedikation";
-                            txtHAG += (!String.IsNullOrWhiteSpace(rHAG.Dauermedikation_2016) ? ": " + rHAG.Dauermedikation_2016 : "");
+                            txtHAG += ": Psychische Krankheit.";
                         }
 
-                        if (HindernVerlassenBettSeitenteilenJN ||
-                            HindernVerlassenBettBauchgurtJN_2016 ||
-                            HindernVerlassenBettElektronischJN_2016 ||
-                            HindernVerlassenBettAndereJN_2016)
+                        if (!rHAG.PsychischekrankheitJN && rHAG.GeistigeBehinderungJN)
                         {
-                            txtHAG += "\nHindern am Verlassen des Bettes mittels ";
-                            txtHAG += (HindernVerlassenBettSeitenteilenJN ? "\n  - Seitenteilen " : "");
-                            txtHAG += (HindernVerlassenBettBauchgurtJN_2016 ? "\n  - Bauchgurt " : "");
-                            txtHAG += (HindernVerlassenBettElektronischJN_2016 ? "\n  - elektronischer Maßnahme " : "");
-                            if (HindernVerlassenBettAndereJN_2016)
-                            {
-                                txtHAG += "\n  - anderer Maßnahme";
-                                if (!String.IsNullOrEmpty(rHAG.HindernBettVerlassen))
-                                    txtHAG += ": " + rHAG.HindernBettVerlassen;
-                            }
+                            txtHAG += ": Geistige Behinderung.";
                         }
 
-                        if (HindernSitzgelSitzhoseJN ||
-                            HindernSitzgelBauchgurtJN_2016 ||
-                            HindernSitzgelBrustgurtJN_2016 ||
-                            HindernSitzgelTischJN ||
-                            HindernSitzgelTherapietischJN ||
-                            HindernSitzgelAndereJN_2016)
-                        {
-                            txtHAG += "\nHindern am Verlassen von Sitzgelgenheit/Rollstuhl mittels ";
-                            txtHAG += (HindernSitzgelSitzhoseJN ? "\n  - Sitzhose " : "");
-                            txtHAG += (HindernSitzgelBauchgurtJN_2016 ? "\n  - Bauchgurt " : "");
-                            txtHAG += (HindernSitzgelBrustgurtJN_2016 ? "\n  - Brustgurt " : "");
-                            txtHAG += (HindernSitzgelTischJN ? "\n  -Tisch " : "");
-                            txtHAG += (HindernSitzgelTherapietischJN ? "\n  - Therapietisch " : "");
-                            if (HindernSitzgelAndereJN_2016)
-                            {
-                                txtHAG += "\n  - anderer Maßnahme";
-                                if (!String.IsNullOrEmpty(rHAG.HindernSitzgelegenheit))
-                                    txtHAG += ": " + rHAG.HindernSitzgelegenheit;
-                            }
-                        }
+                        if ((rHAG.PsychischekrankheitJN || rHAG.GeistigeBehinderungJN) && !String.IsNullOrWhiteSpace(rHAG.MedizinischeDiagnose))
+                            txtHAG += " Begründung: " + rHAG.MedizinischeDiagnose;
 
-                        if (ZurueckhaltensandrohungJN ||
-                            HindernBereichFesthaltenJN_2016 ||
-                            HindernBereichVersperrterBereichJN_2016 ||
-                            HindernBereichBarriereJN_2016 ||
-                            ElektronischesUeberwachungJN ||
-                            HindernBereichVersperrtesZimmerJN_2016 ||
-                            HindernBereichHinderAmFortbewegenJN_2016 ||
-                            HindernBereichAndereJN_2016)
-                        {
-                            txtHAG += "\nHindern am Verlassen eines Bereichs mittels ";
-                            txtHAG += (ZurueckhaltensandrohungJN ? "\n  - Zurückhalten/Androhung des Zurückhaltens " : "");
-                            txtHAG += (HindernBereichFesthaltenJN_2016 ? "\n  - Körperlicher Zugriff/Festhalten " : "");
-                            txtHAG += (HindernBereichVersperrterBereichJN_2016 ? "\n  - versperrter Bereich " : "");
-                            txtHAG += (HindernBereichBarriereJN_2016 ? "\n  - Tür/Raumgestaltung, Barierre " : "");
-                            txtHAG += (ElektronischesUeberwachungJN ? "\n  - Desorientiertenfürsorgesystem/Sensor " : "");
-                            txtHAG += (HindernBereichVersperrtesZimmerJN_2016 ? "\n  - Versperrtes Zimmer " : "");
-                            txtHAG += (HindernBereichHinderAmFortbewegenJN_2016 ? "\n  - Hindern am Fortbewegen mit dem Rollstuhl (Bremsen, ..) " : "");
-                            if (HindernSitzgelAndereJN_2016)
-                            {
-                                txtHAG += "\n  - anderer Maßnahme";
-                                if (!String.IsNullOrEmpty(rHAG.BaulicheMassnahmen))
-                                    txtHAG += ": " + rHAG.BaulicheMassnahmen;
-                            }
-                        }
-                        txtHAG += "\n\n";
-                        rtfPATVERF_Text.Text = txtHAG;
-                        Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
+                        if (rHAG.ErheblicheSelbstgefaehrdungJN && rHAG.ErheblicheFremdgefaehrdungJN)
+                            txtHAG += "\nErhebliche Selbst- und Fremdgfährdung.";
+
+                        if (rHAG.ErheblicheSelbstgefaehrdungJN && !rHAG.ErheblicheFremdgefaehrdungJN)
+                            txtHAG += "\nErhebliche Selbstgefährdung.";
+
+                        if (!rHAG.ErheblicheSelbstgefaehrdungJN && rHAG.ErheblicheFremdgefaehrdungJN)
+                            txtHAG += "\nErhebliche Fremdgefährdung.";
+
+
+                        if ((rHAG.ErheblicheSelbstgefaehrdungJN || rHAG.ErheblicheFremdgefaehrdungJN) && !String.IsNullOrWhiteSpace(rHAG.AnmerkungVerhalten_2016))
+                            txtHAG += " Gefährdungsgrund: " + rHAG.AnmerkungVerhalten_2016;
                     }
+
+                    if (!String.IsNullOrWhiteSpace(rHAG.AnmerkungGutachten_2016))
+                        txtHAG += "\n" + "Ärztliches Gutachten: " + rHAG.AnmerkungGutachten_2016;
+
+                    if (rHAG.EinzelfallmedikationJN_2016 == true)
+                    {
+                        txtHAG += "\nEinzelfallmedikation";
+                        txtHAG += (!String.IsNullOrWhiteSpace(rHAG.Einzelfallmedikation_2016) ? ": " + rHAG.Einzelfallmedikation_2016 : "");
+                    }
+
+                    if (rHAG.DauermedikationJN_2016 == true)
+                    {
+                        txtHAG += "\nDauermedikation";
+                        txtHAG += (!String.IsNullOrWhiteSpace(rHAG.Dauermedikation_2016) ? ": " + rHAG.Dauermedikation_2016 : "");
+                    }
+
+                    if (rHAG.HindernVerlassenBettSeitenteilenJN ||
+                        rHAG.HindernVerlassenBettBauchgurtJN_2016 ||
+                        rHAG.HindernVerlassenBettElektronischJN_2016 ||
+                        rHAG.HindernVerlassenBettAndereJN_2016)
+                    {
+                        txtHAG += "\nHindern am Verlassen des Bettes mittels ";
+                        txtHAG += (rHAG.HindernVerlassenBettSeitenteilenJN ? "\n  - Seitenteilen " : "");
+                        txtHAG += (rHAG.HindernVerlassenBettBauchgurtJN_2016 ? "\n  - Bauchgurt " : "");
+                        txtHAG += (rHAG.HindernVerlassenBettElektronischJN_2016 ? "\n  - elektronischer Maßnahme " : "");
+                        if (rHAG.HindernVerlassenBettAndereJN_2016)
+                        {
+                            txtHAG += "\n  - anderer Maßnahme";
+                            if (!String.IsNullOrEmpty(rHAG.HindernBettVerlassen))
+                                txtHAG += ": " + rHAG.HindernBettVerlassen;
+                        }
+                    }
+
+                    if (rHAG.HindernSitzgelSitzhoseJN ||
+                        rHAG.HindernSitzgelBauchgurtJN_2016 ||
+                        rHAG.HindernSitzgelBrustgurtJN_2016 ||
+                        rHAG.HindernSitzgelTischJN ||
+                        rHAG.HindernSitzgelTherapietischJN ||
+                        rHAG.HindernSitzgelAndereJN_2016)
+                    {
+                        txtHAG += "\nHindern am Verlassen von Sitzgelgenheit/Rollstuhl mittels ";
+                        txtHAG += (rHAG.HindernSitzgelSitzhoseJN ? "\n  - Sitzhose " : "");
+                        txtHAG += (rHAG.HindernSitzgelBauchgurtJN_2016 ? "\n  - Bauchgurt " : "");
+                        txtHAG += (rHAG.HindernSitzgelBrustgurtJN_2016 ? "\n  - Brustgurt " : "");
+                        txtHAG += (rHAG.HindernSitzgelTischJN ? "\n  -Tisch " : "");
+                        txtHAG += (rHAG.HindernSitzgelTherapietischJN ? "\n  - Therapietisch " : "");
+                        if (rHAG.HindernSitzgelAndereJN_2016)
+                        {
+                            txtHAG += "\n  - anderer Maßnahme";
+                            if (!String.IsNullOrEmpty(rHAG.HindernSitzgelegenheit))
+                                txtHAG += ": " + rHAG.HindernSitzgelegenheit;
+                        }
+                    }
+
+                    if (rHAG.ZurueckhaltensandrohungJN ||
+                        rHAG.HindernBereichFesthaltenJN_2016 ||
+                        rHAG.HindernBereichVersperrterBereichJN_2016 ||
+                        rHAG.HindernBereichBarriereJN_2016 ||
+                        rHAG.ElektronischesUeberwachungJN ||
+                        rHAG.HindernBereichVersperrtesZimmerJN_2016 ||
+                        rHAG.HindernBereichHinderAmFortbewegenJN_2016 ||
+                        rHAG.HindernBereichAndereJN_2016)
+                    {
+                        txtHAG += "\nHindern am Verlassen eines Bereichs mittels ";
+                        txtHAG += (rHAG.ZurueckhaltensandrohungJN ? "\n  - Zurückhalten/Androhung des Zurückhaltens " : "");
+                        txtHAG += (rHAG.HindernBereichFesthaltenJN_2016 ? "\n  - Körperlicher Zugriff/Festhalten " : "");
+                        txtHAG += (rHAG.HindernBereichVersperrterBereichJN_2016 ? "\n  - versperrter Bereich " : "");
+                        txtHAG += (rHAG.HindernBereichBarriereJN_2016 ? "\n  - Tür/Raumgestaltung, Barierre " : "");
+                        txtHAG += (rHAG.ElektronischesUeberwachungJN ? "\n  - Desorientiertenfürsorgesystem/Sensor " : "");
+                        txtHAG += (rHAG.HindernBereichVersperrtesZimmerJN_2016 ? "\n  - Versperrtes Zimmer " : "");
+                        txtHAG += (rHAG.HindernBereichHinderAmFortbewegenJN_2016 ? "\n  - Hindern am Fortbewegen mit dem Rollstuhl (Bremsen, ..) " : "");
+                        if (rHAG.HindernSitzgelAndereJN_2016)
+                        {
+                            txtHAG += "\n  - anderer Maßnahme";
+                            if (!String.IsNullOrEmpty(rHAG.BaulicheMassnahmen))
+                                txtHAG += ": " + rHAG.BaulicheMassnahmen;
+                        }
+                    }
+                    txtHAG += "\n\n";
+                    rtfPATVERF_Text.Text = txtHAG;
+                    Sektionen[(int)SektionOrder.Patientenverfügung].use = true;
                 }
             }
             catch (Exception ex)
@@ -2005,89 +1927,44 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadPflegeUndBetreuungsumfang()
+        private void PreparePflegeUndBetreuungsumfang()
         {
             try
             {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                //Pflegestufe
+                if (Pflegestufe.eValid == cELGADB.eValid.yes)
                 {
-                    //Pflegestufe
-                    var rPatInfo = (from p in db.Patient
-                                    join a in db.Aufenthalt on p.ID equals a.IDPatient
-                                    join pps in db.PatientPflegestufe on p.ID equals pps.IDPatient
-                                    join ps in db.Pflegegeldstufe on pps.IDPflegegeldstufe equals ps.ID
-                                    where a.ID == ENV.IDAUFENTHALT
-                                    orderby pps.GenehmigungDatum descending
-                                    select new
-                                    {
-                                        p.Nachname,
-                                        p.Vorname,
-                                        ps.Bezeichnung,
-                                        pps.GenehmigungDatum
-                                    }).FirstOrDefault();
-
-                    if (rPatInfo != null && !String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
+                    rtfPUBUMF_Text.Text += "Letzte genehmigte Pflegestufe: " + Pflegestufe.Bezeichnung;
+                    if (Pflegestufe.GenehmigungDatum != null)
                     {
-                        rtfPUBUMF_Text.Text += "Letzte genehmigte Pflegestufe: " + rPatInfo.Bezeichnung;
-                        if (rPatInfo.GenehmigungDatum != null)
-                        {
-                            DateTime dt = (DateTime)rPatInfo.GenehmigungDatum;
-                            rtfPUBUMF_Text.Text += " mit Bescheiddatum vom " + dt.ToString("dd.MM.yyyy") + "\n";
-                        }
-                        Sektionen[(int)SektionOrder.PflegeUndBetreuungsumfang].use = true;
+                        rtfPUBUMF_Text.Text += " mit Bescheiddatum vom " + Pflegestufe.GenehmigungDatum.ToString("dd.MM.yyyy") + "\n";
                     }
-
-                    //Rezeptgebührenbefreiung
-                    var rPatMedDaten = (from p in db.Patient
-                                        join a in db.Aufenthalt on p.ID equals a.IDPatient
-                                        where a.ID == ENV.IDAUFENTHALT
-                                        select new
-                                        {
-                                            p.ID,
-                                            p.Datenschutz,
-                                            p.DNR,
-                                            p.Palliativ,
-                                            p.KZUeberlebender,
-
-                                            p.RezeptgebuehrbefreiungJN,
-                                            p.RezGebBef_RegoJN,
-                                            p.RezGebBef_RegoAb,
-                                            p.RezGebBef_RegoBis,
-                                            p.RezGebBef_UnbefristetJN,
-                                            p.RezGebBef_BefristetJN,
-                                            p.RezGebBef_BefristetAb,
-                                            p.RezGebBef_BefristetBis,
-                                            p.RezGebBef_WiderrufJN,
-                                            p.RezGebBef_WiderrufGrund,
-                                            p.RezGebBef_SachwalterJN,
-                                            p.RezGebBef_Anmerkung,
-
-                                            p.Geburtsdatum
-                                        }).First();
-
-                    if (rPatMedDaten.RezeptgebuehrbefreiungJN)
-                    {
-                        PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
-                        string TitleRezeptgebührenbefreit = "";
-                        string InfoRezeptgebührenbefreit = "";
-                        bool bIsRezeptgebührenbefreit = bUI.showInfoRezeptgebührbefreiungInfo(
-                            rPatMedDaten.RezeptgebuehrbefreiungJN,
-                            rPatMedDaten.RezGebBef_RegoJN,
-                            rPatMedDaten.RezGebBef_RegoAb,
-                            rPatMedDaten.RezGebBef_RegoBis,
-                            rPatMedDaten.RezGebBef_UnbefristetJN,
-                            rPatMedDaten.RezGebBef_BefristetJN,
-                            rPatMedDaten.RezGebBef_BefristetAb,
-                            rPatMedDaten.RezGebBef_BefristetBis,
-                            rPatMedDaten.RezGebBef_WiderrufJN,
-                            rPatMedDaten.RezGebBef_WiderrufGrund,
-                            rPatMedDaten.RezGebBef_SachwalterJN,
-                            rPatMedDaten.RezGebBef_Anmerkung,
-                            ref TitleRezeptgebührenbefreit, ref InfoRezeptgebührenbefreit, false);
-                        rtfPUBUMF_Text.Text += InfoRezeptgebührenbefreit + "\r\n";
-                        Sektionen[(int)SektionOrder.PflegeUndBetreuungsumfang].use = true;
-                    }
+                    Sektionen[(int)SektionOrder.PflegeUndBetreuungsumfang].use = true;
                 }
+
+                //Rezeptgebührenbefreiung
+                if (Rezeptgebührenbefreiung.RezeptgebuehrbefreiungJN)
+                {
+                    PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
+                    string TitleRezeptgebührenbefreit = "";
+                    string InfoRezeptgebührenbefreit = "";
+                    bool bIsRezeptgebührenbefreit = bUI.showInfoRezeptgebührbefreiungInfo(
+                        Rezeptgebührenbefreiung.RezeptgebuehrbefreiungJN,
+                        Rezeptgebührenbefreiung.RezGebBef_RegoJN,
+                        Rezeptgebührenbefreiung.RezGebBef_RegoAb,
+                        Rezeptgebührenbefreiung.RezGebBef_RegoBis,
+                        Rezeptgebührenbefreiung.RezGebBef_UnbefristetJN,
+                        Rezeptgebührenbefreiung.RezGebBef_BefristetJN,
+                        Rezeptgebührenbefreiung.RezGebBef_BefristetAb,
+                        Rezeptgebührenbefreiung.RezGebBef_BefristetBis,
+                        Rezeptgebührenbefreiung.RezGebBef_WiderrufJN,
+                        Rezeptgebührenbefreiung.RezGebBef_WiderrufGrund,
+                        Rezeptgebührenbefreiung.RezGebBef_SachwalterJN,
+                        Rezeptgebührenbefreiung.RezGebBef_Anmerkung,
+                        ref TitleRezeptgebührenbefreit, ref InfoRezeptgebührenbefreit, false);
+                    rtfPUBUMF_Text.Text += InfoRezeptgebührenbefreit + "\r\n";
+                    Sektionen[(int)SektionOrder.PflegeUndBetreuungsumfang].use = true;
+                }                
             }
             catch (Exception ex)
             {
@@ -2095,54 +1972,29 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void LoadBeilagen() //alle pdf-Dokumente im Archivordner ELGAPflegesituationsbericht anhängen
+        private void PrepareBeilagen() //alle pdf-Dokumente im Archivordner ELGAPflegesituationsbericht anhängen
         {
             try
             {
-
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                if (lBeilagen.Count() > 0)
                 {
-                    var tBeilagen = (from dokein in db.tblDokumenteintrag
-                                     join dok in db.tblDokumente on dokein.ID equals dok.IDDokumenteintrag
-                                     join ordner in db.tblOrdner on dokein.IDOrdner equals ordner.ID
-                                     join obj in db.tblObjekt on dokein.ID equals obj.IDDokumenteintrag
-                                     join pat in db.Patient on obj.ID_guid equals pat.ID
-                                     join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
+                    int iCountBeilagen = 0;
 
-                                     where auf.ID == ENV.IDAUFENTHALT && ordner.Bezeichnung == "ELGAPflegesituationsbericht" && dok.DateinameTyp == ".pdf"
-                                     && (dokein.GültigVon == null || dokein.GültigVon <= dNow)
-                                     && (dokein.GültigBis == null || dokein.GültigBis >= dNow)
-
-                                     select new
-                                     {
-                                         dokein.Bezeichnung,
-                                         dok.Archivordner,
-                                         dok.DateinameArchiv,
-                                         refObject = dok.ID,
-                                         dok.DateinameOrig,
-                                         dokein.Notiz
-                                     });
-
-                    if (tBeilagen.Count() > 0)
+                    foreach (cELGADB.Beilage rBeilage in lBeilagen)
                     {
-                        int iCountBeilagen = 0;
-
-                        foreach (var rBeilage in tBeilagen)
+                        string path = Path.Combine(ENV.ArchivPath, rBeilage.Archivordner, rBeilage.DateinameArchiv);
+                        if (File.Exists(path))
                         {
-                            string path = Path.Combine(ENV.ArchivPath, rBeilage.Archivordner, rBeilage.DateinameArchiv);
-                            if (File.Exists(path))
-                            {
-                                iCountBeilagen++;
-                                UltraListViewItem it = new UltraListViewItem(rBeilage.Bezeichnung, new object[] { Path.Combine( ENV.ArchivPath, rBeilage.Archivordner), rBeilage.DateinameArchiv, (Guid)rBeilage.refObject, rBeilage.DateinameOrig, rBeilage.Notiz });
-                                it.Key = iCountBeilagen.ToString();
-                                it.Tag = rBeilage.Bezeichnung;
-                                it.CheckState = CheckState.Unchecked;
-                                it.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_PDF, 32, 32);
-                                lvBeilagen.Items.Add(it);
-                            }
+                            iCountBeilagen++;
+                            UltraListViewItem it = new UltraListViewItem(rBeilage.Bezeichnung, new object[] { Path.Combine( ENV.ArchivPath, rBeilage.Archivordner), rBeilage.DateinameArchiv, (Guid)rBeilage.refObject, rBeilage.DateinameOrig, rBeilage.Notiz });
+                            it.Key = iCountBeilagen.ToString();
+                            it.Tag = rBeilage.Bezeichnung;
+                            it.CheckState = CheckState.Unchecked;
+                            it.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_PDF, 32, 32);
+                            lvBeilagen.Items.Add(it);
                         }
                     }
-                }
+                }               
             }
             catch (Exception ex)
             {
@@ -2179,29 +2031,47 @@ namespace PMDS.GUI.Print
 
         public static void PrintCDA(string sFileName)
         {
-            Stream s = null;
             try
             {
                 using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create(sFileName, new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
                 {
-                    //fmtr.AddFormatterAssembly(Assembly.LoadFile(@"C:\Entwicklung\project.PMDS\PMDS.Main\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll"));
-                    //fmtr.BuildCache(new Type[] { // Using Build Cache will greatly increase performance
-                    //                             typeof(PRPA_IN201305UV02),
-                    //                             typeof(PRPA_IN201309UV02)
-                    //                         });
-
                     ENV.ELGAFormatter.Graph(xsw, ccda);
                     xsw.Flush();
                 }
+
+                
+                MemoryStream msXML = new MemoryStream();
+                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create(msXML, new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
+                {
+                    ENV.ELGAFormatter.Graph(xsw, ccda);
+                    xsw.Flush();
+                }
+                msXML.Position = 0;
+
+                /*
+                StreamReader sr = new StreamReader(msXML);
+                string xml = sr.ReadToEnd();
+                msXML.Dispose();
+                sr.Dispose();
+
+                xml = xml.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
+                xml = xml.Replace("|||", "<br/>");
+                xml = xml.Replace(" representation=\"TXT\"", "");
+
+                MemoryStream so = new MemoryStream();
+                StreamWriter sw = new StreamWriter(so);
+                sw.Write(xml);
+
+                so.Position = 0;
+                FileStream fs = new FileStream("XXX" + sFileName, FileMode.Create);
+                so.CopyTo(fs);
+                fs.Flush();
+                fs.Dispose();
+               */
             }
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.PrintCDA: " + ex.ToString());
-            }
-            finally
-            {
-                if (s != null)
-                    s.Close();
             }
         }
 
@@ -2209,32 +2079,17 @@ namespace PMDS.GUI.Print
         {
             try
             {
-                //Chilkat.Xml xml = new Chilkat.Xml();
-                //xml.LoadXmlFile(sFilename);
-                //xml.AddStyleSheet("<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
-                //xml.SaveXml(sFilename);
-
                 string text = File.ReadAllText(sFilename);
                 text = text.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
                      text = text.Replace("|||", "<br/>");
                 text = text.Replace(" representation=\"TXT\"", "");
                 File.WriteAllText(sFilename, text);
 
+
                 /*
                                 byte[] bXml = WCFServicePMDS.Repository.serialize.BinarySerialize<string>(xml.ToString());
                                 b.docu = bXml;
                                 return b;
-                */
-                /*
-                XsltSettings xsltSettings = new XsltSettings(true, false);
-                XPathDocument myXPathDoc = new XPathDocument(sFilename);
-                XslCompiledTransform myXslTrans = new XslCompiledTransform();
-                myXslTrans.Load(Path.Combine(ENV.pathConfig, "ELGA_Stylesheet_v1.0.xsl"), xsltSettings, new XmlUrlResolver());
-                XmlTextWriter myWriter = new XmlTextWriter(@"C:\Temp\ELGA_Pflegesituationsbericht.html", null);
-
-                //XsltArgumentList arList = new XsltArgumentList();
-                //arList.AddParam()
-                myXslTrans.Transform(myXPathDoc, null, myWriter);
                 */
             }
             catch (Exception ex)
@@ -2813,17 +2668,17 @@ namespace PMDS.GUI.Print
                     //Header schreiben
                     rtfMeldungen2.Text = "";
                     InitCDA();
-                    InitKlient();
-                    InitAuthor();
-                    InitVerwahrer();
-                    InitEmpfaenger();
-                    InitRechtlicherUnterzeichner();
-                    InitAnsprechperson();
-                    InitHausarzt();
-                    InitKontaktpersonen();
-                    InitKrankenkasse();
-                    InitAufenthaltService();
-                    InitAufenthaltInfo();
+                    MakeCDAKlient();
+                    MakeCDAAuthor();
+                    MakeCDAVerwahrer();
+                    MakeCDAEmpfaenger();
+                    MakeCDARechtlicherUnterzeichner();
+                    MakeCDAAnsprechperson();
+                    MakeCDAHausarzt();
+                    MakeCDAKontaktpersonen();
+                    MakeCDAKrankenkasse();
+                    MakeCDAAufenthaltService();
+                    MakeCDAAufenthaltInfo();
 
                     //Fachliche Sektionen schreiben
                     CreateCDAFachlicheSektionen();

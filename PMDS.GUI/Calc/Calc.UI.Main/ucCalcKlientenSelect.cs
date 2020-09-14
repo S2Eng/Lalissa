@@ -43,7 +43,7 @@ namespace PMDS.Calc.UI.Admin
             //this.ucKlienten2.loadKlienten(true, new PMDS.Data.Patient.dsPatientStation.PatientDataTable(),
             //                                false , true , false, "Alle Klienten" );
             this.ucKlienten2.loadComboAuswahl();
-            this.ucKlienten2.checkVonBis(true);
+            this.ucKlienten2.checkVonBis(true, false);
 
             ENV.evklinikChanged += new klinikChanged(this.klinikChanged);
             //<20120213>

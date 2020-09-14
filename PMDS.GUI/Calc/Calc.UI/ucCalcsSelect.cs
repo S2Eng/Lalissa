@@ -38,7 +38,7 @@ namespace PMDS.Calc.UI
             //System.Guid[] arrAbt = null;
             //PMDS.Data.Patient.dsPatientStation.PatientDataTable tKlienten = db.GetPatienten("", false, arrAbt, System.Guid.Empty, new DateTime(1900, 1, 1), new DateTime(1900, 1, 1), new DateTime(1900, 1, 1), new DateTime(1900, 1, 1));
             this.ucKlienten1.loadComboAuswahl();
-            this.ucKlienten1.checkVonBis(true);
+            this.ucKlienten1.checkVonBis(true, false);
             this.ucKlienten1.LoadListklienten();
         }
 
