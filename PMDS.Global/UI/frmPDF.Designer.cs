@@ -103,7 +103,7 @@
             this.pdfToolStripZoom1.Location = new System.Drawing.Point(12, 9);
             this.pdfToolStripZoom1.Name = "pdfToolStripZoom1";
             this.pdfToolStripZoom1.PdfViewer = this.pdfViewer1;
-            this.pdfToolStripZoom1.Size = new System.Drawing.Size(223, 73);
+            this.pdfToolStripZoom1.Size = new System.Drawing.Size(192, 73);
             this.pdfToolStripZoom1.TabIndex = 16;
             this.pdfToolStripZoom1.Text = "pdfToolStripZoom1";
             this.pdfToolStripZoom1.ZoomLevel = new float[] {

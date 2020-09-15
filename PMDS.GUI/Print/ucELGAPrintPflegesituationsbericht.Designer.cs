@@ -45,11 +45,8 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab7 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab8 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.pnlBrieftext = new Infragistics.Win.Misc.UltraPanel();
-            this.btnCreateDev = new Infragistics.Win.Misc.UltraButton();
-            this.btnGenerate = new Infragistics.Win.Misc.UltraButton();
             this.wbDiagnosen = new System.Windows.Forms.WebBrowser();
             this.lblDiagnosen = new Infragistics.Win.Misc.UltraLabel();
             this.lblBrieftext = new Infragistics.Win.Misc.UltraLabel();
@@ -147,9 +144,8 @@
             this.rtfMeldungen = new System.Windows.Forms.RichTextBox();
             this.baseTabControl1 = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
-            this.ultraTabPageControl8 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.pnlVorschau = new Infragistics.Win.Misc.UltraPanel();
-            this.wbVorschau = new System.Windows.Forms.WebBrowser();
+            this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraLabel5 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTabPageControl1.SuspendLayout();
             this.pnlBrieftext.ClientArea.SuspendLayout();
             this.pnlBrieftext.SuspendLayout();
@@ -174,15 +170,12 @@
             this.pnlMeldungen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseTabControl1)).BeginInit();
             this.baseTabControl1.SuspendLayout();
-            this.ultraTabPageControl8.SuspendLayout();
-            this.pnlVorschau.ClientArea.SuspendLayout();
-            this.pnlVorschau.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.pnlBrieftext);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -191,8 +184,6 @@
             // 
             // pnlBrieftext.ClientArea
             // 
-            this.pnlBrieftext.ClientArea.Controls.Add(this.btnCreateDev);
-            this.pnlBrieftext.ClientArea.Controls.Add(this.btnGenerate);
             this.pnlBrieftext.ClientArea.Controls.Add(this.wbDiagnosen);
             this.pnlBrieftext.ClientArea.Controls.Add(this.lblDiagnosen);
             this.pnlBrieftext.ClientArea.Controls.Add(this.lblBrieftext);
@@ -202,24 +193,6 @@
             this.pnlBrieftext.Name = "pnlBrieftext";
             this.pnlBrieftext.Size = new System.Drawing.Size(1256, 648);
             this.pnlBrieftext.TabIndex = 0;
-            // 
-            // btnCreateDev
-            // 
-            this.btnCreateDev.Location = new System.Drawing.Point(5, 557);
-            this.btnCreateDev.Name = "btnCreateDev";
-            this.btnCreateDev.Size = new System.Drawing.Size(140, 38);
-            this.btnCreateDev.TabIndex = 6;
-            this.btnCreateDev.Text = "Create DEV";
-            this.btnCreateDev.Click += new System.EventHandler(this.btnCreateDev_Click);
-            // 
-            // btnGenerate
-            // 
-            this.btnGenerate.Location = new System.Drawing.Point(4, 601);
-            this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(140, 38);
-            this.btnGenerate.TabIndex = 5;
-            this.btnGenerate.Text = "Prüfen";
-            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // wbDiagnosen
             // 
@@ -1430,7 +1403,7 @@
             // ultraTabPageControl7
             // 
             this.ultraTabPageControl7.Controls.Add(this.pnlMeldungen);
-            this.ultraTabPageControl7.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl7.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl7.Name = "ultraTabPageControl7";
             this.ultraTabPageControl7.Size = new System.Drawing.Size(1256, 648);
             // 
@@ -1439,6 +1412,8 @@
             // 
             // pnlMeldungen.ClientArea
             // 
+            this.pnlMeldungen.ClientArea.Controls.Add(this.ultraLabel5);
+            this.pnlMeldungen.ClientArea.Controls.Add(this.ultraLabel4);
             this.pnlMeldungen.ClientArea.Controls.Add(this.rtfMeldungen2);
             this.pnlMeldungen.ClientArea.Controls.Add(this.rtfMeldungen);
             this.pnlMeldungen.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1452,11 +1427,13 @@
             this.rtfMeldungen2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfMeldungen2.BackColor = System.Drawing.Color.White;
             this.rtfMeldungen2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfMeldungen2.Location = new System.Drawing.Point(3, 264);
+            this.rtfMeldungen2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfMeldungen2.Location = new System.Drawing.Point(150, 264);
             this.rtfMeldungen2.Name = "rtfMeldungen2";
             this.rtfMeldungen2.ReadOnly = true;
-            this.rtfMeldungen2.Size = new System.Drawing.Size(1250, 381);
+            this.rtfMeldungen2.Size = new System.Drawing.Size(1096, 381);
             this.rtfMeldungen2.TabIndex = 1;
             this.rtfMeldungen2.Text = "";
             // 
@@ -1464,11 +1441,14 @@
             // 
             this.rtfMeldungen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtfMeldungen.BackColor = System.Drawing.Color.White;
             this.rtfMeldungen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtfMeldungen.Location = new System.Drawing.Point(3, 3);
+            this.rtfMeldungen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtfMeldungen.ForeColor = System.Drawing.Color.Red;
+            this.rtfMeldungen.Location = new System.Drawing.Point(150, 31);
             this.rtfMeldungen.Name = "rtfMeldungen";
             this.rtfMeldungen.ReadOnly = true;
-            this.rtfMeldungen.Size = new System.Drawing.Size(1250, 255);
+            this.rtfMeldungen.Size = new System.Drawing.Size(1096, 227);
             this.rtfMeldungen.TabIndex = 0;
             this.rtfMeldungen.Text = "";
             // 
@@ -1482,7 +1462,6 @@
             this.baseTabControl1.Controls.Add(this.ultraTabPageControl5);
             this.baseTabControl1.Controls.Add(this.ultraTabPageControl6);
             this.baseTabControl1.Controls.Add(this.ultraTabPageControl7);
-            this.baseTabControl1.Controls.Add(this.ultraTabPageControl8);
             this.baseTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.baseTabControl1.Location = new System.Drawing.Point(0, 0);
             this.baseTabControl1.Name = "baseTabControl1";
@@ -1517,10 +1496,6 @@
             ultraTab7.TabPage = this.ultraTabPageControl7;
             ultraTab7.Tag = "tabMeldungen";
             ultraTab7.Text = "Meldungen";
-            ultraTab8.Key = "tabVorschau";
-            ultraTab8.TabPage = this.ultraTabPageControl8;
-            ultraTab8.Tag = "TabVorschau";
-            ultraTab8.Text = "Vorschau";
             this.baseTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab2,
@@ -1528,8 +1503,7 @@
             ultraTab3,
             ultraTab4,
             ultraTab6,
-            ultraTab7,
-            ultraTab8});
+            ultraTab7});
             // 
             // ultraTabSharedControlsPage1
             // 
@@ -1537,35 +1511,23 @@
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
             this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1256, 648);
             // 
-            // ultraTabPageControl8
+            // ultraLabel4
             // 
-            this.ultraTabPageControl8.Controls.Add(this.pnlVorschau);
-            this.ultraTabPageControl8.Location = new System.Drawing.Point(-10000, -10000);
-            this.ultraTabPageControl8.Name = "ultraTabPageControl8";
-            this.ultraTabPageControl8.Size = new System.Drawing.Size(1256, 648);
+            this.ultraLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel4.Location = new System.Drawing.Point(4, 35);
+            this.ultraLabel4.Name = "ultraLabel4";
+            this.ultraLabel4.Size = new System.Drawing.Size(100, 23);
+            this.ultraLabel4.TabIndex = 21;
+            this.ultraLabel4.Text = "Fehler";
             // 
-            // pnlVorschau
+            // ultraLabel5
             // 
-            // 
-            // pnlVorschau.ClientArea
-            // 
-            this.pnlVorschau.ClientArea.Controls.Add(this.wbVorschau);
-            this.pnlVorschau.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlVorschau.Location = new System.Drawing.Point(0, 0);
-            this.pnlVorschau.Name = "pnlVorschau";
-            this.pnlVorschau.Size = new System.Drawing.Size(1256, 648);
-            this.pnlVorschau.TabIndex = 0;
-            // 
-            // wbVorschau
-            // 
-            this.wbVorschau.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbVorschau.Location = new System.Drawing.Point(7, 6);
-            this.wbVorschau.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wbVorschau.Name = "wbVorschau";
-            this.wbVorschau.Size = new System.Drawing.Size(1245, 637);
-            this.wbVorschau.TabIndex = 0;
+            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel5.Location = new System.Drawing.Point(4, 264);
+            this.ultraLabel5.Name = "ultraLabel5";
+            this.ultraLabel5.Size = new System.Drawing.Size(100, 23);
+            this.ultraLabel5.TabIndex = 22;
+            this.ultraLabel5.Text = "Hinweise";
             // 
             // ucELGAPrintPflegesituationsbericht
             // 
@@ -1599,9 +1561,6 @@
             this.pnlMeldungen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.baseTabControl1)).EndInit();
             this.baseTabControl1.ResumeLayout(false);
-            this.ultraTabPageControl8.ResumeLayout(false);
-            this.pnlVorschau.ClientArea.ResumeLayout(false);
-            this.pnlVorschau.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1673,7 +1632,6 @@
         private Infragistics.Win.Misc.UltraLabel ultraLabel19;
         private Infragistics.Win.Misc.UltraLabel lblPFSCHL;
         private System.Windows.Forms.RichTextBox rtfPFSCHL_Text;
-        private Infragistics.Win.Misc.UltraButton btnGenerate;
         private System.Windows.Forms.RichTextBox rtfPFMOB_Res;
         private System.Windows.Forms.RichTextBox rtfPFATM_Risk;
         private System.Windows.Forms.RichTextBox rtfPFHAUT_Risk;
@@ -1708,9 +1666,7 @@
         private Infragistics.Win.Misc.UltraPanel pnlMeldungen;
         private System.Windows.Forms.RichTextBox rtfMeldungen;
         private System.Windows.Forms.RichTextBox rtfMeldungen2;
-        private Infragistics.Win.Misc.UltraButton btnCreateDev;
-        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl8;
-        private Infragistics.Win.Misc.UltraPanel pnlVorschau;
-        private System.Windows.Forms.WebBrowser wbVorschau;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel5;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel4;
     }
 }

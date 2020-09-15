@@ -47,10 +47,8 @@ namespace PMDS.GUI
         public PMDS.DB.PMDSBusiness b = new PMDSBusiness();
 
         private bool SavePBSToArchiv { set; get; } = true;          //Pflegebegleitschreiben auch ins Archiv ablegen
-
-
-
-
+        private bool SavePSBToArchiv { set; get; } = false;         //Pflegesituationsbericht auch ins Archiv ablegen
+        private MemoryStream msPSB = new MemoryStream();            //ELGA Pflegesituationsbericht 
 
         public ucDynReportParameter()
         {
@@ -146,138 +144,6 @@ namespace PMDS.GUI
                 {
                     PMDS.Global.print.FDF fdf = new Global.print.FDF();
                     fdf.Print(ReportFile, null);
-
-                    //os: 180615: FDF-Print in eingene Funktion ausgelagert (wird für VO-Schein auch benötigt)
-                    //PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
-                    //byte[] bPDF;
-                    //if (frmPDF.OpenPDF(ReportFile, out bPDF))
-                    //{
-                    //    frmPDF.ShowBookmarks = true;
-                    //    frmPDF.ShowOpenDialog = false;
-                    //    frmPDF.ShowPrintDialog = true;
-                        
-                    //    if (ENV.CurrentIDPatient != Guid.Empty)
-                    //    {
-                    //        using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-                    //        {
-                    //            PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-
-                    //            PMDS.db.Entities.Patient p = new PMDS.db.Entities.Patient();
-                    //            p = PMDSBusiness1.getPatient(ENV.CurrentIDPatient, db);
-
-                    //            if (p.Vorname != null) frmPDF.SetValue("#KLIENTVORNAME#", p.Vorname);
-                    //            if (p.Nachname != null) frmPDF.SetValue("#KLIENTNACHNAME#", p.Nachname);
-                    //            if ((p.Vorname != null) && (p.Nachname != null)) frmPDF.SetValue("#KLIENT#", p.Nachname + " "+ p.Vorname );
-                    //            if (p.Anrede != null) frmPDF.SetValue("#KLIENTANREDE#", p.Anrede);
-
-                    //            if (p.Geburtsdatum != null) frmPDF.SetValue("#KLIENTGEBDAT#", System.Convert.ToDateTime(p.Geburtsdatum).ToShortDateString());
-                    //            if (p.SterbeDatum != null)  frmPDF.SetValue("#KLIENTSTERBEDATUM#", System.Convert.ToDateTime(p.SterbeDatum).ToShortDateString());
-                    //            frmPDF.SetValue("#KLIENTVERSTORBEN#", (p.Verstorben == true) ? "J" : "N");
-                    //            if (p.Klientennummer != null) frmPDF.SetValue("#KLIENTNUMMER#", p.Klientennummer);
-                    //            if (p.Titel != null) frmPDF.SetValue("#KLIENTTITEL#", p.Titel);
-                    //            if (p.Kosename != null) frmPDF.SetValue("#KLIENTKOSENAME#", p.Kosename);
-
-                    //            if (p.Sexus != null) frmPDF.SetValue("#KLIENTGESCHLECHT#", p.Sexus);
-                    //            if (p.Familienstand != null) frmPDF.SetValue("#KLIENTFAMILIENSTAND#", p.Familienstand);
-                    //            if (p.Staatsb != null) frmPDF.SetValue("#KLIENTSTAATSBUERGERSCHAFT#", p.Staatsb);
-                    //            if (p.Klasse != null) frmPDF.SetValue("#KLIENTVERSICHERUNGKLASSE#", p.Klasse);
-                    //            if (p.KrankenKasse != null) frmPDF.SetValue("#KLIENTKRANKENKASSE#", p.KrankenKasse);
-                    //            if (p.BlutGruppe != null) frmPDF.SetValue("#KLIENTBLUTGRUPPE#", p.BlutGruppe);
-                    //            if (p.Resusfaktor != null) frmPDF.SetValue("#KLIENTRHESUSFAKTOR#", p.Resusfaktor);
-                    //            if (p.LedigerName != null) frmPDF.SetValue("#KLIENTLEDIGERNAME#", p.LedigerName);
-                    //            if (p.Geburtsort != null) frmPDF.SetValue("#KLIENTGEBORT#", p.Geburtsort);
-                    //            if (p.VersicherungsNr != null) frmPDF.SetValue("#KLIENTSVNR#", p.VersicherungsNr);
-                    //            if (p.Privatversicherung != null) frmPDF.SetValue("#KLIENTPRIVATVERSICHERUNG#", p.Privatversicherung);
-                    //            if (p.PrivPolNr != null) frmPDF.SetValue("#KLIENTPRIVATVERSICHERUNGPOLNR#", p.PrivPolNr);
-
-                    //            if (p.ErlernterBeruf != null) frmPDF.SetValue("#KLIENTERLERNTERBERUF#", p.ErlernterBeruf);
-                    //            if (p.Besonderheit != null) frmPDF.SetValue("#KLIENTBESONDERHEIT#", p.Besonderheit);
-                    //            if (p.SterbeRegel != null) frmPDF.SetValue("#KLIENTSTERBEREGELUNG#", p.SterbeRegel);
-                    //            frmPDF.SetValue("#KLIENTPFLEGEGELDANTRAG#", (p.PflegegeldantragJN == true) ? "J" : "N");
-                    //            if (p.DatumPflegegeldantrag != null) frmPDF.SetValue("#KLIENTPFLEGEGELDANTRAGDATUM#", System.Convert.ToDateTime(p.DatumPflegegeldantrag).ToShortDateString());
-                    //            frmPDF.SetValue("#KLIENTPENSIONSTEILUNGSANTRAG#", (p.PensionsteilungsantragJN == true) ? "J" : "N");
-                    //            if (p.DatumPensionsteilungsantrag != null) frmPDF.SetValue("#KLIENTPFLEGEGELDANTRAGDATUM#", System.Convert.ToDateTime(p.DatumPensionsteilungsantrag).ToShortDateString());
-                    //            if (p.Konfision != null) frmPDF.SetValue("#KLIENTKONFESSION#", p.Konfision);
-                    //            frmPDF.SetValue("#KLIENTANATOMIE#", (p.Anatomie == true) ? "J" : "N");
-                    //            frmPDF.SetValue("#KLIENTDNR#", (p.DNR == true) ? "J" : "N");
-                    //            frmPDF.SetValue("#KLIENTPALLIATIV#", (p.Palliativ == true) ? "J" : "N");
-                    //            frmPDF.SetValue("#KLIENTHOLOCAUST#", (p.KZUeberlebender == true) ? "J" : "N");
-                    //            if (p.PatientenverfuegungJN != null) frmPDF.SetValue("#KLIENTPATIENTENVERFÜGUNG#", (p.PatientenverfuegungJN == true) ? "J" : "N");
-                    //            if (p.PatientenverfuegungBeachtlichJN != null) frmPDF.SetValue("#KLIENTPATIENTENVERFÜGUNGBEACHTLICH#", (p.PatientenverfuegungBeachtlichJN == true) ? "J" : "N");
-                    //            if (p.PatientverfuegungDatum != null) frmPDF.SetValue("#KLIENTPATIENTENVERFÜGUNGDATUM#", System.Convert.ToDateTime(p.PatientverfuegungDatum).ToShortDateString());
-                    //            if (p.PatientverfuegungAnmerkung != null) frmPDF.SetValue("#KLIENTPATIENTENVERFÜGUNGANMERKUNG#", p.PatientverfuegungAnmerkung);
-
-                    //            frmPDF.SetValue("#KLIENTMILIEUBETREUUNG#", (p.Milieubetreuung == true) ? "J" : "N");
-                    //            frmPDF.SetValue("#KLIENTDATENSCHUTZ#", (p.Datenschutz == true) ? "J" : "N");
-                    //            if (p.lstSprachen != null) frmPDF.SetValue("#KLIENTSPRACHEN#", p.lstSprachen);
-
-                    //            if (p.Haarfarbe != null) frmPDF.SetValue("#KLIENTHAARFARBE#", p.Haarfarbe);
-                    //            if (p.Augenfarbe != null) frmPDF.SetValue("#KLIENTAUGENFARBE#", p.Augenfarbe);
-                    //            if (p.Groesse != null) frmPDF.SetValue("#KLIENTGROESSE#", p.Groesse.ToString());
-                    //            if (p.Statur != null) frmPDF.SetValue("#KLIENTSTATUR#", p.Statur.ToString());
-
-                    //            if (p.Amputation_Prozent != null) frmPDF.SetValue("#KLIENTAMPUTATIONPROZENT#", p.Amputation_Prozent.ToString());
-                    //            if (p.Kennwort != null) frmPDF.SetValue("#KLIENTKENNWORT#", p.Kennwort);
-
-                    //            frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNG#", (p.RezeptgebuehrbefreiungJN == true) ? "J" : "N");
-                    //            frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGREGO#", (p.RezGebBef_RegoJN == true) ? "J" : "N");
-                    //            if (p.RezGebBef_RegoAb != null) frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGREGOAB#", System.Convert.ToDateTime(p.RezGebBef_RegoAb).ToShortDateString());
-                    //            if (p.RezGebBef_RegoBis != null) frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGREGOBIS#", System.Convert.ToDateTime(p.RezGebBef_RegoBis).ToShortDateString());
-                    //            frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGBEFRISTET#", (p.RezGebBef_BefristetJN == true) ? "J" : "N");
-                    //            if (p.RezGebBef_BefristetAb != null) frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGBEFRISTETAB#", System.Convert.ToDateTime(p.RezGebBef_BefristetAb).ToShortDateString());
-                    //            if (p.RezGebBef_BefristetBis != null) frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGBEFRISTETBIS#", System.Convert.ToDateTime(p.RezGebBef_BefristetBis).ToShortDateString());
-                    //            frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGUNBEFRISTET#", (p.RezGebBef_UnbefristetJN == true) ? "J" : "N");
-                    //            frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGWIDERRUF#", (p.RezGebBef_WiderrufJN == true) ? "J" : "N");
-                    //            if (p.RezGebBef_WiderrufGrund != null) frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGWIDERRUFGRUND#", p.RezGebBef_WiderrufGrund);
-                    //            frmPDF.SetValue("#KLIENTREZEPTGEBUEHRENBEFREIUNGSACHWALTER#", (p.RezGebBef_SachwalterJN == true) ? "J" : "N");
-
-                    //            if (p.Betreuungsstufe != null) frmPDF.SetValue("#KLIENTBETREUUNGSSTUFE#", p.Betreuungsstufe);
-                    //            if (p.BetreuungsstufeAb != null) frmPDF.SetValue("#KLIENTBETREUUNGSSTUFEAB#", System.Convert.ToDateTime(p.BetreuungsstufeAb).ToShortDateString());
-                    //            if (p.BetreuungsstufeBis != null) frmPDF.SetValue("#KLIENTBETREUUNGSSTUFEBIS#", System.Convert.ToDateTime(p.BetreuungsstufeBis).ToShortDateString());
-                    //            frmPDF.SetValue("#KLIENTSOZIALCARD#", (p.Sozialcard == true) ? "J" : "N");
-                    //            frmPDF.SetValue("#KLIENTBEHINDERTENAUSWEIS#", (p.Behindertenausweis == true) ? "J" : "N");
-
-                    //            Patient pat = new Patient(ENV.CurrentIDPatient);
-                    //            if (pat.Aufenthalt.ID != null)
-                    //            {
-                    //                PMDS.db.Entities.Aufenthalt a = new PMDS.db.Entities.Aufenthalt();
-                    //                a = PMDSBusiness1.getAufenthalt((Guid)pat.Aufenthalt.ID, db);
-                    //                if (a.Aufnahmezeitpunkt != null) frmPDF.SetValue("#AUFENTHALTAUFNAHMEDATUM#", Convert.ToDateTime(a.Aufnahmezeitpunkt).ToShortDateString());
-                    //                if (a.Fallnummer != null) frmPDF.SetValue("#AUFENTHALTFALLNUMMER#", a.Fallnummer.ToString());
-                    //                if (a.Gruppenkennzahl != null) frmPDF.SetValue("#AUFENTHALTGRUPPENKENNZAHL#", a.Gruppenkennzahl);
-                    //                if (a.Postregelung != null) frmPDF.SetValue("#AUFENTHALTPOSTREGELUNG#", a.Postregelung);
-                    //            }
-
-                    //            if (pat.Aufenthalt.IDKlinik != null)
-                    //            {
-                    //                PMDS.db.Entities.Klinik kli = new PMDS.db.Entities.Klinik();
-                    //                kli = PMDSBusiness1.getKlinik(pat.Aufenthalt.IDKlinik, db);
-                    //                if (kli.Bezeichnung != null) frmPDF.SetValue("#AUFENTHALTEEINRICHTUNG#", kli.Bezeichnung);
-                    //            }
-
-                    //            if (pat.Aufenthalt.IDAbteilung != null)
-                    //            {
-                    //                PMDS.db.Entities.Abteilung abt = new PMDS.db.Entities.Abteilung();
-                    //                abt = PMDSBusiness1.getAbteilung(pat.Aufenthalt.IDAbteilung, db);
-                    //                if (abt.Bezeichnung != null) frmPDF.SetValue("#AUFENTHALTABTEILUNG#", abt.Bezeichnung);
-                    //            }
-
-                    //            if (pat.Aufenthalt.IDBereich != null)
-                    //            {
-                    //                PMDS.db.Entities.Bereich ber = new PMDS.db.Entities.Bereich();
-                    //                ber = PMDSBusiness1.getBereich(pat.Aufenthalt.IDBereich, db);
-                    //                if (ber.Bezeichnung != null) frmPDF.SetValue("#AUFENTHALTBEREICH#", ber.Bezeichnung);
-                    //            }
-                    //        }
-                    //    }
-
-                    //    frmPDF.SetCaption = System.IO.Path.GetFileNameWithoutExtension(ReportFile);
-                    //    frmPDF.Show();
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(QS2.Desktop.ControlManagment.ControlManagment.getRes("Datei nicht gefunden."));
-                    //}
                     return;
                 }
                 else if (extension != ".rpt")
@@ -296,23 +162,54 @@ namespace PMDS.GUI
                 // Dynamische Formularsteuerung ---------------------------------------------------------------------------------------------------
                 if (_CurrentFormToShow != "")
                 {
-                    if (PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
+                    if (PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2()) // oder Haus nimmt an ELGA teil
                     {
                         PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht PSB = new PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht();
-                        PSB.ShowDialog();
-                    }
-
-                    frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                    DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                    if (res != DialogResult.OK)
-                    {
-                        abortWindow = frmPrintPflegebegleitschreibenInfo1.GetReceiverHasELGAOID();   //Abwesenheitsprozess sofort beenden
-                        return;
+                        DialogResult resPSB = PSB.ShowDialog();
+                        if (resPSB == DialogResult.OK)
+                        {
+                            msPSB = PSB.msPSB;
+                            IDEinrichtungEmpfänger = (Guid)PSB.cbETo.Value;
+                            SavePSBToArchiv = true;
+                            SavePBSToArchiv = false;
+                        }
+                        else if (PSB.ResumeWithPBS)
+                        {
+                            frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
+                            DialogResult resPBS = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
+                            if (resPBS != DialogResult.OK)
+                            {
+                                abortWindow = frmPrintPflegebegleitschreibenInfo1.GetReceiverHasELGAOID();   //Abwesenheitsprozess sofort beenden
+                                return;
+                            }
+                            else
+                            {
+                                IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
+                                SavePBSToArchiv = false;
+                                SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive();
+                            }
+                        }
+                        else
+                        {
+                            abortWindow = true;
+                            return;
+                        }
                     }
                     else
                     {
-                        IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
-                        SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive();
+                        SavePSBToArchiv = false;
+                        frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
+                        DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
+                        if (res != DialogResult.OK)
+                        {
+                            abortWindow = frmPrintPflegebegleitschreibenInfo1.GetReceiverHasELGAOID();   //Abwesenheitsprozess sofort beenden
+                            return;
+                        }
+                        else
+                        {
+                            IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
+                            SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive();
+                        }
                     }
                 }
                 
@@ -366,49 +263,81 @@ namespace PMDS.GUI
                     Application.UseWaitCursor = true;
                     Application.DoEvents();
 
-                    if (frmPrintPflegebegleitschreibenInfo1 == null)
-                        PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, true, lPars, _CurrentBerichtDatenquellen, "",
-                                                                    ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, 
-                                                                    cParFormular, ref sFileNameExport, true, "", false);
-                    else
-                        PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !SavePBSToArchiv, lPars, _CurrentBerichtDatenquellen, "",
-                                                                        ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD,
-                                                                        cParFormular, ref sFileNameExport, true, "", SavePBSToArchiv);
-
-                    Application.UseWaitCursor = false; ;
-                    if (frmPrintPflegebegleitschreibenInfo1 != null && frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive())
+                    if (!SavePSBToArchiv)
                     {
-                        VB.PMDSBusinessVB bVB = new VB.PMDSBusinessVB();
-                        PMDS.db.Entities.Benutzer rUsrLoggedOn = b.LogggedOnUser();
+                        if (frmPrintPflegebegleitschreibenInfo1 == null)
+                            PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, true, lPars, _CurrentBerichtDatenquellen, "",
+                                                                        ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD,
+                                                                        cParFormular, ref sFileNameExport, true, "", false);
+                        else
+                            PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !SavePBSToArchiv, lPars, _CurrentBerichtDatenquellen, "",
+                                                                            ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD,
+                                                                            cParFormular, ref sFileNameExport, true, "", SavePBSToArchiv);
+                    }
 
-                        //os191224
-                        var rPatInfo = (from p in db.Patient
-                                        where p.ID == ENV.CurrentIDPatient
-                                        select new
-                                        { p.Nachname, p.Vorname }
-                                       ).First();
-                        //PMDS.db.Entities.Patient rPatient = b.getPatient(ENV.CurrentIDPatient, db);
+                    VB.PMDSBusinessVB bVB = new VB.PMDSBusinessVB();
+                    PMDS.db.Entities.Benutzer rUsrLoggedOn = b.LogggedOnUser();
+
+                    var rPatInfo = (from p in db.Patient
+                                    where p.ID == ENV.CurrentIDPatient
+                                    select new
+                                    { p.Nachname, p.Vorname }
+                                   ).First();
+
+                    Application.UseWaitCursor = false;
+                    string ReportNameProt = System.IO.Path.GetFileName(ReportFile.Trim());
+                    string protTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bericht {0} geöffnet");
+                    string protTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bericht {0} wurde von Benutzer {1} geöffnet");
+
+                    if (frmPrintPflegebegleitschreibenInfo1 != null && frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive())  //Pflegebegleitschreiben in Archiv ablegen
+                    {
+
                         if (bVB.SaveFileToArchive(sFileNameExport, 
                                                     QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(), 
                                                     "Pflegebegleitschreiben", ref IDDokumenteneintrag))
                         {
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Pflegebegleitschreiben wurde ins Archiv abgelegt!");
-
-                            PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
-                            byte[] bPDF;
-                            if (frmPDF.OpenPDF(sFileNameExport, out bPDF))
+                            if (File.Exists(sFileNameExport))
                             {
-                                frmPDF.ShowBookmarks = true;
-                                frmPDF.ShowOpenDialog = false;
-                                frmPDF.ShowPrintDialog = true;
-                                frmPDF.SetCaption = System.IO.Path.GetFileNameWithoutExtension(ReportFile);
-                                frmPDF.Show();
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Pflegebegleitschreiben wurde ins Archiv abgelegt!");
+
+                                PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
+                                byte[] bPDF;
+                                if (frmPDF.OpenPDF(sFileNameExport, out bPDF))
+                                {
+                                    frmPDF.ShowBookmarks = true;
+                                    frmPDF.ShowOpenDialog = false;
+                                    frmPDF.ShowPrintDialog = true;
+                                    frmPDF.SetCaption = System.IO.Path.GetFileNameWithoutExtension(ReportFile);
+                                    frmPDF.Show();
+                                }
+                                //File.Delete(sFileNameExport);
+                                ReportNameProt = System.IO.Path.GetFileName(ReportFile.Trim());
+                                protTitle = string.Format(protTitle, ReportNameProt);
+                            }
+                        }
+                    }
+                    else if (SavePSBToArchiv)    //Pflegesituationsbericht in Archiv ablegen
+                    {
+                        string tmpPSB = "Pflegesituationsbericht";
+                        string tmpFile = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, tmpPSB + "_" + System.Guid.NewGuid().ToString() + ".xml");
+                        if (bVB.SaveFileToArchive(tmpFile,
+                                                    tmpPSB + " für " + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(),
+                                                    "Pflegebegleitschreiben", 
+                                                    ref IDDokumenteneintrag,
+                                                    msPSB
+                                                  ))
+                        {
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(tmpPSB + " wurde ins Archiv abgelegt!");
+                            if (File.Exists(tmpFile))
+                            {
+                                File.Delete(tmpFile);
+                                ReportNameProt = tmpPSB;
+                                protTitle = string.Format(tmpPSB, ReportNameProt);
                             }
                         }
                     }
 
                     PMDS.db.Entities.Benutzer rUserLoggedIn = this.b.LogggedOnUser(db);
-                    string ReportNameProt = System.IO.Path.GetFileName(ReportFile.Trim()); 
                     string UserName = rUserLoggedIn.Nachname.Trim() + " " + rUserLoggedIn.Vorname.Trim() + " (" + rUserLoggedIn.Benutzer1.Trim() + ")"; ;
 
                     string sParms = "";
@@ -421,10 +350,7 @@ namespace PMDS.GUI
                         }
                         sParms +=  "\r\n";
                     }
-
-                    string protTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bericht {0} geöffnet");
-                    protTitle = string.Format(protTitle, ReportNameProt);
-                    string protTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bericht {0} wurde von Benutzer {1} geöffnet");
+                                     
                     protTxt = string.Format(protTxt, ReportNameProt, UserName);
                     protTxt +=  "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Parameter") + ": " + "\r\n" + sParms;
                     this.b.saveProtocol(db, protTitle, protTxt);

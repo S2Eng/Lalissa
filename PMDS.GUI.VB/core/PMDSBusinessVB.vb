@@ -1,6 +1,8 @@
 ﻿
 
 
+Imports System.IO
+
 Public Class PMDSBusinessVB
 
 
@@ -159,6 +161,23 @@ Public Class PMDSBusinessVB
         End Try
     End Function
 
+    Public Function SaveFileToArchive(sFileName As String, Bezeichnung As String, sOrdner As String, ByRef IDDokumenteneintrag As Nullable(Of Guid), msToSave As System.IO.MemoryStream) As Boolean
+        Try
+
+            msToSave.Position = 0
+            Using fs As FileStream = New FileStream(sFileName, FileMode.Create)
+                msToSave.CopyTo(fs)
+                fs.Flush()
+            End Using
+            Return SaveFileToArchive(sFileName, Bezeichnung, sOrdner, IDDokumenteneintrag)
+
+        Catch ex As Exception
+            Throw New Exception("SaveFileToArchive: " + ex.ToString())
+        End Try
+    End Function
+
+
+
     Public Function SaveFileToArchive(fileToSave As String, Bezeichnung As String, sOrdner As String, ByRef IDDokumenteneintrag As Nullable(Of Guid)) As Boolean
         Try
             Dim gen As New GeneralArchiv()
@@ -180,39 +199,40 @@ Public Class PMDSBusinessVB
                     Dim filInfoProvNote As New System.IO.FileInfo(fileToSave)
                     Dim fileInfo As New clFileInfo
 
-                    Dim fs As New System.IO.FileStream(fileToSave, IO.FileMode.Open, IO.FileAccess.Read)
-                    Dim r As New System.IO.BinaryReader(fs)
-                    Dim fileByte(fs.Length) As Byte
-                    fileByte = r.ReadBytes(fs.Length)
-                    fileInfo.fileB = fileByte
+                    Using fs As New System.IO.FileStream(fileToSave, IO.FileMode.Open, IO.FileAccess.Read)
+                        Dim r As New System.IO.BinaryReader(fs)
+                        Dim fileByte(fs.Length) As Byte
+                        fileByte = r.ReadBytes(fs.Length)
+                        fileInfo.fileB = fileByte
 
-                    fileInfo.file_Bezeichnung = Bezeichnung.Trim()
+                        fileInfo.file_Bezeichnung = Bezeichnung.Trim()
 
-                    fileInfo.file_erstelltAm = Now
-                    fileInfo.file_geändertAm = Now
-                    fileInfo.file_größe = filInfoProvNote.Length
-                    fileInfo.file_IDOrdner = IDOrdner
-                    fileInfo.file_name = strOp.GetFileName(fileToSave, False)
-                    fileInfo.file_origVerzeichnis = strOp.GetDir(fileToSave)
-                    fileInfo.file_typ = strOp.GetFiletyp(fileToSave)
-                    Dim arrFile As New ArrayList
-                    arrFile.Add(fileInfo)
-                    Dim obs As New ArrayList
-                    Dim clObj As New clObject()
-                    clObj.id = PMDS.Global.ENV.CurrentIDPatient.ToString
-                    clObj.bezeichnung = gen.getPatientName(PMDS.Global.ENV.CurrentIDPatient)
-                    obs.Add(clObj)
+                        fileInfo.file_erstelltAm = Now
+                        fileInfo.file_geändertAm = Now
+                        fileInfo.file_größe = filInfoProvNote.Length
+                        fileInfo.file_IDOrdner = IDOrdner
+                        fileInfo.file_name = strOp.GetFileName(fileToSave, False)
+                        fileInfo.file_origVerzeichnis = strOp.GetDir(fileToSave)
+                        fileInfo.file_typ = strOp.GetFiletyp(fileToSave)
+                        Dim arrFile As New ArrayList
+                        arrFile.Add(fileInfo)
+                        Dim obs As New ArrayList
+                        Dim clObj As New clObject()
+                        clObj.id = PMDS.Global.ENV.CurrentIDPatient.ToString
+                        clObj.bezeichnung = gen.getPatientName(PMDS.Global.ENV.CurrentIDPatient)
+                        obs.Add(clObj)
 
-                    Dim dataSchlagwortKat As New dsPlanArchive
-                    Dim clSave As New cArchive
-                    Dim ret As New cArchive.clRet
-                    ret = clSave.DokumentInsArchivAblegen(arrFile, "", Nothing, Nothing, "M", Nothing, obs, dataSchlagwortKat)
-                    If ret.OK Then
-                        IDDokumenteneintrag = ret.arrIDDokumenteneintrag(0)
-                        Return True
-                    Else
-                        Throw New Exception("SaveFileToArchive: Error save file " + fileToSave.Trim() + " to archive!")
-                    End If
+                        Dim dataSchlagwortKat As New dsPlanArchive
+                        Dim clSave As New cArchive
+                        Dim ret As New cArchive.clRet
+                        ret = clSave.DokumentInsArchivAblegen(arrFile, "", Nothing, Nothing, "M", Nothing, obs, dataSchlagwortKat)
+                        If ret.OK Then
+                            IDDokumenteneintrag = ret.arrIDDokumenteneintrag(0)
+                            Return True
+                        Else
+                            Throw New Exception("SaveFileToArchive: Error save file " + fileToSave.Trim() + " to archive!")
+                        End If
+                    End Using
                 End If
             Else
                 Throw New Exception("SaveFileToArchive: File " + fileToSave.Trim() + " not found to save to archive!")

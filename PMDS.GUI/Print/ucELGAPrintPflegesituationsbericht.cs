@@ -12,7 +12,6 @@ using qs2.core.vb;
 using PMDS.Global;
 using Infragistics.Win.UltraWinGrid;
 using PMDS.Klient;
-using Patagames.Pdf.Enums;
 using System.Reflection;
 using System.Xml;
 using System.IO;
@@ -24,22 +23,17 @@ using MARC.Everest.RMIM.UV.CDAr2.POCD_MT000040UV;
 using MARC.Everest.RMIM.UV.CDAr2.Vocabulary;
 using MARC.Everest.Xml;
 using MARC.Everest.DataTypes;
-using PMDS.DynReportsForms;
 using PMDS.BusinessLogic;
-using Infragistics.Win.UltraWinGanttView;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
-//using MARC.Everest.RMIM.UV.NE2010.REPC_MT000324UV01;
-using System.Text.RegularExpressions;
 
-using Patagames.Pdf;
-using Syncfusion.Pdf.Interactive;
-using Patagames.Pdf.Net;
-using EnvDTE;
+using System.Text.RegularExpressions;
 using Syncfusion.Pdf.Parsing;
-using MARC.Everest.Connectors;
+
 using System.Xml.XPath;
 using System.Xml.Xsl;
+
+using System.Diagnostics;
+using Microsoft.Win32;
+using IWshRuntimeLibrary;
 
 namespace PMDS.GUI.Print
 {
@@ -75,11 +69,15 @@ namespace PMDS.GUI.Print
         private cELGADB.Rezeptgebührenbefreiung Rezeptgebührenbefreiung = new cELGADB.Rezeptgebührenbefreiung();
         private List<cELGADB.Beilage> lBeilagen = new List<cELGADB.Beilage>();
 
+        private MemoryStream msXML = new MemoryStream();                        //Ausgabe für Webbrowser
+        public static MemoryStream msPSB { get; set; } = new MemoryStream();    //MemoryStream für Archiv
+
         public enum eStatusResult
         {
-            SendToELGA = 1,
-            SaveToArchiv = 2,
-            MissingData = 3
+            SendToELGA = 1,     //OK
+            Messages = 2,       //Hinweise (z.B. keine PDx, ..)
+            MissingData = 3,    //Datenprobleme, die einen PSB verhindern
+            NoELGA = 4          //Klient ist abgemeldet oder SOO
         }
 
         private enum eELGATypeSektion
@@ -383,13 +381,18 @@ namespace PMDS.GUI.Print
                 if (Klient.ELGAAbgemeldet)
                 {
                     rtfMeldungen.Text += "Hinweis: Klient hat sich von ELGA abgemeldet. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
-                    ReturnCode = eStatusResult.SaveToArchiv;
+                    ReturnCode = eStatusResult.NoELGA;
                 }
 
                 if (Klient.ELGASOOJN)
                 {
                     rtfMeldungen.Text += "Hinweis: Klient hat ein situatives OptOut erklärt. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
-                    ReturnCode = eStatusResult.SaveToArchiv;
+                    ReturnCode = eStatusResult.NoELGA;
+                }
+
+                if (!String.IsNullOrWhiteSpace(rtfMeldungen2.Text))
+                {
+                    ReturnCode = eStatusResult.Messages;
                 }
             }
             catch (Exception ex)
@@ -1530,7 +1533,7 @@ namespace PMDS.GUI.Print
                 }
                 else     //Leeres Pflegediagnosenentry (Pflicht-Element)
                 {
-                    rtfMeldungen.Text += "hinweis: Keine ELGA-konformen Pflegediagnosen gefunden.\r\n";
+                    rtfMeldungen2.Text += "Keine ELGA-konformen Pflegediagnosen gefunden.\r\n";
                     Guid Id = Guid.NewGuid();
 
                     PDxHTML += "<tr ID=\"pfdiag" + i.ToString() + "\">";
@@ -1983,7 +1986,7 @@ namespace PMDS.GUI.Print
                     foreach (cELGADB.Beilage rBeilage in lBeilagen)
                     {
                         string path = Path.Combine(ENV.ArchivPath, rBeilage.Archivordner, rBeilage.DateinameArchiv);
-                        if (File.Exists(path))
+                        if (System.IO.File.Exists(path))
                         {
                             iCountBeilagen++;
                             UltraListViewItem it = new UltraListViewItem(rBeilage.Bezeichnung, new object[] { Path.Combine( ENV.ArchivPath, rBeilage.Archivordner), rBeilage.DateinameArchiv, (Guid)rBeilage.refObject, rBeilage.DateinameOrig, rBeilage.Notiz });
@@ -2029,76 +2032,59 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public static void PrintCDA(string sFileName)
+        public static MemoryStream CreateCDA(string sFileName)
         {
             try
             {
-                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create(sFileName, new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
+                using (MemoryStream msXML = new MemoryStream())
                 {
-                    ENV.ELGAFormatter.Graph(xsw, ccda);
-                    xsw.Flush();
+                    using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create(msXML, new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
+                    {
+                        ENV.ELGAFormatter.Graph(xsw, ccda);
+                        xsw.Flush();
+                    }
+                    msXML.Position = 0;
+
+                    string xml = "";
+                    using (StreamReader sr = new StreamReader(msXML))
+                    {
+                        xml = sr.ReadToEnd();
+                    }
+
+                    xml = xml.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
+                    xml = xml.Replace("|||", "<br/>");
+                    xml = xml.Replace(" representation=\"TXT\"", "");
+
+                    MemoryStream msReturn = new MemoryStream();
+                    using (MemoryStream msOut = new MemoryStream())
+                    {
+                        using (StreamWriter sw = new StreamWriter(msOut))
+                        {
+                            sw.NewLine = "\n";
+                            sw.Write(xml);
+                            sw.Flush();
+
+                            msOut.Position = 0;
+                            if (!String.IsNullOrWhiteSpace(sFileName))
+                            {
+                                using (FileStream fs = new FileStream(sFileName, FileMode.Create))
+                                {
+                                    msOut.CopyTo(fs);
+                                    fs.Flush();
+                                }
+                            }
+                            msOut.Position = 0;
+                            msOut.CopyTo(msReturn);
+                            msOut.Position = 0;
+                            msOut.CopyTo(msPSB);
+                            return msReturn;
+                        }
+                    }
                 }
-
-                
-                MemoryStream msXML = new MemoryStream();
-                using (MARC.Everest.Xml.XmlStateWriter xsw = new XmlStateWriter(XmlWriter.Create(msXML, new XmlWriterSettings() { Indent = true, ConformanceLevel = ConformanceLevel.Document })))
-                {
-                    ENV.ELGAFormatter.Graph(xsw, ccda);
-                    xsw.Flush();
-                }
-                msXML.Position = 0;
-
-                /*
-                StreamReader sr = new StreamReader(msXML);
-                string xml = sr.ReadToEnd();
-                msXML.Dispose();
-                sr.Dispose();
-
-                xml = xml.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
-                xml = xml.Replace("|||", "<br/>");
-                xml = xml.Replace(" representation=\"TXT\"", "");
-
-                MemoryStream so = new MemoryStream();
-                StreamWriter sw = new StreamWriter(so);
-                sw.Write(xml);
-
-                so.Position = 0;
-                FileStream fs = new FileStream("XXX" + sFileName, FileMode.Create);
-                so.CopyTo(fs);
-                fs.Flush();
-                fs.Dispose();
-               */
             }
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.PrintCDA: " + ex.ToString());
-            }
-        }
-
-        public static void UpdateCDA(string sFilename)
-        {
-            try
-            {
-                string text = File.ReadAllText(sFilename);
-                text = text.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"ELGA_Stylesheet_v1.0.xsl\"?>");
-                     text = text.Replace("|||", "<br/>");
-                text = text.Replace(" representation=\"TXT\"", "");
-                File.WriteAllText(sFilename, text);
-
-
-                /*
-                                byte[] bXml = WCFServicePMDS.Repository.serialize.BinarySerialize<string>(xml.ToString());
-                                b.docu = bXml;
-                                return b;
-                */
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ucELGAPrintPflegesituationsbericht.UpdateCDA: " + ex.ToString());
-            }
-            finally
-            {
-
             }
         }
 
@@ -2539,7 +2525,7 @@ namespace PMDS.GUI.Print
                     if (rBeilage.CheckState == CheckState.Checked)
                     {
                         string path = Path.Combine(rBeilage.SubItems["Archivordner"].Value.ToString(), rBeilage.SubItems["DateinameArchiv"].Value.ToString());
-                        if (File.Exists(path))
+                        if (System.IO.File.Exists(path))
                         {
                             List<BeilagenEntry> Beilagenliste = new List<BeilagenEntry>();
                             BeilagenEntry Beilage = new BeilagenEntry();
@@ -2569,27 +2555,6 @@ namespace PMDS.GUI.Print
                                     rBeilage.CheckState = CheckState.Unchecked;
                                     rBeilage.SubItems["NoPDFA1aAccepted"].Value = true;
                                 }
-
-                                //if (res == DialogResult.Yes)
-                                //{
-                                //    rBeilage.SubItems["NoPDFA1aAccepted"].Value = true;
-                                //    Syncfusion.Pdf.PdfDocument pdfA1A = new Syncfusion.Pdf.PdfDocument(Syncfusion.Pdf.PdfConformanceLevel.Pdf_A1A);
-
-                                //    pdfA1A.ImportPage(pdf, 0);
-                                //    pdfA1A.Save("C:\\temp\\pdfA1A_Importpage.pdf");
-
-
-                                //    string[] source = { path };
-                                //    Syncfusion.Pdf.PdfDocumentBase.Merge(pdfA1A, source);
-                                //    pdfA1A.Save(stream);
-                                //    pdfA1A.Close();
-                                //    //pdfA1A.Save("C:\\temp\\pdfA1A.pdf");
-                                //}
-                                //else
-                                //{
-                                //    rBeilage.CheckState = CheckState.Unchecked;
-                                //    rBeilage.SubItems["NoPDFA1aAccepted"].Value = false;
-                                //}
                             }
 
                             Beilage.value = stream.ToArray();
@@ -2659,7 +2624,7 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public bool GenerateCDA(bool Print)
+        public MemoryStream GenerateCDA(bool CreateFile)
         {
             try
             {
@@ -2683,19 +2648,15 @@ namespace PMDS.GUI.Print
                     //Fachliche Sektionen schreiben
                     CreateCDAFachlicheSektionen();
 
-                    if (Print)
-                    {
-                        PrintCDA(sFileName);
-                        UpdateCDA(sFileName);
-                    }
-                    return true;
+                    //CDA erzeugen
+                    return CreateCDA(CreateFile ? sFileName : "");                    
                 }
                 else
                 {
-                    string strMessage = "Bitte beheben Sie die kritischen Fehler vor Erstellung eines Pflegesituationsberichts (siehe Meldungen).";
-                    rtfMeldungen2.Text = strMessage;
-                    MessageBox.Show(strMessage);
-                    return false;
+                    string strMessage = "\nBitte beheben Sie die kritischen Fehler vor Erstellung eines Pflegesituationsberichts (siehe Meldungen).";
+                    rtfMeldungen.Text = strMessage;
+                    //MessageBox.Show(strMessage);
+                    return new MemoryStream();
                 }
             }
             catch(Exception ex)
@@ -2704,15 +2665,128 @@ namespace PMDS.GUI.Print
             }
         }
 
-        public void btnGenerate_Click(object sender, EventArgs e)
+        public void UpdatePreView(MemoryStream msXML)
         {
-            GenerateCDA(false);
+            try
+            {
+                object path;
+                List<string> browsers = new List<string>();
+
+                List<string> chkBrowsers = new List<string> { "firefox.exe", "chrome.exe", "IExplore.exe" };
+                List<string> chkRegs = new List<string> { "LOCAL_MACHINE", "CURRENT_USER" };
+
+                foreach (string cBrowser in chkBrowsers)
+                {
+                    foreach (string cReg in chkRegs)
+                    {
+                        path = Registry.GetValue(@"HKEY_" + cReg + @"\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + cBrowser, "", null);
+                        if (path != null)
+                        {
+                            Console.WriteLine(cBrowser + ": " + FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion);
+                            browsers.Add(path.ToString());
+                        }
+
+                    }
+                }
+
+                browsers.Clear();
+                using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+                {
+                    RegistryKey webClientsRootKey = hklm.OpenSubKey(@"SOFTWARE\Clients\StartMenuInternet");
+                    if (webClientsRootKey != null)
+                    {
+                        try
+                        {
+                            foreach (var subKeyName in webClientsRootKey.GetSubKeyNames())
+                            {
+                                browsers.Add((string)webClientsRootKey.OpenSubKey(subKeyName).OpenSubKey("shell").OpenSubKey("open").OpenSubKey("command").GetValue(null));
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            //Browser ist nicht geeignet. Nicht zur Liste hinzufügen.
+                        }
+                    }
+                }
+
+                if (browsers.Count > 0 )
+                {
+                    using (FileStream fs = new FileStream(sFileName, FileMode.Create))
+                    {
+                        msXML.Position = 0;
+                        msXML.CopyTo(fs);
+                        fs.Flush();
+                    }
+
+                    foreach(string sBrowser in browsers)
+                    {
+                        if (sBrowser.ToUpper().Contains("FIREFOX"))
+                        {
+                            string firefox = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Mozilla\\Firefox\\Profiles");
+                            if (Directory.Exists(firefox))
+                            {
+                                FileInfo di = new DirectoryInfo(firefox).GetDirectories()[0].GetFiles("prefs.js")[0];
+                                StreamReader sr = di.OpenText();
+                                RichTextBox rb = new RichTextBox();
+                                rb.Text = sr.ReadToEnd();
+                                sr.Close();
+                                string[] s = rb.Lines;
+                                for (int i = 0; i < rb.Lines.Length; i++)
+                                {
+                                    if (rb.Lines[i].Equals("user_pref(\"privacy.file_unique_origin\", \"true\");"))
+                                    {
+                                        s[i] = "user_pref(\"privacy.file_unique_origin\", \"false\");";
+                                        System.IO.File.Delete(di.FullName);
+                                        System.IO.File.WriteAllLines(di.FullName, s);
+                                        System.Diagnostics.Process.Start(sBrowser, sFileName);
+                                        break;
+                                    }
+                                }
+                                System.Diagnostics.Process.Start(sBrowser, sFileName);
+                                return;
+                            }
+                        }
+                        else if (sBrowser.ToUpper().Contains("IEXPLORE"))
+                        {
+                            System.Diagnostics.Process.Start(sBrowser, sFileName);
+                            return;
+                        }
+                        else if (sBrowser.ToUpper().Contains("CHROME") || sBrowser.ToUpper().Contains("EDGE"))   //Liest Dateien nur mit einem Link!
+                        {
+                            var startupFolderPath = ENV.path_Temp;
+                            var shell = new WshShell();
+                            var shortCutLinkFilePath = Path.Combine(startupFolderPath, "PSB.lnk");
+                            var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);
+                            windowsApplicationShortcut.Description = "Link für Anzeige Pflegesituationsbericht";
+                            windowsApplicationShortcut.WorkingDirectory = ENV.path_Temp;
+                            windowsApplicationShortcut.TargetPath = sBrowser; // + " --allow-file-access-from-files ";
+                            windowsApplicationShortcut.Arguments = "--allow-file-access-from-files";
+                            windowsApplicationShortcut.Save();
+                            System.Diagnostics.Process.Start(shortCutLinkFilePath, sFileName);
+                            System.IO.File.Delete(shortCutLinkFilePath);
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bitte verwenden Sie Firefox, Chrome, Internet Explorer oder Edge.", "Hinweis");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Für die Anzeige muss ein Internet-Browser (Firefox, Chrome, Internet Explorer oder Edge) verfügbar sein.", "Hinweis");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.GenerateCDA: " + ex.ToString());
+            }
         }
 
         private void btnAddBeilageFrei_Click(object sender, EventArgs e)
         {
             int iCountBeilagen = lvBeilagen.Items.Count;
-            OpenFileDialog fileDialog = new OpenFileDialog();
+            System.Windows.Forms.OpenFileDialog fileDialog = new System.Windows.Forms.OpenFileDialog();
             fileDialog.InitialDirectory = Environment.SpecialFolder.DesktopDirectory.ToString();
             fileDialog.Title = "Bitte wählen Sie eine Beilage aus";
             fileDialog.DefaultExt = "pdf";

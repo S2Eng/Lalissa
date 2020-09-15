@@ -21,6 +21,8 @@ namespace PMDS.GUI.Print
     {
         private bool _canClose { get; set; } = false;
         private Component2 compFachlicheSektionen = new Component2();
+        public bool ResumeWithPBS { get; set; } = false;
+        public System.IO.MemoryStream msPSB { get; set; } =  new System.IO.MemoryStream();
 
         public frmELGAPrintPflegesituationsbericht()
         {
@@ -47,11 +49,14 @@ namespace PMDS.GUI.Print
             if (!validateCboEinrichtung())
                 return;
 
-            _canClose = this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(true);
+            msPSB = this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(true);
+            ResumeWithPBS = false;
+            _canClose = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            ResumeWithPBS = false;
             _canClose = true;
         }
 
@@ -124,14 +129,6 @@ namespace PMDS.GUI.Print
             }
         }
 
-        private void frmELGAPrintPflegesituationsbericht_Shown(object sender, EventArgs e)
-        {
-            //Application.DoEvents();
-            //Infragistics.Win.ValueListItem sel = this.cbETo.SelectedItem;
-            //if (sel != null)
-            //    ucELGAPrintPflegesituationsbericht1.Init();            
-        }
-
         private void cbETo_ValueChanged(object sender, EventArgs e)
         {
             Application.DoEvents();
@@ -142,17 +139,30 @@ namespace PMDS.GUI.Print
                 btnOK.Enabled = true;
                 btnCheck.Enabled = true;
                 ucELGAPrintPflegesituationsbericht1.Init(ENV.IDAUFENTHALT, (Guid)sel.DataValue, @"C:\Temp\Pflegesituationsbericht.xml");
+                CheckELGA();
             }
         }
 
-        private void btnCheck_Click(object sender, EventArgs e)
+        private void CheckELGA()
         {
             this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(false);
             this.btnOK.Enabled = false;
-            if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode != ucELGAPrintPflegesituationsbericht.eStatusResult.MissingData)
+            if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode == ucELGAPrintPflegesituationsbericht.eStatusResult.SendToELGA)
             {
-                MessageBox.Show("Es wurden keine schwerwiegenden Fehler erkannt.\nprüfen Sie ggf. die Hinweise auf der Seite Meldungen.", "Hinweis", MessageBoxButtons.OK);
                 this.btnPreview.Enabled = true;
+            }
+            else if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode == ucELGAPrintPflegesituationsbericht.eStatusResult.Messages)
+            {
+                MessageBox.Show("Bitte prüfen Sie die Hinweise auf der Seite Meldungen, bevor Sie den Pflegesituationsbericht fertig stellen.", "Hinweis", MessageBoxButtons.OK);
+                this.btnPreview.Enabled = true;
+            }
+            else if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode == ucELGAPrintPflegesituationsbericht.eStatusResult.NoELGA)
+            {
+                MessageBox.Show("Der Klient nimmt nicht an ELGA teil.\nErstellen Sie bitte ein Pflegebegleitschreiben.", "Wichtiger Hinweis", MessageBoxButtons.OK);
+                this.btnPreview.Enabled = false;
+                ResumeWithPBS = true;
+                _canClose = true;
+                this.Close();
             }
             else
             {
@@ -160,15 +170,22 @@ namespace PMDS.GUI.Print
                 DialogResult res = MessageBox.Show("Es sind schwerwiegende Fehler erkannt worden, die das Erstellen des Pflegesituationsberichts verhindern.\nBitte überprüfen Sie die Meldungen.\nWollen Sie statt dessen ein Pflegebegleitschreiben erstellen?", "FEHLER", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
+                    ResumeWithPBS = true;
                     _canClose = true;
                     this.Close();
                 }
             }
         }
 
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            CheckELGA();
+        }
+
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(false);
+            System.IO.MemoryStream msXML = this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(false);
+            this.ucELGAPrintPflegesituationsbericht1.UpdatePreView(msXML);
             btnOK.Enabled = true;
         }
     }

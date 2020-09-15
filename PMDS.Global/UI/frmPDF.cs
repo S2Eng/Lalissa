@@ -28,7 +28,7 @@ namespace PMDS.GUI.BaseControls
         private bool _showOpenDialog;
         private bool _showPrintDialog;
         private string _frmCaption;
-
+        private string sFileName = "";
 
         public bool ShowBookmarks
         {
@@ -82,6 +82,7 @@ namespace PMDS.GUI.BaseControls
             {
                 if (File.Exists(pdfFile) && System.IO.Path.GetExtension(pdfFile).Equals(".PDF", StringComparison.CurrentCultureIgnoreCase) )
                 {
+                    sFileName = pdfFile;
                     using (MemoryStream ms = new MemoryStream())
                     {
                         form = new PdfForms();
@@ -167,7 +168,5 @@ namespace PMDS.GUI.BaseControls
                 throw new Exception("frmPDF, SetValue: " + ex.ToString());
             }
         }
-
-
     }
 }

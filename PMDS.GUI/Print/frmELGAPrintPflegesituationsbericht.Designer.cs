@@ -190,7 +190,6 @@
             this.Text = "ELGA - Pflegesituationsbericht";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmELGAPrintPflegesituationsbericht_FormClosing);
             this.Load += new System.EventHandler(this.frmELGAPrintPflegesituationsbericht_Load);
-            this.Shown += new System.EventHandler(this.frmELGAPrintPflegesituationsbericht_Shown);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbETo)).EndInit();
