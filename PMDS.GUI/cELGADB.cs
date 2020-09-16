@@ -438,9 +438,9 @@ namespace PMDS.GUI.Print
                     Klient.Kontakt.TelefonMobil = rKlient.Mobil;
                     Klient.Kontakt.eMail = rKlient.Email;
 
-                    Klient.ELGAAbgemeldet = (rKlient.ELGAAbgemeldet == null ? true : (bool)rKlient.ELGAAbgemeldet);
+                    Klient.ELGAAbgemeldet = rKlient.ELGAAbgemeldet ?? false;
                     Klient.ELGALocalID = rKlient.ELGALocalID;
-                    Klient.ELGASOOJN = (bool)rKlient.ELGASOOJN;
+                    Klient.ELGASOOJN = rKlient.ELGASOOJN;
                     Klient.Titel = rKlient.Titel;
                     Klient.Vorname = rKlient.Vorname;
                     Klient.Nachname = rKlient.Nachname;
@@ -790,7 +790,7 @@ namespace PMDS.GUI.Print
                         Kontaktperson.Vorname = rKontaktperson.Vorname;
                         Kontaktperson.Nachname = rKontaktperson.Nachname;
                         Kontaktperson.Kontaktdaten.Kontaktart = rKontaktperson.Kontaktart;
-                        Kontaktperson.Kontaktdaten.VerstaendigenJN = (bool)rKontaktperson.VerstaendigenJN;
+                        Kontaktperson.Kontaktdaten.VerstaendigenJN = rKontaktperson.VerstaendigenJN ?? false;
                         Kontaktperson.Kontaktdaten.Verwandtschaft = rKontaktperson.Verwandtschaft;
                         Kontaktpersonen.Add(Kontaktperson);
                     }
@@ -934,9 +934,6 @@ namespace PMDS.GUI.Print
 
                     foreach (var rzw in tZusatzwerte)
                     {
-                        //Guid Id = (Guid)rzw.ID;
-                        //DateTime Erhebungszeitpunkt = (DateTime)rzw.Zeitpunkt;
-
                         Vitalparameter rv = new Vitalparameter();
                         rv.ID = (Guid)rzw.ID;
                         rv.Bezeichnung = rzw.Bezeichnung;
@@ -1006,9 +1003,7 @@ namespace PMDS.GUI.Print
                         if (rmed.NaechsteVersorgung != null)
                             naechsteVersorgung = (DateTime)rmed.NaechsteVersorgung;
 
-                        bool antikoaguliertjn = false;
-                        if (rmed.AntikoaguliertJN != null)
-                            antikoaguliertjn = (bool)rmed.AntikoaguliertJN;
+                        bool antikoaguliertjn = rmed.AntikoaguliertJN ?? false;
 
                         MedizinischeDaten md = new MedizinischeDaten
                         {
@@ -1074,7 +1069,7 @@ namespace PMDS.GUI.Print
                             AbzugebenVon = (DateTime)rr.AbzugebenVon,
                             AbzugebenBis = (DateTime)rr.AbzugebenBis,
                             Bemerkung = rr.Bemerkung,
-                            BedarfsMedikationJN = (bool)rr.BedarfsMedikationJN,
+                            BedarfsMedikationJN = rr.BedarfsMedikationJN,
                             Nachname = rr.Nachname,
                             Vorname = rr.Vorname,
                             Titel = rr.Titel,
@@ -1113,10 +1108,10 @@ namespace PMDS.GUI.Print
 
                     PatVerf.Nachname = rPatInfo.Nachname;
                     PatVerf.Vorname = rPatInfo.Vorname;
-                    PatVerf.PatientenverfuegungJN = (bool)rPatInfo.PatientenverfuegungJN;
+                    PatVerf.PatientenverfuegungJN = rPatInfo.PatientenverfuegungJN ?? false;
                     if (rPatInfo.PatientverfuegungDatum != null)
                         PatVerf.PatientverfuegungDatum = (DateTime)rPatInfo.PatientverfuegungDatum;
-                    PatVerf.PatientenverfuegungBeachtlichJN = (bool)rPatInfo.PatientenverfuegungBeachtlichJN;
+                    PatVerf.PatientenverfuegungBeachtlichJN = rPatInfo.PatientenverfuegungBeachtlichJN ?? false;
                     PatVerf.PatientverfuegungAnmerkung = rPatInfo.PatientverfuegungAnmerkung;
                     PatVerf.Konfession = rPatInfo.Konfession;
                 }

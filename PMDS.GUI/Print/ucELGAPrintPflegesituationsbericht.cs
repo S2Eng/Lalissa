@@ -39,7 +39,7 @@ namespace PMDS.GUI.Print
 {
     public partial class ucELGAPrintPflegesituationsbericht : UserControl
     {
-        public eStatusResult ReturnCode { get; set; } = eStatusResult.SendToELGA;
+        public eStatusResult ReturnCode { get; set; } = eStatusResult.Ok;
 
         private DateTime dNow = DateTime.Now;
         private System.Globalization.CultureInfo currentCultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
@@ -71,13 +71,15 @@ namespace PMDS.GUI.Print
 
         private MemoryStream msXML = new MemoryStream();                        //Ausgabe für Webbrowser
         public static MemoryStream msPSB { get; set; } = new MemoryStream();    //MemoryStream für Archiv
+        public string sMessages { get; set; } = "";
+        public string sWarnings { get; set; } = "";
 
         public enum eStatusResult
         {
-            SendToELGA = 1,     //OK
-            Messages = 2,       //Hinweise (z.B. keine PDx, ..)
-            MissingData = 3,    //Datenprobleme, die einen PSB verhindern
-            NoELGA = 4          //Klient ist abgemeldet oder SOO
+            Ok = 1,             //Alles OK. Keine Hinweise.
+            Messages = 2,       //OK, aber Hinweise (z.B. keine PDx gefunden, kein Hausarzt, ..)
+            NoELGA = 3,         //Klient ist abgemeldet oder SOO. Kein PSB möglich -> Weiter zu PBS.
+            MissingData = 4     //Datenprobleme, die einen PSB verhindern. Abbruch oder weiter zu PBS.
         }
 
         private enum eELGATypeSektion
@@ -304,95 +306,135 @@ namespace PMDS.GUI.Print
 
         public void Init(Guid pIDAufenthalt, Guid pIDEmpfaenger, string pFileName)
         {
-            pDB.IDAufenthalt = pIDAufenthalt;
-            pDB.IDEmpfänger = pIDEmpfaenger;
-            pDB.dNow = dNow;
-            pDB.IDUser = ENV.USERID;
-
-            sFileName = pFileName;
-            Patagames.Pdf.Net.PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
-
-            ReadAllELGACodes();
-            ccda = new ClinicalDocument();
-
-            //Headerdaten aus DB lesen
-            cELGADB.LoadKlinik(ref Klinik, pDB);
-            cELGADB.LoadKlient(ref Klient, pDB);
-            cELGADB.LoadAufenthalt(ref Aufenthalt, pDB);
-            cELGADB.LoadSachwalter(ref lSachwalter, pDB);
-            cELGADB.LoadBenutzer(ref Benutzer, pDB);
-            cELGADB.LoadEmfaenger(ref Empfaenger, pDB);
-            cELGADB.LoadHausarzt(ref Hausarzt, pDB);
-            cELGADB.LoadKontaktpersonen(ref Kontaktpersonen, pDB);
-            cELGADB.LoadKrankenkasse(ref Krankenkasse, pDB);
-
-            //Sektionsdaten aus DB lesen
-            cELGADB.LoadPDX(ref lPDX, pDB);
-            cELGADB.LoadRessourcenRisiken(ref lRessourcenRisiken, pDB);
-            cELGADB.LoadVitalparameter(ref lVitalparameter, pDB);
-            cELGADB.LoadMedizinischeDaten(ref lMedizinischeDaten, pDB);
-            cELGADB.LoadRezepte(ref lRezepte, pDB);
-            cELGADB.LoadPatientenverfügung(ref Patientenverfügung, pDB);
-            cELGADB.LoadPflegestufe(ref Pflegestufe, pDB);
-            cELGADB.LoadFreiheitsbeschränkungen(ref lFreiheitsbeschränkungen, pDB);
-            cELGADB.LoadRezeptgebührenbefreiung(ref Rezeptgebührenbefreiung, pDB);
-            cELGADB.LoadBeilagen(ref lBeilagen, pDB);
-
-            CheckData();
-
-            if (ReturnCode != eStatusResult.MissingData)
+            try
             {
-                //Oberfläche und Strukturen vorbereiten
-                InitRTFTags();
-                InitSektionen();
+                pDB.IDAufenthalt = pIDAufenthalt;
+                pDB.IDEmpfänger = pIDEmpfaenger;
+                pDB.dNow = dNow;
+                pDB.IDUser = ENV.USERID;
 
-                //Klassen für fachliche Sektionen vorbereiten
-                PreparePDx();
-                PrepareRessourcenRisiken();
-                PrepareVitalparameter();
-                PrepareMedDaten();
-                PrepareRezepte();
-                PreparePatientenverfügung();
-                PreparePflegeUndBetreuungsumfang();
-                PrepareBeilagen();
+                sFileName = pFileName;
+                Patagames.Pdf.Net.PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
+
+                ReadAllELGACodes();
+                ccda = new ClinicalDocument();
+
+                //Headerdaten aus DB lesen
+                cELGADB.LoadKlinik(ref Klinik, pDB);
+                cELGADB.LoadKlient(ref Klient, pDB);
+                cELGADB.LoadAufenthalt(ref Aufenthalt, pDB);
+                cELGADB.LoadSachwalter(ref lSachwalter, pDB);
+                cELGADB.LoadBenutzer(ref Benutzer, pDB);
+                cELGADB.LoadEmfaenger(ref Empfaenger, pDB);
+                cELGADB.LoadHausarzt(ref Hausarzt, pDB);
+                cELGADB.LoadKontaktpersonen(ref Kontaktpersonen, pDB);
+                cELGADB.LoadKrankenkasse(ref Krankenkasse, pDB);
+
+                //Sektionsdaten aus DB lesen
+                cELGADB.LoadPDX(ref lPDX, pDB);
+                cELGADB.LoadRessourcenRisiken(ref lRessourcenRisiken, pDB);
+                cELGADB.LoadVitalparameter(ref lVitalparameter, pDB);
+                cELGADB.LoadMedizinischeDaten(ref lMedizinischeDaten, pDB);
+                cELGADB.LoadRezepte(ref lRezepte, pDB);
+                cELGADB.LoadPatientenverfügung(ref Patientenverfügung, pDB);
+                cELGADB.LoadPflegestufe(ref Pflegestufe, pDB);
+                cELGADB.LoadFreiheitsbeschränkungen(ref lFreiheitsbeschränkungen, pDB);
+                cELGADB.LoadRezeptgebührenbefreiung(ref Rezeptgebührenbefreiung, pDB);
+                cELGADB.LoadBeilagen(ref lBeilagen, pDB);
+
+                CheckData();
+
+                if (ReturnCode != eStatusResult.MissingData)
+                {
+                    //Oberfläche und Strukturen vorbereiten
+                    InitRTFTags();
+                    InitSektionen();
+
+                    //Klassen für fachliche Sektionen vorbereiten
+                    PreparePDx();
+                    PrepareRessourcenRisiken();
+                    PrepareVitalparameter();
+                    PrepareMedDaten();
+                    PrepareRezepte();
+                    PreparePatientenverfügung();
+                    PreparePflegeUndBetreuungsumfang();
+                    PrepareBeilagen();
+                }
             }
-            else
+            catch (Exception ex)
             {
-
+                throw new Exception("ucELGAPrintPflegesituationsbericht.Init: " + ex.ToString());
             }
+        }
+
+        public void ShowTab()
+        {
+            try
+            {
+                baseTabControl1.TabIndex = 6;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.ShowTab: " + ex.ToString());
+            }
+
         }
 
         private void CheckData()
         {
             try
             {
+                int ErrorLevel = 1;
                 if (Klinik.ELGA_OID.Length < 12 || Klinik.ELGA_OID.Substring(0, 12) != "1.2.40.0.34.")
                 {
-                    rtfMeldungen.Text += "Fehler: Einrichtung hat keine korrekte ELGA-OID: " + Klinik.ELGA_OID + ". Die Verarbeitung wurde abgebrochen.\r\n";
-                    ReturnCode = eStatusResult.MissingData;
+                    rtfMeldungen.Text += "Einrichtung hat keine korrekte ELGA-OID: " + Klinik.ELGA_OID + ".\r\n";
+                    ErrorLevel = Math.Max(ErrorLevel, 4);
                 }
 
                 if (String.IsNullOrEmpty(Klient.bPK))
                 {
-                    rtfMeldungen.Text += "Fehler: Klient hat kein bereichsspezifisches Personenkennzeichen (bPK). Die Verarbeitung wurde abgebrochen.\r\n";
-                    ReturnCode = eStatusResult.MissingData;
+                    rtfMeldungen.Text += "Klient hat kein bereichsspezifisches Personenkennzeichen (bPK).\r\n";
+                    ErrorLevel = Math.Max(ErrorLevel, 4);
+                }
+
+                using (PMDS.GUI.VB.compSql comp = new PMDS.GUI.VB.compSql())
+                {
+                    if (comp.GetOrdnerBiografie("Pflegebegleitschreiben") == null)
+                    {
+                        rtfMeldungen.Text += "Das Archiv enthält keinen Ordner 'Pflegebegleitschreiben'.\r\n";
+                        ErrorLevel = Math.Max(ErrorLevel, 4);
+                    }
                 }
 
                 if (Klient.ELGAAbgemeldet)
                 {
-                    rtfMeldungen.Text += "Hinweis: Klient hat sich von ELGA abgemeldet. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
-                    ReturnCode = eStatusResult.NoELGA;
+                    rtfMeldungen.Text += "Klient hat sich von ELGA abgemeldet.\r\n";
+                    ErrorLevel = Math.Max(ErrorLevel, 3);
                 }
 
                 if (Klient.ELGASOOJN)
                 {
-                    rtfMeldungen.Text += "Hinweis: Klient hat ein situatives OptOut erklärt. Dieser Bericht wird nicht ins ELGA hochgeladen.\r\n";
-                    ReturnCode = eStatusResult.NoELGA;
+                    rtfMeldungen.Text += "Klient hat ein situatives OptOut erklärt.\r\n";
+                    ErrorLevel = Math.Max(ErrorLevel, 3);
                 }
 
                 if (!String.IsNullOrWhiteSpace(rtfMeldungen2.Text))
                 {
-                    ReturnCode = eStatusResult.Messages;
+                    ErrorLevel = Math.Max(ErrorLevel, 2);
+                }
+
+                Type type = typeof(eStatusResult);
+                if (!type.IsEnumDefined(ErrorLevel))
+                {
+                    throw new ArgumentException($"{ErrorLevel} is not a valid ordinal of type {type}.");
+                }
+                ReturnCode = (eStatusResult)Enum.ToObject(type, ErrorLevel);
+                sWarnings = (String.IsNullOrWhiteSpace(rtfMeldungen.Text) ? "" : "Fehler:\r\n" + rtfMeldungen.Text);
+                sMessages = (String.IsNullOrWhiteSpace(rtfMeldungen2.Text) ? "" : "Hinweise:\r\n" + rtfMeldungen2.Text + "\r\n");
+
+                if (ErrorLevel > 1)
+                {
+                    baseTabControl1.SelectedTab = baseTabControl1.Tabs["tabMeldungen"];
                 }
             }
             catch (Exception ex)
@@ -2652,10 +2694,7 @@ namespace PMDS.GUI.Print
                     return CreateCDA(CreateFile ? sFileName : "");                    
                 }
                 else
-                {
-                    string strMessage = "\nBitte beheben Sie die kritischen Fehler vor Erstellung eines Pflegesituationsberichts (siehe Meldungen).";
-                    rtfMeldungen.Text = strMessage;
-                    //MessageBox.Show(strMessage);
+                {                    
                     return new MemoryStream();
                 }
             }

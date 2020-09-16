@@ -84,7 +84,7 @@
             // btnPreview
             // 
             this.btnPreview.Enabled = false;
-            this.btnPreview.Location = new System.Drawing.Point(997, 722);
+            this.btnPreview.Location = new System.Drawing.Point(1091, 722);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(88, 32);
             this.btnPreview.TabIndex = 21;
@@ -94,7 +94,7 @@
             // btnCheck
             // 
             this.btnCheck.Enabled = false;
-            this.btnCheck.Location = new System.Drawing.Point(903, 722);
+            this.btnCheck.Location = new System.Drawing.Point(997, 722);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(88, 32);
             this.btnCheck.TabIndex = 20;
@@ -110,9 +110,11 @@
             this.ucELGAPrintPflegesituationsbericht1.Enabled = false;
             this.ucELGAPrintPflegesituationsbericht1.Location = new System.Drawing.Point(12, 39);
             this.ucELGAPrintPflegesituationsbericht1.Name = "ucELGAPrintPflegesituationsbericht1";
-            this.ucELGAPrintPflegesituationsbericht1.ReturnCode = PMDS.GUI.Print.ucELGAPrintPflegesituationsbericht.eStatusResult.SendToELGA;
+            this.ucELGAPrintPflegesituationsbericht1.ReturnCode = PMDS.GUI.Print.ucELGAPrintPflegesituationsbericht.eStatusResult.Ok;
             this.ucELGAPrintPflegesituationsbericht1.sFileName = null;
             this.ucELGAPrintPflegesituationsbericht1.Size = new System.Drawing.Size(1264, 677);
+            this.ucELGAPrintPflegesituationsbericht1.sMessages = "";
+            this.ucELGAPrintPflegesituationsbericht1.sWarnings = "";
             this.ucELGAPrintPflegesituationsbericht1.TabIndex = 19;
             // 
             // btnCancel
@@ -128,7 +130,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(1091, 722);
+            this.btnCancel.Location = new System.Drawing.Point(800, 722);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 16;
@@ -157,7 +159,7 @@
             this.btnOK.Size = new System.Drawing.Size(88, 32);
             this.btnOK.TabIndex = 17;
             this.btnOK.TabStop = false;
-            this.btnOK.Text = "Senden";
+            this.btnOK.Text = "OK";
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
             this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);

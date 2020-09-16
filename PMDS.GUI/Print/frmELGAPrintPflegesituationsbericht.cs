@@ -147,13 +147,13 @@ namespace PMDS.GUI.Print
         {
             this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(false);
             this.btnOK.Enabled = false;
-            if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode == ucELGAPrintPflegesituationsbericht.eStatusResult.SendToELGA)
+            if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode == ucELGAPrintPflegesituationsbericht.eStatusResult.Ok)
             {
                 this.btnPreview.Enabled = true;
             }
             else if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode == ucELGAPrintPflegesituationsbericht.eStatusResult.Messages)
             {
-                MessageBox.Show("Bitte prüfen Sie die Hinweise auf der Seite Meldungen, bevor Sie den Pflegesituationsbericht fertig stellen.", "Hinweis", MessageBoxButtons.OK);
+                MessageBox.Show("Bitte beachten Sie die Hinweise, \r\nbevor Sie den Pflegesituationsbericht fertig stellen.", "Hinweis", MessageBoxButtons.OK);
                 this.btnPreview.Enabled = true;
             }
             else if (this.ucELGAPrintPflegesituationsbericht1.ReturnCode == ucELGAPrintPflegesituationsbericht.eStatusResult.NoELGA)
@@ -167,10 +167,17 @@ namespace PMDS.GUI.Print
             else
             {
                 this.btnPreview.Enabled = false;
-                DialogResult res = MessageBox.Show("Es sind schwerwiegende Fehler erkannt worden, die das Erstellen des Pflegesituationsberichts verhindern.\nBitte überprüfen Sie die Meldungen.\nWollen Sie statt dessen ein Pflegebegleitschreiben erstellen?", "FEHLER", MessageBoxButtons.YesNo);
+                DialogResult res = MessageBox.Show("Fehlende oder falsche Daten.\r\nDer Pflegesituationsbericht kann nicht erstellt werden.\r\n" + 
+                                                    "Wollen Sie ein Pflegebegleitschreiben erstellen?", "FEHLER", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
                     ResumeWithPBS = true;
+                    _canClose = true;
+                    this.Close();
+                }
+                else
+                {
+                    ResumeWithPBS = false;
                     _canClose = true;
                     this.Close();
                 }

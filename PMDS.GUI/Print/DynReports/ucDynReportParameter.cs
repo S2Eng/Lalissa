@@ -162,7 +162,27 @@ namespace PMDS.GUI
                 // Dynamische Formularsteuerung ---------------------------------------------------------------------------------------------------
                 if (_CurrentFormToShow != "")
                 {
-                    if (PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2()) // oder Haus nimmt an ELGA teil
+                    SavePSBToArchiv = false;
+
+                    bool ELGAAbgemeldet = false;
+                    bool ELGASOOJN = false;
+
+                    using (PMDS.db.Entities.ERModellPMDSEntities dbTemp = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rKlient = (from pat in dbTemp.Patient
+                                       join auf in dbTemp.Aufenthalt on pat.ID equals auf.IDPatient
+                                       where auf.ID == ENV.IDAUFENTHALT
+                                       select new
+                                       {
+                                           pat.ELGAAbgemeldet,
+                                           auf.ELGASOOJN
+                                       }
+                                      ).First();
+                        ELGAAbgemeldet = rKlient.ELGAAbgemeldet ?? false;
+                        ELGASOOJN = rKlient.ELGASOOJN;
+                    }
+
+                    if (((ENV.lic_ELGA || PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2()) && !ELGAAbgemeldet && !ELGASOOJN))  
                     {
                         PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht PSB = new PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht();
                         DialogResult resPSB = PSB.ShowDialog();
@@ -173,47 +193,32 @@ namespace PMDS.GUI
                             SavePSBToArchiv = true;
                             SavePBSToArchiv = false;
                         }
-                        else if (PSB.ResumeWithPBS)
-                        {
-                            frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                            DialogResult resPBS = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                            if (resPBS != DialogResult.OK)
-                            {
-                                abortWindow = frmPrintPflegebegleitschreibenInfo1.GetReceiverHasELGAOID();   //Abwesenheitsprozess sofort beenden
-                                return;
-                            }
-                            else
-                            {
-                                IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
-                                SavePBSToArchiv = false;
-                                SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive();
-                            }
-                        }
-                        else
+                        else if (!PSB.ResumeWithPBS)
                         {
                             abortWindow = true;
                             return;
                         }
                     }
-                    else
+
+                    if (!SavePSBToArchiv)
                     {
                         SavePSBToArchiv = false;
                         frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
                         DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
                         if (res != DialogResult.OK)
                         {
-                            abortWindow = frmPrintPflegebegleitschreibenInfo1.GetReceiverHasELGAOID();   //Abwesenheitsprozess sofort beenden
+                            abortWindow = true;   //Abwesenheitsprozess sofort beenden
                             return;
                         }
                         else
                         {
                             IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
-                            SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive();
+                            SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.SavePBSToArchive;
                         }
                     }
                 }
                 
-                List<PMDS.Print.CR.BerichtParameter> lPars = BERICHTPARAMETER;                        // Berichtparameter können 1) von den Parametern und 2) von einer evtl. Form stammen. Diese gemeinsam den Report übergeben
+                List<PMDS.Print.CR.BerichtParameter> lPars = BERICHTPARAMETER;       // Berichtparameter können 1) von den Parametern und 2) von einer evtl. Form stammen. Diese gemeinsam den Report übergeben
                 if (frmPrintPflegebegleitschreibenInfo1 != null)
                 {
                     foreach (PMDS.Print.CR.BerichtParameter p in frmPrintPflegebegleitschreibenInfo1.GetBERICHTPARAMETER())
@@ -228,7 +233,7 @@ namespace PMDS.GUI
                 {
                     IsFormularBericht = true;
                 }
-                // DynamischeDatenquellensteuerung ---------------------------------------------------------------------------------------------------
+                // Dynamische Datenquellensteuerung ---------------------------------------------------------------------------------------------------
                 if (_CurrentBerichtDatenquellen.Count > 0 && !IsFormularBericht)
                 {
                     foreach (PMDS.Print.CR.BerichtDatenquelle q in _CurrentBerichtDatenquellen)
@@ -289,7 +294,7 @@ namespace PMDS.GUI
                     string protTitle = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bericht {0} geöffnet");
                     string protTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bericht {0} wurde von Benutzer {1} geöffnet");
 
-                    if (frmPrintPflegebegleitschreibenInfo1 != null && frmPrintPflegebegleitschreibenInfo1.GetSavePBSToArchive())  //Pflegebegleitschreiben in Archiv ablegen
+                    if (frmPrintPflegebegleitschreibenInfo1 != null && frmPrintPflegebegleitschreibenInfo1.SavePBSToArchive)  //Pflegebegleitschreiben in Archiv ablegen
                     {
 
                         if (bVB.SaveFileToArchive(sFileNameExport, 
