@@ -266,7 +266,7 @@ namespace PMDS.Global
                         }
 
                         //Wenn in der Auswahlliste nichts angegeben ist, prüfen, ob in StrgDefaults in der Config was drinnen steht
-                        if (lstGuid.Count() == 0 && ENV.StrgDefaults != "")
+                        if (lstGuid.Count == 0 && !String.IsNullOrWhiteSpace(ENV.StrgDefaults))
                         {
                             char[] charSeparators = new char[] { ',' };
                             string[] objs = ENV.StrgDefaults.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);

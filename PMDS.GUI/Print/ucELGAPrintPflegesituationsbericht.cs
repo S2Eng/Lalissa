@@ -313,7 +313,7 @@ namespace PMDS.GUI.Print
                 pDB.dNow = dNow;
                 pDB.IDUser = ENV.USERID;
 
-                sFileName = pFileName;
+                sFileName = (String.IsNullOrWhiteSpace(pFileName) ? Path.GetTempFileName() : pFileName);
                 Patagames.Pdf.Net.PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
 
                 ReadAllELGACodes();
@@ -2757,58 +2757,70 @@ namespace PMDS.GUI.Print
                         fs.Flush();
                     }
 
-                    foreach(string sBrowser in browsers)
+                    int iCheckXSLT = CopyXSLT(sFileName);
+                    if (iCheckXSLT == 0)
                     {
-                        if (sBrowser.ToUpper().Contains("FIREFOX"))
+                        foreach (string sBrowser in browsers)
                         {
-                            string firefox = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Mozilla\\Firefox\\Profiles");
-                            if (Directory.Exists(firefox))
+                            if (sBrowser.ToUpper().Contains("FIREFOX"))
                             {
-                                FileInfo di = new DirectoryInfo(firefox).GetDirectories()[0].GetFiles("prefs.js")[0];
-                                StreamReader sr = di.OpenText();
-                                RichTextBox rb = new RichTextBox();
-                                rb.Text = sr.ReadToEnd();
-                                sr.Close();
-                                string[] s = rb.Lines;
-                                for (int i = 0; i < rb.Lines.Length; i++)
+                                string firefox = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Mozilla\\Firefox\\Profiles");
+                                if (Directory.Exists(firefox))
                                 {
-                                    if (rb.Lines[i].Equals("user_pref(\"privacy.file_unique_origin\", \"true\");"))
+                                    FileInfo di = new DirectoryInfo(firefox).GetDirectories()[0].GetFiles("prefs.js")[0];
+                                    StreamReader sr = di.OpenText();
+                                    RichTextBox rb = new RichTextBox();
+                                    rb.Text = sr.ReadToEnd();
+                                    sr.Close();
+                                    string[] s = rb.Lines;
+                                    for (int i = 0; i < rb.Lines.Length; i++)
                                     {
-                                        s[i] = "user_pref(\"privacy.file_unique_origin\", \"false\");";
-                                        System.IO.File.Delete(di.FullName);
-                                        System.IO.File.WriteAllLines(di.FullName, s);
-                                        System.Diagnostics.Process.Start(sBrowser, sFileName);
-                                        break;
+                                        if (rb.Lines[i].Equals("user_pref(\"privacy.file_unique_origin\", \"true\");"))
+                                        {
+                                            s[i] = "user_pref(\"privacy.file_unique_origin\", \"false\");";
+                                            System.IO.File.Delete(di.FullName);
+                                            System.IO.File.WriteAllLines(di.FullName, s);
+                                            System.Diagnostics.Process.Start(sBrowser, sFileName);
+                                            break;
+                                        }
                                     }
+                                    System.Diagnostics.Process.Start(sBrowser, sFileName);
+                                    return;
                                 }
+                            }
+                            else if (sBrowser.ToUpper().Contains("IEXPLORE"))
+                            {
                                 System.Diagnostics.Process.Start(sBrowser, sFileName);
                                 return;
                             }
+                            else if (sBrowser.ToUpper().Contains("CHROME") || sBrowser.ToUpper().Contains("EDGE"))   //Liest Dateien nur mit einem Link!
+                            {
+                                var startupFolderPath = ENV.path_Temp;
+                                var shell = new WshShell();
+                                var shortCutLinkFilePath = Path.Combine(startupFolderPath, "PSB.lnk");
+                                var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);
+                                windowsApplicationShortcut.Description = "Link für Anzeige Pflegesituationsbericht";
+                                windowsApplicationShortcut.WorkingDirectory = ENV.path_Temp;
+                                windowsApplicationShortcut.TargetPath = sBrowser; // + " --allow-file-access-from-files ";
+                                windowsApplicationShortcut.Arguments = "--allow-file-access-from-files";
+                                windowsApplicationShortcut.Save();
+                                System.Diagnostics.Process.Start(shortCutLinkFilePath, sFileName);
+                                System.IO.File.Delete(shortCutLinkFilePath);
+                                return;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Bitte verwenden Sie Firefox, Chrome, Internet Explorer oder Edge.", "Hinweis");
+                            }
                         }
-                        else if (sBrowser.ToUpper().Contains("IEXPLORE"))
-                        {
-                            System.Diagnostics.Process.Start(sBrowser, sFileName);
-                            return;
-                        }
-                        else if (sBrowser.ToUpper().Contains("CHROME") || sBrowser.ToUpper().Contains("EDGE"))   //Liest Dateien nur mit einem Link!
-                        {
-                            var startupFolderPath = ENV.path_Temp;
-                            var shell = new WshShell();
-                            var shortCutLinkFilePath = Path.Combine(startupFolderPath, "PSB.lnk");
-                            var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);
-                            windowsApplicationShortcut.Description = "Link für Anzeige Pflegesituationsbericht";
-                            windowsApplicationShortcut.WorkingDirectory = ENV.path_Temp;
-                            windowsApplicationShortcut.TargetPath = sBrowser; // + " --allow-file-access-from-files ";
-                            windowsApplicationShortcut.Arguments = "--allow-file-access-from-files";
-                            windowsApplicationShortcut.Save();
-                            System.Diagnostics.Process.Start(shortCutLinkFilePath, sFileName);
-                            System.IO.File.Delete(shortCutLinkFilePath);
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Bitte verwenden Sie Firefox, Chrome, Internet Explorer oder Edge.", "Hinweis");
-                        }
+                    }
+                    else if (iCheckXSLT == 1)
+                    {
+                        MessageBox.Show("Das erforderliche Stylesheet ist nicht verfügbar (Config!).\r\nDie korrekte Anzeige des Dokuments ist nicht möglich.", "Hinweis");
+                    }
+                    else if (iCheckXSLT == 2)
+                    {
+                        MessageBox.Show("Das temporaäre Stylesheet kann nicht erstellt werden.\r\nDie korrekte Anzeige des Dokuments ist nicht möglich.", "Hinweis");
                     }
                 }
                 else
@@ -2819,6 +2831,39 @@ namespace PMDS.GUI.Print
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.GenerateCDA: " + ex.ToString());
+            }
+        }
+
+        private int CopyXSLT(string sFileName)
+        {
+            try
+            {
+                string nXSLT = "ELGA_Stylesheet_v1.0.xsl";
+                string fXSLT = Path.Combine(ENV.pathConfig, nXSLT);
+                string fDest = Path.Combine(System.IO.Path.GetDirectoryName(sFileName), nXSLT);
+                if (System.IO.File.Exists(fXSLT))
+                {
+                    if (!System.IO.File.Exists(fDest))
+                    {
+                        System.IO.File.Copy(fXSLT, fDest, true);
+                        if (System.IO.File.Exists(fDest))
+                            return 0;
+                        else
+                            return 2;
+                    }
+                    else if (System.IO.File.Exists(fDest) && !PMDS.Global.Tools.IsFileLocked(new FileInfo(fDest)))
+                    {
+                        System.IO.File.Copy(fXSLT, fDest, true);
+                        return 0;
+                    }
+                    return 2;
+                }
+                else
+                    return 1;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucELGAPrintPflegesituationsbericht.CopyXSLT: " + ex.ToString());
             }
         }
 
