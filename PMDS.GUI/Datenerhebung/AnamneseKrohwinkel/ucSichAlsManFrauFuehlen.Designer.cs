@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -64,10 +65,8 @@
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox31 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.txtHaarBarttracht = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -138,7 +137,7 @@
             this.ultraGroupBox31.Controls.Add(this.ultraLabel92);
             this.ultraGroupBox31.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox31.Name = "ultraGroupBox31";
-            this.ultraGroupBox31.Size = new System.Drawing.Size(556, 267);
+            this.ultraGroupBox31.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox31.TabIndex = 128;
             this.ultraGroupBox31.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -148,12 +147,12 @@
             appearance2.BackColorDisabled = System.Drawing.Color.White;
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtHaarBarttracht.Appearance = appearance2;
-            this.txtHaarBarttracht.Location = new System.Drawing.Point(13, 197);
-            this.txtHaarBarttracht.MaxLength = 255;
+            this.txtHaarBarttracht.Location = new System.Drawing.Point(13, 309);
+            this.txtHaarBarttracht.MaxLength = 2000;
             this.txtHaarBarttracht.Multiline = true;
             this.txtHaarBarttracht.Name = "txtHaarBarttracht";
             this.txtHaarBarttracht.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtHaarBarttracht.Size = new System.Drawing.Size(537, 55);
+            this.txtHaarBarttracht.Size = new System.Drawing.Size(911, 87);
             this.txtHaarBarttracht.TabIndex = 3;
             this.txtHaarBarttracht.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -163,7 +162,7 @@
             appearance3.FontData.SizeInPoints = 8F;
             this.ultraLabel90.Appearance = appearance3;
             this.ultraLabel90.AutoSize = true;
-            this.ultraLabel90.Location = new System.Drawing.Point(13, 180);
+            this.ultraLabel90.Location = new System.Drawing.Point(13, 292);
             this.ultraLabel90.Name = "ultraLabel90";
             this.ultraLabel90.Size = new System.Drawing.Size(255, 14);
             this.ultraLabel90.TabIndex = 117;
@@ -175,12 +174,12 @@
             appearance4.BackColorDisabled = System.Drawing.Color.White;
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtMakeUpSchmuck.Appearance = appearance4;
-            this.txtMakeUpSchmuck.Location = new System.Drawing.Point(13, 119);
-            this.txtMakeUpSchmuck.MaxLength = 255;
+            this.txtMakeUpSchmuck.Location = new System.Drawing.Point(13, 179);
+            this.txtMakeUpSchmuck.MaxLength = 2000;
             this.txtMakeUpSchmuck.Multiline = true;
             this.txtMakeUpSchmuck.Name = "txtMakeUpSchmuck";
             this.txtMakeUpSchmuck.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMakeUpSchmuck.Size = new System.Drawing.Size(537, 55);
+            this.txtMakeUpSchmuck.Size = new System.Drawing.Size(911, 94);
             this.txtMakeUpSchmuck.TabIndex = 2;
             this.txtMakeUpSchmuck.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -190,7 +189,7 @@
             appearance5.FontData.SizeInPoints = 8F;
             this.ultraLabel91.Appearance = appearance5;
             this.ultraLabel91.AutoSize = true;
-            this.ultraLabel91.Location = new System.Drawing.Point(13, 102);
+            this.ultraLabel91.Location = new System.Drawing.Point(13, 162);
             this.ultraLabel91.Name = "ultraLabel91";
             this.ultraLabel91.Size = new System.Drawing.Size(200, 14);
             this.ultraLabel91.TabIndex = 110;
@@ -203,11 +202,11 @@
             appearance6.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtMaennlicheWeiblichePflegeperson.Appearance = appearance6;
             this.txtMaennlicheWeiblichePflegeperson.Location = new System.Drawing.Point(13, 41);
-            this.txtMaennlicheWeiblichePflegeperson.MaxLength = 255;
+            this.txtMaennlicheWeiblichePflegeperson.MaxLength = 2000;
             this.txtMaennlicheWeiblichePflegeperson.Multiline = true;
             this.txtMaennlicheWeiblichePflegeperson.Name = "txtMaennlicheWeiblichePflegeperson";
             this.txtMaennlicheWeiblichePflegeperson.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMaennlicheWeiblichePflegeperson.Size = new System.Drawing.Size(537, 55);
+            this.txtMaennlicheWeiblichePflegeperson.Size = new System.Drawing.Size(911, 103);
             this.txtMaennlicheWeiblichePflegeperson.TabIndex = 1;
             this.txtMaennlicheWeiblichePflegeperson.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -317,9 +316,10 @@
             valueListItem2.DisplayText = " ";
             valueListItem3.DataValue = 2;
             valueListItem3.DisplayText = " ";
-            this.opKannSchmuckNichtSelbstAnlegen.Items.Add(valueListItem1);
-            this.opKannSchmuckNichtSelbstAnlegen.Items.Add(valueListItem2);
-            this.opKannSchmuckNichtSelbstAnlegen.Items.Add(valueListItem3);
+            this.opKannSchmuckNichtSelbstAnlegen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2,
+            valueListItem3});
             this.opKannSchmuckNichtSelbstAnlegen.Location = new System.Drawing.Point(337, 101);
             this.opKannSchmuckNichtSelbstAnlegen.Name = "opKannSchmuckNichtSelbstAnlegen";
             this.opKannSchmuckNichtSelbstAnlegen.Size = new System.Drawing.Size(60, 14);
@@ -376,9 +376,10 @@
             valueListItem5.DisplayText = " ";
             valueListItem6.DataValue = 2;
             valueListItem6.DisplayText = " ";
-            this.opKannFrisurNichtSelbstHerrichten.Items.Add(valueListItem4);
-            this.opKannFrisurNichtSelbstHerrichten.Items.Add(valueListItem5);
-            this.opKannFrisurNichtSelbstHerrichten.Items.Add(valueListItem6);
+            this.opKannFrisurNichtSelbstHerrichten.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem4,
+            valueListItem5,
+            valueListItem6});
             this.opKannFrisurNichtSelbstHerrichten.Location = new System.Drawing.Point(337, 80);
             this.opKannFrisurNichtSelbstHerrichten.Name = "opKannFrisurNichtSelbstHerrichten";
             this.opKannFrisurNichtSelbstHerrichten.Size = new System.Drawing.Size(60, 14);
@@ -399,9 +400,10 @@
             valueListItem8.DisplayText = " ";
             valueListItem9.DataValue = 2;
             valueListItem9.DisplayText = " ";
-            this.opMaennlicheWeiblicheBestimmtePflegeperson.Items.Add(valueListItem7);
-            this.opMaennlicheWeiblicheBestimmtePflegeperson.Items.Add(valueListItem8);
-            this.opMaennlicheWeiblicheBestimmtePflegeperson.Items.Add(valueListItem9);
+            this.opMaennlicheWeiblicheBestimmtePflegeperson.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8,
+            valueListItem9});
             this.opMaennlicheWeiblicheBestimmtePflegeperson.Location = new System.Drawing.Point(337, 59);
             this.opMaennlicheWeiblicheBestimmtePflegeperson.Name = "opMaennlicheWeiblicheBestimmtePflegeperson";
             this.opMaennlicheWeiblicheBestimmtePflegeperson.Size = new System.Drawing.Size(60, 14);
@@ -422,9 +424,10 @@
             valueListItem11.DisplayText = " ";
             valueListItem12.DataValue = 2;
             valueListItem12.DisplayText = " ";
-            this.opSchagefuehlIntimepflegeBeruecksichtigen.Items.Add(valueListItem10);
-            this.opSchagefuehlIntimepflegeBeruecksichtigen.Items.Add(valueListItem11);
-            this.opSchagefuehlIntimepflegeBeruecksichtigen.Items.Add(valueListItem12);
+            this.opSchagefuehlIntimepflegeBeruecksichtigen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem10,
+            valueListItem11,
+            valueListItem12});
             this.opSchagefuehlIntimepflegeBeruecksichtigen.Location = new System.Drawing.Point(335, 38);
             this.opSchagefuehlIntimepflegeBeruecksichtigen.Name = "opSchagefuehlIntimepflegeBeruecksichtigen";
             this.opSchagefuehlIntimepflegeBeruecksichtigen.Size = new System.Drawing.Size(60, 14);
@@ -487,9 +490,9 @@
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance22.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance22;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -500,9 +503,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -525,7 +528,6 @@
             this.tabLuft.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabLuft.Size = new System.Drawing.Size(1000, 440);
             this.tabLuft.TabIndex = 130;
-            ultraTab1.ActiveAppearance = appearance24;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
@@ -534,7 +536,6 @@
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance25;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -133,10 +134,8 @@
             Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox3 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel138 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -238,6 +237,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.opKontrakturenvorhandenJN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDekubitusBeschreibung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKontrakturenBeschreibung)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbGefausteteHandJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbKniegelenkJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbMaxGebEllenbogenJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSpitzfussstellungJN)).BeginInit();
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpPDX)).BeginInit();
             this.grpPDX.SuspendLayout();
@@ -285,7 +288,7 @@
             this.ultraGroupBox3.Controls.Add(this.ultraLabel1);
             this.ultraGroupBox3.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox3.Name = "ultraGroupBox3";
-            this.ultraGroupBox3.Size = new System.Drawing.Size(464, 365);
+            this.ultraGroupBox3.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox3.TabIndex = 136;
             this.ultraGroupBox3.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -295,7 +298,7 @@
             appearance2.FontData.SizeInPoints = 8F;
             this.ultraLabel138.Appearance = appearance2;
             this.ultraLabel138.AutoSize = true;
-            this.ultraLabel138.Location = new System.Drawing.Point(8, 274);
+            this.ultraLabel138.Location = new System.Drawing.Point(6, 297);
             this.ultraLabel138.Name = "ultraLabel138";
             this.ultraLabel138.Size = new System.Drawing.Size(268, 14);
             this.ultraLabel138.TabIndex = 124;
@@ -313,9 +316,10 @@
             valueListItem1.DisplayText = " ";
             valueListItem2.DataValue = false;
             valueListItem2.DisplayText = " ";
-            this.opKoerperlicheaktivitaetenJN.Items.Add(valueListItem1);
-            this.opKoerperlicheaktivitaetenJN.Items.Add(valueListItem2);
-            this.opKoerperlicheaktivitaetenJN.Location = new System.Drawing.Point(411, 274);
+            this.opKoerperlicheaktivitaetenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2});
+            this.opKoerperlicheaktivitaetenJN.Location = new System.Drawing.Point(409, 297);
             this.opKoerperlicheaktivitaetenJN.Name = "opKoerperlicheaktivitaetenJN";
             this.opKoerperlicheaktivitaetenJN.Size = new System.Drawing.Size(40, 14);
             this.opKoerperlicheaktivitaetenJN.TabIndex = 12;
@@ -345,8 +349,9 @@
             valueListItem3.DisplayText = " ";
             valueListItem4.DataValue = false;
             valueListItem4.DisplayText = " ";
-            this.opSpatzierenGehenJN.Items.Add(valueListItem3);
-            this.opSpatzierenGehenJN.Items.Add(valueListItem4);
+            this.opSpatzierenGehenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem3,
+            valueListItem4});
             this.opSpatzierenGehenJN.Location = new System.Drawing.Point(411, 174);
             this.opSpatzierenGehenJN.Name = "opSpatzierenGehenJN";
             this.opSpatzierenGehenJN.Size = new System.Drawing.Size(40, 14);
@@ -365,8 +370,9 @@
             valueListItem5.DisplayText = " ";
             valueListItem6.DataValue = false;
             valueListItem6.DisplayText = " ";
-            this.opHilfsmittelBenutzenJN.Items.Add(valueListItem5);
-            this.opHilfsmittelBenutzenJN.Items.Add(valueListItem6);
+            this.opHilfsmittelBenutzenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem5,
+            valueListItem6});
             this.opHilfsmittelBenutzenJN.Location = new System.Drawing.Point(411, 158);
             this.opHilfsmittelBenutzenJN.Name = "opHilfsmittelBenutzenJN";
             this.opHilfsmittelBenutzenJN.Size = new System.Drawing.Size(40, 14);
@@ -445,8 +451,9 @@
             valueListItem7.DisplayText = " ";
             valueListItem8.DataValue = false;
             valueListItem8.DisplayText = " ";
-            this.opHinlegen.Items.Add(valueListItem7);
-            this.opHinlegen.Items.Add(valueListItem8);
+            this.opHinlegen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8});
             this.opHinlegen.Location = new System.Drawing.Point(411, 142);
             this.opHinlegen.Name = "opHinlegen";
             this.opHinlegen.Size = new System.Drawing.Size(40, 14);
@@ -465,8 +472,9 @@
             valueListItem9.DisplayText = " ";
             valueListItem10.DataValue = false;
             valueListItem10.DisplayText = " ";
-            this.opLaufenJN.Items.Add(valueListItem9);
-            this.opLaufenJN.Items.Add(valueListItem10);
+            this.opLaufenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem9,
+            valueListItem10});
             this.opLaufenJN.Location = new System.Drawing.Point(411, 110);
             this.opLaufenJN.Name = "opLaufenJN";
             this.opLaufenJN.Size = new System.Drawing.Size(40, 14);
@@ -485,8 +493,9 @@
             valueListItem11.DisplayText = " ";
             valueListItem12.DataValue = false;
             valueListItem12.DisplayText = " ";
-            this.opHinsetzenJN.Items.Add(valueListItem11);
-            this.opHinsetzenJN.Items.Add(valueListItem12);
+            this.opHinsetzenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem11,
+            valueListItem12});
             this.opHinsetzenJN.Location = new System.Drawing.Point(411, 126);
             this.opHinsetzenJN.Name = "opHinsetzenJN";
             this.opHinsetzenJN.Size = new System.Drawing.Size(40, 14);
@@ -505,8 +514,9 @@
             valueListItem13.DisplayText = " ";
             valueListItem14.DataValue = false;
             valueListItem14.DisplayText = " ";
-            this.opTreppenSteigenJN.Items.Add(valueListItem13);
-            this.opTreppenSteigenJN.Items.Add(valueListItem14);
+            this.opTreppenSteigenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem13,
+            valueListItem14});
             this.opTreppenSteigenJN.Location = new System.Drawing.Point(411, 94);
             this.opTreppenSteigenJN.Name = "opTreppenSteigenJN";
             this.opTreppenSteigenJN.Size = new System.Drawing.Size(40, 14);
@@ -525,8 +535,9 @@
             valueListItem15.DisplayText = " ";
             valueListItem16.DataValue = false;
             valueListItem16.DisplayText = " ";
-            this.opSitzenJN.Items.Add(valueListItem15);
-            this.opSitzenJN.Items.Add(valueListItem16);
+            this.opSitzenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem15,
+            valueListItem16});
             this.opSitzenJN.Location = new System.Drawing.Point(411, 78);
             this.opSitzenJN.Name = "opSitzenJN";
             this.opSitzenJN.Size = new System.Drawing.Size(40, 14);
@@ -593,8 +604,9 @@
             valueListItem17.DisplayText = " ";
             valueListItem18.DataValue = false;
             valueListItem18.DisplayText = " ";
-            this.opGehentJN.Items.Add(valueListItem17);
-            this.opGehentJN.Items.Add(valueListItem18);
+            this.opGehentJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem17,
+            valueListItem18});
             this.opGehentJN.Location = new System.Drawing.Point(411, 46);
             this.opGehentJN.Name = "opGehentJN";
             this.opGehentJN.Size = new System.Drawing.Size(40, 14);
@@ -613,8 +625,9 @@
             valueListItem19.DisplayText = " ";
             valueListItem20.DataValue = false;
             valueListItem20.DisplayText = " ";
-            this.opStehenJN.Items.Add(valueListItem19);
-            this.opStehenJN.Items.Add(valueListItem20);
+            this.opStehenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem19,
+            valueListItem20});
             this.opStehenJN.Location = new System.Drawing.Point(411, 62);
             this.opStehenJN.Name = "opStehenJN";
             this.opStehenJN.Size = new System.Drawing.Size(40, 14);
@@ -657,8 +670,9 @@
             valueListItem21.DisplayText = " ";
             valueListItem22.DataValue = false;
             valueListItem22.DisplayText = " ";
-            this.opKannSelbstBewegenJN.Items.Add(valueListItem21);
-            this.opKannSelbstBewegenJN.Items.Add(valueListItem22);
+            this.opKannSelbstBewegenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem21,
+            valueListItem22});
             this.opKannSelbstBewegenJN.Location = new System.Drawing.Point(411, 30);
             this.opKannSelbstBewegenJN.Name = "opKannSelbstBewegenJN";
             this.opKannSelbstBewegenJN.Size = new System.Drawing.Size(40, 14);
@@ -671,12 +685,12 @@
             appearance26.BackColorDisabled = System.Drawing.Color.White;
             appearance26.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtAktivitaetenBeschreibung.Appearance = appearance26;
-            this.txtAktivitaetenBeschreibung.Location = new System.Drawing.Point(22, 290);
-            this.txtAktivitaetenBeschreibung.MaxLength = 255;
+            this.txtAktivitaetenBeschreibung.Location = new System.Drawing.Point(20, 313);
+            this.txtAktivitaetenBeschreibung.MaxLength = 2000;
             this.txtAktivitaetenBeschreibung.Multiline = true;
             this.txtAktivitaetenBeschreibung.Name = "txtAktivitaetenBeschreibung";
             this.txtAktivitaetenBeschreibung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAktivitaetenBeschreibung.Size = new System.Drawing.Size(435, 68);
+            this.txtAktivitaetenBeschreibung.Size = new System.Drawing.Size(904, 86);
             this.txtAktivitaetenBeschreibung.TabIndex = 13;
             this.txtAktivitaetenBeschreibung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -687,11 +701,11 @@
             appearance27.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtWannWieOftSpatzieren.Appearance = appearance27;
             this.txtWannWieOftSpatzieren.Location = new System.Drawing.Point(22, 203);
-            this.txtWannWieOftSpatzieren.MaxLength = 255;
+            this.txtWannWieOftSpatzieren.MaxLength = 2000;
             this.txtWannWieOftSpatzieren.Multiline = true;
             this.txtWannWieOftSpatzieren.Name = "txtWannWieOftSpatzieren";
             this.txtWannWieOftSpatzieren.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtWannWieOftSpatzieren.Size = new System.Drawing.Size(435, 68);
+            this.txtWannWieOftSpatzieren.Size = new System.Drawing.Size(902, 88);
             this.txtWannWieOftSpatzieren.TabIndex = 11;
             this.txtWannWieOftSpatzieren.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -805,9 +819,10 @@
             valueListItem24.DisplayText = " ";
             valueListItem25.DataValue = 2;
             valueListItem25.DisplayText = " ";
-            this.opBewegungseinschraenkung.Items.Add(valueListItem23);
-            this.opBewegungseinschraenkung.Items.Add(valueListItem24);
-            this.opBewegungseinschraenkung.Items.Add(valueListItem25);
+            this.opBewegungseinschraenkung.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem23,
+            valueListItem24,
+            valueListItem25});
             this.opBewegungseinschraenkung.Location = new System.Drawing.Point(439, 32);
             this.opBewegungseinschraenkung.Name = "opBewegungseinschraenkung";
             this.opBewegungseinschraenkung.Size = new System.Drawing.Size(60, 14);
@@ -860,9 +875,10 @@
             valueListItem27.DisplayText = " ";
             valueListItem28.DataValue = 2;
             valueListItem28.DisplayText = " ";
-            this.opLageImBettVeraendern.Items.Add(valueListItem26);
-            this.opLageImBettVeraendern.Items.Add(valueListItem27);
-            this.opLageImBettVeraendern.Items.Add(valueListItem28);
+            this.opLageImBettVeraendern.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem26,
+            valueListItem27,
+            valueListItem28});
             this.opLageImBettVeraendern.Location = new System.Drawing.Point(439, 72);
             this.opLageImBettVeraendern.Name = "opLageImBettVeraendern";
             this.opLageImBettVeraendern.Size = new System.Drawing.Size(60, 14);
@@ -883,9 +899,10 @@
             valueListItem30.DisplayText = " ";
             valueListItem31.DataValue = 2;
             valueListItem31.DisplayText = " ";
-            this.opIstBettlaegerig.Items.Add(valueListItem29);
-            this.opIstBettlaegerig.Items.Add(valueListItem30);
-            this.opIstBettlaegerig.Items.Add(valueListItem31);
+            this.opIstBettlaegerig.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem29,
+            valueListItem30,
+            valueListItem31});
             this.opIstBettlaegerig.Location = new System.Drawing.Point(439, 92);
             this.opIstBettlaegerig.Name = "opIstBettlaegerig";
             this.opIstBettlaegerig.Size = new System.Drawing.Size(60, 14);
@@ -906,9 +923,10 @@
             valueListItem33.DisplayText = " ";
             valueListItem34.DataValue = 2;
             valueListItem34.DisplayText = " ";
-            this.opTransferAufstehenHinlegen.Items.Add(valueListItem32);
-            this.opTransferAufstehenHinlegen.Items.Add(valueListItem33);
-            this.opTransferAufstehenHinlegen.Items.Add(valueListItem34);
+            this.opTransferAufstehenHinlegen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem32,
+            valueListItem33,
+            valueListItem34});
             this.opTransferAufstehenHinlegen.Location = new System.Drawing.Point(439, 112);
             this.opTransferAufstehenHinlegen.Name = "opTransferAufstehenHinlegen";
             this.opTransferAufstehenHinlegen.Size = new System.Drawing.Size(60, 14);
@@ -929,9 +947,10 @@
             valueListItem36.DisplayText = " ";
             valueListItem37.DataValue = 2;
             valueListItem37.DisplayText = " ";
-            this.opKannNichtAlleinGehen.Items.Add(valueListItem35);
-            this.opKannNichtAlleinGehen.Items.Add(valueListItem36);
-            this.opKannNichtAlleinGehen.Items.Add(valueListItem37);
+            this.opKannNichtAlleinGehen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem35,
+            valueListItem36,
+            valueListItem37});
             this.opKannNichtAlleinGehen.Location = new System.Drawing.Point(439, 52);
             this.opKannNichtAlleinGehen.Name = "opKannNichtAlleinGehen";
             this.opKannNichtAlleinGehen.Size = new System.Drawing.Size(60, 14);
@@ -1028,7 +1047,7 @@
             appearance45.FontData.SizeInPoints = 8F;
             this.ultraLabel143.Appearance = appearance45;
             this.ultraLabel143.AutoSize = true;
-            this.ultraLabel143.Location = new System.Drawing.Point(6, 157);
+            this.ultraLabel143.Location = new System.Drawing.Point(6, 166);
             this.ultraLabel143.Name = "ultraLabel143";
             this.ultraLabel143.Size = new System.Drawing.Size(61, 14);
             this.ultraLabel143.TabIndex = 112;
@@ -1046,9 +1065,10 @@
             valueListItem38.DisplayText = "Ja";
             valueListItem39.DataValue = false;
             valueListItem39.DisplayText = "Nein";
-            this.opSturtzgefahrJN.Items.Add(valueListItem38);
-            this.opSturtzgefahrJN.Items.Add(valueListItem39);
-            this.opSturtzgefahrJN.Location = new System.Drawing.Point(169, 157);
+            this.opSturtzgefahrJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem38,
+            valueListItem39});
+            this.opSturtzgefahrJN.Location = new System.Drawing.Point(169, 166);
             this.opSturtzgefahrJN.Name = "opSturtzgefahrJN";
             this.opSturtzgefahrJN.Size = new System.Drawing.Size(77, 14);
             this.opSturtzgefahrJN.TabIndex = 22;
@@ -1060,7 +1080,7 @@
             appearance47.FontData.SizeInPoints = 8F;
             this.ultraLabel142.Appearance = appearance47;
             this.ultraLabel142.AutoSize = true;
-            this.ultraLabel142.Location = new System.Drawing.Point(6, 92);
+            this.ultraLabel142.Location = new System.Drawing.Point(6, 99);
             this.ultraLabel142.Name = "ultraLabel142";
             this.ultraLabel142.Size = new System.Drawing.Size(108, 14);
             this.ultraLabel142.TabIndex = 110;
@@ -1078,9 +1098,10 @@
             valueListItem40.DisplayText = "Ja";
             valueListItem41.DataValue = false;
             valueListItem41.DisplayText = "Nein";
-            this.opDekubitusVorhandenJN.Items.Add(valueListItem40);
-            this.opDekubitusVorhandenJN.Items.Add(valueListItem41);
-            this.opDekubitusVorhandenJN.Location = new System.Drawing.Point(169, 92);
+            this.opDekubitusVorhandenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem40,
+            valueListItem41});
+            this.opDekubitusVorhandenJN.Location = new System.Drawing.Point(169, 99);
             this.opDekubitusVorhandenJN.Name = "opDekubitusVorhandenJN";
             this.opDekubitusVorhandenJN.Size = new System.Drawing.Size(77, 14);
             this.opDekubitusVorhandenJN.TabIndex = 20;
@@ -1092,7 +1113,7 @@
             appearance49.FontData.SizeInPoints = 8F;
             this.ultraLabel141.Appearance = appearance49;
             this.ultraLabel141.AutoSize = true;
-            this.ultraLabel141.Location = new System.Drawing.Point(6, 27);
+            this.ultraLabel141.Location = new System.Drawing.Point(6, 18);
             this.ultraLabel141.Name = "ultraLabel141";
             this.ultraLabel141.Size = new System.Drawing.Size(122, 14);
             this.ultraLabel141.TabIndex = 108;
@@ -1110,9 +1131,10 @@
             valueListItem42.DisplayText = "Ja";
             valueListItem43.DataValue = false;
             valueListItem43.DisplayText = "Nein";
-            this.opKontrakturenvorhandenJN.Items.Add(valueListItem42);
-            this.opKontrakturenvorhandenJN.Items.Add(valueListItem43);
-            this.opKontrakturenvorhandenJN.Location = new System.Drawing.Point(169, 27);
+            this.opKontrakturenvorhandenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem42,
+            valueListItem43});
+            this.opKontrakturenvorhandenJN.Location = new System.Drawing.Point(169, 18);
             this.opKontrakturenvorhandenJN.Name = "opKontrakturenvorhandenJN";
             this.opKontrakturenvorhandenJN.Size = new System.Drawing.Size(77, 14);
             this.opKontrakturenvorhandenJN.TabIndex = 14;
@@ -1124,12 +1146,12 @@
             appearance51.BackColorDisabled = System.Drawing.Color.White;
             appearance51.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtDekubitusBeschreibung.Appearance = appearance51;
-            this.txtDekubitusBeschreibung.Location = new System.Drawing.Point(169, 109);
+            this.txtDekubitusBeschreibung.Location = new System.Drawing.Point(169, 116);
             this.txtDekubitusBeschreibung.MaxLength = 100;
             this.txtDekubitusBeschreibung.Multiline = true;
             this.txtDekubitusBeschreibung.Name = "txtDekubitusBeschreibung";
             this.txtDekubitusBeschreibung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDekubitusBeschreibung.Size = new System.Drawing.Size(332, 44);
+            this.txtDekubitusBeschreibung.Size = new System.Drawing.Size(332, 36);
             this.txtDekubitusBeschreibung.TabIndex = 21;
             this.txtDekubitusBeschreibung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -1139,7 +1161,7 @@
             appearance52.FontData.SizeInPoints = 8F;
             this.ultraLabel13.Appearance = appearance52;
             this.ultraLabel13.AutoSize = true;
-            this.ultraLabel13.Location = new System.Drawing.Point(6, 111);
+            this.ultraLabel13.Location = new System.Drawing.Point(6, 118);
             this.ultraLabel13.Name = "ultraLabel13";
             this.ultraLabel13.Size = new System.Drawing.Size(131, 14);
             this.ultraLabel13.TabIndex = 101;
@@ -1151,12 +1173,12 @@
             appearance53.BackColorDisabled = System.Drawing.Color.White;
             appearance53.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtKontrakturenBeschreibung.Appearance = appearance53;
-            this.txtKontrakturenBeschreibung.Location = new System.Drawing.Point(279, 45);
+            this.txtKontrakturenBeschreibung.Location = new System.Drawing.Point(279, 36);
             this.txtKontrakturenBeschreibung.MaxLength = 100;
             this.txtKontrakturenBeschreibung.Multiline = true;
             this.txtKontrakturenBeschreibung.Name = "txtKontrakturenBeschreibung";
             this.txtKontrakturenBeschreibung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtKontrakturenBeschreibung.Size = new System.Drawing.Size(222, 58);
+            this.txtKontrakturenBeschreibung.Size = new System.Drawing.Size(222, 38);
             this.txtKontrakturenBeschreibung.TabIndex = 19;
             this.txtKontrakturenBeschreibung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -1166,7 +1188,9 @@
             appearance54.BackColorDisabled = System.Drawing.Color.Transparent;
             appearance54.ForeColorDisabled = System.Drawing.Color.Black;
             this.cbGefausteteHandJN.Appearance = appearance54;
-            this.cbGefausteteHandJN.Location = new System.Drawing.Point(169, 62);
+            this.cbGefausteteHandJN.BackColor = System.Drawing.Color.Transparent;
+            this.cbGefausteteHandJN.BackColorInternal = System.Drawing.Color.Transparent;
+            this.cbGefausteteHandJN.Location = new System.Drawing.Point(169, 53);
             this.cbGefausteteHandJN.Name = "cbGefausteteHandJN";
             this.cbGefausteteHandJN.Size = new System.Drawing.Size(104, 21);
             this.cbGefausteteHandJN.TabIndex = 18;
@@ -1179,7 +1203,9 @@
             appearance55.BackColorDisabled = System.Drawing.Color.Transparent;
             appearance55.ForeColorDisabled = System.Drawing.Color.Black;
             this.cbKniegelenkJN.Appearance = appearance55;
-            this.cbKniegelenkJN.Location = new System.Drawing.Point(169, 45);
+            this.cbKniegelenkJN.BackColor = System.Drawing.Color.Transparent;
+            this.cbKniegelenkJN.BackColorInternal = System.Drawing.Color.Transparent;
+            this.cbKniegelenkJN.Location = new System.Drawing.Point(169, 36);
             this.cbKniegelenkJN.Name = "cbKniegelenkJN";
             this.cbKniegelenkJN.Size = new System.Drawing.Size(104, 21);
             this.cbKniegelenkJN.TabIndex = 17;
@@ -1192,7 +1218,9 @@
             appearance56.BackColorDisabled = System.Drawing.Color.Transparent;
             appearance56.ForeColorDisabled = System.Drawing.Color.Black;
             this.cbMaxGebEllenbogenJN.Appearance = appearance56;
-            this.cbMaxGebEllenbogenJN.Location = new System.Drawing.Point(33, 62);
+            this.cbMaxGebEllenbogenJN.BackColor = System.Drawing.Color.Transparent;
+            this.cbMaxGebEllenbogenJN.BackColorInternal = System.Drawing.Color.Transparent;
+            this.cbMaxGebEllenbogenJN.Location = new System.Drawing.Point(33, 53);
             this.cbMaxGebEllenbogenJN.Name = "cbMaxGebEllenbogenJN";
             this.cbMaxGebEllenbogenJN.Size = new System.Drawing.Size(138, 21);
             this.cbMaxGebEllenbogenJN.TabIndex = 16;
@@ -1205,7 +1233,9 @@
             appearance57.BackColorDisabled = System.Drawing.Color.Transparent;
             appearance57.ForeColorDisabled = System.Drawing.Color.Black;
             this.cbSpitzfussstellungJN.Appearance = appearance57;
-            this.cbSpitzfussstellungJN.Location = new System.Drawing.Point(33, 43);
+            this.cbSpitzfussstellungJN.BackColor = System.Drawing.Color.Transparent;
+            this.cbSpitzfussstellungJN.BackColorInternal = System.Drawing.Color.Transparent;
+            this.cbSpitzfussstellungJN.Location = new System.Drawing.Point(33, 34);
             this.cbSpitzfussstellungJN.Name = "cbSpitzfussstellungJN";
             this.cbSpitzfussstellungJN.Size = new System.Drawing.Size(104, 21);
             this.cbSpitzfussstellungJN.TabIndex = 15;
@@ -1218,7 +1248,7 @@
             appearance58.FontData.SizeInPoints = 8F;
             this.ultraLabel12.Appearance = appearance58;
             this.ultraLabel12.AutoSize = true;
-            this.ultraLabel12.Location = new System.Drawing.Point(6, 48);
+            this.ultraLabel12.Location = new System.Drawing.Point(6, 39);
             this.ultraLabel12.Name = "ultraLabel12";
             this.ultraLabel12.Size = new System.Drawing.Size(21, 14);
             this.ultraLabel12.TabIndex = 94;
@@ -1244,9 +1274,9 @@
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance60.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance60;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -1257,9 +1287,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -1282,7 +1312,6 @@
             this.tabSichBewegen.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabSichBewegen.Size = new System.Drawing.Size(1000, 440);
             this.tabSichBewegen.TabIndex = 137;
-            ultraTab1.ActiveAppearance = appearance62;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
@@ -1291,7 +1320,6 @@
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance63;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";
@@ -1350,6 +1378,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.opKontrakturenvorhandenJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDekubitusBeschreibung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKontrakturenBeschreibung)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbGefausteteHandJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbKniegelenkJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbMaxGebEllenbogenJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSpitzfussstellungJN)).EndInit();
             this.ultraTabPageControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpPDX)).EndInit();
             this.grpPDX.ResumeLayout(false);

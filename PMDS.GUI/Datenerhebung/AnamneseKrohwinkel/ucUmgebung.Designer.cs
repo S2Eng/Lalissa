@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -142,9 +143,9 @@
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox34);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(592, 414);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(1061, 414);
             // 
             // ultraGroupBox34
             // 
@@ -164,7 +165,7 @@
             this.ultraGroupBox34.Controls.Add(this.ultraLabel99);
             this.ultraGroupBox34.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox34.Name = "ultraGroupBox34";
-            this.ultraGroupBox34.Size = new System.Drawing.Size(555, 226);
+            this.ultraGroupBox34.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox34.TabIndex = 131;
             this.ultraGroupBox34.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -174,7 +175,7 @@
             appearance2.FontData.SizeInPoints = 8F;
             this.ultraLabel7.Appearance = appearance2;
             this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(13, 196);
+            this.ultraLabel7.Location = new System.Drawing.Point(13, 291);
             this.ultraLabel7.Name = "ultraLabel7";
             this.ultraLabel7.Size = new System.Drawing.Size(265, 14);
             this.ultraLabel7.TabIndex = 142;
@@ -195,7 +196,7 @@
             this.opOhneHilfeZurechtJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem1,
             valueListItem2});
-            this.opOhneHilfeZurechtJN.Location = new System.Drawing.Point(500, 195);
+            this.opOhneHilfeZurechtJN.Location = new System.Drawing.Point(323, 290);
             this.opOhneHilfeZurechtJN.Name = "opOhneHilfeZurechtJN";
             this.opOhneHilfeZurechtJN.Size = new System.Drawing.Size(40, 14);
             this.opOhneHilfeZurechtJN.TabIndex = 5;
@@ -207,7 +208,7 @@
             appearance4.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance4;
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(13, 175);
+            this.ultraLabel6.Location = new System.Drawing.Point(13, 270);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(150, 14);
             this.ultraLabel6.TabIndex = 140;
@@ -228,7 +229,7 @@
             this.opHilfeHerbeirufenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem3,
             valueListItem4});
-            this.opHilfeHerbeirufenJN.Location = new System.Drawing.Point(500, 175);
+            this.opHilfeHerbeirufenJN.Location = new System.Drawing.Point(323, 270);
             this.opHilfeHerbeirufenJN.Name = "opHilfeHerbeirufenJN";
             this.opHilfeHerbeirufenJN.Size = new System.Drawing.Size(40, 14);
             this.opHilfeHerbeirufenJN.TabIndex = 4;
@@ -261,7 +262,7 @@
             this.opBettgitterJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem5,
             valueListItem6});
-            this.opBettgitterJN.Location = new System.Drawing.Point(500, 61);
+            this.opBettgitterJN.Location = new System.Drawing.Point(323, 61);
             this.opBettgitterJN.Name = "opBettgitterJN";
             this.opBettgitterJN.Size = new System.Drawing.Size(40, 14);
             this.opBettgitterJN.TabIndex = 2;
@@ -294,7 +295,7 @@
             this.opHilfsmittelZurMobilitaetJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem7,
             valueListItem8});
-            this.opHilfsmittelZurMobilitaetJN.Location = new System.Drawing.Point(500, 38);
+            this.opHilfsmittelZurMobilitaetJN.Location = new System.Drawing.Point(323, 38);
             this.opHilfsmittelZurMobilitaetJN.Name = "opHilfsmittelZurMobilitaetJN";
             this.opHilfsmittelZurMobilitaetJN.Size = new System.Drawing.Size(40, 14);
             this.opHilfsmittelZurMobilitaetJN.TabIndex = 1;
@@ -306,7 +307,7 @@
             appearance10.FontData.SizeInPoints = 8F;
             this.ultraLabel113.Appearance = appearance10;
             this.ultraLabel113.AutoSize = true;
-            this.ultraLabel113.Location = new System.Drawing.Point(498, 18);
+            this.ultraLabel113.Location = new System.Drawing.Point(321, 18);
             this.ultraLabel113.Name = "ultraLabel113";
             this.ultraLabel113.Size = new System.Drawing.Size(16, 14);
             this.ultraLabel113.TabIndex = 117;
@@ -318,7 +319,7 @@
             appearance11.FontData.SizeInPoints = 8F;
             this.ultraLabel114.Appearance = appearance11;
             this.ultraLabel114.AutoSize = true;
-            this.ultraLabel114.Location = new System.Drawing.Point(520, 18);
+            this.ultraLabel114.Location = new System.Drawing.Point(343, 18);
             this.ultraLabel114.Name = "ultraLabel114";
             this.ultraLabel114.Size = new System.Drawing.Size(27, 14);
             this.ultraLabel114.TabIndex = 118;
@@ -330,12 +331,12 @@
             appearance12.BackColorDisabled = System.Drawing.Color.White;
             appearance12.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtZimmerVerschlossen.Appearance = appearance12;
-            this.txtZimmerVerschlossen.Location = new System.Drawing.Point(13, 109);
+            this.txtZimmerVerschlossen.Location = new System.Drawing.Point(13, 110);
             this.txtZimmerVerschlossen.MaxLength = 255;
             this.txtZimmerVerschlossen.Multiline = true;
             this.txtZimmerVerschlossen.Name = "txtZimmerVerschlossen";
             this.txtZimmerVerschlossen.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtZimmerVerschlossen.Size = new System.Drawing.Size(536, 58);
+            this.txtZimmerVerschlossen.Size = new System.Drawing.Size(911, 149);
             this.txtZimmerVerschlossen.TabIndex = 3;
             this.txtZimmerVerschlossen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -344,12 +345,12 @@
             appearance13.BackColor = System.Drawing.Color.Transparent;
             appearance13.FontData.SizeInPoints = 8F;
             this.ultraLabel99.Appearance = appearance13;
-            this.ultraLabel99.Location = new System.Drawing.Point(13, 79);
+            this.ultraLabel99.Location = new System.Drawing.Point(13, 87);
             this.ultraLabel99.Name = "ultraLabel99";
-            this.ultraLabel99.Size = new System.Drawing.Size(393, 25);
+            this.ultraLabel99.Size = new System.Drawing.Size(472, 19);
             this.ultraLabel99.TabIndex = 110;
             this.ultraLabel99.Text = "Möchten Sie Ihr Zimmer verschließen/verschlossen bekommen (zu welchen Tageszeiten" +
-                ")?";
+    ")?";
             // 
             // ultraTabPageControl1
             // 
@@ -612,15 +613,15 @@
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(592, 414);
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance28.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance28;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -631,9 +632,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -654,7 +655,7 @@
             this.tabUmgebung.Location = new System.Drawing.Point(0, 0);
             this.tabUmgebung.Name = "tabUmgebung";
             this.tabUmgebung.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabUmgebung.Size = new System.Drawing.Size(596, 440);
+            this.tabUmgebung.Size = new System.Drawing.Size(1065, 440);
             this.tabUmgebung.TabIndex = 133;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
@@ -679,7 +680,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(592, 414);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(1061, 414);
             // 
             // ucUmgebung
             // 
@@ -687,7 +688,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabUmgebung);
             this.Name = "ucUmgebung";
-            this.Size = new System.Drawing.Size(596, 440);
+            this.Size = new System.Drawing.Size(1065, 440);
             this.tabPagePersoenlicheDaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox34)).EndInit();
             this.ultraGroupBox34.ResumeLayout(false);

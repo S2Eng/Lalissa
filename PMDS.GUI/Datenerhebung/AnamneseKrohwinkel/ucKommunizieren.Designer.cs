@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -78,11 +79,8 @@
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpRessource = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel120 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -145,7 +143,7 @@
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.grpRessource);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(996, 414);
             // 
@@ -164,7 +162,7 @@
             this.grpRessource.Controls.Add(this.ultraLabel114);
             this.grpRessource.Location = new System.Drawing.Point(7, 6);
             this.grpRessource.Name = "grpRessource";
-            this.grpRessource.Size = new System.Drawing.Size(546, 193);
+            this.grpRessource.Size = new System.Drawing.Size(930, 405);
             this.grpRessource.TabIndex = 112;
             this.grpRessource.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -211,11 +209,11 @@
             appearance5.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtWuensche.Appearance = appearance5;
             this.txtWuensche.Location = new System.Drawing.Point(20, 93);
-            this.txtWuensche.MaxLength = 255;
+            this.txtWuensche.MaxLength = 2000;
             this.txtWuensche.Multiline = true;
             this.txtWuensche.Name = "txtWuensche";
             this.txtWuensche.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtWuensche.Size = new System.Drawing.Size(520, 74);
+            this.txtWuensche.Size = new System.Drawing.Size(904, 306);
             this.txtWuensche.TabIndex = 4;
             this.txtWuensche.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -231,9 +229,10 @@
             valueListItem1.DisplayText = " ";
             valueListItem2.DataValue = false;
             valueListItem2.DisplayText = " ";
-            this.opBrilleJN.Items.Add(valueListItem1);
-            this.opBrilleJN.Items.Add(valueListItem2);
-            this.opBrilleJN.Location = new System.Drawing.Point(500, 32);
+            this.opBrilleJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2});
+            this.opBrilleJN.Location = new System.Drawing.Point(306, 32);
             this.opBrilleJN.Name = "opBrilleJN";
             this.opBrilleJN.Size = new System.Drawing.Size(40, 14);
             this.opBrilleJN.TabIndex = 1;
@@ -251,9 +250,10 @@
             valueListItem3.DisplayText = " ";
             valueListItem4.DataValue = false;
             valueListItem4.DisplayText = " ";
-            this.opHoergeraetJN.Items.Add(valueListItem3);
-            this.opHoergeraetJN.Items.Add(valueListItem4);
-            this.opHoergeraetJN.Location = new System.Drawing.Point(500, 50);
+            this.opHoergeraetJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem3,
+            valueListItem4});
+            this.opHoergeraetJN.Location = new System.Drawing.Point(306, 50);
             this.opHoergeraetJN.Name = "opHoergeraetJN";
             this.opHoergeraetJN.Size = new System.Drawing.Size(40, 14);
             this.opHoergeraetJN.TabIndex = 2;
@@ -265,7 +265,7 @@
             appearance8.FontData.SizeInPoints = 8F;
             this.ultraLabel113.Appearance = appearance8;
             this.ultraLabel113.AutoSize = true;
-            this.ultraLabel113.Location = new System.Drawing.Point(497, 15);
+            this.ultraLabel113.Location = new System.Drawing.Point(303, 15);
             this.ultraLabel113.Name = "ultraLabel113";
             this.ultraLabel113.Size = new System.Drawing.Size(16, 14);
             this.ultraLabel113.TabIndex = 106;
@@ -283,9 +283,10 @@
             valueListItem5.DisplayText = " ";
             valueListItem6.DataValue = false;
             valueListItem6.DisplayText = " ";
-            this.opKannMitteilenJN.Items.Add(valueListItem5);
-            this.opKannMitteilenJN.Items.Add(valueListItem6);
-            this.opKannMitteilenJN.Location = new System.Drawing.Point(500, 68);
+            this.opKannMitteilenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem5,
+            valueListItem6});
+            this.opKannMitteilenJN.Location = new System.Drawing.Point(306, 68);
             this.opKannMitteilenJN.Name = "opKannMitteilenJN";
             this.opKannMitteilenJN.Size = new System.Drawing.Size(40, 14);
             this.opKannMitteilenJN.TabIndex = 3;
@@ -297,7 +298,7 @@
             appearance10.FontData.SizeInPoints = 8F;
             this.ultraLabel114.Appearance = appearance10;
             this.ultraLabel114.AutoSize = true;
-            this.ultraLabel114.Location = new System.Drawing.Point(519, 15);
+            this.ultraLabel114.Location = new System.Drawing.Point(325, 15);
             this.ultraLabel114.Name = "ultraLabel114";
             this.ultraLabel114.Size = new System.Drawing.Size(27, 14);
             this.ultraLabel114.TabIndex = 107;
@@ -308,7 +309,7 @@
             this.ultraTabPageControl1.Controls.Add(this.grpHilfebedarf);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel1);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel2);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(996, 414);
             // 
@@ -473,9 +474,10 @@
             valueListItem8.DisplayText = " ";
             valueListItem9.DataValue = 2;
             valueListItem9.DisplayText = " ";
-            this.opSchwerhoerigTaubStummBlind.Items.Add(valueListItem7);
-            this.opSchwerhoerigTaubStummBlind.Items.Add(valueListItem8);
-            this.opSchwerhoerigTaubStummBlind.Items.Add(valueListItem9);
+            this.opSchwerhoerigTaubStummBlind.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8,
+            valueListItem9});
             this.opSchwerhoerigTaubStummBlind.Location = new System.Drawing.Point(355, 33);
             this.opSchwerhoerigTaubStummBlind.Name = "opSchwerhoerigTaubStummBlind";
             this.opSchwerhoerigTaubStummBlind.Size = new System.Drawing.Size(60, 14);
@@ -504,9 +506,10 @@
             valueListItem11.DisplayText = " ";
             valueListItem12.DataValue = 2;
             valueListItem12.DisplayText = " ";
-            this.opHoergeraetNichtHandhaben.Items.Add(valueListItem10);
-            this.opHoergeraetNichtHandhaben.Items.Add(valueListItem11);
-            this.opHoergeraetNichtHandhaben.Items.Add(valueListItem12);
+            this.opHoergeraetNichtHandhaben.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem10,
+            valueListItem11,
+            valueListItem12});
             this.opHoergeraetNichtHandhaben.Location = new System.Drawing.Point(355, 53);
             this.opHoergeraetNichtHandhaben.Name = "opHoergeraetNichtHandhaben";
             this.opHoergeraetNichtHandhaben.Size = new System.Drawing.Size(60, 14);
@@ -527,9 +530,10 @@
             valueListItem14.DisplayText = " ";
             valueListItem15.DataValue = 2;
             valueListItem15.DisplayText = " ";
-            this.opSprachstoerungen.Items.Add(valueListItem13);
-            this.opSprachstoerungen.Items.Add(valueListItem14);
-            this.opSprachstoerungen.Items.Add(valueListItem15);
+            this.opSprachstoerungen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem13,
+            valueListItem14,
+            valueListItem15});
             this.opSprachstoerungen.Location = new System.Drawing.Point(355, 73);
             this.opSprachstoerungen.Name = "opSprachstoerungen";
             this.opSprachstoerungen.Size = new System.Drawing.Size(60, 14);
@@ -550,9 +554,10 @@
             valueListItem17.DisplayText = " ";
             valueListItem18.DataValue = 2;
             valueListItem18.DisplayText = " ";
-            this.opIstZeitloertlSituativZurPersonNichtOrientiert.Items.Add(valueListItem16);
-            this.opIstZeitloertlSituativZurPersonNichtOrientiert.Items.Add(valueListItem17);
-            this.opIstZeitloertlSituativZurPersonNichtOrientiert.Items.Add(valueListItem18);
+            this.opIstZeitloertlSituativZurPersonNichtOrientiert.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem16,
+            valueListItem17,
+            valueListItem18});
             this.opIstZeitloertlSituativZurPersonNichtOrientiert.Location = new System.Drawing.Point(355, 113);
             this.opIstZeitloertlSituativZurPersonNichtOrientiert.Name = "opIstZeitloertlSituativZurPersonNichtOrientiert";
             this.opIstZeitloertlSituativZurPersonNichtOrientiert.Size = new System.Drawing.Size(60, 14);
@@ -573,9 +578,10 @@
             valueListItem20.DisplayText = " ";
             valueListItem21.DataValue = 2;
             valueListItem21.DisplayText = " ";
-            this.opSichtfeldeinschraenkungen.Items.Add(valueListItem19);
-            this.opSichtfeldeinschraenkungen.Items.Add(valueListItem20);
-            this.opSichtfeldeinschraenkungen.Items.Add(valueListItem21);
+            this.opSichtfeldeinschraenkungen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem19,
+            valueListItem20,
+            valueListItem21});
             this.opSichtfeldeinschraenkungen.Location = new System.Drawing.Point(355, 93);
             this.opSichtfeldeinschraenkungen.Name = "opSichtfeldeinschraenkungen";
             this.opSichtfeldeinschraenkungen.Size = new System.Drawing.Size(60, 14);
@@ -613,9 +619,9 @@
             // 
             // ultraGroupBox1
             // 
-            this.ultraGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ultraGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance27.BackColor = System.Drawing.Color.Transparent;
             this.ultraGroupBox1.Appearance = appearance27;
             this.ultraGroupBox1.Controls.Add(this.ucAnamnesePDX1);
@@ -626,9 +632,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -651,17 +657,14 @@
             this.tabKommunizieren.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabKommunizieren.Size = new System.Drawing.Size(1000, 440);
             this.tabKommunizieren.TabIndex = 125;
-            ultraTab1.ActiveAppearance = appearance29;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
             ultraTab1.ToolTipText = "Ressource, Wünsche, Gewohnheiten";
-            ultraTab2.ActiveAppearance = appearance30;
             ultraTab2.Key = "Hilfebedarf";
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance31;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";

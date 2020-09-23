@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -56,10 +57,8 @@
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox43 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.txtBiographie = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -107,7 +106,7 @@
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox43);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(996, 414);
             // 
@@ -118,7 +117,7 @@
             this.ultraGroupBox43.Controls.Add(this.txtBiographie);
             this.ultraGroupBox43.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox43.Name = "ultraGroupBox43";
-            this.ultraGroupBox43.Size = new System.Drawing.Size(484, 279);
+            this.ultraGroupBox43.Size = new System.Drawing.Size(484, 405);
             this.ultraGroupBox43.TabIndex = 140;
             this.ultraGroupBox43.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -132,7 +131,7 @@
             this.txtBiographie.Multiline = true;
             this.txtBiographie.Name = "txtBiographie";
             this.txtBiographie.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBiographie.Size = new System.Drawing.Size(456, 252);
+            this.txtBiographie.Size = new System.Drawing.Size(456, 381);
             this.txtBiographie.TabIndex = 1;
             this.txtBiographie.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -141,7 +140,7 @@
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel14);
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox41);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel15);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(996, 414);
             // 
@@ -244,9 +243,10 @@
             valueListItem2.DisplayText = " ";
             valueListItem3.DataValue = 2;
             valueListItem3.DisplayText = " ";
-            this.opHatSorge.Items.Add(valueListItem1);
-            this.opHatSorge.Items.Add(valueListItem2);
-            this.opHatSorge.Items.Add(valueListItem3);
+            this.opHatSorge.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2,
+            valueListItem3});
             this.opHatSorge.Location = new System.Drawing.Point(414, 165);
             this.opHatSorge.Name = "opHatSorge";
             this.opHatSorge.Size = new System.Drawing.Size(60, 14);
@@ -310,9 +310,10 @@
             valueListItem5.DisplayText = " ";
             valueListItem6.DataValue = 2;
             valueListItem6.DisplayText = " ";
-            this.opVermisst.Items.Add(valueListItem4);
-            this.opVermisst.Items.Add(valueListItem5);
-            this.opVermisst.Items.Add(valueListItem6);
+            this.opVermisst.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem4,
+            valueListItem5,
+            valueListItem6});
             this.opVermisst.Location = new System.Drawing.Point(414, 61);
             this.opVermisst.Name = "opVermisst";
             this.opVermisst.Size = new System.Drawing.Size(60, 14);
@@ -333,9 +334,10 @@
             valueListItem8.DisplayText = " ";
             valueListItem9.DataValue = 2;
             valueListItem9.DisplayText = " ";
-            this.opUnbewaeltigtenLebenserfahrungen.Items.Add(valueListItem7);
-            this.opUnbewaeltigtenLebenserfahrungen.Items.Add(valueListItem8);
-            this.opUnbewaeltigtenLebenserfahrungen.Items.Add(valueListItem9);
+            this.opUnbewaeltigtenLebenserfahrungen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8,
+            valueListItem9});
             this.opUnbewaeltigtenLebenserfahrungen.Location = new System.Drawing.Point(414, 39);
             this.opUnbewaeltigtenLebenserfahrungen.Name = "opUnbewaeltigtenLebenserfahrungen";
             this.opUnbewaeltigtenLebenserfahrungen.Size = new System.Drawing.Size(60, 14);
@@ -386,9 +388,9 @@
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance17.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance17;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -399,9 +401,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -424,7 +426,6 @@
             this.tabLuft.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabLuft.Size = new System.Drawing.Size(1000, 440);
             this.tabLuft.TabIndex = 144;
-            ultraTab1.ActiveAppearance = appearance19;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
@@ -433,7 +434,6 @@
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance20;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -125,7 +126,7 @@
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox37);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(778, 414);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(980, 414);
             // 
             // ultraGroupBox37
             // 
@@ -143,7 +144,7 @@
             this.ultraGroupBox37.Controls.Add(this.ultraLabel103);
             this.ultraGroupBox37.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox37.Name = "ultraGroupBox37";
-            this.ultraGroupBox37.Size = new System.Drawing.Size(610, 353);
+            this.ultraGroupBox37.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox37.TabIndex = 134;
             this.ultraGroupBox37.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -153,7 +154,7 @@
             appearance2.FontData.SizeInPoints = 8F;
             this.ultraLabel1.Appearance = appearance2;
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(13, 323);
+            this.ultraLabel1.Location = new System.Drawing.Point(13, 380);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(271, 14);
             this.ultraLabel1.TabIndex = 139;
@@ -174,7 +175,7 @@
             this.opKontakteSelbsstaendigHerstellenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem1,
             valueListItem2});
-            this.opKontakteSelbsstaendigHerstellenJN.Location = new System.Drawing.Point(330, 323);
+            this.opKontakteSelbsstaendigHerstellenJN.Location = new System.Drawing.Point(330, 380);
             this.opKontakteSelbsstaendigHerstellenJN.Name = "opKontakteSelbsstaendigHerstellenJN";
             this.opKontakteSelbsstaendigHerstellenJN.Size = new System.Drawing.Size(76, 14);
             this.opKontakteSelbsstaendigHerstellenJN.TabIndex = 5;
@@ -186,12 +187,12 @@
             appearance4.BackColorDisabled = System.Drawing.Color.White;
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtAndereKontakte.Appearance = appearance4;
-            this.txtAndereKontakte.Location = new System.Drawing.Point(13, 262);
-            this.txtAndereKontakte.MaxLength = 255;
+            this.txtAndereKontakte.Location = new System.Drawing.Point(13, 306);
+            this.txtAndereKontakte.MaxLength = 2000;
             this.txtAndereKontakte.Multiline = true;
             this.txtAndereKontakte.Name = "txtAndereKontakte";
             this.txtAndereKontakte.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAndereKontakte.Size = new System.Drawing.Size(591, 55);
+            this.txtAndereKontakte.Size = new System.Drawing.Size(911, 59);
             this.txtAndereKontakte.TabIndex = 4;
             this.txtAndereKontakte.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -200,12 +201,12 @@
             appearance5.BackColor = System.Drawing.Color.Transparent;
             appearance5.FontData.SizeInPoints = 8F;
             this.ultraLabel106.Appearance = appearance5;
-            this.ultraLabel106.Location = new System.Drawing.Point(13, 226);
+            this.ultraLabel106.Location = new System.Drawing.Point(13, 274);
             this.ultraLabel106.Name = "ultraLabel106";
             this.ultraLabel106.Size = new System.Drawing.Size(393, 30);
             this.ultraLabel106.TabIndex = 120;
             this.ultraLabel106.Text = "Gibt es weitere soziale Kontakte, wie Vereine, Kirchengemeinde, bestimmte Geistli" +
-                "che?";
+    "che?";
             // 
             // txtZeitKeineBesuche
             // 
@@ -213,12 +214,12 @@
             appearance6.BackColorDisabled = System.Drawing.Color.White;
             appearance6.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtZeitKeineBesuche.Appearance = appearance6;
-            this.txtZeitKeineBesuche.Location = new System.Drawing.Point(13, 190);
+            this.txtZeitKeineBesuche.Location = new System.Drawing.Point(13, 238);
             this.txtZeitKeineBesuche.MaxLength = 100;
             this.txtZeitKeineBesuche.Multiline = true;
             this.txtZeitKeineBesuche.Name = "txtZeitKeineBesuche";
             this.txtZeitKeineBesuche.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtZeitKeineBesuche.Size = new System.Drawing.Size(591, 32);
+            this.txtZeitKeineBesuche.Size = new System.Drawing.Size(591, 24);
             this.txtZeitKeineBesuche.TabIndex = 3;
             this.txtZeitKeineBesuche.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -228,7 +229,7 @@
             appearance7.FontData.SizeInPoints = 8F;
             this.ultraLabel105.Appearance = appearance7;
             this.ultraLabel105.AutoSize = true;
-            this.ultraLabel105.Location = new System.Drawing.Point(13, 171);
+            this.ultraLabel105.Location = new System.Drawing.Point(13, 219);
             this.ultraLabel105.Name = "ultraLabel105";
             this.ultraLabel105.Size = new System.Drawing.Size(276, 14);
             this.ultraLabel105.TabIndex = 118;
@@ -240,12 +241,12 @@
             appearance8.BackColorDisabled = System.Drawing.Color.White;
             appearance8.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtKeinekontakte.Appearance = appearance8;
-            this.txtKeinekontakte.Location = new System.Drawing.Point(13, 112);
-            this.txtKeinekontakte.MaxLength = 255;
+            this.txtKeinekontakte.Location = new System.Drawing.Point(13, 139);
+            this.txtKeinekontakte.MaxLength = 2000;
             this.txtKeinekontakte.Multiline = true;
             this.txtKeinekontakte.Name = "txtKeinekontakte";
             this.txtKeinekontakte.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtKeinekontakte.Size = new System.Drawing.Size(591, 55);
+            this.txtKeinekontakte.Size = new System.Drawing.Size(911, 70);
             this.txtKeinekontakte.TabIndex = 2;
             this.txtKeinekontakte.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -255,7 +256,7 @@
             appearance9.FontData.SizeInPoints = 8F;
             this.ultraLabel104.Appearance = appearance9;
             this.ultraLabel104.AutoSize = true;
-            this.ultraLabel104.Location = new System.Drawing.Point(13, 95);
+            this.ultraLabel104.Location = new System.Drawing.Point(13, 122);
             this.ultraLabel104.Name = "ultraLabel104";
             this.ultraLabel104.Size = new System.Drawing.Size(293, 14);
             this.ultraLabel104.TabIndex = 116;
@@ -268,11 +269,11 @@
             appearance10.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtKontakte.Appearance = appearance10;
             this.txtKontakte.Location = new System.Drawing.Point(13, 36);
-            this.txtKontakte.MaxLength = 255;
+            this.txtKontakte.MaxLength = 2000;
             this.txtKontakte.Multiline = true;
             this.txtKontakte.Name = "txtKontakte";
             this.txtKontakte.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtKontakte.Size = new System.Drawing.Size(591, 55);
+            this.txtKontakte.Size = new System.Drawing.Size(911, 77);
             this.txtKontakte.TabIndex = 1;
             this.txtKontakte.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -295,7 +296,7 @@
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel15);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(778, 414);
             // 
             // ultraLabel14
             // 
@@ -505,13 +506,13 @@
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(778, 414);
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance24.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance24;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -522,9 +523,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -545,7 +546,7 @@
             this.tabSozialeBereiche.Location = new System.Drawing.Point(0, 0);
             this.tabSozialeBereiche.Name = "tabSozialeBereiche";
             this.tabSozialeBereiche.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabSozialeBereiche.Size = new System.Drawing.Size(782, 440);
+            this.tabSozialeBereiche.Size = new System.Drawing.Size(984, 440);
             this.tabSozialeBereiche.TabIndex = 136;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
@@ -570,7 +571,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(778, 414);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(980, 414);
             // 
             // ucSozialeBereiche
             // 
@@ -578,7 +579,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabSozialeBereiche);
             this.Name = "ucSozialeBereiche";
-            this.Size = new System.Drawing.Size(782, 440);
+            this.Size = new System.Drawing.Size(984, 440);
             this.tabPagePersoenlicheDaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox37)).EndInit();
             this.ultraGroupBox37.ResumeLayout(false);

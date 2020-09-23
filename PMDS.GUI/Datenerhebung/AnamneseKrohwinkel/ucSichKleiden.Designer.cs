@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -77,10 +78,8 @@
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox22 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.txtWaeschewechsel = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -158,7 +157,7 @@
             this.ultraGroupBox22.Controls.Add(this.ultraLabel74);
             this.ultraGroupBox22.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox22.Name = "ultraGroupBox22";
-            this.ultraGroupBox22.Size = new System.Drawing.Size(566, 208);
+            this.ultraGroupBox22.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox22.TabIndex = 119;
             this.ultraGroupBox22.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -168,12 +167,12 @@
             appearance2.BackColorDisabled = System.Drawing.Color.White;
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtWaeschewechsel.Appearance = appearance2;
-            this.txtWaeschewechsel.Location = new System.Drawing.Point(13, 141);
-            this.txtWaeschewechsel.MaxLength = 255;
+            this.txtWaeschewechsel.Location = new System.Drawing.Point(13, 222);
+            this.txtWaeschewechsel.MaxLength = 2000;
             this.txtWaeschewechsel.Multiline = true;
             this.txtWaeschewechsel.Name = "txtWaeschewechsel";
             this.txtWaeschewechsel.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtWaeschewechsel.Size = new System.Drawing.Size(547, 53);
+            this.txtWaeschewechsel.Size = new System.Drawing.Size(911, 177);
             this.txtWaeschewechsel.TabIndex = 2;
             this.txtWaeschewechsel.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -183,7 +182,7 @@
             appearance3.FontData.SizeInPoints = 8F;
             this.ultraLabel73.Appearance = appearance3;
             this.ultraLabel73.AutoSize = true;
-            this.ultraLabel73.Location = new System.Drawing.Point(13, 121);
+            this.ultraLabel73.Location = new System.Drawing.Point(13, 202);
             this.ultraLabel73.Name = "ultraLabel73";
             this.ultraLabel73.Size = new System.Drawing.Size(146, 14);
             this.ultraLabel73.TabIndex = 110;
@@ -195,12 +194,12 @@
             appearance4.BackColorDisabled = System.Drawing.Color.White;
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtKleidung.Appearance = appearance4;
-            this.txtKleidung.Location = new System.Drawing.Point(13, 62);
-            this.txtKleidung.MaxLength = 255;
+            this.txtKleidung.Location = new System.Drawing.Point(13, 57);
+            this.txtKleidung.MaxLength = 2000;
             this.txtKleidung.Multiline = true;
             this.txtKleidung.Name = "txtKleidung";
             this.txtKleidung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtKleidung.Size = new System.Drawing.Size(547, 53);
+            this.txtKleidung.Size = new System.Drawing.Size(911, 139);
             this.txtKleidung.TabIndex = 1;
             this.txtKleidung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -214,7 +213,7 @@
             this.ultraLabel74.Size = new System.Drawing.Size(348, 32);
             this.ultraLabel74.TabIndex = 104;
             this.ultraLabel74.Text = "Welche Kleidung tragen Sie gerne (auch Hausschuhe, Schuhe, Sonntagskleidung, Frei" +
-                "zeitkleidung, Schmuck) tagsüber/ nachts?";
+    "zeitkleidung, Schmuck) tagsüber/ nachts?";
             // 
             // ultraTabPageControl1
             // 
@@ -367,9 +366,10 @@
             valueListItem2.DisplayText = " ";
             valueListItem3.DataValue = 2;
             valueListItem3.DisplayText = " ";
-            this.opKleidungUeberFusseAnziehen.Items.Add(valueListItem1);
-            this.opKleidungUeberFusseAnziehen.Items.Add(valueListItem2);
-            this.opKleidungUeberFusseAnziehen.Items.Add(valueListItem3);
+            this.opKleidungUeberFusseAnziehen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2,
+            valueListItem3});
             this.opKleidungUeberFusseAnziehen.Location = new System.Drawing.Point(313, 159);
             this.opKleidungUeberFusseAnziehen.Name = "opKleidungUeberFusseAnziehen";
             this.opKleidungUeberFusseAnziehen.Size = new System.Drawing.Size(60, 14);
@@ -390,9 +390,10 @@
             valueListItem5.DisplayText = " ";
             valueListItem6.DataValue = 2;
             valueListItem6.DisplayText = " ";
-            this.opKleidungUeberKopfAusziehen.Items.Add(valueListItem4);
-            this.opKleidungUeberKopfAusziehen.Items.Add(valueListItem5);
-            this.opKleidungUeberKopfAusziehen.Items.Add(valueListItem6);
+            this.opKleidungUeberKopfAusziehen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem4,
+            valueListItem5,
+            valueListItem6});
             this.opKleidungUeberKopfAusziehen.Location = new System.Drawing.Point(313, 139);
             this.opKleidungUeberKopfAusziehen.Name = "opKleidungUeberKopfAusziehen";
             this.opKleidungUeberKopfAusziehen.Size = new System.Drawing.Size(60, 14);
@@ -437,9 +438,10 @@
             valueListItem8.DisplayText = " ";
             valueListItem9.DataValue = 2;
             valueListItem9.DisplayText = " ";
-            this.opAngemesseneKleidung.Items.Add(valueListItem7);
-            this.opAngemesseneKleidung.Items.Add(valueListItem8);
-            this.opAngemesseneKleidung.Items.Add(valueListItem9);
+            this.opAngemesseneKleidung.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8,
+            valueListItem9});
             this.opAngemesseneKleidung.Location = new System.Drawing.Point(312, 79);
             this.opAngemesseneKleidung.Name = "opAngemesseneKleidung";
             this.opAngemesseneKleidung.Size = new System.Drawing.Size(60, 14);
@@ -460,9 +462,10 @@
             valueListItem11.DisplayText = " ";
             valueListItem12.DataValue = 2;
             valueListItem12.DisplayText = " ";
-            this.opWaeschewechsel.Items.Add(valueListItem10);
-            this.opWaeschewechsel.Items.Add(valueListItem11);
-            this.opWaeschewechsel.Items.Add(valueListItem12);
+            this.opWaeschewechsel.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem10,
+            valueListItem11,
+            valueListItem12});
             this.opWaeschewechsel.Location = new System.Drawing.Point(312, 99);
             this.opWaeschewechsel.Name = "opWaeschewechsel";
             this.opWaeschewechsel.Size = new System.Drawing.Size(60, 14);
@@ -483,9 +486,10 @@
             valueListItem14.DisplayText = " ";
             valueListItem15.DataValue = 2;
             valueListItem15.DisplayText = " ";
-            this.opVerschluesseNichtHandhaben.Items.Add(valueListItem13);
-            this.opVerschluesseNichtHandhaben.Items.Add(valueListItem14);
-            this.opVerschluesseNichtHandhaben.Items.Add(valueListItem15);
+            this.opVerschluesseNichtHandhaben.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem13,
+            valueListItem14,
+            valueListItem15});
             this.opVerschluesseNichtHandhaben.Location = new System.Drawing.Point(312, 119);
             this.opVerschluesseNichtHandhaben.Name = "opVerschluesseNichtHandhaben";
             this.opVerschluesseNichtHandhaben.Size = new System.Drawing.Size(60, 14);
@@ -506,9 +510,10 @@
             valueListItem17.DisplayText = " ";
             valueListItem18.DataValue = 2;
             valueListItem18.DisplayText = " ";
-            this.opOefterAusziehen.Items.Add(valueListItem16);
-            this.opOefterAusziehen.Items.Add(valueListItem17);
-            this.opOefterAusziehen.Items.Add(valueListItem18);
+            this.opOefterAusziehen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem16,
+            valueListItem17,
+            valueListItem18});
             this.opOefterAusziehen.Location = new System.Drawing.Point(312, 59);
             this.opOefterAusziehen.Name = "opOefterAusziehen";
             this.opOefterAusziehen.Size = new System.Drawing.Size(60, 14);
@@ -529,9 +534,10 @@
             valueListItem20.DisplayText = " ";
             valueListItem21.DataValue = 2;
             valueListItem21.DisplayText = " ";
-            this.opkleiderauswahlHilfe.Items.Add(valueListItem19);
-            this.opkleiderauswahlHilfe.Items.Add(valueListItem20);
-            this.opkleiderauswahlHilfe.Items.Add(valueListItem21);
+            this.opkleiderauswahlHilfe.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem19,
+            valueListItem20,
+            valueListItem21});
             this.opkleiderauswahlHilfe.Location = new System.Drawing.Point(313, 39);
             this.opkleiderauswahlHilfe.Name = "opkleiderauswahlHilfe";
             this.opkleiderauswahlHilfe.Size = new System.Drawing.Size(60, 14);
@@ -618,9 +624,9 @@
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance26.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance26;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -631,9 +637,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -656,7 +662,6 @@
             this.tabSichKleiden.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabSichKleiden.Size = new System.Drawing.Size(1000, 440);
             this.tabSichKleiden.TabIndex = 128;
-            ultraTab1.ActiveAppearance = appearance28;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
@@ -665,7 +670,6 @@
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance29;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";

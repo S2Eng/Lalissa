@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
@@ -104,19 +105,17 @@
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox16 = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.opMahlzeitInDerGemeinschaftJN = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.txtAnzahlMalzeiten = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.ultraLabel54 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtAnzahlLiterTrinken = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             this.txtDiatSchonkostSondenernaehrung = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.ultraLabel49 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtFruehstueckSpaetFruehEinnehmen = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel50 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel51 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -204,13 +203,13 @@
             // 
             appearance1.BackColor = System.Drawing.Color.Transparent;
             this.ultraGroupBox16.Appearance = appearance1;
+            this.ultraGroupBox16.Controls.Add(this.baseLabel1);
             this.ultraGroupBox16.Controls.Add(this.ultraLabel1);
             this.ultraGroupBox16.Controls.Add(this.opMahlzeitInDerGemeinschaftJN);
             this.ultraGroupBox16.Controls.Add(this.txtAnzahlMalzeiten);
             this.ultraGroupBox16.Controls.Add(this.ultraLabel54);
             this.ultraGroupBox16.Controls.Add(this.txtAnzahlLiterTrinken);
             this.ultraGroupBox16.Controls.Add(this.txtDiatSchonkostSondenernaehrung);
-            this.ultraGroupBox16.Controls.Add(this.ultraLabel49);
             this.ultraGroupBox16.Controls.Add(this.txtFruehstueckSpaetFruehEinnehmen);
             this.ultraGroupBox16.Controls.Add(this.ultraLabel50);
             this.ultraGroupBox16.Controls.Add(this.ultraLabel51);
@@ -220,18 +219,29 @@
             this.ultraGroupBox16.Controls.Add(this.ultraLabel53);
             this.ultraGroupBox16.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox16.Name = "ultraGroupBox16";
-            this.ultraGroupBox16.Size = new System.Drawing.Size(555, 365);
+            this.ultraGroupBox16.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox16.TabIndex = 113;
             this.ultraGroupBox16.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
-            // ultraLabel1
+            // baseLabel1
             // 
-            this.ultraLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             appearance2.BackColor = System.Drawing.Color.Transparent;
             appearance2.FontData.SizeInPoints = 8F;
-            this.ultraLabel1.Appearance = appearance2;
+            this.baseLabel1.Appearance = appearance2;
+            this.baseLabel1.AutoSize = true;
+            this.baseLabel1.Location = new System.Drawing.Point(6, 281);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(256, 14);
+            this.baseLabel1.TabIndex = 124;
+            this.baseLabel1.Text = "Informationen zu Diät / Schonkost Sondennahrung?";
+            // 
+            // ultraLabel1
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            appearance3.FontData.SizeInPoints = 8F;
+            this.ultraLabel1.Appearance = appearance3;
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(7, 250);
+            this.ultraLabel1.Location = new System.Drawing.Point(6, 251);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(295, 14);
             this.ultraLabel1.TabIndex = 122;
@@ -239,18 +249,19 @@
             // 
             // opMahlzeitInDerGemeinschaftJN
             // 
-            appearance3.BackColorDisabled = System.Drawing.Color.Transparent;
-            appearance3.TextHAlignAsString = "Left";
-            appearance3.TextVAlignAsString = "Middle";
-            this.opMahlzeitInDerGemeinschaftJN.Appearance = appearance3;
+            appearance4.BackColorDisabled = System.Drawing.Color.Transparent;
+            appearance4.TextHAlignAsString = "Left";
+            appearance4.TextVAlignAsString = "Middle";
+            this.opMahlzeitInDerGemeinschaftJN.Appearance = appearance4;
             this.opMahlzeitInDerGemeinschaftJN.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             valueListItem1.DataValue = true;
             valueListItem1.DisplayText = "Ja";
             valueListItem2.DataValue = false;
             valueListItem2.DisplayText = "Nein";
-            this.opMahlzeitInDerGemeinschaftJN.Items.Add(valueListItem1);
-            this.opMahlzeitInDerGemeinschaftJN.Items.Add(valueListItem2);
-            this.opMahlzeitInDerGemeinschaftJN.Location = new System.Drawing.Point(461, 207);
+            this.opMahlzeitInDerGemeinschaftJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2});
+            this.opMahlzeitInDerGemeinschaftJN.Location = new System.Drawing.Point(340, 251);
             this.opMahlzeitInDerGemeinschaftJN.Name = "opMahlzeitInDerGemeinschaftJN";
             this.opMahlzeitInDerGemeinschaftJN.Size = new System.Drawing.Size(77, 14);
             this.opMahlzeitInDerGemeinschaftJN.TabIndex = 4;
@@ -258,23 +269,24 @@
             // 
             // txtAnzahlMalzeiten
             // 
-            appearance4.BackColorDisabled = System.Drawing.Color.White;
-            appearance4.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtAnzahlMalzeiten.Appearance = appearance4;
+            appearance5.BackColorDisabled = System.Drawing.Color.White;
+            appearance5.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtAnzahlMalzeiten.Appearance = appearance5;
             this.txtAnzahlMalzeiten.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
-            this.txtAnzahlMalzeiten.Location = new System.Drawing.Point(461, 331);
+            this.txtAnzahlMalzeiten.Location = new System.Drawing.Point(341, 379);
             this.txtAnzahlMalzeiten.Name = "txtAnzahlMalzeiten";
+            this.txtAnzahlMalzeiten.NonAutoSizeHeight = 20;
             this.txtAnzahlMalzeiten.Size = new System.Drawing.Size(88, 20);
             this.txtAnzahlMalzeiten.TabIndex = 7;
             this.txtAnzahlMalzeiten.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // ultraLabel54
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            appearance5.FontData.SizeInPoints = 8F;
-            this.ultraLabel54.Appearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            appearance6.FontData.SizeInPoints = 8F;
+            this.ultraLabel54.Appearance = appearance6;
             this.ultraLabel54.AutoSize = true;
-            this.ultraLabel54.Location = new System.Drawing.Point(7, 337);
+            this.ultraLabel54.Location = new System.Drawing.Point(7, 385);
             this.ultraLabel54.Name = "ultraLabel54";
             this.ultraLabel54.Size = new System.Drawing.Size(289, 14);
             this.ultraLabel54.TabIndex = 114;
@@ -282,12 +294,13 @@
             // 
             // txtAnzahlLiterTrinken
             // 
-            appearance6.BackColorDisabled = System.Drawing.Color.White;
-            appearance6.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtAnzahlLiterTrinken.Appearance = appearance6;
+            appearance7.BackColorDisabled = System.Drawing.Color.White;
+            appearance7.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtAnzahlLiterTrinken.Appearance = appearance7;
             this.txtAnzahlLiterTrinken.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.txtAnzahlLiterTrinken.Location = new System.Drawing.Point(461, 181);
+            this.txtAnzahlLiterTrinken.Location = new System.Drawing.Point(341, 198);
             this.txtAnzahlLiterTrinken.Name = "txtAnzahlLiterTrinken";
+            this.txtAnzahlLiterTrinken.NonAutoSizeHeight = 20;
             this.txtAnzahlLiterTrinken.Size = new System.Drawing.Size(88, 20);
             this.txtAnzahlLiterTrinken.TabIndex = 3;
             this.txtAnzahlLiterTrinken.ValueChanged += new System.EventHandler(this.control_ValueChanged);
@@ -295,29 +308,17 @@
             // txtDiatSchonkostSondenernaehrung
             // 
             this.txtDiatSchonkostSondenernaehrung.AcceptsReturn = true;
-            appearance7.BackColorDisabled = System.Drawing.Color.White;
-            appearance7.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtDiatSchonkostSondenernaehrung.Appearance = appearance7;
-            this.txtDiatSchonkostSondenernaehrung.Location = new System.Drawing.Point(7, 270);
-            this.txtDiatSchonkostSondenernaehrung.MaxLength = 255;
+            appearance8.BackColorDisabled = System.Drawing.Color.White;
+            appearance8.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtDiatSchonkostSondenernaehrung.Appearance = appearance8;
+            this.txtDiatSchonkostSondenernaehrung.Location = new System.Drawing.Point(6, 299);
+            this.txtDiatSchonkostSondenernaehrung.MaxLength = 2000;
             this.txtDiatSchonkostSondenernaehrung.Multiline = true;
             this.txtDiatSchonkostSondenernaehrung.Name = "txtDiatSchonkostSondenernaehrung";
             this.txtDiatSchonkostSondenernaehrung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDiatSchonkostSondenernaehrung.Size = new System.Drawing.Size(542, 58);
+            this.txtDiatSchonkostSondenernaehrung.Size = new System.Drawing.Size(918, 74);
             this.txtDiatSchonkostSondenernaehrung.TabIndex = 6;
             this.txtDiatSchonkostSondenernaehrung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
-            // ultraLabel49
-            // 
-            appearance8.BackColor = System.Drawing.Color.Transparent;
-            appearance8.FontData.SizeInPoints = 8F;
-            this.ultraLabel49.Appearance = appearance8;
-            this.ultraLabel49.AutoSize = true;
-            this.ultraLabel49.Location = new System.Drawing.Point(7, 230);
-            this.ultraLabel49.Name = "ultraLabel49";
-            this.ultraLabel49.Size = new System.Drawing.Size(295, 14);
-            this.ultraLabel49.TabIndex = 110;
-            this.ultraLabel49.Text = "Benötigen Sie eine Diät oder Schonkost/Sondenernährung?";
             // 
             // txtFruehstueckSpaetFruehEinnehmen
             // 
@@ -325,7 +326,7 @@
             appearance9.BackColorDisabled = System.Drawing.Color.White;
             appearance9.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtFruehstueckSpaetFruehEinnehmen.Appearance = appearance9;
-            this.txtFruehstueckSpaetFruehEinnehmen.Location = new System.Drawing.Point(461, 227);
+            this.txtFruehstueckSpaetFruehEinnehmen.Location = new System.Drawing.Point(340, 224);
             this.txtFruehstueckSpaetFruehEinnehmen.MaxLength = 10;
             this.txtFruehstueckSpaetFruehEinnehmen.Name = "txtFruehstueckSpaetFruehEinnehmen";
             this.txtFruehstueckSpaetFruehEinnehmen.Size = new System.Drawing.Size(88, 21);
@@ -338,7 +339,7 @@
             appearance10.FontData.SizeInPoints = 8F;
             this.ultraLabel50.Appearance = appearance10;
             this.ultraLabel50.AutoSize = true;
-            this.ultraLabel50.Location = new System.Drawing.Point(7, 210);
+            this.ultraLabel50.Location = new System.Drawing.Point(7, 227);
             this.ultraLabel50.Name = "ultraLabel50";
             this.ultraLabel50.Size = new System.Drawing.Size(280, 14);
             this.ultraLabel50.TabIndex = 108;
@@ -350,7 +351,7 @@
             appearance11.FontData.SizeInPoints = 8F;
             this.ultraLabel51.Appearance = appearance11;
             this.ultraLabel51.AutoSize = true;
-            this.ultraLabel51.Location = new System.Drawing.Point(7, 184);
+            this.ultraLabel51.Location = new System.Drawing.Point(7, 201);
             this.ultraLabel51.Name = "ultraLabel51";
             this.ultraLabel51.Size = new System.Drawing.Size(221, 14);
             this.ultraLabel51.TabIndex = 106;
@@ -362,12 +363,12 @@
             appearance12.BackColorDisabled = System.Drawing.Color.White;
             appearance12.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtSpeisenGetraenkeAblehnen.Appearance = appearance12;
-            this.txtSpeisenGetraenkeAblehnen.Location = new System.Drawing.Point(7, 120);
-            this.txtSpeisenGetraenkeAblehnen.MaxLength = 255;
+            this.txtSpeisenGetraenkeAblehnen.Location = new System.Drawing.Point(7, 125);
+            this.txtSpeisenGetraenkeAblehnen.MaxLength = 2000;
             this.txtSpeisenGetraenkeAblehnen.Multiline = true;
             this.txtSpeisenGetraenkeAblehnen.Name = "txtSpeisenGetraenkeAblehnen";
             this.txtSpeisenGetraenkeAblehnen.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSpeisenGetraenkeAblehnen.Size = new System.Drawing.Size(542, 58);
+            this.txtSpeisenGetraenkeAblehnen.Size = new System.Drawing.Size(917, 64);
             this.txtSpeisenGetraenkeAblehnen.TabIndex = 2;
             this.txtSpeisenGetraenkeAblehnen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -377,7 +378,7 @@
             appearance13.FontData.SizeInPoints = 8F;
             this.ultraLabel52.Appearance = appearance13;
             this.ultraLabel52.AutoSize = true;
-            this.ultraLabel52.Location = new System.Drawing.Point(7, 104);
+            this.ultraLabel52.Location = new System.Drawing.Point(7, 109);
             this.ultraLabel52.Name = "ultraLabel52";
             this.ultraLabel52.Size = new System.Drawing.Size(211, 14);
             this.ultraLabel52.TabIndex = 104;
@@ -390,11 +391,11 @@
             appearance14.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtSpeisenGetraenke.Appearance = appearance14;
             this.txtSpeisenGetraenke.Location = new System.Drawing.Point(7, 40);
-            this.txtSpeisenGetraenke.MaxLength = 255;
+            this.txtSpeisenGetraenke.MaxLength = 2000;
             this.txtSpeisenGetraenke.Multiline = true;
             this.txtSpeisenGetraenke.Name = "txtSpeisenGetraenke";
             this.txtSpeisenGetraenke.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSpeisenGetraenke.Size = new System.Drawing.Size(542, 58);
+            this.txtSpeisenGetraenke.Size = new System.Drawing.Size(917, 61);
             this.txtSpeisenGetraenke.TabIndex = 1;
             this.txtSpeisenGetraenke.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -593,9 +594,10 @@
             valueListItem4.DisplayText = " ";
             valueListItem5.DataValue = 2;
             valueListItem5.DisplayText = " ";
-            this.opHaufigErbrechen.Items.Add(valueListItem3);
-            this.opHaufigErbrechen.Items.Add(valueListItem4);
-            this.opHaufigErbrechen.Items.Add(valueListItem5);
+            this.opHaufigErbrechen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem3,
+            valueListItem4,
+            valueListItem5});
             this.opHaufigErbrechen.Location = new System.Drawing.Point(336, 247);
             this.opHaufigErbrechen.Name = "opHaufigErbrechen";
             this.opHaufigErbrechen.Size = new System.Drawing.Size(60, 14);
@@ -627,9 +629,10 @@
             valueListItem7.DisplayText = " ";
             valueListItem8.DataValue = 2;
             valueListItem8.DisplayText = " ";
-            this.opSondenErnaehrung.Items.Add(valueListItem6);
-            this.opSondenErnaehrung.Items.Add(valueListItem7);
-            this.opSondenErnaehrung.Items.Add(valueListItem8);
+            this.opSondenErnaehrung.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem6,
+            valueListItem7,
+            valueListItem8});
             this.opSondenErnaehrung.Location = new System.Drawing.Point(336, 182);
             this.opSondenErnaehrung.Name = "opSondenErnaehrung";
             this.opSondenErnaehrung.Size = new System.Drawing.Size(60, 14);
@@ -649,9 +652,10 @@
             valueListItem10.DisplayText = " ";
             valueListItem11.DataValue = 2;
             valueListItem11.DisplayText = " ";
-            this.opUnterstFluessAufnahme.Items.Add(valueListItem9);
-            this.opUnterstFluessAufnahme.Items.Add(valueListItem10);
-            this.opUnterstFluessAufnahme.Items.Add(valueListItem11);
+            this.opUnterstFluessAufnahme.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem9,
+            valueListItem10,
+            valueListItem11});
             this.opUnterstFluessAufnahme.Location = new System.Drawing.Point(336, 215);
             this.opUnterstFluessAufnahme.Name = "opUnterstFluessAufnahme";
             this.opUnterstFluessAufnahme.Size = new System.Drawing.Size(60, 14);
@@ -671,9 +675,10 @@
             valueListItem13.DisplayText = " ";
             valueListItem14.DataValue = 2;
             valueListItem14.DisplayText = " ";
-            this.opSondePEGKomplett.Items.Add(valueListItem12);
-            this.opSondePEGKomplett.Items.Add(valueListItem13);
-            this.opSondePEGKomplett.Items.Add(valueListItem14);
+            this.opSondePEGKomplett.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem12,
+            valueListItem13,
+            valueListItem14});
             this.opSondePEGKomplett.Location = new System.Drawing.Point(336, 162);
             this.opSondePEGKomplett.Name = "opSondePEGKomplett";
             this.opSondePEGKomplett.Size = new System.Drawing.Size(60, 14);
@@ -693,9 +698,10 @@
             valueListItem16.DisplayText = " ";
             valueListItem17.DataValue = 2;
             valueListItem17.DisplayText = " ";
-            this.opMahlzeiteinnahmeHilfestellung.Items.Add(valueListItem15);
-            this.opMahlzeiteinnahmeHilfestellung.Items.Add(valueListItem16);
-            this.opMahlzeiteinnahmeHilfestellung.Items.Add(valueListItem17);
+            this.opMahlzeiteinnahmeHilfestellung.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem15,
+            valueListItem16,
+            valueListItem17});
             this.opMahlzeiteinnahmeHilfestellung.Location = new System.Drawing.Point(336, 142);
             this.opMahlzeiteinnahmeHilfestellung.Name = "opMahlzeiteinnahmeHilfestellung";
             this.opMahlzeiteinnahmeHilfestellung.Size = new System.Drawing.Size(60, 14);
@@ -761,9 +767,10 @@
             valueListItem19.DisplayText = " ";
             valueListItem20.DataValue = 2;
             valueListItem20.DisplayText = " ";
-            this.opKauSchluckstoerungen.Items.Add(valueListItem18);
-            this.opKauSchluckstoerungen.Items.Add(valueListItem19);
-            this.opKauSchluckstoerungen.Items.Add(valueListItem20);
+            this.opKauSchluckstoerungen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem18,
+            valueListItem19,
+            valueListItem20});
             this.opKauSchluckstoerungen.Location = new System.Drawing.Point(336, 82);
             this.opKauSchluckstoerungen.Name = "opKauSchluckstoerungen";
             this.opKauSchluckstoerungen.Size = new System.Drawing.Size(60, 14);
@@ -783,9 +790,10 @@
             valueListItem22.DisplayText = " ";
             valueListItem23.DataValue = 2;
             valueListItem23.DisplayText = " ";
-            this.opIsstSehrlangsamm.Items.Add(valueListItem21);
-            this.opIsstSehrlangsamm.Items.Add(valueListItem22);
-            this.opIsstSehrlangsamm.Items.Add(valueListItem23);
+            this.opIsstSehrlangsamm.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem21,
+            valueListItem22,
+            valueListItem23});
             this.opIsstSehrlangsamm.Location = new System.Drawing.Point(336, 102);
             this.opIsstSehrlangsamm.Name = "opIsstSehrlangsamm";
             this.opIsstSehrlangsamm.Size = new System.Drawing.Size(60, 14);
@@ -805,9 +813,10 @@
             valueListItem25.DisplayText = " ";
             valueListItem26.DataValue = 2;
             valueListItem26.DisplayText = " ";
-            this.opNahrungMundgerechtZubereiten.Items.Add(valueListItem24);
-            this.opNahrungMundgerechtZubereiten.Items.Add(valueListItem25);
-            this.opNahrungMundgerechtZubereiten.Items.Add(valueListItem26);
+            this.opNahrungMundgerechtZubereiten.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem24,
+            valueListItem25,
+            valueListItem26});
             this.opNahrungMundgerechtZubereiten.Location = new System.Drawing.Point(336, 122);
             this.opNahrungMundgerechtZubereiten.Name = "opNahrungMundgerechtZubereiten";
             this.opNahrungMundgerechtZubereiten.Size = new System.Drawing.Size(60, 14);
@@ -827,9 +836,10 @@
             valueListItem28.DisplayText = " ";
             valueListItem29.DataValue = 2;
             valueListItem29.DisplayText = " ";
-            this.opNotwendigkeitDiaet.Items.Add(valueListItem27);
-            this.opNotwendigkeitDiaet.Items.Add(valueListItem28);
-            this.opNotwendigkeitDiaet.Items.Add(valueListItem29);
+            this.opNotwendigkeitDiaet.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem27,
+            valueListItem28,
+            valueListItem29});
             this.opNotwendigkeitDiaet.Location = new System.Drawing.Point(336, 62);
             this.opNotwendigkeitDiaet.Name = "opNotwendigkeitDiaet";
             this.opNotwendigkeitDiaet.Size = new System.Drawing.Size(60, 14);
@@ -849,9 +859,10 @@
             valueListItem31.DisplayText = " ";
             valueListItem32.DataValue = 2;
             valueListItem32.DisplayText = " ";
-            this.opNotwendigkeitEsssenTrinken.Items.Add(valueListItem30);
-            this.opNotwendigkeitEsssenTrinken.Items.Add(valueListItem31);
-            this.opNotwendigkeitEsssenTrinken.Items.Add(valueListItem32);
+            this.opNotwendigkeitEsssenTrinken.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem30,
+            valueListItem31,
+            valueListItem32});
             this.opNotwendigkeitEsssenTrinken.Location = new System.Drawing.Point(336, 42);
             this.opNotwendigkeitEsssenTrinken.Name = "opNotwendigkeitEsssenTrinken";
             this.opNotwendigkeitEsssenTrinken.Size = new System.Drawing.Size(60, 14);
@@ -938,9 +949,9 @@
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance42.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance42;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -951,9 +962,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -976,7 +987,6 @@
             this.tabLuft.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabLuft.Size = new System.Drawing.Size(1000, 440);
             this.tabLuft.TabIndex = 127;
-            ultraTab1.ActiveAppearance = appearance44;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
@@ -985,7 +995,6 @@
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance45;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";
@@ -1079,9 +1088,7 @@
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel54;
         private QS2.Desktop.ControlManagment.BaseMaskEdit txtAnzahlLiterTrinken;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtDiatSchonkostSondenernaehrung;
-        private QS2.Desktop.ControlManagment.BaseLabel ultraLabel49;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtFruehstueckSpaetFruehEinnehmen;
-        private QS2.Desktop.ControlManagment.BaseLabel ultraLabel50;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel51;
         private QS2.Desktop.ControlManagment.BaseTextEditor txtSpeisenGetraenkeAblehnen;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel52;
@@ -1101,7 +1108,8 @@
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel14;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel15;
-
+        private QS2.Desktop.ControlManagment.BaseLabel baseLabel1;
+        private QS2.Desktop.ControlManagment.BaseLabel ultraLabel50;
     }
 
 }

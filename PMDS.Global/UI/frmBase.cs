@@ -120,11 +120,11 @@ namespace PMDS.GUI
 
                     g.UseOsThemes = Infragistics.Win.DefaultableBoolean.True ;
                     g.DisplayLayout.Appearance.BackColor = System.Drawing.Color.White ;
-                    g.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-                    g.DisplayLayout.Override.HeaderAppearance.BackColor = System.Drawing.Color.White ;
+                    //g.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+                    //g.DisplayLayout.Override.HeaderAppearance.BackColor = System.Drawing.Color.White ;
                     //if (g.DisplayLayout.CaptionAppearance.BackColor.IsEmpty)
                     //    g.DisplayLayout.CaptionAppearance.BackColor = c;
-                    g.DisplayLayout.Override.RowAlternateAppearance.BackColor = Color.White;
+                    //g.DisplayLayout.Override.RowAlternateAppearance.BackColor = Color.White;
                     //g.DisplayLayout.Override.RowSelectorAppearance.BackColor = Color.red ;
                     //g.DisplayLayout.ScrollBarLook.Appearance.BackColor = c;
                 }

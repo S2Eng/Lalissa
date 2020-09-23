@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -187,7 +188,7 @@
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox8);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(646, 414);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(1017, 414);
             // 
             // ultraGroupBox8
             // 
@@ -206,7 +207,7 @@
             this.ultraGroupBox8.Controls.Add(this.txtMedikamente);
             this.ultraGroupBox8.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox8.Name = "ultraGroupBox8";
-            this.ultraGroupBox8.Size = new System.Drawing.Size(557, 236);
+            this.ultraGroupBox8.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox8.TabIndex = 107;
             this.ultraGroupBox8.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -237,7 +238,7 @@
             this.opMedikamenteRegelmaessigJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem1,
             valueListItem2});
-            this.opMedikamenteRegelmaessigJN.Location = new System.Drawing.Point(511, 132);
+            this.opMedikamenteRegelmaessigJN.Location = new System.Drawing.Point(354, 132);
             this.opMedikamenteRegelmaessigJN.Name = "opMedikamenteRegelmaessigJN";
             this.opMedikamenteRegelmaessigJN.Size = new System.Drawing.Size(40, 14);
             this.opMedikamenteRegelmaessigJN.TabIndex = 4;
@@ -270,7 +271,7 @@
             this.opKompressionsstruempfeJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem3,
             valueListItem4});
-            this.opKompressionsstruempfeJN.Location = new System.Drawing.Point(511, 63);
+            this.opKompressionsstruempfeJN.Location = new System.Drawing.Point(354, 63);
             this.opKompressionsstruempfeJN.Name = "opKompressionsstruempfeJN";
             this.opKompressionsstruempfeJN.Size = new System.Drawing.Size(40, 14);
             this.opKompressionsstruempfeJN.TabIndex = 2;
@@ -303,7 +304,7 @@
             this.opBlutdruckZuckerRegelmaessigGemessenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem5,
             valueListItem6});
-            this.opBlutdruckZuckerRegelmaessigGemessenJN.Location = new System.Drawing.Point(511, 43);
+            this.opBlutdruckZuckerRegelmaessigGemessenJN.Location = new System.Drawing.Point(354, 43);
             this.opBlutdruckZuckerRegelmaessigGemessenJN.Name = "opBlutdruckZuckerRegelmaessigGemessenJN";
             this.opBlutdruckZuckerRegelmaessigGemessenJN.Size = new System.Drawing.Size(40, 14);
             this.opBlutdruckZuckerRegelmaessigGemessenJN.TabIndex = 1;
@@ -315,7 +316,7 @@
             appearance8.FontData.SizeInPoints = 8F;
             this.ultraLabel113.Appearance = appearance8;
             this.ultraLabel113.AutoSize = true;
-            this.ultraLabel113.Location = new System.Drawing.Point(507, 19);
+            this.ultraLabel113.Location = new System.Drawing.Point(350, 19);
             this.ultraLabel113.Name = "ultraLabel113";
             this.ultraLabel113.Size = new System.Drawing.Size(16, 14);
             this.ultraLabel113.TabIndex = 109;
@@ -327,7 +328,7 @@
             appearance9.FontData.SizeInPoints = 8F;
             this.ultraLabel114.Appearance = appearance9;
             this.ultraLabel114.AutoSize = true;
-            this.ultraLabel114.Location = new System.Drawing.Point(529, 19);
+            this.ultraLabel114.Location = new System.Drawing.Point(372, 19);
             this.ultraLabel114.Name = "ultraLabel114";
             this.ultraLabel114.Size = new System.Drawing.Size(27, 14);
             this.ultraLabel114.TabIndex = 110;
@@ -373,11 +374,11 @@
             appearance12.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtMedikamente.Appearance = appearance12;
             this.txtMedikamente.Location = new System.Drawing.Point(33, 153);
-            this.txtMedikamente.MaxLength = 255;
+            this.txtMedikamente.MaxLength = 2000;
             this.txtMedikamente.Multiline = true;
             this.txtMedikamente.Name = "txtMedikamente";
             this.txtMedikamente.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMedikamente.Size = new System.Drawing.Size(518, 65);
+            this.txtMedikamente.Size = new System.Drawing.Size(891, 246);
             this.txtMedikamente.TabIndex = 5;
             this.txtMedikamente.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -388,7 +389,7 @@
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel3);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(646, 414);
             // 
             // ultraLabel2
             // 
@@ -880,13 +881,13 @@
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(646, 414);
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance37.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance37;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -897,9 +898,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -920,7 +921,7 @@
             this.tabVitaleFunktionen.Location = new System.Drawing.Point(0, 0);
             this.tabVitaleFunktionen.Name = "tabVitaleFunktionen";
             this.tabVitaleFunktionen.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabVitaleFunktionen.Size = new System.Drawing.Size(650, 440);
+            this.tabVitaleFunktionen.Size = new System.Drawing.Size(1021, 440);
             this.tabVitaleFunktionen.TabIndex = 128;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
@@ -945,7 +946,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(646, 414);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(1017, 414);
             // 
             // ucVitaleFunktionen
             // 
@@ -953,7 +954,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabVitaleFunktionen);
             this.Name = "ucVitaleFunktionen";
-            this.Size = new System.Drawing.Size(650, 440);
+            this.Size = new System.Drawing.Size(1021, 440);
             this.tabPagePersoenlicheDaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox8)).EndInit();
             this.ultraGroupBox8.ResumeLayout(false);

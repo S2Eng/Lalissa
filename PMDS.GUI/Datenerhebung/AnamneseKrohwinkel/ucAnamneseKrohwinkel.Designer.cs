@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -100,7 +101,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(684, 4);
+            this.btnPrint.Location = new System.Drawing.Point(1084, 4);
             // 
             // btnDelete
             // 
@@ -123,12 +124,20 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Location = new System.Drawing.Point(109, 1);
             // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(1101, 4);
+            // 
+            // baseButton1
+            // 
+            this.baseButton1.Location = new System.Drawing.Point(974, 506);
+            // 
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.ucKommunizieren1);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(228, 1);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(938, 458);
             // 
             // ucKommunizieren1
             // 
@@ -136,7 +145,7 @@
             this.ucKommunizieren1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucKommunizieren1.Location = new System.Drawing.Point(0, 0);
             this.ucKommunizieren1.Name = "ucKommunizieren1";
-            this.ucKommunizieren1.Size = new System.Drawing.Size(538, 458);
+            this.ucKommunizieren1.Size = new System.Drawing.Size(938, 458);
             this.ucKommunizieren1.TabIndex = 0;
             this.ucKommunizieren1.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -363,9 +372,9 @@
             // 
             // tabKrohwinkel
             // 
-            this.tabKrohwinkel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabKrohwinkel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.TextHAlignAsString = "Left";
             this.tabKrohwinkel.Appearance = appearance1;
@@ -388,7 +397,7 @@
             this.tabKrohwinkel.MaxVisibleTabRows = 1;
             this.tabKrohwinkel.Name = "tabKrohwinkel";
             this.tabKrohwinkel.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabKrohwinkel.Size = new System.Drawing.Size(769, 462);
+            this.tabKrohwinkel.Size = new System.Drawing.Size(1169, 462);
             this.tabKrohwinkel.TabIndex = 105;
             this.tabKrohwinkel.TabLayoutStyle = Infragistics.Win.UltraWinTabs.TabLayoutStyle.SingleRowFixed;
             this.tabKrohwinkel.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
@@ -471,14 +480,14 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(538, 458);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(938, 458);
             // 
             // panelButtonUnten
             // 
             this.panelButtonUnten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonUnten.Controls.Add(this.btnUndo);
             this.panelButtonUnten.Controls.Add(this.btnSave);
-            this.panelButtonUnten.Location = new System.Drawing.Point(567, 501);
+            this.panelButtonUnten.Location = new System.Drawing.Point(967, 501);
             this.panelButtonUnten.Name = "panelButtonUnten";
             this.panelButtonUnten.Size = new System.Drawing.Size(207, 39);
             this.panelButtonUnten.TabIndex = 122;
@@ -488,7 +497,7 @@
             this.panelButtonOben.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonOben.Controls.Add(this.btnDelete);
             this.panelButtonOben.Controls.Add(this.btnNew);
-            this.panelButtonOben.Location = new System.Drawing.Point(719, 2);
+            this.panelButtonOben.Location = new System.Drawing.Point(1119, 2);
             this.panelButtonOben.Name = "panelButtonOben";
             this.panelButtonOben.Size = new System.Drawing.Size(56, 31);
             this.panelButtonOben.TabIndex = 123;
@@ -502,8 +511,10 @@
             this.Controls.Add(this.panelButtonUnten);
             this.Controls.Add(this.tabKrohwinkel);
             this.Name = "ucAnamneseKrohwinkel";
-            this.Size = new System.Drawing.Size(780, 540);
+            this.Size = new System.Drawing.Size(1180, 540);
             this.Load += new System.EventHandler(this.ucAnamneseKrohwinkel2_Load);
+            this.Controls.SetChildIndex(this.btnCopy, 0);
+            this.Controls.SetChildIndex(this.baseButton1, 0);
             this.Controls.SetChildIndex(this.btnPrint, 0);
             this.Controls.SetChildIndex(this.cmbPfleger, 0);
             this.Controls.SetChildIndex(this.cmbErstelltAm, 0);

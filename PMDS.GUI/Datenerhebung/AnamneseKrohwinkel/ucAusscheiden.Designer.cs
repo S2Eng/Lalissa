@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -100,10 +101,8 @@
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox19 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel5 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -204,7 +203,7 @@
             this.ultraGroupBox19.Controls.Add(this.ultraLabel69);
             this.ultraGroupBox19.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox19.Name = "ultraGroupBox19";
-            this.ultraGroupBox19.Size = new System.Drawing.Size(550, 365);
+            this.ultraGroupBox19.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox19.TabIndex = 116;
             this.ultraGroupBox19.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -214,7 +213,7 @@
             appearance2.FontData.SizeInPoints = 8F;
             this.ultraLabel5.Appearance = appearance2;
             this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(13, 140);
+            this.ultraLabel5.Location = new System.Drawing.Point(13, 151);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(200, 14);
             this.ultraLabel5.TabIndex = 123;
@@ -232,9 +231,10 @@
             valueListItem1.DisplayText = "Ja";
             valueListItem2.DataValue = false;
             valueListItem2.DisplayText = "Nein";
-            this.opToilettengangHilfeJN.Items.Add(valueListItem1);
-            this.opToilettengangHilfeJN.Items.Add(valueListItem2);
-            this.opToilettengangHilfeJN.Location = new System.Drawing.Point(461, 140);
+            this.opToilettengangHilfeJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2});
+            this.opToilettengangHilfeJN.Location = new System.Drawing.Point(275, 151);
             this.opToilettengangHilfeJN.Name = "opToilettengangHilfeJN";
             this.opToilettengangHilfeJN.Size = new System.Drawing.Size(77, 14);
             this.opToilettengangHilfeJN.TabIndex = 3;
@@ -264,9 +264,10 @@
             valueListItem3.DisplayText = "Ja";
             valueListItem4.DataValue = false;
             valueListItem4.DisplayText = "Nein";
-            this.opKannBlaseDarmKontrollierenJN.Items.Add(valueListItem3);
-            this.opKannBlaseDarmKontrollierenJN.Items.Add(valueListItem4);
-            this.opKannBlaseDarmKontrollierenJN.Location = new System.Drawing.Point(461, 24);
+            this.opKannBlaseDarmKontrollierenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem3,
+            valueListItem4});
+            this.opKannBlaseDarmKontrollierenJN.Location = new System.Drawing.Point(275, 25);
             this.opKannBlaseDarmKontrollierenJN.Name = "opKannBlaseDarmKontrollierenJN";
             this.opKannBlaseDarmKontrollierenJN.Size = new System.Drawing.Size(77, 14);
             this.opKannBlaseDarmKontrollierenJN.TabIndex = 1;
@@ -278,12 +279,12 @@
             appearance6.BackColorDisabled = System.Drawing.Color.White;
             appearance6.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtMedikamenteBlasenDarmfunktion.Appearance = appearance6;
-            this.txtMedikamenteBlasenDarmfunktion.Location = new System.Drawing.Point(13, 285);
-            this.txtMedikamenteBlasenDarmfunktion.MaxLength = 255;
+            this.txtMedikamenteBlasenDarmfunktion.Location = new System.Drawing.Point(13, 313);
+            this.txtMedikamenteBlasenDarmfunktion.MaxLength = 2000;
             this.txtMedikamenteBlasenDarmfunktion.Multiline = true;
             this.txtMedikamenteBlasenDarmfunktion.Name = "txtMedikamenteBlasenDarmfunktion";
             this.txtMedikamenteBlasenDarmfunktion.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMedikamenteBlasenDarmfunktion.Size = new System.Drawing.Size(525, 70);
+            this.txtMedikamenteBlasenDarmfunktion.Size = new System.Drawing.Size(911, 86);
             this.txtMedikamenteBlasenDarmfunktion.TabIndex = 5;
             this.txtMedikamenteBlasenDarmfunktion.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -292,7 +293,7 @@
             appearance7.BackColor = System.Drawing.Color.Transparent;
             appearance7.FontData.SizeInPoints = 8F;
             this.ultraLabel65.Appearance = appearance7;
-            this.ultraLabel65.Location = new System.Drawing.Point(13, 259);
+            this.ultraLabel65.Location = new System.Drawing.Point(13, 287);
             this.ultraLabel65.Name = "ultraLabel65";
             this.ultraLabel65.Size = new System.Drawing.Size(348, 29);
             this.ultraLabel65.TabIndex = 117;
@@ -304,12 +305,12 @@
             appearance8.BackColorDisabled = System.Drawing.Color.White;
             appearance8.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtToilettenHilfsmittel.Appearance = appearance8;
-            this.txtToilettenHilfsmittel.Location = new System.Drawing.Point(13, 183);
-            this.txtToilettenHilfsmittel.MaxLength = 255;
+            this.txtToilettenHilfsmittel.Location = new System.Drawing.Point(13, 191);
+            this.txtToilettenHilfsmittel.MaxLength = 2000;
             this.txtToilettenHilfsmittel.Multiline = true;
             this.txtToilettenHilfsmittel.Name = "txtToilettenHilfsmittel";
             this.txtToilettenHilfsmittel.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtToilettenHilfsmittel.Size = new System.Drawing.Size(525, 70);
+            this.txtToilettenHilfsmittel.Size = new System.Drawing.Size(911, 79);
             this.txtToilettenHilfsmittel.TabIndex = 4;
             this.txtToilettenHilfsmittel.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -319,12 +320,12 @@
             appearance9.FontData.SizeInPoints = 8F;
             this.ultraLabel66.Appearance = appearance9;
             this.ultraLabel66.AutoSize = true;
-            this.ultraLabel66.Location = new System.Drawing.Point(13, 166);
+            this.ultraLabel66.Location = new System.Drawing.Point(13, 174);
             this.ultraLabel66.Name = "ultraLabel66";
             this.ultraLabel66.Size = new System.Drawing.Size(538, 14);
             this.ultraLabel66.TabIndex = 110;
             this.ultraLabel66.Text = "Benötigen Sie Hilfsmittel (Vorlagen, Windelhosen, Katheter, Bettpfanne, Toiletten" +
-                "stuhl, Urinflasche)? Welche?";
+    "stuhl, Urinflasche)? Welche?";
             // 
             // txtZeitenToiletteAufsuchen
             // 
@@ -333,11 +334,11 @@
             appearance10.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtZeitenToiletteAufsuchen.Appearance = appearance10;
             this.txtZeitenToiletteAufsuchen.Location = new System.Drawing.Point(13, 62);
-            this.txtZeitenToiletteAufsuchen.MaxLength = 255;
+            this.txtZeitenToiletteAufsuchen.MaxLength = 2000;
             this.txtZeitenToiletteAufsuchen.Multiline = true;
             this.txtZeitenToiletteAufsuchen.Name = "txtZeitenToiletteAufsuchen";
             this.txtZeitenToiletteAufsuchen.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtZeitenToiletteAufsuchen.Size = new System.Drawing.Size(525, 70);
+            this.txtZeitenToiletteAufsuchen.Size = new System.Drawing.Size(911, 83);
             this.txtZeitenToiletteAufsuchen.TabIndex = 2;
             this.txtZeitenToiletteAufsuchen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -431,8 +432,9 @@
             valueListItem5.DisplayText = "Verstopfungen";
             valueListItem6.DataValue = 1;
             valueListItem6.DisplayText = "Durchfällen";
-            this.cmbVerstopfungDurchfallKrakheit.Items.Add(valueListItem5);
-            this.cmbVerstopfungDurchfallKrakheit.Items.Add(valueListItem6);
+            this.cmbVerstopfungDurchfallKrakheit.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem5,
+            valueListItem6});
             this.cmbVerstopfungDurchfallKrakheit.Location = new System.Drawing.Point(191, 67);
             this.cmbVerstopfungDurchfallKrakheit.Name = "cmbVerstopfungDurchfallKrakheit";
             this.cmbVerstopfungDurchfallKrakheit.Size = new System.Drawing.Size(152, 21);
@@ -449,8 +451,9 @@
             valueListItem7.DisplayText = "ständigen";
             valueListItem8.DataValue = 1;
             valueListItem8.DisplayText = "gelegentlichen";
-            this.cmbZeitlVerstopfungDurchfallKrakheit.Items.Add(valueListItem7);
-            this.cmbZeitlVerstopfungDurchfallKrakheit.Items.Add(valueListItem8);
+            this.cmbZeitlVerstopfungDurchfallKrakheit.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8});
             this.cmbZeitlVerstopfungDurchfallKrakheit.Location = new System.Drawing.Point(83, 67);
             this.cmbZeitlVerstopfungDurchfallKrakheit.Name = "cmbZeitlVerstopfungDurchfallKrakheit";
             this.cmbZeitlVerstopfungDurchfallKrakheit.Size = new System.Drawing.Size(102, 21);
@@ -469,9 +472,10 @@
             valueListItem10.DisplayText = "stuhlinkontinent";
             valueListItem11.DataValue = 2;
             valueListItem11.DisplayText = "urin- und stuhlinkontinent";
-            this.cmbUrinStuhlKrankheit.Items.Add(valueListItem9);
-            this.cmbUrinStuhlKrankheit.Items.Add(valueListItem10);
-            this.cmbUrinStuhlKrankheit.Items.Add(valueListItem11);
+            this.cmbUrinStuhlKrankheit.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem9,
+            valueListItem10,
+            valueListItem11});
             this.cmbUrinStuhlKrankheit.Location = new System.Drawing.Point(191, 42);
             this.cmbUrinStuhlKrankheit.Name = "cmbUrinStuhlKrankheit";
             this.cmbUrinStuhlKrankheit.Size = new System.Drawing.Size(152, 21);
@@ -488,8 +492,9 @@
             valueListItem12.DisplayText = "ständig";
             valueListItem13.DataValue = 1;
             valueListItem13.DisplayText = "zeitweise";
-            this.cmbZeitlUrinStuhlKrankheit.Items.Add(valueListItem12);
-            this.cmbZeitlUrinStuhlKrankheit.Items.Add(valueListItem13);
+            this.cmbZeitlUrinStuhlKrankheit.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem12,
+            valueListItem13});
             this.cmbZeitlUrinStuhlKrankheit.Location = new System.Drawing.Point(83, 42);
             this.cmbZeitlUrinStuhlKrankheit.Name = "cmbZeitlUrinStuhlKrankheit";
             this.cmbZeitlUrinStuhlKrankheit.Size = new System.Drawing.Size(102, 21);
@@ -606,9 +611,10 @@
             valueListItem15.DisplayText = " ";
             valueListItem16.DataValue = 2;
             valueListItem16.DisplayText = " ";
-            this.opUnterstuetzungEinnahmeAbfuehrmittel.Items.Add(valueListItem14);
-            this.opUnterstuetzungEinnahmeAbfuehrmittel.Items.Add(valueListItem15);
-            this.opUnterstuetzungEinnahmeAbfuehrmittel.Items.Add(valueListItem16);
+            this.opUnterstuetzungEinnahmeAbfuehrmittel.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem14,
+            valueListItem15,
+            valueListItem16});
             this.opUnterstuetzungEinnahmeAbfuehrmittel.Location = new System.Drawing.Point(349, 181);
             this.opUnterstuetzungEinnahmeAbfuehrmittel.Name = "opUnterstuetzungEinnahmeAbfuehrmittel";
             this.opUnterstuetzungEinnahmeAbfuehrmittel.Size = new System.Drawing.Size(60, 14);
@@ -629,9 +635,10 @@
             valueListItem18.DisplayText = " ";
             valueListItem19.DataValue = 2;
             valueListItem19.DisplayText = " ";
-            this.opToiletteNichtSelbstaendigBenutzen.Items.Add(valueListItem17);
-            this.opToiletteNichtSelbstaendigBenutzen.Items.Add(valueListItem18);
-            this.opToiletteNichtSelbstaendigBenutzen.Items.Add(valueListItem19);
+            this.opToiletteNichtSelbstaendigBenutzen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem17,
+            valueListItem18,
+            valueListItem19});
             this.opToiletteNichtSelbstaendigBenutzen.Location = new System.Drawing.Point(349, 161);
             this.opToiletteNichtSelbstaendigBenutzen.Name = "opToiletteNichtSelbstaendigBenutzen";
             this.opToiletteNichtSelbstaendigBenutzen.Size = new System.Drawing.Size(60, 14);
@@ -676,9 +683,10 @@
             valueListItem21.DisplayText = " ";
             valueListItem22.DataValue = 2;
             valueListItem22.DisplayText = " ";
-            this.opDauerSuprapubischenkatheter.Items.Add(valueListItem20);
-            this.opDauerSuprapubischenkatheter.Items.Add(valueListItem21);
-            this.opDauerSuprapubischenkatheter.Items.Add(valueListItem22);
+            this.opDauerSuprapubischenkatheter.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem20,
+            valueListItem21,
+            valueListItem22});
             this.opDauerSuprapubischenkatheter.Location = new System.Drawing.Point(349, 101);
             this.opDauerSuprapubischenkatheter.Name = "opDauerSuprapubischenkatheter";
             this.opDauerSuprapubischenkatheter.Size = new System.Drawing.Size(60, 14);
@@ -699,9 +707,10 @@
             valueListItem24.DisplayText = " ";
             valueListItem25.DataValue = 2;
             valueListItem25.DisplayText = " ";
-            this.opNeigtZuInfektionen.Items.Add(valueListItem23);
-            this.opNeigtZuInfektionen.Items.Add(valueListItem24);
-            this.opNeigtZuInfektionen.Items.Add(valueListItem25);
+            this.opNeigtZuInfektionen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem23,
+            valueListItem24,
+            valueListItem25});
             this.opNeigtZuInfektionen.Location = new System.Drawing.Point(349, 121);
             this.opNeigtZuInfektionen.Name = "opNeigtZuInfektionen";
             this.opNeigtZuInfektionen.Size = new System.Drawing.Size(60, 14);
@@ -722,9 +731,10 @@
             valueListItem27.DisplayText = " ";
             valueListItem28.DataValue = 2;
             valueListItem28.DisplayText = " ";
-            this.opHatAnusPraeter.Items.Add(valueListItem26);
-            this.opHatAnusPraeter.Items.Add(valueListItem27);
-            this.opHatAnusPraeter.Items.Add(valueListItem28);
+            this.opHatAnusPraeter.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem26,
+            valueListItem27,
+            valueListItem28});
             this.opHatAnusPraeter.Location = new System.Drawing.Point(349, 141);
             this.opHatAnusPraeter.Name = "opHatAnusPraeter";
             this.opHatAnusPraeter.Size = new System.Drawing.Size(60, 14);
@@ -745,9 +755,10 @@
             valueListItem30.DisplayText = " ";
             valueListItem31.DataValue = 2;
             valueListItem31.DisplayText = " ";
-            this.opVerstopfungenDurchfaellen.Items.Add(valueListItem29);
-            this.opVerstopfungenDurchfaellen.Items.Add(valueListItem30);
-            this.opVerstopfungenDurchfaellen.Items.Add(valueListItem31);
+            this.opVerstopfungenDurchfaellen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem29,
+            valueListItem30,
+            valueListItem31});
             this.opVerstopfungenDurchfaellen.Location = new System.Drawing.Point(349, 70);
             this.opVerstopfungenDurchfaellen.Name = "opVerstopfungenDurchfaellen";
             this.opVerstopfungenDurchfaellen.Size = new System.Drawing.Size(60, 14);
@@ -768,9 +779,10 @@
             valueListItem33.DisplayText = " ";
             valueListItem34.DataValue = 2;
             valueListItem34.DisplayText = " ";
-            this.opIstZeitweiseUrinStuhlinkontinent.Items.Add(valueListItem32);
-            this.opIstZeitweiseUrinStuhlinkontinent.Items.Add(valueListItem33);
-            this.opIstZeitweiseUrinStuhlinkontinent.Items.Add(valueListItem34);
+            this.opIstZeitweiseUrinStuhlinkontinent.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem32,
+            valueListItem33,
+            valueListItem34});
             this.opIstZeitweiseUrinStuhlinkontinent.Location = new System.Drawing.Point(349, 45);
             this.opIstZeitweiseUrinStuhlinkontinent.Name = "opIstZeitweiseUrinStuhlinkontinent";
             this.opIstZeitweiseUrinStuhlinkontinent.Size = new System.Drawing.Size(60, 14);
@@ -834,9 +846,9 @@
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance36.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance36;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -847,9 +859,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -872,7 +884,6 @@
             this.tabLuft.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabLuft.Size = new System.Drawing.Size(1000, 440);
             this.tabLuft.TabIndex = 126;
-            ultraTab1.ActiveAppearance = appearance38;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
@@ -881,7 +892,6 @@
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance39;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -64,10 +65,8 @@
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox28 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ultraLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -123,7 +122,7 @@
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox28);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(996, 414);
             // 
@@ -142,7 +141,7 @@
             this.ultraGroupBox28.Controls.Add(this.ultraLabel87);
             this.ultraGroupBox28.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox28.Name = "ultraGroupBox28";
-            this.ultraGroupBox28.Size = new System.Drawing.Size(557, 351);
+            this.ultraGroupBox28.Size = new System.Drawing.Size(930, 405);
             this.ultraGroupBox28.TabIndex = 125;
             this.ultraGroupBox28.Text = "Ressource, Wünsche, Gewohnheiten";
             // 
@@ -152,7 +151,7 @@
             appearance2.FontData.SizeInPoints = 8F;
             this.ultraLabel1.Appearance = appearance2;
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(13, 260);
+            this.ultraLabel1.Location = new System.Drawing.Point(13, 306);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(288, 14);
             this.ultraLabel1.TabIndex = 130;
@@ -170,9 +169,10 @@
             valueListItem1.DisplayText = "Ja";
             valueListItem2.DataValue = false;
             valueListItem2.DisplayText = "Nein";
-            this.opTagesablaufsgestaltungHilfeJN.Items.Add(valueListItem1);
-            this.opTagesablaufsgestaltungHilfeJN.Items.Add(valueListItem2);
-            this.opTagesablaufsgestaltungHilfeJN.Location = new System.Drawing.Point(475, 260);
+            this.opTagesablaufsgestaltungHilfeJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2});
+            this.opTagesablaufsgestaltungHilfeJN.Location = new System.Drawing.Point(321, 306);
             this.opTagesablaufsgestaltungHilfeJN.Name = "opTagesablaufsgestaltungHilfeJN";
             this.opTagesablaufsgestaltungHilfeJN.Size = new System.Drawing.Size(76, 14);
             this.opTagesablaufsgestaltungHilfeJN.TabIndex = 4;
@@ -184,12 +184,12 @@
             appearance4.BackColorDisabled = System.Drawing.Color.White;
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtTagsablauf.Appearance = appearance4;
-            this.txtTagsablauf.Location = new System.Drawing.Point(13, 199);
-            this.txtTagsablauf.MaxLength = 255;
+            this.txtTagsablauf.Location = new System.Drawing.Point(13, 211);
+            this.txtTagsablauf.MaxLength = 2000;
             this.txtTagsablauf.Multiline = true;
             this.txtTagsablauf.Name = "txtTagsablauf";
             this.txtTagsablauf.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTagsablauf.Size = new System.Drawing.Size(538, 55);
+            this.txtTagsablauf.Size = new System.Drawing.Size(911, 85);
             this.txtTagsablauf.TabIndex = 3;
             this.txtTagsablauf.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -199,7 +199,7 @@
             appearance5.FontData.SizeInPoints = 8F;
             this.ultraLabel84.Appearance = appearance5;
             this.ultraLabel84.AutoSize = true;
-            this.ultraLabel84.Location = new System.Drawing.Point(13, 182);
+            this.ultraLabel84.Location = new System.Drawing.Point(13, 194);
             this.ultraLabel84.Name = "ultraLabel84";
             this.ultraLabel84.Size = new System.Drawing.Size(150, 14);
             this.ultraLabel84.TabIndex = 117;
@@ -211,12 +211,12 @@
             appearance6.BackColorDisabled = System.Drawing.Color.White;
             appearance6.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtTagesablaufsgestaltungHilfe.Appearance = appearance6;
-            this.txtTagesablaufsgestaltungHilfe.Location = new System.Drawing.Point(13, 281);
-            this.txtTagesablaufsgestaltungHilfe.MaxLength = 255;
+            this.txtTagesablaufsgestaltungHilfe.Location = new System.Drawing.Point(13, 327);
+            this.txtTagesablaufsgestaltungHilfe.MaxLength = 2000;
             this.txtTagesablaufsgestaltungHilfe.Multiline = true;
             this.txtTagesablaufsgestaltungHilfe.Name = "txtTagesablaufsgestaltungHilfe";
             this.txtTagesablaufsgestaltungHilfe.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTagesablaufsgestaltungHilfe.Size = new System.Drawing.Size(538, 55);
+            this.txtTagesablaufsgestaltungHilfe.Size = new System.Drawing.Size(911, 69);
             this.txtTagesablaufsgestaltungHilfe.TabIndex = 5;
             this.txtTagesablaufsgestaltungHilfe.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -227,11 +227,11 @@
             appearance7.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtGerneBeschaeftigtMit.Appearance = appearance7;
             this.txtGerneBeschaeftigtMit.Location = new System.Drawing.Point(13, 121);
-            this.txtGerneBeschaeftigtMit.MaxLength = 255;
+            this.txtGerneBeschaeftigtMit.MaxLength = 2000;
             this.txtGerneBeschaeftigtMit.Multiline = true;
             this.txtGerneBeschaeftigtMit.Name = "txtGerneBeschaeftigtMit";
             this.txtGerneBeschaeftigtMit.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtGerneBeschaeftigtMit.Size = new System.Drawing.Size(538, 55);
+            this.txtGerneBeschaeftigtMit.Size = new System.Drawing.Size(911, 67);
             this.txtGerneBeschaeftigtMit.TabIndex = 2;
             this.txtGerneBeschaeftigtMit.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -254,11 +254,11 @@
             appearance9.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtBeruf.Appearance = appearance9;
             this.txtBeruf.Location = new System.Drawing.Point(13, 41);
-            this.txtBeruf.MaxLength = 255;
+            this.txtBeruf.MaxLength = 2000;
             this.txtBeruf.Multiline = true;
             this.txtBeruf.Name = "txtBeruf";
             this.txtBeruf.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBeruf.Size = new System.Drawing.Size(538, 55);
+            this.txtBeruf.Size = new System.Drawing.Size(911, 55);
             this.txtBeruf.TabIndex = 1;
             this.txtBeruf.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -381,9 +381,10 @@
             valueListItem4.DisplayText = " ";
             valueListItem5.DataValue = 2;
             valueListItem5.DisplayText = " ";
-            this.opIntegrationInTaeglicheAblaufe.Items.Add(valueListItem3);
-            this.opIntegrationInTaeglicheAblaufe.Items.Add(valueListItem4);
-            this.opIntegrationInTaeglicheAblaufe.Items.Add(valueListItem5);
+            this.opIntegrationInTaeglicheAblaufe.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem3,
+            valueListItem4,
+            valueListItem5});
             this.opIntegrationInTaeglicheAblaufe.Location = new System.Drawing.Point(338, 88);
             this.opIntegrationInTaeglicheAblaufe.Name = "opIntegrationInTaeglicheAblaufe";
             this.opIntegrationInTaeglicheAblaufe.Size = new System.Drawing.Size(60, 14);
@@ -404,9 +405,10 @@
             valueListItem7.DisplayText = " ";
             valueListItem8.DataValue = 2;
             valueListItem8.DisplayText = " ";
-            this.opZeitpunktAufstehenBettGehenAbstimmen.Items.Add(valueListItem6);
-            this.opZeitpunktAufstehenBettGehenAbstimmen.Items.Add(valueListItem7);
-            this.opZeitpunktAufstehenBettGehenAbstimmen.Items.Add(valueListItem8);
+            this.opZeitpunktAufstehenBettGehenAbstimmen.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem6,
+            valueListItem7,
+            valueListItem8});
             this.opZeitpunktAufstehenBettGehenAbstimmen.Location = new System.Drawing.Point(338, 68);
             this.opZeitpunktAufstehenBettGehenAbstimmen.Name = "opZeitpunktAufstehenBettGehenAbstimmen";
             this.opZeitpunktAufstehenBettGehenAbstimmen.Size = new System.Drawing.Size(60, 14);
@@ -427,9 +429,10 @@
             valueListItem10.DisplayText = " ";
             valueListItem11.DataValue = 2;
             valueListItem11.DisplayText = " ";
-            this.opTagesablaufNachFrueherenGewohnheiten.Items.Add(valueListItem9);
-            this.opTagesablaufNachFrueherenGewohnheiten.Items.Add(valueListItem10);
-            this.opTagesablaufNachFrueherenGewohnheiten.Items.Add(valueListItem11);
+            this.opTagesablaufNachFrueherenGewohnheiten.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem9,
+            valueListItem10,
+            valueListItem11});
             this.opTagesablaufNachFrueherenGewohnheiten.Location = new System.Drawing.Point(336, 35);
             this.opTagesablaufNachFrueherenGewohnheiten.Name = "opTagesablaufNachFrueherenGewohnheiten";
             this.opTagesablaufNachFrueherenGewohnheiten.Size = new System.Drawing.Size(60, 14);
@@ -484,15 +487,15 @@
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.grpPDX);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(996, 414);
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance23.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance23;
             this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
@@ -503,9 +506,9 @@
             // 
             // ucAnamnesePDX1
             // 
-            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucAnamnesePDX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ucAnamnesePDX1.Location = new System.Drawing.Point(8, 10);
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
@@ -528,7 +531,6 @@
             this.tabLuft.SharedControlsPage = this.ultraTabSharedControlsPage2;
             this.tabLuft.Size = new System.Drawing.Size(1000, 440);
             this.tabLuft.TabIndex = 128;
-            ultraTab1.ActiveAppearance = appearance25;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
@@ -537,7 +539,6 @@
             ultraTab2.TabPage = this.ultraTabPageControl1;
             ultraTab2.Text = "Hilfebedarf";
             ultraTab2.ToolTipText = "Hilfebedarf";
-            ultraTab3.ActiveAppearance = appearance26;
             ultraTab3.Key = "Pflegedefinitionen";
             ultraTab3.TabPage = this.ultraTabPageControl2;
             ultraTab3.Text = "Pflegediagnosen";
