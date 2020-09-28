@@ -23,7 +23,7 @@ namespace PMDSClient.Sitemap
     public class WCFServiceClient
     {
 
-        //public static string urlWCFServiceDefault = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
+        //public static string urlWCFServiceDefault2 = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
         private static string urlWCFServiceDefault2 = "net.pipe://localhost/Design_Time_Addresses/WCFServicePMDS/Service1";
 
 
@@ -139,7 +139,7 @@ namespace PMDSClient.Sitemap
                     //proc.StartInfo.Verb = "runas";
                     proc.StartInfo.Arguments = "?typ=Background";
                     proc.Start();
-
+                    System.Threading.Thread.Sleep(5000);
                     //System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
                 }
 
