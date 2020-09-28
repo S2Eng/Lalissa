@@ -15099,6 +15099,12 @@ Namespace ServiceReference_01
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/addMessage", ReplyAction:="http://tempuri.org/Service1/addMessageResponse")>  _
         Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/TestWCFService", ReplyAction:="http://tempuri.org/Service1/TestWCFServiceResponse")>  _
+        Function TestWCFService() As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/TestWCFService", ReplyAction:="http://tempuri.org/Service1/TestWCFServiceResponse")>  _
+        Function TestWCFServiceAsync() As System.Threading.Tasks.Task(Of Boolean)
     End Interface
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
@@ -16368,6 +16374,14 @@ Namespace ServiceReference_01
         
         Public Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1) Implements ServiceReference_01.Service1.addMessageAsync
             Return MyBase.Channel.addMessageAsync(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, IDClient)
+        End Function
+        
+        Public Function TestWCFService() As Boolean Implements ServiceReference_01.Service1.TestWCFService
+            Return MyBase.Channel.TestWCFService
+        End Function
+        
+        Public Function TestWCFServiceAsync() As System.Threading.Tasks.Task(Of Boolean) Implements ServiceReference_01.Service1.TestWCFServiceAsync
+            Return MyBase.Channel.TestWCFServiceAsync
         End Function
     End Class
 End Namespace
