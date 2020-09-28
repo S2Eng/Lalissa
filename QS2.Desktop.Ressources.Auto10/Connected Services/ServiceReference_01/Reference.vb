@@ -15099,41 +15099,41 @@ Namespace ServiceReference_01
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/addMessage", ReplyAction:="http://tempuri.org/Service1/addMessageResponse")>  _
         Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1)
-
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/TestWCFService", ReplyAction:="http://tempuri.org/Service1/TestWCFServiceResponse")>
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/TestWCFService", ReplyAction:="http://tempuri.org/Service1/TestWCFServiceResponse")>  _
         Function TestWCFService() As Boolean
-
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/TestWCFService", ReplyAction:="http://tempuri.org/Service1/TestWCFServiceResponse")>
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/TestWCFService", ReplyAction:="http://tempuri.org/Service1/TestWCFServiceResponse")>  _
         Function TestWCFServiceAsync() As System.Threading.Tasks.Task(Of Boolean)
     End Interface
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogInHCP", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogInHCP", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGALogInHCPRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public usr As String
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public pwd As String
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
         Public NameGDA As String
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
         Public Rolle As String
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=4)>  _
         Public IDKlinik As System.Guid
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=5)>  _
         Public session As ServiceReference_01.ELGASessionDTO
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal usr As String, ByVal pwd As String, ByVal NameGDA As String, ByVal Rolle As String, ByVal IDKlinik As System.Guid, ByVal session As ServiceReference_01.ELGASessionDTO)
             MyBase.New
             Me.usr = usr
@@ -15144,87 +15144,87 @@ Namespace ServiceReference_01
             Me.session = session
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogInHCPResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogInHCPResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGALogInHCPResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGALogInHCPResult As Boolean
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public session As ServiceReference_01.ELGASessionDTO
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGALogInHCPResult As Boolean, ByVal session As ServiceReference_01.ELGASessionDTO)
             MyBase.New
             Me.ELGALogInHCPResult = ELGALogInHCPResult
             Me.session = session
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogOut", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogOut", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGALogOutRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public session As ServiceReference_01.ELGASessionDTO
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal session As ServiceReference_01.ELGASessionDTO)
             MyBase.New
             Me.session = session
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogOutResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGALogOutResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGALogOutResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGALogOutResult As Boolean
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public session As ServiceReference_01.ELGASessionDTO
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGALogOutResult As Boolean, ByVal session As ServiceReference_01.ELGASessionDTO)
             MyBase.New
             Me.ELGALogOutResult = ELGALogOutResult
             Me.session = session
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryPatients", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryPatients", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAQueryPatientsRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public TypeQueryPatients As ServiceReference_01.ELGABALeTypeQueryPatients
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
         Public checkOneRowMustFound As Boolean
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeQueryPatients As ServiceReference_01.ELGABALeTypeQueryPatients, ByVal checkOneRowMustFound As Boolean)
             MyBase.New
             Me.parsIn = parsIn
@@ -15232,335 +15232,335 @@ Namespace ServiceReference_01
             Me.checkOneRowMustFound = checkOneRowMustFound
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryPatientsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryPatientsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAQueryPatientsResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAQueryPatientsResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAQueryPatientsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAQueryPatientsResult = ELGAQueryPatientsResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAinsertPatient", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAinsertPatient", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAinsertPatientRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients)
             MyBase.New
             Me.parsIn = parsIn
             Me.TypeUpdatePatients = TypeUpdatePatients
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAinsertPatientResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAinsertPatientResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAinsertPatientResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAinsertPatientResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAinsertPatientResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAinsertPatientResult = ELGAinsertPatientResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdatePatient", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdatePatient", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAUpdatePatientRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients)
             MyBase.New
             Me.parsIn = parsIn
             Me.TypeUpdatePatients = TypeUpdatePatients
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdatePatientResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdatePatientResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAUpdatePatientResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAUpdatePatientResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAUpdatePatientResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAUpdatePatientResult = ELGAUpdatePatientResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactAdmission", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactAdmission", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAAddContactAdmissionRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactAdmissionResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactAdmissionResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAAddContactAdmissionResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAAddContactAdmissionResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAAddContactAdmissionResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAAddContactAdmissionResult = ELGAAddContactAdmissionResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAInvalidateContact", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAInvalidateContact", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAInvalidateContactRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAInvalidateContactResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAInvalidateContactResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAInvalidateContactResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAInvalidateContactResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAInvalidateContactResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAInvalidateContactResult = ELGAInvalidateContactResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactDischarge", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactDischarge", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAAddContactDischargeRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactDischargeResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddContactDischargeResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAAddContactDischargeResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAAddContactDischargeResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAAddContactDischargeResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAAddContactDischargeResult = ELGAAddContactDischargeResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAListContacts", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAListContacts", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAListContactsRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAListContactsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAListContactsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAListContactsResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAListContactsResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAListContactsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAListContactsResult = ELGAListContactsResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryGDAs", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryGDAs", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAQueryGDAsRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryGDAsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryGDAsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAQueryGDAsResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAQueryGDAsResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAQueryGDAsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAQueryGDAsResult = ELGAQueryGDAsResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocuments", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocuments", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAQueryDocumentsRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public OnlyOneDoc As Boolean
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
         Public UniqueId As String
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String)
             MyBase.New
             Me.parsIn = parsIn
@@ -15568,47 +15568,47 @@ Namespace ServiceReference_01
             Me.UniqueId = UniqueId
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocumentsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAQueryDocumentsResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAQueryDocumentsResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAQueryDocumentsResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAQueryDocumentsResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAQueryDocumentsResult = ELGAQueryDocumentsResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="queryPatientContent", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="queryPatientContent", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class queryPatientContentRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public OnlyOneDoc As Boolean
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
         Public UniqueId As String
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String)
             MyBase.New
             Me.parsIn = parsIn
@@ -15616,218 +15616,218 @@ Namespace ServiceReference_01
             Me.UniqueId = UniqueId
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="queryPatientContentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="queryPatientContentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class queryPatientContentResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public queryPatientContentResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal queryPatientContentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.queryPatientContentResult = queryPatientContentResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGARetrieveDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGARetrieveDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGARetrieveDocumentRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGARetrieveDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGARetrieveDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGARetrieveDocumentResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGARetrieveDocumentResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGARetrieveDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGARetrieveDocumentResult = ELGARetrieveDocumentResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAAddDocumentRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAAddDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAAddDocumentResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAAddDocumentResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAAddDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAAddDocumentResult = ELGAAddDocumentResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdateDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdateDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAUpdateDocumentRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public UniqueId As String
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String)
             MyBase.New
             Me.parsIn = parsIn
             Me.UniqueId = UniqueId
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdateDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ELGAUpdateDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ELGAUpdateDocumentResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ELGAUpdateDocumentResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ELGAUpdateDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ELGAUpdateDocumentResult = ELGAUpdateDocumentResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ElgaDeprecateDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ElgaDeprecateDocument", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ElgaDeprecateDocumentRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public UniqueId As String
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String)
             MyBase.New
             Me.parsIn = parsIn
             Me.UniqueId = UniqueId
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ElgaDeprecateDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ElgaDeprecateDocumentResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ElgaDeprecateDocumentResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ElgaDeprecateDocumentResult As ServiceReference_01.ELGAParOutDto
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public parsIn As ServiceReference_01.ELGAParInDto
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ElgaDeprecateDocumentResult As ServiceReference_01.ELGAParOutDto, ByVal parsIn As ServiceReference_01.ELGAParInDto)
             MyBase.New
             Me.ElgaDeprecateDocumentResult = ElgaDeprecateDocumentResult
             Me.parsIn = parsIn
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="Export", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="Export", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ExportRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public IDClient As System.Guid
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public IDPatient As System.Guid
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
         Public ArchivPath As String
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=3)>  _
         Public IsTest As Boolean
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal IDClient As System.Guid, ByVal IDPatient As System.Guid, ByVal ArchivPath As String, ByVal IsTest As Boolean)
             MyBase.New
             Me.IDClient = IDClient
@@ -15836,25 +15836,25 @@ Namespace ServiceReference_01
             Me.IsTest = IsTest
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="ExportResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="ExportResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class ExportResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public ExportResult As Boolean
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public ArchivPath As String
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=2)>  _
         Public FileNameXMLDocumentBack As String
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal ExportResult As Boolean, ByVal ArchivPath As String, ByVal FileNameXMLDocumentBack As String)
             MyBase.New
             Me.ExportResult = ExportResult
@@ -15862,143 +15862,143 @@ Namespace ServiceReference_01
             Me.FileNameXMLDocumentBack = FileNameXMLDocumentBack
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DynReportsInitStructure", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DynReportsInitStructure", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class DynReportsInitStructureRequest
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public RootPath As String
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public IDClient As System.Guid
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal RootPath As String, ByVal IDClient As System.Guid)
             MyBase.New
             Me.RootPath = RootPath
             Me.IDClient = IDClient
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.MessageContractAttribute(WrapperName:="DynReportsInitStructureResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=True)>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.MessageContractAttribute(WrapperName:="DynReportsInitStructureResponse", WrapperNamespace:="http://tempuri.org/", IsWrapped:=true)>  _
     Partial Public Class DynReportsInitStructureResponse
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=0)>  _
         Public DynReportsInitStructureResult As Boolean
-
-        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>
+        
+        <System.ServiceModel.MessageBodyMemberAttribute([Namespace]:="http://tempuri.org/", Order:=1)>  _
         Public RootPath As String
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal DynReportsInitStructureResult As Boolean, ByVal RootPath As String)
             MyBase.New
             Me.DynReportsInitStructureResult = DynReportsInitStructureResult
             Me.RootPath = RootPath
         End Sub
     End Class
-
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
     Public Interface Service1Channel
         Inherits ServiceReference_01.Service1, System.ServiceModel.IClientChannel
     End Interface
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
     Partial Public Class Service1Client
         Inherits System.ServiceModel.ClientBase(Of ServiceReference_01.Service1)
         Implements ServiceReference_01.Service1
-
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal endpointConfigurationName As String)
             MyBase.New(endpointConfigurationName)
         End Sub
-
+        
         Public Sub New(ByVal endpointConfigurationName As String, ByVal remoteAddress As String)
             MyBase.New(endpointConfigurationName, remoteAddress)
         End Sub
-
+        
         Public Sub New(ByVal endpointConfigurationName As String, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(endpointConfigurationName, remoteAddress)
         End Sub
-
+        
         Public Sub New(ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(binding, remoteAddress)
         End Sub
-
+        
         Public Function initService(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As Boolean Implements ServiceReference_01.Service1.initService
             Return MyBase.Channel.initService(client, user, checkVersion, VersionNrClient, clientVars)
         End Function
-
+        
         Public Function initServiceAsync(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As System.Threading.Tasks.Task(Of Boolean) Implements ServiceReference_01.Service1.initServiceAsync
             Return MyBase.Channel.initServiceAsync(client, user, checkVersion, VersionNrClient, clientVars)
         End Function
-
+        
         Public Sub testRep(ByVal IDClient As System.Guid) Implements ServiceReference_01.Service1.testRep
             MyBase.Channel.testRep(IDClient)
         End Sub
-
+        
         Public Function testRepAsync(ByVal IDClient As System.Guid) As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testRepAsync
             Return MyBase.Channel.testRepAsync(IDClient)
         End Function
-
+        
         Public Function sendExceptionAsSMTPEMail(ByVal except As String, ByVal client As String, ByVal User As String, ByVal dAt As Date) As Boolean Implements ServiceReference_01.Service1.sendExceptionAsSMTPEMail
             Return MyBase.Channel.sendExceptionAsSMTPEMail(except, client, User, dAt)
         End Function
-
+        
         Public Function sendExceptionAsSMTPEMailAsync(ByVal except As String, ByVal client As String, ByVal User As String, ByVal dAt As Date) As System.Threading.Tasks.Task(Of Boolean) Implements ServiceReference_01.Service1.sendExceptionAsSMTPEMailAsync
             Return MyBase.Channel.sendExceptionAsSMTPEMailAsync(except, client, User, dAt)
         End Function
-
+        
         Public Function getDataSerialized() As Byte()() Implements ServiceReference_01.Service1.getDataSerialized
             Return MyBase.Channel.getDataSerialized
         End Function
-
+        
         Public Function getDataSerializedAsync() As System.Threading.Tasks.Task(Of Byte()()) Implements ServiceReference_01.Service1.getDataSerializedAsync
             Return MyBase.Channel.getDataSerializedAsync
         End Function
-
+        
         Public Function getLastStammdaten() As ServiceReference_01.StammdatenDTO Implements ServiceReference_01.Service1.getLastStammdaten
             Return MyBase.Channel.getLastStammdaten
         End Function
-
+        
         Public Function getLastStammdatenAsync() As System.Threading.Tasks.Task(Of ServiceReference_01.StammdatenDTO) Implements ServiceReference_01.Service1.getLastStammdatenAsync
             Return MyBase.Channel.getLastStammdatenAsync
         End Function
-
+        
         Public Function getLastBenutzer() As ServiceReference_01.BenutzerMainDTOBenutzerDt() Implements ServiceReference_01.Service1.getLastBenutzer
             Return MyBase.Channel.getLastBenutzer
         End Function
-
+        
         Public Function getLastBenutzerAsync() As System.Threading.Tasks.Task(Of ServiceReference_01.BenutzerMainDTOBenutzerDt()) Implements ServiceReference_01.Service1.getLastBenutzerAsync
             Return MyBase.Channel.getLastBenutzerAsync
         End Function
-
+        
         Public Function getLastPatienten() As ServiceReference_01.PatientMainDTOPatientDt() Implements ServiceReference_01.Service1.getLastPatienten
             Return MyBase.Channel.getLastPatienten
         End Function
-
+        
         Public Function getLastPatientenAsync() As System.Threading.Tasks.Task(Of ServiceReference_01.PatientMainDTOPatientDt()) Implements ServiceReference_01.Service1.getLastPatientenAsync
             Return MyBase.Channel.getLastPatientenAsync
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGALogInHCP(ByVal request As ServiceReference_01.ELGALogInHCPRequest) As ServiceReference_01.ELGALogInHCPResponse Implements ServiceReference_01.Service1.ELGALogInHCP
             Return MyBase.Channel.ELGALogInHCP(request)
         End Function
-
+        
         Public Function ELGALogInHCP(ByVal usr As String, ByVal pwd As String, ByVal NameGDA As String, ByVal Rolle As String, ByVal IDKlinik As System.Guid, ByRef session As ServiceReference_01.ELGASessionDTO) As Boolean
             Dim inValue As ServiceReference_01.ELGALogInHCPRequest = New ServiceReference_01.ELGALogInHCPRequest()
             inValue.usr = usr
@@ -16007,379 +16007,379 @@ Namespace ServiceReference_01
             inValue.Rolle = Rolle
             inValue.IDKlinik = IDKlinik
             inValue.session = session
-            Dim retVal As ServiceReference_01.ELGALogInHCPResponse = CType(Me, ServiceReference_01.Service1).ELGALogInHCP(inValue)
+            Dim retVal As ServiceReference_01.ELGALogInHCPResponse = CType(Me,ServiceReference_01.Service1).ELGALogInHCP(inValue)
             session = retVal.session
             Return retVal.ELGALogInHCPResult
         End Function
-
+        
         Public Function ELGALogInHCPAsync(ByVal request As ServiceReference_01.ELGALogInHCPRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGALogInHCPResponse) Implements ServiceReference_01.Service1.ELGALogInHCPAsync
             Return MyBase.Channel.ELGALogInHCPAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGALogOut(ByVal request As ServiceReference_01.ELGALogOutRequest) As ServiceReference_01.ELGALogOutResponse Implements ServiceReference_01.Service1.ELGALogOut
             Return MyBase.Channel.ELGALogOut(request)
         End Function
-
+        
         Public Function ELGALogOut(ByRef session As ServiceReference_01.ELGASessionDTO) As Boolean
             Dim inValue As ServiceReference_01.ELGALogOutRequest = New ServiceReference_01.ELGALogOutRequest()
             inValue.session = session
-            Dim retVal As ServiceReference_01.ELGALogOutResponse = CType(Me, ServiceReference_01.Service1).ELGALogOut(inValue)
+            Dim retVal As ServiceReference_01.ELGALogOutResponse = CType(Me,ServiceReference_01.Service1).ELGALogOut(inValue)
             session = retVal.session
             Return retVal.ELGALogOutResult
         End Function
-
+        
         Public Function ELGALogOutAsync(ByVal request As ServiceReference_01.ELGALogOutRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGALogOutResponse) Implements ServiceReference_01.Service1.ELGALogOutAsync
             Return MyBase.Channel.ELGALogOutAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAQueryPatients(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As ServiceReference_01.ELGAQueryPatientsResponse Implements ServiceReference_01.Service1.ELGAQueryPatients
             Return MyBase.Channel.ELGAQueryPatients(request)
         End Function
-
+        
         Public Function ELGAQueryPatients(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeQueryPatients As ServiceReference_01.ELGABALeTypeQueryPatients, ByVal checkOneRowMustFound As Boolean) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAQueryPatientsRequest = New ServiceReference_01.ELGAQueryPatientsRequest()
             inValue.parsIn = parsIn
             inValue.TypeQueryPatients = TypeQueryPatients
             inValue.checkOneRowMustFound = checkOneRowMustFound
-            Dim retVal As ServiceReference_01.ELGAQueryPatientsResponse = CType(Me, ServiceReference_01.Service1).ELGAQueryPatients(inValue)
+            Dim retVal As ServiceReference_01.ELGAQueryPatientsResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryPatients(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAQueryPatientsResult
         End Function
-
+        
         Public Function ELGAQueryPatientsAsync(ByVal request As ServiceReference_01.ELGAQueryPatientsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryPatientsResponse) Implements ServiceReference_01.Service1.ELGAQueryPatientsAsync
             Return MyBase.Channel.ELGAQueryPatientsAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAinsertPatient(ByVal request As ServiceReference_01.ELGAinsertPatientRequest) As ServiceReference_01.ELGAinsertPatientResponse Implements ServiceReference_01.Service1.ELGAinsertPatient
             Return MyBase.Channel.ELGAinsertPatient(request)
         End Function
-
+        
         Public Function ELGAinsertPatient(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAinsertPatientRequest = New ServiceReference_01.ELGAinsertPatientRequest()
             inValue.parsIn = parsIn
             inValue.TypeUpdatePatients = TypeUpdatePatients
-            Dim retVal As ServiceReference_01.ELGAinsertPatientResponse = CType(Me, ServiceReference_01.Service1).ELGAinsertPatient(inValue)
+            Dim retVal As ServiceReference_01.ELGAinsertPatientResponse = CType(Me,ServiceReference_01.Service1).ELGAinsertPatient(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAinsertPatientResult
         End Function
-
+        
         Public Function ELGAinsertPatientAsync(ByVal request As ServiceReference_01.ELGAinsertPatientRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAinsertPatientResponse) Implements ServiceReference_01.Service1.ELGAinsertPatientAsync
             Return MyBase.Channel.ELGAinsertPatientAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAUpdatePatient(ByVal request As ServiceReference_01.ELGAUpdatePatientRequest) As ServiceReference_01.ELGAUpdatePatientResponse Implements ServiceReference_01.Service1.ELGAUpdatePatient
             Return MyBase.Channel.ELGAUpdatePatient(request)
         End Function
-
+        
         Public Function ELGAUpdatePatient(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal TypeUpdatePatients As ServiceReference_01.ELGABALeTypeUpdatePatients) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAUpdatePatientRequest = New ServiceReference_01.ELGAUpdatePatientRequest()
             inValue.parsIn = parsIn
             inValue.TypeUpdatePatients = TypeUpdatePatients
-            Dim retVal As ServiceReference_01.ELGAUpdatePatientResponse = CType(Me, ServiceReference_01.Service1).ELGAUpdatePatient(inValue)
+            Dim retVal As ServiceReference_01.ELGAUpdatePatientResponse = CType(Me,ServiceReference_01.Service1).ELGAUpdatePatient(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAUpdatePatientResult
         End Function
-
+        
         Public Function ELGAUpdatePatientAsync(ByVal request As ServiceReference_01.ELGAUpdatePatientRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAUpdatePatientResponse) Implements ServiceReference_01.Service1.ELGAUpdatePatientAsync
             Return MyBase.Channel.ELGAUpdatePatientAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAAddContactAdmission(ByVal request As ServiceReference_01.ELGAAddContactAdmissionRequest) As ServiceReference_01.ELGAAddContactAdmissionResponse Implements ServiceReference_01.Service1.ELGAAddContactAdmission
             Return MyBase.Channel.ELGAAddContactAdmission(request)
         End Function
-
+        
         Public Function ELGAAddContactAdmission(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAAddContactAdmissionRequest = New ServiceReference_01.ELGAAddContactAdmissionRequest()
             inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGAAddContactAdmissionResponse = CType(Me, ServiceReference_01.Service1).ELGAAddContactAdmission(inValue)
+            Dim retVal As ServiceReference_01.ELGAAddContactAdmissionResponse = CType(Me,ServiceReference_01.Service1).ELGAAddContactAdmission(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAAddContactAdmissionResult
         End Function
-
+        
         Public Function ELGAAddContactAdmissionAsync(ByVal request As ServiceReference_01.ELGAAddContactAdmissionRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAAddContactAdmissionResponse) Implements ServiceReference_01.Service1.ELGAAddContactAdmissionAsync
             Return MyBase.Channel.ELGAAddContactAdmissionAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAInvalidateContact(ByVal request As ServiceReference_01.ELGAInvalidateContactRequest) As ServiceReference_01.ELGAInvalidateContactResponse Implements ServiceReference_01.Service1.ELGAInvalidateContact
             Return MyBase.Channel.ELGAInvalidateContact(request)
         End Function
-
+        
         Public Function ELGAInvalidateContact(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAInvalidateContactRequest = New ServiceReference_01.ELGAInvalidateContactRequest()
             inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGAInvalidateContactResponse = CType(Me, ServiceReference_01.Service1).ELGAInvalidateContact(inValue)
+            Dim retVal As ServiceReference_01.ELGAInvalidateContactResponse = CType(Me,ServiceReference_01.Service1).ELGAInvalidateContact(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAInvalidateContactResult
         End Function
-
+        
         Public Function ELGAInvalidateContactAsync(ByVal request As ServiceReference_01.ELGAInvalidateContactRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAInvalidateContactResponse) Implements ServiceReference_01.Service1.ELGAInvalidateContactAsync
             Return MyBase.Channel.ELGAInvalidateContactAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAAddContactDischarge(ByVal request As ServiceReference_01.ELGAAddContactDischargeRequest) As ServiceReference_01.ELGAAddContactDischargeResponse Implements ServiceReference_01.Service1.ELGAAddContactDischarge
             Return MyBase.Channel.ELGAAddContactDischarge(request)
         End Function
-
+        
         Public Function ELGAAddContactDischarge(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAAddContactDischargeRequest = New ServiceReference_01.ELGAAddContactDischargeRequest()
             inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGAAddContactDischargeResponse = CType(Me, ServiceReference_01.Service1).ELGAAddContactDischarge(inValue)
+            Dim retVal As ServiceReference_01.ELGAAddContactDischargeResponse = CType(Me,ServiceReference_01.Service1).ELGAAddContactDischarge(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAAddContactDischargeResult
         End Function
-
+        
         Public Function ELGAAddContactDischargeAsync(ByVal request As ServiceReference_01.ELGAAddContactDischargeRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAAddContactDischargeResponse) Implements ServiceReference_01.Service1.ELGAAddContactDischargeAsync
             Return MyBase.Channel.ELGAAddContactDischargeAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAListContacts(ByVal request As ServiceReference_01.ELGAListContactsRequest) As ServiceReference_01.ELGAListContactsResponse Implements ServiceReference_01.Service1.ELGAListContacts
             Return MyBase.Channel.ELGAListContacts(request)
         End Function
-
+        
         Public Function ELGAListContacts(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAListContactsRequest = New ServiceReference_01.ELGAListContactsRequest()
             inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGAListContactsResponse = CType(Me, ServiceReference_01.Service1).ELGAListContacts(inValue)
+            Dim retVal As ServiceReference_01.ELGAListContactsResponse = CType(Me,ServiceReference_01.Service1).ELGAListContacts(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAListContactsResult
         End Function
-
+        
         Public Function ELGAListContactsAsync(ByVal request As ServiceReference_01.ELGAListContactsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAListContactsResponse) Implements ServiceReference_01.Service1.ELGAListContactsAsync
             Return MyBase.Channel.ELGAListContactsAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAQueryGDAs(ByVal request As ServiceReference_01.ELGAQueryGDAsRequest) As ServiceReference_01.ELGAQueryGDAsResponse Implements ServiceReference_01.Service1.ELGAQueryGDAs
             Return MyBase.Channel.ELGAQueryGDAs(request)
         End Function
-
+        
         Public Function ELGAQueryGDAs(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAQueryGDAsRequest = New ServiceReference_01.ELGAQueryGDAsRequest()
             inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGAQueryGDAsResponse = CType(Me, ServiceReference_01.Service1).ELGAQueryGDAs(inValue)
+            Dim retVal As ServiceReference_01.ELGAQueryGDAsResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryGDAs(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAQueryGDAsResult
         End Function
-
+        
         Public Function ELGAQueryGDAsAsync(ByVal request As ServiceReference_01.ELGAQueryGDAsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryGDAsResponse) Implements ServiceReference_01.Service1.ELGAQueryGDAsAsync
             Return MyBase.Channel.ELGAQueryGDAsAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAQueryDocuments(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As ServiceReference_01.ELGAQueryDocumentsResponse Implements ServiceReference_01.Service1.ELGAQueryDocuments
             Return MyBase.Channel.ELGAQueryDocuments(request)
         End Function
-
+        
         Public Function ELGAQueryDocuments(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAQueryDocumentsRequest = New ServiceReference_01.ELGAQueryDocumentsRequest()
             inValue.parsIn = parsIn
             inValue.OnlyOneDoc = OnlyOneDoc
             inValue.UniqueId = UniqueId
-            Dim retVal As ServiceReference_01.ELGAQueryDocumentsResponse = CType(Me, ServiceReference_01.Service1).ELGAQueryDocuments(inValue)
+            Dim retVal As ServiceReference_01.ELGAQueryDocumentsResponse = CType(Me,ServiceReference_01.Service1).ELGAQueryDocuments(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAQueryDocumentsResult
         End Function
-
+        
         Public Function ELGAQueryDocumentsAsync(ByVal request As ServiceReference_01.ELGAQueryDocumentsRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAQueryDocumentsResponse) Implements ServiceReference_01.Service1.ELGAQueryDocumentsAsync
             Return MyBase.Channel.ELGAQueryDocumentsAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_queryPatientContent(ByVal request As ServiceReference_01.queryPatientContentRequest) As ServiceReference_01.queryPatientContentResponse Implements ServiceReference_01.Service1.queryPatientContent
             Return MyBase.Channel.queryPatientContent(request)
         End Function
-
+        
         Public Function queryPatientContent(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal OnlyOneDoc As Boolean, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.queryPatientContentRequest = New ServiceReference_01.queryPatientContentRequest()
             inValue.parsIn = parsIn
             inValue.OnlyOneDoc = OnlyOneDoc
             inValue.UniqueId = UniqueId
-            Dim retVal As ServiceReference_01.queryPatientContentResponse = CType(Me, ServiceReference_01.Service1).queryPatientContent(inValue)
+            Dim retVal As ServiceReference_01.queryPatientContentResponse = CType(Me,ServiceReference_01.Service1).queryPatientContent(inValue)
             parsIn = retVal.parsIn
             Return retVal.queryPatientContentResult
         End Function
-
+        
         Public Function queryPatientContentAsync(ByVal request As ServiceReference_01.queryPatientContentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.queryPatientContentResponse) Implements ServiceReference_01.Service1.queryPatientContentAsync
             Return MyBase.Channel.queryPatientContentAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGARetrieveDocument(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As ServiceReference_01.ELGARetrieveDocumentResponse Implements ServiceReference_01.Service1.ELGARetrieveDocument
             Return MyBase.Channel.ELGARetrieveDocument(request)
         End Function
-
+        
         Public Function ELGARetrieveDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGARetrieveDocumentRequest = New ServiceReference_01.ELGARetrieveDocumentRequest()
             inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGARetrieveDocumentResponse = CType(Me, ServiceReference_01.Service1).ELGARetrieveDocument(inValue)
+            Dim retVal As ServiceReference_01.ELGARetrieveDocumentResponse = CType(Me,ServiceReference_01.Service1).ELGARetrieveDocument(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGARetrieveDocumentResult
         End Function
-
+        
         Public Function ELGARetrieveDocumentAsync(ByVal request As ServiceReference_01.ELGARetrieveDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGARetrieveDocumentResponse) Implements ServiceReference_01.Service1.ELGARetrieveDocumentAsync
             Return MyBase.Channel.ELGARetrieveDocumentAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAAddDocument(ByVal request As ServiceReference_01.ELGAAddDocumentRequest) As ServiceReference_01.ELGAAddDocumentResponse Implements ServiceReference_01.Service1.ELGAAddDocument
             Return MyBase.Channel.ELGAAddDocument(request)
         End Function
-
+        
         Public Function ELGAAddDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAAddDocumentRequest = New ServiceReference_01.ELGAAddDocumentRequest()
             inValue.parsIn = parsIn
-            Dim retVal As ServiceReference_01.ELGAAddDocumentResponse = CType(Me, ServiceReference_01.Service1).ELGAAddDocument(inValue)
+            Dim retVal As ServiceReference_01.ELGAAddDocumentResponse = CType(Me,ServiceReference_01.Service1).ELGAAddDocument(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAAddDocumentResult
         End Function
-
+        
         Public Function ELGAAddDocumentAsync(ByVal request As ServiceReference_01.ELGAAddDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAAddDocumentResponse) Implements ServiceReference_01.Service1.ELGAAddDocumentAsync
             Return MyBase.Channel.ELGAAddDocumentAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ELGAUpdateDocument(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As ServiceReference_01.ELGAUpdateDocumentResponse Implements ServiceReference_01.Service1.ELGAUpdateDocument
             Return MyBase.Channel.ELGAUpdateDocument(request)
         End Function
-
+        
         Public Function ELGAUpdateDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ELGAUpdateDocumentRequest = New ServiceReference_01.ELGAUpdateDocumentRequest()
             inValue.parsIn = parsIn
             inValue.UniqueId = UniqueId
-            Dim retVal As ServiceReference_01.ELGAUpdateDocumentResponse = CType(Me, ServiceReference_01.Service1).ELGAUpdateDocument(inValue)
+            Dim retVal As ServiceReference_01.ELGAUpdateDocumentResponse = CType(Me,ServiceReference_01.Service1).ELGAUpdateDocument(inValue)
             parsIn = retVal.parsIn
             Return retVal.ELGAUpdateDocumentResult
         End Function
-
+        
         Public Function ELGAUpdateDocumentAsync(ByVal request As ServiceReference_01.ELGAUpdateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ELGAUpdateDocumentResponse) Implements ServiceReference_01.Service1.ELGAUpdateDocumentAsync
             Return MyBase.Channel.ELGAUpdateDocumentAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_ElgaDeprecateDocument(ByVal request As ServiceReference_01.ElgaDeprecateDocumentRequest) As ServiceReference_01.ElgaDeprecateDocumentResponse Implements ServiceReference_01.Service1.ElgaDeprecateDocument
             Return MyBase.Channel.ElgaDeprecateDocument(request)
         End Function
-
+        
         Public Function ElgaDeprecateDocument(ByRef parsIn As ServiceReference_01.ELGAParInDto, ByVal UniqueId As String) As ServiceReference_01.ELGAParOutDto
             Dim inValue As ServiceReference_01.ElgaDeprecateDocumentRequest = New ServiceReference_01.ElgaDeprecateDocumentRequest()
             inValue.parsIn = parsIn
             inValue.UniqueId = UniqueId
-            Dim retVal As ServiceReference_01.ElgaDeprecateDocumentResponse = CType(Me, ServiceReference_01.Service1).ElgaDeprecateDocument(inValue)
+            Dim retVal As ServiceReference_01.ElgaDeprecateDocumentResponse = CType(Me,ServiceReference_01.Service1).ElgaDeprecateDocument(inValue)
             parsIn = retVal.parsIn
             Return retVal.ElgaDeprecateDocumentResult
         End Function
-
+        
         Public Function ElgaDeprecateDocumentAsync(ByVal request As ServiceReference_01.ElgaDeprecateDocumentRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ElgaDeprecateDocumentResponse) Implements ServiceReference_01.Service1.ElgaDeprecateDocumentAsync
             Return MyBase.Channel.ElgaDeprecateDocumentAsync(request)
         End Function
-
+        
         Public Function genCDA(ByVal vars As ServiceReference_01.CDACDAIN) As ServiceReference_01.CDACDABack Implements ServiceReference_01.Service1.genCDA
             Return MyBase.Channel.genCDA(vars)
         End Function
-
+        
         Public Function genCDAAsync(ByVal vars As ServiceReference_01.CDACDAIN) As System.Threading.Tasks.Task(Of ServiceReference_01.CDACDABack) Implements ServiceReference_01.Service1.genCDAAsync
             Return MyBase.Channel.genCDAAsync(vars)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_Export(ByVal request As ServiceReference_01.ExportRequest) As ServiceReference_01.ExportResponse Implements ServiceReference_01.Service1.Export
             Return MyBase.Channel.Export(request)
         End Function
-
+        
         Public Function Export(ByVal IDClient As System.Guid, ByVal IDPatient As System.Guid, ByRef ArchivPath As String, ByVal IsTest As Boolean, <System.Runtime.InteropServices.OutAttribute()> ByRef FileNameXMLDocumentBack As String) As Boolean
             Dim inValue As ServiceReference_01.ExportRequest = New ServiceReference_01.ExportRequest()
             inValue.IDClient = IDClient
             inValue.IDPatient = IDPatient
             inValue.ArchivPath = ArchivPath
             inValue.IsTest = IsTest
-            Dim retVal As ServiceReference_01.ExportResponse = CType(Me, ServiceReference_01.Service1).Export(inValue)
+            Dim retVal As ServiceReference_01.ExportResponse = CType(Me,ServiceReference_01.Service1).Export(inValue)
             ArchivPath = retVal.ArchivPath
             FileNameXMLDocumentBack = retVal.FileNameXMLDocumentBack
             Return retVal.ExportResult
         End Function
-
+        
         Public Function ExportAsync(ByVal request As ServiceReference_01.ExportRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.ExportResponse) Implements ServiceReference_01.Service1.ExportAsync
             Return MyBase.Channel.ExportAsync(request)
         End Function
-
-        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>
+        
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
         Function ServiceReference_01_Service1_DynReportsInitStructure(ByVal request As ServiceReference_01.DynReportsInitStructureRequest) As ServiceReference_01.DynReportsInitStructureResponse Implements ServiceReference_01.Service1.DynReportsInitStructure
             Return MyBase.Channel.DynReportsInitStructure(request)
         End Function
-
+        
         Public Function DynReportsInitStructure(ByRef RootPath As String, ByVal IDClient As System.Guid) As Boolean
             Dim inValue As ServiceReference_01.DynReportsInitStructureRequest = New ServiceReference_01.DynReportsInitStructureRequest()
             inValue.RootPath = RootPath
             inValue.IDClient = IDClient
-            Dim retVal As ServiceReference_01.DynReportsInitStructureResponse = CType(Me, ServiceReference_01.Service1).DynReportsInitStructure(inValue)
+            Dim retVal As ServiceReference_01.DynReportsInitStructureResponse = CType(Me,ServiceReference_01.Service1).DynReportsInitStructure(inValue)
             RootPath = retVal.RootPath
             Return retVal.DynReportsInitStructureResult
         End Function
-
+        
         Public Function DynReportsInitStructureAsync(ByVal request As ServiceReference_01.DynReportsInitStructureRequest) As System.Threading.Tasks.Task(Of ServiceReference_01.DynReportsInitStructureResponse) Implements ServiceReference_01.Service1.DynReportsInitStructureAsync
             Return MyBase.Channel.DynReportsInitStructureAsync(request)
         End Function
-
+        
         Public Function getvKlientenliste(ByVal IDClient As System.Guid) As Byte()() Implements ServiceReference_01.Service1.getvKlientenliste
             Return MyBase.Channel.getvKlientenliste(IDClient)
         End Function
-
+        
         Public Function getvKlientenlisteAsync(ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of Byte()()) Implements ServiceReference_01.Service1.getvKlientenlisteAsync
             Return MyBase.Channel.getvKlientenlisteAsync(IDClient)
         End Function
-
+        
         Public Sub testPDFIum() Implements ServiceReference_01.Service1.testPDFIum
-            MyBase.Channel.testPDFIum()
+            MyBase.Channel.testPDFIum
         End Sub
-
+        
         Public Function testPDFIumAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.testPDFIumAsync
             Return MyBase.Channel.testPDFIumAsync
         End Function
-
+        
         Public Function messagesSent(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto Implements ServiceReference_01.Service1.messagesSent
             Return MyBase.Channel.messagesSent(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
         End Function
-
+        
         Public Function messagesSentAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto) Implements ServiceReference_01.Service1.messagesSentAsync
             Return MyBase.Channel.messagesSentAsync(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
         End Function
-
+        
         Public Function messagesUnreadedUsr(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto Implements ServiceReference_01.Service1.messagesUnreadedUsr
             Return MyBase.Channel.messagesUnreadedUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
         End Function
-
+        
         Public Function messagesUnreadedUsrAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto) Implements ServiceReference_01.Service1.messagesUnreadedUsrAsync
             Return MyBase.Channel.messagesUnreadedUsrAsync(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
         End Function
-
+        
         Public Function messagesAllUsr(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDto Implements ServiceReference_01.Service1.messagesAllUsr
             Return MyBase.Channel.messagesAllUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
         End Function
-
+        
         Public Function messagesAllUsrAsync(ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal UserId As System.Guid, ByVal dFromTmp As Date, ByVal dToTmp As Date, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDto) Implements ServiceReference_01.Service1.messagesAllUsrAsync
             Return MyBase.Channel.messagesAllUsrAsync(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, IDClient)
         End Function
-
+        
         Public Function addMessage(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As ServiceReference_01.MessagesDTO1 Implements ServiceReference_01.Service1.addMessage
             Return MyBase.Channel.addMessage(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, IDClient)
         End Function
-
+        
         Public Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1) Implements ServiceReference_01.Service1.addMessageAsync
             Return MyBase.Channel.addMessageAsync(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, IDClient)
         End Function
-
+        
         Public Function TestWCFService() As Boolean Implements ServiceReference_01.Service1.TestWCFService
             Return MyBase.Channel.TestWCFService
         End Function
-
+        
         Public Function TestWCFServiceAsync() As System.Threading.Tasks.Task(Of Boolean) Implements ServiceReference_01.Service1.TestWCFServiceAsync
             Return MyBase.Channel.TestWCFServiceAsync
         End Function
