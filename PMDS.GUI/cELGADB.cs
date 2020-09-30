@@ -1142,7 +1142,7 @@ namespace PMDS.GUI.Print
                                         pps.GenehmigungDatum
                                     }).FirstOrDefault();
 
-                    if (!String.IsNullOrWhiteSpace(rPatInfo.Bezeichnung))
+                    if (rPatInfo != null)
                     {
                         PflegStuf.Nachname = rPatInfo.Nachname;
                         PflegStuf.Vorname = rPatInfo.Vorname;

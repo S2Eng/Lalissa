@@ -759,10 +759,10 @@
     <Compile Include="generic.cs" />
     <Compile Include="Heimvertraege\cHeimvertraege.cs" />
     <Compile Include="ImportMedDaten.cs" />
-    <Compile Include="KlientByKostentrÃ¤ger.Designer.cs">
+    <Compile Include="KlientByKostenträger.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KlientByKostentrÃ¤ger.xsd</DependentUpon>
+      <DependentUpon>KlientByKostenträger.xsd</DependentUpon>
     </Compile>
     <Compile Include="Other\cConfig.cs" />
     <Compile Include="Other\Config.cs" />
@@ -1085,8 +1085,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="db\Global\dsAlleKostFÃ¼rKlient.Designer.cs">
-      <DependentUpon>dsAlleKostFÃ¼rKlient.xsd</DependentUpon>
+    <Compile Include="db\Global\dsAlleKostFürKlient.Designer.cs">
+      <DependentUpon>dsAlleKostFürKlient.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1429,11 +1429,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="db\Global\ds_abrechnung\dsPatientKostentrÃ¤gerGÃ¼ltigBis.cs">
-      <DependentUpon>dsPatientKostentrÃ¤gerGÃ¼ltigBis.xsd</DependentUpon>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientKostenträgerGültigBis.cs">
+      <DependentUpon>dsPatientKostenträgerGültigBis.xsd</DependentUpon>
     </Compile>
-    <Compile Include="db\Global\ds_abrechnung\dsPatientKostentrÃ¤gerGÃ¼ltigBis.Designer.cs">
-      <DependentUpon>dsPatientKostentrÃ¤gerGÃ¼ltigBis.xsd</DependentUpon>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientKostenträgerGültigBis.Designer.cs">
+      <DependentUpon>dsPatientKostenträgerGültigBis.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1442,8 +1442,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGÃ¼ltigBis.Designer.cs">
-      <DependentUpon>dsPatientLeistungsplanGÃ¼ltigBis.xsd</DependentUpon>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGültigBis.Designer.cs">
+      <DependentUpon>dsPatientLeistungsplanGültigBis.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1468,11 +1468,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGÃ¼ltigBis.cs">
-      <DependentUpon>dsPatientTaschengeldKostentraegerGÃ¼ltigBis.xsd</DependentUpon>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGültigBis.cs">
+      <DependentUpon>dsPatientTaschengeldKostentraegerGültigBis.xsd</DependentUpon>
     </Compile>
-    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGÃ¼ltigBis.Designer.cs">
-      <DependentUpon>dsPatientTaschengeldKostentraegerGÃ¼ltigBis.xsd</DependentUpon>
+    <Compile Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGültigBis.Designer.cs">
+      <DependentUpon>dsPatientTaschengeldKostentraegerGültigBis.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1674,11 +1674,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="db\Patient\dsPatientZusaÃ¤tzlicheDatenByID.cs">
-      <DependentUpon>dsPatientZusaÃ¤tzlicheDatenByID.xsd</DependentUpon>
+    <Compile Include="db\Patient\dsPatientZusaätzlicheDatenByID.cs">
+      <DependentUpon>dsPatientZusaätzlicheDatenByID.xsd</DependentUpon>
     </Compile>
-    <Compile Include="db\Patient\dsPatientZusaÃ¤tzlicheDatenByID.Designer.cs">
-      <DependentUpon>dsPatientZusaÃ¤tzlicheDatenByID.xsd</DependentUpon>
+    <Compile Include="db\Patient\dsPatientZusaätzlicheDatenByID.Designer.cs">
+      <DependentUpon>dsPatientZusaätzlicheDatenByID.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -1879,6 +1879,7 @@
     <Compile Include="UI\contELGALogIn.Designer.cs">
       <DependentUpon>contELGALogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ELGA\clsELGAPrint.cs" />
     <Compile Include="UI\ELGA\contCDAViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2575,16 +2576,16 @@
     <None Include="db\Global\dsAerzte.xss">
       <DependentUpon>dsAerzte.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\dsAlleKostFÃ¼rKlient.xsc">
-      <DependentUpon>dsAlleKostFÃ¼rKlient.xsd</DependentUpon>
+    <None Include="db\Global\dsAlleKostFürKlient.xsc">
+      <DependentUpon>dsAlleKostFürKlient.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\dsAlleKostFÃ¼rKlient.xsd">
+    <None Include="db\Global\dsAlleKostFürKlient.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsAlleKostFÃ¼rKlient.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsAlleKostFürKlient.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="db\Global\dsAlleKostFÃ¼rKlient.xss">
-      <DependentUpon>dsAlleKostFÃ¼rKlient.xsd</DependentUpon>
+    <None Include="db\Global\dsAlleKostFürKlient.xss">
+      <DependentUpon>dsAlleKostFürKlient.xsd</DependentUpon>
     </None>
     <None Include="db\Global\dsAuswahlGruppe.xsc">
       <DependentUpon>dsAuswahlGruppe.xsd</DependentUpon>
@@ -3266,16 +3267,16 @@
     <None Include="db\Global\ds_abrechnung\dsPatientEinkommen.xss">
       <DependentUpon>dsPatientEinkommen.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientKostentrÃ¤gerGÃ¼ltigBis.xsc">
-      <DependentUpon>dsPatientKostentrÃ¤gerGÃ¼ltigBis.xsd</DependentUpon>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostenträgerGültigBis.xsc">
+      <DependentUpon>dsPatientKostenträgerGültigBis.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientKostentrÃ¤gerGÃ¼ltigBis.xsd">
+    <None Include="db\Global\ds_abrechnung\dsPatientKostenträgerGültigBis.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsPatientKostentrÃ¤gerGÃ¼ltigBis.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsPatientKostenträgerGültigBis.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientKostentrÃ¤gerGÃ¼ltigBis.xss">
-      <DependentUpon>dsPatientKostentrÃ¤gerGÃ¼ltigBis.xsd</DependentUpon>
+    <None Include="db\Global\ds_abrechnung\dsPatientKostenträgerGültigBis.xss">
+      <DependentUpon>dsPatientKostenträgerGültigBis.xsd</DependentUpon>
     </None>
     <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplan.xsc">
       <DependentUpon>dsPatientLeistungsplan.xsd</DependentUpon>
@@ -3289,16 +3290,16 @@
     <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplan.xss">
       <DependentUpon>dsPatientLeistungsplan.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGÃ¼ltigBis.xsc">
-      <DependentUpon>dsPatientLeistungsplanGÃ¼ltigBis.xsd</DependentUpon>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGültigBis.xsc">
+      <DependentUpon>dsPatientLeistungsplanGültigBis.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGÃ¼ltigBis.xsd">
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGültigBis.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsPatientLeistungsplanGÃ¼ltigBis.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsPatientLeistungsplanGültigBis.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGÃ¼ltigBis.xss">
-      <DependentUpon>dsPatientLeistungsplanGÃ¼ltigBis.xsd</DependentUpon>
+    <None Include="db\Global\ds_abrechnung\dsPatientLeistungsplanGültigBis.xss">
+      <DependentUpon>dsPatientLeistungsplanGültigBis.xsd</DependentUpon>
     </None>
     <None Include="db\Global\ds_abrechnung\dsPatientPflegestufe.xsc">
       <DependentUpon>dsPatientPflegestufe.xsd</DependentUpon>
@@ -3335,16 +3336,16 @@
     <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraeger.xss">
       <DependentUpon>dsPatientTaschengeldKostentraeger.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGÃ¼ltigBis.xsc">
-      <DependentUpon>dsPatientTaschengeldKostentraegerGÃ¼ltigBis.xsd</DependentUpon>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGültigBis.xsc">
+      <DependentUpon>dsPatientTaschengeldKostentraegerGültigBis.xsd</DependentUpon>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGÃ¼ltigBis.xsd">
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGültigBis.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsPatientTaschengeldKostentraegerGÃ¼ltigBis.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsPatientTaschengeldKostentraegerGültigBis.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGÃ¼ltigBis.xss">
-      <DependentUpon>dsPatientTaschengeldKostentraegerGÃ¼ltigBis.xsd</DependentUpon>
+    <None Include="db\Global\ds_abrechnung\dsPatientTaschengeldKostentraegerGültigBis.xss">
+      <DependentUpon>dsPatientTaschengeldKostentraegerGültigBis.xsd</DependentUpon>
     </None>
     <None Include="db\Global\ds_abrechnung\dsPflegegeldstufe.xsc">
       <DependentUpon>dsPflegegeldstufe.xsd</DependentUpon>
@@ -3625,16 +3626,16 @@
     <None Include="db\Patient\dsPatientStation.xss">
       <DependentUpon>dsPatientStation.xsd</DependentUpon>
     </None>
-    <None Include="db\Patient\dsPatientZusaÃ¤tzlicheDatenByID.xsc">
-      <DependentUpon>dsPatientZusaÃ¤tzlicheDatenByID.xsd</DependentUpon>
+    <None Include="db\Patient\dsPatientZusaätzlicheDatenByID.xsc">
+      <DependentUpon>dsPatientZusaätzlicheDatenByID.xsd</DependentUpon>
     </None>
-    <None Include="db\Patient\dsPatientZusaÃ¤tzlicheDatenByID.xsd">
+    <None Include="db\Patient\dsPatientZusaätzlicheDatenByID.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsPatientZusaÃ¤tzlicheDatenByID.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsPatientZusaätzlicheDatenByID.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="db\Patient\dsPatientZusaÃ¤tzlicheDatenByID.xss">
-      <DependentUpon>dsPatientZusaÃ¤tzlicheDatenByID.xsd</DependentUpon>
+    <None Include="db\Patient\dsPatientZusaätzlicheDatenByID.xss">
+      <DependentUpon>dsPatientZusaätzlicheDatenByID.xsd</DependentUpon>
     </None>
     <None Include="db\Patient\dsRezeptBestellung.xsc">
       <DependentUpon>dsRezeptBestellung.xsd</DependentUpon>
@@ -3883,16 +3884,16 @@
     <None Include="db\Pflegeplan\dsZusatzwerteForEintrag.xss">
       <DependentUpon>dsZusatzwerteForEintrag.xsd</DependentUpon>
     </None>
-    <None Include="KlientByKostentrÃ¤ger.xsc">
-      <DependentUpon>KlientByKostentrÃ¤ger.xsd</DependentUpon>
+    <None Include="KlientByKostenträger.xsc">
+      <DependentUpon>KlientByKostenträger.xsd</DependentUpon>
     </None>
-    <None Include="KlientByKostentrÃ¤ger.xsd">
+    <None Include="KlientByKostenträger.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>KlientByKostentrÃ¤ger.Designer.cs</LastGenOutput>
+      <LastGenOutput>KlientByKostenträger.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="KlientByKostentrÃ¤ger.xss">
-      <DependentUpon>KlientByKostentrÃ¤ger.xsd</DependentUpon>
+    <None Include="KlientByKostenträger.xss">
+      <DependentUpon>KlientByKostenträger.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="PMDS.Core.pfx" />
@@ -3958,6 +3959,17 @@
     <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.6\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

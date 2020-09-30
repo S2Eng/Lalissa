@@ -12,6 +12,7 @@ using System.IO;
 using PMDS.Global.db.ERSystem;
 using PMDSClient.Sitemap;
 
+
 namespace PMDS.GUI.ELGA
 {
 
@@ -114,10 +115,15 @@ namespace PMDS.GUI.ELGA
                 throw new Exception("contCDAViewer.initControl: " + ex.ToString());
             }
         }
+
         public void loadFileIntoViewer()
         {
             try
             {
+                //clsELGAPrint pr = new clsELGAPrint();
+                //pr.ShowCDAInBrowser(Path.GetTempFileName());
+
+
                 string pTmp = System.IO.Path.Combine(ENV.path_Temp, "CDA");
                 string StyleSheetNameTmp = "";
                 if (this._Stylesheet.Trim() == "")
@@ -318,8 +324,6 @@ namespace PMDS.GUI.ELGA
             {
                 this.Cursor = Cursors.Default;
             }
-        }
-
+        }        
     }
-
 }
