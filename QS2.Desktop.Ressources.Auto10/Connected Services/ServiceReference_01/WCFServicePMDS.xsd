@@ -3,14 +3,14 @@
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ENVClientDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ConfigFilePMDS" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ConfigPathPMDS" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Db" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IDClient" type="ser:guid" />
-      <xs:element minOccurs="0" name="Pwd" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Srv" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Usr" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="trusted" type="xs:boolean" />
+      <xs:element name="_x003C_ConfigFilePMDS_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ConfigPathPMDS_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Db_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_IDClient_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Pwd_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Srv_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Usr_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_trusted_x003E_k__BackingField" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ENVClientDto" nillable="true" type="tns:ENVClientDto" />

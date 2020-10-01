@@ -33,7 +33,6 @@ using System.Xml.Xsl;
 
 using System.Diagnostics;
 using Microsoft.Win32;
-using IWshRuntimeLibrary;
 
 namespace PMDS.GUI.Print
 {

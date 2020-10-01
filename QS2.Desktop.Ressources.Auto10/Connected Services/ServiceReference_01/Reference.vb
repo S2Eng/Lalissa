@@ -27,29 +27,21 @@ Namespace ServiceReference_01
         <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ConfigFilePMDSField As String
+        Private ConfigFilePMDSk__BackingFieldField As String
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ConfigPathPMDSField As String
+        Private ConfigPathPMDSk__BackingFieldField As String
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private DbField As String
+        Private Dbk__BackingFieldField As String
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private IDClientField As System.Guid
+        Private IDClientk__BackingFieldField As System.Guid
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private PwdField As String
+        Private Pwdk__BackingFieldField As String
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private SrvField As String
+        Private Srvk__BackingFieldField As String
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private UsrField As String
+        Private Usrk__BackingFieldField As String
         
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private trustedField As Boolean
+        Private trustedk__BackingFieldField As Boolean
         
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
@@ -61,106 +53,106 @@ Namespace ServiceReference_01
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ConfigFilePMDS() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ConfigFilePMDS>k__BackingField", IsRequired:=true)>  _
+        Public Property ConfigFilePMDSk__BackingField() As String
             Get
-                Return Me.ConfigFilePMDSField
+                Return Me.ConfigFilePMDSk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ConfigFilePMDSField, value) <> true) Then
-                    Me.ConfigFilePMDSField = value
-                    Me.RaisePropertyChanged("ConfigFilePMDS")
+                If (Object.ReferenceEquals(Me.ConfigFilePMDSk__BackingFieldField, value) <> true) Then
+                    Me.ConfigFilePMDSk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ConfigFilePMDSk__BackingField")
                 End If
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ConfigPathPMDS() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<ConfigPathPMDS>k__BackingField", IsRequired:=true)>  _
+        Public Property ConfigPathPMDSk__BackingField() As String
             Get
-                Return Me.ConfigPathPMDSField
+                Return Me.ConfigPathPMDSk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ConfigPathPMDSField, value) <> true) Then
-                    Me.ConfigPathPMDSField = value
-                    Me.RaisePropertyChanged("ConfigPathPMDS")
+                If (Object.ReferenceEquals(Me.ConfigPathPMDSk__BackingFieldField, value) <> true) Then
+                    Me.ConfigPathPMDSk__BackingFieldField = value
+                    Me.RaisePropertyChanged("ConfigPathPMDSk__BackingField")
                 End If
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property Db() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Db>k__BackingField", IsRequired:=true)>  _
+        Public Property Dbk__BackingField() As String
             Get
-                Return Me.DbField
+                Return Me.Dbk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.DbField, value) <> true) Then
-                    Me.DbField = value
-                    Me.RaisePropertyChanged("Db")
+                If (Object.ReferenceEquals(Me.Dbk__BackingFieldField, value) <> true) Then
+                    Me.Dbk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Dbk__BackingField")
                 End If
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property IDClient() As System.Guid
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<IDClient>k__BackingField", IsRequired:=true)>  _
+        Public Property IDClientk__BackingField() As System.Guid
             Get
-                Return Me.IDClientField
+                Return Me.IDClientk__BackingFieldField
             End Get
             Set
-                If (Me.IDClientField.Equals(value) <> true) Then
-                    Me.IDClientField = value
-                    Me.RaisePropertyChanged("IDClient")
+                If (Me.IDClientk__BackingFieldField.Equals(value) <> true) Then
+                    Me.IDClientk__BackingFieldField = value
+                    Me.RaisePropertyChanged("IDClientk__BackingField")
                 End If
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property Pwd() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Pwd>k__BackingField", IsRequired:=true)>  _
+        Public Property Pwdk__BackingField() As String
             Get
-                Return Me.PwdField
+                Return Me.Pwdk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.PwdField, value) <> true) Then
-                    Me.PwdField = value
-                    Me.RaisePropertyChanged("Pwd")
+                If (Object.ReferenceEquals(Me.Pwdk__BackingFieldField, value) <> true) Then
+                    Me.Pwdk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Pwdk__BackingField")
                 End If
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property Srv() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Srv>k__BackingField", IsRequired:=true)>  _
+        Public Property Srvk__BackingField() As String
             Get
-                Return Me.SrvField
+                Return Me.Srvk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.SrvField, value) <> true) Then
-                    Me.SrvField = value
-                    Me.RaisePropertyChanged("Srv")
+                If (Object.ReferenceEquals(Me.Srvk__BackingFieldField, value) <> true) Then
+                    Me.Srvk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Srvk__BackingField")
                 End If
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property Usr() As String
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<Usr>k__BackingField", IsRequired:=true)>  _
+        Public Property Usrk__BackingField() As String
             Get
-                Return Me.UsrField
+                Return Me.Usrk__BackingFieldField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.UsrField, value) <> true) Then
-                    Me.UsrField = value
-                    Me.RaisePropertyChanged("Usr")
+                If (Object.ReferenceEquals(Me.Usrk__BackingFieldField, value) <> true) Then
+                    Me.Usrk__BackingFieldField = value
+                    Me.RaisePropertyChanged("Usrk__BackingField")
                 End If
             End Set
         End Property
         
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property trusted() As Boolean
+        <System.Runtime.Serialization.DataMemberAttribute(Name:="<trusted>k__BackingField", IsRequired:=true)>  _
+        Public Property trustedk__BackingField() As Boolean
             Get
-                Return Me.trustedField
+                Return Me.trustedk__BackingFieldField
             End Get
             Set
-                If (Me.trustedField.Equals(value) <> true) Then
-                    Me.trustedField = value
-                    Me.RaisePropertyChanged("trusted")
+                If (Me.trustedk__BackingFieldField.Equals(value) <> true) Then
+                    Me.trustedk__BackingFieldField = value
+                    Me.RaisePropertyChanged("trustedk__BackingField")
                 End If
             End Set
         End Property

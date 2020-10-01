@@ -193,7 +193,7 @@ namespace PMDS.GUI.Print
         {
             System.IO.MemoryStream msXML = this.ucELGAPrintPflegesituationsbericht1.GenerateCDA(false);
             ELGA.clsELGAPrint pr = new ELGA.clsELGAPrint();
-            pr.ShowCDAInBrowser(msXML, "");
+            pr.ShowXMLInBrowser(msXML, "", true);
             //this.ucELGAPrintPflegesituationsbericht1.UpdatePreView(msXML);
             btnOK.Enabled = true;
         }

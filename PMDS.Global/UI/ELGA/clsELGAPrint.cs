@@ -1,11 +1,11 @@
-﻿using IWshRuntimeLibrary;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using PMDS.Global;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +14,7 @@ namespace PMDS.GUI.ELGA
 {
     public class clsELGAPrint
     {
-        public void ShowCDAInBrowser(MemoryStream msXML, string sFileName)
+        public void ShowXMLInBrowser(MemoryStream msXML, string sFileName, bool UseCDAStyleSheet)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace PMDS.GUI.ELGA
                     }
 
                     clsELGAPrint clsELGAPrint = new clsELGAPrint();
-                    int iCheckXSLT = clsELGAPrint.CopyXSLT(sFileName);
+                    int iCheckXSLT = (UseCDAStyleSheet ? clsELGAPrint.CopyXSLT(sFileName) : 0); 
                     if (iCheckXSLT == 0)
                     {
                         foreach (string sBrowser in browsers)
@@ -107,22 +107,38 @@ namespace PMDS.GUI.ELGA
                             }
                             else if (sBrowser.ToUpper().Contains("CHROME") || sBrowser.ToUpper().Contains("EDGE"))   //Liest Dateien nur mit einem Link!
                             {
-                                var startupFolderPath = ENV.path_Temp;
-                                var shell = new WshShell();
-                                var shortCutLinkFilePath = Path.Combine(startupFolderPath, "PSB.lnk");
-                                var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);
-                                windowsApplicationShortcut.Description = "Link für Anzeige Pflegesituationsbericht";
-                                windowsApplicationShortcut.WorkingDirectory = ENV.path_Temp;
-                                windowsApplicationShortcut.TargetPath = sBrowser; // + " --allow-file-access-from-files ";
-                                windowsApplicationShortcut.Arguments = "--allow-file-access-from-files";
-                                windowsApplicationShortcut.Save();
-                                System.Diagnostics.Process.Start(shortCutLinkFilePath, sFileName);
-                                System.IO.File.Delete(shortCutLinkFilePath);
+                                
+                                Type t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")); //Windows Script Host Shell Object
+                                dynamic shell1 = Activator.CreateInstance(t);
+                                try
+                                {
+                                    var startupFolderPath1 = ENV.path_Temp;
+                                    var shortCutLinkFilePath1 = Path.Combine(startupFolderPath1, "PSB.lnk");
+                                    var lnk = shell1.CreateShortcut(shortCutLinkFilePath1);
+                                    try
+                                    {
+                                        lnk.Description = "Link für Anzeige Pflegesituationsbericht";
+                                        lnk.WorkingDirectory = ENV.path_Temp;
+                                        lnk.TargetPath = sBrowser; // + " --allow-file-access-from-files ";
+                                        lnk.Arguments = "--allow-file-access-from-files";
+                                        lnk.Save();
+                                        System.Diagnostics.Process.Start(shortCutLinkFilePath1, sFileName);
+                                        System.IO.File.Delete(shortCutLinkFilePath1);
+                                    }
+                                    finally
+                                    {
+                                        Marshal.FinalReleaseComObject(lnk);
+                                    }
+                                }
+                                finally
+                                {
+                                    Marshal.FinalReleaseComObject(shell1);
+                                }
                                 return;
                             }
                             else
                             {
-                                MessageBox.Show("Bitte verwenden Sie Firefox, Chrome, Internet Explorer oder Edge.", "Hinweis");
+                                MessageBox.Show("Bitte verwenden Sie Firefox, Chrome, Internet Explorer oder Edge (Chromium).", "Hinweis");
                             }
                         }
                     }
@@ -132,12 +148,12 @@ namespace PMDS.GUI.ELGA
                     }
                     else if (iCheckXSLT == 2)
                     {
-                        MessageBox.Show("Das temporaäre Stylesheet kann nicht erstellt werden.\r\nDie korrekte Anzeige des Dokuments ist nicht möglich.", "Hinweis");
+                        MessageBox.Show("Das temporäre Stylesheet kann nicht erstellt werden.\r\nDie korrekte Anzeige des Dokuments ist nicht möglich.", "Hinweis");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Für die Anzeige muss ein Internet-Browser (Firefox, Chrome, Internet Explorer oder Edge) verfügbar sein.", "Hinweis");
+                    MessageBox.Show("Für die Anzeige muss ein geeigneter Browser (Firefox, Chrome, Internet Explorer oder Edge (Chromium)) verfügbar sein.", "Hinweis");
                 }
             }
             catch (Exception ex)
