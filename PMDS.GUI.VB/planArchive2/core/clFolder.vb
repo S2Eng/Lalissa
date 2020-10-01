@@ -2,8 +2,7 @@ Imports System.IO
 Imports System.Windows.Forms
 Imports System.Data.OleDb
 Imports Microsoft.Win32
-
-
+Imports PMDS.GUI.ELGA
 
 Public Class clFolder
 
@@ -157,8 +156,8 @@ Public Class clFolder
                     End If
                 Else
                     Dim gen As New General()
-                    Dim frmTxtEditor1 As qs2.Desktop.Txteditor.frmTxtEditor = gen.openTxtEditor(False)
-                    Dim dOnSaveDocu As New qs2.Desktop.Txteditor.contTxtEditor.onSaveDocu(AddressOf Me.saveDocu)
+                    Dim frmTxtEditor1 As QS2.Desktop.Txteditor.frmTxtEditor = gen.openTxtEditor(False)
+                    Dim dOnSaveDocu As New QS2.Desktop.Txteditor.contTxtEditor.onSaveDocu(AddressOf Me.saveDocu)
                     frmTxtEditor1.ContTxtEditor1.delOnSaveDocu = dOnSaveDocu
 
                     frmTxtEditor1.ContTxtEditor1.IDDocu = rDoku.ID
@@ -167,7 +166,7 @@ Public Class clFolder
 
                     frmTxtEditor1.Show()
                     'frm.openDokument(file, TXTextControl.StreamType.InternalFormat, False)
-                    Dim doEditor1 As New qs2.Desktop.Txteditor.doEditor()
+                    Dim doEditor1 As New QS2.Desktop.Txteditor.doEditor()
                     doEditor1.showText("", TXTextControl.StreamType.InternalFormat, True, TXTextControl.ViewMode.PageView, frmTxtEditor1.ContTxtEditor1.textControl1, rDoku.binIntern)
                 End If
             Else
@@ -204,18 +203,26 @@ Public Class clFolder
         Try
             If System.IO.File.Exists(file) Then
 
-                Dim dateiTyp As String = System.IO.Path.GetExtension(file)
+                Dim dateiTyp As String = System.IO.Path.GetExtension(file).ToLower()
 
                 If Me.IsNull(dateiTyp) Then
                     Throw New Exception("openFile: No Type for open File '" + file + "'!")
                 End If
 
                 If Not printFile Then
-                    dateiTyp = dateiTyp.Trim().ToLower()
-                    If dateiTyp.Equals((".bef")) Or dateiTyp.Equals((".lab")) Then
+                    If dateiTyp.Equals(".bef") Or dateiTyp.Equals(".lab") Then
                         Dim frmEdiFactViewer1 As New EDIFact.frmEdiFactViewer()
                         frmEdiFactViewer1.initControl(file, "", "")
                         frmEdiFactViewer1.Show()
+                    ElseIf dateiTyp = ".xml" Then
+                        Dim pr As New clsELGAPrint
+                        Dim bData As Byte()
+                        Dim br As BinaryReader = New BinaryReader(System.IO.File.OpenRead(file))
+                        bData = br.ReadBytes(br.BaseStream.Length)
+                        Using msXML As MemoryStream = New MemoryStream(bData, 0, bData.Length)
+                            msXML.Write(bData, 0, bData.Length)
+                            pr.ShowXMLInBrowser(msXML, "", True)
+                        End Using
                     Else
                         System.Diagnostics.Process.Start(file)
                     End If
