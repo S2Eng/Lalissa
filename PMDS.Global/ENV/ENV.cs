@@ -38,16 +38,66 @@ namespace PMDS.Global
 
     public class ENV
     {
+        public enum pdfDruckTyp
+        {
+            einzelblatt = 0,
+            massenblatt = 1,
+            pdf = 2,
+            vorschau = 3
+        }
+
+        public enum eKlientenberichtTyp
+        {
+            full = 0,
+            blackoutprevention = 1
+        }
+
+        private enum eDecrypt
+        {
+            QS2Mode = 2,
+            PMDSMode = 1,
+            no = 0
+        }
+
+        private enum eTrim
+        {
+            yes = 1,
+            no = 0
+        }
+
+        public enum TaskbarPosition
+        {
+            Ausgeblendet = 0,
+            Unten = 1,
+            Rechts = 2,
+            Links = 3,
+            Oben = 4
+        }
+
+        public enum RezeptdruckTyp
+        {
+            MedikamenteBestellen = 0,
+            RezeptDruck = 1,
+            Beides = 2
+        }
+        public enum eFctCallMainFctPlan
+        {
+            Dekurs = 0,
+            DekursErstellen = 1,
+            DekursErstellenAls = 2,
+            PrintTermine = 3
+        }
+
+
         public static bool VisualStudioMode = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
         public static Guid VersionNr = new Guid("10000000-1009-1000-0000-000000000001");
 
-        public static System.Data.OleDb.OleDbConnection conGiboDat = null;
+        public static System.Data.OleDb.OleDbConnection conGiboDat;
         public static string IDApplication = qs2.core.license.doLicense.eApp.PMDS.ToString();
 
         public static string pmdsRelease = "Release 4";
         public static int pmdsDBVersion = 41000;
         public static string StartupTyp = "";                       //Mit welchem Paramter ?typ wurde gestartet
-        //public static string Bereich          = "";
         public static string typRechNr = "Standard";
 
         public static string MedikamenteImportType = "ftp";
@@ -65,7 +115,7 @@ namespace PMDS.Global
                                                     //Objekt=Gegenzeichnen|WichtigFür,WichtigFür;Objekt=Gegenzeichnen|WichtigFür,WichtigFür, ....
         public static string PathDokumente = "";
 
-        public static bool ProxyJN = false;
+        public static bool ProxyJN;
         public static string ProxyDomain = "";
         public static string ProxyHost = "";
         public static int ProxyPort = 0;
@@ -83,7 +133,7 @@ namespace PMDS.Global
         public static string sConfigRootDir = "";                //<20120118>, beschreibbare Pfade ins %ALLUSERPROFILES% 
         public static string SimpleInstall = "";
         public static string StartFromShare = "";
-        public static bool DoOrigPathConfig = false;
+        public static bool DoOrigPathConfig;
         
         public static string ConfigFileLauncher = "";
         public static string LauncherExe = "";
@@ -94,31 +144,31 @@ namespace PMDS.Global
         public static string OrigConfigFile = "";
 
         public static string TypeRessourcesRun = "";
-        public static bool DoNotShowRessources = false;
-        public static bool AutoAddNewRessources = false;
+        public static bool DoNotShowRessources;
+        public static bool AutoAddNewRessources;
         public static bool IntDeactivated = true;
 
-        public static bool adminSecure = false;
-        public static bool LoggedInAsSuperUser = false;
+        public static bool adminSecure;
+        public static bool LoggedInAsSuperUser;
 
-        public static bool PMDSNew = false;
+        public static bool PMDSNew;
         
 
-        public static bool SpellCheckerOn = false;
-        public static bool FullEditMode = false;
+        public static bool SpellCheckerOn;
+        public static bool FullEditMode;
         public static uint AssessmentModifyTime = 24;
         public static bool UseDekursKopieren = true;
-        public static bool CheckScreenSize = false;
+        public static bool CheckScreenSize;
         public static string frmRechnung = "rechnung.rtf";
 
         public static PasswordScore PasswordStrength = PasswordScore.Blank;
-        public static int MaxPasswordAge = 0;
-        public static uint MaxIdleTime = 0;
+        public static int MaxPasswordAge;
+        public static uint MaxIdleTime;
         public static int AutoCloseTime = 120;  //min = 10, max = 720)
-        public static int ToleranzIntervall = 0;
+        public static int ToleranzIntervall;
 
         public static string LoginInNameFrei = "";
-        public static bool APVDA = false;
+        public static bool APVDA;
 
         public static string HAG_Url = "https://edi2.bewohnervertretung.at/api/xmlmapper";
         public static string HAG_Zertifikat = "BIDS EDI Certificate - IK:ER - Id:25";
@@ -133,13 +183,13 @@ namespace PMDS.Global
 
         public static bool AbwesenheitenAnzeigen = true;
 
-        public static bool CheckConnectionAndPassword = false;
-        public static bool WundtherapieVidieren = false;
+        public static bool CheckConnectionAndPassword;
+        public static bool WundtherapieVidieren;
         public static uint WundbildModifyTime = 24;
         public static uint WundverlaufModifyTime = 24;
         public static uint WundtherapieModifyTime = 24;
 
-        private static ResourceManager _resources = null;
+        private static ResourceManager _resources;
 
         public static int ELGAStatusGreen = 240;
         public static int ELGAStatusYellow = 30;
@@ -151,9 +201,7 @@ namespace PMDS.Global
         public static int MedVerabreichenDefault = -1;
         public static bool SavePflegebegleitschreibenToArchiv = true;
 
-
-
-        private static bool _AbteilungRMOptional = false;	            // Flag ob der Rückmeldetext für die Abteilung Optional ist oder nicht
+        private static bool _AbteilungRMOptional;	            // Flag ob der Rückmeldetext für die Abteilung Optional ist oder nicht
         private static string _dbUser = "";
         private static string _dbPassword = "";
         private static string _dbPassword_Encrpyted = "";
@@ -168,11 +216,13 @@ namespace PMDS.Global
         private static string _dbDatabase_PEP = "";
         private static string _IntegratedSecurity_PEP = "";
 
-        public static bool doPatientFromTermineBereich = false;
+        public static string DSNGiboDat = "";
 
-        private static bool _demoversion = false;			            // verspeichert ob es sich um eine Demoversion handelt oder nicht
+        public static bool doPatientFromTermineBereich;
 
-        public static bool _InitInProgress = false;
+        private static bool _demoversion;			            // verspeichert ob es sich um eine Demoversion handelt oder nicht
+
+        public static bool _InitInProgress;
 
         private static readonly string[] _WeekDaysMoStart = { "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So" }; // Wochentage als Text
 
@@ -201,9 +251,9 @@ namespace PMDS.Global
         public static string path_BiografieVorlagen = "";
         public static string path_Temp = "";
 
-        public static bool WCFServiceOnOff = false;
-        public static bool WCFServiceDebugMode = false;
-        public static bool WCFServiceOnlyLocal = false;
+        public static bool WCFServiceOnOff;
+        public static bool WCFServiceDebugMode;
+        public static bool WCFServiceOnlyLocal;
         public static string WCFHostManager = "WCFHostManager";
         public static string WCFServicePMDSDebugPath = "";
 
@@ -215,24 +265,24 @@ namespace PMDS.Global
         public static string License = "";
 
         public static EvaluierungsTypen EvaluierungsTyp = EvaluierungsTypen.Ziel;   // Legt den Evaluierungstyp für das gesamtsystem fest
-        public static bool ShowAufnahmeButton = false;                              // Signalisiert ob der Aufnahmebutton gezeigt werden soll oder nicht
+        public static bool ShowAufnahmeButton;                              // Signalisiert ob der Aufnahmebutton gezeigt werden soll oder nicht
         public static int RezeptDruck = -1;
         public static int RezeptBestellModus = -1;
-        public static uint RezeptModifyTime = 0;
-        public static bool RezeptUseTimeOfDay = false;
+        public static uint RezeptModifyTime;
+        public static bool RezeptUseTimeOfDay;
         public static bool RezeptUseErstattungscode = true;
 
         public static bool OnlyOneFavoritenComboinPlanung = true;
-        public static bool BezugspersonenJN = false;
+        public static bool BezugspersonenJN;
         public static string MedikamenteAbgebenTabText = "Medikamente verabreichen";
 
-        private static bool _RechFloskel = false;
-        private static bool _KuerzungGrundleistungLetzterTag = false;
+        private static bool _RechFloskel;
+        private static bool _KuerzungGrundleistungLetzterTag;
         private static string _ZAHLUNG_TAGE;
-        private static bool _bookingJN = false;
-        private static int _TageOhneKuerzungGrundleistung = 0;
-        public static bool RechErwAbwesenheit = false;
-        public static bool SrErwAbwesenheit = false;
+        private static bool _bookingJN;
+        private static int _TageOhneKuerzungGrundleistung;
+        public static bool RechErwAbwesenheit;
+        public static bool SrErwAbwesenheit;
 
         public static string GSBGTxt = "";
         public static string TransferTxt = "";
@@ -241,44 +291,24 @@ namespace PMDS.Global
 
         public static string MailServiceCenter = "ServiceCenter@s2-engineering.com;";
         public static string eMailStammdaten = "";
-        public static bool AbwesenheitenMinimalUI = false;
+        public static bool AbwesenheitenMinimalUI;
 
         public static bool DicomViewerFileOnly = true;
-        private static bool _appRunning = false;
-
 
         // ---------- Lizenzschalter ------------------
-        public static int lic_eMailBewerber = 0;
-        public static bool lic_VO = false;
-        public static bool lic_VOLager = false;
-        public static bool lic_WundtherapieOffenWarnung = false;
-        public static bool lic_ELGA = false;
-        public static bool lic_RezepteintragStorno = false;
-
+        public static int lic_eMailBewerber;
+        public static bool lic_VO;
+        public static bool lic_VOLager;
+        public static bool lic_WundtherapieOffenWarnung;
+        public static bool lic_ELGA;
+        public static bool lic_RezepteintragStorno;
         //---------------------------------------------
-
 
         // ------------- ELGA - Formatter für override  ---------------------
         public static XmlIts1Formatter ELGAFormatter { get; set; } = new XmlIts1Formatter();
 
 
-
-        public enum pdfDruckTyp
-        {
-            einzelblatt = 0,
-            massenblatt = 1,
-            pdf = 2,
-            vorschau = 3
-        }
-
-        public enum eKlientenberichtTyp
-        {
-            full = 0,
-            blackoutprevention = 1
-        }
-
-        public static bool RechnungKopfzeileEin = false;
-
+        public static bool RechnungKopfzeileEin;
 
         private static bool _ShowPPToolTip = true;                 // Ob der Tooltip im Pflegeplanbutton angezeigt werden soll oder nicht
         public static int _PPToolTipDelay = 1000;                 // Verzögerung zum aufklappen
@@ -328,29 +358,6 @@ namespace PMDS.Global
         public static event klinikChanged evklinikChanged;
 
 
-        public enum TaskbarPosition
-        {
-            Ausgeblendet = 0,
-            Unten = 1,
-            Rechts = 2,
-            Links = 3,
-            Oben = 4
-        }
-
-        public enum RezeptdruckTyp
-        {
-            MedikamenteBestellen = 0,
-            RezeptDruck = 1,
-            Beides = 2
-        }
-
-        public enum eFctCallMainFctPlan
-        {
-            Dekurs = 0,
-            DekursErstellen = 1,
-            DekursErstellenAls = 2,
-            PrintTermine = 3
-        }
         public class eCallMainFctPlan
         {
             public DataSet ds = null;
@@ -586,10 +593,10 @@ namespace PMDS.Global
 
         public static void initClass(string LogPathPMDSFromLauncher)
         {
-            ENV.sRootDir = Application.StartupPath.Substring(0, Application.StartupPath.LastIndexOf("\\"));
+            ENV.sRootDir = System.IO.Directory.GetParent(Application.StartupPath).ToString();    //Application.StartupPath.Substring(0, Application.StartupPath.LastIndexOf("\\"));
             ENV.path_bin = Application.StartupPath;
 
-            if (LogPathPMDSFromLauncher.Trim() == "")
+            if (System.String.IsNullOrWhiteSpace(LogPathPMDSFromLauncher.Trim()))
             {
                 if (ENV.StartFromShare.Trim() == "0")
                 {
@@ -761,8 +768,7 @@ namespace PMDS.Global
             Infragistics.Win.AppStyling.StyleManager.Reset();
 
             if (bOn && System.IO.File.Exists(System.IO.Path.Combine(ENV.pathConfig, "PMDS.isl")))
-                    Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(ENV.pathConfig, "pmds.isl"));
- 
+                    Infragistics.Win.AppStyling.StyleManager.Load(System.IO.Path.Combine(ENV.pathConfig, "pmds.isl")); 
         }
 
         //-------------------------------- Properties -------------------------------------
@@ -1105,13 +1111,7 @@ namespace PMDS.Global
             return false;
         }
 
-        public static bool AppRunning
-        {
-            get { return _appRunning; }
-            set { _appRunning = value; }
-        }
-       
-
+        public static bool AppRunning { get; set; }
 
         private static bool CompareVersion(int iDBVersion, int iAppVersion)
         {
@@ -1208,24 +1208,15 @@ namespace PMDS.Global
                 ENV.intSetupDirs();
 
                 ConfigFile cfg;
-    //            ConfigFile cfgUser;
 
                 Log.RegisterStandardLog(LogDestinations.EventLog, "PMDS");					// Standard zum Eventlog
 
                 cfg = new RBU.ConfigFile(PMDS.Global.ENV.sConfigFile);						// Konfigurationsdatei 
                 _ConfigFile = cfg;
 
-                //StreamWriter myWriter = File.CreateText(userConfig);
-                //myWriter.WriteLine("");
-                //myWriter.Close();
-
-                //cfgUser = new RBU.ConfigFile(userConfig, true);
-                //_ConfigFileUser = cfgUser;
-
                 _Log = Log.LOG;
                 _Log.ConfigFile = _ConfigFile;
 
-                //_Log.ConfigFileUser = _ConfigFileUser;
                 _Log.ROLLOVERLIMIT = 5000000;												// Grenze auf 5MB heben
 
                 _Log.Level = (LogLevels)0;
@@ -1279,13 +1270,13 @@ namespace PMDS.Global
                 //<20120229> Connection-Parameter für Pep-Berichte
                 c = new NameValueCollection();
                 sa = _Log.ConfigFile.GetStringValue("DSNMainPeps").Split(';');
-
                 foreach (string s in sa)
                 {
                     string[] sa1 = s.Split(new[] { "=" }, 2, StringSplitOptions.RemoveEmptyEntries);
                     if (sa1.Length > 1)
                         c.Add(sa1[0].ToLower(), sa1[1]);
                 }
+
                 _dbUser_PEP = c["user id"];
                 _dbPassword_PEP = c["password"];
                 if (_dbPassword != null && (_dbPassword.EndsWith("=") || (_dbPassword.StartsWith("[[[") && _dbPassword.EndsWith("]]]"))))      //os: Verschlüsseltes Passwort berücksichtigen
@@ -1309,378 +1300,167 @@ namespace PMDS.Global
                     PMDS.Global.DBPep.ConnPep.Open();
                 }
 
-                //if (CkeckDBVersion() == false)												// Datenbankversion prüfen
-                //    return false;
+                //------------------------------------------------------- ENV-Variablen aus Config lesen -------------------
+                SetENVValue("adminSecure", ref ENV.adminSecure);
+                SetENVValue("License", ref ENV.License, eTrim.yes, eDecrypt.PMDSMode);
+                SetENVValue("TypeRessourcesRun", ref ENV.TypeRessourcesRun);
+                SetENVValue("SchnellrueckmeldungAsProcess", ref ENV.SchnellrückmeldungAsProcess);
 
-    //            if (CkeckLicense() == false)													// Lizenz prüfen
-    //                return false;
+                SetENVValue("bookingJN", ref ENV._bookingJN);
+                SetENVValue("typRechNr", ref ENV.typRechNr);
+                SetENVValue("RechnungKopfzeileEin", ref ENV.RechnungKopfzeileEin);
+                SetENVValue("RechFloskel", ref ENV._RechFloskel);
+                SetENVValue("KuerzungGrundleistungLetzterTag", ref ENV._KuerzungGrundleistungLetzterTag);
+                SetENVValue("TageOhneKuerzungGrundleistung", ref ENV._TageOhneKuerzungGrundleistung);
+                SetENVValue("RechErwAbwesenheit", ref ENV.RechErwAbwesenheit);
+                SetENVValue("SrErwAbwesenheit", ref ENV.SrErwAbwesenheit);
+                SetENVValue("ZAHLUNG_TAGE", ref ENV._ZAHLUNG_TAGE);
+                SetENVValue("GSBGTxt", ref ENV.GSBGTxt);
+                SetENVValue("TransferTxt", ref ENV.TransferTxt);
+                SetENVValue("DepotgeldKontoTxt", ref ENV.DepotgeldKontoTxt);
+                SetENVValue("RechTitelDepotGeld", ref ENV.RechTitelDepotGeld);
+                SetENVValue("ZahlKondBankeinzug", ref ENV.ZahlKondBankeinzug);
+                SetENVValue("ZahlKondErlagschein", ref ENV.ZahlKondErlagschein);
+                SetENVValue("ZahlKondÜberweisung", ref ENV.ZahlKondÜberweisung);
+                SetENVValue("ZahlKondBar", ref ENV.ZahlKondBar);
+                SetENVValue("AbwesenheitenAnzeigen", ref ENV.AbwesenheitenAnzeigen, "0");
 
+                ENV.PflegeModell = ReadPflegemodelle();
+                if (ENV.PflegeModell.Length == 0)
+                {
+                    System.Windows.Forms.MessageBox.Show("Kritischer Fehler beim Einlesen der Pflegemodelle!");
+                    return false;
+                }
 
                 string stemp = "";
+                SetENVValue("APVDA", ref stemp, eTrim.yes, eDecrypt.PMDSMode);
+                ENV.APVDA = stemp == "1" ? true : false;
 
-                ReadPPTipConfig();
-                readIniCalc();
-                readIniSMTP();
-                ReadPflegemodelle();                                          
+                SetENVValue("MedikamenteImportType", ref ENV.MedikamenteImportType);
+                SetENVValue("ftpFileImportMedikamente", ref ENV.ftpFileImportMedikamente);
+                SetENVValue("ftpUserName", ref ENV.ftpUserName);
+                SetENVValue("ftpPassword", ref ENV.ftpPassword, eTrim.no, eDecrypt.PMDSMode);
+                SetENVValue("ProxyJN", ref ENV.ProxyJN);
+                SetENVValue("ProxyUserName", ref ENV.ProxyUserName);
+                SetENVValue("ProxyPassword", ref ENV.ProxyPassword, eTrim.no, eDecrypt.PMDSMode);
+                SetENVValue("ProxyDomain", ref ENV.ProxyDomain);
+                SetENVValue("ProxyHost", ref ENV.ProxyHost);
+                SetENVValue("ProxyPort", ref ENV.ProxyPort);
+                SetENVValue("ProxyAuthentication", ref ENV.ProxyAuthentication);
 
-                ENV.RezeptDruck = RBUSF.ConvertStringToInt(_Log.ConfigFile.GetStringValue("RezeptDruck"));
-                ENV.RezeptBestellModus = RBUSF.ConvertStringToInt(_Log.ConfigFile.GetStringValue("RezeptBestellModus"));
+                SetENVValue("SMTPFrom", ref PMDS.Global.clSMTP.SMTPFrom);
+                SetENVValue("SMTPTo", ref PMDS.Global.clSMTP.SMTPTo);
+                SetENVValue("SMTPServer", ref PMDS.Global.clSMTP.SMTPServer);
+                SetENVValue("SMTPLoginUsr", ref PMDS.Global.clSMTP.SMTPLoginUsr);
+                SetENVValue("SMTPLoginPwd", ref PMDS.Global.clSMTP.SMTPLoginPwd, eTrim.no, eDecrypt.PMDSMode);
+                SetENVValue("SMTPPort", ref PMDS.Global.clSMTP.SMTPPort);
 
-                ShowAufnahmeButton = _Log.ConfigFile.GetStringValue("SHOW_AUFNAHMEBUTTON") == "ON" ? true : false;
+                SetENVValue("RezeptDruck", ref ENV.RezeptDruck);
+                SetENVValue("RezeptBestellModus", ref ENV.RezeptBestellModus);
+                SetENVValue("SHOW_AUFNAHMEBUTTON", ref ENV.ShowAufnahmeButton);     //In Config von ON|OFF auf 1|0 umstellen!!!  //ENV.ShowAufnahmeButton = _Log.ConfigFile.GetStringValue("SHOW_AUFNAHMEBUTTON") == "ON" ? true : false;
 
-                stemp = _Log.ConfigFile.GetStringValue("PMDSNew");
-                if (stemp.Length > 0)
+                SetENVValue("PMDSNew", ref ENV.PMDSNew);
+                SetENVValue("ELGAStatusGreen", ref ENV.ELGAStatusGreen);
+                SetENVValue("ELGAStatusYellow", ref ENV.ELGAStatusYellow);
+                SetENVValue("ELGAStatusRed", ref ENV.ELGAStatusRed);
+                SetENVValue("ELGAUser", ref ENV.ELGAUser);
+                SetENVValue("ELGAPwd", ref ENV.ELGAPwd, eTrim.no, eDecrypt.QS2Mode);
+
+                SetENVValue("OnlyOneFavoritenComboinPlanung", ref ENV.OnlyOneFavoritenComboinPlanung, "0");
+                SetENVValue("BezugspersonenJN", ref ENV.BezugspersonenJN);
+
+                SetENVValue("DoNotShowRessources", ref ENV.DoNotShowRessources);
+                qs2.core.vb.compLayout.DoNotShowRessources = ENV.DoNotShowRessources;
+
+                SetENVValue("AsynCommCheckMessagesSeconds", ref ENV.AsynCommCheckMessagesSeconds);
+
+                SetENVValue("AutoAddNewRessources", ref ENV.AutoAddNewRessources);
+                SetENVValue("IntDeactivated", ref ENV.IntDeactivated, "0");
+
+                SetENVValue("MedikamenteAbgebenTabText", ref ENV.MedikamenteAbgebenTabText);
+
+                SetENVValue("ArchivPath", ref ENV._ArchivPath);
+                if (!System.String.IsNullOrWhiteSpace(ENV.ArchivPath))
                 {
-                    if (stemp.Trim().Equals(("1")))
-                    {
-                        ENV.PMDSNew = true;
-                    }
-                }
-                //Test für Änderung
-
-                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusGreen");
-                if (stemp.Length > 0)
-                {
-                    ENV.ELGAStatusGreen = System.Convert.ToInt32(stemp);
-                }
-                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusYellow");
-                if (stemp.Length > 0)
-                {
-                    ENV.ELGAStatusYellow = System.Convert.ToInt32(stemp);
-                }
-                stemp = _Log.ConfigFile.GetStringValue("ELGAStatusRed");
-                if (stemp.Length > 0)
-                {
-                    ENV.ELGAStatusRed = System.Convert.ToInt32(stemp);
-                }
-                
-                stemp = _Log.ConfigFile.GetStringValue("ELGAUser");
-                if (stemp.Length > 0)
-                {
-                    ENV.ELGAUser = stemp.Trim();
-                }
-                stemp = _Log.ConfigFile.GetStringValue("ELGAPwd");
-                if (stemp.Length > 0)
-                {
-                    qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
-                    ENV.ELGAPwd = ELGAPwdDecrypted.Trim();
-                }
-
-                stemp = _Log.ConfigFile.GetStringValue("OnlyOneFavoritenComboinPlanung");
-                if (stemp.Length > 0 && stemp == "0")
-                    PMDS.Global.ENV.OnlyOneFavoritenComboinPlanung = false;
-                        
-                stemp = _Log.ConfigFile.GetStringValue("BezugspersonenJN");
-                if (stemp.Length > 0 && stemp == "1")
-                    PMDS.Global.ENV.BezugspersonenJN = true;
-
-                stemp = _Log.ConfigFile.GetStringValue("TypeRessourcesRun");
-                if (stemp.Length > 0)
-                    PMDS.Global.ENV.TypeRessourcesRun = stemp;
-
-                stemp = _Log.ConfigFile.GetStringValue("DoNotShowRessources");
-                if (stemp.Length > 0)
-                {
-                    if (stemp.Trim() == "1")
-                    {
-                        PMDS.Global.ENV.DoNotShowRessources = true;
-                    }
-                }
-                qs2.core.vb.compLayout.DoNotShowRessources = PMDS.Global.ENV.DoNotShowRessources;
-
-                string sAsynCommCheckMessagesSeconds = _Log.ConfigFile.GetStringValue("AsynCommCheckMessagesSeconds");
-                if (sAsynCommCheckMessagesSeconds.Trim() != "")
-                {
-                    ENV.AsynCommCheckMessagesSeconds = System.Convert.ToInt32(sAsynCommCheckMessagesSeconds.Trim());
-                }
-
-                stemp = _Log.ConfigFile.GetStringValue("AutoAddNewRessources");
-                if (stemp.Length > 0)
-                {
-                    if (stemp.Trim() == "1")
-                    {
-                        PMDS.Global.ENV.AutoAddNewRessources = true;               
-                    }
-                }
-
-                stemp = _Log.ConfigFile.GetStringValue("IntDeactivated");
-                if (stemp.Length > 0)
-                {
-                    if (stemp.Trim() == "0")
-                    {
-                        PMDS.Global.ENV.IntDeactivated = false;
-                    }
-                }
-
-                stemp = _Log.ConfigFile.GetStringValue("MedikamenteAbgebenTabText");
-                if (stemp.Length > 0)
-                    PMDS.Global.ENV.MedikamenteAbgebenTabText = stemp;
-
-                stemp = _Log.ConfigFile.GetStringValue("ArchivPath");
-                if (stemp.Length > 0)
-                {
-                    PMDS.Global.ENV.ArchivPath = stemp;
                     PMDS.Global.ENV.check_Path(ENV.ArchivPath, true);
                 }
-
-                stemp = _Log.ConfigFile.GetStringValue("RptConfigPath");
-                if (stemp.Length > 0)
+                else
                 {
-                    PMDS.Global.ENV.ReportConfigPath = stemp;
+                    System.Windows.Forms.MessageBox.Show("Der Wert ArchivPath in der Config-Datei muss angegeben werden!");
+                    return false;
+                }
+
+                SetENVValue("RptConfigPath", ref ENV._ReportConfigPath);
+                if (!System.String.IsNullOrWhiteSpace(ENV._ReportConfigPath))
+                {
                     PMDS.Global.ENV.check_Path(ENV.ReportConfigPath, true);
                 }
                 else
-                    throw new Exception("Der Wert RptConfigPath in der Config-Datei darf nicht leer sein!");
-
-                stemp = _Log.ConfigFile.GetStringValue("DSNGiboDat");
-                if (stemp.Length > 0)
                 {
-                    ENV.conGiboDat = new System.Data.OleDb.OleDbConnection(stemp);
+                    System.Windows.Forms.MessageBox.Show("Der Wert RptConfigPath in der Config-Datei muss angegeben werden!");
+                    return false;                
+                }
+
+                SetENVValue("PathDokumente", ref ENV.PathDokumente);
+
+                SetENVValue("DSNGiboDat", ref ENV.DSNGiboDat);
+                if (!System.String.IsNullOrWhiteSpace(ENV.DSNGiboDat))
+                {
+                    ENV.conGiboDat = new System.Data.OleDb.OleDbConnection(ENV.DSNGiboDat);
                     ENV.conGiboDat.Open();
                 }
 
-                stemp = _Log.ConfigFile.GetStringValue("SpellCheckerOn");
-                if (stemp.Length > 0 && stemp.Trim().Equals("1"))
-                    PMDS.Global.ENV.SpellCheckerOn = true;
+                SetENVValue("SpellCheckerOn", ref ENV.SpellCheckerOn);
+                SetENVValue("frmRechnung", ref ENV.frmRechnung);
+                SetENVValue("FullEditMode", ref ENV.FullEditMode);
+                SetENVValue("AssessmentModifyTime", ref ENV.AssessmentModifyTime);
+                SetENVValue("UseDekursKopieren", ref ENV.UseDekursKopieren, "0");
 
-                stemp = _Log.ConfigFile.GetStringValue("frmRechnung");
-                if (stemp.Length > 0)
-                    PMDS.Global.ENV.frmRechnung = stemp;
+                SetENVValue("PasswordStrength", ref ENV.PasswordStrength);
+                SetENVValue("MaxPasswordAge", ref ENV.MaxPasswordAge);
+                SetENVValue("MaxIdleTime", ref ENV.MaxIdleTime);
 
-                stemp = _Log.ConfigFile.GetStringValue("FullEditMode");
-                if (stemp.Length > 0 && stemp.Trim().Equals("1"))
-                    PMDS.Global.ENV.FullEditMode = true;
-
-                stemp = _Log.ConfigFile.GetStringValue("AssessmentModifyTime");
-                if (stemp.Length > 0)
-                    uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.AssessmentModifyTime);
-
-                stemp = _Log.ConfigFile.GetStringValue("UseDekursKopieren");
-                if (stemp.Length > 0 && stemp.Trim().Equals("0"))
-                    PMDS.Global.ENV.UseDekursKopieren = false;
-
-                stemp = _Log.ConfigFile.GetStringValue("PasswordStrength");
-                if (stemp.Length > 0)
+                SetENVValue("AutoCloseTime", ref ENV.AutoCloseTime);
+                if (ENV.AutoCloseTime < 10 || ENV.AutoCloseTime > 720)
                 {
-                    int pwStrength = (int)PMDS.Global.ENV.PasswordStrength;
-                    int.TryParse(stemp.Trim(), out pwStrength);
-                    PMDS.Global.ENV.PasswordStrength = (PasswordScore)pwStrength;
+                    ENV.AutoCloseTime = 120;
                 }
 
-                stemp = _Log.ConfigFile.GetStringValue("MaxPasswordAge");
-                if (stemp.Length > 0)
-                    int.TryParse(stemp.Trim(), out PMDS.Global.ENV.MaxPasswordAge);
+                SetENVValue("ToleranzIntervall", ref ENV.ToleranzIntervall);
+                SetENVValue("CheckScreenSize", ref ENV.CheckScreenSize);
+                SetENVValue("ImportBefundeVerzeichnis", ref ENV.ImportBefundeVerzeichnis);
+                SetENVValue("ImportBefundeArchivOrdner", ref ENV.ImportBefundeArchivOrdner);
+                SetENVValue("BerufsstandArzt", ref ENV.BerufsstandArzt);
+                SetENVValue("BerufsstandPflege", ref ENV.BerufsstandPflege);
+                SetENVValue("BerufsstandTherapie", ref ENV.BerufsstandTherapie);
+                SetENVValue("StrgDefaults", ref ENV.StrgDefaults);
+                SetENVValue("eMailStammdaten", ref ENV.eMailStammdaten);
+                SetENVValue("AbwesenheitenMinimalUI", ref ENV.AbwesenheitenMinimalUI);
+                SetENVValue("DicomViewerFileOnly", ref ENV.DicomViewerFileOnly, "0");
 
-                stemp = _Log.ConfigFile.GetStringValue("MaxIdleTime");
-                if (stemp.Length > 0)
-                    uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.MaxIdleTime);
+                SetENVValue("HAG_Url", ref ENV.HAG_Url);
+                SetENVValue("HAG_Zertifikat", ref ENV.HAG_Zertifikat);
+                SetENVValue("HAG_User", ref ENV.HAG_USER);
+                SetENVValue("HAG_Password", ref ENV.HAG_PASSWORD, eTrim.no, eDecrypt.PMDSMode);
 
-                stemp = _Log.ConfigFile.GetStringValue("AutoCloseTime");
-                if (stemp.Length > 0)
-                {
-                    int.TryParse(stemp.Trim(), out PMDS.Global.ENV.AutoCloseTime);
-                    if (PMDS.Global.ENV.AutoCloseTime < 10) PMDS.Global.ENV.AutoCloseTime = 120;
-                    if (PMDS.Global.ENV.AutoCloseTime > 720) PMDS.Global.ENV.AutoCloseTime = 120;
-                }
+                SetENVValue("CheckConnectionAndPassword", ref ENV.CheckConnectionAndPassword);
+                SetENVValue("DekursRegex", ref ENV.DekursRegex);
+                SetENVValue("DekursRegexBeschreibung", ref ENV.DekursRegexBeschreibung);
 
-                stemp = _Log.ConfigFile.GetStringValue("ToleranzIntervall");
-                if (stemp.Length > 0)
-                    int.TryParse(stemp.Trim(), out PMDS.Global.ENV.ToleranzIntervall);
-
-                stemp = _Log.ConfigFile.GetStringValue("CheckScreenSize");
-                if (stemp.Length > 0 && stemp.Trim().Equals("1"))
-                    PMDS.Global.ENV.CheckScreenSize = true;
-
-                stemp = _Log.ConfigFile.GetStringValue("ImportBefundeVerzeichnis");
-                if (stemp.Length > 0)
-                    ENV.ImportBefundeVerzeichnis = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("ImportBefundeArchivOrdner");
-                if (stemp.Length > 0)
-                    ENV.ImportBefundeArchivOrdner = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("BerufsstandArzt");
-                if (stemp.Length > 0)
-                    ENV.BerufsstandArzt = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("BerufsstandPflege");
-                if (stemp.Length > 0)
-                    ENV.BerufsstandPflege = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("StrgDefaults");
-                if (stemp.Length > 0)
-                    ENV.StrgDefaults = stemp.Trim() + ",";
-
-                stemp = _Log.ConfigFile.GetStringValue("BerufsstandTherapie");
-                if (stemp.Length > 0)
-                    ENV.BerufsstandTherapie = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("eMailStammdaten");
-                if (stemp.Length > 0)
-                    ENV.eMailStammdaten = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("AbwesenheitenMinimalUI");
-                if (stemp.Length > 0 && stemp.Trim().Equals("1"))
-                    PMDS.Global.ENV.AbwesenheitenMinimalUI = true;
-
-                stemp = _Log.ConfigFile.GetStringValue("DicomViewerFileOnly");
-                if (stemp.Length > 0 && stemp.Trim().Equals("0"))
-                    PMDS.Global.ENV.DicomViewerFileOnly = false;
-
-                stemp = _Log.ConfigFile.GetStringValue("PathDokumente");
-                if (stemp.Length > 0)
-                    ENV.PathDokumente = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("HAG_Url");
-                if (stemp.Length > 0)
-                    ENV.HAG_Url = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("HAG_Zertifikat");
-                if (stemp.Length > 0)
-                    ENV.HAG_Zertifikat = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("HAG_User");
-                if (stemp.Length > 0)
-                    ENV.HAG_USER = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("HAG_Password");
-                if (stemp.Length > 0)
-                    ENV.HAG_PASSWORD = PMDS.BusinessLogic.BUtil.DecryptString(stemp.Trim());
-
-                stemp = _Log.ConfigFile.GetStringValue("CheckConnectionAndPassword");
-                if (stemp.Length > 0)
-                {
-                    if (stemp.Trim().Equals(("1")))
-                    {
-                        ENV.CheckConnectionAndPassword = true;
-                    }
-                }
-
-                stemp = _Log.ConfigFile.GetStringValue("DekursRegex");
-                if (stemp.Length > 0)
-                    ENV.DekursRegex = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("DekursRegexBeschreibung");
-                if (stemp.Length > 0)
-                    ENV.DekursRegexBeschreibung = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("License");
-                if (stemp.Length > 0)
-                    ENV.License = BusinessLogic.BUtil.DecryptString(stemp.Trim());
-
-                stemp = _Log.ConfigFile.GetStringValue("ZahlKondBankeinzug");
-                if (stemp.Length > 0)
-                    ENV.ZahlKondBankeinzug = stemp.Trim();
-                stemp = _Log.ConfigFile.GetStringValue("ZahlKondErlagschein");
-                if (stemp.Length > 0)
-                    ENV.ZahlKondErlagschein = stemp.Trim();
-                stemp = _Log.ConfigFile.GetStringValue("ZahlKondÜberweisung");
-                if (stemp.Length > 0)
-                    ENV.ZahlKondÜberweisung = stemp.Trim();
-                stemp = _Log.ConfigFile.GetStringValue("ZahlKondBar");
-                if (stemp.Length > 0)
-                    ENV.ZahlKondBar = stemp.Trim();
-
-                stemp = _Log.ConfigFile.GetStringValue("AbwesenheitenAnzeigen");
-                if (stemp.Length > 0)
-                {
-                    if (stemp.Trim().Equals(("1")))
-                    {
-                        ENV.AbwesenheitenAnzeigen = true;
-                    }
-                    else if (stemp.Trim().Equals(("0")))
-                    {
-                        ENV.AbwesenheitenAnzeigen = false;
-                    }
-                }
-
-                stemp = _Log.ConfigFile.GetStringValue("WundtherapieVidieren");
-                if (stemp.Length > 0)
-                {
-                    if (stemp.Trim().Equals(("1")))
-                    {
-                        ENV.WundtherapieVidieren = true;
-                    }
-                }
-
-                stemp = _Log.ConfigFile.GetStringValue("WundbildModifyTime");
-                if (stemp.Length > 0)
-                    uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.WundbildModifyTime);
-
-                stemp = _Log.ConfigFile.GetStringValue("WundtherapieModifyTime");
-                if (stemp.Length > 0)
-                    uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.WundtherapieModifyTime);
-
-                stemp = _Log.ConfigFile.GetStringValue("WundverlaufModifyTime");
-                if (stemp.Length > 0)
-                    uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.WundverlaufModifyTime);
-
-                stemp = _Log.ConfigFile.GetStringValue("RezeptModifyTime");
-                if (stemp.Length > 0)
-                    uint.TryParse(stemp.Trim(), out PMDS.Global.ENV.RezeptModifyTime);
-
-                stemp = _Log.ConfigFile.GetStringValue("RezeptUseTimeOfDay");
-                if (stemp.Length > 0 && stemp == "1")
-                    PMDS.Global.ENV.RezeptUseTimeOfDay = true;
-
-                stemp = _Log.ConfigFile.GetStringValue("RezeptUseErstattungscode");
-                if (stemp.Length > 0 && stemp == "0")
-                    PMDS.Global.ENV.RezeptUseErstattungscode = false;
-
-                stemp = _Log.ConfigFile.GetStringValue("MedVerabreichenDefault");
-                if (stemp.Length > 0)
-                    int.TryParse(stemp.Trim(), out PMDS.Global.ENV.MedVerabreichenDefault);
-
-                stemp = _Log.ConfigFile.GetStringValue("SavePflegebegleitschreibenToArchiv");
-                if (stemp.Trim().Equals("0"))
-                {
-                    ENV.SavePflegebegleitschreibenToArchiv = false;
-                }
-
-                string WCFServiceOnOffTmp = _Log.ConfigFile.GetStringValue("WCFServiceOnOff");
-                if (WCFServiceOnOffTmp.Trim() != "")
-                {
-                    if (WCFServiceOnOffTmp.Trim().Equals(("1")))
-                    {
-                        ENV.WCFServiceOnOff = true;
-                    }
-                }
-                string WCFServiceDebugModeTmp = _Log.ConfigFile.GetStringValue("WCFServiceDebugMode");
-                if (WCFServiceDebugModeTmp.Trim() != "")
-                {
-                    if (WCFServiceDebugModeTmp.Trim().Equals(("1")))
-                    {
-                        ENV.WCFServiceDebugMode = true;
-                    }
-                }
-                string WCFServiceOnlyLocalTmp = _Log.ConfigFile.GetStringValue("WCFServiceOnlyLocal");
-                if (WCFServiceOnlyLocalTmp.Trim() != "")
-                {
-                    if (WCFServiceOnlyLocalTmp.Trim().Equals(("1")))
-                    {
-                        ENV.WCFServiceOnlyLocal = true;
-                    }
-                }
-
-                string WCFServicePMDSDebugPathTmp = _Log.ConfigFile.GetStringValue("WCFServicePMDSDebugPath");
-                if (WCFServicePMDSDebugPathTmp.Trim() != "")
-                {
-                    ENV.WCFServicePMDSDebugPath = WCFServicePMDSDebugPathTmp.Trim();
-                }
-
-                string SchnellrückmeldungAsProcessTmp = _Log.ConfigFile.GetStringValue("SchnellrueckmeldungAsProcess");
-                if (SchnellrückmeldungAsProcessTmp.Trim() != "")
-                {
-                    ENV.SchnellrückmeldungAsProcess = SchnellrückmeldungAsProcessTmp.Trim();
-                }
-
-                QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
-                QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, 
-                                                        ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);  
-                QS2.Desktop.Txteditor.ENV.init(ENV.path_Temp, ENV._LOGPATH, true, ENV.adminSecure);
-
-                PMDSClient.PMDSClientWrapper.init();
+                SetENVValue("WundtherapieVidieren", ref ENV.WundtherapieVidieren);
+                SetENVValue("WundbildModifyTime", ref ENV.WundtherapieVidieren);
+                SetENVValue("WundtherapieModifyTime", ref ENV.WundtherapieModifyTime);
+                SetENVValue("WundverlaufModifyTime", ref ENV.WundverlaufModifyTime);
+                SetENVValue("RezeptModifyTime", ref ENV.RezeptModifyTime);
+                SetENVValue("RezeptUseTimeOfDay", ref ENV.RezeptUseTimeOfDay);
+                SetENVValue("RezeptUseErstattungscode", ref ENV.RezeptUseErstattungscode, "0");
+                SetENVValue("MedVerabreichenDefault", ref ENV.MedVerabreichenDefault);
+                SetENVValue("SavePflegebegleitschreibenToArchiv", ref ENV.SavePflegebegleitschreibenToArchiv, "0");
+                
+                SetENVValue("WCFServiceOnOff", ref ENV.WCFServiceOnOff);
+                SetENVValue("WCFServiceDebugMode", ref ENV.WCFServiceDebugMode);
+                SetENVValue("WCFServiceOnlyLocal", ref ENV.WCFServiceOnlyLocal);
+                SetENVValue("WCFServicePMDSDebugPath", ref ENV.WCFServicePMDSDebugPath);
 
                 //Lizenzschalter setzen
                 ENV.lic_eMailBewerber = setLicValue("lic_eMailBewerber", ENV.lic_eMailBewerber, 2);
@@ -1690,12 +1470,95 @@ namespace PMDS.Global
                 ENV.lic_WundtherapieOffenWarnung = setLicValue("lic_WundtherapieOffenWarnung");
                 ENV.lic_RezepteintragStorno = setLicValue("lic_RezepteintragStorno");
 
-                return true;
+                QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
+                QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);  
+                QS2.Desktop.Txteditor.ENV.init(ENV.path_Temp, ENV._LOGPATH, true, ENV.adminSecure);
+                PMDSClient.PMDSClientWrapper.init();
 
+                return true;
             }
             catch (Exception ex)
             {
                 throw new Exception("ENV.Init: " + ex.ToString());
+            }
+        }
+
+        private static void SetENVValue(string sVar, ref bool ENVVar, string sValue = "1")
+        {
+            try
+            {
+                string stemp = _Log.ConfigFile.GetStringValue(sVar).Trim();
+                ENVVar = stemp.Equals(sValue, StringComparison.OrdinalIgnoreCase) ? (sValue.Equals("1", StringComparison.OrdinalIgnoreCase) ? true : false) : ENVVar;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+            }
+        }
+
+        private static void SetENVValue(string sVar, ref string ENVVar, eTrim trim = eTrim.yes, eDecrypt decr = eDecrypt.no)
+        {
+            try
+            {
+                string stemp = _Log.ConfigFile.GetStringValue(sVar);
+                if (decr == eDecrypt.no)
+                {
+                    ENVVar = System.String.IsNullOrEmpty(stemp) ? ENVVar : (trim == eTrim.yes ? stemp.Trim() : stemp);
+                }
+                else if (decr == eDecrypt.PMDSMode)
+                {
+                    ENVVar = System.String.IsNullOrEmpty(stemp) ? ENVVar : PMDS.BusinessLogic.BUtil.DecryptString(stemp.Trim()).Trim();
+                }
+                else if (decr == eDecrypt.QS2Mode)
+                {
+                    qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
+                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    ENVVar = ELGAPwdDecrypted.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+            }
+        }
+
+
+        private static void SetENVValue(string sVar, ref int ENVVar)
+        {
+            try
+            {
+                bool isNumeric = int.TryParse(_Log.ConfigFile.GetStringValue(sVar).Trim(), out int n);
+                ENVVar = !isNumeric ? ENVVar : n;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+            }
+        }
+
+        private static void SetENVValue(string sVar, ref uint ENVVar)
+        {
+            try
+            {
+                bool isNumeric = uint.TryParse(_Log.ConfigFile.GetStringValue(sVar).Trim(), out uint n);
+                ENVVar = !isNumeric ? ENVVar : n;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+            }
+        }
+
+        private static void SetENVValue(string sVar, ref PasswordScore ENVVar)
+        {
+            try
+            {
+                bool isNumeric = int.TryParse(_Log.ConfigFile.GetStringValue(sVar).Trim(), out int n);
+                ENVVar = !isNumeric ? ENVVar : (PasswordScore)n;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue: " + ex.ToString());
             }
         }
 
@@ -1942,169 +1805,6 @@ namespace PMDS.Global
             }
         }
 
-        public static bool readIniCalc()
-        {
-            string stemp = _Log.ConfigFile.GetStringValue("adminSecure");
-            if (stemp.Length > 0 && stemp == "1")
-                PMDS.Global.ENV.adminSecure = true; 
-
-            stemp = _Log.ConfigFile.GetStringValue("bookingJN");
-            if (stemp.Length > 0 && stemp == "1")
-                bookingJN = true;
-
-            stemp = _Log.ConfigFile.GetStringValue("APVDA");
-            if (stemp.Length > 0)
-            {
-                if (stemp.Trim() != "")
-                {
-                    qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-                    string tmpStr = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
-                    if (tmpStr.Trim() == "1")
-                    {
-                        ENV.APVDA = true;  
-                    }
-                }
-            }
-
-            stemp = _Log.ConfigFile.GetStringValue("MedikamenteImportType");
-            if (stemp.Length > 0)
-                ENV.MedikamenteImportType = stemp.Trim();
-
-            stemp = _Log.ConfigFile.GetStringValue("ftpFileImportMedikamente");
-            if (stemp.Length > 0)
-                ENV.ftpFileImportMedikamente = stemp.Trim();
-
-
-            stemp = _Log.ConfigFile.GetStringValue("ftpUserName");
-            if (stemp.Length > 0)
-                ENV.ftpUserName = stemp.Trim();
-
-
-            stemp = _Log.ConfigFile.GetStringValue("ftpPassword");
-            if (stemp.Length > 0)
-            {
-                ENV.ftpPassword = stemp.Trim();
-                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-                ENV.ftpPassword = Encryption1.StringDecrypt(stemp.Trim(),  qs2.license.core.Encryption.keyForEncryptingStrings);
-            }
-
-            stemp = _Log.ConfigFile.GetStringValue("ProxyJN");
-            if (stemp.Length > 0 && stemp.Trim().Equals("1"))
-                ENV.ProxyJN = true;
-
-            stemp = _Log.ConfigFile.GetStringValue("ProxyUserName");
-            if (stemp.Length > 0)
-                ENV.ProxyUserName = stemp.Trim();
-
-            stemp = _Log.ConfigFile.GetStringValue("ProxyPassword");
-            if (stemp.Length > 0)
-            {
-                qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-                ENV.ProxyPassword = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
-            }
-
-            stemp = _Log.ConfigFile.GetStringValue("ProxyDomain");
-            if (stemp.Length > 0)
-                ENV.ProxyDomain = stemp.Trim();
-
-            stemp = _Log.ConfigFile.GetStringValue("ProxyHost");
-            if (stemp.Length > 0)
-                ENV.ProxyHost = stemp.Trim();
-
-            stemp = _Log.ConfigFile.GetStringValue("ProxyPort");
-            if (stemp.Length > 0)
-                ENV.ProxyPort = System.Convert.ToInt32(stemp.Trim());
-
-            stemp = _Log.ConfigFile.GetStringValue("ProxyAuthentication");
-            if (stemp.Length > 0)
-                ENV.ProxyAuthentication = stemp.Trim();
-            
-
-            //stemp = _Log.ConfigFile.GetStringValue("Bereich");
-            //if (stemp.Length > 0)
-            //{
-            //    Bereich = stemp.Trim();
-            //}
-
-            stemp = _Log.ConfigFile.GetStringValue("typRechNr");
-            if (stemp.Length > 0)
-                typRechNr = stemp.Trim();
-
-            stemp = _Log.ConfigFile.GetStringValue("RechnungKopfzeileEin");
-            if (stemp.Length > 0 && stemp == "1")
-                RechnungKopfzeileEin = true;
-
-            stemp = _Log.ConfigFile.GetStringValue("RechFloskel");
-            if (stemp.Length > 0 && stemp == "1")
-                RechFloskel = true;
-
-            stemp = _Log.ConfigFile.GetStringValue("KuerzungGrundleistungLetzterTag");
-            if (stemp.Length > 0 && stemp == "1")
-                KuerzungGrundleistungLetzterTag = true;
-
-            stemp = _Log.ConfigFile.GetStringValue("TageOhneKuerzungGrundleistung");
-            if (stemp.Length > 0)
-                TageOhneKuerzungGrundleistung = System.Convert.ToInt32(stemp); 
-
-            stemp = _Log.ConfigFile.GetStringValue("RechErwAbwesenheit");
-            if (stemp.Length > 0 && stemp == "1")
-                RechErwAbwesenheit = true;
-
-            stemp = _Log.ConfigFile.GetStringValue("SrErwAbwesenheit");
-            if (stemp.Length > 0 && stemp == "1")
-                SrErwAbwesenheit = true;
-
-            stemp = _Log.ConfigFile.GetStringValue("ZAHLUNG_TAGE");
-            if (stemp.Length > 0)
-                ZAHLUNG_TAGE = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("GSBGTxt");
-            if (stemp.Length > 0)
-                PMDS.Global.ENV.GSBGTxt = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("TransferTxt");
-            if (stemp.Length > 0)
-                PMDS.Global.ENV.TransferTxt = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("DepotgeldKontoTxt");
-            if (stemp.Length > 0)
-                PMDS.Global.ENV.DepotgeldKontoTxt = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("RechTitelDepotGeld");
-            if (stemp.Length > 0)
-                PMDS.Global.ENV.RechTitelDepotGeld = stemp;
-
-            return true;
-        }
-        public static bool readIniSMTP()
-        {
-            string stemp = _Log.ConfigFile.GetStringValue("SMTPFrom");
-            if (stemp.Length > 0)
-                PMDS.Global.clSMTP.SMTPFrom = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("SMTPTo");
-            if (stemp.Length > 0)
-                PMDS.Global.clSMTP.SMTPTo = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("SMTPServer");
-            if (stemp.Length > 0)
-                PMDS.Global.clSMTP.SMTPServer = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("SMTPLoginUsr");
-            if (stemp.Length > 0)
-                PMDS.Global.clSMTP.SMTPLoginUsr = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("SMTPLoginPwd");
-            if (stemp.Length > 0)
-                PMDS.Global.clSMTP.SMTPLoginPwd = stemp;
-
-            stemp = _Log.ConfigFile.GetStringValue("SMTPPort");
-            if (stemp.Length > 0)
-                PMDS.Global.clSMTP.SMTPPort = System.Convert.ToInt32(stemp);
-
-            return true;
-        }
-
         public static cAdminFile checkAutoLogIn()
         {
             cAdminFile ret = new cAdminFile();
@@ -2125,71 +1825,56 @@ namespace PMDS.Global
         /// Liest die PP Tooltip Konfiguration
         /// </summary>
         //----------------------------------------------------------------------------
-        private static void ReadPPTipConfig()
-        {
-            string stemp = _Log.ConfigFile.GetStringValue("SHOW_PP_TOOLTIP"); // Syntax: OFF | ON;Delay[ms];Duration[ms]
-            if (stemp.Length == 0)      // Defaultwerte
-                return;
+        //private static void ReadPPTipConfig()
+        //{
+        //    string stemp = _Log.ConfigFile.GetStringValue("SHOW_PP_TOOLTIP"); // Syntax: OFF | ON;Delay[ms];Duration[ms]
+        //    if (stemp.Length == 0)      // Defaultwerte
+        //        return;
 
-            string[] sa = stemp.Split(';');
-            if (sa.Length > 0)
-                _ShowPPToolTip = sa[0] == "OFF" ? false : true;
+        //    string[] sa = stemp.Split(';');
+        //    if (sa.Length > 0)
+        //        _ShowPPToolTip = sa[0] == "OFF" ? false : true;
 
-            if (sa.Length == 3)
-            {
-                _PPToolTipDelay = RBUSF.ConvertStringToInt(sa[1]);
-                _PPToolTipDuration = RBUSF.ConvertStringToInt(sa[2]);
+        //    if (sa.Length == 3)
+        //    {
+        //        _PPToolTipDelay = RBUSF.ConvertStringToInt(sa[1]);
+        //        _PPToolTipDuration = RBUSF.ConvertStringToInt(sa[2]);
 
-                if (_PPToolTipDelay == 0 || _PPToolTipDelay < 50) _PPToolTipDelay = 1000;
-                if (_PPToolTipDuration == 0 || _PPToolTipDuration < 1000) _PPToolTipDuration = 50000;
-            }
-        }
+        //        if (_PPToolTipDelay == 0 || _PPToolTipDelay < 50) _PPToolTipDelay = 1000;
+        //        if (_PPToolTipDuration == 0 || _PPToolTipDuration < 1000) _PPToolTipDuration = 50000;
+        //    }
+        //}
 
         //----------------------------------------------------------------------------
         /// <summary>
         /// PflegeModelle aus der Config lesen
         /// </summary>
         //----------------------------------------------------------------------------
-        private static void ReadPflegemodelle()
+        private static PflegeModelle[] ReadPflegemodelle()
         {
-            List<PflegeModelle> sl = new List<PflegeModelle>();
-            string stemp = _Log.ConfigFile.GetStringValue("PFLEGEMODELLE");
-            if (stemp.Trim().Length == 0)
-            {
-                //QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bei der Verarbeitung der Konfigurationsdatei ist ein Fehler aufgetreten.\r\nPrüfen Sie den Eintrag PFLEGEMODELLE\r\nEs ist nur Orem, POP und Krohwinkel erlaubt\r\n");
-                //return;
-            }
+            List<PflegeModelle> lPM = new List<PflegeModelle>();
+            string sPflegemodelle = "";
+            PflegeModelle[] PM = new PflegeModelle[] { };
+            SetENVValue("PFLEGEMODELLE", ref sPflegemodelle);
 
-            string[] sa = stemp.Split(',');
-            bool bError = false;
-
-            if (sa[0].ToString() != "")
+            string[] sa = sPflegemodelle.Split(',');
+            if (!System.String.IsNullOrWhiteSpace(sa[0]))
             {
                 foreach (string s in sa)
                 {
                     try
                     {
-                        sl.Add((PflegeModelle)Enum.Parse(typeof(PflegeModelle), s, true));
+                        lPM.Add((PflegeModelle)Enum.Parse(typeof(PflegeModelle), s, true));                        
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        bError = true;
+                        PM = new PflegeModelle[] { };
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bei der Verarbeitung der Konfigurationsdatei ist ein Fehler aufgetreten.\r\nPrüfen Sie den Eintrag PFLEGEMODELLE\r\nEs sind nur Orem, Krohwinkel und POP erlaubt\r\n");
+                        return PM;
                     }
                 }
-
-                if (bError)
-                {
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bei der Verarbeitung der Konfigurationsdatei ist ein Fehler aufgetreten.\r\nPrüfen Sie den Eintrag PFLEGEMODELLE\r\nEs sind nur Orem, Krohwinkel und POP erlaubt\r\n");
-                    return;
-                }
-
-                PflegeModelle[] sa2 = sl.ToArray();
-                if (sa2.Length == 0)
-                    return;
-                PflegeModell = sa2;
-
             }
-
+            return lPM.ToArray();
         }
 
          //----------------------------------------------------------------------------
