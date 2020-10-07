@@ -15092,6 +15092,18 @@ Namespace ServiceReference_01
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/addMessage", ReplyAction:="http://tempuri.org/Service1/addMessageResponse")>  _
         Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1)
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/StopWCFService", ReplyAction:="http://tempuri.org/Service1/StopWCFServiceResponse")>  _
+        Sub StopWCFService()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/StopWCFService", ReplyAction:="http://tempuri.org/Service1/StopWCFServiceResponse")>  _
+        Function StopWCFServiceAsync() As System.Threading.Tasks.Task
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/CheckWCFServiceIsRunning", ReplyAction:="http://tempuri.org/Service1/CheckWCFServiceIsRunningResponse")>  _
+        Function CheckWCFServiceIsRunning() As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/CheckWCFServiceIsRunning", ReplyAction:="http://tempuri.org/Service1/CheckWCFServiceIsRunningResponse")>  _
+        Function CheckWCFServiceIsRunningAsync() As System.Threading.Tasks.Task(Of Boolean)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/TestWCFService", ReplyAction:="http://tempuri.org/Service1/TestWCFServiceResponse")>  _
         Function TestWCFService() As Boolean
         
@@ -16366,6 +16378,22 @@ Namespace ServiceReference_01
         
         Public Function addMessageAsync(ByVal IDUser As System.Guid, ByVal Username As String, ByVal Title As String, ByVal Message As String, ByVal ClientsMessage As String, ByVal TypeMessage As String, ByVal lUsersTo() As System.Guid, ByVal IDClient As System.Guid) As System.Threading.Tasks.Task(Of ServiceReference_01.MessagesDTO1) Implements ServiceReference_01.Service1.addMessageAsync
             Return MyBase.Channel.addMessageAsync(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, IDClient)
+        End Function
+        
+        Public Sub StopWCFService() Implements ServiceReference_01.Service1.StopWCFService
+            MyBase.Channel.StopWCFService
+        End Sub
+        
+        Public Function StopWCFServiceAsync() As System.Threading.Tasks.Task Implements ServiceReference_01.Service1.StopWCFServiceAsync
+            Return MyBase.Channel.StopWCFServiceAsync
+        End Function
+        
+        Public Function CheckWCFServiceIsRunning() As Boolean Implements ServiceReference_01.Service1.CheckWCFServiceIsRunning
+            Return MyBase.Channel.CheckWCFServiceIsRunning
+        End Function
+        
+        Public Function CheckWCFServiceIsRunningAsync() As System.Threading.Tasks.Task(Of Boolean) Implements ServiceReference_01.Service1.CheckWCFServiceIsRunningAsync
+            Return MyBase.Channel.CheckWCFServiceIsRunningAsync
         End Function
         
         Public Function TestWCFService() As Boolean Implements ServiceReference_01.Service1.TestWCFService

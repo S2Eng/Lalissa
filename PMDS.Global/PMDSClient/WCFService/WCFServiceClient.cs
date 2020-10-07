@@ -24,7 +24,12 @@ namespace PMDSClient.Sitemap
     {
 
         //public static string urlWCFServiceDefault2 = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
-        private static string urlWCFServiceDefault2 = "net.pipe://localhost/Design_Time_Addresses/WCFServicePMDS/Service1";
+        private static string urlWCFServiceDefault2 = "net.pipe://localhost/Design_Time_Addresses/WCFServicePMDS{0}/Service1";
+        private static string urlGuid = System.Guid.NewGuid().ToString().Replace("-", "");
+
+
+
+
 
 
         public class cParsWCF
@@ -32,7 +37,6 @@ namespace PMDSClient.Sitemap
             public string MachineName = "";
             public string LoginInNameFrei = "";
             public Guid gVersionNr;
-
         }
 
         private static bool _IsInitialized = false;
@@ -117,7 +121,7 @@ namespace PMDSClient.Sitemap
 
                 if (!PMDS.Global.ENV.WCFServiceDebugMode)
                 {
-                    this.stopCheckWCFServiceLocal(false);
+                    //this.stopCheckWCFServiceLocal(false);
 
                     string urlWCFServiceBack = "";
                     if (!PMDS.Global.ENV.WCFServiceOnlyLocal)
@@ -126,6 +130,7 @@ namespace PMDSClient.Sitemap
                     }
                     else
                     {
+                        urlWCFServiceDefault2 = string.Format(urlWCFServiceDefault2, urlGuid);
                         urlWCFServiceBack = urlWCFServiceDefault2.Trim();
                     }
 
@@ -137,10 +142,15 @@ namespace PMDSClient.Sitemap
                     proc.StartInfo.FileName = sWCFServiceName;
                     proc.StartInfo.UseShellExecute = true;
                     //proc.StartInfo.Verb = "runas";
-                    proc.StartInfo.Arguments = "?typ=Background";
+                    proc.StartInfo.Arguments = "?typ=Background ?urlGuid=" + urlGuid + "";
+
                     proc.Start();
                     System.Threading.Thread.Sleep(5000);
                     //System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
+                }
+                else
+                {
+                    urlWCFServiceDefault2 = string.Format(urlWCFServiceDefault2, "");
                 }
 
                 cParsWCF ParsWCF = (cParsWCF)pars;
@@ -922,12 +932,47 @@ namespace PMDSClient.Sitemap
                 }
 
                 int iPMDSRunning = this.checkPMDSRunning();
-                if (!onlyCheckIsRunning && iPMDSRunning <= 1 && lstWCFSServiceRunning.Count > 0)
+                if (onlyCheckIsRunning)
                 {
-                    foreach (Process process in lstWCFSServiceRunning)
+                    try
                     {
-                        process.Kill();
+                        this.checkWCFServiceIsRunning();
+                        return;
                     }
+                    catch (Exception ex)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        this.StopLocalWCFService();
+                        return;
+                    }
+                    catch (Exception ex)
+                    {
+                        return;
+                    }
+
+
+                    //if (!onlyCheckIsRunning && iPMDSRunning <= 1 && lstWCFSServiceRunning.Count > 0)
+                    //{
+                    //    try
+                    //    {
+                    //        this.StopLocalWCFService();
+                    //        return;
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        return;
+                    //    }
+                    //    foreach (Process process in lstWCFSServiceRunning)
+                    //    {
+                    //        process.Kill();
+                    //    }
+                    //}
                 }
 
             }
@@ -957,8 +1002,32 @@ namespace PMDSClient.Sitemap
                 throw new Exception("WCFServiceClientPMDS.checkPMDSRunning: " + ex.ToString());
             }
         }
+        public void StopLocalWCFService()
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
+                client.StopWCFService();
 
-
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.StopLocalWCFService" + ex.ToString());
+            }
+        }
+        public bool checkWCFServiceIsRunning()
+        {
+            try
+            {
+                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
+                bool bIsRunning = client.CheckWCFServiceIsRunning();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServiceClientPMDS.checkWCFServiceIsRunning" + ex.ToString());
+            }
+        }
 
 
 

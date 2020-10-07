@@ -234,6 +234,18 @@
   <wsdl:message name="Service1_addMessage_OutputMessage">
     <wsdl:part name="parameters" element="tns:addMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="Service1_StopWCFService_InputMessage">
+    <wsdl:part name="parameters" element="tns:StopWCFService" />
+  </wsdl:message>
+  <wsdl:message name="Service1_StopWCFService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopWCFServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="Service1_CheckWCFServiceIsRunning_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckWCFServiceIsRunning" />
+  </wsdl:message>
+  <wsdl:message name="Service1_CheckWCFServiceIsRunning_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckWCFServiceIsRunningResponse" />
+  </wsdl:message>
   <wsdl:message name="Service1_TestWCFService_InputMessage">
     <wsdl:part name="parameters" element="tns:TestWCFService" />
   </wsdl:message>
@@ -368,6 +380,14 @@
     <wsdl:operation name="addMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/addMessage" message="tns:Service1_addMessage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Service1/addMessageResponse" message="tns:Service1_addMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StopWCFService">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/StopWCFService" message="tns:Service1_StopWCFService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/StopWCFServiceResponse" message="tns:Service1_StopWCFService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckWCFServiceIsRunning">
+      <wsdl:input wsaw:Action="http://tempuri.org/Service1/CheckWCFServiceIsRunning" message="tns:Service1_CheckWCFServiceIsRunning_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Service1/CheckWCFServiceIsRunningResponse" message="tns:Service1_CheckWCFServiceIsRunning_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="TestWCFService">
       <wsdl:input wsaw:Action="http://tempuri.org/Service1/TestWCFService" message="tns:Service1_TestWCFService_InputMessage" />
@@ -657,6 +677,24 @@
     </wsdl:operation>
     <wsdl:operation name="addMessage">
       <soap:operation soapAction="http://tempuri.org/Service1/addMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopWCFService">
+      <soap:operation soapAction="http://tempuri.org/Service1/StopWCFService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWCFServiceIsRunning">
+      <soap:operation soapAction="http://tempuri.org/Service1/CheckWCFServiceIsRunning" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -965,6 +1003,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="StopWCFService">
+      <soap12:operation soapAction="http://tempuri.org/Service1/StopWCFService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckWCFServiceIsRunning">
+      <soap12:operation soapAction="http://tempuri.org/Service1/CheckWCFServiceIsRunning" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="TestWCFService">
       <soap12:operation soapAction="http://tempuri.org/Service1/TestWCFService" style="document" />
       <wsdl:input>
@@ -984,7 +1040,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8734/Design_Time_Addresses/WCFServicePMDS/Service1/</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>os@s2e.biz</Upn>
+          <Upn>STYHL2\Lettn</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

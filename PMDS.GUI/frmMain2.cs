@@ -2082,7 +2082,6 @@ namespace PMDS
         public void setHeaderUI(bool RefreshGui)
         {
             this.ucHeader1.setUIHeaderToHistorieBereich(PMDS.Global.historie.HistorieOn, false, false, RefreshGui);
-
         }
 
         private void frmMainModern_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -2118,7 +2117,6 @@ namespace PMDS
                 }
                 else
                 {
-
                     if (this.CloseAnyway)
                     {
                         e.Cancel = false;
