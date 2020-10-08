@@ -8,6 +8,7 @@ using PMDS.BusinessLogic;
 using PMDS.Data.Global;
 using PMDS.Global;
 using PMDS.Global.db.Global;
+using PMDSClient.Sitemap;
 
 namespace PMDS.GUI
 {
@@ -45,6 +46,11 @@ namespace PMDS.GUI
             PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
             QS2.Desktop.ControlManagment.ENV.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
 
+            if (!bRet)
+            {
+                WCFServiceClient wcf = new WCFServiceClient();
+                wcf.stopCheckWCFServiceLocal(false);
+            }
 
             return bRet;
 		}

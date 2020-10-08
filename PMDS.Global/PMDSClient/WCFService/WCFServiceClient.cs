@@ -145,7 +145,7 @@ namespace PMDSClient.Sitemap
                     proc.StartInfo.Arguments = "?typ=Background ?urlGuid=" + urlGuid + "";
 
                     proc.Start();
-                    System.Threading.Thread.Sleep(5000);
+                    System.Threading.Thread.Sleep(3500);
                     //System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
                 }
                 else
@@ -163,6 +163,7 @@ namespace PMDSClient.Sitemap
                 WCFServiceClient.IDClient = System.Guid.NewGuid();
                 QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
                 bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto);
+
 
                 //bool bRetTest = Service1Client1.TestWCFService();
                 //bool bConnected = false;
