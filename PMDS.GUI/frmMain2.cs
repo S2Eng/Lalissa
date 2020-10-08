@@ -2142,6 +2142,12 @@ namespace PMDS
 
                         WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                         WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
+
+                        if (!PMDS.Global.ENV.WCFServiceDebugMode)
+                        {
+                            WCFServiceClient wcf = new WCFServiceClient();
+                            wcf.stopCheckWCFServiceLocal(false);
+                        }
                     }
                 }
 

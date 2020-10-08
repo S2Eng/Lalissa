@@ -160,11 +160,25 @@ namespace PMDSClient.Sitemap
                 string sConfigPathTmp = System.IO.Path.GetDirectoryName(PMDS.Global.ENV.sConfigFile.Trim());
                 string sConfigFileTmp = System.IO.Path.GetFileName(PMDS.Global.ENV.sConfigFile.Trim());
 
-                //bool bRetTest = Service1Client1.TestWCFService();
-
                 WCFServiceClient.IDClient = System.Guid.NewGuid();
                 QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
                 bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto);
+
+                //bool bRetTest = Service1Client1.TestWCFService();
+                //bool bConnected = false;
+                //while (bConnected)
+                //{
+                //    try
+                //    {
+                //        WCFServiceClient.IDClient = System.Guid.NewGuid();
+                //        QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
+                //        bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        throw new Exception("WCFServiceClient.thread_initWCFService: " + ex.ToString());
+                //    }
+                //}
 
                 if (!PMDS.Global.ENV.WCFServiceDebugMode)
                 {
@@ -953,6 +967,7 @@ namespace PMDSClient.Sitemap
                     }
                     catch (Exception ex)
                     {
+                        //System.Windows.Forms.MessageBox.Show(ex.ToString());
                         return;
                     }
 
