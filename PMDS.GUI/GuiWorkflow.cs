@@ -1,8 +1,7 @@
 using System;
 using System.Windows.Forms;
 using PMDS.Global;
-
-
+using PMDSClient.Sitemap;
 
 namespace PMDS.GUI
 {
@@ -58,7 +57,10 @@ namespace PMDS.GUI
 		{
 
             if (!frmLogin.ProcessLogin())
-				return false;
+            {
+                return false;
+            }
+			
 
             frmInfo info = new frmInfo();
             try
