@@ -14883,10 +14883,10 @@ Namespace ServiceReference_01
     Public Interface Service1
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/initService", ReplyAction:="http://tempuri.org/Service1/initServiceResponse")>  _
-        Function initService(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As Boolean
+        Function initService(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto, ByVal ClientProcessId As Integer) As Boolean
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/initService", ReplyAction:="http://tempuri.org/Service1/initServiceResponse")>  _
-        Function initServiceAsync(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As System.Threading.Tasks.Task(Of Boolean)
+        Function initServiceAsync(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto, ByVal ClientProcessId As Integer) As System.Threading.Tasks.Task(Of Boolean)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/Service1/testRep", ReplyAction:="http://tempuri.org/Service1/testRepResponse")>  _
         Sub testRep(ByVal IDClient As System.Guid)
@@ -15942,12 +15942,12 @@ Namespace ServiceReference_01
             MyBase.New(binding, remoteAddress)
         End Sub
         
-        Public Function initService(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As Boolean Implements ServiceReference_01.Service1.initService
-            Return MyBase.Channel.initService(client, user, checkVersion, VersionNrClient, clientVars)
+        Public Function initService(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto, ByVal ClientProcessId As Integer) As Boolean Implements ServiceReference_01.Service1.initService
+            Return MyBase.Channel.initService(client, user, checkVersion, VersionNrClient, clientVars, ClientProcessId)
         End Function
         
-        Public Function initServiceAsync(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto) As System.Threading.Tasks.Task(Of Boolean) Implements ServiceReference_01.Service1.initServiceAsync
-            Return MyBase.Channel.initServiceAsync(client, user, checkVersion, VersionNrClient, clientVars)
+        Public Function initServiceAsync(ByVal client As String, ByVal user As String, ByVal checkVersion As Boolean, ByVal VersionNrClient As System.Guid, ByVal clientVars As ServiceReference_01.ENVClientDto, ByVal ClientProcessId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements ServiceReference_01.Service1.initServiceAsync
+            Return MyBase.Channel.initServiceAsync(client, user, checkVersion, VersionNrClient, clientVars, ClientProcessId)
         End Function
         
         Public Sub testRep(ByVal IDClient As System.Guid) Implements ServiceReference_01.Service1.testRep
