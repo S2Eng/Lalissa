@@ -168,8 +168,9 @@ namespace PMDS.GUI.PMDSClient
                 //txtPasswort.Text = "admin";
 #endif 
 
-				UpdateGUI();	
-                
+				UpdateGUI();
+
+                this.TopMost = true;
 			}
 			catch(Exception ex)
 			{

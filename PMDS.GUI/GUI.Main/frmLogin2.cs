@@ -178,8 +178,9 @@ namespace PMDS.GUI
                 //txtPasswort.Text = "admin";
 #endif 
 
-				UpdateGUI();	
-                
+				UpdateGUI();
+
+                this.TopMost = true;
 			}
 			catch(Exception ex)
 			{
