@@ -344,7 +344,7 @@ namespace PMDS.Print
                 sqlManange sqlManange1 = new sqlManange();
                 sqlManange1.initControl();
                 System.Collections.Generic.List<int> lstMedDaten = new List<int>();
-                lstMedDaten.Add(13);
+                lstMedDaten.Add(3);
                 lstMedDaten.Add(6);
 
                 Guid IDPatient;
