@@ -544,7 +544,7 @@ namespace PMDS.GUI.Arztabrechnung
 
                 if (iCounterLeistungenChecked > 0)
                 {
-                    this.sqlManange1.daArztabrechnung.Update(this.dsKlientenliste1.Arztabrechnung);
+                    this.sqlManange1.d.Update(this.dsKlientenliste1.Arztabrechnung);
                     if (this.lstPatienteSelected.Count > 0)
                     {
                         using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
