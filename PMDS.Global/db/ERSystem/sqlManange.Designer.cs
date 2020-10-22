@@ -58,7 +58,7 @@
             this.daFormularData = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand17 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand16 = new System.Data.OleDb.OleDbCommand();
-            this.daArztabrechnung = new System.Data.OleDb.OleDbDataAdapter();
+            this.d = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand18 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand19 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand20 = new System.Data.OleDb.OleDbCommand();
@@ -113,6 +113,8 @@
             this.oleDbCommand59 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand60 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand61 = new System.Data.OleDb.OleDbCommand();
+            this.daMedizinischeDatenLayout = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbCommand64 = new System.Data.OleDb.OleDbCommand();
             // 
             // oleDbCommand14
             // 
@@ -488,12 +490,12 @@
             this.oleDbCommand17.CommandText = resources.GetString("oleDbCommand17.CommandText");
             this.oleDbCommand17.Connection = this.oleDbConnection1;
             // 
-            // daArztabrechnung
+            // d
             // 
-            this.daArztabrechnung.DeleteCommand = this.oleDbCommand18;
-            this.daArztabrechnung.InsertCommand = this.oleDbCommand19;
-            this.daArztabrechnung.SelectCommand = this.oleDbCommand20;
-            this.daArztabrechnung.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+            this.d.DeleteCommand = this.oleDbCommand18;
+            this.d.InsertCommand = this.oleDbCommand19;
+            this.d.SelectCommand = this.oleDbCommand20;
+            this.d.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
             new System.Data.Common.DataTableMapping("Table", "Arztabrechnung", new System.Data.Common.DataColumnMapping[] {
                         new System.Data.Common.DataColumnMapping("ID", "ID"),
                         new System.Data.Common.DataColumnMapping("Leistung1", "Leistung1"),
@@ -505,7 +507,7 @@
                         new System.Data.Common.DataColumnMapping("IDBenutzer", "IDBenutzer"),
                         new System.Data.Common.DataColumnMapping("Krankenkasse", "Krankenkasse"),
                         new System.Data.Common.DataColumnMapping("SVNr", "SVNr")})});
-            this.daArztabrechnung.UpdateCommand = this.oleDbCommand21;
+            this.d.UpdateCommand = this.oleDbCommand21;
             // 
             // oleDbCommand18
             // 
@@ -1218,6 +1220,27 @@
             new System.Data.OleDb.OleDbParameter("IDUser", System.Data.OleDb.OleDbType.Guid, 0, "IDUser"),
             new System.Data.OleDb.OleDbParameter("Username", System.Data.OleDb.OleDbType.VarWChar, 0, "Username"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            // 
+            // daMedizinischeDatenLayout
+            // 
+            this.daMedizinischeDatenLayout.SelectCommand = this.oleDbCommand64;
+            this.daMedizinischeDatenLayout.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+            new System.Data.Common.DataTableMapping("Table", "MedizinischeDatenLayout", new System.Data.Common.DataColumnMapping[] {
+                        new System.Data.Common.DataColumnMapping("ID", "ID"),
+                        new System.Data.Common.DataColumnMapping("MedizinischerTyp", "MedizinischerTyp"),
+                        new System.Data.Common.DataColumnMapping("Bezeichnung", "Bezeichnung"),
+                        new System.Data.Common.DataColumnMapping("Beschreibung", "Beschreibung"),
+                        new System.Data.Common.DataColumnMapping("Bemerkung", "Bemerkung"),
+                        new System.Data.Common.DataColumnMapping("Beendigungsgrund", "Beendigungsgrund"),
+                        new System.Data.Common.DataColumnMapping("Therapie", "Therapie"),
+                        new System.Data.Common.DataColumnMapping("Typ", "Typ"),
+                        new System.Data.Common.DataColumnMapping("bVisible", "bVisible")})});
+            // 
+            // oleDbCommand64
+            // 
+            this.oleDbCommand64.CommandText = "SELECT        ID, MedizinischerTyp, Bezeichnung, Beschreibung, Bemerkung, Beendig" +
+    "ungsgrund, Therapie, Typ, bVisible\r\nFROM            MedizinischeDatenLayout";
+            this.oleDbCommand64.Connection = this.oleDbConnection1;
 
         }
 
@@ -1252,7 +1275,7 @@
         private System.Data.OleDb.OleDbCommand oleDbCommand17;
         public System.Data.OleDb.OleDbDataAdapter daFormularData;
         private System.Data.OleDb.OleDbCommand oleDbCommand16;
-        public System.Data.OleDb.OleDbDataAdapter daArztabrechnung;
+        public System.Data.OleDb.OleDbDataAdapter d;
         private System.Data.OleDb.OleDbCommand oleDbCommand18;
         private System.Data.OleDb.OleDbCommand oleDbCommand19;
         private System.Data.OleDb.OleDbCommand oleDbCommand20;
@@ -1307,5 +1330,7 @@
         private System.Data.OleDb.OleDbCommand oleDbCommand59;
         private System.Data.OleDb.OleDbCommand oleDbCommand60;
         private System.Data.OleDb.OleDbCommand oleDbCommand61;
+        public System.Data.OleDb.OleDbDataAdapter daMedizinischeDatenLayout;
+        private System.Data.OleDb.OleDbCommand oleDbCommand64;
     }
 }

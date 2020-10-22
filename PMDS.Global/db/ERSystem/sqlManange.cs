@@ -30,6 +30,7 @@ namespace PMDS.Global.db.ERSystem
         public string daSelMedizinischeTypen = "";
         public string daSelEintrag = "";
         public string daSelMedizinischeDaten = "";
+        public string daSelMedizinischeDatenLayout = "";
         public string daSelWundBilder = "";
         public string daSelRecht = "";
         public string daSelELGAProtocoll = "";
@@ -74,7 +75,8 @@ namespace PMDS.Global.db.ERSystem
         }
         public enum eTypeMedDaten
         {
-            MedDaten = 0
+            MedDaten = 0,
+            All = 1
         }
         public enum eTypeWundBilder
         {
@@ -131,12 +133,13 @@ namespace PMDS.Global.db.ERSystem
                     this.daSelTextbausteine = this.daTextbausteine.SelectCommand.CommandText;
                     this.daSelÄrzte = this.daÄrzte.SelectCommand.CommandText;
                     this.daSelDokumenten2 = this.daDokumente2.SelectCommand.CommandText;
-                    this.daSelArztabrechnung = this.daArztabrechnung.SelectCommand.CommandText;
+                    this.daSelArztabrechnung = this.d.SelectCommand.CommandText;
                     this.daSelSuchtgiftschrankSchlüssel = this.daSuchtgiftschrankSchlüssel.SelectCommand.CommandText;
                     this.daSelRechNr = this.daRechNr.SelectCommand.CommandText;
                     this.daSelMedizinischeTypen = this.daMedizinischeTypen.SelectCommand.CommandText;
                     this.daSelEintrag = this.daEintrag.SelectCommand.CommandText;
                     this.daSelMedizinischeDaten = this.daMedizinischeDaten.SelectCommand.CommandText;
+                    this.daSelMedizinischeDatenLayout = this.daMedizinischeDatenLayout.SelectCommand.CommandText;
                     this.daSelWundBilder = this.daWundePosBilder.SelectCommand.CommandText;
                     this.daSelRecht = this.daRecht.SelectCommand.CommandText;
                     this.daSelELGAProtocoll = this.daELGAProtocoll.SelectCommand.CommandText;
@@ -659,9 +662,9 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {               //lthArztabrechnung 
-                this.daArztabrechnung.SelectCommand.CommandText = this.daSelArztabrechnung;
-                this.daArztabrechnung.SelectCommand.Parameters.Clear();
-                PMDS.Global.dbBase.setConnection(this.daArztabrechnung, RBU.DataBase.CONNECTION);
+                this.d.SelectCommand.CommandText = this.daSelArztabrechnung;
+                this.d.SelectCommand.Parameters.Clear();
+                PMDS.Global.dbBase.setConnection(this.d, RBU.DataBase.CONNECTION);
 
                 string sqlPar = "";
                 if (sLeistungenLike.Trim() != "")
@@ -729,19 +732,19 @@ namespace PMDS.Global.db.ERSystem
                     sqlPar += (sqlPar.Trim() == "" ? " where " : " and ") + sTmp;
                 }
 
-                this.daArztabrechnung.SelectCommand.CommandText += " " + sqlPar + " order by Datum desc, Leistung1 asc, Leistung2 asc, Leistung3 asc ";
+                this.d.SelectCommand.CommandText += " " + sqlPar + " order by Datum desc, Leistung1 asc, Leistung2 asc, Leistung3 asc ";
                 if (Von != null)
                 {
                     DateTime datTmpVon = new DateTime(Von.Value.Year, Von.Value.Month, Von.Value.Day, 0, 0, 0);
-                    this.daArztabrechnung.SelectCommand.Parameters.Add("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum").Value = datTmpVon;
+                    this.d.SelectCommand.Parameters.Add("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum").Value = datTmpVon;
                 }
                 if (Bis != null)
                 {
                     DateTime datTmpBis = new DateTime(Bis.Value.Year, Bis.Value.Month, Bis.Value.Day, 23, 59, 59);
-                    this.daArztabrechnung.SelectCommand.Parameters.Add("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum").Value = datTmpBis;
+                    this.d.SelectCommand.Parameters.Add("Datum", System.Data.OleDb.OleDbType.Date, 16, "Datum").Value = datTmpBis;
                 }
 
-                this.daArztabrechnung.Fill(ds.Arztabrechnung);
+                this.d.Fill(ds.Arztabrechnung);
                 return true;
             }
             catch (Exception ex)
@@ -1234,6 +1237,33 @@ namespace PMDS.Global.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("sqlManange.getMedizinischeDaten: " + ex.ToString());
+            }
+        }
+        public bool getMedizinischeDatenLayout(PMDS.Global.db.ERSystem.dsKlientenliste ds, eTypeMedDaten eTypeSel)
+        {
+            try
+            {
+                this.daMedizinischeDatenLayout.SelectCommand.CommandText = this.daSelMedizinischeDatenLayout;
+                this.daMedizinischeDatenLayout.SelectCommand.Parameters.Clear();
+                PMDS.Global.dbBase.setConnection(this.daMedizinischeDatenLayout, RBU.DataBase.CONNECTION);
+
+                if (eTypeSel == eTypeMedDaten.All)
+                {
+                    string sqlWhere = " ";
+                    string sqlOrderBy = " order by Bezeichnung asc";
+                    this.daMedizinischeDatenLayout.SelectCommand.CommandText += sqlWhere + " " + sqlOrderBy;
+                }
+                else
+                {
+                    throw new Exception("getMedizinischeDatenLayout: eTypeSel '" + eTypeSel.ToString() + "' not allowed!");
+                }
+
+                this.daMedizinischeDatenLayout.Fill(ds.MedizinischeDatenLayout);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("sqlManange.getMedizinischeDatenLayout: " + ex.ToString());
             }
         }
 

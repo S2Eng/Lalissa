@@ -62,6 +62,8 @@ namespace PMDS.Global.db.ERSystem {
         
         private ELGAProtocollDataTable tableELGAProtocoll;
         
+        private MedizinischeDatenLayoutDataTable tableMedizinischeDatenLayout;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -146,6 +148,9 @@ namespace PMDS.Global.db.ERSystem {
                 }
                 if ((ds.Tables["ELGAProtocoll"] != null)) {
                     base.Tables.Add(new ELGAProtocollDataTable(ds.Tables["ELGAProtocoll"]));
+                }
+                if ((ds.Tables["MedizinischeDatenLayout"] != null)) {
+                    base.Tables.Add(new MedizinischeDatenLayoutDataTable(ds.Tables["MedizinischeDatenLayout"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -357,6 +362,16 @@ namespace PMDS.Global.db.ERSystem {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MedizinischeDatenLayoutDataTable MedizinischeDatenLayout {
+            get {
+                return this.tableMedizinischeDatenLayout;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -478,6 +493,9 @@ namespace PMDS.Global.db.ERSystem {
                 }
                 if ((ds.Tables["ELGAProtocoll"] != null)) {
                     base.Tables.Add(new ELGAProtocollDataTable(ds.Tables["ELGAProtocoll"]));
+                }
+                if ((ds.Tables["MedizinischeDatenLayout"] != null)) {
+                    base.Tables.Add(new MedizinischeDatenLayoutDataTable(ds.Tables["MedizinischeDatenLayout"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -626,6 +644,12 @@ namespace PMDS.Global.db.ERSystem {
                     this.tableELGAProtocoll.InitVars();
                 }
             }
+            this.tableMedizinischeDatenLayout = ((MedizinischeDatenLayoutDataTable)(base.Tables["MedizinischeDatenLayout"]));
+            if ((initTable == true)) {
+                if ((this.tableMedizinischeDatenLayout != null)) {
+                    this.tableMedizinischeDatenLayout.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -675,6 +699,8 @@ namespace PMDS.Global.db.ERSystem {
             base.Tables.Add(this.tableRecht);
             this.tableELGAProtocoll = new ELGAProtocollDataTable();
             base.Tables.Add(this.tableELGAProtocoll);
+            this.tableMedizinischeDatenLayout = new MedizinischeDatenLayoutDataTable();
+            base.Tables.Add(this.tableMedizinischeDatenLayout);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -793,6 +819,12 @@ namespace PMDS.Global.db.ERSystem {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeMedizinischeDatenLayout() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -902,6 +934,9 @@ namespace PMDS.Global.db.ERSystem {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void ELGAProtocollRowChangeEventHandler(object sender, ELGAProtocollRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void MedizinischeDatenLayoutRowChangeEventHandler(object sender, MedizinischeDatenLayoutRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -9355,6 +9390,378 @@ namespace PMDS.Global.db.ERSystem {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MedizinischeDatenLayoutDataTable : global::System.Data.TypedTableBase<MedizinischeDatenLayoutRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnMedizinischerTyp;
+            
+            private global::System.Data.DataColumn columnBezeichnung;
+            
+            private global::System.Data.DataColumn columnBeschreibung;
+            
+            private global::System.Data.DataColumn columnBemerkung;
+            
+            private global::System.Data.DataColumn columnBeendigungsgrund;
+            
+            private global::System.Data.DataColumn columnTherapie;
+            
+            private global::System.Data.DataColumn columnTyp;
+            
+            private global::System.Data.DataColumn columnbVisible;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedizinischeDatenLayoutDataTable() {
+                this.TableName = "MedizinischeDatenLayout";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal MedizinischeDatenLayoutDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected MedizinischeDatenLayoutDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MedizinischerTypColumn {
+                get {
+                    return this.columnMedizinischerTyp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BezeichnungColumn {
+                get {
+                    return this.columnBezeichnung;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BeschreibungColumn {
+                get {
+                    return this.columnBeschreibung;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BemerkungColumn {
+                get {
+                    return this.columnBemerkung;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BeendigungsgrundColumn {
+                get {
+                    return this.columnBeendigungsgrund;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TherapieColumn {
+                get {
+                    return this.columnTherapie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TypColumn {
+                get {
+                    return this.columnTyp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn bVisibleColumn {
+                get {
+                    return this.columnbVisible;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedizinischeDatenLayoutRow this[int index] {
+                get {
+                    return ((MedizinischeDatenLayoutRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MedizinischeDatenLayoutRowChangeEventHandler MedizinischeDatenLayoutRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MedizinischeDatenLayoutRowChangeEventHandler MedizinischeDatenLayoutRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MedizinischeDatenLayoutRowChangeEventHandler MedizinischeDatenLayoutRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MedizinischeDatenLayoutRowChangeEventHandler MedizinischeDatenLayoutRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddMedizinischeDatenLayoutRow(MedizinischeDatenLayoutRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedizinischeDatenLayoutRow AddMedizinischeDatenLayoutRow(System.Guid ID, int MedizinischerTyp, string Bezeichnung, int Beschreibung, int Bemerkung, int Beendigungsgrund, int Therapie, int Typ, bool bVisible) {
+                MedizinischeDatenLayoutRow rowMedizinischeDatenLayoutRow = ((MedizinischeDatenLayoutRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        MedizinischerTyp,
+                        Bezeichnung,
+                        Beschreibung,
+                        Bemerkung,
+                        Beendigungsgrund,
+                        Therapie,
+                        Typ,
+                        bVisible};
+                rowMedizinischeDatenLayoutRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMedizinischeDatenLayoutRow);
+                return rowMedizinischeDatenLayoutRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedizinischeDatenLayoutRow FindByID(System.Guid ID) {
+                return ((MedizinischeDatenLayoutRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                MedizinischeDatenLayoutDataTable cln = ((MedizinischeDatenLayoutDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MedizinischeDatenLayoutDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnMedizinischerTyp = base.Columns["MedizinischerTyp"];
+                this.columnBezeichnung = base.Columns["Bezeichnung"];
+                this.columnBeschreibung = base.Columns["Beschreibung"];
+                this.columnBemerkung = base.Columns["Bemerkung"];
+                this.columnBeendigungsgrund = base.Columns["Beendigungsgrund"];
+                this.columnTherapie = base.Columns["Therapie"];
+                this.columnTyp = base.Columns["Typ"];
+                this.columnbVisible = base.Columns["bVisible"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnMedizinischerTyp = new global::System.Data.DataColumn("MedizinischerTyp", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMedizinischerTyp);
+                this.columnBezeichnung = new global::System.Data.DataColumn("Bezeichnung", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBezeichnung);
+                this.columnBeschreibung = new global::System.Data.DataColumn("Beschreibung", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBeschreibung);
+                this.columnBemerkung = new global::System.Data.DataColumn("Bemerkung", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBemerkung);
+                this.columnBeendigungsgrund = new global::System.Data.DataColumn("Beendigungsgrund", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBeendigungsgrund);
+                this.columnTherapie = new global::System.Data.DataColumn("Therapie", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTherapie);
+                this.columnTyp = new global::System.Data.DataColumn("Typ", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyp);
+                this.columnbVisible = new global::System.Data.DataColumn("bVisible", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbVisible);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
+                this.columnBezeichnung.MaxLength = 255;
+                this.columnbVisible.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedizinischeDatenLayoutRow NewMedizinischeDatenLayoutRow() {
+                return ((MedizinischeDatenLayoutRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MedizinischeDatenLayoutRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(MedizinischeDatenLayoutRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MedizinischeDatenLayoutRowChanged != null)) {
+                    this.MedizinischeDatenLayoutRowChanged(this, new MedizinischeDatenLayoutRowChangeEvent(((MedizinischeDatenLayoutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MedizinischeDatenLayoutRowChanging != null)) {
+                    this.MedizinischeDatenLayoutRowChanging(this, new MedizinischeDatenLayoutRowChangeEvent(((MedizinischeDatenLayoutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MedizinischeDatenLayoutRowDeleted != null)) {
+                    this.MedizinischeDatenLayoutRowDeleted(this, new MedizinischeDatenLayoutRowChangeEvent(((MedizinischeDatenLayoutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MedizinischeDatenLayoutRowDeleting != null)) {
+                    this.MedizinischeDatenLayoutRowDeleting(this, new MedizinischeDatenLayoutRowChangeEvent(((MedizinischeDatenLayoutRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveMedizinischeDatenLayoutRow(MedizinischeDatenLayoutRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsKlientenliste ds = new dsKlientenliste();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MedizinischeDatenLayoutDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class vKlientenlisteRow : global::System.Data.DataRow {
@@ -14745,6 +15152,241 @@ namespace PMDS.Global.db.ERSystem {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class MedizinischeDatenLayoutRow : global::System.Data.DataRow {
+            
+            private MedizinischeDatenLayoutDataTable tableMedizinischeDatenLayout;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal MedizinischeDatenLayoutRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMedizinischeDatenLayout = ((MedizinischeDatenLayoutDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid ID {
+                get {
+                    return ((global::System.Guid)(this[this.tableMedizinischeDatenLayout.IDColumn]));
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int MedizinischerTyp {
+                get {
+                    try {
+                        return ((int)(this[this.tableMedizinischeDatenLayout.MedizinischerTypColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte MedizinischerTyp in Tabelle MedizinischeDatenLayout ist DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.MedizinischerTypColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Bezeichnung {
+                get {
+                    try {
+                        return ((string)(this[this.tableMedizinischeDatenLayout.BezeichnungColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Bezeichnung in Tabelle MedizinischeDatenLayout ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.BezeichnungColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Beschreibung {
+                get {
+                    try {
+                        return ((int)(this[this.tableMedizinischeDatenLayout.BeschreibungColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Beschreibung in Tabelle MedizinischeDatenLayout ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.BeschreibungColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Bemerkung {
+                get {
+                    try {
+                        return ((int)(this[this.tableMedizinischeDatenLayout.BemerkungColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Bemerkung in Tabelle MedizinischeDatenLayout ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.BemerkungColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Beendigungsgrund {
+                get {
+                    try {
+                        return ((int)(this[this.tableMedizinischeDatenLayout.BeendigungsgrundColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Beendigungsgrund in Tabelle MedizinischeDatenLayout ist DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.BeendigungsgrundColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Therapie {
+                get {
+                    try {
+                        return ((int)(this[this.tableMedizinischeDatenLayout.TherapieColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Therapie in Tabelle MedizinischeDatenLayout ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.TherapieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Typ {
+                get {
+                    try {
+                        return ((int)(this[this.tableMedizinischeDatenLayout.TypColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Typ in Tabelle MedizinischeDatenLayout ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.TypColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool bVisible {
+                get {
+                    return ((bool)(this[this.tableMedizinischeDatenLayout.bVisibleColumn]));
+                }
+                set {
+                    this[this.tableMedizinischeDatenLayout.bVisibleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMedizinischerTypNull() {
+                return this.IsNull(this.tableMedizinischeDatenLayout.MedizinischerTypColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMedizinischerTypNull() {
+                this[this.tableMedizinischeDatenLayout.MedizinischerTypColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBezeichnungNull() {
+                return this.IsNull(this.tableMedizinischeDatenLayout.BezeichnungColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBezeichnungNull() {
+                this[this.tableMedizinischeDatenLayout.BezeichnungColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBeschreibungNull() {
+                return this.IsNull(this.tableMedizinischeDatenLayout.BeschreibungColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBeschreibungNull() {
+                this[this.tableMedizinischeDatenLayout.BeschreibungColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBemerkungNull() {
+                return this.IsNull(this.tableMedizinischeDatenLayout.BemerkungColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBemerkungNull() {
+                this[this.tableMedizinischeDatenLayout.BemerkungColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBeendigungsgrundNull() {
+                return this.IsNull(this.tableMedizinischeDatenLayout.BeendigungsgrundColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBeendigungsgrundNull() {
+                this[this.tableMedizinischeDatenLayout.BeendigungsgrundColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTherapieNull() {
+                return this.IsNull(this.tableMedizinischeDatenLayout.TherapieColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTherapieNull() {
+                this[this.tableMedizinischeDatenLayout.TherapieColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTypNull() {
+                return this.IsNull(this.tableMedizinischeDatenLayout.TypColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTypNull() {
+                this[this.tableMedizinischeDatenLayout.TypColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -15376,6 +16018,40 @@ namespace PMDS.Global.db.ERSystem {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ELGAProtocollRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class MedizinischeDatenLayoutRowChangeEvent : global::System.EventArgs {
+            
+            private MedizinischeDatenLayoutRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedizinischeDatenLayoutRowChangeEvent(MedizinischeDatenLayoutRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedizinischeDatenLayoutRow Row {
                 get {
                     return this.eventRow;
                 }
