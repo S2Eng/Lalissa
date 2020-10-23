@@ -964,7 +964,10 @@ namespace PMDSClient.Sitemap
                 {
                     try
                     {
-                        this.StopLocalWCFService();
+                        if (!PMDS.Global.ENV.WCFServiceDebugMode)
+                        {
+                            this.StopLocalWCFService();
+                        }
                         return;
                     }
                     catch (Exception ex)

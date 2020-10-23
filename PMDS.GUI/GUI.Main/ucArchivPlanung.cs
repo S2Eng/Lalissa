@@ -866,9 +866,25 @@ namespace PMDS.Itscont
             }
         }
 
+        private void btnTermineBereiche_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
 
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
 
     }
 
-
 }
+

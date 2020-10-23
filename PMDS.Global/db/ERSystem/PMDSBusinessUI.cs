@@ -1042,7 +1042,8 @@ namespace PMDS.Global.db.ERSystem
 
                     if (sExtension.Equals(".config") 
                         && onlyFileName.Contains("pmds") 
-                        && !onlyFileName.Contains("qs2") 
+                        && !onlyFileName.Contains("qs2")
+                        && !onlyFileName.Trim().ToLower().Contains("pmds_pws")
                         && !onlyFileName.Contains("abrechnung") 
                         && !onlyFileName.Equals("pmds.main.exe.config") 
                         && !onlyFileName.Equals("qS2.exe.config"))
