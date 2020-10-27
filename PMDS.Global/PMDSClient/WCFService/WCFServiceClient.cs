@@ -83,10 +83,13 @@ namespace PMDSClient.Sitemap
         {
             try
             {
+                //System.Windows.Forms.MessageBox.Show("0.0.1");
+
                 if (!PMDSClientWrapper.WCFServiceOnOff)
                 {
                     return;
                 }
+                //System.Windows.Forms.MessageBox.Show("0.0.2");
 
                 DateTime dNow = DateTime.Now;
                 WCFServiceClient WCFServiceClientPMDS1 = new WCFServiceClient();
@@ -94,10 +97,13 @@ namespace PMDSClient.Sitemap
                 ParsWCF.MachineName = System.Environment.MachineName.Trim();
                 ParsWCF.LoginInNameFrei = PMDSClientWrapper.LoginInNameFrei;
                 ParsWCF.gVersionNr = PMDS.Global.ENV.VersionNr;
+                //System.Windows.Forms.MessageBox.Show("0.0.3");
                 Thread threadSendExcept = new Thread(WCFServiceClientPMDS1.thread_initWCFService);
                 threadSendExcept.IsBackground = true;
+                //System.Windows.Forms.MessageBox.Show("0.0.4");
                 threadSendExcept.Start(ParsWCF);
 
+                //System.Windows.Forms.MessageBox.Show("0.0.6");
 
                 //QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.WCFServicePMDS.Service1Client("BasicHttpBinding_IService1", ENV.UrlWCFServicePMDS.Trim());
                 //bool bCheckOK = Service1Client1.TestService(System.Environment.MachineName.Trim(), ENV.LoginInNameFrei, ENV.VersionNr);
@@ -114,6 +120,8 @@ namespace PMDSClient.Sitemap
         {
             try
             {
+                //System.Windows.Forms.MessageBox.Show("0");
+
                 if (PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() == "")
                 {
                     PMDS.Global.ENV.WCFServicePMDSDebugPath = PMDS.Global.ENV.path_bin.Trim();
@@ -144,8 +152,10 @@ namespace PMDSClient.Sitemap
                     //proc.StartInfo.Verb = "runas";
                     proc.StartInfo.Arguments = "?typ=Background ?urlGuid=" + urlGuid + "";
 
+                    //System.Windows.Forms.MessageBox.Show("1");
                     proc.Start();
-                    System.Threading.Thread.Sleep(500);
+                    //System.Windows.Forms.MessageBox.Show("2");
+                    System.Threading.Thread.Sleep(7000);
                     //System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
                 }
                 else
@@ -159,28 +169,30 @@ namespace PMDSClient.Sitemap
                 string sConfigPathTmp = System.IO.Path.GetDirectoryName(PMDS.Global.ENV.sConfigFile.Trim());
                 string sConfigFileTmp = System.IO.Path.GetFileName(PMDS.Global.ENV.sConfigFile.Trim());
 
+                //System.Windows.Forms.MessageBox.Show("3");
                 WCFServiceClient.IDClient = System.Guid.NewGuid();
-                //QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
-                //bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto);
+                QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
+                bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
                 //bool bRetTest = Service1Client1.TestWCFService();
+                //System.Windows.Forms.MessageBox.Show("4");
 
-                int iInitializeCounter = 0;
-                bool bInitalized = false;
-                while (!bInitalized)
-                {
-                    try
-                    {
-                        iInitializeCounter += 1;
-                        QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
-                        bInitalized = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Threading.Thread.Sleep(1000);
-                        if (iInitializeCounter > 5)
-                            throw new Exception("WCFServiceClient.thread_initWCFService: " + ex.ToString());
-                    }
-                }
+                //int iInitializeCounter = 0;
+                //bool bInitalized = false;
+                //while (!bInitalized)
+                //{
+                //    try
+                //    {
+                //        iInitializeCounter += 1;
+                //        QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
+                //        bInitalized = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        System.Threading.Thread.Sleep(1000);
+                //        if (iInitializeCounter > 12)
+                //            throw new Exception("WCFServiceClient.thread_initWCFService: " + ex.ToString());
+                //    }
+                //}
 
                 if (!PMDS.Global.ENV.WCFServiceDebugMode)
                 {
@@ -194,7 +206,7 @@ namespace PMDSClient.Sitemap
             }
             catch (Exception ex)
             {
-                PMDS.Global.ENV.HandleException(ex, "Exception", true, true, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wcf-Service per Thread initialisieren fehlgeschlagen!"));
+                PMDS.Global.ENV.HandleException(ex, "Exception", true, true, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wcf-Service per Thread initialisieren fehlgeschlagen!"), false);
             }
         }
 

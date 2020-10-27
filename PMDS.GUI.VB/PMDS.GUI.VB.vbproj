@@ -747,6 +747,36 @@
     <Compile Include="planArchive2\core\HandleMessage.vb" />
     <Compile Include="planArchive2\core\sucheDoku.vb" />
     <Compile Include="planArchive2\core\suchePlan.vb" />
+    <Compile Include="planArchive2\planAbteilung\contAbteilungen.Designer.vb">
+      <DependentUpon>contAbteilungen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\contAbteilungen.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\contBereiche.Designer.vb">
+      <DependentUpon>contBereiche.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\contBereiche.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\contBerufsgruppen.Designer.vb">
+      <DependentUpon>contBerufsgruppen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\contBerufsgruppen.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\contPlanungDataBereich.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\contPlanung2Bereich.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\frmTerminBereich.Designer.vb">
+      <DependentUpon>frmTerminBereich.vb</DependentUpon>
+    </Compile>
+    <Compile Include="planArchive2\planAbteilung\frmTerminBereich.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="planArchive2\plan\contComboUserAccounts2.designer.vb">
       <DependentUpon>contComboUserAccounts2.vb</DependentUpon>
     </Compile>
@@ -1021,6 +1051,25 @@
     </EmbeddedResource>
     <EmbeddedResource Include="planArchive2\core\compUserAccounts.resx">
       <DependentUpon>compUserAccounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\planAbteilung\contAbteilungen.resx">
+      <DependentUpon>contAbteilungen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\planAbteilung\contBereiche.resx">
+      <DependentUpon>contBereiche.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\planAbteilung\contBerufsgruppen.resx">
+      <DependentUpon>contBerufsgruppen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\planAbteilung\contPlanungDataBereich.resx">
+      <DependentUpon>contPlanungDataBereich.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\planAbteilung\contPlanung2Bereich.resx">
+      <DependentUpon>contPlanung2Bereich.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="planArchive2\planAbteilung\frmTerminBereich.resx">
+      <DependentUpon>frmTerminBereich.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="planArchive2\plan\contComboUserAccounts2.resx">
       <DependentUpon>contComboUserAccounts2.vb</DependentUpon>
@@ -1339,6 +1388,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <PropertyGroup>

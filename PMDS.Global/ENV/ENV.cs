@@ -1990,7 +1990,7 @@ namespace PMDS.Global
             return sTitleTmp.Trim();
         }
 
-        public static void HandleException(Exception e, string sType = "Exception", bool ShowMsgBox = true, bool checkOutOfMemory = true, string TitleAlternative = null)
+        public static void HandleException(Exception e, string sType = "Exception", bool ShowMsgBox = true, bool checkOutOfMemory = true, string TitleAlternative = null, bool sendEMail = true)
         {
             QS2.Logging.ENV.init(ENV.LOGPATH, true, qs2.core.ENV.adminSecure);
             string sHostName = System.Net.Dns.GetHostName();
@@ -2084,7 +2084,7 @@ namespace PMDS.Global
             }
 
             DateTime dNow = DateTime.Now;
-            if (ENV.WCFServiceOnOff)
+            if (sendEMail && ENV.WCFServiceOnOff)
             {
                 //if (!PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2())
                 //{
