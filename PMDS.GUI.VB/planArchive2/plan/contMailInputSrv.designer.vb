@@ -59,7 +59,7 @@ Partial Class contMailInputSrv
         Dim UltraTab3 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
         Me.UltraTabPageControl4 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.PanelTxtEditor = New System.Windows.Forms.Panel()
-        Me.winFormHtmlEditor1 = New SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor()
+        'Me.winFormHtmlEditor1 = New SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor()
         Me.UltraTabPageControl3 = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
         Me.PanelMails = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
@@ -129,7 +129,7 @@ Partial Class contMailInputSrv
         Me.ImageList1Small = New System.Windows.Forms.ImageList(Me.components)
         Me.UltraTabPageControl4.SuspendLayout()
         Me.PanelTxtEditor.SuspendLayout()
-        Me.winFormHtmlEditor1.SuspendLayout()
+        'Me.winFormHtmlEditor1.SuspendLayout()
         Me.UltraTabPageControl3.SuspendLayout()
         Me.PanelMails.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,7 +180,7 @@ Partial Class contMailInputSrv
         'PanelTxtEditor
         '
         Me.PanelTxtEditor.BackColor = System.Drawing.Color.Transparent
-        Me.PanelTxtEditor.Controls.Add(Me.winFormHtmlEditor1)
+        'Me.PanelTxtEditor.Controls.Add(Me.winFormHtmlEditor1)
         Me.PanelTxtEditor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelTxtEditor.Location = New System.Drawing.Point(0, 0)
         Me.PanelTxtEditor.Name = "PanelTxtEditor"
@@ -189,66 +189,66 @@ Partial Class contMailInputSrv
         '
         'winFormHtmlEditor1
         '
-        Me.winFormHtmlEditor1.AutoScrollMargin = New System.Drawing.Size(0, 0)
-        Me.winFormHtmlEditor1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
-        Me.winFormHtmlEditor1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.winFormHtmlEditor1.Charset = "utf-8"
-        Me.winFormHtmlEditor1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.winFormHtmlEditor1.DocumentHtml = "<!DOCTYPE html>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<html><head>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<meta content=""text/html; charset=unicode"" http-eq" &
-    "uiv=""Content-Type"" />" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</head>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<body></body></html>"
-        Me.winFormHtmlEditor1.EditorContextMenuStrip = Nothing
-        Me.winFormHtmlEditor1.EditorMode = SpiceLogic.HtmlEditorControl.Domain.BOs.EditorModes.ReadOnly_Preview
-        Me.winFormHtmlEditor1.HeaderStyleContentElementID = "page_style"
-        Me.winFormHtmlEditor1.HorizontalScroll = Nothing
-        Me.winFormHtmlEditor1.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Name = "winFormHtmlEditor1"
-        Me.winFormHtmlEditor1.Options.ConvertFileUrlsToLocalPaths = True
-        Me.winFormHtmlEditor1.Options.CustomDOCTYPE = Nothing
-        Me.winFormHtmlEditor1.Options.DefaultHtmlType = SpiceLogic.HtmlEditorControl.Domain.BOs.HtmlContentTypes.DocumentHtml
-        Me.winFormHtmlEditor1.Options.FooterTagNavigatorFont = Nothing
-        Me.winFormHtmlEditor1.Options.FooterTagNavigatorTextColor = System.Drawing.Color.Teal
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.ConnectionMode = SpiceLogic.HtmlEditorControl.Domain.BOs.UserOptions.FTPSettings.ConnectionModes.Active
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Host = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Password = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Port = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.RemoteFolderPath = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Timeout = 4000
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UrlOfTheRemoteFolderPath = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UserName = Nothing
-        Me.winFormHtmlEditor1.Size = New System.Drawing.Size(585, 254)
-        Me.winFormHtmlEditor1.SpellCheckOptions.CurlyUnderlineImageFilePath = Nothing
+        '    Me.winFormHtmlEditor1.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        '    Me.winFormHtmlEditor1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        '    Me.winFormHtmlEditor1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        '    Me.winFormHtmlEditor1.Charset = "utf-8"
+        '    Me.winFormHtmlEditor1.Dock = System.Windows.Forms.DockStyle.Fill
+        '    Me.winFormHtmlEditor1.DocumentHtml = "<!DOCTYPE html>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<html><head>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<meta content=""text/html; charset=unicode"" http-eq" &
+        '"uiv=""Content-Type"" />" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</head>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<body></body></html>"
+        '    Me.winFormHtmlEditor1.EditorContextMenuStrip = Nothing
+        '    Me.winFormHtmlEditor1.EditorMode = SpiceLogic.HtmlEditorControl.Domain.BOs.EditorModes.ReadOnly_Preview
+        '    Me.winFormHtmlEditor1.HeaderStyleContentElementID = "page_style"
+        '    Me.winFormHtmlEditor1.HorizontalScroll = Nothing
+        '    Me.winFormHtmlEditor1.Location = New System.Drawing.Point(0, 0)
+        '    Me.winFormHtmlEditor1.Name = "winFormHtmlEditor1"
+        '    Me.winFormHtmlEditor1.Options.ConvertFileUrlsToLocalPaths = True
+        '    Me.winFormHtmlEditor1.Options.CustomDOCTYPE = Nothing
+        '    Me.winFormHtmlEditor1.Options.DefaultHtmlType = SpiceLogic.HtmlEditorControl.Domain.BOs.HtmlContentTypes.DocumentHtml
+        '    Me.winFormHtmlEditor1.Options.FooterTagNavigatorFont = Nothing
+        '    Me.winFormHtmlEditor1.Options.FooterTagNavigatorTextColor = System.Drawing.Color.Teal
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.ConnectionMode = SpiceLogic.HtmlEditorControl.Domain.BOs.UserOptions.FTPSettings.ConnectionModes.Active
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Host = Nothing
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Password = Nothing
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Port = Nothing
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.RemoteFolderPath = Nothing
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Timeout = 4000
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UrlOfTheRemoteFolderPath = Nothing
+        '    Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UserName = Nothing
+        '    Me.winFormHtmlEditor1.Size = New System.Drawing.Size(585, 254)
+        '    Me.winFormHtmlEditor1.SpellCheckOptions.CurlyUnderlineImageFilePath = Nothing
         DictionaryFileInfo1.AffixFilePath = Nothing
         DictionaryFileInfo1.DictionaryFilePath = Nothing
         DictionaryFileInfo1.EnableUserDictionary = True
         DictionaryFileInfo1.UserDictionaryFilePath = Nothing
-        Me.winFormHtmlEditor1.SpellCheckOptions.DictionaryFile = DictionaryFileInfo1
-        Me.winFormHtmlEditor1.SpellCheckOptions.WaitAlertMessage = "Searching next messpelled word..... (please wait)"
-        Me.winFormHtmlEditor1.TabIndex = 5
+        'Me.winFormHtmlEditor1.SpellCheckOptions.DictionaryFile = DictionaryFileInfo1
+        'Me.winFormHtmlEditor1.SpellCheckOptions.WaitAlertMessage = "Searching next messpelled word..... (please wait)"
+        'Me.winFormHtmlEditor1.TabIndex = 5
         '
         'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar1
         '
-        Me.winFormHtmlEditor1.Toolbar1.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Toolbar1.Name = "WinFormHtmlEditor_Toolbar1"
-        Me.winFormHtmlEditor1.Toolbar1.Size = New System.Drawing.Size(585, 29)
-        Me.winFormHtmlEditor1.Toolbar1.TabIndex = 0
-        '
-        'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar2
-        '
-        Me.winFormHtmlEditor1.Toolbar2.Location = New System.Drawing.Point(0, 29)
-        Me.winFormHtmlEditor1.Toolbar2.Name = "WinFormHtmlEditor_Toolbar2"
-        Me.winFormHtmlEditor1.Toolbar2.Size = New System.Drawing.Size(585, 29)
-        Me.winFormHtmlEditor1.Toolbar2.TabIndex = 0
-        Me.winFormHtmlEditor1.ToolbarContextMenuStrip = Nothing
-        '
-        'winFormHtmlEditor1.WinFormHtmlEditor_ToolbarFooter
-        '
-        Me.winFormHtmlEditor1.ToolbarFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.winFormHtmlEditor1.ToolbarFooter.Location = New System.Drawing.Point(0, 229)
-        Me.winFormHtmlEditor1.ToolbarFooter.Name = "WinFormHtmlEditor_ToolbarFooter"
-        Me.winFormHtmlEditor1.ToolbarFooter.Size = New System.Drawing.Size(585, 25)
-        Me.winFormHtmlEditor1.ToolbarFooter.TabIndex = 7
-        Me.winFormHtmlEditor1.VerticalScroll = Nothing
-        Me.winFormHtmlEditor1.z__ignore = False
+        'Me.winFormHtmlEditor1.Toolbar1.Location = New System.Drawing.Point(0, 0)
+        'Me.winFormHtmlEditor1.Toolbar1.Name = "WinFormHtmlEditor_Toolbar1"
+        'Me.winFormHtmlEditor1.Toolbar1.Size = New System.Drawing.Size(585, 29)
+        'Me.winFormHtmlEditor1.Toolbar1.TabIndex = 0
+        ''
+        ''winFormHtmlEditor1.WinFormHtmlEditor_Toolbar2
+        ''
+        'Me.winFormHtmlEditor1.Toolbar2.Location = New System.Drawing.Point(0, 29)
+        'Me.winFormHtmlEditor1.Toolbar2.Name = "WinFormHtmlEditor_Toolbar2"
+        'Me.winFormHtmlEditor1.Toolbar2.Size = New System.Drawing.Size(585, 29)
+        'Me.winFormHtmlEditor1.Toolbar2.TabIndex = 0
+        'Me.winFormHtmlEditor1.ToolbarContextMenuStrip = Nothing
+        ''
+        ''winFormHtmlEditor1.WinFormHtmlEditor_ToolbarFooter
+        ''
+        'Me.winFormHtmlEditor1.ToolbarFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+        'Me.winFormHtmlEditor1.ToolbarFooter.Location = New System.Drawing.Point(0, 229)
+        'Me.winFormHtmlEditor1.ToolbarFooter.Name = "WinFormHtmlEditor_ToolbarFooter"
+        'Me.winFormHtmlEditor1.ToolbarFooter.Size = New System.Drawing.Size(585, 25)
+        'Me.winFormHtmlEditor1.ToolbarFooter.TabIndex = 7
+        'Me.winFormHtmlEditor1.VerticalScroll = Nothing
+        'Me.winFormHtmlEditor1.z__ignore = False
         '
         'UltraTabPageControl3
         '
@@ -1016,8 +1016,8 @@ Partial Class contMailInputSrv
         Me.Size = New System.Drawing.Size(985, 631)
         Me.UltraTabPageControl4.ResumeLayout(False)
         Me.PanelTxtEditor.ResumeLayout(False)
-        Me.winFormHtmlEditor1.ResumeLayout(False)
-        Me.winFormHtmlEditor1.PerformLayout()
+        'Me.winFormHtmlEditor1.ResumeLayout(False)
+        'Me.winFormHtmlEditor1.PerformLayout()
         Me.UltraTabPageControl3.ResumeLayout(False)
         Me.PanelMails.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
@@ -1127,7 +1127,7 @@ Partial Class contMailInputSrv
     Friend WithEvents lblFound As Infragistics.Win.Misc.UltraLabel
     Friend WithEvents UltraTabPageControl4 As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
     Friend WithEvents PanelTxtEditor As System.Windows.Forms.Panel
-    Private WithEvents winFormHtmlEditor1 As SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor
+    'Private WithEvents winFormHtmlEditor1 As SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor
     Friend WithEvents lblTextIsHtmJN As Infragistics.Win.Misc.UltraLabel
 
 End Class

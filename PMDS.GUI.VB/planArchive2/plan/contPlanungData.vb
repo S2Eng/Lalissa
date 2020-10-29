@@ -2885,18 +2885,18 @@ Public Class contPlanungData
     End Sub
     Public Shared Sub ClearHTMLBrowser(ByRef winFormHtmlEditor As SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor)
         Try
-            winFormHtmlEditor.EditorMode = SpiceLogic.HtmlEditorControl.Domain.BOs.EditorModes.HTML_Edit
+            'winFormHtmlEditor.EditorMode = SpiceLogic.HtmlEditorControl.Domain.BOs.EditorModes.HTML_Edit
 
-            winFormHtmlEditor.Content.ClearContent()
-            winFormHtmlEditor.DocumentHtml = ""
-            winFormHtmlEditor.BodyHtml = ""
-            winFormHtmlEditor.DocumentTitle = ""
-            Application.DoEvents()
-            winFormHtmlEditor.EditorMode = SpiceLogic.HtmlEditorControl.Domain.BOs.EditorModes.ReadOnly_Preview
-            Application.DoEvents()
-            Dim gen As New General()
-            gen.GarbColl()
-            Application.DoEvents()
+            'winFormHtmlEditor.Content.ClearContent()
+            'winFormHtmlEditor.DocumentHtml = ""
+            'winFormHtmlEditor.BodyHtml = ""
+            'winFormHtmlEditor.DocumentTitle = ""
+            'Application.DoEvents()
+            'winFormHtmlEditor.EditorMode = SpiceLogic.HtmlEditorControl.Domain.BOs.EditorModes.ReadOnly_Preview
+            'Application.DoEvents()
+            'Dim gen As New General()
+            'gen.GarbColl()
+            'Application.DoEvents()
 
         Catch ex As Exception
             Throw New Exception("contPlanungData.ClearHTMLBrowser: " + ex.ToString())

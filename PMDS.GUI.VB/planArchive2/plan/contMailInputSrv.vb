@@ -71,7 +71,7 @@ Public Class contMailInputSrv
 
             Me.clearUIEMail()
             Me.setStatusBarUI(False)
-            contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
+            'contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
 
         Catch ex As Exception
             Throw New Exception("contMailInputSrv.initControl: " + ex.ToString())
@@ -124,7 +124,7 @@ Public Class contMailInputSrv
             General.abort = False
             InfoMailService.iCounterIncomingEMails2 = 0
 
-            contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
+            'contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
             Me.clearUIEMail()
 
             Dim sInfoAccountsScanned As String = ""
@@ -212,7 +212,7 @@ Public Class contMailInputSrv
     Public Sub showBody(ByRef txt As String, ByRef typBody As TXTextControl.StreamType,
                         ByRef rUserAccount As dsUserAccounts.tblUserAccountsRow)
         Try
-            contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
+            'contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
 
             'Dim sTxt As String = Me.genMain.ByteToString(plainTextPart.Body)
             'Me.ContTxtEditor1.showText(txt, typBody, True, TXTextControl.ViewMode.PageView)
@@ -222,7 +222,7 @@ Public Class contMailInputSrv
             If Me.HtmlToolStripMenuItem.Checked Then
                 If typBody = TXTextControl.StreamType.HTMLFormat Then
                     Me.lblTextIsHtmJN.Text = "Html"
-                    Me.winFormHtmlEditor1.DocumentHtml = txt
+                    'Me.winFormHtmlEditor1.DocumentHtml = txt
 
                     'statButt = Me.UltraToolbarsManagerBody.Tools("statButtHtml")
                     'statButt.Checked = True
@@ -231,10 +231,10 @@ Public Class contMailInputSrv
                 ElseIf typBody = TXTextControl.StreamType.PlainText Then
                     If clPlan.checkIfTextIsHtmlText(txt.Trim()) Then
                         Me.lblTextIsHtmJN.Text = "Html"
-                        Me.winFormHtmlEditor1.DocumentHtml = txt
+                        'Me.winFormHtmlEditor1.DocumentHtml = txt
                     Else
                         Me.lblTextIsHtmJN.Text = "Text"
-                        Me.winFormHtmlEditor1.Content.SetBodyText(txt)
+                        'Me.winFormHtmlEditor1.Content.SetBodyText(txt)
                     End If
 
                     'statButt = Me.UltraToolbarsManagerBody.Tools("statButtText")
@@ -311,7 +311,7 @@ Public Class contMailInputSrv
             Me.ContTxtEditor1.clearForm()
 
             Me.lblVonDatum.Text = ""
-            contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
+            'contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
             Me.SplitContainerMail.Panel2Collapsed = False
 
         Catch ex As Exception
