@@ -108,8 +108,10 @@ namespace PMDS.Itscont
                 this.tabMain.Tabs[3].Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Archiv");
                 this.tabMain.Tabs[4].Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Termine");
 
-
-                this.btnTermineBereiche.Visible = false;
+                if (!ENV.adminSecure)
+                {
+                    this.btnTermineBereiche.Visible = false;
+                }
 
                 this.isLoaded = true;
 
