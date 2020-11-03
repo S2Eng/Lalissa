@@ -50,24 +50,15 @@ Public Class contPlanung2Bereich
     Friend WithEvents PanelTop As Panel
     Friend WithEvents PanelCenter As Panel
     Friend WithEvents PanelBottom As Panel
-    Friend WithEvents PanelViewModus As Panel
     Friend WithEvents lblBetreff As Infragistics.Win.Misc.UltraLabel
     Public WithEvents txtBetreff2 As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents btnSearch As Infragistics.Win.Misc.UltraButton
-    Public WithEvents chkPreview As Infragistics.Win.UltraWinEditors.UltraCheckEditor
     Public WithEvents optStatus As Infragistics.Win.UltraWinEditors.UltraOptionSet
-    Friend WithEvents dropDownPatienten As Infragistics.Win.Misc.UltraDropDownButton
     Friend WithEvents dropDownUsers As Infragistics.Win.Misc.UltraDropDownButton
     Private WithEvents uPopUpContBenutzer As Infragistics.Win.Misc.UltraPopupControlContainer
     Private WithEvents uPopUpContPatienten As Infragistics.Win.Misc.UltraPopupControlContainer
-    Friend WithEvents PanelViewModus_Fill_Panel As Infragistics.Win.Misc.UltraPanel
-    Friend WithEvents _PanelViewModus_Toolbars_Dock_Area_Left As UltraToolbarsDockArea
-    Friend WithEvents _PanelViewModus_Toolbars_Dock_Area_Right As UltraToolbarsDockArea
-    Friend WithEvents _PanelViewModus_Toolbars_Dock_Area_Bottom As UltraToolbarsDockArea
-    Friend WithEvents _PanelViewModus_Toolbars_Dock_Area_Top As UltraToolbarsDockArea
     Friend WithEvents lblStatus As Infragistics.Win.Misc.UltraLabel
     Friend WithEvents lblZuordnungen As Infragistics.Win.Misc.UltraLabel
-    Friend WithEvents lblAnsicht As Infragistics.Win.Misc.UltraLabel
     Public WithEvents lblFound As Infragistics.Win.Misc.UltraLabel
     Friend WithEvents UltraLabel1 As Infragistics.Win.Misc.UltraLabel
     Private WithEvents btnLayout_PatientBeginn As QS2.Desktop.ControlManagment.BaseButton
@@ -97,11 +88,11 @@ Public Class contPlanung2Bereich
         Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -110,8 +101,6 @@ Public Class contPlanung2Bereich
         Dim Appearance17 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim OptionSet1 As Infragistics.Win.UltraWinToolbars.OptionSet = New Infragistics.Win.UltraWinToolbars.OptionSet("lblOnOffStatusGesendet")
         Dim OptionSet2 As Infragistics.Win.UltraWinToolbars.OptionSet = New Infragistics.Win.UltraWinToolbars.OptionSet("lblOnOffSucheNach")
         Dim OptionSet3 As Infragistics.Win.UltraWinToolbars.OptionSet = New Infragistics.Win.UltraWinToolbars.OptionSet("lblOnOffStatus")
@@ -125,25 +114,25 @@ Public Class contPlanung2Bereich
         Dim StateButtonTool30 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtListe", "lblOnOffAnsicht")
         Dim LabelTool2 As Infragistics.Win.UltraWinToolbars.LabelTool = New Infragistics.Win.UltraWinToolbars.LabelTool("lblOnOffAnsicht")
         Dim StateButtonTool5 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtMonat", "lblOnOffAnsicht")
+        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim StateButtonTool6 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtWoche", "lblOnOffAnsicht")
         Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim StateButtonTool6 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtWoche", "lblOnOffAnsicht")
+        Dim StateButtonTool7 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtTag", "lblOnOffAnsicht")
         Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim StateButtonTool7 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtTag", "lblOnOffAnsicht")
+        Dim StateButtonTool8 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtListe", "lblOnOffAnsicht")
         Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim StateButtonTool8 As Infragistics.Win.UltraWinToolbars.StateButtonTool = New Infragistics.Win.UltraWinToolbars.StateButtonTool("statButtListe", "lblOnOffAnsicht")
         Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(contPlanung2Bereich))
         Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(contPlanung2Bereich))
         Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Neuen Planungseintrag erstellen", Infragistics.Win.ToolTipImage.[Default], "", Infragistics.Win.DefaultableBoolean.[Default])
         Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Neuen Planungseintrag erstellen", Infragistics.Win.ToolTipImage.[Default], "", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance35 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ContPlanung1 = New PMDS.GUI.VB.contPlanungData()
         Me.grpSearch = New Infragistics.Win.Misc.UltraGroupBox()
         Me.chkDatumFixieren = New Infragistics.Win.UltraWinEditors.UltraCheckEditor()
@@ -155,27 +144,18 @@ Public Class contPlanung2Bereich
         Me.btnSearch = New Infragistics.Win.Misc.UltraButton()
         Me.UltraLabel1 = New Infragistics.Win.Misc.UltraLabel()
         Me.lblFound = New Infragistics.Win.Misc.UltraLabel()
-        Me.lblAnsicht = New Infragistics.Win.Misc.UltraLabel()
         Me.lblZuordnungen = New Infragistics.Win.Misc.UltraLabel()
         Me.lblStatus = New Infragistics.Win.Misc.UltraLabel()
         Me.optStatus = New Infragistics.Win.UltraWinEditors.UltraOptionSet()
-        Me.dropDownPatienten = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.dropDownUsers = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.UDateBis = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
         Me.UDateVon = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
-        Me.chkPreview = New Infragistics.Win.UltraWinEditors.UltraCheckEditor()
         Me.txtBetreff2 = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
         Me.lblBetreff = New Infragistics.Win.Misc.UltraLabel()
         Me.dropDownCategories = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.lblBeginntZwischen = New Infragistics.Win.Misc.UltraLabel()
         Me.lblAnd = New Infragistics.Win.Misc.UltraLabel()
-        Me.PanelViewModus = New System.Windows.Forms.Panel()
-        Me.PanelViewModus_Fill_Panel = New Infragistics.Win.Misc.UltraPanel()
-        Me._PanelViewModus_Toolbars_Dock_Area_Left = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me.UltraToolbarsManagerMain = New Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(Me.components)
-        Me._PanelViewModus_Toolbars_Dock_Area_Right = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
-        Me._PanelViewModus_Toolbars_Dock_Area_Top = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me.PanelDekursEntwürfe = New QS2.Desktop.ControlManagment.BasePanel()
         Me.btnDekursEntwurfErstellenAs = New QS2.Desktop.ControlManagment.BaseButton()
         Me.btnDekursEntwurfErstellen = New QS2.Desktop.ControlManagment.BaseButton()
@@ -202,10 +182,7 @@ Public Class contPlanung2Bereich
         CType(Me.optStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UDateBis, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UDateVon, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBetreff2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelViewModus.SuspendLayout()
-        Me.PanelViewModus_Fill_Panel.SuspendLayout()
         CType(Me.UltraToolbarsManagerMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDekursEntwürfe.SuspendLayout()
         Me.ContextMenuTree.SuspendLayout()
@@ -237,21 +214,17 @@ Public Class contPlanung2Bereich
         Me.grpSearch.Controls.Add(Me.btnSearch)
         Me.grpSearch.Controls.Add(Me.UltraLabel1)
         Me.grpSearch.Controls.Add(Me.lblFound)
-        Me.grpSearch.Controls.Add(Me.lblAnsicht)
         Me.grpSearch.Controls.Add(Me.lblZuordnungen)
         Me.grpSearch.Controls.Add(Me.lblStatus)
         Me.grpSearch.Controls.Add(Me.optStatus)
-        Me.grpSearch.Controls.Add(Me.dropDownPatienten)
         Me.grpSearch.Controls.Add(Me.dropDownUsers)
         Me.grpSearch.Controls.Add(Me.UDateBis)
         Me.grpSearch.Controls.Add(Me.UDateVon)
-        Me.grpSearch.Controls.Add(Me.chkPreview)
         Me.grpSearch.Controls.Add(Me.txtBetreff2)
         Me.grpSearch.Controls.Add(Me.lblBetreff)
         Me.grpSearch.Controls.Add(Me.dropDownCategories)
         Me.grpSearch.Controls.Add(Me.lblBeginntZwischen)
         Me.grpSearch.Controls.Add(Me.lblAnd)
-        Me.grpSearch.Controls.Add(Me.PanelViewModus)
         Me.grpSearch.Location = New System.Drawing.Point(7, 3)
         Me.grpSearch.Name = "grpSearch"
         Me.grpSearch.Size = New System.Drawing.Size(557, 196)
@@ -440,23 +413,11 @@ Public Class contPlanung2Bereich
         Me.lblFound.Tag = ""
         Me.lblFound.Text = "Gefunden: 1345"
         '
-        'lblAnsicht
+        'lblZuordnungen
         '
         Appearance9.BackColor = System.Drawing.Color.Transparent
         Appearance9.TextVAlignAsString = "Middle"
-        Me.lblAnsicht.Appearance = Appearance9
-        Me.lblAnsicht.Location = New System.Drawing.Point(9, 130)
-        Me.lblAnsicht.Name = "lblAnsicht"
-        Me.lblAnsicht.Size = New System.Drawing.Size(89, 16)
-        Me.lblAnsicht.TabIndex = 500
-        Me.lblAnsicht.Tag = "ResID.Ansicht"
-        Me.lblAnsicht.Text = "Ansicht"
-        '
-        'lblZuordnungen
-        '
-        Appearance10.BackColor = System.Drawing.Color.Transparent
-        Appearance10.TextVAlignAsString = "Middle"
-        Me.lblZuordnungen.Appearance = Appearance10
+        Me.lblZuordnungen.Appearance = Appearance9
         Me.lblZuordnungen.Location = New System.Drawing.Point(9, 101)
         Me.lblZuordnungen.Name = "lblZuordnungen"
         Me.lblZuordnungen.Size = New System.Drawing.Size(89, 16)
@@ -466,9 +427,9 @@ Public Class contPlanung2Bereich
         '
         'lblStatus
         '
-        Appearance11.BackColor = System.Drawing.Color.Transparent
-        Appearance11.TextVAlignAsString = "Middle"
-        Me.lblStatus.Appearance = Appearance11
+        Appearance10.BackColor = System.Drawing.Color.Transparent
+        Appearance10.TextVAlignAsString = "Middle"
+        Me.lblStatus.Appearance = Appearance10
         Me.lblStatus.Location = New System.Drawing.Point(9, 76)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Size = New System.Drawing.Size(38, 16)
@@ -500,25 +461,12 @@ Public Class contPlanung2Bereich
         Me.optStatus.TabIndex = 3
         Me.optStatus.Text = "Offen"
         '
-        'dropDownPatienten
-        '
-        Appearance12.BorderColor = System.Drawing.Color.Black
-        Me.dropDownPatienten.Appearance = Appearance12
-        Me.dropDownPatienten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownPatienten.Location = New System.Drawing.Point(125, 98)
-        Me.dropDownPatienten.Name = "dropDownPatienten"
-        Me.dropDownPatienten.Size = New System.Drawing.Size(97, 22)
-        Me.dropDownPatienten.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
-        Me.dropDownPatienten.TabIndex = 4
-        Me.dropDownPatienten.Tag = "ResID.Patienten"
-        Me.dropDownPatienten.Text = "Patienten"
-        '
         'dropDownUsers
         '
-        Appearance13.BorderColor = System.Drawing.Color.Black
-        Me.dropDownUsers.Appearance = Appearance13
+        Appearance11.BorderColor = System.Drawing.Color.Black
+        Me.dropDownUsers.Appearance = Appearance11
         Me.dropDownUsers.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownUsers.Location = New System.Drawing.Point(225, 98)
+        Me.dropDownUsers.Location = New System.Drawing.Point(125, 95)
         Me.dropDownUsers.Name = "dropDownUsers"
         Me.dropDownUsers.Size = New System.Drawing.Size(97, 22)
         Me.dropDownUsers.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
@@ -528,8 +476,8 @@ Public Class contPlanung2Bereich
         '
         'UDateBis
         '
-        Appearance14.BackColor = System.Drawing.Color.White
-        Me.UDateBis.Appearance = Appearance14
+        Appearance12.BackColor = System.Drawing.Color.White
+        Me.UDateBis.Appearance = Appearance12
         Me.UDateBis.BackColor = System.Drawing.Color.White
         Me.UDateBis.DateTime = New Date(2008, 11, 3, 0, 0, 0, 0)
         Me.UDateBis.Location = New System.Drawing.Point(272, 47)
@@ -540,8 +488,8 @@ Public Class contPlanung2Bereich
         '
         'UDateVon
         '
-        Appearance15.BackColor = System.Drawing.Color.White
-        Me.UDateVon.Appearance = Appearance15
+        Appearance13.BackColor = System.Drawing.Color.White
+        Me.UDateVon.Appearance = Appearance13
         Me.UDateVon.BackColor = System.Drawing.Color.White
         Me.UDateVon.DateTime = New Date(2008, 11, 3, 0, 0, 0, 0)
         Me.UDateVon.Location = New System.Drawing.Point(125, 47)
@@ -550,30 +498,21 @@ Public Class contPlanung2Bereich
         Me.UDateVon.TabIndex = 1
         Me.UDateVon.Value = New Date(2008, 11, 3, 0, 0, 0, 0)
         '
-        'chkPreview
-        '
-        Me.chkPreview.Location = New System.Drawing.Point(299, 129)
-        Me.chkPreview.Name = "chkPreview"
-        Me.chkPreview.Size = New System.Drawing.Size(96, 20)
-        Me.chkPreview.TabIndex = 8
-        Me.chkPreview.Tag = "ResID.Prieview"
-        Me.chkPreview.Text = "Vorschau"
-        '
         'txtBetreff2
         '
-        Appearance16.BackColor = System.Drawing.Color.White
-        Appearance16.BackColor2 = System.Drawing.Color.White
-        Appearance16.BackColorDisabled = System.Drawing.Color.White
-        Appearance16.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance16.FontData.BoldAsString = "False"
-        Appearance16.FontData.ItalicAsString = "False"
-        Appearance16.FontData.Name = "Microsoft Sans Serif"
-        Appearance16.FontData.SizeInPoints = 8.25!
-        Appearance16.FontData.StrikeoutAsString = "False"
-        Appearance16.FontData.UnderlineAsString = "False"
-        Appearance16.ForeColor = System.Drawing.Color.Black
-        Appearance16.ForeColorDisabled = System.Drawing.Color.Black
-        Me.txtBetreff2.Appearance = Appearance16
+        Appearance14.BackColor = System.Drawing.Color.White
+        Appearance14.BackColor2 = System.Drawing.Color.White
+        Appearance14.BackColorDisabled = System.Drawing.Color.White
+        Appearance14.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance14.FontData.BoldAsString = "False"
+        Appearance14.FontData.ItalicAsString = "False"
+        Appearance14.FontData.Name = "Microsoft Sans Serif"
+        Appearance14.FontData.SizeInPoints = 8.25!
+        Appearance14.FontData.StrikeoutAsString = "False"
+        Appearance14.FontData.UnderlineAsString = "False"
+        Appearance14.ForeColor = System.Drawing.Color.Black
+        Appearance14.ForeColorDisabled = System.Drawing.Color.Black
+        Me.txtBetreff2.Appearance = Appearance14
         Me.txtBetreff2.AutoSize = False
         Me.txtBetreff2.BackColor = System.Drawing.Color.White
         Me.txtBetreff2.Location = New System.Drawing.Point(168, 19)
@@ -585,9 +524,9 @@ Public Class contPlanung2Bereich
         '
         'lblBetreff
         '
-        Appearance17.BackColor = System.Drawing.Color.Transparent
-        Appearance17.TextVAlignAsString = "Middle"
-        Me.lblBetreff.Appearance = Appearance17
+        Appearance15.BackColor = System.Drawing.Color.Transparent
+        Appearance15.TextVAlignAsString = "Middle"
+        Me.lblBetreff.Appearance = Appearance15
         Me.lblBetreff.Location = New System.Drawing.Point(125, 22)
         Me.lblBetreff.Name = "lblBetreff"
         Me.lblBetreff.Size = New System.Drawing.Size(38, 16)
@@ -597,9 +536,9 @@ Public Class contPlanung2Bereich
         '
         'dropDownCategories
         '
-        Appearance18.BorderColor = System.Drawing.Color.Black
-        Appearance18.TextHAlignAsString = "Left"
-        Me.dropDownCategories.Appearance = Appearance18
+        Appearance16.BorderColor = System.Drawing.Color.Black
+        Appearance16.TextHAlignAsString = "Left"
+        Me.dropDownCategories.Appearance = Appearance16
         Me.dropDownCategories.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
         Me.dropDownCategories.Location = New System.Drawing.Point(9, 19)
         Me.dropDownCategories.Name = "dropDownCategories"
@@ -612,9 +551,9 @@ Public Class contPlanung2Bereich
         '
         'lblBeginntZwischen
         '
-        Appearance19.BackColor = System.Drawing.Color.Transparent
-        Appearance19.TextVAlignAsString = "Middle"
-        Me.lblBeginntZwischen.Appearance = Appearance19
+        Appearance17.BackColor = System.Drawing.Color.Transparent
+        Appearance17.TextVAlignAsString = "Middle"
+        Me.lblBeginntZwischen.Appearance = Appearance17
         Me.lblBeginntZwischen.Location = New System.Drawing.Point(9, 49)
         Me.lblBeginntZwischen.Name = "lblBeginntZwischen"
         Me.lblBeginntZwischen.Size = New System.Drawing.Size(100, 16)
@@ -624,10 +563,10 @@ Public Class contPlanung2Bereich
         '
         'lblAnd
         '
-        Appearance20.BackColor = System.Drawing.Color.Transparent
-        Appearance20.TextHAlignAsString = "Center"
-        Appearance20.TextVAlignAsString = "Middle"
-        Me.lblAnd.Appearance = Appearance20
+        Appearance18.BackColor = System.Drawing.Color.Transparent
+        Appearance18.TextHAlignAsString = "Center"
+        Appearance18.TextVAlignAsString = "Middle"
+        Me.lblAnd.Appearance = Appearance18
         Me.lblAnd.Location = New System.Drawing.Point(225, 49)
         Me.lblAnd.Name = "lblAnd"
         Me.lblAnd.Size = New System.Drawing.Size(35, 16)
@@ -635,46 +574,11 @@ Public Class contPlanung2Bereich
         Me.lblAnd.Tag = "ResID.und"
         Me.lblAnd.Text = "und"
         '
-        'PanelViewModus
-        '
-        Me.PanelViewModus.BackColor = System.Drawing.Color.Transparent
-        Me.PanelViewModus.Controls.Add(Me.PanelViewModus_Fill_Panel)
-        Me.PanelViewModus.Controls.Add(Me._PanelViewModus_Toolbars_Dock_Area_Left)
-        Me.PanelViewModus.Controls.Add(Me._PanelViewModus_Toolbars_Dock_Area_Right)
-        Me.PanelViewModus.Controls.Add(Me._PanelViewModus_Toolbars_Dock_Area_Bottom)
-        Me.PanelViewModus.Controls.Add(Me._PanelViewModus_Toolbars_Dock_Area_Top)
-        Me.PanelViewModus.Location = New System.Drawing.Point(124, 126)
-        Me.PanelViewModus.Name = "PanelViewModus"
-        Me.PanelViewModus.Size = New System.Drawing.Size(161, 23)
-        Me.PanelViewModus.TabIndex = 7
-        '
-        'PanelViewModus_Fill_Panel
-        '
-        Me.PanelViewModus_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default
-        Me.PanelViewModus_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelViewModus_Fill_Panel.Location = New System.Drawing.Point(0, 25)
-        Me.PanelViewModus_Fill_Panel.Name = "PanelViewModus_Fill_Panel"
-        Me.PanelViewModus_Fill_Panel.Size = New System.Drawing.Size(161, 0)
-        Me.PanelViewModus_Fill_Panel.TabIndex = 0
-        '
-        '_PanelViewModus_Toolbars_Dock_Area_Left
-        '
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.Transparent
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 25)
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.Name = "_PanelViewModus_Toolbars_Dock_Area_Left"
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 0)
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.ToolbarsManager = Me.UltraToolbarsManagerMain
-        Me._PanelViewModus_Toolbars_Dock_Area_Left.UseAppStyling = False
-        '
         'UltraToolbarsManagerMain
         '
-        Appearance21.BackColor = System.Drawing.Color.Transparent
-        Me.UltraToolbarsManagerMain.Appearance = Appearance21
+        Appearance19.BackColor = System.Drawing.Color.Transparent
+        Me.UltraToolbarsManagerMain.Appearance = Appearance19
         Me.UltraToolbarsManagerMain.DesignerFlags = 1
-        Me.UltraToolbarsManagerMain.DockWithinContainer = Me.PanelViewModus
         Me.UltraToolbarsManagerMain.LockToolbars = True
         OptionSet1.AllowAllUp = False
         OptionSet2.AllowAllUp = False
@@ -698,52 +602,52 @@ Public Class contPlanung2Bereich
         LabelTool2.SharedPropsInternal.Caption = "lblOnOffAnsicht"
         StateButtonTool5.Checked = True
         StateButtonTool5.OptionSetKey = "lblOnOffAnsicht"
-        Appearance22.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool5.SharedPropsInternal.AppearancesSmall.Appearance = Appearance22
-        Appearance23.BackColor = System.Drawing.Color.White
-        Appearance23.BackColorDisabled = System.Drawing.Color.White
-        Appearance23.FontData.BoldAsString = "True"
-        Appearance23.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool5.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance23
+        Appearance20.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool5.SharedPropsInternal.AppearancesSmall.Appearance = Appearance20
+        Appearance21.BackColor = System.Drawing.Color.White
+        Appearance21.BackColorDisabled = System.Drawing.Color.White
+        Appearance21.FontData.BoldAsString = "True"
+        Appearance21.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool5.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance21
         StateButtonTool5.SharedPropsInternal.Caption = "Monat"
         StateButtonTool5.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways
         StateButtonTool5.SharedPropsInternal.ToolTipText = "Darstellung Monatsansicht"
         StateButtonTool5.SharedPropsInternal.ToolTipTitle = "Monat"
         StateButtonTool5.Tag = "ResID.Month"
         StateButtonTool6.OptionSetKey = "lblOnOffAnsicht"
-        Appearance24.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = Appearance24
-        Appearance25.BackColor = System.Drawing.Color.White
-        Appearance25.BackColorDisabled = System.Drawing.Color.White
-        Appearance25.FontData.BoldAsString = "True"
-        Appearance25.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool6.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance25
+        Appearance22.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = Appearance22
+        Appearance23.BackColor = System.Drawing.Color.White
+        Appearance23.BackColorDisabled = System.Drawing.Color.White
+        Appearance23.FontData.BoldAsString = "True"
+        Appearance23.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool6.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance23
         StateButtonTool6.SharedPropsInternal.Caption = "Woche"
         StateButtonTool6.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways
         StateButtonTool6.SharedPropsInternal.ToolTipText = "Darstellung Wochenansicht"
         StateButtonTool6.SharedPropsInternal.ToolTipTitle = "Woche"
         StateButtonTool6.Tag = "ResID.Week"
         StateButtonTool7.OptionSetKey = "lblOnOffAnsicht"
-        Appearance26.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool7.SharedPropsInternal.AppearancesSmall.Appearance = Appearance26
-        Appearance27.BackColor = System.Drawing.Color.White
-        Appearance27.BackColorDisabled = System.Drawing.Color.White
-        Appearance27.FontData.BoldAsString = "True"
-        Appearance27.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool7.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance27
+        Appearance24.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool7.SharedPropsInternal.AppearancesSmall.Appearance = Appearance24
+        Appearance25.BackColor = System.Drawing.Color.White
+        Appearance25.BackColorDisabled = System.Drawing.Color.White
+        Appearance25.FontData.BoldAsString = "True"
+        Appearance25.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool7.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance25
         StateButtonTool7.SharedPropsInternal.Caption = "Tag"
         StateButtonTool7.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways
         StateButtonTool7.SharedPropsInternal.ToolTipText = "Darstellung Tagesansicht"
         StateButtonTool7.SharedPropsInternal.ToolTipTitle = "Tag"
         StateButtonTool7.Tag = "ResID.Day"
         StateButtonTool8.OptionSetKey = "lblOnOffAnsicht"
-        Appearance28.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool8.SharedPropsInternal.AppearancesSmall.Appearance = Appearance28
-        Appearance29.BackColor = System.Drawing.Color.White
-        Appearance29.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance29.FontData.BoldAsString = "True"
-        Appearance29.ForeColor = System.Drawing.Color.RoyalBlue
-        StateButtonTool8.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance29
+        Appearance26.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool8.SharedPropsInternal.AppearancesSmall.Appearance = Appearance26
+        Appearance27.BackColor = System.Drawing.Color.White
+        Appearance27.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance27.FontData.BoldAsString = "True"
+        Appearance27.ForeColor = System.Drawing.Color.RoyalBlue
+        StateButtonTool8.SharedPropsInternal.AppearancesSmall.PressedAppearance = Appearance27
         StateButtonTool8.SharedPropsInternal.Caption = "Liste"
         StateButtonTool8.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways
         StateButtonTool8.SharedPropsInternal.ToolTipText = "Darstellung Tabellenansicht"
@@ -751,42 +655,6 @@ Public Class contPlanung2Bereich
         StateButtonTool8.Tag = "ResID.List"
         Me.UltraToolbarsManagerMain.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {LabelTool2, StateButtonTool5, StateButtonTool6, StateButtonTool7, StateButtonTool8})
         Me.UltraToolbarsManagerMain.UseAppStyling = False
-        '
-        '_PanelViewModus_Toolbars_Dock_Area_Right
-        '
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.Transparent
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(161, 25)
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.Name = "_PanelViewModus_Toolbars_Dock_Area_Right"
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 0)
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.ToolbarsManager = Me.UltraToolbarsManagerMain
-        Me._PanelViewModus_Toolbars_Dock_Area_Right.UseAppStyling = False
-        '
-        '_PanelViewModus_Toolbars_Dock_Area_Bottom
-        '
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.Transparent
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.Location = New System.Drawing.Point(0, 23)
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.Name = "_PanelViewModus_Toolbars_Dock_Area_Bottom"
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.Size = New System.Drawing.Size(161, 0)
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.ToolbarsManager = Me.UltraToolbarsManagerMain
-        Me._PanelViewModus_Toolbars_Dock_Area_Bottom.UseAppStyling = False
-        '
-        '_PanelViewModus_Toolbars_Dock_Area_Top
-        '
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.Transparent
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.Name = "_PanelViewModus_Toolbars_Dock_Area_Top"
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(161, 25)
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UltraToolbarsManagerMain
-        Me._PanelViewModus_Toolbars_Dock_Area_Top.UseAppStyling = False
         '
         'PanelDekursEntwürfe
         '
@@ -802,11 +670,11 @@ Public Class contPlanung2Bereich
         '
         'btnDekursEntwurfErstellenAs
         '
-        Appearance30.Image = CType(resources.GetObject("Appearance30.Image"), Object)
-        Appearance30.ImageHAlign = Infragistics.Win.HAlign.Right
-        Appearance30.TextHAlignAsString = "Left"
-        Appearance30.TextVAlignAsString = "Middle"
-        Me.btnDekursEntwurfErstellenAs.Appearance = Appearance30
+        Appearance28.Image = CType(resources.GetObject("Appearance28.Image"), Object)
+        Appearance28.ImageHAlign = Infragistics.Win.HAlign.Right
+        Appearance28.TextHAlignAsString = "Left"
+        Appearance28.TextVAlignAsString = "Middle"
+        Me.btnDekursEntwurfErstellenAs.Appearance = Appearance28
         Me.btnDekursEntwurfErstellenAs.AutoWorkLayout = False
         Me.btnDekursEntwurfErstellenAs.IsStandardControl = False
         Me.btnDekursEntwurfErstellenAs.Location = New System.Drawing.Point(4, 27)
@@ -818,11 +686,11 @@ Public Class contPlanung2Bereich
         '
         'btnDekursEntwurfErstellen
         '
-        Appearance31.Image = CType(resources.GetObject("Appearance31.Image"), Object)
-        Appearance31.ImageHAlign = Infragistics.Win.HAlign.Right
-        Appearance31.TextHAlignAsString = "Left"
-        Appearance31.TextVAlignAsString = "Middle"
-        Me.btnDekursEntwurfErstellen.Appearance = Appearance31
+        Appearance29.Image = CType(resources.GetObject("Appearance29.Image"), Object)
+        Appearance29.ImageHAlign = Infragistics.Win.HAlign.Right
+        Appearance29.TextHAlignAsString = "Left"
+        Appearance29.TextVAlignAsString = "Middle"
+        Me.btnDekursEntwurfErstellen.Appearance = Appearance29
         Me.btnDekursEntwurfErstellen.AutoWorkLayout = False
         Me.btnDekursEntwurfErstellen.IsStandardControl = False
         Me.btnDekursEntwurfErstellen.Location = New System.Drawing.Point(4, 3)
@@ -835,9 +703,9 @@ Public Class contPlanung2Bereich
         'btnPrint
         '
         Me.btnPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance32.ForeColor = System.Drawing.Color.Black
-        Appearance32.ForeColorDisabled = System.Drawing.Color.Black
-        Me.btnPrint.Appearance = Appearance32
+        Appearance30.ForeColor = System.Drawing.Color.Black
+        Appearance30.ForeColorDisabled = System.Drawing.Color.Black
+        Me.btnPrint.Appearance = Appearance30
         Me.btnPrint.Location = New System.Drawing.Point(1033, 150)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(83, 31)
@@ -848,10 +716,10 @@ Public Class contPlanung2Bereich
         'btnAdd2
         '
         Me.btnAdd2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance33.Cursor = System.Windows.Forms.Cursors.Default
-        Appearance33.TextHAlignAsString = "Center"
-        Appearance33.TextVAlignAsString = "Middle"
-        Me.btnAdd2.Appearance = Appearance33
+        Appearance31.Cursor = System.Windows.Forms.Cursors.Default
+        Appearance31.TextHAlignAsString = "Center"
+        Appearance31.TextVAlignAsString = "Middle"
+        Me.btnAdd2.Appearance = Appearance31
         Me.btnAdd2.ImageSize = New System.Drawing.Size(20, 20)
         Me.btnAdd2.Location = New System.Drawing.Point(1086, 16)
         Me.btnAdd2.Name = "btnAdd2"
@@ -863,9 +731,9 @@ Public Class contPlanung2Bereich
         '
         'btnDekursErstellen
         '
-        Appearance34.ForeColor = System.Drawing.Color.Black
-        Appearance34.ForeColorDisabled = System.Drawing.Color.Black
-        Me.btnDekursErstellen.Appearance = Appearance34
+        Appearance32.ForeColor = System.Drawing.Color.Black
+        Appearance32.ForeColorDisabled = System.Drawing.Color.Black
+        Me.btnDekursErstellen.Appearance = Appearance32
         Me.btnDekursErstellen.Location = New System.Drawing.Point(11, 1)
         Me.btnDekursErstellen.Name = "btnDekursErstellen"
         Me.btnDekursErstellen.Size = New System.Drawing.Size(101, 29)
@@ -875,9 +743,9 @@ Public Class contPlanung2Bereich
         '
         'uDropDownDekursEntwürfe
         '
-        Appearance35.Image = CType(resources.GetObject("Appearance35.Image"), Object)
-        Appearance35.ImageHAlign = Infragistics.Win.HAlign.Right
-        Me.uDropDownDekursEntwürfe.Appearance = Appearance35
+        Appearance33.Image = CType(resources.GetObject("Appearance33.Image"), Object)
+        Appearance33.ImageHAlign = Infragistics.Win.HAlign.Right
+        Me.uDropDownDekursEntwürfe.Appearance = Appearance33
         Me.uDropDownDekursEntwürfe.Location = New System.Drawing.Point(115, 2)
         Me.uDropDownDekursEntwürfe.Name = "uDropDownDekursEntwürfe"
         Me.uDropDownDekursEntwürfe.PopupItemKey = "PanelDekursEntwürfe"
@@ -974,10 +842,7 @@ Public Class contPlanung2Bereich
         CType(Me.optStatus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UDateBis, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UDateVon, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkPreview, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBetreff2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelViewModus.ResumeLayout(False)
-        Me.PanelViewModus_Fill_Panel.ResumeLayout(False)
         CType(Me.UltraToolbarsManagerMain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelDekursEntwürfe.ResumeLayout(False)
         Me.ContextMenuTree.ResumeLayout(False)
@@ -1055,7 +920,6 @@ Public Class contPlanung2Bereich
             Me.btnLayout_Beginn.Text = doUI.getRes("Beginn")
 
             Me.showListenansicht()
-            Me.contSelectPatienten.initControl(contSelectPatientenBenutzer.eTypeUI.Patients, False, False, Me.dropDownPatienten)
             Me.contSelectBenutzer.initControl(contSelectPatientenBenutzer.eTypeUI.Users, False, False, Me.dropDownUsers)
 
             Me.contSelectPatienten.loadDataAbtBereiche()
@@ -1068,7 +932,6 @@ Public Class contPlanung2Bereich
 
             'Me.contSelectPatienten.MainPlanungGesamt = Me      'lthplan
             Me.uPopUpContPatienten.PopupControl = Me.contSelectPatienten
-            Me.dropDownPatienten.PopupItem = Me.uPopUpContPatienten
             Me.contSelectPatienten.popupContMainSearch = Me.uPopUpContPatienten
 
             'Me.contSelectSelListCategories.MainPlanSearch = Me     'lthplan
@@ -1214,7 +1077,6 @@ Public Class contPlanung2Bereich
                 End If
             End Using
 
-            Me.dropDownPatienten.Text = Me.contSelectPatienten.setLabelCount2()
             Me.dropDownUsers.Text = Me.contSelectBenutzer.setLabelCount2()
             Me.contSelectSelListCategories.setSelectionOnOff(True)
             Me.contSelectSelListCategories.setLabelCount2()
@@ -1436,15 +1298,10 @@ Public Class contPlanung2Bereich
     End Sub
 
 
-    Private Sub chkPreview_CheckedChanged(sender As Object, e As EventArgs) Handles chkPreview.CheckedChanged
+    Private Sub chkPreview_CheckedChanged(sender As Object, e As EventArgs)
         Try
             Me.Cursor = Cursors.WaitCursor
-
-            If Me.chkPreview.Checked Then
-                Me.ContPlanung1.SplitContainer1.Panel2Collapsed = False
-            Else
-                Me.ContPlanung1.SplitContainer1.Panel2Collapsed = True
-            End If
+            Me.ContPlanung1.SplitContainer1.Panel2Collapsed = False
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1515,7 +1372,7 @@ Public Class contPlanung2Bereich
         End Try
     End Sub
 
-    Private Sub dropDownPatienten_DroppingDown(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles dropDownPatienten.DroppingDown
+    Private Sub dropDownPatienten_DroppingDown(sender As Object, e As System.ComponentModel.CancelEventArgs)
         Try
             Me.Cursor = Cursors.WaitCursor
 
@@ -1546,22 +1403,6 @@ Public Class contPlanung2Bereich
         End Try
     End Sub
 
-
-    Private Sub dropDownPatienten_ClosedUp(sender As Object, e As EventArgs) Handles dropDownPatienten.ClosedUp
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            Me.dropDownPatienten.Text = Me.contSelectPatienten.setLabelCount2()
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        Finally
-            Me.TimerSearch.Stop()
-            Me.TimerSearch.Interval = Me.TimerIntervalClientChanged
-            Me.TimerSearch.Start()
-
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
     Private Sub dropDownUsers_ClosedUp(sender As Object, e As EventArgs) Handles dropDownUsers.ClosedUp
         Try
             Me.Cursor = Cursors.WaitCursor

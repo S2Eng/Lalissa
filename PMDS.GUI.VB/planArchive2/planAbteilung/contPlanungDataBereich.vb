@@ -68,7 +68,6 @@ Public Class contPlanungDataBereich
 
     Public Enum eTypAction
         delete = 0
-        EMailSenden = 3
 
         selectAll = 100
         selectNone = 101
@@ -109,14 +108,12 @@ Public Class contPlanungDataBereich
 
     Friend WithEvents PanelAnzeige As System.Windows.Forms.Panel
     Public WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
-    Friend WithEvents layKalender As Infragistics.Win.Misc.UltraGridBagLayoutManager
     Public WithEvents gridPlans As Infragistics.Win.UltraWinGrid.UltraGrid
     Friend WithEvents ContextMenuStripNeu As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ToolStripMenuItemSpace As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents uPrintDocument1 As Infragistics.Win.UltraWinSchedule.UltraSchedulePrintDocument
     Friend WithEvents UltraPrintPreviewDialog1 As Infragistics.Win.Printing.UltraPrintPreviewDialog
     Friend WithEvents UltraGridPrintDocument1 As Infragistics.Win.UltraWinGrid.UltraGridPrintDocument
-    Friend WithEvents UToolbarsManagerKalender As Infragistics.Win.UltraWinToolbars.UltraToolbarsManager
     Friend WithEvents DsPlanSearch1 As dsPlanSearch
     Friend WithEvents LöschenToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItemSpace1 As System.Windows.Forms.ToolStripSeparator
@@ -124,13 +121,8 @@ Public Class contPlanungDataBereich
     Friend WithEvents AllesAuswählenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents KeineAuswahälenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItemSpace4 As System.Windows.Forms.ToolStripSeparator
-    Public WithEvents EMailsSendenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents PanelBody As System.Windows.Forms.Panel
-    Friend WithEvents _PanelKalender_Toolbars_Dock_Area_Left As Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea
-    Friend WithEvents _PanelKalender_Toolbars_Dock_Area_Right As Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea
-    Friend WithEvents _PanelKalender_Toolbars_Dock_Area_Top As Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea
-    Friend WithEvents _PanelKalender_Toolbars_Dock_Area_Bottom As Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea
     Friend WithEvents UltraToolTipManager1 As Infragistics.Win.UltraWinToolTip.UltraToolTipManager
     Friend WithEvents PanelEditorToWork As System.Windows.Forms.Panel
     Friend WithEvents TextControlToWork As TXTextControl.TextControl
@@ -143,7 +135,6 @@ Public Class contPlanungDataBereich
     Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
     Friend WithEvents ListeLeerenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TermineStornierenToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PanelKalender As System.Windows.Forms.Panel
 
 
 #Region " Vom Windows Form Designer generierter Code "
@@ -180,12 +171,6 @@ Public Class contPlanungDataBereich
     Friend WithEvents UltraTabPageControlMonat As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
     Friend WithEvents UltraTabPageControlWoche As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
     Friend WithEvents UltraTabPageControlTag As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
-    Friend WithEvents ultraMonth As Infragistics.Win.UltraWinSchedule.UltraMonthViewSingle
-    Friend WithEvents ultraWeek As Infragistics.Win.UltraWinSchedule.UltraWeekView
-    Friend WithEvents UltraCalendarInfo As Infragistics.Win.UltraWinSchedule.UltraCalendarInfo
-    Friend WithEvents UltraCalendarLook As Infragistics.Win.UltraWinSchedule.UltraCalendarLook
-    Friend WithEvents ultraMonthMulti As Infragistics.Win.UltraWinSchedule.UltraMonthViewMulti
-    Friend WithEvents ultraDay As Infragistics.Win.UltraWinSchedule.UltraDayView
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -266,7 +251,7 @@ Public Class contPlanungDataBereich
         Dim ValueList2 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(368799640)
         Dim ValueList3 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(64791755)
         Dim ValueList4 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(82828532)
-        Dim DictionaryFileInfo1 As SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo = New SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo()
+        Dim DictionaryFileInfo2 As SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo = New SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo()
         Dim UltraTab2 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
         Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraTab3 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
@@ -275,19 +260,15 @@ Public Class contPlanungDataBereich
         Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraTab1 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
         Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolbar1 As Infragistics.Win.UltraWinToolbars.UltraToolbar = New Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar1")
-        Dim ButtonTool10 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Heute")
-        Dim ButtonTool9 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Heute")
         Me.UltraTabPageControlMonat = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.ultraMonth = New Infragistics.Win.UltraWinSchedule.UltraMonthViewSingle()
-        Me.UltraCalendarInfo = New Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(Me.components)
-        Me.UltraCalendarLook = New Infragistics.Win.UltraWinSchedule.UltraCalendarLook(Me.components)
+        Me.UltraTabPageControlWoche = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
+        Me.UltraTabPageControlTag = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
+        Me.UTabPageGrid = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
+        Me.gridPlans = New Infragistics.Win.UltraWinGrid.UltraGrid()
         Me.ContextMenuStripNeu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TermineErledigenUndDekursSchreibenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TermineErledigenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TermineStornierenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EMailsSendenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.LöschenToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemSpace1 = New System.Windows.Forms.ToolStripSeparator()
@@ -298,232 +279,60 @@ Public Class contPlanungDataBereich
         Me.OpenSqlCommandToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ListeLeerenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UltraTabPageControlWoche = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.ultraWeek = New Infragistics.Win.UltraWinSchedule.UltraWeekView()
-        Me.UltraTabPageControlTag = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.ultraDay = New Infragistics.Win.UltraWinSchedule.UltraDayView()
-        Me.UTabPageGrid = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.gridPlans = New Infragistics.Win.UltraWinGrid.UltraGrid()
         Me.DsPlanSearch1 = New PMDS.GUI.VB.dsPlanSearch()
         Me.winFormHtmlEditor1 = New SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor()
         Me.ToolStripMenuItemSpace = New System.Windows.Forms.ToolStripSeparator()
-        Me.ultraMonthMulti = New Infragistics.Win.UltraWinSchedule.UltraMonthViewMulti()
         Me.UTabTable = New Infragistics.Win.UltraWinTabControl.UltraTabControl()
         Me.UltraTabSharedControlsPage1 = New Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage()
-        Me.PanelKalender = New System.Windows.Forms.Panel()
-        Me._PanelKalender_Toolbars_Dock_Area_Left = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
-        Me.UToolbarsManagerKalender = New Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(Me.components)
-        Me._PanelKalender_Toolbars_Dock_Area_Right = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
-        Me._PanelKalender_Toolbars_Dock_Area_Top = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me.PanelAnzeige = New System.Windows.Forms.Panel()
         Me.PanelEditorToWork = New System.Windows.Forms.Panel()
         Me.TextControlToWork = New TXTextControl.TextControl()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.PanelBody = New System.Windows.Forms.Panel()
         Me.PanelTxtEditor = New System.Windows.Forms.Panel()
-        Me.layKalender = New Infragistics.Win.Misc.UltraGridBagLayoutManager(Me.components)
         Me.uPrintDocument1 = New Infragistics.Win.UltraWinSchedule.UltraSchedulePrintDocument(Me.components)
         Me.UltraPrintPreviewDialog1 = New Infragistics.Win.Printing.UltraPrintPreviewDialog(Me.components)
         Me.UltraGridPrintDocument1 = New Infragistics.Win.UltraWinGrid.UltraGridPrintDocument(Me.components)
         Me.UltraToolTipManager1 = New Infragistics.Win.UltraWinToolTip.UltraToolTipManager(Me.components)
         Me.UltraGridDocumentExporter1 = New Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(Me.components)
-        Me.UltraTabPageControlMonat.SuspendLayout()
-        CType(Me.ultraMonth, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStripNeu.SuspendLayout()
-        Me.UltraTabPageControlWoche.SuspendLayout()
-        CType(Me.ultraWeek, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.UltraTabPageControlTag.SuspendLayout()
-        CType(Me.ultraDay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.UTabPageGrid.SuspendLayout()
         CType(Me.gridPlans, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStripNeu.SuspendLayout()
         CType(Me.DsPlanSearch1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.winFormHtmlEditor1.SuspendLayout()
-        CType(Me.ultraMonthMulti, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UTabTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.UTabTable.SuspendLayout()
-        Me.PanelKalender.SuspendLayout()
-        CType(Me.UToolbarsManagerKalender, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelAnzeige.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.PanelBody.SuspendLayout()
-        CType(Me.layKalender, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'UltraTabPageControlMonat
         '
-        Me.UltraTabPageControlMonat.Controls.Add(Me.ultraMonth)
         Me.UltraTabPageControlMonat.Location = New System.Drawing.Point(0, 0)
         Me.UltraTabPageControlMonat.Name = "UltraTabPageControlMonat"
-        Me.UltraTabPageControlMonat.Size = New System.Drawing.Size(695, 226)
-        '
-        'ultraMonth
-        '
-        Me.ultraMonth.AutoAppointmentDialog = False
-        Me.ultraMonth.CalendarInfo = Me.UltraCalendarInfo
-        Me.ultraMonth.CalendarLook = Me.UltraCalendarLook
-        Me.ultraMonth.ContextMenuStrip = Me.ContextMenuStripNeu
-        Me.ultraMonth.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ultraMonth.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.ultraMonth.Location = New System.Drawing.Point(0, 0)
-        Me.ultraMonth.Name = "ultraMonth"
-        Me.ultraMonth.Size = New System.Drawing.Size(695, 226)
-        Me.ultraMonth.TabIndex = 0
-        Me.ultraMonth.TimeDisplayStyle = Infragistics.Win.UltraWinSchedule.TimeDisplayStyleEnum.Time24Hour
-        Me.ultraMonth.UseFlatMode = Infragistics.Win.DefaultableBoolean.[True]
-        Me.ultraMonth.VisibleWeeks = 4
-        Me.ultraMonth.WeekHeaderDisplayStyle = Infragistics.Win.UltraWinSchedule.WeekHeaderDisplayStyle.WeekNumber
-        '
-        'UltraCalendarLook
-        '
-        Me.UltraCalendarLook.ViewStyle = Infragistics.Win.UltraWinSchedule.ViewStyle.Office2007
-        '
-        'ContextMenuStripNeu
-        '
-        Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.TermineErledigenToolStripMenuItem, Me.TermineStornierenToolStripMenuItem, Me.EMailsSendenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
-        Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
-        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(292, 248)
-        '
-        'TermineErledigenUndDekursSchreibenToolStripMenuItem
-        '
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Name = "TermineErledigenUndDekursSchreibenToolStripMenuItem"
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Tag = "ResID.TermineErledigenUndDekursErstellen"
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Text = "Termine erledigen und Dekurs erstellen"
-        '
-        'TermineErledigenToolStripMenuItem
-        '
-        Me.TermineErledigenToolStripMenuItem.Name = "TermineErledigenToolStripMenuItem"
-        Me.TermineErledigenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.TermineErledigenToolStripMenuItem.Tag = "ResID.TermineErledigen"
-        Me.TermineErledigenToolStripMenuItem.Text = "Termine erledigen"
-        '
-        'TermineStornierenToolStripMenuItem
-        '
-        Me.TermineStornierenToolStripMenuItem.Name = "TermineStornierenToolStripMenuItem"
-        Me.TermineStornierenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.TermineStornierenToolStripMenuItem.Tag = "ResID.TermineStornieren"
-        Me.TermineStornierenToolStripMenuItem.Text = "Termine stornieren"
-        '
-        'EMailsSendenToolStripMenuItem
-        '
-        Me.EMailsSendenToolStripMenuItem.Name = "EMailsSendenToolStripMenuItem"
-        Me.EMailsSendenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.EMailsSendenToolStripMenuItem.Tag = "ResID.SendSelectedEMails"
-        Me.EMailsSendenToolStripMenuItem.Text = "Ausgewählte E-Mails versenden"
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(288, 6)
-        '
-        'LöschenToolStripMenuItem1
-        '
-        Me.LöschenToolStripMenuItem1.Name = "LöschenToolStripMenuItem1"
-        Me.LöschenToolStripMenuItem1.Size = New System.Drawing.Size(291, 22)
-        Me.LöschenToolStripMenuItem1.Tag = "ResID.Delete"
-        Me.LöschenToolStripMenuItem1.Text = "Löschen"
-        '
-        'ToolStripMenuItemSpace1
-        '
-        Me.ToolStripMenuItemSpace1.Name = "ToolStripMenuItemSpace1"
-        Me.ToolStripMenuItemSpace1.Size = New System.Drawing.Size(288, 6)
-        '
-        'AllesAuswählenToolStripMenuItem
-        '
-        Me.AllesAuswählenToolStripMenuItem.Name = "AllesAuswählenToolStripMenuItem"
-        Me.AllesAuswählenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.AllesAuswählenToolStripMenuItem.Tag = "ResID.SelectAll"
-        Me.AllesAuswählenToolStripMenuItem.Text = "Alle auswählen"
-        '
-        'KeineAuswahälenToolStripMenuItem
-        '
-        Me.KeineAuswahälenToolStripMenuItem.Name = "KeineAuswahälenToolStripMenuItem"
-        Me.KeineAuswahälenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.KeineAuswahälenToolStripMenuItem.Tag = "ResID.SelectNone"
-        Me.KeineAuswahälenToolStripMenuItem.Text = "Keine auswählen"
-        '
-        'ToolStripMenuItemSpace4
-        '
-        Me.ToolStripMenuItemSpace4.Name = "ToolStripMenuItemSpace4"
-        Me.ToolStripMenuItemSpace4.Size = New System.Drawing.Size(288, 6)
-        '
-        'FilterToolStripMenuItem
-        '
-        Me.FilterToolStripMenuItem.CheckOnClick = True
-        Me.FilterToolStripMenuItem.Name = "FilterToolStripMenuItem"
-        Me.FilterToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.FilterToolStripMenuItem.Tag = "ResID.Filter"
-        Me.FilterToolStripMenuItem.Text = "Filter"
-        '
-        'OpenSqlCommandToolStripMenuItem
-        '
-        Me.OpenSqlCommandToolStripMenuItem.Name = "OpenSqlCommandToolStripMenuItem"
-        Me.OpenSqlCommandToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.OpenSqlCommandToolStripMenuItem.Tag = "ResID.OpenSqlCommand"
-        Me.OpenSqlCommandToolStripMenuItem.Text = "Open Sql-Command"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(288, 6)
-        '
-        'ListeLeerenToolStripMenuItem
-        '
-        Me.ListeLeerenToolStripMenuItem.Name = "ListeLeerenToolStripMenuItem"
-        Me.ListeLeerenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.ListeLeerenToolStripMenuItem.Text = "Liste leeren"
+        Me.UltraTabPageControlMonat.Size = New System.Drawing.Size(843, 226)
         '
         'UltraTabPageControlWoche
         '
-        Me.UltraTabPageControlWoche.Controls.Add(Me.ultraWeek)
         Me.UltraTabPageControlWoche.Location = New System.Drawing.Point(-10000, -10000)
         Me.UltraTabPageControlWoche.Name = "UltraTabPageControlWoche"
-        Me.UltraTabPageControlWoche.Size = New System.Drawing.Size(695, 226)
-        '
-        'ultraWeek
-        '
-        Me.ultraWeek.AutoAppointmentDialog = False
-        Me.ultraWeek.CalendarInfo = Me.UltraCalendarInfo
-        Me.ultraWeek.CalendarLook = Me.UltraCalendarLook
-        Me.ultraWeek.ContextMenuStrip = Me.ContextMenuStripNeu
-        Me.ultraWeek.DayDisplayStyle = Infragistics.Win.UltraWinSchedule.DayDisplayStyleEnum.Full
-        Me.ultraWeek.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ultraWeek.Location = New System.Drawing.Point(0, 0)
-        Me.ultraWeek.Name = "ultraWeek"
-        Me.ultraWeek.Size = New System.Drawing.Size(695, 226)
-        Me.ultraWeek.TabIndex = 0
-        Me.ultraWeek.TimeDisplayStyle = Infragistics.Win.UltraWinSchedule.TimeDisplayStyleEnum.Time24Hour
+        Me.UltraTabPageControlWoche.Size = New System.Drawing.Size(843, 226)
         '
         'UltraTabPageControlTag
         '
-        Me.UltraTabPageControlTag.Controls.Add(Me.ultraDay)
         Me.UltraTabPageControlTag.Location = New System.Drawing.Point(-10000, -10000)
         Me.UltraTabPageControlTag.Name = "UltraTabPageControlTag"
-        Me.UltraTabPageControlTag.Size = New System.Drawing.Size(695, 226)
-        '
-        'ultraDay
-        '
-        Me.ultraDay.AutoAppointmentDialog = False
-        Me.ultraDay.CalendarInfo = Me.UltraCalendarInfo
-        Me.ultraDay.CalendarLook = Me.UltraCalendarLook
-        Me.ultraDay.ContextMenuStrip = Me.ContextMenuStripNeu
-        Me.ultraDay.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ultraDay.Location = New System.Drawing.Point(0, 0)
-        Me.ultraDay.Name = "ultraDay"
-        Me.ultraDay.Size = New System.Drawing.Size(695, 226)
-        Me.ultraDay.TabIndex = 0
+        Me.UltraTabPageControlTag.Size = New System.Drawing.Size(843, 226)
         '
         'UTabPageGrid
         '
         Me.UTabPageGrid.Controls.Add(Me.gridPlans)
         Me.UTabPageGrid.Location = New System.Drawing.Point(-10000, -10000)
         Me.UTabPageGrid.Name = "UTabPageGrid"
-        Me.UTabPageGrid.Size = New System.Drawing.Size(695, 226)
+        Me.UTabPageGrid.Size = New System.Drawing.Size(843, 226)
         '
         'gridPlans
         '
@@ -805,8 +614,98 @@ Public Class contPlanungDataBereich
         Me.gridPlans.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gridPlans.Location = New System.Drawing.Point(0, 0)
         Me.gridPlans.Name = "gridPlans"
-        Me.gridPlans.Size = New System.Drawing.Size(695, 226)
+        Me.gridPlans.Size = New System.Drawing.Size(843, 226)
         Me.gridPlans.TabIndex = 0
+        '
+        'ContextMenuStripNeu
+        '
+        Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.TermineErledigenToolStripMenuItem, Me.TermineStornierenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
+        Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
+        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(292, 226)
+        '
+        'TermineErledigenUndDekursSchreibenToolStripMenuItem
+        '
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Name = "TermineErledigenUndDekursSchreibenToolStripMenuItem"
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Tag = "ResID.TermineErledigenUndDekursErstellen"
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Text = "Termine erledigen und Dekurs erstellen"
+        '
+        'TermineErledigenToolStripMenuItem
+        '
+        Me.TermineErledigenToolStripMenuItem.Name = "TermineErledigenToolStripMenuItem"
+        Me.TermineErledigenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.TermineErledigenToolStripMenuItem.Tag = "ResID.TermineErledigen"
+        Me.TermineErledigenToolStripMenuItem.Text = "Termine erledigen"
+        '
+        'TermineStornierenToolStripMenuItem
+        '
+        Me.TermineStornierenToolStripMenuItem.Name = "TermineStornierenToolStripMenuItem"
+        Me.TermineStornierenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.TermineStornierenToolStripMenuItem.Tag = "ResID.TermineStornieren"
+        Me.TermineStornierenToolStripMenuItem.Text = "Termine stornieren"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(288, 6)
+        '
+        'LöschenToolStripMenuItem1
+        '
+        Me.LöschenToolStripMenuItem1.Name = "LöschenToolStripMenuItem1"
+        Me.LöschenToolStripMenuItem1.Size = New System.Drawing.Size(291, 22)
+        Me.LöschenToolStripMenuItem1.Tag = "ResID.Delete"
+        Me.LöschenToolStripMenuItem1.Text = "Löschen"
+        '
+        'ToolStripMenuItemSpace1
+        '
+        Me.ToolStripMenuItemSpace1.Name = "ToolStripMenuItemSpace1"
+        Me.ToolStripMenuItemSpace1.Size = New System.Drawing.Size(288, 6)
+        '
+        'AllesAuswählenToolStripMenuItem
+        '
+        Me.AllesAuswählenToolStripMenuItem.Name = "AllesAuswählenToolStripMenuItem"
+        Me.AllesAuswählenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.AllesAuswählenToolStripMenuItem.Tag = "ResID.SelectAll"
+        Me.AllesAuswählenToolStripMenuItem.Text = "Alle auswählen"
+        '
+        'KeineAuswahälenToolStripMenuItem
+        '
+        Me.KeineAuswahälenToolStripMenuItem.Name = "KeineAuswahälenToolStripMenuItem"
+        Me.KeineAuswahälenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.KeineAuswahälenToolStripMenuItem.Tag = "ResID.SelectNone"
+        Me.KeineAuswahälenToolStripMenuItem.Text = "Keine auswählen"
+        '
+        'ToolStripMenuItemSpace4
+        '
+        Me.ToolStripMenuItemSpace4.Name = "ToolStripMenuItemSpace4"
+        Me.ToolStripMenuItemSpace4.Size = New System.Drawing.Size(288, 6)
+        '
+        'FilterToolStripMenuItem
+        '
+        Me.FilterToolStripMenuItem.CheckOnClick = True
+        Me.FilterToolStripMenuItem.Name = "FilterToolStripMenuItem"
+        Me.FilterToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.FilterToolStripMenuItem.Tag = "ResID.Filter"
+        Me.FilterToolStripMenuItem.Text = "Filter"
+        '
+        'OpenSqlCommandToolStripMenuItem
+        '
+        Me.OpenSqlCommandToolStripMenuItem.Name = "OpenSqlCommandToolStripMenuItem"
+        Me.OpenSqlCommandToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.OpenSqlCommandToolStripMenuItem.Tag = "ResID.OpenSqlCommand"
+        Me.OpenSqlCommandToolStripMenuItem.Text = "Open Sql-Command"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(288, 6)
+        '
+        'ListeLeerenToolStripMenuItem
+        '
+        Me.ListeLeerenToolStripMenuItem.Name = "ListeLeerenToolStripMenuItem"
+        Me.ListeLeerenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.ListeLeerenToolStripMenuItem.Text = "Liste leeren"
         '
         'DsPlanSearch1
         '
@@ -841,40 +740,41 @@ Public Class contPlanungDataBereich
         Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Timeout = 4000
         Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UrlOfTheRemoteFolderPath = Nothing
         Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UserName = Nothing
-        Me.winFormHtmlEditor1.Size = New System.Drawing.Size(695, 319)
+        Me.winFormHtmlEditor1.Size = New System.Drawing.Size(843, 319)
         Me.winFormHtmlEditor1.SpellCheckOptions.CurlyUnderlineImageFilePath = Nothing
-        DictionaryFileInfo1.AffixFilePath = Nothing
-        DictionaryFileInfo1.DictionaryFilePath = Nothing
-        DictionaryFileInfo1.EnableUserDictionary = True
-        DictionaryFileInfo1.UserDictionaryFilePath = Nothing
-        Me.winFormHtmlEditor1.SpellCheckOptions.DictionaryFile = DictionaryFileInfo1
+        DictionaryFileInfo2.AffixFilePath = Nothing
+        DictionaryFileInfo2.DictionaryFilePath = Nothing
+        DictionaryFileInfo2.EnableUserDictionary = True
+        DictionaryFileInfo2.UserDictionaryFilePath = Nothing
+        Me.winFormHtmlEditor1.SpellCheckOptions.DictionaryFile = DictionaryFileInfo2
         Me.winFormHtmlEditor1.SpellCheckOptions.WaitAlertMessage = "Searching next messpelled word..... (please wait)"
         Me.winFormHtmlEditor1.TabIndex = 4
         '
-        'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar1
+        '
         '
         Me.winFormHtmlEditor1.Toolbar1.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Toolbar1.Name = "WinFormHtmlEditor_Toolbar1"
-        Me.winFormHtmlEditor1.Toolbar1.Size = New System.Drawing.Size(695, 29)
+        Me.winFormHtmlEditor1.Toolbar1.Name = "toolbar1"
+        Me.winFormHtmlEditor1.Toolbar1.Size = New System.Drawing.Size(843, 29)
         Me.winFormHtmlEditor1.Toolbar1.TabIndex = 0
         Me.winFormHtmlEditor1.Toolbar1.Visible = False
         '
-        'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar2
+        '
         '
         Me.winFormHtmlEditor1.Toolbar2.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Toolbar2.Name = "WinFormHtmlEditor_Toolbar2"
-        Me.winFormHtmlEditor1.Toolbar2.Size = New System.Drawing.Size(691, 29)
+        Me.winFormHtmlEditor1.Toolbar2.Name = "toolbar2"
+        Me.winFormHtmlEditor1.Toolbar2.Size = New System.Drawing.Size(843, 29)
         Me.winFormHtmlEditor1.Toolbar2.TabIndex = 0
         Me.winFormHtmlEditor1.Toolbar2.Visible = False
         Me.winFormHtmlEditor1.ToolbarContextMenuStrip = Nothing
         '
-        'winFormHtmlEditor1.WinFormHtmlEditor_ToolbarFooter
+        '
         '
         Me.winFormHtmlEditor1.ToolbarFooter.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.winFormHtmlEditor1.ToolbarFooter.Location = New System.Drawing.Point(0, 294)
-        Me.winFormHtmlEditor1.ToolbarFooter.Name = "WinFormHtmlEditor_ToolbarFooter"
-        Me.winFormHtmlEditor1.ToolbarFooter.Size = New System.Drawing.Size(695, 25)
+        Me.winFormHtmlEditor1.ToolbarFooter.Name = "toolbarFooter"
+        Me.winFormHtmlEditor1.ToolbarFooter.Size = New System.Drawing.Size(843, 25)
         Me.winFormHtmlEditor1.ToolbarFooter.TabIndex = 7
+        Me.winFormHtmlEditor1.ToolbarFooter.Visible = False
         Me.winFormHtmlEditor1.VerticalScroll = Nothing
         Me.winFormHtmlEditor1.z__ignore = False
         '
@@ -882,23 +782,6 @@ Public Class contPlanungDataBereich
         '
         Me.ToolStripMenuItemSpace.Name = "ToolStripMenuItemSpace"
         Me.ToolStripMenuItemSpace.Size = New System.Drawing.Size(195, 6)
-        '
-        'ultraMonthMulti
-        '
-        Me.ultraMonthMulti.BackColor = System.Drawing.SystemColors.Window
-        Me.ultraMonthMulti.CalendarInfo = Me.UltraCalendarInfo
-        Me.ultraMonthMulti.CalendarLook = Me.UltraCalendarLook
-        Me.ultraMonthMulti.ContextMenuStrip = Me.ContextMenuStripNeu
-        Me.ultraMonthMulti.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ultraMonthMulti.Location = New System.Drawing.Point(0, 25)
-        Me.ultraMonthMulti.MonthDimensions = New System.Drawing.Size(1, 4)
-        Me.ultraMonthMulti.Name = "ultraMonthMulti"
-        Me.ultraMonthMulti.Size = New System.Drawing.Size(142, 496)
-        Me.ultraMonthMulti.TabIndex = 2
-        Me.ultraMonthMulti.TipStyle = CType(((((Infragistics.Win.UltraWinSchedule.TipStyleDay.Appointments Or Infragistics.Win.UltraWinSchedule.TipStyleDay.Holidays) _
-            Or Infragistics.Win.UltraWinSchedule.TipStyleDay.Notes) _
-            Or Infragistics.Win.UltraWinSchedule.TipStyleDay.Custom) _
-            Or Infragistics.Win.UltraWinSchedule.TipStyleDay.Reserved), Infragistics.Win.UltraWinSchedule.TipStyleDay)
         '
         'UTabTable
         '
@@ -911,7 +794,7 @@ Public Class contPlanungDataBereich
         Me.UTabTable.Location = New System.Drawing.Point(0, 0)
         Me.UTabTable.Name = "UTabTable"
         Me.UTabTable.SharedControlsPage = Me.UltraTabSharedControlsPage1
-        Me.UTabTable.Size = New System.Drawing.Size(695, 226)
+        Me.UTabTable.Size = New System.Drawing.Size(843, 226)
         Me.UTabTable.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Wizard
         Me.UTabTable.TabIndex = 0
         Appearance9.BorderColor = System.Drawing.Color.White
@@ -937,86 +820,7 @@ Public Class contPlanungDataBereich
         '
         Me.UltraTabSharedControlsPage1.Location = New System.Drawing.Point(-10000, -10000)
         Me.UltraTabSharedControlsPage1.Name = "UltraTabSharedControlsPage1"
-        Me.UltraTabSharedControlsPage1.Size = New System.Drawing.Size(695, 226)
-        '
-        'PanelKalender
-        '
-        Me.PanelKalender.Controls.Add(Me.ultraMonthMulti)
-        Me.PanelKalender.Controls.Add(Me._PanelKalender_Toolbars_Dock_Area_Left)
-        Me.PanelKalender.Controls.Add(Me._PanelKalender_Toolbars_Dock_Area_Right)
-        Me.PanelKalender.Controls.Add(Me._PanelKalender_Toolbars_Dock_Area_Bottom)
-        Me.PanelKalender.Controls.Add(Me._PanelKalender_Toolbars_Dock_Area_Top)
-        Me.PanelKalender.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PanelKalender.Location = New System.Drawing.Point(695, 0)
-        Me.PanelKalender.Name = "PanelKalender"
-        Me.PanelKalender.Size = New System.Drawing.Size(148, 550)
-        Me.PanelKalender.TabIndex = 388
-        '
-        '_PanelKalender_Toolbars_Dock_Area_Left
-        '
-        Me._PanelKalender_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelKalender_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.Transparent
-        Me._PanelKalender_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
-        Me._PanelKalender_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelKalender_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 25)
-        Me._PanelKalender_Toolbars_Dock_Area_Left.Name = "_PanelKalender_Toolbars_Dock_Area_Left"
-        Me._PanelKalender_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(0, 525)
-        Me._PanelKalender_Toolbars_Dock_Area_Left.ToolbarsManager = Me.UToolbarsManagerKalender
-        '
-        'UToolbarsManagerKalender
-        '
-        Appearance13.BackColor = System.Drawing.Color.Transparent
-        Me.UToolbarsManagerKalender.Appearance = Appearance13
-        Me.UToolbarsManagerKalender.DesignerFlags = 1
-        Me.UToolbarsManagerKalender.DockWithinContainer = Me.PanelKalender
-        Me.UToolbarsManagerKalender.LockToolbars = True
-        Me.UToolbarsManagerKalender.ShowFullMenusDelay = 500
-        Me.UToolbarsManagerKalender.ShowQuickCustomizeButton = False
-        Me.UToolbarsManagerKalender.Style = Infragistics.Win.UltraWinToolbars.ToolbarStyle.OfficeXP
-        UltraToolbar1.DockedColumn = 0
-        UltraToolbar1.DockedRow = 0
-        UltraToolbar1.NonInheritedTools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool10})
-        UltraToolbar1.Text = "UltraToolbar1"
-        Me.UToolbarsManagerKalender.Toolbars.AddRange(New Infragistics.Win.UltraWinToolbars.UltraToolbar() {UltraToolbar1})
-        ButtonTool9.SharedPropsInternal.Caption = "Heute"
-        ButtonTool9.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.TextOnlyAlways
-        ButtonTool9.SharedPropsInternal.ToolTipText = "Kalender auf heutigem Tag setzen"
-        ButtonTool9.SharedPropsInternal.ToolTipTitle = "Heute"
-        ButtonTool9.Tag = "ResID.Today"
-        Me.UToolbarsManagerKalender.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool9})
-        '
-        '_PanelKalender_Toolbars_Dock_Area_Right
-        '
-        Me._PanelKalender_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelKalender_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.Transparent
-        Me._PanelKalender_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
-        Me._PanelKalender_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelKalender_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(148, 25)
-        Me._PanelKalender_Toolbars_Dock_Area_Right.Name = "_PanelKalender_Toolbars_Dock_Area_Right"
-        Me._PanelKalender_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(0, 525)
-        Me._PanelKalender_Toolbars_Dock_Area_Right.ToolbarsManager = Me.UToolbarsManagerKalender
-        '
-        '_PanelKalender_Toolbars_Dock_Area_Bottom
-        '
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.Transparent
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.Location = New System.Drawing.Point(0, 550)
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.Name = "_PanelKalender_Toolbars_Dock_Area_Bottom"
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.Size = New System.Drawing.Size(148, 0)
-        Me._PanelKalender_Toolbars_Dock_Area_Bottom.ToolbarsManager = Me.UToolbarsManagerKalender
-        '
-        '_PanelKalender_Toolbars_Dock_Area_Top
-        '
-        Me._PanelKalender_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me._PanelKalender_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.Transparent
-        Me._PanelKalender_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top
-        Me._PanelKalender_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
-        Me._PanelKalender_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
-        Me._PanelKalender_Toolbars_Dock_Area_Top.Name = "_PanelKalender_Toolbars_Dock_Area_Top"
-        Me._PanelKalender_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(148, 25)
-        Me._PanelKalender_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UToolbarsManagerKalender
+        Me.UltraTabSharedControlsPage1.Size = New System.Drawing.Size(843, 226)
         '
         'PanelAnzeige
         '
@@ -1027,7 +831,7 @@ Public Class contPlanungDataBereich
         Me.PanelAnzeige.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelAnzeige.Location = New System.Drawing.Point(0, 0)
         Me.PanelAnzeige.Name = "PanelAnzeige"
-        Me.PanelAnzeige.Size = New System.Drawing.Size(695, 226)
+        Me.PanelAnzeige.Size = New System.Drawing.Size(843, 226)
         Me.PanelAnzeige.TabIndex = 392
         '
         'PanelEditorToWork
@@ -1069,7 +873,7 @@ Public Class contPlanungDataBereich
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.Color.White
         Me.SplitContainer1.Panel2.Controls.Add(Me.PanelBody)
-        Me.SplitContainer1.Size = New System.Drawing.Size(695, 550)
+        Me.SplitContainer1.Size = New System.Drawing.Size(843, 550)
         Me.SplitContainer1.SplitterDistance = 226
         Me.SplitContainer1.SplitterWidth = 5
         Me.SplitContainer1.TabIndex = 394
@@ -1082,7 +886,7 @@ Public Class contPlanungDataBereich
         Me.PanelBody.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelBody.Location = New System.Drawing.Point(0, 0)
         Me.PanelBody.Name = "PanelBody"
-        Me.PanelBody.Size = New System.Drawing.Size(695, 319)
+        Me.PanelBody.Size = New System.Drawing.Size(843, 319)
         Me.PanelBody.TabIndex = 3
         '
         'PanelTxtEditor
@@ -1091,17 +895,11 @@ Public Class contPlanungDataBereich
         Me.PanelTxtEditor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelTxtEditor.Location = New System.Drawing.Point(0, 0)
         Me.PanelTxtEditor.Name = "PanelTxtEditor"
-        Me.PanelTxtEditor.Size = New System.Drawing.Size(695, 319)
+        Me.PanelTxtEditor.Size = New System.Drawing.Size(843, 319)
         Me.PanelTxtEditor.TabIndex = 5
-        '
-        'layKalender
-        '
-        Me.layKalender.ExpandToFitHeight = True
-        Me.layKalender.ExpandToFitWidth = True
         '
         'uPrintDocument1
         '
-        Me.uPrintDocument1.CalendarLook = Me.UltraCalendarLook
         Me.uPrintDocument1.PrintStyle = Infragistics.Win.UltraWinSchedule.SchedulePrintStyle.Monthly
         '
         'UltraPrintPreviewDialog1
@@ -1123,33 +921,20 @@ Public Class contPlanungDataBereich
         '
         Me.BackColor = System.Drawing.Color.White
         Me.Controls.Add(Me.SplitContainer1)
-        Me.Controls.Add(Me.PanelKalender)
         Me.Name = "contPlanungDataBereich"
         Me.Size = New System.Drawing.Size(843, 550)
-        Me.UltraTabPageControlMonat.ResumeLayout(False)
-        CType(Me.ultraMonth, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStripNeu.ResumeLayout(False)
-        Me.UltraTabPageControlWoche.ResumeLayout(False)
-        CType(Me.ultraWeek, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.UltraTabPageControlTag.ResumeLayout(False)
-        CType(Me.ultraDay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.UTabPageGrid.ResumeLayout(False)
         CType(Me.gridPlans, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStripNeu.ResumeLayout(False)
         CType(Me.DsPlanSearch1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.winFormHtmlEditor1.ResumeLayout(False)
-        Me.winFormHtmlEditor1.PerformLayout()
-        CType(Me.ultraMonthMulti, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UTabTable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.UTabTable.ResumeLayout(False)
-        Me.PanelKalender.ResumeLayout(False)
-        CType(Me.UToolbarsManagerKalender, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelAnzeige.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.PanelBody.ResumeLayout(False)
-        CType(Me.layKalender, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1181,70 +966,10 @@ Public Class contPlanungDataBereich
 
             clPlan.anzNachrichten = 0
 
-            Me.ultraDay.CalendarInfo = Me.UltraCalendarInfo
-            Me.ultraWeek.CalendarInfo = Me.UltraCalendarInfo
-            Me.ultraMonth.CalendarInfo = Me.UltraCalendarInfo
-            Me.ultraMonthMulti.CalendarInfo = Me.UltraCalendarInfo
-
-            Me.ultraDay.CalendarLook = Me.UltraCalendarLook
-            Me.ultraWeek.CalendarLook = Me.UltraCalendarLook
-            Me.ultraMonth.CalendarLook = Me.UltraCalendarLook
-            Me.ultraMonthMulti.CalendarLook = Me.UltraCalendarLook
-
-            Me.ultraDay.AllowDrop = False
-            Me.ultraWeek.AllowDrop = False
-            Me.ultraMonth.AllowDrop = False
-
-            'LabelAnzahl.Text = "" 
-            'tblAdminAufgaben.DataTable.Columns.Add("DateTime", System.Type.GetType("System.DateTime"))
-
-            'Me.UMonthAufgabe.ScrollDayIntoView(System.DateTime.Today)
-            Dim day As Infragistics.Win.UltraWinSchedule.Day
-            day = Me.UltraCalendarInfo.GetDay(Date.Now, True)
-
-            'Me.UltraCalendarInfo.GetDay(DateTime.Today, True)
-            'Dim Day2 As Infragistics.Win.UltraWinSchedule.Day
-            'Day2 = UDayAufgabe.CalendarInfo.ActiveDay()
-            'Me.Selected_Date = Day.Date()
-
-            Me.ultraDay.CalendarInfo.ActiveDay = day
-            Me.ultraMonth.CalendarInfo.ActiveDay = day
-            Me.ultraWeek.CalendarInfo.ActiveDay = day
-
             Me.gridPlans.DisplayLayout.Override.MergedCellStyle = MergedCellStyle.Always
-
-            'grd.DisplayLayout.Override.MergedCellAppearance.BackColor = Color.Beige
             Me.ContexMenüItems(False)
             Me.setUIContextSelectAlleKeine(True)
 
-            'Me.UMonthAufgabe.TimeDisplayStyle = TimeDisplayStyleEnum.Clock
-
-            'If e.Button = MouseButtons.Right Then
-            '    Dim day As Infragistics.Win.UltraWinSchedule.VisibleDay
-
-            '    'If the user Right-clicked on a day, then make it the active time day
-            '    day = UltraDayView1.GetVisibleDayFromPoint(e.X, e.Y)
-            '    If Not day Is Nothing Then
-            '        Dim DY As Infragistics.Win.UltraWinSchedule.Day = UltraCalendarInfo1.GetDay(day.Date, True)
-            '        UltraCalendarInfo1.ActiveDay = DY
-            '        If Not DY.Selected Then
-            '            UltraCalendarInfo1.SelectedDateRanges.Clear()
-            '            DY.Selected = True
-            '        End If
-            '    End If
-
-            'Me.UMonthAufgabe.ScrollDayIntoView(System.DateTime.Today)
-            'Me.UWeekAufgabe.ScrollDayIntoView(System.DateTime.Today)
-            'Me.UMonthAufgabe.WeekNumbersVisible = True
-            'Me.UltraMonthViewMulti.WeekNumbersVisible = True
-
-            'Dim VisibleDay As VisibleDay
-            'For Each VisibleDay In Me.UDayAufgabe.VisibleDays
-            '    VisibleDay.Day.Activated = True
-            '    VisibleDay.Day.Selected = True
-            'Next
-
-            Me.KalenderAufHeute()
             Me.initData()
 
             Me.lstColSmallViewGrid.Clear()
@@ -1337,28 +1062,6 @@ Public Class contPlanungDataBereich
 
         Catch ex As Exception
             Throw New Exception("contPlanungData.initTxtControl: " + ex.ToString())
-        End Try
-    End Sub
-
-    Public Sub KalenderAufHeute()
-        Try
-            ' Kalender auf heutiges Datum setzen
-            Dim ActuellDayTime As DateTime = New DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day,
-                            DateTime.Today.Hour, DateTime.Today.Minute, DateTime.Today.Second)
-
-            UltraCalendarInfo.SelectedAppointments.Clear()
-            UltraCalendarInfo.SelectedDateRanges.Clear()
-            UltraCalendarInfo.SelectedHolidays.Clear()
-            UltraCalendarInfo.SelectedNotes.Clear()
-
-            Dim DayActuell As Infragistics.Win.UltraWinSchedule.Day
-            DayActuell = Me.UltraCalendarInfo.GetDay(ActuellDayTime, True)
-            Me.UltraCalendarInfo.ActiveDay = DayActuell
-            Me.UltraCalendarInfo.ActiveDay.Activated = True
-            Me.UltraCalendarInfo.ActiveDay.Selected = True
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungData.KalenderAufHeute: " + ex.ToString())
         End Try
     End Sub
 
@@ -1732,7 +1435,6 @@ Public Class contPlanungDataBereich
 
                             appointment.Tag = rPlan
                             appointment.Locked = True
-                            Me.ultraMonthMulti.CalendarInfo.Appointments.Add(appointment)
                         Else
                             lstPlansToDelete.Add(rPlan)
                         End If
@@ -1779,13 +1481,6 @@ Public Class contPlanungDataBereich
 
     Private Sub initData()
         Try
-            ultraDay.CalendarInfo.Appointments.Clear()
-            ultraWeek.CalendarInfo.Appointments.Clear()
-            ultraMonth.CalendarInfo.Appointments.Clear()
-            ultraDay.CalendarInfo.Notes.Clear()
-            ultraWeek.CalendarInfo.Notes.Clear()
-            ultraMonth.CalendarInfo.Notes.Clear()
-
             clPlan.anzNachrichten = 0
 
         Catch ex As Exception
@@ -1804,52 +1499,13 @@ Public Class contPlanungDataBereich
                 contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
             End If
 
-            ultraDay.CalendarInfo.Appointments.Clear()
-            ultraWeek.CalendarInfo.Appointments.Clear()
-            ultraMonth.CalendarInfo.Appointments.Clear()
-            ultraDay.CalendarInfo.Notes.Clear()
-            ultraWeek.CalendarInfo.Notes.Clear()
-            ultraMonth.CalendarInfo.Notes.Clear()
-
             clPlan.anzNachrichten = 0
-
-            Me.ultraMonth.ScrollDayIntoView(System.DateTime.Today)
-            Me.ultraWeek.ScrollDayIntoView(System.DateTime.Today)
 
         Catch ex As Exception
             Throw New Exception("contPlanungData.clear: " + ex.ToString())
         End Try
     End Sub
 
-    Public Function getSelectedDate() As Date
-        Try
-            Select Case Me.UTabTable.SelectedTab.Index
-                Case 3
-                    Dim actAppoint As Appointment
-                    Dim actDay As Infragistics.Win.UltraWinSchedule.Day
-                    actDay = Me.UltraCalendarInfo.ActiveDay
-                    Dim selDat As New Date(actDay.Date.Year, actDay.Date.Month, actDay.Date.Day, Now.Hour, Now.Minute, 0)
-                    Return selDat
-
-                Case 0, 1, 2
-                    Dim actDayDat As New Date(Now.Year, Now.Month, Now.Day, 9, 0, 0)
-                    'If General.IsNull(Me.UDayAufgabe.SelectedTimeSlotRange) > 0 Then
-                    Try
-                        actDayDat = Me.ultraDay.SelectedTimeSlotRange.StartDateTime
-                    Catch ex As Exception
-                    End Try
-                    ' End If
-                    Dim actAppoint As Appointment
-                    Dim actDay As Infragistics.Win.UltraWinSchedule.Day
-                    actDay = Me.UltraCalendarInfo.ActiveDay
-                    Dim selDat As New Date(actDay.Date.Year, actDay.Date.Month, actDay.Date.Day, actDayDat.Hour, actDayDat.Minute, 0)
-                    Return selDat
-            End Select
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungData.getSelectedDate: " + ex.ToString())
-        End Try
-    End Function
     Public Function getSelectedPlanungseinträge(ByRef gridIsInFront As Boolean) As System.Collections.Generic.List(Of cSelEntries)
         Try
             Dim ret As New System.Collections.Generic.List(Of cSelEntries)
@@ -1876,17 +1532,6 @@ Public Class contPlanungDataBereich
 
                 Case 0, 1, 2
                     gridIsInFront = False
-                    For Each appointmentActuell As Appointment In ultraMonth.CalendarInfo.SelectedAppointments
-                        Dim rPlanSel As dsPlanSearch.planRow = appointmentActuell.Tag
-                        If Not rPlanSel Is Nothing Then
-                            Dim cSelApp1 As New cSelEntries()
-                            cSelApp1.appoint = appointmentActuell
-                            cSelApp1.rPlanSel = rPlanSel
-                            cSelApp1.gridIsActive = False
-                            ret.Add(cSelApp1)
-                        End If
-                    Next
-
             End Select
 
             Return ret
@@ -2251,7 +1896,7 @@ Public Class contPlanungDataBereich
     End Sub
 
 
-    Private Sub UMonthAufgabe_BeforeActivitiesDeleted(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.BeforeActivitiesDeletedEventArgs) Handles ultraMonth.BeforeActivitiesDeleted
+    Private Sub UMonthAufgabe_BeforeActivitiesDeleted(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.BeforeActivitiesDeletedEventArgs)
         Try
             e.Cancel = True
 
@@ -2259,7 +1904,7 @@ Public Class contPlanungDataBereich
             gen.GetEcxeptionGeneral(ex)
         End Try
     End Sub
-    Private Sub UMonthAufgabe_BeforeAppointmentEdit(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.BeforeAppointmentEditEventArgs) Handles ultraMonth.BeforeAppointmentEdit
+    Private Sub UMonthAufgabe_BeforeAppointmentEdit(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.BeforeAppointmentEditEventArgs)
         Try
             e.Cancel = True
 
@@ -2267,112 +1912,6 @@ Public Class contPlanungDataBereich
             gen.GetEcxeptionGeneral(ex)
         End Try
     End Sub
-    Private Sub UMonthAufgabe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ultraMonth.Click
-        Try
-            Me.setContextMenüAuto()
-            Me.doPreviewTxt(True, False)
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-    Private Sub UMonthAufgabe_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles ultraMonth.DoubleClick
-        Try
-            If Me.sitemap1.evDoubleClickOKMonth(sender, e, Me.ultraMonth) Then
-                Me.einträgeÖffnen(False)
-            End If
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        Finally
-        End Try
-    End Sub
-
-    Private Sub UWeekAufgabe_BeforeActivitiesDeleted(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.BeforeActivitiesDeletedEventArgs) Handles ultraWeek.BeforeActivitiesDeleted
-        Try
-            e.Cancel = True
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-    Private Sub UWeekAufgabe_BeforeAppointmentEdit(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.BeforeAppointmentEditEventArgs) Handles ultraWeek.BeforeAppointmentEdit
-        Try
-            e.Cancel = True
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-    Private Sub UWeekAufgabe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ultraWeek.Click
-        Try
-            Me.setContextMenüAuto()
-            Me.doPreviewTxt(True, False)
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-    Private Sub UWeekAufgabe_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles ultraWeek.DoubleClick
-        Try
-            If Me.sitemap1.evDoubleClickOKWeek(sender, e, Me.ultraWeek) Then
-                Me.einträgeÖffnen(False)
-            End If
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-
-
-
-    Private Sub UDayAufgabe_BeforeAppointmentsDeleted(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.BeforeAppointmentsDeletedEventArgs) Handles ultraDay.BeforeAppointmentsDeleted
-        Try
-            e.Cancel = True
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-    Private Sub UDayAufgabe_BeforeAppointmentEdited(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinSchedule.CancelableAppointmentEventArgs) Handles ultraDay.BeforeAppointmentEdited
-        Try
-            e.Cancel = True
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-    Private Sub UDayAufgabe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ultraDay.Click
-        Try
-            Me.setContextMenüAuto()
-            Me.doPreviewTxt(True, False)
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-    Private Sub UDayAufgabe_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ultraDay.DoubleClick
-        Try
-            If Me.sitemap1.evDoubleClickOKDay(sender, e, Me.ultraDay) Then
-                Me.einträgeÖffnen(False)
-            End If
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-
-    Private Sub UltraMonthViewMulti_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ultraMonthMulti.Click
-        Try
-            Me.UltraCalendarInfo.GetDay(DateTime.Today, True)
-            Dim Day As Infragistics.Win.UltraWinSchedule.Day
-            Day = ultraWeek.CalendarInfo.ActiveDay()
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-
 
     Private Sub SplitContainer1_SplitterMoved(ByVal sender As System.Object, ByVal e As System.Windows.Forms.SplitterEventArgs) Handles SplitContainer1.SplitterMoved
         Try
@@ -2383,30 +1922,13 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Public Sub aufHeute()
-        Try
-            Dim day As Infragistics.Win.UltraWinSchedule.Day = Me.UltraCalendarInfo.ActiveDay
-            Dim _date As DateTime = IIf(Not day Is Nothing, day.Date, DateTime.Today)
-            day = Me.UltraCalendarInfo.GetDay(DateTime.Today, True)
-            Me.UltraCalendarInfo.SelectedAppointments.Clear()
-            Me.UltraCalendarInfo.ActiveDay = day
-            'UltraCalendarInfo.SelectTypeDay = UltraWinSchedule.SelectType.Single
-            'UltraCalendarInfo.SelectTypeActivity = UltraWinSchedule.SelectType.Single
-            'UltraCalendarInfo.SelectedAppointments.Clear()
-            'UltraCalendarInfo.SelectTypeActivity = UltraWinSchedule.SelectType.Single
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungData.aufHeute: " + ex.ToString())
-        End Try
-    End Sub
-
-    Private Sub UToolbarsManagerKalender_ToolClick(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinToolbars.ToolClickEventArgs) Handles UToolbarsManagerKalender.ToolClick
+    Private Sub UToolbarsManagerKalender_ToolClick(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinToolbars.ToolClickEventArgs)
         Try
             Me.Cursor = Cursors.WaitCursor
 
             Select Case e.Tool.Key
                 Case "Heute"
-                    Me.aufHeute()
+
 
             End Select
 
@@ -2499,26 +2021,6 @@ Public Class contPlanungDataBereich
 
                 ElseIf typAction = eTypAction.DekursErstellen Then
 
-                ElseIf typAction = eTypAction.EMailSenden Then
-                    dsInteropPar1 = New dsInteropPar()
-                    bSendOnServer = General.bSendOnServer
-                    If bSendOnServer Then
-                        msgBoxStr = doUI.getRes("EMailsWillBeSentByTheCentralService")
-                    Else
-                        msgBoxStr = doUI.getRes("EMailsSent")
-                    End If
-
-                    If Not bSendOnServer Then
-                        Dim UserLoggedIn As String = Me.gen.getLoggedInUser()
-                        rUsrAccount = compUserAccounts1.getUserAccountsRow(Nothing, UserLoggedIn.Trim(), compUserAccounts.eTypSelUserAccounts.usr, compUserAccounts.eTypEMailAccount.SMTP, False, False)
-                        If rUsrAccount Is Nothing Then
-                            doUI.doMessageBox2("NoEMailAccountForTheUserDefined", "", "?")
-                            Exit Function
-                        End If
-                    End If
-                    protokollTitle = doUI.getRes("EMailCouldNotBeSended")   'doUI.getRes("SendEMails")
-                    resMsgBox = doUI.doMessageBox3("DoYouRealyWantToSendTheEMails", "SendEMails", MsgBoxStyle.YesNo, "?")
-
                 End If
 
                 If resMsgBox = MsgBoxResult.Yes Then
@@ -2553,8 +2055,6 @@ Public Class contPlanungDataBereich
 
                                 If gridIsInFront Then
                                     cSelAppActuell.rPlanSel.Delete()
-                                Else
-                                    Me.ultraMonthMulti.CalendarInfo.Appointments.Remove(cSelAppActuell.appoint)
                                 End If
                             Else
                                 Dim sMsgBoxTxt As String = QS2.Desktop.ControlManagment.ControlManagment.getRes("Termin {0} kann nicht gelöscht werden!")
@@ -2600,38 +2100,6 @@ Public Class contPlanungDataBereich
                                 lstPlansSelected.Add(NewInfoPlan)
                                 anz += 1
                             End If
-
-                        ElseIf typAction = eTypAction.EMailSenden Then
-                            If cSelAppActuell.rPlanSel.IDArt = clPlan.typPlan_EMailGesendet Then
-                                Dim dsPlan1 As New dsPlan()
-                                Dim rPlan As dsPlan.planRow = Me.compPlan1.getPlanRow(cSelAppActuell.rPlanSel.ID, compPlan.eTypSelPlan.id, True)
-                                Me.compPlan1.getPlanAnhang(cSelAppActuell.rPlanSel.ID, compPlan.eTypSelPlanAnhang.idPlan, dsPlan1)
-
-                                If rPlan.MailAn.Trim() <> "" Or rPlan.MailCC.Trim() <> "" Then
-                                    Dim bSendOK As Boolean = False
-                                    Dim IDParent As System.Guid = Nothing
-                                    If Not cSelAppActuell.rPlanSel.IsIDPlanMainNull() Then
-                                        IDParent = cSelAppActuell.rPlanSel.IDPlanMain
-                                    End If
-                                    If bSendOnServer Then
-                                        bSendOK = Me.gen.addInteropPar(cSelAppActuell.rPlanSel.ID, IDParent, dsInteropPar1)
-                                    Else
-                                        bSendOK = Me.clPlan1.sendEMail(rPlan.MailAn.Trim(), rPlan.MailCC.Trim(), rPlan.MailBcc.Trim(), False,
-                                                          rPlan.Betreff, rPlan.Text, dsPlan1.planAnhang, rPlan.html, True, rPlan.ID, IDParent, False, True, protokollTxt, False, rUsrAccount, True, False)
-                                    End If
-                                    If bSendOK Then
-                                        anz += 1
-                                    Else
-                                        Dim sTxtTemp As String = doUI.getRes("EMailCouldNotBeSended")
-                                        protokollTxt = String.Format(sTxtTemp, cSelAppActuell.rPlanSel.Betreff) + protokollTxt + vbNewLine
-                                        anzErr += 1
-                                    End If
-                                Else
-                                    protokollTxt = doUI.getRes("NoEMailAdressFor") + " '" + cSelAppActuell.rPlanSel.Betreff + "'" + protokollTxt + vbNewLine
-                                    anzErr += 1
-                                End If
-
-                            End If
                         End If
                     Next
 
@@ -2663,17 +2131,6 @@ Public Class contPlanungDataBereich
                             doUI.doMessageBox2("NoEntrySelected", "", "!")
                         End If
 
-                    ElseIf typAction = eTypAction.EMailSenden Then
-                        If anz > 0 And bSendOnServer Then
-                            Me.gen.addInteropSendEMail(dsInteropPar1)
-                        End If
-                        Dim strTitle As String = doUI.getRes("SendEMails")
-                        Dim strText As String = doUI.getRes("ActivityPerformed2")
-                        strText = String.Format(strText, anz.ToString() + " " + msgBoxStr)
-                        doUI.doMessageBoxTranslated(strText, strTitle, "!")
-
-                        If anz > 0 Then
-                        End If
                     End If
 
                     If protokollTxt.Trim() <> "" Then
@@ -3033,18 +2490,6 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Private Sub EMailsSendenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EMailsSendenToolStripMenuItem.Click
-        Try
-            Me.Cursor = Cursors.WaitCursor
-            Me.doAction(eTypAction.EMailSenden, True)
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-
     Private Sub contPlanung_Resize(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Resize
         Try
             Me.resizeControl()
@@ -3175,7 +2620,7 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Private Sub ultraDay_BeforeAppointmentsMoved(sender As Object, e As CancelableAppointmentsEventArgs) Handles ultraDay.BeforeAppointmentsMoved
+    Private Sub ultraDay_BeforeAppointmentsMoved(sender As Object, e As CancelableAppointmentsEventArgs)
         e.Cancel = True
     End Sub
 
