@@ -1038,24 +1038,26 @@ namespace PMDS.Global.db.ERSystem
                     throw new Exception("ELGABusiness.openCDADocument: parOuot.lDocumentsk__BackingField.Length != 1 -> ELGA-Document for ELGADocuUniqueId '" + ELGADocuUniqueId.Trim() + "' not found!");
                 }
 
-                //byte[] bDocu = parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField;
-                //string base64String = Encoding.UTF8.GetString(bDocu, 0, bDocu.Length);
-                //string sFileXMLTest = System.Text.Encoding.Default.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField);
-                //string sFileXMLTest2 = Convert.ToBase64String(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField, 0, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length);
-
+                
                 string sFileXML = Encoding.UTF8.GetString(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField, 0, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length);
-
-                string sFileXmlTmp = "";
-                string sStylesheetTmp = this.getStylesheetAndXmlFromELGAXmlDocu(sFileXML, ref sFileXmlTmp);
-
-                frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
-                frmCDAViewer1.initControl(DocumentName.Trim(), parOuot.lDocumentsk__BackingField[0].UniqueIdk__BackingField.Trim(),
-                                            "", sFileXmlTmp, typeFile, sStylesheetTmp, contCDAViewer.eTypeUI.saveToArchive);
-                frmCDAViewer1.ShowDialog();
-                if (!frmCDAViewer1.contCDAViewer1.abort)
+                clsELGAPrint pr = new clsELGAPrint();
+                using (MemoryStream msXML = PMDS.Global.Tools.GenerateStreamFromString(sFileXML))
                 {
-
+                    pr.ShowXMLInBrowser(msXML, "", true);
                 }
+
+
+                //string sFileXmlTmp = "";
+                //string sStylesheetTmp = this.getStylesheetAndXmlFromELGAXmlDocu(sFileXML, ref sFileXmlTmp);
+
+                //frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
+                //frmCDAViewer1.initControl(DocumentName.Trim(), parOuot.lDocumentsk__BackingField[0].UniqueIdk__BackingField.Trim(),
+                //                            "", sFileXmlTmp, typeFile, sStylesheetTmp, contCDAViewer.eTypeUI.saveToArchive);
+                //frmCDAViewer1.ShowDialog();
+                //if (!frmCDAViewer1.contCDAViewer1.abort)
+                //{
+
+                //}
 
             }
             catch (Exception ex)
