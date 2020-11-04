@@ -89,13 +89,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bullzip.PDFWriter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=041d71cacb6e853c, processorArchitecture=MSIL">
+    <Reference Include="ChilkatDotNet47, Version=9.5.0.77, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Common Files\Bullzip\PDF Printer\API\Microsoft.NET\Framework\v4.0\Bullzip.PDFWriter.dll</HintPath>
-    </Reference>
-    <Reference Include="ChilkatDotNet4, Version=9.5.0.51, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DllsNoRedist\ChilkatDotNet4.dll</HintPath>
+      <HintPath>..\Dlls\ChilkatDotNet47.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
