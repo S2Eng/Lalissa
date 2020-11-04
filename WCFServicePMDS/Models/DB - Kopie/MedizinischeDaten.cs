@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class MedizinischeDaten
+    {
+        public MedizinischeDaten()
+        {
+            RezeptEintragMedDaten = new HashSet<RezeptEintragMedDaten>();
+            VoMedizinischeDaten = new HashSet<VoMedizinischeDaten>();
+        }
+
+        public Guid Id { get; set; }
+        public Guid? Idpatient { get; set; }
+        public Guid? Idbenutzergeaendert { get; set; }
+        public int? MedizinischerTyp { get; set; }
+        public string Beschreibung { get; set; }
+        public string Icdcode { get; set; }
+        public DateTime? Von { get; set; }
+        public DateTime? Bis { get; set; }
+        public string Beendigungsgrund { get; set; }
+        public bool? AufnahmediagnoseJn { get; set; }
+        public string Bemerkung { get; set; }
+        public string Therapie { get; set; }
+        public double? Anzahl { get; set; }
+        public bool? NuechternJn { get; set; }
+        public bool? AntikoaguliertJn { get; set; }
+        public string Handling { get; set; }
+        public DateTime? LetzteVersorgung { get; set; }
+        public DateTime? NaechsteVersorgung { get; set; }
+        public string Modell { get; set; }
+        public string Groesse { get; set; }
+        public string Typ { get; set; }
+        public Guid? Idbefund { get; set; }
+        public string Verordnungen { get; set; }
+        public string LstRezepteinträge { get; set; }
+        public int NumberRezepteinträge { get; set; }
+
+        public virtual Benutzer IdbenutzergeaendertNavigation { get; set; }
+        public virtual Patient IdpatientNavigation { get; set; }
+        public virtual ICollection<RezeptEintragMedDaten> RezeptEintragMedDaten { get; set; }
+        public virtual ICollection<VoMedizinischeDaten> VoMedizinischeDaten { get; set; }
+    }
+}

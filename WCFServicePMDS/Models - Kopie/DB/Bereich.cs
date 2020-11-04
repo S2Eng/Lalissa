@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class Bereich
+    {
+        public Bereich()
+        {
+            AufenthaltVerlauf = new HashSet<AufenthaltVerlauf>();
+            BereichBenutzer = new HashSet<BereichBenutzer>();
+            InverseIdbereichNavigation = new HashSet<Bereich>();
+            PflegeEintrag = new HashSet<PflegeEintrag>();
+            PflegeEintragEntwurf = new HashSet<PflegeEintragEntwurf>();
+        }
+
+        public Guid Id { get; set; }
+        public Guid? Idabteilung { get; set; }
+        public Guid? Idbereich { get; set; }
+        public string Bezeichnung { get; set; }
+        public bool? UnterAerztlicheFuehrungJn { get; set; }
+        public int Reihenfolge { get; set; }
+        public int AnzahlBetten { get; set; }
+        public string Bereichstyp { get; set; }
+
+        public virtual Abteilung IdabteilungNavigation { get; set; }
+        public virtual Bereich IdbereichNavigation { get; set; }
+        public virtual ICollection<AufenthaltVerlauf> AufenthaltVerlauf { get; set; }
+        public virtual ICollection<BereichBenutzer> BereichBenutzer { get; set; }
+        public virtual ICollection<Bereich> InverseIdbereichNavigation { get; set; }
+        public virtual ICollection<PflegeEintrag> PflegeEintrag { get; set; }
+        public virtual ICollection<PflegeEintragEntwurf> PflegeEintragEntwurf { get; set; }
+    }
+}

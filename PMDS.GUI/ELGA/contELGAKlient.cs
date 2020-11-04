@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PMDS.Global;
 using PMDSClient.Sitemap;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
 using PMDS.Global.db.ERSystem;
 using PMDS.DB;
+using WCFServicePMDS.BAL2.ELGABAL;
 
 namespace PMDS.GUI.ELGA
 {
@@ -182,14 +182,14 @@ namespace PMDS.GUI.ELGA
                         if (frmELGASearchPatient1.contELGASearchPatient1._rSelRow.PatientLocalID.Trim() == "")
                         {
                             string LocalPatientIDWriteELGA = ("S2Int." + System.Guid.NewGuid().ToString() + "").ToLower();
-                            ELGAParOutDto parOut = this.WCFServiceClient1.ELGAInsertPatient(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID, LocalPatientIDWriteELGA.Trim(), rKlinik.AuthUniversalID.Trim(), ELGABALeTypeUpdatePatients.CreateLocalPatientID);
-                            if (parOut.bOKk__BackingField)
+                            ELGAParOutDto parOut = this.WCFServiceClient1.ELGAInsertPatient(frmELGASearchPatient1.contELGASearchPatient1._rSelRow.ID, LocalPatientIDWriteELGA.Trim(), rKlinik.AuthUniversalID.Trim(), WCFServicePMDS.ELGABAL.eTypeUpdatePatients.CreateLocalPatientID);
+                            if (parOut.bOK)
                             {
-                                foreach (ELGAPidsDTO rPid in parOut.lPatientsk__BackingField[0].ELGAPidsk__BackingField)
+                                foreach (ELGAPidsDTO rPid in parOut.lPatients[0].ELGAPids)
                                 {
-                                    if (rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower() && rPid.authUniversalIDk__BackingField.Trim() == rKlinik.AuthUniversalID.Trim())
+                                    if (rPid.patientIDType.ToLower() == ("PI").ToLower() && rPid.authUniversalID.Trim() == rKlinik.AuthUniversalID.Trim())
                                     {
-                                        ELGALocalIDStored = rPid.patientIDk__BackingField.Trim();
+                                        ELGALocalIDStored = rPid.patientID.Trim();
                                         bPatientLocalIDOK = true;
                                     }
                                 }
@@ -228,11 +228,11 @@ namespace PMDS.GUI.ELGA
                             //ELGAParOutDto parOutListContacts = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGAKontaktbestätigungContactID.Trim());
 
                             ELGAParOutDto parOutContact = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
-                            if (!parOutContact.bOKk__BackingField)
+                            if (!parOutContact.bOK)
                             {
                                 throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
                             }
-                            if (parOutContact.ContactExistsk__BackingField)
+                            if (parOutContact.ContactExists)
                             {
                                 ELGAParOutDto parOutContactDischarge = this.WCFServiceClient1.ELGAAddContactDischarge(ELGALocalIDStored);
 
@@ -243,7 +243,7 @@ namespace PMDS.GUI.ELGA
 
 
                                 parOutContact = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
-                                if (!parOutContact.bOKk__BackingField)
+                                if (!parOutContact.bOK)
                                 {
                                     throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact2.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
                                 }
@@ -252,7 +252,7 @@ namespace PMDS.GUI.ELGA
                             //rPatientUpdate.bPK = frmELGASearchPatient1.contELGASearchPatient1._rSelRow.IDElga;
 
                             rAufenthaltUpdate.ELGALocalID = ELGALocalIDStored.Trim();
-                            rAufenthaltUpdate.ELGAKontaktbestätigungContactID = parOutContact.ContactIDk__BackingField.Trim();
+                            rAufenthaltUpdate.ELGAKontaktbestätigungContactID = parOutContact.ContactID.Trim();
                             rAufenthaltUpdate.ELGAKontaktbestätigungJN = true;
                             rAufenthaltUpdate.ELGAKontaktbestätigungDatum = DateTime.Now;
                             rAufenthaltUpdate.ELGAKontaktbestätigungUser = rBenutzer.Benutzer1.Trim();
@@ -298,7 +298,7 @@ namespace PMDS.GUI.ELGA
                     PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
 
                     ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAAddContactDischarge(rAufenthaltUpdate.ELGALocalID.Trim());
-                    if (!parOutInvContact.bOKk__BackingField)
+                    if (!parOutInvContact.bOK)
                     {
                         throw new Exception("contELGAKlient.doKontaktbestätigungStorno: parOutInvContact.bOK=false not allowed - Error WCF-Service ELGAInvalidateContact!");
                     }

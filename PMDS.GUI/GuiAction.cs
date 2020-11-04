@@ -185,8 +185,8 @@ namespace PMDS.GUI
                     try
                     {
                         ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                        bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked,
-                          (Guid)ent.ucEntlassung1.cbEinrichtung.Value, null);
+                        bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked,
+                                            (Guid)ent.ucEntlassung1.cbEinrichtung.Value, null);
                     }
                     catch (Exception ex3)
                     {
@@ -1028,7 +1028,7 @@ namespace PMDS.GUI
                     //    return false;
                     //}
                 }
-
+                
                 GUI.Main.frmUrlaub2 frmUrlaub = new GUI.Main.frmUrlaub2();
                 frmUrlaub.initControl(idPatient);
                 frmUrlaub.ucUrlaub21.loadData();
@@ -1040,7 +1040,7 @@ namespace PMDS.GUI
                         try
                         {
                             ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                            bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht, false,
+                            bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationbericht, false,
                                         IDEinrichtungEmpfänger, IDDokumenteneintrag);
                         }
                         catch (Exception ex3)

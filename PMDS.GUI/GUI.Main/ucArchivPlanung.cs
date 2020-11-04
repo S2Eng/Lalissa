@@ -39,9 +39,15 @@ namespace PMDS.Itscont
 
         public PMDS.GUI.VB.contArchivMain contArchivMainOld = null;
         public GUI.VB.contArchMain contArchMain1 = null;
-        public GUI.VB.contPlanung2 contPlanung21 = null;
+        public GUI.VB.contPlanung2 contPlanung211 = null;
 
-        
+        public bool IsInitializedPlanBereich = false;
+
+        public GUI.VB.contPlanung2Bereich contPlanung2Bereich1 = null;
+
+
+
+
 
 
 
@@ -82,13 +88,13 @@ namespace PMDS.Itscont
                 //this.contArchMain1.Dock = DockStyle.Fill;
                 //this.panelArchiv2.Controls.Add(this.contArchMain1);
 
-                this.contPlanung21 = new GUI.VB.contPlanung2();
-                this.contPlanung21.Dock = DockStyle.Fill;
-                this.panelPlan2.Controls.Add(this.contPlanung21);
+                this.contPlanung211 = new GUI.VB.contPlanung2();
+                this.contPlanung211.Dock = DockStyle.Fill;
+                this.panelPlan2.Controls.Add(this.contPlanung211);
 
                 this.setButtonsAktivDeaktiv(1);
                 //this.contArchMain1.PMDSMainWindow = (Control)this;
-                this.contPlanung21.PMDSMainWindow = (Control)this;
+                this.contPlanung211.PMDSMainWindow = (Control)this;
        
 
                 //////if (ENV.CurrentIDPatient != Guid.Empty)
@@ -317,7 +323,6 @@ namespace PMDS.Itscont
                     this.tabMain.UseAppStyling = true;
                 }
 
-
             }
             catch (Exception ex)
             {
@@ -351,7 +356,7 @@ namespace PMDS.Itscont
                     o.id = pat.ID.ToString();
                     o.bezeichnung = this.getPatientenName();
                     al.Add(o);
-                        
+                    
                     this.contArchivMainOld.setObjekts(al);
                     this.contArchivMainOld.loadArchiv(GUI.VB.contArchivMain.eStart.Search, false);
                 }
@@ -368,7 +373,7 @@ namespace PMDS.Itscont
                     //throw new Exception("initArchiv: TypeUI '" + TypeUI.ToString() + "' not allowed!");
                 }
 
-              
+                
                 //ResizeControl();
                 //if (_main != null)
                 //    _main.resizeWindowExtern(pnlMain.Width, pnlMain.Height);
@@ -417,7 +422,7 @@ namespace PMDS.Itscont
                     //this.lblInfo.Text = infAuswahl;
                     //this.lblInfo.Text = "";
 
-                    this.contPlanung21.initForm(PMDS.GUI.VB.clPlan.typPlan_AufgabeTermin, TypeUI, PlanArchive, doInit);
+                    this.contPlanung211.initForm(PMDS.GUI.VB.clPlan.typPlan_AufgabeTermin, TypeUI, PlanArchive, doInit);
                 }
                 else if (TypeUI == GUI.VB.contPlanungData.eTypeUI.PlanKlienten || TypeUI == GUI.VB.contPlanungData.eTypeUI.PlanMy || TypeUI == GUI.VB.contPlanungData.eTypeUI.PlansAll || doInit)
                 {
@@ -433,7 +438,7 @@ namespace PMDS.Itscont
                     PMDS.GUI.VB.dsPlan dsPlan1 = new GUI.VB.dsPlan();
                     if (isTermin)
                     {
-                        this.contPlanung21.initForm(PMDS.GUI.VB.clPlan.typPlan_AufgabeTermin, TypeUI, PlanArchive, doInit);
+                        this.contPlanung211.initForm(PMDS.GUI.VB.clPlan.typPlan_AufgabeTermin, TypeUI, PlanArchive, doInit);
                     }
                     else
                     {
@@ -450,6 +455,26 @@ namespace PMDS.Itscont
             catch (Exception ex)
             {
                 throw new Exception("ucArchivPlanung.initTermineMails: " + ex.ToString());
+            }
+        }
+
+        private void initPlanBereich()
+        {
+            try
+            {
+                if (!this.IsInitializedPlanBereich)
+                {
+                    this.contPlanung2Bereich1 = new GUI.VB.contPlanung2Bereich();
+                    this.contPlanung2Bereich1.initForm(-1, GUI.VB.contPlanungData.eTypeUI.PlansAll, new GUI.VB.contPlanungData.cPlanArchive(), true);
+                    this.contPlanung2Bereich1.Dock = DockStyle.Fill;
+                    this.panelPlanBereich.Controls.Add(this.contPlanung2Bereich1);
+                }
+
+                this.showTab(5);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucArchivPlanung.initPlanBereich: " + ex.ToString());
             }
         }
 
@@ -580,8 +605,9 @@ namespace PMDS.Itscont
 
         private void ucArchivPlanung_Resize(object sender, EventArgs e)
         {
+
         }
-       
+        
         private void showTab(int iTab)
         {
             try
@@ -594,17 +620,18 @@ namespace PMDS.Itscont
                     }
                     this.initArchiv(this._TypeUI, this._PlanArchive, this.IsFirstLoad);
 
-
                     this.tabMain.Tabs[0].TabPage.Visible = true;
                     this.tabMain.Tabs[1].TabPage.Visible = false;
                     this.tabMain.Tabs[2].TabPage.Visible = false;
                     this.tabMain.Tabs[3].TabPage.Visible = false;
                     this.tabMain.Tabs[4].TabPage.Visible = false;
+                    this.tabMain.Tabs[5].TabPage.Visible = false;
                     this.tabMain.Tabs[0].TabPage.Show();
                     this.tabMain.Tabs[1].TabPage.Hide();
                     this.tabMain.Tabs[2].TabPage.Hide();
                     this.tabMain.Tabs[3].TabPage.Hide();
                     this.tabMain.Tabs[4].TabPage.Hide();
+                    this.tabMain.Tabs[5].TabPage.Hide();
                     this.tabMain.SelectedTab = tabMain.Tabs[0];
                 }
                 else if (iTab == 1)
@@ -614,11 +641,13 @@ namespace PMDS.Itscont
                     this.tabMain.Tabs[2].TabPage.Visible = false;
                     this.tabMain.Tabs[3].TabPage.Visible = false;
                     this.tabMain.Tabs[4].TabPage.Visible = false;
+                    this.tabMain.Tabs[5].TabPage.Visible = false;
                     this.tabMain.Tabs[0].TabPage.Hide();
                     this.tabMain.Tabs[1].TabPage.Show();
                     this.tabMain.Tabs[2].TabPage.Hide();
                     this.tabMain.Tabs[3].TabPage.Hide();
                     this.tabMain.Tabs[4].TabPage.Hide();
+                    this.tabMain.Tabs[5].TabPage.Hide();
                     this.tabMain.SelectedTab = tabMain.Tabs[1];
                 }
                 else if (iTab == 2)
@@ -628,11 +657,13 @@ namespace PMDS.Itscont
                     this.tabMain.Tabs[2].TabPage.Visible = true;
                     this.tabMain.Tabs[3].TabPage.Visible = false;
                     this.tabMain.Tabs[4].TabPage.Visible = false;
+                    this.tabMain.Tabs[5].TabPage.Visible = false;
                     this.tabMain.Tabs[0].TabPage.Hide();
                     this.tabMain.Tabs[1].TabPage.Hide();
                     this.tabMain.Tabs[2].TabPage.Show();
                     this.tabMain.Tabs[3].TabPage.Hide();
                     this.tabMain.Tabs[4].TabPage.Hide();
+                    this.tabMain.Tabs[5].TabPage.Hide();
                     this.tabMain.SelectedTab = tabMain.Tabs[2];
                 }
                 else if (iTab == 3)
@@ -642,11 +673,13 @@ namespace PMDS.Itscont
                     this.tabMain.Tabs[2].TabPage.Visible = false;
                     this.tabMain.Tabs[3].TabPage.Visible = true;
                     this.tabMain.Tabs[4].TabPage.Visible = false;
+                    this.tabMain.Tabs[5].TabPage.Visible = false;
                     this.tabMain.Tabs[0].TabPage.Hide();
                     this.tabMain.Tabs[1].TabPage.Hide();
                     this.tabMain.Tabs[2].TabPage.Hide();
                     this.tabMain.Tabs[3].TabPage.Show();
                     this.tabMain.Tabs[4].TabPage.Hide();
+                    this.tabMain.Tabs[5].TabPage.Hide();
 
                     this.tabMain.SelectedTab = tabMain.Tabs[3];
                 }
@@ -657,13 +690,32 @@ namespace PMDS.Itscont
                     this.tabMain.Tabs[2].TabPage.Visible = false;
                     this.tabMain.Tabs[3].TabPage.Visible = false;
                     this.tabMain.Tabs[4].TabPage.Visible = true;
+                    this.tabMain.Tabs[5].TabPage.Visible = false;
                     this.tabMain.Tabs[0].TabPage.Hide();
                     this.tabMain.Tabs[1].TabPage.Hide();
                     this.tabMain.Tabs[2].TabPage.Hide();
                     this.tabMain.Tabs[3].TabPage.Hide();
                     this.tabMain.Tabs[4].TabPage.Show();
+                    this.tabMain.Tabs[5].TabPage.Hide();
 
                     this.tabMain.SelectedTab = tabMain.Tabs[4];
+                }
+                else if (iTab == 5)
+                {
+                    this.tabMain.Tabs[0].TabPage.Visible = false;
+                    this.tabMain.Tabs[1].TabPage.Visible = false;
+                    this.tabMain.Tabs[2].TabPage.Visible = false;
+                    this.tabMain.Tabs[3].TabPage.Visible = false;
+                    this.tabMain.Tabs[4].TabPage.Visible = false;
+                    this.tabMain.Tabs[5].TabPage.Visible = true;
+                    this.tabMain.Tabs[0].TabPage.Hide();
+                    this.tabMain.Tabs[1].TabPage.Hide();
+                    this.tabMain.Tabs[2].TabPage.Hide();
+                    this.tabMain.Tabs[3].TabPage.Hide();
+                    this.tabMain.Tabs[4].TabPage.Hide();
+                    this.tabMain.Tabs[5].TabPage.Show();
+
+                    this.tabMain.SelectedTab = tabMain.Tabs[5];
                 }
                 else
                 {
@@ -864,6 +916,7 @@ namespace PMDS.Itscont
                 {
                     PMDS.Global.UIGlobal.setAktivDisable(this.btnEMail, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
                 }
+
             }
             catch (Exception ex)
             {
@@ -876,7 +929,7 @@ namespace PMDS.Itscont
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
+                this.initPlanBereich();
 
             }
             catch (Exception ex)

@@ -567,6 +567,9 @@
       <HintPath>..\Dlls\Syncfusion.XlsIO.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -583,6 +586,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
@@ -600,10 +606,6 @@
     <Reference Include="TXTextControl.Windows.Forms, Version=25.0.1000.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
-    <Reference Include="WCFServicePMDS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\WCFServicePMDS.exe</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="WinFormHtmlEditor">
@@ -5888,6 +5890,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Elga.core\PMDS.Core.Elga.csproj">
+      <Project>{e9575ad9-bed7-4aad-8d67-26cdd8961496}</Project>
+      <Name>PMDS.Core.Elga</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PMDS.Abrechnung.Logik\PMDS.Calc.Logic.vbproj">
       <Project>{B339C14C-B89C-4089-97AA-81D118A737B4}</Project>
       <Name>PMDS.Calc.Logic</Name>
@@ -5903,6 +5909,10 @@
     <ProjectReference Include="..\QS2.Desktop.Ressources.Auto10\QS2.Desktop.ControlManagment.vbproj">
       <Project>{1f894182-6563-4ffa-958d-b842cb449b21}</Project>
       <Name>QS2.Desktop.ControlManagment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCFServicePMDS\PMDS.EFCore.csproj">
+      <Project>{87427e1a-5914-4fd1-a0d0-c749ddebb069}</Project>
+      <Name>PMDS.EFCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,8 @@ Imports PMDS.GUI.VB.contPlanungData
 Imports Infragistics.Win.Misc
 Imports PMDS.db
 
+
+
 Public Class contPlanung2Bereich
     Inherits System.Windows.Forms.UserControl
 
@@ -270,7 +272,7 @@ Public Class contPlanung2Bereich
         Me.btnLayout_Beginn.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnLayout_Beginn.ImageSize = New System.Drawing.Size(40, 40)
         Me.btnLayout_Beginn.IsStandardControl = False
-        Me.btnLayout_Beginn.Location = New System.Drawing.Point(258, 0)
+        Me.btnLayout_Beginn.Location = New System.Drawing.Point(182, 0)
         Me.btnLayout_Beginn.Name = "btnLayout_Beginn"
         Me.btnLayout_Beginn.ShowFocusRect = False
         Me.btnLayout_Beginn.ShowOutline = False
@@ -300,7 +302,7 @@ Public Class contPlanung2Bereich
         Me.btnLayout_KategoriePatient.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnLayout_KategoriePatient.ImageSize = New System.Drawing.Size(40, 40)
         Me.btnLayout_KategoriePatient.IsStandardControl = False
-        Me.btnLayout_KategoriePatient.Location = New System.Drawing.Point(168, 0)
+        Me.btnLayout_KategoriePatient.Location = New System.Drawing.Point(92, 0)
         Me.btnLayout_KategoriePatient.Name = "btnLayout_KategoriePatient"
         Me.btnLayout_KategoriePatient.ShowFocusRect = False
         Me.btnLayout_KategoriePatient.ShowOutline = False
@@ -330,7 +332,7 @@ Public Class contPlanung2Bereich
         Me.btnLayout_PatientKategorie.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnLayout_PatientKategorie.ImageSize = New System.Drawing.Size(40, 40)
         Me.btnLayout_PatientKategorie.IsStandardControl = False
-        Me.btnLayout_PatientKategorie.Location = New System.Drawing.Point(78, 0)
+        Me.btnLayout_PatientKategorie.Location = New System.Drawing.Point(2, 0)
         Me.btnLayout_PatientKategorie.Name = "btnLayout_PatientKategorie"
         Me.btnLayout_PatientKategorie.ShowFocusRect = False
         Me.btnLayout_PatientKategorie.ShowOutline = False
@@ -364,10 +366,9 @@ Public Class contPlanung2Bereich
         Me.btnLayout_PatientBeginn.Name = "btnLayout_PatientBeginn"
         Me.btnLayout_PatientBeginn.ShowFocusRect = False
         Me.btnLayout_PatientBeginn.ShowOutline = False
-        Me.btnLayout_PatientBeginn.Size = New System.Drawing.Size(78, 23)
+        Me.btnLayout_PatientBeginn.Size = New System.Drawing.Size(2, 23)
         Me.btnLayout_PatientBeginn.TabIndex = 0
-        Me.btnLayout_PatientBeginn.Tag = "ResID.PatientBeginn"
-        Me.btnLayout_PatientBeginn.Text = "Patient/Beginn"
+        Me.btnLayout_PatientBeginn.Tag = ""
         Me.btnLayout_PatientBeginn.UseAppStyling = False
         Me.btnLayout_PatientBeginn.UseFlatMode = Infragistics.Win.DefaultableBoolean.[True]
         Me.btnLayout_PatientBeginn.UseHotTracking = Infragistics.Win.DefaultableBoolean.[True]

@@ -91,7 +91,7 @@ namespace PMDS.GUI.Print
                     return;
 
                 WCFServiceClient s = new WCFServiceClient();
-                s.genCDA2(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief, (Guid)this.cbETo.Value, System.Guid.NewGuid(),
+                s.genCDA2(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief, (Guid)this.cbETo.Value, System.Guid.NewGuid(),
                             System.Guid.NewGuid().ToString(), 0, "ELGA_Stylesheet_v1.0.xsl", ENV.CurrentIDPatient, ENV.IDAUFENTHALT, "Test Entlassungsbrief", null);
 
             }

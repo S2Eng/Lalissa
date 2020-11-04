@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="gdaiws" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:tns="gdaiws" targetNamespace="gdaiws">
+	<wsdl:types>
+		<xs:schema xmlns:gda="gdaiws" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified" targetNamespace="gdaiws" version="1.0">
+
+			<!-- Type Definitions -->
+
+			<xs:complexType name="InstanceIdentifierBase">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0"
+						name="oidIssuingAuthority" type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="1" name="id" type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="description"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="InstanceIdentifier">
+				<xs:complexContent>
+					<xs:extension base="gda:InstanceIdentifierBase">
+						<xs:sequence>
+							<xs:element maxOccurs="1" minOccurs="1" name="gdaStatus"
+								type="gda:gdastat" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+
+
+			<!-- added for search by persondata -->
+			<xs:complexType name="InstanceIdentifierPerson">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="firstname"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="1" name="surname"
+						type="xs:string" />
+					<!-- rolecode (alphanumeric OID). Use last part of OID without prefix 
+						(e.g. 700 = Arzt). The data from TermServ is Codebase -->
+					<xs:element maxOccurs="1" minOccurs="0" name="rolecode"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="postcode"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="streetNumber"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="streetName"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="city"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="1" name="maxResults"
+						type="xs:integer" /> <!-- added for limiting max. number of results -->
+					<xs:element maxOccurs="1" minOccurs="1" name="gdaStatus"
+						type="gda:gdastat" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="GdaAddress">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="status"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="streetNumber"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="streetName"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="city"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="state"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="zip" type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="country"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="addr"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="GdaDescriptor">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="1" name="gdaId"
+						type="gda:InstanceIdentifier" />
+					<xs:element maxOccurs="1" minOccurs="0" name="firstname"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="1" name="surname"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="title"
+						type="xs:string" />
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="addresses"
+						type="gda:GdaAddress" />
+					<xs:element maxOccurs="1" minOccurs="1" name="isOrganisation"
+						type="xs:boolean" />
+					<xs:element maxOccurs="unbounded" minOccurs="1" name="elgaRoles"
+						type="gda:InstanceIdentifierBase" />
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="otherRoles"
+						type="gda:InstanceIdentifierBase" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="GdaDescriptorVPNR">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="1" name="gdaId"
+						type="gda:InstanceIdentifier" />
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="vpnr"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="firstname"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="1" name="surname"
+						type="xs:string" />
+					<xs:element maxOccurs="1" minOccurs="0" name="title"
+						type="xs:string" />
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="addresses"
+						type="gda:GdaAddress" />
+					<xs:element maxOccurs="1" minOccurs="1" name="isOrganisation"
+						type="xs:boolean" />
+					<xs:element maxOccurs="unbounded" minOccurs="1" name="elgaRoles"
+						type="gda:InstanceIdentifierBase" />
+					<xs:element maxOccurs="unbounded" minOccurs="0" name="otherRoles"
+						type="gda:InstanceIdentifierBase" />	
+				</xs:sequence>
+			</xs:complexType>
+
+			<!-- added for returning lists of GDAs -->
+			<xs:complexType name="ListResponse">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="gda"
+						type="gda:GdaDescriptor" />
+					<xs:element maxOccurs="1" minOccurs="0" name="error"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<!-- added for returning lists of GDAs with vpnrs -->
+			<xs:complexType name="ListResponseVPNR">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="0" name="gda"
+						type="gda:GdaDescriptorVPNR" />
+					<xs:element maxOccurs="1" minOccurs="0" name="error"
+						type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<!-- Standard Request (returns active and inactive GDAs) -->
+			<xs:element name="GetGdaDescriptors">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="1" minOccurs="1" name="hcIdentifier"
+							type="gda:InstanceIdentifier" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Standard Request (returns only active GDAs) -->
+			<xs:element name="GetGdaDescriptors_active">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="1" minOccurs="1" name="hcIdentifier"
+							type="gda:InstanceIdentifierBase" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Request search by persondata -->
+			<xs:element name="GdaIndexRequestPerson">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="1" minOccurs="1"
+							name="hcIdentifierPerson" type="gda:InstanceIdentifierPerson" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="GdaIndexRequestVPNR">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="1" minOccurs="1"
+							name="hcIdentifierPerson" type="gda:InstanceIdentifierPerson" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+
+			<!-- Request search by list of hcIdentifiers -->
+			<xs:element name="GdaIndexRequestList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="200" minOccurs="1" name="hcIdentifier"
+							type="gda:InstanceIdentifier" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Standard Response -->
+			<xs:element name="GdaIndexResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="1" minOccurs="1" name="gda"
+							type="gda:GdaDescriptor" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+
+			<!-- Response (linked to search by list of identifiers and search by persondata) -->
+			<xs:element name="GdaIndexResponseList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="1" name="gda"
+							type="gda:ListResponse" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="GdaIndexResponseVPNR">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="1" name="gda"
+							type="gda:ListResponseVPNR" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- gda status enumeration -->
+			<xs:simpleType name="gdastat">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="aktiv" />
+					<xs:enumeration value="inaktiv" />
+				</xs:restriction>
+			</xs:simpleType>
+
+		</xs:schema>
+	</wsdl:types>
+
+	<wsdl:message name="GetGdaDescriptors">
+		<wsdl:part element="tns:GetGdaDescriptors" name="GetGdaDescriptors">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GetGdaDescriptors_active">
+		<wsdl:part element="tns:GetGdaDescriptors_active" name="GetGdaDescriptors_active">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GdaIndexResponse">
+		<wsdl:part element="tns:GdaIndexResponse" name="GdaIndexResponse">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GdaIndexRequestList">
+		<wsdl:part element="tns:GdaIndexRequestList" name="GdaIndexRequestList">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GdaIndexResponseList">
+		<wsdl:part element="tns:GdaIndexResponseList" name="GdaIndexResponseList">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GdaIndexRequestPerson">
+		<wsdl:part element="tns:GdaIndexRequestPerson" name="GdaIndexRequestPerson">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GdaIndexRequestVPNR">
+		<wsdl:part element="tns:GdaIndexRequestVPNR" name="GdaIndexRequestVPNR">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GdaIndexResponsePerson">
+		<wsdl:part element="tns:GdaIndexResponseList" name="GdaIndexResponseList">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GdaIndexResponseVPNR">
+		<wsdl:part element="tns:GdaIndexResponseVPNR" name="GdaIndexResponseVPNR">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="GdaIndex">
+		<wsdl:operation name="GdaIndexSuche">
+			<wsdl:input message="tns:GetGdaDescriptors" name="GetGdaDescriptors">
+			</wsdl:input>
+			<wsdl:output message="tns:GdaIndexResponse" name="GdaIndexResponse">
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexSuche_aktiv">
+			<wsdl:input message="tns:GetGdaDescriptors_active" name="GetGdaDescriptors_active">
+			</wsdl:input>
+			<wsdl:output message="tns:GdaIndexResponse" name="GdaIndexResponse_active">
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexListenSuche">
+			<wsdl:input message="tns:GdaIndexRequestList" name="GdaIndexRequestList">
+			</wsdl:input>
+			<wsdl:output message="tns:GdaIndexResponseList" name="GdaIndexResponseList">
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexPersonenSuche">
+			<wsdl:input message="tns:GdaIndexRequestPerson" name="GdaIndexRequestPerson">
+			</wsdl:input>
+			<wsdl:output message="tns:GdaIndexResponsePerson" name="GdaIndexResponsePerson">
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexVPNR">
+			<wsdl:input message="tns:GdaIndexRequestVPNR" name="GdaIndexRequestVPNR">
+			</wsdl:input>
+			<wsdl:output message="tns:GdaIndexResponseVPNR"
+				name="GdaIndexResponseVPNR">
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="GdaIndexSoap12" type="tns:GdaIndex">
+		<soap12:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="GdaIndexSuche">
+			<soap12:operation soapAction="" />
+			<wsdl:input name="GetGdaDescriptors">
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GdaIndexResponse">
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexSuche_aktiv">
+			<soap12:operation soapAction="" />
+			<wsdl:input name="GetGdaDescriptors_active">
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GdaIndexResponse_active">
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexListenSuche">
+			<soap12:operation soapAction="" />
+			<wsdl:input name="GdaIndexRequestList">
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GdaIndexResponseList">
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexPersonenSuche">
+			<soap12:operation soapAction="" />
+			<wsdl:input name="GdaIndexRequestPerson">
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GdaIndexResponsePerson">
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GdaIndexVPNR">
+			<soap12:operation soapAction="" />
+			<wsdl:input name="GdaIndexRequestVPNR">
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GdaIndexResponseVPNR">
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+	<wsdl:service name="GdaIndexWs">
+		<wsdl:port binding="tns:GdaIndexSoap12" name="GdaIndexSoap12">
+			<soap12:address location="http://127.0.0.1:8081/GdaIndexWs/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

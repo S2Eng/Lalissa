@@ -108,8 +108,8 @@ namespace PMDS.Global.PMDSClient
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client clientWcf = WCFServiceClient.getWCFClient(false);
-                clientWcf.sendExceptionAsSMTPEMail(except, client, (Haus.Trim() == "" ? "" : Haus + "::") + User, At);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
+                s1.sendExceptionAsSMTPEMail(except, client, (Haus.Trim() == "" ? "" : Haus + "::") + User, At);
             }
             catch (Exception ex)
             {

@@ -161,16 +161,6 @@ Public Class contPlanungDataBereich
 
     ' Für Windows Form-Designer erforderlich
     Private components As System.ComponentModel.IContainer
-
-    'HINWEIS: Die folgende Prozedur ist für den Windows Form-Designer erforderlich
-    'Sie kann mit dem Windows Form-Designer modifiziert werden.
-    'Verwenden Sie nicht den Code-Editor zur Bearbeitung.
-    Friend WithEvents UTabTable As Infragistics.Win.UltraWinTabControl.UltraTabControl
-    Friend WithEvents UltraTabSharedControlsPage1 As Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage
-    Friend WithEvents UTabPageGrid As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
-    Friend WithEvents UltraTabPageControlMonat As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
-    Friend WithEvents UltraTabPageControlWoche As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
-    Friend WithEvents UltraTabPageControlTag As Infragistics.Win.UltraWinTabControl.UltraTabPageControl
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -251,19 +241,7 @@ Public Class contPlanungDataBereich
         Dim ValueList2 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(368799640)
         Dim ValueList3 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(64791755)
         Dim ValueList4 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(82828532)
-        Dim DictionaryFileInfo2 As SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo = New SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo()
-        Dim UltraTab2 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
-        Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraTab3 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
-        Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraTab4 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
-        Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraTab1 As Infragistics.Win.UltraWinTabControl.UltraTab = New Infragistics.Win.UltraWinTabControl.UltraTab()
-        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Me.UltraTabPageControlMonat = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.UltraTabPageControlWoche = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.UltraTabPageControlTag = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
-        Me.UTabPageGrid = New Infragistics.Win.UltraWinTabControl.UltraTabPageControl()
+        Dim DictionaryFileInfo1 As SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo = New SpiceLogic.HtmlEditorControl.Domain.DesignTime.DictionaryFileInfo()
         Me.gridPlans = New Infragistics.Win.UltraWinGrid.UltraGrid()
         Me.ContextMenuStripNeu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TermineErledigenUndDekursSchreibenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -282,8 +260,6 @@ Public Class contPlanungDataBereich
         Me.DsPlanSearch1 = New PMDS.GUI.VB.dsPlanSearch()
         Me.winFormHtmlEditor1 = New SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor()
         Me.ToolStripMenuItemSpace = New System.Windows.Forms.ToolStripSeparator()
-        Me.UTabTable = New Infragistics.Win.UltraWinTabControl.UltraTabControl()
-        Me.UltraTabSharedControlsPage1 = New Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage()
         Me.PanelAnzeige = New System.Windows.Forms.Panel()
         Me.PanelEditorToWork = New System.Windows.Forms.Panel()
         Me.TextControlToWork = New TXTextControl.TextControl()
@@ -295,12 +271,10 @@ Public Class contPlanungDataBereich
         Me.UltraGridPrintDocument1 = New Infragistics.Win.UltraWinGrid.UltraGridPrintDocument(Me.components)
         Me.UltraToolTipManager1 = New Infragistics.Win.UltraWinToolTip.UltraToolTipManager(Me.components)
         Me.UltraGridDocumentExporter1 = New Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(Me.components)
-        Me.UTabPageGrid.SuspendLayout()
         CType(Me.gridPlans, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStripNeu.SuspendLayout()
         CType(Me.DsPlanSearch1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.UTabTable, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.UTabTable.SuspendLayout()
+        Me.winFormHtmlEditor1.SuspendLayout()
         Me.PanelAnzeige.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -308,31 +282,6 @@ Public Class contPlanungDataBereich
         Me.SplitContainer1.SuspendLayout()
         Me.PanelBody.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'UltraTabPageControlMonat
-        '
-        Me.UltraTabPageControlMonat.Location = New System.Drawing.Point(0, 0)
-        Me.UltraTabPageControlMonat.Name = "UltraTabPageControlMonat"
-        Me.UltraTabPageControlMonat.Size = New System.Drawing.Size(843, 226)
-        '
-        'UltraTabPageControlWoche
-        '
-        Me.UltraTabPageControlWoche.Location = New System.Drawing.Point(-10000, -10000)
-        Me.UltraTabPageControlWoche.Name = "UltraTabPageControlWoche"
-        Me.UltraTabPageControlWoche.Size = New System.Drawing.Size(843, 226)
-        '
-        'UltraTabPageControlTag
-        '
-        Me.UltraTabPageControlTag.Location = New System.Drawing.Point(-10000, -10000)
-        Me.UltraTabPageControlTag.Name = "UltraTabPageControlTag"
-        Me.UltraTabPageControlTag.Size = New System.Drawing.Size(843, 226)
-        '
-        'UTabPageGrid
-        '
-        Me.UTabPageGrid.Controls.Add(Me.gridPlans)
-        Me.UTabPageGrid.Location = New System.Drawing.Point(-10000, -10000)
-        Me.UTabPageGrid.Name = "UTabPageGrid"
-        Me.UTabPageGrid.Size = New System.Drawing.Size(843, 226)
         '
         'gridPlans
         '
@@ -742,36 +691,36 @@ Public Class contPlanungDataBereich
         Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UserName = Nothing
         Me.winFormHtmlEditor1.Size = New System.Drawing.Size(843, 319)
         Me.winFormHtmlEditor1.SpellCheckOptions.CurlyUnderlineImageFilePath = Nothing
-        DictionaryFileInfo2.AffixFilePath = Nothing
-        DictionaryFileInfo2.DictionaryFilePath = Nothing
-        DictionaryFileInfo2.EnableUserDictionary = True
-        DictionaryFileInfo2.UserDictionaryFilePath = Nothing
-        Me.winFormHtmlEditor1.SpellCheckOptions.DictionaryFile = DictionaryFileInfo2
+        DictionaryFileInfo1.AffixFilePath = Nothing
+        DictionaryFileInfo1.DictionaryFilePath = Nothing
+        DictionaryFileInfo1.EnableUserDictionary = True
+        DictionaryFileInfo1.UserDictionaryFilePath = Nothing
+        Me.winFormHtmlEditor1.SpellCheckOptions.DictionaryFile = DictionaryFileInfo1
         Me.winFormHtmlEditor1.SpellCheckOptions.WaitAlertMessage = "Searching next messpelled word..... (please wait)"
         Me.winFormHtmlEditor1.TabIndex = 4
         '
-        '
+        'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar1
         '
         Me.winFormHtmlEditor1.Toolbar1.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Toolbar1.Name = "toolbar1"
+        Me.winFormHtmlEditor1.Toolbar1.Name = "WinFormHtmlEditor_Toolbar1"
         Me.winFormHtmlEditor1.Toolbar1.Size = New System.Drawing.Size(843, 29)
         Me.winFormHtmlEditor1.Toolbar1.TabIndex = 0
         Me.winFormHtmlEditor1.Toolbar1.Visible = False
         '
-        '
+        'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar2
         '
         Me.winFormHtmlEditor1.Toolbar2.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Toolbar2.Name = "toolbar2"
+        Me.winFormHtmlEditor1.Toolbar2.Name = "WinFormHtmlEditor_Toolbar2"
         Me.winFormHtmlEditor1.Toolbar2.Size = New System.Drawing.Size(843, 29)
         Me.winFormHtmlEditor1.Toolbar2.TabIndex = 0
         Me.winFormHtmlEditor1.Toolbar2.Visible = False
         Me.winFormHtmlEditor1.ToolbarContextMenuStrip = Nothing
         '
-        '
+        'winFormHtmlEditor1.WinFormHtmlEditor_ToolbarFooter
         '
         Me.winFormHtmlEditor1.ToolbarFooter.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.winFormHtmlEditor1.ToolbarFooter.Location = New System.Drawing.Point(0, 294)
-        Me.winFormHtmlEditor1.ToolbarFooter.Name = "toolbarFooter"
+        Me.winFormHtmlEditor1.ToolbarFooter.Name = "WinFormHtmlEditor_ToolbarFooter"
         Me.winFormHtmlEditor1.ToolbarFooter.Size = New System.Drawing.Size(843, 25)
         Me.winFormHtmlEditor1.ToolbarFooter.TabIndex = 7
         Me.winFormHtmlEditor1.ToolbarFooter.Visible = False
@@ -783,49 +732,10 @@ Public Class contPlanungDataBereich
         Me.ToolStripMenuItemSpace.Name = "ToolStripMenuItemSpace"
         Me.ToolStripMenuItemSpace.Size = New System.Drawing.Size(195, 6)
         '
-        'UTabTable
-        '
-        Me.UTabTable.Controls.Add(Me.UltraTabSharedControlsPage1)
-        Me.UTabTable.Controls.Add(Me.UTabPageGrid)
-        Me.UTabTable.Controls.Add(Me.UltraTabPageControlMonat)
-        Me.UTabTable.Controls.Add(Me.UltraTabPageControlWoche)
-        Me.UTabTable.Controls.Add(Me.UltraTabPageControlTag)
-        Me.UTabTable.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.UTabTable.Location = New System.Drawing.Point(0, 0)
-        Me.UTabTable.Name = "UTabTable"
-        Me.UTabTable.SharedControlsPage = Me.UltraTabSharedControlsPage1
-        Me.UTabTable.Size = New System.Drawing.Size(843, 226)
-        Me.UTabTable.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Wizard
-        Me.UTabTable.TabIndex = 0
-        Appearance9.BorderColor = System.Drawing.Color.White
-        UltraTab2.Appearance = Appearance9
-        UltraTab2.Key = "Monatlich"
-        UltraTab2.TabPage = Me.UltraTabPageControlMonat
-        Appearance10.BorderColor = System.Drawing.Color.White
-        UltraTab3.Appearance = Appearance10
-        UltraTab3.Key = "Wöchentlich"
-        UltraTab3.TabPage = Me.UltraTabPageControlWoche
-        Appearance11.BorderColor = System.Drawing.Color.White
-        UltraTab4.Appearance = Appearance11
-        UltraTab4.Key = "Täglich"
-        UltraTab4.TabPage = Me.UltraTabPageControlTag
-        Appearance12.BorderColor = System.Drawing.Color.White
-        UltraTab1.Appearance = Appearance12
-        UltraTab1.Key = "Tabelle"
-        UltraTab1.TabPage = Me.UTabPageGrid
-        Me.UTabTable.Tabs.AddRange(New Infragistics.Win.UltraWinTabControl.UltraTab() {UltraTab2, UltraTab3, UltraTab4, UltraTab1})
-        Me.UTabTable.TabStop = False
-        '
-        'UltraTabSharedControlsPage1
-        '
-        Me.UltraTabSharedControlsPage1.Location = New System.Drawing.Point(-10000, -10000)
-        Me.UltraTabSharedControlsPage1.Name = "UltraTabSharedControlsPage1"
-        Me.UltraTabSharedControlsPage1.Size = New System.Drawing.Size(843, 226)
-        '
         'PanelAnzeige
         '
         Me.PanelAnzeige.BackColor = System.Drawing.Color.Transparent
-        Me.PanelAnzeige.Controls.Add(Me.UTabTable)
+        Me.PanelAnzeige.Controls.Add(Me.gridPlans)
         Me.PanelAnzeige.Controls.Add(Me.PanelEditorToWork)
         Me.PanelAnzeige.Controls.Add(Me.TextControlToWork)
         Me.PanelAnzeige.Dock = System.Windows.Forms.DockStyle.Fill
@@ -923,12 +833,11 @@ Public Class contPlanungDataBereich
         Me.Controls.Add(Me.SplitContainer1)
         Me.Name = "contPlanungDataBereich"
         Me.Size = New System.Drawing.Size(843, 550)
-        Me.UTabPageGrid.ResumeLayout(False)
         CType(Me.gridPlans, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStripNeu.ResumeLayout(False)
         CType(Me.DsPlanSearch1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.UTabTable, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.UTabTable.ResumeLayout(False)
+        Me.winFormHtmlEditor1.ResumeLayout(False)
+        Me.winFormHtmlEditor1.PerformLayout()
         Me.PanelAnzeige.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
@@ -1296,12 +1205,9 @@ Public Class contPlanungDataBereich
             '                lstPatients, lstUsers, doInit, Me._PlanArchive, Me._TypeUI, Me._LayoutGrid, PMDS.Global.ENV.IDKlinik)
             'lthplan
 
-
             If Me.DsPlanSearch1.plan.Count > Me.maxSuche Then
-                If Me.UTabTable.SelectedTab.Index <> 3 Then
-
-                    Dim resTitleTranslated As String = doUI.getRes("AutoSwitchToTableView")
-                    Dim resTextTranslated As String = doUI.getRes("NoteItWillChangeToTheListView") + "!" + vbNewLine + vbNewLine + doUI.getRes("TheOtherViewsRemainEmpty")
+                Dim resTitleTranslated As String = doUI.getRes("AutoSwitchToTableView")
+                Dim resTextTranslated As String = doUI.getRes("NoteItWillChangeToTheListView") + "!" + vbNewLine + vbNewLine + doUI.getRes("TheOtherViewsRemainEmpty")
                     resTextTranslated = String.Format(resTextTranslated, Me.maxSuche.ToString())
 
                     doUI.doMessageBoxTranslated(resTextTranslated, resTitleTranslated, MsgBoxStyle.Information)
@@ -1311,9 +1217,8 @@ Public Class contPlanungDataBereich
                     Me.mainWindow.lockToolbar = False
                     Application.DoEvents()
                 End If
-            End If
 
-            If Me.DsPlanSearch1.plan.Count <= Me.maxSuche Then
+                If Me.DsPlanSearch1.plan.Count <= Me.maxSuche Then
                 Dim lstPlansToDelete As New System.Collections.Generic.List(Of dsPlanSearch.planRow)
                 Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                     Dim countNotReadedEMails As Integer = 0
@@ -1509,30 +1414,24 @@ Public Class contPlanungDataBereich
     Public Function getSelectedPlanungseinträge(ByRef gridIsInFront As Boolean) As System.Collections.Generic.List(Of cSelEntries)
         Try
             Dim ret As New System.Collections.Generic.List(Of cSelEntries)
-            Select Case Me.UTabTable.SelectedTab.Index
-                Case 3
-                    gridIsInFront = True
-                    If Not gen.IsNull(Me.gridPlans.ActiveRow) Then
-                        Dim rSelected As New System.Collections.Generic.List(Of Infragistics.Win.UltraWinGrid.UltraGridRow)
-                        PMDS.Global.generic.getSelectedGridRows(Me.gridPlans, rSelected, False)
-                        If rSelected.Count > 0 Then
-                            For Each rGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In rSelected
-                                Dim v As DataRowView = rGrid.ListObject
-                                Dim rPlanSel As dsPlanSearch.planRow = v.Row
+            gridIsInFront = True
+            If Not gen.IsNull(Me.gridPlans.ActiveRow) Then
+                Dim rSelected As New System.Collections.Generic.List(Of Infragistics.Win.UltraWinGrid.UltraGridRow)
+                PMDS.Global.generic.getSelectedGridRows(Me.gridPlans, rSelected, False)
+                If rSelected.Count > 0 Then
+                    For Each rGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In rSelected
+                        Dim v As DataRowView = rGrid.ListObject
+                        Dim rPlanSel As dsPlanSearch.planRow = v.Row
 
-                                Dim cSelApp1 As New cSelEntries()
-                                cSelApp1.appoint = Nothing
-                                cSelApp1.rowGrid = rGrid
-                                cSelApp1.rPlanSel = rPlanSel
-                                cSelApp1.gridIsActive = True
-                                ret.Add(cSelApp1)
-                            Next
-                        End If
-                    End If
-
-                Case 0, 1, 2
-                    gridIsInFront = False
-            End Select
+                        Dim cSelApp1 As New cSelEntries()
+                        cSelApp1.appoint = Nothing
+                        cSelApp1.rowGrid = rGrid
+                        cSelApp1.rPlanSel = rPlanSel
+                        cSelApp1.gridIsActive = True
+                        ret.Add(cSelApp1)
+                    Next
+                End If
+            End If
 
             Return ret
 
@@ -1760,58 +1659,6 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Public Sub ShowTab(ByVal Tab As Integer)
-        Try
-            If Tab = 0 Then
-                UTabTable.Tabs(0).TabPage.Visible = False
-                UTabTable.Tabs(1).TabPage.Visible = False
-                UTabTable.Tabs(2).TabPage.Visible = False
-                UTabTable.Tabs(3).TabPage.Visible = False
-
-                UTabTable.Tabs(0).TabPage.Show()
-                UTabTable.Tabs(1).TabPage.Hide()
-                UTabTable.Tabs(2).TabPage.Hide()
-                UTabTable.Tabs(3).TabPage.Hide()
-                UTabTable.SelectedTab = UTabTable.Tabs(0)
-            ElseIf Tab = 1 Then
-                UTabTable.Tabs(0).TabPage.Visible = False
-                UTabTable.Tabs(1).TabPage.Visible = False
-                UTabTable.Tabs(2).TabPage.Visible = False
-                UTabTable.Tabs(3).TabPage.Visible = False
-
-                UTabTable.Tabs(0).TabPage.Hide()
-                UTabTable.Tabs(1).TabPage.Show()
-                UTabTable.Tabs(2).TabPage.Hide()
-                UTabTable.Tabs(3).TabPage.Hide()
-                UTabTable.SelectedTab = UTabTable.Tabs(1)
-            ElseIf Tab = 2 Then
-                UTabTable.Tabs(0).TabPage.Visible = False
-                UTabTable.Tabs(1).TabPage.Visible = False
-                UTabTable.Tabs(2).TabPage.Visible = False
-                UTabTable.Tabs(3).TabPage.Visible = False
-
-                UTabTable.Tabs(0).TabPage.Hide()
-                UTabTable.Tabs(1).TabPage.Hide()
-                UTabTable.Tabs(2).TabPage.Show()
-                UTabTable.Tabs(3).TabPage.Hide()
-                UTabTable.SelectedTab = UTabTable.Tabs(2)
-            ElseIf Tab = 3 Then
-                UTabTable.Tabs(0).TabPage.Visible = False
-                UTabTable.Tabs(1).TabPage.Visible = False
-                UTabTable.Tabs(2).TabPage.Visible = False
-                UTabTable.Tabs(3).TabPage.Visible = False
-
-                UTabTable.Tabs(0).TabPage.Hide()
-                UTabTable.Tabs(1).TabPage.Hide()
-                UTabTable.Tabs(2).TabPage.Hide()
-                UTabTable.Tabs(3).TabPage.Show()
-                UTabTable.SelectedTab = UTabTable.Tabs(3)
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungData.ShowTab: " + ex.ToString())
-        End Try
-    End Sub
     Public Sub SetWidthHeigth(ByVal Width As Integer, ByVal Height As Integer)
         Try
             Me.Width = Width
@@ -2214,27 +2061,8 @@ Public Class contPlanungDataBereich
                 Next
             End Using
 
-            Select Case Me.UTabTable.SelectedTab.Index
-                Case 3
-                    callMainFctPlan.Title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Listenansicht")
-                    callMainFctPlan.ViewMode = "L"
-
-                Case 0, 1, 2
-                    Select Case Me.UTabTable.SelectedTab.Index
-                        Case 0
-                            callMainFctPlan.Title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Monatsansicht")
-                            callMainFctPlan.ViewMode = "M"
-
-                        Case 1
-                            callMainFctPlan.Title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Wochenansicht")
-                            callMainFctPlan.ViewMode = "W"
-
-                        Case 2
-                            callMainFctPlan.Title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Tagesansicht")
-                            callMainFctPlan.ViewMode = "D"
-
-                    End Select
-            End Select
+            callMainFctPlan.Title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Listenansicht")
+            callMainFctPlan.ViewMode = "L"
 
             callMainFctPlan.IDKlinik = PMDS.Global.ENV.IDKlinik
             callMainFctPlan.IDAbteilung = PMDS.Global.ENV.CurrentIDAbteilung
@@ -2270,17 +2098,11 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-
-    Private Sub UTabTable_SelectedTabChanged(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs) Handles UTabTable.SelectedTabChanged
+    Private Sub UTabTable_SelectedTabChanged(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs)
         Try
             'Me.clearWebBrowserxy()
-            If Me.UTabTable.SelectedTab.Index = 3 Then
-                Me.FilterToolStripMenuItem.Visible = True
-                Me.setUIContextSelectAlleKeine(True)
-            Else
-                Me.FilterToolStripMenuItem.Visible = False
-                Me.setUIContextSelectAlleKeine(False)
-            End If
+            Me.FilterToolStripMenuItem.Visible = True
+            Me.setUIContextSelectAlleKeine(True)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -2399,16 +2221,7 @@ Public Class contPlanungDataBereich
             Me.ContexMenüItems(False)
 
             Dim ret As New cSelEntries
-            Select Case Me.UTabTable.SelectedTab.Index
-                Case 3
-                    Me.setContextMenüForGrid(gridPlans.ActiveRow)
-                Case 0, 1, 2
-                    Dim gridIsInFront As Boolean = False
-                    Dim selectedApp As System.Collections.Generic.List(Of cSelEntries) = Me.getSelectedPlanungseinträge(gridIsInFront)
-                    If selectedApp.Count > 0 Then
-                        Me.ContexMenüItems(True)
-                    End If
-            End Select
+            Me.setContextMenüForGrid(gridPlans.ActiveRow)
 
         Catch ex As Exception
             Throw New Exception("contPlanungData.setContextMenüAuto: " + ex.ToString())

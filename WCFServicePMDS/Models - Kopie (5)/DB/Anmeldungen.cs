@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class Anmeldungen
+    {
+        public Guid Id { get; set; }
+        public string Vorname { get; set; }
+        public string Nachname { get; set; }
+        public string Benutzer { get; set; }
+        public string LogInNameFrei { get; set; }
+        public DateTime? LogInDatum { get; set; }
+        public DateTime? LogOutDatum { get; set; }
+    }
+}

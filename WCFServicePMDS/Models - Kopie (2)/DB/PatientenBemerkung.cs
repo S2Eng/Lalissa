@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class PatientenBemerkung
+    {
+        public Guid Id { get; set; }
+        public Guid? Idpatient { get; set; }
+        public string Bemerkung { get; set; }
+        public Guid? Idbenutzer { get; set; }
+        public DateTime? Datum { get; set; }
+        public bool IstDekurs { get; set; }
+
+        public virtual Benutzer IdbenutzerNavigation { get; set; }
+        public virtual Patient IdpatientNavigation { get; set; }
+    }
+}

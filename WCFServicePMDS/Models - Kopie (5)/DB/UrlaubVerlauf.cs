@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class UrlaubVerlauf
+    {
+        public Guid Id { get; set; }
+        public Guid? Idaufenthalt { get; set; }
+        public DateTime? StartDatum { get; set; }
+        public DateTime? EndeDatum { get; set; }
+        public string Text { get; set; }
+        public Guid? IdbenutzerErstellt { get; set; }
+        public Guid? IdbenutzerGeaendert { get; set; }
+        public DateTime? DatumErstellt { get; set; }
+        public DateTime? DatumGeaendert { get; set; }
+        public DateTime? ZeitpunktBlisterlisteBeginn { get; set; }
+        public DateTime? ZeitpunktBlisterlisteEnde { get; set; }
+
+        public virtual Aufenthalt IdaufenthaltNavigation { get; set; }
+    }
+}

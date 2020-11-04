@@ -377,10 +377,17 @@
       <HintPath>..\Dlls\qs2.ui.vb.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -532,11 +539,6 @@
     <Compile Include="compSql.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Connected Services\ServiceReference_01\Reference.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="contDesigner.Designer.vb">
       <DependentUpon>contDesigner.vb</DependentUpon>
     </Compile>
@@ -681,115 +683,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\ServiceReference_01\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.BenutzerMainDTOBenutzerDt.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.CDACDABack.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.DynReportsInitStructureResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAAddContactAdmissionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAAddContactDischargeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAAddDocumentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ElgaDeprecateDocumentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAinsertPatientResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAInvalidateContactResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAListContactsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGALogInHCPResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGALogOutResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAParInDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAParOutDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryDocumentsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryGDAsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAQueryPatientsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGARetrieveDocumentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGASessionDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAUpdateDocumentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ELGAUpdatePatientResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.ExportResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.MessagesDto11.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.MessagesDTO112.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.PatientMainDTOPatientDt.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.queryPatientContentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\QS2.Desktop.ControlManagment.ServiceReference_01.StammdatenDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\service.wsdl" />
-    <None Include="Connected Services\ServiceReference_01\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.BAL.DTO.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.BAL.Main.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.BAL2.ELGABAL.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.CDABAL.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.DAL.DTO.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference_01\WCFServicePMDS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="dsControls.xsc">
       <DependentUpon>dsControls.xsd</DependentUpon>
     </None>
@@ -827,12 +720,6 @@
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference_01\configuration91.svcinfo" />
-    <None Include="Connected Services\ServiceReference_01\configuration.svcinfo" />
-    <None Include="Connected Services\ServiceReference_01\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -842,9 +729,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceReference_01\" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.3.3.0\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />

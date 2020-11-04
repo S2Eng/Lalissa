@@ -11,7 +11,7 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.Global;
 using PMDS.Global.db.ERSystem;
 using PMDSClient.Sitemap;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
+using WCFServicePMDS.BAL2.ELGABAL;
 
 namespace PMDS.GUI.ELGA
 {
@@ -175,39 +175,39 @@ namespace PMDS.GUI.ELGA
                 this.dsManage1.ELGASearchPatients.Clear();
                 this.gridFound.Refresh();
 
-                ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryPatients(this.txtSozVersNr.Text.Trim(), ELGABALeTypeQueryPatients.SozVersNr, false);
-                if (parOuot.lPatientsk__BackingField.Count() > 0)
+                ELGAParOutDto parOuot = WCFServiceClient1.ELGAQueryPatients(this.txtSozVersNr.Text.Trim(), WCFServicePMDS.ELGABAL.eTypeQueryPatients.SozVersNr, false);
+                if (parOuot.lPatients.Count() > 0)
                 {
-                    foreach (ELGAPatientDTO elgaPatient in parOuot.lPatientsk__BackingField)
+                    foreach (ELGAPatientDTO elgaPatient in parOuot.lPatients)
                     {
                         dsManage.ELGASearchPatientsRow rPatientFound = this.sqlManange1.getNewELGAPatient(ref this.dsManage1);
 
-                        rPatientFound.ID = elgaPatient.IDk__BackingField;
-                        rPatientFound.NachnameFirma = elgaPatient.familyNamek__BackingField.Trim();
-                        rPatientFound.Vorname = elgaPatient.givenNamek__BackingField.Trim();
-                        rPatientFound.PLZ = elgaPatient.zipk__BackingField.Trim();
-                        rPatientFound.Ort = elgaPatient.cityk__BackingField.Trim();
-                        rPatientFound.Land = elgaPatient.countryk__BackingField.Trim();
-                        rPatientFound.Strasse = elgaPatient.streetAddressk__BackingField.Trim();
+                        rPatientFound.ID = elgaPatient.ID;
+                        rPatientFound.NachnameFirma = elgaPatient.familyName.Trim();
+                        rPatientFound.Vorname = elgaPatient.givenName.Trim();
+                        rPatientFound.PLZ = elgaPatient.zip.Trim();
+                        rPatientFound.Ort = elgaPatient.city.Trim();
+                        rPatientFound.Land = elgaPatient.country.Trim();
+                        rPatientFound.Strasse = elgaPatient.streetAddress.Trim();
                         
-                        if (!string.IsNullOrEmpty(elgaPatient.businessPhonek__BackingField.Trim()))
+                        if (!string.IsNullOrEmpty(elgaPatient.businessPhone.Trim()))
                         {
-                            rPatientFound.Tel = elgaPatient.businessPhonek__BackingField.Trim();
+                            rPatientFound.Tel = elgaPatient.businessPhone.Trim();
                         }
                         else
                         {
-                            rPatientFound.Tel = elgaPatient.homePhonek__BackingField.Trim();
+                            rPatientFound.Tel = elgaPatient.homePhone.Trim();
                         }
 
-                        foreach (ELGAPidsDTO rPid in elgaPatient.ELGAPidsk__BackingField)
+                        foreach (ELGAPidsDTO rPid in elgaPatient.ELGAPids)
                         {
-                            if (rPid.authUniversalIDk__BackingField.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDTypek__BackingField.ToLower() == ("HC").ToLower())
+                            if (rPid.authUniversalID.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDType.ToLower() == ("HC").ToLower())
                             {
-                                rPatientFound.SozVersNr = rPid.patientIDk__BackingField.Trim();
+                                rPatientFound.SozVersNr = rPid.patientID.Trim();
                             }
-                            else if (rPid.authUniversalIDk__BackingField.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDTypek__BackingField.ToLower() == ("PI").ToLower())
+                            else if (rPid.authUniversalID.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDType.ToLower() == ("PI").ToLower())
                             {
-                                rPatientFound.PatientLocalID = rPid.patientIDk__BackingField.Trim();
+                                rPatientFound.PatientLocalID = rPid.patientID.Trim();
                             }
                         }
                     }

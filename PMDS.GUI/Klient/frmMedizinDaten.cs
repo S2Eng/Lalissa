@@ -405,8 +405,8 @@ namespace PMDS.GUI
                     this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert && rDocuEintrag.ELGACreatedInPMDS;
 
                     if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
-                        (rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht.ToString().Trim().ToLower()) || 
-                        rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief.ToString().Trim().ToLower())))
+                        (rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationbericht.ToString().Trim().ToLower()) || 
+                        rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief.ToString().Trim().ToLower())))
                     {
                         this.btnBefundSend.Visible = true;
                     }

@@ -14,8 +14,9 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.DB;
 using PMDS.Global.db.ERSystem;
 using System.IO;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
 using PMDSClient.Sitemap;
+using WCFServicePMDS.BAL.DTO;
+
 
 namespace PMDS.GUI.Messenger
 {  

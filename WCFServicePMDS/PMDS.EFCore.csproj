@@ -1,0 +1,2172 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.EntityFrameworkCore.Design.2.2.0\build\net461\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('..\packages\Microsoft.EntityFrameworkCore.Design.2.2.0\build\net461\Microsoft.EntityFrameworkCore.Design.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{87427E1A-5914-4FD1-A0D0-C749DDEBB069}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCFServicePMDS</RootNamespace>
+    <AssemblyName>WCFServicePMDS</AssemblyName>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <XsdCodeGenSerializerMode>XmlSerializer</XsdCodeGenSerializerMode>
+    <XsdCodeGenReuseTypesFlag>True</XsdCodeGenReuseTypesFlag>
+    <XsdCodeGenReuseTypesMode>All</XsdCodeGenReuseTypesMode>
+    <XsdCodeGenReferences />
+    <XsdCodeGenNamespaceMappings>%2a, WCFServicePMDS.ContractTypes</XsdCodeGenNamespaceMappings>
+    <XsdCodeGenCollectionTypes>System.Array%3bSystem.Collections.Generic.Dictionary`2</XsdCodeGenCollectionTypes>
+    <XsdCodeGenExcludedTypes />
+    <XsdCodeGenImportXmlTypes>True</XsdCodeGenImportXmlTypes>
+    <XsdCodeGenGenerateSerializableTypes>True</XsdCodeGenGenerateSerializableTypes>
+    <XsdCodeGenGenerateInternalTypes>False</XsdCodeGenGenerateInternalTypes>
+    <XsdCodeGenEnableDataBinding>False</XsdCodeGenEnableDataBinding>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChilkatDotNet47">
+      <HintPath>..\Dlls\ChilkatDotNet47.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest">
+      <HintPath>..\Dlls\MARC.Everest.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest.Formatters.XML.Datatypes.R1">
+      <HintPath>..\Dlls\MARC.Everest.Formatters.XML.Datatypes.R1.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest.Formatters.XML.ITS1">
+      <HintPath>..\Dlls\MARC.Everest.Formatters.XML.ITS1.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest.RMIM.UV.CDAr2">
+      <HintPath>..\Dlls\MARC.Everest.RMIM.UV.CDAr2.dll</HintPath>
+    </Reference>
+    <Reference Include="MARC.Everest.RMIM.UV.NE2010">
+      <HintPath>..\Dlls\MARC.Everest.RMIM.UV.NE2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Design, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Design.2.2.0\lib\net461\Microsoft.EntityFrameworkCore.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational.Design, Version=1.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.Design.1.1.6\lib\net451\Microsoft.EntityFrameworkCore.Relational.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.SqlServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.SqlServer.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.SqlServer.Design, Version=1.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.SqlServer.Design.1.1.6\lib\net451\Microsoft.EntityFrameworkCore.SqlServer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Exchange.WebServices\15.0.0.0__31bf3856ad364e35\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Patagames.Pdf, Version=3.10.5.2704, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pdfium.Net.SDK.3.10.5\lib\net47\Patagames.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.WinForms, Version=3.10.5.0, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pdfium.Net.SDK.3.10.5\lib\net47\Patagames.Pdf.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Patagames.Pdf.Wpf, Version=3.10.5.0, Culture=neutral, PublicKeyToken=37f2796639c62e77, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pdfium.Net.SDK.3.10.5\lib\net47\Patagames.Pdf.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="QS2.license.core">
+      <HintPath>..\Dlls\QS2.license.core.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.6.0\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Interactive.Async, Version=3.2.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Interactive.Async.3.2.0\lib\net46\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BAL\CDABAL\GdaIndexWs.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\archOrdnerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\archDokuSchlagBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\archObjectBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\archDokuBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\Interfaces\IarchOrdnerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\Interfaces\IarchDokuSchlagBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\Interfaces\IarchObjectBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ArchivBAL\Interfaces\IarchDokuBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\AufenthaltZusatzBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\AufenthaltVerlaufBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\UrlaubVerlaufBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\AufenthaltBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\Interfaces\IAufenthaltZusatzBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\Interfaces\IAufenthaltVerlaufBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\Interfaces\IUrlaubVerlaufBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AufenthaltBAL\Interfaces\IAufenthaltBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\BarcodeQBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\ArztabrechnungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\EssenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\tblQueriesDefBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\BelegungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\Interfaces\IBarcodeQBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\Interfaces\IArztabrechnungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\Interfaces\IEssenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\Interfaces\ItblQueriesDefBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\AuswertungenBAL\Interfaces\IBelegungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\AnmeldungenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\DTOs\MessagesDto.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\Interfaces\ImessagesBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\MessagesBAL.cs" />
+    <Compile Include="BAL\StartBAL\Benutzer\BenutzerMainDTO.cs" />
+    <Compile Include="BAL\StartBAL\Benutzer\BenutzerMainBAL.cs" />
+    <Compile Include="BAL\StartBAL\Benutzer\Interfaces\IBenutzerMainBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\RechtBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\GruppenRechtBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\GruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\BereichBenutzerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\BenutzerRechteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\BenutzerGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\BenutzerEinrichtungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\BenutzerBezugBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\BenutzerAbteilungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\BenutzerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IBenutzerAbteilungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IAnmeldungenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IRechtBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IGruppenRechtBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IBereichBenutzerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IBenutzerRechteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IBenutzerGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IBenutzerEinrichtungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IBenutzerBezugBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\BenutzerBAL\Interfaces\IBenutzerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IBankBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPatientLeistungsplanBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\ITaschengeldBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPatientTaschengeldKostentraegerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPatientSonderleistungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPatientKostentraegerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPatientEinkommenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPatientAbwesenheitBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPflegegeldstufeGueltigBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\ImanBuchBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\ILeistungskatalogGueltigBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IBookingsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IbillsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IbillHeaderBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IrechNrBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IPflegegeldstufeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\ISonderleistungsKatalogBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\ILeistungskatalogBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\Interfaces\IKostentraegerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\LeistungskatalogBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\SonderleistungsKatalogBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PflegegeldstufeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\rechNrBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\billHeaderBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\billsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\BookingsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\LeistungskatalogGueltigBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\manBuchBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PflegegeldstufeGueltigBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PatientAbwesenheitBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PatientEinkommenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PatientKostentraegerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PatientSonderleistungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PatientTaschengeldKostentraegerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\TaschengeldBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\PatientLeistungsplanBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\BankBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\CalcBAL\KostentraegerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Interfaces\IFormularDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Interfaces\IFormularDatenFelderBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Interfaces\IAnamnese_KrohwinkelBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Interfaces\IAnamnese_OremBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Interfaces\IAnamnese_POPBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Interfaces\IFormularBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\FormularDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\FormularDatenFelderBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Anamnese_KrohwinkelBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Anamnese_OremBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\Anamnese_POPBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\DatenerhebungBAL\FormularBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ElgaBAL\ELGADocumentsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ElgaBAL\ELGAProtocollBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ElgaBAL\ELGAActivitiesBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ElgaBAL\Interfaces\IELGADocumentsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ElgaBAL\Interfaces\IELGAProtocollBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ElgaBAL\Interfaces\IELGAActivitiesBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\FortbildungBAL\tblVeranstalterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\FortbildungBAL\tblFortbildungenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\FortbildungBAL\tblFortbildungBenutzerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\FortbildungBAL\Interfaces\ItblVeranstalterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\FortbildungBAL\Interfaces\ItblFortbildungenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\FortbildungBAL\Interfaces\ItblFortbildungBenutzerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\Interfaces\IPflegeEintragEntwurfBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\Interfaces\IvÜbergabeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\Interfaces\IQuickMeldungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\Interfaces\IPflegeEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\Interfaces\IvInterventionenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\PflegeEintragEntwurfBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\vÜbergabeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\QuickMeldungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\PflegeEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\InterventionenBAL\vInterventionenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IvKlientenlisteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IPatientAerzteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IPatientenBemerkungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IPatientPflegestufeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\ISachwalterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IMedizinischeDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IAerzteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IKontaktpersonBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IKontaktpersonStammdatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IUnterbringungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IRehabilitationBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IGegenstaendeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\Interfaces\IPatientBAL.cs" />
+    <Compile Include="BAL\StartBAL\Patient\PatientMainDTO.cs" />
+    <Compile Include="BAL\StartBAL\Patient\Interfaces\IPatientMainBAL.cs" />
+    <Compile Include="BAL\StartBAL\Patient\PatientMainBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\vKlientenlisteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\PatientBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\PatientAerzteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\PatientenBemerkungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\PatientPflegestufeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\SachwalterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\MedizinischeDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\AerzteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\KontaktpersonBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\KontaktpersonStammdatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\UnterbringungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\RehabilitationBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlientBAL\GegenstaendeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\AbteilungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\BereichBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\DienstzeitenBAl.cs" />
+    <Compile Include="BAL\StartBAL\Klinik\KlinikMainDTO.cs" />
+    <Compile Include="BAL\StartBAL\Klinik\Interfaces\IKlinikMainBAL.cs" />
+    <Compile Include="BAL\StartBAL\Klinik\KlinikMainBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\StandardzeitenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\tblSuchtgiftschrankSchlüsselBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\KlinikBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\Interfaces\IAbteilungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\Interfaces\IBereichBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\Interfaces\IDienstzeitenBAl.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\Interfaces\IStandardzeitenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\Interfaces\ItblSuchtgiftschrankSchlüsselBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KlinikBAL\Interfaces\IKlinikBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KontaktdatenBAL\AdresseBAl.cs" />
+    <Compile Include="BAL\EntitiesBAL\KontaktdatenBAL\KontaktBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\KontaktdatenBAL\Interfaces\IAdresseBAl.cs" />
+    <Compile Include="BAL\EntitiesBAL\KontaktdatenBAL\Interfaces\IKontaktBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\LayoutBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\LayoutGridsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\MedizinischeDatenLayoutBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\MedizinischeTypenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\QuickFilterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\Interfaces\ILayoutBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\Interfaces\ILayoutGridsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\Interfaces\IMedizinischeDatenLayoutBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\Interfaces\IMedizinischeTypenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\LayoutBAL\Interfaces\IQuickFilterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\Interfaces\IRezeptEintragMedDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\Interfaces\IRezeptBestellungPosBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\Interfaces\IMedikationAbgabeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\Interfaces\IRezeptEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\Interfaces\IMedikamentBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\RezeptEintragMedDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\RezeptBestellungPosBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\MedikationAbgabeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\RezeptEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\MedikationBAL\MedikamentBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IPDXAnamneseBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IPDXGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IPflegemodelleBAl.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IPDXPflegemodelleBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IPDXEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IPDXGruppeEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IEintragStandardprozedurenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IEintragZusatzBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\ILinkDokumenteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\Interfaces\IPDXBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\PDXAnamneseBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\PDXGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\PflegemodelleBAl.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\PDXPflegemodelleBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\PDXEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\PDXGruppeEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\EintragStandardprozedurenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\EintragZusatzBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\LinkDokumenteBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\EintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PdxBAL\PDXBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\PflegePlanHBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\PflegePlanPDxBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\AufenthaltPDxBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\PflegePlanBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\Interfaces\IPflegePlanHBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\Interfaces\IPflegePlanPDxBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\Interfaces\IAufenthaltPDxBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PflegeplanungBAL\Interfaces\IPflegePlanBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\planAnhangBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\planObjectBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\planStatusBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\tblUserAccountsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\planBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\Interfaces\IplanAnhangBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\Interfaces\IplanObjectBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\Interfaces\IplanStatusBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\Interfaces\ItblUserAccountsBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\PlanungBAL\Interfaces\IplanBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\Interfaces\ISPDynRepBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\Interfaces\ISPPEBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\Interfaces\ISPPOSBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\Interfaces\IStandardProzedurenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\Interfaces\ISPBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\SPDynRepBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\SPPEBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\StandardProzedurenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\SPPOSBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SpBAL\SPBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\ItblPfadBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\ItblPfadBAL.cs" />
+    <Compile Include="BAL\StartBAL\Stammdaten\StammdatenDTO.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\tblAutoDokuBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\ItblAutoDokuBAL.cs" />
+    <Compile Include="BAL\StartBAL\Stammdaten\Interfaces\IStammdatenBAL.cs" />
+    <Compile Include="BAL\StartBAL\Stammdaten\StammdatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\IAuswahlListeGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\ItblSelListEntrieBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\ItblSelListGroupBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\IMassnahmenserienBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\IEinrichtungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\IZeitbereichBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\IZeitbereichSerienBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\Interfaces\IAuswahlListeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\AuswahlListeGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\tblSelListEntrieBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\tblSelListGroupBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\MassnahmenserienBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\EinrichtungBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\ZeitbereichBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\ZeitbereichSerienBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\StammdatenBAL\AuswahlListeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\DBVersionBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\tblParameterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\tblRedistBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\tblInteropBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\ProtocolBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\DBLizenzBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\Interfaces\IDBVersionBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\Interfaces\ItblParameterBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\Interfaces\ItblRedistBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\Interfaces\ItblInteropBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\Interfaces\IProtocolBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\SystemBAL\Interfaces\IDBLizenzBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\RessourcenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\tblTextTemplatesFilesBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\TextbausteineBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\tblTextTemplatesBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\Interfaces\IRessourcenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\Interfaces\ItblTextTemplatesFilesBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\Interfaces\ITextbausteineBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\TexteFilesBAL\Interfaces\ItblTextTemplatesBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\Interfaces\IVO_BestelldatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\Interfaces\IVO_BestellpostitionenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\Interfaces\IVO_LagerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\Interfaces\IVO_MedizinischeDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\Interfaces\IVO_PflegeplanPDXBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\Interfaces\IVO_WundeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\Interfaces\IVOBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\VO_BestelldatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\VO_BestellpostitionenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\VO_LagerBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\VO_MedizinischeDatenBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\VO_PflegeplanPDXBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\VO_WundeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\VoBAL\VOBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\Interfaces\IWundePosBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\Interfaces\IWundePosBilderBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\Interfaces\IWundeTherapieBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\Interfaces\IWundeKopfBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\WundePosBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\WundePosBilderBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\WundeTherapieBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\WundeBAL\WundeKopfBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\Interfaces\IZusatzEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\Interfaces\IZusatzGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\Interfaces\IZusatzGruppeEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\Interfaces\IZusatzWertBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\ZusatzEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\ZusatzGruppeBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\ZusatzGruppeEintragBAL.cs" />
+    <Compile Include="BAL\EntitiesBAL\ZusatzwertBAL\ZusatzWerBAL.cs" />
+    <Compile Include="BAL\CDABAL\CDA.cs" />
+    <Compile Include="Connected Services\ServiceReferenceELGA1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ArchivDAL\tblRechteOrdnerDAL.cs" />
+    <Compile Include="DAL\ArchivDAL\archOrdnerDAL.cs" />
+    <Compile Include="DAL\ArchivDAL\archDokuSchlagDAL.cs" />
+    <Compile Include="DAL\ArchivDAL\archObjectDAL.cs" />
+    <Compile Include="DAL\ArchivDAL\archDokuDAL.cs" />
+    <Compile Include="DAL\ArchivDAL\DTOs\tblRechteOrdnerDTO.cs" />
+    <Compile Include="DAL\ArchivDAL\DTOs\archOrdnerDTO.cs" />
+    <Compile Include="DAL\ArchivDAL\DTOs\archDokuSchlagDTO.cs" />
+    <Compile Include="DAL\ArchivDAL\DTOs\archObjectDTO.cs" />
+    <Compile Include="DAL\ArchivDAL\DTOs\archDokuDTO.cs" />
+    <Compile Include="DAL\ArchivDAL\Interfaces\ItblRechteOrdner.cs" />
+    <Compile Include="DAL\ArchivDAL\Interfaces\IarchOrdner.cs" />
+    <Compile Include="DAL\ArchivDAL\Interfaces\IarchDokuSchlag.cs" />
+    <Compile Include="DAL\ArchivDAL\Interfaces\IarchObject.cs" />
+    <Compile Include="DAL\ArchivDAL\Interfaces\IarchDoku.cs" />
+    <Compile Include="DAL\AufenthaltDAL\AufenthaltZusatzDAL.cs" />
+    <Compile Include="DAL\AufenthaltDAL\AufenthaltVerlaufDAL.cs" />
+    <Compile Include="DAL\AufenthaltDAL\DTOs\AufenthaltZusatzDTO.cs" />
+    <Compile Include="DAL\AufenthaltDAL\DTOs\AufenthaltVerlaufDTO.cs" />
+    <Compile Include="DAL\AufenthaltDAL\Interfaces\IAufenthaltZusatz.cs" />
+    <Compile Include="DAL\AufenthaltDAL\Interfaces\IAufenthaltVerlauf.cs" />
+    <Compile Include="DAL\AufenthaltDAL\UrlaubVerlaufDAL.cs" />
+    <Compile Include="DAL\AufenthaltDAL\AufenthaltDAL.cs" />
+    <Compile Include="DAL\AufenthaltDAL\DTOs\UrlaubVerlaufDTO.cs" />
+    <Compile Include="DAL\AufenthaltDAL\DTOs\AufenthaltDTO.cs" />
+    <Compile Include="DAL\AufenthaltDAL\Interfaces\IUrlaubVerlauf.cs" />
+    <Compile Include="DAL\AufenthaltDAL\Interfaces\IAufenthalt.cs" />
+    <Compile Include="DAL\AuswertungenDAL\BarcodeQDAL.cs" />
+    <Compile Include="DAL\AuswertungenDAL\ArztabrechnungDAL.cs" />
+    <Compile Include="DAL\AuswertungenDAL\DTOs\BarcodeQDTO.cs" />
+    <Compile Include="DAL\AuswertungenDAL\DTOs\ArztabrechnungDTO.cs" />
+    <Compile Include="DAL\AuswertungenDAL\EssenDAL.cs" />
+    <Compile Include="DAL\AuswertungenDAL\DTOs\EssenDTO.cs" />
+    <Compile Include="DAL\AuswertungenDAL\DTOs\BelegungDTO.cs" />
+    <Compile Include="DAL\AuswertungenDAL\Interfaces\IBarcodeQ.cs" />
+    <Compile Include="DAL\AuswertungenDAL\Interfaces\IArztabrechnung.cs" />
+    <Compile Include="DAL\AuswertungenDAL\Interfaces\IEssen.cs" />
+    <Compile Include="DAL\AuswertungenDAL\Interfaces\IBelegung.cs" />
+    <Compile Include="DAL\AuswertungenDAL\BelegungDAL.cs" />
+    <Compile Include="DAL\AuswertungenDAL\tblQueriesDefDAL.cs" />
+    <Compile Include="DAL\AuswertungenDAL\DTOs\tblQueriesDefDTO.cs" />
+    <Compile Include="DAL\AuswertungenDAL\Interfaces\ItblQueriesDef.cs" />
+    <Compile Include="DAL\BaseDt.cs" />
+    <Compile Include="DAL\BenutzerDAL\BenutzerBezugDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\BenutzerAbteilungDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\AnmeldungenDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\RechtDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\GruppenRechtDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IAnmeldungen.cs" />
+    <Compile Include="DAL\BenutzerDAL\AnmeldungenDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\RechtDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\GruppenRechtDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\GruppeDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\BereichBenutzerDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\BenutzerRechteDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\BenutzerGruppeDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\BenutzerEinrichtungDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\BenutzerDAL.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\BenutzerAbteilungDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\BenutzerBezugDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\GruppeDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\BereichBenutzerDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\BenutzerRechteDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\BenutzerGruppeDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\BenutzerEinrichtungDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\DTOs\BenutzerDTO.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IBenutzerAbteilung.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IBenutzerBezug.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IRecht.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IGruppenRecht.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IGruppe.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IBereichBenutzer.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IBenutzerRechte.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IBenutzerGruppe.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IBenutzerEinrichtung.cs" />
+    <Compile Include="DAL\BenutzerDAL\Interfaces\IBenutzerDAL.cs" />
+    <Compile Include="DAL\CalcDAL\BankDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\BankDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IBank.cs" />
+    <Compile Include="DAL\CalcDAL\PatientLeistungsplanDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PatientLeistungsplanDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPatientLeistungsplan.cs" />
+    <Compile Include="DAL\CalcDAL\TaschengeldDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\TaschengeldDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\ITaschengeld.cs" />
+    <Compile Include="DAL\CalcDAL\PatientTaschengeldKostentraegerDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PatientTaschengeldKostentraegerDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPatientTaschengeldKostentraeger.cs" />
+    <Compile Include="DAL\CalcDAL\PatientSonderleistungDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PatientSonderleistungDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPatientSonderleistung.cs" />
+    <Compile Include="DAL\CalcDAL\PatientKostentraegerDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PatientKostentraegerDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPatientKostentraeger.cs" />
+    <Compile Include="DAL\CalcDAL\PatientEinkommenDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PatientEinkommenDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPatientEinkommen.cs" />
+    <Compile Include="DAL\CalcDAL\PatientAbwesenheitDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PatientAbwesenheitDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPatientAbwesenheit.cs" />
+    <Compile Include="DAL\CalcDAL\PflegegeldstufeGueltigDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PflegegeldstufeGueltigDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPflegegeldstufeGueltig.cs" />
+    <Compile Include="DAL\CalcDAL\manBuchDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\manBuchDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\ImanBuch.cs" />
+    <Compile Include="DAL\CalcDAL\LeistungskatalogGueltigDAL.cs" />
+    <Compile Include="DAL\CalcDAL\BookingsDAL.cs" />
+    <Compile Include="DAL\CalcDAL\billsDAL.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\LeistungskatalogGueltigDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\BookingsDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\billsDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\billHeaderDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\rechNrDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\PflegegeldstufeDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\SonderleistungsKatalogDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\LeistungskatalogDTO.cs" />
+    <Compile Include="DAL\CalcDAL\DTOs\KostentraegerDTO.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\ILeistungskatalogGueltig.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IBookings.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\Ibills.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IbillHeader.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IrechNr.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IPflegegeldstufe.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\ISonderleistungsKatalog.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\ILeistungskatalog.cs" />
+    <Compile Include="DAL\CalcDAL\Interfaces\IKostentraeger.cs" />
+    <Compile Include="DAL\CalcDAL\billHeaderDAL.cs" />
+    <Compile Include="DAL\CalcDAL\rechNrDAL.cs" />
+    <Compile Include="DAL\CalcDAL\PflegegeldstufeDAL.cs" />
+    <Compile Include="DAL\CalcDAL\SonderleistungsKatalogDAL.cs" />
+    <Compile Include="DAL\CalcDAL\LeistungskatalogDAL.cs" />
+    <Compile Include="DAL\CalcDAL\KostentraegerDAL.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Anamnese_POPDAL.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Anamnese_OremDAL.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\DTOs\Anamnese_POPDTO.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\DTOs\Anamnese_OremDTO.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\DTOs\Anamnese_KrohwinkelDTO.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\DTOs\FormularDatenDTO.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\DTOs\FormularDatenFelderDTO.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Anamnese_KrohwinkelDAL.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\FormularDatenFelderDAL.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\FormularDatenDAL.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\FormularDAL.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\DTOs\FormularDTO.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Interfaces\IAnamnese_POP.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Interfaces\IAnamnese_Orem.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Interfaces\IAnamnese_Krohwinkel.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Interfaces\IFormularDatenFelder.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Interfaces\IFormularDaten.cs" />
+    <Compile Include="DAL\DatenerhebungDAL\Interfaces\IFormular.cs" />
+    <Compile Include="DAL\ElgaDAL\DTOs\ElgacontactsDTO.cs" />
+    <Compile Include="DAL\ElgaDAL\DTOs\ELGADocumentsDTO.cs" />
+    <Compile Include="DAL\ElgaDAL\DTOs\ELGAProtocollDTO.cs" />
+    <Compile Include="DAL\ElgaDAL\ElgacontactsDAL.cs" />
+    <Compile Include="DAL\ElgaDAL\ELGADocumentsDAL.cs" />
+    <Compile Include="DAL\ElgaDAL\ELGAProtocollDAL.cs" />
+    <Compile Include="DAL\ElgaDAL\ELGAActivitiesDAL.cs" />
+    <Compile Include="DAL\ElgaDAL\DTOs\ELGAActivitiesDTO.cs" />
+    <Compile Include="DAL\ElgaDAL\Interfaces\IElgacontacts.cs" />
+    <Compile Include="DAL\ElgaDAL\Interfaces\IELGADocuments.cs" />
+    <Compile Include="DAL\ElgaDAL\Interfaces\IELGAProtocoll.cs" />
+    <Compile Include="DAL\ElgaDAL\Interfaces\IELGAActivities.cs" />
+    <Compile Include="DAL\FortbildungDAL\DTOs\ItblVeranstalterDTO.cs" />
+    <Compile Include="DAL\FortbildungDAL\DTOs\tblFortbildungenDTO.cs" />
+    <Compile Include="DAL\FortbildungDAL\DTOs\tblFortbildungBenutzerDTO.cs" />
+    <Compile Include="DAL\FortbildungDAL\Interfaces\ItblVeranstalter.cs" />
+    <Compile Include="DAL\FortbildungDAL\Interfaces\ItblFortbildungen.cs" />
+    <Compile Include="DAL\FortbildungDAL\tblFortbildungenDAL.cs" />
+    <Compile Include="DAL\FortbildungDAL\tblVeranstalterDAL.cs" />
+    <Compile Include="DAL\FortbildungDAL\tblFortbildungBenutzerDAL.cs" />
+    <Compile Include="DAL\FortbildungDAL\Interfaces\ItblFortbildungBenutzer.cs" />
+    <Compile Include="DAL\InterventionenDAL\DTOs\QuickMeldungDTO.cs" />
+    <Compile Include="DAL\InterventionenDAL\DTOs\vÜbergabeDTO.cs" />
+    <Compile Include="DAL\InterventionenDAL\DTOs\PflegeEintragEntwurfDTO.cs" />
+    <Compile Include="DAL\InterventionenDAL\DTOs\PflegeEintragDTO.cs" />
+    <Compile Include="DAL\InterventionenDAL\DTOs\vInterventionenDTO.cs" />
+    <Compile Include="DAL\InterventionenDAL\Interfaces\IQuickMeldung.cs" />
+    <Compile Include="DAL\InterventionenDAL\Interfaces\IvÜbergabe.cs" />
+    <Compile Include="DAL\InterventionenDAL\Interfaces\IPflegeEintragEntwurf.cs" />
+    <Compile Include="DAL\InterventionenDAL\Interfaces\IPflegeEintrag.cs" />
+    <Compile Include="DAL\InterventionenDAL\Interfaces\IvInterventionen.cs" />
+    <Compile Include="DAL\InterventionenDAL\QuickMeldungDAL.cs" />
+    <Compile Include="DAL\InterventionenDAL\vÜbergabeDAL.cs" />
+    <Compile Include="DAL\InterventionenDAL\PflegeEintragEntwurfDAL.cs" />
+    <Compile Include="DAL\InterventionenDAL\PflegeEintragDAL.cs" />
+    <Compile Include="DAL\InterventionenDAL\vInterventionenDAL.cs" />
+    <Compile Include="DAL\KlientDAL\GegenstaendeDAL.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\GegenstaendeDTO.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IGegenstaende.cs" />
+    <Compile Include="DAL\KlientDAL\RehabilitationDAL.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\RehabilitationDTO.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IRehabilitation.cs" />
+    <Compile Include="DAL\KlientDAL\UnterbringungDAL.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\UnterbringungDTO.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IUnterbringung.cs" />
+    <Compile Include="DAL\KlientDAL\KontaktpersonDAL.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\KontaktpersonDTO.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\AerzteDTO.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\MedizinischeDatenDTO.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\SachwalterDTO.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\PatientPflegestufeDTO.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\PatientAerzteDTO.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\PatientenBemerkungDTO.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\PatientDTO.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IKontaktperson.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IAerzte.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IMedizinischeDaten.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\ISachwalter.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IPatientPflegestufe.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IPatientenBemerkung.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IPatientAerzte.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IPatient.cs" />
+    <Compile Include="DAL\KlientDAL\AerzteDAL.cs" />
+    <Compile Include="DAL\KlientDAL\MedizinischeDatenDAL.cs" />
+    <Compile Include="DAL\KlientDAL\SachwalterDAL.cs" />
+    <Compile Include="DAL\KlientDAL\PatientPflegestufeDAL.cs" />
+    <Compile Include="DAL\KlientDAL\PatientAerzteDAL.cs" />
+    <Compile Include="DAL\KlientDAL\PatientenBemerkungDAL.cs" />
+    <Compile Include="DAL\KlientDAL\PatientDAL.cs" />
+    <Compile Include="DAL\KlientDAL\vKlientenlisteDAL.cs" />
+    <Compile Include="DAL\KlientDAL\DTOs\vKlientenlisteDTO.cs" />
+    <Compile Include="DAL\KlientDAL\Interfaces\IvKlientenliste.cs" />
+    <Compile Include="DAL\KlinikDAL\DTOs\AbteilungDTO.cs" />
+    <Compile Include="DAL\KlinikDAL\DTOs\BereichDTO.cs" />
+    <Compile Include="DAL\KlinikDAL\DTOs\DienstzeitenDTO.cs" />
+    <Compile Include="DAL\KlinikDAL\DTOs\tblSuchtgiftschrankSchlüsselDTO.cs" />
+    <Compile Include="DAL\KlinikDAL\DTOs\StandardzeitenDTO.cs" />
+    <Compile Include="DAL\KlinikDAL\DTOs\KlinikDTO.cs" />
+    <Compile Include="DAL\KlinikDAL\Interfaces\IAbteilung.cs" />
+    <Compile Include="DAL\KlinikDAL\Interfaces\IBereich.cs" />
+    <Compile Include="DAL\KlinikDAL\Interfaces\IDienstzeiten.cs" />
+    <Compile Include="DAL\KlinikDAL\Interfaces\ItblSuchtgiftschrankSchlüssel.cs" />
+    <Compile Include="DAL\KlinikDAL\Interfaces\IStandardzeiten.cs" />
+    <Compile Include="DAL\KlinikDAL\Interfaces\IKlinik.cs" />
+    <Compile Include="DAL\KlinikDAL\AbteilungDAL.cs" />
+    <Compile Include="DAL\KlinikDAL\BereichDAL.cs" />
+    <Compile Include="DAL\KlinikDAL\DienstzeitenDAL.cs" />
+    <Compile Include="DAL\KlinikDAL\tblSuchtgiftschrankSchlüsselDAL.cs" />
+    <Compile Include="DAL\KlinikDAL\StandardzeitenDAL.cs" />
+    <Compile Include="DAL\KlinikDAL\KlinikDAL.cs" />
+    <Compile Include="DAL\KontaktdatenDAL\KontaktDAL.cs" />
+    <Compile Include="DAL\KontaktdatenDAL\AdresseDAL.cs" />
+    <Compile Include="DAL\KontaktdatenDAL\DTOs\KontaktDTO.cs" />
+    <Compile Include="DAL\KontaktdatenDAL\DTOs\AdresseDTO.cs" />
+    <Compile Include="DAL\KontaktdatenDAL\Interfaces\IKontakt.cs" />
+    <Compile Include="DAL\KontaktdatenDAL\Interfaces\IAdresse.cs" />
+    <Compile Include="DAL\LayoutDAL\DTOs\MedizinischeDatenLayoutDTO.cs" />
+    <Compile Include="DAL\LayoutDAL\DTOs\LayoutGridsDTO.cs" />
+    <Compile Include="DAL\LayoutDAL\DTOs\LayoutDTO.cs" />
+    <Compile Include="DAL\LayoutDAL\DTOs\MedizinischeTypenDTO.cs" />
+    <Compile Include="DAL\LayoutDAL\DTOs\QuickFilterDTO.cs" />
+    <Compile Include="DAL\LayoutDAL\Interfaces\IMedizinischeDatenLayout.cs" />
+    <Compile Include="DAL\LayoutDAL\Interfaces\ILayoutGrids.cs" />
+    <Compile Include="DAL\LayoutDAL\Interfaces\ILayout.cs" />
+    <Compile Include="DAL\LayoutDAL\Interfaces\IMedizinischeTypen.cs" />
+    <Compile Include="DAL\LayoutDAL\Interfaces\IQuickFilter.cs" />
+    <Compile Include="DAL\LayoutDAL\MedizinischeDatenLayoutDAL.cs" />
+    <Compile Include="DAL\LayoutDAL\LayoutGridsDAL.cs" />
+    <Compile Include="DAL\LayoutDAL\LayoutDAL.cs" />
+    <Compile Include="DAL\LayoutDAL\MedizinischeTypenDAL.cs" />
+    <Compile Include="DAL\LayoutDAL\QuickFilterDAL.cs" />
+    <Compile Include="DAL\MedikationDAL\DTOs\RezeptEintragMedDatenDTO.cs" />
+    <Compile Include="DAL\MedikationDAL\DTOs\RezeptBestellungPosDTO.cs" />
+    <Compile Include="DAL\MedikationDAL\DTOs\MedikationAbgabeDTO.cs" />
+    <Compile Include="DAL\MedikationDAL\DTOs\RezeptEintragDTO.cs" />
+    <Compile Include="DAL\MedikationDAL\DTOs\MedikamentDTO.cs" />
+    <Compile Include="DAL\MedikationDAL\Interfaces\IRezeptEintragMedDaten.cs" />
+    <Compile Include="DAL\MedikationDAL\Interfaces\IRezeptBestellungPos.cs" />
+    <Compile Include="DAL\MedikationDAL\Interfaces\IMedikationAbgabe.cs" />
+    <Compile Include="DAL\MedikationDAL\Interfaces\IRezeptEintrag.cs" />
+    <Compile Include="DAL\MedikationDAL\Interfaces\IMedikament.cs" />
+    <Compile Include="DAL\MedikationDAL\RezeptEintragMedDatenDAL.cs" />
+    <Compile Include="DAL\MedikationDAL\RezeptBestellungPosDAL.cs" />
+    <Compile Include="DAL\MedikationDAL\MedikationAbgabeDAL.cs" />
+    <Compile Include="DAL\MedikationDAL\RezeptEintragDAL.cs" />
+    <Compile Include="DAL\MedikationDAL\MedikamentDAL.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\LinkDokumenteDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\EintragZusatzDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\EintragStandardprozedurenDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\PDXGruppeEintragDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\PDXEintragDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\PDXPflegemodelleDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\PflegemodelleDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\PDXGruppeDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\PDXAnamneseDTO.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\EintragDTO.cs" />
+    <Compile Include="DAL\PdxDAL\LinkDokumenteDAL.cs" />
+    <Compile Include="DAL\PdxDAL\EintragZusatzDAL.cs" />
+    <Compile Include="DAL\PdxDAL\EintragStandardprozedurenDAL.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\ILinkDokumente.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IEintragZusatz.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IEintragStandardprozeduren.cs" />
+    <Compile Include="DAL\PdxDAL\PDXGruppeEintrag.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IPDXGruppeEintrag.cs" />
+    <Compile Include="DAL\PdxDAL\PDXEintragDAL.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IPDXEintrag.cs" />
+    <Compile Include="DAL\PdxDAL\PDXPflegemodelleDAL.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IPDXPflegemodelle.cs" />
+    <Compile Include="DAL\PdxDAL\PflegemodelleDAL.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IPflegemodelle.cs" />
+    <Compile Include="DAL\PdxDAL\PDXGruppeDAL.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IPDXGruppe.cs" />
+    <Compile Include="DAL\PdxDAL\PDXAnamneseDAL.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IPDXAnamnese.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IEintrag.cs" />
+    <Compile Include="DAL\PdxDAL\EintragDAL.cs" />
+    <Compile Include="DAL\PdxDAL\PDXDAL.cs" />
+    <Compile Include="DAL\PdxDAL\DTOs\PDXDTO.cs" />
+    <Compile Include="DAL\PdxDAL\Interfaces\IPDX.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\DTOs\AufenthaltPDxDTO.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\DTOs\PflegePlanPDxDTO.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\DTOs\PflegePlanHDTO.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\DTOs\PflegePlanDTO.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\Interfaces\IAufenthaltPDx.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\Interfaces\IPflegePlanPDx.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\Interfaces\IPflegePlanH.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\Interfaces\IPflegePlan.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\AufenthaltPDxDAL.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\PflegePlanPDxDAL.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\PflegePlanHDAL.cs" />
+    <Compile Include="DAL\PflegeplanungDAL\PflegePlanDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\DTOs\MessagesToUsersDTO.cs" />
+    <Compile Include="DAL\PlanungDAL\DTOs\MessagesDTO.cs" />
+    <Compile Include="DAL\PlanungDAL\DTOs\tblUserAccountsDTO.cs" />
+    <Compile Include="DAL\PlanungDAL\DTOs\planStatusDTO.cs" />
+    <Compile Include="DAL\PlanungDAL\DTOs\planObjectDTO.cs" />
+    <Compile Include="DAL\PlanungDAL\DTOs\planAnhangDTO.cs" />
+    <Compile Include="DAL\PlanungDAL\Interfaces\IMessages.cs" />
+    <Compile Include="DAL\PlanungDAL\Interfaces\IMessagesToUsersDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\Interfaces\ItblUserAccounts.cs" />
+    <Compile Include="DAL\PlanungDAL\Interfaces\IplanStatus.cs" />
+    <Compile Include="DAL\PlanungDAL\Interfaces\IplanObject.cs" />
+    <Compile Include="DAL\PlanungDAL\Interfaces\IplanAnhang.cs" />
+    <Compile Include="DAL\PlanungDAL\MessagesToUsersDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\MessagesDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\tblUserAccountsDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\planStatusDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\planObjectDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\planAnhangDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\planDAL.cs" />
+    <Compile Include="DAL\PlanungDAL\DTOs\planDTO.cs" />
+    <Compile Include="DAL\PlanungDAL\Interfaces\Iplan.cs" />
+    <Compile Include="DAL\SpDAL\DTOs\StandardProzedurenDTO.cs" />
+    <Compile Include="DAL\SpDAL\DTOs\SPPOSDTO.cs" />
+    <Compile Include="DAL\SpDAL\DTOs\SPPEDTO.cs" />
+    <Compile Include="DAL\SpDAL\DTOs\SPDynRepDTO.cs" />
+    <Compile Include="DAL\SpDAL\DTOs\SPDTO.cs" />
+    <Compile Include="DAL\SpDAL\Interfaces\IStandardProzeduren.cs" />
+    <Compile Include="DAL\SpDAL\Interfaces\ISPPOS.cs" />
+    <Compile Include="DAL\SpDAL\Interfaces\ISPPE.cs" />
+    <Compile Include="DAL\SpDAL\Interfaces\ISPDynRep.cs" />
+    <Compile Include="DAL\SpDAL\Interfaces\ISP.cs" />
+    <Compile Include="DAL\SpDAL\StandardProzedurenDAL.cs" />
+    <Compile Include="DAL\SpDAL\SPPOSDAL.cs" />
+    <Compile Include="DAL\SpDAL\SPPEDAL.cs" />
+    <Compile Include="DAL\SpDAL\SPDynRepDAL.cs" />
+    <Compile Include="DAL\SpDAL\SPDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\tblProvKonfigDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\tblProvKonfigDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\ItblProvKonfig.cs" />
+    <Compile Include="DAL\StammdatenDAL\ItblPfadDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\tblPfadDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\ItblPfad.cs" />
+    <Compile Include="DAL\StammdatenDAL\tblAutoDokuDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\tblAutoDokuDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\ItblAutoDoku.cs" />
+    <Compile Include="DAL\StammdatenDAL\Main\Interfaces\IStammdaten.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\MassnahmenserienDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\EinrichtungDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\ZeitbereichSerienDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\ZeitbereichDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\tblSelListGroupDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\IZeitbereichSerien.cs" />
+    <Compile Include="DAL\StammdatenDAL\ZeitbereichSerienDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\ZeitbereichDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\IMassnahmenserien.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\IEinrichtung.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\IZeitbereich.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\ItblSelListGroup.cs" />
+    <Compile Include="DAL\StammdatenDAL\MassnahmenserienDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\EinrichtungDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\tblSelListGroupDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\tblSelListEntriesDAL .cs" />
+    <Compile Include="DAL\StammdatenDAL\AuswahlListeGruppeDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\AuswahlListeDAL.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\tblSelListEntriesDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\AuswahlListeGruppeDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\DTOs\AuswahlListeDTO.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\ItblSelListEntries.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\IAuswahlListeGruppe.cs" />
+    <Compile Include="DAL\StammdatenDAL\Interfaces\IAuswahlliste.cs" />
+    <Compile Include="DAL\SystemDAL\DTOs\tblInteropDTO.cs" />
+    <Compile Include="DAL\SystemDAL\DTOs\ProtocolDTO.cs" />
+    <Compile Include="DAL\SystemDAL\DTOs\tblRedisDTO.cs" />
+    <Compile Include="DAL\SystemDAL\Interfaces\ItblInterop.cs" />
+    <Compile Include="DAL\SystemDAL\Interfaces\IProtocol.cs" />
+    <Compile Include="DAL\SystemDAL\Interfaces\ItblRedist.cs" />
+    <Compile Include="DAL\SystemDAL\tblInteropDAL.cs" />
+    <Compile Include="DAL\SystemDAL\ProtocolDAL.cs" />
+    <Compile Include="DAL\SystemDAL\tblRedistDAL.cs" />
+    <Compile Include="DAL\SystemDAL\tblParameterDAL.cs" />
+    <Compile Include="DAL\SystemDAL\DBVersionDAL.cs" />
+    <Compile Include="DAL\SystemDAL\DTOs\tblParameterDTO.cs" />
+    <Compile Include="DAL\SystemDAL\DTOs\DBVersionDTO.cs" />
+    <Compile Include="DAL\SystemDAL\DTOs\DBLizenzDTO.cs" />
+    <Compile Include="DAL\SystemDAL\DBLizenzDAL.cs" />
+    <Compile Include="DAL\SystemDAL\Interfaces\ItblParameter.cs" />
+    <Compile Include="DAL\SystemDAL\Interfaces\IDBVersion.cs" />
+    <Compile Include="DAL\SystemDAL\Interfaces\IDBLizenz.cs" />
+    <Compile Include="DAL\TexteFilesDAL\DTOs\TextbausteineDTO.cs" />
+    <Compile Include="DAL\TexteFilesDAL\DTOs\tblTextTemplatesFilesDTO.cs" />
+    <Compile Include="DAL\TexteFilesDAL\DTOs\tblTextTemplatesDTO.cs" />
+    <Compile Include="DAL\TexteFilesDAL\DTOs\RessourcenDTO.cs" />
+    <Compile Include="DAL\TexteFilesDAL\Interfaces\ITextbausteine.cs" />
+    <Compile Include="DAL\TexteFilesDAL\Interfaces\ItblTextTemplatesFiles.cs" />
+    <Compile Include="DAL\TexteFilesDAL\Interfaces\ItblTextTemplates.cs" />
+    <Compile Include="DAL\TexteFilesDAL\Interfaces\IRessourcen.cs" />
+    <Compile Include="DAL\TexteFilesDAL\TextbausteineDAL.cs" />
+    <Compile Include="DAL\TexteFilesDAL\tblTextTemplatesFilesDAL.cs" />
+    <Compile Include="DAL\TexteFilesDAL\tblTextTemplatesDAL.cs" />
+    <Compile Include="DAL\TexteFilesDAL\RessourcenDAL.cs" />
+    <Compile Include="DAL\VoDAL\DTOs\VO_WundeDTO.cs" />
+    <Compile Include="DAL\VoDAL\DTOs\VO_PflegeplanPDXDTO.cs" />
+    <Compile Include="DAL\VoDAL\DTOs\VO_MedizinischeDatenDTO.cs" />
+    <Compile Include="DAL\VoDAL\DTOs\VO_LagerDTO.cs" />
+    <Compile Include="DAL\VoDAL\DTOs\VO_BestellpostitionenDTO.cs" />
+    <Compile Include="DAL\VoDAL\DTOs\VO_BestelldatenDTO.cs" />
+    <Compile Include="DAL\VoDAL\DTOs\VODTO.cs" />
+    <Compile Include="DAL\VoDAL\Interfaces\IVO_Wunde.cs" />
+    <Compile Include="DAL\VoDAL\Interfaces\IVO_PflegeplanPDX.cs" />
+    <Compile Include="DAL\VoDAL\Interfaces\IVO_MedizinischeDaten.cs" />
+    <Compile Include="DAL\VoDAL\Interfaces\IVO_Lager.cs" />
+    <Compile Include="DAL\VoDAL\Interfaces\IVO_Bestellpostitionen.cs" />
+    <Compile Include="DAL\VoDAL\Interfaces\IVO_Bestelldaten.cs" />
+    <Compile Include="DAL\VoDAL\VO_WundeDAL.cs" />
+    <Compile Include="DAL\VoDAL\VO_PflegeplanPDXDAL.cs" />
+    <Compile Include="DAL\VoDAL\VO_MedizinischeDatenDAL.cs" />
+    <Compile Include="DAL\VoDAL\VO_LagerDAL.cs" />
+    <Compile Include="DAL\VoDAL\VO_BestellpostitionenDAL.cs" />
+    <Compile Include="DAL\VoDAL\VO_BestelldatenDAL.cs" />
+    <Compile Include="DAL\VoDAL\VODAL.cs" />
+    <Compile Include="DAL\VoDAL\Interfaces\IVO.cs" />
+    <Compile Include="DAL\WundeDAL\DTOs\WundeTherapieDTO.cs" />
+    <Compile Include="DAL\WundeDAL\DTOs\WundePosBilderDTO.cs" />
+    <Compile Include="DAL\WundeDAL\DTOs\WundePosDTO.cs" />
+    <Compile Include="DAL\WundeDAL\Interfaces\IWundeTherapie.cs" />
+    <Compile Include="DAL\WundeDAL\Interfaces\IWundePosBilder.cs" />
+    <Compile Include="DAL\WundeDAL\Interfaces\IWundePos.cs" />
+    <Compile Include="DAL\WundeDAL\WundeTherapieDAL.cs" />
+    <Compile Include="DAL\WundeDAL\WundePosBilderDAL.cs" />
+    <Compile Include="DAL\WundeDAL\WundePosDAL.cs" />
+    <Compile Include="DAL\WundeDAL\WundeKopfDAL.cs" />
+    <Compile Include="DAL\WundeDAL\DTOs\WundeKopfDTO.cs" />
+    <Compile Include="DAL\WundeDAL\Interfaces\IWundeKopf.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\DTOs\ZusatzGruppeEintragDTO.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\DTOs\ZusatzEintragDTO.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\DTOs\ZusatzGruppeDTO.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\DTOs\ZusatzWertDTO.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\Interfaces\IZusatzGruppeEintrag.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\Interfaces\IZusatzEintrag.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\Interfaces\IZusatzGruppe.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\Interfaces\IZusatzWert.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\ZusatzGruppeEintragDAL.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\ZusatzEintragDAL.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\ZusatzGruppeDAL.cs" />
+    <Compile Include="DAL\ZusatzwertDAL\ZusatzWertDAL.cs" />
+    <Compile Include="BAL\DynReportsBAL\DynReportsInitStructure.cs" />
+    <Compile Include="BAL\DynReportsBAL\IDynReportsInitStructure.cs" />
+    <Compile Include="BAL\DatenExportXMLBAL\DatenExportXML.cs" />
+    <Compile Include="BAL\DatenExportXMLBAL\IDatenExportXML.cs" />
+    <Compile Include="ENV\ENVClientDto.cs" />
+    <Compile Include="ENV\ENVLauncherDto.cs" />
+    <Compile Include="ENV\ENVPMDSDto.cs" />
+    <Compile Include="ENV\ENVWCFDto.cs" />
+    <Compile Include="GenericClasses\RegEx.cs" />
+    <Compile Include="GenericClasses\String.cs" />
+    <Compile Include="GenericDTO\GuidDTO.cs" />
+    <Compile Include="Hosts\CheckClientRuning.cs" />
+    <Compile Include="Models\DB\Abteilung.cs" />
+    <Compile Include="Models\DB\AddIns.cs" />
+    <Compile Include="Models\DB\Adresse.cs" />
+    <Compile Include="Models\DB\Aerzte.cs" />
+    <Compile Include="Models\DB\AnamneseKrohwinkel.cs" />
+    <Compile Include="Models\DB\AnamneseOrem.cs" />
+    <Compile Include="Models\DB\AnamnesePop.cs" />
+    <Compile Include="Models\DB\Anmeldungen.cs" />
+    <Compile Include="Models\DB\ArchDoku.cs" />
+    <Compile Include="Models\DB\ArchDokuSchlag.cs" />
+    <Compile Include="Models\DB\ArchObject.cs" />
+    <Compile Include="Models\DB\ArchOrdner.cs" />
+    <Compile Include="Models\DB\Arztabrechnung.cs" />
+    <Compile Include="Models\DB\Aufenthalt.cs" />
+    <Compile Include="Models\DB\AufenthaltPdx.cs" />
+    <Compile Include="Models\DB\AufenthaltVerlauf.cs" />
+    <Compile Include="Models\DB\AufenthaltZusatz.cs" />
+    <Compile Include="Models\DB\AuswahlListe.cs" />
+    <Compile Include="Models\DB\AuswahlListeGruppe.cs" />
+    <Compile Include="Models\DB\Bank.cs" />
+    <Compile Include="Models\DB\BarcodeQ.cs" />
+    <Compile Include="Models\DB\Belegung.cs" />
+    <Compile Include="Models\DB\Benutzer.cs" />
+    <Compile Include="Models\DB\BenutzerAbteilung.cs" />
+    <Compile Include="Models\DB\BenutzerBezug.cs" />
+    <Compile Include="Models\DB\BenutzerEinrichtung.cs" />
+    <Compile Include="Models\DB\BenutzerGruppe.cs" />
+    <Compile Include="Models\DB\BenutzerRechte.cs" />
+    <Compile Include="Models\DB\Bereich.cs" />
+    <Compile Include="Models\DB\BereichBenutzer.cs" />
+    <Compile Include="Models\DB\BillHeader.cs" />
+    <Compile Include="Models\DB\Bills.cs" />
+    <Compile Include="Models\DB\Bookings.cs" />
+    <Compile Include="Models\DB\CommAsync.cs" />
+    <Compile Include="Models\DB\CommAsyncClients.cs" />
+    <Compile Include="Models\DB\Dblizenz.cs" />
+    <Compile Include="Models\DB\Dbversion.cs" />
+    <Compile Include="Models\DB\Dienstzeiten.cs" />
+    <Compile Include="Models\DB\Dokumente.cs" />
+    <Compile Include="Models\DB\Dokumente2.cs" />
+    <Compile Include="Models\DB\Einrichtung.cs" />
+    <Compile Include="Models\DB\Eintrag.cs" />
+    <Compile Include="Models\DB\EintragStandardprozeduren.cs" />
+    <Compile Include="Models\DB\EintragZusatz.cs" />
+    <Compile Include="Models\DB\Elgaactivities.cs" />
+    <Compile Include="Models\DB\Elgacontacts.cs" />
+    <Compile Include="Models\DB\Elgadocuments.cs" />
+    <Compile Include="Models\DB\Elgaprotocoll.cs" />
+    <Compile Include="Models\DB\Essen.cs" />
+    <Compile Include="Models\DB\Formular.cs" />
+    <Compile Include="Models\DB\FormularDaten.cs" />
+    <Compile Include="Models\DB\FormularDatenFelder.cs" />
+    <Compile Include="Models\DB\Gegenstaende.cs" />
+    <Compile Include="Models\DB\Gruppe.cs" />
+    <Compile Include="Models\DB\GruppenRecht.cs" />
+    <Compile Include="Models\DB\Info.cs" />
+    <Compile Include="Models\DB\Klinik.cs" />
+    <Compile Include="Models\DB\Kontakt.cs" />
+    <Compile Include="Models\DB\Kontaktperson.cs" />
+    <Compile Include="Models\DB\KontaktpersonStammdaten.cs" />
+    <Compile Include="Models\DB\Kostentraeger.cs" />
+    <Compile Include="Models\DB\Layout.cs" />
+    <Compile Include="Models\DB\LayoutGrids.cs" />
+    <Compile Include="Models\DB\Leistungskatalog.cs" />
+    <Compile Include="Models\DB\LeistungskatalogGueltig.cs" />
+    <Compile Include="Models\DB\LinkDokumente.cs" />
+    <Compile Include="Models\DB\ManBuch.cs" />
+    <Compile Include="Models\DB\Massnahmenserien.cs" />
+    <Compile Include="Models\DB\Medikament.cs" />
+    <Compile Include="Models\DB\MedikationAbgabe.cs" />
+    <Compile Include="Models\DB\MedizinischeDaten.cs" />
+    <Compile Include="Models\DB\MedizinischeDatenLayout.cs" />
+    <Compile Include="Models\DB\MedizinischeTypen.cs" />
+    <Compile Include="Models\DB\Messages.cs" />
+    <Compile Include="Models\DB\MessagesToUsers.cs" />
+    <Compile Include="Models\DB\Patient.cs" />
+    <Compile Include="Models\DB\PatientAbwesenheit.cs" />
+    <Compile Include="Models\DB\PatientAerzte.cs" />
+    <Compile Include="Models\DB\PatientEinkommen.cs" />
+    <Compile Include="Models\DB\PatientenBemerkung.cs" />
+    <Compile Include="Models\DB\PatientKostentraeger.cs" />
+    <Compile Include="Models\DB\PatientLeistungsplan.cs" />
+    <Compile Include="Models\DB\PatientPflegestufe.cs" />
+    <Compile Include="Models\DB\PatientSonderleistung.cs" />
+    <Compile Include="Models\DB\PatientTaschengeldKostentraeger.cs" />
+    <Compile Include="Models\DB\Pdx.cs" />
+    <Compile Include="Models\DB\Pdxanamnese.cs" />
+    <Compile Include="Models\DB\Pdxeintrag.cs" />
+    <Compile Include="Models\DB\Pdxgruppe.cs" />
+    <Compile Include="Models\DB\PdxgruppeEintrag.cs" />
+    <Compile Include="Models\DB\Pdxpflegemodelle.cs" />
+    <Compile Include="Models\DB\PflegeEintrag.cs" />
+    <Compile Include="Models\DB\PflegeEintragEntwurf.cs" />
+    <Compile Include="Models\DB\Pflegegeldstufe.cs" />
+    <Compile Include="Models\DB\PflegegeldstufeGueltig.cs" />
+    <Compile Include="Models\DB\Pflegemodelle.cs" />
+    <Compile Include="Models\DB\PflegePlan.cs" />
+    <Compile Include="Models\DB\PflegePlanH.cs" />
+    <Compile Include="Models\DB\PflegePlanPdx.cs" />
+    <Compile Include="Models\DB\Plan.cs" />
+    <Compile Include="Models\DB\PlanAnhang.cs" />
+    <Compile Include="Models\DB\PlanObject.cs" />
+    <Compile Include="Models\DB\PlanStatus.cs" />
+    <Compile Include="Models\DB\PMDSDevContext.cs" />
+    <Compile Include="Models\DB\Protocol.cs" />
+    <Compile Include="Models\DB\QuickFilter.cs" />
+    <Compile Include="Models\DB\QuickMeldung.cs" />
+    <Compile Include="Models\DB\RechNr.cs" />
+    <Compile Include="Models\DB\Recht.cs" />
+    <Compile Include="Models\DB\Rehabilitation.cs" />
+    <Compile Include="Models\DB\Ressourcen.cs" />
+    <Compile Include="Models\DB\RezeptBestellungPos.cs" />
+    <Compile Include="Models\DB\RezeptEintrag.cs" />
+    <Compile Include="Models\DB\RezeptEintragMedDaten.cs" />
+    <Compile Include="Models\DB\Sachwalter.cs" />
+    <Compile Include="Models\DB\SonderleistungsKatalog.cs" />
+    <Compile Include="Models\DB\Sp.cs" />
+    <Compile Include="Models\DB\SpdynRep.cs" />
+    <Compile Include="Models\DB\Sppe.cs" />
+    <Compile Include="Models\DB\Sppos.cs" />
+    <Compile Include="Models\DB\StandardProzeduren.cs" />
+    <Compile Include="Models\DB\Standardzeiten.cs" />
+    <Compile Include="Models\DB\Taschengeld.cs" />
+    <Compile Include="Models\DB\TblAdjust.cs" />
+    <Compile Include="Models\DB\TblAdress.cs" />
+    <Compile Include="Models\DB\TblAutoDoku.cs" />
+    <Compile Include="Models\DB\TblCriteria.cs" />
+    <Compile Include="Models\DB\TblCriteriaOpt.cs" />
+    <Compile Include="Models\DB\TblDbversion.cs" />
+    <Compile Include="Models\DB\TblDokumente.cs" />
+    <Compile Include="Models\DB\TblDokumenteGelesen.cs" />
+    <Compile Include="Models\DB\TblDokumenteintrag.cs" />
+    <Compile Include="Models\DB\TblDokumenteneintragSchlagwörter.cs" />
+    <Compile Include="Models\DB\TblFach.cs" />
+    <Compile Include="Models\DB\TblFortbildungBenutzer.cs" />
+    <Compile Include="Models\DB\TblFortbildungen.cs" />
+    <Compile Include="Models\DB\TblInterop.cs" />
+    <Compile Include="Models\DB\TblMedArchiv.cs" />
+    <Compile Include="Models\DB\TblNachricht.cs" />
+    <Compile Include="Models\DB\TblObject.cs" />
+    <Compile Include="Models\DB\TblObjectApplications.cs" />
+    <Compile Include="Models\DB\TblObjectRel.cs" />
+    <Compile Include="Models\DB\TblObjekt.cs" />
+    <Compile Include="Models\DB\TblOrdner.cs" />
+    <Compile Include="Models\DB\TblParameter.cs" />
+    <Compile Include="Models\DB\TblParticipants.cs" />
+    <Compile Include="Models\DB\TblPfad.cs" />
+    <Compile Include="Models\DB\TblProvKonfig.cs" />
+    <Compile Include="Models\DB\TblQueriesDef.cs" />
+    <Compile Include="Models\DB\TblQueryJoinsTemp.cs" />
+    <Compile Include="Models\DB\TblRechteOrdner.cs" />
+    <Compile Include="Models\DB\TblRedist.cs" />
+    <Compile Include="Models\DB\TblRelationship.cs" />
+    <Compile Include="Models\DB\TblSchlagwörter.cs" />
+    <Compile Include="Models\DB\TblSchrank.cs" />
+    <Compile Include="Models\DB\TblSelListEntries.cs" />
+    <Compile Include="Models\DB\TblSelListEntriesObj.cs" />
+    <Compile Include="Models\DB\TblSelListEntriesSort.cs" />
+    <Compile Include="Models\DB\TblSelListGroup.cs" />
+    <Compile Include="Models\DB\TblSideLogic.cs" />
+    <Compile Include="Models\DB\TblStatistics.cs" />
+    <Compile Include="Models\DB\TblStay.cs" />
+    <Compile Include="Models\DB\TblStayAdditions.cs" />
+    <Compile Include="Models\DB\TblSturzprotokoll.cs" />
+    <Compile Include="Models\DB\TblSuchtgiftschrankSchlüssel.cs" />
+    <Compile Include="Models\DB\TblTextTemplates.cs" />
+    <Compile Include="Models\DB\TblTextTemplatesFiles.cs" />
+    <Compile Include="Models\DB\TblThemen.cs" />
+    <Compile Include="Models\DB\TblUidefinitions.cs" />
+    <Compile Include="Models\DB\TblUserAccounts.cs" />
+    <Compile Include="Models\DB\TblVeranstalter.cs" />
+    <Compile Include="Models\DB\TblVersions.cs" />
+    <Compile Include="Models\DB\Textbausteine.cs" />
+    <Compile Include="Models\DB\Unterbringung.cs" />
+    <Compile Include="Models\DB\UrlaubVerlauf.cs" />
+    <Compile Include="Models\DB\Vo.cs" />
+    <Compile Include="Models\DB\VoBestelldaten.cs" />
+    <Compile Include="Models\DB\VoBestellpostitionen.cs" />
+    <Compile Include="Models\DB\VoLager.cs" />
+    <Compile Include="Models\DB\VoMedizinischeDaten.cs" />
+    <Compile Include="Models\DB\VoPflegeplanPdx.cs" />
+    <Compile Include="Models\DB\VoWunde.cs" />
+    <Compile Include="Models\DB\WundeKopf.cs" />
+    <Compile Include="Models\DB\WundePos.cs" />
+    <Compile Include="Models\DB\WundePosBilder.cs" />
+    <Compile Include="Models\DB\WundeTherapie.cs" />
+    <Compile Include="Models\DB\Zeitbereich.cs" />
+    <Compile Include="Models\DB\ZeitbereichSerien.cs" />
+    <Compile Include="Models\DB\ZusatzEintrag.cs" />
+    <Compile Include="Models\DB\ZusatzGruppe.cs" />
+    <Compile Include="Models\DB\ZusatzGruppeEintrag.cs" />
+    <Compile Include="Models\DB\ZusatzWert.cs" />
+    <Compile Include="OldFuncts.cs" />
+    <Compile Include="GenericClasses\Exceptions.cs" />
+    <Compile Include="GenericClasses\Lists.cs" />
+    <Compile Include="GenericClasses\Mapping.cs" />
+    <Compile Include="Repository\Repository\Interfaces.cs" />
+    <Compile Include="Repository\dbBase.cs" />
+    <Compile Include="Repository\Repository\Repository.cs" />
+    <Compile Include="Repository\Repository\RepositoryBase.cs" />
+    <Compile Include="Repository\Repository\RepositoryWrapper.cs" />
+    <Compile Include="GenericClasses\serialize.cs" />
+    <Compile Include="GenericClasses\SynchronizedList.cs" />
+    <Compile Include="Repository\Test.Repository\BenutzerRepository.cs" />
+    <Compile Include="Repository\Test.Repository\Interface.cs" />
+    <Compile Include="Repository\Test.Repository\RepositoryBase.cs" />
+    <Compile Include="Repository\Test.Repository\ControllerBenutzer.cs" />
+    <Compile Include="TestUnits\TestDTO.cs" />
+    <Compile Include="TestUnits\TestUnits.cs" />
+    <Compile Include="TestUnits\TestsDevelop.cs" />
+    <Compile Include="Repository\Test.RepositoryAsync\InterfacesAsync.cs" />
+    <Compile Include="Repository\Test.RepositoryAsync\RepositoryAsync.cs" />
+    <Compile Include="Repository\Test.RepositoryAsync\RepositoryBaseAsync.cs" />
+    <Compile Include="Repository\Test.RepositoryAsync\RepositoryWrapperAsync.cs" />
+    <Compile Include="ViewsDTO\vÜbergabe.cs" />
+    <Compile Include="ViewsDTO\vInterventionen.cs" />
+    <Compile Include="ViewsDTO\vKlientenliste.cs" />
+    <Compile Include="GenericClasses\EMail.cs" />
+    <Compile Include="ENV\ENV.cs" />
+    <Compile Include="GenericClasses\generic.cs" />
+    <Compile Include="Log\Log.cs" />
+    <Compile Include="ViewsDTO\TestView1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service1.cs" />
+    <Compile Include="TestUnits\TestRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Connected Services\ServiceReferenceELGA1\EhrWSRemoting.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\EhrWSRemotingService.wsdl" />
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.addContactAdmissionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.addContactAmbulantResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.addContactDelegationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.addContactDischargeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.addContactResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.addPIDomainResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.addSessionPropertiesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.appendCdaMetadataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.appendResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.approveResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.archiveFormResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.archiveFormRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.authenticationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaBppcCreationRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaCreationRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaLabCreationRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaLevel1CreationRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaMergeRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaMetadataAppendRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaMetadataBindingRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaMetadataCreationRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.cdaTransformRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.changePasswordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.codeServiceRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createAuthenticationRequestResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createBPPCResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createCdaLevel1Response1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createCdaMetadataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createCDAResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createDetailReportAsynchronousResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createDetailReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createEFAFolderWithPermissionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createLabResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createLocalPIDResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createLocalXDSPIDResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createPairReportAsynchronousResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createPairReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createPIDResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createSqlReportAsynchronousResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createSqlReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createTemplateInstanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.createTRCAssertionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.dbDataInfoRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.dblMngAdministrationRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.dblMngQueryRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.dcmDeleteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.dcmDeleteRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.dcmMoveResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.dcmMoveSimpleResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.delegateContactResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.deleteDblReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.deletePatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.deleteReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.deleteResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.deprecateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.discardPoliciesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.efaCreateRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.efaQueryRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.efaUpdateRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrAdtInfoRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPapCfgRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPapPrintRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPapQRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPapSubmitRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPapTemplateRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPatIdRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPatientRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPolicyDiscardRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPolicyRetrieveRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPolicySubmitOrUpdateRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPolicySubmitRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrPolicyUpdateRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrTrigger3DRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrXdsIRetrRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrXdsQRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.ehrXdsRetrRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.fsDataInfoRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.fsFileListDataInfoRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getAdtInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getArchiveDbStoreInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getArchiveFsStoreInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getArchiveFsStoreInfoWithFileListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getArchiveNetworkAetInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getArchiveStoreInfoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getCdaMetadataBindingResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getCodeMapperResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getCodeMapResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getEhrAuthorizationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getFilteredCodeMapsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getLastActiveContactResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getLoggedInUserResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getOrganisationChildListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getOrganisationForDNResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getOrganisationForNameResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getOrganisationListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getReportTemplatesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getUserForDNResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getUserForUidResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.getUserListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasAccessToResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasConfigurationGuiResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentExportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentFeedAddendumResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentFeedApproveResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentFeedDeprecateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentFeedInsertResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentFeedReplacementResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentFeedStornoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentImportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentPrintResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentRetrieveAccessResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDocumentTreeVisibilityResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDoublettenManagementDeclareDifferentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDoublettenManagementResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasDoublettenManagementUndeclareDifferentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasMultiAccessToResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasPatientAuditReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasPatientConsentEditResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasPatientConsentQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasPatientIdentityFeedInsertResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasPatientIdentityFeedMergeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasPatientIdentityFeedUpdateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.hasPatientQueryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.initUserWithNameRoleOrgResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.initUserWithXUAAssertionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.insertPatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.invalidateContactResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.linkResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.listContactsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.listDblReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.listReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.listSessionPropertiesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.loadPapConfigurationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.loadXdwConfigurationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.loginHCPResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.loginOrganisationRoleResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.mergeCDAsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.mergePatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.movePatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.moveResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.moveScuRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.niTreatmentAssertionCreationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.nwcAetRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.printConsentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryConsentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryDeclaredDifferentOfPatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryDeclaredDifferentPatientsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryDocHistoryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryDocumentsByUidResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryDocumentsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryDocumentsReturnAllResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryEFAFolderPermissionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryFoldersResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryLinkedOfPatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryMultiplePatientContentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryPatientContentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryPatientIdsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryPatientsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryPotentialDuplicateOfPatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryPotentialDuplicatePatientsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryRVRPotentialDuplicateOfPatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryRVRPotentialDuplicatePatientsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryTrailsOfPatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.queryWorkflowDefinitionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.readAppDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.readSessionDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.removeAppDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.removeFileResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.removeOrganisationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.removeSessionDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.removeSessionPropertiesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.removeUserResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.replaceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.reportListRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.reportRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.reportTemplatesRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveDblReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveFormResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveFormRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrievePoliciesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveReportResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveWadoImgResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveWorkflowDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.retrieveXdsIDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.saveOrganisationResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.saveUserResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.sdsReadWsRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.sdsRemoveRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.sdsStoreRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.sessionPropRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.setSessionPropertiesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.setThemeAndLanguageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.setTRCAssertionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritAuthorizationMultiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritAuthorizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritDomainResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritEhrAuthorizationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritOrganisationMultiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritOrganisationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritUserMultiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.spiritUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.storeAppDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.storeInfoRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.storeSessionDataResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitConsentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitFormResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitFormRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitOrUpdatePoliciesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitPoliciesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitPolicyPresetsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.submitWorkflowDocumentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.transformAndReplaceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.transformCdaResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.transformResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.trigger3DRendererResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.trsClientAddContactRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.trsClientDelegateContactRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.trsClientGetLastActiveContactRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.trsClientInvalidateContactRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.trsClientListContactsRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.undeclareDifferentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.undeclareDuplicateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.unlinkPatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.unlinkResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.updateEFAFolderPermissionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.updatePatientResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.updatePoliciesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.updateResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.uploadFileResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.usrLoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.usrLogoutResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.usrOrgRoleLoginResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.xdsSrcSubmitRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.xdsSrcUploadRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.xdwCfgRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.xdwQRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.xdwRetrieveRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.xdwSubmitRsp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="efpt.config.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BAL\EntitiesBAL\ArchivBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\AufenthaltBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\AuswertungenBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\CalcBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\DatenerhebungBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\ElgaBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\InterventionenBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\LayoutBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\MedikationBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\PdxBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\PflegeplanungBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\PlanungBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\SpBAL\Main\Interfaces\" />
+    <Folder Include="BAL\EntitiesBAL\VoBAL\Main\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceELGA1\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReferenceELGA1\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReferenceELGA1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReferenceELGA1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Elga.core\PMDS.Core.Elga.csproj">
+      <Project>{e9575ad9-bed7-4aad-8d67-26cdd8961496}</Project>
+      <Name>PMDS.Core.Elga</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio</VSToolsPath>
+    <WcfServiceModelTargetPath>$(VSToolsPath)\WCF</WcfServiceModelTargetPath>
+  </PropertyGroup>
+  <Import Project="$(WcfServiceModelTargetPath)\Microsoft.VisualStudio.ServiceModel.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>False</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Dieses Projekt verweist auf mindestens ein NuGet-Paket, das auf diesem Computer fehlt. Verwenden Sie die Wiederherstellung von NuGet-Paketen, um die fehlenden Dateien herunterzuladen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=322105". Die fehlende Datei ist "{0}".</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.EntityFrameworkCore.Design.2.2.0\build\net461\Microsoft.EntityFrameworkCore.Design.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.EntityFrameworkCore.Design.2.2.0\build\net461\Microsoft.EntityFrameworkCore.Design.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

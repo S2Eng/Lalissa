@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class Sppe
+    {
+        public Guid Id { get; set; }
+        public Guid Idsp { get; set; }
+        public Guid IdpflegeEintrag { get; set; }
+
+        public virtual Sp IdspNavigation { get; set; }
+    }
+}

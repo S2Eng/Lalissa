@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using PMDS.Global;
 using Infragistics.Win.UltraWinGrid;
 using PMDS.Global.db.ERSystem;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
 using PMDSClient.Sitemap;
 using PMDS.DB;
+using WCFServicePMDS.BAL2.ELGABAL;
 
 namespace PMDS.GUI.ELGA
 {
@@ -189,38 +189,38 @@ namespace PMDS.GUI.ELGA
                     ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentensuche"), null,
                                                     ELGABusiness.eTypeProt.ELGAQueryDocuments, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, rActAuf.ID, sProt);
 
-                    if (parOuot.MessageExceptionk__BackingField != null && parOuot.MessageExceptionk__BackingField.Trim() != "")
+                    if (parOuot.MessageException != null && parOuot.MessageException.Trim() != "")
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageExceptionk__BackingField.Trim() + "\r\n" + "\r\n" +
-                                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNrk__BackingField.ToString(), "ELGA", MessageBoxButtons.OK);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageException.Trim() + "\r\n" + "\r\n" +
+                                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNr.ToString(), "ELGA", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        if (parOuot.lDocumentsk__BackingField.Count() > 0)
+                        if (parOuot.lDocuments.Count() > 0)
                         {
-                            foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocumentsk__BackingField)
+                            foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocuments)
                             {
                                 bool bDocuOK = true;
-                                if (!this.chkStorniert.Checked && elgaDocu.DocStatusk__BackingField.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
+                                if (!this.chkStorniert.Checked && elgaDocu.DocStatus.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
                                 {
                                     bDocuOK = false;
                                 }
                                 if (bDocuOK)
                                 {
                                     dsManage.ELGASearchDocumentsRow rDocu = this.sqlManange1.getNewELGADocument(ref this.dsManage1);
-                                    rDocu.Dokument = elgaDocu.Documentnamek__BackingField.Trim();
+                                    rDocu.Dokument = elgaDocu.Documentname.Trim();
                                     rDocu.SetErstelltAmNull();
-                                    rDocu.UUID = elgaDocu.UUIDk__BackingField.Trim();
-                                    rDocu.UniqueID = elgaDocu.UniqueIdk__BackingField.Trim();
-                                    rDocu.LocigalID = elgaDocu.LogicalIdk__BackingField.Trim();
-                                    rDocu.Author = elgaDocu.Authork__BackingField.Trim();
-                                    rDocu.Description = elgaDocu.Descriptionk__BackingField.Trim();
-                                    rDocu.DocStatus = elgaDocu.DocStatusk__BackingField.Trim();
-                                    rDocu.Version = elgaDocu.Versionk__BackingField.Trim();
-                                    rDocu.CreationTime = elgaDocu.CreationTimek__BackingField.Trim();
-                                    rDocu.Size = elgaDocu.Sizek__BackingField;
+                                    rDocu.UUID = elgaDocu.UUID.Trim();
+                                    rDocu.UniqueID = elgaDocu.UniqueId.Trim();
+                                    rDocu.LocigalID = elgaDocu.LogicalId.Trim();
+                                    rDocu.Author = elgaDocu.Author.Trim();
+                                    rDocu.Description = elgaDocu.Description.Trim();
+                                    rDocu.DocStatus = elgaDocu.DocStatus.Trim();
+                                    rDocu.Version = elgaDocu.Version.Trim();
+                                    rDocu.CreationTime = elgaDocu.CreationTime.Trim();
+                                    rDocu.Size = elgaDocu.Size;
                                     rDocu.Stylesheet = "";                              //this.Stylesheet.Trim();
-                                    rDocu.TypeFile = elgaDocu.TypeFilek__BackingField.Trim();
+                                    rDocu.TypeFile = elgaDocu.TypeFile.Trim();
                                     rDocu.IDPatient = rPatient.ID;
                                     rDocu.IDAufenthalt = rActAuf.ID;
                                     rDocu.ELGAPatientLocalID = rActAuf.ELGALocalID.Trim();

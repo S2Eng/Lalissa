@@ -33,7 +33,7 @@ using PMDS.GUI.ELGA;
 using System.Text.RegularExpressions;
 using PMDSClient.Sitemap;
 using PMDS.DynReportsForms;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
+using WCFServicePMDS.BAL2.ELGABAL;
 
 namespace PMDS.GUI
 {
@@ -42,7 +42,7 @@ namespace PMDS.GUI
     {
 
 
-        public void genCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA, bool verstorbenJN,
+        public void genCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, WCFServicePMDS.CDABAL.CDA.eTypeCDA CDAeTypeCDA, bool verstorbenJN,
                            Nullable<Guid> IDEinrichtungEmpfänger = null, Nullable<Guid> IDDokumenteneintrag = null)
         {
             try
@@ -93,7 +93,7 @@ namespace PMDS.GUI
                                         p.ELGAAbgemeldet
                                     }).First();
 
-                    if (CDAeTypeCDA == QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Entlassungsbrief)
+                    if (CDAeTypeCDA == WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief)
                     {
                         string Documentname = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegerischer Entlassungsbrief");
                         string Stylesheet = "ELGA_Stylesheet_v1.0.xsl";
@@ -125,7 +125,7 @@ namespace PMDS.GUI
                             }
                         }
                     }
-                    else if (CDAeTypeCDA == QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA.Pflegesituationbericht)
+                    else if (CDAeTypeCDA == WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationbericht)
                     {
                         string Documentname = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegezustandsbericht");
                         string Stylesheet = "ELGA_Stylesheet_v1.0.xsl";
@@ -163,7 +163,7 @@ namespace PMDS.GUI
                 throw new Exception("ELGAPMDSBusinessUI.genCDA: " + ex.ToString());
             }
         }
-        public void prieviewSendSaveCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, QS2.Desktop.ControlManagment.ServiceReference_01.CDAeTypeCDA CDAeTypeCDA,
+        public void prieviewSendSaveCDA(Guid IDPatient, Guid IDAufenthalt, Nullable<Guid> IDUrlaub, WCFServicePMDS.CDABAL.CDA.eTypeCDA CDAeTypeCDA,
                                         Guid IDDocument, string ClinicalDocumentSetID, int VersionsNr,
                                         string Documentname, string Stylesheet, string PatientELGALocalID, PMDS.db.Entities.ERModellPMDSEntities db, DateTime dNow,
                                         bool hasRight, Nullable<Guid> IDEinrichtungEmpfänger, bool verstorbenJN, string FileType, Nullable<Guid> IDDokumenteneintrag)

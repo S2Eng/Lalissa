@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class Pdxgruppe
+    {
+        public Pdxgruppe()
+        {
+            PdxgruppeEintrag = new HashSet<PdxgruppeEintrag>();
+        }
+
+        public Guid Id { get; set; }
+        public Guid? Idabteilung { get; set; }
+        public int? Reihenfolge { get; set; }
+        public string Bezeichnung { get; set; }
+
+        public virtual Abteilung IdabteilungNavigation { get; set; }
+        public virtual ICollection<PdxgruppeEintrag> PdxgruppeEintrag { get; set; }
+    }
+}

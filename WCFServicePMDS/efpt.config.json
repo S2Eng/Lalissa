@@ -1,0 +1,786 @@
+﻿{
+   "ContextClassName": "PMDSDevContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models\\DB",
+   "ProjectRootNamespace": "WCFServicePMDS",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Abteilung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Adresse]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Aerzte]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Anamnese_Krohwinkel]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Anamnese_Orem]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Anamnese_POP]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Anmeldungen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[archDoku]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[archDokuSchlag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[archObject]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[archOrdner]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Arztabrechnung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Aufenthalt]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AufenthaltPDx]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AufenthaltVerlauf]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AufenthaltZusatz]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AuswahlListe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AuswahlListeGruppe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Bank]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BarcodeQ]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Belegung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Benutzer]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BenutzerAbteilung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BenutzerBezug]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BenutzerEinrichtung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BenutzerGruppe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BenutzerRechte]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Bereich]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[BereichBenutzer]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[billHeader]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[bills]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[bookings]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[CommAsync]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[CommAsyncClients]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[DBLizenz]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[DBVersion]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Dienstzeiten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Dokumente]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Dokumente2]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Einrichtung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Eintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[EintragStandardprozeduren]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[EintragZusatz]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ELGAActivities]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ELGAContacts]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ELGADocuments]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ELGAProtocoll]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Essen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Formular]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[FormularDaten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[FormularDatenFelder]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Gegenstaende]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Gruppe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[GruppenRecht]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Info]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Klinik]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Kontakt]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Kontaktperson]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[KontaktpersonStammdaten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Kostentraeger]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Leistungskatalog]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[LeistungskatalogGueltig]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[LinkDokumente]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[manBuch]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Massnahmenserien]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Medikament]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MedikationAbgabe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MedizinischeDaten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MedizinischeDatenLayout]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MedizinischeTypen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Messages]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[MessagesToUsers]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Patient]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientAbwesenheit]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientAerzte]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientEinkommen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientenBemerkung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientKostentraeger]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientLeistungsplan]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientPflegestufe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientSonderleistung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PatientTaschengeldKostentraeger]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PDX]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PDXAnamnese]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PDXEintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PDXGruppe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PDXGruppeEintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PDXPflegemodelle]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PflegeEintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PflegeEintragEntwurf]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Pflegegeldstufe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PflegegeldstufeGueltig]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Pflegemodelle]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PflegePlan]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PflegePlanH]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[PflegePlanPDx]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[plan]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[planAnhang]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[planObject]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[planStatus]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[QuickFilter]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[QuickMeldung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[rechNr]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Recht]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Rehabilitation]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[RezeptBestellungPos]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[RezeptEintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[RezeptEintragMedDaten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Sachwalter]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[SonderleistungsKatalog]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[SP]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[SPDynRep]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[SPPE]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[SPPOS]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[StandardProzeduren]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Standardzeiten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Taschengeld]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tbl_Nachricht]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblAutoDoku]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblDokumente]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblDokumenteGelesen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblDokumenteintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblDokumenteneintragSchlagwörter]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblFach]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblFortbildungBenutzer]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblFortbildungen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblInterop]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblObjekt]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblOrdner]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblParameter]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblPfad]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblProvKonfig]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblRechteOrdner]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblRedist]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblSchlagwörter]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblSchrank]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblSturzprotokoll]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblSuchtgiftschrankSchlüssel]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblTextTemplates]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblTextTemplatesFiles]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblThemen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblUIDefinitions]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblUserAccounts]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[tblVeranstalter]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Textbausteine]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Unterbringung]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[UrlaubVerlauf]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[VO]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[VO_Bestelldaten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[VO_Bestellpostitionen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[VO_Lager]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[VO_MedizinischeDaten]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[VO_PflegeplanPDX]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[VO_Wunde]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[WundeKopf]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[WundePos]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[WundePosBilder]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[WundeTherapie]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Zeitbereich]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ZeitbereichSerien]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ZusatzEintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ZusatzGruppe]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ZusatzGruppeEintrag]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ZusatzWert]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[AddIns]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[Layout]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[LayoutGrids]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[Protocol]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[Ressourcen]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblAdjust]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblAdress]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblCriteria]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblCriteriaOpt]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblDBVersion]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblMedArchiv]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblObject]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblObjectApplications]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblObjectRel]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblParticipants]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblQueriesDef]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblQueryJoinsTemp]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblRelationship]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListEntries]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListEntriesObj]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListEntriesSort]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSelListGroup]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblSideLogic]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblStatistics]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblStay]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblStayAdditions]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[qs2].[tblVersions]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

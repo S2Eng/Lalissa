@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class TblDokumente
+    {
+        public Guid Id { get; set; }
+        public Guid Iddokumenteintrag { get; set; }
+        public string DateinameOrig { get; set; }
+        public string VerzeichnisOrig { get; set; }
+        public double DokumentGröße { get; set; }
+        public DateTime DokumentErstellt { get; set; }
+        public DateTime DokumentGeändert { get; set; }
+        public DateTime ErstelltAm { get; set; }
+        public string ErstelltVon { get; set; }
+        public bool Winzip { get; set; }
+        public string Archivordner { get; set; }
+        public string DateinameArchiv { get; set; }
+        public string DateinameTyp { get; set; }
+
+        public virtual TblDokumenteintrag IddokumenteintragNavigation { get; set; }
+    }
+}

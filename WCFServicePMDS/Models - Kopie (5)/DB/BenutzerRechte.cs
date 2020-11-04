@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class BenutzerRechte
+    {
+        public Guid Idbenutzer { get; set; }
+        public int Idrecht { get; set; }
+        public Guid Id { get; set; }
+
+        public virtual Benutzer IdbenutzerNavigation { get; set; }
+    }
+}

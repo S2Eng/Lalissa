@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class Aufenthalt
+    {
+        public Aufenthalt()
+        {
+            AufenthaltPdx = new HashSet<AufenthaltPdx>();
+            AufenthaltVerlauf = new HashSet<AufenthaltVerlauf>();
+            Elgaactivities = new HashSet<Elgaactivities>();
+            Elgadocuments = new HashSet<Elgadocuments>();
+            Gegenstaende = new HashSet<Gegenstaende>();
+            MedikationAbgabe = new HashSet<MedikationAbgabe>();
+            PflegeEintrag = new HashSet<PflegeEintrag>();
+            PflegeEintragEntwurf = new HashSet<PflegeEintragEntwurf>();
+            PflegePlan = new HashSet<PflegePlan>();
+            RezeptEintrag = new HashSet<RezeptEintrag>();
+            Sp = new HashSet<Sp>();
+            Unterbringung = new HashSet<Unterbringung>();
+            UrlaubVerlauf = new HashSet<UrlaubVerlauf>();
+            Vo = new HashSet<Vo>();
+        }
+
+        public Guid Id { get; set; }
+        public Guid? Idpatient { get; set; }
+        public Guid? Idabteilung { get; set; }
+        public Guid? IdaufenthaltVerlauf { get; set; }
+        public Guid IdbenutzerAufnahme { get; set; }
+        public Guid? IdbenutzerEntlassung { get; set; }
+        public Guid? IdeinrichtungAufnahme { get; set; }
+        public Guid? IdeinrichtungEntlassung { get; set; }
+        public DateTime? Aufnahmezeitpunkt { get; set; }
+        public DateTime? Entlassungszeitpunkt { get; set; }
+        public int? AufnahmeArt { get; set; }
+        public string BegleitungVon { get; set; }
+        public string Entlassungsbemerkung { get; set; }
+        public string SomatischeAuff { get; set; }
+        public string PsychischeAuff { get; set; }
+        public string VerhaltenAufnahme { get; set; }
+        public string SonstigeBesonderheiten { get; set; }
+        public string SofortMassnahmen { get; set; }
+        public Guid? Idurlaub { get; set; }
+        public int BarcodeId { get; set; }
+        public double? Fallnummer { get; set; }
+        public string Gruppenkennzahl { get; set; }
+        public DateTime? Verfuegungsdatum { get; set; }
+        public string Bermerkung { get; set; }
+        public string Besuchsregelung { get; set; }
+        public string Postregelung { get; set; }
+        public string SonstigeRegelung { get; set; }
+        public string Erwartungen { get; set; }
+        public Guid? Iderstkontakt { get; set; }
+        public double? Gewicht { get; set; }
+        public DateTime? NaechsteEvaluierung { get; set; }
+        public string NaechsteEvaluierungBemerkung { get; set; }
+        public double? TaschengeldSollstand { get; set; }
+        public DateTime? TaschegeldVortragDatum { get; set; }
+        public double? TaschengeldVortragBetrag { get; set; }
+        public double Ausgleichszahlung { get; set; }
+        public Guid? Idklinik { get; set; }
+        public Guid? Idbereich { get; set; }
+        public bool AbwesenheitBeendet { get; set; }
+        public string InfoDienstuebergabe { get; set; }
+        public DateTime? ZeitpunktBlisterlisteAufnahme { get; set; }
+        public DateTime? ZeitpunktBlisterlisteEntlassung { get; set; }
+        public bool Elgasoojn { get; set; }
+        public DateTime? Elgassoodatum { get; set; }
+        public string Elgasooiduser { get; set; }
+        public string Elgasoogrund { get; set; }
+        public DateTime? Soozeitpunkt { get; set; }
+        public string ElgacontactId { get; set; }
+
+        public virtual Abteilung IdabteilungNavigation { get; set; }
+        public virtual Benutzer IdbenutzerAufnahmeNavigation { get; set; }
+        public virtual Benutzer IdbenutzerEntlassungNavigation { get; set; }
+        public virtual Einrichtung IdeinrichtungAufnahmeNavigation { get; set; }
+        public virtual Einrichtung IdeinrichtungEntlassungNavigation { get; set; }
+        public virtual Patient IdpatientNavigation { get; set; }
+        public virtual AufenthaltZusatz AufenthaltZusatz { get; set; }
+        public virtual ICollection<AufenthaltPdx> AufenthaltPdx { get; set; }
+        public virtual ICollection<AufenthaltVerlauf> AufenthaltVerlauf { get; set; }
+        public virtual ICollection<Elgaactivities> Elgaactivities { get; set; }
+        public virtual ICollection<Elgadocuments> Elgadocuments { get; set; }
+        public virtual ICollection<Gegenstaende> Gegenstaende { get; set; }
+        public virtual ICollection<MedikationAbgabe> MedikationAbgabe { get; set; }
+        public virtual ICollection<PflegeEintrag> PflegeEintrag { get; set; }
+        public virtual ICollection<PflegeEintragEntwurf> PflegeEintragEntwurf { get; set; }
+        public virtual ICollection<PflegePlan> PflegePlan { get; set; }
+        public virtual ICollection<RezeptEintrag> RezeptEintrag { get; set; }
+        public virtual ICollection<Sp> Sp { get; set; }
+        public virtual ICollection<Unterbringung> Unterbringung { get; set; }
+        public virtual ICollection<UrlaubVerlauf> UrlaubVerlauf { get; set; }
+        public virtual ICollection<Vo> Vo { get; set; }
+    }
+}

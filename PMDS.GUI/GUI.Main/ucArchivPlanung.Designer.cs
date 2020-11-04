@@ -35,6 +35,10 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab4 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab5 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab6 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucArchivPlanung));
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "E-Mail", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "Termine", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -46,9 +50,6 @@
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "E-Mail", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "Termine", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucArchivPlanung));
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "E-Mail", Infragistics.Win.DefaultableBoolean.Default);
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelArchiveOld = new System.Windows.Forms.Panel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -63,6 +64,7 @@
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.panelOben = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelButtonOben = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnTermineBereiche = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnTermineAll = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnMyTermine = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnArchiv = new QS2.Desktop.ControlManagment.BaseButton();
@@ -72,7 +74,8 @@
             this.btnTermineKlientenansicht = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelCenter = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
-            this.btnTermineBereiche = new QS2.Desktop.ControlManagment.BaseButton();
+            this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.panelPlanBereich = new System.Windows.Forms.Panel();
             this.ultraTabPageControl1.SuspendLayout();
             this.ultraTabPageControl2.SuspendLayout();
             this.ultraTabPageControl3.SuspendLayout();
@@ -84,12 +87,13 @@
             this.panelButtonOben.SuspendLayout();
             this.panelButtonRechts.SuspendLayout();
             this.panelCenter.SuspendLayout();
+            this.ultraTabPageControl6.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.panelArchiveOld);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 22);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(1037, 522);
             // 
@@ -177,6 +181,7 @@
             this.tabMain.Controls.Add(this.ultraTabPageControl3);
             this.tabMain.Controls.Add(this.ultraTabPageControl4);
             this.tabMain.Controls.Add(this.ultraTabPageControl5);
+            this.tabMain.Controls.Add(this.ultraTabPageControl6);
             this.tabMain.Location = new System.Drawing.Point(4, 2);
             this.tabMain.Name = "tabMain";
             this.tabMain.SharedControlsPage = this.ultraTabSharedControlsPage1;
@@ -200,12 +205,16 @@
             ultraTab5.Key = "Plan2";
             ultraTab5.TabPage = this.ultraTabPageControl5;
             ultraTab5.Text = "Plan";
+            ultraTab6.Key = "PlanBereich";
+            ultraTab6.TabPage = this.ultraTabPageControl6;
+            ultraTab6.Text = "PlanBereich";
             this.tabMain.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
             ultraTab1,
             ultraTab2,
             ultraTab3,
             ultraTab4,
-            ultraTab5});
+            ultraTab5,
+            ultraTab6});
             this.tabMain.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.ultraTabControl1_SelectedTabChanged);
             // 
             // ultraTabSharedControlsPage1
@@ -242,6 +251,38 @@
             this.panelButtonOben.Name = "panelButtonOben";
             this.panelButtonOben.Size = new System.Drawing.Size(1038, 70);
             this.panelButtonOben.TabIndex = 23;
+            // 
+            // btnTermineBereiche
+            // 
+            this.btnTermineBereiche.AcceptsFocus = false;
+            appearance2.AlphaLevel = ((short)(255));
+            appearance2.FontData.SizeInPoints = 8F;
+            appearance2.ForeColor = System.Drawing.Color.Red;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance2.TextVAlignAsString = "Middle";
+            this.btnTermineBereiche.Appearance = appearance2;
+            this.btnTermineBereiche.AutoWorkLayout = false;
+            this.btnTermineBereiche.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
+            this.btnTermineBereiche.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTermineBereiche.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnTermineBereiche.IsStandardControl = false;
+            this.btnTermineBereiche.Location = new System.Drawing.Point(454, 3);
+            this.btnTermineBereiche.Name = "btnTermineBereiche";
+            this.btnTermineBereiche.ShowFocusRect = false;
+            this.btnTermineBereiche.ShowOutline = false;
+            this.btnTermineBereiche.Size = new System.Drawing.Size(104, 65);
+            this.btnTermineBereiche.TabIndex = 26;
+            this.btnTermineBereiche.Text = "Abteilungsbezog. Termine";
+            ultraToolTipInfo1.ToolTipTextFormatted = "E-Mails des angemeldeten Pflegers ...";
+            ultraToolTipInfo1.ToolTipTitle = "E-Mail";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnTermineBereiche, ultraToolTipInfo1);
+            this.btnTermineBereiche.UseAppStyling = false;
+            this.btnTermineBereiche.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnTermineBereiche.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnTermineBereiche.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.btnTermineBereiche.Click += new System.EventHandler(this.btnTermineBereiche_Click);
             // 
             // btnTermineAll
             // 
@@ -457,37 +498,21 @@
             this.ultraToolTipManager1.ContainingControl = this;
             this.ultraToolTipManager1.InitialDelay = 0;
             // 
-            // btnTermineBereiche
+            // ultraTabPageControl6
             // 
-            this.btnTermineBereiche.AcceptsFocus = false;
-            appearance2.AlphaLevel = ((short)(255));
-            appearance2.FontData.SizeInPoints = 8F;
-            appearance2.ForeColor = System.Drawing.Color.Red;
-            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance2.TextVAlignAsString = "Middle";
-            this.btnTermineBereiche.Appearance = appearance2;
-            this.btnTermineBereiche.AutoWorkLayout = false;
-            this.btnTermineBereiche.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.btnTermineBereiche.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTermineBereiche.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnTermineBereiche.IsStandardControl = false;
-            this.btnTermineBereiche.Location = new System.Drawing.Point(454, 3);
-            this.btnTermineBereiche.Name = "btnTermineBereiche";
-            this.btnTermineBereiche.ShowFocusRect = false;
-            this.btnTermineBereiche.ShowOutline = false;
-            this.btnTermineBereiche.Size = new System.Drawing.Size(104, 65);
-            this.btnTermineBereiche.TabIndex = 26;
-            this.btnTermineBereiche.Text = "Abteilungsbezog. Termine";
-            ultraToolTipInfo1.ToolTipTextFormatted = "E-Mails des angemeldeten Pflegers ...";
-            ultraToolTipInfo1.ToolTipTitle = "E-Mail";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnTermineBereiche, ultraToolTipInfo1);
-            this.btnTermineBereiche.UseAppStyling = false;
-            this.btnTermineBereiche.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
-            this.btnTermineBereiche.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
-            this.btnTermineBereiche.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.btnTermineBereiche.Click += new System.EventHandler(this.btnTermineBereiche_Click);
+            this.ultraTabPageControl6.Controls.Add(this.panelPlanBereich);
+            this.ultraTabPageControl6.Location = new System.Drawing.Point(1, 22);
+            this.ultraTabPageControl6.Name = "ultraTabPageControl6";
+            this.ultraTabPageControl6.Size = new System.Drawing.Size(1037, 522);
+            // 
+            // panelPlanBereich
+            // 
+            this.panelPlanBereich.BackColor = System.Drawing.Color.Transparent;
+            this.panelPlanBereich.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPlanBereich.Location = new System.Drawing.Point(0, 0);
+            this.panelPlanBereich.Name = "panelPlanBereich";
+            this.panelPlanBereich.Size = new System.Drawing.Size(1037, 522);
+            this.panelPlanBereich.TabIndex = 0;
             // 
             // ucArchivPlanung
             // 
@@ -510,6 +535,7 @@
             this.panelButtonOben.ResumeLayout(false);
             this.panelButtonRechts.ResumeLayout(false);
             this.panelCenter.ResumeLayout(false);
+            this.ultraTabPageControl6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -540,5 +566,7 @@
         private QS2.Desktop.ControlManagment.BaseButton btnTermineAll;
         private QS2.Desktop.ControlManagment.BaseButton btnMyTermine;
         private QS2.Desktop.ControlManagment.BaseButton btnTermineBereiche;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl6;
+        private System.Windows.Forms.Panel panelPlanBereich;
     }
 }

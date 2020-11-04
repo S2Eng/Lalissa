@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class Eintrag
+    {
+        public Eintrag()
+        {
+            EintragStandardprozeduren = new HashSet<EintragStandardprozeduren>();
+            EintragZusatz = new HashSet<EintragZusatz>();
+            Pdxeintrag = new HashSet<Pdxeintrag>();
+            PflegeEintrag = new HashSet<PflegeEintrag>();
+            PflegeEintragEntwurf = new HashSet<PflegeEintragEntwurf>();
+            PflegePlan = new HashSet<PflegePlan>();
+            PflegePlanPdx = new HashSet<PflegePlanPdx>();
+            QuickFilter = new HashSet<QuickFilter>();
+            QuickMeldung = new HashSet<QuickMeldung>();
+            Sppos = new HashSet<Sppos>();
+        }
+
+        public Guid Id { get; set; }
+        public string EintragGruppe { get; set; }
+        public bool? EntferntJn { get; set; }
+        public string Sicht { get; set; }
+        public string Warnhinweis { get; set; }
+        public string Text { get; set; }
+        public int? Flag { get; set; }
+        public Guid? IdlinkDokument { get; set; }
+        public bool BedarfsMedikationJn { get; set; }
+        public bool OhneZeitBezug { get; set; }
+        public string LstFormulare { get; set; }
+
+        public virtual ICollection<EintragStandardprozeduren> EintragStandardprozeduren { get; set; }
+        public virtual ICollection<EintragZusatz> EintragZusatz { get; set; }
+        public virtual ICollection<Pdxeintrag> Pdxeintrag { get; set; }
+        public virtual ICollection<PflegeEintrag> PflegeEintrag { get; set; }
+        public virtual ICollection<PflegeEintragEntwurf> PflegeEintragEntwurf { get; set; }
+        public virtual ICollection<PflegePlan> PflegePlan { get; set; }
+        public virtual ICollection<PflegePlanPdx> PflegePlanPdx { get; set; }
+        public virtual ICollection<QuickFilter> QuickFilter { get; set; }
+        public virtual ICollection<QuickMeldung> QuickMeldung { get; set; }
+        public virtual ICollection<Sppos> Sppos { get; set; }
+    }
+}

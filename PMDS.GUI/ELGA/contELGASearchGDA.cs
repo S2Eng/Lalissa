@@ -11,9 +11,9 @@ using PMDS.Global.db.ERSystem;
 using PMDS.Global;
 using Infragistics.Win.UltraWinGrid;
 using PMDSClient.Sitemap;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
 using static PMDSClient.Sitemap.WCFServiceClient;
 using System.Text.RegularExpressions;
+using WCFServicePMDS.BAL2.ELGABAL;
 
 namespace PMDS.GUI.ELGA
 {
@@ -268,36 +268,36 @@ namespace PMDS.GUI.ELGA
                     ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA-Suche") + " " + this._TypeUI.ToString(), null,
                                                     ELGABusiness.eTypeProt.ELGAQueryGDAs, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, this._IDAufenthalt, sProt);
 
-                    if (parOuot.MessageExceptionk__BackingField != null && parOuot.MessageExceptionk__BackingField.Trim() != "")
+                    if (parOuot.MessageException != null && parOuot.MessageException.Trim() != "")
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageExceptionk__BackingField.Trim() + "\r\n" + "\r\n" + 
-                                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNrk__BackingField.ToString(), "ELGA", MessageBoxButtons.OK);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageException.Trim() + "\r\n" + "\r\n" + 
+                                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNr.ToString(), "ELGA", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        if (parOuot.lGDAsk__BackingField.Count() > 0)
+                        if (parOuot.lGDAs.Count() > 0)
                         {
-                            foreach (ObjectDTO elgaPatient in parOuot.lGDAsk__BackingField)
+                            foreach (ObjectDTO elgaPatient in parOuot.lGDAs)
                             {
-                                foreach (AdressDto elgaAdressGda in elgaPatient.lAdressesk__BackingField)
+                                foreach (AdressDto elgaAdressGda in elgaPatient.lAdresses)
                                 {
                                     dsManage.ELGASearchGDAsRow rGda = this.sqlManange1.getNewELGAGDA(ref this.dsManage1);
 
                                     rGda.ID = System.Guid.NewGuid();
-                                    rGda.IDElga = elgaPatient.IDELgaGdak__BackingField.Trim();
-                                    rGda.NachnameFirma = elgaPatient.NachNameFirmak__BackingField.Trim();
-                                    rGda.Vorname = elgaPatient.Vornamek__BackingField.Trim();
-                                    rGda.Title = elgaPatient.Titlek__BackingField.Trim();
-                                    rGda.IsOrganisation = elgaPatient.isOrganisationk__BackingField;
+                                    rGda.IDElga = elgaPatient.IDELgaGda.Trim();
+                                    rGda.NachnameFirma = elgaPatient.NachNameFirma.Trim();
+                                    rGda.Vorname = elgaPatient.Vorname.Trim();
+                                    rGda.Title = elgaPatient.Title.Trim();
+                                    rGda.IsOrganisation = elgaPatient.isOrganisation;
 
-                                    rGda.PLZ = elgaAdressGda.Zipk__BackingField.Trim();
-                                    rGda.Ort = elgaAdressGda.Cityk__BackingField.Trim();
-                                    rGda.Land = elgaAdressGda.Countryk__BackingField.Trim();
-                                    rGda.Strasse = elgaAdressGda.Streetk__BackingField.Trim();
-                                    rGda.StrasseNr = elgaAdressGda.StreetNrk__BackingField.Trim();
+                                    rGda.PLZ = elgaAdressGda.Zip.Trim();
+                                    rGda.Ort = elgaAdressGda.City.Trim();
+                                    rGda.Land = elgaAdressGda.Country.Trim();
+                                    rGda.Strasse = elgaAdressGda.Street.Trim();
+                                    rGda.StrasseNr = elgaAdressGda.StreetNr.Trim();
 
-                                    rGda.Status = elgaAdressGda.Statusk__BackingField.Trim();
-                                    rGda.State = elgaAdressGda.Statek__BackingField.Trim();
+                                    rGda.Status = elgaAdressGda.Status.Trim();
+                                    rGda.State = elgaAdressGda.State.Trim();
                                 }
                             }
                         }

@@ -13,9 +13,9 @@ using PMDS.Global.PMDSClient;
 using PMDS.Global.PMDSClient.WCFService;
 using PMDS.GUI.ELGA;
 using QS2.Desktop.ControlManagment;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
 using WCFServicePMDS;
-
+using WCFServicePMDS.BAL.DTO;
+using WCFServicePMDS.BAL2.ELGABAL;
 
 namespace PMDSClient.Sitemap
 {
@@ -26,7 +26,6 @@ namespace PMDSClient.Sitemap
         //public static string urlWCFServiceDefault2 = "http://localhost:8733/Design_Time_Addresses/WCFServicePMDS/Service1/";
         private static string urlWCFServiceDefault2 = "net.pipe://localhost/Design_Time_Addresses/WCFServicePMDS{0}/Service1";
         private static string urlGuid = System.Guid.NewGuid().ToString().Replace("-", "");
-
 
 
 
@@ -120,59 +119,17 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                //System.Windows.Forms.MessageBox.Show("0");
-
-                if (PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() == "")
-                {
-                    PMDS.Global.ENV.WCFServicePMDSDebugPath = PMDS.Global.ENV.path_bin.Trim();
-                }
-
-                if (!PMDS.Global.ENV.WCFServiceDebugMode)
-                {
-                    //this.stopCheckWCFServiceLocal(false);
-
-                    string urlWCFServiceBack = "";
-                    if (!PMDS.Global.ENV.WCFServiceOnlyLocal)
-                    {
-                        bool bUrlFound = this.genUrlWCFService(ref urlWCFServiceBack);
-                    }
-                    else
-                    {
-                        urlWCFServiceDefault2 = string.Format(urlWCFServiceDefault2, urlGuid);
-                        urlWCFServiceBack = urlWCFServiceDefault2.Trim();
-                    }
-
-                    PMDSClientWrapper.UrlWCFServicePMDS = urlWCFServiceBack.Trim();
-                    string sWCFServiceName = @PMDS.Global.ENV.WCFServicePMDSDebugPath.Trim() + "\\" + @PMDS.Global.ENV.WCFHostManager.Trim() + ".exe";
-                    //MessageBox.Show(sWCFServiceName + "\r\n" + urlWCFServiceBack);
-
-                    Process proc = new Process();
-                    proc.StartInfo.FileName = sWCFServiceName;
-                    proc.StartInfo.UseShellExecute = true;
-                    //proc.StartInfo.Verb = "runas";
-                    proc.StartInfo.Arguments = "?typ=Background ?urlGuid=" + urlGuid + "";
-
-                    //System.Windows.Forms.MessageBox.Show("1");
-                    proc.Start();
-                    //System.Windows.Forms.MessageBox.Show("2");
-                    System.Threading.Thread.Sleep(7000);
-                    //System.Diagnostics.Process.Start(sWCFServiceName, "?typ=Background");
-                }
-                else
-                {
-                    urlWCFServiceDefault2 = string.Format(urlWCFServiceDefault2, "");
-                }
-
-                cParsWCF ParsWCF = (cParsWCF)pars;
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = WCFServiceClient.getWCFClient(true);
-                
+                cParsWCF ParsWCF = (cParsWCF)pars;               
                 string sConfigPathTmp = System.IO.Path.GetDirectoryName(PMDS.Global.ENV.sConfigFile.Trim());
                 string sConfigFileTmp = System.IO.Path.GetFileName(PMDS.Global.ENV.sConfigFile.Trim());
 
                 //System.Windows.Forms.MessageBox.Show("3");
                 WCFServiceClient.IDClient = System.Guid.NewGuid();
-                QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
-                bool bCheckOK = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
+                ENVClientDto ENVDto = new ENVClientDto() { ConfigPathPMDS = sConfigPathTmp, ConfigFilePMDS = sConfigFileTmp, IDClient = WCFServiceClient.IDClient, Srv = RBU.DataBase.Srv, 
+                                                            Usr = RBU.DataBase.m_sUser, Pwd = RBU.DataBase.m_sPassword, Db = RBU.DataBase.m_Database, trusted = RBU.DataBase.IsTrusted };
+
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
+                bool bCheckOK = s1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
                 //bool bRetTest = Service1Client1.TestWCFService();
                 //System.Windows.Forms.MessageBox.Show("4");
 
@@ -210,100 +167,15 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public static QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client getWCFClient(bool localService)
+        public void getAllStammdatenxy()
         {
             try
             {
-                if (PMDS.Global.ENV.WCFServiceDebugMode)
-                {
-                    localService = true;
-                }
-                string UrlTmp = "";
-                if (localService)
-                {
-                    UrlTmp = urlWCFServiceDefault2.Trim();
-                }
-                else
-                {
-                    UrlTmp = PMDSClientWrapper.UrlWCFServicePMDS.Trim();
-                }
-
-                TimeSpan t10 = new TimeSpan(10, 0, 0);
-                TimeSpan t24 = new TimeSpan(23, 59, 59);
-
-                if (UrlTmp.Trim().ToLower().StartsWith(("http://").Trim().ToLower()))
-                {
-                    var binding = new BasicHttpBinding()
-                    {
-                        Name = "BasicHttpBinding_PMDSService1",
-                        MaxBufferSize = 2147483647,
-                        MaxBufferPoolSize = 2147483647,
-                        MaxReceivedMessageSize = 2147483647,
-                        ReceiveTimeout = t10,
-                        SendTimeout = t24
-                    };
-                    var endpoint = new EndpointAddress(UrlTmp);
-                    QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client(binding, endpoint);
-                    //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
-                    return client;
-
-                    //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1Client1 = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client("BasicHttpBinding_Service1", ENV.UrlWCFServicePMDS.Trim());
-                }
-                else if (UrlTmp.Trim().ToLower().StartsWith(("net.tcp://").Trim().ToLower()))
-                {
-                    var binding = new NetTcpBinding()
-                    {
-                        Name = "NetTcpBinding_PMDSService1",
-                        MaxBufferSize = 2147483647,
-                        MaxBufferPoolSize = 2147483647,
-                        MaxReceivedMessageSize = 2147483647,
-                        ReceiveTimeout = t10,
-                        SendTimeout = t24
-                    };
-
-                    var endpoint = new EndpointAddress(UrlTmp);
-                    QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client(binding, endpoint);
-                    //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
-                    return client;
-                }
-                else if (UrlTmp.Trim().ToLower().StartsWith(("net.pipe://").Trim().ToLower()))
-                {
-                    var binding = new NetNamedPipeBinding()
-                    {
-                        Name = "NetPipeBinding_PMDSService1",
-                        MaxBufferSize = 2147483647,
-                        MaxBufferPoolSize = 2147483647,
-                        MaxReceivedMessageSize = 2147483647,
-                        ReceiveTimeout = t10,
-                        SendTimeout = t24
-                    };
-
-                    var endpoint = new EndpointAddress(UrlTmp);
-                    QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = new QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client(binding, endpoint);
-                    //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
-                    return client;
-                }
-                else
-                {
-                    throw new Exception("getWCFClient: Only http- or net.tcp-calls allowed!");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(PMDS.Global.ENV.getTitleExcept("Wcf-Client-Objekt erstellen fehlgeschlagen!") + "WCFServiceClientPMDS.getWCFClient: " + ex.ToString());
-            }
-        }
-
-        public void getAllStammdatenxy(ref QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client serv)
-        {
-            try
-            {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
 
                 //var res = client.getDataSerialized();
-                var res = client.getDataSerialized();
+                var res = s1.getDataSerialized();
 
                 DateTime dNow = DateTime.Now;
                 WcfDTOs.sd.TryAdd(dNow, (WCFServicePMDS.BAL.Main.StammdatenDTO.lastStammdaten)WCFServicePMDS.Repository.serialize.BinaryDeserialize(res[0]));
@@ -376,8 +248,8 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client clientWcf = WCFServiceClient.getWCFClient(true);
-                clientWcf.sendExceptionAsSMTPEMail(except, client, (Haus.Trim() == "" ? "" : Haus + "::") + User, At);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
+                s1.sendExceptionAsSMTPEMail(except, client, (Haus.Trim() == "" ? "" : Haus + "::") + User, At);
             }
             catch (Exception ex)
             {
@@ -396,14 +268,14 @@ namespace PMDSClient.Sitemap
             {
                 ELGALogInDto ELGALogInDto1 = new ELGALogInDto();
 
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 //Thread.Sleep(5000);
                 ELGASessionDTO session = new ELGASessionDTO();
-                session.IDUserk__BackingField = IDUser;
-                ELGALogInDto1.LogInOK = client.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session);
-                if (session.Errorsk__BackingField != null)
+                session.IDUser = IDUser;
+                ELGALogInDto1.LogInOK = s1.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session);
+                if (session.Errors != null)
                 {
-                    throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: Error ELGA-LogIn - " + "\r\n" + "\r\n" + ELGALogInDto1.session.Errorsk__BackingField.Trim());
+                    throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: Error ELGA-LogIn - " + "\r\n" + "\r\n" + ELGALogInDto1.session.Errors.Trim());
                 }
                 ELGALogInDto1.session = session;
 
@@ -424,11 +296,11 @@ namespace PMDSClient.Sitemap
                     ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
                     if (ben.Elgaactive && !ben.IsGeneric)
                     {
-                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                        WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                         if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.ELGALogInDto != null)
                         {
                             ELGASessionDTO session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                            client.ELGALogOut(ref session);
+                            s1.ELGALogOut(ref session);
                         }
                         //else
                         //{
@@ -447,24 +319,24 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public ELGAParOutDto ELGAQueryPatients(string SozVersNrLocalPatID, ELGABALeTypeQueryPatients ELGABALeTypeQueryPatients, bool checkOneRowMustFound)
+        public ELGAParOutDto ELGAQueryPatients(string SozVersNrLocalPatID, WCFServicePMDS.ELGABAL.eTypeQueryPatients ELGABALeTypeQueryPatients, bool checkOneRowMustFound)
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = SozVersNrLocalPatID.Trim(), NachNameFirmak__BackingField = "", Vornamek__BackingField = "", 
-                                                                    Zipk__BackingField = "", Cityk__BackingField = "", Streetk__BackingField = "", StreetNrk__BackingField = "" };
-                ELGAParOutDto parOutDto = client.ELGAQueryPatients(ref parsIn, ELGABALeTypeQueryPatients, checkOneRowMustFound);
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = SozVersNrLocalPatID.Trim(), NachNameFirma = "", Vorname = "", 
+                                                                    Zip = "", City = "", Street = "", StreetNr = "" };
+                ELGAParOutDto parOutDto = s1.ELGAQueryPatients(ref parsIn, ELGABALeTypeQueryPatients, checkOneRowMustFound);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAQueryPatients");
                     throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -479,26 +351,26 @@ namespace PMDSClient.Sitemap
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Suche Patienten in ELGA fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAQueryPatients: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAInsertPatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, string authUniversalID, ELGABALeTypeUpdatePatients ELGABALeTypeUpdatePatients)
+        public ELGAParOutDto ELGAInsertPatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, string authUniversalID, WCFServicePMDS.ELGABAL.eTypeUpdatePatients ELGABALeTypeUpdatePatients)
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.IDPatientInternk__BackingField = IDPatientInternWcf;
-                parsIn.LocalPatientIDk__BackingField = LocalPatientIDWrite;
-                parsIn.authUniversalIDk__BackingField = authUniversalID.Trim();
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientIDWrite.Trim() };
-                ELGAParOutDto parOutDto = client.ELGAinsertPatient(ref parsIn, ELGABALeTypeUpdatePatients);
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.IDPatientIntern = IDPatientInternWcf;
+                parsIn.LocalPatientID = LocalPatientIDWrite;
+                parsIn.authUniversalID = authUniversalID.Trim();
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientIDWrite.Trim() };
+                ELGAParOutDto parOutDto = s1.ELGAinsertPatient(ref parsIn, ELGABALeTypeUpdatePatients);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAInsertPatient");
                     throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -506,32 +378,32 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-
+                
             }
             catch (Exception ex)
             {
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Patient in ELGA einfügen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAInsertPatient: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAUpdatePatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, ELGABALeTypeUpdatePatients ELGABALeTypeUpdatePatients)
+        public ELGAParOutDto ELGAUpdatePatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, WCFServicePMDS.ELGABAL.eTypeUpdatePatients ELGABALeTypeUpdatePatients)
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.IDPatientInternk__BackingField = IDPatientInternWcf;
-                parsIn.LocalPatientIDk__BackingField = LocalPatientIDWrite;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() {SozVersNrLocalPatIDk__BackingField = LocalPatientIDWrite.Trim()};
-                ELGAParOutDto parOutDto = client.ELGAUpdatePatient(ref parsIn, ELGABALeTypeUpdatePatients);
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.IDPatientIntern = IDPatientInternWcf;
+                parsIn.LocalPatientID = LocalPatientIDWrite;
+                parsIn.sObjectDto = new ObjectDTO() {SozVersNrLocalPatID = LocalPatientIDWrite.Trim()};
+                ELGAParOutDto parOutDto = s1.ELGAUpdatePatient(ref parsIn, ELGABALeTypeUpdatePatients);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAUpdatePatient");
                     throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -550,29 +422,29 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim() };
-                ELGAParOutDto parOutDto = client.ELGAAddContactAdmission(ref parsIn);
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
+                ELGAParOutDto parOutDto = s1.ELGAAddContactAdmission(ref parsIn);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAUddContactAdmission");
                     throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
-                    if (parOutDto.ContactExistsk__BackingField)
+                    if (parOutDto.ContactExists)
                     {
                         return parOutDto;
                     }
                     else
                     {
-                        if (parOutDto.ContactIDk__BackingField != null && parOutDto.ContactIDk__BackingField.Trim() == "")
+                        if (parOutDto.ContactID != null && parOutDto.ContactID.Trim() == "")
                         {
-                            throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.ContactID='" + parOutDto.ContactIDk__BackingField.ToString() + "' not allowed!");
+                            throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.ContactID='" + parOutDto.ContactID.ToString() + "' not allowed!");
                         }
                     }
                     return parOutDto;
@@ -592,19 +464,19 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.ContactIDk__BackingField = ContactID.Trim();
-                ELGAParOutDto parOutDto = client.ELGAInvalidateContact(ref parsIn);
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.ContactID = ContactID.Trim();
+                ELGAParOutDto parOutDto = s1.ELGAInvalidateContact(ref parsIn);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAInvalidateContact");
                     throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -624,19 +496,19 @@ namespace PMDSClient.Sitemap
             try
             {
                 //Entlassung
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim() };
-                ELGAParOutDto parOutDto = client.ELGAAddContactDischarge(ref parsIn);
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID= LocalPatientID.Trim() };
+                ELGAParOutDto parOutDto = s1.ELGAAddContactDischarge(ref parsIn);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAAddContactDischarge");
                     throw new Exception("WCFServiceClientPMDS.ELGAAddContactDischarge: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -655,19 +527,19 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() {  SozVersNrLocalPatIDk__BackingField = LocalPatientID.Trim()};
-                ELGAParOutDto parOutDto = client.ELGAListContacts(ref parsIn);
+                parsIn.session= ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() {  SozVersNrLocalPatID = LocalPatientID.Trim()};
+                ELGAParOutDto parOutDto = s1.ELGAListContacts(ref parsIn);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAListContacts");
                     throw new Exception("WCFServiceClientPMDS.ELGAListContacts: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -687,30 +559,30 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
 
-                parsIn.sObjectDtok__BackingField = new ObjectDTO()
+                parsIn.sObjectDto = new ObjectDTO()
                 {
-                    SozVersNrLocalPatIDk__BackingField = "",
-                    NachNameFirmak__BackingField = SearchGdaFlds.NachnameFirma.Trim(),
-                    Vornamek__BackingField = SearchGdaFlds.Vorname.Trim(),
-                    Zipk__BackingField = SearchGdaFlds.PLZ.Trim(),
-                    Cityk__BackingField = SearchGdaFlds.Ort.Trim(),
-                    Streetk__BackingField = SearchGdaFlds.Strasse.Trim(),
-                    StreetNrk__BackingField = SearchGdaFlds.StrasseNr.Trim()
+                    SozVersNrLocalPatID = "",
+                    NachNameFirma = SearchGdaFlds.NachnameFirma.Trim(),
+                    Vorname = SearchGdaFlds.Vorname.Trim(),
+                    Zip = SearchGdaFlds.PLZ.Trim(),
+                    City = SearchGdaFlds.Ort.Trim(),
+                    Street = SearchGdaFlds.Strasse.Trim(),
+                    StreetNr = SearchGdaFlds.StrasseNr.Trim()
                 };
 
-                ELGAParOutDto parOutDto = client.ELGAQueryGDAs(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGAQueryGDAs(ref parsIn);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAQueryGDAs");
                     throw new Exception("WCFServiceClientPMDS.ELGAQueryGDAs: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -730,21 +602,21 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
 
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
-                parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto() {  CreatedFromk__BackingField = dCreatedFrom, CreatedTok__BackingField = dCreatedTo};
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = ELGAPatientLocalID.Trim() };
+                parsIn.sDocumentsDto = new DocumentSearchDto() {  CreatedFrom = dCreatedFrom, CreatedTo = dCreatedTo};
 
-                ELGAParOutDto parOutDto = client.ELGAQueryDocuments(ref parsIn, OnlyOneDoc, UniqueId);
+                ELGAParOutDto parOutDto = s1.ELGAQueryDocuments(ref parsIn, OnlyOneDoc, UniqueId);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
-                    throw new Exception("WCFServiceClientPMDS.ELGAQueryDocuments: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errorsk__BackingField.Trim());
+                    throw new Exception("WCFServiceClientPMDS.ELGAQueryDocuments: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -763,21 +635,21 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
 
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
-                parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto() { UniqueIDk__BackingField = UniqueID.Trim() };
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = ELGAPatientLocalID.Trim() };
+                parsIn.sDocumentsDto = new DocumentSearchDto() { UniqueID = UniqueID.Trim() };
 
-                ELGAParOutDto parOutDto = client.ELGARetrieveDocument(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGARetrieveDocument(ref parsIn);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
-                    throw new Exception("WCFServiceClientPMDS.ELGARetrieveDocument: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errorsk__BackingField.Trim());
+                    throw new Exception("WCFServiceClientPMDS.ELGARetrieveDocument: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -798,32 +670,32 @@ namespace PMDSClient.Sitemap
             try
             {
                 //IDCA = ID aus PMDS-DB, eigenen IDDocument     ClinicalDocumentSetID = Kommt aus DCA-Dokdument
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
 
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
-                parsIn.DocumentAddk__BackingField = new DocumentAddDto()
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = ELGAPatientLocalID.Trim() };
+                parsIn.DocumentAdd = new DocumentAddDto()
                 {
-                    KlinikNamek__BackingField = KlinikName.Trim(),
-                    KlinikOrganisationIDk__BackingField = KlinikOrganisationOID.Trim(),
-                    Authork__BackingField = Author.Trim(),
-                    Documentnamek__BackingField  = DocumentName.Trim(),
-                    bDocumentk__BackingField = bDocu,
-                    Personk__BackingField = Person.Trim(),
-                    Descriptionk__BackingField = Description.Trim(),
-                    IDCDAk__BackingField = IDCA.Trim(),
-                    ClinicalDocumentSetIDk__BackingField = ClinicalDocumentSetID.Trim()
+                    KlinikName = KlinikName.Trim(),
+                    KlinikOrganisationID = KlinikOrganisationOID.Trim(),
+                    Author = Author.Trim(),
+                    Documentname  = DocumentName.Trim(),
+                    bDocument = bDocu,
+                    Person = Person.Trim(),
+                    Description = Description.Trim(),
+                    IDCDA = IDCA.Trim(),
+                    ClinicalDocumentSetID = ClinicalDocumentSetID.Trim()
                 };
 
-                ELGAParOutDto parOutDto = client.ELGAAddDocument(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGAAddDocument(ref parsIn);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
-                    throw new Exception("WCFServiceClientPMDS.ELGAAddDocument: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errorsk__BackingField.Trim());
+                    throw new Exception("WCFServiceClientPMDS.ELGAAddDocument: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -842,30 +714,30 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
 
                 ELGAParInDto parsIn = new ELGAParInDto();
-                parsIn.sessionk__BackingField = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDtok__BackingField = new ObjectDTO() { SozVersNrLocalPatIDk__BackingField = ELGAPatientLocalID.Trim() };
-                parsIn.sDocumentsDtok__BackingField = new DocumentSearchDto()
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = ELGAPatientLocalID.Trim() };
+                parsIn.sDocumentsDto = new DocumentSearchDto()
                 {
-                    UniqueIDk__BackingField = DocuUniqueId, Documentnamek__BackingField = "",  Authork__BackingField = "", CreatedFromk__BackingField = null, CreatedTok__BackingField = null,
-                    DocumentStatusk__BackingField = ""
+                    UniqueID = DocuUniqueId, Documentname = "",  Author = "", CreatedFrom = null, CreatedTo = null,
+                    DocumentStatus = ""
                 };
-                parsIn.DocumentAddk__BackingField = new DocumentAddDto()
+                parsIn.DocumentAdd = new DocumentAddDto()
                 {
-                    KlinikNamek__BackingField = KlinikName.Trim(),
-                    KlinikOrganisationIDk__BackingField = KlinikOrganisationOID.Trim()
+                    KlinikName = KlinikName.Trim(),
+                    KlinikOrganisationID = KlinikOrganisationOID.Trim()
                 };
 
-                ELGAParOutDto parOutDto = client.ElgaDeprecateDocument(ref parsIn, DocuUniqueId);
+                ELGAParOutDto parOutDto = s1.ElgaDeprecateDocument(ref parsIn, DocuUniqueId);
 
-                if (parOutDto.bErrorsFoundk__BackingField)
+                if (parOutDto.bErrorsFound)
                 {
-                    throw new Exception("WCFServiceClientPMDS.ElgaDeprecateDocument: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errorsk__BackingField.Trim());
+                    throw new Exception("WCFServiceClientPMDS.ElgaDeprecateDocument: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errors.Trim());
                 }
 
-                if (parOutDto.bOKk__BackingField)
+                if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -880,16 +752,16 @@ namespace PMDSClient.Sitemap
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Dokument in ELGA stornieren fehlgeschlagen!") + "WCFServiceClientPMDS.ElgaDeprecateDocument: " + ex.ToString());
             }
         }
-        public genCDARes genCDA2(CDAeTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
+        public genCDARes genCDA2(WCFServicePMDS.CDABAL.CDA.eTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
                                     Guid IDPatient, Guid IDAufenthalt, string Documentname, Nullable<Guid> IDDokumenteneintrag)
         {
             genCDARes res = new genCDARes();
             try
             {
                 string xml = "";
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 //Thread.Sleep(5000);
-                CDACDAIN vars = new CDACDAIN()
+                WCFServicePMDS.CDABAL.CDA.CDAIN vars = new WCFServicePMDS.CDABAL.CDA.CDAIN()
                 {
                     IDDocument = IDDocument,
                     IDSet = IDSet,
@@ -905,7 +777,7 @@ namespace PMDSClient.Sitemap
                     IDDokumenteneintrag = IDDokumenteneintrag
                 };
 
-                CDACDABack b = client.genCDA(vars);
+                WCFServicePMDS.CDABAL.CDA.CDABack b = s1.genCDA(vars);
 
                 xml = (string)WCFServicePMDS.Repository.serialize.BinaryDeserialize(b.docu);
                 //xml = System.Text.UTF8Encoding.UTF8.GetString(bXml);
@@ -926,11 +798,11 @@ namespace PMDSClient.Sitemap
             try
             {
                 string sElgaErrors = "";
-                foreach (ELGAErrorDTO rError in parOutDto.lstErrorsk__BackingField)
+                foreach (ELGAErrorDTO rError in parOutDto.lstErrors)
                 {
-                    sElgaErrors += "errTxt: " + rError.errTxtk__BackingField + ", Code: " + rError.codek__BackingField + ", Location: " + rError.locationk__BackingField + ", TypeCode: " +
-                                        rError.typeCodek__BackingField + ", ClassCode: " + rError.classCodek__BackingField + ", MoodCode" + rError.moodCodek__BackingField + ", queryResponseCode: " +
-                                        rError.queryResponseCodek__BackingField + "" +
+                    sElgaErrors += "errTxt: " + rError.errTxt + ", Code: " + rError.code + ", Location: " + rError.location + ", TypeCode: " +
+                                        rError.typeCode + ", ClassCode: " + rError.classCode + ", MoodCode" + rError.moodCode + ", queryResponseCode: " +
+                                        rError.queryResponseCode + "" +
                                         "\r\n" + "\r\n";
                 }
 
@@ -1038,8 +910,8 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
-                client.StopWCFService();
+                //WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
+                //s1.StopWCFService();
 
             }
             catch (Exception ex)
@@ -1051,8 +923,8 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
-                bool bIsRunning = client.CheckWCFServiceIsRunning();
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
+                bool bIsRunning = s1.CheckWCFServiceIsRunning();
                 return true;
             }
             catch (Exception ex)
@@ -1070,9 +942,9 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
 
-                MessagesDto tM = client.messagesSent(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, WCFServiceClient.IDClient);
+                MessagesDto tM = s1.messagesSent(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, WCFServiceClient.IDClient);
                 return tM;
             }
             catch (Exception ex)
@@ -1084,9 +956,9 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
 
-                MessagesDto tM = client.messagesUnreadedUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, WCFServiceClient.IDClient);
+                MessagesDto tM = s1.messagesUnreadedUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, WCFServiceClient.IDClient);
                 return tM;
             }
             catch (Exception ex)
@@ -1098,9 +970,9 @@ namespace PMDSClient.Sitemap
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
 
-                MessagesDto tM = client.messagesAllUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, WCFServiceClient.IDClient);
+                MessagesDto tM = s1.messagesAllUsr(ClientsMessage, TypeMessage, UserId, dFromTmp, dToTmp, WCFServiceClient.IDClient);
                 return tM;
             }
             catch (Exception ex)
@@ -1109,12 +981,12 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public MessagesDTO1 addMessage(Guid IDUser, string Username, string Title, string Message, string ClientsMessage, string TypeMessage, Guid[] lUsersTo)
+        public WCFServicePMDS.DAL.DTO.MessagesDTO addMessage(Guid IDUser, string Username, string Title, string Message, string ClientsMessage, string TypeMessage, System.Collections.Generic.List<Guid> lUsersTo)
         {
             try
             {
-                QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(true);
-                MessagesDTO1 m = client.addMessage(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, WCFServiceClient.IDClient);
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
+                WCFServicePMDS.DAL.DTO.MessagesDTO m = s1.addMessage(IDUser, Username, Title, Message, ClientsMessage, TypeMessage, lUsersTo, WCFServiceClient.IDClient);
                 return m;
             }
             catch (Exception ex)
@@ -1157,7 +1029,7 @@ namespace PMDSClient.Sitemap
 
 
 
-        public genCDARes genCDA_old(CDAeTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
+        public genCDARes genCDA_old(WCFServicePMDS.CDABAL.CDA.eTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
                         Guid IDPatient, Guid IDAufenthalt, string Documentname)
         {
             var res = this.TgenCDA_old(CDAeTypeCDA, IDEinrichtungEmpfänger, IDDocument, IDSet, VersionsNr, Stylesheet, IDPatient, IDAufenthalt, Documentname);
@@ -1166,7 +1038,7 @@ namespace PMDSClient.Sitemap
             //Task t = genCDA3(CDAeTypeCDA, IDEinrichtungEmpfänger);
             //t.Start();
         }
-        private async Task<genCDARes> TgenCDA_old(CDAeTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
+        private async Task<genCDARes> TgenCDA_old(WCFServicePMDS.CDABAL.CDA.eTypeCDA CDAeTypeCDA, Nullable<Guid> IDEinrichtungEmpfänger, Guid IDDocument, string IDSet, int VersionsNr, string Stylesheet,
                                                 Guid IDPatient, Guid IDAufenthalt, string Documentname)
         {
             genCDARes res = new genCDARes();
@@ -1177,9 +1049,9 @@ namespace PMDSClient.Sitemap
                 {
                     try
                     {
-                        QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client client = WCFServiceClient.getWCFClient(localWCFElgaYN);
+                        WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                         //Thread.Sleep(5000);
-                        CDACDAIN vars = new CDACDAIN()
+                        WCFServicePMDS.CDABAL.CDA.CDAIN vars = new WCFServicePMDS.CDABAL.CDA.CDAIN()
                         {
                             IDDocument = IDDocument,
                             IDSet = IDSet,
@@ -1194,7 +1066,7 @@ namespace PMDSClient.Sitemap
                             IDClient = WCFServiceClient.IDClient
                         };
 
-                        CDACDABack b = client.genCDA(vars);
+                        WCFServicePMDS.CDABAL.CDA.CDABack b = s1.genCDA(vars);
 
                         xml = (string)WCFServicePMDS.Repository.serialize.BinaryDeserialize(b.docu);
                         //xml = System.Text.UTF8Encoding.UTF8.GetString(bXml);
@@ -1226,7 +1098,7 @@ namespace PMDSClient.Sitemap
                 return res;
             }
         }
-        public async Task genCDA_old(CDAeTypeCDA CDAeTypeCDA, Guid IDEinrichtungEmpfänger)
+        public async Task genCDA_old(WCFServicePMDS.CDABAL.CDA.eTypeCDA CDAeTypeCDA, Guid IDEinrichtungEmpfänger)
         {
             try
             {

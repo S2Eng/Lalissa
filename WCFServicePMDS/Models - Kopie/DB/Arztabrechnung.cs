@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class Arztabrechnung
+    {
+        public Guid Id { get; set; }
+        public string Leistung1 { get; set; }
+        public string Leistung2 { get; set; }
+        public string Leistung3 { get; set; }
+        public string Anmerkung { get; set; }
+        public DateTime Datum { get; set; }
+        public Guid Idpatient { get; set; }
+        public Guid Idbenutzer { get; set; }
+        public string Krankenkasse { get; set; }
+        public string Svnr { get; set; }
+
+        public virtual Benutzer IdbenutzerNavigation { get; set; }
+        public virtual Patient IdpatientNavigation { get; set; }
+    }
+}

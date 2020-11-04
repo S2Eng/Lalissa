@@ -24,7 +24,7 @@ using PMDS.DB;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Sockets;
-using QS2.Desktop.ControlManagment.ServiceReference_01;
+
 
 namespace PMDS.DB
 {
@@ -268,7 +268,7 @@ namespace PMDS.DB
                                     }).First();
 
                 PMDSClient.Sitemap.WCFServiceClient wcf = new PMDSClient.Sitemap.WCFServiceClient();
-                MessagesDTO1 lM = wcf.addMessage(rUserFrom.IDBenutzer, rUserFrom.Benutzer.Trim(), Title.Trim(), Message.Trim(), ClientsMessage.ToString(), "Message", lstToUsers.ToArray());
+                WCFServicePMDS.DAL.DTO.MessagesDTO lM = wcf.addMessage(rUserFrom.IDBenutzer, rUserFrom.Benutzer.Trim(), Title.Trim(), Message.Trim(), ClientsMessage.ToString(), "Message", lstToUsers);
 
             }
             catch (Exception ex)

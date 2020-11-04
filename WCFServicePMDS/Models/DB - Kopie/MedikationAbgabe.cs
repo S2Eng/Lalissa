@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace WCFServicePMDS.Models.DB
+{
+    public partial class MedikationAbgabe
+    {
+        public Guid IdrezeptEintrag { get; set; }
+        public DateTime Zeitpunkt { get; set; }
+        public Guid? Idbenutzer { get; set; }
+        public string MedikamentText { get; set; }
+        public Guid? Idaufenthalt { get; set; }
+        public bool TagesspenderJn { get; set; }
+
+        public virtual Aufenthalt IdaufenthaltNavigation { get; set; }
+    }
+}
