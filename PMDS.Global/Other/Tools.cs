@@ -314,5 +314,27 @@ namespace PMDS.Global
         }
 
 
+        public static MemoryStream GenerateStreamFromString(string s)
+        {
+            try
+            {
+                var stream = new MemoryStream();
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.Write(s);
+                    writer.Flush();
+                    stream.Position = 0;
+                    return stream;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception("GenerateStreamFromString: " + ex.ToString());
+            }
+
+
+        }
+
     }
 }
