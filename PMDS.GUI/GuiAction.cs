@@ -955,27 +955,6 @@ namespace PMDS.GUI
             {
                 PMDSBusiness b = new PMDSBusiness();
 
-                if (ENV.lic_ELGA)
-                {
-                    ELGABusiness bElga = new ELGABusiness();
-
-                    if (!ELGABusiness.checkELGASessionActive(true))
-                    {
-                        return false;
-                    }
-                    if (!bElga.checkKontaktbestätigung(idPatient, ENV.IDAUFENTHALT, true))
-                    {
-                        return false;
-                    }
-
-                    string ArchivePath = "";
-                    Nullable<Guid> IDOrdnerArchiv = null;
-                    if (!bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
-                    {
-                        return false;
-                    }
-                }
-
                 bool IsAbwesend = false;
                 Nullable<Guid> IDEinrichtungEmpfänger = null;
                 Nullable<Guid> IDDokumenteneintrag = null;
@@ -983,6 +962,8 @@ namespace PMDS.GUI
                 {
                     IsAbwesend = b.KlientIsAbwesend(db, ENV.IDAUFENTHALT);
                 }
+
+
                 if (!IsAbwesend)            //if (ENV.lic_ELGA && !IsAbwesend)
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
@@ -999,34 +980,6 @@ namespace PMDS.GUI
                             return false;
                         }
                     }
-
-                    //BaseControls.BerichtParameterReplaceDelegate _delegate = new BaseControls.BerichtParameterReplaceDelegate(new UIGlobal().ParameterHelper_ReplaceString);
-                    //BaseControls.ParameterHelper.ReplaceString += _delegate;
-                    //PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                    //frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = false;
-                    //BaseControls.ParameterHelper.ReplaceString -= _delegate;
-                    //DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                    //if (res == DialogResult.OK)
-                    //{
-                    //    IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
-                    //    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                    //    {
-                    //        ucDynReportParameter ucDynReportParameter1 = new ucDynReportParameter();
-                    //        ucDynReportParameter1.XMLFileAlternate = ENV.ReportConfigPath + @"\Pflegebegleitschreiben.config";
-                    //        ucDynReportParameter1.REPORT_FILE = ENV.ReportPath + @"\Pflegebegleitschreiben.rpt";
-                    //        ucDynReportParameter1._CurrentFormToShow = "PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo";
-                    //        bool abortWindow = false;
-                    //        ucDynReportParameter1.ProcessPreview(true, @"C:\Develop\PMDS.Main\PMDS.Main\bin\Reports\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger);
-                    //        if (abortWindow)
-                    //        {
-                    //            return false;
-                    //        }
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    return false;
-                    //}
                 }
                 
                 GUI.Main.frmUrlaub2 frmUrlaub = new GUI.Main.frmUrlaub2();
@@ -1039,9 +992,25 @@ namespace PMDS.GUI
                     {
                         try
                         {
+                            //Hier muss das Hochladen des CDAs aus dem Archiv hinein statt dem Generieren
+                            //ELGA-Prüfungen dürfen erst beim Erstellen des PSB und beim Hochladen geprüft werden. Sonst kann der Klient ohne ELGA-Anbindung nicht transferiert werden!
+                            if (ENV.lic_ELGA && !IsAbwesend)        
+                            {
+                                bool bCheck = true;
+                                string ArchivePath = "";
+                                Nullable<Guid> IDOrdnerArchiv = null;
+
+                                ELGABusiness bElga = new ELGABusiness();
+                                if (ELGABusiness.checkELGASessionActive(true) && bElga.checkKontaktbestätigung(idPatient, ENV.IDAUFENTHALT, true) && bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
+                                {
+                                    bElga.SendELGADocu((Guid)IDDokumenteneintrag, Guid.Empty);
+                                }
+                            }
+                            /*
                             ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
                             bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationbericht, false,
                                         IDEinrichtungEmpfänger, IDDokumenteneintrag);
+                            */
                         }
                         catch (Exception ex3)
                         {

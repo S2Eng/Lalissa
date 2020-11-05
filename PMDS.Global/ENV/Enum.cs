@@ -768,7 +768,15 @@ namespace PMDS.Global
     public class Enums
     {
 
-        
+
+        public enum eCompareMode
+        {
+            Equals = 1,
+            StartsWith = 2,
+            Contains = 3,
+            EndsWith = 4
+        }
+
         public static PflegeEintragTyp searchEnumPflegeEintragTyp(int keyToSearch)
         {
             foreach (int val in Enum.GetValues(typeof(PflegeEintragTyp)))
