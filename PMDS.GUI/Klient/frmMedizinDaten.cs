@@ -11,6 +11,8 @@ using PMDS.Klient;
 using PMDS.DB;
 using System.Linq;
 using PMDS.Global.db.ERSystem;
+using PMDS.GUI.ELGA;
+using System.IO;
 
 namespace PMDS.GUI
 {
@@ -405,8 +407,11 @@ namespace PMDS.GUI
                     this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert && rDocuEintrag.ELGACreatedInPMDS;
 
                     if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
-                        (rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationbericht.ToString().Trim().ToLower()) || 
-                        rDocuEintrag.ELGADocuType.Trim().ToLower().Equals(WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief.ToString().Trim().ToLower())))
+                        (
+                            generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht) || 
+                            generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief)
+                         )
+                        )
                     {
                         this.btnBefundSend.Visible = true;
                     }

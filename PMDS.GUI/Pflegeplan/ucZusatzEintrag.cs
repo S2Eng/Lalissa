@@ -84,14 +84,15 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucZusatzEintrag));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucZusatzEintrag));
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
@@ -100,8 +101,9 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("INTListe", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TEXT");
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             this.grpZusatzEintrag = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
+            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
+            this.txtELGA_Version = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.txtELGA_CodeSystem = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.txtELGA_Unit = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.txtELGA_DisplayName = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -127,9 +129,8 @@ namespace PMDS.GUI
             this.dsINTListe1 = new PMDS.Global.db.Global.dsINTListe();
             this.lblID = new QS2.Desktop.ControlManagment.BaseLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtELGA_Version = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.grpZusatzEintrag.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGA_Version)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGA_CodeSystem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGA_Unit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGA_DisplayName)).BeginInit();
@@ -142,7 +143,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dgListe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsINTListe1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtELGA_Version)).BeginInit();
             this.SuspendLayout();
             // 
             // grpZusatzEintrag
@@ -177,6 +177,23 @@ namespace PMDS.GUI
             this.grpZusatzEintrag.TabIndex = 0;
             this.grpZusatzEintrag.TabStop = false;
             this.grpZusatzEintrag.Text = "Zusatz-Eintrag";
+            // 
+            // ultraLabel1
+            // 
+            appearance1.TextVAlignAsString = "Middle";
+            this.ultraLabel1.Appearance = appearance1;
+            this.ultraLabel1.Location = new System.Drawing.Point(9, 152);
+            this.ultraLabel1.Name = "ultraLabel1";
+            this.ultraLabel1.Size = new System.Drawing.Size(111, 17);
+            this.ultraLabel1.TabIndex = 52;
+            this.ultraLabel1.Text = "ELGA Version";
+            // 
+            // txtELGA_Version
+            // 
+            this.txtELGA_Version.Location = new System.Drawing.Point(124, 149);
+            this.txtELGA_Version.Name = "txtELGA_Version";
+            this.txtELGA_Version.Size = new System.Drawing.Size(376, 21);
+            this.txtELGA_Version.TabIndex = 6;
             // 
             // txtELGA_CodeSystem
             // 
@@ -231,8 +248,8 @@ namespace PMDS.GUI
             // 
             // lblELGA_Unit
             // 
-            appearance9.TextVAlignAsString = "Middle";
-            this.lblELGA_Unit.Appearance = appearance9;
+            appearance2.TextVAlignAsString = "Middle";
+            this.lblELGA_Unit.Appearance = appearance2;
             this.lblELGA_Unit.Location = new System.Drawing.Point(8, 203);
             this.lblELGA_Unit.Name = "lblELGA_Unit";
             this.lblELGA_Unit.Size = new System.Drawing.Size(128, 17);
@@ -241,8 +258,8 @@ namespace PMDS.GUI
             // 
             // lblELGA_DisplayName
             // 
-            appearance10.TextVAlignAsString = "Middle";
-            this.lblELGA_DisplayName.Appearance = appearance10;
+            appearance3.TextVAlignAsString = "Middle";
+            this.lblELGA_DisplayName.Appearance = appearance3;
             this.lblELGA_DisplayName.Location = new System.Drawing.Point(8, 178);
             this.lblELGA_DisplayName.Name = "lblELGA_DisplayName";
             this.lblELGA_DisplayName.Size = new System.Drawing.Size(128, 17);
@@ -251,8 +268,8 @@ namespace PMDS.GUI
             // 
             // lblELGA_CodeSystem
             // 
-            appearance11.TextVAlignAsString = "Middle";
-            this.lblELGA_CodeSystem.Appearance = appearance11;
+            appearance4.TextVAlignAsString = "Middle";
+            this.lblELGA_CodeSystem.Appearance = appearance4;
             this.lblELGA_CodeSystem.Location = new System.Drawing.Point(8, 126);
             this.lblELGA_CodeSystem.Name = "lblELGA_CodeSystem";
             this.lblELGA_CodeSystem.Size = new System.Drawing.Size(111, 17);
@@ -261,8 +278,8 @@ namespace PMDS.GUI
             // 
             // lblELGA_Code
             // 
-            appearance12.TextVAlignAsString = "Middle";
-            this.lblELGA_Code.Appearance = appearance12;
+            appearance5.TextVAlignAsString = "Middle";
+            this.lblELGA_Code.Appearance = appearance5;
             this.lblELGA_Code.Location = new System.Drawing.Point(8, 101);
             this.lblELGA_Code.Name = "lblELGA_Code";
             this.lblELGA_Code.Size = new System.Drawing.Size(128, 17);
@@ -271,8 +288,8 @@ namespace PMDS.GUI
             // 
             // lblELGA_ID
             // 
-            appearance13.TextVAlignAsString = "Middle";
-            this.lblELGA_ID.Appearance = appearance13;
+            appearance6.TextVAlignAsString = "Middle";
+            this.lblELGA_ID.Appearance = appearance6;
             this.lblELGA_ID.Location = new System.Drawing.Point(8, 75);
             this.lblELGA_ID.Name = "lblELGA_ID";
             this.lblELGA_ID.Size = new System.Drawing.Size(108, 19);
@@ -287,7 +304,7 @@ namespace PMDS.GUI
             this.grpWertebereich.Controls.Add(this.maxValue);
             this.grpWertebereich.Controls.Add(this.lblMin);
             this.grpWertebereich.Controls.Add(this.lblMax);
-            this.grpWertebereich.Location = new System.Drawing.Point(8, 507);
+            this.grpWertebereich.Location = new System.Drawing.Point(8, 506);
             this.grpWertebereich.Name = "grpWertebereich";
             this.grpWertebereich.Size = new System.Drawing.Size(582, 44);
             this.grpWertebereich.TabIndex = 50;
@@ -337,10 +354,10 @@ namespace PMDS.GUI
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance14.Image = ((object)(resources.GetObject("appearance14.Image")));
-            appearance14.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance14.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnAdd.Appearance = appearance14;
+            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance7.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnAdd.Appearance = appearance7;
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnAdd.DoOnClick = true;
@@ -357,10 +374,10 @@ namespace PMDS.GUI
             // btnDel
             // 
             this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance7.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDel.Appearance = appearance7;
+            appearance8.Image = ((object)(resources.GetObject("appearance8.Image")));
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDel.Appearance = appearance8;
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnDel.DoOnClick = true;
@@ -473,23 +490,6 @@ namespace PMDS.GUI
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // txtELGA_Version
-            // 
-            this.txtELGA_Version.Location = new System.Drawing.Point(124, 149);
-            this.txtELGA_Version.Name = "txtELGA_Version";
-            this.txtELGA_Version.Size = new System.Drawing.Size(376, 21);
-            this.txtELGA_Version.TabIndex = 6;
-            // 
-            // ultraLabel1
-            // 
-            appearance8.TextVAlignAsString = "Middle";
-            this.ultraLabel1.Appearance = appearance8;
-            this.ultraLabel1.Location = new System.Drawing.Point(9, 152);
-            this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(111, 17);
-            this.ultraLabel1.TabIndex = 52;
-            this.ultraLabel1.Text = "ELGA Version";
-            // 
             // ucZusatzEintrag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,6 +498,7 @@ namespace PMDS.GUI
             this.Size = new System.Drawing.Size(612, 574);
             this.grpZusatzEintrag.ResumeLayout(false);
             this.grpZusatzEintrag.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtELGA_Version)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGA_CodeSystem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGA_Unit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGA_DisplayName)).EndInit();
@@ -511,7 +512,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dgListe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsINTListe1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtELGA_Version)).EndInit();
             this.ResumeLayout(false);
 
 		}

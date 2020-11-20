@@ -49,7 +49,7 @@ namespace PMDS.BusinessLogic
 
 		public static bool HasMinMax(ZusatzEintragTyp typ)
 		{
-			return (ZusatzEintragTyp.FLOAT == typ);
+			return (typ == ZusatzEintragTyp.FLOAT || typ == ZusatzEintragTyp.INT);
 		}
 
 		public ZusatzEintrag()

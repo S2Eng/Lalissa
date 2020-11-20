@@ -36,7 +36,7 @@ namespace WCFServicePMDS.CDABAL
         public enum eTypeCDA
         {
             Entlassungsbrief = 0,
-            Pflegesituationbericht = 1
+            Pflegesituationsbericht = 1
         }
         private enum eParticipation
         {

@@ -207,12 +207,15 @@ namespace PMDS.Calc.UI.Admin
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.dgMain.DisplayLayout.Appearance = appearance2;
             ultraGridColumn1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn1.Hidden = true;
             ultraGridColumn2.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn2.Hidden = true;
             ultraGridColumn3.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn3.Header.Editor = null;
             ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn3.RowLayoutColumnInfo.OriginX = 2;
             ultraGridColumn3.RowLayoutColumnInfo.OriginY = 0;
@@ -220,6 +223,7 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn3.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn3.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn4.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn4.Header.Editor = null;
             ultraGridColumn4.Header.VisiblePosition = 3;
             ultraGridColumn4.RowLayoutColumnInfo.OriginX = 4;
             ultraGridColumn4.RowLayoutColumnInfo.OriginY = 0;
@@ -228,6 +232,7 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn4.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn5.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn5.Header.Caption = "Kürzung Grundlstg.";
+            ultraGridColumn5.Header.Editor = null;
             ultraGridColumn5.Header.VisiblePosition = 4;
             ultraGridColumn5.RowLayoutColumnInfo.OriginX = 6;
             ultraGridColumn5.RowLayoutColumnInfo.OriginY = 0;
@@ -236,6 +241,7 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn5.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn6.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn6.Header.Caption = "Tage ohne Reduzierung";
+            ultraGridColumn6.Header.Editor = null;
             ultraGridColumn6.Header.ToolTipText = "Anzahl der Tage nach Beginn der Abwesenheit, an denen keine Kürzung der Grundleis" +
     "tung erfolgt!";
             ultraGridColumn6.Header.VisiblePosition = 5;
@@ -246,6 +252,7 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn6.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn7.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn7.EditorComponent = this.cboGrund;
+            ultraGridColumn7.Header.Editor = null;
             ultraGridColumn7.Header.VisiblePosition = 6;
             ultraGridColumn7.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn7.RowLayoutColumnInfo.OriginY = 0;
@@ -255,6 +262,7 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn7.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDown;
             ultraGridColumn8.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn8.Header.Caption = "Erfasst am";
+            ultraGridColumn8.Header.Editor = null;
             ultraGridColumn8.Header.VisiblePosition = 7;
             ultraGridColumn8.RowLayoutColumnInfo.OriginX = 10;
             ultraGridColumn8.RowLayoutColumnInfo.OriginY = 0;
@@ -263,6 +271,7 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn8.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn9.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn9.Header.Caption = "Benutzer";
+            ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 8;
             ultraGridColumn9.RowLayoutColumnInfo.OriginX = 12;
             ultraGridColumn9.RowLayoutColumnInfo.OriginY = 0;
@@ -272,6 +281,7 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn10.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn10.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn10.Header.Caption = "Abgerechnet bis";
+            ultraGridColumn10.Header.Editor = null;
             ultraGridColumn10.Header.VisiblePosition = 9;
             ultraGridColumn10.Hidden = true;
             ultraGridColumn10.RowLayoutColumnInfo.OriginX = 14;
@@ -280,12 +290,15 @@ namespace PMDS.Calc.UI.Admin
             ultraGridColumn10.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn10.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn11.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn11.Header.Editor = null;
             ultraGridColumn11.Header.VisiblePosition = 10;
             ultraGridColumn11.Hidden = true;
             ultraGridColumn12.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn12.Header.Caption = "Überspielt";
+            ultraGridColumn12.Header.Editor = null;
             ultraGridColumn12.Header.VisiblePosition = 11;
             ultraGridColumn25.Header.Caption = "Einrichtung";
+            ultraGridColumn25.Header.Editor = null;
             ultraGridColumn25.Header.VisiblePosition = 12;
             ultraGridColumn25.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(196, 0);
             ultraGridBand1.Columns.AddRange(new object[] {

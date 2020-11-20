@@ -39,6 +39,7 @@
             this.lblAnEinrichtung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.btnPreview = new Infragistics.Win.Misc.UltraButton();
             this.btnCheck = new Infragistics.Win.Misc.UltraButton();
+            this.btnToPBS = new Infragistics.Win.Misc.UltraButton();
             this.ucELGAPrintPflegesituationsbericht1 = new PMDS.GUI.Print.ucELGAPrintPflegesituationsbericht();
             this.btnCancel = new PMDS.GUI.ucButton(this.components);
             this.btnOK = new PMDS.GUI.ucButton(this.components);
@@ -101,6 +102,15 @@
             this.btnCheck.Text = "Prüfen";
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
+            // btnToPBS
+            // 
+            this.btnToPBS.Location = new System.Drawing.Point(106, 722);
+            this.btnToPBS.Name = "btnToPBS";
+            this.btnToPBS.Size = new System.Drawing.Size(163, 32);
+            this.btnToPBS.TabIndex = 23;
+            this.btnToPBS.Text = "-> Pflegebegleitschreiben";
+            this.btnToPBS.Click += new System.EventHandler(this.btnToPBS_Click);
+            // 
             // ucELGAPrintPflegesituationsbericht1
             // 
             this.ucELGAPrintPflegesituationsbericht1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -130,7 +140,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(800, 722);
+            this.btnCancel.Location = new System.Drawing.Point(12, 722);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 16;
@@ -181,6 +191,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 761);
+            this.Controls.Add(this.btnToPBS);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.ucELGAPrintPflegesituationsbericht1);
@@ -213,5 +224,6 @@
         private ucELGAPrintPflegesituationsbericht ucELGAPrintPflegesituationsbericht1;
         private Infragistics.Win.Misc.UltraButton btnPreview;
         private Infragistics.Win.Misc.UltraButton btnCheck;
+        private Infragistics.Win.Misc.UltraButton btnToPBS;
     }
 }
