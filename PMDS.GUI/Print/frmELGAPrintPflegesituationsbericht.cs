@@ -23,6 +23,7 @@ namespace PMDS.GUI.Print
         private Component2 compFachlicheSektionen = new Component2();
         public bool ResumeWithPBS { get; set; } = false;
         public System.IO.MemoryStream msPSB { get; set; } =  new System.IO.MemoryStream();
+        public bool SendToELGA { get; set; } = true;
 
         public frmELGAPrintPflegesituationsbericht()
         {
@@ -196,6 +197,12 @@ namespace PMDS.GUI.Print
             pr.ShowXMLInBrowser(msXML, "", true);
             //this.ucELGAPrintPflegesituationsbericht1.UpdatePreView(msXML);
             btnOK.Enabled = true;
+        }
+
+        private void btnToPBS_Click(object sender, EventArgs e)
+        {
+            ResumeWithPBS = true;
+            _canClose = true;
         }
     }
 }

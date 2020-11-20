@@ -147,55 +147,57 @@ namespace PMDS.GUI
 		{
             try
             {
-                if (ENV.lic_ELGA)
-                {
-                    ELGABusiness bElga = new ELGABusiness();
-
-                    if (!bElga.checkKontaktbestätigung(idPatient, ENV.IDAUFENTHALT, true))
-                    {
-                        return false;
-                    }
-
-                    string ArchivePath = "";
-                    Nullable<Guid> IDOrdnerArchiv = null;
-                    if (!bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
-                    {
-                        return false;
-                    }
-
-                    //if (!ELGABusiness.checkELGASessionActive(true))
-                    //{
-                    //    return false;
-                    //}
-                }
-
+                bool bOK = false;
                 Patient pat = new Patient(idPatient);
 
-			    // Hinweis bei Entlassung, wenn Patient im Urlaub
+			    // Hinweis bei Entlassung, wenn Patient abwesend ist
 			    if (pat.Aufenthalt.HasUrlaub)
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(ENV.String("GUI.PATIENT_URLAUB"),ENV.String("GUI.DIALOGTITLE_PATIENT_URLAUB"), 
                                                                                     MessageBoxButtons.OK,MessageBoxIcon.Stop, true);
 
-			    frmEntlassung ent = new frmEntlassung(pat);
-                ent.mainWindow = mainWindow;
-                bool bOK = (ent.ShowDialog() == DialogResult.OK);
-                
-                if (bOK && GuiActionDone != null)
+                if (GuiActionDone != null)
                 {
                     try
                     {
-                        ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                        bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked,
-                                            (Guid)ent.ucEntlassung1.cbEinrichtung.Value, null);
+                        Nullable<Guid> IDEinrichtungEmpfänger = null;
+                        Nullable<Guid> IDDokumenteneintrag = null;
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                        {
+                            using (ucDynReportParameter ucDynReportParameter1 = new ucDynReportParameter())
+                            {
+                                ucDynReportParameter1.XMLFileAlternate = ENV.ReportConfigPath + @"\Pflegebegleitschreiben.config";
+                                ucDynReportParameter1.REPORT_FILE = ENV.ReportPath + @"\Pflegebegleitschreiben.rpt";
+                                ucDynReportParameter1._CurrentFormToShow = "PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo";
+                                bool abortWindow = false;
+                                bool bSaveToArchiv = ENV.SavePflegebegleitschreibenToArchiv;
+                                ucDynReportParameter1.ProcessPreview(true, ENV.ReportPath + @"\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger, ref bSaveToArchiv, true, ref IDDokumenteneintrag);
+                                if (abortWindow)
+                                {
+                                    return false;
+                                }
+                            }
+                        }
+
+                        //ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
+                        //bUI.genCDA(idPatient, pat.Aufenthalt.ID, null, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief, ent.ucEntlassung1.chkVerstorben.Checked,
+                        //                    (Guid)ent.ucEntlassung1.cbEinrichtung.Value, null);
                     }
                     catch (Exception ex3)
                     {
                         string sExcept = "GuidAction.PatientEntlassung2: Error genCDA() for IDPatient='" + idPatient.ToString() + "'" + "\r\n" + "\r\n" + ex3.ToString();
                         ENV.HandleException(new Exception(sExcept));
                     }
-                    GuiActionDone(SiteEvents.Entlassen);
                 }
-                
+
+                using (frmEntlassung ent = new frmEntlassung(pat))
+                {
+                    ent.mainWindow = mainWindow;
+                    bOK = (ent.ShowDialog() == DialogResult.OK);
+                }
+
+                if (bOK)
+                    GuiActionDone(SiteEvents.Entlassen);
+
                 return (bOK);
             }
             catch (Exception ex)
@@ -954,7 +956,6 @@ namespace PMDS.GUI
             try
             {
                 PMDSBusiness b = new PMDSBusiness();
-
                 bool IsAbwesend = false;
                 Nullable<Guid> IDEinrichtungEmpfänger = null;
                 Nullable<Guid> IDDokumenteneintrag = null;
@@ -963,97 +964,47 @@ namespace PMDS.GUI
                     IsAbwesend = b.KlientIsAbwesend(db, ENV.IDAUFENTHALT);
                 }
 
-
                 if (!IsAbwesend)            //if (ENV.lic_ELGA && !IsAbwesend)
                 {
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        ucDynReportParameter ucDynReportParameter1 = new ucDynReportParameter();
-                        ucDynReportParameter1.XMLFileAlternate = ENV.ReportConfigPath + @"\Pflegebegleitschreiben.config";
-                        ucDynReportParameter1.REPORT_FILE = ENV.ReportPath + @"\Pflegebegleitschreiben.rpt";
-                        ucDynReportParameter1._CurrentFormToShow = "PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo";
-                        bool abortWindow = false;
-                        bool bSaveToArchiv = ENV.SavePflegebegleitschreibenToArchiv;
-                        ucDynReportParameter1.ProcessPreview(true, ENV.ReportPath + @"\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger, ref bSaveToArchiv, ref IDDokumenteneintrag);
-                        if (abortWindow)
+                        using (ucDynReportParameter ucDynReportParameter1 = new ucDynReportParameter())
                         {
-                            return false;
-                        }
-                    }
-                }
-                
-                GUI.Main.frmUrlaub2 frmUrlaub = new GUI.Main.frmUrlaub2();
-                frmUrlaub.initControl(idPatient);
-                frmUrlaub.ucUrlaub21.loadData();
-                frmUrlaub.ShowDialog();
-                if (!frmUrlaub.ucUrlaub21.abort)
-                {
-                    if (!frmUrlaub.ucUrlaub21.IsAbwesend)
-                    {
-                        try
-                        {
-                            //Hier muss das Hochladen des CDAs aus dem Archiv hinein statt dem Generieren
-                            //ELGA-Prüfungen dürfen erst beim Erstellen des PSB und beim Hochladen geprüft werden. Sonst kann der Klient ohne ELGA-Anbindung nicht transferiert werden!
-                            if (ENV.lic_ELGA && !IsAbwesend)        
+                            ucDynReportParameter1.XMLFileAlternate = ENV.ReportConfigPath + @"\Pflegebegleitschreiben.config";
+                            ucDynReportParameter1.REPORT_FILE = ENV.ReportPath + @"\Pflegebegleitschreiben.rpt";
+                            ucDynReportParameter1._CurrentFormToShow = "PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo";
+                            bool abortWindow = false;
+                            bool bSaveToArchiv = ENV.SavePflegebegleitschreibenToArchiv;
+                            ucDynReportParameter1.ProcessPreview(true, ENV.ReportPath + @"\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger, ref bSaveToArchiv, true, ref IDDokumenteneintrag);
+                            if (abortWindow)
                             {
-                                bool bCheck = true;
-                                string ArchivePath = "";
-                                Nullable<Guid> IDOrdnerArchiv = null;
-
-                                ELGABusiness bElga = new ELGABusiness();
-                                if (ELGABusiness.checkELGASessionActive(true) && bElga.checkKontaktbestätigung(idPatient, ENV.IDAUFENTHALT, true) && bElga.checkArchivesystem(ref ArchivePath, ref IDOrdnerArchiv))
-                                {
-                                    bElga.SendELGADocu((Guid)IDDokumenteneintrag, Guid.Empty);
-                                }
+                                return false;
                             }
-                            /*
-                            ELGAPMDSBusinessUI bUI = new ELGAPMDSBusinessUI();
-                            bUI.genCDA(idPatient, ENV.IDAUFENTHALT, frmUrlaub.ucUrlaub21.rAufenthaltAct.IDUrlaub, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationbericht, false,
-                                        IDEinrichtungEmpfänger, IDDokumenteneintrag);
-                            */
                         }
-                        catch (Exception ex3)
+                    }
+                }
+
+                using (GUI.Main.frmUrlaub2 frmUrlaub = new GUI.Main.frmUrlaub2())
+                {
+                    frmUrlaub.initControl(idPatient);
+                    frmUrlaub.ucUrlaub21.loadData();
+                    frmUrlaub.ShowDialog();
+                    if (!frmUrlaub.ucUrlaub21.abort)
+                    {
+                        if (GuiActionDone != null)
+                            GuiActionDone(SiteEvents.Urlaub);
+
+                        if (frmUrlaub.ucUrlaub21.restartFrm)
                         {
-                            string sExcept = "GuidAction.PatientUrlaub: Error genCDA() for IDPatient='" + idPatient.ToString() + "'" + "\r\n" + "\r\n" + ex3.ToString();
-                            ENV.HandleException(new Exception(sExcept));
+                            return GuiAction.PatientUrlaub(idPatient);
+                        }
+                        else
+                        {
+                            return true;
                         }
                     }
-
-                    if (GuiActionDone != null)
-                        GuiActionDone(SiteEvents.Urlaub);
-
-                    if (frmUrlaub.ucUrlaub21.restartFrm)
-                    {
-                        return GuiAction.PatientUrlaub(idPatient);
-                    }
-                    else
-                    {
-                        return true;
-                    }
                 }
-
-                if (frmUrlaub.ucUrlaub21.restartFrm)
-                {
-                    return GuiAction.PatientUrlaub(idPatient);
-                }
-                else
-                {
-                    return false;
-                }
-
-
-                //Patient pat = new Patient(idPatient);
-                //frmUrlaub urlaub = new frmUrlaub(pat);			
-                //DialogResult res = urlaub.ShowDialog();
-
-                //if (res == DialogResult.OK)
-                //{
-                //   if (GuiActionDone != null)
-                //       GuiActionDone(SiteEvents.Urlaub);
-                //   return true;
-                //}
-                //return false;
-
+                return false;
             }
             catch (Exception ex)
             {

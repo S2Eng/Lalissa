@@ -25,6 +25,7 @@ using PMDS.DB;
 using PMDS.GUI.VB;
 using System.Linq;
 using PMDS.Global.db.ERSystem;
+using PMDSClient.Sitemap;
 
 namespace PMDS.GUI
 {
@@ -133,7 +134,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
 
         public void ProcessPreview(bool bPreview, string ReportFile, PMDS.db.Entities.ERModellPMDSEntities db, 
-                                        ref bool abortWindow, ref Nullable<Guid> IDEinrichtungEmpfänger, ref bool bSaveToArchiv, ref Nullable<Guid> IDDokumenteneintrag)
+                                        ref bool abortWindow, ref Nullable<Guid> IDEinrichtungEmpfänger, ref bool bSaveToArchiv, bool bSendToELGA, ref Nullable<Guid> IDDokumenteneintrag)
         {
             try
             {
@@ -286,7 +287,7 @@ namespace PMDS.GUI
                     var rPatInfo = (from p in db.Patient
                                     where p.ID == ENV.CurrentIDPatient
                                     select new
-                                    { p.Nachname, p.Vorname }
+                                    { p.ID, p.Nachname, p.Vorname }
                                    ).First();
 
                     Application.UseWaitCursor = false;
@@ -323,23 +324,56 @@ namespace PMDS.GUI
                     }
                     else if (SavePSBToArchiv)    //Pflegesituationsbericht in Archiv ablegen
                     {
-                        string tmpPSB = "Pflegesituationsbericht";
-                        string tmpFile = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, tmpPSB + "_" + System.Guid.NewGuid().ToString() + ".xml");
-                        if (bVB.SaveFileToArchive(tmpFile,
-                                                    tmpPSB + " für " + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(),
-                                                    "Pflegebegleitschreiben", 
-                                                    ref IDDokumenteneintrag,
-                                                    msPSB
-                                                  ))
+
+                        Guid? IDUrlaub = null;
+                        List<Guid> retList = this.SavePSBMemStreamToArchive(msPSB, "Befunde",
+                                        db, ENV.IDAUFENTHALT, rPatInfo.ID, rPatInfo.Nachname + " " + rPatInfo.Vorname, 
+                                        IDUrlaub,
+                                        Guid.NewGuid().ToString());
+
+                        if (retList.Count == 2)
                         {
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(tmpPSB + " wurde ins Archiv abgelegt!");
-                            if (File.Exists(tmpFile))
+                            if (bSendToELGA)    //nur im Abwesenheitsworkflow
                             {
-                                File.Delete(tmpFile);
-                                ReportNameProt = tmpPSB;
-                                protTitle = string.Format(tmpPSB, ReportNameProt);
+                                //PSB ins ELGA hochladen
+                                ELGABusiness elgaBusiness = new ELGABusiness();
+                                elgaBusiness.SendELGADocu(retList[0], retList[1]);
+                            }
+                            else
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der Pflegesituationsbericht wurde ins Archiv abgelegt!");
                             }
                         }
+                        else
+                        {
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Achtung: Der Pflegesituationsbericht konnte nicht ins Archiv abgelegt werden.");
+                        }
+                        //string tmpPSB = "Pflegesituationsbericht";
+                        //string tmpFile = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, tmpPSB + "_" + System.Guid.NewGuid().ToString() + ".xml");
+                        //if (bVB.SaveFileToArchive(tmpFile,
+                        //                            tmpPSB + " für " + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(),
+                        //                            "Pflegebegleitschreiben", 
+                        //                            ref IDDokumenteneintrag,
+                        //                            msPSB
+                        //                          ))
+                        //{
+                        //    PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
+
+                        //    string IDDokumenteintragReturn = "";
+                        //    string Beschreibung = "Pflegesituatonsbericht";
+                        //    bool WriteMedizinischeDaten = PMDSBusiness1.addMedizinischeDatenBefund(db, DateTime.Now, ENV.CurrentIDPatient, ref Beschreibung,
+                        //                 IDDokumenteneintrag, "Pflegesituationsbericht", MedizinischerTyp.Befunde, "",
+                        //                 IDDokumenteintragReturn, "", "");
+                        //    db.SaveChanges();
+
+                        //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(tmpPSB + " wurde ins Archiv abgelegt!");
+                        //    if (File.Exists(tmpFile))
+                        //    {
+                        //        File.Delete(tmpFile);
+                        //        ReportNameProt = tmpPSB;
+                        //        protTitle = string.Format(tmpPSB, ReportNameProt);
+                        //    }
+                        //}
                     }
 
                     PMDS.db.Entities.Benutzer rUserLoggedIn = this.b.LogggedOnUser(db);
@@ -371,7 +405,97 @@ namespace PMDS.GUI
                 Application.UseWaitCursor = false;
             }
         }
-        
+
+        public List<Guid> SavePSBMemStreamToArchive(MemoryStream msPSB, string ArchivOrdner, 
+                                                PMDS.db.Entities.ERModellPMDSEntities db,  
+                                                Guid IDAufenthalt, 
+                                                Guid IDPatient, string PatName,
+                                                Nullable<Guid> IDUrlaub,
+                                                string ELGAUniqueId)
+        {
+            try
+            {
+
+                List<Guid> retList = new List<Guid>();
+                DateTime dNow = DateTime.Now;
+                string PSBName = WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht.ToString();
+                string sFileName = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, PSBName + "_" + System.Guid.NewGuid().ToString() + ".xml");
+                msPSB.Position = 0;
+                using (FileStream fs = new FileStream(sFileName, FileMode.Create))
+                {
+                    msPSB.CopyTo(fs);
+                    fs.Flush();
+                }
+
+                Guid IDArchivOrdner;
+                using (compSql comp = new compSql())
+                {
+                    IDArchivOrdner = comp.GetOrdnerBiografie(ArchivOrdner);  //"Befunde"
+                }
+
+                PMDSBusiness b = new PMDSBusiness();
+
+                Guid IDDokumenteintragReturn = Guid.Empty;
+                bool bDocuAdded = b.SaveDokumentinArchiv(System.IO.Path.GetFileName(sFileName), System.IO.Path.GetDirectoryName(sFileName), 
+                                                            IDArchivOrdner,
+                                                            PSBName, 
+                                                            ".xml",
+                                                            PSBName,
+                                                            dNow, 
+                                                            IDPatient, ref IDDokumenteintragReturn, "", true, "", ELGAUniqueId, true, 0,
+                                                            IDAufenthalt, IDUrlaub);
+
+
+                PMDS.db.Entities.MedizinischeDaten rMedizinischeDaten = EFEntities.newMedizinischeDaten(db);
+                rMedizinischeDaten.ID = System.Guid.NewGuid();
+                rMedizinischeDaten.MedizinischerTyp = 15;
+                rMedizinischeDaten.IDPatient = IDPatient;
+                rMedizinischeDaten.Von = dNow;
+                rMedizinischeDaten.Bis = null;
+
+                rMedizinischeDaten.Beschreibung = "";
+                rMedizinischeDaten.Bemerkung = "";
+                rMedizinischeDaten.Beendigungsgrund = "";
+                rMedizinischeDaten.LetzteVersorgung = null;
+                rMedizinischeDaten.NaechsteVersorgung = null;
+
+                rMedizinischeDaten.Modell = "";
+                rMedizinischeDaten.Handling = "";
+                rMedizinischeDaten.Therapie = "";
+                rMedizinischeDaten.ICDCode = "";
+                rMedizinischeDaten.AufnahmediagnoseJN = false;
+                rMedizinischeDaten.AntikoaguliertJN = false;
+                rMedizinischeDaten.Typ = "";
+                rMedizinischeDaten.Anzahl = 0;
+                rMedizinischeDaten.NuechternJN = false;
+                rMedizinischeDaten.Groesse = "";
+                rMedizinischeDaten.IDBenutzergeaendert = ENV.USERID;
+
+                rMedizinischeDaten.IDDocu = IDDokumenteintragReturn;
+                rMedizinischeDaten.Beschreibung = PSBName;
+                rMedizinischeDaten.Bemerkung = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument");
+                db.MedizinischeDaten.Add(rMedizinischeDaten);
+                db.SaveChanges();
+
+                string sProt2 = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument {0} für Patient {1} wurde im Archiv abgelegt");
+                sProt2 = string.Format(sProt2, PSBName, PatName);
+                ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument wurde im Archiv abgelegt"), null,
+                                                ELGABusiness.eTypeProt.ELGADocumentSavedDB, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt2);
+
+                retList.Add(IDDokumenteintragReturn);
+                retList.Add(rMedizinischeDaten.ID);
+
+                return retList;
+
+                //PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this._IDAufenthalt).First();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.saveMedDatenForELGADocu: " + ex.ToString());
+            }
+        }
+
+
         //----------------------------------------------------------------------------
         /// <summary>
         /// Eine Platzhalterersetzung wird von irgendjemanden angefordert

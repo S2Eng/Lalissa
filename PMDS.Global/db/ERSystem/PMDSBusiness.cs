@@ -6316,8 +6316,8 @@ namespace PMDS.DB
             }
         }
         public bool SaveDokumentinArchiv(string DateinameOrig, string VerzeichnisOrig, Guid IDOrdner, string BezeichnungFile,
-                                            string DateiType, string ELGADocuType, DateTime dNow, long SizeDoku, 
-                                            Guid IDPatient, string PathArchive, ref Guid IDDokumenteintragReturn, string Notiz,
+                                            string DateiType, string ELGADocuType, DateTime dNow, 
+                                            Guid IDPatient, ref Guid IDDokumenteintragReturn, string Notiz, bool DeleteOriginalFile,
                                             string FileStylesheet = "", string ELGAUniqueId = "", bool IsELGADocu = false, int ELGAÜbertragen = -1, 
                                             Nullable<Guid> IDAufenthalt = null, Nullable<Guid> IDUrlaub = null)
         {
@@ -6325,7 +6325,7 @@ namespace PMDS.DB
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    string FileWithPathOrig = VerzeichnisOrig.Trim() + "\\" + DateinameOrig.Trim();
+                    string FileWithPathOrig = System.IO.Path.Combine(VerzeichnisOrig.Trim(), DateinameOrig.Trim());
                     if (!System.IO.File.Exists(FileWithPathOrig))
                     {
                         //return false;
@@ -6333,7 +6333,7 @@ namespace PMDS.DB
                     }
 
                     string SubArchivordner = dNow.Year.ToString() + "_" + dNow.Month.ToString();
-                    string Archivordner = System.IO.Path.Combine(PathArchive.Trim(), SubArchivordner);
+                    string Archivordner = System.IO.Path.Combine(ENV.ArchivPath, SubArchivordner);
                     string FileWithPathArchive = System.IO.Path.Combine(Archivordner, BezeichnungFile + "_" + System.Guid.NewGuid().ToString() + DateiType);
                     if (!System.IO.Directory.Exists(Archivordner))
                     {
@@ -6377,7 +6377,7 @@ namespace PMDS.DB
                     NewDokument.IDDokumenteintrag = NewDokumenteintrag.ID;
                     NewDokument.DateinameOrig = DateinameOrig.Trim();
                     NewDokument.VerzeichnisOrig = VerzeichnisOrig.Trim();
-                    NewDokument.DokumentGröße = SizeDoku;
+                    NewDokument.DokumentGröße = new System.IO.FileInfo(FileWithPathOrig).Length;
                     NewDokument.DokumentErstellt = dNow;
                     NewDokument.DokumentGeändert = dNow;
                     NewDokument.ErstelltAm = dNow;
@@ -6405,9 +6405,11 @@ namespace PMDS.DB
 
                     db.tblObjekt.Add(rObjekt);
 
-                    //System.GC.Collect(GC.MaxGeneration);
                     System.IO.File.Copy(FileWithPathOrig, FileWithPathArchive);
-                    //System.GC.Collect(GC.MaxGeneration);
+                    if (DeleteOriginalFile && File.Exists(FileWithPathOrig))
+                    { 
+                        File.Delete(FileWithPathOrig);
+                    }
 
                     db.SaveChanges();
                     return true;

@@ -36,24 +36,24 @@ namespace WCFServicePMDS.Hosts
         {
             try
             {
-                dynamic p = pars;
-                int procID = p.CurrentProcessId;
+                //dynamic p = pars;
+                //int procID = p.CurrentProcessId;
 
-                bool bEnd = false;
-                while (!bEnd)
-                {
-                    Thread.Sleep(60 * 1000);
-                    bool bFoundClient = false;
+                //bool bEnd = false;
+                //while (!bEnd)
+                //{
+                //    Thread.Sleep(60 * 1000);
+                //    bool bFoundClient = false;
 
-                    Process[] pr = Process.GetProcessesByName("PMDS.Main");
-                    foreach (Process prs in pr)
-                    {
-                        if (prs.Id == procID)
-                            bFoundClient = true;
-                    }
-                    if (!bFoundClient)
-                        System.Diagnostics.Process.GetCurrentProcess().Kill();
-                }
+                //    Process[] pr = Process.GetProcessesByName("PMDS.Main");
+                //    foreach (Process prs in pr)
+                //    {
+                //        if (prs.Id == procID)
+                //            bFoundClient = true;
+                //    }
+                //    if (!bFoundClient)
+                //        System.Diagnostics.Process.GetCurrentProcess().Kill();
+                //}
 
             }
             catch (Exception ex)

@@ -125,7 +125,7 @@ namespace PMDS.GUI
                             }
                         }
                     }
-                    else if (CDAeTypeCDA == WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationbericht)
+                    else if (CDAeTypeCDA == WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht)
                     {
                         string Documentname = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegezustandsbericht");
                         string Stylesheet = "ELGA_Stylesheet_v1.0.xsl";
@@ -133,23 +133,6 @@ namespace PMDS.GUI
 
                         this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
                                                     IDEinrichtungEmpfänger, verstorbenJN, FileType, IDDokumenteneintrag);
-
-                        //BaseControls.BerichtParameterReplaceDelegate _delegate = new BaseControls.BerichtParameterReplaceDelegate(new UIGlobal().ParameterHelper_ReplaceString);
-                        //BaseControls.ParameterHelper.ReplaceString += _delegate;
-                        //frmPrintPflegebegleitschreibenInfo frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                        //frmPrintPflegebegleitschreibenInfo1.btnSaveToArchive.Visible = true;
-                        //BaseControls.ParameterHelper.ReplaceString -= _delegate;
-                        //DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                        //if (res != DialogResult.OK && !frmPrintPflegebegleitschreibenInfo1.saveToArchive)
-                        //{
-                        //    this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                        //                                (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
-                        //}
-                        //else
-                        //{
-                        //    this.prieviewSendSaveCDA(IDPatient, IDAufenthalt, IDUrlaub, CDAeTypeCDA, IDDocument, ClinicalDocumentSetID, VersionsNr, Documentname, Stylesheet, rAufenthalt.ELGALocalID.Trim(), db, dNow, hasRight,
-                        //                                (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value, verstorbenJN, FileType);
-                        //}
                     }
                     else
                     {
@@ -277,36 +260,34 @@ namespace PMDS.GUI
                                  }).First();
 
                     string FileArchive = Path.Combine(rPfad.Archivpfad.Trim(), rDocu.Archivordner.Trim(), rDocu.DateinameArchiv.Trim());
-                    //string FileTmp = rDocu.DateinameArchiv.Trim() + "_" + System.Guid.NewGuid().ToString() + rDocu.DateinameTyp.Trim()
-                    //string FilePathTmp = System.IO.Path.Combine(ENV.path_Temp, "CDA");
-                    //File.Copy(FileArchive, System.IO.Path.Combine(FilePathTmp, FileTmp));
-
-                    //string fStyle = System.IO.Path.Combine(FilePathTmp, rDocuEintrag.FileStylesheet.Trim());
-                    //if (!System.IO.Directory.Exists(FilePathTmp))
-                    //{
-                    //    Directory.CreateDirectory(FilePathTmp);
-                    //}
-                    //if (!System.IO.File.Exists(fStyle))
-                    //{
-                    //    System.IO.File.Copy(@ENV.pathConfig + "\\" + rDocuEintrag.FileStylesheet.Trim(), fStyle);
-                    //}
-
-                    string xmlFile = "";
-                    using (StreamReader sr = File.OpenText(FileArchive))
+                    using (MemoryStream msXML = new MemoryStream())
                     {
-                        xmlFile = sr.ReadToEnd();
+                        using (FileStream file = new FileStream(FileArchive, FileMode.Open, FileAccess.Read))
+                        {
+                            byte[] bytes = new byte[file.Length];
+                            file.Read(bytes, 0, (int)file.Length);
+                            msXML.Write(bytes, 0, (int)file.Length);
+                            clsELGAPrint pr = new clsELGAPrint();
+                            pr.ShowXMLInBrowser(msXML, "", true);
+                        }
                     }
 
-                    ELGABusiness bElga = new ELGABusiness();
-                    string sFileXmlTmp = "";
-                    string sStylesheetTmp = bElga.getStylesheetAndXmlFromELGAXmlDocu(xmlFile, ref sFileXmlTmp);
+                    //string xmlFile = "";
+                    //using (StreamReader sr = File.OpenText(FileArchive))
+                    //{
+                    //    xmlFile = sr.ReadToEnd();
+                    //}
 
-                    frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
-                    frmCDAViewer1.initControl(rDocuEintrag.Bezeichnung.Trim(), rDocuEintrag.ELGAUniqueID.Trim(), "", sFileXmlTmp, rDocu.DateinameTyp, sStylesheetTmp.Trim(), contCDAViewer.eTypeUI.saveToArchive);
-                    frmCDAViewer1.contCDAViewer1.btnSaveIntoArchive.Visible = false;
-                    frmCDAViewer1.contCDAViewer1.btnSaveDocuToELGA.Visible = false;
-                    frmCDAViewer1.contCDAViewer1.btnAbort.Visible = false;
-                    frmCDAViewer1.Show();
+                    //ELGABusiness bElga = new ELGABusiness();
+                    //string sFileXmlTmp = "";
+                    //string sStylesheetTmp = bElga.getStylesheetAndXmlFromELGAXmlDocu(xmlFile, ref sFileXmlTmp);
+
+                    //frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
+                    //frmCDAViewer1.initControl(rDocuEintrag.Bezeichnung.Trim(), rDocuEintrag.ELGAUniqueID.Trim(), "", sFileXmlTmp, rDocu.DateinameTyp, sStylesheetTmp.Trim(), contCDAViewer.eTypeUI.saveToArchive);
+                    //frmCDAViewer1.contCDAViewer1.btnSaveIntoArchive.Visible = false;
+                    //frmCDAViewer1.contCDAViewer1.btnSaveDocuToELGA.Visible = false;
+                    //frmCDAViewer1.contCDAViewer1.btnAbort.Visible = false;
+                    //frmCDAViewer1.Show();
                 }
 
             }
