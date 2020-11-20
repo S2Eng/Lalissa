@@ -28,6 +28,7 @@ Public Class contSelectSelList
     Public _IsEditable As Boolean = False
     Public _IsTextTemplate As Boolean = False
     Public _SelListPMDS As Boolean = False
+    Public _Bereich As Boolean = False
 
     Public _IDRes As String = ""
     Public _Title As String = ""
@@ -45,7 +46,8 @@ Public Class contSelectSelList
 
     End Sub
 
-    Public Sub initControl(GoupIDStr As String, IsSearch As Boolean, IsTextTemplate As Boolean, dropDownButton As UltraDropDownButton, SelListPMDS As Boolean, IDRes As String, Title As String)
+    Public Sub initControl(GoupIDStr As String, IsSearch As Boolean, IsTextTemplate As Boolean, dropDownButton As UltraDropDownButton, SelListPMDS As Boolean,
+                           IDRes As String, Title As String, Bereich As Boolean)
         Try
             If Not Me.IsInitialized Then
                 Me._GoupIDStr = GoupIDStr
@@ -55,6 +57,7 @@ Public Class contSelectSelList
                 Me._SelListPMDS = SelListPMDS
                 Me._IDRes = IDRes
                 Me._Title = Title
+                Me._Bereich = Bereich
 
                 Me.btnSelectSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32)
                 Me.btnAdd.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32)

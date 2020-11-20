@@ -936,7 +936,7 @@ Public Class contPlanung2Bereich
             Me.contSelectPatienten.popupContMainSearch = Me.uPopUpContPatienten
 
             'Me.contSelectSelListCategories.MainPlanSearch = Me     'lthplan
-            Me.contSelectSelListCategories.initControl("PlanCategory", True, False, Me.dropDownCategories, False, "Categories", "")
+            Me.contSelectSelListCategories.initControl("PlanBereichCategory", True, False, Me.dropDownCategories, False, "Categories", "", True)
             Me.uPopupContCategories.PopupControl = Me.contSelectSelListCategories
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories
@@ -1597,4 +1597,7 @@ Public Class contPlanung2Bereich
         End Try
     End Sub
 
+    Private Sub dropDownCategories_Click(sender As Object, e As EventArgs) Handles dropDownCategories.Click
+
+    End Sub
 End Class

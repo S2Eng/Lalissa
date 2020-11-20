@@ -11305,6 +11305,36 @@ namespace PMDS.DB
             }
         }
 
+        public static string getKlinikAuthUniversalID(Guid IDKlinik)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var rKlinik = (from k in db.Klinik
+                                   where k.ID == ENV.IDKlinik
+                                   select new
+                                   {
+                                       k.ID,
+                                       k.ELGA_OID,
+                                       k.AuthUniversalID,
+                                   }).First();
+
+                    if (rKlinik.AuthUniversalID.Trim() == "")
+                    {
+                        throw new Exception("getKlinikAuthUniversalID: rKlinik.AuthUniversalID='' not allowed!");
+                    }
+
+                    return rKlinik.AuthUniversalID.Trim();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("contELGAKlient.getKlinikAuthUniversalID: " + ex.ToString());
+            }
+        }
+
 
 
 

@@ -245,50 +245,50 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.ELGALogOut: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAQueryPatients(ref ELGAParInDto parsIn, eTypeQueryPatients TypeQueryPatients, bool checkOneRowMustFound)
+        public ELGAParOutDto ELGAQueryPatients(ref ELGAParInDto parsIn, eTypeQueryPatients TypeQueryPatients, bool checkOneRowMustFound, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
 
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                return elga.queryPatients(ref parsIn, TypeQueryPatients, ref ehrPatientClientDtoBack, checkOneRowMustFound);
+                return elga.queryPatients(ref parsIn, TypeQueryPatients, ref ehrPatientClientDtoBack, checkOneRowMustFound, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.ELGAQueryPatients: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAinsertPatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients)
+        public ELGAParOutDto ELGAinsertPatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.insertPatient(ref parsIn, TypeUpdatePatients);
+                return elga.insertPatient(ref parsIn, TypeUpdatePatients, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.ELGAinsertPatient: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAUpdatePatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients)
+        public ELGAParOutDto ELGAUpdatePatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.updatePatient(ref parsIn, TypeUpdatePatients);
+                return elga.updatePatient(ref parsIn, TypeUpdatePatients, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.updatePatient: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAAddContactAdmission(ref ELGAParInDto parsIn)
+        public ELGAParOutDto ELGAAddContactAdmission(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.addContactAdmission(ref parsIn);
+                return elga.addContactAdmission(ref parsIn, authUniversalID);
             }
             catch (Exception ex)
             {
@@ -307,24 +307,24 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.ELGAInvalidateContact: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAAddContactDischarge(ref ELGAParInDto parsIn)
+        public ELGAParOutDto ELGAAddContactDischarge(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.addContactDischarge(ref parsIn);
+                return elga.addContactDischarge(ref parsIn, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.ELGAAddContactDischarge: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAListContacts(ref ELGAParInDto parsIn)
+        public ELGAParOutDto ELGAListContacts(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.listContacts(ref parsIn);
+                return elga.listContacts(ref parsIn, authUniversalID);
             }
             catch (Exception ex)
             {
@@ -343,7 +343,7 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.ELGAQueryGDAs: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAQueryDocuments(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId)
+        public ELGAParOutDto ELGAQueryDocuments(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, string authUniversalID)
         {
             try
             {
@@ -351,14 +351,14 @@ namespace WCFServicePMDS
 
                 documentClientDto documentClientDtoBack = null;
                 submissionSetClientDto submissionSet = null;
-                return elga.queryDocuments(ref parsIn, OnlyOneDoc, UniqueId, ref documentClientDtoBack, ref submissionSet);
+                return elga.queryDocuments(ref parsIn, OnlyOneDoc, UniqueId, ref documentClientDtoBack, ref submissionSet, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.ELGAQueryDocuments: " + ex.ToString());
             }
         }
-        public ELGAParOutDto queryPatientContent(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId)
+        public ELGAParOutDto queryPatientContent(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, string authUniversalID)
         {
             try
             {
@@ -366,55 +366,55 @@ namespace WCFServicePMDS
 
                 documentClientDto documentClientDtoBack = null;
                 submissionSetClientDto submissionSet = null;
-                return elga.queryPatientContent(ref parsIn, OnlyOneDoc, UniqueId, ref documentClientDtoBack, ref submissionSet);
+                return elga.queryPatientContent(ref parsIn, OnlyOneDoc, UniqueId, ref documentClientDtoBack, ref submissionSet, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.queryPatientContent: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGARetrieveDocument(ref ELGAParInDto parsIn)
+        public ELGAParOutDto ELGARetrieveDocument(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.retrieveDocument(ref parsIn);
+                return elga.retrieveDocument(ref parsIn, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.ELGARetrieveDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAAddDocument(ref ELGAParInDto parsIn)
+        public ELGAParOutDto ELGAAddDocument(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.addDocument(ref parsIn);
+                return elga.addDocument(ref parsIn, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.ELGAAddDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGAUpdateDocument(ref ELGAParInDto parsIn, string UniqueId)
+        public ELGAParOutDto ELGAUpdateDocument(ref ELGAParInDto parsIn, string UniqueId, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.updateDocument(ref parsIn, UniqueId);
+                return elga.updateDocument(ref parsIn, UniqueId, authUniversalID);
             }
             catch (Exception ex)
             {
                 throw new Exception("WCFServicePMDS.Service1.ELGAUpdateDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ElgaDeprecateDocument(ref ELGAParInDto parsIn, string UniqueId)
+        public ELGAParOutDto ElgaDeprecateDocument(ref ELGAParInDto parsIn, string UniqueId, string authUniversalID)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.deprecateDocument(ref parsIn, UniqueId);
+                return elga.deprecateDocument(ref parsIn, UniqueId, authUniversalID);
             }
             catch (Exception ex)
             {

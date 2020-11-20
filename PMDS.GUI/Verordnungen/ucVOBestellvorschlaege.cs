@@ -157,7 +157,7 @@ namespace PMDS.GUI.Verordnungen
                 this.SelListChanged("", null, null);
 
                 //this.contSelectSelListTyp.MainPlanSearch = this;
-                this.contSelectSelListTyp.initControl("VOT", true, false, this.dropDownTyp, true, "Typ", "Typ wählen");
+                this.contSelectSelListTyp.initControl("VOT", true, false, this.dropDownTyp, true, "Typ", "Typ wählen", false);
                 this.uPopupContTyp.PopupControl = this.contSelectSelListTyp;
                 this.dropDownTyp.PopupItem = this.uPopupContTyp;
                 this.contSelectSelListTyp.popupContMainSearch = this.uPopupContTyp;

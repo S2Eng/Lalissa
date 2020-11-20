@@ -283,6 +283,7 @@ namespace PMDS.GUI.ELGA
                 throw new Exception("contELGAKlient.doKontaktbestätigung: " + ex.ToString());
             }
         }
+       
         public void doKontaktbestätigungStorno()
         {
             try

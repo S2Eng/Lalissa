@@ -117,7 +117,8 @@ namespace WCFServicePMDS
             }
         }
 
-        public ELGAParOutDto queryPatients(ref ELGAParInDto parsIn, eTypeQueryPatients TypeQueryPatients, ref ehrPatientClientDto ehrPatientClientDtoBack, bool checkOneRowMustFound)
+        public ELGAParOutDto queryPatients(ref ELGAParInDto parsIn, eTypeQueryPatients TypeQueryPatients, ref ehrPatientClientDto ehrPatientClientDtoBack, 
+                                            bool checkOneRowMustFound, string authUniversalID)
         {
             try
             {
@@ -158,7 +159,8 @@ namespace WCFServicePMDS
                     ehrPatientRq1.requestData.pid = new ehrPIDClientDto[1];
                     ehrPIDClientDto ehrPIDClientDto1 = new ehrPIDClientDto();
                     ehrPIDClientDto1.patientID = parsIn.sObjectDto.SozVersNrLocalPatID.Trim();
-                    ehrPIDClientDto1.domain = new ehrDomainClientDto() { authUniversalID = "1.2.40.0.34.99.10.2.1.1.13593.1" };
+                    ehrPIDClientDto1.domain = new ehrDomainClientDto() { authUniversalID = authUniversalID };
+                    //ehrPIDClientDto1.domain = new ehrDomainClientDto() { authUniversalID = "1.2.40.0.34.99.10.2.1.1.13593.1" };
                     ehrPatientRq1.requestData.pid[0] = ehrPIDClientDto1;
                 }
                 else
@@ -203,7 +205,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.queryPatients: " + ex.ToString());
             }
         }
-        public ELGAParOutDto insertPatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients)
+        public ELGAParOutDto insertPatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients, string authUniversalID)
         {
             try
             {
@@ -236,7 +238,7 @@ namespace WCFServicePMDS
                         throw new Exception("ELGABAL.updatePatient: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                     }
                     ehrPatientClientDto ehrPatientClientDtoBack = null;
-                    this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                    this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                     ehrPatientRq1.requestData = ehrPatientClientDtoBack;            //new ELGAChache().getEhrPatient(parsIn.IDPatientIntern);
 
@@ -289,7 +291,7 @@ namespace WCFServicePMDS
                         }
                         ehrPatientClientDto ehrPatientClientDtoBackQuery = null;
                         parsIn.LocalPatientID = patLocalID;
-                        return this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBackQuery, true);
+                        return this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBackQuery, true, authUniversalID);
                     }
                     else
                     {
@@ -309,7 +311,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.insertPatient: " + ex.ToString());
             }
         }
-        public ELGAParOutDto updatePatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients)
+        public ELGAParOutDto updatePatient(ref ELGAParInDto parsIn, eTypeUpdatePatients TypeUpdatePatients, string authUniversalID)
         {
             try
             {
@@ -342,7 +344,7 @@ namespace WCFServicePMDS
                         throw new Exception("ELGABAL.updatePatient: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                     }
                     ehrPatientClientDto ehrPatientClientDtoBack = null;
-                    this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                    this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                     ehrPatientRq1.requestData = ehrPatientClientDtoBack;            //new ELGAChache().getEhrPatient(parsIn.IDPatientIntern);
 
@@ -399,7 +401,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.updatePatient: " + ex.ToString());
             }
         }
-        public ELGAParOutDto addContactAdmission(ref ELGAParInDto parsIn)
+        public ELGAParOutDto addContactAdmission(ref ELGAParInDto parsIn, string authUniversalID)
         {
             ELGAParOutDto retDto = this.initParOut();
             try
@@ -411,7 +413,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.addContactAdmission: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                 trsClientAddContactRq trsClientAddContactRq1 = new trsClientAddContactRq();
                 trsClientAddContactRq1.stateID = parsIn.session.ELGAStateID;
@@ -486,7 +488,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.invalidateContact: " + ex.ToString());
             }
         }
-        public ELGAParOutDto addContactDischarge(ref ELGAParInDto parsIn)
+        public ELGAParOutDto addContactDischarge(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
@@ -500,7 +502,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.addContactDischarge: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                 trsClientAddContactRq trsClientAddContactRq1 = new trsClientAddContactRq();
                 trsClientAddContactRq1.stateID = parsIn.session.ELGAStateID;
@@ -526,7 +528,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.addContactDischarge: " + ex.ToString());
             }
         }
-        public ELGAParOutDto listContacts(ref ELGAParInDto parsIn)
+        public ELGAParOutDto listContacts(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
@@ -539,7 +541,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.listContacts: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                 trsClientListContactsRq trsClientListContactsRq1 = new trsClientListContactsRq();
                 trsClientListContactsRq1.stateID = parsIn.session.ELGAStateID;
@@ -708,7 +710,8 @@ namespace WCFServicePMDS
                 // Index 9 Size 9
             }
         }
-        public ELGAParOutDto queryDocuments(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, ref documentClientDto documentClientDtoBack, ref submissionSetClientDto submissionSet)
+        public ELGAParOutDto queryDocuments(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, ref documentClientDto documentClientDtoBack, ref submissionSetClientDto submissionSet,
+                                                string authUniversalID)
         {
             try
             {
@@ -723,7 +726,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.queryDocuments: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                 if (parsIn.sDocumentsDto != null)
                 {
@@ -762,7 +765,8 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.queryDocuments: " + ex.ToString());
             }
         }
-        public ELGAParOutDto queryPatientContent(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, ref documentClientDto documentClientDtoBack, ref submissionSetClientDto submissionSet)
+        public ELGAParOutDto queryPatientContent(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, ref documentClientDto documentClientDtoBack, ref submissionSetClientDto submissionSet,
+                                                string authUniversalID)
         {
             try
             {
@@ -777,7 +781,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.queryPatientContent: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                 ehrXdsQGetAllRq ehrXdsQGetAllRq1 = new ehrXdsQGetAllRq();
                 ehrXdsQGetAllRq1.stateID = parsIn.session.ELGAStateID;
@@ -793,7 +797,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.queryPatientContent: " + ex.ToString());
             }
         }
-        public ELGAParOutDto retrieveDocument(ref ELGAParInDto parsIn)
+        public ELGAParOutDto retrieveDocument(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
@@ -815,7 +819,7 @@ namespace WCFServicePMDS
 
                 documentClientDto documentClientDtoBack = null;
                 submissionSetClientDto submissionSet = null;
-                this.queryDocuments(ref parsIn, true, parsIn.sDocumentsDto.UniqueID.Trim(), ref documentClientDtoBack, ref submissionSet);
+                this.queryDocuments(ref parsIn, true, parsIn.sDocumentsDto.UniqueID.Trim(), ref documentClientDtoBack, ref submissionSet, authUniversalID);
                 ehrXdsRetrReq1.requestData = documentClientDtoBack;
 
                 ehrXdsRetrRsp ehrXdsRetrRsp1 = objWsLogin.retrieveDocument(ehrXdsRetrReq1);
@@ -874,7 +878,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.retrieveDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto addDocument(ref ELGAParInDto parsIn)
+        public ELGAParOutDto addDocument(ref ELGAParInDto parsIn, string authUniversalID)
         {
             try
             {
@@ -887,7 +891,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.addDocument: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
 
                 submissionSetClientDto submissionSet = new submissionSetClientDto();
@@ -1035,7 +1039,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.addDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto updateDocument(ref ELGAParInDto parsIn, string UniqueId)
+        public ELGAParOutDto updateDocument(ref ELGAParInDto parsIn, string UniqueId, string authUniversalID)
         {
             try
             {
@@ -1052,7 +1056,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.updateDocument: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                 //changedDocument.bytes = documentBytesToSubmit;
 
@@ -1110,7 +1114,7 @@ namespace WCFServicePMDS
                 {
                     documentClientDto documentClientDtoBack = null;
                     submissionSetClientDto submissionSet = null;
-                    this.queryDocuments(ref parsIn, true, UniqueId, ref documentClientDtoBack, ref submissionSet);
+                    this.queryDocuments(ref parsIn, true, UniqueId, ref documentClientDtoBack, ref submissionSet, authUniversalID);
                     retDto.bOK = true;
                     return retDto;
                 }
@@ -1126,7 +1130,7 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.updateDocument: " + ex.ToString());
             }
         }
-        public ELGAParOutDto deprecateDocument(ref ELGAParInDto parsIn, string UniqueId)
+        public ELGAParOutDto deprecateDocument(ref ELGAParInDto parsIn, string UniqueId, string authUniversalID)
         {
             try
             {
@@ -1140,7 +1144,7 @@ namespace WCFServicePMDS
                     throw new Exception("ELGABAL.deprecateDocument: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID);
 
                 submissionSetClientDto submissionSet2 = new submissionSetClientDto();
                 ehrPIDClientDto ehrXdsPatientPid = null;
@@ -1193,7 +1197,7 @@ namespace WCFServicePMDS
 
                 submissionSetClientDto submissionSetTmp = new submissionSetClientDto();
                 documentClientDto documentClientDtoBack = null;
-                this.queryPatientContent(ref parsIn, true, parsIn.sDocumentsDto.UniqueID.Trim(), ref documentClientDtoBack, ref submissionSetTmp);
+                this.queryPatientContent(ref parsIn, true, parsIn.sDocumentsDto.UniqueID.Trim(), ref documentClientDtoBack, ref submissionSetTmp, authUniversalID);
 
                 xdsSrcDeprecateReq xdsSrcDeprecateReq1 = new xdsSrcDeprecateReq();
                 xdsSrcDeprecateReq1.document = documentClientDtoBack;

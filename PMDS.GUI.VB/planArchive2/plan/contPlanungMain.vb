@@ -1072,7 +1072,7 @@ Public Class contPlanung2
             Me.contSelectPatienten.popupContMainSearch = Me.uPopUpContPatienten
 
             Me.contSelectSelListCategories.MainPlanSearch = Me
-            Me.contSelectSelListCategories.initControl("PlanCategory", True, False, Me.dropDownCategories, False, "Categories", "")
+            Me.contSelectSelListCategories.initControl("PlanCategory", True, False, Me.dropDownCategories, False, "Categories", "", False)
             Me.uPopupContCategories.PopupControl = Me.contSelectSelListCategories
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories

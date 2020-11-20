@@ -1831,7 +1831,7 @@ Public Class frmNachricht3
             Me.contSelectPatienten.popupContMainSearch = Me.uPopUpContPatienten
 
             Me.contSelectSelListCategories.MainMessage = Me
-            Me.contSelectSelListCategories.initControl("PlanCategory", False, False, Me.dropDownCategories, False, "Categories", "")
+            Me.contSelectSelListCategories.initControl("PlanCategory", False, False, Me.dropDownCategories, False, "Categories", "", False)
             Me.uPopupContCategories.PopupControl = Me.contSelectSelListCategories
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories

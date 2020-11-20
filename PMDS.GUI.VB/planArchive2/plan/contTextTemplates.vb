@@ -62,7 +62,7 @@ Public Class contTextTemplates
             Me.contSelectBenutzer.initControl(contSelectPatientenBenutzer.eTypeUI.Users, False, True, Me.dropDownUsers)
 
             Me.contSelectSelListCategories.MainTextTemplates = Me
-            Me.contSelectSelListCategories.initControl("PlanCategory", False, True, Me.dropDownCategories, False, "Categories", "")
+            Me.contSelectSelListCategories.initControl("PlanCategory", False, True, Me.dropDownCategories, False, "Categories", "", False)
             Me.uPopupContCategories.PopupControl = Me.contSelectSelListCategories
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories

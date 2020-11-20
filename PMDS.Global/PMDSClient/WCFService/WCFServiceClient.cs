@@ -328,7 +328,7 @@ namespace PMDSClient.Sitemap
                 parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = SozVersNrLocalPatID.Trim(), NachNameFirma = "", Vorname = "", 
                                                                     Zip = "", City = "", Street = "", StreetNr = "" };
-                ELGAParOutDto parOutDto = s1.ELGAQueryPatients(ref parsIn, ELGABALeTypeQueryPatients, checkOneRowMustFound);
+                ELGAParOutDto parOutDto = s1.ELGAQueryPatients(ref parsIn, ELGABALeTypeQueryPatients, checkOneRowMustFound, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -362,7 +362,7 @@ namespace PMDSClient.Sitemap
                 parsIn.LocalPatientID = LocalPatientIDWrite;
                 parsIn.authUniversalID = authUniversalID.Trim();
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientIDWrite.Trim() };
-                ELGAParOutDto parOutDto = s1.ELGAinsertPatient(ref parsIn, ELGABALeTypeUpdatePatients);
+                ELGAParOutDto parOutDto = s1.ELGAinsertPatient(ref parsIn, ELGABALeTypeUpdatePatients, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -395,7 +395,7 @@ namespace PMDSClient.Sitemap
                 parsIn.IDPatientIntern = IDPatientInternWcf;
                 parsIn.LocalPatientID = LocalPatientIDWrite;
                 parsIn.sObjectDto = new ObjectDTO() {SozVersNrLocalPatID = LocalPatientIDWrite.Trim()};
-                ELGAParOutDto parOutDto = s1.ELGAUpdatePatient(ref parsIn, ELGABALeTypeUpdatePatients);
+                ELGAParOutDto parOutDto = s1.ELGAUpdatePatient(ref parsIn, ELGABALeTypeUpdatePatients, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -426,7 +426,7 @@ namespace PMDSClient.Sitemap
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
-                ELGAParOutDto parOutDto = s1.ELGAAddContactAdmission(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGAAddContactAdmission(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -500,7 +500,7 @@ namespace PMDSClient.Sitemap
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID= LocalPatientID.Trim() };
-                ELGAParOutDto parOutDto = s1.ELGAAddContactDischarge(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGAAddContactDischarge(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -531,7 +531,7 @@ namespace PMDSClient.Sitemap
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.session= ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
                 parsIn.sObjectDto = new ObjectDTO() {  SozVersNrLocalPatID = LocalPatientID.Trim()};
-                ELGAParOutDto parOutDto = s1.ELGAListContacts(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGAListContacts(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -609,7 +609,7 @@ namespace PMDSClient.Sitemap
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = ELGAPatientLocalID.Trim() };
                 parsIn.sDocumentsDto = new DocumentSearchDto() {  CreatedFrom = dCreatedFrom, CreatedTo = dCreatedTo};
 
-                ELGAParOutDto parOutDto = s1.ELGAQueryDocuments(ref parsIn, OnlyOneDoc, UniqueId);
+                ELGAParOutDto parOutDto = s1.ELGAQueryDocuments(ref parsIn, OnlyOneDoc, UniqueId, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -642,7 +642,7 @@ namespace PMDSClient.Sitemap
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = ELGAPatientLocalID.Trim() };
                 parsIn.sDocumentsDto = new DocumentSearchDto() { UniqueID = UniqueID.Trim() };
 
-                ELGAParOutDto parOutDto = s1.ELGARetrieveDocument(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGARetrieveDocument(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -688,7 +688,7 @@ namespace PMDSClient.Sitemap
                     ClinicalDocumentSetID = ClinicalDocumentSetID.Trim()
                 };
 
-                ELGAParOutDto parOutDto = s1.ELGAAddDocument(ref parsIn);
+                ELGAParOutDto parOutDto = s1.ELGAAddDocument(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
@@ -730,7 +730,7 @@ namespace PMDSClient.Sitemap
                     KlinikOrganisationID = KlinikOrganisationOID.Trim()
                 };
 
-                ELGAParOutDto parOutDto = s1.ElgaDeprecateDocument(ref parsIn, DocuUniqueId);
+                ELGAParOutDto parOutDto = s1.ElgaDeprecateDocument(ref parsIn, DocuUniqueId, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik));
 
                 if (parOutDto.bErrorsFound)
                 {
