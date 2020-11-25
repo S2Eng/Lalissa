@@ -464,10 +464,14 @@ namespace PMDS.Itscont
             {
                 if (!this.IsInitializedPlanBereich)
                 {
+                    this.setButtonsAktivDeaktiv(5);
+
                     this.contPlanung2Bereich1 = new GUI.VB.contPlanung2Bereich();
-                    this.contPlanung2Bereich1.initForm(-1, GUI.VB.contPlanungData.eTypeUI.PlansAll, new GUI.VB.contPlanungData.cPlanArchive(), true);
+                    this.contPlanung2Bereich1.initForm(-1, GUI.VB.contPlanungData.eTypeUI.PlansAll, new GUI.VB.contPlanungDataBereich.cPlanArchive(), true);
                     this.contPlanung2Bereich1.Dock = DockStyle.Fill;
                     this.panelPlanBereich.Controls.Add(this.contPlanung2Bereich1);
+
+                    this.IsInitializedPlanBereich = true;
                 }
 
                 this.showTab(5);
@@ -917,6 +921,15 @@ namespace PMDS.Itscont
                     PMDS.Global.UIGlobal.setAktivDisable(this.btnEMail, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
                 }
 
+                if (aktivButton == 5)
+                {
+                    PMDS.Global.UIGlobal.setAktiv(this.btnTermineBereiche, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.SkyBlue);
+                    //this.lblInfo.Value = "<span style=" + (char)34 + "color:RoyalBlue; font-size:+7pt;" + (char)34 + ">E-Mails</span><br/><span style=" + (char)34 + "font-size:+2pt;" + (char)34 + ">" + infAuswahl + "</span><br/>";
+                }
+                else
+                {
+                    PMDS.Global.UIGlobal.setAktivDisable(this.btnTermineBereiche, -1, System.Drawing.Color.Black, System.Drawing.Color.Gainsboro, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                }
             }
             catch (Exception ex)
             {

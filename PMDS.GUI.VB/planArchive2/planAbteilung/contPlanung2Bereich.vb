@@ -44,7 +44,6 @@ Public Class contPlanung2Bereich
     Friend WithEvents grpSearch As Infragistics.Win.Misc.UltraGroupBox
     Friend WithEvents layErwSuche As Infragistics.Win.Misc.UltraGridBagLayoutManager
     Public WithEvents UltraToolTipManager1 As Infragistics.Win.UltraWinToolTip.UltraToolTipManager
-    Public WithEvents ContPlanung1 As contPlanungData
     Friend WithEvents ContextMenuTree As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents PosteingangsServerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents dropDownCategories As Infragistics.Win.Misc.UltraDropDownButton
@@ -77,6 +76,7 @@ Public Class contPlanung2Bereich
     Public WithEvents btnDekursEntwurfErstellen As QS2.Desktop.ControlManagment.BaseButton
     Public WithEvents uDropDownDekursEntwürfe As UltraDropDownButton
     Friend WithEvents btnDekursErstellen As UltraButton
+    Friend WithEvents ContPlanungDataBereich1 As contPlanungDataBereich
     Friend WithEvents btnAdd2 As Infragistics.Win.Misc.UltraButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -135,7 +135,6 @@ Public Class contPlanung2Bereich
         Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Neuen Planungseintrag erstellen", Infragistics.Win.ToolTipImage.[Default], "", Infragistics.Win.DefaultableBoolean.[Default])
         Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Me.ContPlanung1 = New PMDS.GUI.VB.contPlanungData()
         Me.grpSearch = New Infragistics.Win.Misc.UltraGroupBox()
         Me.chkDatumFixieren = New Infragistics.Win.UltraWinEditors.UltraCheckEditor()
         Me.PanelButtonsLayout = New System.Windows.Forms.Panel()
@@ -177,6 +176,7 @@ Public Class contPlanung2Bereich
         Me.uPopUpContBenutzer = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         Me.uPopUpContPatienten = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         Me.TimerSearch = New System.Windows.Forms.Timer(Me.components)
+        Me.ContPlanungDataBereich1 = New PMDS.GUI.VB.contPlanungDataBereich()
         CType(Me.grpSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSearch.SuspendLayout()
         CType(Me.chkDatumFixieren, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,17 +193,6 @@ Public Class contPlanung2Bereich
         Me.PanelBottom.SuspendLayout()
         Me.PanelCenter.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'ContPlanung1
-        '
-        Me.ContPlanung1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ContPlanung1.BackColor = System.Drawing.Color.Transparent
-        Me.ContPlanung1.Location = New System.Drawing.Point(7, 3)
-        Me.ContPlanung1.Name = "ContPlanung1"
-        Me.ContPlanung1.Size = New System.Drawing.Size(1115, 350)
-        Me.ContPlanung1.TabIndex = 0
         '
         'grpSearch
         '
@@ -815,7 +804,7 @@ Public Class contPlanung2Bereich
         'PanelCenter
         '
         Me.PanelCenter.BackColor = System.Drawing.Color.Transparent
-        Me.PanelCenter.Controls.Add(Me.ContPlanung1)
+        Me.PanelCenter.Controls.Add(Me.ContPlanungDataBereich1)
         Me.PanelCenter.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelCenter.Location = New System.Drawing.Point(0, 200)
         Me.PanelCenter.Name = "PanelCenter"
@@ -824,6 +813,15 @@ Public Class contPlanung2Bereich
         '
         'TimerSearch
         '
+        '
+        'ContPlanungDataBereich1
+        '
+        Me.ContPlanungDataBereich1.BackColor = System.Drawing.Color.White
+        Me.ContPlanungDataBereich1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ContPlanungDataBereich1.Location = New System.Drawing.Point(0, 0)
+        Me.ContPlanungDataBereich1.Name = "ContPlanungDataBereich1"
+        Me.ContPlanungDataBereich1.Size = New System.Drawing.Size(1125, 356)
+        Me.ContPlanungDataBereich1.TabIndex = 1
         '
         'contPlanung2Bereich
         '
@@ -909,7 +907,7 @@ Public Class contPlanung2Bereich
         Try
             Me.lockToolbar = True
 
-            'Me.ContPlanung1.mainWindow = Me        'lthplan
+            Me.ContPlanungDataBereich1.mainWindow = Me
 
             Me.btnSearch.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32)
             Me.btnAdd2.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32)
@@ -941,17 +939,17 @@ Public Class contPlanung2Bereich
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories
 
-            Me.ContPlanung1.initControl()
+            Me.ContPlanungDataBereich1.initControl()
 
             Dim newRessourcesAdded As Integer = 0
             Me.doUI1.run(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, True)
 
             Me.optStatus.CheckedIndex = 0
-            Me.ContPlanung1.SplitContainer1.Panel2Collapsed = True
+            Me.ContPlanungDataBereich1.SplitContainer1.Panel2Collapsed = True
 
             Me.resetLayoutButtons()
             Me.btnLayout_Beginn.Visible = False
-            Me.ContPlanung1._LayoutGrid = eLayoutGrid.PatientsBeginn
+            Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.PatientsBeginn
             Me.setLayoutButton2(Me.btnLayout_PatientBeginn)
 
             Me.isLoaded = True
@@ -967,16 +965,14 @@ Public Class contPlanung2Bereich
         Try
             Dim statButt As StateButtonTool = Me.UltraToolbarsManagerMain.Tools("statButtListe")
             statButt.Checked = True
-            Me.ContPlanung1.ShowTab(3)
-            Me.ContPlanung1.PanelKalender.Width = 0
-            Me.ContPlanung1.resizeControl()
+            Me.ContPlanungDataBereich1.resizeControl()
 
         Catch ex As Exception
             Throw New Exception("contPlanung2.showListenansicht: " + ex.ToString())
         End Try
     End Sub
 
-    Public Sub initForm(IDArt As Integer, TypeUI As contPlanungData.eTypeUI, PlanArchive As cPlanArchive, doInit As Boolean)
+    Public Sub initForm(IDArt As Integer, TypeUI As contPlanungData.eTypeUI, PlanArchive As contPlanungDataBereich.cPlanArchive, doInit As Boolean)
         Try
             Me.initFormDone = False
 
@@ -1003,14 +999,14 @@ Public Class contPlanung2Bereich
                 Me.UDateBis.Value = Now
             End If
 
-            Me.ContPlanung1._TypeUI = TypeUI
-            Me.ContPlanung1._IDArt = IDArt
-            Me.ContPlanung1._PlanArchive = PlanArchive
+            Me.ContPlanungDataBereich1._TypeUI = TypeUI
+            Me.ContPlanungDataBereich1._IDArt = IDArt
+            Me.ContPlanungDataBereich1._PlanArchive = PlanArchive
 
-            If Me.ContPlanung1._IDArt = clPlan.typPlan_EMailEmpfangen Or Me.ContPlanung1._IDArt = clPlan.typPlan_EMailGesendet Then
-                Me.ContPlanung1.EMailsSendenToolStripMenuItem.Visible = True
+            If Me.ContPlanungDataBereich1._IDArt = clPlan.typPlan_EMailEmpfangen Or Me.ContPlanungDataBereich1._IDArt = clPlan.typPlan_EMailGesendet Then
+
             Else
-                Me.ContPlanung1.EMailsSendenToolStripMenuItem.Visible = False
+
             End If
 
             Me.contSelectPatienten.utreeAbtBereiche.Enabled = True
@@ -1020,7 +1016,7 @@ Public Class contPlanung2Bereich
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 Dim rUsrLoggedOn As PMDS.db.Entities.Benutzer = Me.b.LogggedOnUser(db)
 
-                If Me.ContPlanung1._TypeUI = eTypeUI.PlanKlienten Then
+                If Me.ContPlanungDataBereich1._TypeUI = eTypeUI.PlanKlienten Then
                     Dim IDFoundInTree2 As Boolean = False
                     Me.contSelectPatienten.autoSelectAllForAbtBereich(PMDS.Global.ENV.CurrentIDAbteilung, PMDS.Global.ENV.IDBereich, True, Nothing, True, TypeUI, IDFoundInTree2)
                     Me.contSelectBenutzer.cboBerufsgruppen.Value = Nothing
@@ -1029,10 +1025,10 @@ Public Class contPlanung2Bereich
                     Me.contSelectBenutzer.autoSelectAllForAbtBereich(Nothing, Nothing, False, Nothing, True, TypeUI, IDFoundInTree2)
 
                     Me.resetLayoutButtons()
-                    Me.ContPlanung1._LayoutGrid = eLayoutGrid.PatientsBeginn
+                    Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.PatientsBeginn
                     Me.setLayoutButton2(Me.btnLayout_PatientBeginn)
 
-                ElseIf Me.ContPlanung1._TypeUI = eTypeUI.PlanMy Then
+                ElseIf Me.ContPlanungDataBereich1._TypeUI = eTypeUI.PlanMy Then
                     Dim IDFoundInTree2 As Boolean = False
                     'Me.contSelectPatienten.loadBenutzerPatients(Nothing, Nothing, Nothing)
                     Me.contSelectPatienten.autoSelectAllForAbtBereich(Nothing, Nothing, False, Nothing, True, TypeUI, IDFoundInTree2)
@@ -1043,10 +1039,10 @@ Public Class contPlanung2Bereich
                     Me.contSelectBenutzer.autoSelectAllForAbtBereich(Nothing, Nothing, False, rUsrLoggedOn.ID, False, TypeUI, IDFoundInTree2)
 
                     Me.resetLayoutButtons()
-                    Me.ContPlanung1._LayoutGrid = eLayoutGrid.PatientsBeginn
+                    Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.PatientsBeginn
                     Me.setLayoutButton2(Me.btnLayout_Beginn)
 
-                ElseIf Me.ContPlanung1._TypeUI = eTypeUI.PlansAll Then
+                ElseIf Me.ContPlanungDataBereich1._TypeUI = eTypeUI.PlansAll Then
                     'Me.contSelectPatienten.loadBenutzerPatients(Nothing, Nothing, Nothing)
                     Dim IDFoundInTree2 As Boolean = False
                     Me.contSelectPatienten.autoSelectAllForAbtBereich(Nothing, Nothing, False, Nothing, True, TypeUI, IDFoundInTree2)
@@ -1056,10 +1052,10 @@ Public Class contPlanung2Bereich
                     Me.contSelectBenutzer.autoSelectAllForAbtBereich(Nothing, Nothing, False, Nothing, True, TypeUI, IDFoundInTree2)
 
                     Me.resetLayoutButtons()
-                    Me.ContPlanung1._LayoutGrid = eLayoutGrid.PatientsBeginn
+                    Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.PatientsBeginn
                     Me.setLayoutButton2(Me.btnLayout_Beginn)
 
-                ElseIf Me.ContPlanung1._TypeUI = eTypeUI.IDKlient Then
+                ElseIf Me.ContPlanungDataBereich1._TypeUI = eTypeUI.IDKlient Then
                     'Me.contSelectPatienten.loadBenutzerPatients(Nothing, Nothing, Nothing)
                     Me.contSelectPatienten.utreeAbtBereiche.Enabled = False
                     Dim IDFoundInTree2 As Boolean = False
@@ -1070,11 +1066,11 @@ Public Class contPlanung2Bereich
                     Me.contSelectBenutzer.autoSelectAllForAbtBereich(Nothing, Nothing, False, Nothing, False, TypeUI, IDFoundInTree2)
 
                     Me.resetLayoutButtons()
-                    Me.ContPlanung1._LayoutGrid = eLayoutGrid.PatientsBeginn
+                    Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.PatientsBeginn
                     Me.setLayoutButton2(Me.btnLayout_Beginn)
 
                 Else
-                    Throw New Exception("contPlanung2.initForm: Me.ContPlanung1._TypeUI '" + Me.ContPlanung1._TypeUI.ToString() + "' not allowed!")
+                    Throw New Exception("contPlanung2.initForm: Me.ContPlanung1._TypeUI '" + Me.ContPlanungDataBereich1._TypeUI.ToString() + "' not allowed!")
                 End If
             End Using
 
@@ -1082,7 +1078,7 @@ Public Class contPlanung2Bereich
             Me.contSelectSelListCategories.setSelectionOnOff(True)
             Me.contSelectSelListCategories.setLabelCount2()
 
-            Me.ContPlanung1.search(True, doInit, False, True)
+            Me.ContPlanungDataBereich1.search(True, doInit, False, True)
 
             Me.initFormDone = True
 
@@ -1097,34 +1093,7 @@ Public Class contPlanung2Bereich
             Me.Cursor = Cursors.WaitCursor
 
             If Me.lockToolbar Then Exit Sub
-
-            Me.ContPlanung1.resizeControl()
-
-            Select Case e.Tool.Key
-
-                Case "statButtMonat"
-                    Me.ContPlanung1.ShowTab(0)
-                    Me.ContPlanung1.PanelKalender.Width = 148
-                    Me.ContPlanung1.resizeControl()
-
-                Case "statButtWoche"
-                    Me.ContPlanung1.ShowTab(1)
-                    Me.ContPlanung1.PanelKalender.Width = 148
-                    Me.ContPlanung1.resizeControl()
-
-                Case "statButtTag"
-                    Me.ContPlanung1.ShowTab(2)
-                    Me.ContPlanung1.PanelKalender.Width = 148
-                    Me.ContPlanung1.resizeControl()
-
-                Case "statButtListe"
-                    Me.ContPlanung1.ShowTab(3)
-                    Me.ContPlanung1.PanelKalender.Width = 0
-                    Me.ContPlanung1.resizeControl()
-
-            End Select
-
-            Me.ContPlanung1.resizeControl()
+            Me.ContPlanungDataBereich1.resizeControl()
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1143,8 +1112,8 @@ Public Class contPlanung2Bereich
             End If
 
             Me.setAzahl_buttSuchen(0)
-            Me.ContPlanung1.DsPlanSearch1.Clear()
-            Me.ContPlanung1.clear(clearHTMLBrowser)
+            Me.ContPlanungDataBereich1.DsPlanSearch1.Clear()
+            Me.ContPlanungDataBereich1.clear(clearHTMLBrowser)
 
             If alles Then
                 Me.contSelectPatienten.loadDataAbtBereiche()
@@ -1234,9 +1203,9 @@ Public Class contPlanung2Bereich
 
     Public Sub newMsg(ByVal Dat As Date, ByVal Time As Date)
         Try
-            Me.ContPlanung1._PlanArchive = New cPlanArchive()
-            Me.contSelectPatienten.getSelectedAbtBereich(Me.ContPlanung1._PlanArchive.IDKlinik_Patienten, Me.ContPlanung1._PlanArchive.IDAbteilung_Patienten, Me.ContPlanung1._PlanArchive.IDBereich_Patienten, Nothing, True)
-            Me.contSelectBenutzer.getSelectedAbtBereich(Me.ContPlanung1._PlanArchive.IDKlinik_Benutzer, Me.ContPlanung1._PlanArchive.IDAbteilung_Benutzer, Me.ContPlanung1._PlanArchive.IDBereich_Benutzer, Nothing, True)
+            Me.ContPlanungDataBereich1._PlanArchive = New contPlanungDataBereich.cPlanArchive()
+            Me.contSelectPatienten.getSelectedAbtBereich(Me.ContPlanungDataBereich1._PlanArchive.IDKlinik_Patienten, Me.ContPlanungDataBereich1._PlanArchive.IDAbteilung_Patienten, Me.ContPlanungDataBereich1._PlanArchive.IDBereich_Patienten, Nothing, True)
+            Me.contSelectBenutzer.getSelectedAbtBereich(Me.ContPlanungDataBereich1._PlanArchive.IDKlinik_Benutzer, Me.ContPlanungDataBereich1._PlanArchive.IDAbteilung_Benutzer, Me.ContPlanungDataBereich1._PlanArchive.IDBereich_Benutzer, Nothing, True)
 
             'Dim frmNewPlan As frmNachricht3 = Me.gen.newMessage(Dat, Time, Me, Nothing, False, False, "", "", Nothing, False, False, Me.ContPlanung1._TypeUI, Me.ContPlanung1._PlanArchive)
             'frmNewPlan.IDArt = Me.ContPlanung1._IDArt
@@ -1276,7 +1245,7 @@ Public Class contPlanung2Bereich
         Try
             If Not Me.IsInitializedVisible And Me.Visible Then
                 Dim newRessourcesAdded As Integer = 0
-                Me.ContPlanung1.gridPlans.Rows.ExpandAll(True)
+                Me.ContPlanungDataBereich1.gridPlans.Rows.ExpandAll(True)
                 'Me.doUI1.run(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, True)
                 Me.IsInitializedVisible = True
             End If
@@ -1289,7 +1258,7 @@ Public Class contPlanung2Bereich
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.ContPlanung1.search(False, False, True, False)
+            Me.ContPlanungDataBereich1.search(False, False, True, False)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1302,7 +1271,7 @@ Public Class contPlanung2Bereich
     Private Sub chkPreview_CheckedChanged(sender As Object, e As EventArgs)
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.ContPlanung1.SplitContainer1.Panel2Collapsed = False
+            Me.ContPlanungDataBereich1.SplitContainer1.Panel2Collapsed = False
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1316,9 +1285,9 @@ Public Class contPlanung2Bereich
             Me.Cursor = Cursors.WaitCursor
 
             Me.resetLayoutButtons()
-            Me.ContPlanung1._LayoutGrid = eLayoutGrid.PatientsBeginn
+            Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.PatientsBeginn
             Me.setLayoutButton2(Me.btnLayout_PatientBeginn)
-            Me.ContPlanung1.search(False, False, True, True)
+            Me.ContPlanungDataBereich1.search(False, False, True, True)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1331,9 +1300,9 @@ Public Class contPlanung2Bereich
             Me.Cursor = Cursors.WaitCursor
 
             Me.resetLayoutButtons()
-            Me.ContPlanung1._LayoutGrid = eLayoutGrid.PatientsKategorie
+            Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.PatientsKategorie
             Me.setLayoutButton2(Me.btnLayout_PatientKategorie)
-            Me.ContPlanung1.search(False, False, True, True)
+            Me.ContPlanungDataBereich1.search(False, False, True, True)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1346,9 +1315,9 @@ Public Class contPlanung2Bereich
             Me.Cursor = Cursors.WaitCursor
 
             Me.resetLayoutButtons()
-            Me.ContPlanung1._LayoutGrid = eLayoutGrid.KategoriePatient
+            Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.KategoriePatient
             Me.setLayoutButton2(Me.btnLayout_KategoriePatient)
-            Me.ContPlanung1.search(False, False, True, True)
+            Me.ContPlanungDataBereich1.search(False, False, True, True)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1436,7 +1405,7 @@ Public Class contPlanung2Bereich
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.ContPlanung1.print()
+            Me.ContPlanungDataBereich1.print()
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1554,7 +1523,7 @@ Public Class contPlanung2Bereich
         Try
             Me.TimerSearch.Stop()
             Me.Cursor = Cursors.WaitCursor
-            Me.ContPlanung1.search(False, False, True, False)
+            Me.ContPlanungDataBereich1.search(False, False, True, False)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1566,7 +1535,7 @@ Public Class contPlanung2Bereich
     Private Sub btnDekursErstellen_Click(sender As Object, e As EventArgs) Handles btnDekursErstellen.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.ContPlanung1.DekursErstellen(True, eTypeDekursErstellen.DekursErstellen)
+            Me.ContPlanungDataBereich1.DekursErstellen(True, eTypeDekursErstellen.DekursErstellen)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1577,7 +1546,7 @@ Public Class contPlanung2Bereich
     Private Sub btnDekursEntwurfErstellen_Click(sender As Object, e As EventArgs) Handles btnDekursEntwurfErstellen.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.ContPlanung1.DekursErstellen(True, eTypeDekursErstellen.DekursEntwurfErstellen)
+            Me.ContPlanungDataBereich1.DekursErstellen(True, eTypeDekursErstellen.DekursEntwurfErstellen)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1588,7 +1557,7 @@ Public Class contPlanung2Bereich
     Private Sub btnDekursEntwurfErstellenAs_Click(sender As Object, e As EventArgs) Handles btnDekursEntwurfErstellenAs.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.ContPlanung1.DekursErstellen(True, eTypeDekursErstellen.DekursEntwurfErstellenAls)
+            Me.ContPlanungDataBereich1.DekursErstellen(True, eTypeDekursErstellen.DekursEntwurfErstellenAls)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)

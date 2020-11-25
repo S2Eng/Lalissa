@@ -60,6 +60,8 @@
             this.panelArchiv2 = new System.Windows.Forms.Panel();
             this.ultraTabPageControl5 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelPlan2 = new System.Windows.Forms.Panel();
+            this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.panelPlanBereich = new System.Windows.Forms.Panel();
             this.tabMain = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.panelOben = new QS2.Desktop.ControlManagment.BasePanel();
@@ -74,26 +76,24 @@
             this.btnTermineKlientenansicht = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelCenter = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
-            this.ultraTabPageControl6 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
-            this.panelPlanBereich = new System.Windows.Forms.Panel();
             this.ultraTabPageControl1.SuspendLayout();
             this.ultraTabPageControl2.SuspendLayout();
             this.ultraTabPageControl3.SuspendLayout();
             this.ultraTabPageControl4.SuspendLayout();
             this.ultraTabPageControl5.SuspendLayout();
+            this.ultraTabPageControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).BeginInit();
             this.tabMain.SuspendLayout();
             this.panelOben.SuspendLayout();
             this.panelButtonOben.SuspendLayout();
             this.panelButtonRechts.SuspendLayout();
             this.panelCenter.SuspendLayout();
-            this.ultraTabPageControl6.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.panelArchiveOld);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 22);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(1037, 522);
             // 
@@ -169,6 +169,22 @@
             this.panelPlan2.Name = "panelPlan2";
             this.panelPlan2.Size = new System.Drawing.Size(1037, 522);
             this.panelPlan2.TabIndex = 1;
+            // 
+            // ultraTabPageControl6
+            // 
+            this.ultraTabPageControl6.Controls.Add(this.panelPlanBereich);
+            this.ultraTabPageControl6.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl6.Name = "ultraTabPageControl6";
+            this.ultraTabPageControl6.Size = new System.Drawing.Size(1037, 522);
+            // 
+            // panelPlanBereich
+            // 
+            this.panelPlanBereich.BackColor = System.Drawing.Color.Transparent;
+            this.panelPlanBereich.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPlanBereich.Location = new System.Drawing.Point(0, 0);
+            this.panelPlanBereich.Name = "panelPlanBereich";
+            this.panelPlanBereich.Size = new System.Drawing.Size(1037, 522);
+            this.panelPlanBereich.TabIndex = 0;
             // 
             // tabMain
             // 
@@ -268,13 +284,13 @@
             this.btnTermineBereiche.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTermineBereiche.ImageSize = new System.Drawing.Size(40, 40);
             this.btnTermineBereiche.IsStandardControl = false;
-            this.btnTermineBereiche.Location = new System.Drawing.Point(454, 3);
+            this.btnTermineBereiche.Location = new System.Drawing.Point(364, 2);
             this.btnTermineBereiche.Name = "btnTermineBereiche";
             this.btnTermineBereiche.ShowFocusRect = false;
             this.btnTermineBereiche.ShowOutline = false;
             this.btnTermineBereiche.Size = new System.Drawing.Size(104, 65);
             this.btnTermineBereiche.TabIndex = 26;
-            this.btnTermineBereiche.Text = "Abteilungsbezog. Termine";
+            this.btnTermineBereiche.Text = "Termine Bereiche";
             ultraToolTipInfo1.ToolTipTextFormatted = "E-Mails des angemeldeten Pflegers ...";
             ultraToolTipInfo1.ToolTipTitle = "E-Mail";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnTermineBereiche, ultraToolTipInfo1);
@@ -434,7 +450,7 @@
             this.btnEMail.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEMail.ImageSize = new System.Drawing.Size(40, 40);
             this.btnEMail.IsStandardControl = false;
-            this.btnEMail.Location = new System.Drawing.Point(364, 4);
+            this.btnEMail.Location = new System.Drawing.Point(474, 4);
             this.btnEMail.Name = "btnEMail";
             this.btnEMail.ShowFocusRect = false;
             this.btnEMail.ShowOutline = false;
@@ -498,22 +514,6 @@
             this.ultraToolTipManager1.ContainingControl = this;
             this.ultraToolTipManager1.InitialDelay = 0;
             // 
-            // ultraTabPageControl6
-            // 
-            this.ultraTabPageControl6.Controls.Add(this.panelPlanBereich);
-            this.ultraTabPageControl6.Location = new System.Drawing.Point(1, 22);
-            this.ultraTabPageControl6.Name = "ultraTabPageControl6";
-            this.ultraTabPageControl6.Size = new System.Drawing.Size(1037, 522);
-            // 
-            // panelPlanBereich
-            // 
-            this.panelPlanBereich.BackColor = System.Drawing.Color.Transparent;
-            this.panelPlanBereich.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPlanBereich.Location = new System.Drawing.Point(0, 0);
-            this.panelPlanBereich.Name = "panelPlanBereich";
-            this.panelPlanBereich.Size = new System.Drawing.Size(1037, 522);
-            this.panelPlanBereich.TabIndex = 0;
-            // 
             // ucArchivPlanung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,13 +529,13 @@
             this.ultraTabPageControl3.ResumeLayout(false);
             this.ultraTabPageControl4.ResumeLayout(false);
             this.ultraTabPageControl5.ResumeLayout(false);
+            this.ultraTabPageControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).EndInit();
             this.tabMain.ResumeLayout(false);
             this.panelOben.ResumeLayout(false);
             this.panelButtonOben.ResumeLayout(false);
             this.panelButtonRechts.ResumeLayout(false);
             this.panelCenter.ResumeLayout(false);
-            this.ultraTabPageControl6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -128,7 +128,6 @@ Public Class contSelectSelList
                         iCounter += 1
                     Next
                 End If
-
             End Using
 
             Me.DsClipboard1.AcceptChanges()

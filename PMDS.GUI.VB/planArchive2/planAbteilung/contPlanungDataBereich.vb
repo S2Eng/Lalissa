@@ -43,7 +43,7 @@ Public Class contPlanungDataBereich
     End Enum
 
 
-    Public mainWindow As contPlanung2
+    Public mainWindow As contPlanung2Bereich
     Public compPlan1 As New compPlan()
     Public isLoaded As Boolean = False
 
@@ -127,7 +127,6 @@ Public Class contPlanungDataBereich
     Friend WithEvents PanelEditorToWork As System.Windows.Forms.Panel
     Friend WithEvents TextControlToWork As TXTextControl.TextControl
     Friend WithEvents OpenSqlCommandToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Private WithEvents winFormHtmlEditor1 As SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor
     Friend WithEvents UltraGridDocumentExporter1 As DocumentExport.UltraGridDocumentExporter
     Friend WithEvents PanelTxtEditor As Panel
     Friend WithEvents TermineErledigenUndDekursSchreibenToolStripMenuItem As ToolStripMenuItem
@@ -258,7 +257,6 @@ Public Class contPlanungDataBereich
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ListeLeerenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DsPlanSearch1 = New PMDS.GUI.VB.dsPlanSearch()
-        Me.winFormHtmlEditor1 = New SpiceLogic.WinHTMLEditor.WinForm.WinFormHtmlEditor()
         Me.ToolStripMenuItemSpace = New System.Windows.Forms.ToolStripSeparator()
         Me.PanelAnzeige = New System.Windows.Forms.Panel()
         Me.PanelEditorToWork = New System.Windows.Forms.Panel()
@@ -274,7 +272,6 @@ Public Class contPlanungDataBereich
         CType(Me.gridPlans, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStripNeu.SuspendLayout()
         CType(Me.DsPlanSearch1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.winFormHtmlEditor1.SuspendLayout()
         Me.PanelAnzeige.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -660,73 +657,11 @@ Public Class contPlanungDataBereich
         '
         Me.DsPlanSearch1.DataSetName = "dsPlanSearch"
         Me.DsPlanSearch1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'winFormHtmlEditor1
-        '
-        Me.winFormHtmlEditor1.AutoScrollMargin = New System.Drawing.Size(0, 0)
-        Me.winFormHtmlEditor1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
-        Me.winFormHtmlEditor1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.winFormHtmlEditor1.Charset = "utf-8"
-        Me.winFormHtmlEditor1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.winFormHtmlEditor1.DocumentHtml = "<!DOCTYPE html>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<html><head>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<meta content=""text/html; charset=unicode"" http-eq" &
-    "uiv=""Content-Type"" />" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</head>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<body></body></html>"
-        Me.winFormHtmlEditor1.EditorContextMenuStrip = Nothing
-        Me.winFormHtmlEditor1.EditorMode = SpiceLogic.HtmlEditorControl.Domain.BOs.EditorModes.ReadOnly_Preview
-        Me.winFormHtmlEditor1.HeaderStyleContentElementID = "page_style"
-        Me.winFormHtmlEditor1.HorizontalScroll = Nothing
-        Me.winFormHtmlEditor1.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Name = "winFormHtmlEditor1"
-        Me.winFormHtmlEditor1.Options.ConvertFileUrlsToLocalPaths = True
-        Me.winFormHtmlEditor1.Options.CustomDOCTYPE = Nothing
-        Me.winFormHtmlEditor1.Options.DefaultHtmlType = SpiceLogic.HtmlEditorControl.Domain.BOs.HtmlContentTypes.DocumentHtml
-        Me.winFormHtmlEditor1.Options.FooterTagNavigatorFont = Nothing
-        Me.winFormHtmlEditor1.Options.FooterTagNavigatorTextColor = System.Drawing.Color.Teal
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.ConnectionMode = SpiceLogic.HtmlEditorControl.Domain.BOs.UserOptions.FTPSettings.ConnectionModes.Active
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Host = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Password = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Port = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.RemoteFolderPath = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.Timeout = 4000
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UrlOfTheRemoteFolderPath = Nothing
-        Me.winFormHtmlEditor1.Options.FTPSettingsForRemoteResources.UserName = Nothing
-        Me.winFormHtmlEditor1.Size = New System.Drawing.Size(843, 319)
-        Me.winFormHtmlEditor1.SpellCheckOptions.CurlyUnderlineImageFilePath = Nothing
+
         DictionaryFileInfo1.AffixFilePath = Nothing
         DictionaryFileInfo1.DictionaryFilePath = Nothing
         DictionaryFileInfo1.EnableUserDictionary = True
         DictionaryFileInfo1.UserDictionaryFilePath = Nothing
-        Me.winFormHtmlEditor1.SpellCheckOptions.DictionaryFile = DictionaryFileInfo1
-        Me.winFormHtmlEditor1.SpellCheckOptions.WaitAlertMessage = "Searching next messpelled word..... (please wait)"
-        Me.winFormHtmlEditor1.TabIndex = 4
-        '
-        'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar1
-        '
-        Me.winFormHtmlEditor1.Toolbar1.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Toolbar1.Name = "WinFormHtmlEditor_Toolbar1"
-        Me.winFormHtmlEditor1.Toolbar1.Size = New System.Drawing.Size(843, 29)
-        Me.winFormHtmlEditor1.Toolbar1.TabIndex = 0
-        Me.winFormHtmlEditor1.Toolbar1.Visible = False
-        '
-        'winFormHtmlEditor1.WinFormHtmlEditor_Toolbar2
-        '
-        Me.winFormHtmlEditor1.Toolbar2.Location = New System.Drawing.Point(0, 0)
-        Me.winFormHtmlEditor1.Toolbar2.Name = "WinFormHtmlEditor_Toolbar2"
-        Me.winFormHtmlEditor1.Toolbar2.Size = New System.Drawing.Size(843, 29)
-        Me.winFormHtmlEditor1.Toolbar2.TabIndex = 0
-        Me.winFormHtmlEditor1.Toolbar2.Visible = False
-        Me.winFormHtmlEditor1.ToolbarContextMenuStrip = Nothing
-        '
-        'winFormHtmlEditor1.WinFormHtmlEditor_ToolbarFooter
-        '
-        Me.winFormHtmlEditor1.ToolbarFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.winFormHtmlEditor1.ToolbarFooter.Location = New System.Drawing.Point(0, 294)
-        Me.winFormHtmlEditor1.ToolbarFooter.Name = "WinFormHtmlEditor_ToolbarFooter"
-        Me.winFormHtmlEditor1.ToolbarFooter.Size = New System.Drawing.Size(843, 25)
-        Me.winFormHtmlEditor1.ToolbarFooter.TabIndex = 7
-        Me.winFormHtmlEditor1.ToolbarFooter.Visible = False
-        Me.winFormHtmlEditor1.VerticalScroll = Nothing
-        Me.winFormHtmlEditor1.z__ignore = False
-        '
         'ToolStripMenuItemSpace
         '
         Me.ToolStripMenuItemSpace.Name = "ToolStripMenuItemSpace"
@@ -792,7 +727,6 @@ Public Class contPlanungDataBereich
         '
         Me.PanelBody.BackColor = System.Drawing.Color.Transparent
         Me.PanelBody.Controls.Add(Me.PanelTxtEditor)
-        Me.PanelBody.Controls.Add(Me.winFormHtmlEditor1)
         Me.PanelBody.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelBody.Location = New System.Drawing.Point(0, 0)
         Me.PanelBody.Name = "PanelBody"
@@ -836,8 +770,6 @@ Public Class contPlanungDataBereich
         CType(Me.gridPlans, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStripNeu.ResumeLayout(False)
         CType(Me.DsPlanSearch1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.winFormHtmlEditor1.ResumeLayout(False)
-        Me.winFormHtmlEditor1.PerformLayout()
         Me.PanelAnzeige.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
@@ -1396,13 +1328,7 @@ Public Class contPlanungDataBereich
         Try
             Me.DsPlanSearch1.Clear()
             gridPlans.Refresh()
-
             Me.contTxtEditor1.textControl1.Text = ""
-            If General.InitHTMLEditorEveryClick Then
-                contPlanungData.reloadHTMLControl(Me.PanelTxtEditor, Me.winFormHtmlEditor1)
-            Else
-                contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
-            End If
 
             clPlan.anzNachrichten = 0
 
@@ -1689,11 +1615,8 @@ Public Class contPlanungDataBereich
                 If gridPlans.Focused Then
                     Me.Cursor = Cursors.WaitCursor
 
-                    If Me.mainWindow.chkPreview.Checked Then
-                        contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
-                        Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
-                        Me.setContextMenüAuto()
-                    End If
+                    Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
+                    Me.setContextMenüAuto()
 
                     If Not gen.IsNull(gridPlans.ActiveRow) Then
                         If Me.gridPlans.ActiveRow.IsGroupByRow Or Me.gridPlans.ActiveRow.IsFilterRow Then
@@ -2122,10 +2045,7 @@ Public Class contPlanungDataBereich
 
     Private Sub doPreviewTxt(ByVal autoTypeToShow As Boolean, ByVal browser As Boolean)
         Try
-            If Me.mainWindow.chkPreview.Checked Then
-                contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
-                Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
-            End If
+            Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
 
             Dim gridIsInFront As Boolean = False
             Dim selectedApp As System.Collections.Generic.List(Of cSelEntries) = Me.getSelectedPlanungseinträge(gridIsInFront)
@@ -2148,16 +2068,14 @@ Public Class contPlanungDataBereich
     End Sub
     Public Sub showPrieviewTXTControl(ByVal text As String, ByVal html As Boolean, ByVal browser As Boolean, ByVal doIntEditorHtml As Boolean)
         Try
-            If Me.mainWindow.chkPreview.Checked Then
-                Application.DoEvents()
-                Dim typ As New TXTextControl.StringStreamType
-                If html Then
-                    typ = TXTextControl.StringStreamType.HTMLFormat
-                    Me.LoadTxtControl(TXTextControl.StreamType.HTMLFormat, False, text)
-                Else
-                    typ = TXTextControl.StringStreamType.PlainText
-                    Me.LoadTxtControl(TXTextControl.StringStreamType.PlainText, False, text)
-                End If
+            Application.DoEvents()
+            Dim typ As New TXTextControl.StringStreamType
+            If html Then
+                typ = TXTextControl.StringStreamType.HTMLFormat
+                Me.LoadTxtControl(TXTextControl.StreamType.HTMLFormat, False, text)
+            Else
+                typ = TXTextControl.StringStreamType.PlainText
+                Me.LoadTxtControl(TXTextControl.StringStreamType.PlainText, False, text)
             End If
 
         Catch ex As Exception
@@ -2186,29 +2104,9 @@ Public Class contPlanungDataBereich
     Public Sub LoadTxtControl(DefaultLoadTypes As TXTextControl.StringStreamType, all As Boolean, txt As String)
         Try
             Me.contTxtEditor1.textControl1.Text = ""
-            If General.InitHTMLEditorEveryClick Then
-                contPlanungData.reloadHTMLControl(Me.PanelTxtEditor, Me.winFormHtmlEditor1)
-            Else
-                contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
-            End If
 
             If Not Me.isFirstShow Then
-                If Me.mainWindow.chkPreview.Checked Then
-                    If DefaultLoadTypes = TXTextControl.StringStreamType.HTMLFormat Then
-                        Me.doEditor1.showText(txt, TXTextControl.StreamType.HTMLFormat, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
-                        Me.winFormHtmlEditor1.DocumentHtml = txt
-                    Else
-                        Me.doEditor1.showText(txt, TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
-                        If clPlan.checkIfTextIsHtmlText(txt.Trim()) Then
-                            Me.winFormHtmlEditor1.DocumentHtml = txt
-                        Else
-                            Me.winFormHtmlEditor1.Content.SetBodyText(txt)
-                        End If
-                    End If
-                Else
-                    Me.contTxtEditor1.textControl1.Text = ""
-                    contPlanungData.ClearHTMLBrowser(Me.winFormHtmlEditor1)
-                End If
+                Me.contTxtEditor1.textControl1.Text = ""
             End If
 
         Catch ex As Exception
