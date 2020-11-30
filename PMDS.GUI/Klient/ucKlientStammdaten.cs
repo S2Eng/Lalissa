@@ -22,6 +22,7 @@ using System.Drawing.Imaging;
 using System.Security.Permissions;
 using System.Security;
 using System.Linq;
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI
 {
@@ -984,8 +985,10 @@ namespace PMDS.GUI
                                         p.Privatversicherung,
                                         p.PrivPolNr,
                                         p.Klasse,
-                                        p.bPK}
-                                       ).First();
+                                        p.bPK,
+                                        p.ELGAAbgemeldet
+                                    }
+                                   ).First();
                     //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
 
                     if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text != Klient.VersicherungsNr)
@@ -1023,6 +1026,10 @@ namespace PMDS.GUI
                     if (txtbPK.Text != rPatInfo.bPK)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("bPK: ") + rPatInfo.bPK + " -> " + txtbPK.Text.Trim());
+                    }
+                    if (chkELGAAbgemeldet.Checked != rPatInfo.ELGAAbgemeldet)
+                    {
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA abgemeldet: ") + (rPatInfo.ELGAAbgemeldet ?? false ? sJa : sNein) + " -> " + (chkELGAAbgemeldet.Checked ? sJa : sNein));
                     }
                 }
             }
@@ -2534,7 +2541,7 @@ namespace PMDS.GUI
                 {
                     bool bELGAABgemeldetStatusOrig = this.chkELGAAbgemeldet.Checked;
 
-                    if (ENV.HasRight(UserRights.DNR_Palliativ))
+                    if (ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAAktionen, true))
                     {
                         DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den ELGA-Status wirklich ändern?", "ELGA", MessageBoxButtons.YesNo);
                         if (res == DialogResult.Yes)
@@ -2551,7 +2558,6 @@ namespace PMDS.GUI
                     {
                         //CheckBox zurücksetzen
                         this.chkDNR.Checked = bELGAABgemeldetStatusOrig;
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sie haben kein Recht, dieses Feld zu bearbeiten.");
                     }
                 }
                 Application.DoEvents();

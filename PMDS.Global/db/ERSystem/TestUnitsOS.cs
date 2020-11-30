@@ -38,6 +38,16 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Herrichten: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Verabreichung: ");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil : ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Status: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Mitversichert bei: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Zusatzvers.: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("bPK: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA abgemeldet: ");
             }
             catch (Exception ex)
             {
