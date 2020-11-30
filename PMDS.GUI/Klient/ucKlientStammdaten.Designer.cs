@@ -195,7 +195,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
             PMDS.DB.PMDSBusiness pmdsBusiness1 = new PMDS.DB.PMDSBusiness();
             PMDS.Global.UIGlobal uiGlobal1 = new PMDS.Global.UIGlobal();
-            PMDSClient.Sitemap.WCFServiceClient wcfServiceClient1 = new PMDSClient.Sitemap.WCFServiceClient();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
@@ -3362,7 +3361,7 @@ namespace PMDS.GUI
             this.contELGAKlient1.Size = new System.Drawing.Size(1028, 606);
             this.contELGAKlient1.TabIndex = 0;
             this.contELGAKlient1.UIGlobal1 = uiGlobal1;
-            this.contELGAKlient1.WCFServiceClient1 = wcfServiceClient1;
+            //this.contELGAKlient1.WCFServiceClient1 = wcfServiceClient1;
             // 
             // contextMenuStripÄrzte
             // 
