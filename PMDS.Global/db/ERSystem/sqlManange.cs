@@ -1382,6 +1382,7 @@ namespace PMDS.Global.db.ERSystem
                 rNew.Tel = "";
                 rNew.SozVersNr = "";
                 rNew.PatientLocalID = "";
+                rNew.bPK = "";
 
                 ds.ELGASearchPatients.Rows.Add(rNew);
                 return rNew;

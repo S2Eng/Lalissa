@@ -44,12 +44,12 @@ Public Class doBill
     Public Sub run(ByRef calc As calcData, ByRef editor As TXTextControl.TextControl, IDKlinik As System.Guid, Bereich As String, ByRef Prot As String, ByRef iCounterProt As Integer)
         Try
             ' Deklarierung bill (format, columns)
-            Dim billFormat As New QS2.Desktop.Txteditor.formatAttr()
-            billFormat.tableNr = 1
+            Dim billFormat As New QS2.Desktop.Txteditor.formatAttr With {
+                .tableNr = 1,
+                .columns = Me.bill.getPrintColumns()
+            }
             billFormat.cellFormat.TopTextDistance = 80
             billFormat.cellFormat.BottomTextDistance = 80
-            Dim cols() As tableColumn = Me.bill.getPrintColumns()
-            billFormat.columns = cols
 
             Dim billFormatAbwSimple As New QS2.Desktop.Txteditor.formatAttr()
             Dim colsAbwSimple() As tableColumn = Me.bill.getPrintColumnsAbw()

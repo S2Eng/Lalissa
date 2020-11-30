@@ -483,8 +483,9 @@ namespace PMDS
         {
             try
             {
-                if (typ.Trim() != ("schnellrückmeldung").Trim() && (Environment.MachineName.Trim().ToLower().Equals(("styhl2").Trim().ToLower()) || Environment.MachineName.Trim().ToLower().Equals(("sty041").Trim().ToLower())) &&
-                    ENV.StartFromShare.Trim() != "1")
+                if (!generic.sEquals(typ,"schnellrückmeldung") && 
+                    (generic.sEquals(Environment.MachineName, "styhl2") || generic.sEquals(Environment.MachineName,"sty041")) &&
+                    !generic.sEquals(ENV.StartFromShare, "1"))
                 {
                     PMDS.Global.db.ERSystem.PMDSBusinessUI bUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
                     bool runWithDefaultConfigFile = false;
@@ -502,34 +503,35 @@ namespace PMDS
                         infoStartMain.Visible = false;
                     }
 
-                    frmSelectConfig frmSelectConfig1 = new frmSelectConfig();
-                    frmSelectConfig1.initControl(ConfigPathToCheck, ConfigFileDefault, HideButtonOK);
-                    frmSelectConfig1.ShowDialog();
+                    using (frmSelectConfig frmSelectConfig1 = new frmSelectConfig())
+                    {
+                        frmSelectConfig1.initControl(ConfigPathToCheck, ConfigFileDefault, HideButtonOK);
+                        frmSelectConfig1.ShowDialog();
 
-                    if (infoStartMain != null)
-                    {
-                        infoStartMain.StartPosition = FormStartPosition.CenterScreen;
-                        infoStartMain.Visible = true;
-                    }
-
-                    if (!frmSelectConfig1.abort)
-                    {
-                        return frmSelectConfig1.cItmTg_SelectedConfig;
-                    }
-                    else
-                    {
-                        if (frmSelectConfig1._runWithDefaultConfigFile)
+                        if (infoStartMain != null)
                         {
-                            return null;
+                            infoStartMain.StartPosition = FormStartPosition.CenterScreen;
+                            infoStartMain.Visible = true;
+                        }
+
+                        if (!frmSelectConfig1.abort)
+                        {
+                            return frmSelectConfig1.cItmTg_SelectedConfig;
                         }
                         else
                         {
-                            //remotingSrv.killProcessIPCClient();
+                            if (frmSelectConfig1._runWithDefaultConfigFile)
+                            {
+                                return null;
+                            }
+                            else
+                            {
+                                //remotingSrv.killProcessIPCClient();
+                                Process currentProcess = Process.GetCurrentProcess();
+                                currentProcess.Kill();
 
-                            Process currentProcess = Process.GetCurrentProcess();
-                            currentProcess.Kill();
-
-                            throw new Exception("MainEntry.checkSelectConfigs: PMDS.Main.exe stopped by remotingSrv.killProcessIPCClient()!");
+                                throw new Exception("MainEntry.checkSelectConfigs: PMDS.Main.exe stopped by remotingSrv.killProcessIPCClient()!");
+                            }
                         }
                     }
                 }

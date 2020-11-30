@@ -11432,7 +11432,7 @@ namespace PMDS.DB
                 if (User != null)
                 {
                     sqlBuilder.UserID = User;
-                    sqlBuilder.Password = Pwd == null ? "" : Pwd;
+                    sqlBuilder.Password = Pwd ?? "";
                     sqlBuilder.IntegratedSecurity = false;
                     sqlBuilder.PersistSecurityInfo = true;
                 }
@@ -11509,7 +11509,7 @@ namespace PMDS.DB
                     if (User.Trim() != "")
                     {
                         sqlBuilder.UserID = User;
-                        sqlBuilder.Password = Pwd == null ? "" : Pwd;
+                        sqlBuilder.Password = Pwd ?? "";
                         sqlBuilder.IntegratedSecurity = false;
                     }
 

@@ -675,9 +675,11 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} stimmt nicht überein: ELGA = {1}, PMDS = {2}!");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("SOO für Patient {0} von Benutzer {1} durchgeführt.");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den ELGA-Status wirklich ändern?", "ELGA", MessageBoxButtons.YesNo);
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es ist keine ELGA-Sitzung aktiv" + "\r\n" +
                                                                             "Aktion kann nicht ausgeführt werden.", "ELGA", MessageBoxButtons.OK);
@@ -2260,6 +2262,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Geschlecht: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Geburtsort: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Familienstand: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("bPK: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Staatsbürgerschaft: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Konfession: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Erlernter Beruf: ");
@@ -2272,6 +2275,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Größe: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Gewicht: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Größe: ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Augenfarbe: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Haarfarbe: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Statur: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Namenstag: ");

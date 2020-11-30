@@ -1422,8 +1422,7 @@ namespace PMDS.GUI.Print
                         c.NullFlavor = MARC.Everest.DataTypes.NullFlavor.NotApplicable;
                         act.Code = c;
 
-                        act.EntryRelationship = new List<EntryRelationship>();
-                        act.EntryRelationship.Add(entryRelationship);
+                        act.EntryRelationship = new List<EntryRelationship> { entryRelationship };
 
                         sect.Entry.Add(entry);
                     }

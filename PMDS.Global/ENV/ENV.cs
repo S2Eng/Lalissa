@@ -197,6 +197,7 @@ namespace PMDS.Global
 
         public static string ELGAUser = "s2-engineering";
         public static string ELGAPwd = "KLqHC0hznj91OH0PiCIWBw==";
+        public static string ELGACommunityDomain = "1.3.6.1.4.1.48288.2.990.2";     //Tiany CPID (Domäne der Tiany in ELGA)
 
         public static int MedVerabreichenDefault = -1;
         public static bool SavePflegebegleitschreibenToArchiv = true;
@@ -637,8 +638,7 @@ namespace PMDS.Global
 
         public static void SignalNotfallChanged(object sender, EventArgs args)
         {
-            if (NotfallChanged != null)
-                NotfallChanged(sender, args);
+            NotfallChanged?.Invoke(sender, args);
         }
 
         public static void SignalZusatzeintragChanged(bool changed)
@@ -746,8 +746,7 @@ namespace PMDS.Global
         public static void fMainWindowResized(Size sMainWindow)
         {
             ENV.LastSizeMainWindow = sMainWindow;
-            if (dMainWindowResized != null)
-                dMainWindowResized(sMainWindow);
+            dMainWindowResized?.Invoke(sMainWindow);
         }
 
         public static void SignalPatientDatenChanged(Guid IDPatient)
@@ -1639,7 +1638,7 @@ namespace PMDS.Global
                 if (User != null)
                 {
                     sqlBuilder.UserID = User;
-                    sqlBuilder.Password = Pwd == null ? "" : Pwd;
+                    sqlBuilder.Password = Pwd ?? "";
                     sqlBuilder.IntegratedSecurity = false;
                 }
                 string providerString = sqlBuilder.ToString();

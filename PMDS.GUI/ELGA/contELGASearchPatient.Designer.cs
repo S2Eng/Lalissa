@@ -45,6 +45,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SozVersNr");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PatientLocalID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("bPK", 0);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -198,6 +199,8 @@
             ultraGridColumn20.Header.Editor = null;
             ultraGridColumn20.Header.VisiblePosition = 9;
             ultraGridColumn20.Hidden = true;
+            ultraGridColumn2.Header.Editor = null;
+            ultraGridColumn2.Header.VisiblePosition = 10;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn4,
             ultraGridColumn12,
@@ -208,7 +211,8 @@
             ultraGridColumn17,
             ultraGridColumn18,
             ultraGridColumn1,
-            ultraGridColumn20});
+            ultraGridColumn20,
+            ultraGridColumn2});
             this.gridFound.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridFound.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;

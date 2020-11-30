@@ -894,14 +894,6 @@ namespace PMDS.Global.db.ERSystem
         {
             try
             {
-                //var rAufenthalt = (from a in db.Aufenthalt
-                //                    where a.ID == IDAufenthalt
-                //                    select new
-                //                    {
-                //                        a.ID,
-                //                        a.ELGALocalID
-                //                    }).First();
-
                 var rPatient = (from p in db.Patient
                                 where p.ID == IDPatient
                                 select new
@@ -924,11 +916,6 @@ namespace PMDS.Global.db.ERSystem
                                                     ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
 
                     xmlDocu = System.Text.Encoding.Default.GetString(parOuot.lDocuments[0].bdocument);
-
-                    string sFileXmlTmp = "";
-                    string sStylesheetTmp = this.getStylesheetAndXmlFromELGAXmlDocu(xmlDocu, ref sFileXmlTmp);
-                    xmlDocu = sFileXmlTmp.Trim();
-                    Stylesheet = sStylesheetTmp.Trim();
                 }
                 else
                 {
@@ -941,10 +928,6 @@ namespace PMDS.Global.db.ERSystem
                 {
                     writer.WriteLine(xmlDocu);
                 }
-                //using (Stream file = File.OpenWrite(DirFileNameELGA + "\\" + FileNameELGA))
-                //{
-                //    file.Write(sFileXmlTmp, 0, xmlDocu.Length);
-                //}
 
                 PMDS.db.Entities.MedizinischeDaten rMedizinischeDaten = EFEntities.newMedizinischeDaten(db);
                 rMedizinischeDaten.ID = System.Guid.NewGuid();
@@ -1042,19 +1025,15 @@ namespace PMDS.Global.db.ERSystem
                 //string sFileXMLTest2 = Convert.ToBase64String(parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField, 0, parOuot.lDocumentsk__BackingField[0].bdocumentk__BackingField.Length);
 
                 string sFileXML = Encoding.UTF8.GetString(parOuot.lDocuments[0].bdocument, 0, parOuot.lDocuments[0].bdocument.Length);
-
-                string sFileXmlTmp = "";
-                string sStylesheetTmp = this.getStylesheetAndXmlFromELGAXmlDocu(sFileXML, ref sFileXmlTmp);
-
-                frmCDAViewer frmCDAViewer1 = new frmCDAViewer();
-                frmCDAViewer1.initControl(DocumentName.Trim(), parOuot.lDocuments[0].UniqueId.Trim(),
-                                            "", sFileXmlTmp, typeFile, sStylesheetTmp, contCDAViewer.eTypeUI.saveToArchive);
-                frmCDAViewer1.ShowDialog();
-                if (!frmCDAViewer1.contCDAViewer1.abort)
+                var stream = new MemoryStream();
+                using (StreamWriter writer = new StreamWriter(stream))
                 {
-
-                }
-
+                    writer.Write(sFileXML);
+                    writer.Flush();
+                    stream.Position = 0;
+                    clsELGAPrint pr = new clsELGAPrint();
+                    pr.ShowXMLInBrowser(stream, "", true);
+                }                
             }
             catch (Exception ex)
             {
@@ -1329,6 +1308,7 @@ namespace PMDS.Global.db.ERSystem
                     rDocuEintragUpdate.ELGAÜbertragen = 1;
                     rDocuEintragUpdate.ELGAÜbertragenAt = dNow;
                     rDocuEintragUpdate.ELGACreatedInPMDS = true;
+                    rDocuEintragUpdate.ELGAUniqueID = parOut.DocuUniqueId;
                     db.SaveChanges();
 
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Das Dokument wurde erfolgreich nach ELGA übertragen!", "", MessageBoxButtons.OK);

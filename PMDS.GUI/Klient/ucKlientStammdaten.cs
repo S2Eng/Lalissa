@@ -884,7 +884,7 @@ namespace PMDS.GUI
 
             if (Klient.Augenfarbe != cmbAugenFarbe.Text.Trim())
             {
-                sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Größe: ") + Klient.Augenfarbe + " -> " + cmbAugenFarbe.Text.Trim());
+                sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Augenfarbe: ") + Klient.Augenfarbe + " -> " + cmbAugenFarbe.Text.Trim());
             }
             Klient.Augenfarbe = cmbAugenFarbe.Text.Trim();
 
@@ -983,46 +983,49 @@ namespace PMDS.GUI
                                         p.SozVersMitversichertBei,
                                         p.Privatversicherung,
                                         p.PrivPolNr,
-                                        p.Klasse}
+                                        p.Klasse,
+                                        p.bPK}
                                        ).First();
                     //PMDS.db.Entities.Patient rPatient = this.b.getPatient(Klient.ID, db);
 
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text.Trim() != Klient.VersicherungsNr.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text != Klient.VersicherungsNr)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr: ") + Klient.VersicherungsNr + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text.Trim() != rPatInfo.SozVersLeerGrund.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text != rPatInfo.SozVersLeerGrund)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Nr leer weil : ") + rPatInfo.SozVersLeerGrund.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboEinrichtungen.Text.Trim() != rPatInfo.KrankenKasse.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboEinrichtungen.Text != rPatInfo.KrankenKasse)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Krankenkasse: ") + rPatInfo.KrankenKasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboEinrichtungen.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim() != rPatInfo.SozVersStatus.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text != rPatInfo.SozVersStatus)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("SV-Status: ") + rPatInfo.SozVersStatus.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text.Trim() != rPatInfo.SozVersMitversichertBei.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text != rPatInfo.SozVersMitversichertBei)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Mitversichert bei: ") + rPatInfo.SozVersMitversichertBei.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPrivatVers.Text.Trim() != rPatInfo.Privatversicherung.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPrivatVers.Text != rPatInfo.Privatversicherung)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Zusatzvers.: ") + rPatInfo.Privatversicherung.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPrivatVers.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse.Text.Trim() != rPatInfo.Klasse.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse.Text != rPatInfo.Klasse)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Klasse: ") + rPatInfo.Klasse.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse.Text.Trim());
                     }
-                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPolzNr.Text.Trim() != rPatInfo.PrivPolNr.Trim())
+                    if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPolzNr.Text != rPatInfo.PrivPolNr)
                     {
                         sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ") + rPatInfo.PrivPolNr.Trim() + " -> " + this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtPolzNr.Text.Trim());
                     }
+                    if (txtbPK.Text != rPatInfo.bPK)
+                    {
+                        sbChanges.Append("\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("bPK: ") + rPatInfo.bPK + " -> " + txtbPK.Text.Trim());
+                    }
                 }
-
             }
-
 
             //----------------------------------------------------
             //              Kontakte
@@ -1149,7 +1152,7 @@ namespace PMDS.GUI
                         }
 
 
-                        if (this.ucAbrechAufenthKlient1.cmbBetreuungsstufe.Text != "")
+                        if (!String.IsNullOrWhiteSpace(this.ucAbrechAufenthKlient1.cmbBetreuungsstufe.Text))
                         {
                             rPatient.Betreuungsstufe = this.ucAbrechAufenthKlient1.cmbBetreuungsstufe.Text;
                         }
@@ -1177,8 +1180,7 @@ namespace PMDS.GUI
                         string lstSprachenTmp = rPatient.lstSprachen.Trim();
                         //PMDS.db.Entities.Patient rPatient = this.b.getPatient(ucKlient1.Klient.ID, db);
                         rPatient.lstSprachen = this.cboSprachenMulti.getSelectedRows();
-                        if (!lstSprachenTmp.Trim().ToLower().Equals(rPatient.lstSprachen.Trim().ToLower()))
-                        {
+                        if (!PMDS.Global.generic.sEquals(lstSprachenTmp, rPatient.lstSprachen))                         {
                             writeDekursSprachenChanged = true;
                             txtSprachenGeändert = "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Sprache") + ": " + lstSprachenTmp + " -> " +  rPatient.lstSprachen.Trim() + "";
                         }
@@ -1228,16 +1230,17 @@ namespace PMDS.GUI
                         rPatient.Amputation_Prozent = (int)this.intAmputation_Prozent.Value;
                         rPatient.TageAbweseneheitOhneKuerzung = (int)this.ucAbrechAufenthKlient1.numTageAbweseneheitOhneKuerzung.Value;
 
-                        rPatient.SozVersStatus = this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim();
-                        rPatient.SozVersLeerGrund = this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text.Trim();
-                        rPatient.SozVersMitversichertBei = this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text.Trim();
+                        ucVersichrungsdaten VersDaten = this.ucAbrechAufenthKlient1.ucVersichrungsdaten12;
+                        rPatient.SozVersStatus = VersDaten.cboSozVersStatus.Text.Trim();
+                        rPatient.SozVersLeerGrund = VersDaten.cboSozVersLeerGrund.Text.Trim();
+                        rPatient.SozVersMitversichertBei = VersDaten.txtSozVersMitversichertBei.Text.Trim();
                         rPatient.ELGAAbgemeldet = this.chkELGAAbgemeldet.Checked;
 
-                        if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtVersNr.Text))
                         {
                             rPatient.SozVersLeerGrund = "";
                             this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersLeerGrund.Text = "";
-                            if (this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text.Trim().ToLower() != ("mitversichert").Trim().ToLower())
+                            if (!generic.sEquals(this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cboSozVersStatus.Text, "mitversichert"))
                             {
                                 rPatient.SozVersMitversichertBei = "";
                                 this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text = "";
@@ -1248,9 +1251,9 @@ namespace PMDS.GUI
                             //rPatient.SozVersStatus = "";
                             //this.ucAbrechAufenthKlient1.ucVersichrungsdaten1.cboSozVersStatus.Text = "";
                             rPatient.SozVersMitversichertBei = "";
-                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.txtSozVersMitversichertBei.Text = "";
+                            VersDaten.txtSozVersMitversichertBei.Text = "";
                             rPatient.Klasse = "";
-                            this.ucAbrechAufenthKlient1.ucVersichrungsdaten12.cmbKlasse.Text = "";
+                            VersDaten.cmbKlasse.Text = "";
                         }
 
                         if (rPatient.TitelPost.Trim() != this.cboTitelPost.Text.Trim())
@@ -1301,6 +1304,11 @@ namespace PMDS.GUI
                         {
                             if (this.ucAbrechAufenthKlient1.IDAufenthaltEntlassen != null && this.ucAbrechAufenthKlient1.dtpEntlassungszeitpunkt != null)
                             {
+                                Guid IDAufenthaltEntlassen;
+                                using (ucAbrechAufenthKlient ucAbrechLocal = new ucAbrechAufenthKlient())
+                                {
+                                    ucAbrechLocal.IDAufenthaltEntlassen = ucAbrechLocal.IDAufenthaltEntlassen.Value;
+                                }
                                 PMDS.db.Entities.Aufenthalt rAufenthaltEntlassen = this.b.getAufenthalt(this.ucAbrechAufenthKlient1.IDAufenthaltEntlassen.Value, db);
                                 if(rAufenthaltEntlassen.Aufnahmezeitpunkt <= this.ucAbrechAufenthKlient1.dtpEntlassungszeitpunkt.DateTime)
                                 {
@@ -2516,6 +2524,42 @@ namespace PMDS.GUI
         private void baseLabel4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkELGAAbgemeldet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.chkELGAAbgemeldet.Focused)
+                {
+                    bool bELGAABgemeldetStatusOrig = this.chkELGAAbgemeldet.Checked;
+
+                    if (ENV.HasRight(UserRights.DNR_Palliativ))
+                    {
+                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den ELGA-Status wirklich ändern?", "ELGA", MessageBoxButtons.YesNo);
+                        if (res == DialogResult.Yes)
+                        {
+                            this.chkELGAAbgemeldet.Checked = !bELGAABgemeldetStatusOrig;
+                        }
+                        else
+                        {
+                            this.chkELGAAbgemeldet.Checked = bELGAABgemeldetStatusOrig;
+                        }
+                        OnValueChanged(sender, e);
+                    }
+                    else
+                    {
+                        //CheckBox zurücksetzen
+                        this.chkDNR.Checked = bELGAABgemeldetStatusOrig;
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sie haben kein Recht, dieses Feld zu bearbeiten.");
+                    }
+                }
+                Application.DoEvents();
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
         }
     }
 }

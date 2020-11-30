@@ -69,6 +69,8 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bereichsspezifisches Personenkennzeichen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
@@ -79,11 +81,12 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance97 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance98 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance99 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance100 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance102 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance104 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bereichsspezifisches Personenkennzeichen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance128 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance107 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance108 = new Infragistics.Win.Appearance();
@@ -107,6 +110,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance125 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance126 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance127 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance128 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance129 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance130 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
@@ -189,6 +193,9 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance85 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance86 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
+            PMDS.DB.PMDSBusiness pmdsBusiness1 = new PMDS.DB.PMDSBusiness();
+            PMDS.Global.UIGlobal uiGlobal1 = new PMDS.Global.UIGlobal();
+            PMDSClient.Sitemap.WCFServiceClient wcfServiceClient1 = new PMDSClient.Sitemap.WCFServiceClient();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
@@ -204,10 +211,6 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab9 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab10 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab11 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance102 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance100 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBoxAdressdaten = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.lift = new QS2.Desktop.ControlManagment.BaseCheckBox();
@@ -276,6 +279,8 @@ namespace PMDS.GUI
             this.lblTodeszeitpunkt = new QS2.Desktop.ControlManagment.BaseLabel();
             this.chkVerstorben = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.cmbStaatsB = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.baseLabel4 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.txtbPK = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.cmbAkdGrad = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cmbKonfession = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.cmbAnrede = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
@@ -294,12 +299,13 @@ namespace PMDS.GUI
             this.lblGeschl = new QS2.Desktop.ControlManagment.BaseLabel();
             this.gebDatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.ultraGroupBoxAllgemein1 = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.lbleMailKlient = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblEMailPat = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblMobilTelNrKlient = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblMobilTel = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblDNRAnmerkung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtDNRAnmerkung = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.baseLabel4 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblPatientenverfügung = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.chkAbwesenheitBeendet = new QS2.Desktop.ControlManagment.BaseCheckBox();
-            this.txtbPK = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.txtKliNr = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.chkDatenschutz = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lblSprachen = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -337,6 +343,7 @@ namespace PMDS.GUI
             this.lblGroesse = new QS2.Desktop.ControlManagment.BaseLabel();
             this.Namenstag = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblNamenstag = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.chkAbwesenheitBeendet = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lblVorname = new QS2.Desktop.ControlManagment.BaseLabel();
             this.chkMilieubetreuung = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.chkAnatomie = new QS2.Desktop.ControlManagment.BaseCheckBox();
@@ -408,10 +415,6 @@ namespace PMDS.GUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
-            this.lblMobilTel = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblMobilTelNrKlient = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lblEMailPat = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.lbleMailKlient = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxAdressdaten)).BeginInit();
             this.ultraGroupBoxAdressdaten.SuspendLayout();
@@ -454,6 +457,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dteTodeszeitpunkt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVerstorben)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStaatsB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAkdGrad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKonfession)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAnrede)).BeginInit();
@@ -465,8 +469,6 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxAllgemein1)).BeginInit();
             this.ultraGroupBoxAllgemein1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDNRAnmerkung)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkAbwesenheitBeendet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKliNr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDatenschutz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPalliativ)).BeginInit();
@@ -484,6 +486,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.txtBesKennz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKosename)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Namenstag)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAbwesenheitBeendet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMilieubetreuung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAnatomie)).BeginInit();
             this.pageControlAufenthalt.SuspendLayout();
@@ -1276,6 +1279,7 @@ namespace PMDS.GUI
             this.chkELGAAbgemeldet.TabIndex = 12;
             this.chkELGAAbgemeldet.Text = "ELGA abgemeldet";
             this.chkELGAAbgemeldet.CheckedChanged += new System.EventHandler(this.ChkELGAAbgemeldet_CheckedChanged_1);
+            this.chkELGAAbgemeldet.Click += new System.EventHandler(this.chkELGAAbgemeldet_Click);
             // 
             // lblTitelPost
             // 
@@ -1384,6 +1388,30 @@ namespace PMDS.GUI
             this.cmbStaatsB.sys = false;
             this.cmbStaatsB.TabIndex = 10;
             this.cmbStaatsB.ValueChanged += new System.EventHandler(this.OnValueChanged);
+            // 
+            // baseLabel4
+            // 
+            appearance36.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel4.Appearance = appearance36;
+            this.baseLabel4.AutoSize = true;
+            this.baseLabel4.Location = new System.Drawing.Point(235, 124);
+            this.baseLabel4.Name = "baseLabel4";
+            this.baseLabel4.Size = new System.Drawing.Size(30, 17);
+            this.baseLabel4.TabIndex = 214;
+            this.baseLabel4.Text = "bBK";
+            ultraToolTipInfo3.ToolTipText = "Bereichsspezifisches Personenkennzeichen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.baseLabel4, ultraToolTipInfo3);
+            this.baseLabel4.Click += new System.EventHandler(this.baseLabel4_Click);
+            // 
+            // txtbPK
+            // 
+            this.errorProvider1.SetIconAlignment(this.txtbPK, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.txtbPK.Location = new System.Drawing.Point(309, 120);
+            this.txtbPK.MaxLength = 25;
+            this.txtbPK.Name = "txtbPK";
+            this.txtbPK.Size = new System.Drawing.Size(173, 24);
+            this.txtbPK.TabIndex = 6;
+            this.txtbPK.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // cmbAkdGrad
             // 
@@ -1653,6 +1681,52 @@ namespace PMDS.GUI
             this.ultraGroupBoxAllgemein1.TabIndex = 91;
             this.ultraGroupBoxAllgemein1.Text = "Zusätzliche Daten, Wünsche, Kenntnisse";
             // 
+            // lbleMailKlient
+            // 
+            appearance100.BackColor = System.Drawing.Color.Transparent;
+            this.lbleMailKlient.Appearance = appearance100;
+            this.lbleMailKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lbleMailKlient.Location = new System.Drawing.Point(121, 425);
+            this.lbleMailKlient.Name = "lbleMailKlient";
+            this.lbleMailKlient.Size = new System.Drawing.Size(386, 18);
+            this.lbleMailKlient.TabIndex = 220;
+            this.lbleMailKlient.Text = "                                                             ";
+            // 
+            // lblEMailPat
+            // 
+            appearance101.BackColor = System.Drawing.Color.Transparent;
+            this.lblEMailPat.Appearance = appearance101;
+            this.lblEMailPat.AutoSize = true;
+            this.lblEMailPat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblEMailPat.Location = new System.Drawing.Point(11, 426);
+            this.lblEMailPat.Name = "lblEMailPat";
+            this.lblEMailPat.Size = new System.Drawing.Size(38, 17);
+            this.lblEMailPat.TabIndex = 219;
+            this.lblEMailPat.Text = "eMail";
+            // 
+            // lblMobilTelNrKlient
+            // 
+            appearance102.BackColor = System.Drawing.Color.Transparent;
+            this.lblMobilTelNrKlient.Appearance = appearance102;
+            this.lblMobilTelNrKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblMobilTelNrKlient.Location = new System.Drawing.Point(121, 399);
+            this.lblMobilTelNrKlient.Name = "lblMobilTelNrKlient";
+            this.lblMobilTelNrKlient.Size = new System.Drawing.Size(386, 20);
+            this.lblMobilTelNrKlient.TabIndex = 218;
+            this.lblMobilTelNrKlient.Text = "                                                             ";
+            // 
+            // lblMobilTel
+            // 
+            appearance103.BackColor = System.Drawing.Color.Transparent;
+            this.lblMobilTel.Appearance = appearance103;
+            this.lblMobilTel.AutoSize = true;
+            this.lblMobilTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblMobilTel.Location = new System.Drawing.Point(11, 399);
+            this.lblMobilTel.Name = "lblMobilTel";
+            this.lblMobilTel.Size = new System.Drawing.Size(65, 17);
+            this.lblMobilTel.TabIndex = 217;
+            this.lblMobilTel.Text = "Mobil-Tel.";
+            // 
             // lblDNRAnmerkung
             // 
             appearance104.BackColor = System.Drawing.Color.Transparent;
@@ -1677,20 +1751,6 @@ namespace PMDS.GUI
             this.txtDNRAnmerkung.TabIndex = 215;
             this.txtDNRAnmerkung.ValueChanged += new System.EventHandler(this.txtDNRAnmerkung_ValueChanged);
             // 
-            // baseLabel4
-            // 
-            appearance36.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel4.Appearance = appearance36;
-            this.baseLabel4.AutoSize = true;
-            this.baseLabel4.Location = new System.Drawing.Point(235, 124);
-            this.baseLabel4.Name = "baseLabel4";
-            this.baseLabel4.Size = new System.Drawing.Size(30, 17);
-            this.baseLabel4.TabIndex = 214;
-            this.baseLabel4.Text = "bBK";
-            ultraToolTipInfo3.ToolTipText = "Bereichsspezifisches Personenkennzeichen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.baseLabel4, ultraToolTipInfo3);
-            this.baseLabel4.Click += new System.EventHandler(this.baseLabel4_Click);
-            // 
             // lblPatientenverfügung
             // 
             appearance105.BackColor = System.Drawing.Color.Transparent;
@@ -1705,30 +1765,6 @@ namespace PMDS.GUI
             this.lblPatientenverfügung.MouseEnter += new System.EventHandler(this.lblPatientenverfügung_MouseEnter);
             this.lblPatientenverfügung.MouseLeave += new System.EventHandler(this.lblPatientenverfügung_MouseLeave);
             this.lblPatientenverfügung.MouseHover += new System.EventHandler(this.lblPatientenverfügung_MouseHover);
-            // 
-            // chkAbwesenheitBeendet
-            // 
-            appearance128.BackColor = System.Drawing.Color.Transparent;
-            appearance128.TextVAlignAsString = "Middle";
-            this.chkAbwesenheitBeendet.Appearance = appearance128;
-            this.chkAbwesenheitBeendet.BackColor = System.Drawing.Color.Transparent;
-            this.chkAbwesenheitBeendet.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkAbwesenheitBeendet.Location = new System.Drawing.Point(805, 580);
-            this.chkAbwesenheitBeendet.Name = "chkAbwesenheitBeendet";
-            this.chkAbwesenheitBeendet.Size = new System.Drawing.Size(205, 18);
-            this.chkAbwesenheitBeendet.TabIndex = 211;
-            this.chkAbwesenheitBeendet.Text = "Abwesenheitsende bestätigen";
-            this.chkAbwesenheitBeendet.CheckedChanged += new System.EventHandler(this.OnValueChanged);
-            // 
-            // txtbPK
-            // 
-            this.errorProvider1.SetIconAlignment(this.txtbPK, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.txtbPK.Location = new System.Drawing.Point(309, 120);
-            this.txtbPK.MaxLength = 25;
-            this.txtbPK.Name = "txtbPK";
-            this.txtbPK.Size = new System.Drawing.Size(173, 24);
-            this.txtbPK.TabIndex = 6;
-            this.txtbPK.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // txtKliNr
             // 
@@ -2199,6 +2235,20 @@ namespace PMDS.GUI
             this.lblNamenstag.Size = new System.Drawing.Size(73, 17);
             this.lblNamenstag.TabIndex = 93;
             this.lblNamenstag.Text = "Namenstag";
+            // 
+            // chkAbwesenheitBeendet
+            // 
+            appearance128.BackColor = System.Drawing.Color.Transparent;
+            appearance128.TextVAlignAsString = "Middle";
+            this.chkAbwesenheitBeendet.Appearance = appearance128;
+            this.chkAbwesenheitBeendet.BackColor = System.Drawing.Color.Transparent;
+            this.chkAbwesenheitBeendet.BackColorInternal = System.Drawing.Color.Transparent;
+            this.chkAbwesenheitBeendet.Location = new System.Drawing.Point(805, 580);
+            this.chkAbwesenheitBeendet.Name = "chkAbwesenheitBeendet";
+            this.chkAbwesenheitBeendet.Size = new System.Drawing.Size(205, 18);
+            this.chkAbwesenheitBeendet.TabIndex = 211;
+            this.chkAbwesenheitBeendet.Text = "Abwesenheitsende bestätigen";
+            this.chkAbwesenheitBeendet.CheckedChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblVorname
             // 
@@ -3297,13 +3347,22 @@ namespace PMDS.GUI
             // 
             // contELGAKlient1
             // 
+            this.contELGAKlient1.b = pmdsBusiness1;
             this.contELGAKlient1.BackColor = System.Drawing.Color.White;
             this.contELGAKlient1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contELGAKlient1.IDAufenthalt = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.contELGAKlient1.IDKlient = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.contELGAKlient1.IsInitialized = false;
+            this.contELGAKlient1.IsNeuaufnahme = false;
             this.contELGAKlient1.Location = new System.Drawing.Point(0, 0);
+            this.contELGAKlient1.mainWindow = null;
+            this.contELGAKlient1.mainWindowAufnahme = null;
             this.contELGAKlient1.Margin = new System.Windows.Forms.Padding(4);
             this.contELGAKlient1.Name = "contELGAKlient1";
             this.contELGAKlient1.Size = new System.Drawing.Size(1028, 606);
             this.contELGAKlient1.TabIndex = 0;
+            this.contELGAKlient1.UIGlobal1 = uiGlobal1;
+            this.contELGAKlient1.WCFServiceClient1 = wcfServiceClient1;
             // 
             // contextMenuStripÄrzte
             // 
@@ -3439,52 +3498,6 @@ namespace PMDS.GUI
             this.ultraToolTipManager1.ContainingControl = this;
             this.ultraToolTipManager1.InitialDelay = 0;
             // 
-            // lblMobilTel
-            // 
-            appearance103.BackColor = System.Drawing.Color.Transparent;
-            this.lblMobilTel.Appearance = appearance103;
-            this.lblMobilTel.AutoSize = true;
-            this.lblMobilTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblMobilTel.Location = new System.Drawing.Point(11, 399);
-            this.lblMobilTel.Name = "lblMobilTel";
-            this.lblMobilTel.Size = new System.Drawing.Size(65, 17);
-            this.lblMobilTel.TabIndex = 217;
-            this.lblMobilTel.Text = "Mobil-Tel.";
-            // 
-            // lblMobilTelNrKlient
-            // 
-            appearance102.BackColor = System.Drawing.Color.Transparent;
-            this.lblMobilTelNrKlient.Appearance = appearance102;
-            this.lblMobilTelNrKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblMobilTelNrKlient.Location = new System.Drawing.Point(121, 399);
-            this.lblMobilTelNrKlient.Name = "lblMobilTelNrKlient";
-            this.lblMobilTelNrKlient.Size = new System.Drawing.Size(386, 20);
-            this.lblMobilTelNrKlient.TabIndex = 218;
-            this.lblMobilTelNrKlient.Text = "                                                             ";
-            // 
-            // lblEMailPat
-            // 
-            appearance101.BackColor = System.Drawing.Color.Transparent;
-            this.lblEMailPat.Appearance = appearance101;
-            this.lblEMailPat.AutoSize = true;
-            this.lblEMailPat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblEMailPat.Location = new System.Drawing.Point(11, 426);
-            this.lblEMailPat.Name = "lblEMailPat";
-            this.lblEMailPat.Size = new System.Drawing.Size(38, 17);
-            this.lblEMailPat.TabIndex = 219;
-            this.lblEMailPat.Text = "eMail";
-            // 
-            // lbleMailKlient
-            // 
-            appearance100.BackColor = System.Drawing.Color.Transparent;
-            this.lbleMailKlient.Appearance = appearance100;
-            this.lbleMailKlient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbleMailKlient.Location = new System.Drawing.Point(121, 425);
-            this.lbleMailKlient.Name = "lbleMailKlient";
-            this.lbleMailKlient.Size = new System.Drawing.Size(386, 18);
-            this.lbleMailKlient.TabIndex = 220;
-            this.lbleMailKlient.Text = "                                                             ";
-            // 
             // ucKlientStammdaten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3543,6 +3556,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dteTodeszeitpunkt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVerstorben)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbStaatsB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAkdGrad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbKonfession)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAnrede)).EndInit();
@@ -3555,8 +3569,6 @@ namespace PMDS.GUI
             this.ultraGroupBoxAllgemein1.ResumeLayout(false);
             this.ultraGroupBoxAllgemein1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDNRAnmerkung)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkAbwesenheitBeendet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtbPK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKliNr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDatenschutz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPalliativ)).EndInit();
@@ -3575,6 +3587,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.txtBesKennz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKosename)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Namenstag)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAbwesenheitBeendet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkMilieubetreuung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAnatomie)).EndInit();
             this.pageControlAufenthalt.ResumeLayout(false);

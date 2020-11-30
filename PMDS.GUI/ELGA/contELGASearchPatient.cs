@@ -181,7 +181,7 @@ namespace PMDS.GUI.ELGA
                     foreach (ELGAPatientDTO elgaPatient in parOuot.lPatients)
                     {
                         dsManage.ELGASearchPatientsRow rPatientFound = this.sqlManange1.getNewELGAPatient(ref this.dsManage1);
-
+                        
                         rPatientFound.ID = elgaPatient.ID;
                         rPatientFound.NachnameFirma = elgaPatient.familyName.Trim();
                         rPatientFound.Vorname = elgaPatient.givenName.Trim();
@@ -201,13 +201,17 @@ namespace PMDS.GUI.ELGA
 
                         foreach (ELGAPidsDTO rPid in elgaPatient.ELGAPids)
                         {
-                            if (rPid.authUniversalID.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDType.ToLower() == ("HC").ToLower())
+                            if (rPid.authUniversalID == this._AuthUniversalID && rPid.patientIDType == "HC")
                             {
                                 rPatientFound.SozVersNr = rPid.patientID.Trim();
                             }
-                            else if (rPid.authUniversalID.Trim() == this._AuthUniversalID.Trim() && rPid.patientIDType.ToLower() == ("PI").ToLower())
+                            else if (rPid.authUniversalID == this._AuthUniversalID && rPid.patientIDType == "PI")
                             {
                                 rPatientFound.PatientLocalID = rPid.patientID.Trim();
+                            }
+                            else if (rPid.authUniversalID ==  ENV.ELGACommunityDomain && rPid.patientIDType == "RRI")        //bPK
+                            {
+                                rPatientFound.bPK = rPid.patientID;
                             }
                         }
                     }

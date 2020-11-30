@@ -45,19 +45,14 @@ namespace WCFServicePMDS
                 new ELGAChache().clearEhrPatientUsr(session);
 
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort");
-                spiritHCPLoginRequest req = new spiritHCPLoginRequest();
-                req.user = usr;
-                req.pwd = pwd;
-                req.userName = usr.Trim();                      //"TestHannes";
-                if (NameGDA.Trim() != "")
+                spiritHCPLoginRequest req = new spiritHCPLoginRequest
                 {
-                    req.org = NameGDA; 
-                }
-                else
-                {
-                    req.org = "Pflegeeinrichtung Gschnaidt";
-                }
-                req.role = Rolle;                   //"Pflegeeinrichtung";
+                    user = usr,
+                    pwd = pwd,
+                    userName = usr.Trim(),         //"TestHannes";
+                    org = NameGDA,
+                    role = Rolle                   //"Pflegeeinrichtung";
+                };
 
                 spiritUserResponse rsp = objWsLogin.loginHCP(req);
                 if (rsp.responseDetail.listError != null && rsp.responseDetail.listError.Count() > 0)
@@ -945,7 +940,7 @@ namespace WCFServicePMDS
                 submittingDocumentAuthorMetadata.person = parsIn.DocumentAdd.Person.Trim();
                 submittingDocument.author = arrSubmissionSetAuthorMetadata;
                 submittingDocument.legalAuthenticator = "document.legalAuthenticator";
-                submittingDocument.languageCode = "DE-TI";
+                //submittingDocument.languageCode = "DE-TI";
                 submittingDocument.description = parsIn.DocumentAdd.Description.Trim();
                 submittingDocument.name = parsIn.DocumentAdd.Documentname.Trim();
                 submittingDocument.mimeType = "text/xml";               //MIMEType of the submitFile (e.g. "application/pdf", "image/jpeg")
@@ -1300,7 +1295,8 @@ namespace WCFServicePMDS
                                 bool AddDocu = false;
                                 if (OneDocuMustFound)
                                 {
-                                    if (documentClientDto1.uniqueId.Trim().ToLower().Equals(UniqueId.Trim().ToLower()))
+                                    //Hier wird die Unique-ID des Documents von ELGA mit der internen GUID des lokalen CDAs verglichen -> Funktioniert nicht
+                                    if (documentClientDto1.uniqueId.Trim().ToLower().Equals(UniqueId.Trim().ToLower()))  
                                     {
                                         AddDocu = true;
                                     }
@@ -1404,9 +1400,9 @@ namespace WCFServicePMDS
             {
                 // Value Sets
                 iheClassificationClientDto formatCode = new iheClassificationClientDto();
-                formatCode.nodeRepresentation = "urn:elga:nurse-tf:2015-v2.06:EIS_Basic";
-                formatCode.value = "ELGA Pflegesituationsbericht, EIS Basic v2.06";
-                string[] arrSchema_formatCode = new string[1] { "1.2.40.0.34.5.3" };
+                formatCode.nodeRepresentation = "urn:elga:nurse-tf:2015-v2.06:EIS_FullSupport";
+                formatCode.value = "ELGA Pflegesituationsbericht, EIS Full Support v2.06";
+                string[] arrSchema_formatCode = new string[1] { "1.2.40.0.34.5.37" };
                 formatCode.schema = arrSchema_formatCode;
                 submittingDocument.formatCode = formatCode;
 

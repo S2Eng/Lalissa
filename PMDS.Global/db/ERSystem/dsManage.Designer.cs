@@ -1614,6 +1614,8 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnID;
             
+            private global::System.Data.DataColumn columnbPK;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ELGASearchPatientsDataTable() {
@@ -1729,6 +1731,14 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn bPKColumn {
+                get {
+                    return this.columnbPK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1764,7 +1774,7 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ELGASearchPatientsRow AddELGASearchPatientsRow(string NachnameFirma, string Vorname, string Strasse, string PLZ, string Ort, string Land, string Tel, string SozVersNr, string PatientLocalID, System.Guid ID) {
+            public ELGASearchPatientsRow AddELGASearchPatientsRow(string NachnameFirma, string Vorname, string Strasse, string PLZ, string Ort, string Land, string Tel, string SozVersNr, string PatientLocalID, System.Guid ID, string bPK) {
                 ELGASearchPatientsRow rowELGASearchPatientsRow = ((ELGASearchPatientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NachnameFirma,
@@ -1776,7 +1786,8 @@ namespace PMDS.Global.db.ERSystem {
                         Tel,
                         SozVersNr,
                         PatientLocalID,
-                        ID};
+                        ID,
+                        bPK};
                 rowELGASearchPatientsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowELGASearchPatientsRow);
                 return rowELGASearchPatientsRow;
@@ -1809,6 +1820,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnSozVersNr = base.Columns["SozVersNr"];
                 this.columnPatientLocalID = base.Columns["PatientLocalID"];
                 this.columnID = base.Columns["ID"];
+                this.columnbPK = base.Columns["bPK"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1834,7 +1846,9 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnPatientLocalID);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
+                this.columnbPK = new global::System.Data.DataColumn("bPK", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbPK);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint111", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnNachnameFirma.AllowDBNull = false;
                 this.columnVorname.AllowDBNull = false;
@@ -1847,6 +1861,8 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnPatientLocalID.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnbPK.AllowDBNull = false;
+                this.columnbPK.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4254,6 +4270,17 @@ namespace PMDS.Global.db.ERSystem {
                 }
                 set {
                     this[this.tableELGASearchPatients.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string bPK {
+                get {
+                    return ((string)(this[this.tableELGASearchPatients.bPKColumn]));
+                }
+                set {
+                    this[this.tableELGASearchPatients.bPKColumn] = value;
                 }
             }
         }
