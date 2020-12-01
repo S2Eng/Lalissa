@@ -865,7 +865,7 @@ namespace PMDS.GUI
             Klient.DNR = chkDNR.Checked;
 
             //Personenbeschreibung
-            if (txtGroesse.Text.Trim() != "")
+            if (!String.IsNullOrWhiteSpace(txtGroesse.Text.Trim()))
             {
                 if (Klient.Groesse != Convert.ToInt32(txtGroesse.Text.Trim()))
                 {
@@ -874,7 +874,7 @@ namespace PMDS.GUI
                 Klient.Groesse = Convert.ToInt32(txtGroesse.Text.Trim());
             }
 
-            if (txtGewicht.Text.Trim() != "" && Klient.Aufenthalt != null)
+            if (!String.IsNullOrWhiteSpace(txtGewicht.Text.Trim()) && Klient.Aufenthalt != null)
             {
                 if (Klient.Aufenthalt.Gewicht != Convert.ToDouble(txtGewicht.Text.Trim()))
                 {

@@ -302,6 +302,7 @@ namespace PMDS.Global
         public static bool lic_VOLager;
         public static bool lic_WundtherapieOffenWarnung;
         public static bool lic_ELGA;
+        public static bool lic_ELGA_PSB;
         public static bool lic_RezepteintragStorno;
         //---------------------------------------------
 
@@ -1466,6 +1467,7 @@ namespace PMDS.Global
                 ENV.lic_VO = setLicValue("lic_VO");
                 ENV.lic_VOLager = setLicValue("lic_VOLager");
                 ENV.lic_ELGA = setLicValue("lic_ELGA");
+                ENV.lic_ELGA_PSB = setLicValue("lic_ELGA_PSB");
                 ENV.lic_WundtherapieOffenWarnung = setLicValue("lic_WundtherapieOffenWarnung");
                 ENV.lic_RezepteintragStorno = setLicValue("lic_RezepteintragStorno");
 

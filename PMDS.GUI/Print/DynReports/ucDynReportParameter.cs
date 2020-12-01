@@ -183,7 +183,7 @@ namespace PMDS.GUI
                         ELGASOOJN = rKlient.ELGASOOJN;
                     }
 
-                    if (((ENV.lic_ELGA || PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2()) && !ELGAAbgemeldet && !ELGASOOJN))  
+                    if ((((ENV.lic_ELGA && ENV.lic_ELGA_PSB) || PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2()) && !ELGAAbgemeldet && !ELGASOOJN))  
                     {
                         PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht PSB = new PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht();
                         DialogResult resPSB = PSB.ShowDialog();

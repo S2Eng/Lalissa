@@ -203,6 +203,7 @@ namespace PMDS.GUI.Print
         {
             ResumeWithPBS = true;
             _canClose = true;
+            this.Close();
         }
     }
 }
