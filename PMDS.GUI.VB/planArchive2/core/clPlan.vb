@@ -75,7 +75,9 @@ Public Class clPlan
     Public Shared dVonFixiert As Date = Nothing
     Public Shared dBisFixiert As Date = Nothing
 
-
+    Public Shared bDatumFixierenBereich As Boolean = False
+    Public Shared dVonFixiertBereich As Date = Nothing
+    Public Shared dBisFixiertBereich As Date = Nothing
 
 
 

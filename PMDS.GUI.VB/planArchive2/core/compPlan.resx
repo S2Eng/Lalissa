@@ -212,7 +212,7 @@ FROM            [plan]</value>
     <value>False</value>
   </metadata>
   <metadata name="daPlanObject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>614, 134</value>
+    <value>17, 173</value>
   </metadata>
   <metadata name="OleDbCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -251,7 +251,7 @@ FROM            [plan]</value>
     <value>False</value>
   </metadata>
   <metadata name="daPlanSearch.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>906, 134</value>
+    <value>17, 251</value>
   </metadata>
   <metadata name="OleDbCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -276,7 +276,7 @@ FROM            [plan]</value>
 FROM            [plan]</value>
   </data>
   <metadata name="daPlanStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>310, 134</value>
+    <value>17, 368</value>
   </metadata>
   <metadata name="OleDbCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -315,7 +315,7 @@ FROM            [plan]</value>
     <value>False</value>
   </metadata>
   <metadata name="daPlanSearchPatients.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>738, 134</value>
+    <value>17, 290</value>
   </metadata>
   <metadata name="OleDbCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -368,8 +368,25 @@ FROM            Patient LEFT OUTER JOIN
                          [plan] ON planObject_1.IDPlan = [plan].ID</value>
   </data>
   <metadata name="daPlanSearchPatientsAll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>432, 134</value>
+    <value>17, 212</value>
   </metadata>
+  <metadata name="daSearchPlanBereich.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 329</value>
+  </metadata>
+  <metadata name="OleDbCommand12.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand12.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>141, 290</value>
+  </metadata>
+  <metadata name="OleDbCommand12.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbCommand12.CommandText" xml:space="preserve">
+    <value>SELECT        ID, Betreff, BeginntAm, EndetAm, lstAbteilungen, lstBereiche, Status, Category, Folder, Teilnehmer, IDSerientermin, TagWochenMonat, WiedWertJeden, Wochentage, nTenMonat, SerienterminType, Dauer, GanzerTag, 
+                         IsSerientermin, SerienterminEndetAm, IDKlinik, CreatedFrom, CreatedAt, LastChangeFrom, LastChangeAt, lstBerufsgruppen
+FROM            planBereich</value>
+  </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>

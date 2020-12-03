@@ -225,6 +225,7 @@ Public Class suchePlan
 
 
 
+
             'Dim sqlWhereKlinik As String = ""
             'sqlWhereKlinik = "Select dbo.planObject.IDObject From dbo.Klinik INNER Join dbo.Abteilung ON dbo.Klinik.ID = dbo.Abteilung.IDKlinik INNER Join " +
             '                    " dbo.Aufenthalt ON dbo.Abteilung.ID = dbo.Aufenthalt.IDAbteilung INNER Join dbo.planObject ON dbo.Aufenthalt.IDPatient = dbo.planObject.IDObject where dbo.Klinik.ID = '" + IDKlinik.ToString() + "' "
@@ -273,6 +274,103 @@ Public Class suchePlan
             Throw New Exception("suchePlan.searchPlan: " + ex.ToString())
         End Try
     End Function
+
+    Public Function searchPlanBereich(ByVal ds As dsPlanSearch,
+                         ByVal sqlPriorität As String,
+                         ByVal sqlErledigt As String, ByVal sqlEMailGesendet As String,
+                         ByVal dVon As Date, ByVal dBis As Date,
+                         ByVal txt As String,
+                         ByRef SqlCommandReturn As String,
+                         ByRef lstSelectedCategories As System.Collections.Generic.List(Of String),
+                         ByRef lstSelectedAbteilungen As System.Collections.Generic.List(Of String),
+                         ByRef lstSelectedBereiche As System.Collections.Generic.List(Of String),
+                         ByRef lstSelectedBerufsgruppen As System.Collections.Generic.List(Of String),
+                         LayoutGrid As contPlanungDataBereich.eLayoutGrid, ByRef IDKlinik As Guid) As Boolean
+        Try
+            Dim SQL_where As String = ""
+
+            Dim sql_Klinik As String = " [planBereich].IDKlinik='" + IDKlinik.ToString() + "' "
+            'SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_Klinik, " and " + sql_Klinik)
+            'Dim UserLoggedIn As String = Me.gen.getLoggedInUser()
+
+            'Dim id_str As String = " planObjectBereich.idObject = '" + PMDS.Global.ENV.CurrentIDPatient.ToString + "' "
+            'Dim sql_sub As String = " Patient.ID in ( SELECT idObject FROM  planObject " +
+            '                            " where  " + id_str + ") "
+            'SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+
+            If txt <> "" Then
+                Dim id_str As String = " ( [planBereich].Betreff like '%" + txt + "%' ) "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + id_str, " and " + id_str)
+            End If
+
+            If lstSelectedCategories.Count > 0 Then
+                Dim sql_id As String = ""
+                For Each sCategory As String In lstSelectedCategories
+                    Dim id_str As String = " [planBereich].Category like '%" + sCategory.ToString + "%' "
+                    sql_id += IIf(gen.IsNull(Trim(sql_id)), id_str, " or " + id_str)
+                Next
+                Dim sql_sub As String = " (" + sql_id + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+            End If
+
+            If sqlErledigt.Trim() <> "" Then
+                Dim sql_id As String = " (" + sqlErledigt + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_id, " and " + sql_id)
+            End If
+            If sqlPriorität.Trim() <> "" Then
+                Dim sql_id As String = " (" + sqlPriorität + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_id, " and " + sql_id)
+            End If
+            If sqlEMailGesendet.Trim() <> "" Then
+                Dim sql_id As String = " (" + sqlEMailGesendet + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_id, " and " + sql_id)
+            End If
+
+            Dim VonTmp As Date = Nothing
+            If Not gen.IsNull(dVon) Then
+                VonTmp = New Date(dVon.Year, dVon.Month, dVon.Day, 0, 0, 0)
+            End If
+            Dim BisTmp As Date = Nothing
+            If Not gen.IsNull(dBis) Then
+                BisTmp = New Date(dBis.Year, dBis.Month, dBis.Day, 23, 59, 59)
+            End If
+
+            If Not gen.IsNull(VonTmp) Then
+                Dim id_str As String = "  [planBereich].BeginntAm >= ? "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + id_str, " and " + id_str)
+            End If
+            If Not gen.IsNull(BisTmp) Then
+                Dim id_str As String = "  [planBereich].BeginntAm <= ? "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + id_str, " and " + id_str)
+            End If
+
+            Dim cmd As New OleDbCommand()
+            If Not gen.IsNull(VonTmp) Then
+                cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = VonTmp
+            End If
+            If Not gen.IsNull(BisTmp) Then
+                cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = BisTmp
+            End If
+
+            Dim Sql As String = ""
+            Dim compPlanSql As New compPlan()
+            Dim da As New OleDbDataAdapter()
+            Sql = compPlanSql.daSearchPlanBereich.SelectCommand.CommandText
+
+            cmd.CommandText = Sql + SQL_where + " order by [planBereich].BeginntAm desc , [planBereich].FälligAm desc  "
+            cmd.Connection = Me.db.getConnDB()
+            cmd.CommandTimeout = 0
+            da.SelectCommand = cmd
+            da.Fill(ds.planBereich)
+
+            SqlCommandReturn = cmd.CommandText
+            Return True
+
+        Catch ex As OleDbException
+            Throw New Exception("suchePlan.searchPlanBereich: " + ex.ToString())
+        End Try
+    End Function
+
 
     Public Sub getWhereLstIDsPatients(ByRef lstIDs As System.Collections.Generic.List(Of Guid), doInit As Boolean, PlanArchive As contPlanungData.cPlanArchive,
                                     ByRef TypeUI As contPlanungData.eTypeUI, ByRef SQL_where As String)

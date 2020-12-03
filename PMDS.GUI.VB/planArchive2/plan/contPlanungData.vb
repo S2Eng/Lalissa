@@ -87,7 +87,7 @@ Public Class contPlanungData
     Public sitemap1 As New PMDS.Global.UIGlobal()
     Private gen As New General()
 
-    Public contTxtEditor1 As New qs2.Desktop.Txteditor.contTxtEditor()
+    Public contTxtEditor1 As New QS2.Desktop.Txteditor.contTxtEditor()
     Public isFirstShow As Boolean = True
 
     Public b As New PMDS.db.PMDSBusiness()

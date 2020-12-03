@@ -467,7 +467,7 @@ namespace PMDS.Itscont
                     this.setButtonsAktivDeaktiv(5);
 
                     this.contPlanung2Bereich1 = new GUI.VB.contPlanung2Bereich();
-                    this.contPlanung2Bereich1.initForm(-1, GUI.VB.contPlanungData.eTypeUI.PlansAll, new GUI.VB.contPlanungDataBereich.cPlanArchive(), true);
+                    this.contPlanung2Bereich1.initForm(-1, GUI.VB.contPlanungData.eTypeUI.PlansAll, true);
                     this.contPlanung2Bereich1.Dock = DockStyle.Fill;
                     this.panelPlanBereich.Controls.Add(this.contPlanung2Bereich1);
 

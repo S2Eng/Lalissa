@@ -22,6 +22,7 @@ Public Class contSelectSelList
 
     Public MainMessage As frmNachricht3 = Nothing
     Public MainPlanSearch As contPlanung2 = Nothing
+    Public MainPlanBereicheSearch As contPlanung2Bereich = Nothing
     Public MainTextTemplates As contTextTemplates = Nothing
 
     Public _IsSearch As Boolean = False
