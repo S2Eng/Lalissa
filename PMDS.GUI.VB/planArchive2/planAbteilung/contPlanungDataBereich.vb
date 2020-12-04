@@ -32,6 +32,7 @@ Public Class contPlanungDataBereich
     Public Class cSelEntries
         Public rowGrid As Infragistics.Win.UltraWinGrid.UltraGridRow
         Public rPlanSel As dsPlanSearch.planRow
+        Public rPlanBereichSel As dsPlanSearch.planBereichRow
         Public gridIsActive As Boolean = False
     End Class
 
@@ -63,6 +64,7 @@ Public Class contPlanungDataBereich
 
     Public b As New PMDS.db.PMDSBusiness()
 
+    Public lNachrichtenBereichOpend As New System.Collections.Generic.List(Of Form)
 
 
 
@@ -544,13 +546,9 @@ Public Class contPlanungDataBereich
             Me.doUI1.runComponents_rek(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, Nothing)
 
             'Me.LöschenToolStripMenuItem1.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32)
-            clPlan.anzNachrichten = 0
 
             Me.gridPlans.DisplayLayout.Override.MergedCellStyle = MergedCellStyle.Always
-            Me.ContexMenüItems(False)
             Me.setUIContextSelectAlleKeine(True)
-
-            Me.initData()
 
             Me.lstColSmallViewGrid.Clear()
 
@@ -871,136 +869,28 @@ Public Class contPlanungDataBereich
                             Me._LayoutGrid, PMDS.Global.ENV.IDKlinik)
 
 
-            Dim lstPlansToDelete As New System.Collections.Generic.List(Of dsPlanSearch.planRow)
-            Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                Dim countNotReadedEMails As Integer = 0
-                Dim dt As New DataTable()
-                For Each rPlan As dsPlanSearch.planRow In Me.DsPlanSearch1.plan
-                    Dim sFormattedTimespan As String = ""
-                    Dim tEndetAmBeginntAm As TimeSpan = rPlan.EndetAm - rPlan.BeginntAm
-                    If tEndetAmBeginntAm.Days > 0 Then
-                        sFormattedTimespan = String.Format("{0:D}T {1:D2}:{2:D2}", tEndetAmBeginntAm.Days, tEndetAmBeginntAm.Hours, tEndetAmBeginntAm.Minutes)
-                        rPlan.DauerStr = sFormattedTimespan
-                    Else
-                        sFormattedTimespan = String.Format("{0:D2}:{1:D2}", tEndetAmBeginntAm.Hours, tEndetAmBeginntAm.Minutes)
-                        rPlan.DauerStr = sFormattedTimespan
-                    End If
+            'Dim lstPlansToDelete As New System.Collections.Generic.List(Of dsPlanSearch.planRow)
+            'Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
+            '    For Each rPlan As dsPlanSearch.planRow In Me.DsPlanSearch1.plan
+            '        Dim sFormattedTimespan As String = ""
+            '        Dim tEndetAmBeginntAm As TimeSpan = rPlan.EndetAm - rPlan.BeginntAm
+            '        If tEndetAmBeginntAm.Days > 0 Then
+            '            sFormattedTimespan = String.Format("{0:D}T {1:D2}:{2:D2}", tEndetAmBeginntAm.Days, tEndetAmBeginntAm.Hours, tEndetAmBeginntAm.Minutes)
+            '            rPlan.DauerStr = sFormattedTimespan
+            '        Else
+            '            sFormattedTimespan = String.Format("{0:D2}:{1:D2}", tEndetAmBeginntAm.Hours, tEndetAmBeginntAm.Minutes)
+            '            rPlan.DauerStr = sFormattedTimespan
+            '        End If
 
-                    Dim bPatIsAbwesend As Boolean = False
-                    If Me._LayoutGrid = eLayoutGrid.PatientsBeginn Or Me._LayoutGrid = eLayoutGrid.PatientsKategorie Or Me._LayoutGrid = eLayoutGrid.KategoriePatient Then
-                        If Not rPlan.IsIDPatientNull() Then
-                            dt.Clear()
-                            Dim PatientHasNoAktAufenthalt As Boolean = False
-                            bPatIsAbwesend = Me.b.PatientIstAbwesend2(dt, rPlan.IDPatient, PatientHasNoAktAufenthalt)
-                        End If
-                    End If
+            '        Dim bPatIsAbwesend As Boolean = False
+            '        If Me._LayoutGrid = eLayoutGrid.PatientsBeginn Or Me._LayoutGrid = eLayoutGrid.PatientsKategorie Or Me._LayoutGrid = eLayoutGrid.KategoriePatient Then
+            '        End If
+            '    Next
+            'End Using
 
-                    If Not bPatIsAbwesend Then
-                        'Dim bEMailNotReaded As Boolean = False
-                        'If rPlan.IDArt = 1 Then
-                        '    If Not rPlan.readed Then
-                        '        Dim gridRow As UltraGridRow = Me.gridPlans.Rows.GetRowWithListIndex(Me.DsPlanSearch1.plan.Rows.IndexOf(rPlan))
-                        '        gridRow.Appearance.FontData.Bold = DefaultableBoolean.True
-                        '        bEMailNotReaded = True
-                        '        countNotReadedEMails += 1
-                        '    End If
-                        'End If
-
-                        Dim dEndetAm As Date = Nothing
-                        Dim appointment As Appointment = Nothing
-
-                        If rPlan.IDArt = clPlan.typPlan_EMailEmpfangen Then
-                            Dim empfangenAmTmp As Date = Nothing
-                            If Not rPlan.IsempfangenAmNull() Then
-                                empfangenAmTmp = rPlan.empfangenAm
-                            Else
-                                empfangenAmTmp = Now
-                            End If
-                            dEndetAm = empfangenAmTmp.AddMinutes(30)
-                            appointment = New Appointment(empfangenAmTmp, dEndetAm)
-                            appointment.StartDateTime = empfangenAmTmp
-                            appointment.Description = vbNewLine + "Start: " + empfangenAmTmp.ToString("dd.MM.yyyy HH:mm") + " " +
-                                                                doUI.getRes("Subject") + ": " + rPlan.Betreff + " " +
-                                                                doUI.getRes("GeneratedFrom") + ": " + rPlan.ErstelltVon
-
-                            appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                            'If bEMailNotReaded Then
-                            '    appointment.Appearance.FontData.Bold = DefaultableBoolean.True
-                            'Else
-                            '    appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                            'End If
-                            appointment.Subject = rPlan.Betreff
-                        Else
-                            Dim dNewBeginntAm As Date
-                            dNewBeginntAm = rPlan.BeginntAm
-                            'If rPlan.IsBeginntAmNull() Then
-                            '    dNewBeginntAm = rPlan.ErstelltAm
-                            'Else
-                            '    dNewBeginntAm = rPlan.BeginntAm
-                            'End If
-                            If Not rPlan.IsEndetAmNull() Then
-                                If rPlan.EndetAm <= rPlan.BeginntAm Then
-                                    dEndetAm = dNewBeginntAm.AddMinutes(15)
-                                Else
-                                    Dim datDiff As TimeSpan = rPlan.EndetAm.Subtract(dNewBeginntAm)
-                                    dEndetAm = rPlan.EndetAm
-                                    'If datDiff.Hours > 1 Or (datDiff.Hours = 1 And datDiff.Minutes > 0) Or datDiff.Days > 0 Then
-                                    '    dEndetAm = dNewBeginntAm
-                                    '    dEndetAm = dFälligAm.AddHours(1)
-                                    'Else
-                                    '    dEndetAm = rPlan.FälligAm
-                                    'End If
-                                End If
-                            Else
-                                dEndetAm = dNewBeginntAm.AddMinutes(30)
-                            End If
-
-                            appointment = New Appointment(dNewBeginntAm, dEndetAm)
-                            appointment.StartDateTime = dNewBeginntAm
-
-                            Dim sEndetAm As String = dEndetAm.ToString("dd.MM.yyyy HH:mm").ToString()
-                            If Not rPlan.IsEndetAmNull() Then _
-                                      sEndetAm = rPlan.EndetAm.ToString("dd.MM.yyyy HH:mm").ToString()
-                            Dim sPatientInfo As String = ""
-                            If Not rPlan.IsPatientNameNull() Then
-                                sPatientInfo = "Klient: " + rPlan.PatientName.Trim() + " "
-                            End If
-                            If sPatientInfo.Trim() <> "" Then
-                                sPatientInfo += vbNewLine
-                            End If
-                            Dim sCategory As String = rPlan.Category.Trim()
-                            If sCategory.Trim() <> "" Then
-                                sCategory = "Kategorie: " + sCategory + vbNewLine
-                            End If
-                            appointment.Description = sPatientInfo + sCategory
-                            appointment.Subject = rPlan.Betreff + "    " + sPatientInfo + sCategory
-
-                            appointment.Appearance.BackColor = System.Drawing.Color.DarkGreen
-                            appointment.Appearance.ForeColor = Color.White
-                            appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                            'If bEMailNotReaded Then
-                            '    appointment.Appearance.FontData.Bold = DefaultableBoolean.True
-                            'Else
-                            '    appointment.Appearance.FontData.Bold = DefaultableBoolean.False
-                            'End If
-                        End If
-
-                        If rPlan.IDArt = 1 Or rPlan.IDArt = 2 Then
-                            appointment.Appearance.BackColor = System.Drawing.Color.Yellow
-                            appointment.Appearance.ForeColor = Color.Black
-                        End If
-
-                        appointment.Tag = rPlan
-                        appointment.Locked = True
-                    Else
-                        lstPlansToDelete.Add(rPlan)
-                    End If
-                Next
-            End Using
-
-            For Each rPlanToDelete As dsPlanSearch.planRow In lstPlansToDelete
-                rPlanToDelete.Delete()
-            Next
+            'For Each rPlanToDelete As dsPlanSearch.planRow In lstPlansToDelete
+            '    rPlanToDelete.Delete()
+            'Next
             Me.DsPlanSearch1.AcceptChanges()
 
             gridPlans.Refresh()
@@ -1010,7 +900,6 @@ Public Class contPlanungDataBereich
             Me.gridPlans.Selected.Rows.Clear()
             Me.gridPlans.ActiveRow = Nothing
 
-            Me.ContexMenüItems(False)
             If SetUIGrid Then
                 Me.setUI(Me._LayoutGrid)
             End If
@@ -1035,20 +924,11 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Private Sub initData()
-        Try
-            clPlan.anzNachrichten = 0
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.initData: " + ex.ToString())
-        End Try
-    End Sub
     Public Sub clear()
         Try
             Me.DsPlanSearch1.Clear()
             gridPlans.Refresh()
             Me.contTxtEditor1.textControl1.Text = ""
-            clPlan.anzNachrichten = 0
 
         Catch ex As Exception
             Throw New Exception("contPlanungDataBereich.clear: " + ex.ToString())
@@ -1065,11 +945,11 @@ Public Class contPlanungDataBereich
                 If rSelected.Count > 0 Then
                     For Each rGrid As Infragistics.Win.UltraWinGrid.UltraGridRow In rSelected
                         Dim v As DataRowView = rGrid.ListObject
-                        Dim rPlanSel As dsPlanSearch.planRow = v.Row
+                        Dim rPlanSel As dsPlanSearch.planBereichRow = v.Row
 
                         Dim cSelApp1 As New cSelEntries()
                         cSelApp1.rowGrid = rGrid
-                        cSelApp1.rPlanSel = rPlanSel
+                        cSelApp1.rPlanBereichSel = rPlanSel
                         cSelApp1.gridIsActive = True
                         ret.Add(cSelApp1)
                     Next
@@ -1099,50 +979,13 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Private Sub einträgeSaveHtml(ByVal withMsgBox As Boolean)
-        Try
-            Dim clFolder As New clFolder()
-            Dim gridIsInFront As Boolean = False
-            Dim selectedApp As System.Collections.Generic.List(Of cSelEntries) = Me.getSelectedPlanungseinträge(gridIsInFront)
-            If selectedApp.Count > 0 Then
-                Dim fileSelected As String = clFolder.SaveFileDialog("Html-Files (*.html)|*.html", System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
-                If Not gen.IsNull(fileSelected) Then
-                    Dim iCounter As Integer = 1
-                    For Each cSelEntries1 As cSelEntries In selectedApp
-                        Dim filenameToSaveTmp As String = iCounter.ToString() + "_" + fileSelected.Trim()
-                        If selectedApp.Count = 1 Then
-                            filenameToSaveTmp = fileSelected.Trim()
-                        Else
-                            filenameToSaveTmp = iCounter.ToString() + "_" + fileSelected.Trim()
-                        End If
-                        Dim sw As System.IO.StreamWriter = New System.IO.StreamWriter(filenameToSaveTmp, True)
-                        sw.Write(cSelEntries1.rPlanSel.Text.Trim())
-                        sw.Close()
-                        sw.Dispose()
-                        iCounter += 1
-                    Next
-                    Dim sTitle As String = doUI.getRes("Save")
-                    Dim sText As String = doUI.getRes("DataSaved")
-                    doUI.doMessageBoxTranslated(sText, sTitle, MsgBoxStyle.OkOnly)
-                End If
-            Else
-                If withMsgBox Then
-                    doUI.doMessageBox2("NoEntrySelected", "", "!")
-                End If
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.einträgeSaveHtml: " + ex.ToString())
-        End Try
-    End Sub
-
-    Private Sub einträgeÖffnen(ByVal withMsgBox As Boolean)
+    Private Sub pläneÖffnen(ByVal withMsgBox As Boolean)
         Try
             Dim gridIsInFront As Boolean = False
             Dim selectedApp As System.Collections.Generic.List(Of cSelEntries) = Me.getSelectedPlanungseinträge(gridIsInFront)
             If selectedApp.Count > 0 Then
                 For Each cSelEntries1 As cSelEntries In selectedApp
-                    Me.eintragÖffnen(cSelEntries1.rPlanSel)
+                    Me.planÖffnen(cSelEntries1.rPlanBereichSel.ID)
                 Next
             Else
                 If withMsgBox Then
@@ -1154,26 +997,52 @@ Public Class contPlanungDataBereich
             Throw New Exception("contPlanungDataBereich.einträgeÖffnen: " + ex.ToString())
         End Try
     End Sub
-
-    Private Sub eintragÖffnen(ByRef rPlanSearch As dsPlanSearch.planRow)
+    Private Sub planÖffnen(IDPlanBereich As Guid)
         Try
-            Dim clManagePlans1 As New UI()
-            'clManagePlans1.openMessage(rPlanSearch.ID, Me.mainWindow, False, Me._TypeUI, Me._PlanArchive)
-            'lthplan
+            Dim bFrmFound As Boolean = False
+            For Each frmPlan As frmNachrichtBereich In lNachrichtenBereichOpend
+                If Not frmPlan.IsOpend Then
+                    frmPlan.IDPlanBereich = IDPlanBereich
+                    frmPlan.IsNew = False
+                    frmPlan.Visible = True
+                    frmPlan.Show()
+                End If
+            Next
+
+            If Not bFrmFound Then
+                Dim frmNachrichtBereich1 As New frmNachrichtBereich()
+                frmNachrichtBereich1.initControl()
+                frmNachrichtBereich1.IDPlanBereich = IDPlanBereich
+                frmNachrichtBereich1.IsNew = False
+                frmNachrichtBereich1.Visible = True
+                frmNachrichtBereich1.Show()
+
+                Me.lNachrichtenBereichOpend.Add(frmNachrichtBereich1)
+            End If
 
         Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.eintragÖffnen: " + ex.ToString())
+            Throw New Exception("contPlanungDataBereich.planÖffnen: " + ex.ToString())
         End Try
     End Sub
-
-    Public Sub neuesObjekt(ByVal dat As Date)
+    Public Function getFreeFormPlanBereich() As frmNachrichtBereich
         Try
-            Me.mainWindow.newMsg(Nothing, True)
+            Dim bFrmFound As Boolean = False
+            For Each frmPlan As frmNachrichtBereich In lNachrichtenBereichOpend
+                If Not frmPlan.IsOpend Then
+                    Return frmPlan
+                End If
+            Next
+
+            If Not bFrmFound Then
+                Dim frmNachrichtBereich1 As New frmNachrichtBereich()
+                Me.lNachrichtenBereichOpend.Add(frmNachrichtBereich1)
+                Return frmNachrichtBereich1
+            End If
 
         Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.neuesObjekt: " + ex.ToString())
+            Throw New Exception("contPlanungDataBereich.getFreeFormPlanBereich: " + ex.ToString())
         End Try
-    End Sub
+    End Function
 
     Public Sub SetWidthHeigth(ByVal Width As Integer, ByVal Height As Integer)
         Try
@@ -1206,7 +1075,6 @@ Public Class contPlanungDataBereich
                     Me.Cursor = Cursors.WaitCursor
 
                     Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
-                    Me.setContextMenüAuto()
 
                     If Not gen.IsNull(gridPlans.ActiveRow) Then
                         If Me.gridPlans.ActiveRow.IsGroupByRow Or Me.gridPlans.ActiveRow.IsFilterRow Then
@@ -1214,19 +1082,15 @@ Public Class contPlanungDataBereich
                         End If
 
                         Dim v As DataRowView = gridPlans.ActiveRow.ListObject
-                        Dim rPlan As dsPlanSearch.planRow = v.Row
-                        Me.showPrieviewTXTControl(rPlan.Text, rPlan.html, rPlan.html, False)
+                        Dim rPlanBereich As dsPlanSearch.planBereichRow = v.Row
 
-                        If Not rPlan Is Nothing Then
-                            If Not rPlan.IsIDArtNull() Then
-                                If rPlan.IDArt = 1 Then
-                                    If Not rPlan.readed Then
-                                        Dim cOutlookWebAPI1 As New cOutlookWebAPI()
-                                    End If
-                                Else
-                                End If
-                            End If
-                        End If
+                        Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
+                            Dim rPlanBereichDb = (From o In db.planBereich
+                                                  Where o.ID = rPlanBereich.ID
+                                                  Select o.ID, o.Text).ToList().First()
+
+                            Me.showPrieviewTXTControl(rPlanBereichDb.Text)
+                        End Using
                     End If
                 End If
             End If
@@ -1240,14 +1104,15 @@ Public Class contPlanungDataBereich
     Private Sub UltraGridAufgaben_DoubleClick1(ByVal sender As Object, ByVal e As System.EventArgs) Handles gridPlans.DoubleClick
         Try
             If sitemap1.evDoubleClickOK(sender, e, Me.gridPlans) Then
-                Me.einträgeÖffnen(False)
-                'If Not gen.IsNull(gridPlans.ActiveRow) Then
-                '    If gridPlans.ActiveRow.IsGroupByRow Then Exit Sub
-                '    Dim v As DataRowView = gridPlans.ActiveRow.ListObject
-                '    Dim rPlan As dsPlanSearch.planRow = v.Row
-                '    Dim clManagePlans1 As New clManagePlans
-                '    clManagePlans1.objektÖffnen(rPlan.ID, Me.mainWindow, Nothing, False)
-                'End If
+                Me.pläneÖffnen(False)
+
+                If Not gen.IsNull(gridPlans.ActiveRow) Then
+                    If gridPlans.ActiveRow.IsGroupByRow Then
+                        Exit Sub
+                    End If
+                    Dim v As DataRowView = gridPlans.ActiveRow.ListObject
+                    Dim rPlan As dsPlanSearch.planBereichRow = v.Row
+                End If
             End If
 
         Catch ex As Exception
@@ -1574,41 +1439,12 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-
-    Private Sub doPreviewTxt(ByVal autoTypeToShow As Boolean, ByVal browser As Boolean)
-        Try
-            Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
-
-            Dim gridIsInFront As Boolean = False
-            Dim selectedApp As System.Collections.Generic.List(Of cSelEntries) = Me.getSelectedPlanungseinträge(gridIsInFront)
-            If selectedApp.Count > 0 Then
-                Dim rPlanSearch As dsPlanSearch.planRow = selectedApp(selectedApp.Count - 1).rPlanSel
-                If Not rPlanSearch Is Nothing Then
-                    Dim txt As String = rPlanSearch(Me.DsPlanSearch1.plan.TextColumn.ColumnName, DataRowVersion.Original)
-                    Dim isHtml As Boolean = rPlanSearch(Me.DsPlanSearch1.plan.htmlColumn.ColumnName, DataRowVersion.Original)
-                    If autoTypeToShow Then
-                        Me.showPrieviewTXTControl(txt, isHtml, isHtml, False)
-                    Else
-                        Me.showPrieviewTXTControl(txt, isHtml, browser, True)
-                    End If
-                End If
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.doPreviewTxt: " + ex.ToString())
-        End Try
-    End Sub
-    Public Sub showPrieviewTXTControl(ByVal text As String, ByVal html As Boolean, ByVal browser As Boolean, ByVal doIntEditorHtml As Boolean)
+    Public Sub showPrieviewTXTControl(ByVal text As String)
         Try
             Application.DoEvents()
             Dim typ As New TXTextControl.StringStreamType
-            If html Then
-                typ = TXTextControl.StringStreamType.HTMLFormat
-                Me.LoadTxtControl(TXTextControl.StreamType.HTMLFormat, False, text)
-            Else
-                typ = TXTextControl.StringStreamType.PlainText
-                Me.LoadTxtControl(TXTextControl.StringStreamType.PlainText, False, text)
-            End If
+            typ = TXTextControl.StringStreamType.PlainText
+            Me.LoadTxtControl(TXTextControl.StringStreamType.PlainText, False, text)
 
         Catch ex As Exception
             Throw New Exception("contPlanungDataBereich.showPrieviewTXTControl: " + ex.ToString())
@@ -1646,42 +1482,6 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Public Sub setContextMenüAuto()
-        Try
-            Me.ContexMenüItems(False)
-
-            Dim ret As New cSelEntries
-            Me.setContextMenüForGrid(gridPlans.ActiveRow)
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.setContextMenüAuto: " + ex.ToString())
-        End Try
-    End Sub
-    Private Sub setContextMenüForGrid(ByVal actRow As Infragistics.Win.UltraWinGrid.UltraGridRow)
-        Try
-            If Not gen.IsNull(actRow) Then
-                If actRow.IsGroupByRow Or actRow.IsFilterRow Then
-                    Me.ContexMenüItems(False)
-                Else
-                    Me.ContexMenüItems(True)
-                End If
-            Else
-                Me.ContexMenüItems(False)
-            End If
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.setContextMenüForGrid: " + ex.ToString())
-        End Try
-    End Sub
-    Public Sub ContexMenüItems(ByVal bOn As Boolean)
-        Try
-            Me.LöschenToolStripMenuItem1.Visible = True
-            Me.ToolStripMenuItemSpace1.Visible = True
-
-        Catch ex As Exception
-            Throw New Exception("contPlanungDataBereich.ContexMenüItems: " + ex.ToString())
-        End Try
-    End Sub
 
     Private Sub FilterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FilterToolStripMenuItem.Click
         Try

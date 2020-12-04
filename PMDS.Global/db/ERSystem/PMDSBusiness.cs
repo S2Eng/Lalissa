@@ -9531,7 +9531,28 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getPlan: " + ex.ToString());
             }
         }
+        public PMDS.db.Entities.planBereich getPlanBereich(Guid IDPlanBereich, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                System.Linq.IQueryable<PMDS.db.Entities.planBereich> tPlanBereich = db.planBereich.Where(o => o.ID == IDPlanBereich);
+                if (tPlanBereich.Count() != 1)
+                {
+                    throw new Exception("PMDSBusiness.getPlanBereich: rPlanBereich.ID '" + IDPlanBereich.ToString().Trim() + "' not exists in db!");
+                }
+                PMDS.db.Entities.planBereich rPlanBereich = tPlanBereich.First();
+                return rPlanBereich;
 
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getPlanBereich: " + ex.ToString());
+            }
+        }
         public System.Linq.IQueryable<PMDS.db.Entities.plan> getPlansSerientermin(Guid IDSerientermin, DateTime BeginntAm, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try

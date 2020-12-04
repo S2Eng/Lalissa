@@ -7,6 +7,7 @@ Public Class compPlan
     Public ReadOnly sqldaPlanAnhang As String = ""
     Public ReadOnly sqldaPlanObject As String = ""
     Public ReadOnly sqldaPlanStatus As String = ""
+    Public ReadOnly sqldaPlanBereich As String = ""
 
 
     Public Enum eTypSelPlan
@@ -37,6 +38,12 @@ Public Class compPlan
         bodyEmpty = 1
         sent = 2
     End Enum
+
+    Public Enum eTypSelPlanBereich
+        IDPlanMain = 0
+        IDPlan = 1
+    End Enum
+
 
     Public database As New db()
     Public gen As New General()
@@ -553,6 +560,7 @@ Public Class compPlan
             Throw New Exception("compPlan.getNewRowPlan: " + ex.ToString())
         End Try
     End Function
+
     Public Function deletePlans(ByVal sWhere As String) As Boolean
         Try
             If sWhere.Trim() = "" Then
@@ -809,6 +817,180 @@ Public Class compPlan
 
         Catch ex As Exception
             Throw New Exception("compPlan.getNewRowSelListEntriesTmp: " + ex.ToString())
+        End Try
+    End Function
+
+
+
+    Public Function getPlanBereich(ByVal id As System.Guid, ByVal typSel As eTypSelPlanBereich, ByVal db As dsPlan) As Boolean
+        Try
+            Dim UserLoggedIn As String = Me.gen.getLoggedInUser()
+
+            Me.daPlanBereich.SelectCommand.CommandText = Me.sqldaPlanBereich
+            Me.database.setDBConnection_dataAdapter(Me.daPlanBereich)
+            Me.daPlanBereich.SelectCommand.Parameters.Clear()
+
+            If typSel = eTypSelPlanBereich.IDPlan Then
+                Dim sWhere As String = " where ID = ? "
+                Me.daPlanBereich.SelectCommand.CommandText += sWhere
+                Me.daPlanBereich.SelectCommand.Parameters.AddWithValue("ID", id)
+
+            ElseIf typSel = eTypSelPlanBereich.IDPlanMain Then
+                Dim sWhere As String = " where IDPlanMain = ? "
+                Me.daPlanBereich.SelectCommand.CommandText += sWhere
+                Me.daPlanBereich.SelectCommand.Parameters.AddWithValue("IDPlanMain", id)
+
+            Else
+                Throw New Exception("getPlanBereich: typSel '" + typSel.ToString() + "' not allowed!")
+            End If
+
+            Me.daPlanBereich.Fill(db.planBereich)
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.getPlanBereich: " + ex.ToString())
+        End Try
+    End Function
+
+    Public Function updatePlanBereichStatus(ByVal idPlan As System.Guid, ByVal status As String) As Boolean
+        Try
+            Dim dt As New DataTable
+            Dim cmd As New OleDb.OleDbCommand
+            cmd.CommandText = "update  [planBereich] set status = '" + status + "'  WHERE ID = ? "
+            cmd.Connection = Me.database.getConnDB()
+            cmd.Parameters.AddWithValue("ID", idPlan)
+            cmd.ExecuteNonQuery()
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.updatePlanBereichStatus: " + ex.ToString())
+        End Try
+    End Function
+    Public Function updatePlanBereichSerienterminEndetAm(IDSerientermin As Guid, SerienterminEndetAm As Date) As Boolean
+        Try
+            Dim cmd As New OleDb.OleDbCommand
+            cmd.CommandText = "update [planBereich] set [planBereich].SerienterminEndetAm = ? where IDSerientermin='" + IDSerientermin.ToString() + "' "
+            cmd.Connection = Me.database.getConnDB()
+            cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("SerienterminEndetAm", System.Data.OleDb.OleDbType.Date, 8, "SerienterminEndetAm")).Value = SerienterminEndetAm.Date
+            cmd.CommandTimeout = 0
+            cmd.ExecuteNonQuery()
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.updatePlanBereichSerienterminEndetAm: " + ex.ToString())
+        End Try
+    End Function
+    Public Function deletePlanBereichSerientermine(IDSerientermin As Guid) As Boolean
+        Try
+            Dim cmd As New OleDb.OleDbCommand
+            cmd.CommandText = "delete  [planBereich]  WHERE IDSerientermin = '" + IDSerientermin.ToString() + "' "
+            cmd.Connection = Me.database.getConnDB()
+            cmd.CommandTimeout = 0
+            cmd.ExecuteNonQuery()
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.deletePlanBereichSerientermine: " + ex.ToString())
+        End Try
+    End Function
+    Public Function deletePlanBereichSerientermin(IDSerientermin As Guid, BeginntAm As Date) As Boolean
+        Try
+            Dim cmd As New OleDb.OleDbCommand
+            cmd.CommandText = "delete  [planBereich]  WHERE IDSerientermin = '" + IDSerientermin.ToString() + "' and [planBereich].BeginntAm > ? "
+            cmd.Connection = Me.database.getConnDB()
+            cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 8, "BeginntAm")).Value = BeginntAm.Date
+            cmd.CommandTimeout = 0
+            cmd.ExecuteNonQuery()
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.deletePlanBereichSerientermin: " + ex.ToString())
+        End Try
+    End Function
+    Public Function deletePlanBereichSerienterminEndetAm(IDSerientermin As Guid, SerienterminEndetAm As Date) As Boolean
+        Try
+            Dim cmd As New OleDb.OleDbCommand
+            cmd.CommandText = "delete  [planBereich]  WHERE IDSerientermin = '" + IDSerientermin.ToString() + "' and CONVERT(date, [planBereich].BeginntAm) > ? "
+            cmd.Connection = Me.database.getConnDB()
+            cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = SerienterminEndetAm.Date
+            cmd.CommandTimeout = 0
+            cmd.ExecuteNonQuery()
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.deletePlanBereichSerienterminEndetAm: " + ex.ToString())
+        End Try
+    End Function
+    Public Function deletePlanBereichSerienterminEndetAm2(IDSerientermin As Guid, SerienterminEndetAm As Date) As Boolean
+        Try
+            Dim cmd As New OleDb.OleDbCommand
+            cmd.CommandText = "update [planBereich] set [planBereich].SerienterminEndetAm = ? where IDSerientermin='" + IDSerientermin.ToString() + "' "
+            cmd.Connection = Me.database.getConnDB()
+            cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("SerienterminEndetAm", System.Data.OleDb.OleDbType.Date, 8, "SerienterminEndetAm")).Value = SerienterminEndetAm.Date
+            cmd.CommandTimeout = 0
+            cmd.ExecuteNonQuery()
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.deletePlanBereichSerienterminEndetAm2: " + ex.ToString())
+        End Try
+    End Function
+    Public Function deletePlanBereich(ByVal id As System.Guid) As Boolean
+        Try
+            Dim cmd As New OleDbCommand
+            cmd.CommandText = " Delete from [planBereich] where ID = '" + id.ToString() + "' "
+            cmd.CommandTimeout = 0
+            cmd.Connection = Me.database.getConnDB()
+            cmd.ExecuteNonQuery()
+
+            Return True
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.deletePlanBereich: " + ex.ToString())
+        End Try
+    End Function
+
+    Public Function getNewRowPlanBereich(ByVal dsPlan As dsPlan) As dsPlan.planBereichRow
+        Try
+            Dim dNow As DateTime = DateTime.Now
+
+            Dim rNew As dsPlan.planBereichRow = dsPlan.planBereich.NewRow()
+
+            rNew.ID = System.Guid.NewGuid()
+            rNew.Betreff = ""
+            rNew.SetBeginntAmNull()
+            rNew.SetEndetAmNull()
+            rNew.Text = ""
+            rNew.lstAbteilungen = ""
+            rNew.lstBereiche = ""
+            rNew.Status = ""
+            rNew.Category = ""
+            rNew.Folder = ""
+            rNew.Teilnehmer = ""
+            rNew.SetIDSerienterminNull()
+            rNew.TagWochenMonat = ""
+            rNew.SetWiedWertJedenNull()
+            rNew.Wochentage = ""
+            rNew.SetnTenMonatNull()
+            rNew.SerienterminType = ""
+            rNew.Dauer = 0
+            rNew.GanzerTag = False
+            rNew.IsSerientermin = False
+            rNew.SetSerienterminEndetAmNull()
+            rNew.IDKlinik = System.Guid.NewGuid()
+            rNew.CreatedFrom = ""
+            rNew.CreatedAt = dNow
+            rNew.LastChangeFrom = ""
+            rNew.LastChangeAt = dNow
+            rNew.SetIDPlanMainNull()
+            rNew.SetIDAbteilungNull()
+            rNew.SetIDBereichNull()
+
+            dsPlan.planBereich.Rows.Add(rNew)
+            Return rNew
+
+        Catch ex As Exception
+            Throw New Exception("compPlan.getNewRowPlanBereich: " + ex.ToString())
         End Try
     End Function
 

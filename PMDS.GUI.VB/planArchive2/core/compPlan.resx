@@ -251,7 +251,7 @@ FROM            [plan]</value>
     <value>False</value>
   </metadata>
   <metadata name="daPlanSearch.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 251</value>
+    <value>17, 212</value>
   </metadata>
   <metadata name="OleDbCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -276,7 +276,7 @@ FROM            [plan]</value>
 FROM            [plan]</value>
   </data>
   <metadata name="daPlanStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 368</value>
+    <value>17, 251</value>
   </metadata>
   <metadata name="OleDbCommand13.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -368,7 +368,7 @@ FROM            Patient LEFT OUTER JOIN
                          [plan] ON planObject_1.IDPlan = [plan].ID</value>
   </data>
   <metadata name="daPlanSearchPatientsAll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 212</value>
+    <value>17, 368</value>
   </metadata>
   <metadata name="daSearchPlanBereich.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 329</value>
@@ -386,6 +386,56 @@ FROM            Patient LEFT OUTER JOIN
     <value>SELECT        ID, Betreff, BeginntAm, EndetAm, lstAbteilungen, lstBereiche, Status, Category, Folder, Teilnehmer, IDSerientermin, TagWochenMonat, WiedWertJeden, Wochentage, nTenMonat, SerienterminType, Dauer, GanzerTag, 
                          IsSerientermin, SerienterminEndetAm, IDKlinik, CreatedFrom, CreatedAt, LastChangeFrom, LastChangeAt, lstBerufsgruppen
 FROM            planBereich</value>
+  </data>
+  <metadata name="daPlanBereich.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 407</value>
+  </metadata>
+  <metadata name="OleDbCommand10.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand10.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand10.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand11.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>341, 368</value>
+  </metadata>
+  <metadata name="OleDbCommand11.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbCommand11.CommandText" xml:space="preserve">
+    <value>INSERT INTO [planBereich] ([ID], [Betreff], [BeginntAm], [EndetAm], [Text], [lstAbteilungen], [lstBereiche], [Status], [Category], [Folder], [Teilnehmer], [IDSerientermin], [TagWochenMonat], [WiedWertJeden], [Wochentage], [nTenMonat], [SerienterminType], [Dauer], [GanzerTag], [IsSerientermin], [SerienterminEndetAm], [IDKlinik], [CreatedFrom], [CreatedAt], [LastChangeFrom], [LastChangeAt], [lstBerufsgruppen], [IDPlanMain], [IDAbteilung], [IDBereich]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  </data>
+  <metadata name="OleDbCommand18.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand18.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand18.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbCommand18.CommandText" xml:space="preserve">
+    <value>SELECT        ID, Betreff, BeginntAm, EndetAm, Text, lstAbteilungen, lstBereiche, Status, Category, Folder, Teilnehmer, IDSerientermin, TagWochenMonat, WiedWertJeden, Wochentage, nTenMonat, SerienterminType, Dauer, GanzerTag, 
+                         IsSerientermin, SerienterminEndetAm, IDKlinik, CreatedFrom, CreatedAt, LastChangeFrom, LastChangeAt, lstBerufsgruppen, IDPlanMain, IDAbteilung, IDBereich
+FROM            planBereich</value>
+  </data>
+  <metadata name="OleDbCommand19.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="OleDbCommand19.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="OleDbCommand19.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="OleDbCommand19.CommandText" xml:space="preserve">
+    <value>UPDATE [planBereich] SET [ID] = ?, [Betreff] = ?, [BeginntAm] = ?, [EndetAm] = ?, [Text] = ?, [lstAbteilungen] = ?, [lstBereiche] = ?, [Status] = ?, [Category] = ?, [Folder] = ?, [Teilnehmer] = ?, [IDSerientermin] = ?, [TagWochenMonat] = ?, [WiedWertJeden] = ?, [Wochentage] = ?, [nTenMonat] = ?, [SerienterminType] = ?, [Dauer] = ?, [GanzerTag] = ?, [IsSerientermin] = ?, [SerienterminEndetAm] = ?, [IDKlinik] = ?, [CreatedFrom] = ?, [CreatedAt] = ?, [LastChangeFrom] = ?, [LastChangeAt] = ?, [lstBerufsgruppen] = ?, [IDPlanMain] = ?, [IDAbteilung] = ?, [IDBereich] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>

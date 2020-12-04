@@ -16,12 +16,10 @@ Public Class contSelectAbteilBereiche
     Public UIGlobal1 As New PMDS.Global.UIGlobal()
     Public b As New PMDS.db.PMDSBusiness()
 
-    Public MainMessage As frmNachricht3 = Nothing
-    Public MainPlanSearch As contPlanung2 = Nothing
+    Public MainMessage As frmNachrichtBereich = Nothing
     Public MainPlanBereicheSearch As contPlanung2Bereich = Nothing
 
     Public funct1 As New QS2.core.vb.funct()
-
 
 
 
@@ -41,7 +39,7 @@ Public Class contSelectAbteilBereiche
                 Me.btnSelectSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32)
                 Me.btnSelectSave.Text = doUI.getRes("OK")
 
-                Me.loadAbtBereiche()
+                Me.loadData()
                 Me.IsInitialized = True
             End If
 
@@ -50,170 +48,82 @@ Public Class contSelectAbteilBereiche
         End Try
     End Sub
 
-    Public Sub loadAbtBereiche()
+    Public Sub loadData()
         Try
-            Me.DsClipboard1.Clear()
             Me.txtSearch.Text = ""
 
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                Dim tAuswahlListe As System.Linq.IQueryable(Of PMDS.db.Entities.AuswahlListe) = Me.b.GetAuswahlliste(db, "", -100000, False)
-                Dim iCounter As Integer = 0
-                For Each rAuswahlListe As PMDS.db.Entities.AuswahlListe In tAuswahlListe
-                    Dim rNew As dsClipboard.tblSelListEntriesTmpRow = Me.CompPlan1.getNewRowSelListEntriesTmp(Me.DsClipboard1)
-                    rNew.ID = iCounter
-                    'Dim TxtTranslated As String = doUI.getRes(rSelListEntry.IDRessource.Trim())
-                    'If TxtTranslated.Trim = "" Then
-                    '    TxtTranslated = rSelListEntry.IDRessource.Trim()
-                    'End If
-                    rNew.Bezeichnung = rAuswahlListe.Bezeichnung.Trim()
-                    rNew.IDOwnInt = iCounter
-                    rNew.IDOwnStr = rAuswahlListe.ID.ToString()
-                    rNew.IDGuid = rAuswahlListe.ID
+                Dim tAbt = (From o In db.Abteilung
+                            Where o.IDKlinik = PMDS.Global.ENV.IDKlinik Order By o.Bezeichnung Ascending
+                            Select o.ID, o.Bezeichnung).ToList()
+                For Each rAbt In tAbt
+                    Dim itmAbt As Infragistics.Win.UltraWinTree.UltraTreeNode = Me.treeAbtBereiche.Nodes.Add(rAbt.ID.ToString(), rAbt.Bezeichnung.Trim())
+                    itmAbt.CheckedState = Windows.Forms.CheckState.Unchecked
 
-                    iCounter += 1
+                    Dim tBereiche = (From o In db.Bereich
+                                     Where o.IDAbteilung = rAbt.ID Order By o.Bezeichnung Ascending
+                                     Select o.ID, o.Bezeichnung).ToList()
+                    For Each rBereich In tBereiche
+                        Dim itmBereicht As Infragistics.Win.UltraWinTree.UltraTreeNode = itmAbt.Nodes.Add(rAbt.ID.ToString(), rAbt.Bezeichnung.Trim())
+                        itmBereicht.CheckedState = Windows.Forms.CheckState.Unchecked
+
+                    Next
                 Next
             End Using
 
-            Me.DsClipboard1.AcceptChanges()
-
         Catch ex As Exception
-            Throw New Exception("contSelectAbteilBereiche.loadSelList: " + ex.ToString())
-        End Try
-    End Sub
-    Public Sub loadDataColl(ByRef sGuids As String)
-        Try
-            Dim lstCategories As New System.Collections.Generic.List(Of String)()
-            If sGuids.Trim().Contains(";") Then
-                lstCategories = PMDS.Global.generic.readStrVariables(sGuids.Trim())
-            Else lstCategories = PMDS.Global.generic.readStrVariables(sGuids.Trim())
-                lstCategories.Add(sGuids.Trim())
-            End If
-
-            'For Each sCategory As String In lstCategories
-            '    For Each rGridRow As UltraGridRow In Me.gridSelList.Rows
-            '        Dim v As DataRowView = rGridRow.ListObject
-            '        Dim rSelRow As dsClipboard.tblSelListEntriesTmpRow = v.Row
-
-            '        If rSelRow.Bezeichnung.Trim().ToLower().Equals(sCategory.Trim().ToLower()) Then
-            '            rGridRow.Cells(Me.colSelect.Trim()).Value = True
-            '        End If
-            '    Next
-            'Next
-
-        Catch ex As Exception
-            Throw New Exception("contSelectAbteilBereiche.loadDataColl: " + ex.ToString())
+            Throw New Exception("contSelectAbteilBereiche.loadData: " + ex.ToString())
         End Try
     End Sub
 
-    Public Function validatedata() As Boolean
+    Public Function getSelectedData2(ByRef lstSelectedRowsReturn As System.Collections.Generic.List(Of String), getAbt As Boolean) As String
         Try
-            'For Each rGridRow As UltraGridRow In Me.gridSelList.Rows
-            '    Dim v As DataRowView = rGridRow.ListObject
-            '    Dim rSelRow As dsClipboard.tblSelListEntriesTmpRow = v.Row
+            Dim sAbtBereich As String = ""
+            For Each nodAbt In treeAbtBereiche.Nodes
+                If nodAbt.CheckedState = Windows.Forms.CheckState.Checked Then
+                    If getAbt Then
+                        lstSelectedRowsReturn.Add(nodAbt.Text.Trim())
+                        sAbtBereich += nodAbt.Text.Trim()
+                    End If
 
-            '    If rSelRow.RowState <> DataRowState.Deleted Then
-            '        If rSelRow.Bezeichnung.Trim() = "" Then
-            '            rSelRow.SetColumnError(Me.DsClipboard1.tblSelListEntriesTmp.BezeichnungColumn.ColumnName, "ErrorInput")
-            '            doUI.doMessageBox2("DescriptionInputRequired", "", "")
-            '            Return False
+                    For Each nodBereich In nodAbt.Nodes
+                        If nodBereich.CheckedState = Windows.Forms.CheckState.Checked Then
+                            If Not getAbt Then
+                                lstSelectedRowsReturn.Add(nodBereich.Text.Trim())
+                                sAbtBereich += nodBereich.Text.Trim()
+                            End If
+                        End If
 
-            '        Else
-            '            If rSelRow.Bezeichnung.Trim().Contains(";") Or rSelRow.Bezeichnung.Trim().Contains("/") Or rSelRow.Bezeichnung.Trim().Contains("\") Or rSelRow.Bezeichnung.Trim().Contains("´`") Then
-            '                doUI.doMessageBox2("TextContainsUnauthorizedCharacters", "", "")
-            '                Return False
-            '            End If
+                    Next
+                End If
+            Next
 
-            '            'Dim pattern As String = "^[a-zA-Z\s]+$"
-            '            'Dim reg As New Text.RegularExpressions.Regex(pattern)
-            '            'If Not reg.IsMatch(rSelRow.Bezeichnung.Trim()) Then
-            '            '    doUI.doMessageBox2("TextContainsUnauthorizedCharacters", "", "")
-            '            '    Return False
-            '            'End If
-            '        End If
-            '    End If
-            'Next
-
-            Return True
-
-        Catch ex As Exception
-            Throw New Exception("contSelectAbteilBereiche.validatedata: " + ex.ToString())
-        End Try
-    End Function
-
-    Public Function getSelectedData2(ByRef lstSelectedRowsReturn As System.Collections.Generic.List(Of String)) As String
-        Try
-            'Dim lstSelCategoriesTmp As New System.Collections.Generic.List(Of String)
-            'For Each rGridRow As UltraGridRow In Me.gridSelList.Rows
-            '    Dim v As DataRowView = rGridRow.ListObject
-            '    Dim rSelRow As dsClipboard.tblSelListEntriesTmpRow = v.Row
-
-            '    If rSelRow.RowState <> DataRowState.Deleted Then
-            '        If rGridRow.Cells(Me.colSelect.Trim()).Value = True Then
-            '            lstSelCategoriesTmp.Add(rSelRow.Bezeichnung.ToString())
-            '        End If
-            '    End If
-            'Next
-
-            'Dim lstSelectedSelLists As String = ""
-            'If lstSelCategoriesTmp.Count = 1 Then
-            '    lstSelectedSelLists += lstSelCategoriesTmp(0).ToString().Trim()
-            'Else
-            '    For Each sCategory As String In lstSelCategoriesTmp
-            '        lstSelectedSelLists += sCategory.Trim() + ";"
-            '    Next
-            'End If
-
-            'lstSelectedRowsReturn = lstSelCategoriesTmp
-            'Return lstSelectedSelLists.Trim()
+            Return sAbtBereich
 
         Catch ex As Exception
             Throw New Exception("contSelectAbteilBereiche.getSelectedData: " + ex.ToString())
         End Try
     End Function
-    Public Sub getSelectedIDs(ByRef lstSelectedRowsReturn As System.Collections.Generic.List(Of Guid))
+    Public Sub getSelectedIDs(ByRef lstSelectedRowsReturn As System.Collections.Generic.List(Of Guid), getAbt As Boolean)
         Try
-            'For Each rGridRow As UltraGridRow In Me.gridSelList.Rows
-            '    Dim v As DataRowView = rGridRow.ListObject
-            '    Dim rSelRow As dsClipboard.tblSelListEntriesTmpRow = v.Row
+            For Each nodAbt In treeAbtBereiche.Nodes
+                If nodAbt.CheckedState = Windows.Forms.CheckState.Checked Then
+                    If getAbt Then
+                        lstSelectedRowsReturn.Add(New System.Guid(nodAbt.Key))
+                    End If
 
-            '    If rSelRow.RowState <> DataRowState.Deleted Then
-            '        If rGridRow.Cells(Me.colSelect.Trim()).Value = True Then
-            '            lstSelectedRowsReturn.Add(rSelRow.IDGuid)
-            '        End If
-            '    End If
-            'Next
+                    For Each nodBereich In nodAbt.Nodes
+                        If nodBereich.CheckedState = Windows.Forms.CheckState.Checked Then
+                            If Not getAbt Then
+                                lstSelectedRowsReturn.Add(New System.Guid(nodBereich.Key))
+                            End If
+                        End If
+                    Next
+                End If
+            Next
 
         Catch ex As Exception
             Throw New Exception("contSelectAbteilBereiche.getSelectedIDs: " + ex.ToString())
-        End Try
-    End Sub
-
-    Public Sub addRow()
-        Try
-            Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                Dim rNew As dsClipboard.tblSelListEntriesTmpRow = Me.CompPlan1.getNewRowSelListEntriesTmp(Me.DsClipboard1)
-                Dim IDOwnIntMax As Integer = -999
-                Dim rSelListGroup As PMDS.db.Entities.tblSelListGroup = Nothing
-
-                Dim iMaxID = -999
-                iMaxID = Me.b.getSelListEntriesMaxID("", db, IDOwnIntMax, rSelListGroup)
-
-                If iMaxID = -999 Then
-                    Dim sID As String = rSelListGroup.ID.ToString() + "0001"
-                    rNew.ID = System.Convert.ToInt32(sID.Trim())
-                Else
-                    rNew.ID = iMaxID + 1
-                End If
-                rNew.IDGroup = rSelListGroup.ID
-                If IDOwnIntMax = -999 Then
-                    rNew.IDOwnInt = 1
-                Else
-                    rNew.IDOwnInt = IDOwnIntMax + 1
-                End If
-            End Using
-
-        Catch ex As Exception
-            Throw New Exception("contSelectAbteilBereiche.addRow: " + ex.ToString())
         End Try
     End Sub
 
@@ -231,7 +141,9 @@ Public Class contSelectAbteilBereiche
             Me.Cursor = Windows.Forms.Cursors.WaitCursor
 
             Me.abort = False
-            Me.popupContMainSearch.Close()
+            If Not Me.popupContMainSearch Is Nothing Then
+                Me.popupContMainSearch.Close()
+            End If
 
         Catch ex As Exception
             Me.gen.GetEcxeptionGeneral(ex)

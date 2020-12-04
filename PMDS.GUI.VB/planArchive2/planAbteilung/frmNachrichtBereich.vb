@@ -15,30 +15,31 @@ Public Class frmNachrichtBereich
     Public IsNew As Boolean = True
     Public IDPlanBereich As Nullable(Of Guid) = Nothing
     Public isLoaded As Boolean = False
+    Public IsOpend As Boolean = False
     Public abort As Boolean = True
-    Public rPlan As dsPlan.planRow
+    Public rPlanBereich As dsPlan.planBereichRow
 
     Public isEditable As Boolean = False
-
 
     Public compPlan1 As New compPlan()
     Public dsPlan1 As New dsPlan()
 
     Private General As New General
-    Public modalWindow As contPlanung2
+    Public modalWindow As contPlanung2Bereich
 
     Public doEditor As New QS2.Desktop.Txteditor.doEditor()
     Public genMain As New General()
-
-    Public clPlan1 As New clPlan()
     Public doUI1 As New doUI()
 
     Public doEditor1 As New QS2.Desktop.Txteditor.doEditor()
     Public b As New PMDS.db.PMDSBusiness()
     Public contTxtEditor1 As New QS2.Desktop.Txteditor.contTxtEditor()
 
-
     Public contSelectSelListCategories As New contSelectSelList()
+    Public contSelectSelListBerufsgruppen As New contSelectSelList()
+    Public contSelectAbtBereiche As New contSelectAbteilBereiche()
+
+
 
 
 
@@ -94,6 +95,10 @@ Public Class frmNachrichtBereich
     Friend WithEvents PanelTxtEditor As Panel
     Friend WithEvents PanelSerientermineUISub As Panel
     Friend WithEvents EditorTmp1 As TXTextControl.TextControl
+    Friend WithEvents dropDownAbteilungBereiche As Misc.UltraDropDownButton
+    Friend WithEvents dropDownBerufsgruppen As Misc.UltraDropDownButton
+    Private WithEvents uPopupContBerufsgruppen As Misc.UltraPopupControlContainer
+    Private WithEvents uPopupAbteilungBereiche As Misc.UltraPopupControlContainer
     Friend WithEvents PanelEditor As Panel
 
 
@@ -143,8 +148,6 @@ Public Class frmNachrichtBereich
         Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -155,27 +158,31 @@ Public Class frmNachrichtBereich
         Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Html", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Html", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.UltraPanel1 = New Infragistics.Win.Misc.UltraPanel()
         Me.toolbarsManagerText = New Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(Me.components)
@@ -226,6 +233,10 @@ Public Class frmNachrichtBereich
         Me.EditorTmp1 = New TXTextControl.TextControl()
         Me.PanelBody = New System.Windows.Forms.Panel()
         Me.PanelTxtEditor = New System.Windows.Forms.Panel()
+        Me.dropDownAbteilungBereiche = New Infragistics.Win.Misc.UltraDropDownButton()
+        Me.dropDownBerufsgruppen = New Infragistics.Win.Misc.UltraDropDownButton()
+        Me.uPopupContBerufsgruppen = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
+        Me.uPopupAbteilungBereiche = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.UltraPanel1.SuspendLayout()
         CType(Me.toolbarsManagerText, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -434,9 +445,9 @@ Public Class frmNachrichtBereich
         '
         'iNTenMonat
         '
-        Appearance11.BackColorDisabled = System.Drawing.SystemColors.Control
-        Appearance11.ForeColorDisabled = System.Drawing.Color.Black
-        Me.iNTenMonat.Appearance = Appearance11
+        Appearance13.BackColorDisabled = System.Drawing.SystemColors.Control
+        Appearance13.ForeColorDisabled = System.Drawing.Color.Black
+        Me.iNTenMonat.Appearance = Appearance13
         Me.iNTenMonat.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.[Integer]
         Me.iNTenMonat.InputMask = "nnn"
         Me.iNTenMonat.Location = New System.Drawing.Point(75, 37)
@@ -450,8 +461,8 @@ Public Class frmNachrichtBereich
         '
         'lblTagWochenMonatnTen
         '
-        Appearance12.FontData.SizeInPoints = 8.0!
-        Me.lblTagWochenMonatnTen.Appearance = Appearance12
+        Appearance14.FontData.SizeInPoints = 8.0!
+        Me.lblTagWochenMonatnTen.Appearance = Appearance14
         Me.lblTagWochenMonatnTen.AutoSize = True
         Me.lblTagWochenMonatnTen.Location = New System.Drawing.Point(116, 41)
         Me.lblTagWochenMonatnTen.Name = "lblTagWochenMonatnTen"
@@ -462,8 +473,8 @@ Public Class frmNachrichtBereich
         '
         'grpWochentage
         '
-        Appearance13.BackColorDisabled = System.Drawing.Color.White
-        Me.grpWochentage.Appearance = Appearance13
+        Appearance15.BackColorDisabled = System.Drawing.Color.White
+        Me.grpWochentage.Appearance = Appearance15
         Me.grpWochentage.Controls.Add(Me.cbSo)
         Me.grpWochentage.Controls.Add(Me.cbSa)
         Me.grpWochentage.Controls.Add(Me.cbFr)
@@ -481,9 +492,9 @@ Public Class frmNachrichtBereich
         '
         'cbSo
         '
-        Appearance14.TextHAlignAsString = "Center"
-        Appearance14.TextVAlignAsString = "Middle"
-        Me.cbSo.Appearance = Appearance14
+        Appearance16.TextHAlignAsString = "Center"
+        Appearance16.TextVAlignAsString = "Middle"
+        Me.cbSo.Appearance = Appearance16
         Me.cbSo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbSo.Location = New System.Drawing.Point(126, 16)
         Me.cbSo.Name = "cbSo"
@@ -493,9 +504,9 @@ Public Class frmNachrichtBereich
         '
         'cbSa
         '
-        Appearance15.TextHAlignAsString = "Center"
-        Appearance15.TextVAlignAsString = "Middle"
-        Me.cbSa.Appearance = Appearance15
+        Appearance17.TextHAlignAsString = "Center"
+        Appearance17.TextVAlignAsString = "Middle"
+        Me.cbSa.Appearance = Appearance17
         Me.cbSa.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbSa.Location = New System.Drawing.Point(106, 16)
         Me.cbSa.Name = "cbSa"
@@ -505,9 +516,9 @@ Public Class frmNachrichtBereich
         '
         'cbFr
         '
-        Appearance16.TextHAlignAsString = "Center"
-        Appearance16.TextVAlignAsString = "Middle"
-        Me.cbFr.Appearance = Appearance16
+        Appearance18.TextHAlignAsString = "Center"
+        Appearance18.TextVAlignAsString = "Middle"
+        Me.cbFr.Appearance = Appearance18
         Me.cbFr.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbFr.Location = New System.Drawing.Point(86, 16)
         Me.cbFr.Name = "cbFr"
@@ -517,9 +528,9 @@ Public Class frmNachrichtBereich
         '
         'cbDo
         '
-        Appearance17.TextHAlignAsString = "Center"
-        Appearance17.TextVAlignAsString = "Middle"
-        Me.cbDo.Appearance = Appearance17
+        Appearance19.TextHAlignAsString = "Center"
+        Appearance19.TextVAlignAsString = "Middle"
+        Me.cbDo.Appearance = Appearance19
         Me.cbDo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbDo.Location = New System.Drawing.Point(66, 16)
         Me.cbDo.Name = "cbDo"
@@ -529,9 +540,9 @@ Public Class frmNachrichtBereich
         '
         'cbMi
         '
-        Appearance18.TextHAlignAsString = "Center"
-        Appearance18.TextVAlignAsString = "Middle"
-        Me.cbMi.Appearance = Appearance18
+        Appearance20.TextHAlignAsString = "Center"
+        Appearance20.TextVAlignAsString = "Middle"
+        Me.cbMi.Appearance = Appearance20
         Me.cbMi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbMi.Location = New System.Drawing.Point(46, 16)
         Me.cbMi.Name = "cbMi"
@@ -541,9 +552,9 @@ Public Class frmNachrichtBereich
         '
         'cbDi
         '
-        Appearance19.TextHAlignAsString = "Center"
-        Appearance19.TextVAlignAsString = "Middle"
-        Me.cbDi.Appearance = Appearance19
+        Appearance21.TextHAlignAsString = "Center"
+        Appearance21.TextVAlignAsString = "Middle"
+        Me.cbDi.Appearance = Appearance21
         Me.cbDi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbDi.Location = New System.Drawing.Point(26, 16)
         Me.cbDi.Name = "cbDi"
@@ -553,9 +564,9 @@ Public Class frmNachrichtBereich
         '
         'cbMo
         '
-        Appearance20.TextHAlignAsString = "Center"
-        Appearance20.TextVAlignAsString = "Middle"
-        Me.cbMo.Appearance = Appearance20
+        Appearance22.TextHAlignAsString = "Center"
+        Appearance22.TextVAlignAsString = "Middle"
+        Me.cbMo.Appearance = Appearance22
         Me.cbMo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbMo.Location = New System.Drawing.Point(6, 16)
         Me.cbMo.Name = "cbMo"
@@ -565,9 +576,9 @@ Public Class frmNachrichtBereich
         '
         'iWiedWertJeden
         '
-        Appearance21.BackColorDisabled = System.Drawing.SystemColors.Control
-        Appearance21.ForeColorDisabled = System.Drawing.Color.Black
-        Me.iWiedWertJeden.Appearance = Appearance21
+        Appearance23.BackColorDisabled = System.Drawing.SystemColors.Control
+        Appearance23.ForeColorDisabled = System.Drawing.Color.Black
+        Me.iWiedWertJeden.Appearance = Appearance23
         Me.iWiedWertJeden.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.[Integer]
         Me.iWiedWertJeden.InputMask = "nnn"
         Me.iWiedWertJeden.Location = New System.Drawing.Point(75, 16)
@@ -581,8 +592,8 @@ Public Class frmNachrichtBereich
         '
         'opTagWochenMonat
         '
-        Appearance22.BackColorDisabled = System.Drawing.Color.White
-        Me.opTagWochenMonat.Appearance = Appearance22
+        Appearance24.BackColorDisabled = System.Drawing.Color.White
+        Me.opTagWochenMonat.Appearance = Appearance24
         Me.opTagWochenMonat.BorderStyle = Infragistics.Win.UIElementBorderStyle.None
         Me.opTagWochenMonat.CheckedIndex = 0
         ValueListItem6.CheckState = System.Windows.Forms.CheckState.Checked
@@ -611,19 +622,19 @@ Public Class frmNachrichtBereich
         '
         'dteSerienterminEndetAm
         '
-        Appearance23.BackColor = System.Drawing.Color.White
-        Appearance23.BackColor2 = System.Drawing.Color.White
-        Appearance23.BackColorDisabled = System.Drawing.Color.White
-        Appearance23.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance23.FontData.BoldAsString = "False"
-        Appearance23.FontData.ItalicAsString = "False"
-        Appearance23.FontData.Name = "Microsoft Sans Serif"
-        Appearance23.FontData.SizeInPoints = 8.25!
-        Appearance23.FontData.StrikeoutAsString = "False"
-        Appearance23.FontData.UnderlineAsString = "False"
-        Appearance23.ForeColor = System.Drawing.Color.Black
-        Appearance23.ForeColorDisabled = System.Drawing.Color.Black
-        Me.dteSerienterminEndetAm.Appearance = Appearance23
+        Appearance25.BackColor = System.Drawing.Color.White
+        Appearance25.BackColor2 = System.Drawing.Color.White
+        Appearance25.BackColorDisabled = System.Drawing.Color.White
+        Appearance25.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance25.FontData.BoldAsString = "False"
+        Appearance25.FontData.ItalicAsString = "False"
+        Appearance25.FontData.Name = "Microsoft Sans Serif"
+        Appearance25.FontData.SizeInPoints = 8.25!
+        Appearance25.FontData.StrikeoutAsString = "False"
+        Appearance25.FontData.UnderlineAsString = "False"
+        Appearance25.ForeColor = System.Drawing.Color.Black
+        Appearance25.ForeColorDisabled = System.Drawing.Color.Black
+        Me.dteSerienterminEndetAm.Appearance = Appearance25
         Me.dteSerienterminEndetAm.BackColor = System.Drawing.Color.White
         Me.dteSerienterminEndetAm.DateTime = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dteSerienterminEndetAm.Location = New System.Drawing.Point(81, 7)
@@ -635,11 +646,11 @@ Public Class frmNachrichtBereich
         '
         'lblSerienterminEnde
         '
-        Appearance24.BackColor = System.Drawing.Color.Transparent
-        Appearance24.ForeColor = System.Drawing.Color.Black
-        Appearance24.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance24.TextVAlignAsString = "Middle"
-        Me.lblSerienterminEnde.Appearance = Appearance24
+        Appearance26.BackColor = System.Drawing.Color.Transparent
+        Appearance26.ForeColor = System.Drawing.Color.Black
+        Appearance26.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance26.TextVAlignAsString = "Middle"
+        Me.lblSerienterminEnde.Appearance = Appearance26
         Me.lblSerienterminEnde.Location = New System.Drawing.Point(8, 9)
         Me.lblSerienterminEnde.Name = "lblSerienterminEnde"
         Me.lblSerienterminEnde.Size = New System.Drawing.Size(67, 17)
@@ -649,12 +660,12 @@ Public Class frmNachrichtBereich
         '
         'chkGanzerTag
         '
-        Appearance26.BackColor = System.Drawing.Color.Transparent
-        Appearance26.BackColorDisabled = System.Drawing.Color.Transparent
-        Appearance26.ForeColor = System.Drawing.Color.Black
-        Appearance26.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance26.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
-        Me.chkGanzerTag.Appearance = Appearance26
+        Appearance28.BackColor = System.Drawing.Color.Transparent
+        Appearance28.BackColorDisabled = System.Drawing.Color.Transparent
+        Appearance28.ForeColor = System.Drawing.Color.Black
+        Appearance28.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance28.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
+        Me.chkGanzerTag.Appearance = Appearance28
         Me.chkGanzerTag.BackColor = System.Drawing.Color.Transparent
         Me.chkGanzerTag.BackColorInternal = System.Drawing.Color.Transparent
         Me.chkGanzerTag.Cursor = System.Windows.Forms.Cursors.Default
@@ -672,19 +683,19 @@ Public Class frmNachrichtBereich
         '
         'dteEndetAm
         '
-        Appearance27.BackColor = System.Drawing.Color.White
-        Appearance27.BackColor2 = System.Drawing.Color.White
-        Appearance27.BackColorDisabled = System.Drawing.Color.White
-        Appearance27.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance27.FontData.BoldAsString = "False"
-        Appearance27.FontData.ItalicAsString = "False"
-        Appearance27.FontData.Name = "Microsoft Sans Serif"
-        Appearance27.FontData.SizeInPoints = 8.25!
-        Appearance27.FontData.StrikeoutAsString = "False"
-        Appearance27.FontData.UnderlineAsString = "False"
-        Appearance27.ForeColor = System.Drawing.Color.Black
-        Appearance27.ForeColorDisabled = System.Drawing.Color.Black
-        Me.dteEndetAm.Appearance = Appearance27
+        Appearance29.BackColor = System.Drawing.Color.White
+        Appearance29.BackColor2 = System.Drawing.Color.White
+        Appearance29.BackColorDisabled = System.Drawing.Color.White
+        Appearance29.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance29.FontData.BoldAsString = "False"
+        Appearance29.FontData.ItalicAsString = "False"
+        Appearance29.FontData.Name = "Microsoft Sans Serif"
+        Appearance29.FontData.SizeInPoints = 8.25!
+        Appearance29.FontData.StrikeoutAsString = "False"
+        Appearance29.FontData.UnderlineAsString = "False"
+        Appearance29.ForeColor = System.Drawing.Color.Black
+        Appearance29.ForeColorDisabled = System.Drawing.Color.Black
+        Me.dteEndetAm.Appearance = Appearance29
         Me.dteEndetAm.BackColor = System.Drawing.Color.White
         Me.dteEndetAm.DateTime = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dteEndetAm.Location = New System.Drawing.Point(93, 40)
@@ -696,11 +707,11 @@ Public Class frmNachrichtBereich
         '
         'lblEndAt
         '
-        Appearance25.BackColor = System.Drawing.Color.Transparent
-        Appearance25.ForeColor = System.Drawing.Color.Black
-        Appearance25.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance25.TextVAlignAsString = "Middle"
-        Me.lblEndAt.Appearance = Appearance25
+        Appearance27.BackColor = System.Drawing.Color.Transparent
+        Appearance27.ForeColor = System.Drawing.Color.Black
+        Appearance27.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance27.TextVAlignAsString = "Middle"
+        Me.lblEndAt.Appearance = Appearance27
         Me.lblEndAt.Location = New System.Drawing.Point(7, 43)
         Me.lblEndAt.Name = "lblEndAt"
         Me.lblEndAt.Size = New System.Drawing.Size(78, 17)
@@ -711,12 +722,12 @@ Public Class frmNachrichtBereich
         'lblErstelltVon
         '
         Me.lblErstelltVon.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance10.BackColor = System.Drawing.Color.Transparent
-        Appearance10.FontData.SizeInPoints = 7.5!
-        Appearance10.ForeColor = System.Drawing.Color.Black
-        Appearance10.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance10.TextVAlignAsString = "Middle"
-        Me.lblErstelltVon.Appearance = Appearance10
+        Appearance12.BackColor = System.Drawing.Color.Transparent
+        Appearance12.FontData.SizeInPoints = 7.5!
+        Appearance12.ForeColor = System.Drawing.Color.Black
+        Appearance12.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance12.TextVAlignAsString = "Middle"
+        Me.lblErstelltVon.Appearance = Appearance12
         Me.lblErstelltVon.AutoSize = True
         Me.lblErstelltVon.Location = New System.Drawing.Point(961, 15)
         Me.lblErstelltVon.Name = "lblErstelltVon"
@@ -729,12 +740,12 @@ Public Class frmNachrichtBereich
         'lblErstelltAm
         '
         Me.lblErstelltAm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance9.BackColor = System.Drawing.Color.Transparent
-        Appearance9.FontData.SizeInPoints = 7.5!
-        Appearance9.ForeColor = System.Drawing.Color.Black
-        Appearance9.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance9.TextVAlignAsString = "Middle"
-        Me.lblErstelltAm.Appearance = Appearance9
+        Appearance11.BackColor = System.Drawing.Color.Transparent
+        Appearance11.FontData.SizeInPoints = 7.5!
+        Appearance11.ForeColor = System.Drawing.Color.Black
+        Appearance11.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance11.TextVAlignAsString = "Middle"
+        Me.lblErstelltAm.Appearance = Appearance11
         Me.lblErstelltAm.AutoSize = True
         Me.lblErstelltAm.Location = New System.Drawing.Point(961, 30)
         Me.lblErstelltAm.Name = "lblErstelltAm"
@@ -746,19 +757,19 @@ Public Class frmNachrichtBereich
         '
         'dteBeginntAm
         '
-        Appearance8.BackColor = System.Drawing.Color.White
-        Appearance8.BackColor2 = System.Drawing.Color.White
-        Appearance8.BackColorDisabled = System.Drawing.Color.White
-        Appearance8.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance8.FontData.BoldAsString = "False"
-        Appearance8.FontData.ItalicAsString = "False"
-        Appearance8.FontData.Name = "Microsoft Sans Serif"
-        Appearance8.FontData.SizeInPoints = 8.25!
-        Appearance8.FontData.StrikeoutAsString = "False"
-        Appearance8.FontData.UnderlineAsString = "False"
-        Appearance8.ForeColor = System.Drawing.Color.Black
-        Appearance8.ForeColorDisabled = System.Drawing.Color.Black
-        Me.dteBeginntAm.Appearance = Appearance8
+        Appearance10.BackColor = System.Drawing.Color.White
+        Appearance10.BackColor2 = System.Drawing.Color.White
+        Appearance10.BackColorDisabled = System.Drawing.Color.White
+        Appearance10.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance10.FontData.BoldAsString = "False"
+        Appearance10.FontData.ItalicAsString = "False"
+        Appearance10.FontData.Name = "Microsoft Sans Serif"
+        Appearance10.FontData.SizeInPoints = 8.25!
+        Appearance10.FontData.StrikeoutAsString = "False"
+        Appearance10.FontData.UnderlineAsString = "False"
+        Appearance10.ForeColor = System.Drawing.Color.Black
+        Appearance10.ForeColorDisabled = System.Drawing.Color.Black
+        Me.dteBeginntAm.Appearance = Appearance10
         Me.dteBeginntAm.BackColor = System.Drawing.Color.White
         Me.dteBeginntAm.DateTime = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dteBeginntAm.Location = New System.Drawing.Point(93, 13)
@@ -770,11 +781,11 @@ Public Class frmNachrichtBereich
         '
         'lblStartAt
         '
-        Appearance4.BackColor = System.Drawing.Color.Transparent
-        Appearance4.ForeColor = System.Drawing.Color.Black
-        Appearance4.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance4.TextVAlignAsString = "Middle"
-        Me.lblStartAt.Appearance = Appearance4
+        Appearance6.BackColor = System.Drawing.Color.Transparent
+        Appearance6.ForeColor = System.Drawing.Color.Black
+        Appearance6.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance6.TextVAlignAsString = "Middle"
+        Me.lblStartAt.Appearance = Appearance6
         Me.lblStartAt.Location = New System.Drawing.Point(7, 15)
         Me.lblStartAt.Name = "lblStartAt"
         Me.lblStartAt.Size = New System.Drawing.Size(78, 17)
@@ -784,25 +795,25 @@ Public Class frmNachrichtBereich
         '
         'cboPriorität
         '
-        Appearance6.BackColor = System.Drawing.Color.White
-        Appearance6.BackColor2 = System.Drawing.Color.White
-        Appearance6.BackColorDisabled = System.Drawing.Color.White
-        Appearance6.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance6.FontData.Name = "Microsoft Sans Serif"
-        Appearance6.ForeColor = System.Drawing.Color.Black
-        Appearance6.ForeColorDisabled = System.Drawing.Color.Black
-        Me.cboPriorität.Appearance = Appearance6
+        Appearance8.BackColor = System.Drawing.Color.White
+        Appearance8.BackColor2 = System.Drawing.Color.White
+        Appearance8.BackColorDisabled = System.Drawing.Color.White
+        Appearance8.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance8.FontData.Name = "Microsoft Sans Serif"
+        Appearance8.ForeColor = System.Drawing.Color.Black
+        Appearance8.ForeColorDisabled = System.Drawing.Color.Black
+        Me.cboPriorität.Appearance = Appearance8
         Me.cboPriorität.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend
         Me.cboPriorität.AutoSize = False
         Me.cboPriorität.BackColor = System.Drawing.Color.White
         Me.cboPriorität.BorderStyle = Infragistics.Win.UIElementBorderStyle.Etched
         Me.cboPriorität.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Appearance7.BackColor = System.Drawing.Color.White
-        Appearance7.BackColorDisabled = System.Drawing.Color.White
-        Appearance7.BorderColor = System.Drawing.Color.Black
-        Appearance7.ForeColor = System.Drawing.Color.Black
-        Appearance7.ForeColorDisabled = System.Drawing.Color.Black
-        Me.cboPriorität.ItemAppearance = Appearance7
+        Appearance9.BackColor = System.Drawing.Color.White
+        Appearance9.BackColorDisabled = System.Drawing.Color.White
+        Appearance9.BorderColor = System.Drawing.Color.Black
+        Appearance9.ForeColor = System.Drawing.Color.Black
+        Appearance9.ForeColorDisabled = System.Drawing.Color.Black
+        Me.cboPriorität.ItemAppearance = Appearance9
         Me.cboPriorität.Location = New System.Drawing.Point(93, 67)
         Me.cboPriorität.Name = "cboPriorität"
         Me.cboPriorität.Size = New System.Drawing.Size(81, 20)
@@ -810,11 +821,11 @@ Public Class frmNachrichtBereich
         '
         'lbkPriorität
         '
-        Appearance5.BackColor = System.Drawing.Color.Transparent
-        Appearance5.ForeColor = System.Drawing.Color.Black
-        Appearance5.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance5.TextVAlignAsString = "Middle"
-        Me.lbkPriorität.Appearance = Appearance5
+        Appearance7.BackColor = System.Drawing.Color.Transparent
+        Appearance7.ForeColor = System.Drawing.Color.Black
+        Appearance7.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance7.TextVAlignAsString = "Middle"
+        Me.lbkPriorität.Appearance = Appearance7
         Me.lbkPriorität.Location = New System.Drawing.Point(7, 69)
         Me.lbkPriorität.Name = "lbkPriorität"
         Me.lbkPriorität.Size = New System.Drawing.Size(77, 17)
@@ -848,9 +859,9 @@ Public Class frmNachrichtBereich
         'btnAbort
         '
         Me.btnAbort.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance30.ForeColor = System.Drawing.Color.Black
-        Appearance30.ForeColorDisabled = System.Drawing.Color.Black
-        Me.btnAbort.Appearance = Appearance30
+        Appearance32.ForeColor = System.Drawing.Color.Black
+        Appearance32.ForeColorDisabled = System.Drawing.Color.Black
+        Me.btnAbort.Appearance = Appearance32
         Me.btnAbort.Location = New System.Drawing.Point(930, 6)
         Me.btnAbort.Name = "btnAbort"
         Me.btnAbort.Size = New System.Drawing.Size(84, 26)
@@ -861,9 +872,9 @@ Public Class frmNachrichtBereich
         'btnSave
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance31.ForeColor = System.Drawing.Color.Black
-        Appearance31.ForeColorDisabled = System.Drawing.Color.Black
-        Me.btnSave.Appearance = Appearance31
+        Appearance33.ForeColor = System.Drawing.Color.Black
+        Appearance33.ForeColorDisabled = System.Drawing.Color.Black
+        Me.btnSave.Appearance = Appearance33
         Me.btnSave.Location = New System.Drawing.Point(1014, 6)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(87, 26)
@@ -874,10 +885,10 @@ Public Class frmNachrichtBereich
         'btnDel
         '
         Me.btnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance32.Cursor = System.Windows.Forms.Cursors.Default
-        Appearance32.TextHAlignAsString = "Center"
-        Appearance32.TextVAlignAsString = "Middle"
-        Me.btnDel.Appearance = Appearance32
+        Appearance34.Cursor = System.Windows.Forms.Cursors.Default
+        Appearance34.TextHAlignAsString = "Center"
+        Appearance34.TextVAlignAsString = "Middle"
+        Me.btnDel.Appearance = Appearance34
         Me.btnDel.ImageSize = New System.Drawing.Size(20, 20)
         Me.btnDel.Location = New System.Drawing.Point(893, 6)
         Me.btnDel.Name = "btnDel"
@@ -900,19 +911,19 @@ Public Class frmNachrichtBereich
         '
         Me.txtBetreff.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance28.BackColor = System.Drawing.Color.White
-        Appearance28.BackColor2 = System.Drawing.Color.White
-        Appearance28.BackColorDisabled = System.Drawing.Color.White
-        Appearance28.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance28.FontData.BoldAsString = "False"
-        Appearance28.FontData.ItalicAsString = "False"
-        Appearance28.FontData.Name = "Microsoft Sans Serif"
-        Appearance28.FontData.SizeInPoints = 8.25!
-        Appearance28.FontData.StrikeoutAsString = "False"
-        Appearance28.FontData.UnderlineAsString = "False"
-        Appearance28.ForeColor = System.Drawing.Color.Black
-        Appearance28.ForeColorDisabled = System.Drawing.Color.Black
-        Me.txtBetreff.Appearance = Appearance28
+        Appearance30.BackColor = System.Drawing.Color.White
+        Appearance30.BackColor2 = System.Drawing.Color.White
+        Appearance30.BackColorDisabled = System.Drawing.Color.White
+        Appearance30.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance30.FontData.BoldAsString = "False"
+        Appearance30.FontData.ItalicAsString = "False"
+        Appearance30.FontData.Name = "Microsoft Sans Serif"
+        Appearance30.FontData.SizeInPoints = 8.25!
+        Appearance30.FontData.StrikeoutAsString = "False"
+        Appearance30.FontData.UnderlineAsString = "False"
+        Appearance30.ForeColor = System.Drawing.Color.Black
+        Appearance30.ForeColorDisabled = System.Drawing.Color.Black
+        Me.txtBetreff.Appearance = Appearance30
         Me.txtBetreff.AutoSize = False
         Me.txtBetreff.BackColor = System.Drawing.Color.White
         Me.txtBetreff.Location = New System.Drawing.Point(208, 6)
@@ -924,11 +935,11 @@ Public Class frmNachrichtBereich
         '
         'lblBetreff
         '
-        Appearance29.BackColor = System.Drawing.Color.Transparent
-        Appearance29.ForeColor = System.Drawing.Color.Black
-        Appearance29.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance29.TextVAlignAsString = "Middle"
-        Me.lblBetreff.Appearance = Appearance29
+        Appearance31.BackColor = System.Drawing.Color.Transparent
+        Appearance31.ForeColor = System.Drawing.Color.Black
+        Appearance31.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance31.TextVAlignAsString = "Middle"
+        Me.lblBetreff.Appearance = Appearance31
         Me.lblBetreff.Location = New System.Drawing.Point(167, 9)
         Me.lblBetreff.Name = "lblBetreff"
         Me.lblBetreff.Size = New System.Drawing.Size(77, 17)
@@ -939,6 +950,8 @@ Public Class frmNachrichtBereich
         'PanelDescription
         '
         Me.PanelDescription.BackColor = System.Drawing.Color.Transparent
+        Me.PanelDescription.Controls.Add(Me.dropDownAbteilungBereiche)
+        Me.PanelDescription.Controls.Add(Me.dropDownBerufsgruppen)
         Me.PanelDescription.Controls.Add(Me.optStatus)
         Me.PanelDescription.Controls.Add(Me.PanelEditor)
         Me.PanelDescription.Controls.Add(Me.EditorTmp1)
@@ -999,6 +1012,36 @@ Public Class frmNachrichtBereich
         Me.PanelTxtEditor.Name = "PanelTxtEditor"
         Me.PanelTxtEditor.Size = New System.Drawing.Size(1122, 541)
         Me.PanelTxtEditor.TabIndex = 7
+        '
+        'dropDownAbteilungBereiche
+        '
+        Appearance4.BorderColor = System.Drawing.Color.Black
+        Appearance4.TextHAlignAsString = "Left"
+        Me.dropDownAbteilungBereiche.Appearance = Appearance4
+        Me.dropDownAbteilungBereiche.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
+        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(209, 92)
+        Me.dropDownAbteilungBereiche.Name = "dropDownAbteilungBereiche"
+        Me.dropDownAbteilungBereiche.Size = New System.Drawing.Size(135, 24)
+        Me.dropDownAbteilungBereiche.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
+        Me.dropDownAbteilungBereiche.TabIndex = 1008
+        Me.dropDownAbteilungBereiche.TabStop = False
+        Me.dropDownAbteilungBereiche.Tag = ""
+        Me.dropDownAbteilungBereiche.Text = "Abteilungen-Bereiche"
+        '
+        'dropDownBerufsgruppen
+        '
+        Appearance5.BorderColor = System.Drawing.Color.Black
+        Appearance5.TextHAlignAsString = "Left"
+        Me.dropDownBerufsgruppen.Appearance = Appearance5
+        Me.dropDownBerufsgruppen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
+        Me.dropDownBerufsgruppen.Location = New System.Drawing.Point(93, 92)
+        Me.dropDownBerufsgruppen.Name = "dropDownBerufsgruppen"
+        Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(110, 24)
+        Me.dropDownBerufsgruppen.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
+        Me.dropDownBerufsgruppen.TabIndex = 1007
+        Me.dropDownBerufsgruppen.TabStop = False
+        Me.dropDownBerufsgruppen.Tag = ""
+        Me.dropDownBerufsgruppen.Text = "Berufsgruppen"
         '
         'frmNachrichtBereich
         '
@@ -1062,7 +1105,6 @@ Public Class frmNachrichtBereich
             Me.loadRes()
 
             'Me.btnTeilnehmer.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_persons, 32, 32)
-            'Me.btnSendAnswer.Appearance.Image = ITSCont.core.SystemDb.getRes.getImage(core.SystemDb.getRes.ePicture.ico_send, core.SystemDb.getRes.ePicTyp.ico)
 
             Dim MaxIDSelListEntryReturn As Integer = -1
             Dim tSelListEntriesReturn As System.Collections.Generic.List(Of PMDS.db.Entities.tblSelListEntries) = Nothing
@@ -1079,11 +1121,21 @@ Public Class frmNachrichtBereich
             MaxIDSelListEntryReturn = -1
             tSelListEntriesReturn = Nothing
 
-            'Me.contSelectSelListCategories.MainMessage = Me        'lthplan
-            Me.contSelectSelListCategories.initControl("PlanCategory", False, False, Me.dropDownCategories, False, "Categories", "", False)
+            Me.contSelectSelListCategories.initControl("PlanBereichCategory", True, False, Me.dropDownCategories, False, "Categories", "", True)
             Me.uPopupContCategories.PopupControl = Me.contSelectSelListCategories
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories
+
+            Me.contSelectAbtBereiche.MainMessage = Me
+            Me.contSelectAbtBereiche.initControl(Me.dropDownAbteilungBereiche)
+            Me.uPopupAbteilungBereiche.PopupControl = Me.contSelectAbtBereiche
+            Me.dropDownAbteilungBereiche.PopupItem = Me.uPopupAbteilungBereiche
+            Me.contSelectAbtBereiche.popupContMainSearch = Me.uPopupAbteilungBereiche
+
+            Me.contSelectSelListBerufsgruppen.initControl("BER", True, False, Me.dropDownCategories, False, "Berufsgruppen", "", True)
+            Me.uPopupContBerufsgruppen.PopupControl = Me.contSelectSelListBerufsgruppen
+            Me.dropDownBerufsgruppen.PopupItem = Me.uPopupContBerufsgruppen
+            Me.contSelectSelListBerufsgruppen.popupContMainSearch = Me.uPopupContBerufsgruppen
 
             Me.loadCboDauer()
             Me.loadCboDauerSerientermin()
@@ -1235,6 +1287,7 @@ Public Class frmNachrichtBereich
     Private Sub AufgabeTerminNeu_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Try
             Me.Visible = False
+            Me.IsOpend = False
             e.Cancel = True
 
         Catch ex As Exception
@@ -1352,21 +1405,21 @@ Public Class frmNachrichtBereich
         End Try
     End Sub
 
-    Public Function Init() As Boolean
+    Public Function loadData() As Boolean
         Try
             Me.clear()
 
             If Not IsNew Then
                 Me.dsPlan1 = New dsPlan()
                 Me.compPlan1 = New compPlan()
-                Me.compPlan1.getPlan(IDPlanBereich, compPlan.eTypSelPlan.id, Me.dsPlan1)
-                Me.rPlan = Me.dsPlan1.plan.Rows(0)
-                Me.loadData()
+                Me.compPlan1.getPlanBereich(IDPlanBereich, compPlan.eTypSelPlanBereich.IDPlan, Me.dsPlan1)
+                Me.rPlanBereich = Me.dsPlan1.planBereich.Rows(0)
+                Me.loadData2()
 
                 Me.doEditor1.showText(Text, TXTextControl.StreamType.PlainText, True, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
 
                 Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                    Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = Me.b.getUserByUserName2(Me.rPlan.ErstelltVon.Trim(), db)
+                    Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = Me.b.getUserByUserName2(Me.rPlanBereich.CreatedFrom.Trim(), db)
                     If tUser.Count = 1 Then
                         Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
                         If Not rUsr.IDBerufsstand Is Nothing Then
@@ -1377,10 +1430,10 @@ Public Class frmNachrichtBereich
                             End If
                         Else
                             Dim rUsrLoggedIn As PMDS.db.Entities.Benutzer = Me.b.LogggedOnUser(db)
-                            If Me.rPlan.ErstelltVon.Trim() = "" Then
-                                Throw New Exception("Init: Me.rPlan.ErstelltVon='' not allowed for IDPlan '" + Me.rPlan.ID.ToString() + "'!")
+                            If Me.rPlanBereich.CreatedFrom.Trim() = "" Then
+                                Throw New Exception("Init: Me.rPlanBereich.CreatedFrom='' not allowed for IDPlan '" + Me.rPlanBereich.ID.ToString() + "'!")
                             End If
-                            If rUsrLoggedIn.Benutzer1.Trim().ToLower().Equals(Me.rPlan.ErstelltVon.Trim().ToLower()) Then
+                            If rUsrLoggedIn.Benutzer1.Trim().ToLower().Equals(Me.rPlanBereich.CreatedFrom.Trim().ToLower()) Then
                                 Me.lockUnlock(True)
                             Else
                                 Me.lockUnlock(False)
@@ -1390,11 +1443,11 @@ Public Class frmNachrichtBereich
                     ElseIf tUser.Count = 0 Then
                         Me.lockUnlock(False)
                     Else
-                        Throw New Exception("frmNachricht.Init: tUser.Count>0 for Usr '" + Me.rPlan.ErstelltVon.Trim() + "' not allowed!")
+                        Throw New Exception("frmNachrichtBereich.Init: tUser.Count>0 for Usr '" + Me.rPlanBereich.CreatedFrom.Trim() + "' not allowed!")
                     End If
                 End Using
 
-                If Not Me.rPlan.IsIDSerienterminNull() Then
+                If Not Me.rPlanBereich.IsIDSerienterminNull() Then
                     Me.PanelSerientermineUISub.Enabled = False
                 Else
                     Me.PanelSerientermineUISub.Enabled = True
@@ -1404,7 +1457,7 @@ Public Class frmNachrichtBereich
                 Me.lblStatus.Visible = False
                 Me.contSelectSelListCategories.setLabelCount2()
 
-                If Me.rPlan.IsIDSerienterminNull() Then
+                If Me.rPlanBereich.IsIDSerienterminNull() Then
                     Me.chkIsSerientermin.Visible = False
                 End If
 
@@ -1424,113 +1477,93 @@ Public Class frmNachrichtBereich
                 Me.lockUnlock(True)
 
                 Me.contSelectSelListCategories.setLabelCount2()
-
             End If
 
         Catch ex As Exception
-            Throw New Exception("frmNachrichtBereich.Init: " + ex.ToString())
+            Throw New Exception("frmNachrichtBereich.loadData: " + ex.ToString())
         End Try
     End Function
 
-    Public Function loadData() As Boolean
+    Private Function loadData2() As Boolean
         Try
-            'Dim rPlanAct As dsPlan.planRow = Me.dsPlan1.plan.Rows(0)
-            'If Me.loadAllActivities Then
-            '    Me.ContComboActivities1.loadAllActivities("", -1, -1, -1, -1)
-            'Else
-            '    Me.ContComboActivities1.loadAllActivities("", -1, -1, -1, -1)
-            '    'Me.ContComboActivities1.loadAllActivities("", 0, 0, 0, -1)
-            'End If
+            Me.txtBetreff.Text = Me.rPlanBereich.Betreff
 
-            Me.txtBetreff.Text = Me.rPlan.Betreff
-
-            If Me.rPlan.Status.Trim() <> "" Then
-                If Me.rPlan.Status.Trim().ToLower().Equals(("Offen").Trim().ToLower()) Then
+            If Me.rPlanBereich.Status.Trim() <> "" Then
+                If Me.rPlanBereich.Status.Trim().ToLower().Equals(("Offen").Trim().ToLower()) Then
                     Me.optStatus.CheckedIndex = 0
-                ElseIf Me.rPlan.Status.Trim().ToLower().Equals(("Erledigt").Trim().ToLower()) Then
+                ElseIf Me.rPlanBereich.Status.Trim().ToLower().Equals(("Erledigt").Trim().ToLower()) Then
                     Me.optStatus.CheckedIndex = 1
                 Else
-                    Throw New Exception("frmNachrichtBereich.loadData: Me.rPlan.Status='" + Me.rPlan.Status.Trim() + "' not allowed!")
+                    Throw New Exception("frmNachrichtBereich.loadData: Me.rPlan.Status='" + Me.rPlanBereich.Status.Trim() + "' not allowed!")
                 End If
             Else
                 Me.optStatus.Value = Nothing
             End If
 
-            If Not Me.rPlan.IsBeginntAmNull() Then
-                Me.dteBeginntAm.Value = Me.rPlan.BeginntAm
+            If Not Me.rPlanBereich.IsBeginntAmNull() Then
+                Me.dteBeginntAm.Value = Me.rPlanBereich.BeginntAm
             Else
                 Me.dteBeginntAm.Value = Nothing
             End If
-            Me.cboPriorität.Text = Me.rPlan.Priorität
 
-            Me.contSelectSelListCategories.loadDataColl(Me.rPlan.Category.Trim())
+            Me.contSelectSelListCategories.loadDataColl(Me.rPlanBereich.Category.Trim())
 
-            'Me.textAnzeigenxy(Me.rPlan.Text, Me.rPlan.html, Me.rPlan.IDArt)
-            'Me.cboFür.Text = rPlan.Für
-            'rPlan.Zusatz = ""
-            'rPlan.objectName = Me.patient
-
-            If Not Me.rPlan.IsIDActivityNull() Then
-            Else
-            End If
-
-
-            If Me.rPlan.IsEndetAmNull() Then
+            If Me.rPlanBereich.IsEndetAmNull() Then
                 Me.dteEndetAm.Value = Nothing
             Else
-                Me.dteEndetAm.DateTime = Me.rPlan.EndetAm
+                Me.dteEndetAm.DateTime = Me.rPlanBereich.EndetAm
             End If
-            If Me.rPlan.Dauer = -1 Then
+            If Me.rPlanBereich.Dauer = -1 Then
                 Me.cboDauer.Value = Nothing
             Else
-                Me.cboDauer.Value = rPlan.Dauer
+                Me.cboDauer.Value = rPlanBereich.Dauer
             End If
-            Me.chkGanzerTag.Checked = Me.rPlan.GanzerTag
-            Me.setUIEndetAm(Me.rPlan.GanzerTag, False)
+            Me.chkGanzerTag.Checked = Me.rPlanBereich.GanzerTag
+            Me.setUIEndetAm(Me.rPlanBereich.GanzerTag, False)
 
-            Me.chkIsSerientermin.Checked = Me.rPlan.IsSerientermin
-            Me.grpSerientermin.Visible = Me.rPlan.IsSerientermin
-            If Me.rPlan.IsSerienterminEndetAmNull() Then
+            Me.chkIsSerientermin.Checked = Me.rPlanBereich.IsSerientermin
+            Me.grpSerientermin.Visible = Me.rPlanBereich.IsSerientermin
+            If Me.rPlanBereich.IsSerienterminEndetAmNull() Then
                 Me.dteSerienterminEndetAm.Value = Nothing
             Else
-                Me.dteSerienterminEndetAm.Value = Me.rPlan.SerienterminEndetAm.Date
+                Me.dteSerienterminEndetAm.Value = Me.rPlanBereich.SerienterminEndetAm.Date
             End If
 
-            If Me.rPlan.SerienterminType.Trim() <> "" Then
-                If Me.rPlan.SerienterminType.Trim() = "1" Then
+            If Me.rPlanBereich.SerienterminType.Trim() <> "" Then
+                If Me.rPlanBereich.SerienterminType.Trim() = "1" Then
                     Me.optSerienterminType.CheckedIndex = 0
-                ElseIf Me.rPlan.SerienterminType.Trim() = "2" Then
+                ElseIf Me.rPlanBereich.SerienterminType.Trim() = "2" Then
                     Me.optSerienterminType.CheckedIndex = 1
-                ElseIf Me.rPlan.SerienterminType.Trim() = "3" Then
+                ElseIf Me.rPlanBereich.SerienterminType.Trim() = "3" Then
                     Me.optSerienterminType.CheckedIndex = 2
                 End If
             Else
                 Me.optSerienterminType.CheckedIndex = 0
             End If
-            If Me.rPlan.IsWiedWertJedenNull() Then
+            If Me.rPlanBereich.IsWiedWertJedenNull() Then
                 Me.iWiedWertJeden.Value = Nothing
             Else
-                Me.iWiedWertJeden.Value = Me.rPlan.WiedWertJeden
+                Me.iWiedWertJeden.Value = Me.rPlanBereich.WiedWertJeden
             End If
-            If Me.rPlan.TagWochenMonat.Trim() <> "" Then
-                If Me.rPlan.TagWochenMonat.Trim() = "0" Then
+            If Me.rPlanBereich.TagWochenMonat.Trim() <> "" Then
+                If Me.rPlanBereich.TagWochenMonat.Trim() = "0" Then
                     Me.opTagWochenMonat.CheckedIndex = 0
-                ElseIf Me.rPlan.TagWochenMonat.Trim() = "1" Then
+                ElseIf Me.rPlanBereich.TagWochenMonat.Trim() = "1" Then
                     Me.opTagWochenMonat.CheckedIndex = 1
-                ElseIf Me.rPlan.TagWochenMonat.Trim() = "2" Then
+                ElseIf Me.rPlanBereich.TagWochenMonat.Trim() = "2" Then
                     Me.opTagWochenMonat.CheckedIndex = 2
                 End If
             Else
                 Me.opTagWochenMonat.CheckedIndex = 0
             End If
-            If Me.rPlan.IsnTenMonatNull() Then
+            If Me.rPlanBereich.IsnTenMonatNull() Then
                 Me.iNTenMonat.Value = Nothing
             Else
-                Me.iNTenMonat.Value = Me.rPlan.nTenMonat
+                Me.iNTenMonat.Value = Me.rPlanBereich.nTenMonat
             End If
 
-            Me.setWochentage(Me.rPlan.Wochentage.Trim())
-            Me.setErstelltVon(Me.rPlan.ErstelltVon, Me.rPlan.ErstelltAm)
+            Me.setWochentage(Me.rPlanBereich.Wochentage.Trim())
+            Me.setErstelltVon(Me.rPlanBereich.CreatedFrom, Me.rPlanBereich.CreatedAt)
 
             General.GarbColl()
 
@@ -1698,6 +1731,10 @@ Public Class frmNachrichtBereich
         Dim protokollOk As String = ""
         Dim protokollErr As String = ""
         Try
+            If Not Me.checkInput() Then
+                Return False
+            End If
+
             Dim bSendOnServer As Boolean = False
             Dim dsInteropPar1 As New dsInteropPar()
             Dim rUsrAccount As dsUserAccounts.tblUserAccountsRow
@@ -1716,15 +1753,15 @@ Public Class frmNachrichtBereich
             End If
 
             Dim EndetAmSerientermin As Nullable(Of Date) = Nothing
-            If Not Me.IsNew And (Not rPlan.IsIDSerienterminNull()) Then
-                EndetAmSerientermin = rPlan.SerienterminEndetAm
+            If Not Me.IsNew And (Not rPlanBereich.IsIDSerienterminNull()) Then
+                EndetAmSerientermin = rPlanBereich.SerienterminEndetAm
             End If
             Dim IDSerientermin As Nullable(Of Guid) = Nothing
             Dim lstSerientermineResult As New System.Collections.Generic.List(Of General.cSerientermine)
             If Me.chkIsSerientermin.Checked Then
                 If Not Me.IsNew Then
-                    If Not Me.rPlan.IsIDSerienterminNull() Then
-                        IDSerientermin = Me.rPlan.IDSerientermin
+                    If Not Me.rPlanBereich.IsIDSerienterminNull() Then
+                        IDSerientermin = Me.rPlanBereich.IDSerientermin
                     Else
                         IDSerientermin = System.Guid.NewGuid()
                     End If
@@ -1758,21 +1795,21 @@ Public Class frmNachrichtBereich
             Dim STVerlängerung As Boolean = False
             Dim STKürzung As Boolean = False
             Dim ownerSucessfullySaved As Boolean = False
-            Dim rPlanOwner As dsPlan.planRow = Me.dsPlan1.plan.Rows(0)
+            Dim rPlanOwner As dsPlan.planBereichRow = Me.dsPlan1.plan.Rows(0)
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 If Me.setPlanRowTemp(rPlanOwner, Producer, Nothing, IDSerientermin) Then
                     db.Configuration.LazyLoadingEnabled = False
-                    Dim rPlanOrigDB As PMDS.db.Entities.plan = Nothing
+                    Dim rPlanOrigDB As PMDS.db.Entities.planBereich = Nothing
                     If Not Me.IsNew Then
-                        rPlanOrigDB = Me.b.getPlan(rPlanOwner.ID, db)
+                        rPlanOrigDB = Me.b.getPlanBereich(rPlanOwner.ID, db)
                     End If
 
                     Dim iCounterKlientPatients As Integer = 0
-                    If UsrExchangeKto.Trim() <> "" Then
-                        rPlanOwner.Für = UsrExchangeKto.Trim()
-                        rSelUserAccountReturn = rSelUserAccount
-                    End If
-                    rPlanOwner.IsOwner = True
+                    'If UsrExchangeKto.Trim() <> "" Then
+                    '    rPlanOwner.Für = UsrExchangeKto.Trim()
+                    '    rSelUserAccountReturn = rSelUserAccount
+                    'End If
+                    'rPlanOwner.IsOwner = True
 
                     If Me.chkIsSerientermin.Checked Then
                         If Me.IsNew Then
@@ -1806,8 +1843,8 @@ Public Class frmNachrichtBereich
                                     If STKürzung Then
                                         'Me.compPlan1.deletePlan(rPlan.ID, rPlan.MessageId, rPlan.Für, Me.rPlan.IDArt, Me.rPlan.Betreff)
                                         If Me.saveNachrichtToDb2() Then
-                                            Me.compPlan1.updatePlanSerienterminEndetAm(rPlan.IDSerientermin, rPlan.SerienterminEndetAm.Date)
-                                            Me.compPlan1.deletePlanSerienterminEndetAm(rPlan.IDSerientermin, rPlan.SerienterminEndetAm.Date)
+                                            Me.compPlan1.updatePlanBereichSerienterminEndetAm(rPlanBereich.IDSerientermin, rPlanBereich.SerienterminEndetAm.Date)
+                                            Me.compPlan1.deletePlanBereichSerienterminEndetAm(rPlanBereich.IDSerientermin, rPlanBereich.SerienterminEndetAm.Date)
                                             ownerSucessfullySaved = True
                                             If Me.chkIsSerientermin.Checked Then
                                                 Me.updateSerientermine(rPlanOwner, rPlanOrigDB, db)
@@ -1842,85 +1879,80 @@ Public Class frmNachrichtBereich
 
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 db.Configuration.LazyLoadingEnabled = False
-                Dim rPlanOrigDB As PMDS.db.Entities.plan = Nothing
+                Dim rPlanOrigDB As PMDS.db.Entities.planBereich = Nothing
                 If Not Me.IsNew Then
-                    rPlanOrigDB = Me.b.getPlan(rPlanOwner.ID, db)
+                    rPlanOrigDB = Me.b.getPlanBereich(rPlanOwner.ID, db)
                 End If
 
                 If ownerSucessfullySaved Then
                     'Me.setPlanRowTemp(rPlanTemp, saveClicked, "", Nothing)
 
-                    If Me.rPlan.IDArt = clPlan.typPlan_AufgabeTermin Then
-                        ' Save Users
-                        'Dim lstUsers As System.Collections.Generic.List(Of String) = PMDS.Global.generic.readStrVariables(Me.rPlan.Teilnehmer.Trim())
-                        'If lstUsers.Count > 0 Then
-                        If lstSerientermineResult.Count > 0 And (Not STKürzung) Then
-                            Dim dsPlanNew As New dsPlan()
-                            Dim compPlanNew As New compPlan()
+                    'If Me.rPlanBereich.IDArt = clPlan.typPlan_AufgabeTermin Then
+                    ' Save Users
+                    'Dim lstUsers As System.Collections.Generic.List(Of String) = PMDS.Global.generic.readStrVariables(Me.rPlan.Teilnehmer.Trim())
+                    'If lstUsers.Count > 0 Then
+                    If lstSerientermineResult.Count > 0 And (Not STKürzung) Then
+                        Dim dsPlanNew As New dsPlan()
+                        Dim compPlanNew As New compPlan()
 
-                            For Each SerientermineAct As General.cSerientermine In lstSerientermineResult
-                                Dim b As New PMDS.db.PMDSBusiness()
+                        For Each SerientermineAct As General.cSerientermine In lstSerientermineResult
+                            Dim b As New PMDS.db.PMDSBusiness()
 
-                                'Dim rUsr As PMDS.db.Entities.Benutzer = b.getUserByUserName(usr.Trim(), db)
-                                Dim bWritePlan As Boolean = False
-                                If Not Me.IsNew Then
-                                    If SerientermineAct.dFrom.Date >= Me.rPlan.BeginntAm.Date Then
-                                        bWritePlan = True
+                            'Dim rUsr As PMDS.db.Entities.Benutzer = b.getUserByUserName(usr.Trim(), db)
+                            Dim bWritePlan As Boolean = False
+                            If Not Me.IsNew Then
+                                If SerientermineAct.dFrom.Date >= Me.rPlanBereich.BeginntAm.Date Then
+                                    bWritePlan = True
+                                End If
+                            Else
+                                bWritePlan = True
+                            End If
+
+                            If STVerlängerung Then
+                                Dim rPlan As PMDS.db.Entities.plan = b.getPlan(Me.rPlanBereich.ID, db)
+                                Dim STEndetAmOrig As Date = Nothing
+                                If Not rPlan.IDSerientermin Is Nothing Then
+                                    If SerientermineAct.dFrom.Date <= rPlan.SerienterminEndetAm.Value.Date Then
+                                        bWritePlan = False
                                     End If
                                 Else
                                     bWritePlan = True
                                 End If
-
-                                If STVerlängerung Then
-                                    Dim rPlan As PMDS.db.Entities.plan = b.getPlan(Me.rPlan.ID, db)
-                                    Dim STEndetAmOrig As Date = Nothing
-                                    If Not rPlan.IDSerientermin Is Nothing Then
-                                        If SerientermineAct.dFrom.Date <= rPlan.SerienterminEndetAm.Value.Date Then
-                                            bWritePlan = False
-                                        End If
-                                    Else
-                                        bWritePlan = True
-                                    End If
-                                End If
-
-                                If bWritePlan Then
-                                    dsPlanNew.Clear()
-                                    compPlanNew.getPlan(System.Guid.NewGuid(), compPlan.eTypSelPlan.id, dsPlanNew)
-                                    compPlanNew.getPlanAnhang(System.Guid.NewGuid(), compPlan.eTypSelPlanAnhang.idPlan, dsPlanNew)
-                                    compPlanNew.getPlanObject(System.Guid.NewGuid, compPlan.eTypSelPlanObject.id, dsPlanNew)
-
-                                    Dim rPlanNew As dsPlan.planRow = Me.compPlan1.getNewRowPlan(dsPlanNew)
-                                    rPlanNew.ItemArray = rPlanOwner.ItemArray
-                                    rPlanNew.ID = System.Guid.NewGuid()
-                                    rPlanNew.IDKlinik = PMDS.Global.ENV.IDKlinik
-                                    'rPlanNew.Für = usr
-                                    rPlanNew.IDPlanMain = rPlanOwner.ID
-                                    rPlanNew.BeginntAm = SerientermineAct.dFrom
-                                    rPlanNew.EndetAm = SerientermineAct.dTo
-
-                                    compPlanNew.daPlan.Update(dsPlanNew.plan)
-                                    compPlanNew.daPlanAnhang.Update(dsPlanNew.planAnhang)
-                                    compPlanNew.daPlanObject.Update(dsPlanNew.planObject)
-
-                                    anzPläne += 1
-                                End If
-                            Next
-
-                            If STVerlängerung Then
-                                Me.compPlan1.updatePlanSerienterminEndetAm(rPlan.IDSerientermin, rPlan.SerienterminEndetAm.Date)
                             End If
 
-                            If Not Me.IsNew Then
-                                If Me.chkIsSerientermin.Checked Then
-                                    Me.updateSerientermine(rPlanOwner, rPlanOrigDB, db)
-                                End If
-                            End If
+                            If bWritePlan Then
+                                dsPlanNew.Clear()
+                                compPlanNew.getPlanBereich(System.Guid.NewGuid(), compPlan.eTypSelPlanBereich.IDPlan, dsPlanNew)
 
-                            Dim txt As String = doUI.getRes("PlansSaved")
-                            txt += " (" + anzPläne.ToString() + ")"
-                            protokollOk = txt + vbNewLine + protokollOk
+                                Dim rPlanNew As dsPlan.planBereichRow = Me.compPlan1.getNewRowPlanBereich(dsPlanNew)
+                                rPlanNew.ItemArray = rPlanOwner.ItemArray
+                                rPlanNew.ID = System.Guid.NewGuid()
+                                rPlanNew.IDKlinik = PMDS.Global.ENV.IDKlinik
+                                'rPlanNew.CreatedFrom = usr
+                                rPlanNew.IDPlanMain = rPlanOwner.ID
+                                rPlanNew.BeginntAm = SerientermineAct.dFrom
+                                rPlanNew.EndetAm = SerientermineAct.dTo
+
+                                compPlanNew.daPlanBereich.Update(dsPlanNew.planBereich)
+                                anzPläne += 1
+                            End If
+                        Next
+
+                        If STVerlängerung Then
+                            Me.compPlan1.deletePlanBereichSerienterminEndetAm2(rPlanBereich.IDSerientermin, rPlanBereich.SerienterminEndetAm.Date)
                         End If
+
+                        If Not Me.IsNew Then
+                            If Me.chkIsSerientermin.Checked Then
+                                Me.updateSerientermine(rPlanOwner, rPlanOrigDB, db)
+                            End If
+                        End If
+
+                        Dim txt As String = doUI.getRes("PlansSaved")
+                        txt += " (" + anzPläne.ToString() + ")"
+                        protokollOk = txt + vbNewLine + protokollOk
                     End If
+                    'End If
 
                     dsInteropPar1 = New dsInteropPar()
                     Return True
@@ -1940,7 +1972,7 @@ Public Class frmNachrichtBereich
         End Try
     End Function
 
-    Public Sub updateSerientermine(ByRef rPlanOrig As dsPlan.planRow, ByRef rPlanOrigDB As PMDS.db.Entities.plan, db As PMDS.db.Entities.ERModellPMDSEntities)
+    Public Sub updateSerientermine(ByRef rPlanOrig As dsPlan.planBereichRow, ByRef rPlanOrigDB As PMDS.db.Entities.planBereich, db As PMDS.db.Entities.ERModellPMDSEntities)
         Try
             Dim tPlansST As IQueryable(Of PMDS.db.Entities.plan) = Me.b.getPlansSerientermin5(rPlanOrig.IDSerientermin, db)
             If tPlansST.Count() > 0 Then
@@ -1957,8 +1989,6 @@ Public Class frmNachrichtBereich
                             Else
                                 rPlanToUpdate.Betreff = rPlanOrig.Betreff.Trim()
                                 rPlanToUpdate.Text = rPlanOrig.Text
-                                rPlanToUpdate.html = rPlanOrig.html
-                                rPlanToUpdate.Priorität = rPlanOrig.Priorität
                                 rPlanToUpdate.Status = rPlanOrig.Status
                                 rPlanToUpdate.Category = rPlanOrig.Category
                                 'rPlanToUpdate.Dauer = rPlanOrig.Dauer
@@ -2007,7 +2037,7 @@ Public Class frmNachrichtBereich
         End Try
     End Sub
 
-    Public Function setPlanRowTemp(ByRef rPlanToSet As dsPlan.planRow,
+    Public Function setPlanRowTemp(ByRef rPlanToSet As dsPlan.planBereichRow,
                                     ByRef Usr As String, ByRef IDPlanMain As System.Guid,
                                     ByRef IDSerientermin As Nullable(Of Guid)) As Boolean
         Try
@@ -2018,7 +2048,6 @@ Public Class frmNachrichtBereich
                 rPlanToSet.BeginntAm = Me.dteBeginntAm.Value
             End If
 
-            rPlanToSet.Priorität = Me.cboPriorität.Text
             If (Not Me.optStatus.Value Is Nothing) Then
                 If Me.optStatus.CheckedIndex = 0 Then
                     rPlanToSet.Status = "Offen"
@@ -2037,7 +2066,6 @@ Public Class frmNachrichtBereich
                 rPlanToSet.SetIDPlanMainNull()
             End If
 
-            rPlanToSet.SetIDActivityNull()
             Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
             rPlanToSet.Category = Me.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
             If rPlanToSet.Betreff.Trim() = "" Then
@@ -2052,18 +2080,15 @@ Public Class frmNachrichtBereich
 
             If Not General.IsNull(text) Then
                 rPlanToSet.Text = text
-                rPlanToSet.html = False
             Else
                 rPlanToSet.Text = ""
-                rPlanToSet.html = False
             End If
 
             If Usr.Trim() <> "" Then
-                rPlanToSet.Für = Usr
+                rPlanToSet.CreatedFrom = Usr
+                rPlanToSet.LastChangeFrom = Usr
             End If
 
-            rPlanToSet.Zusatz = ""
-            rPlanToSet.IsgesendetAmNull()
 
             If Me.dteEndetAm.Value Is Nothing Then
                 rPlanToSet.SetEndetAmNull()
@@ -2080,7 +2105,6 @@ Public Class frmNachrichtBereich
             If rPlanToSet.GanzerTag Then
                 If Not Me.dteEndetAm.Value Is Nothing Then
                     Dim EndetAmEndeTmp As Date = New Date(Me.dteEndetAm.DateTime.Year, Me.dteEndetAm.DateTime.Month, Me.dteEndetAm.DateTime.Day, 0, 0, 0)
-                    'EndetAmEndeTmp = EndetAmEndeTmp.AddDays(1)
                     rPlanToSet.EndetAm = EndetAmEndeTmp.Date
                 Else
                     Dim EndetAmEndeTmp As Date = New Date(rPlanToSet.BeginntAm.Date.Year, rPlanToSet.BeginntAm.Date.Month, rPlanToSet.BeginntAm.Date.Day, 0, 0, 0)
@@ -2089,10 +2113,7 @@ Public Class frmNachrichtBereich
                 End If
             End If
 
-            'Dim diffBeginnEndDate As TimeSpan = rPlanToSet.EndetAm - rPlanToSet.BeginntAm
-            Me.rPlan.Dauer = DateDiff(DateInterval.Minute, rPlanToSet.BeginntAm, rPlanToSet.EndetAm)
-            'Me.rPlan.Dauer = diffBeginnEndDate.TotalMinutes
-            'Me.rPlan.Dauer = DateDiff(DateInterval.Minute, rPlanToSet.BeginntAm, rPlanToSet.EndetAm)
+            Me.rPlanBereich.Dauer = DateDiff(DateInterval.Minute, rPlanToSet.BeginntAm, rPlanToSet.EndetAm)
 
             rPlanToSet.IsSerientermin = Me.chkIsSerientermin.Checked
             If IDSerientermin Is Nothing Then
@@ -2115,7 +2136,7 @@ Public Class frmNachrichtBereich
                 ElseIf Me.optSerienterminType.CheckedIndex = 2 Then
                     rPlanToSet.SerienterminType = "3"
                 Else
-                    Throw New Exception("frmNachricht.setPlanRowTemp: Me.optSerienterminType.CheckedIndex '" + Me.optSerienterminType.CheckedIndex.ToString() + "' not allowed!")
+                    Throw New Exception("frmNachrichtBereich.setPlanRowTemp: Me.optSerienterminType.CheckedIndex '" + Me.optSerienterminType.CheckedIndex.ToString() + "' not allowed!")
                 End If
             Else
                 rPlanToSet.SerienterminType = ""
@@ -2135,7 +2156,7 @@ Public Class frmNachrichtBereich
                 ElseIf Me.opTagWochenMonat.CheckedIndex = 2 Then
                     rPlanToSet.TagWochenMonat = "2"
                 Else
-                    Throw New Exception("frmNachricht.setPlanRowTemp: Me.opTagWochenMonat.CheckedIndex '" + Me.opTagWochenMonat.CheckedIndex.ToString() + "' not allowed!")
+                    Throw New Exception("frmNachrichtBereich.setPlanRowTemp: Me.opTagWochenMonat.CheckedIndex '" + Me.opTagWochenMonat.CheckedIndex.ToString() + "' not allowed!")
                 End If
             Else
                 rPlanToSet.TagWochenMonat = ""
@@ -2149,22 +2170,14 @@ Public Class frmNachrichtBereich
 
             rPlanToSet.Wochentage = Me.getWochentage()
 
-            If rPlanToSet.IDArt = 2 Then
-                If Me.IsNew Then
-                    rPlanToSet.design = True
-                End If
-            Else
-                rPlanToSet.design = False
-            End If
-
+            Dim UserLoggedIn As String = Me.genMain.getLoggedInUser()
             If Me.IsNew Then
-                Dim UserLoggedIn As String = Me.genMain.getLoggedInUser()
-                rPlanToSet.ErstelltVon = UserLoggedIn.Trim()
-                rPlanToSet.ErstelltAm = Now
+                rPlanToSet.CreatedFrom = UserLoggedIn.Trim()
+                rPlanToSet.CreatedAt = Now
             End If
 
-            rPlanToSet.LastChangeITSCont = Now
-            rPlanToSet.LastSyncToExchange = Now
+            rPlanToSet.LastChangeFrom = UserLoggedIn.Trim()
+            rPlanToSet.LastChangeAt = Now
 
             Return True
 
@@ -2174,7 +2187,7 @@ Public Class frmNachrichtBereich
     End Function
     Public Function saveNachrichtToDb2() As Boolean
         Try
-            Me.compPlan1.daPlan.Update(Me.dsPlan1.plan)
+            Me.compPlan1.daPlanBereich.Update(Me.dsPlan1.planBereich)
             Return True
 
         Catch ex As Exception
@@ -2271,6 +2284,7 @@ Public Class frmNachrichtBereich
         End Try
     End Sub
 
+
     Public Sub setUIEndetAm(IsGanzerTag As Boolean, bSetEndetAm As Boolean)
         Try
             If IsGanzerTag Then
@@ -2322,9 +2336,9 @@ Public Class frmNachrichtBereich
         Try
             Me.dsPlan1 = New dsPlan()
             Me.compPlan1 = New compPlan()
-            Me.compPlan1.getPlan(System.Guid.NewGuid(), compPlan.eTypSelPlan.id, Me.dsPlan1)
-            Me.rPlan = Me.compPlan1.getNewRowPlan(Me.dsPlan1)
-            Me.rPlan.IDKlinik = PMDS.Global.ENV.IDKlinik
+            Me.compPlan1.getPlanBereich(System.Guid.NewGuid(), compPlan.eTypSelPlanBereich.IDPlan, Me.dsPlan1)
+            Me.rPlanBereich = Me.compPlan1.getNewRowPlanBereich(Me.dsPlan1)
+            Me.rPlanBereich.IDKlinik = PMDS.Global.ENV.IDKlinik
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.setDBForNewPlan: " + ex.ToString())
@@ -2383,7 +2397,7 @@ Public Class frmNachrichtBereich
             Me.lblErstelltVon.Text = doUI.getRes("GeneratedFrom") + ": " + ErstelltVon
 
         Catch ex As Exception
-            Throw New Exception("frmNachricht.setErstelltVon: " + ex.ToString())
+            Throw New Exception("frmNachrichtBereich.setErstelltVon: " + ex.ToString())
         End Try
     End Sub
 
@@ -2402,7 +2416,8 @@ Public Class frmNachrichtBereich
             Me.Cursor = Cursors.WaitCursor
 
             If Me.Visible Then
-                Me.Init()
+                Me.IsOpend = True
+                Me.loadData()
             End If
 
         Catch ex As Exception
@@ -2418,11 +2433,9 @@ Public Class frmNachrichtBereich
 
             Dim rSelUserAccount As dsUserAccounts.tblUserAccountsRow = Nothing
             If Me.savePlan2(rSelUserAccount) Then
-                Dim cOutlookWebAPI1 As New cOutlookWebAPI()
-                'cOutlookWebAPI1.saveToOutlook(Me.rPlan.ID, Me.rPlan.SendWithPostOfficeBoxForAll, rSelUserAccount, True)
                 Me.abort = False
                 If Not Me.modalWindow Is Nothing Then
-                    Me.modalWindow.ContPlanung1.search(False, False, False, False)
+                    Me.modalWindow.ContPlanungDataBereich1.search(False, False, False)
                 End If
                 Me.Close()
             End If
@@ -2523,7 +2536,6 @@ Public Class frmNachrichtBereich
     Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-            'Me.clPlan1.deletePlan(Me.rPlan, Me.abort, Me.modalWindow, Me)      'lthplan
 
         Catch ex As Exception
             General.GetEcxeptionGeneral(ex)

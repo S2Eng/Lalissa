@@ -26,7 +26,7 @@ Partial Class contSelectAbteilBereiche
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Me.DsClipboard1 = New PMDS.GUI.VB.dsClipboard()
+        Dim Override1 As Infragistics.Win.UltraWinTree.Override = New Infragistics.Win.UltraWinTree.Override()
         Me.PanelTop = New System.Windows.Forms.Panel()
         Me.txtSearch = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
         Me.lblSearch = New Infragistics.Win.Misc.UltraLabel()
@@ -34,14 +34,13 @@ Partial Class contSelectAbteilBereiche
         Me.btnSelectSave = New QS2.Desktop.ControlManagment.BaseButton()
         Me.PanelCenter = New System.Windows.Forms.Panel()
         Me.treeAbtBereiche = New Infragistics.Win.UltraWinTree.UltraTree()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me._contSelectPatientenBenutzer_Toolbars_Dock_Area_Top = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me.UltraToolbarsManager1 = New Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(Me.components)
         Me._contSelectPatientenBenutzer_Toolbars_Dock_Area_Bottom = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me._contSelectPatientenBenutzer_Toolbars_Dock_Area_Left = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me._contSelectPatientenBenutzer_Toolbars_Dock_Area_Right = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.CompPlan1 = New PMDS.GUI.VB.compPlan(Me.components)
-        CType(Me.DsClipboard1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTop.SuspendLayout()
         CType(Me.txtSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelBottom.SuspendLayout()
@@ -50,11 +49,6 @@ Partial Class contSelectAbteilBereiche
         CType(Me.UltraToolbarsManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'DsClipboard1
-        '
-        Me.DsClipboard1.DataSetName = "dsClipboard"
-        Me.DsClipboard1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'PanelTop
         '
@@ -146,10 +140,19 @@ Partial Class contSelectAbteilBereiche
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.treeAbtBereiche.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+        Me.treeAbtBereiche.ContextMenuStrip = Me.ContextMenuStrip1
         Me.treeAbtBereiche.Location = New System.Drawing.Point(5, 3)
         Me.treeAbtBereiche.Name = "treeAbtBereiche"
+        Override1.CellClickAction = Infragistics.Win.UltraWinTree.CellClickAction.SelectNodeOnly
+        Override1.NodeStyle = Infragistics.Win.UltraWinTree.NodeStyle.CheckBox
+        Me.treeAbtBereiche.Override = Override1
         Me.treeAbtBereiche.Size = New System.Drawing.Size(493, 295)
         Me.treeAbtBereiche.TabIndex = 0
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
         '_contSelectPatientenBenutzer_Toolbars_Dock_Area_Top
         '
@@ -219,7 +222,6 @@ Partial Class contSelectAbteilBereiche
         Me.Controls.Add(Me._contSelectPatientenBenutzer_Toolbars_Dock_Area_Top)
         Me.Name = "contSelectAbteilBereiche"
         Me.Size = New System.Drawing.Size(503, 367)
-        CType(Me.DsClipboard1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelTop.ResumeLayout(False)
         CType(Me.txtSearch, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelBottom.ResumeLayout(False)
@@ -240,9 +242,8 @@ Partial Class contSelectAbteilBereiche
     Friend WithEvents _contSelectPatientenBenutzer_Toolbars_Dock_Area_Bottom As Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea
     Friend WithEvents _contSelectPatientenBenutzer_Toolbars_Dock_Area_Top As Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea
     Friend WithEvents ErrorProvider1 As Windows.Forms.ErrorProvider
-    Friend WithEvents DsClipboard1 As dsClipboard
-    Friend WithEvents CompPlan1 As compPlan
     Public WithEvents txtSearch As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents lblSearch As Infragistics.Win.Misc.UltraLabel
     Friend WithEvents treeAbtBereiche As Infragistics.Win.UltraWinTree.UltraTree
+    Friend WithEvents ContextMenuStrip1 As Windows.Forms.ContextMenuStrip
 End Class

@@ -180,7 +180,7 @@ Public Class contPlanung2Bereich
         Appearance2.TextHAlignAsString = "Left"
         Me.dropDownAbteilungBereiche.Appearance = Appearance2
         Me.dropDownAbteilungBereiche.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(125, 97)
+        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(241, 97)
         Me.dropDownAbteilungBereiche.Name = "dropDownAbteilungBereiche"
         Me.dropDownAbteilungBereiche.Size = New System.Drawing.Size(135, 24)
         Me.dropDownAbteilungBereiche.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
@@ -195,7 +195,7 @@ Public Class contPlanung2Bereich
         Appearance3.TextHAlignAsString = "Left"
         Me.dropDownBerufsgruppen.Appearance = Appearance3
         Me.dropDownBerufsgruppen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownBerufsgruppen.Location = New System.Drawing.Point(9, 97)
+        Me.dropDownBerufsgruppen.Location = New System.Drawing.Point(125, 97)
         Me.dropDownBerufsgruppen.Name = "dropDownBerufsgruppen"
         Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(110, 24)
         Me.dropDownBerufsgruppen.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
@@ -220,7 +220,7 @@ Public Class contPlanung2Bereich
         Me.PanelButtonsLayout.Controls.Add(Me.btnLayout_KatAbtBereichPlan)
         Me.PanelButtonsLayout.Controls.Add(Me.btnLayout_AbtBereichPlan)
         Me.PanelButtonsLayout.Controls.Add(Me.btnLayout_PatientBeginn)
-        Me.PanelButtonsLayout.Location = New System.Drawing.Point(123, 124)
+        Me.PanelButtonsLayout.Location = New System.Drawing.Point(122, 124)
         Me.PanelButtonsLayout.Name = "PanelButtonsLayout"
         Me.PanelButtonsLayout.Size = New System.Drawing.Size(325, 23)
         Me.PanelButtonsLayout.TabIndex = 0
@@ -695,8 +695,6 @@ Public Class contPlanung2Bereich
         Plan = 2
     End Enum
 
-    Public frmNachrichtBereich1 As frmNachrichtBereich = Nothing
-
 
 
 
@@ -860,7 +858,6 @@ Public Class contPlanung2Bereich
             Throw New Exception("contPlanung2Bereich.getStatus: " + ex.ToString())
         End Try
     End Function
-
     Public Sub setAzahl_buttSuchen(ByVal anz As Integer)
         Try
 
@@ -893,7 +890,7 @@ Public Class contPlanung2Bereich
     Private Sub btnAdd2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd2.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-            Me.newMsg(Nothing, True)
+            Me.newPlan()
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -902,20 +899,17 @@ Public Class contPlanung2Bereich
         End Try
     End Sub
 
-    Public Sub newMsg(IDPlanBereich As Nullable(Of Guid), isNew As Boolean)
+    Public Sub newPlan()
         Try
-            If Me.frmNachrichtBereich1 Is Nothing Then
-                Me.frmNachrichtBereich1 = New frmNachrichtBereich()
-                Me.frmNachrichtBereich1.initControl()
-            End If
-
-            Me.frmNachrichtBereich1.IsNew = isNew
-            Me.frmNachrichtBereich1.IDPlanBereich = IDPlanBereich
-            Me.frmNachrichtBereich1.Visible = True
-            Me.frmNachrichtBereich1.Show()
+            Dim frmNachrichtBereich1 As frmNachrichtBereich = Me.ContPlanungDataBereich1.getFreeFormPlanBereich()
+            frmNachrichtBereich1.initControl()
+            frmNachrichtBereich1.IsNew = True
+            frmNachrichtBereich1.IDPlanBereich = Nothing
+            frmNachrichtBereich1.Visible = True
+            frmNachrichtBereich1.Show()
 
         Catch ex As Exception
-            Throw New Exception("contPlanung2Bereich.newMsg: " + ex.ToString())
+            Throw New Exception("contPlanung2Bereich.newPlan: " + ex.ToString())
         End Try
     End Sub
 

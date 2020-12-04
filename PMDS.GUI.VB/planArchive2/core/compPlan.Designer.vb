@@ -1,7 +1,7 @@
 ﻿Partial Class compPlan
     Inherits System.ComponentModel.Component
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Public Sub New(ByVal container As System.ComponentModel.IContainer)
         MyClass.New()
 
@@ -12,7 +12,7 @@
 
     End Sub
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Public Sub New()
         MyBase.New()
 
@@ -23,10 +23,11 @@
         Me.sqldaPlanAnhang = Me.daPlanAnhang.SelectCommand.CommandText
         Me.sqldaPlanObject = Me.daPlanObject.SelectCommand.CommandText
         Me.sqldaPlanStatus = Me.daPlanStatus.SelectCommand.CommandText
+        Me.sqldaPlanBereich = Me.daPlanBereich.SelectCommand.CommandText
     End Sub
 
     'Die Komponente überschreibt den Löschvorgang zum Bereinigen der Komponentenliste.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -43,7 +44,7 @@
     'Hinweis: Die folgende Prozedur ist für den Komponenten-Designer erforderlich.
     'Das Bearbeiten ist mit dem Komponenten-Designer möglich.
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(compPlan))
         Me.dbConn = New System.Data.OleDb.OleDbConnection()
@@ -75,6 +76,11 @@
         Me.daPlanSearchPatientsAll = New System.Data.OleDb.OleDbDataAdapter()
         Me.daSearchPlanBereich = New System.Data.OleDb.OleDbDataAdapter()
         Me.OleDbCommand12 = New System.Data.OleDb.OleDbCommand()
+        Me.daPlanBereich = New System.Data.OleDb.OleDbDataAdapter()
+        Me.OleDbCommand10 = New System.Data.OleDb.OleDbCommand()
+        Me.OleDbCommand11 = New System.Data.OleDb.OleDbCommand()
+        Me.OleDbCommand18 = New System.Data.OleDb.OleDbCommand()
+        Me.OleDbCommand19 = New System.Data.OleDb.OleDbCommand()
         '
         'dbConn
         '
@@ -253,6 +259,37 @@
         '
         Me.OleDbCommand12.CommandText = resources.GetString("OleDbCommand12.CommandText")
         Me.OleDbCommand12.Connection = Me.dbConn
+        '
+        'daPlanBereich
+        '
+        Me.daPlanBereich.DeleteCommand = Me.OleDbCommand10
+        Me.daPlanBereich.InsertCommand = Me.OleDbCommand11
+        Me.daPlanBereich.SelectCommand = Me.OleDbCommand18
+        Me.daPlanBereich.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "planBereich", New System.Data.Common.DataColumnMapping() {New System.Data.Common.DataColumnMapping("ID", "ID"), New System.Data.Common.DataColumnMapping("Betreff", "Betreff"), New System.Data.Common.DataColumnMapping("BeginntAm", "BeginntAm"), New System.Data.Common.DataColumnMapping("EndetAm", "EndetAm"), New System.Data.Common.DataColumnMapping("Text", "Text"), New System.Data.Common.DataColumnMapping("lstAbteilungen", "lstAbteilungen"), New System.Data.Common.DataColumnMapping("lstBereiche", "lstBereiche"), New System.Data.Common.DataColumnMapping("Status", "Status"), New System.Data.Common.DataColumnMapping("Category", "Category"), New System.Data.Common.DataColumnMapping("Folder", "Folder"), New System.Data.Common.DataColumnMapping("Teilnehmer", "Teilnehmer"), New System.Data.Common.DataColumnMapping("IDSerientermin", "IDSerientermin"), New System.Data.Common.DataColumnMapping("TagWochenMonat", "TagWochenMonat"), New System.Data.Common.DataColumnMapping("WiedWertJeden", "WiedWertJeden"), New System.Data.Common.DataColumnMapping("Wochentage", "Wochentage"), New System.Data.Common.DataColumnMapping("nTenMonat", "nTenMonat"), New System.Data.Common.DataColumnMapping("SerienterminType", "SerienterminType"), New System.Data.Common.DataColumnMapping("Dauer", "Dauer"), New System.Data.Common.DataColumnMapping("GanzerTag", "GanzerTag"), New System.Data.Common.DataColumnMapping("IsSerientermin", "IsSerientermin"), New System.Data.Common.DataColumnMapping("SerienterminEndetAm", "SerienterminEndetAm"), New System.Data.Common.DataColumnMapping("IDKlinik", "IDKlinik"), New System.Data.Common.DataColumnMapping("CreatedFrom", "CreatedFrom"), New System.Data.Common.DataColumnMapping("CreatedAt", "CreatedAt"), New System.Data.Common.DataColumnMapping("LastChangeFrom", "LastChangeFrom"), New System.Data.Common.DataColumnMapping("LastChangeAt", "LastChangeAt"), New System.Data.Common.DataColumnMapping("lstBerufsgruppen", "lstBerufsgruppen"), New System.Data.Common.DataColumnMapping("IDPlanMain", "IDPlanMain"), New System.Data.Common.DataColumnMapping("IDAbteilung", "IDAbteilung"), New System.Data.Common.DataColumnMapping("IDBereich", "IDBereich")})})
+        Me.daPlanBereich.UpdateCommand = Me.OleDbCommand19
+        '
+        'OleDbCommand10
+        '
+        Me.OleDbCommand10.CommandText = "DELETE FROM [planBereich] WHERE (([ID] = ?))"
+        Me.OleDbCommand10.Connection = Me.dbConn
+        Me.OleDbCommand10.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ID", System.Data.DataRowVersion.Original, Nothing)})
+        '
+        'OleDbCommand11
+        '
+        Me.OleDbCommand11.CommandText = resources.GetString("OleDbCommand11.CommandText")
+        Me.OleDbCommand11.Connection = Me.dbConn
+        Me.OleDbCommand11.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"), New System.Data.OleDb.OleDbParameter("Betreff", System.Data.OleDb.OleDbType.VarWChar, 0, "Betreff"), New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BeginntAm"), New System.Data.OleDb.OleDbParameter("EndetAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EndetAm"), New System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Text"), New System.Data.OleDb.OleDbParameter("lstAbteilungen", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstAbteilungen"), New System.Data.OleDb.OleDbParameter("lstBereiche", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstBereiche"), New System.Data.OleDb.OleDbParameter("Status", System.Data.OleDb.OleDbType.VarWChar, 0, "Status"), New System.Data.OleDb.OleDbParameter("Category", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Category"), New System.Data.OleDb.OleDbParameter("Folder", System.Data.OleDb.OleDbType.VarWChar, 0, "Folder"), New System.Data.OleDb.OleDbParameter("Teilnehmer", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Teilnehmer"), New System.Data.OleDb.OleDbParameter("IDSerientermin", System.Data.OleDb.OleDbType.Guid, 0, "IDSerientermin"), New System.Data.OleDb.OleDbParameter("TagWochenMonat", System.Data.OleDb.OleDbType.LongVarWChar, 0, "TagWochenMonat"), New System.Data.OleDb.OleDbParameter("WiedWertJeden", System.Data.OleDb.OleDbType.[Integer], 0, "WiedWertJeden"), New System.Data.OleDb.OleDbParameter("Wochentage", System.Data.OleDb.OleDbType.VarWChar, 0, "Wochentage"), New System.Data.OleDb.OleDbParameter("nTenMonat", System.Data.OleDb.OleDbType.[Integer], 0, "nTenMonat"), New System.Data.OleDb.OleDbParameter("SerienterminType", System.Data.OleDb.OleDbType.VarWChar, 0, "SerienterminType"), New System.Data.OleDb.OleDbParameter("Dauer", System.Data.OleDb.OleDbType.[Integer], 0, "Dauer"), New System.Data.OleDb.OleDbParameter("GanzerTag", System.Data.OleDb.OleDbType.[Boolean], 0, "GanzerTag"), New System.Data.OleDb.OleDbParameter("IsSerientermin", System.Data.OleDb.OleDbType.[Boolean], 0, "IsSerientermin"), New System.Data.OleDb.OleDbParameter("SerienterminEndetAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SerienterminEndetAm"), New System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"), New System.Data.OleDb.OleDbParameter("CreatedFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "CreatedFrom"), New System.Data.OleDb.OleDbParameter("CreatedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedAt"), New System.Data.OleDb.OleDbParameter("LastChangeFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "LastChangeFrom"), New System.Data.OleDb.OleDbParameter("LastChangeAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LastChangeAt"), New System.Data.OleDb.OleDbParameter("lstBerufsgruppen", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstBerufsgruppen"), New System.Data.OleDb.OleDbParameter("IDPlanMain", System.Data.OleDb.OleDbType.Guid, 0, "IDPlanMain"), New System.Data.OleDb.OleDbParameter("IDAbteilung", System.Data.OleDb.OleDbType.Guid, 0, "IDAbteilung"), New System.Data.OleDb.OleDbParameter("IDBereich", System.Data.OleDb.OleDbType.Guid, 0, "IDBereich")})
+        '
+        'OleDbCommand18
+        '
+        Me.OleDbCommand18.CommandText = resources.GetString("OleDbCommand18.CommandText")
+        Me.OleDbCommand18.Connection = Me.dbConn
+        '
+        'OleDbCommand19
+        '
+        Me.OleDbCommand19.CommandText = resources.GetString("OleDbCommand19.CommandText")
+        Me.OleDbCommand19.Connection = Me.dbConn
+        Me.OleDbCommand19.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"), New System.Data.OleDb.OleDbParameter("Betreff", System.Data.OleDb.OleDbType.VarWChar, 0, "Betreff"), New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "BeginntAm"), New System.Data.OleDb.OleDbParameter("EndetAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EndetAm"), New System.Data.OleDb.OleDbParameter("Text", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Text"), New System.Data.OleDb.OleDbParameter("lstAbteilungen", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstAbteilungen"), New System.Data.OleDb.OleDbParameter("lstBereiche", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstBereiche"), New System.Data.OleDb.OleDbParameter("Status", System.Data.OleDb.OleDbType.VarWChar, 0, "Status"), New System.Data.OleDb.OleDbParameter("Category", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Category"), New System.Data.OleDb.OleDbParameter("Folder", System.Data.OleDb.OleDbType.VarWChar, 0, "Folder"), New System.Data.OleDb.OleDbParameter("Teilnehmer", System.Data.OleDb.OleDbType.LongVarWChar, 0, "Teilnehmer"), New System.Data.OleDb.OleDbParameter("IDSerientermin", System.Data.OleDb.OleDbType.Guid, 0, "IDSerientermin"), New System.Data.OleDb.OleDbParameter("TagWochenMonat", System.Data.OleDb.OleDbType.LongVarWChar, 0, "TagWochenMonat"), New System.Data.OleDb.OleDbParameter("WiedWertJeden", System.Data.OleDb.OleDbType.[Integer], 0, "WiedWertJeden"), New System.Data.OleDb.OleDbParameter("Wochentage", System.Data.OleDb.OleDbType.VarWChar, 0, "Wochentage"), New System.Data.OleDb.OleDbParameter("nTenMonat", System.Data.OleDb.OleDbType.[Integer], 0, "nTenMonat"), New System.Data.OleDb.OleDbParameter("SerienterminType", System.Data.OleDb.OleDbType.VarWChar, 0, "SerienterminType"), New System.Data.OleDb.OleDbParameter("Dauer", System.Data.OleDb.OleDbType.[Integer], 0, "Dauer"), New System.Data.OleDb.OleDbParameter("GanzerTag", System.Data.OleDb.OleDbType.[Boolean], 0, "GanzerTag"), New System.Data.OleDb.OleDbParameter("IsSerientermin", System.Data.OleDb.OleDbType.[Boolean], 0, "IsSerientermin"), New System.Data.OleDb.OleDbParameter("SerienterminEndetAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "SerienterminEndetAm"), New System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"), New System.Data.OleDb.OleDbParameter("CreatedFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "CreatedFrom"), New System.Data.OleDb.OleDbParameter("CreatedAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "CreatedAt"), New System.Data.OleDb.OleDbParameter("LastChangeFrom", System.Data.OleDb.OleDbType.VarWChar, 0, "LastChangeFrom"), New System.Data.OleDb.OleDbParameter("LastChangeAt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LastChangeAt"), New System.Data.OleDb.OleDbParameter("lstBerufsgruppen", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstBerufsgruppen"), New System.Data.OleDb.OleDbParameter("IDPlanMain", System.Data.OleDb.OleDbType.Guid, 0, "IDPlanMain"), New System.Data.OleDb.OleDbParameter("IDAbteilung", System.Data.OleDb.OleDbType.Guid, 0, "IDAbteilung"), New System.Data.OleDb.OleDbParameter("IDBereich", System.Data.OleDb.OleDbType.Guid, 0, "IDBereich"), New System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ID", System.Data.DataRowVersion.Original, Nothing)})
 
     End Sub
 
@@ -285,4 +322,9 @@
     Public WithEvents daPlanSearchPatientsAll As OleDb.OleDbDataAdapter
     Public WithEvents daSearchPlanBereich As OleDb.OleDbDataAdapter
     Friend WithEvents OleDbCommand12 As OleDb.OleDbCommand
+    Public WithEvents daPlanBereich As OleDb.OleDbDataAdapter
+    Friend WithEvents OleDbCommand10 As OleDb.OleDbCommand
+    Friend WithEvents OleDbCommand11 As OleDb.OleDbCommand
+    Friend WithEvents OleDbCommand18 As OleDb.OleDbCommand
+    Friend WithEvents OleDbCommand19 As OleDb.OleDbCommand
 End Class

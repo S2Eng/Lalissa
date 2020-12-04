@@ -303,6 +303,84 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="planBereich" msprop:Generator_TableClassName="planBereichDataTable" msprop:Generator_TableVarName="tableplanBereich" msprop:Generator_TablePropName="planBereich" msprop:Generator_RowDeletingName="planBereichRowDeleting" msprop:Generator_RowChangingName="planBereichRowChanging" msprop:Generator_RowEvHandlerName="planBereichRowChangeEventHandler" msprop:Generator_RowDeletedName="planBereichRowDeleted" msprop:Generator_UserTableName="planBereich" msprop:Generator_RowChangedName="planBereichRowChanged" msprop:Generator_RowEvArgName="planBereichRowChangeEvent" msprop:Generator_RowClassName="planBereichRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Betreff" msprop:Generator_ColumnVarNameInTable="columnBetreff" msprop:Generator_ColumnPropNameInRow="Betreff" msprop:Generator_ColumnPropNameInTable="BetreffColumn" msprop:Generator_UserColumnName="Betreff">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="700" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeginntAm" msprop:Generator_ColumnVarNameInTable="columnBeginntAm" msprop:Generator_ColumnPropNameInRow="BeginntAm" msprop:Generator_ColumnPropNameInTable="BeginntAmColumn" msprop:Generator_UserColumnName="BeginntAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EndetAm" msprop:Generator_ColumnVarNameInTable="columnEndetAm" msprop:Generator_ColumnPropNameInRow="EndetAm" msprop:Generator_ColumnPropNameInTable="EndetAmColumn" msprop:Generator_UserColumnName="EndetAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Text" msprop:Generator_ColumnVarNameInTable="columnText" msprop:Generator_ColumnPropNameInRow="Text" msprop:Generator_ColumnPropNameInTable="TextColumn" msprop:Generator_UserColumnName="Text" type="xs:string" />
+              <xs:element name="lstAbteilungen" msprop:Generator_ColumnVarNameInTable="columnlstAbteilungen" msprop:Generator_ColumnPropNameInRow="lstAbteilungen" msprop:Generator_ColumnPropNameInTable="lstAbteilungenColumn" msprop:Generator_UserColumnName="lstAbteilungen" type="xs:string" />
+              <xs:element name="lstBereiche" msprop:Generator_ColumnVarNameInTable="columnlstBereiche" msprop:Generator_ColumnPropNameInRow="lstBereiche" msprop:Generator_ColumnPropNameInTable="lstBereicheColumn" msprop:Generator_UserColumnName="lstBereiche" type="xs:string" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Category" msprop:Generator_ColumnVarNameInTable="columnCategory" msprop:Generator_ColumnPropNameInRow="Category" msprop:Generator_ColumnPropNameInTable="CategoryColumn" msprop:Generator_UserColumnName="Category" type="xs:string" />
+              <xs:element name="Folder" msprop:Generator_ColumnVarNameInTable="columnFolder" msprop:Generator_ColumnPropNameInRow="Folder" msprop:Generator_ColumnPropNameInTable="FolderColumn" msprop:Generator_UserColumnName="Folder">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Teilnehmer" msprop:Generator_ColumnVarNameInTable="columnTeilnehmer" msprop:Generator_ColumnPropNameInRow="Teilnehmer" msprop:Generator_ColumnPropNameInTable="TeilnehmerColumn" msprop:Generator_UserColumnName="Teilnehmer" type="xs:string" />
+              <xs:element name="IDSerientermin" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDSerientermin" msprop:Generator_ColumnPropNameInRow="IDSerientermin" msprop:Generator_ColumnPropNameInTable="IDSerienterminColumn" msprop:Generator_UserColumnName="IDSerientermin" type="xs:string" minOccurs="0" />
+              <xs:element name="TagWochenMonat" msprop:Generator_ColumnVarNameInTable="columnTagWochenMonat" msprop:Generator_ColumnPropNameInRow="TagWochenMonat" msprop:Generator_ColumnPropNameInTable="TagWochenMonatColumn" msprop:Generator_UserColumnName="TagWochenMonat" type="xs:string" />
+              <xs:element name="WiedWertJeden" msprop:Generator_ColumnVarNameInTable="columnWiedWertJeden" msprop:Generator_ColumnPropNameInRow="WiedWertJeden" msprop:Generator_ColumnPropNameInTable="WiedWertJedenColumn" msprop:Generator_UserColumnName="WiedWertJeden" type="xs:int" minOccurs="0" />
+              <xs:element name="Wochentage" msprop:Generator_ColumnVarNameInTable="columnWochentage" msprop:Generator_ColumnPropNameInRow="Wochentage" msprop:Generator_ColumnPropNameInTable="WochentageColumn" msprop:Generator_UserColumnName="Wochentage">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nTenMonat" msprop:Generator_ColumnVarNameInTable="columnnTenMonat" msprop:Generator_ColumnPropNameInRow="nTenMonat" msprop:Generator_ColumnPropNameInTable="nTenMonatColumn" msprop:Generator_UserColumnName="nTenMonat" type="xs:int" minOccurs="0" />
+              <xs:element name="SerienterminType" msprop:Generator_ColumnVarNameInTable="columnSerienterminType" msprop:Generator_ColumnPropNameInRow="SerienterminType" msprop:Generator_ColumnPropNameInTable="SerienterminTypeColumn" msprop:Generator_UserColumnName="SerienterminType">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Dauer" msprop:Generator_ColumnVarNameInTable="columnDauer" msprop:Generator_ColumnPropNameInRow="Dauer" msprop:Generator_ColumnPropNameInTable="DauerColumn" msprop:Generator_UserColumnName="Dauer" type="xs:int" />
+              <xs:element name="GanzerTag" msprop:Generator_ColumnVarNameInTable="columnGanzerTag" msprop:Generator_ColumnPropNameInRow="GanzerTag" msprop:Generator_ColumnPropNameInTable="GanzerTagColumn" msprop:Generator_UserColumnName="GanzerTag" type="xs:boolean" />
+              <xs:element name="IsSerientermin" msprop:Generator_ColumnVarNameInTable="columnIsSerientermin" msprop:Generator_ColumnPropNameInRow="IsSerientermin" msprop:Generator_ColumnPropNameInTable="IsSerienterminColumn" msprop:Generator_UserColumnName="IsSerientermin" type="xs:boolean" />
+              <xs:element name="SerienterminEndetAm" msprop:Generator_ColumnVarNameInTable="columnSerienterminEndetAm" msprop:Generator_ColumnPropNameInRow="SerienterminEndetAm" msprop:Generator_ColumnPropNameInTable="SerienterminEndetAmColumn" msprop:Generator_UserColumnName="SerienterminEndetAm" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IDKlinik" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDKlinik" msprop:Generator_ColumnPropNameInRow="IDKlinik" msprop:Generator_ColumnPropNameInTable="IDKlinikColumn" msprop:Generator_UserColumnName="IDKlinik" type="xs:string" />
+              <xs:element name="CreatedFrom" msprop:Generator_ColumnVarNameInTable="columnCreatedFrom" msprop:Generator_ColumnPropNameInRow="CreatedFrom" msprop:Generator_ColumnPropNameInTable="CreatedFromColumn" msprop:Generator_UserColumnName="CreatedFrom">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CreatedAt" msprop:Generator_ColumnVarNameInTable="columnCreatedAt" msprop:Generator_ColumnPropNameInRow="CreatedAt" msprop:Generator_ColumnPropNameInTable="CreatedAtColumn" msprop:Generator_UserColumnName="CreatedAt" type="xs:dateTime" />
+              <xs:element name="LastChangeFrom" msprop:Generator_ColumnVarNameInTable="columnLastChangeFrom" msprop:Generator_ColumnPropNameInRow="LastChangeFrom" msprop:Generator_ColumnPropNameInTable="LastChangeFromColumn" msprop:Generator_UserColumnName="LastChangeFrom">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastChangeAt" msprop:Generator_ColumnVarNameInTable="columnLastChangeAt" msprop:Generator_ColumnPropNameInRow="LastChangeAt" msprop:Generator_ColumnPropNameInTable="LastChangeAtColumn" msprop:Generator_UserColumnName="LastChangeAt" type="xs:dateTime" />
+              <xs:element name="lstBerufsgruppen" msprop:Generator_ColumnVarNameInTable="columnlstBerufsgruppen" msprop:Generator_ColumnPropNameInRow="lstBerufsgruppen" msprop:Generator_ColumnPropNameInTable="lstBerufsgruppenColumn" msprop:Generator_UserColumnName="lstBerufsgruppen" type="xs:string" />
+              <xs:element name="IDPlanMain" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPlanMain" msprop:Generator_ColumnPropNameInRow="IDPlanMain" msprop:Generator_ColumnPropNameInTable="IDPlanMainColumn" msprop:Generator_UserColumnName="IDPlanMain" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" msprop:Generator_UserColumnName="IDAbteilung" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBereich" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBereich" msprop:Generator_ColumnPropNameInRow="IDBereich" msprop:Generator_ColumnPropNameInTable="IDBereichColumn" msprop:Generator_UserColumnName="IDBereich" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -319,6 +397,10 @@
     </xs:unique>
     <xs:unique name="plan_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:plan" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="planBereich_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:planBereich" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
