@@ -860,7 +860,7 @@ Public Class contPlanung2Bereich
     Private Sub contPlanung_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         Try
             If Not Me.IsInitializedVisible And Me.Visible Then
-                Me.ContPlanungDataBereich1.initTxtControl()
+                Me.ContPlanungDataBereich1.initTxtControl2()
 
                 Dim newRessourcesAdded As Integer = 0
                 Me.ContPlanungDataBereich1.gridPlans.Rows.ExpandAll(True)

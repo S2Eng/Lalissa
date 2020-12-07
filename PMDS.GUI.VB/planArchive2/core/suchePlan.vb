@@ -276,10 +276,9 @@ Public Class suchePlan
     End Function
 
     Public Function searchPlanBereich(ByVal ds As dsPlanSearch,
-                         ByVal sqlPriorität As String,
-                         ByVal sqlErledigt As String, ByVal sqlEMailGesendet As String,
+                         ByVal sqlStatus As String,
                          ByVal dVon As Date, ByVal dBis As Date,
-                         ByVal txt As String,
+                         ByVal Betreff As String,
                          ByRef SqlCommandReturn As String,
                          ByRef lstSelectedCategories As System.Collections.Generic.List(Of String),
                          ByRef lstSelectedAbteilungen As System.Collections.Generic.List(Of String),
@@ -298,31 +297,23 @@ Public Class suchePlan
             '                            " where  " + id_str + ") "
             'SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
 
-            If txt <> "" Then
-                Dim id_str As String = " ( [planBereich].Betreff like '%" + txt + "%' ) "
+            If Betreff <> "" Then
+                Dim id_str As String = " ( [planBereich].Betreff like '%" + Betreff + "%' ) "
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + id_str, " and " + id_str)
             End If
 
             If lstSelectedCategories.Count > 0 Then
-                Dim sql_id As String = ""
+                Dim sql_Category As String = ""
                 For Each sCategory As String In lstSelectedCategories
                     Dim id_str As String = " [planBereich].Category like '%" + sCategory.ToString + "%' "
-                    sql_id += IIf(gen.IsNull(Trim(sql_id)), id_str, " or " + id_str)
+                    sql_Category += IIf(gen.IsNull(Trim(sql_Category)), id_str, " or " + id_str)
                 Next
-                Dim sql_sub As String = " (" + sql_id + ") "
+                Dim sql_sub As String = " (" + sql_Category + ") "
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
             End If
 
-            If sqlErledigt.Trim() <> "" Then
-                Dim sql_id As String = " (" + sqlErledigt + ") "
-                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_id, " and " + sql_id)
-            End If
-            If sqlPriorität.Trim() <> "" Then
-                Dim sql_id As String = " (" + sqlPriorität + ") "
-                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_id, " and " + sql_id)
-            End If
-            If sqlEMailGesendet.Trim() <> "" Then
-                Dim sql_id As String = " (" + sqlEMailGesendet + ") "
+            If sqlStatus.Trim() <> "" Then
+                Dim sql_id As String = " (" + sqlStatus + ") "
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_id, " and " + sql_id)
             End If
 
@@ -334,7 +325,6 @@ Public Class suchePlan
             If Not gen.IsNull(dBis) Then
                 BisTmp = New Date(dBis.Year, dBis.Month, dBis.Day, 23, 59, 59)
             End If
-
             If Not gen.IsNull(VonTmp) Then
                 Dim id_str As String = "  [planBereich].BeginntAm >= ? "
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + id_str, " and " + id_str)
@@ -357,7 +347,7 @@ Public Class suchePlan
             Dim da As New OleDbDataAdapter()
             Sql = compPlanSql.daSearchPlanBereich.SelectCommand.CommandText
 
-            cmd.CommandText = Sql + SQL_where + " order by [planBereich].BeginntAm desc , [planBereich].FälligAm desc  "
+            cmd.CommandText = Sql + SQL_where + " order by [planBereich].BeginntAm desc "
             cmd.Connection = Me.db.getConnDB()
             cmd.CommandTimeout = 0
             da.SelectCommand = cmd
