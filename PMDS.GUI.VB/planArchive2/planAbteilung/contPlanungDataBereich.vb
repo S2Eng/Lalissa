@@ -23,7 +23,6 @@ Public Class contPlanungDataBereich
     End Enum
 
     Public mainWindow As contPlanung2Bereich
-    Public compPlan1 As New compPlan()
     Public isLoaded As Boolean = False
     Public IsInitializedVisible As Boolean = False
 
@@ -64,7 +63,7 @@ Public Class contPlanungDataBereich
 
     Public colAbteilung As String = "Abteilung"
     Public colBereich As String = "Bereich"
-
+    Public suchePlan1 As New suchePlan()
 
 
 
@@ -95,7 +94,8 @@ Public Class contPlanungDataBereich
     Friend WithEvents UltraGridDocumentExporter1 As DocumentExport.UltraGridDocumentExporter
     Friend WithEvents TermineErledigenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DsManage1 As QS2.Desktop.Txteditor.dsManage
-    Public WithEvents EditorTmp1 As TXTextControl.TextControl
+    Friend WithEvents txtBody As UltraWinEditors.UltraTextEditor
+    Friend WithEvents CompPlanSearch As compPlan
     Friend WithEvents TermineStornierenToolStripMenuItem As ToolStripMenuItem
 
 
@@ -181,13 +181,14 @@ Public Class contPlanungDataBereich
         Me.PanelEditorToWork = New System.Windows.Forms.Panel()
         Me.TextControlToWork = New TXTextControl.TextControl()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.EditorTmp1 = New TXTextControl.TextControl()
+        Me.txtBody = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
         Me.uPrintDocument1 = New Infragistics.Win.UltraWinSchedule.UltraSchedulePrintDocument(Me.components)
         Me.UltraPrintPreviewDialog1 = New Infragistics.Win.Printing.UltraPrintPreviewDialog(Me.components)
         Me.UltraGridPrintDocument1 = New Infragistics.Win.UltraWinGrid.UltraGridPrintDocument(Me.components)
         Me.UltraToolTipManager1 = New Infragistics.Win.UltraWinToolTip.UltraToolTipManager(Me.components)
         Me.UltraGridDocumentExporter1 = New Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(Me.components)
         Me.DsManage1 = New QS2.Desktop.Txteditor.dsManage()
+        Me.CompPlanSearch = New PMDS.GUI.VB.compPlan(Me.components)
         Me.ContextMenuStripNeu.SuspendLayout()
         Me.PanelAnzeige.SuspendLayout()
         CType(Me.gridPlans, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -196,6 +197,7 @@ Public Class contPlanungDataBereich
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        CType(Me.txtBody, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DsManage1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -471,22 +473,20 @@ Public Class contPlanungDataBereich
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.Color.White
-        Me.SplitContainer1.Panel2.Controls.Add(Me.EditorTmp1)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.txtBody)
         Me.SplitContainer1.Size = New System.Drawing.Size(843, 550)
         Me.SplitContainer1.SplitterDistance = 226
         Me.SplitContainer1.SplitterWidth = 5
         Me.SplitContainer1.TabIndex = 394
         '
-        'EditorTmp1
+        'txtBody
         '
-        Me.EditorTmp1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.EditorTmp1.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.EditorTmp1.Location = New System.Drawing.Point(0, 0)
-        Me.EditorTmp1.Name = "EditorTmp1"
-        Me.EditorTmp1.Size = New System.Drawing.Size(843, 319)
-        Me.EditorTmp1.TabIndex = 507
-        Me.EditorTmp1.UserNames = Nothing
-        Me.EditorTmp1.ViewMode = TXTextControl.ViewMode.Normal
+        Me.txtBody.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtBody.Location = New System.Drawing.Point(0, 0)
+        Me.txtBody.Multiline = True
+        Me.txtBody.Name = "txtBody"
+        Me.txtBody.Size = New System.Drawing.Size(843, 319)
+        Me.txtBody.TabIndex = 1
         '
         'uPrintDocument1
         '
@@ -524,8 +524,10 @@ Public Class contPlanungDataBereich
         CType(Me.DsPlanSearch1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
+        Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        CType(Me.txtBody, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DsManage1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -642,6 +644,22 @@ Public Class contPlanungDataBereich
             Throw New Exception("contPlanungDataBereich.setUI: " + ex.ToString())
         End Try
     End Sub
+    Public Sub setGridColText()
+        Try
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.planBereich.BeginntAmColumn.ColumnName).Header.Caption = "Beginnt am"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.planBereich.CategoryColumn.ColumnName).Header.Caption = "Kategorie"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.colAbteilung).Header.Caption = "Abteilung"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.colBereich).Header.Caption = "Bereich"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.planBereich.lstBerufsgruppenColumn.ColumnName).Header.Caption = "Berufsgruppen"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.planBereich.BetreffColumn.ColumnName).Header.Caption = "Betreff"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.planBereich.EndetAmColumn.ColumnName).Header.Caption = "Endet am"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.planBereich.StatusColumn.ColumnName).Header.Caption = "Status"
+            Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.planBereich.CreatedFromColumn.ColumnName).Header.Caption = "Erstellt von"
+
+        Catch ex As Exception
+            Throw New Exception("contPlanungDataBereich.setGridColText: " + ex.ToString())
+        End Try
+    End Sub
 
     Public Function search(doInit As Boolean, userClicked As Boolean, ByRef SetUIGrid As Boolean) As Boolean
         Try
@@ -653,9 +671,6 @@ Public Class contPlanungDataBereich
                 'doUI.doMessageBox2("NoPatientsSelected", "", "!")
                 'Return False
             End If
-
-            Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
-            Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
 
             Me.clear()
 
@@ -669,20 +684,27 @@ Public Class contPlanungDataBereich
                     sqlStatus = " ([planBereich].Status<>'Erledigt' AND [planBereich].Status<>'Storniert') "
             End Select
 
-            Dim lstSelectedAbteilungen As New System.Collections.Generic.List(Of String)()
-            Dim lstSelectedBereiche As New System.Collections.Generic.List(Of String)()
+            Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
+            Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
+
+            Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
+            Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
+
+            Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
+            Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
+
             Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
+            Me.mainWindow.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
 
             Me.SqlCommandReturn = ""
-            Dim suche As New suchePlan()
-            suche.searchPlanBereich(Me.DsPlanSearch1, sqlStatus,
+            Me.suchePlan1.searchPlanBereich(Me.DsPlanSearch1, Me.CompPlanSearch, sqlStatus,
                             Me.mainWindow.UDateVon.Value, Me.mainWindow.UDateBis.Value,
                             Me.mainWindow.txtBetreff2.Text.Trim(), SqlCommandReturn,
-                            lstSelectedCategories, lstSelectedAbteilungen, lstSelectedBereiche, lstSelectedBerufsgruppen,
+                            lstSelectedCategories, lstSelectedAbt, lstSelectedBereiche, lstSelectedBerufsgruppen,
                             Me._LayoutGrid, PMDS.Global.ENV.IDKlinik)
 
             gridPlans.Refresh()
-            clPlan.anzNachrichten = Me.DsPlanSearch1.plan.Rows.Count
+            Me.setGridColText()
             Me.mainWindow.setAzahl_buttSuchen(Me.DsPlanSearch1.plan.Rows.Count)
 
             Me.gridPlans.Selected.Rows.Clear()
@@ -693,7 +715,6 @@ Public Class contPlanungDataBereich
             End If
 
             Me.gridPlans.Rows.ExpandAll(True)
-            'doUI.doMessageBox2("PleaseSelectAPlanTypeInTheLeftNavigationAssistants", "Search", "!")
             Me.setUIAnzahl(Me.gridPlans.Rows.Count)
 
             Return True
@@ -715,7 +736,8 @@ Public Class contPlanungDataBereich
         Try
             Me.DsPlanSearch1.Clear()
             gridPlans.Refresh()
-            Me.EditorTmp1.Text = ""
+            'Me.EditorTmp1.Text = ""
+            Me.txtBody.Text = ""
 
         Catch ex As Exception
             Throw New Exception("contPlanungDataBereich.clear: " + ex.ToString())
@@ -845,7 +867,8 @@ Public Class contPlanungDataBereich
                 If gridPlans.Focused Then
                     Me.Cursor = Cursors.WaitCursor
 
-                    Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.EditorTmp1)
+                    Me.txtBody.Text = ""
+                    'Me.doEditor1.showText("", TXTextControl.StreamType.PlainText, False, TXTextControl.ViewMode.PageView, Me.EditorTmp1)
 
                     If Not gen.IsNull(gridPlans.ActiveRow) Then
                         If Me.gridPlans.ActiveRow.IsGroupByRow Or Me.gridPlans.ActiveRow.IsFilterRow Then
@@ -890,7 +913,6 @@ Public Class contPlanungDataBereich
             gen.GetEcxeptionGeneral(ex)
         End Try
     End Sub
-
     Private Sub UltraGridAufgaben_BeforeCellActivate(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinGrid.CancelableCellEventArgs) Handles gridPlans.BeforeCellActivate
         Try
             If e.Cell.Row.IsFilterRow Then
@@ -904,9 +926,7 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Private Function doAction(ByVal typAction As eTypAction, ByVal withMsgBox As Boolean,
-                              Optional ByVal bVal As Boolean = False, Optional ByVal txt As String = "",
-                              Optional ByVal IDNrxy As Integer = -1, Optional Folder As String = "") As Boolean
+    Private Function doAction(ByVal typAction As eTypAction, ByVal withMsgBox As Boolean) As Boolean
         Try
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 Dim rUsrLoggedIn As PMDS.db.Entities.Benutzer = Me.b.LogggedOnUser(db)
@@ -965,7 +985,7 @@ Public Class contPlanungDataBereich
                     For Each cSelAppActuell As cSelEntries In selectedApp
                         If typAction = eTypAction.delete Then
                             Dim bDoDelete As Boolean = False
-                            Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = Me.b.getUserByUserName2(cSelAppActuell.rPlanBereichSel.CreatedFrom.Trim(), db)
+                            Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = b.getUserByUserName2(cSelAppActuell.rPlanBereichSel.CreatedFrom.Trim(), db)
                             If tUser.Count = 1 Then
                                 Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
                                 If ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Or PMDS.Global.ENV.adminSecure Then
@@ -982,10 +1002,10 @@ Public Class contPlanungDataBereich
 
                                 If resSerientermineSeleteAll = DialogResult.Yes Then
                                     If Not cSelAppActuell.rPlanBereichSel.IsIDSerienterminNull() Then
-                                        Me.compPlan1.deletePlanSerientermine(cSelAppActuell.rPlanBereichSel.IDSerientermin)
+                                        Me.CompPlanSearch.deletePlanSerientermine(cSelAppActuell.rPlanBereichSel.IDSerientermin)
                                     End If
                                 End If
-                                Me.compPlan1.deletePlanBereich(cSelAppActuell.rPlanBereichSel.ID)
+                                Me.CompPlanSearch.deletePlanBereich(cSelAppActuell.rPlanBereichSel.ID)
                                 cSelAppActuell.rPlanBereichSel.Delete()
                             Else
                                 Dim sMsgBoxTxt As String = QS2.Desktop.ControlManagment.ControlManagment.getRes("Termin {0} kann nicht gelöscht werden!")
@@ -995,10 +1015,8 @@ Public Class contPlanungDataBereich
 
                         ElseIf typAction = eTypAction.selectAll Then
                             cSelAppActuell.rowGrid.Selected = True
-
                         ElseIf typAction = eTypAction.selectNone Then
                             cSelAppActuell.rowGrid.Selected = False
-
                         End If
                     Next
 
@@ -1121,19 +1139,10 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
-    Private Sub UTabTable_SelectedTabChanged(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs)
-        Try
-            'Me.clearWebBrowserxy()
-            Me.FilterToolStripMenuItem.Visible = True
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        End Try
-    End Sub
-
     Public Sub showPrieviewTXTControl(ByVal text As String)
         Try
-            Me.EditorTmp1.Text = ""
+            Me.txtBody.Text = ""
+            'Me.EditorTmp1.Text = ""
 
         Catch ex As Exception
             Throw New Exception("contPlanungDataBereich.showPrieviewTXTControl: " + ex.ToString())
@@ -1201,9 +1210,6 @@ Public Class contPlanungDataBereich
     Private Sub contPlanungData_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         Try
             If Not Me.IsInitializedVisible And Me.Visible Then
-                Dim newRessourcesAdded As Integer = 0
-                'Me.doUI1.run(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, True)
-                'Me.doUI1.runComponents_rek(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, Nothing)
                 Me.IsInitializedVisible = True
             End If
 

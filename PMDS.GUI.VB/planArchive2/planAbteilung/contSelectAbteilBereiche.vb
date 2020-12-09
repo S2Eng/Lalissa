@@ -21,6 +21,7 @@ Public Class contSelectAbteilBereiche
 
     Public funct1 As New QS2.core.vb.funct()
 
+    Public _IDRes As String = "Abteilung/Bereiche"
 
 
 
@@ -103,19 +104,35 @@ Public Class contSelectAbteilBereiche
             Throw New Exception("contSelectAbteilBereiche.getSelectedData: " + ex.ToString())
         End Try
     End Function
+
+    Public Sub setSelectionOnOff(bOn As Windows.Forms.CheckState)
+        Try
+            For Each nodAbt In treeAbtBereiche.Nodes
+                nodAbt.CheckedState = bOn
+                For Each nodBereich In nodAbt.Nodes
+                    nodBereich.CheckedState = bOn
+                Next
+            Next
+
+            Me.setLabelCount2()
+
+        Catch ex As Exception
+            Throw New Exception("contSelectAbteilBereiche.setSelectionOnOff: " + ex.ToString())
+        End Try
+    End Sub
+
     Public Sub getSelectedIDs(ByRef lstSelectedRowsReturn As System.Collections.Generic.List(Of Guid), getAbt As Boolean)
         Try
             For Each nodAbt In treeAbtBereiche.Nodes
-                If nodAbt.CheckedState = Windows.Forms.CheckState.Checked Then
-                    If getAbt Then
+                If getAbt Then
+                    If nodAbt.CheckedState = Windows.Forms.CheckState.Checked Then
                         lstSelectedRowsReturn.Add(New System.Guid(nodAbt.Key))
                     End If
-
+                End If
+                If Not getAbt Then
                     For Each nodBereich In nodAbt.Nodes
                         If nodBereich.CheckedState = Windows.Forms.CheckState.Checked Then
-                            If Not getAbt Then
-                                lstSelectedRowsReturn.Add(New System.Guid(nodBereich.Key))
-                            End If
+                            lstSelectedRowsReturn.Add(New System.Guid(nodBereich.Key))
                         End If
                     Next
                 End If
@@ -123,6 +140,29 @@ Public Class contSelectAbteilBereiche
 
         Catch ex As Exception
             Throw New Exception("contSelectAbteilBereiche.getSelectedIDs: " + ex.ToString())
+        End Try
+    End Sub
+
+    Public Sub setLabelCount2()
+        Try
+            Dim AbtBereicheSelected As String = ""
+            Dim iCountSelected As Integer = 0
+            For Each nod In Me.treeAbtBereiche.Nodes
+                If nod.CheckedState = Windows.Forms.CheckState.Checked Then
+                    iCountSelected += 1
+                End If
+                For Each nod2 In nod.Nodes
+                    If nod2.CheckedState = Windows.Forms.CheckState.Checked Then
+                        iCountSelected += 1
+                    End If
+                Next
+            Next
+
+            Dim sTxtReturn As String = Me._IDRes + " (" + iCountSelected.ToString() + ")"
+            Me._dropDownButton.Text = sTxtReturn.Trim()
+
+        Catch ex As Exception
+            Throw New Exception("contSelectAbteilBereiche.setLabelCount: " + ex.ToString())
         End Try
     End Sub
 
@@ -148,6 +188,26 @@ Public Class contSelectAbteilBereiche
             Me.gen.GetEcxeptionGeneral(ex)
         Finally
             Me.Cursor = Windows.Forms.Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub txtSearch_ValueChanged(sender As Object, e As EventArgs) Handles txtSearch.ValueChanged
+        Try
+            Me.Cursor = Windows.Forms.Cursors.WaitCursor
+
+        Catch ex As Exception
+            Me.gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Windows.Forms.Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub treeAbtBereiche_CellValueChanged(sender As Object, e As UltraWinTree.CellValueChangedEventArgs) Handles treeAbtBereiche.CellValueChanged
+        Try
+
+
+        Catch ex As Exception
+            Me.gen.GetEcxeptionGeneral(ex)
         End Try
     End Sub
 

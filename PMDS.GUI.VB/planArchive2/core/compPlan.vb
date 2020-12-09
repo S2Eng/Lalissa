@@ -8,6 +8,7 @@ Public Class compPlan
     Public ReadOnly sqldaPlanObject As String = ""
     Public ReadOnly sqldaPlanStatus As String = ""
     Public ReadOnly sqldaPlanBereich As String = ""
+    Public ReadOnly sqldaSearchPlanBereich As String = ""
 
 
     Public Enum eTypSelPlan
@@ -985,6 +986,7 @@ Public Class compPlan
             rNew.SetIDPlanMainNull()
             rNew.SetIDAbteilungNull()
             rNew.SetIDBereichNull()
+            rNew.lstBerufsgruppen = ""
 
             dsPlan.planBereich.Rows.Add(rNew)
             Return rNew

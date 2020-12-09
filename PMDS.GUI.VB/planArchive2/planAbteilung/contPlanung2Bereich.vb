@@ -177,9 +177,9 @@ Public Class contPlanung2Bereich
         Appearance2.TextHAlignAsString = "Left"
         Me.dropDownAbteilungBereiche.Appearance = Appearance2
         Me.dropDownAbteilungBereiche.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(241, 97)
+        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(246, 97)
         Me.dropDownAbteilungBereiche.Name = "dropDownAbteilungBereiche"
-        Me.dropDownAbteilungBereiche.Size = New System.Drawing.Size(135, 24)
+        Me.dropDownAbteilungBereiche.Size = New System.Drawing.Size(165, 24)
         Me.dropDownAbteilungBereiche.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
         Me.dropDownAbteilungBereiche.TabIndex = 1006
         Me.dropDownAbteilungBereiche.TabStop = False
@@ -194,7 +194,7 @@ Public Class contPlanung2Bereich
         Me.dropDownBerufsgruppen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
         Me.dropDownBerufsgruppen.Location = New System.Drawing.Point(125, 97)
         Me.dropDownBerufsgruppen.Name = "dropDownBerufsgruppen"
-        Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(110, 24)
+        Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(116, 24)
         Me.dropDownBerufsgruppen.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
         Me.dropDownBerufsgruppen.TabIndex = 1005
         Me.dropDownBerufsgruppen.TabStop = False
@@ -674,18 +674,21 @@ Public Class contPlanung2Bereich
             Me.uPopupContCategories.PopupControl = Me.contSelectSelListCategories
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories
+            Me.contSelectSelListCategories.setLabelCount2()
 
             Me.contSelectAbtBereiche.MainPlanBereicheSearch = Me
             Me.contSelectAbtBereiche.initControl(Me.dropDownAbteilungBereiche)
             Me.uPopupAbteilungBereiche.PopupControl = Me.contSelectAbtBereiche
             Me.dropDownAbteilungBereiche.PopupItem = Me.uPopupAbteilungBereiche
             Me.contSelectAbtBereiche.popupContMainSearch = Me.uPopupAbteilungBereiche
+            Me.contSelectAbtBereiche.setLabelCount2()
 
             Me.contSelectSelListBerufsgruppen.MainPlanBereicheSearch = Me
-            Me.contSelectSelListBerufsgruppen.initControl("BER", True, False, Me.dropDownCategories, True, "Berufsgruppen", "", True)
+            Me.contSelectSelListBerufsgruppen.initControl("BER", True, False, Me.dropDownBerufsgruppen, True, "Berufsgruppen", "", True)
             Me.uPopupContBerufsgruppen.PopupControl = Me.contSelectSelListBerufsgruppen
             Me.dropDownBerufsgruppen.PopupItem = Me.uPopupContBerufsgruppen
             Me.contSelectSelListBerufsgruppen.popupContMainSearch = Me.uPopupContBerufsgruppen
+            Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
             Me.ContPlanungDataBereich1.initControl()
 
@@ -698,6 +701,10 @@ Public Class contPlanung2Bereich
             Me.resetLayoutButtons()
             Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.Plan
             Me.setLayoutButton2(Me.btnLayout_Plan)
+
+            Me.contSelectSelListCategories.setLabelCount2()
+            Me.contSelectAbtBereiche.setLabelCount2()
+            Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
             Me.isLoaded = True
 
@@ -749,6 +756,12 @@ Public Class contPlanung2Bereich
 
             Me.ContPlanungDataBereich1.search(doInit, False, True)
 
+            If doInit Then
+                Me.contSelectSelListCategories.setLabelCount2()
+                Me.contSelectAbtBereiche.setLabelCount2()
+                Me.contSelectSelListBerufsgruppen.setLabelCount2()
+            End If
+
             Me.initFormDone = True
 
         Catch ex As Exception
@@ -769,6 +782,8 @@ Public Class contPlanung2Bereich
             Me.ContPlanungDataBereich1.clear()
 
             Me.contSelectSelListCategories.setSelectionOnOff(False)
+            Me.contSelectAbtBereiche.setSelectionOnOff(CheckState.Unchecked)
+            Me.contSelectSelListBerufsgruppen.setSelectionOnOff(False)
 
             Me.lblFound.Text = ""
 
@@ -911,7 +926,7 @@ Public Class contPlanung2Bereich
     Private Sub dropDownCategories_ClosedUp(sender As Object, e As EventArgs) Handles dropDownCategories.ClosedUp
         Try
             Me.Cursor = Cursors.WaitCursor
-            'Me.dropDownCategories.Text = Me.contSelectSelListCategories.setLabelCount2()
+            Me.contSelectSelListCategories.setLabelCount2()
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -1058,6 +1073,28 @@ Public Class contPlanung2Bereich
             Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.Plan
             Me.setLayoutButton2(Me.btnLayout_Plan)
             Me.ContPlanungDataBereich1.search(False, True, True)
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+    Private Sub dropDownAbteilungBereiche_ClosedUp(sender As Object, e As EventArgs) Handles dropDownAbteilungBereiche.ClosedUp
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.contSelectAbtBereiche.setLabelCount2()
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+    Private Sub dropDownBerufsgruppen_ClosedUp(sender As Object, e As EventArgs) Handles dropDownBerufsgruppen.ClosedUp
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)

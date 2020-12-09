@@ -33,12 +33,11 @@ Public Class frmNachrichtBereich
 
     Public doEditor1 As New QS2.Desktop.Txteditor.doEditor()
     Public b As New PMDS.db.PMDSBusiness()
-    Public contTxtEditor1 As New QS2.Desktop.Txteditor.contTxtEditor()
+    'Public contTxtEditor1 As New QS2.Desktop.Txteditor.contTxtEditor()
 
     Public contSelectSelListCategories As New contSelectSelList()
     Public contSelectSelListBerufsgruppen As New contSelectSelList()
     Public contSelectAbtBereiche As New contSelectAbteilBereiche()
-
 
 
 
@@ -89,14 +88,13 @@ Public Class frmNachrichtBereich
     Friend WithEvents PanelBetreff As Panel
     Public WithEvents txtBetreff As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents lblBetreff As Infragistics.Win.Misc.UltraLabel
-    Friend WithEvents PanelBody As Panel
-    Friend WithEvents PanelTxtEditor As Panel
     Friend WithEvents PanelSerientermineUISub As Panel
     Friend WithEvents EditorTmp1 As TXTextControl.TextControl
     Friend WithEvents dropDownAbteilungBereiche As Misc.UltraDropDownButton
     Friend WithEvents dropDownBerufsgruppen As Misc.UltraDropDownButton
     Private WithEvents uPopupContBerufsgruppen As Misc.UltraPopupControlContainer
     Private WithEvents uPopupAbteilungBereiche As Misc.UltraPopupControlContainer
+    Friend WithEvents txtBody As UltraWinEditors.UltraTextEditor
     Friend WithEvents PanelEditor As Panel
 
 
@@ -146,7 +144,6 @@ Public Class frmNachrichtBereich
         Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -158,26 +155,28 @@ Public Class frmNachrichtBereich
         Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ValueListItem6 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem7 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem8 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
-        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Html", Infragistics.Win.DefaultableBoolean.[Default])
-        Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Html", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.UltraPanel1 = New Infragistics.Win.Misc.UltraPanel()
         Me.toolbarsManagerText = New Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(Me.components)
@@ -226,10 +225,9 @@ Public Class frmNachrichtBereich
         Me.dropDownBerufsgruppen = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.PanelEditor = New System.Windows.Forms.Panel()
         Me.EditorTmp1 = New TXTextControl.TextControl()
-        Me.PanelBody = New System.Windows.Forms.Panel()
-        Me.PanelTxtEditor = New System.Windows.Forms.Panel()
         Me.uPopupContBerufsgruppen = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         Me.uPopupAbteilungBereiche = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
+        Me.txtBody = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
         Me.Panel1.SuspendLayout()
         Me.UltraPanel1.SuspendLayout()
         CType(Me.toolbarsManagerText, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -260,7 +258,7 @@ Public Class frmNachrichtBereich
         Me.PanelBetreff.SuspendLayout()
         CType(Me.txtBetreff, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDescription.SuspendLayout()
-        Me.PanelBody.SuspendLayout()
+        CType(Me.txtBody, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -437,9 +435,9 @@ Public Class frmNachrichtBereich
         '
         'iNTenMonat
         '
-        Appearance10.BackColorDisabled = System.Drawing.SystemColors.Control
-        Appearance10.ForeColorDisabled = System.Drawing.Color.Black
-        Me.iNTenMonat.Appearance = Appearance10
+        Appearance11.BackColorDisabled = System.Drawing.SystemColors.Control
+        Appearance11.ForeColorDisabled = System.Drawing.Color.Black
+        Me.iNTenMonat.Appearance = Appearance11
         Me.iNTenMonat.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.[Integer]
         Me.iNTenMonat.InputMask = "nnn"
         Me.iNTenMonat.Location = New System.Drawing.Point(75, 37)
@@ -453,8 +451,8 @@ Public Class frmNachrichtBereich
         '
         'lblTagWochenMonatnTen
         '
-        Appearance11.FontData.SizeInPoints = 8.0!
-        Me.lblTagWochenMonatnTen.Appearance = Appearance11
+        Appearance12.FontData.SizeInPoints = 8.0!
+        Me.lblTagWochenMonatnTen.Appearance = Appearance12
         Me.lblTagWochenMonatnTen.AutoSize = True
         Me.lblTagWochenMonatnTen.Location = New System.Drawing.Point(116, 41)
         Me.lblTagWochenMonatnTen.Name = "lblTagWochenMonatnTen"
@@ -465,8 +463,8 @@ Public Class frmNachrichtBereich
         '
         'grpWochentage
         '
-        Appearance12.BackColorDisabled = System.Drawing.Color.White
-        Me.grpWochentage.Appearance = Appearance12
+        Appearance13.BackColorDisabled = System.Drawing.Color.White
+        Me.grpWochentage.Appearance = Appearance13
         Me.grpWochentage.Controls.Add(Me.cbSo)
         Me.grpWochentage.Controls.Add(Me.cbSa)
         Me.grpWochentage.Controls.Add(Me.cbFr)
@@ -484,9 +482,9 @@ Public Class frmNachrichtBereich
         '
         'cbSo
         '
-        Appearance13.TextHAlignAsString = "Center"
-        Appearance13.TextVAlignAsString = "Middle"
-        Me.cbSo.Appearance = Appearance13
+        Appearance14.TextHAlignAsString = "Center"
+        Appearance14.TextVAlignAsString = "Middle"
+        Me.cbSo.Appearance = Appearance14
         Me.cbSo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbSo.Location = New System.Drawing.Point(126, 16)
         Me.cbSo.Name = "cbSo"
@@ -496,9 +494,9 @@ Public Class frmNachrichtBereich
         '
         'cbSa
         '
-        Appearance14.TextHAlignAsString = "Center"
-        Appearance14.TextVAlignAsString = "Middle"
-        Me.cbSa.Appearance = Appearance14
+        Appearance15.TextHAlignAsString = "Center"
+        Appearance15.TextVAlignAsString = "Middle"
+        Me.cbSa.Appearance = Appearance15
         Me.cbSa.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbSa.Location = New System.Drawing.Point(106, 16)
         Me.cbSa.Name = "cbSa"
@@ -508,9 +506,9 @@ Public Class frmNachrichtBereich
         '
         'cbFr
         '
-        Appearance15.TextHAlignAsString = "Center"
-        Appearance15.TextVAlignAsString = "Middle"
-        Me.cbFr.Appearance = Appearance15
+        Appearance16.TextHAlignAsString = "Center"
+        Appearance16.TextVAlignAsString = "Middle"
+        Me.cbFr.Appearance = Appearance16
         Me.cbFr.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbFr.Location = New System.Drawing.Point(86, 16)
         Me.cbFr.Name = "cbFr"
@@ -520,9 +518,9 @@ Public Class frmNachrichtBereich
         '
         'cbDo
         '
-        Appearance16.TextHAlignAsString = "Center"
-        Appearance16.TextVAlignAsString = "Middle"
-        Me.cbDo.Appearance = Appearance16
+        Appearance17.TextHAlignAsString = "Center"
+        Appearance17.TextVAlignAsString = "Middle"
+        Me.cbDo.Appearance = Appearance17
         Me.cbDo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbDo.Location = New System.Drawing.Point(66, 16)
         Me.cbDo.Name = "cbDo"
@@ -532,9 +530,9 @@ Public Class frmNachrichtBereich
         '
         'cbMi
         '
-        Appearance17.TextHAlignAsString = "Center"
-        Appearance17.TextVAlignAsString = "Middle"
-        Me.cbMi.Appearance = Appearance17
+        Appearance18.TextHAlignAsString = "Center"
+        Appearance18.TextVAlignAsString = "Middle"
+        Me.cbMi.Appearance = Appearance18
         Me.cbMi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbMi.Location = New System.Drawing.Point(46, 16)
         Me.cbMi.Name = "cbMi"
@@ -544,9 +542,9 @@ Public Class frmNachrichtBereich
         '
         'cbDi
         '
-        Appearance18.TextHAlignAsString = "Center"
-        Appearance18.TextVAlignAsString = "Middle"
-        Me.cbDi.Appearance = Appearance18
+        Appearance19.TextHAlignAsString = "Center"
+        Appearance19.TextVAlignAsString = "Middle"
+        Me.cbDi.Appearance = Appearance19
         Me.cbDi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbDi.Location = New System.Drawing.Point(26, 16)
         Me.cbDi.Name = "cbDi"
@@ -556,9 +554,9 @@ Public Class frmNachrichtBereich
         '
         'cbMo
         '
-        Appearance19.TextHAlignAsString = "Center"
-        Appearance19.TextVAlignAsString = "Middle"
-        Me.cbMo.Appearance = Appearance19
+        Appearance20.TextHAlignAsString = "Center"
+        Appearance20.TextVAlignAsString = "Middle"
+        Me.cbMo.Appearance = Appearance20
         Me.cbMo.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.cbMo.Location = New System.Drawing.Point(6, 16)
         Me.cbMo.Name = "cbMo"
@@ -568,9 +566,9 @@ Public Class frmNachrichtBereich
         '
         'iWiedWertJeden
         '
-        Appearance20.BackColorDisabled = System.Drawing.SystemColors.Control
-        Appearance20.ForeColorDisabled = System.Drawing.Color.Black
-        Me.iWiedWertJeden.Appearance = Appearance20
+        Appearance21.BackColorDisabled = System.Drawing.SystemColors.Control
+        Appearance21.ForeColorDisabled = System.Drawing.Color.Black
+        Me.iWiedWertJeden.Appearance = Appearance21
         Me.iWiedWertJeden.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.[Integer]
         Me.iWiedWertJeden.InputMask = "nnn"
         Me.iWiedWertJeden.Location = New System.Drawing.Point(75, 16)
@@ -584,8 +582,8 @@ Public Class frmNachrichtBereich
         '
         'opTagWochenMonat
         '
-        Appearance21.BackColorDisabled = System.Drawing.Color.White
-        Me.opTagWochenMonat.Appearance = Appearance21
+        Appearance22.BackColorDisabled = System.Drawing.Color.White
+        Me.opTagWochenMonat.Appearance = Appearance22
         Me.opTagWochenMonat.BorderStyle = Infragistics.Win.UIElementBorderStyle.None
         Me.opTagWochenMonat.CheckedIndex = 0
         ValueListItem6.CheckState = System.Windows.Forms.CheckState.Checked
@@ -614,19 +612,19 @@ Public Class frmNachrichtBereich
         '
         'dteSerienterminEndetAm
         '
-        Appearance22.BackColor = System.Drawing.Color.White
-        Appearance22.BackColor2 = System.Drawing.Color.White
-        Appearance22.BackColorDisabled = System.Drawing.Color.White
-        Appearance22.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance22.FontData.BoldAsString = "False"
-        Appearance22.FontData.ItalicAsString = "False"
-        Appearance22.FontData.Name = "Microsoft Sans Serif"
-        Appearance22.FontData.SizeInPoints = 8.25!
-        Appearance22.FontData.StrikeoutAsString = "False"
-        Appearance22.FontData.UnderlineAsString = "False"
-        Appearance22.ForeColor = System.Drawing.Color.Black
-        Appearance22.ForeColorDisabled = System.Drawing.Color.Black
-        Me.dteSerienterminEndetAm.Appearance = Appearance22
+        Appearance23.BackColor = System.Drawing.Color.White
+        Appearance23.BackColor2 = System.Drawing.Color.White
+        Appearance23.BackColorDisabled = System.Drawing.Color.White
+        Appearance23.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance23.FontData.BoldAsString = "False"
+        Appearance23.FontData.ItalicAsString = "False"
+        Appearance23.FontData.Name = "Microsoft Sans Serif"
+        Appearance23.FontData.SizeInPoints = 8.25!
+        Appearance23.FontData.StrikeoutAsString = "False"
+        Appearance23.FontData.UnderlineAsString = "False"
+        Appearance23.ForeColor = System.Drawing.Color.Black
+        Appearance23.ForeColorDisabled = System.Drawing.Color.Black
+        Me.dteSerienterminEndetAm.Appearance = Appearance23
         Me.dteSerienterminEndetAm.BackColor = System.Drawing.Color.White
         Me.dteSerienterminEndetAm.DateTime = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dteSerienterminEndetAm.Location = New System.Drawing.Point(81, 7)
@@ -638,11 +636,11 @@ Public Class frmNachrichtBereich
         '
         'lblSerienterminEnde
         '
-        Appearance23.BackColor = System.Drawing.Color.Transparent
-        Appearance23.ForeColor = System.Drawing.Color.Black
-        Appearance23.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance23.TextVAlignAsString = "Middle"
-        Me.lblSerienterminEnde.Appearance = Appearance23
+        Appearance24.BackColor = System.Drawing.Color.Transparent
+        Appearance24.ForeColor = System.Drawing.Color.Black
+        Appearance24.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance24.TextVAlignAsString = "Middle"
+        Me.lblSerienterminEnde.Appearance = Appearance24
         Me.lblSerienterminEnde.Location = New System.Drawing.Point(8, 9)
         Me.lblSerienterminEnde.Name = "lblSerienterminEnde"
         Me.lblSerienterminEnde.Size = New System.Drawing.Size(67, 17)
@@ -652,12 +650,12 @@ Public Class frmNachrichtBereich
         '
         'chkGanzerTag
         '
-        Appearance25.BackColor = System.Drawing.Color.Transparent
-        Appearance25.BackColorDisabled = System.Drawing.Color.Transparent
-        Appearance25.ForeColor = System.Drawing.Color.Black
-        Appearance25.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance25.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
-        Me.chkGanzerTag.Appearance = Appearance25
+        Appearance26.BackColor = System.Drawing.Color.Transparent
+        Appearance26.BackColorDisabled = System.Drawing.Color.Transparent
+        Appearance26.ForeColor = System.Drawing.Color.Black
+        Appearance26.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance26.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent
+        Me.chkGanzerTag.Appearance = Appearance26
         Me.chkGanzerTag.BackColor = System.Drawing.Color.Transparent
         Me.chkGanzerTag.BackColorInternal = System.Drawing.Color.Transparent
         Me.chkGanzerTag.Cursor = System.Windows.Forms.Cursors.Default
@@ -675,19 +673,19 @@ Public Class frmNachrichtBereich
         '
         'dteEndetAm
         '
-        Appearance26.BackColor = System.Drawing.Color.White
-        Appearance26.BackColor2 = System.Drawing.Color.White
-        Appearance26.BackColorDisabled = System.Drawing.Color.White
-        Appearance26.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance26.FontData.BoldAsString = "False"
-        Appearance26.FontData.ItalicAsString = "False"
-        Appearance26.FontData.Name = "Microsoft Sans Serif"
-        Appearance26.FontData.SizeInPoints = 8.25!
-        Appearance26.FontData.StrikeoutAsString = "False"
-        Appearance26.FontData.UnderlineAsString = "False"
-        Appearance26.ForeColor = System.Drawing.Color.Black
-        Appearance26.ForeColorDisabled = System.Drawing.Color.Black
-        Me.dteEndetAm.Appearance = Appearance26
+        Appearance27.BackColor = System.Drawing.Color.White
+        Appearance27.BackColor2 = System.Drawing.Color.White
+        Appearance27.BackColorDisabled = System.Drawing.Color.White
+        Appearance27.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance27.FontData.BoldAsString = "False"
+        Appearance27.FontData.ItalicAsString = "False"
+        Appearance27.FontData.Name = "Microsoft Sans Serif"
+        Appearance27.FontData.SizeInPoints = 8.25!
+        Appearance27.FontData.StrikeoutAsString = "False"
+        Appearance27.FontData.UnderlineAsString = "False"
+        Appearance27.ForeColor = System.Drawing.Color.Black
+        Appearance27.ForeColorDisabled = System.Drawing.Color.Black
+        Me.dteEndetAm.Appearance = Appearance27
         Me.dteEndetAm.BackColor = System.Drawing.Color.White
         Me.dteEndetAm.DateTime = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dteEndetAm.Location = New System.Drawing.Point(93, 40)
@@ -699,11 +697,11 @@ Public Class frmNachrichtBereich
         '
         'lblEndAt
         '
-        Appearance24.BackColor = System.Drawing.Color.Transparent
-        Appearance24.ForeColor = System.Drawing.Color.Black
-        Appearance24.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance24.TextVAlignAsString = "Middle"
-        Me.lblEndAt.Appearance = Appearance24
+        Appearance25.BackColor = System.Drawing.Color.Transparent
+        Appearance25.ForeColor = System.Drawing.Color.Black
+        Appearance25.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance25.TextVAlignAsString = "Middle"
+        Me.lblEndAt.Appearance = Appearance25
         Me.lblEndAt.Location = New System.Drawing.Point(7, 43)
         Me.lblEndAt.Name = "lblEndAt"
         Me.lblEndAt.Size = New System.Drawing.Size(78, 17)
@@ -714,12 +712,12 @@ Public Class frmNachrichtBereich
         'lblErstelltVon
         '
         Me.lblErstelltVon.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance9.BackColor = System.Drawing.Color.Transparent
-        Appearance9.FontData.SizeInPoints = 7.5!
-        Appearance9.ForeColor = System.Drawing.Color.Black
-        Appearance9.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance9.TextVAlignAsString = "Middle"
-        Me.lblErstelltVon.Appearance = Appearance9
+        Appearance10.BackColor = System.Drawing.Color.Transparent
+        Appearance10.FontData.SizeInPoints = 7.5!
+        Appearance10.ForeColor = System.Drawing.Color.Black
+        Appearance10.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance10.TextVAlignAsString = "Middle"
+        Me.lblErstelltVon.Appearance = Appearance10
         Me.lblErstelltVon.AutoSize = True
         Me.lblErstelltVon.Location = New System.Drawing.Point(961, 15)
         Me.lblErstelltVon.Name = "lblErstelltVon"
@@ -732,12 +730,12 @@ Public Class frmNachrichtBereich
         'lblErstelltAm
         '
         Me.lblErstelltAm.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance8.BackColor = System.Drawing.Color.Transparent
-        Appearance8.FontData.SizeInPoints = 7.5!
-        Appearance8.ForeColor = System.Drawing.Color.Black
-        Appearance8.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance8.TextVAlignAsString = "Middle"
-        Me.lblErstelltAm.Appearance = Appearance8
+        Appearance9.BackColor = System.Drawing.Color.Transparent
+        Appearance9.FontData.SizeInPoints = 7.5!
+        Appearance9.ForeColor = System.Drawing.Color.Black
+        Appearance9.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance9.TextVAlignAsString = "Middle"
+        Me.lblErstelltAm.Appearance = Appearance9
         Me.lblErstelltAm.AutoSize = True
         Me.lblErstelltAm.Location = New System.Drawing.Point(961, 30)
         Me.lblErstelltAm.Name = "lblErstelltAm"
@@ -749,19 +747,19 @@ Public Class frmNachrichtBereich
         '
         'dteBeginntAm
         '
-        Appearance7.BackColor = System.Drawing.Color.White
-        Appearance7.BackColor2 = System.Drawing.Color.White
-        Appearance7.BackColorDisabled = System.Drawing.Color.White
-        Appearance7.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance7.FontData.BoldAsString = "False"
-        Appearance7.FontData.ItalicAsString = "False"
-        Appearance7.FontData.Name = "Microsoft Sans Serif"
-        Appearance7.FontData.SizeInPoints = 8.25!
-        Appearance7.FontData.StrikeoutAsString = "False"
-        Appearance7.FontData.UnderlineAsString = "False"
-        Appearance7.ForeColor = System.Drawing.Color.Black
-        Appearance7.ForeColorDisabled = System.Drawing.Color.Black
-        Me.dteBeginntAm.Appearance = Appearance7
+        Appearance8.BackColor = System.Drawing.Color.White
+        Appearance8.BackColor2 = System.Drawing.Color.White
+        Appearance8.BackColorDisabled = System.Drawing.Color.White
+        Appearance8.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance8.FontData.BoldAsString = "False"
+        Appearance8.FontData.ItalicAsString = "False"
+        Appearance8.FontData.Name = "Microsoft Sans Serif"
+        Appearance8.FontData.SizeInPoints = 8.25!
+        Appearance8.FontData.StrikeoutAsString = "False"
+        Appearance8.FontData.UnderlineAsString = "False"
+        Appearance8.ForeColor = System.Drawing.Color.Black
+        Appearance8.ForeColorDisabled = System.Drawing.Color.Black
+        Me.dteBeginntAm.Appearance = Appearance8
         Me.dteBeginntAm.BackColor = System.Drawing.Color.White
         Me.dteBeginntAm.DateTime = New Date(1753, 1, 1, 0, 0, 0, 0)
         Me.dteBeginntAm.Location = New System.Drawing.Point(93, 13)
@@ -773,11 +771,11 @@ Public Class frmNachrichtBereich
         '
         'lblStartAt
         '
-        Appearance6.BackColor = System.Drawing.Color.Transparent
-        Appearance6.ForeColor = System.Drawing.Color.Black
-        Appearance6.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance6.TextVAlignAsString = "Middle"
-        Me.lblStartAt.Appearance = Appearance6
+        Appearance7.BackColor = System.Drawing.Color.Transparent
+        Appearance7.ForeColor = System.Drawing.Color.Black
+        Appearance7.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance7.TextVAlignAsString = "Middle"
+        Me.lblStartAt.Appearance = Appearance7
         Me.lblStartAt.Location = New System.Drawing.Point(7, 15)
         Me.lblStartAt.Name = "lblStartAt"
         Me.lblStartAt.Size = New System.Drawing.Size(78, 17)
@@ -811,9 +809,9 @@ Public Class frmNachrichtBereich
         'btnAbort
         '
         Me.btnAbort.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance29.ForeColor = System.Drawing.Color.Black
-        Appearance29.ForeColorDisabled = System.Drawing.Color.Black
-        Me.btnAbort.Appearance = Appearance29
+        Appearance30.ForeColor = System.Drawing.Color.Black
+        Appearance30.ForeColorDisabled = System.Drawing.Color.Black
+        Me.btnAbort.Appearance = Appearance30
         Me.btnAbort.Location = New System.Drawing.Point(930, 6)
         Me.btnAbort.Name = "btnAbort"
         Me.btnAbort.Size = New System.Drawing.Size(84, 26)
@@ -824,9 +822,9 @@ Public Class frmNachrichtBereich
         'btnSave
         '
         Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance30.ForeColor = System.Drawing.Color.Black
-        Appearance30.ForeColorDisabled = System.Drawing.Color.Black
-        Me.btnSave.Appearance = Appearance30
+        Appearance31.ForeColor = System.Drawing.Color.Black
+        Appearance31.ForeColorDisabled = System.Drawing.Color.Black
+        Me.btnSave.Appearance = Appearance31
         Me.btnSave.Location = New System.Drawing.Point(1014, 6)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(87, 26)
@@ -837,10 +835,10 @@ Public Class frmNachrichtBereich
         'btnDel
         '
         Me.btnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance31.Cursor = System.Windows.Forms.Cursors.Default
-        Appearance31.TextHAlignAsString = "Center"
-        Appearance31.TextVAlignAsString = "Middle"
-        Me.btnDel.Appearance = Appearance31
+        Appearance32.Cursor = System.Windows.Forms.Cursors.Default
+        Appearance32.TextHAlignAsString = "Center"
+        Appearance32.TextVAlignAsString = "Middle"
+        Me.btnDel.Appearance = Appearance32
         Me.btnDel.ImageSize = New System.Drawing.Size(20, 20)
         Me.btnDel.Location = New System.Drawing.Point(893, 6)
         Me.btnDel.Name = "btnDel"
@@ -863,19 +861,19 @@ Public Class frmNachrichtBereich
         '
         Me.txtBetreff.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance27.BackColor = System.Drawing.Color.White
-        Appearance27.BackColor2 = System.Drawing.Color.White
-        Appearance27.BackColorDisabled = System.Drawing.Color.White
-        Appearance27.BackColorDisabled2 = System.Drawing.Color.White
-        Appearance27.FontData.BoldAsString = "False"
-        Appearance27.FontData.ItalicAsString = "False"
-        Appearance27.FontData.Name = "Microsoft Sans Serif"
-        Appearance27.FontData.SizeInPoints = 8.25!
-        Appearance27.FontData.StrikeoutAsString = "False"
-        Appearance27.FontData.UnderlineAsString = "False"
-        Appearance27.ForeColor = System.Drawing.Color.Black
-        Appearance27.ForeColorDisabled = System.Drawing.Color.Black
-        Me.txtBetreff.Appearance = Appearance27
+        Appearance28.BackColor = System.Drawing.Color.White
+        Appearance28.BackColor2 = System.Drawing.Color.White
+        Appearance28.BackColorDisabled = System.Drawing.Color.White
+        Appearance28.BackColorDisabled2 = System.Drawing.Color.White
+        Appearance28.FontData.BoldAsString = "False"
+        Appearance28.FontData.ItalicAsString = "False"
+        Appearance28.FontData.Name = "Microsoft Sans Serif"
+        Appearance28.FontData.SizeInPoints = 8.25!
+        Appearance28.FontData.StrikeoutAsString = "False"
+        Appearance28.FontData.UnderlineAsString = "False"
+        Appearance28.ForeColor = System.Drawing.Color.Black
+        Appearance28.ForeColorDisabled = System.Drawing.Color.Black
+        Me.txtBetreff.Appearance = Appearance28
         Me.txtBetreff.AutoSize = False
         Me.txtBetreff.BackColor = System.Drawing.Color.White
         Me.txtBetreff.Location = New System.Drawing.Point(208, 6)
@@ -887,11 +885,11 @@ Public Class frmNachrichtBereich
         '
         'lblBetreff
         '
-        Appearance28.BackColor = System.Drawing.Color.Transparent
-        Appearance28.ForeColor = System.Drawing.Color.Black
-        Appearance28.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance28.TextVAlignAsString = "Middle"
-        Me.lblBetreff.Appearance = Appearance28
+        Appearance29.BackColor = System.Drawing.Color.Transparent
+        Appearance29.ForeColor = System.Drawing.Color.Black
+        Appearance29.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance29.TextVAlignAsString = "Middle"
+        Me.lblBetreff.Appearance = Appearance29
         Me.lblBetreff.Location = New System.Drawing.Point(167, 9)
         Me.lblBetreff.Name = "lblBetreff"
         Me.lblBetreff.Size = New System.Drawing.Size(77, 17)
@@ -902,11 +900,11 @@ Public Class frmNachrichtBereich
         'PanelDescription
         '
         Me.PanelDescription.BackColor = System.Drawing.Color.Transparent
+        Me.PanelDescription.Controls.Add(Me.PanelEditor)
+        Me.PanelDescription.Controls.Add(Me.EditorTmp1)
         Me.PanelDescription.Controls.Add(Me.dropDownAbteilungBereiche)
         Me.PanelDescription.Controls.Add(Me.dropDownBerufsgruppen)
         Me.PanelDescription.Controls.Add(Me.optStatus)
-        Me.PanelDescription.Controls.Add(Me.PanelEditor)
-        Me.PanelDescription.Controls.Add(Me.EditorTmp1)
         Me.PanelDescription.Controls.Add(Me.lblStartAt)
         Me.PanelDescription.Controls.Add(Me.lblStatus)
         Me.PanelDescription.Controls.Add(Me.dteBeginntAm)
@@ -926,13 +924,13 @@ Public Class frmNachrichtBereich
         '
         'dropDownAbteilungBereiche
         '
-        Appearance4.BorderColor = System.Drawing.Color.Black
-        Appearance4.TextHAlignAsString = "Left"
-        Me.dropDownAbteilungBereiche.Appearance = Appearance4
+        Appearance5.BorderColor = System.Drawing.Color.Black
+        Appearance5.TextHAlignAsString = "Left"
+        Me.dropDownAbteilungBereiche.Appearance = Appearance5
         Me.dropDownAbteilungBereiche.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(209, 68)
+        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(93, 93)
         Me.dropDownAbteilungBereiche.Name = "dropDownAbteilungBereiche"
-        Me.dropDownAbteilungBereiche.Size = New System.Drawing.Size(135, 24)
+        Me.dropDownAbteilungBereiche.Size = New System.Drawing.Size(151, 24)
         Me.dropDownAbteilungBereiche.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
         Me.dropDownAbteilungBereiche.TabIndex = 1008
         Me.dropDownAbteilungBereiche.TabStop = False
@@ -941,13 +939,13 @@ Public Class frmNachrichtBereich
         '
         'dropDownBerufsgruppen
         '
-        Appearance5.BorderColor = System.Drawing.Color.Black
-        Appearance5.TextHAlignAsString = "Left"
-        Me.dropDownBerufsgruppen.Appearance = Appearance5
+        Appearance6.BorderColor = System.Drawing.Color.Black
+        Appearance6.TextHAlignAsString = "Left"
+        Me.dropDownBerufsgruppen.Appearance = Appearance6
         Me.dropDownBerufsgruppen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownBerufsgruppen.Location = New System.Drawing.Point(93, 68)
+        Me.dropDownBerufsgruppen.Location = New System.Drawing.Point(93, 67)
         Me.dropDownBerufsgruppen.Name = "dropDownBerufsgruppen"
-        Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(110, 24)
+        Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(151, 24)
         Me.dropDownBerufsgruppen.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
         Me.dropDownBerufsgruppen.TabIndex = 1007
         Me.dropDownBerufsgruppen.TabStop = False
@@ -956,49 +954,43 @@ Public Class frmNachrichtBereich
         '
         'PanelEditor
         '
-        Me.PanelEditor.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelEditor.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelEditor.BackColor = System.Drawing.Color.Transparent
-        Me.PanelEditor.Location = New System.Drawing.Point(951, 51)
+        Me.PanelEditor.Location = New System.Drawing.Point(1079, 64)
         Me.PanelEditor.Name = "PanelEditor"
-        Me.PanelEditor.Size = New System.Drawing.Size(54, 46)
+        Me.PanelEditor.Size = New System.Drawing.Size(54, 49)
         Me.PanelEditor.TabIndex = 507
         '
         'EditorTmp1
         '
-        Me.EditorTmp1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.EditorTmp1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.EditorTmp1.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.EditorTmp1.Location = New System.Drawing.Point(1064, 71)
+        Me.EditorTmp1.Location = New System.Drawing.Point(1080, 68)
         Me.EditorTmp1.Name = "EditorTmp1"
         Me.EditorTmp1.Size = New System.Drawing.Size(51, 44)
         Me.EditorTmp1.TabIndex = 506
         Me.EditorTmp1.Text = "TextControl1"
         Me.EditorTmp1.UserNames = Nothing
         '
-        'PanelBody
+        'txtBody
         '
-        Me.PanelBody.BackColor = System.Drawing.Color.Transparent
-        Me.PanelBody.Controls.Add(Me.PanelTxtEditor)
-        Me.PanelBody.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelBody.Location = New System.Drawing.Point(0, 153)
-        Me.PanelBody.Name = "PanelBody"
-        Me.PanelBody.Size = New System.Drawing.Size(1122, 541)
-        Me.PanelBody.TabIndex = 2
-        '
-        'PanelTxtEditor
-        '
-        Me.PanelTxtEditor.BackColor = System.Drawing.Color.Transparent
-        Me.PanelTxtEditor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelTxtEditor.Location = New System.Drawing.Point(0, 0)
-        Me.PanelTxtEditor.Name = "PanelTxtEditor"
-        Me.PanelTxtEditor.Size = New System.Drawing.Size(1122, 541)
-        Me.PanelTxtEditor.TabIndex = 7
+        Appearance4.BackColor = System.Drawing.Color.White
+        Appearance4.BackColorDisabled = System.Drawing.Color.White
+        Me.txtBody.Appearance = Appearance4
+        Me.txtBody.BackColor = System.Drawing.Color.White
+        Me.txtBody.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtBody.Location = New System.Drawing.Point(0, 153)
+        Me.txtBody.Multiline = True
+        Me.txtBody.Name = "txtBody"
+        Me.txtBody.Size = New System.Drawing.Size(1122, 541)
+        Me.txtBody.TabIndex = 101
         '
         'frmNachrichtBereich
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1122, 733)
-        Me.Controls.Add(Me.PanelBody)
+        Me.Controls.Add(Me.txtBody)
         Me.Controls.Add(Me.PanelDescription)
         Me.Controls.Add(Me.PanelBetreff)
         Me.Controls.Add(Me.PanelBottom)
@@ -1040,8 +1032,9 @@ Public Class frmNachrichtBereich
         CType(Me.txtBetreff, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelDescription.ResumeLayout(False)
         Me.PanelDescription.PerformLayout()
-        Me.PanelBody.ResumeLayout(False)
+        CType(Me.txtBody, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -1069,17 +1062,20 @@ Public Class frmNachrichtBereich
             Me.uPopupContCategories.PopupControl = Me.contSelectSelListCategories
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories
+            Me.contSelectSelListCategories.setLabelCount2()
 
             Me.contSelectAbtBereiche.MainMessage = Me
             Me.contSelectAbtBereiche.initControl(Me.dropDownAbteilungBereiche)
             Me.uPopupAbteilungBereiche.PopupControl = Me.contSelectAbtBereiche
             Me.dropDownAbteilungBereiche.PopupItem = Me.uPopupAbteilungBereiche
             Me.contSelectAbtBereiche.popupContMainSearch = Me.uPopupAbteilungBereiche
+            Me.contSelectAbtBereiche.setLabelCount2()
 
-            Me.contSelectSelListBerufsgruppen.initControl("BER", True, False, Me.dropDownCategories, True, "Berufsgruppen", "", True)
+            Me.contSelectSelListBerufsgruppen.initControl("BER", True, False, Me.dropDownBerufsgruppen, True, "Berufsgruppen", "", True)
             Me.uPopupContBerufsgruppen.PopupControl = Me.contSelectSelListBerufsgruppen
             Me.dropDownBerufsgruppen.PopupItem = Me.uPopupContBerufsgruppen
             Me.contSelectSelListBerufsgruppen.popupContMainSearch = Me.uPopupContBerufsgruppen
+            Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
             Me.loadCboDauer()
             Me.loadCboDauerSerientermin()
@@ -1091,7 +1087,7 @@ Public Class frmNachrichtBereich
             Dim newRessourcesAdded As Integer = 0
             Me.doUI1.run(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, True)
 
-            'Me.AcceptButton = Me.btnSave
+            Me.AcceptButton = Me.btnSave
             Me.CancelButton = Me.btnAbort
 
             Me.isLoaded = True
@@ -1105,17 +1101,17 @@ Public Class frmNachrichtBereich
 
     Public Sub initTxtControl()
         Try
-            Me.contTxtEditor1.Dock = DockStyle.Fill
-            Me.PanelTxtEditor.Controls.Add(Me.contTxtEditor1)
-            Me.contTxtEditor1.typUI = QS2.Desktop.Txteditor.etyp.all
-            Me.contTxtEditor1.LinealeOnOff(True)
-            Me.contTxtEditor1.SetUIReadOnOff(False)
-            Me.contTxtEditor1.loadForm(False, Nothing, False, False)
-            Me.contTxtEditor1.setControlTyp()
-            Me.contTxtEditor1.buttonBar1.Visible = False
-            Me.contTxtEditor1.FileNew(False, False)
+            'Me.contTxtEditor1.Dock = DockStyle.Fill
+            'Me.PanelText.Controls.Add(Me.contTxtEditor1)
+            'Me.contTxtEditor1.typUI = QS2.Desktop.Txteditor.etyp.all
+            'Me.contTxtEditor1.LinealeOnOff(True)
+            'Me.contTxtEditor1.SetUIReadOnOff(False)
+            'Me.contTxtEditor1.loadForm(False, Nothing, False, False)
+            'Me.contTxtEditor1.setControlTyp()
+            'Me.contTxtEditor1.buttonBar1.Visible = False
+            'Me.contTxtEditor1.FileNew(False, False)
 
-            AddHandler Me.contTxtEditor1.textControl1_IsToSave, AddressOf Me.textControl1_IsToSave
+            'AddHandler Me.contTxtEditor1.textControl1_IsToSave, AddressOf Me.textControl1_IsToSave
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.initTxtControl: " + ex.ToString())
@@ -1261,18 +1257,23 @@ Public Class frmNachrichtBereich
 
             Dim UserLoggedIn As String = Me.genMain.getLoggedInUser()
             Me.setErstelltVon(UserLoggedIn.Trim(), Now)
-            Me.IsNew = False
-            Me.IDPlanBereich = Nothing
 
             Me.optStatus.CheckedIndex = 0
-
-            Me.contSelectSelListCategories.setSelectionOnOff(False)
-            Me.contSelectSelListCategories.txtSearch.Text = ""
-            Me.contSelectSelListCategories.clearFilterSearch()
 
             Me.lblErstelltVon.Text = ""
             Me.lblErstelltAm.Text = ""
             Me.clearSerientermineUI()
+
+            Me.contSelectSelListCategories.txtSearch.Text = ""
+            Me.contSelectSelListCategories.clearFilterSearch()
+            Me.contSelectSelListCategories.setSelectionOnOff(False)
+            Me.contSelectSelListCategories.setLabelCount2()
+
+            Me.contSelectAbtBereiche.setSelectionOnOff(CheckState.Unchecked)
+            Me.contSelectAbtBereiche.setLabelCount2()
+
+            Me.contSelectSelListBerufsgruppen.setSelectionOnOff(False)
+            Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.clear: " + ex.ToString())
@@ -1356,11 +1357,13 @@ Public Class frmNachrichtBereich
             If Not IsNew Then
                 Me.dsPlan1 = New dsPlan()
                 Me.compPlan1 = New compPlan()
+
                 Me.compPlan1.getPlanBereich(IDPlanBereich, compPlan.eTypSelPlanBereich.IDPlan, Me.dsPlan1)
                 Me.rPlanBereich = Me.dsPlan1.planBereich.Rows(0)
                 Me.loadData2()
 
-                Me.doEditor1.showText(Text, TXTextControl.StreamType.PlainText, True, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
+                Me.txtBody.Text = Me.rPlanBereich.Text.Trim()
+                'Me.doEditor1.showText(Text, TXTextControl.StreamType.PlainText, True, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
 
                 Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                     Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = Me.b.getUserByUserName2(Me.rPlanBereich.CreatedFrom.Trim(), db)
@@ -1399,14 +1402,13 @@ Public Class frmNachrichtBereich
 
                 Me.optStatus.Visible = False
                 Me.lblStatus.Visible = False
-                Me.contSelectSelListCategories.setLabelCount2()
 
                 If Me.rPlanBereich.IsIDSerienterminNull() Then
                     Me.chkIsSerientermin.Visible = False
                 End If
-
             Else
                 Me.setDBForNewPlan()
+
                 Dim dNow As DateTime = Now
                 Me.dteBeginntAm.DateTime = dNow
                 Me.dteEndetAm.DateTime = dNow.AddMinutes(30)
@@ -1415,19 +1417,29 @@ Public Class frmNachrichtBereich
                 Me.optStatus.Visible = False
                 Me.lblStatus.Visible = False
 
-                Me.contTxtEditor1.textControl1.Load("", TXTextControl.StreamType.HTMLFormat)
+                Me.txtBody.Text = ""
+                'Me.contTxtEditor1.textControl1.Load("", TXTextControl.StreamType.HTMLFormat)
 
                 Me.PanelSerientermineUISub.Enabled = True
                 Me.lockUnlock(True)
-
-                Me.contSelectSelListCategories.setLabelCount2()
             End If
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.loadData: " + ex.ToString())
         End Try
     End Function
+    Public Function setDBForNewPlan() As Boolean
+        Try
+            Me.dsPlan1 = New dsPlan()
+            Me.compPlan1 = New compPlan()
+            Me.compPlan1.getPlanBereich(System.Guid.NewGuid(), compPlan.eTypSelPlanBereich.IDPlan, Me.dsPlan1)
+            Me.rPlanBereich = Me.compPlan1.getNewRowPlanBereich(Me.dsPlan1)
+            Me.rPlanBereich.IDKlinik = PMDS.Global.ENV.IDKlinik
 
+        Catch ex As Exception
+            Throw New Exception("frmNachrichtBereich.setDBForNewPlan: " + ex.ToString())
+        End Try
+    End Function
     Private Function loadData2() As Boolean
         Try
             Me.txtBetreff.Text = Me.rPlanBereich.Betreff
@@ -1451,6 +1463,9 @@ Public Class frmNachrichtBereich
             End If
 
             Me.contSelectSelListCategories.loadDataColl(Me.rPlanBereich.Category.Trim())
+
+
+
 
             If Me.rPlanBereich.IsEndetAmNull() Then
                 Me.dteEndetAm.Value = Nothing
@@ -1508,8 +1523,6 @@ Public Class frmNachrichtBereich
 
             Me.setWochentage(Me.rPlanBereich.Wochentage.Trim())
             Me.setErstelltVon(Me.rPlanBereich.CreatedFrom, Me.rPlanBereich.CreatedAt)
-
-            General.GarbColl()
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.loadData: " + ex.ToString())
@@ -1738,7 +1751,7 @@ Public Class frmNachrichtBereich
             Dim STVerlängerung As Boolean = False
             Dim STKürzung As Boolean = False
             Dim ownerSucessfullySaved As Boolean = False
-            Dim rPlanOwner As dsPlan.planBereichRow = Me.dsPlan1.plan.Rows(0)
+            Dim rPlanOwner As dsPlan.planBereichRow = Me.dsPlan1.planBereich.Rows(0)
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 If Me.setPlanRowTemp(rPlanOwner, Producer, Nothing, IDSerientermin) Then
                     db.Configuration.LazyLoadingEnabled = False
@@ -2015,17 +2028,16 @@ Public Class frmNachrichtBereich
                 rPlanToSet.Betreff = rPlanToSet.Category.Trim()
             End If
 
-            Dim text As String = ""
-            Dim typTxt As New TXTextControl.StreamType
-            typTxt = TXTextControl.StreamType.PlainText
+            rPlanToSet.Text = Me.txtBody.Text.Trim()
 
-            Me.contTxtEditor1.textControl1.Save(text, TXTextControl.StringStreamType.PlainText)
-
-            If Not General.IsNull(text) Then
-                rPlanToSet.Text = text
-            Else
-                rPlanToSet.Text = ""
-            End If
+            'Dim text As String = ""
+            'Dim typTxt As TXTextControl.StreamType = TXTextControl.StreamType.PlainText
+            'Me.contTxtEditor1.textControl1.Save(text, TXTextControl.StringStreamType.PlainText)
+            'If Not General.IsNull(text) Then
+            '    rPlanToSet.Text = Me.txtBody.Text.Trim()
+            'Else
+            '    rPlanToSet.Text = ""
+            'End If
 
             If Usr.Trim() <> "" Then
                 rPlanToSet.CreatedFrom = Usr
@@ -2275,19 +2287,6 @@ Public Class frmNachrichtBereich
         End Try
     End Sub
 
-    Public Function setDBForNewPlan() As Boolean
-        Try
-            Me.dsPlan1 = New dsPlan()
-            Me.compPlan1 = New compPlan()
-            Me.compPlan1.getPlanBereich(System.Guid.NewGuid(), compPlan.eTypSelPlanBereich.IDPlan, Me.dsPlan1)
-            Me.rPlanBereich = Me.compPlan1.getNewRowPlanBereich(Me.dsPlan1)
-            Me.rPlanBereich.IDKlinik = PMDS.Global.ENV.IDKlinik
-
-        Catch ex As Exception
-            Throw New Exception("frmNachrichtBereich.setDBForNewPlan: " + ex.ToString())
-        End Try
-    End Function
-
     Public Sub lockUnlock(ByVal bEdit As Boolean)
         Try
             Me.isEditable = bEdit
@@ -2304,7 +2303,9 @@ Public Class frmNachrichtBereich
             Dim ui As New UI()
             ui.lockUnlockOneControl(Me.PanelDescription, bEdit)
             ui.lockUnlockOneControl(Me.PanelBetreff, bEdit)
-            Me.contTxtEditor1.lockEingbe = Not bEdit
+
+            Me.txtBody.Enabled = bEdit
+            'Me.contTxtEditor1.lockEingbe = Not bEdit
 
             Me.dteBeginntAm.DropDownButtonDisplayStyle = styleButtDropDown
 
@@ -2529,21 +2530,10 @@ Public Class frmNachrichtBereich
         End Try
     End Sub
 
-    Private Sub dropDownPatienten_DroppingDown(sender As Object, e As System.ComponentModel.CancelEventArgs)
-        Try
-            Me.Cursor = Cursors.WaitCursor
-
-        Catch ex As Exception
-            General.GetEcxeptionGeneral(ex)
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-
     Private Sub dropDownCategories_ClosedUp(sender As Object, e As EventArgs) Handles dropDownCategories.ClosedUp
         Try
             Me.Cursor = Cursors.WaitCursor
-            'Me.dropDownCategories.Text = Me.contSelectSelListCategories.setLabelCount2()
+            Me.contSelectSelListCategories.setLabelCount2()
 
         Catch ex As Exception
             General.GetEcxeptionGeneral(ex)
@@ -2586,6 +2576,29 @@ Public Class frmNachrichtBereich
                 End If
             Else
             End If
+
+        Catch ex As Exception
+            General.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub dropDownBerufsgruppen_ClosedUp(sender As Object, e As EventArgs) Handles dropDownBerufsgruppen.ClosedUp
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.contSelectSelListBerufsgruppen.setLabelCount2()
+
+        Catch ex As Exception
+            General.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+    Private Sub dropDownAbteilungBereiche_ClosedUp(sender As Object, e As EventArgs) Handles dropDownAbteilungBereiche.ClosedUp
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.contSelectAbtBereiche.setLabelCount2()
 
         Catch ex As Exception
             General.GetEcxeptionGeneral(ex)

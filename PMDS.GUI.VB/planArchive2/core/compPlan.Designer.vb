@@ -24,6 +24,7 @@
         Me.sqldaPlanObject = Me.daPlanObject.SelectCommand.CommandText
         Me.sqldaPlanStatus = Me.daPlanStatus.SelectCommand.CommandText
         Me.sqldaPlanBereich = Me.daPlanBereich.SelectCommand.CommandText
+        Me.sqldaSearchPlanBereich = Me.daSearchPlanBereich.SelectCommand.CommandText
     End Sub
 
     'Die Komponente überschreibt den Löschvorgang zum Bereinigen der Komponentenliste.

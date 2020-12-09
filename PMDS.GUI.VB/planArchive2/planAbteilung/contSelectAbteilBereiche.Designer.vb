@@ -60,6 +60,7 @@ Partial Class contSelectAbteilBereiche
         Me.PanelTop.Name = "PanelTop"
         Me.PanelTop.Size = New System.Drawing.Size(503, 31)
         Me.PanelTop.TabIndex = 3
+        Me.PanelTop.Visible = False
         '
         'txtSearch
         '

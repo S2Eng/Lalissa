@@ -275,27 +275,21 @@ Public Class suchePlan
         End Try
     End Function
 
-    Public Function searchPlanBereich(ByVal ds As dsPlanSearch,
+    Public Function searchPlanBereich(ByVal ds As dsPlanSearch, compPlanSearch As compPlan,
                          ByVal sqlStatus As String,
                          ByVal dVon As Date, ByVal dBis As Date,
                          ByVal Betreff As String,
                          ByRef SqlCommandReturn As String,
                          ByRef lstSelectedCategories As System.Collections.Generic.List(Of String),
-                         ByRef lstSelectedAbteilungen As System.Collections.Generic.List(Of String),
-                         ByRef lstSelectedBereiche As System.Collections.Generic.List(Of String),
+                         ByRef lstSelectedAbteilungen As System.Collections.Generic.List(Of Guid),
+                         ByRef lstSelectedBereiche As System.Collections.Generic.List(Of Guid),
                          ByRef lstSelectedBerufsgruppen As System.Collections.Generic.List(Of String),
                          LayoutGrid As contPlanungDataBereich.eLayoutGrid, ByRef IDKlinik As Guid) As Boolean
         Try
+            compPlanSearch.daSearchPlanBereich.SelectCommand.Parameters.Clear()
+
             Dim SQL_where As String = ""
-
-            Dim sql_Klinik As String = " [planBereich].IDKlinik='" + IDKlinik.ToString() + "' "
-            'SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_Klinik, " and " + sql_Klinik)
-            'Dim UserLoggedIn As String = Me.gen.getLoggedInUser()
-
-            'Dim id_str As String = " planObjectBereich.idObject = '" + PMDS.Global.ENV.CurrentIDPatient.ToString + "' "
-            'Dim sql_sub As String = " Patient.ID in ( SELECT idObject FROM  planObject " +
-            '                            " where  " + id_str + ") "
-            'SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+            SQL_where = " where [planBereich].IDKlinik='" + IDKlinik.ToString() + "' "
 
             If Betreff <> "" Then
                 Dim id_str As String = " ( [planBereich].Betreff like '%" + Betreff + "%' ) "
@@ -309,6 +303,33 @@ Public Class suchePlan
                     sql_Category += IIf(gen.IsNull(Trim(sql_Category)), id_str, " or " + id_str)
                 Next
                 Dim sql_sub As String = " (" + sql_Category + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+            End If
+            If lstSelectedAbteilungen.Count > 0 Then
+                Dim sql_Sub As String = ""
+                For Each Id As Guid In lstSelectedAbteilungen
+                    Dim id_str As String = " [planBereich].IDAbteilung='" + Id.ToString() + "' "
+                    sql_Sub += IIf(gen.IsNull(Trim(sql_Sub)), id_str, " or " + id_str)
+                Next
+                Dim sql_Sub2 As String = " (" + sql_Sub + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_Sub2, " and " + sql_Sub2)
+            End If
+            If lstSelectedBereiche.Count > 0 Then
+                Dim sql_Sub As String = ""
+                For Each Id As Guid In lstSelectedBereiche
+                    Dim id_str As String = " [planBereich].IDBereich='" + Id.ToString() + "' "
+                    sql_Sub += IIf(gen.IsNull(Trim(sql_Sub)), id_str, " or " + id_str)
+                Next
+                Dim sql_Sub2 As String = " (" + sql_Sub + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_Sub2, " and " + sql_Sub2)
+            End If
+            If lstSelectedBerufsgruppen.Count > 0 Then
+                Dim sql_Berufsgrp As String = ""
+                For Each sTxt As String In lstSelectedBerufsgruppen
+                    Dim id_str As String = " [planBereich].lstBerufsgruppen like '%" + sTxt.ToString + "%' "
+                    sql_Berufsgrp += IIf(gen.IsNull(Trim(sql_Berufsgrp)), id_str, " or " + id_str)
+                Next
+                Dim sql_sub As String = " (" + sql_Berufsgrp + ") "
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
             End If
 
@@ -334,26 +355,20 @@ Public Class suchePlan
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + id_str, " and " + id_str)
             End If
 
-            Dim cmd As New OleDbCommand()
             If Not gen.IsNull(VonTmp) Then
-                cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = VonTmp
+                compPlanSearch.daSearchPlanBereich.SelectCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = VonTmp
             End If
             If Not gen.IsNull(BisTmp) Then
-                cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = BisTmp
+                compPlanSearch.daSearchPlanBereich.SelectCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("BeginntAm", System.Data.OleDb.OleDbType.Date, 16, "BeginntAm")).Value = BisTmp
             End If
 
-            Dim Sql As String = ""
-            Dim compPlanSql As New compPlan()
-            Dim da As New OleDbDataAdapter()
-            Sql = compPlanSql.daSearchPlanBereich.SelectCommand.CommandText
+            compPlanSearch.daSearchPlanBereich.SelectCommand.CommandText = compPlanSearch.sqldaSearchPlanBereich
+            compPlanSearch.daSearchPlanBereich.SelectCommand.CommandText += " " + SQL_where + " order by [planBereich].BeginntAm desc "
+            compPlanSearch.daSearchPlanBereich.SelectCommand.Connection = Me.db.getConnDB()
+            compPlanSearch.daSearchPlanBereich.SelectCommand.CommandTimeout = 0
+            compPlanSearch.daSearchPlanBereich.Fill(ds.planBereich)
 
-            cmd.CommandText = Sql + SQL_where + " order by [planBereich].BeginntAm desc "
-            cmd.Connection = Me.db.getConnDB()
-            cmd.CommandTimeout = 0
-            da.SelectCommand = cmd
-            da.Fill(ds.planBereich)
-
-            SqlCommandReturn = cmd.CommandText
+            SqlCommandReturn = compPlanSearch.daSearchPlanBereich.SelectCommand.CommandText
             Return True
 
         Catch ex As OleDbException
