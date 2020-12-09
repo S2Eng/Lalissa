@@ -26,6 +26,7 @@ Partial Class contSelectAbteilBereiche
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Override1 As Infragistics.Win.UltraWinTree.Override = New Infragistics.Win.UltraWinTree.Override()
         Me.PanelTop = New System.Windows.Forms.Panel()
         Me.txtSearch = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
@@ -140,6 +141,8 @@ Partial Class contSelectAbteilBereiche
         Me.treeAbtBereiche.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Appearance4.BackColorDisabled = System.Drawing.Color.White
+        Me.treeAbtBereiche.Appearance = Appearance4
         Me.treeAbtBereiche.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
         Me.treeAbtBereiche.ContextMenuStrip = Me.ContextMenuStrip1
         Me.treeAbtBereiche.Location = New System.Drawing.Point(5, 3)
@@ -245,6 +248,6 @@ Partial Class contSelectAbteilBereiche
     Friend WithEvents ErrorProvider1 As Windows.Forms.ErrorProvider
     Public WithEvents txtSearch As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents lblSearch As Infragistics.Win.Misc.UltraLabel
-    Friend WithEvents treeAbtBereiche As Infragistics.Win.UltraWinTree.UltraTree
     Friend WithEvents ContextMenuStrip1 As Windows.Forms.ContextMenuStrip
+    Public WithEvents treeAbtBereiche As Infragistics.Win.UltraWinTree.UltraTree
 End Class

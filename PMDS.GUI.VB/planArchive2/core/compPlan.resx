@@ -384,7 +384,7 @@ FROM            Patient LEFT OUTER JOIN
   </metadata>
   <data name="OleDbCommand12.CommandText" xml:space="preserve">
     <value>SELECT        ID, Betreff, BeginntAm, EndetAm, lstAbteilungen, lstBereiche, Status, Category, Folder, Teilnehmer, IDSerientermin, TagWochenMonat, WiedWertJeden, Wochentage, nTenMonat, SerienterminType, Dauer, GanzerTag, 
-                         IsSerientermin, SerienterminEndetAm, IDKlinik, CreatedFrom, CreatedAt, LastChangeFrom, LastChangeAt, lstBerufsgruppen
+                         IsSerientermin, SerienterminEndetAm, IDKlinik, CreatedFrom, CreatedAt, LastChangeFrom, LastChangeAt, lstBerufsgruppen, IDPlanMain, IDAbteilung, IDBereich
 FROM            planBereich</value>
   </data>
   <metadata name="daPlanBereich.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

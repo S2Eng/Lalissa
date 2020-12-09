@@ -1586,6 +1586,12 @@ Partial Public Class dsPlanSearch
         
         Private columnlstBerufsgruppen As Global.System.Data.DataColumn
         
+        Private columnIDPlanMain As Global.System.Data.DataColumn
+        
+        Private columnIDAbteilung As Global.System.Data.DataColumn
+        
+        Private columnIDBereich As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1830,6 +1836,30 @@ Partial Public Class dsPlanSearch
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IDPlanMainColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDPlanMain
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IDAbteilungColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDAbteilung
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IDBereichColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIDBereich
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1892,9 +1922,12 @@ Partial Public Class dsPlanSearch
                     ByVal CreatedAt As Date,  _
                     ByVal LastChangeFrom As String,  _
                     ByVal LastChangeAt As Date,  _
-                    ByVal lstBerufsgruppen As String) As planBereichRow
+                    ByVal lstBerufsgruppen As String,  _
+                    ByVal IDPlanMain As System.Guid,  _
+                    ByVal IDAbteilung As System.Guid,  _
+                    ByVal IDBereich As System.Guid) As planBereichRow
             Dim rowplanBereichRow As planBereichRow = CType(Me.NewRow,planBereichRow)
-            Dim columnValuesArray() As Object = New Object() {ID, Betreff, BeginntAm, EndetAm, lstAbteilungen, lstBereiche, Status, Category, Folder, Teilnehmer, IDSerientermin, TagWochenMonat, WiedWertJeden, Wochentage, nTenMonat, SerienterminType, Dauer, GanzerTag, IsSerientermin, SerienterminEndetAm, IDKlinik, CreatedFrom, CreatedAt, LastChangeFrom, LastChangeAt, lstBerufsgruppen}
+            Dim columnValuesArray() As Object = New Object() {ID, Betreff, BeginntAm, EndetAm, lstAbteilungen, lstBereiche, Status, Category, Folder, Teilnehmer, IDSerientermin, TagWochenMonat, WiedWertJeden, Wochentage, nTenMonat, SerienterminType, Dauer, GanzerTag, IsSerientermin, SerienterminEndetAm, IDKlinik, CreatedFrom, CreatedAt, LastChangeFrom, LastChangeAt, lstBerufsgruppen, IDPlanMain, IDAbteilung, IDBereich}
             rowplanBereichRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowplanBereichRow)
             Return rowplanBereichRow
@@ -1949,6 +1982,9 @@ Partial Public Class dsPlanSearch
             Me.columnLastChangeFrom = MyBase.Columns("LastChangeFrom")
             Me.columnLastChangeAt = MyBase.Columns("LastChangeAt")
             Me.columnlstBerufsgruppen = MyBase.Columns("lstBerufsgruppen")
+            Me.columnIDPlanMain = MyBase.Columns("IDPlanMain")
+            Me.columnIDAbteilung = MyBase.Columns("IDAbteilung")
+            Me.columnIDBereich = MyBase.Columns("IDBereich")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2006,6 +2042,12 @@ Partial Public Class dsPlanSearch
             MyBase.Columns.Add(Me.columnLastChangeAt)
             Me.columnlstBerufsgruppen = New Global.System.Data.DataColumn("lstBerufsgruppen", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnlstBerufsgruppen)
+            Me.columnIDPlanMain = New Global.System.Data.DataColumn("IDPlanMain", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDPlanMain)
+            Me.columnIDAbteilung = New Global.System.Data.DataColumn("IDAbteilung", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDAbteilung)
+            Me.columnIDBereich = New Global.System.Data.DataColumn("IDBereich", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIDBereich)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -3670,6 +3712,51 @@ Partial Public Class dsPlanSearch
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IDPlanMain() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tableplanBereich.IDPlanMainColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Der Wert für Spalte IDPlanMain in Tabelle planBereich ist DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableplanBereich.IDPlanMainColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IDAbteilung() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tableplanBereich.IDAbteilungColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Der Wert für Spalte IDAbteilung in Tabelle planBereich ist DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableplanBereich.IDAbteilungColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IDBereich() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tableplanBereich.IDBereichColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Der Wert für Spalte IDBereich in Tabelle planBereich ist DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableplanBereich.IDBereichColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsBeginntAmNull() As Boolean
             Return Me.IsNull(Me.tableplanBereich.BeginntAmColumn)
         End Function
@@ -3738,6 +3825,42 @@ Partial Public Class dsPlanSearch
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetSerienterminEndetAmNull()
             Me(Me.tableplanBereich.SerienterminEndetAmColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIDPlanMainNull() As Boolean
+            Return Me.IsNull(Me.tableplanBereich.IDPlanMainColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIDPlanMainNull()
+            Me(Me.tableplanBereich.IDPlanMainColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIDAbteilungNull() As Boolean
+            Return Me.IsNull(Me.tableplanBereich.IDAbteilungColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIDAbteilungNull()
+            Me(Me.tableplanBereich.IDAbteilungColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIDBereichNull() As Boolean
+            Return Me.IsNull(Me.tableplanBereich.IDBereichColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIDBereichNull()
+            Me(Me.tableplanBereich.IDBereichColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

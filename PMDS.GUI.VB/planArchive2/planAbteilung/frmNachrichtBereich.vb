@@ -39,6 +39,10 @@ Public Class frmNachrichtBereich
     Public contSelectSelListBerufsgruppen As New contSelectSelList()
     Public contSelectAbtBereiche As New contSelectAbteilBereiche()
 
+    Public Class cAbtBereich
+        Public ID As Guid = Nothing
+        Public isAbt As Boolean = False
+    End Class
 
 
 
@@ -1269,6 +1273,7 @@ Public Class frmNachrichtBereich
             Me.contSelectSelListCategories.setSelectionOnOff(False)
             Me.contSelectSelListCategories.setLabelCount2()
 
+            Me.contSelectAbtBereiche.treeAbtBereiche.Enabled = True
             Me.contSelectAbtBereiche.setSelectionOnOff(CheckState.Unchecked)
             Me.contSelectAbtBereiche.setLabelCount2()
 
@@ -1463,9 +1468,14 @@ Public Class frmNachrichtBereich
             End If
 
             Me.contSelectSelListCategories.loadDataColl(Me.rPlanBereich.Category.Trim())
-
-
-
+            Me.contSelectSelListBerufsgruppen.loadDataColl(Me.rPlanBereich.lstBerufsgruppen.Trim())
+            If Not Me.rPlanBereich.IsIDAbteilungNull() Then
+                Me.contSelectAbtBereiche.setAbtBereich(Me.rPlanBereich.IDAbteilung, True)
+            End If
+            If Not Me.rPlanBereich.IsIDBereichNull() Then
+                Me.contSelectAbtBereiche.setAbtBereich(Me.rPlanBereich.IDBereich, False)
+            End If
+            Me.contSelectAbtBereiche.treeAbtBereiche.Enabled = False
 
             If Me.rPlanBereich.IsEndetAmNull() Then
                 Me.dteEndetAm.Value = Nothing
@@ -1552,6 +1562,7 @@ Public Class frmNachrichtBereich
             Me.ErrorProvider1.SetError(Me.cbFr, "")
             Me.ErrorProvider1.SetError(Me.cbSa, "")
             Me.ErrorProvider1.SetError(Me.cbSo, "")
+            Me.ErrorProvider1.SetError(Me.txtBody, "")
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.clearErrorProvider: " + ex.ToString())
@@ -1701,7 +1712,6 @@ Public Class frmNachrichtBereich
             Dim rSelUserAccount As dsUserAccounts.tblUserAccountsRow = Nothing
             Dim UsrExchangeKto As String = ""
 
-            ' Save for Producer
             Dim Producer As String = ""
             If Me.IsNew Then
                 Dim UserLoggedIn As String = Me.genMain.getLoggedInUser()
@@ -1767,12 +1777,33 @@ Public Class frmNachrichtBereich
                     'End If
                     'rPlanOwner.IsOwner = True
 
+                    Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
+                    Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
+
+                    Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
+                    Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
+
+                    Dim lAbtBereiche As New System.Collections.Generic.List(Of cAbtBereich)()
+                    For Each ID As Guid In lstSelectedAbt
+                        Dim AbtBereichNew As New cAbtBereich()
+                        AbtBereichNew.ID = ID
+                        AbtBereichNew.isAbt = True
+                        lAbtBereiche.Add(AbtBereichNew)
+                    Next
+                    For Each ID As Guid In lstSelectedBereiche
+                        Dim AbtBereichNew As New cAbtBereich()
+                        AbtBereichNew.ID = ID
+                        AbtBereichNew.isAbt = False
+                        lAbtBereiche.Add(AbtBereichNew)
+                    Next
+
                     If Me.chkIsSerientermin.Checked Then
                         If Me.IsNew Then
                             ownerSucessfullySaved = True
                         Else ownerSucessfullySaved = True
                             If Me.dteSerienterminEndetAm.Value.Equals(EndetAmSerientermin) Then
                                 If Me.saveNachrichtToDb2() Then
+                                    Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner)
                                     ownerSucessfullySaved = True
                                     protokollOk = doUI.getRes("EntrySave") + vbNewLine + protokollOk
                                     If Me.chkIsSerientermin.Checked Then
@@ -1799,6 +1830,7 @@ Public Class frmNachrichtBereich
                                     If STKürzung Then
                                         'Me.compPlan1.deletePlan(rPlan.ID, rPlan.MessageId, rPlan.Für, Me.rPlan.IDArt, Me.rPlan.Betreff)
                                         If Me.saveNachrichtToDb2() Then
+                                            Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner)
                                             Me.compPlan1.updatePlanBereichSerienterminEndetAm(rPlanBereich.IDSerientermin, rPlanBereich.SerienterminEndetAm.Date)
                                             Me.compPlan1.deletePlanBereichSerienterminEndetAm(rPlanBereich.IDSerientermin, rPlanBereich.SerienterminEndetAm.Date)
                                             ownerSucessfullySaved = True
@@ -1811,6 +1843,7 @@ Public Class frmNachrichtBereich
                                     End If
                                 Else
                                     If Me.saveNachrichtToDb2() Then
+                                        Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner)
                                         ownerSucessfullySaved = True
                                         If Me.chkIsSerientermin.Checked Then
                                             Me.updateSerientermine(rPlanOwner, rPlanOrigDB, db)
@@ -1823,13 +1856,14 @@ Public Class frmNachrichtBereich
                         End If
                     Else
                         If Me.saveNachrichtToDb2() Then
+                            Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner)
                             ownerSucessfullySaved = True
                             protokollOk = doUI.getRes("EntrySave") + vbNewLine + protokollOk
                             Return True
                         End If
                     End If
                 Else
-                    Throw New Exception("frmNachrichtBereich.savePlan: Error saving E-Mail!")
+                    Throw New Exception("frmNachrichtBereich.savePlan: Error setPlanRowTemp!")
                 End If
             End Using
 
@@ -1882,6 +1916,7 @@ Public Class frmNachrichtBereich
 
                                 Dim rPlanNew As dsPlan.planBereichRow = Me.compPlan1.getNewRowPlanBereich(dsPlanNew)
                                 rPlanNew.ItemArray = rPlanOwner.ItemArray
+
                                 rPlanNew.ID = System.Guid.NewGuid()
                                 rPlanNew.IDKlinik = PMDS.Global.ENV.IDKlinik
                                 'rPlanNew.CreatedFrom = usr
@@ -1910,7 +1945,6 @@ Public Class frmNachrichtBereich
                     End If
                     'End If
 
-                    dsInteropPar1 = New dsInteropPar()
                     Return True
                 End If
             End Using
@@ -1928,6 +1962,33 @@ Public Class frmNachrichtBereich
         End Try
     End Function
 
+    Public Sub copyPlanBereichForEachAbtBereich(lAbtBereiche As System.Collections.Generic.List(Of cAbtBereich), rPlanOrig As dsPlan.planBereichRow)
+        Try
+            Dim dsPlanUpdate As New dsPlan()
+            Dim compPlanUpdate As New compPlan()
+
+            For Each ActAbtBereich In lAbtBereiche
+                dsPlanUpdate.Clear()
+                compPlanUpdate.getPlanBereich(System.Guid.NewGuid(), compPlan.eTypSelPlanBereich.IDPlan, dsPlanUpdate)
+
+                Dim rPlanNew As dsPlan.planBereichRow = Me.compPlan1.getNewRowPlanBereich(dsPlanUpdate)
+                rPlanNew.ItemArray = rPlanOrig.ItemArray
+
+                rPlanNew.ID = System.Guid.NewGuid()
+                rPlanNew.IDKlinik = PMDS.Global.ENV.IDKlinik
+                If ActAbtBereich.isAbt Then
+                    rPlanNew.IDAbteilung = ActAbtBereich.ID
+                Else
+                    rPlanNew.IDAbteilung = ActAbtBereich.ID
+                End If
+
+                compPlanUpdate.daPlanBereich.Update(dsPlanUpdate.planBereich)
+            Next
+
+        Catch ex As Exception
+            Throw New Exception("frmNachrichtBereich.copyPlanBereichForEachAbtBereich: " + ex.ToString())
+        End Try
+    End Sub
     Public Sub updateSerientermine(ByRef rPlanOrig As dsPlan.planBereichRow, ByRef rPlanOrigDB As PMDS.db.Entities.planBereich, db As PMDS.db.Entities.ERModellPMDSEntities)
         Try
             Dim tPlansST As IQueryable(Of PMDS.db.Entities.plan) = Me.b.getPlansSerientermin5(rPlanOrig.IDSerientermin, db)

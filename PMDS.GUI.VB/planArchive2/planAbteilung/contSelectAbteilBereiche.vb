@@ -166,6 +166,31 @@ Public Class contSelectAbteilBereiche
         End Try
     End Sub
 
+    Public Function setAbtBereich(ByRef ID As Guid, setAbt As Boolean) As String
+        Try
+            Dim sAbtBereich As String = ""
+            For Each nodAbt In treeAbtBereiche.Nodes
+                If setAbt Then
+                    If nodAbt.Key.Equals(ID.ToString()) Then
+                        nodAbt.CheckedState = Windows.Forms.CheckState.Checked
+                    End If
+                End If
+                If Not setAbt Then
+                    For Each nodBereich In nodAbt.Nodes
+                        If nodBereich.Key.Equals(ID.ToString()) Then
+                            nodBereich.CheckedState = Windows.Forms.CheckState.Checked
+                        End If
+                    Next
+                End If
+            Next
+
+            Return sAbtBereich
+
+        Catch ex As Exception
+            Throw New Exception("contSelectAbteilBereiche.getSelectedData: " + ex.ToString())
+        End Try
+    End Function
+
     Public Sub clearFilterSearch()
         Try
             Me.txtSearch.Text = ""

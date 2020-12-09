@@ -144,7 +144,8 @@ Public Class contSelectSelList
             Dim lstCategories As New System.Collections.Generic.List(Of String)()
             If sGuids.Trim().Contains(";") Then
                 lstCategories = PMDS.Global.generic.readStrVariables(sGuids.Trim())
-            Else lstCategories = PMDS.Global.generic.readStrVariables(sGuids.Trim())
+            Else
+                lstCategories = PMDS.Global.generic.readStrVariables(sGuids.Trim())
                 lstCategories.Add(sGuids.Trim())
             End If
 

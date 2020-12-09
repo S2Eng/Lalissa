@@ -153,6 +153,9 @@ Public Class contPlanungDataBereich
         Dim UltraGridColumn49 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("LastChangeFrom")
         Dim UltraGridColumn50 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("LastChangeAt")
         Dim UltraGridColumn51 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("lstBerufsgruppen")
+        Dim UltraGridColumn12 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPlanMain")
+        Dim UltraGridColumn13 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAbteilung")
+        Dim UltraGridColumn14 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBereich")
         Dim UltraGridColumn10 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Abteilung", 0)
         Dim UltraGridColumn11 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Bereich", 1)
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -363,7 +366,7 @@ Public Class contPlanungDataBereich
         UltraGridColumn44.Header.VisiblePosition = 26
         UltraGridColumn44.Hidden = True
         UltraGridColumn45.Header.Editor = Nothing
-        UltraGridColumn45.Header.VisiblePosition = 27
+        UltraGridColumn45.Header.VisiblePosition = 28
         UltraGridColumn45.Hidden = True
         UltraGridColumn46.Header.Editor = Nothing
         UltraGridColumn46.Header.VisiblePosition = 11
@@ -390,13 +393,22 @@ Public Class contPlanungDataBereich
         UltraGridColumn51.Header.Caption = "Berufsgruppen"
         UltraGridColumn51.Header.Editor = Nothing
         UltraGridColumn51.Header.VisiblePosition = 6
+        UltraGridColumn12.Header.Editor = Nothing
+        UltraGridColumn12.Header.VisiblePosition = 27
+        UltraGridColumn12.Hidden = True
+        UltraGridColumn13.Header.Editor = Nothing
+        UltraGridColumn13.Header.VisiblePosition = 29
+        UltraGridColumn13.Hidden = True
+        UltraGridColumn14.Header.Editor = Nothing
+        UltraGridColumn14.Header.VisiblePosition = 30
+        UltraGridColumn14.Hidden = True
         UltraGridColumn10.Header.Editor = Nothing
         UltraGridColumn10.Header.VisiblePosition = 2
         UltraGridColumn10.Width = 117
         UltraGridColumn11.Header.Editor = Nothing
         UltraGridColumn11.Header.VisiblePosition = 3
         UltraGridColumn11.Width = 121
-        UltraGridBand1.Columns.AddRange(New Object() {UltraGridColumn1, UltraGridColumn2, UltraGridColumn3, UltraGridColumn4, UltraGridColumn5, UltraGridColumn6, UltraGridColumn7, UltraGridColumn8, UltraGridColumn9, UltraGridColumn27, UltraGridColumn28, UltraGridColumn37, UltraGridColumn38, UltraGridColumn39, UltraGridColumn40, UltraGridColumn41, UltraGridColumn42, UltraGridColumn43, UltraGridColumn44, UltraGridColumn45, UltraGridColumn46, UltraGridColumn47, UltraGridColumn48, UltraGridColumn49, UltraGridColumn50, UltraGridColumn51, UltraGridColumn10, UltraGridColumn11})
+        UltraGridBand1.Columns.AddRange(New Object() {UltraGridColumn1, UltraGridColumn2, UltraGridColumn3, UltraGridColumn4, UltraGridColumn5, UltraGridColumn6, UltraGridColumn7, UltraGridColumn8, UltraGridColumn9, UltraGridColumn27, UltraGridColumn28, UltraGridColumn37, UltraGridColumn38, UltraGridColumn39, UltraGridColumn40, UltraGridColumn41, UltraGridColumn42, UltraGridColumn43, UltraGridColumn44, UltraGridColumn45, UltraGridColumn46, UltraGridColumn47, UltraGridColumn48, UltraGridColumn49, UltraGridColumn50, UltraGridColumn51, UltraGridColumn12, UltraGridColumn13, UltraGridColumn14, UltraGridColumn10, UltraGridColumn11})
         Me.gridPlans.DisplayLayout.BandsSerializer.Add(UltraGridBand1)
         Appearance2.BackColor = System.Drawing.Color.White
         Me.gridPlans.DisplayLayout.GroupByBox.Appearance = Appearance2
@@ -713,6 +725,31 @@ Public Class contPlanungDataBereich
             If SetUIGrid Then
                 Me.setUI(Me._LayoutGrid)
             End If
+
+            Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
+                db.Configuration.LazyLoadingEnabled = False
+
+                For Each rGrid In Me.gridPlans.Rows
+                    Dim v As DataRowView = rGrid.ListObject
+                    Dim rPlanSel As dsPlanSearch.planBereichRow = v.Row
+
+                    If Not rPlanSel.IsIDAbteilungNull() Then
+                        Dim rAbteilung = (From o In db.Abteilung
+                                          Where o.ID = rPlanSel.IDAbteilung
+                                          Select o.ID, o.Bezeichnung).ToList().First()
+
+                        rGrid.Cells(Me.colAbteilung).Value = rAbteilung.Bezeichnung.Trim()
+                    End If
+
+                    If Not rPlanSel.IsIDBereichNull() Then
+                        Dim rBereich = (From o In db.Bereich
+                                        Where o.ID = rPlanSel.IDBereich
+                                        Select o.ID, o.Bezeichnung).ToList().First()
+
+                        rGrid.Cells(Me.colBereich).Value = rBereich.Bezeichnung.Trim()
+                    End If
+                Next
+            End Using
 
             Me.gridPlans.Rows.ExpandAll(True)
             Me.setUIAnzahl(Me.gridPlans.Rows.Count)

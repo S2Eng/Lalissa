@@ -12,7 +12,7 @@
   <xs:element name="dsPlanSearch" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsPlanSearch" msprop:Generator_UserDSName="dsPlanSearch">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="plan" msprop:Generator_TableClassName="planDataTable" msprop:Generator_TableVarName="tableplan" msprop:Generator_TablePropName="plan" msprop:Generator_RowDeletingName="planRowDeleting" msprop:Generator_RowChangingName="planRowChanging" msprop:Generator_RowEvHandlerName="planRowChangeEventHandler" msprop:Generator_RowDeletedName="planRowDeleted" msprop:Generator_UserTableName="plan" msprop:Generator_RowChangedName="planRowChanged" msprop:Generator_RowEvArgName="planRowChangeEvent" msprop:Generator_RowClassName="planRow">
+        <xs:element name="plan" msprop:Generator_TableClassName="planDataTable" msprop:Generator_TableVarName="tableplan" msprop:Generator_RowChangedName="planRowChanged" msprop:Generator_TablePropName="plan" msprop:Generator_RowDeletingName="planRowDeleting" msprop:Generator_RowChangingName="planRowChanging" msprop:Generator_RowEvHandlerName="planRowChangeEventHandler" msprop:Generator_RowDeletedName="planRowDeleted" msprop:Generator_RowClassName="planRow" msprop:Generator_UserTableName="plan" msprop:Generator_RowEvArgName="planRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Betreff" msprop:Generator_ColumnVarNameInTable="columnBetreff" msprop:Generator_ColumnPropNameInRow="Betreff" msprop:Generator_ColumnPropNameInTable="BetreffColumn" msprop:Generator_UserColumnName="Betreff">
@@ -233,7 +233,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="planBereich" msprop:Generator_TableClassName="planBereichDataTable" msprop:Generator_TableVarName="tableplanBereich" msprop:Generator_TablePropName="planBereich" msprop:Generator_RowDeletingName="planBereichRowDeleting" msprop:Generator_RowChangingName="planBereichRowChanging" msprop:Generator_RowEvHandlerName="planBereichRowChangeEventHandler" msprop:Generator_RowDeletedName="planBereichRowDeleted" msprop:Generator_UserTableName="planBereich" msprop:Generator_RowChangedName="planBereichRowChanged" msprop:Generator_RowEvArgName="planBereichRowChangeEvent" msprop:Generator_RowClassName="planBereichRow">
+        <xs:element name="planBereich" msprop:Generator_TableClassName="planBereichDataTable" msprop:Generator_TableVarName="tableplanBereich" msprop:Generator_RowChangedName="planBereichRowChanged" msprop:Generator_TablePropName="planBereich" msprop:Generator_RowDeletingName="planBereichRowDeleting" msprop:Generator_RowChangingName="planBereichRowChanging" msprop:Generator_RowEvHandlerName="planBereichRowChangeEventHandler" msprop:Generator_RowDeletedName="planBereichRowDeleted" msprop:Generator_RowClassName="planBereichRow" msprop:Generator_UserTableName="planBereich" msprop:Generator_RowEvArgName="planBereichRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -304,6 +304,9 @@
               </xs:element>
               <xs:element name="LastChangeAt" msprop:Generator_ColumnVarNameInTable="columnLastChangeAt" msprop:Generator_ColumnPropNameInRow="LastChangeAt" msprop:Generator_ColumnPropNameInTable="LastChangeAtColumn" msprop:Generator_UserColumnName="LastChangeAt" type="xs:dateTime" />
               <xs:element name="lstBerufsgruppen" msprop:Generator_ColumnVarNameInTable="columnlstBerufsgruppen" msprop:Generator_ColumnPropNameInRow="lstBerufsgruppen" msprop:Generator_ColumnPropNameInTable="lstBerufsgruppenColumn" msprop:Generator_UserColumnName="lstBerufsgruppen" type="xs:string" />
+              <xs:element name="IDPlanMain" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDPlanMain" msprop:Generator_ColumnPropNameInRow="IDPlanMain" msprop:Generator_ColumnPropNameInTable="IDPlanMainColumn" msprop:Generator_UserColumnName="IDPlanMain" type="xs:string" minOccurs="0" />
+              <xs:element name="IDAbteilung" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDAbteilung" msprop:Generator_ColumnPropNameInRow="IDAbteilung" msprop:Generator_ColumnPropNameInTable="IDAbteilungColumn" msprop:Generator_UserColumnName="IDAbteilung" type="xs:string" minOccurs="0" />
+              <xs:element name="IDBereich" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBereich" msprop:Generator_ColumnPropNameInRow="IDBereich" msprop:Generator_ColumnPropNameInTable="IDBereichColumn" msprop:Generator_UserColumnName="IDBereich" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
