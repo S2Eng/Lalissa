@@ -706,7 +706,7 @@ Public Class contPlanung2Bereich
             Me.contSelectAbtBereiche.setLabelCount2()
             Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
-            If not PMDS.Global.ENV.HasRight([Global].UserRights.PflegePlanungAendern) Then
+            If Not PMDS.Global.ENV.HasRight([Global].UserRights.PflegePlanungAendern) Then
                 Me.btnAdd2.Visible = False
                 Me.ContPlanungDataBereich1.LöschenToolStripMenuItem1.Visible = False
                 Me.ContPlanungDataBereich1.TermineErledigenToolStripMenuItem.Visible = False
@@ -869,7 +869,6 @@ Public Class contPlanung2Bereich
     Public Sub newPlan()
         Try
             Dim frmNachrichtBereich1 As frmNachrichtBereich = Me.ContPlanungDataBereich1.getFreeFormPlanBereich()
-            frmNachrichtBereich1.modalWindow = Me
             frmNachrichtBereich1.initControl()
             frmNachrichtBereich1.IsNew = True
             frmNachrichtBereich1.IDPlanBereich = Nothing

@@ -678,48 +678,51 @@ Public Class contPlanungDataBereich
     Public Function search(doInit As Boolean, userClicked As Boolean, ByRef SetUIGrid As Boolean) As Boolean
         Try
             Me.mainWindow.lblFound.Text = ""
+
+            Dim tDesign As Integer = 0
+            If userClicked Then
+                'If lstPatients.Count = 0 Then
+                'doUI.doMessageBox2("NoPatientsSelected", "", "!")
+                'Return False
+            End If
+
+            Me.clear()
+
+            Dim sqlStatus As String = ""
+            Select Case Me.mainWindow.getStatus()
+                Case "Erledigt"
+                    sqlStatus = " [planBereich].Status='Erledigt' "
+                Case "Storniert"
+                    sqlStatus = " [planBereich].Status='Storniert' "
+                Case "Offen"
+                    sqlStatus = " ([planBereich].Status<>'Erledigt' AND [planBereich].Status<>'Storniert') "
+            End Select
+
+            Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
+            Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
+
+            Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
+            Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
+
+            Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
+            Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
+
+            Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
+            Me.mainWindow.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
+
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                Dim tDesign As Integer = 0
-                If userClicked Then
-                    'If lstPatients.Count = 0 Then
-                    'doUI.doMessageBox2("NoPatientsSelected", "", "!")
-                    'Return False
+                Dim rUsr As PMDS.db.Entities.Benutzer = b.getUser(PMDS.Global.ENV.USERID, db)
+                If Not PMDS.Global.ENV.adminSecure AndAlso ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Then
+
                 End If
-
-                Me.clear()
-
-                Dim sqlStatus As String = ""
-                Select Case Me.mainWindow.getStatus()
-                    Case "Erledigt"
-                        sqlStatus = " [planBereich].Status='Erledigt' "
-                    Case "Storniert"
-                        sqlStatus = " [planBereich].Status='Storniert' "
-                    Case "Offen"
-                        sqlStatus = " ([planBereich].Status<>'Erledigt' AND [planBereich].Status<>'Storniert') "
-                End Select
-
-                Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
-                Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
-
-                Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
-                Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
-
-                Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
-                Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
-
-                Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
-                Me.mainWindow.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
-
-                Dim lAllBerufsstandGruppe As New System.Collections.Generic.List(Of String)()
-                lAllBerufsstandGruppe = clPlan1.getAllUsersFromBerufsgruppe(db)
-
-                Me.SqlCommandReturn = ""
-                Me.suchePlan1.searchPlanBereich(Me.DsPlanSearch1, Me.CompPlanSearch, sqlStatus,
-                                Me.mainWindow.UDateVon.Value, Me.mainWindow.UDateBis.Value,
-                                Me.mainWindow.txtBetreff2.Text.Trim(), SqlCommandReturn,
-                                lstSelectedCategories, lstSelectedAbt, lstSelectedBereiche, lstSelectedBerufsgruppen, lAllBerufsstandGruppe,
-                                Me._LayoutGrid, PMDS.Global.ENV.IDKlinik)
             End Using
+
+            Me.SqlCommandReturn = ""
+            Me.suchePlan1.searchPlanBereich(Me.DsPlanSearch1, Me.CompPlanSearch, sqlStatus,
+                            Me.mainWindow.UDateVon.Value, Me.mainWindow.UDateBis.Value,
+                            Me.mainWindow.txtBetreff2.Text.Trim(), SqlCommandReturn,
+                            lstSelectedCategories, lstSelectedAbt, lstSelectedBereiche, lstSelectedBerufsgruppen,
+                            Me._LayoutGrid, PMDS.Global.ENV.IDKlinik)
 
             gridPlans.Refresh()
             Me.setGridColText()
@@ -857,7 +860,6 @@ Public Class contPlanungDataBereich
 
             If Not bFrmFound Then
                 Dim frmNachrichtBereich1 As New frmNachrichtBereich()
-                frmNachrichtBereich1.modalWindow = Me.mainWindow
                 frmNachrichtBereich1.initControl()
                 frmNachrichtBereich1.IDPlanBereich = IDPlanBereich
                 frmNachrichtBereich1.IsNew = False
@@ -1024,16 +1026,16 @@ Public Class contPlanungDataBereich
                     Dim anz As Integer = 0
                     For Each cSelAppActuell As cSelEntries In selectedApp
                         If typAction = eTypAction.delete Then
-                            Dim bDoDelete As Boolean = True
-                            'Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = b.getUserByUserName2(cSelAppActuell.rPlanBereichSel.CreatedFrom.Trim(), db)
-                            'If tUser.Count = 1 Then
-                            '    Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
-                            '    If ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Or PMDS.Global.ENV.adminSecure Then
-                            '        bDoDelete = True
-                            '    End If
-                            'Else
-                            '    bDoDelete = True
-                            'End If
+                            Dim bDoDelete As Boolean = False
+                            Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = b.getUserByUserName2(cSelAppActuell.rPlanBereichSel.CreatedFrom.Trim(), db)
+                            If tUser.Count = 1 Then
+                                Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
+                                If ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Or PMDS.Global.ENV.adminSecure Then
+                                    bDoDelete = True
+                                End If
+                            Else
+                                bDoDelete = True
+                            End If
                             If bDoDelete Then
                                 Dim IDPlan As System.Guid = cSelAppActuell.rPlanBereichSel.ID
                                 Dim sMsgBoxTxt As String = QS2.Desktop.ControlManagment.ControlManagment.getRes("Termin {0} wurde gelöscht!")

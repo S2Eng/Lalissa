@@ -85,7 +85,9 @@ namespace PMDS.Global
             Dekurs = 0,
             DekursErstellen = 1,
             DekursErstellenAls = 2,
-            PrintTermine = 3
+            PrintTermine = 3,
+            PrintTermineBereich = 4
+
         }
 
 

@@ -284,6 +284,7 @@ Public Class suchePlan
                          ByRef lstSelectedAbteilungen As System.Collections.Generic.List(Of Guid),
                          ByRef lstSelectedBereiche As System.Collections.Generic.List(Of Guid),
                          ByRef lstSelectedBerufsgruppen As System.Collections.Generic.List(Of String),
+                         ByRef lAllBerufsstandGruppe As System.Collections.Generic.List(Of String),
                          LayoutGrid As contPlanungDataBereich.eLayoutGrid, ByRef IDKlinik As Guid) As Boolean
         Try
             compPlanSearch.daSearchPlanBereich.SelectCommand.Parameters.Clear()
@@ -326,6 +327,15 @@ Public Class suchePlan
             If lstSelectedBerufsgruppen.Count > 0 Then
                 Dim sql_Berufsgrp As String = ""
                 For Each sTxt As String In lstSelectedBerufsgruppen
+                    Dim id_str As String = " [planBereich].lstBerufsgruppen like '%" + sTxt.ToString + "%' "
+                    sql_Berufsgrp += IIf(gen.IsNull(Trim(sql_Berufsgrp)), id_str, " or " + id_str)
+                Next
+                Dim sql_sub As String = " (" + sql_Berufsgrp + ") "
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+            End If
+            If lAllBerufsstandGruppe.Count > 0 Then
+                Dim sql_Berufsgrp As String = ""
+                For Each sTxt As String In lAllBerufsstandGruppe
                     Dim id_str As String = " [planBereich].lstBerufsgruppen like '%" + sTxt.ToString + "%' "
                     sql_Berufsgrp += IIf(gen.IsNull(Trim(sql_Berufsgrp)), id_str, " or " + id_str)
                 Next

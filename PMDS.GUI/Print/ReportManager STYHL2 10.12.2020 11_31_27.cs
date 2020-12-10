@@ -732,34 +732,36 @@ namespace PMDS.Print
         {
             try
             {
-                dsTermine.WriteXml(ENV.pathConfig + "\\dsTermineBereich.xml", XmlWriteMode.WriteSchema);
-                dsTermine.WriteXmlSchema(ENV.pathConfig + "\\dsTermineBereich.xsd");
-                return;
+                //dsTermine.WriteXml(ENV.pathConfig + "\\dsTermine.xml", XmlWriteMode.WriteSchema);
+                //dsTermine.WriteXmlSchema(ENV.pathConfig + "\\dsTermine.xsd");
+                //return;
 
                 ReportDocument rpt = new ReportDocument();
-                string ReportFile = "TermineBereich1.rpt";
+                string ReportFile = "";
 
                 string strCheck = Quickbutton.Trim().ToLower();
-                //switch (strCheck)
-                //{
-                //    case "resid.patientbeginn":
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine1.rpt");
-                //        break;
-                //    case "resid.patientkategorie":
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine2.rpt");
-                //        break;
-                //    case "resid.kategoriepatient":
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine3.rpt");
-                //        break;
-                //    default:
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine4.rpt");
-                //        break;
-                //}
+                switch (strCheck)
+                {
+                    case "resid.patientbeginn":
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine1.rpt");
+                        break;
+                    case "resid.patientkategorie":
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine2.rpt");
+                        break;
+                    case "resid.kategoriepatient":
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine3.rpt");
+                        break;
+                    default:
+                        ReportFile = Path.Combine(ENV.ReportPath, "Termine4.rpt");
+                        break;
+                }
 
                 rpt.Load(ReportFile);
-                frmPrintPreview.LogOnCrystReport(rpt, dsTermine.Tables["planBereich"], true);
+                frmPrintPreview.LogOnCrystReport(rpt, dsTermine.Tables["plan"], true);
 
                 ReportManager.AddCrystalParameter(rpt, "IDKlinik", IDKlinik.ToString());
+                ReportManager.AddCrystalParameter(rpt, "IDAbteilung", IDAbteilung.ToString());
+                ReportManager.AddCrystalParameter(rpt, "IDBereich", IDBereich.ToString());
 
                 if (dFrom is null)
                 {
@@ -779,6 +781,8 @@ namespace PMDS.Print
                 }
 
                 ReportManager.AddCrystalParameter(rpt, "UserLoggedOn", UserLoggedOn.Trim());
+                ReportManager.AddCrystalParameter(rpt, "lstKlients", lstKlients.Trim());
+                ReportManager.AddCrystalParameter(rpt, "lstUsers", lstUsers.Trim());
                 ReportManager.AddCrystalParameter(rpt, "lstCategories", lstCategories.Trim());
                 ReportManager.AddCrystalParameter(rpt, "Title", Title.Trim());
                 ReportManager.AddCrystalParameter(rpt, "ViewMode", ViewMode.Trim());

@@ -678,48 +678,44 @@ Public Class contPlanungDataBereich
     Public Function search(doInit As Boolean, userClicked As Boolean, ByRef SetUIGrid As Boolean) As Boolean
         Try
             Me.mainWindow.lblFound.Text = ""
-            Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                Dim tDesign As Integer = 0
-                If userClicked Then
-                    'If lstPatients.Count = 0 Then
-                    'doUI.doMessageBox2("NoPatientsSelected", "", "!")
-                    'Return False
-                End If
 
-                Me.clear()
+            Dim tDesign As Integer = 0
+            If userClicked Then
+                'If lstPatients.Count = 0 Then
+                'doUI.doMessageBox2("NoPatientsSelected", "", "!")
+                'Return False
+            End If
 
-                Dim sqlStatus As String = ""
-                Select Case Me.mainWindow.getStatus()
-                    Case "Erledigt"
-                        sqlStatus = " [planBereich].Status='Erledigt' "
-                    Case "Storniert"
-                        sqlStatus = " [planBereich].Status='Storniert' "
-                    Case "Offen"
-                        sqlStatus = " ([planBereich].Status<>'Erledigt' AND [planBereich].Status<>'Storniert') "
-                End Select
+            Me.clear()
 
-                Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
-                Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
+            Dim sqlStatus As String = ""
+            Select Case Me.mainWindow.getStatus()
+                Case "Erledigt"
+                    sqlStatus = " [planBereich].Status='Erledigt' "
+                Case "Storniert"
+                    sqlStatus = " [planBereich].Status='Storniert' "
+                Case "Offen"
+                    sqlStatus = " ([planBereich].Status<>'Erledigt' AND [planBereich].Status<>'Storniert') "
+            End Select
 
-                Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
-                Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
+            Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
+            Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
 
-                Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
-                Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
+            Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
+            Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
 
-                Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
-                Me.mainWindow.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
+            Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
+            Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
 
-                Dim lAllBerufsstandGruppe As New System.Collections.Generic.List(Of String)()
-                lAllBerufsstandGruppe = clPlan1.getAllUsersFromBerufsgruppe(db)
+            Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
+            Me.mainWindow.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
 
-                Me.SqlCommandReturn = ""
-                Me.suchePlan1.searchPlanBereich(Me.DsPlanSearch1, Me.CompPlanSearch, sqlStatus,
-                                Me.mainWindow.UDateVon.Value, Me.mainWindow.UDateBis.Value,
-                                Me.mainWindow.txtBetreff2.Text.Trim(), SqlCommandReturn,
-                                lstSelectedCategories, lstSelectedAbt, lstSelectedBereiche, lstSelectedBerufsgruppen, lAllBerufsstandGruppe,
-                                Me._LayoutGrid, PMDS.Global.ENV.IDKlinik)
-            End Using
+            Me.SqlCommandReturn = ""
+            Me.suchePlan1.searchPlanBereich(Me.DsPlanSearch1, Me.CompPlanSearch, sqlStatus,
+                            Me.mainWindow.UDateVon.Value, Me.mainWindow.UDateBis.Value,
+                            Me.mainWindow.txtBetreff2.Text.Trim(), SqlCommandReturn,
+                            lstSelectedCategories, lstSelectedAbt, lstSelectedBereiche, lstSelectedBerufsgruppen,
+                            Me._LayoutGrid, PMDS.Global.ENV.IDKlinik)
 
             gridPlans.Refresh()
             Me.setGridColText()
@@ -857,7 +853,6 @@ Public Class contPlanungDataBereich
 
             If Not bFrmFound Then
                 Dim frmNachrichtBereich1 As New frmNachrichtBereich()
-                frmNachrichtBereich1.modalWindow = Me.mainWindow
                 frmNachrichtBereich1.initControl()
                 frmNachrichtBereich1.IDPlanBereich = IDPlanBereich
                 frmNachrichtBereich1.IsNew = False
@@ -1024,16 +1019,16 @@ Public Class contPlanungDataBereich
                     Dim anz As Integer = 0
                     For Each cSelAppActuell As cSelEntries In selectedApp
                         If typAction = eTypAction.delete Then
-                            Dim bDoDelete As Boolean = True
-                            'Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = b.getUserByUserName2(cSelAppActuell.rPlanBereichSel.CreatedFrom.Trim(), db)
-                            'If tUser.Count = 1 Then
-                            '    Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
-                            '    If ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Or PMDS.Global.ENV.adminSecure Then
-                            '        bDoDelete = True
-                            '    End If
-                            'Else
-                            '    bDoDelete = True
-                            'End If
+                            Dim bDoDelete As Boolean = False
+                            Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = b.getUserByUserName2(cSelAppActuell.rPlanBereichSel.CreatedFrom.Trim(), db)
+                            If tUser.Count = 1 Then
+                                Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
+                                If ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Or PMDS.Global.ENV.adminSecure Then
+                                    bDoDelete = True
+                                End If
+                            Else
+                                bDoDelete = True
+                            End If
                             If bDoDelete Then
                                 Dim IDPlan As System.Guid = cSelAppActuell.rPlanBereichSel.ID
                                 Dim sMsgBoxTxt As String = QS2.Desktop.ControlManagment.ControlManagment.getRes("Termin {0} wurde gelöscht!")
@@ -1042,7 +1037,7 @@ Public Class contPlanungDataBereich
 
                                 If resSerientermineSeleteAll = DialogResult.Yes Then
                                     If Not cSelAppActuell.rPlanBereichSel.IsIDSerienterminNull() Then
-                                        Me.CompPlanSearch.deletePlanSerientermine(cSelAppActuell.rPlanBereichSel.IDSerientermin)
+                                        Me.CompPlanSearch.deletePlanBereichSerientermine(cSelAppActuell.rPlanBereichSel.IDSerientermin)
                                     End If
                                 End If
                                 Me.CompPlanSearch.deletePlanBereich(cSelAppActuell.rPlanBereichSel.ID)
@@ -1055,14 +1050,8 @@ Public Class contPlanungDataBereich
 
                         ElseIf typAction = eTypAction.selectAll Then
                             cSelAppActuell.rowGrid.Selected = True
-
                         ElseIf typAction = eTypAction.selectNone Then
                             cSelAppActuell.rowGrid.Selected = False
-
-                        ElseIf typAction = eTypAction.Stornieren Then
-                            compPlanWork.updatePlanBereichStatus(cSelAppActuell.rPlanBereichSel.ID, "Storniert")
-                        ElseIf typAction = eTypAction.Erledigen Then
-                            compPlanWork.updatePlanBereichStatus(cSelAppActuell.rPlanBereichSel.ID, "Erledigt")
                         End If
                     Next
 
@@ -1077,12 +1066,6 @@ Public Class contPlanungDataBereich
                         If protokollTxt.Trim() <> "" Then
                             protokollTxt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Folgende Termine können nicht gelöscht werden da keine Berechtigung:") + vbNewLine + vbNewLine + protokollTxt
                         End If
-
-                    ElseIf typAction = eTypAction.Stornieren Then
-                        Me.search(False, True, False)
-
-                    ElseIf typAction = eTypAction.Erledigen Then
-                        Me.search(False, True, False)
 
                     End If
 
@@ -1124,33 +1107,35 @@ Public Class contPlanungDataBereich
             Dim callMainFctPlan As New PMDS.Global.ENV.eCallMainFctPlan()
             callMainFctPlan.ds = Me.DsPlanSearch1.Copy()
 
+            callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("IDAufenthalt", GetType(Guid))
+            callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Nachname", GetType(String))
+            callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Vorname", GetType(String))
+            callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Geschlecht", GetType(String))
+            callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Alter", GetType(Int32))
             callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Abteilung", GetType(String))
             callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Bereich", GetType(String))
             callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Klinik", GetType(String))
-
-
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("ID", GetType(Guid))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Betreff", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("BeginntAm", GetType(DateTime))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("EndetAm", GetType(DateTime))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Status", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Category", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("IDSerientermin", GetType(Guid))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("IDKlinik", GetType(Guid))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Abteilung", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("Bereich", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("lstBerufsgruppen", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("CreatedAt", GetType(DateTime))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("CreatedFrom", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("LastChangeAt", GetType(DateTime))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("LastChangeFrom", GetType(String))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("IDAbteilung", GetType(Guid))
-            'callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("IDBereich", GetType(Guid))
+            callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Columns.Add("IDUrlaub", GetType(Guid))
 
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 For Each rPlan As dsPlanSearch.planBereichRow In callMainFctPlan.ds.Tables(Me.DsPlanSearch1.planBereich.TableName.Trim()).Rows
-                    Dim rKlinik As PMDS.db.Entities.Klinik = Me.b.getKlinik(rPlan.IDKlinik, db)
-                    rPlan("Klinik") = rKlinik.Bezeichnung.Trim()
+                    'Dim rAufenthalt As PMDS.db.Entities.Aufenthalt = Me.b.getAktuellerAufenthaltPatient(rPlan.IDPatient, False, db)
+                    'rPlan("IDAufenthalt") = rAufenthalt.ID
+
+                    'If Not rAufenthalt.IDAbteilung Is Nothing Then
+                    '    Dim rAbteilung As PMDS.db.Entities.Abteilung = Me.b.getAbteilung(rAufenthalt.IDAbteilung.Value, db)
+                    '    rPlan("Abteilung") = rAbteilung.Bezeichnung.Trim()
+                    'End If
+                    'If Not rAufenthalt.IDBereich Is Nothing Then
+                    '    Dim rBereich As PMDS.db.Entities.Bereich = Me.b.getBereich(rAufenthalt.IDBereich, db)
+                    '    rPlan("Bereich") = rBereich.Bezeichnung.Trim()
+                    'End If
+                    'If Not rAufenthalt.IDUrlaub Is Nothing Then
+                    '    rPlan("IDUrlaub") = rAufenthalt.IDUrlaub.Value
+                    'End If
+
+                    'Dim rKlinik As PMDS.db.Entities.Klinik = Me.b.getKlinik(PMDS.Global.ENV.IDKlinik, db)
+                    'rPlan("Klinik") = rKlinik.Bezeichnung.Trim()
                 Next
             End Using
 
@@ -1158,6 +1143,8 @@ Public Class contPlanungDataBereich
             callMainFctPlan.ViewMode = "L"
 
             callMainFctPlan.IDKlinik = PMDS.Global.ENV.IDKlinik
+            callMainFctPlan.IDAbteilung = PMDS.Global.ENV.CurrentIDAbteilung
+            callMainFctPlan.IDBereich = PMDS.Global.ENV.CurrentIDBereich
 
             If Me.mainWindow.UDateVon.Value Is Nothing Then
                 callMainFctPlan.dFrom = Nothing
@@ -1173,13 +1160,14 @@ Public Class contPlanungDataBereich
 
             callMainFctPlan.UserLoggedOn = Me.gen.getLoggedInUser().Trim()
             Dim iCounter As Integer = 0
+            'callMainFctPlan.lstKlients = Me.mainWindow.contSelectPatienten.getObjectInfo(True, False, iCounter)
             callMainFctPlan.Quickbutton = Me.mainWindow._lastQuickbutton.Trim()
 
             Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
             Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
             callMainFctPlan.lstCategories = IDCategory
 
-            Me.gen.callMainFctPMDS([Global].ENV.eFctCallMainFctPlan.PrintTermineBereich, callMainFctPlan)
+            Me.gen.callMainFctPMDS([Global].ENV.eFctCallMainFctPlan.PrintTermine, callMainFctPlan)
 
         Catch ex As Exception
             Throw New Exception("contPlanungDataBereich.print: " + ex.ToString())
@@ -1208,6 +1196,20 @@ Public Class contPlanungDataBereich
             Me.Cursor = Cursors.Default
         End Try
     End Sub
+
+    Public Sub groupGrid(ByVal bOn As Boolean)
+        Try
+            If bOn Then
+                Me.gridPlans.DisplayLayout.ViewStyleBand = ViewStyleBand.OutlookGroupBy
+            Else
+                Me.gridPlans.DisplayLayout.ViewStyleBand = ViewStyleBand.Vertical
+            End If
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        End Try
+    End Sub
+
 
     Private Sub AllesAuswählenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AllesAuswählenToolStripMenuItem.Click
         Try
@@ -1249,6 +1251,10 @@ Public Class contPlanungDataBereich
         Catch ex As Exception
             Me.gen.GetEcxeptionGeneral(ex)
         End Try
+    End Sub
+
+    Private Sub ultraDay_BeforeAppointmentsMoved(sender As Object, e As CancelableAppointmentsEventArgs)
+        e.Cancel = True
     End Sub
 
     Private Sub TermineStornierenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TermineStornierenToolStripMenuItem.Click

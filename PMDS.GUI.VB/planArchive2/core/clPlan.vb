@@ -84,6 +84,51 @@ Public Class clPlan
 
 
 
+
+
+    Public Sub deletePlanBereich(ByRef rPlan As dsPlan.planBereichRow, ByRef abort As Boolean, ByRef mainWindow As contPlanung2Bereich, frmMessage As frmNachrichtBereich)
+        Try
+            Dim compPlanTmp As New compPlan()
+            Dim b As New PMDS.db.PMDSBusiness()
+
+            Dim txtTranslatedMsgBox As String = doUI.getRes("DoYouRealyWantToDeleteTheEntry") + "?" + vbNewLine
+            txtTranslatedMsgBox += Me.getInfosPlan(rPlan.ID)
+            If doUI.doMessageBoxTranslated(txtTranslatedMsgBox, "", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                If Not rPlan.IsIDSerienterminNull() Then
+                    Dim txtTranslatedMsgBoxST As String = doUI.getRes("SerienterminLöschenAlleSerientermineLöschen") + "?"
+                    Dim InfoST As String = ""
+                    Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
+                        Dim rPlansST As System.Linq.IQueryable(Of PMDS.db.Entities.planBereich) = b.getPlansBereichSerientermin(rPlan.IDSerientermin, rPlan.BeginntAm.Date, db)
+                        InfoST = vbNewLine + vbNewLine + doUI.getRes("AnzahlSerientermine") + ": " + rPlansST.Count().ToString()
+                    End Using
+
+                    If doUI.doMessageBoxTranslated(txtTranslatedMsgBoxST + InfoST, "", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        compPlanTmp.deletePlanBereich(rPlan.ID)
+                        compPlanTmp.deletePlanBereichSerientermin(rPlan.IDSerientermin, rPlan.BeginntAm.Date)
+                        abort = False
+                    Else
+                        compPlanTmp.deletePlanBereich(rPlan.ID)
+                        abort = False
+                    End If
+                Else
+                    compPlanTmp.deletePlanBereich(rPlan.ID)
+                    abort = False
+                End If
+
+                If Not mainWindow Is Nothing Then
+                    mainWindow.ContPlanungDataBereich1.search(False, False, False)
+                End If
+                If Not frmMessage Is Nothing Then
+                    frmMessage.Close()
+                End If
+            End If
+
+        Catch ex As Exception
+            Throw New Exception("clPlan.deletePlanBereich: " + ex.ToString())
+        End Try
+    End Sub
+
+
     Public Sub deletePlan(ByRef rPlan As dsPlan.planRow, ByRef abort As Boolean, ByRef mainWindow As contPlanung2, frmMessage As frmNachricht3)
         Try
             Dim compPlanTmp As New compPlan()
@@ -131,6 +176,7 @@ Public Class clPlan
             Throw New Exception("clPlan.deletePlan: " + ex.ToString())
         End Try
     End Sub
+
     Public Function getInfosPlan(ByRef IDPlan As Guid) As String
         Try
             Dim clPlan1 As New clPlan()
@@ -658,6 +704,53 @@ Public Class clPlan
 
         Catch ex As Exception
             Throw New Exception("clPlan.checkIfTextIsHtmlText: " + ex.ToString())
+        End Try
+    End Function
+
+    Public Function getAllUsersFromBerufsgruppe(db As PMDS.db.Entities.ERModellPMDSEntities) As System.Collections.Generic.List(Of String)
+        Try
+            Dim lBerufsstandGruppe As New System.Collections.Generic.List(Of String)()
+            Dim b As New PMDS.db.PMDSBusiness()
+
+            Dim rUsr As PMDS.db.Entities.Benutzer = b.getUser(PMDS.Global.ENV.USERID, db)
+
+            'If Not PMDS.Global.ENV.adminSecure AndAlso ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Then
+            'If Not PMDS.Global.ENV.adminSecure Then
+            If Not rUsr.IDBerufsstand Is Nothing Then
+                    Dim rSelListBerufsstand = (From o In db.AuswahlListe
+                                               Where o.ID = rUsr.IDBerufsstand And o.IstGruppe = False
+                                               Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
+
+                    If Not String.IsNullOrEmpty(rSelListBerufsstand.GehörtzuGruppe) Then
+                        Dim lBerufsstände As New System.Collections.Generic.List(Of String)()
+                        If rSelListBerufsstand.GehörtzuGruppe.Contains(";") Then
+                            lBerufsstände = QS2.core.generic.readStrVariables(rSelListBerufsstand.GehörtzuGruppe.Trim())
+                        Else
+                            lBerufsstände.Add(rSelListBerufsstand.GehörtzuGruppe.Trim())
+                        End If
+                        For Each berufst As String In lBerufsstände
+                            Dim rSelListBerufsstandGruppe = (From o In db.AuswahlListe
+                                                             Where o.GehörtzuGruppe = berufst And o.IstGruppe = True
+                                                             Select o.ID, o.Bezeichnung, o.GehörtzuGruppe).ToList().First()
+
+                            Dim tSelListAllUsersGruppe = (From o In db.AuswahlListe
+                                                          Where o.GehörtzuGruppe = rSelListBerufsstandGruppe.GehörtzuGruppe And o.IstGruppe = False And o.Hierarche >= rSelListBerufsstand.Hierarche
+                                                          Select o.ID, o.Bezeichnung, o.GehörtzuGruppe).ToList()
+
+                            For Each rUsrInGruppe In tSelListAllUsersGruppe
+                                lBerufsstandGruppe.Add(rUsrInGruppe.Bezeichnung.Trim())
+                            Next
+                        Next
+                    Else
+                        lBerufsstandGruppe.Add(rSelListBerufsstand.Bezeichnung.Trim())
+                    End If
+                End If
+            'End If
+
+            Return lBerufsstandGruppe
+
+        Catch ex As Exception
+            Throw New Exception("clPlan.getAllUsersFromBerufsgruppe: " + ex.ToString())
         End Try
     End Function
 

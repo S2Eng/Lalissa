@@ -1279,8 +1279,6 @@ Public Class frmNachrichtBereich
 
             Me.contSelectSelListBerufsgruppen.setSelectionOnOff(False)
             Me.contSelectSelListBerufsgruppen.setLabelCount2()
-            Me.contSelectSelListBerufsgruppen.Editable(True)
-            Me.contSelectSelListCategories.Editable(True)
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.clear: " + ex.ToString())
@@ -1373,34 +1371,33 @@ Public Class frmNachrichtBereich
                 'Me.doEditor1.showText(Text, TXTextControl.StreamType.PlainText, True, TXTextControl.ViewMode.PageView, Me.contTxtEditor1.textControl1)
 
                 Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                    'Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = Me.b.getUserByUserName2(Me.rPlanBereich.CreatedFrom.Trim(), db)
-                    'If tUser.Count = 1 Then
-                    '    Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
-                    '    If Not rUsr.IDBerufsstand Is Nothing Then
-                    '        If Me.b.UserCanSign(rUsr.IDBerufsstand.Value) Then
-                    '            Me.lockUnlock(True)
-                    '        Else
-                    '            Me.lockUnlock(False)
-                    '        End If
-                    '    Else
-                    '        Dim rUsrLoggedIn As PMDS.db.Entities.Benutzer = Me.b.LogggedOnUser(db)
-                    '        If Me.rPlanBereich.CreatedFrom.Trim() = "" Then
-                    '            Throw New Exception("Init: Me.rPlanBereich.CreatedFrom='' not allowed for IDPlan '" + Me.rPlanBereich.ID.ToString() + "'!")
-                    '        End If
-                    '        If rUsrLoggedIn.Benutzer1.Trim().ToLower().Equals(Me.rPlanBereich.CreatedFrom.Trim().ToLower()) Then
-                    '            Me.lockUnlock(True)
-                    '        Else
-                    '            Me.lockUnlock(False)
-                    '        End If
-                    '    End If
+                    Dim tUser As IQueryable(Of PMDS.db.Entities.Benutzer) = Me.b.getUserByUserName2(Me.rPlanBereich.CreatedFrom.Trim(), db)
+                    If tUser.Count = 1 Then
+                        Dim rUsr As PMDS.db.Entities.Benutzer = tUser.First
+                        If Not rUsr.IDBerufsstand Is Nothing Then
+                            If Me.b.UserCanSign(rUsr.IDBerufsstand.Value) Then
+                                Me.lockUnlock(True)
+                            Else
+                                Me.lockUnlock(False)
+                            End If
+                        Else
+                            Dim rUsrLoggedIn As PMDS.db.Entities.Benutzer = Me.b.LogggedOnUser(db)
+                            If Me.rPlanBereich.CreatedFrom.Trim() = "" Then
+                                Throw New Exception("Init: Me.rPlanBereich.CreatedFrom='' not allowed for IDPlan '" + Me.rPlanBereich.ID.ToString() + "'!")
+                            End If
+                            If rUsrLoggedIn.Benutzer1.Trim().ToLower().Equals(Me.rPlanBereich.CreatedFrom.Trim().ToLower()) Then
+                                Me.lockUnlock(True)
+                            Else
+                                Me.lockUnlock(False)
+                            End If
+                        End If
 
-                    'ElseIf tUser.Count = 0 Then
-                    '    Me.lockUnlock(False)
-                    'Else
-                    '    Throw New Exception("frmNachrichtBereich.Init: tUser.Count>0 for Usr '" + Me.rPlanBereich.CreatedFrom.Trim() + "' not allowed!")
-                    'End If
+                    ElseIf tUser.Count = 0 Then
+                        Me.lockUnlock(False)
+                    Else
+                        Throw New Exception("frmNachrichtBereich.Init: tUser.Count>0 for Usr '" + Me.rPlanBereich.CreatedFrom.Trim() + "' not allowed!")
+                    End If
                 End Using
-                Me.lockUnlock(True)
 
                 If Not Me.rPlanBereich.IsIDSerienterminNull() Then
                     Me.PanelSerientermineUISub.Enabled = False
@@ -1471,11 +1468,7 @@ Public Class frmNachrichtBereich
             End If
 
             Me.contSelectSelListCategories.loadDataColl(Me.rPlanBereich.Category.Trim())
-            Me.contSelectSelListCategories.Editable(False)
-
             Me.contSelectSelListBerufsgruppen.loadDataColl(Me.rPlanBereich.lstBerufsgruppen.Trim())
-            Me.contSelectSelListBerufsgruppen.Editable(False)
-
             If Not Me.rPlanBereich.IsIDAbteilungNull() Then
                 Me.contSelectAbtBereiche.setAbtBereich(Me.rPlanBereich.IDAbteilung, True)
             End If
@@ -1579,48 +1572,22 @@ Public Class frmNachrichtBereich
         Try
             Me.clearErrorProvider()
 
-            If Me.IsNew Then
-                Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
-                Dim sCategoriesSelected As String = Me.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
-                If sCategoriesSelected.Trim() = "" Then
-                    Dim txt As String = doUI.getRes("CategorySelectionRequired")
-                    Me.ErrorProvider1.SetError(Me.txtBetreff, txt)
-                    doUI.doMessageBox2("CategorySelectionRequired", "", "!")
-                    txtBetreff.Focus()
-                    Return False
-                End If
+            Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
+            Dim sCategoriesSelected As String = Me.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
+            If sCategoriesSelected.Trim() = "" Then
+                Dim txt As String = doUI.getRes("CategorySelectionRequired")
+                Me.ErrorProvider1.SetError(Me.txtBetreff, txt)
+                doUI.doMessageBox2("CategorySelectionRequired", "", "!")
+                txtBetreff.Focus()
+                Return False
+            End If
 
-                If sCategoriesSelected.Trim() = "" And General.IsNull(Me.txtBetreff.Text) Then
-                    Dim txt As String = doUI.getRes("SubjectInputRequired")
-                    Me.ErrorProvider1.SetError(Me.txtBetreff, txt)
-                    doUI.doMessageBox2("SubjectInputRequired", "", "!")
-                    txtBetreff.Focus()
-                    Return False
-                End If
-
-                Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
-                Me.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
-                If lstSelectedBerufsgruppen.Count = 0 Then
-                    Dim txt As String = "Berufsgruppen: Auswahl erforderlich!"
-                    Me.ErrorProvider1.SetError(Me.txtBetreff, txt)
-                    MessageBox.Show(txt, "PMDS", MessageBoxButtons.OK)
-                    contSelectSelListBerufsgruppen.Focus()
-                    Return False
-                End If
-
-                Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
-                Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
-
-                Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
-                Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
-
-                If lstSelectedAbt.Count = 0 And lstSelectedBereiche.Count = 0 Then
-                    Dim txt As String = "Abteilung/Bereiche: Auswahl erforderlich!"
-                    Me.ErrorProvider1.SetError(Me.txtBetreff, txt)
-                    MessageBox.Show(txt, "PMDS", MessageBoxButtons.OK)
-                    contSelectAbtBereiche.Focus()
-                    Return False
-                End If
+            If sCategoriesSelected.Trim() = "" And General.IsNull(Me.txtBetreff.Text) Then
+                Dim txt As String = doUI.getRes("SubjectInputRequired")
+                Me.ErrorProvider1.SetError(Me.txtBetreff, txt)
+                doUI.doMessageBox2("SubjectInputRequired", "", "!")
+                txtBetreff.Focus()
+                Return False
             End If
 
             Dim ui1 As New UI()
@@ -1796,7 +1763,7 @@ Public Class frmNachrichtBereich
             Dim lAbtBereiche As New System.Collections.Generic.List(Of cAbtBereich)()
             Dim rPlanOwner As dsPlan.planBereichRow = Me.dsPlan1.planBereich.Rows(0)
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                If Me.setPlanRowTemp(rPlanOwner, Nothing, IDSerientermin, UserLoggedIn) Then
+                If Me.setPlanRowTemp(rPlanOwner, UserLoggedIn, Nothing, IDSerientermin) Then
                     db.Configuration.LazyLoadingEnabled = False
                     Dim rPlanOrigDB As PMDS.db.Entities.planBereich = Nothing
                     If Not Me.IsNew Then
@@ -1834,7 +1801,7 @@ Public Class frmNachrichtBereich
                             ownerSucessfullySaved = True
                         Else ownerSucessfullySaved = True
                             If Me.dteSerienterminEndetAm.Value.Equals(EndetAmSerientermin) Then
-                                If Me.saveNachrichtToDb2(lAbtBereiche) Then
+                                If Me.saveNachrichtToDb2() Then
                                     Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner, dsPlanUpdatePlanBereich, compPlanUpdatePlanBereich)
                                     ownerSucessfullySaved = True
                                     protokollOk = doUI.getRes("EntrySave") + vbNewLine + protokollOk
@@ -1861,7 +1828,7 @@ Public Class frmNachrichtBereich
                                 If MsggResult = MsgBoxResult.Yes Then
                                     If STKürzung Then
                                         'Me.compPlan1.deletePlan(rPlan.ID, rPlan.MessageId, rPlan.Für, Me.rPlan.IDArt, Me.rPlan.Betreff)
-                                        If Me.saveNachrichtToDb2(lAbtBereiche) Then
+                                        If Me.saveNachrichtToDb2() Then
                                             Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner, dsPlanUpdatePlanBereich, compPlanUpdatePlanBereich)
                                             Me.compPlan1.updatePlanBereichSerienterminEndetAm(rPlanBereich.IDSerientermin, rPlanBereich.SerienterminEndetAm.Date)
                                             Me.compPlan1.deletePlanBereichSerienterminEndetAm(rPlanBereich.IDSerientermin, rPlanBereich.SerienterminEndetAm.Date)
@@ -1874,7 +1841,7 @@ Public Class frmNachrichtBereich
                                         End If
                                     End If
                                 Else
-                                    If Me.saveNachrichtToDb2(lAbtBereiche) Then
+                                    If Me.saveNachrichtToDb2() Then
                                         Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner, dsPlanUpdatePlanBereich, compPlanUpdatePlanBereich)
                                         ownerSucessfullySaved = True
                                         If Me.chkIsSerientermin.Checked Then
@@ -1887,7 +1854,7 @@ Public Class frmNachrichtBereich
                             End If
                         End If
                     Else
-                        If Me.saveNachrichtToDb2(lAbtBereiche) Then
+                        If Me.saveNachrichtToDb2() Then
                             Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner, dsPlanUpdatePlanBereich, compPlanUpdatePlanBereich)
                             ownerSucessfullySaved = True
                             protokollOk = doUI.getRes("EntrySave") + vbNewLine + protokollOk
@@ -1960,7 +1927,7 @@ Public Class frmNachrichtBereich
                                     If ActAbtBereich.isAbt Then
                                         rPlanNew.IDAbteilung = ActAbtBereich.ID
                                     Else
-                                        rPlanNew.IDBereich = ActAbtBereich.ID
+                                        rPlanNew.IDAbteilung = ActAbtBereich.ID
                                     End If
 
                                     compPlanNew.daPlanBereich.Update(dsPlanNew.planBereich)
@@ -2017,7 +1984,7 @@ Public Class frmNachrichtBereich
                 If ActAbtBereich.isAbt Then
                     rPlanNew.IDAbteilung = ActAbtBereich.ID
                 Else
-                    rPlanNew.IDBereich = ActAbtBereich.ID
+                    rPlanNew.IDAbteilung = ActAbtBereich.ID
                 End If
 
                 compPlanUpdate.daPlanBereich.Update(dsPlanUpdate.planBereich)
@@ -2093,8 +2060,8 @@ Public Class frmNachrichtBereich
     End Sub
 
     Public Function setPlanRowTemp(ByRef rPlanToSet As dsPlan.planBereichRow,
-                                    ByRef IDPlanMain As System.Guid,
-                                    ByRef IDSerientermin As Nullable(Of Guid), ByRef UserLoggedIn As String) As Boolean
+                                    ByRef Usr As String, ByRef IDPlanMain As System.Guid,
+                                    ByRef IDSerientermin As Nullable(Of Guid)) As Boolean
         Try
             rPlanToSet.Betreff = Me.txtBetreff.Text
             If General.IsNull(Me.dteBeginntAm.Value) Then
@@ -2127,12 +2094,6 @@ Public Class frmNachrichtBereich
                 rPlanToSet.Betreff = rPlanToSet.Category.Trim()
             End If
 
-            Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
-            Me.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
-            For Each rBerufsgruppe In lstSelectedBerufsgruppen
-                rPlanToSet.lstBerufsgruppen += rBerufsgruppe.Trim() + ";"
-            Next
-
             rPlanToSet.Text = Me.txtBody.Text.Trim()
 
             'Dim text As String = ""
@@ -2144,8 +2105,8 @@ Public Class frmNachrichtBereich
             '    rPlanToSet.Text = ""
             'End If
 
-            rPlanToSet.CreatedFrom = UserLoggedIn
-            rPlanToSet.LastChangeFrom = UserLoggedIn
+            rPlanToSet.CreatedFrom = Usr
+            rPlanToSet.LastChangeFrom = Usr
 
             If Me.dteEndetAm.Value Is Nothing Then
                 rPlanToSet.SetEndetAmNull()
@@ -2227,13 +2188,14 @@ Public Class frmNachrichtBereich
 
             rPlanToSet.Wochentage = Me.getWochentage()
 
-            Dim dNow As DateTime = Now
+            Dim UserLoggedIn As String = Me.genMain.getLoggedInUser()
             If Me.IsNew Then
                 rPlanToSet.CreatedFrom = UserLoggedIn.Trim()
-                rPlanToSet.CreatedAt = dNow
+                rPlanToSet.CreatedAt = Now
             End If
+
             rPlanToSet.LastChangeFrom = UserLoggedIn.Trim()
-            rPlanToSet.LastChangeAt = dNow
+            rPlanToSet.LastChangeAt = Now
 
             Return True
 
@@ -2241,12 +2203,9 @@ Public Class frmNachrichtBereich
             Throw New Exception("frmNachrichtBereich.setPlanRowTemp: " + ex.ToString())
         End Try
     End Function
-    Public Function saveNachrichtToDb2(ByRef lAbtBereiche As System.Collections.Generic.List(Of cAbtBereich)) As Boolean
+    Public Function saveNachrichtToDb2() As Boolean
         Try
-            If lAbtBereiche.Count = 0 Then
-                Me.compPlan1.daPlanBereich.Update(Me.dsPlan1.planBereich)
-            End If
-
+            'Me.compPlan1.daPlanBereich.Update(Me.dsPlan1.planBereich)
             Return True
 
         Catch ex As Exception
@@ -2583,9 +2542,6 @@ Public Class frmNachrichtBereich
     Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
         Try
             Me.Cursor = Cursors.WaitCursor
-
-            Dim clPlan1 As New clPlan()
-            clPlan1.deletePlanBereich(Me.rPlanBereich, Me.abort, Me.modalWindow, Me)
 
         Catch ex As Exception
             General.GetEcxeptionGeneral(ex)

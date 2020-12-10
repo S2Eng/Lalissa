@@ -60,6 +60,13 @@ namespace PMDS.GUI
                                                             cCallMainFctPlan.lstUsers, cCallMainFctPlan.lstCategories, cCallMainFctPlan.Quickbutton.Trim());
                     
                 }
+                else if (TypeFctToCall == Global.ENV.eFctCallMainFctPlan.PrintTermineBereich)
+                {
+                    PMDS.Print.ReportManager.PrintTermineBereich(cCallMainFctPlan.ds, cCallMainFctPlan.ViewMode, cCallMainFctPlan.Title, cCallMainFctPlan.IDKlinik,
+                                                            cCallMainFctPlan.dFrom, cCallMainFctPlan.dTo, cCallMainFctPlan.UserLoggedOn,
+                                                            cCallMainFctPlan.lstCategories, cCallMainFctPlan.Quickbutton.Trim());
+
+                }
                 else
                 {
                     PMDS.Global.ENV.setCurrentIDPatient = IDCurrentPatientSave;

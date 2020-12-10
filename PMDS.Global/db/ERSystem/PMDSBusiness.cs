@@ -9570,6 +9570,23 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getPlansSerientermin: " + ex.ToString());
             }
         }
+        public System.Linq.IQueryable<PMDS.db.Entities.planBereich> getPlansBereichSerientermin(Guid IDSerientermin, DateTime BeginntAm, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                System.Linq.IQueryable<PMDS.db.Entities.planBereich> tPlan = db.planBereich.Where(o => o.IDSerientermin == IDSerientermin && o.BeginntAm > BeginntAm.Date);
+                return tPlan;
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getPlansBereichSerientermin: " + ex.ToString());
+            }
+        }
         public System.Linq.IQueryable<PMDS.db.Entities.planObject> getPlanObjects(Guid IDPlan, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
