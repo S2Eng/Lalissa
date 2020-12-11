@@ -58,7 +58,6 @@ Public Class contPlanung2Bereich
     Private WithEvents btnLayout_Plan As QS2.Desktop.ControlManagment.BaseButton
     Private WithEvents btnLayout_KatAbtBereichPlan As QS2.Desktop.ControlManagment.BaseButton
     Friend WithEvents btnPrint As UltraButton
-    Friend WithEvents chkDatumFixieren As Infragistics.Win.UltraWinEditors.UltraCheckEditor
     Friend WithEvents ContPlanungDataBereich1 As contPlanungDataBereich
     Friend WithEvents dropDownAbteilungBereiche As UltraDropDownButton
     Friend WithEvents dropDownBerufsgruppen As UltraDropDownButton
@@ -94,7 +93,6 @@ Public Class contPlanung2Bereich
         Me.grpSearch = New Infragistics.Win.Misc.UltraGroupBox()
         Me.dropDownAbteilungBereiche = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.dropDownBerufsgruppen = New Infragistics.Win.Misc.UltraDropDownButton()
-        Me.chkDatumFixieren = New Infragistics.Win.UltraWinEditors.UltraCheckEditor()
         Me.PanelButtonsLayout = New System.Windows.Forms.Panel()
         Me.btnLayout_Plan = New QS2.Desktop.ControlManagment.BaseButton()
         Me.btnLayout_KatAbtBereichPlan = New QS2.Desktop.ControlManagment.BaseButton()
@@ -122,7 +120,6 @@ Public Class contPlanung2Bereich
         Me.uPopupAbteilungBereiche = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         CType(Me.grpSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSearch.SuspendLayout()
-        CType(Me.chkDatumFixieren, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelButtonsLayout.SuspendLayout()
         CType(Me.optStatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UDateBis, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,7 +137,6 @@ Public Class contPlanung2Bereich
         Me.grpSearch.Appearance = Appearance1
         Me.grpSearch.Controls.Add(Me.dropDownAbteilungBereiche)
         Me.grpSearch.Controls.Add(Me.dropDownBerufsgruppen)
-        Me.grpSearch.Controls.Add(Me.chkDatumFixieren)
         Me.grpSearch.Controls.Add(Me.PanelButtonsLayout)
         Me.grpSearch.Controls.Add(Me.btnSearch)
         Me.grpSearch.Controls.Add(Me.UltraLabel1)
@@ -190,15 +186,6 @@ Public Class contPlanung2Bereich
         Me.dropDownBerufsgruppen.TabStop = False
         Me.dropDownBerufsgruppen.Tag = ""
         Me.dropDownBerufsgruppen.Text = "Berufsgruppen"
-        '
-        'chkDatumFixieren
-        '
-        Me.chkDatumFixieren.Location = New System.Drawing.Point(373, 49)
-        Me.chkDatumFixieren.Name = "chkDatumFixieren"
-        Me.chkDatumFixieren.Size = New System.Drawing.Size(135, 17)
-        Me.chkDatumFixieren.TabIndex = 1004
-        Me.chkDatumFixieren.Tag = "ResID.DatumFixieren"
-        Me.chkDatumFixieren.Text = "Datum fixieren"
         '
         'PanelButtonsLayout
         '
@@ -553,7 +540,6 @@ Public Class contPlanung2Bereich
         CType(Me.grpSearch, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSearch.ResumeLayout(False)
         Me.grpSearch.PerformLayout()
-        CType(Me.chkDatumFixieren, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelButtonsLayout.ResumeLayout(False)
         Me.PanelButtonsLayout.PerformLayout()
         CType(Me.optStatus, System.ComponentModel.ISupportInitialize).EndInit()
@@ -687,22 +673,8 @@ Public Class contPlanung2Bereich
 
             Me.zurücksetzen(True)
 
-            Me.chkDatumFixieren.Checked = clPlan.bDatumFixierenBereich
-            If clPlan.bDatumFixierenBereich Then
-                If clPlan.dVonFixiertBereich = DateTime.MinValue Then
-                    Me.UDateVon.Value = Nothing
-                Else
-                    Me.UDateVon.Value = clPlan.dVonFixiertBereich
-                End If
-                If clPlan.dBisFixiertBereich = DateTime.MinValue Then
-                    Me.UDateBis.Value = Nothing
-                Else
-                    Me.UDateBis.Value = clPlan.dBisFixiertBereich
-                End If
-            Else
-                Me.UDateVon.Value = Now
-                Me.UDateBis.Value = Now
-            End If
+            Me.UDateVon.Value = Now
+            Me.UDateBis.Value = Now
 
             PMDSBusinessComm.checkCommAsyncForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll)
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
@@ -899,38 +871,11 @@ Public Class contPlanung2Bereich
         End Try
     End Sub
 
-    Private Sub chkDatumFixieren_CheckedChanged(sender As Object, e As EventArgs) Handles chkDatumFixieren.CheckedChanged
-        Try
-            Me.Cursor = Cursors.WaitCursor
-
-            If Me.chkDatumFixieren.Visible And Me.initFormDone Then
-                clPlan.bDatumFixierenBereich = Me.chkDatumFixieren.Checked
-                If Me.chkDatumFixieren.Checked Then
-                    clPlan.dVonFixiertBereich = Me.UDateVon.Value
-                    clPlan.dBisFixiertBereich = Me.UDateBis.Value
-                Else
-                    clPlan.dVonFixiertBereich = Nothing
-                    clPlan.dBisFixiertBereich = Nothing
-                End If
-            End If
-
-        Catch ex As Exception
-            gen.GetEcxeptionGeneral(ex)
-        Finally
-            Me.Cursor = Cursors.Default
-        End Try
-    End Sub
-
     Private Sub UDateVon_ValueChanged(sender As Object, e As EventArgs) Handles UDateVon.ValueChanged
         Try
             Me.Cursor = Cursors.WaitCursor
 
             If Me.UDateVon.Visible And Me.initFormDone Then
-                If Me.chkDatumFixieren.Checked Then
-                    clPlan.dVonFixiertBereich = Me.UDateVon.Value
-                Else
-                    clPlan.dVonFixiertBereich = Nothing
-                End If
             End If
 
         Catch ex As Exception
@@ -944,11 +889,6 @@ Public Class contPlanung2Bereich
             Me.Cursor = Cursors.WaitCursor
 
             If Me.UDateBis.Visible And Me.initFormDone Then
-                If Me.chkDatumFixieren.Checked Then
-                    clPlan.dBisFixiertBereich = Me.UDateBis.Value
-                Else
-                    clPlan.dBisFixiertBereich = Nothing
-                End If
             End If
 
         Catch ex As Exception
