@@ -46,6 +46,7 @@ Public Class contPlanung2Bereich
     Private WithEvents uPopupContCategories As Infragistics.Win.Misc.UltraPopupControlContainer
     Friend WithEvents PanelTop As Panel
     Friend WithEvents PanelCenter As Panel
+    Friend WithEvents PanelBottom As Panel
     Friend WithEvents lblBetreff As Infragistics.Win.Misc.UltraLabel
     Public WithEvents txtBetreff2 As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents btnSearch As Infragistics.Win.Misc.UltraButton
@@ -59,6 +60,8 @@ Public Class contPlanung2Bereich
     Private WithEvents btnLayout_KatAbtBereichPlan As QS2.Desktop.ControlManagment.BaseButton
     Friend WithEvents btnPrint As UltraButton
     Friend WithEvents chkDatumFixieren As Infragistics.Win.UltraWinEditors.UltraCheckEditor
+    Public WithEvents uDropDownDekursEntwürfe As UltraDropDownButton
+    Friend WithEvents btnDekursErstellen As UltraButton
     Friend WithEvents ContPlanungDataBereich1 As contPlanungDataBereich
     Friend WithEvents dropDownAbteilungBereiche As UltraDropDownButton
     Friend WithEvents dropDownBerufsgruppen As UltraDropDownButton
@@ -91,6 +94,9 @@ Public Class contPlanung2Bereich
         Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Neuen Planungseintrag erstellen", Infragistics.Win.ToolTipImage.[Default], "", Infragistics.Win.DefaultableBoolean.[Default])
+        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(contPlanung2Bereich))
         Me.grpSearch = New Infragistics.Win.Misc.UltraGroupBox()
         Me.dropDownAbteilungBereiche = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.dropDownBerufsgruppen = New Infragistics.Win.Misc.UltraDropDownButton()
@@ -113,9 +119,12 @@ Public Class contPlanung2Bereich
         Me.lblAnd = New Infragistics.Win.Misc.UltraLabel()
         Me.btnPrint = New Infragistics.Win.Misc.UltraButton()
         Me.btnAdd2 = New Infragistics.Win.Misc.UltraButton()
+        Me.btnDekursErstellen = New Infragistics.Win.Misc.UltraButton()
+        Me.uDropDownDekursEntwürfe = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.UltraToolTipManager1 = New Infragistics.Win.UltraWinToolTip.UltraToolTipManager(Me.components)
         Me.uPopupContCategories = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         Me.PanelTop = New System.Windows.Forms.Panel()
+        Me.PanelBottom = New System.Windows.Forms.Panel()
         Me.PanelCenter = New System.Windows.Forms.Panel()
         Me.ContPlanungDataBereich1 = New PMDS.GUI.VB.contPlanungDataBereich()
         Me.uPopupContBerufsgruppen = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
@@ -129,6 +138,7 @@ Public Class contPlanung2Bereich
         CType(Me.UDateVon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBetreff2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTop.SuspendLayout()
+        Me.PanelBottom.SuspendLayout()
         Me.PanelCenter.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -505,6 +515,34 @@ Public Class contPlanung2Bereich
         UltraToolTipInfo1.ToolTipText = "Neuen Planungseintrag erstellen"
         Me.UltraToolTipManager1.SetUltraToolTip(Me.btnAdd2, UltraToolTipInfo1)
         '
+        'btnDekursErstellen
+        '
+        Appearance20.ForeColor = System.Drawing.Color.Black
+        Appearance20.ForeColorDisabled = System.Drawing.Color.Black
+        Me.btnDekursErstellen.Appearance = Appearance20
+        Me.btnDekursErstellen.Location = New System.Drawing.Point(11, 1)
+        Me.btnDekursErstellen.Name = "btnDekursErstellen"
+        Me.btnDekursErstellen.Size = New System.Drawing.Size(101, 29)
+        Me.btnDekursErstellen.TabIndex = 1007
+        Me.btnDekursErstellen.Tag = "ResID.DekursErstellen"
+        Me.btnDekursErstellen.Text = "Dekurs erstellen"
+        '
+        'uDropDownDekursEntwürfe
+        '
+        Appearance21.Image = CType(resources.GetObject("Appearance21.Image"), Object)
+        Appearance21.ImageHAlign = Infragistics.Win.HAlign.Right
+        Me.uDropDownDekursEntwürfe.Appearance = Appearance21
+        Me.uDropDownDekursEntwürfe.Location = New System.Drawing.Point(115, 2)
+        Me.uDropDownDekursEntwürfe.Name = "uDropDownDekursEntwürfe"
+        Me.uDropDownDekursEntwürfe.RightAlignPopup = Infragistics.Win.DefaultableBoolean.[False]
+        Me.uDropDownDekursEntwürfe.Size = New System.Drawing.Size(122, 27)
+        Me.uDropDownDekursEntwürfe.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
+        Me.uDropDownDekursEntwürfe.TabIndex = 1005
+        Me.uDropDownDekursEntwürfe.Tag = "ResID.DekursEntwurf"
+        Me.uDropDownDekursEntwürfe.Text = "Dekurs Entwurf"
+        Me.uDropDownDekursEntwürfe.UseFlatMode = Infragistics.Win.DefaultableBoolean.[True]
+        Me.uDropDownDekursEntwürfe.UseOsThemes = Infragistics.Win.DefaultableBoolean.[False]
+        '
         'UltraToolTipManager1
         '
         Me.UltraToolTipManager1.AutoPopDelay = 0
@@ -523,6 +561,17 @@ Public Class contPlanung2Bereich
         Me.PanelTop.Size = New System.Drawing.Size(1125, 175)
         Me.PanelTop.TabIndex = 70
         '
+        'PanelBottom
+        '
+        Me.PanelBottom.BackColor = System.Drawing.Color.Transparent
+        Me.PanelBottom.Controls.Add(Me.btnDekursErstellen)
+        Me.PanelBottom.Controls.Add(Me.uDropDownDekursEntwürfe)
+        Me.PanelBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PanelBottom.Location = New System.Drawing.Point(0, 556)
+        Me.PanelBottom.Name = "PanelBottom"
+        Me.PanelBottom.Size = New System.Drawing.Size(1125, 34)
+        Me.PanelBottom.TabIndex = 71
+        '
         'PanelCenter
         '
         Me.PanelCenter.BackColor = System.Drawing.Color.Transparent
@@ -530,7 +579,7 @@ Public Class contPlanung2Bereich
         Me.PanelCenter.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelCenter.Location = New System.Drawing.Point(0, 175)
         Me.PanelCenter.Name = "PanelCenter"
-        Me.PanelCenter.Size = New System.Drawing.Size(1125, 415)
+        Me.PanelCenter.Size = New System.Drawing.Size(1125, 381)
         Me.PanelCenter.TabIndex = 72
         '
         'ContPlanungDataBereich1
@@ -539,13 +588,14 @@ Public Class contPlanung2Bereich
         Me.ContPlanungDataBereich1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ContPlanungDataBereich1.Location = New System.Drawing.Point(0, 0)
         Me.ContPlanungDataBereich1.Name = "ContPlanungDataBereich1"
-        Me.ContPlanungDataBereich1.Size = New System.Drawing.Size(1125, 415)
+        Me.ContPlanungDataBereich1.Size = New System.Drawing.Size(1125, 381)
         Me.ContPlanungDataBereich1.TabIndex = 1
         '
         'contPlanung2Bereich
         '
         Me.BackColor = System.Drawing.Color.White
         Me.Controls.Add(Me.PanelCenter)
+        Me.Controls.Add(Me.PanelBottom)
         Me.Controls.Add(Me.PanelTop)
         Me.DoubleBuffered = True
         Me.Name = "contPlanung2Bereich"
@@ -561,6 +611,7 @@ Public Class contPlanung2Bereich
         CType(Me.UDateVon, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBetreff2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelTop.ResumeLayout(False)
+        Me.PanelBottom.ResumeLayout(False)
         Me.PanelCenter.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -603,8 +654,6 @@ Public Class contPlanung2Bereich
         Plan = 2
     End Enum
 
-    Public hasRightToEdit As Boolean = False
-
 
 
 
@@ -626,7 +675,6 @@ Public Class contPlanung2Bereich
             Me.dropDownCategories.PopupItem = Me.uPopupContCategories
             Me.contSelectSelListCategories.popupContMainSearch = Me.uPopupContCategories
             Me.contSelectSelListCategories.setLabelCount2()
-            Me.contSelectSelListCategories.Editable(True)
 
             Me.contSelectAbtBereiche.MainPlanBereicheSearch = Me
             Me.contSelectAbtBereiche.initControl(Me.dropDownAbteilungBereiche)
@@ -642,7 +690,6 @@ Public Class contPlanung2Bereich
             Me.dropDownBerufsgruppen.PopupItem = Me.uPopupContBerufsgruppen
             Me.contSelectSelListBerufsgruppen.popupContMainSearch = Me.uPopupContBerufsgruppen
             Me.contSelectSelListBerufsgruppen.setLabelCount2()
-            Me.contSelectSelListBerufsgruppen.Editable(True)
 
             Me.ContPlanungDataBereich1.initControl()
 
@@ -650,7 +697,7 @@ Public Class contPlanung2Bereich
             Me.doUI1.run(Me, Me.components, Me.UltraToolTipManager1, newRessourcesAdded, True)
 
             Me.optStatus.CheckedIndex = 0
-            'Me.ContPlanungDataBereich1.SplitContainer1.Panel2Collapsed = True
+            Me.ContPlanungDataBereich1.SplitContainer1.Panel2Collapsed = True
 
             Me.resetLayoutButtons()
             Me.ContPlanungDataBereich1._LayoutGrid = eLayoutGrid.Plan
@@ -660,14 +707,12 @@ Public Class contPlanung2Bereich
             Me.contSelectAbtBereiche.setLabelCount2()
             Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
-            Me.hasRightToEdit = PMDS.Global.ENV.HasRight([Global].UserRights.PflegePlanungAendern)
-            If Not Me.hasRightToEdit Then
+            If not PMDS.Global.ENV.HasRight([Global].UserRights.PflegePlanungAendern) Then
                 Me.btnAdd2.Visible = False
                 Me.ContPlanungDataBereich1.LöschenToolStripMenuItem1.Visible = False
                 Me.ContPlanungDataBereich1.TermineErledigenToolStripMenuItem.Visible = False
                 Me.ContPlanungDataBereich1.TermineStornierenToolStripMenuItem.Visible = False
                 Me.ContPlanungDataBereich1.ToolStripMenuItemSpace1.Visible = False
-                Me.ContPlanungDataBereich1.ToolStripMenuItem3.Visible = False
             End If
 
             Me.isLoaded = True
@@ -857,6 +902,18 @@ Public Class contPlanung2Bereich
         Try
             Me.Cursor = Cursors.WaitCursor
             Me.ContPlanungDataBereich1.search(False, True, False)
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub chkPreview_CheckedChanged(sender As Object, e As EventArgs)
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.ContPlanungDataBereich1.SplitContainer1.Panel2Collapsed = False
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)

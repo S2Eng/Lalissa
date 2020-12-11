@@ -709,45 +709,23 @@ Public Class clPlan
 
     Public Function getAllUsersFromBerufsgruppe(db As PMDS.db.Entities.ERModellPMDSEntities) As System.Collections.Generic.List(Of String)
         Try
-            Dim lBerufsstandGruppe As New System.Collections.Generic.List(Of String)()
-            Dim b As New PMDS.db.PMDSBusiness()
+            Dim lBerufsstände As New System.Collections.Generic.List(Of String)()
 
+            Dim b As New PMDS.db.PMDSBusiness()
             Dim rUsr As PMDS.db.Entities.Benutzer = b.getUser(PMDS.Global.ENV.USERID, db)
 
-            'If Not PMDS.Global.ENV.adminSecure AndAlso ((Not rUsr.IDBerufsstand Is Nothing) AndAlso Me.b.UserCanSign(rUsr.IDBerufsstand.Value)) Then
-            'If Not PMDS.Global.ENV.adminSecure Then
             If Not rUsr.IDBerufsstand Is Nothing Then
-                    Dim rSelListBerufsstand = (From o In db.AuswahlListe
-                                               Where o.ID = rUsr.IDBerufsstand And o.IstGruppe = False
-                                               Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
+                Dim rSelListBerufsstand = (From o In db.AuswahlListe
+                                           Where o.ID = rUsr.IDBerufsstand And o.IstGruppe = False And o.IDAuswahlListeGruppe = "BER"
+                                           Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
 
-                    If Not String.IsNullOrEmpty(rSelListBerufsstand.GehörtzuGruppe) Then
-                        Dim lBerufsstände As New System.Collections.Generic.List(Of String)()
-                        If rSelListBerufsstand.GehörtzuGruppe.Contains(";") Then
-                            lBerufsstände = QS2.core.generic.readStrVariables(rSelListBerufsstand.GehörtzuGruppe.Trim())
-                        Else
-                            lBerufsstände.Add(rSelListBerufsstand.GehörtzuGruppe.Trim())
-                        End If
-                        For Each berufst As String In lBerufsstände
-                            Dim rSelListBerufsstandGruppe = (From o In db.AuswahlListe
-                                                             Where o.GehörtzuGruppe = berufst And o.IstGruppe = True
-                                                             Select o.ID, o.Bezeichnung, o.GehörtzuGruppe).ToList().First()
 
-                            Dim tSelListAllUsersGruppe = (From o In db.AuswahlListe
-                                                          Where o.GehörtzuGruppe = rSelListBerufsstandGruppe.GehörtzuGruppe And o.IstGruppe = False And o.Hierarche >= rSelListBerufsstand.Hierarche
-                                                          Select o.ID, o.Bezeichnung, o.GehörtzuGruppe).ToList()
+                lBerufsstände.Add(rSelListBerufsstand.Bezeichnung.Trim())
+            Else
+                Throw New Exception("clPlan.getAllUsersFromBerufsgruppe: rUsr.IDBerufsstand=null for User '" + rUsr.Benutzer1.Trim() + "'not allowed!")
+            End If
 
-                            For Each rUsrInGruppe In tSelListAllUsersGruppe
-                                lBerufsstandGruppe.Add(rUsrInGruppe.Bezeichnung.Trim())
-                            Next
-                        Next
-                    Else
-                        lBerufsstandGruppe.Add(rSelListBerufsstand.Bezeichnung.Trim())
-                    End If
-                End If
-            'End If
-
-            Return lBerufsstandGruppe
+            Return lBerufsstände
 
         Catch ex As Exception
             Throw New Exception("clPlan.getAllUsersFromBerufsgruppe: " + ex.ToString())

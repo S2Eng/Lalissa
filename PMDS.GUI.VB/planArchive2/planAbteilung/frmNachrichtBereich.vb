@@ -143,6 +143,7 @@ Public Class frmNachrichtBereich
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraToolTipInfo2 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Html", Infragistics.Win.DefaultableBoolean.[Default])
         Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
@@ -225,10 +226,10 @@ Public Class frmNachrichtBereich
         Me.txtBetreff = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
         Me.lblBetreff = New Infragistics.Win.Misc.UltraLabel()
         Me.PanelDescription = New System.Windows.Forms.Panel()
-        Me.dropDownAbteilungBereiche = New Infragistics.Win.Misc.UltraDropDownButton()
-        Me.dropDownBerufsgruppen = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.PanelEditor = New System.Windows.Forms.Panel()
         Me.EditorTmp1 = New TXTextControl.TextControl()
+        Me.dropDownAbteilungBereiche = New Infragistics.Win.Misc.UltraDropDownButton()
+        Me.dropDownBerufsgruppen = New Infragistics.Win.Misc.UltraDropDownButton()
         Me.uPopupContBerufsgruppen = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         Me.uPopupAbteilungBereiche = New Infragistics.Win.Misc.UltraPopupControlContainer(Me.components)
         Me.txtBody = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
@@ -311,13 +312,12 @@ Public Class frmNachrichtBereich
         '
         'lblStatus
         '
-        Me.lblStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Appearance1.BackColor = System.Drawing.Color.Transparent
         Appearance1.ForeColor = System.Drawing.Color.Black
         Appearance1.ForeColorDisabled = System.Drawing.Color.Black
         Appearance1.TextVAlignAsString = "Middle"
         Me.lblStatus.Appearance = Appearance1
-        Me.lblStatus.Location = New System.Drawing.Point(903, 96)
+        Me.lblStatus.Location = New System.Drawing.Point(887, 87)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Size = New System.Drawing.Size(77, 17)
         Me.lblStatus.TabIndex = 504
@@ -340,20 +340,21 @@ Public Class frmNachrichtBereich
         '
         'optStatus
         '
-        Me.optStatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.optStatus.BorderStyle = Infragistics.Win.UIElementBorderStyle.None
         Me.optStatus.CheckedIndex = 0
         ValueListItem1.CheckState = System.Windows.Forms.CheckState.Checked
         ValueListItem1.DataValue = 0
         ValueListItem1.DisplayText = "Offen"
         ValueListItem1.Tag = "ResID.Openly"
-        ValueListItem2.DataValue = "Completed"
+        ValueListItem2.DataValue = 1
         ValueListItem2.DisplayText = "Erledigt"
         ValueListItem2.Tag = "ResID.Completed"
-        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2})
-        Me.optStatus.Location = New System.Drawing.Point(951, 98)
+        ValueListItem9.DataValue = 2
+        ValueListItem9.DisplayText = "Storniert"
+        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem9})
+        Me.optStatus.Location = New System.Drawing.Point(931, 89)
         Me.optStatus.Name = "optStatus"
-        Me.optStatus.Size = New System.Drawing.Size(108, 17)
+        Me.optStatus.Size = New System.Drawing.Size(172, 17)
         Me.optStatus.TabIndex = 4
         Me.optStatus.Text = "Offen"
         Me.optStatus.Visible = False
@@ -926,6 +927,26 @@ Public Class frmNachrichtBereich
         Me.PanelDescription.Size = New System.Drawing.Size(1122, 120)
         Me.PanelDescription.TabIndex = 2
         '
+        'PanelEditor
+        '
+        Me.PanelEditor.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelEditor.BackColor = System.Drawing.Color.Transparent
+        Me.PanelEditor.Location = New System.Drawing.Point(1118, 64)
+        Me.PanelEditor.Name = "PanelEditor"
+        Me.PanelEditor.Size = New System.Drawing.Size(54, 49)
+        Me.PanelEditor.TabIndex = 507
+        '
+        'EditorTmp1
+        '
+        Me.EditorTmp1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.EditorTmp1.Font = New System.Drawing.Font("Arial", 10.0!)
+        Me.EditorTmp1.Location = New System.Drawing.Point(1119, 68)
+        Me.EditorTmp1.Name = "EditorTmp1"
+        Me.EditorTmp1.Size = New System.Drawing.Size(51, 44)
+        Me.EditorTmp1.TabIndex = 506
+        Me.EditorTmp1.Text = "TextControl1"
+        Me.EditorTmp1.UserNames = Nothing
+        '
         'dropDownAbteilungBereiche
         '
         Appearance5.BorderColor = System.Drawing.Color.Black
@@ -955,26 +976,6 @@ Public Class frmNachrichtBereich
         Me.dropDownBerufsgruppen.TabStop = False
         Me.dropDownBerufsgruppen.Tag = ""
         Me.dropDownBerufsgruppen.Text = "Berufsgruppen"
-        '
-        'PanelEditor
-        '
-        Me.PanelEditor.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelEditor.BackColor = System.Drawing.Color.Transparent
-        Me.PanelEditor.Location = New System.Drawing.Point(1079, 64)
-        Me.PanelEditor.Name = "PanelEditor"
-        Me.PanelEditor.Size = New System.Drawing.Size(54, 49)
-        Me.PanelEditor.TabIndex = 507
-        '
-        'EditorTmp1
-        '
-        Me.EditorTmp1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.EditorTmp1.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.EditorTmp1.Location = New System.Drawing.Point(1080, 68)
-        Me.EditorTmp1.Name = "EditorTmp1"
-        Me.EditorTmp1.Size = New System.Drawing.Size(51, 44)
-        Me.EditorTmp1.TabIndex = 506
-        Me.EditorTmp1.Text = "TextControl1"
-        Me.EditorTmp1.UserNames = Nothing
         '
         'txtBody
         '
@@ -1275,6 +1276,7 @@ Public Class frmNachrichtBereich
 
             Me.contSelectAbtBereiche.treeAbtBereiche.Enabled = True
             Me.contSelectAbtBereiche.setSelectionOnOff(CheckState.Unchecked)
+            Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
             Me.contSelectAbtBereiche.setLabelCount2()
 
             Me.contSelectSelListBerufsgruppen.setSelectionOnOff(False)
@@ -1286,6 +1288,7 @@ Public Class frmNachrichtBereich
             Throw New Exception("frmNachrichtBereich.clear: " + ex.ToString())
         End Try
     End Function
+
     Public Sub clearSerientermineUI()
         Try
             Me.chkIsSerientermin.Checked = False
@@ -1457,6 +1460,8 @@ Public Class frmNachrichtBereich
                     Me.optStatus.CheckedIndex = 0
                 ElseIf Me.rPlanBereich.Status.Trim().ToLower().Equals(("Erledigt").Trim().ToLower()) Then
                     Me.optStatus.CheckedIndex = 1
+                ElseIf Me.rPlanBereich.Status.Trim().ToLower().Equals(("Storniert").Trim().ToLower()) Then
+                    Me.optStatus.CheckedIndex = 2
                 Else
                     Throw New Exception("frmNachrichtBereich.loadData: Me.rPlan.Status='" + Me.rPlanBereich.Status.Trim() + "' not allowed!")
                 End If
@@ -1472,9 +1477,11 @@ Public Class frmNachrichtBereich
 
             Me.contSelectSelListCategories.loadDataColl(Me.rPlanBereich.Category.Trim())
             Me.contSelectSelListCategories.Editable(False)
+            Me.contSelectSelListCategories.setLabelCount2()
 
             Me.contSelectSelListBerufsgruppen.loadDataColl(Me.rPlanBereich.lstBerufsgruppen.Trim())
             Me.contSelectSelListBerufsgruppen.Editable(False)
+            Me.contSelectSelListBerufsgruppen.setLabelCount2()
 
             If Not Me.rPlanBereich.IsIDAbteilungNull() Then
                 Me.contSelectAbtBereiche.setAbtBereich(Me.rPlanBereich.IDAbteilung, True)
@@ -1482,7 +1489,9 @@ Public Class frmNachrichtBereich
             If Not Me.rPlanBereich.IsIDBereichNull() Then
                 Me.contSelectAbtBereiche.setAbtBereich(Me.rPlanBereich.IDBereich, False)
             End If
+            Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
             Me.contSelectAbtBereiche.treeAbtBereiche.Enabled = False
+            Me.contSelectAbtBereiche.setLabelCount2()
 
             If Me.rPlanBereich.IsEndetAmNull() Then
                 Me.dteEndetAm.Value = Nothing
@@ -1790,13 +1799,14 @@ Public Class frmNachrichtBereich
                 Me.clearSerientermineUI()
             End If
 
+            Dim IDPlanMain As System.Guid = System.Guid.NewGuid()
             Dim STVerlängerung As Boolean = False
             Dim STKürzung As Boolean = False
             Dim ownerSucessfullySaved As Boolean = False
             Dim lAbtBereiche As New System.Collections.Generic.List(Of cAbtBereich)()
             Dim rPlanOwner As dsPlan.planBereichRow = Me.dsPlan1.planBereich.Rows(0)
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                If Me.setPlanRowTemp(rPlanOwner, Nothing, IDSerientermin, UserLoggedIn) Then
+                If Me.setPlanRowTemp(rPlanOwner, IDPlanMain, IDSerientermin, UserLoggedIn) Then
                     db.Configuration.LazyLoadingEnabled = False
                     Dim rPlanOrigDB As PMDS.db.Entities.planBereich = Nothing
                     If Not Me.IsNew Then
@@ -1888,7 +1898,9 @@ Public Class frmNachrichtBereich
                         End If
                     Else
                         If Me.saveNachrichtToDb2(lAbtBereiche) Then
-                            Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner, dsPlanUpdatePlanBereich, compPlanUpdatePlanBereich)
+                            If Me.IsNew Then
+                                Me.copyPlanBereichForEachAbtBereich(lAbtBereiche, rPlanOwner, dsPlanUpdatePlanBereich, compPlanUpdatePlanBereich)
+                            End If
                             ownerSucessfullySaved = True
                             protokollOk = doUI.getRes("EntrySave") + vbNewLine + protokollOk
                             Return True
@@ -2005,23 +2017,25 @@ Public Class frmNachrichtBereich
     Public Sub copyPlanBereichForEachAbtBereich(lAbtBereiche As System.Collections.Generic.List(Of cAbtBereich), rPlanOrig As dsPlan.planBereichRow,
                                                 ByRef dsPlanUpdate As dsPlan, ByRef compPlanUpdate As compPlan)
         Try
-            For Each ActAbtBereich In lAbtBereiche
-                dsPlanUpdate.Clear()
-                compPlanUpdate.getPlanBereich(System.Guid.NewGuid(), compPlan.eTypSelPlanBereich.IDPlan, dsPlanUpdate)
+            If Me.IsNew Then
+                For Each ActAbtBereich In lAbtBereiche
+                    dsPlanUpdate.Clear()
+                    compPlanUpdate.getPlanBereich(System.Guid.NewGuid(), compPlan.eTypSelPlanBereich.IDPlan, dsPlanUpdate)
 
-                Dim rPlanNew As dsPlan.planBereichRow = Me.compPlan1.getNewRowPlanBereich(dsPlanUpdate)
-                rPlanNew.ItemArray = rPlanOrig.ItemArray
+                    Dim rPlanNew As dsPlan.planBereichRow = Me.compPlan1.getNewRowPlanBereich(dsPlanUpdate)
+                    rPlanNew.ItemArray = rPlanOrig.ItemArray
 
-                rPlanNew.ID = System.Guid.NewGuid()
-                rPlanNew.IDKlinik = PMDS.Global.ENV.IDKlinik
-                If ActAbtBereich.isAbt Then
-                    rPlanNew.IDAbteilung = ActAbtBereich.ID
-                Else
-                    rPlanNew.IDBereich = ActAbtBereich.ID
-                End If
+                    rPlanNew.ID = System.Guid.NewGuid()
+                    rPlanNew.IDKlinik = PMDS.Global.ENV.IDKlinik
+                    If ActAbtBereich.isAbt Then
+                        rPlanNew.IDAbteilung = ActAbtBereich.ID
+                    Else
+                        rPlanNew.IDBereich = ActAbtBereich.ID
+                    End If
 
-                compPlanUpdate.daPlanBereich.Update(dsPlanUpdate.planBereich)
-            Next
+                    compPlanUpdate.daPlanBereich.Update(dsPlanUpdate.planBereich)
+                Next
+            End If
 
         Catch ex As Exception
             Throw New Exception("frmNachrichtBereich.copyPlanBereichForEachAbtBereich: " + ex.ToString())
@@ -2108,6 +2122,8 @@ Public Class frmNachrichtBereich
                     rPlanToSet.Status = "Offen"
                 ElseIf Me.optStatus.CheckedIndex = 1 Then
                     rPlanToSet.Status = "Erledigt"
+                ElseIf Me.optStatus.CheckedIndex = 2 Then
+                    rPlanToSet.Status = "Storniert"
                 Else
                     Throw New Exception("setPlanRowTemp: Me.optStatus.CheckedIndex '" + Me.optStatus.CheckedIndex.ToString() + "' not allowed!")
                 End If
@@ -2243,7 +2259,11 @@ Public Class frmNachrichtBereich
     End Function
     Public Function saveNachrichtToDb2(ByRef lAbtBereiche As System.Collections.Generic.List(Of cAbtBereich)) As Boolean
         Try
-            If lAbtBereiche.Count = 0 Then
+            If Me.IsNew Then
+                If lAbtBereiche.Count = 0 Then
+                    Me.compPlan1.daPlanBereich.Update(Me.dsPlan1.planBereich)
+                End If
+            Else
                 Me.compPlan1.daPlanBereich.Update(Me.dsPlan1.planBereich)
             End If
 

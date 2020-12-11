@@ -732,9 +732,9 @@ namespace PMDS.Print
         {
             try
             {
-                dsTermine.WriteXml(ENV.pathConfig + "\\dsTermineBereich.xml", XmlWriteMode.WriteSchema);
-                dsTermine.WriteXmlSchema(ENV.pathConfig + "\\dsTermineBereich.xsd");
-                return;
+                //dsTermine.WriteXml(ENV.pathConfig + "\\dsTermineBereich.xml", XmlWriteMode.WriteSchema);
+                //dsTermine.WriteXmlSchema(ENV.pathConfig + "\\dsTermineBereich.xsd");
+                //return;
 
                 ReportDocument rpt = new ReportDocument();
                 string ReportFile = "TermineBereich1.rpt";

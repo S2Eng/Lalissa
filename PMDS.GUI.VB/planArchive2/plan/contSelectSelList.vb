@@ -167,31 +167,33 @@ Public Class contSelectSelList
 
     Public Function validatedata() As Boolean
         Try
-            For Each rGridRow As UltraGridRow In Me.gridSelList.Rows
-                Dim v As DataRowView = rGridRow.ListObject
-                Dim rSelRow As dsClipboard.tblSelListEntriesTmpRow = v.Row
+            If Not Me._Bereich Then
+                For Each rGridRow As UltraGridRow In Me.gridSelList.Rows
+                    Dim v As DataRowView = rGridRow.ListObject
+                    Dim rSelRow As dsClipboard.tblSelListEntriesTmpRow = v.Row
 
-                If rSelRow.RowState <> DataRowState.Deleted Then
-                    If rSelRow.Bezeichnung.Trim() = "" Then
-                        rSelRow.SetColumnError(Me.DsClipboard1.tblSelListEntriesTmp.BezeichnungColumn.ColumnName, "ErrorInput")
-                        doUI.doMessageBox2("DescriptionInputRequired", "", "")
-                        Return False
-
-                    Else
-                        If rSelRow.Bezeichnung.Trim().Contains(";") Or rSelRow.Bezeichnung.Trim().Contains("/") Or rSelRow.Bezeichnung.Trim().Contains("\") Or rSelRow.Bezeichnung.Trim().Contains("´`") Then
-                            doUI.doMessageBox2("TextContainsUnauthorizedCharacters", "", "")
+                    If rSelRow.RowState <> DataRowState.Deleted Then
+                        If rSelRow.Bezeichnung.Trim() = "" Then
+                            rSelRow.SetColumnError(Me.DsClipboard1.tblSelListEntriesTmp.BezeichnungColumn.ColumnName, "ErrorInput")
+                            doUI.doMessageBox2("DescriptionInputRequired", "", "")
                             Return False
-                        End If
 
-                        'Dim pattern As String = "^[a-zA-Z\s]+$"
-                        'Dim reg As New Text.RegularExpressions.Regex(pattern)
-                        'If Not reg.IsMatch(rSelRow.Bezeichnung.Trim()) Then
-                        '    doUI.doMessageBox2("TextContainsUnauthorizedCharacters", "", "")
-                        '    Return False
-                        'End If
+                        Else
+                            If rSelRow.Bezeichnung.Trim().Contains(";") Or rSelRow.Bezeichnung.Trim().Contains("/") Or rSelRow.Bezeichnung.Trim().Contains("\") Or rSelRow.Bezeichnung.Trim().Contains("´`") Then
+                                doUI.doMessageBox2("TextContainsUnauthorizedCharacters", "", "")
+                                Return False
+                            End If
+
+                            'Dim pattern As String = "^[a-zA-Z\s]+$"
+                            'Dim reg As New Text.RegularExpressions.Regex(pattern)
+                            'If Not reg.IsMatch(rSelRow.Bezeichnung.Trim()) Then
+                            '    doUI.doMessageBox2("TextContainsUnauthorizedCharacters", "", "")
+                            '    Return False
+                            'End If
+                        End If
                     End If
-                End If
-            Next
+                Next
+            End If
 
             Return True
 
@@ -490,7 +492,15 @@ Public Class contSelectSelList
     Private Sub gridSelList_BeforeCellActivate(sender As Object, e As Infragistics.Win.UltraWinGrid.CancelableCellEventArgs) Handles gridSelList.BeforeCellActivate
         Try
             If e.Cell.Column.ToString().Trim().ToLower().Equals(Me.colSelect.Trim().ToLower()) Then
-                e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
+                If Me._Bereich Then
+                    If Me._IsEditable Then
+                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
+                    Else
+                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
+                    End If
+                Else
+                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
+                End If
             Else
                 If Me._IsEditable Then
                     e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit

@@ -40,8 +40,6 @@ Public Class contPlanungDataBereich
 
     Public Enum eTypAction
         delete = 0
-        selectAll = 100
-        selectNone = 101
         Erledigen = 102
         Stornieren = 103
     End Enum
@@ -303,17 +301,17 @@ Public Class contPlanungDataBereich
         UltraGridColumn2.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
         UltraGridColumn2.Header.Editor = Nothing
         UltraGridColumn2.Header.VisiblePosition = 7
-        UltraGridColumn2.Width = 270
+        UltraGridColumn2.Width = 296
         UltraGridColumn3.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append
         UltraGridColumn3.Header.Caption = "Beginnt am"
         UltraGridColumn3.Header.Editor = Nothing
         UltraGridColumn3.Header.VisiblePosition = 0
         UltraGridColumn3.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime
-        UltraGridColumn3.Width = 102
+        UltraGridColumn3.Width = 125
         UltraGridColumn4.Header.Editor = Nothing
         UltraGridColumn4.Header.VisiblePosition = 8
         UltraGridColumn4.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime
-        UltraGridColumn4.Width = 108
+        UltraGridColumn4.Width = 119
         UltraGridColumn5.Header.Caption = "Abteilung"
         UltraGridColumn5.Header.Editor = Nothing
         UltraGridColumn5.Header.VisiblePosition = 4
@@ -331,7 +329,7 @@ Public Class contPlanungDataBereich
         UltraGridColumn8.Header.Caption = "Kategorie"
         UltraGridColumn8.Header.Editor = Nothing
         UltraGridColumn8.Header.VisiblePosition = 1
-        UltraGridColumn8.Width = 178
+        UltraGridColumn8.Width = 305
         UltraGridColumn9.Header.Editor = Nothing
         UltraGridColumn9.Header.VisiblePosition = 17
         UltraGridColumn9.Hidden = True
@@ -395,6 +393,7 @@ Public Class contPlanungDataBereich
         UltraGridColumn51.Header.Caption = "Berufsgruppen"
         UltraGridColumn51.Header.Editor = Nothing
         UltraGridColumn51.Header.VisiblePosition = 6
+        UltraGridColumn51.Width = 315
         UltraGridColumn12.Header.Editor = Nothing
         UltraGridColumn12.Header.VisiblePosition = 27
         UltraGridColumn12.Hidden = True
@@ -568,8 +567,8 @@ Public Class contPlanungDataBereich
 
             Me.LöschenToolStripMenuItem1.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32)
 
-            Me.gridPlans.DisplayLayout.Override.MergedCellStyle = MergedCellStyle.Always
-            Me.ui1.setMergeStyle(Me.gridPlans, False, True)
+            'Me.gridPlans.DisplayLayout.Override.MergedCellStyle = MergedCellStyle.Always
+            'Me.ui1.setMergeStyle(Me.gridPlans, False, True)
 
             If PMDS.Global.ENV.adminSecure Then
             Else
@@ -724,7 +723,6 @@ Public Class contPlanungDataBereich
             gridPlans.Refresh()
             Me.setGridColText()
             Me.mainWindow.setAzahl_buttSuchen(Me.DsPlanSearch1.plan.Rows.Count)
-
             Me.gridPlans.Selected.Rows.Clear()
             Me.gridPlans.ActiveRow = Nothing
 
@@ -735,28 +733,31 @@ Public Class contPlanungDataBereich
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 db.Configuration.LazyLoadingEnabled = False
 
+                Dim rUsrLoggedIn = (From o In db.Benutzer
+                                    Where o.ID = PMDS.Global.ENV.USERID
+                                    Select o.ID, o.Benutzer1, o.IDBerufsstand).ToList().First()
+
+                Dim rSelListBerufsstandLoggedIn = (From o In db.AuswahlListe
+                                                   Where o.ID = rUsrLoggedIn.IDBerufsstand And o.IstGruppe = False And o.IDAuswahlListeGruppe = "BER"
+                                                   Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
+
+                Dim lPlanBereichDelete As New System.Collections.Generic.List(Of dsPlanSearch.planBereichRow)()
                 For Each rGrid In Me.gridPlans.Rows
-                    Dim v As DataRowView = rGrid.ListObject
-                    Dim rPlanSel As dsPlanSearch.planBereichRow = v.Row
+                    If Not rGrid.IsFilterRow Then
+                        If rGrid.IsGroupByRow Then
+                            Me.showGrid_rek(rGrid, lPlanBereichDelete, rSelListBerufsstandLoggedIn.Hierarche, db)
+                        Else
+                            Me.showGridRow(rGrid, lPlanBereichDelete, rSelListBerufsstandLoggedIn.Hierarche, db)
+                        End If
 
-                    If Not rPlanSel.IsIDAbteilungNull() Then
-                        Dim rAbteilung = (From o In db.Abteilung
-                                          Where o.ID = rPlanSel.IDAbteilung
-                                          Select o.ID, o.Bezeichnung).ToList().First()
-
-                        rGrid.Cells(Me.colAbteilung).Value = rAbteilung.Bezeichnung.Trim()
-                    End If
-
-                    If Not rPlanSel.IsIDBereichNull() Then
-                        Dim rBereich = (From o In db.Bereich
-                                        Where o.ID = rPlanSel.IDBereich
-                                        Select o.ID, o.Bezeichnung).ToList().First()
-
-                        rGrid.Cells(Me.colBereich).Value = rBereich.Bezeichnung.Trim()
+                        For Each rPlanBereichDelete As dsPlanSearch.planBereichRow In lPlanBereichDelete
+                            rPlanBereichDelete.Delete()
+                        Next
                     End If
                 Next
             End Using
 
+            Me.gridPlans.Refresh()
             Me.gridPlans.Rows.ExpandAll(True)
             Me.setUIAnzahl(Me.gridPlans.Rows.Count)
 
@@ -766,6 +767,64 @@ Public Class contPlanungDataBereich
             Throw New Exception("contPlanungDataBereich.search3: " + ex.ToString())
         End Try
     End Function
+    Public Function showGrid_rek(rGridParent As UltraGridRow, ByRef lPlanBereichDelete As System.Collections.Generic.List(Of dsPlanSearch.planBereichRow),
+                                    ByRef SelListBerufsstandLoggedInHierarche As Integer,
+                                    db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
+        Try
+            For Each childBand As UltraGridChildBand In rGridParent.ChildBands
+                For Each rGrid As UltraGridRow In childBand.Rows
+                    If rGrid.IsGroupByRow Then
+                        Me.showGrid_rek(rGrid, lPlanBereichDelete, SelListBerufsstandLoggedInHierarche, db)
+                    Else
+                        Me.showGridRow(rGrid, lPlanBereichDelete, SelListBerufsstandLoggedInHierarche, db)
+                    End If
+                Next
+            Next
+
+        Catch ex As Exception
+            Throw New Exception("contPlanungDataBereich.search3: " + ex.ToString())
+        End Try
+    End Function
+    Public Function showGridRow(rGrid As UltraGridRow, ByRef lPlanBereichDelete As System.Collections.Generic.List(Of dsPlanSearch.planBereichRow),
+                                 SelListBerufsstandLoggedInHierarche As Integer,
+                                 ByRef db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
+        Try
+            Dim v As DataRowView = rGrid.ListObject
+            Dim rPlanSel As dsPlanSearch.planBereichRow = v.Row
+
+            Dim rUsrPlanCreated = (From o In db.Benutzer
+                                   Where o.Benutzer1 = rPlanSel.CreatedFrom
+                                   Select o.ID, o.Benutzer1, o.IDBerufsstand).ToList().First()
+
+            Dim rSelListBerufsstandUsrCreated = (From o In db.AuswahlListe
+                                                 Where o.ID = rUsrPlanCreated.IDBerufsstand And o.IstGruppe = False And o.IDAuswahlListeGruppe = "BER"
+                                                 Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
+
+            If rSelListBerufsstandUsrCreated.Hierarche < SelListBerufsstandLoggedInHierarche Then
+                lPlanBereichDelete.Add(rPlanSel)
+            End If
+
+            If Not rPlanSel.IsIDAbteilungNull() Then
+                Dim rAbteilung = (From o In db.Abteilung
+                                  Where o.ID = rPlanSel.IDAbteilung
+                                  Select o.ID, o.Bezeichnung).ToList().First()
+
+                rGrid.Cells(Me.colAbteilung).Value = rAbteilung.Bezeichnung.Trim()
+            End If
+
+            If Not rPlanSel.IsIDBereichNull() Then
+                Dim rBereich = (From o In db.Bereich
+                                Where o.ID = rPlanSel.IDBereich
+                                Select o.ID, o.Bezeichnung).ToList().First()
+
+                rGrid.Cells(Me.colBereich).Value = rBereich.Bezeichnung.Trim()
+            End If
+
+        Catch ex As Exception
+            Throw New Exception("contPlanungDataBereich.showGridRow: " + ex.ToString())
+        End Try
+    End Function
+
     Public Sub setUIAnzahl(iFound As Integer)
         Try
             Me.mainWindow.lblFound.Text = doUI.getRes("Founded") + ": " + iFound.ToString()
@@ -845,27 +904,27 @@ Public Class contPlanungDataBereich
     End Sub
     Private Sub planÖffnen(IDPlanBereich As Guid)
         Try
-            Dim bFrmFound As Boolean = False
             For Each frmPlan As frmNachrichtBereich In lNachrichtenBereichOpend
                 If Not frmPlan.IsOpend Then
                     frmPlan.IDPlanBereich = IDPlanBereich
                     frmPlan.IsNew = False
+                    frmPlan.PanelBottom.Visible = Me.mainWindow.hasRightToEdit
                     frmPlan.Visible = True
                     frmPlan.Show()
+                    Exit Sub
                 End If
             Next
 
-            If Not bFrmFound Then
-                Dim frmNachrichtBereich1 As New frmNachrichtBereich()
-                frmNachrichtBereich1.modalWindow = Me.mainWindow
-                frmNachrichtBereich1.initControl()
-                frmNachrichtBereich1.IDPlanBereich = IDPlanBereich
-                frmNachrichtBereich1.IsNew = False
-                frmNachrichtBereich1.Visible = True
-                frmNachrichtBereich1.Show()
+            Dim frmNachrichtBereich1 As New frmNachrichtBereich()
+            frmNachrichtBereich1.modalWindow = Me.mainWindow
+            frmNachrichtBereich1.initControl()
+            frmNachrichtBereich1.IDPlanBereich = IDPlanBereich
+            frmNachrichtBereich1.IsNew = False
+            frmNachrichtBereich1.PanelBottom.Visible = Me.mainWindow.hasRightToEdit
+            frmNachrichtBereich1.Visible = True
+            frmNachrichtBereich1.Show()
 
-                Me.lNachrichtenBereichOpend.Add(frmNachrichtBereich1)
-            End If
+            Me.lNachrichtenBereichOpend.Add(frmNachrichtBereich1)
 
         Catch ex As Exception
             Throw New Exception("contPlanungDataBereich.planÖffnen: " + ex.ToString())
@@ -1052,12 +1111,6 @@ Public Class contPlanungDataBereich
                                 sMsgBoxTxt = String.Format(sMsgBoxTxt, cSelAppActuell.rPlanBereichSel.Betreff.Trim() + " (" + cSelAppActuell.rPlanBereichSel.CreatedAt.ToString("dd.MM.yyyy HH:mm:ss") + ")")
                                 protokollTxt += sMsgBoxTxt.Trim() + vbNewLine
                             End If
-
-                        ElseIf typAction = eTypAction.selectAll Then
-                            cSelAppActuell.rowGrid.Selected = True
-
-                        ElseIf typAction = eTypAction.selectNone Then
-                            cSelAppActuell.rowGrid.Selected = False
 
                         ElseIf typAction = eTypAction.Stornieren Then
                             compPlanWork.updatePlanBereichStatus(cSelAppActuell.rPlanBereichSel.ID, "Storniert")
