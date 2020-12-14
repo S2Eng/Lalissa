@@ -61,6 +61,7 @@ namespace PMDS.GUI.PMDSClient
             this.btnDokumenteBenutzer.Visible = false;
             this.btnDokumenteBenutzer.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Oeffnen, QS2.Resources.getRes.ePicTyp.ico);
             this.btnKliententermineArchive.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_AlleTermine, QS2.Resources.getRes.ePicTyp.ico);
+            this.btnKliententermineArchive.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_MeineTermine, QS2.Resources.getRes.ePicTyp.ico);
             this.btnMessages.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Message, QS2.Resources.getRes.ePicTyp.ico);
 
             GuiAction.GuiActionDone += new GuiActionDoneDelegate(GuiAction_GuiActionDone);
@@ -1082,7 +1083,7 @@ namespace PMDS.GUI.PMDSClient
                 this.Cursor = Cursors.WaitCursor;
 
                 this.setButtonsAktivDeaktiv(SiteEvents.listeOffeneTermine);
-                GuiAction.archivTerminMail(true, true, false);
+                GuiAction.archivTerminMail(true, true, false, false);
 
             }
             catch (Exception ex)

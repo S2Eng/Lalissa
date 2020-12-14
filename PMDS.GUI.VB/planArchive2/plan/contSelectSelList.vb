@@ -493,11 +493,7 @@ Public Class contSelectSelList
         Try
             If e.Cell.Column.ToString().Trim().ToLower().Equals(Me.colSelect.Trim().ToLower()) Then
                 If Me._Bereich Then
-                    If Me._IsEditable Then
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
-                    Else
-                        e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
-                    End If
+                    e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
                 Else
                     e.Cell.Activation = Infragistics.Win.UltraWinGrid.Activation.AllowEdit
                 End If

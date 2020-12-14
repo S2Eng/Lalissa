@@ -319,13 +319,13 @@ namespace PMDS.GUI
                 GuiWorkflow.mainWindow.AddObject(_ArchivPlanung);
             }
         }
-        public static void ShowArchivPlanung( bool gesamt ,bool headerEin, bool showKlientenarchiv)
+        public static void ShowArchivPlanung( bool gesamt ,bool headerEin, bool showKlientenarchiv, bool ShowTermineBereich)
         {
             _guiworkflow.initArchivTerminsystem();
             _guiworkflow._ArchivPlanung._headerEin = headerEin;
             _guiworkflow._ArchivPlanung.showKlientenarchiv = false;
             _LastGroupSelectd = "ShowArchivPlanung";
-
+            _guiworkflow._ArchivPlanung._ShowTermineBereich = ShowTermineBereich;
             if (showKlientenarchiv)
             {
                 _guiworkflow._ArchivPlanung._TypeUI = VB.contPlanungData.eTypeUI.IDKlient;

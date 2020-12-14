@@ -30,6 +30,7 @@ namespace PMDS.Itscont
         private bool _ContentChanged = false;
         private bool isLoaded = false;
         private bool isLoadedArchive = false;
+        public bool _ShowTermineBereich = false;
 
         private string infAuswahl = "";
         private Patient pat = new Patient();

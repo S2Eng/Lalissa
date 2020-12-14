@@ -737,24 +737,23 @@ namespace PMDS.Print
                 //return;
 
                 ReportDocument rpt = new ReportDocument();
-                string ReportFile = "TermineBereich1.rpt";
+                string ReportFile = "";
 
-                string strCheck = Quickbutton.Trim().ToLower();
-                //switch (strCheck)
-                //{
-                //    case "resid.patientbeginn":
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine1.rpt");
-                //        break;
-                //    case "resid.patientkategorie":
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine2.rpt");
-                //        break;
-                //    case "resid.kategoriepatient":
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine3.rpt");
-                //        break;
-                //    default:
-                //        ReportFile = Path.Combine(ENV.ReportPath, "Termine4.rpt");
-                //        break;
-                //}
+                switch (Quickbutton)
+                {
+                    case "AbtBereichPlan":
+                        ReportFile = Path.Combine(ENV.ReportPath, "TermineBereich1.rpt");
+                        break;
+                    case "KatAbtBereichPlan":
+                        ReportFile = Path.Combine(ENV.ReportPath, "TermineBereich2.rpt");
+                        break;
+                    case "Plan":
+                        ReportFile = Path.Combine(ENV.ReportPath, "TermineBereich3.rpt");
+                        break;
+                    default:
+                        ReportFile = Path.Combine(ENV.ReportPath, "TermineBereich1.rpt");
+                        break;
+                }
 
                 rpt.Load(ReportFile);
                 frmPrintPreview.LogOnCrystReport(rpt, dsTermine.Tables["planBereich"], true);

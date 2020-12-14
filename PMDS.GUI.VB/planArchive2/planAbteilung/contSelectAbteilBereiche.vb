@@ -58,16 +58,18 @@ Public Class contSelectAbteilBereiche
                             Where o.IDKlinik = PMDS.Global.ENV.IDKlinik Order By o.Bezeichnung Ascending
                             Select o.ID, o.Bezeichnung).ToList()
                 For Each rAbt In tAbt
-                    Dim itmAbt As Infragistics.Win.UltraWinTree.UltraTreeNode = Me.treeAbtBereiche.Nodes.Add(rAbt.ID.ToString(), rAbt.Bezeichnung.Trim())
-                    itmAbt.CheckedState = Windows.Forms.CheckState.Unchecked
+                    If rAbt.ID <> System.Guid.Empty Then
+                        Dim itmAbt As Infragistics.Win.UltraWinTree.UltraTreeNode = Me.treeAbtBereiche.Nodes.Add(rAbt.ID.ToString(), rAbt.Bezeichnung.Trim())
+                        itmAbt.CheckedState = Windows.Forms.CheckState.Unchecked
 
-                    Dim tBereiche = (From o In db.Bereich
-                                     Where o.IDAbteilung = rAbt.ID Order By o.Bezeichnung Ascending
-                                     Select o.ID, o.Bezeichnung).ToList()
-                    For Each rBereich In tBereiche
-                        Dim itmBereicht As Infragistics.Win.UltraWinTree.UltraTreeNode = itmAbt.Nodes.Add(rBereich.ID.ToString(), rBereich.Bezeichnung.Trim())
-                        itmBereicht.CheckedState = Windows.Forms.CheckState.Unchecked
-                    Next
+                        Dim tBereiche = (From o In db.Bereich
+                                         Where o.IDAbteilung = rAbt.ID Order By o.Bezeichnung Ascending
+                                         Select o.ID, o.Bezeichnung).ToList()
+                        For Each rBereich In tBereiche
+                            Dim itmBereicht As Infragistics.Win.UltraWinTree.UltraTreeNode = itmAbt.Nodes.Add(rBereich.ID.ToString(), rBereich.Bezeichnung.Trim())
+                            itmBereicht.CheckedState = Windows.Forms.CheckState.Unchecked
+                        Next
+                    End If
                 Next
             End Using
 

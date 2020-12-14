@@ -78,9 +78,9 @@ namespace PMDS.GUI
 		}
         	
 
-        public static void archivTerminMail(bool gesamt, bool headerEin, bool ShowKlientenarchiv)
+        public static void archivTerminMail(bool gesamt, bool headerEin, bool ShowKlientenarchiv, bool ShowTermineBereich)
         {
-            GuiWorkflow.ShowArchivPlanung(gesamt, headerEin, ShowKlientenarchiv);
+            GuiWorkflow.ShowArchivPlanung(gesamt, headerEin, ShowKlientenarchiv, ShowTermineBereich);
         }
 
 

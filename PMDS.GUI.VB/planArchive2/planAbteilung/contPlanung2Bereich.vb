@@ -221,7 +221,7 @@ Public Class contPlanung2Bereich
         Me.btnLayout_Plan.ShowOutline = False
         Me.btnLayout_Plan.Size = New System.Drawing.Size(28, 23)
         Me.btnLayout_Plan.TabIndex = 3
-        Me.btnLayout_Plan.Tag = ""
+        Me.btnLayout_Plan.Tag = "Plan"
         Me.btnLayout_Plan.Text = "Plan"
         Me.btnLayout_Plan.UseAppStyling = False
         Me.btnLayout_Plan.UseFlatMode = Infragistics.Win.DefaultableBoolean.[True]
@@ -251,7 +251,7 @@ Public Class contPlanung2Bereich
         Me.btnLayout_KatAbtBereichPlan.ShowOutline = False
         Me.btnLayout_KatAbtBereichPlan.Size = New System.Drawing.Size(168, 23)
         Me.btnLayout_KatAbtBereichPlan.TabIndex = 2
-        Me.btnLayout_KatAbtBereichPlan.Tag = ""
+        Me.btnLayout_KatAbtBereichPlan.Tag = "KatAbtBereichPlan"
         Me.btnLayout_KatAbtBereichPlan.Text = "Kategorie/Abteilung/Bereich/Plan"
         Me.btnLayout_KatAbtBereichPlan.UseAppStyling = False
         Me.btnLayout_KatAbtBereichPlan.UseFlatMode = Infragistics.Win.DefaultableBoolean.[True]
@@ -281,7 +281,7 @@ Public Class contPlanung2Bereich
         Me.btnLayout_AbtBereichPlan.ShowOutline = False
         Me.btnLayout_AbtBereichPlan.Size = New System.Drawing.Size(117, 23)
         Me.btnLayout_AbtBereichPlan.TabIndex = 1
-        Me.btnLayout_AbtBereichPlan.Tag = ""
+        Me.btnLayout_AbtBereichPlan.Tag = "AbtBereichPlan"
         Me.btnLayout_AbtBereichPlan.Text = "Abteilung/Bereich/Plan"
         Me.btnLayout_AbtBereichPlan.UseAppStyling = False
         Me.btnLayout_AbtBereichPlan.UseFlatMode = Infragistics.Win.DefaultableBoolean.[True]
@@ -619,7 +619,7 @@ Public Class contPlanung2Bereich
             Me.uPopupAbteilungBereiche.PopupControl = Me.contSelectAbtBereiche
             Me.dropDownAbteilungBereiche.PopupItem = Me.uPopupAbteilungBereiche
             Me.contSelectAbtBereiche.popupContMainSearch = Me.uPopupAbteilungBereiche
-            Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
+            'Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
             Me.contSelectAbtBereiche.setLabelCount2()
 
             Me.contSelectSelListBerufsgruppen.MainPlanBereicheSearch = Me

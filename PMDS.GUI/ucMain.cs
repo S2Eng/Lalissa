@@ -1083,7 +1083,7 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.WaitCursor;
 
                 this.setButtonsAktivDeaktiv(SiteEvents.listeOffeneTermine);
-                GuiAction.archivTerminMail(true, true, false);
+                GuiAction.archivTerminMail(true, true, false, false);
 
             }
             catch (Exception ex)

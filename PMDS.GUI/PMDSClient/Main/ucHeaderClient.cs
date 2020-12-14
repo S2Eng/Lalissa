@@ -1933,7 +1933,7 @@ namespace PMDS.GUI.PMDSClient
                 this.checkMemory();
                 this.setButtonsDeaktive();
                 PMDS.Global.UIGlobal.setAktiv(btnTermine, -1, activeForeCol, activeFrameCol, activeBackCol);
-                GuiAction.archivTerminMail(false, false, false);
+                GuiAction.archivTerminMail(false, false, false, false);
 
                 //PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(ENV.CurrentIDPatient);
                 //string bezPatient = pat.Vorname + " " + pat.Nachname;
@@ -1963,7 +1963,6 @@ namespace PMDS.GUI.PMDSClient
             {
                 throw new Exception("neuerTermin: " + ex.ToString());
             }
-
         }
 
         private void neuesDokument(object sender, EventArgs e)
@@ -1973,7 +1972,7 @@ namespace PMDS.GUI.PMDSClient
                 this.checkMemory();
                 this.setButtonsDeaktive();
                 PMDS.Global.UIGlobal.setAktiv(this.btnArchiv , -1, activeForeCol, activeFrameCol, activeBackCol);
-                GuiAction.archivTerminMail(false, false, true);
+                GuiAction.archivTerminMail(false, false, true, false);
 
                 ////PMDS.BusinessLogic.Patient pat = new PMDS.BusinessLogic.Patient(ENV.CurrentIDPatient);
                 ////string bezPatient = pat.Vorname + " " + pat.Nachname;

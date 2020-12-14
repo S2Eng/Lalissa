@@ -1276,7 +1276,7 @@ Public Class frmNachrichtBereich
 
             Me.contSelectAbtBereiche.treeAbtBereiche.Enabled = True
             Me.contSelectAbtBereiche.setSelectionOnOff(CheckState.Unchecked)
-            Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
+            'Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
             Me.contSelectAbtBereiche.setLabelCount2()
 
             Me.contSelectSelListBerufsgruppen.setSelectionOnOff(False)
@@ -1489,7 +1489,7 @@ Public Class frmNachrichtBereich
             If Not Me.rPlanBereich.IsIDBereichNull() Then
                 Me.contSelectAbtBereiche.setAbtBereich(Me.rPlanBereich.IDBereich, False)
             End If
-            Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
+            'Me.contSelectAbtBereiche.treeAbtBereiche.ExpandAll(True)
             Me.contSelectAbtBereiche.treeAbtBereiche.Enabled = False
             Me.contSelectAbtBereiche.setLabelCount2()
 

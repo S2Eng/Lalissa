@@ -56,18 +56,18 @@ Partial Class contSelectSelList
         Dim valueListItem44 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim valueListItem45 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueList6 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(101231296)
-        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance38 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance39 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance40 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance41 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance42 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance37 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance16 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.gridSelList = New QS2.Desktop.ControlManagment.BaseGrid()
         Me.DsClipboard1 = New PMDS.GUI.VB.dsClipboard()
         Me.PanelTop = New System.Windows.Forms.Panel()
@@ -78,8 +78,8 @@ Partial Class contSelectSelList
         Me.btnDel = New QS2.Desktop.ControlManagment.BaseButton()
         Me.btnAdd = New QS2.Desktop.ControlManagment.BaseButton()
         Me.PanelBottom = New System.Windows.Forms.Panel()
-        Me.btnAbort = New QS2.Desktop.ControlManagment.BaseButton()
         Me.btnSelectSave = New QS2.Desktop.ControlManagment.BaseButton()
+        Me.btnAbort = New QS2.Desktop.ControlManagment.BaseButton()
         Me.btnEdit = New QS2.Desktop.ControlManagment.BaseButton()
         Me.btnSave = New QS2.Desktop.ControlManagment.BaseButton()
         Me.PanelCenter = New System.Windows.Forms.Panel()
@@ -111,22 +111,29 @@ Partial Class contSelectSelList
         Appearance1.BackColor = System.Drawing.Color.White
         Me.gridSelList.DisplayLayout.Appearance = Appearance1
         Me.gridSelList.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn
+        UltraGridColumn2.Header.Editor = Nothing
         UltraGridColumn2.Header.VisiblePosition = 0
         UltraGridColumn2.Hidden = True
         UltraGridColumn2.Width = 52
+        UltraGridColumn3.Header.Editor = Nothing
         UltraGridColumn3.Header.VisiblePosition = 2
         UltraGridColumn3.Width = 421
+        UltraGridColumn4.Header.Editor = Nothing
         UltraGridColumn4.Header.VisiblePosition = 3
         UltraGridColumn4.Hidden = True
         UltraGridColumn4.Width = 62
+        UltraGridColumn5.Header.Editor = Nothing
         UltraGridColumn5.Header.VisiblePosition = 4
         UltraGridColumn5.Hidden = True
         UltraGridColumn5.Width = 112
+        UltraGridColumn6.Header.Editor = Nothing
         UltraGridColumn6.Header.VisiblePosition = 5
         UltraGridColumn6.Hidden = True
         UltraGridColumn6.Width = 355
+        UltraGridColumn7.Header.Editor = Nothing
         UltraGridColumn7.Header.VisiblePosition = 6
         UltraGridColumn8.DataType = GetType(Boolean)
+        UltraGridColumn8.Header.Editor = Nothing
         UltraGridColumn8.Header.VisiblePosition = 1
         UltraGridColumn8.Width = 82
         UltraGridBand1.Columns.AddRange(New Object() {UltraGridColumn2, UltraGridColumn3, UltraGridColumn4, UltraGridColumn5, UltraGridColumn6, UltraGridColumn7, UltraGridColumn8})
@@ -214,13 +221,13 @@ Partial Class contSelectSelList
         '
         'lblSelectNone
         '
-        Appearance12.Cursor = System.Windows.Forms.Cursors.Hand
-        Appearance12.FontData.SizeInPoints = 8.0!
-        Appearance12.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblSelectNone.Appearance = Appearance12
+        Appearance5.Cursor = System.Windows.Forms.Cursors.Hand
+        Appearance5.FontData.SizeInPoints = 8.0!
+        Appearance5.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblSelectNone.Appearance = Appearance5
         Me.lblSelectNone.AutoSize = True
-        Appearance38.FontData.UnderlineAsString = "True"
-        Me.lblSelectNone.HotTrackAppearance = Appearance38
+        Appearance6.FontData.UnderlineAsString = "True"
+        Me.lblSelectNone.HotTrackAppearance = Appearance6
         Me.lblSelectNone.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.lblSelectNone.Location = New System.Drawing.Point(340, 9)
         Me.lblSelectNone.Margin = New System.Windows.Forms.Padding(4)
@@ -234,13 +241,13 @@ Partial Class contSelectSelList
         '
         'lblSelectAll
         '
-        Appearance39.Cursor = System.Windows.Forms.Cursors.Hand
-        Appearance39.FontData.SizeInPoints = 8.0!
-        Appearance39.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.lblSelectAll.Appearance = Appearance39
+        Appearance7.Cursor = System.Windows.Forms.Cursors.Hand
+        Appearance7.FontData.SizeInPoints = 8.0!
+        Appearance7.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblSelectAll.Appearance = Appearance7
         Me.lblSelectAll.AutoSize = True
-        Appearance40.FontData.UnderlineAsString = "True"
-        Me.lblSelectAll.HotTrackAppearance = Appearance40
+        Appearance8.FontData.UnderlineAsString = "True"
+        Me.lblSelectAll.HotTrackAppearance = Appearance8
         Me.lblSelectAll.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.lblSelectAll.Location = New System.Drawing.Point(315, 9)
         Me.lblSelectAll.Margin = New System.Windows.Forms.Padding(4)
@@ -278,11 +285,11 @@ Partial Class contSelectSelList
         '
         'lblSearch
         '
-        Appearance41.BackColor = System.Drawing.Color.Transparent
-        Appearance41.ForeColor = System.Drawing.Color.Black
-        Appearance41.ForeColorDisabled = System.Drawing.Color.Black
-        Appearance41.TextVAlignAsString = "Middle"
-        Me.lblSearch.Appearance = Appearance41
+        Appearance10.BackColor = System.Drawing.Color.Transparent
+        Appearance10.ForeColor = System.Drawing.Color.Black
+        Appearance10.ForeColorDisabled = System.Drawing.Color.Black
+        Appearance10.TextVAlignAsString = "Middle"
+        Me.lblSearch.Appearance = Appearance10
         Me.lblSearch.Location = New System.Drawing.Point(5, 7)
         Me.lblSearch.Name = "lblSearch"
         Me.lblSearch.Size = New System.Drawing.Size(49, 17)
@@ -293,9 +300,9 @@ Partial Class contSelectSelList
         'btnDel
         '
         Me.btnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance42.ImageHAlign = Infragistics.Win.HAlign.Center
-        Appearance42.ImageVAlign = Infragistics.Win.VAlign.Middle
-        Me.btnDel.Appearance = Appearance42
+        Appearance11.ImageHAlign = Infragistics.Win.HAlign.Center
+        Appearance11.ImageVAlign = Infragistics.Win.VAlign.Middle
+        Me.btnDel.Appearance = Appearance11
         Me.btnDel.AutoWorkLayout = False
         Me.btnDel.IsStandardControl = False
         Me.btnDel.Location = New System.Drawing.Point(466, 4)
@@ -307,9 +314,9 @@ Partial Class contSelectSelList
         'btnAdd
         '
         Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance37.ImageHAlign = Infragistics.Win.HAlign.Center
-        Appearance37.ImageVAlign = Infragistics.Win.VAlign.Middle
-        Me.btnAdd.Appearance = Appearance37
+        Appearance12.ImageHAlign = Infragistics.Win.HAlign.Center
+        Appearance12.ImageVAlign = Infragistics.Win.VAlign.Middle
+        Me.btnAdd.Appearance = Appearance12
         Me.btnAdd.AutoWorkLayout = False
         Me.btnAdd.IsStandardControl = False
         Me.btnAdd.Location = New System.Drawing.Point(438, 4)
@@ -322,35 +329,21 @@ Partial Class contSelectSelList
         '
         Me.PanelBottom.BackColor = System.Drawing.Color.Transparent
         Me.PanelBottom.Controls.Add(Me.btnSelectSave)
-        Me.PanelBottom.Controls.Add(Me.btnAbort)
         Me.PanelBottom.Controls.Add(Me.btnEdit)
         Me.PanelBottom.Controls.Add(Me.btnSave)
+        Me.PanelBottom.Controls.Add(Me.btnAbort)
         Me.PanelBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelBottom.Location = New System.Drawing.Point(0, 333)
         Me.PanelBottom.Name = "PanelBottom"
         Me.PanelBottom.Size = New System.Drawing.Size(503, 34)
         Me.PanelBottom.TabIndex = 4
         '
-        'btnAbort
-        '
-        Appearance27.ImageHAlign = Infragistics.Win.HAlign.Right
-        Appearance27.ImageVAlign = Infragistics.Win.VAlign.Middle
-        Me.btnAbort.Appearance = Appearance27
-        Me.btnAbort.AutoWorkLayout = False
-        Me.btnAbort.IsStandardControl = False
-        Me.btnAbort.Location = New System.Drawing.Point(91, 3)
-        Me.btnAbort.Name = "btnAbort"
-        Me.btnAbort.Size = New System.Drawing.Size(83, 27)
-        Me.btnAbort.TabIndex = 2
-        Me.btnAbort.Tag = "ResID.Abort"
-        Me.btnAbort.Text = "Abbrechen"
-        '
         'btnSelectSave
         '
         Me.btnSelectSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Appearance32.ImageHAlign = Infragistics.Win.HAlign.Right
-        Appearance32.ImageVAlign = Infragistics.Win.VAlign.Middle
-        Me.btnSelectSave.Appearance = Appearance32
+        Appearance13.ImageHAlign = Infragistics.Win.HAlign.Right
+        Appearance13.ImageVAlign = Infragistics.Win.VAlign.Middle
+        Me.btnSelectSave.Appearance = Appearance13
         Me.btnSelectSave.AutoWorkLayout = False
         Me.btnSelectSave.IsStandardControl = False
         Me.btnSelectSave.Location = New System.Drawing.Point(414, 3)
@@ -360,14 +353,28 @@ Partial Class contSelectSelList
         Me.btnSelectSave.Tag = "ResID.OK"
         Me.btnSelectSave.Text = "OK"
         '
+        'btnAbort
+        '
+        Appearance16.ImageHAlign = Infragistics.Win.HAlign.Right
+        Appearance16.ImageVAlign = Infragistics.Win.VAlign.Middle
+        Me.btnAbort.Appearance = Appearance16
+        Me.btnAbort.AutoWorkLayout = False
+        Me.btnAbort.IsStandardControl = False
+        Me.btnAbort.Location = New System.Drawing.Point(6, 4)
+        Me.btnAbort.Name = "btnAbort"
+        Me.btnAbort.Size = New System.Drawing.Size(83, 27)
+        Me.btnAbort.TabIndex = 2
+        Me.btnAbort.Tag = "ResID.Abort"
+        Me.btnAbort.Text = "Abbrechen"
+        '
         'btnEdit
         '
-        Appearance22.ImageHAlign = Infragistics.Win.HAlign.Right
-        Appearance22.ImageVAlign = Infragistics.Win.VAlign.Middle
-        Me.btnEdit.Appearance = Appearance22
+        Appearance14.ImageHAlign = Infragistics.Win.HAlign.Right
+        Appearance14.ImageVAlign = Infragistics.Win.VAlign.Middle
+        Me.btnEdit.Appearance = Appearance14
         Me.btnEdit.AutoWorkLayout = False
         Me.btnEdit.IsStandardControl = False
-        Me.btnEdit.Location = New System.Drawing.Point(6, 3)
+        Me.btnEdit.Location = New System.Drawing.Point(5, 4)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(85, 27)
         Me.btnEdit.TabIndex = 0
@@ -376,12 +383,12 @@ Partial Class contSelectSelList
         '
         'btnSave
         '
-        Appearance16.ImageHAlign = Infragistics.Win.HAlign.Right
-        Appearance16.ImageVAlign = Infragistics.Win.VAlign.Middle
-        Me.btnSave.Appearance = Appearance16
+        Appearance15.ImageHAlign = Infragistics.Win.HAlign.Right
+        Appearance15.ImageVAlign = Infragistics.Win.VAlign.Middle
+        Me.btnSave.Appearance = Appearance15
         Me.btnSave.AutoWorkLayout = False
         Me.btnSave.IsStandardControl = False
-        Me.btnSave.Location = New System.Drawing.Point(6, 3)
+        Me.btnSave.Location = New System.Drawing.Point(90, 4)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(85, 27)
         Me.btnSave.TabIndex = 1
