@@ -756,6 +756,7 @@ Public Class contPlanungDataBereich
             Me.gridPlans.Rows.ExpandAll(True)
             Me.setUIAnzahl(Me.gridPlans.Rows.Count)
 
+            Me.txtBody.Text = ""
             If SetUIGrid Then
                 Me.setUI(Me._LayoutGrid)
             End If
