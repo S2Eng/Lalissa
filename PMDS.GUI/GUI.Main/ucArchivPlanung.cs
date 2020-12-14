@@ -277,7 +277,6 @@ namespace PMDS.Itscont
                                 this.LastSelectedTab = 4;
                                 this.showTab(4);
                             }
-
                         }
                     }
                     else
@@ -313,6 +312,7 @@ namespace PMDS.Itscont
                     this.tabMain.Tabs[3].Visible = false;
                     //this.tabMain.Tabs[3].Visible = true;
                     this.tabMain.Tabs[4].Visible = true;
+                    this.tabMain.Tabs[5].Visible = false;
 
                     if (this.LastSelectedTab == -1)
                         this.LastSelectedTab = 4;
@@ -324,12 +324,25 @@ namespace PMDS.Itscont
 
                 if (this._headerEin)
                 {
-                    this.panelOben.Visible = true;
-                    this.tabMain.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Wizard;
-                    this.tabMain.UseAppStyling = false;
+                    if (HeaderBereich)
+                    {
+                        this.tabMain.Tabs[5].Visible = true;
+                        this.panelButtonsTop.Visible = false;
+                        this.panelOben.Visible = true;
+                        this.tabMain.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Wizard;
+                        this.tabMain.UseAppStyling = false;
+                    }
+                    else
+                    {
+                        this.panelButtonsTop.Visible = true;
+                        this.panelOben.Visible = true;
+                        this.tabMain.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Wizard;
+                        this.tabMain.UseAppStyling = false;
+                    }
                 }
                 else
                 {
+                    this.panelButtonsTop.Visible = true;
                     this.panelOben.Visible = false;
                     this.tabMain.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Office2007Ribbon;
                     this.tabMain.UseAppStyling = true;

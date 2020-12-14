@@ -44,10 +44,10 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "Archiv", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "Termine", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "E-Mail", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "Termine", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Default, "E-Mail", Infragistics.Win.DefaultableBoolean.Default);
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelArchiveOld = new System.Windows.Forms.Panel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
@@ -64,13 +64,14 @@
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.panelOben = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelButtonOben = new QS2.Desktop.ControlManagment.BasePanel();
+            this.panelButtonsTop = new System.Windows.Forms.Panel();
             this.btnTermineAll = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnMyTermine = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnArchiv = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnTermineKlientenansicht = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelButtonRechts = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnKlientenliste = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnEMail = new QS2.Desktop.ControlManagment.BaseButton();
-            this.btnTermineKlientenansicht = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelCenter = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.ultraTabPageControl1.SuspendLayout();
@@ -83,6 +84,7 @@
             this.tabMain.SuspendLayout();
             this.panelOben.SuspendLayout();
             this.panelButtonOben.SuspendLayout();
+            this.panelButtonsTop.SuspendLayout();
             this.panelButtonRechts.SuspendLayout();
             this.panelCenter.SuspendLayout();
             this.SuspendLayout();
@@ -253,16 +255,26 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelButtonOben.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelButtonOben.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelButtonOben.Controls.Add(this.btnTermineAll);
-            this.panelButtonOben.Controls.Add(this.btnMyTermine);
-            this.panelButtonOben.Controls.Add(this.btnArchiv);
+            this.panelButtonOben.Controls.Add(this.panelButtonsTop);
             this.panelButtonOben.Controls.Add(this.panelButtonRechts);
             this.panelButtonOben.Controls.Add(this.btnEMail);
-            this.panelButtonOben.Controls.Add(this.btnTermineKlientenansicht);
             this.panelButtonOben.Location = new System.Drawing.Point(4, 4);
             this.panelButtonOben.Name = "panelButtonOben";
             this.panelButtonOben.Size = new System.Drawing.Size(1038, 70);
             this.panelButtonOben.TabIndex = 23;
+            // 
+            // panelButtonsTop
+            // 
+            this.panelButtonsTop.BackColor = System.Drawing.Color.White;
+            this.panelButtonsTop.Controls.Add(this.btnTermineAll);
+            this.panelButtonsTop.Controls.Add(this.btnMyTermine);
+            this.panelButtonsTop.Controls.Add(this.btnArchiv);
+            this.panelButtonsTop.Controls.Add(this.btnTermineKlientenansicht);
+            this.panelButtonsTop.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelButtonsTop.Location = new System.Drawing.Point(0, 0);
+            this.panelButtonsTop.Name = "panelButtonsTop";
+            this.panelButtonsTop.Size = new System.Drawing.Size(360, 68);
+            this.panelButtonsTop.TabIndex = 26;
             // 
             // btnTermineAll
             // 
@@ -280,7 +292,7 @@
             this.btnTermineAll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTermineAll.ImageSize = new System.Drawing.Size(40, 40);
             this.btnTermineAll.IsStandardControl = false;
-            this.btnTermineAll.Location = new System.Drawing.Point(274, 4);
+            this.btnTermineAll.Location = new System.Drawing.Point(271, 4);
             this.btnTermineAll.Name = "btnTermineAll";
             this.btnTermineAll.ShowFocusRect = false;
             this.btnTermineAll.ShowOutline = false;
@@ -312,7 +324,7 @@
             this.btnMyTermine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMyTermine.ImageSize = new System.Drawing.Size(40, 40);
             this.btnMyTermine.IsStandardControl = false;
-            this.btnMyTermine.Location = new System.Drawing.Point(184, 4);
+            this.btnMyTermine.Location = new System.Drawing.Point(181, 4);
             this.btnMyTermine.Name = "btnMyTermine";
             this.btnMyTermine.ShowFocusRect = false;
             this.btnMyTermine.ShowOutline = false;
@@ -344,7 +356,7 @@
             this.btnArchiv.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnArchiv.ImageSize = new System.Drawing.Size(40, 40);
             this.btnArchiv.IsStandardControl = false;
-            this.btnArchiv.Location = new System.Drawing.Point(4, 4);
+            this.btnArchiv.Location = new System.Drawing.Point(1, 4);
             this.btnArchiv.Name = "btnArchiv";
             this.btnArchiv.ShowFocusRect = false;
             this.btnArchiv.ShowOutline = false;
@@ -360,6 +372,38 @@
             this.btnArchiv.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnArchiv.Click += new System.EventHandler(this.btnArchiv_Click);
             // 
+            // btnTermineKlientenansicht
+            // 
+            this.btnTermineKlientenansicht.AcceptsFocus = false;
+            appearance5.AlphaLevel = ((short)(255));
+            appearance5.FontData.SizeInPoints = 8F;
+            appearance5.ForeColor = System.Drawing.Color.Red;
+            appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
+            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance5.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance5.TextVAlignAsString = "Middle";
+            this.btnTermineKlientenansicht.Appearance = appearance5;
+            this.btnTermineKlientenansicht.AutoWorkLayout = false;
+            this.btnTermineKlientenansicht.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
+            this.btnTermineKlientenansicht.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTermineKlientenansicht.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnTermineKlientenansicht.IsStandardControl = false;
+            this.btnTermineKlientenansicht.Location = new System.Drawing.Point(91, 4);
+            this.btnTermineKlientenansicht.Name = "btnTermineKlientenansicht";
+            this.btnTermineKlientenansicht.ShowFocusRect = false;
+            this.btnTermineKlientenansicht.ShowOutline = false;
+            this.btnTermineKlientenansicht.Size = new System.Drawing.Size(84, 60);
+            this.btnTermineKlientenansicht.TabIndex = 21;
+            this.btnTermineKlientenansicht.Text = "Kliententermine";
+            ultraToolTipInfo4.ToolTipTextFormatted = "Terminsystem des angemeldeten Pflegers ...";
+            ultraToolTipInfo4.ToolTipTitle = "Termine";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnTermineKlientenansicht, ultraToolTipInfo4);
+            this.btnTermineKlientenansicht.UseAppStyling = false;
+            this.btnTermineKlientenansicht.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnTermineKlientenansicht.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnTermineKlientenansicht.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.btnTermineKlientenansicht.Click += new System.EventHandler(this.btnTermine_Click);
+            // 
             // panelButtonRechts
             // 
             this.panelButtonRechts.Controls.Add(this.btnKlientenliste);
@@ -372,13 +416,13 @@
             // btnKlientenliste
             // 
             this.btnKlientenliste.AcceptsFocus = false;
-            appearance5.ForeColor = System.Drawing.Color.Black;
-            appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance5.TextHAlignAsString = "Center";
-            appearance5.TextVAlignAsString = "Middle";
-            this.btnKlientenliste.Appearance = appearance5;
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance6.TextHAlignAsString = "Center";
+            appearance6.TextVAlignAsString = "Middle";
+            this.btnKlientenliste.Appearance = appearance6;
             this.btnKlientenliste.AutoWorkLayout = false;
             this.btnKlientenliste.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnKlientenliste.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -401,14 +445,14 @@
             // btnEMail
             // 
             this.btnEMail.AcceptsFocus = false;
-            appearance6.AlphaLevel = ((short)(255));
-            appearance6.FontData.SizeInPoints = 8F;
-            appearance6.ForeColor = System.Drawing.Color.Red;
-            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance6.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance6.TextVAlignAsString = "Middle";
-            this.btnEMail.Appearance = appearance6;
+            appearance7.AlphaLevel = ((short)(255));
+            appearance7.FontData.SizeInPoints = 8F;
+            appearance7.ForeColor = System.Drawing.Color.Red;
+            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance7.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance7.TextVAlignAsString = "Middle";
+            this.btnEMail.Appearance = appearance7;
             this.btnEMail.AutoWorkLayout = false;
             this.btnEMail.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
             this.btnEMail.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -421,46 +465,14 @@
             this.btnEMail.Size = new System.Drawing.Size(84, 60);
             this.btnEMail.TabIndex = 22;
             this.btnEMail.Text = "E-Mail";
-            ultraToolTipInfo4.ToolTipTextFormatted = "E-Mails des angemeldeten Pflegers ...";
-            ultraToolTipInfo4.ToolTipTitle = "E-Mail";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnEMail, ultraToolTipInfo4);
+            ultraToolTipInfo5.ToolTipTextFormatted = "E-Mails des angemeldeten Pflegers ...";
+            ultraToolTipInfo5.ToolTipTitle = "E-Mail";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnEMail, ultraToolTipInfo5);
             this.btnEMail.UseAppStyling = false;
             this.btnEMail.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnEMail.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnEMail.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.btnEMail.Click += new System.EventHandler(this.btnEMail_Click);
-            // 
-            // btnTermineKlientenansicht
-            // 
-            this.btnTermineKlientenansicht.AcceptsFocus = false;
-            appearance7.AlphaLevel = ((short)(255));
-            appearance7.FontData.SizeInPoints = 8F;
-            appearance7.ForeColor = System.Drawing.Color.Red;
-            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance7.ImageVAlign = Infragistics.Win.VAlign.Top;
-            appearance7.TextVAlignAsString = "Middle";
-            this.btnTermineKlientenansicht.Appearance = appearance7;
-            this.btnTermineKlientenansicht.AutoWorkLayout = false;
-            this.btnTermineKlientenansicht.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
-            this.btnTermineKlientenansicht.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTermineKlientenansicht.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnTermineKlientenansicht.IsStandardControl = false;
-            this.btnTermineKlientenansicht.Location = new System.Drawing.Point(94, 4);
-            this.btnTermineKlientenansicht.Name = "btnTermineKlientenansicht";
-            this.btnTermineKlientenansicht.ShowFocusRect = false;
-            this.btnTermineKlientenansicht.ShowOutline = false;
-            this.btnTermineKlientenansicht.Size = new System.Drawing.Size(84, 60);
-            this.btnTermineKlientenansicht.TabIndex = 21;
-            this.btnTermineKlientenansicht.Text = "Kliententermine";
-            ultraToolTipInfo5.ToolTipTextFormatted = "Terminsystem des angemeldeten Pflegers ...";
-            ultraToolTipInfo5.ToolTipTitle = "Termine";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnTermineKlientenansicht, ultraToolTipInfo5);
-            this.btnTermineKlientenansicht.UseAppStyling = false;
-            this.btnTermineKlientenansicht.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
-            this.btnTermineKlientenansicht.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
-            this.btnTermineKlientenansicht.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.btnTermineKlientenansicht.Click += new System.EventHandler(this.btnTermine_Click);
             // 
             // panelCenter
             // 
@@ -498,6 +510,7 @@
             this.tabMain.ResumeLayout(false);
             this.panelOben.ResumeLayout(false);
             this.panelButtonOben.ResumeLayout(false);
+            this.panelButtonsTop.ResumeLayout(false);
             this.panelButtonRechts.ResumeLayout(false);
             this.panelCenter.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -531,5 +544,6 @@
         private QS2.Desktop.ControlManagment.BaseButton btnMyTermine;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl6;
         private System.Windows.Forms.Panel panelPlanBereich;
+        private System.Windows.Forms.Panel panelButtonsTop;
     }
 }
