@@ -8,8 +8,7 @@ Imports Infragistics.Win.UltraWinDock
 Imports System.IO
 Imports System.Windows.Forms
 Imports System.Drawing
-
-
+Imports PMDS.GUI.VB.contSelectAbteilBereiche
 
 Public Class contPlanungDataBereich
     Inherits System.Windows.Forms.UserControl
@@ -700,10 +699,10 @@ Public Class contPlanungDataBereich
                 Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
                 Dim IDCategory As String = Me.mainWindow.contSelectSelListCategories.getSelectedData2(lstSelectedCategories)
 
-                Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
+                Dim lstSelectedAbt As New System.Collections.Generic.List(Of suchePlan.cAbtBereich)()
                 Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
 
-                Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
+                Dim lstSelectedBereiche As New System.Collections.Generic.List(Of suchePlan.cAbtBereich)()
                 Me.mainWindow.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
 
                 Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
@@ -1241,7 +1240,7 @@ Public Class contPlanungDataBereich
 
     Public Sub showPrieviewTXTControl(ByVal text As String)
         Try
-            Me.txtBody.Text = ""
+            Me.txtBody.Text = text
             'Me.EditorTmp1.Text = ""
 
         Catch ex As Exception

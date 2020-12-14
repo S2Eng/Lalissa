@@ -7,7 +7,7 @@ Imports Infragistics.Win.UltraWinGrid
 Imports Infragistics.Win.UltraWinToolTip
 Imports Infragistics.Win
 Imports PMDS.Global.db.ERSystem
-
+Imports PMDS.GUI.VB.contSelectAbteilBereiche
 
 Public Class frmNachrichtBereich
     Inherits System.Windows.Forms.Form
@@ -39,10 +39,7 @@ Public Class frmNachrichtBereich
     Public contSelectSelListBerufsgruppen As New contSelectSelList()
     Public contSelectAbtBereiche As New contSelectAbteilBereiche()
 
-    Public Class cAbtBereich
-        Public ID As Guid = Nothing
-        Public isAbt As Boolean = False
-    End Class
+
 
 
 
@@ -1617,10 +1614,10 @@ Public Class frmNachrichtBereich
                     Return False
                 End If
 
-                Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
+                Dim lstSelectedAbt As New System.Collections.Generic.List(Of suchePlan.cAbtBereich)()
                 Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
 
-                Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
+                Dim lstSelectedBereiche As New System.Collections.Generic.List(Of suchePlan.cAbtBereich)()
                 Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
 
                 If lstSelectedAbt.Count = 0 And lstSelectedBereiche.Count = 0 Then
@@ -1803,7 +1800,7 @@ Public Class frmNachrichtBereich
             Dim STVerlängerung As Boolean = False
             Dim STKürzung As Boolean = False
             Dim ownerSucessfullySaved As Boolean = False
-            Dim lAbtBereiche As New System.Collections.Generic.List(Of cAbtBereich)()
+            Dim lAbtBereiche As New System.Collections.Generic.List(Of suchePlan.cAbtBereich)()
             Dim rPlanOwner As dsPlan.planBereichRow = Me.dsPlan1.planBereich.Rows(0)
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 If Me.setPlanRowTemp(rPlanOwner, IDPlanMain, IDSerientermin, UserLoggedIn) Then
@@ -1820,22 +1817,23 @@ Public Class frmNachrichtBereich
                     'End If
                     'rPlanOwner.IsOwner = True
 
-                    Dim lstSelectedAbt As New System.Collections.Generic.List(Of Guid)()
+                    Dim lstSelectedAbt As New System.Collections.Generic.List(Of suchePlan.cAbtBereich)()
                     Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedAbt, True)
 
-                    Dim lstSelectedBereiche As New System.Collections.Generic.List(Of Guid)()
+                    Dim lstSelectedBereiche As New System.Collections.Generic.List(Of suchePlan.cAbtBereich)()
                     Me.contSelectAbtBereiche.getSelectedIDs(lstSelectedBereiche, False)
 
-                    For Each ID As Guid In lstSelectedAbt
-                        Dim AbtBereichNew As New cAbtBereich()
-                        AbtBereichNew.ID = ID
-                        AbtBereichNew.isAbt = True
+                    For Each AbtBereichTree As suchePlan.cAbtBereich In lstSelectedAbt
+                        Dim AbtBereichNew As New suchePlan.cAbtBereich()
+                        AbtBereichNew.ID = AbtBereichTree.ID
+                        AbtBereichNew.isAbt = AbtBereichTree.isAbt
                         lAbtBereiche.Add(AbtBereichNew)
                     Next
-                    For Each ID As Guid In lstSelectedBereiche
-                        Dim AbtBereichNew As New cAbtBereich()
-                        AbtBereichNew.ID = ID
-                        AbtBereichNew.isAbt = False
+                    For Each AbtBereichTree As suchePlan.cAbtBereich In lstSelectedBereiche
+                        Dim AbtBereichNew As New suchePlan.cAbtBereich()
+                        AbtBereichNew.ID = AbtBereichTree.ID
+                        AbtBereichNew.IDParent = AbtBereichTree.IDParent
+                        AbtBereichNew.isAbt = AbtBereichTree.isAbt
                         lAbtBereiche.Add(AbtBereichNew)
                     Next
 
@@ -1973,6 +1971,7 @@ Public Class frmNachrichtBereich
                                         rPlanNew.IDAbteilung = ActAbtBereich.ID
                                     Else
                                         rPlanNew.IDBereich = ActAbtBereich.ID
+                                        rPlanNew.IDAbteilung = ActAbtBereich.IDParent
                                     End If
 
                                     compPlanNew.daPlanBereich.Update(dsPlanNew.planBereich)
@@ -2014,7 +2013,7 @@ Public Class frmNachrichtBereich
         End Try
     End Function
 
-    Public Sub copyPlanBereichForEachAbtBereich(lAbtBereiche As System.Collections.Generic.List(Of cAbtBereich), rPlanOrig As dsPlan.planBereichRow,
+    Public Sub copyPlanBereichForEachAbtBereich(lAbtBereiche As System.Collections.Generic.List(Of suchePlan.cAbtBereich), rPlanOrig As dsPlan.planBereichRow,
                                                 ByRef dsPlanUpdate As dsPlan, ByRef compPlanUpdate As compPlan)
         Try
             If Me.IsNew Then
@@ -2031,6 +2030,7 @@ Public Class frmNachrichtBereich
                         rPlanNew.IDAbteilung = ActAbtBereich.ID
                     Else
                         rPlanNew.IDBereich = ActAbtBereich.ID
+                        rPlanNew.IDAbteilung = ActAbtBereich.IDParent
                     End If
 
                     compPlanUpdate.daPlanBereich.Update(dsPlanUpdate.planBereich)
@@ -2257,7 +2257,7 @@ Public Class frmNachrichtBereich
             Throw New Exception("frmNachrichtBereich.setPlanRowTemp: " + ex.ToString())
         End Try
     End Function
-    Public Function saveNachrichtToDb2(ByRef lAbtBereiche As System.Collections.Generic.List(Of cAbtBereich)) As Boolean
+    Public Function saveNachrichtToDb2(ByRef lAbtBereiche As System.Collections.Generic.List(Of suchePlan.cAbtBereich)) As Boolean
         Try
             If Me.IsNew Then
                 If lAbtBereiche.Count = 0 Then

@@ -7,6 +7,14 @@ Public Class suchePlan
     Private gen As New General()
     Private db As New db()
 
+    Public Class cAbtBereich
+        Public ID As Guid = Nothing
+        Public isAbt As Boolean = False
+        Public IDParent As System.Guid = Nothing
+    End Class
+
+
+
 
 
 
@@ -281,8 +289,8 @@ Public Class suchePlan
                          ByVal Betreff As String,
                          ByRef SqlCommandReturn As String,
                          ByRef lstSelectedCategories As System.Collections.Generic.List(Of String),
-                         ByRef lstSelectedAbteilungen As System.Collections.Generic.List(Of Guid),
-                         ByRef lstSelectedBereiche As System.Collections.Generic.List(Of Guid),
+                         ByRef lstSelectedAbteilungen As System.Collections.Generic.List(Of suchePlan.cAbtBereich),
+                         ByRef lstSelectedBereiche As System.Collections.Generic.List(Of suchePlan.cAbtBereich),
                          ByRef lstSelectedBerufsgruppen As System.Collections.Generic.List(Of String),
                          ByRef lAllBerufsstandGruppe As System.Collections.Generic.List(Of String),
                          LayoutGrid As contPlanungDataBereich.eLayoutGrid, ByRef IDKlinik As Guid) As Boolean
@@ -310,8 +318,8 @@ Public Class suchePlan
             Dim sql_SubAbt As String = ""
             If lstSelectedAbteilungen.Count > 0 Then
                 Dim sql_Sub As String = ""
-                For Each Id As Guid In lstSelectedAbteilungen
-                    Dim id_str As String = " [planBereich].IDAbteilung='" + Id.ToString() + "' "
+                For Each AbtBereich As cAbtBereich In lstSelectedAbteilungen
+                    Dim id_str As String = " [planBereich].IDAbteilung='" + AbtBereich.ID.ToString() + "' "
                     sql_Sub += IIf(gen.IsNull(Trim(sql_Sub)), id_str, " or " + id_str)
                 Next
                 sql_SubAbt = " (" + sql_Sub + ") "
@@ -319,8 +327,8 @@ Public Class suchePlan
             Dim sql_SubBereiche As String = ""
             If lstSelectedBereiche.Count > 0 Then
                 Dim sql_Sub As String = ""
-                For Each Id As Guid In lstSelectedBereiche
-                    Dim id_str As String = " [planBereich].IDBereich='" + Id.ToString() + "' "
+                For Each AbtBereich As cAbtBereich In lstSelectedBereiche
+                    Dim id_str As String = " [planBereich].IDBereich='" + AbtBereich.ID.ToString() + "' "
                     sql_Sub += IIf(gen.IsNull(Trim(sql_Sub)), id_str, " or " + id_str)
                 Next
                 sql_SubBereiche = " (" + sql_Sub + ") "
