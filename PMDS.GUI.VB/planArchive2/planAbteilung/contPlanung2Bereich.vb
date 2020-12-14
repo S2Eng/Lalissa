@@ -757,6 +757,7 @@ Public Class contPlanung2Bereich
     Public Sub setAzahl_buttSuchen(ByVal anz As Integer)
         Try
 
+
         Catch ex As Exception
             Throw New Exception("contPlanung2Bereich.setAzahl_buttSuchen: " + ex.ToString())
         End Try

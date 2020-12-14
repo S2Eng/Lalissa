@@ -35,15 +35,17 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo10 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zum Klientenakt wechseln", Infragistics.Win.ToolTipImage.Default, "Klientenakt", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo9 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Alle Interventionen für den gewählten Bereich anzeigen", Infragistics.Win.ToolTipImage.Default, "Bereichsansicht", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint5 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint3 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klienten nach Entlassungszeitpunkten", Infragistics.Win.ToolTipImage.Default, "Klienten Historie", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klienten nach Entlassungszeitpunkten", Infragistics.Win.ToolTipImage.Default, "Klienten Historie", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bezugspersonenverwaltung", Infragistics.Win.ToolTipImage.Default, "Bezugsperson", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
@@ -61,13 +63,6 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo8 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zum Klientenakt wechseln", Infragistics.Win.ToolTipImage.Default, "Klientenakt", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint4 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint6 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint7 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("tbMain");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("MainPopup");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Entlassen");
@@ -112,6 +107,11 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool38 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool6 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("MainPopup");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool7 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Aktionen");
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint6 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint7 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.btnKlient = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnBereich = new QS2.Desktop.ControlManagment.BaseButton();
             this.lblklientenname = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -119,6 +119,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanelMitte = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.panelAll = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraGridBagLayoutPanelKlienten = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
+            this.ucPatientPicker1 = new PMDS.GUI.ucPatientPicker();
             this.panelGridTop = new QS2.Desktop.ControlManagment.BasePanel();
             this.chkGeplanteAufnahmen = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.chkHistorie = new QS2.Desktop.ControlManagment.BaseCheckBox();
@@ -141,10 +142,12 @@ namespace PMDS.GUI
             this.btnAufnahmexyxy = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelRigthTree = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelAll2 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.ucPatientGroup1 = new PMDS.GUI.ucPatientGroup();
             this.panelsSelectKlinik = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelButtoenUntenRechts = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelBereichsauswahl = new QS2.Desktop.ControlManagment.BasePanel();
             this._ucSiteMapStart_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this.ultraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._ucSiteMapStart_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._ucSiteMapStart_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._ucSiteMapStart_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
@@ -168,10 +171,7 @@ namespace PMDS.GUI
             this.panelTopLeft = new QS2.Desktop.ControlManagment.BasePanel();
             this.dsKlinik2 = new PMDS.Global.db.Patient.dsKlinik();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.ucPatientPicker1 = new PMDS.GUI.ucPatientPicker();
-            this.pflegerCombo1 = new PMDS.GUI.BaseControls.PflegerCombo(true);
-            this.ucPatientGroup1 = new PMDS.GUI.ucPatientGroup();
-            this.ultraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
+            this.panelPfleger = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelMitte)).BeginInit();
             this.ultraGridBagLayoutPanelMitte.SuspendLayout();
@@ -190,6 +190,7 @@ namespace PMDS.GUI
             this.panelAll2.SuspendLayout();
             this.panelButtoenUntenRechts.SuspendLayout();
             this.panelBereichsauswahl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutManager1)).BeginInit();
             this.panelGesamt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelAll)).BeginInit();
@@ -208,8 +209,6 @@ namespace PMDS.GUI
             this.panelTopRigth.SuspendLayout();
             this.panelTopLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsKlinik2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pflegerCombo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnKlient
@@ -277,8 +276,8 @@ namespace PMDS.GUI
             // 
             // lblklientenname
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.lblklientenname.Appearance = appearance5;
+            appearance4.BackColor = System.Drawing.Color.Transparent;
+            this.lblklientenname.Appearance = appearance4;
             this.lblklientenname.AutoSize = true;
             this.lblklientenname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblklientenname.Location = new System.Drawing.Point(1, 5);
@@ -344,15 +343,34 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanelKlienten.Size = new System.Drawing.Size(892, 414);
             this.ultraGridBagLayoutPanelKlienten.TabIndex = 1;
             // 
+            // ucPatientPicker1
+            // 
+            this.ucPatientPicker1.BackColor = System.Drawing.Color.White;
+            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint1.OriginX = 0;
+            gridBagConstraint1.OriginY = 1;
+            gridBagConstraint1.WeightY = 20F;
+            this.ultraGridBagLayoutPanelKlienten.SetGridBagConstraint(this.ucPatientPicker1, gridBagConstraint1);
+            this.ucPatientPicker1.Location = new System.Drawing.Point(0, 27);
+            this.ucPatientPicker1.Name = "ucPatientPicker1";
+            this.ultraGridBagLayoutPanelKlienten.SetPreferredSize(this.ucPatientPicker1, new System.Drawing.Size(519, 100));
+            this.ucPatientPicker1.ShowEntlassene = false;
+            this.ucPatientPicker1.Size = new System.Drawing.Size(892, 387);
+            this.ucPatientPicker1.TabIndex = 1;
+            this.ucPatientPicker1.Tag = "Dontpatch";
+            this.ucPatientPicker1.RowChanged += new System.EventHandler(this.ucPatientPicker1_RowChanged);
+            this.ucPatientPicker1.Click += new System.EventHandler(this.ucPatientPicker1_Click);
+            this.ucPatientPicker1.DoubleClick += new System.EventHandler(this.ucPatientPicker1_DoubleClick);
+            // 
             // panelGridTop
             // 
             this.panelGridTop.BackColor = System.Drawing.Color.Transparent;
             this.panelGridTop.Controls.Add(this.chkGeplanteAufnahmen);
             this.panelGridTop.Controls.Add(this.chkHistorie);
-            this.panelGridTop.Controls.Add(this.pflegerCombo1);
             this.panelGridTop.Controls.Add(this.lblklientenname);
             this.panelGridTop.Controls.Add(this.BezugspersonfilterONOFF);
             this.panelGridTop.Controls.Add(this.txtSearch);
+            this.panelGridTop.Controls.Add(this.panelPfleger);
             gridBagConstraint2.Fill = Infragistics.Win.Layout.FillType.Both;
             gridBagConstraint2.OriginX = 0;
             gridBagConstraint2.OriginY = 0;
@@ -416,10 +434,10 @@ namespace PMDS.GUI
             // BezugspersonfilterONOFF
             // 
             this.BezugspersonfilterONOFF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            appearance6.FontData.Name = "Microsoft Sans Serif";
-            appearance6.FontData.SizeInPoints = 10F;
-            this.BezugspersonfilterONOFF.Appearance = appearance6;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            appearance5.FontData.Name = "Microsoft Sans Serif";
+            appearance5.FontData.SizeInPoints = 10F;
+            this.BezugspersonfilterONOFF.Appearance = appearance5;
             this.BezugspersonfilterONOFF.BackColor = System.Drawing.Color.Transparent;
             this.BezugspersonfilterONOFF.BackColorInternal = System.Drawing.Color.Transparent;
             this.BezugspersonfilterONOFF.Location = new System.Drawing.Point(630, 4);
@@ -827,6 +845,23 @@ namespace PMDS.GUI
             this.panelAll2.Size = new System.Drawing.Size(212, 413);
             this.panelAll2.TabIndex = 8;
             // 
+            // ucPatientGroup1
+            // 
+            this.ucPatientGroup1.allKliniken = false;
+            this.ucPatientGroup1.BackColor = System.Drawing.Color.White;
+            this.ucPatientGroup1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPatientGroup1.ENVAbteilung = false;
+            this.ucPatientGroup1.IsMainHeaderPicker = false;
+            this.ucPatientGroup1.Location = new System.Drawing.Point(0, 0);
+            this.ucPatientGroup1.Name = "ucPatientGroup1";
+            this.ucPatientGroup1.onlyKlinikenUsr = false;
+            this.ucPatientGroup1.Size = new System.Drawing.Size(212, 413);
+            this.ucPatientGroup1.TabIndex = 2;
+            this.ucPatientGroup1.typUI = PMDS.GUI.ucPatientGroup.eTypUI.main;
+            this.ucPatientGroup1.SelectionChanged += new PMDS.GUI.GroupDelegate(this.ucPatientGroup1_SelectionChanged);
+            this.ucPatientGroup1.klinikHasChanged += new PMDS.GUI.klinikChanged(this.ucPatientGroup1_klinikHasChanged);
+            this.ucPatientGroup1.DoubleClick += new System.EventHandler(this.ucPatientGroup1_DoubleClick);
+            // 
             // panelsSelectKlinik
             // 
             this.panelsSelectKlinik.BackColor = System.Drawing.Color.Transparent;
@@ -867,6 +902,95 @@ namespace PMDS.GUI
             this._ucSiteMapStart_Toolbars_Dock_Area_Left.Name = "_ucSiteMapStart_Toolbars_Dock_Area_Left";
             this._ucSiteMapStart_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 619);
             this._ucSiteMapStart_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
+            // 
+            // ultraToolbarsManager1
+            // 
+            this.ultraToolbarsManager1.DesignerFlags = 1;
+            this.ultraToolbarsManager1.DockWithinContainer = this;
+            this.ultraToolbarsManager1.ShowFullMenusDelay = 500;
+            ultraToolbar1.DockedColumn = 0;
+            ultraToolbar1.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Floating;
+            ultraToolbar1.DockedRow = 0;
+            ultraToolbar1.FloatingLocation = new System.Drawing.Point(473, 358);
+            ultraToolbar1.FloatingSize = new System.Drawing.Size(107, 44);
+            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            popupMenuTool1});
+            ultraToolbar1.Text = "tbMain";
+            ultraToolbar1.Visible = false;
+            this.ultraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
+            ultraToolbar1});
+            buttonTool1.SharedPropsInternal.Caption = "Entlassen";
+            buttonTool2.SharedPropsInternal.Caption = "Versetzen";
+            buttonTool3.SharedPropsInternal.Caption = "Bereichsversetzung";
+            buttonTool4.SharedPropsInternal.Caption = "Abwesenheit";
+            buttonTool5.SharedPropsInternal.Caption = "Pflegeplan";
+            buttonTool6.SharedPropsInternal.Caption = "Historie";
+            buttonTool7.SharedPropsInternal.Caption = "Pflegebedarf einschätzen";
+            buttonTool8.SharedPropsInternal.Caption = "Bemerkung";
+            buttonTool9.SharedPropsInternal.Caption = "Bezugsperson";
+            buttonTool10.SharedPropsInternal.Caption = "Aufgaben";
+            buttonTool12.SharedPropsInternal.Caption = "Pflegebericht";
+            buttonTool13.SharedPropsInternal.Caption = "Pflegeplan gesamt";
+            buttonTool14.SharedPropsInternal.Caption = "Pflegeplan aktuell";
+            buttonTool15.SharedPropsInternal.Caption = "OREM Verlauf";
+            buttonTool16.SharedPropsInternal.Caption = "Zusatzwerte Verlauf";
+            buttonTool17.SharedPropsInternal.Caption = "Konfigurieren";
+            buttonTool18.SharedPropsInternal.Caption = "Rücksetzen";
+            buttonTool19.SharedPropsInternal.Caption = "Speichern";
+            popupMenuTool2.SharedPropsInternal.Caption = "Aktionen";
+            popupMenuTool2.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool20,
+            buttonTool21,
+            buttonTool22,
+            buttonTool23,
+            buttonTool24});
+            popupMenuTool3.SharedPropsInternal.Caption = "Daten";
+            popupMenuTool3.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool25,
+            buttonTool26,
+            buttonTool27,
+            buttonTool28,
+            buttonTool29});
+            popupMenuTool4.SharedPropsInternal.Caption = "Drucken";
+            popupMenuTool4.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool31,
+            buttonTool32,
+            buttonTool33,
+            buttonTool34,
+            buttonTool35});
+            popupMenuTool5.SharedPropsInternal.Caption = "Layout";
+            popupMenuTool5.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool36,
+            buttonTool37,
+            buttonTool38});
+            popupMenuTool6.SharedPropsInternal.Caption = "MainPopup";
+            popupMenuTool6.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            popupMenuTool7});
+            this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool1,
+            buttonTool2,
+            buttonTool3,
+            buttonTool4,
+            buttonTool5,
+            buttonTool6,
+            buttonTool7,
+            buttonTool8,
+            buttonTool9,
+            buttonTool10,
+            buttonTool12,
+            buttonTool13,
+            buttonTool14,
+            buttonTool15,
+            buttonTool16,
+            buttonTool17,
+            buttonTool18,
+            buttonTool19,
+            popupMenuTool2,
+            popupMenuTool3,
+            popupMenuTool4,
+            popupMenuTool5,
+            popupMenuTool6});
+            this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // _ucSiteMapStart_Toolbars_Dock_Area_Right
             // 
@@ -1104,143 +1228,14 @@ namespace PMDS.GUI
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.checkUserActivity);
             // 
-            // ucPatientPicker1
+            // panelPfleger
             // 
-            this.ucPatientPicker1.BackColor = System.Drawing.Color.White;
-            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint1.OriginX = 0;
-            gridBagConstraint1.OriginY = 1;
-            gridBagConstraint1.WeightY = 20F;
-            this.ultraGridBagLayoutPanelKlienten.SetGridBagConstraint(this.ucPatientPicker1, gridBagConstraint1);
-            this.ucPatientPicker1.Location = new System.Drawing.Point(0, 27);
-            this.ucPatientPicker1.Name = "ucPatientPicker1";
-            this.ultraGridBagLayoutPanelKlienten.SetPreferredSize(this.ucPatientPicker1, new System.Drawing.Size(519, 100));
-            this.ucPatientPicker1.ShowEntlassene = false;
-            this.ucPatientPicker1.Size = new System.Drawing.Size(892, 387);
-            this.ucPatientPicker1.TabIndex = 1;
-            this.ucPatientPicker1.Tag = "Dontpatch";
-            this.ucPatientPicker1.RowChanged += new System.EventHandler(this.ucPatientPicker1_RowChanged);
-            this.ucPatientPicker1.Click += new System.EventHandler(this.ucPatientPicker1_Click);
-            this.ucPatientPicker1.DoubleClick += new System.EventHandler(this.ucPatientPicker1_DoubleClick);
-            // 
-            // pflegerCombo1
-            // 
-            this.pflegerCombo1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance4.FontData.Name = "Microsoft Sans Serif";
-            appearance4.FontData.SizeInPoints = 10F;
-            this.pflegerCombo1.Appearance = appearance4;
-            this.pflegerCombo1.Location = new System.Drawing.Point(751, 3);
-            this.pflegerCombo1.Name = "pflegerCombo1";
-            this.pflegerCombo1.Size = new System.Drawing.Size(141, 24);
-            this.pflegerCombo1.TabIndex = 31;
-            this.pflegerCombo1.Text = "pflegerCombo1";
-            this.pflegerCombo1.ValueChanged += new System.EventHandler(this.pflegerCombo1_ValueChanged);
-            // 
-            // ucPatientGroup1
-            // 
-            this.ucPatientGroup1.allKliniken = false;
-            this.ucPatientGroup1.BackColor = System.Drawing.Color.White;
-            this.ucPatientGroup1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPatientGroup1.ENVAbteilung = false;
-            this.ucPatientGroup1.IsMainHeaderPicker = false;
-            this.ucPatientGroup1.Location = new System.Drawing.Point(0, 0);
-            this.ucPatientGroup1.Name = "ucPatientGroup1";
-            this.ucPatientGroup1.onlyKlinikenUsr = false;
-            this.ucPatientGroup1.Size = new System.Drawing.Size(212, 413);
-            this.ucPatientGroup1.TabIndex = 2;
-            this.ucPatientGroup1.typUI = PMDS.GUI.ucPatientGroup.eTypUI.main;
-            this.ucPatientGroup1.SelectionChanged += new PMDS.GUI.GroupDelegate(this.ucPatientGroup1_SelectionChanged);
-            this.ucPatientGroup1.klinikHasChanged += new PMDS.GUI.klinikChanged(this.ucPatientGroup1_klinikHasChanged);
-            this.ucPatientGroup1.DoubleClick += new System.EventHandler(this.ucPatientGroup1_DoubleClick);
-            // 
-            // ultraToolbarsManager1
-            // 
-            this.ultraToolbarsManager1.DesignerFlags = 1;
-            this.ultraToolbarsManager1.DockWithinContainer = this;
-            this.ultraToolbarsManager1.ShowFullMenusDelay = 500;
-            ultraToolbar1.DockedColumn = 0;
-            ultraToolbar1.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Floating;
-            ultraToolbar1.DockedRow = 0;
-            ultraToolbar1.FloatingLocation = new System.Drawing.Point(473, 358);
-            ultraToolbar1.FloatingSize = new System.Drawing.Size(107, 44);
-            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            popupMenuTool1});
-            ultraToolbar1.Text = "tbMain";
-            ultraToolbar1.Visible = false;
-            this.ultraToolbarsManager1.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar1});
-            buttonTool1.SharedPropsInternal.Caption = "Entlassen";
-            buttonTool2.SharedPropsInternal.Caption = "Versetzen";
-            buttonTool3.SharedPropsInternal.Caption = "Bereichsversetzung";
-            buttonTool4.SharedPropsInternal.Caption = "Abwesenheit";
-            buttonTool5.SharedPropsInternal.Caption = "Pflegeplan";
-            buttonTool6.SharedPropsInternal.Caption = "Historie";
-            buttonTool7.SharedPropsInternal.Caption = "Pflegebedarf einschätzen";
-            buttonTool8.SharedPropsInternal.Caption = "Bemerkung";
-            buttonTool9.SharedPropsInternal.Caption = "Bezugsperson";
-            buttonTool10.SharedPropsInternal.Caption = "Aufgaben";
-            buttonTool12.SharedPropsInternal.Caption = "Pflegebericht";
-            buttonTool13.SharedPropsInternal.Caption = "Pflegeplan gesamt";
-            buttonTool14.SharedPropsInternal.Caption = "Pflegeplan aktuell";
-            buttonTool15.SharedPropsInternal.Caption = "OREM Verlauf";
-            buttonTool16.SharedPropsInternal.Caption = "Zusatzwerte Verlauf";
-            buttonTool17.SharedPropsInternal.Caption = "Konfigurieren";
-            buttonTool18.SharedPropsInternal.Caption = "Rücksetzen";
-            buttonTool19.SharedPropsInternal.Caption = "Speichern";
-            popupMenuTool2.SharedPropsInternal.Caption = "Aktionen";
-            popupMenuTool2.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool20,
-            buttonTool21,
-            buttonTool22,
-            buttonTool23,
-            buttonTool24});
-            popupMenuTool3.SharedPropsInternal.Caption = "Daten";
-            popupMenuTool3.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool25,
-            buttonTool26,
-            buttonTool27,
-            buttonTool28,
-            buttonTool29});
-            popupMenuTool4.SharedPropsInternal.Caption = "Drucken";
-            popupMenuTool4.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool31,
-            buttonTool32,
-            buttonTool33,
-            buttonTool34,
-            buttonTool35});
-            popupMenuTool5.SharedPropsInternal.Caption = "Layout";
-            popupMenuTool5.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool36,
-            buttonTool37,
-            buttonTool38});
-            popupMenuTool6.SharedPropsInternal.Caption = "MainPopup";
-            popupMenuTool6.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            popupMenuTool7});
-            this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool1,
-            buttonTool2,
-            buttonTool3,
-            buttonTool4,
-            buttonTool5,
-            buttonTool6,
-            buttonTool7,
-            buttonTool8,
-            buttonTool9,
-            buttonTool10,
-            buttonTool12,
-            buttonTool13,
-            buttonTool14,
-            buttonTool15,
-            buttonTool16,
-            buttonTool17,
-            buttonTool18,
-            buttonTool19,
-            popupMenuTool2,
-            popupMenuTool3,
-            popupMenuTool4,
-            popupMenuTool5,
-            popupMenuTool6});
-            this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
+            this.panelPfleger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPfleger.BackColor = System.Drawing.Color.White;
+            this.panelPfleger.Location = new System.Drawing.Point(751, 3);
+            this.panelPfleger.Name = "panelPfleger";
+            this.panelPfleger.Size = new System.Drawing.Size(141, 24);
+            this.panelPfleger.TabIndex = 35;
             // 
             // ucMain
             // 
@@ -1277,6 +1272,7 @@ namespace PMDS.GUI
             this.panelAll2.ResumeLayout(false);
             this.panelButtoenUntenRechts.ResumeLayout(false);
             this.panelBereichsauswahl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutManager1)).EndInit();
             this.panelGesamt.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelAll)).EndInit();
@@ -1295,8 +1291,6 @@ namespace PMDS.GUI
             this.panelTopRigth.ResumeLayout(false);
             this.panelTopLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsKlinik2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pflegerCombo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1313,7 +1307,6 @@ namespace PMDS.GUI
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _ucSiteMapStart_Toolbars_Dock_Area_Top;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _ucSiteMapStart_Toolbars_Dock_Area_Bottom;
         private QS2.Desktop.ControlManagment.BaseCheckBox BezugspersonfilterONOFF;
-        private PMDS.GUI.BaseControls.PflegerCombo pflegerCombo1;
         private QS2.Desktop.ControlManagment.BaseButton btnEntlassen;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         private QS2.Desktop.ControlManagment.BaseButton btnAbwesenheiten;
@@ -1363,5 +1356,6 @@ namespace PMDS.GUI
         private System.Windows.Forms.ProgressBar pbSperre;
         private QS2.Desktop.ControlManagment.BaseButton btnDokumenteBenutzer;
         public QS2.Desktop.ControlManagment.BaseButton btnMessages;
+        private System.Windows.Forms.Panel panelPfleger;
     }
 }

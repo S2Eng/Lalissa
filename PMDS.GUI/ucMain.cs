@@ -43,11 +43,14 @@ namespace PMDS.GUI
 
         public bool bcheckIPCCallToClientDone = false;
 
+        public PMDS.GUI.BaseControls.PflegerCombo pflegerCombo1 = null;
 
 
 
 
-            
+
+
+
 
         public ucMain()
         {
@@ -68,6 +71,8 @@ namespace PMDS.GUI
 
             //Neu nach 03.07.2007 MDA
             ENV.ENVPatientDatenChanged += new ENVPatientDatenChangedDelegate(ENV_ENVPatientDatenChanged);
+
+            this.LoadPflegerCombo();
 
             pflegerCombo1.Value = ENV.USERID; //{{{eng}}} 04.10.2007
             pflegerCombo1.Enabled = false;    //{{{eng}}} 04.10.2007
@@ -99,10 +104,35 @@ namespace PMDS.GUI
             //QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenliste.ico_Aufnahme, QS2.Resources.getRes.ePicTyp.ico);
         }
 
-        /// <summary>
-        /// mda
-        /// </summary>
-        /// <param name="IDPatient"></param>
+        void LoadPflegerCombo()
+        {
+            try
+            {
+                if (this.pflegerCombo1 == null)
+                {
+                    this.pflegerCombo1 = new PMDS.GUI.BaseControls.PflegerCombo(true);
+
+                    this.pflegerCombo1.Dock = DockStyle.Fill;
+                    //appearance4.FontData.Name = "Microsoft Sans Serif";
+                    //appearance4.FontData.SizeInPoints = 10F;
+                    //this.pflegerCombo1.Appearance = appearance4;
+                    //this.pflegerCombo1.Location = new System.Drawing.Point(751, 3);
+                    this.pflegerCombo1.Name = "pflegerCombo1";
+                    //this.pflegerCombo1.Size = new System.Drawing.Size(141, 24);
+                    this.pflegerCombo1.TabIndex = 31;
+                    this.pflegerCombo1.Text = "";
+
+                    this.pflegerCombo1.ValueChanged += new System.EventHandler(this.pflegerCombo1ValueChanged);
+
+                    this.panelPfleger.Controls.Add(this.pflegerCombo1);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucMain.LoadPflegerCombo: " +ex.ToString());
+            }
+        }
+
         void ENV_ENVPatientDatenChanged(Guid IDPatient)
         {
             if (_LoadInProgress)
@@ -830,7 +860,7 @@ namespace PMDS.GUI
         /// Wenn nicht auf Bezugspersin gefiltert wird wird ENV-currentidbezugsperson Guidempty //{{{eng}}} 04.10.2007         
         /// </summary>
         //----------------------------------------------------------------------------
-        private void pflegerCombo1_ValueChanged(object sender, EventArgs e)
+        private void pflegerCombo1ValueChanged(object sender, EventArgs e)
         {
             try
             {
