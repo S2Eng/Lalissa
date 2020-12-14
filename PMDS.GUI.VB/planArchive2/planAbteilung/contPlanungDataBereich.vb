@@ -726,10 +726,6 @@ Public Class contPlanungDataBereich
             Me.gridPlans.Selected.Rows.Clear()
             Me.gridPlans.ActiveRow = Nothing
 
-            If SetUIGrid Then
-                Me.setUI(Me._LayoutGrid)
-            End If
-
             Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
                 db.Configuration.LazyLoadingEnabled = False
 
@@ -760,6 +756,10 @@ Public Class contPlanungDataBereich
             Me.gridPlans.Refresh()
             Me.gridPlans.Rows.ExpandAll(True)
             Me.setUIAnzahl(Me.gridPlans.Rows.Count)
+
+            If SetUIGrid Then
+                Me.setUI(Me._LayoutGrid)
+            End If
 
             Return True
 
