@@ -306,24 +306,36 @@ Public Class suchePlan
                 Dim sql_sub As String = " (" + sql_Category + ") "
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
             End If
+
+            Dim sql_SubAbt As String = ""
             If lstSelectedAbteilungen.Count > 0 Then
                 Dim sql_Sub As String = ""
                 For Each Id As Guid In lstSelectedAbteilungen
                     Dim id_str As String = " [planBereich].IDAbteilung='" + Id.ToString() + "' "
                     sql_Sub += IIf(gen.IsNull(Trim(sql_Sub)), id_str, " or " + id_str)
                 Next
-                Dim sql_Sub2 As String = " (" + sql_Sub + ") "
-                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_Sub2, " and " + sql_Sub2)
+                sql_SubAbt = " (" + sql_Sub + ") "
             End If
+            Dim sql_SubBereiche As String = ""
             If lstSelectedBereiche.Count > 0 Then
                 Dim sql_Sub As String = ""
                 For Each Id As Guid In lstSelectedBereiche
                     Dim id_str As String = " [planBereich].IDBereich='" + Id.ToString() + "' "
                     sql_Sub += IIf(gen.IsNull(Trim(sql_Sub)), id_str, " or " + id_str)
                 Next
-                Dim sql_Sub2 As String = " (" + sql_Sub + ") "
-                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_Sub2, " and " + sql_Sub2)
+                sql_SubBereiche = " (" + sql_Sub + ") "
             End If
+            If Not String.IsNullOrEmpty(sql_SubAbt) Or Not String.IsNullOrEmpty(sql_SubBereiche) Then
+                Dim sql_SubAbtBereiche As String = ""
+                If Not String.IsNullOrEmpty(sql_SubAbt) Then
+                    sql_SubAbtBereiche += IIf(gen.IsNull(Trim(sql_SubAbtBereiche)), " (" + sql_SubAbt + ") ", " or (" + sql_SubAbt + ") ")
+                End If
+                If Not String.IsNullOrEmpty(sql_SubBereiche) Then
+                    sql_SubAbtBereiche += IIf(gen.IsNull(Trim(sql_SubAbtBereiche)), " (" + sql_SubBereiche + ") ", " or (" + sql_SubBereiche + ") ")
+                End If
+                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_SubAbtBereiche, " and " + sql_SubAbtBereiche)
+            End If
+
             If lstSelectedBerufsgruppen.Count > 0 Then
                 Dim sql_Berufsgrp As String = ""
                 For Each sTxt As String In lstSelectedBerufsgruppen

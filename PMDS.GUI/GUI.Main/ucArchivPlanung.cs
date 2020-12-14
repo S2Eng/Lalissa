@@ -239,6 +239,8 @@ namespace PMDS.Itscont
                 //{
                 //    this.initArchiv(TypeUI, PlanArchive, this.IsFirstLoad);
                 //}
+
+                bool HeaderBereich = false;
                 if (this.showKlientenarchiv)
                 {
                     this.initArchiv(TypeUI, PlanArchive, this.IsFirstLoad);
@@ -267,6 +269,7 @@ namespace PMDS.Itscont
                             if (this._ShowTermineBereich)
                             {
                                 this.initPlanBereich();
+                                HeaderBereich = true;
                             }
                             else
                             {
@@ -290,7 +293,7 @@ namespace PMDS.Itscont
 
                 if (this.IsFirstLoad)
                 {
-                    if (this._headerEin)
+                    if (this._headerEin && !HeaderBereich)
                     {
                         this.showTab(4);
                     }
