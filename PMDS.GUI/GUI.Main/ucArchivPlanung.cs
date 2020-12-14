@@ -116,7 +116,7 @@ namespace PMDS.Itscont
 
                 if (!ENV.adminSecure)
                 {
-                    this.btnTermineBereiche.Visible = false;
+                    //this.btnTermineBereiche.Visible = false;
                 }
 
                 this.isLoaded = true;
