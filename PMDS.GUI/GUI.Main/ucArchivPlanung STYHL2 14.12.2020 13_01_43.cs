@@ -483,7 +483,6 @@ namespace PMDS.Itscont
                     this.IsInitializedPlanBereich = true;
                 }
 
-                this._ShowTermineBereich = false;
                 this.showTab(5);
             }
             catch (Exception ex)

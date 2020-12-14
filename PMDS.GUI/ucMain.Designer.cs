@@ -44,16 +44,16 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klienten nach Entlassungszeitpunkten", Infragistics.Win.ToolTipImage.Default, "Klienten Historie", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klienten nach Entlassungszeitpunkten", Infragistics.Win.ToolTipImage.Default, "Klienten Historie", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Bezugspersonenverwaltung", Infragistics.Win.ToolTipImage.Default, "Bezugsperson", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Abwesenheitsverwaltung", Infragistics.Win.ToolTipImage.Default, "Abwesenheiten", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Versetzen von Klienten", Infragistics.Win.ToolTipImage.Default, "Versetzen", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Entlassen von Klienten", Infragistics.Win.ToolTipImage.Default, "Entlassen", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo7 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Benutzerdokumente öffnen", Infragistics.Win.ToolTipImage.Default, "Benutzerdokumente", Infragistics.Win.DefaultableBoolean.Default);
@@ -124,6 +124,7 @@ namespace PMDS.GUI
             this.chkGeplanteAufnahmen = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.chkHistorie = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.BezugspersonfilterONOFF = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.panelPfleger = new System.Windows.Forms.Panel();
             this.panelButtonUnten = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelSpace01 = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelButtonleisteUnten = new QS2.Desktop.ControlManagment.BasePanel();
@@ -133,6 +134,7 @@ namespace PMDS.GUI
             this.btnEntlassen = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelGridButtonsBottom = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelBottomButtons = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnTermineBereich = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnMessages = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnDokumenteBenutzer = new QS2.Desktop.ControlManagment.BaseButton();
             this.pbSperre = new System.Windows.Forms.ProgressBar();
@@ -171,7 +173,6 @@ namespace PMDS.GUI
             this.panelTopLeft = new QS2.Desktop.ControlManagment.BasePanel();
             this.dsKlinik2 = new PMDS.Global.db.Patient.dsKlinik();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.panelPfleger = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelMitte)).BeginInit();
             this.ultraGridBagLayoutPanelMitte.SuspendLayout();
@@ -448,6 +449,15 @@ namespace PMDS.GUI
             this.BezugspersonfilterONOFF.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.BezugspersonfilterONOFF.AfterCheckStateChanged += new Infragistics.Win.ToggleEditorBase.AfterCheckStateChangedHandler(this.BezugspersonfilterONOFF_AfterCheckStateChanged);
             // 
+            // panelPfleger
+            // 
+            this.panelPfleger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPfleger.BackColor = System.Drawing.Color.White;
+            this.panelPfleger.Location = new System.Drawing.Point(751, 3);
+            this.panelPfleger.Name = "panelPfleger";
+            this.panelPfleger.Size = new System.Drawing.Size(141, 24);
+            this.panelPfleger.TabIndex = 35;
+            // 
             // panelButtonUnten
             // 
             this.panelButtonUnten.BackColor = System.Drawing.Color.Transparent;
@@ -486,12 +496,12 @@ namespace PMDS.GUI
             // btnBezugspersonen
             // 
             this.btnBezugspersonen.AcceptsFocus = false;
-            appearance7.FontData.SizeInPoints = 10F;
-            appearance7.ForeColor = System.Drawing.Color.Black;
-            appearance7.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance7.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance7.TextVAlignAsString = "Middle";
-            this.btnBezugspersonen.Appearance = appearance7;
+            appearance6.FontData.SizeInPoints = 10F;
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance6.TextVAlignAsString = "Middle";
+            this.btnBezugspersonen.Appearance = appearance6;
             this.btnBezugspersonen.AutoWorkLayout = false;
             this.btnBezugspersonen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnBezugspersonen.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -517,13 +527,13 @@ namespace PMDS.GUI
             // btnAbwesenheiten
             // 
             this.btnAbwesenheiten.AcceptsFocus = false;
-            appearance8.FontData.SizeInPoints = 10F;
-            appearance8.ForeColor = System.Drawing.Color.Black;
-            appearance8.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance8.TextVAlignAsString = "Middle";
-            this.btnAbwesenheiten.Appearance = appearance8;
+            appearance7.FontData.SizeInPoints = 10F;
+            appearance7.ForeColor = System.Drawing.Color.Black;
+            appearance7.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance7.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance7.TextVAlignAsString = "Middle";
+            this.btnAbwesenheiten.Appearance = appearance7;
             this.btnAbwesenheiten.AutoWorkLayout = false;
             this.btnAbwesenheiten.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnAbwesenheiten.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -550,13 +560,13 @@ namespace PMDS.GUI
             // btnVersetzen
             // 
             this.btnVersetzen.AcceptsFocus = false;
-            appearance9.FontData.SizeInPoints = 10F;
-            appearance9.ForeColor = System.Drawing.Color.Black;
-            appearance9.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance9.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance9.TextVAlignAsString = "Middle";
-            this.btnVersetzen.Appearance = appearance9;
+            appearance8.FontData.SizeInPoints = 10F;
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            appearance8.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance8.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance8.TextVAlignAsString = "Middle";
+            this.btnVersetzen.Appearance = appearance8;
             this.btnVersetzen.AutoWorkLayout = false;
             this.btnVersetzen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnVersetzen.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -583,13 +593,13 @@ namespace PMDS.GUI
             // btnEntlassen
             // 
             this.btnEntlassen.AcceptsFocus = false;
-            appearance10.FontData.SizeInPoints = 10F;
-            appearance10.ForeColor = System.Drawing.Color.Black;
-            appearance10.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
-            appearance10.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance10.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance10.TextVAlignAsString = "Middle";
-            this.btnEntlassen.Appearance = appearance10;
+            appearance9.FontData.SizeInPoints = 10F;
+            appearance9.ForeColor = System.Drawing.Color.Black;
+            appearance9.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Tiled;
+            appearance9.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance9.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            appearance9.TextVAlignAsString = "Middle";
+            this.btnEntlassen.Appearance = appearance9;
             this.btnEntlassen.AutoWorkLayout = false;
             this.btnEntlassen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnEntlassen.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -626,6 +636,7 @@ namespace PMDS.GUI
             // panelBottomButtons
             // 
             this.panelBottomButtons.BackColor = System.Drawing.Color.Transparent;
+            this.panelBottomButtons.Controls.Add(this.btnTermineBereich);
             this.panelBottomButtons.Controls.Add(this.btnMessages);
             this.panelBottomButtons.Controls.Add(this.btnDokumenteBenutzer);
             this.panelBottomButtons.Controls.Add(this.pbSperre);
@@ -639,6 +650,33 @@ namespace PMDS.GUI
             this.panelBottomButtons.Name = "panelBottomButtons";
             this.panelBottomButtons.Size = new System.Drawing.Size(892, 100);
             this.panelBottomButtons.TabIndex = 9;
+            // 
+            // btnTermineBereich
+            // 
+            this.btnTermineBereich.AcceptsFocus = false;
+            appearance10.FontData.SizeInPoints = 10F;
+            appearance10.ForeColor = System.Drawing.Color.Black;
+            appearance10.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance10.ImageVAlign = Infragistics.Win.VAlign.Top;
+            appearance10.TextVAlignAsString = "Bottom";
+            this.btnTermineBereich.Appearance = appearance10;
+            this.btnTermineBereich.AutoWorkLayout = false;
+            this.btnTermineBereich.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat;
+            this.btnTermineBereich.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTermineBereich.ImageSize = new System.Drawing.Size(32, 32);
+            this.btnTermineBereich.IsStandardControl = false;
+            this.btnTermineBereich.Location = new System.Drawing.Point(331, 18);
+            this.btnTermineBereich.Name = "btnTermineBereich";
+            this.btnTermineBereich.ShowFocusRect = false;
+            this.btnTermineBereich.ShowOutline = false;
+            this.btnTermineBereich.Size = new System.Drawing.Size(104, 68);
+            this.btnTermineBereich.TabIndex = 11;
+            this.btnTermineBereich.Text = "Termine Bereich";
+            this.btnTermineBereich.UseAppStyling = false;
+            this.btnTermineBereich.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.btnTermineBereich.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.btnTermineBereich.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.btnTermineBereich.Click += new System.EventHandler(this.btnTermineBereich_Click);
             // 
             // btnMessages
             // 
@@ -704,12 +742,12 @@ namespace PMDS.GUI
             // 
             this.pbSperre.BackColor = System.Drawing.Color.Silver;
             this.pbSperre.ForeColor = System.Drawing.Color.Red;
-            this.pbSperre.Location = new System.Drawing.Point(336, 73);
+            this.pbSperre.Location = new System.Drawing.Point(464, 73);
             this.pbSperre.MarqueeAnimationSpeed = 1;
             this.pbSperre.Maximum = 60;
             this.pbSperre.Name = "pbSperre";
             this.pbSperre.RightToLeftLayout = true;
-            this.pbSperre.Size = new System.Drawing.Size(241, 13);
+            this.pbSperre.Size = new System.Drawing.Size(127, 13);
             this.pbSperre.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pbSperre.TabIndex = 9;
             this.pbSperre.Value = 60;
@@ -721,9 +759,9 @@ namespace PMDS.GUI
             appearance13.ForeColor = System.Drawing.Color.Red;
             this.lblSperre.Appearance = appearance13;
             this.lblSperre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSperre.Location = new System.Drawing.Point(336, 53);
+            this.lblSperre.Location = new System.Drawing.Point(464, 42);
             this.lblSperre.Name = "lblSperre";
-            this.lblSperre.Size = new System.Drawing.Size(241, 22);
+            this.lblSperre.Size = new System.Drawing.Size(140, 33);
             this.lblSperre.TabIndex = 8;
             this.lblSperre.Text = "Automatische Sperre in 60 Sekunden!";
             this.lblSperre.Visible = false;
@@ -1228,15 +1266,6 @@ namespace PMDS.GUI
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.checkUserActivity);
             // 
-            // panelPfleger
-            // 
-            this.panelPfleger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelPfleger.BackColor = System.Drawing.Color.White;
-            this.panelPfleger.Location = new System.Drawing.Point(751, 3);
-            this.panelPfleger.Name = "panelPfleger";
-            this.panelPfleger.Size = new System.Drawing.Size(141, 24);
-            this.panelPfleger.TabIndex = 35;
-            // 
             // ucMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1357,5 +1386,6 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseButton btnDokumenteBenutzer;
         public QS2.Desktop.ControlManagment.BaseButton btnMessages;
         private System.Windows.Forms.Panel panelPfleger;
+        private QS2.Desktop.ControlManagment.BaseButton btnTermineBereich;
     }
 }
