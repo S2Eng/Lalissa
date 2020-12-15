@@ -709,7 +709,7 @@ Public Class contPlanungDataBereich
                 Me.mainWindow.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
 
                 Dim lAllBerufsstandGruppe As New System.Collections.Generic.List(Of String)()
-                lAllBerufsstandGruppe = clPlan1.getAllUsersFromBerufsgruppe(db)
+                'lAllBerufsstandGruppe = clPlan1.getBerufsgruppeFromLoggedInUser(db)
 
                 Me.SqlCommandReturn = ""
                 Me.suchePlan1.searchPlanBereich(Me.DsPlanSearch1, Me.CompPlanSearch, sqlStatus,
@@ -732,6 +732,11 @@ Public Class contPlanungDataBereich
                                     Where o.ID = PMDS.Global.ENV.USERID
                                     Select o.ID, o.Benutzer1, o.IDBerufsstand).ToList().First()
 
+                Dim ben As PMDS.db.Entities.Benutzer = Me.b.getUser(rUsrLoggedIn.ID, db)
+                Me.b.initUserCanSign(ben)
+                Dim lstBerufsgruppenUserCanSign As List(Of Guid) = PMDS.db.PMDSBusiness.lstBerufsgruppenUserCanSign
+                Me.b.UserCanSignCheckBerufsgruppen(ben.ID, ben, lstBerufsgruppenUserCanSign, "", db)
+
                 Dim rSelListBerufsstandLoggedIn = (From o In db.AuswahlListe
                                                    Where o.ID = rUsrLoggedIn.IDBerufsstand And o.IstGruppe = False And o.IDAuswahlListeGruppe = "BER"
                                                    Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
@@ -740,9 +745,9 @@ Public Class contPlanungDataBereich
                 For Each rGrid In Me.gridPlans.Rows
                     If Not rGrid.IsFilterRow Then
                         If rGrid.IsGroupByRow Then
-                            Me.showGrid_rek(rGrid, lPlanBereichDelete, rSelListBerufsstandLoggedIn.Hierarche, db)
+                            Me.showGrid_rek(rGrid, lPlanBereichDelete, rSelListBerufsstandLoggedIn.Hierarche, lstBerufsgruppenUserCanSign, ben, db)
                         Else
-                            Me.showGridRow(rGrid, lPlanBereichDelete, rSelListBerufsstandLoggedIn.Hierarche, db)
+                            Me.showGridRow(rGrid, lPlanBereichDelete, rSelListBerufsstandLoggedIn.Hierarche, lstBerufsgruppenUserCanSign, ben, db)
                         End If
 
                         For Each rPlanBereichDelete As dsPlanSearch.planBereichRow In lPlanBereichDelete
@@ -768,15 +773,15 @@ Public Class contPlanungDataBereich
         End Try
     End Function
     Public Function showGrid_rek(rGridParent As UltraGridRow, ByRef lPlanBereichDelete As System.Collections.Generic.List(Of dsPlanSearch.planBereichRow),
-                                    ByRef SelListBerufsstandLoggedInHierarche As Integer,
+                                    ByRef SelListBerufsstandLoggedInHierarche As Integer, ByRef lstBerufsgruppenUserCanSign As List(Of Guid), ben As PMDS.db.Entities.Benutzer,
                                     db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
         Try
             For Each childBand As UltraGridChildBand In rGridParent.ChildBands
                 For Each rGrid As UltraGridRow In childBand.Rows
                     If rGrid.IsGroupByRow Then
-                        Me.showGrid_rek(rGrid, lPlanBereichDelete, SelListBerufsstandLoggedInHierarche, db)
+                        Me.showGrid_rek(rGrid, lPlanBereichDelete, SelListBerufsstandLoggedInHierarche, lstBerufsgruppenUserCanSign, ben, db)
                     Else
-                        Me.showGridRow(rGrid, lPlanBereichDelete, SelListBerufsstandLoggedInHierarche, db)
+                        Me.showGridRow(rGrid, lPlanBereichDelete, SelListBerufsstandLoggedInHierarche, lstBerufsgruppenUserCanSign, ben, db)
                     End If
                 Next
             Next
@@ -786,21 +791,22 @@ Public Class contPlanungDataBereich
         End Try
     End Function
     Public Function showGridRow(rGrid As UltraGridRow, ByRef lPlanBereichDelete As System.Collections.Generic.List(Of dsPlanSearch.planBereichRow),
-                                 SelListBerufsstandLoggedInHierarche As Integer,
+                                 SelListBerufsstandLoggedInHierarche As Integer, ByRef lstBerufsgruppenUserCanSign As List(Of Guid), ByRef ben As PMDS.db.Entities.Benutzer,
                                  ByRef db As PMDS.db.Entities.ERModellPMDSEntities) As Boolean
         Try
             Dim v As DataRowView = rGrid.ListObject
             Dim rPlanSel As dsPlanSearch.planBereichRow = v.Row
 
-            Dim rUsrPlanCreated = (From o In db.Benutzer
-                                   Where o.Benutzer1 = rPlanSel.CreatedFrom
-                                   Select o.ID, o.Benutzer1, o.IDBerufsstand).ToList().First()
+            'Dim rUsrPlanCreated = (From o In db.Benutzer
+            '                       Where o.Benutzer1 = rPlanSel.CreatedFrom
+            '                       Select o.ID, o.Benutzer1, o.IDBerufsstand).ToList().First()
 
-            Dim rSelListBerufsstandUsrCreated = (From o In db.AuswahlListe
-                                                 Where o.ID = rUsrPlanCreated.IDBerufsstand And o.IstGruppe = False And o.IDAuswahlListeGruppe = "BER"
-                                                 Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
+            'Dim rSelListBerufsstandUsrCreated = (From o In db.AuswahlListe
+            '                                     Where o.ID = rUsrPlanCreated.IDBerufsstand And o.IstGruppe = False And o.IDAuswahlListeGruppe = "BER"
+            '                                     Select o.ID, o.Bezeichnung, o.GehörtzuGruppe, o.Hierarche).ToList().First()
 
-            If rSelListBerufsstandUsrCreated.Hierarche < SelListBerufsstandLoggedInHierarche Then
+            Dim bBerufsgruppenRight As Boolean = Me.b.UserCanSignCheckBerufsgruppen(ben.ID, ben, lstBerufsgruppenUserCanSign, rPlanSel.lstBerufsgruppen, db)
+            If Not bBerufsgruppenRight Then
                 lPlanBereichDelete.Add(rPlanSel)
             End If
 

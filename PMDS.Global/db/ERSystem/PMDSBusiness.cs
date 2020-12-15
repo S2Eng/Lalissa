@@ -6106,8 +6106,30 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.UserCanEdit: " + ex.ToString());
             }
         }
+        public bool UserCanSignCheckBerufsgruppen(Guid IDBenutzer, PMDS.db.Entities.Benutzer ben, System.Collections.Generic.List<Guid> lstBerufsgruppenUserCanSign,
+                               ref string BerufsgruppenPlanBereich, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                if (lstBerufsgruppenUserCanSign.Count() > 0)
+                {
+                    foreach (Guid idBerufsstand in lstBerufsgruppenUserCanSign)
+                    {
+                        PMDS.db.Entities.AuswahlListe rAuswahliste = this.GetAuswahllisteByID(idBerufsstand, db);
+                        if (BerufsgruppenPlanBereich.Contains(rAuswahliste.Bezeichnung))
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
 
-
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucBenutzerEdit.UserCanSignGetList: " + ex.ToString());
+            }
+        }
 
         public System.Collections.Generic.List<AuswahlListe> getBerufsgruppenFürUser(string GroupsUser)
         {

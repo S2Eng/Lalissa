@@ -353,15 +353,15 @@ Public Class suchePlan
                 Dim sql_sub As String = " (" + sql_Berufsgrp + ") "
                 SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
             End If
-            If lAllBerufsstandGruppe.Count > 0 Then
-                Dim sql_Berufsgrp As String = ""
-                For Each sTxt As String In lAllBerufsstandGruppe
-                    Dim id_str As String = " [planBereich].lstBerufsgruppen like '%" + sTxt.ToString + "%' "
-                    sql_Berufsgrp += IIf(gen.IsNull(Trim(sql_Berufsgrp)), id_str, " or " + id_str)
-                Next
-                Dim sql_sub As String = " (" + sql_Berufsgrp + ") "
-                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-            End If
+            'If lAllBerufsstandGruppe.Count > 0 Then
+            '    Dim sql_Berufsgrp As String = ""
+            '    For Each sTxt As String In lAllBerufsstandGruppe
+            '        Dim id_str As String = " [planBereich].lstBerufsgruppen like '%" + sTxt.ToString + "%' "
+            '        sql_Berufsgrp += IIf(gen.IsNull(Trim(sql_Berufsgrp)), id_str, " or " + id_str)
+            '    Next
+            '    Dim sql_sub As String = " (" + sql_Berufsgrp + ") "
+            '    SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+            'End If
 
             If sqlStatus.Trim() <> "" Then
                 Dim sql_id As String = " (" + sqlStatus + ") "

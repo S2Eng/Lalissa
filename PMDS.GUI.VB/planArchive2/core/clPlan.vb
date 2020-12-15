@@ -703,7 +703,7 @@ Public Class clPlan
         End Try
     End Function
 
-    Public Function getAllUsersFromBerufsgruppe(db As PMDS.db.Entities.ERModellPMDSEntities) As System.Collections.Generic.List(Of String)
+    Public Function getBerufsgruppeFromLoggedInUser(db As PMDS.db.Entities.ERModellPMDSEntities) As System.Collections.Generic.List(Of String)
         Try
             Dim lBerufsstände As New System.Collections.Generic.List(Of String)()
 
@@ -718,13 +718,13 @@ Public Class clPlan
 
                 lBerufsstände.Add(rSelListBerufsstand.Bezeichnung.Trim())
             Else
-                Throw New Exception("clPlan.getAllUsersFromBerufsgruppe: rUsr.IDBerufsstand=null for User '" + rUsr.Benutzer1.Trim() + "'not allowed!")
+                Throw New Exception("clPlan.getBerufsgruppeFromLoggedInUser: rUsr.IDBerufsstand=null for User '" + rUsr.Benutzer1.Trim() + "'not allowed!")
             End If
 
             Return lBerufsstände
 
         Catch ex As Exception
-            Throw New Exception("clPlan.getAllUsersFromBerufsgruppe: " + ex.ToString())
+            Throw New Exception("clPlan.getBerufsgruppeFromLoggedInUser: " + ex.ToString())
         End Try
     End Function
 
