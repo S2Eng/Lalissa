@@ -78,6 +78,7 @@ Public Class contPlanung2Bereich
         Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem5 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem4 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -350,16 +351,19 @@ Public Class contPlanung2Bereich
         ValueListItem2.DataValue = "Completed"
         ValueListItem2.DisplayText = "Erledigt"
         ValueListItem2.Tag = "ResID.Completed"
+        ValueListItem5.DataValue = "Failed"
+        ValueListItem5.DisplayText = "Erfolglos"
+        ValueListItem5.Tag = "ResID.Failed"
         ValueListItem4.DataValue = "Canceled"
         ValueListItem4.DisplayText = "Storniert"
         ValueListItem4.Tag = "ResID.Canceled"
         ValueListItem3.DataValue = "All"
         ValueListItem3.DisplayText = "Alle"
         ValueListItem3.Tag = "ResID.All"
-        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem4, ValueListItem3})
+        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem5, ValueListItem4, ValueListItem3})
         Me.optStatus.Location = New System.Drawing.Point(125, 76)
         Me.optStatus.Name = "optStatus"
-        Me.optStatus.Size = New System.Drawing.Size(238, 16)
+        Me.optStatus.Size = New System.Drawing.Size(416, 15)
         Me.optStatus.TabIndex = 3
         Me.optStatus.Text = "Offen"
         '
@@ -742,10 +746,12 @@ Public Class contPlanung2Bereich
             Select Case Me.optStatus.Value.ToString().ToLower().Trim()
                 Case "open"
                     Return "Offen"
-                Case "canceled"
-                    Return "Storniert"
                 Case "completed"
                     Return "Erledigt"
+                Case "failed"
+                    Return "Erfolglos"
+                Case "canceled"
+                    Return "Storniert"
                 Case Else
                     Return ""
             End Select

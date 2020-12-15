@@ -99,6 +99,8 @@ Public Class contPlanungData
         ErledigtSetzenUndDekursErstellen = 3
         ErledigtSetzen = 4
         StorniertSetzen = 5
+        ErfolglosSetzen = 6
+        ErfolglosSetzenundDekursErstellen = 7
     End Enum
 
 
@@ -144,6 +146,10 @@ Public Class contPlanungData
     Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
     Friend WithEvents ListeLeerenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TermineStornierenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TermineErfolglosErledigenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents PanelKalender As System.Windows.Forms.Panel
 
 
@@ -285,8 +291,12 @@ Public Class contPlanungData
         Me.UltraCalendarInfo = New Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(Me.components)
         Me.UltraCalendarLook = New Infragistics.Win.UltraWinSchedule.UltraCalendarLook(Me.components)
         Me.ContextMenuStripNeu = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TermineErledigenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.TermineErfolglosErledigenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.TermineStornierenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EMailsSendenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
@@ -385,98 +395,122 @@ Public Class contPlanungData
         'ContextMenuStripNeu
         '
         Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.TermineErledigenToolStripMenuItem, Me.TermineStornierenToolStripMenuItem, Me.EMailsSendenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
+        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenToolStripMenuItem, Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.ToolStripSeparator1, Me.TermineErfolglosErledigenToolStripMenuItem, Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem, Me.ToolStripSeparator2, Me.TermineStornierenToolStripMenuItem, Me.EMailsSendenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
         Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
-        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(292, 270)
-        '
-        'TermineErledigenUndDekursSchreibenToolStripMenuItem
-        '
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Name = "TermineErledigenUndDekursSchreibenToolStripMenuItem"
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Tag = "ResID.TermineErledigenUndDekursErstellen"
-        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Text = "Termine erledigen und Dekurs erstellen"
+        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(342, 326)
         '
         'TermineErledigenToolStripMenuItem
         '
         Me.TermineErledigenToolStripMenuItem.Name = "TermineErledigenToolStripMenuItem"
-        Me.TermineErledigenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.TermineErledigenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.TermineErledigenToolStripMenuItem.Tag = "ResID.TermineErledigen"
         Me.TermineErledigenToolStripMenuItem.Text = "Termine erledigen"
+        '
+        'TermineErledigenUndDekursSchreibenToolStripMenuItem
+        '
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Name = "TermineErledigenUndDekursSchreibenToolStripMenuItem"
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Tag = "ResID.TermineErledigenUndDekursErstellen"
+        Me.TermineErledigenUndDekursSchreibenToolStripMenuItem.Text = "Termine erledigen und Dekurs erstellen"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(338, 6)
+        '
+        'TermineErfolglosErledigenToolStripMenuItem
+        '
+        Me.TermineErfolglosErledigenToolStripMenuItem.Name = "TermineErfolglosErledigenToolStripMenuItem"
+        Me.TermineErfolglosErledigenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
+        Me.TermineErfolglosErledigenToolStripMenuItem.Tag = "ResID.TermineErfolglosErledigen"
+        Me.TermineErfolglosErledigenToolStripMenuItem.Text = "Termine erfolglos erledigen"
+        '
+        'TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem
+        '
+        Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem.Name = "TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem"
+        Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
+        Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem.Tag = "ResID.TermineErfolglosErledigenUndDekursErstellen"
+        Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem.Text = "Termine erfolglos erledigen und Dekurs erstellen"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(338, 6)
         '
         'TermineStornierenToolStripMenuItem
         '
         Me.TermineStornierenToolStripMenuItem.Name = "TermineStornierenToolStripMenuItem"
-        Me.TermineStornierenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.TermineStornierenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.TermineStornierenToolStripMenuItem.Tag = "ResID.TermineStornieren"
         Me.TermineStornierenToolStripMenuItem.Text = "Termine stornieren"
         '
         'EMailsSendenToolStripMenuItem
         '
         Me.EMailsSendenToolStripMenuItem.Name = "EMailsSendenToolStripMenuItem"
-        Me.EMailsSendenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.EMailsSendenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.EMailsSendenToolStripMenuItem.Tag = "ResID.SendSelectedEMails"
         Me.EMailsSendenToolStripMenuItem.Text = "Ausgewählte E-Mails versenden"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(288, 6)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(338, 6)
         '
         'LöschenToolStripMenuItem1
         '
         Me.LöschenToolStripMenuItem1.Name = "LöschenToolStripMenuItem1"
-        Me.LöschenToolStripMenuItem1.Size = New System.Drawing.Size(291, 22)
+        Me.LöschenToolStripMenuItem1.Size = New System.Drawing.Size(341, 22)
         Me.LöschenToolStripMenuItem1.Tag = "ResID.Delete"
         Me.LöschenToolStripMenuItem1.Text = "Löschen"
         '
         'ToolStripMenuItemSpace1
         '
         Me.ToolStripMenuItemSpace1.Name = "ToolStripMenuItemSpace1"
-        Me.ToolStripMenuItemSpace1.Size = New System.Drawing.Size(288, 6)
+        Me.ToolStripMenuItemSpace1.Size = New System.Drawing.Size(338, 6)
         '
         'AllesAuswählenToolStripMenuItem
         '
         Me.AllesAuswählenToolStripMenuItem.Name = "AllesAuswählenToolStripMenuItem"
-        Me.AllesAuswählenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.AllesAuswählenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.AllesAuswählenToolStripMenuItem.Tag = "ResID.SelectAll"
         Me.AllesAuswählenToolStripMenuItem.Text = "Alle auswählen"
         '
         'KeineAuswahälenToolStripMenuItem
         '
         Me.KeineAuswahälenToolStripMenuItem.Name = "KeineAuswahälenToolStripMenuItem"
-        Me.KeineAuswahälenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.KeineAuswahälenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.KeineAuswahälenToolStripMenuItem.Tag = "ResID.SelectNone"
         Me.KeineAuswahälenToolStripMenuItem.Text = "Keine auswählen"
         '
         'ToolStripMenuItemSpace4
         '
         Me.ToolStripMenuItemSpace4.Name = "ToolStripMenuItemSpace4"
-        Me.ToolStripMenuItemSpace4.Size = New System.Drawing.Size(288, 6)
+        Me.ToolStripMenuItemSpace4.Size = New System.Drawing.Size(338, 6)
         '
         'FilterToolStripMenuItem
         '
         Me.FilterToolStripMenuItem.CheckOnClick = True
         Me.FilterToolStripMenuItem.Name = "FilterToolStripMenuItem"
-        Me.FilterToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.FilterToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.FilterToolStripMenuItem.Tag = "ResID.Filter"
         Me.FilterToolStripMenuItem.Text = "Filter"
         '
         'OpenSqlCommandToolStripMenuItem
         '
         Me.OpenSqlCommandToolStripMenuItem.Name = "OpenSqlCommandToolStripMenuItem"
-        Me.OpenSqlCommandToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.OpenSqlCommandToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.OpenSqlCommandToolStripMenuItem.Tag = "ResID.OpenSqlCommand"
         Me.OpenSqlCommandToolStripMenuItem.Text = "Open Sql-Command"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(288, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(338, 6)
         '
         'ListeLeerenToolStripMenuItem
         '
         Me.ListeLeerenToolStripMenuItem.Name = "ListeLeerenToolStripMenuItem"
-        Me.ListeLeerenToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.ListeLeerenToolStripMenuItem.Size = New System.Drawing.Size(341, 22)
         Me.ListeLeerenToolStripMenuItem.Text = "Liste leeren"
         '
         'UltraTabPageControlWoche
@@ -1573,10 +1607,12 @@ Public Class contPlanungData
             Select Case Me.mainWindow.getStatus()
                 Case "Erledigt"
                     sqlErledigt = " planObject_1.Status='Erledigt' "
+                Case "Erfolglos"
+                    sqlErledigt = " planObject_1.Status='Erfolglos' "
                 Case "Storniert"
                     sqlErledigt = " planObject_1.Status='Storniert' "
                 Case "Offen"
-                    sqlErledigt = " (planObject_1.Status<>'Erledigt' AND planObject_1.Status<>'Storniert') "
+                    sqlErledigt = " (planObject_1.Status<>'Erledigt' AND planObject_1.Status<>'Storniert' AND planObject_1.Status<>'Erfolglos') "
             End Select
 
             Dim sqlEMailGesendet As String = ""
@@ -1996,9 +2032,18 @@ Public Class contPlanungData
                                 Else
                                     Me.compPlan1.updatePlanObjectStatus(cSelEntries1.rPlanSel.ID, cSelEntries1.rPlanSel.IDPatient, "Erledigt")
                                 End If
-                                'Me.compPlan1.updatePlanStatus(cSelEntries1.rPlanSel.ID, "Erledigt")
                                 anz += 1
                             End If
+
+                            If TypeDekursErstellen = eTypeDekursErstellen.ErfolglosSetzenundDekursErstellen Then
+                                If cSelEntries1.rPlanSel.IsIDPatientNull() Then
+                                    Me.compPlan1.updatePlanStatus(cSelEntries1.rPlanSel.ID, "Erfolglos")
+                                Else
+                                    Me.compPlan1.updatePlanObjectStatus(cSelEntries1.rPlanSel.ID, cSelEntries1.rPlanSel.IDPatient, "Erfolglos")
+                                End If
+                                anz += 1
+                            End If
+
                             anz += 1
                         End If
 
@@ -2007,6 +2052,14 @@ Public Class contPlanungData
                             Me.compPlan1.updatePlanStatus(cSelEntries1.rPlanSel.ID, "Erledigt")
                         Else
                             Me.compPlan1.updatePlanObjectStatus(cSelEntries1.rPlanSel.ID, cSelEntries1.rPlanSel.IDPatient, "Erledigt")
+                        End If
+                        anz += 1
+
+                    ElseIf TypeDekursErstellen = eTypeDekursErstellen.ErfolglosSetzen Then
+                        If cSelEntries1.rPlanSel.IsIDPatientNull() Then
+                            Me.compPlan1.updatePlanStatus(cSelEntries1.rPlanSel.ID, "Erfolglos")
+                        Else
+                            Me.compPlan1.updatePlanObjectStatus(cSelEntries1.rPlanSel.ID, cSelEntries1.rPlanSel.IDPatient, "Erfolglos")
                         End If
                         anz += 1
 
@@ -3227,4 +3280,29 @@ Public Class contPlanungData
         End Try
     End Sub
 
+    Private Sub TermineErfolglosErledigenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TermineErfolglosErledigenToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.DekursErstellen(True, eTypeDekursErstellen.ErfolglosSetzen)
+            'Me.doAction(eTypAction.DekursErstellen, True)
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.DekursErstellen(True, eTypeDekursErstellen.ErfolglosSetzenundDekursErstellen)
+            'Me.doAction(eTypAction.DekursErstellen, True)
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
 End Class

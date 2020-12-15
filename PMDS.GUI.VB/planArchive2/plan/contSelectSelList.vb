@@ -112,23 +112,30 @@ Public Class contSelectSelList
                         rNew.IDGuid = rSelListEntry.IDGuid
                     Next
                 Else
-                    Dim tAuswahlListe As System.Linq.IQueryable(Of PMDS.db.Entities.AuswahlListe) = Me.b.GetAuswahlliste(db, Me._GoupIDStr.Trim(), -100000, False)
-                    Dim iCounter As Integer = 0
-                    For Each rAuswahlListe As PMDS.db.Entities.AuswahlListe In tAuswahlListe
-                        Dim rNew As dsClipboard.tblSelListEntriesTmpRow = Me.CompPlan1.getNewRowSelListEntriesTmp(Me.DsClipboard1)
-                        rNew.ID = iCounter
-                        'Dim TxtTranslated As String = doUI.getRes(rSelListEntry.IDRessource.Trim())
-                        'If TxtTranslated.Trim = "" Then
-                        '    TxtTranslated = rSelListEntry.IDRessource.Trim()
-                        'End If
-                        rNew.Bezeichnung = rAuswahlListe.Bezeichnung.Trim()
-                        rNew.IDOwnInt = iCounter
-                        rNew.IDOwnStr = rAuswahlListe.ID.ToString()
-                        rNew.IDGuid = rAuswahlListe.ID
+                    Dim tAuswahlListe As System.Linq.IQueryable(Of PMDS.db.Entities.AuswahlListe)
 
-                        iCounter += 1
-                    Next
-                End If
+                    If Me._GoupIDStr = "BER" Then
+                        tAuswahlListe = Me.b.GetAuswahlliste(db, Me._GoupIDStr.Trim(), 0, True)
+                    Else
+                        tAuswahlListe = Me.b.GetAuswahlliste(db, Me._GoupIDStr.Trim(), -10000, False)
+                    End If
+
+                    Dim iCounter As Integer = 0
+                        For Each rAuswahlListe As PMDS.db.Entities.AuswahlListe In tAuswahlListe
+                            Dim rNew As dsClipboard.tblSelListEntriesTmpRow = Me.CompPlan1.getNewRowSelListEntriesTmp(Me.DsClipboard1)
+                            rNew.ID = iCounter
+                            'Dim TxtTranslated As String = doUI.getRes(rSelListEntry.IDRessource.Trim())
+                            'If TxtTranslated.Trim = "" Then
+                            '    TxtTranslated = rSelListEntry.IDRessource.Trim()
+                            'End If
+                            rNew.Bezeichnung = rAuswahlListe.Bezeichnung.Trim()
+                            rNew.IDOwnInt = iCounter
+                            rNew.IDOwnStr = rAuswahlListe.ID.ToString()
+                            rNew.IDGuid = rAuswahlListe.ID
+
+                            iCounter += 1
+                        Next
+                    End If
             End Using
 
             Me.DsClipboard1.AcceptChanges()

@@ -140,6 +140,7 @@ Public Class frmNachrichtBereich
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem11 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraToolTipInfo2 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Html", Infragistics.Win.DefaultableBoolean.[Default])
@@ -314,9 +315,9 @@ Public Class frmNachrichtBereich
         Appearance1.ForeColorDisabled = System.Drawing.Color.Black
         Appearance1.TextVAlignAsString = "Middle"
         Me.lblStatus.Appearance = Appearance1
-        Me.lblStatus.Location = New System.Drawing.Point(887, 87)
+        Me.lblStatus.Location = New System.Drawing.Point(910, 51)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(77, 17)
+        Me.lblStatus.Size = New System.Drawing.Size(47, 17)
         Me.lblStatus.TabIndex = 504
         Me.lblStatus.Tag = "ResID.Status"
         Me.lblStatus.Text = "Status"
@@ -346,12 +347,15 @@ Public Class frmNachrichtBereich
         ValueListItem2.DataValue = 1
         ValueListItem2.DisplayText = "Erledigt"
         ValueListItem2.Tag = "ResID.Completed"
+        ValueListItem11.DataValue = "Failed"
+        ValueListItem11.DisplayText = "Erfolglos"
+        ValueListItem11.Tag = "ResID.Failed"
         ValueListItem9.DataValue = 2
         ValueListItem9.DisplayText = "Storniert"
-        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem9})
-        Me.optStatus.Location = New System.Drawing.Point(931, 89)
+        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem11, ValueListItem9})
+        Me.optStatus.Location = New System.Drawing.Point(962, 51)
         Me.optStatus.Name = "optStatus"
-        Me.optStatus.Size = New System.Drawing.Size(172, 17)
+        Me.optStatus.Size = New System.Drawing.Size(95, 61)
         Me.optStatus.TabIndex = 4
         Me.optStatus.Text = "Offen"
         Me.optStatus.Visible = False
@@ -1454,12 +1458,14 @@ Public Class frmNachrichtBereich
             Me.txtBetreff.Text = Me.rPlanBereich.Betreff
 
             If Me.rPlanBereich.Status.Trim() <> "" Then
-                If Me.rPlanBereich.Status.Trim().ToLower().Equals(("Offen").Trim().ToLower()) Then
+                If PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Offen") Then
                     Me.optStatus.CheckedIndex = 0
-                ElseIf Me.rPlanBereich.Status.Trim().ToLower().Equals(("Erledigt").Trim().ToLower()) Then
+                ElseIf PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Erledigt") Then
                     Me.optStatus.CheckedIndex = 1
-                ElseIf Me.rPlanBereich.Status.Trim().ToLower().Equals(("Storniert").Trim().ToLower()) Then
+                ElseIf PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Erfolglos") Then
                     Me.optStatus.CheckedIndex = 2
+                ElseIf PMDS.Global.generic.sEquals(Me.rPlanBereich.Status, "Storniert") Then
+                    Me.optStatus.CheckedIndex = 3
                 Else
                     Throw New Exception("frmNachrichtBereich.loadData: Me.rPlan.Status='" + Me.rPlanBereich.Status.Trim() + "' not allowed!")
                 End If
@@ -1927,9 +1933,9 @@ Public Class frmNachrichtBereich
                     If lstSerientermineResult.Count > 0 And (Not STKürzung) Then
                         Dim dsPlanNew As New dsPlan()
                         Dim compPlanNew As New compPlan()
+                        Dim b As New PMDS.db.PMDSBusiness()
 
                         For Each SerientermineAct As General.cSerientermine In lstSerientermineResult
-                            Dim b As New PMDS.db.PMDSBusiness()
 
                             'Dim rUsr As PMDS.db.Entities.Benutzer = b.getUserByUserName(usr.Trim(), db)
                             Dim bWritePlan As Boolean = False
@@ -1942,10 +1948,10 @@ Public Class frmNachrichtBereich
                             End If
 
                             If STVerlängerung Then
-                                Dim rPlan As PMDS.db.Entities.plan = b.getPlan(Me.rPlanBereich.ID, db)
+                                Dim rPlanBereich As PMDS.db.Entities.planBereich = b.getPlanBereich(Me.rPlanBereich.ID, db)
                                 Dim STEndetAmOrig As Date = Nothing
-                                If Not rPlan.IDSerientermin Is Nothing Then
-                                    If SerientermineAct.dFrom.Date <= rPlan.SerienterminEndetAm.Value.Date Then
+                                If Not rPlanBereich.IDSerientermin Is Nothing Then
+                                    If SerientermineAct.dFrom.Date <= rPlanBereich.SerienterminEndetAm.Value.Date Then
                                         bWritePlan = False
                                     End If
                                 Else
@@ -1970,9 +1976,13 @@ Public Class frmNachrichtBereich
 
                                     If ActAbtBereich.isAbt Then
                                         rPlanNew.IDAbteilung = ActAbtBereich.ID
+                                        rPlanNew.lstAbteilungen = b.getAbteilung(ActAbtBereich.ID, db).Bezeichnung.Trim()
                                     Else
                                         rPlanNew.IDBereich = ActAbtBereich.ID
                                         rPlanNew.IDAbteilung = ActAbtBereich.IDParent
+
+                                        rPlanNew.lstAbteilungen = b.getAbteilung(ActAbtBereich.IDParent, db).Bezeichnung.Trim()
+                                        rPlanNew.lstBereiche = b.getBereich(ActAbtBereich.ID, db).Bezeichnung.Trim()
                                     End If
 
                                     compPlanNew.daPlanBereich.Update(dsPlanNew.planBereich)
@@ -2124,6 +2134,8 @@ Public Class frmNachrichtBereich
                 ElseIf Me.optStatus.CheckedIndex = 1 Then
                     rPlanToSet.Status = "Erledigt"
                 ElseIf Me.optStatus.CheckedIndex = 2 Then
+                    rPlanToSet.Status = "Erfolglos"
+                ElseIf Me.optStatus.CheckedIndex = 3 Then
                     rPlanToSet.Status = "Storniert"
                 Else
                     Throw New Exception("setPlanRowTemp: Me.optStatus.CheckedIndex '" + Me.optStatus.CheckedIndex.ToString() + "' not allowed!")
@@ -2146,11 +2158,15 @@ Public Class frmNachrichtBereich
 
             Dim lstSelectedBerufsgruppen As New System.Collections.Generic.List(Of String)()
             Me.contSelectSelListBerufsgruppen.getSelectedData2(lstSelectedBerufsgruppen)
+            rPlanToSet.lstBerufsgruppen = ""
             For Each rBerufsgruppe In lstSelectedBerufsgruppen
                 rPlanToSet.lstBerufsgruppen += rBerufsgruppe.Trim() + ";"
             Next
 
             rPlanToSet.Text = Me.txtBody.Text.Trim()
+
+            rPlanToSet.lstBereiche = ""
+            rPlanToSet.lstAbteilungen = ""
 
             'Dim text As String = ""
             'Dim typTxt As TXTextControl.StreamType = TXTextControl.StreamType.PlainText

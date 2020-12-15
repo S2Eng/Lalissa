@@ -247,6 +247,8 @@ Public Class frmNachricht3
         Dim Appearance35 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ValueListItem1 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim ValueListItem2 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem9 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
+        Dim ValueListItem10 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.[Default], "Html", Infragistics.Win.DefaultableBoolean.[Default])
         Dim ValueListItem3 As Infragistics.Win.ValueListItem = New Infragistics.Win.ValueListItem()
@@ -423,6 +425,7 @@ Public Class frmNachricht3
         Me.winFormHtmlEditor1.AutoScrollMargin = New System.Drawing.Size(0, 0)
         Me.winFormHtmlEditor1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
         Me.winFormHtmlEditor1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.winFormHtmlEditor1.Charset = "utf-8"
         Me.winFormHtmlEditor1.Controls.Add(Me.Panel1)
         Me.winFormHtmlEditor1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.winFormHtmlEditor1.DocumentHtml = "<!DOCTYPE html>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<html><head>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<meta http-equiv=""Content-Type"" content=""text/html" &
@@ -899,9 +902,9 @@ Public Class frmNachricht3
         Appearance9.ForeColorDisabled = System.Drawing.Color.Black
         Appearance9.TextVAlignAsString = "Middle"
         Me.lblStatus.Appearance = Appearance9
-        Me.lblStatus.Location = New System.Drawing.Point(883, 97)
+        Me.lblStatus.Location = New System.Drawing.Point(875, 49)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(77, 17)
+        Me.lblStatus.Size = New System.Drawing.Size(44, 17)
         Me.lblStatus.TabIndex = 504
         Me.lblStatus.Tag = "ResID.Status"
         Me.lblStatus.Text = "Status"
@@ -932,10 +935,16 @@ Public Class frmNachricht3
         ValueListItem2.DataValue = "Completed"
         ValueListItem2.DisplayText = "Erledigt"
         ValueListItem2.Tag = "ResID.Completed"
-        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2})
-        Me.optStatus.Location = New System.Drawing.Point(951, 98)
+        ValueListItem9.DataValue = "Failed"
+        ValueListItem9.DisplayText = "Erfolglos"
+        ValueListItem9.Tag = "ResID.Failed"
+        ValueListItem10.DataValue = "Canceled"
+        ValueListItem10.DisplayText = "Storniert"
+        ValueListItem10.Tag = "ResID.Canceled"
+        Me.optStatus.Items.AddRange(New Infragistics.Win.ValueListItem() {ValueListItem1, ValueListItem2, ValueListItem9, ValueListItem10})
+        Me.optStatus.Location = New System.Drawing.Point(929, 52)
         Me.optStatus.Name = "optStatus"
-        Me.optStatus.Size = New System.Drawing.Size(108, 17)
+        Me.optStatus.Size = New System.Drawing.Size(129, 62)
         Me.optStatus.TabIndex = 4
         Me.optStatus.Text = "Offen"
         Me.optStatus.Visible = False
@@ -2425,11 +2434,13 @@ Public Class frmNachricht3
             End If
             Me.lblMailVon.Text = Me.rPlan.MailFrom
 
-            If Me.rPlan.Status.Trim() <> "" Then
-                If Me.rPlan.Status.Trim().ToLower().Equals(("Offen").Trim().ToLower()) Then
+            If Not PMDS.Global.generic.sEquals(Me.rPlan.Status, "") Then
+                If PMDS.Global.generic.sEquals(Me.rPlan.Status, "Offen") Then
                     Me.optStatus.CheckedIndex = 0
-                ElseIf Me.rPlan.Status.Trim().ToLower().Equals(("Erledigt").Trim().ToLower()) Then
+                ElseIf PMDS.Global.generic.sEquals(Me.rPlan.Status, "Erledigt") Then
                     Me.optStatus.CheckedIndex = 1
+                ElseIf PMDS.Global.generic.sEquals(Me.rPlan.Status, "Erfolglos") Then
+                    Me.optStatus.CheckedIndex = 2
                 Else
                     Throw New Exception("frmNachricht.loadData: Me.rPlan.Status='" + Me.rPlan.Status.Trim() + "' not allowed!")
                 End If
@@ -5033,4 +5044,7 @@ Public Class frmNachricht3
         End Try
     End Sub
 
+    Private Sub toolbarsManagerText_ToolClick(sender As Object, e As ToolClickEventArgs) Handles toolbarsManagerText.ToolClick
+
+    End Sub
 End Class

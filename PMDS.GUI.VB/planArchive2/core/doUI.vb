@@ -44,7 +44,7 @@ Public Class doUI
                     Return IDRes.Trim()
                 Else
                     'Throw New Exception("doUI.getRes: No translation found for ResID for Column '" + IDRes.Trim() + "' !")
-                    Return ""
+                    Return IDRes.Trim() + "(Resource missing)"
                 End If
             End If
 

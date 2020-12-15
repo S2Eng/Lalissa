@@ -41,6 +41,7 @@ Public Class contPlanungDataBereich
         delete = 0
         Erledigen = 102
         Stornieren = 103
+        ErfolglosErledigen = 104
     End Enum
 
     Public compUserAccounts1 As New compUserAccounts()
@@ -95,6 +96,7 @@ Public Class contPlanungDataBereich
     Friend WithEvents DsManage1 As QS2.Desktop.Txteditor.dsManage
     Friend WithEvents txtBody As UltraWinEditors.UltraTextEditor
     Friend WithEvents CompPlanSearch As compPlan
+    Friend WithEvents TermineErfolglosErledigenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TermineStornierenToolStripMenuItem As ToolStripMenuItem
 
 
@@ -135,28 +137,28 @@ Public Class contPlanungDataBereich
         Dim UltraGridColumn7 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Status")
         Dim UltraGridColumn8 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Category", -1, Nothing, 1, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, False)
         Dim UltraGridColumn9 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Folder")
-        Dim UltraGridColumn27 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Teilnehmer")
-        Dim UltraGridColumn28 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDSerientermin")
-        Dim UltraGridColumn37 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("TagWochenMonat")
-        Dim UltraGridColumn38 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("WiedWertJeden")
-        Dim UltraGridColumn39 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Wochentage")
-        Dim UltraGridColumn40 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("nTenMonat")
-        Dim UltraGridColumn41 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("SerienterminType")
-        Dim UltraGridColumn42 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Dauer")
-        Dim UltraGridColumn43 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("GanzerTag")
-        Dim UltraGridColumn44 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IsSerientermin")
-        Dim UltraGridColumn45 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("SerienterminEndetAm")
-        Dim UltraGridColumn46 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik")
-        Dim UltraGridColumn47 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("CreatedFrom")
-        Dim UltraGridColumn48 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("CreatedAt")
-        Dim UltraGridColumn49 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("LastChangeFrom")
-        Dim UltraGridColumn50 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("LastChangeAt")
-        Dim UltraGridColumn51 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("lstBerufsgruppen")
-        Dim UltraGridColumn12 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPlanMain")
-        Dim UltraGridColumn13 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAbteilung")
-        Dim UltraGridColumn14 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBereich")
-        Dim UltraGridColumn10 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Abteilung", 0)
-        Dim UltraGridColumn11 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Bereich", 1)
+        Dim UltraGridColumn10 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Teilnehmer")
+        Dim UltraGridColumn11 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDSerientermin")
+        Dim UltraGridColumn12 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("TagWochenMonat")
+        Dim UltraGridColumn13 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("WiedWertJeden")
+        Dim UltraGridColumn14 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Wochentage")
+        Dim UltraGridColumn27 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("nTenMonat")
+        Dim UltraGridColumn28 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("SerienterminType")
+        Dim UltraGridColumn37 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Dauer")
+        Dim UltraGridColumn38 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("GanzerTag")
+        Dim UltraGridColumn39 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IsSerientermin")
+        Dim UltraGridColumn40 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("SerienterminEndetAm")
+        Dim UltraGridColumn41 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKlinik")
+        Dim UltraGridColumn42 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("CreatedFrom")
+        Dim UltraGridColumn43 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("CreatedAt")
+        Dim UltraGridColumn44 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("LastChangeFrom")
+        Dim UltraGridColumn45 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("LastChangeAt")
+        Dim UltraGridColumn46 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("lstBerufsgruppen")
+        Dim UltraGridColumn47 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPlanMain")
+        Dim UltraGridColumn48 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAbteilung")
+        Dim UltraGridColumn49 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBereich")
+        Dim UltraGridColumn50 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Abteilung", 0)
+        Dim UltraGridColumn51 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("Bereich", 1)
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -169,6 +171,7 @@ Public Class contPlanungDataBereich
         Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ContextMenuStripNeu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TermineErledigenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TermineErfolglosErledigenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TermineStornierenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.LöschenToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -207,65 +210,72 @@ Public Class contPlanungDataBereich
         'ContextMenuStripNeu
         '
         Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenToolStripMenuItem, Me.TermineStornierenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem})
+        Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenToolStripMenuItem, Me.TermineErfolglosErledigenToolStripMenuItem, Me.TermineStornierenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem})
         Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
-        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(179, 154)
+        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(226, 198)
         '
         'TermineErledigenToolStripMenuItem
         '
         Me.TermineErledigenToolStripMenuItem.Name = "TermineErledigenToolStripMenuItem"
-        Me.TermineErledigenToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.TermineErledigenToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.TermineErledigenToolStripMenuItem.Tag = "ResID.TermineErledigen"
         Me.TermineErledigenToolStripMenuItem.Text = "Termine erledigen"
+        '
+        'TermineErfolglosErledigenToolStripMenuItem
+        '
+        Me.TermineErfolglosErledigenToolStripMenuItem.Name = "TermineErfolglosErledigenToolStripMenuItem"
+        Me.TermineErfolglosErledigenToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.TermineErfolglosErledigenToolStripMenuItem.Tag = "ResID.TermineErfolglosErledigen"
+        Me.TermineErfolglosErledigenToolStripMenuItem.Text = "Termine erfolglos erledigen"
         '
         'TermineStornierenToolStripMenuItem
         '
         Me.TermineStornierenToolStripMenuItem.Name = "TermineStornierenToolStripMenuItem"
-        Me.TermineStornierenToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.TermineStornierenToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.TermineStornierenToolStripMenuItem.Tag = "ResID.TermineStornieren"
         Me.TermineStornierenToolStripMenuItem.Text = "Termine stornieren"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(175, 6)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(222, 6)
         '
         'LöschenToolStripMenuItem1
         '
         Me.LöschenToolStripMenuItem1.Name = "LöschenToolStripMenuItem1"
-        Me.LöschenToolStripMenuItem1.Size = New System.Drawing.Size(178, 22)
+        Me.LöschenToolStripMenuItem1.Size = New System.Drawing.Size(225, 22)
         Me.LöschenToolStripMenuItem1.Tag = "ResID.Delete"
         Me.LöschenToolStripMenuItem1.Text = "Löschen"
         '
         'ToolStripMenuItemSpace1
         '
         Me.ToolStripMenuItemSpace1.Name = "ToolStripMenuItemSpace1"
-        Me.ToolStripMenuItemSpace1.Size = New System.Drawing.Size(175, 6)
+        Me.ToolStripMenuItemSpace1.Size = New System.Drawing.Size(222, 6)
         '
         'AllesAuswählenToolStripMenuItem
         '
         Me.AllesAuswählenToolStripMenuItem.Name = "AllesAuswählenToolStripMenuItem"
-        Me.AllesAuswählenToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.AllesAuswählenToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.AllesAuswählenToolStripMenuItem.Tag = "ResID.SelectAll"
         Me.AllesAuswählenToolStripMenuItem.Text = "Alle auswählen"
         '
         'KeineAuswahälenToolStripMenuItem
         '
         Me.KeineAuswahälenToolStripMenuItem.Name = "KeineAuswahälenToolStripMenuItem"
-        Me.KeineAuswahälenToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.KeineAuswahälenToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.KeineAuswahälenToolStripMenuItem.Tag = "ResID.SelectNone"
         Me.KeineAuswahälenToolStripMenuItem.Text = "Keine auswählen"
         '
         'ToolStripMenuItemSpace4
         '
         Me.ToolStripMenuItemSpace4.Name = "ToolStripMenuItemSpace4"
-        Me.ToolStripMenuItemSpace4.Size = New System.Drawing.Size(175, 6)
+        Me.ToolStripMenuItemSpace4.Size = New System.Drawing.Size(222, 6)
         '
         'FilterToolStripMenuItem
         '
         Me.FilterToolStripMenuItem.CheckOnClick = True
         Me.FilterToolStripMenuItem.Name = "FilterToolStripMenuItem"
-        Me.FilterToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.FilterToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.FilterToolStripMenuItem.Tag = "ResID.Filter"
         Me.FilterToolStripMenuItem.Text = "Filter"
         '
@@ -334,82 +344,82 @@ Public Class contPlanungDataBereich
         UltraGridColumn9.Header.VisiblePosition = 17
         UltraGridColumn9.Hidden = True
         UltraGridColumn9.Width = 248
-        UltraGridColumn27.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
-        UltraGridColumn27.Header.Editor = Nothing
-        UltraGridColumn27.Header.VisiblePosition = 10
-        UltraGridColumn27.Hidden = True
-        UltraGridColumn28.Header.Editor = Nothing
-        UltraGridColumn28.Header.VisiblePosition = 21
-        UltraGridColumn28.Hidden = True
-        UltraGridColumn37.Header.Editor = Nothing
-        UltraGridColumn37.Header.VisiblePosition = 22
-        UltraGridColumn37.Hidden = True
-        UltraGridColumn38.Header.Editor = Nothing
-        UltraGridColumn38.Header.VisiblePosition = 23
-        UltraGridColumn38.Hidden = True
-        UltraGridColumn39.Header.Editor = Nothing
-        UltraGridColumn39.Header.VisiblePosition = 18
-        UltraGridColumn39.Hidden = True
-        UltraGridColumn40.Header.Editor = Nothing
-        UltraGridColumn40.Header.VisiblePosition = 19
-        UltraGridColumn40.Hidden = True
-        UltraGridColumn41.Header.Editor = Nothing
-        UltraGridColumn41.Header.VisiblePosition = 20
-        UltraGridColumn41.Hidden = True
-        UltraGridColumn42.Header.Editor = Nothing
-        UltraGridColumn42.Header.VisiblePosition = 24
-        UltraGridColumn42.Hidden = True
-        UltraGridColumn43.Header.Editor = Nothing
-        UltraGridColumn43.Header.VisiblePosition = 25
-        UltraGridColumn43.Hidden = True
-        UltraGridColumn44.Header.Editor = Nothing
-        UltraGridColumn44.Header.VisiblePosition = 26
-        UltraGridColumn44.Hidden = True
-        UltraGridColumn45.Header.Editor = Nothing
-        UltraGridColumn45.Header.VisiblePosition = 28
-        UltraGridColumn45.Hidden = True
-        UltraGridColumn46.Header.Editor = Nothing
-        UltraGridColumn46.Header.VisiblePosition = 11
-        UltraGridColumn46.Hidden = True
-        UltraGridColumn47.Header.Caption = "Erstellt von"
-        UltraGridColumn47.Header.Editor = Nothing
-        UltraGridColumn47.Header.VisiblePosition = 13
-        UltraGridColumn47.Width = 91
-        UltraGridColumn48.Header.Caption = "Erstellt am"
-        UltraGridColumn48.Header.Editor = Nothing
-        UltraGridColumn48.Header.VisiblePosition = 14
-        UltraGridColumn48.Hidden = True
-        UltraGridColumn48.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime
-        UltraGridColumn48.Width = 111
-        UltraGridColumn49.Header.Caption = "Letzte Änderung von"
-        UltraGridColumn49.Header.Editor = Nothing
-        UltraGridColumn49.Header.VisiblePosition = 15
-        UltraGridColumn49.Hidden = True
-        UltraGridColumn50.Header.Caption = "Letzte Änderung am"
-        UltraGridColumn50.Header.Editor = Nothing
-        UltraGridColumn50.Header.VisiblePosition = 16
-        UltraGridColumn50.Hidden = True
-        UltraGridColumn50.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime
-        UltraGridColumn51.Header.Caption = "Berufsgruppen"
-        UltraGridColumn51.Header.Editor = Nothing
-        UltraGridColumn51.Header.VisiblePosition = 6
-        UltraGridColumn51.Width = 315
+        UltraGridColumn10.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None
+        UltraGridColumn10.Header.Editor = Nothing
+        UltraGridColumn10.Header.VisiblePosition = 10
+        UltraGridColumn10.Hidden = True
+        UltraGridColumn11.Header.Editor = Nothing
+        UltraGridColumn11.Header.VisiblePosition = 21
+        UltraGridColumn11.Hidden = True
         UltraGridColumn12.Header.Editor = Nothing
-        UltraGridColumn12.Header.VisiblePosition = 27
+        UltraGridColumn12.Header.VisiblePosition = 22
         UltraGridColumn12.Hidden = True
         UltraGridColumn13.Header.Editor = Nothing
-        UltraGridColumn13.Header.VisiblePosition = 29
+        UltraGridColumn13.Header.VisiblePosition = 23
         UltraGridColumn13.Hidden = True
         UltraGridColumn14.Header.Editor = Nothing
-        UltraGridColumn14.Header.VisiblePosition = 30
+        UltraGridColumn14.Header.VisiblePosition = 18
         UltraGridColumn14.Hidden = True
-        UltraGridColumn10.Header.Editor = Nothing
-        UltraGridColumn10.Header.VisiblePosition = 2
-        UltraGridColumn10.Width = 117
-        UltraGridColumn11.Header.Editor = Nothing
-        UltraGridColumn11.Header.VisiblePosition = 3
-        UltraGridColumn11.Width = 121
-        UltraGridBand1.Columns.AddRange(New Object() {UltraGridColumn1, UltraGridColumn2, UltraGridColumn3, UltraGridColumn4, UltraGridColumn5, UltraGridColumn6, UltraGridColumn7, UltraGridColumn8, UltraGridColumn9, UltraGridColumn27, UltraGridColumn28, UltraGridColumn37, UltraGridColumn38, UltraGridColumn39, UltraGridColumn40, UltraGridColumn41, UltraGridColumn42, UltraGridColumn43, UltraGridColumn44, UltraGridColumn45, UltraGridColumn46, UltraGridColumn47, UltraGridColumn48, UltraGridColumn49, UltraGridColumn50, UltraGridColumn51, UltraGridColumn12, UltraGridColumn13, UltraGridColumn14, UltraGridColumn10, UltraGridColumn11})
+        UltraGridColumn27.Header.Editor = Nothing
+        UltraGridColumn27.Header.VisiblePosition = 19
+        UltraGridColumn27.Hidden = True
+        UltraGridColumn28.Header.Editor = Nothing
+        UltraGridColumn28.Header.VisiblePosition = 20
+        UltraGridColumn28.Hidden = True
+        UltraGridColumn37.Header.Editor = Nothing
+        UltraGridColumn37.Header.VisiblePosition = 24
+        UltraGridColumn37.Hidden = True
+        UltraGridColumn38.Header.Editor = Nothing
+        UltraGridColumn38.Header.VisiblePosition = 25
+        UltraGridColumn38.Hidden = True
+        UltraGridColumn39.Header.Editor = Nothing
+        UltraGridColumn39.Header.VisiblePosition = 26
+        UltraGridColumn39.Hidden = True
+        UltraGridColumn40.Header.Editor = Nothing
+        UltraGridColumn40.Header.VisiblePosition = 28
+        UltraGridColumn40.Hidden = True
+        UltraGridColumn41.Header.Editor = Nothing
+        UltraGridColumn41.Header.VisiblePosition = 11
+        UltraGridColumn41.Hidden = True
+        UltraGridColumn42.Header.Caption = "Erstellt von"
+        UltraGridColumn42.Header.Editor = Nothing
+        UltraGridColumn42.Header.VisiblePosition = 13
+        UltraGridColumn42.Width = 91
+        UltraGridColumn43.Header.Caption = "Erstellt am"
+        UltraGridColumn43.Header.Editor = Nothing
+        UltraGridColumn43.Header.VisiblePosition = 14
+        UltraGridColumn43.Hidden = True
+        UltraGridColumn43.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime
+        UltraGridColumn43.Width = 111
+        UltraGridColumn44.Header.Caption = "Letzte Änderung von"
+        UltraGridColumn44.Header.Editor = Nothing
+        UltraGridColumn44.Header.VisiblePosition = 15
+        UltraGridColumn44.Hidden = True
+        UltraGridColumn45.Header.Caption = "Letzte Änderung am"
+        UltraGridColumn45.Header.Editor = Nothing
+        UltraGridColumn45.Header.VisiblePosition = 16
+        UltraGridColumn45.Hidden = True
+        UltraGridColumn45.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime
+        UltraGridColumn46.Header.Caption = "Berufsgruppen"
+        UltraGridColumn46.Header.Editor = Nothing
+        UltraGridColumn46.Header.VisiblePosition = 6
+        UltraGridColumn46.Width = 315
+        UltraGridColumn47.Header.Editor = Nothing
+        UltraGridColumn47.Header.VisiblePosition = 27
+        UltraGridColumn47.Hidden = True
+        UltraGridColumn48.Header.Editor = Nothing
+        UltraGridColumn48.Header.VisiblePosition = 29
+        UltraGridColumn48.Hidden = True
+        UltraGridColumn49.Header.Editor = Nothing
+        UltraGridColumn49.Header.VisiblePosition = 30
+        UltraGridColumn49.Hidden = True
+        UltraGridColumn50.Header.Editor = Nothing
+        UltraGridColumn50.Header.VisiblePosition = 2
+        UltraGridColumn50.Width = 117
+        UltraGridColumn51.Header.Editor = Nothing
+        UltraGridColumn51.Header.VisiblePosition = 3
+        UltraGridColumn51.Width = 121
+        UltraGridBand1.Columns.AddRange(New Object() {UltraGridColumn1, UltraGridColumn2, UltraGridColumn3, UltraGridColumn4, UltraGridColumn5, UltraGridColumn6, UltraGridColumn7, UltraGridColumn8, UltraGridColumn9, UltraGridColumn10, UltraGridColumn11, UltraGridColumn12, UltraGridColumn13, UltraGridColumn14, UltraGridColumn27, UltraGridColumn28, UltraGridColumn37, UltraGridColumn38, UltraGridColumn39, UltraGridColumn40, UltraGridColumn41, UltraGridColumn42, UltraGridColumn43, UltraGridColumn44, UltraGridColumn45, UltraGridColumn46, UltraGridColumn47, UltraGridColumn48, UltraGridColumn49, UltraGridColumn50, UltraGridColumn51})
         Me.gridPlans.DisplayLayout.BandsSerializer.Add(UltraGridBand1)
         Appearance2.BackColor = System.Drawing.Color.White
         Me.gridPlans.DisplayLayout.GroupByBox.Appearance = Appearance2
@@ -693,10 +703,12 @@ Public Class contPlanungDataBereich
                 Select Case Me.mainWindow.getStatus()
                     Case "Erledigt"
                         sqlStatus = " [planBereich].Status='Erledigt' "
+                    Case "Erfolglos"
+                        sqlStatus = " [planBereich].Status='Erfolglos' "
                     Case "Storniert"
                         sqlStatus = " [planBereich].Status='Storniert' "
                     Case "Offen"
-                        sqlStatus = " ([planBereich].Status<>'Erledigt' AND [planBereich].Status<>'Storniert') "
+                        sqlStatus = " ([planBereich].Status<>'Erledigt' AND [planBereich].Status<>'Storniert' AND [planBereich].Status<>'Erfolglos') "
                 End Select
 
                 Dim lstSelectedCategories As New System.Collections.Generic.List(Of String)()
@@ -1125,6 +1137,8 @@ Public Class contPlanungDataBereich
                             compPlanWork.updatePlanBereichStatus(cSelAppActuell.rPlanBereichSel.ID, "Storniert")
                         ElseIf typAction = eTypAction.Erledigen Then
                             compPlanWork.updatePlanBereichStatus(cSelAppActuell.rPlanBereichSel.ID, "Erledigt")
+                        ElseIf typAction = eTypAction.ErfolglosErledigen Then
+                            compPlanWork.updatePlanBereichStatus(cSelAppActuell.rPlanBereichSel.ID, "Erfolglos")
                         End If
                     Next
 
@@ -1347,4 +1361,15 @@ Public Class contPlanungDataBereich
         End Try
     End Sub
 
+    Private Sub TermineErfolglosErledigenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TermineErfolglosErledigenToolStripMenuItem.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.doAction(eTypAction.ErfolglosErledigen, True)
+
+        Catch ex As Exception
+            gen.GetEcxeptionGeneral(ex)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
 End Class

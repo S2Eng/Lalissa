@@ -130,7 +130,7 @@
     <value>1019, 17</value>
   </metadata>
   <metadata name="UltraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1187, 17</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>90</value>
@@ -153,18 +153,18 @@
     <value>889, 17</value>
   </metadata>
   <metadata name="uPopupContCategories.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1361, 17</value>
+    <value>191, 56</value>
   </metadata>
   <metadata name="uPopUpContBenutzer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1539, 17</value>
+    <value>369, 56</value>
   </metadata>
   <metadata name="uPopUpContPatienten.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>539, 56</value>
   </metadata>
   <metadata name="uPopUpContTextvorlagen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>190, 56</value>
+    <value>712, 56</value>
   </metadata>
   <metadata name="uPopUpContAnhänge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>382, 56</value>
+    <value>904, 56</value>
   </metadata>
 </root>

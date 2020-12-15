@@ -731,9 +731,9 @@ namespace PMDS.Print
                                     string lstCategories, string Quickbutton)
         {
             try
-            {
-                //dsTermine.WriteXml(ENV.pathConfig + "\\dsTermineBereich.xml", XmlWriteMode.WriteSchema);
-                //dsTermine.WriteXmlSchema(ENV.pathConfig + "\\dsTermineBereich.xsd");
+            {                
+                dsTermine.WriteXml(ENV.pathConfig + "\\dsTermineBereich.xml", XmlWriteMode.WriteSchema);
+                dsTermine.WriteXmlSchema(ENV.pathConfig + "\\dsTermineBereich.xsd");
                 //return;
 
                 ReportDocument rpt = new ReportDocument();
