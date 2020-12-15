@@ -978,6 +978,7 @@ Public Class frmNachrichtBereich
         '
         Appearance4.BackColor = System.Drawing.Color.White
         Appearance4.BackColorDisabled = System.Drawing.Color.White
+        Appearance4.FontData.SizeInPoints = 10.0!
         Me.txtBody.Appearance = Appearance4
         Me.txtBody.BackColor = System.Drawing.Color.White
         Me.txtBody.Dock = System.Windows.Forms.DockStyle.Fill

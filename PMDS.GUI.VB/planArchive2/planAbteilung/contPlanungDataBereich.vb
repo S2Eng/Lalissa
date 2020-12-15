@@ -166,6 +166,7 @@ Public Class contPlanungDataBereich
         Dim ValueList2 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(368799640)
         Dim ValueList3 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(64791755)
         Dim ValueList4 As Infragistics.Win.ValueList = New Infragistics.Win.ValueList(82828532)
+        Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ContextMenuStripNeu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TermineErledigenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TermineStornierenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -282,7 +283,7 @@ Public Class contPlanungDataBereich
         Me.PanelAnzeige.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelAnzeige.Location = New System.Drawing.Point(0, 0)
         Me.PanelAnzeige.Name = "PanelAnzeige"
-        Me.PanelAnzeige.Size = New System.Drawing.Size(843, 226)
+        Me.PanelAnzeige.Size = New System.Drawing.Size(843, 420)
         Me.PanelAnzeige.TabIndex = 392
         '
         'gridPlans
@@ -439,7 +440,7 @@ Public Class contPlanungDataBereich
         Me.gridPlans.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gridPlans.Location = New System.Drawing.Point(0, 0)
         Me.gridPlans.Name = "gridPlans"
-        Me.gridPlans.Size = New System.Drawing.Size(843, 226)
+        Me.gridPlans.Size = New System.Drawing.Size(843, 420)
         Me.gridPlans.TabIndex = 0
         '
         'DsPlanSearch1
@@ -487,17 +488,19 @@ Public Class contPlanungDataBereich
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.Color.White
         Me.SplitContainer1.Panel2.Controls.Add(Me.txtBody)
         Me.SplitContainer1.Size = New System.Drawing.Size(843, 550)
-        Me.SplitContainer1.SplitterDistance = 226
+        Me.SplitContainer1.SplitterDistance = 420
         Me.SplitContainer1.SplitterWidth = 5
         Me.SplitContainer1.TabIndex = 394
         '
         'txtBody
         '
+        Appearance7.FontData.SizeInPoints = 10.0!
+        Me.txtBody.Appearance = Appearance7
         Me.txtBody.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtBody.Location = New System.Drawing.Point(0, 0)
         Me.txtBody.Multiline = True
         Me.txtBody.Name = "txtBody"
-        Me.txtBody.Size = New System.Drawing.Size(843, 319)
+        Me.txtBody.Size = New System.Drawing.Size(843, 125)
         Me.txtBody.TabIndex = 1
         '
         'uPrintDocument1

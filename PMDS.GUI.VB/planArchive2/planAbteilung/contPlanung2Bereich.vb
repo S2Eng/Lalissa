@@ -163,7 +163,7 @@ Public Class contPlanung2Bereich
         Appearance2.TextHAlignAsString = "Left"
         Me.dropDownAbteilungBereiche.Appearance = Appearance2
         Me.dropDownAbteilungBereiche.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
-        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(246, 97)
+        Me.dropDownAbteilungBereiche.Location = New System.Drawing.Point(282, 97)
         Me.dropDownAbteilungBereiche.Name = "dropDownAbteilungBereiche"
         Me.dropDownAbteilungBereiche.Size = New System.Drawing.Size(165, 24)
         Me.dropDownAbteilungBereiche.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
@@ -180,7 +180,7 @@ Public Class contPlanung2Bereich
         Me.dropDownBerufsgruppen.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Flat
         Me.dropDownBerufsgruppen.Location = New System.Drawing.Point(125, 97)
         Me.dropDownBerufsgruppen.Name = "dropDownBerufsgruppen"
-        Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(116, 24)
+        Me.dropDownBerufsgruppen.Size = New System.Drawing.Size(154, 24)
         Me.dropDownBerufsgruppen.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly
         Me.dropDownBerufsgruppen.TabIndex = 1005
         Me.dropDownBerufsgruppen.TabStop = False
@@ -852,6 +852,7 @@ Public Class contPlanung2Bereich
         Try
             Me.Cursor = Cursors.WaitCursor
             Me.contSelectSelListCategories.setLabelCount2()
+            Me.ContPlanungDataBereich1.search(False, True, True)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -877,6 +878,7 @@ Public Class contPlanung2Bereich
             Me.Cursor = Cursors.WaitCursor
 
             If Me.UDateVon.Visible And Me.initFormDone Then
+                Me.ContPlanungDataBereich1.search(False, False, True)
             End If
 
         Catch ex As Exception
@@ -890,6 +892,7 @@ Public Class contPlanung2Bereich
             Me.Cursor = Cursors.WaitCursor
 
             If Me.UDateBis.Visible And Me.initFormDone Then
+                Me.ContPlanungDataBereich1.search(False, False, True)
             End If
 
         Catch ex As Exception
@@ -903,7 +906,7 @@ Public Class contPlanung2Bereich
         Try
             Me.Cursor = Cursors.WaitCursor
             If Me.txtBetreff2.Focused Then
-                'Me.ContPlanung1.search(False, False, True, False)
+                Me.ContPlanungDataBereich1.search(False, False, True)
             End If
 
         Catch ex As Exception
@@ -917,7 +920,7 @@ Public Class contPlanung2Bereich
         Try
             Me.Cursor = Cursors.WaitCursor
             If Me.optStatus.Focused Then
-                'Me.ContPlanung1.search(False, False, True, False)
+                Me.ContPlanungDataBereich1.search(False, False, True)
             End If
 
         Catch ex As Exception
@@ -977,6 +980,7 @@ Public Class contPlanung2Bereich
         Try
             Me.Cursor = Cursors.WaitCursor
             Me.contSelectAbtBereiche.setLabelCount2()
+            Me.ContPlanungDataBereich1.search(False, True, True)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
@@ -988,6 +992,7 @@ Public Class contPlanung2Bereich
         Try
             Me.Cursor = Cursors.WaitCursor
             Me.contSelectSelListBerufsgruppen.setLabelCount2()
+            Me.ContPlanungDataBereich1.search(False, True, True)
 
         Catch ex As Exception
             gen.GetEcxeptionGeneral(ex)
