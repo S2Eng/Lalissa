@@ -231,7 +231,7 @@ Public Class contPlanungData
         Dim UltraGridColumn93 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDUserAccount")
         Dim UltraGridColumn94 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("MailFrom")
         Dim UltraGridColumn95 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("readed")
-        Dim UltraGridColumn96 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("empfangenAm", -1, Nothing, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, False)
+        Dim UltraGridColumn96 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("empfangenAm")
         Dim UltraGridColumn97 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("MessageId")
         Dim UltraGridColumn98 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("anzAnhänge", -1, 368799640)
         Dim UltraGridColumn99 As Infragistics.Win.UltraWinGrid.UltraGridColumn = New Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPlanMain")
@@ -367,7 +367,7 @@ Public Class contPlanungData
         'UltraTabPageControlMonat
         '
         Me.UltraTabPageControlMonat.Controls.Add(Me.ultraMonth)
-        Me.UltraTabPageControlMonat.Location = New System.Drawing.Point(0, 0)
+        Me.UltraTabPageControlMonat.Location = New System.Drawing.Point(-10000, -10000)
         Me.UltraTabPageControlMonat.Name = "UltraTabPageControlMonat"
         Me.UltraTabPageControlMonat.Size = New System.Drawing.Size(695, 226)
         '
@@ -397,7 +397,7 @@ Public Class contPlanungData
         Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenToolStripMenuItem, Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.ToolStripSeparator1, Me.TermineErfolglosErledigenToolStripMenuItem, Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem, Me.ToolStripSeparator2, Me.TermineStornierenToolStripMenuItem, Me.EMailsSendenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
         Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
-        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(342, 326)
+        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(342, 304)
         '
         'TermineErledigenToolStripMenuItem
         '
@@ -556,7 +556,7 @@ Public Class contPlanungData
         'UTabPageGrid
         '
         Me.UTabPageGrid.Controls.Add(Me.gridPlans)
-        Me.UTabPageGrid.Location = New System.Drawing.Point(-10000, -10000)
+        Me.UTabPageGrid.Location = New System.Drawing.Point(0, 0)
         Me.UTabPageGrid.Name = "UTabPageGrid"
         Me.UTabPageGrid.Size = New System.Drawing.Size(695, 226)
         '
@@ -1412,6 +1412,7 @@ Public Class contPlanungData
             Dim colWidth_BeginntAm As Integer = 120
             Dim colWidth_Betreff As Integer = 260
             Dim colWidth_Category As Integer = 280
+            Dim colWidth_Status As Integer = 120
 
             If LayoutGrid = eLayoutGrid.PatientsBeginn Then
                 Me.gridPlans.DisplayLayout.ViewStyleBand = ViewStyleBand.OutlookGroupBy
@@ -1439,6 +1440,12 @@ Public Class contPlanungData
                 Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.CategoryColumn.ColumnName).Width = colWidth_Category
                 Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.CategoryColumn.ColumnName).Style = UltraWinGrid.ColumnStyle.Default
                 Me.gridPlans.DisplayLayout.Bands(0).SortedColumns.Add(Me.DsPlanSearch1.plan.CategoryColumn.ColumnName, False, False)
+
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Hidden = False
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Header.VisiblePosition = 4
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Width = colWidth_Status
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Style = UltraWinGrid.ColumnStyle.Default
+                Me.gridPlans.DisplayLayout.Bands(0).SortedColumns.Add(Me.DsPlanSearch1.plan.StatusColumn.ColumnName, False, False)
 
 
             ElseIf LayoutGrid = eLayoutGrid.PatientsKategorie Then
@@ -1468,6 +1475,12 @@ Public Class contPlanungData
                 Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.BetreffColumn.ColumnName).Style = UltraWinGrid.ColumnStyle.Default
                 Me.gridPlans.DisplayLayout.Bands(0).SortedColumns.Add(Me.DsPlanSearch1.plan.BetreffColumn.ColumnName, False, False)
 
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Hidden = False
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Header.VisiblePosition = 4
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Width = colWidth_Status
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Style = UltraWinGrid.ColumnStyle.Default
+                Me.gridPlans.DisplayLayout.Bands(0).SortedColumns.Add(Me.DsPlanSearch1.plan.StatusColumn.ColumnName, False, False)
+
 
             ElseIf LayoutGrid = eLayoutGrid.KategoriePatient Then
                 Me.gridPlans.DisplayLayout.ViewStyleBand = ViewStyleBand.OutlookGroupBy
@@ -1495,6 +1508,12 @@ Public Class contPlanungData
                 Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.BetreffColumn.ColumnName).Width = colWidth_Betreff
                 Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.BetreffColumn.ColumnName).Style = UltraWinGrid.ColumnStyle.Default
                 Me.gridPlans.DisplayLayout.Bands(0).SortedColumns.Add(Me.DsPlanSearch1.plan.BetreffColumn.ColumnName, False, False)
+
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Hidden = False
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Header.VisiblePosition = 4
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Width = colWidth_Status
+                Me.gridPlans.DisplayLayout.Bands(0).Columns(Me.DsPlanSearch1.plan.StatusColumn.ColumnName).Style = UltraWinGrid.ColumnStyle.Default
+                Me.gridPlans.DisplayLayout.Bands(0).SortedColumns.Add(Me.DsPlanSearch1.plan.StatusColumn.ColumnName, False, False)
 
 
                 'ElseIf LayoutGrid = eLayoutGrid.Beginn Then

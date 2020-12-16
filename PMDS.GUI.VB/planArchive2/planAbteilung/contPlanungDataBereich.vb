@@ -212,7 +212,7 @@ Public Class contPlanungDataBereich
         Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenToolStripMenuItem, Me.TermineErfolglosErledigenToolStripMenuItem, Me.TermineStornierenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem})
         Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
-        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(226, 198)
+        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(226, 176)
         '
         'TermineErledigenToolStripMenuItem
         '
