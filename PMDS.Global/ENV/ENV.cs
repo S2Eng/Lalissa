@@ -191,6 +191,10 @@ namespace PMDS.Global
         public static uint WundverlaufModifyTime = 24;
         public static uint WundtherapieModifyTime = 24;
 
+        public static bool ActivateKliententermine = false;
+        public static bool ActivateBereichstermine = false;
+
+
         private static ResourceManager _resources;
 
         public static int ELGAStatusGreen = 240;
@@ -1458,7 +1462,10 @@ namespace PMDS.Global
                 SetENVValue("RezeptUseErstattungscode", ref ENV.RezeptUseErstattungscode, "0");
                 SetENVValue("MedVerabreichenDefault", ref ENV.MedVerabreichenDefault);
                 SetENVValue("SavePflegebegleitschreibenToArchiv", ref ENV.SavePflegebegleitschreibenToArchiv, "0");
-                
+
+                SetENVValue("ActivateKliententermine", ref ENV.ActivateKliententermine);
+                SetENVValue("ActivateBereichstermine", ref ENV.ActivateBereichstermine);
+
                 SetENVValue("WCFServiceOnOff", ref ENV.WCFServiceOnOff);
                 SetENVValue("WCFServiceDebugMode", ref ENV.WCFServiceDebugMode);
                 SetENVValue("WCFServiceOnlyLocal", ref ENV.WCFServiceOnlyLocal);

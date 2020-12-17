@@ -671,7 +671,7 @@ namespace PMDS.GUI
             this.btnTermineBereich.ShowOutline = false;
             this.btnTermineBereich.Size = new System.Drawing.Size(104, 68);
             this.btnTermineBereich.TabIndex = 11;
-            this.btnTermineBereich.Text = "Termine Bereich";
+            this.btnTermineBereich.Text = "Bereichs-Termine";
             this.btnTermineBereich.UseAppStyling = false;
             this.btnTermineBereich.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnTermineBereich.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
