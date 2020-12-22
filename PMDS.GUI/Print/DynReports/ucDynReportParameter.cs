@@ -288,7 +288,7 @@ namespace PMDS.GUI
                                     where p.ID == ENV.CurrentIDPatient
                                     select new
                                     { p.ID, p.Nachname, p.Vorname }
-                                   ).First();
+                                   ).FirstOrDefault();
 
                     Application.UseWaitCursor = false;
                     string ReportNameProt = System.IO.Path.GetFileName(ReportFile.Trim());
@@ -377,7 +377,7 @@ namespace PMDS.GUI
                     }
 
                     PMDS.db.Entities.Benutzer rUserLoggedIn = this.b.LogggedOnUser(db);
-                    string UserName = rUserLoggedIn.Nachname.Trim() + " " + rUserLoggedIn.Vorname.Trim() + " (" + rUserLoggedIn.Benutzer1.Trim() + ")"; ;
+                    string UserName = rUserLoggedIn.Nachname.Trim() + " " + rUserLoggedIn.Vorname.Trim() + " (" + rUserLoggedIn.Benutzer1.Trim() + ")";
 
                     string sParms = "";
                     foreach (PMDS.Print.CR.BerichtParameter par in lPars)

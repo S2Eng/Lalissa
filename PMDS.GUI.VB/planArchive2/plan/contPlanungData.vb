@@ -367,7 +367,7 @@ Public Class contPlanungData
         'UltraTabPageControlMonat
         '
         Me.UltraTabPageControlMonat.Controls.Add(Me.ultraMonth)
-        Me.UltraTabPageControlMonat.Location = New System.Drawing.Point(-10000, -10000)
+        Me.UltraTabPageControlMonat.Location = New System.Drawing.Point(0, 0)
         Me.UltraTabPageControlMonat.Name = "UltraTabPageControlMonat"
         Me.UltraTabPageControlMonat.Size = New System.Drawing.Size(695, 226)
         '
@@ -556,7 +556,7 @@ Public Class contPlanungData
         'UTabPageGrid
         '
         Me.UTabPageGrid.Controls.Add(Me.gridPlans)
-        Me.UTabPageGrid.Location = New System.Drawing.Point(0, 0)
+        Me.UTabPageGrid.Location = New System.Drawing.Point(-10000, -10000)
         Me.UTabPageGrid.Name = "UTabPageGrid"
         Me.UTabPageGrid.Size = New System.Drawing.Size(695, 226)
         '

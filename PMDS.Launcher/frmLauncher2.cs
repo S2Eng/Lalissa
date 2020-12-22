@@ -9,7 +9,6 @@ using System.Drawing.Drawing2D;
 using System.Diagnostics;
 
 using System.Runtime.InteropServices;
-using System.Diagnostics;
 using Microsoft.Win32;
 using System.IO;
 

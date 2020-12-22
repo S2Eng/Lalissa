@@ -903,7 +903,7 @@ Public Class contPlanung2
         '
         Me.ContextMenuTree.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PosteingangsServerToolStripMenuItem})
         Me.ContextMenuTree.Name = "ContextMenuTree"
-        Me.ContextMenuTree.Size = New System.Drawing.Size(340, 48)
+        Me.ContextMenuTree.Size = New System.Drawing.Size(340, 26)
         '
         'PosteingangsServerToolStripMenuItem
         '

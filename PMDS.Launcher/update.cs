@@ -498,8 +498,7 @@ namespace Launcher
                 {
 
                     string LastDir = new DirectoryInfo(SubFolder).Name.Trim().ToLower();
-                    if (!LastDir.Equals("log")
-                         && !LastDir.Equals("hag_zertifikat"))
+                    if (!LastDir.Equals("log") && !LastDir.Equals("hag_zertifikat"))
                     {
                         string FolderToTmpSub = System.IO.Path.Combine(FolderToTmp, LastDir);
                         this.copyFolder_rek(SubFolder, ref FolderToTmpSub, ref iCounterCopySuccessfull, ref iCounterCopyError);
