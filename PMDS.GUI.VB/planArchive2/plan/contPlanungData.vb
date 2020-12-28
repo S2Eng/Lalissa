@@ -397,7 +397,7 @@ Public Class contPlanungData
         Me.ContextMenuStripNeu.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.ContextMenuStripNeu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TermineErledigenToolStripMenuItem, Me.TermineErledigenUndDekursSchreibenToolStripMenuItem, Me.ToolStripSeparator1, Me.TermineErfolglosErledigenToolStripMenuItem, Me.TermineErfolglosErledigenUndDekursErstellenToolStripMenuItem, Me.ToolStripSeparator2, Me.TermineStornierenToolStripMenuItem, Me.EMailsSendenToolStripMenuItem, Me.ToolStripMenuItem3, Me.LöschenToolStripMenuItem1, Me.ToolStripMenuItemSpace1, Me.AllesAuswählenToolStripMenuItem, Me.KeineAuswahälenToolStripMenuItem, Me.ToolStripMenuItemSpace4, Me.FilterToolStripMenuItem, Me.OpenSqlCommandToolStripMenuItem, Me.ToolStripMenuItem1, Me.ListeLeerenToolStripMenuItem})
         Me.ContextMenuStripNeu.Name = "ContextMenuStripNeu"
-        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(342, 304)
+        Me.ContextMenuStripNeu.Size = New System.Drawing.Size(342, 326)
         '
         'TermineErledigenToolStripMenuItem
         '

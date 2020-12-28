@@ -2506,8 +2506,8 @@ namespace PMDS.Global
         Aufnahme = 5,		                                // Patienten aufnehmen
         [Description("Klienten beurlauben")]
         Urlaube = 6,                                        // Patienten beurlauben (Abwesenheit)
-        [Description("Pflegeplan ändern")]
-        BerichteParameterBearbeiten = 9,		            // Pflegeplan ändern
+        [Description("Berichtsparameter ändern")]
+        BerichteParameterBearbeiten = 9,		            // Berichtsparameter ändern
         [Description("Maßnahmen abzeichnen")]
         Rueckmelden = 10,		                            // Maßnahmen rückmelden
         [Description("Bezugspersonen ändern")]

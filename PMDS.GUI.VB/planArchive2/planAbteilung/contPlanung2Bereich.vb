@@ -653,8 +653,9 @@ Public Class contPlanung2Bereich
             Me.hasRightToEdit = PMDS.Global.ENV.HasRight([Global].UserRights.PflegePlanungAendern)
             If Not Me.hasRightToEdit Then
                 Me.btnAdd2.Visible = False
+                'Me.ContPlanungDataBereich1.TermineErledigenToolStripMenuItem.Visible = False
+                'Me.ContPlanungDataBereich1.TermineErfolglosErledigenToolStripMenuItem.Visible = False
                 Me.ContPlanungDataBereich1.LöschenToolStripMenuItem1.Visible = False
-                Me.ContPlanungDataBereich1.TermineErledigenToolStripMenuItem.Visible = False
                 Me.ContPlanungDataBereich1.TermineStornierenToolStripMenuItem.Visible = False
                 Me.ContPlanungDataBereich1.ToolStripMenuItemSpace1.Visible = False
                 Me.ContPlanungDataBereich1.ToolStripMenuItem3.Visible = False
