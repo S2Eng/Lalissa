@@ -206,6 +206,7 @@ namespace WCFServicePMDS
             }
             catch (Exception ex)
             {
+                return false;
                 throw new Exception("WCFServicePMDS.EMail.sendEMailSmtp: " + ex.ToString());
             }
         }

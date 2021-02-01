@@ -120,60 +120,56 @@
   <metadata name="daPatientKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>
-  <metadata name="oleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDbDeletePatientKostentraeger.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="oleDbDeleteCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="oleDbDeletePatientKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="oleDbDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDbDeletePatientKostentraeger.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="oleDbDeleteCommand1.CommandText" xml:space="preserve">
-    <value>DELETE FROM [PatientKostentraeger] WHERE (([ID] = ?) AND ([IDPatient] = ?) AND ([IDKostentraeger] = ?) AND ([GueltigAb] = ?) AND ((? = 1 AND [GueltigBis] IS NULL) OR ([GueltigBis] = ?)) AND ([enumKostentraegerart] = ?) AND ([BetragErrechnetJN] = ?) AND ((? = 1 AND [Betrag] IS NULL) OR ([Betrag] = ?)) AND ((? = 1 AND [ErfasstAm] IS NULL) OR ([ErfasstAm] = ?)) AND ((? = 1 AND [IDBenutzer] IS NULL) OR ([IDBenutzer] = ?)) AND ((? = 1 AND [AbgerechnetBis] IS NULL) OR ([AbgerechnetBis] = ?)) AND ([VorauszahlungJN] = ?) AND ([RechnungJN] = ?) AND ([RechnungTyp] = ?))</value>
-  </data>
   <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
   </metadata>
-  <metadata name="oleDbInsertCommand.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDbInsertPatientKostentraeger.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="oleDbInsertCommand.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="oleDbInsertPatientKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="oleDbInsertCommand.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDbInsertPatientKostentraeger.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="oleDbInsertCommand.CommandText" xml:space="preserve">
-    <value>INSERT INTO [PatientKostentraeger] ([ID], [IDPatient], [IDKostentraeger], [GueltigAb], [GueltigBis], [enumKostentraegerart], [BetragErrechnetJN], [Betrag], [ErfasstAm], [IDBenutzer], [AbgerechnetBis], [VorauszahlungJN], [RechnungJN], [RechnungTyp]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+  <data name="oleDbInsertPatientKostentraeger.CommandText" xml:space="preserve">
+    <value>INSERT INTO [PatientKostentraeger] ([ID], [IDPatient], [IDKostentraeger], [GueltigAb], [GueltigBis], [enumKostentraegerart], [BetragErrechnetJN], [Betrag], [ErfasstAm], [IDBenutzer], [AbgerechnetBis], [VorauszahlungJN], [RechnungJN], [RechnungTyp], [IDPatientIstZahler]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
   </data>
-  <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDbSelectPatientKostentraeger.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="oleDbSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="oleDbSelectPatientKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="oleDbSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDbSelectPatientKostentraeger.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
-    <value>SELECT     ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, 
-                      VorauszahlungJN, RechnungJN, RechnungTyp 
-FROM         PatientKostentraeger
-WHERE     (IDPatient = ?)
+  <data name="oleDbSelectPatientKostentraeger.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, VorauszahlungJN, RechnungJN, RechnungTyp, IDPatientIstZahler
+FROM            PatientKostentraeger
+WHERE        (IDPatient = ?)
 ORDER BY GueltigAb</value>
   </data>
-  <metadata name="oleDbUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDBUpdatePatientKostentraeger.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="oleDbUpdateCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="oleDBUpdatePatientKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="oleDbUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="oleDBUpdatePatientKostentraeger.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="oleDbUpdateCommand1.CommandText" xml:space="preserve">
-    <value>UPDATE [PatientKostentraeger] SET [ID] = ?, [IDPatient] = ?, [IDKostentraeger] = ?, [GueltigAb] = ?, [GueltigBis] = ?, [enumKostentraegerart] = ?, [BetragErrechnetJN] = ?, [Betrag] = ?, [ErfasstAm] = ?, [IDBenutzer] = ?, [AbgerechnetBis] = ?, [VorauszahlungJN] = ?, [RechnungJN] = ?, [RechnungTyp] = ? WHERE (([ID] = ?) AND ([IDPatient] = ?) AND ([IDKostentraeger] = ?) AND ([GueltigAb] = ?) AND ((? = 1 AND [GueltigBis] IS NULL) OR ([GueltigBis] = ?)) AND ([enumKostentraegerart] = ?) AND ([BetragErrechnetJN] = ?) AND ((? = 1 AND [Betrag] IS NULL) OR ([Betrag] = ?)) AND ((? = 1 AND [ErfasstAm] IS NULL) OR ([ErfasstAm] = ?)) AND ((? = 1 AND [IDBenutzer] IS NULL) OR ([IDBenutzer] = ?)) AND ((? = 1 AND [AbgerechnetBis] IS NULL) OR ([AbgerechnetBis] = ?)) AND ([VorauszahlungJN] = ?) AND ([RechnungJN] = ?) AND ([RechnungTyp] = ?))</value>
+  <data name="oleDBUpdatePatientKostentraeger.CommandText" xml:space="preserve">
+    <value>UPDATE [PatientKostentraeger] SET [ID] = ?, [IDPatient] = ?, [IDKostentraeger] = ?, [GueltigAb] = ?, [GueltigBis] = ?, [enumKostentraegerart] = ?, [BetragErrechnetJN] = ?, [Betrag] = ?, [ErfasstAm] = ?, [IDBenutzer] = ?, [AbgerechnetBis] = ?, [VorauszahlungJN] = ?, [RechnungJN] = ?, [RechnungTyp] = ?, [IDPatientIstZahler] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daPatientKostentraegerByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 134</value>
@@ -469,7 +465,7 @@ ORDER BY Name</value>
     <value>False</value>
   </metadata>
   <metadata name="oleDbCommand19.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>796, 556</value>
+    <value>17, 17</value>
   </metadata>
   <metadata name="oleDbCommand19.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>

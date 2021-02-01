@@ -24,9 +24,9 @@ namespace PMDS.Calc.Admin.DB
 	{
 		private System.Data.OleDb.OleDbDataAdapter daPatientKostentraeger;
 		private System.Data.OleDb.OleDbConnection oleDbConnection1;
-        private System.Data.OleDb.OleDbCommand oleDbSelectCommand1;
-		private System.Data.OleDb.OleDbCommand oleDbUpdateCommand1;
-		private System.Data.OleDb.OleDbCommand oleDbDeleteCommand1;
+        private System.Data.OleDb.OleDbCommand oleDbSelectPatientKostentraeger;
+		private System.Data.OleDb.OleDbCommand oleDBUpdatePatientKostentraeger;
+		private System.Data.OleDb.OleDbCommand oleDbDeletePatientKostentraeger;
         private System.Data.OleDb.OleDbDataAdapter daPatientKostentraegerByID;
         private System.Data.OleDb.OleDbCommand oleDbCommand3;
         private System.Data.OleDb.OleDbDataAdapter daByKostentraeger;
@@ -47,7 +47,7 @@ namespace PMDS.Calc.Admin.DB
         private OleDbCommand oleDbCommand9;
         private OleDbDataAdapter daKlientenAlleSelbstzahler;
         private OleDbCommand oleDbCommand11;
-        private OleDbCommand oleDbInsertCommand;
+        private OleDbCommand oleDbInsertPatientKostentraeger;
         private OleDbDataAdapter daPatKostenträgerGültigBis;
         private OleDbCommand oleDbCommand1;
         private OleDbCommand oleDbCommand13;
@@ -72,11 +72,11 @@ namespace PMDS.Calc.Admin.DB
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DBPatientKostentraeger));
             this.daPatientKostentraeger = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbDeleteCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbDeletePatientKostentraeger = new System.Data.OleDb.OleDbCommand();
             this.oleDbConnection1 = new System.Data.OleDb.OleDbConnection();
-            this.oleDbInsertCommand = new System.Data.OleDb.OleDbCommand();
-            this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
-            this.oleDbUpdateCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.oleDbInsertPatientKostentraeger = new System.Data.OleDb.OleDbCommand();
+            this.oleDbSelectPatientKostentraeger = new System.Data.OleDb.OleDbCommand();
+            this.oleDBUpdatePatientKostentraeger = new System.Data.OleDb.OleDbCommand();
             this.daPatientKostentraegerByID = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand3 = new System.Data.OleDb.OleDbCommand();
             this.daByKostentraeger = new System.Data.OleDb.OleDbDataAdapter();
@@ -112,9 +112,9 @@ namespace PMDS.Calc.Admin.DB
             // 
             // daPatientKostentraeger
             // 
-            this.daPatientKostentraeger.DeleteCommand = this.oleDbDeleteCommand1;
-            this.daPatientKostentraeger.InsertCommand = this.oleDbInsertCommand;
-            this.daPatientKostentraeger.SelectCommand = this.oleDbSelectCommand1;
+            this.daPatientKostentraeger.DeleteCommand = this.oleDbDeletePatientKostentraeger;
+            this.daPatientKostentraeger.InsertCommand = this.oleDbInsertPatientKostentraeger;
+            this.daPatientKostentraeger.SelectCommand = this.oleDbSelectPatientKostentraeger;
             this.daPatientKostentraeger.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
             new System.Data.Common.DataTableMapping("Table", "PatientKostentraeger", new System.Data.Common.DataColumnMapping[] {
                         new System.Data.Common.DataColumnMapping("ID", "ID"),
@@ -130,103 +130,71 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("AbgerechnetBis", "AbgerechnetBis"),
                         new System.Data.Common.DataColumnMapping("VorauszahlungJN", "VorauszahlungJN"),
                         new System.Data.Common.DataColumnMapping("RechnungJN", "RechnungJN"),
-                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp")})});
-            this.daPatientKostentraeger.UpdateCommand = this.oleDbUpdateCommand1;
+                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler")})});
+            this.daPatientKostentraeger.UpdateCommand = this.oleDBUpdatePatientKostentraeger;
             // 
-            // oleDbDeleteCommand1
+            // oleDbDeletePatientKostentraeger
             // 
-            this.oleDbDeleteCommand1.CommandText = resources.GetString("oleDbDeleteCommand1.CommandText");
-            this.oleDbDeleteCommand1.Connection = this.oleDbConnection1;
-            this.oleDbDeleteCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDPatient", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDPatient", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDKostentraeger", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDKostentraeger", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_GueltigAb", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "GueltigAb", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_GueltigBis", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GueltigBis", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_GueltigBis", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "GueltigBis", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_enumKostentraegerart", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "enumKostentraegerart", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_BetragErrechnetJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "BetragErrechnetJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Betrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Betrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Betrag", System.Data.OleDb.OleDbType.Double, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Betrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_ErfasstAm", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ErfasstAm", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_ErfasstAm", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ErfasstAm", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDBenutzer", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_AbgerechnetBis", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AbgerechnetBis", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_AbgerechnetBis", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "AbgerechnetBis", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_VorauszahlungJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "VorauszahlungJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_RechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "RechnungJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "RechnungTyp", System.Data.DataRowVersion.Original, null)});
+            this.oleDbDeletePatientKostentraeger.CommandText = "DELETE FROM [PatientKostentraeger] WHERE (([ID] = ?))";
+            this.oleDbDeletePatientKostentraeger.Connection = this.oleDbConnection1;
+            this.oleDbDeletePatientKostentraeger.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Integrated Security=SSPI;Initial Catalog" +
+    "=PMDSDev";
             // 
-            // oleDbInsertCommand
+            // oleDbInsertPatientKostentraeger
             // 
-            this.oleDbInsertCommand.CommandText = resources.GetString("oleDbInsertCommand.CommandText");
-            this.oleDbInsertCommand.Connection = this.oleDbConnection1;
-            this.oleDbInsertCommand.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            this.oleDbInsertPatientKostentraeger.CommandText = resources.GetString("oleDbInsertPatientKostentraeger.CommandText");
+            this.oleDbInsertPatientKostentraeger.Connection = this.oleDbConnection1;
+            this.oleDbInsertPatientKostentraeger.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
             new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
             new System.Data.OleDb.OleDbParameter("IDKostentraeger", System.Data.OleDb.OleDbType.Guid, 0, "IDKostentraeger"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.Date, 16, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 16, "GueltigBis"),
+            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigAb"),
+            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigBis"),
             new System.Data.OleDb.OleDbParameter("enumKostentraegerart", System.Data.OleDb.OleDbType.Integer, 0, "enumKostentraegerart"),
             new System.Data.OleDb.OleDbParameter("BetragErrechnetJN", System.Data.OleDb.OleDbType.Boolean, 0, "BetragErrechnetJN"),
-            new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Double, 0, "Betrag"),
-            new System.Data.OleDb.OleDbParameter("ErfasstAm", System.Data.OleDb.OleDbType.Date, 16, "ErfasstAm"),
+            new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Betrag", System.Data.DataRowVersion.Current, null),
+            new System.Data.OleDb.OleDbParameter("ErfasstAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ErfasstAm"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
-            new System.Data.OleDb.OleDbParameter("AbgerechnetBis", System.Data.OleDb.OleDbType.Date, 16, "AbgerechnetBis"),
-            new System.Data.OleDb.OleDbParameter("VorauszahlungJN", System.Data.OleDb.OleDbType.Boolean, 0, "VorauszahlungJN"),
-            new System.Data.OleDb.OleDbParameter("RechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "RechnungJN"),
-            new System.Data.OleDb.OleDbParameter("RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungTyp")});
-            // 
-            // oleDbSelectCommand1
-            // 
-            this.oleDbSelectCommand1.CommandText = resources.GetString("oleDbSelectCommand1.CommandText");
-            this.oleDbSelectCommand1.Connection = this.oleDbConnection1;
-            this.oleDbSelectCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient")});
-            // 
-            // oleDbUpdateCommand1
-            // 
-            this.oleDbUpdateCommand1.CommandText = resources.GetString("oleDbUpdateCommand1.CommandText");
-            this.oleDbUpdateCommand1.Connection = this.oleDbConnection1;
-            this.oleDbUpdateCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
-            new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
-            new System.Data.OleDb.OleDbParameter("IDKostentraeger", System.Data.OleDb.OleDbType.Guid, 0, "IDKostentraeger"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.Date, 16, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 16, "GueltigBis"),
-            new System.Data.OleDb.OleDbParameter("enumKostentraegerart", System.Data.OleDb.OleDbType.Integer, 0, "enumKostentraegerart"),
-            new System.Data.OleDb.OleDbParameter("BetragErrechnetJN", System.Data.OleDb.OleDbType.Boolean, 0, "BetragErrechnetJN"),
-            new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Double, 0, "Betrag"),
-            new System.Data.OleDb.OleDbParameter("ErfasstAm", System.Data.OleDb.OleDbType.Date, 16, "ErfasstAm"),
-            new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
-            new System.Data.OleDb.OleDbParameter("AbgerechnetBis", System.Data.OleDb.OleDbType.Date, 16, "AbgerechnetBis"),
+            new System.Data.OleDb.OleDbParameter("AbgerechnetBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "AbgerechnetBis"),
             new System.Data.OleDb.OleDbParameter("VorauszahlungJN", System.Data.OleDb.OleDbType.Boolean, 0, "VorauszahlungJN"),
             new System.Data.OleDb.OleDbParameter("RechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "RechnungJN"),
             new System.Data.OleDb.OleDbParameter("RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungTyp"),
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDPatient", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDPatient", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDKostentraeger", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDKostentraeger", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_GueltigAb", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "GueltigAb", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_GueltigBis", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GueltigBis", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_GueltigBis", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "GueltigBis", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_enumKostentraegerart", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "enumKostentraegerart", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_BetragErrechnetJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "BetragErrechnetJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_Betrag", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Betrag", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_Betrag", System.Data.OleDb.OleDbType.Double, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "Betrag", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_ErfasstAm", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ErfasstAm", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_ErfasstAm", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ErfasstAm", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_IDBenutzer", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDBenutzer", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("IsNull_AbgerechnetBis", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AbgerechnetBis", System.Data.DataRowVersion.Original, true, null),
-            new System.Data.OleDb.OleDbParameter("Original_AbgerechnetBis", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "AbgerechnetBis", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_VorauszahlungJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "VorauszahlungJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_RechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "RechnungJN", System.Data.DataRowVersion.Original, null),
-            new System.Data.OleDb.OleDbParameter("Original_RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "RechnungTyp", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("IDPatientIstZahler", System.Data.OleDb.OleDbType.Guid, 0, "IDPatientIstZahler")});
+            // 
+            // oleDbSelectPatientKostentraeger
+            // 
+            this.oleDbSelectPatientKostentraeger.CommandText = resources.GetString("oleDbSelectPatientKostentraeger.CommandText");
+            this.oleDbSelectPatientKostentraeger.Connection = this.oleDbConnection1;
+            this.oleDbSelectPatientKostentraeger.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient")});
+            // 
+            // oleDBUpdatePatientKostentraeger
+            // 
+            this.oleDBUpdatePatientKostentraeger.CommandText = resources.GetString("oleDBUpdatePatientKostentraeger.CommandText");
+            this.oleDBUpdatePatientKostentraeger.Connection = this.oleDbConnection1;
+            this.oleDBUpdatePatientKostentraeger.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 0, "IDPatient"),
+            new System.Data.OleDb.OleDbParameter("IDKostentraeger", System.Data.OleDb.OleDbType.Guid, 0, "IDKostentraeger"),
+            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigAb"),
+            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "GueltigBis"),
+            new System.Data.OleDb.OleDbParameter("enumKostentraegerart", System.Data.OleDb.OleDbType.Integer, 0, "enumKostentraegerart"),
+            new System.Data.OleDb.OleDbParameter("BetragErrechnetJN", System.Data.OleDb.OleDbType.Boolean, 0, "BetragErrechnetJN"),
+            new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(10)), ((byte)(2)), "Betrag", System.Data.DataRowVersion.Current, null),
+            new System.Data.OleDb.OleDbParameter("ErfasstAm", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ErfasstAm"),
+            new System.Data.OleDb.OleDbParameter("IDBenutzer", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer"),
+            new System.Data.OleDb.OleDbParameter("AbgerechnetBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "AbgerechnetBis"),
+            new System.Data.OleDb.OleDbParameter("VorauszahlungJN", System.Data.OleDb.OleDbType.Boolean, 0, "VorauszahlungJN"),
+            new System.Data.OleDb.OleDbParameter("RechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "RechnungJN"),
+            new System.Data.OleDb.OleDbParameter("RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungTyp"),
+            new System.Data.OleDb.OleDbParameter("IDPatientIstZahler", System.Data.OleDb.OleDbType.Guid, 0, "IDPatientIstZahler"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // daPatientKostentraegerByID
             // 

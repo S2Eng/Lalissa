@@ -191,19 +191,28 @@ namespace PMDS.Global
         public static uint WundverlaufModifyTime = 24;
         public static uint WundtherapieModifyTime = 24;
 
-        public static bool ActivateKliententermine = false;
-        public static bool ActivateBereichstermine = false;
-
+        public static bool ActivateKliententermine;
+        public static bool ActivateBereichstermine;
 
         private static ResourceManager _resources;
 
         public static int ELGAStatusGreen = 240;
         public static int ELGAStatusYellow = 30;
         public static int ELGAStatusRed = 10;
-
         public static string ELGAUser = "s2-engineering";
         public static string ELGAPwd = "KLqHC0hznj91OH0PiCIWBw==";
         public static string ELGACommunityDomain = "1.3.6.1.4.1.48288.2.990.2";     //Tiany CPID (Domäne der Tiany in ELGA)
+
+        //tian -Spielwiese
+        //public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://hnelga01.tiani-spirit.com:8181/SpiritEhrWsRemoting/EhrWSRemoting"));
+        
+        //Tiani ohne Proxy
+        //public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://10.2.13.91:8181/SpiritEhrWsRemoting/EhrWSRemoting"));
+
+        //Migrationsumgebung mit Proxy
+        public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://10.2.13.90:80/SpiritEhrWsRemoting/EhrWSRemoting"));
+        public static string ELGAUrlGDAIndex = "http://10.2.13.90:80/GdaIndexWs";
+
 
         public static int MedVerabreichenDefault = -1;
         public static bool SavePflegebegleitschreibenToArchiv = true;
@@ -1371,6 +1380,8 @@ namespace PMDS.Global
                 SetENVValue("ELGAStatusRed", ref ENV.ELGAStatusRed);
                 SetENVValue("ELGAUser", ref ENV.ELGAUser);
                 SetENVValue("ELGAPwd", ref ENV.ELGAPwd, eTrim.no, eDecrypt.QS2Mode);
+                SetENVValue("ELGAUrl", ref ELGAUrl);
+                SetENVValue("ELGAurlGDAIndex", ref ELGAUrlGDAIndex);
 
                 SetENVValue("OnlyOneFavoritenComboinPlanung", ref ENV.OnlyOneFavoritenComboinPlanung, "0");
                 SetENVValue("BezugspersonenJN", ref ENV.BezugspersonenJN);
@@ -1502,7 +1513,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+                throw new Exception("ENV.SetENVValue (bool): " + ex.ToString());
             }
         }
 
@@ -1522,13 +1533,13 @@ namespace PMDS.Global
                 else if (decr == eDecrypt.QS2Mode)
                 {
                     qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
-                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
-                    ENVVar = ELGAPwdDecrypted.Trim();
+                    string PwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    ENVVar = PwdDecrypted.Trim();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+                throw new Exception("ENV.SetENVValue (string/password): " + ex.ToString());
             }
         }
 
@@ -1542,7 +1553,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+                throw new Exception("ENV.SetENVValue (int): " + ex.ToString());
             }
         }
 
@@ -1555,7 +1566,7 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+                throw new Exception("ENV.SetENVValue (uint): " + ex.ToString());
             }
         }
 
@@ -1568,9 +1579,28 @@ namespace PMDS.Global
             }
             catch (Exception ex)
             {
-                throw new Exception("ENV.SetENVValue: " + ex.ToString());
+                throw new Exception("ENV.SetENVValue (Password): " + ex.ToString());
             }
         }
+
+        private static void SetENVValue(string sVar, ref System.ServiceModel.EndpointAddress ENVVar)
+        {
+            try
+            {
+                string uriName = _Log.ConfigFile.GetStringValue(sVar);
+                Uri uriResult;
+                bool result = Uri.TryCreate(uriName, UriKind.Absolute, out uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+                if (result)
+                {
+                    ENVVar = new System.ServiceModel.EndpointAddress(new Uri(uriName));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue (EndpointAdress): " + ex.ToString());
+            }
+        }
+
 
         private static int setLicValue(string strCheck, int intDefault, int intAdminSecure)
         {
