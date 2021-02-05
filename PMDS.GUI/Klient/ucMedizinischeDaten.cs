@@ -101,14 +101,16 @@ namespace PMDS.GUI
         {
             using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
             {
-                if (this.bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false))
-                {
-                    ucBefunde.btnSearchELGADocuments.Visible = true;
-                }
-                else
-                {
-                    ucBefunde.btnSearchELGADocuments.Visible = false;
-                }
+                ucBefunde.btnSearchELGADocuments.Visible = this.bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false);
+
+                //if (this.bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false))
+                //{
+                //    ucBefunde.btnSearchELGADocuments.Visible = true;
+                //}
+                //else
+                //{
+                //    ucBefunde.btnSearchELGADocuments.Visible = false;
+                //}
 
                 this.initControlxz();
 

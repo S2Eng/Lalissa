@@ -1072,26 +1072,23 @@ namespace PMDS.Global.db.ERSystem
 
                     using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                     {
-                        var rPatient = (from p in db.Patient
-                                        where p.ID == IDPatient
-                                        select new
-                                        {
-                                            p.ID,
-                                            p.Nachname,
-                                            p.Vorname,
-                                            p.ELGAAbgemeldet
-                                        }).First();
+                        var rKlient = (from pat in db.Patient
+                                       join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
+                                       where auf.ID == ENV.IDAUFENTHALT
+                                       select new
+                                       {
+                                           IDPatient = pat.ID,
+                                           pat.Nachname,
+                                           pat.Vorname,
+                                           pat.ELGAAbgemeldet,
+                                           IDAufenthalt = auf.ID,
+                                           auf.ELGALocalID,
+                                           auf.ELGAKontaktbestätigungJN,
+                                           auf.ELGASOOJN
+                                       }
+                              ).First();
 
-                        var rAufenthalt = (from a in db.Aufenthalt
-                                           where a.ID == IDAufenthalt
-                                           select new
-                                           {
-                                               a.ID,
-                                               a.ELGALocalID,
-                                               a.ELGAKontaktbestätigungJN,
-                                           }).First();
-
-                        if ((rPatient.ELGAAbgemeldet == null || !rPatient.ELGAAbgemeldet.Value) && rAufenthalt.ELGAKontaktbestätigungJN && rAufenthalt.ELGALocalID.Trim() != "")
+                        if ((rKlient.ELGAAbgemeldet == null || !rKlient.ELGAAbgemeldet.Value) && rKlient.ELGAKontaktbestätigungJN && !String.IsNullOrWhiteSpace(rKlient.ELGALocalID) && !rKlient.ELGASOOJN)
                         {
                             return true;
                         }

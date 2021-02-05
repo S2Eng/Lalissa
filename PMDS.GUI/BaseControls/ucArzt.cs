@@ -42,10 +42,7 @@ namespace PMDS.GUI
                 else
                 {
                     ELGABusiness bELGA = new ELGABusiness();
-                    if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
-                    {
-                        this.btnELGASearchGDA.Visible = true;
-                    }
+                    this.btnELGASearchGDA.Visible = bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true);
                 }
             }
             else

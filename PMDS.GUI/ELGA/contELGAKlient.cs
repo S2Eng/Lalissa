@@ -222,13 +222,13 @@ namespace PMDS.GUI.ELGA
                                 if (!PMDS.Global.generic.sEquals(rPatientUpdate.Nachname, frmELGASearchPatient1.contELGASearchPatient1._rSelRow.NachnameFirma))
                                 {
                                     sProtAttention += "\n\r" + QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} stimmt nicht überein: ELGA = {1}, PMDS = {2}!");
-                                    sProtAttention = string.Format(ci, sProtAttention, new List<string> { "Familienname", rPatientUpdate.Nachname, frmELGASearchPatient1.contELGASearchPatient1._rSelRow.NachnameFirma }.ToArray());
+                                    sProtAttention = string.Format(ci, sProtAttention, new List<string> { "Familienname", frmELGASearchPatient1.contELGASearchPatient1._rSelRow.NachnameFirma, rPatientUpdate.Nachname }.ToArray());
                                 }
 
                                 if (!PMDS.Global.generic.sEquals(rPatientUpdate.Vorname, frmELGASearchPatient1.contELGASearchPatient1._rSelRow.Vorname))
                                 {
                                     sProtAttention += "\n\r" + QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} stimmt nicht überein: ELGA = {1}, PMDS = {2}!");
-                                    sProtAttention = string.Format(ci, sProtAttention, new List<string> { "Vorname", rPatientUpdate.Vorname, frmELGASearchPatient1.contELGASearchPatient1._rSelRow.Vorname }.ToArray());
+                                    sProtAttention = string.Format(ci, sProtAttention, new List<string> { "Vorname", frmELGASearchPatient1.contELGASearchPatient1._rSelRow.Vorname, rPatientUpdate.Vorname }.ToArray());
                                 }
 
 

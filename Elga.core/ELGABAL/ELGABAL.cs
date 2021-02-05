@@ -877,7 +877,7 @@ namespace WCFServicePMDS
             {
                 ELGAParOutDto retDto = this.initParOut();
 
-                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort");
+                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
                 if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
                 {
@@ -989,6 +989,7 @@ namespace WCFServicePMDS
                 xdsSrcSubmitRequest.stateID = parsIn.session.ELGAStateID;
                 xdsSrcSubmitRequest.patient = ehrPatientClientDtoBack;
                 xdsSrcSubmitRequest.srcSubmission = sourceSubmission;
+                xdsSrcSubmitRequest.srcSubmission.documents[0].languageCode = "de-AT";
                 //xdsSrcSubmitRequest.createDocumentUniqueID = false;
 
                 xdsSrcSubmitRsp xdsSrcSubmitRsp1 = objWsLogin.submit(xdsSrcSubmitRequest);
