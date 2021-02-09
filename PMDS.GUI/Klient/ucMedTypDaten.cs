@@ -162,9 +162,9 @@ namespace PMDS.GUI
                         {
                             var rDocu = (from d in db2.tblDokumenteintrag
                                          where d.ID == rMedDatEf.IDDocu
-                                         select new { d.ID, d.ErstelltVon, d.ELGACreatedInPMDS, d.ELGAÜbertragen, d.ELGAÜbertragenAt, d.ELGAStorniert, d.ELGAStorniertDatum, d.ELGAStorniertUser}).First();
+                                         select new { d.ID, d.ErstelltVon, d.ELGACreatedInPMDS, d.ELGAÜbertragen, d.ELGAÜbertragenAt, d.ELGAStorniert, d.ELGAStorniertDatum, d.ELGAStorniertUser}).FirstOrDefault();
 
-                            if (rDocu.ELGACreatedInPMDS)
+                            if (rDocu != null && rDocu.ELGACreatedInPMDS)
                             {
                                 if (rDocu.ELGAÜbertragen == 1)
                                 {
@@ -172,7 +172,7 @@ namespace PMDS.GUI
                                 }
                                 else if (rDocu.ELGAÜbertragen == 0)
                                 {
-                                    rMedDaten.Handling = QS2.Desktop.ControlManagment.ControlManagment.getRes("Noch nicht gesendet");
+                                    rMedDaten.Handling = QS2.Desktop.ControlManagment.ControlManagment.getRes("Noch nicht gesendet") + ".";
                                 }
                                 if (rDocu.ELGAStorniert)
                                 {
@@ -180,6 +180,10 @@ namespace PMDS.GUI
                                 }
 
                                 rMedDaten.Bemerkung += " (" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Ersteller") + ": " + rDocu.ErstelltVon.Trim() + ")";
+                            }
+                            else if (rDocu == null)
+                            {
+                                rMedDaten.Bemerkung = QS2.Desktop.ControlManagment.ControlManagment.getRes("FEHLERHAFTER ARCHIVEINTRAG: DOKUMENT WURDE NICHT GEFUNDEN!") + "\n\r" + rMedDaten.Bemerkung;
                             }
                         }
                     }

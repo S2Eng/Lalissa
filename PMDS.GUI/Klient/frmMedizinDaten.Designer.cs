@@ -688,7 +688,7 @@
             this.btnOpenBefund.Size = new System.Drawing.Size(100, 33);
             this.btnOpenBefund.TabIndex = 70;
             this.btnOpenBefund.Tag = "";
-            this.btnOpenBefund.Text = "Befund";
+            this.btnOpenBefund.Text = "Dokument anzeigen";
             this.btnOpenBefund.Visible = false;
             this.btnOpenBefund.Click += new System.EventHandler(this.btnOpenBefund_Click);
             // 
@@ -815,7 +815,7 @@
             this.btnBefundStorno.Size = new System.Drawing.Size(122, 33);
             this.btnBefundStorno.TabIndex = 97;
             this.btnBefundStorno.Tag = "";
-            this.btnBefundStorno.Text = "Befund stornieren";
+            this.btnBefundStorno.Text = "ELGA-Dokument stornieren";
             this.btnBefundStorno.Visible = false;
             this.btnBefundStorno.Click += new System.EventHandler(this.btnBefundStorno_Click);
             // 
@@ -830,7 +830,7 @@
             this.btnBefundSend.Size = new System.Drawing.Size(122, 33);
             this.btnBefundSend.TabIndex = 98;
             this.btnBefundSend.Tag = "";
-            this.btnBefundSend.Text = "Befund senden";
+            this.btnBefundSend.Text = "ELGA-Dokument senden";
             this.btnBefundSend.Visible = false;
             this.btnBefundSend.Click += new System.EventHandler(this.btnBefundSend_Click);
             // 

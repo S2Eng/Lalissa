@@ -65,6 +65,9 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Storniert am");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Ersteller");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("FEHLERHAFTER ARCHIVEINTRAG: DOKUMENT WURDE NICHT GEFUNDEN!");
+
+
 
 
 

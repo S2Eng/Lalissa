@@ -402,18 +402,29 @@ namespace PMDS.GUI
                                             a.ELGALocalID
                                         }).FirstOrDefault();
 
-                    this.IsELGADocu = true;
-                    this.btnOpenBefund.Visible = true;
-                    this.btnBefundStorno.Visible = !rDocuEintrag.ELGAStorniert && rDocuEintrag.ELGACreatedInPMDS;
-
-                    if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
-                        (
-                            generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht) || 
-                            generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief)
-                         )
-                        )
+                    if (rDocuEintrag != null)
                     {
-                        this.btnBefundSend.Visible = true;
+                        ELGABusiness bELGA = new ELGABusiness();
+                        bool bELGAIsActive = bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true);
+
+                        this.IsELGADocu = true;
+                        this.btnOpenBefund.Visible = true;
+                        this.btnBefundStorno.Visible = bELGAIsActive && !rDocuEintrag.ELGAStorniert && rDocuEintrag.ELGACreatedInPMDS;
+
+                        if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
+                            bELGAIsActive &&
+                            (
+                                generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht) ||
+                                generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief)
+                             )
+                            )
+                        {
+                            this.btnBefundSend.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        this.btnOpenBefund.Visible = false;
                     }
                 }
             }

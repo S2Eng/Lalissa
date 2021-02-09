@@ -205,7 +205,7 @@ namespace PMDS.GUI.ELGA
                     }
 
                     Guid IDDocumenteneintrag = System.Guid.NewGuid();
-                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, this._typeFile, ref IDOrdnerArchiv, "", db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
+                    return this.bELGA.saveELGADocuToDB(ref ArchivePath, this._typeFile, ref IDOrdnerArchiv, "AUTHOR", "CREATIONTIME", "", db, ref dNow, ref WCFServiceClient1, ENV.IDAUFENTHALT,
                                                     ENV.CurrentIDPatient, null, this._ELGADocuUniqueId.Trim(), rAufenthalt.ELGALocalID.Trim(), this._DocumentName.Trim(), this._Stylesheet.Trim(),
                                                     ref IDDocumenteneintrag, true, "", true, -1);
                 }

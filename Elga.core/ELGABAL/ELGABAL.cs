@@ -1326,7 +1326,7 @@ namespace WCFServicePMDS
                                     newELGADocuments.TypeFile = sTypeFileSave.Trim();                   //this.checkFieldNull(documentClientDto1.mimeType);
                                     if (documentClientDto1.author.Count() > 0)
                                     {
-                                        newELGADocuments.Author = this.checkFieldNull(documentClientDto1.author[0].person);
+                                        newELGADocuments.Author = this.checkFieldNull(documentClientDto1.author[0].institution[0]).Split(new char[] { '^' })[0] + " - " + this.checkFieldNull(documentClientDto1.author[0].person);
                                     }
                                     newELGADocuments.Description = this.checkFieldNull(documentClientDto1.description);
                                     newELGADocuments.DocStatus = this.checkFieldNull(documentClientDto1.docStatus);
@@ -1334,7 +1334,8 @@ namespace WCFServicePMDS
                                     newELGADocuments.Size = documentClientDto1.size;
                                     if (documentClientDto1.creationTime != null && documentClientDto1.creationTime.Trim() != "")
                                     {
-                                        newELGADocuments.CreationTime = documentClientDto1.creationTime;
+                                        DateTime dtCreationTime = DateTime.ParseExact(documentClientDto1.creationTime, "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
+                                        newELGADocuments.CreationTime = dtCreationTime.ToString("dd.MM.yyyy HH:mm:ss");
                                     }
 
                                     foreach (string referenceId in documentClientDto1.referenceIdList)
