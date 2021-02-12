@@ -2295,7 +2295,7 @@ namespace PMDS.GUI.PMDSClient
 
 				// Passwort ändern
 				case SiteEvents.Password:
-					GuiAction.ChangePassword();
+					GuiAction.ChangePassword(false);
 					break;
 
 				case SiteEvents.About:

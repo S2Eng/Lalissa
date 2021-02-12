@@ -48,6 +48,10 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Pol.Nr.: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("bPK: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA abgemeldet: ");
+
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("PMDS-Passwort ändern");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort ändern");
+
             }
             catch (Exception ex)
             {

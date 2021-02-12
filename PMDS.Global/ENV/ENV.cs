@@ -1381,7 +1381,7 @@ namespace PMDS.Global
                 SetENVValue("ELGAUser", ref ENV.ELGAUser);
                 SetENVValue("ELGAPwd", ref ENV.ELGAPwd, eTrim.no, eDecrypt.QS2Mode);
                 SetENVValue("ELGAUrl", ref ELGAUrl);
-                SetENVValue("ELGAurlGDAIndex", ref ELGAUrlGDAIndex);
+                SetENVValue("ELGAUrlGDAIndex", ref ELGAUrlGDAIndex);
 
                 SetENVValue("OnlyOneFavoritenComboinPlanung", ref ENV.OnlyOneFavoritenComboinPlanung, "0");
                 SetENVValue("BezugspersonenJN", ref ENV.BezugspersonenJN);

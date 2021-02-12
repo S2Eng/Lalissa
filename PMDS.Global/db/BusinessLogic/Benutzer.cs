@@ -156,7 +156,26 @@ namespace PMDS.BusinessLogic
                 DB_ROW.Passwort = BUtil.CryptString(str);
 			}
 		}
-		public Boolean AktivJN
+        public String ELGAPwd
+        {
+            get { return DB_ROW.ELGAPwd; }
+            set
+            {
+                qs2.license.core.Encryption Encryptor = new qs2.license.core.Encryption();                
+                DB_ROW.ELGAPwd = Encryptor.StringEncrypt(value, qs2.license.core.Encryption.keyForEncryptingStrings);
+            }
+        }
+        public DateTime ELGAPwdLastChange
+        {
+            get { return DB_ROW.ELGAPwdLastChange; }
+            set
+            {
+                DB_ROW.ELGAPwdLastChange = value;
+            }
+        }
+
+
+        public Boolean AktivJN
 		{
 			get	{	return DB_ROW.AktivJN;	}
 			set	{	DB_ROW.AktivJN = value;	}
@@ -332,8 +351,29 @@ namespace PMDS.BusinessLogic
                 }
             }
 		}
-        	
-		public bool HasRight(UserRights right)
+
+        public bool HasELGAPasswort(string pass, string passClear)
+        {
+            string encPas = DB_ROW.ELGAPwd;
+            string encStr = pass;
+
+            qs2.license.core.Encryption Encryptor = new qs2.license.core.Encryption();
+            if (!String.IsNullOrWhiteSpace(passClear))
+                encStr = Encryptor.StringEncrypt(passClear, qs2.license.core.Encryption.keyForEncryptingStrings);
+
+            if (encPas == encStr)
+            {
+                ENV.UsrPwdEnc = encPas;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        public bool HasRight(UserRights right)
 		{
             return ENV.HasRight(right);
 		}

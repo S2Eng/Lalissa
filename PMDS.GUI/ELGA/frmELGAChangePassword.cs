@@ -41,5 +41,9 @@ namespace PMDS.GUI.ELGA
             }
         }
 
+        private void contELGAChangePassword1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -23,8 +23,10 @@ namespace PMDS.GUI
 	//----------------------------------------------------------------------------
 	public class frmEditPassword : frmBase
 	{
-		private bool _bCanclose = false;
-        private bool _bEditUser = false;
+		private bool _bCanclose;
+        private bool _bEditUser;
+        private bool _bELGAMode;
+
         protected QS2.Desktop.ControlManagment.BaseLabel lblBenutzer;
         protected QS2.Desktop.ControlManagment.BaseLabel lblPasswort;
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtBenutzer;
@@ -39,12 +41,13 @@ namespace PMDS.GUI
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtPasswortHinweis;
 		private System.ComponentModel.IContainer components;
 
+        
 		//----------------------------------------------------------------------------
 		/// <summary>
 		/// Konstruktor
 		/// </summary>
 		//----------------------------------------------------------------------------
-		public frmEditPassword()
+		public frmEditPassword(bool ELGAMode)
 		{
 			InitializeComponent();
             if (!DesignMode)
@@ -53,7 +56,7 @@ namespace PMDS.GUI
                 ControlManagment1.autoTranslateForm(this);
             }
 
-
+            this._bELGAMode = ELGAMode;
             RequiredFields();
 			EditUser = true;
 		}
@@ -63,10 +66,11 @@ namespace PMDS.GUI
 		/// Konstruktor
 		/// </summary>
 		//----------------------------------------------------------------------------
-		public frmEditPassword(string aUser) : this()
+		public frmEditPassword(bool ELGAMode, string aUser) : this(ELGAMode)
 		{
 			txtBenutzer.Text = aUser;
 			EditUser = false;
+            this._bELGAMode = ELGAMode;
 		}
 
 		//----------------------------------------------------------------------------
@@ -94,10 +98,10 @@ namespace PMDS.GUI
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditPassword));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditPassword));
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.lblBenutzer = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblPasswort = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtBenutzer = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -197,10 +201,10 @@ namespace PMDS.GUI
             // 
             // btnCancel
             // 
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance1;
+            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance2;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -218,10 +222,10 @@ namespace PMDS.GUI
             // 
             // btnOK
             // 
-            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOK.Appearance = appearance2;
+            appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOK.Appearance = appearance3;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -249,8 +253,8 @@ namespace PMDS.GUI
             // 
             this.txtPasswortHinweis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.BackColorDisabled = System.Drawing.Color.Transparent;
-            this.txtPasswortHinweis.Appearance = appearance3;
+            appearance1.BackColorDisabled = System.Drawing.Color.Transparent;
+            this.txtPasswortHinweis.Appearance = appearance1;
             this.txtPasswortHinweis.Enabled = false;
             this.txtPasswortHinweis.Location = new System.Drawing.Point(12, 189);
             this.txtPasswortHinweis.MaxLength = 0;
@@ -369,7 +373,7 @@ namespace PMDS.GUI
 		{
 			if (ValidateFields())
 			{
-				UpdateDATA();
+				UpdateDATA();                
 				_bCanclose = true;
 			}
 		}
@@ -436,6 +440,8 @@ namespace PMDS.GUI
 
         private void txtPasswort_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Form.ModifierKeys == Keys.Control)
+                ClearTextPasswordField(sender);
             CheckOkButton();
         }
 
@@ -446,6 +452,8 @@ namespace PMDS.GUI
 
         private void txtPasswort2_KeyUp(object sender, KeyEventArgs e)
         {
+            if (Form.ModifierKeys == Keys.Control)
+                ClearTextPasswordField(sender);
             CheckOkButton();
         }
 
@@ -457,12 +465,16 @@ namespace PMDS.GUI
 
 
             PasswordScore passwordStrengthScore = PMDS.Global.Tools.CheckPasswordStrength(txtPasswort.Text.Trim());
+            PasswordScore passwordMinStrength = ENV.PasswordStrength;
+            
+            if (this._bELGAMode)
+                passwordMinStrength = PasswordScore.VeryStrong;
 
-            if (passwordStrengthScore >= ENV.PasswordStrength)
+            if (passwordStrengthScore >= passwordMinStrength)
             {
                 if (txtPasswort.Text == txtPasswort2.Text)
                 {
-                    if (ENV.PasswordStrength > PasswordScore.Blank)
+                    if (passwordMinStrength > PasswordScore.Blank)
                     {
                         this.txtPasswortHinweis.Visible = true;
                         int Punkte = (int)passwordStrengthScore;
@@ -506,6 +518,14 @@ namespace PMDS.GUI
             }                    
         }
 
-
-	}
+        private void ClearTextPasswordField(object sender)
+        {
+            if (sender.GetType() == typeof(QS2.Desktop.ControlManagment.BaseTextEditor))
+            {
+                QS2.Desktop.ControlManagment.BaseTextEditor ed = (QS2.Desktop.ControlManagment.BaseTextEditor)sender;
+                ed.PasswordChar = '\0';
+                Application.DoEvents();
+            }
+        }
+    }
 }

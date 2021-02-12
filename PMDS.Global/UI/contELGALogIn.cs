@@ -24,7 +24,7 @@ namespace PMDS.GUI.ELGA
         public PMDSBusiness b = new PMDSBusiness();
         qs2.license.core.Encryption Encryption1 = new qs2.license.core.Encryption();
 
-
+        private bool PasswortExpired;
 
 
         public contELGALogIn()
@@ -47,8 +47,37 @@ namespace PMDS.GUI.ELGA
                     this.mainWindow.AcceptButton = this.btnELGALogIn;
                     this.mainWindow.CancelButton = this.btnAbort;
 
-                    this.btnELGALogIn.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
+                    //Prüfen, ob Passwort abgelaufen ist.
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                    {
+                        var rUsr = (from b in db.Benutzer
+                                    where b.ID == ENV.USERID
+                                    select new
+                                    {
+                                        ID = b.ID,
+                                        ELGAUser = b.ELGAUser,
+                                        ELGAPwd = b.ELGAPwd,
+                                        ELGAAutoLogin = b.ELGAAutoLogin,
+                                        ELGAPwdLastChange = b.ELGAPwdLastChange
+                                    }).First();
 
+                        int PwdRemainingDays = 90 - (int)(DateTime.Now - (DateTime)rUsr.ELGAPwdLastChange).TotalDays;
+                        this.lblELGAValidDays.Text = "Passwort ändern in ";
+                        if (PwdRemainingDays == 1)
+                            this.lblELGAValidDays.Text += "einem Tag!";
+                        else if (PwdRemainingDays == 0)
+                            this.lblELGAValidDays.Text = "Passwort heute ändern!";
+                        else if (PwdRemainingDays > 1)
+                            this.lblELGAValidDays.Text += PwdRemainingDays.ToString() + " Tagen.";
+                        else
+                        {
+                            this.lblELGAValidDays.Text = "Passwort abgelaufen!";
+                            PasswortExpired = true;
+                            this.btnELGALogIn.Visible = false;
+                        }
+                    }
+
+                    this.btnELGALogIn.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
                     this.IsInitialized = true;
                 }
 
@@ -67,13 +96,13 @@ namespace PMDS.GUI.ELGA
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    if (this.txtELGAUser.Text.Trim() == "")
+                    if (String.IsNullOrWhiteSpace(this.txtELGAUser.Text))
                     {
                         this.errorProvider1.SetError(this.txtELGAUser, "Error");
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Benutzer: Eingabe erforderlich!", "", MessageBoxButtons.OK);
                         return false;
                     }
-                    if (this.txtELGAPwd.Text.Trim() == "")
+                    if (String.IsNullOrWhiteSpace(this.txtELGAPwd.Text))
                     {
                         this.errorProvider1.SetError(this.txtELGAPwd, "Error");
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Passwort: Eingabe erforderlich!", "", MessageBoxButtons.OK);
@@ -174,5 +203,12 @@ namespace PMDS.GUI.ELGA
             }
         }
 
+        private void lblELGAValidDays_Click(object sender, EventArgs e)
+        {
+            if (PasswortExpired)
+            {
+
+            }
+        }
     }
 }

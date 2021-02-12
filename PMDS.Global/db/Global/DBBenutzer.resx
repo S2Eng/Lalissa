@@ -154,7 +154,7 @@
     <value>False</value>
   </metadata>
   <data name="oleDbInsertCommand2.CommandText" xml:space="preserve">
-    <value>INSERT INTO [Benutzer] ([ID], [IDAdresse], [IDKontakt], [Vorname], [Nachname], [Benutzer], [Passwort], [AktivJN], [PflegerJN], [IDBerufsstand], [Eintrittsdatum], [Austrittsdatum], [smtpSrv], [smtpPort], [smtpAbsender], [smtpPwd], [smtpAuthentStandard], [IsGeneric], [IDArzt], [ArztabrechnungJN], [Signatur], [ELGAUser], [ELGAPatID], [ELGAActive], [ELGAAutoLogin], [ELGAAutostartSession], [ELGAValidTrough], [ELGA_AuthorSpeciality]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+    <value>INSERT INTO [Benutzer] ([ID], [IDAdresse], [IDKontakt], [Vorname], [Nachname], [Benutzer], [Passwort], [AktivJN], [PflegerJN], [IDBerufsstand], [Eintrittsdatum], [Austrittsdatum], [smtpSrv], [smtpPort], [smtpAbsender], [smtpPwd], [smtpAuthentStandard], [IsGeneric], [IDArzt], [ArztabrechnungJN], [Signatur], [ELGAUser], [ELGAPatID], [ELGAActive], [ELGAAutoLogin], [ELGAAutostartSession], [ELGAValidTrough], [ELGA_AuthorSpeciality], [ELGAPwd], [ELGAPwdLastChange]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
   </data>
   <metadata name="oleDbSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -167,7 +167,7 @@
   </metadata>
   <data name="oleDbSelectCommand2.CommandText" xml:space="preserve">
     <value>SELECT        ID, IDAdresse, IDKontakt, Vorname, Nachname, Benutzer, Passwort, AktivJN, PflegerJN, IDBerufsstand, BarcodeID, Eintrittsdatum, Austrittsdatum, smtpSrv, smtpPort, smtpAbsender, smtpPwd, smtpAuthentStandard, IsGeneric, 
-                         IDArzt, ArztabrechnungJN, Signatur, ELGAUser, ELGAPatID, ELGAActive, ELGAAutoLogin, ELGAAutostartSession, ELGAValidTrough, ELGA_AuthorSpeciality
+                         IDArzt, ArztabrechnungJN, Signatur, ELGAUser, ELGAPatID, ELGAActive, ELGAAutoLogin, ELGAAutostartSession, ELGAValidTrough, ELGA_AuthorSpeciality, ELGAPwd, ELGAPwdLastChange
 FROM            Benutzer
 WHERE        (ID = ?)</value>
   </data>
@@ -181,7 +181,7 @@ WHERE        (ID = ?)</value>
     <value>False</value>
   </metadata>
   <data name="oleDbUpdateCommand2.CommandText" xml:space="preserve">
-    <value>UPDATE [Benutzer] SET [ID] = ?, [IDAdresse] = ?, [IDKontakt] = ?, [Vorname] = ?, [Nachname] = ?, [Benutzer] = ?, [Passwort] = ?, [AktivJN] = ?, [PflegerJN] = ?, [IDBerufsstand] = ?, [Eintrittsdatum] = ?, [Austrittsdatum] = ?, [smtpSrv] = ?, [smtpPort] = ?, [smtpAbsender] = ?, [smtpPwd] = ?, [smtpAuthentStandard] = ?, [IsGeneric] = ?, [IDArzt] = ?, [ArztabrechnungJN] = ?, [Signatur] = ?, [ELGAUser] = ?, [ELGAPatID] = ?, [ELGAActive] = ?, [ELGAAutoLogin] = ?, [ELGAAutostartSession] = ?, [ELGAValidTrough] = ?, [ELGA_AuthorSpeciality] = ? WHERE (([ID] = ?))</value>
+    <value>UPDATE [Benutzer] SET [ID] = ?, [IDAdresse] = ?, [IDKontakt] = ?, [Vorname] = ?, [Nachname] = ?, [Benutzer] = ?, [Passwort] = ?, [AktivJN] = ?, [PflegerJN] = ?, [IDBerufsstand] = ?, [Eintrittsdatum] = ?, [Austrittsdatum] = ?, [smtpSrv] = ?, [smtpPort] = ?, [smtpAbsender] = ?, [smtpPwd] = ?, [smtpAuthentStandard] = ?, [IsGeneric] = ?, [IDArzt] = ?, [ArztabrechnungJN] = ?, [Signatur] = ?, [ELGAUser] = ?, [ELGAPatID] = ?, [ELGAActive] = ?, [ELGAAutoLogin] = ?, [ELGAAutostartSession] = ?, [ELGAValidTrough] = ?, [ELGA_AuthorSpeciality] = ?, [ELGAPwd] = ?, [ELGAPwdLastChange] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="dsBenutzer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 212</value>

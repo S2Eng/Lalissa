@@ -122,6 +122,7 @@
             this.txtELGAPwdNew.PasswordChar = '*';
             this.txtELGAPwdNew.Size = new System.Drawing.Size(268, 21);
             this.txtELGAPwdNew.TabIndex = 1;
+            this.txtELGAPwdNew.ValueChanged += new System.EventHandler(this.txtELGAPwdNew_ValueChanged);
             // 
             // lblELGAPwdNew
             // 
@@ -145,6 +146,7 @@
             this.txtELGAPwdNewWdhlg.PasswordChar = '*';
             this.txtELGAPwdNewWdhlg.Size = new System.Drawing.Size(268, 21);
             this.txtELGAPwdNewWdhlg.TabIndex = 2;
+            this.txtELGAPwdNewWdhlg.ValueChanged += new System.EventHandler(this.txtELGAPwdNewWdhlg_ValueChanged);
             // 
             // lblELGAPwdNewWdhlg
             // 

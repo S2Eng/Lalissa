@@ -233,6 +233,15 @@ namespace PMDS.GUI.ELGA
             }
         }
 
+        private void txtELGAPwdNew_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtELGAPwdNewWdhlg_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

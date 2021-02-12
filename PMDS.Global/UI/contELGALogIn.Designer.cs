@@ -35,6 +35,7 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnELGALogIn = new QS2.Desktop.ControlManagment.BaseButton();
             this.txtELGAUser = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -43,6 +44,7 @@
             this.lblELGAPwd = new Infragistics.Win.Misc.UltraLabel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblELGAValidDays = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtELGAPwd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -56,7 +58,7 @@
             this.btnAbort.Appearance = appearance1;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(110, 75);
+            this.btnAbort.Location = new System.Drawing.Point(196, 76);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(85, 28);
@@ -73,7 +75,7 @@
             this.btnELGALogIn.Appearance = appearance2;
             this.btnELGALogIn.AutoWorkLayout = false;
             this.btnELGALogIn.IsStandardControl = false;
-            this.btnELGALogIn.Location = new System.Drawing.Point(196, 75);
+            this.btnELGALogIn.Location = new System.Drawing.Point(282, 76);
             this.btnELGALogIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnELGALogIn.Name = "btnELGALogIn";
             this.btnELGALogIn.Size = new System.Drawing.Size(93, 28);
@@ -131,11 +133,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // lblELGAValidDays
+            // 
+            appearance7.TextVAlignAsString = "Middle";
+            this.lblELGAValidDays.Appearance = appearance7;
+            this.lblELGAValidDays.Location = new System.Drawing.Point(19, 82);
+            this.lblELGAValidDays.Name = "lblELGAValidDays";
+            this.lblELGAValidDays.Size = new System.Drawing.Size(160, 16);
+            this.lblELGAValidDays.TabIndex = 120;
+            this.lblELGAValidDays.Click += new System.EventHandler(this.lblELGAValidDays_Click);
+            // 
             // contELGALogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblELGAValidDays);
             this.Controls.Add(this.txtELGAPwd);
             this.Controls.Add(this.txtELGAUser);
             this.Controls.Add(this.lblELGAPwd);
@@ -163,5 +176,6 @@
         private Infragistics.Win.Misc.UltraLabel lblELGAPwd;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Infragistics.Win.Misc.UltraLabel lblELGAValidDays;
     }
 }

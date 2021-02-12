@@ -2417,7 +2417,7 @@ namespace PMDS
 
 				// Passwort ändern
 				case SiteEvents.Password:
-					GuiAction.ChangePassword();
+					GuiAction.ChangePassword(false);
 					break;
 
 				case SiteEvents.About:
@@ -2543,13 +2543,14 @@ namespace PMDS
                         break;
 
                     case "btnELGAPasswortÄndern":
-                        frmELGAChangePassword frmELGAChangePassword1 = new frmELGAChangePassword();
-                        frmELGAChangePassword1.initControl();
-                        frmELGAChangePassword1.ShowDialog(this);
-                        if (!frmELGAChangePassword1.contELGAChangePassword1.abort)
-                        {
+                        //frmELGAChangePassword frmELGAChangePassword1 = new frmELGAChangePassword();
+                        //frmELGAChangePassword1.initControl();
+                        //frmELGAChangePassword1.ShowDialog(this);
+                        //if (!frmELGAChangePassword1.contELGAChangePassword1.abort)
+                        //{
 
-                        }
+                        //}
+                        GuiAction.ChangePassword(true);
                         break;
 
                     case "Benutzerwechsel":

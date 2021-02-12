@@ -21,9 +21,11 @@ namespace PMDS.GUI
 	/// Form zum Ändern des Benutzer-Passwortes
 	/// </summary>
 	//----------------------------------------------------------------------------
-	public class frmChangePassword : PMDS.GUI.frmEditPassword
+	public class frmChangePassword : frmEditPassword
 	{
         private Benutzer _ben;
+        private bool _bELGAMode;
+
         protected QS2.Desktop.ControlManagment.BaseLabel lblPasswortAlt;
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtPasswortOld;
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtPasswortHinweisChange;
@@ -34,17 +36,19 @@ namespace PMDS.GUI
 		/// Konstruktor
 		/// </summary>
 		//----------------------------------------------------------------------------
-		public frmChangePassword(Benutzer user) : base(user.BenutzerName)
+		public frmChangePassword(Benutzer user, bool ELGAMode) : base(ELGAMode, user.BenutzerName)
 		{
             if (!DesignMode)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
-
             }
+
+            this._bELGAMode = ELGAMode;
             UserObj = user;
 			InitializeComponent();
-			RequiredFields();
+            SetCaption();
+            RequiredFields();
 		}
 
 		//----------------------------------------------------------------------------
@@ -246,32 +250,47 @@ namespace PMDS.GUI
 		{
 			bool bError = false;
 			bool bInfo = true;
+            txtPasswortOld.Text = txtPasswortOld.Text.Trim();
 
-			txtPasswortOld.Text = txtPasswortOld.Text.Trim();
+            if (this._bELGAMode)
+            {
+                // ELGA: txtPasswortOld korrekt
+                GuiUtil.ValidateField(txtPasswortOld, UserObj.HasELGAPasswort("", txtPasswortOld.Text), ENV.String("GUI.E_INVALID_PASSWORD"), ref bError, bInfo, errorProvider1);
+                if (!bError)
+                    bError = !base.ValidateFields();
+            }
+            else
+            {
+                // PMDS: txtPasswortOld korrekt
+                GuiUtil.ValidateField(txtPasswortOld, UserObj.HasPasswort(txtPasswortOld.Text), ENV.String("GUI.E_INVALID_PASSWORD"), ref bError, bInfo, errorProvider1);
 
-			// txtPasswortOld korrekt
-			GuiUtil.ValidateField(txtPasswortOld, UserObj.HasPasswort(txtPasswortOld.Text),
-				ENV.String("GUI.E_INVALID_PASSWORD"), ref bError, bInfo, errorProvider1);
+                // Passwort korrekt -> weiter validieren
+                if (!bError)
+                    bError = !base.ValidateFields();
+            }
+            return !bError;
+        }
 
-			// Passwort korrekt -> weiter validieren
-			if (!bError)
-				bError = !base.ValidateFields();
-
-			return !bError;
-		}
-
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// GUI nach Daten übertragen
-		/// </summary>
-		//----------------------------------------------------------------------------
-		protected override void UpdateDATA()
+        //----------------------------------------------------------------------------
+        /// <summary>
+        /// GUI nach Daten übertragen
+        /// </summary>
+        //----------------------------------------------------------------------------
+        protected override void UpdateDATA()
 		{
-			UserObj.Passwort = txtPasswort.Text;
-		}
+            if (this._bELGAMode)
+            {
+                UserObj.ELGAPwd = txtPasswort.Text;
+                UserObj.ELGAPwdLastChange = DateTime.Now;
 
-
-
+                DB.PMDSBusiness b = new DB.PMDSBusiness();
+                string sProt = "Benutzer " + b.getUserName(ENV.USERID) + " hat das ELGA-Passwort geändert.";
+                Global.db.ERSystem.ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort wurde geändert"), null,
+                                                Global.db.ERSystem.ELGABusiness.eTypeProt.NewPassword, Global.db.ERSystem.ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
+            }
+            else
+                UserObj.Passwort = txtPasswort.Text;
+        }
 
         private void txtPasswort_KeyUp_1(object sender, KeyEventArgs e)
         {
@@ -288,17 +307,29 @@ namespace PMDS.GUI
             CheckOkButton();
         }
 
+        private void SetCaption()
+        {
+            if (this._bELGAMode)
+                this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Passwort ändern");
+            else
+                this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("PMDS-Passwort ändern");
+        }
+
         private void CheckOkButton()
         {
             this.txtPasswortHinweisChange.Text = "";
             this.txtPasswortHinweisChange.Visible = false;
+            PasswordScore MinpasswordStrengthScore = ENV.PasswordStrength;
 
             PasswordScore passwordStrengthScore = PMDS.Global.Tools.CheckPasswordStrength(txtPasswort.Text.Trim());
 
+            if (_bELGAMode)
+                MinpasswordStrengthScore = PasswordScore.VeryStrong;
+
             bool compPasswords = true;
 
-            if (ENV.PasswordStrength >= PasswordScore.Strong)
-            compPasswords = PMDS.Global.Tools.ComparePasswords(this.txtPasswortOld.Text.Trim(), this.txtPasswort.Text.Trim(), 6); // Wenn im alten und neuen Passwort 6 gleiche Zeichen hintereinader sind -> Passwort ist nicht erlaubt
+            if (MinpasswordStrengthScore >= PasswordScore.Strong)
+                compPasswords = PMDS.Global.Tools.ComparePasswords(this.txtPasswortOld.Text.Trim(), this.txtPasswort.Text.Trim(), 6); // Wenn im alten und neuen Passwort 6 gleiche Zeichen hintereinader sind -> Passwort ist nicht erlaubt
 
             if (compPasswords == false)
             {

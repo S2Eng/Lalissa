@@ -120,8 +120,8 @@ namespace PMDS.DB
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
-    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Integrated Security=SSPI;Initial Catalog" +
+    "=PMDSDev";
             // 
             // daBenutzerListe
             // 
@@ -172,7 +172,9 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("ELGAAutoLogin", "ELGAAutoLogin"),
                         new System.Data.Common.DataColumnMapping("ELGAAutostartSession", "ELGAAutostartSession"),
                         new System.Data.Common.DataColumnMapping("ELGAValidTrough", "ELGAValidTrough"),
-                        new System.Data.Common.DataColumnMapping("ELGA_AuthorSpeciality", "ELGA_AuthorSpeciality")})});
+                        new System.Data.Common.DataColumnMapping("ELGA_AuthorSpeciality", "ELGA_AuthorSpeciality"),
+                        new System.Data.Common.DataColumnMapping("ELGAPwd", "ELGAPwd"),
+                        new System.Data.Common.DataColumnMapping("ELGAPwdLastChange", "ELGAPwdLastChange")})});
             this.daBenutzerByID.UpdateCommand = this.oleDbUpdateCommand2;
             // 
             // oleDbDeleteCommand2
@@ -197,8 +199,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN"),
             new System.Data.OleDb.OleDbParameter("PflegerJN", System.Data.OleDb.OleDbType.Boolean, 0, "PflegerJN"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstand", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstand"),
-            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Eintrittsdatum"),
-            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Austrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Eintrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Austrittsdatum"),
             new System.Data.OleDb.OleDbParameter("smtpSrv", System.Data.OleDb.OleDbType.VarChar, 0, "smtpSrv"),
             new System.Data.OleDb.OleDbParameter("smtpPort", System.Data.OleDb.OleDbType.Integer, 0, "smtpPort"),
             new System.Data.OleDb.OleDbParameter("smtpAbsender", System.Data.OleDb.OleDbType.VarChar, 0, "smtpAbsender"),
@@ -213,8 +215,10 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("ELGAActive", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAActive"),
             new System.Data.OleDb.OleDbParameter("ELGAAutoLogin", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutoLogin"),
             new System.Data.OleDb.OleDbParameter("ELGAAutostartSession", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutostartSession"),
-            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.Date, 16, "ELGAValidTrough"),
-            new System.Data.OleDb.OleDbParameter("ELGA_AuthorSpeciality", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_AuthorSpeciality")});
+            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ELGAValidTrough"),
+            new System.Data.OleDb.OleDbParameter("ELGA_AuthorSpeciality", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_AuthorSpeciality"),
+            new System.Data.OleDb.OleDbParameter("ELGAPwd", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGAPwd"),
+            new System.Data.OleDb.OleDbParameter("ELGAPwdLastChange", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ELGAPwdLastChange")});
             // 
             // oleDbSelectCommand2
             // 
@@ -238,8 +242,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("AktivJN", System.Data.OleDb.OleDbType.Boolean, 0, "AktivJN"),
             new System.Data.OleDb.OleDbParameter("PflegerJN", System.Data.OleDb.OleDbType.Boolean, 0, "PflegerJN"),
             new System.Data.OleDb.OleDbParameter("IDBerufsstand", System.Data.OleDb.OleDbType.Guid, 0, "IDBerufsstand"),
-            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Eintrittsdatum"),
-            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.Date, 16, "Austrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Eintrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Eintrittsdatum"),
+            new System.Data.OleDb.OleDbParameter("Austrittsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "Austrittsdatum"),
             new System.Data.OleDb.OleDbParameter("smtpSrv", System.Data.OleDb.OleDbType.VarChar, 0, "smtpSrv"),
             new System.Data.OleDb.OleDbParameter("smtpPort", System.Data.OleDb.OleDbType.Integer, 0, "smtpPort"),
             new System.Data.OleDb.OleDbParameter("smtpAbsender", System.Data.OleDb.OleDbType.VarChar, 0, "smtpAbsender"),
@@ -254,8 +258,10 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("ELGAActive", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAActive"),
             new System.Data.OleDb.OleDbParameter("ELGAAutoLogin", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutoLogin"),
             new System.Data.OleDb.OleDbParameter("ELGAAutostartSession", System.Data.OleDb.OleDbType.Boolean, 0, "ELGAAutostartSession"),
-            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.Date, 16, "ELGAValidTrough"),
+            new System.Data.OleDb.OleDbParameter("ELGAValidTrough", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ELGAValidTrough"),
             new System.Data.OleDb.OleDbParameter("ELGA_AuthorSpeciality", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGA_AuthorSpeciality"),
+            new System.Data.OleDb.OleDbParameter("ELGAPwd", System.Data.OleDb.OleDbType.VarWChar, 0, "ELGAPwd"),
+            new System.Data.OleDb.OleDbParameter("ELGAPwdLastChange", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ELGAPwdLastChange"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // dsBenutzer1
@@ -455,7 +461,7 @@ namespace PMDS.DB
 		{
 			ITEM.Clear();
     	    PMDS.Global.db.Global.dsBenutzer.BenutzerRow rBenutzer =	ITEM.AddBenutzerRow(Guid.NewGuid(), Guid.Empty, Guid.Empty, "", "", "",
-				"", true, false, Guid.Empty, DateTime.Now,  DateTime.Now, "", -1, "", "", false, false, Guid.Empty, false, "", "", "", false, false, false, DateTime.Now, "");
+				"", true, false, Guid.Empty, DateTime.Now,  DateTime.Now, "", -1, "", "", false, false, Guid.Empty, false, "", "", "", false, false, false, DateTime.Now, "", "", DateTime.Now);
 			SUBITEMS.Clear();
 			SUBITEMS2.Clear();
             rBenutzer.SetIDArztNull();

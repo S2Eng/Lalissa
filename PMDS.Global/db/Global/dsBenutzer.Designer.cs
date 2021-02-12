@@ -337,6 +337,10 @@ namespace PMDS.Global.db.Global {
             
             private global::System.Data.DataColumn columnELGA_AuthorSpeciality;
             
+            private global::System.Data.DataColumn columnELGAPwd;
+            
+            private global::System.Data.DataColumn columnELGAPwdLastChange;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BenutzerDataTable() {
@@ -604,6 +608,22 @@ namespace PMDS.Global.db.Global {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ELGAPwdColumn {
+                get {
+                    return this.columnELGAPwd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ELGAPwdLastChangeColumn {
+                get {
+                    return this.columnELGAPwdLastChange;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -667,7 +687,9 @@ namespace PMDS.Global.db.Global {
                         bool ELGAAutoLogin, 
                         bool ELGAAutostartSession, 
                         System.DateTime ELGAValidTrough, 
-                        string ELGA_AuthorSpeciality) {
+                        string ELGA_AuthorSpeciality, 
+                        string ELGAPwd, 
+                        System.DateTime ELGAPwdLastChange) {
                 BenutzerRow rowBenutzerRow = ((BenutzerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -698,7 +720,9 @@ namespace PMDS.Global.db.Global {
                         ELGAAutoLogin,
                         ELGAAutostartSession,
                         ELGAValidTrough,
-                        ELGA_AuthorSpeciality};
+                        ELGA_AuthorSpeciality,
+                        ELGAPwd,
+                        ELGAPwdLastChange};
                 rowBenutzerRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBenutzerRow);
                 return rowBenutzerRow;
@@ -757,6 +781,8 @@ namespace PMDS.Global.db.Global {
                 this.columnELGAAutostartSession = base.Columns["ELGAAutostartSession"];
                 this.columnELGAValidTrough = base.Columns["ELGAValidTrough"];
                 this.columnELGA_AuthorSpeciality = base.Columns["ELGA_AuthorSpeciality"];
+                this.columnELGAPwd = base.Columns["ELGAPwd"];
+                this.columnELGAPwdLastChange = base.Columns["ELGAPwdLastChange"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -820,10 +846,18 @@ namespace PMDS.Global.db.Global {
                 base.Columns.Add(this.columnELGAValidTrough);
                 this.columnELGA_AuthorSpeciality = new global::System.Data.DataColumn("ELGA_AuthorSpeciality", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnELGA_AuthorSpeciality);
+                this.columnELGAPwd = new global::System.Data.DataColumn("ELGAPwd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnELGAPwd);
+                this.columnELGAPwdLastChange = new global::System.Data.DataColumn("ELGAPwdLastChange", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnELGAPwdLastChange);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnVorname.MaxLength = 25;
+                this.columnNachname.MaxLength = 25;
+                this.columnBenutzer.MaxLength = 25;
+                this.columnPasswort.MaxLength = 255;
                 this.columnBarcodeID.AutoIncrement = true;
                 this.columnBarcodeID.AllowDBNull = false;
                 this.columnBarcodeID.ReadOnly = true;
@@ -847,6 +881,8 @@ namespace PMDS.Global.db.Global {
                 this.columnELGAAutostartSession.AllowDBNull = false;
                 this.columnELGA_AuthorSpeciality.AllowDBNull = false;
                 this.columnELGA_AuthorSpeciality.MaxLength = 255;
+                this.columnELGAPwd.AllowDBNull = false;
+                this.columnELGAPwd.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1373,6 +1409,33 @@ namespace PMDS.Global.db.Global {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ELGAPwd {
+                get {
+                    return ((string)(this[this.tableBenutzer.ELGAPwdColumn]));
+                }
+                set {
+                    this[this.tableBenutzer.ELGAPwdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime ELGAPwdLastChange {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableBenutzer.ELGAPwdLastChangeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte ELGAPwdLastChange in Tabelle Benutzer ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBenutzer.ELGAPwdLastChangeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsIDAdresseNull() {
                 return this.IsNull(this.tableBenutzer.IDAdresseColumn);
             }
@@ -1525,6 +1588,18 @@ namespace PMDS.Global.db.Global {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetELGAValidTroughNull() {
                 this[this.tableBenutzer.ELGAValidTroughColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsELGAPwdLastChangeNull() {
+                return this.IsNull(this.tableBenutzer.ELGAPwdLastChangeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetELGAPwdLastChangeNull() {
+                this[this.tableBenutzer.ELGAPwdLastChangeColumn] = global::System.Convert.DBNull;
             }
         }
         

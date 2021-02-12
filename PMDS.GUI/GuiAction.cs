@@ -1687,15 +1687,17 @@ namespace PMDS.GUI
 		/// Passwort des angemeldeten Benutzers ändern
 		/// </summary>
 		//----------------------------------------------------------------------------
-		public static bool ChangePassword()
+		public static bool ChangePassword(bool ELGAMode)
 		{
 			Benutzer ben = new Benutzer(ENV.USERID);
 
-			frmChangePassword frm = new frmChangePassword(ben);
-			if (frm.ShowDialog() != DialogResult.OK)
-				return false;
+            using (frmChangePassword frm = new frmChangePassword(ben, ELGAMode))
+            {
+                if (frm.ShowDialog() != DialogResult.OK)
+                    return false;
 
-			ben.Write();
+                ben.Write();
+            }            
 			return true;			
 		}
 
