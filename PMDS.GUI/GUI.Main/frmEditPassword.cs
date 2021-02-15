@@ -76,12 +76,13 @@ namespace PMDS.GUI
 		/// Konstruktor
 		/// </summary>
 		//----------------------------------------------------------------------------
-		public frmEditPassword(bool ELGAMode, bool NeedOldPassword, string aUser) : this(ELGAMode, NeedOldPassword)
+		public frmEditPassword(bool ELGAMode, bool NeedOldPassword, Benutzer User) : this(ELGAMode, NeedOldPassword)
 		{
-			txtBenutzer.Text = aUser;
+			txtBenutzer.Text = User.BenutzerName;
 			EditUser = false;
             this._bELGAMode = ELGAMode;
             this._bNeedOldPassword = NeedOldPassword;
+            _ben = User;
             SetUI();
         }
 
@@ -573,6 +574,7 @@ namespace PMDS.GUI
         private void CheckOkButton()
         {
             this.txtPasswortHinweis.Text = "";
+            this.txtPasswortHinweis.Visible = true;
             Application.DoEvents();
 
             PasswordScore passwordMinStrength = this._bELGAMode ? PasswordScore.VeryStrong : ENV.PasswordStrength;
@@ -587,7 +589,7 @@ namespace PMDS.GUI
                     {
                         this.txtPasswortHinweis.Text += QS2.Desktop.ControlManagment.ControlManagment.getRes("Das neue Passwort ist stark genug (") + Punkte.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" Punkte)\n\r");
 
-                        if (_bNeedOldPassword && PMDS.Global.Tools.ComparePasswords(this.txtPasswortAlt.Text.Trim(), this.txtPasswort.Text.Trim(), 6)) // Wenn altes und neues Passwort zu ähnlich ist
+                        if (_bNeedOldPassword && !PMDS.Global.Tools.ComparePasswords(this.txtPasswortAlt.Text.Trim(), this.txtPasswort.Text.Trim(), 6)) // Wenn altes und neues Passwort zu ähnlich ist
                         {
                             this.txtPasswortHinweis.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Altes und neues Passwort sind zu ähnlich!\n\r");
                             this.btnOK.Enabled = false;

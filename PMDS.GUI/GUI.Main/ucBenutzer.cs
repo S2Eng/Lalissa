@@ -1242,7 +1242,7 @@ namespace PMDS.GUI
 
         private void btnPassword_Click(object sender, System.EventArgs e)
         {
-            using (frmEditPassword frm = new frmEditPassword(false, false, Benutzer.BenutzerName))
+            using (frmEditPassword frm = new frmEditPassword(false, false, Benutzer))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

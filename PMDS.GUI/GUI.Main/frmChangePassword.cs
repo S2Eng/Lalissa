@@ -38,7 +38,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         public frmChangePassword() : base() { }
 
-		public frmChangePassword(Benutzer user, bool ELGAMode) : base(ELGAMode, true, user.BenutzerName)
+		public frmChangePassword(Benutzer user, bool ELGAMode) : base(ELGAMode, true, user)
 		{
             if (!DesignMode)
             {

@@ -1691,7 +1691,7 @@ namespace PMDS.GUI
 		{
 			Benutzer ben = new Benutzer(ENV.USERID);
 
-            using (frmEditPassword frm = new frmEditPassword(ELGAMode, NeedOldPassword, ben.BenutzerName))
+            using (frmEditPassword frm = new frmEditPassword(ELGAMode, NeedOldPassword, ben))
             {
                 if (frm.ShowDialog() != DialogResult.OK)
                     return false;
