@@ -113,7 +113,7 @@ namespace PMDS.GUI
                             DateTime Ablauf = dLastAnmeldung.Date.AddDays(PMDS.Global.ENV.MaxPasswordAge);
                             if (Ablauf < DateTime.Now.Date)
                             {
-                                if (!GuiAction.ChangePassword(false))
+                                if (!GuiAction.ChangePassword(false, true))
                                 {
                                     PwdNotSucessfullChanged = true;
                                     return false;
@@ -126,7 +126,7 @@ namespace PMDS.GUI
                                     System.Windows.Forms.DialogResult result = QS2.Desktop.ControlManagment.ControlManagment.MessageBox(QS2.Desktop.ControlManagment.ControlManagment.getRes("Ihr Passwort läuft am ") + Ablauf.ToString("dd. MMMM yyyy") + QS2.Desktop.ControlManagment.ControlManagment.getRes(" ab.\n\rWollen Sie Ihr Passwort jetzt ändern?"), QS2.Desktop.ControlManagment.ControlManagment.getRes("Hinweis"), System.Windows.Forms.MessageBoxButtons.YesNo, true);
                                     if (result == System.Windows.Forms.DialogResult.Yes)
                                     {
-                                        GuiAction.ChangePassword(false);
+                                        GuiAction.ChangePassword(false, true);
                                     }
                                 }
                             }

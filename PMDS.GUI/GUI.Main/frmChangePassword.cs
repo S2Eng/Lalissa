@@ -31,12 +31,14 @@ namespace PMDS.GUI
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtPasswortHinweisChange;
 		private System.ComponentModel.IContainer components = null;
 
-		//----------------------------------------------------------------------------
-		/// <summary>
-		/// Konstruktor
-		/// </summary>
-		//----------------------------------------------------------------------------
-		public frmChangePassword(Benutzer user, bool ELGAMode) : base(ELGAMode, user.BenutzerName)
+        //----------------------------------------------------------------------------
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        //----------------------------------------------------------------------------
+        public frmChangePassword() : base() { }
+
+		public frmChangePassword(Benutzer user, bool ELGAMode) : base(ELGAMode, true, user.BenutzerName)
 		{
             if (!DesignMode)
             {

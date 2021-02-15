@@ -142,7 +142,7 @@ namespace PMDS.GUI
 
                 // Passwort ändern
                 case SiteEvents.Password:
-                    GuiAction.ChangePassword(false);
+                    GuiAction.ChangePassword(false, true);
                     break;
 
                 case SiteEvents.About:

@@ -1081,7 +1081,7 @@ namespace PMDS.GUI
 
         public bool New()
         {
-            using (frmEditPassword frm = new frmEditPassword(false))
+            using (frmEditPassword frm = new frmEditPassword(false, false))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
@@ -1242,7 +1242,7 @@ namespace PMDS.GUI
 
         private void btnPassword_Click(object sender, System.EventArgs e)
         {
-            using (frmEditPassword frm = new frmEditPassword(false, Benutzer.BenutzerName))
+            using (frmEditPassword frm = new frmEditPassword(false, false, Benutzer.BenutzerName))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
