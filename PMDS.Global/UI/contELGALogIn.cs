@@ -48,33 +48,19 @@ namespace PMDS.GUI.ELGA
                     this.mainWindow.CancelButton = this.btnAbort;
 
                     //Prüfen, ob Passwort abgelaufen ist.
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                    int PwdRemainingDays = 90 - (int)(DateTime.Now - (DateTime)ENV.ActiveUser.ELGAPwdLastChange).TotalDays;
+                    this.lblELGAValidDays.Text = "Passwort ändern in ";
+                    if (PwdRemainingDays == 1)
+                        this.lblELGAValidDays.Text += "einem Tag!";
+                    else if (PwdRemainingDays == 0)
+                        this.lblELGAValidDays.Text = "Passwort heute ändern!";
+                    else if (PwdRemainingDays > 1)
+                        this.lblELGAValidDays.Text += PwdRemainingDays.ToString() + " Tagen.";
+                    else
                     {
-                        var rUsr = (from b in db.Benutzer
-                                    where b.ID == ENV.USERID
-                                    select new
-                                    {
-                                        ID = b.ID,
-                                        ELGAUser = b.ELGAUser,
-                                        ELGAPwd = b.ELGAPwd,
-                                        ELGAAutoLogin = b.ELGAAutoLogin,
-                                        ELGAPwdLastChange = b.ELGAPwdLastChange
-                                    }).First();
-
-                        int PwdRemainingDays = 90 - (int)(DateTime.Now - (DateTime)rUsr.ELGAPwdLastChange).TotalDays;
-                        this.lblELGAValidDays.Text = "Passwort ändern in ";
-                        if (PwdRemainingDays == 1)
-                            this.lblELGAValidDays.Text += "einem Tag!";
-                        else if (PwdRemainingDays == 0)
-                            this.lblELGAValidDays.Text = "Passwort heute ändern!";
-                        else if (PwdRemainingDays > 1)
-                            this.lblELGAValidDays.Text += PwdRemainingDays.ToString() + " Tagen.";
-                        else
-                        {
-                            this.lblELGAValidDays.Text = "Passwort abgelaufen!";
-                            PasswortExpired = true;
-                            this.btnELGALogIn.Visible = false;
-                        }
+                        this.lblELGAValidDays.Text = "Passwort abgelaufen!";
+                        PasswortExpired = true;
+                        this.btnELGALogIn.Visible = false;
                     }
 
                     this.btnELGALogIn.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);

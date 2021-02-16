@@ -1043,7 +1043,7 @@ namespace WCFServicePMDS
 
                 ELGAParOutDto retDto = this.initParOut();
 
-                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort");
+                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
                 if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
                 {
@@ -1130,7 +1130,7 @@ namespace WCFServicePMDS
             {
                 ELGAParOutDto retDto = this.initParOut();
 
-                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort");
+                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
                 xdsQArgsDocument qArgs = new xdsQArgsDocument();
 
                 if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
@@ -1626,125 +1626,6 @@ namespace WCFServicePMDS
                 throw new Exception("ELGABAL.checkFieldNull: " + ex.ToString());
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public bool ELGALogIn_old(string usr, string pwd, ref ELGASessionDTO session)
-        {
-            try
-            {
-                throw new Exception("ELGABAL.ELGALogIn: Fct. not activated!");
-
-
-                session.ELGAStateID = "";
-                //this.clearEhrPatientUsr66(ref session);
-
-                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort");
-
-                spiritUserRequest objUserRequest = new spiritUserRequest();
-                spiritUserClientDto objUser = new spiritUserClientDto();
-
-                objUser.uid = new string[] { usr };
-                objUser.userPassword = new string[] { pwd };
-
-                objUserRequest.user = objUser;
-
-                spiritUserResponse objUserResponse = objWsLogin.usrLogin(objUserRequest);
-
-                session.ELGAStateID = objUserResponse.stateID;                  //save provided StateID and set it to each new service call
-
-                organisationalRolesClientDto objOrgRole = objUserResponse.user.organisationalRoles[0];
-
-                spiritOrganisationClientDto objOrg = new spiritOrganisationClientDto();
-                objOrg.organisationDN = objOrgRole.organisationDN;
-                objOrg.organisationName = objOrgRole.organisationName;
-
-                objUser.loginOrganisation = objOrg;
-                objUser.loginRole = objOrgRole.moduleRoles[0].roles[0];
-
-                objUserRequest = new spiritUserRequest();
-                objUserRequest.stateID = session.ELGAStateID;
-                objUserRequest.user = objUser;
-
-                spiritUserResponse resp = objWsLogin.loginOrganisationRole(objUserRequest);
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                session.ELGAStateID = "";
-                throw new Exception("ELGABAL.LogIn: " + ex.ToString());
-            }
-        }
-        public bool searchFoldersForPatient_old(ref ELGAPatientDTO ELGAPatient, ref int iRowsFound, ref string sELGAErrorDocus, ref ELGASessionDTO session)
-        {
-            try
-            {
-                throw new Exception("ELGABAL.searchFoldersForPatient: Fct. not activated!");
-
-
-                EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort");
-
-                xdsQArgsFolder qArgs = new xdsQArgsFolder();
-                ehrXdsQFolderRq ehrXdsQFolderRequest = new ehrXdsQFolderRq();
-                ehrXdsQFolderRequest.stateID = session.ELGAStateID;
-                ehrXdsQFolderRequest.xdsQArgsFolder = qArgs;
-                //ehrXdsQFolderRequest.requestData = this.getEhrPatient66(session).pid;
-
-                ehrXdsQRsp ehrXdsQRsp1 = objWsLogin.queryFolders(ehrXdsQFolderRequest);
-                if (ehrXdsQRsp1.partialErros == null)
-                {
-                    if (ehrXdsQRsp1.responseData != null)
-                    {
-                        patientContentClientDto patientContentClientDto1 = ehrXdsQRsp1.responseData;
-                        if (patientContentClientDto1.documents != null)
-                        {
-                            foreach (documentClientDto documentClientDto1 in patientContentClientDto1.documents)
-                            {
-                                //ELGADocumentsDTO newELGADocuments = this.newRowELGADocuments(ELGAPatient);
-                                //newELGADocuments.Documentname = this.checkFieldNull(documentClientDto1.name);
-
-                                iRowsFound += 1;
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        bool bNoDataFound = true;
-                    }
-                    return true;
-                }
-                else
-                {
-                    foreach (xdsQPartialError errDocument in ehrXdsQRsp1.partialErros)
-                    {
-                        sELGAErrorDocus += "errorCode: " + errDocument.errorCode + "\r\n";
-                    }
-                    return false;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ELGABAL.searchFoldersForPatient: " + ex.ToString());
-            }
-        }
-
     }
-
 }
 

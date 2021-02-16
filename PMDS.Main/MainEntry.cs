@@ -276,9 +276,9 @@ namespace PMDS
                 }
                 else if (typ == "peps")
                 {
-                    System.Diagnostics.Process.Start(Application.StartupPath + "\\" + "PMDS_PEP.exe ", "?ConfigFile=" + System.IO.Path.GetFileName(ENV.sConfigFile) + " ?ConfigPath=" + ENV.sConfigRootDir);
+                    System.Diagnostics.Process.Start(System.IO.Path.Combine(Application.StartupPath, "PMDS_PEP.exe") + " ", "?ConfigFile=" + System.IO.Path.GetFileName(ENV.sConfigFile) + " ?ConfigPath=" + ENV.sConfigRootDir);
                 }
-                else if (typ == "pmds" || typ == "")                                                                                                                                                            // PMDS starten
+                else if (typ == "pmds" || String.IsNullOrWhiteSpace(typ))                                                                                                                                                            // PMDS starten
                 {
 
                     if (ENV.CheckLicense())
@@ -286,50 +286,71 @@ namespace PMDS
                         if (ENV.PMDSNew)
                         {
                             throw new Exception("ENV.PMDSNew: ENV-Var not activated!");
-                            infoStartMain.Close();
-                            infoStartMain = null;
-                            PMDS.GUI.PMDSClient.startPMDSMain start = new GUI.PMDSClient.startPMDSMain();
-                            start.run();
+                            //infoStartMain.Close();
+                            //infoStartMain = null;
+                            //PMDS.GUI.PMDSClient.startPMDSMain start = new GUI.PMDSClient.startPMDSMain();
+                            //start.run();
                         }
                         else
                         {
-                            frmMain frm = new frmMain();
-                            frm.initControl();
-                            if (infoStartMain != null)
+                            using (frmMain frm = new frmMain())
                             {
-                                infoStartMain.Close();
-                                infoStartMain = null;
+                                frm.initControl();
+                                if (infoStartMain != null)
+                                {
+                                    infoStartMain.Close();
+                                    infoStartMain = null;
+                                }
+
+                                bool IsInit = GuiWorkflow.Init(frm);
+
+                                PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+                                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                                {
+                                    PMDS.db.Entities.Benutzer rUserLoggedIn = b.LogggedOnUserWithCheck(db);
+                                    if (rUserLoggedIn != null)
+                                    {
+                                        ENV.ActiveUser = rUserLoggedIn;
+                                        if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
+                                        {
+                                            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
+                                        }
+                                        else
+                                        {
+                                            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
+                                        }
+                                    }
+                                }
+
+                                if (!IsInit)
+                                    return;
+
+                                b.initUserCanSign();
+
+                                bool PwdNotSucessfullChanged = false;
+                                PMDS.GUI.ucSiteMapPMDS ucSiteMapPMDS1 = new PMDS.GUI.ucSiteMapPMDS();
+                                if (!ucSiteMapPMDS1.checkAnonymLogIn(ref PwdNotSucessfullChanged))
+                                {
+                                    return;
+                                }
+
+                                if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
+                                {
+                                    PMDS.Global.Remote.remotingSrv remotingSrv1 = new Global.Remote.remotingSrv();
+                                    remotingSrv1.startProcIPCClient("Schnellrückmeldung", ENV.USERID, "0", ENV.IDAnmeldungen, ENV.LoggedInAsSuperUser, ENV.UsrPwdEnc);
+                                }
+
+                                QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
+                                qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
+                                RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
+                                PMDS.Global.ENV.setStyleInfrag(true);
+                                qs2.core.ENV.IsHeadquarter = true;
+                                PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
+                                EFEntities1.init2(true);
+
+                                Application.Run(frm);
                             }
-
-                            if (!GuiWorkflow.Init(frm))
-                                return;
-                            PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-                            b.initUserCanSign();
-
-                            bool PwdNotSucessfullChanged = false;
-                            PMDS.GUI.ucSiteMapPMDS ucSiteMapPMDS1 = new PMDS.GUI.ucSiteMapPMDS();
-                            if (!ucSiteMapPMDS1.checkAnonymLogIn(ref PwdNotSucessfullChanged))
-                            {
-                                return;
-                            }
-
-                            if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                            {
-                                PMDS.Global.Remote.remotingSrv remotingSrv1 = new Global.Remote.remotingSrv();
-                                remotingSrv1.startProcIPCClient("Schnellrückmeldung", ENV.USERID, "0", ENV.IDAnmeldungen, ENV.LoggedInAsSuperUser, ENV.UsrPwdEnc);
-                            }
-
-                            QS2.Desktop.ControlManagment.ENV.setRights(ENV.HasRight(UserRights.Layout));
-                            qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
-                            RunFromOhterSystem1.LogIn(ENV.pathConfig, "qs2.config", "PMDS", RBU.DataBase.Srv, RBU.DataBase.m_Database, RBU.DataBase.m_sUser, RBU.DataBase.m_sPassword, RBU.DataBase.IsTrusted, PMDS.Global.ENV.LOGPATH);
-                            PMDS.Global.ENV.setStyleInfrag(true);
-                            qs2.core.ENV.IsHeadquarter = true;
-                            PMDS.Global.db.ERSystem.EFEntities EFEntities1 = new Global.db.ERSystem.EFEntities();
-                            EFEntities1.init2(true);
-
-                            Application.Run(frm);
                         }
-
                     }
                 }
                 else if (typ == "schnellrückmeldung")                                                                                                                                                         
@@ -349,7 +370,7 @@ namespace PMDS
                     }
                     ENV.UsrPwdEnc = searchKeyArg("UsrPwdEnc", args);
                     string sIDAnmeldungen = searchKeyArg("IDAnmeldungen", args);
-                    if (sIDAnmeldungen.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sIDAnmeldungen.Trim()))
                     {
                         ENV.IDAnmeldungen = new Guid(sIDAnmeldungen.Trim());
                     }
@@ -376,7 +397,7 @@ namespace PMDS
 
                         if (!ENV.LoggedInAsSuperUser)
                         {
-                            if (ENV.UsrPwdEnc.Trim() == "")
+                            if (String.IsNullOrWhiteSpace(ENV.UsrPwdEnc))
                             {
                                 throw new Exception("MainEntry: typ=Schnellrückmeldung - ENV.UsrPwdEnc='' not allowed!");
                             }
@@ -446,7 +467,6 @@ namespace PMDS
                         //remotingSrv.showMsgBoxTestmodus("starting schnellrückmeldung finisehd");
                         Application.Run(PMDS.Global.Remote.remotingClient.frmMainFormIPCClient1);
                     }
-
                 }
                 else
                 {

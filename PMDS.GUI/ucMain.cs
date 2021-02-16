@@ -1358,7 +1358,7 @@ namespace PMDS.GUI
                     this.lblSperre.Visible = true;
                     this.pbSperre.Value = (int)RestSekunden;
                     this.pbSperre.Visible = true;
-                    this.mainWindow.Text = "PMDS - " + this.lblSperre.Text;
+                    this.mainWindow.Text = ENV.MainCaption + " - " + this.lblSperre.Text;
                 }
                 else if (PMDS.Global.Tools.GetIdleTime() / 1000 / 60 == ENV.MaxIdleTime)      //Idletime in Minuten - Sperre
                 {
@@ -1380,7 +1380,7 @@ namespace PMDS.GUI
                 {
                     this.lblSperre.Visible = false;
                     this.pbSperre.Visible = false;
-                    this.mainWindow.Text = "PMDS";
+                    this.mainWindow.Text = ENV.MainCaption;
                 }
             }
         }

@@ -873,8 +873,6 @@ namespace PMDS.GUI
 
         }
 
-
-
         public void initcontrol()
         {
             if (!this.IsInitialized)
@@ -902,9 +900,6 @@ namespace PMDS.GUI
                 this.IsInitialized = true;
             }
         }
-
-
-
 
         public void deactivateTabs()
         {
@@ -984,14 +979,14 @@ namespace PMDS.GUI
             {
                 this.contELGAUser1.clearUI();
             }
-            if (bOn)
-            {
+            //if (bOn)
+            //{
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
-            }
+            //}
         }
 
         public void clearUI()
@@ -1062,21 +1057,26 @@ namespace PMDS.GUI
 
             this.Benutzer.ELGAActive = this.chkELGAActive.Checked;
         }
+
         public void writeSMTPData(System.Guid IDBenutzer)
         {
-            PMDS.DB.DBBenutzer ben = new PMDS.DB.DBBenutzer();
-            ben.updateSMTPAngaben(IDBenutzer, this.txtSMTPSrv.Text, (int)this.uMaskSMTPPort.Value, this.txtSMTPAbsenderAdresse.Text, this.txtSMTPPwd.Text, this.uChkStandardAuthentifizierung.Checked);
-
+            using (PMDS.DB.DBBenutzer ben = new PMDS.DB.DBBenutzer())
+            {
+                ben.updateSMTPAngaben(IDBenutzer, this.txtSMTPSrv.Text, (int)this.uMaskSMTPPort.Value, this.txtSMTPAbsenderAdresse.Text, this.txtSMTPPwd.Text, this.uChkStandardAuthentifizierung.Checked);
+            }
         }
+
         public void readSMTPData(System.Guid IDBenutzer)
         {
-            PMDS.DB.DBBenutzer ben = new PMDS.DB.DBBenutzer();
-            DataTable dt = ben.readSMTPAngaben(IDBenutzer);
-            this.txtSMTPSrv.Text = (string)dt.Rows[0]["smtpSrv"];
-            this.uMaskSMTPPort.Value = (int)dt.Rows[0]["smtpPort"];
-            this.txtSMTPAbsenderAdresse.Text = (string)dt.Rows[0]["smtpAbsender"];
-            this.txtSMTPPwd.Text = (string)dt.Rows[0]["smtpPwd"];
-            this.uChkStandardAuthentifizierung.Checked = (bool)dt.Rows[0]["smtpAuthentStandard"];
+            using (PMDS.DB.DBBenutzer ben = new PMDS.DB.DBBenutzer())
+            {
+                DataTable dt = ben.readSMTPAngaben(IDBenutzer);
+                this.txtSMTPSrv.Text = (string)dt.Rows[0]["smtpSrv"];
+                this.uMaskSMTPPort.Value = (int)dt.Rows[0]["smtpPort"];
+                this.txtSMTPAbsenderAdresse.Text = (string)dt.Rows[0]["smtpAbsender"];
+                this.txtSMTPPwd.Text = (string)dt.Rows[0]["smtpPwd"];
+                this.uChkStandardAuthentifizierung.Checked = (bool)dt.Rows[0]["smtpAuthentStandard"];
+            }
         }
 
         public bool New()
@@ -1138,7 +1138,7 @@ namespace PMDS.GUI
         public void Read()
         {
             Benutzer.Read();
-            Benutzer = Benutzer;
+            //Benutzer = Benutzer;
         }
 
         public void Write()

@@ -101,6 +101,8 @@ namespace PMDS.Global
         public static int pmdsDBVersion = 41000;
         public static string StartupTyp = "";                       //Mit welchem Paramter ?typ wurde gestartet
         public static string typRechNr = "Standard";
+        public static string MainCaption = "PMDS";
+        public static PMDS.db.Entities.Benutzer ActiveUser;
 
         public static string MedikamenteImportType = "ftp";
         public static string ftpFileImportMedikamente = "";
@@ -205,12 +207,13 @@ namespace PMDS.Global
 
         //tian -Spielwiese
         //public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://hnelga01.tiani-spirit.com:8181/SpiritEhrWsRemoting/EhrWSRemoting"));
-        
-        //Tiani ohne Proxy
+
+        //Migrationsumgebung ohne Proxy
         //public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://10.2.13.91:8181/SpiritEhrWsRemoting/EhrWSRemoting"));
 
         //Migrationsumgebung mit Proxy
         public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://10.2.13.90:80/SpiritEhrWsRemoting/EhrWSRemoting"));
+        
         public static string ELGAUrlGDAIndex = "http://10.2.13.90:80/GdaIndexWs";
 
 
