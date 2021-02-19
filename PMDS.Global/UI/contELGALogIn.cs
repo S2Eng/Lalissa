@@ -196,5 +196,10 @@ namespace PMDS.GUI.ELGA
 
             }
         }
+
+        private void txtELGAPwd_KeyDown(object sender, KeyEventArgs e)
+        {
+            PMDS.Global.generic.TogglePassword(sender);
+        }
     }
 }

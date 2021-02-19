@@ -427,17 +427,19 @@ namespace PMDS.Global.db.ERSystem
                     this.closeOpendElgaMsgBoxes();
                 }
 
-                ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.off;
-                ELGAStatusbarStatus.ELGASessionStarted = null;
-                ELGAStatusbarStatus.ELGASessionEnd = null;
-                ELGAStatusbarStatus.Active = false;
-                ELGAStatusbarStatus.ELGALogInDto = null;
 
                 statBar.Panels["statELGA"].Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine ELGA-Sitzung aktiv");
                 panelELGA.Appearance.Image = null;
 
                 WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                 WCFServiceClient1.ELGALogOut(ENV.USERID, ENV.lic_ELGA);
+
+                ELGAStatusbarStatus.TypeStatusELGA = eTypeStatusELGA.off;
+                ELGAStatusbarStatus.ELGASessionStarted = null;
+                ELGAStatusbarStatus.ELGASessionEnd = null;
+                ELGAStatusbarStatus.Active = false;
+                ELGAStatusbarStatus.ELGALogInDto = null;
+
 
                 if (LogOutAuto)
                 {
