@@ -25,7 +25,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 
             Modell = PflegeModelle.Krohwinkel;
@@ -48,7 +48,7 @@ namespace PMDS.GUI
 
         private void ucAnamneseKrohwinkel2_Load(object sender, EventArgs e)
         {
-            if (DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                 return;
 
              _loaded = true;

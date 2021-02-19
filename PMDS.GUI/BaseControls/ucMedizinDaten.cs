@@ -90,7 +90,7 @@ namespace PMDS.GUI.BaseControls
         {
             try
             {
-                if (DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                     return;
 
                 this._TypeUI = TypeUI;

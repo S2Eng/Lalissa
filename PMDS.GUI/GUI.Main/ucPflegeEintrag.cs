@@ -124,7 +124,7 @@ namespace PMDS.GUI
             InitializeComponent();
             System.Threading.Thread.CurrentThread.CurrentCulture = currentCultureInfo;
 
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 if (!ENV.AppRunning)
                     return;
@@ -1589,7 +1589,7 @@ namespace PMDS.GUI
             }
             set
             {
-                if (!DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
                 {
                     dtpZeitpunkt.ReadOnly = value;
                     txtIstDauer.ReadOnly = value;

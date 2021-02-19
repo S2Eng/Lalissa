@@ -781,7 +781,7 @@ namespace PMDS.GUI
         {
             try
             {
-                if (this.DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                     return;
 
                 oninfoChanged();

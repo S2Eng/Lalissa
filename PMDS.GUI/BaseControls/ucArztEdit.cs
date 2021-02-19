@@ -23,7 +23,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (!DesignMode && ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
             {
                 _Aerzte = new Aerzte();
                 _Aerzte.Read();
@@ -268,7 +268,7 @@ namespace PMDS.GUI
 
             this.btnUpdate.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
 
-            if (!DesignMode && ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
             {
                 gridAerzte.DataSource = _Aerzte.AERZTE;
 

@@ -158,7 +158,8 @@ namespace PMDS.DB
 			((IDBBase)this).ITEM.Clear();
 
 			if (IsSingleEntry)
-				DBUtil.OneRowByID(this, ((IDBBase)this).ITEM, daFilterEntry, DesignMode);
+				DBUtil.OneRowByID(this, ((IDBBase)this).ITEM, daFilterEntry,
+					System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
 			else
 				DataBase.Fill(daFilterEntry, ((IDBBase)this).ITEM);
 		}

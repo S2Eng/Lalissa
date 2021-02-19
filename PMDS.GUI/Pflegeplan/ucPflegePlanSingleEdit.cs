@@ -177,7 +177,7 @@ namespace PMDS.GUI
 			{
 				if(value == null)
 					return;
-				if(DesignMode)
+				if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
 					return;
 				_row = value;
 				_EintragGruppe = PDx.GetEintragGruppeFromChar(_row.EintragGruppe[0]);
@@ -251,7 +251,7 @@ namespace PMDS.GUI
 
 		public void RefreshControl() 
 		{
-			if(DesignMode)
+			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
 				return;
 			if(_row == null)
 				return;
@@ -1411,7 +1411,7 @@ namespace PMDS.GUI
 
 		private void ucPflegePlanSingleEdit_Load(object sender, System.EventArgs e)
 		{
-			if(DesignMode)
+			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
 				return;
 
             this.cbBerufsstand._SupressLevelHierarchie = PMDSBusinessUI.SupressLevelHierarchieActiveInUI;

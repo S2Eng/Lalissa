@@ -75,7 +75,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
             UpdateLegend();
             ucPflegeplanTreeView1.ExpandAll = false;
@@ -185,7 +185,7 @@ namespace PMDS.GUI
             }
             set
             {
-                if (DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                     return;
 
                 if (value == null)
@@ -230,7 +230,7 @@ namespace PMDS.GUI
                 _IDAufenthalt = value;
                 if (value == Guid.Empty)
                     return;
-                if (DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                     return;
 
                 _Aufenthalt = new Aufenthalt(_IDAufenthalt);
@@ -1295,7 +1295,7 @@ namespace PMDS.GUI
         {
             this.ucPDxSearch21.mainWindow = this;
 
-            if (DesignMode || !ENV.AppRunning) return;
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
 
             ucPDxSearch21.Location = ucPflegeplanTreeView1.Location;
             ucPDxSearch21.Size = ucPflegeplanTreeView1.Size;

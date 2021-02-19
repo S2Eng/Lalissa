@@ -251,7 +251,7 @@ namespace PMDS.GUI.PMDSClient
 
 		private void ucPatientGroup_Load(object sender, System.EventArgs e)
 		{
-			if (DesignMode)
+			if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
 				return;
 
             if (ENV.adminSecure)

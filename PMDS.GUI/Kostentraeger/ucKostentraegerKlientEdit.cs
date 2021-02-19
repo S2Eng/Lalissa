@@ -41,7 +41,7 @@ namespace PMDS.Calc.UI.Admin
         {
             this.InitializeComponent();
 
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
             this.initControl();
 

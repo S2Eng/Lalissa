@@ -137,11 +137,6 @@ namespace PMDS.GUI.PMDSClient
                 InitializeComponent();
                 System.Threading.Thread.CurrentThread.CurrentCulture = currentCultureInfo;
 
-                if (!DesignMode)
-                {
-                    //this.ucHeader1.mainWindow = this;     //lthNew
-                }
-
                 this.ultraToolbarsManager1.Tools["btnPatientAufenthalteLöschen"].SharedProps.Visible = false;
 
                 //throw new Exception("xy");
@@ -1900,7 +1895,7 @@ namespace PMDS.GUI.PMDSClient
                 System.Drawing.Rectangle UsableScreen = System.Windows.Forms.Screen.GetWorkingArea(this);
                 System.Drawing.Rectangle FullScreen = System.Windows.Forms.Screen.GetBounds(this);
 
-                if (!DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     ControlManagment1.autoTranslateForm(this);

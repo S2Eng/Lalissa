@@ -46,7 +46,7 @@ namespace PMDS.GUI
 		{
 			InitializeComponent();
 
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -144,6 +144,7 @@ namespace PMDS.GUI
             this.txtPasswort.PasswordChar = '*';
             this.txtPasswort.Size = new System.Drawing.Size(176, 21);
             this.txtPasswort.TabIndex = 12;
+            this.txtPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswort_KeyDown);
             // 
             // btnNewLogIn
             // 
@@ -337,6 +338,11 @@ namespace PMDS.GUI
                     this.lblTimeRemaining.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes(sText);
                 }
             }
+        }
+
+        private void txtPasswort_KeyDown(object sender, KeyEventArgs e)
+        {
+            PMDS.Global.generic.TogglePassword(sender);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
             
             InitializeGridLayout();

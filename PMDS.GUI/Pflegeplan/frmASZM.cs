@@ -40,12 +40,7 @@ namespace PMDS.GUI
 		{
             _mode = mode;
 			InitializeComponent();
-            if (!DesignMode)
-            {
-                QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
-                ControlManagment1.autoTranslateForm(this);
-            }
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -69,7 +64,7 @@ namespace PMDS.GUI
         public frmASZM()
         {
             InitializeComponent();
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

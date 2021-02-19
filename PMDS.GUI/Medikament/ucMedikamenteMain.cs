@@ -53,7 +53,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 foreach (Infragistics.Win.UltraWinTabControl.UltraTab utc in tabMain.VisibleTabs)
                 {

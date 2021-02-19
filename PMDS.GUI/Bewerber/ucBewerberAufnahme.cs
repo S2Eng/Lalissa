@@ -22,7 +22,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (!DesignMode && ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
             {
                 _patBewerber = new PatientBewerber();
                 dgKlienten.DataSource = _patBewerber.ListKlienten;
@@ -126,7 +126,7 @@ namespace PMDS.GUI
 
         private void ucBewerberAufnahme_Load(object sender, EventArgs e)
         {
-            if (!DesignMode && ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
             {
                 opsBewerber.Value = 0;
                 txtName.Text = "";

@@ -56,7 +56,7 @@ namespace PMDS.GUI
         public ucPDxSearch2()
         {
             InitializeComponent();
-            if (DesignMode || !ENV.AppRunning) return;
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
             
             InitializeComboBoxDesigns();
             ShowHideTabs();
@@ -485,7 +485,7 @@ namespace PMDS.GUI
         bool RefreshTopcombo = true;
         public void RefreshControl()
         {
-            if (DesignMode || !ENV.AppRunning) return;
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
             InitErrorProvider();
 
             tvSpecific.ListIDPDX = null;
@@ -1467,7 +1467,7 @@ namespace PMDS.GUI
         #region Events
         private void cbTop10_AfterCloseUp(object sender, EventArgs e)
         {
-            if (DesignMode || !ENV.AppRunning) return;
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
             UltraCombo c = (UltraCombo)sender;
             if (c.ActiveRow == null) return;
             
@@ -1540,7 +1540,7 @@ namespace PMDS.GUI
 
         private void ucPDxSearch2_Load(object sender, EventArgs e)
         {
-            if (DesignMode || !ENV.AppRunning) return;
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
 
             _PDx = new PDx();
             _pdxAnamnese.Read();
@@ -1595,14 +1595,14 @@ namespace PMDS.GUI
 
         private void TabMain_SelectedTabChanged(object sender, Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
         {
-            //if (DesignMode || !ENV.AppRunning) return;
-             RefreshTopcombo = false;
+            //if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            RefreshTopcombo = false;
              RefreshControl();
         }
 
         private void tabASZM_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
         {
-            if (DesignMode || !ENV.AppRunning) return;
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
             UltraTreeNode tn;
 
             if (tabASZM.SelectedTab == TAB_SPECIFIC)

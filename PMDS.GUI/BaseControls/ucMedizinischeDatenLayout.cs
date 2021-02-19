@@ -122,7 +122,7 @@ namespace PMDS.GUI
 
         private void ucMedizinischetypVerwaltung_Load(object sender, EventArgs e)
         {
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 
             _medVerwaltung.Read();

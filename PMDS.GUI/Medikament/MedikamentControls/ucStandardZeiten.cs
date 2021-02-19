@@ -305,7 +305,7 @@ namespace PMDS.GUI
         
         private void ucStandardZeiten_Load(object sender, EventArgs e)
         {
-            if (!DesignMode && ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
             {
                 pnlZeitpunkte.Location = new Point(pnlZeitpunkte.Location.X, 0);
                 _Standardzeiten = new Standardzeiten();

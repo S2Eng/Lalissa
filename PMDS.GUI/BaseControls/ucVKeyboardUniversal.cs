@@ -19,7 +19,7 @@ namespace PMDS.GUI.BaseControls
         public ucVKeyboardUniversal()
         {
             InitializeComponent();
-            if (DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                 return;
 
             ShowHide();

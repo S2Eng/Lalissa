@@ -185,7 +185,7 @@ namespace PMDS.GUI
 
 		private void ucTermine_Load(object sender, System.EventArgs e)
 		{
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 			try 
 			{

@@ -24,7 +24,8 @@ Public Class BaseDateTimeEditor
                 'Me.MaskInput = "dd.mm.yyyy"         '"{LOC}dd.MM.yyyy"
             End If
 
-            Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, False, Me.DoIDResAuto, DesignMode)
+            Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, False, Me.DoIDResAuto,
+                                                   System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Designtime)
             doBaseElements.SetRightContextMenü(Me)
 
         Catch ex As Exception

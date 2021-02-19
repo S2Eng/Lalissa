@@ -58,10 +58,8 @@ namespace PMDS.GUI.BaseControls
             {
                 if (!this.IsIntialized)
                 {
-                    if (PMDS.Global.ENV.VisualStudioMode)
-                    {
+                    if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)                   
                         return;
-                    }
 
                     this.TypeMulti = TypeMulti;
                     this._BerufsstandGruppeJNA = BerufsstandGruppeJNA;
@@ -75,7 +73,6 @@ namespace PMDS.GUI.BaseControls
 
                     this.IsIntialized = true;
                 }
-
             }
             catch (Exception e)
             {

@@ -29,7 +29,7 @@ namespace PMDS.GUI
         public frmAskLocalize2(ASZMSelectionArgs[] aa)
         {
             InitializeComponent();
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -37,7 +37,7 @@ namespace PMDS.GUI
 
             this.Closing += new CancelEventHandler(frmAskLocalize_Closing);
 
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 
             _sa = aa;
@@ -289,7 +289,7 @@ namespace PMDS.GUI
 
         private void frmAskLocalize2_Load(object sender, EventArgs e)
         {
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 
             //Falls keine ASZM's ausgewählt worden, Fehlermeldung anzeigen
