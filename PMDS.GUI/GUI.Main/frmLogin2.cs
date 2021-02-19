@@ -269,6 +269,7 @@ namespace PMDS.GUI
             this.txtPasswort.PasswordChar = '*';
             this.txtPasswort.Size = new System.Drawing.Size(205, 24);
             this.txtPasswort.TabIndex = 12;
+            this.txtPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswort_KeyDown);
             // 
             // btnCancel
             // 
@@ -497,6 +498,9 @@ namespace PMDS.GUI
 		{
 		}
 
-		
-	}
+        private void txtPasswort_KeyDown(object sender, KeyEventArgs e)
+        {
+            PMDS.Global.generic.TogglePassword(sender);
+        }
+    }
 }

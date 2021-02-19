@@ -65,6 +65,7 @@
             this.txtELGAPwdOld.PasswordChar = '*';
             this.txtELGAPwdOld.Size = new System.Drawing.Size(268, 21);
             this.txtELGAPwdOld.TabIndex = 0;
+            this.txtELGAPwdOld.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtELGAPwdOld_KeyDown);
             // 
             // lblELGAPwdOld
             // 
@@ -123,6 +124,7 @@
             this.txtELGAPwdNew.Size = new System.Drawing.Size(268, 21);
             this.txtELGAPwdNew.TabIndex = 1;
             this.txtELGAPwdNew.ValueChanged += new System.EventHandler(this.txtELGAPwdNew_ValueChanged);
+            this.txtELGAPwdNew.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtELGAPwdNew_KeyDown);
             // 
             // lblELGAPwdNew
             // 
@@ -147,6 +149,7 @@
             this.txtELGAPwdNewWdhlg.Size = new System.Drawing.Size(268, 21);
             this.txtELGAPwdNewWdhlg.TabIndex = 2;
             this.txtELGAPwdNewWdhlg.ValueChanged += new System.EventHandler(this.txtELGAPwdNewWdhlg_ValueChanged);
+            this.txtELGAPwdNewWdhlg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtELGAPwdNewWdhlg_KeyDown);
             // 
             // lblELGAPwdNewWdhlg
             // 

@@ -281,6 +281,16 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 OnValueChanged2(sender, e);
             }
         }
+
+        private void txtELGAPwd_KeyDown(object sender, KeyEventArgs e)
+        {
+            PMDS.Global.generic.TogglePassword(sender);
+        }
+
+        private void txtELGAPwdWdhlg_KeyDown(object sender, KeyEventArgs e)
+        {
+            PMDS.Global.generic.TogglePassword(sender);
+        }
     }
 
 }
