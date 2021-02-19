@@ -80,8 +80,6 @@ namespace PMDS.GUI
 
 		private void ucPatientNew_Load(object sender, System.EventArgs e)
 		{
-            if (DesignMode || !ENV.AppRunning)
-                return;
 
         }
 

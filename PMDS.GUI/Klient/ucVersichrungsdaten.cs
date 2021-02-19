@@ -86,31 +86,34 @@ namespace PMDS.GUI
         {
             if (!this.isInitialized)
             {
-                this.cboEinrichtungen.Items.Clear();
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
-                    var tE = (from e in db.Einrichtung
-                              where e.IstKrankenkasse == true
-                              orderby e.Text ascending
-                              select new
-                              {
-                                  ID = e.ID,
-                                  Text = e.Text
-                              });
-    
-                    foreach (var r in tE)
+                    this.cboEinrichtungen.Items.Clear();
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        if (r.Text.Trim() != "")
+                        var tE = (from e in db.Einrichtung
+                                  where e.IstKrankenkasse == true
+                                  orderby e.Text ascending
+                                  select new
+                                  {
+                                      ID = e.ID,
+                                      Text = e.Text
+                                  });
+
+                        foreach (var r in tE)
                         {
-                            this.cboEinrichtungen.Items.Add(r.ID, r.Text.Trim());
-                        }
-                        else
-                        {
-                            this.cboEinrichtungen.Items.Add(r.ID, QS2.Desktop.ControlManagment.ControlManagment.getRes("[Kein Name]"));
+                            if (!String.IsNullOrWhiteSpace(r.Text))
+                            {
+                                this.cboEinrichtungen.Items.Add(r.ID, r.Text.Trim());
+                            }
+                            else
+                            {
+                                this.cboEinrichtungen.Items.Add(r.ID, QS2.Desktop.ControlManagment.ControlManagment.getRes("[Kein Name]"));
+                            }
                         }
                     }
                 }
-
                 this.isInitialized = true;
             }
         }
