@@ -58,7 +58,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (!DesignMode && ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
             {
                 RequiredFields();
                 InitGUI();

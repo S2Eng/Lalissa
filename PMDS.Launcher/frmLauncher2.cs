@@ -17,15 +17,11 @@ using QS2.Resources;
 
 namespace Launcher
 {
-
-
     public partial class frmLauncher2 : Form
     {
         private config config;
         private ui cUi = new ui();
         private int heightButt = 42;
-
-
 
         private System.Collections.ArrayList arrProc = new System.Collections.ArrayList();
         private bool uiONOff = true;
@@ -95,7 +91,6 @@ namespace Launcher
             this.btn_OF.Image = getRes.getImage(getRes.Launcher.ico_Onlineformulare, 32, 32);
         }
 
-
         private void frmMain_Load(object sender, EventArgs e)
         {
             try
@@ -133,8 +128,7 @@ namespace Launcher
                     this.activateButtonsConfig();
                     this.tbUser.Focus();
                     this.ProcessMinimize(false, true);
-                }
-              
+                }              
             }
             catch(Exception ex)
             {
@@ -142,17 +136,13 @@ namespace Launcher
             }
         }
 
-
         public void ThrowMessage(string txt)
         {
             if (frmLauncher2.debugmode.Trim() == "1" )
             {
                 MessageBox.Show(txt);
             }
-
         }
-
-
 
         private void regForm()
         {
@@ -200,7 +190,6 @@ namespace Launcher
                     this.ThrowMessage("regForm.BringWindowToTop");
                     this.Close();
                 }
-
             }
             catch (Exception ex)
             {
@@ -238,8 +227,8 @@ namespace Launcher
                     notifyIcon1.Visible = true;
                     notifyIcon1.ShowBalloonTip(5000);
                 }
-                if (!onlyInfo) this.WindowState = FormWindowState.Minimized;
-
+                if (!onlyInfo) 
+                    this.WindowState = FormWindowState.Minimized;
             }
             catch (Exception ex)
             {
@@ -285,8 +274,6 @@ namespace Launcher
             this.Height = (int) (this.heightButt * anzButtVis * dy) + (int) (160 * dy);
         }
 
-
-
         public void checkUpdate(ref bool StartFromShare, bool WithMsgBox, ref bool abort)
         {
             try
@@ -302,7 +289,6 @@ namespace Launcher
                     FirstInstallation = false;
                     update1.run(Environment.CommandLine, ref StartFromShare, WithMsgBox, ref abort, ref FirstInstallation);
                 }
-
             }
             catch (Exception ex)
             {
@@ -320,15 +306,14 @@ namespace Launcher
                 if (!uiIsOn)
                 {
                     typ = this.config.searchKeyArg("start", Environment.CommandLine);
-                    if (typ == "") typ = ConfigFile.getValue("main", "start", false);
+                    if (String.IsNullOrWhiteSpace(typ)) typ = ConfigFile.getValue("main", "start", false);
                     //if (typ == "") this.showMessageBox("Keine Defintion für 'start' in Launcher.config.[Main] oder als Parameter vorhanden!");   //Default (PMDS) starten
                 }
                 else
                 {
-                    if (typ == "") typ = ConfigFile.getValue("main", tg, false);
+                    if (String.IsNullOrWhiteSpace(typ)) typ = ConfigFile.getValue("main", tg, false);
                     //if (typ == "") this.showMessageBox("Keine Defintion für " + tg + " in Launcher.config.[Main] oder als Parameter vorhanden!");   //Default (PMDS) starten
                 }
-
 
                 //Commandline-Parameter einlesen
                 update.sProgramFile = this.config.searchKeyArg("ProgramFile", Environment.CommandLine);
@@ -336,17 +321,16 @@ namespace Launcher
                 update.sConfigFile = this.config.searchKeyArg("ConfigFile", Environment.CommandLine);
                 update.sConfigPath = this.config.searchKeyArg("ConfigPath", Environment.CommandLine);
 
-
                 //Commandline-Parameter übersteuern Default in Config
-                if (update.sProgramFile == "") update.sProgramFile = ConfigFile.getValue("Main", "ProgramFile", false);
-                if (update.sProgramPath == "") update.sProgramPath = ConfigFile.getValue("Main", "ProgramPath", false);
-                if (update.sConfigFile == "") update.sConfigFile = ConfigFile.getValue("Main", "ConfigFile", false);
-                if (update.sConfigPath == "") update.sConfigPath = ConfigFile.getValue("Main", "ConfigPath", false);
+                if (String.IsNullOrWhiteSpace(update.sProgramFile)) update.sProgramFile = ConfigFile.getValue("Main", "ProgramFile", false);
+                if (String.IsNullOrWhiteSpace(update.sProgramPath)) update.sProgramPath = ConfigFile.getValue("Main", "ProgramPath", false);
+                if (String.IsNullOrWhiteSpace(update.sConfigFile)) update.sConfigFile = ConfigFile.getValue("Main", "ConfigFile", false);
+                if (String.IsNullOrWhiteSpace(update.sConfigPath)) update.sConfigPath = ConfigFile.getValue("Main", "ConfigPath", false);
 
-                if (update.sProgramFile == "") throw new Exception("Definition für ProgramFile fehlt");
-                if (update.sProgramPath == "") throw new Exception("Definition für ProgramPath fehlt");
-                if (update.sConfigFile == "") throw new Exception("Definition für ConfigFile fehlt");
-                if (update.sConfigPath == "") throw new Exception("Definition für ConfigPath fehlt");
+                if (String.IsNullOrWhiteSpace(update.sProgramFile)) throw new Exception("Definition für ProgramFile fehlt");
+                if (String.IsNullOrWhiteSpace(update.sProgramPath)) throw new Exception("Definition für ProgramPath fehlt");
+                if (String.IsNullOrWhiteSpace(update.sConfigFile)) throw new Exception("Definition für ConfigFile fehlt");
+                if (String.IsNullOrWhiteSpace(update.sConfigPath)) throw new Exception("Definition für ConfigPath fehlt");
 
                 bool StartFromShare = false;
                 bool abort = false;
@@ -413,7 +397,7 @@ namespace Launcher
 
                         //Programm starten
                         string argsRun = typ + " ";
-                        if (this.tbUser.Text.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(this.tbUser.Text))
                         {
                             if (!this.tbUser.Text.Trim().Contains(" "))
                                 argsRun += " ?usr=" + this.tbUser.Text.Trim() + " ";
@@ -421,7 +405,7 @@ namespace Launcher
                                 argsRun += " ?usr=\"" + this.tbUser.Text.Trim() + "\" ";
                         }
 
-                        if (this.tbPasswort.Text.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(this.tbPasswort.Text))
                         {
                             if (!this.tbPasswort.Text.Trim().Contains(" "))
                                 argsRun += " ?pwd=" + this.tbPasswort.Text.Trim() + " ";
@@ -464,14 +448,12 @@ namespace Launcher
                         this.ThrowMessage("startProg.if (!uiIsOn).3");
                         this.waitUntilUpdateThreadsReady();
                         this.Close();
-
                     }
                     else
                     {
                         this.ProcessMinimize(true, false);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -504,7 +486,6 @@ namespace Launcher
                 return ret;
         }
 
-
         private bool checkFile(string file)
         {
             if (!System.IO.File.Exists(file))
@@ -515,7 +496,6 @@ namespace Launcher
             else
                 return true;
         }
-
         private void showMessageBox(string msg)
         {
             MessageBox.Show(msg, "PMDS - Launcher");
@@ -536,7 +516,6 @@ namespace Launcher
         {
             Wiederherstellen();
         }
-
 
         private void Wiederherstellen()
         {
@@ -559,7 +538,6 @@ namespace Launcher
                     this.ShowInTaskbar = true;
                     this.WindowState = FormWindowState.Normal;
                 }
-
             }
             catch (Exception ex)
             {
@@ -585,8 +563,6 @@ namespace Launcher
 
             //mnuNotify.Show();
         }
-
-        
 
         private void toTopToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -629,20 +605,16 @@ namespace Launcher
                 
                     this.Close();
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("frmLauncher2.checkRunning: " + ex.ToString());
             }
         }
-
         private void logViewerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.startProg("BUTTON_LOG", true, false);
         }
-
-
 
         private void launcher_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -691,7 +663,32 @@ namespace Launcher
         {
 
         }
-         
+
+        private void tbPasswort_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys.HasFlag(Keys.Control))
+            {
+                //if (sender.GetType().Equals(typeof(QS2.Desktop.ControlManagment.BaseTextEditor)))
+                //{
+                //    QS2.Desktop.ControlManagment.BaseTextEditor ed = (QS2.Desktop.ControlManagment.BaseTextEditor)sender;
+                //    if (ed.PasswordChar == '\0')
+                //        ed.PasswordChar = '*';
+                //    else
+                //        ed.PasswordChar = '\0';
+                //}
+                //else if (sender.GetType().Equals(typeof(Infragistics.Win.UltraWinEditors.UltraTextEditor)))
+                //{
+                //    Infragistics.Win.UltraWinEditors.UltraTextEditor ed = (Infragistics.Win.UltraWinEditors.UltraTextEditor)sender;
+                //    if (ed.PasswordChar == '\0')
+                //        ed.PasswordChar = '*';
+                //    else
+                //        ed.PasswordChar = '\0';
+                //}
+
+                //Application.DoEvents();
+            }
+
+        }
     }
 
 }

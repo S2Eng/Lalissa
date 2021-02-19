@@ -57,7 +57,7 @@ namespace PMDS.GUI
 		{
 			InitializeComponent();
 
-			if(DesignMode)
+			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
 				return;
 		}
 

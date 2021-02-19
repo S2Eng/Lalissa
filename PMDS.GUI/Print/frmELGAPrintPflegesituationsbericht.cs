@@ -29,7 +29,7 @@ namespace PMDS.GUI.Print
         {
             InitializeComponent();
 
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 this.cbETo.NotKrankenkasse = true;
                 this.cbETo.RefreshList();

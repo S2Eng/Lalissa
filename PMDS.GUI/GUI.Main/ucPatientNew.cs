@@ -65,7 +65,7 @@ namespace PMDS.GUI
 			InitializeComponent();
 
             //Änderung nach 09.05.2007 MDA
-            if (DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                 return;
 
             if (ENV.AppRunning)
@@ -80,7 +80,7 @@ namespace PMDS.GUI
 
 		private void ucPatientNew_Load(object sender, System.EventArgs e)
 		{
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 
         }

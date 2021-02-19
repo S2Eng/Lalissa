@@ -40,10 +40,6 @@ Public Class cLayoutManager2
         Dim sExcept As String = ""
         compSql.iCouterException = 0
         Try
-            'If Me.DesignMode Then
-            '    Exit Function
-            'End If
-
             Dim compLayoutRun As New compSql()
             compLayoutRun.initControl()
             Dim dsLayoutRun As New dsManage()

@@ -283,6 +283,7 @@
             this.tbPasswort.Size = new System.Drawing.Size(136, 24);
             this.tbPasswort.TabIndex = 1;
             this.tbPasswort.UseSystemPasswordChar = true;
+            this.tbPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPasswort_KeyDown);
             // 
             // tbUser
             // 
@@ -331,7 +332,7 @@
             this.beendenToolStripMenuItem3.Size = new System.Drawing.Size(134, 22);
             this.beendenToolStripMenuItem3.Text = "Beenden";
             // 
-            // launcher
+            // frmLauncher2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -343,7 +344,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "launcher";
+            this.Name = "frmLauncher2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PMDS Starter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.launcher_FormClosing);

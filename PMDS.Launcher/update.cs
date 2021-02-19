@@ -770,7 +770,7 @@ namespace Launcher
         {
             try
             {
-                if (sPath.Trim() == "")
+                if (String.IsNullOrWhiteSpace(sPath))
                 {
                     throw new Exception("Launcher.update.CopyFile: " + Excepinfo);
                 }

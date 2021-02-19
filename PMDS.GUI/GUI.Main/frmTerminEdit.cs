@@ -375,7 +375,7 @@ namespace PMDS.GUI
 
 		private void frmPflegePlanEdit_Load(object sender, System.EventArgs e)
 		{
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

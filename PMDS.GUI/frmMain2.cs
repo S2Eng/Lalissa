@@ -126,7 +126,7 @@ namespace PMDS
                 InitializeComponent();
                 System.Threading.Thread.CurrentThread.CurrentCulture = currentCultureInfo;
 
-                if (!DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
                 {
                     this.ucHeader1.mainWindow = this;
                 }
@@ -1947,7 +1947,7 @@ namespace PMDS
                 System.Drawing.Rectangle UsableScreen = System.Windows.Forms.Screen.GetWorkingArea(this);
                 System.Drawing.Rectangle FullScreen = System.Windows.Forms.Screen.GetBounds(this);
 
-                if (!DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     ControlManagment1.autoTranslateForm(this);

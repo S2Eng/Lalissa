@@ -53,7 +53,7 @@ namespace PMDS.Calc.UI.Admin
 		public ucLeistungskatalog()
 		{
 			InitializeComponent();
-			if(DesignMode || !ENV.AppRunning)
+			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
 				return;
 	    }
         public void initControl()
@@ -192,7 +192,7 @@ namespace PMDS.Calc.UI.Admin
 
         public void RefreshControl()
         {
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 
             this.arrToDelete.Clear();

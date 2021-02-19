@@ -122,7 +122,7 @@ namespace PMDS.GUI
 
             cbZeitbereich.Top = dtpTime.Top;          
 
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
 
             cbZeitbereich.RefreshList(true);            
@@ -217,7 +217,7 @@ namespace PMDS.GUI
             {
                 if (value == null)
                     return;
-                if (DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                     return;
                 _isTextChanged = false;
                 _valueChangeEnabled = false;
@@ -364,7 +364,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         public void RefreshControl()
         {
-            if (DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                 return;
             if (_row == null)
                 return;
@@ -1662,7 +1662,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private void ucPflegePlanSingleEdit2_Load(object sender, System.EventArgs e)
         {
-            if (DesignMode || !ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
                 return;
             cbArea.Group = "LOA";
             cbSide.Group = "LOS";

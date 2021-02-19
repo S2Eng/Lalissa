@@ -27,7 +27,7 @@ namespace PMDS.GUI
 		public frmWochentageEdit(int iWochentage)
 		{
 			InitializeComponent();
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

@@ -282,6 +282,30 @@ namespace PMDS.Global
             }
         }
 
+        public static void TogglePassword (object sender)
+        {
+            if (Control.ModifierKeys.HasFlag(Keys.Control))
+            {
+                if (sender.GetType().Equals(typeof(QS2.Desktop.ControlManagment.BaseTextEditor)))
+                {
+                    QS2.Desktop.ControlManagment.BaseTextEditor ed = (QS2.Desktop.ControlManagment.BaseTextEditor)sender;
+                    if (ed.PasswordChar == '\0')
+                        ed.PasswordChar = '*';
+                    else
+                        ed.PasswordChar = '\0';
+                }
+                else if (sender.GetType().Equals(typeof(Infragistics.Win.UltraWinEditors.UltraTextEditor)))
+                {
+                    Infragistics.Win.UltraWinEditors.UltraTextEditor ed = (Infragistics.Win.UltraWinEditors.UltraTextEditor)sender;
+                    if (ed.PasswordChar == '\0')
+                        ed.PasswordChar = '*';
+                    else
+                        ed.PasswordChar = '\0';
+                }
+
+                Application.DoEvents();
+            }
+        }
 
         //public static void CheckMemorySizeProcess(bool adminSecure, long MaxSizeMemory)
         //{

@@ -31,7 +31,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (!DesignMode && ENV.AppRunning)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
             {
                 cbSicht.Items.Add(ENV.String("CBPatient"));
                 cbSicht.Items.Add(ENV.String("CBPfleger"));
@@ -168,7 +168,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         public void RefreshControl()
         {
-            if (DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
                 return;
             errorProvider1.SetError(tbText, "");
             errorProvider1.SetError(cbBerufsstand, "");

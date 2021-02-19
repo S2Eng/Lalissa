@@ -16,7 +16,7 @@ Public Class frmImportGibodat
     End Sub
 
     Private Sub frmImportGibodat_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If Not DesignMode Then
+        If System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Runtime Then
             Dim ControlManagment1 As New QS2.Desktop.ControlManagment.ControlManagment()
             ControlManagment1.autoTranslateForm(Me)
         End If

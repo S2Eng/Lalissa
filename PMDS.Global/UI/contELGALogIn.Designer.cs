@@ -114,6 +114,7 @@
             this.txtELGAPwd.PasswordChar = '*';
             this.txtELGAPwd.Size = new System.Drawing.Size(265, 21);
             this.txtELGAPwd.TabIndex = 1;
+            this.txtELGAPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtELGAPwd_KeyDown);
             // 
             // lblELGAPwd
             // 

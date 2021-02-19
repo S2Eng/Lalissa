@@ -52,7 +52,7 @@ namespace PMDS.GUI
         public frmMedizinDaten(State state, MedizinischerTyp medTyp, string sBezeichnung, PMDS.Global.db.Global.dsMedizinischeDatenLayout.MedizinischeDatenLayoutRow row)
         {
             InitializeComponent();
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

@@ -130,36 +130,15 @@ namespace PMDSClient.Sitemap
 
                 WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 bool bCheckOK = s1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
-                //bool bRetTest = Service1Client1.TestWCFService();
-                //System.Windows.Forms.MessageBox.Show("4");
 
-                //int iInitializeCounter = 0;
-                //bool bInitalized = false;
-                //while (!bInitalized)
+                //if (!PMDS.Global.ENV.WCFServiceDebugMode)
                 //{
-                //    try
-                //    {
-                //        iInitializeCounter += 1;
-                //        QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto ENVDto = new QS2.Desktop.ControlManagment.ServiceReference_01.ENVClientDto() { ConfigPathPMDSk__BackingField = sConfigPathTmp, ConfigFilePMDSk__BackingField = sConfigFileTmp, IDClientk__BackingField = WCFServiceClient.IDClient, Srvk__BackingField = RBU.DataBase.Srv, Usrk__BackingField = RBU.DataBase.m_sUser, Pwdk__BackingField = RBU.DataBase.m_sPassword, Dbk__BackingField = RBU.DataBase.m_Database, trustedk__BackingField = RBU.DataBase.IsTrusted };
-                //        bInitalized = Service1Client1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        System.Threading.Thread.Sleep(1000);
-                //        if (iInitializeCounter > 12)
-                //            throw new Exception("WCFServiceClient.thread_initWCFService: " + ex.ToString());
-                //    }
+                //    //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1ClientCentral = WCFServiceClient.getWCFClient(false);
+                //    //bool bCheckCentralOK = Service1ClientCentral.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, null);
                 //}
-
-                if (!PMDS.Global.ENV.WCFServiceDebugMode)
-                {
-                    //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1ClientCentral = WCFServiceClient.getWCFClient(false);
-                    //bool bCheckCentralOK = Service1ClientCentral.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, null);
-                }
 
                 //this.getAllStammdaten(ref Service1Client1);
                 WCFServiceClient.IsInitialized = true;
-
             }
             catch (Exception ex)
             {
@@ -172,9 +151,6 @@ namespace PMDSClient.Sitemap
             try
             {
                 WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
-                //client.WSFunctionCompleted += (object sender, WSFunctionCompletedEventArgs e) => { };
-
-                //var res = client.getDataSerialized();
                 var res = s1.getDataSerialized();
 
                 DateTime dNow = DateTime.Now;
@@ -183,9 +159,6 @@ namespace PMDSClient.Sitemap
                 WcfDTOs.benTables = (WCFServicePMDS.BAL.Main.BenutzerMainDTO.lastBenutzer)WCFServicePMDS.Repository.serialize.BinaryDeserialize(res[2]);
                 WcfDTOs.pat.TryAdd(dNow, (List<WCFServicePMDS.BAL.Main.PatientMainDTO.PatientDt>)WCFServicePMDS.Repository.serialize.BinaryDeserialize(res[3]));
                 WcfDTOs.patTables = (WCFServicePMDS.BAL.Main.PatientMainDTO.lastPatienten)WCFServicePMDS.Repository.serialize.BinaryDeserialize(res[4]);
-
-                //var rSd = client.getLastStammdaten();
-
             }
             catch (Exception ex)
             {
@@ -232,11 +205,8 @@ namespace PMDSClient.Sitemap
                     else 
                     {
                         throw new Exception("genUrlWCFService: tRedist.Count()>1 for gVersion '" + PMDS.Global.ENV.VersionNr.ToString() + "' not allowed!");
-                        //Process currentProcess = Process.GetCurrentProcess();
-                        //currentProcess.Kill();
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -258,10 +228,6 @@ namespace PMDSClient.Sitemap
         }
 
 
-
-
-
-
         public ELGALogInDto ELGALogInHCP(Guid IDUser, String OIDGDA, Guid IDKlinik, string NameGDA, string Rolle)
         {
             try
@@ -273,6 +239,14 @@ namespace PMDSClient.Sitemap
                 ELGASessionDTO session = new ELGASessionDTO();
                 session.IDUser = IDUser;
                 ELGALogInDto1.LogInOK = s1.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session, PMDS.Global.ENV.ELGAUrl);
+
+                //direkt ohne WCFService-Schicht
+                //ELGASessionDTO session = new ELGASessionDTO();
+                //WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
+                //session.IDUser = IDUser;
+                //ELGALogInDto1.LogInOK = elga.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session, PMDS.Global.ENV.ELGAUrl);
+
+
                 if (session.Errors != null)
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: Error ELGA-LogIn - " + "\r\n" + "\r\n" + ELGALogInDto1.session.Errors.Trim());
@@ -292,25 +266,28 @@ namespace PMDSClient.Sitemap
             {
                 if (lic_ELGA && PMDSClientWrapper.WCFServiceOnOff)
                 {
-                    ELGABusiness elga = new ELGABusiness();
-                    ELGABusiness.BenutzerDTOS1 ben = elga.getELGASettingsForUser(IDUser);
+                    ELGABusiness elgaBusiness = new ELGABusiness();
+                    ELGABusiness.BenutzerDTOS1 ben = elgaBusiness.getELGASettingsForUser(IDUser);
                     if (ben.Elgaactive && !ben.IsGeneric)
                     {
                         WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                         if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.ELGALogInDto != null)
                         {
                             ELGASessionDTO session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                            session.IDUser = IDUser;
                             s1.ELGALogOut(ref session, PMDS.Global.ENV.ELGAUrl);
                         }
-                        //else
+
+                        //Direkt ohne WCFServie-Schicht
+                        //if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.ELGALogInDto != null)
                         //{
-                        //    ELGASessionDTO session = new ELGASessionDTO();
-                        //    session.IDUserk__BackingField = IDUser;
-                        //    client.ELGALogOut(ref session);
+                        //    ELGASessionDTO session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                        //    WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
+                        //    session.IDUser = IDUser;
+                        //    elga.ELGALogOut(ref session, PMDS.Global.ENV.ELGAUrl);
                         //}
                     }
                 }
-
                 return true;
             }
             catch (Exception ex)
@@ -344,13 +321,13 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAQueryPatients: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Suche Patienten in ELGA fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAQueryPatients: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto ELGAInsertPatient(Guid IDPatientInternWcf, string LocalPatientIDWrite, string authUniversalID, WCFServicePMDS.ELGABAL.eTypeUpdatePatients ELGABALeTypeUpdatePatients)
         {
             try
@@ -377,8 +354,7 @@ namespace PMDSClient.Sitemap
                 else
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAInsertPatient: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
-                }
-                
+                }                
             }
             catch (Exception ex)
             {
@@ -410,14 +386,14 @@ namespace PMDSClient.Sitemap
                 else
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAUpdatePatient: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
-                }
-                
+                }                
             }
             catch (Exception ex)
             {
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Patient in ELGA updaten fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAUpdatePatient: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto ELGAAddContactAdmission(string LocalPatientID)
         {
             try
@@ -453,13 +429,13 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAAddContactAdmission: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Patientenkontakt in ELGA hinzufügen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAAddContactAdmission: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto ELGAInvalidateContact(string ContactID)
         {
             try
@@ -484,13 +460,13 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Patientenkontakt aus ELGA löschen fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAInvalidateContact: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto ELGAAddContactDischarge(string LocalPatientID)
         {
             try
@@ -516,13 +492,13 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAAddContactDischarge: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception(PMDS.Global.ENV.getTitleExcept("Patientenkontakt in ELGA deaktivieren fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAAddContactDischarge: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto ELGAListContacts(string LocalPatientID)
         {
             try
@@ -547,7 +523,6 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAListContacts: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-
             }
             catch (Exception ex)
             {

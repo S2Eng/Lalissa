@@ -25,12 +25,12 @@ namespace PMDS.GUI
             InitializeComponent();
             //this.btnImportFromHttp.Text = "Importieren";
             //this.btnImportFromHttp.Appearance .Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Ausschneiden, 32, 32);
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
             }
-            if (!DesignMode)
+            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
             {
                 this.btnImport.Visible = PMDS.Global.ENV.APVDA;
             }
