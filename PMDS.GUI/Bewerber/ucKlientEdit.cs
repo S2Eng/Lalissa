@@ -51,7 +51,7 @@ namespace PMDS.GUI
 
         public void initControl()
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if (!DesignMode && ENV.AppRunning)
             {
                 this.ucKlient1 = new ucKlient();
                 this.ucKlient1.isBewerberJN = true;

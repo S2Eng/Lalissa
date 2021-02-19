@@ -141,7 +141,7 @@ namespace PMDS.GUI.PMDSClient
 			try
 			{
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     //ControlManagment1.autoTranslateForm(this);

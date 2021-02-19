@@ -55,7 +55,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
             
             InitializeComboBoxDesigns();
             ShowHideTabs();
@@ -1321,7 +1321,7 @@ namespace PMDS.GUI
 
         private void ucPDxSearch_Load(object sender, EventArgs e)
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
 
             cbTop10Allgemein.Location = cbTop10.Location;
             cbTop10Allgemein.Width = cbTop10.Width;

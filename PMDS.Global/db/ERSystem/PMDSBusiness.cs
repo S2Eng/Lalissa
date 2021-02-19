@@ -5097,9 +5097,6 @@ namespace PMDS.DB
         {
             try
             {
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
-                    return false;
-
                 IQueryable<PMDS.db.Entities.Patient> tPatient = db.Patient.Where(b => b.ID == IDPatient);
                 if (tPatient.Count() == 1)
                 {
@@ -11436,10 +11433,6 @@ namespace PMDS.DB
             try
             {
                 PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
-                
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
-                    return DBContext;
-
                 //PMDSBusiness.getConnection(ref DBContext);
                 PMDSBusiness.setERConnection(ref DBContext);
 
@@ -11478,9 +11471,6 @@ namespace PMDS.DB
         {
             try
             {
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
-                    return;
-
                 string providerName = "System.Data.SqlClient";
                 string serverName = PMDS.Global.ENV.DB_SERVER;
                 string databaseName = PMDS.Global.ENV.DB_DATABASE;

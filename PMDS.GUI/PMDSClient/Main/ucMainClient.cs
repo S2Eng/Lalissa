@@ -784,7 +784,7 @@ namespace PMDS.GUI.PMDSClient
         {
             try
             {
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+                if (DesignMode)
                     return;
 
                 txtSearch.Focus();

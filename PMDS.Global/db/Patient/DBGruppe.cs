@@ -417,14 +417,14 @@ namespace PMDS.DB
 		public dsINTListe.INTListeDataTable AlleRechte()
 		{
 			dsINTListe ds = new dsINTListe();
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 // nur bekannte Rechte ermitteln
                 foreach (int e in Enum.GetValues(typeof(UserRights)))
                 {
                     daRechtByID.SelectCommand.Parameters[0].Value = e;
                     DBUtil.OneRowByID(this, ds.INTListe, daRechtByID,
-                        System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
+                        DesignMode);
                 }
             }
 			return ds.INTListe;

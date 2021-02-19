@@ -243,7 +243,7 @@ namespace PMDS.DB
 		//----------------------------------------------------------------------------
         public dsPatientenBemerkung alleBemerkungenPatient(Guid id, bool istDekurs, object von, object bis)
 		{
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
             {
                 new dsPatientenBemerkung();
             }

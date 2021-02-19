@@ -40,7 +40,7 @@ namespace PMDS.GUI
 
 		public frmChangePassword(Benutzer user, bool ELGAMode) : base(ELGAMode, true, user)
 		{
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

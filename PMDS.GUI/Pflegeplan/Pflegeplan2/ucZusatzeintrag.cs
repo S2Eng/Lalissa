@@ -33,7 +33,7 @@ namespace PMDS.GUI.PflegePlan2
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
             InitCombo();
          
         }

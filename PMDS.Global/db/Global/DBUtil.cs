@@ -211,7 +211,7 @@ namespace PMDS.DB
 		public static void OneRowByID(object owner, DataTable t, OleDbDataAdapter da, bool IsDesignMode)
 		{
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if (!IsDesignMode && ENV.AppRunning)
             {
                 // Daten erfolgreich gelesen ?
                 if (DataBase.Fill(da, t) != 1)

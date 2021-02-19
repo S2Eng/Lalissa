@@ -11,7 +11,7 @@ Public Class frmBiografieAdd
 
 
     Private Sub frmBiografieAdd_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Runtime Then
+        If Not DesignMode Then
             Dim ControlManagment1 As New QS2.Desktop.ControlManagment.ControlManagment()
             ControlManagment1.autoTranslateForm(Me)
         End If

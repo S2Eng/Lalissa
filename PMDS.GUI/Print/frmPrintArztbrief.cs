@@ -38,7 +38,7 @@ namespace PMDS.DynReportsForms
             try
             {
                 InitializeComponent();
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                 {
                     this.cbETo.NotKrankenkasse = true;
                     this.cbETo.RefreshList();

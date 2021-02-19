@@ -35,14 +35,14 @@ namespace PMDS.GUI
 		public frmPflegePlanEdit(dsPflegePlan.PflegePlanRow Row)
 		{
 			InitializeComponent();
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
             }
 
             _row = Row;
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
                 return;
             RefreshCaption();
 		}

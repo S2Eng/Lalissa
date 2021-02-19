@@ -335,7 +335,7 @@ namespace PMDS.Calc.UI.Admin
 		}
         public void  initControl()
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
+            if (DesignMode || !ENV.AppRunning)
                 return;
 
             ucLeistungskatalogAuswahl1.RefreshControl();

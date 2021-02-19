@@ -20,7 +20,7 @@ namespace PMDS.GUI.BaseControls
         {
             DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if (!DesignMode && ENV.AppRunning)
                 RefreshList();
         }
 

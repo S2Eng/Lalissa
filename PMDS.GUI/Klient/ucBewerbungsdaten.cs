@@ -43,7 +43,7 @@ namespace PMDS.GUI
             {
                 InitializeComponent();
 
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+                if (DesignMode || !ENV.AppRunning) return;
 
                 RefreshListAbteilungen(System.Guid.Empty);
 

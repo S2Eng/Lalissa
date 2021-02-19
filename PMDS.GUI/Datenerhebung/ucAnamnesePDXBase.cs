@@ -40,7 +40,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
                 return;
 
             _PDx = new PDx();
@@ -65,7 +65,7 @@ namespace PMDS.GUI
             set
             {
                 _modellgruppe = value;
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                     FillPDx(this.db);
 
             }
@@ -85,7 +85,7 @@ namespace PMDS.GUI
             {
                 _idAnamnese = value;
 
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                     UpdateGUI();
 
             }
@@ -105,7 +105,7 @@ namespace PMDS.GUI
             {
                 _PDXByPflegeModell = value;
 
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && _PDXByPflegeModell != null)
+                if (!DesignMode && _PDXByPflegeModell != null)
                     FillPDx(this.db);
 
 

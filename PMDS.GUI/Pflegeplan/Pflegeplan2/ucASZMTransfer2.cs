@@ -48,7 +48,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
 
             _zeitbereichSerien = new ZeitbereichSerien();
             _massnahmenserien = new Massnahmenserien();
@@ -803,7 +803,7 @@ namespace PMDS.GUI
 
         private void ucASZMTransfer2_Load(object sender, EventArgs e)
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
 
            // cbZeitbereichSerie.Location = pnlUhrzeit.Location;
         }
@@ -863,7 +863,7 @@ namespace PMDS.GUI
             if (cbZeitbereichSerie.Focused)
             {
 
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+                if (DesignMode || !ENV.AppRunning) return;
                 if (_valueChangeEnabled)
                 {
                     if (cbZeitbereichSerie.Value == null)
@@ -981,7 +981,7 @@ namespace PMDS.GUI
             if (cbMohneZeitbezug.Focused)
             {
                 if (PMDS.Global.historie.HistorieOn) return;
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+                if (DesignMode || !ENV.AppRunning) return;
 
                 if (_valueChangeEnabled)
                 {

@@ -31,7 +31,7 @@ namespace PMDS.Calc.UI.Admin
 
         public void RefreshControl()
         {
-            //if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            //if (DesignMode || !ENV.AppRunning) return;
             ////ucDynReports1.Init(ENV.DynReportPath);   // Reportliste laden    
             //ucDynReports1.Init(ENV.DynReportExtrasPath);
         }

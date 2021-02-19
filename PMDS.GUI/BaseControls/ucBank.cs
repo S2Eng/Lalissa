@@ -20,7 +20,7 @@ namespace PMDS.GUI.BaseControls
         {
             InitializeComponent();
             RequiredFields();
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
             Init();
         }
 

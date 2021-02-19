@@ -797,7 +797,7 @@ namespace PMDS.GUI
 		{
 			get
 			{
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                 {
                     if (this.cbAbzeichnen.Value == null)
                     {
@@ -816,7 +816,7 @@ namespace PMDS.GUI
         {
             get
             {
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                 {
                     if (this.cboShowCC.Value == null)
                     {

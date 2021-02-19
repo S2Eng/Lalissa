@@ -49,7 +49,7 @@ namespace PMDS.GUI
 		{
 			InitializeComponent();
 			//ultraLabel1.DataBindings[
-			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime) 
+			if(!DesignMode) 
 			{
 				UltraGridTools.SetAppearanceAndDisplayStyle(dgKatalog);				// Keyaction und aussehen setzen
 				ValueListsCollection vlc = dgKatalog.DisplayLayout.ValueLists;

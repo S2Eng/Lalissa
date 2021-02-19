@@ -42,7 +42,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
+            if (DesignMode || !ENV.AppRunning)
                 return;
             ucAdditionalASZMToPDx1.Top = ucMassnahmeDetails1.Top;
             ucAdditionalASZMToPDx1.Left = ucMassnahmeDetails1.Left;

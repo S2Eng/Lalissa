@@ -44,7 +44,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
             RequiredFields();
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if (!DesignMode && ENV.AppRunning)
             {
 
                 if (ENV.RezeptUseTimeOfDay)

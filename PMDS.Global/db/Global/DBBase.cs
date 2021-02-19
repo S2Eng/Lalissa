@@ -159,7 +159,7 @@ namespace PMDS.DB
 
 			if (IsSingleEntry)
 				DBUtil.OneRowByID(this, ((IDBBase)this).ITEM, daFilterEntry,
-					System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime);
+					DesignMode);
 			else
 				DataBase.Fill(daFilterEntry, ((IDBBase)this).ITEM);
 		}

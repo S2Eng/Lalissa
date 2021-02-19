@@ -25,7 +25,7 @@ namespace PMDS.GUI.BaseControls
 
         public PflegerCombo(bool cboIsDropDownStyleTmp)
 		{
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if (!DesignMode && ENV.AppRunning)
             {
                 this._cboIsDropDownStyle = cboIsDropDownStyleTmp;
                 RefreshList();

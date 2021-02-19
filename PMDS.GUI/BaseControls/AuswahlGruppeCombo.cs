@@ -53,7 +53,7 @@ namespace PMDS.GUI.BaseControls
 
         public AuswahlGruppeCombo()
 		{
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 if (Group == "FAM")
                 {
@@ -140,7 +140,7 @@ namespace PMDS.GUI.BaseControls
             this.Items.Clear();
             try
             {
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                 {
                     if (_addEmptyEnry)
                         this.Items.Add(Guid.Empty, " ");
@@ -257,7 +257,7 @@ namespace PMDS.GUI.BaseControls
                     if (value.Trim().Length == 0)
                         return;
 
-                    if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime) 
+                    if (!DesignMode) 
                         RefreshList();
                 }
                 catch(Exception ex)

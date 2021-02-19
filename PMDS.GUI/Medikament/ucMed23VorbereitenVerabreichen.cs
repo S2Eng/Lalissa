@@ -69,7 +69,7 @@ namespace PMDS.GUI
 
             _InitInProgress     = false;
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
 
             HideOrShowGropMehrauswahl();
 
@@ -916,7 +916,7 @@ namespace PMDS.GUI
 
         private void ucMedikation_Load(object sender, EventArgs e)
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning) return;
+            if (DesignMode || !ENV.AppRunning) return;
 
         }
 

@@ -28,7 +28,7 @@ namespace PMDS.GUI
 		{
 			InitializeComponent();
             
-            if (System.ComponentModel.LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -84,7 +84,7 @@ namespace PMDS.GUI
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(729, 48);
+            this.labInfo.Size = new System.Drawing.Size(574, 48);
             this.labInfo.TabIndex = 0;
             this.labInfo.Text = "Neuaufnahme";
             // 
@@ -98,7 +98,7 @@ namespace PMDS.GUI
             this.lblInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo1.Location = new System.Drawing.Point(0, 64);
             this.lblInfo1.Name = "lblInfo1";
-            this.lblInfo1.Size = new System.Drawing.Size(729, 24);
+            this.lblInfo1.Size = new System.Drawing.Size(574, 24);
             this.lblInfo1.TabIndex = 1;
             this.lblInfo1.Text = "Klient(in) wird im System neu erfasst";
             // 
@@ -112,7 +112,7 @@ namespace PMDS.GUI
             this.lblInfo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo2.Location = new System.Drawing.Point(0, 88);
             this.lblInfo2.Name = "lblInfo2";
-            this.lblInfo2.Size = new System.Drawing.Size(729, 32);
+            this.lblInfo2.Size = new System.Drawing.Size(574, 32);
             this.lblInfo2.TabIndex = 2;
             this.lblInfo2.Text = "(keine Wiederaufnahme)";
             // 
@@ -187,7 +187,8 @@ namespace PMDS.GUI
             patient1.Vorname = "";
             patient1.WohnungAbgemeldetJN = false;
             this.ucPatientNew1.Patient = patient1;
-            this.ucPatientNew1.Size = new System.Drawing.Size(731, 276);
+            this.ucPatientNew1.ReadOnlyVersDat = false;
+            this.ucPatientNew1.Size = new System.Drawing.Size(574, 528);
             this.ucPatientNew1.TabIndex = 0;
             // 
             // btnCancel
@@ -202,7 +203,7 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(579, 706);
+            this.btnCancel.Location = new System.Drawing.Point(424, 672);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 2;
@@ -224,7 +225,7 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(675, 706);
+            this.btnOK.Location = new System.Drawing.Point(520, 672);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(48, 32);
             this.btnOK.TabIndex = 1;
@@ -238,7 +239,7 @@ namespace PMDS.GUI
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(729, 750);
+            this.ClientSize = new System.Drawing.Size(574, 716);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);

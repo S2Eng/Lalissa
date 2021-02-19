@@ -48,7 +48,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if (!DesignMode && ENV.AppRunning)
             {
                 _patBewerber = new PatientBewerber();
                 UltraGridTools.AddAbteilungsValueList(dgBewerber2, "IDAbteilung");
@@ -451,7 +451,7 @@ namespace PMDS.GUI
 
         private void ucBewerber_Load(object sender, EventArgs e)
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if (!DesignMode && ENV.AppRunning)
             {
                 txtName.Text = "";
                 dtpBewVon.Value = null;

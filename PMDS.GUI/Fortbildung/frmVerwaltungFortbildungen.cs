@@ -33,7 +33,7 @@ namespace PMDS.GUI.Fortbildung
 
         private void frmFortbildungen_Load(object sender, EventArgs e)
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

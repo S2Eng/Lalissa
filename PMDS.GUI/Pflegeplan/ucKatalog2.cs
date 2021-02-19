@@ -1162,7 +1162,7 @@ namespace PMDS.GUI
 
         private void ucKatalog2_Load(object sender, EventArgs e)
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
                 return;
             cbEintragTyp.RefreshList();
             cbLinkDokument.RefreshList();

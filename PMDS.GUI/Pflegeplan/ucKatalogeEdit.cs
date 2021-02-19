@@ -85,7 +85,7 @@ namespace PMDS.GUI
             this.cbASZM.AlleEinträge = true;
             this.cbASZM.dropDownStyle = DropDownStyle.DropDown;
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) 
+            if (DesignMode) 
 				return;
             
             try 

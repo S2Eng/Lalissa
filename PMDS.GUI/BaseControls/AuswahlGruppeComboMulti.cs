@@ -58,7 +58,7 @@ namespace PMDS.GUI.BaseControls
             {
                 if (!this.IsIntialized)
                 {
-                    if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)                   
+                    if (DesignMode)                   
                         return;
 
                     this.TypeMulti = TypeMulti;

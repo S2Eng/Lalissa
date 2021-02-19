@@ -76,7 +76,7 @@ namespace PMDS.GUI.BaseControls
 
         public override void RefreshList()
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
+            if (DesignMode || !ENV.AppRunning)
                 return;
             RefreshList(false);
         }

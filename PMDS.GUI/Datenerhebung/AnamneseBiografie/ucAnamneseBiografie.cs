@@ -32,7 +32,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
+            if (DesignMode || !ENV.AppRunning)
             {
                 return;
             }
@@ -77,7 +77,7 @@ namespace PMDS.GUI
 
         private void ucAnamneseKrohwinkel2_Load(object sender, EventArgs e)
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
                 return;
 
         }

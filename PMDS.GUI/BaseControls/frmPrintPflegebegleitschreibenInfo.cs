@@ -152,7 +152,7 @@ namespace PMDS.DynReportsForms
 			RequiredFields();
             InitValues(System.IO.Path.Combine(PMDS.Global.ENV.pathConfig,  "frmPrintPflegebegleitschreibenInfo.config"));
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 this.cbETo.NotKrankenkasse = true;
                 this.cbETo.RefreshList();

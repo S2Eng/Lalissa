@@ -88,7 +88,7 @@ namespace PMDS.GUI
         public ucBenutzer()
         {
             InitializeComponent();
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
+            if (DesignMode || !ENV.AppRunning)
                 return;
             Benutzer = new Benutzer();
             RequiredFields();

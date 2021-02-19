@@ -22,7 +22,7 @@ Public Class BaseGrid
 
     Private Sub BaseGrid_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         Try
-            If System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Runtime And Me.AutoWork Then
+            If Not DesignMode And Me.AutoWork Then
                 Me.doVisibleChanged()
             End If
 
@@ -32,11 +32,11 @@ Public Class BaseGrid
     End Sub
     Public Sub doVisibleChanged()
         Try
-            If System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Runtime And ENV._ApplicationIsRunning Then
+            If Not DesignMode And ENV._ApplicationIsRunning Then
                 Me.initControl()
 
                 Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Me.contextMenuStrip1, Me.IsLoaded, rRes, True, True, Me.DoIDResAuto,
-                                                       System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Designtime)
+                                                       DesignMode)
                 Me.DoLayoutGrid()
                 doFormatDateTime(Me)
             Else
@@ -95,7 +95,7 @@ Public Class BaseGrid
                 Me.initControl()
                 If Not Me.doBaseElements1.InfoControl.LastLoadedLayout.IsLoaded Then
                     Dim LayoutFound As Boolean = False
-                    If System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Runtime Then
+                    If Not DesignMode Then
                         Dim cLayoutManager1 As New QS2.Desktop.ControlManagment.cLayoutManager2()
                         cLayoutManager1.doLayoutGrid(Me, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not ENV._IntDeactivated, ENV._AutoAddNewRessources)
                         'compLayout1.doLayoutGrid(Me, Me.IDRes.Trim(), Nothing, LayoutFound, True, Not ENV._IntDeactivated, ENV._AutoAddNewRessources)

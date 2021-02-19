@@ -338,7 +338,7 @@ namespace PMDS.Calc.UI.Admin
 		public ucSonderleistungsKatalog()
 		{
 			InitializeComponent();
-			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
+			if(DesignMode || !ENV.AppRunning)
 				return;
 		}
 

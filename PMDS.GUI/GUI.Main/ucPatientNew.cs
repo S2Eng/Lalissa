@@ -65,7 +65,7 @@ namespace PMDS.GUI
 			InitializeComponent();
 
             //Änderung nach 09.05.2007 MDA
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
                 return;
 
             if (ENV.AppRunning)
@@ -80,7 +80,7 @@ namespace PMDS.GUI
 
 		private void ucPatientNew_Load(object sender, System.EventArgs e)
 		{
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime || !ENV.AppRunning)
+            if (DesignMode || !ENV.AppRunning)
                 return;
 
         }
@@ -382,10 +382,10 @@ namespace PMDS.GUI
             // ucVersichrungsdaten1
             // 
             this.ucVersichrungsdaten1.BackColor = System.Drawing.Color.Transparent;
-            this.ucVersichrungsdaten1.Location = new System.Drawing.Point(12, 257);
+            this.ucVersichrungsdaten1.Location = new System.Drawing.Point(12, 276);
             this.ucVersichrungsdaten1.Margin = new System.Windows.Forms.Padding(4);
             this.ucVersichrungsdaten1.Name = "ucVersichrungsdaten1";
-            this.ucVersichrungsdaten1.Size = new System.Drawing.Size(550, 241);
+            this.ucVersichrungsdaten1.Size = new System.Drawing.Size(550, 204);
             this.ucVersichrungsdaten1.TabIndex = 23;
             this.ucVersichrungsdaten1.ValueChanged += new System.EventHandler(this.OnVersValueChanged);
             this.ucVersichrungsdaten1.KrankenkasseChanged += new System.EventHandler(this.onVersChanged);

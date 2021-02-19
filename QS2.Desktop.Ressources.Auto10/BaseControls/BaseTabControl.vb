@@ -27,7 +27,7 @@ Public Class BaseTabControl
 
     Private Sub BaseTabControl_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         Try
-            If System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Runtime Then
+            If Not DesignMode Then
                 Me.doVisibleChanged()
             End If
 
@@ -37,10 +37,10 @@ Public Class BaseTabControl
     End Sub
     Public Sub doVisibleChanged()
         Try
-            If System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Runtime And ENV._ApplicationIsRunning Then
+            If Not DesignMode And ENV._ApplicationIsRunning Then
                 Me.initControl()
                 Me.doBaseElements1.runControlManagment(Me.IDRes, Me, Nothing, Me.IsLoaded, rRes, True, False, Me.DoIDResAuto,
-                                                       System.ComponentModel.LicenseManager.UsageMode = System.ComponentModel.LicenseUsageMode.Designtime)
+                                                       DesignMode)
             Else
                 Dim str As String = ""
             End If

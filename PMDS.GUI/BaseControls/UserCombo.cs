@@ -31,7 +31,7 @@ namespace PMDS.GUI.BaseControls
 		//----------------------------------------------------------------------------
 		public UserCombo()
 		{
-            if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+            if(!DesignMode && ENV.AppRunning)
 			    RefreshList();
 			_bInit = false;
 		}

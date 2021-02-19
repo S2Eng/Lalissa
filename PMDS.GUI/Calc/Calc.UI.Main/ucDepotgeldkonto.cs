@@ -55,7 +55,7 @@ namespace PMDS.GUI
         }
         public void  initControl()
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
                 return;
 
             this.ucKlinikDropDown1.initControl();

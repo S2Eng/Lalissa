@@ -87,7 +87,7 @@ namespace VirtualKeyboard
 
         private void PrepareForSpecialKey()
         {
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+            if (DesignMode)
                 return;
             if (_SpecialKey == VirtualSpecialKey.None)
                 return;

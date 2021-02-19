@@ -48,7 +48,7 @@ namespace PMDS.GUI
 		{
 			InitializeComponent();
 			
-			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning) 
+			if(!DesignMode && ENV.AppRunning) 
 			{
                 AllowEdit = ENV.HasRight(UserRights.Stammdatenverwaltung);
 
@@ -670,7 +670,7 @@ namespace PMDS.GUI
 		{
 			try 
 			{
-				if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning) 
+				if(!DesignMode && ENV.AppRunning) 
 				{
 					_EintragZusatz = new EintragZusatz();
 					dgMain.DataSource = _EintragZusatz.EINTRAGZUSATZ;

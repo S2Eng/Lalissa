@@ -92,7 +92,7 @@ namespace PMDS.GUI
         public ucASZMSearchSelector2()
 		{
 			InitializeComponent();
-			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+			if(DesignMode)
 				return;
 
             InitializeComboBoxDesigns();
@@ -1096,7 +1096,7 @@ namespace PMDS.GUI
 		{
 			try
 			{
-				if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+				if(DesignMode)
 					return;
                 //Neu nach 16.05.2007 MDA
                 Abteilung abteilung = new Abteilung();

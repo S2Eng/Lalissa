@@ -542,7 +542,7 @@ namespace PMDS.GUI.Medikament
         {
             try
             {
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime && ENV.AppRunning)
+                if (!DesignMode && ENV.AppRunning)
                 {
                     qs2.core.vb.compLayout compLayout1 = new qs2.core.vb.compLayout();
                     compLayout1.initControl();

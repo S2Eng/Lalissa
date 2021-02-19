@@ -132,7 +132,7 @@ namespace PMDS.Calc.UI.Admin
                 System.Drawing.Rectangle UsableScreen = System.Windows.Forms.Screen.GetWorkingArea(this);
                 System.Drawing.Rectangle FullScreen = System.Windows.Forms.Screen.GetBounds(this);
 
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     ControlManagment1.autoTranslateForm(this);

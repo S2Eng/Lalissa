@@ -71,7 +71,7 @@ namespace PMDS.GUI
 			_sa = aa;
 			InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+            if (!DesignMode)
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -632,7 +632,7 @@ namespace PMDS.GUI
 
 		private void frmAskLocalize_Load(object sender, System.EventArgs e)
 		{
-			if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+			if(DesignMode)
 				return;
 			cbArea.Group = "LOA";
 			cbSide.Group = "LOS";

@@ -976,7 +976,7 @@ namespace PMDS.GUI
         {
             if (this.Visible)
             {
-                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
+                if (!DesignMode)
                 {
                     if (this.isStartGrid)
                     {
