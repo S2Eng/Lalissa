@@ -151,7 +151,7 @@ namespace PMDS.GUI
 			try
 			{
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
-                if (!DesignMode)
+                if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Runtime)
                 {
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     //ControlManagment1.autoTranslateForm(this);
@@ -269,6 +269,7 @@ namespace PMDS.GUI
             this.txtPasswort.PasswordChar = '*';
             this.txtPasswort.Size = new System.Drawing.Size(205, 24);
             this.txtPasswort.TabIndex = 12;
+            this.txtPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswort_KeyDown);
             // 
             // btnCancel
             // 
