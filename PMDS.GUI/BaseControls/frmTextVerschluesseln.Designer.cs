@@ -130,7 +130,6 @@
             this.txtPassword.Size = new System.Drawing.Size(163, 24);
             this.txtPassword.TabIndex = 7;
             this.txtPassword.Visible = false;
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
             // btnCopyToClipboard

@@ -425,10 +425,6 @@ namespace PMDS.GUI.GUI.Main
             }
         }
 
-        private void txtÜbernehmerPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            PMDS.Global.generic.TogglePassword(sender);
-        }
     }
 
 }

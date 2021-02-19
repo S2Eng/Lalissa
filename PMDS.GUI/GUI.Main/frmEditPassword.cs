@@ -626,17 +626,30 @@ namespace PMDS.GUI
 
         private void txtPasswortAlt_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            KlarTextPasswordField(sender);
         }
 
         private void txtPasswort_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            KlarTextPasswordField(sender);
         }
 
         private void txtPasswort2_KeyDown(object sender, KeyEventArgs e)
         {
-            PMDS.Global.generic.TogglePassword(sender);
+            KlarTextPasswordField(sender);
+        }
+
+        private static void KlarTextPasswordField(object sender)
+        {
+            if (ModifierKeys.HasFlag(Keys.Control))
+            {
+                QS2.Desktop.ControlManagment.BaseTextEditor ed = (QS2.Desktop.ControlManagment.BaseTextEditor)sender;
+                if (ed.PasswordChar == '\0')
+                    ed.PasswordChar = '*';
+                else
+                    ed.PasswordChar = '\0';
+                Application.DoEvents();
+            }
         }
     }
 }

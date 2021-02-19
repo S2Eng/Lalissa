@@ -200,7 +200,6 @@
             this.txtÜbernehmerPassword.PasswordChar = '*';
             this.txtÜbernehmerPassword.Size = new System.Drawing.Size(276, 21);
             this.txtÜbernehmerPassword.TabIndex = 2;
-            this.txtÜbernehmerPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtÜbernehmerPassword_KeyDown);
             // 
             // lblÜbernehmerPassword
             // 

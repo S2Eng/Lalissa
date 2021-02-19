@@ -144,10 +144,5 @@ namespace PMDS.GUI.BaseControls
             this.txtVerschluesselterText.Text = PMDS.BusinessLogic.BUtil.EncryptString(this.txtKlartext.Text);
             _bPrepareDBLizenz = true;
         }
-
-        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            PMDS.Global.generic.TogglePassword(sender);
-        }
     }
 }

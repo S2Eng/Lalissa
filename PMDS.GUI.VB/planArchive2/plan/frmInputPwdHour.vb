@@ -76,7 +76,4 @@ Public Class frmInputPwdHour
         End Try
     End Sub
 
-    Private Sub txtPwdEntered_KeyDown(sender As Object, e As Windows.Forms.KeyEventArgs) Handles txtPwdEntered.KeyDown
-        PMDS.Global.generic.TogglePassword(sender)
-    End Sub
 End Class

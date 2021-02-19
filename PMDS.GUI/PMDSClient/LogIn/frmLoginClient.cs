@@ -199,7 +199,7 @@ namespace PMDS.GUI.PMDSClient
 		{
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLoginClient));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.lblBenutzer = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -254,7 +254,6 @@ namespace PMDS.GUI.PMDSClient
             this.txtPasswort.PasswordChar = '*';
             this.txtPasswort.Size = new System.Drawing.Size(205, 24);
             this.txtPasswort.TabIndex = 12;
-            this.txtPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswort_KeyDown);
             // 
             // btnCancel
             // 
@@ -321,7 +320,7 @@ namespace PMDS.GUI.PMDSClient
             this.lblInfo.TabIndex = 17;
             this.lblInfo.Text = "Anmeldung an PMDS";
             // 
-            // frmLoginClient
+            // frmLogin
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -340,7 +339,7 @@ namespace PMDS.GUI.PMDSClient
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmLoginClient";
+            this.Name = "frmLogin";
             this.Text = "Login on {0} ...";
             this.Closing += new System.ComponentModel.CancelEventHandler(this.frmEditPassword_Closing);
             this.Load += new System.EventHandler(this.frmLogin_Load);
@@ -433,11 +432,7 @@ namespace PMDS.GUI.PMDSClient
 		{
 		}
 
-        private void txtPasswort_KeyDown(object sender, KeyEventArgs e)
-        {
-            PMDS.Global.generic.TogglePassword(sender);
-        }
-    }
+	}
 
 }
 

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
@@ -95,7 +95,7 @@ namespace PMDS.GUI
                         //}
                     }
                 }
-                else                        // Benutzer und Passwort sind über die Commandline übergeben worden
+                else                        // Benutzer und Passwort sind ï¿½ber die Commandline ï¿½bergeben worden
                 {
                     object IDBenutzer = Benutzer.UserID(ENV.COMMANDLINE_USER);
                     if (IDBenutzer == null)
@@ -269,7 +269,6 @@ namespace PMDS.GUI
             this.txtPasswort.PasswordChar = '*';
             this.txtPasswort.Size = new System.Drawing.Size(205, 24);
             this.txtPasswort.TabIndex = 12;
-            this.txtPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPasswort_KeyDown);
             // 
             // btnCancel
             // 
@@ -370,7 +369,7 @@ namespace PMDS.GUI
 
 		//----------------------------------------------------------------------------
 		/// <summary>
-		/// Benötigte Felder setzen
+		/// Benï¿½tigte Felder setzen
 		/// </summary>
 		//----------------------------------------------------------------------------
 		protected void RequiredFields()
@@ -460,7 +459,7 @@ namespace PMDS.GUI
 
 		//----------------------------------------------------------------------------
 		/// <summary>
-		/// Dialog schließen überwachen
+		/// Dialog schlieï¿½en ï¿½berwachen
 		/// </summary>
 		//----------------------------------------------------------------------------
 		private void frmEditPassword_Closing(object sender, System.ComponentModel.CancelEventArgs e)
