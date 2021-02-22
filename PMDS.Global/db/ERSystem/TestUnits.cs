@@ -1216,8 +1216,8 @@ namespace PMDS.Global.db.ERSystem
                 res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sollen die Bewerbungsdaten zurückgesetzt werden?", "Klient ist aktiver Bewerber", MessageBoxButtons.YesNo);
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login (1)");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login (2)");
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login (3)");
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login (4)");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login: Benutzer falsch!");
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login: Passwort leer oder falsch!");
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Key Quick-Filter: Eingabe erforderlich!", "Eingabe erforderlich", MessageBoxButtons.OK);
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie das Layout wirklich löschen?", "Löschen", MessageBoxButtons.YesNo);
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie den Quickfilter wirklich kopieren?", "Quickfilter kopieren", MessageBoxButtons.YesNo);

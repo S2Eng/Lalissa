@@ -599,48 +599,64 @@ namespace WCFServicePMDS
                 iGDAPers.maxResults = GdaMaxResults.ToString();                    //R
                 
                 inpGda1.hcIdentifierPerson = iGDAPers;
-                ListResponse[] retGda1 = GdaIndexWs1.GdaIndexPersonenSuche(inpGda1);
+                ListResponse[] retGda1 = new ListResponse[0];
 
-                retDto.Errors = "";
-                foreach (var respItm in retGda1)
+                try
                 {
-                    if (!String.IsNullOrEmpty(respItm.error))
+                    retGda1 = GdaIndexWs1.GdaIndexPersonenSuche(inpGda1);
+                }                
+                catch (System.Web.Services.Protocols.SoapException ex)
+                {
+                        retDto.MessageException = ex.Message;
+                        retDto.MessageExceptionNr = 0;
+                        retDto.bOK = true;
+                        return retDto;
+                }
+
+                if (retGda1.Length > 0)
+                {
+                    retDto.Errors = "";
+                    foreach (var respItm in retGda1)
                     {
-                        if (retDto.Errors.Trim() == "")
-                            retDto.Errors += "Errors:" + "\r\n";
-                        retDto.Errors += respItm.error + "\r\n";
-                    }
-
-                    var rGda = respItm.gda;
-                    ObjectDTO newGda = new ObjectDTO() { NachNameFirma = "", Vorname = "", Title = "", IDELgaGda = "", isOrganisation = false };
-
-                    newGda.NachNameFirma = this.checkFieldNull(rGda.surname);
-                    newGda.Vorname = this.checkFieldNull(rGda.firstname);
-                    newGda.Title = this.checkFieldNull(rGda.title);
-                    newGda.IDELgaGda = this.checkFieldNull(rGda.gdaId.id);
-                    newGda.isOrganisation = rGda.isOrganisation;
-
-                    if (rGda.addresses != null)
-                    {
-                        foreach (var rGdaAdress in rGda.addresses)
+                        if (!String.IsNullOrEmpty(respItm.error))
                         {
-                            AdressDto newAdress = new AdressDto() { Zip = "", City = "", Country = "", Street = "", StreetNr = "", Status = "", State = "" };
-                            newGda.lAdresses = new List<AdressDto>();
-                            newGda.lAdresses.Add(newAdress);
-
-                            newAdress.Zip = this.checkFieldNull(rGdaAdress.zip);
-                            newAdress.City = this.checkFieldNull(rGdaAdress.city);
-                            newAdress.Country = this.checkFieldNull(rGdaAdress.country);
-                            newAdress.Street = this.checkFieldNull(rGdaAdress.streetName);
-                            newAdress.StreetNr = this.checkFieldNull(rGdaAdress.streetNumber);
-                            newAdress.Status = this.checkFieldNull(rGdaAdress.status);
-                            newAdress.State = this.checkFieldNull(rGdaAdress.state);
-                            
-                            retDto.iRowsFound += 1;
+                            if (retDto.Errors.Trim() == "")
+                                retDto.Errors += "Errors:" + "\r\n";
+                            retDto.Errors += respItm.error + "\r\n";
                         }
-                    }
 
-                    retDto.lGDAs.Add(newGda);
+                        var rGda = respItm.gda;
+                        ObjectDTO newGda = new ObjectDTO() { NachNameFirma = "", Vorname = "", Title = "", IDELgaGda = "", isOrganisation = false };
+
+                        newGda.NachNameFirma = this.checkFieldNull(rGda.surname);
+                        newGda.Vorname = this.checkFieldNull(rGda.firstname);
+                        newGda.Title = this.checkFieldNull(rGda.title);
+                        newGda.IDELgaGda = this.checkFieldNull(rGda.gdaId.id);
+                        newGda.isOrganisation = rGda.isOrganisation;
+
+                        if (rGda.addresses != null)
+                        {
+                            foreach (var rGdaAdress in rGda.addresses)
+                            {
+                                AdressDto newAdress = new AdressDto() { Zip = "", City = "", Country = "", Street = "", StreetNr = "", Status = "", State = "" };
+                                newGda.lAdresses = new List<AdressDto>();
+                                newGda.lAdresses.Add(newAdress);
+
+                                newAdress.Zip = this.checkFieldNull(rGdaAdress.zip);
+                                newAdress.City = this.checkFieldNull(rGdaAdress.city);
+                                newAdress.Country = this.checkFieldNull(rGdaAdress.country);
+                                newAdress.Street = this.checkFieldNull(rGdaAdress.streetName);
+                                newAdress.StreetNr = this.checkFieldNull(rGdaAdress.streetNumber);
+                                newAdress.Status = this.checkFieldNull(rGdaAdress.status);
+                                newAdress.State = this.checkFieldNull(rGdaAdress.state);
+                                if (rGdaAdress.country == "AT")
+                                    newAdress.Country = "Österreich";
+
+                                retDto.iRowsFound += 1;
+                            }
+                        }
+                        retDto.lGDAs.Add(newGda);
+                    }
                 }
 
                 if (retDto.Errors.Trim() == "")
@@ -654,9 +670,6 @@ namespace WCFServicePMDS
                     return retDto;
                 }
 
-
-
-
                 //GetGdaDescriptors inpGda0 = new GetGdaDescriptors();
                 //InstanceIdentifier iif = new InstanceIdentifier();
 
@@ -668,39 +681,7 @@ namespace WCFServicePMDS
             }
             catch (Exception ex)
             {
-                if (ex.ToString().Trim().ToLower().Contains(("6005").Trim().ToLower()))
-                {
-                    string MsgExcep = "\r\n" + "Bitte schränken Sie die Suche ein!";
-                    retDto.MessageException = "Maximale Trefferanzahl überschritten!" + MsgExcep;
-                    retDto.MessageExceptionNr = 6005;
-                    retDto.bOK = true;
-                    return retDto;
-                }
-                else if (ex.ToString().Trim().ToLower().Contains(("6003").Trim().ToLower()))
-                {
-                    string MsgExcep = "\r\n" + "Bitte ändern Sie die Suchparameter!";
-                    retDto.MessageException = "Es trat ein allgemeiner Fehler bei der Abfrage auf!" + MsgExcep;
-                    retDto.MessageExceptionNr = 6003;
-                    retDto.bOK = true;
-                    return retDto;
-                }
-                else if (ex.ToString().Trim().ToLower().Contains(("6002").Trim().ToLower()))
-                {
-                    string MsgExcep = "\r\n" + "Bitte ändern Sie die Suchparameter!";
-                    retDto.MessageException = "Es wurde kein GDA gefunden!" + MsgExcep;
-                    retDto.MessageExceptionNr = 6002;
-                    retDto.bOK = true;
-                    return retDto;
-                }
-                else
-                {
-                    throw new Exception("ELGABAL.queryGDAs: " + ex.ToString());
-                }
-
-                //6005: Maximale Trefferanzahl überschritten.
-                //6003: Es trat ein allgemeiner Fehler bei der Abfrage auf!   (> 6003 - Error nur ein Letter)
-                // 6002 - no gda found
-                // Index 9 Size 9
+                throw new Exception("ELGABAL.queryGDAs: " + ex.ToString());            
             }
         }
         public ELGAParOutDto queryDocuments(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, ref documentClientDto documentClientDtoBack, ref submissionSetClientDto submissionSet,

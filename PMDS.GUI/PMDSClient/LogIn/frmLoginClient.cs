@@ -96,14 +96,14 @@ namespace PMDS.GUI.PMDSClient
                     object IDBenutzer = Benutzer.UserID(ENV.COMMANDLINE_USER);
                     if (IDBenutzer == null)
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login (3)");
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login: Benutzer falsch!");
                         return false;
                     }
 
                     Benutzer ben2 = new Benutzer((Guid)IDBenutzer);
                     if (!ben2.HasPasswort(ENV.COMMANDLINE_PWD))
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login (4)");
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Falsches Login: Passwort leer oder falsch!");
                         return false;
                     }
                     frm.User = ben2;

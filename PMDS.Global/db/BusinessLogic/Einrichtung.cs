@@ -9,25 +9,20 @@ using PMDS.Data.PflegePlan;
 using PMDS.Global.db.Patient;
 using PMDS.Global.db.Global;
 using System.Linq;
-
+using System.Collections.Generic;
 
 namespace PMDS.BusinessLogic
 {
-
-
-
-	public class Einrichtung : AdresseKontaktBasis, IBusinessBase
+    public class Einrichtung : AdresseKontaktBasis, IBusinessBase
 	{
 		private DBEinrichtung _db = new DBEinrichtung();
 
-
-
-		protected override IDBBase DBInterface
+        protected override IDBBase DBInterface
 		{
 			get	{	return (IDBBase)_db;	}
 		}
 
-		public static dsGUIDListe.IDListeDataTable All(bool NotKrankenkasse)
+		public static dsGUIDListe.IDListeDataTable All(bool NotKrankenkasse, bool PSBOnly, bool DischLoctnOnly)
 		{
             if (NotKrankenkasse)
             {
@@ -39,14 +34,16 @@ namespace PMDS.BusinessLogic
                               select new
                               {
                                   ID = e.ID,
-                                  Text = e.Text
+                                  Text = e.Text,
+                                  ELGA_OrganizationOID = e.ELGA_OrganizationOID
+                                  
                               });
                     dsGUIDListe.IDListeDataTable t = new dsGUIDListe.IDListeDataTable();
                     foreach (var r in tE)
                     {
                         dsGUIDListe.IDListeRow rNew = (dsGUIDListe.IDListeRow)t.NewRow();
                         rNew.ID = r.ID;
-                        if (r.Text.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(r.Text))
                         {
                             rNew.TEXT = r.Text.Trim();
                         }
@@ -54,7 +51,13 @@ namespace PMDS.BusinessLogic
                         {
                             rNew.TEXT = QS2.Desktop.ControlManagment.ControlManagment.getRes("[Kein Name]");
                         }
-                        t.Rows.Add(rNew);
+
+                        if (PSBOnly && (generic.sEquals(r.ELGA_OrganizationOID, "PSBReceiver") || generic.sEquals(r.ELGA_OrganizationOID, "PSBReceiver,DischLoctn") || String.IsNullOrEmpty(r.ELGA_OrganizationOID)))
+                            t.Rows.Add(rNew);
+                        else if (DischLoctnOnly && (generic.sEquals(r.ELGA_OrganizationOID, "DischLoctn") || generic.sEquals(r.ELGA_OrganizationOID, "PSBReceiver,DischLoctn") || String.IsNullOrEmpty(r.ELGA_OrganizationOID)))
+                            t.Rows.Add(rNew);
+                        else if (!PSBOnly && !DischLoctnOnly && !generic.sEquals(r.Text, "Deprecate"))
+                            t.Rows.Add(rNew);
                     }
                     t.AcceptChanges();
                     return t;

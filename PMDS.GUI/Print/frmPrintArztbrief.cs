@@ -157,7 +157,7 @@ namespace PMDS.DynReportsForms
             this.lblAnEinrichtung.Name = "lblAnEinrichtung";
             this.lblAnEinrichtung.Size = new System.Drawing.Size(98, 17);
             this.lblAnEinrichtung.TabIndex = 0;
-            this.lblAnEinrichtung.Text = "An Einrichtung:";
+            this.lblAnEinrichtung.Text = "An:";
             // 
             // errorProvider1
             // 

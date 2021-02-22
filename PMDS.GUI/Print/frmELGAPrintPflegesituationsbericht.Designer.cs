@@ -80,7 +80,7 @@
             this.lblAnEinrichtung.Name = "lblAnEinrichtung";
             this.lblAnEinrichtung.Size = new System.Drawing.Size(81, 14);
             this.lblAnEinrichtung.TabIndex = 2;
-            this.lblAnEinrichtung.Text = "An Einrichtung:";
+            this.lblAnEinrichtung.Text = "An:";
             // 
             // btnPreview
             // 

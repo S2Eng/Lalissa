@@ -55,6 +55,9 @@ namespace PMDS.GUI
 			InitializeComponent();
 			Aufenthalt = new Aufenthalt();
 			RequiredFields();
+            cbEinrichtung.NotKrankenkasse = true;
+            cbEinrichtung.DischLotcnOnly = true;
+            cbEinrichtung.RefreshList();
 		}
 
 		//----------------------------------------------------------------------------
@@ -127,9 +130,9 @@ namespace PMDS.GUI
             this.lblNachgenendeBehandlung.AutoSize = true;
             this.lblNachgenendeBehandlung.Location = new System.Drawing.Point(249, 35);
             this.lblNachgenendeBehandlung.Name = "lblNachgenendeBehandlung";
-            this.lblNachgenendeBehandlung.Size = new System.Drawing.Size(101, 14);
+            this.lblNachgenendeBehandlung.Size = new System.Drawing.Size(85, 14);
             this.lblNachgenendeBehandlung.TabIndex = 2;
-            this.lblNachgenendeBehandlung.Text = "Nachgehende Beh.";
+            this.lblNachgenendeBehandlung.Text = "Entlassen nach:";
             // 
             // txtBemerkung
             // 
@@ -254,10 +257,13 @@ namespace PMDS.GUI
             this.cbEinrichtung.ButtonsRight.Add(editorButton2);
             this.cbEinrichtung.ButtonsRight.Add(editorButton3);
             this.cbEinrichtung.ButtonsRight.Add(editorButton4);
+            this.cbEinrichtung.DischLotcnOnly = false;
             this.cbEinrichtung.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbEinrichtung.IsInitialized = false;
             this.cbEinrichtung.Location = new System.Drawing.Point(349, 32);
             this.cbEinrichtung.Name = "cbEinrichtung";
             this.cbEinrichtung.NotKrankenkasse = true;
+            this.cbEinrichtung.PSBOnly = false;
             this.cbEinrichtung.ReadOnly = true;
             this.cbEinrichtung.Size = new System.Drawing.Size(287, 21);
             this.cbEinrichtung.TabIndex = 3;

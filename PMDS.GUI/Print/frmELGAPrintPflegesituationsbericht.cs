@@ -32,6 +32,7 @@ namespace PMDS.GUI.Print
             if (!DesignMode)
             {
                 this.cbETo.NotKrankenkasse = true;
+                this.cbETo.PSBOnly = true;
                 this.cbETo.RefreshList();
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

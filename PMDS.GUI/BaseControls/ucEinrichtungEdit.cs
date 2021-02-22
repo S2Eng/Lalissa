@@ -282,6 +282,22 @@ namespace PMDS.GUI
 				_verwaltung = new EngineVerwaltung(cbEinrichtung, ucEinrichtung1, 
 					btnAdd,  this.btnDel, btnUndo, btnSave);
 
+                //Vordefinierte Einrichtungen ausblenden, wenn icht AdminSecure
+                if (!ENV.adminSecure)
+                {
+                Restart:
+                    int i = 0; foreach (Infragistics.Win.ValueListItem item in cbEinrichtung.Items)
+                    {
+                        if (PMDS.Global.generic.sEquals(item.DisplayText, "<", Enums.eCompareMode.StartsWith))
+                        {
+                            cbEinrichtung.Items.RemoveAt(i);
+                            goto Restart;
+                        }
+                        i++;
+                    }
+                    cbEinrichtung.SelectedIndex = 0;
+                }
+
                 this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
 
                 if (ENV.lic_ELGA)

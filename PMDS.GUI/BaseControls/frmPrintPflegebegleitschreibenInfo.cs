@@ -155,6 +155,7 @@ namespace PMDS.DynReportsForms
             if (!DesignMode)
             {
                 this.cbETo.NotKrankenkasse = true;
+                this.cbETo.PSBOnly = true;              //Nur Empfänger für PSB, keine sontigen Locations
                 this.cbETo.RefreshList();
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
@@ -451,7 +452,7 @@ namespace PMDS.DynReportsForms
             this.lblAnEinrichtung.Name = "lblAnEinrichtung";
             this.lblAnEinrichtung.Size = new System.Drawing.Size(81, 14);
             this.lblAnEinrichtung.TabIndex = 0;
-            this.lblAnEinrichtung.Text = "An Einrichtung:";
+            this.lblAnEinrichtung.Text = "An:";
             // 
             // btnCancel
             // 
@@ -1640,7 +1641,7 @@ namespace PMDS.DynReportsForms
             if (this.cbETo.Value == null)
             {
                 this.errorProvider1.SetError(this.cbETo, "Error");
-                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("An Einrichtung: Eingabe erforderlich!", "", MessageBoxButtons.OK);
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("An: Eingabe erforderlich!", "", MessageBoxButtons.OK);
                 return false;
             }
 

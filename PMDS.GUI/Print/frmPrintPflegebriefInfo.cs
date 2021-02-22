@@ -113,7 +113,7 @@ namespace PMDS.Print
             this.lblAnEinrichtung.Name = "lblAnEinrichtung";
             this.lblAnEinrichtung.Size = new System.Drawing.Size(81, 14);
             this.lblAnEinrichtung.TabIndex = 0;
-            this.lblAnEinrichtung.Text = "An Einrichtung:";
+            this.lblAnEinrichtung.Text = "An:";
             // 
             // btnCancel
             // 

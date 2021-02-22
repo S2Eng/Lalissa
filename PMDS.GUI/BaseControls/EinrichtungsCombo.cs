@@ -12,26 +12,16 @@ namespace PMDS.GUI.BaseControls
 	public class EinrichtungsCombo : Infragistics.Win.UltraWinEditors.UltraComboEditor
 	{
 		private EditorButton _addBtn2 = new EditorButton("");
-        public bool IsInitialized = false;
-        public bool _NotKrankenkasse = false;
-
-
-
-
-
-
+        public bool IsInitialized { get; set; }
+        public bool NotKrankenkasse { get; set; }
+        public bool PSBOnly { get; set; }
+        public bool DischLotcnOnly { get; set; }
         public EinrichtungsCombo()
 		{
             //lthIntIntegrieren
             // Recht notwendig
             RefreshList();
 		}
-        public bool NotKrankenkasse
-
-        {
-            get { return _NotKrankenkasse; }
-            set { _NotKrankenkasse = value; }
-        }
 
         public void checkButtons()
         {
@@ -76,7 +66,7 @@ namespace PMDS.GUI.BaseControls
 			{
                 if (ENV.AppRunning)
                 {
-                    dsGUIDListe.IDListeDataTable t = Einrichtung.All(NotKrankenkasse);
+                    dsGUIDListe.IDListeDataTable t = Einrichtung.All(NotKrankenkasse, PSBOnly, DischLotcnOnly);
                     foreach (dsGUIDListe.IDListeRow r in t)
                         this.Items.Add(r.ID, r.TEXT);
                 }

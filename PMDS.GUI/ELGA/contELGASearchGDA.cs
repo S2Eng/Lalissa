@@ -270,8 +270,10 @@ namespace PMDS.GUI.ELGA
 
                     if (parOuot.MessageException != null && parOuot.MessageException.Trim() != "")
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageException.Trim() + "\r\n" + "\r\n" + 
-                                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNr.ToString(), "ELGA", MessageBoxButtons.OK);
+                        string msgText = parOuot.MessageException.Trim() + "\r\n" + "\r\n";
+                        if (parOuot.MessageExceptionNr > 0)
+                            msgText += QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNr.ToString();
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(msgText, "ELGA", MessageBoxButtons.OK);
                     }
                     else
                     {

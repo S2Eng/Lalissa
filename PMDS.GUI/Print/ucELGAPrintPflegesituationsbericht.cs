@@ -649,7 +649,7 @@ namespace PMDS.GUI.Print
                 SET<II> iis = new SET<II>();
                 II i = new II();
 
-                if (this.Empfaenger.Bezeichnung.Equals("Hausarzt", StringComparison.OrdinalIgnoreCase))
+                if (this.Empfaenger.Bezeichnung.Equals("<Hausarzt>", StringComparison.OrdinalIgnoreCase))
                 {
                     i.NullFlavor = NullFlavor.Unknown;
                     GeplEmpfänger.Id.Add(i);
@@ -657,7 +657,7 @@ namespace PMDS.GUI.Print
                     GeplEmpfänger.InformationRecipient.Name = new SET<PN> { new PN("Hausarzt") };
                     Empfaenger.IntendedRecipient = GeplEmpfänger;
                 }
-                else if (this.Empfaenger.Bezeichnung.Equals("Klient", StringComparison.OrdinalIgnoreCase))
+                else if (this.Empfaenger.Bezeichnung.Equals("<Klient>", StringComparison.OrdinalIgnoreCase))
                 {
                     i.NullFlavor = NullFlavor.NoInformation;
                     GeplEmpfänger.Id.Add(i);
