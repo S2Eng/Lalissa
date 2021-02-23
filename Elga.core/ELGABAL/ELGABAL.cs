@@ -633,6 +633,7 @@ namespace WCFServicePMDS
                         newGda.Title = this.checkFieldNull(rGda.title);
                         newGda.IDELgaGda = this.checkFieldNull(rGda.gdaId.id);
                         newGda.isOrganisation = rGda.isOrganisation;
+                        newGda.Fachrichtung = rGda.otherRoles[0].id;
 
                         if (rGda.addresses != null)
                         {
@@ -649,8 +650,7 @@ namespace WCFServicePMDS
                                 newAdress.StreetNr = this.checkFieldNull(rGdaAdress.streetNumber);
                                 newAdress.Status = this.checkFieldNull(rGdaAdress.status);
                                 newAdress.State = this.checkFieldNull(rGdaAdress.state);
-                                if (rGdaAdress.country == "AT")
-                                    newAdress.Country = "Österreich";
+                                newAdress.Country = rGdaAdress.country;
 
                                 retDto.iRowsFound += 1;
                             }

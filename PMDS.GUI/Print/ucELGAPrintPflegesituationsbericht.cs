@@ -921,7 +921,7 @@ namespace PMDS.GUI.Print
 
                 encEncounter.Id = new SET<II> { new II(this.Aufenthalt.ID) };
                 encEncounter.Id[0].AssigningAuthorityName = this.Klinik.Bezeichnung;
-                encEncounter.Code = new CE<ActEncounterCode>(ActEncounterCode.HomeHealth, "2.16.840.1.113883.5.4", null, null, "inpatient encounter", null);
+                encEncounter.Code = new CE<ActEncounterCode>(ActEncounterCode.InpatientNonacute, "2.16.840.1.113883.5.4", null, null, "inpatient encounter", null);
                 encEncounter.Code.CodeSystemName = "HL7:ActCode";
                 encEncounter.EffectiveTime = new IVL<TS>(this.Aufenthalt.Aufnahmezeitpunkt, dNow);
                 encEncounter.EffectiveTime.Low.DateValuePrecision = DatePrecision.Day;               
@@ -2610,31 +2610,31 @@ namespace PMDS.GUI.Print
                             //document.Close(true);
 
                             //Nur zur Ermittlung der Länge im XML erforderlich
-                            Chilkat.Crypt2 cr = new Chilkat.Crypt2
+                            using (Chilkat.Crypt2 cr = new Chilkat.Crypt2())
                             {
-                                EncodingMode = "Base64"
-                            };
-                            var sb = new StringBuilder(cr.Encode(Beilage.value, "base64"));
-                            iSizeTotal += sb.ToString().Length;
+                                cr.EncodingMode = "Base64";
+                                var sb = new StringBuilder(cr.Encode(Beilage.value, "base64"));
+                                iSizeTotal += sb.ToString().Length;
 
-                            if (iSizeTotal < iMaxSize)
-                            {
-                                iCountBeilagen++;
-                                string refObject = "Beilage_" + rBeilage.SubItems["DateinameArchiv"].Value.ToString();
-                                string txtObject = rBeilage.Text;
-                                BeilagenHiddenText += "<tr><td>" + txtObject + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr>";
-                                Beilage.id = refObject;
-                                Beilage.referencedObject = refObject;
+                                if (iSizeTotal < iMaxSize)
+                                {
+                                    iCountBeilagen++;
+                                    string refObject = "Beilage_" + rBeilage.SubItems["DateinameArchiv"].Value.ToString();
+                                    string txtObject = rBeilage.Text;
+                                    BeilagenHiddenText += "<tr><td>" + txtObject + "</td><td><renderMultiMedia referencedObject = \"" + refObject + "\"/></td></tr>";
+                                    Beilage.id = refObject;
+                                    Beilage.referencedObject = refObject;
 
-                                if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
-                                    Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
+                                    if (Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries == null)
+                                        Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries = new List<BeilagenEntry>();
 
-                                Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(Beilage);
-                            }
-                            else
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Die maximale Größe aller Anhänge darf " + sMaxSize + " kB nicht überschreiten!", MessageBoxButtons.OK, "Wichtiger Hinweis!");
-                                rBeilage.CheckState = CheckState.Unchecked;
+                                    Sektionen[(int)SektionOrder.Beilagen].BeilagenEntries.Add(Beilage);
+                                }
+                                else
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Die maximale Größe aller Anhänge darf " + sMaxSize + " kB nicht überschreiten!", MessageBoxButtons.OK, "Wichtiger Hinweis!");
+                                    rBeilage.CheckState = CheckState.Unchecked;
+                                }
                             }
                         }
                     }

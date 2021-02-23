@@ -43,13 +43,6 @@ namespace PMDS.GUI.ELGA
 
         public ELGABusiness bELGA = new ELGABusiness();
 
-
-
-
-
-
-
-
         public contELGASearchGDA()
         {
             InitializeComponent();
@@ -59,6 +52,11 @@ namespace PMDS.GUI.ELGA
         {
 
         }
+
+
+        private static List<KeyValuePair<string, string>> lShortCountries = new List<KeyValuePair<string, string>>() {new KeyValuePair<string, string>("AT", "Österreich"),
+                                                                                                        new KeyValuePair<string, string>("DE", "Deutschland"),
+                                                                                                        new KeyValuePair<string, string>("HU", "ungarn")};
 
 
 
@@ -291,15 +289,19 @@ namespace PMDS.GUI.ELGA
                                     rGda.Vorname = elgaPatient.Vorname.Trim();
                                     rGda.Title = elgaPatient.Title.Trim();
                                     rGda.IsOrganisation = elgaPatient.isOrganisation;
+                                    rGda.Fachrichtung = (from al in db.AuswahlListe
+                                                         where al.IDAuswahlListeGruppe == "FAR" && al.ELGA_Code == elgaPatient.Fachrichtung
+                                                         select al.Bezeichnung).FirstOrDefault().ToString(); 
 
                                     rGda.PLZ = elgaAdressGda.Zip.Trim();
                                     rGda.Ort = elgaAdressGda.City.Trim();
-                                    rGda.Land = elgaAdressGda.Country.Trim();
+                                    rGda.State = elgaAdressGda.State.Trim();
                                     rGda.Strasse = elgaAdressGda.Street.Trim();
                                     rGda.StrasseNr = elgaAdressGda.StreetNr.Trim();
+//os: ELGA. Solange nicht klar ist, aus welcher Auswahlliste das Land zu lesen ist - Abhilfe mit KeyValuePair
+                                    rGda.Land = lShortCountries.Where(kvp => kvp.Key == elgaAdressGda.Country).FirstOrDefault().Value;
 
                                     rGda.Status = elgaAdressGda.Status.Trim();
-                                    rGda.State = elgaAdressGda.State.Trim();
                                 }
                             }
                         }

@@ -18,7 +18,7 @@ namespace WCFServicePMDS.BAL2.ELGABAL
         public string SozVersNrLocalPatID { get; set; }
         public Nullable<DateTime> birthdate { get; set; }
         public bool isOrganisation { get; set; }
-
+        public string Fachrichtung { get; set;  }
 
         public string Zip { get; set; }
         public string City { get; set; }

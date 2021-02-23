@@ -1410,6 +1410,7 @@ namespace PMDS.Global.db.ERSystem
                 rNew.Status = "";
                 rNew.State = "";
                 rNew.IDElga = "";
+                rNew.Fachrichtung = "";
 
                 ds.ELGASearchGDAs.Rows.Add(rNew);
                 return rNew;

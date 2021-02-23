@@ -252,9 +252,10 @@ namespace PMDS.GUI
                     this.txtOrt.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Ort.Trim();
                     this.txtPLZ.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.PLZ.Trim();
                     this.txtStrasse.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Strasse.Trim() + " " + frmELGASearchGDA1.contELGASearchGDA1._rSelRow.StrasseNr.Trim();
-                    this.txtELGAGdaOid.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.IDElga.Trim(); ;
+                    this.txtELGAGdaOid.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.IDElga.Trim();
+                    this.cbFachrichtung.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Fachrichtung;
+                    this.txtLand.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Land.Trim();
                 }
-
             }
             catch (Exception ex)
             {

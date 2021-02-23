@@ -12,7 +12,7 @@
   <xs:element name="dsManage" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsManage" msprop:Generator_UserDSName="dsManage">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="rechNr" msprop:Generator_TableClassName="rechNrDataTable" msprop:Generator_TableVarName="tablerechNr" msprop:Generator_RowChangedName="rechNrRowChanged" msprop:Generator_TablePropName="rechNr" msprop:Generator_RowDeletingName="rechNrRowDeleting" msprop:Generator_RowChangingName="rechNrRowChanging" msprop:Generator_RowEvHandlerName="rechNrRowChangeEventHandler" msprop:Generator_RowDeletedName="rechNrRowDeleted" msprop:Generator_RowClassName="rechNrRow" msprop:Generator_UserTableName="rechNr" msprop:Generator_RowEvArgName="rechNrRowChangeEvent">
+        <xs:element name="rechNr" msprop:Generator_TableClassName="rechNrDataTable" msprop:Generator_TableVarName="tablerechNr" msprop:Generator_TablePropName="rechNr" msprop:Generator_RowDeletingName="rechNrRowDeleting" msprop:Generator_RowChangingName="rechNrRowChanging" msprop:Generator_RowEvHandlerName="rechNrRowChangeEventHandler" msprop:Generator_RowDeletedName="rechNrRowDeleted" msprop:Generator_UserTableName="rechNr" msprop:Generator_RowChangedName="rechNrRowChanged" msprop:Generator_RowEvArgName="rechNrRowChangeEvent" msprop:Generator_RowClassName="rechNrRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="typ" msprop:Generator_ColumnVarNameInTable="columntyp" msprop:Generator_ColumnPropNameInRow="typ" msprop:Generator_ColumnPropNameInTable="typColumn" msprop:Generator_UserColumnName="typ">
@@ -27,7 +27,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MedizinischeTypen" msprop:Generator_TableClassName="MedizinischeTypenDataTable" msprop:Generator_TableVarName="tableMedizinischeTypen" msprop:Generator_RowChangedName="MedizinischeTypenRowChanged" msprop:Generator_TablePropName="MedizinischeTypen" msprop:Generator_RowDeletingName="MedizinischeTypenRowDeleting" msprop:Generator_RowChangingName="MedizinischeTypenRowChanging" msprop:Generator_RowEvHandlerName="MedizinischeTypenRowChangeEventHandler" msprop:Generator_RowDeletedName="MedizinischeTypenRowDeleted" msprop:Generator_RowClassName="MedizinischeTypenRow" msprop:Generator_UserTableName="MedizinischeTypen" msprop:Generator_RowEvArgName="MedizinischeTypenRowChangeEvent">
+        <xs:element name="MedizinischeTypen" msprop:Generator_TableClassName="MedizinischeTypenDataTable" msprop:Generator_TableVarName="tableMedizinischeTypen" msprop:Generator_TablePropName="MedizinischeTypen" msprop:Generator_RowDeletingName="MedizinischeTypenRowDeleting" msprop:Generator_RowChangingName="MedizinischeTypenRowChanging" msprop:Generator_RowEvHandlerName="MedizinischeTypenRowChangeEventHandler" msprop:Generator_RowDeletedName="MedizinischeTypenRowDeleted" msprop:Generator_UserTableName="MedizinischeTypen" msprop:Generator_RowChangedName="MedizinischeTypenRowChanged" msprop:Generator_RowEvArgName="MedizinischeTypenRowChangeEvent" msprop:Generator_RowClassName="MedizinischeTypenRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -46,7 +46,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="WundePosBilder" msprop:Generator_TableClassName="WundePosBilderDataTable" msprop:Generator_TableVarName="tableWundePosBilder" msprop:Generator_TablePropName="WundePosBilder" msprop:Generator_RowDeletingName="WundePosBilderRowDeleting" msprop:Generator_RowChangingName="WundePosBilderRowChanging" msprop:Generator_RowEvHandlerName="WundePosBilderRowChangeEventHandler" msprop:Generator_RowDeletedName="WundePosBilderRowDeleted" msprop:Generator_UserTableName="WundePosBilder" msprop:Generator_RowChangedName="WundePosBilderRowChanged" msprop:Generator_RowEvArgName="WundePosBilderRowChangeEvent" msprop:Generator_RowClassName="WundePosBilderRow">
+        <xs:element name="WundePosBilder" msprop:Generator_TableClassName="WundePosBilderDataTable" msprop:Generator_TableVarName="tableWundePosBilder" msprop:Generator_RowChangedName="WundePosBilderRowChanged" msprop:Generator_TablePropName="WundePosBilder" msprop:Generator_RowDeletingName="WundePosBilderRowDeleting" msprop:Generator_RowChangingName="WundePosBilderRowChanging" msprop:Generator_RowEvHandlerName="WundePosBilderRowChangeEventHandler" msprop:Generator_RowDeletedName="WundePosBilderRowDeleted" msprop:Generator_RowClassName="WundePosBilderRow" msprop:Generator_UserTableName="WundePosBilder" msprop:Generator_RowEvArgName="WundePosBilderRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -71,7 +71,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ELGASearchPatients" msprop:Generator_TableClassName="ELGASearchPatientsDataTable" msprop:Generator_TableVarName="tableELGASearchPatients" msprop:Generator_RowChangedName="ELGASearchPatientsRowChanged" msprop:Generator_TablePropName="ELGASearchPatients" msprop:Generator_RowDeletingName="ELGASearchPatientsRowDeleting" msprop:Generator_RowChangingName="ELGASearchPatientsRowChanging" msprop:Generator_RowEvHandlerName="ELGASearchPatientsRowChangeEventHandler" msprop:Generator_RowDeletedName="ELGASearchPatientsRowDeleted" msprop:Generator_RowClassName="ELGASearchPatientsRow" msprop:Generator_UserTableName="ELGASearchPatients" msprop:Generator_RowEvArgName="ELGASearchPatientsRowChangeEvent">
+        <xs:element name="ELGASearchPatients" msprop:Generator_TableClassName="ELGASearchPatientsDataTable" msprop:Generator_TableVarName="tableELGASearchPatients" msprop:Generator_TablePropName="ELGASearchPatients" msprop:Generator_RowDeletingName="ELGASearchPatientsRowDeleting" msprop:Generator_RowChangingName="ELGASearchPatientsRowChanging" msprop:Generator_RowEvHandlerName="ELGASearchPatientsRowChangeEventHandler" msprop:Generator_RowDeletedName="ELGASearchPatientsRowDeleted" msprop:Generator_UserTableName="ELGASearchPatients" msprop:Generator_RowChangedName="ELGASearchPatientsRowChanged" msprop:Generator_RowEvArgName="ELGASearchPatientsRowChangeEvent" msprop:Generator_RowClassName="ELGASearchPatientsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NachnameFirma" msprop:Generator_ColumnVarNameInTable="columnNachnameFirma" msprop:Generator_ColumnPropNameInRow="NachnameFirma" msprop:Generator_ColumnPropNameInTable="NachnameFirmaColumn" msprop:Generator_UserColumnName="NachnameFirma" type="xs:string" />
@@ -94,7 +94,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ELGASearchGDAs" msprop:Generator_TableClassName="ELGASearchGDAsDataTable" msprop:Generator_TableVarName="tableELGASearchGDAs" msprop:Generator_RowChangedName="ELGASearchGDAsRowChanged" msprop:Generator_TablePropName="ELGASearchGDAs" msprop:Generator_RowDeletingName="ELGASearchGDAsRowDeleting" msprop:Generator_RowChangingName="ELGASearchGDAsRowChanging" msprop:Generator_RowEvHandlerName="ELGASearchGDAsRowChangeEventHandler" msprop:Generator_RowDeletedName="ELGASearchGDAsRowDeleted" msprop:Generator_RowClassName="ELGASearchGDAsRow" msprop:Generator_UserTableName="ELGASearchGDAs" msprop:Generator_RowEvArgName="ELGASearchGDAsRowChangeEvent">
+        <xs:element name="ELGASearchGDAs" msprop:Generator_TableClassName="ELGASearchGDAsDataTable" msprop:Generator_TableVarName="tableELGASearchGDAs" msprop:Generator_TablePropName="ELGASearchGDAs" msprop:Generator_RowDeletingName="ELGASearchGDAsRowDeleting" msprop:Generator_RowChangingName="ELGASearchGDAsRowChanging" msprop:Generator_RowEvHandlerName="ELGASearchGDAsRowChangeEventHandler" msprop:Generator_RowDeletedName="ELGASearchGDAsRowDeleted" msprop:Generator_UserTableName="ELGASearchGDAs" msprop:Generator_RowChangedName="ELGASearchGDAsRowChanged" msprop:Generator_RowEvArgName="ELGASearchGDAsRowChangeEvent" msprop:Generator_RowClassName="ELGASearchGDAsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NachnameFirma" msprop:Generator_ColumnVarNameInTable="columnNachnameFirma" msprop:Generator_ColumnPropNameInRow="NachnameFirma" msprop:Generator_ColumnPropNameInTable="NachnameFirmaColumn" msprop:Generator_UserColumnName="NachnameFirma" type="xs:string" />
@@ -110,10 +110,17 @@
               <xs:element name="State" msprop:Generator_ColumnVarNameInTable="columnState" msprop:Generator_ColumnPropNameInRow="State" msprop:Generator_ColumnPropNameInTable="StateColumn" msprop:Generator_UserColumnName="State" type="xs:string" />
               <xs:element name="IDElga" msprop:Generator_ColumnVarNameInTable="columnIDElga" msprop:Generator_ColumnPropNameInRow="IDElga" msprop:Generator_ColumnPropNameInTable="IDElgaColumn" msprop:Generator_UserColumnName="IDElga" type="xs:string" />
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="Fachrichtung" msprop:Generator_ColumnVarNameInTable="columnFachrichtung" msprop:Generator_ColumnPropNameInRow="Fachrichtung" msprop:Generator_ColumnPropNameInTable="FachrichtungColumn" msprop:Generator_UserColumnName="Fachrichtung">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ELGASearchDocuments" msprop:Generator_TableClassName="ELGASearchDocumentsDataTable" msprop:Generator_TableVarName="tableELGASearchDocuments" msprop:Generator_RowChangedName="ELGASearchDocumentsRowChanged" msprop:Generator_TablePropName="ELGASearchDocuments" msprop:Generator_RowDeletingName="ELGASearchDocumentsRowDeleting" msprop:Generator_RowChangingName="ELGASearchDocumentsRowChanging" msprop:Generator_RowEvHandlerName="ELGASearchDocumentsRowChangeEventHandler" msprop:Generator_RowDeletedName="ELGASearchDocumentsRowDeleted" msprop:Generator_RowClassName="ELGASearchDocumentsRow" msprop:Generator_UserTableName="ELGASearchDocuments" msprop:Generator_RowEvArgName="ELGASearchDocumentsRowChangeEvent">
+        <xs:element name="ELGASearchDocuments" msprop:Generator_TableClassName="ELGASearchDocumentsDataTable" msprop:Generator_TableVarName="tableELGASearchDocuments" msprop:Generator_TablePropName="ELGASearchDocuments" msprop:Generator_RowDeletingName="ELGASearchDocumentsRowDeleting" msprop:Generator_RowChangingName="ELGASearchDocumentsRowChanging" msprop:Generator_RowEvHandlerName="ELGASearchDocumentsRowChangeEventHandler" msprop:Generator_RowDeletedName="ELGASearchDocumentsRowDeleted" msprop:Generator_UserTableName="ELGASearchDocuments" msprop:Generator_RowChangedName="ELGASearchDocumentsRowChanged" msprop:Generator_RowEvArgName="ELGASearchDocumentsRowChangeEvent" msprop:Generator_RowClassName="ELGASearchDocumentsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Dokument" msprop:Generator_ColumnVarNameInTable="columnDokument" msprop:Generator_ColumnPropNameInRow="Dokument" msprop:Generator_ColumnPropNameInTable="DokumentColumn" msprop:Generator_UserColumnName="Dokument" type="xs:string" />
@@ -136,7 +143,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Messages2ToUsers" msprop:Generator_TableClassName="Messages2ToUsersDataTable" msprop:Generator_TableVarName="tableMessages2ToUsers" msprop:Generator_TablePropName="Messages2ToUsers" msprop:Generator_RowDeletingName="Messages2ToUsersRowDeleting" msprop:Generator_RowChangingName="Messages2ToUsersRowChanging" msprop:Generator_RowEvHandlerName="Messages2ToUsersRowChangeEventHandler" msprop:Generator_RowDeletedName="Messages2ToUsersRowDeleted" msprop:Generator_UserTableName="Messages2ToUsers" msprop:Generator_RowChangedName="Messages2ToUsersRowChanged" msprop:Generator_RowEvArgName="Messages2ToUsersRowChangeEvent" msprop:Generator_RowClassName="Messages2ToUsersRow">
+        <xs:element name="Messages2ToUsers" msprop:Generator_TableClassName="Messages2ToUsersDataTable" msprop:Generator_TableVarName="tableMessages2ToUsers" msprop:Generator_RowChangedName="Messages2ToUsersRowChanged" msprop:Generator_TablePropName="Messages2ToUsers" msprop:Generator_RowDeletingName="Messages2ToUsersRowDeleting" msprop:Generator_RowChangingName="Messages2ToUsersRowChanging" msprop:Generator_RowEvHandlerName="Messages2ToUsersRowChangeEventHandler" msprop:Generator_RowDeletedName="Messages2ToUsersRowDeleted" msprop:Generator_RowClassName="Messages2ToUsersRow" msprop:Generator_UserTableName="Messages2ToUsers" msprop:Generator_RowEvArgName="Messages2ToUsersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -154,7 +161,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Messages2" msprop:Generator_TableClassName="Messages2DataTable" msprop:Generator_TableVarName="tableMessages2" msprop:Generator_RowChangedName="Messages2RowChanged" msprop:Generator_TablePropName="Messages2" msprop:Generator_RowDeletingName="Messages2RowDeleting" msprop:Generator_RowChangingName="Messages2RowChanging" msprop:Generator_RowEvHandlerName="Messages2RowChangeEventHandler" msprop:Generator_RowDeletedName="Messages2RowDeleted" msprop:Generator_RowClassName="Messages2Row" msprop:Generator_UserTableName="Messages2" msprop:Generator_RowEvArgName="Messages2RowChangeEvent">
+        <xs:element name="Messages2" msprop:Generator_TableClassName="Messages2DataTable" msprop:Generator_TableVarName="tableMessages2" msprop:Generator_TablePropName="Messages2" msprop:Generator_RowDeletingName="Messages2RowDeleting" msprop:Generator_RowChangingName="Messages2RowChanging" msprop:Generator_RowEvHandlerName="Messages2RowChangeEventHandler" msprop:Generator_RowDeletedName="Messages2RowDeleted" msprop:Generator_UserTableName="Messages2" msprop:Generator_RowChangedName="Messages2RowChanged" msprop:Generator_RowEvArgName="Messages2RowChangeEvent" msprop:Generator_RowClassName="Messages2Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />

@@ -2022,6 +2022,8 @@ namespace PMDS.Global.db.ERSystem {
             
             private global::System.Data.DataColumn columnID;
             
+            private global::System.Data.DataColumn columnFachrichtung;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ELGASearchGDAsDataTable() {
@@ -2161,6 +2163,14 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FachrichtungColumn {
+                get {
+                    return this.columnFachrichtung;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2196,7 +2206,7 @@ namespace PMDS.Global.db.ERSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ELGASearchGDAsRow AddELGASearchGDAsRow(string NachnameFirma, string Vorname, string Title, string PLZ, string Ort, string Land, string Strasse, string StrasseNr, bool IsOrganisation, string Status, string State, string IDElga, System.Guid ID) {
+            public ELGASearchGDAsRow AddELGASearchGDAsRow(string NachnameFirma, string Vorname, string Title, string PLZ, string Ort, string Land, string Strasse, string StrasseNr, bool IsOrganisation, string Status, string State, string IDElga, System.Guid ID, string Fachrichtung) {
                 ELGASearchGDAsRow rowELGASearchGDAsRow = ((ELGASearchGDAsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NachnameFirma,
@@ -2211,7 +2221,8 @@ namespace PMDS.Global.db.ERSystem {
                         Status,
                         State,
                         IDElga,
-                        ID};
+                        ID,
+                        Fachrichtung};
                 rowELGASearchGDAsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowELGASearchGDAsRow);
                 return rowELGASearchGDAsRow;
@@ -2247,6 +2258,7 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnState = base.Columns["State"];
                 this.columnIDElga = base.Columns["IDElga"];
                 this.columnID = base.Columns["ID"];
+                this.columnFachrichtung = base.Columns["Fachrichtung"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2278,6 +2290,8 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnIDElga);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
+                this.columnFachrichtung = new global::System.Data.DataColumn("Fachrichtung", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFachrichtung);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
                 this.columnNachnameFirma.AllowDBNull = false;
@@ -2294,6 +2308,8 @@ namespace PMDS.Global.db.ERSystem {
                 this.columnIDElga.AllowDBNull = false;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnFachrichtung.AllowDBNull = false;
+                this.columnFachrichtung.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4439,6 +4455,17 @@ namespace PMDS.Global.db.ERSystem {
                 }
                 set {
                     this[this.tableELGASearchGDAs.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Fachrichtung {
+                get {
+                    return ((string)(this[this.tableELGASearchGDAs.FachrichtungColumn]));
+                }
+                set {
+                    this[this.tableELGASearchGDAs.FachrichtungColumn] = value;
                 }
             }
         }
