@@ -51,7 +51,17 @@ namespace WCFServicePMDS
                     role = Rolle                   //"Pflegeeinrichtung";
                 };
 
-                spiritUserResponse rsp = objWsLogin.loginHCP(req);
+                spiritUserResponse rsp = new spiritUserResponse();
+                try
+                {
+                    rsp = objWsLogin.loginHCP(req);
+                }
+                catch (System.ServiceModel.EndpointNotFoundException ex)
+                {
+                    session.ELGAStateID = "";
+                    return false;
+                }
+
                 if (rsp.responseDetail.listError != null && rsp.responseDetail.listError.Count() > 0)
                 {
                     foreach (string err in rsp.responseDetail.listError)

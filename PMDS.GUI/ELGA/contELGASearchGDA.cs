@@ -54,9 +54,9 @@ namespace PMDS.GUI.ELGA
         }
 
 
-        private static List<KeyValuePair<string, string>> lShortCountries = new List<KeyValuePair<string, string>>() {new KeyValuePair<string, string>("AT", "Österreich"),
-                                                                                                        new KeyValuePair<string, string>("DE", "Deutschland"),
-                                                                                                        new KeyValuePair<string, string>("HU", "ungarn")};
+        //private static List<KeyValuePair<string, string>> lShortCountries = new List<KeyValuePair<string, string>>() {new KeyValuePair<string, string>("AT", "Österreich"),
+        //                                                                                                new KeyValuePair<string, string>("DE", "Deutschland"),
+        //                                                                                                new KeyValuePair<string, string>("HU", "ungarn")};
 
 
 
@@ -266,7 +266,7 @@ namespace PMDS.GUI.ELGA
                     ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("GDA-Suche") + " " + this._TypeUI.ToString(), null,
                                                     ELGABusiness.eTypeProt.ELGAQueryGDAs, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, this._IDAufenthalt, sProt);
 
-                    if (parOuot.MessageException != null && parOuot.MessageException.Trim() != "")
+                    if (parOuot.MessageException != null && !String.IsNullOrWhiteSpace(parOuot.MessageException))
                     {
                         string msgText = parOuot.MessageException.Trim() + "\r\n" + "\r\n";
                         if (parOuot.MessageExceptionNr > 0)
@@ -275,7 +275,7 @@ namespace PMDS.GUI.ELGA
                     }
                     else
                     {
-                        if (parOuot.lGDAs.Count() > 0)
+                        if (parOuot.lGDAs.Count > 0)
                         {
                             foreach (ObjectDTO elgaPatient in parOuot.lGDAs)
                             {
@@ -298,9 +298,11 @@ namespace PMDS.GUI.ELGA
                                     rGda.State = elgaAdressGda.State.Trim();
                                     rGda.Strasse = elgaAdressGda.Street.Trim();
                                     rGda.StrasseNr = elgaAdressGda.StreetNr.Trim();
-//os: ELGA. Solange nicht klar ist, aus welcher Auswahlliste das Land zu lesen ist - Abhilfe mit KeyValuePair
-                                    rGda.Land = lShortCountries.Where(kvp => kvp.Key == elgaAdressGda.Country).FirstOrDefault().Value;
-
+                                    //os: ELGA. Solange nicht klar ist, aus welcher Auswahlliste das Land zu lesen ist - Abhilfe mit KeyValuePair
+                                    //rGda.Land = lShortCountries.Where(kvp => kvp.Key == elgaAdressGda.Country).FirstOrDefault().Value;
+                                    rGda.Land = (from al in db.AuswahlListe
+                                                 where al.IDAuswahlListeGruppe == "ISO" && al.Beschreibung == elgaAdressGda.Country
+                                                 select al.Bezeichnung).FirstOrDefault().ToString();
                                     rGda.Status = elgaAdressGda.Status.Trim();
                                 }
                             }

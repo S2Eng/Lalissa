@@ -201,7 +201,7 @@ namespace PMDS.GUI.ELGA
                             foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocuments)
                             {
                                 bool bDocuOK = true;
-                                if (!this.chkStorniert.Checked && elgaDocu.DocStatus.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
+                                if (!this.chkStorniert.Checked && PMDS.Global.generic.sEquals(elgaDocu.DocStatus, "Deprecated", Enums.eCompareMode.Contains))
                                 {
                                     bDocuOK = false;
                                 }
@@ -229,22 +229,22 @@ namespace PMDS.GUI.ELGA
                         }
                     }
 
-                    this.gridFound.Refresh();
-                    foreach (UltraGridRow rGrid in this.gridFound.Rows)
+                    using (DataTable docus = this.dsManage1.ELGASearchDocuments)
                     {
-                        DataRowView v = (DataRowView)rGrid.ListObject;
-                        PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelRow = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)v.Row;
-
-                        if (rSelRow.DocStatus.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
+                        docus.DefaultView.Sort = "CreationTime desc";
+                        this.gridFound.DataSource = docus;
+                        this.gridFound.Refresh();
+                        foreach (UltraGridRow rGrid in this.gridFound.Rows)
                         {
-                            rGrid.Cells["Storniert"].Value = true;
+                            DataRowView v = (DataRowView)rGrid.ListObject;
+                            PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelRow = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)v.Row;
+                            rGrid.Cells["Storniert"].Value = PMDS.Global.generic.sEquals(rSelRow.DocStatus, "Deprecated", Enums.eCompareMode.Contains);
                         }
+
+                        this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
+                        return true;
                     }
-
-                    this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
-                    return true;
                 }
-
             }
             catch (Exception ex)
             {
