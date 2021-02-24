@@ -219,7 +219,7 @@ namespace PMDS.GUI.ELGA
                                     rDocu.Version = elgaDocu.Version.Trim();
                                     rDocu.CreationTime = elgaDocu.CreationTime.Trim();
                                     rDocu.Size = elgaDocu.Size;
-                                    rDocu.Stylesheet = "";                              //this.Stylesheet.Trim();
+                                    rDocu.Stylesheet = "";                              
                                     rDocu.TypeFile = elgaDocu.TypeFile.Trim();
                                     rDocu.IDPatient = rPatient.ID;
                                     rDocu.IDAufenthalt = rActAuf.ID;
@@ -229,22 +229,21 @@ namespace PMDS.GUI.ELGA
                         }
                     }
 
-                    using (DataTable docus = this.dsManage1.ELGASearchDocuments)
+                    DataTable docus = this.dsManage1.ELGASearchDocuments;
+                    docus.DefaultView.Sort = "CreationTime desc";
+                    this.gridFound.DataSource = docus;
+                    this.gridFound.Refresh();
+                    foreach (UltraGridRow rGrid in this.gridFound.Rows)
                     {
-                        docus.DefaultView.Sort = "CreationTime desc";
-                        this.gridFound.DataSource = docus;
-                        this.gridFound.Refresh();
-                        foreach (UltraGridRow rGrid in this.gridFound.Rows)
-                        {
-                            DataRowView v = (DataRowView)rGrid.ListObject;
-                            PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelRow = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)v.Row;
-                            rGrid.Cells["Storniert"].Value = PMDS.Global.generic.sEquals(rSelRow.DocStatus, "Deprecated", Enums.eCompareMode.Contains);
-                        }
-
-                        this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
-                        return true;
+                        DataRowView v = (DataRowView)rGrid.ListObject;
+                        dsManage.ELGASearchDocumentsRow rSelRow = (dsManage.ELGASearchDocumentsRow)v.Row;
+                        rGrid.Cells["Storniert"].Value = generic.sEquals(rSelRow.DocStatus, "Deprecated", Enums.eCompareMode.Contains);
                     }
+
+                    this.gridFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumente gefunden") + " (" + this.gridFound.Rows.Count.ToString() + ")";
+                    return true;
                 }
+
             }
             catch (Exception ex)
             {
@@ -270,13 +269,12 @@ namespace PMDS.GUI.ELGA
                     }
                 }
 
-                if (lDocusSelected.Count() == 0)
+                if (lDocusSelected.Count == 0)
                 {
                     this.errorProvider1.SetError(this.gridFound, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden keine Dokumente ausgewählt!", "", MessageBoxButtons.OK);
                     return false;
                 }
-
                 return true;
             }
             catch (Exception ex)
@@ -289,26 +287,17 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
-                if (this.gridFound.ActiveRow != null)
-                {
-                    if (this.gridFound.ActiveRow.IsGroupByRow)
-                    {
-                        if (withMsgBox) QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Zeile in der Tabelle ausgewählt!");
-                        return null;
-                    }
-                    else
-                    {
-                        DataRowView v = (DataRowView)this.gridFound.ActiveRow.ListObject;
-                        PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelRow = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)v.Row;
-                        return rSelRow;
-                    }
-                }
-                else
+                if (this.gridFound.ActiveRow == null || this.gridFound.ActiveRow.IsGroupByRow)
                 {
                     if (withMsgBox) QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Zeile in der Tabelle ausgewählt!");
                     return null;
                 }
-
+                else
+                {
+                    DataRowView v = (DataRowView)this.gridFound.ActiveRow.ListObject;
+                    PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow rSelRow = (PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow)v.Row;
+                    return rSelRow;
+                }
             }
             catch (Exception ex)
             {

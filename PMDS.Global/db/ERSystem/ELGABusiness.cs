@@ -850,7 +850,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.saveDocuToELGA: " + ex.ToString());
             }
         }
-        public bool saveELGADocuToArchive(ref System.Collections.Generic.List<PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow> lDocusSelected)
+        public bool saveELGADocuToArchive(System.Collections.Generic.List<PMDS.Global.db.ERSystem.dsManage.ELGASearchDocumentsRow> lDocusSelected)
         {
             try
             {
@@ -873,7 +873,7 @@ namespace PMDS.Global.db.ERSystem
                                                                 rELGADocu.IDPatient, null, rELGADocu.UniqueID, rELGADocu.ELGAPatientLocalID.Trim(), rELGADocu.Dokument, rELGADocu.Stylesheet,
                                                                 ref IDDocumenteneintrag,true , "", true, -1);
 
-                        if (rELGADocu.DocStatus.Trim().ToLower().Contains(("Deprecated").Trim().ToLower()))
+                        if (generic.sEquals(rELGADocu.DocStatus, "Deprecated", Enums.eCompareMode.Contains))
                         {
                             var rDocu = db.tblDokumenteintrag.Where(pe => pe.ID == IDDocumenteneintrag).First();
                             rDocu.ELGAStorniert = true;

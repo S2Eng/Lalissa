@@ -837,32 +837,23 @@ namespace PMDS.GUI
                 Infragistics.Win.UltraWinGrid.UltraGridRow gridRow = null;
                 dsMedizinischeDaten.MedizinischeDatenRow rSelRow = this.getSelectedRow(true, ref gridRow);
                 if (rSelRow != null)
-                {
-                    Guid IDAufenthaltTmp;
+                {                    
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
                         PMDS.db.Entities.Aufenthalt rAufenthalt = this.b.getAktuellerAufenthaltPatient(ENV.CurrentIDPatient, false, db);
-                        IDAufenthaltTmp = rAufenthalt.ID;
-                    }
-                    
-                    PMDS.GUI.Verordnungen.frmVOErfassen frmVOErfassen1 = new Verordnungen.frmVOErfassen();
-                    frmVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassungMedDaten, true, false, null);
-                    frmVOErfassen1.ucVOErfassen1.search2(IDAufenthaltTmp, null, rSelRow.ID, null);
-                    frmVOErfassen1.ShowDialog(this);
-                    //if (!frmVOErfassen1.ucVOErfassen1.abort)
-                    //{
-                        DataRowView v = (DataRowView)gridRow.ListObject;
-                        dsMedizinischeDaten.MedizinischeDatenRow rMedDaten = (dsMedizinischeDaten.MedizinischeDatenRow)v.Row;
+                        using (PMDS.GUI.Verordnungen.frmVOErfassen frmVOErfassen1 = new Verordnungen.frmVOErfassen())
+                        {
+                            frmVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassungMedDaten, true, false, null);
+                            frmVOErfassen1.ucVOErfassen1.search2(rAufenthalt.ID, null, rSelRow.ID, null);
+                            frmVOErfassen1.ShowDialog(this);
 
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                    {
-                        string sInfoVO = this.b3.getInfoVO(rMedDaten.ID, db);
-                        gridRow.Cells["Verordnungen"].Value = sInfoVO;
+                            DataRowView v = (DataRowView)gridRow.ListObject;
+                            dsMedizinischeDaten.MedizinischeDatenRow rMedDaten = (dsMedizinischeDaten.MedizinischeDatenRow)v.Row;
+                            string sInfoVO = this.b3.getInfoVO(rMedDaten.ID, db);
+                            gridRow.Cells["Verordnungen"].Value = sInfoVO;
+                        }
                     }
-
-                    //}
                 }
-
             }
             catch (Exception ex)
             {
@@ -885,15 +876,16 @@ namespace PMDS.GUI
                     return;
                 }
 
-                frmELGASearchDocuments frmELGASearchDocuments1 = new frmELGASearchDocuments();
-                frmELGASearchDocuments1.initControl(ENV.CurrentIDPatient);
-                frmELGASearchDocuments1.ShowDialog();
-                if (!frmELGASearchDocuments1.contELGASearchDocuments1.abort)
+                using (frmELGASearchDocuments frmELGASearchDocuments1 = new frmELGASearchDocuments())
                 {
-                    this.bELGA.saveELGADocuToArchive(ref frmELGASearchDocuments1.contELGASearchDocuments1.lDocusSelected);
-                    this._mainWindow.mainWindow.MainWindow.RefreshPatient();
+                    frmELGASearchDocuments1.initControl(ENV.CurrentIDPatient);
+                    frmELGASearchDocuments1.ShowDialog();
+                    if (!frmELGASearchDocuments1.contELGASearchDocuments1.abort)
+                    {
+                        this.bELGA.saveELGADocuToArchive(frmELGASearchDocuments1.contELGASearchDocuments1.lDocusSelected);
+                        this._mainWindow.mainWindow.MainWindow.RefreshPatient();
+                    }
                 }
-
             }
             catch (Exception ex)
             {
