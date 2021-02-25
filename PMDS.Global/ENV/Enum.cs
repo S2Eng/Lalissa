@@ -762,13 +762,8 @@ namespace PMDS.Global
         none = 100
     }
 
-
-
-
     public class Enums
     {
-
-
         public enum eCompareMode
         {
             Equals = 1,

@@ -8,15 +8,13 @@ using System.ServiceModel.Channels;
 using WCFServicePMDS.BAL2.ELGABAL;
 using System.Collections.Concurrent;
 using Elga.core.ServiceReferenceELGA;
-
+using Elga.core;
 
 namespace WCFServicePMDS
 {
 
     public class ELGABAL
     {
-
-       
         private static int GdaMaxResults = 100;
 
         public enum eTypeQueryPatients
@@ -29,10 +27,6 @@ namespace WCFServicePMDS
             CreateLocalPatientID = 0,
             UpdatePatientData = 1
         }
-
-
-
-
 
         public bool ELGALogInHCP(string usr, string pwd, string NameGDA, string Rolle, Guid IDKlinik, ref ELGASessionDTO session, System.ServiceModel.EndpointAddress ELGAUrl)
         {
@@ -52,15 +46,7 @@ namespace WCFServicePMDS
                 };
 
                 spiritUserResponse rsp = new spiritUserResponse();
-                try
-                {
-                    rsp = objWsLogin.loginHCP(req);
-                }
-                catch (System.ServiceModel.EndpointNotFoundException ex)
-                {
-                    session.ELGAStateID = "";
-                    return false;
-                }
+                rsp = objWsLogin.loginHCP(req);
 
                 if (rsp.responseDetail.listError != null && rsp.responseDetail.listError.Count() > 0)
                 {
@@ -69,15 +55,26 @@ namespace WCFServicePMDS
                         session.Errors += err + "\r\n";
                     }
                 }
-
                 session.ELGAStateID = rsp.stateID;
                 return true;
-
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                session.Errors = ex.Message;
+                session.ELGAStateID = "";
+                return false;
+            }
+            catch (System.ServiceModel.ProtocolException ex)
+            {
+                session.Errors = ex.Message;
+                session.ELGAStateID = "";
+                return false;
             }
             catch (Exception ex)
             {
+                session.Errors = "Unbekannter Fehler beim Anmelden an ELGA.";
                 session.ELGAStateID = "";
-                throw new Exception("ELGABAL.ELGALogInHCP: " + ex.ToString());
+                return false;
             }
         }
         public bool ELGALogOut(ref ELGASessionDTO session, System.ServiceModel.EndpointAddress ELGAUrl)
@@ -102,20 +99,24 @@ namespace WCFServicePMDS
                 {
                     return false;
                 }
-
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                session.Errors = ex.Message;
+                session.ELGAStateID = "";
+                return false;
+            }
+            catch (System.ServiceModel.ProtocolException ex)
+            {
+                session.Errors = ex.Message;
+                session.ELGAStateID = "";
+                return false;
             }
             catch (Exception ex)
             {
-                if (ex.ToString().Trim().ToLower().Contains(("ession").Trim().ToLower()) && ex.ToString().Trim().ToLower().Contains(("does not exist").Trim().ToLower()))
-                {
-                    session.ELGAStateID = "";
-                    bool SessionNotExists = true;
-                }
-                else
-                {
-                    session.ELGAStateID = "";
-                }
-                throw new Exception("ELGABAL.ELGALogOut: " + ex.ToString());
+                session.Errors = "Unbekannter Fehler beim Abmelden von ELGA.";
+                session.ELGAStateID = "";
+                return false;
             }
         }
 
@@ -171,6 +172,7 @@ namespace WCFServicePMDS
                 }
 
                 ehrPatientRsp ehrPatientRsp1 = objWsLogin.queryPatients(ehrPatientRq1);
+                
                 if (ehrPatientRsp1.queryError == null)
                 {
                     if (ehrPatientRsp1.responseData != null)
@@ -244,18 +246,18 @@ namespace WCFServicePMDS
 
                     ehrPatientRq1.requestData = ehrPatientClientDtoBack;            //new ELGAChache().getEhrPatient(parsIn.IDPatientIntern);
 
-                    if (parsIn.sObjectDto.NachNameFirma.Trim() != "")
-                        ehrPatientRq1.requestData.familyName = parsIn.sObjectDto.NachNameFirma.Trim();
-                    if (parsIn.sObjectDto.Vorname.Trim() != "")
-                        ehrPatientRq1.requestData.givenName = parsIn.sObjectDto.Vorname.Trim();
-                    if (parsIn.sObjectDto.City.Trim() != "")
-                        ehrPatientRq1.requestData.city = parsIn.sObjectDto.City.Trim();
-                    if (parsIn.sObjectDto.Zip.Trim() != "")
-                        ehrPatientRq1.requestData.zip = parsIn.sObjectDto.Zip.Trim();
-                    if (parsIn.sObjectDto.Street.Trim() != "")
-                        ehrPatientRq1.requestData.streetAddress = parsIn.sObjectDto.Street.Trim();
-                    if (parsIn.sObjectDto.Country.Trim() != "")
-                        ehrPatientRq1.requestData.country = parsIn.sObjectDto.Country.Trim();
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.NachNameFirma))
+                        ehrPatientRq1.requestData.familyName = parsIn.sObjectDto.NachNameFirma;
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Vorname))
+                        ehrPatientRq1.requestData.givenName = parsIn.sObjectDto.Vorname;
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.City))
+                        ehrPatientRq1.requestData.city = parsIn.sObjectDto.City;
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Zip))
+                        ehrPatientRq1.requestData.zip = parsIn.sObjectDto.Zip;
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Street))
+                        ehrPatientRq1.requestData.streetAddress = parsIn.sObjectDto.Street;
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Country))
+                        ehrPatientRq1.requestData.country = parsIn.sObjectDto.Country;
                 }
                 else
                 {
@@ -263,7 +265,6 @@ namespace WCFServicePMDS
                 }
 
                 ehrPatientRsp ehrPatientRsp1 = objWsLogin.insertPatient(ehrPatientRq1);
-
 
                 if (ehrPatientRsp1.queryError == null)
                 {
@@ -281,13 +282,14 @@ namespace WCFServicePMDS
                         string patLocalID = "";
                         foreach (var rPid in retDto.lPatients[0].ELGAPids)
                         {
-                            if (rPid.patientID.Trim().ToLower().Equals(parsIn.LocalPatientID.Trim().ToLower()) && rPid.authUniversalID.Trim().Equals((parsIn.authUniversalID).Trim()))
+                            if (genericELGA.sEquals(rPid.patientID, parsIn.LocalPatientID) && 
+                                genericELGA.sEquals(rPid.authUniversalID, parsIn.authUniversalID))
                             {
-                                patLocalID = rPid.patientID.Trim();
+                                patLocalID = rPid.patientID;
                             }
                         }
 
-                        if (patLocalID.Trim() == "")
+                        if (String.IsNullOrWhiteSpace(patLocalID))
                         {
                             throw new Exception("ELGABAL.insertPatient: patLocalID='' not allowed!");
                         }
@@ -297,7 +299,6 @@ namespace WCFServicePMDS
                     }
                     else
                     {
-                        bool bNoDataFound = true;
                         throw new Exception("ELGABAL.insertPatient: no patient found in response-data! (ehrPatientRsp1.responseData=null)");
                     }
                 }
@@ -448,7 +449,7 @@ namespace WCFServicePMDS
             catch (Exception ex)
             {
                 string sExceptCheck = "Stat. Aufnahme auf bereits erfolgte stat. Aufnahme";
-                if (ex.ToString().Trim().ToLower().Contains(sExceptCheck.Trim().ToLower()))
+                if (genericELGA.sEquals(ex.ToString(), sExceptCheck, Enums.eCompareMode.Contains))
                 {
                     retDto.ContactExists = true;
                     retDto.bOK = true;
@@ -898,6 +899,7 @@ namespace WCFServicePMDS
                         break;
                     }
                 }
+
                 if (ehrXdsPatientPid == null)
                 {
                     foreach (ehrPIDClientDto pid in ehrPatientClientDtoBack.pid)
@@ -1016,14 +1018,14 @@ namespace WCFServicePMDS
 
                     this.getErrosElgaFct(xdsSrcSubmitRsp1.responseDetail.listError, ref retDto);
                     return retDto;
-                }
-                
+                }                
             }
             catch (Exception ex)
             {
                 throw new Exception("ELGABAL.addDocument: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto updateDocument(ref ELGAParInDto parsIn, string UniqueId, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             try
@@ -1058,8 +1060,6 @@ namespace WCFServicePMDS
                 submissionSet2.author = arrSubmissionSetAuthorMetadata2;
                 submissionSet2.name = parsIn.DocumentAdd.Documentname.Trim();
                 submissionSet2.description = parsIn.DocumentAdd.Description.Trim();
-
-
 
                 //New Document
                 documentClientDto NewDocument = new documentClientDto();
@@ -1108,13 +1108,13 @@ namespace WCFServicePMDS
                     this.getErrosElgaFct(xdsSrcSubmitRsp1.responseDetail.listError, ref retDto);
                     return retDto;
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("ELGABAL.updateDocument: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto deprecateDocument(ref ELGAParInDto parsIn, string UniqueId, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             try
@@ -1209,9 +1209,6 @@ namespace WCFServicePMDS
             }
         }
 
-
-
-
         public void setELGAPatients(ehrPatientClientDto elgaPatient, ELGASessionDTO session, ELGAParOutDto retDto)
         {
             try
@@ -1286,7 +1283,7 @@ namespace WCFServicePMDS
                                 if (OneDocuMustFound)
                                 {
                                     //Hier wird die Unique-ID des Documents von ELGA mit der internen GUID des lokalen CDAs verglichen -> Funktioniert nicht
-                                    if (documentClientDto1.uniqueId.Trim().ToLower().Equals(UniqueId.Trim().ToLower()))  
+                                    if (genericELGA.sEquals(documentClientDto1.uniqueId, UniqueId))  
                                     {
                                         AddDocu = true;
                                     }
@@ -1299,7 +1296,7 @@ namespace WCFServicePMDS
                                 bool TypeOK = false;
                                 string sTypeFileSave = "";
                                 string sTypeFileELGA = this.checkFieldNull(documentClientDto1.mimeType);
-                                if (sTypeFileELGA.Trim().ToLower().Contains(("xml").Trim().ToLower()))
+                                if (genericELGA.sEquals(sTypeFileELGA, "xml", Enums.eCompareMode.Contains))
                                 {
                                     sTypeFileSave = ".xml";
                                     TypeOK = true;

@@ -246,11 +246,10 @@ namespace PMDSClient.Sitemap
                 //session.IDUser = IDUser;
                 //ELGALogInDto1.LogInOK = elga.ELGALogInHCP(PMDS.Global.ENV.ELGAUser.Trim(), PMDS.Global.ENV.ELGAPwd.Trim(), NameGDA.Trim(), Rolle.Trim(), IDKlinik, ref session, PMDS.Global.ENV.ELGAUrl);
 
-
-                if (session.Errors != null)
-                {
-                    throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: Error ELGA-LogIn - " + "\r\n" + "\r\n" + ELGALogInDto1.session.Errors.Trim());
-                }
+                //if (session.Errors != null)
+                //{
+                //    throw new Exception("WCFServiceClientPMDS.ELGALogInHCP: Error ELGA-LogIn - " + "\r\n" + "\r\n" + ELGALogInDto1.session.Errors.Trim());
+                //}
                 ELGALogInDto1.session = session;
 
                 return ELGALogInDto1;
@@ -278,7 +277,7 @@ namespace PMDSClient.Sitemap
                             s1.ELGALogOut(ref session, PMDS.Global.ENV.ELGAUrl);
                         }
 
-                        //Direkt ohne WCFServie-Schicht
+                        //Direkt ohne WCFService-Schicht
                         //if (ELGABusiness.ELGAStatusbarStatus != null && ELGABusiness.ELGAStatusbarStatus.ELGALogInDto != null)
                         //{
                         //    ELGASessionDTO session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;

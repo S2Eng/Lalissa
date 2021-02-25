@@ -43,17 +43,19 @@
             this.txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.BackColor = System.Drawing.Color.White;
+            appearance1.BackColor = System.Drawing.Color.LightSteelBlue;
             appearance1.BackColor2 = System.Drawing.Color.White;
             appearance1.BackColorDisabled = System.Drawing.Color.White;
             appearance1.BorderColor = System.Drawing.Color.White;
             this.txtMessage.Appearance = appearance1;
-            this.txtMessage.BackColor = System.Drawing.Color.White;
-            this.txtMessage.Location = new System.Drawing.Point(8, 6);
+            this.txtMessage.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.txtMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMessage.Location = new System.Drawing.Point(11, 7);
+            this.txtMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ReadOnly = true;
-            this.txtMessage.Size = new System.Drawing.Size(286, 49);
+            this.txtMessage.Size = new System.Drawing.Size(381, 117);
             this.txtMessage.TabIndex = 0;
             this.txtMessage.TabStop = false;
             // 
@@ -65,10 +67,10 @@
             this.btnAbort.Appearance = appearance2;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(74, 59);
-            this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAbort.Location = new System.Drawing.Point(99, 129);
+            this.btnAbort.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(75, 27);
+            this.btnAbort.Size = new System.Drawing.Size(100, 33);
             this.btnAbort.TabIndex = 123;
             this.btnAbort.Tag = "";
             this.btnAbort.Text = "Abbrechen";
@@ -82,10 +84,10 @@
             this.btnOK.Appearance = appearance3;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.IsStandardControl = false;
-            this.btnOK.Location = new System.Drawing.Point(149, 59);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOK.Location = new System.Drawing.Point(199, 129);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 27);
+            this.btnOK.Size = new System.Drawing.Size(100, 33);
             this.btnOK.TabIndex = 124;
             this.btnOK.Tag = "";
             this.btnOK.Text = "OK";
@@ -93,13 +95,16 @@
             // 
             // frmELGAMsgBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(301, 89);
+            this.ClientSize = new System.Drawing.Size(401, 166);
+            this.ControlBox = false;
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnAbort);
             this.Controls.Add(this.txtMessage);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmELGAMsgBox";

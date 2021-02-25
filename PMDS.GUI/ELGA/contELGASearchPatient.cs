@@ -137,7 +137,7 @@ namespace PMDS.GUI.ELGA
             {
                 this.errorProvider1.SetError(this.txtSozVersNr, "");
 
-                if (this.txtSozVersNr.Text.Trim() == "")
+                if (String.IsNullOrWhiteSpace(this.txtSozVersNr.Text))
                 {
                     this.errorProvider1.SetError(this.txtSozVersNr, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Eingabe erforderlich!", "", MessageBoxButtons.OK);

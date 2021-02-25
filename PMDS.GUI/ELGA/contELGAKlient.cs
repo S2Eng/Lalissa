@@ -135,11 +135,7 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
-                if (!ELGABusiness.checkELGASessionActive(true))
-                {
-                    return;
-                }
-                if (!ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, true))
+                if (!ELGABusiness.checkELGASessionActive(true) || !ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, true))
                 {
                     return;
                 }

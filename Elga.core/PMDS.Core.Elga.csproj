@@ -95,6 +95,7 @@
     <Compile Include="ELGABAL\ELGAPidsDTO.cs" />
     <Compile Include="ELGABAL\ELGASessionDTO.cs" />
     <Compile Include="GdaIndexWs.cs" />
+    <Compile Include="genericELGA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

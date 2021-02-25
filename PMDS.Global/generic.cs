@@ -28,15 +28,6 @@ namespace PMDS.Global
         [DllImport("kernel32.dll")]
         public static extern int SetProcessWorkingSetSize(IntPtr process, int minimumWorkingSetSize, int maximumWorkingSetSize);
 
-
-
-
-
-
-
-
-
-
         public static System.Collections.Generic.List<string> readStrVariables(string str)
         {
             System.Collections.Generic.List<string> result = new System.Collections.Generic.List<string>();
@@ -191,9 +182,7 @@ namespace PMDS.Global
             {
                 al.Add(r);
             }
-
         }
-
 
         public static bool sEquals(List<object> s1, List<object> s2, Enums.eCompareMode compareMode = Enums.eCompareMode.Equals, bool trim = true, bool IgnoreCase = true)
         {
