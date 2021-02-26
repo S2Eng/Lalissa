@@ -219,6 +219,74 @@ namespace PMDS.GUI
             return false;
         }
 
+        public static bool ELGAKontaktDelegation(dsPatientAerzte.PatientAerzteRow[] rows, KlientDetails Klient)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var rAufenthalt = (from a in db.Aufenthalt
+                                       join p in db.Patient on a.IDPatient equals p.ID
+                                       where a.ID == Klient.Aufenthalt.ID
+                                       select new
+                                       {
+                                           IDAufenthalt = a.ID,
+                                           ELGALocalID = a.ELGALocalID,
+                                           ELGASOOJN = a.ELGASOOJN,
+                                           ELGAAbgemeldet = p.ELGAAbgemeldet,
+                                           IDPatient = p.ID,
+                                           Nachname = p.Nachname.Trim(),
+                                           Vorname = p.Vorname.Trim()
+                                       }).First();
+
+                    if (!ENV.lic_ELGA || rows == null || !ENV.HasRight(UserRights.PatientenVerwalten) || (bool)rAufenthalt.ELGAAbgemeldet || (bool)rAufenthalt.ELGASOOJN || String.IsNullOrWhiteSpace(rAufenthalt.ELGALocalID))
+                        return false;
+                    if (PMDS.Global.db.ERSystem.ELGABusiness.checkELGASessionActive(true))
+                    {
+                        string sResultOk = "Ergebnis für Kontaktdelegation\n\r\n\r";
+                        string sResultNotOk = "";
+                        Global.db.ERSystem.ELGABusiness ELGABusiness1 = new Global.db.ERSystem.ELGABusiness();
+                        List<dsAerzte.AerzteRow> list = new List<dsAerzte.AerzteRow>();
+                        foreach (dsPatientAerzte.PatientAerzteRow r in rows)
+                        {
+                            dsAerzte.AerzteRow rArzt = Aerzte.GetArztDetails(r.IDAerzte);
+                            string sArzt = rArzt.Titel + " " + rArzt.Vorname + " " + rArzt.Nachname;
+
+                            if (!String.IsNullOrWhiteSpace(rArzt.ELGA_OID))
+                            {
+                                WCFServicePMDS.BAL2.ELGABAL.ELGAParOutDto retDto = ELGABusiness1.DelegateContact(rAufenthalt.IDPatient, rAufenthalt.IDAufenthalt, rArzt.ID);
+                                if (retDto.bOK)
+                                {
+                                    sResultOk += "Erfolgreich für " + sArzt + ".\n\r";
+                                }
+                                else
+                                {
+                                    sResultOk += "Unerwarteter Fehler für " + sArzt + ":" + retDto.MessageException + ".\n\r";
+                                }
+                            }
+                            else
+                            {
+                                sResultNotOk += "Keine Delegation für " + sArzt + "möglich, weil keine OID zugeordnet wurde.\n\r";
+                            }
+                        }
+
+                        using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
+                        {
+                            frmMessageBox1.ShowAbort = false;
+                            frmMessageBox1.initControl(sResultOk + "\n\r" + sResultNotOk);
+                            frmMessageBox1.ShowDialog();
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in KientGuiAction.ELGAKontaktDelegation:" + ex.ToString());
+            }
+        }
+
         public static bool DeletePatientAerzteZuordnungen(dsPatientAerzte.PatientAerzteRow[] rows)
         {
             if (rows == null || !ENV.HasRight(UserRights.PatientenVerwalten))

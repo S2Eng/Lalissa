@@ -14,8 +14,8 @@ namespace PMDS.GUI.GenericControls
     
     public partial class frmMessageBox : Form
     {
-        public bool abort = true;
-
+        public bool abort { set; get; } = true;
+        public bool ShowAbort { set; get; } = true;
 
 
         public frmMessageBox()
@@ -39,6 +39,7 @@ namespace PMDS.GUI.GenericControls
                 this.CancelButton = this.btnAbort;
 
                 this.txtMessage.Text = sMessage;
+                this.btnAbort.Visible = ShowAbort;
 
             }
             catch (Exception ex)

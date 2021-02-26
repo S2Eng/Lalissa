@@ -529,6 +529,43 @@ namespace PMDSClient.Sitemap
             }
         }
 
+        public ELGAParOutDto ELGADelegateContact(string LocalPatientID, string OrganisationIdToDelegateTo)
+        {
+            try
+            {
+                WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
+                ELGAParInDto parsIn = new ELGAParInDto();
+                parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
+                parsIn.sOrganistaionIdToDelegateTo = OrganisationIdToDelegateTo;
+                ELGAParOutDto parOutDto = s1.ELGADelegateContact(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik), PMDS.Global.ENV.ELGAUrl);
+
+                if (parOutDto.bErrorsFound)
+                {
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGADelegateContact");
+                    throw new Exception("WCFServiceClientPMDS.ELGADelegateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                }
+
+                if (parOutDto.bOK)
+                {
+
+                    if (parOutDto.ContactID != null && String.IsNullOrWhiteSpace(parOutDto.ContactID))
+                    {
+                        throw new Exception("WCFServiceClientPMDS.ELGADelegateContact: parOutDto.ContactID='" + parOutDto.ContactID.ToString() + "' not allowed!");
+                    }
+                    return parOutDto;
+                }
+                else
+                {
+                    throw new Exception("WCFServiceClientPMDS.ELGADelegateContact: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(PMDS.Global.ENV.getTitleExcept("Kontaktdelegation fehlgeschlagen!") + "WCFServiceClientPMDS.ELGAAddContactAdmission: " + ex.ToString());
+            }
+        }
+
         public ELGAParOutDto ELGAQueryGDAs(cSearchGdaFlds SearchGdaFlds)
         {
             try

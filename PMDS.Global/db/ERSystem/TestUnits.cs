@@ -740,7 +740,10 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument {0} für Patient {1} wurde im Archiv abgelegt");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument wurde im Archiv abgelegt");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Dokument wurde im Archiv abgelegt");
 
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt für Patient {0} wurde an {1} delegiert.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontaktdelegation");
 
 
 

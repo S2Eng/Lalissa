@@ -43,11 +43,23 @@ namespace PMDS.GUI.Medikament
         public string colHerrichtenTxt = "HerrichtenTxt";
 
 
+        private class PatientDelegation
+        {
+            public Guid ID { get; set; }
+            public Guid IDAuenthalt { get; set; }
+            public string Name { get; set; }
+            public bool ELGASOO { get; set; }
+            public bool ELGAAktiv { get; set; }
+            public bool ELGAAbgemeldet { get; set; }
+        }
 
-
-
-
-
+        private class ArztDelegation
+        {
+            public Guid ID { get; set; }
+            public string Name { get; set; }
+            public bool HasOID { get; set; }
+            public List<PatientDelegation> PatientenDelegation { get; set; }
+        }
 
         public ucMed4Bestellen()
         {
@@ -524,6 +536,25 @@ namespace PMDS.GUI.Medikament
         {
             try
             {
+                bool bCreateELGAKontaktDelegation = ENV.lic_ELGA;
+                if (ENV.lic_ELGA && 
+                        !PMDS.Global.db.ERSystem.ELGABusiness.checkELGASessionActive(false) &&
+                        TypActionPrint == frmPrintPreview.eTypReportMedikamenteBestellen.Rezeptanforderungsliste)
+                {
+                    string sMsgBox = "Keine aktive ELGA-Sitzung. Wollen Sie die Rezeptanforderung ohne Kontaktdelegation erstellen?";
+                    using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
+                    {
+                        frmMessageBox1.initControl(sMsgBox);
+
+                        frmMessageBox1.ShowDialog(this);
+                        if (frmMessageBox1.abort)
+                        {
+                            return false;
+                        }
+                    }
+                    bCreateELGAKontaktDelegation = false;
+                }
+
                 List<PMDS.DB.PMDSBusiness.cField> lstData = new List<DB.PMDSBusiness.cField>();
                 List<PMDS.db.Entities.vRezeptBestellung2> tRezepteBestSelected = new List<db.Entities.vRezeptBestellung2>();
                 this.doActionGrid(ref lstData, eTypActionGrid.DeleteSelectedRows, ref tRezepteBestSelected, false);
@@ -532,27 +563,119 @@ namespace PMDS.GUI.Medikament
                 {
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                     DataTable tBestellungMedikamente = PMDS.DB.BusinessHelp.ToDataTable(tRezepteBestSelected);
-//#if DEBUG
-//DataSet ds = new DataSet();
-//ds.DataSetName = "BestellungMedikamente";
-//ds.Tables.Add(tBestellungMedikamente);
-//ds.WriteXml(System.IO.Path.Combine(ENV.ReportPath, "BestellungMedikamente.xml"), System.Data.XmlWriteMode.WriteSchema);
-//ds.WriteXmlSchema((System.IO.Path.Combine(ENV.ReportPath, "BestellungMedikamente.xsd")));
-//#endif
-                    frmPrintPreview frmPrintPreview1 = null;
-                    frmPrintPreview.PrintBestellungMedikamente(ref tBestellungMedikamente,
-                                                                (Nullable<DateTime>)this.datRezeptAngefordertFrom.Value, (Nullable<DateTime>)this.datRezeptAngefordertTo.Value,
-                                                                ENV.IDKlinik, (this.cboAbteilung.Value == null? Guid.Empty: (Guid)this.cboAbteilung.Value),
-                                                                ref frmPrintPreview1, TypActionPrint);
 
+                    frmPrintPreview frmPrintPreview1 = null;
+                    frmPrintPreview.PrintBestellungMedikamente(tBestellungMedikamente,
+                                                                (Nullable<DateTime>)this.datRezeptAngefordertFrom.Value, (Nullable<DateTime>)this.datRezeptAngefordertTo.Value,
+                                                                ENV.IDKlinik, (this.cboAbteilung.Value == null ? Guid.Empty : (Guid)this.cboAbteilung.Value),
+                                                                out frmPrintPreview1, TypActionPrint);
                     PMDSBusiness1.UpdateMedikamenteAsGedruckt(tRezepteBestSelected);
                     this.LoadData();
 
+                    if (bCreateELGAKontaktDelegation)
+                    {
+                        string sResultOk = "Ergebnis für Kontaktdelagation wegen Rezeptanforderung\n\r\n\r";
+                        string sResultNotOk = "";
+
+                        PMDS.Global.db.ERSystem.ELGABusiness ELGABusiness = new Global.db.ERSystem.ELGABusiness();
+                        List<ArztDelegation> AerzteMitOID = new List<ArztDelegation>();
+
+                        foreach (PMDS.db.Entities.vRezeptBestellung2 r in tRezepteBestSelected)
+                        {
+                            if (!AerzteMitOID.Any(a => a.ID == (Guid)r.IDAerzte))
+                            {
+                                ArztDelegation a = new ArztDelegation
+                                {
+                                    ID = (Guid)r.IDAerzte,
+                                    Name = r.Arzt,
+                                    HasOID = String.IsNullOrWhiteSpace(((Guid)r.IDAerzte).ToString()),
+                                    PatientenDelegation = new List<PatientDelegation>()
+                                };
+                                AerzteMitOID.Add(a);
+                            }
+                            ArztDelegation ArztDel = AerzteMitOID.Where(a => a.ID == (Guid)r.IDAerzte).First();
+
+                            if (!ArztDel.PatientenDelegation.Any(p => p.ID == (Guid)r.IDPatient))
+                            {
+                                PatientDelegation pD = new PatientDelegation();
+                                pD.ID = (Guid)r.IDPatient;
+                                pD.Name = r.PatientVorname + " " + r.PatientNachname;
+
+                                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                                {
+                                    var rAufenthalt = (from a in db.Aufenthalt
+                                                        join p in db.Patient on a.IDPatient equals p.ID
+                                                        where a.ID == r.IDAufenthalt
+                                                        select new
+                                                        {
+                                                            IDAufenthalt = a.ID,
+                                                            ELGALocalID = a.ELGALocalID,
+                                                            ELGASOOJN = a.ELGASOOJN,
+                                                            ELGAAbgemeldet = p.ELGAAbgemeldet,
+                                                            IDPatient = p.ID,
+                                                            Nachname = p.Nachname.Trim(),
+                                                            Vorname = p.Vorname.Trim()
+                                                        }).First();
+                                    pD.IDAuenthalt = rAufenthalt.IDAufenthalt;
+                                    pD.ELGASOO = rAufenthalt.ELGASOOJN;
+                                    pD.ELGAAktiv = !String.IsNullOrWhiteSpace(rAufenthalt.ELGALocalID);
+                                }
+                                ArztDel.PatientenDelegation.Add(pD);
+                            }
+                        }
+
+                        foreach (ArztDelegation Arzt in AerzteMitOID)
+                        {
+                            if (Arzt.HasOID)
+                            {
+                                sResultOk += "\n\rKontaktdelegationen für Arzt " + Arzt.Name + "\n\r";
+                                foreach (PatientDelegation Patient in Arzt.PatientenDelegation)
+                                {
+                                    if (Patient.ELGAAktiv && !Patient.ELGASOO && !Patient.ELGAAbgemeldet)
+                                    {
+                                        WCFServicePMDS.BAL2.ELGABAL.ELGAParOutDto retDto = ELGABusiness.DelegateContact(Patient.ID, Patient.IDAuenthalt, Arzt.ID);
+                                        if (retDto.bOK)
+                                        {
+                                            sResultOk += "Erfolgreich für " + Patient.Name + ".\n\r";
+                                        }
+                                        else
+                                        {
+                                            sResultOk += "Unerwarteter Fehler für " + Patient.Name + ":" + retDto.MessageException + ".\n\r";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        sResultOk += "Keine Deleagtion für " + Patient.Name + " wegen ";
+                                        if (Patient.ELGAAbgemeldet)
+                                            sResultOk += "Abmeldung von ELGA.\n\r";
+                                        else if (!Patient.ELGAAktiv)
+                                            sResultOk += "fehlender Kontaktbestätigung.\n\r";
+                                        else if (Patient.ELGASOO)
+                                            sResultOk += "situativem Opt-Out (SOO).\n\r";
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                sResultNotOk += "Keine Delegation für Arzt " + Arzt.Name + "möglich, weil keine OID zugeordnet wurde.\n\r";
+                                sResultNotOk += "Folgende Patienten sind betroffen:\n\r";
+                                foreach (PatientDelegation Patient in Arzt.PatientenDelegation)
+                                {
+                                    sResultNotOk += Patient.Name + "\n\r";
+                                }
+                            }
+
+                            using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
+                            {
+                                frmMessageBox1.ShowAbort = false;
+                                frmMessageBox1.initControl(sResultOk + "\n\r" + sResultNotOk);
+                                frmMessageBox1.ShowDialog(this);
+                            }
+                        }
+                    }
                     frmPrintPreview1.Show();
+
                     return true;
-                    
-                    //this.LoadData();
-                    //QS2.Desktop.ControlManagment.ControlManagment.MessageBox(iCounterDeleted.ToString() + " Bestellung/en wurde/n gelöscht!", "Bestellung Medikamente löschen", MessageBoxButtons.OK);
                 }
                 else
                 {

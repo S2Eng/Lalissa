@@ -2567,6 +2567,12 @@ namespace PMDS.GUI
                 ENV.HandleException(ex);
             }
         }
+
+        private void btnELGAKontakDelegation_Click(object sender, EventArgs e)
+        {
+            if (KlientGuiAction.ELGAKontaktDelegation(CurrentAerzteSelectedRows(), _klient) && ValueChanged != null)
+                ValueChanged(sender, e);
+        }
     }
 }
 

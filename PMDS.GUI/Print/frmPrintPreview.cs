@@ -281,10 +281,10 @@ namespace PMDS.Print
 			return true;
 		}
 
-        public static bool PrintBestellungMedikamente(ref DataTable tBestellungMedikamente,
+        public static bool PrintBestellungMedikamente(DataTable tBestellungMedikamente,
                                                         Nullable<DateTime> dFrom, Nullable<DateTime> dTo,
                                                         Guid IDKlinik, Nullable<Guid> IDAbteilung,
-                                                        ref frmPrintPreview frm, eTypReportMedikamenteBestellen TypReportMedikamenteBestellen)
+                                                        out frmPrintPreview frm, eTypReportMedikamenteBestellen TypReportMedikamenteBestellen)
         {
             try
             {

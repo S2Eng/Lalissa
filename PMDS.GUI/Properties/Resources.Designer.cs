@@ -63,6 +63,16 @@ namespace PMDS.GUI.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Elga {
+            get {
+                object obj = ResourceManager.GetObject("Elga", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ico_Aktualisieren {
             get {
                 object obj = ResourceManager.GetObject("ico_Aktualisieren", resourceCulture);

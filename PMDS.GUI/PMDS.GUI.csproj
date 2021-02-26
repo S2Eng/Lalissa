@@ -6322,6 +6322,7 @@
   <ItemGroup>
     <None Include="Resources\ico_Plus.ico" />
     <None Include="Resources\ico_Aktualisieren.ico" />
+    <None Include="Resources\Elga.jpg" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

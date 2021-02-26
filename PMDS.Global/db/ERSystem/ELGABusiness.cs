@@ -370,6 +370,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.handleLogIn: " + ex.ToString());
             }
         }
+
         public void LogInELGA(UltraStatusBar statBar, UltraStatusPanel panelELGA)
         {
             try
@@ -426,6 +427,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.LogInELGA: " + ex.ToString());
             }
         }
+
         public void LogOutELGA(UltraStatusBar statBar, UltraStatusPanel panelELGA, bool CloseAllElgaMsgBoxes, bool LogOutAuto, bool setSessionStopped = true)
         {
             try
@@ -557,6 +559,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.updateTxtStatusbarLogIn: " + ex.ToString());
             }
         }
+
         public void setTxtStatusbarTime(UltraStatusBar statBar, UltraStatusPanel panelELGA, TimeSpan span, string txtAlternat = "")
         {
             try
@@ -593,6 +596,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.setTxtStatusbarTime: " + ex.ToString());
             }
         }
+
         public void ELGAOnStatusbarOff(UltraStatusBar statBar, UltraStatusPanel panelELGA)
         {
             try
@@ -677,9 +681,6 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-
-
-
         public static bool HasELGARight(eELGARight ELGARight, bool WithMsgBox)
         {
             try
@@ -716,6 +717,7 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("ELGABusiness.HasELGARight: " + ex.ToString());
             }
         }
+
         public static bool checkELGASessionActive(bool WithMsgBox)
         {
             try
@@ -738,6 +740,52 @@ namespace PMDS.Global.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("ELGABusiness.checkELGASessionActive: " + ex.ToString());
+            }
+        }
+
+        public ELGAParOutDto DelegateContact(Guid IDPatient, Guid IDAufenthalt, Guid IDArzt)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var rArzt = (from a in db.Aerzte
+                                     where a.ID == IDArzt
+                                 select new
+                                     {
+                                         Nachname = a.Nachname.Trim(),
+                                         Vorname = a.Vorname.Trim(),
+                                         Titel = a.Titel.Trim(),
+                                         OrganisationIdToDelegateTo = a.ELGA_OID
+                                     }).First();
+
+                    var rAufenthalt = (from a in db.Aufenthalt
+                                       join p in db.Patient on a.IDPatient equals p.ID
+                                       where a.ID == IDAufenthalt
+                                       select new
+                                       {
+                                           IDAufenthalt = a.ID,
+                                           ELGALocalID = a.ELGALocalID,
+                                           ELGASOOJN = a.ELGASOOJN,
+                                           IDPatient = p.ID,
+                                           Nachname = p.Nachname.Trim(),
+                                           Vorname = p.Vorname.Trim()
+                                       }).First();
+
+                    WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
+                    ELGAParOutDto parOut = WCFServiceClient1.ELGADelegateContact(rAufenthalt.ELGALocalID.ToString(), rArzt.OrganisationIdToDelegateTo);
+
+                    string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt für Patient {0} wurde an {1} delegiert.");
+                    sProt = string.Format(sProt, rAufenthalt.Vorname + " " + rAufenthalt.Nachname, rArzt.Titel + " " + rArzt.Vorname + " " + rArzt.Nachname);
+                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontaktdelegation"), null,
+                                                    ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+
+                    return parOut;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.DelegateContact: " + ex.ToString());
             }
         }
 

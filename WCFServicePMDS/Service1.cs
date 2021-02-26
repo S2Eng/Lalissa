@@ -282,6 +282,7 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.updatePatient: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto ELGAAddContactAdmission(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             try
@@ -294,6 +295,7 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.ELGAAddContactAdmission: " + ex.ToString());
             }
         }
+
         public ELGAParOutDto ELGAInvalidateContact(ref ELGAParInDto parsIn, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             try
@@ -330,6 +332,19 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.ELGAListContacts: " + ex.ToString());
             }
         }
+        public ELGAParOutDto ELGADelegateContact(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
+        {
+            try
+            {
+                WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
+                return elga.delegateContact(ref parsIn, authUniversalID, ELGAUrl);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("WCFServicePMDS.Service1.ELGADelegateContact: " + ex.ToString());
+            }
+        }
+
         public ELGAParOutDto ELGAQueryGDAs(ref ELGAParInDto parsIn, string ELGAUrlGDAIndex)
         {
             try
