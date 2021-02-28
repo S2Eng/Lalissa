@@ -132,7 +132,6 @@ namespace PMDS.GUI
         /// Voransicht anstoßen auf basis des aktuellen Reportfiles
         /// </summary>
         //----------------------------------------------------------------------------
-
         public void ProcessPreview(bool bPreview, string ReportFile, PMDS.db.Entities.ERModellPMDSEntities db, 
                                         ref bool abortWindow, ref Nullable<Guid> IDEinrichtungEmpfänger, ref bool bSaveToArchiv, bool bSendToELGA, ref Nullable<Guid> IDDokumenteneintrag)
         {
@@ -161,7 +160,7 @@ namespace PMDS.GUI
 
                 PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo frmPrintPflegebegleitschreibenInfo1 = null;
                 // Dynamische Formularsteuerung ---------------------------------------------------------------------------------------------------
-                if (_CurrentFormToShow != "")
+                if (!String.IsNullOrWhiteSpace(_CurrentFormToShow))
                 {
                     SavePSBToArchiv = false;
 
@@ -185,36 +184,40 @@ namespace PMDS.GUI
 
                     if ((((ENV.lic_ELGA && ENV.lic_ELGA_PSB) || PMDS.Global.db.ERSystem.PMDSBusinessUI.checkClientsS2()) && !ELGAAbgemeldet && !ELGASOOJN))  
                     {
-                        PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht PSB = new PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht();
-                        DialogResult resPSB = PSB.ShowDialog();
-                        if (resPSB == DialogResult.OK)
+                        using (PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht PSB = new PMDS.GUI.Print.frmELGAPrintPflegesituationsbericht())
                         {
-                            msPSB = PSB.msPSB;
-                            IDEinrichtungEmpfänger = (Guid)PSB.cbETo.Value;
-                            SavePSBToArchiv = true;
-                            SavePBSToArchiv = false;
-                        }
-                        else if (!PSB.ResumeWithPBS)
-                        {
-                            abortWindow = true;
-                            return;
+                            DialogResult resPSB = PSB.ShowDialog();
+                            if (resPSB == DialogResult.OK)
+                            {
+                                msPSB = PSB.msPSB;
+                                IDEinrichtungEmpfänger = (Guid)PSB.cbETo.Value;
+                                SavePSBToArchiv = true;
+                                SavePBSToArchiv = false;
+                            }
+                            else if (!PSB.ResumeWithPBS)
+                            {
+                                abortWindow = true;
+                                return;
+                            }
                         }
                     }
 
                     if (!SavePSBToArchiv)
                     {
                         SavePSBToArchiv = false;
-                        frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
-                        DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                        if (res != DialogResult.OK)
+                        using (frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo())
                         {
-                            abortWindow = true;   //Abwesenheitsprozess sofort beenden
-                            return;
-                        }
-                        else
-                        {
-                            IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
-                            SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.SavePBSToArchive;
+                            DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
+                            if (res != DialogResult.OK)
+                            {
+                                abortWindow = true;   //Abwesenheitsprozess sofort beenden
+                                return;
+                            }
+                            else
+                            {
+                                IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
+                                SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.SavePBSToArchive;
+                            }
                         }
                     }
                 }
@@ -282,12 +285,12 @@ namespace PMDS.GUI
                     }
 
                     VB.PMDSBusinessVB bVB = new VB.PMDSBusinessVB();
-                    PMDS.db.Entities.Benutzer rUsrLoggedOn = b.LogggedOnUser();
+                    //PMDS.db.Entities.Benutzer rUsrLoggedOn = b.LogggedOnUser();
 
                     var rPatInfo = (from p in db.Patient
                                     where p.ID == ENV.CurrentIDPatient
                                     select new
-                                    { p.ID, p.Nachname, p.Vorname }
+                                    { p.ID, Nachname = p.Nachname.Trim(), Vorname = p.Vorname.Trim() }
                                    ).FirstOrDefault();
 
                     Application.UseWaitCursor = false;
@@ -299,22 +302,24 @@ namespace PMDS.GUI
                     {
 
                         if (bVB.SaveFileToArchive(sFileNameExport, 
-                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(), 
+                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegebegleitschreiben für") + " " + rPatInfo.Nachname + " " + rPatInfo.Vorname, 
                                                     "Pflegebegleitschreiben", ref IDDokumenteneintrag))
                         {
                             if (File.Exists(sFileNameExport))
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Pflegebegleitschreiben wurde ins Archiv abgelegt!");
 
-                                PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
-                                byte[] bPDF;
-                                if (frmPDF.OpenPDF(sFileNameExport, out bPDF))
+                                using (PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF())
                                 {
-                                    frmPDF.ShowBookmarks = true;
-                                    frmPDF.ShowOpenDialog = false;
-                                    frmPDF.ShowPrintDialog = true;
-                                    frmPDF.SetCaption = System.IO.Path.GetFileNameWithoutExtension(ReportFile);
-                                    frmPDF.Show();
+                                    byte[] bPDF;
+                                    if (frmPDF.OpenPDF(sFileNameExport, out bPDF))
+                                    {
+                                        frmPDF.ShowBookmarks = true;
+                                        frmPDF.ShowOpenDialog = false;
+                                        frmPDF.ShowPrintDialog = true;
+                                        frmPDF.SetCaption = System.IO.Path.GetFileNameWithoutExtension(ReportFile);
+                                        frmPDF.Show();
+                                    }
                                 }
                                 //File.Delete(sFileNameExport);
                                 ReportNameProt = System.IO.Path.GetFileName(ReportFile.Trim());
@@ -335,9 +340,12 @@ namespace PMDS.GUI
                         {
                             if (bSendToELGA)    //nur im Abwesenheitsworkflow
                             {
-                                //PSB ins ELGA hochladen
-                                ELGABusiness elgaBusiness = new ELGABusiness();
-                                elgaBusiness.SendELGADocu(retList[0], retList[1]);
+                                //PSB ins ELGA hochladen                                
+                                if (ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteSenden, true))
+                                {
+                                    ELGABusiness elgaBusiness = new ELGABusiness();
+                                    elgaBusiness.SendELGADocu(retList[0], retList[1]);
+                                }
                             }
                             else
                             {
@@ -348,36 +356,9 @@ namespace PMDS.GUI
                         {
                             QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Achtung: Der Pflegesituationsbericht konnte nicht ins Archiv abgelegt werden.");
                         }
-                        //string tmpPSB = "Pflegesituationsbericht";
-                        //string tmpFile = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, tmpPSB + "_" + System.Guid.NewGuid().ToString() + ".xml");
-                        //if (bVB.SaveFileToArchive(tmpFile,
-                        //                            tmpPSB + " für " + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim(),
-                        //                            "Pflegebegleitschreiben", 
-                        //                            ref IDDokumenteneintrag,
-                        //                            msPSB
-                        //                          ))
-                        //{
-                        //    PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
-
-                        //    string IDDokumenteintragReturn = "";
-                        //    string Beschreibung = "Pflegesituatonsbericht";
-                        //    bool WriteMedizinischeDaten = PMDSBusiness1.addMedizinischeDatenBefund(db, DateTime.Now, ENV.CurrentIDPatient, ref Beschreibung,
-                        //                 IDDokumenteneintrag, "Pflegesituationsbericht", MedizinischerTyp.Befunde, "",
-                        //                 IDDokumenteintragReturn, "", "");
-                        //    db.SaveChanges();
-
-                        //    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(tmpPSB + " wurde ins Archiv abgelegt!");
-                        //    if (File.Exists(tmpFile))
-                        //    {
-                        //        File.Delete(tmpFile);
-                        //        ReportNameProt = tmpPSB;
-                        //        protTitle = string.Format(tmpPSB, ReportNameProt);
-                        //    }
-                        //}
                     }
 
-                    PMDS.db.Entities.Benutzer rUserLoggedIn = this.b.LogggedOnUser(db);
-                    string UserName = rUserLoggedIn.Nachname.Trim() + " " + rUserLoggedIn.Vorname.Trim() + " (" + rUserLoggedIn.Benutzer1.Trim() + ")";
+                    string UserName = ENV.ActiveUser.Nachname.Trim() + " " + ENV.ActiveUser.Vorname.Trim() + " (" + ENV.ActiveUser.Benutzer1.Trim() + ")";
 
                     string sParms = "";
                     foreach (PMDS.Print.CR.BerichtParameter par in lPars)
@@ -394,7 +375,6 @@ namespace PMDS.GUI
                     protTxt +=  "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Parameter") + ": " + "\r\n" + sParms;
                     this.b.saveProtocol(db, protTitle, protTxt);
                 }
-
             }
             catch (Exception ex)
             {

@@ -409,14 +409,18 @@ namespace PMDS.GUI
 
                         this.IsELGADocu = true;
                         this.btnOpenBefund.Visible = true;
-                        this.btnBefundStorno.Visible = bELGAIsActive && !rDocuEintrag.ELGAStorniert && rDocuEintrag.ELGACreatedInPMDS;
+                        this.btnBefundStorno.Visible = bELGAIsActive && 
+                                                        !rDocuEintrag.ELGAStorniert && 
+                                                        rDocuEintrag.ELGACreatedInPMDS &&
+                                                        ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteStornieren, false);
 
                         if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
                             bELGAIsActive &&
                             (
                                 generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht) ||
                                 generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief)
-                             )
+                             ) &&
+                             ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteSenden, false)
                             )
                         {
                             this.btnBefundSend.Visible = true;

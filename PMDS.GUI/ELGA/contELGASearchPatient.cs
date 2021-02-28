@@ -49,8 +49,6 @@ namespace PMDS.GUI.ELGA
 
         }
 
-
-
         public void initControl(Guid IDPatient, Guid IDAufenthalt, bool SozVersNrEditable, string AuthUniversalID)
         {
             try
@@ -66,8 +64,8 @@ namespace PMDS.GUI.ELGA
 
                     this.btnSearch.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
                     this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
-                    
 
+                    this.btnSearch.Enabled = ENV.lic_ELGA && ELGABusiness.checkELGASessionActive(false) && ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, false);
                     this.txtSozVersNr.ReadOnly = SozVersNrEditable;
 
                     this.clearUI();

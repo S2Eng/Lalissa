@@ -81,7 +81,7 @@ namespace WCFServicePMDS
         {
             try
             {
-                if (session.ELGAStateID != null && session.ELGAStateID.Trim() != "")
+                if (session.ELGAStateID != null && !String.IsNullOrWhiteSpace(session.ELGAStateID))
                 {
                     EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
@@ -189,10 +189,6 @@ namespace WCFServicePMDS
                                 throw new Exception("ELGABAL.queryPatients: retDto.iRowsFound!=1 not allowed for parsIn.sObjectDto.SozVersNrLocalPatID '" + parsIn.sObjectDto.SozVersNrLocalPatID.Trim() + "'!");
                             }
                         }
-                    }
-                    else
-                    {
-                        bool bNoDataFound = true;
                     }
                     retDto.bOK = true;
                     return retDto;

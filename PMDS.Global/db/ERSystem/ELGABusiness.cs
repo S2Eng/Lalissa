@@ -118,7 +118,7 @@ namespace PMDS.Global.db.ERSystem
             ELGADokumenteVidieren = 107,
             ELGADokumenteSenden = 108,
             ELGAKontaktbestätigung = 111,
-            ELGAStorno = 112,
+            ELGADokumenteStornieren = 112,
             ELGASituativesOptOut = 113,
             ELGASucheÄrzte = 114,
             ELGASucheExterneEinrichtungen = 115,
@@ -1282,7 +1282,7 @@ namespace PMDS.Global.db.ERSystem
                                        {
                                            a.ID,
                                            a.IDPatient,
-                                           a.ELGALocalID
+                                           ELGALocalID = a.ELGALocalID.Trim()
 
                                        }).First();
 
@@ -1290,8 +1290,8 @@ namespace PMDS.Global.db.ERSystem
                                     where p.ID == rAufenthalt.IDPatient
                                     select new
                                     {
-                                        p.Nachname,
-                                        p.Vorname,
+                                        Nachname = p.Nachname.Trim(),
+                                        Vorname = p.Vorname.Trim(),
                                         p.ID
                                     }).First();
 
@@ -1300,9 +1300,9 @@ namespace PMDS.Global.db.ERSystem
                                      select new
                                      {
                                          b.ID,
-                                         b.Nachname,
-                                         b.Vorname,
-                                         b.Benutzer1
+                                         Nachname = b.Nachname.Trim(),
+                                         Vorname= b.Vorname.Trim(),
+                                         Benutzer1 = b.Benutzer1.Trim()
                                      }).First();
 
                     var rKlinik = (from k in db.Klinik
@@ -1310,11 +1310,11 @@ namespace PMDS.Global.db.ERSystem
                                    select new
                                    {
                                        k.ID,
-                                       k.Bezeichnung,
-                                       k.ELGA_OrganizationOID,
-                                       k.ELGA_OrganizationName,
-                                       k.ELGA_OID,
-                                       k.ELGA_AuthorSpeciality
+                                       Bezeichnung = k.Bezeichnung.Trim(),
+                                       ELGA_OrganizationOID = k.ELGA_OrganizationOID.Trim(),
+                                       ELGA_OrganizationName = k.ELGA_OrganizationName.Trim(),
+                                       ELGA_OID = k.ELGA_OID.Trim(),
+                                       ELGA_AuthorSpeciality = k.ELGA_AuthorSpeciality.Trim()
                                    }).First();
 
                     var rPfad = (from p in db.tblPfad
@@ -1338,20 +1338,20 @@ namespace PMDS.Global.db.ERSystem
 
                     Byte[] bDocu = Encoding.UTF8.GetBytes(xmlFile.Trim());
                     Guid IDDocumenteneintrag = System.Guid.NewGuid();
-                    ELGAParOutDto parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID.Trim(), rKlinik.ELGA_OrganizationName.Trim(), rKlinik.ELGA_OrganizationOID.Trim(), rBenutzer.Benutzer1.Trim(),
-                                                                                rDocuEintragUpdate.Bezeichnung.Trim(), bDocu, rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim(), "", IDDocumenteneintrag.ToString(), "");
+                    ELGAParOutDto parOut = WCFServiceClient1.ELGAAddDocument(rAufenthalt.ELGALocalID, rKlinik.ELGA_OrganizationName, rKlinik.ELGA_OrganizationOID, rBenutzer.Benutzer1,
+                                                                                rDocuEintragUpdate.Bezeichnung, bDocu, rPatient.Nachname + " " + rPatient.Vorname, "", IDDocumenteneintrag.ToString(), "");
 
                     if (generic.sEquals(rDocuEintragUpdate.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht))
                     {
                         string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht für Patient {0} wurde nach ELGA übertragen");
-                        sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                        sProt = string.Format(sProt, rPatient.Nachname + " " + rPatient.Vorname);
                         ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegesituationsbericht übertragen"), null,
                                                         ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, rPatient.ID, rAufenthalt.ID, sProt);
                     }
                     else if (generic.sEquals(rDocuEintragUpdate.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief))
                     {
                         string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief für Patient {0} wurde nach ELGA übertragen");
-                        sProt = string.Format(sProt, (rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim()));
+                        sProt = string.Format(sProt, rPatient.Nachname + " " + rPatient.Vorname);
                         ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Entlassungsbrief übertragen"), null,
                                                         ELGABusiness.eTypeProt.ELGAAddDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, rPatient.ID, rAufenthalt.ID, sProt);
                     }

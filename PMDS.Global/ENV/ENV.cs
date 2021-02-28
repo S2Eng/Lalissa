@@ -2791,8 +2791,8 @@ namespace PMDS.Global
 
         [Description("ELGA-Kontaktbestätigung")]
         ELGAKontaktbestätigung = 111,
-        [Description("ELGA-Storno")]
-        ELGAStorno = 112,
+        [Description("ELGA-Dokumente stornieren")]
+        ELGADokumenteStornieren = 112,
         [Description("ELGA-Situatives OptOut")]
         ELGASituativesOptOut = 113,
         [Description("ELGA-Suche Ärzte")]

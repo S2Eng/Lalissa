@@ -232,7 +232,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl1.Controls.Add(this.grpAdresse);
             this.ultraTabPageControl1.Controls.Add(this.grpKontakt);
             this.ultraTabPageControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(2, 24);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(925, 544);
             // 
@@ -543,16 +543,18 @@ namespace PMDS.GUI
             benutzer1.ELGAAutoLogin = false;
             benutzer1.ELGAAutostartSession = false;
             benutzer1.ELGAPatID = "";
+            benutzer1.ELGAPwd = "";
+            benutzer1.ELGAPwdLastChange = new System.DateTime(2021, 2, 28, 15, 38, 34, 573);
             benutzer1.ELGAUser = "";
             benutzer1.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 11);
-            benutzer1.ID = new System.Guid("ecc01ab4-1b45-4845-b268-6cbb9085643f");
+            benutzer1.ID = new System.Guid("4233ec14-b25f-4f7d-8d0b-e8408001d780");
             benutzer1.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDArzt = null;
             benutzer1.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer1.IsGeneric = false;
             benutzer1.Nachname = "";
-            benutzer1.Passwort = "9A903D38277D19033B48DE2D8265BA1F";
+            benutzer1.Passwort = "26BAD4DACB4B2C9FBB36C70A41C1B39F";
             benutzer1.PflegerJN = false;
             benutzer1.Vorname = "";
             this.ucBenutzerGruppe1.Benutzer = benutzer1;
@@ -623,16 +625,18 @@ namespace PMDS.GUI
             benutzer2.ELGAAutoLogin = false;
             benutzer2.ELGAAutostartSession = false;
             benutzer2.ELGAPatID = "";
+            benutzer2.ELGAPwd = "";
+            benutzer2.ELGAPwdLastChange = new System.DateTime(2021, 2, 28, 15, 38, 34, 575);
             benutzer2.ELGAUser = "";
             benutzer2.ELGAValidTrough = new System.DateTime(2019, 6, 19, 13, 53, 19, 13);
-            benutzer2.ID = new System.Guid("4f32f344-fe06-4c7e-be95-29b123ff4b3f");
+            benutzer2.ID = new System.Guid("85a9705d-1a08-4443-9937-440904d18222");
             benutzer2.IDAdresse = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDArzt = null;
             benutzer2.IDBerufsstand = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IDKontakt = new System.Guid("00000000-0000-0000-0000-000000000000");
             benutzer2.IsGeneric = false;
             benutzer2.Nachname = "";
-            benutzer2.Passwort = "844A3BAB5CEBD70EA0E8B7CF508E5ED0";
+            benutzer2.Passwort = "C91604E594B34198A9388D417C123B12";
             benutzer2.PflegerJN = false;
             benutzer2.Vorname = "";
             this.ucBenutzerAbteilung1.Benutzer = benutzer2;
@@ -647,7 +651,7 @@ namespace PMDS.GUI
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.groupBoxSMTPAngaben);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(2, 24);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(925, 544);
             // 
@@ -704,9 +708,11 @@ namespace PMDS.GUI
             this.txtSMTPPwd.Location = new System.Drawing.Point(115, 113);
             this.txtSMTPPwd.MaxLength = 25;
             this.txtSMTPPwd.Name = "txtSMTPPwd";
+            this.txtSMTPPwd.PasswordChar = '*';
             this.txtSMTPPwd.Size = new System.Drawing.Size(214, 24);
             this.txtSMTPPwd.TabIndex = 3;
             this.txtSMTPPwd.ValueChanged += new System.EventHandler(this.txtSMTPPwd_ValueChanged);
+            this.txtSMTPPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSMTPPwd_KeyDown);
             // 
             // lblUser
             // 
@@ -1379,5 +1385,9 @@ namespace PMDS.GUI
             }
         }
 
+        private void txtSMTPPwd_KeyDown(object sender, KeyEventArgs e)
+        {
+            PMDS.Global.generic.TogglePassword(sender);
+        }
     }
 }
