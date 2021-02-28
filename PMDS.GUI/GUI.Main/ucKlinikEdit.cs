@@ -233,35 +233,12 @@ namespace PMDS.GUI
 		{
 			try
 			{
-				_verwaltung = new EngineVerwaltung(cbKlinik, ucKlinik1, 
-					btnAdd, null, btnUndo, null);
+				_verwaltung = new EngineVerwaltung(cbKlinik, ucKlinik1, btnAdd, null, btnUndo, null);
 
                 this.ucKlinik1.mainWindow = this;
-
                 this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
-
-                if (ENV.lic_ELGA)
-                {
-                    this.btnELGASearchGDA.Visible = true;
-                }
-                else
-                {
-                    this.btnELGASearchGDA.Visible = false;
-                }
-                //ELGABusiness bELGA = new ELGABusiness();
-                //if (ENV.CurrentIDPatient.Equals(System.Guid.Empty) || ENV.IDAUFENTHALT.Equals(System.Guid.Empty))
-                //{
-                //    this.btnELGASearchGDA.Visible = true;
-                //}
-                //else
-                //{
-                //    if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
-                //    {
-                //        this.btnELGASearchGDA.Visible = true;
-                //    }
-                //}
-
-
+                this.btnELGASearchGDA.Visible = ENV.lic_ELGA && ELGABusiness.checkELGASessionActive(false) && ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGASucheExterneEinrichtungen, false);
+                               
                 // wenn ucKlinik zugänglich dann Add Button verstecken
                 //if (ucKlinik1.Enabled)
                 //    btnAdd.Visible = false;

@@ -33,7 +33,9 @@ namespace PMDS.GUI
         {
             this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
 
-            if (ENV.lic_ELGA)
+            ELGABusiness bELGA = new ELGABusiness();
+
+            if (ENV.lic_ELGA && ELGABusiness.checkELGASessionActive(false) && ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGASucheÄrzte, false))
             {
                 if (ENV.CurrentIDPatient.Equals(System.Guid.Empty) || ENV.IDAUFENTHALT.Equals(System.Guid.Empty))
                 {
@@ -41,7 +43,6 @@ namespace PMDS.GUI
                 }
                 else
                 {
-                    ELGABusiness bELGA = new ELGABusiness();
                     this.btnELGASearchGDA.Visible = bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true);
                 }
             }
@@ -51,7 +52,6 @@ namespace PMDS.GUI
             }
 
         }
-
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]

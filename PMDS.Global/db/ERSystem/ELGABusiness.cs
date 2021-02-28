@@ -109,27 +109,23 @@ namespace PMDS.Global.db.ERSystem
 
         public enum eELGARight
         {
+            ELGAPatientenSuchen = 101,
+            ELGAMedikamente = 102,
+            ELGAPflegerischerEntlassungsbrief = 103,
+            ELGAPflegezustandsbericht = 104,
             ELGAAktionen = 105,
             ELGADokumenteErstellen = 106,
-            ELGADokumenteSenden = 108,
             ELGADokumenteVidieren = 107,
-            ELGAMedikamente = 102,
-            ELGAPatientenSuchen = 101,
-            ELGAPflegerischerEntlassungsbrief = 103,
-            ELGAPflegezustandsbericht = 104
+            ELGADokumenteSenden = 108,
+            ELGAKontaktbestätigung = 111,
+            ELGAStorno = 112,
+            ELGASituativesOptOut = 113,
+            ELGASucheÄrzte = 114,
+            ELGASucheExterneEinrichtungen = 115,
+            ELGAKontaktdelegation = 116
         }
 
         public PMDSBusiness PMDSBusiness1 = new PMDSBusiness();
-
-
-
-
-
-
-
-
-
-
         public void init()
         {
             if (ElgaDtoUsr == null)

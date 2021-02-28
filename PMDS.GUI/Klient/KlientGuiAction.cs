@@ -239,8 +239,17 @@ namespace PMDS.GUI
                                            Vorname = p.Vorname.Trim()
                                        }).First();
 
-                    if (!ENV.lic_ELGA || rows == null || !ENV.HasRight(UserRights.PatientenVerwalten) || (bool)rAufenthalt.ELGAAbgemeldet || (bool)rAufenthalt.ELGASOOJN || String.IsNullOrWhiteSpace(rAufenthalt.ELGALocalID))
+                    if (!ENV.lic_ELGA || 
+                        rows == null || 
+                        !ENV.HasRight(UserRights.PatientenVerwalten) || 
+                        (bool)rAufenthalt.ELGAAbgemeldet || 
+                        (bool)rAufenthalt.ELGASOOJN || 
+                        String.IsNullOrWhiteSpace(rAufenthalt.ELGALocalID) ||
+                        !Global.db.ERSystem.ELGABusiness.HasELGARight(Global.db.ERSystem.ELGABusiness.eELGARight.ELGAPatientenSuchen, false)
+                        )
                         return false;
+                    
+                    
                     if (PMDS.Global.db.ERSystem.ELGABusiness.checkELGASessionActive(true))
                     {
                         string sResultOk = "Ergebnis für Kontaktdelegation\n\r\n\r";

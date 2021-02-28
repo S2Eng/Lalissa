@@ -46,6 +46,7 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
+                this.btnSetSOO.Visible = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, true);
                 if (!this.IsInitialized)
                 {
                     this.IsNeuaufnahme = IsNeuaufnahme;

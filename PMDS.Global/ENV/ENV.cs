@@ -2799,6 +2799,8 @@ namespace PMDS.Global
         ELGASucheÄrzte = 114,
         [Description("ELGA-Suche externe Einrichtungen")]
         ELGASucheExterneEinrichtungen = 115,
+        [Description("ELGA-Kontake delegieren")]
+        ELGAKontakDelegaton = 116,
     }
 
     public enum eCurrentPatientChange

@@ -124,13 +124,31 @@ namespace PMDS.GUI
             this.tabStammdaten.Tabs["VOErfassen"].Visible = PMDS.Global.ENV.lic_VO;
 
             bELGA.init();
-            this.setTabELGAOnIff(false);
+            this.setTabELGAOnIff();
             this.contELGAKlient1.initControl(false);
         }
 
-        public void setTabELGAOnIff(bool abgemeldetJN)
+        public void setTabELGAOnIff(bool bAbgemeldet = false)
         {
-            this.tabStammdaten.Tabs["ELGA"].Visible = !this._isBewerberJN && !this._isAbrechnung && PMDS.Global.ENV.lic_ELGA && this._mainSystem && !abgemeldetJN;
+            if (bAbgemeldet)
+            {
+                this.tabStammdaten.Tabs["ELGA"].Visible = false;
+                this.tabStammdaten.Tabs["Kontakte"].TabControl.Controls["btnELGAKontaktdelegation"].Visible = false;
+            }
+            else
+            {
+                ELGABusiness bElga = new ELGABusiness();
+                this.tabStammdaten.Tabs["ELGA"].Visible = !this._isBewerberJN &&
+                                                            !this._isAbrechnung &&
+                                                            ENV.lic_ELGA && this._mainSystem &&
+                                                            !bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false);
+
+                this.tabStammdaten.Tabs["Kontakte"].TabControl.Controls["btnELGAKontaktdelegation"].Enabled =
+                                                                    ENV.lic_ELGA &&
+                                                                    ELGABusiness.checkELGASessionActive(false) &&
+                                                                    bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false) &&
+                                                                    ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAKontaktdelegation, false);
+            }
         }
 
         public void initKlientenstammdatenDokumente()
@@ -520,7 +538,7 @@ namespace PMDS.GUI
                                         p.SozVersMitversichertBei,
                                         p.SozVersLeerGrund,
                                         p.TitelPost,
-                                        p.ELGAAbgemeldet,
+                                        p.ELGAAbgemeldet,                                        
                                         p.bPK
                                     }
                                    ).First();
@@ -569,11 +587,11 @@ namespace PMDS.GUI
                     if (rPatInfo.ELGAAbgemeldet != null)
                     {
                         this.chkELGAAbgemeldet.Checked = rPatInfo.ELGAAbgemeldet.Value;
-                        this.setTabELGAOnIff(rPatInfo.ELGAAbgemeldet.Value);
+                        this.setTabELGAOnIff();
                     } 
                     else
                     {
-                        this.setTabELGAOnIff(false);
+                        this.setTabELGAOnIff();
                     }
 
                 }

@@ -299,21 +299,9 @@ namespace PMDS.GUI
                 }
 
                 this.btnELGASearchGDA.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
-
-                if (ENV.lic_ELGA)
-                {
-                    this.btnELGASearchGDA.Visible = true;
-                }
-                else
-                {
-                    this.btnELGASearchGDA.Visible = false;
-                }
-                //ELGABusiness bELGA = new ELGABusiness();
-                //if (bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true))
-                //{
-                //    this.btnELGASearchGDA.Visible = true;
-                //}
-               
+                this.btnELGASearchGDA.Visible = ENV.lic_ELGA && 
+                                                ELGABusiness.checkELGASessionActive(false) && 
+                                                ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGASucheExterneEinrichtungen, false);
             }
 			catch(Exception ex)
 			{
@@ -357,18 +345,19 @@ namespace PMDS.GUI
                     StrasseNr = ""
                 };
 
-                frmELGASearchGDA frmELGASearchGDA1 = new frmELGASearchGDA();
-                frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.ExtEinrichtungen);
-                frmELGASearchGDA1.ShowDialog();
-                if (!frmELGASearchGDA1.contELGASearchGDA1.abort)
+                using (frmELGASearchGDA frmELGASearchGDA1 = new frmELGASearchGDA())
                 {
-                    this.ucEinrichtung1.txtEinrichtung.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.NachnameFirma.Trim();
-                    this.ucEinrichtung1.txtOrt.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Ort.Trim();
-                    this.ucEinrichtung1.txtPLZ.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.PLZ.Trim();
-                    this.ucEinrichtung1.txtStrasse.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Strasse.Trim() + " " + frmELGASearchGDA1.contELGASearchGDA1._rSelRow.StrasseNr.Trim();
-                    this.ucEinrichtung1.txtELGAGdaOid.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.IDElga.Trim();
+                    frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.ExtEinrichtungen);
+                    frmELGASearchGDA1.ShowDialog();
+                    if (!frmELGASearchGDA1.contELGASearchGDA1.abort)
+                    {
+                        this.ucEinrichtung1.txtEinrichtung.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.NachnameFirma.Trim();
+                        this.ucEinrichtung1.txtOrt.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Ort.Trim();
+                        this.ucEinrichtung1.txtPLZ.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.PLZ.Trim();
+                        this.ucEinrichtung1.txtStrasse.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.Strasse.Trim() + " " + frmELGASearchGDA1.contELGASearchGDA1._rSelRow.StrasseNr.Trim();
+                        this.ucEinrichtung1.txtELGAGdaOid.Text = frmELGASearchGDA1.contELGASearchGDA1._rSelRow.IDElga.Trim();
+                    }
                 }
-
             }
             catch (Exception ex)
             {
@@ -379,6 +368,5 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.Default;
             }
         }
-
     }
 }

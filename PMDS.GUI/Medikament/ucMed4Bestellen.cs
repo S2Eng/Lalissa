@@ -11,8 +11,7 @@ using PMDS.Global;
 using Infragistics.Win.UltraWinGrid;
 using PMDS.Global.db.Patient;
 using PMDS.DB;
-
-
+using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI.Medikament
 {
@@ -536,23 +535,34 @@ namespace PMDS.GUI.Medikament
         {
             try
             {
-                bool bCreateELGAKontaktDelegation = ENV.lic_ELGA;
-                if (ENV.lic_ELGA && 
-                        !PMDS.Global.db.ERSystem.ELGABusiness.checkELGASessionActive(false) &&
-                        TypActionPrint == frmPrintPreview.eTypReportMedikamenteBestellen.Rezeptanforderungsliste)
+                bool bCreateELGAKontaktDelegation = false;
+                string sMsgBox = "";
+                if (ENV.lic_ELGA && TypActionPrint == frmPrintPreview.eTypReportMedikamenteBestellen.Rezeptanforderungsliste)
                 {
-                    string sMsgBox = "Keine aktive ELGA-Sitzung. Wollen Sie die Rezeptanforderung ohne Kontaktdelegation erstellen?";
-                    using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
+                    if (!PMDS.Global.db.ERSystem.ELGABusiness.checkELGASessionActive(false))
                     {
-                        frmMessageBox1.initControl(sMsgBox);
+                        sMsgBox = "Keine aktive ELGA-Sitzung. Wollen Sie die Rezeptanforderung ohne Kontaktdelegation erstellen?";
+                    }
+                    else if (PMDS.Global.db.ERSystem.ELGABusiness.checkELGASessionActive(false) &&
+                            ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, false))
+                    {
+                        sMsgBox = "Sie haben kein Recht für die ELGA-Kontaktdelegation. Wollen Sie die Rezeptanforderung trotzdem erstellen?";
+                    }
+                    else
+                        bCreateELGAKontaktDelegation = true;
 
-                        frmMessageBox1.ShowDialog(this);
-                        if (frmMessageBox1.abort)
+                    if (!bCreateELGAKontaktDelegation)
+                    {
+                        using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
                         {
-                            return false;
+                            frmMessageBox1.initControl(sMsgBox);
+                            frmMessageBox1.ShowDialog(this);
+                            if (frmMessageBox1.abort)
+                            {
+                                return false;
+                            }
                         }
                     }
-                    bCreateELGAKontaktDelegation = false;
                 }
 
                 List<PMDS.DB.PMDSBusiness.cField> lstData = new List<DB.PMDSBusiness.cField>();
@@ -577,7 +587,7 @@ namespace PMDS.GUI.Medikament
                         string sResultOk = "Ergebnis für Kontaktdelagation wegen Rezeptanforderung\n\r\n\r";
                         string sResultNotOk = "";
 
-                        PMDS.Global.db.ERSystem.ELGABusiness ELGABusiness = new Global.db.ERSystem.ELGABusiness();
+                        ELGABusiness ELGABusiness = new ELGABusiness();
                         List<ArztDelegation> AerzteMitOID = new List<ArztDelegation>();
 
                         foreach (PMDS.db.Entities.vRezeptBestellung2 r in tRezepteBestSelected)
