@@ -11382,14 +11382,12 @@ namespace PMDS.DB
                                        k.AuthUniversalID,
                                    }).First();
 
-                    if (rKlinik.AuthUniversalID.Trim() == "")
+                    if (String.IsNullOrWhiteSpace(rKlinik.AuthUniversalID))
                     {
                         throw new Exception("getKlinikAuthUniversalID: rKlinik.AuthUniversalID='' not allowed!");
                     }
-
                     return rKlinik.AuthUniversalID.Trim();
                 }
-
             }
             catch (Exception ex)
             {

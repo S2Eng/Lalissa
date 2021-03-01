@@ -536,6 +536,7 @@ namespace PMDSClient.Sitemap
                 WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
+                parsIn.LocalPatientID = LocalPatientID.Trim();
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
                 parsIn.sOrganistaionIdToDelegateTo = OrganisationIdToDelegateTo;
                 ELGAParOutDto parOutDto = s1.ELGADelegateContact(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik), PMDS.Global.ENV.ELGAUrl);
@@ -543,7 +544,8 @@ namespace PMDSClient.Sitemap
                 if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGADelegateContact");
-                    throw new Exception("WCFServiceClientPMDS.ELGADelegateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                    return parOutDto;
+                    //throw new Exception("WCFServiceClientPMDS.ELGADelegateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
                 if (parOutDto.bOK)
@@ -590,7 +592,8 @@ namespace PMDSClient.Sitemap
                 if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAQueryGDAs");
-                    throw new Exception("WCFServiceClientPMDS.ELGAQueryGDAs: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                    return parOutDto;
+                    //throw new Exception("WCFServiceClientPMDS.ELGAQueryGDAs: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
                 if (parOutDto.bOK)
@@ -816,8 +819,8 @@ namespace PMDSClient.Sitemap
                                         rError.queryResponseCode + "" +
                                         "\r\n" + "\r\n";
                 }
-
-                throw new Exception("WCFServiceClientPMDS." + functionName.Trim() + ": ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                return sElgaErrors;
+                //throw new Exception("WCFServiceClientPMDS." + functionName.Trim() + ": ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
             }
             catch (Exception ex)
             {

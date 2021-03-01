@@ -615,20 +615,30 @@ namespace WCFServicePMDS
                     return retDto;
                 }
             }
+            catch (System.ServiceModel.FaultException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
             catch (System.ServiceModel.EndpointNotFoundException ex)
             {
+                retDto.bErrorsFound = true;
                 retDto.bOK = false;
                 retDto.MessageException = ex.Message;
                 return retDto;
             }
             catch (System.ServiceModel.ProtocolException ex)
             {
+                retDto.bErrorsFound = true;
                 retDto.bOK = false;
                 retDto.MessageException = ex.Message;
                 return retDto;
             }
             catch (Exception ex)
             {
+                retDto.bErrorsFound = true;
                 retDto.bOK = false;
                 retDto.MessageException = "Unbekannter Fehler bei Kontaktdelegation: " + ex.Message;
                 return retDto;
@@ -666,10 +676,11 @@ namespace WCFServicePMDS
                 }                
                 catch (System.Web.Services.Protocols.SoapException ex)
                 {
-                        retDto.MessageException = ex.Message;
-                        retDto.MessageExceptionNr = 0;
-                        retDto.bOK = true;
-                        return retDto;
+                    retDto.bErrorsFound = true;
+                    retDto.MessageException = ex.Message;
+                    retDto.MessageExceptionNr = 0;
+                    retDto.bOK = false;
+                    return retDto;
                 }
 
                 if (retGda1.Length > 0)

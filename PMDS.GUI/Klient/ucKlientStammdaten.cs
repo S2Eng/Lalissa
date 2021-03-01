@@ -130,24 +130,20 @@ namespace PMDS.GUI
 
         public void setTabELGAOnIff(bool bAbgemeldet = false)
         {
-            if (bAbgemeldet)
+            if (bAbgemeldet || !ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAAktionen, false))
             {
                 this.tabStammdaten.Tabs["ELGA"].Visible = false;
-                this.tabStammdaten.Tabs["Kontakte"].TabControl.Controls["btnELGAKontaktdelegation"].Visible = false;
             }
             else
             {
                 ELGABusiness bElga = new ELGABusiness();
                 this.tabStammdaten.Tabs["ELGA"].Visible = !this._isBewerberJN &&
                                                             !this._isAbrechnung &&
-                                                            ENV.lic_ELGA && this._mainSystem &&
-                                                            !bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false);
-
-                this.tabStammdaten.Tabs["Kontakte"].TabControl.Controls["btnELGAKontaktdelegation"].Enabled =
-                                                                    ENV.lic_ELGA &&
-                                                                    ELGABusiness.checkELGASessionActive(false) &&
-                                                                    bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false) &&
-                                                                    ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAKontaktdelegation, false);
+                                                            ENV.lic_ELGA && 
+                                                            this._mainSystem &&
+                                                            ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAAktionen, false) &&
+                                                            ELGABusiness.checkELGASessionActive(false) &&
+                                                            bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false);
             }
         }
 
@@ -2588,8 +2584,31 @@ namespace PMDS.GUI
 
         private void btnELGAKontakDelegation_Click(object sender, EventArgs e)
         {
-            if (KlientGuiAction.ELGAKontaktDelegation(CurrentAerzteSelectedRows(), _klient) && ValueChanged != null)
-                ValueChanged(sender, e);
+
+            if (ENV.lic_ELGA &&
+                    ELGABusiness.checkELGASessionActive(false) &&
+                    bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false) &&
+                    ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAKontaktdelegation, false))
+            {
+                if (KlientGuiAction.ELGAKontaktDelegation(CurrentAerzteSelectedRows(), _klient) && ValueChanged != null)
+                    ValueChanged(sender, e);
+            }
+            else
+            {
+                using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
+                {
+                    string sMsg = "Kontaktdelegation ist nicht möglich:\n\r";
+                    sMsg += !ENV.lic_ELGA ? "Keine ELGA-Lizenz.\n\r" : "";
+                    sMsg += !ENV.lic_ELGA ? "Keine ELGA-Sitzung aktiv.\n\r" : "";
+                    sMsg += !bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false) ? "Patient hat keine Kontaktbestätigung, ist von ELGA abgemeldet oder hat SOO erklärt.\n\r" : "";
+                    sMsg += ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAKontaktdelegation, false) ? "Sie haben kein Recht für Kontaktdelegation.\n\r" : "";
+
+                    frmMessageBox1.ShowAbort = false;
+
+                    frmMessageBox1.initControl("Kontaktdelegation ist nicht möglich (z.B. keine Lizenz, keine aktive ELGA-Sitzung, Klient ist abgemeldet, SOO, kein Recht für Delegation ");
+                    frmMessageBox1.ShowDialog();
+                }
+            }
         }
     }
 }

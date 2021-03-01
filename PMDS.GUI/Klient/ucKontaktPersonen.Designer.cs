@@ -174,23 +174,28 @@ namespace PMDS.GUI
             this.gridKontaktpersonen.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
             ultraGridColumn1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn1.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn1.Hidden = true;
             ultraGridColumn2.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn2.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn2.Hidden = true;
             ultraGridColumn3.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn3.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn3.Header.Editor = null;
             ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn3.Hidden = true;
             ultraGridColumn4.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn4.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn4.Header.Editor = null;
             ultraGridColumn4.Header.VisiblePosition = 3;
             ultraGridColumn4.Hidden = true;
             ultraGridColumn5.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn5.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn5.Header.Caption = "Vertrauensperson";
+            ultraGridColumn5.Header.Editor = null;
             ultraGridColumn5.Header.VisiblePosition = 5;
             ultraGridColumn5.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn5.RowLayoutColumnInfo.OriginY = 0;
@@ -199,6 +204,7 @@ namespace PMDS.GUI
             ultraGridColumn5.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn6.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn6.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn6.Header.Editor = null;
             ultraGridColumn6.Header.VisiblePosition = 4;
             ultraGridColumn6.RowLayoutColumnInfo.OriginX = 1;
             ultraGridColumn6.RowLayoutColumnInfo.OriginY = 0;
@@ -207,6 +213,7 @@ namespace PMDS.GUI
             ultraGridColumn6.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn7.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn7.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn7.Header.Editor = null;
             ultraGridColumn7.Header.VisiblePosition = 7;
             ultraGridColumn7.RowLayoutColumnInfo.OriginX = 3;
             ultraGridColumn7.RowLayoutColumnInfo.OriginY = 0;
@@ -216,13 +223,16 @@ namespace PMDS.GUI
             ultraGridColumn8.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn8.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn8.Header.Caption = "Telefon / Adresse";
+            ultraGridColumn8.Header.Editor = null;
             ultraGridColumn8.Header.VisiblePosition = 6;
             ultraGridColumn8.RowLayoutColumnInfo.OriginX = 5;
             ultraGridColumn8.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn8.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(385, 0);
             ultraGridColumn8.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn8.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 8;
+            ultraGridColumn19.Header.Editor = null;
             ultraGridColumn19.Header.VisiblePosition = 9;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,

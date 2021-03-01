@@ -143,6 +143,8 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance52 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance53 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance54 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Kontaktdelegation", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKlientStammdaten));
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
@@ -155,10 +157,10 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatient");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAdresse");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDKontakt");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Name");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Belange");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BestimmtAm");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TelAdresse", 0, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EMail", 1);
             Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
@@ -211,8 +213,6 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab9 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab10 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab11 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance54 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Editieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             this.ultraTabPageControl4 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBoxAdressdaten = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.lift = new QS2.Desktop.ControlManagment.BaseCheckBox();
@@ -361,6 +361,7 @@ namespace PMDS.GUI
             this.gridAerzte = new QS2.Desktop.ControlManagment.BaseGrid();
             this.dsPatientAerzte1 = new PMDS.Global.db.Global.dsPatientAerzte();
             this.panelButtons1 = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnELGAKontakDelegation = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnUpdateArzt = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnDelAerzte = new PMDS.GUI.ucButton(this.components);
             this.btnUpdateAerzte = new PMDS.GUI.ucButton(this.components);
@@ -417,7 +418,6 @@ namespace PMDS.GUI
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridBagLayoutPanel1 = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
-            this.btnELGAKontakDelegation = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraTabPageControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBoxAdressdaten)).BeginInit();
             this.ultraGroupBoxAdressdaten.SuspendLayout();
@@ -2395,7 +2395,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel2.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanel2.Location = new System.Drawing.Point(3, 19);
             this.ultraGridBagLayoutPanel2.Name = "ultraGridBagLayoutPanel2";
-            this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(996, 121);
+            this.ultraGridBagLayoutPanel2.Size = new System.Drawing.Size(987, 121);
             this.ultraGridBagLayoutPanel2.TabIndex = 7;
             // 
             // gridAerzte
@@ -2590,7 +2590,7 @@ namespace PMDS.GUI
             this.gridAerzte.Location = new System.Drawing.Point(0, 0);
             this.gridAerzte.Name = "gridAerzte";
             this.ultraGridBagLayoutPanel2.SetPreferredSize(this.gridAerzte, new System.Drawing.Size(243, 74));
-            this.gridAerzte.Size = new System.Drawing.Size(996, 121);
+            this.gridAerzte.Size = new System.Drawing.Size(987, 121);
             this.gridAerzte.TabIndex = 2;
             this.gridAerzte.Text = "ultraGrid2";
             this.gridAerzte.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.gridAerzte_CellChange);
@@ -2609,10 +2609,27 @@ namespace PMDS.GUI
             this.panelButtons1.Controls.Add(this.btnDelAerzte);
             this.panelButtons1.Controls.Add(this.btnUpdateAerzte);
             this.panelButtons1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtons1.Location = new System.Drawing.Point(999, 19);
+            this.panelButtons1.Location = new System.Drawing.Point(990, 19);
             this.panelButtons1.Name = "panelButtons1";
-            this.panelButtons1.Size = new System.Drawing.Size(26, 121);
+            this.panelButtons1.Size = new System.Drawing.Size(35, 121);
             this.panelButtons1.TabIndex = 6;
+            // 
+            // btnELGAKontakDelegation
+            // 
+            appearance54.Image = global::PMDS.GUI.Properties.Resources.Elga;
+            appearance54.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance54.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnELGAKontakDelegation.Appearance = appearance54;
+            this.btnELGAKontakDelegation.AutoWorkLayout = false;
+            this.btnELGAKontakDelegation.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnELGAKontakDelegation.IsStandardControl = false;
+            this.btnELGAKontakDelegation.Location = new System.Drawing.Point(2, 91);
+            this.btnELGAKontakDelegation.Name = "btnELGAKontakDelegation";
+            this.btnELGAKontakDelegation.Size = new System.Drawing.Size(30, 28);
+            this.btnELGAKontakDelegation.TabIndex = 6;
+            ultraToolTipInfo1.ToolTipText = "Kontaktdelegation";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnELGAKontakDelegation, ultraToolTipInfo1);
+            this.btnELGAKontakDelegation.Click += new System.EventHandler(this.btnELGAKontakDelegation_Click);
             // 
             // btnUpdateArzt
             // 
@@ -2623,9 +2640,9 @@ namespace PMDS.GUI
             this.btnUpdateArzt.AutoWorkLayout = false;
             this.btnUpdateArzt.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdateArzt.IsStandardControl = false;
-            this.btnUpdateArzt.Location = new System.Drawing.Point(1, 39);
+            this.btnUpdateArzt.Location = new System.Drawing.Point(2, 61);
             this.btnUpdateArzt.Name = "btnUpdateArzt";
-            this.btnUpdateArzt.Size = new System.Drawing.Size(22, 21);
+            this.btnUpdateArzt.Size = new System.Drawing.Size(30, 28);
             this.btnUpdateArzt.TabIndex = 5;
             ultraToolTipInfo2.ToolTipText = "Editieren";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnUpdateArzt, ultraToolTipInfo2);
@@ -2643,9 +2660,9 @@ namespace PMDS.GUI
             this.btnDelAerzte.DoOnClick = true;
             this.btnDelAerzte.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelAerzte.IsStandardControl = true;
-            this.btnDelAerzte.Location = new System.Drawing.Point(1, 19);
+            this.btnDelAerzte.Location = new System.Drawing.Point(2, 31);
             this.btnDelAerzte.Name = "btnDelAerzte";
-            this.btnDelAerzte.Size = new System.Drawing.Size(22, 21);
+            this.btnDelAerzte.Size = new System.Drawing.Size(30, 28);
             this.btnDelAerzte.TabIndex = 4;
             this.btnDelAerzte.TabStop = false;
             this.btnDelAerzte.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
@@ -2664,9 +2681,9 @@ namespace PMDS.GUI
             this.btnUpdateAerzte.DoOnClick = true;
             this.btnUpdateAerzte.ImageSize = new System.Drawing.Size(12, 12);
             this.btnUpdateAerzte.IsStandardControl = true;
-            this.btnUpdateAerzte.Location = new System.Drawing.Point(1, -1);
+            this.btnUpdateAerzte.Location = new System.Drawing.Point(2, 1);
             this.btnUpdateAerzte.Name = "btnUpdateAerzte";
-            this.btnUpdateAerzte.Size = new System.Drawing.Size(22, 21);
+            this.btnUpdateAerzte.Size = new System.Drawing.Size(30, 28);
             this.btnUpdateAerzte.TabIndex = 3;
             this.btnUpdateAerzte.TabStop = false;
             this.btnUpdateAerzte.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
@@ -2694,7 +2711,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanel3.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanel3.Location = new System.Drawing.Point(3, 19);
             this.ultraGridBagLayoutPanel3.Name = "ultraGridBagLayoutPanel3";
-            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(996, 293);
+            this.ultraGridBagLayoutPanel3.Size = new System.Drawing.Size(987, 293);
             this.ultraGridBagLayoutPanel3.TabIndex = 11;
             // 
             // gridSachwalter
@@ -2822,7 +2839,7 @@ namespace PMDS.GUI
             this.gridSachwalter.Location = new System.Drawing.Point(0, 0);
             this.gridSachwalter.Name = "gridSachwalter";
             this.ultraGridBagLayoutPanel3.SetPreferredSize(this.gridSachwalter, new System.Drawing.Size(378, 85));
-            this.gridSachwalter.Size = new System.Drawing.Size(996, 293);
+            this.gridSachwalter.Size = new System.Drawing.Size(987, 293);
             this.gridSachwalter.TabIndex = 6;
             this.gridSachwalter.Text = "ultraGrid4";
             this.gridSachwalter.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.gridSachwalter_DoubleClickCell);
@@ -2839,9 +2856,9 @@ namespace PMDS.GUI
             this.panelButtons2.Controls.Add(this.btnDelSachwalter);
             this.panelButtons2.Controls.Add(this.btnAddSachw);
             this.panelButtons2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtons2.Location = new System.Drawing.Point(999, 19);
+            this.panelButtons2.Location = new System.Drawing.Point(990, 19);
             this.panelButtons2.Name = "panelButtons2";
-            this.panelButtons2.Size = new System.Drawing.Size(26, 293);
+            this.panelButtons2.Size = new System.Drawing.Size(35, 293);
             this.panelButtons2.TabIndex = 10;
             // 
             // btnUpdateSachw
@@ -2853,9 +2870,9 @@ namespace PMDS.GUI
             this.btnUpdateSachw.AutoWorkLayout = false;
             this.btnUpdateSachw.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdateSachw.IsStandardControl = false;
-            this.btnUpdateSachw.Location = new System.Drawing.Point(1, 40);
+            this.btnUpdateSachw.Location = new System.Drawing.Point(2, 61);
             this.btnUpdateSachw.Name = "btnUpdateSachw";
-            this.btnUpdateSachw.Size = new System.Drawing.Size(22, 21);
+            this.btnUpdateSachw.Size = new System.Drawing.Size(30, 28);
             this.btnUpdateSachw.TabIndex = 9;
             ultraToolTipInfo3.ToolTipText = "Editieren";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnUpdateSachw, ultraToolTipInfo3);
@@ -2873,9 +2890,9 @@ namespace PMDS.GUI
             this.btnDelSachwalter.DoOnClick = true;
             this.btnDelSachwalter.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelSachwalter.IsStandardControl = true;
-            this.btnDelSachwalter.Location = new System.Drawing.Point(1, 20);
+            this.btnDelSachwalter.Location = new System.Drawing.Point(2, 31);
             this.btnDelSachwalter.Name = "btnDelSachwalter";
-            this.btnDelSachwalter.Size = new System.Drawing.Size(22, 21);
+            this.btnDelSachwalter.Size = new System.Drawing.Size(30, 28);
             this.btnDelSachwalter.TabIndex = 8;
             this.btnDelSachwalter.TabStop = false;
             this.btnDelSachwalter.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
@@ -2894,9 +2911,9 @@ namespace PMDS.GUI
             this.btnAddSachw.DoOnClick = true;
             this.btnAddSachw.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAddSachw.IsStandardControl = true;
-            this.btnAddSachw.Location = new System.Drawing.Point(1, 0);
+            this.btnAddSachw.Location = new System.Drawing.Point(2, 1);
             this.btnAddSachw.Name = "btnAddSachw";
-            this.btnAddSachw.Size = new System.Drawing.Size(22, 21);
+            this.btnAddSachw.Size = new System.Drawing.Size(30, 28);
             this.btnAddSachw.TabIndex = 7;
             this.btnAddSachw.TabStop = false;
             this.btnAddSachw.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
@@ -3501,23 +3518,6 @@ namespace PMDS.GUI
             this.ultraToolTipManager1.AutoPopDelay = 0;
             this.ultraToolTipManager1.ContainingControl = this;
             this.ultraToolTipManager1.InitialDelay = 0;
-            // 
-            // btnELGAKontakDelegation
-            // 
-            appearance54.Image = global::PMDS.GUI.Properties.Resources.Elga;
-            appearance54.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance54.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnELGAKontakDelegation.Appearance = appearance54;
-            this.btnELGAKontakDelegation.AutoWorkLayout = false;
-            this.btnELGAKontakDelegation.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnELGAKontakDelegation.IsStandardControl = false;
-            this.btnELGAKontakDelegation.Location = new System.Drawing.Point(2, 72);
-            this.btnELGAKontakDelegation.Name = "btnELGAKontakDelegation";
-            this.btnELGAKontakDelegation.Size = new System.Drawing.Size(22, 21);
-            this.btnELGAKontakDelegation.TabIndex = 6;
-            ultraToolTipInfo1.ToolTipText = "Editieren";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnELGAKontakDelegation, ultraToolTipInfo1);
-            this.btnELGAKontakDelegation.Click += new System.EventHandler(this.btnELGAKontakDelegation_Click);
             // 
             // ucKlientStammdaten
             // 

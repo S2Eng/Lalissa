@@ -771,10 +771,13 @@ namespace PMDS.Global.db.ERSystem
                     WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
                     ELGAParOutDto parOut = WCFServiceClient1.ELGADelegateContact(rAufenthalt.ELGALocalID.ToString(), rArzt.OrganisationIdToDelegateTo);
 
-                    string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt für Patient {0} wurde an {1} delegiert.");
-                    sProt = string.Format(sProt, rAufenthalt.Vorname + " " + rAufenthalt.Nachname, rArzt.Titel + " " + rArzt.Vorname + " " + rArzt.Nachname);
-                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontaktdelegation"), null,
-                                                    ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                    if (parOut.bOK)
+                    {
+                        string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt für Patient {0} wurde an {1} delegiert.");
+                        sProt = string.Format(sProt, rAufenthalt.Vorname + " " + rAufenthalt.Nachname, rArzt.Titel + " " + rArzt.Vorname + " " + rArzt.Nachname);
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontaktdelegation"), null,
+                                                        ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                    }
 
                     return parOut;
                 }
