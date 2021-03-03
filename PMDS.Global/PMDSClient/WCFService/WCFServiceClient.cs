@@ -219,7 +219,7 @@ namespace PMDSClient.Sitemap
             try
             {
                 WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
-                s1.sendExceptionAsSMTPEMail(except, client, (Haus.Trim() == "" ? "" : Haus + "::") + User, At);
+                s1.sendExceptionAsSMTPEMail(except, client, (String.IsNullOrWhiteSpace(Haus) ? "" : Haus + "::") + User, At);
             }
             catch (Exception ex)
             {
@@ -480,7 +480,7 @@ namespace PMDSClient.Sitemap
                 if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAAddContactDischarge");
-                    throw new Exception("WCFServiceClientPMDS.ELGAAddContactDischarge: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                    return parOutDto;
                 }
 
                 if (parOutDto.bOK)
@@ -539,7 +539,8 @@ namespace PMDSClient.Sitemap
                 parsIn.LocalPatientID = LocalPatientID.Trim();
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
                 parsIn.sOrganistaionIdToDelegateTo = OrganisationIdToDelegateTo;
-                ELGAParOutDto parOutDto = s1.ELGADelegateContact(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik), PMDS.Global.ENV.ELGAUrl);
+                parsIn.authUniversalID = PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik);
+                ELGAParOutDto parOutDto = s1.ELGADelegateContact(ref parsIn, PMDS.Global.ENV.ELGAUrl);
 
                 if (parOutDto.bErrorsFound)
                 {

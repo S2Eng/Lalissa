@@ -263,7 +263,7 @@ namespace PMDS.GUI
 
                             if (!String.IsNullOrWhiteSpace(rArzt.ELGA_OID))
                             {
-                                WCFServicePMDS.BAL2.ELGABAL.ELGAParOutDto retDto = ELGABusiness1.DelegateContact(rAufenthalt.IDPatient, rAufenthalt.IDAufenthalt, rArzt.ID);
+                                WCFServicePMDS.BAL2.ELGABAL.ELGAParOutDto retDto = ELGABusiness1.DelegateContact(rAufenthalt.IDAufenthalt, rArzt.ID);
                                 if (retDto.bOK)
                                 {
                                     sResultOk += "Erfolgreich für " + sArzt + ".\n\r";

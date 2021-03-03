@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -70,13 +73,13 @@
             this.txtKontaktbestätigung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance5.BackColor = System.Drawing.Color.White;
-            appearance5.BackColor2 = System.Drawing.Color.White;
-            appearance5.BackColorDisabled = System.Drawing.Color.White;
-            appearance5.BackColorDisabled2 = System.Drawing.Color.White;
-            appearance5.ForeColor = System.Drawing.Color.Black;
-            appearance5.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtKontaktbestätigung.Appearance = appearance5;
+            appearance8.BackColor = System.Drawing.Color.White;
+            appearance8.BackColor2 = System.Drawing.Color.White;
+            appearance8.BackColorDisabled = System.Drawing.Color.White;
+            appearance8.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            appearance8.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtKontaktbestätigung.Appearance = appearance8;
             this.txtKontaktbestätigung.BackColor = System.Drawing.Color.White;
             this.txtKontaktbestätigung.Enabled = false;
             this.txtKontaktbestätigung.Location = new System.Drawing.Point(9, 19);
@@ -88,9 +91,9 @@
             // btnDoKontaktbestätigung
             // 
             this.btnDoKontaktbestätigung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance4.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance4.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnDoKontaktbestätigung.Appearance = appearance4;
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance7.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnDoKontaktbestätigung.Appearance = appearance7;
             this.btnDoKontaktbestätigung.AutoWorkLayout = false;
             this.btnDoKontaktbestätigung.IsStandardControl = false;
             this.btnDoKontaktbestätigung.Location = new System.Drawing.Point(9, 55);
@@ -116,9 +119,9 @@
             // btnKoontaktbestätigungStorno
             // 
             this.btnKoontaktbestätigungStorno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnKoontaktbestätigungStorno.Appearance = appearance3;
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnKoontaktbestätigungStorno.Appearance = appearance6;
             this.btnKoontaktbestätigungStorno.AutoWorkLayout = false;
             this.btnKoontaktbestätigungStorno.IsStandardControl = false;
             this.btnKoontaktbestätigungStorno.Location = new System.Drawing.Point(140, 55);
@@ -132,6 +135,8 @@
             // 
             // chkRechteBelehrt
             // 
+            appearance5.BackColorDisabled = System.Drawing.Color.Transparent;
+            this.chkRechteBelehrt.Appearance = appearance5;
             this.chkRechteBelehrt.Location = new System.Drawing.Point(14, 21);
             this.chkRechteBelehrt.Name = "chkRechteBelehrt";
             this.chkRechteBelehrt.Size = new System.Drawing.Size(284, 16);
@@ -140,6 +145,9 @@
             // 
             // grpSOO
             // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.BackColorDisabled = System.Drawing.Color.Transparent;
+            this.grpSOO.Appearance = appearance2;
             this.grpSOO.Controls.Add(this.btnSetSOO);
             this.grpSOO.Controls.Add(this.chkZustimmungSOO);
             this.grpSOO.Controls.Add(this.chkRechteBelehrt);
@@ -152,9 +160,9 @@
             // btnSetSOO
             // 
             this.btnSetSOO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSetSOO.Appearance = appearance2;
+            appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSetSOO.Appearance = appearance3;
             this.btnSetSOO.AutoWorkLayout = false;
             this.btnSetSOO.IsStandardControl = false;
             this.btnSetSOO.Location = new System.Drawing.Point(14, 61);
@@ -168,6 +176,8 @@
             // 
             // chkZustimmungSOO
             // 
+            appearance4.BackColorDisabled = System.Drawing.Color.Transparent;
+            this.chkZustimmungSOO.Appearance = appearance4;
             this.chkZustimmungSOO.Location = new System.Drawing.Point(14, 39);
             this.chkZustimmungSOO.Name = "chkZustimmungSOO";
             this.chkZustimmungSOO.Size = new System.Drawing.Size(284, 16);

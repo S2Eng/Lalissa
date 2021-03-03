@@ -443,19 +443,15 @@ namespace WCFServicePMDS
                 //      Entlassung K103 >> addContactDischarge()
                 //      Delegiert K104
             }
+            catch (System.ServiceModel.FaultException)
+            {
+                retDto.ContactExists = true;
+                retDto.bOK = true;
+                return retDto;
+            }
             catch (Exception ex)
             {
-                string sExceptCheck = "Stat. Aufnahme auf bereits erfolgte stat. Aufnahme";
-                if (genericELGA.sEquals(ex.ToString(), sExceptCheck, Enums.eCompareMode.Contains))
-                {
-                    retDto.ContactExists = true;
-                    retDto.bOK = true;
-                    return retDto;
-                }
-                else
-                {
-                    throw new Exception("ELGABAL.addContactAdmission: " + ex.ToString());
-                }
+                throw new Exception("ELGABAL.addContactAdmission: " + ex.ToString());
             }
         }
 
@@ -511,20 +507,28 @@ namespace WCFServicePMDS
                 trsClientAddContactRq1.stateID = parsIn.session.ELGAStateID;
                 trsClientAddContactRq1.patient = ehrPatientClientDtoBack;
 
-                trsClientAddContactRsp trsClientAddContactRsp = objWsLogin.addContactDischarge(trsClientAddContactRq1);
-
-                if (trsClientAddContactRsp.responseDetail.listError == null || trsClientAddContactRsp.responseDetail.listError.Count() == 0)
+                try
                 {
-                    retDto.ContactID = trsClientAddContactRsp.contactID;
-                    retDto.bOK = true;
+                    trsClientAddContactRsp trsClientAddContactRsp = objWsLogin.addContactDischarge(trsClientAddContactRq1);
+                    if (trsClientAddContactRsp.responseDetail.listError == null || trsClientAddContactRsp.responseDetail.listError.Count() == 0)
+                    {
+                        retDto.ContactID = trsClientAddContactRsp.contactID;
+                        retDto.bOK = true;
+                        return retDto;
+                    }
+                    else
+                    {
+                        this.getErrosElgaFct(trsClientAddContactRsp.responseDetail.listError, ref retDto);
+                        return retDto;
+                    }
+                }
+                catch (System.ServiceModel.FaultException ex)
+                {
+                    retDto.bErrorsFound = true;
+                    retDto.bOK = false;
+                    retDto.Errors = ex.Message;
                     return retDto;
                 }
-                else
-                {
-                    this.getErrosElgaFct(trsClientAddContactRsp.responseDetail.listError, ref retDto);
-                    return retDto;
-                }
-
             }
             catch (Exception ex)
             {
@@ -586,7 +590,7 @@ namespace WCFServicePMDS
             }
         }
 
-        public ELGAParOutDto delegateContact(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
+        public ELGAParOutDto delegateContact(ref ELGAParInDto parsIn, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             ELGAParOutDto retDto = this.initParOut();
             try
@@ -594,12 +598,13 @@ namespace WCFServicePMDS
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, authUniversalID, ELGAUrl);
+                this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, parsIn.authUniversalID, ELGAUrl);
 
                 trsClientDelegateContactRq trsClientDelegateContactRq1 = new trsClientDelegateContactRq();
+
                 trsClientDelegateContactRq1.stateID = parsIn.session.ELGAStateID;
                 trsClientDelegateContactRq1.patientID = parsIn.LocalPatientID;
-                trsClientDelegateContactRq1.organisationID = authUniversalID;
+                trsClientDelegateContactRq1.organisationID = parsIn.authUniversalID;
                 trsClientDelegateContactRq1.organisationIDToDelegateTo = parsIn.sOrganistaionIdToDelegateTo;
                 trsClientDelegateContactRsp trsClientAddContactRsp = objWsLogin.delegateContact(trsClientDelegateContactRq1);
 

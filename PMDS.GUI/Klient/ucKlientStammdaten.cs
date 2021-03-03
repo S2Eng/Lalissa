@@ -136,14 +136,11 @@ namespace PMDS.GUI
             }
             else
             {
-                ELGABusiness bElga = new ELGABusiness();
                 this.tabStammdaten.Tabs["ELGA"].Visible = !this._isBewerberJN &&
                                                             !this._isAbrechnung &&
                                                             ENV.lic_ELGA && 
                                                             this._mainSystem &&
-                                                            ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAAktionen, false) &&
-                                                            ELGABusiness.checkELGASessionActive(false) &&
-                                                            bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false);
+                                                            ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAAktionen, false);
             }
         }
 

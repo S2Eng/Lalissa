@@ -74,6 +74,20 @@ namespace PMDS.Global.db.ERSystem
             public string ELGA_AuthorSpeciality { get; set; }
         }
 
+        public class KlientDTO
+        {
+            public Guid IDKlient { get; set; }
+            public Guid IDAufenthalt { get; set; }
+            public string Vorname { get; set; }
+            public string Nachname { get; set; }
+            public bool ELGAAbgemeldetJN { get; set; }
+            public bool ELGASOOJN { get; set; }
+            public bool ELGAKontaktbestätigungJN { get; set; }
+            public DateTime ELGAKontaktbestätigungDatum { get; set; }
+            public string ELGAKontaktbestätigungUser { get; set; }
+            public string ELGALocalID { get; set; }
+        }
+
         public static string LoggedInBenutzer = "";
 
         public static bool? ELGALogInInitializedAtStart { get; set; }
@@ -213,6 +227,37 @@ namespace PMDS.Global.db.ERSystem
             catch (Exception ex)
             {
                 throw new Exception("ELGABusiness.saveProtocoll: " + ex.ToString());
+            }
+        }
+
+        public KlientDTO GetELGAKlientByIDAufenthalt(Guid IDAufenthalt)
+        {
+            try
+            {
+                KlientDTO bDto = new KlientDTO();
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    return (from a in db.Aufenthalt
+                            join p in db.Patient on a.IDPatient equals p.ID where a.ID == IDAufenthalt
+                            select new KlientDTO
+                            {
+                                IDKlient = p.ID,
+                                IDAufenthalt = a.ID,
+                                Vorname = p.Vorname.Trim(),
+                                Nachname = p.Nachname.Trim(),
+                                ELGAAbgemeldetJN = p.ELGAAbgemeldet ?? false,
+                                ELGAKontaktbestätigungJN = a.ELGAKontaktbestätigungJN,
+                                ELGAKontaktbestätigungDatum = a.ELGAKontaktbestätigungDatum ?? DateTime.MinValue,
+                                ELGAKontaktbestätigungUser = a.ELGAKontaktbestätigungUser,
+                                ELGASOOJN = a.ELGASOOJN,
+                                ELGALocalID = a.ELGALocalID
+                            }
+                            ).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ELGABusiness.GetELGAKlient: " + ex.ToString());
             }
         }
 
@@ -739,7 +784,7 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public ELGAParOutDto DelegateContact(Guid IDPatient, Guid IDAufenthalt, Guid IDArzt)
+        public ELGAParOutDto DelegateContact(Guid IDAufenthalt, Guid IDArzt)
         {
             try
             {
@@ -755,28 +800,18 @@ namespace PMDS.Global.db.ERSystem
                                          OrganisationIdToDelegateTo = a.ELGA_OID
                                      }).First();
 
-                    var rAufenthalt = (from a in db.Aufenthalt
-                                       join p in db.Patient on a.IDPatient equals p.ID
-                                       where a.ID == IDAufenthalt
-                                       select new
-                                       {
-                                           IDAufenthalt = a.ID,
-                                           ELGALocalID = a.ELGALocalID,
-                                           ELGASOOJN = a.ELGASOOJN,
-                                           IDPatient = p.ID,
-                                           Nachname = p.Nachname.Trim(),
-                                           Vorname = p.Vorname.Trim()
-                                       }).First();
+                    ELGABusiness elga = new ELGABusiness();
+                    ELGABusiness.KlientDTO ELGAKlient = elga.GetELGAKlientByIDAufenthalt(IDAufenthalt);
 
                     WCFServiceClient WCFServiceClient1 = new WCFServiceClient();
-                    ELGAParOutDto parOut = WCFServiceClient1.ELGADelegateContact(rAufenthalt.ELGALocalID.ToString(), rArzt.OrganisationIdToDelegateTo);
+                    ELGAParOutDto parOut = WCFServiceClient1.ELGADelegateContact(ELGAKlient.ELGALocalID, rArzt.OrganisationIdToDelegateTo);
 
                     if (parOut.bOK)
                     {
                         string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt für Patient {0} wurde an {1} delegiert.");
-                        sProt = string.Format(sProt, rAufenthalt.Vorname + " " + rAufenthalt.Nachname, rArzt.Titel + " " + rArzt.Vorname + " " + rArzt.Nachname);
+                        sProt = string.Format(sProt, ELGAKlient.Vorname + " " + ELGAKlient.Nachname, rArzt.Titel + " " + rArzt.Vorname + " " + rArzt.Nachname);
                         ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontaktdelegation"), null,
-                                                        ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
+                                                        ELGABusiness.eTypeProt.ELGARetrieveDocument, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, ELGAKlient.IDKlient, IDAufenthalt, sProt);
                     }
 
                     return parOut;
@@ -1122,41 +1157,21 @@ namespace PMDS.Global.db.ERSystem
             {
                 if (ENV.lic_ELGA)
                 {
-                    //if (IDPatient.Equals(System.Guid.Empty) || IDAufenthalt.Equals(System.Guid.Empty))
-                    //{
-                    //    return false;
-                    //}
-
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    ELGABusiness elga = new ELGABusiness();
+                    ELGABusiness.KlientDTO Klient = elga.GetELGAKlientByIDAufenthalt(IDAufenthalt);
+                    if (!Klient.ELGAAbgemeldetJN && Klient.ELGAKontaktbestätigungJN && !Klient.ELGASOOJN)
                     {
-                        var rKlient = (from pat in db.Patient
-                                       join auf in db.Aufenthalt on pat.ID equals auf.IDPatient
-                                       where auf.ID == ENV.IDAUFENTHALT
-                                       select new
-                                       {
-                                           IDPatient = pat.ID,
-                                           pat.Nachname,
-                                           pat.Vorname,
-                                           pat.ELGAAbgemeldet,
-                                           IDAufenthalt = auf.ID,
-                                           auf.ELGALocalID,
-                                           auf.ELGAKontaktbestätigungJN,
-                                           auf.ELGASOOJN
-                                       }
-                              ).First();
-
-                        if ((rKlient.ELGAAbgemeldet == null || !rKlient.ELGAAbgemeldet.Value) && rKlient.ELGAKontaktbestätigungJN && !String.IsNullOrWhiteSpace(rKlient.ELGALocalID) && !rKlient.ELGASOOJN)
+                        return true;
+                    }
+                    else
+                    {
+                        if (withMsgBox)
                         {
-                            return true;
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA ist für diesen Patienten nicht aktiviert oder Patient hat keine Kontaktbestätigung!", "", MessageBoxButtons.OK);
                         }
+                        return false;
                     }
                 }
-
-                if (withMsgBox)
-                {
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA ist für diesen Patienten nicht aktiviert oder Patient hat keine Kontaktbestätigung!", "", MessageBoxButtons.OK);
-                }
-
                 return false;
             }
             catch (Exception ex)

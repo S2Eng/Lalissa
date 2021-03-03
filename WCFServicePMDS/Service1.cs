@@ -308,6 +308,7 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.ELGAInvalidateContact: " + ex.ToString());
             }
         }
+        
         public ELGAParOutDto ELGAAddContactDischarge(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             try
@@ -332,12 +333,12 @@ namespace WCFServicePMDS
                 throw new Exception("WCFServicePMDS.Service1.ELGAListContacts: " + ex.ToString());
             }
         }
-        public ELGAParOutDto ELGADelegateContact(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
+        public ELGAParOutDto ELGADelegateContact(ref ELGAParInDto parsIn, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.delegateContact(ref parsIn, authUniversalID, ELGAUrl);
+                return elga.delegateContact(ref parsIn, ELGAUrl);
             }
             catch (Exception ex)
             {

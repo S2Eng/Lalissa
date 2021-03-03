@@ -46,7 +46,6 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
-                this.btnSetSOO.Enabled = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGASituativesOptOut, true);
                 if (!this.IsInitialized)
                 {
                     this.IsNeuaufnahme = IsNeuaufnahme;
@@ -74,57 +73,37 @@ namespace PMDS.GUI.ELGA
                 this.IDKlient = IDKlient;
                 this.IDAufenthalt = IDAufenthalt;
 
-                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                {
-                    var rBenutzer = (from b in db.Benutzer
-                                     where b.ID == ENV.USERID
-                                     select new
-                                     {
-                                         b.ID,
-                                         b.Nachname,
-                                         b.Vorname,
-                                         b.Benutzer1
-                                     }).First();
+                ELGABusiness elga = new ELGABusiness();
+                ELGABusiness.KlientDTO ELGAKlient = elga.GetELGAKlientByIDAufenthalt(IDAufenthalt);
 
-                    PMDS.db.Entities.Patient rPatient = db.Patient.Where(o => o.ID == this.IDKlient).First();
-                    PMDS.db.Entities.Aufenthalt rAufenthalt = db.Aufenthalt.Where(o => o.ID == this.IDAufenthalt).First();
+                this.btnDoKontaktbestätigung.Enabled = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, false) &&
+                    !ELGAKlient.ELGAKontaktbestätigungJN &&
+                    !ELGAKlient.ELGASOOJN &&
+                    !ELGAKlient.ELGAAbgemeldetJN &&
+                    ELGABusiness.checkELGASessionActive(false);
 
-                    if (rAufenthalt.ELGAKontaktbestätigungJN)
-                    {
-                        string sTxtKontaktbestätigung = QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum") + ": " + 
-                                                    rAufenthalt.ELGAKontaktbestätigungDatum.Value.ToString("dd.MM.yyyy HH:mm:ss", ci) + ", " + 
-                                                            QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer") + ": " + rAufenthalt.ELGAKontaktbestätigungUser.Trim() + 
-                                                            " - " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung hergestellt!");
-                        this.txtKontaktbestätigung.Text = sTxtKontaktbestätigung.Trim();
+                this.btnKoontaktbestätigungStorno.Enabled = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, false) &&
+                    ELGAKlient.ELGAKontaktbestätigungJN &&
+                    !ELGAKlient.ELGAAbgemeldetJN &&
+                    ELGABusiness.checkELGASessionActive(false);
 
-                        this.btnDoKontaktbestätigung.Enabled = false;
-                        this.btnKoontaktbestätigungStorno.Enabled = true;
-                    }
-                    else
-                    {
-                        this.txtKontaktbestätigung.Text = "";
-                        this.btnDoKontaktbestätigung.Enabled = true;
-                        this.btnKoontaktbestätigungStorno.Enabled = false;
-                    }
+                this.grpSOO.Enabled = ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGASituativesOptOut, false) &&
+                    ELGAKlient.ELGAKontaktbestätigungJN &&
+                    !ELGAKlient.ELGASOOJN &&
+                    !ELGAKlient.ELGAAbgemeldetJN &&
+                    ELGABusiness.checkELGASessionActive(false);
+
+                this.chkZustimmungSOO.Checked = ELGAKlient.ELGASOOJN;
+                this.chkRechteBelehrt.Checked = ELGAKlient.ELGASOOJN;
+                this.chkZustimmungSOO.Enabled = !ELGAKlient.ELGASOOJN;
+                this.chkRechteBelehrt.Enabled = !ELGAKlient.ELGASOOJN;
 
 
-                    if (rAufenthalt.ELGASOOJN)
-                    {
-                        this.chkZustimmungSOO.Checked = true;
-                        this.chkRechteBelehrt.Checked = true;
-                        this.chkZustimmungSOO.Enabled = false;
-                        this.chkRechteBelehrt.Enabled = false;
-                        this.btnSetSOO.Enabled = false;
-                    }
-                    else
-                    {
-                        this.chkZustimmungSOO.Checked = false;
-                        this.chkRechteBelehrt.Checked = false;
-                        this.chkZustimmungSOO.Enabled = true;
-                        this.chkRechteBelehrt.Enabled = true;
-                        this.btnSetSOO.Enabled = true;
-                    }
-                }
+
+                this.txtKontaktbestätigung.Text = ELGAKlient.ELGAKontaktbestätigungJN ? QS2.Desktop.ControlManagment.ControlManagment.getRes("Datum") + ": " +
+                                            ELGAKlient.ELGAKontaktbestätigungDatum.ToString("dd.MM.yyyy HH:mm:ss", ci) + ", " + 
+                                            QS2.Desktop.ControlManagment.ControlManagment.getRes("Benutzer") + ": " + ELGAKlient.ELGAKontaktbestätigungUser.Trim() + 
+                                            " - " + QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung hergestellt!").Trim() : "";
             }
             catch (Exception ex)
             {
@@ -136,6 +115,8 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
+                ELGABusiness elga = new ELGABusiness();
+                ELGABusiness.KlientDTO ELGAKlient = elga.GetELGAKlientByIDAufenthalt(IDAufenthalt);
                 if (!ELGABusiness.checkELGASessionActive(true) || !ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, true))
                 {
                     return;
@@ -251,11 +232,13 @@ namespace PMDS.GUI.ELGA
                                     ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung Storno"), null,
                                                                     ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this.IDKlient, this.IDAufenthalt, sProtStorno);
 
-
                                     parOutContact = this.WCFServiceClient1.ELGAAddContactAdmission(ELGALocalIDStored);
                                     if (!parOutContact.bOK)
                                     {
-                                        throw new Exception("contELGAKlient.doKontaktbestätigung: parOutContact2.bOK=false not allowed - Error WCF-Service ELGAAddContactAdmission!");
+                                        string sProtText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Fehler bei Kontaktbestätigung: " + parOutContact.Errors);
+                                        sProtText = string.Format(ci, sProtText, sPar);
+                                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontaktbestätigung"), null,
+                                                                        ELGABusiness.eTypeProt.Kontaktbestätigung, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this.IDKlient, this.IDAufenthalt, sProtText);
                                     }
                                 }
 
@@ -297,7 +280,13 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
-                if (!ELGABusiness.checkELGASessionActive(true))
+                ELGABusiness elga = new ELGABusiness();
+                ELGABusiness.KlientDTO ELGAKlient = elga.GetELGAKlientByIDAufenthalt(IDAufenthalt);
+                ELGABusiness.BenutzerDTOS1 ELGAUser = elga.getELGASettingsForUser(ENV.USERID);
+
+                if (!ELGABusiness.checkELGASessionActive(true) ||
+                        !ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGAPatientenSuchen, true) ||
+                        !ELGAKlient.ELGAKontaktbestätigungJN)
                 {
                     return;
                 }
@@ -305,57 +294,43 @@ namespace PMDS.GUI.ELGA
                 System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("de-DE");
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    //PMDS.db.Entities.Patient rPatientUpdate = db.Patient.Where(o => o.ID == this._IDKlient).First();
                     PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this.IDAufenthalt).First();
 
                     ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAAddContactDischarge(rAufenthaltUpdate.ELGALocalID.Trim());
                     if (!parOutInvContact.bOK)
                     {
-                        throw new Exception("contELGAKlient.doKontaktbestätigungStorno: parOutInvContact.bOK=false not allowed - Error WCF-Service ELGAInvalidateContact!");
+                        string sProtText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Fehler bei Storno Kontaktbestätigung für Patient {0} durch Benutzer {1}: ");
+                        string[] sParText = new string[] { ELGAKlient.Nachname + " " + ELGAKlient.Vorname, ELGAUser.Benutzer1 };
+                        sProtText = string.Format(culture, sProtText, sParText);
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung"), null,
+                                                        ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this.IDKlient, this.IDAufenthalt, sProtText);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sProtText, "", MessageBoxButtons.OK);
                     }
+                    else
+                    {
+                        rAufenthaltUpdate.ELGAKontaktbestätigungJN = false;
+                        rAufenthaltUpdate.ELGAKontaktbestätigungDatum = null;
+                        rAufenthaltUpdate.ELGAKontaktbestätigungUser = ELGAUser.Benutzer1;
+                        rAufenthaltUpdate.ELGAKontaktbestätigungStornoDatum = DateTime.Now;
+                        rAufenthaltUpdate.ELGAKontaktbestätigungStornoJN = true;
+                        rAufenthaltUpdate.ELGAKontaktbestätigungStornoUser = ELGAUser.Benutzer1;
 
-                    var rBenutzer = (from b in db.Benutzer
-                                        where b.ID == ENV.USERID
-                                        select new
-                                        {
-                                            b.ID,
-                                            Nachname = b.Nachname.Trim(),
-                                            Vorname = b.Vorname.Trim(),
-                                            Benutzer1 = b.Benutzer1.Trim()
-                                        }).First();
+                        rAufenthaltUpdate.ELGASOOJN = false;
+                        rAufenthaltUpdate.ELGASOOZeitpunkt = null;
+                        rAufenthaltUpdate.ELGASSOODatum = null;
+                        rAufenthaltUpdate.ELGASOOUser = "";
+                        rAufenthaltUpdate.ELGASOOGrund = "";
+                        db.SaveChanges();
 
-                    var rPatient = (from p in db.Patient
-                                    where p.ID == this.IDKlient
-                                    select new
-                                    {
-                                        p.ID,
-                                        Nachname = p.Nachname.Trim(),
-                                        Vorname = p.Vorname.Trim()
-                                    }).First();
+                        string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
+                        string[] sPar = new string[] { ELGAKlient.Nachname + " " + ELGAKlient.Vorname, ELGAUser.Benutzer1 };
+                        sProt = string.Format(culture, sProt, sPar);
+                        ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung"), null,
+                                                        ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this.IDKlient, this.IDAufenthalt, sProt);
 
-                    rAufenthaltUpdate.ELGAKontaktbestätigungJN = false;
-                    rAufenthaltUpdate.ELGAKontaktbestätigungDatum = null;
-                    rAufenthaltUpdate.ELGAKontaktbestätigungUser = rBenutzer.Benutzer1;
-                    rAufenthaltUpdate.ELGAKontaktbestätigungStornoDatum = DateTime.Now;
-                    rAufenthaltUpdate.ELGAKontaktbestätigungStornoJN = true;
-                    rAufenthaltUpdate.ELGAKontaktbestätigungStornoUser = rBenutzer.Benutzer1;
-
-                    rAufenthaltUpdate.ELGASOOJN = false;
-                    rAufenthaltUpdate.ELGASOOZeitpunkt = null;
-                    rAufenthaltUpdate.ELGASSOODatum = null;
-                    rAufenthaltUpdate.ELGASOOUser = "";
-                    rAufenthaltUpdate.ELGASOOGrund = "";
-                    db.SaveChanges();
-
-                    string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung für Patient {0} von Benutzer {1} durchgeführt.");
-                    string[] sPar = new string[] { rPatient.Nachname + " " + rPatient.Vorname, rBenutzer.Benutzer1 };
-                    sProt = string.Format(culture, sProt, sPar);
-                    ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung"), null,
-                                                    ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this.IDKlient, this.IDAufenthalt, sProt);
-
-                    this.loadData(this.IDKlient, this.IDAufenthalt);
-
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Kontakt wurde storniert!", "", MessageBoxButtons.OK);
+                        this.loadData(this.IDKlient, this.IDAufenthalt);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ELGA-Kontakt wurde storniert!", "", MessageBoxButtons.OK);
+                    }
                 }
             }
             catch (Exception ex)
@@ -395,7 +370,8 @@ namespace PMDS.GUI.ELGA
         {
             try
             {
-                if (!ELGABusiness.checkELGASessionActive(true))
+                ELGABusiness elga = new ELGABusiness();
+                if (!elga.ELGAIsActive(IDKlient, IDAufenthalt, true))
                 {
                     return;
                 }

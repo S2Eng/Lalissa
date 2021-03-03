@@ -103,15 +103,6 @@ namespace PMDS.GUI
             {
                 ucBefunde.btnSearchELGADocuments.Visible = this.bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false);
 
-                //if (this.bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, false))
-                //{
-                //    ucBefunde.btnSearchELGADocuments.Visible = true;
-                //}
-                //else
-                //{
-                //    ucBefunde.btnSearchELGADocuments.Visible = false;
-                //}
-
                 this.initControlxz();
 
                 tbBlutgruppe.Text = Klient.BlutGruppe;

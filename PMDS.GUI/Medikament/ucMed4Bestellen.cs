@@ -607,29 +607,16 @@ namespace PMDS.GUI.Medikament
 
                             if (!ArztDel.PatientenDelegation.Any(p => p.ID == (Guid)r.IDPatient))
                             {
-                                PatientDelegation pD = new PatientDelegation();
-                                pD.ID = (Guid)r.IDPatient;
-                                pD.Name = r.PatientVorname + " " + r.PatientNachname;
+                                ELGABusiness elga = new ELGABusiness();
+                                ELGABusiness.KlientDTO ELGAKlient = elga.GetELGAKlientByIDAufenthalt((Guid)r.IDAufenthalt);
 
-                                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                                {
-                                    var rAufenthalt = (from a in db.Aufenthalt
-                                                        join p in db.Patient on a.IDPatient equals p.ID
-                                                        where a.ID == r.IDAufenthalt
-                                                        select new
-                                                        {
-                                                            IDAufenthalt = a.ID,
-                                                            ELGALocalID = a.ELGALocalID,
-                                                            ELGASOOJN = a.ELGASOOJN,
-                                                            ELGAAbgemeldet = p.ELGAAbgemeldet,
-                                                            IDPatient = p.ID,
-                                                            Nachname = p.Nachname.Trim(),
-                                                            Vorname = p.Vorname.Trim()
-                                                        }).First();
-                                    pD.IDAuenthalt = rAufenthalt.IDAufenthalt;
-                                    pD.ELGASOO = rAufenthalt.ELGASOOJN;
-                                    pD.ELGAAktiv = !String.IsNullOrWhiteSpace(rAufenthalt.ELGALocalID);
-                                }
+                                PatientDelegation pD = new PatientDelegation();
+                                pD.ID = (Guid)ELGAKlient.IDKlient;
+                                pD.Name = ELGAKlient.Vorname + " " + ELGAKlient.Nachname;
+                                pD.IDAuenthalt = ELGAKlient.IDAufenthalt;
+                                pD.ELGASOO = ELGAKlient.ELGASOOJN;
+                                pD.ELGAAktiv = !String.IsNullOrWhiteSpace(ELGAKlient.ELGALocalID);
+
                                 ArztDel.PatientenDelegation.Add(pD);
                             }
                         }
@@ -643,7 +630,7 @@ namespace PMDS.GUI.Medikament
                                 {
                                     if (Patient.ELGAAktiv && !Patient.ELGASOO && !Patient.ELGAAbgemeldet)
                                     {
-                                        WCFServicePMDS.BAL2.ELGABAL.ELGAParOutDto retDto = ELGABusiness.DelegateContact(Patient.ID, Patient.IDAuenthalt, Arzt.ID);
+                                        WCFServicePMDS.BAL2.ELGABAL.ELGAParOutDto retDto = ELGABusiness.DelegateContact(Patient.IDAuenthalt, Arzt.ID);
                                         if (retDto.bOK)
                                         {
                                             sResultOk += "Erfolgreich für " + Patient.Name + ".\n\r";

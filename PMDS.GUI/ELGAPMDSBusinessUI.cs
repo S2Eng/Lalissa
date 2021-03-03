@@ -120,7 +120,7 @@ namespace PMDS.GUI
                                 ELGAParOutDto parOuot = wcf.ELGAAddContactDischarge(rAufenthalt.ELGALocalID.Trim());
 
                                 string sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt für Patient {0} wurde beendet");
-                                sProt = string.Format(sProt, (rAufenthalt.Nachname + " " + rAufenthalt.Vorname));
+                                sProt = string.Format(sProt, rAufenthalt.Nachname + " " + rAufenthalt.Vorname);
                                 ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("ELGA-Kontakt beendet"), null,
                                                                 ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, IDPatient, IDAufenthalt, sProt);
 
