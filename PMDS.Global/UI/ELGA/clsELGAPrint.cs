@@ -14,15 +14,85 @@ namespace PMDS.GUI.ELGA
 {
     public class clsELGAPrint
     {
-        public void ShowXMLInBrowser(MemoryStream msXML, string sFileName, bool UseCDAStyleSheet)
+
+        private string PDFName;
+
+        public void ConvertCDA2PDF(MemoryStream msXML, string sFileName)
         {
             try
             {
                 sFileName = (String.IsNullOrWhiteSpace(sFileName) ? Path.GetTempFileName() : sFileName);
+
+                //CDA-Dokument auf Platte schreiben
+                using (FileStream fs = new FileStream(sFileName, FileMode.Create))
+                {
+                    msXML.Position = 0;
+                    msXML.CopyTo(fs);
+                    fs.Flush();
+                }
+
+                //Ausgabepfad festlegen
+                PDFName = Path.Combine(Path.GetDirectoryName(sFileName), Path.GetFileNameWithoutExtension(sFileName) + ".PDF");
+                string pars = sFileName + " " + PDFName + " " + ENV.ActiveUser.Benutzer1;
+                
+                //CDA-File in PDF-File konvertieren
+                if (File.Exists(Path.Combine(ENV.path_bin, "S2_CDA2PDF.exe")))
+                {
+                    var process = Process.Start(Path.Combine(ENV.path_bin, "S2_CDA2PDF.exe"), pars);
+
+                    Cursor.Current = Cursors.WaitCursor;
+                    int i = 20;
+                    while (!File.Exists(PDFName) && i > 0 )
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        i--;
+                    }
+                    Cursor.Current = Cursors.Default;
+
+                    //und im Viewer anzeigen
+                    if (File.Exists(PDFName))
+                    {
+                        PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
+                        if (frmPDF.OpenPDFFromByte(File.ReadAllBytes(PDFName)))
+                        {
+                            frmPDF.SetCaption = "";
+                            frmPDF.ShowBookmarks = false;
+                            frmPDF.ShowOpenDialog = false;
+                            frmPDF.ShowPrintDialog = true;
+                            frmPDF.RemoveFileBeforeClose = true;
+                            frmPDF.FileNamesToRemove = new List<string>(new[] { sFileName, PDFName });
+                            frmPDF.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("CDA-Dokumentenkonverter fehlt. Das CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler bei CDA2PDF-Konverter: " + ex.ToString());
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        public void ShowXMLInBrowser(MemoryStream msXML, string sFileName, bool UseCDAStyleSheet)
+        {
+            try
+            {                
+                sFileName = (String.IsNullOrWhiteSpace(sFileName) ? Path.GetTempFileName() : sFileName);
                 object path;
                 List<string> browsers = new List<string>();
 
-                List<string> chkBrowsers = new List<string> { "firefox.exe", "chrome.exe", "IExplore.exe" };
+                List<string> chkBrowsers = new List<string> { "firefox.exe", "chrome.exe", "IExplore.exe", "Edge.exe" };
                 List<string> chkRegs = new List<string> { "LOCAL_MACHINE", "CURRENT_USER" };
 
                 foreach (string cBrowser in chkBrowsers)
@@ -68,44 +138,45 @@ namespace PMDS.GUI.ELGA
                         fs.Flush();
                     }
 
-                    clsELGAPrint clsELGAPrint = new clsELGAPrint();
-                    int iCheckXSLT = (UseCDAStyleSheet ? clsELGAPrint.CopyXSLT(sFileName) : 0); 
-                    if (iCheckXSLT == 0)
+                    string sCheckXSLT = (UseCDAStyleSheet ? clsELGAPrint.CopyXSLT(sFileName) : ""); 
+                    if (String.IsNullOrWhiteSpace(sCheckXSLT))
                     {
                         foreach (string sBrowser in browsers)
                         {
-                            if (sBrowser.ToUpper().Contains("FIREFOX"))
+                            if (PMDS.Global.generic.sEquals(sBrowser,"FIREFOX", Enums.eCompareMode.Contains))
                             {
-                                string firefox = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Mozilla\\Firefox\\Profiles");
+                                string firefox = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Mozilla\Firefox\Profiles");
                                 if (Directory.Exists(firefox))
                                 {
                                     FileInfo di = new DirectoryInfo(firefox).GetDirectories()[0].GetFiles("prefs.js")[0];
                                     StreamReader sr = di.OpenText();
-                                    RichTextBox rb = new RichTextBox();
-                                    rb.Text = sr.ReadToEnd();
-                                    sr.Close();
-                                    string[] s = rb.Lines;
-                                    for (int i = 0; i < rb.Lines.Length; i++)
+                                    using (RichTextBox rb = new RichTextBox())
                                     {
-                                        if (rb.Lines[i].Equals("user_pref(\"privacy.file_unique_origin\", \"true\");"))
+                                        rb.Text = sr.ReadToEnd();
+                                        sr.Close();
+                                        string[] s = rb.Lines;
+                                        for (int i = 0; i < rb.Lines.Length; i++)
                                         {
-                                            s[i] = "user_pref(\"privacy.file_unique_origin\", \"false\");";
-                                            System.IO.File.Delete(di.FullName);
-                                            System.IO.File.WriteAllLines(di.FullName, s);
-                                            System.Diagnostics.Process.Start(sBrowser, sFileName);
-                                            break;
+                                            if (generic.sEquals(rb.Lines[i], "user_pref(\"privacy.file_unique_origin\", \"true\");"))
+                                            {
+                                                s[i] = "user_pref(\"privacy.file_unique_origin\", \"false\");";
+                                                System.IO.File.Delete(di.FullName);
+                                                System.IO.File.WriteAllLines(di.FullName, s);
+                                                System.Diagnostics.Process.Start(sBrowser, sFileName);
+                                                break;
+                                            }
                                         }
                                     }
                                     System.Diagnostics.Process.Start(sBrowser, sFileName);
                                     return;
                                 }
                             }
-                            else if (sBrowser.ToUpper().Contains("IEXPLORE"))
+                            else if (generic.sEquals(sBrowser, "IEXPLORE", Enums.eCompareMode.Contains))
                             {
                                 System.Diagnostics.Process.Start(sBrowser, sFileName);
                                 return;
                             }
-                            else if (sBrowser.ToUpper().Contains("CHROME") || sBrowser.ToUpper().Contains("EDGE"))   //Liest Dateien nur mit einem Link!
+                            else if (generic.sEquals(sBrowser, "CHROME", Enums.eCompareMode.Contains) || generic.sEquals(sBrowser, "EDGE", Enums.eCompareMode.Contains))
                             {
                                 
                                 Type t = Type.GetTypeFromCLSID(new Guid("72C24DD5-D70A-438B-8A42-98424B88AFB8")); //Windows Script Host Shell Object
@@ -142,13 +213,9 @@ namespace PMDS.GUI.ELGA
                             }
                         }
                     }
-                    else if (iCheckXSLT == 1)
+                    else 
                     {
-                        MessageBox.Show("Das erforderliche Stylesheet ist nicht verfügbar (Config!).\r\nDie korrekte Anzeige des Dokuments ist nicht möglich.", "Hinweis");
-                    }
-                    else if (iCheckXSLT == 2)
-                    {
-                        MessageBox.Show("Das temporäre Stylesheet kann nicht erstellt werden.\r\nDie korrekte Anzeige des Dokuments ist nicht möglich.", "Hinweis");
+                        MessageBox.Show(sCheckXSLT, "Hinweis");
                     }
                 }
                 else
@@ -158,42 +225,74 @@ namespace PMDS.GUI.ELGA
             }
             catch (Exception ex)
             {
-                throw new Exception("ucELGAPrintPflegesituationsbericht.GenerateCDA: " + ex.ToString());
+                throw new Exception("clsELGAPrint.ShowXMLInBrowser: " + ex.ToString());
             }
         }
 
-        private int CopyXSLT(string sFileName)
+        private static string CopyXSLT(string sFileName)
         {
             try
             {
-                string nXSLT = "ELGA_Stylesheet_v1.0.xsl";
-                string fXSLT = Path.Combine(ENV.pathConfig, nXSLT);
-                string fDest = Path.Combine(System.IO.Path.GetDirectoryName(sFileName), nXSLT);
-                if (System.IO.File.Exists(fXSLT))
+                string[] stylesheets = Directory.GetFiles(ENV.pathConfig, "*.xsl");
+
+                foreach (string stylesheet in stylesheets)
                 {
-                    if (!System.IO.File.Exists(fDest))
+                    string nXSLT = Path.GetFileName(stylesheet);
+                    string fXSLT = Path.Combine(ENV.pathConfig, nXSLT);
+                    string dDest = System.IO.Path.GetDirectoryName(sFileName);
+                    string fDest = Path.Combine(dDest, nXSLT);
+
+                    FileInfo fiSource = new FileInfo(fXSLT);
+                    FileInfo fiDest = new FileInfo(fDest);
+
+                    //Prüfen, ob Stylesheet kopiert oder aktualisert werden muss
+                    if (!fiDest.Exists || fiDest.Length != fiSource.Length)
                     {
-                        System.IO.File.Copy(fXSLT, fDest, true);
-                        if (System.IO.File.Exists(fDest))
-                            return 0;
-                        else
-                            return 2;
+                        File.Copy(fXSLT, fDest, true);
+                        //Prüfen, ob Kopieren / Ersetzen erfolgreich war
+                        fiDest = new FileInfo (fDest);
+                        if (!fiDest.Exists || fiDest.Length != fiSource.Length)
+                            return "Fehler beim Kopieren des Stylesheets " + nXSLT + ": Konnte nicht kopiert werden.";
                     }
-                    else if (System.IO.File.Exists(fDest) && !PMDS.Global.Tools.IsFileLocked(new FileInfo(fDest)))
-                    {
-                        System.IO.File.Copy(fXSLT, fDest, true);
-                        return 0;
-                    }
-                    return 2;
                 }
-                else
-                    return 1;
+                return "";
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
+            }
+            catch (ArgumentNullException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
+            }
+            catch (ArgumentException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
+            }
+            catch (PathTooLongException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
+            }
+            catch (FileNotFoundException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
+            }
+            catch (IOException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
+            }
+            catch (NotSupportedException ex)
+            {
+                return "Fehler beim Kopieren des Stylesheets: " + ex.Message;
             }
             catch (Exception ex)
             {
                 throw new Exception("ucELGAPrintPflegesituationsbericht.CopyXSLT: " + ex.ToString());
             }
         }
-
     }
 }

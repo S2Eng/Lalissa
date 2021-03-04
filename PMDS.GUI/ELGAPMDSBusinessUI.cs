@@ -234,7 +234,7 @@ namespace PMDS.GUI
             }
         }
 
-        public void openELGADocuFromArchive(Nullable<Guid> IDDokumenteneintrag)
+        public void openELGADocuFromArchive(Nullable<Guid> IDDokumenteneintrag, bool bOpenInBrowser = true)
         {
             try
             {
@@ -280,7 +280,10 @@ namespace PMDS.GUI
                             file.Read(bytes, 0, (int)file.Length);
                             msXML.Write(bytes, 0, (int)file.Length);
                             clsELGAPrint pr = new clsELGAPrint();
-                            pr.ShowXMLInBrowser(msXML, "", true);
+                            if (bOpenInBrowser)
+                                pr.ShowXMLInBrowser(msXML, "", true);
+                            else
+                                pr.ConvertCDA2PDF(msXML, "");
                         }
                     }
 

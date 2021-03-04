@@ -409,26 +409,24 @@ namespace PMDS.GUI
 
                         this.IsELGADocu = true;
                         this.btnOpenBefund.Visible = true;
+                        this.btnCDA2PDF.Visible = rDocuEintrag.IsELGADocu;
                         this.btnBefundStorno.Visible = bELGAIsActive && 
                                                         !rDocuEintrag.ELGAStorniert && 
                                                         rDocuEintrag.ELGACreatedInPMDS &&
                                                         ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteStornieren, false);
-
-                        if (!rAufenthalt.ELGASOOJN && rDocuEintrag.ELGAÜbertragen == 0 &&
-                            bELGAIsActive &&
-                            (
-                                generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Pflegesituationsbericht) ||
-                                generic.sEquals(rDocuEintrag.ELGADocuType, WCFServicePMDS.CDABAL.CDA.eTypeCDA.Entlassungsbrief)
-                             ) &&
-                             ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteSenden, false)
-                            )
-                        {
-                            this.btnBefundSend.Visible = true;
-                        }
+                        this.btnBefundSend.Visible = !rAufenthalt.ELGASOOJN && 
+                                rDocuEintrag.ELGAÜbertragen == 0 &&
+                                bELGAIsActive &&
+                                rDocuEintrag.IsELGADocu &&
+                                ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteSenden, false);
                     }
                     else
                     {
+                        this.IsELGADocu = false;
                         this.btnOpenBefund.Visible = false;
+                        this.btnCDA2PDF.Visible = false;
+                        this.btnBefundStorno.Visible = false;
+                        this.btnBefundSend.Visible = false;
                     }
                 }
             }
@@ -1037,44 +1035,12 @@ namespace PMDS.GUI
 
         private void btnOpenBefund_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
+            ShowCDA(true);
+        }
 
-                if (this.IsELGADocu)
-                {
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
-                    {
-                        var rMedDaten = (from p in db.MedizinischeDaten
-                                         where p.ID == _row.ID
-                                         select new
-                                         {
-                                             p.ID,
-                                             p.IDDocu
-                                         }).FirstOrDefault();
-
-                        if (rMedDaten != null && rMedDaten.IDDocu != null)
-                        {
-                            ELGAPMDSBusinessUI bUi = new ELGAPMDSBusinessUI();
-                            bUi.openELGADocuFromArchive(rMedDaten.IDDocu.Value);
-                        }
-                    }
-                }
-                else
-                {
-                    EDIFact.EDIFact EDIFact1 = new EDIFact.EDIFact();
-                    EDIFact1.openBefund(_row.IDBefund);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
-            }
-            finally
-            {
-                Cursor.Current = Cursors.Default;
-            }
+        private void btnCDA2PDF_Click(object sender, EventArgs e)
+        {
+            ShowCDA(false);
         }
 
         private void btnBefundStorno_Click(object sender, EventArgs e)
@@ -1117,6 +1083,7 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.Default;
             }
         }
+
         private void btnBefundSend_Click(object sender, EventArgs e)
         {
             try
@@ -1145,6 +1112,46 @@ namespace PMDS.GUI
                             this.Close();
                         }
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void ShowCDA(bool bOpenInBrowser)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                if (this.IsELGADocu)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        var rMedDaten = (from p in db.MedizinischeDaten
+                                         where p.ID == _row.ID
+                                         select new
+                                         {
+                                             p.ID,
+                                             p.IDDocu
+                                         }).FirstOrDefault();
+
+                        if (rMedDaten != null && rMedDaten.IDDocu != null)
+                        {
+                            ELGAPMDSBusinessUI bUi = new ELGAPMDSBusinessUI();
+                            bUi.openELGADocuFromArchive(rMedDaten.IDDocu.Value, bOpenInBrowser);
+                        }
+                    }
+                }
+                else
+                {
+                    EDIFact.EDIFact EDIFact1 = new EDIFact.EDIFact();
+                    EDIFact1.openBefund(_row.IDBefund);
                 }
 
             }

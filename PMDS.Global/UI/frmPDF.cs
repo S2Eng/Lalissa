@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Patagames.Pdf.Net;     
 using System.IO;
-
+using System.Collections.Generic;
 
 namespace PMDS.GUI.BaseControls
 {
@@ -19,6 +19,7 @@ namespace PMDS.GUI.BaseControls
             pdfToolStripZoom1.Items[2].Text = "";
             pdfToolStripMain1.Items[0].Text = "";
             pdfToolStripMain1.Items[1].Text = "";
+            pdfToolStripMain1.Items[2].Text = "";
         }
 
         public PdfDocument doc = null;
@@ -27,8 +28,12 @@ namespace PMDS.GUI.BaseControls
         private bool _showBookmarks;
         private bool _showOpenDialog;
         private bool _showPrintDialog;
+        private bool _showSaveDialog;
         private string _frmCaption;
-        private string sFileName = "";
+        public List<string> FileNamesToRemove { get; set; } = new List<string>();
+        private bool _removeFileBeforeClose;
+        private string sFileName;
+
 
         public bool ShowBookmarks
         {
@@ -56,6 +61,16 @@ namespace PMDS.GUI.BaseControls
             }
         }
 
+        public bool ShowSaveDialog
+        {
+            get { return _showSaveDialog; }
+            set
+            {
+                _showSaveDialog = value;
+                pdfToolStripMain1.Items[2].Visible = _showSaveDialog;
+            }
+        }
+
         public bool ShowPrintDialog
         {
             get { return _showPrintDialog; }
@@ -73,6 +88,15 @@ namespace PMDS.GUI.BaseControls
             {
                 _frmCaption = value;
                 this.Text = _frmCaption;
+            }
+        }
+
+        public bool RemoveFileBeforeClose
+        {
+            get { return _removeFileBeforeClose; }
+            set
+            {
+                _removeFileBeforeClose = value;
             }
         }
 
@@ -166,6 +190,44 @@ namespace PMDS.GUI.BaseControls
             catch (Exception ex)
             {
                 throw new Exception("frmPDF, SetValue: " + ex.ToString());
+            }
+        }
+
+        private void pdfToolStripMain1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog dlg = new SaveFileDialog())
+                {
+                    dlg.Filter = "Adobe PDF|*.pdf";
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                        pdfViewer1.Document.Save(dlg.FileName, Patagames.Pdf.Enums.SaveFlags.NoIncremental);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("frmPDF, Save_Click: " + ex.ToString());
+            }
+        }
+
+        private void frmPDF_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                foreach (string FileNameToRemove in FileNamesToRemove)
+                if (RemoveFileBeforeClose && File.Exists(FileNameToRemove))
+                {
+                    File.Delete(FileNameToRemove);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("frmPDF, frmPDF_FormClosed: " + ex.ToString());
             }
         }
     }

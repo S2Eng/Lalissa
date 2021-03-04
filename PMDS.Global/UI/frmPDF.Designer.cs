@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPDF));
             this.pdfToolStripMain1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain();
+            this.Save = new System.Windows.Forms.ToolStripButton();
             this.pdfViewer1 = new Patagames.Pdf.Net.Controls.WinForms.PdfViewer();
             this.pdfToolStripViewModes1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripViewModes();
             this.pdfToolStripZoom1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoom();
             this.pdfToolStripSearch1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripSearch();
             this.bookmarksViewer1 = new Patagames.Pdf.Net.Controls.WinForms.BookmarksViewer(this.components);
+            this.pdfToolStripMain1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pdfToolStripMain1
@@ -42,6 +45,8 @@
             this.pdfToolStripMain1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pdfToolStripMain1.Dock = System.Windows.Forms.DockStyle.None;
             this.pdfToolStripMain1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.pdfToolStripMain1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Save});
             this.pdfToolStripMain1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.pdfToolStripMain1.Location = new System.Drawing.Point(893, 9);
             this.pdfToolStripMain1.Name = "pdfToolStripMain1";
@@ -49,6 +54,19 @@
             this.pdfToolStripMain1.Size = new System.Drawing.Size(105, 58);
             this.pdfToolStripMain1.TabIndex = 11;
             this.pdfToolStripMain1.Text = "pdfToolStripMain1";
+            this.pdfToolStripMain1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.pdfToolStripMain1_ItemClicked);
+            // 
+            // Save
+            // 
+            this.Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Save.Image = ((System.Drawing.Image)(resources.GetObject("Save.Image")));
+            this.Save.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(23, 20);
+            this.Save.Text = "Save";
+            this.Save.ToolTipText = "Click to save the PDF file";
+            this.Save.Visible = false;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // pdfViewer1
             // 
@@ -160,6 +178,9 @@
             this.Controls.Add(this.pdfToolStripMain1);
             this.Name = "frmPDF";
             this.Text = "PDF";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPDF_FormClosed);
+            this.pdfToolStripMain1.ResumeLayout(false);
+            this.pdfToolStripMain1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +193,6 @@
         private Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripSearch pdfToolStripSearch1;
         private Patagames.Pdf.Net.Controls.WinForms.BookmarksViewer bookmarksViewer1;
         public Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain pdfToolStripMain1;
+        private System.Windows.Forms.ToolStripButton Save;
     }
 }

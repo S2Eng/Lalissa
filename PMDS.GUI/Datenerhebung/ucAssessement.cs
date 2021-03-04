@@ -1067,17 +1067,16 @@ namespace PMDS.GUI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                
                 var printDoc = new PdfPrintDocument(pdfViewer1.Document);
-
-                var dlg = new PrintDialog();
-                dlg.AllowCurrentPage = true;
-                dlg.AllowSomePages = true;
-                dlg.UseEXDialog = true;
-                dlg.Document = printDoc;
-                if (dlg.ShowDialog() == DialogResult.OK)
-                    printDoc.Print();
-
+                using (PrintDialog dlg = new PrintDialog())
+                {
+                    dlg.AllowCurrentPage = true;
+                    dlg.AllowSomePages = true;
+                    dlg.UseEXDialog = true;
+                    dlg.Document = printDoc;
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                        printDoc.Print();
+                }
             }
             catch (Exception ex)
             {
