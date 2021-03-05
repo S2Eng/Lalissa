@@ -183,6 +183,8 @@ namespace PMDS.GUI.ELGA
                         rPatientFound.ID = elgaPatient.ID;
                         rPatientFound.NachnameFirma = elgaPatient.familyName.Trim();
                         rPatientFound.Vorname = elgaPatient.givenName.Trim();
+                        if (!String.IsNullOrWhiteSpace(elgaPatient.middleName))
+                            rPatientFound.Vorname += " " + elgaPatient.middleName.Trim();
                         rPatientFound.PLZ = elgaPatient.zip.Trim();
                         rPatientFound.Ort = elgaPatient.city.Trim();
                         rPatientFound.Land = elgaPatient.country.Trim();

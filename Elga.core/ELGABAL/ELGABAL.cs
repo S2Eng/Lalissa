@@ -154,7 +154,7 @@ namespace WCFServicePMDS
                 }
                 else if (TypeQueryPatients == eTypeQueryPatients.LocalID)
                 {
-                    if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
+                    if (String.IsNullOrWhiteSpace(parsIn.sObjectDto.SozVersNrLocalPatID))
                     {
                         throw new Exception("ELGABAL.queryPatients: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                     }
@@ -457,10 +457,9 @@ namespace WCFServicePMDS
 
         public ELGAParOutDto invalidateContact(ref ELGAParInDto parsIn, System.ServiceModel.EndpointAddress ELGAUrl)
         {
+            ELGAParOutDto retDto = this.initParOut();
             try
             {
-                ELGAParOutDto retDto = this.initParOut();
-
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
                 trsClientInvalidateContactRq trsClientInvalidateContactRq1 = new trsClientInvalidateContactRq();
@@ -469,7 +468,7 @@ namespace WCFServicePMDS
 
                 trsClientInvalidateContactRsp trsClientInvalidateContactRsp = objWsLogin.invalidateContact(trsClientInvalidateContactRq1);
 
-                if (trsClientInvalidateContactRsp.responseDetail.listError.Count() == 0)
+                if (trsClientInvalidateContactRsp.responseDetail.listError.Length == 0)
                 {
                     retDto.bOK = true;
                     return retDto;
@@ -481,6 +480,28 @@ namespace WCFServicePMDS
                 }
 
             }
+            catch (System.ServiceModel.FaultException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.ProtocolException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
+
             catch (Exception ex)
             {
                 throw new Exception("ELGABAL.invalidateContact: " + ex.ToString());
@@ -489,11 +510,9 @@ namespace WCFServicePMDS
 
         public ELGAParOutDto addContactDischarge(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
+            ELGAParOutDto retDto = this.initParOut();
             try
             {
-                //Entlassung
-                ELGAParOutDto retDto = this.initParOut();
-
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
                 if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
@@ -507,28 +526,39 @@ namespace WCFServicePMDS
                 trsClientAddContactRq1.stateID = parsIn.session.ELGAStateID;
                 trsClientAddContactRq1.patient = ehrPatientClientDtoBack;
 
-                try
+                trsClientAddContactRsp trsClientAddContactRsp = objWsLogin.addContactDischarge(trsClientAddContactRq1);
+                if (trsClientAddContactRsp.responseDetail.listError == null || trsClientAddContactRsp.responseDetail.listError.Count() == 0)
                 {
-                    trsClientAddContactRsp trsClientAddContactRsp = objWsLogin.addContactDischarge(trsClientAddContactRq1);
-                    if (trsClientAddContactRsp.responseDetail.listError == null || trsClientAddContactRsp.responseDetail.listError.Count() == 0)
-                    {
-                        retDto.ContactID = trsClientAddContactRsp.contactID;
-                        retDto.bOK = true;
-                        return retDto;
-                    }
-                    else
-                    {
-                        this.getErrosElgaFct(trsClientAddContactRsp.responseDetail.listError, ref retDto);
-                        return retDto;
-                    }
-                }
-                catch (System.ServiceModel.FaultException ex)
-                {
-                    retDto.bErrorsFound = true;
-                    retDto.bOK = false;
-                    retDto.Errors = ex.Message;
+                    retDto.ContactID = trsClientAddContactRsp.contactID;
+                    retDto.bOK = true;
                     return retDto;
                 }
+                else
+                {
+                    this.getErrosElgaFct(trsClientAddContactRsp.responseDetail.listError, ref retDto);
+                    return retDto;
+                }
+            }
+            catch (System.ServiceModel.FaultException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.Errors = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.ProtocolException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
             }
             catch (Exception ex)
             {
@@ -538,10 +568,9 @@ namespace WCFServicePMDS
 
         public ELGAParOutDto listContacts(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
+            ELGAParOutDto retDto = this.initParOut();
             try
             {
-                ELGAParOutDto retDto = this.initParOut();
-
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
                 if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
@@ -582,7 +611,27 @@ namespace WCFServicePMDS
                     this.getErrosElgaFct(trsClientListContactsRsp1.responseDetail.listError, ref retDto);
                     return retDto;
                 }
-
+            }
+            catch (System.ServiceModel.FaultException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.Errors = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.ProtocolException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
             }
             catch (Exception ex)
             {
@@ -608,7 +657,7 @@ namespace WCFServicePMDS
                 trsClientDelegateContactRq1.organisationIDToDelegateTo = parsIn.sOrganistaionIdToDelegateTo;
                 trsClientDelegateContactRsp trsClientAddContactRsp = objWsLogin.delegateContact(trsClientDelegateContactRq1);
 
-                if (trsClientAddContactRsp.responseDetail.listError == null || trsClientAddContactRsp.responseDetail.listError.Count() == 0)
+                if (trsClientAddContactRsp.responseDetail.listError == null || trsClientAddContactRsp.responseDetail.listError.Length == 0)
                 {
                     retDto.bOK = true;
                     return retDto;
@@ -762,9 +811,9 @@ namespace WCFServicePMDS
         public ELGAParOutDto queryDocuments(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, ref documentClientDto documentClientDtoBack, ref submissionSetClientDto submissionSet,
                                                 string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
+            ELGAParOutDto retDto = this.initParOut();
             try
             {
-                ELGAParOutDto retDto = this.initParOut();
                 retDto.lDocuments = new List<ELGADocumentsDTO>();
 
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
@@ -808,6 +857,27 @@ namespace WCFServicePMDS
 
                 return this.setELGADocu(ref ehrXdsQRsp1, ref parsIn, ref retDto, ref documentClientDtoBack, OnlyOneDoc, UniqueId, ref submissionSet);
 
+            }
+            catch (System.ServiceModel.FaultException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
+            }
+            catch (System.ServiceModel.ProtocolException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.bOK = false;
+                retDto.MessageException = ex.Message;
+                return retDto;
             }
             catch (Exception ex)
             {

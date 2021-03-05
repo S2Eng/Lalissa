@@ -448,7 +448,8 @@ namespace PMDSClient.Sitemap
                 if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAInvalidateContact");
-                    throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                    return parOutDto;
+                    //throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
                 if (parOutDto.bOK)
@@ -511,10 +512,10 @@ namespace PMDSClient.Sitemap
                 if (parOutDto.bErrorsFound)
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAListContacts");
-                    throw new Exception("WCFServiceClientPMDS.ELGAListContacts: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
+                    return parOutDto;
+                    //throw new Exception("WCFServiceClientPMDS.ELGAListContacts: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
-
-                if (parOutDto.bOK)
+                else if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -546,10 +547,8 @@ namespace PMDSClient.Sitemap
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGADelegateContact");
                     return parOutDto;
-                    //throw new Exception("WCFServiceClientPMDS.ELGADelegateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
-
-                if (parOutDto.bOK)
+                else if (parOutDto.bOK)
                 {
 
                     if (parOutDto.ContactID != null && String.IsNullOrWhiteSpace(parOutDto.ContactID))
@@ -594,10 +593,8 @@ namespace PMDSClient.Sitemap
                 {
                     string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAQueryGDAs");
                     return parOutDto;
-                    //throw new Exception("WCFServiceClientPMDS.ELGAQueryGDAs: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
-
-                if (parOutDto.bOK)
+                else if (parOutDto.bOK)
                 {
                     return parOutDto;
                 }
@@ -605,7 +602,6 @@ namespace PMDSClient.Sitemap
                 {
                     throw new Exception("WCFServiceClientPMDS.ELGAQueryGDAs: parOutDto.bOK is not true - Error ELGA-Functions or WCF-Service!");
                 }
-
             }
             catch (Exception ex)
             {
@@ -628,7 +624,9 @@ namespace PMDSClient.Sitemap
 
                 if (parOutDto.bErrorsFound)
                 {
-                    throw new Exception("WCFServiceClientPMDS.ELGAQueryDocuments: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errors.Trim());
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAQueryDocuments");
+                    return parOutDto;
+                    //throw new Exception("WCFServiceClientPMDS.ELGAQueryDocuments: ELGA-Error - " + "\r\n" + "\r\n" + parOutDto.Errors.Trim());
                 }
 
                 if (parOutDto.bOK)

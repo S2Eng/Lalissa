@@ -296,11 +296,14 @@ namespace PMDS.GUI.ELGA
                 {
                     PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this.IDAufenthalt).First();
 
+                    //os: gehört hier nicht invalidateContact her? Frage an W. Wiecenec vom 1.3.2021
                     ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAAddContactDischarge(rAufenthaltUpdate.ELGALocalID.Trim());
+                    //ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGALocalID.Trim());
+
                     if (!parOutInvContact.bOK)
                     {
-                        string sProtText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Fehler bei Storno Kontaktbestätigung für Patient {0} durch Benutzer {1}: ");
-                        string[] sParText = new string[] { ELGAKlient.Nachname + " " + ELGAKlient.Vorname, ELGAUser.Benutzer1 };
+                        string sProtText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Fehler bei Storno Kontaktbestätigung für Patient {0} durch Benutzer {1}: {2}");
+                        string[] sParText = new string[] { ELGAKlient.Nachname + " " + ELGAKlient.Vorname, ELGAUser.Benutzer1, parOutInvContact.MessageException };
                         sProtText = string.Format(culture, sProtText, sParText);
                         ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Storno Kontaktbestätigung"), null,
                                                         ELGABusiness.eTypeProt.KontaktbestätigungStorno, ELGABusiness.eELGAFunctions.none, "Aufenthalt", "", ENV.USERID, this.IDKlient, this.IDAufenthalt, sProtText);

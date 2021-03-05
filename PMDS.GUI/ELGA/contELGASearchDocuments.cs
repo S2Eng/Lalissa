@@ -189,19 +189,18 @@ namespace PMDS.GUI.ELGA
                     ELGABusiness.saveELGAProtocoll(QS2.Desktop.ControlManagment.ControlManagment.getRes("Dokumentensuche"), null,
                                                     ELGABusiness.eTypeProt.ELGAQueryDocuments, ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, this._IDPatient, rActAuf.ID, sProt);
 
-                    if (parOuot.MessageException != null && parOuot.MessageException.Trim() != "")
+                    if (parOuot.bErrorsFound)
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageException.Trim() + "\r\n" + "\r\n" +
-                                                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Meldungs-Nr") + ": " + parOuot.MessageExceptionNr.ToString(), "ELGA", MessageBoxButtons.OK);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(parOuot.MessageException.Trim() , "ELGA", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        if (parOuot.lDocuments.Count() > 0)
+                        if (parOuot.lDocuments.Count > 0)
                         {
                             foreach (ELGADocumentsDTO elgaDocu in parOuot.lDocuments)
                             {
                                 bool bDocuOK = true;
-                                if (!this.chkStorniert.Checked && PMDS.Global.generic.sEquals(elgaDocu.DocStatus, "Deprecated", Enums.eCompareMode.Contains))
+                                if (!this.chkStorniert.Checked && generic.sEquals(elgaDocu.DocStatus, "Deprecated", Enums.eCompareMode.Contains))
                                 {
                                     bDocuOK = false;
                                 }
@@ -392,7 +391,7 @@ namespace PMDS.GUI.ELGA
                 }
                 else
                 {
-                    if (e.Cell.Column.ToString().Trim().ToLower().Equals((this.colSelect.Trim()).Trim().ToLower()))
+                    if (generic.sEquals(e.Cell.Column, this.colSelect))
                     {
                         e.Cell.Activation = Activation.AllowEdit;
                     }
