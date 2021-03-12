@@ -16,11 +16,42 @@ namespace PMDS.GUI.ELGA
     {
 
         private string PDFName;
+        private Process processCDA2PDF = new Process();
 
         public void ConvertCDA2PDF(MemoryStream msXML, string sFileName)
         {
             try
             {
+                //Java-Runtime prüfen
+                string JavaVersion = "";
+                int JavaVersionMajor_Min = 1;
+                int JavaVersionMinor_Min = 8;
+                try
+                {
+                    ProcessStartInfo procStartInfo = new ProcessStartInfo();
+                    procStartInfo.FileName = "java.exe";
+                    procStartInfo.Arguments = " -version";
+                    procStartInfo.RedirectStandardOutput = true;
+                    procStartInfo.RedirectStandardError = true;
+                    procStartInfo.UseShellExecute = false;
+                    Process pr = Process.Start(procStartInfo);
+                    JavaVersion = pr.StandardError.ReadLine().Split(' ')[2].Replace("\"", "");
+
+                    string[] JavaVersionInfo = JavaVersion.Split('.');
+                    if (Convert.ToInt32(JavaVersionInfo[0]) < JavaVersionMajor_Min && Convert.ToInt32(JavaVersionInfo[1]) < JavaVersionMinor_Min)
+                    {
+                        MessageBox.Show("Java Runtime-Umgebung muss mindestens " + JavaVersionMajor_Min.ToString() + "." + JavaVersionMinor_Min.ToString() + " sein. Das CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                    }
+                }
+                catch (System.ComponentModel.Win32Exception ex)
+                {
+                    MessageBox.Show("Java Runtime-Umgebung fehlt. Das CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Fehler beim Ermitteln der Java Runtime Version. Das CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                }
+
                 sFileName = (String.IsNullOrWhiteSpace(sFileName) ? Path.GetTempFileName() : sFileName);
 
                 //CDA-Dokument auf Platte schreiben
@@ -34,53 +65,65 @@ namespace PMDS.GUI.ELGA
                 //Ausgabepfad festlegen
                 PDFName = Path.Combine(Path.GetDirectoryName(sFileName), Path.GetFileNameWithoutExtension(sFileName) + ".PDF");
                 string pars = sFileName + " " + PDFName + " " + ENV.ActiveUser.Benutzer1;
-                
-                //CDA-File in PDF-File konvertieren
-                if (File.Exists(Path.Combine(ENV.path_bin, "S2_CDA2PDF.exe")))
-                {
-                    var process = Process.Start(Path.Combine(ENV.path_bin, "S2_CDA2PDF.exe"), pars);
+                bool bConvertOk = false;
 
+                //CDA-File in PDF-File konvertieren
+                if (File.Exists(Path.Combine(ENV.path_bin, "S2_CDA2PDF.jar")))
+                {
+                    processCDA2PDF = Process.Start(Path.Combine(ENV.path_bin, "S2_CDA2PDF.jar"), pars);
+                    processCDA2PDF.WaitForExit(20000);
+                    bConvertOk = processCDA2PDF.ExitCode == 0 && File.Exists(PDFName);
+                }
+                else if (File.Exists(Path.Combine(ENV.path_bin, "S2_CDA2PDF.exe")))
+                {
+                    processCDA2PDF = Process.Start(Path.Combine(ENV.path_bin, "S2_CDA2PDF.exe"), pars);
                     Cursor.Current = Cursors.WaitCursor;
                     int i = 20;
-                    while (!File.Exists(PDFName) && i > 0 )
+                    while (!File.Exists(PDFName) && i > 0)      //Process.WaitForExit funktioniert nicht, weil der Wrapper für das jar immer sofort 0 zurückgibt
                     {
                         System.Threading.Thread.Sleep(1000);
                         i--;
                     }
                     Cursor.Current = Cursors.Default;
+                    bConvertOk = File.Exists(PDFName);
+                }
+                else
+                {
+                    MessageBox.Show("CDA-Dokumentenkonverter (jar oder exe) fehlt. Das CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                }
 
-                    //und im Viewer anzeigen
-                    if (File.Exists(PDFName))
+                if (bConvertOk)
+                {
+                    PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();       //no using! - schließt den Viewer sofort nach Show()
+                    if (frmPDF.OpenPDFFromByte(File.ReadAllBytes(PDFName)))
                     {
-                        PMDS.GUI.BaseControls.frmPDF frmPDF = new PMDS.GUI.BaseControls.frmPDF();
-                        if (frmPDF.OpenPDFFromByte(File.ReadAllBytes(PDFName)))
-                        {
-                            frmPDF.SetCaption = "";
-                            frmPDF.ShowBookmarks = false;
-                            frmPDF.ShowOpenDialog = false;
-                            frmPDF.ShowPrintDialog = true;
-                            frmPDF.RemoveFileBeforeClose = true;
-                            frmPDF.FileNamesToRemove = new List<string>(new[] { sFileName, PDFName });
-                            frmPDF.Show();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                        frmPDF.SetCaption = "";
+                        frmPDF.ShowBookmarks = false;
+                        frmPDF.ShowOpenDialog = false;
+                        frmPDF.ShowPrintDialog = true;
+                        frmPDF.ShowSaveDialog = true;
+                        frmPDF.RemoveFileBeforeClose = true;
+                        frmPDF.FileNamesToRemove = new List<string>(new[] { sFileName, PDFName });
+                        frmPDF.Show();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("CDA-Dokumentenkonverter fehlt. Das CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
+                    MessageBox.Show("CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fehler bei CDA2PDF-Konverter: " + ex.ToString());
+                MessageBox.Show("Unerwarteter Fehler bei CDA2PDF-Konverter: " + ex.ToString());
             }
             finally
             {
                 Cursor.Current = Cursors.Default;
+                if (processCDA2PDF != null)
+                {
+                    string x = "";
+                }
+                    //processCDA2PDF.Kill();
             }
         }
 

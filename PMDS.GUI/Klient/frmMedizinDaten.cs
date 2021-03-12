@@ -406,6 +406,7 @@ namespace PMDS.GUI
                     {
                         ELGABusiness bELGA = new ELGABusiness();
                         bool bELGAIsActive = bELGA.ELGAIsActive(ENV.CurrentIDPatient, ENV.IDAUFENTHALT, true);
+                        bool bELGASessionIsActive = ELGABusiness.checkELGASessionActive(false);
 
                         this.IsELGADocu = true;
                         this.btnOpenBefund.Visible = true;
@@ -413,12 +414,14 @@ namespace PMDS.GUI
                         this.btnBefundStorno.Visible = bELGAIsActive && 
                                                         !rDocuEintrag.ELGAStorniert && 
                                                         rDocuEintrag.ELGACreatedInPMDS &&
-                                                        ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteStornieren, false);
+                                                        ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteStornieren, false) &&
+                                                        bELGASessionIsActive;
                         this.btnBefundSend.Visible = !rAufenthalt.ELGASOOJN && 
-                                rDocuEintrag.ELGAÜbertragen == 0 &&
-                                bELGAIsActive &&
-                                rDocuEintrag.IsELGADocu &&
-                                ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteSenden, false);
+                                                        rDocuEintrag.ELGAÜbertragen == 0 &&
+                                                        bELGAIsActive &&
+                                                        rDocuEintrag.IsELGADocu &&
+                                                        ELGABusiness.HasELGARight(ELGABusiness.eELGARight.ELGADokumenteSenden, false) &&
+                                                        bELGASessionIsActive;
                     }
                     else
                     {

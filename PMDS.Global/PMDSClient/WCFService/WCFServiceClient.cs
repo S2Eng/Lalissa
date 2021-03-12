@@ -60,6 +60,7 @@ namespace PMDSClient.Sitemap
             public string Ort { get; set; }
             public string Strasse { get; set; }
             public string StrasseNr { get; set; }
+            public bool bSearchEinrichtung { get; set; }
         }
         public class genCDARes
         {
@@ -435,14 +436,15 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public ELGAParOutDto ELGAInvalidateContact(string ContactID)
+        public ELGAParOutDto ELGAInvalidateContact(string LocalPatientID)
         {
             try
             {
                 WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.ContactID = ContactID.Trim();
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
+                parsIn.ContactID = LocalPatientID.Trim();
                 ELGAParOutDto parOutDto = s1.ELGAInvalidateContact(ref parsIn, PMDS.Global.ENV.ELGAUrl);
 
                 if (parOutDto.bErrorsFound)
@@ -541,6 +543,7 @@ namespace PMDSClient.Sitemap
                 parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
                 parsIn.sOrganistaionIdToDelegateTo = OrganisationIdToDelegateTo;
                 parsIn.authUniversalID = PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik);
+                parsIn.ELGA_OrganizationOID = PMDSBusiness.getKlinikELGA_OrganizationOID(PMDS.Global.ENV.IDKlinik);
                 ELGAParOutDto parOutDto = s1.ELGADelegateContact(ref parsIn, PMDS.Global.ENV.ELGAUrl);
 
                 if (parOutDto.bErrorsFound)
@@ -587,7 +590,7 @@ namespace PMDSClient.Sitemap
                     StreetNr = SearchGdaFlds.StrasseNr.Trim()
                 };
 
-                ELGAParOutDto parOutDto = s1.ELGAQueryGDAs(ref parsIn, PMDS.Global.ENV.ELGAUrlGDAIndex);
+                ELGAParOutDto parOutDto = s1.ELGAQueryGDAs(ref parsIn, SearchGdaFlds.bSearchEinrichtung, PMDS.Global.ENV.ELGAUrlGDAIndex);
 
                 if (parOutDto.bErrorsFound)
                 {

@@ -346,12 +346,12 @@ namespace WCFServicePMDS
             }
         }
 
-        public ELGAParOutDto ELGAQueryGDAs(ref ELGAParInDto parsIn, string ELGAUrlGDAIndex)
+        public ELGAParOutDto ELGAQueryGDAs(ref ELGAParInDto parsIn, bool bSearchEinrichtung, string ELGAUrlGDAIndex)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.queryGDAs(ref parsIn, ELGAUrlGDAIndex);
+                return elga.queryGDAs(ref parsIn, bSearchEinrichtung, ELGAUrlGDAIndex);
             }
             catch (Exception ex)
             {

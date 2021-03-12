@@ -242,7 +242,7 @@ namespace PMDS.GUI
                 };
 
                 frmELGASearchGDA frmELGASearchGDA1 = new frmELGASearchGDA();
-                frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.Ärzte);
+                frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.Ärzte, false);
                 frmELGASearchGDA1.ShowDialog();
                 if (!frmELGASearchGDA1.contELGASearchGDA1.abort)
                 {

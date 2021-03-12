@@ -28,6 +28,7 @@ namespace PMDS.GUI.ELGA
 
         public frmELGASearchGDA mainWindow = null;
         public bool IsInitialized = false;
+        public bool bSearchEinrichtung { get; set; }
 
         public bool abort = true;
         public UIGlobal UIGlobal1 = new UIGlobal();
@@ -60,7 +61,7 @@ namespace PMDS.GUI.ELGA
 
 
 
-        public void initControl(Nullable<Guid> IDPatient, Nullable<Guid> IDAufenthalt, cSearchGdaFlds FieldsSearch, eTypeUI TypeUI)
+        public void initControl(Nullable<Guid> IDPatient, Nullable<Guid> IDAufenthalt, cSearchGdaFlds FieldsSearch, eTypeUI TypeUI, bool bSearchEinrichtung)
         {
             try
             {
@@ -92,6 +93,7 @@ namespace PMDS.GUI.ELGA
                         this.txtVorname.Visible = false;
                     }
 
+                    this.bSearchEinrichtung = bSearchEinrichtung;
                     this.loadData();
 
                     if (ENV.adminSecure)
@@ -212,19 +214,6 @@ namespace PMDS.GUI.ELGA
                 }
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
-                    //var rAufenthalt = (from p in db.Aufenthalt
-                    //                where p.ID == ENV.IDAUFENTHALT
-                    //                   select new
-                    //                {
-                    //                    p.ID,
-                    //                    p.IDPatient
-                    //                }).First();
-                    
-                    //if (!this.bELGA.ELGAIsActive(rAufenthalt.IDPatient.Value, ENV.IDAUFENTHALT, true))
-                    //{
-                    //    return false;
-                    //}
-
                     if (!this.validateData())
                     {
                         return false;
@@ -237,17 +226,9 @@ namespace PMDS.GUI.ELGA
                         PLZ = this.txtPLZ.Text.Trim(),
                         Ort = "",
                         Strasse = "",
-                        StrasseNr = ""
+                        StrasseNr = "",
+                        bSearchEinrichtung = this.bSearchEinrichtung
                     };
-
-                    //cSearchGdaFlds FieldsSearchingWcf = new cSearchGdaFlds() { 
-                    //    NachnameFirma = this.txtNachname.Text.Trim(),
-                    //    Vorname = this.txtVorname.Text.Trim(), 
-                    //    Ort = this.txtOrt.Text.Trim(),
-                    //    PLZ = this.txtPLZ.Text.Trim(), 
-                    //    Strasse = this.txtStrasse.Text.Trim(),
-                    //    StrasseNr = this.txtStrasseNr.Text.Trim()
-                    //};
 
                     this.dsManage1.Clear();
                     this.gridFound.Refresh();

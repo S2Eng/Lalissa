@@ -32,6 +32,7 @@ namespace WCFServicePMDS.BAL2.ELGABAL
         public DocumentAddDto DocumentAdd { get; set; }
         public string authUniversalID { get; set; }
         public string sOrganistaionIdToDelegateTo { get; set; }
+        public string ELGA_OrganizationOID { get; set; }
 
     }
 

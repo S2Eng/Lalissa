@@ -29,14 +29,14 @@ namespace PMDS.GUI.ELGA
 
 
 
-        public void initControl(Nullable<Guid> IDPatient, Nullable<Guid> IDAufenthalt, cSearchGdaFlds FieldsSearch, contELGASearchGDA.eTypeUI TypeUI)
+        public void initControl(Nullable<Guid> IDPatient, Nullable<Guid> IDAufenthalt, cSearchGdaFlds FieldsSearch, contELGASearchGDA.eTypeUI TypeUI, bool bSearchEinrichtung)
         {
             try
             {
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
 
                 this.contELGASearchGDA1.mainWindow = this;
-                this.contELGASearchGDA1.initControl(IDPatient, IDAufenthalt, FieldsSearch, TypeUI);
+                this.contELGASearchGDA1.initControl(IDPatient, IDAufenthalt, FieldsSearch, TypeUI, bSearchEinrichtung);
 
             }
             catch (Exception ex)

@@ -347,7 +347,7 @@ namespace PMDS.GUI
 
                 using (frmELGASearchGDA frmELGASearchGDA1 = new frmELGASearchGDA())
                 {
-                    frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.ExtEinrichtungen);
+                    frmELGASearchGDA1.initControl(null, null, FieldsSearch, contELGASearchGDA.eTypeUI.ExtEinrichtungen, true);
                     frmELGASearchGDA1.ShowDialog();
                     if (!frmELGASearchGDA1.contELGASearchGDA1.abort)
                     {

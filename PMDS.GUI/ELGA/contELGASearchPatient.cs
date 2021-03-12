@@ -201,7 +201,7 @@ namespace PMDS.GUI.ELGA
 
                         foreach (ELGAPidsDTO rPid in elgaPatient.ELGAPids)
                         {
-                            if (rPid.authUniversalID == this._AuthUniversalID && rPid.patientIDType == "HC")
+                            if (rPid.authUniversalID == "1.2.40.0.10.1.4.3.1")
                             {
                                 rPatientFound.SozVersNr = rPid.patientID.Trim();
                             }
