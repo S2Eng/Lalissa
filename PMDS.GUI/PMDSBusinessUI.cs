@@ -862,6 +862,27 @@ namespace PMDS.GUI
             }
         }
 
+        public void getAllKostentraegerCbo(UltraComboEditor cbo, PMDS.db.Entities.ERModellPMDSEntities db, bool AddEmptyItem)
+        {
+            try
+            {
+                cbo.Items.Clear();
+                PMDSBusiness b = new PMDSBusiness();
+                IQueryable<PMDS.db.Entities.Kostentraeger> tAllKostentraeger = b.getAllKostentraeger2(db);
+                if (AddEmptyItem)
+                    cbo.Items.Add(null, "");
+                
+                foreach (PMDS.db.Entities.Kostentraeger rKostentraeger in tAllKostentraeger)
+                {
+                    cbo.Items.Add(rKostentraeger.ID, rKostentraeger.Name.Trim() + " (FiBu: " + rKostentraeger.FIBUKonto+ ")");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusinessUI.getAllKostentraegerCbo: " + ex.ToString());
+            }
+        }
+
         public void loadZahlartCbo(Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
             ValueListItem itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Bankeinzug, PMDS.Calc.Logic.eZahlart.Bankeinzug.ToString());

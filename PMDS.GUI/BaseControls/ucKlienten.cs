@@ -546,7 +546,7 @@ namespace PMDS.GUI
                 using (PMDS.db.Entities.ERModellPMDSEntities DBContext = PMDS.DB.PMDSBusiness.getDBContext())
                 {
                     string sName = null;
-                    if (this.txtKlient.Text.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(this.txtKlient.Text))
                         sName = this.txtKlient.Text.Trim();
 
                     Nullable<Guid> IDAllgKostenträger = null;

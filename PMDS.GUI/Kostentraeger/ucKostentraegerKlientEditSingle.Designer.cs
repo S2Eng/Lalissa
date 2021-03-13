@@ -43,10 +43,11 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.txtBank = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblBank = new Infragistics.Win.Misc.UltraLabel();
             this.txtKontonr = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -83,13 +84,15 @@
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelKostenträger = new System.Windows.Forms.Panel();
-            this.cboZahlart = new QS2.Desktop.ControlManagment.BaseComboEditor();
-            this.txtStrasse = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.lblStrasse = new Infragistics.Win.Misc.UltraLabel();
-            this.txtPLZ = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.lblPLZ = new Infragistics.Win.Misc.UltraLabel();
+            this.lblRechnungsempfaenger = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cboIDKostentraegerSub = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.txtOrt = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.lblOrt = new Infragistics.Win.Misc.UltraLabel();
+            this.txtPLZ = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.lblPLZ = new Infragistics.Win.Misc.UltraLabel();
+            this.txtStrasse = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.lblStrasse = new Infragistics.Win.Misc.UltraLabel();
+            this.cboZahlart = new QS2.Desktop.ControlManagment.BaseComboEditor();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKontonr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBLZ)).BeginInit();
@@ -111,10 +114,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.udteGueltigBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panelKostenträger.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboZahlart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIDKostentraegerSub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboZahlart)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBank
@@ -172,7 +176,7 @@
             // 
             // txtFIBUKonto
             // 
-            this.txtFIBUKonto.Location = new System.Drawing.Point(496, 11);
+            this.txtFIBUKonto.Location = new System.Drawing.Point(516, 11);
             this.txtFIBUKonto.Name = "txtFIBUKonto";
             this.txtFIBUKonto.Size = new System.Drawing.Size(195, 21);
             this.txtFIBUKonto.TabIndex = 20;
@@ -199,9 +203,9 @@
             // 
             // chkErlagscheingebuehrJN
             // 
-            this.chkErlagscheingebuehrJN.Location = new System.Drawing.Point(497, 64);
+            this.chkErlagscheingebuehrJN.Location = new System.Drawing.Point(516, 65);
             this.chkErlagscheingebuehrJN.Name = "chkErlagscheingebuehrJN";
-            this.chkErlagscheingebuehrJN.Size = new System.Drawing.Size(184, 23);
+            this.chkErlagscheingebuehrJN.Size = new System.Drawing.Size(140, 23);
             this.chkErlagscheingebuehrJN.TabIndex = 5;
             this.chkErlagscheingebuehrJN.Text = "Erlagscheingebühr";
             // 
@@ -213,9 +217,9 @@
             this.panelUnten.Controls.Add(this.udteErfasstAm);
             this.panelUnten.Controls.Add(this.panelAuswahlRechnung);
             this.panelUnten.Controls.Add(this.chkVorauszahlungJN);
-            this.panelUnten.Location = new System.Drawing.Point(842, 144);
+            this.panelUnten.Location = new System.Drawing.Point(620, 226);
             this.panelUnten.Name = "panelUnten";
-            this.panelUnten.Size = new System.Drawing.Size(862, 129);
+            this.panelUnten.Size = new System.Drawing.Size(245, 38);
             this.panelUnten.TabIndex = 200;
             this.panelUnten.Visible = false;
             // 
@@ -337,8 +341,9 @@
             // 
             appearance9.BackColor = System.Drawing.Color.White;
             this.cboEnumKostentraegerart.Appearance = appearance9;
+            this.cboEnumKostentraegerart.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cboEnumKostentraegerart.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cboEnumKostentraegerart.BackColor = System.Drawing.Color.White;
-            this.cboEnumKostentraegerart.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cboEnumKostentraegerart.Location = new System.Drawing.Point(96, 92);
             this.cboEnumKostentraegerart.Name = "cboEnumKostentraegerart";
             this.cboEnumKostentraegerart.Size = new System.Drawing.Size(313, 21);
@@ -359,9 +364,9 @@
             this.cboIDBenutzer.Appearance = appearance10;
             this.cboIDBenutzer.BackColor = System.Drawing.Color.White;
             this.cboIDBenutzer.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboIDBenutzer.Location = new System.Drawing.Point(494, 119);
+            this.cboIDBenutzer.Location = new System.Drawing.Point(516, 91);
             this.cboIDBenutzer.Name = "cboIDBenutzer";
-            this.cboIDBenutzer.Size = new System.Drawing.Size(195, 21);
+            this.cboIDBenutzer.Size = new System.Drawing.Size(255, 21);
             this.cboIDBenutzer.TabIndex = 22;
             // 
             // lblGültigAb
@@ -389,11 +394,11 @@
             // 
             // lblBenutzer
             // 
-            this.lblBenutzer.Location = new System.Drawing.Point(431, 122);
+            this.lblBenutzer.Location = new System.Drawing.Point(433, 94);
             this.lblBenutzer.Name = "lblBenutzer";
-            this.lblBenutzer.Size = new System.Drawing.Size(65, 14);
+            this.lblBenutzer.Size = new System.Drawing.Size(77, 14);
             this.lblBenutzer.TabIndex = 21;
-            this.lblBenutzer.Text = "Benutzer";
+            this.lblBenutzer.Text = "Angelegt von";
             // 
             // udteGueltigBis
             // 
@@ -465,6 +470,8 @@
             this.panelKostenträger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelKostenträger.BackColor = System.Drawing.Color.Transparent;
+            this.panelKostenträger.Controls.Add(this.lblRechnungsempfaenger);
+            this.panelKostenträger.Controls.Add(this.cboIDKostentraegerSub);
             this.panelKostenträger.Controls.Add(this.txtOrt);
             this.panelKostenträger.Controls.Add(this.lblOrt);
             this.panelKostenträger.Controls.Add(this.txtPLZ);
@@ -495,68 +502,89 @@
             this.panelKostenträger.Size = new System.Drawing.Size(860, 220);
             this.panelKostenträger.TabIndex = 1002;
             // 
-            // cboZahlart
+            // lblRechnungsempfaenger
             // 
-            appearance18.BackColor = System.Drawing.Color.White;
-            this.cboZahlart.Appearance = appearance18;
-            this.cboZahlart.BackColor = System.Drawing.Color.White;
-            this.cboZahlart.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboZahlart.Location = new System.Drawing.Point(496, 38);
-            this.cboZahlart.Name = "cboZahlart";
-            this.cboZahlart.Size = new System.Drawing.Size(195, 21);
-            this.cboZahlart.TabIndex = 21;
-            this.cboZahlart.ValueChanged += new System.EventHandler(this.cboZahlart_ValueChanged);
+            this.lblRechnungsempfaenger.Location = new System.Drawing.Point(433, 123);
+            this.lblRechnungsempfaenger.Name = "lblRechnungsempfaenger";
+            this.lblRechnungsempfaenger.Size = new System.Drawing.Size(74, 14);
+            this.lblRechnungsempfaenger.TabIndex = 29;
+            this.lblRechnungsempfaenger.Text = "Rechnung an";
             // 
-            // txtStrasse
+            // cboIDKostentraegerSub
             // 
-            this.txtStrasse.Location = new System.Drawing.Point(96, 157);
-            this.txtStrasse.Name = "txtStrasse";
-            this.txtStrasse.Size = new System.Drawing.Size(313, 21);
-            this.txtStrasse.TabIndex = 6;
-            // 
-            // lblStrasse
-            // 
-            appearance17.TextVAlignAsString = "Middle";
-            this.lblStrasse.Appearance = appearance17;
-            this.lblStrasse.Location = new System.Drawing.Point(8, 156);
-            this.lblStrasse.Name = "lblStrasse";
-            this.lblStrasse.Size = new System.Drawing.Size(76, 23);
-            this.lblStrasse.TabIndex = 23;
-            this.lblStrasse.Text = "Strasse";
-            // 
-            // txtPLZ
-            // 
-            this.txtPLZ.Location = new System.Drawing.Point(96, 185);
-            this.txtPLZ.Name = "txtPLZ";
-            this.txtPLZ.Size = new System.Drawing.Size(64, 21);
-            this.txtPLZ.TabIndex = 7;
-            // 
-            // lblPLZ
-            // 
-            appearance16.TextVAlignAsString = "Middle";
-            this.lblPLZ.Appearance = appearance16;
-            this.lblPLZ.Location = new System.Drawing.Point(8, 184);
-            this.lblPLZ.Name = "lblPLZ";
-            this.lblPLZ.Size = new System.Drawing.Size(76, 23);
-            this.lblPLZ.TabIndex = 25;
-            this.lblPLZ.Text = "PLZ";
+            appearance15.BackColor = System.Drawing.Color.White;
+            this.cboIDKostentraegerSub.Appearance = appearance15;
+            this.cboIDKostentraegerSub.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cboIDKostentraegerSub.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cboIDKostentraegerSub.BackColor = System.Drawing.Color.White;
+            this.cboIDKostentraegerSub.Location = new System.Drawing.Point(516, 118);
+            this.cboIDKostentraegerSub.Name = "cboIDKostentraegerSub";
+            this.cboIDKostentraegerSub.Size = new System.Drawing.Size(255, 21);
+            this.cboIDKostentraegerSub.TabIndex = 28;
             // 
             // txtOrt
             // 
-            this.txtOrt.Location = new System.Drawing.Point(192, 185);
+            this.txtOrt.Location = new System.Drawing.Point(192, 174);
             this.txtOrt.Name = "txtOrt";
             this.txtOrt.Size = new System.Drawing.Size(217, 21);
             this.txtOrt.TabIndex = 8;
             // 
             // lblOrt
             // 
-            appearance15.TextVAlignAsString = "Middle";
-            this.lblOrt.Appearance = appearance15;
-            this.lblOrt.Location = new System.Drawing.Point(166, 184);
+            appearance16.TextVAlignAsString = "Middle";
+            this.lblOrt.Appearance = appearance16;
+            this.lblOrt.Location = new System.Drawing.Point(166, 173);
             this.lblOrt.Name = "lblOrt";
             this.lblOrt.Size = new System.Drawing.Size(76, 23);
             this.lblOrt.TabIndex = 27;
             this.lblOrt.Text = "Ort";
+            // 
+            // txtPLZ
+            // 
+            this.txtPLZ.Location = new System.Drawing.Point(96, 174);
+            this.txtPLZ.Name = "txtPLZ";
+            this.txtPLZ.Size = new System.Drawing.Size(64, 21);
+            this.txtPLZ.TabIndex = 7;
+            // 
+            // lblPLZ
+            // 
+            appearance17.TextVAlignAsString = "Middle";
+            this.lblPLZ.Appearance = appearance17;
+            this.lblPLZ.Location = new System.Drawing.Point(8, 173);
+            this.lblPLZ.Name = "lblPLZ";
+            this.lblPLZ.Size = new System.Drawing.Size(76, 23);
+            this.lblPLZ.TabIndex = 25;
+            this.lblPLZ.Text = "PLZ";
+            // 
+            // txtStrasse
+            // 
+            this.txtStrasse.Location = new System.Drawing.Point(96, 146);
+            this.txtStrasse.Name = "txtStrasse";
+            this.txtStrasse.Size = new System.Drawing.Size(313, 21);
+            this.txtStrasse.TabIndex = 6;
+            // 
+            // lblStrasse
+            // 
+            appearance18.TextVAlignAsString = "Middle";
+            this.lblStrasse.Appearance = appearance18;
+            this.lblStrasse.Location = new System.Drawing.Point(8, 145);
+            this.lblStrasse.Name = "lblStrasse";
+            this.lblStrasse.Size = new System.Drawing.Size(76, 23);
+            this.lblStrasse.TabIndex = 23;
+            this.lblStrasse.Text = "Strasse";
+            // 
+            // cboZahlart
+            // 
+            appearance19.BackColor = System.Drawing.Color.White;
+            this.cboZahlart.Appearance = appearance19;
+            this.cboZahlart.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            this.cboZahlart.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.cboZahlart.BackColor = System.Drawing.Color.White;
+            this.cboZahlart.Location = new System.Drawing.Point(516, 38);
+            this.cboZahlart.Name = "cboZahlart";
+            this.cboZahlart.Size = new System.Drawing.Size(195, 21);
+            this.cboZahlart.TabIndex = 21;
+            this.cboZahlart.ValueChanged += new System.EventHandler(this.cboZahlart_ValueChanged);
             // 
             // ucKostentraegerKlientEditSingle
             // 
@@ -595,10 +623,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panelKostenträger.ResumeLayout(false);
             this.panelKostenträger.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboZahlart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIDKostentraegerSub)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPLZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStrasse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboZahlart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -648,5 +677,7 @@
         private Infragistics.Win.Misc.UltraLabel lblPLZ;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtStrasse;
         private Infragistics.Win.Misc.UltraLabel lblStrasse;
+        private QS2.Desktop.ControlManagment.BaseLabel lblRechnungsempfaenger;
+        private QS2.Desktop.ControlManagment.BaseComboEditor cboIDKostentraegerSub;
     }
 }

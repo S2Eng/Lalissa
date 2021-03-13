@@ -63,11 +63,6 @@ namespace PMDS.GUI.Kostentraeger
 
         }
 
-
-
-
-
-
         public void initControl(eTypeUI TypeUI)
         {
             try
@@ -83,6 +78,7 @@ namespace PMDS.GUI.Kostentraeger
 
                     this._db = PMDSBusiness.getDBContext();
                     this.b3.getAllUsersCbo(this.cboIDBenutzer, this._db);
+                    this.b3.getAllKostentraegerCbo(this.cboIDKostentraegerSub, this._db, true);
                     this.UIFct1.fillEnumBillTyp(this.cboRechnungTyp, false, false);
                     this.b3.loadZahlartCbo(this.cboZahlart);
 
@@ -91,7 +87,6 @@ namespace PMDS.GUI.Kostentraeger
 
                     this.IsInitialized = true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -114,12 +109,14 @@ namespace PMDS.GUI.Kostentraeger
                 this.udteGueltigBis.Value = null;
                 this.udteErfasstAm.Value = null;
                 this.cboIDBenutzer.Value = null;
+                this.cboIDKostentraegerSub.Value = null;
                 this.cboEnumKostentraegerart.Value = null;
                 this.chkBetragErrechnetJN.Checked = false;
                 this.numBetrag.Value = 0;
                 this.chkVorauszahlungJN.Checked = false;
                 this.chkRechnungJN.Checked = false;
                 this.cboRechnungTyp.Value = null;
+                
 
                 this.txtStrasse.Text = "";
                 this.txtPLZ.Text = "";
@@ -163,6 +160,7 @@ namespace PMDS.GUI.Kostentraeger
                 this.udteErfasstAm.ReadOnly = false;
                 this.udteErfasstAm.Enabled = false;
                 this.cboIDBenutzer.ReadOnly = true;
+                this.cboIDKostentraegerSub.ReadOnly = false;
                 this.cboEnumKostentraegerart.ReadOnly = false;
                 this.chkBetragErrechnetJN.Enabled = false;
                 this.numBetrag.ReadOnly = false;
@@ -176,7 +174,6 @@ namespace PMDS.GUI.Kostentraeger
                 throw new Exception("ucKostentraegerKlientEditSingle.setUI: " + ex.ToString());
             }
         }
-
 
         public void loadData(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostenträger, bool isNew)
         {
@@ -233,8 +230,10 @@ namespace PMDS.GUI.Kostentraeger
                     }
                 }
 
+                //this.cboIDKostentraegerSub.Enabled = !isNew;
+
                 if (isNew)
-                {
+                {                    
                     this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, true, false, false, this._db);
 
                     this._rKostenträger = PMDS.Global.db.ERSystem.EFEntities.newKostentraeger(this._db);
@@ -281,7 +280,8 @@ namespace PMDS.GUI.Kostentraeger
                                                 IDPatientKostenträger = pk.ID,
                                                 pk.IDPatient,
                                                 k.TransferleistungJN,
-                                                k.PatientbezogenJN
+                                                k.PatientbezogenJN,
+                                                k.IDKostentraegerSub
                                             }).First();
 
                     this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, rKostenträger.TransferleistungJN, rKostenträger.PatientbezogenJN, this._db);
@@ -291,8 +291,7 @@ namespace PMDS.GUI.Kostentraeger
 
                     IQueryable<PMDS.db.Entities.PatientKostentraeger> tPatientKostentraeger = this._db.PatientKostentraeger.Where(b => b.ID == IDPatientKostenträger);
                     this._rPatientKostentraeger = tPatientKostentraeger.First();
-                }
-                
+                }                
 
                 this.txtBank.Text = this._rKostenträger.Bank.Trim();
                 this.txtKontonr.Text = this._rKostenträger.Kontonr.Trim();
@@ -339,6 +338,8 @@ namespace PMDS.GUI.Kostentraeger
                 }
 
                 this.cboIDBenutzer.Value = this._rPatientKostentraeger.IDBenutzer;
+                if (this._rPatientKostentraeger.Kostentraeger != null)
+                    this.cboIDKostentraegerSub.Value = this._rPatientKostentraeger.Kostentraeger.IDKostentraegerSub;
                 this.cboEnumKostentraegerart.Value = this._rPatientKostentraeger.enumKostentraegerart;
                 this.chkBetragErrechnetJN.Checked = this._rPatientKostentraeger.BetragErrechnetJN;
                 if (this._rPatientKostentraeger.Betrag != null)
@@ -352,7 +353,6 @@ namespace PMDS.GUI.Kostentraeger
                 this.chkVorauszahlungJN.Checked = this._rPatientKostentraeger.VorauszahlungJN;
                 this.chkRechnungJN.Checked = this._rPatientKostentraeger.RechnungJN;
                 this.cboRechnungTyp.Value = this._rPatientKostentraeger.RechnungTyp;
-
             }
             catch (Exception ex)
             {
@@ -363,15 +363,7 @@ namespace PMDS.GUI.Kostentraeger
         {
             try
             {
-                if (this.cboZahlart.Value.Equals((int)PMDS.Calc.Logic.eZahlart.Erlagschein))
-                {
-                    this.chkErlagscheingebuehrJN.Checked = true;
-                }
-                else
-                {
-                    this.chkErlagscheingebuehrJN.Checked = false;
-                }
-
+                this.chkErlagscheingebuehrJN.Checked = this.cboZahlart.Value.Equals((int)PMDS.Calc.Logic.eZahlart.Erlagschein);
             }
             catch (Exception ex)
             {
@@ -385,7 +377,6 @@ namespace PMDS.GUI.Kostentraeger
             try
             {
                 this.errorProvider1.SetError(this.txtBank, "");
-
             }
             catch (Exception ex)
             {
@@ -403,7 +394,7 @@ namespace PMDS.GUI.Kostentraeger
                     this.udteGueltigAb.Focus();
                     return false;
                 }
-                if (this.txtFIBUKonto.Text.Trim() == "")
+                if (String.IsNullOrWhiteSpace(this.txtFIBUKonto.Text))
                 {
                     this.errorProvider1.SetError(this.txtFIBUKonto, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("FIBU: Eingabe erforderlich!", "", MessageBoxButtons.OK);
@@ -411,21 +402,21 @@ namespace PMDS.GUI.Kostentraeger
                     return false;
                 }
 
-                if (this.txtPLZ.Text.Trim() == "")
+                if (String.IsNullOrWhiteSpace(this.txtPLZ.Text))
                 {
                     this.errorProvider1.SetError(this.txtPLZ, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("PLZ: Eingabe erforderlich!", "", MessageBoxButtons.OK);
                     this.txtPLZ.Focus();
                     return false;
                 }
-                if (this.txtOrt.Text.Trim() == "")
+                if (String.IsNullOrWhiteSpace(this.txtOrt.Text))
                 {
                     this.errorProvider1.SetError(this.txtOrt, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Ort: Eingabe erforderlich!", "", MessageBoxButtons.OK);
                     this.txtOrt.Focus();
                     return false;
                 }
-                if (this.txtStrasse.Text.Trim() == "")
+                if (String.IsNullOrWhiteSpace(this.txtStrasse.Text))
                 {
                     this.errorProvider1.SetError(this.txtStrasse, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Strasse: Eingabe erforderlich!", "", MessageBoxButtons.OK);
@@ -460,15 +451,14 @@ namespace PMDS.GUI.Kostentraeger
                         return false;
                     }
                 }
-
                 return true;
-
             }
             catch (Exception ex)
             {
                 throw new Exception("ucKostentraegerKlientEditSingle.validateData: " + ex.ToString());
             }
         }
+
         public bool saveData()
         {
             try
@@ -477,7 +467,6 @@ namespace PMDS.GUI.Kostentraeger
                 {
                     return false;
                 }
-
 
                 this._rKostenträger.Bank = this.txtBank.Text.Trim();
                 this._rKostenträger.Kontonr =  this.txtKontonr.Text.Trim();
@@ -509,17 +498,33 @@ namespace PMDS.GUI.Kostentraeger
                 this._rPatientKostentraeger.RechnungTyp = (int)this.cboRechnungTyp.Value;
 
                 this._db.SaveChanges();
-                return true;
 
+                if (this._rPatientKostentraeger.Kostentraeger != null)
+                {
+                    if (this.cboIDKostentraegerSub.Value == null)
+                        this._rPatientKostentraeger.Kostentraeger.IDKostentraegerSub = null;
+                    else
+                    {
+                        if (Guid.TryParse(this.cboIDKostentraegerSub.Value.ToString(), out Guid guidID))
+                        {
+                            this._rPatientKostentraeger.Kostentraeger.IDKostentraegerSub = (Guid)this.cboIDKostentraegerSub.Value;
+                        }
+                        else
+                        {
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Der Kostenträger " + this.cboIDKostentraegerSub.Value + " exisitiert nicht.", System.Windows.Forms.MessageBoxButtons.OK, "Fehlerhafte Eingabe");
+                            return false;
+                        }
+                    }
+                }
+                this._db.SaveChanges();
+
+                return true;
             }
             catch (Exception ex)
             {
                 throw new Exception("ucKostentraegerKlientEditSingle.saveData: " + ex.ToString());
             }
         }
-
-
-
 
         private void btnAbort_Click(object sender, EventArgs e)
         {
@@ -540,6 +545,7 @@ namespace PMDS.GUI.Kostentraeger
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -577,9 +583,6 @@ namespace PMDS.GUI.Kostentraeger
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
-
-
     }
-
 }
 

@@ -4953,6 +4953,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getAllUsers: " + ex.ToString());
             }
         }
+
         public IQueryable<PMDS.db.Entities.Benutzer> getAllUsers2(PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
@@ -4971,6 +4972,27 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getAllUsers2: " + ex.ToString());
             }
         }
+
+        public IQueryable<PMDS.db.Entities.Kostentraeger> getAllKostentraeger2(PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                IQueryable<PMDS.db.Entities.Kostentraeger> tKostentraeger = db.Kostentraeger;
+                tKostentraeger = db.Kostentraeger.OrderBy(p => p.Name);
+                return tKostentraeger;
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getAllKostentraeger2: " + ex.ToString());
+            }
+        }
+
+
         public bool getAllUsersAbteilungBereiche(Guid IDAbteilung, Guid IDBereich, PMDS.db.Entities.ERModellPMDSEntities db,
                                                     ref System.Collections.Generic.List<Guid> lstBenutzerAll,
                                                     ref System.Collections.Generic.List<Guid> lstBenutzerReturn)
