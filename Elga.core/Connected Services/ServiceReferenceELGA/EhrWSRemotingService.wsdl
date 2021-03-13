@@ -1010,6 +1010,18 @@
   <message name="getLastActiveContactResponse">
     <part name="parameters" element="tns:getLastActiveContactResponse" />
   </message>
+  <message name="listContactsGdaAll">
+    <part name="parameters" element="tns:listContactsGdaAll" />
+  </message>
+  <message name="listContactsGdaAllResponse">
+    <part name="parameters" element="tns:listContactsGdaAllResponse" />
+  </message>
+  <message name="listContactsGdaLastActive">
+    <part name="parameters" element="tns:listContactsGdaLastActive" />
+  </message>
+  <message name="listContactsGdaLastActiveResponse">
+    <part name="parameters" element="tns:listContactsGdaLastActiveResponse" />
+  </message>
   <message name="append">
     <part name="parameters" element="tns:append" />
   </message>
@@ -1869,6 +1881,16 @@
       <input wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/getLastActiveContactRequest" message="tns:getLastActiveContact" />
       <output wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/getLastActiveContactResponse" message="tns:getLastActiveContactResponse" />
       <fault wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/getLastActiveContact/Fault/EhrException" name="EhrException" message="tns:EhrException" />
+    </operation>
+    <operation name="listContactsGdaAll">
+      <input wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/listContactsGdaAllRequest" message="tns:listContactsGdaAll" />
+      <output wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/listContactsGdaAllResponse" message="tns:listContactsGdaAllResponse" />
+      <fault wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/listContactsGdaAll/Fault/EhrException" name="EhrException" message="tns:EhrException" />
+    </operation>
+    <operation name="listContactsGdaLastActive">
+      <input wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/listContactsGdaLastActiveRequest" message="tns:listContactsGdaLastActive" />
+      <output wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/listContactsGdaLastActiveResponse" message="tns:listContactsGdaLastActiveResponse" />
+      <fault wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/listContactsGdaLastActive/Fault/EhrException" name="EhrException" message="tns:EhrException" />
     </operation>
     <operation name="append">
       <input wsam:Action="http://remoting.ws.ehr.spirit.com/EhrWSRemoting/appendRequest" message="tns:append" />
@@ -3720,6 +3742,28 @@
       </fault>
     </operation>
     <operation name="getLastActiveContact">
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="EhrException">
+        <soap12:fault use="literal" name="EhrException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listContactsGdaAll">
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="EhrException">
+        <soap12:fault use="literal" name="EhrException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listContactsGdaLastActive">
       <input>
         <soap12:body use="literal" />
       </input>

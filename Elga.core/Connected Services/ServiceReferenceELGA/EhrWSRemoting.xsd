@@ -184,6 +184,10 @@
   <xs:element name="link" type="tns:link" />
   <xs:element name="linkResponse" type="tns:linkResponse" />
   <xs:element name="listContacts" type="tns:listContacts" />
+  <xs:element name="listContactsGdaAll" type="tns:listContactsGdaAll" />
+  <xs:element name="listContactsGdaAllResponse" type="tns:listContactsGdaAllResponse" />
+  <xs:element name="listContactsGdaLastActive" type="tns:listContactsGdaLastActive" />
+  <xs:element name="listContactsGdaLastActiveResponse" type="tns:listContactsGdaLastActiveResponse" />
   <xs:element name="listContactsResponse" type="tns:listContactsResponse" />
   <xs:element name="listDblReport" type="tns:listDblReport" />
   <xs:element name="listDblReportResponse" type="tns:listDblReportResponse" />
@@ -1716,6 +1720,34 @@
       <xs:element minOccurs="0" name="return" type="tns:spiritAuthorizationResponse" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listContactsGdaLastActive">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:trsClientListContactsRq" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="trsClientListContactsRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ehrRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="patient" type="tns:ehrPatientClientDto" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="listContactsGdaLastActiveResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:trsClientListContactsRsp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="trsClientListContactsRsp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ehrResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="contacts" nillable="true" type="tns:treatmentData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="createTRCAssertion">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="tns:niTreatmentAssertionCreationRequest" />
@@ -2761,12 +2793,10 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="dicomViewerUrl" type="xs:string" />
           <xs:element minOccurs="0" name="documentUniqueId" type="xs:string" />
-          <xs:element minOccurs="0" name="instances" type="xs:string" />
+          <xs:element minOccurs="0" name="jsonData" type="xs:string" />
           <xs:element minOccurs="0" name="patientID" type="xs:string" />
           <xs:element minOccurs="0" name="retrieveAET" type="xs:string" />
-          <xs:element minOccurs="0" name="seriesUID" type="xs:string" />
           <xs:element minOccurs="0" name="sessionID" type="xs:string" />
-          <xs:element minOccurs="0" name="studyUID" type="xs:string" />
           <xs:element minOccurs="0" name="wadoURL" type="xs:string" />
         </xs:sequence>
       </xs:extension>
@@ -3460,28 +3490,10 @@
       <xs:element minOccurs="0" name="arg0" type="tns:trsClientListContactsRq" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="trsClientListContactsRq">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ehrRequestBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="patient" type="tns:ehrPatientClientDto" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="listContactsResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:trsClientListContactsRsp" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="trsClientListContactsRsp">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ehrResponseBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="contacts" nillable="true" type="tns:treatmentData" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="transform">
     <xs:sequence>
@@ -3553,6 +3565,16 @@
   <xs:complexType name="queryDeclaredDifferentOfPatientResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:dblMngQueryRsp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listContactsGdaAll">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:trsClientListContactsRq" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listContactsGdaAllResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:trsClientListContactsRsp" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="hasAccessTo">
@@ -4345,6 +4367,7 @@
           <xs:element minOccurs="0" name="id" type="tns:identifier" />
           <xs:element minOccurs="0" name="medicalInstructions" type="xs:string" />
           <xs:element minOccurs="0" name="medication" type="tns:product" />
+          <xs:element minOccurs="0" name="medicationDosing" type="tns:identifier" />
           <xs:element minOccurs="0" name="medicationSite" type="tns:conceptDescriptor" />
           <xs:element minOccurs="0" name="noMedication" type="tns:conceptDescriptor" />
           <xs:element minOccurs="0" name="rateQuantity" type="tns:valueInterval" />
@@ -5953,6 +5976,7 @@
           <xs:element name="renderCdaLevel1" type="xs:boolean" />
           <xs:element name="renderHtml" type="xs:boolean" />
           <xs:element name="renderPdf" type="xs:boolean" />
+          <xs:element name="renderPdfNoe" type="xs:boolean" />
           <xs:element minOccurs="0" name="styleTheme" type="xs:string" />
         </xs:sequence>
       </xs:extension>
@@ -6303,6 +6327,7 @@
   </xs:complexType>
   <xs:complexType name="laboratorySpeciality">
     <xs:sequence>
+      <xs:element minOccurs="0" name="generalComment" type="xs:string" />
       <xs:element minOccurs="0" name="laboratoryReportItem" type="tns:laboratoryReportItem" />
       <xs:element minOccurs="0" name="specialityCode" type="tns:conceptDescriptor" />
     </xs:sequence>

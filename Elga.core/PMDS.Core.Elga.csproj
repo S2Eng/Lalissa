@@ -501,6 +501,12 @@
     <None Include="Connected Services\ServiceReferenceELGA\Elga.core.ServiceReferenceELGA.linkResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReferenceELGA\Elga.core.ServiceReferenceELGA.listContactsGdaAllResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA\Elga.core.ServiceReferenceELGA.listContactsGdaLastActiveResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReferenceELGA\Elga.core.ServiceReferenceELGA.listContactsResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
