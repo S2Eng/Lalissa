@@ -436,22 +436,52 @@ namespace PMDSClient.Sitemap
             }
         }
 
-        public ELGAParOutDto ELGAInvalidateContact(string LocalPatientID)
+        public ELGAParOutDto ELGAInvalidateContact(string LocalPatientID, string ELGAContactID)
         {
             try
             {
                 WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 ELGAParInDto parsIn = new ELGAParInDto();
                 parsIn.session = ELGABusiness.ELGAStatusbarStatus.ELGALogInDto.session;
-                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID.Trim() };
-                parsIn.ContactID = LocalPatientID.Trim();
-                ELGAParOutDto parOutDto = s1.ELGAInvalidateContact(ref parsIn, PMDS.Global.ENV.ELGAUrl);
+                parsIn.ContactID = ELGAContactID;
+                parsIn.sObjectDto = new ObjectDTO() { SozVersNrLocalPatID = LocalPatientID };
+                ELGAParOutDto parOutDto = new ELGAParOutDto();
+
+                /*
+                //Behandlungs-ID (Contact-ID) holen
+                ELGAParOutDto parOutContacts = this.ELGAListContacts(LocalPatientID.Trim());
+
+                bool bContactFound = false;                
+                foreach(ELGAContactsDto contactsDto in parOutContacts.lContacts)
+                {
+                    if (PMDS.Global.generic.sEquals(contactsDto.status,"aktiv") &&                      //Status überprüfen?
+                        PMDS.Global.generic.sEquals(contactsDto.GdaID, parsIn.authUniversalID))         //authUniversalID oder ELGA_OID?
+                    {
+                        parsIn.ContactID = contactsDto.TreatmentID;
+                        bContactFound = true;
+                        break;
+                    }
+                }
+
+                if (!bContactFound)
+                {
+                    parOutDto.bErrorsFound = true;
+                    ELGAErrorDTO rError = new ELGAErrorDTO();
+                    rError.errTxt = "Keine passende Kontaktbestätigung gefunden.";
+                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAInvalidateContact");
+                    return parOutDto;
+                }
+                */
+
+
+                parOutDto = s1.ELGAInvalidateContact(ref parsIn, PMDS.Global.ENV.ELGAUrl);
 
                 if (parOutDto.bErrorsFound)
                 {
-                    string sElgaErrors = this.getELGAErrors(parOutDto, "ELGAInvalidateContact");
+                    parOutDto.bOK = false;
+                    parOutDto.bErrorsFound = true;
+                    parOutDto.Errors = this.getELGAErrors(parOutDto, "ELGAInvalidateContact");
                     return parOutDto;
-                    //throw new Exception("WCFServiceClientPMDS.ELGAInvalidateContact: ELGA-Error - " + "\r\n" + "\r\n" + sElgaErrors.Trim());
                 }
 
                 if (parOutDto.bOK)

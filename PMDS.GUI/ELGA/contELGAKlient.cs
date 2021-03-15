@@ -297,8 +297,8 @@ namespace PMDS.GUI.ELGA
                     PMDS.db.Entities.Aufenthalt rAufenthaltUpdate = db.Aufenthalt.Where(o => o.ID == this.IDAufenthalt).First();
 
                     //os: gehört hier nicht invalidateContact her? Frage an W. Wiecenec vom 1.3.2021
-                    ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAAddContactDischarge(rAufenthaltUpdate.ELGALocalID.Trim());
-                    //ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGALocalID.Trim());
+                    //ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAAddContactDischarge(rAufenthaltUpdate.ELGALocalID.Trim());
+                    ELGAParOutDto parOutInvContact = this.WCFServiceClient1.ELGAInvalidateContact(rAufenthaltUpdate.ELGALocalID.Trim(), rAufenthaltUpdate.ELGAKontaktbestätigungContactID.Trim());
 
                     if (!parOutInvContact.bOK)
                     {

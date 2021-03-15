@@ -259,32 +259,35 @@ namespace PMDS.GUI.ELGA
                         if (parOuot.lGDAs.Count > 0)
                         {
                             foreach (ObjectDTO elgaPatient in parOuot.lGDAs)
-                            {
-                                foreach (AdressDto elgaAdressGda in elgaPatient.lAdresses)
+                            {                                
+                                dsManage.ELGASearchGDAsRow rGda = this.sqlManange1.getNewELGAGDA(ref this.dsManage1);
+
+                                rGda.ID = System.Guid.NewGuid();
+                                rGda.IDElga = elgaPatient.IDELgaGda.Trim();
+                                rGda.NachnameFirma = elgaPatient.NachNameFirma.Trim();
+                                rGda.Vorname = elgaPatient.Vorname.Trim();
+                                rGda.Title = elgaPatient.Title.Trim();
+                                rGda.IsOrganisation = elgaPatient.isOrganisation;
+                                var Fachrichtung = (from al in db.AuswahlListe
+                                                    where al.IDAuswahlListeGruppe == "FAR" && al.ELGA_Code == elgaPatient.Fachrichtung
+                                                    select al.Bezeichnung).FirstOrDefault();
+                                if (Fachrichtung != null)
+                                    rGda.Fachrichtung = Fachrichtung.ToString();
+
+                                if (elgaPatient.lAdresses != null)
                                 {
-                                    dsManage.ELGASearchGDAsRow rGda = this.sqlManange1.getNewELGAGDA(ref this.dsManage1);
-
-                                    rGda.ID = System.Guid.NewGuid();
-                                    rGda.IDElga = elgaPatient.IDELgaGda.Trim();
-                                    rGda.NachnameFirma = elgaPatient.NachNameFirma.Trim();
-                                    rGda.Vorname = elgaPatient.Vorname.Trim();
-                                    rGda.Title = elgaPatient.Title.Trim();
-                                    rGda.IsOrganisation = elgaPatient.isOrganisation;
-                                    rGda.Fachrichtung = (from al in db.AuswahlListe
-                                                         where al.IDAuswahlListeGruppe == "FAR" && al.ELGA_Code == elgaPatient.Fachrichtung
-                                                         select al.Bezeichnung).FirstOrDefault().ToString(); 
-
-                                    rGda.PLZ = elgaAdressGda.Zip.Trim();
-                                    rGda.Ort = elgaAdressGda.City.Trim();
-                                    rGda.State = elgaAdressGda.State.Trim();
-                                    rGda.Strasse = elgaAdressGda.Street.Trim();
-                                    rGda.StrasseNr = elgaAdressGda.StreetNr.Trim();
-                                    //os: ELGA. Solange nicht klar ist, aus welcher Auswahlliste das Land zu lesen ist - Abhilfe mit KeyValuePair
-                                    //rGda.Land = lShortCountries.Where(kvp => kvp.Key == elgaAdressGda.Country).FirstOrDefault().Value;
-                                    rGda.Land = (from al in db.AuswahlListe
-                                                 where al.IDAuswahlListeGruppe == "ISO" && al.Beschreibung == elgaAdressGda.Country
-                                                 select al.Bezeichnung).FirstOrDefault().ToString();
-                                    rGda.Status = elgaAdressGda.Status.Trim();
+                                    foreach (AdressDto elgaAdressGda in elgaPatient.lAdresses)
+                                    {
+                                        rGda.PLZ = elgaAdressGda.Zip.Trim();
+                                        rGda.Ort = elgaAdressGda.City.Trim();
+                                        rGda.State = elgaAdressGda.State.Trim();
+                                        rGda.Strasse = elgaAdressGda.Street.Trim();
+                                        rGda.StrasseNr = elgaAdressGda.StreetNr.Trim();
+                                        rGda.Land = (from al in db.AuswahlListe
+                                                     where al.IDAuswahlListeGruppe == "ISO" && al.Beschreibung == elgaAdressGda.Country
+                                                     select al.Bezeichnung).FirstOrDefault().ToString();
+                                        rGda.Status = elgaAdressGda.Status.Trim();
+                                    }
                                 }
                             }
                         }

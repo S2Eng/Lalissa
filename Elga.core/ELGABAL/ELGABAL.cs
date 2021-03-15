@@ -72,7 +72,7 @@ namespace WCFServicePMDS
             }
             catch (Exception ex)
             {
-                session.Errors = "Unbekannter Fehler beim Anmelden an ELGA.";
+                session.Errors = "Unbekannter Fehler beim Anmelden an ELGA: " + ex.Message;
                 session.ELGAStateID = "";
                 return false;
             }
@@ -460,7 +460,8 @@ namespace WCFServicePMDS
                 retDto = this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, parsIn.authUniversalID, ELGAUrl);
 
 
-                ELGAParOutDto contactsRet = this.listContacts(ref parsIn, parsIn.authUniversalID, ELGAUrl);
+                //ELGAParOutDto contactsRet = this.listContacts(ref parsIn, parsIn.authUniversalID, ELGAUrl);
+                
 
                 trsClientInvalidateContactRq trsClientInvalidateContactRq1 = new trsClientInvalidateContactRq();
                 trsClientInvalidateContactRq1.stateID = parsIn.session.ELGAStateID;
@@ -573,7 +574,7 @@ namespace WCFServicePMDS
             {
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
 
-                if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
+                if (String.IsNullOrWhiteSpace(parsIn.sObjectDto.SozVersNrLocalPatID))
                 {
                     throw new Exception("ELGABAL.listContacts: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }
@@ -584,7 +585,7 @@ namespace WCFServicePMDS
                 trsClientListContactsRq1.stateID = parsIn.session.ELGAStateID;
                 trsClientListContactsRq1.patient = ehrPatientClientDtoBack;
 
-                trsClientListContactsRsp trsClientListContactsRsp1 = objWsLogin.listContacts(trsClientListContactsRq1);
+                trsClientListContactsRsp trsClientListContactsRsp1 = objWsLogin.listContactsGdaAll(trsClientListContactsRq1);
 
                 if (trsClientListContactsRsp1.responseDetail.listError.Count() == 0)
                 {
@@ -593,20 +594,23 @@ namespace WCFServicePMDS
                         foreach (treatmentData treat in trsClientListContactsRsp1.contacts)
                         {
                             ELGAContactsDto contact = new ELGAContactsDto();
-                            contact.IDElga =  this.checkFieldNull(treat.ID);
+                            contact.TreatmentID =  this.checkFieldNull(treat.ID);
                             contact.PatientID = this.checkFieldNull(treat.patientId);
                             contact.creationDate = this.checkFieldNull(treat.creationDate);
                             contact.status = this.checkFieldNull(treat.status);
                             contact.type = this.checkFieldNull(treat.type);
+                            contact.GdaID = this.checkFieldNull(treat.providerOid);
+                            contact.GdaDelegatorID = this.checkFieldNull(treat.providerDelegatorOid);
                             retDto.lContacts.Add(contact);
                         }
                     }
-
                     retDto.bOK = true;
                     return retDto;
                 }
                 else
                 {
+                    retDto.bOK = false;
+                    retDto.bErrorsFound = true;
                     this.getErrosElgaFct(trsClientListContactsRsp1.responseDetail.listError, ref retDto);
                     return retDto;
                 }
@@ -736,64 +740,29 @@ namespace WCFServicePMDS
 
                 ListResponse[] retGda1 = new ListResponse[0];
 
+                GdaIndexRequestPerson inpGda1 = new GdaIndexRequestPerson();
+                InstanceIdentifierPerson iGDAPers = new InstanceIdentifierPerson();
+                iGDAPers.surname = parsIn.sObjectDto.NachNameFirma.Trim(); 
+                iGDAPers.maxResults = GdaMaxResults.ToString();                    //R
+
                 if (!bSearchEinrichtung)        //Personensuche
                 {
-                    try
-                    {
-                        GdaIndexRequestPerson inpGda1 = new GdaIndexRequestPerson();
-                        InstanceIdentifierPerson iGDAPers = new InstanceIdentifierPerson();
-                        iGDAPers.surname = parsIn.sObjectDto.NachNameFirma.Trim();            //  Lettner*   R-min. 2 letters             
-                        iGDAPers.firstname = parsIn.sObjectDto.Vorname.Trim();
-                        iGDAPers.rolecode = "";
-                        iGDAPers.gdaStatus = gdastat.aktiv;             //R
-
-                        iGDAPers.postcode = parsIn.sObjectDto.Zip.Trim();
-                        iGDAPers.city = parsIn.sObjectDto.City.Trim();
-                        iGDAPers.streetName = parsIn.sObjectDto.Street.Trim();
-                        iGDAPers.streetNumber = parsIn.sObjectDto.StreetNr.Trim();
-
-                        iGDAPers.maxResults = GdaMaxResults.ToString();                    //R
-
-                        inpGda1.hcIdentifierPerson = iGDAPers;
-                        //ListResponse[] retGda1 = new ListResponse[0];
-                        retGda1 = GdaIndexWs1.GdaIndexPersonenSuche(inpGda1);
-                    }
-                    catch (System.Web.Services.Protocols.SoapException ex)
-                    {
-                        retDto.bErrorsFound = true;
-                        retDto.MessageException = ex.Message;
-                        retDto.MessageExceptionNr = 0;
-                        retDto.bOK = false;
-                        return retDto;
-                    }
+                    iGDAPers.firstname = parsIn.sObjectDto.Vorname.Trim();
+                    iGDAPers.postcode = parsIn.sObjectDto.Zip.Trim();
+                    iGDAPers.city = parsIn.sObjectDto.City.Trim();
+                    iGDAPers.streetName = parsIn.sObjectDto.Street.Trim();
+                    iGDAPers.streetNumber = parsIn.sObjectDto.StreetNr.Trim();
                 }
                 else
                 {
-                    try
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Zip))
                     {
-                        retDto.bErrorsFound = true;
-                        retDto.MessageException = "Diese Funktion ist noch nicht verfügbar.";
-                        retDto.MessageExceptionNr = 0;
-                        retDto.bOK = false;
-                        return retDto;
-                        /*
-                        GetGdaDescriptors inpGda0 = new GetGdaDescriptors();
-                        InstanceIdentifier iGDAEinrichtung = new InstanceIdentifier();
-                        inpGda0.hcIdentifier = iGDAEinrichtung;
-                        GdaIndexResponse retGda0 = GdaIndexWs1.GdaIndexSuche(inpGda0);
-                        InstanceIdentifier[] inpGda2 = new InstanceIdentifier[1];
-                        ListResponse[] retGd2a = GdaIndexWs1.GdaIndexListenSuche(inpGda2);
-                        */
-                    }
-                    catch (System.Web.Services.Protocols.SoapException ex)
-                    {
-                        retDto.bErrorsFound = true;
-                        retDto.MessageException = "Diese Funktion ist noch nicht verfügbar.";
-                        retDto.MessageExceptionNr = 0;
-                        retDto.bOK = false;
-                        return retDto;
+                        iGDAPers.postcode = parsIn.sObjectDto.Zip.Trim();
                     }
                 }
+
+                inpGda1.hcIdentifierPerson = iGDAPers;
+                retGda1 = GdaIndexWs1.GdaIndexPersonenSuche(inpGda1);
 
                 if (retGda1.Length > 0)
                 {
@@ -841,7 +810,7 @@ namespace WCFServicePMDS
                     }
                 }
 
-                if (retDto.Errors.Trim() == "")
+                if (String.IsNullOrWhiteSpace(retDto.Errors))
                 {
                     retDto.bOK = true;
                     return retDto;
@@ -851,12 +820,18 @@ namespace WCFServicePMDS
                     retDto.bErrorsFound = true;
                     return retDto;
                 }
-
-
+            }
+            catch (System.Web.Services.Protocols.SoapException ex)
+            {
+                retDto.bErrorsFound = true;
+                retDto.MessageException = ex.Message;
+                retDto.MessageExceptionNr = 0;
+                retDto.bOK = false;
+                return retDto;
             }
             catch (Exception ex)
             {
-                throw new Exception("ELGABAL.queryGDAs: " + ex.ToString());            
+                throw new Exception("ELGABAL.queryGDAs: " + ex.Message);            
             }
         }
         public ELGAParOutDto queryDocuments(ref ELGAParInDto parsIn, bool OnlyOneDoc, string UniqueId, ref documentClientDto documentClientDtoBack, ref submissionSetClientDto submissionSet,
