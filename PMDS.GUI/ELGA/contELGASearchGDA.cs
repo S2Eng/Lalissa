@@ -274,6 +274,8 @@ namespace PMDS.GUI.ELGA
                                 if (Fachrichtung != null)
                                     rGda.Fachrichtung = Fachrichtung.ToString();
 
+                                rGda.Status = elgaPatient.GdaStatus ?? "";
+
                                 if (elgaPatient.lAdresses != null)
                                 {
                                     foreach (AdressDto elgaAdressGda in elgaPatient.lAdresses)
@@ -286,7 +288,7 @@ namespace PMDS.GUI.ELGA
                                         rGda.Land = (from al in db.AuswahlListe
                                                      where al.IDAuswahlListeGruppe == "ISO" && al.Beschreibung == elgaAdressGda.Country
                                                      select al.Bezeichnung).FirstOrDefault().ToString();
-                                        rGda.Status = elgaAdressGda.Status.Trim();
+                                        //rGda.Status = elgaAdressGda.Status.Trim();
                                     }
                                 }
                             }

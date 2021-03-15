@@ -742,23 +742,20 @@ namespace WCFServicePMDS
 
                 GdaIndexRequestPerson inpGda1 = new GdaIndexRequestPerson();
                 InstanceIdentifierPerson iGDAPers = new InstanceIdentifierPerson();
-                iGDAPers.surname = parsIn.sObjectDto.NachNameFirma.Trim(); 
+                iGDAPers.surname = parsIn.sObjectDto.NachNameFirma.Trim();
+
+                if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Zip))
+                    iGDAPers.postcode = parsIn.sObjectDto.Zip.Trim();
+
                 iGDAPers.maxResults = GdaMaxResults.ToString();                    //R
 
                 if (!bSearchEinrichtung)        //Personensuche
                 {
-                    iGDAPers.firstname = parsIn.sObjectDto.Vorname.Trim();
-                    iGDAPers.postcode = parsIn.sObjectDto.Zip.Trim();
-                    iGDAPers.city = parsIn.sObjectDto.City.Trim();
-                    iGDAPers.streetName = parsIn.sObjectDto.Street.Trim();
-                    iGDAPers.streetNumber = parsIn.sObjectDto.StreetNr.Trim();
-                }
-                else
-                {
-                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Zip))
-                    {
-                        iGDAPers.postcode = parsIn.sObjectDto.Zip.Trim();
-                    }
+                    if (!String.IsNullOrWhiteSpace(parsIn.sObjectDto.Vorname))
+                        iGDAPers.firstname = parsIn.sObjectDto.Vorname.Trim();
+                    //iGDAPers.city = parsIn.sObjectDto.City.Trim();
+                    //iGDAPers.streetName = parsIn.sObjectDto.Street.Trim();
+                    //iGDAPers.streetNumber = parsIn.sObjectDto.StreetNr.Trim();
                 }
 
                 inpGda1.hcIdentifierPerson = iGDAPers;
@@ -785,6 +782,7 @@ namespace WCFServicePMDS
                         newGda.IDELgaGda = this.checkFieldNull(rGda.gdaId.id);
                         newGda.isOrganisation = rGda.isOrganisation;
                         newGda.Fachrichtung = rGda.otherRoles[0].id;
+                        newGda.GdaStatus = rGda.gdaId.gdaStatus.ToString();
 
                         if (rGda.addresses != null)
                         {
