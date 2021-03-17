@@ -59,6 +59,15 @@ namespace PMDS.Global
             no = 0
         }
 
+        private enum eLengthType
+        {
+            between = 4,
+            fix = 3,
+            min = 2,
+            max = 1,
+            var = 0
+        }
+
         private enum eTrim
         {
             yes = 1,
@@ -138,10 +147,10 @@ namespace PMDS.Global
         public static string SimpleInstall = "";
         public static string StartFromShare = "";
         public static bool DoOrigPathConfig;
-        
+
         public static string ConfigFileLauncher = "";
         public static string LauncherExe = "";
-        
+
         public static string path_bin = "";
 
         public static string OrigConfigDir = "";
@@ -156,7 +165,7 @@ namespace PMDS.Global
         public static bool LoggedInAsSuperUser;
 
         public static bool PMDSNew;
-        
+
 
         public static bool SpellCheckerOn;
         public static bool FullEditMode;
@@ -213,7 +222,7 @@ namespace PMDS.Global
 
         //Migrationsumgebung mit Proxy
         public static System.ServiceModel.EndpointAddress ELGAUrl = new System.ServiceModel.EndpointAddress(new Uri("http://10.2.13.90:80/SpiritEhrWsRemoting/EhrWSRemoting"));
-        
+
         public static string ELGAUrlGDAIndex = "http://10.2.13.90:80/GdaIndexWs";
 
 
@@ -256,7 +265,7 @@ namespace PMDS.Global
 
 
         private static string _DynReportWundePath = "";                   // Der basispfad für Dynamische Reports (Wunde - aus Wunddoku heraus)
-        public static string Image_Path = "";                            
+        public static string Image_Path = "";
         public static string DYNREPORTABRECHNUNGPATH = "";
         public static string DYNREPORTMEDIKAMENTEPATH = "";
 
@@ -313,6 +322,10 @@ namespace PMDS.Global
         public static bool AbwesenheitenMinimalUI;
 
         public static bool DicomViewerFileOnly = true;
+
+        public static Guid FSW_IDIntern = Guid.Empty;           //Guid des Kostenträgers FSW
+        public static string FSW_SenderAdresse = "000000000";   //9-stellige Senderadresse
+        public static string FSW_EZAUF = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
 
         // ---------- Lizenzschalter ------------------
         public static int lic_eMailBewerber;
@@ -1458,6 +1471,10 @@ namespace PMDS.Global
                 SetENVValue("AbwesenheitenMinimalUI", ref ENV.AbwesenheitenMinimalUI);
                 SetENVValue("DicomViewerFileOnly", ref ENV.DicomViewerFileOnly, "0");
 
+                SetENVValue("FSW_IDIntern", ref ENV.FSW_IDIntern);                                                          
+                SetENVValue("FSW_SenderAdresse", ref ENV.FSW_SenderAdresse, eTrim.yes, eDecrypt.no, eLengthType.fix, 9);    
+                SetENVValue("FSW_EZAUF", ref ENV.FSW_EZAUF);
+
                 SetENVValue("HAG_Url", ref ENV.HAG_Url);
                 SetENVValue("HAG_Zertifikat", ref ENV.HAG_Zertifikat);
                 SetENVValue("HAG_User", ref ENV.HAG_USER);
@@ -1520,7 +1537,7 @@ namespace PMDS.Global
             }
         }
 
-        private static void SetENVValue(string sVar, ref string ENVVar, eTrim trim = eTrim.yes, eDecrypt decr = eDecrypt.no)
+        private static void SetENVValue(string sVar, ref string ENVVar, eTrim trim = eTrim.yes, eDecrypt decr = eDecrypt.no, eLengthType lengthType = eLengthType.var, int length1 = 0, int length2 = 0)
         {
             try
             {
@@ -1539,6 +1556,16 @@ namespace PMDS.Global
                     string PwdDecrypted = Encryption1.StringDecrypt(stemp.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
                     ENVVar = PwdDecrypted.Trim();
                 }
+
+                if (lengthType == eLengthType.min && ENVVar.Length < length1)
+                    throw new Exception("Variable " + sVar + " ist zu kurz: " + ENVVar.Length + " Zeichen. Minimale Länge = " + length1.ToString());
+                else if (lengthType == eLengthType.max && ENVVar.Length > length1)
+                    throw new Exception("Variable " + sVar + " ist zu lang: " + ENVVar.Length + " Zeichen. Maximale Länge = " + length1.ToString());
+                else if (lengthType == eLengthType.fix && ENVVar.Length != length1)
+                    throw new Exception("Variable " + sVar + " hat die falsche Länge: " + ENVVar.Length + " Zeichen. Erwartete Länge = " + length1.ToString());
+                else if (lengthType == eLengthType.between && (ENVVar.Length < length1 || ENVVar.Length > length2))
+                    throw new Exception("Variable " + sVar + " hat die falsche Länge: " + ENVVar.Length + " Zeichen. Erwartete Länge ist zwischen " + length1.ToString() + " und " + length2.ToString());
+
             }
             catch (Exception ex)
             {
@@ -1557,6 +1584,19 @@ namespace PMDS.Global
             catch (Exception ex)
             {
                 throw new Exception("ENV.SetENVValue (int): " + ex.ToString());
+            }
+        }
+
+        private static void SetENVValue(string sVar, ref Guid ENVVar)
+        {
+            try
+            {
+                bool isGuid = Guid.TryParse(_Log.ConfigFile.GetStringValue(sVar).Trim(), out Guid g);
+                ENVVar = !isGuid ? ENVVar : g;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue (Guid): " + ex.Message);
             }
         }
 

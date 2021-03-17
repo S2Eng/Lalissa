@@ -409,7 +409,7 @@ namespace PMDS.Calc.UI
                         db.Configuration.LazyLoadingEnabled = false;
 
                         int anzDel = 0;
-                        if (typ == eAction.freigeben || typ == eAction.stornieren)
+                        if (typ == eAction.freigeben || typ == eAction.stornieren || typ == eAction.fsw)
                         {
                             List<String> listIDBills = new List<String>();
                             foreach (UltraGridRow rToDel in arrSelected)
@@ -590,12 +590,17 @@ namespace PMDS.Calc.UI
                                     this.calculation.freigeben(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.ENV.IDKlinik, null);
                                 }
                             }
+                            else if (typ == eAction.fsw)
+                            {
+                                PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
+                                FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills);
+                            }
                             else if (typ == eAction.stornieren)
                             {
                                 foreach (string IDBillStr in listIDBills)
                                 {
                                     PMDS.db.Entities.bills rBill2 = db.bills.Where(b => b.ID == IDBillStr).First();
-                                    if (rBill2.IDBillStorno.Trim() == "")
+                                    if (String.IsNullOrWhiteSpace(rBill2.IDBillStorno))
                                     {
                                         //PMDS.db.Entities.billHeader rBillHeaderToStorno = db.billHeader.Where(b => b.ID == rBill2.IDAbrechnung).First();
                                         //dbCalc dbCalcFoundNew = this.doBill.getDBCalc(rBillHeaderToStorno.dbCalc);

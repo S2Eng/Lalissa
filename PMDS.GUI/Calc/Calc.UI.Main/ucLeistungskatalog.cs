@@ -22,7 +22,7 @@ namespace PMDS.Calc.UI.Admin
 
     public class ucLeistungskatalog : QS2.Desktop.ControlManagment.BaseControl, ISave, IRefresh
 	{
-        private Leistungsgruppe _Leistungsgruppe = Leistungsgruppe.Wohnkomponente_Grundleistung;
+        private Leistungsgruppe _Leistungsgruppe = Leistungsgruppe.WohnkomponenteGrundleistung;
         public event EventHandler ValueChanged;
 		private LeistungsKatalog		_leistungskatalog = new LeistungsKatalog();
         private bool _LeistungChenged = false;
@@ -209,7 +209,7 @@ namespace PMDS.Calc.UI.Admin
             PMDS.Global.Leistungsgruppe leistungsGrp;
             leistungsGrp = (PMDS.Global.Leistungsgruppe)this.optionsGruppe.Value;
             
-            if (   leistungsGrp == Leistungsgruppe.Periodische_Leistungen  )
+            if (   leistungsGrp == Leistungsgruppe.PeriodischeLeistungen  )
             {
                 this.dgMain2.DisplayLayout.Bands[1].Columns["GutschriftProTagAbwesend"].Format = "###,###,##0.00";
                 this.dgMain2.DisplayLayout.Bands[1].Columns["GutschriftProTagAbwesend"].MaskInput = "{double:-9.2}";
@@ -342,9 +342,12 @@ namespace PMDS.Calc.UI.Admin
                 {
                     bool valid;
 
-                    try
+                    try                    
                     {
-                        valid = cell.EditorResolved.IsValid;
+                        if (cell.Editor != null && cell.Editor.IsInEditMode)
+                            valid = cell.EditorResolved.IsValid;
+                        else
+                            valid = !String.IsNullOrWhiteSpace(cell.Value.ToString());
                     }
                     catch
                     {
@@ -908,7 +911,7 @@ namespace PMDS.Calc.UI.Admin
                         Undo();
                 }
                 _Leistungsgruppe = (Leistungsgruppe)Enum.Parse(typeof(Leistungsgruppe), optionsGruppe.CheckedIndex.ToString());
-                if (_Leistungsgruppe == Leistungsgruppe.Periodische_Leistungen)
+                if (_Leistungsgruppe == Leistungsgruppe.PeriodischeLeistungen)
                 {
                     this.dgMain2.DisplayLayout.Bands[0].Columns["MonatsleistungJN"].Hidden = false;
                 }

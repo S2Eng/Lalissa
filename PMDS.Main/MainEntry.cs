@@ -62,6 +62,23 @@ namespace PMDS
                 b.initUserCanSign();
             }
 
+            PMDS.DB.PMDSBusiness bLog = new DB.PMDSBusiness();
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                PMDS.db.Entities.Benutzer rUserLoggedIn = bLog.LogggedOnUserWithCheck(db);
+                if (rUserLoggedIn != null)
+                {
+                    ENV.ActiveUser = rUserLoggedIn;
+                    if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
+                    {
+                        ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
+                    }
+                    else
+                    {
+                        ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
+                    }
+                }
+            }
 
             Application.Run(frm);
             return true;
@@ -204,6 +221,8 @@ namespace PMDS
 
                 PMDS.GUI.VB.General.MainCallFcts = new GUI.VB.General.dMainCallFcts(ucSiteMapPMDS.MainCallDel);
 
+                PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+
                 if (typ == "abrech")
                 {
                     qs2.ui.RunFromOhterSystem RunFromOhterSystem1 = new qs2.ui.RunFromOhterSystem();
@@ -304,23 +323,23 @@ namespace PMDS
 
                                 bool IsInit = GuiWorkflow.Init(frm);
 
-                                PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-                                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-                                {
-                                    PMDS.db.Entities.Benutzer rUserLoggedIn = b.LogggedOnUserWithCheck(db);
-                                    if (rUserLoggedIn != null)
-                                    {
-                                        ENV.ActiveUser = rUserLoggedIn;
-                                        if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
-                                        {
-                                            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
-                                        }
-                                        else
-                                        {
-                                            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
-                                        }
-                                    }
-                                }
+                                //PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+                                //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                                //{
+                                //    PMDS.db.Entities.Benutzer rUserLoggedIn = b.LogggedOnUserWithCheck(db);
+                                //    if (rUserLoggedIn != null)
+                                //    {
+                                //        ENV.ActiveUser = rUserLoggedIn;
+                                //        if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
+                                //        {
+                                //            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
+                                //        }
+                                //        else
+                                //        {
+                                //            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
+                                //        }
+                                //    }
+                                //}
 
                                 if (!IsInit)
                                     return;
@@ -385,7 +404,6 @@ namespace PMDS
 
                     remotingSrv.showMsgBoxTestmodus("vars initialized");
 
-                    DB.PMDSBusiness b = new DB.PMDSBusiness();
                     using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                     {
                         IQueryable<PMDS.db.Entities.Benutzer> tBenutzer = db.Benutzer.Where(b1 => b1.ID == gUserID);

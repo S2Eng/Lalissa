@@ -79,15 +79,15 @@ namespace PMDS.Calc.UI.Admin
 				foreach (string s in sa)
 				{
                     string txt = "";
-                    if (i == (int)PMDS.Global.Leistungsgruppe.Periodische_Leistungen )
+                    if (i == (int)PMDS.Global.Leistungsgruppe.PeriodischeLeistungen )
                     {
                         txt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistungen");
                     }
-                    else if (i == (int)PMDS.Global.Leistungsgruppe.Pflegekomponente_Grundleistung )
+                    else if (i == (int)PMDS.Global.Leistungsgruppe.PflegekomponenteGrundleistung )
                     {
                         txt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegekomponente Grundleistung");
                     }
-                    else if (i == (int)PMDS.Global.Leistungsgruppe.Wohnkomponente_Grundleistung  )
+                    else if (i == (int)PMDS.Global.Leistungsgruppe.WohnkomponenteGrundleistung  )
                     {
                         txt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Wohnkomponente Grundleistung");
                     }

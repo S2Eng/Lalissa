@@ -322,6 +322,7 @@ namespace PMDS.Calc.UI
 
             this.butRechFreigeb.Visible = this.uiSiteMapForm.typ != ucCalcsSitemap.eTyp.buchhaltung && this.uiSiteMapForm.typ != ucCalcsSitemap.eTyp.depotgeld ? !this.freigegebenOn : false;
             this.paneStorno.Visible = this.uiSiteMapForm.typ != ucCalcsSitemap.eTyp.buchhaltung && this.uiSiteMapForm.typ != ucCalcsSitemap.eTyp.depotgeld ? this.freigegebenOn : false;
+            this.panelFSW.Visible = this.uiSiteMapForm.typ != ucCalcsSitemap.eTyp.buchhaltung && this.uiSiteMapForm.typ != ucCalcsSitemap.eTyp.depotgeld ? this.freigegebenOn : false && PMDS.Global.ENV.FSW_IDIntern != Guid.Empty;
             this.panelAuswahlFreigStornoAll.Visible = this.freigegebenOn;
             this.setButtStorno();
             this.panelDelete.Visible = this.uiSiteMapForm.typ != ucCalcsSitemap.eTyp.buchhaltung ? (!this.freigegebenOn || PMDS.Global.ENV.adminSecure) : false;
@@ -919,6 +920,27 @@ namespace PMDS.Calc.UI
             {
                 this.Cursor = Cursors.Default;
             }
+        }
+
+        private void btnFSW_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.doAction(eAction.fsw, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Zeilen an den FSW exportieren?"),
+                                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnungen wurden an den FSW exportiert!"),
+                                PMDS.Calc.Logic.eModify.nichts, true, null, this.dtRechDatum.DateTime.Date, true);
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+
         }
     }
 

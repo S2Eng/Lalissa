@@ -102,23 +102,25 @@ namespace PMDS.GUI.ELGA.ManageSettings
                 this._IsNew = isNew;
                 this._Editable = editable;
 
-                PMDS.db.Entities.Benutzer rUsr = this._db.Benutzer.Where(o => o.ID == this._IDUser.Value).First();
+                PMDS.db.Entities.Benutzer rUsr = this._db.Benutzer.Where(o => o.ID == this._IDUser.Value).FirstOrDefault();
 
-                this.txtELGAUser.Text = rUsr.ELGAUser.Trim();
+                if (rUsr != null)
+                {
+                    this.txtELGAUser.Text = rUsr.ELGAUser.Trim();
 
-                string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
-                this.txtELGAPwd.Text = ELGAPwdDecrypted;
-                this.txtELGAPwd.Text = ELGAPwdDecrypted;
-                this.txtELGAPwdWdhlg.Text = ELGAPwdDecrypted;
-                this.chkELGAAutostartSession.Checked = rUsr.ELGAAutoLogin;
+                    string ELGAPwdDecrypted = Encryption1.StringDecrypt(rUsr.ELGAPwd.Trim(), qs2.license.core.Encryption.keyForEncryptingStrings);
+                    this.txtELGAPwd.Text = ELGAPwdDecrypted;
+                    this.txtELGAPwd.Text = ELGAPwdDecrypted;
+                    this.txtELGAPwdWdhlg.Text = ELGAPwdDecrypted;
+                    this.chkELGAAutostartSession.Checked = rUsr.ELGAAutoLogin;
 
-                lProt = new List<ELGABusiness.ProtVar>()
+                    lProt = new List<ELGABusiness.ProtVar>()
                         {
                             new ELGABusiness.ProtVar(){ Fld= "ELGAUser", oValOrig = rUsr.ELGAUser.ToString().Trim(), oValNew = "", Table = "Patient"  },
                              new ELGABusiness.ProtVar(){ Fld= "ELGAPwd", oValOrig = rUsr.ELGAPwd.ToString().Trim(), oValNew = "", Table = "Patient"  },
                             new ELGABusiness.ProtVar(){ Fld= "ELGAAutoLogin", oValOrig = rUsr.ELGAAutoLogin.ToString(), oValNew = "", Table = "Patient"  }
                         };
-
+                }
             }
             catch (Exception ex)
             {

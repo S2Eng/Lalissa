@@ -478,7 +478,10 @@ namespace PMDS.GUI
                                                 Global.db.ERSystem.ELGABusiness.eTypeProt.NewPassword, Global.db.ERSystem.ELGABusiness.eELGAFunctions.none, "", "", ENV.USERID, null, null, sProt);
             }
             else
-                UserObj.Passwort = txtPasswort.Text;
+            {
+                if (UserObj != null)
+                    UserObj.Passwort = txtPasswort.Text;
+            }
             // KEINE Felder für Übertragung
         }
 

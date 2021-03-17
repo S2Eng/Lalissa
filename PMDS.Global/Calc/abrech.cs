@@ -17,17 +17,16 @@ namespace PMDS.Global
 		{
 			return Enum.GetNames(typeof(Leistungsgruppe));
 		}
-
-	}
+    }
     
 	public enum Leistungsgruppe
 	{
         [Description("Wohnkomponente Grundleistung")]               //-IntVers=NoTranslation
-        Wohnkomponente_Grundleistung = 0,
+        WohnkomponenteGrundleistung = 0,
         [Description("Pflegekomponente Grundleistung")]             
-        Pflegekomponente_Grundleistung = 1,
+        PflegekomponenteGrundleistung = 1,
         [Description("Periodische Leistungen")]                      
-        Periodische_Leistungen = 2
+        PeriodischeLeistungen = 2
 	}
     public enum AbrechnungsGruppe
     {
@@ -40,11 +39,14 @@ namespace PMDS.Global
 		Grundkosten = 0,
         Transferleistung = 3,
         Periodischeleistung =4,
-        Grundkosten_Periodischeleistung = 5,
+        GrundkostenPeriodischeleistung = 5,
         Sonderleistung = 6,
-        Grundkosten_Sonderleistung = 7,
-        PeriodischeLeistung_Sonderleistung = 8,
+        GrundkostenSonderleistung = 7,
+        PeriodischeLeistungSonderleistung = 8,
         Alles = 9
 	}
     
+
+
+
 }

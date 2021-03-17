@@ -32,9 +32,9 @@ namespace PMDS.Calc.UI.Admin
                 vl.ValueListItems.Add((int)Kostentraegerart.Transferleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Transferleistung"));
                 vl.ValueListItems.Add((int)Kostentraegerart.Periodischeleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistung"));
                 vl.ValueListItems.Add((int)Kostentraegerart.Sonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sonderleistung"));
-                vl.ValueListItems.Add((int)Kostentraegerart.Grundkosten_Periodischeleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Periodische Leistungen"));
-                vl.ValueListItems.Add((int)Kostentraegerart.Grundkosten_Sonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Sonderleistungen"));
-                vl.ValueListItems.Add((int)Kostentraegerart.PeriodischeLeistung_Sonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistungen und Sonderleistungen"));
+                vl.ValueListItems.Add((int)Kostentraegerart.GrundkostenPeriodischeleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Periodische Leistungen"));
+                vl.ValueListItems.Add((int)Kostentraegerart.GrundkostenSonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Sonderleistungen"));
+                vl.ValueListItems.Add((int)Kostentraegerart.PeriodischeLeistungSonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistungen und Sonderleistungen"));
                 vl.ValueListItems.Add((int)Kostentraegerart.Alles, QS2.Desktop.ControlManagment.ControlManagment.getRes("Alles"));
 
             }
@@ -53,9 +53,9 @@ namespace PMDS.Calc.UI.Admin
             }
             cbo.Items.Add((int)Kostentraegerart.Periodischeleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistung"));
             cbo.Items.Add((int)Kostentraegerart.Sonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Sonderleistung"));
-            cbo.Items.Add((int)Kostentraegerart.Grundkosten_Periodischeleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Periodische Leistungen"));
-            cbo.Items.Add((int)Kostentraegerart.Grundkosten_Sonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Sonderleistungen"));
-            cbo.Items.Add((int)Kostentraegerart.PeriodischeLeistung_Sonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistungen und Sonderleistungen"));
+            cbo.Items.Add((int)Kostentraegerart.GrundkostenPeriodischeleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Periodische Leistungen"));
+            cbo.Items.Add((int)Kostentraegerart.GrundkostenSonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Grundleistungen und Sonderleistungen"));
+            cbo.Items.Add((int)Kostentraegerart.PeriodischeLeistungSonderleistung, QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistungen und Sonderleistungen"));
             cbo.Items.Add((int)Kostentraegerart.Alles, QS2.Desktop.ControlManagment.ControlManagment.getRes("Alles"));
 
         }

@@ -560,7 +560,10 @@ namespace PMDS.Calc.UI.Admin
                 
                 try
                 {
-                    valid = cell.EditorResolved.IsValid;
+                    if (cell.Editor != null && cell.EditorResolved.IsInEditMode)
+                        valid = cell.EditorResolved.IsValid;
+                    else
+                        valid = !String.IsNullOrWhiteSpace(cell.Value.ToString());
                 }
                 catch
                 {

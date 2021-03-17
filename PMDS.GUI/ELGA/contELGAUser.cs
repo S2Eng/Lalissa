@@ -74,7 +74,6 @@ namespace PMDS.GUI.ELGA
                 this.contELGASettings1.loadData(IDUser, IsNew, Editable);
                 this.contELGARights1.loadData(IDUser, IsNew, Editable);
                 this.contELGAProtocoll1.loadData(IDUser, IsNew, Editable);
-
             }
             catch (Exception ex)
             {

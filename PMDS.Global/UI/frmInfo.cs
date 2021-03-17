@@ -96,7 +96,8 @@ namespace PMDS
             {
                 try
                 {
-                    this.Close();
+                    if (this != null)
+                        this.Close();
                 }
                 catch (Exception ex)
                 {

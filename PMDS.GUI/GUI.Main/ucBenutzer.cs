@@ -1115,7 +1115,6 @@ namespace PMDS.GUI
                         this.mainWindow.btnAdd.Enabled = false;
                         this.mainWindow._verwaltung.IsEntryDirty = true;
                     }
-
                     return true;
                 }
             }

@@ -214,6 +214,17 @@ Public Class calculation
         Dim listIDDoStorno As New System.Collections.Generic.List(Of dbPMDS.billsRow)()
         Me._doBill.doAction(listIDBills, sr, editor, "f", IDKlinik, False, listIDDoStorno, rechDat)
     End Sub
+
+    Public Sub fsw(ByVal listIDBills As System.Collections.Generic.List(Of String), ByVal sr As Boolean,
+                                ByVal editor As TXTextControl.TextControl, ByVal IDKlinik As System.Guid, rechDat As Nullable(Of Date))
+        calcBase.errTxt = ""
+
+        'this.calculation.stornieren(listID, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.ENV.IDKlinik);
+        Dim listIDDoStorno As New System.Collections.Generic.List(Of dbPMDS.billsRow)()
+        Me._doBill.doAction(listIDBills, sr, editor, "fsw", IDKlinik, False, listIDDoStorno, rechDat)
+    End Sub
+
+
     Public Sub stornieren(ByVal listIDBills As System.Collections.Generic.List(Of String), ByVal sr As Boolean,
                                 ByVal editor As TXTextControl.TextControl, ByVal IDKlinik As System.Guid, datStornodatum As Nullable(Of Date), dbCalcFoundNew As dbCalc)
         calcBase.errTxt = ""

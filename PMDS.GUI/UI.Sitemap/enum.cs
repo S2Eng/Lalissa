@@ -13,7 +13,8 @@ namespace PMDS.UI.Sitemap
         save = 3,
         stornieren = 4,
         einzahlungBuchen = 5,
-        SperreRollungLöschen = 6
+        SperreRollungLöschen = 6,
+        fsw = 7
     }
 
 

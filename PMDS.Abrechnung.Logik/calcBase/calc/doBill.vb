@@ -1076,6 +1076,8 @@ Public Class doBill
 
             Using db As PMDS.db.Entities.ERModellPMDSEntities = calculation.delgetDBContext.Invoke()
                 Dim listIDCalculated As New System.Collections.Generic.List(Of String)
+                Dim listIDFSW As New System.Collections.Generic.List(Of String)
+
                 For Each IDBill As String In listIDBills
                     If Me.IDIsCalculated(IDBill, listIDCalculated) Then
                         Continue For
@@ -1209,6 +1211,14 @@ Public Class doBill
                                     listIDCalculated.Add(IDBill)
                                     listIDDoStorno.Add(rBill2)
                                 End If
+
+                            Case "fsw"
+
+                                'Bereits übertragen = not ok
+                                'freigegeben = ok
+                                Dim a As New PMDS.db.Entities.Abteilung
+                                listIDFSW.Add(IDBill)
+
                             Case "s"
                                 If rBill2.Freigegeben Then
                                     If rBill2.Typ = eBillTyp.Rechnung Or eBillTyp.FreieRechnung Or sr Then
