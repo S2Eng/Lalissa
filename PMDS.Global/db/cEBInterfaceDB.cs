@@ -33,17 +33,12 @@ namespace PMDS.Global.db
             public decimal Value { get; set; } = 0;
         }
 
-        public class Header
-        {
-            public Transaction Transaction { get; set; } = new Transaction();
-            public ArDocument ArDocument { get; set; } = new ArDocument();
-        }
-
         public class Transaction
         {
             public string SenderAdresse { get; set; } = "";
             public string EmfaengerAdresse { get; set; } = "1000101";
             public string TransactionID { get; set; }
+            public ArDocument ArDocument { get; set; } = new ArDocument();
         }
 
         public class ArDocument
@@ -51,20 +46,33 @@ namespace PMDS.Global.db
             public string Referenz { get; set; } = "";
             public string User_Erstellung { get; set; } = ENV.ActiveUser.Vorname + " " + ENV.ActiveUser.Nachname;
             public DateTime Datum_Erstellung { get; set; } = Now;
-            public decimal Rechnungsbetrag { get; set; } = 0;
-            public int Anzahl_Rechnungen { get; set; } = 0;
+            public decimal Rechnungsbetrag { get; set; }
+            public int Anzahl_Rechnungen { get; set; }
+            public List<Invoice> lstInvoices { get; } = new List<Invoice>();
+            public void AddInvoiceToList(Invoice Invoice)
+            {
+                lstInvoices.Add(Invoice);
+            }
         }
 
         public class Invoice
         {
-            public List<cAttribute> Attributes { get; set; } = new List<cAttribute>();
-            public cAttribute xmlns { get; set; } = new cAttribute() { AttributeName = "xmlns", AttributeValue = @"http://wwww.ebinterface.at/schema/5p0/" };
-            public cAttribute xmlnsxsi { get; set; } = new cAttribute { AttributeName= "xmns:xsi",  AttributeValue = @"http://www.w3.org/2001/XMLSchema" };
-            public cAttribute GeneratingSystem { get; set; } = new cAttribute() { AttributeName = "GeneratigSystem", AttributeValue = "PMDS"};
-            public cAttribute DocumentType { get; set; } = new cAttribute() { AttributeName = "Invoice" };
-            public cAttribute InvoiceCurrency { get; set; } = new cAttribute() { AttributeName = "InvoiceCurrency" , AttributeValue = "EUR"};
-            public cAttribute DocumentTitle { get; set; } = new cAttribute() { AttributeName = "DocumentTitle", AttributeValue = "EBInterface" };
-            public cAttribute Language { get; set; } = new cAttribute() { AttributeName = "Language", AttributeValue = "ger" };
+            public List<cAttribute> Attributes { get; } = new List<cAttribute>();
+            public void AddAtributeToList (cAttribute Attribute)
+            {
+                Attributes.Add(Attribute);
+            }
+            public string InvoiceNumber { get; set; } = "";
+            public DateTime InvoiceDate { get; set; } = Now;
+            public Delivery Delivery { get; set; } = new Delivery();
+            public Biller Biller { get; set; } = new Biller();
+            public InvoiceRecipient InvoiceRecipient { get; set; } = new InvoiceRecipient();
+            public Details Details { get; set; } = new Details();
+            public ReductionAndSurchargeDetails ReductionAndSurchargeDetails { get; set; } = new ReductionAndSurchargeDetails();
+            public string Tax { get; set; } = "";
+            public decimal TotalGrossAmount { get; set; } = 0;
+            public decimal PayableAmount { get; set; } = 0;
+            public PaymentMethod PaymentMethod { get; set; } = new PaymentMethod();
         }
 
         public class Period
@@ -148,10 +156,10 @@ namespace PMDS.Global.db
             public Surcharge Surcharge { get; set; } = new Surcharge();
         }
 
-        public class BenefifiaryAccount
+        public class BeneficiaryAccount
         {
             public string BankName { get; set; } = "";
-            public AttributedValue BankCode { get; set; } = new AttributedValue() { AttributeName = "BankCodeType", AttributeValue = "AT", Value = "Bankleitzahl" };
+            public AttributedValue BankCode { get; set; } = new AttributedValue() { AttributeName = "BankCodeType", AttributeValue = "AT", Value = "" };
             public string BIC { get; set; } = "";
             public string BankAccountNr { get; set; } = "";
             public string IBAN { get; set; } = "";
@@ -162,7 +170,7 @@ namespace PMDS.Global.db
         {
             public string AttributeValue { get; set; } = "";
             public string AttributeName { get; set; } = "";
-            public BenefifiaryAccount BenefifiaryAccount { get; set; } = new BenefifiaryAccount();
+            public BeneficiaryAccount BeneficiaryAccount { get; set; } = new BeneficiaryAccount();
             public string PaymentReference { get; set; } = "";
         }
 
@@ -172,42 +180,13 @@ namespace PMDS.Global.db
             public UniversalBankTransaction UniversalBankTransaction { get; set; } = new UniversalBankTransaction() { AttributeName = "ConsolidatorPayable", AttributeValue = "false" };
         }
 
-        public class Rechnungsinhalt
-        {
-            public Invoice Invoice { get; set; } = new Invoice();
-            public string InvoiceNumber { get; set; } = "";
-            public DateTime InvoiceDate { get; set; } = Now;
-            public Delivery Delivery { get; set; } = new Delivery();
-            public Biller Biller { get; set; } = new Biller();
-            public InvoiceRecipient InvoiceRecipient { get; set; } = new InvoiceRecipient();
-            public Details Details { get; set; } = new Details();
-            public ReductionAndSurchargeDetails ReductionAndSurchargeDetails { get; set; } = new ReductionAndSurchargeDetails();
-            public string Tax { get; set; } = "";
-            public decimal TotalGrossAmount { get; set; } = 0;
-            public decimal PayableAmount { get; set; } = 0;
-            public PaymentMethod PaymentMethod { get; set; } = new PaymentMethod();
-        }
-
-
-        public static Header MakeHeader()
-        {
-            try
-            {
-                Header Header = new Header();
-                return Header;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("PMDS.core.db.cEEBInterfaceDB.cs.MakeHeader: " + ex.Message);
-            }
-        }
         //-------------------------------------------------------------------------------------------
-        public static Rechnungsinhalt Init(Guid IDKlinik, Guid IDKlient)
+        public static Invoice Init(Guid IDKlinik, Guid IDKlient)
         {
             try
             {
                 Now = DateTime.Now;
-                Rechnungsinhalt ret = new Rechnungsinhalt();
+                Invoice ret = new Invoice();
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
@@ -239,34 +218,36 @@ namespace PMDS.Global.db
                                        PLZ = adr.Plz,
                                        Ort = adr.Ort,
                                        WohnungAbgemeldet = p.WohnungAbgemeldetJN,
-                                       BillersInvoiceRecipientID = p.FIBUKonto.Trim()
+                                       BillersInvoiceRecipientID = p.FIBUKonto.Trim(),
+                                       SVNr = p.VersicherungsNr
                                    }
                                    ).First();
 
-                    ret.Invoice.Attributes.Add(new cAttribute() { AttributeName = "xmlns", AttributeValue = @"http://wwww.ebinterface.at/schema/5p0/" });
-                    ret.Invoice.Attributes.Add(new cAttribute { AttributeName = "xmns:xsi", AttributeValue = @"http://www.w3.org/2001/XMLSchema" });
-                    ret.Invoice.Attributes.Add(new cAttribute() { AttributeName = "GeneratigSystem", AttributeValue = "PMDS" });
-                    ret.Invoice.Attributes.Add(new cAttribute() { AttributeName = "Invoice" });
-                    ret.Invoice.Attributes.Add(new cAttribute() { AttributeName = "InvoiceCurrency", AttributeValue = "EUR" });
-                    ret.Invoice.Attributes.Add(new cAttribute() { AttributeName = "DocumentTitle", AttributeValue = "EBInterface" });
-                    ret.Invoice.Attributes.Add(new cAttribute() { AttributeName = "Language", AttributeValue = "ger" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmlns", AttributeValue = @"http://wwww.ebinterface.at/schema/5p0/" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmns:xsi", AttributeValue = @"http://www.w3.org/2001/XMLSchema" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "GeneratigSystem", AttributeValue = "PMDS" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "DocumentType", AttributeValue = "Invoice" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "InvoiceCurrency", AttributeValue = "EUR" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "DocumentTitle", AttributeValue = "EBInterface" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "Language", AttributeValue = "ger" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xsi:schemaLocation", AttributeValue = @"http://www.ebinterface.at/schema/5p0/ ../Invoice.xsd" });
 
-                    ret.Biller.VATIdentificationNumber = rKlinik.UID;
+                    ret.Biller.VATIdentificationNumber = (rKlinik.UID.Substring(rKlinik.UID.ToUpper().IndexOf("ATU"))).Replace(" ", "");
                     ret.Biller.Adress.Name = rKlinik.Bezeichnung;
                     ret.Biller.Adress.Street = rKlinik.Strasse;
                     ret.Biller.Adress.Town = rKlinik.Ort;
 
+                    ret.InvoiceRecipient.FurtherIdentification.Value = rKlient.SVNr;
                     ret.InvoiceRecipient.Adress.Name = rKlient.Name;
-                    ret.InvoiceRecipient.Adress.Street = (rKlient.WohnungAbgemeldet ?? false) ? rKlinik.Strasse : rKlient.Strasse;
-                    ret.InvoiceRecipient.Adress.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlinik.PLZ : rKlient.PLZ;
-                    ret.InvoiceRecipient.Adress.Town = (rKlient.WohnungAbgemeldet ?? false) ? rKlinik.Ort : rKlient.Ort;
+                    ret.InvoiceRecipient.Adress.Street = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Strasse : rKlinik.Strasse;
+                    ret.InvoiceRecipient.Adress.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.PLZ : rKlinik.PLZ;
+                    ret.InvoiceRecipient.Adress.Town = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Ort : rKlinik.Ort;
                     ret.InvoiceRecipient.BillersInvoiceRecipientID = rKlient.BillersInvoiceRecipientID;
 
-                    ret.PaymentMethod.UniversalBankTransaction.BenefifiaryAccount.BankName = rKlinik.Bank;
-                    ret.PaymentMethod.UniversalBankTransaction.BenefifiaryAccount.IBAN = rKlinik.IBAN;
-                    ret.PaymentMethod.UniversalBankTransaction.BenefifiaryAccount.BIC = rKlinik.BIC;
+                    ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName = rKlinik.Bank;
+                    ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.IBAN = rKlinik.IBAN;
+                    ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BIC = rKlinik.BIC;
                 }
-
                 return ret;
             }
             catch (Exception ex)

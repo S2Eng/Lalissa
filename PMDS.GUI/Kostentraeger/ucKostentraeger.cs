@@ -223,6 +223,7 @@ namespace PMDS.Calc.UI.Admin
             this.dsKostentraeger1 = new PMDS.Global.db.Global.ds_abrechnung.dsKostentraeger();
             this.panelKostUnten = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelObenAuswahl = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnKostPrüfenDB = new Infragistics.Win.Misc.UltraButton();
             this.panelButtonsOben = new QS2.Desktop.ControlManagment.BasePanel();
             this.ucKlinikDropDown1 = new PMDS.GUI.BaseControls.ucKlinikDropDown();
             this.btnExportExcel = new QS2.Desktop.ControlManagment.BaseButton();
@@ -237,7 +238,6 @@ namespace PMDS.Calc.UI.Admin
             this.dsPatientKostentraeger1 = new PMDS.Global.db.Global.ds_abrechnung.dsPatientKostentraeger();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnKostPrüfenDB = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).BeginInit();
             this.pnlSerch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtKonto)).BeginInit();
@@ -473,6 +473,7 @@ namespace PMDS.Calc.UI.Admin
             appearance3.BackColor = System.Drawing.Color.White;
             appearance3.BackColor2 = System.Drawing.Color.WhiteSmoke;
             appearance3.BorderColor = System.Drawing.Color.Black;
+            appearance3.FontData.SizeInPoints = 10F;
             this.dgMain.DisplayLayout.Appearance = appearance3;
             ultraGridBand1.CardSettings.AllowLabelSizing = false;
             ultraGridBand1.CardSettings.LabelWidth = 140;
@@ -770,6 +771,7 @@ namespace PMDS.Calc.UI.Admin
             this.dgMain.DisplayLayout.Override.CellAppearance = appearance16;
             this.dgMain.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.dgMain.DisplayLayout.Override.CellPadding = 0;
+            this.dgMain.DisplayLayout.Override.DefaultRowHeight = 22;
             appearance17.BackColor = System.Drawing.SystemColors.Control;
             appearance17.BackColor2 = System.Drawing.SystemColors.ControlDark;
             appearance17.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
@@ -840,6 +842,15 @@ namespace PMDS.Calc.UI.Admin
             this.panelObenAuswahl.Name = "panelObenAuswahl";
             this.panelObenAuswahl.Size = new System.Drawing.Size(941, 37);
             this.panelObenAuswahl.TabIndex = 95;
+            // 
+            // btnKostPrüfenDB
+            // 
+            this.btnKostPrüfenDB.Location = new System.Drawing.Point(473, 7);
+            this.btnKostPrüfenDB.Name = "btnKostPrüfenDB";
+            this.btnKostPrüfenDB.Size = new System.Drawing.Size(65, 22);
+            this.btnKostPrüfenDB.TabIndex = 97;
+            this.btnKostPrüfenDB.Text = "Prüfen";
+            this.btnKostPrüfenDB.Click += new System.EventHandler(this.btnKostPrüfenDB_Click);
             // 
             // panelButtonsOben
             // 
@@ -1163,15 +1174,6 @@ namespace PMDS.Calc.UI.Admin
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // btnKostPrüfenDB
-            // 
-            this.btnKostPrüfenDB.Location = new System.Drawing.Point(473, 7);
-            this.btnKostPrüfenDB.Name = "btnKostPrüfenDB";
-            this.btnKostPrüfenDB.Size = new System.Drawing.Size(65, 22);
-            this.btnKostPrüfenDB.TabIndex = 97;
-            this.btnKostPrüfenDB.Text = "Prüfen";
-            this.btnKostPrüfenDB.Click += new System.EventHandler(this.btnKostPrüfenDB_Click);
             // 
             // ucKostenträger
             // 

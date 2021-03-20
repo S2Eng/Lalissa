@@ -940,8 +940,26 @@ namespace PMDS.Calc.UI
             {
                 this.Cursor = Cursors.Default;
             }
+        }
 
+        private void btnFSWReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.doAction(eAction.fswreset, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie den Status der Zahlungsaufforderung für den FSW zurücksetzen?"),
+                                QS2.Desktop.ControlManagment.ControlManagment.getRes("Status für FSW-Zahlungsaufforderung wurde zurückgesetzt."),
+                                PMDS.Calc.Logic.eModify.nichts, true, null, this.dtRechDatum.DateTime.Date, true);
+
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
     }
-
 }

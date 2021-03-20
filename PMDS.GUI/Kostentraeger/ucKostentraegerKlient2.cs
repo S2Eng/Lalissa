@@ -54,9 +54,11 @@ namespace PMDS.GUI.Kostentraeger
         {
             this.btnAdd.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
             this.btnAddKlient.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
+            this.btnAddFSW.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
             this.btnDel.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32);
             this.btnUpdate.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Bearbeiten, 32, 32);
 
+            this.btnAddFSW.Visible = ENV.FSW_IDIntern != Guid.Empty;
             RefreshValueLists();
         }
 
@@ -120,6 +122,7 @@ namespace PMDS.GUI.Kostentraeger
             this.dgMain.DisplayLayout.Bands[0].Columns["RechnungTyp"].ValueList = dgMain.DisplayLayout.ValueLists[0];
 
             this.dgMain.DisplayLayout.Bands[0].Columns["ID"].Hidden = true;
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDPatientIstZahler"].Hidden = true;
             this.RefreshValueLists();
         }
 
@@ -434,7 +437,7 @@ namespace PMDS.GUI.Kostentraeger
 
                 if (rKostenträger != null && rKostenträger.IDPatientIstZahler != null && rKostenträger.IDPatientIstZahler == this.IDPatient)
                 {
-                    this.addEditKlientAsZahler(rKostenträger.IDPatient, rKostenträger.ID, rKostenträger.IDPatientKostenträger, false);
+                    this.addEditKlientAsZahler(rKostenträger.IDPatient, rKostenträger.ID, rKostenträger.IDPatientKostenträger, false, false);
                 }
                 else
                 {
@@ -458,12 +461,13 @@ namespace PMDS.GUI.Kostentraeger
 
             }
         }
-        private void addEditKlientAsZahler(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostentraeger, bool IsNew)
+
+        private void addEditKlientAsZahler(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostentraeger, bool IsNew, bool FSWMode)
         {
             try
             {
                 frmKostentraegerKlientEditSingle frmKostentraegerKlientEditSingle1 = new frmKostentraegerKlientEditSingle();
-                frmKostentraegerKlientEditSingle1.initControl(IDPatient, IDKostenträger, IDPatientKostentraeger, IsNew, ucKostentraegerKlientEditSingle.eTypeUI.Klient);
+                frmKostentraegerKlientEditSingle1.initControl(IDPatient, IDKostenträger, IDPatientKostentraeger, IsNew, ucKostentraegerKlientEditSingle.eTypeUI.Klient, FSWMode);
                 if (frmKostentraegerKlientEditSingle1.ucKostentraegerKlientEditSingle1._abortNoAufenthalt)
                 {
                     return;
@@ -534,7 +538,7 @@ namespace PMDS.GUI.Kostentraeger
         {
             try
             {
-                this.addEditKlientAsZahler(this.IDPatient, null, null, true);
+                this.addEditKlientAsZahler(this.IDPatient, null, null, true, false);
 
             }
             catch (Exception ex)
@@ -543,5 +547,16 @@ namespace PMDS.GUI.Kostentraeger
             }
         }
 
+        private void btnAddFSW_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.addEditKlientAsZahler(this.IDPatient, null, null, true, true);
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+        }
     }
 }
