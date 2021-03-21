@@ -79,7 +79,7 @@ namespace PMDS.UI.Sitemap
                                 PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
                                 dsKlinik.KlinikRow rKlinikActuell = DBKlinik1.loadKlinik(PMDS.Global.ENV.IDKlinik, true);
 
-                                calc = calculation.run(idklient.ToString(), von, bis, rechDatum, true,
+                                calc = calculation.Run(idklient.ToString(), von, bis, rechDatum, true,
                                                 PMDS.Calc.Logic.eCalcTyp.abrechnung, calcRun, editor, PMDS.Global.ENV.IDKlinik, rKlinikActuell.Bereich.Trim(), ref Prot, ref iCounterProt);
 
                                 if (iCounterProt > 0)

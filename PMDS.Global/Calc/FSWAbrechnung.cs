@@ -49,7 +49,7 @@ namespace PMDS.Global
                                 return;
                             }
 
-                            if (rBill.ExportiertJN && !SetStatusOnly)
+                            if (rBill.IDSR.Length > 0  && !rBill.IDSR.Any(c => Guid.TryParse(rBill.IDSR, out Guid guidID)) && !SetStatusOnly)
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bereits gesendete Rechnungen können nicht nocheinmal gesendet werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                 return;
@@ -149,8 +149,8 @@ namespace PMDS.Global
                                 return;
                             }
 
-                            //Exportiert-Kennzeichen setzen
-                            ret = SetExportiertJN(ListIDBillsFSW, true, db);
+                            //Sammelrechnung-ID (ZAUF) setzen
+                            ret = SetISR(ListIDBillsFSW, Filename, db);
                             if (ret.Length == 0)
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             else
@@ -161,8 +161,8 @@ namespace PMDS.Global
                         }
                         else
                         {
-                            //Exportiert-Kennzeichen zurücksetzen
-                            ret = SetExportiertJN(ListIDBillsFSW, false, db);
+                            //Sammelrechnung-ID (ZAUF) setzen
+                            ret = SetISR(ListIDBillsFSW, "", db);
                             if (ret.Length == 0)
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             else
@@ -205,6 +205,35 @@ namespace PMDS.Global
                 return ex.Message;
             }
         }
+
+        public string SetISR(List<string> lstBillsToUpdate, string IDSR, ERModellPMDSEntities db)
+        {
+            try
+            {
+                foreach (string IDBill in ListIDBillsFSW)
+                {
+                    var res = db.bills.SingleOrDefault(bills => bills.ID == IDBill);
+                    if (res != null)
+                    {
+                        if (IDSR.Length == 0)
+                            res.IDSR = "";
+                        else if (IDSR.Length == 58 )
+                            res.IDSR = IDSR.Substring(IDSR.Length -18, 18);
+                        else
+                        {
+                            return "Ungültige eZAUF-Nummer: " + IDSR;
+                        }
+                    }
+                }
+                db.SaveChanges();
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
 
         public static bool MakeXML(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out Chilkat.Xml Xml, out string Message)
         {

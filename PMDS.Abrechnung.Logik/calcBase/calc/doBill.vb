@@ -873,19 +873,16 @@ Public Class doBill
     End Function
 
 
-    Public Sub save(ByVal status As eBillStatus, ByRef calc As calcData, ByVal IDKlinik As System.Guid, ByRef Prot As String, ByRef iCounterProt As Integer)
+    Public Sub save(ByVal status As eBillStatus, ByRef calc As calcData, ByVal IDKlinik As System.Guid)
         Try
             Dim bOK As Boolean = False
             Dim IDAbrechnung As String = Me.bill.saveRechKopf(calc, Me.rowKlient(calc.dbCalc).ID.ToString,
                                                                  Me.rowMonat(calc.dbCalc).Beginn.Month,
                                                                  Me.rowMonat(calc.dbCalc).Beginn.Year, IDKlinik)
-            If IDAbrechnung <> "" Then
-                If Me.saveBill(IDAbrechnung, status, False, calc, IDKlinik, Prot, iCounterProt) Then
-                    bOK = True
-                End If
-            End If
 
-            If Not bOK Then Throw New Exception("doBill.save: Error saving bill!")
+            If Not IDAbrechnung <> "" And Me.saveBill(IDAbrechnung, status, False, calc, IDKlinik) Then
+                Throw New Exception("doBill.save: Error saving bill!")
+            End If
 
         Catch exept As Exception
             calcBase.doExept(exept)
@@ -893,19 +890,15 @@ Public Class doBill
     End Sub
     Private Function saveBill(ByVal IDAbrechnung As String,
                                     ByVal status As eBillStatus, ByVal freigegeben As Boolean,
-                                    ByRef calc As calcData, ByRef IDKlinik As System.Guid, ByRef Prot As String, ByRef iCounterProt As Integer) As Boolean
+                                    ByRef calc As calcData, ByRef IDKlinik As System.Guid) As Boolean
         Try
 
             For Each rKost As dbCalc.KostenträgerRow In calc.dbCalc.Kostenträger
 
-                'Keine Rechnung -> Rechnung nicht erzeugen
-                If Not rKost.RechnungJN Then
-                    Continue For
-                End If
-
-                'Leere Rechnungen unterdrücken
-                If (rKost.Ueberweisungsbetrag = 0 And rKost.sumNetto = 0) Or
-                   (rKost.TransferzahlerJN And rKost.Ueberweisungsbetrag = 0) Then
+                'Keine Rechnung -> Rechnung nicht erzeugen. Leere Rechnungen (0-Summen) nicht erzeugen.
+                If Not rKost.RechnungJN Or
+                        (rKost.Ueberweisungsbetrag = 0 And rKost.sumNetto = 0) Or
+                        (rKost.TransferzahlerJN And rKost.Ueberweisungsbetrag = 0) Then
                     Continue For
                 End If
 
@@ -918,13 +911,9 @@ Public Class doBill
                 rNew.KlientName = Me.rowKlient(calc.dbCalc).Nachname + " " + Me.rowKlient(calc.dbCalc).Vorname
                 rNew.KostenträgerName = rKost.FamName
                 rNew.Status = CInt(status)
-                If rKost.RechnungJN Then
-                    rNew.Typ = rKost.RechnungTyp
-                Else
-                    rNew.Typ = CInt(eBillTyp.KeineRechnung)
-                End If
+                rNew.Typ = IIf(rKost.RechnungJN, rKost.RechnungTyp, CInt(eBillTyp.KeineRechnung))
                 rNew.Rechnung = rKost.Rechnung
-                rNew.IDKlient = Me.rowKlient(calc.dbCalc).ID.ToString
+                rNew.IDKlient = Me.rowKlient(calc.dbCalc).ID.ToString()
                 rNew.IDKost = rKost.IDKost.ToString()
                 rNew.IDKostIntern = rKost.IDKostIntern.ToString()
                 rNew.betrag = rKost.Ueberweisungsbetrag
@@ -933,11 +922,13 @@ Public Class doBill
                 rNew.dbBill = Me.dbBill.getXMLDbBill(calc.dbBill)
                 rNew.RechDatum = Me.rowMonat(calc.dbCalc).RechDatum.Date
 
-                If rNew.betrag <> 0 Then
-                    If Me.checkAndereKostenträgerSumLeist(rKost, IDAbrechnung, status, freigegeben, calc, rNew.KlientName, rNew.datum, IDKlinik, Prot, iCounterProt) Then
-                        Me.sql.insertBill(rNew)
-                    End If
-                End If
+                Me.sql.insertBill(rNew)
+
+                'If rNew.betrag <> 0 Then
+                'If Me.checkAndereKostenträgerSumLeist(rKost, IDAbrechnung, status, freigegeben, calc, rNew.KlientName, rNew.datum, IDKlinik, Prot, iCounterProt) Then
+                'Me.sql.insertBill(rNew)
+                'End If
+                'End If
             Next
             Return True
 
@@ -980,16 +971,7 @@ Public Class doBill
             '        Return False
             '    End If
             'Next
-
             'Return True
-
-
-
-
-
-
-
-
 
             'If rKost.GrundleistungJN Then
             'ElseIf rKost.PeriodischeLeistungJN Then
@@ -1010,18 +992,6 @@ Public Class doBill
             Throw New Exception("checkAndereKostenträgerSumLeist: " + exept.ToString())
         End Try
     End Function
-    Private Function checkAndereKostenträger2(ByRef rKost As dbCalc.KostenträgerRow, ByVal IDAbrechnung As String,
-                                                ByVal status As eBillStatus, ByVal freigegeben As Boolean,
-                                                ByRef calc As calcData, ByRef IDKlinik As System.Guid) As Boolean
-        Try
-
-
-            Return True
-
-        Catch exept As Exception
-            Throw New Exception("checkAndereKostenträger2: " + exept.ToString())
-        End Try
-    End Function
 
     Public Sub delete(ByVal IDAbrechnung As String, ByVal sr As Boolean, ByVal depot As Boolean, IDKlinik As System.Guid)
         Try
@@ -1029,7 +999,7 @@ Public Class doBill
             Me.sql.readBills(IDAbrechnung, dbPMDS)
             Dim anzDel As Integer = 0
             For Each rBill As dbPMDS.billsRow In dbPMDS.bills
-                If rBill.IDSR = "" Then
+                If rBill.IDSR = "" Then           'Nicht löschbar, wenn auf Sammelrechung oder aus FSW-ZAUF
 
                     ' Wenn sr - IDSR in zugehörigen bills rückesetzen
                     If sr Then
@@ -1263,22 +1233,16 @@ Public Class doBill
             Dim rBillToModify As dbPMDS.billsRow = Nothing
             Dim tBillHeader As IQueryable(Of PMDS.db.Entities.billHeader) = From o In db.billHeader.AsNoTracking Where o.ID = rBillOrig.IDAbrechnung
             Dim rBillHeader As PMDS.db.Entities.billHeader = tBillHeader.First()
-
-            'If Not sr Then
-
-            'Dim retMainSystem1 As New calculation.retMainSystem()
-            'retMainSystem1.db = db
-            'calculation.delCallFctMainSystem(calculation.eTypeMainFct.NewRowBillEF, retMainSystem1)
-
             Dim rBillHeaderCopy As New PMDS.db.Entities.billHeader()
-            rBillHeaderCopy.ID = LCase(System.Guid.NewGuid().ToString())
+
+            rBillHeaderCopy.ID = System.Guid.NewGuid().ToString("D")
             rBillHeaderCopy.dbCalc = rBillHeader.dbCalc
             rBillHeaderCopy.protokoll = rBillHeader.protokoll
             rBillHeaderCopy.IDKlinik = rBillHeader.IDKlinik
             db.billHeader.Add(rBillHeaderCopy)
 
             Dim rBillCopy As New PMDS.db.Entities.bills()
-            rBillCopy.ID = LCase(System.Guid.NewGuid().ToString())
+            rBillCopy.ID = System.Guid.NewGuid().ToString("D")
             rBillCopy.Freigegeben = False
             'rBillCopy.RechNr = rBillOrig.RechNr
             rBillCopy.RechNr = "ForStorno;"
@@ -1294,7 +1258,6 @@ Public Class doBill
             rBillCopy.IDKostIntern = rBillOrig.IDKostIntern
             rBillCopy.betrag = rBillOrig.betrag * -1
             rBillCopy.IDAbrechnung = rBillHeaderCopy.ID
-            rBillCopy.IDSR = rBillOrig.IDSR
             rBillCopy.Erstellt = calculation.usr
             rBillCopy.ErstellAm = Now
             rBillCopy.dbBill = rBillOrig.dbBill
@@ -1303,83 +1266,46 @@ Public Class doBill
             Else
                 rBillCopy.IDKlinik = Nothing
             End If
+
+            rBillCopy.IDSR = ""                     'os: 2021-03-21: neu erzeigte Storno-Rechnung kann nicht auf einer Sammelrechnung / FSW-ZAUF sein:  rBillCopy.IDSR = rBillOrig.IDSR
             rBillCopy.IDBillStorno = ""             'rBillOrig.ID.Trim() + ";"
             rBillCopy.ExportiertJN = False
             rBillCopy.RollungAnz = 0
             rBillCopy.IDBillsGerollt = ""
 
-            'retMainSystem1.rBill.ID = LCase(System.Guid.NewGuid().ToString())
-            'retMainSystem1.rBill.Freigegeben = rBill.Freigegeben
-            'retMainSystem1.rBill.RechNr = rBill.RechNr
-            'retMainSystem1.rBill.datum = rBill.datum
-            'retMainSystem1.rBill.KlientName = rBill.KlientName
-            'retMainSystem1.rBill.KostenträgerName = rBill.KostenträgerName
-            'retMainSystem1.rBill.Status = rBill.Status
-            'retMainSystem1.rBill.Typ = rBill.Typ
-            'retMainSystem1.rBill.Rechnung = rBill.Rechnung
-            'retMainSystem1.rBill.IDKlient = rBill.IDKlient
-            'retMainSystem1.rBill.IDKost = rBill.IDKost
-            'retMainSystem1.rBill.IDKostIntern = rBill.IDKostIntern
-            'retMainSystem1.rBill.betrag = rBill.betrag
-            'retMainSystem1.rBill.IDAbrechnung = rBill.IDAbrechnung
-            'retMainSystem1.rBill.IDSR = rBill.IDSR
-            'retMainSystem1.rBill.Erstellt = rBill.Erstellt
-            'retMainSystem1.rBill.ErstellAm = rBill.ErstellAm
-            'retMainSystem1.rBill.dbBill = rBill.dbBill
-            'If Not rBill.IsIDKlinikNull() Then
-            '    retMainSystem1.rBill.IDKlinik = rBill.IDKlinik
-            'Else
-            '    retMainSystem1.rBill.IDKlinik = Nothing
-            'End If
-
             db.bills.Add(rBillCopy)
             db.SaveChanges()
 
+            Using dbCalc2 As dbCalc = Me.getDBCalc(rBillHeaderCopy.dbCalc)
+                Dim srJN As Boolean = If(sr, False, Me.sammelrechnungJN(dbCalc2, rBillOrig.IDKostIntern))
+                Dim tbillsRN As IQueryable(Of PMDS.db.Entities.bills) = From o In db.bills Where o.ID = rBillOrig.ID
+                Dim rBillRN As PMDS.db.Entities.bills = tbillsRN.First()
 
-            Dim dbCalc2 As dbCalc = Me.getDBCalc(rBillHeaderCopy.dbCalc)
-            Dim srJN As Boolean = If(sr, False, Me.sammelrechnungJN(dbCalc2, rBillOrig.IDKostIntern))
+                rBillRN.IDBillStorno = rBillCopy.ID.Trim() + ";"
+                db.SaveChanges()
 
-            Dim tbillsRN As IQueryable(Of PMDS.db.Entities.bills) = From o In db.bills Where o.ID = rBillOrig.ID
-            Dim rBillRN As PMDS.db.Entities.bills = tbillsRN.First()
-            rBillRN.IDBillStorno = rBillCopy.ID.Trim() + ";"
-            db.SaveChanges()
+                Using SqlUpdate As New Sql()
+                    rBillToModify = SqlUpdate.readBill(rBillCopy.ID)
+                End Using
 
-            Dim dbPMDSUpdate As New dbPMDS
-            Dim SqlUpdate As New Sql()
-            rBillToModify = SqlUpdate.readBill(rBillCopy.ID)
+                Me.modifyBill(rBillToModify, eModify.field, "[RechTitel]", "Storno zu", False, editor, dbCalc2, bill.typRechNr)
+                Me.modifyBill(rBillToModify, eModify.field, "Zahlungsbetrag", "Stornobetrag", False, editor, dbCalc2, bill.typRechNr, True)
+                Me.modifyBill(rBillToModify, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc2, bill.typRechNr, False, rBillCopy.RechDatum)
 
-            'Else
-            '    rBillToModify = rBill
-            'End If
+                Dim bAnyChangesXMLDBHeader As Boolean
+                Me.modifyBillTableKosten(sr, dbCalc2, rBillToModify.Typ, rBillToModify.Status, New System.Guid(rBillToModify.IDKostIntern), eTypeModifyBill.StornoRechnung, rBillToModify, editor, bAnyChangesXMLDBHeader, dbCalcFoundNewxy)
 
-            Me.modifyBill(rBillToModify, eModify.field, "[RechTitel]", "Storno zu", False, editor, dbCalc2, bill.typRechNr)
-            Me.modifyBill(rBillToModify, eModify.field, "Zahlungsbetrag", "Stornobetrag", False, editor, dbCalc2, bill.typRechNr, True)
-            'Dim rechNrStorno As String = Me.modifyBill(rBillToModify, eModify.stornoRech, "[StornoNr]", "", False, editor, dbCalc2, bill.typRechNr)
-            If sr Then
-                'rBillCopy.RechNr = rechNrStorno.Trim()
-                'db.SaveChanges()
-            End If
+                If calcBase.bookingJN And Not srJN Then
+                    Me.saveTempBuchungen(dbCalc2, rBillToModify, "", eModify.negativ, If(Not sr, Me.rowKlient(dbCalc2).calcRun, eCalcRun.month))
+                End If
 
-            Me.modifyBill(rBillToModify, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc2, bill.typRechNr, False, rBillCopy.RechDatum)
-
-            'editor.Text = ""
-            'Me.doEditor.showText(rBillToModify.Rechnung, TXTextControl.StreamType.RichTextFormat, True, TXTextControl.ViewMode.PageView, editor)
-            Dim bAnyChangesXMLDBHeader As Boolean = False
-            Me.modifyBillTableKosten(sr, dbCalc2, rBillToModify.Typ, rBillToModify.Status, New System.Guid(rBillToModify.IDKostIntern), eTypeModifyBill.StornoRechnung, rBillToModify, editor, bAnyChangesXMLDBHeader, dbCalcFoundNewxy)
-            'Me.sql.stornieren(rBillToModify.ID)
-            If calcBase.bookingJN And Not srJN Then
-                Me.saveTempBuchungen(dbCalc2, rBillToModify, "", eModify.negativ, If(Not sr, Me.rowKlient(dbCalc2).calcRun, eCalcRun.month))
-            End If
-            'If bAnyChangesXMLDBHeader Then
-            Dim XMLDBBill As String = Me.bill.getXMLDbCalc(dbCalc2)
-            rBillToModify.Rechnung = Me.doEditor.getText(TXTextControl.StreamType.RichTextFormat, editor)
-            Me.sql.saveBill(rBillToModify.ID, rBillToModify.Rechnung)
-            Me.sql.saveDbBillHeader(rBillHeaderCopy.ID, XMLDBBill)
-            'End If
-            dbCalc2 = Nothing
+                Dim XMLDBBill As String = Me.bill.getXMLDbCalc(dbCalc2)
+                rBillToModify.Rechnung = Me.doEditor.getText(TXTextControl.StreamType.RichTextFormat, editor)
+                Me.sql.saveBill(rBillToModify.ID, rBillToModify.Rechnung)
+                Me.sql.saveDbBillHeader(rBillHeaderCopy.ID, XMLDBBill)
+            End Using
 
             IDBillGeneratedBack = rBillCopy.ID
-            'End Using
 
         Catch ex As System.Data.Entity.Validation.DbEntityValidationException
             Throw New System.Data.Entity.Validation.DbEntityValidationException(calculation.getDbEntityValidationException(ex), ex)
@@ -1393,7 +1319,6 @@ Public Class doBill
             Dim arrCalcDocu() As DataRow = dbCalcFound.Tables(dbCalcFound.KostenKostenträger.TableName).Select(dbCalcFound.KostenKostenträger.IDKostInternColumn.ColumnName + "='" + IDKostIntern.ToString() + "'",
                                                                                                                  dbCalcFound.KostenKostenträger.lfdNrColumn.ColumnName + " asc")
 
-
             For Each rKostenKostenträger As dbCalc.KostenKostenträgerRow In arrCalcDocu
                 If rKostenKostenträger.Netto <> 0 Then
                     rKostenKostenträger.Netto = rKostenKostenträger.Netto * -1
@@ -1404,32 +1329,6 @@ Public Class doBill
                 End If
                 Me.replaceValueInTXTControlTable(rKostenKostenträger, dbCalcFound, billTyp, billStatus, IDKostIntern, TypeModifyBill, rBillToModify, editor, bAnyChangesXMLDBHeader)
             Next
-
-
-            'If billTyp = eBillTyp.Rechnung Or billTyp = eBillTyp.FreieRechnung Then
-            '    For Each rCalcDocu As DataRow In arrCalcDocu
-            '        If rCalcDocu(dbCalcFound.KostenKostenträger.KennungColumn.ColumnName) = eTypProt.MWStSatz.ToString() Then
-
-            '            'lineExport1.expMwst = rCalcDocu(dbCalcFound.KostenKostenträger.MWStSatzColumn.ColumnName)
-            '            'lineExport1.expBetrag = rCalcDocu(dbCalcFound.KostenKostenträger.tempBruttoColumn.ColumnName)
-            '            'lineExport1.expSteuer = rCalcDocu(dbCalcFound.KostenKostenträger.tempMWStColumn.ColumnName) * -1
-            '            'lineExport1.expMWStSatzKonto = rCalcDocu(dbCalcFound.KostenKostenträger.tempKontoExportColumn.ColumnName)
-            '            'lineExport1.expOpbetrag = rCalcDocu(dbCalcFound.KostenKostenträger.tempBruttoColumn.ColumnName)
-            '        End If
-            '    Next
-
-            'ElseIf billTyp = eBillTyp.Sammelrechnung Then
-            '    For Each rCalcDocu As DataRow In arrCalcDocu
-            '        If rCalcDocu(dbCalcFound.KostenKostenträger.KennungColumn.ColumnName) = eTypProt.MWStSatz.ToString() Then
-
-            '            'lineExport1.expMwst = rCalcDocu(dbCalcFound.KostenKostenträger.MWStSatzColumn.ColumnName)
-            '            'lineExport1.expBetrag = rCalcDocu(dbCalcFound.KostenKostenträger.tempBruttoColumn.ColumnName)
-            '            'lineExport1.expSteuer = rCalcDocu(dbCalcFound.KostenKostenträger.tempMWStColumn.ColumnName) * -1
-            '            'lineExport1.expMWStSatzKonto = rCalcDocu(dbCalcFound.KostenKostenträger.tempKontoExportColumn.ColumnName)
-            '            'lineExport1.expOpbetrag = rCalcDocu(dbCalcFound.KostenKostenträger.tempBruttoColumn.ColumnName)
-            '        End If
-            '    Next
-            'End If
 
         Catch exept As Exception
             calcBase.doExept(exept)
@@ -1443,35 +1342,18 @@ Public Class doBill
 
             For Each txtField As TXTextControl.TextField In editor.TextFields
                 If txtField.Name.Trim().ToLower().Contains(rKostenKostenträger.ID.ToString().Trim().ToLower()) Then
-                    If txtField.Name.Trim().ToLower().Contains(("_Netto_").Trim().ToLower()) And rKostenKostenträger.Netto <> 0 Then
+                    If txtField.Name.Trim().ToLower().Contains("_netto_") And rKostenKostenträger.Netto <> 0 Then
                         txtField.Text = String.Format("{0:c}", rKostenKostenträger.Netto)
                         bAnyChangesXMLDBHeader = True
-                    ElseIf txtField.Name.Trim().ToLower().Contains(("_MWSt_").Trim().ToLower()) And rKostenKostenträger.MWSt <> 0 Then
+                    ElseIf txtField.Name.Trim().ToLower().Contains("_mwst_") And rKostenKostenträger.MWSt <> 0 Then
                         txtField.Text = rKostenKostenträger.MWSt.ToString() + "" + ""
                         bAnyChangesXMLDBHeader = True
-                    ElseIf txtField.Name.Trim().ToLower().Contains(("_Brutto_").Trim().ToLower()) And rKostenKostenträger.Brutto <> 0 Then
+                    ElseIf txtField.Name.Trim().ToLower().Contains("_brutto_") And rKostenKostenträger.Brutto <> 0 Then
                         txtField.Text = String.Format("{0:c}", rKostenKostenträger.Brutto)
                         bAnyChangesXMLDBHeader = True
                     End If
                 End If
             Next
-
-
-            'For Each tTable As TXTextControl.Table In editor.Tables
-            '    nRowNr = 0
-            '    For Each tRow As TXTextControl.TableRow In tTable.Rows
-            '        nRowNr += 1
-            '        If nRowNr <= 1 Then
-            '            nCellNr = 0
-            '            For Each tcCell As TXTextControl.TableCell In tTable.Cells
-            '                If tcCell.Row = nRowNr Then
-            '                    nCellNr += 1
-            '                    Dim sCellTxtTmp As String = tcCell.Text.Trim()
-            '                End If
-            '            Next
-            '        End If
-            '    Next
-            'Next
 
         Catch exept As Exception
             calcBase.doExept(exept)

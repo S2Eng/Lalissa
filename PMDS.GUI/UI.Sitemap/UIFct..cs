@@ -926,7 +926,7 @@ namespace PMDS.UI.Sitemap
             try
             {
                 calculation calc = new calculation();
-                calc.init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
+                calc.Init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                                 PMDS.Global.ENV.ReportPath,
                                                 PMDS.Global.ENV.bookingJN, 
                                                 PMDS.Global.ENV.RechnungKopfzeileEin,

@@ -64,16 +64,7 @@ Public Class calculation
         Public Property lfdNr As Integer = -1
     End Class
 
-
-
-
-
-
-
-
-
-
-    Public Sub init(ByVal connection As OleDb.OleDbConnection, ByVal KürzGrundlLetztTag As Boolean, ByVal reportPath As String,
+    Public Sub Init(ByVal connection As OleDb.OleDbConnection, ByVal KürzGrundlLetztTag As Boolean, ByVal reportPath As String,
                         ByVal bookingJN As Boolean, ByVal header As Boolean, ByVal rechFloskel As Boolean, ByVal ZAHLUNG_TAGE As String,
                         ByVal usr As String, ByVal usrID As String, ByVal bezGSBG As String, ByVal TransferTxt As String,
                         ByVal DepotgeldKontoTxt As String,
@@ -91,23 +82,18 @@ Public Class calculation
             calcBase.KürzGrundLetztTag = KürzGrundlLetztTag
             calcBase.usr = usr
             calcBase.usrID = usrID
-            calcBase.pathConfig = pathConfig      '<20120111-2>
-
-            'Beginn abwesenheit -  nur default    -->   TageOhneKuerzungGrundleistung
-            calcBase.TageOhneKuerzungGrundleistung = TageOhneKuerzungGrundleistung
-            'Ende abwesenheit -  immer    -->           KuerzungGrundleistungLetzterTag   -> in UI
-            calcBase.KuerzungGrundleistungLetzterTag = KuerzungGrundleistungLetzterTag
-
+            calcBase.pathConfig = pathConfig                                            '<20120111-2>
+            calcBase.TageOhneKuerzungGrundleistung = TageOhneKuerzungGrundleistung      'Beginn abwesenheit -  nur default    -->   TageOhneKuerzungGrundleistung
+            calcBase.KuerzungGrundleistungLetzterTag = KuerzungGrundleistungLetzterTag  'Ende abwesenheit -  immer    -->           KuerzungGrundleistungLetzterTag   -> in UI
             calcBase.RechErwAbwesenheit = RechErwAbwesenheit
             calcBase.SrErwAbwesenheit = SrErwAbwesenheit
 
             bill.typRechNr = typRechNr
             bill.zahlTage = ZAHLUNG_TAGE
-
             bill.header = header
             bill.rechFloskel = rechFloskel
             bill.DepotgeldKontoTxt = DepotgeldKontoTxt
-            bill.RechTitelDepotgeld = RechTitelDepotGeld
+            bill.RechTitelDepotGeld = RechTitelDepotGeld
             print.reportPath = reportPath
 
             kostenträger.bezGSBG = bezGSBG
@@ -117,7 +103,6 @@ Public Class calculation
             calculation.ZahlKondErlagschein = ZahlKondErlagschein
             calculation.ZahlKondÜberweisung = ZahlKondÜberweisung
             calculation.ZahlKondBar = ZahlKondBar
-
             calculation.AbwesenheitenAnzeigen = AbwesenheitenAnzeigen
 
             MWSTSätze.loadMWSTSätzeFromFile()
@@ -127,7 +112,7 @@ Public Class calculation
         End Try
     End Sub
 
-    Public Function run(ByVal IDKlient As String, ByVal von As DateTime, ByVal bis As DateTime, ByVal RechDatum As Date, ByVal clearCalcDB As Boolean,
+    Public Function Run(ByVal IDKlient As String, ByVal von As DateTime, ByVal bis As DateTime, ByVal RechDatum As Date, ByVal clearCalcDB As Boolean,
                                 ByVal calcTyp As PMDS.Calc.Logic.eCalcTyp,
                                 ByVal calcRun As PMDS.Calc.Logic.eCalcRun,
                                 ByVal editor As TXTextControl.TextControl, IDKlinik As System.Guid,
@@ -144,22 +129,24 @@ Public Class calculation
             Dim leistung As New leistung()
             Dim doCalc As New doCalc()
             Dim doBill As New doBill()
-            Dim dtMWSTSätze As New dbPMDS.MWSTSätzeDataTable
 
             bill.Bereich = Bereich
 
-            Dim dbPMDSRead As New dbPMDS()
-            sql.readKlinik(dbPMDSRead, IDKlinik)
-            Dim rKlinikDat As dbPMDS.KlinikRow = dbPMDSRead.Klinik.Rows(0)
+            Using dbPMDSRead As New dbPMDS()
+                Using dtMWSTSätze As New dbPMDS.MWSTSätzeDataTable
+                    monate.init(von, bis, RechDatum, calc)
+                    MWSTSätze.init(dtMWSTSätze)
+                    Dim rKlinikDat As dbPMDS.KlinikRow
+                    sql.readKlinik(dbPMDSRead, IDKlinik)
+                    rKlinikDat = dbPMDSRead.Klinik.Rows(0)
+                    klient.init(VB.LCase(IDKlient), von, bis, calcTyp, calcRun, calc, dtMWSTSätze, IDKlinik, rKlinikDat)
+                End Using
+            End Using
 
-            monate.init(von, bis, RechDatum, calc)
-            MWSTSätze.init(dtMWSTSätze)
-            klient.init(VB.LCase(IDKlient), von, bis, calcTyp, calcRun, calc, dtMWSTSätze, IDKlinik, rKlinikDat)
             anwesenheit.prepare(calc, IDKlinik)
             abwesenheit.prepare(calc)
 
             If calc.dbCalc.Leistungen.Rows.Count > 0 Then
-
                 leistung.doTagesLeist(calc)
                 If Me.rowKlient(calc.dbCalc).calcRun = eCalcRun.freeBill Then
                     doCalc.runFreeBill(calc)
@@ -170,11 +157,9 @@ Public Class calculation
                 doBill.run(calc, editor, IDKlinik, Bereich, Prot, iCounterProt)
 
                 If Me.rowKlient(calc.dbCalc).calcTyp = CInt(eCalcTyp.abrechnung) Then
-                    doBill.save(eBillStatus.offen, calc, IDKlinik, Prot, iCounterProt)
+                    doBill.save(eBillStatus.offen, calc, IDKlinik)
                 End If
-
             End If
-
             Return calc
 
         Catch exept As Exception
@@ -182,18 +167,21 @@ Public Class calculation
         End Try
     End Function
 
-    Public Sub load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
+    Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
                     ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
                     ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean)
+
         calcBase.errTxt = ""
         For Each IDKlient As String In klienten
             Me._sql.readBills(IDKlient, von, bis, vonRechDatum, bisRechDatum, db, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert, showExportiere)
         Next
+
         For Each r As dbPMDS.billsRow In db.bills
             Me._sql.readBillHeader(r.ID, db, IDKlinik)
         Next
     End Sub
-    Public Sub load(ByVal von As DateTime, ByVal bis As DateTime, vonErstelltAm As Nullable(Of DateTime), bisErstelltAm As Nullable(Of DateTime),
+
+    Public Sub Load(ByVal von As DateTime, ByVal bis As DateTime, vonErstelltAm As Nullable(Of DateTime), bisErstelltAm As Nullable(Of DateTime),
                 ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
                 ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean)
         calcBase.errTxt = ""
@@ -202,10 +190,12 @@ Public Class calculation
             Me._sql.readBillHeader(r.ID, db, IDKlinik)
         Next
     End Sub
+
     Public Sub delete(ByVal IDAbrechnung As String, ByVal sr As Boolean, ByVal depot As Boolean, ByVal IDKlinik As System.Guid)
         calcBase.errTxt = ""
         Me._doBill.delete(IDAbrechnung, sr, depot, IDKlinik)
     End Sub
+
     Public Sub freigeben(ByVal listIDBills As System.Collections.Generic.List(Of String), ByVal sr As Boolean,
                                 ByVal editor As TXTextControl.TextControl, ByVal IDKlinik As System.Guid, rechDat As Nullable(Of Date))
         calcBase.errTxt = ""
@@ -214,16 +204,6 @@ Public Class calculation
         Dim listIDDoStorno As New System.Collections.Generic.List(Of dbPMDS.billsRow)()
         Me._doBill.doAction(listIDBills, sr, editor, "f", IDKlinik, False, listIDDoStorno, rechDat)
     End Sub
-
-    Public Sub fsw(ByVal listIDBills As System.Collections.Generic.List(Of String), ByVal sr As Boolean,
-                                ByVal editor As TXTextControl.TextControl, ByVal IDKlinik As System.Guid, rechDat As Nullable(Of Date))
-        calcBase.errTxt = ""
-
-        'this.calculation.stornieren(listID, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.ENV.IDKlinik);
-        Dim listIDDoStorno As New System.Collections.Generic.List(Of dbPMDS.billsRow)()
-        Me._doBill.doAction(listIDBills, sr, editor, "fsw", IDKlinik, False, listIDDoStorno, rechDat)
-    End Sub
-
 
     Public Sub stornieren(ByVal listIDBills As System.Collections.Generic.List(Of String), ByVal sr As Boolean,
                                 ByVal editor As TXTextControl.TextControl, ByVal IDKlinik As System.Guid, datStornodatum As Nullable(Of Date), dbCalcFoundNew As dbCalc)

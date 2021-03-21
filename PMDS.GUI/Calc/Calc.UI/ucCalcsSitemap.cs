@@ -79,7 +79,7 @@ namespace PMDS.Calc.UI
 
                 if (initEnv)
                 {
-                    this.calculation.init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
+                    this.calculation.Init(RBU.DataBase.CONNECTION, PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                 PMDS.Global.ENV.ReportPath,
                                 PMDS.Global.ENV.bookingJN,
                                 PMDS.Global.ENV.RechnungKopfzeileEin,
@@ -158,21 +158,21 @@ namespace PMDS.Calc.UI
                     
                     if (this.typ == eTyp.calc)
                     {
-                        this.calculation.load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                        this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
                         this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
                     }
                     else if (this.typ == eTyp.depotgeld)
                     {
-                        this.calculation.load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                        this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
                     }
                     else if (this.typ == eTyp.sr)
                     {
-                        this.calculation.load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                        this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
                         this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
                     }
                     else if (this.typ == eTyp.buchhaltung)
                     {
-                        this.calculation.load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                        this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
                     }
 
                     grid.Refresh();
@@ -415,7 +415,11 @@ namespace PMDS.Calc.UI
                             foreach (UltraGridRow rToDel in arrSelected)
                             {
                                 PMDS.Calc.Logic.dbPMDS.billsRow r = (PMDS.Calc.Logic.dbPMDS.billsRow)((System.Data.DataRowView)rToDel.ListObject).Row;
-                                if (r.Typ == (int)eBillTyp.Rechnung || (r.Typ == (int)eBillTyp.Beilage && r.IDSR == "") || r.Typ == (int)eBillTyp.Sammelrechnung || r.Typ == (int)eBillTyp.FreieRechnung)
+                                if (r.Typ == (int)eBillTyp.Rechnung ||      //FSW-ZAUF prüfen?
+                                    (r.Typ == (int)eBillTyp.Beilage && r.IDSR == "") || 
+                                    r.Typ == (int)eBillTyp.Sammelrechnung || 
+                                    r.Typ == (int)eBillTyp.FreieRechnung
+                                    )
                                 {
                                     listIDBills.Add(r.ID);
                                 }
@@ -447,9 +451,17 @@ namespace PMDS.Calc.UI
                                             IQueryable<PMDS.db.Entities.bills> tBills = null;
                                             if (this.typ == ucCalcsSitemap.eTyp.calc)
                                             {
+                                                Guid chkGuid = Guid.Empty;
                                                 if (rBill2.Typ == (int)eBillTyp.Rechnung)
                                                 {
-                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.Rechnung && b.Freigegeben == true && b.Status == 1 && b.IDSR == ""))).OrderByDescending(p => p.ErstellAm);
+                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum &&
+                                                                            b.Typ != 3 && 
+                                                                            b.IDKlient == rBill2.IDKlient && 
+                                                                            b.Typ == (int)eBillTyp.Rechnung &&
+                                                                            b.Freigegeben == true && 
+                                                                            b.Status == 1 && 
+                                                                            b.IDSR == ""                                                                             
+                                                                           ).OrderByDescending(p => p.ErstellAm);
                                                 }
                                                 else if (rBill2.Typ == (int)eBillTyp.Beilage)
                                                 {
@@ -560,7 +572,16 @@ namespace PMDS.Calc.UI
                                             if (tBillGrid.Count() == 1)
                                             {
                                                 PMDS.db.Entities.bills rBillGrid = tBillGrid.First();
-                                                IQueryable<PMDS.db.Entities.bills> tBillsStornoRech = db.bills.Where(b => b.datum == rBillGrid.datum && b.Typ != 3 && b.IDKlient == rBillGrid.IDKlient && ((b.Typ == (int)eBillTyp.Rechnung && b.Freigegeben == true && b.Status == 1 && b.IDSR == "" && b.IDBillStorno.Trim() == ""))).OrderByDescending(p => p.ErstellAm);
+                                                IQueryable<PMDS.db.Entities.bills> tBillsStornoRech = db.bills.Where(b => b.datum == rBillGrid.datum &&
+                                                                                                                     b.Typ != 3 && 
+                                                                                                                     b.IDKlient == rBillGrid.IDKlient && 
+                                                                                                                     (b.Typ == (int)eBillTyp.Rechnung && 
+                                                                                                                        b.Freigegeben == true && 
+                                                                                                                        b.Status == 1 && 
+                                                                                                                        b.IDSR == "" && 
+                                                                                                                        b.IDBillStorno.Trim() == ""
+                                                                                                                     )
+                                                                                                                    ).OrderByDescending(p => p.ErstellAm);
                                                 System.Collections.Generic.List<PMDS.db.Entities.bills> tBillsToDo = new List<db.Entities.bills>();
                                                 foreach (PMDS.db.Entities.bills rBillToStorno in tBillsStornoRech)
                                                 {
