@@ -151,51 +151,77 @@ namespace PMDS.Calc.UI
                                 PMDS.Calc.Logic.eBillStatus status, bool showFreigegebenAndStorniert, bool showExportierte,
                                 PMDS.Calc.Logic.eBillStatus BillStatusFreigegeben)
         { 
-              try
-              {
-                    db.Clear();
-                    
-                    
-                    if (this.typ == eTyp.calc)
-                    {
-                        this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
-                        this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
-                    }
-                    else if (this.typ == eTyp.depotgeld)
-                    {
-                        this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
-                    }
-                    else if (this.typ == eTyp.sr)
-                    {
-                        this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
-                        this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
-                    }
-                    else if (this.typ == eTyp.buchhaltung)
-                    {
-                        this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
-                    }
+            try
+            {
 
-                    grid.Refresh();
-                  
-                    this.setUI(grid);
-                    this.gridToStorno(status == PMDS.Calc.Logic.eBillStatus.storniert || showFreigegebenAndStorniert, ref db, ref grid );
-                    grid.Selected.Rows.Clear();
-                    this.sitemap.alleKeineButtonGrid((Infragistics.Win.Misc.UltraButton)butAlleKeine, false, (UltraGrid)grid, "", false);
-                    this.sitemap.anz = db.bills.Rows.Count;
-                    lblCount.Text = this.sitemap.setUIAnzahl(QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine Rechnungen gefunden!"));
-                    if (grid.Rows.Count > 0) 
-                    { 
-                        grid.DisplayLayout.Rows[0].ExpandAll();
-                        grid.ActiveRow = grid.Rows[0];
+                db.Clear();
+                    
+                    
+                if (this.typ == eTyp.calc)
+                {
+                    this.calculation.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                    this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
+                }
+                else if (this.typ == eTyp.depotgeld)
+                {
+                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                }
+                else if (this.typ == eTyp.sr)
+                {
+                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, false, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                    this.showAnzButtonsCalc(ref db, von, bis, vonRechDatum, bisRechDatum, grid, butAlleKeine, ref lblCount, rechTyp, status, showFreigegebenAndStorniert, showExportierte, BillStatusFreigegeben);
+                }
+                else if (this.typ == eTyp.buchhaltung)
+                {
+                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref db, rechTyp, status, true, ENV.IDKlinik, showFreigegebenAndStorniert, showExportierte);
+                }
+                    
+                grid.Refresh();
+
+                //Spalte Rechnungsempfänger im Grid füllen
+                using (PMDS.db.Entities.ERModellPMDSEntities dbKost = PMDSBusiness.getDBContext())
+                {
+                int Zeile = 0;
+                    foreach (dbPMDS.billsRow bill in db.bills)
+                    {
+                        Guid IDKost = new Guid(bill.IDKost);
+                        var rKost = (from k in dbKost.Kostentraeger
+                                        join ksub in dbKost.Kostentraeger on k.ID equals ksub.IDKostentraegerSub into ks
+                                        from ksub in ks.DefaultIfEmpty()
+                                        where k.ID == IDKost
+                                        select new
+                                        {
+                                            IDKlinik = k.ID,
+                                            IDKostentragerSub = k.IDKostentraegerSub,
+                                            Rechnungsempfaenger = k.Rechnungsempfaenger.Trim()
+                                        }).FirstOrDefault();
+
+                        if (rKost != null)
+                            grid.Rows[Zeile].Cells["Re-Empfänger"].Value = rKost.Rechnungsempfaenger;
+
+                        Zeile++;
                     }
-                    grid.ActiveRow = null;
+                }
+
+                this.setUI(grid);
+                this.gridToStorno(status == PMDS.Calc.Logic.eBillStatus.storniert || showFreigegebenAndStorniert, ref db, ref grid );
+                grid.Selected.Rows.Clear();
+                this.sitemap.alleKeineButtonGrid((Infragistics.Win.Misc.UltraButton)butAlleKeine, false, (UltraGrid)grid, "", false);
+                this.sitemap.anz = db.bills.Rows.Count;
+                lblCount.Text = this.sitemap.setUIAnzahl(QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine Rechnungen gefunden!"));
+                if (grid.Rows.Count > 0) 
+                { 
+                    grid.DisplayLayout.Rows[0].ExpandAll();
+                    grid.ActiveRow = grid.Rows[0];
+                }
+                grid.ActiveRow = null;
                     
                     
-              }
-              catch (Exception ex)
-              {
-                  PMDS.Global.ENV.HandleException(ex);
-              }
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
         }
 
         public void showAnzButtonsCalc(ref PMDS.Calc.Logic.dbPMDS db, DateTime von, DateTime bis, Nullable<DateTime> vonRechDatum, Nullable<DateTime> bisRechDatum,
@@ -236,7 +262,7 @@ namespace PMDS.Calc.UI
                 calculation calculation2 = new calculation();
                 if (this.typ == eTyp.calc)
                 {
-                    calculation2.load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, ENV.IDKlinik, showFreigegebenAndStorniert2, showExportierte);
+                    calculation2.Load(ref this.sitemap.listID, von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, ENV.IDKlinik, showFreigegebenAndStorniert2, showExportierte);
                     if (status == eBillStatus.offen)
                     {
                         dbFreigegeben = dbSelect;
@@ -248,7 +274,7 @@ namespace PMDS.Calc.UI
                 }
                 else if (this.typ == eTyp.sr)
                 {
-                    this.calculation.load(von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, ENV.IDKlinik, showFreigegebenAndStorniert2, showExportierte);
+                    this.calculation.Load(von, bis, vonRechDatum, bisRechDatum, ref dbSelect, rechTyp, status2, false, ENV.IDKlinik, showFreigegebenAndStorniert2, showExportierte);
                     if (status == eBillStatus.offen)
                     {
                         dbFreigegeben = dbSelect;

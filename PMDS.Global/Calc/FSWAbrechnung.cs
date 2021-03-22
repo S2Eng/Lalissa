@@ -150,7 +150,7 @@ namespace PMDS.Global
                             }
 
                             //Sammelrechnung-ID (ZAUF) setzen
-                            ret = SetISR(ListIDBillsFSW, Filename, db);
+                            ret = SetIDSR(ListIDBillsFSW, Filename, db);
                             if (ret.Length == 0)
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             else
@@ -162,7 +162,7 @@ namespace PMDS.Global
                         else
                         {
                             //Sammelrechnung-ID (ZAUF) setzen
-                            ret = SetISR(ListIDBillsFSW, "", db);
+                            ret = SetIDSR(ListIDBillsFSW, "", db);
                             if (ret.Length == 0)
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             else
@@ -206,7 +206,7 @@ namespace PMDS.Global
             }
         }
 
-        public string SetISR(List<string> lstBillsToUpdate, string IDSR, ERModellPMDSEntities db)
+        public string SetIDSR(List<string> lstBillsToUpdate, string IDSR, ERModellPMDSEntities db)
         {
             try
             {

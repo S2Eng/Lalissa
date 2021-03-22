@@ -50,6 +50,10 @@
             Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW ertstellen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("bills", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -83,6 +87,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RollungAnz");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("srJN", -1, 349668457);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn42 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechNrStorno", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Re-Empfänger", 1);
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
@@ -98,8 +103,6 @@
             Infragistics.Win.ValueList valueList2 = new Infragistics.Win.ValueList(349668457);
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW ertstellen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
@@ -108,8 +111,6 @@
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             this.panelTopSr = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelSucheAbrech = new QS2.Desktop.ControlManagment.BasePanel();
             this.ucKlinikDropDown1 = new PMDS.GUI.BaseControls.ucKlinikDropDown();
@@ -145,6 +146,8 @@
             this.lblCount = new QS2.Desktop.ControlManagment.BaseLabel();
             this.butAlleKeine = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+            this.btnFSW = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnFSWReset = new QS2.Desktop.ControlManagment.BaseButton();
             this.editor = new TXTextControl.TextControl();
             this.panelAll = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelGrid = new QS2.Desktop.ControlManagment.BasePanel();
@@ -153,7 +156,6 @@
             this.editorPrecalc = new TXTextControl.TextControl();
             this.panelTop2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelFSW = new QS2.Desktop.ControlManagment.BasePanel();
-            this.btnFSW = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelAuswahlFreigStornoAll = new QS2.Desktop.ControlManagment.BasePanel();
             this.cboBillStatus = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.lblBillStatus = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -181,7 +183,6 @@
             this.ultraGridBagLayoutManager1 = new Infragistics.Win.Misc.UltraGridBagLayoutManager(this.components);
             this.panelAll2 = new QS2.Desktop.ControlManagment.BasePanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnFSWReset = new QS2.Desktop.ControlManagment.BaseButton();
             this.panelTopSr.SuspendLayout();
             this.panelSucheAbrech.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpAbrechnen)).BeginInit();
@@ -693,6 +694,38 @@
             this.ultraToolTipManager1.DisplayStyle = Infragistics.Win.ToolTipDisplayStyle.WindowsVista;
             this.ultraToolTipManager1.InitialDelay = 0;
             // 
+            // btnFSW
+            // 
+            appearance30.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance30.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnFSW.Appearance = appearance30;
+            this.btnFSW.AutoWorkLayout = false;
+            this.btnFSW.IsStandardControl = false;
+            this.btnFSW.Location = new System.Drawing.Point(105, 3);
+            this.btnFSW.Name = "btnFSW";
+            this.btnFSW.Size = new System.Drawing.Size(87, 22);
+            this.btnFSW.TabIndex = 100;
+            this.btnFSW.Text = "ZAUF -> FSW";
+            ultraToolTipInfo2.ToolTipText = "Zahlungsaufforderung für FSW ertstellen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo2);
+            this.btnFSW.Click += new System.EventHandler(this.btnFSW_Click);
+            // 
+            // btnFSWReset
+            // 
+            appearance29.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance29.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnFSWReset.Appearance = appearance29;
+            this.btnFSWReset.AutoWorkLayout = false;
+            this.btnFSWReset.IsStandardControl = false;
+            this.btnFSWReset.Location = new System.Drawing.Point(48, 3);
+            this.btnFSWReset.Name = "btnFSWReset";
+            this.btnFSWReset.Size = new System.Drawing.Size(49, 22);
+            this.btnFSWReset.TabIndex = 101;
+            this.btnFSWReset.Text = "FSW -";
+            ultraToolTipInfo1.ToolTipText = "Status Zahlungsaufforderung für FSW zurücksetzen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSWReset, ultraToolTipInfo1);
+            this.btnFSWReset.Click += new System.EventHandler(this.btnFSWReset_Click);
+            // 
             // editor
             // 
             this.editor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -705,7 +738,6 @@
             this.editor.PageMargins.Top = 79.03D;
             this.editor.Size = new System.Drawing.Size(71, 48);
             this.editor.TabIndex = 100;
-            this.editor.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editor.UserNames = null;
             this.editor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textControl1_KeyPress);
             // 
@@ -845,6 +877,8 @@
             ultraGridColumn42.Header.Editor = null;
             ultraGridColumn42.Header.VisiblePosition = 2;
             ultraGridColumn42.Width = 85;
+            ultraGridColumn5.Header.Editor = null;
+            ultraGridColumn5.Header.VisiblePosition = 25;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn22,
             ultraGridColumn23,
@@ -870,7 +904,8 @@
             ultraGridColumn3,
             ultraGridColumn4,
             ultraGridColumn41,
-            ultraGridColumn42});
+            ultraGridColumn42,
+            ultraGridColumn5});
             ultraGridBand1.SummaryFooterCaption = "Summe";
             this.uGridAbrech2.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.uGridAbrech2.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
@@ -967,7 +1002,6 @@
             this.editorPrecalc.PageMargins.Top = 79.03D;
             this.editorPrecalc.Size = new System.Drawing.Size(71, 48);
             this.editorPrecalc.TabIndex = 102;
-            this.editorPrecalc.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editorPrecalc.UserNames = null;
             // 
             // panelTop2
@@ -994,22 +1028,6 @@
             this.panelFSW.Name = "panelFSW";
             this.panelFSW.Size = new System.Drawing.Size(198, 29);
             this.panelFSW.TabIndex = 111;
-            // 
-            // btnFSW
-            // 
-            appearance30.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance30.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnFSW.Appearance = appearance30;
-            this.btnFSW.AutoWorkLayout = false;
-            this.btnFSW.IsStandardControl = false;
-            this.btnFSW.Location = new System.Drawing.Point(105, 3);
-            this.btnFSW.Name = "btnFSW";
-            this.btnFSW.Size = new System.Drawing.Size(87, 22);
-            this.btnFSW.TabIndex = 100;
-            this.btnFSW.Text = "ZAUF -> FSW";
-            ultraToolTipInfo2.ToolTipText = "Zahlungsaufforderung für FSW ertstellen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo2);
-            this.btnFSW.Click += new System.EventHandler(this.btnFSW_Click);
             // 
             // panelAuswahlFreigStornoAll
             // 
@@ -1275,22 +1293,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // btnFSWReset
-            // 
-            appearance29.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance29.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnFSWReset.Appearance = appearance29;
-            this.btnFSWReset.AutoWorkLayout = false;
-            this.btnFSWReset.IsStandardControl = false;
-            this.btnFSWReset.Location = new System.Drawing.Point(48, 3);
-            this.btnFSWReset.Name = "btnFSWReset";
-            this.btnFSWReset.Size = new System.Drawing.Size(49, 22);
-            this.btnFSWReset.TabIndex = 101;
-            this.btnFSWReset.Text = "FSW -";
-            ultraToolTipInfo1.ToolTipText = "Status Zahlungsaufforderung für FSW zurücksetzen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnFSWReset, ultraToolTipInfo1);
-            this.btnFSWReset.Click += new System.EventHandler(this.btnFSWReset_Click);
             // 
             // ucCalcs
             // 
