@@ -10,6 +10,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace PMDS.Global
 {
@@ -18,10 +19,12 @@ namespace PMDS.Global
         private static string DateFormat = "yyyy-MM-dd";
         private static string DateTimeFormat = "yyyyMMddHHmmss";
         private string eZAUFID = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff");
-        private List<string> ListIDBillsFSW = new List<string>();                   //Sammelt die Rechungen des FSW
+        public List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
 
-        //private List<PMDS.Global.db.cEBInterfaceDB.Invoice> lstRechnungen = new List<db.cEBInterfaceDB.Invoice>();
         private List<Guid> lstZeilen = new List<Guid>();
+        public RichTextBox Rtf { get; set; } = new RichTextBox();
+        public Chilkat.Xml Xml { get; set; } = new Chilkat.Xml();
+        public PMDS.Global.db.cEBInterfaceDB.Transaction Transaction { get; set; } = new db.cEBInterfaceDB.Transaction();
 
         //------------------------ ebInterface / Abrechnungsschittstelle zum FSW -----------------------------
         public void GenerateFSWStructure(Guid IDKlinik, List<string> ListIDBills, bool SetStatusOnly)
@@ -29,12 +32,9 @@ namespace PMDS.Global
             try
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = calculation.delgetDBContext.Invoke())
-                {
-   
-                    decimal ZahlungsbetragNetto = 0;
-                    PMDS.Global.db.cEBInterfaceDB.Transaction Transaction = new db.cEBInterfaceDB.Transaction();
+                {   
+                    decimal ZahlungsbetragNetto = 0;                    
                     string MsgBoxTitle = SetStatusOnly ? "FSW-Status für Zahlungsaufforderung zurücksetzen" : "FSW-Zahlungsaufforderung erstellen und senden";
-
 
                     foreach (string IDBill in ListIDBills ?? new List<string>())
                     {
@@ -120,25 +120,46 @@ namespace PMDS.Global
                             string Filename = "eZAUF_" + ENV.FSW_SenderAdresse + "_" + eZAUFID + "_" + Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat) + ".xml";
                             string FQFileXML = Path.Combine(Filepath, Filename);
 
-                            Chilkat.Global glob = new Chilkat.Global();
-                            if (!glob.UnlockBundle("S2ENG.CB1032020_S2VwQSty6L2t"))
+                            using (Chilkat.Global glob = new Chilkat.Global())
                             {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("System-Fehler beim Erstellen der Zahlungsaufforderung:" + glob.LastErrorText, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
-                            }
+                                if (!glob.UnlockBundle("S2ENG.CB1032020_S2VwQSty6L2t"))
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("System-Fehler beim Erstellen der Zahlungsaufforderung:" + glob.LastErrorText, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
 
-                            //Transaction -> XML
-                            if (!MakeXML(Transaction, out Chilkat.Xml Xml, out string Msg))
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in Export-Format: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
-                            }
+                                //Transaction -> XML
+                                if (!MakeXML(Transaction, out Chilkat.Xml xmltmp, out string Msg))
+                                {
+                                    xmltmp.Dispose();
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in Export-Format: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
+                                else
+                                {
+                                    Xml = xmltmp;
+                                    xmltmp.Dispose();
+                                }
 
-                            //Speichern
-                            if (!SaveXML(Xml, ref FQFileXML, out Msg))
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
+                                //Transaction -> RTF
+                                if (!MakeRTF(Transaction, out RichTextBox rtb, out Msg))
+                                {
+                                    rtb.Dispose();
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in RTF-Text: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
+                                else
+                                {
+                                    Rtf = rtb;
+                                    rtb.Dispose();
+                                }
+
+                                //Speichern
+                                if (!SaveXML(Xml, ref FQFileXML, out Msg))
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
                             }
 
                             //Hochladen
@@ -182,6 +203,10 @@ namespace PMDS.Global
             catch (Exception ex)
             {
                 throw new Exception("PMDS.core.abrech.cs.FSWAbrechnung: " + ex.ToString());
+            }
+            finally
+            {
+                
             }
         }
 
@@ -234,6 +259,48 @@ namespace PMDS.Global
             }
         }
 
+        public static bool MakeRTF(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out RichTextBox rtb,  out string Message)
+        {
+
+            rtb = new RichTextBox();
+            Message = ""; 
+            try
+            {
+                AppendFormattedText(rtb, "eZAUF für FSW: SenderAdresse = " + Transaction.SenderAdresse + ", EmpfängerAdresse = " + Transaction.EmfaengerAdresse + ", TransactionID = " + Transaction.TransactionID + "\n", Color.Black, false, HorizontalAlignment.Left);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                return false;
+            }
+            //finally
+            //{
+            //    rtb.Dispose();
+            //}
+        }
+
+        private static void AppendFormattedText(RichTextBox rtb, string text, Color textColour, Boolean isBold, HorizontalAlignment alignment)
+        {
+            int start = rtb.TextLength;
+            rtb.AppendText(text);
+            int end = rtb.TextLength; // now longer by length of appended text
+
+            // Select text that was appended
+            rtb.Select(start, end - start);
+
+            #region Apply Formatting
+            rtb.SelectionColor = textColour;
+            rtb.SelectionAlignment = alignment;
+            rtb.SelectionFont = new Font(
+                 rtb.SelectionFont.FontFamily,
+                 rtb.SelectionFont.Size,
+                 (isBold ? FontStyle.Bold : FontStyle.Regular));
+            #endregion
+
+            // Unselect text
+            rtb.SelectionLength = 0;
+        }
 
         public static bool MakeXML(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out Chilkat.Xml Xml, out string Message)
         {
