@@ -326,6 +326,7 @@ namespace PMDS.Global
         public static Guid FSW_IDIntern = Guid.Empty;           //Guid des Kostenträgers FSW
         public static string FSW_SenderAdresse = "000000000";   //9-stellige Senderadresse
         public static string FSW_EZAUF = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
+        public static decimal FSW_Prozent = 4M;
 
         // ---------- Lizenzschalter ------------------
         public static int lic_eMailBewerber;
@@ -1474,6 +1475,7 @@ namespace PMDS.Global
                 SetENVValue("FSW_IDIntern", ref ENV.FSW_IDIntern);                                                          
                 SetENVValue("FSW_SenderAdresse", ref ENV.FSW_SenderAdresse, eTrim.yes, eDecrypt.no, eLengthType.fix, 9);    
                 SetENVValue("FSW_EZAUF", ref ENV.FSW_EZAUF);
+                SetENVValue("FSW_Prozent", ref ENV.FSW_Prozent);
 
                 SetENVValue("HAG_Url", ref ENV.HAG_Url);
                 SetENVValue("HAG_Zertifikat", ref ENV.HAG_Zertifikat);
@@ -1573,13 +1575,25 @@ namespace PMDS.Global
             }
         }
 
-
         private static void SetENVValue(string sVar, ref int ENVVar)
         {
             try
             {
                 bool isNumeric = int.TryParse(_Log.ConfigFile.GetStringValue(sVar).Trim(), out int n);
                 ENVVar = !isNumeric ? ENVVar : n;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ENV.SetENVValue (int): " + ex.ToString());
+            }
+        }
+
+        private static void SetENVValue(string sVar, ref decimal ENVVar)
+        {
+            try
+            {
+                bool isDecimal = decimal.TryParse(_Log.ConfigFile.GetStringValue(sVar).Trim(), out decimal n);
+                ENVVar = !isDecimal ? ENVVar : n;
             }
             catch (Exception ex)
             {

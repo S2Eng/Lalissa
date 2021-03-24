@@ -86,8 +86,8 @@ namespace PMDS.Global
                                     else if(generic.sEquals(Rechnungszeile.Kennung, "GSGB"))
                                     {
                                         Zeile++;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = Rechnungszeile.Brutto / 0.04M;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = 4;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = Rechnungszeile.Brutto / (ENV.FSW_Prozent /100);
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Rechnungszeile.Brutto;
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = 0;
                                         ZahlungsbetragNetto += Rechnungszeile.Brutto;
