@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
 using System.Drawing;
+using Syncfusion.XlsIO;
 
 namespace PMDS.Global
 {
@@ -22,9 +23,9 @@ namespace PMDS.Global
         public List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
 
         private List<Guid> lstZeilen = new List<Guid>();
-        public RichTextBox Rtf { get; set; } = new RichTextBox();
         public Chilkat.Xml Xml { get; set; } = new Chilkat.Xml();
         public PMDS.Global.db.cEBInterfaceDB.Transaction Transaction { get; set; } = new db.cEBInterfaceDB.Transaction();
+        private ExcelEngine excelEngine = new ExcelEngine();
 
         //------------------------ ebInterface / Abrechnungsschittstelle zum FSW -----------------------------
         public void GenerateFSWStructure(Guid IDKlinik, List<string> ListIDBills, bool SetStatusOnly)
@@ -117,8 +118,10 @@ namespace PMDS.Global
                         if (!SetStatusOnly)
                         {
                             string Filepath = ENV.FSW_EZAUF;    //offen User nach Speicherort fragen
-                            string Filename = "eZAUF_" + ENV.FSW_SenderAdresse + "_" + eZAUFID + "_" + Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat) + ".xml";
-                            string FQFileXML = Path.Combine(Filepath, Filename);
+                            string FilenameXML = "eZAUF_" + ENV.FSW_SenderAdresse + "_" + eZAUFID + "_" + Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat) + ".xml";
+                            string FilenameXLSX = "eZAUF_" + ENV.FSW_SenderAdresse + "_" + eZAUFID + "_" + Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat) + ".xlsx";
+                            string FQFileXML = Path.Combine(Filepath, FilenameXML);
+                            string FQFileXLSX = Path.Combine(Filepath, FilenameXLSX);
 
                             using (Chilkat.Global glob = new Chilkat.Global())
                             {
@@ -139,31 +142,38 @@ namespace PMDS.Global
                                 {
                                     Xml = xmltmp;
                                     xmltmp.Dispose();
+
+                                    //Speichern
+                                    if (!SaveXML(Xml, ref FQFileXML, out Msg))
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        return;
+                                    }
                                 }
 
-                                //Transaction -> RTF
-                                if (!MakeRTF(Transaction, out RichTextBox rtb, out Msg))
+                                //Transaction -> XLSX
+                                if (!MakeXLSX(Transaction, out ExcelEngine xlsx, out Msg))
                                 {
-                                    rtb.Dispose();
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in RTF-Text: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    xlsx.Dispose();
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in Excel (XLSX): " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
                                 else
                                 {
-                                    Rtf = rtb;
-                                    rtb.Dispose();
-                                }
+                                    excelEngine = xlsx;
+                                    xlsx.Dispose();
 
-                                //Speichern
-                                if (!SaveXML(Xml, ref FQFileXML, out Msg))
-                                {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    return;
+                                    //Speichern
+                                    if (!SaveXLSX(excelEngine, ref FQFileXLSX, out Msg))
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für ZAUF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        return;
+                                    }
                                 }
                             }
 
                             //Hochladen
-                            ret = Upload(Filename, FQFileXML);
+                            ret = Upload(FilenameXML, FQFileXML);
                             if (ret.Length > 0)
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung:" + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
@@ -171,7 +181,7 @@ namespace PMDS.Global
                             }
 
                             //Sammelrechnung-ID (ZAUF) setzen
-                            ret = SetIDSR(ListIDBillsFSW, Filename, db);
+                            ret = SetIDSR(ListIDBillsFSW, FilenameXML, db);
                             if (ret.Length == 0)
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             else
@@ -259,14 +269,22 @@ namespace PMDS.Global
             }
         }
 
-        public static bool MakeRTF(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out RichTextBox rtb,  out string Message)
+        public static bool MakeXLSX(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out ExcelEngine xlsx,  out string Message)
         {
-
-            rtb = new RichTextBox();
+            //https://help.syncfusion.com/file-formats/xlsio/overview
+            xlsx = new ExcelEngine();
+            IApplication app = xlsx.Excel;
+            app.DefaultVersion = ExcelVersion.Xlsx;
             Message = ""; 
+
             try
             {
-                AppendFormattedText(rtb, "eZAUF für FSW: SenderAdresse = " + Transaction.SenderAdresse + ", EmpfängerAdresse = " + Transaction.EmfaengerAdresse + ", TransactionID = " + Transaction.TransactionID + "\n", Color.Black, false, HorizontalAlignment.Left);
+                IWorkbook workbook = app.Workbooks.Create(1);
+                IWorksheet sheetHeader = workbook.Worksheets.Create("Übersicht");
+                IWorksheet sheetZAUF = workbook.Worksheets.Create("Zahlungsaufforderung");
+                IWorksheet sheetZAUFKorr = workbook.Worksheets.Create("Korr. Zahlungsaufforderung");
+
+                sheetHeader.Range["A1"].Text = "Abrechnung FSW " + Transaction.TransactionID;
                 return true;
             }
             catch (Exception ex)
@@ -274,32 +292,6 @@ namespace PMDS.Global
                 Message = ex.Message;
                 return false;
             }
-            //finally
-            //{
-            //    rtb.Dispose();
-            //}
-        }
-
-        private static void AppendFormattedText(RichTextBox rtb, string text, Color textColour, Boolean isBold, HorizontalAlignment alignment)
-        {
-            int start = rtb.TextLength;
-            rtb.AppendText(text);
-            int end = rtb.TextLength; // now longer by length of appended text
-
-            // Select text that was appended
-            rtb.Select(start, end - start);
-
-            #region Apply Formatting
-            rtb.SelectionColor = textColour;
-            rtb.SelectionAlignment = alignment;
-            rtb.SelectionFont = new Font(
-                 rtb.SelectionFont.FontFamily,
-                 rtb.SelectionFont.Size,
-                 (isBold ? FontStyle.Bold : FontStyle.Regular));
-            #endregion
-
-            // Unselect text
-            rtb.SelectionLength = 0;
         }
 
         public static bool MakeXML(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out Chilkat.Xml Xml, out string Message)
@@ -471,6 +463,38 @@ namespace PMDS.Global
                 return false;
             }
         }
+
+        public static bool SaveXLSX(ExcelEngine excelEngine, ref string FQFilename, out string Message)
+        {
+            Message = "";
+            string Filter = "";
+            try
+            {
+                using (SaveFileDialog dlg = new SaveFileDialog())
+                {
+                    dlg.InitialDirectory = ENV.FSW_EZAUF;
+                    dlg.FileName = FQFilename;
+                    dlg.Filter = "FSW-Zahlungsaufforderungen|*.xlsx";
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        FQFilename = dlg.FileName;
+                        excelEngine.Excel.Workbooks[0].SaveAs(dlg.FileName);
+                        return true;
+                    }
+                    else
+                    {
+                        throw new Exception("Speichern abgebrochen");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FQFilename = "";
+                Message = ex.Message;
+                return false;
+            }
+        }
+
 
         private static PMDS.db.Entities.bills readBill(string IDBill)
         {
