@@ -260,8 +260,8 @@ namespace PMDS.GUI.Kostentraeger
 
                     if (FSWMode)
                     {
-                        this._rKostenträger.GSBG = 4;
-                        this._rKostenträger.Name += " (FSW)";
+                        this._rKostenträger.GSBG = ENV.FSW_Prozent;
+                        this._rKostenträger.Name = "FSW für " + this._rKostenträger.Name;
                         this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
                         this._rKostenträger.Rechnungsempfaenger = "Fond Soziales Wien";
                         this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;

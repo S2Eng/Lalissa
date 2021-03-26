@@ -20,12 +20,28 @@ namespace PMDS.Global
         private static string DateFormat = "yyyy-MM-dd";
         private static string DateTimeFormat = "yyyyMMddHHmmss";
         private string eZAUFID = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff");
-        public List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
+        private string Msg = "";
 
-        private List<Guid> lstZeilen = new List<Guid>();
-        public Chilkat.Xml Xml { get; set; } = new Chilkat.Xml();
-        public PMDS.Global.db.cEBInterfaceDB.Transaction Transaction { get; set; } = new db.cEBInterfaceDB.Transaction();
-        private ExcelEngine excelEngine = new ExcelEngine();
+        public bool UseUploadToFSW { get; set; } = true;
+        public List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
+        public List<Guid> lstZeilen { get; set; } = new List<Guid>();
+        private Chilkat.Xml _FSWXml = new Chilkat.Xml();
+        public db.cEBInterfaceDB.Transaction Transaction { get; set; } = new db.cEBInterfaceDB.Transaction();
+        public bool UseXlsxExport { get; set; } = false;
+        private ExcelEngine _FSWXlsx = new ExcelEngine();
+
+
+        public Chilkat.Xml FSWXml
+        {
+            get { return _FSWXml; }
+            set { _FSWXml = value; }
+        }
+
+        public ExcelEngine FSWXlsx
+        {
+            get { return _FSWXlsx; }
+            set { _FSWXlsx = value; }
+        }
 
         //------------------------ ebInterface / Abrechnungsschittstelle zum FSW -----------------------------
         public void GenerateFSWStructure(Guid IDKlinik, List<string> ListIDBills, bool SetStatusOnly)
@@ -34,9 +50,9 @@ namespace PMDS.Global
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = calculation.delgetDBContext.Invoke())
                 {   
-                    decimal ZahlungsbetragNetto = 0;                    
                     string MsgBoxTitle = SetStatusOnly ? "FSW-Status für Zahlungsaufforderung zurücksetzen" : "FSW-Zahlungsaufforderung erstellen und senden";
 
+                    decimal Rechnungsbetrag = 0;
                     foreach (string IDBill in ListIDBills ?? new List<string>())
                     {
                         bills rBill = readBill(IDBill);
@@ -80,8 +96,7 @@ namespace PMDS.Global
                                     {
                                         //offen Basispreis aus DB holen (statt rechnen). Muss zwar das selbe rauskommen, aber ist sauberer.
                                         Zeile++;
-                                        Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto));
-                                        ZahlungsbetragNetto += Rechnungszeile.Netto;
+                                        Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
                                         lstZeilen.Add(new Guid(Rechnungszeile.ID));
                                     }
                                     else if(generic.sEquals(Rechnungszeile.Kennung, "GSGB"))
@@ -90,8 +105,7 @@ namespace PMDS.Global
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = Rechnungszeile.Brutto / (ENV.FSW_Prozent /100);
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Rechnungszeile.Brutto;
-                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = 0;
-                                        ZahlungsbetragNetto += Rechnungszeile.Brutto;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = Rechnungszeile.Brutto;
                                         lstZeilen.Add(new Guid(Rechnungszeile.ID));
                                     }
                                 }
@@ -99,8 +113,9 @@ namespace PMDS.Global
                             if (Zeile > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
                                 ListIDBillsFSW.Add(IDBill);
 
-                            Invoice.TotalGrossAmount = ZahlungsbetragNetto;
-                            Invoice.PayableAmount = ZahlungsbetragNetto;
+                            Invoice.TotalGrossAmount = Math.Round(rBill.betrag, 2, MidpointRounding.AwayFromZero);
+                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
+                            Rechnungsbetrag += Invoice.PayableAmount;
                             Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
                             Transaction.ArDocument.AddInvoiceToList(Invoice);
                         }
@@ -109,7 +124,7 @@ namespace PMDS.Global
                     Transaction.SenderAdresse = ENV.FSW_SenderAdresse;
                     Transaction.TransactionID = eZAUFID;
                     Transaction.ArDocument.Referenz = eZAUFID;
-                    Transaction.ArDocument.Rechnungsbetrag = ZahlungsbetragNetto;
+                    Transaction.ArDocument.Rechnungsbetrag = Rechnungsbetrag;
                     Transaction.ArDocument.Anzahl_Rechnungen = ListIDBillsFSW.Count;
 
                     string ret = "";
@@ -132,62 +147,53 @@ namespace PMDS.Global
                                 }
 
                                 //Transaction -> XML
-                                if (!MakeXML(Transaction, out Chilkat.Xml xmltmp, out string Msg))
+                                if (!MakeXML(Transaction, ref _FSWXml, out Msg))
                                 {
-                                    xmltmp.Dispose();
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in Export-Format: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in XML-Export-Format: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
-                                else
+                                if (!SaveXML(FSWXml, ref FQFileXML, out Msg))   //Transaction speichern
                                 {
-                                    Xml = xmltmp;
-                                    xmltmp.Dispose();
-
-                                    //Speichern
-                                    if (!SaveXML(Xml, ref FQFileXML, out Msg))
-                                    {
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                        return;
-                                    }
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("XML-Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
                                 }
-
+                                FSWXml = _FSWXml;
+                            }
+                            
+                            if (UseXlsxExport)
+                            {
                                 //Transaction -> XLSX
-                                if (!MakeXLSX(Transaction, out ExcelEngine xlsx, out Msg))
+                                if (!MakeXLSX(Transaction, ref _FSWXlsx, out Msg))
                                 {
-                                    xlsx.Dispose();
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in Excel (XLSX): " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
+                                if (!SaveXLSX(_FSWXlsx, ref FQFileXLSX, out Msg))   //Xlsx Speichern
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für ZAUF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
+                                FSWXlsx = _FSWXlsx;
+                            }
+
+                            if (UseUploadToFSW)    //Hochladen. Wenn nein -> nur XML erstellen (z.B. für Test)
+                            {
+                                ret = Upload(FilenameXML, FQFileXML);
+                                if (ret.Length > 0)
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung:" + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
+
+                                //Sammelrechnung-ID (ZAUF) setzen
+                                ret = SetIDSR(ListIDBillsFSW, FilenameXML, db);
+                                if (ret.Length == 0)
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                 else
                                 {
-                                    excelEngine = xlsx;
-                                    xlsx.Dispose();
-
-                                    //Speichern
-                                    if (!SaveXLSX(excelEngine, ref FQFileXLSX, out Msg))
-                                    {
-                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Exceldatei für ZAUF wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                        return;
-                                    }
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des ZAUF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
                                 }
-                            }
-
-                            //Hochladen
-                            ret = Upload(FilenameXML, FQFileXML);
-                            if (ret.Length > 0)
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung:" + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
-                            }
-
-                            //Sammelrechnung-ID (ZAUF) setzen
-                            ret = SetIDSR(ListIDBillsFSW, FilenameXML, db);
-                            if (ret.Length == 0)
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                            else
-                            {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet. Fehler beim Sichern des ZAUF-Zustands: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
                             }
                         }
                         else
@@ -205,7 +211,7 @@ namespace PMDS.Global
                     }
                     else
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Rechnungen für diese Akion qualifiziert.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Rechnung für diese Akion qualifiziert.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -269,11 +275,12 @@ namespace PMDS.Global
             }
         }
 
-        public static bool MakeXLSX(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out ExcelEngine xlsx,  out string Message)
+        public static bool MakeXLSX(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, ref ExcelEngine xlsxref,  out string Message)
         {
             //https://help.syncfusion.com/file-formats/xlsio/overview
-            xlsx = new ExcelEngine();
-            IApplication app = xlsx.Excel;
+
+            xlsxref = new ExcelEngine();
+            IApplication app = xlsxref.Excel;
             app.DefaultVersion = ExcelVersion.Xlsx;
             Message = ""; 
 
@@ -294,142 +301,139 @@ namespace PMDS.Global
             }
         }
 
-        public static bool MakeXML(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, out Chilkat.Xml Xml, out string Message)
+        public static bool MakeXML(PMDS.Global.db.cEBInterfaceDB.Transaction Transaction, ref Chilkat.Xml xTransaction, out string Message)
         {
             try
             {
                 Message = "";
-                Chilkat.Xml retXMl = null;
-                using (Chilkat.Xml xTransaction = new Chilkat.Xml())
+                NumberFormatInfo nfi = new NumberFormatInfo();
+                nfi.NumberDecimalSeparator = ".";
+                CultureInfo ci = new CultureInfo("de-DE");
+
+                xTransaction.Encoding = "utf-8";
+                xTransaction.Tag = "Transaction";
+                xTransaction.AddAttribute("SenderAdresse", Transaction.SenderAdresse);
+                xTransaction.AddAttribute("EmpfaengerAdresse", Transaction.EmfaengerAdresse);
+                xTransaction.AddAttribute("TransactionID", Transaction.TransactionID);
+
+                Chilkat.Xml xArDocument = xTransaction.NewChild("ArDocument", "");
+                xArDocument.AddAttribute("Referenz", Transaction.ArDocument.Referenz);
+                xArDocument.AddAttribute("User_Erstellung", Transaction.ArDocument.User_Erstellung);
+                xArDocument.AddAttribute("Datum_Erstellung", Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat, ci));
+                xArDocument.AddAttribute("Rechunungsbetrag", Transaction.ArDocument.Rechnungsbetrag.ToString(nfi));
+                xArDocument.AddAttribute("Anzahl_Rechnung", Transaction.ArDocument.Anzahl_Rechnungen.ToString(nfi));
+
+                foreach (PMDS.Global.db.cEBInterfaceDB.Invoice Invoice in Transaction.ArDocument.lstInvoices)
                 {
-                    NumberFormatInfo nfi = new NumberFormatInfo();
-                    nfi.NumberDecimalSeparator = ".";
-                    CultureInfo ci = new CultureInfo("de-DE");
+                    //Leere Invoices mit Rechnungssumme 0 überspringen
+                    if (Invoice.Details.ItemList.Count == 0)
+                        continue;
 
-                    xTransaction.Encoding = "utf-8";
-                    xTransaction.Tag = "Transaction";
-                    xTransaction.AddAttribute("SenderAdresse", Transaction.SenderAdresse);
-                    xTransaction.AddAttribute("EmpfaengerAdresse", Transaction.EmfaengerAdresse);
-                    xTransaction.AddAttribute("TransactionID", Transaction.TransactionID);
-
-                    Chilkat.Xml xArDocument = xTransaction.NewChild("ArDocument", "");
-                    xArDocument.AddAttribute("Referenz", Transaction.ArDocument.Referenz);
-                    xArDocument.AddAttribute("User_Erstellung", Transaction.ArDocument.User_Erstellung);
-                    xArDocument.AddAttribute("Datum_Erstellung", Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat, ci));
-                    xArDocument.AddAttribute("Rechunungsbetrag", Transaction.ArDocument.Rechnungsbetrag.ToString(nfi));
-                    xArDocument.AddAttribute("Anzahl_Rechnung", Transaction.ArDocument.Anzahl_Rechnungen.ToString(nfi));
-
-                    foreach (PMDS.Global.db.cEBInterfaceDB.Invoice Invoice in Transaction.ArDocument.lstInvoices)
+                    using (Chilkat.Xml xInvoice = new Chilkat.Xml())
                     {
-                        //Leere Invoices mit Rechnungssumme 0 überspringen
-                        if (Invoice.Details.ItemList.Count == 0)
-                            continue;
-
-                        using (Chilkat.Xml xInvoice = new Chilkat.Xml())
+                        xInvoice.Tag = "Invoice";
+                        foreach (db.cEBInterfaceDB.cAttribute att in Invoice.Attributes)
                         {
-                            xInvoice.Tag = "Invoice";
-                            foreach (db.cEBInterfaceDB.cAttribute att in Invoice.Attributes)
+                            xInvoice.AddAttribute(att.AttributeName, att.AttributeValue);
+                        }
+                        Chilkat.Xml xInvoiceNumber = xInvoice.NewChild("InvoiceNumber", Invoice.InvoiceNumber);
+                        Chilkat.Xml xInvoiceDate = xInvoice.NewChild("InvoiceDate", Invoice.InvoiceDate.ToString(DateFormat, ci));
+                        Chilkat.Xml xAdditionalInformation = xInvoice.NewChild("AdditionalInformation", "");
+
+                        Chilkat.Xml xDelivery = xInvoice.NewChild("Delilvery", "");
+                        Chilkat.Xml xPeriod = xDelivery.NewChild("Period", "");
+                        Chilkat.Xml xFromDate = xPeriod.NewChild("FromDate", Invoice.Delivery.Period.FromDate.ToString(DateFormat, ci));
+                        Chilkat.Xml xToDate = xPeriod.NewChild("ToDate", Invoice.Delivery.Period.ToDate.ToString(DateFormat, ci));
+
+                        Chilkat.Xml xBiller = xInvoice.NewChild("Biller", "");
+                        Chilkat.Xml xBillerVATIdentificationNumber = xBiller.NewChild("VATIdentificationNumber", Invoice.Biller.VATIdentificationNumber);
+                        Chilkat.Xml xBillerAdress = xBiller.NewChild("Adress", "");
+                        Chilkat.Xml xBillerAdressName = xBillerAdress.NewChild("Name", Invoice.Biller.Adress.Name);
+                        Chilkat.Xml xBillerAdressStreet = xBillerAdress.NewChild("Street", Invoice.Biller.Adress.Street);
+                        Chilkat.Xml xBillerAdressPOBox = xBillerAdress.NewChild("POBox", "");
+                        Chilkat.Xml xBillerAdressTown = xBillerAdress.NewChild("Town", Invoice.Biller.Adress.Town);
+                        Chilkat.Xml xBillerAdressZIP = xBillerAdress.NewChild("ZIP", Invoice.Biller.Adress.ZIP);
+                        Chilkat.Xml xBillerAdressCountry = xBillerAdress.NewChild("Country", Invoice.Biller.Adress.Country.Value);
+                        Chilkat.Xml xBillerBillersInvoiceRecipientID = xBiller.NewChild("InvoiceRecipientsBillerID", Invoice.Biller.InvoiceRecipientsBillerID);
+                        xBillerAdressCountry.AddAttribute(Invoice.Biller.Adress.Country.AttributeName, Invoice.Biller.Adress.Country.AttributeValue);
+
+                        Chilkat.Xml xInvoiceRecipient = xInvoice.NewChild("InvoiceRecipient", "");
+                        Chilkat.Xml xInvoiceRecipientVATIdentificationNumber = xInvoiceRecipient.NewChild("VATIdentificationNumber", Invoice.InvoiceRecipient.VATIdentificationNumber);
+                        Chilkat.Xml xFurtherIdentification = xInvoiceRecipient.NewChild("FurtherIdentification", Invoice.InvoiceRecipient.FurtherIdentification.Value);
+                        xInvoiceRecipient.AddAttribute(Invoice.InvoiceRecipient.FurtherIdentification.AttributeName, Invoice.InvoiceRecipient.FurtherIdentification.AttributeValue);
+                        Chilkat.Xml xInvoiceRecipientAdress = xInvoiceRecipient.NewChild("Adress", "");
+                        Chilkat.Xml xInvoiceRecipientAdressName = xInvoiceRecipientAdress.NewChild("Name", Invoice.InvoiceRecipient.Adress.Name);
+                        Chilkat.Xml xInvoiceRecipientAdressStreet = xInvoiceRecipientAdress.NewChild("Street", Invoice.InvoiceRecipient.Adress.Street);
+                        Chilkat.Xml xInvoiceRecipientAdressPOBox = xInvoiceRecipientAdress.NewChild("POBox", "");
+                        Chilkat.Xml xInvoiceRecipientAdressTown = xInvoiceRecipientAdress.NewChild("Town", Invoice.InvoiceRecipient.Adress.Town);
+                        Chilkat.Xml xInvoiceRecipientAdressZIP = xInvoiceRecipientAdress.NewChild("ZIP", Invoice.InvoiceRecipient.Adress.ZIP);
+                        Chilkat.Xml xInvoiceRecipientAdressCountry = xInvoiceRecipientAdress.NewChild("Country", Invoice.InvoiceRecipient.Adress.Country.Value);
+                        xInvoiceRecipientAdressCountry.AddAttribute(Invoice.InvoiceRecipient.Adress.Country.AttributeName, Invoice.InvoiceRecipient.Adress.Country.AttributeValue);
+
+                        Chilkat.Xml xDetails = xInvoice.NewChild("Details", "");
+                        Chilkat.Xml xDetailsHeaderDescription = xDetails.NewChild("HeaderDescription", Invoice.Details.HeaderDescription);
+                        Chilkat.Xml xDetailsItemList = xDetails.NewChild("ItemList", "");
+
+                        foreach (db.cEBInterfaceDB.ListLineItem item in Invoice.Details.ItemList)
+                        {
+                            using (Chilkat.Xml xListLineItem = new Chilkat.Xml())
                             {
-                                xInvoice.AddAttribute(att.AttributeName, att.AttributeValue);
+                                xListLineItem.Tag = "ListLineItem";
+                                Chilkat.Xml xListLineItemPositionNumber = xListLineItem.NewChild("PositionNumber", item.PositionNumber.ToString());
+                                Chilkat.Xml xListLineItemDescription = xListLineItem.NewChild("Description", item.Description);
+                                Chilkat.Xml xListLineItemArticleNumber = xListLineItem.NewChild("ArticleNumber", "");
+                                Chilkat.Xml xListLineItemQuantitiy = xListLineItem.NewChild("Quantity", item.Quantity.Value.ToString());
+                                xListLineItemQuantitiy.AddAttribute(item.Quantity.AttributeName, item.Quantity.AttributeValue);
+                                Chilkat.Xml xListLineItemUnitPrice = xListLineItem.NewChild("UnitPrice", item.UnitPrice.Value.ToString(nfi));
+                                xListLineItemUnitPrice.AddAttribute(item.UnitPrice.AttributeName, item.UnitPrice.AttributeValue);
+                                Chilkat.Xml xListLineItemBillerOrdersReference = xListLineItem.NewChild("BillersOrderReference", "");
+                                Chilkat.Xml xListLineItemBillerOrdersReferenceOrderID = xListLineItemBillerOrdersReference.NewChild("OrderID", item.BillersOrderReferenz.OrderID);
+                                Chilkat.Xml xListLineItemTaxItem = xListLineItem.NewChild("TaxItem", "");
+                                Chilkat.Xml xListLineItemTaxItemTaxableAmount = xListLineItemTaxItem.NewChild("TaxableAmount", item.TaxItem.TaxableAmount.ToString(nfi));
+                                Chilkat.Xml xListLineItemTaxItemTaxPercent = xListLineItemTaxItem.NewChild("TaxPercent", item.TaxItem.TaxPercent.Value.ToString(nfi));
+                                xListLineItemTaxItemTaxPercent.AddAttribute(item.TaxItem.TaxPercent.AttributeName, item.TaxItem.TaxPercent.AttributeValue);
+                                Chilkat.Xml xListLineItemAmount = xListLineItem.NewChild("ItemAmount", item.LineItemAmount.ToString(nfi));
+                                xDetailsItemList.AddChildTree(xListLineItem);
                             }
-                            Chilkat.Xml xInvoiceNumber = xInvoice.NewChild("InvoiceNumber", Invoice.InvoiceNumber);
-                            Chilkat.Xml xInvoiceDate = xInvoice.NewChild("InvoiceDate", Invoice.InvoiceDate.ToString(DateFormat, ci));
-                            Chilkat.Xml xAdditionalInformation = xInvoice.NewChild("AdditionalInformation", "");
+                        }
 
-                            Chilkat.Xml xDelivery = xInvoice.NewChild("Delilvery", "");
-                            Chilkat.Xml xPeriod = xDelivery.NewChild("Period", "");
-                            Chilkat.Xml xFromDate = xPeriod.NewChild("FromDate", Invoice.Delivery.Period.FromDate.ToString(DateFormat, ci));
-                            Chilkat.Xml xToDate = xPeriod.NewChild("ToDate", Invoice.Delivery.Period.ToDate.ToString(DateFormat, ci));
+                        Chilkat.Xml xReductionAndSurchargeDetails = xInvoice.NewChild("ReductionAndSurchargeDetails", "");
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurcharge = xReductionAndSurchargeDetails.NewChild("Surcharge", "");
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurchargeBaseAmount = xReductionAndSurchargeDetailsSurcharge.NewChild("BaseAmount", Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount.ToString(nfi));
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurchargePercentage = xReductionAndSurchargeDetailsSurcharge.NewChild("Percentage", Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage.ToString(nfi));
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurchargeAmount = xReductionAndSurchargeDetailsSurcharge.NewChild("Amount", Invoice.ReductionAndSurchargeDetails.Surcharge.Amount.ToString(nfi));
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurchargeComment = xReductionAndSurchargeDetailsSurcharge.NewChild("Comment", Invoice.ReductionAndSurchargeDetails.Surcharge.Comment);
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurchargeTaxItem = xReductionAndSurchargeDetailsSurcharge.NewChild("TaxItem", "");
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurchargeTaxItemTaxableAmount = xReductionAndSurchargeDetailsSurchargeTaxItem.NewChild("TaxableAmount", Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount.ToString(nfi));
+                        Chilkat.Xml xReductionAndSurchargeDetailsSurchargeTaxItemTaxPercent = xReductionAndSurchargeDetailsSurchargeTaxItem.NewChild("TaxPercent", Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.Value.ToString(nfi));
+                        xReductionAndSurchargeDetailsSurchargeTaxItemTaxPercent.AddAttribute(Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.AttributeName, Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.AttributeValue);
 
-                            Chilkat.Xml xBiller = xInvoice.NewChild("Biller", "");
-                            Chilkat.Xml xBillerVATIdentificationNumber = xBiller.NewChild("VATIdentificationNumber", Invoice.Biller.VATIdentificationNumber);
-                            Chilkat.Xml xBillerAdress = xBiller.NewChild("Adress", "");
-                            Chilkat.Xml xBillerAdressName = xBillerAdress.NewChild("Name", Invoice.Biller.Adress.Name);
-                            Chilkat.Xml xBillerAdressStreet = xBillerAdress.NewChild("Street", Invoice.Biller.Adress.Street);
-                            Chilkat.Xml xBillerAdressPOBox = xBillerAdress.NewChild("POBox", "");
-                            Chilkat.Xml xBillerAdressTown = xBillerAdress.NewChild("Town", Invoice.Biller.Adress.Town);
-                            Chilkat.Xml xBillerAdressZIP = xBillerAdress.NewChild("ZIP", Invoice.Biller.Adress.ZIP);
-                            Chilkat.Xml xBillerAdressCountry = xBillerAdress.NewChild("Country", Invoice.Biller.Adress.Country.Value);
-                            Chilkat.Xml xBillerBillersInvoiceRecipientID = xBiller.NewChild("BillersInvoiceRecipientID", Invoice.Biller.InvoiceRecipientsBillerID);
-                            xBillerAdressCountry.AddAttribute(Invoice.Biller.Adress.Country.AttributeName, Invoice.Biller.Adress.Country.AttributeValue);
+                        Chilkat.Xml xTotalGrossAmount = xInvoice.NewChild("TotalGrossAmount", Invoice.TotalGrossAmount.ToString(nfi));
+                        Chilkat.Xml xPayableAmount = xInvoice.NewChild("PayableAmount", Invoice.PayableAmount.ToString(nfi));
 
-                            Chilkat.Xml xInvoiceRecipient = xInvoice.NewChild("InvoiceRecipient", "");
-                            Chilkat.Xml xInvoiceRecipientVATIdentificationNumber = xInvoiceRecipient.NewChild("VATIdentificationNumber", Invoice.InvoiceRecipient.VATIdentificationNumber);
-                            Chilkat.Xml xFurtherIdentification = xInvoiceRecipient.NewChild("FurtherIdentification", Invoice.InvoiceRecipient.FurtherIdentification.Value);
-                            xInvoiceRecipient.AddAttribute(Invoice.InvoiceRecipient.FurtherIdentification.AttributeName, Invoice.InvoiceRecipient.FurtherIdentification.AttributeValue);
-                            Chilkat.Xml xInvoiceRecipientAdress = xInvoiceRecipient.NewChild("Adress", "");
-                            Chilkat.Xml xInvoiceRecipientAdressName = xInvoiceRecipientAdress.NewChild("Name", Invoice.InvoiceRecipient.Adress.Name);
-                            Chilkat.Xml xInvoiceRecipientAdressStreet = xInvoiceRecipientAdress.NewChild("Street", Invoice.InvoiceRecipient.Adress.Street);
-                            Chilkat.Xml xInvoiceRecipientAdressPOBox = xInvoiceRecipientAdress.NewChild("POBox", "");
-                            Chilkat.Xml xInvoiceRecipientAdressTown = xInvoiceRecipientAdress.NewChild("Town", Invoice.InvoiceRecipient.Adress.Town);
-                            Chilkat.Xml xInvoiceRecipientAdressZIP = xInvoiceRecipientAdress.NewChild("ZIP", Invoice.InvoiceRecipient.Adress.ZIP);
-                            Chilkat.Xml xInvoiceRecipientAdressCountry = xInvoiceRecipientAdress.NewChild("Country", Invoice.InvoiceRecipient.Adress.Country.Value);
-                            xInvoiceRecipientAdressCountry.AddAttribute(Invoice.InvoiceRecipient.Adress.Country.AttributeName, Invoice.InvoiceRecipient.Adress.Country.AttributeValue);
+                        Chilkat.Xml xPaymentMethod = xInvoice.NewChild("PaymentMethod", "");
+                        Chilkat.Xml xPaymentMethodComment = xPaymentMethod.NewChild("Comment", "");
+                        Chilkat.Xml xUniversalBankTransaction = xPaymentMethod.NewChild("UniversalBankTransaction", "");
+                        xUniversalBankTransaction.AddAttribute(Invoice.PaymentMethod.UniversalBankTransaction.AttributeName, Invoice.PaymentMethod.UniversalBankTransaction.AttributeValue);
+                        Chilkat.Xml xBeneficiaryAccount = xUniversalBankTransaction.NewChild("BeneficiaryAccount", "");
+                        Chilkat.Xml xBankName = xBeneficiaryAccount.NewChild("BankName", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName);
+                        Chilkat.Xml xBankCode = xBeneficiaryAccount.NewChild("BankCode", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankCode.Value);
+                        xBankCode.AddAttribute(Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankCode.AttributeName, Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankCode.AttributeValue);
+                        Chilkat.Xml xBIC = xBeneficiaryAccount.NewChild("BIC", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BIC);
+                        Chilkat.Xml xBankAccountNr = xBeneficiaryAccount.NewChild("BankAccountNr", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankAccountNr);
+                        Chilkat.Xml xIBAN = xBeneficiaryAccount.NewChild("IBAN", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.IBAN);
+                        Chilkat.Xml xBankAccountOwner = xBeneficiaryAccount.NewChild("BankAccountOwner", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankAccountOwner);
 
-                            Chilkat.Xml xDetails = xInvoice.NewChild("Details", "");
-                            Chilkat.Xml xDetailsHeaderDescription = xDetails.NewChild("HeaderDescription", Invoice.Details.HeaderDescription);
-                            Chilkat.Xml xDetailsItemList = xDetails.NewChild("ItemList", "");
-
-                            foreach (db.cEBInterfaceDB.ListLineItem item in Invoice.Details.ItemList)
-                            {
-                                using (Chilkat.Xml xListLineItem = new Chilkat.Xml())
-                                {
-                                    Chilkat.Xml xListLineItemPositionNumber = xListLineItem.NewChild("PositionNumber", item.PositionNumber.ToString());
-                                    Chilkat.Xml xListLineItemDescription = xListLineItem.NewChild("Description", item.Description);
-                                    Chilkat.Xml xListLineItemArticleNumber = xListLineItem.NewChild("ArticleNumber", "");
-                                    Chilkat.Xml xListLineItemQuantitiy = xListLineItem.NewChild("Quantity", item.Quantity.Value.ToString());
-                                    xListLineItemQuantitiy.AddAttribute(item.Quantity.AttributeName, item.Quantity.AttributeValue);
-                                    Chilkat.Xml xListLineItemUnitPrice = xListLineItem.NewChild("UnitPrice", item.UnitPrice.Value.ToString(nfi));
-                                    xListLineItemUnitPrice.AddAttribute(item.UnitPrice.AttributeName, item.UnitPrice.AttributeValue);
-                                    Chilkat.Xml xListLineItemBillerOrdersReference = xListLineItem.NewChild("BillersOrderReference", "");
-                                    Chilkat.Xml xListLineItemBillerOrdersReferenceOrderID = xListLineItemBillerOrdersReference.NewChild("OrderID", item.BillersOrderReferenz.OrderID);
-                                    Chilkat.Xml xListLineItemTaxItem = xListLineItem.NewChild("TaxItem", "");
-                                    Chilkat.Xml xListLineItemTaxItemTaxableAmount = xListLineItemTaxItem.NewChild("TaxableAmount", item.TaxItem.TaxableAmount.ToString(nfi));
-                                    Chilkat.Xml xListLineItemTaxItemTaxPercent = xListLineItemTaxItem.NewChild("TaxPercent", item.TaxItem.TaxPercent.Value.ToString(nfi));
-                                    xListLineItemTaxItemTaxPercent.AddAttribute(item.TaxItem.TaxPercent.AttributeName, item.TaxItem.TaxPercent.AttributeValue);
-                                    Chilkat.Xml xListLineItemAmount = xListLineItem.NewChild("ItemAmount", item.LineItemAmount.ToString(nfi));
-                                    xDetails.AddChildTree(xListLineItem);
-                                }
-                            }
-
-                            Chilkat.Xml xReductionAndSurchargeDetails = xInvoice.NewChild("ReductionAndSurchargeDetails", "");
-                            Chilkat.Xml xReductionAndSurchargeDetailsSurcharge = xReductionAndSurchargeDetails.NewChild("Surcharge", "");
-                            Chilkat.Xml xReductionAndSurchargeDetailsSurchargeBaseAmount = xReductionAndSurchargeDetailsSurcharge.NewChild("BaseAmount", Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount.ToString(nfi));
-                            Chilkat.Xml xReductionAndSurchargeDetailsSurchargePercentage = xReductionAndSurchargeDetailsSurcharge.NewChild("Percentage", Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage.ToString(nfi));
-                            Chilkat.Xml xReductionAndSurchargeDetailsSurchargeAmount = xReductionAndSurchargeDetailsSurcharge.NewChild("Amount", Invoice.ReductionAndSurchargeDetails.Surcharge.Amount.ToString(nfi));
-                            Chilkat.Xml xReductionAndSurchargeDetailsSurchargeTaxItem = xReductionAndSurchargeDetailsSurcharge.NewChild("TaxItem", "");
-                            Chilkat.Xml xReductionAndSurchargeDetailsSurchargeTaxItemTaxableAmount = xReductionAndSurchargeDetailsSurchargeTaxItem.NewChild("TaxableAmount", Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount.ToString(nfi));
-                            Chilkat.Xml xReductionAndSurchargeDetailsSurchargeTaxItemTaxPercent = xReductionAndSurchargeDetailsSurchargeTaxItem.NewChild("TaxPercent", Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.Value.ToString(nfi));
-                            xReductionAndSurchargeDetailsSurchargeTaxItemTaxPercent.AddAttribute(Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.AttributeName, Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.AttributeValue);
-
-                            Chilkat.Xml xTotalGrossAmount = xInvoice.NewChild("TotalGrossAmount", Invoice.TotalGrossAmount.ToString(nfi));
-                            Chilkat.Xml xPayableAmount = xInvoice.NewChild("PayableAmount", Invoice.PayableAmount.ToString(nfi));
-
-                            Chilkat.Xml xPaymentMethod = xInvoice.NewChild("PaymentMethod", "");
-                            Chilkat.Xml xPaymentMethodComment = xPaymentMethod.NewChild("Comment", "");
-                            Chilkat.Xml xUniversalBankTransaction = xPaymentMethod.NewChild("UniversalBankTransaction", "");
-                            xUniversalBankTransaction.AddAttribute(Invoice.PaymentMethod.UniversalBankTransaction.AttributeName, Invoice.PaymentMethod.UniversalBankTransaction.AttributeValue);
-                            Chilkat.Xml xBeneficiaryAccount = xUniversalBankTransaction.NewChild("BeneficiaryAccount", "");
-                            Chilkat.Xml xBankName = xBeneficiaryAccount.NewChild("BankName", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName);
-                            Chilkat.Xml xBankCode = xBeneficiaryAccount.NewChild("BankCode", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankCode.Value);
-                            xBankCode.AddAttribute(Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankCode.AttributeName, Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankCode.AttributeValue);
-                            Chilkat.Xml xBIC = xBeneficiaryAccount.NewChild("BIC", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BIC);
-                            Chilkat.Xml xBankAccountNr = xBeneficiaryAccount.NewChild("BankAccountNr", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankAccountNr);
-                            Chilkat.Xml xIBAN = xBeneficiaryAccount.NewChild("IBAN", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.IBAN);
-                            Chilkat.Xml xBankAccountOwner = xBeneficiaryAccount.NewChild("BankAccountOwner", Invoice.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankAccountOwner);
-
-                            xArDocument.AddChildTree(xInvoice);
-                        }                        
+                        xArDocument.AddChildTree(xInvoice);
                     }
-                    Xml = xTransaction;
-                    return true;
                 }
+
+                return true;
             }
             catch (Exception ex)
             {
-                Xml = new Chilkat.Xml();
                 Message = ex.Message;
-                return false;
+                return false; 
             }
         }
 
@@ -447,8 +451,14 @@ namespace PMDS.Global
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
                         FQFilename = dlg.FileName;
-                        Xml.SaveXml(dlg.FileName);
-                        return true;
+                        if (Xml.SaveXml(dlg.FileName))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            throw new Exception("Fehler beim Speichern der Zahlungsaufforderung: " + Xml.LastErrorText);
+                        }
                     }
                     else
                     {

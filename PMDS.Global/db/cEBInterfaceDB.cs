@@ -147,7 +147,7 @@ namespace PMDS.Global.db
             public decimal BaseAmount { get; set; } = 0;
             public decimal Percentage { get; set; } = 4;
             public decimal Amount { get; set; } = 0;
-            public string Comment = "";
+            public string Comment { get; } = "";
             public TaxItem TaxItem { get; set; } = new TaxItem();
         }
 
@@ -242,7 +242,7 @@ namespace PMDS.Global.db
                     ret.InvoiceRecipient.Adress.Street = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Strasse : rKlinik.Strasse;
                     ret.InvoiceRecipient.Adress.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.PLZ : rKlinik.PLZ;
                     ret.InvoiceRecipient.Adress.Town = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Ort : rKlinik.Ort;
-                    ret.InvoiceRecipient.BillersInvoiceRecipientID = rKlient.BillersInvoiceRecipientID;
+                    ret.InvoiceRecipient.BillersInvoiceRecipientID = String.IsNullOrWhiteSpace(rKlient.BillersInvoiceRecipientID) ? rKlient.SVNr : rKlient.BillersInvoiceRecipientID;
 
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName = rKlinik.Bank;
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.IBAN = rKlinik.IBAN;
@@ -256,7 +256,7 @@ namespace PMDS.Global.db
             }
         }
 
-        public ListLineItem MakeNewLineItem(string Rechnungsnummer, int PositionNumber, string Description, decimal Quantity, decimal PreisProEinheit, decimal Netto)
+        public ListLineItem MakeNewLineItem(string Rechnungsnummer, int PositionNumber, string Description, decimal Quantity, decimal PreisProEinheit, decimal Netto, decimal TaxableAmount, decimal TaxPercent)
         {
             try
             {
@@ -267,6 +267,8 @@ namespace PMDS.Global.db
                 NewLine.UnitPrice.Value = PreisProEinheit;
                 NewLine.BillersOrderReferenz.OrderID = Rechnungsnummer + PositionNumber.ToString();
                 NewLine.LineItemAmount = Netto;
+                NewLine.TaxItem.TaxableAmount = TaxableAmount;
+                NewLine.TaxItem.TaxPercent.Value = TaxPercent;
                 return NewLine;
             }
             catch (Exception ex)
