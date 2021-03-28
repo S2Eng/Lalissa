@@ -15,7 +15,8 @@ namespace PMDS.UI.Sitemap
         einzahlungBuchen = 5,
         SperreRollungLöschen = 6,
         fsw = 7,
-        fswreset = 8
+        fswreset = 8,
+        fswNoUpload = 9
     }
 
 

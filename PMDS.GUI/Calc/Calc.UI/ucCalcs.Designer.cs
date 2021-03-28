@@ -51,7 +51,8 @@
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW ertstellen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW erstellen (zum Erstellen und Senden Umschaltaste hal" +
+        "ten und Klicken)", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
@@ -705,8 +706,10 @@
             this.btnFSW.Name = "btnFSW";
             this.btnFSW.Size = new System.Drawing.Size(87, 22);
             this.btnFSW.TabIndex = 100;
-            this.btnFSW.Text = "ZAUF -> FSW";
-            ultraToolTipInfo2.ToolTipText = "Zahlungsaufforderung für FSW ertstellen";
+            this.btnFSW.Text = "ZAUF ( FSW)";
+            ultraToolTipInfo2.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
+            ultraToolTipInfo2.ToolTipText = "Zahlungsaufforderung für FSW erstellen (zum Erstellen und Senden Umschaltaste hal" +
+    "ten und Klicken)";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo2);
             this.btnFSW.Click += new System.EventHandler(this.btnFSW_Click);
             // 
@@ -868,7 +871,7 @@
             ultraGridColumn4.Header.Editor = null;
             ultraGridColumn4.Header.VisiblePosition = 23;
             ultraGridColumn4.Width = 53;
-            ultraGridColumn41.Header.Caption = "Auf Sam.Rech.";
+            ultraGridColumn41.Header.Caption = "Auf SR/ZAUF";
             ultraGridColumn41.Header.Editor = null;
             ultraGridColumn41.Header.VisiblePosition = 11;
             ultraGridColumn41.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.CheckBox;

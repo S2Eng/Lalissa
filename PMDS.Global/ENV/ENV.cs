@@ -327,6 +327,7 @@ namespace PMDS.Global
         public static string FSW_SenderAdresse = "000000000";   //9-stellige Senderadresse
         public static string FSW_EZAUF = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
         public static decimal FSW_Prozent = 4M;
+        public static bool FSW_SaveXLSX = false;
 
         // ---------- Lizenzschalter ------------------
         public static int lic_eMailBewerber;
@@ -1476,6 +1477,7 @@ namespace PMDS.Global
                 SetENVValue("FSW_SenderAdresse", ref ENV.FSW_SenderAdresse, eTrim.yes, eDecrypt.no, eLengthType.fix, 9);    
                 SetENVValue("FSW_EZAUF", ref ENV.FSW_EZAUF);
                 SetENVValue("FSW_Prozent", ref ENV.FSW_Prozent);
+                SetENVValue("FSW_SaveXLSX", ref ENV.FSW_SaveXLSX);
 
                 SetENVValue("HAG_Url", ref ENV.HAG_Url);
                 SetENVValue("HAG_Zertifikat", ref ENV.HAG_Zertifikat);

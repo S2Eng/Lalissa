@@ -9,7 +9,7 @@ using Infragistics.Win.UltraWinGrid;
 using PMDS.UI.Sitemap;
 using PMDS.GUI.Calc.Calc.UI;
 using System.Linq;
-
+//using System.Windows.Input;
 
 namespace PMDS.Calc.UI
 {
@@ -926,11 +926,27 @@ namespace PMDS.Calc.UI
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-                this.doAction(eAction.fsw, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Zeilen an den FSW exportieren?"),
-                                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnungen wurden an den FSW exportiert!"),
-                                PMDS.Calc.Logic.eModify.nichts, true, null, this.dtRechDatum.DateTime.Date, true);
+                eAction action = eAction.fswNoUpload;
+                string MsgBoxTite = "Wollen Sie für die selektierten Zeilen eine FSW-Zahlungsaufforderung erstellen, aber nicht senden?\n\nZum Senden halten Sie die Umschattaste gedrückt, wenn Sie auf den Knopf klicken.";
+                string ReturnText = "Zahlungsaufforderung wirde im XML-Format gepeichert, aber nicht gesendet.";
+                
+                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift))
+                {
+                    action = eAction.fsw;
+                    MsgBoxTite = "Wollen Sie für die selektierten Zeilen eine FSW-Zahlungsaufforderung erstellen und senden?";
+                    ReturnText = "Zahllungsaufforderung wurde erstllt und an den FSW gesendet.";
+                }
 
+                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftAlt) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightAlt))
+                {
+                    action = eAction.fswreset;
+                    MsgBoxTite = "Wollen Sie den Status der Zahlungsaufforderung für den FSW zurücksetzen?";
+                    ReturnText = "Status für FSW-Zahlungsaufforderung wurde zurückgesetzt.";
+                }
+
+                this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                this.doAction(action, MsgBoxTite, ReturnText,
+                                PMDS.Calc.Logic.eModify.nichts, true, null, this.dtRechDatum.DateTime.Date, true);
             }
             catch (Exception ex)
             {
@@ -938,7 +954,7 @@ namespace PMDS.Calc.UI
             }
             finally
             {
-                this.Cursor = Cursors.Default;
+                this.Cursor = System.Windows.Forms.Cursors.Default;
             }
         }
 

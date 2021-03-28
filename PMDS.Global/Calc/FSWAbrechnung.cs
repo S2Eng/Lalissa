@@ -30,6 +30,13 @@ namespace PMDS.Global
         public bool UseXlsxExport { get; set; } = false;
         private ExcelEngine _FSWXlsx = new ExcelEngine();
 
+        private eAction _RunAction;
+
+        public eAction RunAction
+        {
+            get { return _RunAction;  }
+            set { _RunAction = value; }
+        }
 
         public Chilkat.Xml FSWXml
         {
@@ -43,14 +50,36 @@ namespace PMDS.Global
             set { _FSWXlsx = value; }
         }
 
+        public enum eAction
+        {
+            fsw = 7,
+            fswreset = 8,
+            fswNoUpload = 9
+        }
+
+
         //------------------------ ebInterface / Abrechnungsschittstelle zum FSW -----------------------------
-        public void GenerateFSWStructure(Guid IDKlinik, List<string> ListIDBills, bool SetStatusOnly)
+        public void GenerateFSWStructure(Guid IDKlinik, List<string> ListIDBills, eAction Action)
         {
             try
             {
+                RunAction = Action;
                 using (PMDS.db.Entities.ERModellPMDSEntities db = calculation.delgetDBContext.Invoke())
-                {   
-                    string MsgBoxTitle = SetStatusOnly ? "FSW-Status für Zahlungsaufforderung zurücksetzen" : "FSW-Zahlungsaufforderung erstellen und senden";
+                {
+                    string MsgBoxTitle = "";
+                    
+                    switch (Action)
+                    {
+                        case eAction.fsw:
+                            MsgBoxTitle = "FSW-Zahlungsaufforderung erstellen und senden";
+                            break;
+                        case eAction.fswNoUpload:
+                            MsgBoxTitle = "FSW-Zahlungsaufforderung erstellen und NICHT senden";
+                            break;
+                        case eAction.fswreset:
+                            MsgBoxTitle = "FSW-Status für Zahlungsaufforderung zurücksetzen";
+                            break;
+                    }
 
                     decimal Rechnungsbetrag = 0;
                     foreach (string IDBill in ListIDBills ?? new List<string>())
@@ -62,11 +91,12 @@ namespace PMDS.Global
                             //Prüfungen
                             if (!rBill.Freigegeben)
                             {
+                                //Dieser Fall wird in der Oberfläche ausgeschlossen. Ist nur sicherheitshalber im Code.
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nicht freigegebene Rechnungen können nicht an den FSW gesendet werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                 return;
                             }
 
-                            if (rBill.IDSR.Length > 0  && !rBill.IDSR.Any(c => Guid.TryParse(rBill.IDSR, out Guid guidID)) && !SetStatusOnly)
+                            if (rBill.IDSR.Length > 0  && !rBill.IDSR.Any(c => Guid.TryParse(rBill.IDSR, out Guid guidID)) && RunAction == eAction.fsw)
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bereits gesendete Rechnungen können nicht nocheinmal gesendet werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                 return;
@@ -130,7 +160,7 @@ namespace PMDS.Global
                     string ret = "";
                     if (ListIDBillsFSW.Count > 0)
                     {
-                        if (!SetStatusOnly)
+                        if (RunAction == eAction.fsw || RunAction == eAction.fswNoUpload)
                         {
                             string Filepath = ENV.FSW_EZAUF;    //offen User nach Speicherort fragen
                             string FilenameXML = "eZAUF_" + ENV.FSW_SenderAdresse + "_" + eZAUFID + "_" + Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat) + ".xml";
@@ -152,6 +182,7 @@ namespace PMDS.Global
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Konvertieren in XML-Export-Format: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
+
                                 if (!SaveXML(FSWXml, ref FQFileXML, out Msg))   //Transaction speichern
                                 {
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("XML-Exportdatei wurde nicht gespeichert: " + Msg, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
@@ -159,8 +190,13 @@ namespace PMDS.Global
                                 }
                                 FSWXml = _FSWXml;
                             }
-                            
-                            if (UseXlsxExport)
+
+                            if (RunAction == eAction.fswNoUpload)
+                            {
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("ZAUF im XML-Export-Format wurde erstellt und gespeichert, aber nicht gesendet. ", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                            }
+
+                            if (ENV.FSW_SaveXLSX)
                             {
                                 //Transaction -> XLSX
                                 if (!MakeXLSX(Transaction, ref _FSWXlsx, out Msg))
@@ -176,7 +212,7 @@ namespace PMDS.Global
                                 FSWXlsx = _FSWXlsx;
                             }
 
-                            if (UseUploadToFSW)    //Hochladen. Wenn nein -> nur XML erstellen (z.B. für Test)
+                            if (RunAction == eAction.fsw)    //Hochladen. Wenn nein -> nur XML erstellen (z.B. für Test)
                             {
                                 ret = Upload(FilenameXML, FQFileXML);
                                 if (ret.Length > 0)
@@ -195,6 +231,7 @@ namespace PMDS.Global
                                     return;
                                 }
                             }
+
                         }
                         else
                         {
