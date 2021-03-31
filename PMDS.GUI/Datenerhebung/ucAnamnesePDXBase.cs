@@ -40,6 +40,9 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
+                return;
+
             if (DesignMode)
                 return;
 

@@ -61,9 +61,7 @@
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpRessource = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.tbSonstigeAtemProblemeAuftretung = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -86,7 +84,7 @@
             this.ultraLabel113 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpPDX = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.ucAnamnesePDX1 = new PMDS.GUI.ucAnamnesePDX();
+			this.ucAnamnesePDX1 = new PMDS.GUI.ucAnamnesePDX();
             this.lblVorname = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tabLuft = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
@@ -106,7 +104,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.opRaucherJN)).BeginInit();
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpPDX)).BeginInit();
-            this.grpPDX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabLuft)).BeginInit();
             this.tabLuft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -117,7 +114,7 @@
             this.tabPagePersoenlicheDaten.Controls.Add(this.grpRessource);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(966, 414);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(966, 592);
             // 
             // grpRessource
             // 
@@ -143,35 +140,39 @@
             this.grpRessource.Controls.Add(this.ultraLabel113);
             this.grpRessource.Location = new System.Drawing.Point(7, 6);
             this.grpRessource.Name = "grpRessource";
-            this.grpRessource.Size = new System.Drawing.Size(546, 400);
+            this.grpRessource.Size = new System.Drawing.Size(945, 359);
             this.grpRessource.TabIndex = 113;
             // 
             // tbSonstigeAtemProblemeAuftretung
             // 
             this.tbSonstigeAtemProblemeAuftretung.AcceptsReturn = true;
+            this.tbSonstigeAtemProblemeAuftretung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance2.BackColorDisabled = System.Drawing.Color.White;
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbSonstigeAtemProblemeAuftretung.Appearance = appearance2;
             this.tbSonstigeAtemProblemeAuftretung.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSonstigeAtemProblemeAuftretung.Location = new System.Drawing.Point(15, 108);
+            this.tbSonstigeAtemProblemeAuftretung.Location = new System.Drawing.Point(314, 119);
             this.tbSonstigeAtemProblemeAuftretung.MaxLength = 50;
             this.tbSonstigeAtemProblemeAuftretung.Name = "tbSonstigeAtemProblemeAuftretung";
-            this.tbSonstigeAtemProblemeAuftretung.Size = new System.Drawing.Size(512, 21);
+            this.tbSonstigeAtemProblemeAuftretung.Size = new System.Drawing.Size(625, 21);
             this.tbSonstigeAtemProblemeAuftretung.TabIndex = 5;
             this.tbSonstigeAtemProblemeAuftretung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // tbBeobachtungenAtemProbleme
             // 
             this.tbBeobachtungenAtemProbleme.AcceptsReturn = true;
+            this.tbBeobachtungenAtemProbleme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance3.BackColorDisabled = System.Drawing.Color.White;
             appearance3.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbBeobachtungenAtemProbleme.Appearance = appearance3;
             this.tbBeobachtungenAtemProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBeobachtungenAtemProbleme.Location = new System.Drawing.Point(15, 284);
-            this.tbBeobachtungenAtemProbleme.MaxLength = 100;
+            this.tbBeobachtungenAtemProbleme.Location = new System.Drawing.Point(158, 300);
+            this.tbBeobachtungenAtemProbleme.MaxLength = 0;
             this.tbBeobachtungenAtemProbleme.Multiline = true;
             this.tbBeobachtungenAtemProbleme.Name = "tbBeobachtungenAtemProbleme";
-            this.tbBeobachtungenAtemProbleme.Size = new System.Drawing.Size(512, 32);
+            this.tbBeobachtungenAtemProbleme.Size = new System.Drawing.Size(781, 53);
             this.tbBeobachtungenAtemProbleme.TabIndex = 10;
             this.tbBeobachtungenAtemProbleme.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -180,25 +181,26 @@
             appearance4.BackColor = System.Drawing.Color.Transparent;
             appearance4.FontData.SizeInPoints = 8F;
             this.ultraLabel7.Appearance = appearance4;
-            this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(15, 264);
+            this.ultraLabel7.Location = new System.Drawing.Point(15, 300);
             this.ultraLabel7.Name = "ultraLabel7";
-            this.ultraLabel7.Size = new System.Drawing.Size(266, 14);
+            this.ultraLabel7.Size = new System.Drawing.Size(128, 43);
             this.ultraLabel7.TabIndex = 123;
             this.ultraLabel7.Text = "Beobachtungen der Pflegenden/Ressourcen des Pat.:";
             // 
             // tbTracheostomaBeschreibung
             // 
             this.tbTracheostomaBeschreibung.AcceptsReturn = true;
+            this.tbTracheostomaBeschreibung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance5.BackColorDisabled = System.Drawing.Color.White;
             appearance5.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbTracheostomaBeschreibung.Appearance = appearance5;
             this.tbTracheostomaBeschreibung.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTracheostomaBeschreibung.Location = new System.Drawing.Point(15, 237);
+            this.tbTracheostomaBeschreibung.Location = new System.Drawing.Point(456, 255);
             this.tbTracheostomaBeschreibung.MaxLength = 50;
             this.tbTracheostomaBeschreibung.Multiline = true;
             this.tbTracheostomaBeschreibung.Name = "tbTracheostomaBeschreibung";
-            this.tbTracheostomaBeschreibung.Size = new System.Drawing.Size(512, 21);
+            this.tbTracheostomaBeschreibung.Size = new System.Drawing.Size(483, 21);
             this.tbTracheostomaBeschreibung.TabIndex = 9;
             this.tbTracheostomaBeschreibung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -218,11 +220,12 @@
             valueListItem3.DisplayText = "ohne Cuff";
             valueListItem4.DataValue = 3;
             valueListItem4.DisplayText = "mit Cuff";
-            this.opTracheostoma.Items.Add(valueListItem1);
-            this.opTracheostoma.Items.Add(valueListItem2);
-            this.opTracheostoma.Items.Add(valueListItem3);
-            this.opTracheostoma.Items.Add(valueListItem4);
-            this.opTracheostoma.Location = new System.Drawing.Point(235, 217);
+            this.opTracheostoma.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2,
+            valueListItem3,
+            valueListItem4});
+            this.opTracheostoma.Location = new System.Drawing.Point(158, 258);
             this.opTracheostoma.Name = "opTracheostoma";
             this.opTracheostoma.Size = new System.Drawing.Size(292, 14);
             this.opTracheostoma.TabIndex = 8;
@@ -234,7 +237,7 @@
             appearance7.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance7;
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(15, 217);
+            this.ultraLabel6.Location = new System.Drawing.Point(12, 258);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(77, 14);
             this.ultraLabel6.TabIndex = 119;
@@ -243,15 +246,17 @@
             // tbAtemProblemeHilfeMassnahmenHilfsMittel
             // 
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.AcceptsReturn = true;
+            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance8.BackColorDisabled = System.Drawing.Color.White;
             appearance8.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Appearance = appearance8;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Location = new System.Drawing.Point(15, 179);
-            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.MaxLength = 100;
+            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Location = new System.Drawing.Point(158, 183);
+            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.MaxLength = 0;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Multiline = true;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Name = "tbAtemProblemeHilfeMassnahmenHilfsMittel";
-            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Size = new System.Drawing.Size(512, 32);
+            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Size = new System.Drawing.Size(781, 53);
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.TabIndex = 7;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -260,10 +265,9 @@
             appearance9.BackColor = System.Drawing.Color.Transparent;
             appearance9.FontData.SizeInPoints = 8F;
             this.ultraLabel5.Appearance = appearance9;
-            this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(15, 159);
+            this.ultraLabel5.Location = new System.Drawing.Point(15, 183);
             this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(192, 14);
+            this.ultraLabel5.Size = new System.Drawing.Size(128, 34);
             this.ultraLabel5.TabIndex = 117;
             this.ultraLabel5.Text = "Selbsthilfemaßnahmen und Hilfsmittel:";
             // 
@@ -279,9 +283,10 @@
             valueListItem5.DisplayText = "in Ruhe";
             valueListItem6.DataValue = 1;
             valueListItem6.DisplayText = "bei Belastung";
-            this.opAtemProblemeAuftretung.Items.Add(valueListItem5);
-            this.opAtemProblemeAuftretung.Items.Add(valueListItem6);
-            this.opAtemProblemeAuftretung.Location = new System.Drawing.Point(377, 88);
+            this.opAtemProblemeAuftretung.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem5,
+            valueListItem6});
+            this.opAtemProblemeAuftretung.Location = new System.Drawing.Point(158, 123);
             this.opAtemProblemeAuftretung.Name = "opAtemProblemeAuftretung";
             this.opAtemProblemeAuftretung.Size = new System.Drawing.Size(150, 14);
             this.opAtemProblemeAuftretung.TabIndex = 4;
@@ -293,7 +298,7 @@
             this.ultraLabel4.Appearance = appearance11;
             this.ultraLabel4.AutoSize = true;
             this.ultraLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel4.Location = new System.Drawing.Point(286, 88);
+            this.ultraLabel4.Location = new System.Drawing.Point(41, 125);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(74, 12);
             this.ultraLabel4.TabIndex = 115;
@@ -306,9 +311,11 @@
             this.dtpAtemProblemeSeit.Appearance = appearance12;
             this.dtpAtemProblemeSeit.DateTime = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtpAtemProblemeSeit.FormatString = "";
-            this.dtpAtemProblemeSeit.Location = new System.Drawing.Point(85, 84);
+            this.dtpAtemProblemeSeit.Location = new System.Drawing.Point(158, 96);
             this.dtpAtemProblemeSeit.MaskInput = "{date}";
             this.dtpAtemProblemeSeit.Name = "dtpAtemProblemeSeit";
+            this.dtpAtemProblemeSeit.ownFormat = "";
+            this.dtpAtemProblemeSeit.ownMaskInput = "";
             this.dtpAtemProblemeSeit.Size = new System.Drawing.Size(101, 21);
             this.dtpAtemProblemeSeit.TabIndex = 3;
             this.dtpAtemProblemeSeit.Value = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
@@ -320,7 +327,7 @@
             this.ultraLabel3.Appearance = appearance13;
             this.ultraLabel3.AutoSize = true;
             this.ultraLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel3.Location = new System.Drawing.Point(15, 88);
+            this.ultraLabel3.Location = new System.Drawing.Point(41, 101);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(48, 12);
             this.ultraLabel3.TabIndex = 113;
@@ -329,15 +336,17 @@
             // tbAtemProbleme
             // 
             this.tbAtemProbleme.AcceptsReturn = true;
+            this.tbAtemProbleme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance14.BackColorDisabled = System.Drawing.Color.White;
             appearance14.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbAtemProbleme.Appearance = appearance14;
             this.tbAtemProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAtemProbleme.Location = new System.Drawing.Point(15, 49);
-            this.tbAtemProbleme.MaxLength = 100;
+            this.tbAtemProbleme.Location = new System.Drawing.Point(158, 37);
+            this.tbAtemProbleme.MaxLength = 0;
             this.tbAtemProbleme.Multiline = true;
             this.tbAtemProbleme.Name = "tbAtemProbleme";
-            this.tbAtemProbleme.Size = new System.Drawing.Size(512, 32);
+            this.tbAtemProbleme.Size = new System.Drawing.Size(781, 53);
             this.tbAtemProbleme.TabIndex = 2;
             this.tbAtemProbleme.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -347,7 +356,7 @@
             this.ultraLabel2.Appearance = appearance15;
             this.ultraLabel2.AutoSize = true;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel2.Location = new System.Drawing.Point(15, 37);
+            this.ultraLabel2.Location = new System.Drawing.Point(41, 41);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(38, 12);
             this.ultraLabel2.TabIndex = 111;
@@ -365,9 +374,10 @@
             valueListItem7.DisplayText = "Ja";
             valueListItem8.DataValue = false;
             valueListItem8.DisplayText = "Nein";
-            this.opAtemProblemeJN.Items.Add(valueListItem7);
-            this.opAtemProblemeJN.Items.Add(valueListItem8);
-            this.opAtemProblemeJN.Location = new System.Drawing.Point(447, 17);
+            this.opAtemProblemeJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8});
+            this.opAtemProblemeJN.Location = new System.Drawing.Point(158, 17);
             this.opAtemProblemeJN.Name = "opAtemProblemeJN";
             this.opAtemProblemeJN.Size = new System.Drawing.Size(80, 14);
             this.opAtemProblemeJN.TabIndex = 1;
@@ -397,9 +407,10 @@
             valueListItem9.DisplayText = "Ja";
             valueListItem10.DataValue = false;
             valueListItem10.DisplayText = "Nein";
-            this.opRaucherJN.Items.Add(valueListItem9);
-            this.opRaucherJN.Items.Add(valueListItem10);
-            this.opRaucherJN.Location = new System.Drawing.Point(447, 137);
+            this.opRaucherJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem9,
+            valueListItem10});
+            this.opRaucherJN.Location = new System.Drawing.Point(158, 158);
             this.opRaucherJN.Name = "opRaucherJN";
             this.opRaucherJN.Size = new System.Drawing.Size(80, 14);
             this.opRaucherJN.TabIndex = 6;
@@ -411,7 +422,7 @@
             appearance19.FontData.SizeInPoints = 8F;
             this.ultraLabel113.Appearance = appearance19;
             this.ultraLabel113.AutoSize = true;
-            this.ultraLabel113.Location = new System.Drawing.Point(15, 137);
+            this.ultraLabel113.Location = new System.Drawing.Point(15, 158);
             this.ultraLabel113.Name = "ultraLabel113";
             this.ultraLabel113.Size = new System.Drawing.Size(46, 14);
             this.ultraLabel113.TabIndex = 108;
@@ -427,12 +438,12 @@
             // 
             // grpPDX
             // 
-            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPDX.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance20.BackColor = System.Drawing.Color.Transparent;
             this.grpPDX.Appearance = appearance20;
-            this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
+			this.grpPDX.Controls.Add(this.ucAnamnesePDX1);
             this.grpPDX.Location = new System.Drawing.Point(7, 6);
             this.grpPDX.Name = "grpPDX";
             this.grpPDX.Size = new System.Drawing.Size(946, 389);
@@ -450,7 +461,7 @@
             this.ucAnamnesePDX1.Size = new System.Drawing.Size(930, 369);
             this.ucAnamnesePDX1.TabIndex = 0;
             this.ucAnamnesePDX1.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
+			// 
             // lblVorname
             // 
             this.lblVorname.AutoSize = true;
@@ -470,14 +481,12 @@
             this.tabLuft.Location = new System.Drawing.Point(0, 0);
             this.tabLuft.Name = "tabLuft";
             this.tabLuft.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabLuft.Size = new System.Drawing.Size(970, 440);
+            this.tabLuft.Size = new System.Drawing.Size(970, 618);
             this.tabLuft.TabIndex = 115;
-            ultraTab1.ActiveAppearance = appearance22;
             ultraTab1.Key = "Atmung";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
             ultraTab1.Text = "Atmung";
             ultraTab1.ToolTipText = "Atmung";
-            ultraTab2.ActiveAppearance = appearance23;
             ultraTab2.Key = "Pflegedefinitionen";
             ultraTab2.TabPage = this.ultraTabPageControl2;
             ultraTab2.Text = "Pflegediagnosen";
@@ -492,7 +501,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(966, 414);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(966, 592);
             // 
             // errorProvider1
             // 
@@ -504,7 +513,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabLuft);
             this.Name = "ucLuft";
-            this.Size = new System.Drawing.Size(970, 440);
+            this.Size = new System.Drawing.Size(970, 618);
             this.tabPagePersoenlicheDaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpRessource)).EndInit();
             this.grpRessource.ResumeLayout(false);
@@ -522,7 +531,6 @@
             this.ultraTabPageControl2.ResumeLayout(false);
             this.ultraTabPageControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpPDX)).EndInit();
-            this.grpPDX.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabLuft)).EndInit();
             this.tabLuft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

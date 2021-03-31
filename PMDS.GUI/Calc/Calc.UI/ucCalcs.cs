@@ -927,7 +927,7 @@ namespace PMDS.Calc.UI
             try
             {
                 eAction action = eAction.fswNoUpload;
-                string MsgBoxTite = "Wollen Sie für die selektierten Zeilen eine FSW-Zahlungsaufforderung erstellen, aber nicht senden?\n\nZum Senden halten Sie die Umschattaste gedrückt, wenn Sie auf den Knopf klicken.";
+                string MsgBoxTite = "Wollen Sie für die selektierten Zeilen eine FSW-Zahlungsaufforderung erstellen, aber nicht senden?\n\nZum Senden halten Sie die Umschalttaste gedrückt, wenn Sie auf den Knopf klicken.";
                 string ReturnText = "Zahlungsaufforderung wirde im XML-Format gepeichert, aber nicht gesendet.";
                 
                 if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift))

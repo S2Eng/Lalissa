@@ -485,7 +485,7 @@ namespace PMDS.Calc.UI
                                                                             b.IDKlient == rBill2.IDKlient && 
                                                                             b.Typ == (int)eBillTyp.Rechnung &&
                                                                             b.Freigegeben == true && 
-                                                                            b.Status == 1 && 
+                                                                            b.Status == (int)eBillStatus.freigegeben && 
                                                                             b.IDSR == ""                                                                             
                                                                            ).OrderByDescending(p => p.ErstellAm);
                                                 }
@@ -550,6 +550,8 @@ namespace PMDS.Calc.UI
                                                                     lstBillsToDelete.Add(rBillNewSaved.ID);
                                                                     lstBillsToDelete.Add(rBill33.ID);
                                                                 }
+                                                                rBill33.IDBillsGerollt = cBill.rBillToStorno.ID;        //os 2021-03-30: Rechnung merken, die gerollt wurde (als Kennzeichen für FSW, dass es sich um eine zusätzliche Rechnung handelt) 
+                                                                db.SaveChanges();
                                                                 System.GC.Collect();
                                                             }
                                                             else

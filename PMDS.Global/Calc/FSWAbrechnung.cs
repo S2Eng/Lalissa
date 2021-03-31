@@ -110,10 +110,10 @@ namespace PMDS.Global
                             Invoice.Delivery.Period.FromDate = dbCalc.Monate[0].Beginn;
                             Invoice.Delivery.Period.ToDate = dbCalc.Monate[0].Ende;
 
-                            if (rBill.RollungAnz == 0)
-                                Invoice.Details.HeaderDescription = "Zahlungsaufforderung Zeitraum " + rBill.datum.ToString("MMMM") + " " + rBill.datum.ToString("yyyy");
-                            else
+                            if (rBill.RollungAnz > 0 || rBill.Status == -10 || rBill.IDBillsGerollt.Length > 0 )
                                 Invoice.Details.HeaderDescription = "Korrektur zur Zahlungsaufforderung Zeitraum " + rBill.datum.ToString("MMMM") + " " + rBill.datum.ToString("yyyy");
+                            else
+                                Invoice.Details.HeaderDescription = "Zahlungsaufforderung Zeitraum " + rBill.datum.ToString("MMMM") + " " + rBill.datum.ToString("yyyy");
 
                             int Zeile = 0;
                             foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
@@ -170,7 +170,7 @@ namespace PMDS.Global
 
                             using (Chilkat.Global glob = new Chilkat.Global())
                             {
-                                if (!glob.UnlockBundle("S2ENG.CB1032020_S2VwQSty6L2t"))
+                                if (!glob.UnlockBundle("S2ENGN.CB1032020_S4VwQSty6L2t"))
                                 {
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("System-Fehler beim Erstellen der Zahlungsaufforderung:" + glob.LastErrorText, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
@@ -406,6 +406,7 @@ namespace PMDS.Global
                         Chilkat.Xml xInvoiceRecipientAdressZIP = xInvoiceRecipientAdress.NewChild("ZIP", Invoice.InvoiceRecipient.Adress.ZIP);
                         Chilkat.Xml xInvoiceRecipientAdressCountry = xInvoiceRecipientAdress.NewChild("Country", Invoice.InvoiceRecipient.Adress.Country.Value);
                         xInvoiceRecipientAdressCountry.AddAttribute(Invoice.InvoiceRecipient.Adress.Country.AttributeName, Invoice.InvoiceRecipient.Adress.Country.AttributeValue);
+                        Chilkat.Xml xBillersInvoiceRecipientID = xInvoiceRecipient.NewChild("BillersInvoiceRecipientID", Invoice.InvoiceRecipient.BillersInvoiceRecipientID);
 
                         Chilkat.Xml xDetails = xInvoice.NewChild("Details", "");
                         Chilkat.Xml xDetailsHeaderDescription = xDetails.NewChild("HeaderDescription", Invoice.Details.HeaderDescription);

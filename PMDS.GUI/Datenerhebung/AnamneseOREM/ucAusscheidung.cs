@@ -153,5 +153,10 @@ namespace PMDS.GUI
         {
             OnValueChanged(sender, e);
         }
+
+        private void ultraGroupBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

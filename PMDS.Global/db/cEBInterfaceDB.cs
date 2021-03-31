@@ -235,14 +235,16 @@ namespace PMDS.Global.db
                     ret.Biller.VATIdentificationNumber = (rKlinik.UID.Substring(rKlinik.UID.ToUpper().IndexOf("ATU"))).Replace(" ", "");
                     ret.Biller.Adress.Name = rKlinik.Bezeichnung;
                     ret.Biller.Adress.Street = rKlinik.Strasse;
+                    ret.Biller.Adress.ZIP = rKlient.PLZ;
                     ret.Biller.Adress.Town = rKlinik.Ort;
+                    ret.Biller.InvoiceRecipientsBillerID = ENV.FSW_SenderAdresse;
 
                     ret.InvoiceRecipient.FurtherIdentification.Value = rKlient.SVNr;
                     ret.InvoiceRecipient.Adress.Name = rKlient.Name;
                     ret.InvoiceRecipient.Adress.Street = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Strasse : rKlinik.Strasse;
                     ret.InvoiceRecipient.Adress.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.PLZ : rKlinik.PLZ;
                     ret.InvoiceRecipient.Adress.Town = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Ort : rKlinik.Ort;
-                    ret.InvoiceRecipient.BillersInvoiceRecipientID = String.IsNullOrWhiteSpace(rKlient.BillersInvoiceRecipientID) ? rKlient.SVNr : rKlient.BillersInvoiceRecipientID;
+                    ret.InvoiceRecipient.BillersInvoiceRecipientID = String.IsNullOrWhiteSpace(rKlient.BillersInvoiceRecipientID) ? "SVNR: " + rKlient.SVNr : "KtoNr: " + rKlient.BillersInvoiceRecipientID;
 
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName = rKlinik.Bank;
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.IBAN = rKlinik.IBAN;

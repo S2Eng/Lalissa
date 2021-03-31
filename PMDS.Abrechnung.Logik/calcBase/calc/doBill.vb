@@ -545,8 +545,7 @@ Public Class doBill
                 rowNewRechZ.IDKostIntern = rKost.IDKostIntern.ToString()
                 rowNewRechZ.IDKost = rKost.IDKost.ToString()
                 rowNewRechZ.Kennung = eTypProt.LZ.ToString()
-                Dim BezTmp As String = r.Bezeichnung + " á " + Me.dec3WithEuro(r.BetragNettoEH)
-                rowNewRechZ.Bezeichnung = BezTmp
+                rowNewRechZ.Bezeichnung = r.Bezeichnung.Replace("{Einzelpreis}", " á " + Me.dec3WithEuro(r.BetragNettoEH))
                 rowNewRechZ.Anzahl = r.Menge
                 rowNewRechZ.Netto = r.BetragNetto
                 rowNewRechZ.MWSt = r.MWStSatz
@@ -741,6 +740,7 @@ Public Class doBill
                             rLeistZeile.IDLeistungsKatalog = rLeist.IDLeistungskatalog
                             rLeistZeile.IDSonderLeistungskatalog = rLeist.IDSonderleistung
                             rLeistZeile.IDManBuch = rLeist.IDManBuch
+                            rLeistZeile.Bezeichnung += "{Einzelpreis}"
 
                             tLeistZeile.Rows.Add(rLeistZeile)
                         End If
@@ -754,6 +754,12 @@ Public Class doBill
                             rLeistZeile.IDLeistungsKatalog = rLeist.IDLeistungskatalog
                             rLeistZeile.IDSonderLeistungskatalog = rLeist.IDSonderleistung
                             rLeistZeile.IDManBuch = rLeist.IDManBuch
+
+                            rLeistZeile.Bezeichnung += "{Einzelpreis}"
+                            rLeistZeile.Bezeichnung += vbCrLf + "Abwesenheiten:"
+                            For Each abw As dbCalc.AbwesenheitenRow In calc.dbCalc.Abwesenheiten
+                                rLeistZeile.Bezeichnung += vbCrLf + abw.Grund + " (" + abw.Von.ToString("dd.MM.yyyy") + "-" + abw.Bis.ToString("dd.MM.yyyy") + ")"
+                            Next
 
                             tLeistZeile.Rows.Add(rLeistZeile)
                         End If
@@ -1267,11 +1273,11 @@ Public Class doBill
                 rBillCopy.IDKlinik = Nothing
             End If
 
-            rBillCopy.IDSR = ""                     'os: 2021-03-21: neu erzeigte Storno-Rechnung kann nicht auf einer Sammelrechnung / FSW-ZAUF sein:  rBillCopy.IDSR = rBillOrig.IDSR
+            rBillCopy.IDSR = ""                     'os: 2021-03-21: neu erzeugte Storno-Rechnung kann nicht auf einer Sammelrechnung / FSW-ZAUF sein:  rBillCopy.IDSR = rBillOrig.IDSR
             rBillCopy.IDBillStorno = ""             'rBillOrig.ID.Trim() + ";"
             rBillCopy.ExportiertJN = False
             rBillCopy.RollungAnz = 0
-            rBillCopy.IDBillsGerollt = ""
+            rBillCopy.IDBillsGerollt = ""            'os: 2021-03-30: statt "". Als Kennzeichen für FSW, dass es sich um eine Rollung handelt
 
             db.bills.Add(rBillCopy)
             db.SaveChanges()
