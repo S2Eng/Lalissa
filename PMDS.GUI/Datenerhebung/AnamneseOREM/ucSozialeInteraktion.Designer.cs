@@ -41,14 +41,27 @@
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
@@ -57,19 +70,6 @@
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
@@ -107,29 +107,29 @@
             this.ultraLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox3 = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.tbZuHauseNichtRegelnKoennen = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.tbAbhaengigePersonen = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.ultraLabel10 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.tbBesuchswuensche = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.opZuHauseAllesRegelnKoennenJN = new QS2.Desktop.ControlManagment.BaseOptionSet();
+            this.ultraGroupBox2 = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.ultraLabel11 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel7 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.tbBeobachtungenSozialesituation = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.ultraLabel12 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.opAbhaengigePersonenJN = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.ultraLabel9 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.tbSituationsauswirkung = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.tbBezugsperson = new QS2.Desktop.ControlManagment.BaseTextEditor();
+            this.ultraLabel13 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel6 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.ultraLabel14 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbFamBeziehSozialeProbleme = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel5 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.opFamBeziehSozialeProblemeJN = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.ultraLabel3 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbFamBeziehSozialeSituation = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel57 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.ultraGroupBox2 = new QS2.Desktop.ControlManagment.BaseGroupBox();
-            this.tbZuHauseNichtRegelnKoennen = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.tbBesuchswuensche = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.ultraLabel10 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.tbBeobachtungenSozialesituation = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.opZuHauseAllesRegelnKoennenJN = new QS2.Desktop.ControlManagment.BaseOptionSet();
-            this.ultraLabel12 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.ultraLabel11 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.ultraLabel14 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.tbSituationsauswirkung = new QS2.Desktop.ControlManagment.BaseTextEditor();
-            this.ultraLabel13 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblVorname = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox5 = new QS2.Desktop.ControlManagment.BaseGroupBox();
@@ -165,18 +165,18 @@
             this.ultraTabPageControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).BeginInit();
             this.ultraGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbZuHauseNichtRegelnKoennen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAbhaengigePersonen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBesuchswuensche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.opZuHauseAllesRegelnKoennenJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBeobachtungenSozialesituation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opAbhaengigePersonenJN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSituationsauswirkung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBezugsperson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFamBeziehSozialeProbleme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opFamBeziehSozialeProblemeJN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFamBeziehSozialeSituation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbZuHauseNichtRegelnKoennen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbBesuchswuensche)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbBeobachtungenSozialesituation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.opZuHauseAllesRegelnKoennenJN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSituationsauswirkung)).BeginInit();
             this.ultraTabPageControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).BeginInit();
             this.ultraGroupBox5.SuspendLayout();
@@ -201,7 +201,7 @@
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox1);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
             // 
@@ -231,7 +231,7 @@
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbKommunikationSelbsthilfe.Appearance = appearance2;
             this.tbKommunikationSelbsthilfe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKommunikationSelbsthilfe.Location = new System.Drawing.Point(158, 106);
+            this.tbKommunikationSelbsthilfe.Location = new System.Drawing.Point(158, 96);
             this.tbKommunikationSelbsthilfe.MaxLength = 100;
             this.tbKommunikationSelbsthilfe.Multiline = true;
             this.tbKommunikationSelbsthilfe.Name = "tbKommunikationSelbsthilfe";
@@ -242,12 +242,11 @@
             // ultraLabel4
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.FontData.SizeInPoints = 8F;
             this.ultraLabel4.Appearance = appearance3;
             this.ultraLabel4.AutoSize = true;
-            this.ultraLabel4.Location = new System.Drawing.Point(21, 109);
+            this.ultraLabel4.Location = new System.Drawing.Point(15, 99);
             this.ultraLabel4.Name = "ultraLabel4";
-            this.ultraLabel4.Size = new System.Drawing.Size(58, 14);
+            this.ultraLabel4.Size = new System.Drawing.Size(60, 14);
             this.ultraLabel4.TabIndex = 236;
             this.ultraLabel4.Text = "Selbsthilfe:";
             // 
@@ -260,7 +259,7 @@
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbBeobachtungenKommunikationProbleme.Appearance = appearance4;
             this.tbBeobachtungenKommunikationProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBeobachtungenKommunikationProbleme.Location = new System.Drawing.Point(158, 175);
+            this.tbBeobachtungenKommunikationProbleme.Location = new System.Drawing.Point(158, 165);
             this.tbBeobachtungenKommunikationProbleme.MaxLength = 100;
             this.tbBeobachtungenKommunikationProbleme.Multiline = true;
             this.tbBeobachtungenKommunikationProbleme.Name = "tbBeobachtungenKommunikationProbleme";
@@ -288,23 +287,23 @@
             // ultraLabel27
             // 
             appearance6.BackColor = System.Drawing.Color.Transparent;
-            appearance6.FontData.SizeInPoints = 8F;
             this.ultraLabel27.Appearance = appearance6;
-            this.ultraLabel27.Location = new System.Drawing.Point(21, 178);
+            this.ultraLabel27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel27.Location = new System.Drawing.Point(15, 168);
             this.ultraLabel27.Name = "ultraLabel27";
-            this.ultraLabel27.Size = new System.Drawing.Size(131, 50);
+            this.ultraLabel27.Size = new System.Drawing.Size(137, 50);
             this.ultraLabel27.TabIndex = 267;
-            this.ultraLabel27.Text = "Beobachtungen der Pflegenden / Ressourcen des Pat.:";
+            this.ultraLabel27.Text = "Beobachtungen der Pflegenden / Ressourcen des Klienten:";
             // 
             // ultraLabel2
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel2.Appearance = appearance7;
             this.ultraLabel2.AutoSize = true;
-            this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel2.Location = new System.Drawing.Point(41, 41);
+            this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel2.Location = new System.Drawing.Point(15, 40);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(38, 12);
+            this.ultraLabel2.Size = new System.Drawing.Size(45, 14);
             this.ultraLabel2.TabIndex = 113;
             this.ultraLabel2.Text = "Welche:";
             // 
@@ -323,7 +322,7 @@
             this.opKommunikationProblemeJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem1,
             valueListItem2});
-            this.opKommunikationProblemeJN.Location = new System.Drawing.Point(292, 17);
+            this.opKommunikationProblemeJN.Location = new System.Drawing.Point(299, 17);
             this.opKommunikationProblemeJN.Name = "opKommunikationProblemeJN";
             this.opKommunikationProblemeJN.Size = new System.Drawing.Size(80, 14);
             this.opKommunikationProblemeJN.TabIndex = 1;
@@ -332,12 +331,12 @@
             // ultraLabel1
             // 
             appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.FontData.SizeInPoints = 8F;
             this.ultraLabel1.Appearance = appearance9;
             this.ultraLabel1.AutoSize = true;
+            this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel1.Location = new System.Drawing.Point(15, 17);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(258, 14);
+            this.ultraLabel1.Size = new System.Drawing.Size(276, 14);
             this.ultraLabel1.TabIndex = 109;
             this.ultraLabel1.Text = "Probleme bei der Kommunikation (verbal/nonverbal)";
             // 
@@ -381,6 +380,23 @@
             this.ultraGroupBox3.Size = new System.Drawing.Size(952, 498);
             this.ultraGroupBox3.TabIndex = 122;
             // 
+            // tbZuHauseNichtRegelnKoennen
+            // 
+            this.tbZuHauseNichtRegelnKoennen.AcceptsReturn = true;
+            this.tbZuHauseNichtRegelnKoennen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance11.BackColorDisabled = System.Drawing.Color.White;
+            appearance11.ForeColorDisabled = System.Drawing.Color.Black;
+            this.tbZuHauseNichtRegelnKoennen.Appearance = appearance11;
+            this.tbZuHauseNichtRegelnKoennen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbZuHauseNichtRegelnKoennen.Location = new System.Drawing.Point(319, 279);
+            this.tbZuHauseNichtRegelnKoennen.MaxLength = 0;
+            this.tbZuHauseNichtRegelnKoennen.Multiline = true;
+            this.tbZuHauseNichtRegelnKoennen.Name = "tbZuHauseNichtRegelnKoennen";
+            this.tbZuHauseNichtRegelnKoennen.Size = new System.Drawing.Size(627, 53);
+            this.tbZuHauseNichtRegelnKoennen.TabIndex = 8;
+            this.tbZuHauseNichtRegelnKoennen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
+            // 
             // tbAbhaengigePersonen
             // 
             this.tbAbhaengigePersonen.AcceptsReturn = true;
@@ -398,17 +414,118 @@
             this.tbAbhaengigePersonen.TabIndex = 6;
             this.tbAbhaengigePersonen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
+            // ultraLabel10
+            // 
+            appearance13.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel10.Appearance = appearance13;
+            this.ultraLabel10.AutoSize = true;
+            this.ultraLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel10.Location = new System.Drawing.Point(252, 284);
+            this.ultraLabel10.Name = "ultraLabel10";
+            this.ultraLabel10.Size = new System.Drawing.Size(60, 14);
+            this.ultraLabel10.TabIndex = 287;
+            this.ultraLabel10.Text = "Was nicht?";
+            // 
+            // tbBesuchswuensche
+            // 
+            this.tbBesuchswuensche.AcceptsReturn = true;
+            this.tbBesuchswuensche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance14.BackColorDisabled = System.Drawing.Color.White;
+            appearance14.ForeColorDisabled = System.Drawing.Color.Black;
+            this.tbBesuchswuensche.Appearance = appearance14;
+            this.tbBesuchswuensche.AutoSize = false;
+            this.tbBesuchswuensche.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBesuchswuensche.Location = new System.Drawing.Point(158, 348);
+            this.tbBesuchswuensche.MaxLength = 50;
+            this.tbBesuchswuensche.Multiline = true;
+            this.tbBesuchswuensche.Name = "tbBesuchswuensche";
+            this.tbBesuchswuensche.Size = new System.Drawing.Size(788, 21);
+            this.tbBesuchswuensche.TabIndex = 9;
+            this.tbBesuchswuensche.ValueChanged += new System.EventHandler(this.control_ValueChanged);
+            // 
+            // opZuHauseAllesRegelnKoennenJN
+            // 
+            appearance15.BackColorDisabled = System.Drawing.Color.Transparent;
+            appearance15.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance15.TextHAlignAsString = "Left";
+            appearance15.TextVAlignAsString = "Middle";
+            this.opZuHauseAllesRegelnKoennenJN.Appearance = appearance15;
+            this.opZuHauseAllesRegelnKoennenJN.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
+            valueListItem7.DataValue = true;
+            valueListItem7.DisplayText = "Ja";
+            valueListItem8.DataValue = false;
+            valueListItem8.DisplayText = "Nein";
+            this.opZuHauseAllesRegelnKoennenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem7,
+            valueListItem8});
+            this.opZuHauseAllesRegelnKoennenJN.Location = new System.Drawing.Point(158, 282);
+            this.opZuHauseAllesRegelnKoennenJN.Name = "opZuHauseAllesRegelnKoennenJN";
+            this.opZuHauseAllesRegelnKoennenJN.Size = new System.Drawing.Size(79, 14);
+            this.opZuHauseAllesRegelnKoennenJN.TabIndex = 7;
+            this.opZuHauseAllesRegelnKoennenJN.ValueChanged += new System.EventHandler(this.control_ValueChanged);
+            // 
+            // ultraGroupBox2
+            // 
+            appearance16.BackColor = System.Drawing.Color.Transparent;
+            this.ultraGroupBox2.Appearance = appearance16;
+            this.ultraGroupBox2.Location = new System.Drawing.Point(786, 455);
+            this.ultraGroupBox2.Name = "ultraGroupBox2";
+            this.ultraGroupBox2.Size = new System.Drawing.Size(123, 33);
+            this.ultraGroupBox2.TabIndex = 123;
+            this.ultraGroupBox2.Visible = false;
+            // 
+            // ultraLabel11
+            // 
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel11.Appearance = appearance17;
+            this.ultraLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel11.Location = new System.Drawing.Point(15, 282);
+            this.ultraLabel11.Name = "ultraLabel11";
+            this.ultraLabel11.Size = new System.Drawing.Size(123, 49);
+            this.ultraLabel11.TabIndex = 285;
+            this.ultraLabel11.Text = "Haben Sie zu Hause alles hinlänglich regeln können?";
+            // 
             // ultraLabel7
             // 
             appearance18.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel7.Appearance = appearance18;
             this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel7.Location = new System.Drawing.Point(252, 214);
             this.ultraLabel7.Name = "ultraLabel7";
-            this.ultraLabel7.Size = new System.Drawing.Size(41, 12);
+            this.ultraLabel7.Size = new System.Drawing.Size(48, 14);
             this.ultraLabel7.TabIndex = 283;
             this.ultraLabel7.Text = "Welche?";
+            // 
+            // tbBeobachtungenSozialesituation
+            // 
+            this.tbBeobachtungenSozialesituation.AcceptsReturn = true;
+            this.tbBeobachtungenSozialesituation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance19.BackColorDisabled = System.Drawing.Color.White;
+            appearance19.ForeColorDisabled = System.Drawing.Color.Black;
+            this.tbBeobachtungenSozialesituation.Appearance = appearance19;
+            this.tbBeobachtungenSozialesituation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbBeobachtungenSozialesituation.Location = new System.Drawing.Point(157, 438);
+            this.tbBeobachtungenSozialesituation.MaxLength = 0;
+            this.tbBeobachtungenSozialesituation.Multiline = true;
+            this.tbBeobachtungenSozialesituation.Name = "tbBeobachtungenSozialesituation";
+            this.tbBeobachtungenSozialesituation.Size = new System.Drawing.Size(789, 53);
+            this.tbBeobachtungenSozialesituation.TabIndex = 11;
+            this.tbBeobachtungenSozialesituation.ValueChanged += new System.EventHandler(this.control_ValueChanged);
+            // 
+            // ultraLabel12
+            // 
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel12.Appearance = appearance20;
+            this.ultraLabel12.AutoSize = true;
+            this.ultraLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel12.Location = new System.Drawing.Point(15, 351);
+            this.ultraLabel12.Name = "ultraLabel12";
+            this.ultraLabel12.Size = new System.Drawing.Size(133, 14);
+            this.ultraLabel12.TabIndex = 288;
+            this.ultraLabel12.Text = "Wünsche bzgl. Besuche:";
             // 
             // opAbhaengigePersonenJN
             // 
@@ -434,13 +551,31 @@
             // ultraLabel9
             // 
             appearance22.BackColor = System.Drawing.Color.Transparent;
-            appearance22.FontData.SizeInPoints = 8F;
             this.ultraLabel9.Appearance = appearance22;
+            this.ultraLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel9.Location = new System.Drawing.Point(15, 212);
             this.ultraLabel9.Name = "ultraLabel9";
             this.ultraLabel9.Size = new System.Drawing.Size(136, 44);
             this.ultraLabel9.TabIndex = 281;
             this.ultraLabel9.Text = "Sind Familienangehörige oder andere Personen von Ihnen abhängig?";
+            // 
+            // tbSituationsauswirkung
+            // 
+            this.tbSituationsauswirkung.AcceptsReturn = true;
+            this.tbSituationsauswirkung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance23.BackColorDisabled = System.Drawing.Color.White;
+            appearance23.ForeColorDisabled = System.Drawing.Color.Black;
+            this.tbSituationsauswirkung.Appearance = appearance23;
+            this.tbSituationsauswirkung.AutoSize = false;
+            this.tbSituationsauswirkung.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSituationsauswirkung.Location = new System.Drawing.Point(158, 385);
+            this.tbSituationsauswirkung.MaxLength = 50;
+            this.tbSituationsauswirkung.Multiline = true;
+            this.tbSituationsauswirkung.Name = "tbSituationsauswirkung";
+            this.tbSituationsauswirkung.Size = new System.Drawing.Size(788, 21);
+            this.tbSituationsauswirkung.TabIndex = 10;
+            this.tbSituationsauswirkung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // tbBezugsperson
             // 
@@ -460,17 +595,39 @@
             this.tbBezugsperson.TabIndex = 4;
             this.tbBezugsperson.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
+            // ultraLabel13
+            // 
+            appearance25.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel13.Appearance = appearance25;
+            this.ultraLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel13.Location = new System.Drawing.Point(15, 388);
+            this.ultraLabel13.Name = "ultraLabel13";
+            this.ultraLabel13.Size = new System.Drawing.Size(136, 47);
+            this.ultraLabel13.TabIndex = 109;
+            this.ultraLabel13.Text = "Welche Auswirkung hat Ihre jetzige Situation auf Sie und Ihre Familie?";
+            // 
             // ultraLabel6
             // 
             appearance26.BackColor = System.Drawing.Color.Transparent;
-            appearance26.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance26;
             this.ultraLabel6.AutoSize = true;
+            this.ultraLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel6.Location = new System.Drawing.Point(15, 178);
             this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(74, 14);
+            this.ultraLabel6.Size = new System.Drawing.Size(79, 14);
             this.ultraLabel6.TabIndex = 278;
             this.ultraLabel6.Text = "Bezugsperson";
+            // 
+            // ultraLabel14
+            // 
+            appearance27.BackColor = System.Drawing.Color.Transparent;
+            this.ultraLabel14.Appearance = appearance27;
+            this.ultraLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel14.Location = new System.Drawing.Point(15, 441);
+            this.ultraLabel14.Name = "ultraLabel14";
+            this.ultraLabel14.Size = new System.Drawing.Size(136, 41);
+            this.ultraLabel14.TabIndex = 291;
+            this.ultraLabel14.Text = "Beobachtungen der Pflegenden/Ressourcen des Pat.:";
             // 
             // tbFamBeziehSozialeProbleme
             // 
@@ -494,10 +651,10 @@
             appearance29.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel5.Appearance = appearance29;
             this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel5.Location = new System.Drawing.Point(41, 41);
+            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel5.Location = new System.Drawing.Point(15, 40);
             this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(38, 12);
+            this.ultraLabel5.Size = new System.Drawing.Size(45, 14);
             this.ultraLabel5.TabIndex = 277;
             this.ultraLabel5.Text = "Welche:";
             // 
@@ -525,12 +682,12 @@
             // ultraLabel3
             // 
             appearance31.BackColor = System.Drawing.Color.Transparent;
-            appearance31.FontData.SizeInPoints = 8F;
             this.ultraLabel3.Appearance = appearance31;
             this.ultraLabel3.AutoSize = true;
+            this.ultraLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel3.Location = new System.Drawing.Point(15, 17);
             this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(51, 14);
+            this.ultraLabel3.Size = new System.Drawing.Size(55, 14);
             this.ultraLabel3.TabIndex = 275;
             this.ultraLabel3.Text = "Probleme";
             // 
@@ -554,171 +711,13 @@
             // ultraLabel57
             // 
             appearance33.BackColor = System.Drawing.Color.Transparent;
-            appearance33.FontData.SizeInPoints = 8F;
             this.ultraLabel57.Appearance = appearance33;
+            this.ultraLabel57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel57.Location = new System.Drawing.Point(15, 109);
             this.ultraLabel57.Name = "ultraLabel57";
-            this.ultraLabel57.Size = new System.Drawing.Size(121, 49);
+            this.ultraLabel57.Size = new System.Drawing.Size(137, 49);
             this.ultraLabel57.TabIndex = 109;
             this.ultraLabel57.Text = "Familien-, Beziehungs- und soziale Situation";
-            // 
-            // ultraGroupBox2
-            // 
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            this.ultraGroupBox2.Appearance = appearance16;
-            this.ultraGroupBox2.Location = new System.Drawing.Point(786, 455);
-            this.ultraGroupBox2.Name = "ultraGroupBox2";
-            this.ultraGroupBox2.Size = new System.Drawing.Size(123, 33);
-            this.ultraGroupBox2.TabIndex = 123;
-            this.ultraGroupBox2.Visible = false;
-            // 
-            // tbZuHauseNichtRegelnKoennen
-            // 
-            this.tbZuHauseNichtRegelnKoennen.AcceptsReturn = true;
-            this.tbZuHauseNichtRegelnKoennen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance11.BackColorDisabled = System.Drawing.Color.White;
-            appearance11.ForeColorDisabled = System.Drawing.Color.Black;
-            this.tbZuHauseNichtRegelnKoennen.Appearance = appearance11;
-            this.tbZuHauseNichtRegelnKoennen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbZuHauseNichtRegelnKoennen.Location = new System.Drawing.Point(319, 279);
-            this.tbZuHauseNichtRegelnKoennen.MaxLength = 0;
-            this.tbZuHauseNichtRegelnKoennen.Multiline = true;
-            this.tbZuHauseNichtRegelnKoennen.Name = "tbZuHauseNichtRegelnKoennen";
-            this.tbZuHauseNichtRegelnKoennen.Size = new System.Drawing.Size(627, 53);
-            this.tbZuHauseNichtRegelnKoennen.TabIndex = 8;
-            this.tbZuHauseNichtRegelnKoennen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
-            // tbBesuchswuensche
-            // 
-            this.tbBesuchswuensche.AcceptsReturn = true;
-            this.tbBesuchswuensche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance14.BackColorDisabled = System.Drawing.Color.White;
-            appearance14.ForeColorDisabled = System.Drawing.Color.Black;
-            this.tbBesuchswuensche.Appearance = appearance14;
-            this.tbBesuchswuensche.AutoSize = false;
-            this.tbBesuchswuensche.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBesuchswuensche.Location = new System.Drawing.Point(158, 348);
-            this.tbBesuchswuensche.MaxLength = 50;
-            this.tbBesuchswuensche.Multiline = true;
-            this.tbBesuchswuensche.Name = "tbBesuchswuensche";
-            this.tbBesuchswuensche.Size = new System.Drawing.Size(788, 21);
-            this.tbBesuchswuensche.TabIndex = 9;
-            this.tbBesuchswuensche.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
-            // ultraLabel10
-            // 
-            appearance13.BackColor = System.Drawing.Color.Transparent;
-            this.ultraLabel10.Appearance = appearance13;
-            this.ultraLabel10.AutoSize = true;
-            this.ultraLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel10.Location = new System.Drawing.Point(252, 284);
-            this.ultraLabel10.Name = "ultraLabel10";
-            this.ultraLabel10.Size = new System.Drawing.Size(51, 12);
-            this.ultraLabel10.TabIndex = 287;
-            this.ultraLabel10.Text = "Was nicht?";
-            // 
-            // tbBeobachtungenSozialesituation
-            // 
-            this.tbBeobachtungenSozialesituation.AcceptsReturn = true;
-            this.tbBeobachtungenSozialesituation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance19.BackColorDisabled = System.Drawing.Color.White;
-            appearance19.ForeColorDisabled = System.Drawing.Color.Black;
-            this.tbBeobachtungenSozialesituation.Appearance = appearance19;
-            this.tbBeobachtungenSozialesituation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBeobachtungenSozialesituation.Location = new System.Drawing.Point(157, 438);
-            this.tbBeobachtungenSozialesituation.MaxLength = 0;
-            this.tbBeobachtungenSozialesituation.Multiline = true;
-            this.tbBeobachtungenSozialesituation.Name = "tbBeobachtungenSozialesituation";
-            this.tbBeobachtungenSozialesituation.Size = new System.Drawing.Size(789, 53);
-            this.tbBeobachtungenSozialesituation.TabIndex = 11;
-            this.tbBeobachtungenSozialesituation.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
-            // opZuHauseAllesRegelnKoennenJN
-            // 
-            appearance15.BackColorDisabled = System.Drawing.Color.Transparent;
-            appearance15.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance15.TextHAlignAsString = "Left";
-            appearance15.TextVAlignAsString = "Middle";
-            this.opZuHauseAllesRegelnKoennenJN.Appearance = appearance15;
-            this.opZuHauseAllesRegelnKoennenJN.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            valueListItem7.DataValue = true;
-            valueListItem7.DisplayText = "Ja";
-            valueListItem8.DataValue = false;
-            valueListItem8.DisplayText = "Nein";
-            this.opZuHauseAllesRegelnKoennenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
-            valueListItem7,
-            valueListItem8});
-            this.opZuHauseAllesRegelnKoennenJN.Location = new System.Drawing.Point(158, 282);
-            this.opZuHauseAllesRegelnKoennenJN.Name = "opZuHauseAllesRegelnKoennenJN";
-            this.opZuHauseAllesRegelnKoennenJN.Size = new System.Drawing.Size(79, 14);
-            this.opZuHauseAllesRegelnKoennenJN.TabIndex = 7;
-            this.opZuHauseAllesRegelnKoennenJN.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
-            // ultraLabel12
-            // 
-            appearance20.BackColor = System.Drawing.Color.Transparent;
-            appearance20.FontData.SizeInPoints = 8F;
-            this.ultraLabel12.Appearance = appearance20;
-            this.ultraLabel12.AutoSize = true;
-            this.ultraLabel12.Location = new System.Drawing.Point(15, 351);
-            this.ultraLabel12.Name = "ultraLabel12";
-            this.ultraLabel12.Size = new System.Drawing.Size(125, 14);
-            this.ultraLabel12.TabIndex = 288;
-            this.ultraLabel12.Text = "Wünsche bzgl. Besuche:";
-            // 
-            // ultraLabel11
-            // 
-            appearance17.BackColor = System.Drawing.Color.Transparent;
-            appearance17.FontData.SizeInPoints = 8F;
-            this.ultraLabel11.Appearance = appearance17;
-            this.ultraLabel11.Location = new System.Drawing.Point(15, 282);
-            this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(123, 49);
-            this.ultraLabel11.TabIndex = 285;
-            this.ultraLabel11.Text = "Haben Sie zu Hause alles hinlänglich regeln können?";
-            // 
-            // ultraLabel14
-            // 
-            appearance27.BackColor = System.Drawing.Color.Transparent;
-            appearance27.FontData.SizeInPoints = 8F;
-            this.ultraLabel14.Appearance = appearance27;
-            this.ultraLabel14.Location = new System.Drawing.Point(15, 441);
-            this.ultraLabel14.Name = "ultraLabel14";
-            this.ultraLabel14.Size = new System.Drawing.Size(136, 41);
-            this.ultraLabel14.TabIndex = 291;
-            this.ultraLabel14.Text = "Beobachtungen der Pflegenden/Ressourcen des Pat.:";
-            // 
-            // tbSituationsauswirkung
-            // 
-            this.tbSituationsauswirkung.AcceptsReturn = true;
-            this.tbSituationsauswirkung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            appearance23.BackColorDisabled = System.Drawing.Color.White;
-            appearance23.ForeColorDisabled = System.Drawing.Color.Black;
-            this.tbSituationsauswirkung.Appearance = appearance23;
-            this.tbSituationsauswirkung.AutoSize = false;
-            this.tbSituationsauswirkung.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSituationsauswirkung.Location = new System.Drawing.Point(158, 385);
-            this.tbSituationsauswirkung.MaxLength = 50;
-            this.tbSituationsauswirkung.Multiline = true;
-            this.tbSituationsauswirkung.Name = "tbSituationsauswirkung";
-            this.tbSituationsauswirkung.Size = new System.Drawing.Size(788, 21);
-            this.tbSituationsauswirkung.TabIndex = 10;
-            this.tbSituationsauswirkung.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
-            // ultraLabel13
-            // 
-            appearance25.BackColor = System.Drawing.Color.Transparent;
-            appearance25.FontData.SizeInPoints = 8F;
-            this.ultraLabel13.Appearance = appearance25;
-            this.ultraLabel13.Location = new System.Drawing.Point(15, 388);
-            this.ultraLabel13.Name = "ultraLabel13";
-            this.ultraLabel13.Size = new System.Drawing.Size(136, 37);
-            this.ultraLabel13.TabIndex = 109;
-            this.ultraLabel13.Text = "Welche Auswirkung hat Ihre jetzige Situation auf Sie und Ihre Familie?";
             // 
             // lblVorname
             // 
@@ -774,8 +773,8 @@
             // ultraLabel16
             // 
             appearance36.BackColor = System.Drawing.Color.Transparent;
-            appearance36.FontData.SizeInPoints = 8F;
             this.ultraLabel16.Appearance = appearance36;
+            this.ultraLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel16.Location = new System.Drawing.Point(15, 224);
             this.ultraLabel16.Name = "ultraLabel16";
             this.ultraLabel16.Size = new System.Drawing.Size(136, 50);
@@ -785,8 +784,8 @@
             // ultraLabel15
             // 
             appearance37.BackColor = System.Drawing.Color.Transparent;
-            appearance37.FontData.SizeInPoints = 8F;
             this.ultraLabel15.Appearance = appearance37;
+            this.ultraLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel15.Location = new System.Drawing.Point(15, 155);
             this.ultraLabel15.Name = "ultraLabel15";
             this.ultraLabel15.Size = new System.Drawing.Size(136, 36);
@@ -832,10 +831,10 @@
             appearance40.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel58.Appearance = appearance40;
             this.ultraLabel58.AutoSize = true;
-            this.ultraLabel58.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel58.Location = new System.Drawing.Point(252, 18);
             this.ultraLabel58.Name = "ultraLabel58";
-            this.ultraLabel58.Size = new System.Drawing.Size(38, 12);
+            this.ultraLabel58.Size = new System.Drawing.Size(45, 14);
             this.ultraLabel58.TabIndex = 271;
             this.ultraLabel58.Text = "Welche:";
             // 
@@ -863,20 +862,20 @@
             // ultraLabel59
             // 
             appearance42.BackColor = System.Drawing.Color.Transparent;
-            appearance42.FontData.SizeInPoints = 8F;
             this.ultraLabel59.Appearance = appearance42;
+            this.ultraLabel59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel59.Location = new System.Drawing.Point(15, 17);
             this.ultraLabel59.Name = "ultraLabel59";
-            this.ultraLabel59.Size = new System.Drawing.Size(136, 57);
+            this.ultraLabel59.Size = new System.Drawing.Size(136, 63);
             this.ultraLabel59.TabIndex = 270;
-            this.ultraLabel59.Text = "Hinweise auf ein Risiko od. Folgen von körperlichen/psychischen Gewalteinwirkunge" +
-    "n";
+            this.ultraLabel59.Text = "Hinweise auf ein Risiko od. Folgen von körperlichen / psychischen Gewalteinwirkun" +
+    "gen";
             // 
             // ultraLabel32
             // 
             appearance43.BackColor = System.Drawing.Color.Transparent;
-            appearance43.FontData.SizeInPoints = 8F;
             this.ultraLabel32.Appearance = appearance43;
+            this.ultraLabel32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel32.Location = new System.Drawing.Point(15, 86);
             this.ultraLabel32.Name = "ultraLabel32";
             this.ultraLabel32.Size = new System.Drawing.Size(136, 38);
@@ -903,7 +902,7 @@
             // ultraTabPageControl3
             // 
             this.ultraTabPageControl3.Controls.Add(this.ultraGroupBox7);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(962, 566);
             // 
@@ -940,22 +939,22 @@
             // ultraLabel19
             // 
             appearance47.BackColor = System.Drawing.Color.Transparent;
-            appearance47.FontData.SizeInPoints = 8F;
             this.ultraLabel19.Appearance = appearance47;
+            this.ultraLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel19.Location = new System.Drawing.Point(15, 93);
             this.ultraLabel19.Name = "ultraLabel19";
             this.ultraLabel19.Size = new System.Drawing.Size(153, 57);
             this.ultraLabel19.TabIndex = 277;
-            this.ultraLabel19.Text = "Angaben/Hinweise des Patienten/Beobachtungen der Pflegenden";
+            this.ultraLabel19.Text = "Angaben / Hinweise des Klienten / Beobachtungen der Pflegenden";
             // 
             // ultraLabel18
             // 
             appearance48.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel18.Appearance = appearance48;
-            this.ultraLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraLabel18.Location = new System.Drawing.Point(15, 17);
             this.ultraLabel18.Name = "ultraLabel18";
-            this.ultraLabel18.Size = new System.Drawing.Size(136, 66);
+            this.ultraLabel18.Size = new System.Drawing.Size(153, 66);
             this.ultraLabel18.TabIndex = 276;
             this.ultraLabel18.Text = "Veränderungen, Einschränkungen, schwierigkeiten bei Identität, Funktion und Repro" +
     "duktion";
@@ -982,7 +981,7 @@
             this.ultraTabPageControl4.Controls.Add(this.ultraGroupBox10);
             this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
-            this.ultraTabPageControl4.Size = new System.Drawing.Size(738, 414);
+            this.ultraTabPageControl4.Size = new System.Drawing.Size(962, 566);
             // 
             // ultraGroupBox10
             // 
@@ -1085,18 +1084,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox3)).EndInit();
             this.ultraGroupBox3.ResumeLayout(false);
             this.ultraGroupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbZuHauseNichtRegelnKoennen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAbhaengigePersonen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBesuchswuensche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.opZuHauseAllesRegelnKoennenJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBeobachtungenSozialesituation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.opAbhaengigePersonenJN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSituationsauswirkung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbBezugsperson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFamBeziehSozialeProbleme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.opFamBeziehSozialeProblemeJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFamBeziehSozialeSituation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbZuHauseNichtRegelnKoennen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbBesuchswuensche)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbBeobachtungenSozialesituation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.opZuHauseAllesRegelnKoennenJN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSituationsauswirkung)).EndInit();
             this.ultraTabPageControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox5)).EndInit();
             this.ultraGroupBox5.ResumeLayout(false);
