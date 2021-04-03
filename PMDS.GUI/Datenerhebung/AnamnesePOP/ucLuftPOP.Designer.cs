@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
@@ -63,9 +64,9 @@
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpRessource = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbBeobachtungenAtemProbleme = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel7 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbTracheostomaBeschreibung = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -90,7 +91,6 @@
             this.tabLuft = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tabPagePersoenlicheDaten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpRessource)).BeginInit();
             this.grpRessource.SuspendLayout();
@@ -144,6 +144,18 @@
             this.grpRessource.Name = "grpRessource";
             this.grpRessource.Size = new System.Drawing.Size(952, 341);
             this.grpRessource.TabIndex = 113;
+            // 
+            // baseLabel1
+            // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel1.Appearance = appearance2;
+            this.baseLabel1.AutoSize = true;
+            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.baseLabel1.Location = new System.Drawing.Point(15, 234);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(74, 14);
+            this.baseLabel1.TabIndex = 124;
+            this.baseLabel1.Text = "Beschreibung:";
             // 
             // tbBeobachtungenAtemProbleme
             // 
@@ -372,7 +384,6 @@
             this.opAtemProblemeJN.Name = "opAtemProblemeJN";
             this.opAtemProblemeJN.Size = new System.Drawing.Size(80, 14);
             this.opAtemProblemeJN.TabIndex = 1;
-            this.opAtemProblemeJN.Visible = false;
             this.opAtemProblemeJN.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // ultraLabel1
@@ -426,7 +437,7 @@
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(966, 414);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(962, 566);
             // 
             // grpPDX
             // 
@@ -498,18 +509,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // baseLabel1
-            // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel1.Appearance = appearance2;
-            this.baseLabel1.AutoSize = true;
-            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.baseLabel1.Location = new System.Drawing.Point(15, 234);
-            this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(74, 14);
-            this.baseLabel1.TabIndex = 124;
-            this.baseLabel1.Text = "Beschreibung:";
             // 
             // ucLuftPOP
             // 

@@ -324,22 +324,25 @@ namespace PMDS
                                 bool IsInit = GuiWorkflow.Init(frm);
 
                                 //PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-                                //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-                                //{
-                                //    PMDS.db.Entities.Benutzer rUserLoggedIn = b.LogggedOnUserWithCheck(db);
-                                //    if (rUserLoggedIn != null)
-                                //    {
-                                //        ENV.ActiveUser = rUserLoggedIn;
-                                //        if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
-                                //        {
-                                //            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
-                                //        }
-                                //        else
-                                //        {
-                                //            ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
-                                //        }
-                                //    }
-                                //}
+                                if (ENV.ActiveUser == null)
+                                {
+                                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                                    {
+                                        PMDS.db.Entities.Benutzer rUserLoggedIn = b.LogggedOnUserWithCheck(db);
+                                        if (rUserLoggedIn != null)
+                                        {
+                                            ENV.ActiveUser = rUserLoggedIn;
+                                            if (String.IsNullOrWhiteSpace(ENV.LoginInNameFrei))
+                                            {
+                                                ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Nachname + " " + ENV.ActiveUser.Vorname + ") ";
+                                            }
+                                            else
+                                            {
+                                                ENV.MainCaption = "PMDS (" + ENV.ActiveUser.Benutzer1 + " - " + ENV.LoginInNameFrei + ") ";
+                                            }
+                                        }
+                                    }
+                                }
 
                                 if (!IsInit)
                                     return;
