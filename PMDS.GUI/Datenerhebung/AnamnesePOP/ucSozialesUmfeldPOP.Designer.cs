@@ -40,6 +40,7 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
@@ -56,7 +57,6 @@
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox1 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.tbBeobachtungenAngehoerige = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -70,6 +70,7 @@
             this.ultraLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox2 = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbBeobachtungenFamilieBereitschaft = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel11 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbFamilieBereitschaft = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -88,7 +89,6 @@
             this.tabSozialesUmfeld = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tabPagePersoenlicheDaten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
@@ -115,7 +115,7 @@
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox1);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
             this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
             // 
@@ -248,7 +248,7 @@
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ultraLabel2.Location = new System.Drawing.Point(15, 40);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(137, 36);
+            this.ultraLabel2.Size = new System.Drawing.Size(137, 42);
             this.ultraLabel2.TabIndex = 113;
             this.ultraLabel2.Text = "(Verwandschafts)-verhältnis zur gepflegten Person:";
             // 
@@ -267,7 +267,7 @@
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.ultraGroupBox2);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(962, 566);
             // 
@@ -291,6 +291,17 @@
             this.ultraGroupBox2.Name = "ultraGroupBox2";
             this.ultraGroupBox2.Size = new System.Drawing.Size(956, 329);
             this.ultraGroupBox2.TabIndex = 116;
+            // 
+            // baseLabel1
+            // 
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel1.Appearance = appearance12;
+            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.baseLabel1.Location = new System.Drawing.Point(14, 103);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(142, 31);
+            this.baseLabel1.TabIndex = 156;
+            this.baseLabel1.Text = "Angaben der Familienmitglieder:";
             // 
             // tbBeobachtungenFamilieBereitschaft
             // 
@@ -528,17 +539,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // baseLabel1
-            // 
-            appearance12.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel1.Appearance = appearance12;
-            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.baseLabel1.Location = new System.Drawing.Point(14, 103);
-            this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(142, 31);
-            this.baseLabel1.TabIndex = 156;
-            this.baseLabel1.Text = "Angaben der Familienmitglieder:";
             // 
             // ucSozialesUmfeldPOP
             // 
