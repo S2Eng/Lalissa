@@ -46,5 +46,10 @@ namespace PMDS.GUI
         {
             OnValueChanged(sender, e);
         }
+
+        private void ultraLabel12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

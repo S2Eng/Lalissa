@@ -115,7 +115,7 @@
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox1);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(623, 414);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
             // 
             // ultraGroupBox1
             // 
@@ -144,152 +144,166 @@
             this.ultraGroupBox1.Controls.Add(this.ultraLabel1);
             this.ultraGroupBox1.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(483, 405);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(952, 453);
             this.ultraGroupBox1.TabIndex = 115;
             // 
             // tbBeobachtungFluessigkeitsprobleme
             // 
             this.tbBeobachtungFluessigkeitsprobleme.AcceptsReturn = true;
+            this.tbBeobachtungFluessigkeitsprobleme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance2.BackColorDisabled = System.Drawing.Color.White;
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbBeobachtungFluessigkeitsprobleme.Appearance = appearance2;
             this.tbBeobachtungFluessigkeitsprobleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBeobachtungFluessigkeitsprobleme.Location = new System.Drawing.Point(18, 355);
-            this.tbBeobachtungFluessigkeitsprobleme.MaxLength = 100;
+            this.tbBeobachtungFluessigkeitsprobleme.Location = new System.Drawing.Point(204, 401);
+            this.tbBeobachtungFluessigkeitsprobleme.MaxLength = 0;
             this.tbBeobachtungFluessigkeitsprobleme.Multiline = true;
             this.tbBeobachtungFluessigkeitsprobleme.Name = "tbBeobachtungFluessigkeitsprobleme";
-            this.tbBeobachtungFluessigkeitsprobleme.Size = new System.Drawing.Size(452, 41);
+            this.tbBeobachtungFluessigkeitsprobleme.Size = new System.Drawing.Size(742, 42);
             this.tbBeobachtungFluessigkeitsprobleme.TabIndex = 10;
             this.tbBeobachtungFluessigkeitsprobleme.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // ultraLabel12
             // 
             appearance3.BackColor = System.Drawing.Color.Transparent;
-            appearance3.FontData.SizeInPoints = 8F;
             this.ultraLabel12.Appearance = appearance3;
             this.ultraLabel12.AutoSize = true;
-            this.ultraLabel12.Location = new System.Drawing.Point(18, 335);
+            this.ultraLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel12.Location = new System.Drawing.Point(15, 404);
             this.ultraLabel12.Name = "ultraLabel12";
-            this.ultraLabel12.Size = new System.Drawing.Size(167, 14);
+            this.ultraLabel12.Size = new System.Drawing.Size(178, 14);
             this.ultraLabel12.TabIndex = 149;
             this.ultraLabel12.Text = "Beobachtungen und Ressourcen:";
+            this.ultraLabel12.Click += new System.EventHandler(this.ultraLabel12_Click);
             // 
             // tbOedeme
             // 
             this.tbOedeme.AcceptsReturn = true;
+            this.tbOedeme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance4.BackColorDisabled = System.Drawing.Color.White;
             appearance4.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbOedeme.Appearance = appearance4;
             this.tbOedeme.AutoSize = false;
             this.tbOedeme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbOedeme.Location = new System.Drawing.Point(19, 310);
-            this.tbOedeme.MaxLength = 50;
+            this.tbOedeme.Location = new System.Drawing.Point(204, 343);
+            this.tbOedeme.MaxLength = 0;
+            this.tbOedeme.Multiline = true;
             this.tbOedeme.Name = "tbOedeme";
-            this.tbOedeme.Size = new System.Drawing.Size(452, 19);
+            this.tbOedeme.Size = new System.Drawing.Size(742, 42);
             this.tbOedeme.TabIndex = 9;
             this.tbOedeme.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // ultraLabel11
             // 
             appearance5.BackColor = System.Drawing.Color.Transparent;
-            appearance5.FontData.SizeInPoints = 8F;
             this.ultraLabel11.Appearance = appearance5;
             this.ultraLabel11.AutoSize = true;
-            this.ultraLabel11.Location = new System.Drawing.Point(19, 290);
+            this.ultraLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel11.Location = new System.Drawing.Point(15, 343);
             this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(43, 14);
+            this.ultraLabel11.Size = new System.Drawing.Size(46, 14);
             this.ultraLabel11.TabIndex = 146;
             this.ultraLabel11.Text = "Ödeme:";
             // 
             // tbHautturgor
             // 
             this.tbHautturgor.AcceptsReturn = true;
+            this.tbHautturgor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance6.BackColorDisabled = System.Drawing.Color.White;
             appearance6.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbHautturgor.Appearance = appearance6;
             this.tbHautturgor.AutoSize = false;
             this.tbHautturgor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHautturgor.Location = new System.Drawing.Point(18, 265);
-            this.tbHautturgor.MaxLength = 50;
+            this.tbHautturgor.Location = new System.Drawing.Point(204, 285);
+            this.tbHautturgor.MaxLength = 0;
+            this.tbHautturgor.Multiline = true;
             this.tbHautturgor.Name = "tbHautturgor";
-            this.tbHautturgor.Size = new System.Drawing.Size(452, 19);
+            this.tbHautturgor.Size = new System.Drawing.Size(742, 42);
             this.tbHautturgor.TabIndex = 8;
             this.tbHautturgor.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // ultraLabel10
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
-            appearance7.FontData.SizeInPoints = 8F;
             this.ultraLabel10.Appearance = appearance7;
             this.ultraLabel10.AutoSize = true;
-            this.ultraLabel10.Location = new System.Drawing.Point(19, 245);
+            this.ultraLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel10.Location = new System.Drawing.Point(15, 288);
             this.ultraLabel10.Name = "ultraLabel10";
-            this.ultraLabel10.Size = new System.Drawing.Size(59, 14);
+            this.ultraLabel10.Size = new System.Drawing.Size(63, 14);
             this.ultraLabel10.TabIndex = 144;
             this.ultraLabel10.Text = "Hautturgor:";
             // 
             // tbTrinkhilfen
             // 
             this.tbTrinkhilfen.AcceptsReturn = true;
+            this.tbTrinkhilfen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance8.BackColorDisabled = System.Drawing.Color.White;
             appearance8.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbTrinkhilfen.Appearance = appearance8;
             this.tbTrinkhilfen.AutoSize = false;
             this.tbTrinkhilfen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTrinkhilfen.Location = new System.Drawing.Point(18, 220);
-            this.tbTrinkhilfen.MaxLength = 50;
+            this.tbTrinkhilfen.Location = new System.Drawing.Point(204, 227);
+            this.tbTrinkhilfen.MaxLength = 0;
+            this.tbTrinkhilfen.Multiline = true;
             this.tbTrinkhilfen.Name = "tbTrinkhilfen";
-            this.tbTrinkhilfen.Size = new System.Drawing.Size(452, 19);
+            this.tbTrinkhilfen.Size = new System.Drawing.Size(742, 42);
             this.tbTrinkhilfen.TabIndex = 7;
             this.tbTrinkhilfen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // ultraLabel9
             // 
             appearance9.BackColor = System.Drawing.Color.Transparent;
-            appearance9.FontData.SizeInPoints = 8F;
             this.ultraLabel9.Appearance = appearance9;
             this.ultraLabel9.AutoSize = true;
-            this.ultraLabel9.Location = new System.Drawing.Point(20, 200);
+            this.ultraLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel9.Location = new System.Drawing.Point(15, 237);
             this.ultraLabel9.Name = "ultraLabel9";
-            this.ultraLabel9.Size = new System.Drawing.Size(58, 14);
+            this.ultraLabel9.Size = new System.Drawing.Size(62, 14);
             this.ultraLabel9.TabIndex = 142;
             this.ultraLabel9.Text = "Trinkhilfen:";
             // 
             // tbZungeAussehen
             // 
             this.tbZungeAussehen.AcceptsReturn = true;
+            this.tbZungeAussehen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance10.BackColorDisabled = System.Drawing.Color.White;
             appearance10.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbZungeAussehen.Appearance = appearance10;
             this.tbZungeAussehen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbZungeAussehen.Location = new System.Drawing.Point(20, 173);
-            this.tbZungeAussehen.MaxLength = 50;
+            this.tbZungeAussehen.Location = new System.Drawing.Point(204, 169);
+            this.tbZungeAussehen.MaxLength = 0;
+            this.tbZungeAussehen.Multiline = true;
             this.tbZungeAussehen.Name = "tbZungeAussehen";
-            this.tbZungeAussehen.Size = new System.Drawing.Size(452, 21);
+            this.tbZungeAussehen.Size = new System.Drawing.Size(742, 42);
             this.tbZungeAussehen.TabIndex = 6;
             this.tbZungeAussehen.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // ultraLabel7
             // 
             appearance11.BackColor = System.Drawing.Color.Transparent;
-            appearance11.FontData.SizeInPoints = 8F;
             this.ultraLabel7.Appearance = appearance11;
             this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(19, 153);
+            this.ultraLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel7.Location = new System.Drawing.Point(15, 173);
             this.ultraLabel7.Name = "ultraLabel7";
-            this.ultraLabel7.Size = new System.Drawing.Size(109, 14);
+            this.ultraLabel7.Size = new System.Drawing.Size(116, 14);
             this.ultraLabel7.TabIndex = 140;
             this.ultraLabel7.Text = "Aussehen der Zunge:";
             // 
             // ultraLabel6
             // 
             appearance12.BackColor = System.Drawing.Color.Transparent;
-            appearance12.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance12;
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(260, 133);
+            this.ultraLabel6.Location = new System.Drawing.Point(265, 136);
             this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(38, 14);
+            this.ultraLabel6.Size = new System.Drawing.Size(39, 14);
             this.ultraLabel6.TabIndex = 139;
             this.ultraLabel6.Text = "ml/Tag";
             // 
@@ -299,7 +313,7 @@
             appearance13.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbTrinkmenge.Appearance = appearance13;
             this.tbTrinkmenge.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
-            this.tbTrinkmenge.Location = new System.Drawing.Point(199, 130);
+            this.tbTrinkmenge.Location = new System.Drawing.Point(204, 133);
             this.tbTrinkmenge.Name = "tbTrinkmenge";
             this.tbTrinkmenge.NonAutoSizeHeight = 20;
             this.tbTrinkmenge.Size = new System.Drawing.Size(55, 20);
@@ -309,12 +323,12 @@
             // ultraLabel5
             // 
             appearance14.BackColor = System.Drawing.Color.Transparent;
-            appearance14.FontData.SizeInPoints = 8F;
             this.ultraLabel5.Appearance = appearance14;
             this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(19, 133);
+            this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel5.Location = new System.Drawing.Point(15, 136);
             this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(174, 14);
+            this.ultraLabel5.Size = new System.Drawing.Size(186, 14);
             this.ultraLabel5.TabIndex = 120;
             this.ultraLabel5.Text = "Bedarf an Flüssigkeit/Trinkmenge :";
             // 
@@ -336,7 +350,7 @@
             valueListItem1,
             valueListItem2,
             valueListItem3});
-            this.opDurstgefuehl.Location = new System.Drawing.Point(268, 93);
+            this.opDurstgefuehl.Location = new System.Drawing.Point(368, 102);
             this.opDurstgefuehl.Name = "opDurstgefuehl";
             this.opDurstgefuehl.Size = new System.Drawing.Size(177, 14);
             this.opDurstgefuehl.TabIndex = 4;
@@ -348,7 +362,7 @@
             this.ultraLabel4.Appearance = appearance16;
             this.ultraLabel4.AutoSize = true;
             this.ultraLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.ultraLabel4.Location = new System.Drawing.Point(199, 94);
+            this.ultraLabel4.Location = new System.Drawing.Point(299, 102);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(63, 14);
             this.ultraLabel4.TabIndex = 119;
@@ -361,7 +375,7 @@
             this.dtpFluessigkeitsproblemeSeit.Appearance = appearance17;
             this.dtpFluessigkeitsproblemeSeit.DateTime = new System.DateTime(2006, 12, 14, 0, 0, 0, 0);
             this.dtpFluessigkeitsproblemeSeit.FormatString = "";
-            this.dtpFluessigkeitsproblemeSeit.Location = new System.Drawing.Point(80, 90);
+            this.dtpFluessigkeitsproblemeSeit.Location = new System.Drawing.Point(158, 96);
             this.dtpFluessigkeitsproblemeSeit.MaskInput = "{date}";
             this.dtpFluessigkeitsproblemeSeit.Name = "dtpFluessigkeitsproblemeSeit";
             this.dtpFluessigkeitsproblemeSeit.ownFormat = "";
@@ -377,7 +391,7 @@
             this.ultraLabel3.Appearance = appearance18;
             this.ultraLabel3.AutoSize = true;
             this.ultraLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.ultraLabel3.Location = new System.Drawing.Point(19, 94);
+            this.ultraLabel3.Location = new System.Drawing.Point(15, 100);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(55, 14);
             this.ultraLabel3.TabIndex = 118;
@@ -386,15 +400,17 @@
             // tbFluessigkeitsprobleme
             // 
             this.tbFluessigkeitsprobleme.AcceptsReturn = true;
+            this.tbFluessigkeitsprobleme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             appearance19.BackColorDisabled = System.Drawing.Color.White;
             appearance19.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbFluessigkeitsprobleme.Appearance = appearance19;
             this.tbFluessigkeitsprobleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFluessigkeitsprobleme.Location = new System.Drawing.Point(19, 55);
-            this.tbFluessigkeitsprobleme.MaxLength = 100;
+            this.tbFluessigkeitsprobleme.Location = new System.Drawing.Point(158, 37);
+            this.tbFluessigkeitsprobleme.MaxLength = 0;
             this.tbFluessigkeitsprobleme.Multiline = true;
             this.tbFluessigkeitsprobleme.Name = "tbFluessigkeitsprobleme";
-            this.tbFluessigkeitsprobleme.Size = new System.Drawing.Size(452, 32);
+            this.tbFluessigkeitsprobleme.Size = new System.Drawing.Size(788, 53);
             this.tbFluessigkeitsprobleme.TabIndex = 2;
             this.tbFluessigkeitsprobleme.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -402,11 +418,10 @@
             // 
             appearance20.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel2.Appearance = appearance20;
-            this.ultraLabel2.AutoSize = true;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.ultraLabel2.Location = new System.Drawing.Point(104, 37);
+            this.ultraLabel2.Location = new System.Drawing.Point(15, 41);
             this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(44, 14);
+            this.ultraLabel2.Size = new System.Drawing.Size(58, 20);
             this.ultraLabel2.TabIndex = 113;
             this.ultraLabel2.Text = "Welche:";
             // 
@@ -425,7 +440,7 @@
             this.opFluessigkeitsproblemeJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem4,
             valueListItem5});
-            this.opFluessigkeitsproblemeJN.Location = new System.Drawing.Point(18, 37);
+            this.opFluessigkeitsproblemeJN.Location = new System.Drawing.Point(285, 17);
             this.opFluessigkeitsproblemeJN.Name = "opFluessigkeitsproblemeJN";
             this.opFluessigkeitsproblemeJN.Size = new System.Drawing.Size(80, 14);
             this.opFluessigkeitsproblemeJN.TabIndex = 1;
@@ -434,12 +449,12 @@
             // ultraLabel1
             // 
             appearance22.BackColor = System.Drawing.Color.Transparent;
-            appearance22.FontData.SizeInPoints = 8F;
             this.ultraLabel1.Appearance = appearance22;
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(19, 17);
+            this.ultraLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraLabel1.Location = new System.Drawing.Point(15, 17);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(221, 14);
+            this.ultraLabel1.Size = new System.Drawing.Size(237, 14);
             this.ultraLabel1.TabIndex = 109;
             this.ultraLabel1.Text = "Beeinträchtigung des Flüssigkeitshaushaltes";
             // 
@@ -496,7 +511,7 @@
             this.tabWasser.Location = new System.Drawing.Point(0, 0);
             this.tabWasser.Name = "tabWasser";
             this.tabWasser.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabWasser.Size = new System.Drawing.Size(627, 440);
+            this.tabWasser.Size = new System.Drawing.Size(966, 592);
             this.tabWasser.TabIndex = 116;
             ultraTab1.Key = "Fluessigkeitshaushalt";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
@@ -516,7 +531,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(623, 414);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(962, 566);
             // 
             // errorProvider1
             // 
@@ -529,7 +544,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tabWasser);
             this.Name = "ucWasserPOP";
-            this.Size = new System.Drawing.Size(627, 440);
+            this.Size = new System.Drawing.Size(966, 592);
             this.tabPagePersoenlicheDaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).EndInit();
             this.ultraGroupBox1.ResumeLayout(false);

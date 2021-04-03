@@ -238,6 +238,14 @@ namespace RBU
                 int i = da.Fill(ds);
                 return i;
             }
+            catch (System.Data.ConstraintException ex)
+            {
+                throw new Exception("RBU.Fill (DataSet): " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
+            }
+            catch (System.Data.DataException ex)
+            {
+                throw new Exception("RBU.Fill (DataSet): " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
+            }
             catch (Exception ex)
             {
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()))

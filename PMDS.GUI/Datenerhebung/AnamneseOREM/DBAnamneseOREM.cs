@@ -54,7 +54,7 @@ namespace PMDS.DB.Patient
         {
             //Daten aus der Tabelle Anamnese_Orem lesen.
             daAnamneseOREM.SelectCommand.Parameters[0].Value = IDPatient;
-            dsAnamneseOrem1.Anamnese_Orem.Clear();
+            dsAnamneseOrem1 = new dsAnamneseOrem();
             RBU.DataBase.Fill(daAnamneseOREM, dsAnamneseOrem1);
 
             string modell = PflegeModelle.Orem.ToString();

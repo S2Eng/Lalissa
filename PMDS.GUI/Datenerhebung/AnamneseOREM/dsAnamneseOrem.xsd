@@ -14,7 +14,7 @@
   <xs:element name="dsAnamneseOrem" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsAnamneseOrem" msprop:Generator_UserDSName="dsAnamneseOrem">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Anamnese_Orem" msprop:Generator_TableClassName="Anamnese_OremDataTable" msprop:Generator_RowEvArgName="Anamnese_OremRowChangeEvent" msprop:Generator_TablePropName="Anamnese_Orem" msprop:Generator_TableVarName="tableAnamnese_Orem" msprop:Generator_RowEvHandlerName="Anamnese_OremRowChangeEventHandler" msprop:Generator_RowDeletingName="Anamnese_OremRowDeleting" msprop:Generator_RowChangingName="Anamnese_OremRowChanging" msprop:Generator_RowDeletedName="Anamnese_OremRowDeleted" msprop:Generator_UserTableName="Anamnese_Orem" msprop:Generator_RowChangedName="Anamnese_OremRowChanged" msprop:Generator_RowClassName="Anamnese_OremRow">
+        <xs:element name="Anamnese_Orem" msprop:Generator_TableClassName="Anamnese_OremDataTable" msprop:Generator_TableVarName="tableAnamnese_Orem" msprop:Generator_TablePropName="Anamnese_Orem" msprop:Generator_RowDeletingName="Anamnese_OremRowDeleting" msprop:Generator_RowChangingName="Anamnese_OremRowChanging" msprop:Generator_RowEvHandlerName="Anamnese_OremRowChangeEventHandler" msprop:Generator_RowDeletedName="Anamnese_OremRowDeleted" msprop:Generator_UserTableName="Anamnese_Orem" msprop:Generator_RowChangedName="Anamnese_OremRowChanged" msprop:Generator_RowEvArgName="Anamnese_OremRowChangeEvent" msprop:Generator_RowClassName="Anamnese_OremRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -1001,7 +1001,7 @@
               <xs:element name="Konfision" msprop:Generator_ColumnVarNameInTable="columnKonfision" msprop:Generator_ColumnPropNameInRow="Konfision" msprop:Generator_ColumnPropNameInTable="KonfisionColumn" msprop:Generator_UserColumnName="Konfision" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
+                    <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

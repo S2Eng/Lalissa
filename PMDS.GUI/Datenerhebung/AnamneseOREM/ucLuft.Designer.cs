@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -62,10 +64,10 @@
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.tabPagePersoenlicheDaten = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.grpRessource = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.baseLabel2 = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tbSonstigeAtemProblemeAuftretung = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.tbBeobachtungenAtemProbleme = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.ultraLabel7 = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -91,8 +93,6 @@
             this.tabLuft = new QS2.Desktop.ControlManagment.BaseTabControl();
             this.ultraTabSharedControlsPage2 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.baseLabel2 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.tabPagePersoenlicheDaten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grpRessource)).BeginInit();
             this.grpRessource.SuspendLayout();
@@ -147,8 +147,32 @@
             this.grpRessource.Controls.Add(this.ultraLabel113);
             this.grpRessource.Location = new System.Drawing.Point(7, 6);
             this.grpRessource.Name = "grpRessource";
-            this.grpRessource.Size = new System.Drawing.Size(945, 416);
+            this.grpRessource.Size = new System.Drawing.Size(945, 381);
             this.grpRessource.TabIndex = 113;
+            // 
+            // baseLabel2
+            // 
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel2.Appearance = appearance2;
+            this.baseLabel2.AutoSize = true;
+            this.baseLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.baseLabel2.Location = new System.Drawing.Point(15, 283);
+            this.baseLabel2.Name = "baseLabel2";
+            this.baseLabel2.Size = new System.Drawing.Size(77, 14);
+            this.baseLabel2.TabIndex = 125;
+            this.baseLabel2.Text = "Beschreibung:";
+            // 
+            // baseLabel1
+            // 
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.baseLabel1.Appearance = appearance3;
+            this.baseLabel1.AutoSize = true;
+            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.baseLabel1.Location = new System.Drawing.Point(15, 127);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(57, 14);
+            this.baseLabel1.TabIndex = 124;
+            this.baseLabel1.Text = "Sonstiges:";
             // 
             // tbSonstigeAtemProblemeAuftretung
             // 
@@ -175,7 +199,7 @@
             appearance5.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbBeobachtungenAtemProbleme.Appearance = appearance5;
             this.tbBeobachtungenAtemProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBeobachtungenAtemProbleme.Location = new System.Drawing.Point(158, 315);
+            this.tbBeobachtungenAtemProbleme.Location = new System.Drawing.Point(158, 317);
             this.tbBeobachtungenAtemProbleme.MaxLength = 0;
             this.tbBeobachtungenAtemProbleme.Multiline = true;
             this.tbBeobachtungenAtemProbleme.Name = "tbBeobachtungenAtemProbleme";
@@ -188,7 +212,7 @@
             appearance6.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel7.Appearance = appearance6;
             this.ultraLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel7.Location = new System.Drawing.Point(15, 318);
+            this.ultraLabel7.Location = new System.Drawing.Point(15, 320);
             this.ultraLabel7.Name = "ultraLabel7";
             this.ultraLabel7.Size = new System.Drawing.Size(128, 50);
             this.ultraLabel7.TabIndex = 123;
@@ -204,9 +228,8 @@
             appearance7.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbTracheostomaBeschreibung.Appearance = appearance7;
             this.tbTracheostomaBeschreibung.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTracheostomaBeschreibung.Location = new System.Drawing.Point(158, 278);
+            this.tbTracheostomaBeschreibung.Location = new System.Drawing.Point(158, 280);
             this.tbTracheostomaBeschreibung.MaxLength = 50;
-            this.tbTracheostomaBeschreibung.Multiline = true;
             this.tbTracheostomaBeschreibung.Name = "tbTracheostomaBeschreibung";
             this.tbTracheostomaBeschreibung.Size = new System.Drawing.Size(781, 21);
             this.tbTracheostomaBeschreibung.TabIndex = 9;
@@ -233,7 +256,7 @@
             valueListItem2,
             valueListItem3,
             valueListItem4});
-            this.opTracheostoma.Location = new System.Drawing.Point(158, 258);
+            this.opTracheostoma.Location = new System.Drawing.Point(158, 260);
             this.opTracheostoma.Name = "opTracheostoma";
             this.opTracheostoma.Size = new System.Drawing.Size(292, 14);
             this.opTracheostoma.TabIndex = 8;
@@ -245,7 +268,7 @@
             this.ultraLabel6.Appearance = appearance9;
             this.ultraLabel6.AutoSize = true;
             this.ultraLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel6.Location = new System.Drawing.Point(12, 258);
+            this.ultraLabel6.Location = new System.Drawing.Point(15, 260);
             this.ultraLabel6.Name = "ultraLabel6";
             this.ultraLabel6.Size = new System.Drawing.Size(79, 14);
             this.ultraLabel6.TabIndex = 119;
@@ -261,7 +284,7 @@
             appearance10.ForeColorDisabled = System.Drawing.Color.Black;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Appearance = appearance10;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Location = new System.Drawing.Point(158, 183);
+            this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Location = new System.Drawing.Point(158, 185);
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.MaxLength = 0;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Multiline = true;
             this.tbAtemProblemeHilfeMassnahmenHilfsMittel.Name = "tbAtemProblemeHilfeMassnahmenHilfsMittel";
@@ -274,9 +297,9 @@
             appearance11.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel5.Appearance = appearance11;
             this.ultraLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel5.Location = new System.Drawing.Point(18, 182);
+            this.ultraLabel5.Location = new System.Drawing.Point(15, 188);
             this.ultraLabel5.Name = "ultraLabel5";
-            this.ultraLabel5.Size = new System.Drawing.Size(134, 53);
+            this.ultraLabel5.Size = new System.Drawing.Size(134, 38);
             this.ultraLabel5.TabIndex = 117;
             this.ultraLabel5.Text = "Selbsthilfemaßnahmen und Hilfsmittel:";
             // 
@@ -336,7 +359,7 @@
             this.ultraLabel3.Appearance = appearance15;
             this.ultraLabel3.AutoSize = true;
             this.ultraLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel3.Location = new System.Drawing.Point(19, 100);
+            this.ultraLabel3.Location = new System.Drawing.Point(15, 100);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(57, 14);
             this.ultraLabel3.TabIndex = 113;
@@ -365,7 +388,7 @@
             this.ultraLabel2.Appearance = appearance17;
             this.ultraLabel2.AutoSize = true;
             this.ultraLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel2.Location = new System.Drawing.Point(19, 40);
+            this.ultraLabel2.Location = new System.Drawing.Point(15, 40);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(45, 14);
             this.ultraLabel2.TabIndex = 111;
@@ -419,7 +442,7 @@
             this.opRaucherJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem9,
             valueListItem10});
-            this.opRaucherJN.Location = new System.Drawing.Point(158, 158);
+            this.opRaucherJN.Location = new System.Drawing.Point(158, 160);
             this.opRaucherJN.Name = "opRaucherJN";
             this.opRaucherJN.Size = new System.Drawing.Size(80, 14);
             this.opRaucherJN.TabIndex = 6;
@@ -431,7 +454,7 @@
             this.ultraLabel113.Appearance = appearance21;
             this.ultraLabel113.AutoSize = true;
             this.ultraLabel113.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel113.Location = new System.Drawing.Point(15, 158);
+            this.ultraLabel113.Location = new System.Drawing.Point(15, 160);
             this.ultraLabel113.Name = "ultraLabel113";
             this.ultraLabel113.Size = new System.Drawing.Size(49, 14);
             this.ultraLabel113.TabIndex = 108;
@@ -515,30 +538,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // baseLabel1
-            // 
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel1.Appearance = appearance3;
-            this.baseLabel1.AutoSize = true;
-            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.baseLabel1.Location = new System.Drawing.Point(18, 127);
-            this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(57, 14);
-            this.baseLabel1.TabIndex = 124;
-            this.baseLabel1.Text = "Sonstiges:";
-            // 
-            // baseLabel2
-            // 
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.baseLabel2.Appearance = appearance2;
-            this.baseLabel2.AutoSize = true;
-            this.baseLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.baseLabel2.Location = new System.Drawing.Point(19, 281);
-            this.baseLabel2.Name = "baseLabel2";
-            this.baseLabel2.Size = new System.Drawing.Size(77, 14);
-            this.baseLabel2.TabIndex = 125;
-            this.baseLabel2.Text = "Beschreibung:";
             // 
             // ucLuft
             // 

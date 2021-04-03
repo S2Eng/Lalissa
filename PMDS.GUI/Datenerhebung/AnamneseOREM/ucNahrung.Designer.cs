@@ -310,7 +310,7 @@
             this.tbBeobachtungErnaehrungProbleme.Appearance = appearance10;
             this.tbBeobachtungErnaehrungProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBeobachtungErnaehrungProbleme.Location = new System.Drawing.Point(201, 344);
-            this.tbBeobachtungErnaehrungProbleme.MaxLength = 100;
+            this.tbBeobachtungErnaehrungProbleme.MaxLength = 0;
             this.tbBeobachtungErnaehrungProbleme.Multiline = true;
             this.tbBeobachtungErnaehrungProbleme.Name = "tbBeobachtungErnaehrungProbleme";
             this.tbBeobachtungErnaehrungProbleme.Scrollbars = System.Windows.Forms.ScrollBars.Both;
@@ -498,7 +498,7 @@
             this.tbErnaehrungProbleme.Appearance = appearance23;
             this.tbErnaehrungProbleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbErnaehrungProbleme.Location = new System.Drawing.Point(158, 37);
-            this.tbErnaehrungProbleme.MaxLength = 100;
+            this.tbErnaehrungProbleme.MaxLength = 0;
             this.tbErnaehrungProbleme.Multiline = true;
             this.tbErnaehrungProbleme.Name = "tbErnaehrungProbleme";
             this.tbErnaehrungProbleme.Scrollbars = System.Windows.Forms.ScrollBars.Both;

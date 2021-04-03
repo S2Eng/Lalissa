@@ -76,5 +76,14 @@ namespace PMDS.GUI
             OnValueChanged(sender, e);
         }
 
+        private void ultraGroupBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ultraTabPageControl4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

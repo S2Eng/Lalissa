@@ -178,6 +178,9 @@ namespace PMDS.GUI
             OnValueChanged(sender, e);
         }
 
-        
+        private void tabAbwendenVonGefahren_SelectedTabChanged(object sender, Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
+        {
+
+        }
     }
 }

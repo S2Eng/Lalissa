@@ -157,7 +157,7 @@
             this.tbBeobachtungFluessigkeitsprobleme.Appearance = appearance2;
             this.tbBeobachtungFluessigkeitsprobleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBeobachtungFluessigkeitsprobleme.Location = new System.Drawing.Point(201, 311);
-            this.tbBeobachtungFluessigkeitsprobleme.MaxLength = 100;
+            this.tbBeobachtungFluessigkeitsprobleme.MaxLength = 0;
             this.tbBeobachtungFluessigkeitsprobleme.Multiline = true;
             this.tbBeobachtungFluessigkeitsprobleme.Name = "tbBeobachtungFluessigkeitsprobleme";
             this.tbBeobachtungFluessigkeitsprobleme.Size = new System.Drawing.Size(738, 53);

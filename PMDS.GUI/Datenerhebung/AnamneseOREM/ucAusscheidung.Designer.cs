@@ -1408,7 +1408,7 @@
             this.ultraGroupBox4.Controls.Add(this.ultraLabel59);
             this.ultraGroupBox4.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox4.Name = "ultraGroupBox4";
-            this.ultraGroupBox4.Size = new System.Drawing.Size(952, 550);
+            this.ultraGroupBox4.Size = new System.Drawing.Size(952, 507);
             this.ultraGroupBox4.TabIndex = 124;
             // 
             // baseLabel7
@@ -1469,8 +1469,8 @@
             this.tbBeobachtungenAusscheidung.Appearance = appearance75;
             this.tbBeobachtungenAusscheidung.AutoSize = false;
             this.tbBeobachtungenAusscheidung.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBeobachtungenAusscheidung.Location = new System.Drawing.Point(158, 498);
-            this.tbBeobachtungenAusscheidung.MaxLength = 100;
+            this.tbBeobachtungenAusscheidung.Location = new System.Drawing.Point(158, 455);
+            this.tbBeobachtungenAusscheidung.MaxLength = 0;
             this.tbBeobachtungenAusscheidung.Multiline = true;
             this.tbBeobachtungenAusscheidung.Name = "tbBeobachtungenAusscheidung";
             this.tbBeobachtungenAusscheidung.Size = new System.Drawing.Size(788, 44);
@@ -1482,7 +1482,7 @@
             appearance76.BackColor = System.Drawing.Color.Transparent;
             this.ultraLabel49.Appearance = appearance76;
             this.ultraLabel49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel49.Location = new System.Drawing.Point(5, 501);
+            this.ultraLabel49.Location = new System.Drawing.Point(5, 458);
             this.ultraLabel49.Name = "ultraLabel49";
             this.ultraLabel49.Size = new System.Drawing.Size(147, 41);
             this.ultraLabel49.TabIndex = 234;
@@ -1536,11 +1536,10 @@
             this.tbSchweissBesonderheiten.Appearance = appearance79;
             this.tbSchweissBesonderheiten.AutoSize = false;
             this.tbSchweissBesonderheiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSchweissBesonderheiten.Location = new System.Drawing.Point(158, 438);
+            this.tbSchweissBesonderheiten.Location = new System.Drawing.Point(158, 428);
             this.tbSchweissBesonderheiten.MaxLength = 50;
-            this.tbSchweissBesonderheiten.Multiline = true;
             this.tbSchweissBesonderheiten.Name = "tbSchweissBesonderheiten";
-            this.tbSchweissBesonderheiten.Size = new System.Drawing.Size(788, 44);
+            this.tbSchweissBesonderheiten.Size = new System.Drawing.Size(788, 21);
             this.tbSchweissBesonderheiten.TabIndex = 18;
             this.tbSchweissBesonderheiten.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -1559,7 +1558,7 @@
             this.ultraLabel48.Appearance = appearance81;
             this.ultraLabel48.AutoSize = true;
             this.ultraLabel48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraLabel48.Location = new System.Drawing.Point(5, 438);
+            this.ultraLabel48.Location = new System.Drawing.Point(5, 432);
             this.ultraLabel48.Name = "ultraLabel48";
             this.ultraLabel48.Size = new System.Drawing.Size(87, 14);
             this.ultraLabel48.TabIndex = 230;
@@ -1727,7 +1726,7 @@
             this.tbDecubitus.Appearance = appearance92;
             this.tbDecubitus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDecubitus.Location = new System.Drawing.Point(158, 348);
-            this.tbDecubitus.MaxLength = 100;
+            this.tbDecubitus.MaxLength = 0;
             this.tbDecubitus.Multiline = true;
             this.tbDecubitus.Name = "tbDecubitus";
             this.tbDecubitus.Size = new System.Drawing.Size(788, 44);

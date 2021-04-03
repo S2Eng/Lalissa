@@ -332,7 +332,7 @@
             this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.Appearance = appearance2;
             this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.Location = new System.Drawing.Point(158, 195);
-            this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.MaxLength = 100;
+            this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.MaxLength = 0;
             this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.Multiline = true;
             this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.Name = "tbBeobachtungenFaehigkeitVorhandeneRessourcen";
             this.tbBeobachtungenFaehigkeitVorhandeneRessourcen.Size = new System.Drawing.Size(788, 53);
@@ -1044,7 +1044,7 @@
             // ultraTabPageControl3
             // 
             this.ultraTabPageControl3.Controls.Add(this.ultraGroupBox7);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(962, 566);
             // 
@@ -1078,7 +1078,7 @@
             this.tbBeobachtungenGedankenRichtigZuVerarbeiten.Appearance = appearance48;
             this.tbBeobachtungenGedankenRichtigZuVerarbeiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBeobachtungenGedankenRichtigZuVerarbeiten.Location = new System.Drawing.Point(156, 283);
-            this.tbBeobachtungenGedankenRichtigZuVerarbeiten.MaxLength = 255;
+            this.tbBeobachtungenGedankenRichtigZuVerarbeiten.MaxLength = 0;
             this.tbBeobachtungenGedankenRichtigZuVerarbeiten.Multiline = true;
             this.tbBeobachtungenGedankenRichtigZuVerarbeiten.Name = "tbBeobachtungenGedankenRichtigZuVerarbeiten";
             this.tbBeobachtungenGedankenRichtigZuVerarbeiten.Size = new System.Drawing.Size(790, 53);
@@ -1262,7 +1262,7 @@
             // ultraTabPageControl4
             // 
             this.ultraTabPageControl4.Controls.Add(this.ultraGroupBox2);
-            this.ultraTabPageControl4.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl4.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl4.Name = "ultraTabPageControl4";
             this.ultraTabPageControl4.Size = new System.Drawing.Size(962, 566);
             // 

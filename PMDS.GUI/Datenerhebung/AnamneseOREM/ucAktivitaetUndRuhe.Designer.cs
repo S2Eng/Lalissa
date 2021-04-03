@@ -1075,11 +1075,11 @@
             this.tbSelbstpflagedefizitGewohnheiten.Appearance = appearance42;
             this.tbSelbstpflagedefizitGewohnheiten.AutoSize = false;
             this.tbSelbstpflagedefizitGewohnheiten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSelbstpflagedefizitGewohnheiten.Location = new System.Drawing.Point(182, 332);
+            this.tbSelbstpflagedefizitGewohnheiten.Location = new System.Drawing.Point(390, 332);
             this.tbSelbstpflagedefizitGewohnheiten.MaxLength = 50;
             this.tbSelbstpflagedefizitGewohnheiten.Multiline = true;
             this.tbSelbstpflagedefizitGewohnheiten.Name = "tbSelbstpflagedefizitGewohnheiten";
-            this.tbSelbstpflagedefizitGewohnheiten.Size = new System.Drawing.Size(764, 21);
+            this.tbSelbstpflagedefizitGewohnheiten.Size = new System.Drawing.Size(556, 21);
             this.tbSelbstpflagedefizitGewohnheiten.TabIndex = 16;
             this.tbSelbstpflagedefizitGewohnheiten.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -1646,7 +1646,7 @@
             this.tbSchlafprobleme.Appearance = appearance75;
             this.tbSchlafprobleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSchlafprobleme.Location = new System.Drawing.Point(158, 37);
-            this.tbSchlafprobleme.MaxLength = 100;
+            this.tbSchlafprobleme.MaxLength = 0;
             this.tbSchlafprobleme.Multiline = true;
             this.tbSchlafprobleme.Name = "tbSchlafprobleme";
             this.tbSchlafprobleme.Size = new System.Drawing.Size(788, 53);
