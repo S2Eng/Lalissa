@@ -440,7 +440,7 @@
             ultraTab10.Key = "Fuehlen";
             ultraTab10.TabPage = this.ultraTabPageControl10;
             ultraTab10.Tag = 10;
-            ultraTab10.Text = "10. Sich als Man/Frau fühlen";
+            ultraTab10.Text = "10. Sich als Mann / Frau fühlen";
             ultraTab11.Key = "Umgebung";
             ultraTab11.TabPage = this.ultraTabPageControl11;
             ultraTab11.Tag = 11;

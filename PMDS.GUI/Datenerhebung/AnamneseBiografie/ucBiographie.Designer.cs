@@ -108,7 +108,7 @@
             this.tabPagePersoenlicheDaten.Controls.Add(this.ultraGroupBox43);
             this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(996, 414);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
             // 
             // ultraGroupBox43
             // 
@@ -117,9 +117,9 @@
             this.ultraGroupBox43.Controls.Add(this.txtBiographie);
             this.ultraGroupBox43.Location = new System.Drawing.Point(7, 6);
             this.ultraGroupBox43.Name = "ultraGroupBox43";
-            this.ultraGroupBox43.Size = new System.Drawing.Size(484, 405);
+            this.ultraGroupBox43.Size = new System.Drawing.Size(952, 557);
             this.ultraGroupBox43.TabIndex = 140;
-            this.ultraGroupBox43.Text = "Ressource, Wünsche, Gewohnheiten";
+            this.ultraGroupBox43.Text = "Ressourcen, Wünsche, Gewohnheiten";
             // 
             // txtBiographie
             // 
@@ -127,11 +127,12 @@
             appearance2.BackColorDisabled = System.Drawing.Color.White;
             appearance2.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtBiographie.Appearance = appearance2;
-            this.txtBiographie.Location = new System.Drawing.Point(13, 18);
+            this.txtBiographie.Location = new System.Drawing.Point(15, 41);
+            this.txtBiographie.MaxLength = 0;
             this.txtBiographie.Multiline = true;
             this.txtBiographie.Name = "txtBiographie";
             this.txtBiographie.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBiographie.Size = new System.Drawing.Size(456, 381);
+            this.txtBiographie.Size = new System.Drawing.Size(931, 510);
             this.txtBiographie.TabIndex = 1;
             this.txtBiographie.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -424,7 +425,7 @@
             this.tabLuft.Location = new System.Drawing.Point(0, 0);
             this.tabLuft.Name = "tabLuft";
             this.tabLuft.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabLuft.Size = new System.Drawing.Size(1000, 440);
+            this.tabLuft.Size = new System.Drawing.Size(966, 592);
             this.tabLuft.TabIndex = 144;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
@@ -449,7 +450,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(962, 566);
             // 
             // ucBiographie
             // 
@@ -457,7 +458,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabLuft);
             this.Name = "ucBiographie";
-            this.Size = new System.Drawing.Size(1000, 440);
+            this.Size = new System.Drawing.Size(966, 592);
             this.tabPagePersoenlicheDaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox43)).EndInit();
             this.ultraGroupBox43.ResumeLayout(false);

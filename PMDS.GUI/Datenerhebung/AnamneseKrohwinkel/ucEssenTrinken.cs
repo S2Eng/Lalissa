@@ -55,5 +55,10 @@ namespace PMDS.GUI
         {
             OnValueChanged(sender, e);
         }
+
+        private void txtAnzahlMalzeiten_MaskChanged(object sender, Infragistics.Win.UltraWinMaskedEdit.MaskChangedEventArgs e)
+        {
+
+        }
     }
 }

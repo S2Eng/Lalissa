@@ -77,7 +77,6 @@
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
             Infragistics.Win.UltraWinTabControl.UltraTab ultraTab3 = new Infragistics.Win.UltraWinTabControl.UltraTab();
@@ -100,19 +99,14 @@
             this.ultraLabel4 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel121 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraLabel5 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.line25 = new PMDS.GUI.BaseControls.Line();
             this.ultraLabel6 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.line24 = new PMDS.GUI.BaseControls.Line();
             this.ultraLabel7 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.line23 = new PMDS.GUI.BaseControls.Line();
             this.opSchwerhoerigTaubStummBlind = new QS2.Desktop.ControlManagment.BaseOptionSet();
-            this.line22 = new PMDS.GUI.BaseControls.Line();
             this.opHoergeraetNichtHandhaben = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.opSprachstoerungen = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.opIstZeitloertlSituativZurPersonNichtOrientiert = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.opSichtfeldeinschraenkungen = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.ultraLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.ultraLabel2 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ultraGroupBox1 = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.ucAnamnesePDX1 = new PMDS.GUI.ucAnamnesePDX();
@@ -143,9 +137,9 @@
             // tabPagePersoenlicheDaten
             // 
             this.tabPagePersoenlicheDaten.Controls.Add(this.grpRessource);
-            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(1, 23);
+            this.tabPagePersoenlicheDaten.Location = new System.Drawing.Point(-10000, -10000);
             this.tabPagePersoenlicheDaten.Name = "tabPagePersoenlicheDaten";
-            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(996, 414);
+            this.tabPagePersoenlicheDaten.Size = new System.Drawing.Size(962, 566);
             // 
             // grpRessource
             // 
@@ -162,9 +156,9 @@
             this.grpRessource.Controls.Add(this.ultraLabel114);
             this.grpRessource.Location = new System.Drawing.Point(7, 6);
             this.grpRessource.Name = "grpRessource";
-            this.grpRessource.Size = new System.Drawing.Size(930, 405);
+            this.grpRessource.Size = new System.Drawing.Size(952, 294);
             this.grpRessource.TabIndex = 112;
-            this.grpRessource.Text = "Ressource, Wünsche, Gewohnheiten";
+            this.grpRessource.Text = "Ressourcen, Wünsche, Gewohnheiten";
             // 
             // ultraLabel120
             // 
@@ -172,7 +166,7 @@
             appearance2.FontData.SizeInPoints = 8F;
             this.ultraLabel120.Appearance = appearance2;
             this.ultraLabel120.AutoSize = true;
-            this.ultraLabel120.Location = new System.Drawing.Point(20, 68);
+            this.ultraLabel120.Location = new System.Drawing.Point(15, 101);
             this.ultraLabel120.Name = "ultraLabel120";
             this.ultraLabel120.Size = new System.Drawing.Size(263, 14);
             this.ultraLabel120.TabIndex = 112;
@@ -184,7 +178,7 @@
             appearance3.FontData.SizeInPoints = 8F;
             this.ultraLabel118.Appearance = appearance3;
             this.ultraLabel118.AutoSize = true;
-            this.ultraLabel118.Location = new System.Drawing.Point(20, 32);
+            this.ultraLabel118.Location = new System.Drawing.Point(15, 41);
             this.ultraLabel118.Name = "ultraLabel118";
             this.ultraLabel118.Size = new System.Drawing.Size(127, 14);
             this.ultraLabel118.TabIndex = 110;
@@ -196,7 +190,7 @@
             appearance4.FontData.SizeInPoints = 8F;
             this.ultraLabel119.Appearance = appearance4;
             this.ultraLabel119.AutoSize = true;
-            this.ultraLabel119.Location = new System.Drawing.Point(20, 50);
+            this.ultraLabel119.Location = new System.Drawing.Point(15, 71);
             this.ultraLabel119.Name = "ultraLabel119";
             this.ultraLabel119.Size = new System.Drawing.Size(139, 14);
             this.ultraLabel119.TabIndex = 111;
@@ -208,12 +202,12 @@
             appearance5.BackColorDisabled = System.Drawing.Color.White;
             appearance5.ForeColorDisabled = System.Drawing.Color.Black;
             this.txtWuensche.Appearance = appearance5;
-            this.txtWuensche.Location = new System.Drawing.Point(20, 93);
-            this.txtWuensche.MaxLength = 2000;
+            this.txtWuensche.Location = new System.Drawing.Point(15, 131);
+            this.txtWuensche.MaxLength = 0;
             this.txtWuensche.Multiline = true;
             this.txtWuensche.Name = "txtWuensche";
             this.txtWuensche.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.txtWuensche.Size = new System.Drawing.Size(904, 306);
+            this.txtWuensche.Size = new System.Drawing.Size(931, 153);
             this.txtWuensche.TabIndex = 4;
             this.txtWuensche.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
@@ -232,7 +226,7 @@
             this.opBrilleJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem1,
             valueListItem2});
-            this.opBrilleJN.Location = new System.Drawing.Point(306, 32);
+            this.opBrilleJN.Location = new System.Drawing.Point(306, 41);
             this.opBrilleJN.Name = "opBrilleJN";
             this.opBrilleJN.Size = new System.Drawing.Size(40, 14);
             this.opBrilleJN.TabIndex = 1;
@@ -253,7 +247,7 @@
             this.opHoergeraetJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem3,
             valueListItem4});
-            this.opHoergeraetJN.Location = new System.Drawing.Point(306, 50);
+            this.opHoergeraetJN.Location = new System.Drawing.Point(306, 71);
             this.opHoergeraetJN.Name = "opHoergeraetJN";
             this.opHoergeraetJN.Size = new System.Drawing.Size(40, 14);
             this.opHoergeraetJN.TabIndex = 2;
@@ -265,7 +259,7 @@
             appearance8.FontData.SizeInPoints = 8F;
             this.ultraLabel113.Appearance = appearance8;
             this.ultraLabel113.AutoSize = true;
-            this.ultraLabel113.Location = new System.Drawing.Point(303, 15);
+            this.ultraLabel113.Location = new System.Drawing.Point(303, 21);
             this.ultraLabel113.Name = "ultraLabel113";
             this.ultraLabel113.Size = new System.Drawing.Size(16, 14);
             this.ultraLabel113.TabIndex = 106;
@@ -286,7 +280,7 @@
             this.opKannMitteilenJN.Items.AddRange(new Infragistics.Win.ValueListItem[] {
             valueListItem5,
             valueListItem6});
-            this.opKannMitteilenJN.Location = new System.Drawing.Point(306, 68);
+            this.opKannMitteilenJN.Location = new System.Drawing.Point(306, 101);
             this.opKannMitteilenJN.Name = "opKannMitteilenJN";
             this.opKannMitteilenJN.Size = new System.Drawing.Size(40, 14);
             this.opKannMitteilenJN.TabIndex = 3;
@@ -298,7 +292,7 @@
             appearance10.FontData.SizeInPoints = 8F;
             this.ultraLabel114.Appearance = appearance10;
             this.ultraLabel114.AutoSize = true;
-            this.ultraLabel114.Location = new System.Drawing.Point(325, 15);
+            this.ultraLabel114.Location = new System.Drawing.Point(325, 21);
             this.ultraLabel114.Name = "ultraLabel114";
             this.ultraLabel114.Size = new System.Drawing.Size(27, 14);
             this.ultraLabel114.TabIndex = 107;
@@ -308,10 +302,9 @@
             // 
             this.ultraTabPageControl1.Controls.Add(this.grpHilfebedarf);
             this.ultraTabPageControl1.Controls.Add(this.ultraLabel1);
-            this.ultraTabPageControl1.Controls.Add(this.ultraLabel2);
             this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(962, 566);
             // 
             // grpHilfebedarf
             // 
@@ -323,20 +316,16 @@
             this.grpHilfebedarf.Controls.Add(this.ultraLabel4);
             this.grpHilfebedarf.Controls.Add(this.ultraLabel121);
             this.grpHilfebedarf.Controls.Add(this.ultraLabel5);
-            this.grpHilfebedarf.Controls.Add(this.line25);
             this.grpHilfebedarf.Controls.Add(this.ultraLabel6);
-            this.grpHilfebedarf.Controls.Add(this.line24);
             this.grpHilfebedarf.Controls.Add(this.ultraLabel7);
-            this.grpHilfebedarf.Controls.Add(this.line23);
             this.grpHilfebedarf.Controls.Add(this.opSchwerhoerigTaubStummBlind);
-            this.grpHilfebedarf.Controls.Add(this.line22);
             this.grpHilfebedarf.Controls.Add(this.opHoergeraetNichtHandhaben);
             this.grpHilfebedarf.Controls.Add(this.opSprachstoerungen);
             this.grpHilfebedarf.Controls.Add(this.opIstZeitloertlSituativZurPersonNichtOrientiert);
             this.grpHilfebedarf.Controls.Add(this.opSichtfeldeinschraenkungen);
             this.grpHilfebedarf.Location = new System.Drawing.Point(7, 6);
             this.grpHilfebedarf.Name = "grpHilfebedarf";
-            this.grpHilfebedarf.Size = new System.Drawing.Size(429, 193);
+            this.grpHilfebedarf.Size = new System.Drawing.Size(952, 186);
             this.grpHilfebedarf.TabIndex = 113;
             this.grpHilfebedarf.Text = "Hilfebedarf";
             // 
@@ -346,7 +335,7 @@
             appearance12.FontData.SizeInPoints = 8F;
             this.ultraLabel123.Appearance = appearance12;
             this.ultraLabel123.AutoSize = true;
-            this.ultraLabel123.Location = new System.Drawing.Point(396, 14);
+            this.ultraLabel123.Location = new System.Drawing.Point(393, 14);
             this.ultraLabel123.Name = "ultraLabel123";
             this.ultraLabel123.Size = new System.Drawing.Size(17, 14);
             this.ultraLabel123.TabIndex = 139;
@@ -358,7 +347,7 @@
             appearance13.FontData.SizeInPoints = 8F;
             this.ultraLabel3.Appearance = appearance13;
             this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(18, 33);
+            this.ultraLabel3.Location = new System.Drawing.Point(15, 41);
             this.ultraLabel3.Name = "ultraLabel3";
             this.ultraLabel3.Size = new System.Drawing.Size(165, 14);
             this.ultraLabel3.TabIndex = 128;
@@ -370,7 +359,7 @@
             appearance14.FontData.SizeInPoints = 8F;
             this.ultraLabel122.Appearance = appearance14;
             this.ultraLabel122.AutoSize = true;
-            this.ultraLabel122.Location = new System.Drawing.Point(372, 14);
+            this.ultraLabel122.Location = new System.Drawing.Point(369, 14);
             this.ultraLabel122.Name = "ultraLabel122";
             this.ultraLabel122.Size = new System.Drawing.Size(19, 14);
             this.ultraLabel122.TabIndex = 138;
@@ -382,7 +371,7 @@
             appearance15.FontData.SizeInPoints = 8F;
             this.ultraLabel4.Appearance = appearance15;
             this.ultraLabel4.AutoSize = true;
-            this.ultraLabel4.Location = new System.Drawing.Point(18, 73);
+            this.ultraLabel4.Location = new System.Drawing.Point(15, 101);
             this.ultraLabel4.Name = "ultraLabel4";
             this.ultraLabel4.Size = new System.Drawing.Size(108, 14);
             this.ultraLabel4.TabIndex = 129;
@@ -394,7 +383,7 @@
             appearance16.FontData.SizeInPoints = 8F;
             this.ultraLabel121.Appearance = appearance16;
             this.ultraLabel121.AutoSize = true;
-            this.ultraLabel121.Location = new System.Drawing.Point(355, 14);
+            this.ultraLabel121.Location = new System.Drawing.Point(352, 14);
             this.ultraLabel121.Name = "ultraLabel121";
             this.ultraLabel121.Size = new System.Drawing.Size(11, 14);
             this.ultraLabel121.TabIndex = 137;
@@ -406,19 +395,11 @@
             appearance17.FontData.SizeInPoints = 8F;
             this.ultraLabel5.Appearance = appearance17;
             this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(18, 93);
+            this.ultraLabel5.Location = new System.Drawing.Point(15, 131);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(150, 14);
             this.ultraLabel5.TabIndex = 130;
             this.ultraLabel5.Text = "Hat Sichtfeldeinschränkungen";
-            // 
-            // line25
-            // 
-            this.line25.BackColor = System.Drawing.Color.DarkGray;
-            this.line25.Location = new System.Drawing.Point(18, 108);
-            this.line25.Name = "line25";
-            this.line25.Size = new System.Drawing.Size(395, 1);
-            this.line25.TabIndex = 136;
             // 
             // ultraLabel6
             // 
@@ -426,19 +407,11 @@
             appearance18.FontData.SizeInPoints = 8F;
             this.ultraLabel6.Appearance = appearance18;
             this.ultraLabel6.AutoSize = true;
-            this.ultraLabel6.Location = new System.Drawing.Point(18, 113);
+            this.ultraLabel6.Location = new System.Drawing.Point(15, 161);
             this.ultraLabel6.Name = "ultraLabel6";
-            this.ultraLabel6.Size = new System.Drawing.Size(249, 14);
+            this.ultraLabel6.Size = new System.Drawing.Size(277, 14);
             this.ultraLabel6.TabIndex = 131;
-            this.ultraLabel6.Text = "Ist zeitl. örtl. situativ und zur Person nicht orientiert";
-            // 
-            // line24
-            // 
-            this.line24.BackColor = System.Drawing.Color.DarkGray;
-            this.line24.Location = new System.Drawing.Point(18, 88);
-            this.line24.Name = "line24";
-            this.line24.Size = new System.Drawing.Size(395, 1);
-            this.line24.TabIndex = 135;
+            this.ultraLabel6.Text = "Ist zeitlich, örtlich, situativ und zur Person nicht orientiert";
             // 
             // ultraLabel7
             // 
@@ -446,19 +419,11 @@
             appearance19.FontData.SizeInPoints = 8F;
             this.ultraLabel7.Appearance = appearance19;
             this.ultraLabel7.AutoSize = true;
-            this.ultraLabel7.Location = new System.Drawing.Point(18, 53);
+            this.ultraLabel7.Location = new System.Drawing.Point(15, 71);
             this.ultraLabel7.Name = "ultraLabel7";
             this.ultraLabel7.Size = new System.Drawing.Size(159, 14);
             this.ultraLabel7.TabIndex = 132;
             this.ultraLabel7.Text = "Kann Hörgerät nicht handhaben";
-            // 
-            // line23
-            // 
-            this.line23.BackColor = System.Drawing.Color.DarkGray;
-            this.line23.Location = new System.Drawing.Point(18, 68);
-            this.line23.Name = "line23";
-            this.line23.Size = new System.Drawing.Size(395, 1);
-            this.line23.TabIndex = 134;
             // 
             // opSchwerhoerigTaubStummBlind
             // 
@@ -478,19 +443,11 @@
             valueListItem7,
             valueListItem8,
             valueListItem9});
-            this.opSchwerhoerigTaubStummBlind.Location = new System.Drawing.Point(355, 33);
+            this.opSchwerhoerigTaubStummBlind.Location = new System.Drawing.Point(352, 41);
             this.opSchwerhoerigTaubStummBlind.Name = "opSchwerhoerigTaubStummBlind";
             this.opSchwerhoerigTaubStummBlind.Size = new System.Drawing.Size(60, 14);
             this.opSchwerhoerigTaubStummBlind.TabIndex = 5;
             this.opSchwerhoerigTaubStummBlind.ValueChanged += new System.EventHandler(this.control_ValueChanged);
-            // 
-            // line22
-            // 
-            this.line22.BackColor = System.Drawing.Color.DarkGray;
-            this.line22.Location = new System.Drawing.Point(18, 48);
-            this.line22.Name = "line22";
-            this.line22.Size = new System.Drawing.Size(395, 1);
-            this.line22.TabIndex = 133;
             // 
             // opHoergeraetNichtHandhaben
             // 
@@ -510,7 +467,7 @@
             valueListItem10,
             valueListItem11,
             valueListItem12});
-            this.opHoergeraetNichtHandhaben.Location = new System.Drawing.Point(355, 53);
+            this.opHoergeraetNichtHandhaben.Location = new System.Drawing.Point(352, 71);
             this.opHoergeraetNichtHandhaben.Name = "opHoergeraetNichtHandhaben";
             this.opHoergeraetNichtHandhaben.Size = new System.Drawing.Size(60, 14);
             this.opHoergeraetNichtHandhaben.TabIndex = 6;
@@ -534,7 +491,7 @@
             valueListItem13,
             valueListItem14,
             valueListItem15});
-            this.opSprachstoerungen.Location = new System.Drawing.Point(355, 73);
+            this.opSprachstoerungen.Location = new System.Drawing.Point(352, 101);
             this.opSprachstoerungen.Name = "opSprachstoerungen";
             this.opSprachstoerungen.Size = new System.Drawing.Size(60, 14);
             this.opSprachstoerungen.TabIndex = 7;
@@ -558,7 +515,7 @@
             valueListItem16,
             valueListItem17,
             valueListItem18});
-            this.opIstZeitloertlSituativZurPersonNichtOrientiert.Location = new System.Drawing.Point(355, 113);
+            this.opIstZeitloertlSituativZurPersonNichtOrientiert.Location = new System.Drawing.Point(352, 161);
             this.opIstZeitloertlSituativZurPersonNichtOrientiert.Name = "opIstZeitloertlSituativZurPersonNichtOrientiert";
             this.opIstZeitloertlSituativZurPersonNichtOrientiert.Size = new System.Drawing.Size(60, 14);
             this.opIstZeitloertlSituativZurPersonNichtOrientiert.TabIndex = 9;
@@ -582,7 +539,7 @@
             valueListItem19,
             valueListItem20,
             valueListItem21});
-            this.opSichtfeldeinschraenkungen.Location = new System.Drawing.Point(355, 93);
+            this.opSichtfeldeinschraenkungen.Location = new System.Drawing.Point(352, 131);
             this.opSichtfeldeinschraenkungen.Name = "opSichtfeldeinschraenkungen";
             this.opSichtfeldeinschraenkungen.Size = new System.Drawing.Size(60, 14);
             this.opSichtfeldeinschraenkungen.TabIndex = 8;
@@ -593,41 +550,31 @@
             appearance25.BackColor = System.Drawing.Color.Transparent;
             appearance25.FontData.SizeInPoints = 8F;
             this.ultraLabel1.Appearance = appearance25;
-            this.ultraLabel1.Location = new System.Drawing.Point(36, 374);
+            this.ultraLabel1.Location = new System.Drawing.Point(22, 545);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(95, 47);
+            this.ultraLabel1.Size = new System.Drawing.Size(340, 18);
             this.ultraLabel1.TabIndex = 124;
-            this.ultraLabel1.Text = "Anleitung Teilübernahme Vollübernahme";
-            // 
-            // ultraLabel2
-            // 
-            appearance26.BackColor = System.Drawing.Color.Transparent;
-            appearance26.FontData.SizeInPoints = 8F;
-            this.ultraLabel2.Appearance = appearance26;
-            this.ultraLabel2.Location = new System.Drawing.Point(7, 374);
-            this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(23, 47);
-            this.ultraLabel2.TabIndex = 123;
-            this.ultraLabel2.Text = " A TÜ vÜ";
+            this.ultraLabel1.Text = "A = Anleitung, TÜ = Teilübernahme, vÜ = Vollübernahme";
+            this.ultraLabel1.Click += new System.EventHandler(this.ultraLabel1_Click);
             // 
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.ultraGroupBox1);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 23);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(962, 566);
             // 
             // ultraGroupBox1
             // 
             this.ultraGroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance27.BackColor = System.Drawing.Color.Transparent;
-            this.ultraGroupBox1.Appearance = appearance27;
+            appearance26.BackColor = System.Drawing.Color.Transparent;
+            this.ultraGroupBox1.Appearance = appearance26;
             this.ultraGroupBox1.Controls.Add(this.ucAnamnesePDX1);
             this.ultraGroupBox1.Location = new System.Drawing.Point(7, 17);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(946, 389);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(946, 546);
             this.ultraGroupBox1.TabIndex = 115;
             // 
             // ucAnamnesePDX1
@@ -639,14 +586,14 @@
             this.ucAnamnesePDX1.Name = "ucAnamnesePDX1";
             this.ucAnamnesePDX1.PDXAnamnese = null;
             this.ucAnamnesePDX1.ReadOnly = false;
-            this.ucAnamnesePDX1.Size = new System.Drawing.Size(930, 369);
+            this.ucAnamnesePDX1.Size = new System.Drawing.Size(930, 526);
             this.ucAnamnesePDX1.TabIndex = 0;
             this.ucAnamnesePDX1.ValueChanged += new System.EventHandler(this.control_ValueChanged);
             // 
             // tabKommunizieren
             // 
-            appearance28.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabKommunizieren.Appearance = appearance28;
+            appearance27.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabKommunizieren.Appearance = appearance27;
             this.tabKommunizieren.Controls.Add(this.ultraTabSharedControlsPage2);
             this.tabKommunizieren.Controls.Add(this.ultraTabPageControl2);
             this.tabKommunizieren.Controls.Add(this.tabPagePersoenlicheDaten);
@@ -655,11 +602,11 @@
             this.tabKommunizieren.Location = new System.Drawing.Point(0, 0);
             this.tabKommunizieren.Name = "tabKommunizieren";
             this.tabKommunizieren.SharedControlsPage = this.ultraTabSharedControlsPage2;
-            this.tabKommunizieren.Size = new System.Drawing.Size(1000, 440);
+            this.tabKommunizieren.Size = new System.Drawing.Size(966, 592);
             this.tabKommunizieren.TabIndex = 125;
             ultraTab1.Key = "Ressource";
             ultraTab1.TabPage = this.tabPagePersoenlicheDaten;
-            ultraTab1.Text = "Ressource, Wünsche, Gewohnheiten";
+            ultraTab1.Text = "Ressourcen, Wünsche, Gewohnheiten";
             ultraTab1.ToolTipText = "Ressource, Wünsche, Gewohnheiten";
             ultraTab2.Key = "Hilfebedarf";
             ultraTab2.TabPage = this.ultraTabPageControl1;
@@ -680,7 +627,7 @@
             // 
             this.ultraTabSharedControlsPage2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage2.Name = "ultraTabSharedControlsPage2";
-            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(996, 414);
+            this.ultraTabSharedControlsPage2.Size = new System.Drawing.Size(962, 566);
             // 
             // ucKommunizieren
             // 
@@ -688,7 +635,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabKommunizieren);
             this.Name = "ucKommunizieren";
-            this.Size = new System.Drawing.Size(1000, 440);
+            this.Size = new System.Drawing.Size(966, 592);
             this.tabPagePersoenlicheDaten.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grpRessource)).EndInit();
             this.grpRessource.ResumeLayout(false);
@@ -729,10 +676,6 @@
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel123;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel122;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel121;
-        private PMDS.GUI.BaseControls.Line line25;
-        private PMDS.GUI.BaseControls.Line line24;
-        private PMDS.GUI.BaseControls.Line line23;
-        private PMDS.GUI.BaseControls.Line line22;
         private QS2.Desktop.ControlManagment.BaseOptionSet opSprachstoerungen;
         private QS2.Desktop.ControlManagment.BaseOptionSet opSichtfeldeinschraenkungen;
         private QS2.Desktop.ControlManagment.BaseOptionSet opIstZeitloertlSituativZurPersonNichtOrientiert;
@@ -746,7 +689,6 @@
         private QS2.Desktop.ControlManagment.BaseGroupBox grpRessource;
         private QS2.Desktop.ControlManagment.BaseGroupBox grpHilfebedarf;
         private QS2.Desktop.ControlManagment.BaseLabel ultraLabel1;
-        private QS2.Desktop.ControlManagment.BaseLabel ultraLabel2;
         private QS2.Desktop.ControlManagment.BaseTabControl tabKommunizieren;
         private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage2;
         private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
