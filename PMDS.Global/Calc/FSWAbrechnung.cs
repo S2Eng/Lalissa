@@ -22,9 +22,15 @@ namespace PMDS.Global
         private string eZAUFID = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff");
         private string Msg = "";
 
+        private class Leistungszeile
+        {
+            public Guid IDRechnung;
+            public Guid IDRechnungszeile;
+        }
+
         public bool UseUploadToFSW { get; set; } = true;
         public List<string> ListIDBillsFSW { get; set; } = new List<string>();                   //Sammelt die Rechungen des FSW
-        public List<Guid> lstZeilen { get; set; } = new List<Guid>();
+        private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
         private Chilkat.Xml _FSWXml = new Chilkat.Xml();
         public db.cEBInterfaceDB.Transaction Transaction { get; set; } = new db.cEBInterfaceDB.Transaction();
         public bool UseXlsxExport { get; set; } = false;
@@ -119,15 +125,21 @@ namespace PMDS.Global
                             foreach (dbCalc.KostenKostenträgerRow Rechnungszeile in dbCalc.KostenKostenträger)
                             {
                                 //Prüfen, ob die Rechung an FSW oder Stellvertert geht (Kostenträger Sub in rBill) 
-                                if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !lstZeilen.Contains(new Guid(Rechnungszeile.ID)))
-                                {
+                                //if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !lstZeilen.Contains(new Guid(Rechnungszeile.ID)))
 
+
+                                if (rBill.IDKost == Rechnungszeile.IDKost && FSWIsZahler(new Guid(Rechnungszeile.IDKost), ENV.FSW_IDIntern) && !LeistungszeileBereitsVerrechnet(new Guid(Rechnungszeile.ID), new Guid(rBill.ID)))
+                                {
                                     if (generic.sEquals(Rechnungszeile.Kennung, "LZ"))
                                     {
-                                        //offen Basispreis aus DB holen (statt rechnen). Muss zwar das selbe rauskommen, aber ist sauberer.
                                         Zeile++;
-                                        Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
-                                        lstZeilen.Add(new Guid(Rechnungszeile.ID));
+                                        if (rBill.Status == -10)    //Bei Storno Tage negativ angeben und Basipreis positiv
+                                        {
+                                            Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * - 1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                        }
+                                        else
+                                            Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));                                        
+                                        lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
                                     }
                                     else if(generic.sEquals(Rechnungszeile.Kennung, "GSGB"))
                                     {
@@ -136,7 +148,7 @@ namespace PMDS.Global
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = ENV.FSW_Prozent;
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Rechnungszeile.Brutto;
                                         Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = Rechnungszeile.Brutto;
-                                        lstZeilen.Add(new Guid(Rechnungszeile.ID));
+                                        lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
                                     }
                                 }
                             }
@@ -618,6 +630,29 @@ namespace PMDS.Global
 
                     return b;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("FSWAbrechnung.cs.getDBCalc: " + ex.Message);
+            }
+        }
+
+        private bool LeistungszeileBereitsVerrechnet(Guid IDRechnungszeile, Guid IDRechnung)
+        {
+            try
+            {
+                return (from z in lstZeilen
+                          select z).Where(z => z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung).Any();
+                /*
+                foreach (Leistungszeile z in lstZeilen)
+                {
+                    if (z.IDRechnungszeile == IDRechnungszeile && z.IDRechnung == IDRechnung)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+                */
             }
             catch (Exception ex)
             {
