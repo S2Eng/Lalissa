@@ -169,11 +169,11 @@ Public Class calculation
 
     Public Sub Load(ByRef klienten As ArrayList, ByVal von As DateTime, ByVal bis As DateTime, vonRechDatum As Nullable(Of DateTime), bisRechDatum As Nullable(Of DateTime),
                     ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
-                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean)
+                    ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean, RechNr As String)
 
         calcBase.errTxt = ""
         For Each IDKlient As String In klienten
-            Me._sql.readBills(IDKlient, von, bis, vonRechDatum, bisRechDatum, db, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert, showExportiere)
+            Me._sql.readBills(IDKlient, von, bis, vonRechDatum, bisRechDatum, db, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert, showExportiere, RechNr)
         Next
 
         For Each r As dbPMDS.billsRow In db.bills
@@ -183,9 +183,9 @@ Public Class calculation
 
     Public Sub Load(ByVal von As DateTime, ByVal bis As DateTime, vonErstelltAm As Nullable(Of DateTime), bisErstelltAm As Nullable(Of DateTime),
                 ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp,
-                ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean)
+                ByVal status As PMDS.Calc.Logic.eBillStatus, ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportiere As Boolean, RechNr As String)
         calcBase.errTxt = ""
-        Me._sql.readBills("", von, bis, vonErstelltAm, bisErstelltAm, db, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert, showExportiere)
+        Me._sql.readBills("", von, bis, vonErstelltAm, bisErstelltAm, db, rechTyp, status, allKlients, IDKlinik, showFreigegebenAndStorniert, showExportiere, RechNr)
         For Each r As dbPMDS.billsRow In db.bills
             Me._sql.readBillHeader(r.ID, db, IDKlinik)
         Next

@@ -150,7 +150,7 @@ Public Class Sql
 
     Public Sub readBills(ByVal id As String, ByRef von As Date, ByRef bis As Date, ByRef vonRechDatum As Nullable(Of DateTime), ByRef bisRechDatum As Nullable(Of DateTime),
                          ByRef db As dbPMDS, ByVal rechTyp As PMDS.Calc.Logic.eBillTyp, ByVal status As PMDS.Calc.Logic.eBillStatus,
-                         ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportierte As Boolean)
+                         ByVal allKlients As Boolean, IDKlinik As System.Guid, showFreigegebenAndStorniert As Boolean, showExportierte As Boolean, RechNr As String)
         Try
             Dim da As New OleDb.OleDbDataAdapter
             Dim cmd As New OleDb.OleDbCommand
@@ -166,6 +166,10 @@ Public Class Sql
 
             If Not showExportierte Then
                 cmd.CommandText += " and ExportiertJN = 0 "
+            End If
+
+            If Not String.IsNullOrWhiteSpace(RechNr) Then
+                cmd.CommandText += " and RechNr LIKE '%" + RechNr + "%'"
             End If
 
             cmd.CommandText += " order by datum "

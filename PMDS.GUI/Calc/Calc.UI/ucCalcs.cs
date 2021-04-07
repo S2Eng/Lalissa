@@ -201,9 +201,19 @@ namespace PMDS.Calc.UI
                 DateTime dFrom = new DateTime(this.dtVon.DateTime.Year, this.dtVon.DateTime.Month, 1, 0, 0, 0);
                 DateTime dTo = new DateTime(this.dtBis.DateTime.Year, this.dtBis.DateTime.Month, DateTime.DaysInMonth(this.dtBis.DateTime.Year, this.dtBis.DateTime.Month), 23, 59, 59);
 
+                if (this.dtVon.DateTime == this.dtBis.MinDate)
+                {
+
+                }
+
+                if (this.dtBis.DateTime == this.dtBis.MinDate)
+                {
+                    dTo = DateTime.Now;
+                }
+
                 this.uiSiteMapForm.loadCalcs(ref this.dbPMDS1, dFrom, dTo, vonRechDatum, bisRechDatum,
                                             (UltraGrid)this.uGridAbrech2, (Infragistics.Win.Misc.UltraButton)this.butAlleKeine, ref this.lblCount,
-                                            billTyp, BillStatus, showFreigegebenAndStorniert, true, BillStatusFreigegeben);
+                                            billTyp, BillStatus, showFreigegebenAndStorniert, true, BillStatusFreigegeben, this.txtReNr.Text);
 
                 this.doSum();
 
@@ -282,14 +292,20 @@ namespace PMDS.Calc.UI
         }
         public void checkUIDate()
         {
-            if (this.dtVon.Value == null || this.dtBis.Value == null)
+            if (this.dtVon.Value == null)
             {
-                this.dtVon.DateTime = DateTime.Now;
-                this.dtBis.DateTime = DateTime.Now;
+                //this.dtVon.DateTime = this.dtVon.MinDate;
             }
+
+            if (this.dtBis.Value == null)
+            {
+                //this.dtBis.DateTime = DateTime.Now;
+            }
+
             if (this.dtBis.DateTime < this.dtVon.DateTime)
                 this.dtBis.DateTime = this.dtVon.DateTime;
         }
+
         public void setUI(string aktivButton)
         {
             if (aktivButton == "F")

@@ -125,6 +125,8 @@
             this.lblRechDatum = new QS2.Desktop.ControlManagment.BaseLabel();
             this.dtAbrechMonat = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.grpSuche = new QS2.Desktop.ControlManagment.BaseGroupBox();
+            this.lblReNr = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.txtReNr = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.dtVon = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.dtVonRechDatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.dtBisRechDatum = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -195,6 +197,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtAbrechMonat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpSuche)).BeginInit();
             this.grpSuche.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReNr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtVonRechDatum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBisRechDatum)).BeginInit();
@@ -239,7 +242,7 @@
             this.panelSucheAbrech.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSucheAbrech.Location = new System.Drawing.Point(0, 0);
             this.panelSucheAbrech.Name = "panelSucheAbrech";
-            this.panelSucheAbrech.Size = new System.Drawing.Size(1106, 77);
+            this.panelSucheAbrech.Size = new System.Drawing.Size(1106, 78);
             this.panelSucheAbrech.TabIndex = 107;
             // 
             // ucKlinikDropDown1
@@ -257,7 +260,7 @@
             this.grpAbrechnen.Appearance = appearance1;
             this.grpAbrechnen.Controls.Add(this.panelButtAbrechAuswahlTyp);
             this.grpAbrechnen.Controls.Add(this.panelAbrechnenDatum);
-            this.grpAbrechnen.Location = new System.Drawing.Point(414, 4);
+            this.grpAbrechnen.Location = new System.Drawing.Point(629, 5);
             this.grpAbrechnen.Name = "grpAbrechnen";
             this.grpAbrechnen.Size = new System.Drawing.Size(394, 69);
             this.grpAbrechnen.TabIndex = 103;
@@ -353,6 +356,8 @@
             // 
             appearance3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.grpSuche.Appearance = appearance3;
+            this.grpSuche.Controls.Add(this.lblReNr);
+            this.grpSuche.Controls.Add(this.txtReNr);
             this.grpSuche.Controls.Add(this.dtVon);
             this.grpSuche.Controls.Add(this.dtVonRechDatum);
             this.grpSuche.Controls.Add(this.dtBisRechDatum);
@@ -365,16 +370,31 @@
             this.grpSuche.Controls.Add(this.lblVon);
             this.grpSuche.Location = new System.Drawing.Point(5, 4);
             this.grpSuche.Name = "grpSuche";
-            this.grpSuche.Size = new System.Drawing.Size(405, 69);
+            this.grpSuche.Size = new System.Drawing.Size(618, 69);
             this.grpSuche.TabIndex = 7;
             this.grpSuche.Text = "Suche";
+            // 
+            // lblReNr
+            // 
+            this.lblReNr.Location = new System.Drawing.Point(374, 20);
+            this.lblReNr.Name = "lblReNr";
+            this.lblReNr.Size = new System.Drawing.Size(53, 15);
+            this.lblReNr.TabIndex = 202;
+            this.lblReNr.Text = "Rech. Nr.";
+            // 
+            // txtReNr
+            // 
+            this.txtReNr.Location = new System.Drawing.Point(429, 18);
+            this.txtReNr.Name = "txtReNr";
+            this.txtReNr.Size = new System.Drawing.Size(146, 21);
+            this.txtReNr.TabIndex = 201;
             // 
             // dtVon
             // 
             appearance4.TextHAlignAsString = "Center";
             this.dtVon.Appearance = appearance4;
             this.dtVon.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtVon.Location = new System.Drawing.Point(129, 17);
+            this.dtVon.Location = new System.Drawing.Point(139, 17);
             this.dtVon.MaskInput = "{LOC}mm.yyyy";
             this.dtVon.Name = "dtVon";
             this.dtVon.ownFormat = "";
@@ -390,7 +410,7 @@
             appearance5.TextHAlignAsString = "Center";
             this.dtVonRechDatum.Appearance = appearance5;
             this.dtVonRechDatum.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtVonRechDatum.Location = new System.Drawing.Point(129, 40);
+            this.dtVonRechDatum.Location = new System.Drawing.Point(139, 40);
             this.dtVonRechDatum.MaskInput = "";
             this.dtVonRechDatum.Name = "dtVonRechDatum";
             this.dtVonRechDatum.ownFormat = "";
@@ -405,7 +425,7 @@
             appearance6.TextHAlignAsString = "Center";
             this.dtBisRechDatum.Appearance = appearance6;
             this.dtBisRechDatum.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtBisRechDatum.Location = new System.Drawing.Point(245, 40);
+            this.dtBisRechDatum.Location = new System.Drawing.Point(255, 40);
             this.dtBisRechDatum.MaskInput = "";
             this.dtBisRechDatum.Name = "dtBisRechDatum";
             this.dtBisRechDatum.ownFormat = "";
@@ -417,7 +437,7 @@
             // 
             // baseLabel1
             // 
-            this.baseLabel1.Location = new System.Drawing.Point(223, 43);
+            this.baseLabel1.Location = new System.Drawing.Point(233, 43);
             this.baseLabel1.Name = "baseLabel1";
             this.baseLabel1.Size = new System.Drawing.Size(27, 15);
             this.baseLabel1.TabIndex = 114;
@@ -427,7 +447,7 @@
             // 
             this.lblVonBisRechDatum.Location = new System.Drawing.Point(9, 43);
             this.lblVonBisRechDatum.Name = "lblVonBisRechDatum";
-            this.lblVonBisRechDatum.Size = new System.Drawing.Size(114, 15);
+            this.lblVonBisRechDatum.Size = new System.Drawing.Size(126, 15);
             this.lblVonBisRechDatum.TabIndex = 113;
             this.lblVonBisRechDatum.Text = "Rechnungsdatum von";
             // 
@@ -436,7 +456,7 @@
             appearance7.TextHAlignAsString = "Center";
             this.dtBis.Appearance = appearance7;
             this.dtBis.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
-            this.dtBis.Location = new System.Drawing.Point(245, 17);
+            this.dtBis.Location = new System.Drawing.Point(255, 17);
             this.dtBis.MaskInput = "{LOC}mm.yyyy";
             this.dtBis.Name = "dtBis";
             this.dtBis.ownFormat = "";
@@ -449,7 +469,7 @@
             // 
             // lblBis
             // 
-            this.lblBis.Location = new System.Drawing.Point(223, 20);
+            this.lblBis.Location = new System.Drawing.Point(233, 20);
             this.lblBis.Name = "lblBis";
             this.lblBis.Size = new System.Drawing.Size(27, 15);
             this.lblBis.TabIndex = 4;
@@ -467,7 +487,7 @@
             this.btnSearchxy.DoOnClick = true;
             this.btnSearchxy.ImageSize = new System.Drawing.Size(12, 12);
             this.btnSearchxy.IsStandardControl = true;
-            this.btnSearchxy.Location = new System.Drawing.Point(363, 14);
+            this.btnSearchxy.Location = new System.Drawing.Point(580, 15);
             this.btnSearchxy.Name = "btnSearchxy";
             this.btnSearchxy.Size = new System.Drawing.Size(32, 27);
             this.btnSearchxy.TabIndex = 200;
@@ -478,7 +498,7 @@
             // 
             // btnTimes
             // 
-            this.btnTimes.Location = new System.Drawing.Point(340, 15);
+            this.btnTimes.Location = new System.Drawing.Point(350, 15);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.ShowFocusRect = false;
             this.btnTimes.Size = new System.Drawing.Size(21, 24);
@@ -502,7 +522,7 @@
             this.btnExportAsExcel.Appearance = appearance9;
             this.btnExportAsExcel.AutoWorkLayout = false;
             this.btnExportAsExcel.IsStandardControl = false;
-            this.btnExportAsExcel.Location = new System.Drawing.Point(159, 2);
+            this.btnExportAsExcel.Location = new System.Drawing.Point(159, 5);
             this.btnExportAsExcel.Name = "btnExportAsExcel";
             this.btnExportAsExcel.Size = new System.Drawing.Size(26, 22);
             this.btnExportAsExcel.TabIndex = 105;
@@ -523,7 +543,7 @@
             this.btnFreigeben.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Button;
             this.btnFreigeben.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFreigeben.IsStandardControl = false;
-            this.btnFreigeben.Location = new System.Drawing.Point(113, 0);
+            this.btnFreigeben.Location = new System.Drawing.Point(113, 4);
             this.btnFreigeben.Name = "btnFreigeben";
             this.btnFreigeben.ShowFocusRect = false;
             this.btnFreigeben.ShowOutline = false;
@@ -554,7 +574,7 @@
             this.btnVorschau.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVorschau.ImageSize = new System.Drawing.Size(24, 24);
             this.btnVorschau.IsStandardControl = false;
-            this.btnVorschau.Location = new System.Drawing.Point(5, 0);
+            this.btnVorschau.Location = new System.Drawing.Point(5, 4);
             this.btnVorschau.Name = "btnVorschau";
             this.btnVorschau.ShowFocusRect = false;
             this.btnVorschau.ShowOutline = false;
@@ -702,7 +722,7 @@
             this.btnFSW.Appearance = appearance30;
             this.btnFSW.AutoWorkLayout = false;
             this.btnFSW.IsStandardControl = false;
-            this.btnFSW.Location = new System.Drawing.Point(105, 3);
+            this.btnFSW.Location = new System.Drawing.Point(105, 6);
             this.btnFSW.Name = "btnFSW";
             this.btnFSW.Size = new System.Drawing.Size(87, 22);
             this.btnFSW.TabIndex = 100;
@@ -720,7 +740,7 @@
             this.btnFSWReset.Appearance = appearance29;
             this.btnFSWReset.AutoWorkLayout = false;
             this.btnFSWReset.IsStandardControl = false;
-            this.btnFSWReset.Location = new System.Drawing.Point(48, 3);
+            this.btnFSWReset.Location = new System.Drawing.Point(48, 6);
             this.btnFSWReset.Name = "btnFSWReset";
             this.btnFSWReset.Size = new System.Drawing.Size(49, 22);
             this.btnFSWReset.TabIndex = 101;
@@ -763,9 +783,9 @@
             this.panelGrid.Controls.Add(this.editor);
             this.panelGrid.Controls.Add(this.editorPrecalc);
             this.panelGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGrid.Location = new System.Drawing.Point(0, 106);
+            this.panelGrid.Location = new System.Drawing.Point(0, 112);
             this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(1106, 429);
+            this.panelGrid.Size = new System.Drawing.Size(1106, 423);
             this.panelGrid.TabIndex = 100;
             // 
             // uGridAbrech2
@@ -978,7 +998,7 @@
             this.uGridAbrech2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uGridAbrech2.Location = new System.Drawing.Point(0, 0);
             this.uGridAbrech2.Name = "uGridAbrech2";
-            this.uGridAbrech2.Size = new System.Drawing.Size(1106, 429);
+            this.uGridAbrech2.Size = new System.Drawing.Size(1106, 423);
             this.uGridAbrech2.TabIndex = 165;
             this.uGridAbrech2.Text = "Abrechnungen";
             this.uGridAbrech2.BeforeRowActivate += new Infragistics.Win.UltraWinGrid.RowEventHandler(this.uGridAbrech2_BeforeRowActivate);
@@ -1019,7 +1039,7 @@
             this.panelTop2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop2.Location = new System.Drawing.Point(0, 77);
             this.panelTop2.Name = "panelTop2";
-            this.panelTop2.Size = new System.Drawing.Size(1106, 29);
+            this.panelTop2.Size = new System.Drawing.Size(1106, 35);
             this.panelTop2.TabIndex = 3;
             // 
             // panelFSW
@@ -1029,7 +1049,7 @@
             this.panelFSW.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelFSW.Location = new System.Drawing.Point(602, 0);
             this.panelFSW.Name = "panelFSW";
-            this.panelFSW.Size = new System.Drawing.Size(198, 29);
+            this.panelFSW.Size = new System.Drawing.Size(198, 35);
             this.panelFSW.TabIndex = 111;
             // 
             // panelAuswahlFreigStornoAll
@@ -1039,7 +1059,7 @@
             this.panelAuswahlFreigStornoAll.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelAuswahlFreigStornoAll.Location = new System.Drawing.Point(443, 0);
             this.panelAuswahlFreigStornoAll.Name = "panelAuswahlFreigStornoAll";
-            this.panelAuswahlFreigStornoAll.Size = new System.Drawing.Size(128, 29);
+            this.panelAuswahlFreigStornoAll.Size = new System.Drawing.Size(128, 35);
             this.panelAuswahlFreigStornoAll.TabIndex = 110;
             // 
             // cboBillStatus
@@ -1055,7 +1075,7 @@
             valueListItem1,
             valueListItem3,
             valueListItem5});
-            this.cboBillStatus.Location = new System.Drawing.Point(29, 2);
+            this.cboBillStatus.Location = new System.Drawing.Point(29, 7);
             this.cboBillStatus.Name = "cboBillStatus";
             this.cboBillStatus.Size = new System.Drawing.Size(96, 21);
             this.cboBillStatus.TabIndex = 115;
@@ -1063,7 +1083,7 @@
             // 
             // lblBillStatus
             // 
-            this.lblBillStatus.Location = new System.Drawing.Point(4, 5);
+            this.lblBillStatus.Location = new System.Drawing.Point(4, 10);
             this.lblBillStatus.Name = "lblBillStatus";
             this.lblBillStatus.Size = new System.Drawing.Size(46, 15);
             this.lblBillStatus.TabIndex = 114;
@@ -1076,13 +1096,13 @@
             this.panelAuswahlRechTyp.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelAuswahlRechTyp.Location = new System.Drawing.Point(231, 0);
             this.panelAuswahlRechTyp.Name = "panelAuswahlRechTyp";
-            this.panelAuswahlRechTyp.Size = new System.Drawing.Size(212, 29);
+            this.panelAuswahlRechTyp.Size = new System.Drawing.Size(212, 35);
             this.panelAuswahlRechTyp.TabIndex = 109;
             // 
             // cboRechTyp
             // 
             this.cboRechTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboRechTyp.Location = new System.Drawing.Point(78, 2);
+            this.cboRechTyp.Location = new System.Drawing.Point(82, 7);
             this.cboRechTyp.Name = "cboRechTyp";
             this.cboRechTyp.Size = new System.Drawing.Size(125, 21);
             this.cboRechTyp.TabIndex = 113;
@@ -1090,7 +1110,7 @@
             // 
             // lblRechTyp
             // 
-            this.lblRechTyp.Location = new System.Drawing.Point(1, 7);
+            this.lblRechTyp.Location = new System.Drawing.Point(1, 9);
             this.lblRechTyp.Name = "lblRechTyp";
             this.lblRechTyp.Size = new System.Drawing.Size(82, 15);
             this.lblRechTyp.TabIndex = 112;
@@ -1103,7 +1123,7 @@
             this.panelHistorie2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelHistorie2.Location = new System.Drawing.Point(0, 0);
             this.panelHistorie2.Name = "panelHistorie2";
-            this.panelHistorie2.Size = new System.Drawing.Size(231, 29);
+            this.panelHistorie2.Size = new System.Drawing.Size(231, 35);
             this.panelHistorie2.TabIndex = 108;
             // 
             // paneStorno
@@ -1112,7 +1132,7 @@
             this.paneStorno.Dock = System.Windows.Forms.DockStyle.Right;
             this.paneStorno.Location = new System.Drawing.Point(800, 0);
             this.paneStorno.Name = "paneStorno";
-            this.paneStorno.Size = new System.Drawing.Size(56, 29);
+            this.paneStorno.Size = new System.Drawing.Size(56, 35);
             this.paneStorno.TabIndex = 107;
             // 
             // btnStorno
@@ -1122,7 +1142,7 @@
             this.btnStorno.Appearance = appearance32;
             this.btnStorno.AutoWorkLayout = false;
             this.btnStorno.IsStandardControl = false;
-            this.btnStorno.Location = new System.Drawing.Point(0, 2);
+            this.btnStorno.Location = new System.Drawing.Point(0, 5);
             this.btnStorno.Name = "btnStorno";
             this.btnStorno.Size = new System.Drawing.Size(52, 22);
             this.btnStorno.TabIndex = 100;
@@ -1135,7 +1155,7 @@
             this.panelDelete.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelDelete.Location = new System.Drawing.Point(856, 0);
             this.panelDelete.Name = "panelDelete";
-            this.panelDelete.Size = new System.Drawing.Size(30, 29);
+            this.panelDelete.Size = new System.Drawing.Size(30, 35);
             this.panelDelete.TabIndex = 106;
             // 
             // btnDelete
@@ -1151,7 +1171,7 @@
             this.btnDelete.DoOnClick = true;
             this.btnDelete.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDelete.IsStandardControl = true;
-            this.btnDelete.Location = new System.Drawing.Point(3, 2);
+            this.btnDelete.Location = new System.Drawing.Point(3, 5);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(25, 22);
             this.btnDelete.TabIndex = 99;
@@ -1169,7 +1189,7 @@
             this.panelPrint.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelPrint.Location = new System.Drawing.Point(886, 0);
             this.panelPrint.Name = "panelPrint";
-            this.panelPrint.Size = new System.Drawing.Size(220, 29);
+            this.panelPrint.Size = new System.Drawing.Size(220, 35);
             this.panelPrint.TabIndex = 105;
             // 
             // btnRollungSperreLöschen
@@ -1179,7 +1199,7 @@
             this.btnRollungSperreLöschen.Appearance = appearance34;
             this.btnRollungSperreLöschen.AutoWorkLayout = false;
             this.btnRollungSperreLöschen.IsStandardControl = false;
-            this.btnRollungSperreLöschen.Location = new System.Drawing.Point(1, 2);
+            this.btnRollungSperreLöschen.Location = new System.Drawing.Point(1, 5);
             this.btnRollungSperreLöschen.Name = "btnRollungSperreLöschen";
             this.btnRollungSperreLöschen.Size = new System.Drawing.Size(26, 22);
             this.btnRollungSperreLöschen.TabIndex = 165;
@@ -1193,7 +1213,7 @@
             this.btnExportAsPdf.Appearance = appearance35;
             this.btnExportAsPdf.AutoWorkLayout = false;
             this.btnExportAsPdf.IsStandardControl = false;
-            this.btnExportAsPdf.Location = new System.Drawing.Point(185, 2);
+            this.btnExportAsPdf.Location = new System.Drawing.Point(185, 5);
             this.btnExportAsPdf.Name = "btnExportAsPdf";
             this.btnExportAsPdf.Size = new System.Drawing.Size(26, 22);
             this.btnExportAsPdf.TabIndex = 164;
@@ -1208,7 +1228,7 @@
             this.btnPrint.Appearance = appearance36;
             this.btnPrint.AutoWorkLayout = false;
             this.btnPrint.IsStandardControl = false;
-            this.btnPrint.Location = new System.Drawing.Point(27, 2);
+            this.btnPrint.Location = new System.Drawing.Point(27, 5);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(132, 22);
             this.btnPrint.TabIndex = 101;
@@ -1320,6 +1340,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grpSuche)).EndInit();
             this.grpSuche.ResumeLayout(false);
             this.grpSuche.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReNr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtVon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtVonRechDatum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBisRechDatum)).EndInit();
@@ -1426,5 +1447,7 @@
         private QS2.Desktop.ControlManagment.BasePanel panelFSW;
         private QS2.Desktop.ControlManagment.BaseButton btnFSW;
         private QS2.Desktop.ControlManagment.BaseButton btnFSWReset;
+        private QS2.Desktop.ControlManagment.BaseLabel lblReNr;
+        private QS2.Desktop.ControlManagment.BaseTextEditor txtReNr;
     }
 }

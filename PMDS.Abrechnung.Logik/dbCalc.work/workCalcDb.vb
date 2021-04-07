@@ -177,7 +177,7 @@ Public Class workCalcDb
             End If
 
             Dim sqlCalc As New Sql()
-            sqlCalc.readBills("", dFrom, dTo, dFromRechDatum, dToRechDatum, dbPMDSFound, billTyp, billStatus, True, IDKlinik, False, showExportierte)
+            sqlCalc.readBills("", dFrom, dTo, dFromRechDatum, dToRechDatum, dbPMDSFound, billTyp, billStatus, True, IDKlinik, False, showExportierte, "")
             'Select Case typ
             '    Case eTypUI.CopyDb
             '    Case eTypUI.ExportCalcs
