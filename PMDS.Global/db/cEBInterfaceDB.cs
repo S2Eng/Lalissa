@@ -86,7 +86,7 @@ namespace PMDS.Global.db
             public Period Period { get; set; } = new Period();
         }
 
-        public class Adress
+        public class Address
         {
             public string Name { get; set; } = "";
             public string Street { get; set; } = "";
@@ -100,7 +100,7 @@ namespace PMDS.Global.db
         public class Biller
         {
             public string VATIdentificationNumber { get; set; } = "";
-            public Adress Adress { get; set; } = new Adress();
+            public Address Address { get; set; } = new Address();
             public string InvoiceRecipientsBillerID { get; set; } = "";
         }
 
@@ -108,7 +108,7 @@ namespace PMDS.Global.db
         {
             public string VATIdentificationNumber { get; set; } = "";
             public AttributedValue FurtherIdentification { get; set; } = new AttributedValue() { AttributeName = "IdentificationType", AttributeValue = "Payer", Value = "" };
-            public Adress Adress { get; set; } = new Adress();
+            public Address Address { get; set; } = new Address();
             public string BillersInvoiceRecipientID { get; set; } = "";
         }
 
@@ -223,9 +223,9 @@ namespace PMDS.Global.db
                                    }
                                    ).First();
 
-                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmlns", AttributeValue = @"http://wwww.ebinterface.at/schema/5p0/" });
-                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmns:xsi", AttributeValue = @"http://www.w3.org/2001/XMLSchema" });
-                    ret.AddAtributeToList(new cAttribute() { AttributeName = "GeneratigSystem", AttributeValue = "PMDS" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmlns", AttributeValue = @"http://www.ebinterface.at/schema/5p0/" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmns:xsi", AttributeValue = @"http://www.w3.org/2001/XMLSchema-instance" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "GeneratingSystem", AttributeValue = "PMDS" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "DocumentType", AttributeValue = "Invoice" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "InvoiceCurrency", AttributeValue = "EUR" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "DocumentTitle", AttributeValue = "EBInterface" });
@@ -233,17 +233,17 @@ namespace PMDS.Global.db
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "xsi:schemaLocation", AttributeValue = @"http://www.ebinterface.at/schema/5p0/ ../Invoice.xsd" });
 
                     ret.Biller.VATIdentificationNumber = (rKlinik.UID.Substring(rKlinik.UID.ToUpper().IndexOf("ATU"))).Replace(" ", "");
-                    ret.Biller.Adress.Name = rKlinik.Bezeichnung;
-                    ret.Biller.Adress.Street = rKlinik.Strasse;
-                    ret.Biller.Adress.ZIP = rKlient.PLZ;
-                    ret.Biller.Adress.Town = rKlinik.Ort;
+                    ret.Biller.Address.Name = rKlinik.Bezeichnung;
+                    ret.Biller.Address.Street = rKlinik.Strasse;
+                    ret.Biller.Address.ZIP = rKlient.PLZ;
+                    ret.Biller.Address.Town = rKlinik.Ort;
                     ret.Biller.InvoiceRecipientsBillerID = ENV.FSW_SenderAdresse;
 
                     ret.InvoiceRecipient.FurtherIdentification.Value = rKlient.SVNr;
-                    ret.InvoiceRecipient.Adress.Name = rKlient.Name;
-                    ret.InvoiceRecipient.Adress.Street = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Strasse : rKlinik.Strasse;
-                    ret.InvoiceRecipient.Adress.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.PLZ : rKlinik.PLZ;
-                    ret.InvoiceRecipient.Adress.Town = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Ort : rKlinik.Ort;
+                    ret.InvoiceRecipient.Address.Name = rKlient.Name;
+                    ret.InvoiceRecipient.Address.Street = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Strasse : rKlinik.Strasse;
+                    ret.InvoiceRecipient.Address.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.PLZ : rKlinik.PLZ;
+                    ret.InvoiceRecipient.Address.Town = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Ort : rKlinik.Ort;
                     ret.InvoiceRecipient.BillersInvoiceRecipientID = String.IsNullOrWhiteSpace(rKlient.BillersInvoiceRecipientID) ? "SVNR: " + rKlient.SVNr : "KtoNr: " + rKlient.BillersInvoiceRecipientID;
 
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName = rKlinik.Bank;

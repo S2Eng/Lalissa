@@ -121,7 +121,7 @@ namespace PMDS.GUI.ELGA
             try
             {
                 //clsELGAPrint pr = new clsELGAPrint();
-                //pr.ShowCDAInBrowser(Path.GetTempFileName());
+                //pr.ShowCDAInBrowser(Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()));
 
 
                 string pTmp = System.IO.Path.Combine(ENV.path_Temp, "CDA");

@@ -24,7 +24,6 @@ namespace PMDS.Global.Heimverträge
                 var files = Directory.EnumerateFiles(ENV.ReportPath, "*.*", SearchOption.TopDirectoryOnly).Where(s => s.EndsWith(".pdf", StringComparison.CurrentCultureIgnoreCase) || s.EndsWith(".rtf", StringComparison.CurrentCultureIgnoreCase));
                 foreach (string f in files)
                 {
-                    string Path = System.IO.Path.GetTempFileName();
                     System.IO.FileInfo fi = new FileInfo(f);
                     if (fi.Name.StartsWith("Heimvertrag", StringComparison.CurrentCultureIgnoreCase))
                     {
@@ -32,18 +31,7 @@ namespace PMDS.Global.Heimverträge
                         itm.Tag = fi.FullName;
                     }
                 }
-
-                /*
-                DirectoryInfo d = new DirectoryInfo(ENV.ReportPath);
-                foreach (System.IO.FileInfo fileInfo in d.GetFiles("Heimvertrag*.*"))
-                {
-                    Infragistics.Win .ValueListItem itm = cbo.Items.Add(fileInfo.FullName, fileInfo.Name);
-                    itm.Tag = fileInfo.FullName;
-                }
-                */
-
                 return true;
-
             }
             catch (Exception ex)
             {

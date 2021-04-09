@@ -371,7 +371,7 @@
             this.grpSuche.Location = new System.Drawing.Point(5, 4);
             this.grpSuche.Name = "grpSuche";
             this.grpSuche.Size = new System.Drawing.Size(618, 69);
-            this.grpSuche.TabIndex = 7;
+            this.grpSuche.TabIndex = 6;
             this.grpSuche.Text = "Suche";
             // 
             // lblReNr
@@ -379,7 +379,7 @@
             this.lblReNr.Location = new System.Drawing.Point(374, 20);
             this.lblReNr.Name = "lblReNr";
             this.lblReNr.Size = new System.Drawing.Size(53, 15);
-            this.lblReNr.TabIndex = 202;
+            this.lblReNr.TabIndex = 10;
             this.lblReNr.Text = "Rech. Nr.";
             // 
             // txtReNr
@@ -387,7 +387,7 @@
             this.txtReNr.Location = new System.Drawing.Point(429, 18);
             this.txtReNr.Name = "txtReNr";
             this.txtReNr.Size = new System.Drawing.Size(146, 21);
-            this.txtReNr.TabIndex = 201;
+            this.txtReNr.TabIndex = 4;
             // 
             // dtVon
             // 
@@ -440,7 +440,7 @@
             this.baseLabel1.Location = new System.Drawing.Point(233, 43);
             this.baseLabel1.Name = "baseLabel1";
             this.baseLabel1.Size = new System.Drawing.Size(27, 15);
-            this.baseLabel1.TabIndex = 114;
+            this.baseLabel1.TabIndex = 9;
             this.baseLabel1.Text = "bis";
             // 
             // lblVonBisRechDatum
@@ -448,7 +448,7 @@
             this.lblVonBisRechDatum.Location = new System.Drawing.Point(9, 43);
             this.lblVonBisRechDatum.Name = "lblVonBisRechDatum";
             this.lblVonBisRechDatum.Size = new System.Drawing.Size(126, 15);
-            this.lblVonBisRechDatum.TabIndex = 113;
+            this.lblVonBisRechDatum.TabIndex = 7;
             this.lblVonBisRechDatum.Text = "Rechnungsdatum von";
             // 
             // dtBis
@@ -472,7 +472,7 @@
             this.lblBis.Location = new System.Drawing.Point(233, 20);
             this.lblBis.Name = "lblBis";
             this.lblBis.Size = new System.Drawing.Size(27, 15);
-            this.lblBis.TabIndex = 4;
+            this.lblBis.TabIndex = 8;
             this.lblBis.Text = "bis";
             // 
             // btnSearchxy
@@ -490,7 +490,7 @@
             this.btnSearchxy.Location = new System.Drawing.Point(580, 15);
             this.btnSearchxy.Name = "btnSearchxy";
             this.btnSearchxy.Size = new System.Drawing.Size(32, 27);
-            this.btnSearchxy.TabIndex = 200;
+            this.btnSearchxy.TabIndex = 5;
             this.btnSearchxy.TabStop = false;
             this.btnSearchxy.TYPE = PMDS.GUI.ucButton.ButtonType.Search;
             this.btnSearchxy.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
@@ -503,7 +503,7 @@
             this.btnTimes.ShowFocusRect = false;
             this.btnTimes.Size = new System.Drawing.Size(21, 24);
             this.btnTimes.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
-            this.btnTimes.TabIndex = 4;
+            this.btnTimes.TabIndex = 8;
             this.btnTimes.Click += new System.EventHandler(this.btnTimes_Click);
             this.btnTimes.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnTimes_MouseUp);
             // 
@@ -512,7 +512,7 @@
             this.lblVon.Location = new System.Drawing.Point(9, 20);
             this.lblVon.Name = "lblVon";
             this.lblVon.Size = new System.Drawing.Size(126, 15);
-            this.lblVon.TabIndex = 3;
+            this.lblVon.TabIndex = 6;
             this.lblVon.Text = "Leistungszeitraum von";
             // 
             // btnExportAsExcel

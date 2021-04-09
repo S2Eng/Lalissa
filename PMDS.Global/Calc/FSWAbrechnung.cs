@@ -389,35 +389,35 @@ namespace PMDS.Global
                         Chilkat.Xml xInvoiceDate = xInvoice.NewChild("InvoiceDate", Invoice.InvoiceDate.ToString(DateFormat, ci));
                         Chilkat.Xml xAdditionalInformation = xInvoice.NewChild("AdditionalInformation", "");
 
-                        Chilkat.Xml xDelivery = xInvoice.NewChild("Delilvery", "");
+                        Chilkat.Xml xDelivery = xInvoice.NewChild("Delivery", "");
                         Chilkat.Xml xPeriod = xDelivery.NewChild("Period", "");
                         Chilkat.Xml xFromDate = xPeriod.NewChild("FromDate", Invoice.Delivery.Period.FromDate.ToString(DateFormat, ci));
                         Chilkat.Xml xToDate = xPeriod.NewChild("ToDate", Invoice.Delivery.Period.ToDate.ToString(DateFormat, ci));
 
                         Chilkat.Xml xBiller = xInvoice.NewChild("Biller", "");
                         Chilkat.Xml xBillerVATIdentificationNumber = xBiller.NewChild("VATIdentificationNumber", Invoice.Biller.VATIdentificationNumber);
-                        Chilkat.Xml xBillerAdress = xBiller.NewChild("Adress", "");
-                        Chilkat.Xml xBillerAdressName = xBillerAdress.NewChild("Name", Invoice.Biller.Adress.Name);
-                        Chilkat.Xml xBillerAdressStreet = xBillerAdress.NewChild("Street", Invoice.Biller.Adress.Street);
-                        Chilkat.Xml xBillerAdressPOBox = xBillerAdress.NewChild("POBox", "");
-                        Chilkat.Xml xBillerAdressTown = xBillerAdress.NewChild("Town", Invoice.Biller.Adress.Town);
-                        Chilkat.Xml xBillerAdressZIP = xBillerAdress.NewChild("ZIP", Invoice.Biller.Adress.ZIP);
-                        Chilkat.Xml xBillerAdressCountry = xBillerAdress.NewChild("Country", Invoice.Biller.Adress.Country.Value);
+                        Chilkat.Xml xBillerAddress = xBiller.NewChild("Address", "");
+                        Chilkat.Xml xBillerAddressName = xBillerAddress.NewChild("Name", Invoice.Biller.Address.Name);
+                        Chilkat.Xml xBillerAddressStreet = xBillerAddress.NewChild("Street", Invoice.Biller.Address.Street);
+                        Chilkat.Xml xBillerAddressPOBox = xBillerAddress.NewChild("POBox", "");
+                        Chilkat.Xml xBillerAddressTown = xBillerAddress.NewChild("Town", Invoice.Biller.Address.Town);
+                        Chilkat.Xml xBillerAddressZIP = xBillerAddress.NewChild("ZIP", Invoice.Biller.Address.ZIP);
+                        Chilkat.Xml xBillerAddressCountry = xBillerAddress.NewChild("Country", Invoice.Biller.Address.Country.Value);
                         Chilkat.Xml xBillerBillersInvoiceRecipientID = xBiller.NewChild("InvoiceRecipientsBillerID", Invoice.Biller.InvoiceRecipientsBillerID);
-                        xBillerAdressCountry.AddAttribute(Invoice.Biller.Adress.Country.AttributeName, Invoice.Biller.Adress.Country.AttributeValue);
+                        xBillerAddressCountry.AddAttribute(Invoice.Biller.Address.Country.AttributeName, Invoice.Biller.Address.Country.AttributeValue);
 
                         Chilkat.Xml xInvoiceRecipient = xInvoice.NewChild("InvoiceRecipient", "");
                         Chilkat.Xml xInvoiceRecipientVATIdentificationNumber = xInvoiceRecipient.NewChild("VATIdentificationNumber", Invoice.InvoiceRecipient.VATIdentificationNumber);
                         Chilkat.Xml xFurtherIdentification = xInvoiceRecipient.NewChild("FurtherIdentification", Invoice.InvoiceRecipient.FurtherIdentification.Value);
                         xInvoiceRecipient.AddAttribute(Invoice.InvoiceRecipient.FurtherIdentification.AttributeName, Invoice.InvoiceRecipient.FurtherIdentification.AttributeValue);
-                        Chilkat.Xml xInvoiceRecipientAdress = xInvoiceRecipient.NewChild("Adress", "");
-                        Chilkat.Xml xInvoiceRecipientAdressName = xInvoiceRecipientAdress.NewChild("Name", Invoice.InvoiceRecipient.Adress.Name);
-                        Chilkat.Xml xInvoiceRecipientAdressStreet = xInvoiceRecipientAdress.NewChild("Street", Invoice.InvoiceRecipient.Adress.Street);
-                        Chilkat.Xml xInvoiceRecipientAdressPOBox = xInvoiceRecipientAdress.NewChild("POBox", "");
-                        Chilkat.Xml xInvoiceRecipientAdressTown = xInvoiceRecipientAdress.NewChild("Town", Invoice.InvoiceRecipient.Adress.Town);
-                        Chilkat.Xml xInvoiceRecipientAdressZIP = xInvoiceRecipientAdress.NewChild("ZIP", Invoice.InvoiceRecipient.Adress.ZIP);
-                        Chilkat.Xml xInvoiceRecipientAdressCountry = xInvoiceRecipientAdress.NewChild("Country", Invoice.InvoiceRecipient.Adress.Country.Value);
-                        xInvoiceRecipientAdressCountry.AddAttribute(Invoice.InvoiceRecipient.Adress.Country.AttributeName, Invoice.InvoiceRecipient.Adress.Country.AttributeValue);
+                        Chilkat.Xml xInvoiceRecipientAddress = xInvoiceRecipient.NewChild("Address", "");
+                        Chilkat.Xml xInvoiceRecipientAddressName = xInvoiceRecipientAddress.NewChild("Name", Invoice.InvoiceRecipient.Address.Name);
+                        Chilkat.Xml xInvoiceRecipientAddressStreet = xInvoiceRecipientAddress.NewChild("Street", Invoice.InvoiceRecipient.Address.Street);
+                        Chilkat.Xml xInvoiceRecipientAddressPOBox = xInvoiceRecipientAddress.NewChild("POBox", "");
+                        Chilkat.Xml xInvoiceRecipientAddressTown = xInvoiceRecipientAddress.NewChild("Town", Invoice.InvoiceRecipient.Address.Town);
+                        Chilkat.Xml xInvoiceRecipientAddressZIP = xInvoiceRecipientAddress.NewChild("ZIP", Invoice.InvoiceRecipient.Address.ZIP);
+                        Chilkat.Xml xInvoiceRecipientAddressCountry = xInvoiceRecipientAddress.NewChild("Country", Invoice.InvoiceRecipient.Address.Country.Value);
+                        xInvoiceRecipientAddressCountry.AddAttribute(Invoice.InvoiceRecipient.Address.Country.AttributeName, Invoice.InvoiceRecipient.Address.Country.AttributeValue);
                         Chilkat.Xml xBillersInvoiceRecipientID = xInvoiceRecipient.NewChild("BillersInvoiceRecipientID", Invoice.InvoiceRecipient.BillersInvoiceRecipientID);
 
                         Chilkat.Xml xDetails = xInvoice.NewChild("Details", "");

@@ -52,7 +52,7 @@ namespace PMDS.GUI.ELGA
                     MessageBox.Show("Fehler beim Ermitteln der Java Runtime Version. Das CDA-Dokument kann nicht als PDF konvertiert werden.", "Hinweis");
                 }
 
-                sFileName = (String.IsNullOrWhiteSpace(sFileName) ? Path.GetTempFileName() : sFileName);
+                sFileName = (String.IsNullOrWhiteSpace(sFileName) ? Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()) : sFileName);
 
                 //CDA-Dokument auf Platte schreiben
                 using (FileStream fs = new FileStream(sFileName, FileMode.Create))
@@ -131,7 +131,7 @@ namespace PMDS.GUI.ELGA
         {
             try
             {                
-                sFileName = (String.IsNullOrWhiteSpace(sFileName) ? Path.GetTempFileName() : sFileName);
+                sFileName = (String.IsNullOrWhiteSpace(sFileName) ? Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()) : sFileName);
                 object path;
                 List<string> browsers = new List<string>();
 
