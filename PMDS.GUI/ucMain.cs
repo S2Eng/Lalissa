@@ -1427,7 +1427,7 @@ namespace PMDS.GUI
                 using (PMDS.GUI.GUI.Main.frmDocumentsSelect frmDocumentsSelect1 = new GUI.Main.frmDocumentsSelect())
                 {
                     frmDocumentsSelect1.initControl(ENV.CurrentIDAbteilung, ref this.dsKlientenliste1);
-                    frmDocumentsSelect1.Show();
+                    frmDocumentsSelect1.ShowDialog();
                 }
             }
             catch (Exception ex)
