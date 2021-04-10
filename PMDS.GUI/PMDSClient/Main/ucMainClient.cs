@@ -1381,10 +1381,9 @@ namespace PMDS.GUI.PMDSClient
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
                 PMDS.GUI.GUI.Main.frmDocumentsSelect frmDocumentsSelect1 = new GUI.Main.frmDocumentsSelect();
                 frmDocumentsSelect1.initControl(ENV.CurrentIDAbteilung, ref this.dsKlientenliste1);
-                frmDocumentsSelect1.ShowDialog();
+                frmDocumentsSelect1.Show();
             }
             catch (Exception ex)
             {
