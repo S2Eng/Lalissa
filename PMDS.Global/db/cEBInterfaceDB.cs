@@ -69,7 +69,7 @@ namespace PMDS.Global.db
             public InvoiceRecipient InvoiceRecipient { get; set; } = new InvoiceRecipient();
             public Details Details { get; set; } = new Details();
             public ReductionAndSurchargeDetails ReductionAndSurchargeDetails { get; set; } = new ReductionAndSurchargeDetails();
-            public string Tax { get; set; } = "";
+            public decimal Tax { get; set; } = 0;
             public decimal TotalGrossAmount { get; set; } = 0;
             public decimal PayableAmount { get; set; } = 0;
             public PaymentMethod PaymentMethod { get; set; } = new PaymentMethod();
@@ -213,7 +213,7 @@ namespace PMDS.Global.db
                                    select new
                                    {
                                        IDPatient = p.ID,
-                                       Name = (p.Titel.Trim() + " " + p.Vorname.Trim() + " " + p.Nachname.Trim() + " " + p.TitelPost.Trim()).Trim(),
+                                       Name = (p.Titel.Trim() + " " + p.Nachname.Trim() + ", " + p.Vorname.Trim() + " " + p.TitelPost.Trim()).Trim(),
                                        Strasse = adr.Strasse,
                                        PLZ = adr.Plz,
                                        Ort = adr.Ort,
@@ -224,26 +224,26 @@ namespace PMDS.Global.db
                                    ).First();
 
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "xmlns", AttributeValue = @"http://www.ebinterface.at/schema/5p0/" });
-                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmns:xsi", AttributeValue = @"http://www.w3.org/2001/XMLSchema-instance" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xmlns:xsi", AttributeValue = @"http://www.w3.org/2001/XMLSchema-instance" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "GeneratingSystem", AttributeValue = "PMDS" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "DocumentType", AttributeValue = "Invoice" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "InvoiceCurrency", AttributeValue = "EUR" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "DocumentTitle", AttributeValue = "EBInterface" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "Language", AttributeValue = "ger" });
-                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xsi:schemaLocation", AttributeValue = @"http://www.ebinterface.at/schema/5p0/ ../Invoice.xsd" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xsi:schemaLocation", AttributeValue = @"http://www.ebinterface.at/schema/5p0/ http://www.ebinterface.at/schema/5p0/Invoice.xsd" });
 
                     ret.Biller.VATIdentificationNumber = (rKlinik.UID.Substring(rKlinik.UID.ToUpper().IndexOf("ATU"))).Replace(" ", "");
                     ret.Biller.Address.Name = rKlinik.Bezeichnung;
                     ret.Biller.Address.Street = rKlinik.Strasse;
-                    ret.Biller.Address.ZIP = rKlient.PLZ;
+                    ret.Biller.Address.ZIP = rKlinik.PLZ;
                     ret.Biller.Address.Town = rKlinik.Ort;
                     ret.Biller.InvoiceRecipientsBillerID = ENV.FSW_SenderAdresse;
 
                     ret.InvoiceRecipient.FurtherIdentification.Value = rKlient.SVNr;
                     ret.InvoiceRecipient.Address.Name = rKlient.Name;
                     ret.InvoiceRecipient.Address.Street = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Strasse : rKlinik.Strasse;
-                    ret.InvoiceRecipient.Address.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.PLZ : rKlinik.PLZ;
                     ret.InvoiceRecipient.Address.Town = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.Ort : rKlinik.Ort;
+                    ret.InvoiceRecipient.Address.ZIP = (rKlient.WohnungAbgemeldet ?? false) ? rKlient.PLZ : rKlinik.PLZ;
                     ret.InvoiceRecipient.BillersInvoiceRecipientID = String.IsNullOrWhiteSpace(rKlient.BillersInvoiceRecipientID) ? "SVNR: " + rKlient.SVNr : "KtoNr: " + rKlient.BillersInvoiceRecipientID;
 
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName = rKlinik.Bank;

@@ -88,6 +88,7 @@ namespace PMDS.Global
                     }
 
                     decimal Rechnungsbetrag = 0;
+                    decimal Steuern = 0;
                     foreach (string IDBill in ListIDBills ?? new List<string>())
                     {
                         bills rBill = readBill(IDBill);
@@ -141,6 +142,11 @@ namespace PMDS.Global
                                             Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));                                        
                                         lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
                                     }
+                                    else if (generic.sEquals(Rechnungszeile.Kennung, "MWstSatz"))
+                                    {
+                                        Zeile++;
+                                        Invoice.Tax += Rechnungszeile.Netto;
+                                    }
                                     else if(generic.sEquals(Rechnungszeile.Kennung, "GSGB"))
                                     {
                                         Zeile++;
@@ -155,8 +161,10 @@ namespace PMDS.Global
                             if (Zeile > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
                                 ListIDBillsFSW.Add(IDBill);
 
+                            //Invoice.Tax = rBill.st
                             Invoice.TotalGrossAmount = Math.Round(rBill.betrag, 2, MidpointRounding.AwayFromZero);
                             Invoice.PayableAmount = Invoice.TotalGrossAmount;
+                            Steuern += Invoice.Tax;
                             Rechnungsbetrag += Invoice.PayableAmount;
                             Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
                             Transaction.ArDocument.AddInvoiceToList(Invoice);
@@ -369,7 +377,7 @@ namespace PMDS.Global
                 xArDocument.AddAttribute("Referenz", Transaction.ArDocument.Referenz);
                 xArDocument.AddAttribute("User_Erstellung", Transaction.ArDocument.User_Erstellung);
                 xArDocument.AddAttribute("Datum_Erstellung", Transaction.ArDocument.Datum_Erstellung.ToString(DateTimeFormat, ci));
-                xArDocument.AddAttribute("Rechunungsbetrag", Transaction.ArDocument.Rechnungsbetrag.ToString(nfi));
+                xArDocument.AddAttribute("Rechnungsbetrag", Transaction.ArDocument.Rechnungsbetrag.ToString(nfi));
                 xArDocument.AddAttribute("Anzahl_Rechnung", Transaction.ArDocument.Anzahl_Rechnungen.ToString(nfi));
 
                 foreach (PMDS.Global.db.cEBInterfaceDB.Invoice Invoice in Transaction.ArDocument.lstInvoices)
@@ -413,7 +421,7 @@ namespace PMDS.Global
                         Chilkat.Xml xInvoiceRecipientAddress = xInvoiceRecipient.NewChild("Address", "");
                         Chilkat.Xml xInvoiceRecipientAddressName = xInvoiceRecipientAddress.NewChild("Name", Invoice.InvoiceRecipient.Address.Name);
                         Chilkat.Xml xInvoiceRecipientAddressStreet = xInvoiceRecipientAddress.NewChild("Street", Invoice.InvoiceRecipient.Address.Street);
-                        Chilkat.Xml xInvoiceRecipientAddressPOBox = xInvoiceRecipientAddress.NewChild("POBox", "");
+                        //Chilkat.Xml xInvoiceRecipientAddressPOBox = xInvoiceRecipientAddress.NewChild("POBox", "");
                         Chilkat.Xml xInvoiceRecipientAddressTown = xInvoiceRecipientAddress.NewChild("Town", Invoice.InvoiceRecipient.Address.Town);
                         Chilkat.Xml xInvoiceRecipientAddressZIP = xInvoiceRecipientAddress.NewChild("ZIP", Invoice.InvoiceRecipient.Address.ZIP);
                         Chilkat.Xml xInvoiceRecipientAddressCountry = xInvoiceRecipientAddress.NewChild("Country", Invoice.InvoiceRecipient.Address.Country.Value);
@@ -442,7 +450,7 @@ namespace PMDS.Global
                                 Chilkat.Xml xListLineItemTaxItemTaxableAmount = xListLineItemTaxItem.NewChild("TaxableAmount", item.TaxItem.TaxableAmount.ToString(nfi));
                                 Chilkat.Xml xListLineItemTaxItemTaxPercent = xListLineItemTaxItem.NewChild("TaxPercent", item.TaxItem.TaxPercent.Value.ToString(nfi));
                                 xListLineItemTaxItemTaxPercent.AddAttribute(item.TaxItem.TaxPercent.AttributeName, item.TaxItem.TaxPercent.AttributeValue);
-                                Chilkat.Xml xListLineItemAmount = xListLineItem.NewChild("ItemAmount", item.LineItemAmount.ToString(nfi));
+                                Chilkat.Xml xListLineItemAmount = xListLineItem.NewChild("LineItemAmount", item.LineItemAmount.ToString(nfi));
                                 xDetailsItemList.AddChildTree(xListLineItem);
                             }
                         }
@@ -458,6 +466,8 @@ namespace PMDS.Global
                         Chilkat.Xml xReductionAndSurchargeDetailsSurchargeTaxItemTaxPercent = xReductionAndSurchargeDetailsSurchargeTaxItem.NewChild("TaxPercent", Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.Value.ToString(nfi));
                         xReductionAndSurchargeDetailsSurchargeTaxItemTaxPercent.AddAttribute(Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.AttributeName, Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxPercent.AttributeValue);
 
+                        //Chilkat.Xml xTax = xInvoice.NewChild("Tax", Invoice.Tax.ToString(nfi));
+                        Chilkat.Xml xTax = xInvoice.NewChild("Tax", "");
                         Chilkat.Xml xTotalGrossAmount = xInvoice.NewChild("TotalGrossAmount", Invoice.TotalGrossAmount.ToString(nfi));
                         Chilkat.Xml xPayableAmount = xInvoice.NewChild("PayableAmount", Invoice.PayableAmount.ToString(nfi));
 
