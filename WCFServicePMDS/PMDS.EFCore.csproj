@@ -1757,6 +1757,12 @@
     <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.linkResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.listContactsGdaAllResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.listContactsGdaLastActiveResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReferenceELGA1\WCFServicePMDS.ServiceReferenceELGA1.listContactsResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

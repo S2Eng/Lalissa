@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="QR3DlmvQK3f7Mgi3Rup4t0qX9vw=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="KX9fbLbFXHe2kLzj7gJiFEcIXD3apRmwN0tu2BgqhqM=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="customBinding" name="EhrWSRemotingPortBinding">
+    <bindingConfiguration bindingType="customBinding" name="EhrWSRemotingPortBinding1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EhrWSRemotingPortBinding</serializedValue>
+          <serializedValue>EhrWSRemotingPortBinding1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -154,7 +154,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="EhrWSRemotingPort" contract="ServiceReferenceELGA1.EhrWSRemoting" bindingType="customBinding" address="http://hnelga01.tiani-spirit.com:8181/SpiritEhrWsRemoting/EhrWSRemoting" bindingConfiguration="EhrWSRemotingPortBinding">
+    <endpoint name="EhrWSRemotingPort1" contract="ServiceReferenceELGA1.EhrWSRemoting" bindingType="customBinding" address="http://hnelga01.tiani-spirit.com:8181/SpiritEhrWsRemoting/EhrWSRemoting" bindingConfiguration="EhrWSRemotingPortBinding1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://hnelga01.tiani-spirit.com:8181/SpiritEhrWsRemoting/EhrWSRemoting</serializedValue>
@@ -166,7 +166,7 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EhrWSRemotingPortBinding</serializedValue>
+          <serializedValue>EhrWSRemotingPortBinding1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServiceReferenceELGA1.EhrWSRemoting</serializedValue>
@@ -229,7 +229,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EhrWSRemotingPort</serializedValue>
+          <serializedValue>EhrWSRemotingPort1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
