@@ -5474,6 +5474,31 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.updateNächsteEvaluierung: " + ex.ToString());
             }
         }
+
+        public bool updatePPEvaluierung(Guid IDpflegeplan, DateTime NaechsteEvaluierung, string NaechsteEvaluierungBemerkung)
+        {
+            try
+            {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    System.Linq.IQueryable<PMDS.db.Entities.PflegePlan> tPflegePlan = db.PflegePlan.Where(o => o.ID == IDpflegeplan);
+                    PMDS.db.Entities.PflegePlan rPflegePlan = tPflegePlan.First();
+                    rPflegePlan.NaechsteEvaluierung = NaechsteEvaluierung.Date;
+                    rPflegePlan.NaechsteEvaluierungBemerkung = NaechsteEvaluierungBemerkung;
+                    rPflegePlan.IDBenutzer_Geaendert = ENV.ActiveUser.ID;
+                    rPflegePlan.LogInNameFrei = ENV.LoginInNameFrei;
+                    rPflegePlan.DatumGeaendert = DateTime.Now;
+                    rPflegePlan.LetzteEvaluierung = DateTime.Now;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.updateNächsteEvaluierung: " + ex.ToString());
+            }
+        }
+
         public PMDS.db.Entities.PflegeEintrag getPflegeEintrag(Guid IDPflegeEintrag, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try

@@ -454,8 +454,8 @@ namespace PMDS.GUI
                 if (this.dtpDate2.Value != null)
                 {
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-                    dsPflegePlan.PflegePlanRow r = rPESelected;
-                    PMDSBusiness1.updateNächsteEvaluierung(r.ID, this.dtpDate2.DateTime);
+                    dsPflegePlan.PflegePlanRow r = rPESelected;            
+                    PMDSBusiness1.updatePPEvaluierung(r.ID, this.dtpDate2.DateTime, tbAnmerkung.Text.Trim());
                     r.NaechsteEvaluierung = this.dtpDate2.DateTime.Date;
                     this.dgMain.Refresh();
                 }
@@ -487,7 +487,8 @@ namespace PMDS.GUI
                 pe.Wichtig = PflegeEintragWichtig.NONE;
                 pe.Zeitpunkt = DateTime.Now;
                 pe.IDWichtig = Guid.Empty;                   
-                pe.IDBerufsstand = ENV.BERUFID;                 
+                pe.IDBerufsstand = ENV.BERUFID;
+                pe.LogInNameFrei = ENV.LoginInNameFrei;
                 pe.Write();
             }
         }

@@ -474,7 +474,7 @@ namespace PMDSClient.Sitemap
                 */
 
 
-                parOutDto = s1.ELGAInvalidateContact(ref parsIn, PMDS.Global.ENV.ELGAUrl);
+                parOutDto = s1.ELGAInvalidateContact(ref parsIn, PMDSBusiness.getKlinikAuthUniversalID(PMDS.Global.ENV.IDKlinik), PMDS.Global.ENV.ELGAUrl);
 
                 if (parOutDto.bErrorsFound)
                 {

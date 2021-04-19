@@ -171,7 +171,7 @@ namespace WCFServicePMDS
 
                 ehrPatientRsp ehrPatientRsp1 = objWsLogin.queryPatients(ehrPatientRq1);
                 
-                if (ehrPatientRsp1.queryError == null)
+                if (ehrPatientRsp1.queryError == null || (ehrPatientRsp1.queryError != null && genericELGA.sEquals(ehrPatientRsp1.queryError.queryResponseCode,"OK")))
                 {
                     if (ehrPatientRsp1.responseData != null)
                     {
@@ -450,22 +450,23 @@ namespace WCFServicePMDS
             }
         }
 
-        public ELGAParOutDto invalidateContact(ref ELGAParInDto parsIn, System.ServiceModel.EndpointAddress ELGAUrl)
+        public ELGAParOutDto invalidateContact(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             ELGAParOutDto retDto = this.initParOut();
             try
             {
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
+                if (String.IsNullOrWhiteSpace(parsIn.sObjectDto.SozVersNrLocalPatID))
+                {
+                    throw new Exception("ELGABAL.addContactDischarge: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
+                }
                 ehrPatientClientDto ehrPatientClientDtoBack = null;
-                retDto = this.queryPatients(ref parsIn, eTypeQueryPatients.LocalID, ref ehrPatientClientDtoBack, true, parsIn.authUniversalID, ELGAUrl);
 
-
-                //ELGAParOutDto contactsRet = this.listContacts(ref parsIn, parsIn.authUniversalID, ELGAUrl);
-                
+                retDto = this.listContacts(ref parsIn, authUniversalID, ELGAUrl);                
 
                 trsClientInvalidateContactRq trsClientInvalidateContactRq1 = new trsClientInvalidateContactRq();
                 trsClientInvalidateContactRq1.stateID = parsIn.session.ELGAStateID;
-                trsClientInvalidateContactRq1.treatmentID = parsIn.ContactID;
+                trsClientInvalidateContactRq1.treatmentID = retDto.lPatients[0].ID.ToString();   //parsIn.ContactID;
 
                 trsClientInvalidateContactRsp trsClientInvalidateContactRsp = objWsLogin.invalidateContact(trsClientInvalidateContactRq1);
 
@@ -515,8 +516,7 @@ namespace WCFServicePMDS
             try
             {
                 EhrWSRemotingClient objWsLogin = new EhrWSRemotingClient("EhrWSRemotingPort", ELGAUrl);
-
-                if (parsIn.sObjectDto.SozVersNrLocalPatID.Trim() == "")
+                if (String.IsNullOrWhiteSpace(parsIn.sObjectDto.SozVersNrLocalPatID))
                 {
                     throw new Exception("ELGABAL.addContactDischarge: parsIn.sObjectDto.SozVersNrLocalPatID='' not allowed!");
                 }

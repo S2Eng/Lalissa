@@ -296,12 +296,12 @@ namespace WCFServicePMDS
             }
         }
 
-        public ELGAParOutDto ELGAInvalidateContact(ref ELGAParInDto parsIn, System.ServiceModel.EndpointAddress ELGAUrl)
+        public ELGAParOutDto ELGAInvalidateContact(ref ELGAParInDto parsIn, string authUniversalID, System.ServiceModel.EndpointAddress ELGAUrl)
         {
             try
             {
                 WCFServicePMDS.ELGABAL elga = new WCFServicePMDS.ELGABAL();
-                return elga.invalidateContact(ref parsIn, ELGAUrl);
+                return elga.invalidateContact(ref parsIn, authUniversalID, ELGAUrl);
             }
             catch (Exception ex)
             {
