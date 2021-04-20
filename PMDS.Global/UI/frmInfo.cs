@@ -64,7 +64,8 @@ namespace PMDS
 		{
             try
             {
-                Show();
+                if (this != null)
+                    Show();
             }
             catch (Exception ex)
             {

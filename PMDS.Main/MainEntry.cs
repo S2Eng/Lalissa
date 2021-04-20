@@ -39,7 +39,8 @@ namespace PMDS
                     PMDS.Global.UIGlobal.infoStart.TopMost = true;
                     PMDS.Global.UIGlobal.infoStart.ShowInTaskbar = false;
                     PMDS.Global.UIGlobal.infoStart.StartPosition = FormStartPosition.CenterScreen;
-                    PMDS.Global.UIGlobal.infoStart.Start();
+                    if (ENV.COMMANDLINE_bshowSplash)
+                        PMDS.Global.UIGlobal.infoStart.Start();
                     //((PMDS.Calc.UI.Admin.frmAbrechnung)frm).initControl();
                 }
             } 

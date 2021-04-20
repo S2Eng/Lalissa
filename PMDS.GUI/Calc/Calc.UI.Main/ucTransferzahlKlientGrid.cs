@@ -470,11 +470,13 @@ namespace PMDS.Calc.UI.Admin
                 if (row.IsGroupByRow || row.IsDeleted) continue;
                 foreach (UltraGridCell cell in row.Cells)
                 {
-                    if (cell.Column.ToString() == "GueltigBis [hidden]")
+                    if (cell.Column.Key == "GueltigBis" && cell.Column.Hidden)
                     {
-                        if (cell.Row.Cells["GueltigBis"].Value == System.DBNull.Value)
+                        if (cell.Row.Cells["GueltigBis"].Value == System.DBNull.Value || (DateTime)cell.Value != (DateTime)cell.Row.Cells["GueltigAb"].Value)
                         {
                             cell.Value = cell.Row.Cells["GueltigAb"].Value;
+                            if ((DateTime)cell.Value != (DateTime)cell.Row.Cells["GueltigAb"].Value)
+                                throw new Exception("Gültig bis-Datum bei einmaliger Transferzahlung kann nicht gesetzt werden.");
                         }
                     }
 
@@ -596,11 +598,14 @@ namespace PMDS.Calc.UI.Admin
 
                 try
                 {
-                    valid = cell.EditorResolved.IsValid;
+                    if (cell.IsInEditMode)
+                        valid = cell.EditorResolved.IsValid;
+                    else
+                        valid = !String.IsNullOrWhiteSpace(cell.Value.ToString());
                 }
                 catch
                 {
-                    valid = cell.Value.ToString().Trim() != "";
+                    valid = !String.IsNullOrWhiteSpace(cell.Value.ToString());
                 }
 
                 GuiUtil.ValidateField(dgMain, valid,
