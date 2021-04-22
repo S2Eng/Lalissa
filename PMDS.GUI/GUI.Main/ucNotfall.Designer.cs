@@ -81,7 +81,7 @@
             // ultraTabPageControl9
             // 
             this.ultraTabPageControl9.Controls.Add(this.ucDynReports1);
-            this.ultraTabPageControl9.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl9.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl9.Name = "ultraTabPageControl9";
             this.ultraTabPageControl9.Size = new System.Drawing.Size(967, 472);
             // 
@@ -97,7 +97,7 @@
             // ultraTabPageControl10
             // 
             this.ultraTabPageControl10.Controls.Add(this.panelDatenerhebung);
-            this.ultraTabPageControl10.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl10.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl10.Name = "ultraTabPageControl10";
             this.ultraTabPageControl10.Size = new System.Drawing.Size(967, 472);
             // 
@@ -112,7 +112,7 @@
             // ultraTabPageControl1
             // 
             this.ultraTabPageControl1.Controls.Add(this.panelTop);
-            this.ultraTabPageControl1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
             this.ultraTabPageControl1.Size = new System.Drawing.Size(971, 499);
             // 
@@ -189,6 +189,7 @@
             this.btnSturz.Size = new System.Drawing.Size(223, 24);
             this.btnSturz.TabIndex = 13;
             this.btnSturz.Text = "Detailliertes Sturzprotokoll";
+            this.btnSturz.Visible = false;
             this.btnSturz.Click += new System.EventHandler(this.btnSturz_Click);
             // 
             // dtpZeitpunkt
@@ -305,7 +306,7 @@
             // ultraTabPageControl2
             // 
             this.ultraTabPageControl2.Controls.Add(this.tabMainNotfall);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(971, 499);
             // 

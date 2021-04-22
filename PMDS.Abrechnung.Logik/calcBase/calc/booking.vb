@@ -402,7 +402,7 @@ Public Class booking
 
     Public Function openRepJahresab(ByVal titel As String) As frmPrint
         Try
-            print.loadTempStream(PMDS.Calc.Logic.doDepotgeld.jahresAbRTF, True)
+            print.loadTempStream(PMDS.Calc.Logic.doDepotgeld.jahresAbRTF, True, True)
             Dim frmPrint As frmPrint = print.open("", etyp.calc)
             print.loadTempStreamToEditor(frmPrint.ucprint.editor.textControl1)
             Me.doBookmarks.setBookmark("[Titel]", titel, frmPrint.ucprint.editor.textControl1)

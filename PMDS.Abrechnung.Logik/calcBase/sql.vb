@@ -232,18 +232,19 @@ Public Class Sql
             calcBase.doExept(exept)
         End Try
     End Sub
-    Public Function readBillsIDKostIntern(ByVal IDKostIntern As String, ByVal doExceptionNoBillFound As Boolean, IDKlinik As System.Guid) As dbPMDS.billsRow
+    Public Function readBillsIDKostIntern(ByVal IDKostIntern As String, ByVal doExceptionNoBillFound As Boolean, IDKlinik As System.Guid, IDAbrechnung As System.Guid) As dbPMDS.billsRow
         Try
             Dim db As New dbPMDS()
             Dim da As New OleDb.OleDbDataAdapter
             Dim cmd As New OleDb.OleDbCommand
 
-            cmd.CommandText = Me.daBill.SelectCommand.CommandText + " where IDKostIntern = ? and  IDKlinik = ? "
+            cmd.CommandText = Me.daBill.SelectCommand.CommandText + " where IDKostIntern = ? and  IDKlinik = ? AND IDAbrechnung = ?"
             da.SelectCommand = cmd
             da.SelectCommand.Connection = Sql.CONNECTION
 
             da.SelectCommand.Parameters.AddWithValue("IDKostIntern", IDKostIntern)
             da.SelectCommand.Parameters.AddWithValue("IDKlinik", IDKlinik)
+            da.SelectCommand.Parameters.AddWithValue("IDAbrechnung", IDAbrechnung)
             da.SelectCommand.CommandTimeout = 0
             da.Fill(db.bills)
             If db.bills.Rows.Count <> 1 Then

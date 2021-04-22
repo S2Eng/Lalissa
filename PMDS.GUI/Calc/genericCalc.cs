@@ -29,7 +29,7 @@ namespace PMDS.Calc.UI.Admin.generic.Calc
                 if (TypBill == PMDS.Calc.Logic.eBillTyp.Rechnung.ToString() || TypBill == PMDS.Calc.Logic.eBillTyp.Sammelrechnung.ToString() ||
                     TypBill == PMDS.Calc.Logic.eBillTyp.FreieRechnung.ToString())
                 {
-                    PMDS.Calc.Logic.dbPMDS.billsRow rBill = sqlCalc.readBillsIDKostIntern(IDKostIntern.ToString(), true, PMDS.Global.ENV.IDKlinik);
+                    PMDS.Calc.Logic.dbPMDS.billsRow rBill = sqlCalc.readBillsIDKostIntern(IDKostIntern.ToString(), true, PMDS.Global.ENV.IDKlinik, new Guid(IDBillHeader));
                     if (rBill == null)
                     {
                         throw new Exception("openBill: No Bill found for IDKostIntern '" + IDKostIntern.ToString() + "' found!");

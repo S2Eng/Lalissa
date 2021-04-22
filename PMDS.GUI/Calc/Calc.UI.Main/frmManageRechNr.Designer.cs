@@ -53,6 +53,7 @@
             this.btnAdd = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnDel = new QS2.Desktop.ControlManagment.BaseButton();
             this.sqlManange2 = new PMDS.Global.db.ERSystem.sqlManange(this.components);
+            this.lblRechnungsnummern = new QS2.Desktop.ControlManagment.BaseLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gridRechNr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManage1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -105,12 +106,15 @@
             this.gridRechNr.DisplayLayout.Appearance = appearance3;
             this.gridRechNr.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
             ultraGridColumn1.Header.Caption = "Typ";
+            ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn1.Width = 155;
             ultraGridColumn2.Header.Caption = "Nr";
+            ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 2;
             ultraGridColumn2.Width = 136;
             ultraGridColumn3.Header.Caption = "Jahr";
+            ultraGridColumn3.Header.Editor = null;
             ultraGridColumn3.Header.VisiblePosition = 1;
             ultraGridColumn3.Width = 112;
             ultraGridBand1.Columns.AddRange(new object[] {
@@ -202,12 +206,22 @@
             this.btnDel.Visible = false;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
+            // lblRechnungsnummern
+            // 
+            this.lblRechnungsnummern.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRechnungsnummern.Location = new System.Drawing.Point(7, 8);
+            this.lblRechnungsnummern.Name = "lblRechnungsnummern";
+            this.lblRechnungsnummern.Size = new System.Drawing.Size(370, 18);
+            this.lblRechnungsnummern.TabIndex = 38;
+            this.lblRechnungsnummern.Text = "Letzte verwendete Rechnungsnummern";
+            // 
             // frmManageRechNr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(443, 333);
+            this.Controls.Add(this.lblRechnungsnummern);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.gridRechNr);
@@ -236,5 +250,6 @@
         public QS2.Desktop.ControlManagment.BaseButton btnDel;
         private Global.db.ERSystem.dsManage dsManage1;
         private Global.db.ERSystem.sqlManange sqlManange2;
+        private QS2.Desktop.ControlManagment.BaseLabel lblRechnungsnummern;
     }
 }

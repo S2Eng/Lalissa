@@ -50,7 +50,7 @@ namespace PMDS.Calc.UI.Admin
             if (this.typ == eTyp.depot  )
             {
                 this.chkNurAbgerech.Visible  = true;
-                this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Jahreabschluß Depotgeld für ") + rActuelKlinik.Bezeichnung.Trim() + "";
+                this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Jahresabschluss Depotgeld für ") + rActuelKlinik.Bezeichnung.Trim() + "";
             }
 
             else if (this.typ == eTyp.booking)

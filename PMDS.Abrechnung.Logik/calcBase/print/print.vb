@@ -26,7 +26,7 @@ Public Class print
 
 
 
-    Public Sub loadTempStream(ByVal file As String, Optional IsDepotgeld As Boolean = False)
+    Public Sub loadTempStream(ByVal file As String, Optional IsDepotgeld As Boolean = False, Optional IsJahresabschluss As Boolean = False)
         Try
             Dim retMainSystem1 As New calculation.retMainSystem()
             Dim bOK As Boolean = calculation.delCallFctMainSystem(calculation.eTypeMainFct.getIDKlinik, retMainSystem1)
@@ -35,13 +35,15 @@ Public Class print
             Using db As PMDS.db.Entities.ERModellPMDSEntities = calculation.delgetDBContext.Invoke()
                 Dim tKlinik As IQueryable(Of PMDS.db.Entities.Klinik) = From o In db.Klinik Where o.ID = retMainSystem1.ID.Value
                 Dim rKlinik As PMDS.db.Entities.Klinik = tKlinik.First()
-                If Not IsDepotgeld Then
-                    If rKlinik.Rechnungsformular.Trim() <> "" Then
-                        fileTmp = rKlinik.Rechnungsformular.Trim()
-                    End If
-                Else
-                    If rKlinik.RechnungsformularDepot.Trim() <> "" Then
-                        fileTmp = rKlinik.RechnungsformularDepot.Trim()
+                If Not IsJahresabschluss Then
+                    If Not IsDepotgeld Then
+                        If rKlinik.Rechnungsformular.Trim() <> "" Then
+                            fileTmp = rKlinik.Rechnungsformular.Trim()
+                        End If
+                    Else
+                        If rKlinik.RechnungsformularDepot.Trim() <> "" Then
+                            fileTmp = rKlinik.RechnungsformularDepot.Trim()
+                        End If
                     End If
                 End If
             End Using

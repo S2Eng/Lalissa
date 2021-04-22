@@ -494,6 +494,10 @@ namespace PMDS.Calc.UI
                                                 {
                                                     tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.Beilage && b.Freigegeben == false && b.Status == 0 && b.IDSR != ""))).OrderByDescending(p => p.ErstellAm);
                                                 }
+                                                else if (rBill2.Typ == (int)eBillTyp.FreieRechnung)
+                                                {
+                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.FreieRechnung && b.Freigegeben == true && b.Status == 0 && b.IDSR != ""))).OrderByDescending(p => p.ErstellAm);
+                                                }
                                             }
                                             //else if (this.typ == ucCalcsSitemap.eTyp.sr)
                                             //{

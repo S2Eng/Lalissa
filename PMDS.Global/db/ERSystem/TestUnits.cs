@@ -2021,7 +2021,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Periodische Leistungen");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Pflegekomponente Grundleistung");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Wohnkomponente Grundleistung");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Jahreabschluß Depotgeld für ");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Jahresabschluss Depotgeld für ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Jahreabschluß Buchungen");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Jahreabschluß Buchungen für ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("\nDas aktuelle Datum wurde gesetzt.");
