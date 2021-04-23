@@ -43,8 +43,8 @@
             // 
             // dbConn
             // 
-            this.dbConn.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
-    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
+            this.dbConn.ConnectionString = "Provider=SQLNCLI11;Data Source=sty041;Integrated Security=SSPI;Initial Catalog=PM" +
+    "DS_DemoGross";
             // 
             // davInterventionen
             // 
@@ -101,7 +101,10 @@
                         new System.Data.Common.DataColumnMapping("IDUntertaegigeGruppe", "IDUntertaegigeGruppe"),
                         new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund"),
                         new System.Data.Common.DataColumnMapping("RMOptionalJN", "RMOptionalJN"),
-                        new System.Data.Common.DataColumnMapping("LogInNameFrei", "LogInNameFrei")})});
+                        new System.Data.Common.DataColumnMapping("LogInNameFrei", "LogInNameFrei"),
+                        new System.Data.Common.DataColumnMapping("NaechsteEvaluierung", "NaechsteEvaluierung"),
+                        new System.Data.Common.DataColumnMapping("NaechsteEvaluierungBemerkung", "NaechsteEvaluierungBemerkung"),
+                        new System.Data.Common.DataColumnMapping("EvaluierungUeberfällig", "EvaluierungUeberfällig")})});
             // 
             // davÜbergabe
             // 

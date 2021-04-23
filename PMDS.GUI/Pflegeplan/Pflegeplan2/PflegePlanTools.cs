@@ -81,6 +81,10 @@ namespace PMDS.GUI
 
                         if (!r.IsNaechsteEvaluierungNull() && r.EintragGruppe == EintragGruppe.Z.ToString())        // nächste Evaluierung nur für Ziele
                             arg.EvalStartDatum = r.NaechsteEvaluierung;
+                        else if(!r.IsNaechsteEvaluierungNull() && r.EintragGruppe == EintragGruppe.M.ToString() && ENV.InterventionenEvaluieren && r.NaechsteEvaluierung.Year > 1900)
+                        {
+                            arg.EvalStartDatum = r.NaechsteEvaluierung;
+                        }
                         else
                             arg.EvalStartDatum = new DateTime(1900, 1, 1);
                     }

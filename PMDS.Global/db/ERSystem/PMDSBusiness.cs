@@ -3464,7 +3464,7 @@ namespace PMDS.DB
                                                                                     o.Lokalisierung == pdxArgUI.Lokalisierung && o.LokalisierungSeite == pdxArgUI.LokalisierungSeite);
                                         
                                     rAufenthaltPDx = null;
-                                    if (tAufenthaltPDx.Count() == 0)
+                                    if (!tAufenthaltPDx.Any())
                                     {
                                         rAufenthaltPDx = this.InsertAufenthaltPDx(pdxArgUI, db, dNow, wundeJN, IDAufenthalt,  pdxArgUI.Resourceklient.Trim());
                                     }
@@ -3482,7 +3482,7 @@ namespace PMDS.DB
                                     System.Linq.IQueryable<PMDS.db.Entities.PflegePlan> tPflegePlanExistsInDb = db.PflegePlan.Where(o => o.IDAufenthalt == IDAufenthalt &&
                                                                                         o.IDEintrag == rEintrag.ID && o.ErledigtJN == false && o.LokalisierungJN == rAufenthaltPDx.LokalisierungJN &&
                                                                                         o.Lokalisierung == rAufenthaltPDx.Lokalisierung && o.LokalisierungSeite == rAufenthaltPDx.LokalisierungSeite);
-                                    if (tPflegePlanExistsInDb.Count() == 0)
+                                    if (!tPflegePlanExistsInDb.Any())
                                     {
                                         if (aszmArgUI.IsNew)
                                         {
@@ -4025,7 +4025,7 @@ namespace PMDS.DB
                                                             ref lstPdx, ref lstPflegepläne);
                 }
 
-                if (rPflegePlan.EintragGruppe.Trim().Equals(PMDS.Global.EintragGruppe.M.ToString().Trim(), StringComparison.CurrentCultureIgnoreCase))
+                if (generic.sEquals(rPflegePlan.EintragGruppe, EintragGruppe.M))
                 {
                     DateTime dNächstesDatum = (DateTime)rPflegePlan.StartDatum;           //new DateTime(rPflegeplan.StartDatum.Year, rPflegeplan.StartDatum.Month, rPflegeplan.StartDatum.Day, rPflegeplan.StartDatum.Hour, rPflegeplan.StartDatum.Minute, 0);
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDSBusiness();
@@ -4037,7 +4037,7 @@ namespace PMDS.DB
 
                 System.Linq.IQueryable<PMDS.db.Entities.PflegePlan> tPflegePlanExistsInDbUntertätige = null;
                 tPflegePlanExistsInDbUntertätige = db.PflegePlan.Where(o => o.IDUntertaegigeGruppe == IDUntertätigeGruppe);
-                if (tPflegePlanExistsInDbUntertätige.Count() > 0)
+                if (tPflegePlanExistsInDbUntertätige.Any())
                 {
                     bool PflegeplanPDXInsertedFound = false;
                     int counterPPDx = 0;
@@ -4048,7 +4048,7 @@ namespace PMDS.DB
                             System.Linq.IQueryable<PMDS.db.Entities.PflegePlanPDx> tPflegePlanPDxExists = null;
                             tPflegePlanPDxExists = db.PflegePlanPDx.Where(o => o.IDUntertaegigeGruppe == rpflegeplanUntertägig.IDUntertaegigeGruppe &&
                                                                                 o.IDAufenthaltPDx == rAufenthaltPDx.ID && o.ErledigtJN == false);
-                            if (tPflegePlanPDxExists.Count() == 0)
+                            if (!tPflegePlanPDxExists.Any())
                             {
                                 rPflegePlanPDx = this.InsertPflegeplanPDx(db, dNow, wundeJN, rAufenthaltPDx.ID, rPflegePlan.ID, rEintrag.ID, rPDX.ID, IDUntertätigeGruppe);
                                 PflegeplanPDXInsertedFound = true;
@@ -4204,7 +4204,7 @@ namespace PMDS.DB
                     rPflegePlan.OriginalJN = false;
                 }
 
-                if (rPflegePlan.EintragGruppe.Trim().Equals(PMDS.Global.EintragGruppe.M.ToString().Trim(), StringComparison.CurrentCultureIgnoreCase))
+                if (generic.sEquals(rPflegePlan.EintragGruppe, EintragGruppe.M))
                 {
                     rPflegePlan.OhneZeitBezug = aszmArgUI.OhneZeitBezug;
                     rPflegePlan.EinmaligJN = aszmArgUI.EinmaligJN;
@@ -4228,6 +4228,12 @@ namespace PMDS.DB
                     rPflegePlan.EvalTage = 0;
                     rPflegePlan.ParalellJN = aszmArgUI.ParalellJN;
                     rPflegePlan.UntertaegigeJN = true;    //lth reinmachen -> 
+
+                    if (ENV.InterventionenEvaluieren)
+                    {
+                        rPflegePlan.NaechsteEvaluierung = aszmArgUI.EvalStartDatum;
+                        rPflegePlan.NaechsteEvaluierungBemerkung = aszmArgUI.EvalBemerkung;
+                    }
                 }
                 else
                 {
@@ -5475,7 +5481,7 @@ namespace PMDS.DB
             }
         }
 
-        public bool updatePPEvaluierung(Guid IDpflegeplan, DateTime NaechsteEvaluierung, string NaechsteEvaluierungBemerkung)
+        public bool updatePPEvaluierung(Guid IDpflegeplan, DateTime NaechsteEvaluierung, string EvaluierungBemerkung)
         {
             try
             {
@@ -5484,11 +5490,11 @@ namespace PMDS.DB
                     System.Linq.IQueryable<PMDS.db.Entities.PflegePlan> tPflegePlan = db.PflegePlan.Where(o => o.ID == IDpflegeplan);
                     PMDS.db.Entities.PflegePlan rPflegePlan = tPflegePlan.First();
                     rPflegePlan.NaechsteEvaluierung = NaechsteEvaluierung.Date;
-                    rPflegePlan.NaechsteEvaluierungBemerkung = NaechsteEvaluierungBemerkung;
-                    rPflegePlan.IDBenutzer_Geaendert = ENV.ActiveUser.ID;
-                    rPflegePlan.LogInNameFrei = ENV.LoginInNameFrei;
-                    rPflegePlan.DatumGeaendert = DateTime.Now;
                     rPflegePlan.LetzteEvaluierung = DateTime.Now;
+                    //rPflegePlan.NaechsteEvaluierungBemerkung = EvaluierungBemerkung;
+                    //rPflegePlan.IDBenutzer_Geaendert = ENV.ActiveUser.ID;
+                    //rPflegePlan.LogInNameFrei = ENV.LoginInNameFrei;
+                    //rPflegePlan.DatumGeaendert = DateTime.Now;
                     db.SaveChanges();
                     return true;
                 }

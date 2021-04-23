@@ -1671,8 +1671,9 @@ namespace PMDS.GUI
                 this.Cursor = Cursors.WaitCursor;
 
                 if (PDXSelected == null)
-                                return;
-                        PDxSelectionArgs[] pdxArgs = null;
+                    return;
+                
+                PDxSelectionArgs[] pdxArgs = null;
 
                 if (tabASZM.SelectedTab == TAB_SPECIFIC)
                         pdxArgs = tvSpecific.GetSelectedPDxSelectionArgs();
@@ -1689,8 +1690,8 @@ namespace PMDS.GUI
                         List<PDxSelectionArgs> list = new List<PDxSelectionArgs>();
                         foreach (PDxSelectionArgs arg in pdxArgs)
                         {
-                            if (arg.Lokalisierung == null || arg.Lokalisierung.Trim() == "" ||
-                            arg.LokalisierungSeite == null || arg.LokalisierungSeite.Trim() == "")
+                            if (arg.Lokalisierung == null || String.IsNullOrWhiteSpace(arg.Lokalisierung) ||
+                            arg.LokalisierungSeite == null || String.IsNullOrWhiteSpace(arg.LokalisierungSeite))
                             list.Add(arg);
                     }
 

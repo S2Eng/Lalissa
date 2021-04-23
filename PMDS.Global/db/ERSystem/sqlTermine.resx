@@ -130,7 +130,7 @@
     <value>SELECT        Auswahl, von, bis, Klient, Geburtsdatum, Maßnahme, [Anmerkung und Hinweis], Lokalisierung, Klinik, Abteilung, Bereich, [Benutzer (erstellt)], [Benutzer (geändert)], [Berufsstand Soll], Eintragstyp, UrlaubJN, EntlassenJN, 
                          IDBezug, AbgesetztJN, EinmaligJN, ErledigtJN, GelöschtJN, PrivatJN, MitPflegediagnoseAbzeichnenJN, TerminJN, Startdatum, ZuErledigenBis, IDPflegeplan, IDAufenthalt, IDKlinik, IDAbteilung, IDBereich, IDKlient, IDEintrag, 
                          IDBenutzer_Erstellt, IDBenutzer_Geaendert, IDBerufsstand, IDLinkDokument, lstIDPDx, lstBDxBezeichnung, Anmerkung, Warnhinweis, AnmerkungRTF, OhneZeitbezugJN, ÜberfälligJN, vonDatum, bisDatum, 
-                         IDUntertaegigeGruppe, IDBefund, RMOptionalJN, LogInNameFrei
+                         IDUntertaegigeGruppe, IDBefund, RMOptionalJN, LogInNameFrei, NaechsteEvaluierung, NaechsteEvaluierungBemerkung, EvaluierungUeberfällig
 FROM            vInterventionen</value>
   </data>
   <metadata name="dbConn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -312,12 +312,14 @@ namespace PMDS.GUI
             }
 
 
-            // N‰chste Evaluierung ist nur im Modus Klient sowie bei den Zielen notwendig
-            if (_EintragGruppe == EintragGruppe.Z && ENV.EvaluierungsTyp == EvaluierungsTypen.Ziel)
+            // N‰chste Evaluierung ist nur im Modus Klient sowie bei den Zielen mit Evaluierung nach Zielen oder Zielen und Unterventionen ODER maﬂnahmen und Evaluierung Ziel und Intervention notwendig
+            if (
+                (_EintragGruppe == EintragGruppe.Z && ENV.EvaluierungsTyp == EvaluierungsTypen.Ziel) ||
+                (_EintragGruppe == EintragGruppe.M && ENV.InterventionenEvaluieren)
+               )
             {
                 pnlNaechsteEvaluierung.Visible = true;
                 _aVisibleControls.Add(pnlNaechsteEvaluierung);
-
             }
             else
             {
@@ -382,9 +384,18 @@ namespace PMDS.GUI
 
             tbNaechsteEvaluierungBemerkung.Text = _row.NaechsteEvaluierungBemerkung;
             if (_row.IsNaechsteEvaluierungNull())
-                dtpNaechsteEvaluierung.DateTime = new DateTime(1900, 1, 1);
+            {
+                if (PMDS.Global.generic.sEquals(_row.EintragGruppe,EintragGruppe.M))
+                {
+                    dtpNaechsteEvaluierung.Value = null;
+                }
+                else
+                    dtpNaechsteEvaluierung.DateTime = new DateTime(1900, 1, 1);
+            }
             else
+            {
                 dtpNaechsteEvaluierung.DateTime = _row.NaechsteEvaluierung;
+            }
 
             if (_row.IsIDLinkDokumentNull())
                 cbLinkDokument.IDLinkDokument = Guid.Empty;//(Guid)((dsEintrag.EintragDataTable)((new Eintrag()).Read(_row.IDEintrag)).Rows[0].;
@@ -839,7 +850,7 @@ namespace PMDS.GUI
             this.pnlUhrzeit.Controls.Add(this.dtpTime);
             this.pnlUhrzeit.Controls.Add(this.osZeit);
             this.pnlUhrzeit.Controls.Add(this.lblUhrzeit);
-            this.pnlUhrzeit.Location = new System.Drawing.Point(4, 413);
+            this.pnlUhrzeit.Location = new System.Drawing.Point(4, 383);
             this.pnlUhrzeit.Name = "pnlUhrzeit";
             this.pnlUhrzeit.Size = new System.Drawing.Size(494, 31);
             this.pnlUhrzeit.TabIndex = 6;
@@ -905,7 +916,7 @@ namespace PMDS.GUI
             this.pnlM.Controls.Add(this.pnlEinmalig);
             this.pnlM.Location = new System.Drawing.Point(4, 156);
             this.pnlM.Name = "pnlM";
-            this.pnlM.Size = new System.Drawing.Size(497, 220);
+            this.pnlM.Size = new System.Drawing.Size(674, 190);
             this.pnlM.TabIndex = 4;
             // 
             // pnlNaechsteEvaluierung
@@ -918,18 +929,18 @@ namespace PMDS.GUI
             this.pnlNaechsteEvaluierung.Controls.Add(this.ultraLabel11);
             this.pnlNaechsteEvaluierung.Location = new System.Drawing.Point(0, 132);
             this.pnlNaechsteEvaluierung.Name = "pnlNaechsteEvaluierung";
-            this.pnlNaechsteEvaluierung.Size = new System.Drawing.Size(494, 86);
+            this.pnlNaechsteEvaluierung.Size = new System.Drawing.Size(671, 55);
             this.pnlNaechsteEvaluierung.TabIndex = 9;
             // 
             // tbNaechsteEvaluierungBemerkung
             // 
             this.tbNaechsteEvaluierungBemerkung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNaechsteEvaluierungBemerkung.Location = new System.Drawing.Point(140, 36);
+            this.tbNaechsteEvaluierungBemerkung.Location = new System.Drawing.Point(300, 6);
             this.tbNaechsteEvaluierungBemerkung.MaxLength = 255;
             this.tbNaechsteEvaluierungBemerkung.Multiline = true;
             this.tbNaechsteEvaluierungBemerkung.Name = "tbNaechsteEvaluierungBemerkung";
-            this.tbNaechsteEvaluierungBemerkung.Size = new System.Drawing.Size(349, 47);
+            this.tbNaechsteEvaluierungBemerkung.Size = new System.Drawing.Size(368, 47);
             this.tbNaechsteEvaluierungBemerkung.TabIndex = 21;
             this.tbNaechsteEvaluierungBemerkung.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
             // 
@@ -950,11 +961,11 @@ namespace PMDS.GUI
             // 
             // ultraLabel14
             // 
-            this.ultraLabel14.Location = new System.Drawing.Point(10, 39);
+            this.ultraLabel14.Location = new System.Drawing.Point(260, 10);
             this.ultraLabel14.Name = "ultraLabel14";
-            this.ultraLabel14.Size = new System.Drawing.Size(124, 21);
+            this.ultraLabel14.Size = new System.Drawing.Size(37, 21);
             this.ultraLabel14.TabIndex = 22;
-            this.ultraLabel14.Text = "Anmerkung (Eval.)";
+            this.ultraLabel14.Text = "Anm.";
             // 
             // ultraLabel11
             // 
@@ -975,7 +986,7 @@ namespace PMDS.GUI
             this.pnlLokalisierung.Controls.Add(this.ultraLabel7);
             this.pnlLokalisierung.Location = new System.Drawing.Point(0, 99);
             this.pnlLokalisierung.Name = "pnlLokalisierung";
-            this.pnlLokalisierung.Size = new System.Drawing.Size(494, 31);
+            this.pnlLokalisierung.Size = new System.Drawing.Size(671, 31);
             this.pnlLokalisierung.TabIndex = 5;
             // 
             // baseLabel2
@@ -990,15 +1001,19 @@ namespace PMDS.GUI
             // 
             this.cbSide.AddEmptyEntry = false;
             this.cbSide.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cbSide.AutoOpenCBO = false;
             this.cbSide.BerufsstandGruppeJNA = -1;
             this.cbSide.Enabled = false;
+            this.cbSide.ExactMatch = false;
             this.cbSide.Group = "";
             this.cbSide.ID_PEP = -1;
             this.cbSide.Location = new System.Drawing.Point(365, 3);
             this.cbSide.MaxLength = 50;
             this.cbSide.Name = "cbSide";
+            this.cbSide.PflichtJN = false;
             this.cbSide.ShowAddButton = true;
             this.cbSide.Size = new System.Drawing.Size(122, 24);
+            this.cbSide.sys = false;
             this.cbSide.TabIndex = 1;
             this.cbSide.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbSide_BeforeDropDown);
             this.cbSide.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
@@ -1015,15 +1030,19 @@ namespace PMDS.GUI
             // 
             this.cbArea.AddEmptyEntry = false;
             this.cbArea.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cbArea.AutoOpenCBO = false;
             this.cbArea.BerufsstandGruppeJNA = -1;
             this.cbArea.Enabled = false;
+            this.cbArea.ExactMatch = false;
             this.cbArea.Group = "";
             this.cbArea.ID_PEP = -1;
             this.cbArea.Location = new System.Drawing.Point(189, 3);
             this.cbArea.MaxLength = 50;
             this.cbArea.Name = "cbArea";
+            this.cbArea.PflichtJN = false;
             this.cbArea.ShowAddButton = true;
             this.cbArea.Size = new System.Drawing.Size(124, 24);
+            this.cbArea.sys = false;
             this.cbArea.TabIndex = 0;
             this.cbArea.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbArea_BeforeDropDown);
             this.cbArea.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
@@ -1047,7 +1066,7 @@ namespace PMDS.GUI
             this.pnlBerufsstand.Controls.Add(this.ultraLabel8);
             this.pnlBerufsstand.Location = new System.Drawing.Point(1, 65);
             this.pnlBerufsstand.Name = "pnlBerufsstand";
-            this.pnlBerufsstand.Size = new System.Drawing.Size(494, 31);
+            this.pnlBerufsstand.Size = new System.Drawing.Size(671, 31);
             this.pnlBerufsstand.TabIndex = 4;
             // 
             // baseLabel1
@@ -1064,14 +1083,18 @@ namespace PMDS.GUI
             // cbBerufsstand
             // 
             this.cbBerufsstand.AddEmptyEntry = false;
+            this.cbBerufsstand.AutoOpenCBO = false;
             this.cbBerufsstand.BerufsstandGruppeJNA = -1;
             this.cbBerufsstand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbBerufsstand.ExactMatch = false;
             this.cbBerufsstand.Group = "";
             this.cbBerufsstand.ID_PEP = -1;
             this.cbBerufsstand.Location = new System.Drawing.Point(326, 3);
             this.cbBerufsstand.Name = "cbBerufsstand";
+            this.cbBerufsstand.PflichtJN = false;
             this.cbBerufsstand.ShowAddButton = true;
             this.cbBerufsstand.Size = new System.Drawing.Size(161, 24);
+            this.cbBerufsstand.sys = false;
             this.cbBerufsstand.TabIndex = 8;
             this.cbBerufsstand.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbBerufsstand_BeforeDropDown);
             this.cbBerufsstand.ValueChanged += new System.EventHandler(this.Control_ValueChanged);
@@ -1121,7 +1144,7 @@ namespace PMDS.GUI
             this.pnlIntervall.Controls.Add(this.tbIntervall);
             this.pnlIntervall.Location = new System.Drawing.Point(1, 3);
             this.pnlIntervall.Name = "pnlIntervall";
-            this.pnlIntervall.Size = new System.Drawing.Size(493, 59);
+            this.pnlIntervall.Size = new System.Drawing.Size(670, 59);
             this.pnlIntervall.TabIndex = 2;
             // 
             // ucWochenTage11
@@ -1295,9 +1318,9 @@ namespace PMDS.GUI
             this.pnlInfo.Controls.Add(this.lblInfoCreated);
             this.pnlInfo.Controls.Add(this.lblInfoChanged);
             this.pnlInfo.Controls.Add(this.cbCreated);
-            this.pnlInfo.Location = new System.Drawing.Point(3, 379);
+            this.pnlInfo.Location = new System.Drawing.Point(3, 349);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(674, 31);
+            this.pnlInfo.Size = new System.Drawing.Size(675, 31);
             this.pnlInfo.TabIndex = 0;
             this.pnlInfo.Visible = false;
             // 
@@ -1469,13 +1492,17 @@ namespace PMDS.GUI
             // cbTermin
             // 
             this.cbTermin.AddEmptyEntry = false;
+            this.cbTermin.AutoOpenCBO = false;
             this.cbTermin.BerufsstandGruppeJNA = -1;
+            this.cbTermin.ExactMatch = false;
             this.cbTermin.Group = "TRM";
             this.cbTermin.ID_PEP = -1;
             this.cbTermin.Location = new System.Drawing.Point(131, 43);
             this.cbTermin.Name = "cbTermin";
+            this.cbTermin.PflichtJN = false;
             this.cbTermin.ShowAddButton = true;
             this.cbTermin.Size = new System.Drawing.Size(408, 24);
+            this.cbTermin.sys = false;
             this.cbTermin.TabIndex = 0;
             this.cbTermin.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.cbTermin_BeforeDropDown);
             this.cbTermin.ValueChanged += new System.EventHandler(this.Control_ValueChanged);

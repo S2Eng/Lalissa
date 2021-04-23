@@ -285,7 +285,7 @@ namespace PMDS.Global
         public static string WCFHostManager = "WCFHostManager";
         public static string WCFServicePMDSDebugPath = "";
 
-        public static string SchnellrückmeldungAsProcess = "1";
+        public static string SchnellrückmeldungAsProcess = "0";
 
         public static string DekursRegex = "";
         public static string DekursRegexBeschreibung = "";
@@ -293,6 +293,7 @@ namespace PMDS.Global
         public static string License = "";
 
         public static EvaluierungsTypen EvaluierungsTyp = EvaluierungsTypen.Ziel;   // Legt den Evaluierungstyp für das gesamtsystem fest
+        public static bool InterventionenEvaluieren = false;
         public static bool ShowAufnahmeButton;                              // Signalisiert ob der Aufnahmebutton gezeigt werden soll oder nicht
         public static int RezeptDruck = -1;
         public static int RezeptBestellModus = -1;
@@ -1497,6 +1498,7 @@ namespace PMDS.Global
                 SetENVValue("RezeptUseErstattungscode", ref ENV.RezeptUseErstattungscode, "0");
                 SetENVValue("MedVerabreichenDefault", ref ENV.MedVerabreichenDefault);
                 SetENVValue("SavePflegebegleitschreibenToArchiv", ref ENV.SavePflegebegleitschreibenToArchiv, "0");
+                SetENVValue("InterventionenEvaluieren", ref ENV.InterventionenEvaluieren, "0");
 
                 SetENVValue("ActivateKliententermine", ref ENV.ActivateKliententermine);
                 SetENVValue("ActivateBereichstermine", ref ENV.ActivateBereichstermine);

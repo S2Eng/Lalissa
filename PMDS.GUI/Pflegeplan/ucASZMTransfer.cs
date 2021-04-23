@@ -287,7 +287,7 @@ namespace PMDS.GUI
 
             if (ENV.EvaluierungsTyp == EvaluierungsTypen.Ziel)
             {
-                if (ucPflegePlanSingleEdit1.PFLEGEPLANROW.NaechsteEvaluierung > new DateTime(1900, 1, 1))
+                if (!ucPflegePlanSingleEdit1.PFLEGEPLANROW.IsNaechsteEvaluierungNull() || ucPflegePlanSingleEdit1.PFLEGEPLANROW.NaechsteEvaluierung > new DateTime(1900, 1, 1))
                     _arg.EvalStartDatum = ucPflegePlanSingleEdit1.PFLEGEPLANROW.NaechsteEvaluierung;
                 else
                     _arg.EvalStartDatum = new DateTime(1900, 1, 1);
