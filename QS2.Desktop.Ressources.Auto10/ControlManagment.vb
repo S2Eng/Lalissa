@@ -1212,7 +1212,7 @@ Public Class HandleEvent
     Friend WithEvents ToolStripMenuItem_CopyCell As System.Windows.Forms.ToolStripMenuItem = Nothing
     Friend WithEvents ToolStripMenuItem_CopyAllRowsFromCell As System.Windows.Forms.ToolStripMenuItem = Nothing
 
-
+    Friend WithEvents ToolStripMenuItem_EndTask As System.Windows.Forms.ToolStripMenuItem = Nothing
 
     Public Enum eActionType
         LayoutSave = 0
@@ -1360,8 +1360,12 @@ Public Class HandleEvent
                         Me.ToolStripMenuItem_CopyAllRowsFromCell.Text = "Alle Werte in ausgewählter Spalte kopieren"
                         Me.ToolStripMenuItem_CopyAllRowsFromCell.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Kopieren, 32, 32)
                     End If
-                Else
 
+                    'If rControl.IDRes.Equals("gridInterventionEinzel") Then
+                    '    Me.ToolStripMenuItem_EndTask = ContextMenuStripToAdd.Items.Add(Me.getControlNameAutoAdded())
+                    '    Me.ToolStripMenuItem_EndTask.Text = "Maßnahme beenden"
+                    '    Me.ToolStripMenuItem_EndTask.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS_Klientenakt.ico_Planung, 32, 32)
+                    'End If
                 End If
 
             End If
@@ -1541,6 +1545,36 @@ Public Class HandleEvent
             QS2.core.generic.getExep("HandleEvent.ToolStripMenuItem_CopyCell_Click: " + ex.ToString(), "")
         End Try
     End Sub
+
+    Public Sub ToolStripMenuItem_EndTask_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem_EndTask.Click
+        Try
+            If Not Me._grid Is Nothing Then
+                If Not Me._grid.ActiveCell Is Nothing Then
+                    If Not Me._grid.ActiveCell.Value Is Nothing Then
+
+                        Dim IDPflegeplanx As Guid = Me._grid.ActiveRow.ListObject.Row.Item("IDPflegeplan")
+                        Dim sTextForPE = "Maßnahme wurde direkt aus der Interventionsliste beendet."
+
+                        Dim res As DialogResult = QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Wollen Sie diese Maßnahme jetzt wklich beenden?", MsgBoxStyle.YesNo, "Maßnahme direkt beenden")
+                        If res = DialogResult.Yes Then
+                            'PMDS.DB.PMDSBusiness PMDSBusiness1 = New PMDS.DB.PMDSBusiness()
+                            'PMDSBusiness1.EndPflegePlan(IDPflegePlan, sTextForPE, dNow, true, true, false);  
+
+                        End If
+                    Else
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Keine Pflegeplan gefunden", MsgBoxStyle.OkOnly, "")
+                    End If
+                Else
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBoxVB("Keine Zelle ausgewählt!", MsgBoxStyle.OkOnly, "")
+                End If
+            End If
+
+        Catch ex As Exception
+            'Do Nothing
+            'QS2.core.generic.getExep("HandleEvent.ToolStripMenuItem_EndTask_Click: " + ex.ToString(), "")
+        End Try
+    End Sub
+
 
     Public Sub openInfoControl(ByRef rControl As dsControls.ControlsRow, ParentForm As System.Windows.Forms.Form)
         Try

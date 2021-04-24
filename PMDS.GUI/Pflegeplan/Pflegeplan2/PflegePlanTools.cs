@@ -668,33 +668,16 @@ namespace PMDS.GUI
                 // Alle PflegeEinträge für Abfrage auf nicht Rückgemeldete holen
                 ape = pflegePlan.GetPflegeEintraegeFromASZML(PDXraszm, frm.END_DATE);
 
+                PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
+
                 foreach (PflegeEintrag pe in ape)
                 {
-                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                     string sTextForPE = "";
                     DateTime dNow = DateTime.Now;
                     PMDSBusiness1.EndPflegePlan(pe.IDPflegePlan, sTextForPE, dNow, true, true, false);      //lthok
-
-                    //// Termin am selben Tag ist auch OKAY !
-                    //PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-                    //string sTextForPE = "Automatisierte Rückmeldung";
-                    //PMDS.DB.PMDSBusiness.retBusiness ret = PMDSBusiness1.EndTermine(pe.IDAufenthalt, pe.IDAufenthalt, pe.Zeitpunkt.Date, pe.Zeitpunkt.Date, ENV.IDKlinik, sTextForPE);
-
-                    ////foreach (PMDS.db.Entities.vInterventionen rIntervention in ret.lstFound )
-                    ////{
-                    ////    PMDS.BusinessLogic.PflegePlan dbPflegePlan = new PflegePlan(rIntervention.IDAufenthalt);
-                    ////    PMDS.Data.PflegePlan.dsPflegePlan.PflegePlanRow r = dbPflegePlan.GetRowByID(rIntervention.IDPflegeplan);
-                    ////    PMDS.BusinessLogic.PflegeEintrag PflegeEintrag = new PflegeEintrag((System.Guid)rIntervention.IDEintrag);
-
-                    ////    pe1 = GuiAction.NewPflegeEintragByRow(r, (DateTime)r.StartDatum, PflegeEintrag);
-                    ////    pe1.Text = "Nicht durchgeführt.";
-                    ////    pe1.DurchgefuehrtJN = false;
-                    ////    pe1.Write();
-                    ////}
                 }
                 pflegePlan.EndPDx(PDX_rpdx, PDXraszm, frm.PDX_REASON, frm.END_DATE);
             }
-
 
             if (ASZMraszm != null && ASZM_rpdx != null)
             {

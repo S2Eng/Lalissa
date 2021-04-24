@@ -517,16 +517,12 @@ namespace Launcher
             {
                 try
                 {
-                    string sFolderFromTmp = FolderFromTmp.Trim().ToLower();
-                    string sFolderToTmp = FolderToTmp.Trim().ToLower();
-                    string sFileName = FileName.Trim().ToLower();
-
-                    if (sFolderFromTmp == "")
+                    if (String.IsNullOrWhiteSpace(FolderFromTmp))
                     {
                         throw new Exception("Launcher.update.CopyFile: FolderFromTmp is empty");
                     }
 
-                    if (sFolderToTmp == "")
+                    if (String.IsNullOrWhiteSpace(FolderToTmp))
                     {
                         throw new Exception("Launcher.update.CopyFile: FolderToTmp is empty");
                     }
