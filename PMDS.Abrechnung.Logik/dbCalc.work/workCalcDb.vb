@@ -256,12 +256,17 @@ Public Class workCalcDb
         Try
             Dim slqDeleteAllRows As String = ""
             For Each tableToCreate As DataTable In dbCalcToCopy.Tables
-                slqDeleteAllRows += " Delete from " + workCalcDb.prefixTable + tableToCreate.TableName + "" + vbNewLine
+
+                slqDeleteAllRows += "IF (EXISTS(SELECT * From INFORMATION_SCHEMA.TABLES Where TABLE_SCHEMA = 'dbo' "
+                slqDeleteAllRows += "    AND TABLE_NAME = '" + workCalcDb.prefixTable + tableToCreate.TableName + "'))" + vbNewLine
+                slqDeleteAllRows += " BEGIN" + vbNewLine
+                slqDeleteAllRows += " DELETE FROM " + workCalcDb.prefixTable + tableToCreate.TableName + "" + vbNewLine
+                slqDeleteAllRows += " END" + vbNewLine
             Next
             Dim sqlCalc As New Sql()
             sqlCalc.executeCommand(slqDeleteAllRows.Trim())
             sqlTotalResult += slqDeleteAllRows
-            sqlTotalResult += "-- ALL ROWS FROM TABLES SUCESSFULL DELETED" + vbNewLine + vbNewLine
+            sqlTotalResult += "-- ALL ROWS FROM TABLES SUCESSFULLY DELETED" + vbNewLine + vbNewLine
 
             Return True
 
@@ -290,6 +295,9 @@ Public Class workCalcDb
                 If tableToCreate.Rows.Count > 0 Then
                     Dim sqlInsertRows As String = ""
                     For Each rowToCopy As DataRow In tableToCreate.Rows
+
+                        sqlInsertRows += "IF (EXISTS(SELECT * From INFORMATION_SCHEMA.TABLES Where TABLE_SCHEMA = 'dbo' AND TABLE_NAME = '" + workCalcDb.prefixTable + tableToCreate.TableName + "'))" + vbCrLf
+                        sqlInsertRows += "BEGIN" + vbCrLf
                         'sqlInsertRows += IIf(sqlInsertRows.Trim() = "", vbNewLine, "," + vbNewLine)
                         sqlInsertRows += String.Format(workCalcDb.temp_sqlInsertRow, workCalcDb.prefixTable + tableToCreate.TableName) + sqlColsArray + " (" + vbNewLine
                         sqlInsertRows += "'" + IDCalc.ToString() + "'," + vbNewLine
@@ -332,12 +340,14 @@ Public Class workCalcDb
                             End If
                         Next
                         sqlInsertRows += sqlCols + ") " + vbNewLine
+                        sqlInsertRows += "END" + vbCrLf
                         countRowsTotalCopied += 1
                     Next
-                    If sqlInsertRows.Trim() <> "" Then
+                    If Not String.IsNullOrWhiteSpace(sqlInsertRows) Then
                         'sqlTotalResult += sqlInsertRows + vbNewLine + vbNewLine
-                        Dim sqlCalc As New Sql()
-                        sqlCalc.executeCommand(sqlInsertRows)
+                        Using sqlCalc As New Sql()
+                            sqlCalc.executeCommand(sqlInsertRows)
+                        End Using
                     End If
                 End If
             Next

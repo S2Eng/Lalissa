@@ -29,27 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWorkCalcDb));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Rechnung zur ausgewählten Buchungszeile öffnen", Infragistics.Win.ToolTipImage.Default, "Rechnungen öffnen", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Buchungen als Csv exportieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Kalkulationsdaten zur ausgewählten Buchungszeile öffnen", Infragistics.Win.ToolTipImage.Default, "Kalkulationsdaten öffnen", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Ausgewählte Kostenträger-Stammdaten als Excel exportieren", Infragistics.Win.ToolTipImage.Default, "Kostenträger exportieren", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Ausgewählte Kostenträger-Stammdaten als Csv exportieren", Infragistics.Win.ToolTipImage.Default, "Kostenträger exportieren", Infragistics.Win.DefaultableBoolean.Default);
-            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWorkCalcDb));
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("ExportBMD", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("satzart");
@@ -87,6 +72,11 @@
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Buchungen als Csv exportieren", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Kalkulationsdaten zur ausgewählten Buchungszeile öffnen", Infragistics.Win.ToolTipImage.Default, "Kalkulationsdaten öffnen", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Alle Kostenträger neu laden", Infragistics.Win.ToolTipImage.Default, "Neu laden", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
@@ -95,6 +85,16 @@
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Ausgewählte Kostenträger-Stammdaten als Excel exportieren", Infragistics.Win.ToolTipImage.Default, "Kostenträger exportieren", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Ausgewählte Kostenträger-Stammdaten als Csv exportieren", Infragistics.Win.ToolTipImage.Default, "Kostenträger exportieren", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("MainMenu");
@@ -107,6 +107,8 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool37 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnClose");
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.panelCalcs = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnSearch = new PMDS.GUI.ucButton(this.components);
+            this.BillsExportiertJN = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.udteToRechDat = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.baseLabel1 = new QS2.Desktop.ControlManagment.BaseLabel();
             this.udteFromRechDat = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -117,6 +119,7 @@
             this.editor = new TXTextControl.TextControl();
             this.btnOpenBill = new QS2.Desktop.ControlManagment.BaseButton();
             this.lblCountCalc = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.gridCalcs = new QS2.Desktop.ControlManagment.BaseGrid();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,6 +129,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exportAlsExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.protocolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dsExport1 = new PMDS.Calc.Logic.dsExport();
             this.udteTo = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblBis = new QS2.Desktop.ControlManagment.BaseLabel();
             this.udteFrom = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -136,6 +140,8 @@
             this.panelKost = new QS2.Desktop.ControlManagment.BasePanel();
             this.chkFilterKost = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lblCountKost = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.btnRefreshKost = new PMDS.GUI.ucButton(this.components);
+            this.gridKost = new QS2.Desktop.ControlManagment.BaseGrid();
             this.PanelExportKostenträger = new QS2.Desktop.ControlManagment.BasePanel();
             this.lblExportKostenträgerAsExcel = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblExportKostenträgerAsCsv = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -147,37 +153,31 @@
             this.btnClose = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this._frmBase_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this.ultraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._frmBase_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._frmBase_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._frmBase_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
-            this.BillsExportiertJN = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
-            this.btnSearch = new PMDS.GUI.ucButton(this.components);
-            this.gridCalcs = new QS2.Desktop.ControlManagment.BaseGrid();
-            this.dsExport1 = new PMDS.Calc.Logic.dsExport();
-            this.btnRefreshKost = new PMDS.GUI.ucButton(this.components);
-            this.gridKost = new QS2.Desktop.ControlManagment.BaseGrid();
-            this.ultraToolbarsManager1 = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this.ultraTabPageControl1.SuspendLayout();
             this.panelCalcs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BillsExportiertJN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteToRechDat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteFromRechDat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFilterCalcs)).BeginInit();
             this.panelEditor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCalcs)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsExport1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteFrom)).BeginInit();
             this.ultraTabPageControl2.SuspendLayout();
             this.panelKost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkFilterKost)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridKost)).BeginInit();
             this.PanelExportKostenträger.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).BeginInit();
             this.ultraGridBagLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
             this.ultraTabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BillsExportiertJN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCalcs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsExport1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridKost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,6 +214,34 @@
             this.panelCalcs.Name = "panelCalcs";
             this.panelCalcs.Size = new System.Drawing.Size(989, 494);
             this.panelCalcs.TabIndex = 0;
+            // 
+            // btnSearch
+            // 
+            appearance1.BackColor = System.Drawing.Color.Transparent;
+            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearch.Appearance = appearance1;
+            this.btnSearch.AutoWorkLayout = false;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSearch.DoOnClick = true;
+            this.btnSearch.IsStandardControl = true;
+            this.btnSearch.Location = new System.Drawing.Point(533, 20);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(56, 45);
+            this.btnSearch.TabIndex = 20;
+            this.btnSearch.TabStop = false;
+            this.btnSearch.TYPE = PMDS.GUI.ucButton.ButtonType.Search;
+            this.btnSearch.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // BillsExportiertJN
+            // 
+            this.BillsExportiertJN.Location = new System.Drawing.Point(361, 15);
+            this.BillsExportiertJN.Name = "BillsExportiertJN";
+            this.BillsExportiertJN.Size = new System.Drawing.Size(176, 29);
+            this.BillsExportiertJN.TabIndex = 178;
+            this.BillsExportiertJN.Text = "Exportierte auch anzeigen";
             // 
             // udteToRechDat
             // 
@@ -311,6 +339,7 @@
             this.editor.PageMargins.Top = 79.03D;
             this.editor.Size = new System.Drawing.Size(55, 34);
             this.editor.TabIndex = 170;
+            this.editor.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editor.UserNames = null;
             // 
             // btnOpenBill
@@ -340,421 +369,6 @@
             this.lblCountCalc.Size = new System.Drawing.Size(73, 14);
             this.lblCountCalc.TabIndex = 160;
             this.lblCountCalc.Text = "Gefunden: 12";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alleToolStripMenuItem,
-            this.keineToolStripMenuItem,
-            this.toolStripMenuItem2,
-            this.editierenToolStripMenuItem,
-            this.erweiterteAnsichtToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.exportAlsExcelToolStripMenuItem,
-            this.protocolToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 148);
-            // 
-            // alleToolStripMenuItem
-            // 
-            this.alleToolStripMenuItem.Name = "alleToolStripMenuItem";
-            this.alleToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.alleToolStripMenuItem.Text = "Alle";
-            this.alleToolStripMenuItem.Click += new System.EventHandler(this.alleToolStripMenuItem_Click);
-            // 
-            // keineToolStripMenuItem
-            // 
-            this.keineToolStripMenuItem.Name = "keineToolStripMenuItem";
-            this.keineToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.keineToolStripMenuItem.Text = "Keine";
-            this.keineToolStripMenuItem.Click += new System.EventHandler(this.keineToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(166, 6);
-            // 
-            // editierenToolStripMenuItem
-            // 
-            this.editierenToolStripMenuItem.CheckOnClick = true;
-            this.editierenToolStripMenuItem.Name = "editierenToolStripMenuItem";
-            this.editierenToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.editierenToolStripMenuItem.Text = "Editieren";
-            this.editierenToolStripMenuItem.Click += new System.EventHandler(this.editierenToolStripMenuItem_Click);
-            // 
-            // erweiterteAnsichtToolStripMenuItem
-            // 
-            this.erweiterteAnsichtToolStripMenuItem.Checked = true;
-            this.erweiterteAnsichtToolStripMenuItem.CheckOnClick = true;
-            this.erweiterteAnsichtToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.erweiterteAnsichtToolStripMenuItem.Name = "erweiterteAnsichtToolStripMenuItem";
-            this.erweiterteAnsichtToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.erweiterteAnsichtToolStripMenuItem.Text = "Erweiterte Ansicht";
-            this.erweiterteAnsichtToolStripMenuItem.Click += new System.EventHandler(this.erweiterteAnsichtToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(166, 6);
-            // 
-            // exportAlsExcelToolStripMenuItem
-            // 
-            this.exportAlsExcelToolStripMenuItem.Name = "exportAlsExcelToolStripMenuItem";
-            this.exportAlsExcelToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.exportAlsExcelToolStripMenuItem.Text = "Export als Excel";
-            this.exportAlsExcelToolStripMenuItem.Click += new System.EventHandler(this.exportAlsExcelToolStripMenuItem_Click);
-            // 
-            // protocolToolStripMenuItem
-            // 
-            this.protocolToolStripMenuItem.Name = "protocolToolStripMenuItem";
-            this.protocolToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.protocolToolStripMenuItem.Text = "Protocol";
-            this.protocolToolStripMenuItem.Click += new System.EventHandler(this.protocolToolStripMenuItem_Click);
-            // 
-            // udteTo
-            // 
-            this.udteTo.DateTime = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.udteTo.FormatString = "";
-            this.udteTo.Location = new System.Drawing.Point(257, 19);
-            this.udteTo.MaskInput = "";
-            this.udteTo.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.udteTo.Name = "udteTo";
-            this.udteTo.ownFormat = "";
-            this.udteTo.ownMaskInput = "";
-            this.udteTo.Size = new System.Drawing.Size(93, 21);
-            this.udteTo.TabIndex = 1;
-            this.udteTo.Value = null;
-            // 
-            // lblBis
-            // 
-            this.lblBis.AutoSize = true;
-            this.lblBis.Location = new System.Drawing.Point(231, 22);
-            this.lblBis.Name = "lblBis";
-            this.lblBis.Size = new System.Drawing.Size(19, 14);
-            this.lblBis.TabIndex = 159;
-            this.lblBis.Text = "bis";
-            // 
-            // udteFrom
-            // 
-            this.udteFrom.DateTime = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.udteFrom.FormatString = "";
-            this.udteFrom.Location = new System.Drawing.Point(134, 19);
-            this.udteFrom.MaskInput = "";
-            this.udteFrom.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.udteFrom.Name = "udteFrom";
-            this.udteFrom.ownFormat = "";
-            this.udteFrom.ownMaskInput = "";
-            this.udteFrom.Size = new System.Drawing.Size(93, 21);
-            this.udteFrom.TabIndex = 0;
-            this.udteFrom.Value = null;
-            // 
-            // lblAbrechnungenVon
-            // 
-            this.lblAbrechnungenVon.AutoSize = true;
-            this.lblAbrechnungenVon.Location = new System.Drawing.Point(13, 22);
-            this.lblAbrechnungenVon.Name = "lblAbrechnungenVon";
-            this.lblAbrechnungenVon.Size = new System.Drawing.Size(118, 14);
-            this.lblAbrechnungenVon.TabIndex = 156;
-            this.lblAbrechnungenVon.Text = "Leistungszeitraum von";
-            // 
-            // butStart
-            // 
-            this.butStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            appearance26.Image = ((object)(resources.GetObject("appearance26.Image")));
-            appearance26.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance26.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.butStart.Appearance = appearance26;
-            this.butStart.AutoWorkLayout = false;
-            this.butStart.IsStandardControl = false;
-            this.butStart.Location = new System.Drawing.Point(842, 463);
-            this.butStart.Name = "butStart";
-            this.butStart.Size = new System.Drawing.Size(108, 26);
-            this.butStart.TabIndex = 51;
-            this.butStart.Text = "Überspielen";
-            ultraToolTipInfo5.ToolTipText = "Buchungen als Csv exportieren";
-            this.ultraToolTipManager1.SetUltraToolTip(this.butStart, ultraToolTipInfo5);
-            this.butStart.Click += new System.EventHandler(this.butStart_Click);
-            // 
-            // btnOpenCalcDb
-            // 
-            this.btnOpenCalcDb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance27.Image = ((object)(resources.GetObject("appearance27.Image")));
-            appearance27.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance27.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOpenCalcDb.Appearance = appearance27;
-            this.btnOpenCalcDb.AutoWorkLayout = false;
-            this.btnOpenCalcDb.IsStandardControl = false;
-            this.btnOpenCalcDb.Location = new System.Drawing.Point(925, 47);
-            this.btnOpenCalcDb.Name = "btnOpenCalcDb";
-            this.btnOpenCalcDb.Size = new System.Drawing.Size(27, 25);
-            this.btnOpenCalcDb.TabIndex = 168;
-            ultraToolTipInfo6.ToolTipText = "Kalkulationsdaten zur ausgewählten Buchungszeile öffnen";
-            ultraToolTipInfo6.ToolTipTitle = "Kalkulationsdaten öffnen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnOpenCalcDb, ultraToolTipInfo6);
-            this.btnOpenCalcDb.Click += new System.EventHandler(this.btnOpenCalcDb_Click_1);
-            // 
-            // ultraTabPageControl2
-            // 
-            this.ultraTabPageControl2.Controls.Add(this.panelKost);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
-            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(989, 494);
-            // 
-            // panelKost
-            // 
-            this.panelKost.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelKost.Controls.Add(this.chkFilterKost);
-            this.panelKost.Controls.Add(this.lblCountKost);
-            this.panelKost.Controls.Add(this.btnRefreshKost);
-            this.panelKost.Controls.Add(this.gridKost);
-            this.panelKost.Controls.Add(this.PanelExportKostenträger);
-            this.panelKost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelKost.Location = new System.Drawing.Point(0, 0);
-            this.panelKost.Name = "panelKost";
-            this.panelKost.Size = new System.Drawing.Size(989, 494);
-            this.panelKost.TabIndex = 165;
-            // 
-            // chkFilterKost
-            // 
-            this.chkFilterKost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            this.chkFilterKost.Appearance = appearance5;
-            this.chkFilterKost.BackColor = System.Drawing.Color.Transparent;
-            this.chkFilterKost.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkFilterKost.Location = new System.Drawing.Point(889, 9);
-            this.chkFilterKost.Name = "chkFilterKost";
-            this.chkFilterKost.Size = new System.Drawing.Size(54, 17);
-            this.chkFilterKost.TabIndex = 174;
-            this.chkFilterKost.Text = "Filter";
-            this.chkFilterKost.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
-            this.chkFilterKost.CheckedChanged += new System.EventHandler(this.chkFilterCalcsKost_CheckedChanged);
-            // 
-            // lblCountKost
-            // 
-            this.lblCountKost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblCountKost.AutoSize = true;
-            this.lblCountKost.Location = new System.Drawing.Point(22, 469);
-            this.lblCountKost.Name = "lblCountKost";
-            this.lblCountKost.Size = new System.Drawing.Size(73, 14);
-            this.lblCountKost.TabIndex = 167;
-            this.lblCountKost.Text = "Gefunden: 12";
-            // 
-            // PanelExportKostenträger
-            // 
-            this.PanelExportKostenträger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelExportKostenträger.BackColor = System.Drawing.Color.Transparent;
-            this.PanelExportKostenträger.Controls.Add(this.lblExportKostenträgerAsExcel);
-            this.PanelExportKostenträger.Controls.Add(this.lblExportKostenträgerAsCsv);
-            this.PanelExportKostenträger.Controls.Add(this.ultraLabel3);
-            this.PanelExportKostenträger.Controls.Add(this.ultraLabel2);
-            this.PanelExportKostenträger.Location = new System.Drawing.Point(729, 462);
-            this.PanelExportKostenträger.Name = "PanelExportKostenträger";
-            this.PanelExportKostenträger.Size = new System.Drawing.Size(255, 26);
-            this.PanelExportKostenträger.TabIndex = 164;
-            // 
-            // lblExportKostenträgerAsExcel
-            // 
-            appearance10.Cursor = System.Windows.Forms.Cursors.Hand;
-            appearance10.FontData.SizeInPoints = 8F;
-            appearance10.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblExportKostenträgerAsExcel.Appearance = appearance10;
-            this.lblExportKostenträgerAsExcel.AutoSize = true;
-            appearance11.FontData.UnderlineAsString = "True";
-            this.lblExportKostenträgerAsExcel.HotTrackAppearance = appearance11;
-            this.lblExportKostenträgerAsExcel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblExportKostenträgerAsExcel.Location = new System.Drawing.Point(150, 7);
-            this.lblExportKostenträgerAsExcel.Name = "lblExportKostenträgerAsExcel";
-            this.lblExportKostenträgerAsExcel.Size = new System.Drawing.Size(31, 14);
-            this.lblExportKostenträgerAsExcel.TabIndex = 0;
-            this.lblExportKostenträgerAsExcel.Text = "Excel";
-            ultraToolTipInfo2.ToolTipText = "Ausgewählte Kostenträger-Stammdaten als Excel exportieren";
-            ultraToolTipInfo2.ToolTipTitle = "Kostenträger exportieren";
-            this.ultraToolTipManager1.SetUltraToolTip(this.lblExportKostenträgerAsExcel, ultraToolTipInfo2);
-            this.lblExportKostenträgerAsExcel.UseAppStyling = false;
-            this.lblExportKostenträgerAsExcel.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
-            this.lblExportKostenträgerAsExcel.Click += new System.EventHandler(this.lblExportKostenträgerAsExcel_Click);
-            // 
-            // lblExportKostenträgerAsCsv
-            // 
-            appearance12.Cursor = System.Windows.Forms.Cursors.Hand;
-            appearance12.FontData.SizeInPoints = 8F;
-            appearance12.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblExportKostenträgerAsCsv.Appearance = appearance12;
-            this.lblExportKostenträgerAsCsv.AutoSize = true;
-            appearance13.FontData.UnderlineAsString = "True";
-            this.lblExportKostenträgerAsCsv.HotTrackAppearance = appearance13;
-            this.lblExportKostenträgerAsCsv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblExportKostenträgerAsCsv.Location = new System.Drawing.Point(207, 7);
-            this.lblExportKostenträgerAsCsv.Name = "lblExportKostenträgerAsCsv";
-            this.lblExportKostenträgerAsCsv.Size = new System.Drawing.Size(23, 14);
-            this.lblExportKostenträgerAsCsv.TabIndex = 1;
-            this.lblExportKostenträgerAsCsv.Text = "Csv";
-            ultraToolTipInfo3.ToolTipText = "Ausgewählte Kostenträger-Stammdaten als Csv exportieren";
-            ultraToolTipInfo3.ToolTipTitle = "Kostenträger exportieren";
-            this.ultraToolTipManager1.SetUltraToolTip(this.lblExportKostenträgerAsCsv, ultraToolTipInfo3);
-            this.lblExportKostenträgerAsCsv.UseAppStyling = false;
-            this.lblExportKostenträgerAsCsv.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
-            this.lblExportKostenträgerAsCsv.Click += new System.EventHandler(this.lblExportKostenträgerAsCsv_Click);
-            // 
-            // ultraLabel3
-            // 
-            this.ultraLabel3.AutoSize = true;
-            this.ultraLabel3.Location = new System.Drawing.Point(182, 7);
-            this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(27, 14);
-            this.ultraLabel3.TabIndex = 163;
-            this.ultraLabel3.Text = "oder";
-            // 
-            // ultraLabel2
-            // 
-            this.ultraLabel2.AutoSize = true;
-            this.ultraLabel2.Location = new System.Drawing.Point(5, 7);
-            this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(146, 14);
-            this.ultraLabel2.TabIndex = 162;
-            this.ultraLabel2.Text = "Kostenträger exportieren als";
-            // 
-            // ultraGridBagLayoutPanel1
-            // 
-            this.ultraGridBagLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.ultraGridBagLayoutPanel1.Controls.Add(this.ultraTabControl1);
-            this.ultraGridBagLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraGridBagLayoutPanel1.ExpandToFitHeight = true;
-            this.ultraGridBagLayoutPanel1.ExpandToFitWidth = true;
-            this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(0, 20);
-            this.ultraGridBagLayoutPanel1.Name = "ultraGridBagLayoutPanel1";
-            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(1003, 530);
-            this.ultraGridBagLayoutPanel1.TabIndex = 0;
-            // 
-            // ultraTabControl1
-            // 
-            this.ultraTabControl1.ContextMenuStrip = this.contextMenuStrip1;
-            this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
-            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
-            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
-            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
-            gridBagConstraint1.Insets.Bottom = 5;
-            gridBagConstraint1.Insets.Left = 5;
-            gridBagConstraint1.Insets.Right = 5;
-            gridBagConstraint1.Insets.Top = 5;
-            gridBagConstraint1.OriginX = 0;
-            gridBagConstraint1.OriginY = 0;
-            this.ultraGridBagLayoutPanel1.SetGridBagConstraint(this.ultraTabControl1, gridBagConstraint1);
-            this.ultraTabControl1.Location = new System.Drawing.Point(5, 5);
-            this.ultraTabControl1.Name = "ultraTabControl1";
-            this.ultraGridBagLayoutPanel1.SetPreferredSize(this.ultraTabControl1, new System.Drawing.Size(94, 91));
-            this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControl1.Size = new System.Drawing.Size(993, 520);
-            this.ultraTabControl1.TabIndex = 161;
-            ultraTab1.Key = "ExportCalc";
-            ultraTab1.TabPage = this.ultraTabPageControl1;
-            ultraTab1.Text = "Export Abrechnungen";
-            ultraTab2.Key = "ExportKost";
-            ultraTab2.TabPage = this.ultraTabPageControl2;
-            ultraTab2.Text = "Export Kostenträger";
-            this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
-            ultraTab1,
-            ultraTab2});
-            this.ultraTabControl1.ActiveTabChanged += new Infragistics.Win.UltraWinTabControl.ActiveTabChangedEventHandler(this.ultraTabControl1_ActiveTabChanged);
-            this.ultraTabControl1.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.ultraTabControl1_SelectedTabChanged);
-            // 
-            // ultraTabSharedControlsPage1
-            // 
-            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
-            this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(989, 494);
-            // 
-            // btnClose
-            // 
-            appearance14.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance14.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnClose.Appearance = appearance14;
-            this.btnClose.AutoWorkLayout = false;
-            this.btnClose.IsStandardControl = false;
-            this.btnClose.Location = new System.Drawing.Point(28, 76);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(43, 26);
-            this.btnClose.TabIndex = 160;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // ultraToolTipManager1
-            // 
-            this.ultraToolTipManager1.AutoPopDelay = 0;
-            this.ultraToolTipManager1.ContainingControl = this;
-            this.ultraToolTipManager1.InitialDelay = 0;
-            // 
-            // _frmBase_Toolbars_Dock_Area_Top
-            // 
-            this._frmBase_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._frmBase_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._frmBase_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
-            this._frmBase_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
-            this._frmBase_Toolbars_Dock_Area_Top.Name = "_frmBase_Toolbars_Dock_Area_Top";
-            this._frmBase_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1003, 20);
-            this._frmBase_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
-            // 
-            // _frmBase_Toolbars_Dock_Area_Bottom
-            // 
-            this._frmBase_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._frmBase_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._frmBase_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
-            this._frmBase_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 550);
-            this._frmBase_Toolbars_Dock_Area_Bottom.Name = "_frmBase_Toolbars_Dock_Area_Bottom";
-            this._frmBase_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(1003, 0);
-            this._frmBase_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
-            // 
-            // _frmBase_Toolbars_Dock_Area_Left
-            // 
-            this._frmBase_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._frmBase_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._frmBase_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
-            this._frmBase_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 20);
-            this._frmBase_Toolbars_Dock_Area_Left.Name = "_frmBase_Toolbars_Dock_Area_Left";
-            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 530);
-            this._frmBase_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
-            // 
-            // _frmBase_Toolbars_Dock_Area_Right
-            // 
-            this._frmBase_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._frmBase_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.WhiteSmoke;
-            this._frmBase_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
-            this._frmBase_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.Color.Black;
-            this._frmBase_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1003, 20);
-            this._frmBase_Toolbars_Dock_Area_Right.Name = "_frmBase_Toolbars_Dock_Area_Right";
-            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 530);
-            this._frmBase_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
-            // 
-            // BillsExportiertJN
-            // 
-            this.BillsExportiertJN.Location = new System.Drawing.Point(361, 15);
-            this.BillsExportiertJN.Name = "BillsExportiertJN";
-            this.BillsExportiertJN.Size = new System.Drawing.Size(176, 29);
-            this.BillsExportiertJN.TabIndex = 178;
-            this.BillsExportiertJN.Text = "Exportierte auch anzeigen";
-            // 
-            // btnSearch
-            // 
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearch.Appearance = appearance1;
-            this.btnSearch.AutoWorkLayout = false;
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnSearch.DoOnClick = true;
-            this.btnSearch.IsStandardControl = true;
-            this.btnSearch.Location = new System.Drawing.Point(533, 20);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(56, 45);
-            this.btnSearch.TabIndex = 20;
-            this.btnSearch.TabStop = false;
-            this.btnSearch.TYPE = PMDS.GUI.ucButton.ButtonType.Search;
-            this.btnSearch.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // gridCalcs
             // 
@@ -922,11 +536,209 @@
             this.gridCalcs.BeforeRowsDeleted += new Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventHandler(this.gridCalcs_BeforeRowsDeleted);
             this.gridCalcs.DoubleClick += new System.EventHandler(this.gridCalcs_DoubleClick);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alleToolStripMenuItem,
+            this.keineToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.editierenToolStripMenuItem,
+            this.erweiterteAnsichtToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exportAlsExcelToolStripMenuItem,
+            this.protocolToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 148);
+            // 
+            // alleToolStripMenuItem
+            // 
+            this.alleToolStripMenuItem.Name = "alleToolStripMenuItem";
+            this.alleToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.alleToolStripMenuItem.Text = "Alle";
+            this.alleToolStripMenuItem.Click += new System.EventHandler(this.alleToolStripMenuItem_Click);
+            // 
+            // keineToolStripMenuItem
+            // 
+            this.keineToolStripMenuItem.Name = "keineToolStripMenuItem";
+            this.keineToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.keineToolStripMenuItem.Text = "Keine";
+            this.keineToolStripMenuItem.Click += new System.EventHandler(this.keineToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(166, 6);
+            // 
+            // editierenToolStripMenuItem
+            // 
+            this.editierenToolStripMenuItem.CheckOnClick = true;
+            this.editierenToolStripMenuItem.Name = "editierenToolStripMenuItem";
+            this.editierenToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.editierenToolStripMenuItem.Text = "Editieren";
+            this.editierenToolStripMenuItem.Click += new System.EventHandler(this.editierenToolStripMenuItem_Click);
+            // 
+            // erweiterteAnsichtToolStripMenuItem
+            // 
+            this.erweiterteAnsichtToolStripMenuItem.Checked = true;
+            this.erweiterteAnsichtToolStripMenuItem.CheckOnClick = true;
+            this.erweiterteAnsichtToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.erweiterteAnsichtToolStripMenuItem.Name = "erweiterteAnsichtToolStripMenuItem";
+            this.erweiterteAnsichtToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.erweiterteAnsichtToolStripMenuItem.Text = "Erweiterte Ansicht";
+            this.erweiterteAnsichtToolStripMenuItem.Click += new System.EventHandler(this.erweiterteAnsichtToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(166, 6);
+            // 
+            // exportAlsExcelToolStripMenuItem
+            // 
+            this.exportAlsExcelToolStripMenuItem.Name = "exportAlsExcelToolStripMenuItem";
+            this.exportAlsExcelToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.exportAlsExcelToolStripMenuItem.Text = "Export als Excel";
+            this.exportAlsExcelToolStripMenuItem.Click += new System.EventHandler(this.exportAlsExcelToolStripMenuItem_Click);
+            // 
+            // protocolToolStripMenuItem
+            // 
+            this.protocolToolStripMenuItem.Name = "protocolToolStripMenuItem";
+            this.protocolToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.protocolToolStripMenuItem.Text = "Protocol";
+            this.protocolToolStripMenuItem.Click += new System.EventHandler(this.protocolToolStripMenuItem_Click);
+            // 
             // dsExport1
             // 
             this.dsExport1.DataSetName = "dsExport";
             this.dsExport1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsExport1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // udteTo
+            // 
+            this.udteTo.DateTime = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.udteTo.FormatString = "";
+            this.udteTo.Location = new System.Drawing.Point(257, 19);
+            this.udteTo.MaskInput = "";
+            this.udteTo.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.udteTo.Name = "udteTo";
+            this.udteTo.ownFormat = "";
+            this.udteTo.ownMaskInput = "";
+            this.udteTo.Size = new System.Drawing.Size(93, 21);
+            this.udteTo.TabIndex = 1;
+            this.udteTo.Value = null;
+            // 
+            // lblBis
+            // 
+            this.lblBis.AutoSize = true;
+            this.lblBis.Location = new System.Drawing.Point(231, 22);
+            this.lblBis.Name = "lblBis";
+            this.lblBis.Size = new System.Drawing.Size(19, 14);
+            this.lblBis.TabIndex = 159;
+            this.lblBis.Text = "bis";
+            // 
+            // udteFrom
+            // 
+            this.udteFrom.DateTime = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.udteFrom.FormatString = "";
+            this.udteFrom.Location = new System.Drawing.Point(134, 19);
+            this.udteFrom.MaskInput = "";
+            this.udteFrom.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.udteFrom.Name = "udteFrom";
+            this.udteFrom.ownFormat = "";
+            this.udteFrom.ownMaskInput = "";
+            this.udteFrom.Size = new System.Drawing.Size(93, 21);
+            this.udteFrom.TabIndex = 0;
+            this.udteFrom.Value = null;
+            // 
+            // lblAbrechnungenVon
+            // 
+            this.lblAbrechnungenVon.AutoSize = true;
+            this.lblAbrechnungenVon.Location = new System.Drawing.Point(13, 22);
+            this.lblAbrechnungenVon.Name = "lblAbrechnungenVon";
+            this.lblAbrechnungenVon.Size = new System.Drawing.Size(118, 14);
+            this.lblAbrechnungenVon.TabIndex = 156;
+            this.lblAbrechnungenVon.Text = "Leistungszeitraum von";
+            // 
+            // butStart
+            // 
+            this.butStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            appearance26.Image = ((object)(resources.GetObject("appearance26.Image")));
+            appearance26.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance26.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.butStart.Appearance = appearance26;
+            this.butStart.AutoWorkLayout = false;
+            this.butStart.IsStandardControl = false;
+            this.butStart.Location = new System.Drawing.Point(842, 463);
+            this.butStart.Name = "butStart";
+            this.butStart.Size = new System.Drawing.Size(108, 26);
+            this.butStart.TabIndex = 51;
+            this.butStart.Text = "Überspielen";
+            ultraToolTipInfo5.ToolTipText = "Buchungen als Csv exportieren";
+            this.ultraToolTipManager1.SetUltraToolTip(this.butStart, ultraToolTipInfo5);
+            this.butStart.Click += new System.EventHandler(this.butStart_Click);
+            // 
+            // btnOpenCalcDb
+            // 
+            this.btnOpenCalcDb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance27.Image = ((object)(resources.GetObject("appearance27.Image")));
+            appearance27.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance27.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOpenCalcDb.Appearance = appearance27;
+            this.btnOpenCalcDb.AutoWorkLayout = false;
+            this.btnOpenCalcDb.IsStandardControl = false;
+            this.btnOpenCalcDb.Location = new System.Drawing.Point(925, 47);
+            this.btnOpenCalcDb.Name = "btnOpenCalcDb";
+            this.btnOpenCalcDb.Size = new System.Drawing.Size(27, 25);
+            this.btnOpenCalcDb.TabIndex = 168;
+            ultraToolTipInfo6.ToolTipText = "Kalkulationsdaten zur ausgewählten Buchungszeile öffnen";
+            ultraToolTipInfo6.ToolTipTitle = "Kalkulationsdaten öffnen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnOpenCalcDb, ultraToolTipInfo6);
+            this.btnOpenCalcDb.Click += new System.EventHandler(this.btnOpenCalcDb_Click_1);
+            // 
+            // ultraTabPageControl2
+            // 
+            this.ultraTabPageControl2.Controls.Add(this.panelKost);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(989, 494);
+            // 
+            // panelKost
+            // 
+            this.panelKost.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelKost.Controls.Add(this.chkFilterKost);
+            this.panelKost.Controls.Add(this.lblCountKost);
+            this.panelKost.Controls.Add(this.btnRefreshKost);
+            this.panelKost.Controls.Add(this.gridKost);
+            this.panelKost.Controls.Add(this.PanelExportKostenträger);
+            this.panelKost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelKost.Location = new System.Drawing.Point(0, 0);
+            this.panelKost.Name = "panelKost";
+            this.panelKost.Size = new System.Drawing.Size(989, 494);
+            this.panelKost.TabIndex = 165;
+            // 
+            // chkFilterKost
+            // 
+            this.chkFilterKost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.chkFilterKost.Appearance = appearance5;
+            this.chkFilterKost.BackColor = System.Drawing.Color.Transparent;
+            this.chkFilterKost.BackColorInternal = System.Drawing.Color.Transparent;
+            this.chkFilterKost.Location = new System.Drawing.Point(889, 9);
+            this.chkFilterKost.Name = "chkFilterKost";
+            this.chkFilterKost.Size = new System.Drawing.Size(54, 17);
+            this.chkFilterKost.TabIndex = 174;
+            this.chkFilterKost.Text = "Filter";
+            this.chkFilterKost.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.chkFilterKost.CheckedChanged += new System.EventHandler(this.chkFilterCalcsKost_CheckedChanged);
+            // 
+            // lblCountKost
+            // 
+            this.lblCountKost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCountKost.AutoSize = true;
+            this.lblCountKost.Location = new System.Drawing.Point(22, 469);
+            this.lblCountKost.Name = "lblCountKost";
+            this.lblCountKost.Size = new System.Drawing.Size(73, 14);
+            this.lblCountKost.TabIndex = 167;
+            this.lblCountKost.Text = "Gefunden: 12";
             // 
             // btnRefreshKost
             // 
@@ -996,6 +808,162 @@
             this.gridKost.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.gridKost_BeforeCellActivate);
             this.gridKost.BeforeRowsDeleted += new Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventHandler(this.gridKost_BeforeRowsDeleted);
             // 
+            // PanelExportKostenträger
+            // 
+            this.PanelExportKostenträger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelExportKostenträger.BackColor = System.Drawing.Color.Transparent;
+            this.PanelExportKostenträger.Controls.Add(this.lblExportKostenträgerAsExcel);
+            this.PanelExportKostenträger.Controls.Add(this.lblExportKostenträgerAsCsv);
+            this.PanelExportKostenträger.Controls.Add(this.ultraLabel3);
+            this.PanelExportKostenträger.Controls.Add(this.ultraLabel2);
+            this.PanelExportKostenträger.Location = new System.Drawing.Point(729, 462);
+            this.PanelExportKostenträger.Name = "PanelExportKostenträger";
+            this.PanelExportKostenträger.Size = new System.Drawing.Size(255, 26);
+            this.PanelExportKostenträger.TabIndex = 164;
+            // 
+            // lblExportKostenträgerAsExcel
+            // 
+            appearance10.Cursor = System.Windows.Forms.Cursors.Hand;
+            appearance10.FontData.SizeInPoints = 8F;
+            appearance10.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblExportKostenträgerAsExcel.Appearance = appearance10;
+            this.lblExportKostenträgerAsExcel.AutoSize = true;
+            appearance11.FontData.UnderlineAsString = "True";
+            this.lblExportKostenträgerAsExcel.HotTrackAppearance = appearance11;
+            this.lblExportKostenträgerAsExcel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblExportKostenträgerAsExcel.Location = new System.Drawing.Point(150, 7);
+            this.lblExportKostenträgerAsExcel.Name = "lblExportKostenträgerAsExcel";
+            this.lblExportKostenträgerAsExcel.Size = new System.Drawing.Size(31, 14);
+            this.lblExportKostenträgerAsExcel.TabIndex = 0;
+            this.lblExportKostenträgerAsExcel.Text = "Excel";
+            ultraToolTipInfo2.ToolTipText = "Ausgewählte Kostenträger-Stammdaten als Excel exportieren";
+            ultraToolTipInfo2.ToolTipTitle = "Kostenträger exportieren";
+            this.ultraToolTipManager1.SetUltraToolTip(this.lblExportKostenträgerAsExcel, ultraToolTipInfo2);
+            this.lblExportKostenträgerAsExcel.UseAppStyling = false;
+            this.lblExportKostenträgerAsExcel.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.lblExportKostenträgerAsExcel.Click += new System.EventHandler(this.lblExportKostenträgerAsExcel_Click);
+            // 
+            // lblExportKostenträgerAsCsv
+            // 
+            appearance12.Cursor = System.Windows.Forms.Cursors.Hand;
+            appearance12.FontData.SizeInPoints = 8F;
+            appearance12.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblExportKostenträgerAsCsv.Appearance = appearance12;
+            this.lblExportKostenträgerAsCsv.AutoSize = true;
+            appearance13.FontData.UnderlineAsString = "True";
+            this.lblExportKostenträgerAsCsv.HotTrackAppearance = appearance13;
+            this.lblExportKostenträgerAsCsv.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblExportKostenträgerAsCsv.Location = new System.Drawing.Point(207, 7);
+            this.lblExportKostenträgerAsCsv.Name = "lblExportKostenträgerAsCsv";
+            this.lblExportKostenträgerAsCsv.Size = new System.Drawing.Size(23, 14);
+            this.lblExportKostenträgerAsCsv.TabIndex = 1;
+            this.lblExportKostenträgerAsCsv.Text = "Csv";
+            ultraToolTipInfo3.ToolTipText = "Ausgewählte Kostenträger-Stammdaten als Csv exportieren";
+            ultraToolTipInfo3.ToolTipTitle = "Kostenträger exportieren";
+            this.ultraToolTipManager1.SetUltraToolTip(this.lblExportKostenträgerAsCsv, ultraToolTipInfo3);
+            this.lblExportKostenträgerAsCsv.UseAppStyling = false;
+            this.lblExportKostenträgerAsCsv.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
+            this.lblExportKostenträgerAsCsv.Click += new System.EventHandler(this.lblExportKostenträgerAsCsv_Click);
+            // 
+            // ultraLabel3
+            // 
+            this.ultraLabel3.AutoSize = true;
+            this.ultraLabel3.Location = new System.Drawing.Point(182, 7);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(27, 14);
+            this.ultraLabel3.TabIndex = 163;
+            this.ultraLabel3.Text = "oder";
+            // 
+            // ultraLabel2
+            // 
+            this.ultraLabel2.AutoSize = true;
+            this.ultraLabel2.Location = new System.Drawing.Point(5, 7);
+            this.ultraLabel2.Name = "ultraLabel2";
+            this.ultraLabel2.Size = new System.Drawing.Size(146, 14);
+            this.ultraLabel2.TabIndex = 162;
+            this.ultraLabel2.Text = "Kostenträger exportieren als";
+            // 
+            // ultraGridBagLayoutPanel1
+            // 
+            this.ultraGridBagLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.ultraGridBagLayoutPanel1.Controls.Add(this.ultraTabControl1);
+            this.ultraGridBagLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraGridBagLayoutPanel1.ExpandToFitHeight = true;
+            this.ultraGridBagLayoutPanel1.ExpandToFitWidth = true;
+            this.ultraGridBagLayoutPanel1.Location = new System.Drawing.Point(0, 20);
+            this.ultraGridBagLayoutPanel1.Name = "ultraGridBagLayoutPanel1";
+            this.ultraGridBagLayoutPanel1.Size = new System.Drawing.Size(1003, 530);
+            this.ultraGridBagLayoutPanel1.TabIndex = 0;
+            // 
+            // ultraTabControl1
+            // 
+            this.ultraTabControl1.ContextMenuStrip = this.contextMenuStrip1;
+            this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
+            gridBagConstraint1.Fill = Infragistics.Win.Layout.FillType.Both;
+            gridBagConstraint1.Insets.Bottom = 5;
+            gridBagConstraint1.Insets.Left = 5;
+            gridBagConstraint1.Insets.Right = 5;
+            gridBagConstraint1.Insets.Top = 5;
+            gridBagConstraint1.OriginX = 0;
+            gridBagConstraint1.OriginY = 0;
+            this.ultraGridBagLayoutPanel1.SetGridBagConstraint(this.ultraTabControl1, gridBagConstraint1);
+            this.ultraTabControl1.Location = new System.Drawing.Point(5, 5);
+            this.ultraTabControl1.Name = "ultraTabControl1";
+            this.ultraGridBagLayoutPanel1.SetPreferredSize(this.ultraTabControl1, new System.Drawing.Size(94, 91));
+            this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
+            this.ultraTabControl1.Size = new System.Drawing.Size(993, 520);
+            this.ultraTabControl1.TabIndex = 161;
+            ultraTab1.Key = "ExportCalc";
+            ultraTab1.TabPage = this.ultraTabPageControl1;
+            ultraTab1.Text = "Export Abrechnungen";
+            ultraTab2.Key = "ExportKost";
+            ultraTab2.TabPage = this.ultraTabPageControl2;
+            ultraTab2.Text = "Export Kostenträger";
+            this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
+            ultraTab1,
+            ultraTab2});
+            this.ultraTabControl1.ActiveTabChanged += new Infragistics.Win.UltraWinTabControl.ActiveTabChangedEventHandler(this.ultraTabControl1_ActiveTabChanged);
+            this.ultraTabControl1.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.ultraTabControl1_SelectedTabChanged);
+            // 
+            // ultraTabSharedControlsPage1
+            // 
+            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(989, 494);
+            // 
+            // btnClose
+            // 
+            appearance14.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance14.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnClose.Appearance = appearance14;
+            this.btnClose.AutoWorkLayout = false;
+            this.btnClose.IsStandardControl = false;
+            this.btnClose.Location = new System.Drawing.Point(28, 76);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(43, 26);
+            this.btnClose.TabIndex = 160;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // ultraToolTipManager1
+            // 
+            this.ultraToolTipManager1.AutoPopDelay = 0;
+            this.ultraToolTipManager1.ContainingControl = this;
+            this.ultraToolTipManager1.InitialDelay = 0;
+            // 
+            // _frmBase_Toolbars_Dock_Area_Top
+            // 
+            this._frmBase_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._frmBase_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._frmBase_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
+            this._frmBase_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.Color.Black;
+            this._frmBase_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
+            this._frmBase_Toolbars_Dock_Area_Top.Name = "_frmBase_Toolbars_Dock_Area_Top";
+            this._frmBase_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1003, 20);
+            this._frmBase_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
+            // 
             // ultraToolbarsManager1
             // 
             appearance15.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1048,6 +1016,39 @@
             buttonTool37});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
+            // _frmBase_Toolbars_Dock_Area_Bottom
+            // 
+            this._frmBase_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._frmBase_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._frmBase_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
+            this._frmBase_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.Color.Black;
+            this._frmBase_Toolbars_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 550);
+            this._frmBase_Toolbars_Dock_Area_Bottom.Name = "_frmBase_Toolbars_Dock_Area_Bottom";
+            this._frmBase_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(1003, 0);
+            this._frmBase_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
+            // 
+            // _frmBase_Toolbars_Dock_Area_Left
+            // 
+            this._frmBase_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._frmBase_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._frmBase_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
+            this._frmBase_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.Color.Black;
+            this._frmBase_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 20);
+            this._frmBase_Toolbars_Dock_Area_Left.Name = "_frmBase_Toolbars_Dock_Area_Left";
+            this._frmBase_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 530);
+            this._frmBase_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
+            // 
+            // _frmBase_Toolbars_Dock_Area_Right
+            // 
+            this._frmBase_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._frmBase_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.WhiteSmoke;
+            this._frmBase_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
+            this._frmBase_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.Color.Black;
+            this._frmBase_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1003, 20);
+            this._frmBase_Toolbars_Dock_Area_Right.Name = "_frmBase_Toolbars_Dock_Area_Right";
+            this._frmBase_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 530);
+            this._frmBase_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
+            // 
             // frmWorkCalcDb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1066,27 +1067,27 @@
             this.ultraTabPageControl1.ResumeLayout(false);
             this.panelCalcs.ResumeLayout(false);
             this.panelCalcs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BillsExportiertJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteToRechDat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteFromRechDat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFilterCalcs)).EndInit();
             this.panelEditor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCalcs)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsExport1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteFrom)).EndInit();
             this.ultraTabPageControl2.ResumeLayout(false);
             this.panelKost.ResumeLayout(false);
             this.panelKost.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkFilterKost)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridKost)).EndInit();
             this.PanelExportKostenträger.ResumeLayout(false);
             this.PanelExportKostenträger.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanel1)).EndInit();
             this.ultraGridBagLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
             this.ultraTabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BillsExportiertJN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCalcs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsExport1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridKost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();
             this.ResumeLayout(false);
 

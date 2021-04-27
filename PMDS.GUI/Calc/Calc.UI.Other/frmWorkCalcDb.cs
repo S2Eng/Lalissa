@@ -276,28 +276,22 @@ namespace PMDS.Calc.UI.Admin
                                                               ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillStatus.freigegeben,
                                                               rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref iErrors, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked))
                     {
-                        if (PMDS.Global.ENV.adminSecure)
+                        string sMsgBoxTranslate = "{0} Abrechnungen wurden überspielt!" + "\r\n" +
+                                                    "({1} Zeilen insgesamt!)";
+                        sMsgBoxTranslate = QS2.Desktop.ControlManagment.ControlManagment.getRes(sMsgBoxTranslate, countDbTotalCopied.ToString(), countRowsTotalCopied.ToString());
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTranslate, "Abrechnungen überspielen", MessageBoxButtons.OK);
+
+                        if (!String.IsNullOrWhiteSpace(sqlTotalResult))
                         {
-                            string sMsgBoxTranslate = "{0} Abrechnungen wurden überspielt!" + "\r\n" +
-                                                        "({1} Zeilen insgesamt!)";
-                            sMsgBoxTranslate = QS2.Desktop.ControlManagment.ControlManagment.getRes(sMsgBoxTranslate, countDbTotalCopied.ToString(), countRowsTotalCopied.ToString());
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTranslate, "Abrechnungen überspielen", MessageBoxButtons.OK);
-
-                            if (sqlTotalResult.Trim() != "")
+                            if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen das Überspielungsprotokoll öffnen?", "Abrechnungen überspielen", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
-                                if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen das Überspielungsprotokoll öffnen?", "Abrechnungen überspielen", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                using (frmProtocoll frmProtocoll1 = new frmProtocoll())
                                 {
-                                    frmProtocoll frmProtocoll1 = new frmProtocoll();
                                     frmProtocoll1.txtProtocoll.Text = sqlTotalResult.Trim();
-                                    frmProtocoll1.Show();
-
-                                    //System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                                    //startInfo.FileName = "notepad.exe";
-                                    //startInfo.Arguments = sqlTotalResult.Trim();
-                                    //System.Diagnostics.Process.Start(startInfo);
+                                    frmProtocoll1.ShowDialog();
                                 }
                             }
-                        }
+                        }                       
                     }
                     else
                     {
@@ -1092,11 +1086,11 @@ namespace PMDS.Calc.UI.Admin
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (e.Tool.Key.Trim().Equals(("AbrechTabellenErstellen")))
+                if (Global.generic.sEquals(e.Tool.Key,"AbrechTabellenErstellen"))
                 {
                     this.AbrechTabelleNeuErstellen();
                 }
-                else if (e.Tool.Key.Trim().Equals(("btnClose")))
+                else if (Global.generic.sEquals(e.Tool.Key,"btnClose"))
                 {
                     this.Close();
                 }
