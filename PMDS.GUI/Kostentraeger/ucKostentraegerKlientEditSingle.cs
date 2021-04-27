@@ -286,7 +286,8 @@ namespace PMDS.GUI.Kostentraeger
                                                 k.PatientbezogenJN,
                                                 k.IDKostentraegerSub,
                                                 k.GSBG,
-                                                k.Rechnungsempfaenger
+                                                k.Rechnungsempfaenger,
+                                                k.Betrag
                                             }).First();
 
                     this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, rKostenträger.TransferleistungJN, rKostenträger.PatientbezogenJN, this._db);
@@ -294,7 +295,7 @@ namespace PMDS.GUI.Kostentraeger
                     IQueryable<PMDS.db.Entities.Kostentraeger> tKostentraeger = this._db.Kostentraeger.Where(b => b.ID == IDKostenträger);
                     this._rKostenträger = tKostentraeger.First();                
 
-                    IQueryable<PMDS.db.Entities.PatientKostentraeger> tPatientKostentraeger = this._db.PatientKostentraeger.Where(b => b.ID == IDPatientKostenträger);
+                    IQueryable < PMDS.db.Entities.PatientKostentraeger > tPatientKostentraeger = this._db.PatientKostentraeger.Where(b => b.ID == IDPatientKostenträger);
                     this._rPatientKostentraeger = tPatientKostentraeger.First();
                 }                
 

@@ -766,7 +766,7 @@ namespace PMDS.GUI
         {
             if (this.chkAlsDekursKopieren.Visible)
             {
-                if (this.contTXTFieldBeschreibung.TXTControlField.Text != "")
+                if (!String.IsNullOrWhiteSpace(this.contTXTFieldBeschreibung.TXTControlField.Text))
                 {
                     this.chkAlsDekursKopieren.Checked = true;
                     setWichtigFuerDefaults(eDekursDefaults.Intervention.ToString(), false);   
@@ -965,7 +965,7 @@ namespace PMDS.GUI
             byte[] b = null;
             if (!this._IsSchnellrückmeldung)
             {
-                if (Eintrag.TextRtf.Trim() == "")
+                if (String.IsNullOrWhiteSpace(Eintrag.TextRtf))
                 {
                     this.contTXTFieldBeschreibung.showText(Eintrag.Text, TXTextControl.StreamType.PlainText);
                     this.doEditor1.showText(Eintrag.Text, TXTextControl.StreamType.PlainText, false, TXTextControl.ViewMode.Normal,
@@ -1036,7 +1036,7 @@ namespace PMDS.GUI
                 }
             }
 
-            if (this.IsDekursEntwurf && this.DekursTextRtfTemplate.Trim() != "")
+            if (this.IsDekursEntwurf && !String.IsNullOrWhiteSpace(this.DekursTextRtfTemplate))
             {
                 byte[] bDek = null;
                 this.contTXTFieldBeschreibung.showText(this.DekursTextRtfTemplate, TXTextControl.StreamType.RichTextFormat);
@@ -1330,7 +1330,7 @@ namespace PMDS.GUI
                     }
 
                     this.textControSave.Text = "";
-                    if (sTxtMedikament.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sTxtMedikament))
                     {
                         this.doEditor1.appendText2(sTxtMedikament.Trim(), this.textControSave, TXTextControl.StringStreamType.PlainText);
                         this.doEditor1.insertLinebreakxy(this.textControSave);
@@ -1352,7 +1352,7 @@ namespace PMDS.GUI
                 //{
                 //    sTxtMedikament = QS2.Desktop.ControlManagment.ControlManagment.getRes("Einzelverordnung: ") + this.cbBedarfsMedikament.Text.Trim() + "\r\n" + "\r\n";
                 //}
-                Eintrag.Text = (sTxtMedikament.Trim() != "" ? sTxtMedikament : "") + this.txtBeschreibungLine.Text.Trim();
+                Eintrag.Text = (!String.IsNullOrWhiteSpace(sTxtMedikament) ? sTxtMedikament : "") + this.txtBeschreibungLine.Text.Trim();
             }
 
             if (Eintrag.EintragsTyp == PflegeEintragTyp.UNEXP_MASSNAHME)
@@ -1408,7 +1408,7 @@ namespace PMDS.GUI
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
                     PMDS.db.Entities.PflegePlan rPflegePlan = db.PflegePlan.Where(pe => pe.ID == this.Eintrag.IDPflegePlan).First();
-                    if ((rPflegePlan.RMOptionalJN && this.txtBeschreibungLine.Text.Trim() != "") || !rPflegePlan.RMOptionalJN)
+                    if ((rPflegePlan.RMOptionalJN && !String.IsNullOrWhiteSpace(this.txtBeschreibungLine.Text)) || !rPflegePlan.RMOptionalJN)
                     {
                         if (!PMDS.Global.db.ERSystem.PMDSBusinessUI.checkTxtRegex(this.txtBeschreibungLine.Text, false))
                         {
@@ -1658,7 +1658,7 @@ namespace PMDS.GUI
             if (!this._IsSchnellrückmeldung)
             {
                 string txtBeschreibungPlainTmp = this.contTXTFieldBeschreibung.getText(TXTextControl.StringStreamType.PlainText);
-                if (txtBeschreibungPlainTmp.Trim() == "")
+                if (String.IsNullOrWhiteSpace(txtBeschreibungPlainTmp))
                 {
                     string txt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte geben Sie einen Dekurs ein.");
                     if (!chkDone.Checked)
@@ -1669,7 +1669,7 @@ namespace PMDS.GUI
             }
             else
             {
-                if (this.txtBeschreibungLine.Text.Trim() == "")
+                if (String.IsNullOrWhiteSpace(this.txtBeschreibungLine.Text))
                 {
                     this.errorProvider1.SetError(this.txtBeschreibungLine, "Error");
                     //QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Beschreibung: Es wurde kein Text eingegeben!", "", MessageBoxButtons.OK);
@@ -1830,36 +1830,10 @@ namespace PMDS.GUI
                     if (IsSchnellrückmeldung)
                     {
                         this.txtBeschreibungLine.Text = this.txtBeschreibungLine.Text.Insert(this.txtBeschreibungLine.SelectionStart, frmTextbausteinAuswahl1.TextbausteinAsPlainText);
-                        //this.txtBeschreibungLine.Text = frmTextbausteinAuswahl1.TextbausteinAsPlainText;
                     }
                     else
                     {
-                        //this.contTXTFieldBeschreibung.showText(frmTextbausteinAuswahl1.rTextbausteinSelected.TextRtf, TXTextControl.StreamType.RichTextFormat);
-
-
-
-                        //this.contTXTFieldBeschreibung.TXTControlField.InsertionMode = TXTextControl.InsertionMode.Insert;
-
-                        //this.textControSave.Text = "";
-                        //byte[] b = null;
-                        //this.doEditor1.showText(frmTextbausteinAuswahl1.rTextbausteinSelected.TextRtf, TXTextControl.StreamType.RichTextFormat, false, TXTextControl.ViewMode.Normal, this.textControSave, ref b, ref b);
-                        //string txtPlain = this.doEditor1.getText(TXTextControl.StringStreamType.PlainText, this.textControSave);
-
-                        //this.contTXTFieldBeschreibung.TXTControlField.Selection.Length 
                         this.contTXTFieldBeschreibung.TXTControlField.Selection.Text = frmTextbausteinAuswahl1.TextbausteinAsPlainText;
-
-
-                        ////TXTextControl.ServerTextControl editor = new TXTextControl.ServerTextControl();
-                        ////editor.Save(txtPlain, TXTextControl.StreamType.PlainText);
-                        ////editor.Create();
-                        ////editor.InitializeLifetimeService();
-                        ////TXTextControl.LoadSettings settings = new TXTextControl.LoadSettings();
-                        ////editor.Load(frmTextbausteinAuswahl1.rTextbausteinSelected.TextRtf, TXTextControl.StreamType.RichTextFormat, settings);
-
-                        //string sTxtWithInserted = this.contTXTFieldBeschreibung.TXTControlField.Selection.Text.Insert(this.contTXTFieldBeschreibung.TXTControlField.InputPosition.TextPosition, txtPlain);
-                        ////this.contTXTFieldBeschreibung.showText(frmTextbausteinAuswahl1.rTextbausteinSelected.TextRtf, TXTextControl.StreamType.RichTextFormat);
-
-                        //this.doEditor1.showText(sTxtWithInserted, TXTextControl.StreamType.PlainText, false, TXTextControl.ViewMode.Normal, this.contTXTFieldBeschreibung.TXTControlField, ref b, ref b);
                     }
                     
                     if (PMDS.Global.ENV.UseDekursKopieren)
@@ -1882,15 +1856,6 @@ namespace PMDS.GUI
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F3)
                 {
                     this.clickLoadTextbausteine(false);
-
-                    //if (!this._IsSchnellrückmeldung)
-                    //{
-
-                    //}
-                    //else
-                    //{
-
-                    //}
                 }
             }
             catch (Exception ex)
