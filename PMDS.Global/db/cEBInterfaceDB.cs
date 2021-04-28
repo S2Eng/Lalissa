@@ -230,7 +230,7 @@ namespace PMDS.Global.db
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "InvoiceCurrency", AttributeValue = "EUR" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "DocumentTitle", AttributeValue = "EBInterface" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "Language", AttributeValue = "ger" });
-                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xsi:schemaLocation", AttributeValue = @"http://www.ebinterface.at/schema/5p0/ http://www.ebinterface.at/schema/5p0/Invoice.xsd" });
+                    ret.AddAtributeToList(new cAttribute() { AttributeName = "xsi:schemaLocation", AttributeValue = @"http://www.ebinterface.at/schema/5p0/Invoice.xsd" });
 
                     ret.Biller.VATIdentificationNumber = (rKlinik.UID.Substring(rKlinik.UID.ToUpper().IndexOf("ATU"))).Replace(" ", "");
                     ret.Biller.Address.Name = rKlinik.Bezeichnung;
@@ -247,6 +247,7 @@ namespace PMDS.Global.db
                     ret.InvoiceRecipient.BillersInvoiceRecipientID = String.IsNullOrWhiteSpace(rKlient.BillersInvoiceRecipientID) ? "SVNR: " + rKlient.SVNr : "KtoNr: " + rKlient.BillersInvoiceRecipientID;
 
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankName = rKlinik.Bank;
+                    ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BankCode.Value = rKlinik.IBAN.Replace(" ", "").Substring(4, 5);
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.IBAN = rKlinik.IBAN;
                     ret.PaymentMethod.UniversalBankTransaction.BeneficiaryAccount.BIC = rKlinik.BIC;
                 }
