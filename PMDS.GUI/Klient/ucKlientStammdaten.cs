@@ -1323,10 +1323,11 @@ namespace PMDS.GUI
                             if (this.ucAbrechAufenthKlient1.IDAufenthaltEntlassen != null && this.ucAbrechAufenthKlient1.dtpEntlassungszeitpunkt != null)
                             {
                                 Guid IDAufenthaltEntlassen;
-                                using (ucAbrechAufenthKlient ucAbrechLocal = new ucAbrechAufenthKlient())
-                                {
-                                    ucAbrechLocal.IDAufenthaltEntlassen = ucAbrechLocal.IDAufenthaltEntlassen.Value;
-                                }
+                                //using (ucAbrechAufenthKlient ucAbrechLocal = new ucAbrechAufenthKlient())
+                                //{
+                                //    if (ucAbrechLocal.IDAufenthaltEntlassen != null)
+                                //        ucAbrechLocal.IDAufenthaltEntlassen = ucAbrechLocal.IDAufenthaltEntlassen.Value;
+                                //}
                                 PMDS.db.Entities.Aufenthalt rAufenthaltEntlassen = this.b.getAufenthalt(this.ucAbrechAufenthKlient1.IDAufenthaltEntlassen.Value, db);
                                 if(rAufenthaltEntlassen.Aufnahmezeitpunkt <= this.ucAbrechAufenthKlient1.dtpEntlassungszeitpunkt.DateTime)
                                 {
