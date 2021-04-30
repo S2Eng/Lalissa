@@ -111,13 +111,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
-		BuildVersion_StartDate = 2010/11/23
-		BuildVersion_AssemblyInfoFilename = Assembly.info
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_ConfigurationName = Debug
-		BuildVersion_UseGlobalSettings = True
 		SolutionGuid = {9701C6F5-0D36-44C1-97B0-8C2BC96AD3D3}
+		BuildVersion_UseGlobalSettings = True
+		BuildVersion_ConfigurationName = Debug
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_AssemblyInfoFilename = Assembly.info
+		BuildVersion_StartDate = 2010/11/23
+		BuildVersion_BuildVersioningStyle = None.None.Increment.TimeStamp
+		BuildVersion_UpdateAssemblyVersion = True
 	EndGlobalSection
 EndGlobal

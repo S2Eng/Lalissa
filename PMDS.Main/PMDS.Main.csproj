@@ -35,23 +35,24 @@
     </TargetFrameworkProfile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>c:\temp\pmds\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <InstallUrl>\\sty041\c%24\temp\pmds\</InstallUrl>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -292,10 +293,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="bin\Barcode\CS1504_PMDS.ini" />
-    <None Include="bin\Barcode\global.ini" />
-    <None Include="bin\Barcode\pl2303.cat" />
-    <None Include="bin\Barcode\ser2pl.sys" />
     <None Include="bin\Doku\PMDS_Handbuch.pdf" />
     <None Include="bin\DynReportsAbrechnung\1. Klienten\1.1 Aufnahme und Entlassung\Klientenstammdatenblatt.dynreportlink" />
     <None Include="bin\DynReportsAbrechnung\2. Verwaltung\2.1 Listen\Abwesende Klienten.dynreportlink" />
@@ -772,26 +769,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Barcode\idc_light_v414_update.exe" />
-    <Content Include="bin\Barcode\ser2pl.inf" />
-    <Content Include="bin\Database\Formulare.sql" />
-    <Content Include="bin\Database\GridLayouts.sql" />
-    <Content Include="bin\Database\PMDS_110214_Bis_131128.sql" />
-    <Content Include="bin\Database\PMDS_131129_Bis_140115.sql" />
-    <Content Include="bin\Database\PMDS_140115_Bis_140317.sql" />
-    <Content Include="bin\Database\PMDS_140318_Bis_140416.sql" />
-    <Content Include="bin\Database\PMDS_140417_Bis_laufend.sql" />
-    <Content Include="bin\Database\PMDS_3700_Bis_110214.sql" />
-    <Content Include="bin\Database\PMDS_INDIZES.sql" />
-    <Content Include="bin\Database\PMDS_INDIZES_2.sql" />
-    <Content Include="bin\Database\PMDS_INDIZES_3.sql" />
-    <Content Include="bin\Database\PMDS_PEP_120319.sql" />
-    <Content Include="bin\Database\PMDS_PEP_DEL_OPTIMIERUNGSTABELLEN.sql" />
-    <Content Include="bin\Database\PMDS_QS2_130525.sql" />
-    <Content Include="bin\Database\PMDS_QS2_Einspielung.sql" />
     <Content Include="bin\Database\POP-RessourcenEinf?gen.sql" />
-    <Content Include="bin\Database\POP.sql" />
-    <Content Include="bin\Database\QS2-Abfragen.sql" />
     <Content Include="bin\Database\ReplacePOPMa?nahmen.sql" />
     <Content Include="bin\Forms\Analyse Pflegedokumentation.jpg" />
     <Content Include="bin\Forms\Anamnese .. nach Krohwinkel _AEDL_.jpg" />
@@ -833,7 +811,6 @@
     <Content Include="bin\Forms\Sturzprotokoll.jpg" />
     <Content Include="bin\Forms\Sturzprotokoll2.jpg" />
     <Content Include="bin\Forms\Tinetti.jpg" />
-    <Content Include="bin\Launcher\Launcher.exe" />
     <Content Include="bin\OnlineFormulare\Allgemein.jpg" />
     <Content Include="bin\OnlineFormulare\Behindertenausweis.jpg" />
     <Content Include="bin\OnlineFormulare\IGSplitter40.ocx" />
@@ -1043,7 +1020,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2010/11/23" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_AssemblyInfoFilename="Assembly.info" />
+      <UserProperties BuildVersion_AssemblyInfoFilename="Assembly.info" BuildVersion_BuildVersioningStyle="None.Increment.TimeStamp.None" BuildVersion_StartDate="2010/11/23" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
