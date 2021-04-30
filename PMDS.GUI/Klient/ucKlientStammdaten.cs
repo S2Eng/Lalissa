@@ -1403,7 +1403,7 @@ namespace PMDS.GUI
             //GuiUtil.ValidateField(cmbBenutzer, (cmbBenutzer.Text.Length > 0),
             //    ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
 
-            if (txtFallzahl.Text.Trim() != "")
+            if (!string.IsNullOrWhiteSpace(txtFallzahl.Text))
             {
                 isWrong = false;
                 GuiUtil.ValidateField(txtFallzahl, KlientGuiAction.IsDouble(txtFallzahl.Text.Trim()),
@@ -1411,7 +1411,7 @@ namespace PMDS.GUI
             }
 
             //Grösse
-            if (txtGroesse.Text.Trim() != "")
+            if (!string.IsNullOrWhiteSpace(txtGroesse.Text))
             {
                 isWrong = false;
                 GuiUtil.ValidateField(txtGroesse, KlientGuiAction.IsInteger(txtGroesse.Text.Trim()),
@@ -1419,7 +1419,7 @@ namespace PMDS.GUI
             }
 
             //Gewicht
-            if (txtGewicht.Text.Trim() != "")
+            if (!string.IsNullOrWhiteSpace(txtGewicht.Text))
             {
                 isWrong = false;
                 GuiUtil.ValidateField(txtGewicht, KlientGuiAction.IsDouble(txtGewicht.Text.Trim()),
@@ -1674,74 +1674,69 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private bool UpdateAerzteAufenthalt()
         {
-            frmAerzteEdit frm = new frmAerzteEdit();
-            frm.ShowAuswahlColumn = true;
-            frm.Aerzte = Klient.CLASS_AERZTE.GetPatientAerzte();
-            frm.SaveChanges = false;
-            frm.CLASS_AERZTE = Klient.CLASS_AERZTE;
-            frm.CanModify = false;
-            DialogResult res = frm.ShowDialog();
-            
-            if (res != DialogResult.OK)
-                return false;
-
-            //KlientGuiAction.AddPatientAerzte(frm.Aerzte, Klient);
-
-            DialogResult resDoppelterArzt;
-
-            if (frm.CurrentArztRow != null)
+            using (frmAerzteEdit frm = new frmAerzteEdit())
             {
-                foreach(Guid ArztID in frm.Aerzte)
+                frm.ShowAuswahlColumn = true;
+                frm.Aerzte = Klient.CLASS_AERZTE.GetPatientAerzte();
+                frm.SaveChanges = false;
+                frm.CLASS_AERZTE = Klient.CLASS_AERZTE;
+                frm.CanModify = false;
+                DialogResult res = frm.ShowDialog();
+
+                if (res != DialogResult.OK)
+                    return false;
+
+                //KlientGuiAction.AddPatientAerzte(frm.Aerzte, Klient);
+
+                DialogResult resDoppelterArzt;
+
+                if (frm.CurrentArztRow != null)
                 {
-                    if (frm.CurrentArztRow.ID == ArztID)
+                    foreach (Guid ArztID in frm.Aerzte)
                     {
-                         resDoppelterArzt = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der gewählte Arzt ist dem Bewohner bereits zugeordnet, wollen sie ihn trotzdem zuordnen ?" ,
-                               "Dieser Arzt ist bereits zugeordnet",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question);
-                       
-                        if (resDoppelterArzt == DialogResult.No)
+                        if (frm.CurrentArztRow.ID == ArztID)
                         {
-                            
-                            return false;
+                            resDoppelterArzt = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der gewählte Arzt ist dem Bewohner bereits zugeordnet, wollen sie ihn trotzdem zuordnen ?",
+                                  "Dieser Arzt ist bereits zugeordnet",
+                                  MessageBoxButtons.YesNo,
+                                  MessageBoxIcon.Question);
+
+                            if (resDoppelterArzt == DialogResult.No)
+                            {
+                                return false;
+                            }
                         }
-                        //if (resDoppelterArzt == DialogResult.Yes)
-                        //{
-                            
-                        //    return;
-                        //
-                    }                  
-                }
-
-                dsPatientAerzte.PatientAerzteRow  rNewPatientÄrzte = Klient.CLASS_AERZTE.NewPatientAerzte(frm.CurrentArztRow.ID);
-                KlientGuiAction.RefreshListPatientAerzte(gridAerzte, Klient);
-
-                //HL_AddPE_KontaktPatient_06
-                string title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt hinzugefügt für Patient {0}");
-                string txt = "";
-                PMDS.DB.PMDSBusiness b = new PMDSBusiness();
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                {
-                    PMDS.db.Entities.Adresse rAdress = b.getCheckAdresse(frm.CurrentArztRow.IDAdresse, db);
-                    PMDS.db.Entities.Kontakt rKontakt = b.getCheckKontakt(frm.CurrentArztRow.IDKontakt, db);
-                    txt += "Name: " + frm.CurrentArztRow.Nachname.Trim() + " " + frm.CurrentArztRow.Vorname.Trim() + "\r\n";
-                    if (rAdress != null)
-                    {
-                        txt += "Adress: " + rAdress.Plz.Trim() + " " + rAdress.Ort.Trim() + ", " + rAdress.Strasse.Trim() + "\r\n";
                     }
-                    if (rKontakt != null)
-                    {
-                        txt += "E-Mail: " + rKontakt.Email.Trim();
-                    }
-                    KlientGuiAction.addKontakteChanged2(title, txt, Klient.IDPatient);
-                }
 
-                KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
-                KlientGuiAction1.doUIDienstübergabe(ref frm.lstPatienteSelected2, ref this.lstÄrzteMehrfachauswahl, frm.CurrentArztRow.ID, rNewPatientÄrzte, this.gridAerzte);
-                return true;
-            }
-            
-            return false;
+                    dsPatientAerzte.PatientAerzteRow rNewPatientÄrzte = Klient.CLASS_AERZTE.NewPatientAerzte(frm.CurrentArztRow.ID);
+                    KlientGuiAction.RefreshListPatientAerzte(gridAerzte, Klient);
+
+                    //HL_AddPE_KontaktPatient_06
+                    string title = QS2.Desktop.ControlManagment.ControlManagment.getRes("Kontakt hinzugefügt für Patient {0}");
+                    string txt = "";
+                    PMDS.DB.PMDSBusiness b = new PMDSBusiness();
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                    {
+                        PMDS.db.Entities.Adresse rAdress = b.getCheckAdresse(frm.CurrentArztRow.IDAdresse, db);
+                        PMDS.db.Entities.Kontakt rKontakt = b.getCheckKontakt(frm.CurrentArztRow.IDKontakt, db);
+                        txt += "Name: " + frm.CurrentArztRow.Nachname.Trim() + " " + frm.CurrentArztRow.Vorname.Trim() + "\r\n";
+                        if (rAdress != null)
+                        {
+                            txt += "Adress: " + rAdress.Plz.Trim() + " " + rAdress.Ort.Trim() + ", " + rAdress.Strasse.Trim() + "\r\n";
+                        }
+                        if (rKontakt != null)
+                        {
+                            txt += "E-Mail: " + rKontakt.Email.Trim();
+                        }
+                        KlientGuiAction.addKontakteChanged2(title, txt, Klient.IDPatient);
+                    }
+
+                    KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
+                    KlientGuiAction1.doUIDienstübergabe(ref frm.lstPatienteSelected2, ref this.lstÄrzteMehrfachauswahl, frm.CurrentArztRow.ID, rNewPatientÄrzte, this.gridAerzte);
+                    return true;
+                }
+                return false;
+            }            
         }
 
         private bool UpdateArzt()

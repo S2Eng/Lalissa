@@ -1498,7 +1498,7 @@ namespace PMDS.Global
                 SetENVValue("RezeptUseErstattungscode", ref ENV.RezeptUseErstattungscode, "0");
                 SetENVValue("MedVerabreichenDefault", ref ENV.MedVerabreichenDefault);
                 SetENVValue("SavePflegebegleitschreibenToArchiv", ref ENV.SavePflegebegleitschreibenToArchiv, "0");
-                SetENVValue("InterventionenEvaluieren", ref ENV.InterventionenEvaluieren, "0");
+                SetENVValue("InterventionenEvaluieren", ref ENV.InterventionenEvaluieren);
 
                 SetENVValue("ActivateKliententermine", ref ENV.ActivateKliententermine);
                 SetENVValue("ActivateBereichstermine", ref ENV.ActivateBereichstermine);
