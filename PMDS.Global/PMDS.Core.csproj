@@ -109,9 +109,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Ghostscript.NET">
-      <HintPath>..\Dlls\Ghostscript.NET.dll</HintPath>
-    </Reference>
     <Reference Include="Infragistics4.Documents.Core.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\2017.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Core.v17.2.dll</HintPath>

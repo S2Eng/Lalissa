@@ -17,8 +17,6 @@ using System.IO;
 using PMDS.Global.db.Patient;
 using System.Drawing;
 
-using Ghostscript.NET;
-using Ghostscript.NET.Rasterizer;
 using PMDS.Global.db.ERSystem;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinEditors;

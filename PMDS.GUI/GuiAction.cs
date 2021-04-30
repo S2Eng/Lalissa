@@ -19,9 +19,6 @@ using System.Linq.Expressions;
 using PMDS.Global.db.Global;
 using PMDS.Global.db.Patient;
 
-//using PdfSharp.Pdf; 
-//using PdfSharp.Pdf.IO;
-
 using Syncfusion.Pdf;
 using Syncfusion.Compression;
 using Patagames.Pdf.Net;

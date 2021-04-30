@@ -17,8 +17,6 @@ using System.IO;
 using PMDS.Global.db.Patient;
 using System.Drawing;
 
-//using Ghostscript.NET;
-//using Ghostscript.NET.Rasterizer;
 using PMDS.Global.db.ERSystem;
 using System.Linq;
 
@@ -7558,52 +7556,6 @@ namespace PMDS.DB
                     }
                 }
 
-                /*
-                                GhostscriptVersionInfo _lastInstalledVersion = null;
-                                GhostscriptRasterizer _rasterizer = null;
-
-                                int desired_x_dpi = 300;
-                                int desired_y_dpi = 300;
-                                //string inputPdfPath = @pathFrom;
-                                Stream stream = new MemoryStream(bytesPDF);
-
-                                _lastInstalledVersion = GhostscriptVersionInfo.GetLastInstalledVersion(
-                                                        GhostscriptLicense.GPL | GhostscriptLicense.AFPL,
-                                                        GhostscriptLicense.GPL);
-                                _rasterizer = new GhostscriptRasterizer();
-                                _rasterizer.Open(stream, _lastInstalledVersion, false);
-
-                                //for (int pageNumber = 1; pageNumber <= _rasterizer.PageCount; pageNumber++)
-                                for (int pageNumber = 1; pageNumber <= 1; pageNumber++)
-                                {
-                                    //Als MemoryStream für Speichern in SQL-Feld
-                                    using (MemoryStream ms = new MemoryStream())
-                                    {
-                                        Image imgMem = _rasterizer.GetPage(desired_x_dpi, desired_y_dpi, pageNumber);
-                                        imgMem.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                        bytesJPGReturn = this.ToByteArray(ms);
-                                        //imgMem.Save("H:\\test.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                                        ms.Close();
-
-                                        return true;
-                                    }
-
-                                    //Website: http://ghostscript.com/download/gsdnld.html 
-                                    // Installation 32 Bit Version >> C:\Program Files (x86)\gs\gs9.18
-                                    // Installation 64 Bit Version >> C:\Program Files\gs\gs9.18
-
-
-                                    //Speichern als jpg auf der Platte
-                                    //string outputPath = @"C:\temp\GhostscriptTest\";
-                                    //string pageFilePath = Path.Combine(outputPath, "Page-" + pageNumber.ToString() + ".jpg");
-
-                                    //Image img = _rasterizer.GetPage(desired_x_dpi, desired_y_dpi, pageNumber);
-                                    //img.Save(pageFilePath, ImageFormat.Jpeg);
-                                    //Console.WriteLine(pageFilePath);
-
-                                }
-                                return false;
-                */
 
             }
 
@@ -7612,26 +7564,6 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.pdfToImage: " + ex.ToString());
             }
         }
-        //public bool checkGhostscriptIsinstalledOnClient()
-        //{
-        //    try
-        //    {
-        //        GhostscriptVersionInfo _lastInstalledVersion = null;
-        //        GhostscriptRasterizer _rasterizer = null;
-
-        //        _lastInstalledVersion = GhostscriptVersionInfo.GetLastInstalledVersion(
-        //                                GhostscriptLicense.GPL | GhostscriptLicense.AFPL,
-        //                                GhostscriptLicense.GPL);
-        //        _rasterizer = new GhostscriptRasterizer();
-
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //        //throw new Exception("PMDSBusiness.checkGhostscriptIsinstalledOnClient: " + ex.ToString());
-        //    }
-        //}
 
         public byte[] ToByteArray(Stream stream)
         {

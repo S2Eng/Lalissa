@@ -91,7 +91,7 @@ namespace PMDS.GUI.Klient
         {
             try
             {
-                this.panelButtons.Visible = PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.PatientenVerwalten) && !PMDS.Global.historie.HistorieOn; // && GhostscriptInstalled;
+                this.panelButtons.Visible = PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.PatientenVerwalten) && !PMDS.Global.historie.HistorieOn; 
             }
             catch (Exception ex)
             {
