@@ -773,7 +773,7 @@ namespace PMDS.Global.db
 
                 if (!HasError)
                 {
-                    System.IO.File.WriteAllText(TxtFile, res.ToString());
+                    System.IO.File.WriteAllText(TxtFile, res.ToString(), Encoding.Default);
                     Log.Append("Ausgabedatei erstellt: " +  TxtFile + "\n");
                 }
                 else
