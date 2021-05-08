@@ -763,6 +763,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool133 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnExportCalculations");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool172 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnSuchtgiftschrankSchlüssel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool178 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnVerordnungen");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool188 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoProdukte");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool183 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPatientAufenthalteLöschen");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool122 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Medizinische_Dialoge");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool123 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Standardprozeduren");
@@ -814,6 +815,8 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool181 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnWundBilderScale");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool185 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Blackout-Prävention");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool187 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnELGAPasswortÄndern");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool189 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoPauschale");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool190 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoProdukte");
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -1164,6 +1167,7 @@ namespace PMDS
             buttonTool133,
             buttonTool172,
             buttonTool178,
+            buttonTool188,
             buttonTool183});
             buttonTool122.SharedPropsInternal.Caption = "Medizinische  Dialoge";
             buttonTool123.SharedPropsInternal.Caption = "Standardprozeduren";
@@ -1215,6 +1219,8 @@ namespace PMDS
             buttonTool181.SharedPropsInternal.Caption = "Wundbilder skalieren";
             buttonTool185.SharedPropsInternal.Caption = "Blackout-Prävention";
             buttonTool187.SharedPropsInternal.Caption = "ELGA-Passwort ändern";
+            buttonTool189.SharedPropsInternal.Caption = "Abrechnung Inko-Pauschale";
+            buttonTool190.SharedPropsInternal.Caption = "Abrechnung Inko-Produkt-Pauschale";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool9,
             buttonTool7,
@@ -1330,7 +1336,9 @@ namespace PMDS
             buttonTool180,
             buttonTool181,
             buttonTool185,
-            buttonTool187});
+            buttonTool187,
+            buttonTool189,
+            buttonTool190});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // _frmBase_Toolbars_Dock_Area_Right
@@ -1552,20 +1560,15 @@ namespace PMDS
             // 
             // pBarMemoryUsage
             // 
-            this.pBarMemoryUsage.BackGradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.pBarMemoryUsage.BackGradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.pBarMemoryUsage.BackgroundStyle = Syncfusion.Windows.Forms.Tools.ProgressBarBackgroundStyles.Gradient;
             this.pBarMemoryUsage.BackMultipleColors = new System.Drawing.Color[] {
         System.Drawing.Color.Empty};
             this.pBarMemoryUsage.BackSegments = false;
-            this.pBarMemoryUsage.BackTubeEndColor = System.Drawing.Color.White;
-            this.pBarMemoryUsage.BackTubeStartColor = System.Drawing.Color.LightGray;
             this.pBarMemoryUsage.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(149)))), ((int)(((byte)(152)))));
             this.pBarMemoryUsage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pBarMemoryUsage.CustomText = null;
             this.pBarMemoryUsage.CustomWaitingRender = false;
             this.pBarMemoryUsage.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pBarMemoryUsage.FontColor = System.Drawing.Color.White;
             this.pBarMemoryUsage.ForeColor = System.Drawing.Color.Transparent;
             this.pBarMemoryUsage.ForegroundImage = null;
             this.pBarMemoryUsage.ForeSegments = false;
@@ -1585,6 +1588,7 @@ namespace PMDS
             this.pBarMemoryUsage.Step = 1;
             this.pBarMemoryUsage.StretchMultGrad = false;
             this.pBarMemoryUsage.TabIndex = 105;
+            this.pBarMemoryUsage.ThemeName = "MultipleGradient";
             this.pBarMemoryUsage.ThemesEnabled = true;
             this.pBarMemoryUsage.TubeEndColor = System.Drawing.Color.Transparent;
             this.pBarMemoryUsage.TubeStartColor = System.Drawing.Color.Transparent;
@@ -2777,9 +2781,11 @@ namespace PMDS
                         break;
 
                     case "btnRechteAbteilungenBereiche":
-                        frmBenutzer frmBenutzer1 = new frmBenutzer(true);
-                        frmBenutzer1.ShowDialog(this);
-                        break;
+                        using (frmBenutzer frmBenutzer1 = new frmBenutzer(true))
+                        {
+                            frmBenutzer1.ShowDialog(this);
+                            break;
+                        }
 
                     case "btnImportBefunde":
                         PMDS.Global.UI.Befunde.frmImportBefunde frmImportBefunde1 = new Global.UI.Befunde.frmImportBefunde();
@@ -2788,10 +2794,19 @@ namespace PMDS
                         break;
 
                     case "btnSuchtgiftschrankSchlüssel":
-                        PMDS.GUI.GUI.Main.frmSuchtgiftschrankSchlüssel frmSuchtgiftschrankSchlüssel1 = new GUI.GUI.Main.frmSuchtgiftschrankSchlüssel();
-                        frmSuchtgiftschrankSchlüssel1.initControl();
-                        frmSuchtgiftschrankSchlüssel1.ShowDialog(this);
-                        break;
+                        using (PMDS.GUI.GUI.Main.frmSuchtgiftschrankSchlüssel frmSuchtgiftschrankSchlüssel1 = new GUI.GUI.Main.frmSuchtgiftschrankSchlüssel())
+                        {
+                            frmSuchtgiftschrankSchlüssel1.initControl();
+                            frmSuchtgiftschrankSchlüssel1.ShowDialog(this);
+                            break;
+                        }
+
+                    case "btnAbrechnungInkoProdukte":
+                        using (PMDS.GUI.ELDA.frmELDA frmELDA = new PMDS.GUI.ELDA.frmELDA())
+                        {
+                            frmELDA.ShowDialog(this);
+                            break;
+                        }
 
                     case "btnHeimverträge":
                         break;
@@ -2813,15 +2828,6 @@ namespace PMDS
                                     GuiAction.Notfall(new Guid(e.Tool.Key), ENV.IDAUFENTHALT, BearbeitungsModus.neu);
                                     return;
                             }
-
-                            //if (e.Tool.Key.Trim().ToLower().StartsWith(("btnHeimvertrag").Trim().ToLower()))
-                            //{
-                            //    PMDS.Global.Heimverträge.cHeimverträge cHeimverträge1 = new Global.Heimverträge.cHeimverträge();
-                            //    Infragistics.Win.UltraWinToolbars.ButtonTool btnHeimvertrag = (Infragistics.Win.UltraWinToolbars.ButtonTool)e.Tool;
-                            //    cHeimverträge1.openDocument(btnHeimvertrag.Key.Trim(), btnHeimvertrag.SharedProps.Tag.ToString());
-                            //    return;
-                            //}
-
                         }
 
                         SiteEventArgs args = new SiteEventArgs();

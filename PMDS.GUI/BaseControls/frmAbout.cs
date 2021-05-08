@@ -59,6 +59,7 @@ namespace PMDS
         private Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripSearch pdfToolStripSearch1;
         public Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain pdfToolStripMain1;
         private Patagames.Pdf.Net.Controls.WinForms.PdfViewer pdfViewer1;
+        private ToolStripMenuItem eLDAAbrechnungToolStripMenuItem;
         private FileInfo fiMikogo;
 
 
@@ -200,6 +201,7 @@ namespace PMDS
             this.pdfToolStripZoom1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoom();
             this.pdfToolStripSearch1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripSearch();
             this.pdfToolStripMain1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripMain();
+            this.eLDAAbrechnungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -224,9 +226,10 @@ namespace PMDS
             this.toolStripMenuItem5,
             this.sytemAdministrationToolStripMenuItem,
             this.toolStripMenuItem6,
-            this.loadAllDataIntoRAMToolStripMenuItem});
+            this.loadAllDataIntoRAMToolStripMenuItem,
+            this.eLDAAbrechnungToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 260);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 282);
             // 
             // formularDesignerToolStripMenuItem
             // 
@@ -664,6 +667,13 @@ namespace PMDS
             this.pdfToolStripMain1.TabIndex = 17;
             this.pdfToolStripMain1.Text = "pdfToolStripMain1";
             // 
+            // eLDAAbrechnungToolStripMenuItem
+            // 
+            this.eLDAAbrechnungToolStripMenuItem.Name = "eLDAAbrechnungToolStripMenuItem";
+            this.eLDAAbrechnungToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.eLDAAbrechnungToolStripMenuItem.Text = "ELDA-Abrechnung";
+            this.eLDAAbrechnungToolStripMenuItem.Click += new System.EventHandler(this.eLDAAbrechnungToolStripMenuItem_Click);
+            // 
             // frmAbout
             // 
             this.AcceptButton = this.btnOK;
@@ -958,5 +968,17 @@ namespace PMDS
             }
         }
 
+        private void eLDAAbrechnungToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PMDS.GUI.ELDA.frmELDA frm = new PMDS.GUI.ELDA.frmELDA();
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDS.Global.Calc.ELDAAbrechung.cs.Init: " + ex.Message);
+            }
+        }
     }
 }

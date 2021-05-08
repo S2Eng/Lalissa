@@ -330,6 +330,8 @@ namespace PMDS.Global
         public static decimal FSW_Prozent = 4M;
         public static bool FSW_SaveXLSX = false;
 
+        public static string ELDA_Pfad = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
+
         // ---------- Lizenzschalter ------------------
         public static int lic_eMailBewerber;
         public static bool lic_VO;
@@ -338,6 +340,7 @@ namespace PMDS.Global
         public static bool lic_ELGA;
         public static bool lic_ELGA_PSB;
         public static bool lic_RezepteintragStorno;
+        public static bool lic_ELDA;
         //---------------------------------------------
 
         // ------------- ELGA - Formatter für override  ---------------------
@@ -1480,6 +1483,8 @@ namespace PMDS.Global
                 SetENVValue("FSW_Prozent", ref ENV.FSW_Prozent);
                 SetENVValue("FSW_SaveXLSX", ref ENV.FSW_SaveXLSX);
 
+                SetENVValue("ELDA_Pfad", ref ENV.ELDA_Pfad);
+
                 SetENVValue("HAG_Url", ref ENV.HAG_Url);
                 SetENVValue("HAG_Zertifikat", ref ENV.HAG_Zertifikat);
                 SetENVValue("HAG_User", ref ENV.HAG_USER);
@@ -1516,6 +1521,8 @@ namespace PMDS.Global
                 ENV.lic_ELGA_PSB = setLicValue("lic_ELGA_PSB");
                 ENV.lic_WundtherapieOffenWarnung = setLicValue("lic_WundtherapieOffenWarnung");
                 ENV.lic_RezepteintragStorno = setLicValue("lic_RezepteintragStorno");
+                ENV.lic_ELDA = setLicValue("lic_ELDA");
+
 
                 QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
                 QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);  
@@ -2752,8 +2759,9 @@ namespace PMDS.Global
         [Description("DNR/Palliativ")]
         DNR_Palliativ = 109,
         [Description("Rezepte bestellen")]
-        RezepteBestellen = 110
-
+        RezepteBestellen = 110,
+        [Description("Abrechnung Inko-Produkt-Pauschale")]
+        AbrechnungInkoProdukte = 117,
 
 
         //,

@@ -1044,6 +1044,12 @@
       <DependentUpon>ucDatenErhebungMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Datenerhebung\ValueListItemOwn.cs" />
+    <Compile Include="ELDA\frmELDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ELDA\frmELDA.Designer.cs">
+      <DependentUpon>frmELDA.cs</DependentUpon>
+    </Compile>
     <Compile Include="ELGAPMDSBusinessUI.cs" />
     <Compile Include="ELGA\contELGAChangePassword.cs">
       <SubType>UserControl</SubType>
@@ -4038,6 +4044,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Datenerhebung\ucDatenErhebungMain.resx">
       <DependentUpon>ucDatenErhebungMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ELDA\frmELDA.resx">
+      <DependentUpon>frmELDA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ELGA\contELGAChangePassword.resx">
       <DependentUpon>contELGAChangePassword.cs</DependentUpon>
