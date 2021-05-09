@@ -51,6 +51,8 @@ namespace PMDS.Global.db
         private double MwStSatz = 20;
         private string PositionText = "Inko-Pauschale";
         private string SubProjektCode = "HH";
+        private string Rechnungshinweis = "Das ist keine Rechnung im Sinne des UStG.";
+        private int RundungsdifferenzErlauben = 1;
 
         private Rechnung rechnung = new Rechnung();
 
@@ -140,7 +142,7 @@ namespace PMDS.Global.db
             public SART00Beginn sART00Beginn = new SART00Beginn();
             public List<VOSchein> VOScheine = new List<VOSchein>();
             public SART36 sART36 = new SART36();
-            public List<SART39> Hinweise = new List<SART39>();
+            public List<SART39> listSART39 = new List<SART39>();
             public SART99Ende sART99Ende = new SART99Ende();
             public SART99Nachlauf sART99Nachlauf = new SART99Nachlauf();
         }
@@ -269,6 +271,8 @@ namespace PMDS.Global.db
                     Verrechnungsart = sheetControl.Range["D21"].FormulaStringValue;
                     MwStSatz = sheetControl.Range["C22"].Number;
                     SubProjektCode = sheetControl.Range["D25"].FormulaStringValue;
+                    Rechnungshinweis = sheetControl.Range["C26"].Value;
+                    RundungsdifferenzErlauben = (int) sheetControl.Range["D27"].FormulaNumberValue;
 
                     //Positionsdaten einlesen
                     int PosNr = 0;
@@ -346,6 +350,10 @@ namespace PMDS.Global.db
                 rechnung.sART00Vorlauf = MakeSART00Vorlauf();
                 rechnung.sART00Beginn = MakeSART00Beginn();
                 rechnung.sART36 = MakeSART36(rechnung.VOScheine);
+                if (!string.IsNullOrWhiteSpace(Rechnungshinweis))
+                {
+                    rechnung.listSART39.Add(MakeSART39(Rechnungshinweis));
+                }
                 UpdateSART99Ende();
                 UpdateSART99Nachlauf();
 
@@ -618,8 +626,12 @@ namespace PMDS.Global.db
                 foreach (Versorgunseinheit versorgungseinheit  in Versorgunseinheiten)
                 {
                     sART34.Netto += versorgungseinheit.sART32.Netto;
+                    sART34.Brutto += versorgungseinheit.sART32.Brutto;
                 }
-                sART34.Brutto = Math.Round(sART34.Netto * ((100 + MwStSatz) / 100), 2, MidpointRounding.AwayFromZero);
+                if (RundungsdifferenzErlauben == 1)
+                {
+                    sART34.Brutto = Math.Round(sART34.Netto * ((100 + MwStSatz) / 100), 2, MidpointRounding.AwayFromZero);
+                }
 
                 sART34.Kopf = MakeSatzkopf();
                 sART34.Felder.Add(new Feld() { value = "34", feldname = "SART", lfdNr = 2, von = 21, bis = 22, laenge = 2 });
@@ -649,7 +661,6 @@ namespace PMDS.Global.db
             }
         }
 
-
         private SART36 MakeSART36(List<VOSchein> VOScheine)
         {
             try
@@ -658,8 +669,12 @@ namespace PMDS.Global.db
                 foreach (VOSchein voschein in VOScheine)
                 {
                     sART36.Netto += voschein.sART34.Netto;
+                    sART36.Brutto += voschein.sART34.Brutto;
                 }
-                sART36.Brutto = Math.Round(sART36.Netto * ((100 + MwStSatz) / 100), 2, MidpointRounding.AwayFromZero);
+                if (RundungsdifferenzErlauben == 1)
+                {
+                    sART36.Brutto = Math.Round(sART36.Netto * ((100 + MwStSatz) / 100), 2, MidpointRounding.AwayFromZero);
+                }
 
                 sART36.Kopf = MakeSatzkopf();
                 sART36.Felder.Add(new Feld() { value = "36", feldname = "SART", lfdNr = 2, von = 21, bis = 22, laenge = 2 });
@@ -684,6 +699,25 @@ namespace PMDS.Global.db
                 rechnung.sART99Ende.Anzahl36++;
                 rechnung.sART99Nachlauf.AnzahlGesamt++; 
                 return sART36;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDS.Global.db.cELDAInterfaceDB.cs.MakeSART36: " + ex.Message);
+            }
+        }
+
+
+        private SART39 MakeSART39(string Text)
+        {
+            try
+            {
+                SART39 sART39 = new SART39();
+                sART39.Kopf = MakeSatzkopf();
+                sART39.Felder.Add(new Feld() { value = "39", feldname = "SART", lfdNr = 2, von = 21, bis = 22, laenge = 2 });
+                sART39.Felder.Add(new Feld() { value = Text, feldname = "TXT", lfdNr = 3, von = 23, bis = 122, laenge = 100 });
+                sART39.Felder.Add(new Feld() { value = "", feldname = "RES", lfdNr = 4, von = 123, bis = 128, laenge = 6 });
+
+                return sART39;
             }
             catch (Exception ex)
             {
@@ -745,31 +779,45 @@ namespace PMDS.Global.db
                 StringBuilder res = new StringBuilder();
 
                 Log.Append("Start\n");
-                res.Append(TextFromFelder(rechnung.sART00Vorlauf.Felder, typeof(SART00Vorlauf), null));
-                Log.Append("Satzart 00 Vorlauf fertig.\n");
+
+                res.Append(TextFromFelder(rechnung.sART00Vorlauf.Felder, typeof(SART00Vorlauf), null));                
+                Log.Append("SART9900-Vorlauf fertig.\n");
+                
                 res.Append(TextFromFelder(rechnung.sART00Beginn.Felder, typeof(SART00Beginn), rechnung.sART00Beginn.Kopf));
-                Log.Append("Satzart 00 Datensatzbeginn fertig.\n");
+                Log.Append("SART00-Datensatzbeginn fertig.\n");
 
                 foreach (VOSchein voschein in rechnung.VOScheine)
                 {
                     res.Append(TextFromFelder(voschein.sART01.Felder, typeof(SART01), voschein.sART01.Kopf));
                     Log.Append("Verordnungsschein für " + voschein.sART01.Felder[6].value + " " + voschein.sART01.Felder[7].value + "\n");
+                    
                     foreach (Versorgunseinheit versorgunseinheit in voschein.Versorgungseinheiten)
                     {
                         foreach(Position position in versorgunseinheit.Positionen)
                         {
                             res.Append(TextFromFelder(position.sART30.Felder, typeof(SART30), position.sART30.Kopf));
+                            Log.Append("   SART30: Positionsbetrag: " + position.sART30.Felder[3].value.ToString() + "\n");
                         }
                         res.Append(TextFromFelder(versorgunseinheit.sART32.Felder, typeof(SART32), versorgunseinheit.sART32.Kopf));
+                        Log.Append("   SART32: Vers-Einheit-Betrag: " + versorgunseinheit.sART32.Felder[6].value.ToString() + "\n");
                     }
                     res.Append(TextFromFelder(voschein.sART34.Felder, typeof(SART34), voschein.sART34.Kopf));
+                    Log.Append("   SART-34: VO-Schein-Betrag: " + voschein.sART34.Felder[5].value.ToString() + "\n");
                 }
                 res.Append(TextFromFelder(rechnung.sART36.Felder, typeof(SART36), rechnung.sART36.Kopf));
-                Log.Append("Satzart 36 fertig.\n");
+                Log.Append("SART36: Rechnungsberagbetrag: " + rechnung.sART36.Felder[3].value.ToString() + "\n");
+
+                foreach (SART39 Hinweis in rechnung.listSART39)
+                {
+                    res.Append(TextFromFelder(Hinweis.Felder, typeof(SART01), Hinweis.Kopf));
+                    Log.Append("SART39: Rechnungshinweis ("+ Rechnungshinweis + ")\n");
+                }
+
                 res.Append(TextFromFelder(rechnung.sART99Ende.Felder, typeof(SART99Ende), rechnung.sART99Ende.Kopf));
-                Log.Append("Satzart 00 Datensatzende fertig.\n");
+                Log.Append("SART00-Datensatzende fertig.\n");
+                
                 res.Append(TextFromFelder(rechnung.sART99Nachlauf.Felder, typeof(SART99Nachlauf), null));
-                Log.Append("Satzart 00 Nachlauf fertig.\n");
+                Log.Append("SART00-Nachlauf fertig.\n");
 
                 if (!HasError)
                 {
