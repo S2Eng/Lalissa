@@ -33,7 +33,7 @@ namespace PMDS.Global
         private List<Leistungszeile> lstZeilen = new List<Leistungszeile>();
         private Chilkat.Xml _FSWXml = new Chilkat.Xml();
         public db.cEBInterfaceDB.Transaction Transaction { get; set; } = new db.cEBInterfaceDB.Transaction();
-        public bool UseXlsxExport { get; set; } = false;
+        public bool UseXlsxExport { get; set; }
         private ExcelEngine _FSWXlsx = new ExcelEngine();
 
         private eAction _RunAction;

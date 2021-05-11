@@ -33,13 +33,13 @@ namespace PMDS.Global.db
         private string BundelandLeistungserbringer = "6";
         private string ZVR = "".PadRight(9, ' ');
 
-        private Guid IDKlinik;
+        //private Guid IDKlinik;
         private string KlinikBezeichnung;
-        private string KlinikBank;
-        private string KlinikBIC;
-        private string KlinikIBAN;
-        private string KlinikStrasse;
-        private string KlinikOrt;
+        //private string KlinikBank;
+        //private string KlinikBIC;
+        //private string KlinikIBAN;
+        //private string KlinikStrasse;
+        //private string KlinikOrt;
         private string KlinikPLZ;
         private string KlinikUID;
 
@@ -49,7 +49,7 @@ namespace PMDS.Global.db
         private DateTime Rechnungsdatum = DateTime.Now;
         private string Verrechnungsart = "02";
         private double MwStSatz = 20;
-        private string PositionText = "Inko-Pauschale";
+        private string PositionText = "";    //"Inko-Pauschale";
         private string SubProjektCode = "HH";
         private string Rechnungshinweis = "Das ist keine Rechnung im Sinne des UStG.";
         private int RundungsdifferenzErlauben = 1;
@@ -171,7 +171,6 @@ namespace PMDS.Global.db
         {
             public List<Feld> Felder = new List<Feld>();
         }
-
         private class Feld
         {
             public dynamic value = "";
@@ -207,40 +206,10 @@ namespace PMDS.Global.db
             Optional = 2
         }
 
-        public bool Init(string XLSXFile, string TxtFile, ref List<string> Result)
+        public bool Init(string XLSXFile, string TxtFile, out List<string> Result)
         {
             try
             {
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                {
-                    var rKlinik = (from k in db.Klinik
-                                   join adr in db.Adresse on k.IDAdresse equals adr.ID
-                                   join bank in db.Bank on k.IDBank equals bank.ID
-                                   where k.ID == ENV.IDKlinik
-                                   select new
-                                   {
-                                       IDKlinik = k.ID,
-                                       Bezeichnung = k.Bezeichnung.Trim().Substring(0, 45),
-                                       Bank = bank.Bezeichnung.Trim(),
-                                       BIC = bank.BIC.Trim(),
-                                       IBAN = bank.IBAN.Trim(),
-                                       Strasse = adr.Strasse.Trim(),
-                                       Ort = adr.Ort.Trim(),
-                                       PLZ = adr.Plz.Trim().Substring(0, 7),
-                                       UID = k.ZVR.Trim()
-                                   }).First();
-
-                    IDKlinik = (Guid)IDKlinik; 
-                    KlinikBezeichnung = rKlinik.Bezeichnung;
-                    KlinikBank = rKlinik.Bank;
-                    KlinikBIC = rKlinik.BIC;
-                    KlinikIBAN = rKlinik.IBAN;
-                    KlinikStrasse = rKlinik.Strasse;
-                    KlinikOrt = rKlinik.Ort;
-                    KlinikPLZ = rKlinik.PLZ;
-                    KlinikUID = rKlinik.UID;
-                }
-
                 using (ExcelEngine excelEngine = new ExcelEngine())
                 {
                     //File temporär kopieren, damit es auch verwendet werden kann, wenn es in Excel geöffnet ist
@@ -249,6 +218,7 @@ namespace PMDS.Global.db
 
                     IWorkbook workbook = excelEngine.Excel.Workbooks.Open(tmpXLSPath);
 
+                    CountSaetze = 0;
                     //Steuerungsdaten einlesen
                     IWorksheet sheetControl = workbook.Worksheets["Steuerung"];
                     Vertragspartnernummer = sheetControl.Range["C2"].Value;
@@ -272,7 +242,37 @@ namespace PMDS.Global.db
                     MwStSatz = sheetControl.Range["C22"].Number;
                     SubProjektCode = sheetControl.Range["D25"].FormulaStringValue;
                     Rechnungshinweis = sheetControl.Range["C26"].Value;
+                    Rechnungshinweis = Rechnungshinweis.Substring(0, Math.Min(Rechnungshinweis.Trim().Length, 100));
                     RundungsdifferenzErlauben = (int) sheetControl.Range["D27"].FormulaNumberValue;
+                    
+                    KlinikBezeichnung = sheetControl.Range["C28"].Value;
+                    KlinikPLZ = sheetControl.Range["C29"].Value;
+                    KlinikUID = sheetControl.Range["C30"].Value;
+
+                    if (String.IsNullOrWhiteSpace(KlinikBezeichnung))
+                    {
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                        {
+                            var rKlinik = (from k in db.Klinik
+                                           join adr in db.Adresse on k.IDAdresse equals adr.ID
+                                           join bank in db.Bank on k.IDBank equals bank.ID
+                                           where k.ID == ENV.IDKlinik
+                                           select new
+                                           {
+                                               Bezeichnung = k.Bezeichnung.Trim(),
+                                               PLZ = adr.Plz.Trim(),
+                                               UID = k.ZVR.Trim()
+                                           }).First();
+
+                            KlinikBezeichnung = rKlinik.Bezeichnung;
+                            KlinikPLZ = rKlinik.PLZ;
+                            KlinikUID = rKlinik.UID;
+                        }
+                    }
+
+                    KlinikBezeichnung = KlinikBezeichnung.Substring(0, Math.Min(KlinikBezeichnung.Trim().Length, 45));
+                    KlinikPLZ = KlinikPLZ.Substring(0, Math.Min(KlinikPLZ.Trim().Length, 7));
+                    KlinikUID = KlinikUID.Substring(0, Math.Min(KlinikUID.Trim().Length, 14));
 
                     //Positionsdaten einlesen
                     int PosNr = 0;
@@ -323,6 +323,9 @@ namespace PMDS.Global.db
 
                     PosNr = Row;
 
+                    rechnung.sART00Vorlauf = MakeSART00Vorlauf();
+                    rechnung.sART00Beginn = MakeSART00Beginn();
+
                     do
                     {
                         Row++;
@@ -347,8 +350,6 @@ namespace PMDS.Global.db
                     System.IO.File.Delete(tmpXLSPath);
                 }
 
-                rechnung.sART00Vorlauf = MakeSART00Vorlauf();
-                rechnung.sART00Beginn = MakeSART00Beginn();
                 rechnung.sART36 = MakeSART36(rechnung.VOScheine);
                 if (!string.IsNullOrWhiteSpace(Rechnungshinweis))
                 {
@@ -360,7 +361,8 @@ namespace PMDS.Global.db
                 string retLog = "";
                 string resTxt = "";
                 resTxt = FlushText(TxtFile, ref retLog);
-
+                
+                Result = new List<string>();
                 Result.Add(resTxt);
                 Result.Add(retLog);
                 return true;        
@@ -439,13 +441,13 @@ namespace PMDS.Global.db
                 sART00Beginn.Felder.Add(new Feld() { value = "", feldname = "RES", lfdNr = 6, von = 33, bis = 39, laenge = 7 });
                 sART00Beginn.Felder.Add(new Feld() { value = Vertragspartnernummer, feldname = "VPNRU", lfdNr = 7, von = 40, bis = 45, laenge = 6 });
                 sART00Beginn.Felder.Add(new Feld() { value = Vertragspartnernummer, feldname = "VPNRL", lfdNr = 8, von = 46, bis = 51, laenge = 6 });
-                sART00Beginn.Felder.Add(new Feld() { value = DVAdresseLeistungserbringer, feldname = "VPADRL", lfdNr = 9, von = 52, bis = 53, laenge = 2 });
+                sART00Beginn.Felder.Add(new Feld() { value = AdressCode2, feldname = "VPADRL", lfdNr = 9, von = 52, bis = 53, laenge = 2 });
                 sART00Beginn.Felder.Add(new Feld() { value = FachgebietLeistungserbringer, feldname = "FACHL", lfdNr = 10, von = 54, bis = 55, laenge = 2 });
                 sART00Beginn.Felder.Add(new Feld() { value = BundelandLeistungserbringer, feldname = "BLLE", lfdNr = 11, von = 56, bis = 56, laenge = 1 });
                 sART00Beginn.Felder.Add(new Feld() { value = KlinikUID, feldname = "UID", lfdNr = 12, von = 57, bis = 70, laenge = 14 });
                 sART00Beginn.Felder.Add(new Feld() { value = UIDDatenverrechner, feldname = "UIDV", lfdNr = 13, von = 71, bis = 84, laenge = 14 });
                 sART00Beginn.Felder.Add(new Feld() { value = ZVR, feldname = "ZVR", lfdNr = 14, von = 85, bis = 93, laenge = 9 });
-                sART00Beginn.Felder.Add(new Feld() { value = "40", feldname = "UFACHL", lfdNr = 15, von = 94, bis = 95, laenge = 2 });
+                sART00Beginn.Felder.Add(new Feld() { value = "00", feldname = "UFACHL", lfdNr = 15, von = 94, bis = 95, laenge = 2 });
                 sART00Beginn.Felder.Add(new Feld() { value = AdressCode3, feldname = "VPADR", lfdNr = 16, von = 96, bis = 98, laenge = 3 });
                 sART00Beginn.Felder.Add(new Feld() { value = AdressCode3, feldname = "VPADRL", lfdNr = 17, von = 99, bis = 101, laenge = 3 });
                 sART00Beginn.Felder.Add(new Feld() { value = "", feldname = "RES", lfdNr = 18, von = 102, bis = 128, laenge = 27 });
@@ -518,6 +520,7 @@ namespace PMDS.Global.db
                 sART01.Felder.Add(new Feld() { value = "0", feldname = "FREM", lfdNr = 7, von = 32, bis = 32, laenge = 1 });
                 sART01.Felder.Add(new Feld() { value = FamName, feldname = "ZUNVS", lfdNr = 8, von = 33, bis = 62, laenge = 30 });
                 sART01.Felder.Add(new Feld() { value = Vorname, feldname = "VONVS", lfdNr = 9, von = 63, bis = 77, laenge = 15 });
+                sART01.Felder.Add(new Feld() { value = SVNr, feldname = "VSNRV", lfdNr = 10, von = 78, bis = 87, laenge = 10 });
                 sART01.Felder.Add(new Feld() { value = KategorieCode, feldname = "KAT", lfdNr = 11, von = 88, bis = 90, laenge = 3 });
                 sART01.Felder.Add(new Feld() { value = new DateTime(Convert.ToInt32(Abrechnungsjahr), Convert.ToInt32(Abrechnungsmonat), 1), feldname = "VDAT", lfdNr = 12, von = 91, bis = 96, laenge = 6, typ = FeldTyp.DateTimeddMMyy});
                 sART01.Felder.Add(new Feld() { value = new DateTime(Convert.ToInt32(Abrechnungsjahr), Convert.ToInt32(Abrechnungsmonat), 1), feldname = "UDAT", lfdNr = 13, von = 97, bis = 102, laenge = 6, typ = FeldTyp.DateTimeddMMyy });
@@ -549,7 +552,7 @@ namespace PMDS.Global.db
                 SART30 sART30 = new SART30();
                 sART30.Kopf = MakeSatzkopf();
                 sART30.Felder.Add(new Feld() { value = "30", feldname = "SART", lfdNr = 2, von = 21, bis = 22, laenge = 2 });
-                sART30.Felder.Add(new Feld() { value = 0, feldname = "POSNR", lfdNr = 3, von = 23, bis = 40, laenge = 18, typ = FeldTyp.NumRechts0 });
+                sART30.Felder.Add(new Feld() { value = 100, feldname = "POSNR", lfdNr = 3, von = 23, bis = 40, laenge = 18, typ = FeldTyp.NumRechts0 });
                 sART30.Felder.Add(new Feld() { value = "000100", feldname = "ANZ", lfdNr = 4, von = 41, bis = 46, laenge = 6 });
                 sART30.Felder.Add(new Feld() { value = Betrag, feldname = "BETR", lfdNr = 5, von = 47, bis = 54, laenge = 8, typ = FeldTyp.CentRechts0 });
                 sART30.Felder.Add(new Feld() { value = Verrechnungsart, feldname = "VART", lfdNr = 6, von = 55, bis = 56, laenge = 2 });
@@ -717,6 +720,7 @@ namespace PMDS.Global.db
                 sART39.Felder.Add(new Feld() { value = Text, feldname = "TXT", lfdNr = 3, von = 23, bis = 122, laenge = 100 });
                 sART39.Felder.Add(new Feld() { value = "", feldname = "RES", lfdNr = 4, von = 123, bis = 128, laenge = 6 });
 
+                rechnung.sART99Nachlauf.AnzahlGesamt++;
                 return sART39;
             }
             catch (Exception ex)
@@ -757,7 +761,7 @@ namespace PMDS.Global.db
             try
             {
                 rechnung.sART99Nachlauf.AnzahlGesamt++;
-                rechnung.sART99Nachlauf.Felder.Add(new Feld() { value = "00", feldname = "SART", lfdNr = 1, von = 1, bis = 2, laenge = 2 });
+                rechnung.sART99Nachlauf.Felder.Add(new Feld() { value = "99", feldname = "SART", lfdNr = 1, von = 1, bis = 2, laenge = 2 });
                 rechnung.sART99Nachlauf.Felder.Add(new Feld() { value = "", feldname = "RES", lfdNr = 2, von = 3, bis = 9, laenge = 7 });
                 rechnung.sART99Nachlauf.Felder.Add(new Feld() { value = DatenÜbernehmer, feldname = "VSTRU", lfdNr = 3, von = 10, bis = 11, laenge = 2 });   //ÖGK-Kärnten
                 rechnung.sART99Nachlauf.Felder.Add(new Feld() { value = Vertragspartnernummer, feldname = "OBUS", lfdNr = 4, von = 12, bis = 18, laenge = 7 });

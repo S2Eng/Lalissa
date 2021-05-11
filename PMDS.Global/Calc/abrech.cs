@@ -11,7 +11,7 @@ namespace PMDS.Global
 	public static class abrech
 	{
 
-        public static DateTime GueltigBis = new DateTime(2099, 12, 31, 23, 59, 59);
+        public static DateTime GueltigBis { get; set; } = new DateTime(2099, 12, 31, 23, 59, 59);
         
 		public static string[] GetleistungsgruppeNames()
 		{

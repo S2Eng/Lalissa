@@ -16,9 +16,7 @@ using System.Data;
 using System.IO;
 using PMDS.Global.db.Patient;
 using System.Drawing;
-
 using PMDS.Global.db.ERSystem;
-using System.Linq;
 
 
 using Patagames.Pdf.Net;        //https://www.youtube.com/watch?v=IF9cKSUFon8

@@ -86,7 +86,7 @@ namespace PMDS.GUI.ELDA
         private void btnPickXlsx_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
-            OpenFileDialog1.Filter = "Excel Dateien |*.xlsx";
+            OpenFileDialog1.Filter = "Excel Dateien|*.xlsx;*.xlsm";
             OpenFileDialog1.InitialDirectory = PMDS.Global.ENV.ELDA_Pfad;
             DialogResult res = OpenFileDialog1.ShowDialog();
             if (res == DialogResult.OK)
@@ -111,17 +111,19 @@ namespace PMDS.GUI.ELDA
 
             rtbLog.Text = "";
             rtbTxt.Text = "";
-            List<string> res = new List<string>();
 
             PMDS.Global.db.cELDAInterfaceDB ELDA = new PMDS.Global.db.cELDAInterfaceDB();
-            if (ELDA.Init(txtXlsx.Text, txtTxt.Text, ref res))
+            if (ELDA.Init(txtXlsx.Text, txtTxt.Text, out List<string> res))
             {
-                rtbLog.Text = res[1];
-                rtbTxt.Text = res[0];
-            }
-            else
-            {
-                rtbTxt.Text = "";
+                if (res.Count == 2)
+                {
+                    rtbLog.Text = res[1];
+                    rtbTxt.Text = res[0];
+                }
+                else
+                {
+                    rtbLog.Text = "Es ist ein Fehler bei der Erstellung der ELDA-Datei aufgetreten.";
+                }
             }
         }
 

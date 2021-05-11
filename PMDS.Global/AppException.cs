@@ -10,19 +10,18 @@ namespace PMDS.Global
 
         public class AppExceptionDetails
         {
-            public string Message = "";
-            public int ExcepNr = -1;
-            public string exceptInfo = "";
-            public Exception InnerException = null;
-
-            public string TargetSite = "";
-            public string StackTrace = "";
-            public string HResult = "";
-            public string HelpLink = "";
+            public string Message { get; set; } = "";
+            public int ExcepNr { get; set; } = -1;
+            public string exceptInfo { get; set; } = "";
+            public Exception InnerException { get; set; } 
+            public string TargetSite { get; set; } = "";
+            public string StackTrace { get; set; } = "";
+            public string HResult { get; set; } = "";
+            public string HelpLink { get; set; } = "";
         }
 
-        public System.Collections.Generic.List<AppExceptionDetails> lstExceptNrs = new System.Collections.Generic.List<AppExceptionDetails>();
-        public int ExcepNr = -1;
+        public System.Collections.Generic.List<AppExceptionDetails> lstExceptNrs { get; set; } = new System.Collections.Generic.List<AppExceptionDetails>();
+        public int ExcepNr { get; set; } = -1;
 
 
 
