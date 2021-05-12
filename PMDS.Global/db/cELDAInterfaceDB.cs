@@ -514,7 +514,7 @@ namespace PMDS.Global.db
                 sART01.Kopf = MakeSatzkopf();
                 sART01.Felder.Add(new Feld() { value = "01", feldname = "SART", lfdNr = 2, von = 21, bis = 22, laenge = 2 });
                 sART01.Felder.Add(new Feld() { value = DatenVerrechner, feldname = "VSTRL", lfdNr = 3, von = 23, bis = 24, laenge = 2 });
-                sART01.Felder.Add(new Feld() { value = BundeslandDatenVerrechner, feldname = "BLNDL", lfdNr = 4, von = 25, bis = 26, laenge = 2 });
+                sART01.Felder.Add(new Feld() { value = BundeslandDatenVerrechner, feldname = "BLNDL", lfdNr = 4, von = 25, bis = 25, laenge = 1 });
                 sART01.Felder.Add(new Feld() { value = PosNr, feldname = "VONR", lfdNr = 5, von = 26, bis = 30, laenge = 5, typ = FeldTyp.NumRechts0 });
                 sART01.Felder.Add(new Feld() { value = "0", feldname = "EREIG", lfdNr = 6, von = 31, bis = 31, laenge = 1 });
                 sART01.Felder.Add(new Feld() { value = "0", feldname = "FREM", lfdNr = 7, von = 32, bis = 32, laenge = 1 });
@@ -526,7 +526,7 @@ namespace PMDS.Global.db
                 sART01.Felder.Add(new Feld() { value = new DateTime(Convert.ToInt32(Abrechnungsjahr), Convert.ToInt32(Abrechnungsmonat), 1), feldname = "UDAT", lfdNr = 13, von = 97, bis = 102, laenge = 6, typ = FeldTyp.DateTimeddMMyy });
                 sART01.Felder.Add(new Feld() { value = VPArzt, feldname = "VPNUW", lfdNr = 14, von = 103, bis = 108, laenge = 6 });
                 sART01.Felder.Add(new Feld() { value = "0", feldname = "VOART", lfdNr = 15, von = 109, bis = 109, laenge = 1 });
-                sART01.Felder.Add(new Feld() { value = "", feldname = "UNDAT", lfdNr = 16, von = 110, bis = 115, laenge = 6 });
+                sART01.Felder.Add(new Feld() { value = "", feldname = "UNDAT", lfdNr = 16, von = 110, bis = 115, laenge = 6, typ = FeldTyp.DateEmpty000000 });
                 sART01.Felder.Add(new Feld() { value = Vertragspartnernummer, feldname = "VPNRL", lfdNr = 17, von = 116, bis = 121, laenge = 6 });
                 sART01.Felder.Add(new Feld() { value = AdressCode2, feldname = "VPADRL", lfdNr = 18, von = 122, bis = 123, laenge = 2 });
                 sART01.Felder.Add(new Feld() { value = FachgebietLeistungserbringer, feldname = "FACHL", lfdNr = 19, von = 124, bis = 125, laenge = 2 });
@@ -596,8 +596,8 @@ namespace PMDS.Global.db
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "VANTUST", lfdNr = 6, von = 51, bis = 56, laenge = 6, typ = FeldTyp.CentRechts0 });
                 sART32.Felder.Add(new Feld() { value = sART32.Brutto, feldname = "GESUB", lfdNr = 8, von = 57, bis = 66, laenge = 10, typ = FeldTyp.CentRechts0 });
                 sART32.Felder.Add(new Feld() { value = sART32.Netto, feldname = "GESUM", lfdNr = 9, von = 67, bis = 76, laenge = 10, typ = FeldTyp.CentRechts0 });
-                sART32.Felder.Add(new Feld() { value = "", feldname = "DATE", lfdNr = 10, von = 77, bis = 82, laenge = 6, typ = FeldTyp.DateEmpty000000 });
-                sART32.Felder.Add(new Feld() { value = "", feldname = "DATR", lfdNr = 11, von = 83, bis = 88, laenge = 6 });
+                sART32.Felder.Add(new Feld() { value = 0, feldname = "DATE", lfdNr = 10, von = 77, bis = 82, laenge = 6, typ = FeldTyp.DateEmpty000000 });
+                sART32.Felder.Add(new Feld() { value = 0, feldname = "DATR", lfdNr = 11, von = 83, bis = 88, laenge = 6, typ = FeldTyp.DateEmpty000000 });
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "REHA", lfdNr = 12, von = 89, bis = 90, laenge = 2, typ = FeldTyp.NumRechts0 });
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "ABLG", lfdNr = 13, von = 91, bis = 93, laenge = 3, typ = FeldTyp.NumRechts0 });
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "REZANZ", lfdNr = 14, von = 94, bis = 95, laenge = 2, typ = FeldTyp.NumRechts0 });
@@ -720,6 +720,7 @@ namespace PMDS.Global.db
                 sART39.Felder.Add(new Feld() { value = Text, feldname = "TXT", lfdNr = 3, von = 23, bis = 122, laenge = 100 });
                 sART39.Felder.Add(new Feld() { value = "", feldname = "RES", lfdNr = 4, von = 123, bis = 128, laenge = 6 });
 
+                rechnung.sART99Ende.Anzahl39++;
                 rechnung.sART99Nachlauf.AnzahlGesamt++;
                 return sART39;
             }
@@ -744,7 +745,7 @@ namespace PMDS.Global.db
                 rechnung.sART99Ende.Felder.Add(new Feld() { value = rechnung.sART99Ende.Anzahl36, feldname = "ANZ36", lfdNr = 9, von = 53, bis = 57, laenge = 5, typ = FeldTyp.NumRechts0 });
                 rechnung.sART99Ende.Felder.Add(new Feld() { value = rechnung.sART99Ende.Anzahl39, feldname = "ANZ39", lfdNr = 10, von = 58, bis = 62, laenge = 5, typ = FeldTyp.NumRechts0 });
                 rechnung.sART99Ende.Felder.Add(new Feld() { value = rechnung.sART99Ende.Anzahl07, feldname = "ANZ07", lfdNr = 11, von = 63, bis = 67, laenge = 5, typ = FeldTyp.NumRechts0 });
-                rechnung.sART99Ende.Felder.Add(new Feld() { value = 1, feldname = "ANDP", lfdNr = 12, von = 63, bis = 67, laenge = 5, typ = FeldTyp.NumRechts0 });
+                rechnung.sART99Ende.Felder.Add(new Feld() { value = 1, feldname = "ANDP", lfdNr = 12, von = 68, bis = 69, laenge = 2, typ = FeldTyp.NumRechts0 });
                 rechnung.sART99Ende.Felder.Add(new Feld() { value = rechnung.sART99Ende.Anzahl11, feldname = "ANZ11", lfdNr = 13, von = 70, bis = 74, laenge = 5, typ = FeldTyp.NumRechts0 });
                 rechnung.sART99Ende.Felder.Add(new Feld() { value = rechnung.sART99Ende.Anzahl85, feldname = "ANZ85", lfdNr = 14, von = 75, bis = 79, laenge = 5, typ = FeldTyp.NumRechts0 });
                 rechnung.sART99Ende.Felder.Add(new Feld() { value = "", feldname = "RES", lfdNr = 15, von = 80, bis = 128, laenge = 49 });
@@ -865,6 +866,9 @@ namespace PMDS.Global.db
             try
             {
                 StringBuilder sb = new StringBuilder();
+                int von = 1;
+                int bis = von;
+                int laenge;
 
                 foreach (Feld f in Felder)
                 {
@@ -913,7 +917,7 @@ namespace PMDS.Global.db
                     }
                     else if (f.typ == FeldTyp.DateEmpty000000)
                     {
-                        txt = "".PadRight(f.laenge, ' ');;
+                        txt = "".PadRight(f.laenge, '0');;
                     }
                     else
                     {
@@ -931,11 +935,10 @@ namespace PMDS.Global.db
 
                     if (f.bis - f.von != f.laenge - 1)
                     {
-                        Log.Append("Error in definiton (von, bis length) of cell:" + f.feldname);
+                        Log.Append("Error in definiton (von, bis, length) of cell:" + f.feldname);
                         HasError = true;
                         return sb;
                     }
-
                     sb.Append(txt);
                 }
                 return sb;
