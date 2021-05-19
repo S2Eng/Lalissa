@@ -552,8 +552,8 @@ namespace PMDS.Global.db
                 SART30 sART30 = new SART30();
                 sART30.Kopf = MakeSatzkopf();
                 sART30.Felder.Add(new Feld() { value = "30", feldname = "SART", lfdNr = 2, von = 21, bis = 22, laenge = 2 });
-                sART30.Felder.Add(new Feld() { value = 100, feldname = "POSNR", lfdNr = 3, von = 23, bis = 40, laenge = 18, typ = FeldTyp.NumRechts0 });
-                sART30.Felder.Add(new Feld() { value = "000100", feldname = "ANZ", lfdNr = 4, von = 41, bis = 46, laenge = 6 });
+                sART30.Felder.Add(new Feld() { value = 100, feldname = "POSNR", lfdNr = 3, von = 23, bis = 40, laenge = 18, typ = FeldTyp.NumLinks });
+                sART30.Felder.Add(new Feld() { value = 1, feldname = "ANZ", lfdNr = 4, von = 41, bis = 46, laenge = 6, typ = FeldTyp.CentRechts0 });
                 sART30.Felder.Add(new Feld() { value = Betrag, feldname = "BETR", lfdNr = 5, von = 47, bis = 54, laenge = 8, typ = FeldTyp.CentRechts0 });
                 sART30.Felder.Add(new Feld() { value = Verrechnungsart, feldname = "VART", lfdNr = 6, von = 55, bis = 56, laenge = 2 });
                 sART30.Felder.Add(new Feld() { value = MwStSatz, feldname = "UST", lfdNr = 7, von = 57, bis = 58, laenge = 2, typ = FeldTyp.NumRechts0 });
@@ -596,7 +596,7 @@ namespace PMDS.Global.db
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "VANTUST", lfdNr = 6, von = 51, bis = 56, laenge = 6, typ = FeldTyp.CentRechts0 });
                 sART32.Felder.Add(new Feld() { value = sART32.Brutto, feldname = "GESUB", lfdNr = 8, von = 57, bis = 66, laenge = 10, typ = FeldTyp.CentRechts0 });
                 sART32.Felder.Add(new Feld() { value = sART32.Netto, feldname = "GESUM", lfdNr = 9, von = 67, bis = 76, laenge = 10, typ = FeldTyp.CentRechts0 });
-                sART32.Felder.Add(new Feld() { value = 0, feldname = "DATE", lfdNr = 10, von = 77, bis = 82, laenge = 6, typ = FeldTyp.DateEmpty000000 });
+                sART32.Felder.Add(new Feld() { value = new DateTime(Convert.ToInt32(Abrechnungsjahr), Convert.ToInt32(Abrechnungsmonat), 1), feldname = "DATE", lfdNr = 12, von = 91, bis = 96, laenge = 6, typ = FeldTyp.DateTimeddMMyy });
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "DATR", lfdNr = 11, von = 83, bis = 88, laenge = 6, typ = FeldTyp.DateEmpty000000 });
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "REHA", lfdNr = 12, von = 89, bis = 90, laenge = 2, typ = FeldTyp.NumRechts0 });
                 sART32.Felder.Add(new Feld() { value = 0, feldname = "ABLG", lfdNr = 13, von = 91, bis = 93, laenge = 3, typ = FeldTyp.NumRechts0 });
