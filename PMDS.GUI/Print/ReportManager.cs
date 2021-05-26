@@ -58,7 +58,7 @@ namespace PMDS.Print
 
         public static void PrintUnterbringungReport(Guid IDUnterbringung, Guid IDKlinik_current, DateTime Beginn)
         {
-            string sPath = Beginn >= DateTime.ParseExact("2010-07-01", "yyyy-MM-dd", null) ? ENV.GetReportFileNameFromConfig("UNTERBRINGUNG2010") : ENV.GetReportFileNameFromConfig("UNTERBRINGUNG");
+            string sPath = Beginn >= DateTime.ParseExact("2010-07-01", "yyyy-MM-dd", null) ? ENV.CheckReportExists("UNTERBRINGUNG2010.rpt") : ENV.CheckReportExists("UNTERBRINGUNG.rpt");
 
             List<BerichtParameter> list = new List<BerichtParameter>();
             BerichtParameter b = new BerichtParameter("IDUnterbringung", BerichtParameter.BerichtParameterTyp.Text, "IDUnterbringung", IDUnterbringung.ToString());
@@ -76,7 +76,7 @@ namespace PMDS.Print
 
         public static void PrintNotfallBlattReport(Guid IDSP)
         {
-            string sPath = ENV.GetReportFileNameFromConfig("NOTFALLBLATT");
+            string sPath = ENV.CheckReportExists("NOTFALLBLATT.rpt");
 
             List<BerichtParameter> list = new List<BerichtParameter>();
             BerichtParameter b = new BerichtParameter("IDSP_Current", PMDS.Print.CR.BerichtParameter.BerichtParameterTyp.Text, "IDSP_Current", IDSP.ToString());
@@ -183,7 +183,7 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("PFLEGERKARTE"));
+                rpt.Load(ENV.CheckReportExists("PFLEGERKARTE.rpt"));
                 AddCrystalParameter(rpt, "BARCODE", Barcode);
                 AddCrystalParameter(rpt, "NAME", Name);
                 AddCrystalParameter(rpt, "KLINIKNAME", KlinikName);
@@ -219,8 +219,8 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("manBuchungen"));
-                PMDS.Print.CR.ReportManager.setDataSource(ds, ENV.GetReportFileNameFromConfig("manBuchungen"), rpt);
+                rpt.Load(ENV.CheckReportExists("manBuchungen.rpt"));
+                PMDS.Print.CR.ReportManager.setDataSource(ds, ENV.CheckReportExists("manBuchungen.rpt"), rpt);
                 return rpt;
             }
             finally
@@ -236,8 +236,8 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("TASCHENGELD"));
-                PMDS.Print.CR.ReportManager.setDataSource(ds, ENV.GetReportFileNameFromConfig("TASCHENGELD"), rpt);
+                rpt.Load(ENV.CheckReportExists("TASCHENGELD.rpt"));
+                PMDS.Print.CR.ReportManager.setDataSource(ds, ENV.CheckReportExists("TASCHENGELD.rpt"), rpt);
                 return rpt;
             }
             finally
@@ -253,7 +253,7 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("PFLEGPLAN"));
+                rpt.Load(ENV.CheckReportExists("PFLEGPLAN.rpt"));
                 return rpt;
             }
             finally
@@ -271,8 +271,8 @@ namespace PMDS.Print
             {
                 ReportDocument rpt = new ReportDocument();
 
-                rpt.Load(ENV.GetReportFileNameFromConfig("AUFGABENLISTE"));   // statt AUFGABENLISTE
-                PMDS.Print.CR.ReportManager.setDataSource(dt, ENV.GetReportFileNameFromConfig("AUFGABENLISTE"), rpt);   //lthok
+                rpt.Load(ENV.CheckReportExists("AUFGABENLISTE.rpt"));   // statt AUFGABENLISTE
+                PMDS.Print.CR.ReportManager.setDataSource(dt, ENV.CheckReportExists("AUFGABENLISTE.rpt"), rpt);   //lthok
 
                 return rpt;
             }
@@ -291,7 +291,7 @@ namespace PMDS.Print
                                             PMDS.Print.CR.BerichtParameter.BerichtParameterTyp.Zahl,BerichtParameter.BerichtParameterTyp.Zahl,BerichtParameter.BerichtParameterTyp.Zahl,BerichtParameter.BerichtParameterTyp.Zahl,BerichtParameter.BerichtParameterTyp.Zahl,BerichtParameter.BerichtParameterTyp .Boolean};
             string[] ParameterNameArray = { "bKlientenansichtJN", "IDAbteilung", "IDBereich", "IDAufenthalt", "dtVon", "dtBis", "iVorberNein", "iVorberkurz", "iVorberlang", "iVorberBedarf", "iVorberArzt", "iVorberSuchtgift", "bAnmerkung" };
 
-            string sPath = ENV.GetReportFileNameFromConfig("MEDIKAMENTVORBEREITUNG");
+            string sPath = ENV.CheckReportExists("MEDIKAMENTVORBEREITUNG.rpt");
 
             List<BerichtParameter> list = new List<BerichtParameter>();
             for (int i = 0; i < ParameterArray.Length; i++)
@@ -322,8 +322,8 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("MEDIKAMENTENAUSGABE"));
-                PMDS.Print.CR.ReportManager.setDataSource((DataTable)dt, ENV.GetReportFileNameFromConfig("MEDIKAMENTENAUSGABE"), rpt);
+                rpt.Load(ENV.CheckReportExists("MEDIKAMENTENAUSGABE.rpt"));
+                PMDS.Print.CR.ReportManager.setDataSource((DataTable)dt, ENV.CheckReportExists("MEDIKAMENTENAUSGABE.rpt"), rpt);
                 return rpt;
             }
             finally
@@ -337,44 +337,46 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("MEDIKAMENTENBLATT"));
+                rpt.Load(ENV.CheckReportExists("MEDIKAMENTENBLATT.rpt"));
                 dsRepMedikamentenBlatt ds = MedikamentenBlattDataSource.FilldsMBlatt(dt, IDAufenthalt, AbgesetzteMedNo);
 
-                dsKlientenliste dsKlientenliste1 = new dsKlientenliste();
-                sqlManange sqlManange1 = new sqlManange();
-                sqlManange1.initControl();
-                System.Collections.Generic.List<int> lstMedDaten = new List<int>();
-                lstMedDaten.Add(3);
-                lstMedDaten.Add(6);
-
-                Guid IDPatient;
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                using (dsKlientenliste dsKlientenliste1 = new dsKlientenliste())
                 {
-                    var rAufenthalt = (from a2 in db.Aufenthalt
-                                    where a2.ID == IDAufenthalt
-                                       select new
-                                       {
-                                            IDPatient = a2.IDPatient,
-                                            IDAufenthalt = a2.ID,
-                                       }).First();
+                    using (sqlManange sqlManange1 = new sqlManange())
+                    {
+                        sqlManange1.initControl();
+                        System.Collections.Generic.List<int> lstMedDaten = new List<int>();
+                        lstMedDaten.Add(3);
+                        lstMedDaten.Add(6);
 
-                    sqlManange1.getMedizinischeDaten(dsKlientenliste1, rAufenthalt.IDPatient.Value, lstMedDaten, sqlManange.eTypeMedDaten.MedDaten);
-                    sqlManange1.getMedizinischeDatenLayout(dsKlientenliste1, sqlManange.eTypeMedDaten.All);
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                        {
+                            var rAufenthalt = (from a2 in db.Aufenthalt
+                                               where a2.ID == IDAufenthalt
+                                               select new
+                                               {
+                                                   IDPatient = a2.IDPatient,
+                                                   IDAufenthalt = a2.ID,
+                                               }).First();
+
+                            sqlManange1.getMedizinischeDaten(dsKlientenliste1, rAufenthalt.IDPatient.Value, lstMedDaten, sqlManange.eTypeMedDaten.MedDaten);
+                            sqlManange1.getMedizinischeDatenLayout(dsKlientenliste1, sqlManange.eTypeMedDaten.All);
+                        }
+                    }
+                    DataTable dtMedDaten = new DataTable();
+                    DataTable dtMedDatenLayout = new DataTable();
+
+                    if (dsKlientenliste1.MedizinischeDaten.Any())    //os 19-02-22 - Sonst gibt es ein Exception, wenn keine Unverträglichkeit oder Allerige vorliegt
+                        dtMedDaten = dsKlientenliste1.MedizinischeDaten.CopyToDataTable();
+                    if (dsKlientenliste1.MedizinischeDatenLayout.Any())
+                        dtMedDatenLayout = dsKlientenliste1.MedizinischeDatenLayout.CopyToDataTable();
+
+                    dtMedDaten.TableName = "MedizinischeDaten";
+                    dtMedDatenLayout.TableName = "MedizinischeDatenLayout";
+                    ds.Tables.Add(dtMedDaten);
+                    ds.Tables.Add(dtMedDatenLayout);
                 }
-                DataTable dtMedDaten = new DataTable();
-                DataTable dtMedDatenLayout = new DataTable();
-
-                if (dsKlientenliste1.MedizinischeDaten.Count() > 0)    //os 19-02-22 - Sonst gibt es ein Exception, wenn keine Unverträglichkeit oder Allerige vorliegt
-                    dtMedDaten = dsKlientenliste1.MedizinischeDaten.CopyToDataTable();
-                if (dsKlientenliste1.MedizinischeDatenLayout.Count() > 0)
-                    dtMedDatenLayout = dsKlientenliste1.MedizinischeDatenLayout.CopyToDataTable();
-
-                dtMedDaten.TableName = "MedizinischeDaten";
-                dtMedDatenLayout.TableName = "MedizinischeDatenLayout";
-                ds.Tables.Add(dtMedDaten);
-                ds.Tables.Add(dtMedDatenLayout);
-
-                PMDS.Print.CR.ReportManager.setDataSource(ds, ENV.GetReportFileNameFromConfig("MEDIKAMENTENBLATT"), rpt);
+                PMDS.Print.CR.ReportManager.setDataSource(ds, ENV.CheckReportExists("MEDIKAMENTENBLATT.rpt"), rpt);
 
                 //<20120216>
                 Aufenthalt a = new Aufenthalt(IDAufenthalt);
@@ -403,8 +405,8 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("BEWERBERLISTE"));
-                PMDS.Print.CR.ReportManager.setDataSource((DataTable)dt, ENV.GetReportFileNameFromConfig("BEWERBERLISTE"), rpt);
+                rpt.Load(ENV.CheckReportExists("BEWERBERLISTE.rpt"));
+                PMDS.Print.CR.ReportManager.setDataSource((DataTable)dt, ENV.CheckReportExists("BEWERBERLISTE.rpt"), rpt);
 
                 return rpt;
             }
@@ -421,7 +423,7 @@ namespace PMDS.Print
                                              ,BerichtParameter.BerichtParameterTyp.DatumZeit,BerichtParameter.BerichtParameterTyp.Text,BerichtParameter.BerichtParameterTyp.Text,BerichtParameter.BerichtParameterTyp.Boolean};
             string[] ParameterNameArray = { "Klient", "Wirksamkeitvon", "zimmerart_txt", "befristetJN", "befristetbis", "Vertragspartner_txt", "Vertrauensperson_txt", "unbefristetjn" };
 
-            string sPath = ENV.GetReportFileNameFromConfig("HEIMVERTRAG");
+            string sPath = ENV.CheckReportExists("HEIMVERTRAG.rpt");
 
             List<BerichtParameter> list = new List<BerichtParameter>();
             for (int i = 0; i < ParameterArray.Length; i++)
@@ -452,14 +454,14 @@ namespace PMDS.Print
 
             if (AufenthaltID != Guid.Empty)
             {
-                sPath = ENV.GetReportFileNameFromConfig("KLIENTENSTAMMDATENBLATT");
+                sPath = ENV.CheckReportExists("KLIENTENSTAMMDATENBLATT.rpt");
                 a = new Aufenthalt(AufenthaltID);
                 IDKlinik_current = a.IDKlinik;
                 IDAbteilung_current = a.IDAbteilung;
             }
             else
             {
-                sPath = ENV.GetReportFileNameFromConfig("BEWERBERSTAMMDATENBLATT");
+                sPath = ENV.CheckReportExists("BEWERBERSTAMMDATENBLATT.rpt");
             }
 
 
@@ -596,7 +598,7 @@ namespace PMDS.Print
             try
             {   //lthArztabrechnung
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("Arztbrief"));
+                rpt.Load(ENV.CheckReportExists("Arztbrief.rpt"));
 
                 dsRezeptEintrag.RezeptEintragDataTable dt = null;
                 dsRepMedikamentenBlatt dsMedBlatt = PMDS.DynReportsForms.MedikamentenBlattDataSource.FilldsMBlatt(dt, IDAufenthalt, false);
@@ -639,7 +641,7 @@ namespace PMDS.Print
             try
             {     
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.GetReportFileNameFromConfig("Diagnoseliste"));
+                rpt.Load(ENV.CheckReportExists("Diagnoseliste.rpt"));
                 frmPrintPreview.LogOnCrystReport(rpt, null, false);
 
                 ReportManager.AddCrystalParameter(rpt, "IDPatient", IDPatient.ToString("B"));

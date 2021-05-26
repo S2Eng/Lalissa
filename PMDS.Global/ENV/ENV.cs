@@ -164,9 +164,6 @@ namespace PMDS.Global
         public static bool adminSecure;
         public static bool LoggedInAsSuperUser;
 
-        public static bool PMDSNew;
-
-
         public static bool SpellCheckerOn;
         public static bool FullEditMode;
         public static uint AssessmentModifyTime = 24;
@@ -1396,7 +1393,6 @@ namespace PMDS.Global
                 SetENVValue("RezeptBestellModus", ref ENV.RezeptBestellModus);
                 SetENVValue("SHOW_AUFNAHMEBUTTON", ref ENV.ShowAufnahmeButton);     //In Config von ON|OFF auf 1|0 umstellen!!!  //ENV.ShowAufnahmeButton = _Log.ConfigFile.GetStringValue("SHOW_AUFNAHMEBUTTON") == "ON" ? true : false;
 
-                SetENVValue("PMDSNew", ref ENV.PMDSNew);
                 SetENVValue("ELGAStatusGreen", ref ENV.ELGAStatusGreen);
                 SetENVValue("ELGAStatusYellow", ref ENV.ELGAStatusYellow);
                 SetENVValue("ELGAStatusRed", ref ENV.ELGAStatusRed);
@@ -2230,14 +2226,14 @@ namespace PMDS.Global
                                         (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim()));
                 //QS2.Logging.ENV.doLog(sExceptNr + e.ToString(), "", "PMDS-System", true);
                 if (checkOutOfMemory)
-                    ENV.checkExceptionOutOfMemory(e.ToString(), sType, ShowMsgBox);
+                    ENV.checkExceptionOutOfMemory(e.ToString());
             }
             else
             {
                 QS2.Logging.ENV.doLog2(e.ToString(), dNow, sHostName.Trim(), IPAdress.Trim(), sUsrLoggedIn.Trim(), sType.Trim(), true, ShowMsgBox,
                                         (string.IsNullOrEmpty(TitleAlternative) ? "" : TitleAlternative.Trim()));
                 if (checkOutOfMemory)
-                    ENV.checkExceptionOutOfMemory(e.ToString(), sType, ShowMsgBox);
+                    ENV.checkExceptionOutOfMemory(e.ToString());
             }
         }
 
@@ -2452,19 +2448,15 @@ namespace PMDS.Global
                 return false;
             }
         }
-        public static void checkExceptionOutOfMemory(string except, string sType, bool ShowMsgBox)
+
+        public static void checkExceptionOutOfMemory(string except)
         {
-            if (except.Trim().ToLower().Contains(("OutOfMemoryException").Trim().ToLower()))                //System.OutOfMemoryException
+            if (generic.sEquals(except, "OutOfMemoryException", Enums.eCompareMode.Contains))             
             {
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der max. Speicherverbrauch für PMDS wurde überschritten! (32 Bit Version)" + "\r\n" +
                                                                             "PMDS muss neu gestartet werden!", "PMDS", MessageBoxButtons.OK);
-
-                //Exception exTmp = new Exception(DateTime.Now.ToString() + "User has verifyed the message RAM is too high for App PMDS!");
-                //ENV.HandleException(exTmp, "ExceptionRAM", false, false);         //lthxy
-                //ENV.killApp();
             }
         }
-
 
         public static void WriteLog(string txt)
         {
@@ -2485,47 +2477,6 @@ namespace PMDS.Global
             currentProcess.Kill();
         }
 
-
-
-
-
-
-
-
-
-
-        public static string GetReportFileName(string sKey)
-        {
-            switch (sKey)
-            {
-                case "AUFGABENLISTE": return "rptAufgabenListe.rpt";
-                case "PFLEGERKARTE": return "rptPflegerKarte.rpt";
-                case "PFLEGPLAN": return "PflegePlan.rpt";
-                case "MEDIKAMENTVORBEREITUNG": return "MedikamentVorbereitung.rpt";
-                case "MEDIKAMENTENAUSGABE": return "MedikamentenAusgabe.rpt";
-                case "MEDIKAMENTENBLATT": return "MedikamentenBlatt.rpt";
-                case "MEDIKAMENTEBESTELLUNG": return "MedikamenteBestellung.rpt";
-                case "REZEPTDRUCK": return "RezeptDruck.rpt";
-                case "UNTERBRINGUNG": return "Unterbringung.rpt";
-                case "UNTERBRINGUNG2010": return "Unterbringung2010.rpt";
-                case "NOTFALLBLATT": return "Notfall.rpt";
-                case "BEWERBERSTAMMDATENBLATT": return "BewerberstammdatenBlatt.rpt";
-                case "KLIENTENSTAMMDATENBLATT": return "Klientenstammdatenblatt.rpt";
-                case "HEIMVERTRAG": return "HeimVertrag.rpt";
-                case "BEWERBERLISTE": return "Bewerberliste.rpt";
-                case "TASCHENGELD": return "Taschengeld.rpt";
-                case "RECHNUNG": return "rptRechnung.rpt";
-                case "manBuchungen": return "manBuchungen.rpt";
-                case "BestellungMedikamente": return "BestellungMedikamente.rpt";
-                case "AnforderungRezepte": return "AnforderungRezepte.rpt";
-                case "DruckRezepte": return "DruckRezepte.rpt";
-                case "Arztbrief": return "Arztbrief.rpt";                       //lthArztabrechnung   
-                case "Diagnoseliste": return "Diagnoseliste.rpt";
-
-                default: return "Report " + sKey.Trim() + " not found";
-            }
-        }
-
         public static string BefundTypText(eBefundTyp FileExtension)
         {
             switch (FileExtension)
@@ -2542,25 +2493,19 @@ namespace PMDS.Global
                     return ".lab";
                 case eBefundTyp.DICOMDIR:
                     return ".dicomdir";
-
             }
             return ".NOTDEFINED";
         }
 
-        public static string GetReportFileNameFromConfig(string sKey)
+        public static string CheckReportExists(string sKey)
         {
-            string sPath = ReportPath;
-            if (sPath.Length == 0)
-                sPath = ".\\";
-            if (!sPath.EndsWith("\\"))
-                sPath += "\\";
-            sPath += GetReportFileName(sKey);
-         
+            string sPath = System.IO.Path.Combine(ReportPath, sKey);         
+
             if (!System.IO.File.Exists(sPath))
                 throw new Exception(string.Format("Report File <{0}> ({1}) not found!", sPath, sKey));
+
             return sPath;
         }
-
     }
 
     public class cParDelegSendMain
@@ -2581,14 +2526,8 @@ namespace PMDS.Global
     public delegate void sendMainChangedDelegate(eSendMain typ, cParDelegSendMain ParDelegSendMain);
     public delegate bool selKlientenDelegate(eSendMain typ, System.Collections.Generic.List<string> filterString, bool suche, object obj);
     public delegate void klinikChanged(dsKlinik.KlinikRow rKlinikSelected, bool allKliniken);
-
-
     public delegate void dPatientenUersPickerValueChanged(Nullable<Guid> IDKlinik, Nullable<Guid> IDAbteilung, Nullable<Guid> IDBereich, System.Collections.Generic.List<Guid> lstSelectedUsersPatients, UltraTreeNode treeNode, eTypePatientenUserPickerChanged TypePatientenUserPickerChanged);
     public delegate void dAbtBereichPickerValueChanged(Nullable<Guid> IDKlinik, Nullable<Guid> IDAbteilung, Nullable<Guid> IDBereich,  UltraTreeNode treeNode);
-
-    
-
-
 
     public enum UserRights      
     {
@@ -2762,79 +2701,8 @@ namespace PMDS.Global
         RezepteBestellen = 110,
         [Description("Abrechnung Inko-Produkt-Pauschale")]
         AbrechnungInkoProdukte = 117,
-
-
-        //,
-        //[Description("EDIFACT Import")]
-        //EDIFACT_Import = 75
-
-        //-------------------------------------------------------------------
-        // NICHT MEHR VERWENDET !!!
-        //-------------------------------------------------------------------
-        //ManageStationPDx		= 2,		// ??? Abteilungsabhängige Pflegedefinitionen verwalten
-        //ManageTimePlan			= 4,		// ??? Zeitliche Planung durchführen (Rückmeldungen)
-        //CreateStatistics		= 8,		// ??? Statistik erstellen
-        //PrintEvaluationList		= 9,		// ??? Evaluierungsliste drucken
-        //PrintPlan				= 13,		// ??? Pflegeplan drucken
-        //ChangeStation			= 5,		// Station wechseln
-        //PatDelete				= 45,		// Patienten löschen
-        //ASZM_Add				= 46,		// ASZM hinzufügen
-        //ASZM_Del				= 47,		// ASZM löschen
-        //ASZM_EintragZusatz_Edit	= 48,		// ASZM EintragZusatz bearbeiten
-        //PatRemark				= 33,		// Patienten Bemerkungen
-        //ReportUnexpMeasure		= 35,		// unerwartetet Maßnahmen rückmelden
-        //PatVermerk				= 36,		// Patienten Vermerk
-        //FullKlinik				= 16,		// gesamte Klinik verwalten (sonst nur aktuelle Abteilung)
-        //ReportBackEvaluation	= 11,		// Evaluierung rückmelden
-        //ReportBackBulk			= 37,		// Stapelrückmeldungen
-        //ChangeImportantGroup	= 38,		// Zuordnung der Wichtigkeit (Berufsgruppe)
-        //PrintTimePlan			= 15,		// Zeitlichen Ablauf drucken
-        //PrintLetter				= 14,		// Pflegebrief drucken
-        //PrintAufgaben			= 40,		// Aufgaben drucken
-        //PatBereichVersetzung	= 42,		// Patienten Bereich versetzen
-        //ManageDatabase			= 17,		// Sämtliche Datenbankverwatungsaufgaben erledigen (Backup)
-        //ManageKlinik			= 18,		// Klinik verwalten
-        //ManageEinrichtung		= 19,		// Einrichtungen verwalten
-        //ManageDefExtensionItems	= 24,		// Definieren der Zusatzeinträge
-        //ManageSetExtensionItems	= 25,		// Zuordnen der Zusatzeinträge
-        //ManageASZM				= 26,		// ASZM verwalten
-        //ManagePDx				= 1,		// Pflegedefinitionen verwalten
-        //ManageTop10				= 27,		// Top 10 Liste verwalten
-        //ManageMedikamente		= 51,		// Medikamente verwalten
-        //ManageFormulare			= 55,		// Formulare verwalten
-        //CreateNewFormulare		= 56,		// Formulare erzeugen
-        //ReadFormulare			= 57,		// Formulare anzeigen
-        //PrintFormulare			= 58,		// Formulare drucken
-        //ManageQuickFilter		= 59,		// Quickfilter verwalten
-        //ManageQuickMeldung		= 60,		// Quickmeldung verwalten
-        //ShowStartTerminListe	= 61,		// Am startbildschirm Terminliste (Tagesliste) anzeigen
-        //ShowStartTerminPlan		= 62,		// Am startbildschirm Terminplan (Planliste) anzeigen 
-        //ShowStartUebergabe		= 63,		// Am startbildschirm Übergabe anzeigen
-        //ShowStartAufnahme		= 64,		// Am startbildschirm Aufnahme anzeigen
-        //ShowStartStapelRM		= 65,		// Am startbildschirm anzeigen
-        //PrintBarcodeTerminListe	= 67,		// Barcodeliste drucken
-        //DeleteFormulare			= 70		// Formulare löschen
-        //KlientenAktSonstigeAendern = 45,      //Button für Klientenakt im Hauptmenü
-        //KlientenAktSonstigeAnzeigen = 31,
-        //ArchivTerminMailSucheGesamtxy = 52,
-        //AnmeldenOhneAbteilung = 3,		                    // Anmeldung ohne Abteilung zulassen
-        //CreateClassification = 7,		                        // Einstufung nach Orem erstellen
-        //DeleteClassification = 8,		                        // Einstufung nach Orem löschen
-        //ManageGroupRightsxy = 16,		                        // Gruppenrechte verwalten
-        //ManageUserRightsxy = 17,		                        // Benutzerrechte verwalten
-        //ManageColors = 19,		                            // Farben konfigurieren, laden, speichern
-        //LayoutKonfigurierenxy = 20,		                    // Termin Spalten konfigurieren
-        //ManageTerminLoadxy = 21,		                        // Termin Spalten laden
-        //ManageTerminSave = 22,		                        // Termin Spalten speichern
-        //BarcodeVerarbeitungxy = 25,		                    // Barcodes in BarcodeQ verarbeiten
-        //ManageDienstzeitenxyxy = 28,		                    // Dienstzeiten verwalten
-        //KlickOnGroupPickerRootNode = 59,
-        //[Description("Pep Stammdaten verwalten")]
-        //ManagePEPBaseData = 50,		                        // Verwalten der Peps Stammdaten
-        //[Description("Pep Pläne erstellen")]
-        //PepPlanen = 51		                                // Dienstpläne Planen
-
     }
+
     public enum UserRightsELGA
     {
         [Description("ELGA Patienten suchen")]
@@ -2871,7 +2739,7 @@ namespace PMDS.Global
 
     public enum eCurrentPatientChange
     {
-        Picker_linksOben = 0,
+        PickerLinksOben = 0,
         keiner = 1
     }
 

@@ -772,15 +772,15 @@ namespace PMDS.GUI
                         PMDS.Global.db.ERSystem.SendUnterbringung.retSendUnterbringung retSendUnterbringung1 = new Global.db.ERSystem.SendUnterbringung.retSendUnterbringung();
 
                         PMDS.Global.db.ERSystem.SendUnterbringung.eMeldungstyp Meldungstyp = new Global.db.ERSystem.SendUnterbringung.eMeldungstyp();
-                        if (rUnterbringung.Aktion.Trim().Equals("Vornahme", StringComparison.CurrentCultureIgnoreCase))
+                        if (generic.sEquals(rUnterbringung.Aktion, "Vornahme"))
                         {
                             Meldungstyp = Global.db.ERSystem.SendUnterbringung.eMeldungstyp.Vornahme;
                         }
-                        else if (rUnterbringung.Aktion.Trim().Equals("Verlaengerung", StringComparison.CurrentCultureIgnoreCase))
+                        else if (generic.sEquals(rUnterbringung.Aktion, "Verlaengerung"))
                         {
                             Meldungstyp = Global.db.ERSystem.SendUnterbringung.eMeldungstyp.Verlaengerung;
                         }
-                        else if (rUnterbringung.Aktion.Trim().Equals("Aufhebung", StringComparison.CurrentCultureIgnoreCase))
+                        else if (generic.sEquals(rUnterbringung.Aktion, "Aufhebung"))
                         {
                             Meldungstyp = Global.db.ERSystem.SendUnterbringung.eMeldungstyp.Aufhebung;
                         }
@@ -805,13 +805,13 @@ namespace PMDS.GUI
                             if (rUnterbringung.Aktion.Trim() == "Aufhebung" || rUnterbringung.Aktion.Trim() == "Verlaengerung")
                                     rUnterbringung.EDI_Protokoll += "\r\n";
 
-                            rUnterbringung.EDI_Protokoll += rUnterbringung.Aktion.Trim() + " (" + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + "): " + retSendUnterbringung1.ResultXML.ToString();
+                            rUnterbringung.EDI_Protokoll += (rUnterbringung.EDI_Protokoll.Length > 0 ? "\n" : "") +  rUnterbringung.Aktion.Trim() + " (" + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + "): " + retSendUnterbringung1.ResultXML.ToString();
                             db.SaveChanges();
 
                             Klient._unterbringung.Write();
                             this.ucSiteMapKlientenDetailsMain._ContentChanged = false;
                             this.ucSiteMapKlientenDetailsMain.Undo();
-                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Daten für die freiheitsbeschränkende Maßnahme wurden erfolgreich versendet!", "Senden", MessageBoxButtons.OK);
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Daten für die freiheitsbeschränkende Maßnahme wurden erfolgreich versendet.\nDer Code ist " + retSendUnterbringung1.ResultXML.ToString(), "Senden", MessageBoxButtons.OK);
                         }
                         else
                         {

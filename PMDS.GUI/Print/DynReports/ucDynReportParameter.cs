@@ -205,19 +205,17 @@ namespace PMDS.GUI
                     if (!SavePSBToArchiv)
                     {
                         SavePSBToArchiv = false;
-                        using (frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo())
+                        frmPrintPflegebegleitschreibenInfo1 = new PMDS.DynReportsForms.frmPrintPflegebegleitschreibenInfo();
+                        DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
+                        if (res != DialogResult.OK)
                         {
-                            DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
-                            if (res != DialogResult.OK)
-                            {
-                                abortWindow = true;   //Abwesenheitsprozess sofort beenden
-                                return;
-                            }
-                            else
-                            {
-                                IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
-                                SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.SavePBSToArchive;
-                            }
+                            abortWindow = true;   //Abwesenheitsprozess sofort beenden
+                            return;
+                        }
+                        else
+                        {
+                            IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
+                            SavePBSToArchiv = frmPrintPflegebegleitschreibenInfo1.SavePBSToArchive;
                         }
                     }
                 }
@@ -229,6 +227,7 @@ namespace PMDS.GUI
                     {
                         lPars.Add(p);
                     }
+                    frmPrintPflegebegleitschreibenInfo1.Dispose();
                 }
 
                 bool IsFormularBericht = false;

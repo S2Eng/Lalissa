@@ -10,10 +10,8 @@ using PMDS.Global;
 using PMDS.BusinessLogic;
 using PMDS.Data.Global;
 using PMDS.Global.db.Global;
-
-
-
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -106,6 +104,7 @@ namespace PMDS.GUI
                 PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnFreierBericht);
                 PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnFreierBericht2);
                 PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnBedarfsmedikation);
+
                 //this.setStyleButton(this._termine.uButtonAlleAusw‰hlen);
 
                 PMDS.Global.UIGlobal.setStyleButton(TermineExTmp.btnAlleAusw‰hlen);
@@ -202,12 +201,12 @@ namespace PMDS.GUI
                 TermineExTmp.ultraDropDownButtonTermine.Visible = ((HasRightTermineVerwalten && !PMDS.Global.historie.HistorieOn) ? true : false);
                 TermineExTmp.btnGegenzeichnen .Visible = !PMDS.Global.historie.HistorieOn;
 
-                if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht && this._UITypeTermine == eUITypeTermine.Dekurs)
-                {
-                }
-                else
-                {
-                }
+                //if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht && this._UITypeTermine == eUITypeTermine.Dekurs)
+                //{
+                //}
+                //else
+                //{
+                //}
 
                 if (this._UITypeTermine != eUITypeTermine.Interventionen)
                 {
@@ -222,6 +221,7 @@ namespace PMDS.GUI
                 throw new Exception("ucSiteMapTermine.SetUI: " + ex.ToString());
             }
         }
+
         public void SetUIForTerminIsSelected(bool refreshStuhlButtons)
         {
             try
@@ -296,44 +296,44 @@ namespace PMDS.GUI
                 this._TermineEx.ucTerminTimePicker1.initControl();
                 this._TermineEx.ucTerminFilterPicker1.initControl(false, UITypeTermine, true);
 
-                if (PMDS.Global.historie.HistorieOn)
-                {
-                     //this._TermineEx.actualSettings = TermineExTmp.loadZeitfiltersHistorieNachEntlassung(this._TermineEx.actualSettings, false);
-                }
-                else
-                {
-                    if (UITypeTermine == eUITypeTermine.Interventionen)
-                    {
-                    }
-                    else if (UITypeTermine == eUITypeTermine.‹bergabe)
-                    {
-                        //int UWeekEnd = (int)ENV.ConfigFile.GetDoubleValue("UEBERGABE_WEEKEND");
-                        //int UNormal = (int)ENV.ConfigFile.GetDoubleValue("UEBERGABE_NORMAL");
-                        //if (UWeekEnd == 0) UWeekEnd = 72;
-                        //if (UNormal == 0) UNormal = 24;
+                //if (PMDS.Global.historie.HistorieOn)
+                //{
+                //     //this._TermineEx.actualSettings = TermineExTmp.loadZeitfiltersHistorieNachEntlassung(this._TermineEx.actualSettings, false);
+                //}
+                //else
+                //{
+                //    if (UITypeTermine == eUITypeTermine.Interventionen)
+                //    {
+                //    }
+                //    else if (UITypeTermine == eUITypeTermine.‹bergabe)
+                //    {
+                //        //int UWeekEnd = (int)ENV.ConfigFile.GetDoubleValue("UEBERGABE_WEEKEND");
+                //        //int UNormal = (int)ENV.ConfigFile.GetDoubleValue("UEBERGABE_NORMAL");
+                //        //if (UWeekEnd == 0) UWeekEnd = 72;
+                //        //if (UNormal == 0) UNormal = 24;
 
-                        //s.Mode = EFilter.INTERVALL;
-                        //s.To = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
-                        //DateTime from = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-                        //if (s.To.DayOfWeek == DayOfWeek.Monday || s.To.DayOfWeek == DayOfWeek.Tuesday)  //<20120417>
-                        //    s.From = from.AddHours(-UWeekEnd);
-                        //else
-                        //    s.From = from.AddHours(-UNormal);
-                        //s.Done = true;
-                    }
-                    else if (UITypeTermine == eUITypeTermine.Dekurs)
-                    {
-                    }
-                }
+                //        //s.Mode = EFilter.INTERVALL;
+                //        //s.To = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
+                //        //DateTime from = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                //        //if (s.To.DayOfWeek == DayOfWeek.Monday || s.To.DayOfWeek == DayOfWeek.Tuesday)  //<20120417>
+                //        //    s.From = from.AddHours(-UWeekEnd);
+                //        //else
+                //        //    s.From = from.AddHours(-UNormal);
+                //        //s.Done = true;
+                //    }
+                //    else if (UITypeTermine == eUITypeTermine.Dekurs)
+                //    {
+                //    }
+                //}
 
                 this.initTermine2(ref UITypeTermine, ref TermineExTmp);
-
             }
             catch (Exception ex)
             {
                 throw new Exception("ucSiteMapTermine.initTermin: " + ex.ToString());
             }
         }
+
         private void initTermine2(ref PMDS.Global.eUITypeTermine UITypeTermine, ref ucTermineEx TermineExTmp)
         {
             try
@@ -366,23 +366,24 @@ namespace PMDS.GUI
                 {
                     this.Quickmeldungen();
                 }
-                else if (UITypeTermine == eUITypeTermine.‹bergabe ||
-                         UITypeTermine == eUITypeTermine.Dekurs)
-                {
+                //else if (UITypeTermine == eUITypeTermine.‹bergabe ||
+                //         UITypeTermine == eUITypeTermine.Dekurs)
+                //{
 
-                }
-                if (UITypeTermine == eUITypeTermine.Dekurs)
-                {
-                    if (this._ansichtmodi == TerminlisteAnsichtsmodi.Bereichsansicht)
-                    {
-                    }
-                    else
-                    {
-                    }
-                }
-                else
-                {
-                }
+                //}
+
+                //if (UITypeTermine == eUITypeTermine.Dekurs)
+                //{
+                //    if (this._ansichtmodi == TerminlisteAnsichtsmodi.Bereichsansicht)
+                //    {
+                //    }
+                //    else
+                //    {
+                //    }
+                //}
+                //else
+                //{
+                //}
 
                 TermineExTmp.btnAlleAusw‰hlen.Tag = "0";
                 TermineExTmp.btnAlleAusw‰hlen.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Alle");
@@ -527,6 +528,7 @@ namespace PMDS.GUI
                 //GuiWorkflow._guiworkflow._framework.HEADER.action(true);
             }
         }
+
         public void clearGrid()
         {
             try
@@ -606,6 +608,7 @@ namespace PMDS.GUI
                 throw new Exception("ucSiteMapTermine.RefreshButtons: " + ex.ToString());
             }
         }
+
         public void Quickmeldungen()
         {
             try
@@ -650,6 +653,7 @@ namespace PMDS.GUI
                 throw new Exception("ucSiteMapTermine.Quickmeldungen: " + ex.ToString());
             }
         }
+
         public void addQuickmeldungen(ref int anz, Guid IDEintrag, ucTermineEx TermineExTmp, string Bezeichnung, Guid IDQuickMeldung,
                                         ref System.Collections.Generic.List<Guid> lstIDQuickbuttonsAdded)
         {
@@ -669,8 +673,8 @@ namespace PMDS.GUI
                 {
                     b = new QS2.Desktop.ControlManagment.BaseButton();
                     b.Appearance.ImageHAlign = Infragistics.Win.HAlign.Right;
-                    b.Appearance.TextHAlignAsString = "Left";
-                    b.Appearance.TextVAlignAsString = "Middle";
+                    b.Appearance.TextHAlign = Infragistics.Win.HAlign.Left;
+                    b.Appearance.TextVAlign = Infragistics.Win.VAlign.Middle;
                     b.Dock = System.Windows.Forms.DockStyle.Left;
                     b.Location = new System.Drawing.Point(180, 0);
                     b.Appearance.Image = menu.bmp;
@@ -681,10 +685,12 @@ namespace PMDS.GUI
                     //b.Appearance.Image = global::PMDS.GUI.Properties.Resources.ICO_Pr¸fung_alleAbgeschlossenen;
                     TermineExTmp.panelStuhlbuttons.Controls.Add(b);
 
-                    pnl = new QS2.Desktop.ControlManagment.BasePanel();
-                    pnl.Name = "pnl_" + anz.ToString();
-                    pnl.Size = new System.Drawing.Size(2, 23);
-                    pnl.Dock = System.Windows.Forms.DockStyle.Left;
+                    pnl = new QS2.Desktop.ControlManagment.BasePanel
+                    {
+                        Name = "pnl_" + anz.ToString(),
+                        Size = new System.Drawing.Size(2, 23),
+                        Dock = System.Windows.Forms.DockStyle.Left
+                    };
                     TermineExTmp.panelStuhlbuttons.Controls.Add(pnl);
                 }
 
@@ -721,6 +727,7 @@ namespace PMDS.GUI
                 return TermineExTmp.IDPatient;
             }
         }
+
         private Guid IDAufenthalt
         {
             get
@@ -748,6 +755,7 @@ namespace PMDS.GUI
                 this.SetUIForTerminIsSelected(false);
             }
         }
+
         private void _termine_TerminDoubleClick(object sender, EventArgs e)
         {
             try
@@ -769,49 +777,37 @@ namespace PMDS.GUI
                 {
                     if (this._TermineEx.CurTerminRow‹bergabe != null)
                     {
-                        if (this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.EVALUIERUNG ||
-                            this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.PLANUNG ||                          
-                            this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.MEDIKAMENT ||
-                            this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.NONE ||
-                            this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.NOTFALL ||                           
-                            this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.WUNDEN ||
-                            this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.Klient
-                            )
+                        if (new List<PflegeEintragTyp>(){ PMDS.Global.PflegeEintragTyp.EVALUIERUNG,
+                                                          PMDS.Global.PflegeEintragTyp.PLANUNG,
+                                                          PMDS.Global.PflegeEintragTyp.MEDIKAMENT,
+                                                          PMDS.Global.PflegeEintragTyp.NONE,
+                                                          PMDS.Global.PflegeEintragTyp.NOTFALL,
+                                                          PMDS.Global.PflegeEintragTyp.WUNDEN,
+                                                          PMDS.Global.PflegeEintragTyp.Klient
+                                                        }.Any(p => (int)p == this._TermineEx.CurTerminRow‹bergabe.Eintragstyp))
                         {
                             return;
                         }
 
-                        PMDS.Global.db.ERSystem.dsTermine.v‹bergabeRow r‹bergabe = this._TermineEx.CurTerminRow‹bergabe;
-                        if (((this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.DEKURS ||
-                             this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.MASSNAHME ||
-                             this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.TERMIN ||
-                            r‹bergabe.IsIDPflegeplanNull())))
+                        if (new List<PflegeEintragTyp>() { PMDS.Global.PflegeEintragTyp.DEKURS,
+                                                           PMDS.Global.PflegeEintragTyp.MASSNAHME,
+                                                           PMDS.Global.PflegeEintragTyp.TERMIN
+                                                         }.Any(p => (int)p == this._TermineEx.CurTerminRow‹bergabe.Eintragstyp) || 
+                            this._TermineEx.CurTerminRow‹bergabe.IsIDPflegeplanNull())
                         {
-                            frmPflegeEintragSmall frm = new frmPflegeEintragSmall();
-                            frm.InitControl();
-                            frm.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dekurs");
-                            //if (this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.DEKURS)
-                            //{
-
-                            //}
-                            //else if (this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == (int)PMDS.Global.PflegeEintragTyp.UNEXP_MASSNAHME)
-                            //{
-
-                            //}
-                          
-                            frm._rv‹bergabe = this._TermineEx.CurTerminRow‹bergabe;
-                            bool isDekurs = false;
-                            if (this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == 0)
+                            using (frmPflegeEintragSmall frm = new frmPflegeEintragSmall())
                             {
-                                isDekurs = true;
+                                frm.InitControl();
+                                frm.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dekurs");
+                                frm._rv‹bergabe = this._TermineEx.CurTerminRow‹bergabe;
+
+                                frm._IsDekurs = this._TermineEx.CurTerminRow‹bergabe.Eintragstyp == 0;
+                                frm.ShowDialog();
+                                if (!frm.abort)
+                                {
+                                    this.RefreshTermin(true);
+                                }
                             }
-                            frm._IsDekurs = isDekurs;
-                            frm.ShowDialog();
-                            if (!frm.abort)
-                            {
-                                this.RefreshTermin(true); 
-                            }
-                     
                         }
                         else
                         {
@@ -823,7 +819,6 @@ namespace PMDS.GUI
                         }
                     }
                 }
-
                 return;
             }
             catch (Exception ex)
@@ -831,9 +826,10 @@ namespace PMDS.GUI
                 throw new Exception("ucSiteMapTermine._termine_TerminDoubleClick: " + ex.ToString());
             }
         }
+
         public void ENV_ENVPatientIDChanged(Guid IDPatient, eCurrentPatientChange typ, bool refreshTree, bool clickGridTermine)
         {
-            if (typ == eCurrentPatientChange.Picker_linksOben)
+            if (typ == eCurrentPatientChange.PickerLinksOben)
             {
                 if (this._ansichtmodi == TerminlisteAnsichtsmodi.Klientanansicht)
                 {
@@ -848,6 +844,7 @@ namespace PMDS.GUI
                 }
             }
         }
+
         private void stuhlbuttons_click(object sender, EventArgs e)
         {
             try
@@ -868,6 +865,7 @@ namespace PMDS.GUI
                 Cursor.Current = Cursors.Default;
             }
         }
+
         private void ENV_UserLoggedOn(object sender, EventArgs e)
         {
             this.RefreshTermin(true);

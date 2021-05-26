@@ -869,7 +869,7 @@ namespace PMDS.Global.db.ERSystem
                     try
                     {
                         PMDS.Global.ENV.check_Path(LOGHAGPath, true);
-                        using (StreamWriter outputFile = new StreamWriter(System.IO.Path.Combine(LOGHAGPath, rPatient.Nachname + "_" + rPatient.Vorname + "_" + System.Guid.NewGuid().ToString() + ".xml")))
+                        using (StreamWriter outputFile = new StreamWriter(System.IO.Path.Combine(LOGHAGPath, rPatient.Nachname + "_" + rPatient.Vorname + "_" + strResult + " _" + System.Guid.NewGuid().ToString() + ".xml")))
                         {
                             outputFile.WriteLine(txt);
                         }
@@ -903,7 +903,7 @@ namespace PMDS.Global.db.ERSystem
                     {
                         rNewProt.progress = strCode;
                         retSendUnterbringung1.OK = true;
-                        retSendUnterbringung1.ResultXML = strCode.ToString();
+                        retSendUnterbringung1.ResultXML = strCode.ToString() + " (" + strResult + ")";
                     }
                     else
                     {

@@ -282,11 +282,6 @@ namespace PMDS.GUI.Arztabrechnung
                 this.contPatientUserPicker1.initControl(PatientUserPicker.contPatientUserPicker.eTypeUIPicker.PatientSingle, false, eTypePatientenUserPickerChanged.none);
                 this.contPatientUserPicker1.selectUserPatient(this.rArztabrechnung.IDPatient);
 
-                //ENV.IDAUFENTHALT = ucPatientGroupPicker1.ucPatientPicker1.CURRENT_IDAufenhaltxy;
-                //ENV.IDAUFENTHALT = (Guid)IDAufenthalt;
-                //ENV.CurrentIDPatient = ucPatientGroupPicker1.Patient;
-                //ENV.sendPatientChanged(eCurrentPatientChange.Picker_linksOben);
-
                 this.cboBenutzer.Value = this.rArztabrechnung.IDBenutzer;
                 this.txtAnmerkung.Text = this.rArztabrechnung.Anmerkung.Trim();
                 this.dteDatum.Value = this.rArztabrechnung.Datum;

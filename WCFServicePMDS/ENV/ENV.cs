@@ -78,14 +78,12 @@ namespace WCFServicePMDS
                     ENVWcf.BinPath = AppDomain.CurrentDomain.BaseDirectory;
                     DirectoryInfo dirInfoBinPath = new DirectoryInfo(ENVWcf.BinPath);
                     ENVWcf.RootPath = dirInfoBinPath.Parent.FullName;
+                    ENVWcf.LogPath = clientVars.LogPathPMDS;
 
-                    ENVWcf.LogPath = Path.Combine(ENVWcf.RootPath, "log");
-
-                    ENVWcf.ConfigPath = Path.Combine(ENVWcf.RootPath, "config");
-                    ENVWcf.ConfigFile = Path.Combine(ENVWcf.ConfigPath, "PMDS_PWS.config");
-                    ENVWcf.TempPathWin = System.IO.Path.GetTempPath() + "\\PMDSWCFService";
+                    ENVWcf.ConfigPath = clientVars.ConfigPathPMDS;
+                    ENVWcf.ConfigFile = clientVars.ConfigFilePMDS;  //Path.Combine(ENVWcf.ConfigPath, "PMDS.config");
+                    ENVWcf.TempPathWin = Path.Combine(System.IO.Path.GetTempPath(), "PMDSWCFService");
                     ENVWcf.ReportPath = Path.Combine(ENVWcf.RootPath, "Reports");
-                    //ENV.CurrentProcessId = CurrentProcId;
 
                     ENV.checkDirectory(ENVWcf.LogPath);
                     ENV.checkDirectory(ENVWcf.ReportPath);
@@ -96,26 +94,9 @@ namespace WCFServicePMDS
                     CheckClientRunning1.start();
 
                     ENV.initPDFIum();
-                    ENV.readConfig<ENVWCFDto>(Path.Combine(clientVars.ConfigPathPMDS, "PMDS_PWS.config"), ENVWcf);
+                    ENV.readConfig<ENVWCFDto>(clientVars.ConfigFilePMDS, ENVWcf);
 
-                    //ENVLauncher = new ENVLauncherDto();
-                    //ENV.readConfig<ENVLauncherDto>(Path.Combine(ENVWcf.PathLauncher, "Launcher.config"), ENVLauncher);
-
-                    //ENVPMDS = new ENVPMDSDto();
-                    //ENV.readConfig<ENVPMDSDto>(Path.Combine(ENVLauncher.ConfigPath, "PMDS", "Config", ENVLauncher.ConfigFile), ENVPMDS);
-                    //dbBase.setConnectionDB(client, user);
-
-                    //WCFServicePMDS.TestUnits.TestRepository.runSmall();
-                    //WCFServicePMDS.TestUnits.TestsDevelop.runRepository1();
-                    //WCFServicePMDS.DAL.dbBase.checkEFCore();
                     DateTime dFrom = DateTime.Now;
-                    //ENV.loadDataStartUp(dFrom, clientVars.IDClient);
-                    //BenutzerMainDTO.lastBenutzer tLastBen = new BenutzerMainBAL().loadLastBenutzer();
-                    //PatientMainDTO.lastPatienten tLastPat = new PatientMainBAL().loadLastPatienten();
-
-                    //BAL.Main.StammdatenDTO stammdaten = new BAL.Main.StammdatenBAL().load(ref dFrom);
-                    //List<BAL.Main.BenutzerMainDTO.BenutzerDt> lBenutzer = new BAL.Main.BenutzerMainBAL().load(ref dFrom);
-                    //List<BAL.Main.PatientMainDTO.PatientDt> lPatient = new BAL.Main.PatientMainBAL().load(ref dFrom);
 
                     Log.write("Client: " + client + (user.Trim() != "" ? ", User: " + user + "" : "") + "\r\n" + "Service sucessfull initialized!", false, 0);
 

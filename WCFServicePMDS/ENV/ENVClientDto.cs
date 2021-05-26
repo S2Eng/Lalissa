@@ -22,6 +22,8 @@ namespace WCFServicePMDS
 
         public string ConfigPathPMDS { get; set; }
         public string ConfigFilePMDS { get; set; }
+        public string LogPathPMDS { get; set; }
+        public string ReportPathPMDS { get; set; }
     }
 
 }

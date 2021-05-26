@@ -296,17 +296,17 @@ namespace PMDS.Print
                 string sFileReport = "";
                 if (TypReportMedikamenteBestellen == eTypReportMedikamenteBestellen.Rezeptanforderungsliste)
                 {
-                    sFileReport = ENV.GetReportFileNameFromConfig("AnforderungRezepte");
+                    sFileReport = ENV.CheckReportExists("AnforderungRezepte.rpt");
                     rpt.Load(sFileReport);
                 }
                 else if (TypReportMedikamenteBestellen == eTypReportMedikamenteBestellen.RezeptDrucken)
                 {
-                    sFileReport = ENV.GetReportFileNameFromConfig("DruckRezepte");
+                    sFileReport = ENV.CheckReportExists("DruckRezepte.rpt");
                     rpt.Load(sFileReport);
                 }
                 else if (TypReportMedikamenteBestellen == eTypReportMedikamenteBestellen.Medikamentenbestellliste)
                 {
-                    sFileReport = ENV.GetReportFileNameFromConfig("BestellungMedikamente");
+                    sFileReport = ENV.CheckReportExists("BestellungMedikamente.rpt");
                     rpt.Load(sFileReport);
                 }
 

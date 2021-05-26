@@ -32,12 +32,6 @@ namespace WCFServicePMDS
             try
             {
                 throw new Exception("sendEMailOffice365: Function not activated!");
-
-                //ExchangeService es = new ExchangeService();
-                //es.Credentials = new WebCredentials(ENV.ExchangeUsr.Trim(), ENV.ExchangePwd.Trim());
-                ////es.AutodiscoverUrl(ENV.ExchangeUsr.Trim());
-                //es.AutodiscoverUrl(ENV.ExchangeUsr.Trim(), ExchangeWebAPI.RedirectionUrlValidationCallback);
-
                 ExchangeService es = new ExchangeService(ExchangeVersion.Exchange2010_SP2);     //>> ExchangeWorld4You
 
                 es.Url = new Uri(ENV.ENVWcf.ExchangeUrl.Trim());

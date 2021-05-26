@@ -122,23 +122,14 @@ namespace PMDSClient.Sitemap
             {
                 cParsWCF ParsWCF = (cParsWCF)pars;               
                 string sConfigPathTmp = System.IO.Path.GetDirectoryName(PMDS.Global.ENV.sConfigFile.Trim());
-                string sConfigFileTmp = System.IO.Path.GetFileName(PMDS.Global.ENV.sConfigFile.Trim());
 
-                //System.Windows.Forms.MessageBox.Show("3");
                 WCFServiceClient.IDClient = System.Guid.NewGuid();
-                ENVClientDto ENVDto = new ENVClientDto() { ConfigPathPMDS = sConfigPathTmp, ConfigFilePMDS = sConfigFileTmp, IDClient = WCFServiceClient.IDClient, Srv = RBU.DataBase.Srv, 
-                                                            Usr = RBU.DataBase.m_sUser, Pwd = RBU.DataBase.m_sPassword, Db = RBU.DataBase.m_Database, trusted = RBU.DataBase.IsTrusted };
+                ENVClientDto ENVDto = new ENVClientDto() { ConfigPathPMDS = sConfigPathTmp, ConfigFilePMDS = PMDS.Global.ENV.sConfigFile, IDClient = WCFServiceClient.IDClient, Srv = RBU.DataBase.Srv, 
+                                                            Usr = RBU.DataBase.m_sUser, Pwd = RBU.DataBase.m_sPassword, Db = RBU.DataBase.m_Database, trusted = RBU.DataBase.IsTrusted,
+                                                            LogPathPMDS = PMDS.Global.ENV.LOGPATH, ReportPathPMDS = PMDS.Global.ENV.ReportPath };
 
                 WCFServicePMDS.Service1 s1 = new WCFServicePMDS.Service1();
                 bool bCheckOK = s1.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, ENVDto, Process.GetCurrentProcess().Id);
-
-                //if (!PMDS.Global.ENV.WCFServiceDebugMode)
-                //{
-                //    //QS2.Desktop.ControlManagment.ServiceReference_01.Service1Client Service1ClientCentral = WCFServiceClient.getWCFClient(false);
-                //    //bool bCheckCentralOK = Service1ClientCentral.initService(ParsWCF.MachineName, ParsWCF.LoginInNameFrei, false, ParsWCF.gVersionNr, null);
-                //}
-
-                //this.getAllStammdaten(ref Service1Client1);
                 WCFServiceClient.IsInitialized = true;
             }
             catch (Exception ex)

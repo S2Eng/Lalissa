@@ -12,10 +12,7 @@ namespace WCFServicePMDS
     {
 
         public string db { get; set; }
-        public string PathLauncher { get; set; }
-
-    
-
+   
 
         public string RootPath { get; set; }
         public string LogPath { get; set; }

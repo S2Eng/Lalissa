@@ -45,8 +45,7 @@ namespace WCFServicePMDS
                 if (user == null) user = "AutoUser";
 
                 ENV.init2(client, user, clientVars, ClientProcessId);
-                //WCFServicePMDS.DAL.dbBase.checkEFCore();
-                //loadStammdaten();
+
 
                 return true;
             }

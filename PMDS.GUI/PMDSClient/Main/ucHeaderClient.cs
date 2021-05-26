@@ -1764,33 +1764,6 @@ namespace PMDS.GUI.PMDSClient
         
         }
 
-        public void PickerValueChanged_old(object sender, EventArgs e)
-        {
-            try
-            {
-                //_PreventSelfRefreshing = true;
-
-                //if (PMDS.Global.historie.HistorieOn)
-                //{
-                //    PMDS.Global.historie hist = new PMDS.Global.historie();
-                //    hist.IDAufenthalt = ucPatientGroupPicker1.ucPatientPicker1.CURRENT_IDAufenhaltxy;
-                //}
-                //else
-                //{
-                //    ENV.IDAUFENTHALT = ucPatientGroupPicker1.ucPatientPicker1.CURRENT_IDAufenhaltxy; 
-                //}
-                //ENV.IDAUFENTHALT = Aufenthalt.LastByPatient(ucPatientGroupPicker1.Patient);
-                //ENV.CurrentIDPatient = ucPatientGroupPicker1.Patient;
-                //ENV.sendPatientChanged(eCurrentPatientChange.Picker_linksOben , true);
-                //RefreshControl(ENV.CurrentIDPatient, false);
-
-            }
-            finally
-            {
-                _PreventSelfRefreshing = false;
-            }
-        }
-
         //new picker
         public void PickerValueChanged(Guid IDPatient)
         {
@@ -1821,7 +1794,7 @@ namespace PMDS.GUI.PMDSClient
                     ENV.setCurrentIDPatient = IDPatient;
                     this.IDPATIENT = ENV.CurrentIDPatient;
 
-                    ENV.sendPatientChanged(eCurrentPatientChange.Picker_linksOben, false, false);
+                    ENV.sendPatientChanged(eCurrentPatientChange.PickerLinksOben, false, false);
                     //RefreshControl(ENV.CurrentIDPatient, false);
                 }
 
@@ -2098,7 +2071,7 @@ namespace PMDS.GUI.PMDSClient
                 if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Klientanansicht)
                 {
                     _PreventSelfRefreshing = true;
-                    ENV.sendPatientChanged(eCurrentPatientChange.Picker_linksOben, bRefreshPicker, false);
+                    ENV.sendPatientChanged(eCurrentPatientChange.PickerLinksOben, bRefreshPicker, false);
 
                     //if (HeaderButtonClick != null)
                     //    HeaderButtonClick(ucHeader.lastButtonClicked, false);
