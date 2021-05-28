@@ -241,8 +241,22 @@ namespace PMDS.GUI
                 {
                     foreach (PMDS.Print.CR.BerichtDatenquelle q in _CurrentBerichtDatenquellen)
                     {
-                        q.DATASET = PMDS.DynReportsForms.MedikamentenBlattDataSource.FilldsMBlatt(null, Guid.Empty, false);     //lthxy
 
+                        Guid IDAufenthalt_current = Guid.Empty;
+                        bool vabgesetzteMed = false;
+
+                        if (lPars != null)
+                        {
+                            foreach (PMDS.Print.CR.BerichtParameter p in lPars)  // Alle Berichtsparameter setzten
+                            {
+                                if (p.Name == "IDAufenthalt_current")
+                                    IDAufenthalt_current = new Guid(p.Value.ToString());
+
+                                if (p.Name == "vabgesetzeMed")
+                                    vabgesetzteMed = (bool)p.Value;
+                            }
+                        }
+                        q.DATASET = PMDS.DynReportsForms.MedikamentenBlattDataSource.FilldsMBlatt(null, IDAufenthalt_current, !vabgesetzteMed);     //lthxy
                     }
                 }
 
@@ -278,7 +292,7 @@ namespace PMDS.GUI
                                                                         ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD,
                                                                         cParFormular, ref sFileNameExport, true, "", false);
                         else
-                            PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, !SavePBSToArchiv, lPars, _CurrentBerichtDatenquellen, "",
+                            PMDS.Print.CR.ReportManager.PrintDynamicReport(ReportFile, bPreview, lPars, _CurrentBerichtDatenquellen, "",
                                                                             ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD,
                                                                             cParFormular, ref sFileNameExport, true, "", SavePBSToArchiv);
                     }

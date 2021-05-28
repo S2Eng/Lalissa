@@ -8,7 +8,10 @@ using System.Text.RegularExpressions;
 using System.Text;
 using Microsoft.Win32;
 using PMDS.DB;
-
+using System.Windows.Forms;
+using PMDS.Print;
+using PMDS.Global.db.ERSystem;
+using System.Linq;
 
 namespace PMDS.Print.CR
 {
@@ -47,10 +50,12 @@ namespace PMDS.Print.CR
 
             string sFile = Path.GetFileName(sReportFile).Trim();
 
+            bool bSourceIsDataSet = false;
             if (IsInList(listds, sFile))                            // Dynamsche Datenquellen wenn es die Hauptdatenquelle ist muss der Reportdateiname konfiguriert sein
             {
                 try
                 {
+                    bSourceIsDataSet = true;
                     DataSet ds = GetDataSetFromList(listds, sFile);
                     rpt.SetDataSource(ds);
                 }
@@ -81,9 +86,14 @@ namespace PMDS.Print.CR
                         SubreportObject so = (SubreportObject)o;
                         ReportDocument doc = so.OpenSubreport(so.SubreportName);
 
-                        if (IsInList(listds, so.SubreportName.Trim()))                      // Dynamische Datenquelle
+                        if (PMDS.Global.generic.sEquals(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
                         {
-                            doc.SetDataSource(GetDataSetFromList(listds, so.SubreportName.Trim()));
+                            doc.SetDataSource(listds[0].DATASET);
+                        }
+
+                        if (IsInList(listds, so.SubreportName.Trim()) || bSourceIsDataSet)                     // Dynamische Datenquelle. Bei SubReports die Datenqulle des Hauptreports.
+                        {                                                                                      // Mehr als eine Datenquelle bei Datasets wird nicht unterstützt.
+                            doc.SetDataSource(GetDataSetFromList(listds, sFile));
                         }
                         else
                         {
@@ -97,49 +107,125 @@ namespace PMDS.Print.CR
                 }
             }
 
-            if (info.ConnectionInfo.IntegratedSecurity == true)
+            if (!bSourceIsDataSet)
             {
-                rpt.SetDatabaseLogon(string.Empty, string.Empty, DB_SERVER, DB_DATABASE, true);
-            }
-            else
-            {
-                rpt.SetDatabaseLogon(DB_USER, DB_PASSWORD, DB_SERVER, DB_DATABASE, true);
+                if (info.ConnectionInfo.IntegratedSecurity == true)
+                {
+                    rpt.SetDatabaseLogon(string.Empty, string.Empty, DB_SERVER, DB_DATABASE, true);
+                }
+                else
+                {
+                    rpt.SetDatabaseLogon(DB_USER, DB_PASSWORD, DB_SERVER, DB_DATABASE, true);
+                }
             }
             rpt.Refresh();
-
             // 17.11.2010 - Steuerung des Ausdrucks mittels zusätzlicher Parameter
             // ReportRoot: wenn nicht leer -> Ausdrucken als PDF in <ReportRoot>\Nachname_Vorname_GebDatum\<Berichtsname>.pdf
             // PrintJN: wenn ja -> direkte Ausgabe auf den Drucker ohne Voransicht.
 
             String IDKlient = "";
             String ReportRoot = "";
+
             Boolean PrintJN = false;
+            Guid IDAufenthalt_current = Guid.Empty;
+            Guid IDKlinik_current = Guid.Empty;
+            Guid IDAbteilung_current = Guid.Empty;
+            Guid IDKlient_current = Guid.Empty;
+            bool vabgesetzteMed = false;
 
-            foreach (BerichtParameter p in list)  // Alle Berichtsparameter setzten
+            if (list != null)
             {
-                AddCrystalParameter(rpt, p.Name, (object)p.Value);
-
-                if (p.Name == "IDKlient")
+                foreach (BerichtParameter p in list)  // Alle Berichtsparameter setzten
                 {
-                    IDKlient = p.Value.ToString();
-                    IDKlient = IDKlient.Replace("{", "");
-                    IDKlient = IDKlient.Replace("}", "");
+                    AddCrystalParameter(rpt, p.Name, (object)p.Value);
+
+                    if (p.Name == "IDKlient")
+                        IDKlient = p.Value.ToString().Replace("{", "").Replace("}", "");
+
+                    if (p.Name == "ReportRoot")
+                        ReportRoot = p.Value.ToString();
+
+                    if (p.Name == "PrintJN")
+                        PrintJN = (bool)p.Value;
+
+                    if (p.Name == "IDAufenthalt_current")
+                        IDAufenthalt_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "IDKlinik_current")
+                        IDKlinik_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "IDKlient_current")
+                        IDKlient_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "IDAbteilung_current")
+                        IDAbteilung_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "vabgesetzeMed")
+                        vabgesetzteMed = (bool)p.Value;
                 }
-                if (p.Name == "ReportRoot") ReportRoot = p.Value.ToString();
-
-                if (p.Name == "PrintJN") PrintJN = Convert.ToBoolean(p.Value.ToString());
-
             }
 
-            if (PrintPreview && PrintJN == false && ReportRoot == "" && !SaveToArchive)
+            //-----------------------------------------------------------------------
+            // Sonderbehandlung Medikamentenblatt.rpt
+            // Erweiterung des Datasets für Allergien und Unverträglichkeiten
+            //-----------------------------------------------------------------------
+            if (PMDS.Global.generic.sEquals(rpt.FileName, "Medikamentenblatt.rpt", Global.Enums.eCompareMode.Contains))
             {
-                frmPrintPreview frm = new frmPrintPreview(rpt);
-                frm.Show();       //!= System.Windows.Forms.DialogResult.OK;
-                frm.crystalReportViewer1.ShowGroupTreeButton = ShowGroupTreeButton;
-                frm.crystalReportViewer1.DisplayGroupTree = ShowGroupTreeButton;
-                return true;
+                using (dsKlientenliste dsKlientenliste1 = new dsKlientenliste())
+                {
+                    using (sqlManange sqlManange1 = new sqlManange())
+                    {
+                        sqlManange1.initControl();
+                        System.Collections.Generic.List<int> lstMedDaten = new List<int>();
+                        lstMedDaten.Add(3);
+                        lstMedDaten.Add(6);
+                        sqlManange1.getMedizinischeDaten(dsKlientenliste1, IDKlient_current, lstMedDaten, sqlManange.eTypeMedDaten.MedDaten);
+                        sqlManange1.getMedizinischeDatenLayout(dsKlientenliste1, sqlManange.eTypeMedDaten.All);
+                    }
+                    DataTable dtMedDaten = new DataTable();
+                    DataTable dtMedDatenLayout = new DataTable();
+
+                    if (dsKlientenliste1.MedizinischeDaten.Any())    //os 19-02-22 - Sonst gibt es ein Exception, wenn keine Unverträglichkeit oder Allerige vorliegt
+                        dtMedDaten = dsKlientenliste1.MedizinischeDaten.CopyToDataTable();
+                    if (dsKlientenliste1.MedizinischeDatenLayout.Any())
+                        dtMedDatenLayout = dsKlientenliste1.MedizinischeDatenLayout.CopyToDataTable();
+
+                    dtMedDaten.TableName = "MedizinischeDaten";
+                    dtMedDatenLayout.TableName = "MedizinischeDatenLayout";
+
+                    StartMedizinischeDaten:
+                    foreach (DataTable t in listds[0].DATASET.Tables)
+                    {
+                        if (t.TableName == "MedizinischeDaten")
+                        {
+                            listds[0].DATASET.Tables.Remove(t);
+                            goto StartMedizinischeDaten;
+                        }
+                    }
+                    listds[0].DATASET.Tables.Add(dtMedDaten);
+
+                    StartMedizinischeDatenLayout:
+                    foreach (DataTable t in listds[0].DATASET.Tables)
+                    {
+                        if (t.TableName == "MedizinischeDatenLayout")
+                        {
+                            listds[0].DATASET.Tables.Remove(t);
+                            goto StartMedizinischeDatenLayout;
+                        }
+                    }
+                    listds[0].DATASET.Tables.Add(dtMedDatenLayout);
+                }
+
+                rpt.Refresh();
+                AddCrystalParameter(rpt, "vabgesetzeMed", vabgesetzteMed);
+                AddCrystalParameter(rpt, "IDKlinik_current", IDKlinik_current.ToString("B"));
+                AddCrystalParameter(rpt, "IDAbteilung_current", IDAbteilung_current.ToString("B"));
+
+                //ds.WriteXml("F:\\dsMedikamentenBlatt.xml", XmlWriteMode.WriteSchema);
             }
-            else if (SaveToArchive)
+       
+
+            if (SaveToArchive)
             {
                 ExportOptions CrExportOptions;
                 DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
@@ -156,13 +242,44 @@ namespace PMDS.Print.CR
                 }
                 rpt.Export();
                 sFileFullNameExported = tmpFullPath;
-                return true;
+
+                if (!PrintPreview && !PrintJN)      //Wenn nur SaveToArchive gesetzt ist und kein Preview oder Ausdruck erforderlich ist
+                {
+                    return true;
+                }
             }
+
+            if (PrintPreview && String.IsNullOrWhiteSpace(ReportRoot))
+            {
+                frmPrintPreview frm = new frmPrintPreview(rpt);
+                frm.crystalReportViewer1.ShowGroupTreeButton = ShowGroupTreeButton;
+                frm.Show();       //!= System.Windows.Forms.DialogResult.OK;
+                System.Windows.Forms.Application.DoEvents();
+                if (!PrintJN && String.IsNullOrWhiteSpace(ReportRoot))
+                    return true;
+            }
+
+            if (PrintJN && String.IsNullOrWhiteSpace(ReportRoot))
+            {
+                using (PrintDialog printDialog1 = new PrintDialog())
+                {
+                    printDialog1.Document = new System.Drawing.Printing.PrintDocument();
+                    DialogResult result = printDialog1.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        rpt.PrintOptions.PrinterName = printDialog1.PrinterSettings.PrinterName;
+                        rpt.PrintToPrinter(1, true, 0, 0);
+                    }
+                }
+
+                if (String.IsNullOrWhiteSpace(ReportRoot))
+                    return true;
+            }
+
             else
             { 
-                // OS: Klientenbericht für Archivierung!!!
-                // Wenn Archivpfad gesetzt ist -> 
-                // Ausgabeverzeichnis ermitteln und Bericht als PDF rausschreiben.
+                // OS: Klientenbericht für Archivierung!!! Wenn Archivpfad gesetzt ist -> Ausgabeverzeichnis ermitteln und Bericht als PDF rausschreiben.
                 try
                 {
                     ExportOptions CrExportOptions;
@@ -170,7 +287,8 @@ namespace PMDS.Print.CR
                     PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
 
                     string tmpFullPath = GetUniqueArchivFileName(KlientNameGebDat, ReportRoot, sReportFile);
-                    if (tmpFullPath == "") return false;
+                    if (String.IsNullOrWhiteSpace(tmpFullPath)) 
+                        return false;
 
                     CrDiskFileDestinationOptions.DiskFileName = tmpFullPath;
                     CrExportOptions = rpt.ExportOptions;
@@ -189,6 +307,7 @@ namespace PMDS.Print.CR
                     return false;
                 }
             }
+            return false;
         }
 
         public static void AddCrystalParameter(ReportDocument crReport, string ParameterName, object oParameterValue)
@@ -239,13 +358,15 @@ namespace PMDS.Print.CR
         {
             if (listds == null)
                 return false;
+
             foreach (BerichtDatenquelle q in listds)
             {
-                if (q.Bereich.Trim().Equals(sCompareString, StringComparison.CurrentCultureIgnoreCase))
+                if (PMDS.Global.generic.sEquals(q.Bereich, sCompareString))
                     return true;
             }
             return false;
         }
+
         public static ReportDocument newReportDocumentxy(string sReportFile)
         {
             ReportDocument rpt = new ReportDocument();

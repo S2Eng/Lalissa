@@ -85,8 +85,11 @@ namespace WCFServicePMDS
                     ENVWcf.TempPathWin = Path.Combine(System.IO.Path.GetTempPath(), "PMDSWCFService");
                     ENVWcf.ReportPath = Path.Combine(ENVWcf.RootPath, "Reports");
 
+                    //System.Windows.Forms.MessageBox.Show("ReportPath = " + Path.Combine(ENVWcf.RootPath, "Reports"));
+                    //System.Windows.Forms.MessageBox.Show("TempPath = " + Path.Combine(System.IO.Path.GetTempPath(), "PMDSWCFService"));
+
                     ENV.checkDirectory(ENVWcf.LogPath);
-                    ENV.checkDirectory(ENVWcf.ReportPath);
+                    //ENV.checkDirectory(ENVWcf.ReportPath);
                     ENV.checkDirectory(ENVWcf.TempPathWin);
 
                     ENV.CurrentProcessId = ClientProcessId;
@@ -113,7 +116,7 @@ namespace WCFServicePMDS
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.ENV.init: " + ex.ToString());
+                throw new Exception("WCFServicePMDS.ENV.init2: " + ex.ToString());
             }
         }
 

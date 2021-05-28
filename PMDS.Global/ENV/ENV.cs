@@ -370,7 +370,7 @@ namespace PMDS.Global
 
         public static string COMMANDLINE_USER = "";                                             // Wenn über die Commandozeile ein Benutzer übergeben wird wird er hier verspeichert
         public static string COMMANDLINE_PWD = "";
-        public static bool COMMANDLINE_bshowSplash = false;
+        public static bool COMMANDLINE_bshowSplash = true;
 
         public static event MedizinischeDatenLayoutChangedDelegate MedizinischeDatenLayoutChanged;
         public static event ENVPatientDatenChangedDelegate ENVPatientDatenChanged;

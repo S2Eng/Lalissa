@@ -67,6 +67,7 @@ namespace PMDS.Print.CR
 
 		}
 		#endregion
+        
         public frmPrintPreview(ReportDocument rpt)
         {
             InitializeComponent();

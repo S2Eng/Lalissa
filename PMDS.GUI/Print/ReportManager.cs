@@ -371,9 +371,28 @@ namespace PMDS.Print
                     if (dsKlientenliste1.MedizinischeDatenLayout.Any())
                         dtMedDatenLayout = dsKlientenliste1.MedizinischeDatenLayout.CopyToDataTable();
 
+                    StartMedizinischeDaten:
+                    foreach (DataTable t in ds.Tables)
+                    {
+                        if (t.TableName == "MedizinischeDaten")
+                        {
+                            ds.Tables.Remove(t);
+                            goto StartMedizinischeDaten;
+                        }
+                    }
                     dtMedDaten.TableName = "MedizinischeDaten";
-                    dtMedDatenLayout.TableName = "MedizinischeDatenLayout";
                     ds.Tables.Add(dtMedDaten);
+
+                    StartMedizinischeDatenLayout:
+                    foreach (DataTable t in ds.Tables)
+                    {
+                        if (t.TableName == "MedizinischeDatenLayout")
+                        {
+                            ds.Tables.Remove(t);
+                            goto StartMedizinischeDatenLayout;
+                        }
+                    }
+                    dtMedDatenLayout.TableName = "MedizinischeDatenLayout";
                     ds.Tables.Add(dtMedDatenLayout);
                 }
                 PMDS.Print.CR.ReportManager.setDataSource(ds, ENV.CheckReportExists("MEDIKAMENTENBLATT.rpt"), rpt);
@@ -385,6 +404,8 @@ namespace PMDS.Print
 
                 if (a.IDKlinik != null) IDKlinik = a.IDKlinik;
                 if (a.IDAbteilung != null) IDAbteilung = a.IDAbteilung;
+
+                rpt.Refresh();
 
                 AddCrystalParameter(rpt, "vabgesetzeMed", true);
                 AddCrystalParameter(rpt, "IDKlinik_current", IDKlinik);
