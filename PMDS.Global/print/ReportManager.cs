@@ -86,15 +86,21 @@ namespace PMDS.Print.CR
                         SubreportObject so = (SubreportObject)o;
                         ReportDocument doc = so.OpenSubreport(so.SubreportName);
 
-                        if (PMDS.Global.generic.sEquals(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
-                        {
-                            doc.SetDataSource(listds[0].DATASET);
+                        //if (PMDS.Global.generic.sEquals(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
+                        //{
+                        //    doc.SetDataSource(listds[0].DATASET);
+                        //}
+
+                        if (IsInList(listds, so.SubreportName.Trim()))                                         // Dynamische Datenquelle in SubReport, wenn Hauptreport eine DB-Anbindung hat
+                        {                                                                                      // Pflegebegleitschreiben -> MedikamentenblattSub
+                            doc.SetDataSource(GetDataSetFromList(listds, so.SubreportName.Trim()));
                         }
 
-                        if (IsInList(listds, so.SubreportName.Trim()) || bSourceIsDataSet)                     // Dynamische Datenquelle. Bei SubReports die Datenqulle des Hauptreports.
+                        else if (bSourceIsDataSet)                                                             // Dynamische Datenquelle ins Subreport, wenn Hauptreport ein Dataset hat.
                         {                                                                                      // Mehr als eine Datenquelle bei Datasets wird nicht unterstützt.
-                            doc.SetDataSource(GetDataSetFromList(listds, sFile));
-                        }
+                            doc.SetDataSource(GetDataSetFromList(listds, sFile));                              // Medikamentenblatt.rpt -> MedDaten.rpt
+                        }                                                                                      // Wird unten nochenmal gesetzt. Hier nur, um ApplyLogOnInfo zu vermeiden
+
                         else
                         {
                             foreach (Table t in doc.Database.Tables)
@@ -168,6 +174,7 @@ namespace PMDS.Print.CR
             //-----------------------------------------------------------------------
             // Sonderbehandlung Medikamentenblatt.rpt
             // Erweiterung des Datasets für Allergien und Unverträglichkeiten
+            // ist in Pflegebegleitschreiben micht erforderlich (ist da eigener Sub-Report)
             //-----------------------------------------------------------------------
             if (PMDS.Global.generic.sEquals(rpt.FileName, "Medikamentenblatt.rpt", Global.Enums.eCompareMode.Contains))
             {
@@ -196,7 +203,7 @@ namespace PMDS.Print.CR
                     StartMedizinischeDaten:
                     foreach (DataTable t in listds[0].DATASET.Tables)
                     {
-                        if (t.TableName == "MedizinischeDaten")
+                        if (t.TableName == dtMedDaten.TableName)
                         {
                             listds[0].DATASET.Tables.Remove(t);
                             goto StartMedizinischeDaten;
@@ -207,7 +214,7 @@ namespace PMDS.Print.CR
                     StartMedizinischeDatenLayout:
                     foreach (DataTable t in listds[0].DATASET.Tables)
                     {
-                        if (t.TableName == "MedizinischeDatenLayout")
+                        if (t.TableName == dtMedDatenLayout.TableName)
                         {
                             listds[0].DATASET.Tables.Remove(t);
                             goto StartMedizinischeDatenLayout;
@@ -216,12 +223,16 @@ namespace PMDS.Print.CR
                     listds[0].DATASET.Tables.Add(dtMedDatenLayout);
                 }
 
+                rpt.SetDataSource(listds[0].DATASET);
+                rpt.Subreports["MedDaten.rpt"].SetDataSource(listds[0].DATASET);
                 rpt.Refresh();
+
+                //Nach dem Setzen des Datasets und refresh müssen die Parameter eneut gesetzt werden
                 AddCrystalParameter(rpt, "vabgesetzeMed", vabgesetzteMed);
                 AddCrystalParameter(rpt, "IDKlinik_current", IDKlinik_current.ToString("B"));
                 AddCrystalParameter(rpt, "IDAbteilung_current", IDAbteilung_current.ToString("B"));
 
-                //ds.WriteXml("F:\\dsMedikamentenBlatt.xml", XmlWriteMode.WriteSchema);
+                //ds.WriteXml("C:\\Temp\\dsMedikamentenBlatt.xml", XmlWriteMode.WriteSchema);
             }
        
 
@@ -253,6 +264,7 @@ namespace PMDS.Print.CR
             {
                 frmPrintPreview frm = new frmPrintPreview(rpt);
                 frm.crystalReportViewer1.ShowGroupTreeButton = ShowGroupTreeButton;
+                //frm.crystalReportViewer1.RefreshReport();
                 frm.Show();       //!= System.Windows.Forms.DialogResult.OK;
                 System.Windows.Forms.Application.DoEvents();
                 if (!PrintJN && String.IsNullOrWhiteSpace(ReportRoot))
