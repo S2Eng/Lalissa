@@ -292,11 +292,10 @@ namespace PMDS.Global
         public static EvaluierungsTypen EvaluierungsTyp = EvaluierungsTypen.Ziel;   // Legt den Evaluierungstyp für das gesamtsystem fest
         public static bool InterventionenEvaluieren = false;
         public static bool ShowAufnahmeButton;                              // Signalisiert ob der Aufnahmebutton gezeigt werden soll oder nicht
-        public static int RezeptDruck = -1;
-        public static int RezeptBestellModus = -1;
         public static uint RezeptModifyTime;
         public static bool RezeptUseTimeOfDay;
         public static bool RezeptUseErstattungscode = true;
+        public static int RezeptanforderungZeitraum = -7;
 
         public static bool OnlyOneFavoritenComboinPlanung = true;
         public static bool BezugspersonenJN;
@@ -1389,8 +1388,7 @@ namespace PMDS.Global
                 SetENVValue("SMTPLoginPwd", ref PMDS.Global.clSMTP.SMTPLoginPwd, eTrim.no, eDecrypt.PMDSMode);
                 SetENVValue("SMTPPort", ref PMDS.Global.clSMTP.SMTPPort);
 
-                SetENVValue("RezeptDruck", ref ENV.RezeptDruck);
-                SetENVValue("RezeptBestellModus", ref ENV.RezeptBestellModus);
+                SetENVValue("RezeptanforderungZeitraum", ref ENV.RezeptanforderungZeitraum);
                 SetENVValue("SHOW_AUFNAHMEBUTTON", ref ENV.ShowAufnahmeButton);     //In Config von ON|OFF auf 1|0 umstellen!!!  //ENV.ShowAufnahmeButton = _Log.ConfigFile.GetStringValue("SHOW_AUFNAHMEBUTTON") == "ON" ? true : false;
 
                 SetENVValue("ELGAStatusGreen", ref ENV.ELGAStatusGreen);

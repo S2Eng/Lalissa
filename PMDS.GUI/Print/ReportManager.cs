@@ -253,7 +253,7 @@ namespace PMDS.Print
             try
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(ENV.CheckReportExists("PFLEGPLAN.rpt"));
+                rpt.Load(ENV.CheckReportExists("PFLEGEPLAN.rpt"));
                 return rpt;
             }
             finally

@@ -42,7 +42,8 @@ namespace PMDS.Print
         {
             Rezeptanforderungsliste = 0,
             RezeptDrucken = 1,
-            Medikamentenbestellliste = 2
+            Medikamentenbestellliste = 2,
+            MedikamenteGeliefert = 3
         }
 
 

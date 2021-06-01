@@ -2942,6 +2942,110 @@ namespace PMDS.DB
             }
         }
 
+        public bool UpdateMedikamenteAsGeliefert(List<PMDS.db.Entities.vRezeptBestellung2> tRezepteBestSelected)
+        {
+            try
+            {
+                DateTime dNow = DateTime.Now;
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    bool SaveChanges = false;
+                    foreach (PMDS.db.Entities.vRezeptBestellung2 rvRezeptBestellung2 in tRezepteBestSelected)
+                    {
+                        System.Linq.IQueryable<PMDS.db.Entities.RezeptBestellungPos> tRezeptBestellungPos = db.RezeptBestellungPos.Where(p => p.ID == rvRezeptBestellung2.rbp_ID);
+                        PMDS.db.Entities.RezeptBestellungPos rRezeptBestellungPos = tRezeptBestellungPos.First();
+                        rRezeptBestellungPos.DatumGeliefert = dNow;
+                        SaveChanges = true;
+                    }
+                    if (SaveChanges)
+                    {
+                        db.SaveChanges();
+                    }
+                }
+
+                return true;
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.UpdateMedikamenteAsUebernommen: " + ex.ToString());
+            }
+
+        }
+
+        public bool UpdateMedikamenteAsBestellt(List<PMDS.db.Entities.vRezeptBestellung2> tRezepteBestSelected)
+        {
+            try
+            {
+                DateTime dNow = DateTime.Now;
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    bool SaveChanges = false;
+                    foreach (PMDS.db.Entities.vRezeptBestellung2 rvRezeptBestellung2 in tRezepteBestSelected)
+                    {
+                        System.Linq.IQueryable<PMDS.db.Entities.RezeptBestellungPos> tRezeptBestellungPos = db.RezeptBestellungPos.Where(p => p.ID == rvRezeptBestellung2.rbp_ID);
+                        PMDS.db.Entities.RezeptBestellungPos rRezeptBestellungPos = tRezeptBestellungPos.First();
+                        rRezeptBestellungPos.DatumBestellt = dNow;
+                        rRezeptBestellungPos.BestelltJN = true;
+                        SaveChanges = true;
+                    }
+                    if (SaveChanges)
+                    {
+                        db.SaveChanges();
+                    }
+                }
+
+                return true;
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.UpdateMedikamenteAsBestellt: " + ex.ToString());
+            }
+        }
+
+
+        public bool UpdateMedikamenteAsRezeptAngefordert(List<PMDS.db.Entities.vRezeptBestellung2> tRezepteBestSelected)
+        {
+            try
+            {
+                DateTime dNow = DateTime.Now;
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    bool SaveChanges = false;
+                    foreach (PMDS.db.Entities.vRezeptBestellung2 rvRezeptBestellung2 in tRezepteBestSelected)
+                    {
+                        System.Linq.IQueryable<PMDS.db.Entities.RezeptBestellungPos> tRezeptBestellungPos = db.RezeptBestellungPos.Where(p => p.ID == rvRezeptBestellung2.rbp_ID);
+                        PMDS.db.Entities.RezeptBestellungPos rRezeptBestellungPos = tRezeptBestellungPos.First();
+                        rRezeptBestellungPos.RezeptAngefordertDatum = dNow;
+                        rRezeptBestellungPos.RezeptAngefordertJN = true;
+                        SaveChanges = true;
+                    }
+                    if (SaveChanges)
+                    {
+                        db.SaveChanges();
+                    }
+                }
+
+                return true;
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.UpdateMedikamenteAsRezeptBestellt: " + ex.ToString());
+            }
+        }
+
+
         public bool UpdateMedikamenteAsGedruckt(List<PMDS.db.Entities.vRezeptBestellung2> tRezepteBestSelected)
         {
             try

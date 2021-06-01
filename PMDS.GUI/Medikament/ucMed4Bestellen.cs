@@ -15,7 +15,7 @@ using PMDS.Global.db.ERSystem;
 
 namespace PMDS.GUI.Medikament
 {
-    
+
     public partial class ucMed4Bestellen : UserControl, PMDS.Global.ISave
     {
 
@@ -76,10 +76,13 @@ namespace PMDS.GUI.Medikament
             {
                 if (!this._isInitialized)
                 {
-                    DB.DBKlinik DBKlinik1 = new DB.DBKlinik();
-                    dsKlinik.KlinikRow rKlinik = DBKlinik1.loadKlinik(ENV.IDKlinik, true);
-                    this.cboAbteilung.rKlinik = rKlinik;
-                    this.cboAbteilung.RefreshList();
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
+                    {
+                        DB.DBKlinik DBKlinik1 = new DB.DBKlinik();
+                        dsKlinik.KlinikRow rKlinik = DBKlinik1.loadKlinik(ENV.IDKlinik, true);
+                        this.cboAbteilung.rKlinik = rKlinik;
+                        this.cboAbteilung.RefreshList();
+                    }
 
                     if (ENV.AnsichtsModus == TerminlisteAnsichtsmodi.Bereichsansicht)
                     {
@@ -99,7 +102,7 @@ namespace PMDS.GUI.Medikament
 
                     this.btnMedikamenteBestellen.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Abgezeichnet, QS2.Resources.getRes.ePicTyp.ico);
                     this.btnRezepteAnfordern.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Abgezeichnet, QS2.Resources.getRes.ePicTyp.ico);
-                   
+
                     ENV.ENVPatientIDChanged += new ENVPatientIDChangedDelegate(ENV_ENVPatientIDChanged);
 
                     this.SelectAllNone(0, false);
@@ -107,11 +110,10 @@ namespace PMDS.GUI.Medikament
                     this.gridMedikamenteBestellen.DisplayLayout.Bands[0].Columns["Packungsanzahl"].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
 
                     this.btnRezepteanforderungsliste.Visible = true;
-                    this.btnRezepteDrucken.Visible = (ENV.RezeptDruck == 0 ? false : true);
                     this.btnMedikamentenbestellliste.Visible = true;
 
+                    this.ClearUI();
                     this.UIOnOff();
-                    this.ClearUI(true, false, false, true, false);
 
                     this._isInitialized = true;
                 }
@@ -126,26 +128,48 @@ namespace PMDS.GUI.Medikament
         {
             try
             {
-                if (ENV.RezeptBestellModus == 1 || ENV.RezeptBestellModus == 0)
+                this.btnRezepteAnfordern.Visible = false;
+                this.btnMedikamenteBestellen.Visible = false;
+
+                this.optBestellt.Value = -1;
+                this.optRezeptAngefordertJN.Value = -1;
+
+                /*
+                if (ENV.RezeptBestellModus == 1) //Nur Rezeptbestellung
                 {
                     this.grpMedikamentBestellt.Visible = false;
-                    this.lblOffeneBestellungen.Visible = false;
-                    this.lblBestellteMedikamente.Visible = false;
+                    this.btnRezepteAnfordern.Visible = false;
                     this.btnMedikamenteBestellen.Visible = false;
 
-                    this.panelWorkflowButtons.Left = this.grpMedikamentBestellt.Left;
+                    this.optBestellt.Value = -1;
                 }
-                
-                if (ENV.RezeptBestellModus == 2 || ENV.RezeptBestellModus == 0)
+                else if (ENV.RezeptBestellModus == 2) // Nur Medikamentenbestellung
                 {
                     this.grpRezeptAngefordert.Visible = false;
-                    this.lblOffeneAnforderungen.Visible = false;
-                    this.lblAngeforderteRezepte.Visible = false;
                     this.btnRezepteAnfordern.Visible = false;
+                    this.btnMedikamenteBestellen.Visible = false;
 
-                    this.panelWorkflowButtons.Left = this.grpMedikamentBestellt.Left;
-                    this.grpMedikamentBestellt.Left = this.grpRezeptAngefordert.Left;
+                    this.optRezeptAngefordertJN.Value = -1;
                 }
+                else if (ENV.RezeptBestellModus == 3)   //Rezeptbestellung UND Medikamentenbestellung
+                {
+                    this.btnRezepteAnfordern.Visible = false;
+                    this.btnMedikamenteBestellen.Visible = false;
+                }
+                else             //Keine Bestellung
+                {
+                    this.grpRezeptAngefordert.Visible = false;
+                    this.grpMedikamentBestellt.Visible = false;
+                    this.btnRezepteAnfordern.Visible = false;
+                    this.btnMedikamenteBestellen.Visible = false;
+
+                    this.optBestellt.Value = -1;
+                    this.optRezeptAngefordertJN.Value = -1;
+                }
+                */
+
+                this.datRezeptanforderungFrom.DateTime = DateTime.Now.Date.AddDays(ENV.RezeptanforderungZeitraum);
+                this.datRezeptanforderungTo.DateTime = DateTime.Now;
 
                 //Druckbuttons ein- oder ausblenden
                 this.btnMedikamentenbestellliste.Visible = false;
@@ -154,7 +178,11 @@ namespace PMDS.GUI.Medikament
 
                 if (ENV.HasRight(UserRights.MedikamentenbestellisteDrucken))
                 {
+                    this.btnRezepteanforderungsliste.Visible = true;
+                    this.btnMedikamentenbestellliste.Visible = true;
+                    this.btnRezepteDrucken.Visible = true;
 
+                    /*
                     if (ENV.RezeptDruck == 1 || ENV.RezeptDruck == 4 || ENV.RezeptDruck == -1)
                     {
                         this.btnRezepteanforderungsliste.Visible = true;
@@ -169,6 +197,7 @@ namespace PMDS.GUI.Medikament
                     {
                         this.btnRezepteDrucken.Visible = true;
                     }
+                    */
                 }
 
             }
@@ -178,53 +207,28 @@ namespace PMDS.GUI.Medikament
             }
         }
 
-        public void ClearUI(bool OffeneAnforderungen, bool AngeforderteRezepte, bool OffeneBestellungen, bool ClearAllData,
-                            bool BestellteMedikamente)
+        public void ClearUI()
         {
             try
             {
-                if (ClearAllData)
-                {
-                    this.datRezeptAngefordertFrom.Value = null;
-                    DateTime dNow = DateTime.Now;
-                    DateTime dToTmp = new DateTime(dNow.Year, dNow.Month, dNow.Day, 0, 0, 0);
-                    this.datRezeptAngefordertTo.Value = null;
+                this.datRezeptAngefordertFrom.Value = null;
+                DateTime dNow = DateTime.Now;
+                DateTime dToTmp = new DateTime(dNow.Year, dNow.Month, dNow.Day, 0, 0, 0);
+                this.datRezeptAngefordertTo.Value = null;
 
-                    this.datRezeptanforderungFrom.Value = null;
-                    this.datRezeptanforderungTo.Value = null;  // dNow;
+                this.datRezeptanforderungFrom.Value = null;
+                this.datRezeptanforderungTo.Value = null;  // dNow;
 
-                    this.datRezeptanforderungFrom.Value = null;
-                    this.datRezeptanforderungTo.Value = null;
+                this.datRezeptanforderungFrom.Value = null;
+                this.datRezeptanforderungTo.Value = null;
 
-                    this.datMedikamentBestelltFrom.Value = null;
-                    this.datMedikamentBestelltTo.Value = null;
+                this.datMedikamentBestelltFrom.Value = null;
+                this.datMedikamentBestelltTo.Value = null;
 
-                    this.cboAbteilung.Value = null;
-                    this.optDringend.Value = -1;
+                this.cboAbteilung.Value = null;
+                this.optDringend.Value = -1;
 
                     this.optGedrucktJN.Value = 0;
-                }
-
-                if (OffeneAnforderungen)
-                {
-                    this.optRezeptAngefordertJN.Value = 0;
-                    this.optBestellt.Value = 0;
-                }
-                else if (AngeforderteRezepte)
-                {
-                    this.optRezeptAngefordertJN.Value = 1;
-                    this.optBestellt.Value = -1;
-                }
-                else if (OffeneBestellungen)
-                {
-                    this.optRezeptAngefordertJN.Value = -1;
-                    this.optBestellt.Value = 0;
-                }
-                else if (BestellteMedikamente)
-                {
-                    this.optRezeptAngefordertJN.Value = -1;
-                    this.optBestellt.Value = 1;
-                }
             }
             catch (Exception ex)
             {
@@ -276,9 +280,9 @@ namespace PMDS.GUI.Medikament
                     PMDSBusiness1.searchMedikamenteBestellt(db, ref tRezeptBest,
                                                             (Nullable<DateTime>)this.datRezeptanforderungFrom.Value, (Nullable<DateTime>)this.datRezeptanforderungTo.Value,
                                                             (Nullable<DateTime>)this.datRezeptAngefordertFrom.Value, (Nullable<DateTime>)this.datRezeptAngefordertTo.Value,
-                                                            (Nullable<DateTime>)this.datMedikamentBestelltFrom.Value, (Nullable<DateTime>)this.datMedikamentBestelltTo.Value, 
+                                                            (Nullable<DateTime>)this.datMedikamentBestelltFrom.Value, (Nullable<DateTime>)this.datMedikamentBestelltTo.Value,
                                                             (Nullable<Guid>)this.cboAbteilung.Value,
-                                                            (int)this.optDringend.Value, (int)this.optBestellt.Value,(int)this.optRezeptAngefordertJN.Value,
+                                                            (int)this.optDringend.Value, (int)this.optBestellt.Value, (int)this.optRezeptAngefordertJN.Value,
                                                             PMDS.GUI.Medikament.cMedListKlienten._Mehrfachauswahl, PMDS.Global.ENV.CurrentIDPatient, PMDS.GUI.Medikament.cMedListKlienten._lIDKlienten, (int)this.optGedrucktJN.Value);
 
                     this.gridMedikamenteBestellen.DataSource = System.Linq.Enumerable.ToList(tRezeptBest);
@@ -295,7 +299,7 @@ namespace PMDS.GUI.Medikament
                             this.doActionGridLoadRow(eTypActionGrid.LoadData, rGrid, db);
                         }
                     }
-                    
+
                     qs2.core.vb.compLayout compLayout1 = new qs2.core.vb.compLayout();
                     compLayout1.initControl();
                     bool LayoutFound = false;
@@ -394,9 +398,9 @@ namespace PMDS.GUI.Medikament
                         int iCounterDeleted = 0;
                         using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                         {
-                            if (PMDSBusiness1.saveMedikamenteBestellt(tRezepteBestSelected, 
-                                                                        (TypSaveMedikamente == eTypSaveMedikamente.RezeptAnfordern?true:false),
-                                                                        (TypSaveMedikamente == eTypSaveMedikamente.MedikamenteBestellen?true:false),
+                            if (PMDSBusiness1.saveMedikamenteBestellt(tRezepteBestSelected,
+                                                                        (TypSaveMedikamente == eTypSaveMedikamente.RezeptAnfordern ? true : false),
+                                                                        (TypSaveMedikamente == eTypSaveMedikamente.MedikamenteBestellen ? true : false),
                                                                         db, true, ref iCountToSave, Order))
                             {
                                 return true;
@@ -425,24 +429,24 @@ namespace PMDS.GUI.Medikament
             {
                 //if (this.ValidateData())
                 //{
-                    foreach (UltraGridRow gridRow in this.gridMedikamenteBestellen.Rows)
+                foreach (UltraGridRow gridRow in this.gridMedikamenteBestellen.Rows)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                     {
-                        using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                        PMDS.db.Entities.vRezeptBestellung2 rvRezeptBestellungGrid = (PMDS.db.Entities.vRezeptBestellung2)gridRow.ListObject;
+
+                        IQueryable<PMDS.db.Entities.RezeptBestellungPos> tRezeptBestPos = db.RezeptBestellungPos.Where(rb => rb.ID == rvRezeptBestellungGrid.rbp_ID);
+                        if (tRezeptBestPos.Count() != 1)
                         {
-                            PMDS.db.Entities.vRezeptBestellung2 rvRezeptBestellungGrid = (PMDS.db.Entities.vRezeptBestellung2)gridRow.ListObject;
-                        
-                            IQueryable<PMDS.db.Entities.RezeptBestellungPos> tRezeptBestPos = db.RezeptBestellungPos.Where(rb => rb.ID == rvRezeptBestellungGrid.rbp_ID);
-                            if (tRezeptBestPos.Count() != 1)
-                            {
-                                throw new Exception("SaveDataGrid: tRezeptBestPos.Count()!=0 not allowed for RezeptBestellungPos.ID '" + rvRezeptBestellungGrid.rbp_ID.ToString() + "'!");
-                            }
-
-                            PMDS.db.Entities.RezeptBestellungPos rRezeptBestPos = tRezeptBestPos.First();
-
-                            rRezeptBestPos.Packungsanzahl = rvRezeptBestellungGrid.Packungsanzahl;
-                            db.SaveChanges();
+                            throw new Exception("SaveDataGrid: tRezeptBestPos.Count()!=0 not allowed for RezeptBestellungPos.ID '" + rvRezeptBestellungGrid.rbp_ID.ToString() + "'!");
                         }
+
+                        PMDS.db.Entities.RezeptBestellungPos rRezeptBestPos = tRezeptBestPos.First();
+
+                        rRezeptBestPos.Packungsanzahl = rvRezeptBestellungGrid.Packungsanzahl;
+                        db.SaveChanges();
                     }
+                }
                 //}
 
                 return true;
@@ -492,9 +496,9 @@ namespace PMDS.GUI.Medikament
         }
 
         public bool IsChanged
-        { 
-            get 
-            { 
+        {
+            get
+            {
                 return _DataChanged;
             }
         }
@@ -528,6 +532,29 @@ namespace PMDS.GUI.Medikament
             catch (Exception ex)
             {
                 throw new Exception("ucMedikamenteBestellen.DeleteRows: " + ex.ToString());
+            }
+        }
+
+        public bool MedikamenteGeliefert(PMDS.Print.frmPrintPreview.eTypReportMedikamenteBestellen TypActionPrint)
+        {
+            try
+            {
+                List<PMDS.DB.PMDSBusiness.cField> lstData = new List<DB.PMDSBusiness.cField>();
+                List<PMDS.db.Entities.vRezeptBestellung2> tRezepteBestSelected = new List<db.Entities.vRezeptBestellung2>();
+                this.doActionGrid(ref lstData, eTypActionGrid.DeleteSelectedRows, ref tRezepteBestSelected, false);
+
+                if (lstData.Count > 0)
+                {
+                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
+                    DataTable tBestellungMedikamente = PMDS.DB.BusinessHelp.ToDataTable(tRezepteBestSelected);
+                    PMDSBusiness1.UpdateMedikamenteAsGeliefert(tRezepteBestSelected);
+                    this.LoadData();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ucMedikamenteBestellen.Medikamentenuebernahme: " + ex.ToString());
             }
         }
 
@@ -579,6 +606,16 @@ namespace PMDS.GUI.Medikament
                                                                 (Nullable<DateTime>)this.datRezeptAngefordertFrom.Value, (Nullable<DateTime>)this.datRezeptAngefordertTo.Value,
                                                                 ENV.IDKlinik, (this.cboAbteilung.Value == null ? Guid.Empty : (Guid)this.cboAbteilung.Value),
                                                                 out frmPrintPreview1, TypActionPrint);
+                    if (TypActionPrint == frmPrintPreview.eTypReportMedikamenteBestellen.Rezeptanforderungsliste)
+                    {
+                        PMDSBusiness1.UpdateMedikamenteAsRezeptAngefordert(tRezepteBestSelected);
+                    }
+                    else if (TypActionPrint == frmPrintPreview.eTypReportMedikamenteBestellen.Medikamentenbestellliste)
+                    {
+                        PMDSBusiness1.UpdateMedikamenteAsBestellt(tRezepteBestSelected);
+                    }
+
+
                     PMDSBusiness1.UpdateMedikamenteAsGedruckt(tRezepteBestSelected);
                     this.LoadData();
 
@@ -1197,7 +1234,6 @@ namespace PMDS.GUI.Medikament
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                this.ClearUI(true, false, false, false, false);
                 this.LoadData();
             }
             catch (Exception ex)
@@ -1214,7 +1250,6 @@ namespace PMDS.GUI.Medikament
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                this.ClearUI(false, true, false,false, false);
                 this.LoadData();
             }
             catch (Exception ex)
@@ -1231,7 +1266,6 @@ namespace PMDS.GUI.Medikament
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                this.ClearUI(false, false, true, false, false);
                 this.LoadData();
             }
             catch (Exception ex)
@@ -1248,7 +1282,6 @@ namespace PMDS.GUI.Medikament
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                this.ClearUI(false, false, false, false, true);
                 this.LoadData();
             }
             catch (Exception ex)
@@ -1382,5 +1415,75 @@ namespace PMDS.GUI.Medikament
             }
         }
 
+        private void btnMedikamentenuebernahme_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                this.MedikamenteGeliefert(PMDS.Print.frmPrintPreview.eTypReportMedikamenteBestellen.MedikamenteGeliefert);
+            }
+            catch (Exception ex)
+            {
+                PMDS.Global.ENV.HandleException(ex);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void datRezeptanforderungFrom_ValueChanged(object sender, EventArgs e)
+        {
+            QS2.Desktop.ControlManagment.BaseDateTimeEditor datObj = (QS2.Desktop.ControlManagment.BaseDateTimeEditor)sender;
+            if (datObj.Focused)
+            {
+                this.LoadData();
+            }
+        }
+
+        private void datRezeptanforderungTo_ValueChanged(object sender, EventArgs e)
+        {
+            QS2.Desktop.ControlManagment.BaseDateTimeEditor datObj = (QS2.Desktop.ControlManagment.BaseDateTimeEditor)sender;
+            if (datObj.Focused)
+            {
+                this.LoadData();
+            }
+        }
+
+        private void datRezeptAngefordertFrom_ValueChanged(object sender, EventArgs e)
+        {
+            QS2.Desktop.ControlManagment.BaseDateTimeEditor datObj = (QS2.Desktop.ControlManagment.BaseDateTimeEditor)sender;
+            if (datObj.Focused)
+            {
+                this.LoadData();
+            }
+        }
+
+        private void datRezeptAngefordertTo_ValueChanged(object sender, EventArgs e)
+        {
+            QS2.Desktop.ControlManagment.BaseDateTimeEditor datObj = (QS2.Desktop.ControlManagment.BaseDateTimeEditor)sender;
+            if (datObj.Focused)
+            {
+                this.LoadData();
+            }
+        }
+
+        private void datMedikamentBestelltFrom_ValueChanged(object sender, EventArgs e)
+        {
+            QS2.Desktop.ControlManagment.BaseDateTimeEditor datObj = (QS2.Desktop.ControlManagment.BaseDateTimeEditor)sender;
+            if (datObj.Focused)
+            {
+                this.LoadData();
+            }
+        }
+
+        private void datMedikamentBestelltTo_ValueChanged(object sender, EventArgs e)
+        {
+            QS2.Desktop.ControlManagment.BaseDateTimeEditor datObj = (QS2.Desktop.ControlManagment.BaseDateTimeEditor)sender;
+            if (datObj.Focused)
+            {
+                this.LoadData();
+            }
+        }
     }
 }
