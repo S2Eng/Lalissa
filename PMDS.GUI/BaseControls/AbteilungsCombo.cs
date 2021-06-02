@@ -26,7 +26,7 @@ namespace PMDS.GUI.BaseControls
 
 		public AbteilungsCombo()
 		{
-            if (!ENV.AppRunning)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
 			RefreshList();
 		}
@@ -46,6 +46,8 @@ namespace PMDS.GUI.BaseControls
             set
             {
                 this._rKlinik = value;
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
+                    return;
                 RefreshList();
             }
         }

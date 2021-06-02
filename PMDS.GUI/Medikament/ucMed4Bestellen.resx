@@ -118,18 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="appearance2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVFhH7Ze7TgJhEIXXC9oROo2l8W0t6bGRypBtSLCx
-        t/EJIFYmKhEpLLyznvlzJiHD8O/qLlmL/ZKvYc5cslAsyW+5TpIWvIKZ8RLuMLY5sORwaam1w1g5MKgN
-        T+ENfDBOobdcfIQ2LzNkVpvj4yDYgRPoLSijzMx/Qgh1l5qqtss160FobJqqdMw160FoYZqqdME1DXHw
-        qF7hW9VyfD4Ie99faTk+H4Q39UPc4oo4CP7PA+ajUTYbDFY+V+fDYbQOCx/wbRqDilcTFa9Gt7kiDoK1
-        H/BlGoOKVxMVr0aLvS8g2BzwaRqDilcTFa9Gd7kiDoK1H/BhGoOKVxMVr0ZbXBEHwdoPeDeNQcWriYpX
-        o3tcEQfB5gB5gVgZoHg1UfFqdJ8r4iDoHvDU72fPabryuTrt9ULGq9HCB9yaxiqccXw+CJ+Z5ipMOT4f
-        hA+g/M/zBv3FF3jC8cVAwxE8h3fQG1rEe3gBjznWkCQ/3EnoaEs7aYUAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="appearance4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -146,7 +134,28 @@
         FG2dWCRvExOKtVYs1GwTM4q0XiyW2sSA7H8jFuyCCbC7aSDLsvY/rDXn8G1rQDQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="appearance11.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="ultraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>409, 17</value>
+  </metadata>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="vRezeptBestellung2BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>172, 17</value>
+  </metadata>
+  <data name="appearance21.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVFhH7Ze7TgJhEIXXC9oROo2l8W0t6bGRypBtSLCx
+        t/EJIFYmKhEpLLyznvlzJiHD8O/qLlmL/ZKvYc5cslAsyW+5TpIWvIKZ8RLuMLY5sORwaam1w1g5MKgN
+        T+ENfDBOobdcfIQ2LzNkVpvj4yDYgRPoLSijzMx/Qgh1l5qqtss160FobJqqdMw160FoYZqqdME1DXHw
+        qF7hW9VyfD4Ie99faTk+H4Q39UPc4oo4CP7PA+ajUTYbDFY+V+fDYbQOCx/wbRqDilcTFa9Gt7kiDoK1
+        H/BlGoOKVxMVr0aLvS8g2BzwaRqDilcTFa9Gd7kiDoK1H/BhGoOKVxMVr0ZbXBEHwdoPeDeNQcWriYpX
+        o3tcEQfB5gB5gVgZoHg1UfFqdJ8r4iDoHvDU72fPabryuTrt9ULGq9HCB9yaxiqccXw+CJ+Z5ipMOT4f
+        hA+g/M/zBv3FF3jC8cVAwxE8h3fQG1rEe3gBjznWkCQ/3EnoaEs7aYUAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="appearance22.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAdtJREFUWEfFl0tOwzAURTuruoOqcyQYdCXdDjBhA11B1Z3AAqiYUmDCZ8YC+LRi
@@ -160,7 +169,7 @@
         XQrWwu95p/MNwjPHeLsU2tEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="appearance14.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance25.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJbSURBVFhH7ZY9TxRRFIYHKgIUQJAQaqiwIEJBR0NMsDDW
@@ -176,16 +185,7 @@
         WNF4FDz5+mc8CXsi9mTsCdmTsvNiIOx99dWDiuIPqmdgFdM1sf8AAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="ultraToolTipManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>409, 17</value>
-  </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="vRezeptBestellung2BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>172, 17</value>
-  </metadata>
-  <data name="appearance27.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance30.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFuSURBVFhH7Ze7TgJhEIXXC9oROo2l8W0t6bGRypBtSLCx

@@ -91,6 +91,8 @@ namespace PMDS.GUI.Medikament
                     {
                     }
 
+
+                    
                     this.btnRezepteanforderungsliste.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, QS2.Resources.getRes.ePicTyp.ico);
                     this.btnRezepteDrucken.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, QS2.Resources.getRes.ePicTyp.ico);
                     this.btnMedikamentenbestellliste.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Drucken, QS2.Resources.getRes.ePicTyp.ico);
@@ -1484,6 +1486,11 @@ namespace PMDS.GUI.Medikament
             {
                 this.LoadData();
             }
+        }
+
+        private void baseLabel2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
