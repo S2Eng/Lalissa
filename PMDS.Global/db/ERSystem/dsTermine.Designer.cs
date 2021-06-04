@@ -2256,7 +2256,6 @@ namespace PMDS.Global.db.ERSystem {
                 base.Columns.Add(this.columnNaechsteEvaluierungBemerkung);
                 this.columnEvaluierungUeberfällig = new global::System.Data.DataColumn("EvaluierungUeberfällig", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEvaluierungUeberfällig);
-                this.columnAuswahl.ReadOnly = true;
                 this.columnvon.ReadOnly = true;
                 this.columnvon.MaxLength = 20;
                 this.columnbis.ReadOnly = true;

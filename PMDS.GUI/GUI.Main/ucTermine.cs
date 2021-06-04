@@ -662,7 +662,7 @@ namespace PMDS.GUI
         {
             try
             {
-                if (e.Cell.Column.ToString().Trim().Equals("Auswahl", StringComparison.CurrentCultureIgnoreCase))
+                if (generic.sEquals(e.Cell.Column, "Auswahl"))
                 {
                     e.Cell.Activation = Activation.AllowEdit;
                 }
