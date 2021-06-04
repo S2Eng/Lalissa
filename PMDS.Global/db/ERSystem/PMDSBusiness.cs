@@ -1840,8 +1840,39 @@ namespace PMDS.DB
 
                 if (Intervall % 721 == 0 && Intervall > 0)
                 {
+                    DateTime LetztesDatumInitial = LetztesDatumTmp;
+
                     int Monate = Intervall / 721;
-                    LetztesDatumTmp = new DateTime(LetztesDatumTmp.Year, LetztesDatumTmp.Month, PP_StartDatum.Day, PP_StartDatum.Hour, PP_StartDatum.Minute, PP_StartDatum.Second).AddMonths(Monate);
+
+                    //Prüfen, ob Planungsbeginn Monatsletzter ist
+
+                    //bool StartIsUltimo = PP_StartDatum.Date == new DateTime(PP_StartDatum.Year, PP_StartDatum.Month, DateTime.DaysInMonth(PP_StartDatum.Year, PP_StartDatum.Month));
+                    bool StartIsUltimo = PP_StartDatum.Day == DateTime.DaysInMonth(PP_StartDatum.Year, PP_StartDatum.Month);
+
+                    if (StartIsUltimo)
+                    {
+                        LetztesDatumTmp = new DateTime(LetztesDatumTmp.Year, LetztesDatumTmp.Month, DateTime.DaysInMonth(LetztesDatumTmp.Year, LetztesDatumTmp.Month), PP_StartDatum.Hour, PP_StartDatum.Minute, PP_StartDatum.Second).AddMonths(Monate - 1);
+                        if (LetztesDatumTmp.Month == LetztesDatumInitial.Month && LetztesDatumTmp.Year == LetztesDatumInitial.Year)
+                        {
+                            LetztesDatumTmp = LetztesDatumTmp.AddDays(1);
+                        }
+                    }
+                    else
+                    {
+                        LetztesDatumTmp = new DateTime(LetztesDatumTmp.Year, LetztesDatumTmp.Month, 1, PP_StartDatum.Hour, PP_StartDatum.Minute, PP_StartDatum.Second).AddMonths(Monate);
+
+                        if (LetztesDatumInitial.Day < PP_StartDatum.Day)
+                            LetztesDatumTmp = LetztesDatumTmp.AddMonths(-1);
+
+                        if (DateTime.DaysInMonth(LetztesDatumTmp.Year, LetztesDatumTmp.Month) >= PP_StartDatum.Day)
+                        {
+                            LetztesDatumTmp = LetztesDatumTmp.AddDays(PP_StartDatum.Day - 1);
+                        }
+                        else
+                        {
+                            LetztesDatumTmp = LetztesDatumTmp.AddMonths(1).AddDays(-1);
+                        }
+                    }
                 }
                 else
                     LetztesDatumTmp = LetztesDatumTmp.AddHours(Intervall);

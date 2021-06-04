@@ -847,7 +847,7 @@ namespace PMDS.GUI
                 frmRücmeldung.SetUIÜbergabe(rÜbergabe);
             }
 
-            ret = frmRücmeldung.ShowDialog();
+             ret = frmRücmeldung.ShowDialog();
 
             if (!frmRücmeldung.abort)
             {
