@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="vInterventionenSelect.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="oleDbSelectCommand1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="vInterventionenSelect.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="oleDbSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="vInterventionenSelect.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
+  <data name="vInterventionenSelect.CommandText" xml:space="preserve">
     <value>SELECT        Auswahl, von, bis, Klient, Geburtsdatum, Maßnahme, [Anmerkung und Hinweis], Lokalisierung, Klinik, Abteilung, Bereich, [Benutzer (erstellt)], [Benutzer (geändert)], [Berufsstand Soll], Eintragstyp, UrlaubJN, EntlassenJN, 
                          IDBezug, AbgesetztJN, EinmaligJN, ErledigtJN, GelöschtJN, PrivatJN, MitPflegediagnoseAbzeichnenJN, TerminJN, Startdatum, ZuErledigenBis, IDPflegeplan, IDAufenthalt, IDKlinik, IDAbteilung, IDBereich, IDKlient, IDEintrag, 
                          IDBenutzer_Erstellt, IDBenutzer_Geaendert, IDBerufsstand, IDLinkDokument, lstIDPDx, lstBDxBezeichnung, Anmerkung, Warnhinweis, AnmerkungRTF, OhneZeitbezugJN, ÜberfälligJN, vonDatum, bisDatum, 
@@ -158,9 +158,6 @@ FROM            vInterventionen</value>
                          lstZusatzIDs, HAGPflichtigJN, IDBefund, RMOptionalJN, LogInNameFrei
 FROM            vÜbergabe</value>
   </data>
-  <metadata name="oleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>182, 101</value>
-  </metadata>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>

@@ -271,8 +271,8 @@ namespace PMDS.Print
             {
                 ReportDocument rpt = new ReportDocument();
 
-                rpt.Load(ENV.CheckReportExists("AUFGABENLISTE.rpt"));   // statt AUFGABENLISTE
-                PMDS.Print.CR.ReportManager.setDataSource(dt, ENV.CheckReportExists("AUFGABENLISTE.rpt"), rpt);   //lthok
+                rpt.Load(ENV.CheckReportExists("rptAUFGABENLISTE.rpt"));   // statt AUFGABENLISTE
+                PMDS.Print.CR.ReportManager.setDataSource(dt, ENV.CheckReportExists("rptAUFGABENLISTE.rpt"), rpt);   //lthok
 
                 return rpt;
             }

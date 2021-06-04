@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sqlTermine));
-            this.oleDbSelectCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.vInterventionenSelect = new System.Data.OleDb.OleDbCommand();
             this.dbConn = new System.Data.OleDb.OleDbConnection();
             this.davInterventionen = new System.Data.OleDb.OleDbDataAdapter();
             this.davÜbergabe = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand1 = new System.Data.OleDb.OleDbCommand();
-            this.oleDbConnection1 = new System.Data.OleDb.OleDbConnection();
             // 
-            // oleDbSelectCommand1
+            // vInterventionenSelect
             // 
-            this.oleDbSelectCommand1.CommandText = resources.GetString("oleDbSelectCommand1.CommandText");
-            this.oleDbSelectCommand1.Connection = this.dbConn;
+            this.vInterventionenSelect.CommandText = resources.GetString("vInterventionenSelect.CommandText");
+            this.vInterventionenSelect.Connection = this.dbConn;
             // 
             // dbConn
             // 
@@ -48,7 +47,7 @@
             // 
             // davInterventionen
             // 
-            this.davInterventionen.SelectCommand = this.oleDbSelectCommand1;
+            this.davInterventionen.SelectCommand = this.vInterventionenSelect;
             this.davInterventionen.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
             new System.Data.Common.DataTableMapping("Table", "vInterventionen", new System.Data.Common.DataColumnMapping[] {
                         new System.Data.Common.DataColumnMapping("Auswahl", "Auswahl"),
@@ -166,21 +165,15 @@
             // 
             this.oleDbCommand1.CommandText = resources.GetString("oleDbCommand1.CommandText");
             this.oleDbCommand1.Connection = this.dbConn;
-            // 
-            // oleDbConnection1
-            // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initi" +
-    "al Catalog=PMDSDev";
 
         }
 
         #endregion
 
-        private System.Data.OleDb.OleDbCommand oleDbSelectCommand1;
+        private System.Data.OleDb.OleDbCommand vInterventionenSelect;
         private System.Data.OleDb.OleDbConnection dbConn;
         private System.Data.OleDb.OleDbCommand oleDbCommand1;
         public System.Data.OleDb.OleDbDataAdapter davInterventionen;
         public System.Data.OleDb.OleDbDataAdapter davÜbergabe;
-        private System.Data.OleDb.OleDbConnection oleDbConnection1;
     }
 }
