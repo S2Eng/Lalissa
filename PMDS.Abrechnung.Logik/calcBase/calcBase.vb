@@ -217,12 +217,12 @@ Public Class calcBase
         End Get
     End Property
 
-    Public ReadOnly Property dat2999() As Date
+    Public Shared ReadOnly Property dat2999() As DateTime
         Get
-            dat2999 = DateSerial(2999, 12, 31)
+            dat2999 = New Date(2999, 12, 31)
         End Get
     End Property
-    Public ReadOnly Property dat1900() As Date
+    Public Shared ReadOnly Property dat1900() As DateTime
         Get
             dat1900 = DateSerial(1900, 1, 1)
         End Get

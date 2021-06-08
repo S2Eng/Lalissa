@@ -687,15 +687,16 @@ Public Class Sql
                         ByVal von As Date, ByVal bis As Date, ByVal text As String, ByVal db As dbCalc, _
                         ByVal calcRun As eCalcRun, IDKlinik As System.Guid) As OleDb.OleDbDataAdapter
         Try
-            Dim da As New OleDb.OleDbDataAdapter
-            Dim cmd As New OleDb.OleDbCommand
 
-            cmd.CommandText = Me.daBooking.SelectCommand.CommandText
+            Dim cmd As New OleDb.OleDbCommand(Me.daBooking.SelectCommand.CommandText, Sql.CONNECTION)
+
             Dim where As String = ""
             Dim str As String = ""
 
-            str = " IDKlinik = '" + IDKlinik.ToString() + "' "
+            str = " IDKlinik = ? "
             where += IIf(where = "", " where " + str, " and " + str)
+            cmd.Parameters.AddWithValue("IDKlinik", OleDbType.Guid).Value = IDKlinik
+
 
             If calcRun <> eCalcRun.all Then
                 If calcRun = eCalcRun.month Then
@@ -707,51 +708,63 @@ Public Class Sql
                 End If
             End If
 
-            If idKlient <> "" Then
-                str = " IDKlient = '" + idKlient.ToString() + "' "
-                where += IIf(where = "", " where " + str, " and " + str)
-            End If
-            If klientIsEmpty Then
-                str = " IDKlient = '' "
-                where += IIf(where = "", " where " + str, " and " + str)
-            End If
+            str = " IDKlient = ? "
+            where += IIf(where = "", " where " + str, " and " + str)
+            cmd.Parameters.AddWithValue("IDKlient", OleDbType.VarChar).Value = IIf(klientIsEmpty, "", idKlient)
+
             If idKostenträger <> "" Then
-                str = " IDKostenträger = '" + idKostenträger.ToString() + "' "
+                str = " IDKostenträger = ?"
                 where += IIf(where = "", " where " + str, " and " + str)
+                cmd.Parameters.AddWithValue("IDKostenträger", OleDbType.VarChar).Value = idKostenträger
             End If
 
             If konto <> "" Then
                 If Kontoseite = eKontoseite.soll Then
-                    str = " Sollkonto = '" + konto.ToString() + "' "
+                    str = " Sollkonto = ? "
                     where += IIf(where = "", " where " + str, " and " + str)
+                    cmd.Parameters.AddWithValue("Sollkonto", OleDbType.VarChar).Value = konto
+
                 ElseIf Kontoseite = eKontoseite.haben Then
-                    str = " Habenkonto = '" + konto.ToString() + "' "
+                    str = " Habenkonto = ? "
                     where += IIf(where = "", " where " + str, " and " + str)
+                    cmd.Parameters.AddWithValue("Habenkonto", OleDbType.VarChar).Value = konto
+
                 ElseIf Kontoseite = eKontoseite.beide Then
-                    str = " (Sollkonto = '" + konto.ToString() + "' or Habenkonto = '" + konto.ToString() + "') "
+                    str = " (Sollkonto = ? or Habenkonto = ?) "
                     where += IIf(where = "", " where " + str, " and " + str)
+                    cmd.Parameters.AddWithValue("Sollkonto", OleDbType.VarChar).Value = konto
+                    cmd.Parameters.AddWithValue("Habenkonto", OleDbType.VarChar).Value = konto
                 End If
             End If
 
-            If von <> Nothing Then
-                str = " Buchungsdatum >= ? "
+            If text <> "" Then
+                str = " (Text like ? or RechNr like ?) "
                 where += IIf(where = "", " where " + str, " and " + str)
-            End If
-            If bis <> Nothing Then
-                str = " Buchungsdatum <= ? "
-                where += IIf(where = "", " where " + str, " and " + str)
+                cmd.Parameters.AddWithValue("Text", OleDbType.VarChar).Value = "%" + text.ToString() + "%"
+                cmd.Parameters.AddWithValue("RechNr", OleDbType.VarChar).Value = "%" + text.ToString() + "%"
             End If
 
-            If text <> "" Then
-                str = " (Text like '%" + text.ToString() + "%' or RechNr like '%" + text.ToString() + "%') "
+            If von <> Nothing And von <> calcBase.dat1900 Then
+                str = " Buchungsdatum >= ? "
                 where += IIf(where = "", " where " + str, " and " + str)
+                'cmd.Parameters.AddWithValue("Buchungsdatum", OleDbType.DBTimeStamp).Value = von.Date
+                cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("Buchungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Buchungsdatum")).Value = von.Date
+
+            End If
+
+            If bis <> Nothing And bis <> calcBase.dat2999 Then
+                str = " Buchungsdatum <= ? "
+                where += IIf(where = "", " where " + str, " and " + str)
+                'cmd.Parameters.AddWithValue("Buchungsdatum", OleDbType.DBTimeStamp).Value = bis.Date
+                cmd.Parameters.Add(New System.Data.OleDb.OleDbParameter("Buchungsdatum", System.Data.OleDb.OleDbType.DBTimeStamp, 8, "Buchungsdatum")).Value = bis.Date
             End If
 
             cmd.CommandText += where
             cmd.CommandText += " order by Buchungsdatum desc "
             cmd.CommandTimeout = 0
 
-            da.SelectCommand = cmd
+            Dim da As New OleDb.OleDbDataAdapter(cmd)
+
             da.InsertCommand = Me.OleDbInsertCommand2
             da.InsertCommand.Connection = Sql.CONNECTION
 
@@ -760,11 +773,6 @@ Public Class Sql
 
             da.DeleteCommand = Me.OleDbDeleteCommand2
             da.DeleteCommand.Connection = Sql.CONNECTION
-
-            da.SelectCommand.Connection = Sql.CONNECTION
-            If von <> Nothing Then da.SelectCommand.Parameters.AddWithValue("Buchungsdatum", von)
-            If bis <> Nothing Then da.SelectCommand.Parameters.AddWithValue("Buchungsdatum", bis)
-
 
             da.Fill(db.bookings)
             Return da

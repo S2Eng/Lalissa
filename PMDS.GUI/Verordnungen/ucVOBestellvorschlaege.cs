@@ -300,9 +300,9 @@ namespace PMDS.GUI.Verordnungen
                                            {
                                                IDAufenthalt = a.ID,
                                                Entlassungszeitpunkt = a.Entlassungszeitpunkt
-                                           }).First();
+                                           }).FirstOrDefault();
                             
-                            if (AddBestellvorschlag && rAufenthalt.Entlassungszeitpunkt == null)
+                            if (AddBestellvorschlag && rAufenthalt != null && rAufenthalt.Entlassungszeitpunkt == null)
                             {
                                 var tVO_Bestellpostitionen = (from bp in db.VO_Bestellpostitionen
                                                                where bp.IDBestelldaten_VO == rVO_BestelldatenAct.ID && bp.DatumBestellungPlan == rVO_BestelldatenAct.DatumNaechsterAnspruch

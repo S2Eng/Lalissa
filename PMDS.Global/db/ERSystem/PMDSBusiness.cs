@@ -53,10 +53,10 @@ namespace PMDS.DB
         public string sqlvInterventionen = "";
         public string sqlvÜbergabe = "";
 
-        public static Guid IDVOStatusVorgemerkt = new System.Guid("00000000-0000-0000-0001-000000000015");
-        public static Guid IDVOStatusBestellt = new System.Guid("00000000-0000-0000-0002-000000000015");
-        public static Guid IDVOStatusGeliefert = new System.Guid("00000000-0000-0000-0003-000000000015");
-        public static Guid IDVOStatusStorniert = new System.Guid("00000000-0000-0000-0004-000000000015");
+        public static Guid IDVOStatusVorgemerkt = new System.Guid("00000000-0000-0000-0015-000000000001");
+        public static Guid IDVOStatusBestellt = new System.Guid("00000000-0000-0000-0015-000000000002");
+        public static Guid IDVOStatusGeliefert = new System.Guid("00000000-0000-0000-0015-000000000003");
+        public static Guid IDVOStatusStorniert = new System.Guid("00000000-0000-0000-0015-000000000004");
 
         public static int _iFctCalled = 0;
         public bool isinitialized = false;
@@ -4344,14 +4344,16 @@ namespace PMDS.DB
 
                     if (ENV.InterventionenEvaluieren)
                     {
-                        rPflegePlan.NaechsteEvaluierung = aszmArgUI.EvalStartDatum;
+                        if (aszmArgUI.EvalStartDatum != null &&aszmArgUI.EvalStartDatum != new DateTime(1900,1,1))
+                            rPflegePlan.NaechsteEvaluierung = aszmArgUI.EvalStartDatum;
                         rPflegePlan.NaechsteEvaluierungBemerkung = aszmArgUI.EvalBemerkung;
                     }
                 }
                 else
                 {
                     rPflegePlan.OhneZeitBezug = true;
-                    rPflegePlan.NaechsteEvaluierung = aszmArgUI.EvalStartDatum;
+                    if (aszmArgUI.EvalStartDatum != null && aszmArgUI.EvalStartDatum != new DateTime(1900, 1, 1))
+                        rPflegePlan.NaechsteEvaluierung = aszmArgUI.EvalStartDatum;
                     rPflegePlan.NaechsteEvaluierungBemerkung = aszmArgUI.EvalBemerkung;
                     rPflegePlan.ParalellJN = false;
                     rPflegePlan.EintragFlag = 0;
@@ -5582,7 +5584,8 @@ namespace PMDS.DB
                 {
                     System.Linq.IQueryable<PMDS.db.Entities.PflegePlan> tPflegePlan = db.PflegePlan.Where(o => o.ID == IDpflegeplan);
                     PMDS.db.Entities.PflegePlan rPflegePlan = tPflegePlan.First();
-                    rPflegePlan.NaechsteEvaluierung = NaechsteEvaluierung.Date;
+                    if (NaechsteEvaluierung != null && NaechsteEvaluierung != new DateTime(1900, 1, 1))
+                        rPflegePlan.NaechsteEvaluierung = NaechsteEvaluierung.Date;
                     db.SaveChanges();
 
                     return true;
@@ -5602,7 +5605,8 @@ namespace PMDS.DB
                 {
                     System.Linq.IQueryable<PMDS.db.Entities.PflegePlan> tPflegePlan = db.PflegePlan.Where(o => o.ID == IDpflegeplan);
                     PMDS.db.Entities.PflegePlan rPflegePlan = tPflegePlan.First();
-                    rPflegePlan.NaechsteEvaluierung = NaechsteEvaluierung.Date;
+                    if (NaechsteEvaluierung != null && NaechsteEvaluierung != new DateTime(1900, 1, 1))
+                        rPflegePlan.NaechsteEvaluierung = NaechsteEvaluierung.Date;
                     rPflegePlan.LetzteEvaluierung = DateTime.Now;
                     //rPflegePlan.NaechsteEvaluierungBemerkung = EvaluierungBemerkung;
                     //rPflegePlan.IDBenutzer_Geaendert = ENV.ActiveUser.ID;
