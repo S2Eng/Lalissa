@@ -567,6 +567,16 @@ Public Class Sql
 
                         Dim rKlient As dbPMDS.PatientRow = db.Patient.NewRow()
                         Dim rKlienRead As dbPMDS.PatientRow = Me.readKlient(rRechOff.IDKlient)
+
+                        If rKlienRead.WohnungAbgemeldetJN Then
+                            readKlinik(db, IDKlinik)
+                            Dim rKlinik As PMDS.Calc.Logic.dbPMDS.KlinikRow = db.Klinik.Rows(0)
+                            rKlienRead.Strasse = rKlinik.Strasse
+                            rKlienRead.Plz = rKlinik.Plz
+                            rKlienRead.Ort = rKlinik.Ort
+                            rKlienRead.LandKZ = rKlinik.LandKZ
+                        End If
+
                         rKlient.ItemArray = rKlienRead.ItemArray()
                         rKlient.IDKost = rRechOff.IDKost.ToString()
                         db.Patient.Rows.Add(rKlient)
@@ -881,11 +891,11 @@ Public Class Sql
             If clearDB Then db.Patient.Rows.Clear()
             Dim da As New OleDb.OleDbDataAdapter
             Dim cmd As New OleDb.OleDbCommand
-            cmd.CommandText = Me.daKlient.SelectCommand.CommandText + " where LOWER(Patient.ID) = '" + idKlient + "' "
+            cmd.CommandText = Me.daKlient.SelectCommand.CommandText + " where Patient.ID = '" + idKlient + "' "
             da.SelectCommand = cmd
             da.SelectCommand.CommandTimeout = 0
             da.SelectCommand.Connection = Sql.CONNECTION
-            da.Fill(db.Patient)     '
+            da.Fill(db.Patient)
 
         Catch exept As Exception
             calcBase.doExept(exept)

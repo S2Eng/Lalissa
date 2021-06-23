@@ -165,7 +165,7 @@ namespace RBU
                 SqlConnectionStringBuilder1.DataSource = m_conn.DataSource;
                 SqlConnectionStringBuilder1.InitialCatalog = m_conn.Database;
                 SqlConnectionStringBuilder1.MultipleActiveResultSets = true;
-                if (m_sUser == null || m_sUser.Trim() == "")
+                if (String.IsNullOrWhiteSpace(m_sUser))
                 {
                     SqlConnectionStringBuilder1.IntegratedSecurity = true;
                     DataBase.IsTrusted = true;

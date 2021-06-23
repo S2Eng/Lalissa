@@ -5240,6 +5240,9 @@ namespace PMDS.DB
         {
             try
             {
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
+                    return false;
+
                 IQueryable<PMDS.db.Entities.Patient> tPatient = db.Patient.Where(b => b.ID == IDPatient);
                 if (tPatient.Count() == 1)
                 {
@@ -11563,7 +11566,8 @@ namespace PMDS.DB
             {
                 PMDS.db.Entities.ERModellPMDSEntities DBContext = new PMDS.db.Entities.ERModellPMDSEntities();
                 //PMDSBusiness.getConnection(ref DBContext);
-                PMDSBusiness.setERConnection(ref DBContext);
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
+                    PMDSBusiness.setERConnection(ref DBContext);
 
                 return DBContext;
             }

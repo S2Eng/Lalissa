@@ -91,7 +91,7 @@ namespace PMDS.GUI.BaseControls
                 bool bStop2 = true;
             }
 
-            if (!this.IsInitialized && ENV.AppRunning)
+            if (!this.IsInitialized && System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 _grp = new AuswahlGruppe(Group);
                 dsAuswahlGruppe.AuswahlListeGruppeRow rGroup = _grp._db.getGroup(this.Group);
@@ -136,15 +136,16 @@ namespace PMDS.GUI.BaseControls
         }
         public override void RefreshList()
         {
+
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
+                return;
+
             this.initControl();
             this.Items.Clear();
             try
             {
-                if (!DesignMode)
-                {
-                    if (_addEmptyEnry)
-                        this.Items.Add(Guid.Empty, " ");
-                }
+                if (_addEmptyEnry)
+                    this.Items.Add(Guid.Empty, " ");
 
                 if (ENV.StartupTyp != "auswpep")
                 {
