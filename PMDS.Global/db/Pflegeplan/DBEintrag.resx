@@ -145,7 +145,7 @@
     <value>False</value>
   </metadata>
   <data name="oleDbInsertCommand.CommandText" xml:space="preserve">
-    <value>INSERT INTO [Eintrag] ([ID], [EintragGruppe], [EntferntJN], [Sicht], [Warnhinweis], [Text], [flag], [IDLinkDokument], [BedarfsMedikationJN], [OhneZeitBezug], [lstFormulare]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+    <value>INSERT INTO [Eintrag] ([ID], [EintragGruppe], [EntferntJN], [Sicht], [Warnhinweis], [Text], [flag], [IDLinkDokument], [BedarfsMedikationJN], [OhneZeitBezug], [lstFormulare], [PSEKlasse]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
   </data>
   <metadata name="oleDbSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -154,7 +154,7 @@
     <value>17, 212</value>
   </metadata>
   <data name="oleDbSelectCommand1.CommandText" xml:space="preserve">
-    <value>SELECT        ID, EintragGruppe, EntferntJN, Sicht, Warnhinweis, Text, flag, IDLinkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare
+    <value>SELECT        ID, EintragGruppe, EntferntJN, Sicht, Warnhinweis, Text, flag, IDLinkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare, PSEKlasse
 FROM            Eintrag
 WHERE        (EintragGruppe = ?) AND (EntferntJN = 0)
 ORDER BY Text</value>
@@ -169,7 +169,7 @@ ORDER BY Text</value>
     <value>False</value>
   </metadata>
   <data name="oleDbUpdateCommand.CommandText" xml:space="preserve">
-    <value>UPDATE [Eintrag] SET [ID] = ?, [EintragGruppe] = ?, [EntferntJN] = ?, [Sicht] = ?, [Warnhinweis] = ?, [Text] = ?, [flag] = ?, [IDLinkDokument] = ?, [BedarfsMedikationJN] = ?, [OhneZeitBezug] = ?, [lstFormulare] = ? WHERE (([ID] = ?))</value>
+    <value>UPDATE [Eintrag] SET [ID] = ?, [EintragGruppe] = ?, [EntferntJN] = ?, [Sicht] = ?, [Warnhinweis] = ?, [Text] = ?, [flag] = ?, [IDLinkDokument] = ?, [BedarfsMedikationJN] = ?, [OhneZeitBezug] = ?, [lstFormulare] = ?, [PSEKlasse] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="oleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -193,22 +193,22 @@ ORDER BY Text</value>
     <value>UPDATE [Eintrag] SET [ID] = ?, [EintragGruppe] = ?, [EntferntJN] = ?, [Sicht] = ?, [Warnhinweis] = ?, [Text] = ?, [flag] = ?, [IDLinkDokument] = ?, [BedarfsMedikationJN] = ?, [OhneZeitBezug] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daEintragAll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 368</value>
+    <value>17, 329</value>
   </metadata>
   <metadata name="oleDbSelectCommand3.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <metadata name="oleDbSelectCommand3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 407</value>
+    <value>17, 368</value>
   </metadata>
   <data name="oleDbSelectCommand3.CommandText" xml:space="preserve">
-    <value>SELECT        ID, EintragGruppe, EntferntJN, Sicht, Warnhinweis, Text, flag, IDLinkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare
+    <value>SELECT        ID, EintragGruppe, EntferntJN, Sicht, Warnhinweis, Text, flag, IDLinkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare, PSEKlasse
 FROM            Eintrag
 WHERE        (EntferntJN = 0)
 ORDER BY EintragGruppe, Text</value>
   </data>
   <metadata name="daEintragQuery.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 446</value>
+    <value>17, 407</value>
   </metadata>
   <metadata name="oleDbSelectCommand2.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -226,10 +226,10 @@ ORDER BY EintragGruppe, Text</value>
     <value>False</value>
   </metadata>
   <metadata name="daEintragOne.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 485</value>
+    <value>17, 446</value>
   </metadata>
   <metadata name="dsPDx1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 524</value>
+    <value>17, 485</value>
   </metadata>
   <metadata name="oleDbSelectCommand5.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -247,7 +247,7 @@ FROM PDX INNER JOIN PDXEintrag ON PDX.ID = PDXEintrag.IDPDX
 WHERE PDXEintrag.IDEintrag = ?</value>
   </data>
   <metadata name="daPDxZuordnungen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>68, 592</value>
+    <value>17, 524</value>
   </metadata>
   <metadata name="dsEintrag1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 329</value>

@@ -738,6 +738,9 @@
     <Compile Include="BaseControls\frmWundBilderScale.Designer.cs">
       <DependentUpon>frmWundBilderScale.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseControls\PflegestufenEinschaetzungCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BaseControls\QuickFilterButton.cs">
       <SubType>Component</SubType>
     </Compile>

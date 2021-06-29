@@ -106,6 +106,8 @@ namespace PMDS.GUI
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtBeschreibungLine;
 
         public bool _IsSchnellrückmeldung = false;
+        private QS2.Desktop.ControlManagment.BaseLabel lblPflegestufeneinschaetzung;
+        private BaseControls.PflegestufenEinschaetzung cbPflegestufenEinschaetzung;
         public bool _OhneZeitbezug = false;
 
 
@@ -163,8 +165,23 @@ namespace PMDS.GUI
                         this.panelBeschreibungTXTEditor.Width = this.panelBeschreibungTXTEditor.Left + this.ucZusatzWert1.Left - 14;
                         this.lblZusatzwerte.Visible = false;
 
-                        this.lblAnmerkung.Top = auswahlGruppeComboMulti1.Top + auswahlGruppeComboMulti1.Height + 5;
-                        this.chkGegenzeichnen.Top = this.lblAnmerkung.Top;
+                        if (ENV.lic_PflegestufenEinschätzung)
+                        {
+                            this.lblPflegestufeneinschaetzung.Top = auswahlGruppeComboMulti1.Top + auswahlGruppeComboMulti1.Top;
+                            this.cbPflegestufenEinschaetzung.Top = lblPflegestufeneinschaetzung.Top;
+                            cbPflegestufenEinschaetzung.RefreshList();
+                            cbPflegestufenEinschaetzung.PSEKlasse = cbPflegestufenEinschaetzung.strDefault;
+
+                            this.lblAnmerkung.Top = lblPflegestufeneinschaetzung.Top + lblPflegestufeneinschaetzung.Height + 5;
+                            this.chkGegenzeichnen.Top = this.lblAnmerkung.Top;
+                        }
+                        else
+                        {
+                            this.lblPflegestufeneinschaetzung.Visible = false;
+                            this.cbPflegestufenEinschaetzung.Visible = false;
+                            this.lblAnmerkung.Top = auswahlGruppeComboMulti1.Top + auswahlGruppeComboMulti1.Top;
+                            this.chkGegenzeichnen.Top = this.lblAnmerkung.Top;
+                        }
 
                         this.panelBeschreibungTXTEditor.Top = lblAnmerkung.Top + lblAnmerkung.Height + 5;
                         this.panelBeschreibungTXTEditor.Height = this.Height - panelBeschreibungTXTEditor.Top;
@@ -182,7 +199,8 @@ namespace PMDS.GUI
                     }
                     else
                     {
-                        string xy = "";
+                        this.lblPflegestufeneinschaetzung.Visible = false;
+                        this.cbPflegestufenEinschaetzung.Visible = false;
                     }
 
                     this.IsIntialized = true;
@@ -365,6 +383,8 @@ namespace PMDS.GUI
             this.auswahlGruppeComboMulti1 = new PMDS.GUI.BaseControls.AuswahlGruppeComboMulti();
             this.ucZusatzWert1 = new PMDS.GUI.ucZusatzWert();
             this.cbImportant = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
+            this.lblPflegestufeneinschaetzung = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cbPflegestufenEinschaetzung = new PMDS.GUI.BaseControls.PflegestufenEinschaetzung();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpZeitpunkt)).BeginInit();
@@ -375,6 +395,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.cbMassnahme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsMedikament)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbImportant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -394,7 +415,7 @@ namespace PMDS.GUI
             // lblAnmerkung
             // 
             this.lblAnmerkung.AutoSize = true;
-            this.lblAnmerkung.Location = new System.Drawing.Point(17, 162);
+            this.lblAnmerkung.Location = new System.Drawing.Point(17, 189);
             this.lblAnmerkung.Margin = new System.Windows.Forms.Padding(4);
             this.lblAnmerkung.Name = "lblAnmerkung";
             this.lblAnmerkung.Size = new System.Drawing.Size(209, 17);
@@ -526,7 +547,7 @@ namespace PMDS.GUI
             this.panelTxtControl.Controls.Add(this.textControChanges);
             this.panelTxtControl.Controls.Add(this.textControlLineBreak);
             this.panelTxtControl.Controls.Add(this.textControlOriginal);
-            this.panelTxtControl.Location = new System.Drawing.Point(226, 585);
+            this.panelTxtControl.Location = new System.Drawing.Point(220, 583);
             this.panelTxtControl.Margin = new System.Windows.Forms.Padding(4);
             this.panelTxtControl.Name = "panelTxtControl";
             this.panelTxtControl.Size = new System.Drawing.Size(38, 22);
@@ -569,7 +590,7 @@ namespace PMDS.GUI
             // 
             this.lblZusatzwerte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblZusatzwerte.AutoSize = true;
-            this.lblZusatzwerte.Location = new System.Drawing.Point(456, 166);
+            this.lblZusatzwerte.Location = new System.Drawing.Point(459, 189);
             this.lblZusatzwerte.Margin = new System.Windows.Forms.Padding(4);
             this.lblZusatzwerte.Name = "lblZusatzwerte";
             this.lblZusatzwerte.Size = new System.Drawing.Size(80, 17);
@@ -592,10 +613,10 @@ namespace PMDS.GUI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBeschreibungTXTEditor.BackColor = System.Drawing.Color.Transparent;
-            this.panelBeschreibungTXTEditor.Location = new System.Drawing.Point(9, 188);
+            this.panelBeschreibungTXTEditor.Location = new System.Drawing.Point(9, 215);
             this.panelBeschreibungTXTEditor.Margin = new System.Windows.Forms.Padding(4);
             this.panelBeschreibungTXTEditor.Name = "panelBeschreibungTXTEditor";
-            this.panelBeschreibungTXTEditor.Size = new System.Drawing.Size(443, 414);
+            this.panelBeschreibungTXTEditor.Size = new System.Drawing.Size(443, 390);
             this.panelBeschreibungTXTEditor.TabIndex = 45;
             // 
             // txtBeschreibungLine
@@ -656,11 +677,11 @@ namespace PMDS.GUI
             this.ucZusatzWert1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ucZusatzWert1.IgnoreNotOptional = false;
             this.ucZusatzWert1.IZusatz = null;
-            this.ucZusatzWert1.Location = new System.Drawing.Point(459, 188);
+            this.ucZusatzWert1.Location = new System.Drawing.Point(459, 215);
             this.ucZusatzWert1.Margin = new System.Windows.Forms.Padding(5);
             this.ucZusatzWert1.Name = "ucZusatzWert1";
             this.ucZusatzWert1.ReadOnly = false;
-            this.ucZusatzWert1.Size = new System.Drawing.Size(425, 414);
+            this.ucZusatzWert1.Size = new System.Drawing.Size(425, 387);
             this.ucZusatzWert1.TabIndex = 9;
             this.ucZusatzWert1.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -684,11 +705,33 @@ namespace PMDS.GUI
             this.cbImportant.Visible = false;
             this.cbImportant.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
+            // lblPflegestufeneinschaetzung
+            // 
+            this.lblPflegestufeneinschaetzung.Location = new System.Drawing.Point(17, 153);
+            this.lblPflegestufeneinschaetzung.Name = "lblPflegestufeneinschaetzung";
+            this.lblPflegestufeneinschaetzung.Padding = new System.Drawing.Size(0, 4);
+            this.lblPflegestufeneinschaetzung.Size = new System.Drawing.Size(172, 23);
+            this.lblPflegestufeneinschaetzung.TabIndex = 134;
+            this.lblPflegestufeneinschaetzung.Text = "PSE-Kriterium";
+            // 
+            // cbPflegestufenEinschaetzung
+            // 
+            this.cbPflegestufenEinschaetzung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPflegestufenEinschaetzung.Location = new System.Drawing.Point(220, 153);
+            this.cbPflegestufenEinschaetzung.Name = "cbPflegestufenEinschaetzung";
+            this.cbPflegestufenEinschaetzung.PSEKlasse = "";
+            this.cbPflegestufenEinschaetzung.Size = new System.Drawing.Size(625, 24);
+            this.cbPflegestufenEinschaetzung.strDefault = null;
+            this.cbPflegestufenEinschaetzung.TabIndex = 133;
+            // 
             // ucPflegeEintrag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.Controls.Add(this.panelBeschreibungTXTEditor);
             this.Controls.Add(this.panelTxtControl);
+            this.Controls.Add(this.lblPflegestufeneinschaetzung);
+            this.Controls.Add(this.cbPflegestufenEinschaetzung);
+            this.Controls.Add(this.panelBeschreibungTXTEditor);
             this.Controls.Add(this.txtBeschreibungLine);
             this.Controls.Add(this.cbMassnahme);
             this.Controls.Add(this.chkGegenzeichnen);
@@ -724,6 +767,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.cbMassnahme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsMedikament)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbImportant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1276,7 +1320,7 @@ namespace PMDS.GUI
 
             Eintrag.Dekursherkunft = this._Dekursherkunft;
             Eintrag.AbzeichnenJN = this.chkGegenzeichnen.Checked;
-
+            
             if (!this._IsSchnellrückmeldung)
             {
                 if (_editinprogress)
@@ -1361,6 +1405,10 @@ namespace PMDS.GUI
                 Eintrag.PflegeplanText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Ungeplante Maßnahme: ") + sText;
             }
 
+            if (Eintrag.EintragsTyp == PflegeEintragTyp.DEKURS && ENV.lic_PflegestufenEinschätzung)
+            {
+                Eintrag.PSEKlasse = this.cbPflegestufenEinschaetzung.PSEKlasse;
+            }
         }
 
         public void RequiredFields()
@@ -1779,8 +1827,8 @@ namespace PMDS.GUI
         private void ucPflegeEintrag_VisibleChanged(object sender, EventArgs e)
         {
             try
-            {
-                if (this.Visible)
+            {                
+                if (this.Visible && this.Eintrag != null)
                 {
                     if (!this._IsSchnellrückmeldung)
                     {

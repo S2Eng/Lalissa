@@ -832,7 +832,6 @@ namespace PMDS.GUI
                 return false;
             }
 
-
             frmRücmeldung = new frmPatientRueckmeldung(pat, pe, r.Text, r.EinmaligJN, bOptional, true, r.OhneZeitBezug, r.OhneZeitBezug, !r.IsIDBefundNull());
             frmRücmeldung.ReadOnly = bReadOnly;
             frmRücmeldung.ucPflegeEintrag1.IsNew = IsNew;
@@ -847,7 +846,7 @@ namespace PMDS.GUI
                 frmRücmeldung.SetUIÜbergabe(rÜbergabe);
             }
 
-             ret = frmRücmeldung.ShowDialog();
+            ret = frmRücmeldung.ShowDialog();
 
             if (!frmRücmeldung.abort)
             {

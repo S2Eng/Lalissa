@@ -108,6 +108,13 @@
               <xs:element name="lstPDxBezeichnung" msprop:Generator_ColumnVarNameInTable="columnlstPDxBezeichnung" msprop:Generator_ColumnPropNameInRow="lstPDxBezeichnung" msprop:Generator_ColumnPropNameInTable="lstPDxBezeichnungColumn" msprop:Generator_UserColumnName="lstPDxBezeichnung" type="xs:string" />
               <xs:element name="AnmerkungRtf" msprop:Generator_ColumnVarNameInTable="columnAnmerkungRtf" msprop:Generator_ColumnPropNameInRow="AnmerkungRtf" msprop:Generator_ColumnPropNameInTable="AnmerkungRtfColumn" msprop:Generator_UserColumnName="AnmerkungRtf" type="xs:string" />
               <xs:element name="IDBefund" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnIDBefund" msprop:Generator_ColumnPropNameInRow="IDBefund" msprop:Generator_ColumnPropNameInTable="IDBefundColumn" msprop:Generator_UserColumnName="IDBefund" type="xs:string" minOccurs="0" />
+              <xs:element name="PSEKlasse" msprop:Generator_ColumnVarNameInTable="columnPSEKlasse" msprop:Generator_ColumnPropNameInRow="PSEKlasse" msprop:Generator_ColumnPropNameInTable="PSEKlasseColumn" msprop:Generator_UserColumnName="PSEKlasse">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

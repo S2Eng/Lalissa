@@ -411,7 +411,7 @@ namespace PMDS.GUI
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                     {
                         PMDS.db.Entities.PflegePlan rPflegePlan = db.PflegePlan.Where(pe => pe.ID == this._IDPflegePlan).First();
-                        if ((rPflegePlan.RMOptionalJN && this.ucPflegeEintrag1.contTXTFieldBeschreibung.TXTControlField.Text.Trim() != "") || !rPflegePlan.RMOptionalJN)
+                        if ((rPflegePlan.RMOptionalJN && !string.IsNullOrWhiteSpace(this.ucPflegeEintrag1.contTXTFieldBeschreibung.TXTControlField.Text)) || !rPflegePlan.RMOptionalJN)
                         {
                             if (!PMDS.Global.db.ERSystem.PMDSBusinessUI.checkTxtRegex(this.ucPflegeEintrag1.contTXTFieldBeschreibung.TXTControlField.Text, true))
                             {

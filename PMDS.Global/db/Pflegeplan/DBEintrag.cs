@@ -290,7 +290,7 @@ namespace PMDS.DB
             this.oleDbSelectCommand2 = new System.Data.OleDb.OleDbCommand();
             this.oleDbSelectCommand4 = new System.Data.OleDb.OleDbCommand();
             this.daEintragOne = new System.Data.OleDb.OleDbDataAdapter();
-            this.dsPDx1 = new dsPDx();
+            this.dsPDx1 = new PMDS.Global.db.Pflegeplan.dsPDx();
             this.oleDbSelectCommand5 = new System.Data.OleDb.OleDbCommand();
             this.daPDxZuordnungen = new System.Data.OleDb.OleDbDataAdapter();
             this.dsEintrag1 = new PMDS.Global.db.Pflegeplan.dsEintrag();
@@ -300,8 +300,8 @@ namespace PMDS.DB
             // 
             // oleDbConnection1
             // 
-            oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Persist Security Info=True;Password=NiwQ" +
-    "s21+!;User ID=hl;Initial Catalog=PMDSDev";
+            oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=sty041;Integrated Security=SSPI;Initial Catalog=PM" +
+    "DS_DemoGross";
             // 
             // daEintrag
             // 
@@ -320,7 +320,8 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("IDLinkDokument", "IDLinkDokument"),
                         new System.Data.Common.DataColumnMapping("BedarfsMedikationJN", "BedarfsMedikationJN"),
                         new System.Data.Common.DataColumnMapping("OhneZeitBezug", "OhneZeitBezug"),
-                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare")})});
+                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             this.daEintrag.UpdateCommand = this.oleDbUpdateCommand;
             // 
             // oleDbDeleteCommand
@@ -345,7 +346,8 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDLinkDokument", System.Data.OleDb.OleDbType.Guid, 0, "IDLinkDokument"),
             new System.Data.OleDb.OleDbParameter("BedarfsMedikationJN", System.Data.OleDb.OleDbType.Boolean, 0, "BedarfsMedikationJN"),
             new System.Data.OleDb.OleDbParameter("OhneZeitBezug", System.Data.OleDb.OleDbType.Boolean, 0, "OhneZeitBezug"),
-            new System.Data.OleDb.OleDbParameter("lstFormulare", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstFormulare")});
+            new System.Data.OleDb.OleDbParameter("lstFormulare", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstFormulare"),
+            new System.Data.OleDb.OleDbParameter("PSEKlasse", System.Data.OleDb.OleDbType.VarWChar, 0, "PSEKlasse")});
             // 
             // oleDbSelectCommand1
             // 
@@ -370,6 +372,7 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("BedarfsMedikationJN", System.Data.OleDb.OleDbType.Boolean, 0, "BedarfsMedikationJN"),
             new System.Data.OleDb.OleDbParameter("OhneZeitBezug", System.Data.OleDb.OleDbType.Boolean, 0, "OhneZeitBezug"),
             new System.Data.OleDb.OleDbParameter("lstFormulare", System.Data.OleDb.OleDbType.LongVarChar, 0, "lstFormulare"),
+            new System.Data.OleDb.OleDbParameter("PSEKlasse", System.Data.OleDb.OleDbType.VarWChar, 0, "PSEKlasse"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbDeleteCommand1
@@ -429,7 +432,8 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("IDLinkDokument", "IDLinkDokument"),
                         new System.Data.Common.DataColumnMapping("BedarfsMedikationJN", "BedarfsMedikationJN"),
                         new System.Data.Common.DataColumnMapping("OhneZeitBezug", "OhneZeitBezug"),
-                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare")})});
+                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             // 
             // oleDbSelectCommand3
             // 
@@ -451,20 +455,21 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("IDLinkDokument", "IDLinkDokument"),
                         new System.Data.Common.DataColumnMapping("BedarfsMedikationJN", "BedarfsMedikationJN"),
                         new System.Data.Common.DataColumnMapping("OhneZeitBezug", "OhneZeitBezug"),
-                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare")})});
+                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             // 
             // oleDbSelectCommand2
             // 
             this.oleDbSelectCommand2.CommandText = "SELECT        ID, EintragGruppe, EntferntJN, Sicht, Warnhinweis, Text, flag, IDLi" +
-    "nkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare\r\nFROM            Ei" +
-    "ntrag";
+    "nkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare, PSEKlasse\r\nFROM   " +
+    "         Eintrag";
             this.oleDbSelectCommand2.Connection = oleDbConnection1;
             // 
             // oleDbSelectCommand4
             // 
             this.oleDbSelectCommand4.CommandText = "SELECT        ID, EintragGruppe, EntferntJN, Sicht, Warnhinweis, Text, flag, IDLi" +
-    "nkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare\r\nFROM            Ei" +
-    "ntrag\r\nWHERE        (ID = ?)";
+    "nkDokument, BedarfsMedikationJN, OhneZeitBezug, lstFormulare, PSEKlasse\r\nFROM   " +
+    "         Eintrag\r\nWHERE        (ID = ?)";
             this.oleDbSelectCommand4.Connection = oleDbConnection1;
             this.oleDbSelectCommand4.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID")});
@@ -484,7 +489,8 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("IDLinkDokument", "IDLinkDokument"),
                         new System.Data.Common.DataColumnMapping("BedarfsMedikationJN", "BedarfsMedikationJN"),
                         new System.Data.Common.DataColumnMapping("OhneZeitBezug", "OhneZeitBezug"),
-                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare")})});
+                        new System.Data.Common.DataColumnMapping("lstFormulare", "lstFormulare"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             // 
             // dsPDx1
             // 

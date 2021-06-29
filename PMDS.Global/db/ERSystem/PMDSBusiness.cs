@@ -2079,6 +2079,8 @@ namespace PMDS.DB
                         rNewPEDekurs.TextHistorie = "";
                         rNewPEDekurs.TextHistorieRtf = "";
 
+                        rNewPEDekurs.PSEKlasse = peOriginal.PSEKlasse;
+
                         db.PflegeEintrag.Add(rNewPEDekurs);
                         db.SaveChanges();
                         lstPEToCopy.Add(rNewPEDekurs.ID);
@@ -2458,6 +2460,7 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.GetAuswahlliste: " + ex.ToString());
             }
         }
+
         public PMDS.db.Entities.AuswahlListe GetAuswahllisteByID(Guid ID, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
@@ -2470,6 +2473,29 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.GetAuswahllisteByID: " + ex.ToString());
             }
         }
+
+        public IQueryable<PMDS.db.Entities.AuswahlListe> GetAuswahllisteByAuswahllisteGruppe(string AuswahllisteGruppe, PMDS.db.Entities.ERModellPMDSEntities db, bool OrderByBezeichnung)
+        {
+            try
+            {
+                IQueryable<PMDS.db.Entities.AuswahlListe> tAuswahlliste = null;
+                if (OrderByBezeichnung)
+                {
+                    tAuswahlliste = db.AuswahlListe.Where(a => a.IDAuswahlListeGruppe == AuswahllisteGruppe).OrderBy(a => a.Bezeichnung);
+                    return tAuswahlliste;
+                }
+                else
+                {
+                    tAuswahlliste = db.AuswahlListe.Where(a => a.IDAuswahlListeGruppe == AuswahllisteGruppe).OrderBy(a => a.Reihenfolge);
+                    return tAuswahlliste;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.GetAuswahllisteByAuswahllisteGruppe: " + ex.ToString());
+            }
+        }
+
         public PMDS.db.Entities.AuswahlListe GetAuswahlliste(PMDS.db.Entities.ERModellPMDSEntities db, string GruppeID, string Bezeichnung)
         {
             try
@@ -2478,7 +2504,7 @@ namespace PMDS.DB
                 PMDS.DB.PMDSBusiness PMDSBusiness1 = new PMDS.DB.PMDSBusiness();
 
                 IQueryable<PMDS.db.Entities.AuswahlListe> tAuswahlliste = db.AuswahlListe.Where(a => a.IDAuswahlListeGruppe == GruppeID && a.Bezeichnung == Bezeichnung.Trim()).OrderBy(a => a.Bezeichnung);
-                if (tAuswahlliste.Count() == 0)
+                if (!tAuswahlliste.Any())
                 {
                     return null;
                 }

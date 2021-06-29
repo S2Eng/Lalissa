@@ -423,11 +423,16 @@ namespace PMDS.BusinessLogic
             get { return (ZielEvaluierungsStatus)DB_ROW.EvalStatus; }
             set { DB_ROW.EvalStatus = (int)value; }
         }
-		#endregion
+        public string PSEKlasse
+        {
+            get { return DB_ROW.PSEKlasse; }
+            set { DB_ROW.PSEKlasse = value; }
+        }
+        #endregion
 
-		#region IBusinessBase Members
+        #region IBusinessBase Members
 
-		DataRow IBusinessBase.ROW
+        DataRow IBusinessBase.ROW
 		{
 			get	{	return DB_ROW;	}
 		}

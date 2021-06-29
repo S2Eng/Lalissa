@@ -164,13 +164,13 @@ namespace PMDS.DB
             this.oleDbSelectCommand5 = new System.Data.OleDb.OleDbCommand();
             this.oleDbSelectCommand6 = new System.Data.OleDb.OleDbCommand();
             this.daPflgePlanZusatzGruppeEintrag = new System.Data.OleDb.OleDbDataAdapter();
-            this.dsPflegePlanZusatzEintraege1 = new dsPflegePlanZusatzEintraege();
+            this.dsPflegePlanZusatzEintraege1 = new PMDS.Global.db.Pflegeplan.dsPflegePlanZusatzEintraege();
             this.dsPflegePlanH1 = new PMDS.Data.PflegePlan.dsPflegePlanH();
             this.oleDbCommand4 = new System.Data.OleDb.OleDbCommand();
             this.daPflegePlanWundenJN = new System.Data.OleDb.OleDbDataAdapter();
-            this.dsPflegePlan1 = new PMDS.Data.PflegePlan.dsPflegePlan();
             this.daPflegeplanByEintrag = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand1 = new System.Data.OleDb.OleDbCommand();
+            this.dsPflegePlan1 = new PMDS.Data.PflegePlan.dsPflegePlan();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlanZusatzEintraege1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlanH1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlan1)).BeginInit();
@@ -232,20 +232,22 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("lstIDPDx", "lstIDPDx"),
                         new System.Data.Common.DataColumnMapping("lstPDxBezeichnung", "lstPDxBezeichnung"),
                         new System.Data.Common.DataColumnMapping("AnmerkungRtf", "AnmerkungRtf"),
-                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund")})});
+                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             this.daPflegePlan.UpdateCommand = this.oleDbUpdateCommand1;
             // 
             // oleDbDeleteCommand1
             // 
-            this.oleDbDeleteCommand1.CommandText = "DELETE FROM [PflegePlan] WHERE (([ID] = ?))";
+            this.oleDbDeleteCommand1.CommandText = "DELETE FROM [PflegePlan] WHERE (([ID] = ?) AND ([IDAufenthalt] = ?))";
             this.oleDbDeleteCommand1.Connection = this.oleDbConnection1;
             this.oleDbDeleteCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDAufenthalt", System.Data.DataRowVersion.Original, null)});
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV02v\\SQL2008R2;Integrated Security=SSPI;Initi" +
-    "al Catalog=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Integrated Security=SSPI;Initial Catalog" +
+    "=PMDSDev";
             // 
             // oleDbInsertCommand1
             // 
@@ -258,12 +260,12 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
             new System.Data.OleDb.OleDbParameter("OriginalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OriginalJN"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 16, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.Date, 16, "EndeDatum"),
-            new System.Data.OleDb.OleDbParameter("LetztesDatum", System.Data.OleDb.OleDbType.Date, 16, "LetztesDatum"),
-            new System.Data.OleDb.OleDbParameter("LetzteEvaluierung", System.Data.OleDb.OleDbType.Date, 16, "LetzteEvaluierung"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EndeDatum"),
+            new System.Data.OleDb.OleDbParameter("LetztesDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LetztesDatum"),
+            new System.Data.OleDb.OleDbParameter("LetzteEvaluierung", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LetzteEvaluierung"),
             new System.Data.OleDb.OleDbParameter("Warnhinweis", System.Data.OleDb.OleDbType.VarChar, 0, "Warnhinweis"),
             new System.Data.OleDb.OleDbParameter("Anmerkung", System.Data.OleDb.OleDbType.LongVarChar, 0, "Anmerkung"),
             new System.Data.OleDb.OleDbParameter("ErledigtGrund", System.Data.OleDb.OleDbType.VarChar, 0, "ErledigtGrund"),
@@ -288,21 +290,22 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("SpenderAbgabeJN", System.Data.OleDb.OleDbType.Boolean, 0, "SpenderAbgabeJN"),
             new System.Data.OleDb.OleDbParameter("IDUntertaegigeGruppe", System.Data.OleDb.OleDbType.Guid, 0, "IDUntertaegigeGruppe"),
             new System.Data.OleDb.OleDbParameter("IDLinkDokument", System.Data.OleDb.OleDbType.Guid, 0, "IDLinkDokument"),
-            new System.Data.OleDb.OleDbParameter("NaechsteEvaluierung", System.Data.OleDb.OleDbType.Date, 16, "NaechsteEvaluierung"),
+            new System.Data.OleDb.OleDbParameter("NaechsteEvaluierung", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "NaechsteEvaluierung"),
             new System.Data.OleDb.OleDbParameter("NaechsteEvaluierungBemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "NaechsteEvaluierungBemerkung"),
             new System.Data.OleDb.OleDbParameter("IDZeitbereich", System.Data.OleDb.OleDbType.Guid, 0, "IDZeitbereich"),
-            new System.Data.OleDb.OleDbParameter("ZuErledigenBis", System.Data.OleDb.OleDbType.Date, 16, "ZuErledigenBis"),
+            new System.Data.OleDb.OleDbParameter("ZuErledigenBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ZuErledigenBis"),
             new System.Data.OleDb.OleDbParameter("OhneZeitBezug", System.Data.OleDb.OleDbType.Boolean, 0, "OhneZeitBezug"),
             new System.Data.OleDb.OleDbParameter("wundejn", System.Data.OleDb.OleDbType.Boolean, 0, "wundejn"),
             new System.Data.OleDb.OleDbParameter("EintragFlag", System.Data.OleDb.OleDbType.Integer, 0, "EintragFlag"),
-            new System.Data.OleDb.OleDbParameter("NächstesDatum", System.Data.OleDb.OleDbType.Date, 16, "NächstesDatum"),
+            new System.Data.OleDb.OleDbParameter("NächstesDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "NächstesDatum"),
             new System.Data.OleDb.OleDbParameter("IDDekurs", System.Data.OleDb.OleDbType.Guid, 0, "IDDekurs"),
             new System.Data.OleDb.OleDbParameter("PrivatJN", System.Data.OleDb.OleDbType.Boolean, 0, "PrivatJN"),
             new System.Data.OleDb.OleDbParameter("IDExtern", System.Data.OleDb.OleDbType.Guid, 0, "IDExtern"),
             new System.Data.OleDb.OleDbParameter("lstIDPDx", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstIDPDx"),
             new System.Data.OleDb.OleDbParameter("lstPDxBezeichnung", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstPDxBezeichnung"),
             new System.Data.OleDb.OleDbParameter("AnmerkungRtf", System.Data.OleDb.OleDbType.LongVarWChar, 0, "AnmerkungRtf"),
-            new System.Data.OleDb.OleDbParameter("IDBefund", System.Data.OleDb.OleDbType.Guid, 0, "IDBefund")});
+            new System.Data.OleDb.OleDbParameter("IDBefund", System.Data.OleDb.OleDbType.Guid, 0, "IDBefund"),
+            new System.Data.OleDb.OleDbParameter("PSEKlasse", System.Data.OleDb.OleDbType.VarWChar, 0, "PSEKlasse")});
             // 
             // oleDbSelectCommand1
             // 
@@ -322,12 +325,12 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Erstellt", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Erstellt"),
             new System.Data.OleDb.OleDbParameter("IDBenutzer_Geaendert", System.Data.OleDb.OleDbType.Guid, 0, "IDBenutzer_Geaendert"),
             new System.Data.OleDb.OleDbParameter("OriginalJN", System.Data.OleDb.OleDbType.Boolean, 0, "OriginalJN"),
-            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.Date, 16, "DatumErstellt"),
-            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.Date, 16, "DatumGeaendert"),
-            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.Date, 16, "StartDatum"),
-            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.Date, 16, "EndeDatum"),
-            new System.Data.OleDb.OleDbParameter("LetztesDatum", System.Data.OleDb.OleDbType.Date, 16, "LetztesDatum"),
-            new System.Data.OleDb.OleDbParameter("LetzteEvaluierung", System.Data.OleDb.OleDbType.Date, 16, "LetzteEvaluierung"),
+            new System.Data.OleDb.OleDbParameter("DatumErstellt", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumErstellt"),
+            new System.Data.OleDb.OleDbParameter("DatumGeaendert", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "DatumGeaendert"),
+            new System.Data.OleDb.OleDbParameter("StartDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "StartDatum"),
+            new System.Data.OleDb.OleDbParameter("EndeDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "EndeDatum"),
+            new System.Data.OleDb.OleDbParameter("LetztesDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LetztesDatum"),
+            new System.Data.OleDb.OleDbParameter("LetzteEvaluierung", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "LetzteEvaluierung"),
             new System.Data.OleDb.OleDbParameter("Warnhinweis", System.Data.OleDb.OleDbType.VarChar, 0, "Warnhinweis"),
             new System.Data.OleDb.OleDbParameter("Anmerkung", System.Data.OleDb.OleDbType.LongVarChar, 0, "Anmerkung"),
             new System.Data.OleDb.OleDbParameter("ErledigtGrund", System.Data.OleDb.OleDbType.VarChar, 0, "ErledigtGrund"),
@@ -352,14 +355,14 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("SpenderAbgabeJN", System.Data.OleDb.OleDbType.Boolean, 0, "SpenderAbgabeJN"),
             new System.Data.OleDb.OleDbParameter("IDUntertaegigeGruppe", System.Data.OleDb.OleDbType.Guid, 0, "IDUntertaegigeGruppe"),
             new System.Data.OleDb.OleDbParameter("IDLinkDokument", System.Data.OleDb.OleDbType.Guid, 0, "IDLinkDokument"),
-            new System.Data.OleDb.OleDbParameter("NaechsteEvaluierung", System.Data.OleDb.OleDbType.Date, 16, "NaechsteEvaluierung"),
+            new System.Data.OleDb.OleDbParameter("NaechsteEvaluierung", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "NaechsteEvaluierung"),
             new System.Data.OleDb.OleDbParameter("NaechsteEvaluierungBemerkung", System.Data.OleDb.OleDbType.VarChar, 0, "NaechsteEvaluierungBemerkung"),
             new System.Data.OleDb.OleDbParameter("IDZeitbereich", System.Data.OleDb.OleDbType.Guid, 0, "IDZeitbereich"),
-            new System.Data.OleDb.OleDbParameter("ZuErledigenBis", System.Data.OleDb.OleDbType.Date, 16, "ZuErledigenBis"),
+            new System.Data.OleDb.OleDbParameter("ZuErledigenBis", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "ZuErledigenBis"),
             new System.Data.OleDb.OleDbParameter("OhneZeitBezug", System.Data.OleDb.OleDbType.Boolean, 0, "OhneZeitBezug"),
             new System.Data.OleDb.OleDbParameter("wundejn", System.Data.OleDb.OleDbType.Boolean, 0, "wundejn"),
             new System.Data.OleDb.OleDbParameter("EintragFlag", System.Data.OleDb.OleDbType.Integer, 0, "EintragFlag"),
-            new System.Data.OleDb.OleDbParameter("NächstesDatum", System.Data.OleDb.OleDbType.Date, 16, "NächstesDatum"),
+            new System.Data.OleDb.OleDbParameter("NächstesDatum", System.Data.OleDb.OleDbType.DBTimeStamp, 0, "NächstesDatum"),
             new System.Data.OleDb.OleDbParameter("IDDekurs", System.Data.OleDb.OleDbType.Guid, 0, "IDDekurs"),
             new System.Data.OleDb.OleDbParameter("PrivatJN", System.Data.OleDb.OleDbType.Boolean, 0, "PrivatJN"),
             new System.Data.OleDb.OleDbParameter("IDExtern", System.Data.OleDb.OleDbType.Guid, 0, "IDExtern"),
@@ -367,7 +370,9 @@ namespace PMDS.DB
             new System.Data.OleDb.OleDbParameter("lstPDxBezeichnung", System.Data.OleDb.OleDbType.LongVarWChar, 0, "lstPDxBezeichnung"),
             new System.Data.OleDb.OleDbParameter("AnmerkungRtf", System.Data.OleDb.OleDbType.LongVarWChar, 0, "AnmerkungRtf"),
             new System.Data.OleDb.OleDbParameter("IDBefund", System.Data.OleDb.OleDbType.Guid, 0, "IDBefund"),
-            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
+            new System.Data.OleDb.OleDbParameter("PSEKlasse", System.Data.OleDb.OleDbType.VarWChar, 0, "PSEKlasse"),
+            new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null),
+            new System.Data.OleDb.OleDbParameter("Original_IDAufenthalt", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDAufenthalt", System.Data.DataRowVersion.Original, null)});
             // 
             // daPflegePlanH
             // 
@@ -735,7 +740,8 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("lstIDPDx", "lstIDPDx"),
                         new System.Data.Common.DataColumnMapping("lstPDxBezeichnung", "lstPDxBezeichnung"),
                         new System.Data.Common.DataColumnMapping("AnmerkungRtf", "AnmerkungRtf"),
-                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund")})});
+                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             // 
             // oleDbSelectCommand3
             // 
@@ -781,6 +787,7 @@ namespace PMDS.DB
             // oleDbSelectCommand6
             // 
             this.oleDbSelectCommand6.CommandText = resources.GetString("oleDbSelectCommand6.CommandText");
+            this.oleDbSelectCommand6.Connection = this.oleDbConnection1;
             this.oleDbSelectCommand6.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "IDPflegePlan"),
             new System.Data.OleDb.OleDbParameter("IDObjekt", System.Data.OleDb.OleDbType.Guid, 16, "IDObjekt")});
@@ -877,13 +884,8 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("lstIDPDx", "lstIDPDx"),
                         new System.Data.Common.DataColumnMapping("lstPDxBezeichnung", "lstPDxBezeichnung"),
                         new System.Data.Common.DataColumnMapping("AnmerkungRtf", "AnmerkungRtf"),
-                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund")})});
-            // 
-            // dsPflegePlan1
-            // 
-            this.dsPflegePlan1.DataSetName = "dsPflegePlan";
-            this.dsPflegePlan1.Locale = new System.Globalization.CultureInfo("de-DE");
-            this.dsPflegePlan1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             // 
             // daPflegeplanByEintrag
             // 
@@ -940,7 +942,8 @@ namespace PMDS.DB
                         new System.Data.Common.DataColumnMapping("lstIDPDx", "lstIDPDx"),
                         new System.Data.Common.DataColumnMapping("lstPDxBezeichnung", "lstPDxBezeichnung"),
                         new System.Data.Common.DataColumnMapping("AnmerkungRtf", "AnmerkungRtf"),
-                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund")})});
+                        new System.Data.Common.DataColumnMapping("IDBefund", "IDBefund"),
+                        new System.Data.Common.DataColumnMapping("PSEKlasse", "PSEKlasse")})});
             // 
             // oleDbCommand1
             // 
@@ -948,6 +951,12 @@ namespace PMDS.DB
             this.oleDbCommand1.Connection = this.oleDbConnection1;
             this.oleDbCommand1.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("IDEintrag", System.Data.OleDb.OleDbType.Guid, 16, "IDEintrag")});
+            // 
+            // dsPflegePlan1
+            // 
+            this.dsPflegePlan1.DataSetName = "dsPflegePlan";
+            this.dsPflegePlan1.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsPflegePlan1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlanZusatzEintraege1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlanH1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegePlan1)).EndInit();
@@ -1068,6 +1077,8 @@ namespace PMDS.DB
             r.lstPDxBezeichnung = "";
             r.AnmerkungRtf = "";
             r.SetIDBefundNull();
+            r.PSEKlasse = "<nicht zugeordnet>";
+
 
 			dsPflegePlan1.PflegePlan.AddPflegePlanRow(r);
 

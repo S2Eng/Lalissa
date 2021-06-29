@@ -14,7 +14,7 @@
   <xs:element name="dsPflegeEintrag" msdata:IsDataSet="true" msdata:Locale="de-AT" msprop:Generator_DataSetName="dsPflegeEintrag" msprop:Generator_UserDSName="dsPflegeEintrag">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PflegeEintrag" msprop:Generator_TableClassName="PflegeEintragDataTable" msprop:Generator_RowEvArgName="PflegeEintragRowChangeEvent" msprop:Generator_TableVarName="tablePflegeEintrag" msprop:Generator_TablePropName="PflegeEintrag" msprop:Generator_RowDeletingName="PflegeEintragRowDeleting" msprop:Generator_RowChangingName="PflegeEintragRowChanging" msprop:Generator_RowEvHandlerName="PflegeEintragRowChangeEventHandler" msprop:Generator_RowDeletedName="PflegeEintragRowDeleted" msprop:Generator_UserTableName="PflegeEintrag" msprop:Generator_RowChangedName="PflegeEintragRowChanged" msprop:Generator_RowClassName="PflegeEintragRow">
+        <xs:element name="PflegeEintrag" msprop:Generator_TableClassName="PflegeEintragDataTable" msprop:Generator_RowEvArgName="PflegeEintragRowChangeEvent" msprop:Generator_TableVarName="tablePflegeEintrag" msprop:Generator_TablePropName="PflegeEintrag" msprop:Generator_RowDeletingName="PflegeEintragRowDeleting" msprop:Generator_RowChangingName="PflegeEintragRowChanging" msprop:Generator_RowEvHandlerName="PflegeEintragRowChangeEventHandler" msprop:Generator_RowDeletedName="PflegeEintragRowDeleted" msprop:Generator_RowChangedName="PflegeEintragRowChanged" msprop:Generator_UserTableName="PflegeEintrag" msprop:Generator_RowClassName="PflegeEintragRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -63,6 +63,13 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PSEKlasse" msprop:Generator_ColumnVarNameInTable="columnPSEKlasse" msprop:Generator_ColumnPropNameInRow="PSEKlasse" msprop:Generator_ColumnPropNameInTable="PSEKlasseColumn" msprop:Generator_UserColumnName="PSEKlasse">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

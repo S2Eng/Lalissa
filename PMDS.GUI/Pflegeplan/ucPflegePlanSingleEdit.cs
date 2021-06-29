@@ -95,7 +95,8 @@ namespace PMDS.GUI
         private QS2.Desktop.ControlManagment.BaseButton btnShow;
         private QS2.Desktop.ControlManagment.BaseCheckBox chkPrivatJN;
         private IContainer components;
-
+        private QS2.Desktop.ControlManagment.BaseLabel lblPflegestufeneinschaetzung;
+        private BaseControls.PflegestufenEinschaetzung cbPflegestufenEinschaetzung;
         public bool VisibleIsInitialized = false;
 
 
@@ -251,7 +252,7 @@ namespace PMDS.GUI
 
 		public void RefreshControl() 
 		{
-			if(DesignMode)
+			if(System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
 				return;
 			if(_row == null)
 				return;
@@ -279,10 +280,12 @@ namespace PMDS.GUI
             else
                 cbLinkDokument.IDLinkDokument = _row.IDLinkDokument;
 
-			if(!(_EintragGruppe == EintragGruppe.M || _EintragGruppe == EintragGruppe.T))					// Alles folgende gilt nur für Maßnahmen
+			if(!(_EintragGruppe == EintragGruppe.M || _EintragGruppe == EintragGruppe.T))					               
 				return;
 
-			cbEinmalig.Checked			    = _row.EinmaligJN;
+
+            // Alles folgende gilt nur für Maßnahmen
+            cbEinmalig.Checked			    = _row.EinmaligJN;
 			cbRMOptionalJN.Checked		    = _row.RMOptionalJN;
 			cbLokalisierung.Checked		    = _row.LokalisierungJN;
 			cbParalell.Checked			    = _row.ParalellJN;
@@ -294,6 +297,10 @@ namespace PMDS.GUI
 			dtpTime.Value				    = _row.StartDatum;
             extDatum                        = _row.StartDatum.ToString();
             cbMohneZeitbezug.Checked        = _row.OhneZeitBezug;
+            if (ENV.lic_PflegestufenEinschätzung)
+            {
+                cbPflegestufenEinschaetzung.PSEKlasse = _row.PSEKlasse;
+            }
 
             if (!_row.IsIDZeitbereichNull())                            // Zeitbereich
             {
@@ -353,9 +360,15 @@ namespace PMDS.GUI
 		public void AcceptChanges() 
 		{
 			string sText = "";
-			if(ISTERMIN) 
-				sText = cbTermin.Text.Trim();
-			else
+			if(ISTERMIN)
+            {
+                sText = cbTermin.Text.Trim();
+                if (ENV.lic_PflegestufenEinschätzung)
+                {
+                    _row.PSEKlasse = cbPflegestufenEinschaetzung.Text;
+                }
+            }
+            else
 				sText = tbText.Text.Trim();
 
 			bool bOriginalModified = false;
@@ -502,21 +515,21 @@ namespace PMDS.GUI
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             this.lblInfoCreated = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -553,6 +566,8 @@ namespace PMDS.GUI
             this.cbSide = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.pnlBerufsstand = new QS2.Desktop.ControlManagment.BasePanel();
             this.grpSollwerte = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
+            this.lblPflegestufeneinschaetzung = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cbPflegestufenEinschaetzung = new PMDS.GUI.BaseControls.PflegestufenEinschaetzung();
             this.tbDauer = new QS2.Desktop.ControlManagment.BaseNumericEditor();
             this.cbBerufsstand = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.lblBerufsstand = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -606,6 +621,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.cbSide)).BeginInit();
             this.pnlBerufsstand.SuspendLayout();
             this.grpSollwerte.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDauer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBerufsstand)).BeginInit();
             this.pnlIntervall.SuspendLayout();
@@ -648,23 +664,26 @@ namespace PMDS.GUI
             // 
             // pnlInfo
             // 
+            this.pnlInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlInfo.Controls.Add(this.grpBenutzer);
-            this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInfo.Location = new System.Drawing.Point(0, 69);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(604, 50);
+            this.pnlInfo.Size = new System.Drawing.Size(552, 50);
             this.pnlInfo.TabIndex = 0;
             this.pnlInfo.Visible = false;
             // 
             // grpBenutzer
             // 
+            this.grpBenutzer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBenutzer.Controls.Add(this.lblInfoCreated);
             this.grpBenutzer.Controls.Add(this.cbChanged);
             this.grpBenutzer.Controls.Add(this.cbCreated);
             this.grpBenutzer.Controls.Add(this.lblInfoChanged);
             this.grpBenutzer.Location = new System.Drawing.Point(8, 0);
             this.grpBenutzer.Name = "grpBenutzer";
-            this.grpBenutzer.Size = new System.Drawing.Size(536, 50);
+            this.grpBenutzer.Size = new System.Drawing.Size(525, 50);
             this.grpBenutzer.TabIndex = 2;
             this.grpBenutzer.TabStop = false;
             this.grpBenutzer.Text = "Benutzer";
@@ -693,7 +712,7 @@ namespace PMDS.GUI
             // 
             // chkPrivatJN
             // 
-            this.chkPrivatJN.Location = new System.Drawing.Point(475, 27);
+            this.chkPrivatJN.Location = new System.Drawing.Point(112, 51);
             this.chkPrivatJN.Name = "chkPrivatJN";
             this.chkPrivatJN.Size = new System.Drawing.Size(55, 17);
             this.chkPrivatJN.TabIndex = 2;
@@ -703,13 +722,15 @@ namespace PMDS.GUI
             // 
             this.pnlGenerell.Controls.Add(this.grpInformation);
             this.pnlGenerell.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlGenerell.Location = new System.Drawing.Point(0, 119);
+            this.pnlGenerell.Location = new System.Drawing.Point(0, 69);
             this.pnlGenerell.Name = "pnlGenerell";
-            this.pnlGenerell.Size = new System.Drawing.Size(604, 190);
+            this.pnlGenerell.Size = new System.Drawing.Size(636, 190);
             this.pnlGenerell.TabIndex = 1;
             // 
             // grpInformation
             // 
+            this.grpInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpInformation.Controls.Add(this.btnShow);
             this.grpInformation.Controls.Add(this.lblBezeichnung);
             this.grpInformation.Controls.Add(this.cbLinkDokument);
@@ -722,7 +743,7 @@ namespace PMDS.GUI
             this.grpInformation.Controls.Add(this.tbAnmerkung);
             this.grpInformation.Location = new System.Drawing.Point(8, 0);
             this.grpInformation.Name = "grpInformation";
-            this.grpInformation.Size = new System.Drawing.Size(536, 185);
+            this.grpInformation.Size = new System.Drawing.Size(625, 185);
             this.grpInformation.TabIndex = 7;
             this.grpInformation.TabStop = false;
             this.grpInformation.Text = "Informationen";
@@ -732,7 +753,7 @@ namespace PMDS.GUI
             this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShow.AutoWorkLayout = false;
             this.btnShow.IsStandardControl = false;
-            this.btnShow.Location = new System.Drawing.Point(437, 158);
+            this.btnShow.Location = new System.Drawing.Point(526, 158);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(83, 21);
             this.btnShow.TabIndex = 12;
@@ -742,9 +763,9 @@ namespace PMDS.GUI
             // 
             // lblBezeichnung
             // 
-            appearance3.TextHAlignAsString = "Left";
-            appearance3.TextVAlignAsString = "Middle";
-            this.lblBezeichnung.Appearance = appearance3;
+            appearance12.TextHAlignAsString = "Left";
+            appearance12.TextVAlignAsString = "Middle";
+            this.lblBezeichnung.Appearance = appearance12;
             this.lblBezeichnung.Location = new System.Drawing.Point(24, 20);
             this.lblBezeichnung.Name = "lblBezeichnung";
             this.lblBezeichnung.Size = new System.Drawing.Size(80, 16);
@@ -753,19 +774,21 @@ namespace PMDS.GUI
             // 
             // cbLinkDokument
             // 
+            this.cbLinkDokument.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbLinkDokument.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbLinkDokument.IDLinkDokument = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.cbLinkDokument.Location = new System.Drawing.Point(112, 158);
             this.cbLinkDokument.Name = "cbLinkDokument";
-            this.cbLinkDokument.Size = new System.Drawing.Size(305, 21);
+            this.cbLinkDokument.Size = new System.Drawing.Size(408, 21);
             this.cbLinkDokument.TabIndex = 20;
             this.cbLinkDokument.ValueChanged += new System.EventHandler(this.cbLinkDokument_ValueChanged);
             // 
             // lblPflegestandard
             // 
-            appearance4.TextHAlignAsString = "Left";
-            appearance4.TextVAlignAsString = "Middle";
-            this.lblPflegestandard.Appearance = appearance4;
+            appearance13.TextHAlignAsString = "Left";
+            appearance13.TextVAlignAsString = "Middle";
+            this.lblPflegestandard.Appearance = appearance13;
             this.lblPflegestandard.Location = new System.Drawing.Point(24, 160);
             this.lblPflegestandard.Name = "lblPflegestandard";
             this.lblPflegestandard.Size = new System.Drawing.Size(80, 16);
@@ -774,9 +797,9 @@ namespace PMDS.GUI
             // 
             // lblHinweis
             // 
-            appearance5.TextHAlignAsString = "Left";
-            appearance5.TextVAlignAsString = "Middle";
-            this.lblHinweis.Appearance = appearance5;
+            appearance14.TextHAlignAsString = "Left";
+            appearance14.TextVAlignAsString = "Middle";
+            this.lblHinweis.Appearance = appearance14;
             this.lblHinweis.Location = new System.Drawing.Point(24, 81);
             this.lblHinweis.Name = "lblHinweis";
             this.lblHinweis.Size = new System.Drawing.Size(80, 16);
@@ -786,31 +809,37 @@ namespace PMDS.GUI
             // cbTermin
             // 
             this.cbTermin.AddEmptyEntry = false;
+            this.cbTermin.AutoOpenCBO = false;
             this.cbTermin.BerufsstandGruppeJNA = -1;
+            this.cbTermin.ExactMatch = false;
             this.cbTermin.Group = "TRM";
             this.cbTermin.ID_PEP = -1;
             this.cbTermin.Location = new System.Drawing.Point(128, 15);
             this.cbTermin.Name = "cbTermin";
+            this.cbTermin.PflichtJN = false;
             this.cbTermin.ShowAddButton = true;
             this.cbTermin.Size = new System.Drawing.Size(408, 21);
+            this.cbTermin.sys = false;
             this.cbTermin.TabIndex = 0;
             this.cbTermin.ValueChanged += new System.EventHandler(this.cbTermin_ValueChanged);
             // 
             // tbText
             // 
+            this.tbText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbText.Location = new System.Drawing.Point(112, 20);
             this.tbText.MaxLength = 255;
             this.tbText.Multiline = true;
             this.tbText.Name = "tbText";
             this.tbText.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbText.Size = new System.Drawing.Size(408, 57);
+            this.tbText.Size = new System.Drawing.Size(497, 57);
             this.tbText.TabIndex = 1;
             // 
             // lblAnmerkung
             // 
-            appearance6.TextHAlignAsString = "Left";
-            appearance6.TextVAlignAsString = "Middle";
-            this.lblAnmerkung.Appearance = appearance6;
+            appearance15.TextHAlignAsString = "Left";
+            appearance15.TextVAlignAsString = "Middle";
+            this.lblAnmerkung.Appearance = appearance15;
             this.lblAnmerkung.Location = new System.Drawing.Point(24, 118);
             this.lblAnmerkung.Name = "lblAnmerkung";
             this.lblAnmerkung.Size = new System.Drawing.Size(80, 16);
@@ -819,23 +848,27 @@ namespace PMDS.GUI
             // 
             // tbWarnung
             // 
+            this.tbWarnung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbWarnung.Location = new System.Drawing.Point(112, 81);
             this.tbWarnung.MaxLength = 255;
             this.tbWarnung.Multiline = true;
             this.tbWarnung.Name = "tbWarnung";
             this.tbWarnung.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbWarnung.Size = new System.Drawing.Size(408, 34);
+            this.tbWarnung.Size = new System.Drawing.Size(497, 34);
             this.tbWarnung.TabIndex = 2;
             this.tbWarnung.ValueChanged += new System.EventHandler(this.tbWarnung_ValueChanged);
             // 
             // tbAnmerkung
             // 
+            this.tbAnmerkung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbAnmerkung.Location = new System.Drawing.Point(112, 118);
             this.tbAnmerkung.MaxLength = 255;
             this.tbAnmerkung.Multiline = true;
             this.tbAnmerkung.Name = "tbAnmerkung";
             this.tbAnmerkung.Scrollbars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbAnmerkung.Size = new System.Drawing.Size(408, 34);
+            this.tbAnmerkung.Size = new System.Drawing.Size(497, 34);
             this.tbAnmerkung.TabIndex = 3;
             this.tbAnmerkung.ValueChanged += new System.EventHandler(this.tbAnmerkung_ValueChanged);
             // 
@@ -847,18 +880,18 @@ namespace PMDS.GUI
             this.pnlM.Controls.Add(this.pnlIntervall);
             this.pnlM.Controls.Add(this.pnlEinmalig);
             this.pnlM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlM.Location = new System.Drawing.Point(0, 309);
+            this.pnlM.Location = new System.Drawing.Point(0, 259);
             this.pnlM.Name = "pnlM";
-            this.pnlM.Size = new System.Drawing.Size(604, 409);
+            this.pnlM.Size = new System.Drawing.Size(636, 409);
             this.pnlM.TabIndex = 4;
             // 
             // pnlNaechsteEvaluierung
             // 
             this.pnlNaechsteEvaluierung.Controls.Add(this.grpNächsteEvaluierung);
             this.pnlNaechsteEvaluierung.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlNaechsteEvaluierung.Location = new System.Drawing.Point(0, 253);
+            this.pnlNaechsteEvaluierung.Location = new System.Drawing.Point(0, 119);
             this.pnlNaechsteEvaluierung.Name = "pnlNaechsteEvaluierung";
-            this.pnlNaechsteEvaluierung.Size = new System.Drawing.Size(604, 150);
+            this.pnlNaechsteEvaluierung.Size = new System.Drawing.Size(636, 150);
             this.pnlNaechsteEvaluierung.TabIndex = 8;
             // 
             // grpNächsteEvaluierung
@@ -869,7 +902,7 @@ namespace PMDS.GUI
             this.grpNächsteEvaluierung.Controls.Add(this.lblAnmerkung2);
             this.grpNächsteEvaluierung.Location = new System.Drawing.Point(8, 4);
             this.grpNächsteEvaluierung.Name = "grpNächsteEvaluierung";
-            this.grpNächsteEvaluierung.Size = new System.Drawing.Size(536, 131);
+            this.grpNächsteEvaluierung.Size = new System.Drawing.Size(609, 119);
             this.grpNächsteEvaluierung.TabIndex = 16;
             this.grpNächsteEvaluierung.TabStop = false;
             this.grpNächsteEvaluierung.Text = "nächste Evaluierung";
@@ -885,11 +918,13 @@ namespace PMDS.GUI
             // 
             // tbNaechsteEvaluierungBemerkung
             // 
+            this.tbNaechsteEvaluierungBemerkung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNaechsteEvaluierungBemerkung.Location = new System.Drawing.Point(92, 46);
             this.tbNaechsteEvaluierungBemerkung.MaxLength = 255;
             this.tbNaechsteEvaluierungBemerkung.Multiline = true;
             this.tbNaechsteEvaluierungBemerkung.Name = "tbNaechsteEvaluierungBemerkung";
-            this.tbNaechsteEvaluierungBemerkung.Size = new System.Drawing.Size(428, 78);
+            this.tbNaechsteEvaluierungBemerkung.Size = new System.Drawing.Size(501, 65);
             this.tbNaechsteEvaluierungBemerkung.TabIndex = 21;
             // 
             // lblDatum
@@ -910,11 +945,12 @@ namespace PMDS.GUI
             // 
             // pnlLokalisierung
             // 
+            this.pnlLokalisierung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLokalisierung.Controls.Add(this.grpLokalisierung);
-            this.pnlLokalisierung.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLokalisierung.Location = new System.Drawing.Point(0, 197);
+            this.pnlLokalisierung.Location = new System.Drawing.Point(8, 275);
             this.pnlLokalisierung.Name = "pnlLokalisierung";
-            this.pnlLokalisierung.Size = new System.Drawing.Size(604, 56);
+            this.pnlLokalisierung.Size = new System.Drawing.Size(609, 58);
             this.pnlLokalisierung.TabIndex = 5;
             // 
             // grpLokalisierung
@@ -923,9 +959,9 @@ namespace PMDS.GUI
             this.grpLokalisierung.Controls.Add(this.lblKörperteil);
             this.grpLokalisierung.Controls.Add(this.cbArea);
             this.grpLokalisierung.Controls.Add(this.cbSide);
-            this.grpLokalisierung.Location = new System.Drawing.Point(8, 0);
+            this.grpLokalisierung.Location = new System.Drawing.Point(4, 6);
             this.grpLokalisierung.Name = "grpLokalisierung";
-            this.grpLokalisierung.Size = new System.Drawing.Size(536, 50);
+            this.grpLokalisierung.Size = new System.Drawing.Size(589, 50);
             this.grpLokalisierung.TabIndex = 14;
             this.grpLokalisierung.TabStop = false;
             this.grpLokalisierung.Text = "Lokalisierung";
@@ -950,58 +986,90 @@ namespace PMDS.GUI
             // 
             this.cbArea.AddEmptyEntry = false;
             this.cbArea.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cbArea.AutoOpenCBO = false;
             this.cbArea.BerufsstandGruppeJNA = -1;
             this.cbArea.Enabled = false;
+            this.cbArea.ExactMatch = false;
             this.cbArea.Group = "";
             this.cbArea.ID_PEP = -1;
             this.cbArea.Location = new System.Drawing.Point(112, 22);
             this.cbArea.MaxLength = 50;
             this.cbArea.Name = "cbArea";
+            this.cbArea.PflichtJN = false;
             this.cbArea.ShowAddButton = true;
             this.cbArea.Size = new System.Drawing.Size(144, 21);
+            this.cbArea.sys = false;
             this.cbArea.TabIndex = 0;
             // 
             // cbSide
             // 
             this.cbSide.AddEmptyEntry = false;
+            this.cbSide.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbSide.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cbSide.AutoOpenCBO = false;
             this.cbSide.BerufsstandGruppeJNA = -1;
             this.cbSide.Enabled = false;
+            this.cbSide.ExactMatch = false;
             this.cbSide.Group = "";
             this.cbSide.ID_PEP = -1;
             this.cbSide.Location = new System.Drawing.Point(319, 21);
             this.cbSide.MaxLength = 50;
             this.cbSide.Name = "cbSide";
+            this.cbSide.PflichtJN = false;
             this.cbSide.ShowAddButton = true;
-            this.cbSide.Size = new System.Drawing.Size(144, 21);
+            this.cbSide.Size = new System.Drawing.Size(264, 21);
+            this.cbSide.sys = false;
             this.cbSide.TabIndex = 1;
             // 
             // pnlBerufsstand
             // 
             this.pnlBerufsstand.Controls.Add(this.grpSollwerte);
             this.pnlBerufsstand.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBerufsstand.Location = new System.Drawing.Point(0, 137);
+            this.pnlBerufsstand.Location = new System.Drawing.Point(0, 29);
             this.pnlBerufsstand.Name = "pnlBerufsstand";
-            this.pnlBerufsstand.Size = new System.Drawing.Size(604, 60);
+            this.pnlBerufsstand.Size = new System.Drawing.Size(636, 90);
             this.pnlBerufsstand.TabIndex = 4;
             // 
             // grpSollwerte
             // 
+            this.grpSollwerte.Controls.Add(this.lblPflegestufeneinschaetzung);
+            this.grpSollwerte.Controls.Add(this.cbPflegestufenEinschaetzung);
             this.grpSollwerte.Controls.Add(this.chkPrivatJN);
             this.grpSollwerte.Controls.Add(this.tbDauer);
             this.grpSollwerte.Controls.Add(this.cbBerufsstand);
             this.grpSollwerte.Controls.Add(this.lblBerufsstand);
             this.grpSollwerte.Controls.Add(this.lblDauer);
-            this.grpSollwerte.Location = new System.Drawing.Point(8, 0);
+            this.grpSollwerte.Location = new System.Drawing.Point(8, 6);
             this.grpSollwerte.Name = "grpSollwerte";
-            this.grpSollwerte.Size = new System.Drawing.Size(536, 54);
+            this.grpSollwerte.Size = new System.Drawing.Size(609, 78);
             this.grpSollwerte.TabIndex = 9;
             this.grpSollwerte.TabStop = false;
             this.grpSollwerte.Text = "Sollwerte";
             // 
+            // lblPflegestufeneinschaetzung
+            // 
+            this.lblPflegestufeneinschaetzung.Location = new System.Drawing.Point(185, 48);
+            this.lblPflegestufeneinschaetzung.Name = "lblPflegestufeneinschaetzung";
+            this.lblPflegestufeneinschaetzung.Padding = new System.Drawing.Size(0, 4);
+            this.lblPflegestufeneinschaetzung.Size = new System.Drawing.Size(66, 23);
+            this.lblPflegestufeneinschaetzung.TabIndex = 134;
+            this.lblPflegestufeneinschaetzung.Text = "PSE-Krit.:";
+            // 
+            // cbPflegestufenEinschaetzung
+            // 
+            this.cbPflegestufenEinschaetzung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPflegestufenEinschaetzung.Location = new System.Drawing.Point(263, 49);
+            this.cbPflegestufenEinschaetzung.Name = "cbPflegestufenEinschaetzung";
+            this.cbPflegestufenEinschaetzung.PSEKlasse = "";
+            this.cbPflegestufenEinschaetzung.Size = new System.Drawing.Size(330, 21);
+            this.cbPflegestufenEinschaetzung.strDefault = null;
+            this.cbPflegestufenEinschaetzung.TabIndex = 133;
+            // 
             // tbDauer
             // 
-            this.tbDauer.Location = new System.Drawing.Point(112, 24);
+            this.tbDauer.Location = new System.Drawing.Point(112, 22);
             this.tbDauer.MaskInput = "nnnn";
             this.tbDauer.MaxValue = 9999;
             this.tbDauer.MinValue = 0;
@@ -1013,22 +1081,29 @@ namespace PMDS.GUI
             // cbBerufsstand
             // 
             this.cbBerufsstand.AddEmptyEntry = false;
+            this.cbBerufsstand.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbBerufsstand.AutoOpenCBO = false;
             this.cbBerufsstand.BerufsstandGruppeJNA = -1;
             this.cbBerufsstand.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbBerufsstand.ExactMatch = false;
             this.cbBerufsstand.Group = "";
             this.cbBerufsstand.ID_PEP = -1;
-            this.cbBerufsstand.Location = new System.Drawing.Point(273, 25);
+            this.cbBerufsstand.Location = new System.Drawing.Point(263, 22);
             this.cbBerufsstand.Name = "cbBerufsstand";
+            this.cbBerufsstand.PflichtJN = false;
             this.cbBerufsstand.ShowAddButton = true;
-            this.cbBerufsstand.Size = new System.Drawing.Size(190, 21);
+            this.cbBerufsstand.Size = new System.Drawing.Size(330, 21);
+            this.cbBerufsstand.sys = false;
             this.cbBerufsstand.TabIndex = 1;
+            this.cbBerufsstand.ValueChanged += new System.EventHandler(this.cbBerufsstand_ValueChanged);
             // 
             // lblBerufsstand
             // 
-            appearance7.TextHAlignAsString = "Left";
-            appearance7.TextVAlignAsString = "Middle";
-            this.lblBerufsstand.Appearance = appearance7;
-            this.lblBerufsstand.Location = new System.Drawing.Point(185, 25);
+            appearance16.TextHAlignAsString = "Left";
+            appearance16.TextVAlignAsString = "Middle";
+            this.lblBerufsstand.Appearance = appearance16;
+            this.lblBerufsstand.Location = new System.Drawing.Point(185, 24);
             this.lblBerufsstand.Name = "lblBerufsstand";
             this.lblBerufsstand.Size = new System.Drawing.Size(96, 16);
             this.lblBerufsstand.TabIndex = 7;
@@ -1036,22 +1111,23 @@ namespace PMDS.GUI
             // 
             // lblDauer
             // 
-            appearance8.TextHAlignAsString = "Left";
-            appearance8.TextVAlignAsString = "Middle";
-            this.lblDauer.Appearance = appearance8;
+            appearance17.TextHAlignAsString = "Left";
+            appearance17.TextVAlignAsString = "Middle";
+            this.lblDauer.Appearance = appearance17;
             this.lblDauer.Location = new System.Drawing.Point(24, 24);
             this.lblDauer.Name = "lblDauer";
-            this.lblDauer.Size = new System.Drawing.Size(96, 16);
+            this.lblDauer.Size = new System.Drawing.Size(86, 16);
             this.lblDauer.TabIndex = 5;
             this.lblDauer.Text = "Dauer (Minuten)";
             // 
             // pnlIntervall
             // 
+            this.pnlIntervall.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlIntervall.Controls.Add(this.grpDurchführung);
-            this.pnlIntervall.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlIntervall.Location = new System.Drawing.Point(0, 29);
             this.pnlIntervall.Name = "pnlIntervall";
-            this.pnlIntervall.Size = new System.Drawing.Size(604, 108);
+            this.pnlIntervall.Size = new System.Drawing.Size(552, 108);
             this.pnlIntervall.TabIndex = 2;
             // 
             // grpDurchführung
@@ -1067,7 +1143,7 @@ namespace PMDS.GUI
             this.grpDurchführung.Controls.Add(this.lblintervallAlle);
             this.grpDurchführung.Location = new System.Drawing.Point(8, 0);
             this.grpDurchführung.Name = "grpDurchführung";
-            this.grpDurchführung.Size = new System.Drawing.Size(536, 102);
+            this.grpDurchführung.Size = new System.Drawing.Size(609, 84);
             this.grpDurchführung.TabIndex = 11;
             this.grpDurchführung.TabStop = false;
             this.grpDurchführung.Text = "Durchführung ";
@@ -1095,9 +1171,9 @@ namespace PMDS.GUI
             // 
             // lblWochentage
             // 
-            appearance9.TextHAlignAsString = "Left";
-            appearance9.TextVAlignAsString = "Middle";
-            this.lblWochentage.Appearance = appearance9;
+            appearance18.TextHAlignAsString = "Left";
+            appearance18.TextVAlignAsString = "Middle";
+            this.lblWochentage.Appearance = appearance18;
             this.lblWochentage.Location = new System.Drawing.Point(24, 71);
             this.lblWochentage.Name = "lblWochentage";
             this.lblWochentage.Size = new System.Drawing.Size(80, 16);
@@ -1158,9 +1234,9 @@ namespace PMDS.GUI
             // 
             // lblEvaluierungAlle
             // 
-            appearance10.TextHAlignAsString = "Left";
-            appearance10.TextVAlignAsString = "Middle";
-            this.lblEvaluierungAlle.Appearance = appearance10;
+            appearance19.TextHAlignAsString = "Left";
+            appearance19.TextVAlignAsString = "Middle";
+            this.lblEvaluierungAlle.Appearance = appearance19;
             this.lblEvaluierungAlle.Location = new System.Drawing.Point(357, 19);
             this.lblEvaluierungAlle.Name = "lblEvaluierungAlle";
             this.lblEvaluierungAlle.Size = new System.Drawing.Size(88, 16);
@@ -1178,9 +1254,9 @@ namespace PMDS.GUI
             // 
             // lblintervallAlle
             // 
-            appearance11.TextHAlignAsString = "Left";
-            appearance11.TextVAlignAsString = "Middle";
-            this.lblintervallAlle.Appearance = appearance11;
+            appearance20.TextHAlignAsString = "Left";
+            appearance20.TextVAlignAsString = "Middle";
+            this.lblintervallAlle.Appearance = appearance20;
             this.lblintervallAlle.Location = new System.Drawing.Point(24, 47);
             this.lblintervallAlle.Name = "lblintervallAlle";
             this.lblintervallAlle.Size = new System.Drawing.Size(72, 16);
@@ -1196,7 +1272,7 @@ namespace PMDS.GUI
             this.pnlEinmalig.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEinmalig.Location = new System.Drawing.Point(0, 0);
             this.pnlEinmalig.Name = "pnlEinmalig";
-            this.pnlEinmalig.Size = new System.Drawing.Size(604, 29);
+            this.pnlEinmalig.Size = new System.Drawing.Size(636, 29);
             this.pnlEinmalig.TabIndex = 0;
             // 
             // pnlRMOptional
@@ -1276,7 +1352,7 @@ namespace PMDS.GUI
             this.pnlUhrzeit.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUhrzeit.Location = new System.Drawing.Point(0, 0);
             this.pnlUhrzeit.Name = "pnlUhrzeit";
-            this.pnlUhrzeit.Size = new System.Drawing.Size(604, 69);
+            this.pnlUhrzeit.Size = new System.Drawing.Size(636, 69);
             this.pnlUhrzeit.TabIndex = 6;
             // 
             // grpUhrzeit
@@ -1349,7 +1425,7 @@ namespace PMDS.GUI
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlUhrzeit);
             this.Name = "ucPflegePlanSingleEdit";
-            this.Size = new System.Drawing.Size(604, 723);
+            this.Size = new System.Drawing.Size(636, 723);
             this.Load += new System.EventHandler(this.ucPflegePlanSingleEdit_Load);
             this.VisibleChanged += new System.EventHandler(this.ucPflegePlanSingleEdit_VisibleChanged);
             this.pnlInfo.ResumeLayout(false);
@@ -1380,6 +1456,7 @@ namespace PMDS.GUI
             this.pnlBerufsstand.ResumeLayout(false);
             this.grpSollwerte.ResumeLayout(false);
             this.grpSollwerte.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDauer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbBerufsstand)).EndInit();
             this.pnlIntervall.ResumeLayout(false);
@@ -1427,7 +1504,16 @@ namespace PMDS.GUI
 			cbTermin.Top	= tbText.Top;
 
             cbLinkDokument.RefreshList();
-		}
+            if (ENV.lic_PflegestufenEinschätzung)
+            {
+                cbPflegestufenEinschaetzung.RefreshList();
+            }
+            else
+            {
+                cbPflegestufenEinschaetzung.Visible = false;
+                lblPflegestufeneinschaetzung.Visible = false;
+            }
+        }
 
 		private void cbEinmalig_CheckedChanged(object sender, System.EventArgs e)
 		{
@@ -1493,6 +1579,7 @@ namespace PMDS.GUI
 				ucWochenTage1.Enabled	                = !value;
 				tbDauer.ReadOnly		                = value;
 				cbBerufsstand.ReadOnly	                = value;
+                cbPflegestufenEinschaetzung.ReadOnly    = value;
 				cbArea.ReadOnly			                = value;
 				cbSide.ReadOnly			                = value;
 				cbRMOptionalJN.Enabled	                = !value;
@@ -1600,6 +1687,11 @@ namespace PMDS.GUI
 
                 PMDS.Global.ENV.HandleException(ex);
             }
+        }
+
+        private void cbBerufsstand_ValueChanged(object sender, EventArgs e)
+        {
+            //string x = "";
         }
     }
 }

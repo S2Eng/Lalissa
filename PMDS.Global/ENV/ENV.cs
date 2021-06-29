@@ -337,6 +337,7 @@ namespace PMDS.Global
         public static bool lic_ELGA_PSB;
         public static bool lic_RezepteintragStorno;
         public static bool lic_ELDA;
+        public static bool lic_PflegestufenEinschätzung;
         //---------------------------------------------
 
         // ------------- ELGA - Formatter für override  ---------------------
@@ -1516,7 +1517,7 @@ namespace PMDS.Global
                 ENV.lic_WundtherapieOffenWarnung = setLicValue("lic_WundtherapieOffenWarnung");
                 ENV.lic_RezepteintragStorno = setLicValue("lic_RezepteintragStorno");
                 ENV.lic_ELDA = setLicValue("lic_ELDA");
-
+                ENV.lic_PflegestufenEinschätzung = setLicValue("lic_PflegestufenEinschätzung");
 
                 QS2.Logging.ENV.init(ENV._LOGPATH, true, ENV.adminSecure);
                 QS2.Desktop.ControlManagment.ENV.init(ref PMDS.Global.ENV.IDApplication, ref PMDS.Global.ENV.TypeRessourcesRun, ENV.adminSecure, ENV.DoNotShowRessources, ENV.AutoAddNewRessources, ENV.IntDeactivated, DataBase.CONNECTIONSqlClient);  

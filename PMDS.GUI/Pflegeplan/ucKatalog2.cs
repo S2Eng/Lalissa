@@ -70,6 +70,9 @@ namespace PMDS.GUI
         public bool AlleEintr‰ge = false;
         private Panel panelDropDownFormulare;
         internal Infragistics.Win.Misc.UltraDropDownButton dropFormulare;
+        private Abrechnung.Global.dsPatientPflegestufe dsPatientPflegestufe1;
+        private QS2.Desktop.ControlManagment.BaseLabel lblPflegestufeneinschaetzung;
+        private BaseControls.PflegestufenEinschaetzung cbPflegestufenEinschaetzung;
         public PMDSBusiness b = new PMDSBusiness();
 
 
@@ -149,12 +152,17 @@ namespace PMDS.GUI
             cbSicht.Visible = (bS || bM);
             lSicht.Visible = (bS || bM);
 
+
             cbLinkDokument.Visible = bM;
             lLinkDokument.Visible = bM;
             btnShowDocument.Visible = bM;
 
             cbEintragTyp.Visible = bM;
-            lblTyp.Visible              = bM;
+            lblTyp.Visible = bM;
+
+            cbPflegestufenEinschaetzung.Visible = bM && ENV.lic_PflegestufenEinsch‰tzung;
+            lblPflegestufeneinschaetzung.Visible = bM && ENV.lic_PflegestufenEinsch‰tzung; ;
+
             cbBedarfsmedikation.Visible = bM;               // Checkbox nur sichtbar bei M
             cbMOhnezeitbezug.Visible    = bM;
             this.chkEntferntJN.Visible = true;
@@ -228,8 +236,12 @@ namespace PMDS.GUI
                         {
                             rr.flag = (int)cbEintragTyp.EintragTyp;
                         }
-                            
-                            rr.BedarfsMedikationJN  = cbBedarfsmedikation.Checked;
+                        if (ENV.lic_PflegestufenEinsch‰tzung)
+                        {
+                            rr.PSEKlasse = cbPflegestufenEinschaetzung.SelectedItem.DisplayText;
+                        }
+
+                        rr.BedarfsMedikationJN  = cbBedarfsmedikation.Checked;
                         rr.OhneZeitBezug        = cbMOhnezeitbezug.Checked;
                         rr.EntferntJN = this.chkEntferntJN.Checked;
 
@@ -302,6 +314,10 @@ namespace PMDS.GUI
                 txtASZM.Text = r.Text;
                 txtWarnhinweis.Text = r.Warnhinweis;
                 cbEintragTyp.EintragTyp = (EintragFlag)r.flag;
+                if (ENV.lic_PflegestufenEinsch‰tzung)
+                {
+                    cbPflegestufenEinschaetzung.PSEKlasse = r.PSEKlasse;
+                }
                 cbBedarfsmedikation.Checked = r.BedarfsMedikationJN;
                 cbMOhnezeitbezug.Checked = r.OhneZeitBezug;
                 this.chkEntferntJN.Checked = r.EntferntJN;
@@ -315,6 +331,7 @@ namespace PMDS.GUI
                         cbSicht.SelectedItem = i;
                         c++;
                     }
+                
                 if (c == 0) cbSicht.SelectedItem = null;
 
                 //Neu nach 11.06.2007 MDA
@@ -493,9 +510,8 @@ namespace PMDS.GUI
 			txtASZM.Appearance.ForeColor = Color.Black;
 
 			ASZMID = Guid.NewGuid();
-		    dsEintrag.EintragRow ROW = _Katalog.EINTRAEGE.AddEintragRow(ASZMID,KATALOG.GROUP.ToString(),false,"","","", 0, Guid.Empty, false, false, "");
+		    dsEintrag.EintragRow ROW = _Katalog.EINTRAEGE.AddEintragRow(ASZMID,KATALOG.GROUP.ToString(),false,"","","", 0, Guid.Empty, false, false, "", "");
             ClearFields();
-
 			
 			if(_Katalog.GROUP =='M') {grpMain.Text = ENV.String("New_M") + " " + ENV.String("ADD"); lASZM.Text = ENV.String("New_M") +" :";}
 			if(_Katalog.GROUP =='S') {grpMain.Text = ENV.String("New_S") + " " + ENV.String("ADD"); lASZM.Text = ENV.String("New_S") +" :";}
@@ -525,7 +541,12 @@ namespace PMDS.GUI
             //if (_Katalog.GROUP == 'A')
             //    cbEintragTyp.EintragTyp = EintragFlag.Aetiologie;
             //else
-                cbEintragTyp.EintragTyp = EintragFlag.Einzelabzeichnung;
+            cbEintragTyp.EintragTyp = EintragFlag.Einzelabzeichnung;
+            if (ENV.lic_PflegestufenEinsch‰tzung)
+            {
+                cbPflegestufenEinschaetzung.PSEKlasse = cbPflegestufenEinschaetzung.strDefault;
+                cbPflegestufenEinschaetzung.SelectedItem = null;
+            }
             cbSicht.SelectedItem = null;
             cbBedarfsmedikation.Checked = false;
             cbMOhnezeitbezug.Checked = false;
@@ -595,12 +616,12 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("tSelectSimple", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Select");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Text", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID2");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID3");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDTxt");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Select");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Text", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID2");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID3");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDTxt");
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -623,6 +644,7 @@ namespace PMDS.GUI
             this.txtWarnhinweis = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.lWarnhinweis = new QS2.Desktop.ControlManagment.BaseLabel();
             this.grpMain = new QS2.Desktop.ControlManagment.BaseGroupBoxWin();
+            this.lblPflegestufeneinschaetzung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.chkEntferntJN = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
             this.lvStProzeduren = new Infragistics.Win.UltraWinListView.UltraListView();
             this.lblStProzeduren = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -631,18 +653,20 @@ namespace PMDS.GUI
             this.btnShowDocument = new QS2.Desktop.ControlManagment.BaseButton();
             this.cbMOhnezeitbezug = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.lLinkDokument = new QS2.Desktop.ControlManagment.BaseLabel();
-            this.cbLinkDokument = new PMDS.GUI.BaseControls.LinkDokumenteCombo();
-            this.cbEintragTyp = new PMDS.GUI.BaseControls.EintragtypCombo();
             this.lblTyp = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cbBedarfsmedikation = new QS2.Desktop.ControlManagment.BaseCheckBox();
-            this.PanelFormulare = new QS2.Desktop.ControlManagment.BasePanel();
-            this.gridFormulare = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.dsKlientenliste1 = new PMDS.Global.db.ERSystem.dsKlientenliste();
             this.panelDropDownFormulare = new System.Windows.Forms.Panel();
             this.dropFormulare = new Infragistics.Win.Misc.UltraDropDownButton();
             this.UltraPopupControlContainer_Formulare = new Infragistics.Win.Misc.UltraPopupControlContainer(this.components);
+            this.PanelFormulare = new QS2.Desktop.ControlManagment.BasePanel();
+            this.cbPflegestufenEinschaetzung = new PMDS.GUI.BaseControls.PflegestufenEinschaetzung();
+            this.cbLinkDokument = new PMDS.GUI.BaseControls.LinkDokumenteCombo();
+            this.cbEintragTyp = new PMDS.GUI.BaseControls.EintragtypCombo();
+            this.gridFormulare = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.dsKlientenliste1 = new PMDS.Global.db.ERSystem.dsKlientenliste();
             this.dsEintrag1 = new PMDS.Global.db.Pflegeplan.dsEintrag();
             this.sqlManange1 = new PMDS.Global.db.ERSystem.sqlManange(this.components);
+            this.dsPatientPflegestufe1 = new PMDS.Abrechnung.Global.dsPatientPflegestufe();
             ((System.ComponentModel.ISupportInitialize)(this.cbSicht)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtASZM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWarnhinweis)).BeginInit();
@@ -650,14 +674,16 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.chkEntferntJN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvStProzeduren)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbMOhnezeitbezug)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsmedikation)).BeginInit();
+            this.panelDropDownFormulare.SuspendLayout();
+            this.PanelFormulare.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLinkDokument)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbEintragTyp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsmedikation)).BeginInit();
-            this.PanelFormulare.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridFormulare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientenliste1)).BeginInit();
-            this.panelDropDownFormulare.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsEintrag1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientPflegestufe1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbSicht
@@ -724,6 +750,8 @@ namespace PMDS.GUI
             this.grpMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMain.Controls.Add(this.lblPflegestufeneinschaetzung);
+            this.grpMain.Controls.Add(this.cbPflegestufenEinschaetzung);
             this.grpMain.Controls.Add(this.chkEntferntJN);
             this.grpMain.Controls.Add(this.lvStProzeduren);
             this.grpMain.Controls.Add(this.lblStProzeduren);
@@ -750,6 +778,15 @@ namespace PMDS.GUI
             this.grpMain.Size = new System.Drawing.Size(831, 354);
             this.grpMain.TabIndex = 15;
             this.grpMain.TabStop = false;
+            // 
+            // lblPflegestufeneinschaetzung
+            // 
+            this.lblPflegestufeneinschaetzung.Location = new System.Drawing.Point(514, 42);
+            this.lblPflegestufeneinschaetzung.Name = "lblPflegestufeneinschaetzung";
+            this.lblPflegestufeneinschaetzung.Padding = new System.Drawing.Size(0, 4);
+            this.lblPflegestufeneinschaetzung.Size = new System.Drawing.Size(66, 23);
+            this.lblPflegestufeneinschaetzung.TabIndex = 132;
+            this.lblPflegestufeneinschaetzung.Text = "PSE-Krit.:";
             // 
             // chkEntferntJN
             // 
@@ -836,6 +873,69 @@ namespace PMDS.GUI
             this.lLinkDokument.TabIndex = 18;
             this.lLinkDokument.Text = "Dokument";
             // 
+            // lblTyp
+            // 
+            this.lblTyp.Location = new System.Drawing.Point(300, 42);
+            this.lblTyp.Name = "lblTyp";
+            this.lblTyp.Padding = new System.Drawing.Size(0, 4);
+            this.lblTyp.Size = new System.Drawing.Size(33, 23);
+            this.lblTyp.TabIndex = 15;
+            this.lblTyp.Text = "Typ";
+            // 
+            // cbBedarfsmedikation
+            // 
+            this.cbBedarfsmedikation.Location = new System.Drawing.Point(391, 169);
+            this.cbBedarfsmedikation.Name = "cbBedarfsmedikation";
+            this.cbBedarfsmedikation.Size = new System.Drawing.Size(424, 20);
+            this.cbBedarfsmedikation.TabIndex = 8;
+            this.cbBedarfsmedikation.Text = "Diese Maﬂnahme dient zum Abzeichnen von Einzelverordnungen";
+            this.cbBedarfsmedikation.CheckedChanged += new System.EventHandler(this.cbBedarfsmedikation_CheckedChanged);
+            // 
+            // panelDropDownFormulare
+            // 
+            this.panelDropDownFormulare.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDropDownFormulare.Controls.Add(this.dropFormulare);
+            this.panelDropDownFormulare.Location = new System.Drawing.Point(120, 114);
+            this.panelDropDownFormulare.Name = "panelDropDownFormulare";
+            this.panelDropDownFormulare.Size = new System.Drawing.Size(380, 24);
+            this.panelDropDownFormulare.TabIndex = 130;
+            // 
+            // dropFormulare
+            // 
+            this.dropFormulare.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dropFormulare.Location = new System.Drawing.Point(0, 0);
+            this.dropFormulare.Name = "dropFormulare";
+            this.dropFormulare.PopupItemKey = "PanelFormulare";
+            this.dropFormulare.PopupItemProvider = this.UltraPopupControlContainer_Formulare;
+            this.dropFormulare.Size = new System.Drawing.Size(378, 22);
+            this.dropFormulare.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
+            this.dropFormulare.TabIndex = 6;
+            // 
+            // UltraPopupControlContainer_Formulare
+            // 
+            this.UltraPopupControlContainer_Formulare.PopupControl = this.PanelFormulare;
+            // 
+            // PanelFormulare
+            // 
+            this.PanelFormulare.Controls.Add(this.gridFormulare);
+            this.PanelFormulare.Location = new System.Drawing.Point(6, 195);
+            this.PanelFormulare.Name = "PanelFormulare";
+            this.PanelFormulare.Size = new System.Drawing.Size(391, 339);
+            this.PanelFormulare.TabIndex = 128;
+            this.PanelFormulare.Visible = false;
+            // 
+            // cbPflegestufenEinschaetzung
+            // 
+            this.cbPflegestufenEinschaetzung.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPflegestufenEinschaetzung.Location = new System.Drawing.Point(584, 43);
+            this.cbPflegestufenEinschaetzung.Name = "cbPflegestufenEinschaetzung";
+            this.cbPflegestufenEinschaetzung.PSEKlasse = "";
+            this.cbPflegestufenEinschaetzung.Size = new System.Drawing.Size(231, 24);
+            this.cbPflegestufenEinschaetzung.strDefault = null;
+            this.cbPflegestufenEinschaetzung.TabIndex = 131;
+            this.cbPflegestufenEinschaetzung.ValueChanged += new System.EventHandler(this.cbPflegestufenEinschaetzung_ValueChanged);
+            // 
             // cbLinkDokument
             // 
             this.cbLinkDokument.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
@@ -850,38 +950,11 @@ namespace PMDS.GUI
             // 
             this.cbEintragTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
             this.cbEintragTyp.EintragTyp = PMDS.Global.EintragFlag.Einzelabzeichnung;
-            this.cbEintragTyp.Location = new System.Drawing.Point(340, 43);
+            this.cbEintragTyp.Location = new System.Drawing.Point(339, 43);
             this.cbEintragTyp.Name = "cbEintragTyp";
             this.cbEintragTyp.Size = new System.Drawing.Size(160, 24);
             this.cbEintragTyp.TabIndex = 2;
-            this.cbEintragTyp.ValueChanged += new System.EventHandler(this.txtWarnhinweis_ValueChanged);
-            // 
-            // lblTyp
-            // 
-            this.lblTyp.Location = new System.Drawing.Point(307, 43);
-            this.lblTyp.Name = "lblTyp";
-            this.lblTyp.Padding = new System.Drawing.Size(0, 4);
-            this.lblTyp.Size = new System.Drawing.Size(100, 23);
-            this.lblTyp.TabIndex = 15;
-            this.lblTyp.Text = "Typ";
-            // 
-            // cbBedarfsmedikation
-            // 
-            this.cbBedarfsmedikation.Location = new System.Drawing.Point(391, 169);
-            this.cbBedarfsmedikation.Name = "cbBedarfsmedikation";
-            this.cbBedarfsmedikation.Size = new System.Drawing.Size(424, 20);
-            this.cbBedarfsmedikation.TabIndex = 8;
-            this.cbBedarfsmedikation.Text = "Diese Maﬂnahme dient zum Abzeichnen von Einzelverordnungen";
-            this.cbBedarfsmedikation.CheckedChanged += new System.EventHandler(this.cbBedarfsmedikation_CheckedChanged);
-            // 
-            // PanelFormulare
-            // 
-            this.PanelFormulare.Controls.Add(this.gridFormulare);
-            this.PanelFormulare.Location = new System.Drawing.Point(6, 195);
-            this.PanelFormulare.Name = "PanelFormulare";
-            this.PanelFormulare.Size = new System.Drawing.Size(391, 339);
-            this.PanelFormulare.TabIndex = 128;
-            this.PanelFormulare.Visible = false;
+            this.cbEintragTyp.ValueChanged += new System.EventHandler(this.cbEintragTyp_ValueChanged);
             // 
             // gridFormulare
             // 
@@ -891,31 +964,31 @@ namespace PMDS.GUI
             appearance3.BorderColor = System.Drawing.Color.Black;
             this.gridFormulare.DisplayLayout.Appearance = appearance3;
             this.gridFormulare.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
-            ultraGridColumn7.Header.Caption = "Auswahl";
-            ultraGridColumn7.Header.Editor = null;
-            ultraGridColumn7.Header.VisiblePosition = 0;
-            ultraGridColumn8.Header.Caption = "Formular";
-            ultraGridColumn8.Header.Editor = null;
-            ultraGridColumn8.Header.VisiblePosition = 1;
-            ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 2;
-            ultraGridColumn9.Hidden = true;
-            ultraGridColumn10.Header.Editor = null;
-            ultraGridColumn10.Header.VisiblePosition = 3;
-            ultraGridColumn10.Hidden = true;
-            ultraGridColumn11.Header.Editor = null;
-            ultraGridColumn11.Header.VisiblePosition = 4;
-            ultraGridColumn11.Hidden = true;
-            ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 5;
-            ultraGridColumn12.Hidden = true;
+            ultraGridColumn1.Header.Caption = "Auswahl";
+            ultraGridColumn1.Header.Editor = null;
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn2.Header.Caption = "Formular";
+            ultraGridColumn2.Header.Editor = null;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn3.Header.Editor = null;
+            ultraGridColumn3.Header.VisiblePosition = 2;
+            ultraGridColumn3.Hidden = true;
+            ultraGridColumn4.Header.Editor = null;
+            ultraGridColumn4.Header.VisiblePosition = 3;
+            ultraGridColumn4.Hidden = true;
+            ultraGridColumn5.Header.Editor = null;
+            ultraGridColumn5.Header.VisiblePosition = 4;
+            ultraGridColumn5.Hidden = true;
+            ultraGridColumn6.Header.Editor = null;
+            ultraGridColumn6.Header.VisiblePosition = 5;
+            ultraGridColumn6.Hidden = true;
             ultraGridBand1.Columns.AddRange(new object[] {
-            ultraGridColumn7,
-            ultraGridColumn8,
-            ultraGridColumn9,
-            ultraGridColumn10,
-            ultraGridColumn11,
-            ultraGridColumn12});
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn3,
+            ultraGridColumn4,
+            ultraGridColumn5,
+            ultraGridColumn6});
             ultraGridBand1.SummaryFooterCaption = "Summe";
             this.gridFormulare.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             appearance4.BackColor = System.Drawing.Color.Gainsboro;
@@ -995,35 +1068,17 @@ namespace PMDS.GUI
             this.dsKlientenliste1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsKlientenliste1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // panelDropDownFormulare
-            // 
-            this.panelDropDownFormulare.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelDropDownFormulare.Controls.Add(this.dropFormulare);
-            this.panelDropDownFormulare.Location = new System.Drawing.Point(120, 114);
-            this.panelDropDownFormulare.Name = "panelDropDownFormulare";
-            this.panelDropDownFormulare.Size = new System.Drawing.Size(380, 24);
-            this.panelDropDownFormulare.TabIndex = 130;
-            // 
-            // dropFormulare
-            // 
-            this.dropFormulare.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropFormulare.Location = new System.Drawing.Point(0, 0);
-            this.dropFormulare.Name = "dropFormulare";
-            this.dropFormulare.PopupItemKey = "PanelFormulare";
-            this.dropFormulare.PopupItemProvider = this.UltraPopupControlContainer_Formulare;
-            this.dropFormulare.Size = new System.Drawing.Size(378, 22);
-            this.dropFormulare.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
-            this.dropFormulare.TabIndex = 6;
-            // 
-            // UltraPopupControlContainer_Formulare
-            // 
-            this.UltraPopupControlContainer_Formulare.PopupControl = this.PanelFormulare;
-            // 
             // dsEintrag1
             // 
             this.dsEintrag1.DataSetName = "dsEintrag";
             this.dsEintrag1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsEintrag1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsPatientPflegestufe1
+            // 
+            this.dsPatientPflegestufe1.DataSetName = "dsPatientPflegestufe";
+            this.dsPatientPflegestufe1.Locale = new System.Globalization.CultureInfo("en-US");
+            this.dsPatientPflegestufe1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ucKatalog2
             // 
@@ -1040,14 +1095,16 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.chkEntferntJN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lvStProzeduren)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbMOhnezeitbezug)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsmedikation)).EndInit();
+            this.panelDropDownFormulare.ResumeLayout(false);
+            this.PanelFormulare.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbPflegestufenEinschaetzung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLinkDokument)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbEintragTyp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbBedarfsmedikation)).EndInit();
-            this.PanelFormulare.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridFormulare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsKlientenliste1)).EndInit();
-            this.panelDropDownFormulare.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsEintrag1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientPflegestufe1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -1080,6 +1137,10 @@ namespace PMDS.GUI
 			txtASZM.Text                    = r.Text;
 			txtWarnhinweis.Text             = r.Warnhinweis;
             cbEintragTyp.EintragTyp         = (EintragFlag)r.flag;
+            if (ENV.lic_PflegestufenEinsch‰tzung)
+            {
+                cbPflegestufenEinschaetzung.PSEKlasse = r.PSEKlasse;
+            }
             cbBedarfsmedikation.Checked     = r.BedarfsMedikationJN;
             cbMOhnezeitbezug.Checked        = r.OhneZeitBezug;
             this.chkEntferntJN.Checked = r.EntferntJN;
@@ -1162,9 +1223,13 @@ namespace PMDS.GUI
 
         private void ucKatalog2_Load(object sender, EventArgs e)
         {
-            if (DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
             cbEintragTyp.RefreshList();
+            if (ENV.lic_PflegestufenEinsch‰tzung)
+            {
+                cbPflegestufenEinschaetzung.RefreshList();
+            }
             cbLinkDokument.RefreshList();
 
             //Neu nach 11.06.2007 MDA
@@ -1205,7 +1270,7 @@ namespace PMDS.GUI
         {
             try
             {
-                if (e.Cell.Column.ToString().Trim().ToLower().Equals(this.dsKlientenliste1.tSelectSimple.SelectColumn.ColumnName.Trim().ToLower()))
+                if (generic.sEquals(e.Cell.Column, this.dsKlientenliste1.tSelectSimple.SelectColumn.ColumnName))
                 {
                     e.Cell.Activation = Activation.AllowEdit;
                 }
@@ -1234,6 +1299,16 @@ namespace PMDS.GUI
             }
         }
 
+        private void cbPflegestufenEinschaetzung_ValueChanged(object sender, EventArgs e)
+        {
+            if (ENV.lic_PflegestufenEinsch‰tzung)
+                DataChanged();
+        }
+
+        private void cbEintragTyp_ValueChanged(object sender, EventArgs e)
+        {
+            DataChanged();
+        }
 
         private void cbMOhnezeitbezug_CheckedChanged(object sender, EventArgs e)
         {

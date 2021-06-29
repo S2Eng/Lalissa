@@ -129,7 +129,7 @@ namespace PMDS.GUI
             this.labInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labInfo.Location = new System.Drawing.Point(0, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(550, 48);
+            this.labInfo.Size = new System.Drawing.Size(642, 48);
             this.labInfo.TabIndex = 4;
             this.labInfo.Text = "Termin";
             // 
@@ -139,7 +139,7 @@ namespace PMDS.GUI
             this.ucPflegePlanSingleEdit1.Location = new System.Drawing.Point(0, 88);
             this.ucPflegePlanSingleEdit1.Name = "ucPflegePlanSingleEdit1";
             this.ucPflegePlanSingleEdit1.ReadOnly = false;
-            this.ucPflegePlanSingleEdit1.Size = new System.Drawing.Size(584, 491);
+            this.ucPflegePlanSingleEdit1.Size = new System.Drawing.Size(630, 491);
             this.ucPflegePlanSingleEdit1.TabIndex = 1;
             this.ucPflegePlanSingleEdit1.TransferMode = false;
             // 
@@ -156,7 +156,7 @@ namespace PMDS.GUI
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(387, 598);
+            this.btnCancel.Location = new System.Drawing.Point(479, 598);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 28);
             this.btnCancel.TabIndex = 3;
@@ -179,7 +179,7 @@ namespace PMDS.GUI
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(477, 598);
+            this.btnOK.Location = new System.Drawing.Point(569, 598);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(61, 28);
             this.btnOK.TabIndex = 2;
@@ -324,7 +324,7 @@ namespace PMDS.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(550, 633);
+            this.ClientSize = new System.Drawing.Size(642, 633);
             this.Controls.Add(this.PanelDekursEntwürfe);
             this.Controls.Add(this.uDropDownDekursEntwürfe);
             this.Controls.Add(this.btnDekursErstellen);
