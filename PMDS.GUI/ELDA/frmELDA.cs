@@ -28,7 +28,7 @@ namespace PMDS.GUI.ELDA
             }
             catch (Exception ex)
             {
-
+                //Nichts tun.
             }
         }
 
@@ -36,7 +36,7 @@ namespace PMDS.GUI.ELDA
         {
             try
             {
-                if (File.Exists(txtXlsx.Text) && CheckDirWritable(txtTxt.Text))
+                if (File.Exists(txtXlsx.Text) && PMDS.Global.generic.CheckDirWritable(txtTxt.Text))
                 {
                     btnStart.Enabled = true;
                 }
@@ -47,26 +47,7 @@ namespace PMDS.GUI.ELDA
             }
             catch (Exception ex)
             {
-
-            }
-
-        }
-
-        private bool CheckDirWritable (string filename)
-        {
-            try
-            {
-                if (String.IsNullOrWhiteSpace(filename))
-                    return false;
-
-                PermissionSet permissionSet = new PermissionSet(PermissionState.None);
-                FileIOPermission writePermission = new FileIOPermission(FileIOPermissionAccess.Write, Path.GetDirectoryName(filename));
-                permissionSet.AddPermission(writePermission);
-                return permissionSet.IsSubsetOf(AppDomain.CurrentDomain.PermissionSet);
-            }
-            catch (Exception ex)
-            {
-                return false;
+                //Nichts tun.
             }
         }
 

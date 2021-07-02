@@ -1587,6 +1587,12 @@
     <Compile Include="PatientUserPicker\contPatientUserPicker.Designer.cs">
       <DependentUpon>contPatientUserPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="PflegestufenEinschaetzung\frmPflegestufenEinschaetzung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PflegestufenEinschaetzung\frmPflegestufenEinschaetzung.Designer.cs">
+      <DependentUpon>frmPflegestufenEinschaetzung.cs</DependentUpon>
+    </Compile>
     <Compile Include="PMDSBusinessUI.cs" />
     <Compile Include="PMDSClient\PMDSClientWrapper.cs" />
     <Compile Include="PMDSClient\LogIn\frmLoginClient.cs">
@@ -4343,6 +4349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pflegeplan\ucPdx2.resx">
       <DependentUpon>ucPdx2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PflegestufenEinschaetzung\frmPflegestufenEinschaetzung.resx">
+      <DependentUpon>frmPflegestufenEinschaetzung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PMDSClient\LogIn\frmLoginClient.resx">
       <DependentUpon>frmLoginClient.cs</DependentUpon>

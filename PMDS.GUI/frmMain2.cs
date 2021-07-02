@@ -741,6 +741,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool24 = new Infragistics.Win.UltraWinToolbars.ButtonTool("HistorieKlient");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool36 = new Infragistics.Win.UltraWinToolbars.ButtonTool("DatenarchivierungKlient");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool176 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnVerordnungen2");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool191 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPSE");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool102 = new Infragistics.Win.UltraWinToolbars.ButtonTool("PrintBrief");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool103 = new Infragistics.Win.UltraWinToolbars.ButtonTool("PrintPflegeBegleitschreiben");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool104 = new Infragistics.Win.UltraWinToolbars.ButtonTool("RezepteVerwalten");
@@ -817,6 +818,7 @@ namespace PMDS
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool187 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnELGAPasswortÄndern");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool189 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoPauschale");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool190 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnAbrechnungInkoProdukte");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool192 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btnPSE");
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -1137,7 +1139,8 @@ namespace PMDS
             buttonTool100,
             buttonTool24,
             buttonTool36,
-            buttonTool176});
+            buttonTool176,
+            buttonTool191});
             buttonTool102.SharedPropsInternal.Caption = "Pflegebrief";
             buttonTool103.SharedPropsInternal.Caption = "Pflegebegleitschreiben";
             buttonTool104.SharedPropsInternal.Caption = "Ärztliche Verordnungen";
@@ -1221,6 +1224,7 @@ namespace PMDS
             buttonTool187.SharedPropsInternal.Caption = "ELGA-Passwort ändern";
             buttonTool189.SharedPropsInternal.Caption = "Abrechnung Inko-Pauschale";
             buttonTool190.SharedPropsInternal.Caption = "Abrechnung Inko-Produkt-Pauschale";
+            buttonTool192.SharedPropsInternal.Caption = "Pflegestufen-Einschätzung";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             popupMenuTool9,
             buttonTool7,
@@ -1338,7 +1342,8 @@ namespace PMDS
             buttonTool185,
             buttonTool187,
             buttonTool189,
-            buttonTool190});
+            buttonTool190,
+            buttonTool192});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
             // 
             // _frmBase_Toolbars_Dock_Area_Right
@@ -2816,6 +2821,13 @@ namespace PMDS
                         frmMedikamenteSuche1.initControl();
                         frmMedikamenteSuche1.Show();
                         break;
+
+                    case "btnPSE":
+                        using (PMDS.GUI.PflegestufenEinschaetzung.frmPflegestufenEinschaetzung frmPSE = new PMDS.GUI.PflegestufenEinschaetzung.frmPflegestufenEinschaetzung())
+                        {
+                            frmPSE.ShowDialog(this);
+                            break;
+                        }
 
                     default:
                         // prüfen auf Notfall

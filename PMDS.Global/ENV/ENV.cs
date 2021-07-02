@@ -586,7 +586,7 @@ namespace PMDS.Global
 
         public static string getAdditionalFolder()
         {
-            return !ENV.SimpleInstall.Trim().Equals("1") ? "PMDS" : "";
+            return !generic.sEquals(ENV.SimpleInstall, "1") ? "PMDS" : "";
         }
 
         public static bool CallFctMainSystem(PMDS.Calc.Logic.calculation.eTypeMainFct TypeMainFct, ref PMDS.Calc.Logic.calculation.retMainSystem retMainSystem1)

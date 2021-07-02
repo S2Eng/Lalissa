@@ -9,6 +9,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Security;
+using System.Security.Permissions;
 
 namespace PMDS.Global
 {
@@ -296,6 +298,23 @@ namespace PMDS.Global
             }
         }
 
+        public static bool CheckDirWritable(string filename)
+        {
+            try
+            {
+                if (String.IsNullOrWhiteSpace(filename))
+                    return false;
+
+                PermissionSet permissionSet = new PermissionSet(PermissionState.None);
+                FileIOPermission writePermission = new FileIOPermission(FileIOPermissionAccess.Write, Path.GetDirectoryName(filename));
+                permissionSet.AddPermission(writePermission);
+                return permissionSet.IsSubsetOf(AppDomain.CurrentDomain.PermissionSet);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         //public static void CheckMemorySizeProcess(bool adminSecure, long MaxSizeMemory)
         //{
         //    try
