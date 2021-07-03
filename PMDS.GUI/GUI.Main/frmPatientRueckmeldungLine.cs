@@ -225,6 +225,7 @@ namespace PMDS.GUI
 
                         uc.ResetIgnoreLine();
                         uc.ResetMorgenWieder();
+                        //uc.ResetDauerBackColor();
 
                         uc.auswahlGruppeComboMulti1.clearSelectedNodes();
 

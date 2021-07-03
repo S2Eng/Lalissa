@@ -1417,8 +1417,17 @@ namespace PMDS.GUI
                 return;
 
             GuiUtil.ValidateRequired(dtpZeitpunkt);
-            //GuiUtil.ValidateRequired(txtIstDauer);
             GuiUtil.ValidateRequired(cbMassnahme);
+
+            if (ENV.lic_PflegestufenEinschätzung)
+            {
+                GuiUtil.ValidateRequired(txtIstDauer);
+            }
+            else
+            {
+                txtIstDauer.Appearance.BackColor = ENVCOLOR.EINTRAG_CURRENT_BACK_COLOR;
+            }
+
             if (!TXTBESCHREIBUNG_OPTIONAL)
             {
                 GuiUtil.ValidateRequired(txtBeschreibungLine);

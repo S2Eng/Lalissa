@@ -114,8 +114,8 @@
             // txtIstDauer
             // 
             this.txtIstDauer.ContextMenuStrip = null;
-            this.txtIstDauer.Location = new System.Drawing.Point(1031, 159);
-            this.txtIstDauer.Visible = false;
+            this.txtIstDauer.Location = new System.Drawing.Point(650, 57);
+            this.txtIstDauer.Size = new System.Drawing.Size(59, 23);
             // 
             // cbBedarfsMedikament
             // 
@@ -219,14 +219,13 @@
             // 
             // lblDauer2
             // 
-            this.lblDauer2.Location = new System.Drawing.Point(969, 156);
+            this.lblDauer2.Location = new System.Drawing.Point(588, 54);
             this.lblDauer2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDauer2.Name = "lblDauer2";
             this.lblDauer2.Size = new System.Drawing.Size(60, 25);
             this.lblDauer2.TabIndex = 50;
             this.lblDauer2.Text = "Dauer";
             this.lblDauer2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblDauer2.Visible = false;
             // 
             // lblMed
             // 

@@ -56,6 +56,11 @@ namespace PMDS.GUI
             this.MorgenWieder = false;
         }
 
+        public void ResetDauerBackColor()
+        {
+            this.txtIstDauer.Appearance.BackColor = Color.White;
+        }
+
 
         public void SetTerminString(string s, bool TerminStringVisible)
         {
