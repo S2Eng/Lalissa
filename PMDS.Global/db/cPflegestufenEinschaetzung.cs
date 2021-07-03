@@ -19,6 +19,7 @@ namespace PMDS.Global.db
         {
             public string KlientNachname { get; set; }
             public string KlientVorname { get; set; }
+            public string Geburtsdatum {get;set;}
             public string Abteilung { get; set; }
             public DateTime Zeitpunkt { get; set; }
             public string Maßahme { get; set; }
@@ -40,7 +41,9 @@ namespace PMDS.Global.db
             public DateTime dtBis { get; set; }
             public string KlientNachname { get; set; }
             public string KlientVorname { get; set; }
+            public string Geburtsdatum { get; set; }
             public string Abteilung { get; set; }
+            public string ErstelltVon { get; set; }
             public Guid IDAufenthalt { get; set; }
             public Guid IDAbteilung { get; set; }
             public Guid IDKlient { get; set; }
@@ -58,30 +61,48 @@ namespace PMDS.Global.db
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     var rAufenthalt = (from a in db.vAufenthaltsliste
-                                        where a.IDAufenthalt == p.IDAufenthalt
+                                       where a.IDAufenthalt == p.IDAufenthalt
+                                       select new
+                                       {
+                                           KlientNachname = a.Nachname.Trim(),
+                                           KlientVorname = a.Vorname.Trim(),
+                                           Geburtsdatum = a.Geburtsdatum,
+                                           Abteilung = a.Abteilung.Trim(),
+                                           IDAufenthalt = a.IDAufenthalt,
+                                           IDAbteilung = a.IDAbteilung,
+                                           IDKlient = a.IDPatient
+                                       }).FirstOrDefault();
+                    
+                    var rErstelltVon = (from ben in db.Benutzer
+                                        where ben.ID == ENV.USERID
                                         select new
                                         {
-                                            KlientNachname = a.Nachname.Trim(),
-                                            KlientVorname = a.Vorname.Trim(),
-                                            Abteilung = a.Abteilung.Trim(),
-                                            IDAufenthalt = a.IDAufenthalt,
-                                            IDAbteilung = a.IDAbteilung,
-                                            IDKlient = a.IDPatient
+                                            ErstelltVon = (ben.Vorname.Trim() + " " + ben.Nachname.Trim()).Trim(),                                            
                                         }).FirstOrDefault();
 
                     if (rAufenthalt != null)
                     {
                         p.KlientNachname = rAufenthalt.KlientNachname;
                         p.KlientVorname = rAufenthalt.KlientVorname;
+                        p.Geburtsdatum = rAufenthalt.Geburtsdatum;
                         p.Abteilung = rAufenthalt.Abteilung;
                         p.IDAbteilung = rAufenthalt.IDAbteilung == null ? Guid.Empty : (Guid)rAufenthalt.IDAbteilung;
                         p.IDKlient = rAufenthalt.IDKlient;
-                        p.IsInit = true;
-                        SetResult(ref p);
+
+                        if (rErstelltVon != null)
+                        {
+                            p.ErstelltVon = rErstelltVon.ErstelltVon;
+                            p.IsInit = true;
+                            SetResult(ref p);
+                        }
+                        else
+                        {
+                            SetResult(ref p, false, "Init: Aktueller Benutzer nicht gefunden.");
+                        }
                     }
                     else
                     {
-                        SetResult(ref p, false, "Init: Aufenthalt nicht gefunden");
+                        SetResult(ref p, false, "Init: Aufenthalt nicht gefunden.");
                     }
                 }
                 return p;
@@ -110,6 +131,7 @@ namespace PMDS.Global.db
                                           {
                                               KlientNachname = a.Nachname.Trim(),
                                               KlientVorname = a.Vorname.Trim(),
+                                              Geburtsdatum = a.Geburtsdatum,
                                               Abteilung = a.Abteilung.Trim(),
                                               Zeitpunkt = (DateTime)pe.DatumErstellt,
                                               Maßahme = pe.PflegeplanText.Trim() ?? "",
@@ -125,7 +147,7 @@ namespace PMDS.Global.db
                                               IDAbteilung = a.IDAbteilung,
                                               IDBereich = a.IDBereich,
                                               IDKlient = a.IDPatient
-                                          }).ToList();
+                                          }).OrderBy(pe => pe.PSEKlasse).ThenBy(pe => pe.Zeitpunkt).ToList();
 
                         if (tMeldungen != null)
                         {
@@ -136,6 +158,7 @@ namespace PMDS.Global.db
                                 PSEMeldung pseM = new PSEMeldung();
                                 pseM.KlientNachname = m.KlientNachname;
                                 pseM.KlientVorname = m.KlientVorname;
+                                pseM.Geburtsdatum = m.Geburtsdatum;
                                 pseM.Abteilung = m.Abteilung;
                                 pseM.Zeitpunkt = m.Zeitpunkt;
                                 pseM.Maßahme = m.Maßahme;
@@ -246,7 +269,7 @@ namespace PMDS.Global.db
                                     //Spalten Zeitpunkt, Maßnahme, Dekurs, IstDauer, Pflegeplandauer, Benutzer in Ax - Fx schreiben
                                     //Formel in D4 =SUMME(A7:Ax) aktualisieren
 
-                                    IWorksheet ws = worksheets[24];
+                                    IWorksheet ws = worksheets[24];     //Standard, wenn keine passende Klasse gefunden wurde
                                     string[] strParts = m.PSEKlasse.Split('.');
                                     if (strParts.Length >= 2)
                                     {
@@ -277,7 +300,10 @@ namespace PMDS.Global.db
                                     }
                                 }
 
-                                //worksheets[0].Range["H6"].Value = "TEST";
+                                worksheets[0].Range["A2"].Value = "Klientenname: " + p.KlientVorname + " " + p.KlientNachname;
+                                worksheets[0].Range["E2"].Value = "geb.: " + p.Geburtsdatum;
+                                worksheets[0].Range["A3"].Value = "Erstellt von: " + p.ErstelltVon;
+                                worksheets[0].Range["E3"].Value = "am: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
 
                                 workbook.Save();                                
                                 if (IsExcelInstalled())
