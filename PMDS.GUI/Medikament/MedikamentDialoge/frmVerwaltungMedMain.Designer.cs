@@ -32,7 +32,6 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            this.ucVerwaltungMedTabelle1 = new PMDS.GUI.ucVerwaltungMedTabelle();
             this.btnImport = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnAbort = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnSave = new QS2.Desktop.ControlManagment.BaseButton();
@@ -42,20 +41,10 @@
             this.btnDeleteMedikamenteNotUsed = new QS2.Desktop.ControlManagment.BaseButton();
             this.lblStatus = new Infragistics.Win.Misc.UltraLabel();
             this.chkELGATranslate = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.ucVerwaltungMedTabelle1 = new PMDS.GUI.ucVerwaltungMedTabelle();
             ((System.ComponentModel.ISupportInitialize)(this.cboImportType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkELGATranslate)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ucVerwaltungMedTabelle1
-            // 
-            this.ucVerwaltungMedTabelle1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucVerwaltungMedTabelle1.BackColor = System.Drawing.Color.White;
-            this.ucVerwaltungMedTabelle1.Location = new System.Drawing.Point(2, 3);
-            this.ucVerwaltungMedTabelle1.Name = "ucVerwaltungMedTabelle1";
-            this.ucVerwaltungMedTabelle1.Size = new System.Drawing.Size(953, 511);
-            this.ucVerwaltungMedTabelle1.TabIndex = 0;
             // 
             // btnImport
             // 
@@ -140,14 +129,14 @@
             this.btnDeleteMedikamenteNotUsed.Name = "btnDeleteMedikamenteNotUsed";
             this.btnDeleteMedikamenteNotUsed.Size = new System.Drawing.Size(144, 33);
             this.btnDeleteMedikamenteNotUsed.TabIndex = 17;
-            this.btnDeleteMedikamenteNotUsed.Text = "Nicht verwendete Medikamente löschen";
+            this.btnDeleteMedikamenteNotUsed.Text = "Veraltete Einträge löschen";
             this.btnDeleteMedikamenteNotUsed.Click += new System.EventHandler(this.btnDeleteMedikamenteNotUsed_Click);
             // 
             // lblStatus
             // 
             this.lblStatus.Location = new System.Drawing.Point(90, 562);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(441, 21);
+            this.lblStatus.Size = new System.Drawing.Size(781, 17);
             this.lblStatus.TabIndex = 18;
             // 
             // chkELGATranslate
@@ -157,6 +146,17 @@
             this.chkELGATranslate.Size = new System.Drawing.Size(137, 19);
             this.chkELGATranslate.TabIndex = 19;
             this.chkELGATranslate.Text = "ELGA-MEH benutzen";
+            // 
+            // ucVerwaltungMedTabelle1
+            // 
+            this.ucVerwaltungMedTabelle1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucVerwaltungMedTabelle1.BackColor = System.Drawing.Color.White;
+            this.ucVerwaltungMedTabelle1.Location = new System.Drawing.Point(2, 3);
+            this.ucVerwaltungMedTabelle1.Name = "ucVerwaltungMedTabelle1";
+            this.ucVerwaltungMedTabelle1.Size = new System.Drawing.Size(953, 511);
+            this.ucVerwaltungMedTabelle1.TabIndex = 0;
             // 
             // frmMedikamentenVerwaltung
             // 

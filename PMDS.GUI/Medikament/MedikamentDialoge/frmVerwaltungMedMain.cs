@@ -186,13 +186,14 @@ namespace PMDS.GUI
                     int iCounterDeleted = 0;
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        this.b.deleteNotUsedMedikamente(ref iCounterDeleted, db);
+                        this.b.deleteNotUsedMedikamente(ref iCounterDeleted, db, ref this.lblStatus);
                         this.ucVerwaltungMedTabelle1.ProcessSearch();
                     }
 
                     string txtmsgBox = QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} Medikamente wurden gelöscht!");
                     txtmsgBox = string.Format(txtmsgBox, iCounterDeleted.ToString());
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(txtmsgBox, "PMDS", MessageBoxButtons.OK, true);
+                    lblStatus.Text = "";
                 }   
 
 

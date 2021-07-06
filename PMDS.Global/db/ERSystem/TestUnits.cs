@@ -666,7 +666,8 @@ namespace PMDS.Global.db.ERSystem
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente deaktiviert: ");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet.");
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert.");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert. Dies kann eine Weile dauern...");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("Veraltete Datensätze werden gesucht. Dies kann eine Weile dauern...");
 
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Soz.Vers.Nr: Eingabe erforderlich!", "", MessageBoxButtons.OK);
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Patientensuche");

@@ -71,7 +71,8 @@ namespace PMDS.Global
                             ref string FileName, ref string FromNetworkDrive)
         {
             try
-            {
+            { 
+            
                 this.DBMedikamentUpdate.initControl();
                 this.dsMedikamentUpdate.Clear();
                 this.DBMedikamentUpdate.getMedikament(System.Guid.NewGuid(), this.dsMedikamentUpdate, DBMedikament.eTypeSelMedikament.ID, "", "");
@@ -82,7 +83,7 @@ namespace PMDS.Global
 
                 datStart = DateTime.Now;
                 string sFile = "";
-                if (FromNetworkDrive.Trim().Equals(("file").Trim(), StringComparison.CurrentCultureIgnoreCase))
+                if (generic.sEquals(FromNetworkDrive,"file"))
                 {
                     sFile = System.IO.File.ReadAllText(System.IO.Path.Combine( ENV.ftpFileImportMedikamente, FileName));
                 }
@@ -106,7 +107,7 @@ namespace PMDS.Global
 
                 foreach (string line in aImport)
                 {                    
-                    setStatus(LineNr++, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet." + " (" + lines.ToString() + ")"));
+                    setStatus(LineNr++, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze verarbeitet." + " (" + lines.ToString() + ")"), false);
 
                     if (!String.IsNullOrEmpty(line))
                     {
@@ -126,43 +127,53 @@ namespace PMDS.Global
                         int iMonth = System.Convert.ToInt32(val_Gültigkeitsdatum.Substring(0, 2));
                         DateTime datGültigkeitsdatum = new DateTime(iYear, iMonth, 1);
 
-                        if (val_EXT_ID != "")
+                        if (!string.IsNullOrWhiteSpace(val_EXT_ID))
                         {
                             this.dsMedikamentUpdate.Clear();
                             this.dsMedikamentUpdateExisting.Clear();
                             this.DBMedikamentUpdateExisting.getMedikament(System.Guid.Empty, this.dsMedikamentUpdateExisting, DBMedikament.eTypeSelMedikament.ExternIDOrderByGültigkeitsdatumDesc, val_EXT_ID, "");
 
-                            // Es darf nicht mehr als einen aktiven Eintrag pro Ext_ID geben!
-                            if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1)
-                            {
-                                throw new Exception("ImportMedDaten.run: this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 1 for IDExtern='" + val_EXT_ID + "'!");
-                            }
-
                             lstImport_ExtID.Add(val_EXT_ID); //alle EXT_IDs aus ImportFile sammeln (fürs Deaktivieren von nicht mehr vorhandenen Medikamenten in der DB) bei Gesamtimport
 
                             bool bAddNewMedikament = false;
+                            int AnzahlAlteMedikamente = 0;
                             dsMedikament.MedikamentRow rNewMedikmant = null;
-                            if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count == 1) //Update bestehendes Medikament
+                            if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count >= 1) //Update bestehendes Medikament
                             {                                
                                 dsMedikament.MedikamentRow rExistingMedikmant = (dsMedikament.MedikamentRow)this.dsMedikamentUpdateExisting.Medikament.Rows[0];
                                 rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
 
-                                var rAktuell = dsMedikamentUpdateExisting.Medikament.First();                                
-                                if (rAktuell.IsGültigkeitsdatumNull() || rAktuell.Gültigkeitsdatum < datGültigkeitsdatum) //Neueres Gültigkeitsdatum gefunden
+                                foreach (dsMedikament.MedikamentRow rAktuell in dsMedikamentUpdateExisting.Medikament.Rows)
                                 {
-                                    rAktuell.Aktuell = false;
+                                    if (rAktuell.Aktuell) 
+                                    {
+                                        if (rAktuell.IsGültigkeitsdatumNull() || rAktuell.Gültigkeitsdatum < datGültigkeitsdatum) //Aktuelle mit älterem Gültigkeitsdatum gefunden -> nicht aktuell setzen
+                                        {
+                                            rAktuell.Aktuell = false;
+                                            CountDeactivated++;
+                                            AnzahlAlteMedikamente++;
+                                        }
+                                    }
+                                }
+                                if (AnzahlAlteMedikamente == dsMedikamentUpdateExisting.Medikament.Rows.Count)  //Es gibt kein aktuelles Medikament, alle (bisher) aktuellen Einträge sind älter
+                                {
                                     bAddNewMedikament = true;
                                 }
                             }
-                            else if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count == 0)  // Neues Medikament
+                            else   // Neues Medikament
                             {                               
                                 bAddNewMedikament = true;
                             }
 
                             if (bAddNewMedikament)
                             {
-                                rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
-
+                                if (this.dsMedikamentUpdate.Medikament.Count == 1)
+                                    rNewMedikmant = this.dsMedikamentUpdate.Medikament.First();
+                                else
+                                {
+                                    dsMedikamentUpdate.Medikament.Clear();
+                                    rNewMedikmant = this.DBMedikamentUpdate.New(this.dsMedikamentUpdate.Medikament);
+                                }
                                 rNewMedikmant.EXT_ID = val_EXT_ID.Trim();
                                 rNewMedikmant.Kassenzeichen = val_Kassenzeichen;
                                 rNewMedikmant.Zulassungsnummer = this.getVar(ref vars.Zulassungsnummer, line);
@@ -178,10 +189,8 @@ namespace PMDS.Global
                                 else
                                     rNewMedikmant.Packungseinheit = this.getVar(ref vars.Packungseinheit, line);
 
-                                if (rNewMedikmant.Packungseinheit.Equals("ST", StringComparison.CurrentCultureIgnoreCase) || rNewMedikmant.Packungseinheit.Equals("Stück", StringComparison.CurrentCultureIgnoreCase))
+                                if (generic.sEquals(rNewMedikmant.Packungseinheit, "ST") || generic.sEquals(rNewMedikmant.Packungseinheit, "Stück"))
                                     rNewMedikmant.Herrichten = (int)medHerrichten.langfristig;
-
-                                //string val_LastVar = this.getVar(ref vars.LastVar, line);
 
                                 rNewMedikmant.ImportiertAm = datStart;
                                 rNewMedikmant.Importiert = true;
@@ -197,12 +206,21 @@ namespace PMDS.Global
                     }
                 }
 
-                if (FileName == "APGDA.001")
+                //Leere Einträge löschen (Fehler in früherer Version beheben, wo irrtümlich leere Einträge erzeugt wurden)
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {                    
+                    db.Database.ExecuteSqlCommand("DELETE FROM Medikament WHERE Bezeichnung = ''");
+                    db.SaveChanges();
+                }
+
+                if (generic.sEquals(FileName, "APGDA.001"))
                 {
                     //os: 30-09-2019: Bereits importierte, aber im aktuellen Katalog nicht mehr vorhandene Einträge auf inaktiv setzen
                     //für jedes Medikament (importiert = 1, Aktuell = 1) prüfen, ob das Medikament im File enthalten ist. Wenn nein -> Aktuell auf 0 setzen.
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
+                        setStatus(-1, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Veraltete Datensätze werden gesucht. Dies kann eine Weile dauern..."),true);
+
                         var medToCheck = db.Medikament.Where(m => m.Importiert == true && m.Aktuell == true).ToList();
 
                         //Alle aktiven, importierten Rows, die in medToCheck sind, aber nicht im Importfile
@@ -210,14 +228,14 @@ namespace PMDS.Global
                                          where !(from o in lstImport_ExtID select o).Contains(c.EXT_ID)
                                          select c).ToList();
 
-                        CountDeactivated = medUpdate.Count();   //Extra, damit die Anzahl der deaktivierten Rows zurückgegeben werden kann.
-                        setStatus(CountDeactivated, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert."));
+                        CountDeactivated += medUpdate.Count;   //Extra, damit die Anzahl der deaktivierten Rows zurückgegeben werden kann.
+                        setStatus(CountDeactivated, lbl, QS2.Desktop.ControlManagment.ControlManagment.getRes("Datensätze werden deaktiviert. Dies kann eine Weile dauern..."), true);
                         medUpdate.ForEach(x => x.Aktuell = false);
                         db.SaveChanges();
                     }
                 }
 
-                setStatus(0, lbl, "");
+                setStatus(0, lbl, "", true);
                 datEnd = DateTime.Now;
                 return true;
             }
@@ -227,13 +245,13 @@ namespace PMDS.Global
             }
         }
 
-        public void setStatus(int i, Infragistics.Win.Misc.UltraLabel lbl, string txt)
+        public void setStatus(int i, Infragistics.Win.Misc.UltraLabel lbl, string txt, bool bForceMsg)
         {
-            if (i % 100 == 0 || txt == "")
+            if (i % 100 == 0 || string.IsNullOrWhiteSpace(txt) || i < 0 || bForceMsg)
             {
                 if (lbl != null)
                 {
-                    string sText = (txt == "" ? "" :  (i.ToString() + " " + txt).Trim());
+                    string sText = (string.IsNullOrWhiteSpace(txt) ? "" :  ((i >= 0 ? i.ToString() : "") + " " + txt).Trim());
                     lbl.Invoke((MethodInvoker)delegate { lbl.Text = sText; });
                 }
                 Application.DoEvents();
@@ -258,31 +276,26 @@ namespace PMDS.Global
         {
             try
             {
-                WebClient request = new WebClient();
-                request.Credentials = new NetworkCredential(ENV.ftpUserName.Trim(), ENV.ftpPassword.Trim());
-
-                if (ENV.ProxyJN)
+                using (WebClient request = new WebClient())
                 {
-                    WebProxy wProxy = new WebProxy();
-                    CredentialCache cc = new CredentialCache();
-                    NetworkCredential nc = new NetworkCredential(ENV.ProxyUserName.Trim(), ENV.ProxyPassword.Trim(), ENV.ProxyDomain.Trim());
-                    cc.Add(ENV.ProxyHost.Trim(), ENV.ProxyPort, ENV.ProxyAuthentication.Trim(), nc);
-                    //cc.Add("http://myProxy.domain.local", 8080, "Basic", nc);
-                    wProxy.Credentials = cc;
-                    request.Proxy = wProxy;
+                    request.Credentials = new NetworkCredential(ENV.ftpUserName.Trim(), ENV.ftpPassword.Trim());
+
+                    if (ENV.ProxyJN)
+                    {
+                        WebProxy wProxy = new WebProxy();
+                        CredentialCache cc = new CredentialCache();
+                        NetworkCredential nc = new NetworkCredential(ENV.ProxyUserName.Trim(), ENV.ProxyPassword.Trim(), ENV.ProxyDomain.Trim());
+                        cc.Add(ENV.ProxyHost.Trim(), ENV.ProxyPort, ENV.ProxyAuthentication.Trim(), nc);
+                        //cc.Add("http://myProxy.domain.local", 8080, "Basic", nc);
+                        wProxy.Credentials = cc;
+                        request.Proxy = wProxy;
+                    }
+                    else
+                        request.Proxy = null;
+
+                    sFile = request.DownloadString(ENV.ftpFileImportMedikamente + "//" + FileName);
+                    return true;
                 }
-                else
-                    request.Proxy = null;
-
-                //byte[] fileData = request.DownloadData(this.ftpFilePath);
-                sFile = request.DownloadString(ENV.ftpFileImportMedikamente + "//" + FileName);
-
-                //FileStream file = File.Create(this.inputFilePath);
-                //file.Write(fileData, 0, fileData.Length);
-                //file.Close();
-                //sFile = this.bytesToString(fileData);
-
-                return true;
             }
             catch (Exception ex)
             {

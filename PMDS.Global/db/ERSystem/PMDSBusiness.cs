@@ -11255,59 +11255,38 @@ namespace PMDS.DB
             }
         }
 
-        public void deleteNotUsedMedikamente(ref int iCounterDeletedBack, PMDS.db.Entities.ERModellPMDSEntities db)
+        public void deleteNotUsedMedikamente(ref int iCounterDeletedBack, PMDS.db.Entities.ERModellPMDSEntities db, ref Infragistics.Win.Misc.UltraLabel lbl)
         {
             try
             {
-                string sqlCmd = " Select Bezeichnung as Medikament, ID as IDMedikament from Medikament where Importiert=1 and Aktuell=0 and " + 
-                                " (Not ID in (Select IDMedikament from RezeptEintrag)) and " + 
-                                " (Not ID in (Select IDMedikament from VO)) and " + 
-                                " (Not ID in (Select IDMedikament from VO_Bestelldaten)) and " + 
-                                " (Not ID in (Select IDMedikament from VO_Bestellpostitionen))  " + 
-                                " order by Bezeichnung asc ";
+                PMDS.Global.ImportMedDaten ImportMedDaten1 = new PMDS.Global.ImportMedDaten();
+                ImportMedDaten1.setStatus(-1, lbl, "Löschbare Datensätze werden gesucht.", true);
 
-                DataTable dt = new DataTable();
-                OleDbDataAdapter da = new OleDbDataAdapter();
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandText = sqlCmd;
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                da.SelectCommand = cmd;
-                da.Fill(dt);
+                iCounterDeletedBack = (from m in db.Medikament
+                                    where m.Importiert == true &&
+                                    m.Aktuell == false &&
+                                    !(from re in db.RezeptEintrag where re.IDMedikament == m.ID select re).Any() &&
+                                    !(from vo in db.VO where vo.IDMedikament == m.ID select vo).Any() &&
+                                    !(from vobd in db.VO_Bestelldaten where vobd.IDMedikament == m.ID select vobd).Any() &&
+                                    !(from vobp in db.VO_Bestellpostitionen where vobp.IDMedikament == m.ID select vobp).Any() &&
+                                    !(from vobp1 in db.VO_Bestellpostitionen where vobp1.IDMedikamentGeliefert == m.ID select vobp1).Any()
+                                    select m).Count();
 
-                if (dt.Rows.Count > 0)
+                ImportMedDaten1.setStatus(iCounterDeletedBack, lbl, "löschbare Datensätze gefunden.", true);
+
+                if (iCounterDeletedBack > 0)
                 {
-                    int iCounterDeletedTmp = 0;
-                    foreach(DataRow rMedikament in dt.Rows)
-                    {
-                        OleDbCommand cmdDelete = new OleDbCommand();
-                        cmdDelete.CommandText = " Delete from Medikament where ID='" + rMedikament["IDMedikament"].ToString() + "' ";
-                        cmdDelete.CommandTimeout = 0;
-                        if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                            RBU.DataBase.CONNECTION.Open();
-                        cmdDelete.Connection = RBU.DataBase.CONNECTION;
-                        cmdDelete.ExecuteNonQuery();
+                    string sqlCount = " DELETE from Medikament where Importiert=1 and Aktuell=0 and " +
+                        " ID NOT IN (Select IDMedikament from RezeptEintrag) and " +
+                        " ID NOT IN (Select IDMedikament from VO) and " +
+                        " ID NOT IN (Select IDMedikament from VO_Bestelldaten) and " +
+                        " ID NOT IN (Select IDMedikament from VO_Bestellpostitionen) and " +
+                        " ID NOT IN (Select IDMedikamentGeliefert from VO_Bestellpostitionen)  ";
 
-                        iCounterDeletedTmp += 1;
-                    }
-
-                    iCounterDeletedBack = iCounterDeletedTmp;
+                    db.Database.ExecuteSqlCommand(sqlCount);
+                    db.SaveChanges();
+                    ImportMedDaten1.setStatus(iCounterDeletedBack, lbl, "Datensätze gelöscht.", true);
                 }
-
-                //DbParameter[] pars11 = new DbParameter[]
-                //{
-                //};
-
-                //IEnumerable<cMedikament> tMedikamenteNotUsed = db.Database.SqlQuery<cMedikament>(sqlCmd, pars11);
-
-                //iCounterDeleted = tMedikamenteNotUsed.Count();
-                //foreach (var rMedikamentNotUsed in tMedikamenteNotUsed)
-                //{
-                //    string sMedikament = rMedikamentNotUsed.Medikament.Trim();
-                //}
-
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
