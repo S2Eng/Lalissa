@@ -44,6 +44,7 @@ namespace PMDS.Global
         {
             public VariableFile EXT_ID = new VariableFile(2, 8);
             public VariableFile Zulassungsnummer = new VariableFile(9, 18);
+            public VariableFile Veraenderungscode = new VariableFile(19, 19);
             public VariableFile Gültigkeitsdatum = new VariableFile(20, 23);
             public VariableFile Lagervorschrift = new VariableFile(62, 62);
             public VariableFile Bezeichnung = new VariableFile(67, 94);
@@ -85,7 +86,13 @@ namespace PMDS.Global
                 string sFile = "";
                 if (generic.sEquals(FromNetworkDrive,"file"))
                 {
-                    sFile = System.IO.File.ReadAllText(System.IO.Path.Combine( ENV.ftpFileImportMedikamente, FileName));
+
+                    if (File.Exists(@"C:\temp\Medikament.txt"))     //Fürs entwickeln
+                    {
+                        sFile = System.IO.File.ReadAllText(@"C:\temp\Medikament.txt");
+                    }
+                    else
+                        sFile = System.IO.File.ReadAllText(System.IO.Path.Combine( ENV.ftpFileImportMedikamente, FileName));
                 }
                 else
                 {
@@ -194,7 +201,7 @@ namespace PMDS.Global
 
                                 rNewMedikmant.ImportiertAm = datStart;
                                 rNewMedikmant.Importiert = true;
-                                rNewMedikmant.Aktuell = true;
+                                rNewMedikmant.Aktuell = this.getVar(ref vars.Veraenderungscode, line) != "S";  //S=Streichung
 
                                 this.DBMedikamentUpdate.daMedikament2.Update(this.dsMedikamentUpdate.Medikament);
                                 if (this.dsMedikamentUpdateExisting.Medikament.Rows.Count > 0)
