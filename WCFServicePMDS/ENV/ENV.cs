@@ -121,11 +121,12 @@ namespace WCFServicePMDS
         }
 
 
-        public static ENVClientDto getClientDtoFromCict(Guid IDClient)
+        public static ENVClientDto getClientDtoFromDict(Guid IDClient)
         {
             var valPair = ENV.dicENVClientDto.Where(o => o.Key == IDClient).First();
             return valPair.Value;
         }
+
         public static void loadDataStartUp(DateTime dFrom, Guid IDClient)
         {
             using (WCFServicePMDS.Repository.RepositoryWrapper repoWrapper = new Repository.RepositoryWrapper(IDClient))

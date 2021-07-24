@@ -454,13 +454,13 @@ namespace WCFServicePMDS
 
 
 
-        public bool Export(Guid IDClient, System.Guid IDPatient, ref string ArchivPath, out string FileNameXMLDocumentBack, bool IsTest = true)
+        public bool DatenExportXML(Guid IDClient, System.Guid IDPatient, ref string ArchivPath, out string FileNameXMLDocumentBack, bool IsTest = true)
         {
             try
             {
                 IsTest = true;
                 IDatenExportXML export = new DatenExportXML();
-                return export.Export(IDPatient, ref ArchivPath, out FileNameXMLDocumentBack, IsTest, IDClient);
+                return export.Export(IDClient, IDPatient, ref ArchivPath, out FileNameXMLDocumentBack, IsTest) ;
 
             }
             catch (Exception ex)

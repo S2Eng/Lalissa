@@ -57,7 +57,7 @@ namespace WCFServicePMDS.DAL
                                          select new PatientS1DTO { Id = o.Id, Idadresse = o.Idadresse, Idkontakt = o.Idkontakt, Vorname = o.Vorname, Nachname = o.Nachname, VersicherungsNr = o.VersicherungsNr, Sexus = o.Sexus,
                                              Geburtsdatum = o.Geburtsdatum, Familienstand = o.Familienstand, WohnungAbgemeldetJn = o.WohnungAbgemeldetJn, KrankenKasse = o.KrankenKasse, 
                                              BPk = o.BPk, Konfision = o.Konfision, LstSprachen = o.LstSprachen, SozVersLeerGrund = o.SozVersLeerGrund, SozVersMitversichertBei = o.SozVersMitversichertBei, SozVersStatus = o.SozVersStatus, Titel = o.Titel}).ToList();
-           return tPatient.First();
+           return tPatient.FirstOrDefault();
         }
 
     }

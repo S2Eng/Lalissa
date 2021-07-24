@@ -1047,6 +1047,7 @@
       <DependentUpon>ucDatenErhebungMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Datenerhebung\ValueListItemOwn.cs" />
+    <Compile Include="DatenExportXML.cs" />
     <Compile Include="ELDA\frmELDA.cs">
       <SubType>Form</SubType>
     </Compile>

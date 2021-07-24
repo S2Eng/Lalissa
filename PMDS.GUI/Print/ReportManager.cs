@@ -520,7 +520,7 @@ namespace PMDS.Print
         }
 
 
-        public static void PrintKlientenbericht(string ReportPath, Guid IDKlient, Guid IDAufenthalt, string ReportRoot, bool PrintJN, string PDFName, ENV.eKlientenberichtTyp KlientenberichtTyp)
+        public static void PrintKlientenbericht(string ReportPath, Guid IDKlient, Guid IDAufenthalt, string ReportRoot, bool PrintJN, string PDFName, ENV.eKlientenberichtTyp KlientenberichtTyp, int cntAufenthalt)
         {
             object[] ParameterArray = { IDKlient, IDAufenthalt, ReportRoot, PrintJN };
             BerichtParameter.BerichtParameterTyp[] TypArray = {
@@ -546,6 +546,10 @@ namespace PMDS.Print
             BerichtParameter bT = new BerichtParameter("Beschreibung", BerichtParameter.BerichtParameterTyp.Zahl, "KlientenberichtTyp", "0");
             bT.Value = (int)KlientenberichtTyp;
             list.Add(bT);
+
+            BerichtParameter bA = new BerichtParameter("AufenthaltNr", BerichtParameter.BerichtParameterTyp.Zahl, "AufenthaltNr", "0");
+            bA.Value = cntAufenthalt;
+            list.Add(bA);
 
             string sFileFullNameExported = "";
             PMDS.Print.CR.ReportManager.PrintDynamicReport(sPath, false, list, null, PDFName,

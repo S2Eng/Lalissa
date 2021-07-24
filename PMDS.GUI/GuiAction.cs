@@ -27,6 +27,8 @@ using PMDS.GUI.Quickfilter;
 using PMDS.GUI.ELGA;
 using static PMDS.Global.db.ERSystem.ELGABusiness;
 using PMDS.Global.db.ERSystem;
+using WCFServicePMDS.BAL.Interfaces;
+using WCFServicePMDS.DatenExportXMLBAL;
 
 namespace PMDS.GUI
 {
@@ -277,35 +279,55 @@ namespace PMDS.GUI
 
                     if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention)
                         KlientNameGebDat += DateTime.Now.ToString("_BPyyyyMMddHHmmss");
+                    else if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
+                        KlientNameGebDat += DateTime.Now.ToString("_yyyyMMddHHmmss");
+
 
                     KlientNameGebDat =  Regex.Replace(KlientNameGebDat, @"[^0-9a-zA-Z.äöüÄÖÜß]\\", string.Empty);
 
                     if (r.RowState == System.Data.DataRowState.Deleted) break;  //gelöschte nicht behandeln
 
-                    tmpFullPath = PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, "Dummy.txt");
-                    if (tmpFullPath == "") return false;
+                    tmpFullPath = PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, "Dummy.txt", "0");
+                    if (String.IsNullOrWhiteSpace(tmpFullPath)) 
+                        return false;
 
-                    //Klientenbericht ausgeben (für jeden Aufenthalt des Klienten einmal)
+                    //Klientenbericht ausgeben (für jeden Klienten einmal)
+                    PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, "Klientenbericht.rpt"), r.ID, Guid.Empty, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, 0);
+
+                    FileInfo[] pdfList;
+                    DirectoryInfo di;
+
+                    //Zusätzliche Berichte einmal pro Klient
+                    di = new DirectoryInfo(Path.GetDirectoryName(System.IO.Path.Combine(ENV.ReportPath, "*.*")));
+                    pdfList = di.GetFiles("Klientenbericht.Sub.0*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo fi in pdfList)
+                    {
+                        PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, Guid.Empty, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, 0);
+                    }
+
+                    //Aufenthaltsabhängige Berichte
+                    int cntAufenthalt = 0;
                     dsAufenthalt.AufenthaltDataTable Aufenthalte = Aufenthalt.ByPatient(r.ID);
-
-
                     foreach (dsAufenthalt.AufenthaltRow auf in Aufenthalte)
                     {
-
+                        cntAufenthalt++;
                         if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && auf.IsEntlassungszeitpunktNull() || KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
                         {
-                            PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, "Klientenbericht.rpt"), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp);
                             // Im Reportsdirectory alle Klientenbericht.0*.rpt suchen und nacheinander drucken
-                            DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(System.IO.Path.Combine(ENV.ReportPath, "*.*")));
-                            FileInfo[] pdfList = di.GetFiles("Klientenbericht.0*", SearchOption.TopDirectoryOnly);
+                            di = new DirectoryInfo(Path.GetDirectoryName(System.IO.Path.Combine(ENV.ReportPath, "*.*")));
+                            pdfList = di.GetFiles("Klientenbericht.0*", SearchOption.TopDirectoryOnly);
 
                             foreach (FileInfo fi in pdfList)
                             {
                                 if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention &&
-                                    (!fi.ToString().Contains("0010")) && !fi.ToString().Contains("0020") && !fi.ToString().Contains("0060") && !fi.ToString().Contains("0070") && !fi.ToString().Contains("0090"))
+                                    (!fi.ToString().Contains("0011")) && !fi.ToString().Contains("0020") && !fi.ToString().Contains("0060") && !fi.ToString().Contains("0071") && !fi.ToString().Contains("0090"))
                                 //Liste Assessments, Aufenthaltsverlauf, Pflegebericht, Evaluierunge und WundDoku in BlackoutPrävention nicht ausgeben.
                                 {
-                                    PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp);
+                                    PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, cntAufenthalt);
+                                }
+                                else if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
+                                {
+                                    PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, cntAufenthalt);
                                 }
                             }
                         }
@@ -315,17 +337,17 @@ namespace PMDS.GUI
                     PMDS.Global.db.Patient.dsAnamnesen.AnamnesenProPatientDataTable dtAna = myQuery.GetAllAnamnesenProPatient(r.ID);
                     foreach (PMDS.Global.db.Patient.dsAnamnesen.AnamnesenProPatientRow ana in dtAna)
                     {
-                        if (ana.AnamneseTyp.ToUpper() == "OREM")
+                        if (generic.sEquals(ana.AnamneseTyp,"OREM"))
                         {
                             //Alle OREM-Anamnesen lesen und drucken
                             PMDS.Print.ReportManager.PrintAnamnese("OREM", System.IO.Path.Combine(ENV.ReportPath, "OREM1.rpt"), r.ID, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
                         }
-                        else if (ana.AnamneseTyp.ToUpper() == "KROHWINKEL")
+                        else if (generic.sEquals(ana.AnamneseTyp,"KROHWINKEL"))
                         {
                             //Alle Krohwinkel-Anamnesen lesen und drucken
                             PMDS.Print.ReportManager.PrintAnamnese("KROHWINKEL", System.IO.Path.Combine(ENV.ReportPath, "Krohwinkel.rpt"), r.ID, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
                         }
-                        else if (ana.AnamneseTyp.ToUpper() == "POP")
+                        else if (generic.sEquals(ana.AnamneseTyp, "POP"))
                         {
                             //Alle POP-Anamnesen lesen und drucken
                             PMDS.Print.ReportManager.PrintAnamnese("POP", System.IO.Path.Combine(ENV.ReportPath, "POP.rpt"), r.ID, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
@@ -341,7 +363,7 @@ namespace PMDS.GUI
                         QS2.Desktop.Txteditor.doEditor doEdit = new QS2.Desktop.Txteditor.doEditor();
                         foreach (DataRow rBio in dbBiografien.DataTable.Rows)
                         {
-                            tmpFullPath = PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rBio["FormularName"].ToString());
+                            tmpFullPath = PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rBio["FormularName"].ToString(), "0");
                             txtEditor.Text = "";
                             byte[] by = null;
                             byte[] bPdf = null;
@@ -373,13 +395,8 @@ namespace PMDS.GUI
                                                 Patagames.Pdf.Net.PdfDocument docPDF = Patagames.Pdf.Net.PdfDocument.Load(rFormular.PDF_BLOP, formFDF);
                                                 formFDF.InterForm.ResetForm();
                                                 formFDF.InterForm.ImportFromFdf(docFDF);
-                                                docPDF.Save(PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rFormular.Name), Patagames.Pdf.Enums.SaveFlags.RemoveSecurity);
+                                                docPDF.Save(PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rFormular.Name, "0"), Patagames.Pdf.Enums.SaveFlags.RemoveSecurity);
                                             }
-                                        }
-                                        else
-                                        {
-                                            //Biografien sind in den Assessments enthalten, haben aber kein FDF. Ist kein Fehler.
-                                            //throw new Exception("Kein Formular gefunden für " + rFormularDaten.FormularName);
                                         }
                                     }
                                 }
@@ -389,7 +406,6 @@ namespace PMDS.GUI
 
                     // Erstellen eines pdf/A-Files pro Klient und löschen der temp. PDFs
                     int iCountAufenthalte = 0;
-                    Syncfusion.Pdf.PdfDocument outputDocument = new Syncfusion.Pdf.PdfDocument();
                     List<string> lstSourceFiles = new List<string>();  //Array mit PDFs, die zusammenzufassen sind
 
                     // Alle pdfs des Verzeichnisses 
@@ -401,36 +417,73 @@ namespace PMDS.GUI
                     {
                         string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
                         lstSourceFiles.Add(tmpFileName);
-                        //File.Delete(tmpFileName);
 
                         iCountAufenthalte++;
                     }
 
-                    FileInfo[] pdfList1a = di1.GetFiles("Klientenbericht.0*.pdf");
-                    foreach (FileInfo fi in pdfList1a)
+                    FileInfo[] pdfList1Sub = di1.GetFiles("Klientenbericht.Sub.0*.pdf");
+                    foreach (FileInfo fi in pdfList1Sub)
                     {
                         string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
                         lstSourceFiles.Add(tmpFileName);
-                        //File.Delete(tmpFileName);
-                    }                    
+                    }
 
+                    //pro Aufenthalt in aufsteigender Reihenfolge
+                    for (int i = 1; i <= cntAufenthalt; i++)
+                    {
+                        FileInfo[] pdfList1a = di1.GetFiles(i.ToString() + ".Klientenbericht.0*.pdf");
+                        foreach (FileInfo fi in pdfList1a)
+                        {
+                            string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
+                            lstSourceFiles.Add(tmpFileName);
+                        }
+                    }
+
+                    //Assessments hinzufügen (alle PDFs, die noch nicht hinzugefügt sind)
                     FileInfo[] pdfList2 = di1.GetFiles("*.pdf");
                     foreach (FileInfo fi in pdfList2)
                     {
                         string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
-                        lstSourceFiles.Add(tmpFileName);
-                        //File.Delete(tmpFileName);
+                        if (!lstSourceFiles.Any(s => s.Contains(tmpFileName)))
+                        {
+                            lstSourceFiles.Add(tmpFileName);
+                        }
                     }
 
-                    filenamePDFA = System.IO.Path.Combine(ENV.ArchivPath, KlientNameGebDat + ".PDF");          
-                    Syncfusion.Pdf.PdfDocument finalDoc = new Syncfusion.Pdf.PdfDocument(PdfConformanceLevel.Pdf_A1B);
-                    finalDoc.Compression = PdfCompressionLevel.Best;
-                    Syncfusion.Pdf.PdfDocument.Merge(finalDoc, lstSourceFiles.ToArray());
-                    finalDoc.Save(filenamePDFA);
-                    Directory.Delete(KlientVerzeichnis, true);
+                    filenamePDFA = System.IO.Path.Combine(ENV.ArchivPath, KlientNameGebDat + ".PDF");
+                    using (Syncfusion.Pdf.PdfDocument finalDoc = new Syncfusion.Pdf.PdfDocument(PdfConformanceLevel.Pdf_A1B))
+                    {
+                        finalDoc.Compression = PdfCompressionLevel.Best;
+                        Syncfusion.Pdf.PdfDocument.Merge(finalDoc, lstSourceFiles.ToArray());
+                        finalDoc.Save(filenamePDFA);
+                    }
+
+                    //Datenexport im XML-Format
+                    if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
+                    {
+                        bool IsTest = false;
+                        Guid IDClient = WCFServicePMDS.ENV.ENVClient.IDClient;
+                        string FileNameXMLDocumentBack = "";
+                        string ArchivPath = ENV.ArchivPath;
+                        DatenExportXML export = new DatenExportXML();
+                        bool result1 = export.Export(IDClient, r.ID, ref ArchivPath, out FileNameXMLDocumentBack, IsTest);
+
+                        //IDatenExportXML export1 = new DatenExportXML();
+                        //bool result = export1.Export(IDClient, r.ID, ref ArchivPath, out FileNameXMLDocumentBack, IsTest);
+                    }
                 }
 
-                string sMsgBoxTranslate = "Datenarchiv wurde als {0} erstellt.";
+
+                string sMsgBoxTranslate = "";
+
+                if (PatListe1.Rows.Count == 1)
+                {
+                    sMsgBoxTranslate = "Datenarchiv wurde als {0} erstellt.";
+                }
+                else
+                {
+                    sMsgBoxTranslate = "Datenarchiv wurde erstellt.";
+                }
                 sMsgBoxTranslate = QS2.Desktop.ControlManagment.ControlManagment.getRes(sMsgBoxTranslate, filenamePDFA.Trim());
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTranslate, "Information");
                 FileNamePDFDocumentBack = filenamePDFA.Trim();
@@ -438,7 +491,6 @@ namespace PMDS.GUI
 
                 return true;
             }
-
             catch (Exception e)
             {
                 throw new Exception("GuiAction.Datenarchivierung: " + e.ToString());

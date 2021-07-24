@@ -10,8 +10,6 @@ namespace WCFServicePMDS.BAL.Interfaces
 
     public interface IDatenExportXML
     {
-        bool Export(System.Guid IDPatient, ref string ArchivPath, out string FileNameXMLDocumentBack, bool IsTest, Guid IDClient);
-
+       bool Export(Guid IDClient, System.Guid IDPatient, ref string ArchivPath, out string FileNameXMLDocumentBack, bool IsTest);
     }
-
 }

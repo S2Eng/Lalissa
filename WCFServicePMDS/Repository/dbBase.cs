@@ -301,10 +301,11 @@ namespace WCFServicePMDS.DAL
         {
             try
             {
-                ENVClientDto clientDto = ENV.getClientDtoFromCict(IDClient);
-
+                string sConnStr = ""
+;                //sConnStr = "Data Source=STY041;Initial Catalog=pmds_DemoGross;Integrated Security=SSPI;";
+                ENVClientDto clientDto = ENV.getClientDtoFromDict(IDClient);
                 var optionsBuilder = new DbContextOptionsBuilder<PMDSDevContext>();
-                string sConnStr = "";
+                
                 if (!clientDto.trusted)
                 {
                     sConnStr = "Server=" + clientDto.Srv.Trim() + "; Database=" + clientDto.Db.Trim() + ";User ID=" + clientDto.Usr.Trim() + ";Password=" + clientDto.Pwd.Trim() + ";Trusted_Connection=False;";
@@ -313,6 +314,7 @@ namespace WCFServicePMDS.DAL
                 {
                     sConnStr = "Server=" + clientDto.Srv.Trim() + "; Database=" + clientDto.Db.Trim() + ";Trusted_Connection=True;";
                 }
+                
 
                 optionsBuilder.UseSqlServer(sConnStr, options => options.EnableRetryOnFailure());
 
