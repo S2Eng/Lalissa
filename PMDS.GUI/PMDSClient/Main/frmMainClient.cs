@@ -2496,44 +2496,31 @@ namespace PMDS.GUI.PMDSClient
                             frmVerwaltungKlinikenUser1.ShowDialog(this);
                         }
                         break;
-                        
-                    case "DatenarchivierungAlle":
 
-                        GuiAction.Datenarchivierung(this.textControl1 );
+                    case "DatenarchivierungAlle":
+                        frmDatenExport frmExportAll = new frmDatenExport();
+                        frmExportAll.Init(Guid.Empty, this.textControl1, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.full, ENV.eDatenexportTyp.alle);
+                        frmExportAll.Show();
                         break;
 
                     case "Blackout-Prävention":
-                        bool DocuSuccessfullyGenerated = false;
-                        string FileNameDocument = "";
-                        GuiAction.Datenarchivierung(ENV.CurrentIDPatient, this.textControl1, PMDS.Global.ENV.IDKlinik, ref DocuSuccessfullyGenerated, ref FileNameDocument, ENV.eKlientenberichtTyp.blackoutprevention);
+                        frmDatenExport frmExportBP = new frmDatenExport();
+                        frmExportBP.Init(Guid.Empty, this.textControl1, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.blackoutprevention, ENV.eDatenexportTyp.aktiv);
+                        frmExportBP.Show();
                         break;
 
                     case "DatenarchivierungKlient":
-                        DocuSuccessfullyGenerated = false;
-                        FileNameDocument = "";
-                        //if (System.Diagnostics.Debugger.IsAttached )
-                        //{
-                        //    //WCF-Service.Exportaufrufen
-                        //    //GuiAction.DatenExportXML(ENV.CurrentIDPatient, out FileNameDocument);
-                        //}
-                        
-                        //WCF-Service.Export asynchron aufrufen
-                        string FileNameXMLDocumentBack = "";
-                        //GuiAction.DatenExportXML(ENV.CurrentIDPatient, ref ENV.ArchivPath, out FileNameXMLDocumentBack, false);
-                        GuiAction.Datenarchivierung(ENV.CurrentIDPatient, this.textControl1, PMDS.Global.ENV.IDKlinik, ref DocuSuccessfullyGenerated, ref FileNameDocument, ENV.eKlientenberichtTyp.full);
+                        frmDatenExport frmExportKlient = new frmDatenExport();
+                        frmExportKlient.Init(ENV.CurrentIDPatient, this.textControl1, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.full, ENV.eDatenexportTyp.alle);
+                        frmExportKlient.Show();
                         break;
-                    
+
                     case "ImportGibodat":
                         PMDS.GUI.VB.frmImportGibodat frmImportGibodat1 = new PMDS.GUI.VB.frmImportGibodat();
                         frmImportGibodat1.ShowDialog(this);
                         break;
 
                     case "btnLoadDesignMode":
-                        //this.ControlManagment.run(this, this.components, null,
-                        //                        QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString(),
-                        //                        qs2.core.license.doLicense.eApp.PMDS.ToString(),
-                        //                        QS2.Desktop.ControlManagment.ControlManagment.eControlGroup.Booking, 
-                        //                        qs2.core.Enums.eResourceType.ImageEnum);
                         QS2.Desktop.ControlManagment.ControlManagment.LoadControlDesigner("");
                         break;
 

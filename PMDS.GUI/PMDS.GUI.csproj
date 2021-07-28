@@ -1217,6 +1217,12 @@
     <Compile Include="Fortbildung\ucVerwaltungFortbildungen.Designer.cs">
       <DependentUpon>ucVerwaltungFortbildungen.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDatenExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatenExport.Designer.cs">
+      <DependentUpon>frmDatenExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSelectConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4138,6 +4144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fortbildung\ucVerwaltungFortbildungen.resx">
       <DependentUpon>ucVerwaltungFortbildungen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDatenExport.resx">
+      <DependentUpon>frmDatenExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelectConfig.resx">
       <DependentUpon>frmSelectConfig.cs</DependentUpon>

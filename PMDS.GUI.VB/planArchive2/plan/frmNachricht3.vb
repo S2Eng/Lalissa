@@ -1,10 +1,10 @@
-Imports Infragistics.Win.UltraWinTree
-Imports Infragistics.Win.UltraWinListView
+'Imports Infragistics.Win.UltraWinTree
+'Imports Infragistics.Win.UltraWinListView
 Imports Infragistics.Win.UltraWinToolbars
 Imports System.Windows.Forms
-Imports System.Drawing
-Imports Infragistics.Win.UltraWinGrid
-Imports Microsoft.Exchange.WebServices.Data
+'Imports System.Drawing
+'Imports Infragistics.Win.UltraWinGrid
+'Imports Microsoft.Exchange.WebServices.Data
 Imports Infragistics.Win.UltraWinToolTip
 Imports Infragistics.Win
 Imports PMDS.Global.db.ERSystem
@@ -12,46 +12,115 @@ Imports PMDS.Global.db.ERSystem
 Public Class frmNachricht3
     Inherits System.Windows.Forms.Form
 
-    Public IDArt As Integer = -999
-    Public _TypeUI As contPlanungData.eTypeUI
-    Public _PlanArchive As New contPlanungData.cPlanArchive()
+    Private contListTextTemplates1 As New contListTextTemplates()
+    Private contSelectPatienten As New contSelectPatientenBenutzer()
+    Private contSelectBenutzer As New contSelectPatientenBenutzer()
+    Private compPlan1 As New compPlan()
+    Private dsPlan1 As New dsPlan()
+    Private General As New General
+    Private standardViewExtEditor As TXTextControl.ViewMode
+    Private genMain As New General()
+    Private isLoaded As Boolean
+    Private abort As Boolean = True
+    Private lockToolbar As Boolean
+    Private isEditable As Boolean = True
+    Private clPlan1 As New clPlan()
+    Private doUI1 As New doUI()
+    Private typAntworten As eAntworten
+    Private isFirstShow As Boolean = True
+    Private doEditor1 As New QS2.Desktop.Txteditor.doEditor()
+    Private contSelectSelListCategories As New contSelectSelList()
+    Private b As New PMDS.db.PMDSBusiness()
+    Private contTxtEditor1 As New QS2.Desktop.Txteditor.contTxtEditor()
+
+    'Private doEditor As New QS2.Desktop.Txteditor.doEditor()
+    'Public compUserAccounts1 As New compUserAccounts()
+
+    Private _IDArt As Integer = -999
+    Public Property IDArt As Integer
+        Get
+            Return _IDArt
+        End Get
+        Set(value As Integer)
+            _IDArt = value
+        End Set
+    End Property
+
+    Private _modalWindow As contPlanung2
+    Public Property modalWindow As contPlanung2
+        Get
+            Return _modalWindow
+        End Get
+        Set(value As contPlanung2)
+            _modalWindow = value
+        End Set
+    End Property
+
+    Private _TypeUI As contPlanungData.eTypeUI
+    Public Property TypeUI As contPlanungData.eTypeUI
+        Get
+            Return _TypeUI
+        End Get
+        Set(ByVal Value As contPlanungData.eTypeUI)
+            _TypeUI = Value
+        End Set
+    End Property
+
+
+    Private _PlanArchive As contPlanungData.cPlanArchive = New contPlanungData.cPlanArchive()
+    Public Property PlanArchive As contPlanungData.cPlanArchive
+        Get
+            Return _PlanArchive
+        End Get
+        Set(value As contPlanungData.cPlanArchive)
+            _PlanArchive = value
+        End Set
+    End Property
+
 
     Private frmStatus As New General.eStatusForm
-    Private neuanlagexy As Boolean = False
+    Private _rPlan
+    Public Property rPlan As dsPlan.planRow
+        Get
+            Return _rPlan
+        End Get
+        Set(value As dsPlan.planRow)
+            _rPlan = value
+        End Set
+    End Property
 
-    Public rPlan As dsPlan.planRow
-    Public compPlan1 As New compPlan()
-    Public dsPlan1 As New dsPlan()
+
+    Private _contListeAnhang As New contListeAnhang2
+    Public Property contListeAnhang As contListeAnhang2
+        Get
+            Return _contListeAnhang
+        End Get
+        Set(value As contListeAnhang2)
+            _contListeAnhang = value
+        End Set
+    End Property
 
 
+    ' Public lockToolbarTxt = False
+    Private _generatePlanForEachObj As Boolean
+    Public Property generatePlanForEachObj As Boolean
+        Get
+            Return _generatePlanForEachObj
+        End Get
+        Set(value As Boolean)
+            _generatePlanForEachObj = value
+        End Set
+    End Property
 
-    Private General As New General
-    Public modalWindow As contPlanung2
-
-    Public contListeAnhang As New contListeAnhang2
-    Public contListTextTemplates1 As New contListTextTemplates()
-    Public contSelectPatienten As New contSelectPatientenBenutzer()
-    Public contSelectBenutzer As New contSelectPatientenBenutzer()
-
-    Public lockToolbarTxt = False
-
-    Public standardViewExtEditor As TXTextControl.ViewMode
-
-    Public doEditor As New QS2.Desktop.Txteditor.doEditor()
-    Public genMain As New General()
-
-    Public isLoaded As Boolean = False
-    Public abort As Boolean = True
-    Public lockToolbar As Boolean = False
-
-    Public generatePlanForEachObj As Boolean = False
-    Public compUserAccounts1 As New compUserAccounts()
-    Public isEditable As Boolean = True
-
-    Public IDActivityForNewPlan As System.Guid = Nothing
-    Public clPlan1 As New clPlan()
-
-    Public doUI1 As New doUI()
+    Private _IDActivityForNewPlan As System.Guid = Nothing
+    Public Property IDActivityForNewPlan As System.Guid
+        Get
+            Return _IDActivityForNewPlan
+        End Get
+        Set(value As System.Guid)
+            _IDActivityForNewPlan = value
+        End Set
+    End Property
 
     Public Enum eTypAction
         sendEMailClicked = 0
@@ -59,7 +128,7 @@ Public Class frmNachricht3
         saveButtClicked = 2
     End Enum
 
-    Public typAntworten As eAntworten
+
     Public Enum eAntworten
         antworten = 0
         alleAntworten = 1
@@ -72,22 +141,40 @@ Public Class frmNachricht3
         Mailadresses = 3
     End Enum
 
-    Public InSharedMemory As Boolean = False
+    Private _InSharedMemory As Boolean
+    Public Property InSharedMemory As Boolean
+        Get
+            Return _InSharedMemory
+        End Get
+        Set(value As Boolean)
+            _InSharedMemory = value
+        End Set
+    End Property
 
-    Public LastTextBody As String = ""
+    Private LastTextBody As String = ""
 
-    Public ElementHost As New System.Windows.Forms.Integration.ElementHost()
-    Public IExplorer1 As New IExplorer()
+    Private ElementHost As New System.Windows.Forms.Integration.ElementHost()
+    Private IExplorer1 As New IExplorer()
 
-    Public Messages As HandleMessage.Messages = Nothing
-    Public isOpend As Boolean = False
-    Public isFirstShow As Boolean = True
+    Private _Messages As HandleMessage.Messages
+    Public Property Messages As HandleMessage.Messages
+        Get
+            Return _Messages
+        End Get
+        Set(value As HandleMessage.Messages)
+            _Messages = value
+        End Set
+    End Property
 
-    Public doEditor1 As New QS2.Desktop.Txteditor.doEditor()
-    Public contSelectSelListCategories As New contSelectSelList()
-    Public b As New PMDS.db.PMDSBusiness()
-    Public contTxtEditor1 As New QS2.Desktop.Txteditor.contTxtEditor()
-
+    Private _isOpend As Boolean
+    Public Property isOpend As Boolean
+        Get
+            Return _isOpend
+        End Get
+        Set(value As Boolean)
+            _isOpend = value
+        End Set
+    End Property
 
 
 
@@ -199,6 +286,17 @@ Public Class frmNachricht3
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
+                compPlan1.Dispose()
+                dsPlan1.Dispose()
+                contListeAnhang.Dispose()
+                contListTextTemplates1.Dispose()
+                contSelectPatienten.Dispose()
+                contSelectBenutzer.Dispose()
+                contTxtEditor1.Dispose()
+                contSelectSelListCategories.Dispose()
+                _contListeAnhang.Dispose()
+                ElementHost.Dispose()
+
                 components.Dispose()
             End If
         End If
@@ -3015,15 +3113,17 @@ Public Class frmNachricht3
             bSendOnServer = True
             If Not bSendOnServer Then
                 Dim UserLoggedIn As String = Me.genMain.getLoggedInUser()
-                rUsrAccount = compUserAccounts1.getUserAccountsRow(Nothing, UserLoggedIn.Trim(), compUserAccounts.eTypSelUserAccounts.usr, compUserAccounts.eTypEMailAccount.SMTP, False, False)
-                If rUsrAccount Is Nothing Then
-                    If withMsgBox Then
-                        doUI.doMessageBox2("NoAccountForUserDefined", "", "!")
+                Using compUserAccounts1 As New compUserAccounts()
+                    rUsrAccount = compUserAccounts1.getUserAccountsRow(Nothing, UserLoggedIn.Trim(), compUserAccounts.eTypSelUserAccounts.usr, compUserAccounts.eTypEMailAccount.SMTP, False, False)
+                    If rUsrAccount Is Nothing Then
+                        If withMsgBox Then
+                            doUI.doMessageBox2("NoAccountForUserDefined", "", "!")
+                        End If
+                        Return False
+                    Else
+                        Return True
                     End If
-                    Return False
-                Else
-                    Return True
-                End If
+                End Using
             Else
                 Return True
             End If
@@ -3102,7 +3202,6 @@ Public Class frmNachricht3
             End If
 
             Dim bSendOnServer As Boolean = False
-            Dim dsInteropPar1 As New dsInteropPar()
             Dim rUsrAccount As dsUserAccounts.tblUserAccountsRow
             Dim anzPläne As Integer = 0
             Dim anzEMails As Integer = 0
@@ -3400,42 +3499,43 @@ Public Class frmNachricht3
                         End If
                     End If
 
-                    dsInteropPar1 = New dsInteropPar()
-                    If Me.rPlan.IDArt = clPlan.typPlan_EMailGesendet Then
-                        If typAction = eTypAction.sendEMailClicked Or typAction = eTypAction.sendPlanClicked Then
-                            Dim rPlanNew As dsPlan.planRow = Nothing
+                    Using dsInteropPar1 = New dsInteropPar()
+                        If Me.rPlan.IDArt = clPlan.typPlan_EMailGesendet Then
+                            If typAction = eTypAction.sendEMailClicked Or typAction = eTypAction.sendPlanClicked Then
+                                Dim rPlanNew As dsPlan.planRow = Nothing
 
-                            If Me.rPlan.IDArt = clPlan.typPlan_EMailGesendet Then
-                                rPlanNew = rPlanOwner
-                            Else
-                                Throw New Exception("Me.rPlan.IDArt '" + Me.rPlan.IDArt.ToString() + "' not allowed!")
-                            End If
-
-                            Dim sendTo As String = Me.doEMailsForObjectsForControl(Nothing, protokollErr, True, False)
-                            If rPlanNew.MailAn.Trim() <> "" Or sendTo.Trim() <> "" Or sendTo.Trim() <> "" Then
-                                rPlanNew.MailAn += sendTo
-
-                                Me.sendEMail(rPlanNew, rPlanOwner.ID, bSendOnServer, dsInteropPar1, False, rUsrAccount, protokollErr, anzEMails, anzErr)
-                            End If
-
-                            If bSendOnServer Then
-                                If dsInteropPar1.InteropPar.Rows.Count > 0 Then
-                                    Me.genMain.addInteropSendEMail(dsInteropPar1)
-                                    protokollOk = dsInteropPar1.InteropPar.Rows.Count.ToString() + " E-Mail/s werden vom Server an Objekte versendet!" + vbNewLine + protokollOk
+                                If Me.rPlan.IDArt = clPlan.typPlan_EMailGesendet Then
+                                    rPlanNew = rPlanOwner
+                                Else
+                                    Throw New Exception("Me.rPlan.IDArt '" + Me.rPlan.IDArt.ToString() + "' not allowed!")
                                 End If
-                            Else
-                                Dim txt As String = doUI.getRes("PlansSended")
-                                txt = String.Format(txt, anzEMails.ToString()) + "!"
-                                protokollOk = txt + vbNewLine + protokollOk
-                            End If
 
-                            Return True
+                                Dim sendTo As String = Me.doEMailsForObjectsForControl(Nothing, protokollErr, True, False)
+                                If rPlanNew.MailAn.Trim() <> "" Or sendTo.Trim() <> "" Or sendTo.Trim() <> "" Then
+                                    rPlanNew.MailAn += sendTo
+
+                                    Me.sendEMail(rPlanNew, rPlanOwner.ID, bSendOnServer, dsInteropPar1, False, rUsrAccount, protokollErr, anzEMails, anzErr)
+                                End If
+
+                                If bSendOnServer Then
+                                    If dsInteropPar1.InteropPar.Rows.Count > 0 Then
+                                        Me.genMain.addInteropSendEMail(dsInteropPar1)
+                                        protokollOk = dsInteropPar1.InteropPar.Rows.Count.ToString() + " E-Mail/s werden vom Server an Objekte versendet!" + vbNewLine + protokollOk
+                                    End If
+                                Else
+                                    Dim txt As String = doUI.getRes("PlansSended")
+                                    txt = String.Format(txt, anzEMails.ToString()) + "!"
+                                    protokollOk = txt + vbNewLine + protokollOk
+                                End If
+
+                                Return True
+                            Else
+                                Return True
+                            End If
                         Else
                             Return True
                         End If
-                    Else
-                        Return True
-                    End If
+                    End Using
                 End If
             End Using
 
@@ -3917,33 +4017,34 @@ Public Class frmNachricht3
                               ByRef rUsrAccount As dsUserAccounts.tblUserAccountsRow,
                               ByRef protokollTxt As String, ByRef anz As Integer, ByRef anzErr As Integer) As Boolean
         Try
-            Dim dsPlanToSend As New dsPlan()
-            Me.compPlan1.getPlanAnhang(rPlanToSend.ID, compPlan.eTypSelPlanAnhang.idPlan, dsPlanToSend)
-            If rPlanToSend.MailAn.Trim() <> "" Or rPlanToSend.MailCC.Trim() <> "" Then
-                Dim bSendOK As Boolean = False
-                If bSendOnServer Then
-                    bSendOK = Me.genMain.addInteropPar(rPlanToSend.ID, IDParent, dsInteropPar1)
-                    If doSendServer Then
-                        bSendOK = Me.genMain.addInteropSendEMail(dsInteropPar1)
-                    End If
-                Else
-                    bSendOK = Me.clPlan1.sendEMail(rPlanToSend.MailAn.Trim(), rPlanToSend.MailCC.Trim(), rPlanToSend.MailBcc.Trim(), False,
+            Using dsPlanToSend As New dsPlan()
+                Me.compPlan1.getPlanAnhang(rPlanToSend.ID, compPlan.eTypSelPlanAnhang.idPlan, dsPlanToSend)
+                If rPlanToSend.MailAn.Trim() <> "" Or rPlanToSend.MailCC.Trim() <> "" Then
+                    Dim bSendOK As Boolean = False
+                    If bSendOnServer Then
+                        bSendOK = Me.genMain.addInteropPar(rPlanToSend.ID, IDParent, dsInteropPar1)
+                        If doSendServer Then
+                            bSendOK = Me.genMain.addInteropSendEMail(dsInteropPar1)
+                        End If
+                    Else
+                        bSendOK = Me.clPlan1.sendEMail(rPlanToSend.MailAn.Trim(), rPlanToSend.MailCC.Trim(), rPlanToSend.MailBcc.Trim(), False,
                                       rPlanToSend.Betreff, rPlanToSend.Text, dsPlanToSend.planAnhang, rPlanToSend.html, True,
                                       rPlanToSend.ID, IDParent, False, True, protokollTxt, False, rUsrAccount, False, False)
-                End If
-                If bSendOK Then
-                    anz += 1
-                    Return True
+                    End If
+                    If bSendOK Then
+                        anz += 1
+                        Return True
+                    Else
+                        protokollTxt = "Error: E-Mail '" + rPlanToSend.Betreff + "' could not send to '" + rPlanToSend.MailAn.Trim() + "'!" + vbNewLine + protokollTxt
+                        anzErr += 1
+                        Return False
+                    End If
                 Else
-                    protokollTxt = "Error: E-Mail '" + rPlanToSend.Betreff + "' could not send to '" + rPlanToSend.MailAn.Trim() + "'!" + vbNewLine + protokollTxt
+                    protokollTxt = doUI.getRes("ItWasNotSpecifiedEMailAddress") + vbNewLine + protokollTxt
                     anzErr += 1
                     Return False
                 End If
-            Else
-                protokollTxt = doUI.getRes("ItWasNotSpecifiedEMailAddress") + vbNewLine + protokollTxt
-                anzErr += 1
-                Return False
-            End If
+            End Using
 
         Catch ex As Exception
             Throw New Exception("frmNachricht.sendEMail: " + ex.ToString())
@@ -4423,17 +4524,19 @@ Public Class frmNachricht3
                 If Me.rPlan.deleted Then txtInfo += doUI.getRes("IsDesign") + vbNewLine
 
                 If Not IDUserAccount Is Nothing Then
-                    Dim compUserAccounts1 As New compUserAccounts()
-                    Dim rUserAccount As dsUserAccounts.tblUserAccountsRow = compUserAccounts1.getUserAccountsRow(IDUserAccount, "", compUserAccounts.eTypSelUserAccounts.id, compUserAccounts.eTypEMailAccount.SMTP, True, True)
-                    If Me.chkSendWithPostOfficeBoxForAll.Checked Then
-                        Dim dsUserAccountsRead As New dsUserAccounts()
-                        compUserAccounts1.getUserAccounts(Nothing, "", dsUserAccountsRead, compUserAccounts.eTypSelUserAccounts.PostOfficeBoxForAll, compUserAccounts.eTypEMailAccount.SMTP, True)
-                        If dsUserAccountsRead.tblUserAccounts.Rows.Count > 0 Then
-                            rUserAccount = dsUserAccountsRead.tblUserAccounts.Rows(0)
-                        End If
-                    End If
 
-                    txtInfo += vbNewLine + doUI.getRes("Name") + "Name: " + rUserAccount.Name + vbNewLine +
+                    Using compUserAccounts1 As New compUserAccounts()
+                        Dim rUserAccount As dsUserAccounts.tblUserAccountsRow = compUserAccounts1.getUserAccountsRow(IDUserAccount, "", compUserAccounts.eTypSelUserAccounts.id, compUserAccounts.eTypEMailAccount.SMTP, True, True)
+                        If Me.chkSendWithPostOfficeBoxForAll.Checked Then
+                            Using dsUserAccountsRead As New dsUserAccounts()
+                                compUserAccounts1.getUserAccounts(Nothing, "", dsUserAccountsRead, compUserAccounts.eTypSelUserAccounts.PostOfficeBoxForAll, compUserAccounts.eTypEMailAccount.SMTP, True)
+                                If dsUserAccountsRead.tblUserAccounts.Rows.Count > 0 Then
+                                    rUserAccount = dsUserAccountsRead.tblUserAccounts.Rows(0)
+                                End If
+                            End Using
+                        End If
+
+                        txtInfo += vbNewLine + doUI.getRes("Name") + "Name: " + rUserAccount.Name + vbNewLine +
                                     doUI.getRes("User") + ": " + rUserAccount.Usr + vbNewLine +
                                     doUI.getRes("Type") + ": " + rUserAccount.typ + vbNewLine +
                                     doUI.getRes("AdressFrom") + ": " + rUserAccount.AdrFrom + vbNewLine +
@@ -4441,15 +4544,17 @@ Public Class frmNachricht3
                                     doUI.getRes("UserAuthentication") + ": " + rUserAccount.UsrAuthentication + vbNewLine +
                                     doUI.getRes("Port") + ": " + rUserAccount.Port + vbNewLine +
                                     doUI.getRes("SSL") + ": " + rUserAccount.SSL.ToString()
+                    End Using
 
                     'Me.UltraStatusBar1.Panels("UserAccount").Text = doUI.getRes("UsedAccount") + ": " + rUserAccount.Name
                     'Me.UltraStatusBar1.Panels("UserAccount").ToolTipText = txtToolTip
                     'Me.UltraStatusBar1.Panels("InfosGeneral").Text = txt
                 End If
 
-                Dim info As New UltraToolTipInfo()
-                info.ToolTipText = txtInfo
-                Me.UltraToolTipManager1.SetUltraToolTip(Me.picInfo, info)
+                Using info As New UltraToolTipInfo()
+                    info.ToolTipText = txtInfo
+                    Me.UltraToolTipManager1.SetUltraToolTip(Me.picInfo, info)
+                End Using
 
             End If
         Catch ex As Exception

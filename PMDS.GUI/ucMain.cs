@@ -29,7 +29,7 @@ namespace PMDS.GUI
         public event SiteMapDelegate SiteMapEvent;
 
 
-        private bool _FrameworkAttached = false;
+        private bool _FrameworkAttached;
         private bool _LoadInProgress = true;
         private bool _bFirstAttach = true;
         public frmMain mainWindow;

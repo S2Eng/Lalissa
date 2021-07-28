@@ -52,6 +52,13 @@ namespace PMDS.Global
             blackoutprevention = 1
         }
 
+        public enum eDatenexportTyp
+        {
+            entlassen = 0,
+            aktiv = 1,
+            alle = 2
+        }
+
         private enum eDecrypt
         {
             QS2Mode = 2,
@@ -174,6 +181,7 @@ namespace PMDS.Global
         public static PasswordScore PasswordStrength = PasswordScore.Blank;
         public static int MaxPasswordAge;
         public static uint MaxIdleTime;
+        public static bool IgnoreMaxIdleTime;
         public static int AutoCloseTime = 120;  //min = 10, max = 720)
         public static int ToleranzIntervall;
 

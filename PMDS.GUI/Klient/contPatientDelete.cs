@@ -79,7 +79,6 @@ namespace PMDS.GUI.Klient
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-
                     var rPatInfo = (from p in db.Patient
                                     where p.ID == this._IDPatient
                                     select new
@@ -145,7 +144,6 @@ namespace PMDS.GUI.Klient
             }
         }
 
-
         public void clearErrorProvider()
         {
             try
@@ -159,20 +157,18 @@ namespace PMDS.GUI.Klient
             }
         }
 
-
         public bool validateData()
         {
             try
             {
                 this.clearErrorProvider();
 
-                if (!this.txtIDPatient.Text.Trim().ToLower().Equals(this._IDPatient.ToString().Trim().ToLower()))
+                if (!Global.generic.sEquals(this.txtIDPatient.Text, this._IDPatient))
                 {
                     this.errorProvider1.SetError(this.txtIDPatient, "Error");
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die eingegebene ID-Patient ist falsch!", "", MessageBoxButtons.OK);
                     return false;
                 }
-
                 return true;
             }
             catch (Exception ex)
@@ -180,8 +176,10 @@ namespace PMDS.GUI.Klient
                 throw new Exception("contPatientDelete.validateData: " + ex.ToString());
             }
         }
+
         public bool saveData()
         {
+            frmDatenExport frmExport = null;
             try
             {
                 if (!this.lastEntlassungszeitpunktOK)
@@ -208,21 +206,31 @@ namespace PMDS.GUI.Klient
 
                         if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sollen die Patientendaten als PDF gesichert werden?", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            bool DocuSuccessfullyGenerated = false;
-                            string FileNamePDFDocument = "";
-                            GuiAction.Datenarchivierung(this._IDPatient, this.textControl1, PMDS.Global.ENV.IDKlinik, ref DocuSuccessfullyGenerated, ref FileNamePDFDocument, PMDS.Global.ENV.eKlientenberichtTyp.full );
-                            if (DocuSuccessfullyGenerated)
+                            frmExport = new frmDatenExport();
+                            frmExport.Init(this._IDPatient, this.textControl1, PMDS.Global.ENV.IDKlinik, PMDS.Global.ENV.eKlientenberichtTyp.full, Global.ENV.eDatenexportTyp.alle);
+                            if (frmExport.bInit)
                             {
-                                if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie das generierte PDF-Dokument mit den Patientendaten öffnen?", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                frmExport.ShowDialog();
+                                if (!String.IsNullOrWhiteSpace(frmExport.FileNamePDFDocument))
                                 {
-                                    frmPdfViewer frmPdfViewer1 = new frmPdfViewer();
-                                    frmPdfViewer1.Show();
-                                    frmPdfViewer1.initControl(FileNamePDFDocument, null);
+                                    if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie das generierte PDF-Dokument mit den Patientendaten öffnen?", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                    {
+                                        using (frmPdfViewer frmPdfViewer1 = new frmPdfViewer())
+                                        {
+                                            frmPdfViewer1.ShowDialog();
+                                            frmPdfViewer1.initControl(frmExport.FileNamePDFDocument, null);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Abbruch Patient löschen!" + "\r\n" + "Klientenbericht konnte nicht erfolgreich erstellt!", "PMDS", MessageBoxButtons.OK);
+                                    return false;
                                 }
                             }
                             else
                             {
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Abbruch Patient löschen!" + "\r\n" + "Klientenbereicht konnte nicht erfolgreich erstellt!", "PMDS", MessageBoxButtons.OK);
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datenarchivierung kann nicht initialisert werden." + "\r\n" + "Klientenbericht konnte nicht erfolgreich erstellt!", "PMDS", MessageBoxButtons.OK);
                                 return false;
                             }
                         }
@@ -241,17 +249,16 @@ namespace PMDS.GUI.Klient
                 {
                     return false;
                 }
-         
             }
             catch (Exception ex)
             {
                 throw new Exception("contPatientDelete.saveData: " + ex.ToString());
             }
+            finally
+            {
+                frmExport?.Dispose();
+            }
         }
-
-
-        
-
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -274,6 +281,7 @@ namespace PMDS.GUI.Klient
                 this.Cursor = Cursors.Default;
             }
         }
+
         private void btnAbort_Click(object sender, EventArgs e)
         {
             try

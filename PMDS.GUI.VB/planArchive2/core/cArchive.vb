@@ -296,66 +296,64 @@ Public Class cArchive
         Try
             Dim ret As New clRet
 
-            Dim compPfad As New compSql
-            'If gen.IsNull(compPfad.pfadLesen()) Then
-            '    MsgBox(gen.GetResString("ERRKeineAngabeDokuPfad"), MsgBoxStyle.Information, "Archivsystem")
-            '    Return False
-            'End If
-            'If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
-            '    MsgBox(gen.GetResString("ERRDokuPfadExistiertNicht"), MsgBoxStyle.Information,"Archivsystem")
-            '    Return False
-            'End If
+            Using compPfad As New compSql
+                'If gen.IsNull(compPfad.pfadLesen()) Then
+                '    MsgBox(gen.GetResString("ERRKeineAngabeDokuPfad"), MsgBoxStyle.Information, "Archivsystem")
+                '    Return False
+                'End If
+                'If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
+                '    MsgBox(gen.GetResString("ERRDokuPfadExistiertNicht"), MsgBoxStyle.Information,"Archivsystem")
+                '    Return False
+                'End If
 
-            Dim anzAbgel As Integer = 0
-            Dim arrIDDokumenteintrag As New ArrayList
-            For Each info As clFileInfo In arrInfo
+                Dim anzAbgel As Integer = 0
+                Dim arrIDDokumenteintrag As New ArrayList
+                For Each info As clFileInfo In arrInfo
 
-                'Pfade erstellen und überprüfen
-                Dim db1 As New db()
-                Dim aktTime As DateTime = db1.getAktTimeFromSQLServer()
-                Dim ablagepfad_sub As String = aktTime.Year.ToString + "_" + aktTime.Month.ToString
-                Dim ablagepfad As String = compPfad.pfadLesen() + "\" + ablagepfad_sub
-                If Not System.IO.Directory.Exists(ablagepfad) Then
-                    System.IO.Directory.CreateDirectory(ablagepfad)
-                End If
+                    'Pfade erstellen und überprüfen
+                    Dim db1 As New db()
+                    Dim aktTime As DateTime = db1.getAktTimeFromSQLServer()
+                    Dim ablagepfad_sub As String = aktTime.Year.ToString + "_" + aktTime.Month.ToString
+                    Dim ablagepfad As String = compPfad.pfadLesen() + "\" + ablagepfad_sub
+                    If Not System.IO.Directory.Exists(ablagepfad) Then
+                        System.IO.Directory.CreateDirectory(ablagepfad)
+                    End If
 
-                ' Dateinamen für Ablage ins Archiv erstellen
-                Dim gIDNeuerDateiname As New System.Guid
-                gIDNeuerDateiname = System.Guid.NewGuid
-                Dim DateinameArchiv As String = aktTime.Year.ToString + aktTime.Month.ToString + aktTime.Day.ToString + "_" +
+                    ' Dateinamen für Ablage ins Archiv erstellen
+                    Dim gIDNeuerDateiname As New System.Guid
+                    gIDNeuerDateiname = System.Guid.NewGuid
+                    Dim DateinameArchiv As String = aktTime.Year.ToString + aktTime.Month.ToString + aktTime.Day.ToString + "_" +
                                                 aktTime.Hour.ToString + "_" + aktTime.Minute.ToString + "_" + aktTime.Second.ToString + "_" +
                                                 gIDNeuerDateiname.ToString + info.file_typ
-                Dim IDDokumenteintrag As New System.Guid
-                IDDokumenteintrag = System.Guid.NewGuid
+                    Dim IDDokumenteintrag As New System.Guid
+                    IDDokumenteintrag = System.Guid.NewGuid
 
-                ' Dokument speichern
-                Dim retDokSp As New clRet
-                retDokSp = Me.DokumentSpeichern(IDDokumenteintrag, DateinameArchiv, ablagepfad_sub, info, Notiz, GültigVon, GültigBis, Wichtigkeit)
-                If retDokSp.OK Then
-                    ' Datei physisch ablegen
-                    If Me.DateiPhysischSpeichern(ablagepfad + "\" + DateinameArchiv, info.fileB) Then
-                        ' Schlagwortkatalog
-                        If Me.SchlagwortkatalogSpeichern(IDDokumenteintrag, dataSchlagwortkatalog) Then
-                            Me.ObjectSpeichern(IDDokumenteintrag, Objects)
-                            If alsUngelesenAblegen Then
-                                Me.DokumentGelesenJN(IDDokumenteintrag, False)
+                    ' Dokument speichern
+                    Dim retDokSp As New clRet
+                    retDokSp = Me.DokumentSpeichern(IDDokumenteintrag, DateinameArchiv, ablagepfad_sub, info, Notiz, GültigVon, GültigBis, Wichtigkeit)
+                    If retDokSp.OK Then
+                        ' Datei physisch ablegen
+                        If Me.DateiPhysischSpeichern(ablagepfad + "\" + DateinameArchiv, info.fileB) Then
+                            ' Schlagwortkatalog
+                            If Me.SchlagwortkatalogSpeichern(IDDokumenteintrag, dataSchlagwortkatalog) Then
+                                Me.ObjectSpeichern(IDDokumenteintrag, Objects)
+                                If alsUngelesenAblegen Then
+                                    Me.DokumentGelesenJN(IDDokumenteintrag, False)
+                                End If
+                                Me.Dateien_originalLöschen(arrFilesToDelete)
+                                anzAbgel += 1
+                                arrIDDokumenteintrag.Add(IDDokumenteintrag)
                             End If
-                            Me.Dateien_originalLöschen(arrFilesToDelete)
-                            anzAbgel += 1
-                            arrIDDokumenteintrag.Add(IDDokumenteintrag)
                         End If
                     End If
-                End If
-            Next
+                Next
 
-            ret.anzAbgelegt = anzAbgel
-            ret.OK = True
-            ret.arrIDDokumenteneintrag = arrIDDokumenteintrag
-            Return ret
+                ret.anzAbgelegt = anzAbgel
+                ret.OK = True
+                ret.arrIDDokumenteneintrag = arrIDDokumenteintrag
+                Return ret
 
-            'MsgBox(gen.GetResString("DateiWurdeInsArchivAbgelegt") + vbNewLine + _
-            '           gen.GetResString("Anzahl") + " " + arrInfo.Count.ToString, MsgBoxStyle.Information, "Archivsystem")
-            'arrInfo = Nothing
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.DokumentInsArchivAblegen: " + ex.ToString())
@@ -387,52 +385,53 @@ Public Class cArchive
         Try
             Dim ret As New clRet
 
-            Dim compDoku As New compSql
-            Dim r_Dokumenteintrag As dsPlanArchive.tblDokumenteintragRow
-            Dim dataDokumenteintrag As New dsPlanArchive
-            r_Dokumenteintrag = dataDokumenteintrag.tblDokumenteintrag.NewRow()
-            Dim ini As New GeneralArchiv
-            ini.initRow(r_Dokumenteintrag)
-            r_Dokumenteintrag.ID = IDDokumenteintrag
-            r_Dokumenteintrag.IDOrdner = info.file_IDOrdner
-            r_Dokumenteintrag.Bezeichnung = info.file_Bezeichnung
-            r_Dokumenteintrag.Notiz = Trim(Notiz)
-            'r_Dokumenteintrag.NotizRTF = Nothing
-            r_Dokumenteintrag.GültigVon = GültigVon
-            r_Dokumenteintrag.GültigBis = GültigBis
-            r_Dokumenteintrag.Wichtigkeit = Wichtigkeit
-            r_Dokumenteintrag.ErstelltVon = gen.actUser
-            r_Dokumenteintrag.ErstelltAm = Now
-            If Not compDoku.insertDokumenteintrag(r_Dokumenteintrag) Then
-                MsgBox("Fehler beim Speichern des Dokumentes!", MsgBoxStyle.Information, "Archivsystem")
-                ret.OK = False
-                Return ret
-            End If
+            Using compDoku As New compSql
+                Dim r_Dokumenteintrag As dsPlanArchive.tblDokumenteintragRow
+                Dim dataDokumenteintrag As New dsPlanArchive
+                r_Dokumenteintrag = dataDokumenteintrag.tblDokumenteintrag.NewRow()
+                Dim ini As New GeneralArchiv
+                ini.initRow(r_Dokumenteintrag)
+                r_Dokumenteintrag.ID = IDDokumenteintrag
+                r_Dokumenteintrag.IDOrdner = info.file_IDOrdner
+                r_Dokumenteintrag.Bezeichnung = info.file_Bezeichnung
+                r_Dokumenteintrag.Notiz = Trim(Notiz)
+                'r_Dokumenteintrag.NotizRTF = Nothing
+                r_Dokumenteintrag.GültigVon = GültigVon
+                r_Dokumenteintrag.GültigBis = GültigBis
+                r_Dokumenteintrag.Wichtigkeit = Wichtigkeit
+                r_Dokumenteintrag.ErstelltVon = gen.actUser
+                r_Dokumenteintrag.ErstelltAm = Now
+                If Not compDoku.insertDokumenteintrag(r_Dokumenteintrag) Then
+                    MsgBox("Fehler beim Speichern des Dokumentes!", MsgBoxStyle.Information, "Archivsystem")
+                    ret.OK = False
+                    Return ret
+                End If
 
-            Dim r_Dokumente As dsPlanArchive.tblDokumenteSmallRow
-            Dim dataDokumente As New dsPlanArchive
-            r_Dokumente = dataDokumente.tblDokumenteSmall.NewRow()
-            ini.initRow(r_Dokumente)
-            r_Dokumente.ID = System.Guid.NewGuid
-            r_Dokumente.IDDokumenteintrag = r_Dokumenteintrag.ID
-            r_Dokumente.DateinameOrig = info.file_name
-            r_Dokumente.VerzeichnisOrig = info.file_origVerzeichnis
-            r_Dokumente.DokumentGröße = info.file_größe
-            r_Dokumente.DokumentErstellt = info.file_erstelltAm
-            r_Dokumente.DokumentGeändert = info.file_geändertAm
-            r_Dokumente.ErstelltAm = Now
-            r_Dokumente.ErstelltVon = gen.actUser
-            r_Dokumente.Winzip = False
-            r_Dokumente.DateinameArchiv = DateinameArchiv
-            r_Dokumente.Archivordner = ablagepfad_sub
-            r_Dokumente.DateinameTyp = info.file_typ
-            If Not compDoku.insertDokument(r_Dokumente) Then
-                MsgBox("Fehler beim Speichern des Dokumentes!", MsgBoxStyle.Information, "Archivsystem")
-                ret.OK = False
+                Dim r_Dokumente As dsPlanArchive.tblDokumenteSmallRow
+                Dim dataDokumente As New dsPlanArchive
+                r_Dokumente = dataDokumente.tblDokumenteSmall.NewRow()
+                ini.initRow(r_Dokumente)
+                r_Dokumente.ID = System.Guid.NewGuid
+                r_Dokumente.IDDokumenteintrag = r_Dokumenteintrag.ID
+                r_Dokumente.DateinameOrig = info.file_name
+                r_Dokumente.VerzeichnisOrig = info.file_origVerzeichnis
+                r_Dokumente.DokumentGröße = info.file_größe
+                r_Dokumente.DokumentErstellt = info.file_erstelltAm
+                r_Dokumente.DokumentGeändert = info.file_geändertAm
+                r_Dokumente.ErstelltAm = Now
+                r_Dokumente.ErstelltVon = gen.actUser
+                r_Dokumente.Winzip = False
+                r_Dokumente.DateinameArchiv = DateinameArchiv
+                r_Dokumente.Archivordner = ablagepfad_sub
+                r_Dokumente.DateinameTyp = info.file_typ
+                If Not compDoku.insertDokument(r_Dokumente) Then
+                    MsgBox("Fehler beim Speichern des Dokumentes!", MsgBoxStyle.Information, "Archivsystem")
+                    ret.OK = False
+                    Return ret
+                End If
+                ret.OK = True
                 Return ret
-            End If
-            ret.OK = True
-            Return ret
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.DokumentSpeichern: " + ex.ToString())
@@ -442,22 +441,23 @@ Public Class cArchive
         Try
 
             ' Schlagwortkatalog speichern
-            Dim comp As New compSql
-            comp.deleteDokumenteneintragSchlagwörter(IDDokumenteintrag)      ' alle Schlagwörter löschen
-            For Each r As dsPlanArchive.tblSchlagwörterRow In dataSchlagwortkatalog.tblSchlagwörter
-                If r("Gültig") = True Then
-                    Dim r_dokSchlagw As dsPlanArchive.tblDokumenteneintragSchlagwörterRow
-                    Dim dataDokumenteneintragSchlagwörter As New dsPlanArchive
-                    r_dokSchlagw = dataDokumenteneintragSchlagwörter.tblDokumenteneintragSchlagwörter.NewRow
-                    Dim ini As New GeneralArchiv
-                    ini.initRow(r_dokSchlagw)
-                    r_dokSchlagw.ID = System.Guid.NewGuid
-                    r_dokSchlagw.IDDokumenteneintrag = IDDokumenteintrag
-                    r_dokSchlagw.IDSchlagwort = r.ID
-                    comp.writeDokumenteneintragSchlagwörter(r_dokSchlagw)
-                End If
-            Next
-            Return True
+            Using comp As New compSql
+                comp.deleteDokumenteneintragSchlagwörter(IDDokumenteintrag)      ' alle Schlagwörter löschen
+                For Each r As dsPlanArchive.tblSchlagwörterRow In dataSchlagwortkatalog.tblSchlagwörter
+                    If r("Gültig") = True Then
+                        Dim r_dokSchlagw As dsPlanArchive.tblDokumenteneintragSchlagwörterRow
+                        Dim dataDokumenteneintragSchlagwörter As New dsPlanArchive
+                        r_dokSchlagw = dataDokumenteneintragSchlagwörter.tblDokumenteneintragSchlagwörter.NewRow
+                        Dim ini As New GeneralArchiv
+                        ini.initRow(r_dokSchlagw)
+                        r_dokSchlagw.ID = System.Guid.NewGuid
+                        r_dokSchlagw.IDDokumenteneintrag = IDDokumenteintrag
+                        r_dokSchlagw.IDSchlagwort = r.ID
+                        comp.writeDokumenteneintragSchlagwörter(r_dokSchlagw)
+                    End If
+                Next
+                Return True
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.SchlagwortkatalogSpeichern: " + ex.ToString())
@@ -466,37 +466,38 @@ Public Class cArchive
     Public Function ObjectSpeichern(ByVal IDDokumenteintrag As System.Guid, ByVal Objects As ArrayList) As Boolean
         Try
 
-            Dim comp As New compSql
-            For Each ob As clObject In Objects
-                Dim r_object As dsPlanArchive.tblObjektRow
-                Dim data As New dsPlanArchive
-                r_object = data.tblObjekt.NewRow
-                Dim ini As New GeneralArchiv
-                ini.initRow(r_object)
+            Using comp As New compSql
+                For Each ob As clObject In Objects
+                    Dim r_object As dsPlanArchive.tblObjektRow
+                    Dim data As New dsPlanArchive
+                    r_object = data.tblObjekt.NewRow
+                    Dim ini As New GeneralArchiv
+                    ini.initRow(r_object)
 
-                r_object.ID = System.Guid.NewGuid
-                r_object.IDDokumenteintrag = IDDokumenteintrag
-                r_object.Datenbankidentität = True
-                r_object.bezeichnung = ob.bezeichnung
-                Dim typ As New compSql.eTypObj
+                    r_object.ID = System.Guid.NewGuid
+                    r_object.IDDokumenteintrag = IDDokumenteintrag
+                    r_object.Datenbankidentität = True
+                    r_object.bezeichnung = ob.bezeichnung
+                    Dim typ As New compSql.eTypObj
 
-                If ob.id.GetType.ToString = "System.Int32" Then
-                    r_object.ID_int = ob.id
-                    typ = compSql.eTypObj.int
-                ElseIf ob.id.GetType.ToString = "System.String" Then
-                    Try
-                        Dim id As New System.Guid(ob.id.ToString)
-                        r_object.ID_guid = id
-                        typ = compSql.eTypObj.guid
-                    Catch ex As Exception
-                        r_object.ID_str = ob.id
-                        typ = compSql.eTypObj.str
-                    End Try
-                End If
+                    If ob.id.GetType.ToString = "System.Int32" Then
+                        r_object.ID_int = ob.id
+                        typ = compSql.eTypObj.int
+                    ElseIf ob.id.GetType.ToString = "System.String" Then
+                        Try
+                            Dim id As New System.Guid(ob.id.ToString)
+                            r_object.ID_guid = id
+                            typ = compSql.eTypObj.guid
+                        Catch ex As Exception
+                            r_object.ID_str = ob.id
+                            typ = compSql.eTypObj.str
+                        End Try
+                    End If
 
-                comp.insertObject(r_object)
-            Next
-            Return True
+                    comp.insertObject(r_object)
+                Next
+                Return True
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.ObjectSpeichern: " + ex.ToString())
@@ -523,20 +524,21 @@ Public Class cArchive
     Public Function DokumentGelesenJN(ByVal IDDokumenteintrag As System.Guid, ByVal gelesen As Boolean) As Boolean
         Try
 
-            Dim compGelesen As New compSql
-            Dim r_insert As dsPlanArchive.tblDokumenteGelesenRow
-            Dim data As New dsPlanArchive
-            r_insert = data.tblDokumenteGelesen.NewRow()
-            Dim ini As New GeneralArchiv
-            ini.initRow(r_insert)
-            r_insert.ID = System.Guid.NewGuid
-            r_insert.IDDokumenteneintrag = IDDokumenteintrag
-            r_insert.gelesen = gelesen
-            If Not compGelesen.insertGelesenJN(r_insert) Then
-                Throw New Exception("DokumentGelesenJN: Dokument konnte nicht als gelesen abgelegt werden!")
-                Return False
-            End If
-            Return True
+            Using compGelesen As New compSql
+                Dim r_insert As dsPlanArchive.tblDokumenteGelesenRow
+                Dim data As New dsPlanArchive
+                r_insert = data.tblDokumenteGelesen.NewRow()
+                Dim ini As New GeneralArchiv
+                ini.initRow(r_insert)
+                r_insert.ID = System.Guid.NewGuid
+                r_insert.IDDokumenteneintrag = IDDokumenteintrag
+                r_insert.gelesen = gelesen
+                If Not compGelesen.insertGelesenJN(r_insert) Then
+                    Throw New Exception("DokumentGelesenJN: Dokument konnte nicht als gelesen abgelegt werden!")
+                    Return False
+                End If
+                Return True
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.DokumentGelesenJN: " + ex.ToString())
@@ -546,50 +548,51 @@ Public Class cArchive
     Public Function dateiAusArchivLöschen(ByVal IDDokumenteintrag As System.Guid, ByVal withMsgBox As Boolean) As Boolean
         Try
 
-            Dim compPfad As New compSql
-            If gen.IsNull(compPfad.pfadLesen()) Then
-                MsgBox("Es existiert kein Dokumentepfad!", MsgBoxStyle.Information, "Archivsystem")
-                Return False
-            End If
-            If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
-                MsgBox("Der Archivpfad für diese Archivdatenbank existiert nicht!", MsgBoxStyle.Information, "Archivsystem")
-                Return False
-            End If
-
-            If Not gen.IsNull(IDDokumenteintrag) Then
-                Dim ret As MsgBoxResult
-                If withMsgBox Then
-                    ret = MsgBox("Wollen Sie das Dokument wirklich löschen?", MsgBoxStyle.YesNo, "Archivsystem")
-                Else
-                    ret = MsgBoxResult.Yes
+            Using compPfad As New compSql
+                If gen.IsNull(compPfad.pfadLesen()) Then
+                    MsgBox("Es existiert kein Dokumentepfad!", MsgBoxStyle.Information, "Archivsystem")
+                    Return False
                 End If
-                If ret = MsgBoxResult.Yes Then
-                    Dim comp As New compSql
-                    Dim r_Dokumente As dsPlanArchive.tblDokumenteSmallRow
-                    r_Dokumente = comp.LesenDokument_IDDokueintrag(IDDokumenteintrag)
-                    If Not gen.IsNull(r_Dokumente) Then
-                        Dim fileToDelete As String = compPfad.pfadLesen() + "\" + r_Dokumente.Archivordner + "\" + r_Dokumente.DateinameArchiv
-                        'If MsgBox("Soll die Datei auch physisch aus dem Archivsystem gelöscht werden?", MsgBoxStyle.YesNo, "PMDS") = MsgBoxResult.Yes Then
-                        '    If System.IO.File.Exists(fileToDelete) Then
-                        '        System.IO.File.Delete(fileToDelete)
-                        '    Else
-                        '        MsgBox("Die Datei existiert nicht!", MsgBoxStyle.Information, "Archivsystem")
-                        '    End If
-                        'End If
-                        If System.IO.File.Exists(fileToDelete) Then
-                            System.IO.File.Delete(fileToDelete)
-                        End If
-                        'Dim compObj As New S2ArchivWork.compObjekt
-                        'compObj.ObjekteLöschen(r_Dokumente.IDDokumenteintrag)
-                        If comp.DokumenteneintragLöschen(r_Dokumente.IDDokumenteintrag) Then
-                            MsgBox("Die Datei wurde gelöscht!", MsgBoxStyle.Information, "Archivsystem")
-                            Return True
-                        End If
+                If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
+                    MsgBox("Der Archivpfad für diese Archivdatenbank existiert nicht!", MsgBoxStyle.Information, "Archivsystem")
+                    Return False
+                End If
+
+                If Not gen.IsNull(IDDokumenteintrag) Then
+                    Dim ret As MsgBoxResult
+                    If withMsgBox Then
+                        ret = MsgBox("Wollen Sie das Dokument wirklich löschen?", MsgBoxStyle.YesNo, "Archivsystem")
                     Else
-                        MsgBox("Das Dokument wurde nicht gefunden!", MsgBoxStyle.Information, "Archivsystem")
+                        ret = MsgBoxResult.Yes
+                    End If
+                    If ret = MsgBoxResult.Yes Then
+                        Dim comp As New compSql
+                        Dim r_Dokumente As dsPlanArchive.tblDokumenteSmallRow
+                        r_Dokumente = comp.LesenDokument_IDDokueintrag(IDDokumenteintrag)
+                        If Not gen.IsNull(r_Dokumente) Then
+                            Dim fileToDelete As String = compPfad.pfadLesen() + "\" + r_Dokumente.Archivordner + "\" + r_Dokumente.DateinameArchiv
+                            'If MsgBox("Soll die Datei auch physisch aus dem Archivsystem gelöscht werden?", MsgBoxStyle.YesNo, "PMDS") = MsgBoxResult.Yes Then
+                            '    If System.IO.File.Exists(fileToDelete) Then
+                            '        System.IO.File.Delete(fileToDelete)
+                            '    Else
+                            '        MsgBox("Die Datei existiert nicht!", MsgBoxStyle.Information, "Archivsystem")
+                            '    End If
+                            'End If
+                            If System.IO.File.Exists(fileToDelete) Then
+                                System.IO.File.Delete(fileToDelete)
+                            End If
+                            'Dim compObj As New S2ArchivWork.compObjekt
+                            'compObj.ObjekteLöschen(r_Dokumente.IDDokumenteintrag)
+                            If comp.DokumenteneintragLöschen(r_Dokumente.IDDokumenteintrag) Then
+                                MsgBox("Die Datei wurde gelöscht!", MsgBoxStyle.Information, "Archivsystem")
+                                Return True
+                            End If
+                        Else
+                            MsgBox("Das Dokument wurde nicht gefunden!", MsgBoxStyle.Information, "Archivsystem")
+                        End If
                     End If
                 End If
-            End If
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.dateiAusArchivLöschen: " + ex.ToString())
@@ -598,35 +601,36 @@ Public Class cArchive
     Public Function dateiInDenPapierkorbVerschieben(ByVal IDDokumenteintrag As System.Guid) As Boolean
         Try
 
-            Dim compOrd As New compSql
-            If Not compOrd.ExistiertPapierkorbJN() Then
-                MsgBox("Es existiert kein Papierkorb!" + vbNewLine +
+            Using compOrd As New compSql
+                If Not compOrd.ExistiertPapierkorbJN() Then
+                    MsgBox("Es existiert kein Papierkorb!" + vbNewLine +
                         "Die Datei kann nicht verschoben werden", MsgBoxStyle.Information, "Archivsystem")
-                Return False
-            End If
-            Dim compPfad As New compSql
-            If gen.IsNull(compPfad.pfadLesen()) Then
-                MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
-                Return False
-            End If
-            If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
-                MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
-                Return False
-            End If
+                    Return False
+                End If
+                Dim compPfad As New compSql
+                If gen.IsNull(compPfad.pfadLesen()) Then
+                    MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
+                    Return False
+                End If
+                If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
+                    MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
+                    Return False
+                End If
 
-            If Not gen.IsNull(IDDokumenteintrag) Then
-                If MsgBox("Soll die Datei wirklich in den Papierkorb verschoben werden?", MsgBoxStyle.YesNo, "Archivsystem") = MsgBoxResult.Yes Then
-                    Dim IDOrdnerPapierkorb As New System.Guid
-                    IDOrdnerPapierkorb = compOrd.GetIDOrdnerPapierkorb()
-                    If Not gen.IsNull(IDOrdnerPapierkorb) Then
-                        compOrd.UpdateIDOrdner_Dokumenteintrag(IDDokumenteintrag, IDOrdnerPapierkorb)
-                        MsgBox("Die Datei wurde in den Papierkorb verschoben!", MsgBoxStyle.Information, "Archivsystem")
-                        Return True
-                    Else
-                        Throw New Exception("DateiInDenPapierkorbVerschieben: Die IDOrdner für den Papierkorb konnte nicht gelöscht werden!")
+                If Not gen.IsNull(IDDokumenteintrag) Then
+                    If MsgBox("Soll die Datei wirklich in den Papierkorb verschoben werden?", MsgBoxStyle.YesNo, "Archivsystem") = MsgBoxResult.Yes Then
+                        Dim IDOrdnerPapierkorb As New System.Guid
+                        IDOrdnerPapierkorb = compOrd.GetIDOrdnerPapierkorb()
+                        If Not gen.IsNull(IDOrdnerPapierkorb) Then
+                            compOrd.UpdateIDOrdner_Dokumenteintrag(IDDokumenteintrag, IDOrdnerPapierkorb)
+                            MsgBox("Die Datei wurde in den Papierkorb verschoben!", MsgBoxStyle.Information, "Archivsystem")
+                            Return True
+                        Else
+                            Throw New Exception("DateiInDenPapierkorbVerschieben: Die IDOrdner für den Papierkorb konnte nicht gelöscht werden!")
+                        End If
                     End If
                 End If
-            End If
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.dateiInDenPapierkorbVerschieben: " + ex.ToString())
@@ -666,26 +670,27 @@ Public Class cArchive
 
     Public Function checkSysOrdner_anhangPlanung() As Boolean
         Try
-            Dim comp As New compSql
-            Dim IDOrdner As New System.Guid
-            IDOrdner = Nothing
-            IDOrdner = comp.GetIDOrdnerAnhangPlanungssystem()
-            If Not gen.IsNull(IDOrdner) Then
-                Dim compPfad As New compSql
-                Dim pfadArchivsystem As String = compPfad.pfadLesen()
-                If gen.IsNull(pfadArchivsystem) Then
-                    MsgBox("Es existiert Archivpfad im Archivsystem!" + vbNewLine +
+            Using comp As New compSql
+                Dim IDOrdner As New System.Guid
+                IDOrdner = Nothing
+                IDOrdner = comp.GetIDOrdnerAnhangPlanungssystem()
+                If Not gen.IsNull(IDOrdner) Then
+                    Dim compPfad As New compSql
+                    Dim pfadArchivsystem As String = compPfad.pfadLesen()
+                    If gen.IsNull(pfadArchivsystem) Then
+                        MsgBox("Es existiert Archivpfad im Archivsystem!" + vbNewLine +
                            "Somit können keine Dokumente an E-Mails bzw. Termine angefügt werden'!" + vbNewLine +
                                 "Bitte melden Sie das Ihren Administrator.", MsgBoxStyle.Information, "Archivsystem")
-                    Return False
-                End If
-            Else
-                MsgBox("Es existiert kein Systemordner 'Anhang Planungssystem' im Archivsystem!" + vbNewLine +
+                        Return False
+                    End If
+                Else
+                    MsgBox("Es existiert kein Systemordner 'Anhang Planungssystem' im Archivsystem!" + vbNewLine +
                        "Somit können keine Dokumente an E-Mails bzw. Termine angefügt werden'!" + vbNewLine +
                             "Bitte melden Sie das Ihren Administrator.", MsgBoxStyle.Information, "Archivsystem")
+                    Return True
+                End If
                 Return True
-            End If
-            Return True
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.checkSysOrdner_anhangPlanung: " + ex.ToString())
@@ -761,46 +766,47 @@ Public Class cArchive
     Public Function DokumentInZwischenablageSpeichern(ByVal IDDokumenteintrag As System.Guid) As String
         Try
 
-            Dim compPfad As New compSql
-            If gen.IsNull(compPfad.pfadLesen()) Then
-                MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
-                Return False
-            End If
-            If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
-                MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
-                Return False
-            End If
+            Using compPfad As New compSql
+                If gen.IsNull(compPfad.pfadLesen()) Then
+                    MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
+                    Return False
+                End If
+                If Not System.IO.Directory.Exists(compPfad.pfadLesen()) Then
+                    MsgBox("Es existiert kein Dokumentenpfad!", MsgBoxStyle.Information, "Archivsystem")
+                    Return False
+                End If
 
-            If Not gen.IsNull(IDDokumenteintrag) Then
-                Dim comp As New compSql
-                Dim r_Dokumenteintrag As dsPlanArchive.tblDokumenteintragRow
-                r_Dokumenteintrag = comp.LesenDokumenteintrag(IDDokumenteintrag)
-                If Not gen.IsNull(r_Dokumenteintrag) Then
-                    Dim r_Dokumente As dsPlanArchive.tblDokumenteSmallRow
-                    r_Dokumente = comp.LesenDokument_IDDokueintrag(r_Dokumenteintrag.ID)
-                    If Not gen.IsNull(r_Dokumente) Then
-                        ' Datei in die Zwischenablage kopieren
-                        Dim dateiClipboard As String = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, r_Dokumenteintrag.Bezeichnung + "." + r_Dokumente.DateinameTyp)
-                        Dim dateiArchiv As String = System.IO.Path.Combine(compPfad.pfadLesen, r_Dokumente.Archivordner, r_Dokumente.DateinameArchiv)
-                        If System.IO.File.Exists(dateiClipboard) Then
-                            Try
-                                System.IO.File.Delete(dateiClipboard)
-                            Catch ex As Exception
-                                Throw New Exception("cArchive.DokumentInZwischenablageSpeichern Datei kann nicht gelöscht werden: " + dateiClipboard)
-                            End Try
+                If Not gen.IsNull(IDDokumenteintrag) Then
+                    Dim comp As New compSql
+                    Dim r_Dokumenteintrag As dsPlanArchive.tblDokumenteintragRow
+                    r_Dokumenteintrag = comp.LesenDokumenteintrag(IDDokumenteintrag)
+                    If Not gen.IsNull(r_Dokumenteintrag) Then
+                        Dim r_Dokumente As dsPlanArchive.tblDokumenteSmallRow
+                        r_Dokumente = comp.LesenDokument_IDDokueintrag(r_Dokumenteintrag.ID)
+                        If Not gen.IsNull(r_Dokumente) Then
+                            ' Datei in die Zwischenablage kopieren
+                            Dim dateiClipboard As String = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, r_Dokumenteintrag.Bezeichnung + "." + r_Dokumente.DateinameTyp)
+                            Dim dateiArchiv As String = System.IO.Path.Combine(compPfad.pfadLesen, r_Dokumente.Archivordner, r_Dokumente.DateinameArchiv)
+                            If System.IO.File.Exists(dateiClipboard) Then
+                                Try
+                                    System.IO.File.Delete(dateiClipboard)
+                                Catch ex As Exception
+                                    Throw New Exception("cArchive.DokumentInZwischenablageSpeichern Datei kann nicht gelöscht werden: " + dateiClipboard)
+                                End Try
+                            End If
+                            System.IO.File.Copy(dateiArchiv, dateiClipboard)
+                            Dim info As New System.IO.FileInfo(dateiClipboard)
+                            info.IsReadOnly = False
+                            Return dateiClipboard
+                        Else
+                            MsgBox("Es existiert kein Dokuemtenpfad!", MsgBoxStyle.Information, "Archivsystem")
                         End If
-                        System.IO.File.Copy(dateiArchiv, dateiClipboard)
-                        Dim info As New System.IO.FileInfo(dateiClipboard)
-                        info.IsReadOnly = False
-                        Return dateiClipboard
                     Else
                         MsgBox("Es existiert kein Dokuemtenpfad!", MsgBoxStyle.Information, "Archivsystem")
                     End If
-                Else
-                    MsgBox("Es existiert kein Dokuemtenpfad!", MsgBoxStyle.Information, "Archivsystem")
                 End If
-            End If
-            Return ""
+                Return ""
+            End Using
 
         Catch ex As Exception
             Throw New Exception("cArchive.DokumentInZwischenablageSpeichern: " + ex.ToString())

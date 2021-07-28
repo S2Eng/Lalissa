@@ -12,35 +12,35 @@ namespace PMDS.Data.Patient
 
     public class dbQueries_os
     {
+        //obsolet. In GuiAction durch Linq ersetzt
+        //public dsAnamnesen.AnamnesenProPatientDataTable GetAllAnamnesenProPatient(System.Guid IDKlient)
+        //{
+        //    dsAnamnesen.AnamnesenProPatientDataTable dt = new dsAnamnesen.AnamnesenProPatientDataTable();
 
-        public dsAnamnesen.AnamnesenProPatientDataTable GetAllAnamnesenProPatient(System.Guid IDKlient)
-        {
-            dsAnamnesen.AnamnesenProPatientDataTable dt = new dsAnamnesen.AnamnesenProPatientDataTable();
+        //    AnamnesenProPatientTableAdapter ta = new AnamnesenProPatientTableAdapter();
+        //    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+        //        RBU.DataBase.CONNECTION.Open();
+        //    ta.Connection = RBU.DataBase.CONNECTION;
 
-            AnamnesenProPatientTableAdapter ta = new AnamnesenProPatientTableAdapter();
-            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                RBU.DataBase.CONNECTION.Open();
-            ta.Connection = RBU.DataBase.CONNECTION;
+        //    dt = ta.GetAllKrowinkelByPatient(IDKlient);
+        //    dt = ta.GetAllOremByPatient(IDKlient);
+        //    return dt;
+        //}
 
-            dt = ta.GetAllKrowinkelByPatient(IDKlient);
-            dt = ta.GetAllOremByPatient(IDKlient);
-            return dt;
-        }
+        //public dsAnamnesen.FormularDatenDataTable GetAllAssessmentsProPatient(System.Guid IDKlient)
+        //{
+        //    dsAnamnesen.FormularDatenDataTable dt = new dsAnamnesen.FormularDatenDataTable();
 
-        public dsAnamnesen.FormularDatenDataTable GetAllAssessmentsProPatient(System.Guid IDKlient)
-        {
-            dsAnamnesen.FormularDatenDataTable dt = new dsAnamnesen.FormularDatenDataTable();
+        //    FormularDatenTableAdapter ta = new FormularDatenTableAdapter();
+        //    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+        //        RBU.DataBase.CONNECTION.Open();
+        //    ta.Connection = RBU.DataBase.CONNECTION;
 
-            FormularDatenTableAdapter ta = new FormularDatenTableAdapter();
-            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                RBU.DataBase.CONNECTION.Open();
-            ta.Connection = RBU.DataBase.CONNECTION;
-
-            dt = ta.GetAllFormulareByPatient(IDKlient);
-            return dt;
+        //    dt = ta.GetAllFormulareByPatient(IDKlient);
+        //    return dt;
                        
 
-        }
+        //}
 
     }
 

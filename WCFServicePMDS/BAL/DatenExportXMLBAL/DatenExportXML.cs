@@ -91,6 +91,9 @@ namespace WCFServicePMDS.DatenExportXMLBAL
 
         public bool Export(Guid IDClient, System.Guid IDPatient, ref string ArchivPath, out string FileNameXMLDocumentBack, bool IsTest)
         {
+            FileNameXMLDocumentBack = "";
+            return false;
+            /*
             try
             {
 
@@ -1072,22 +1075,6 @@ namespace WCFServicePMDS.DatenExportXMLBAL
         {
             //ENV.initPDFIum();
 
-            /*  Statt Benutzer zu jedem Node -> Benutzerliste in Stammdaten
-            //Verschiedene Feldnamen in der DB für Suche in Benutzer-Tabelle, Adresstabelle usw.
-            BenutzerFieldnames.Add("IDBENUTZER", "Benutzer");
-            BenutzerFieldnames.Add("IDBENUTZER_ERSTELLT", "Benutzer_Erstellt");
-            BenutzerFieldnames.Add("IDBENUTZERERSTELLT", "Benutzer_Erstellt");
-            BenutzerFieldnames.Add("IDBENUTZER_BENDET", "Benutzer_Beendet");
-            BenutzerFieldnames.Add("IDBENUTZER_AUFNAHME", "Benutzer_Aufnahme");
-            BenutzerFieldnames.Add("IDBENUTZER_ENTLASSUNG", "Benutzer_Entlassung");
-            BenutzerFieldnames.Add("IDBENUTZER_GEÄNDERT", "Benutzer_Geändert");
-            BenutzerFieldnames.Add("IDBENUTZER_GEAENDERT", "Benutzer_Geändert");
-            BenutzerFieldnames.Add("IDBENUTZERGEAENDERT", "Benutzer_Geändert");
-            BenutzerFieldnames.Add("IDBENUTZERAUSGEGEBEN", "Benutzer_Ausgegeben");
-            BenutzerFieldnames.Add("IDBENUTZERZURUECK", "Benutzer_Rücknahme");
-            BenutzerFieldnames.Add("EDIBENUTZER", "EDI_Benutzer");
-           */
-
             AdresseFieldnames.Add("IDADRESSE", "Adresse");
             AdresseFieldnames.Add("IDADRESSESUB", "AdresseSub");
 
@@ -1330,8 +1317,8 @@ namespace WCFServicePMDS.DatenExportXMLBAL
             {
                 throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.AddNode: " + ex.ToString());
             }
+            */
         }
-
     }
 
 }

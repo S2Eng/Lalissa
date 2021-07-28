@@ -371,7 +371,7 @@ namespace PMDS.GUI
 
         public static void checkUserAcitvity()
         {
-            if (ENV.MaxIdleTime > 0 )
+            if (ENV.MaxIdleTime > 0 && !ENV.IgnoreMaxIdleTime)
             {
                 _guiworkflow._SitemapStart.timer2.Enabled = true;
                 _guiworkflow._SitemapStart.timer2.Start();
