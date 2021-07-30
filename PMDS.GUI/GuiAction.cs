@@ -219,7 +219,8 @@ namespace PMDS.GUI
         public static bool Datenarchivierung(System.Guid IDPatient, ref TXTextControl.TextControl txtEditor, System.Guid IDKlinik, 
                             out bool DocuSuccessfullyGenerated, out string FileNamePDFDocumentBack, 
                             ENV.eKlientenberichtTyp KlientenberichtTyp, ENV.eDatenexportTyp DatenexportTyp,
-                            ref PMDS.GUI.ucRichTextBox RTFLog)    //für einen Klienten
+                            ref PMDS.GUI.ucRichTextBox RTFLog,
+                            bool chkPDFExport, bool chkXMLExport)   
         {
             //Aktuellen Standarddrucker merken
             //string Standarddrucker =  PMDS.Print.CR.PrinterSettings.GetDefaultPrinterName();            
@@ -235,16 +236,18 @@ namespace PMDS.GUI
                 string filenamePDFA = "";
                 DocuSuccessfullyGenerated = false;
                 FileNamePDFDocumentBack = "";
+                int cntPDFExport = 0;
+                int cntXMLExport = 0;
 
                 System.Guid[] arrAbteilung = null;
  
 
                 if (IDPatient == Guid.Empty)            //Alle Patienten
                 {
-                    if (DatenexportTyp == ENV.eDatenexportTyp.aktiv || DatenexportTyp == ENV.eDatenexportTyp.aktiv)
+                    if (DatenexportTyp == ENV.eDatenexportTyp.alle || DatenexportTyp == ENV.eDatenexportTyp.aktiv)
                       PatListe1 = GuiUtil.GetKlientenforCurrentSelectionAbrech(false, IDKlinik);  // aktive
 
-                    if (DatenexportTyp == ENV.eDatenexportTyp.aktiv || DatenexportTyp == ENV.eDatenexportTyp.entlassen)
+                    if (DatenexportTyp == ENV.eDatenexportTyp.alle || DatenexportTyp == ENV.eDatenexportTyp.entlassen)
                     {
                         using (dsPatientStation.PatientDataTable PatListe2 = GuiUtil.GetKlientenforCurrentSelectionAbrech(true, IDKlinik))   // entlassene)
                         {
@@ -299,239 +302,256 @@ namespace PMDS.GUI
                     if (String.IsNullOrWhiteSpace(tmpFullPath)) 
                         return false;
 
-                    DatenexportLog(RTFLog, "Starten Klientenbericht für " + pat.Nachname.Trim() + "_" + pat.Vorname.Trim());
-
-                    //Klientenbericht ausgeben (für jeden Klienten einmal)
-                    PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, "Klientenbericht.rpt"), r.ID, Guid.Empty, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, 0);
-
-                    FileInfo[] pdfList;
-                    DirectoryInfo di;
-
-                    //Zusätzliche Berichte einmal pro Klient
-                    di = new DirectoryInfo(Path.GetDirectoryName(System.IO.Path.Combine(ENV.ReportPath, "*.*")));
-                    pdfList = di.GetFiles("Klientenbericht.Sub.0*", SearchOption.TopDirectoryOnly);
-                    foreach (FileInfo fi in pdfList)
+                    if (chkPDFExport)
                     {
-                        PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, Guid.Empty, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, 0);
-                    }
+                        DatenexportLog(RTFLog, "Starten PDF-Klientenbericht für " + pat.Nachname.Trim() + "_" + pat.Vorname.Trim());
 
-                    //Aufenthaltsabhängige Berichte
-                    int cntAufenthalt = 0;
-                    dsAufenthalt.AufenthaltDataTable Aufenthalte = Aufenthalt.ByPatient(r.ID);
-                    foreach (dsAufenthalt.AufenthaltRow auf in Aufenthalte)
-                    {
-                        cntAufenthalt++;
-                        if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && auf.IsEntlassungszeitpunktNull() || KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
+                        //Klientenbericht ausgeben (für jeden Klienten einmal)
+                        PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, "Klientenbericht.rpt"), r.ID, Guid.Empty, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, 0);
+
+                        FileInfo[] pdfList;
+                        DirectoryInfo di;
+
+                        //Zusätzliche Berichte einmal pro Klient
+                        di = new DirectoryInfo(Path.GetDirectoryName(System.IO.Path.Combine(ENV.ReportPath, "*.*")));
+                        pdfList = di.GetFiles("Klientenbericht.Sub.0*", SearchOption.TopDirectoryOnly);
+                        foreach (FileInfo fi in pdfList)
                         {
-                            // Im Reportsdirectory alle Klientenbericht.0*.rpt suchen und nacheinander drucken
-                            di = new DirectoryInfo(Path.GetDirectoryName(System.IO.Path.Combine(ENV.ReportPath, "*.*")));
-                            pdfList = di.GetFiles("Klientenbericht.0*", SearchOption.TopDirectoryOnly);
+                            PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, Guid.Empty, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, 0);
+                        }
 
-                            foreach (FileInfo fi in pdfList)
+                        //Aufenthaltsabhängige Berichte
+                        int cntAufenthalt = 0;
+                        dsAufenthalt.AufenthaltDataTable Aufenthalte = Aufenthalt.ByPatient(r.ID);
+                        foreach (dsAufenthalt.AufenthaltRow auf in Aufenthalte)
+                        {
+                            cntAufenthalt++;
+                            DatenexportLog(RTFLog, "Aufenthalt mit Beginn: " + auf.Aufnahmezeitpunkt.ToString("F"));
+
+                            if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && auf.IsEntlassungszeitpunktNull() || KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
                             {
-                                if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention &&
-                                    (!fi.ToString().Contains("0011")) && !fi.ToString().Contains("0020") && !fi.ToString().Contains("0060") && !fi.ToString().Contains("0071") && !fi.ToString().Contains("0090"))
-                                //Liste Assessments, Aufenthaltsverlauf, Pflegebericht, Evaluierungen und WundDoku in BlackoutPrävention nicht ausgeben.
+                                // Im Reportsdirectory alle Klientenbericht.0*.rpt suchen und nacheinander drucken
+                                di = new DirectoryInfo(Path.GetDirectoryName(System.IO.Path.Combine(ENV.ReportPath, "*.*")));
+                                pdfList = di.GetFiles("Klientenbericht.0*", SearchOption.TopDirectoryOnly);
+
+                                foreach (FileInfo fi in pdfList)
                                 {
-                                    DatenexportLog(RTFLog, "Detailbericht " + fi.Name);
-                                    PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, cntAufenthalt);
-                                }
-                                else if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
-                                {
-                                    DatenexportLog(RTFLog, "Detailbericht " + fi.Name);
-                                    PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, cntAufenthalt);
+                                    if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention &&
+                                        (!fi.ToString().Contains("0011")) && !fi.ToString().Contains("0020") && !fi.ToString().Contains("0060") && !fi.ToString().Contains("0071") && !fi.ToString().Contains("0090"))
+                                    //Liste Assessments, Aufenthaltsverlauf, Pflegebericht, Evaluierungen und WundDoku in BlackoutPrävention nicht ausgeben.
+                                    {
+                                        DatenexportLog(RTFLog, "Detailbericht " + fi.Name + " vom " + fi.CreationTime.ToString("F"));
+                                        PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, cntAufenthalt);
+                                    }
+                                    else if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
+                                    {
+                                        DatenexportLog(RTFLog, "Detailbericht " + fi.Name + " vom " + fi.CreationTime.ToString("F"));
+                                        PMDS.Print.ReportManager.PrintKlientenbericht(System.IO.Path.Combine(ENV.ReportPath, fi.Name), r.ID, auf.ID, ENV.ArchivPath, false, KlientNameGebDat, KlientenberichtTyp, cntAufenthalt);
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    //Anamnesen (einmal pro Patient)                   
-                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-                    {                                                                      
-                        //Alle OREM-Anamnesen lesen und drucken
-                        List<Guid> lOREM = (from orem in db.Anamnese_Orem
-                                 where orem.IDPatient == r.ID
-                                 orderby orem.ErstelltAm descending
-                                 select orem.ID).ToList();
-                        
-                        if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && lOREM.Count > 1)
-                        {
-                            lOREM.RemoveRange(1, lOREM.Count - 1);
-                        }
-
-                        foreach (Guid IDOREM in lOREM)
-                        {
-                            DatenexportLog(RTFLog, "OREM-Anamnese ");
-                            PMDS.Print.ReportManager.PrintAnamnese("OREM", System.IO.Path.Combine(ENV.ReportPath, "OREM1.rpt"), IDOREM, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
-                        }
-
-                        //Alle Krohwinkel-Anamnesen lesen und drucken
-                        List<Guid> lKROHWINKEL = (from krohwinkel in db.Anamnese_Krohwinkel
-                                            where krohwinkel.IDPatient == r.ID
-                                                  orderby krohwinkel.ErstelltAm descending
-                                                  select krohwinkel.ID).ToList();
-
-                        if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && lKROHWINKEL.Count > 1)
-                        {
-                            DatenexportLog(RTFLog, "Krohwinkel-Anamnese ");
-                            lKROHWINKEL.RemoveRange(1, lKROHWINKEL.Count - 1);
-                        }
-
-                        foreach (Guid IDKROHWINKEL in lKROHWINKEL)
-                        {
-                            PMDS.Print.ReportManager.PrintAnamnese("KROHWINKEL", System.IO.Path.Combine(ENV.ReportPath, "Krohwinkel.rpt"), IDKROHWINKEL, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
-                        }
-
-                        //Alle POP-Anamnesen lesen und drucken
-                        List<Guid> lPOP = (from pop in db.Anamnese_POP
-                                            where pop.IDPatient == r.ID
-                                           orderby pop.ErstelltAm descending
-                                           select pop.ID).ToList();
-
-                        if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && lPOP.Count > 1)
-                        {
-                            DatenexportLog(RTFLog, "POP-Anamnese ");
-                            lPOP.RemoveRange(1, lPOP.Count - 1);
-                        }
-
-                        foreach (Guid IDPOP in lPOP)
-                        {
-                            PMDS.Print.ReportManager.PrintAnamnese("POP", System.IO.Path.Combine(ENV.ReportPath, "POP.rpt"), IDPOP, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
-                        }
-                    }
-
-                    if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
-                    {
-                        //Biografie(n)
-                        PMDS.GUI.VB.sqlBiografien dbBiografien = new PMDS.GUI.VB.sqlBiografien();
-                        dbBiografien.DataTable.Rows.Clear();
-                        dbBiografien.loadAlleVorhadenenBiografien(IDPatient);
-                        QS2.Desktop.Txteditor.doEditor doEdit = new QS2.Desktop.Txteditor.doEditor();
-                        foreach (DataRow rBio in dbBiografien.DataTable.Rows)
-                        {
-                            DatenexportLog(RTFLog, "Biografie ");
-                            tmpFullPath = PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rBio["FormularName"].ToString(), "0");
-                            txtEditor.Text = "";
-                            byte[] by = null;
-                            byte[] bPdf = null;
-                            doEdit.showText(rBio["BLOP"].ToString(), TXTextControl.StreamType.RichTextFormat, false, TXTextControl.ViewMode.PageView, txtEditor, ref by, ref bPdf);
-                            doEdit.saveDocument(tmpFullPath, TXTextControl.StreamType.AdobePDF, txtEditor);
-                        }
-
-                        //Assessments (einmal pro Patient) //Ablöse des Formularmanagers durch PDF, os 171009
-                        PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
-                        PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
-
+                        //Anamnesen (einmal pro Patient)                   
                         using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                         {
-                            System.Linq.IQueryable<PMDS.db.Entities.FormularDaten> tFormularDaten = b.getFormularDatenByIDPatient(r.ID, db);
-                            foreach (PMDS.db.Entities.FormularDaten rFormularDaten in tFormularDaten)
+                            //Alle OREM-Anamnesen lesen und drucken
+                            var lOREM = (from orem in db.Anamnese_Orem
+                                         where orem.IDPatient == r.ID
+                                         orderby orem.ErstelltAm descending
+                                         select new { ID = orem.ID, ErstelltAm = orem.ErstelltAm }).ToList();
+
+                            if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && lOREM.Count > 1)
                             {
-                                if (rFormularDaten.PDF_BLOP != null)
+                                lOREM.RemoveRange(1, lOREM.Count - 1);
+                            }
+
+                            foreach (var IDOREM in lOREM)
+                            {
+                                DatenexportLog(RTFLog, "OREM-Anamnese " + IDOREM.ErstelltAm.ToString("F"));
+                                PMDS.Print.ReportManager.PrintAnamnese("OREM", System.IO.Path.Combine(ENV.ReportPath, "OREM1.rpt"), (Guid)IDOREM.ID, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
+                            }
+
+                            //Alle Krohwinkel-Anamnesen lesen und drucken
+                            var lKROHWINKEL = (from krohwinkel in db.Anamnese_Krohwinkel
+                                               where krohwinkel.IDPatient == r.ID
+                                               orderby krohwinkel.ErstelltAm descending
+                                               select new { ID = krohwinkel.ID, ErstelltAm = krohwinkel.ErstelltAm }).ToList();
+
+                            if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && lKROHWINKEL.Count > 1)
+                            {
+                                lKROHWINKEL.RemoveRange(1, lKROHWINKEL.Count - 1);
+                            }
+
+                            foreach (var IDKROHWINKEL in lKROHWINKEL)
+                            {
+                                DateTime d = (DateTime)IDKROHWINKEL.ErstelltAm;
+                                DatenexportLog(RTFLog, "Krohwinkel-Anamnese " + d.ToString("F"));
+                                PMDS.Print.ReportManager.PrintAnamnese("KROHWINKEL", System.IO.Path.Combine(ENV.ReportPath, "Krohwinkel.rpt"), (Guid)IDKROHWINKEL.ID, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
+                            }
+
+                            //Alle POP-Anamnesen lesen und drucken
+                            var lPOP = (from pop in db.Anamnese_POP
+                                        where pop.IDPatient == r.ID
+                                        orderby pop.ErstelltAm descending
+                                        select new { ID = pop.ID, ErstelltAm = pop.ErstelltAm }).ToList();
+
+                            if (KlientenberichtTyp == ENV.eKlientenberichtTyp.blackoutprevention && lPOP.Count > 1)
+                            {
+                                lPOP.RemoveRange(1, lPOP.Count - 1);
+                            }
+
+                            foreach (var IDPOP in lPOP)
+                            {
+                                DatenexportLog(RTFLog, "POP-Anamnese " + IDPOP.ErstelltAm.ToString("F"));
+                                PMDS.Print.ReportManager.PrintAnamnese("POP", System.IO.Path.Combine(ENV.ReportPath, "POP.rpt"), (Guid)IDPOP.ID, ENV.ArchivPath, false, true, System.Guid.Empty, KlientNameGebDat, KlientenberichtTyp);
+                            }
+                        }
+
+                        if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
+                        {
+                            //Biografie(n)
+                            PMDS.GUI.VB.sqlBiografien dbBiografien = new PMDS.GUI.VB.sqlBiografien();
+                            dbBiografien.DataTable.Rows.Clear();
+                            dbBiografien.loadAlleVorhadenenBiografien(IDPatient);
+                            QS2.Desktop.Txteditor.doEditor doEdit = new QS2.Desktop.Txteditor.doEditor();
+                            foreach (DataRow rBio in dbBiografien.DataTable.Rows)
+                            {
+                                DatenexportLog(RTFLog, "Biografie " + ((DateTime)rBio["Datumerstellt"]).ToString("F"));
+                                tmpFullPath = PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rBio["FormularName"].ToString(), "0");
+                                txtEditor.Text = "";
+                                byte[] by = null;
+                                byte[] bPdf = null;
+                                doEdit.showText(rBio["BLOP"].ToString(), TXTextControl.StreamType.RichTextFormat, false, TXTextControl.ViewMode.PageView, txtEditor, ref by, ref bPdf);
+                                doEdit.saveDocument(tmpFullPath, TXTextControl.StreamType.AdobePDF, txtEditor);
+                            }
+
+                            //Assessments (einmal pro Patient) //Ablöse des Formularmanagers durch PDF, os 171009
+                            PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+                            PdfCommon.Initialize("52433553494d50032923be84e16cd6ae0bce153446af7918d52303038286fd2b0597de34bf5bb65e2a161a268e74107bd7da7c1adb202edff3e8c55a13bff7afa38569c96e45ff0cdef48e36b8df77e907676788cae00126f52c5eaadbb3c424062e8e0e5feb6faf89900306ee469aa40664bdf84b2e4fce7497c19f3f9d2d877dc1be192cb695f4");
+
+                            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                            {
+                                System.Linq.IQueryable<PMDS.db.Entities.FormularDaten> tFormularDaten = b.getFormularDatenByIDPatient(r.ID, db);
+                                foreach (PMDS.db.Entities.FormularDaten rFormularDaten in tFormularDaten)
                                 {
-                                    System.Linq.IQueryable<PMDS.db.Entities.Formular> tFormular = b.getFormularByName(Path.GetFileNameWithoutExtension(rFormularDaten.FormularName), db);
-                                    foreach (PMDS.db.Entities.Formular rFormular in tFormular)
+                                    if (rFormularDaten.PDF_BLOP != null)
                                     {
-                                        if (rFormular.PDF_BLOP != null)
+                                        System.Linq.IQueryable<PMDS.db.Entities.Formular> tFormular = b.getFormularByName(Path.GetFileNameWithoutExtension(rFormularDaten.FormularName), db);
+                                        foreach (PMDS.db.Entities.Formular rFormular in tFormular)
                                         {
-                                            //Mit Patagames
-                                            using (PdfForms formFDF = new PdfForms())
+                                            if (rFormular.PDF_BLOP != null)
                                             {
-                                                DatenexportLog(RTFLog, "Assessment " + rFormular.Name);
-                                                FdfDocument docFDF = Patagames.Pdf.Net.FdfDocument.Load(rFormularDaten.PDF_BLOP);
-                                                Patagames.Pdf.Net.PdfDocument docPDF = Patagames.Pdf.Net.PdfDocument.Load(rFormular.PDF_BLOP, formFDF);
-                                                formFDF.InterForm.ResetForm();
-                                                formFDF.InterForm.ImportFromFdf(docFDF);
-                                                docPDF.Save(PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rFormular.Name, "0"), Patagames.Pdf.Enums.SaveFlags.RemoveSecurity);
+                                                //Mit Patagames
+                                                using (PdfForms formFDF = new PdfForms())
+                                                {
+                                                    DatenexportLog(RTFLog, "Assessment " + rFormular.Name + " " + rFormularDaten.Datumerstellt.ToString("F"));
+                                                    FdfDocument docFDF = Patagames.Pdf.Net.FdfDocument.Load(rFormularDaten.PDF_BLOP);
+                                                    Patagames.Pdf.Net.PdfDocument docPDF = Patagames.Pdf.Net.PdfDocument.Load(rFormular.PDF_BLOP, formFDF);
+                                                    formFDF.InterForm.ResetForm();
+                                                    formFDF.InterForm.ImportFromFdf(docFDF);
+                                                    docPDF.Save(PMDS.Print.CR.ReportManager.GetUniqueArchivFileName(KlientNameGebDat, ENV.ArchivPath, rFormular.Name, "0"), Patagames.Pdf.Enums.SaveFlags.RemoveSecurity);
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                    }
 
-                    DatenexportLog(RTFLog, "PDF/A-Dokument erstellen ");
+                        DatenexportLog(RTFLog, "PDF/A-Dokument erstellen ");
 
-                    // Erstellen eines pdf/A-Files pro Klient
-                    int iCountAufenthalte = 0;
-                    List<string> lstSourceFiles = new List<string>();  //Array mit PDFs, die zusammenzufassen sind
+                        // Erstellen eines pdf/A-Files pro Klient
+                        int iCountAufenthalte = 0;
+                        List<string> lstSourceFiles = new List<string>();  //Array mit PDFs, die zusammenzufassen sind
 
-                    // Alle pdfs des Verzeichnisses 
-                    string KlientVerzeichnis = System.IO.Path.Combine (ENV.ArchivPath, KlientNameGebDat);
-                    DirectoryInfo di1 = new DirectoryInfo(KlientVerzeichnis);
+                        // Alle pdfs des Verzeichnisses 
+                        string KlientVerzeichnis = System.IO.Path.Combine(ENV.ArchivPath, KlientNameGebDat);
+                        DirectoryInfo di1 = new DirectoryInfo(KlientVerzeichnis);
 
-                    FileInfo[] pdfList1 = di1.GetFiles("Klientenbericht.rpt*.pdf");
-                    foreach (FileInfo fi in pdfList1)
-                    {
-                        string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
-                        lstSourceFiles.Add(tmpFileName);
+                        FileInfo[] pdfList1 = di1.GetFiles("Klientenbericht.rpt*.pdf");
+                        foreach (FileInfo fi in pdfList1)
+                        {
+                            string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
+                            lstSourceFiles.Add(tmpFileName);
 
-                        iCountAufenthalte++;
-                    }
+                            iCountAufenthalte++;
+                        }
 
-                    FileInfo[] pdfList1Sub = di1.GetFiles("Klientenbericht.Sub.0*.pdf");
-                    foreach (FileInfo fi in pdfList1Sub)
-                    {
-                        string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
-                        lstSourceFiles.Add(tmpFileName);
-                    }
-
-                    //pro Aufenthalt in aufsteigender Reihenfolge
-                    for (int i = 1; i <= cntAufenthalt; i++)
-                    {
-                        FileInfo[] pdfList1a = di1.GetFiles(i.ToString() + ".Klientenbericht.0*.pdf");
-                        foreach (FileInfo fi in pdfList1a)
+                        FileInfo[] pdfList1Sub = di1.GetFiles("Klientenbericht.Sub.0*.pdf");
+                        foreach (FileInfo fi in pdfList1Sub)
                         {
                             string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
                             lstSourceFiles.Add(tmpFileName);
                         }
-                    }
 
-                    //Assessments hinzufügen (alle PDFs, die noch nicht hinzugefügt sind)
-                    FileInfo[] pdfList2 = di1.GetFiles("*.pdf");
-                    foreach (FileInfo fi in pdfList2)
-                    {
-                        string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
-                        if (!lstSourceFiles.Any(s => s.Contains(tmpFileName)))
+                        //pro Aufenthalt in aufsteigender Reihenfolge
+                        for (int i = 1; i <= cntAufenthalt; i++)
                         {
-                            lstSourceFiles.Add(tmpFileName);
+                            FileInfo[] pdfList1a = di1.GetFiles(i.ToString() + ".Klientenbericht.0*.pdf");
+                            foreach (FileInfo fi in pdfList1a)
+                            {
+                                string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
+                                lstSourceFiles.Add(tmpFileName);
+                            }
+                        }
+
+                        //Assessments hinzufügen (alle PDFs, die noch nicht hinzugefügt sind)
+                        FileInfo[] pdfList2 = di1.GetFiles("*.pdf");
+                        foreach (FileInfo fi in pdfList2)
+                        {
+                            string tmpFileName = System.IO.Path.Combine(fi.Directory.ToString(), fi.Name);
+                            if (!lstSourceFiles.Any(s => s.Contains(tmpFileName)))
+                            {
+                                lstSourceFiles.Add(tmpFileName);
+                            }
+                        }
+
+                        filenamePDFA = System.IO.Path.Combine(ENV.ArchivPath, KlientNameGebDat + ".PDF");
+                        using (Syncfusion.Pdf.PdfDocument finalDoc = new Syncfusion.Pdf.PdfDocument(PdfConformanceLevel.Pdf_A1B))
+                        {
+                            finalDoc.Compression = PdfCompressionLevel.Best;
+                            Syncfusion.Pdf.PdfDocument.Merge(finalDoc, lstSourceFiles.ToArray());
+                            finalDoc.Save(filenamePDFA);
+                            cntAufenthalt++;
+                            cntPDFExport++;
                         }
                     }
 
-                    filenamePDFA = System.IO.Path.Combine(ENV.ArchivPath, KlientNameGebDat + ".PDF");
-                    using (Syncfusion.Pdf.PdfDocument finalDoc = new Syncfusion.Pdf.PdfDocument(PdfConformanceLevel.Pdf_A1B))
-                    {
-                        finalDoc.Compression = PdfCompressionLevel.Best;
-                        Syncfusion.Pdf.PdfDocument.Merge(finalDoc, lstSourceFiles.ToArray());
-                        finalDoc.Save(filenamePDFA);
-                    }
-
                     //Datenexport im XML-Format
-                    if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full)
+                    if (KlientenberichtTyp == ENV.eKlientenberichtTyp.full && chkXMLExport)
                     {
                         DatenexportLog(RTFLog, "XML-Datenexport ");
                         DatenExportXML export = new DatenExportXML();
-                        bool result1 = export.Export(r.ID, ENV.ArchivPath, out string FileNameXMLDocumentBack, false, ref RTFLog);
+                        bool result1 = export.Export(r.ID, ENV.ArchivPath, out string FileNameXMLDocumentBack, ref RTFLog);
+                        if (result1)
+                            cntXMLExport++;
+                        export = null;
                     }
-                    DatenexportLog(RTFLog, "\n");
+                    DatenexportLog(RTFLog, "------------------------------------------------------------------\n");
                 }
 
                 string sMsgBoxTranslate = "";
-                if (PatListe1.Rows.Count == 1)
-                {
-                    sMsgBoxTranslate = "Datenarchiv wurde als {0} erstellt.";
-                }
-                else
-                {
+
+                if (cntPDFExport == 0)
+                    sMsgBoxTranslate = "Es wurde kein Datenarchiv erstellt.";
+                else if (cntPDFExport == 1)
                     sMsgBoxTranslate = "Datenarchiv wurde erstellt.";
-                }
-                sMsgBoxTranslate = QS2.Desktop.ControlManagment.ControlManagment.getRes(sMsgBoxTranslate, filenamePDFA.Trim());
+                else if (cntPDFExport > 1)
+                    sMsgBoxTranslate = "Datenarchiv für " + cntPDFExport.ToString() + " Klienten wurde erstellt.";
+
+                if (cntXMLExport == 0)
+                    sMsgBoxTranslate = "Es wurde kein Datenexport erstellt.";
+                else if (cntXMLExport == 1)
+                    sMsgBoxTranslate = "XML-Datenexport wurde erstellt.";
+                else if (cntPDFExport > 1)
+                    sMsgBoxTranslate = "Datenexport für " + cntXMLExport.ToString() + " Klienten wurde erstellt.";
+
+                //sMsgBoxTranslate = QS2.Desktop.ControlManagment.ControlManagment.getRes(sMsgBoxTranslate, filenamePDFA.Trim());
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTranslate, "Information");
                 FileNamePDFDocumentBack = filenamePDFA.Trim();
                 DocuSuccessfullyGenerated = true;
 
-                PatListe1.Dispose();
                 return true;
             }
             catch (Exception e)
@@ -548,9 +568,11 @@ namespace PMDS.GUI
 		public static bool PatientRemark(Guid idPatient)
 		{
 			Patient pat = new Patient(idPatient);
-
-			frmPatientBem bem = new frmPatientBem(pat, _typBemerkung.bemerkung  );
-			return (bem.ShowDialog() == DialogResult.OK);
+            using (frmPatientBem bem = new frmPatientBem(pat, _typBemerkung.bemerkung))
+            {
+                System.Windows.Forms.DialogResult ret = bem.ShowDialog();
+                return ret == DialogResult.OK;
+            }
 		}
 
         public static bool PatientVermerk(Guid idPatient, Nullable<Guid> IDExtern, eDekursherkunft Dekursherkunft, string DekursText, bool GegenzeichnenJN,

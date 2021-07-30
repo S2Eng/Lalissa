@@ -1342,7 +1342,7 @@ namespace PMDS.GUI
 
         private void checkUserActivity(object sender, EventArgs e)
         {
-            if (this.mainWindow.Visible == true)
+            if (this.mainWindow.Visible == true && !ENV.IgnoreMaxIdleTime)
             {
                 uint idleSekunden = PMDS.Global.Tools.GetIdleTime() / 1000;
                 uint RestSekunden = 0;

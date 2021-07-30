@@ -593,7 +593,21 @@ namespace PMDS.Print
         {
             object[] ParameterArray = { IDKlient, ReportRoot, PrintJN, UsePDFPrinter, IDAnamnese };
             BerichtParameter.BerichtParameterTyp[] TypArray = { BerichtParameter.BerichtParameterTyp.Klient, BerichtParameter.BerichtParameterTyp.Text, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.SQL_GUID };
-            string[] ParameterNameArray = { "IDKlient", "ReportRoot", "PrintJN", "UsePDFPrinter", typ.ToUpper() == "OREM" ? "IDAnamneseOREM" : "IDAnamneseKrohwinkel" };
+            string pIDName = "";
+            if (generic.sEquals(typ, "OREM"))
+            {
+                pIDName = "IDAnamneseOREM";
+            }
+            else if (generic.sEquals(typ, "Krohwinkel"))
+            {
+                pIDName = "IDAnamneseKrohwinkel";
+            }
+            else if (generic.sEquals(typ, "POP"))
+            {
+                pIDName = "IDAnamnesePOP";
+            }
+
+            string[] ParameterNameArray = { "IDKlient", "ReportRoot", "PrintJN", "UsePDFPrinter", pIDName };
             string sPath = ReportPath;
 
             List<BerichtParameter> list = new List<BerichtParameter>();
