@@ -1059,8 +1059,8 @@ namespace PMDS.GUI
 
             if (this.frmPatientRueckmeldung1 != null)
             {
-                this.frmPatientRueckmeldung1.btnEdit2.Visible = ReadOnly && UserCanEdit;
-                this.frmPatientRueckmeldung1.btnEdit2.Left = this.frmPatientRueckmeldung1.btnOK2.Left;
+                this.frmPatientRueckmeldung1.SetbtnEditVisible(ReadOnly && UserCanEdit);
+                this.frmPatientRueckmeldung1.AlignButtons();
             }
 
             if (UserCanEdit)

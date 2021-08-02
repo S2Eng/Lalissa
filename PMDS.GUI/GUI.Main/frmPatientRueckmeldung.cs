@@ -28,46 +28,62 @@ using PMDS.GUI.Datenerhebung;
 namespace PMDS.GUI
 {
 
-    public class frmPatientRueckmeldung : QS2.Desktop.ControlManagment.baseForm 
-	{
+    public class frmPatientRueckmeldung : QS2.Desktop.ControlManagment.baseForm
+    {
+        public bool EintragDeleted { get; set; }
+        public Nullable<Guid> IDBefund { get; set; } = System.Guid.Empty;
 
-		private bool						_bMorgenWieder = false;
-		private Guid						_IDPflegePlan;
-		private Patient						_pat;
+        private ucPflegeEintragEx ucPflegeEintrag1;
+        private bool _editinprogress;
+        private bool abort = true;
+        private QS2.Desktop.ControlManagment.BaseButton btnEdit2;
+        private QS2.Desktop.ControlManagment.BaseButton btnOK2;
 
-        private bool                        _editinprogress = false;
-        public bool EintragDeleted = false;
-        
-
-		private string _text = "";
-		private bool _finish = false;
-        protected QS2.Desktop.ControlManagment.BaseGroupBoxWin grpDokumentation;
-        public ucPflegeEintragEx ucPflegeEintrag1;
-        protected QS2.Desktop.ControlManagment.BasePanel panelCenter;
-		private QS2.Desktop.ControlManagment.BaseLabel labInfo1;
+        private QS2.Desktop.ControlManagment.BaseButton btnMorgenwieder;
+        private PMDSBusiness b = new PMDSBusiness();
+        private Guid _IDPflegePlan;
+        private Patient _pat;
+        private string _text = "";
+        private bool _finish;
+        private QS2.Desktop.ControlManagment.BaseLabel labInfo1;
         private QS2.Desktop.ControlManagment.BaseLabel labInfo2;
-        public QS2.Desktop.ControlManagment.BaseButton btnMorgenwieder;
         private QS2.Desktop.ControlManagment.BaseButton btnDelete;
-        public QS2.Desktop.ControlManagment.BaseButton btnOK2;
         private QS2.Desktop.ControlManagment.BaseButton btnCancel2;
-        public QS2.Desktop.ControlManagment.BaseButton btnEdit2;
         private QS2.Desktop.ControlManagment.BaseButton btnSonderterminErstellen2;
-		private System.ComponentModel.IContainer components;
+        private System.ComponentModel.IContainer components;
+        private frmDatenErhebung frmDatenErhebung1;
+        private QS2.Desktop.ControlManagment.BaseButton btnFormulare;
+        //private bool _bMorgenWieder;
+
+        protected private QS2.Desktop.ControlManagment.BaseGroupBoxWin grpDokumentation;
+        protected private QS2.Desktop.ControlManagment.BasePanel panelCenter;
+
         internal Infragistics.Win.Misc.UltraButton btnOpenBefund;
 
-        public bool abort = true;
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+            grpDokumentation?.Dispose();
+            ucPflegeEintrag1?.Dispose();
+            panelCenter?.Dispose();
+            labInfo1?.Dispose();
+            labInfo2?.Dispose();
+            btnMorgenwieder?.Dispose();
+            btnDelete?.Dispose();
+            btnOK2?.Dispose();
+            btnCancel2?.Dispose();
+            btnEdit2?.Dispose();
+            btnFormulare?.Dispose();
+            frmDatenErhebung1?.Dispose();
+            btnSonderterminErstellen2?.Dispose();
+            btnOpenBefund?.Dispose();
+        }
 
-        public Nullable<Guid> IDBefund = System.Guid.Empty;
-        private QS2.Desktop.ControlManagment.BaseButton btnFormulare;
-        public PMDSBusiness b = new PMDSBusiness();
-
-
-
-
-
-
-
-		public frmPatientRueckmeldung()
+        public frmPatientRueckmeldung()
 		{
 			InitializeComponent();
 
@@ -137,18 +153,6 @@ namespace PMDS.GUI
                 this.showHideButtonFormulare(pe.IDEintrag);
             }
         }
-
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
 
 		#region Windows Form Designer generated code
 		/// <summary>
@@ -461,28 +465,15 @@ namespace PMDS.GUI
                         }
 
                     }
-
-
-                    //using (PMDS.db.Entities.ERModellPMDSEntities dbZW = PMDS.DB.PMDSBusiness.getDBContext())
-                    //{
-                    //    this.b.copyUpdateZusatzwertePEIDGruppe(this.ucPflegeEintrag1.Eintrag.ID, dbZW);
-                    //}
-
-
-
-
-
-
                 }
                 bFinish = true;
                 this.abort = false;
                 this.Close();
-
             }
             finally
             {
-                if (!bFinish)
-                    _bMorgenWieder = false;
+                //if (!bFinish)
+                //    _bMorgenWieder = false;
             }
         }
 
@@ -557,7 +548,7 @@ namespace PMDS.GUI
                                             IDEintrag = e.ID,
                                             lstFormulare = e.lstFormulare
                                         }).First();
-                        this.btnFormulare.Visible = rEintrag.lstFormulare.Trim() != "";
+                        this.btnFormulare.Visible = !String.IsNullOrWhiteSpace(rEintrag.lstFormulare);
                     }
                 }
             }
@@ -566,6 +557,7 @@ namespace PMDS.GUI
                 throw new Exception("frmPatientRueckmeldung.showHideButtonFormulare: " + ex.ToString());
             }
         }
+
         public void openFormulare()
         {
             try
@@ -580,9 +572,9 @@ namespace PMDS.GUI
                                         lstFormulare = e.lstFormulare
                                     }).First();
 
-                    frmDatenErhebung frmDatenErhebung1 = new frmDatenErhebung();
+                    frmDatenErhebung1 = new frmDatenErhebung();
                     frmDatenErhebung1.initControl(rEintrag.lstFormulare.Trim());
-                    frmDatenErhebung1.Show();
+                    frmDatenErhebung1.Show(this);
                 }
 
             }
@@ -780,6 +772,37 @@ namespace PMDS.GUI
             {
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        //Externe Funktionscalls (statt public-Objects)
+        public void AlignButtons()
+        {
+            this.btnEdit2.Left = this.btnOK2.Left;
+        }
+
+        public void SetbtnEditVisible(bool bVisible)
+        {
+            this.btnEdit2.Visible = bVisible;
+        }
+
+        public bool GetAbortStatus()
+        {
+            return abort;
+        }
+
+        public void SetucPflegeeEntragIsNew(bool bIsNew)
+        {
+            this.ucPflegeEintrag1.IsNew = bIsNew;
+        }
+
+        public void ucPflegeEintragInitControl(bool IsDekurs, bool IsSchnellrückmeldung, bool IsBefund, PMDS.Global.eDekursherkunft Dekursherkunft)
+        {
+            this.ucPflegeEintrag1.initControl(IsDekurs, IsSchnellrückmeldung, IsBefund, Dekursherkunft);
+        }
+
+        public void SetucPflegeEintrag1auswahlGruppeComboMulti1Visible(bool bVisible)
+        {
+            this.ucPflegeEintrag1.auswahlGruppeComboMulti1.Visible = bVisible;
         }
     }
 }

@@ -954,42 +954,44 @@ namespace PMDS.GUI
                 return false;
             }
 
-            frmRücmeldung = new frmPatientRueckmeldung(pat, pe, r.Text, r.EinmaligJN, bOptional, true, r.OhneZeitBezug, r.OhneZeitBezug, !r.IsIDBefundNull());
-            frmRücmeldung.ReadOnly = bReadOnly;
-            frmRücmeldung.ucPflegeEintrag1.IsNew = IsNew;
-            frmRücmeldung.ucPflegeEintrag1.initControl(false, false, !r.IsIDBefundNull(), eDekursherkunft.MassnahmenRückmeldungAusIntervention);
-            if (rIntervention != null)
+            using (frmRücmeldung = new frmPatientRueckmeldung(pat, pe, r.Text, r.EinmaligJN, bOptional, true, r.OhneZeitBezug, r.OhneZeitBezug, !r.IsIDBefundNull()))
             {
-                frmRücmeldung.SetUIInterventionen(rIntervention);
-            }
-            if (rÜbergabe != null)
-            {
-                frmRücmeldung.ucPflegeEintrag1.auswahlGruppeComboMulti1.Visible = false;
-                frmRücmeldung.SetUIÜbergabe(rÜbergabe);
-            }
-
-            ret = frmRücmeldung.ShowDialog();
-
-            if (!frmRücmeldung.abort)
-            {
-                if (SiteMap != null)
+                frmRücmeldung.ReadOnly = bReadOnly;
+                frmRücmeldung.SetucPflegeeEntragIsNew(IsNew);
+                frmRücmeldung.ucPflegeEintragInitControl(false, false, !r.IsIDBefundNull(), eDekursherkunft.MassnahmenRückmeldungAusIntervention);
+                if (rIntervention != null)
                 {
-                    if (rÜbergabe != null)
-                    {
-                        if (frmRücmeldung.EintragDeleted)
-                        {
-                            rÜbergabe.Delete();
-                        }
-                    }
-                    SiteMap.RefreshTermin(false); 
+                    frmRücmeldung.SetUIInterventionen(rIntervention);
                 }
-                return true;
+                if (rÜbergabe != null)
+                {
+                    frmRücmeldung.SetucPflegeEintrag1auswahlGruppeComboMulti1Visible(false);
+                    frmRücmeldung.SetUIÜbergabe(rÜbergabe);
+                }
+
+                ret = frmRücmeldung.ShowDialog();
+                bool abort = frmRücmeldung.GetAbortStatus();
+                if (!abort)
+                {
+                    if (SiteMap != null)
+                    {
+                        if (rÜbergabe != null)
+                        {
+                            if (frmRücmeldung.EintragDeleted)
+                            {
+                                rÜbergabe.Delete();
+                            }
+                        }
+                        SiteMap.RefreshTermin(false);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
-            {
-                return false;
-            }
-		}
+        }
 
 		public static bool PatientRueckmeldung(Guid IDPatient, Guid IDEintrag, Guid IDAufenthalt, bool bDateNow, bool MOhneZeitbezug,
                  PMDS.Global.eUITypeTermine UITypeTermine, Infragistics.Win.UltraWinGrid.UltraGrid grd, System.Drawing.Image imgRowHeader,
@@ -1051,21 +1053,23 @@ namespace PMDS.GUI
 
 			PflegeEintrag pe = PflegeEintrag.NewByPflegePlan(IDAufenthalt, IDPflegeplan, IDEintrag, time, false);
 
-            frmPatientRueckmeldung frmRücmeldung = new frmPatientRueckmeldung(pat, pe, r.Text, r.EinmaligJN, bOptional, true, r.OhneZeitBezug, r.OhneZeitBezug, !r.IsIDBefundNull());
-            frmRücmeldung.ucPflegeEintrag1.initControl(false, false, !r.IsIDBefundNull(), eDekursherkunft.MassnahmenRückmeldungAusIntervention);
-            ret = frmRücmeldung.ShowDialog();
-
-            if (!frmRücmeldung.abort)
+            using (frmPatientRueckmeldung frmRücmeldung = new frmPatientRueckmeldung(pat, pe, r.Text, r.EinmaligJN, bOptional, true, r.OhneZeitBezug, r.OhneZeitBezug, !r.IsIDBefundNull()))
             {
-                if (SiteMap != null)
+                frmRücmeldung.ucPflegeEintragInitControl(false, false, !r.IsIDBefundNull(), eDekursherkunft.MassnahmenRückmeldungAusIntervention);
+                ret = frmRücmeldung.ShowDialog();
+                bool abort = frmRücmeldung.GetAbortStatus();
+                if (!abort)
                 {
-                    SiteMap.RefreshTermin(false);
+                    if (SiteMap != null)
+                    {
+                        SiteMap.RefreshTermin(false);
+                    }
+                    return true;
                 }
-                return true;
-            }
-            else
-            {
-                return false;
+                else
+                {
+                    return false;
+                }
             }
 		}
 	    
