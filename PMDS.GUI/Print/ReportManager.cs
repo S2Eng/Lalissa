@@ -24,12 +24,50 @@ namespace PMDS.Print
 {
 
 
+
     public class ReportManager
     {
 
+        private string THtyp;
+        private string THReportPath;
+        private Guid THIDKlient;
+        private string THReportRoot;
+        private bool THPrintJN;
+        private bool THUsePDFPrinter;
+        private System.Guid THIDAnamnese;
+        private string THKlientNameGebDat;
+        private ENV.eKlientenberichtTyp THKlientenberichtTyp;
+        private Guid THIDAufenthalt;
+        private string THPDFName;
+        private int THcntAufenthalt;
 
         public ReportManager()
         {
+        }
+
+        public ReportManager(string typ, string ReportPath, Guid IDKlient, string ReportRoot, bool PrintJN, bool UsePDFPrinter, System.Guid IDAnamnese, string KlientNameGebDat, ENV.eKlientenberichtTyp KlientenberichtTyp)
+        {
+            THtyp = typ;
+            THReportPath = ReportPath;
+            THIDKlient = IDKlient;
+            THReportRoot = ReportRoot;
+            THPrintJN = PrintJN;
+            THUsePDFPrinter = UsePDFPrinter;
+            THIDAnamnese = IDAnamnese;
+            THKlientNameGebDat = KlientNameGebDat;
+            THKlientenberichtTyp = KlientenberichtTyp;
+        }
+
+        public ReportManager(string ReportPath, Guid IDKlient, Guid IDAufenthalt, string ReportRoot, bool PrintJN, string PDFName, ENV.eKlientenberichtTyp KlientenberichtTyp, int cntAufenthalt)
+        {
+            THReportPath = ReportPath;
+            THIDKlient = IDKlient;
+            THIDAufenthalt = IDAufenthalt;
+            THReportRoot = ReportRoot;
+            THPrintJN = PrintJN;
+            THPDFName = PDFName;
+            THKlientenberichtTyp = KlientenberichtTyp;
+            THcntAufenthalt = cntAufenthalt;
         }
 
         private static DataSet GetDataSetFromList(List<BerichtDatenquelle> listds, string sCompareString)
@@ -557,6 +595,43 @@ namespace PMDS.Print
 
         }
 
+        public void PrintKlientenberichtAsThread()
+        {
+            object[] ParameterArray = { THIDKlient, THIDAufenthalt, THReportRoot, THPrintJN };
+            BerichtParameter.BerichtParameterTyp[] TypArray = {
+                BerichtParameter.BerichtParameterTyp.Klient,
+                BerichtParameter.BerichtParameterTyp.SQL_GUID,
+                BerichtParameter.BerichtParameterTyp.Text,
+                BerichtParameter.BerichtParameterTyp.Zahl
+            };
+            string[] ParameterNameArray = { "IDKlient", "IDAufenthalt", "ReportRoot", "PrintJN" };
+            string sPath = THReportPath;
+
+            List<BerichtParameter> list = new List<BerichtParameter>();
+            for (int i = 0; i < ParameterArray.Length; i++)
+            {
+                BerichtParameter b = new BerichtParameter("Beschreibung", TypArray[i], ParameterNameArray[i], ParameterArray[i].ToString());
+                if (ParameterArray[i].GetType() == typeof(Guid))
+                    b.Value = "{" + ParameterArray[i].ToString() + "}";
+                else
+                    b.Value = ParameterArray[i];
+
+                list.Add(b);
+            }
+            BerichtParameter bT = new BerichtParameter("Beschreibung", BerichtParameter.BerichtParameterTyp.Zahl, "KlientenberichtTyp", "0");
+            bT.Value = (int)THKlientenberichtTyp;
+            list.Add(bT);
+
+            BerichtParameter bA = new BerichtParameter("AufenthaltNr", BerichtParameter.BerichtParameterTyp.Zahl, "AufenthaltNr", "0");
+            bA.Value = THcntAufenthalt;
+            list.Add(bA);
+
+            string sFileFullNameExported = "";
+            PMDS.Print.CR.ReportManager.PrintDynamicReport(sPath, false, list, null, THPDFName,
+                                                           ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, null, ref sFileFullNameExported);
+
+        }
+
         public static void PrintBlisterliste(string ReportPath, Guid IDKlinik, Guid IDAbteilung, Guid IDKlient, string ReportRoot, bool PrintJN, string PDFName)
         {
             object[] ParameterArray = { IDKlinik , IDAbteilung, IDKlient, ReportRoot, PrintJN };
@@ -627,6 +702,48 @@ namespace PMDS.Print
 
             string sFileFullNameExported = "";
             PMDS.Print.CR.ReportManager.PrintDynamicReport(sPath, true, list, null, KlientNameGebDat,
+                                                           ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, null, ref sFileFullNameExported);
+
+        }
+
+        public void PrintAnamneseAsThread()
+        {
+            object[] ParameterArray = { THIDKlient, THReportRoot, THPrintJN, THUsePDFPrinter, THIDAnamnese };
+            BerichtParameter.BerichtParameterTyp[] TypArray = { BerichtParameter.BerichtParameterTyp.Klient, BerichtParameter.BerichtParameterTyp.Text, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.SQL_GUID };
+            string pIDName = "";
+            if (generic.sEquals(THtyp, "OREM"))
+            {
+                pIDName = "IDAnamneseOREM";
+            }
+            else if (generic.sEquals(THtyp, "Krohwinkel"))
+            {
+                pIDName = "IDAnamneseKrohwinkel";
+            }
+            else if (generic.sEquals(THtyp, "POP"))
+            {
+                pIDName = "IDAnamnesePOP";
+            }
+
+            string[] ParameterNameArray = { "IDKlient", "ReportRoot", "PrintJN", "UsePDFPrinter", pIDName };
+            string sPath = THReportPath;
+
+            List<BerichtParameter> list = new List<BerichtParameter>();
+            for (int i = 0; i < ParameterArray.Length; i++)
+            {
+                BerichtParameter b = new BerichtParameter("Beschreibung", TypArray[i], ParameterNameArray[i], ParameterArray[i].ToString());
+                if (ParameterArray[i].GetType() == typeof(Guid))
+                    b.Value = "{" + ParameterArray[i].ToString() + "}";
+                else
+                    b.Value = ParameterArray[i];
+
+                list.Add(b);
+            }
+            BerichtParameter bT = new BerichtParameter("Beschreibung", BerichtParameter.BerichtParameterTyp.Zahl, "KlientenberichtTyp", "0");
+            bT.Value = (int)THKlientenberichtTyp;
+            list.Add(bT);
+
+            string sFileFullNameExported = "";
+            PMDS.Print.CR.ReportManager.PrintDynamicReport(sPath, true, list, null, THKlientNameGebDat,
                                                            ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, null, ref sFileFullNameExported);
 
         }

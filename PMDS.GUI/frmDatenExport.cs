@@ -93,7 +93,7 @@ namespace PMDS.GUI
                 bool res = GuiAction.Datenarchivierung(this.IDPatient, ref this.txtEditor, this.IDKlinik, 
                                                         out bool tmpDocuSuccessfullyGenerated, out string tmpFileNamePDFDocument, 
                                                         this.KlientenberichtTyp, this.DatenexportTyp, ref RTFLog, 
-                                                        this.chkPDFExport.Checked, this.chkXMLExport.Checked);
+                                                        this.chkPDFExport.Checked, this.chkXMLExport.Checked, ref this.lblKlient);
                 this.DocuSuccessfullyGenerated = tmpDocuSuccessfullyGenerated;
                 this.FileNamePDFDocument = tmpFileNamePDFDocument;
             }

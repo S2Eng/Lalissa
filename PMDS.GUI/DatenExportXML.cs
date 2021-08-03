@@ -1076,7 +1076,6 @@ namespace PMDS.GUI
             }
             finally
             {
-                xml?.Dispose();
                 nExportInfo?.Dispose();
                 nKliniken?.Dispose(); 
                 nAbteilungen?.Dispose();
@@ -1161,6 +1160,7 @@ namespace PMDS.GUI
                 nVO?.Dispose();
                 nVOBestelldaten?.Dispose();
                 nChild?.Dispose();
+                xml?.Dispose();
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
@@ -1320,7 +1320,7 @@ namespace PMDS.GUI
             {
                 int i = 0;
                 foreach (var row in tbl)
-                {
+                {                  
                     nChild = nParent.NewChild(ChildName, "Anzahl=" + tbl.Count.ToString());
                     i++;
 
@@ -1377,14 +1377,14 @@ namespace PMDS.GUI
                                 AddDetailNode(tblKlinik, nChild, "Klinik");
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDABTEILUNG")) //IDAbteilung_Von, IDAbteilung_Nach
+                            else if (generic.sEquals(vprop.Name, "IDABTEILUNG")) //IDAbteilung_Von, IDAbteilung_Nach
                             {
                                 Guid IDAbteilung = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.Abteilung> tblAbteilung = db.Abteilung.Where(a => a.ID == IDAbteilung).ToList();
                                 AddDetailNode(tblAbteilung, nChild, "Abteilung");
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDBEREICH"))  
+                            else if (generic.sEquals(vprop.Name, "IDBEREICH"))  
                             {
                                 Guid IDBereich = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.Bereich> tblBereich = db.Bereich.Where(a => a.ID == IDBereich).ToList();
@@ -1392,7 +1392,7 @@ namespace PMDS.GUI
                             }
 
                             //Adressen
-                            if (generic.sEquals(vprop.Name, "IDADRESSE") || generic.sEquals(vprop.Name, "IDADRESSESUB"))
+                            else if (generic.sEquals(vprop.Name, "IDADRESSE") || generic.sEquals(vprop.Name, "IDADRESSESUB"))
                             {
                                 Guid IDAdresse = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.Adresse> tblAdressen = db.Adresse.Where(a => a.ID == IDAdresse).ToList();
@@ -1400,14 +1400,14 @@ namespace PMDS.GUI
                             }
 
                             //Kontakte
-                            if (generic.sEquals(vprop.Name, "IDKONTAKT") || generic.sEquals(vprop.Name, "IDKONTAKTSUB"))
+                            else if (generic.sEquals(vprop.Name, "IDKONTAKT") || generic.sEquals(vprop.Name, "IDKONTAKTSUB"))
                             {
                                 Guid IDKontakt = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.Kontakt> tblKontakte = db.Kontakt.Where(a => a.ID == IDKontakt).ToList();
                                 AddDetailNode(tblKontakte, nChild, vprop.Name);
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDBANK"))
+                            else if (generic.sEquals(vprop.Name, "IDBANK"))
                             {
                                 Guid IDBank = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.Bank> tblBanken = db.Bank.Where(a => a.ID == IDBank).ToList();
@@ -1431,42 +1431,42 @@ namespace PMDS.GUI
                             //}
 
                             //Pflegegeldstufen
-                            if (generic.sEquals(vprop.Name, "IDPFLEGEGELDSTUFE") || generic.sEquals(vprop.Name, "IDPFLEGEGELDSTUFEANTRAG"))
+                            else if (generic.sEquals(vprop.Name, "IDPFLEGEGELDSTUFE") || generic.sEquals(vprop.Name, "IDPFLEGEGELDSTUFEANTRAG"))
                             {
                                 Guid IDPflegegeldStufe = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.Pflegegeldstufe> tblPflegegeldStufen = db.Pflegegeldstufe.Where(a => a.ID == IDPflegegeldStufe).ToList();
                                 AddDetailNode(tblPflegegeldStufen, nChild, vprop.Name);
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDPLAN"))
+                            else if (generic.sEquals(vprop.Name, "IDPLAN"))
                             {
                                 Guid IDPlan = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.plan> tblPlaene = db.plan.Where(a => a.ID == IDPlan).ToList();
                                 AddDetailNode(tblPlaene, nChild, "Plan");
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDPDX"))
+                            else if (generic.sEquals(vprop.Name, "IDPDX"))
                             {
                                 Guid IDPDX = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.PDX> tblPDXs = db.PDX.Where(a => a.ID == IDPDX).ToList();
                                 AddDetailNode(tblPDXs, nChild, "PDX");
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDMEDIKAMENT"))
+                            else if (generic.sEquals(vprop.Name, "IDMEDIKAMENT"))
                             {
                                 Guid IDMedikament = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.Medikament> tblMedikamente = db.Medikament.Where(med => med.ID == IDMedikament).ToList();
                                 AddDetailNode(tblMedikamente, nChild, "Medikament_Heilbehelf");
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDMEDIZINISCHEDATEN"))
+                            else if (generic.sEquals(vprop.Name, "IDMEDIZINISCHEDATEN"))
                             {
                                 Guid IDMedDaten = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.MedizinischeDaten> tblMedDaten = db.MedizinischeDaten.Where(med => med.ID == IDMedDaten).ToList();
                                 AddDetailNode(tblMedDaten, nChild, "MedizinischeDaten");
                             }
 
-                            if (generic.sEquals(vprop.Name, "IDWUNDEKOPF"))
+                            else if (generic.sEquals(vprop.Name, "IDWUNDEKOPF"))
                             {
                                 Guid IDWundeKopf = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
                                 List<PMDS.db.Entities.WundeKopf> tblWundeKopf = db.WundeKopf.Where(med => med.ID == IDWundeKopf).ToList();

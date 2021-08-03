@@ -151,7 +151,7 @@ namespace PMDS.Global.Remote
 
                 //return true;
 
-                remotingClient.frmRueckmedlungLine._ar = arInterventionen;
+                remotingClient.frmRueckmedlungLine.SetData(arInterventionen);
                 remotingClient.frmRueckmedlungLine.StartPosition = FormStartPosition.CenterScreen;
                 remotingClient.frmRueckmedlungLine.TopMost = true;
                 remotingClient.frmRueckmedlungLine.Left = MainWindowLeft + (MainWindowWidth/2) + (remotingClient.frmRueckmedlungLine.Width/2);

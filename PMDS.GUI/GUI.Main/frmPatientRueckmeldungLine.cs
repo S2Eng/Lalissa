@@ -16,58 +16,25 @@ using System.Runtime.InteropServices;
 
 namespace PMDS.GUI
 {
-
-
     public partial class frmPatientRueckmeldungLine : QS2.Desktop.ControlManagment.baseForm
     {
-        public List<PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow> _ar = null;
-        public static bool IsSchnellrückmeldung = false;
-        public PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
+        private List<PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow> _ar;
 
-
+        public static bool IsSchnellrückmeldung { get; set; }
+        
         [DllImport("user32")]
         private static extern IntPtr GetForegroundWindow();
 
         [DllImport("User32", EntryPoint = "BringWindowToTop")]
         private static extern bool BringWindowToTop(IntPtr wHandle);
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern IntPtr FindWindow(string strClassName, string strWindowName);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        private static extern IntPtr FindWindow(string strClassName, string strWindowName);
 
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        public static int maxLinesSR = 100;     //NMaximale Anzahl der Maßnahmen in der Liste -- wegen OutOfMemoryExeption
-
-
-
-
-
-
-
-
-        public frmPatientRueckmeldungLine(List<PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow> ar)
-        {
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                InitializeComponent();
-
-                if (!DesignMode)
-                {
-                    QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
-                    ControlManagment1.autoTranslateForm(this);
-                }
-
-                this._ar = ar;
-            }
-            catch (Exception ex)
-            {
-                this.TopMost = false;
-                this.Visible = false;
-                ENV.HandleException(ex);
-            }
-        }
+        private static int maxLinesSR = 100;     //Maximale Anzahl der Maßnahmen in der Liste -- wegen OutOfMemoryExeption
 
         public frmPatientRueckmeldungLine()
         {
@@ -75,13 +42,11 @@ namespace PMDS.GUI
             {
                 Cursor.Current = Cursors.WaitCursor;
                 InitializeComponent();
-                if (!DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     ControlManagment1.autoTranslateForm(this);
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -94,14 +59,14 @@ namespace PMDS.GUI
         private void toTop()
         {
             IntPtr hWndActive = FindWindow(null, "PMDS Starter");
-            bool b1 = SetForegroundWindow(hWndActive);
-            bool b2 = BringWindowToTop(hWndActive);
+            SetForegroundWindow(hWndActive);
+            BringWindowToTop(hWndActive);
 
             this.TopMost = true;
             this.BringToFront();
         }
 
-        public void InitControlsxy(System.Collections.Generic.List<PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow> ar)
+        public void InitControls(System.Collections.Generic.List<PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow> ar)
         {
 
             try
@@ -113,81 +78,11 @@ namespace PMDS.GUI
                 DateTime Terminzeitpunkt = DateTime.Now;
 
                 //////////////////////////////////////////////////////////////////////////////////////////////
-//                pnlMain.Controls.Clear();
-
                 int lastIndex = 1;
                 int maxIndex = this.pnlMain.Controls.Count;
                 foreach (Control c in pnlMain.Controls)
                     c.Visible = false;
-
                 /////////////////////////////////////////////////////////////////////////////////
-
-                //foreach (dsTermine.PflegePlanRow r in ar)
-                //{
-
-                //    if (lastIndex <= maxIndex - 1)
-                //    {
-                //        ucPflegeEintragExLine uc = (ucPflegeEintragExLine)pnlMain.Controls[lastIndex];
-
-                //        Patient pat = new Patient(r.IDPatient);
-                //        bool bOptional = false;                     // Optionaler Rückmeldetext verarbeiten
-
-                //        if (!r.IsIDNull())
-                //            bOptional = PMDS.BusinessLogic.PflegePlan.IsRMOptional(r.ID) || ENV.ABTEILUNG_RMOPTIONAL;
-                //        uc.RM_OPTIONAL = bOptional;
-
-                //        if (r.OhneZeitBezug)
-                //            Terminzeitpunkt = DateTime.Now;
-                //        else
-                //            Terminzeitpunkt = r.TerminZeitpunkt;
-
-                //        PflegeEintrag pe = GuiAction.NewPflegeEintragByRow(r, Terminzeitpunkt);
-
-                //        uc.TabIndex = iCount--;
-                //        uc.FinishAfterCreate = r.EinmaligJN;    // Einmalige M dann anschließend beenden
-                //        uc.Eintrag = pe;
-                //        uc.EnableEditTime = true;
-                //        uc.Dock = DockStyle.Top;
-                //        uc.INFOTEXT = pat.FullName;
-                //        if (r.EintragsTyp == (int)PflegeEintragTyp.TERMIN)
-                //            uc.SetTerminString(r.Text);
-                //        uc.ResizeThis();                            // die größe anpassen
-                //        uc.Visible = true;
-
-                //        lastIndex += 1;
-
-                //    }
-                //    else
-                //    {
-
-                //        ucPflegeEintragExLine uc = new ucPflegeEintragExLine();
-
-                //        Patient pat = new Patient(r.IDPatient);
-                //        bool bOptional = false;                     // Optionaler Rückmeldetext verarbeiten
-
-                //        if (!r.IsIDNull())
-                //            bOptional = PMDS.BusinessLogic.PflegePlan.IsRMOptional(r.ID) || ENV.ABTEILUNG_RMOPTIONAL;
-                //        uc.RM_OPTIONAL = bOptional;
-
-                //        if (r.OhneZeitBezug)
-                //            Terminzeitpunkt = DateTime.Now;
-                //        else
-                //            Terminzeitpunkt = r.TerminZeitpunkt;
-
-                //        PflegeEintrag pe = GuiAction.NewPflegeEintragByRow(r, Terminzeitpunkt);
-
-                //        uc.TabIndex = iCount--;
-                //        uc.FinishAfterCreate = r.EinmaligJN;    // Einmalige M dann anschließend beenden
-                //        uc.Eintrag = pe;
-                //        uc.EnableEditTime = true;
-                //        uc.Dock = DockStyle.Top;
-                //        uc.INFOTEXT = pat.FullName;
-                //        if (r.EintragsTyp == (int)PflegeEintragTyp.TERMIN)
-                //            uc.SetTerminString(r.Text);
-                //        uc.ResizeThis();                            // die größe anpassen
-                //        this.pnlMain.Controls.Add(uc);
-                //    }
-                //}
 
                 int aktRow = 0;
                 PMDS.DB.PMDSBusiness dbBusiness = new DB.PMDSBusiness();
@@ -244,7 +139,6 @@ namespace PMDS.GUI
                             uc.Eintrag.EintragsTyp = PflegeEintragTyp.MASSNAHME;
                         }
 
-
                         uc.TabIndex = iCount--;
                         uc.FinishAfterCreate = rIntervention.EinmaligJN;     // Einmalige M dann anschließend beenden
                         uc.EnableEditTime = true;
@@ -269,7 +163,6 @@ namespace PMDS.GUI
                 if (aktRow > maxLinesSR)
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(QS2.Desktop.ControlManagment.ControlManagment.getRes("Sie haben ") + aktRow.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" Meldungen ausgewählt, es können aber nur ") + maxLinesSR.ToString() + QS2.Desktop.ControlManagment.ControlManagment.getRes(" Meldungen auf einmal in der Liste anzeigt werden.\r\n") +
                                         QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte wiederholen Sie die Schnellrückmeldung für die restlichen Meldungen."), QS2.Desktop.ControlManagment.ControlManagment.getRes("Hinweis"), MessageBoxButtons.OK, true);
-
             }
 
             catch (Exception ex)
@@ -420,33 +313,22 @@ namespace PMDS.GUI
                                 }
                             }
                         }                    
-
-                        //this.PMDSBusiness1.copyUpdateZusatzwertePEIDGruppe(uc.Eintrag.ID, db);
                     }
                 }
 
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
+                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                     foreach (Guid IDPE in lstPEContainsDienstübergabe)
                     {
                         PMDSBusiness1.writeDienstübergabeForPatient(PMDSBusiness.IDSelListDienstübergabe, IDPE, db, null);
                     }
                 }
 
-                //throw new Exception("TestSR");
                 this.DialogResult = DialogResult.OK;
-
-                //if (ENV.SchnellrückmeldungAsProcess.Trim() == "1")
-                //{
-                //    remotingClient remotingClient1 = new remotingClient();
-                //    cParComm cParComm1 = new cParComm();
-                //    remotingClient.cCallFctReturn CallFctReturn = null;
-                //    remotingClient1.callFct(ICommunicationService.eTypeCallTo.MainPMDS, ICommunicationService.eTypeFct.RefreshInterventionen, cParComm1, ref CallFctReturn);
-                //}
 
                 remotingSrv.writeClosedSchnellrückmeldung(true);
                 this.Close();
-
             }
             catch (Exception ex)
             {
@@ -477,10 +359,9 @@ namespace PMDS.GUI
             {
                 if (this.Visible)
                 {
-                    this.InitControlsxy(this._ar);
+                    this.InitControls(this._ar);
                     this.toTop();
                 }
-
             }
             catch (Exception ex)
             {
@@ -503,6 +384,23 @@ namespace PMDS.GUI
             }
         }
 
+        public void SetData(List<PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow> ar)
+        {
+            try
+            {
+                _ar = ar;
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+        }
+        public static int GetMaxLines()
+        {
+            return maxLinesSR;
+        }
     }
+
+
 
 }
