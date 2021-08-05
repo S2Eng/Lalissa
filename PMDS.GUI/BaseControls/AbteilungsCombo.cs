@@ -60,50 +60,41 @@ namespace PMDS.GUI.BaseControls
 			{
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    System.Linq.IQueryable<PMDS.db.Entities.BenutzerAbteilung> tBenutzerAbteilung = this.b.getBenutzerAbteilung(ENV.USERID, db);
                     //this.b.UserHasRechtAufGesamteshausxyxyx()
-
-                    if (ENV.AppRunning)
+                    if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                     {
-                        if (rKlinik == null)
+                        foreach (PMDSBusiness.ResultBenutzerAbteilung r in this.b.getBenutzerAbteilung(ENV.USERID, ENV.IDKlinik, db))
                         {
-                            foreach (dsAbteilung.AbteilungRow r in Klinik.Default().Abteilungen.Abteilungen)
-                            {
-                                var tAbteilungRight = (from ba in tBenutzerAbteilung
-                                               where ba.IDAbteilung == r.ID
-                                               select new
-                                               {
-                                                   IDAbteilung = ba.IDAbteilung
-                                               });
-                                if (tAbteilungRight.Count() > 0)
-                                {
-                                    this.Items.Add(r.ID, r.Bezeichnung);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            PMDS.DB.DBAbteilung  DBAbteilung1 = new PMDS.DB.DBAbteilung();
-                            dsAbteilung dsAbteilungFound = new dsAbteilung();
-                            DBAbteilung1.getAbteilungenByKlinik(this.rKlinik.ID, dsAbteilungFound);
-                            foreach (dsAbteilung.AbteilungRow r in dsAbteilungFound.Abteilung)
-                            {
-                                var tAbteilungRight = (from ba in tBenutzerAbteilung
-                                                       where ba.IDAbteilung == r.ID
-                                                       select new
-                                                       {
-                                                           IDAbteilung = ba.IDAbteilung
-                                                       });
-                                if (tAbteilungRight.Count() > 0)
-                                {
-                                    if (!r.ID.Equals(System.Guid.Empty))
-                                    {
-                                        this.Items.Add(r.ID, r.Bezeichnung);
-                                    }
-                                }
-                            }
+                            this.Items.Add(r.IDAbteilung, r.Bezeichnung);
                         }
                     }
+                    //else
+                    //{
+                    //    using (PMDS.DB.DBAbteilung DBAbteilung1 = new PMDS.DB.DBAbteilung())
+                    //    {
+                    //        using (dsAbteilung dsAbteilungFound = new dsAbteilung())
+                    //        {
+                    //            System.Linq.IQueryable<PMDS.db.Entities.BenutzerAbteilung> tBenutzerAbteilung = this.b.getBenutzerAbteilung(ENV.USERID, db);
+                    //            DBAbteilung1.getAbteilungenByKlinik(this.rKlinik.ID, dsAbteilungFound);
+                    //            foreach (dsAbteilung.AbteilungRow r in dsAbteilungFound.Abteilung)
+                    //            {
+                    //                var tAbteilungRight = (from ba in tBenutzerAbteilung
+                    //                                       where ba.IDAbteilung == r.ID
+                    //                                       select new
+                    //                                       {
+                    //                                           IDAbteilung = ba.IDAbteilung
+                    //                                       });
+                    //                if (tAbteilungRight.Any())
+                    //                {
+                    //                    if (!r.ID.Equals(System.Guid.Empty))
+                    //                    {
+                    //                        this.Items.Add(r.ID, r.Bezeichnung);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //}
                 }
 			}
 			catch(Exception e)
@@ -112,5 +103,4 @@ namespace PMDS.GUI.BaseControls
 			}
 		}
 	}
-
 }

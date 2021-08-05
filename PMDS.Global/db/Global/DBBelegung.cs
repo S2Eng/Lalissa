@@ -18,9 +18,9 @@ namespace PMDS.DB.Global
 {
     public partial class DBBelegung : Component
     {
-        public static OleDbCommand _cmdAnzahlBetten;
-        public static OleDbCommand _cmdAnzahlAufenthalt;
-        public static OleDbCommand _cmdAnzahlUrlaube; 
+        public static OleDbCommand _cmdAnzahlBetten { get; set; }
+        public static OleDbCommand _cmdAnzahlAufenthalt { get; set; }
+        public static OleDbCommand _cmdAnzahlUrlaube { get; set; }
 
         public DBBelegung()
         {
@@ -99,11 +99,14 @@ namespace PMDS.DB.Global
             _cmdAnzahlAufenthalt.Parameters[1].Value = dtday.Date;
             _cmdAnzahlAufenthalt.Parameters[2].Value = dtday.Date;
             iBelegung = GetColumn0Int(_cmdAnzahlAufenthalt);
-            
+
             // Alle Urlaube des Tages
             _cmdAnzahlUrlaube.Parameters[0].Value = dtday.Date;
             _cmdAnzahlUrlaube.Parameters[1].Value = dtday.Date;
-            _cmdAnzahlUrlaube.Parameters[2].Value = dtday.Date;  
+            _cmdAnzahlUrlaube.Parameters[2].Value = dtday.Date;
+            _cmdAnzahlUrlaube.Parameters[3].Value = dtday.Date;
+            _cmdAnzahlUrlaube.Parameters[4].Value = dtday.Date;
+            _cmdAnzahlUrlaube.Parameters[5].Value = dtday.Date;
             iUrlaube = GetColumn0Int(_cmdAnzahlUrlaube);
 
             iBelegung -= iUrlaube;
@@ -120,20 +123,23 @@ namespace PMDS.DB.Global
             {
                 int iRet = 0;
                 cmd.Connection = PMDS.Global.dbBase.getConn();
-                System.Data.DataTable dtSelect = new System.Data.DataTable();
-                OleDbDataAdapter da = new OleDbDataAdapter();
-                da.SelectCommand = cmd;
-                da.SelectCommand.CommandTimeout = 0;
-                da.Fill(dtSelect);
-                if (dtSelect.Rows.Count > 0)
+                using (System.Data.DataTable dtSelect = new System.Data.DataTable())
                 {
-                    System.Data.DataRow r = dtSelect.Rows[0];
-                    if (r[0] != System.DBNull.Value)
+                    using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        iRet = System.Convert.ToInt32(r[0].ToString().Trim());
+                        da.SelectCommand = cmd;
+                        da.SelectCommand.CommandTimeout = 0;
+                        da.Fill(dtSelect);
+                        if (dtSelect.Rows.Count > 0)
+                        {
+                            System.Data.DataRow r = dtSelect.Rows[0];
+                            if (r[0] != System.DBNull.Value)
+                            {
+                                iRet = System.Convert.ToInt32(r[0].ToString().Trim());
+                            }
+                        }
                     }
                 }
-
                 return iRet;
 
             }
@@ -153,7 +159,10 @@ namespace PMDS.DB.Global
             if (_cmdAnzahlAufenthalt != null)
                 return;
             _cmdAnzahlAufenthalt = new OleDbCommand();
-            _cmdAnzahlAufenthalt.CommandText = "select count(*) from Aufenthalt where (CAST(FLOOR(CAST(AufnahmeZeitpunkt AS FLOAT)) AS DATETIME) <= ? and Entlassungszeitpunkt is null) or (CAST(FLOOR(CAST(AufnahmeZeitpunkt AS FLOAT)) AS DATETIME) <= ? and CAST(FLOOR(CAST(Entlassungszeitpunkt AS FLOAT)) AS DATETIME) > ?)";
+            _cmdAnzahlAufenthalt.CommandText = "select count(*) from vAufenthaltsliste ";
+            _cmdAnzahlAufenthalt.CommandText += "inner join Klinik on vAufenthaltsliste.IDKlinik = Klinik.ID  where ";
+            _cmdAnzahlAufenthalt.CommandText += "((CAST(FLOOR(CAST(AufnahmeZeitpunkt AS FLOAT)) AS DATETIME) <= ? and Entlassungszeitpunkt is null) or (CAST(FLOOR(CAST(AufnahmeZeitpunkt AS FLOAT)) AS DATETIME) <= ? and CAST(FLOOR(CAST(Entlassungszeitpunkt AS FLOAT)) AS DATETIME) > ?)) and ";
+            _cmdAnzahlAufenthalt.CommandText += "Klinik.Bezeichnung NOT LIKE ('%test%')";
             _cmdAnzahlAufenthalt.Parameters.Add("Tag", OleDbType.Date);
             _cmdAnzahlAufenthalt.Parameters.Add("Tag2", OleDbType.Date);
             _cmdAnzahlAufenthalt.Parameters.Add("Tag3", OleDbType.Date);
@@ -169,10 +178,27 @@ namespace PMDS.DB.Global
             if (_cmdAnzahlUrlaube != null)
                 return;
             _cmdAnzahlUrlaube = new OleDbCommand();
-            _cmdAnzahlUrlaube.CommandText = "select count(*) from Urlaubverlauf where (CAST(FLOOR(CAST(StartDatum AS FLOAT)) AS DATETIME) <= ? and CAST(FLOOR(CAST(EndeDatum AS FLOAT)) AS DATETIME) is null) or (CAST(FLOOR(CAST(StartDatum AS FLOAT)) AS DATETIME)<= ? and CAST(FLOOR(CAST(Endedatum AS FLOAT)) AS DATETIME) > ?)";
+            //_cmdAnzahlUrlaube.CommandText = "select count(*) from Urlaubverlauf where (CAST(FLOOR(CAST(StartDatum AS FLOAT)) AS DATETIME) <= ? and CAST(FLOOR(CAST(EndeDatum AS FLOAT)) AS DATETIME) is null) or (CAST(FLOOR(CAST(StartDatum AS FLOAT)) AS DATETIME)<= ? and CAST(FLOOR(CAST(Endedatum AS FLOAT)) AS DATETIME) > ?)";
+
+            _cmdAnzahlUrlaube.CommandText = "select count(*) from Urlaubverlauf ";
+            _cmdAnzahlUrlaube.CommandText += "inner join vAufenthaltsliste on UrlaubVerlauf.IDAufenthalt = vAufenthaltsliste.IDAufenthalt ";
+            _cmdAnzahlUrlaube.CommandText += "inner join Klinik on vAufenthaltsliste.IDKlinik = Klinik.ID  where ";
+            _cmdAnzahlUrlaube.CommandText += "(";
+            _cmdAnzahlUrlaube.CommandText += "(CAST(FLOOR(CAST(StartDatum AS FLOAT)) AS DATETIME) <= ? and CAST(FLOOR(CAST(EndeDatum AS FLOAT)) AS DATETIME) is null) or";
+            _cmdAnzahlUrlaube.CommandText += "(CAST(FLOOR(CAST(StartDatum AS FLOAT)) AS DATETIME) <= ? and CAST(FLOOR(CAST(Endedatum AS FLOAT)) AS DATETIME) > ?)";
+            _cmdAnzahlUrlaube.CommandText += ")";
+            _cmdAnzahlUrlaube.CommandText += "AND";
+            _cmdAnzahlUrlaube.CommandText += "(";
+            _cmdAnzahlUrlaube.CommandText += "(CAST(FLOOR(CAST(AufnahmeZeitpunkt AS FLOAT)) AS DATETIME) <= ? and Entlassungszeitpunkt is null) or ";
+            _cmdAnzahlUrlaube.CommandText += "(CAST(FLOOR(CAST(AufnahmeZeitpunkt AS FLOAT)) AS DATETIME) <= ? and CAST(FLOOR(CAST(Entlassungszeitpunkt AS FLOAT)) AS DATETIME) > ?)";
+            _cmdAnzahlUrlaube.CommandText += ") and ";
+            _cmdAnzahlUrlaube.CommandText += "Klinik.Bezeichnung NOT LIKE ('%test%')";
             _cmdAnzahlUrlaube.Parameters.Add("Tag", OleDbType.Date);
             _cmdAnzahlUrlaube.Parameters.Add("Tag2", OleDbType.Date);
             _cmdAnzahlUrlaube.Parameters.Add("Tag3", OleDbType.Date);
+            _cmdAnzahlUrlaube.Parameters.Add("Tag4", OleDbType.Date);
+            _cmdAnzahlUrlaube.Parameters.Add("Tag5", OleDbType.Date);
+            _cmdAnzahlUrlaube.Parameters.Add("Tag6", OleDbType.Date);
         }
 
         //----------------------------------------------------------------------------

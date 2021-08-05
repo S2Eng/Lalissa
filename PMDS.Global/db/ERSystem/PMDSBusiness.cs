@@ -11325,7 +11325,6 @@ namespace PMDS.DB
             {
                 System.Linq.IQueryable<PMDS.db.Entities.BenutzerAbteilung> tBenutzerAbteilung = db.BenutzerAbteilung.Where(a => a.IDBenutzer == IDUser);
                 return tBenutzerAbteilung;
-
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {
@@ -11336,6 +11335,36 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusiness.getBenutzerAbteilung: " + ex.ToString());
             }
         }
+
+        public class ResultBenutzerAbteilung
+        {
+            public Guid IDAbteilung { get; set; }
+
+            public string Bezeichnung { get; set; }
+        }
+        public List<ResultBenutzerAbteilung> getBenutzerAbteilung(Guid IDUser, Guid IDKlinik, PMDS.db.Entities.ERModellPMDSEntities db)
+        {
+            try
+            {
+                return (from benabt in db.BenutzerAbteilung
+                        join abt in db.Abteilung on benabt.IDAbteilung equals abt.ID
+                        where benabt.IDBenutzer == IDUser && abt.IDKlinik == IDKlinik
+                        select new ResultBenutzerAbteilung
+                        {
+                            IDAbteilung = abt.ID,
+                            Bezeichnung = abt.Bezeichnung.Trim()
+                        }).ToList();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                throw new System.Data.Entity.Validation.DbEntityValidationException(this.getDbEntityValidationException(ex), ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDSBusiness.getBenutzerAbteilung: " + ex.ToString());
+            }
+        }
+
         public System.Linq.IQueryable<PMDS.db.Entities.BereichBenutzer> getBereichBenutzer(Guid IDUser, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
