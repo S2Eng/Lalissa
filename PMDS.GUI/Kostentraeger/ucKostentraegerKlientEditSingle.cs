@@ -265,6 +265,7 @@ namespace PMDS.GUI.Kostentraeger
                         this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
                         this._rKostenträger.Rechnungsempfaenger = "Fond Soziales Wien";
                         this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;
+                        this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.FSW;
                     }
 
                     this._db.Kostentraeger.Add(this._rKostenträger);

@@ -1,4 +1,5 @@
 ﻿using PMDS.Global;
+using PMDS.Global.db.Patient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,6 @@ namespace PMDS.GUI
     {
         public bool bInit { get; set; }
         private Guid IDPatient = Guid.Empty;
-        private TXTextControl.TextControl txtEditor;
         private System.Guid IDKlinik;
         public bool DocuSuccessfullyGenerated { get; set; }
         public string FileNamePDFDocument { get; set; } = "";
@@ -28,12 +28,11 @@ namespace PMDS.GUI
             InitializeComponent();
         }
 
-        public bool Init(System.Guid IDPatient, TXTextControl.TextControl txtEditor, System.Guid IDKlinik, ENV.eKlientenberichtTyp KlientenberichtTyp, ENV.eDatenexportTyp DatenexportTyp)
+        public bool Init(System.Guid IDPatient, System.Guid IDKlinik, ENV.eKlientenberichtTyp KlientenberichtTyp, ENV.eDatenexportTyp DatenexportTyp)
         {
             try
             {
                 this.IDPatient = IDPatient;
-                this.txtEditor = txtEditor;
                 this.IDKlinik = IDKlinik;
                 this.KlientenberichtTyp = KlientenberichtTyp;
                 this.DatenexportTyp = DatenexportTyp;
@@ -63,11 +62,14 @@ namespace PMDS.GUI
 
                 if (IDPatient != Guid.Empty)
                 {
-                    this.optDatenexportTyp.Visible = false;
+                    this.optDatenexportTyp.Visible = false;                    
                 }
                 else
                 {
                     this.optDatenexportTyp.Visible = true;
+                    //Kein PDFA-Export bei Massenexport
+                    this.chkPDFA.Checked = false;
+                    this.chkPDFA.Visible = false;
                 }
 
                 this.lblTarget.Text = "Das Ergebnis wird im Archivpfad gespeichert: " + ENV.ArchivPath;
@@ -88,12 +90,13 @@ namespace PMDS.GUI
             try
             {
                 ENV.IgnoreMaxIdleTime = true;    //Vorübergehend die Bildschirmsperre ausschalten, weil sonst die Verarbeitung unterbricht
+                this.RTFLog.Enabled = true;               
+                bool res = GuiAction.Datenarchivierung(this.IDPatient, this.IDKlinik,
+                                                        out bool tmpDocuSuccessfullyGenerated, out string tmpFileNamePDFDocument,
+                                                        this.KlientenberichtTyp, this.DatenexportTyp, ref RTFLog,
+                                                        this.chkPDFExport.Checked, this.chkXMLExport.Checked, this.chkPDFA.Checked,
+                                                        ref this.lblKlient);
 
-                this.RTFLog.Enabled = true;
-                bool res = GuiAction.Datenarchivierung(this.IDPatient, ref this.txtEditor, this.IDKlinik, 
-                                                        out bool tmpDocuSuccessfullyGenerated, out string tmpFileNamePDFDocument, 
-                                                        this.KlientenberichtTyp, this.DatenexportTyp, ref RTFLog, 
-                                                        this.chkPDFExport.Checked, this.chkXMLExport.Checked, ref this.lblKlient);
                 this.DocuSuccessfullyGenerated = tmpDocuSuccessfullyGenerated;
                 this.FileNamePDFDocument = tmpFileNamePDFDocument;
             }
@@ -122,6 +125,19 @@ namespace PMDS.GUI
             //Ans Ende scrollen
             RTFLog.SelectionStart = RTFLog.Text.Length;
             RTFLog.ScrollToCaret();
+        }
+
+        private void chkPDFExport_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!this.chkPDFExport.Checked)
+            {
+                this.chkPDFA.Checked = false;
+                this.chkPDFA.Enabled = false;
+            }
+            else
+            {
+                this.chkPDFA.Enabled = true;
+            }
         }
     }
 }

@@ -56,6 +56,7 @@ Public Enum eZahlart
     Erlagschein = 1
     Überweisung = 2
     Bankeinzug = 3
+    FSW = 4
 End Enum
 
 

@@ -86,7 +86,7 @@ namespace PMDS.Print.CR
                             SubreportObject so = (SubreportObject)o;
                             ReportDocument doc = so.OpenSubreport(so.SubreportName);
 
-                            //if (PMDS.Global.generic.sEquals(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
+                            //if (PMDS.Global.generic.sEqualsList1(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
                             //{
                             //    doc.SetDataSource(listds[0].DATASET);
                             //}
@@ -320,6 +320,7 @@ namespace PMDS.Print.CR
                                 CrExportOptions.FormatOptions = CrFormatTypeOptions;
                             }
                             rpt.Export();
+                            sFileFullNameExported = tmpFullPath;
                             return true;
                         }
                         catch (Exception ex)
@@ -451,7 +452,38 @@ namespace PMDS.Print.CR
                 return "";
             }
         }
-      
+
+        public static string GetUniqueArchivFileName(string KlientenNameGebDat, string ReportRoot, string sReportFile, string sAufenthaltNr, string sExpand)
+        {
+            try
+            {
+
+                string repPath = System.IO.Path.Combine(ReportRoot, KlientenNameGebDat);
+                System.IO.Directory.CreateDirectory(repPath);   // Pfad anlegen, wenn er nicht bereits besteht
+
+                if (!PMDS.Global.generic.sEquals(sAufenthaltNr, "0") && !PMDS.Global.generic.sEquals(sAufenthaltNr, ""))
+                {
+                    sReportFile = Path.Combine(Path.GetDirectoryName(sReportFile), sAufenthaltNr + "." + Path.GetFileName(sReportFile));
+                }
+
+                sReportFile = System.IO.Path.GetFileName(sReportFile);
+                sReportFile = Regex.Replace(sReportFile, @"[^0-9a-zA-Z.‰ˆ¸ƒ÷‹ﬂ]", string.Empty);
+                if (string.IsNullOrWhiteSpace(sExpand))
+                {
+                    sReportFile = System.IO.Path.Combine(repPath, sReportFile + "_" + System.Guid.NewGuid().ToString() + ".pdf");
+                }
+                else
+                {
+                    sReportFile = System.IO.Path.Combine(repPath, sAufenthaltNr + "." + sReportFile + "." + sExpand + ".pdf");
+                }
+                return sReportFile;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
     }
 
     public class cParFormular

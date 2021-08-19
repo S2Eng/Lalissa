@@ -889,7 +889,7 @@ namespace PMDS.GUI
             itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Bar, PMDS.Calc.Logic.eZahlart.Bar.ToString());
             itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Erlagschein, PMDS.Calc.Logic.eZahlart.Erlagschein.ToString());
             itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Überweisung, PMDS.Calc.Logic.eZahlart.Überweisung.ToString());
-
+            itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.FSW, PMDS.Calc.Logic.eZahlart.FSW.ToString());
         }
 
         public static void getListHerrichtenMedikamente(Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)

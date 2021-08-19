@@ -6936,7 +6936,7 @@ namespace PMDS.DB
         {
             try
             {
-                System.Linq.IQueryable<FormularDaten> tFormularDaten = db.FormularDaten.Where(o => o.IDREF == ID );
+                System.Linq.IQueryable<FormularDaten> tFormularDaten = db.FormularDaten.Where(o => o.IDREF == ID ).OrderBy(o => o.Datumerstellt).OrderBy(o => o.FormularName);
                 return tFormularDaten;
             }
             catch (Exception ex)

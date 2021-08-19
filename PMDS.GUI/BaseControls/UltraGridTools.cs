@@ -1230,6 +1230,7 @@ namespace PMDS.GUI
                 vl.ValueListItems.Add((int)PMDS.Calc.Logic.eZahlart.Bar, PMDS.Calc.Logic.eZahlart.Bar.ToString());
                 vl.ValueListItems.Add((int)PMDS.Calc.Logic.eZahlart.Erlagschein, PMDS.Calc.Logic.eZahlart.Erlagschein.ToString());
                 vl.ValueListItems.Add((int)PMDS.Calc.Logic.eZahlart.Überweisung, PMDS.Calc.Logic.eZahlart.Überweisung.ToString());
+                vl.ValueListItems.Add((int)PMDS.Calc.Logic.eZahlart.FSW, PMDS.Calc.Logic.eZahlart.FSW.ToString());
             }
             UltraGridColumn c = g.DisplayLayout.Bands[0].Columns[sBoundGridColumn];
             c.ValueList = vl;

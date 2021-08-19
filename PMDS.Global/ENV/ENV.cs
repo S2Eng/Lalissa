@@ -198,6 +198,7 @@ namespace PMDS.Global
         public static string ZahlKondErlagschein = "Wir ersuchen um ‹berweisung des Rechnungsbetrags mittels beiliegendem Erlagschein auf unser Konto.";
         public static string ZahlKond‹berweisung = "Wir ersuchen um ‹berweisung des Rechnungsbetrags auf unser Konto.";
         public static string ZahlKondBar = "Betrag dankend erhalten.";
+        public static string ZahlKondFSW = "Bitte nicht einzahlen, ‹berweisung erfolgt durch den FSW.";
 
         public static bool AbwesenheitenAnzeigen = true;
 
@@ -1365,6 +1366,8 @@ namespace PMDS.Global
                 SetENVValue("ZahlKondErlagschein", ref ENV.ZahlKondErlagschein);
                 SetENVValue("ZahlKond‹berweisung", ref ENV.ZahlKond‹berweisung);
                 SetENVValue("ZahlKondBar", ref ENV.ZahlKondBar);
+                SetENVValue("ZahlKondFSW", ref ENV.ZahlKondFSW);
+
                 SetENVValue("AbwesenheitenAnzeigen", ref ENV.AbwesenheitenAnzeigen, "0");
 
                 ENV.PflegeModell = ReadPflegemodelle();

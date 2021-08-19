@@ -84,6 +84,7 @@ namespace WCFServicePMDS
         public string ZahlKondErlagschein { get; set; }
         public string ZahlKondÜberweisung { get; set; }
         public string ZahlKondBar { get; set; }
+        public string ZahlKondFSW { get; set; }
 
         public string CalcÜberst { get; set; } //lth wird das noch benötigt
         public string SMTPFrom { get; set; }

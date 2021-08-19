@@ -558,7 +558,7 @@ namespace PMDS.Print
         }
 
 
-        public static void PrintKlientenbericht(string ReportPath, Guid IDKlient, Guid IDAufenthalt, string ReportRoot, bool PrintJN, string PDFName, ENV.eKlientenberichtTyp KlientenberichtTyp, int cntAufenthalt)
+        public static void PrintKlientenbericht(string ReportPath, Guid IDKlient, Guid IDAufenthalt, string ReportRoot, bool PrintJN, string PDFName, ENV.eKlientenberichtTyp KlientenberichtTyp, int cntAufenthalt, out string sFileFullNameExported)
         {
             object[] ParameterArray = { IDKlient, IDAufenthalt, ReportRoot, PrintJN };
             BerichtParameter.BerichtParameterTyp[] TypArray = {
@@ -589,7 +589,7 @@ namespace PMDS.Print
             bA.Value = cntAufenthalt;
             list.Add(bA);
 
-            string sFileFullNameExported = "";
+            sFileFullNameExported = "";
             PMDS.Print.CR.ReportManager.PrintDynamicReport(sPath, false, list, null, PDFName,
                                                            ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, null, ref sFileFullNameExported);
 
@@ -664,7 +664,7 @@ namespace PMDS.Print
 
         }
 
-        public static void PrintAnamnese(string typ, string ReportPath, Guid IDKlient, string ReportRoot, bool PrintJN, bool UsePDFPrinter, System.Guid IDAnamnese, string KlientNameGebDat, ENV.eKlientenberichtTyp KlientenberichtTyp)
+        public static void PrintAnamnese(string typ, string ReportPath, Guid IDKlient, string ReportRoot, bool PrintJN, bool UsePDFPrinter, System.Guid IDAnamnese, string KlientNameGebDat, ENV.eKlientenberichtTyp KlientenberichtTyp, out string sFileFullNameExported)
         {
             object[] ParameterArray = { IDKlient, ReportRoot, PrintJN, UsePDFPrinter, IDAnamnese };
             BerichtParameter.BerichtParameterTyp[] TypArray = { BerichtParameter.BerichtParameterTyp.Klient, BerichtParameter.BerichtParameterTyp.Text, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.Boolean, BerichtParameter.BerichtParameterTyp.SQL_GUID };
@@ -700,10 +700,9 @@ namespace PMDS.Print
             bT.Value = (int)KlientenberichtTyp;
             list.Add(bT);
 
-            string sFileFullNameExported = "";
+            sFileFullNameExported = "";
             PMDS.Print.CR.ReportManager.PrintDynamicReport(sPath, true, list, null, KlientNameGebDat,
                                                            ENV.DB_USER, ENV.DB_SERVER, ENV.DB_DATABASE, ENV.INTEGRATED_SECURITY, ENV.DB_PASSWORD, null, ref sFileFullNameExported);
-
         }
 
         public void PrintAnamneseAsThread()

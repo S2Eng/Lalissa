@@ -186,7 +186,7 @@ namespace PMDS.Global
             }
         }
 
-        public static bool sEquals(List<object> s1, List<object> s2, Enums.eCompareMode compareMode = Enums.eCompareMode.Equals, bool trim = true, bool IgnoreCase = true)
+        public static bool sEqualsList2(List<object> s1, List<object> s2, Enums.eCompareMode compareMode = Enums.eCompareMode.Equals, bool trim = true, bool IgnoreCase = true)
         {
             try
             {

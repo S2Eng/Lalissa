@@ -494,7 +494,7 @@ Public Class bill
                 Else
                     Return String.Format(sZahlart, "")
                 End If
-            ElseIf zahlart = eZahlart.Erlagschein Or zahlart = eZahlart.Überweisung Or zahlart = eZahlart.Bar Then
+            ElseIf zahlart = eZahlart.Erlagschein Or zahlart = eZahlart.Überweisung Or zahlart = eZahlart.Bar Or zahlart = eZahlart.FSW Then
                 Return sZahlart
             End If
 
@@ -513,6 +513,8 @@ Public Class bill
                 sReturn = calculation.ZahlKondÜberweisung
             Case eZahlart.Bar
                 sReturn = calculation.ZahlKondBar
+            Case eZahlart.FSW
+                sReturn = calculation.ZahlKondFSW
             Case Else
                 sReturn = "Keine Zahlart angegeben."
         End Select

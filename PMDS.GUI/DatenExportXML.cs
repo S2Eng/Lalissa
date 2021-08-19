@@ -1,5 +1,4 @@
-﻿#define EXPORTDETAILS
-
+﻿
 using PMDS.Global;
 using System;
 using System.Collections.Generic;
@@ -9,16 +8,62 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-using Patagames.Pdf.Net;        //https://www.youtube.com/watch?v=IF9cKSUFon8
-using Patagames.Pdf.Enums;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
+
+
+using System.Xml;
 
 namespace PMDS.GUI
 {
-    class DatenExportXML
+    public class DatenExportXML : IDisposable
     {
-        private PMDS.db.Entities.ERModellPMDSEntities db;
+        private IntPtr? _pointer = IntPtr.Zero;
+        private IList<IDisposable> _disposableObjects = new List<IDisposable>();
+        private bool disposedValue;
+
+        private static int iFlush = 200;
+        private static PMDS.db.Entities.ERModellPMDSEntities db;
+        private static string FileNameXMLDocumentBackTmp = "";
+        private static XmlWriter writer;        
+
+        private class cSubNodeInfo
+        {
+            public string Name = "";
+            public Guid ID = Guid.Empty;
+        }
+
+        private static List<object> lSubNodeNames = new List<object>() { "IDKLINIK", "IDABTEILUNG", "IDBEREICH", "IDADRESSE", "IDADRESSESUB", "IDKONTAKT", "IDKONTAKTSUB",
+                                                                  "IDBANK", "IDPFLEGEGELDSTUFE", "IDPFLEGEGELDSTUFEANTRAG", "IDPLAN", "IDPDX", "IDMEDIKAMENT",
+                                                                  "IDMEDIZINISCHEDATEN", "IDWUNDEKOPF"};
+
+        public DatenExportXML()
+        {
+
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    foreach (var item in _disposableObjects)
+                    {
+                        item?.Dispose();
+                    }
+                }
+
+                // release _pointer
+                _pointer = null;
+
+                disposedValue = true;
+            }
+        }
 
         private enum eDataTable
         {
@@ -29,33 +74,18 @@ namespace PMDS.GUI
             Kontakt = 5
         }
 
-        //private static Dictionary<string, string> BenutzerFieldnames = new Dictionary<string, string>();
-        //private static Dictionary<string, string> KontaktFieldnames = new Dictionary<string, string>();
-        //private static Dictionary<string, string> AdresseFieldnames = new Dictionary<string, string>();
-        //private static Dictionary<string, string> PflegegeldStufenFieldnames = new Dictionary<string, string>();
-
-        private int iFlush = 200;
-
-        //public class MedikamenteDTO
-        //{
-        //    public Guid ID { get; set; }
-        //    public string Bezeichnung { get; set; }
-        //}
-
-
-        public class PatientenfotoDTO
+        private class PatientenfotoDTO
         {
             public Guid ID { get; set; }
             public byte[] Foto { get; set; }
         }
 
-        public class AufenthaltDTO
+        private class AufenthaltDTO
         {
             public Guid ID { get; set; }
             public Guid IDAufenthalt { get; set; }
             public DateTime Aufnahmezeitpunkt { get; set; }
         }
-
 
         private class DevOptions
         {
@@ -74,100 +104,12 @@ namespace PMDS.GUI
             public Boolean Verordnungen { get; set; }
         }
 
-        private List<PMDS.db.Entities.Benutzer> tblBenutzer = new List<db.Entities.Benutzer>();
-        private List<PMDS.db.Entities.Klinik> tblKliniken = new List<db.Entities.Klinik>();
-        private List<PMDS.db.Entities.Abteilung> tblAbteilungen = new List<db.Entities.Abteilung>();
-        private List<PMDS.db.Entities.Bereich> tblBereiche = new List<db.Entities.Bereich>();
+        private static List<PMDS.db.Entities.Benutzer> tblBenutzer = new List<db.Entities.Benutzer>();
+        private static List<PMDS.db.Entities.Klinik> tblKliniken = new List<db.Entities.Klinik>();
+        private static List<PMDS.db.Entities.Abteilung> tblAbteilungen = new List<db.Entities.Abteilung>();
+        private static List<PMDS.db.Entities.Bereich> tblBereiche = new List<db.Entities.Bereich>();
 
-        private string FileNameXMLDocumentBackTmp = "";
 
-        private Chilkat.Xml xml = new Chilkat.Xml();
-        private Chilkat.Xml nExportInfo;
-        private Chilkat.Xml nKliniken;
-        private Chilkat.Xml nAbteilungen;
-        private Chilkat.Xml nBereiche;
-        private Chilkat.Xml nAuswahlListenGruppen;
-        private Chilkat.Xml nAuswahlListen;
-        private Chilkat.Xml nDienstzeiten;
-        private Chilkat.Xml nEinrichtungen;
-        private Chilkat.Xml nFormulare;
-        private Chilkat.Xml nFormulardaten;
-        private Chilkat.Xml nMassnahmenserien;
-        private Chilkat.Xml nMedizinischeTypen;
-        private Chilkat.Xml nStandardzeiten;
-        private Chilkat.Xml nZeitbereiche;
-        private Chilkat.Xml nBenutzer;
-        private Chilkat.Xml nAerzte;
-        private Chilkat.Xml nKontaktpersonen;
-        private Chilkat.Xml nPatientAerzte;
-        private Chilkat.Xml nSachwalters;
-        private Chilkat.Xml nAnamnesenKrohwinkel;
-        private Chilkat.Xml nAnamnesenOrem;
-        private Chilkat.Xml nAnamnesenPOP;
-        private Chilkat.Xml nRehabilitationen;
-        private Chilkat.Xml nArztabrechnungen;
-        private Chilkat.Xml nPflegeStufen;
-        private Chilkat.Xml nPatientBemerkungen;
-        private Chilkat.Xml nMedizinischeDaten;
-        private Chilkat.Xml nBiografien;
-        private Chilkat.Xml nPlaene;
-        private Chilkat.Xml nArchiv;
-        private Chilkat.Xml nAufenthalte;
-        private Chilkat.Xml nAufenthalt;
-        private Chilkat.Xml nGegenstaende;
-        private Chilkat.Xml nHilfsmitteln;
-        private Chilkat.Xml nAbwesenheiten;
-        private Chilkat.Xml nUnterbringungen;
-        private Chilkat.Xml nVersetzungen;
-        private Chilkat.Xml nPDX;
-        private Chilkat.Xml nAetiologien;
-        private Chilkat.Xml nSymptome;
-        private Chilkat.Xml nRessourcen;
-        private Chilkat.Xml nZiele;
-        private Chilkat.Xml nZiel;
-        private Chilkat.Xml nPPZielEvaluierungen;
-        private Chilkat.Xml nMassnahmen;
-        private Chilkat.Xml nTermine;
-        private Chilkat.Xml nPflegeplaeneH;
-        private Chilkat.Xml nPE_NONE;
-        private Chilkat.Xml nPE_DEKURS;
-        private Chilkat.Xml nPE_MASSNAHME;
-        private Chilkat.Xml nPE_UNEXP_MASSNAHME;
-        private Chilkat.Xml nPE_TERMIN;
-        private Chilkat.Xml nPE_MEDIKAMENT;
-        private Chilkat.Xml nPE_NOTFALL;
-        private Chilkat.Xml nPE_PLANUNG;
-        private Chilkat.Xml nPE_WUNDE;
-        private Chilkat.Xml nPE_KLIENT;
-        private Chilkat.Xml nPE_ASSESSMENT;
-        private Chilkat.Xml nPE_VERORDNUNGEN;
-        private Chilkat.Xml nPE_WUNDVERLAUF;
-        private Chilkat.Xml nPE_WUNDTHERAPIE;
-        private Chilkat.Xml nPDX_Wunde;
-        private Chilkat.Xml nAetiologienWunde;
-        private Chilkat.Xml nZieleWunde;
-        private Chilkat.Xml nZielWunde;
-        private Chilkat.Xml nWundeZielEvaluierungen;
-        private Chilkat.Xml nMassnahmenWunde;
-        private Chilkat.Xml nPDXWunde;
-        private Chilkat.Xml nWunde;
-        private Chilkat.Xml nWundeTherapien;
-        private Chilkat.Xml nWundeVerlauefe;
-        private Chilkat.Xml nWundeBilder;
-        private Chilkat.Xml nRezepteintraege;
-        private Chilkat.Xml nRezepteintrag;
-        private Chilkat.Xml nMedikamentenAbgaben;
-        private Chilkat.Xml nRezeptbestellungen;
-        private Chilkat.Xml nStandardProzedur;
-        private Chilkat.Xml nStandardprozedurSP;
-        private Chilkat.Xml nStandardprozedurSPPos;
-        private Chilkat.Xml nNotfallprozeduren;
-        private Chilkat.Xml nNotfallProzedur;
-        private Chilkat.Xml nNotfallSP;
-        private Chilkat.Xml nNotfallSPPos;
-        private Chilkat.Xml nVO;
-        private Chilkat.Xml nVOBestelldaten;
-        private Chilkat.Xml nChild;
 
         private static void DatenexportLog(PMDS.GUI.ucRichTextBox RTFLog, string Txt)
         {
@@ -179,6 +121,8 @@ namespace PMDS.GUI
         public bool Export(System.Guid IDPatient, string ArchivPath, out string FileNameXMLDocumentBack, ref PMDS.GUI.ucRichTextBox RTFLog)
         {
             FileNameXMLDocumentBack = "";
+            _disposableObjects.Add(writer);
+            _disposableObjects.Add(db);
 
             try
             {
@@ -195,11 +139,6 @@ namespace PMDS.GUI
                 dOpt.Medikamente = true;
                 dOpt.Standardprozeduren = true;
                 dOpt.Verordnungen = true;
-
-//                xml.AddStyleSheet("<?xml-stylesheet href = \"PMDSExport.xsl\" type = \"text/xsl\"?>");
-                xml.Encoding = "ISO-8859-1";
-                xml.Standalone = true;
-                xml.Tag = "PMDS-Datenexport";
 
                 string KlientNameGebDat;
                 string ExportPath;
@@ -229,19 +168,19 @@ namespace PMDS.GUI
                     ENV.check_Path(ExportPath, true);
 
                     //wiederholt benötigte Tabellen einmal einlesen
-                    List<PMDS.db.Entities.Benutzer> tblBenutzer = (from ben in db.Benutzer select ben)
+                    tblBenutzer = (from ben in db.Benutzer select ben)
                                     .OrderBy(e => e.Nachname)
                                     .ToList();
 
-                    List<PMDS.db.Entities.Klinik> tblKlinik = (from kli in db.Klinik select kli)
-                                    .OrderBy(e => e.Bezeichnung)
-                                    .ToList();
- 
-                    List<PMDS.db.Entities.Abteilung> tblAbteilungen = (from abt in db.Abteilung select abt)
+                    tblKliniken = (from kli in db.Klinik select kli)
                                     .OrderBy(e => e.Bezeichnung)
                                     .ToList();
 
-                    List<PMDS.db.Entities.Bereich> tblBereiche = (from ber in db.Bereich select ber)
+                    tblAbteilungen = (from abt in db.Abteilung select abt)
+                                    .OrderBy(e => e.Bezeichnung)
+                                    .ToList();
+
+                    tblBereiche = (from ber in db.Bereich select ber)
                                     .OrderBy(e => e.Bezeichnung)
                                     .ToList();
 
@@ -263,806 +202,993 @@ namespace PMDS.GUI
                     FileNameXMLDocumentBack = System.IO.Path.Combine(ExportPath, KlientNameGebDat + ".XML");
                     FileNameXMLDocumentBackTmp = FileNameXMLDocumentBack;
 
-                    nExportInfo = xml.NewChild("ExportInfo", "");
-                    nExportInfo.AddAttribute("BeginnExport", dNow.ToString());
-                    nExportInfo.AddAttribute("DBVersion", db.DBVersion.First().ScriptVersion);
 
-                    SaveXML();
+                    //Test für XML-Writer
+
+                    var sts = new XmlWriterSettings()
+                    {
+                        Indent = true,
+                        Encoding = System.Text.Encoding.UTF8,
+                        ConformanceLevel = ConformanceLevel.Fragment,
+                    };
+
+                    writer = XmlWriter.Create(FileNameXMLDocumentBack, sts);
+                    //writer.WriteStartDocument();
+
+                    writer.WriteStartElement("DatenExport");
+                    writer.WriteStartElement("ExportInfo");
+                    writer.WriteAttributeString("BeginnExport", dNow.ToString());
+                    writer.WriteAttributeString("DBVersion", db.DBVersion.First().ScriptVersion);
+                    writer.Flush();
+                    writer.WriteEndElement();   //ExportInfo
 
                     if (dOpt.AllgemeineStammdaten)
                     {
                         DatenexportLog(RTFLog, "XML-Export: Allgemeine Stammdaten erstellen");
                         //----------------- Allgemeine Stammdaten ---------------- 
-                        using (Chilkat.Xml nAllgemeineStammdaten = xml.NewChild("Allgemeine_Stammdaten", ""))
+
+                        writer.WriteStartElement("Allgemeine_Stammdaten");
+
+                        writer.WriteStartElement("Kliniken");
+                        XMLAddNodes(tblKliniken, "Klinik", true);
+                        writer.Flush();
+                        writer.WriteEndElement();   //Kliniken                       
+
+                        //List<Abteilung> tblAbteilungen = db.Abteilung.ToList();
+                        writer.WriteStartElement("Abteilungen");
+                        XMLAddNodes(tblAbteilungen, "Abteilung", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+
+                        //List<Bereich> tblBereiche = db.Bereich.ToList();
+                        writer.WriteStartElement("Bereiche");
+                        XMLAddNodes(tblBereiche,  "Bereich", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+
+                        List<PMDS.db.Entities.AuswahlListeGruppe> tblAuswahlListenGruppen = db.AuswahlListeGruppe.ToList();
+                        writer.WriteStartElement("AuswahlListenGruppen");
+                        XMLAddNodes(tblAuswahlListenGruppen, "AuswahlListenGruppe", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+//                        tblAuswahlListenGruppen = null;
+
+                        List<PMDS.db.Entities.AuswahlListe> tblAuswahlListen = db.AuswahlListe.OrderBy(l => l.IDAuswahlListeGruppe).ToList();
+                        writer.WriteStartElement("AuswahlListen");
+                        XMLAddNodes(tblAuswahlListen,  "AuswahlListe", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+  //                      tblAuswahlListen = null;
+
+                        List<PMDS.db.Entities.Dienstzeiten> tblDienstzeiten = db.Dienstzeiten.ToList();
+                        writer.WriteStartElement("Dienstzeiten");
+                        XMLAddNodes(tblDienstzeiten, "Dienstzeit", false);
+                        writer.Flush();
+                        writer.WriteEndElement();
+    //                    tblDienstzeiten = null;
+
+                        List<PMDS.db.Entities.Einrichtung> tblEinrichtungen = db.Einrichtung.ToList();
+                        writer.WriteStartElement("Einrichtungen");
+                        XMLAddNodes(tblEinrichtungen, "Einrichtung", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+                        //tblEinrichtungen = null;
+
+                        var tblFormulare = (from frm in db.Formular
+                                            select new { frm.ID, frm.Name, frm.Bezeichnung, frm.GUI, frm.InNotfallAnzeigenJN, frm.NeuanlageSperren, frm.lstIDBerufsgruppe}).ToList();
+                        writer.WriteStartElement("Formulare");
+                        XMLAddNodes(tblFormulare, "Formular", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+//                        tblFormulare = null;
+
+                        var tblFormulareExport = (from frm in db.Formular
+                                            select new { frm.Name, frm.PDF_BLOP })
+                                            .Where(frm => frm.PDF_BLOP != null).ToList();
+
+                        //Formulare als PDF auf die Platte schreiben
+                        foreach (var rFormular in tblFormulareExport)
                         {
-
-                            //List<Klinik> tblKliniken = db.Klinik.ToList();
-                            nKliniken = nAllgemeineStammdaten.NewChild("Kliniken", "");
-                            AddNodes(tblKliniken, nKliniken, "Klinik", true);
-
-                            //List<Abteilung> tblAbteilungen = db.Abteilung.ToList();
-                            nAbteilungen = nAllgemeineStammdaten.NewChild("Abteilungen", "");
-                            AddNodes(tblAbteilungen, nAbteilungen, "Abteilung", true);                     
-
-                            //List<Bereich> tblBereiche = db.Bereich.ToList();
-                            nBereiche = nAllgemeineStammdaten.NewChild("Bereiche", "");
-                            AddNodes(tblBereiche, nBereiche, "Bereich", true);
-
-                            nAuswahlListenGruppen = nAllgemeineStammdaten.NewChild("AuswahlListenGruppen", "");
-                            List<PMDS.db.Entities.AuswahlListeGruppe> tblAuswahlListenGruppen = db.AuswahlListeGruppe.ToList();
-                            AddNodes(tblAuswahlListenGruppen, nAuswahlListenGruppen, "AuswahlListenGruppe", true);
-
-                            nAuswahlListen = nAllgemeineStammdaten.NewChild("AuswahlListen", "");
-                            List<PMDS.db.Entities.AuswahlListe> tblAuswahlListen = db.AuswahlListe.OrderBy(l => l.IDAuswahlListeGruppe).ToList();
-                            AddNodes(tblAuswahlListen, nAuswahlListen, "AuswahlListe", true);
-
-                            List<PMDS.db.Entities.Dienstzeiten> tblDienstzeiten = db.Dienstzeiten.ToList();
-                            nDienstzeiten = nAllgemeineStammdaten.NewChild("Dienstzeiten", "");
-                            AddNodes(tblDienstzeiten, nDienstzeiten, "Dienstzeit", false);
-
-                            List<PMDS.db.Entities.Einrichtung> tblEinrichtungen = db.Einrichtung.ToList();
-                            nEinrichtungen = nAllgemeineStammdaten.NewChild("Einrichtungen", "");
-                            AddNodes(tblEinrichtungen, nEinrichtungen, "Einrichtung", true);
-
-                            List<PMDS.db.Entities.Formular> tblFormulare = db.Formular.ToList();
-                            nFormulare = nAllgemeineStammdaten.NewChild("Formulare", "");
-                            AddNodes(tblFormulare, nFormulare, "Formular", true);
-
-                            List<PMDS.db.Entities.Massnahmenserien> tblMassnahmenserien = db.Massnahmenserien.ToList();
-                            nMassnahmenserien = nAllgemeineStammdaten.NewChild("Maßnahmenserien", "");
-                            AddNodes(tblMassnahmenserien, nMassnahmenserien, "Maßnahmenserie", true);
-
-                            List<PMDS.db.Entities.MedizinischeTypen> tblMedizinischeTypen = db.MedizinischeTypen.ToList();
-                            nMedizinischeTypen = nAllgemeineStammdaten.NewChild("MedizinischeTypen", "");
-                            AddNodes(tblMedizinischeTypen, nMedizinischeTypen, "MedizinischerTyp", true);
-
-                            List<PMDS.db.Entities.Standardzeiten> tblStandardzeiten = db.Standardzeiten.ToList();
-                            nStandardzeiten = nAllgemeineStammdaten.NewChild("Standardzeiten", "");
-                            AddNodes(tblStandardzeiten, nStandardzeiten, "Standardzeit", true);
-
-                            List<PMDS.db.Entities.Zeitbereich> tblZeitbereiche = db.Zeitbereich.ToList();
-                            nZeitbereiche = nAllgemeineStammdaten.NewChild("Zeitbereiche", "");
-                            AddNodes(tblZeitbereiche, nZeitbereiche, "Zeitbereich", false);
-
-                            nBenutzer = nAllgemeineStammdaten.NewChild("BenutzerListe", "");
-                            AddNodes(tblBenutzer, nBenutzer, "Benutzer", true);
-
-                            List<PMDS.db.Entities.Aerzte> tblAerzte = (from ae in db.Aerzte
-                                                        join pae in db.PatientAerzte on ae.ID equals pae.IDAerzte
-                                                        where
-                                                        pae.IDPatient == patDto.ID
-                                                        select ae)
-                                                            .OrderBy(ae => ae.Nachname)
-                                                            .OrderBy(ae => ae.Vorname)
-                                                            .ToList();
-                            nAerzte = nAllgemeineStammdaten.NewChild("Ärzte", "");
-                            AddNodes(tblAerzte, nAerzte, "Arzt", true);
-
-                            //Pflegemodelle = nicht erforderlich
-                            //nAbrechnungStammdaten = xml.NewChild("Abrechnungsbezogene_Stammdaten", "");
-                            //var tblKostentraeger = db.Kostentraeger.ToList();
-                            //nKostentraegers = nAbrechnungStammdaten.NewChild("Kostentraeger", "");
-                            //AddNodes(tblKostentraeger, nKostentraegers, "Kostentraeger", db, true);
-                            //Leistungskatalog, LeistungskatalogGueltig, Pflegegeldstufe, PflegegeldstufeGueltig, Sonderleistungskatalog, Taschengeld
-                            //Pflegegeldstufe, PflegegeldstufeGueltig
+                            string ExportName = Path.Combine(PathKlientenFormulare, Path.GetFileNameWithoutExtension(rFormular.Name) + ".pdf");
+                            File.WriteAllBytes(ExportName, rFormular.PDF_BLOP);
                         }
-                        SaveXML();
+//                        tblFormulareExport = null;
+
+                        List<PMDS.db.Entities.Massnahmenserien> tblMassnahmenserien = db.Massnahmenserien.ToList();
+                        writer.WriteStartElement("Maßnahmenserien");
+                        XMLAddNodes(tblMassnahmenserien,  "Maßnahmenserie", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+//                        tblMassnahmenserien = null;
+
+                        List<PMDS.db.Entities.MedizinischeTypen> tblMedizinischeTypen = db.MedizinischeTypen.ToList();
+                        writer.WriteStartElement("MedizinischeTypen");
+                        XMLAddNodes(tblMedizinischeTypen, "MedizinischerTyp", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+//                        tblMedizinischeTypen = null;
+
+                        List<PMDS.db.Entities.Standardzeiten> tblStandardzeiten = db.Standardzeiten.ToList();
+                        writer.WriteStartElement("Standardzeiten");
+                        XMLAddNodes(tblStandardzeiten, "Standardzeit", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+//                        tblStandardzeiten = null;
+
+                        List<PMDS.db.Entities.Zeitbereich> tblZeitbereiche = db.Zeitbereich.ToList();
+                        writer.WriteStartElement("Zeitbereiche");
+                        XMLAddNodes(tblZeitbereiche, "Zeitbereich", false);
+                        writer.Flush();
+                        writer.WriteEndElement();
+//                        tblZeitbereiche = null;
+
+                        writer.WriteStartElement("BenutzerListe");
+                        XMLAddNodes(tblBenutzer, "Benutzer", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+
+                        List<PMDS.db.Entities.Aerzte> tblAerzte = (from ae in db.Aerzte
+                                                                    join pae in db.PatientAerzte on ae.ID equals pae.IDAerzte
+                                                                    where
+                                                                    pae.IDPatient == patDto.ID
+                                                                    select ae)
+                                                        .OrderBy(ae => ae.Nachname)
+                                                        .OrderBy(ae => ae.Vorname)
+                                                        .ToList();
+                        writer.WriteStartElement("Ärzte");
+                        XMLAddNodes(tblAerzte, "Arzt", true);
+                        writer.Flush();
+                        writer.WriteEndElement();
+//                        tblAerzte = null;
+
+                        //Pflegemodelle = nicht erforderlich
+                        //nAbrechnungStammdaten = xml.NewChild("Abrechnungsbezogene_Stammdaten", "");
+                        //var tblKostentraeger = db.Kostentraeger.ToList();
+                        //nKostentraegers = nAbrechnungStammdaten.NewChild("Kostentraeger", "");
+                        //AddNodes(tblKostentraeger, nKostentraegers, "Kostentraeger", db, true);
+                        //Leistungskatalog, LeistungskatalogGueltig, Pflegegeldstufe, PflegegeldstufeGueltig, Sonderleistungskatalog, Taschengeld
+                        //Pflegegeldstufe, PflegegeldstufeGueltig
+                        writer.Flush();
+                        writer.WriteEndElement();   //Allgemeine Stammdaten
                     }
+
 
                     // ----------------- Klient ----------------------------
+                    DatenexportLog(RTFLog, "XML-Export: Klientendaten erstellen");
+
                     List<PMDS.db.Entities.Patient> tblKlienten = db.Patient.Where(p => p.ID == patDto.ID).ToList();
-                    AddNodes(tblKlienten, xml, "Klient", true);
+                    XMLAddNodes(tblKlienten, "Klient", true, false);
 
-                    using (Chilkat.Xml nKlient = xml.GetChildWithAttr("Klient", "ID", patDto.ID.ToString()))
+                    List<PatientenfotoDTO> PatientBild = (from p in db.Patient
+                                                            where p.ID == patDto.ID
+                                                            select new PatientenfotoDTO { ID = p.ID, Foto = p.Foto }).ToList();
+                    if (PatientBild.FirstOrDefault().Foto != null)
+                        ByteArrayToFile(Path.Combine(PathKlientenBild, KlientNameGebDat + ".jpg"), (Byte[])PatientBild.FirstOrDefault().Foto);
+//                    PatientBild = null;
+
+                    List<PMDS.db.Entities.Kontaktperson> tblKontaktpersonen = db.Kontaktperson.Where(kp => kp.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("Kontaktpersonen");
+                    XMLAddNodes(tblKontaktpersonen, "Kontaktperson", true);
+                    writer.WriteEndElement();
+//                    tblKontaktpersonen = null;
+
+                    List<PMDS.db.Entities.PatientAerzte> tblPatientAerzte = db.PatientAerzte.Where(a => a.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("Ärzte");
+                    XMLAddNodes(tblPatientAerzte, "Arzt", true);
+                    writer.WriteEndElement();
+//                    tblPatientAerzte = null;
+
+                    List<PMDS.db.Entities.Sachwalter> tblSachwalters = db.Sachwalter.Where(sw => sw.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("Erwachsenenvertreter_Vorsorgebevollmächtigte");
+                    XMLAddNodes(tblSachwalters, "Erwachsenenvertreter_Vorsorgebevollmächtigter", true);
+                    writer.WriteEndElement();
+//                    tblSachwalters = null;
+
+                    List<PMDS.db.Entities.Anamnese_Krohwinkel> tblAnamnesenKrohwinkel = db.Anamnese_Krohwinkel.Where(anak => anak.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("AnamnesenKrohwinkel");
+                    XMLAddNodes(tblAnamnesenKrohwinkel, "AnamneseKrohwinkel", true);
+                    writer.WriteEndElement();
+//                    tblAnamnesenKrohwinkel = null;
+
+                    List<PMDS.db.Entities.Anamnese_Orem> tblAnamnesenOrem = db.Anamnese_Orem.Where(anao => anao.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("AnamnesenOrem");
+                    XMLAddNodes(tblAnamnesenOrem, "AnamneseOrem", true);
+                    writer.WriteEndElement();
+//                    tblAnamnesenOrem = null;
+
+                    List<PMDS.db.Entities.Anamnese_POP> tblAnamnesenPOP = db.Anamnese_POP.Where(anap => anap.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("AnamnesenPOP");
+                    XMLAddNodes(tblAnamnesenPOP, "AnamnesePOP", true);
+                    writer.WriteEndElement();
+//                    tblAnamnesenPOP = null;
+
+                    List<PMDS.db.Entities.Rehabilitation> tblRehabilitationen = db.Rehabilitation.Where(reha => reha.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("Rehabilitationen");
+                    XMLAddNodes(tblRehabilitationen, "Rehabilitation", true);
+                    writer.WriteEndElement();
+//                    tblRehabilitationen = null;
+
+                    List<PMDS.db.Entities.Arztabrechnung> tblArztabrechnungen = db.Arztabrechnung.Where(aa => aa.IDPatient == patDto.ID).OrderBy(aa => aa.Datum).ToList();
+                    writer.WriteStartElement("Arztabrechnungen");
+                    XMLAddNodes(tblArztabrechnungen, "Arztabrechnung", true);
+                    writer.WriteEndElement();
+//                    tblArztabrechnungen = null;
+
+                    List<PMDS.db.Entities.PatientPflegestufe> tblPflegeStufen = db.PatientPflegestufe.Where(ps => ps.IDPatient == patDto.ID).OrderBy(ps => ps.GueltigAb).ToList();
+                    writer.WriteStartElement("PflegeStufen");
+                    XMLAddNodes(tblPflegeStufen, "PflegeStufe", true);
+                    writer.WriteEndElement();
+//                    tblPflegeStufen = null;
+
+                    List<PMDS.db.Entities.PatientenBemerkung> tblPatientBemerkungen = db.PatientenBemerkung.Where(pbem => pbem.IDPatient == patDto.ID).ToList();
+                    writer.WriteStartElement("PatientBemerkungen");
+                    XMLAddNodes(tblPatientBemerkungen, "PatientBemerkung", true);
+                    writer.WriteEndElement();
+//                    tblPatientBemerkungen = null;
+
+                    List<PMDS.db.Entities.MedizinischeDaten> tblMedizinischeDaten = db.MedizinischeDaten.Where(ps => ps.IDPatient == patDto.ID).OrderBy(ps => ps.Typ).OrderBy(ps => ps.Von).ToList();
+                    writer.WriteStartElement("MedizinischeDaten");
+                    XMLAddNodes(tblMedizinischeDaten, "MedizinischesDatum", true);
+                    writer.WriteEndElement();
+//                    tblMedizinischeDaten = null;
+
+                    List<PMDS.db.Entities.FormularDaten> tblFormularDaten = db.FormularDaten.Where(fd => fd.IDREF == patDto.ID && fd.PDF_BLOP != null).OrderBy(fd => fd.FormularName).OrderBy(fd => fd.Datumerstellt).ToList();
+                    writer.WriteStartElement("Formulardaten");
+                    XMLAddNodes(tblFormularDaten, "Formular", true);
+                    foreach (var fd in tblFormularDaten)
                     {
-                        if (dOpt.Klientendaten)
+                        ExportFDF(StripSpecialCharacters(fd.FormularName), fd.Datumerstellt, fd.PDF_BLOP, PathKlientenFormulare, KlientNameGebDat);
+                    }
+                    writer.WriteEndElement();
+//                    tblFormularDaten = null;
+
+                    List<PMDS.db.Entities.FormularDaten> tblBiografien = db.FormularDaten.Where(bio => bio.IDREF == patDto.ID && bio.PDF_BLOP == null && (bio.BLOP.ToString().StartsWith(@"{\rtf1"))).OrderBy(az => az.FormularName).OrderBy(az => az.Datumerstellt).ToList();
+                    writer.WriteStartElement("Biografien");
+                    XMLAddNodes(tblBiografien, "Biografie", true);
+                    foreach (var fd in tblBiografien)
+                    {
+                        string FileNameWundeBild = System.IO.Path.Combine(PathKlientenBiografien, KlientNameGebDat + "_" + Path.GetFileNameWithoutExtension(StripSpecialCharacters(fd.FormularName)) + "_" + fd.Datumerstellt.ToString("yyyyMMddHHmmss") + "_" + fd.ID.ToString() + ".rtf");
+                        StringToFile(FileNameWundeBild, fd.BLOP);
+                    }
+                    writer.WriteEndElement();
+//                    tblFormularDaten = null;
+
+                    DatenexportLog(RTFLog, "XML-Export: Termine exportieren");
+                    //Kliententermine
+                    List<PMDS.db.Entities.planObject> tblPlaene = db.planObject.Where(plan => plan.IDObject == patDto.ID).OrderBy(plan => plan.Status).ToList();
+                    writer.WriteStartElement("Kliententermine_Pläne");
+                    XMLAddNodes(tblPlaene, "Kliententermin_Plan", true);
+                    writer.WriteEndElement();
+//                    tblPlaene = null;
+
+                    DatenexportLog(RTFLog, "XML-Export: Klientenarchiv exportieren");
+                    //Archiv
+                    List<PMDS.db.Entities.tblDokumente> tblArchiv = (from dok in db.tblDokumente
+                                                        join dokein in db.tblDokumenteintrag on dok.IDDokumenteintrag equals dokein.ID
+                                                        join obj in db.tblObjekt on dokein.ID equals obj.IDDokumenteintrag
+                                                        where obj.ID_guid == patDto.ID
+                                                        select dok)
+                                            .OrderBy(dok => dok.ErstelltAm)
+                                            .ToList();
+                    writer.WriteStartElement("Archiveinträge");
+                    XMLAddNodes(tblArchiv, "Archiveintrag", true);
+                    writer.WriteEndElement();
+
+                    //Archiv-Files auf Platte schreiben
+                    foreach (var rArchiv in tblArchiv)
+                    {
+                        string FileArchiv = Path.Combine(ArchivPath, rArchiv.Archivordner, rArchiv.DateinameArchiv);
+                        string FileKopie = Path.Combine(PathKlientenArchiv, rArchiv.DateinameOrig);
+                        if (File.Exists(FileArchiv))
                         {
-                            DatenexportLog(RTFLog, "XML-Export: Klientendaten erstellen");
-                            List<PatientenfotoDTO> PatientBild = (from p in db.Patient
-                                                                    where p.ID == patDto.ID
-                                                                    select new PatientenfotoDTO { ID = p.ID, Foto = p.Foto }).ToList();
-                            if (PatientBild.FirstOrDefault().Foto != null)
-                                ByteArrayToFile(Path.Combine(PathKlientenBild, KlientNameGebDat + ".jpg"), (Byte[])PatientBild.FirstOrDefault().Foto);
-
-                            List<PMDS.db.Entities.Kontaktperson> tblKontaktpersonen = db.Kontaktperson.Where(kp => kp.IDPatient == patDto.ID).ToList();
-                            nKontaktpersonen = nKlient.NewChild("Kontaktpersonen", "");
-                            AddNodes(tblKontaktpersonen, nKontaktpersonen, "Kontaktperson", true);
-
-                            List<PMDS.db.Entities.PatientAerzte> tblPatientAerzte = db.PatientAerzte.Where(a => a.IDPatient == patDto.ID).ToList();
-                            nPatientAerzte = nKlient.NewChild("Ärzte", "");
-                            AddNodes(tblPatientAerzte, nPatientAerzte, "Arzt", true);
-
-                            List<PMDS.db.Entities.Sachwalter> tblSachwalters = db.Sachwalter.Where(sw => sw.IDPatient == patDto.ID).ToList();
-                            nSachwalters = nKlient.NewChild("Erwachsenenvertreter_Vorsorgebevollmächtigte", "");
-                            AddNodes(tblSachwalters, nSachwalters, "Erwachsenenvertreter_Vorsorgebevollmächtigter", true);
-
-                            List<PMDS.db.Entities.Anamnese_Krohwinkel> tblAnamnesenKrohwinkel = db.Anamnese_Krohwinkel.Where(anak => anak.IDPatient == patDto.ID).ToList();
-                            nAnamnesenKrohwinkel = nKlient.NewChild("AnamnesenKrohwinkel", "");
-                            AddNodes(tblAnamnesenKrohwinkel, nAnamnesenKrohwinkel, "AnamneseKrohwinkel", true);
-
-                            List<PMDS.db.Entities.Anamnese_Orem> tblAnamnesenOrem = db.Anamnese_Orem.Where(anao => anao.IDPatient == patDto.ID).ToList();
-                            nAnamnesenOrem = nKlient.NewChild("AnamnesenOrem", "");
-                            AddNodes(tblAnamnesenOrem, nAnamnesenOrem, "AnamneseOrem", true);
-
-                            List<PMDS.db.Entities.Anamnese_POP> tblAnamnesenPOP = db.Anamnese_POP.Where(anap => anap.IDPatient == patDto.ID).ToList();
-                            nAnamnesenPOP = nKlient.NewChild("AnamnesenPOP", "");
-                            AddNodes(tblAnamnesenPOP, nAnamnesenPOP, "AnamnesePOP", true);
-
-                            List<PMDS.db.Entities.Rehabilitation> tblRehabilitationen = db.Rehabilitation.Where(reha => reha.IDPatient == patDto.ID).ToList();
-                            nRehabilitationen = nKlient.NewChild("Rehabilitationen", "");
-                            AddNodes(tblRehabilitationen, nRehabilitationen, "Rehabilitation", true);
-
-                            List<PMDS.db.Entities.Arztabrechnung> tblArztabrechnungen = db.Arztabrechnung.Where(aa => aa.IDPatient == patDto.ID).OrderBy(aa => aa.Datum).ToList();
-                            nArztabrechnungen = nKlient.NewChild("Arztabrechnungen", "");
-                            AddNodes(tblArztabrechnungen, nArztabrechnungen, "Arztabrechnung", true);
-
-                            List<PMDS.db.Entities.PatientPflegestufe> tblPflegeStufen = db.PatientPflegestufe.Where(ps => ps.IDPatient == patDto.ID).OrderBy(ps => ps.GueltigAb).ToList();
-                            nPflegeStufen = nKlient.NewChild("PflegeStufen", "");
-                            AddNodes(tblPflegeStufen, nPflegeStufen, "PflegeStufe", true);
-
-                            List<PMDS.db.Entities.PatientenBemerkung> tblPatientBemerkungen = db.PatientenBemerkung.Where(pbem => pbem.IDPatient == patDto.ID).ToList();
-                            nPatientBemerkungen = nKlient.NewChild("PatientBemerkungen", "");
-                            AddNodes(tblPatientBemerkungen, nPatientBemerkungen, "PatientBemerkung", true);
-
-                            List<PMDS.db.Entities.MedizinischeDaten> tblMedizinischeDaten = db.MedizinischeDaten.Where(ps => ps.IDPatient == patDto.ID).OrderBy(ps => ps.Typ).OrderBy(ps => ps.Von).ToList();
-                            nMedizinischeDaten = nKlient.NewChild("MedizinischeDaten", "");
-                            AddNodes(tblMedizinischeDaten, nMedizinischeDaten, "MedizinischesDatum", true);
-
-                            List<PMDS.db.Entities.FormularDaten> tblFormularDaten = db.FormularDaten.Where(fd => fd.IDREF == patDto.ID && fd.PDF_BLOP != null).OrderBy(fd => fd.FormularName).OrderBy(fd => fd.Datumerstellt).ToList();
-                            nFormulardaten = nKlient.NewChild("Formulardaten", "");
-                            AddNodes(tblFormularDaten, nFormulardaten, "Formular", true);
-                            foreach (var fd in tblFormularDaten)
-                            {
-                                ExportFDF(fd.ID, StripSpecialCharacters(fd.FormularName), fd.Datumerstellt, fd.PDF_BLOP, PathKlientenFormulare, KlientNameGebDat);
-                            }
-
-                            List<PMDS.db.Entities.FormularDaten> tblBiografien = db.FormularDaten.Where(bio => bio.IDREF == patDto.ID && bio.PDF_BLOP == null && (bio.BLOP.ToString().StartsWith(@"{\rtf1"))).OrderBy(az => az.FormularName).OrderBy(az => az.Datumerstellt).ToList();
-                            nBiografien = nKlient.NewChild("Biografien", "");
-                            AddNodes(tblBiografien, nBiografien, "Biografie", true);
-                            foreach (var fd in tblBiografien)
-                            {
-                                string FileNameWundeBild = System.IO.Path.Combine(PathKlientenBiografien, KlientNameGebDat + "_" + Path.GetFileNameWithoutExtension(StripSpecialCharacters(fd.FormularName)) + "_" + fd.Datumerstellt.ToString("yyyyMMddHHmmss") + "_" + fd.ID.ToString() + ".rtf");
-                                StringToFile(FileNameWundeBild, fd.BLOP);
-                            }
-
-                            if (dOpt.KlientenTermineArchiv)
-                            {
-                                DatenexportLog(RTFLog, "XML-Export: Termine und Archiv exportieren");
-                                //Kliententermine
-                                List<PMDS.db.Entities.planObject> tblPlaene = db.planObject.Where(plan => plan.IDObject == patDto.ID).OrderBy(plan => plan.Status).ToList();
-                                nPlaene = nKlient.NewChild("Kliententermine_Pläne", "");
-                                AddNodes(tblPlaene, nPlaene, "Kliententermin_Plan", true);
-
-                                //Archiv
-                                List<PMDS.db.Entities.tblDokumente> tblArchiv = (from dok in db.tblDokumente
-                                                                join dokein in db.tblDokumenteintrag on dok.IDDokumenteintrag equals dokein.ID
-                                                                join obj in db.tblObjekt on dokein.ID equals obj.IDDokumenteintrag
-                                                                where obj.ID_guid == patDto.ID
-                                                                select dok)
-                                                    .OrderBy(dok => dok.ErstelltAm)
-                                                    .ToList();
-                                nArchiv = nKlient.NewChild("Archiveinträge", "");
-                                AddNodes(tblArchiv, nArchiv, "Archiveintrag", true);
-
-                                //Archiv-Files auf Platte schreiben
-                                foreach (var rArchiv in tblArchiv)
-                                {
-                                    string FileArchiv = Path.Combine(ArchivPath, rArchiv.Archivordner, rArchiv.DateinameArchiv);
-                                    string FileKopie = Path.Combine(PathKlientenArchiv, rArchiv.DateinameOrig);
-                                    if (File.Exists(FileArchiv))
-                                    {
-                                        File.Copy(FileArchiv, FileKopie, true);
-                                    }
-                                    else
-                                    {
-                                        System.IO.File.WriteAllText(FileKopie + ".NOTFOUND", "");
-                                    }
-                                }
-                            }
-
-                            SaveXML();
-
-                            //Abrechungsdaten - checken, ob wir die brauchen (eher nein, Buchhaltung muss sich ohnehin die Rechnungen aufheben. Das reicht.)
-                            //bills, billHeader, Bookings, PatientAbwesenheit, PatientLeistungsplan, PatientEinkommen, PatientKostentraeger,
-                            //PatientSonderleistung, PatientTaschengeldKostentraeger
+                            File.Copy(FileArchiv, FileKopie, true);
                         }
-
-                        //---------------------- Aufenthalte ---------------------------------------------------------------------------
-                        nAufenthalte = nKlient.NewChild("Aufenthalte", "");
-
-                        List<AufenthaltDTO> tAufenthalte = (from Aufenthalte in db.Aufenthalt
-                                                                where Aufenthalte.IDPatient == patDto.ID
-                                                                select new AufenthaltDTO { ID = Aufenthalte.ID, Aufnahmezeitpunkt = (DateTime)Aufenthalte.Aufnahmezeitpunkt })
-                                                .OrderBy(o => o.Aufnahmezeitpunkt).ToList();
-
-                        foreach (var rAufenthalt in tAufenthalte)
+                        else
                         {
-                            List<PMDS.db.Entities.Aufenthalt> tblAufenthalte = db.Aufenthalt.Where(a => a.ID == rAufenthalt.ID).OrderBy(a => a.Aufnahmezeitpunkt).ToList();
-                            AddNodes(tblAufenthalte, nAufenthalte, "Aufenthalt", true);
-
-                            nAufenthalt = nAufenthalte.GetChildWithAttr("Aufenthalt", "ID", rAufenthalt.ID.ToString());
-
-                            if (dOpt.Aufenthaltsdaten)
-                            {
-                                DatenexportLog(RTFLog, "XML-Export: Aufenthaltsdaten exportieren (" + rAufenthalt.Aufnahmezeitpunkt.ToString("yyyy-MM-dd HH:mm:ss"));
-                                List<PMDS.db.Entities.AufenthaltZusatz> tblAufenthaltzusatz = db.AufenthaltZusatz.Where(az => az.IDAufenthalt == rAufenthalt.ID).ToList();
-                                AddNodes(tblAufenthaltzusatz, nAufenthalt, "Aufenthaltzusatz", true);
-
-                                List<PMDS.db.Entities.Gegenstaende> tblGegestaende = db.Gegenstaende.Where(az => az.IDAufenthalt == rAufenthalt.ID && az.HilfesmittelJN == false).ToList();
-                                nGegenstaende = nAufenthalt.NewChild("Gegenstände", "");
-                                AddNodes(tblGegestaende, nGegenstaende, "Gegenstand", true);
-
-                                List<PMDS.db.Entities.Gegenstaende> tblHilfsmittel = db.Gegenstaende.Where(az => az.IDAufenthalt == rAufenthalt.ID && az.HilfesmittelJN == true).ToList();
-                                nHilfsmitteln = nAufenthalt.NewChild("HilfsmittelListe", "");
-                                AddNodes(tblHilfsmittel, nHilfsmitteln, "Hilfsmittel", true);
-
-                                List<PMDS.db.Entities.Unterbringung> tblUnterbringungen = db.Unterbringung.Where(az => az.IDAufenthalt == rAufenthalt.ID).ToList();
-                                nUnterbringungen = nAufenthalt.NewChild("HAG_Meldungen", "");
-                                AddNodes(tblUnterbringungen, nUnterbringungen, "HAG_Meldung", true);
-
-                                List<PMDS.db.Entities.UrlaubVerlauf> tblUrlaubVerlauf = db.UrlaubVerlauf.Where(az => az.IDAufenthalt == rAufenthalt.ID).OrderBy(az => az.StartDatum).ToList();
-                                nAbwesenheiten = nAufenthalt.NewChild("Abwesenheiten", "");
-                                AddNodes(tblUrlaubVerlauf, nAbwesenheiten, "Abwesenheit", true);
-
-                                List<PMDS.db.Entities.AufenthaltVerlauf> tblAufenthaltVerlauf = db.AufenthaltVerlauf.Where(az => az.IDAufenthalt == rAufenthalt.ID).OrderBy(az => az.Datum).ToList();
-                                nVersetzungen = nAufenthalt.NewChild("AufenthaltsverlaufListe", "");
-                                AddNodes(tblAufenthaltVerlauf, nVersetzungen, "Aufenthaltsverlauf", true);
-                                SaveXML();
-
-                            }
-
-                            using (Chilkat.Xml nPflegeplan = nAufenthalt.NewChild("Pflegeplan", ""))
-                            {
-                                if (dOpt.Pflegeplan)
-                                {
-                                    DatenexportLog(RTFLog, "XML-Export: Pflegeplan exportieren");
-                                    List<PMDS.db.Entities.AufenthaltPDx> tblAufenthaltPDXsPP = db.AufenthaltPDx.Where(apdx => apdx.IDAufenthalt == rAufenthalt.ID && apdx.wundejn == false).ToList();
-                                    int iAufenthaltPDxPP = AddNodes(tblAufenthaltPDXsPP, nPflegeplan, "Aufenthalt_PDX", true);
-
-                                    for (int iAPDX = 0; iAPDX < tblAufenthaltPDXsPP.Count; iAPDX++)
-                                    {
-                                        Guid IDAufenthaltPDX = tblAufenthaltPDXsPP[iAPDX].ID;
-                                        Guid IDPDX = (Guid)tblAufenthaltPDXsPP[iAPDX].IDPDX;
-
-                                        List<PMDS.db.Entities.PflegePlanPDx> tblPflegeplanPDX = db.PflegePlanPDx.Where(az => az.IDAufenthaltPDx == IDAufenthaltPDX && az.IDPDX == IDPDX).ToList();
-
-                                        nPDX = nPflegeplan.GetChild(iAPDX).GetNthChildWithTag("PDX", 0);
-
-                                        List<PMDS.db.Entities.PflegePlan> tblPflegeplaene = (from pp in db.PflegePlan
-                                                                            join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
-                                                                            join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
-                                                                            join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
-                                                                            where
-                                                                                pp.IDAufenthalt == rAufenthalt.ID &&
-                                                                                (pp.EintragGruppe == "A" || pp.EintragGruppe == "S" || pp.EintragGruppe == "R" || pp.EintragGruppe == "Z" || pp.EintragGruppe == "M") &&
-                                                                                pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
-                                                                                apdx.ID == IDAufenthaltPDX &&
-                                                                                pdx.ID == IDPDX
-                                                                            select pp)
-                                                                .OrderBy(apdx => apdx.ErledigtJN)
-                                                                .OrderBy(ppdx => ppdx.ErledigtJN)
-                                                                .OrderBy(pp => pp.StartDatum)
-                                                                .ToList();
-
-                                        if (tblPflegeplaene.Count() > 0)
-                                        {
-                                            nAetiologien = nPDX.NewChild("Ätiologien_Risikofaktoren", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblAetiologien = tblPflegeplaene.Where(pp => pp.EintragGruppe == "A").ToList();
-                                            AddNodes(tblAetiologien, nAetiologien, "Ätiologie_Risikofaktor", true);
-
-                                            nSymptome = nPDX.NewChild("Symptome", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblSymptome = tblPflegeplaene.Where(pp => pp.EintragGruppe == "S").ToList();
-                                            AddNodes(tblSymptome, nSymptome, "Symptom", true);
-
-                                            nRessourcen = nPDX.NewChild("Ressourcen", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblRessourcen = tblPflegeplaene.Where(pp => pp.EintragGruppe == "R").ToList();
-                                            AddNodes(tblRessourcen, nRessourcen, "Ressource", true);
-
-                                            nZiele = nPDX.NewChild("Ziele", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblZiele = tblPflegeplaene.Where(pp => pp.EintragGruppe == "Z").ToList();
-                                            AddNodes(tblZiele, nZiele, "Ziel", true);
-
-                                            //Evaluierung zu Pflegeplan (Ziele)
-                                            if (tblZiele.Count > 0)
-                                            {
-                                                foreach (PMDS.db.Entities.PflegePlan rZiel in tblZiele)
-                                                {
-                                                    List<PMDS.db.Entities.PflegeEintrag> tblEvaluierungen = db.PflegeEintrag.Where(pe => pe.EintragsTyp == 2 && pe.IDPflegePlan == rZiel.ID).OrderBy(pe => pe.DatumErstellt).ToList();
-                                                    if (tblEvaluierungen.Count > 0)
-                                                    {
-                                                        nZiel = nZiele.GetChildWithAttr("Ziel", "ID", rZiel.ID.ToString());
-                                                        if (nZiel != null)
-                                                        {
-                                                            nPPZielEvaluierungen = nZiel.NewChild("Evaluierungen-Pflegeplan", "");
-                                                            AddNodes(tblEvaluierungen, nPPZielEvaluierungen, "EvaluierungPflegeplan", false);
-                                                        }
-                                                    }
-                                                }
-                                            }
-
-                                            nMassnahmen = nPDX.NewChild("Maßnahmen", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblMassnahmen = tblPflegeplaene.Where(pp => pp.EintragGruppe == "M").ToList();
-                                            AddNodes(tblMassnahmen, nMassnahmen, "Maßnahme", true);
-                                        }
-                                    }
-                                    SaveXML();
-
-                                }
-
-                                if (dOpt.PflegeplanTermine)
-                                {
-                                    DatenexportLog(RTFLog, "XML-Export: Pflegeplantermine exportieren");
-
-                                    using (Chilkat.Xml nTermine = nPflegeplan.NewChild("Termine", ""))
-                                    {
-                                        List<PMDS.db.Entities.PflegePlan> tblTermine = db.PflegePlan.Where(pp => pp.IDAufenthalt == rAufenthalt.ID && pp.EintragGruppe == "T").OrderBy(pp => pp.StartDatum).ToList();
-                                        AddNodes(tblTermine, nTermine, "Termin", true);
-                                    }
-                                    SaveXML();
-
-                                }
-
-                                if (dOpt.PflegeplanHistorie)
-                                {
-                                    using (Chilkat.Xml nPflegeplaeneH = nPflegeplan.NewChild("PflegepläneHistorie", ""))
-                                    {
-                                        DatenexportLog(RTFLog, "XML-Export: Pflegeplanhistorie exportieren");
-                                        List<PMDS.db.Entities.PflegePlanH> tblPflegeplanH = (from pph in db.PflegePlanH
-                                                                            join e in db.Eintrag on pph.IDEintrag equals e.ID
-                                                                            select pph)
-                                                                            .Where(pp => pp.IDAufenthalt == rAufenthalt.ID)
-                                                                            .OrderBy(e => e.Text)
-                                                                            .OrderBy(pp => pp.DatumErstellt)
-                                                                            .ToList();
-                                        AddNodes(tblPflegeplanH, nPflegeplaeneH, "PflegeplanHistorie", true);
-                                    }
-                                    SaveXML();
-
-                                }
-                            }
-
-                            if (dOpt.PflegeDokumentation)
-                            {
-                                using (Chilkat.Xml nPflegedokumentation = nAufenthalt.NewChild("Pflegedokumentation", ""))
-                                {
-                                    DatenexportLog(RTFLog, "XML-Export: Pflegedokumentation exportieren");
-                                    List<PMDS.db.Entities.PflegeEintrag> tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp != 2).ToList();
-
-                                    nPE_NONE = nPflegedokumentation.NewChild("Ohne_Klassifizierungen", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == -1).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_NONE, "Doku_Ohne_Klassifizierung", false);
-                                    nPE_DEKURS = nPflegedokumentation.NewChild("Dekurse", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 0).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_DEKURS, "Doku_Dekurs", false);
-                                    nPE_MASSNAHME = nPflegedokumentation.NewChild("Maßnahmen", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 1).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_DEKURS, "Doku_Maßnahme", false);
-                                    nPE_UNEXP_MASSNAHME = nPflegedokumentation.NewChild("Ungeplante_Maßnahmen", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 3).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_UNEXP_MASSNAHME, "Doku_Ungeplante_Maßnahme", false);
-                                    nPE_TERMIN = nPflegedokumentation.NewChild("Termine", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 4).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_TERMIN, "Doku_Termin", false);
-                                    nPE_MEDIKAMENT = nPflegedokumentation.NewChild("Medikamente", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 5).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_MEDIKAMENT, "Doku_Medikament", false);
-                                    nPE_NOTFALL = nPflegedokumentation.NewChild("Notfälle", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 6).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_NOTFALL, "Doku_Notfall", false);
-                                    nPE_PLANUNG = nPflegedokumentation.NewChild("Planungen", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 7).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_PLANUNG, "Doku_Planung", false);
-                                    nPE_WUNDE = nPflegedokumentation.NewChild("Wunden", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 8).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_WUNDE, "Doku_Wunde", false);
-                                    nPE_KLIENT = nPflegedokumentation.NewChild("Klienten", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 9).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_KLIENT, "Doku_Klient", false);
-                                    nPE_ASSESSMENT = nPflegedokumentation.NewChild("Assessments", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 10).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_ASSESSMENT, "Doku_Assessment", false);
-                                    nPE_VERORDNUNGEN = nPflegedokumentation.NewChild("Verordnungen", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 11).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_VERORDNUNGEN, "Doku_Verordnung", false);
-                                    nPE_WUNDVERLAUF = nPflegedokumentation.NewChild("Wundverläufe", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 12).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_WUNDVERLAUF, "Doku_Wundverlauf", false);
-                                    nPE_WUNDTHERAPIE = nPflegedokumentation.NewChild("Wundtherapien", "");
-                                    AddNodes(tblPflegeeintraege.Where(pe => pe.EintragsTyp == 13).OrderBy(pe => pe.Zeitpunkt).ToList(), nPE_WUNDTHERAPIE, "Doku_Wundtherapie", false);
-                                    SaveXML();
-
-                                }
-                            }
-
-                            if (dOpt.WundDokumentation)
-                            {
-                                using (Chilkat.Xml nWunden = nAufenthalt.NewChild("Wunddokumentation", ""))
-                                {
-                                    DatenexportLog(RTFLog, "XML-Export: Wunddoku exportieren");
-                                    List<PMDS.db.Entities.AufenthaltPDx> tblAufenthaltPDXsW = db.AufenthaltPDx.Where(apdx => apdx.IDAufenthalt == rAufenthalt.ID && apdx.wundejn == true).ToList();
-                                    int iAufenthaltPDxW = AddNodes(tblAufenthaltPDXsW, nWunden, "Aufenthalt_PDX_Wunde", true);
-
-                                    for (int iAPDX = 0; iAPDX < tblAufenthaltPDXsW.Count; iAPDX++)
-                                    {
-                                        Guid IDAufenthaltPDX = tblAufenthaltPDXsW[iAPDX].ID;
-                                        Guid IDPDX = (Guid)tblAufenthaltPDXsW[iAPDX].IDPDX;
-
-                                        List<PMDS.db.Entities.PflegePlanPDx> tblPflegeplanPDX = db.PflegePlanPDx.Where(az => az.IDAufenthaltPDx == IDAufenthaltPDX && az.IDPDX == IDPDX).ToList();
-
-                                        nPDX_Wunde = nWunden.GetChild(iAPDX).GetNthChildWithTag("PDX", 0);
-
-                                        List<PMDS.db.Entities.PflegePlan> tblPflegeplaene = (from pp in db.PflegePlan
-                                                                            join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
-                                                                            join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
-                                                                            join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
-                                                                            where
-                                                                                pp.IDAufenthalt == rAufenthalt.ID &&
-                                                                                (pp.EintragGruppe == "A" || pp.EintragGruppe == "Z" || pp.EintragGruppe == "M") &&
-                                                                                pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
-                                                                                apdx.ID == IDAufenthaltPDX &&
-                                                                                pdx.ID == IDPDX
-                                                                            select pp)
-                                                                .OrderBy(apdx => apdx.ErledigtJN)
-                                                                .OrderBy(ppdx => ppdx.ErledigtJN)
-                                                                .OrderBy(pp => pp.StartDatum)
-                                                                .ToList();
-
-                                        if (tblPflegeplaene.Count > 0)
-                                        {
-                                            nAetiologienWunde = nPDX_Wunde.NewChild("BeeinflussendeFaktoren", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblAetiologien = tblPflegeplaene.Where(pp => pp.EintragGruppe == "A").ToList();
-                                            AddNodes(tblAetiologien, nAetiologienWunde, "BeeinflussenderFaktor", true);
-
-                                            nZieleWunde = nPDX_Wunde.NewChild("Ziele", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblZiele = tblPflegeplaene.Where(pp => pp.EintragGruppe == "Z").ToList();
-                                            AddNodes(tblZiele, nZieleWunde, "Ziel", true);
-
-                                            //Evaluierung zu Pflegeplan (Ziele)
-                                            if (tblZiele.Count > 0)
-                                            {
-                                                foreach (PMDS.db.Entities.PflegePlan rZiel in tblZiele)
-                                                {
-                                                    List<PMDS.db.Entities.PflegeEintrag> tblEvaluierungen = db.PflegeEintrag.Where(pe => pe.EintragsTyp == 2 && pe.IDPflegePlan == rZiel.ID).OrderBy(pe => pe.DatumErstellt).ToList();
-                                                    if (tblEvaluierungen.Count > 0)
-                                                    {
-                                                        nZielWunde = nZiele.GetChildWithAttr("Ziel", "ID", rZiel.ID.ToString());
-                                                        if (nZielWunde != null)
-                                                        {
-                                                            nWundeZielEvaluierungen = nZielWunde.NewChild("Evaluierungen-Wunde", "");
-                                                            AddNodes(tblEvaluierungen, nWundeZielEvaluierungen, "EvaluierungWunde", true);
-                                                        }
-                                                    }
-                                                }
-                                            }
-
-                                            nMassnahmenWunde = nPDX_Wunde.NewChild("Maßnahmen", "");
-                                            List<PMDS.db.Entities.PflegePlan> tblMassnahmen = tblPflegeplaene.Where(pp => pp.EintragGruppe == "M").ToList();
-                                            AddNodes(tblMassnahmen, nMassnahmenWunde, "Maßnahme", true);
-
-                                            nPDXWunde = nWunden.GetChild(iAPDX).GetNthChildWithTag("PDX", 0);
-                                            List<PMDS.db.Entities.WundeKopf> tblWundeKopf = db.WundeKopf.Where(wk => wk.IDAufenthaltPDx == IDAufenthaltPDX).ToList();
-                                            if (tblWundeKopf.Count > 0)
-                                            {
-                                                AddNodes(tblWundeKopf, nPDXWunde, "Wunde", true);
-                                                nWunde = nPDXWunde.GetChildWithTag("Wunde");
-
-                                                Guid IDWundeKopf = new Guid(nWunde.GetAttrValue("ID"));
-
-                                                nWundeTherapien = nWunde.NewChild("Wundetherapien", "");
-                                                List<PMDS.db.Entities.WundeTherapie> tblWundeTherapie = db.WundeTherapie.Where(wv => wv.IDWundeKopf == IDWundeKopf).OrderBy(wt => wt.DatumErstellt).ToList();
-                                                AddNodes(tblWundeTherapie, nWundeTherapien, "Wundtherapie", true);
-
-                                                nWundeVerlauefe = nWunde.NewChild("Wundeverläufe", "");
-                                                List<PMDS.db.Entities.WundePos> tblWundeVerlaufe = db.WundePos.Where(wv => wv.IDWundeKopf == IDWundeKopf).OrderBy(wv => wv.DatumErstellt).ToList();
-                                                AddNodes(tblWundeVerlaufe, nWundeVerlauefe, "Wundverlauf", true);
-
-                                                nWundeBilder = nWunde.NewChild("Wundbilder", "");
-                                                List<PMDS.db.Entities.WundePosBilder> tblWundePosBilder = (from wb in db.WundePosBilder
-                                                                                            join wp in db.WundePos on wb.IDWundePos equals wp.ID
-                                                                                            where wp.IDWundeKopf == IDWundeKopf
-                                                                                            select wb)
-                                                                        .OrderBy(wb => wb.DatumErstellt)
-                                                                        .ToList();
-                                                AddNodes(tblWundePosBilder, nWundeBilder, "Wundbild", true);
-
-                                                //Bilder auf Platte speichern
-                                                foreach (PMDS.db.Entities.WundePosBilder wb in tblWundePosBilder)
-                                                {
-                                                    string FileNameWundeBild = System.IO.Path.Combine(PathWundeBilder, KlientNameGebDat + "_Wundbild_" + wb.ZeitpunktBild.ToString("yyyyMMddHHmmss") + "_" + wb.ID.ToString() + ".jpg");
-                                                    ByteArrayToFile(FileNameWundeBild, wb.Bild);
-                                                }
-                                            }
-                                        }
-                                    }
-                                    SaveXML();
-
-                                }
-                            }
-
-                            if (dOpt.Medikamente)
-                            {
-                                using (Chilkat.Xml nMedikamente = nAufenthalt.NewChild("Medikamente", ""))
-                                {
-                                    DatenexportLog(RTFLog, "XML-Export: Medikation exportieren");
-                                    //Mitverantwortlicher Bereich (Medikamente) -----------------------------------------------------------------------
-                                    //Daten auf einmal lesen
-                                    List<PMDS.db.Entities.Medikament> tblMedikamente = (from medikamente in db.Medikament
-                                                                                join re in db.RezeptEintrag on medikamente.ID equals re.IDMedikament
-                                                                                where re.IDAufenthalt == rAufenthalt.ID
-                                                                                select medikamente)
-                                                                //.Distinct()
-                                                                .ToList();
-
-                                    List<PMDS.db.Entities.RezeptEintrag> tblRezepteintraege = (from re in db.RezeptEintrag 
-                                                                                where re.IDAufenthalt == rAufenthalt.ID
-                                                                                select re)
-                                                                .OrderBy(re => re.AbzugebenVon)
-                                                                .ToList();
-
-                                    List<PMDS.db.Entities.MedikationAbgabe> tblMedikationAbgaben = (from re in db.RezeptEintrag
-                                                                                    join medab in db.MedikationAbgabe on re.ID equals medab.IDRezeptEintrag
-                                                                                    where re.IDAufenthalt == rAufenthalt.ID
-                                                                                    select medab)
-                                                                .OrderBy(medab => medab.Zeitpunkt)
-                                                                .ToList();
-
-                                    List<PMDS.db.Entities.RezeptBestellungPos> tblRezeptBestellungen = (from re in db.RezeptEintrag
-                                                                                        join rebest in db.RezeptBestellungPos on re.ID equals rebest.IDRezeptEintrag
-                                                                                        where re.IDAufenthalt == rAufenthalt.ID
-                                                                                        select rebest)
-                                                                .OrderBy(rebest => rebest.RezeptAnforderungDatum)
-                                                                .ToList();
-
-                                    AddNodes(tblMedikamente, nMedikamente, "Medikament", true);
-                                    foreach (PMDS.db.Entities.Medikament Medikament in tblMedikamente)
-                                    {
-                                        nRezepteintraege = nMedikamente.GetChildWithAttr("Medikament", "ID", Medikament.ID.ToString());
-                                        if (nRezepteintraege != null)
-                                        {
-                                            List<PMDS.db.Entities.RezeptEintrag> tblre = (from re in tblRezepteintraege
-                                                                            where re.IDMedikament == Medikament.ID
-                                                                            select re).ToList();
-                                            if (tblre.Count > 0)
-                                            {
-                                                AddNodes(tblre, nRezepteintraege, "Rezepteintrag", true);
-
-                                                foreach (PMDS.db.Entities.RezeptEintrag re in tblre)
-                                                {
-                                                    nRezepteintrag = nRezepteintraege.GetChildWithAttr("Rezepteintrag", "ID", re.ID.ToString());
-                                                    if (nRezepteintrag != null)
-                                                    {
-                                                        List<PMDS.db.Entities.MedikationAbgabe> tblMedAbg = (from medab in tblMedikationAbgaben
-                                                                                            where medab.IDRezeptEintrag == re.ID
-                                                                                            select medab).ToList();
-
-                                                        if (tblMedAbg.Count > 0)
-                                                        {
-                                                            nMedikamentenAbgaben = nRezepteintrag.NewChild("Medikamenentabgaben", "");
-                                                            AddNodes(tblMedAbg, nMedikamentenAbgaben, "Medikamentenabgabe", false);
-                                                        }
-
-                                                        List<PMDS.db.Entities.RezeptBestellungPos> tblRezBest = (from rezbest in tblRezeptBestellungen
-                                                                                                where rezbest.IDRezeptEintrag == re.ID
-                                                                                                select rezbest).ToList();
-
-                                                        if (tblRezBest.Count > 0)
-                                                        {
-                                                            nRezeptbestellungen = nRezepteintrag.NewChild("Rezeptbestellungen", "");
-                                                            AddNodes(tblRezBest, nRezeptbestellungen, "Rezeptbestellung", false);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    SaveXML();
-
-                                }
-                            }
-
-                            if (dOpt.Standardprozeduren)
-                            {
-                                //Standardprozeduren
-                                using (Chilkat.Xml nStandardprozeduren = nAufenthalt.NewChild("Standardprozeduren", ""))
-                                {
-                                    DatenexportLog(RTFLog, "XML-Export: Standardprozeduren und Notfälle exportieren");
-                                    List<PMDS.db.Entities.StandardProzeduren> tblStandardProzeduren = (from sproz in db.StandardProzeduren
-                                                                                        join sp in db.SP on sproz.ID equals sp.IDStandardProzeduren
-                                                                                        where sp.IDAufenthalt == rAufenthalt.ID
-                                                                                        select sproz)
-                                                                                    .Distinct()
-                                                                                    .OrderBy(sproz => sproz.Name)
-                                                                                    .ToList();
-
-                                    List<PMDS.db.Entities.SP> tblSp = (from sp in db.SP
-                                                        where sp.IDAufenthalt == rAufenthalt.ID
-                                                        select sp)
-                                                    .OrderBy(sp => sp.Zeitpunkt)
-                                                    .ToList();
-
-                                    List<PMDS.db.Entities.SPPOS> tblSppos = (from sppos in db.SPPOS
-                                                            join sp in db.SP on sppos.IDSP equals sp.ID
-                                                            where sp.IDAufenthalt == rAufenthalt.ID
-                                                            select sppos)
-                                                    .OrderBy(sppos => sppos.DatumErstellt)
-                                                    .ToList();
-
-                                    List<PMDS.db.Entities.SPPE> tblSppe = (from sppe in db.SPPE
-                                                            join sp in db.SP on sppe.IDSP equals sp.ID
-                                                            where sp.IDAufenthalt == rAufenthalt.ID
-                                                            select sppe)
-                                                            .ToList();
-
-                                    List<PMDS.db.Entities.StandardProzeduren> tblStandardprozeduren_SP = (from sproz in tblStandardProzeduren
-                                                                                            select sproz)
-                                                                                    .Where(sp => sp.NotfallJN == false)
-                                                                                    .ToList();
-
-                                    List<PMDS.db.Entities.StandardProzeduren> tblStandardprozeduren_N = (from sproz in tblStandardProzeduren
-                                                                                        select sproz)
-                                                                                    .Where(sp => sp.NotfallJN == true)
-                                                                                    .ToList();
-
-                                    //Standardprozeduren
-                                    int nSProz_SP = AddNodes(tblStandardprozeduren_SP, nStandardprozeduren, "Standardprozedur", true);
-                                    for (int iSProz_SP = 0; iSProz_SP < nSProz_SP; iSProz_SP++)
-                                    {
-                                        nStandardProzedur = nStandardprozeduren.GetChild(iSProz_SP);
-                                        Guid IDSProz_SP = new Guid(nStandardProzedur.GetAttrValue("ID"));
-                                        List<PMDS.db.Entities.SP> tblSP_SP = (from sp in tblSp
-                                                                select sp)
-                                                                .Where(sp => sp.IDStandardProzeduren == IDSProz_SP)
-                                                                .OrderBy(sp => sp.Zeitpunkt)
-                                                                .ToList();
-                                        int nSP_SP = AddNodes(tblSP_SP, nStandardProzedur, "Standardprozedur", true);
-
-                                        for (int iSP_SP = 0; iSP_SP < nSP_SP; iSP_SP++)
-                                        {
-                                            nStandardprozedurSP = nStandardProzedur.GetChild(iSP_SP);
-                                            Guid IDSP_SP = new Guid(nStandardprozedurSP.GetAttrValue("ID"));
-                                            List<PMDS.db.Entities.SPPOS> tblSPPOS_SP = (from sppos in tblSppos
-                                                                        select sppos)
-                                                                .Where(sppos => sppos.IDSP == IDSP_SP)
-                                                                .OrderBy(sppos => sppos.DatumErstellt)
-                                                                .ToList();
-
-                                            int nSPPos_SP = AddNodes(tblSPPOS_SP, nStandardprozedurSP, "Standardprozedur_Eintrag", true);
-                                            for (int iSPPos_SP = 0; iSPPos_SP < nSPPos_SP; iSPPos_SP++)
-                                            {
-                                                nStandardprozedurSPPos = nStandardprozedurSP.GetChild(iSPPos_SP);
-                                                Guid IDEintrag_SP = new Guid(nStandardprozedurSPPos.GetAttrValue("IDEintrag"));
-                                                List<PMDS.db.Entities.Eintrag> tblEintrag_SP = (from e in db.Eintrag
-                                                                                select e)
-                                                                                .Where(e => e.ID == IDEintrag_SP)
-                                                                                .ToList();
-                                                AddNodes(tblEintrag_SP, nStandardprozedurSPPos, "Eintrag", true);
-                                            }
-
-                                            List<PMDS.db.Entities.SPPE> tblSPPE_SP = (from sppe in tblSppe
-                                                                        select sppe)
-                                                                    .Where(sppe => sppe.IDSP == IDSP_SP)
-                                                                    .ToList();
-
-                                            foreach (PMDS.db.Entities.SPPE sppe_sp in tblSPPE_SP)
-                                            {
-                                                List<PMDS.db.Entities.PflegeEintrag> tblPflegeEintrag_SP = (from pe in db.PflegeEintrag
-                                                                                                            select pe)
-                                                                                .Where(pe => pe.ID == sppe_sp.IDPflegeEintrag)
-                                                                                .OrderBy(pe => pe.Zeitpunkt)
-                                                                                .ToList();
-                                                AddNodes(tblPflegeEintrag_SP, nStandardprozedurSP, "MaßnahmeMeldung", false);
-                                            }
-                                        }
-
-                                        //Notfälle
-                                        nNotfallprozeduren = nAufenthalt.NewChild("Notfallprozeduren", "");
-                                        int nSProz_N = AddNodes(tblStandardprozeduren_N, nNotfallprozeduren, "Notfallprozedur", true);
-                                        for (int iSProz_N = 0; iSProz_N < nSProz_N; iSProz_N++)
-                                        {
-                                            nNotfallProzedur = nNotfallprozeduren.GetChild(iSProz_N);
-                                            Guid IDSProz_N = new Guid(nNotfallProzedur.GetAttrValue("ID"));
-                                            List<PMDS.db.Entities.SP> tblSP_N = (from sp in tblSp
-                                                                select sp)
-                                                                    .Where(sp => sp.IDStandardProzeduren == IDSProz_N)
-                                                                    .OrderBy(sp => sp.Zeitpunkt)
-                                                                    .ToList();
-                                            int nSP_N = AddNodes(tblSP_N, nNotfallProzedur, "Notfall", true);
-
-                                            for (int iSP_N = 0; iSP_N < nSP_N; iSP_N++)
-                                            {
-                                                nNotfallSP = nNotfallProzedur.GetChild(iSP_N);
-                                                Guid IDSP_N = new Guid(nNotfallSP.GetAttrValue("ID"));
-                                                List<PMDS.db.Entities.SPPOS> tblSPPOS_N = (from sppos in tblSppos
-                                                                            select sppos)
-                                                                    .Where(sppos => sppos.IDSP == IDSP_N)
-                                                                    .OrderBy(sppos => sppos.DatumErstellt)
-                                                                    .ToList();
-
-                                                int nSPPos_N = AddNodes(tblSPPOS_N, nNotfallSP, "Notfall_Eintrag", true);
-                                                for (int iSPPos_N = 0; iSPPos_N < nSPPos_N; iSPPos_N++)
-                                                {
-                                                    nNotfallSPPos = nNotfallSP.GetChild(iSPPos_N);
-                                                    Guid IDEintrag_N = new Guid(nNotfallSPPos.GetAttrValue("IDEintrag"));
-                                                    List<PMDS.db.Entities.Eintrag> tblEintrag_N = (from e in db.Eintrag
-                                                                                    select e)
-                                                                                    .Where(e => e.ID == IDEintrag_N)
-                                                                                    .ToList();
-                                                    AddNodes(tblEintrag_N, nNotfallSPPos, "Eintrag", true);
-                                                }
-
-                                                List<PMDS.db.Entities.SPPE> tblSPPE_N = (from sppe in tblSppe
-                                                                        select sppe)
-                                                                        .Where(sppe => sppe.IDSP == IDSP_N)
-                                                                        .ToList();
-
-                                                foreach (PMDS.db.Entities.SPPE sppe_sp in tblSPPE_N)
-                                                {
-                                                    List<PMDS.db.Entities.PflegeEintrag> tblPflegeEintrag_N = (from pe in db.PflegeEintrag
-                                                                                                                select pe)
-                                                                                    .Where(pe => pe.ID == sppe_sp.IDPflegeEintrag)
-                                                                                    .OrderBy(pe => pe.Zeitpunkt)
-                                                                                    .ToList();
-                                                    AddNodes(tblPflegeEintrag_N, nNotfallSP, "MaßnahmeMeldung", false);
-                                                }
-                                            }
-                                        }
-                                    }
-                                    SaveXML();
-                                }
-                            }
-
-                            if (dOpt.Verordnungen)
-                            {
-                                using (Chilkat.Xml nVerordnungen = nAufenthalt.NewChild("Verordnungen", ""))
-                                {
-                                    DatenexportLog(RTFLog, "XML-Export: Verordnungen exportieren");
-                                    List<PMDS.db.Entities.VO> tblVOs = db.VO.Where(vos => vos.IDAufenthalt == rAufenthalt.ID)
-                                        .OrderBy(vos => vos.DatumVerordnetAb)
-                                        .ToList();
-                                    int mVOs = AddNodes(tblVOs, nVerordnungen, "Verordnung", true);
-
-                                    for (int iVO = 0; iVO < mVOs; iVO++)
-                                    {
-                                        nVO = nVerordnungen.GetChild(iVO);
-                                        Guid IDVerordnung = new Guid(nVO.GetAttrValue("ID"));
-
-                                        List<PMDS.db.Entities.VO_Bestelldaten> tblVOBestelldaten = db.VO_Bestelldaten
-                                                    .Where(vobest => vobest.IDVerordnung == IDVerordnung)
-                                                    .OrderBy(vobest => vobest.GueltigAb)
-                                                    .ToList();
-                                        int mBestelldaten = AddNodes(tblVOBestelldaten, nVO, "VO_Bestelldaten", false);
-
-                                        for (int iBestelldaten = 0; iBestelldaten < mBestelldaten; iBestelldaten++)
-                                        {
-                                            nVOBestelldaten = nVO.GetNthChildWithTag("VO_Bestelldaten", iBestelldaten);
-                                            Guid IDBestelldaten = new Guid(nVOBestelldaten.GetAttrValue("ID"));
-                                            List<PMDS.db.Entities.VO_Bestellpostitionen> tblVOBestellpositionen = db.VO_Bestellpostitionen
-                                                .Where(vobestpos => vobestpos.IDBestelldaten_VO == IDBestelldaten)
-                                                .OrderBy(vobestpos => vobestpos.DatumBestellung)
-                                                .ToList();
-
-                                            AddNodes(tblVOBestellpositionen, nVOBestelldaten, "VO_Bestellposition", false);
-                                        }
-
-                                        List<PMDS.db.Entities.VO_Lager> tblVOLager = db.VO_Lager
-                                                    .Where(volag => volag.IDVO == IDVerordnung)
-                                                    .OrderBy(volag => volag.Seriennummer)
-                                                    .ToList();
-                                        AddNodes(tblVOLager, nVO, "VO_Lager", false);
-
-                                        List<PMDS.db.Entities.VO_MedizinischeDaten> tblVoMedizinischeDaten = db.VO_MedizinischeDaten
-                                                                        .Where(vomed => vomed.IDVerordnung == IDVerordnung)
-                                                                        .OrderBy(vomed => vomed.DatumErstellt)
-                                                                        .ToList();
-                                        AddNodes(tblVoMedizinischeDaten, nVO, "VO_MedizinischeDaten", false);
-
-                                        List<PMDS.db.Entities.VO_Wunde> tblVoWunden = db.VO_Wunde
-                                                                        .Where(vomed => vomed.IDVerordnung == IDVerordnung)
-                                                                        .OrderBy(vomed => vomed.DatumErstellt)
-                                                                        .ToList();
-                                        AddNodes(tblVoWunden, nVO, "VO_Wunde", false);
-
-                                        List<PMDS.db.Entities.VO_PflegeplanPDX> tblVoPflegeplanPdx = db.VO_PflegeplanPDX
-                                                                .Where(vomed => vomed.IDVerordnung == IDVerordnung)
-                                                                .ToList();
-                                        AddNodes(tblVoPflegeplanPdx, nVO, "VO_PflegeplanPDX", false);
-
-                                    }
-                                    SaveXML();
-                                }
-                            }
+                            System.IO.File.WriteAllText(FileKopie + ".NOTFOUND", "");
                         }
                     }
-                    nExportInfo.AddAttribute("EndeExport", DateTime.Now.ToString());
+//                    tblArchiv = null;
 
-                    SaveXML();
+                    //Abrechungsdaten - checken, ob wir die brauchen (eher nein, Buchhaltung muss sich ohnehin die Rechnungen aufheben. Das reicht.)
+                    //bills, billHeader, Bookings, PatientAbwesenheit, PatientLeistungsplan, PatientEinkommen, PatientKostentraeger,
+                    //PatientSonderleistung, PatientTaschengeldKostentraeger
+
+                    //---------------------- Aufenthalte ---------------------------------------------------------------------------
+
+                    writer.WriteStartElement("Aufenthalte"); 
+
+                    List<AufenthaltDTO> tAufenthalte = (from Aufenthalte in db.Aufenthalt
+                                                            where Aufenthalte.IDPatient == patDto.ID
+                                                            select new AufenthaltDTO { ID = Aufenthalte.ID, Aufnahmezeitpunkt = (DateTime)Aufenthalte.Aufnahmezeitpunkt })
+                                            .OrderBy(o => o.Aufnahmezeitpunkt).ToList();
+
+                    foreach (var rAufenthalt in tAufenthalte)
+                    {
+                        List<PMDS.db.Entities.Aufenthalt> tblAufenthalt = db.Aufenthalt.Where(a => a.ID == rAufenthalt.ID).OrderBy(a => a.Aufnahmezeitpunkt).ToList();
+                        XMLAddNodes(tblAufenthalt, "Aufenthalt", true, false);
+//                        tblAufenthalt = null;
+
+                        //Aufenthaltsdaten -------------------------
+                        DatenexportLog(RTFLog, "XML-Export: Aufenthaltsdaten exportieren (" + rAufenthalt.Aufnahmezeitpunkt.ToString("yyyy-MM-dd HH:mm:ss"));
+                        List<PMDS.db.Entities.AufenthaltZusatz> tblAufenthaltzusatz = db.AufenthaltZusatz.Where(az => az.IDAufenthalt == rAufenthalt.ID).ToList();
+                        writer.WriteStartElement("Aufenthaltszusätze");
+                        XMLAddNodes(tblAufenthaltzusatz, "Aufenthaltzusatz", true);
+                        writer.WriteEndElement();
+//                        tblAufenthaltzusatz = null;
+
+                        List<PMDS.db.Entities.Gegenstaende> tblGegestaende = db.Gegenstaende.Where(az => az.IDAufenthalt == rAufenthalt.ID && az.HilfesmittelJN == false).ToList();
+                        writer.WriteStartElement("Gegenstände");
+                        XMLAddNodes(tblGegestaende, "Gegenstand", true);
+                        writer.WriteEndElement();
+//                        tblGegestaende = null;
+
+                        List<PMDS.db.Entities.Gegenstaende> tblHilfsmittel = db.Gegenstaende.Where(az => az.IDAufenthalt == rAufenthalt.ID && az.HilfesmittelJN == true).ToList();
+                        writer.WriteStartElement("HilfsmittelListe");
+                        XMLAddNodes(tblHilfsmittel, "Hilfsmittel", true);
+                        writer.WriteEndElement();
+//                        tblHilfsmittel = null;
+
+                        List<PMDS.db.Entities.Unterbringung> tblUnterbringungen = db.Unterbringung.Where(az => az.IDAufenthalt == rAufenthalt.ID).ToList();
+                        writer.WriteStartElement("HAG_Meldungen");
+                        XMLAddNodes(tblUnterbringungen, "HAG_Meldung", true);
+                        writer.WriteEndElement();
+//                        tblUnterbringungen = null;
+
+                        List<PMDS.db.Entities.UrlaubVerlauf> tblUrlaubVerlauf = db.UrlaubVerlauf.Where(az => az.IDAufenthalt == rAufenthalt.ID).OrderBy(az => az.StartDatum).ToList();
+                        writer.WriteStartElement("Abwesenheiten");
+                        XMLAddNodes(tblUrlaubVerlauf, "Abwesenheit", true);
+                        writer.WriteEndElement();
+//                        tblUrlaubVerlauf = null;
+
+                        List<PMDS.db.Entities.AufenthaltVerlauf> tblAufenthaltVerlauf = db.AufenthaltVerlauf.Where(az => az.IDAufenthalt == rAufenthalt.ID).OrderBy(az => az.Datum).ToList();
+                        writer.WriteStartElement("AufenthaltsverlaufListe");
+                        XMLAddNodes(tblAufenthaltVerlauf, "Aufenthaltsverlauf", true);
+                        writer.WriteEndElement();
+//                        tblAufenthaltVerlauf = null;
+
+                        //Pflegeplan --------------------
+                        if (dOpt.Pflegeplan)
+                        {
+                            DatenexportLog(RTFLog, "XML-Export: Pflegeplan exportieren");
+                            writer.WriteStartElement("Pflegeplan");
+
+                            List<PMDS.db.Entities.AufenthaltPDx> tblAufenthaltePDXsPP = db.AufenthaltPDx.Where(apdx => apdx.IDAufenthalt == rAufenthalt.ID && apdx.wundejn == false).ToList();
+                            foreach (var AufenthaltePDXsPP in tblAufenthaltePDXsPP)
+                            {
+                                List<PMDS.db.Entities.AufenthaltPDx> tblAufenthaltPDXsPP = new List<db.Entities.AufenthaltPDx>();       //jede Aufenthalt-PDX in eine Liste umwandeln für Parameterübergabe
+                                tblAufenthaltPDXsPP.Add(AufenthaltePDXsPP);
+
+                                XMLAddNodes(tblAufenthaltPDXsPP, "Aufenthalt_PDX", false, false);
+
+                                Guid IDAufenthaltPDX = tblAufenthaltPDXsPP[0].ID;
+                                Guid IDPDX = (Guid)tblAufenthaltPDXsPP[0].IDPDX;
+//                                tblAufenthaltPDXsPP = null;
+
+                                List<PMDS.db.Entities.PDX> tblPDX = db.PDX.Where(pdx => pdx.ID == IDPDX).ToList();
+                                XMLAddNodes(tblPDX, "PDX", true, false);
+//                                tblPDX = null;
+
+                                List<PMDS.db.Entities.PflegePlan> tblAetiologien = (from pp in db.PflegePlan
+                                                                                        join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
+                                                                                        join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
+                                                                                        join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
+                                                                                        where
+                                                                                            pp.IDAufenthalt == rAufenthalt.ID &&
+                                                                                            (pp.EintragGruppe == "A") &&
+                                                                                            pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
+                                                                                            apdx.ID == IDAufenthaltPDX &&
+                                                                                            pdx.ID == IDPDX
+                                                                                        select pp)
+                                            .OrderBy(apdx => apdx.ErledigtJN)
+                                            .OrderBy(ppdx => ppdx.ErledigtJN)
+                                            .OrderBy(pp => pp.StartDatum)
+                                            .ToList();
+                                writer.WriteStartElement("Ätiologien_Risikofaktoren");
+                                XMLAddNodes(tblAetiologien, "Ätiologie_Risikofaktor", false);
+                                writer.WriteEndElement();
+//                                tblAetiologien = null;
+
+                                List<PMDS.db.Entities.PflegePlan> tblSymptome = (from pp in db.PflegePlan
+                                                                                    join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
+                                                                                    join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
+                                                                                    join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
+                                                                                    where
+                                                                                        pp.IDAufenthalt == rAufenthalt.ID &&
+                                                                                        (pp.EintragGruppe == "S") &&
+                                                                                        pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
+                                                                                        apdx.ID == IDAufenthaltPDX &&
+                                                                                        pdx.ID == IDPDX
+                                                                                    select pp).OrderBy(apdx => apdx.ErledigtJN)
+                                            .OrderBy(ppdx => ppdx.ErledigtJN)
+                                            .OrderBy(pp => pp.StartDatum)
+                                            .ToList();
+                                writer.WriteStartElement("Symptome");
+                                XMLAddNodes(tblSymptome, "Symptom", false);
+                                writer.WriteEndElement();
+//                                tblSymptome = null;
+
+                                //List<PMDS.db.Entities.PflegePlan> tblRessourcen = tblPflegeplaene.Where(pp => pp.EintragGruppe == "R").ToList();
+                                List<PMDS.db.Entities.PflegePlan> tblRessourcen = (from pp in db.PflegePlan
+                                                                                    join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
+                                                                                    join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
+                                                                                    join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
+                                                                                    where
+                                                                                        pp.IDAufenthalt == rAufenthalt.ID &&
+                                                                                        (pp.EintragGruppe == "R") &&
+                                                                                        pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
+                                                                                        apdx.ID == IDAufenthaltPDX &&
+                                                                                        pdx.ID == IDPDX
+                                                                                    select pp).OrderBy(apdx => apdx.ErledigtJN)
+                                                .OrderBy(ppdx => ppdx.ErledigtJN)
+                                                .OrderBy(pp => pp.StartDatum)
+                                                .ToList();
+                                writer.WriteStartElement("Ressourcen");
+                                XMLAddNodes(tblRessourcen, "Ressource", false);
+                                writer.WriteEndElement();
+//                                tblRessourcen = null;
+
+                                //List<PMDS.db.Entities.PflegePlan> tblZiele = tblPflegeplaene.Where(pp => pp.EintragGruppe == "Z").ToList();
+                                List<PMDS.db.Entities.PflegePlan> tblZiele = (from pp in db.PflegePlan
+                                                                                    join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
+                                                                                    join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
+                                                                                    join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
+                                                                                    where
+                                                                                        pp.IDAufenthalt == rAufenthalt.ID &&
+                                                                                        (pp.EintragGruppe == "Z") &&
+                                                                                        pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
+                                                                                        apdx.ID == IDAufenthaltPDX &&
+                                                                                        pdx.ID == IDPDX
+                                                                                    select pp).OrderBy(apdx => apdx.ErledigtJN)
+                                                .OrderBy(ppdx => ppdx.ErledigtJN)
+                                                .OrderBy(pp => pp.StartDatum)
+                                                .ToList();
+                                writer.WriteStartElement("Ziele");
+                                if (tblZiele.Count > 0)
+                                {
+                                    foreach (PMDS.db.Entities.PflegePlan rZiel in tblZiele)
+                                    {
+                                        List<PMDS.db.Entities.PflegePlan> tblZiel = new List<db.Entities.PflegePlan> { rZiel };
+                                        XMLAddNodes(tblZiel, "Ziel", false, false);
+
+                                        //Evaluierungen zu Ziel
+                                        List<PMDS.db.Entities.PflegeEintrag> tblEvaluierungen = db.PflegeEintrag.Where(pe => pe.EintragsTyp == 2 && pe.IDPflegePlan == rZiel.ID).OrderBy(pe => pe.DatumErstellt).ToList();
+                                        if (tblEvaluierungen.Count > 0)
+                                        {
+                                            foreach (var Eval in tblEvaluierungen)
+                                            {
+                                                List<PMDS.db.Entities.PflegeEintrag> tblEvaluierung = new List<db.Entities.PflegeEintrag>();
+                                                tblEvaluierung.Add(Eval);
+                                                XMLAddNodes(tblEvaluierung, "EvaluierungPflegeplan", false);
+                                            }
+                                        }
+                                        writer.WriteEndElement();   //Ziel
+                                    }
+                                }
+                                writer.WriteEndElement();   //Ziele
+
+                                //List<PMDS.db.Entities.PflegePlan> tblMassnahmen = tblPflegeplaene.Where(pp => pp.EintragGruppe == "M").ToList();
+                                List<PMDS.db.Entities.PflegePlan> tblMassnahmen = (from pp in db.PflegePlan
+                                                                                join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
+                                                                                join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
+                                                                                join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
+                                                                                where
+                                                                                    pp.IDAufenthalt == rAufenthalt.ID &&
+                                                                                    (pp.EintragGruppe == "M") &&
+                                                                                    pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
+                                                                                    apdx.ID == IDAufenthaltPDX &&
+                                                                                    pdx.ID == IDPDX
+                                                                                select pp).OrderBy(apdx => apdx.ErledigtJN)
+                                                .OrderBy(ppdx => ppdx.ErledigtJN)
+                                                .OrderBy(pp => pp.StartDatum)
+                                                .ToList();
+                                writer.WriteStartElement("Maßnahmen");
+                                XMLAddNodes(tblMassnahmen, "Maßnahme", false);
+                                writer.WriteEndElement();   //Maßnahme
+//                                tblMassnahmen = null;
+
+                                writer.WriteEndElement();       //PDX
+                                writer.WriteEndElement();   // Aufenthalt_PDX
+                            }
+
+                            DatenexportLog(RTFLog, "XML-Export: Pflegeplantermine exportieren");
+                            //List<PMDS.db.Entities.PflegePlan> tblTermine = db.PflegePlan.Where(pp => pp.IDAufenthalt == rAufenthalt.ID && pp.EintragGruppe == "T").OrderBy(pp => pp.StartDatum).ToList();
+                            List<PMDS.db.Entities.PflegePlan> tblTermine = (from pp in db.PflegePlan
+                                                                               where
+                                                                                   pp.IDAufenthalt == rAufenthalt.ID &&
+                                                                                   (pp.EintragGruppe == "T")
+                                                                               select pp).OrderBy(apdx => apdx.ErledigtJN)
+                                                    .OrderBy(pp => pp.StartDatum)
+                                                    .ToList();
+                            writer.WriteStartElement("Termine");
+                            XMLAddNodes(tblTermine, "Termin", true);
+                            writer.WriteEndElement();   // Termine
+//                            tblTermine = null;
+
+                            DatenexportLog(RTFLog, "XML-Export: Pflegeplanhistorie exportieren");
+                            List<PMDS.db.Entities.PflegePlanH> tblPflegeplanH = (from pph in db.PflegePlanH
+                                                                                 join e in db.Eintrag on pph.IDEintrag equals e.ID
+                                                                                 select pph)
+                                                                .Where(pp => pp.IDAufenthalt == rAufenthalt.ID)
+                                                                .OrderBy(e => e.Text)
+                                                                .OrderBy(pp => pp.DatumErstellt)
+                                                                .ToList();
+                            writer.WriteStartElement("PflegepläneHistorie");
+                            XMLAddNodes(tblPflegeplanH, "PflegeplanHistorie", true);
+                            writer.WriteEndElement();   // Pflegplanhistorie
+//                            tblPflegeplanH = null;
+
+                            writer.WriteEndElement();       //Pflegeplan
+                        }
+
+                        //---------------- Dokumentation -----------------------------------------------------
+                        if (dOpt.PflegeDokumentation)
+                        {
+                            int iTake = 1000;
+
+                            DatenexportLog(RTFLog, "XML-Export: Pflegedokumentation exportieren");
+                            writer.WriteStartElement("Pflegedokumentation");
+
+                            //List<PMDS.db.Entities.PflegeEintrag> tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp != 2).ToList();
+                            List<db.Entities.PflegeEintrag> lMaßnahmen = new List<db.Entities.PflegeEintrag>();
+                            List<PMDS.db.Entities.PflegeEintrag> tblPflegeeintraege = new List<db.Entities.PflegeEintrag>();
+
+                            writer.WriteStartElement("Ohne_Klassifizierungen");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == -1).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Ohne_Klassifizierung", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Dekurse");
+                            int cntRec = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 0).Count();
+                            for (int iSkip = 0; iSkip <= cntRec; iSkip += iTake)
+                            {
+                                lMaßnahmen = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 0).OrderBy(s => s.DatumErstellt).Skip(iSkip).Take(iTake).ToList();
+                                XMLAddNodes(lMaßnahmen, "Doku_Dekurs", false);
+                            }
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Maßnahmen");
+                            cntRec = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 1).Count();
+                            for (int iSkip = 0; iSkip <= cntRec; iSkip+=iTake)
+                            {
+                                lMaßnahmen = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 1).OrderBy(s => s.DatumErstellt).Skip(iSkip).Take(iTake).ToList();
+                                XMLAddNodes(lMaßnahmen, "Doku_Maßnahme", false);
+                            }
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Ungeplante_Maßnahmen");
+                            cntRec = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 3).Count();
+                            for (int iSkip = 0; iSkip <= cntRec; iSkip += iTake)
+                            {
+                                lMaßnahmen = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 3).OrderBy(s => s.DatumErstellt).Skip(iSkip).Take(iTake).ToList();
+                                XMLAddNodes(lMaßnahmen, "Doku_Ungeplante_Maßnahme", false);
+                            }
+                            writer.WriteEndElement();
+                            writer.Flush();
+
+                            writer.WriteStartElement("Termine");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 4).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Termin", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Medikamente");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 5).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Medikament", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Notfälle");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 6).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Notfall", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Planungen");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 7).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Planung", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Wunden");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 8).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Wunde", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Klientendaten");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 9).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Klient", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Assessments");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 10).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Assessment", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Verordnungen");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 11).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Verordnung", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Wundverläufe");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 12).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Wundverlauf", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteStartElement("Wundtherapien");
+                            tblPflegeeintraege = db.PflegeEintrag.Where(pe => pe.IDAufenthalt == rAufenthalt.ID && pe.EintragsTyp == 13).ToList();
+                            XMLAddNodes(tblPflegeeintraege, "Doku_Wundtherapie", false);
+                            writer.WriteEndElement();
+
+                            writer.WriteEndElement();       //Pflegedokumentation
+//                            tblPflegeeintraege = null;
+
+                        }
+
+                        if (dOpt.WundDokumentation)
+                        {
+                            //--------------Wunden  ---------------------------------------------------
+                            DatenexportLog(RTFLog, "XML-Export: Wunddoku exportieren");
+                            writer.WriteStartElement("Wunddokumentation");
+                            List<PMDS.db.Entities.AufenthaltPDx> tblAufenthaltPDXsWs= db.AufenthaltPDx.Where(apdx => apdx.IDAufenthalt == rAufenthalt.ID && apdx.wundejn == true).ToList();
+                            foreach (var AufenthaltePDXsW in tblAufenthaltPDXsWs)
+                            {
+                                List<PMDS.db.Entities.AufenthaltPDx> tblAufenthaltPDXsW = new List<db.Entities.AufenthaltPDx>() { AufenthaltePDXsW };     //jede Aufenthalt-PDX in eine Liste umwandeln für Parameterübergabe
+
+                                XMLAddNodes(tblAufenthaltPDXsW, "Aufenthalt_PDX_Wunde", false, false);
+
+                                Guid IDAufenthaltPDXW = tblAufenthaltPDXsW[0].ID;
+                                Guid IDPDXW = (Guid)tblAufenthaltPDXsW[0].IDPDX;
+
+                                List<PMDS.db.Entities.PDX> tblPDX = db.PDX.Where(pdx => pdx.ID == IDPDXW).ToList();
+                                XMLAddNodes(tblPDX, "PDX_Wunde", true, false);
+
+                                List<PMDS.db.Entities.PflegePlan> tblPflegeplaene = (from pp in db.PflegePlan
+                                                                                     join ppdx in db.PflegePlanPDx on pp.ID equals ppdx.IDPflegePlan
+                                                                                     join pdx in db.PDX on ppdx.IDPDX equals pdx.ID
+                                                                                     join apdx in db.AufenthaltPDx on ppdx.IDAufenthaltPDx equals apdx.ID
+                                                                                     where
+                                                                                         pp.IDAufenthalt == rAufenthalt.ID &&
+                                                                                         (pp.EintragGruppe == "A" || pp.EintragGruppe == "Z" || pp.EintragGruppe == "M") &&
+                                                                                         pp.IDUntertaegigeGruppe == ppdx.IDUntertaegigeGruppe &&
+                                                                                         apdx.ID == IDAufenthaltPDXW &&
+                                                                                         pdx.ID == IDPDXW
+                                                                                     select pp)
+                                                             .OrderBy(apdx => apdx.ErledigtJN)
+                                                             .OrderBy(ppdx => ppdx.ErledigtJN)
+                                                             .OrderBy(pp => pp.StartDatum)
+                                                             .ToList();
+                                if (tblPflegeplaene.Any())
+                                {
+                                    List<PMDS.db.Entities.PflegePlan> tblAetiologien = tblPflegeplaene.Where(pp => pp.EintragGruppe == "A").ToList();
+                                    writer.WriteStartElement("BeeinflussendeFaktoren");
+                                    XMLAddNodes(tblAetiologien, "BeeinflussenderFaktor", false);
+                                    writer.WriteEndElement();
+
+                                    List<PMDS.db.Entities.PflegePlan> tblZiele = tblPflegeplaene.Where(pp => pp.EintragGruppe == "Z").ToList();
+                                    writer.WriteStartElement("Ziele");
+                                    if (tblZiele.Count > 0)
+                                    {
+                                        foreach (PMDS.db.Entities.PflegePlan rZiel in tblZiele)
+                                        {
+                                            List<PMDS.db.Entities.PflegePlan> tblZiel = new List<db.Entities.PflegePlan> { rZiel };
+                                            XMLAddNodes(tblZiel, "Ziel", false, false);
+
+                                            //Evaluierungen zu Ziel
+                                            List<PMDS.db.Entities.PflegeEintrag> tblEvaluierungen = db.PflegeEintrag.Where(pe => pe.EintragsTyp == 2 && pe.IDPflegePlan == rZiel.ID).OrderBy(pe => pe.DatumErstellt).ToList();
+                                            if (tblEvaluierungen.Count > 0)
+                                            {
+                                                foreach (var Eval in tblEvaluierungen)
+                                                {
+                                                    List<PMDS.db.Entities.PflegeEintrag> tblEvaluierung = new List<db.Entities.PflegeEintrag>();
+                                                    tblEvaluierung.Add(Eval);
+                                                    XMLAddNodes(tblEvaluierung, "EvaluierungWunde", false);
+                                                }
+                                            }
+                                            writer.WriteEndElement();   //Ziel
+                                        }
+                                    }
+                                    writer.WriteEndElement();   //Ziele
+
+                                    List<PMDS.db.Entities.PflegePlan> tblMassnahmen = tblPflegeplaene.Where(pp => pp.EintragGruppe == "M").ToList();
+                                    writer.WriteStartElement("Maßnahmen");
+                                    XMLAddNodes(tblMassnahmen, "Maßnahme", false);
+                                    writer.WriteEndElement();   //Maßnahme
+
+                                    List<PMDS.db.Entities.WundeKopf> tblWundeKopf = db.WundeKopf.Where(wk => wk.IDAufenthaltPDx == IDAufenthaltPDXW).ToList();
+                                    if (tblWundeKopf.Count == 1)
+                                    {
+                                        XMLAddNodes(tblWundeKopf, "Wunde", false, false);
+                                        Guid IDWundeKopf = new Guid(tblWundeKopf[0].ID.ToString());
+
+                                        List<PMDS.db.Entities.WundeTherapie> tblWundeTherapie = db.WundeTherapie.Where(wv => wv.IDWundeKopf == IDWundeKopf).OrderBy(wt => wt.DatumErstellt).ToList();
+                                        writer.WriteStartElement("Wundetherapien");
+                                        XMLAddNodes(tblWundeTherapie, "Wundtherapie", false);
+                                        writer.WriteEndElement();
+//                                        tblWundeTherapie = null;
+
+                                        List<PMDS.db.Entities.WundePos> tblWundeVerlaufe = db.WundePos.Where(wv => wv.IDWundeKopf == IDWundeKopf).OrderBy(wv => wv.DatumErstellt).ToList();
+                                        writer.WriteStartElement("Wundeverläufe");
+                                        XMLAddNodes(tblWundeVerlaufe, "Wundverlauf", false);
+                                        writer.WriteEndElement();
+//                                        tblWundeVerlaufe = null;
+
+                                        var tblWundePosBilder = (from wb in db.WundePosBilder
+                                                                 join wp in db.WundePos on wb.IDWundePos equals wp.ID
+                                                                 where wp.IDWundeKopf == IDWundeKopf
+                                                                 select new { wb.ID, wb.IDWundePos, wb.Reihenfolge, wb.druckenJN, wb.Beschreibung, wb.ZeitpunktBild, wb.IDBenutzer_Erstellt, wb.IDBenutzer_Geaendert,
+                                                                    wb.DatumErstellt, wb.DatumGeaendert })
+                                                                .OrderBy(wb => wb.ZeitpunktBild)
+                                                                .ToList();
+                                        writer.WriteStartElement("Wundbilder");
+                                        XMLAddNodes(tblWundePosBilder, "Wundbild", false);
+                                        writer.WriteEndElement();   //Wundbild
+//                                        tblWundePosBilder = null;
+
+                                        writer.WriteEndElement();   //WundeKopf
+
+                                        var tblWundePosBilderExport = (from wb in db.WundePosBilder
+                                                                 join wp in db.WundePos on wb.IDWundePos equals wp.ID
+                                                                 where wp.IDWundeKopf == IDWundeKopf
+                                                                 select new
+                                                                 {
+                                                                     ID = (Guid) wb.ID,
+                                                                     ZeitpunktBild = (DateTime) wb.ZeitpunktBild,
+                                                                     wb.Bild
+                                                                 })
+                                                                .OrderBy(wb => wb.ZeitpunktBild)
+                                                                .ToList();
+                                        //Bilder auf Platte speichern
+                                        foreach (var wb in tblWundePosBilderExport)
+                                        {
+                                            if (wb.Bild != null)
+                                            {
+                                                string FileNameWundeBild = System.IO.Path.Combine(PathWundeBilder, KlientNameGebDat + "_Wundbild_" + wb.ZeitpunktBild.ToString("yyyyMMddHHmmss") + "_" + wb.ID.ToString() + ".jpg");
+                                                ByteArrayToFile(FileNameWundeBild, wb.Bild);
+                                            }
+                                            else
+                                            {
+                                                string FileNameWundeBild = System.IO.Path.Combine(PathWundeBilder, KlientNameGebDat + "_Wundbild_" + wb.ZeitpunktBild.ToString("yyyyMMddHHmmss") + "_" + wb.ID.ToString() + ".txt");
+                                                File.WriteAllText(FileNameWundeBild, "Keine Bildinfotmation gefunden.");
+                                            }
+                                        }
+//                                        tblWundePosBilderExport = null;
+                                    }
+                                }
+                                writer.WriteEndElement();       //PDX_Wunde
+                                writer.WriteEndElement();   // Aufenthalt_PDX_Wunde
+                            }
+                            writer.WriteEndElement();       //Wunddokumentation
+                        }
+
+                        if (dOpt.Medikamente)
+                        {
+                            //-------------- Medikamente ---------------------------------------------------
+                            DatenexportLog(RTFLog, "XML-Export: Medikation exportieren");
+                            writer.WriteStartElement("Medikamente");
+
+                            //Daten auf einmal lesen
+                            List<PMDS.db.Entities.Medikament> tblMedikamenteAll = (from medikamente in db.Medikament
+                                                                                   join re in db.RezeptEintrag on medikamente.ID equals re.IDMedikament
+                                                                                   where re.IDAufenthalt == rAufenthalt.ID
+                                                                                   select medikamente)
+                                                        .ToList();
+
+                            List<PMDS.db.Entities.Medikament> tblMedikamente = new List<db.Entities.Medikament>();
+                            foreach (var med in tblMedikamenteAll)
+                            {
+                                if (!tblMedikamente.Where(m => m.ID == med.ID).Any())
+                                {
+                                    tblMedikamente.Add(med);
+                                }
+                            }
+//                            tblMedikamenteAll = null;
+
+                            List<PMDS.db.Entities.RezeptEintrag> tblRezepteintraege = (from re in db.RezeptEintrag
+                                                                                       where re.IDAufenthalt == rAufenthalt.ID
+                                                                                       select re)
+                                                        .OrderBy(re => re.AbzugebenVon)
+                                                        .ToList();
+
+
+
+                            List<PMDS.db.Entities.RezeptBestellungPos> tblRezeptBestellungen = (from re in db.RezeptEintrag
+                                                                                                join rebest in db.RezeptBestellungPos on re.ID equals rebest.IDRezeptEintrag
+                                                                                                where re.IDAufenthalt == rAufenthalt.ID
+                                                                                                select rebest)
+                                                        .OrderBy(rebest => rebest.RezeptAnforderungDatum)
+                                                        .ToList();
+
+                            foreach (var Medikament in tblMedikamente)
+                            {
+                                List<PMDS.db.Entities.Medikament> tblMedikament = new List<db.Entities.Medikament>() { Medikament };
+                                XMLAddNodes(tblMedikament, "Medikament", false, false);
+
+                                List<PMDS.db.Entities.RezeptEintrag> tblRezeptEintraege = (from re in tblRezepteintraege
+                                                                                           where re.IDMedikament == Medikament.ID
+                                                                                           select re).ToList();
+
+                                foreach (var re in tblRezeptEintraege)
+                                {
+                                    List<PMDS.db.Entities.RezeptEintrag> tblRezeptEintrag = new List<db.Entities.RezeptEintrag>() { re };
+                                    XMLAddNodes(tblRezeptEintrag, "Rezepteintrag", false, false);
+                                    writer.WriteStartElement("Medikmentenabgaben");                     //Können zig-tausend sein. Daher pro Medikament und in 500er-Tranchen. 
+
+                                    int cntRec = (from reEin in db.RezeptEintrag
+                                                  join medab in db.MedikationAbgabe on reEin.ID equals medab.IDRezeptEintrag
+                                                  where re.IDAufenthalt == rAufenthalt.ID
+                                                  select medab)
+                                                .Where(medab => medab.IDRezeptEintrag == re.ID)
+                                                .OrderBy(medab => medab.Zeitpunkt).Count();
+
+                                    int iTake = 500;
+                                    for (int iSkip = 0; iSkip <= cntRec; iSkip += iTake)
+                                    {
+                                        List<PMDS.db.Entities.MedikationAbgabe> tblMedAbgaben = (from reEin in db.RezeptEintrag
+                                                                                                 join medab in db.MedikationAbgabe on reEin.ID equals medab.IDRezeptEintrag
+                                                                                                 where re.IDAufenthalt == rAufenthalt.ID
+                                                                                                 select medab)
+                                                                                                 .Where(medab => medab.IDRezeptEintrag == re.ID)
+                                                                                                 .OrderBy(medab => medab.Zeitpunkt)
+                                                                                                 .Skip(iSkip).Take(iTake)
+                                                                                                 .ToList();
+                                        XMLAddNodes(tblMedAbgaben, "Medikamentenabgabe", false);
+//                                        tblMedAbgaben = null;
+                                    }
+                                    writer.WriteEndElement();
+
+                                    List<PMDS.db.Entities.RezeptBestellungPos> tblRezBest = (from rezbest in tblRezeptBestellungen
+                                                                                             where rezbest.IDRezeptEintrag == re.ID
+                                                                                             select rezbest).ToList();
+                                    writer.WriteStartElement("Rezeptbestellungen");
+                                    XMLAddNodes(tblRezBest, "Rezeptbestellung", false);
+                                    writer.WriteEndElement();       //Rezeptbestellungen
+
+                                    writer.WriteEndElement();       //Rezepteintrag
+                                }
+                                writer.WriteEndElement();       //Medikament
+                            }
+                            writer.WriteEndElement();       //Medikamente
+                        }
+
+                        //--------------- Stsnadardprozeduren und Notfälle
+                        if (dOpt.Standardprozeduren)
+                        {
+                            //Standardprozeduren
+                            DatenexportLog(RTFLog, "XML-Export: Standardprozeduren und Notfälle exportieren");
+
+                            List<PMDS.db.Entities.SP> tblSPs = (from sproz in db.StandardProzeduren
+                                                                join sp in db.SP on sproz.ID equals sp.IDStandardProzeduren
+                                                                where sp.IDAufenthalt == rAufenthalt.ID && sproz.NotfallJN == false
+                                                                select sp)
+                                                            .Distinct()
+                                                            .OrderBy(sp => sp.Zeitpunkt)
+                                                            .ToList();
+
+                            List<PMDS.db.Entities.SP> tblNFs = (from sproz in db.StandardProzeduren
+                                                                                      join sp in db.SP on sproz.ID equals sp.IDStandardProzeduren
+                                                                                      where sp.IDAufenthalt == rAufenthalt.ID && sproz.NotfallJN == true
+                                                                                      select sp)
+                                                            .Distinct()
+                                                            .OrderBy(sp => sp.Zeitpunkt)
+                                                            .ToList();
+
+                            writer.WriteStartElement("Standardprozeduren");
+                            foreach (var SP in tblSPs)
+                            {
+                                List<PMDS.db.Entities.SP> tblSP = new List<db.Entities.SP>() { SP };
+                                XMLAddNodes(tblSP, "Standardprozedur", true, false);
+
+                                List<PMDS.db.Entities.StandardProzeduren> tblStandardprozedur = (from standardprozedur in db.StandardProzeduren
+                                                                                                 where standardprozedur.ID == SP.IDStandardProzeduren
+                                                                                                 select standardprozedur)
+                                                                                                 .ToList();
+                                XMLAddNodes(tblStandardprozedur, "Standardprozedur_Info", false);
+
+                                List<PMDS.db.Entities.PflegeEintrag> tblPflegeeintraege = (from pe in db.PflegeEintrag
+                                                                                           join sppe in db.SPPE on pe.ID equals sppe.IDPflegeEintrag
+                                                                                           join sp in db.SP on sppe.IDSP equals sp.ID
+                                                                                           where sp.ID == SP.ID
+                                                                                           select pe)
+                                                                                          .ToList();
+                                XMLAddNodes(tblPflegeeintraege, "Pflegeeintrag", false);
+                                writer.WriteEndElement();   //Standardprozedur                            
+                            }
+                            writer.WriteEndElement();       //Standardprozeduren
+
+
+                            //Notfälle
+                            writer.WriteStartElement("Notfälle");
+                            foreach (var NF in tblNFs)
+                            {
+                                List<PMDS.db.Entities.SP> tblNF = new List<db.Entities.SP>() { NF };
+                                XMLAddNodes(tblNF, "Notfall", true, false);
+
+                                List<PMDS.db.Entities.StandardProzeduren> tblStandardprozedur = (from standardprozedur in db.StandardProzeduren
+                                                                                                 where standardprozedur.ID == NF.IDStandardProzeduren
+                                                                                                 select standardprozedur)
+                                                                                                .ToList();
+                                XMLAddNodes(tblStandardprozedur, "Notfall_Info", false);
+
+                                List<PMDS.db.Entities.PflegeEintrag> tblPflegeeintraege = (from pe in db.PflegeEintrag
+                                                                                           join sppe in db.SPPE on pe.ID equals sppe.IDPflegeEintrag
+                                                                                           join sp in db.SP on sppe.IDSP equals sp.ID
+                                                                                           where sp.ID == NF.ID
+                                                                                           select pe)
+                                                                                          .ToList();
+                                XMLAddNodes(tblPflegeeintraege, "Pflegeeintrag", false);
+                                writer.WriteEndElement();   //Notfall                            
+                            }
+                            writer.WriteEndElement();       //Notfälle
+                        }
+
+
+                        //--------------- Verordnungen
+                        if (dOpt.Verordnungen)
+                        {
+                            DatenexportLog(RTFLog, "XML-Export: Verordnungen exportieren");
+                            writer.WriteStartElement("Verordnungen");
+
+                            List<PMDS.db.Entities.VO> tblVOs = db.VO.Where(vos => vos.IDAufenthalt == rAufenthalt.ID)
+                                .OrderBy(vos => vos.DatumVerordnetAb)
+                                .ToList();
+
+                            int iVO = XMLAddNodes(tblVOs, "Verordnung", true, false);
+
+                            foreach (var VO in tblVOs)
+                            {
+                                Guid IDVerordnung = VO.ID;
+
+                                List<PMDS.db.Entities.VO_Bestelldaten> tblVOBestelldaten = db.VO_Bestelldaten
+                                            .Where(vobest => vobest.IDVerordnung == IDVerordnung)
+                                            .OrderBy(vobest => vobest.GueltigAb)
+                                            .ToList();
+                                foreach (var VOBestelldatum in tblVOBestelldaten)
+                                {
+                                    List<PMDS.db.Entities.VO_Bestelldaten> tblVOBestelldatum = new List<db.Entities.VO_Bestelldaten>() { VOBestelldatum };
+                                    XMLAddNodes(tblVOBestelldatum, "VO_Bestelldaten", false, false);
+                                    Guid IDBestelldaten = VOBestelldatum.ID;
+                                    List<PMDS.db.Entities.VO_Bestellpostitionen> tblVOBestellpositionen = db.VO_Bestellpostitionen
+                                        .Where(vobestpos => vobestpos.IDBestelldaten_VO == IDBestelldaten)
+                                        .OrderBy(vobestpos => vobestpos.DatumBestellung)
+                                        .ToList();
+
+                                    XMLAddNodes(tblVOBestellpositionen, "VO_Bestellposition", false);
+                                    writer.WriteEndElement();   //VO_Bestelldaten
+                                }
+
+                                List<PMDS.db.Entities.VO_Lager> tblVOLager = db.VO_Lager
+                                            .Where(volag => volag.IDVO == IDVerordnung)
+                                            .OrderBy(volag => volag.Seriennummer)
+                                            .ToList();
+                                XMLAddNodes(tblVOLager, "VO_Lager", false);
+
+                                List<PMDS.db.Entities.VO_MedizinischeDaten> tblVoMedizinischeDaten = db.VO_MedizinischeDaten
+                                                                .Where(vomed => vomed.IDVerordnung == IDVerordnung)
+                                                                .OrderBy(vomed => vomed.DatumErstellt)
+                                                                .ToList();
+                                XMLAddNodes(tblVoMedizinischeDaten, "VO_MedizinischeDaten", false);
+
+                                List<PMDS.db.Entities.VO_Wunde> tblVoWunden = db.VO_Wunde
+                                                                .Where(vomed => vomed.IDVerordnung == IDVerordnung)
+                                                                .OrderBy(vomed => vomed.DatumErstellt)
+                                                                .ToList();
+                                XMLAddNodes(tblVoWunden, "VO_Wunde", false);
+
+                                List<PMDS.db.Entities.VO_PflegeplanPDX> tblVoPflegeplanPdx = db.VO_PflegeplanPDX
+                                                        .Where(vomed => vomed.IDVerordnung == IDVerordnung)
+                                                        .ToList();
+                                XMLAddNodes(tblVoPflegeplanPdx, "VO_PflegeplanPDX", false);
+                            }
+                            if (iVO > 0) 
+                                writer.WriteEndElement();       //Verordnung
+                            writer.WriteEndElement();       //Verordnungen
+                        }
+
+                        writer.WriteEndElement();   //Aufenthalt
+                    }
+                    writer.WriteEndElement(); //Aufenthalte
+                    writer.WriteEndElement();   //Klient
+                    writer.WriteEndElement();   //DatenExport
+
+                    //writer.WriteEndDocument();
+                    writer.Close();
                     return true;
                 }
                 else
@@ -1072,114 +1198,28 @@ namespace PMDS.GUI
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.Export: " + ex.ToString());
+                throw new Exception("DatenExportXML.Export: " + ex.ToString());
             }
             finally
             {
-                nExportInfo?.Dispose();
-                nKliniken?.Dispose(); 
-                nAbteilungen?.Dispose();
-                nBereiche?.Dispose();
-                nAuswahlListenGruppen?.Dispose();
-                nAuswahlListen?.Dispose();
-                nDienstzeiten?.Dispose();
-                nEinrichtungen?.Dispose();
-                nFormulare?.Dispose();
-                nMedizinischeTypen?.Dispose();
-                nStandardzeiten?.Dispose();
-                nZeitbereiche?.Dispose();
-                nBenutzer?.Dispose();
-                nAerzte?.Dispose();
-                nKontaktpersonen?.Dispose();
-                nPatientAerzte?.Dispose();
-                nSachwalters?.Dispose();
-                nAnamnesenKrohwinkel?.Dispose();
-                nAnamnesenOrem?.Dispose();
-                nAnamnesenPOP?.Dispose();
-                nRehabilitationen?.Dispose();
-                nArztabrechnungen?.Dispose();
-                nPflegeStufen?.Dispose();
-                nPatientBemerkungen?.Dispose();
-                nMedizinischeDaten?.Dispose();
-                nBiografien?.Dispose();
-                nPlaene?.Dispose();
-                nArchiv?.Dispose();
-                nAufenthalte?.Dispose();
-                nAufenthalt?.Dispose();
-                nGegenstaende?.Dispose();
-                nHilfsmitteln?.Dispose();
-                nAbwesenheiten?.Dispose();
-                nUnterbringungen?.Dispose();
-                nVersetzungen?.Dispose();
-                nPDX?.Dispose();
-                nAetiologien?.Dispose();
-                nSymptome?.Dispose();
-                nRessourcen?.Dispose();
-                nZiele?.Dispose();
-                nZiel?.Dispose();
-                nPPZielEvaluierungen?.Dispose();
-                nMassnahmen?.Dispose();
-                nTermine?.Dispose();
-                nPflegeplaeneH?.Dispose();
-                nPE_NONE?.Dispose();
-                nPE_DEKURS?.Dispose();
-                nPE_MASSNAHME?.Dispose();
-                nPE_UNEXP_MASSNAHME?.Dispose();
-                nPE_TERMIN?.Dispose();
-                nPE_MEDIKAMENT?.Dispose();
-                nPE_NOTFALL?.Dispose();
-                nPE_PLANUNG?.Dispose();
-                nPE_WUNDE?.Dispose();
-                nPE_KLIENT?.Dispose();
-                nPE_ASSESSMENT?.Dispose();
-                nPE_VERORDNUNGEN?.Dispose();
-                nPE_WUNDVERLAUF?.Dispose();
-                nPE_WUNDTHERAPIE?.Dispose();
-                nPDX_Wunde?.Dispose();
-                nAetiologienWunde?.Dispose();
-                nWundeZielEvaluierungen?.Dispose();
-                nZieleWunde?.Dispose();
-                nZielWunde?.Dispose();
-                nMassnahmenWunde?.Dispose();
-                nPDXWunde?.Dispose();
-                nWunde?.Dispose();
-                nWundeTherapien?.Dispose();
-                nWundeVerlauefe?.Dispose();
-                nWundeBilder?.Dispose();
-                nRezepteintraege?.Dispose();
-                nRezepteintrag?.Dispose();
-                nMedikamentenAbgaben?.Dispose();
-                nRezeptbestellungen?.Dispose();
-                nStandardProzedur?.Dispose();
-                nStandardprozedurSP?.Dispose();
-                nStandardprozedurSPPos?.Dispose();
-                nNotfallprozeduren?.Dispose();
-                nNotfallProzedur?.Dispose();
-                nNotfallSP?.Dispose();
-                nNotfallSPPos?.Dispose();
-                nVO?.Dispose();
-                nVOBestelldaten?.Dispose();
-                nChild?.Dispose();
-                xml?.Dispose();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
+                writer?.Dispose();
             }
         }
 
-        private bool SaveXML()
-        {
-            try
-            {
-                xml.SaveXml(FileNameXMLDocumentBackTmp);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.SaveXML: " + ex.ToString());
-            }
-        }
+        //private bool SaveXML()
+        //{
+        //    try
+        //    {
+        //        xml.SaveXml(FileNameXMLDocumentBackTmp);
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("DatenExportXML.SaveXML: " + ex.ToString());
+        //    }
+        //}
 
-        private string StripSpecialCharacters(string s)
+        private static string StripSpecialCharacters(string s)
         {
             try
             {
@@ -1188,7 +1228,7 @@ namespace PMDS.GUI
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.StripSpecialCharacters: " + ex.ToString());
+                throw new Exception("DatenExportXML.StripSpecialCharacters: " + ex.ToString());
             }
         }
 
@@ -1204,7 +1244,7 @@ namespace PMDS.GUI
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.ByteArrayToFile: " + ex.ToString());
+                throw new Exception("DatenExportXML.ByteArrayToFile: " + ex.ToString());
             }
         }
 
@@ -1217,276 +1257,302 @@ namespace PMDS.GUI
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.StringToFile: " + ex.ToString());
+                throw new Exception("DatenExportXML.StringToFile: " + ex.ToString());
             }
         }
 
-        private void ExportFDF(Guid ID, string FormularName, DateTime Datumerstellt, Byte[] fdfBlop, string PathKlientenFormulare, string KlientNameGebDat)
+        private static void ExportFDF(string FormularName, DateTime Datumerstellt, Byte[] fdfBlop, string PathKlientenFormulare, string KlientNameGebDat)
         {
             try
             {
-                string ExportName = Path.Combine(PathKlientenFormulare, KlientNameGebDat + "_" + Path.GetFileNameWithoutExtension(FormularName) + "_" + Datumerstellt.ToString("yyyyMMddHHmmss") + ".pdf");
-                PMDS.db.Entities.Formular pdf = db.Formular.Where(f => f.ID == ID).FirstOrDefault();
-                if (pdf != null)
+                string ExportName = Path.Combine(PathKlientenFormulare, KlientNameGebDat + "_" + Path.GetFileNameWithoutExtension(FormularName) + "_" + Datumerstellt.ToString("yyyyMMddHHmmss") + ".fdf");
+                PMDS.db.Entities.Formular pdf = db.Formular.Where(f => f.Name == FormularName).FirstOrDefault();
+                if (fdfBlop != null)
                 {
-                    using (PdfForms formFDF = new PdfForms())
-                    {
-                        FdfDocument docFDF = Patagames.Pdf.Net.FdfDocument.Load(fdfBlop);
-                        Patagames.Pdf.Net.PdfDocument docPDF = Patagames.Pdf.Net.PdfDocument.Load(pdf.PDF_BLOP, formFDF);
-                        formFDF.InterForm.ResetForm();
-                        formFDF.InterForm.ImportFromFdf(docFDF);
-
-                        foreach (PdfPage p in docPDF.Pages)
-                        {
-                            p.FlattenPage(FlattenFlags.FlatPrint);
-                        }
-                        docPDF.Save(ExportName, SaveFlags.NoIncremental);
-                    }
+                    File.WriteAllBytes(ExportName, fdfBlop);
+                }
+                else   //Wenn das Formular nicht mehr in der Datenbank ist, den FDF-Wert speichern
+                {
+                    ExportName = Path.Combine(PathKlientenFormulare, KlientNameGebDat + "_" + Path.GetFileNameWithoutExtension(FormularName) + "_" + Datumerstellt.ToString("yyyyMMddHHmmss") + ".txt");
+                    File.WriteAllText(ExportName, "Keine FDF-Daten gefunden");
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.ExportFDF: " + ex.ToString());
+                throw new Exception("DatenExportXML.ExportFDF: " + ex.ToString());
             }
         }
 
-        private int AddDetailNode<T>(List<T> tbl, Chilkat.Xml nParent, string ChildName)
+        private static int XMLAddDetailNode<T>(List<T> tbl, string ChildName)
         {
             try
             {
                 int i = 0;
-#if EXPORTDETAILS
                 foreach (var row in tbl)
-                {
-                    nChild = nParent.NewChild(ChildName, "AnzahlDetails=" + tbl.Count.ToString()); ;
+                {                    
+                    writer.WriteStartElement(ChildName.Replace(" ", "_"));
                     i++;
 
                     PropertyInfo[] properties = row.GetType().GetProperties();
 
                     foreach (PropertyInfo vprop in properties)
                     {
+                        Type vpropPropertyType = vprop.PropertyType;
+                        string pName = vprop.Name;
                         if (//vprop.CanWrite &&
                                 (
-                                    vprop.PropertyType == typeof(string) ||
-                                    vprop.PropertyType == typeof(bool) ||
-                                    vprop.PropertyType == typeof(Guid) ||
-                                    vprop.PropertyType == typeof(short) ||
-                                    vprop.PropertyType == typeof(int) ||
-                                    vprop.PropertyType == typeof(long) ||
-                                    vprop.PropertyType == typeof(DateTime) ||
-                                    vprop.PropertyType == typeof(TimeSpan) ||
-                                    vprop.PropertyType == typeof(decimal) ||
-                                    vprop.PropertyType == typeof(double) ||
-                                    vprop.PropertyType == typeof(float) ||
-                                    vprop.PropertyType == typeof(char) ||
-                                    vprop.PropertyType == typeof(byte) ||
-                                    vprop.PropertyType == typeof(byte[]) ||
-                                    vprop.PropertyType == typeof(sbyte) ||
+                                    vpropPropertyType == typeof(string) ||
+                                    vpropPropertyType == typeof(bool) ||
+                                    vpropPropertyType == typeof(Guid) ||
+                                    vpropPropertyType == typeof(short) ||
+                                    vpropPropertyType == typeof(int) ||
+                                    vpropPropertyType == typeof(long) ||
+                                    vpropPropertyType == typeof(DateTime) ||
+                                    vpropPropertyType == typeof(TimeSpan) ||
+                                    vpropPropertyType == typeof(decimal) ||
+                                    vpropPropertyType == typeof(double) ||
+                                    vpropPropertyType == typeof(float) ||
+                                    vpropPropertyType == typeof(char) ||
+                                    vpropPropertyType == typeof(byte) ||
+                                    vpropPropertyType == typeof(byte[]) ||
+                                    vpropPropertyType == typeof(sbyte) ||
 
-                                    vprop.PropertyType == typeof(Nullable<bool>) ||
-                                    vprop.PropertyType == typeof(Nullable<Guid>) ||
-                                    vprop.PropertyType == typeof(Nullable<DateTime>) ||
-                                    vprop.PropertyType == typeof(Nullable<TimeSpan>) ||
-                                    vprop.PropertyType == typeof(Nullable<byte>) ||
-                                    vprop.PropertyType == typeof(Nullable<sbyte>)
+                                    vpropPropertyType == typeof(Nullable<bool>) ||
+                                    vpropPropertyType == typeof(Nullable<Guid>) ||
+                                    vpropPropertyType == typeof(Nullable<DateTime>) ||
+                                    vpropPropertyType == typeof(Nullable<TimeSpan>) ||
+                                    vpropPropertyType == typeof(Nullable<byte>) ||
+                                    vpropPropertyType == typeof(Nullable<sbyte>)
                                 )
-                                && !generic.sEquals(vprop.Name, "RTF", Enums.eCompareMode.Contains)
-                                && !generic.sEquals(vprop.Name, "BLOP", Enums.eCompareMode.Contains)
+                                && !generic.sEquals(pName, "RTF", Enums.eCompareMode.Contains)
+                                && !generic.sEquals(pName, "BLOP", Enums.eCompareMode.Contains)
                             )
                         {
-                            if (row.GetType().GetProperty(vprop.Name).GetValue(row, null) != null)
+                            object o = row.GetType().GetProperty(pName).GetValue(row, null);
+                            if (o != null)
                             {
-                                nChild.AddAttribute(vprop.Name, row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
+                                string pValue = o.ToString();
+                                writer.WriteAttributeString(pName, pValue);
                             }
                             else
                             {
-                                nChild.AddAttribute(vprop.Name, "");
+                                writer.WriteAttributeString(pName, "");
                             }
+//                            o = null;
                         }
                     }
+//                    properties = null;
+                    writer.WriteEndElement();
                 }
-#endif
                 return i;
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.AddDetailNode: " + ex.ToString());
+                throw new Exception("DatenExportXML.AddDetailNode: " + ex.ToString());
             }
         }
 
-        private int AddNodes<T>(List<T> tbl, Chilkat.Xml nParent, string ChildName, bool AutoAssignSubNodes)
+
+        private static int XMLAddNodes<T>(List<T> tbl, string ChildName, bool AutoAssignSubNodes, bool AutoCloseNode = true)
         {
             try
             {
                 int i = 0;
+
+                List<cSubNodeInfo> lSubNodeInfos = new List<cSubNodeInfo>();                //Hält die Liste der Detailnodes, die erst nach den Attributes geschrieben werden dürfen
+
                 foreach (var row in tbl)
-                {                  
-                    nChild = nParent.NewChild(ChildName, "Anzahl=" + tbl.Count.ToString());
+                {
+                    lSubNodeInfos = new List<cSubNodeInfo>();                //Hält die Liste der Detailnodes, die erst nach den Attributes geschrieben werden dürfen
+                    writer.WriteStartElement(ChildName.Replace(" ", "_"));
                     i++;
 
                     PropertyInfo[] properties = row.GetType().GetProperties();
 
                     foreach (PropertyInfo vprop in properties)
                     {
+
+                        Type vpropPropertyType = vprop.PropertyType;
+                        string pName = vprop.Name;
+
                         if (//vprop.CanWrite &&
                                 (
-                                    vprop.PropertyType == typeof(string) ||
-                                    vprop.PropertyType == typeof(bool) ||
-                                    vprop.PropertyType == typeof(Guid) ||
-                                    vprop.PropertyType == typeof(short) ||
-                                    vprop.PropertyType == typeof(int) ||
-                                    vprop.PropertyType == typeof(long) ||
-                                    vprop.PropertyType == typeof(DateTime) ||
-                                    vprop.PropertyType == typeof(TimeSpan) ||
-                                    vprop.PropertyType == typeof(decimal) ||
-                                    vprop.PropertyType == typeof(double) ||
-                                    vprop.PropertyType == typeof(float) ||
-                                    vprop.PropertyType == typeof(char) ||
-                                    vprop.PropertyType == typeof(byte) ||
-                                    vprop.PropertyType == typeof(byte[]) ||
-                                    vprop.PropertyType == typeof(sbyte) ||
+                                    vpropPropertyType == typeof(string) ||
+                                    vpropPropertyType == typeof(bool) ||
+                                    vpropPropertyType == typeof(Guid) ||
+                                    vpropPropertyType == typeof(short) ||
+                                    vpropPropertyType == typeof(int) ||
+                                    vpropPropertyType == typeof(long) ||
+                                    vpropPropertyType == typeof(DateTime) ||
+                                    vpropPropertyType == typeof(TimeSpan) ||
+                                    vpropPropertyType == typeof(decimal) ||
+                                    vpropPropertyType == typeof(double) ||
+                                    vpropPropertyType == typeof(float) ||
+                                    vpropPropertyType == typeof(char) ||
+                                    vpropPropertyType == typeof(byte) ||
+                                    vpropPropertyType == typeof(byte[]) ||
+                                    vpropPropertyType == typeof(sbyte) ||
 
-                                    vprop.PropertyType == typeof(Nullable<bool>) ||
-                                    vprop.PropertyType == typeof(Nullable<Guid>) ||
-                                    vprop.PropertyType == typeof(Nullable<DateTime>) ||
-                                    vprop.PropertyType == typeof(Nullable<TimeSpan>) ||
-                                    vprop.PropertyType == typeof(Nullable<byte>) ||
-                                    vprop.PropertyType == typeof(Nullable<sbyte>)
+                                    vpropPropertyType == typeof(Nullable<bool>) ||
+                                    vpropPropertyType == typeof(Nullable<Guid>) ||
+                                    vpropPropertyType == typeof(Nullable<DateTime>) ||
+                                    vpropPropertyType == typeof(Nullable<TimeSpan>) ||
+                                    vpropPropertyType == typeof(Nullable<byte>) ||
+                                    vpropPropertyType == typeof(Nullable<sbyte>)
                                 )
-                                && !generic.sEquals(vprop.Name, "RTF", Enums.eCompareMode.Contains)
-                                && !generic .sEquals(vprop.Name, "BLOP", Enums.eCompareMode.Contains)
+                                && !generic.sEquals(pName, "RTF", Enums.eCompareMode.Contains)
+                                && !generic.sEquals(pName, "BLOP", Enums.eCompareMode.Contains)
                             )
                         {
-                            
-                            if (row.GetType().GetProperty(vprop.Name).GetValue(row, null) != null)
+                            object o = row.GetType().GetProperty(pName).GetValue(row, null);
+                            if (o != null)
                             {
-                                nChild.AddAttribute(vprop.Name, row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
+                                string pValue = o.ToString().Trim();
+                                writer.WriteAttributeString(pName, pValue);
+
+                                if (AutoAssignSubNodes)
+                                {
+                                    if (generic.sEquals(vprop.Name, lSubNodeNames))
+                                    {
+                                        lSubNodeInfos.Add(new cSubNodeInfo() { Name = pName, ID = new Guid(pValue) } );     //Value muss ein Guid sein
+                                    }
+                                }
                             }
                             else
                             {
-                                nChild.AddAttribute(vprop.Name, "");
-                            }                            
-                        }
-
-                        if (AutoAssignSubNodes && row.GetType().GetProperty(vprop.Name).GetValue(row, null) != null)
-                        {
-                            if (generic.sEquals(vprop.Name, "IDKLINIK"))
-                            {
-                                Guid IDKlinik = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Klinik> tblKlinik = db.Klinik.Where(a => a.ID == IDKlinik).ToList();
-                                AddDetailNode(tblKlinik, nChild, "Klinik");
+                                writer.WriteAttributeString(pName, "");
                             }
-
-                            else if (generic.sEquals(vprop.Name, "IDABTEILUNG")) //IDAbteilung_Von, IDAbteilung_Nach
-                            {
-                                Guid IDAbteilung = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Abteilung> tblAbteilung = db.Abteilung.Where(a => a.ID == IDAbteilung).ToList();
-                                AddDetailNode(tblAbteilung, nChild, "Abteilung");
-                            }
-
-                            else if (generic.sEquals(vprop.Name, "IDBEREICH"))  
-                            {
-                                Guid IDBereich = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Bereich> tblBereich = db.Bereich.Where(a => a.ID == IDBereich).ToList();
-                                AddDetailNode(tblBereich, nChild, "Bereich");
-                            }
-
-                            //Adressen
-                            else if (generic.sEquals(vprop.Name, "IDADRESSE") || generic.sEquals(vprop.Name, "IDADRESSESUB"))
-                            {
-                                Guid IDAdresse = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Adresse> tblAdressen = db.Adresse.Where(a => a.ID == IDAdresse).ToList();
-                                AddDetailNode(tblAdressen, nChild, vprop.Name);
-                            }
-
-                            //Kontakte
-                            else if (generic.sEquals(vprop.Name, "IDKONTAKT") || generic.sEquals(vprop.Name, "IDKONTAKTSUB"))
-                            {
-                                Guid IDKontakt = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Kontakt> tblKontakte = db.Kontakt.Where(a => a.ID == IDKontakt).ToList();
-                                AddDetailNode(tblKontakte, nChild, vprop.Name);
-                            }
-
-                            else if (generic.sEquals(vprop.Name, "IDBANK"))
-                            {
-                                Guid IDBank = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Bank> tblBanken = db.Bank.Where(a => a.ID == IDBank).ToList();
-                                AddDetailNode(tblBanken, nChild, "Bank");
-                            }
-
-                            //Details zu den Benutzern NICHT zu jedem Node hinzufügen. ID reicht, man kann im Benutzernode nach der ID suchen.
-                            //Benutzer
-                            //if (generic.sEquals(vprop.Name, "IDBENUTZER"))
-                            //{
-                            //    Guid IDBenutzer = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                            //    List<PMDS.db.Entities.Benutzer> tblUsers = tblBenutzer.Where(a => a.ID == IDBenutzer).ToList();
-                            //    AddNodes(tblUsers, nChild, vprop.Name, false);
-                            //}
-
-                            //if (BenutzerFieldnames.TryGetValue(vprop.Name.ToUpper(), out string NodeText))
-                            //{
-                            //    Guid IDBenutzer = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                            //    List<PMDS.db.Entities.Benutzer> tblUsers = tblBenutzer.Where(a => a.ID == IDBenutzer).ToList();
-                            //    AddNodes(tblUsers, nChild, NodeText, false);
-                            //}
-
-                            //Pflegegeldstufen
-                            else if (generic.sEquals(vprop.Name, "IDPFLEGEGELDSTUFE") || generic.sEquals(vprop.Name, "IDPFLEGEGELDSTUFEANTRAG"))
-                            {
-                                Guid IDPflegegeldStufe = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Pflegegeldstufe> tblPflegegeldStufen = db.Pflegegeldstufe.Where(a => a.ID == IDPflegegeldStufe).ToList();
-                                AddDetailNode(tblPflegegeldStufen, nChild, vprop.Name);
-                            }
-
-                            else if (generic.sEquals(vprop.Name, "IDPLAN"))
-                            {
-                                Guid IDPlan = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.plan> tblPlaene = db.plan.Where(a => a.ID == IDPlan).ToList();
-                                AddDetailNode(tblPlaene, nChild, "Plan");
-                            }
-
-                            else if (generic.sEquals(vprop.Name, "IDPDX"))
-                            {
-                                Guid IDPDX = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.PDX> tblPDXs = db.PDX.Where(a => a.ID == IDPDX).ToList();
-                                AddDetailNode(tblPDXs, nChild, "PDX");
-                            }
-
-                            else if (generic.sEquals(vprop.Name, "IDMEDIKAMENT"))
-                            {
-                                Guid IDMedikament = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.Medikament> tblMedikamente = db.Medikament.Where(med => med.ID == IDMedikament).ToList();
-                                AddDetailNode(tblMedikamente, nChild, "Medikament_Heilbehelf");
-                            }
-
-                            else if (generic.sEquals(vprop.Name, "IDMEDIZINISCHEDATEN"))
-                            {
-                                Guid IDMedDaten = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.MedizinischeDaten> tblMedDaten = db.MedizinischeDaten.Where(med => med.ID == IDMedDaten).ToList();
-                                AddDetailNode(tblMedDaten, nChild, "MedizinischeDaten");
-                            }
-
-                            else if (generic.sEquals(vprop.Name, "IDWUNDEKOPF"))
-                            {
-                                Guid IDWundeKopf = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
-                                List<PMDS.db.Entities.WundeKopf> tblWundeKopf = db.WundeKopf.Where(med => med.ID == IDWundeKopf).ToList();
-                                AddDetailNode(tblWundeKopf, nChild, "WundeKopf");
-                            }
-                        }
+//                            o = null;                            
+                        }                        
                     }
+
                     if (i % iFlush == 0)
                     {
-                        SaveXML();
+                        //writer.Flush();
                     }
+//                    properties = null;
 
+                    //Subnodes schreiben
+                    foreach (cSubNodeInfo SubNodeInfo in lSubNodeInfos)
+                    {
+
+                        string propName = SubNodeInfo.Name;
+                            
+                        if (generic.sEquals(propName, "IDKLINIK"))
+                        {
+                            List<PMDS.db.Entities.Klinik> tblKlinik = db.Klinik.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblKlinik, "Klinik");
+//                            tblKlinik = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDABTEILUNG")) //IDAbteilung_Von, IDAbteilung_Nach
+                        {
+                            List<PMDS.db.Entities.Abteilung> tblAbteilung = db.Abteilung.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblAbteilung, "Abteilung");
+//                            tblAbteilung = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDBEREICH"))
+                        {
+                            List<PMDS.db.Entities.Bereich> tblBereich = db.Bereich.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblBereich, "Bereich");
+//                            tblBereich = null;
+                        }
+
+                        //Adressen
+                        else if (generic.sEquals(propName, "IDADRESSE") || generic.sEquals(propName, "IDADRESSESUB"))
+                        {
+                            List<PMDS.db.Entities.Adresse> tblAdressen = db.Adresse.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblAdressen, SubNodeInfo.Name);
+//                            tblAdressen = null;
+                        }
+
+                        //Kontakte
+                        else if (generic.sEquals(propName, "IDKONTAKT") || generic.sEquals(propName, "IDKONTAKTSUB"))
+                        {
+                            List<PMDS.db.Entities.Kontakt> tblKontakte = db.Kontakt.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblKontakte, SubNodeInfo.Name);
+//                            tblKontakte = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDBANK"))
+                        {
+                            List<PMDS.db.Entities.Bank> tblBanken = db.Bank.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblBanken, "Bank");
+//                            tblBanken = null;
+                        }
+
+                        //Details zu den Benutzern NICHT zu jedem Node hinzufügen. ID reicht, man kann im Benutzernode nach der ID suchen.
+                        //Benutzer
+                        //if (generic.sEquals(propName, "IDBENUTZER"))
+                        //{
+                        //    Guid IDBenutzer = new Guid(row.GetType().GetProperty(propName).GetValue(row, null).ToString().Trim());
+                        //    List<PMDS.db.Entities.Benutzer> tblUsers = tblBenutzer.Where(a => a.ID == IDBenutzer).ToList();
+                        //    XMLAddNodes(tblUsers, propName, false);
+                        //}
+
+                        //if (BenutzerFieldnames.TryGetValue(vprop.Name.ToUpper(), out string NodeText))
+                        //{
+                        //    Guid IDBenutzer = new Guid(row.GetType().GetProperty(vprop.Name).GetValue(row, null).ToString().Trim());
+                        //    List<PMDS.db.Entities.Benutzer> tblUsers = tblBenutzer.Where(a => a.ID == IDBenutzer).ToList();
+                        //    AddNodes(tblUsers, nChild, NodeText, false);
+                        //}
+
+                        //Pflegegeldstufen
+                        else if (generic.sEquals(propName, "IDPFLEGEGELDSTUFE") || generic.sEquals(propName, "IDPFLEGEGELDSTUFEANTRAG"))
+                        {
+                            List<PMDS.db.Entities.Pflegegeldstufe> tblPflegegeldStufen = db.Pflegegeldstufe.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblPflegegeldStufen, SubNodeInfo.Name);
+//                            tblPflegegeldStufen = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDPLAN"))
+                        {
+                            List<PMDS.db.Entities.plan> tblPlaene = db.plan.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblPlaene, "Plan");
+//                            tblPlaene = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDPDX"))
+                        {
+                            List<PMDS.db.Entities.PDX> tblPDXs = db.PDX.Where(a => a.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblPDXs, "PDX");
+//                            tblPDXs = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDMEDIKAMENT"))
+                        {
+                            List<PMDS.db.Entities.Medikament> tblMedikamente = db.Medikament.Where(med => med.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblMedikamente, "Medikament_Heilbehelf");
+//                            tblMedikamente = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDMEDIZINISCHEDATEN"))
+                        {
+                            List<PMDS.db.Entities.MedizinischeDaten> tblMedDaten = db.MedizinischeDaten.Where(med => med.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblMedDaten, "MedizinischeDaten");
+//                            tblMedDaten = null;
+                        }
+
+                        else if (generic.sEquals(propName, "IDWUNDEKOPF"))
+                        {
+                            List<PMDS.db.Entities.WundeKopf> tblWundeKopf = db.WundeKopf.Where(med => med.ID == SubNodeInfo.ID).ToList();
+                            XMLAddDetailNode(tblWundeKopf, "WundeKopf");
+//                            tblWundeKopf = null;
+                        }                        
+                    }
+                    if (AutoCloseNode)
+                    {
+                        writer.WriteEndElement();
+                    }
+                    writer.Flush();
                 }
                 return i;
             }
             catch (Exception ex)
             {
-                throw new Exception("WCFServicePMDS.DatenExportXMLBAL.DatenExportXML.AddNode: " + ex.ToString());
+                throw new Exception("DatenExportXML.AddNode: " + ex.ToString());
             }
-
         }
     }
 }

@@ -96,7 +96,7 @@ namespace PMDS.Calc.UI
                                 PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                 PMDS.Global.ENV.RechErwAbwesenheit, PMDS.Global.ENV.SrErwAbwesenheit,
                                 PMDS.Global.ENV.ZahlKondBankeinzug, PMDS.Global.ENV.ZahlKondErlagschein,
-                                PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, ENV.AbwesenheitenAnzeigen, ENV.RechTitelDepotGeld);
+                                PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, ENV.ZahlKondFSW, ENV.AbwesenheitenAnzeigen, ENV.RechTitelDepotGeld);
                 }
 
                 this.print = new PMDS.Calc.Logic.print();

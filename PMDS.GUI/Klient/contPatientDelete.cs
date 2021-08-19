@@ -207,7 +207,7 @@ namespace PMDS.GUI.Klient
                         if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Sollen die Patientendaten als PDF gesichert werden?", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             frmExport = new frmDatenExport();
-                            frmExport.Init(this._IDPatient, this.textControl1, PMDS.Global.ENV.IDKlinik, PMDS.Global.ENV.eKlientenberichtTyp.full, Global.ENV.eDatenexportTyp.alle);
+                            frmExport.Init(this._IDPatient, PMDS.Global.ENV.IDKlinik, PMDS.Global.ENV.eKlientenberichtTyp.full, Global.ENV.eDatenexportTyp.alle);
                             if (frmExport.bInit)
                             {
                                 frmExport.ShowDialog();

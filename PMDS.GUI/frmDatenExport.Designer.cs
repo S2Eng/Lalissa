@@ -19,7 +19,6 @@ namespace PMDS.GUI
                 components.Dispose();
             }
             base.Dispose(disposing);
-            this.txtEditor?.Dispose();
         }
 
         #region Windows Form Designer generated code
@@ -41,16 +40,19 @@ namespace PMDS.GUI
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             this.chkXMLExport = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.chkPDFExport = new QS2.Desktop.ControlManagment.BaseCheckBox();
             this.btnArchivErstellen = new QS2.Desktop.ControlManagment.BaseButton();
             this.lblTarget = new QS2.Desktop.ControlManagment.BaseLabel();
             this.optDatenexportTyp = new QS2.Desktop.ControlManagment.BaseOptionSet();
-            this.RTFLog = new PMDS.GUI.ucRichTextBox();
             this.lblKlient = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.chkPDFA = new QS2.Desktop.ControlManagment.BaseCheckBox();
+            this.RTFLog = new PMDS.GUI.ucRichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chkXMLExport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPDFExport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optDatenexportTyp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPDFA)).BeginInit();
             this.SuspendLayout();
             // 
             // chkXMLExport
@@ -80,6 +82,7 @@ namespace PMDS.GUI
             this.chkPDFExport.Size = new System.Drawing.Size(121, 22);
             this.chkPDFExport.TabIndex = 160;
             this.chkPDFExport.Text = "PDF-Export";
+            this.chkPDFExport.CheckedChanged += new System.EventHandler(this.chkPDFExport_CheckedChanged);
             // 
             // btnArchivErstellen
             // 
@@ -91,9 +94,9 @@ namespace PMDS.GUI
             this.btnArchivErstellen.AutoWorkLayout = false;
             this.btnArchivErstellen.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnArchivErstellen.IsStandardControl = false;
-            this.btnArchivErstellen.Location = new System.Drawing.Point(584, 19);
+            this.btnArchivErstellen.Location = new System.Drawing.Point(832, 19);
             this.btnArchivErstellen.Name = "btnArchivErstellen";
-            this.btnArchivErstellen.Size = new System.Drawing.Size(175, 34);
+            this.btnArchivErstellen.Size = new System.Drawing.Size(151, 34);
             this.btnArchivErstellen.TabIndex = 158;
             this.btnArchivErstellen.Text = "Archiv erstellen";
             this.btnArchivErstellen.Click += new System.EventHandler(this.btnArchivErstellen_Click);
@@ -135,21 +138,6 @@ namespace PMDS.GUI
             this.optDatenexportTyp.TabIndex = 3;
             this.optDatenexportTyp.ValueChanged += new System.EventHandler(this.optDatenexportTyp_ValueChanged);
             // 
-            // RTFLog
-            // 
-            this.RTFLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RTFLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RTFLog.HiglightColor = PMDS.GUI.RtfColor.White;
-            this.RTFLog.Location = new System.Drawing.Point(12, 152);
-            this.RTFLog.Name = "RTFLog";
-            this.RTFLog.Size = new System.Drawing.Size(775, 279);
-            this.RTFLog.TabIndex = 159;
-            this.RTFLog.Text = "";
-            this.RTFLog.TextColor = PMDS.GUI.RtfColor.Black;
-            this.RTFLog.TextChanged += new System.EventHandler(this.RTFLog_TextChanged);
-            // 
             // lblKlient
             // 
             appearance7.BackColor = System.Drawing.Color.Transparent;
@@ -160,11 +148,40 @@ namespace PMDS.GUI
             this.lblKlient.Size = new System.Drawing.Size(204, 35);
             this.lblKlient.TabIndex = 162;
             // 
+            // chkPDFA
+            // 
+            appearance8.FontData.SizeInPoints = 10F;
+            this.chkPDFA.Appearance = appearance8;
+            this.chkPDFA.Checked = true;
+            this.chkPDFA.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPDFA.Location = new System.Drawing.Point(565, 25);
+            this.chkPDFA.Margin = new System.Windows.Forms.Padding(4);
+            this.chkPDFA.Name = "chkPDFA";
+            this.chkPDFA.Size = new System.Drawing.Size(230, 22);
+            this.chkPDFA.TabIndex = 163;
+            this.chkPDFA.Text = "Ein PDF/A-Dokument erstellen";
+            // 
+            // RTFLog
+            // 
+            this.RTFLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RTFLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RTFLog.HiglightColor = PMDS.GUI.RtfColor.White;
+            this.RTFLog.Location = new System.Drawing.Point(12, 152);
+            this.RTFLog.Name = "RTFLog";
+            this.RTFLog.Size = new System.Drawing.Size(999, 279);
+            this.RTFLog.TabIndex = 159;
+            this.RTFLog.Text = "";
+            this.RTFLog.TextColor = PMDS.GUI.RtfColor.Black;
+            this.RTFLog.TextChanged += new System.EventHandler(this.RTFLog_TextChanged);
+            // 
             // frmDatenExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1024, 450);
+            this.Controls.Add(this.chkPDFA);
             this.Controls.Add(this.lblKlient);
             this.Controls.Add(this.chkXMLExport);
             this.Controls.Add(this.chkPDFExport);
@@ -178,6 +195,7 @@ namespace PMDS.GUI
             ((System.ComponentModel.ISupportInitialize)(this.chkXMLExport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPDFExport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.optDatenexportTyp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPDFA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -191,5 +209,6 @@ namespace PMDS.GUI
         public QS2.Desktop.ControlManagment.BaseCheckBox chkPDFExport;
         public QS2.Desktop.ControlManagment.BaseCheckBox chkXMLExport;
         private QS2.Desktop.ControlManagment.BaseLabel lblKlient;
+        public QS2.Desktop.ControlManagment.BaseCheckBox chkPDFA;
     }
 }

@@ -2499,19 +2499,19 @@ namespace PMDS.GUI.PMDSClient
 
                     case "DatenarchivierungAlle":
                         frmDatenExport frmExportAll = new frmDatenExport();
-                        frmExportAll.Init(Guid.Empty, this.textControl1, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.full, ENV.eDatenexportTyp.alle);
+                        frmExportAll.Init(Guid.Empty, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.full, ENV.eDatenexportTyp.alle);
                         frmExportAll.Show();
                         break;
 
                     case "Blackout-Prävention":
                         frmDatenExport frmExportBP = new frmDatenExport();
-                        frmExportBP.Init(Guid.Empty, this.textControl1, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.blackoutprevention, ENV.eDatenexportTyp.aktiv);
+                        frmExportBP.Init(Guid.Empty, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.blackoutprevention, ENV.eDatenexportTyp.aktiv);
                         frmExportBP.Show();
                         break;
 
                     case "DatenarchivierungKlient":
                         frmDatenExport frmExportKlient = new frmDatenExport();
-                        frmExportKlient.Init(ENV.CurrentIDPatient, this.textControl1, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.full, ENV.eDatenexportTyp.alle);
+                        frmExportKlient.Init(ENV.CurrentIDPatient, PMDS.Global.ENV.IDKlinik, ENV.eKlientenberichtTyp.full, ENV.eDatenexportTyp.alle);
                         frmExportKlient.Show();
                         break;
 

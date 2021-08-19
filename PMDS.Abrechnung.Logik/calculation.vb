@@ -41,6 +41,7 @@ Public Class calculation
     Public Shared ZahlKondErlagschein As String = ""
     Public Shared ZahlKond‹berweisung As String = ""
     Public Shared ZahlKondBar As String = ""
+    Public Shared ZahlKondFSW As String = ""
 
     Public Shared AbwesenheitenAnzeigen As Boolean = True
 
@@ -73,7 +74,7 @@ Public Class calculation
                         ByVal TageOhneKuerzungGrundleistung As Integer,
                         ByVal KuerzungGrundleistungLetzterTag As Boolean,
                         ByVal RechErwAbwesenheit As Boolean, ByVal SrErwAbwesenheit As Boolean,
-                        ZahlKondBankeinzug As String, ZahlKondErlagschein As String, ZahlKond‹berweisung As String, ZahlKondBar As String,
+                        ZahlKondBankeinzug As String, ZahlKondErlagschein As String, ZahlKond‹berweisung As String, ZahlKondBar As String, ZahlKondFSW As String,
                         AbwesenheitenAnzeigen As Boolean, RechTitelDepotGeld As String)
         Try
             Sql.CONNECTION = connection
@@ -103,6 +104,7 @@ Public Class calculation
             calculation.ZahlKondErlagschein = ZahlKondErlagschein
             calculation.ZahlKond‹berweisung = ZahlKond‹berweisung
             calculation.ZahlKondBar = ZahlKondBar
+            calculation.ZahlKondFSW = ZahlKondFSW
             calculation.AbwesenheitenAnzeigen = AbwesenheitenAnzeigen
 
             MWSTS‰tze.loadMWSTS‰tzeFromFile()
