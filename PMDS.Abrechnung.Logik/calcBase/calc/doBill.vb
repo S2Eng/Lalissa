@@ -1294,7 +1294,13 @@ Public Class doBill
                     rBillToModify = SqlUpdate.readBill(rBillCopy.ID)
                 End Using
 
-                Me.modifyBill(rBillToModify, eModify.field, "[RechTitel]", "Storno zu", False, editor, dbCalc2, bill.typRechNr)
+                Dim sStornoText = "Storno zu "
+                If (rBillOrig.RechNr.Length = 0) Then   'Storno für eine nicht freigegebene Rechnung. Original-Rechnugnsnummer abfragen
+                    Dim sRechNrOriginal = Interaction.InputBox("Bitte geben Sie die Original-Rechnungsnummer ein:", rBillOrig.KlientName + ", Rechnung vom " + rBillOrig.RechDatum.ToString("F"), "")
+                    sStornoText += sRechNrOriginal
+                End If
+
+                Me.modifyBill(rBillToModify, eModify.field, "[RechTitel]", sStornoText, False, editor, dbCalc2, bill.typRechNr)
                 Me.modifyBill(rBillToModify, eModify.field, "Zahlungsbetrag", "Stornobetrag", False, editor, dbCalc2, bill.typRechNr, True)
                 Me.modifyBill(rBillToModify, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc2, bill.typRechNr, False, rBillCopy.RechDatum)
 

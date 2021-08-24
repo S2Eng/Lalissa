@@ -408,7 +408,7 @@ namespace PMDS.Calc.UI
 
         public void doAction22(eAction typ, string txtQuestion, string txtInfo,  UltraGrid grid,
                                   ref QS2.Desktop.ControlManagment.BaseLabel lblCount, PMDS.Calc.Logic.eModify typModify, 
-                                  bool msgBox, Nullable<DateTime> datStornodatum, Nullable<DateTime> rechDatum, bool RollungJN)
+                                  bool msgBox, Nullable<DateTime> datStornodatum, Nullable<DateTime> rechDatum, bool RollungFreigegebenJN)
         {
             try
             {
@@ -436,14 +436,14 @@ namespace PMDS.Calc.UI
                         db.Configuration.LazyLoadingEnabled = false;
 
                         int anzDel = 0;
-                        if (typ == eAction.freigeben || typ == eAction.stornieren || typ == eAction.fsw || typ == eAction.fswreset || typ == eAction.fswNoUpload)
+                        if (typ == eAction.freigeben || typ == eAction.stornieren || typ == eAction.fsw || typ == eAction.fswreset || typ == eAction.fswNoUpload || typ == eAction.rollen)
                         {
                             List<String> listIDBills = new List<String>();
                             foreach (UltraGridRow rToDel in arrSelected)
                             {
                                 PMDS.Calc.Logic.dbPMDS.billsRow r = (PMDS.Calc.Logic.dbPMDS.billsRow)((System.Data.DataRowView)rToDel.ListObject).Row;
                                 if (r.Typ == (int)eBillTyp.Rechnung ||      //FSW-ZAUF prüfen?
-                                    (r.Typ == (int)eBillTyp.Beilage && r.IDSR == "") || 
+                                    (r.Typ == (int)eBillTyp.Beilage && r.IDSR.Length == 0) || 
                                     r.Typ == (int)eBillTyp.Sammelrechnung || 
                                     r.Typ == (int)eBillTyp.FreieRechnung
                                     )
@@ -461,67 +461,81 @@ namespace PMDS.Calc.UI
                             listIDBills.Add("4566bbcc-1be6-456e-bcbb-40ec1883eb67");
                              */
 
-                            if (typ == eAction.freigeben)
+                            if (typ == eAction.rollen)
                             {
-                                if (RollungJN)
+                                System.Collections.Generic.List<calculation.cBill> listIDDoStorno = new List<calculation.cBill>();
+                                if (this.typ == ucCalcsSitemap.eTyp.calc)
                                 {
-                                    System.Collections.Generic.List<calculation.cBill> listIDDoStorno = new List<calculation.cBill>();
-                                    if (this.typ == ucCalcsSitemap.eTyp.calc && RollungJN)
-                                    {
-                                        db.Configuration.LazyLoadingEnabled = false;
+                                    db.Configuration.LazyLoadingEnabled = false;
 
-                                        //this.doBill.doAction(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, ref this.form.editor, "f", PMDS.Global.ENV.IDKlinik, true, ref listIDDoStorno);
-                                        foreach (string IDBillStr in listIDBills)
+                                    //this.doBill.doAction(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, ref this.form.editor, "f", PMDS.Global.ENV.IDKlinik, true, ref listIDDoStorno);
+                                    foreach (string IDBillStr in listIDBills)
+                                    {
+                                        Guid IDBillToCheck = new Guid(IDBillStr.Trim());
+                                        PMDS.db.Entities.bills rBill2 = db.bills.Where(b => b.ID == IDBillStr).First();
+                                        IQueryable<PMDS.db.Entities.bills> tBills = null;
+                                        if (this.typ == ucCalcsSitemap.eTyp.calc)
                                         {
-                                            Guid IDBillToCheck = new Guid(IDBillStr.Trim());
-                                            PMDS.db.Entities.bills rBill2 = db.bills.Where(b => b.ID == IDBillStr).First();
-                                            IQueryable<PMDS.db.Entities.bills> tBills = null;
-                                            if (this.typ == ucCalcsSitemap.eTyp.calc)
+                                            Guid chkGuid = Guid.Empty;
+                                            if (rBill2.Typ == (int)eBillTyp.Rechnung)
                                             {
-                                                Guid chkGuid = Guid.Empty;
-                                                if (rBill2.Typ == (int)eBillTyp.Rechnung)
+                                                if (RollungFreigegebenJN)       //Standard - Rollung gegen freigegbene Rechnungen
                                                 {
                                                     tBills = db.bills.Where(b => b.datum == rBill2.datum &&
-                                                                            b.Typ != 3 && 
-                                                                            b.IDKlient == rBill2.IDKlient && 
+                                                                            b.Typ != 3 &&
+                                                                            b.IDKlient == rBill2.IDKlient &&
                                                                             b.Typ == (int)eBillTyp.Rechnung &&
-                                                                            b.Freigegeben == true && 
-                                                                            b.Status == (int)eBillStatus.freigegeben && 
-                                                                            b.IDSR == ""                                                                             
-                                                                           ).OrderByDescending(p => p.ErstellAm);
+                                                                            b.Freigegeben == true &&
+                                                                            b.Status == (int)eBillStatus.freigegeben &&
+                                                                            b.IDSR.Length == 0
+                                                                            ).OrderByDescending(p => p.ErstellAm);
                                                 }
-                                                else if (rBill2.Typ == (int)eBillTyp.Beilage)
-                                                {
-                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.Beilage && b.Freigegeben == false && b.Status == 0 && b.IDSR != ""))).OrderByDescending(p => p.ErstellAm);
-                                                }
-                                                else if (rBill2.Typ == (int)eBillTyp.FreieRechnung)
-                                                {
-                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.FreieRechnung && b.Freigegeben == true && b.Status == 0 && b.IDSR != ""))).OrderByDescending(p => p.ErstellAm);
+                                                else
+                                                {                                 //Sonderfall - Rollung gegen nicht freigegebene Rechnungnen
+                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum &&
+                                                                            b.Typ != 3 &&
+                                                                            b.IDKlient == rBill2.IDKlient &&
+                                                                            b.Typ == (int)eBillTyp.Rechnung &&
+                                                                            b.Freigegeben == false &&
+                                                                            b.Status == (int)eBillStatus.offen &&
+                                                                            b.IDSR.Length == 0 &&
+                                                                            b.ID.ToString() != IDBillStr                        //nicht gegen sich selbst rollen!
+                                                                            ).OrderByDescending(p => p.ErstellAm);
                                                 }
                                             }
-                                            //else if (this.typ == ucCalcsSitemap.eTyp.sr)
-                                            //{
-                                            //    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Freigegeben == true && b.Status == 1 && b.Typ == 3);
-                                            //}
-
-                                            foreach (PMDS.db.Entities.bills rBill in tBills)
+                                            else if (rBill2.Typ == (int)eBillTyp.Beilage)
                                             {
-                                                dbPMDS.billsRow rBillToStorno = sqlCheck.readBill(rBill.ID);
-                                                //if (rBillToStorno.IDBillStorno.Trim() != "")
-                                                //{
-                                                    calculation.cBill newBillToStorno = new calculation.cBill();
-                                                    newBillToStorno.rBillToStorno = rBillToStorno;
-                                                    newBillToStorno.IDBillNew = IDBillStr;
-                                                    listIDDoStorno.Add(newBillToStorno);
-                                            
-                                                break;
-                                                //}
+                                                tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.Beilage && b.Freigegeben == false && b.Status == 0 && b.IDSR.Length != 0))).OrderByDescending(p => p.ErstellAm);
+                                            }
+                                            else if (rBill2.Typ == (int)eBillTyp.FreieRechnung)
+                                            {
+                                                tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.FreieRechnung && b.Freigegeben == true && b.Status == 0 && b.IDSR.Length != 0))).OrderByDescending(p => p.ErstellAm);
                                             }
                                         }
+                                        //else if (this.typ == ucCalcsSitemap.eTyp.sr)
+                                        //{
+                                        //    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Freigegeben == true && b.Status == 1 && b.Typ == 3);
+                                        //}
 
-                                        if (listIDDoStorno.Count > 0)
+                                        foreach (PMDS.db.Entities.bills rBill in tBills)
                                         {
-                                            PMDS.GUI.Calc.Calc.UI.frmMsgBoxWithGrid frmMsgBoxWithGrid1 = new GUI.Calc.Calc.UI.frmMsgBoxWithGrid();
+                                            dbPMDS.billsRow rBillToStorno = sqlCheck.readBill(rBill.ID);
+                                            //if (rBillToStorno.IDBillStorno.Trim() != "")
+                                            //{
+                                            calculation.cBill newBillToStorno = new calculation.cBill();
+                                            newBillToStorno.rBillToStorno = rBillToStorno;
+                                            newBillToStorno.IDBillNew = IDBillStr;
+                                            listIDDoStorno.Add(newBillToStorno);
+
+                                            break;
+                                            //}
+                                        }
+                                    }
+
+                                    if (listIDDoStorno.Count > 0)
+                                    {
+                                        using (PMDS.GUI.Calc.Calc.UI.frmMsgBoxWithGrid frmMsgBoxWithGrid1 = new GUI.Calc.Calc.UI.frmMsgBoxWithGrid())
+                                        {
                                             frmMsgBoxWithGrid1.initControl(GUI.Calc.Calc.UI.frmMsgBoxWithGrid.eTypeUI.CalcCheckDoStorno, ref listIDDoStorno);
                                             frmMsgBoxWithGrid1.ShowDialog(this);
                                             if (!frmMsgBoxWithGrid1.abort)
@@ -557,7 +571,6 @@ namespace PMDS.Calc.UI
                                                                 }
                                                                 rBill33.IDBillsGerollt = cBill.rBillToStorno.ID;        //os 2021-03-30: Rechnung merken, die gerollt wurde (als Kennzeichen für FSW, dass es sich um eine zusätzliche Rechnung handelt) 
                                                                 db.SaveChanges();
-                                                                System.GC.Collect();
                                                             }
                                                             else
                                                             {
@@ -597,35 +610,42 @@ namespace PMDS.Calc.UI
                                                 return;
                                             }
                                         }
+                                    }
+                                    else
+                                    {
+                                        //Msg Keine Rechnungen zum Rollen gefunden
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine rollbaren Rechunngen gefunden.", "", MessageBoxButtons.OK);
+                                        return;
+                                    }
 
-                                        //Storno aller freigegebenen Rechnungen (wenn Kostenträger gewechselt wurde, würden die Originalrechnugnen nicht storniert)
-                                        foreach (string IDBillStr in listIDBills)
+                                    //Storno aller freigegebenen Rechnungen (wenn Kostenträger gewechselt wurde, würden die Originalrechnugnen nicht storniert)
+                                    foreach (string IDBillStr in listIDBills)
+                                    {
+                                        IQueryable<PMDS.db.Entities.bills> tBillGrid = db.bills.Where(b => b.ID == IDBillStr);
+                                        if (tBillGrid.Count() == 1)
                                         {
-                                            IQueryable<PMDS.db.Entities.bills> tBillGrid = db.bills.Where(b => b.ID == IDBillStr);
-                                            if (tBillGrid.Count() == 1)
+                                            PMDS.db.Entities.bills rBillGrid = tBillGrid.First();
+                                            IQueryable<PMDS.db.Entities.bills> tBillsStornoRech = db.bills.Where(b => b.datum == rBillGrid.datum &&
+                                                                                                                    b.Typ != 3 &&
+                                                                                                                    b.IDKlient == rBillGrid.IDKlient &&
+                                                                                                                    (b.Typ == (int)eBillTyp.Rechnung &&
+                                                                                                                    b.Freigegeben == true &&
+                                                                                                                    b.Status == 1 &&
+                                                                                                                    b.IDSR.Length == 0 &&
+                                                                                                                    b.IDBillStorno.Trim().Length == 0
+                                                                                                                    )
+                                                                                                                ).OrderByDescending(p => p.ErstellAm);
+                                            System.Collections.Generic.List<PMDS.db.Entities.bills> tBillsToDo = new List<db.Entities.bills>();
+                                            foreach (PMDS.db.Entities.bills rBillToStorno in tBillsStornoRech)
                                             {
-                                                PMDS.db.Entities.bills rBillGrid = tBillGrid.First();
-                                                IQueryable<PMDS.db.Entities.bills> tBillsStornoRech = db.bills.Where(b => b.datum == rBillGrid.datum &&
-                                                                                                                     b.Typ != 3 && 
-                                                                                                                     b.IDKlient == rBillGrid.IDKlient && 
-                                                                                                                     (b.Typ == (int)eBillTyp.Rechnung && 
-                                                                                                                        b.Freigegeben == true && 
-                                                                                                                        b.Status == 1 && 
-                                                                                                                        b.IDSR == "" && 
-                                                                                                                        b.IDBillStorno.Trim() == ""
-                                                                                                                     )
-                                                                                                                    ).OrderByDescending(p => p.ErstellAm);
-                                                System.Collections.Generic.List<PMDS.db.Entities.bills> tBillsToDo = new List<db.Entities.bills>();
-                                                foreach (PMDS.db.Entities.bills rBillToStorno in tBillsStornoRech)
+                                                tBillsToDo.Add(rBillToStorno);
+                                            }
+                                            foreach (PMDS.db.Entities.bills rBillToStorno in tBillsToDo)
+                                            {
+                                                //PMDS.db.Entities.billHeader rBillHeaderStorno = db.billHeader.Where(b => b.ID == rBillToStorno.IDAbrechnung).First();
+                                                dbCalc dbCalcFoundStorno = null;            //this.doBill.getDBCalc(rBillHeaderStorno.dbCalc);
+                                                using (Sql SqlUpdate = new Sql())
                                                 {
-                                                    tBillsToDo.Add(rBillToStorno);
-                                                }
-                                                foreach (PMDS.db.Entities.bills rBillToStorno in tBillsToDo)
-                                                {
-                                                    //PMDS.db.Entities.billHeader rBillHeaderStorno = db.billHeader.Where(b => b.ID == rBillToStorno.IDAbrechnung).First();
-                                                    dbCalc dbCalcFoundStorno = null;            //this.doBill.getDBCalc(rBillHeaderStorno.dbCalc);
-                                                    dbPMDS dbPMDSUpdate = new dbPMDS();
-                                                    Sql SqlUpdate = new Sql();
                                                     dbPMDS.billsRow rBillToStornoDs = SqlUpdate.readBill(rBillToStorno.ID);
                                                     string IDBillGeneratedBack = "";
                                                     this.doBill.doStornoBill(rBillToStornoDs, rBillToStorno.IDAbrechnung, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, ref this.form.editor, rechDatum.Value.Date, ref IDBillGeneratedBack, db, dbCalcFoundStorno);
@@ -633,32 +653,37 @@ namespace PMDS.Calc.UI
                                             }
                                         }
                                     }
-                                    else if (this.typ == ucCalcsSitemap.eTyp.buchhaltung || this.typ == ucCalcsSitemap.eTyp.depotgeld)
-                                    {
-                                        throw new Exception("ucCalcsSitemap.doAction22: this.typ for eTyp.buchhaltung and eTyp.depotgeld not allowed!");
-                                    }
                                 }
-
-                                if (!RollungJN)
+                                else if (this.typ == ucCalcsSitemap.eTyp.buchhaltung || this.typ == ucCalcsSitemap.eTyp.depotgeld)
                                 {
-                                    this.calculation.freigeben(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.ENV.IDKlinik, null);
+                                    throw new Exception("ucCalcsSitemap.doAction22: this.typ for eTyp.buchhaltung and eTyp.depotgeld not allowed!");
                                 }
+                                
                             }
+
+                            else if (typ == eAction.freigeben)
+                            {
+                                this.calculation.freigeben(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, this.form.editor, PMDS.Global.ENV.IDKlinik, null);
+                            }
+
                             else if (typ == eAction.fsw)
                             {
                                 PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
                                 FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills, FSWAbrechnung.eAction.fsw);
                             }
+
                             else if (typ == eAction.fswNoUpload)
                             {
                                 PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
                                 FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills, FSWAbrechnung.eAction.fswNoUpload);
                             }
+
                             else if (typ == eAction.fswreset)
                             {
                                 PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
                                 FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills, FSWAbrechnung.eAction.fswreset);
                             }
+
                             else if (typ == eAction.stornieren)
                             {
                                 foreach (string IDBillStr in listIDBills)

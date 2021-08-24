@@ -133,13 +133,28 @@ namespace PMDS.Global
                                 {
                                     if (generic.sEquals(Rechnungszeile.Kennung, "LZ"))
                                     {
+
+/*
+//Anmerkung für Ändeurngen Bereutes Wohnen
+MwST nicht aus der MwSt-Position nehmen, sonderen je Leistungszeile separat rechnen.
+Wenn Pflege und Betreutes Wohnen auf einer Rechnung ist muss die MwSt aufgeteilt werden, daher kann man nicht die Summenpositin "MwstSatz" verwenden. Diesen Zweig dann deaktivieren.
+Beim Einstieg LZ auf Rechnung analysieren.
+Wenn nur Pflege -> keine ÄNderung.
+Wenn nur Betreutes Wohnen: separate Invoice.
+Wenn Pflege und Betreuung: Leistungen aufteilen.
+ */
+
+
                                         Zeile++;
                                         if (rBill.Status == -10)    //Bei Storno Tage negativ angeben und Basipreis positiv
                                         {
                                             Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * - 1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
                                         }
                                         else
-                                            Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));                                        
+                                        {
+                                            Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                        }
+
                                         lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
                                     }
                                     else if (generic.sEquals(Rechnungszeile.Kennung, "MWstSatz"))

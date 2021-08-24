@@ -334,6 +334,7 @@ namespace PMDS.Global
         public static string FSW_EZAUF = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
         public static decimal FSW_Prozent = 4M;
         public static bool FSW_SaveXLSX = false;
+        public static bool FSW_SupressSubKostentraeger = true;
 
         public static string ELDA_Pfad = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
 
@@ -1488,6 +1489,7 @@ namespace PMDS.Global
                 SetENVValue("FSW_EZAUF", ref ENV.FSW_EZAUF);
                 SetENVValue("FSW_Prozent", ref ENV.FSW_Prozent);
                 SetENVValue("FSW_SaveXLSX", ref ENV.FSW_SaveXLSX);
+                SetENVValue("FSW_SupressSubKostentraeger", ref ENV.FSW_SupressSubKostentraeger);
 
                 SetENVValue("ELDA_Pfad", ref ENV.ELDA_Pfad);
 

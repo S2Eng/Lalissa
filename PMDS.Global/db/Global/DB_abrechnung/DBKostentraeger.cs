@@ -282,29 +282,41 @@ namespace PMDS.DB.Global
             return dt;
         }
 
-        public dsKostentraeger.KostentraegerDataTable GetOnlyAlgemeinKostentraeger(bool klinik, System.Guid IDKlinik)
+        public dsKostentraeger.KostentraegerDataTable GetOnlyAlgemeinKostentraeger(bool klinik, System.Guid IDKlinik, bool bSupressFSWAsSubKostentraeger = false)
         {
-            OleDbDataAdapter daRead = new OleDbDataAdapter();
-            OleDbCommand cmdRead = new OleDbCommand();
-            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                RBU.DataBase.CONNECTION.Open();
-            cmdRead.Connection = RBU.DataBase.CONNECTION;
-            cmdRead.CommandTimeout = 0;
-            daRead.SelectCommand = cmdRead;
+            using (OleDbDataAdapter daRead = new OleDbDataAdapter())
+            {
+                OleDbCommand cmdRead = new OleDbCommand();
+                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                    RBU.DataBase.CONNECTION.Open();
+                cmdRead.Connection = RBU.DataBase.CONNECTION;
+                cmdRead.CommandTimeout = 0;
+                daRead.SelectCommand = cmdRead;
+                string sWhere = " WHERE ";
+                if (!klinik)
+                {
+                    sWhere += "(PatientbezogenJN = 0) AND (TransferleistungJN = 0) ";
+                }
+                else
+                {
+                    sWhere += "(PatientbezogenJN = 0) AND (TransferleistungJN = 0) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ";
+                }
 
-            string sWhere = "";
-            if (!klinik)
-            {
-                sWhere = " WHERE (PatientbezogenJN = 0) AND (TransferleistungJN = 0) ORDER BY Name ";
+                if (bSupressFSWAsSubKostentraeger)
+                {
+                    sWhere += "and (IDKostentraegerSub IS NUll or  IDKostentraegerSub <> '" + ENV.FSW_IDIntern.ToString() + "') ";
+                }
+
+                sWhere += "ORDER BY Name ";
+
+
+                daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
+                using (dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable())
+                {
+                    DataBase.Fill(daRead, dt);
+                    return dt;
+                }
             }
-            else
-            {
-                sWhere = " WHERE (PatientbezogenJN = 0) AND (TransferleistungJN = 0) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
-            }
-            daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
-            dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
-            DataBase.Fill(daRead, dt);
-            return dt;
         }
         public dsKostentraeger.KostentraegerDataTable GetPatientKostentraeger(bool klinik, System.Guid IDKlinik)
         {

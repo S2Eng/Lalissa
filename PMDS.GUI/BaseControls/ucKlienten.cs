@@ -109,42 +109,20 @@ namespace PMDS.GUI
             
             Infragistics.Win.ValueListItem item;
 
-            //item = cbKostenträger.Items.Add(Guid.Empty, "Alle Klienten");
-            //item.Tag = "AKlienent";
-            //item.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
-
-            //item = cbSuche.Items.Add(Guid.Empty, "Alle historischen Klienten");
-            //item.Tag = "AKlientenHist";
-            ////item.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
-
             item = cbAllgemeineKostenträger.Items.Add(Guid.Empty, " ");
             item.Tag = "L";
 
-            //item = cbKostenträger.Items.Add(Guid.Empty, "Alle Selbstzahler");
-            //item.Tag = "SZ";
-            //item.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
-
-            //item = cbKostenträger.Items.Add(Guid.Empty, "Allgemeine Kostenträger:");
-            //item.Tag = "AKL";
-            //item.Appearance.ForeColor = System.Drawing.Color.DarkRed;
-
-            PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger();
-            PMDS.Global.db.Global.ds_abrechnung.dsKostentraeger.KostentraegerDataTable dt = k.GetOnlyAlgemeinKostentraeger(false, System.Guid.Empty);
-            //dsKostentraeger.KostentraegerDataTable dt = k.GetOnlyAlgemeinKostentraeger(true, ENV.IDKlinik);
-            foreach (PMDS.Global.db.Global.ds_abrechnung.dsKostentraeger.KostentraegerRow r in dt)
+            using (PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger())
             {
-                item = cbAllgemeineKostenträger.Items.Add(r.ID, "     " + r.Name);
-                item.Tag = "AK";
-                if (r.ID == IDKostentraeger)
-                    cbAllgemeineKostenträger.SelectedItem = item;
+                PMDS.Global.db.Global.ds_abrechnung.dsKostentraeger.KostentraegerDataTable dt = k.GetOnlyAlgemeinKostentraeger(false, System.Guid.Empty, ENV.FSW_SupressSubKostentraeger);
+                foreach (PMDS.Global.db.Global.ds_abrechnung.dsKostentraeger.KostentraegerRow r in dt)
+                {
+                    item = cbAllgemeineKostenträger.Items.Add(r.ID, "     " + r.Name);
+                    item.Tag = "AK";
+                    if (r.ID == IDKostentraeger)
+                        cbAllgemeineKostenträger.SelectedItem = item;
+                }
             }
-
-            //item = cbSuche.Items.Add(Guid.Empty, " ");
-            //item.Tag = "L";
-
-            //item = cbSuche.Items.Add(Guid.Empty, "Alle Bewerber");
-            //item.Tag = "BE";
-            //item.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
         }
 
         public void setTabActive(dsPatientName ds, bool singleSelect)

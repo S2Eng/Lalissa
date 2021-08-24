@@ -902,11 +902,20 @@ namespace PMDS.Calc.UI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                
-                this.doAction(eAction.freigeben, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Zeilen wirklich rollen?"),
-                                QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnungen wurden freigegeben!"),
-                                PMDS.Calc.Logic.eModify.nichts, true, null, this.dtRechDatum.DateTime.Date, true);
 
+
+                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftCtrl) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightCtrl))
+                {
+                    this.doAction(eAction.rollen, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Zeilen wirklich gegen NICHT FREIGEGEBENE Rechnungnen rollen?"),
+                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnungen wurden freigegeben!"),
+                                    PMDS.Calc.Logic.eModify.nichts, true, null, this.dtRechDatum.DateTime.Date, false);
+                }
+                else
+                {
+                    this.doAction(eAction.rollen, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Zeilen wirklich rollen?"),
+                                    QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnungen wurden freigegeben!"),
+                                    PMDS.Calc.Logic.eModify.nichts, true, null, this.dtRechDatum.DateTime.Date, true);
+                }
             }
             catch (Exception ex)
             {

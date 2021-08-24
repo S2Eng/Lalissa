@@ -16,7 +16,8 @@ namespace PMDS.UI.Sitemap
         SperreRollungLöschen = 6,
         fsw = 7,
         fswreset = 8,
-        fswNoUpload = 9
+        fswNoUpload = 9,
+        rollen = 10
     }
 
 

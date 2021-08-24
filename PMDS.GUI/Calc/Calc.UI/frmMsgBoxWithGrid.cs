@@ -73,8 +73,8 @@ namespace PMDS.GUI.Calc.Calc.UI
                 
                 if (this._TypeUI == eTypeUI.CalcCheckDoStorno)
                 {
-                    this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Prüfung bestehende freigegebene Rechnungen auf Storno bzw. Korrektur Beilagen");
-                    this.lblTitle.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Für folgende Klienten existieren bereits freigegeben Rechnungen bzw. Beilagen" + "\r\n" + "Sollen diese storniert bzw. korrigiert werden?");
+                    this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Prüfung bestehende Rechnungen auf Storno bzw. Korrektur Beilagen");
+                    this.lblTitle.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Für folgende Klienten existieren bereits Rechnungen bzw. Beilagen" + "\r\n" + "Sollen diese storniert bzw. gerollt werden?");
                 }
 
                 this.loadData();
@@ -115,17 +115,17 @@ namespace PMDS.GUI.Calc.Calc.UI
                     {
                         //if (!lstBillsDistinct.Contains(cBill.rBillToStorno.ID))
                         //{
-                            PMDS.Global.db.ERSystem.dsKlientenliste.UIRow rNewUI = this.sqlManange1.getNewUI(ref this.dsKlientenliste1);
-                            rNewUI.obj = cBill;
-                            rNewUI.ID2 = new Guid(cBill.rBillToStorno.ID.ToString());
-                            string sMessage = "";
-                            if (cBill.rBillToStorno.Typ == (int)eBillTyp.Sammelrechnung)
-                            {
-                                sMessage = QS2.Desktop.ControlManagment.ControlManagment.getRes("SR Rechnung von") + " " + cBill.rBillToStorno.datum.Year.ToString() + "-" + cBill.rBillToStorno.datum.Month.ToString() + " " +
-                                              QS2.Desktop.ControlManagment.ControlManagment.getRes("gefunden");
-                            }
-                            else
-                            {
+                        PMDS.Global.db.ERSystem.dsKlientenliste.UIRow rNewUI = this.sqlManange1.getNewUI(ref this.dsKlientenliste1);
+                        rNewUI.obj = cBill;
+                        rNewUI.ID2 = new Guid(cBill.rBillToStorno.ID.ToString());
+                        string sMessage = "";
+                        if (cBill.rBillToStorno.Typ == (int)eBillTyp.Sammelrechnung)
+                        {
+                            sMessage = QS2.Desktop.ControlManagment.ControlManagment.getRes("SR Rechnung von") + " " + cBill.rBillToStorno.datum.Year.ToString() + "-" + cBill.rBillToStorno.datum.Month.ToString() + " " +
+                                            QS2.Desktop.ControlManagment.ControlManagment.getRes("gefunden");
+                        }
+                        else
+                        {
                             //os191224
 
                             Guid IDPatient = new Guid(cBill.rBillToStorno.IDKlient.ToString());
@@ -133,27 +133,35 @@ namespace PMDS.GUI.Calc.Calc.UI
                                             where p.ID == IDPatient
                                             select new
                                             { p.ID, p.Nachname, p.Vorname }
-                                               ).First();
-                                //PMDS.db.Entities.Patient rPatient = this.b.getPatient(new Guid(cBill.rBillToStorno.IDKlient.ToString()), db);
-                                rNewUI.ID2 = rPatInfo.ID;
-                                string sTxtTmp = "";
-                                if (cBill.rBillToStorno.Typ == (int)eBillTyp.Rechnung)
-                                {
-                                    sTxtTmp = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnung von");
-                                }
-                                else if (cBill.rBillToStorno.Typ == (int)eBillTyp.Beilage)
-                                {
-                                    sTxtTmp = QS2.Desktop.ControlManagment.ControlManagment.getRes("Beilage von");
-                                }
+                                                ).First();
+                            //PMDS.db.Entities.Patient rPatient = this.b.getPatient(new Guid(cBill.rBillToStorno.IDKlient.ToString()), db);
+                            rNewUI.ID2 = rPatInfo.ID;
+                            string sTxtTmp = rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + ": ";
+
+                            if (cBill.rBillToStorno.Typ == (int)eBillTyp.Rechnung)
+                            {
+                                sTxtTmp += QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnung ");
+                            }
+                            else if (cBill.rBillToStorno.Typ == (int)eBillTyp.Beilage)
+                            {
+                                sTxtTmp += QS2.Desktop.ControlManagment.ControlManagment.getRes("Beilage ");
+                            }
                                 
-                                sMessage = sTxtTmp + " " + cBill.rBillToStorno.datum.Year.ToString() + "-" + cBill.rBillToStorno.datum.Month.ToString() + " " +
-                                                QS2.Desktop.ControlManagment.ControlManagment.getRes("für Patient") + " " + rPatInfo.Nachname.Trim() + " " + rPatInfo.Vorname.Trim() + " " +
-                                                QS2.Desktop.ControlManagment.ControlManagment.getRes("gefunden");
+                            if (String.IsNullOrWhiteSpace(cBill.rBillToStorno.RechNr))
+                            {
+                                sTxtTmp += "(nicht freigegeben) für ";
+                            }
+                            else
+                            {
+                                sTxtTmp += cBill.rBillToStorno.RechNr + "für ";
                             }
 
-                            rNewUI.Bezeichnung = sMessage.Trim();
-                            lstBillsDistinct.Add(cBill.rBillToStorno.ID);
-                        //}
+                            sMessage = sTxtTmp + cBill.rBillToStorno.datum.Year.ToString() + "-" + cBill.rBillToStorno.datum.Month.ToString() + ", erstellt: " + cBill.rBillToStorno.ErstellAm.ToString("F") + ".";
+                        }
+
+                        rNewUI.Bezeichnung = sMessage.Trim();
+                        lstBillsDistinct.Add(cBill.rBillToStorno.ID);
+                    //}
                     }
                     this.gridMsgBox.Refresh();
 

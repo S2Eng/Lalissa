@@ -84,7 +84,7 @@
             this.btnAbort.Appearance = appearance1;
             this.btnAbort.AutoWorkLayout = false;
             this.btnAbort.IsStandardControl = false;
-            this.btnAbort.Location = new System.Drawing.Point(289, 394);
+            this.btnAbort.Location = new System.Drawing.Point(1044, 392);
             this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(75, 28);
@@ -101,7 +101,7 @@
             this.btnOK.Appearance = appearance2;
             this.btnOK.AutoWorkLayout = false;
             this.btnOK.IsStandardControl = false;
-            this.btnOK.Location = new System.Drawing.Point(365, 394);
+            this.btnOK.Location = new System.Drawing.Point(1120, 392);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(83, 28);
@@ -126,7 +126,7 @@
             this.gridMsgBox.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
             ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 1;
-            ultraGridColumn1.Width = 553;
+            ultraGridColumn1.Width = 900;
             ultraGridColumn6.Header.Editor = null;
             ultraGridColumn6.Header.VisiblePosition = 2;
             ultraGridColumn6.Hidden = true;
@@ -229,7 +229,7 @@
             this.gridMsgBox.Location = new System.Drawing.Point(4, 62);
             this.gridMsgBox.Margin = new System.Windows.Forms.Padding(4);
             this.gridMsgBox.Name = "gridMsgBox";
-            this.gridMsgBox.Size = new System.Drawing.Size(743, 329);
+            this.gridMsgBox.Size = new System.Drawing.Size(1228, 329);
             this.gridMsgBox.TabIndex = 34;
             this.gridMsgBox.Text = "Dokumente";
             this.gridMsgBox.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.gridMsgBox_CellChange);
@@ -280,7 +280,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitle.Location = new System.Drawing.Point(4, 7);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(742, 34);
+            this.lblTitle.Size = new System.Drawing.Size(1227, 34);
             this.lblTitle.TabIndex = 35;
             this.lblTitle.Text = "Titel";
             // 
@@ -292,7 +292,7 @@
             this.lblKostenteilungInfo.Appearance = appearance7;
             this.lblKostenteilungInfo.Location = new System.Drawing.Point(4, 45);
             this.lblKostenteilungInfo.Name = "lblKostenteilungInfo";
-            this.lblKostenteilungInfo.Size = new System.Drawing.Size(742, 16);
+            this.lblKostenteilungInfo.Size = new System.Drawing.Size(1227, 16);
             this.lblKostenteilungInfo.TabIndex = 36;
             this.lblKostenteilungInfo.Text = "Hinweis: Rechnungen mit Kostenteilung können nicht gerollt werden!";
             // 
@@ -300,7 +300,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 425);
+            this.ClientSize = new System.Drawing.Size(1236, 425);
             this.Controls.Add(this.lblKostenteilungInfo);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.gridMsgBox);
