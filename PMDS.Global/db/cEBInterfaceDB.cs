@@ -39,6 +39,7 @@ namespace PMDS.Global.db
             public string EmfaengerAdresse { get; set; } = "1000101";
             public string TransactionID { get; set; }
             public ArDocument ArDocument { get; set; } = new ArDocument();
+            public bool bIsPflegeZAUFF { get; set; } = true;
         }
 
         public class ArDocument
@@ -178,6 +179,20 @@ namespace PMDS.Global.db
         {
             public string Comment { get; set; } = "";
             public UniversalBankTransaction UniversalBankTransaction { get; set; } = new UniversalBankTransaction() { AttributeName = "ConsolidatorPayable", AttributeValue = "false" };
+        }
+
+        public static Transaction NewTransaction(bool bIsPflegeZAUFF)
+        {
+            try
+            {
+                Transaction t = new Transaction();
+                t.bIsPflegeZAUFF = bIsPflegeZAUFF;
+                return t;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("PMDS.core.db.cEEBInterfaceDB.cs. init: " + ex.Message);
+            }
         }
 
         //-------------------------------------------------------------------------------------------
