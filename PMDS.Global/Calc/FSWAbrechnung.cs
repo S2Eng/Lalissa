@@ -549,7 +549,14 @@ namespace PMDS.Global
                             {
                                 xInvoice.AddAttribute(att.AttributeName, att.AttributeValue);
                             }
-                            Chilkat.Xml xInvoiceNumber = xInvoice.NewChild("InvoiceNumber", Invoice.InvoiceNumber);
+
+                            // InvoiceNumber muss bei Splittung Pfelge und BW eindeutig sein. Extension PF / BW an Rechungsnummer anhängen, wenn zwei gültige eZAUFFS vorhanden sind.
+                            string InvoiceExt = ""; 
+                            if (lTransactions.Where(p => p.bIsvalid == true).Count() == 2)
+                            {
+                                InvoiceExt = " " + (Info.Transaction.bIsPflegeZAUFF ? "(PF)" : "(BW)");
+                            }
+                            Chilkat.Xml xInvoiceNumber = xInvoice.NewChild("InvoiceNumber", Invoice.InvoiceNumber + InvoiceExt);
                             Chilkat.Xml xInvoiceDate = xInvoice.NewChild("InvoiceDate", Invoice.InvoiceDate.ToString(DateFormat, ci));
                             Chilkat.Xml xAdditionalInformation = xInvoice.NewChild("AdditionalInformation", "");
 
