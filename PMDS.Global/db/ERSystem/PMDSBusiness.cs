@@ -1986,6 +1986,7 @@ namespace PMDS.DB
                 rNewPE.TextHistorie = "";
                 rNewPE.TextHistorieRtf = "";
                 rNewPE.IDGruppe = null;
+                rNewPE.PSEKlasse = "";
 
                 db.PflegeEintrag.Add(rNewPE);
                 return rNewPE;
@@ -2148,7 +2149,7 @@ namespace PMDS.DB
                         rNewPE.IDBereich = rAufenthaltAkt.IDBereich;
                         rNewPE.TextHistorie = "";
                         rNewPE.TextHistorieRtf = "";
-                        
+
                         db.PflegeEintrag.Add(rNewPE);
                         db.SaveChanges();
                         SelectedNodes.bDone = true;
@@ -4477,6 +4478,7 @@ namespace PMDS.DB
                 newPflegeEintrag.CC = false;
                 newPflegeEintrag.TextHistorie = "";
                 newPflegeEintrag.TextHistorieRtf = "";
+                newPflegeEintrag.PSEKlasse = "";
 
                 db.PflegeEintrag.Add(newPflegeEintrag);
                 return newPflegeEintrag;
@@ -8236,6 +8238,7 @@ namespace PMDS.DB
                         newPflegeEintrag.TextHistorie = "";
                         newPflegeEintrag.TextHistorieRtf = "";
                         newPflegeEintrag.IDGruppe = IDGruppe;
+                        newPflegeEintrag.PSEKlasse = "";
 
                         db.PflegeEintrag.Add(newPflegeEintrag);
                         db.SaveChanges();
@@ -12234,6 +12237,7 @@ namespace PMDS.DB
                             rNewPE.AbgezeichnetAm = null;
                             rNewPE.TextHistorie = "";
                             rNewPE.TextHistorieRtf = "";
+                            rNewPE.PSEKlasse = "";
 
                             db.PflegeEintrag.Add(rNewPE);
                             retBusiness1.countTermineFound += 1;

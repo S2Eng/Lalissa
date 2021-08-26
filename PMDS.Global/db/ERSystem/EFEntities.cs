@@ -5524,6 +5524,7 @@ namespace PMDS.Global.db.ERSystem
             tBinary = 7,
             tFloat = 8,
             tNumeric = 9,
+            tXml =10,
         }
 
 
@@ -5701,6 +5702,10 @@ namespace PMDS.Global.db.ERSystem
                         else if (infoCol.TypeName.Trim().EndsWith("varbinary(max)", StringComparison.CurrentCultureIgnoreCase))
                         {
                             TypeCol = eTypeCol.tBinary;
+                        }
+                        else if (infoCol.TypeName.Trim().EndsWith("xml", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            TypeCol = eTypeCol.tXml;
                         }
                         else
                         {

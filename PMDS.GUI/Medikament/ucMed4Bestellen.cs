@@ -603,6 +603,13 @@ namespace PMDS.GUI.Medikament
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
                     DataTable tBestellungMedikamente = PMDS.DB.BusinessHelp.ToDataTable(tRezepteBestSelected);
 
+                    bool bWriteXML = false;
+                    if (bWriteXML == true)
+                    {
+                        tBestellungMedikamente.TableName = "Tabelle1";
+                        tBestellungMedikamente.WriteXml(System.IO.Path.Combine(ENV.ReportPath, "BestellungMedikamenten.xml"), XmlWriteMode.WriteSchema, true);
+                    }
+
                     frmPrintPreview frmPrintPreview1 = null;
                     frmPrintPreview.PrintBestellungMedikamente(tBestellungMedikamente,
                                                                 (Nullable<DateTime>)this.datRezeptAngefordertFrom.Value, (Nullable<DateTime>)this.datRezeptAngefordertTo.Value,
