@@ -412,7 +412,6 @@ namespace PMDS.Calc.UI
         {
             try
             {
-                PMDS.Calc.Logic.Sql sqlCheck = new PMDS.Calc.Logic.Sql();
                 string sProt = "";
 
                 List<UltraGridRow> arrSelected = new List<UltraGridRow>();
@@ -467,68 +466,70 @@ namespace PMDS.Calc.UI
                                 if (this.typ == ucCalcsSitemap.eTyp.calc)
                                 {
                                     db.Configuration.LazyLoadingEnabled = false;
-
-                                    //this.doBill.doAction(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, ref this.form.editor, "f", PMDS.Global.ENV.IDKlinik, true, ref listIDDoStorno);
-                                    foreach (string IDBillStr in listIDBills)
+                                    using (PMDS.Calc.Logic.Sql sqlCheck = new PMDS.Calc.Logic.Sql())
                                     {
-                                        Guid IDBillToCheck = new Guid(IDBillStr.Trim());
-                                        PMDS.db.Entities.bills rBill2 = db.bills.Where(b => b.ID == IDBillStr).First();
-                                        IQueryable<PMDS.db.Entities.bills> tBills = null;
-                                        if (this.typ == ucCalcsSitemap.eTyp.calc)
+                                        //this.doBill.doAction(listIDBills, this.typ == ucCalcsSitemap.eTyp.sr ? true : false, ref this.form.editor, "f", PMDS.Global.ENV.IDKlinik, true, ref listIDDoStorno);
+                                        foreach (string IDBillStr in listIDBills)
                                         {
-                                            Guid chkGuid = Guid.Empty;
-                                            if (rBill2.Typ == (int)eBillTyp.Rechnung)
+                                            Guid IDBillToCheck = new Guid(IDBillStr.Trim());
+                                            PMDS.db.Entities.bills rBill2 = db.bills.Where(b => b.ID == IDBillStr).First();
+                                            IQueryable<PMDS.db.Entities.bills> tBills = null;
+                                            if (this.typ == ucCalcsSitemap.eTyp.calc)
                                             {
-                                                if (RollungFreigegebenJN)       //Standard - Rollung gegen freigegbene Rechnungen
+                                                Guid chkGuid = Guid.Empty;
+                                                if (rBill2.Typ == (int)eBillTyp.Rechnung)
                                                 {
-                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum &&
-                                                                            b.Typ != 3 &&
-                                                                            b.IDKlient == rBill2.IDKlient &&
-                                                                            b.Typ == (int)eBillTyp.Rechnung &&
-                                                                            b.Freigegeben == true &&
-                                                                            b.Status == (int)eBillStatus.freigegeben &&
-                                                                            b.IDSR.Length == 0
-                                                                            ).OrderByDescending(p => p.ErstellAm);
+                                                    if (RollungFreigegebenJN)       //Standard - Rollung gegen freigegbene Rechnungen
+                                                    {
+                                                        tBills = db.bills.Where(b => b.datum == rBill2.datum &&
+                                                                                b.Typ != 3 &&
+                                                                                b.IDKlient == rBill2.IDKlient &&
+                                                                                b.Typ == (int)eBillTyp.Rechnung &&
+                                                                                b.Freigegeben == true &&
+                                                                                b.Status == (int)eBillStatus.freigegeben &&
+                                                                                b.IDSR.Length == 0
+                                                                                ).OrderByDescending(p => p.ErstellAm);
+                                                    }
+                                                    else
+                                                    {                                 //Sonderfall - Rollung gegen nicht freigegebene Rechnungnen
+                                                        tBills = db.bills.Where(b => b.datum == rBill2.datum &&
+                                                                                b.Typ != 3 &&
+                                                                                b.IDKlient == rBill2.IDKlient &&
+                                                                                b.Typ == (int)eBillTyp.Rechnung &&
+                                                                                b.Freigegeben == false &&
+                                                                                b.Status == (int)eBillStatus.offen &&
+                                                                                b.IDSR.Length == 0 &&
+                                                                                b.ID.ToString() != IDBillStr                        //nicht gegen sich selbst rollen!
+                                                                                ).OrderByDescending(p => p.ErstellAm);
+                                                    }
                                                 }
-                                                else
-                                                {                                 //Sonderfall - Rollung gegen nicht freigegebene Rechnungnen
-                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum &&
-                                                                            b.Typ != 3 &&
-                                                                            b.IDKlient == rBill2.IDKlient &&
-                                                                            b.Typ == (int)eBillTyp.Rechnung &&
-                                                                            b.Freigegeben == false &&
-                                                                            b.Status == (int)eBillStatus.offen &&
-                                                                            b.IDSR.Length == 0 &&
-                                                                            b.ID.ToString() != IDBillStr                        //nicht gegen sich selbst rollen!
-                                                                            ).OrderByDescending(p => p.ErstellAm);
+                                                else if (rBill2.Typ == (int)eBillTyp.Beilage)
+                                                {
+                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.Beilage && b.Freigegeben == false && b.Status == 0 && b.IDSR.Length != 0))).OrderByDescending(p => p.ErstellAm);
+                                                }
+                                                else if (rBill2.Typ == (int)eBillTyp.FreieRechnung)
+                                                {
+                                                    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.FreieRechnung && b.Freigegeben == true && b.Status == 0 && b.IDSR.Length != 0))).OrderByDescending(p => p.ErstellAm);
                                                 }
                                             }
-                                            else if (rBill2.Typ == (int)eBillTyp.Beilage)
-                                            {
-                                                tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.Beilage && b.Freigegeben == false && b.Status == 0 && b.IDSR.Length != 0))).OrderByDescending(p => p.ErstellAm);
-                                            }
-                                            else if (rBill2.Typ == (int)eBillTyp.FreieRechnung)
-                                            {
-                                                tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Typ != 3 && b.IDKlient == rBill2.IDKlient && ((b.Typ == (int)eBillTyp.FreieRechnung && b.Freigegeben == true && b.Status == 0 && b.IDSR.Length != 0))).OrderByDescending(p => p.ErstellAm);
-                                            }
-                                        }
-                                        //else if (this.typ == ucCalcsSitemap.eTyp.sr)
-                                        //{
-                                        //    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Freigegeben == true && b.Status == 1 && b.Typ == 3);
-                                        //}
-
-                                        foreach (PMDS.db.Entities.bills rBill in tBills)
-                                        {
-                                            dbPMDS.billsRow rBillToStorno = sqlCheck.readBill(rBill.ID);
-                                            //if (rBillToStorno.IDBillStorno.Trim() != "")
+                                            //else if (this.typ == ucCalcsSitemap.eTyp.sr)
                                             //{
-                                            calculation.cBill newBillToStorno = new calculation.cBill();
-                                            newBillToStorno.rBillToStorno = rBillToStorno;
-                                            newBillToStorno.IDBillNew = IDBillStr;
-                                            listIDDoStorno.Add(newBillToStorno);
-
-                                            break;
+                                            //    tBills = db.bills.Where(b => b.datum == rBill2.datum && b.Freigegeben == true && b.Status == 1 && b.Typ == 3);
                                             //}
+
+                                            foreach (PMDS.db.Entities.bills rBill in tBills)
+                                            {
+                                                dbPMDS.billsRow rBillToStorno = sqlCheck.readBill(rBill.ID);
+                                                //if (rBillToStorno.IDBillStorno.Trim() != "")
+                                                //{
+                                                calculation.cBill newBillToStorno = new calculation.cBill();
+                                                newBillToStorno.rBillToStorno = rBillToStorno;
+                                                newBillToStorno.IDBillNew = IDBillStr;
+                                                listIDDoStorno.Add(newBillToStorno);
+
+                                                break;
+                                                //}
+                                            }
                                         }
                                     }
 
@@ -572,11 +573,6 @@ namespace PMDS.Calc.UI
                                                                 rBill33.IDBillsGerollt = cBill.rBillToStorno.ID;        //os 2021-03-30: Rechnung merken, die gerollt wurde (als Kennzeichen für FSW, dass es sich um eine zusätzliche Rechnung handelt) 
                                                                 db.SaveChanges();
                                                             }
-                                                            else
-                                                            {
-                                                                bool bBetragIsNull = true;
-                                                            }
-
                                                         }
                                                         if (rBillNew.Typ == (int)eBillTyp.Beilage && cBill.rBillToStorno.Typ == (int)eBillTyp.Beilage)
                                                         {

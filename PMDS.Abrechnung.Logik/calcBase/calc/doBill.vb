@@ -1099,124 +1099,123 @@ Public Class doBill
                     End If
 
                     If Not abortRechDatumTmp Then
-                        Dim dbCalc As dbCalc
-                        dbCalc = Me.getDBCalc(rHeader.dbCalc)
+                        Using dbCalc As dbCalc = Me.getDBCalc(rHeader.dbCalc)
+                            'Dim dbPMDS As New dbPMDS
+                            'Me.sql.readBills(idAbrech, dbPMDS)
 
-                        'Dim dbPMDS As New dbPMDS
-                        'Me.sql.readBills(idAbrech, dbPMDS)
+                            'Using db As PMDS.db.Entities.ERModellPMDSEntities = calculation.delgetDBContext.Invoke()
+                            '    Dim tBills As IQueryable(Of PMDS.db.Entities.bills) = From o In db.bills Where o. =
+                            '                            Dim rKlinik As PMDS.db.Entities.Klinik = tKlinik.First()
+                            '                            If rKlinik.Rechnungsformular.Trim() <> "" Then
+                            '        fileTmp = rKlinik.Rechnungsformular.Trim()
+                            '    End If
+                            'End Using
 
-                        'Using db As PMDS.db.Entities.ERModellPMDSEntities = calculation.delgetDBContext.Invoke()
-                        '    Dim tBills As IQueryable(Of PMDS.db.Entities.bills) = From o In db.bills Where o. =
-                        '                            Dim rKlinik As PMDS.db.Entities.Klinik = tKlinik.First()
-                        '                            If rKlinik.Rechnungsformular.Trim() <> "" Then
-                        '        fileTmp = rKlinik.Rechnungsformular.Trim()
-                        '    End If
-                        'End Using
+                            'For Each rBill As dbPMDS.billsRow In dbPMDS.bills
+                            Dim srJN As Boolean = If(sr, False, Me.sammelrechnungJN(dbCalc, rBill2.IDKostIntern))
 
-                        'For Each rBill As dbPMDS.billsRow In dbPMDS.bills
-                        Dim srJN As Boolean = If(sr, False, Me.sammelrechnungJN(dbCalc, rBill2.IDKostIntern))
-
-                        Select Case typ
-                            Case "f"
-                                If Not rBill2.Freigegeben Then
-                                    Dim sRechNr As String = ""
-                                    If rBill2.IDKost <> kostenträger.IDKostKlient Then
-                                        'Dim dbHelp As New dbPMDS()
-                                        'Me.sql.readKostenräger(r.IDKost, dbHelp, True)
-                                        'Dim rKostDatxy As dbPMDS.KostentraegerRow = dbHelp.Kostentraeger.Rows(0)
-                                        If sr Then
-                                            If rBill2.Typ <> CInt(eBillTyp.Sammelrechnung) Then Throw New Exception("doBill.freigeben: Rechnung ist nicht vom Typ sr!")
-                                            If Not checkFreigabe Then
-                                                If rBill2.RechNr.Equals("ForStorno;") Then
-                                                    Dim rechNrStorno As String = Me.modifyBill(rBill2, eModify.stornoRech, "[StornoNr]", "", True, editor, dbCalc, bill.typRechNr)
-                                                    Dim rBillEFUpdate As PMDS.db.Entities.bills = (From o In db.bills Where o.ID = rBill2.ID).FirstOrDefault()
-                                                    rBillEFUpdate.RechNr = rechNrStorno.Trim()
-                                                    rBillEFUpdate.Status = CInt(eBillStatus.freigegeben).ToString()
-                                                    rBillEFUpdate.Freigegeben = True
-                                                    rBillEFUpdate.Status = eBillStatus.storniert
-                                                    If bDateModified Then
-                                                        rBillEFUpdate.RechDatum = dRechDatumTmp
-                                                    End If
-                                                    db.SaveChanges()
-                                                    If bDateModified Then
-                                                        Dim rBillBack As dbPMDS.billsRow = Me.sql.readBill(rBillEFUpdate.ID)
-                                                        Me.modifyBill(rBillBack, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc, bill.typRechNr, False, dRechDatumTmp.Date, True)
-                                                    End If
-                                                Else
-                                                    sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower(), False, Nothing, False)
-                                                End If
-                                                If calcBase.bookingJN Then
-                                                    Me.saveTempBuchungen(dbCalc, rBill2, sRechNr, eModify.nichts, eCalcRun.month)
-                                                End If
-                                            End If
-                                        Else
-                                            If Not srJN And rBill2.Typ <> CInt(eBillTyp.KeineRechnung) Then
+                            Select Case typ
+                                Case "f"
+                                    If Not rBill2.Freigegeben Then
+                                        Dim sRechNr As String = ""
+                                        If rBill2.IDKost <> kostenträger.IDKostKlient Then
+                                            'Dim dbHelp As New dbPMDS()
+                                            'Me.sql.readKostenräger(r.IDKost, dbHelp, True)
+                                            'Dim rKostDatxy As dbPMDS.KostentraegerRow = dbHelp.Kostentraeger.Rows(0)
+                                            If sr Then
+                                                If rBill2.Typ <> CInt(eBillTyp.Sammelrechnung) Then Throw New Exception("doBill.freigeben: Rechnung ist nicht vom Typ sr!")
                                                 If Not checkFreigabe Then
-                                                    If rBill2.RechNr.Trim().ToLower().Equals(("ForStorno;").Trim().ToLower()) Then
+                                                    If rBill2.RechNr.Equals("ForStorno;") Then
                                                         Dim rechNrStorno As String = Me.modifyBill(rBill2, eModify.stornoRech, "[StornoNr]", "", True, editor, dbCalc, bill.typRechNr)
-                                                        Me.sql.saveBillRechNr(rBill2.ID, rechNrStorno.Trim())
-                                                        Me.sql.stornieren(rBill2.ID)
-                                                        'sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower())
+                                                        Dim rBillEFUpdate As PMDS.db.Entities.bills = (From o In db.bills Where o.ID = rBill2.ID).FirstOrDefault()
+                                                        rBillEFUpdate.RechNr = rechNrStorno.Trim()
+                                                        rBillEFUpdate.Status = CInt(eBillStatus.freigegeben).ToString()
+                                                        rBillEFUpdate.Freigegeben = True
+                                                        rBillEFUpdate.Status = eBillStatus.storniert
                                                         If bDateModified Then
-                                                            Dim rBillBack As dbPMDS.billsRow = Me.sql.readBill(rBill2.ID)
+                                                            rBillEFUpdate.RechDatum = dRechDatumTmp
+                                                        End If
+                                                        db.SaveChanges()
+                                                        If bDateModified Then
+                                                            Dim rBillBack As dbPMDS.billsRow = Me.sql.readBill(rBillEFUpdate.ID)
                                                             Me.modifyBill(rBillBack, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc, bill.typRechNr, False, dRechDatumTmp.Date, True)
                                                         End If
                                                     Else
-                                                        Me.modifyBill(rBill2, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc, bill.typRechNr, False, dRechDatumTmp.Date, True)
-                                                        sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower())
+                                                        sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower(), False, Nothing, False)
                                                     End If
                                                     If calcBase.bookingJN Then
-                                                        Me.saveTempBuchungen(dbCalc, rBill2, sRechNr, eModify.nichts, Me.rowKlient(dbCalc).calcRun)
+                                                        Me.saveTempBuchungen(dbCalc, rBill2, sRechNr, eModify.nichts, eCalcRun.month)
                                                     End If
                                                 End If
-                                            ElseIf srJN And rBill2.Typ = CInt(eBillTyp.Beilage) Then
-                                                'Beilagen zu Sammelrechnungen dürfen nicht freigegeben werden
-                                                'Throw New Exception("coBill.doAction: srJN And rBill2.Typ = CInt(eBillTyp.Beilage) not allowed!")
-                                                'Me.sql.saveFreigabe(rBill2.ID)
+                                            Else
+                                                If Not srJN And rBill2.Typ <> CInt(eBillTyp.KeineRechnung) Then
+                                                    If Not checkFreigabe Then
+                                                        If rBill2.RechNr.Trim().ToLower().Equals(("ForStorno;").Trim().ToLower()) Then
+                                                            Dim rechNrStorno As String = Me.modifyBill(rBill2, eModify.stornoRech, "[StornoNr]", "", True, editor, dbCalc, bill.typRechNr)
+                                                            Me.sql.saveBillRechNr(rBill2.ID, rechNrStorno.Trim())
+                                                            Me.sql.stornieren(rBill2.ID)
+                                                            'sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower())
+                                                            If bDateModified Then
+                                                                Dim rBillBack As dbPMDS.billsRow = Me.sql.readBill(rBill2.ID)
+                                                                Me.modifyBill(rBillBack, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc, bill.typRechNr, False, dRechDatumTmp.Date, True)
+                                                            End If
+                                                        Else
+                                                            Me.modifyBill(rBill2, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc, bill.typRechNr, False, dRechDatumTmp.Date, True)
+                                                            sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower())
+                                                        End If
+                                                        If calcBase.bookingJN Then
+                                                            Me.saveTempBuchungen(dbCalc, rBill2, sRechNr, eModify.nichts, Me.rowKlient(dbCalc).calcRun)
+                                                        End If
+                                                    End If
+                                                ElseIf srJN And rBill2.Typ = CInt(eBillTyp.Beilage) Then
+                                                    'Beilagen zu Sammelrechnungen dürfen nicht freigegeben werden
+                                                    'Throw New Exception("coBill.doAction: srJN And rBill2.Typ = CInt(eBillTyp.Beilage) not allowed!")
+                                                    'Me.sql.saveFreigabe(rBill2.ID)
+                                                End If
+                                            End If
+                                        Else
+                                            If sr Then Throw New Exception("doBill.freigeben: Rechnung für typ sr kann kein Klientenkostenträger sein!!")
+                                            sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower())
+                                            ' Überprüfung - Zahlungen aus Transferleistungen buchen - testen!
+                                            If calcBase.bookingJN Then
+                                                Me.saveTempBuchungen(dbCalc, rBill2, sRechNr, eModify.nichts, Me.rowKlient(dbCalc).calcRun)
                                             End If
                                         End If
-                                    Else
-                                        If sr Then Throw New Exception("doBill.freigeben: Rechnung für typ sr kann kein Klientenkostenträger sein!!")
-                                        sRechNr = Me.modifyBill(rBill2, eModify.rechNr, "[RechNr]", "", True, editor, dbCalc, bill.typRechNr.ToLower())
-                                        ' Überprüfung - Zahlungen aus Transferleistungen buchen - testen!
-                                        If calcBase.bookingJN Then
-                                            Me.saveTempBuchungen(dbCalc, rBill2, sRechNr, eModify.nichts, Me.rowKlient(dbCalc).calcRun)
-                                        End If
+
+                                        listIDCalculated.Add(IDBill)
+                                        listIDDoStorno.Add(rBill2)
                                     End If
 
-                                    listIDCalculated.Add(IDBill)
-                                    listIDDoStorno.Add(rBill2)
-                                End If
+                                Case "fsw"
 
-                            Case "fsw"
+                                    'Bereits übertragen = not ok
+                                    'freigegeben = ok
+                                    Dim a As New PMDS.db.Entities.Abteilung
+                                    listIDFSW.Add(IDBill)
 
-                                'Bereits übertragen = not ok
-                                'freigegeben = ok
-                                Dim a As New PMDS.db.Entities.Abteilung
-                                listIDFSW.Add(IDBill)
-
-                            Case "s"
-                                If rBill2.Freigegeben Then
-                                    If rBill2.Typ = eBillTyp.Rechnung Or eBillTyp.FreieRechnung Or sr Then
-                                        Dim IDBillGeneratedBack As String = ""
-                                        Me.doStornoBill(rBill2, rHeader.ID, sr, editor, datStornodatum, IDBillGeneratedBack, db, dbCalcFoundNew)
-                                        If sr And bDateModified Then
-                                            Dim rBillBack As dbPMDS.billsRow = Me.sql.readBill(IDBillGeneratedBack)
-                                            Me.modifyBill(rBillBack, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc, bill.typRechNr, False, dRechDatumTmp.Date, True)
-                                            'Dim rBillEFUpdate As PMDS.db.Entities.bills = (From o In db.bills Where o.ID = rBill2.ID).FirstOrDefault()
-                                            'rBillEFUpdate.RechDatum = dRechDatumTmp.Date
-                                            'db.SaveChanges()
+                                Case "s"
+                                    If rBill2.Freigegeben Then
+                                        If rBill2.Typ = eBillTyp.Rechnung Or eBillTyp.FreieRechnung Or sr Then
+                                            Dim IDBillGeneratedBack As String = ""
+                                            Me.doStornoBill(rBill2, rHeader.ID, sr, editor, datStornodatum, IDBillGeneratedBack, db, dbCalcFoundNew)
+                                            If sr And bDateModified Then
+                                                Dim rBillBack As dbPMDS.billsRow = Me.sql.readBill(IDBillGeneratedBack)
+                                                Me.modifyBill(rBillBack, eModify.rechDatum, "[RechDatum]", "", True, editor, dbCalc, bill.typRechNr, False, dRechDatumTmp.Date, True)
+                                                'Dim rBillEFUpdate As PMDS.db.Entities.bills = (From o In db.bills Where o.ID = rBill2.ID).FirstOrDefault()
+                                                'rBillEFUpdate.RechDatum = dRechDatumTmp.Date
+                                                'db.SaveChanges()
+                                            End If
+                                        Else
+                                            Me.modifyBill(rBill2, eModify.field, "[RechTitel]", "Storno zu", True, editor, dbCalc, bill.typRechNr)
+                                            Me.sql.stornieren(rBill2.ID)
+                                            If calcBase.bookingJN And Not srJN Then
+                                                Me.saveTempBuchungen(dbCalc, rBill2, rBill2.RechNr, eModify.negativ, If(Not sr, Me.rowKlient(dbCalc).calcRun, eCalcRun.month))
+                                            End If
                                         End If
-                                    Else
-                                        Me.modifyBill(rBill2, eModify.field, "[RechTitel]", "Storno zu", True, editor, dbCalc, bill.typRechNr)
-                                        Me.sql.stornieren(rBill2.ID)
-                                        If calcBase.bookingJN And Not srJN Then
-                                            Me.saveTempBuchungen(dbCalc, rBill2, rBill2.RechNr, eModify.negativ, If(Not sr, Me.rowKlient(dbCalc).calcRun, eCalcRun.month))
-                                        End If
+                                        listIDCalculated.Add(IDBill)
                                     End If
-                                    listIDCalculated.Add(IDBill)
-                                End If
-                        End Select
+                            End Select
+                        End Using
                     End If
                 Next
             End Using
@@ -1410,14 +1409,25 @@ Public Class doBill
                     End If
                     Return sRechNr
 
+                Case eModify.rechNrKopie
+                    Me.doBookmarks.setBookmark(fld, "RechnungsNr: " + TypRechNr, editor)
+                    r.Rechnung = Me.doEditor.getText(TXTextControl.StreamType.RichTextFormat, editor)
+                    If saveToDB Then
+                        Me.sql.saveFreigabe(r.ID, TypRechNr, r.Rechnung)
+                    End If
+                    Return TypRechNr
+
                 Case eModify.stornoRech
                     Dim datRechTmp As New Date(Now.Year, rMonat.RechDatum.Month, rMonat.RechDatum.Day, 0, 0, 0)
                     Dim sStornoRechNr As String = Me.getRechNr(r, typ, datRechTmp.Date, TypRechNr)
                     Me.doBookmarks.setBookmark(fld, "StornoNr: " + sStornoRechNr, editor)
                     r.Rechnung = Me.doEditor.getText(TXTextControl.StreamType.RichTextFormat, editor)
                     If saveToDB Then Me.sql.saveFreigabe(r.ID, r.RechNr, r.Rechnung)
-                    dbBill.saveStornoRechNr(r.ID, Me.dbBill.getDbBill(r.dbBill), sStornoRechNr)
-                    Return sStornoRechNr
+
+                    Using Bill As dbBill = Me.dbBill.getDbBill(r.dbBill)
+                        dbBill.saveStornoRechNr(r.ID, Bill, sStornoRechNr)
+                        Return sStornoRechNr
+                    End Using
 
                 Case eModify.rechDatum
                     Me.doBookmarks.setBookmark(fld, rechDat.Value.ToString("dd.MM.yyyy"), editor)

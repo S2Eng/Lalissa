@@ -38,12 +38,12 @@ namespace PMDS.Calc.UI.Admin
         private QS2.Desktop.ControlManagment.BaseLabel lblLeistungskatalogGruppe;
 		private EnumOptionSet optionsGruppe;
         private ErrorProvider errorProvider1;
-        private ucButton btnAdd;
         private ucButton btnDel;
-        private ucButton btnAddPrice;
         private GUI.BaseControls.ucKlinikDropDown ucKlinikDropDown1;
 		private IContainer components;
         private QS2.Desktop.ControlManagment.BaseGrid dgMain2;
+        private QS2.Desktop.ControlManagment.BaseButton btnAddPriceNew;
+        private QS2.Desktop.ControlManagment.BaseButton btnAddNew;
         public bool isLoaded = false;
 
 
@@ -68,6 +68,10 @@ namespace PMDS.Calc.UI.Admin
 
             this.ucKlinikDropDown1.initControl();
             this.ucKlinikDropDown1.loadComboAllKliniken();
+
+            this.btnAddNew.Appearance.Image = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.PMDS_Abrechnung.ico_Leistungskatalog, 32, 32);
+            this.btnAddPriceNew.Appearance.Image = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.PMDS_Abrechnung.ico_Rechnung, 32, 32);
+
             RefreshControl();
 
             this.isLoaded = true;
@@ -192,7 +196,7 @@ namespace PMDS.Calc.UI.Admin
 
         public void RefreshControl()
         {
-            if (DesignMode || !ENV.AppRunning)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
 
             this.arrToDelete.Clear();
@@ -394,8 +398,6 @@ namespace PMDS.Calc.UI.Admin
 		{
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucLeistungskatalog));
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Leistungskatalog", -1);
@@ -434,16 +436,18 @@ namespace PMDS.Calc.UI.Admin
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.dsLeistungskatalog1 = new PMDS.Abrechnung.Global.dsLeistungskatalog();
             this.lblLeistungskatalog = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblLeistungskatalogGruppe = new QS2.Desktop.ControlManagment.BaseLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnDel = new PMDS.GUI.ucButton(this.components);
-            this.btnAdd = new PMDS.GUI.ucButton(this.components);
-            this.btnAddPrice = new PMDS.GUI.ucButton(this.components);
             this.ucKlinikDropDown1 = new PMDS.GUI.BaseControls.ucKlinikDropDown();
             this.dgMain2 = new QS2.Desktop.ControlManagment.BaseGrid();
             this.optionsGruppe = new PMDS.Calc.UI.Admin.EnumOptionSet(this.components);
+            this.btnAddNew = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnAddPriceNew = new QS2.Desktop.ControlManagment.BaseButton();
             ((System.ComponentModel.ISupportInitialize)(this.dsLeistungskatalog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMain2)).BeginInit();
@@ -478,7 +482,6 @@ namespace PMDS.Calc.UI.Admin
             // 
             // btnDel
             // 
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             appearance3.BackColor = System.Drawing.Color.Transparent;
             appearance3.Image = ((object)(resources.GetObject("appearance3.Image")));
             appearance3.ImageHAlign = Infragistics.Win.HAlign.Right;
@@ -490,63 +493,15 @@ namespace PMDS.Calc.UI.Admin
             this.btnDel.DoOnClick = true;
             this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDel.IsStandardControl = true;
-            this.btnDel.Location = new System.Drawing.Point(519, 97);
+            this.btnDel.Location = new System.Drawing.Point(645, 97);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(154, 24);
+            this.btnDel.Size = new System.Drawing.Size(115, 24);
             this.btnDel.TabIndex = 9;
             this.btnDel.TabStop = false;
             this.btnDel.Text = "Entfernen";
             this.btnDel.TYPE = PMDS.GUI.ucButton.ButtonType.Sub;
             this.btnDel.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance2.TextVAlignAsString = "Middle";
-            this.btnAdd.Appearance = appearance2;
-            this.btnAdd.AutoWorkLayout = false;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAdd.DoOnClick = true;
-            this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
-            this.btnAdd.IsStandardControl = true;
-            this.btnAdd.Location = new System.Drawing.Point(219, 97);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(150, 24);
-            this.btnAdd.TabIndex = 10;
-            this.btnAdd.TabStop = false;
-            this.btnAdd.Text = "Leistung hinzufügen";
-            this.btnAdd.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
-            this.btnAdd.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnAddPrice
-            // 
-            this.btnAddPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance1.BackColor = System.Drawing.Color.Transparent;
-            appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            appearance1.TextVAlignAsString = "Middle";
-            this.btnAddPrice.Appearance = appearance1;
-            this.btnAddPrice.AutoWorkLayout = false;
-            this.btnAddPrice.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnAddPrice.DoOnClick = true;
-            this.btnAddPrice.ImageSize = new System.Drawing.Size(12, 12);
-            this.btnAddPrice.IsStandardControl = true;
-            this.btnAddPrice.Location = new System.Drawing.Point(370, 97);
-            this.btnAddPrice.Name = "btnAddPrice";
-            this.btnAddPrice.Size = new System.Drawing.Size(148, 24);
-            this.btnAddPrice.TabIndex = 11;
-            this.btnAddPrice.TabStop = false;
-            this.btnAddPrice.Text = "Preis hinzufügen";
-            this.btnAddPrice.TYPE = PMDS.GUI.ucButton.ButtonType.Add;
-            this.btnAddPrice.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
-            this.btnAddPrice.Click += new System.EventHandler(this.btnAddPrice_Click);
             // 
             // ucKlinikDropDown1
             // 
@@ -718,7 +673,7 @@ namespace PMDS.Calc.UI.Admin
             this.dgMain2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.dgMain2.Location = new System.Drawing.Point(13, 123);
             this.dgMain2.Name = "dgMain2";
-            this.dgMain2.Size = new System.Drawing.Size(659, 327);
+            this.dgMain2.Size = new System.Drawing.Size(1012, 327);
             this.dgMain2.TabIndex = 164;
             this.dgMain2.Text = "ultraGrid1";
             this.dgMain2.AfterRowActivate += new System.EventHandler(this.dgMain2_AfterRowActivate);
@@ -742,20 +697,46 @@ namespace PMDS.Calc.UI.Admin
             this.optionsGruppe.TabIndex = 4;
             this.optionsGruppe.ValueChanged += new System.EventHandler(this.optionsGruppe_ValueChanged);
             // 
+            // btnAddNew
+            // 
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnAddNew.Appearance = appearance2;
+            this.btnAddNew.AutoWorkLayout = false;
+            this.btnAddNew.IsStandardControl = false;
+            this.btnAddNew.Location = new System.Drawing.Point(389, 97);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(122, 23);
+            this.btnAddNew.TabIndex = 165;
+            this.btnAddNew.Text = "Leistung hinzufügen";
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnAddPriceNew
+            // 
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
+            this.btnAddPriceNew.Appearance = appearance1;
+            this.btnAddPriceNew.AutoWorkLayout = false;
+            this.btnAddPriceNew.IsStandardControl = false;
+            this.btnAddPriceNew.Location = new System.Drawing.Point(517, 97);
+            this.btnAddPriceNew.Name = "btnAddPriceNew";
+            this.btnAddPriceNew.Size = new System.Drawing.Size(122, 23);
+            this.btnAddPriceNew.TabIndex = 166;
+            this.btnAddPriceNew.Text = "Preis hinzufügen";
+            this.btnAddPriceNew.Click += new System.EventHandler(this.btnAddPriceNew_Click);
+            // 
             // ucLeistungskatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnAddPriceNew);
+            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.lblLeistungskatalog);
             this.Controls.Add(this.ucKlinikDropDown1);
-            this.Controls.Add(this.btnAddPrice);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.optionsGruppe);
             this.Controls.Add(this.lblLeistungskatalogGruppe);
             this.Controls.Add(this.dgMain2);
             this.Name = "ucLeistungskatalog";
-            this.Size = new System.Drawing.Size(681, 459);
+            this.Size = new System.Drawing.Size(1034, 459);
             this.Load += new System.EventHandler(this.ucLeistungskatalog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsLeistungskatalog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -931,12 +912,12 @@ namespace PMDS.Calc.UI.Admin
 		{
             if (dgMain2.ActiveRow == null)
 			{
-			    btnAddPrice.Enabled = false;
+			    btnAddPriceNew.Enabled = false;
 				btnDel.Enabled = false;
 			}
 			else
 			{
-			    btnAddPrice.Enabled = true;
+			    btnAddPriceNew.Enabled = true;
 				btnDel.Enabled = true;
 			}
 		}
@@ -1046,5 +1027,35 @@ namespace PMDS.Calc.UI.Admin
             //}
         }
 
-	}
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            _leistungskatalog.NewLeistungskatalog(dsLeistungskatalog1.Leistungskatalog, optionsGruppe.Option);
+
+            // scf: wenn man auf einem Preis steht, funktioniert die Funktion "SelectFieldInLastRowForEdit" nicht!
+            if (dgMain2.ActiveRow != null && dgMain2.ActiveRow.ParentRow != null)
+            {
+                dgMain2.ActiveRow = dgMain2.ActiveRow.ParentRow;
+            }
+
+            PMDS.GUI.UltraGridTools.SelectFieldInLastRowForEdit(dgMain2, "Bezeichnung");
+            ExpandActiveRow();
+            PMDS.GUI.UltraGridTools.SelectFieldInLastRowForEdit(dgMain2, "Bezeichnung"); // weil nach Expand der focus weg ist
+            _LeistungChenged = true;
+
+            if (ValueChanged != null)
+                ValueChanged(this, e);
+        }
+
+        private void btnAddPriceNew_Click(object sender, EventArgs e)
+        {
+            if (dgMain2.ActiveRow == null)
+                return;
+            _leistungskatalog.NewLeistungsgruppeGueltig(dsLeistungskatalog1, ACTIVE_ID);
+            ExpandActiveRow();
+
+            _LeistungChenged = true;
+            if (ValueChanged != null)
+                ValueChanged(this, e);
+        }
+    }
 }

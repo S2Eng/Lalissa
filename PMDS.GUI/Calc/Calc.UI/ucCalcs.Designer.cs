@@ -40,7 +40,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCalcs));
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Freigegebene Rechnungen anzeigen", Infragistics.Win.ToolTipImage.Default, "Freigegeben", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Freigegebene Rechnungen anzeigen", Infragistics.Win.ToolTipImage.Default, "Freigegeben", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Vorschau Rechnungen", Infragistics.Win.ToolTipImage.Default, "Vorschau", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
@@ -51,10 +51,13 @@
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW erstellen (zum Erstellen und Senden Umschaltaste hal" +
-        "ten und Klicken)", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
+        "ten und Klicken.", Infragistics.Win.ToolTipImage.Info, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Status Zahlungsaufforderung für FSW zurücksetzen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo4 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Rechnung ausdrucken. Für Kopien freigegebener Rechungen eine Steuerungstaste halt" +
+        "en und Klicken.", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("bills", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -111,7 +114,6 @@
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             this.panelTopSr = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelSucheAbrech = new QS2.Desktop.ControlManagment.BasePanel();
             this.ucKlinikDropDown1 = new PMDS.GUI.BaseControls.ucKlinikDropDown();
@@ -151,6 +153,7 @@
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.btnFSW = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnFSWReset = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnPrint = new QS2.Desktop.ControlManagment.BaseButton();
             this.editor = new TXTextControl.TextControl();
             this.panelAll = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelGrid = new QS2.Desktop.ControlManagment.BasePanel();
@@ -173,7 +176,6 @@
             this.panelPrint = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnRollungSperreLöschen = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnExportAsPdf = new QS2.Desktop.ControlManagment.BaseButton();
-            this.btnPrint = new QS2.Desktop.ControlManagment.BaseButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.erlöseVerbuchenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ausgewählteRechnungenAlsEinzahlungBuchenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -551,9 +553,9 @@
             this.btnFreigeben.TabIndex = 20;
             this.btnFreigeben.Tag = "2";
             this.btnFreigeben.Text = "Freigegeben";
-            ultraToolTipInfo4.ToolTipText = "Freigegebene Rechnungen anzeigen";
-            ultraToolTipInfo4.ToolTipTitle = "Freigegeben";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnFreigeben, ultraToolTipInfo4);
+            ultraToolTipInfo5.ToolTipText = "Freigegebene Rechnungen anzeigen";
+            ultraToolTipInfo5.ToolTipTitle = "Freigegeben";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnFreigeben, ultraToolTipInfo5);
             this.btnFreigeben.UseAppStyling = false;
             this.btnFreigeben.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnFreigeben.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
@@ -728,8 +730,8 @@
             this.btnFSW.TabIndex = 100;
             this.btnFSW.Text = "ZAUF ( FSW)";
             ultraToolTipInfo2.ToolTipImage = Infragistics.Win.ToolTipImage.Info;
-            ultraToolTipInfo2.ToolTipText = "Zahlungsaufforderung für FSW erstellen (zum Erstellen und Senden Umschaltaste hal" +
-    "ten und Klicken)";
+            ultraToolTipInfo2.ToolTipText = "Zahlungsaufforderung für FSW erstellen. Zum Erstellen und Senden Umschaltaste hal" +
+    "ten und Klicken.";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnFSW, ultraToolTipInfo2);
             this.btnFSW.Click += new System.EventHandler(this.btnFSW_Click);
             // 
@@ -749,6 +751,24 @@
             this.ultraToolTipManager1.SetUltraToolTip(this.btnFSWReset, ultraToolTipInfo1);
             this.btnFSWReset.Click += new System.EventHandler(this.btnFSWReset_Click);
             // 
+            // btnPrint
+            // 
+            appearance36.Image = ((object)(resources.GetObject("appearance36.Image")));
+            appearance36.ImageHAlign = Infragistics.Win.HAlign.Right;
+            appearance36.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnPrint.Appearance = appearance36;
+            this.btnPrint.AutoWorkLayout = false;
+            this.btnPrint.IsStandardControl = false;
+            this.btnPrint.Location = new System.Drawing.Point(27, 5);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(132, 22);
+            this.btnPrint.TabIndex = 101;
+            this.btnPrint.Text = "Rechnungen öffnen";
+            ultraToolTipInfo4.ToolTipText = "Rechnung ausdrucken. Für Kopien freigegebener Rechungen eine Steuerungstaste halt" +
+    "en und Klicken.";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnPrint, ultraToolTipInfo4);
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // editor
             // 
             this.editor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -761,6 +781,7 @@
             this.editor.PageMargins.Top = 79.03D;
             this.editor.Size = new System.Drawing.Size(71, 48);
             this.editor.TabIndex = 100;
+            this.editor.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editor.UserNames = null;
             this.editor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textControl1_KeyPress);
             // 
@@ -804,7 +825,7 @@
             ultraGridColumn23.Hidden = true;
             ultraGridColumn24.Header.Editor = null;
             ultraGridColumn24.Header.VisiblePosition = 3;
-            ultraGridColumn24.Width = 91;
+            ultraGridColumn24.Width = 154;
             ultraGridColumn25.Format = "yyyy-MM-dd";
             ultraGridColumn25.Header.Caption = "Monat/Jahr";
             ultraGridColumn25.Header.Editor = null;
@@ -813,11 +834,11 @@
             ultraGridColumn26.Header.Caption = "Klient";
             ultraGridColumn26.Header.Editor = null;
             ultraGridColumn26.Header.VisiblePosition = 4;
-            ultraGridColumn26.Width = 107;
+            ultraGridColumn26.Width = 144;
             ultraGridColumn27.Header.Caption = "Kostenträger";
             ultraGridColumn27.Header.Editor = null;
             ultraGridColumn27.Header.VisiblePosition = 5;
-            ultraGridColumn27.Width = 132;
+            ultraGridColumn27.Width = 199;
             ultraGridColumn28.Header.Editor = null;
             ultraGridColumn28.Header.VisiblePosition = 12;
             ultraGridColumn28.Hidden = true;
@@ -899,7 +920,7 @@
             ultraGridColumn42.Header.Caption = "Storno Nr";
             ultraGridColumn42.Header.Editor = null;
             ultraGridColumn42.Header.VisiblePosition = 2;
-            ultraGridColumn42.Width = 85;
+            ultraGridColumn42.Width = 144;
             ultraGridColumn5.Header.Editor = null;
             ultraGridColumn5.Header.VisiblePosition = 25;
             ultraGridBand1.Columns.AddRange(new object[] {
@@ -1025,6 +1046,7 @@
             this.editorPrecalc.PageMargins.Top = 79.03D;
             this.editorPrecalc.Size = new System.Drawing.Size(71, 48);
             this.editorPrecalc.TabIndex = 102;
+            this.editorPrecalc.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.editorPrecalc.UserNames = null;
             // 
             // panelTop2
@@ -1219,21 +1241,6 @@
             this.btnExportAsPdf.TabIndex = 164;
             this.btnExportAsPdf.Tag = "0";
             this.btnExportAsPdf.Click += new System.EventHandler(this.btnExportAsPdf_Click);
-            // 
-            // btnPrint
-            // 
-            appearance36.Image = ((object)(resources.GetObject("appearance36.Image")));
-            appearance36.ImageHAlign = Infragistics.Win.HAlign.Right;
-            appearance36.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnPrint.Appearance = appearance36;
-            this.btnPrint.AutoWorkLayout = false;
-            this.btnPrint.IsStandardControl = false;
-            this.btnPrint.Location = new System.Drawing.Point(27, 5);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(132, 22);
-            this.btnPrint.TabIndex = 101;
-            this.btnPrint.Text = "Rechnungen öffnen";
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // contextMenuStrip1
             // 

@@ -392,6 +392,7 @@ Public Class print
             calcBase.doExept(exept)
         End Try
     End Function
+
     Public Sub printSites(ByVal listSites As System.Collections.Generic.List(Of dbPMDS.billsRow), ByVal editor As TXTextControl.TextControl,
                           ByVal title As String, ByVal parent As Object, ByVal selRow As Object, ByVal typ As eModify,
                           Optional editorTmp As TXTextControl.TextControl = Nothing, Optional IDBillStr As String = "", Optional IsDepot As Boolean = False)
@@ -400,29 +401,42 @@ Public Class print
             frmPrint.Text = "PMDS - Text wird geladen ..."
             Dim anz As Integer = 1
             For Each rBill As dbPMDS.billsRow In listSites
-                Me.doEditor.showText(rBill.Rechnung, TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)
 
-                Select Case typ
-                    Case eModify.openBillRechStor
-                        Me.doBookmarks.setBookmark("[StornoNr]", "", editor)
-                        Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
-                    Case eModify.openBillRechStorStorno
-                        Me.doBookmarks.setBookmark("[RechNr]", "", editor)
-                        Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
-                        Me.doBookmarks.setBookmark("[ZahlBetragBez]", "Stornobetrag", editor)
-                End Select
+                Dim rHeader As dbPMDS.billHeaderRow = Me.getHeader(rBill.IDAbrechnung, rBill.IDKlinik)
 
-                If anz > 1 Then
-                    Me.doEditor.insertPagebreak(frmPrint.ucprint.editor.textControl1)
-                Else
+                Using dbCalc As dbCalc = Me.getDBCalc(rHeader.dbCalc)
+                    Dim cBill As New doBill
 
-                End If
-                Me.doEditor.appendText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), frmPrint.ucprint.editor.textControl1)
-                anz += 1
+                    If typ = eModify.printRechnungsKopie And rBill.Freigegeben Then
+                        cBill.modifyBill(rBill, eModify.rechNrKopie, "[RechNr]", "", False, editor, dbCalc, rBill.RechNr + " - Kopie")
+                    End If
+
+                    Me.doEditor.showText(rBill.Rechnung, TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)
+
+                    Select Case typ
+                        Case eModify.openBillRechStor
+                            Me.doBookmarks.setBookmark("[StornoNr]", "", editor)
+                            Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
+                        Case eModify.openBillRechStorStorno
+                            Me.doBookmarks.setBookmark("[RechNr]", "", editor)
+                            Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
+                            Me.doBookmarks.setBookmark("[ZahlBetragBez]", "Stornobetrag", editor)
+                    End Select
+
+                    If anz > 1 Then
+                        Me.doEditor.insertPagebreak(frmPrint.ucprint.editor.textControl1)
+                    End If
+
+                    Me.doEditor.appendText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), frmPrint.ucprint.editor.textControl1)
+                    anz += 1
+                    If typ = eModify.printRechnungsKopie And rBill.Freigegeben Then
+                        cBill.modifyBill(rBill, eModify.rechNrKopie, "[RechNr]", "", False, editor, dbCalc, rBill.RechNr)    'Rechnungsnummer auf Original zurücksetzen
+                    End If
+                End Using
                 Application.DoEvents()
             Next
 
-            If typ <> eModify.nichts Then
+            If typ <> eModify.nichts And typ <> eModify.printRechnungsKopie Then
                 Me.doAutoSiteNummbering(frmPrint.ucprint.editor.textControl1)
             End If
             If IsDepot Then

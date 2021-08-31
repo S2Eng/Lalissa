@@ -66,6 +66,8 @@ Public Enum eModify
     negativ = 2
     stornoRech = 3
     rechDatum = 4
+    printRechnungsKopie = 5
+    rechNrKopie = 6
 
     openBillRechStor = 20
     openBillRechStorStorno = 21

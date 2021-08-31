@@ -553,8 +553,15 @@ namespace PMDS.Calc.UI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
-       
+
+            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftCtrl) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightCtrl))
+            {
+                this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.printRechnungsKopie, true, null, null, false);
+            }
+            else
+            {
+                this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
+            }
         }
 
         private void btnRechEinAus_Click(object sender, EventArgs e)
