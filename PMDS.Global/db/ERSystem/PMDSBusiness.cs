@@ -42,24 +42,24 @@ namespace PMDS.DB
         public class retBusiness
         {
             public bool OK = false;
-            public int countTermineFound = 0;
-            public PMDS.Global.db.ERSystem.dsTermine.vInterventionenDataTable tInerventionen = null;
-            public PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow rvIntervention = null;
+            public int countTermineFound;
+            public PMDS.Global.db.ERSystem.dsTermine.vInterventionenDataTable tInerventionen;
+            public PMDS.Global.db.ERSystem.dsTermine.vInterventionenRow rvIntervention;
         }
 
         public static System.Collections.Generic.List<Guid> lstBerufsgruppenUserCanSign = new List<Guid>();
 
-        public PMDS.Global.db.ERSystem.sqlTermine sqlTermine1 = null;
+        public PMDS.Global.db.ERSystem.sqlTermine sqlTermine1;
         public string sqlvInterventionen = "";
         public string sqlvÜbergabe = "";
 
-        public static Guid IDVOStatusVorgemerkt = new System.Guid("00000000-0000-0000-0015-000000000001");
-        public static Guid IDVOStatusBestellt = new System.Guid("00000000-0000-0000-0015-000000000002");
-        public static Guid IDVOStatusGeliefert = new System.Guid("00000000-0000-0000-0015-000000000003");
-        public static Guid IDVOStatusStorniert = new System.Guid("00000000-0000-0000-0015-000000000004");
+        public static Guid IDVOStatusVorgemerkt { get; set; } = new System.Guid("00000000-0000-0000-0015-000000000001");
+        public static Guid IDVOStatusBestellt { get; set; } = new System.Guid("00000000-0000-0000-0015-000000000002");
+        public static Guid IDVOStatusGeliefert { get; set; } = new System.Guid("00000000-0000-0000-0015-000000000003");
+        public static Guid IDVOStatusStorniert { get; set; } = new System.Guid("00000000-0000-0000-0015-000000000004");
 
-        public static int _iFctCalled = 0;
-        public bool isinitialized = false;
+        public static int iFctCalled { get; set; }
+        public bool isinitialized { get; set; }
 
 
         public class cMedikament 
@@ -2033,10 +2033,10 @@ namespace PMDS.DB
                     {
 
                         IQueryable<AuswahlListe> Auswahlliste = db.AuswahlListe.Where(al => al.ID == IDBerufsgruppe);
-                        if (Auswahlliste.Count() > 0 )
+                        if (Auswahlliste.Any())
                         {
                             PMDS.db.Entities.AuswahlListe alEintrag = Auswahlliste.First();
-                            strCC += strCC == "" ? alEintrag.Bezeichnung : ", " + alEintrag.Bezeichnung;
+                            strCC += strCC.Length == 0 ? alEintrag.Bezeichnung : ", " + alEintrag.Bezeichnung;
                         }
 
                         PMDS.db.Entities.PflegeEintrag rNewPEDekurs = new db.Entities.PflegeEintrag();
@@ -2056,7 +2056,7 @@ namespace PMDS.DB
                         rNewPEDekurs.IDPflegePlan = peOriginal.IDPflegePlan;
                         rNewPEDekurs.IDEintrag = peOriginal.IDEintrag;
                         rNewPEDekurs.Text = rNewPEDekurs.Text;
-                        if (strZusatzwerte != "")
+                        if (strZusatzwerte.Length > 0)
                             rNewPEDekurs.Text += "\r\n" + strZusatzwerte;
 
                         if (IsNotfall)
@@ -2089,7 +2089,7 @@ namespace PMDS.DB
                 }
 
                 //Original-Pflegeeintrag update (Liste der CC-Einträge hinzufügen)
-                if (strCC != "")
+                if (strCC.Length > 0)
                     peOriginal.Text = peOriginal.Text + "\r\n" + "Wichtig für " + strCC;
 
                 //if (doSave)
@@ -2132,7 +2132,7 @@ namespace PMDS.DB
                         IQueryable<Aufenthalt> tAufenthalt = db.Aufenthalt.Where(pe => pe.ID == rNewPE.IDAufenthalt);
                         Aufenthalt rAufenthalt = tAufenthalt.First();
 
-                        if (SelectedNodes.Txt.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(SelectedNodes.Txt))
                         {
                             this.addTxtToPE(rNewPE, null, SelectedNodes, db, TextControl1, PflegeplanTextOrig);
                         }
@@ -8418,7 +8418,7 @@ namespace PMDS.DB
                     if (rActAufenthalt2.IDUrlaub != null)
                     {
                         IQueryable<PMDS.db.Entities.UrlaubVerlauf> tUrlaubVerlauf = db.UrlaubVerlauf.Where(o => o.IDAufenthalt == IDAufenthalt && o.EndeDatum == null);
-                        if (tUrlaubVerlauf.Count() == 0)
+                        if (!tUrlaubVerlauf.Any())
                         {
                             rActAufenthalt2.IDUrlaub = null;
                             db.SaveChanges();
@@ -11610,24 +11610,24 @@ namespace PMDS.DB
             }
             catch (Exception ex)
             {
-                if (PMDSBusiness._iFctCalled <= 5)
+                if (PMDSBusiness.iFctCalled <= 5)
                 {
                     try
                     {
-                        PMDSBusiness._iFctCalled += 1;
-                        if (PMDSBusiness._iFctCalled >= 5)
+                        PMDSBusiness.iFctCalled += 1;
+                        if (PMDSBusiness.iFctCalled >= 5)
                         {
-                            Exception exTmp2 = new Exception("PMDSBusiness.getDBContext: " + PMDSBusiness._iFctCalled.ToString() + "th retry" + "\r\n" + sInfoExcept + "\r\n");
+                            Exception exTmp2 = new Exception("PMDSBusiness.getDBContext: " + PMDSBusiness.iFctCalled.ToString() + "th retry" + "\r\n" + sInfoExcept + "\r\n");
                             ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
                         }
                         qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                         PMDS.db.Entities.ERModellPMDSEntities dbContext = PMDSBusiness.getDBContext();
-                        PMDSBusiness._iFctCalled = 0;
+                        PMDSBusiness.iFctCalled = 0;
                         return dbContext;
                     }
                     catch (Exception ex2)
                     {
-                        throw new Exception("PMDSBusiness.getDBContext: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
+                        throw new Exception("PMDSBusiness.getDBContext: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex2.ToString());
                     }
                 }
                 else

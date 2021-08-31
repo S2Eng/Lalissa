@@ -609,7 +609,7 @@ namespace PMDS.GUI.Medikament
                         tBestellungMedikamente.TableName = "Tabelle1";
                         tBestellungMedikamente.WriteXml(System.IO.Path.Combine(ENV.ReportPath, "BestellungMedikamenten.xml"), XmlWriteMode.WriteSchema, true);
                     }
-
+                    
                     frmPrintPreview frmPrintPreview1 = null;
                     frmPrintPreview.PrintBestellungMedikamente(tBestellungMedikamente,
                                                                 (Nullable<DateTime>)this.datRezeptAngefordertFrom.Value, (Nullable<DateTime>)this.datRezeptAngefordertTo.Value,

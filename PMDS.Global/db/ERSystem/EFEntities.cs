@@ -5639,71 +5639,71 @@ namespace PMDS.Global.db.ERSystem
                             IsNullable = true;
                         }
 
-                        if (infoCol.PrimitiveType.ToString().EndsWith("varchar", StringComparison.CurrentCultureIgnoreCase))
+                        if (infoCol.PrimitiveType.ToString().EndsWith("varchar", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().EndsWith("varchar(max)", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("varchar(max)", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().EndsWith("nchar", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("nchar", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().EndsWith("char", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("char", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().EndsWith("nvarchar(max)", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("nvarchar(max)", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.PrimitiveType.ToString().EndsWith("text", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.PrimitiveType.ToString().EndsWith("text", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tString;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("bit", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("bit", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tBoolean;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("int", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("int", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tInteger;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("float", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("float", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tFloat;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("numeric", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("numeric", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tNumeric;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("decimal", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("decimal", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDecimal1;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("datetime", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("datetime", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDateTime;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("date", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("date", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tDateTime;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("uniqueidentifier", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("uniqueidentifier", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tGuid;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("image"))
+                        else if (infoCol.TypeName.Trim().EndsWith("image", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tImage;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("varbinary(max)", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("varbinary(max)", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tBinary;
                         }
-                        else if (infoCol.TypeName.Trim().EndsWith("xml", StringComparison.CurrentCultureIgnoreCase))
+                        else if (infoCol.TypeName.Trim().EndsWith("xml", StringComparison.OrdinalIgnoreCase))
                         {
                             TypeCol = eTypeCol.tXml;
                         }
@@ -5734,8 +5734,8 @@ namespace PMDS.Global.db.ERSystem
                 PMDS.Global.AppException.throwException(FctName + " " + ex.ToString(), FctNr);
             }
         }
-        public void initEFTables(PMDS.db.Entities.ERModellPMDSEntities db,
-                                    bool checkEF)
+
+        public void initEFTables(PMDS.db.Entities.ERModellPMDSEntities db, bool checkEF)
         {
             string FctName = "EFEntities.initEFTables";
             int FctNr = 257000003;
