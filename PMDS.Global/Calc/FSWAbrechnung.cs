@@ -20,7 +20,7 @@ namespace PMDS.Global
         private static string DateFormat = "yyyy-MM-dd";
         private static string DateTimeFormat = "yyyyMMddHHmmss";
         private string eZAUFID = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff");
-        private string eZAUFIDBW = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff") + "_BW";
+        private string eZAUFIDBW = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff") + "BW";
 
         private string Msg = "";
 
@@ -227,14 +227,14 @@ namespace PMDS.Global
                                             if (bLZIsPflege)
                                                 Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * -1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
                                             else if (bLZIsBetreutesWohnen)
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * -1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl * -1, Math.Abs(Rechnungszeile.Netto / Rechnungszeile.Anzahl), Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
                                         }
                                         else
                                         {
                                             if (bLZIsPflege)
                                                 Invoice.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
                                             else if (bLZIsBetreutesWohnen)
-                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, Zeile, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
+                                                InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
                                         }
                                         lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
                                     }
@@ -280,7 +280,7 @@ namespace PMDS.Global
                             InvoiceBW.PayableAmount = InvoiceBW.TotalGrossAmount;
                             SteuernBW += InvoiceBW.Tax;
                             RechnungsbetragBW += InvoiceBW.PayableAmount;
-                            InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
+                            InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
                             TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
                         }
                     }
@@ -337,7 +337,7 @@ namespace PMDS.Global
                                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("System-Fehler beim Erstellen der Zahlungsaufforderung:" + glob.LastErrorText, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     return;
                                 }
-
+                                
                                 //Transaction -> XML
                                 if (!MakeXML(ref ListXMLInfos, out Msg))
                                 {

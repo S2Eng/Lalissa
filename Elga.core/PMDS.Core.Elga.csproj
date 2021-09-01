@@ -41,18 +41,6 @@
     <Reference Include="Infragistics4.Win.UltraWinEditors.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGrid.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v17.2, Version=17.2.20172.2006, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="MARC.Everest">
-      <HintPath>dlls\MARC.Everest.dll</HintPath>
-    </Reference>
-    <Reference Include="MARC.Everest.Formatters.XML.Datatypes.R1">
-      <HintPath>dlls\MARC.Everest.Formatters.XML.Datatypes.R1.dll</HintPath>
-    </Reference>
-    <Reference Include="MARC.Everest.Formatters.XML.ITS1">
-      <HintPath>dlls\MARC.Everest.Formatters.XML.ITS1.dll</HintPath>
-    </Reference>
-    <Reference Include="MARC.Everest.RMIM.UV.CDAr2">
-      <HintPath>dlls\MARC.Everest.RMIM.UV.CDAr2.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
