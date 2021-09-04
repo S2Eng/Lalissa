@@ -4320,6 +4320,7 @@ namespace PMDS.DB
                     rPflegePlan.EintragGruppe = aszmArgUI.EintragGruppe.ToString();
                     rPflegePlan.IDAufenthalt = IDAufenthalt;
                     rPflegePlan.IDBefund = null;
+                    rPflegePlan.PSEKlasse = "";
 
                 }
                 else if (ModeDb == cModeDb.Update)
@@ -4790,6 +4791,7 @@ namespace PMDS.DB
                 rPflegePlan.lstPDxBezeichnung = "";
                 rPflegePlan.IDBefund = IDBefund;
                 rPflegePlan.LogInNameFrei = ENV.LoginInNameFrei;
+                rPflegePlan.PSEKlasse = "";
 
                 db.PflegePlan.Add(rPflegePlan);
                 return rPflegePlan;
@@ -8186,6 +8188,7 @@ namespace PMDS.DB
                         newPflegeplan.AnmerkungRtf = rPflegePlanOrig.AnmerkungRtf;
                         newPflegeplan.IDBefund = rPflegePlanOrig.IDBefund;
                         newPflegeplan.LogInNameFrei = ENV.LoginInNameFrei;
+                        newPflegeplan.PSEKlasse = rPflegePlanOrig.PSEKlasse;
 
                         db.PflegePlan.Add(newPflegeplan);
                         db.SaveChanges();
@@ -10788,7 +10791,7 @@ namespace PMDS.DB
                     lPs.Add(rProt.IDGuid);
                 }
 
-                if (lPs.Count() > 0)
+                if (lPs.Count > 0)
                 {
                     foreach (var IDProt2 in lPs)
                     {
@@ -10878,22 +10881,22 @@ namespace PMDS.DB
         {
             try
             {
-                dsAsyncCommData dsAsyncCommData1 = new dsAsyncCommData();
-
-                System.IO.StringReader xmlStringReader = new System.IO.StringReader(db);
-                System.Xml.XmlTextReader xmlReader = new System.Xml.XmlTextReader(xmlStringReader);
-                dsAsyncCommData1.ReadXml(xmlReader);
-                xmlReader.Close();
-
-                dsAsyncCommData.DataGenericRow[] tDataGeneric = (dsAsyncCommData.DataGenericRow[])dsAsyncCommData1.DataGeneric.Select("", "");
-                if (tDataGeneric.Length != 1)
+                using (dsAsyncCommData dsAsyncCommData1 = new dsAsyncCommData())
                 {
-                    throw new Exception("contMessenger.loadTreeMessages: tDataGeneric.Length != 1 not allowed for IDProtocoll '" + IDProt.ToString() + "'!");
+                    System.IO.StringReader xmlStringReader = new System.IO.StringReader(db);
+                    System.Xml.XmlTextReader xmlReader = new System.Xml.XmlTextReader(xmlStringReader);
+                    dsAsyncCommData1.ReadXml(xmlReader);
+                    xmlReader.Close();
+
+                    dsAsyncCommData.DataGenericRow[] tDataGeneric = (dsAsyncCommData.DataGenericRow[])dsAsyncCommData1.DataGeneric.Select("", "");
+                    if (tDataGeneric.Length != 1)
+                    {
+                        throw new Exception("contMessenger.loadTreeMessages: tDataGeneric.Length != 1 not allowed for IDProtocoll '" + IDProt.ToString() + "'!");
+                    }
+
+                    rDataGeneric = tDataGeneric[0];
+                    tToUsers = (dsAsyncCommData.ToUsersRow[])dsAsyncCommData1.ToUsers.Select("", dsAsyncCommData1.ToUsers.UserColumn.ColumnName + " asc");
                 }
-
-                rDataGeneric = tDataGeneric[0];
-                tToUsers = (dsAsyncCommData.ToUsersRow[])dsAsyncCommData1.ToUsers.Select("", dsAsyncCommData1.ToUsers.UserColumn.ColumnName + " asc");
-
             }
             catch (Exception ex)
             {
@@ -10921,7 +10924,7 @@ namespace PMDS.DB
                                    where pe.ID != rPEOrig.ID && pe.IDGruppe == rPEOrig.IDGruppe
                                            select new { pe.ID, pe.IDEintrag });
 
-                    if (tPESameIDGruppe.Count() > 0)
+                    if (tPESameIDGruppe.Any())
                     {
                         foreach (var rPESameIDGruppe in tPESameIDGruppe)
                         {
@@ -11060,7 +11063,7 @@ namespace PMDS.DB
                     {
                         sInfoKopien += "      " + Berufsstand + "\r\n";
                     }
-                    if (sInfoKopien.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sInfoKopien))
                     {
                         sInfoKopien = QS2.Desktop.ControlManagment.ControlManagment.getRes("Liste Berufsgruppen aller Kopien:") + "\r\n" + sInfoKopien;
                     }
@@ -11107,7 +11110,7 @@ namespace PMDS.DB
                     {
                         if (rKost2.RowState == DataRowState.Added || rKost2.RowState == DataRowState.Modified)
                         {
-                            if (rKost2.FIBUKonto.Trim() == "")
+                            if (String.IsNullOrWhiteSpace(rKost2.FIBUKonto))
                             {
                                 msgTransReturn += QS2.Desktop.ControlManagment.ControlManagment.getRes("Keine FIBU-Angabe für Kostenträger {0} vorhanden");
                                 msgTransReturn = string.Format(msgTransReturn, rKost2.Name.Trim()) + "\r\n";
@@ -11123,7 +11126,7 @@ namespace PMDS.DB
                                                    NameKost = k.Name
                                                });
 
-                                if (tKostDB.Count() > 0)
+                                if (tKostDB.Any())
                                 {
                                     msgTransReturn += QS2.Desktop.ControlManagment.ControlManagment.getRes("FIBU {0} für Kostenträger {1} kommt in Datenbank mehrfach vor");
                                     msgTransReturn = string.Format(msgTransReturn, rKost2.FIBUKonto.Trim(), rKost2.Name.Trim()) + "\r\n";
@@ -11305,11 +11308,12 @@ namespace PMDS.DB
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("DeletePatient", RBU.DataBase.CONNECTIONSqlClient);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@IDPatient", IDPatient.ToString());
-                int iReturn = cmd.ExecuteNonQuery();
-
+                using (SqlCommand cmd = new SqlCommand("DeletePatient", RBU.DataBase.CONNECTIONSqlClient))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IDPatient", IDPatient.ToString());
+                    int iReturn = cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -11406,73 +11410,74 @@ namespace PMDS.DB
             {
                 DateTime dNow = DateTime.Now;
                 int iDekurse = 0;
-                PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext();
-                PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
-
-                PMDS.db.Entities.Aufenthalt rQuellAufenthalt = PMDSBusiness1.getAufenthalt(IDAufenthaltQuelle);
-                PMDS.db.Entities.Aufenthalt rZielAufenthalt = PMDSBusiness1.getAufenthalt(IDAufenthaltZiel);
-
-                System.Collections.Generic.List<PMDS.db.Entities.PflegeEintrag> lstPflegeEintrage = getPflegeEintraegeByAufenthalt(IDAufenthaltQuelle, PflegeEintragTyp.DEKURS, db);
-
-                foreach (PMDS.db.Entities.PflegeEintrag rPflegeEintrag in lstPflegeEintrage)
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
-                    //In Zielaufenthalt kopieren
-                    PMDS.db.Entities.PflegeEintrag rPflegeEintragCopy = InsertPflegeEintrag(db, dNow);
-                    rPflegeEintragCopy.AbgezeichnetAm = rPflegeEintrag.AbgezeichnetAm;
-                    rPflegeEintragCopy.AbgezeichnetIDBenutzer = rPflegeEintrag.AbgezeichnetIDBenutzer;
-                    rPflegeEintragCopy.AbgezeichnetJN = rPflegeEintrag.AbgezeichnetJN;
-                    rPflegeEintragCopy.AbzeichnenJN = rPflegeEintrag.AbzeichnenJN;
-                    rPflegeEintragCopy.CC = rPflegeEintrag.CC;
-                    rPflegeEintragCopy.DatumErstellt = rPflegeEintrag.DatumErstellt;
-                    rPflegeEintragCopy.Dekursherkunft = rPflegeEintrag.Dekursherkunft;
-                    rPflegeEintragCopy.DurchgefuehrtJN = rPflegeEintrag.DurchgefuehrtJN;
-                    rPflegeEintragCopy.EintragsTyp = rPflegeEintrag.EintragsTyp;
-                    rPflegeEintragCopy.HAGPflichtigJN = rPflegeEintrag.HAGPflichtigJN;
-                    rPflegeEintragCopy.IDAbteilung = rZielAufenthalt.IDAbteilung;
-                    rPflegeEintragCopy.IDAufenthalt = rZielAufenthalt.ID;
-                    rPflegeEintragCopy.IDBefund = rPflegeEintrag.IDBefund;
-                    rPflegeEintragCopy.IDBenutzer = rPflegeEintrag.IDBenutzer;
-                    rPflegeEintragCopy.IDBereich = rZielAufenthalt.IDBereich;
-                    rPflegeEintragCopy.IDBerufsstand = rPflegeEintrag.IDBerufsstand;
-                    rPflegeEintragCopy.IDDekurs = rPflegeEintrag.IDDekurs;
-                    rPflegeEintragCopy.IDEintrag = rPflegeEintrag.IDEintrag;
-                    rPflegeEintragCopy.IDEvaluierung = rPflegeEintrag.IDEvaluierung;
-                    rPflegeEintragCopy.IDExtern = rPflegeEintrag.IDExtern;
-                    rPflegeEintragCopy.IDPflegePlan = rPflegeEintrag.IDPflegePlan;
-                    rPflegeEintragCopy.IDPflegePlanBerufsstand = rPflegeEintrag.IDPflegePlanBerufsstand;
-                    rPflegeEintragCopy.IDPflegeplanH = null;
-                    rPflegeEintragCopy.IDSollberufsstand = rPflegeEintrag.IDSollberufsstand;
-                    rPflegeEintragCopy.IDWichtig = rPflegeEintrag.IDWichtig;
-                    rPflegeEintragCopy.IstDauer = rPflegeEintrag.IstDauer;
-                    rPflegeEintragCopy.PflegePlanDauer = rPflegeEintrag.PflegePlanDauer;
-                    rPflegeEintragCopy.PflegeplanText = rPflegeEintrag.PflegeplanText;
-                    rPflegeEintragCopy.Startdatum_Neu = rPflegeEintrag.Startdatum_Neu;
-                    rPflegeEintragCopy.Text = rPflegeEintrag.Text + QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ") + rQuellAufenthalt.Aufnahmezeitpunkt.ToString() + ")";
-                    rPflegeEintragCopy.Wichtig = rPflegeEintrag.Wichtig;
-                    rPflegeEintragCopy.Zeitpunkt = rPflegeEintrag.Zeitpunkt;
-                    rPflegeEintragCopy.LogInNameFrei = rPflegeEintrag.LogInNameFrei;
+                    PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
 
-                    //Eintrag in Pflegeeintrag schreiben
-                    PMDS.db.Entities.PflegeEintrag rPflegeEintragMeldung = InsertPflegeEintrag(db, dNow);
-                    rPflegeEintragMeldung.DatumErstellt = dNow;
-                    rPflegeEintragMeldung.Dekursherkunft = (int)eDekursherkunft.DekursAusÜbergabe;
-                    rPflegeEintragMeldung.DurchgefuehrtJN = true;
-                    rPflegeEintragMeldung.EintragsTyp = (int)PflegeEintragTyp.DEKURS;
-                    rPflegeEintragMeldung.IDAbteilung = rZielAufenthalt.IDAbteilung;
-                    rPflegeEintragMeldung.IDAufenthalt = rZielAufenthalt.ID;
-                    rPflegeEintragMeldung.IDBenutzer = ENV.USERID;
-                    rPflegeEintragMeldung.IDBereich = rZielAufenthalt.IDBereich;
-                    rPflegeEintragMeldung.IDBerufsstand = ENV.BERUFID;
-                    rPflegeEintragMeldung.IstDauer = 0;
-                    rPflegeEintragMeldung.PflegeplanText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dekurskopie");
-                    rPflegeEintragMeldung.Text = rPflegeEintrag.Text + QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ") + rQuellAufenthalt.Aufnahmezeitpunkt.ToString() + ")";
-                    rPflegeEintragMeldung.Zeitpunkt = dNow;
-                    rPflegeEintragMeldung.LogInNameFrei = ENV.LoginInNameFrei;
+                    PMDS.db.Entities.Aufenthalt rQuellAufenthalt = PMDSBusiness1.getAufenthalt(IDAufenthaltQuelle);
+                    PMDS.db.Entities.Aufenthalt rZielAufenthalt = PMDSBusiness1.getAufenthalt(IDAufenthaltZiel);
 
-                    iDekurse++;
-                    db.SaveChanges();
+                    System.Collections.Generic.List<PMDS.db.Entities.PflegeEintrag> lstPflegeEintrage = getPflegeEintraegeByAufenthalt(IDAufenthaltQuelle, PflegeEintragTyp.DEKURS, db);
+
+                    foreach (PMDS.db.Entities.PflegeEintrag rPflegeEintrag in lstPflegeEintrage)
+                    {
+                        //In Zielaufenthalt kopieren
+                        PMDS.db.Entities.PflegeEintrag rPflegeEintragCopy = InsertPflegeEintrag(db, dNow);
+                        rPflegeEintragCopy.AbgezeichnetAm = rPflegeEintrag.AbgezeichnetAm;
+                        rPflegeEintragCopy.AbgezeichnetIDBenutzer = rPflegeEintrag.AbgezeichnetIDBenutzer;
+                        rPflegeEintragCopy.AbgezeichnetJN = rPflegeEintrag.AbgezeichnetJN;
+                        rPflegeEintragCopy.AbzeichnenJN = rPflegeEintrag.AbzeichnenJN;
+                        rPflegeEintragCopy.CC = rPflegeEintrag.CC;
+                        rPflegeEintragCopy.DatumErstellt = rPflegeEintrag.DatumErstellt;
+                        rPflegeEintragCopy.Dekursherkunft = rPflegeEintrag.Dekursherkunft;
+                        rPflegeEintragCopy.DurchgefuehrtJN = rPflegeEintrag.DurchgefuehrtJN;
+                        rPflegeEintragCopy.EintragsTyp = rPflegeEintrag.EintragsTyp;
+                        rPflegeEintragCopy.HAGPflichtigJN = rPflegeEintrag.HAGPflichtigJN;
+                        rPflegeEintragCopy.IDAbteilung = rZielAufenthalt.IDAbteilung;
+                        rPflegeEintragCopy.IDAufenthalt = rZielAufenthalt.ID;
+                        rPflegeEintragCopy.IDBefund = rPflegeEintrag.IDBefund;
+                        rPflegeEintragCopy.IDBenutzer = rPflegeEintrag.IDBenutzer;
+                        rPflegeEintragCopy.IDBereich = rZielAufenthalt.IDBereich;
+                        rPflegeEintragCopy.IDBerufsstand = rPflegeEintrag.IDBerufsstand;
+                        rPflegeEintragCopy.IDDekurs = rPflegeEintrag.IDDekurs;
+                        rPflegeEintragCopy.IDEintrag = rPflegeEintrag.IDEintrag;
+                        rPflegeEintragCopy.IDEvaluierung = rPflegeEintrag.IDEvaluierung;
+                        rPflegeEintragCopy.IDExtern = rPflegeEintrag.IDExtern;
+                        rPflegeEintragCopy.IDPflegePlan = rPflegeEintrag.IDPflegePlan;
+                        rPflegeEintragCopy.IDPflegePlanBerufsstand = rPflegeEintrag.IDPflegePlanBerufsstand;
+                        rPflegeEintragCopy.IDPflegeplanH = null;
+                        rPflegeEintragCopy.IDSollberufsstand = rPflegeEintrag.IDSollberufsstand;
+                        rPflegeEintragCopy.IDWichtig = rPflegeEintrag.IDWichtig;
+                        rPflegeEintragCopy.IstDauer = rPflegeEintrag.IstDauer;
+                        rPflegeEintragCopy.PflegePlanDauer = rPflegeEintrag.PflegePlanDauer;
+                        rPflegeEintragCopy.PflegeplanText = rPflegeEintrag.PflegeplanText;
+                        rPflegeEintragCopy.Startdatum_Neu = rPflegeEintrag.Startdatum_Neu;
+                        rPflegeEintragCopy.Text = rPflegeEintrag.Text + QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ") + rQuellAufenthalt.Aufnahmezeitpunkt.ToString() + ")";
+                        rPflegeEintragCopy.Wichtig = rPflegeEintrag.Wichtig;
+                        rPflegeEintragCopy.Zeitpunkt = rPflegeEintrag.Zeitpunkt;
+                        rPflegeEintragCopy.LogInNameFrei = rPflegeEintrag.LogInNameFrei;
+
+                        //Eintrag in Pflegeeintrag schreiben
+                        PMDS.db.Entities.PflegeEintrag rPflegeEintragMeldung = InsertPflegeEintrag(db, dNow);
+                        rPflegeEintragMeldung.DatumErstellt = dNow;
+                        rPflegeEintragMeldung.Dekursherkunft = (int)eDekursherkunft.DekursAusÜbergabe;
+                        rPflegeEintragMeldung.DurchgefuehrtJN = true;
+                        rPflegeEintragMeldung.EintragsTyp = (int)PflegeEintragTyp.DEKURS;
+                        rPflegeEintragMeldung.IDAbteilung = rZielAufenthalt.IDAbteilung;
+                        rPflegeEintragMeldung.IDAufenthalt = rZielAufenthalt.ID;
+                        rPflegeEintragMeldung.IDBenutzer = ENV.USERID;
+                        rPflegeEintragMeldung.IDBereich = rZielAufenthalt.IDBereich;
+                        rPflegeEintragMeldung.IDBerufsstand = ENV.BERUFID;
+                        rPflegeEintragMeldung.IstDauer = 0;
+                        rPflegeEintragMeldung.PflegeplanText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Dekurskopie");
+                        rPflegeEintragMeldung.Text = rPflegeEintrag.Text + QS2.Desktop.ControlManagment.ControlManagment.getRes("\n(Kopie von Aufenthalt mit Aufnahmedatum ") + rQuellAufenthalt.Aufnahmezeitpunkt.ToString() + ")";
+                        rPflegeEintragMeldung.Zeitpunkt = dNow;
+                        rPflegeEintragMeldung.LogInNameFrei = ENV.LoginInNameFrei;
+
+                        iDekurse++;
+                        db.SaveChanges();
+                    }
                 }
-
                 return iDekurse;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -11495,7 +11500,7 @@ namespace PMDS.DB
             {
                 System.Data.EnumerableRowCollection<qs2.core.language.dsLanguage.RessourcenRow> arrRes = (from res in qs2.core.language.sqlLanguage.dsLanguageAll.Ressourcen where res.IDRes == IDRes.Trim() && res.Type == "Label" && 
                                                                                                           res.IDApplication == "ALL" && res.IDParticipant == "ALL" select res);
-                if (arrRes.Count() > 0)
+                if (arrRes.Any())
                 {
                     return arrRes.First().German.Trim();
                 }

@@ -200,6 +200,11 @@ namespace PMDS.Global
         public static string ZahlKondBar = "Betrag dankend erhalten.";
         public static string ZahlKondFSW = "Bitte nicht einzahlen, ‹berweisung erfolgt durch den FSW.";
 
+        public static string FSW_FTPUser = "";
+        public static string FSW_FTPIP = "";
+        public static int FSW_FTPPort = 22;
+        public static string FSW_FTPZertifikat = "";
+
         public static bool AbwesenheitenAnzeigen = true;
 
         public static bool CheckConnectionAndPassword;
@@ -1368,6 +1373,11 @@ namespace PMDS.Global
                 SetENVValue("ZahlKond‹berweisung", ref ENV.ZahlKond‹berweisung);
                 SetENVValue("ZahlKondBar", ref ENV.ZahlKondBar);
                 SetENVValue("ZahlKondFSW", ref ENV.ZahlKondFSW);
+
+                SetENVValue("FSW_FTPUser", ref ENV.FSW_FTPUser);
+                SetENVValue("FSW_FTPIP", ref ENV.FSW_FTPIP);
+                SetENVValue("FSW_FTPPort", ref ENV.FSW_FTPPort);
+                SetENVValue("FSW_FTPZertifikat", ref ENV.FSW_FTPZertifikat);
 
                 SetENVValue("AbwesenheitenAnzeigen", ref ENV.AbwesenheitenAnzeigen, "0");
 

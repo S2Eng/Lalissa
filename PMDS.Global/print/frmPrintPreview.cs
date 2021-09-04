@@ -45,12 +45,10 @@ namespace PMDS.Print.CR
             this.crystalReportViewer1.EnableDrillDown = false;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            //this.crystalReportViewer1.SelectionFormula = "";
             this.crystalReportViewer1.ShowCloseButton = false;
             this.crystalReportViewer1.ShowRefreshButton = false;
             this.crystalReportViewer1.Size = new System.Drawing.Size(925, 695);
             this.crystalReportViewer1.TabIndex = 0;
-            //this.crystalReportViewer1.ViewTimeSelectionFormula = "";
             // 
             // frmPrintPreview
             // 
@@ -62,6 +60,7 @@ namespace PMDS.Print.CR
             this.MinimumSize = new System.Drawing.Size(328, 352);
             this.Name = "frmPrintPreview";
             this.Text = "Bericht PMDS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrintPreview_FormClosing);
             this.Load += new System.EventHandler(this.frmPrintPreview_Load);
             this.ResumeLayout(false);
 
@@ -111,6 +110,12 @@ namespace PMDS.Print.CR
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
             }
+        }
+
+        private void frmPrintPreview_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (crystalReportViewer1.ReportSource != null)
+                crystalReportViewer1.Dispose();
         }
     }
 }

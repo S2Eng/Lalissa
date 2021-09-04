@@ -13,7 +13,7 @@ using System.Diagnostics;
 namespace PMDS
 {
 
-	public class MainEntry
+	public static class MainEntry
     {
 
 
@@ -152,12 +152,11 @@ namespace PMDS
                 ENV.sConfigRootDir = searchKeyArg("ConfigPath", args);
                 remotingSrv.showMsgBoxTestmodus("ConfigPath: " +  ENV.sConfigRootDir);
 
-                string typ = searchKeyArg("typ", args);
-                typ = typ.ToLower();
+                string typ = searchKeyArg("typ", args).ToLower();
                 ENV.StartupTyp = typ;
 
                 ENV.OrigConfigDir = ENV.sConfigRootDir;
-                if (ENV.sConfigRootDir != "")
+                if (!String.IsNullOrWhiteSpace(ENV.sConfigRootDir))
                 {
                     ENV.initClass(LogPathPMDSFromLauncher);
                 }
@@ -165,7 +164,7 @@ namespace PMDS
                 {
                     if (Application.StartupPath.Trim().EndsWith(("Debug").Trim(), StringComparison.CurrentCultureIgnoreCase))
                     {
-                        if (ENV.sConfigRootDir.Trim().Equals("", StringComparison.CurrentCultureIgnoreCase))
+                        if (String.IsNullOrWhiteSpace(ENV.sConfigRootDir))
                         {
                             System.IO.DirectoryInfo dirInfo = System.IO.Directory.GetParent(Application.StartupPath);
                             dirInfo = System.IO.Directory.GetParent(dirInfo.FullName);
@@ -189,13 +188,13 @@ namespace PMDS
                 remotingSrv.showMsgBoxTestmodus("ConfigFile: " + configFileRead);
 
                 ENV.OrigConfigFile = configFileRead;
-                if (configFileRead != "")
+                if (!String.IsNullOrWhiteSpace(configFileRead))
                 {
                     PMDS.Global.ENV.sConfigFile = System.IO.Path.Combine(ENV.pathConfig, configFileRead);
                 }
                 else
                 {
-                    if (!Application.StartupPath.Trim().EndsWith(("Debug").Trim(), StringComparison.CurrentCultureIgnoreCase))
+                    if (!Application.StartupPath.Trim().EndsWith("Debug".Trim(), StringComparison.CurrentCultureIgnoreCase))
                     {
                         throw new Exception("Kommandozeilenparameter ?ConfigFile fehlt.");
                     }
@@ -577,14 +576,6 @@ namespace PMDS
             {
                 throw new Exception("MainEntry.checkSelectConfigs: " + ex.ToString());
             }
-        }
-
-        private static bool initPlanArchivxy( )
-        {
-            //PMDS.plan.archivWork.clArchivsystem clArchiv = new PMDS.plan.archivWork.clArchivsystem();
-            ////cl.setArchivpfadToDefaultPfadIfKeineAngabe();
-            //clArchiv.checkPathArchiv();
-            return true;
         }
 
 		private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)

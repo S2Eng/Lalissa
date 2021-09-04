@@ -26,8 +26,7 @@ namespace PMDS.Print.CR
                                                 string DB_SERVER, string DB_DATABASE, string INTEGRATED_SECURITY, string DB_PASSWORD,
                                                 PMDS.Global.db.ERSystem.UISitemaps.cParFormular cParFormular1, ref string sFileFullNameExported, bool ShowGroupTreeButton = true, string lstPatients = "", bool SaveToArchive = false)
         {
-            using (CrystalDecisions.CrystalReports.Engine.ReportDocument rpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument())
-            {
+            CrystalDecisions.CrystalReports.Engine.ReportDocument rpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
                 rpt.Load(sReportFile);
 
                 TableLogOnInfo info = new TableLogOnInfo();
@@ -337,7 +336,7 @@ namespace PMDS.Print.CR
                     }
                 }
                 return false;
-            }
+            
         }
 
         public static void AddCrystalParameter(ReportDocument crReport, string ParameterName, object oParameterValue)

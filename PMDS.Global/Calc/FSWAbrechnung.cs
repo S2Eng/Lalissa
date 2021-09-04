@@ -21,7 +21,6 @@ namespace PMDS.Global
         private static string DateTimeFormat = "yyyyMMddHHmmss";
         private string eZAUFID = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff");
         private string eZAUFIDBW = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff") + "BW";
-
         private string Msg = "";
 
         private class Leistungszeile
@@ -310,6 +309,7 @@ namespace PMDS.Global
                     string ret = "";
                     if (ListIDBillsFSW.Count > 0 || ListIDBillsFSWBW.Count > 0)
                     {
+                        List<string> ListIDs = new List<string>();
                         if (RunAction == eAction.fsw || RunAction == eAction.fswNoUpload)
                         {
                             string Filepath = ENV.FSW_EZAUF;    //User nach Speicherort fragen
@@ -372,33 +372,45 @@ namespace PMDS.Global
                                     return;
                                 }
                             }
-
+                            
                             if (RunAction == eAction.fsw)    //Hochladen. Wenn nein -> nur XML erstellen (z.B. für Test)
                             {
-                                ret = Upload(FilenameXML, FQFileXML);
-                                if (ret.Length > 0)
+                                foreach(XMLInfo f in ListXMLInfos)
                                 {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung:" + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    return;
-                                }
+                                    if (!f.bIsvalid)
+                                        continue;
 
-                                //Sammelrechnung-ID (ZAUF) setzen
-                                ret = SetIDSR(ListIDBillsFSW, FilenameXML, db);
-                                if (ret.Length == 0)
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                else
-                                {
-                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des ZAUF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                    return;
+                                    bool bIsPflegeZAUFF = f.Transaction.bIsPflegeZAUFF;
+                                    FilenameXML = f.Transaction.bIsPflegeZAUFF ? FilenameXML : FilenameXLSXBW;
+                                    ListIDs = f.Transaction.bIsPflegeZAUFF ? ListIDBillsFSW : ListIDBillsFSWBW;
+
+                                    ret = Upload(FilenameXML, f.FQFileXML);
+                                    if (ret.Length > 0)
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Hochladen der Zahlungsaufforderung: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        return;
+                                    }
+                                    //Sammelrechnung-ID (ZAUF) setzen
+                                    ret = SetIDSR(ListIDs, FilenameXML, db);
+                                    if (ret.Length == 0)
+                                    {
+                                        string sBWExt = f.Transaction.bIsPflegeZAUFF ? "(BW)" : "";
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + ListIDs.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    }
+                                    else
+                                    {
+                                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung wurde gesendet, aber beim Sichern des ZAUF-Zustands (Kennung Sammelrechnung) ist ein Fehler aufgetreten: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                        return;
+                                    }
                                 }
                             }
                         }
                         else
                         {
                             //Sammelrechnung-ID (ZAUF) setzen
-                            ret = SetIDSR(ListIDBillsFSW, "", db);
+                            ret = SetIDSR(ListIDBills, "", db);
                             if (ret.Length == 0)
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDBillsFSW.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDs.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             else
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Zurücksetzen des ZAUF-Zustands: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
@@ -448,7 +460,7 @@ namespace PMDS.Global
         {
             try
             {
-                foreach (string IDBill in ListIDBillsFSW)
+                foreach (string IDBill in lstBillsToUpdate)
                 {
                     var res = db.bills.SingleOrDefault(bills => bills.ID == IDBill);
                     if (res != null)
@@ -457,6 +469,8 @@ namespace PMDS.Global
                             res.IDSR = "";
                         else if (IDSR.Length == 58 )
                             res.IDSR = IDSR.Substring(IDSR.Length -18, 18);
+                        else if (IDSR.Length == 61)
+                            res.IDSR = IDSR.Substring(IDSR.Length - 22, 22);
                         else
                         {
                             return "Ungültige eZAUF-Nummer: " + IDSR;
@@ -845,15 +859,22 @@ namespace PMDS.Global
                     sftp.ConnectTimeoutMs = 15000;
                     sftp.IdleTimeoutMs = 15000;
                     success = false;
-                    if (sftp.Connect("sftp.example.com", 22))
-                        if (sftp.AuthenticatePw("myLogin", "myPassword"))
-                            if (sftp.InitializeSftp())
-                                if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
-                                {
-                                    return sftp.LastErrorText;
-                                }
-
-                    return sftp.LastErrorText;
+                    using (Chilkat.SshKey sshKey = new Chilkat.SshKey())
+                    {
+                        sshKey.LoadText(ENV.FSW_FTPZertifikat);
+                        if (sftp.Connect(ENV.FSW_FTPIP, ENV.FSW_FTPPort))
+                            if (sftp.AuthenticatePk(ENV.FSW_FTPUser, sshKey))
+                                if (sftp.InitializeSftp())
+                                    if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
+                                    {
+                                        return "";
+                                    }
+                                    else
+                                    {
+                                        return sftp.LastErrorText;
+                                    }
+                    }
+                    return sftp.LastErrorText; ;
                 }
             }
             catch (Exception ex)

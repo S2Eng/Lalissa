@@ -136,22 +136,21 @@ namespace PMDS.Calc.UI.Admin
 
             if (refresh || refreshList)
             {
-                // Werte laden
                 Patient p;
-                dsKlientenKostentraeger ds = new dsKlientenKostentraeger();
-                PMDS.Calc.Admin.DB.DBPatientKostentraeger pk = new PMDS.Calc.Admin.DB.DBPatientKostentraeger();
-                pk.GetKlientenKostentraeger(ds, IDKostentraeger, gueltigAb, gueltigBis);
-
-                vl.ValueListItems.Add(Guid.Empty, QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Klient auswählen."));
-                
-                foreach (dsKlientenKostentraeger.PatientKostentraegerRow row in ds.PatientKostentraeger)
+                using (dsKlientenKostentraeger ds = new dsKlientenKostentraeger())
                 {
-                    p = new Patient(row.IDPatient);
-                    vl.ValueListItems.Add(p.ID, p.FullName);
+                    PMDS.Calc.Admin.DB.DBPatientKostentraeger pk = new PMDS.Calc.Admin.DB.DBPatientKostentraeger();
+                    pk.GetKlientenKostentraeger(ds, IDKostentraeger, gueltigAb, gueltigBis);
+
+                    vl.ValueListItems.Add(Guid.Empty, QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Klient auswählen."));
+
+                    foreach (dsKlientenKostentraeger.PatientKostentraegerRow row in ds.PatientKostentraeger)
+                    {
+                        p = new Patient(row.IDPatient);
+                        vl.ValueListItems.Add(p.ID, p.FullName);
+                    }
                 }
 
-                //Neu nach 16.06.2008 MDA
-                //Wenn nur ein Klient in der Liste ist, dann Klient selektieren
                 if (vl.ValueListItems.Count == 2 && (Guid)r.Cells[sBoundGridColumn].Value == Guid.Empty)
                 {
                     vl.SelectedItem = vl.ValueListItems[1];
@@ -253,20 +252,30 @@ namespace PMDS.Calc.UI.Admin
                 
                 Guid idPatient = (Guid)r.Cells["IDPatient"].Value;
                 dsKostentraeger.KostentraegerDataTable dt;
-                PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger();
-                if (TransferleistungJN)
-                    dt = k.GetTransferPatientkostentraeger(idPatient, gueltigAb.Date, klinik , IDKlinik).Kostentraeger;
-                else
-                    dt = k.GetTransferPatientkostentraeger(idPatient, gueltigAb.Date, gueltigBis.Date, klinik, IDKlinik).Kostentraeger;
-                
+                using (PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger())
+                {
+                    if (TransferleistungJN)
+                        dt = k.GetTransferPatientkostentraeger(idPatient, gueltigAb.Date, klinik, IDKlinik).Kostentraeger;
+                    else
+                    {
+                        if (gueltigBis.Date > new DateTime(2059, 12, 31) || gueltigBis == null)           //OLEDB - Treiber geht nur bis 2067
+                        {
+                            dt = k.GetTransferPatientkostentraeger(idPatient, gueltigAb.Date, new DateTime(2049, 12, 31), klinik, IDKlinik).Kostentraeger;
+                        }
+                        else
+                        {
+                            dt = k.GetTransferPatientkostentraeger(idPatient, gueltigAb.Date, gueltigBis.Date, klinik, IDKlinik).Kostentraeger;
+                        }
+                    }
+                }
+
                 foreach (dsKostentraeger.KostentraegerRow row in dt)
                     vl.ValueListItems.Add(row.ID, row.Name);
-
+                
             }
 
             r.Cells[sBoundGridColumn].ValueList = vl;
             r.Cells[sBoundGridColumn].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
-
 
             //Nach aktualisieren von ValueList, wenn die Zelle der entsprechende Spalte selecteirt ist, verliert sie ihr wert.
             //daher muß das alte Wert wieder zurückgesetzt.
