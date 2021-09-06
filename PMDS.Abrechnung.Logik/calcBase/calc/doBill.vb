@@ -758,7 +758,8 @@ Public Class doBill
                             rLeistZeile.Bezeichnung += "{Einzelpreis}"
                             rLeistZeile.Bezeichnung += vbCrLf + "Abwesenheiten:"
                             For Each abw As dbCalc.AbwesenheitenRow In calc.dbCalc.Abwesenheiten
-                                rLeistZeile.Bezeichnung += vbCrLf + abw.Grund + " (" + abw.Von.ToString("dd.MM.yyyy") + "-" + abw.Bis.ToString("dd.MM.yyyy") + ")"
+                                Dim strBis As String = IIf(abw.Bis = New Date(2999, 12, 31), "laufend", abw.Bis.ToString("dd.MM.yyyy"))
+                                rLeistZeile.Bezeichnung += vbCrLf + abw.Grund + " (" + abw.Von.ToString("dd.MM.yyyy") + "-" + strBis + ")"
                             Next
 
                             tLeistZeile.Rows.Add(rLeistZeile)
