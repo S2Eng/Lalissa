@@ -31,10 +31,8 @@ namespace PMDS.Calc.UI.Admin
         public event EventHandler ValueChanged;
               
         private Guid  _IDPatient = Guid.Empty;
-        private bool _Transferleistung = false;
-        private bool _DataChenged = false;
-        private Patient _patient;
-        
+        private bool _Transferleistung;
+        private bool _DataChenged;
 
         private QS2.Desktop.ControlManagment.BaseGrid dgMain;
         private dsPatientEinkommen dsPatientEinkommen1;
@@ -440,7 +438,7 @@ namespace PMDS.Calc.UI.Admin
             }
             else if (cell.Column.Key == dt.BezeichnungColumn.ColumnName)
             {
-                GuiUtil.ValidateField(dgMain, (cell.Text.Trim() != ""),
+                GuiUtil.ValidateField(dgMain, (!String.IsNullOrWhiteSpace(cell.Text)),
                                      ENV.String("GUI.E_NO_TEXT"), ref bError, false, null);
                 if (bError)
                     r.SetColumnError(cell.Column.Index, ENV.String("GUI.E_NO_TEXT"));
@@ -599,7 +597,7 @@ namespace PMDS.Calc.UI.Admin
             if (PMDS.GUI.UltraGridTools.AskRowDelete() != DialogResult.Yes)
                 return;
 
-            dsPatientEinkommen.PatientEinkommenDataTable dt = new dsPatientEinkommen.PatientEinkommenDataTable();
+           
             
             ArrayList al2 = new ArrayList();
             bool del = false;
@@ -620,15 +618,19 @@ namespace PMDS.Calc.UI.Admin
             StringBuilder sb = new StringBuilder();
             sb.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Für folgende Datensätze sind Abrechnungen erstellt worden, daher können sie nicht gelöscht werden.\n\t"));
 
-            foreach (UltraGridRow r in ra)
+            using (dsPatientEinkommen.PatientEinkommenDataTable dt = new dsPatientEinkommen.PatientEinkommenDataTable())
             {
-                sb.Append("- " + r.Cells[dt.GueltigAbColumn.ColumnName].Text);
-                if(!_Transferleistung && r.Cells[dt.GueltigBisColumn.ColumnName].Value != DBNull.Value)
-                    sb.Append(" - " + r.Cells[dt.GueltigBisColumn.ColumnName].Text);
+                foreach (UltraGridRow r in ra)
+                {
+                    sb.Append("- " + r.Cells[dt.GueltigAbColumn.ColumnName].Text);
+                    if (!_Transferleistung && r.Cells[dt.GueltigBisColumn.ColumnName].Value != DBNull.Value)
+                        sb.Append(" - " + r.Cells[dt.GueltigBisColumn.ColumnName].Text);
 
-                sb.Append("- " + r.Cells[dt.BezeichnungColumn.ColumnName].Text);
-                sb.Append(" - " + r.Cells[dt.BetragVerwendbarColumn.ColumnName].Text + " €\n\t");
+                    sb.Append("- " + r.Cells[dt.BezeichnungColumn.ColumnName].Text);
+                    sb.Append(" - " + r.Cells[dt.BetragVerwendbarColumn.ColumnName].Text + " €\n\t");
+                }
             }
+
             if (ra.Length > 0)
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sb.ToString(), QS2.Desktop.ControlManagment.ControlManagment.getRes("Löschen"), MessageBoxButtons.OK, MessageBoxIcon.Information);
 

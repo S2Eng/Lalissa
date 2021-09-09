@@ -1047,139 +1047,137 @@ Public Class compSql
                                         ByVal imGesamtsystemSuchen As Boolean, ByRef data As dsPlanArchive, doInit As Boolean)
         Try
             Using DataTable As New DataTable
-                Using Command As New OleDbCommand
-                    Dim Parameter As OleDbParameter
-                    Using DataAdapter As New OleDbDataAdapter
-                        Dim Sql As String = ""
-                        Dim SQL_where As String = ""
 
-                        If typSuche = etyp.dokumente Then
-                            Sql = "SELECT  dbo.tblDokumenteintrag.Bezeichnung, dbo.tblDokumente.Archivordner, dbo.tblDokumente.DateinameArchiv, dbo.tblDokumente.Winzip,  dbo.tblDokumente.DateinameOrig, dbo.tblDokumente.VerzeichnisOrig, dbo.tblDokumente.DokumentGröße, dbo.tblDokumente.DokumentErstellt, " +
-                            " dbo.tblObjekt.ID_guid, (dbo.Patient.Vorname  + ' ' +  dbo.Patient.Nachname) as Patient," +
-                            " dbo.tblDokumente.DokumentGeändert, dbo.tblDokumente.ErstelltAm, dbo.tblDokumente.ErstelltVon,   " +
-                            " CAST(dbo.tblDokumente.IDDokumenteintrag AS Varchar(50)) AS IDDokumenteintrag, CAST(dbo.tblDokumente.ID AS Varchar(50)) AS IDDokument, dbo.tblDokumenteintrag.Notiz, dbo.tblDokumenteintrag.GültigVon,  " +
-                            " dbo.tblDokumenteintrag.GültigBis, dbo.tblDokumenteintrag.Wichtigkeit, CAST(dbo.tblDokumenteintrag.IDOrdner AS Varchar(50)) AS IDOrdner, " +
-                            " dbo.tblOrdner.Bezeichnung AS BezeichnungOrdner, dbo.tblOrdner.Extern , dbo.tblDokumente.DateinameTyp " +
-                            " FROM dbo.Patient RIGHT OUTER JOIN " +
-                            " dbo.tblObjekt ON dbo.Patient.ID = dbo.tblObjekt.ID_guid RIGHT OUTER JOIN " +
-                            " dbo.tblDokumente INNER JOIN " +
-                            " dbo.tblDokumenteintrag ON dbo.tblDokumente.IDDokumenteintrag = dbo.tblDokumenteintrag.ID INNER JOIN " +
-                            " dbo.tblOrdner ON dbo.tblDokumenteintrag.IDOrdner = dbo.tblOrdner.ID ON dbo.tblObjekt.IDDokumenteintrag = dbo.tblDokumenteintrag.ID "
+                Using DataAdapter As New OleDbDataAdapter
+                    Dim Sql As String = ""
+                    Dim SQL_where As String = ""
+
+                    If typSuche = etyp.dokumente Then
+                        Sql = "SELECT  dbo.tblDokumenteintrag.Bezeichnung, dbo.tblDokumente.Archivordner, dbo.tblDokumente.DateinameArchiv, dbo.tblDokumente.Winzip,  dbo.tblDokumente.DateinameOrig, dbo.tblDokumente.VerzeichnisOrig, dbo.tblDokumente.DokumentGröße, dbo.tblDokumente.DokumentErstellt, " +
+                        " dbo.tblObjekt.ID_guid, (dbo.Patient.Vorname  + ' ' +  dbo.Patient.Nachname) as Patient," +
+                        " dbo.tblDokumente.DokumentGeändert, dbo.tblDokumente.ErstelltAm, dbo.tblDokumente.ErstelltVon,   " +
+                        " CAST(dbo.tblDokumente.IDDokumenteintrag AS Varchar(50)) AS IDDokumenteintrag, CAST(dbo.tblDokumente.ID AS Varchar(50)) AS IDDokument, dbo.tblDokumenteintrag.Notiz, dbo.tblDokumenteintrag.GültigVon,  " +
+                        " dbo.tblDokumenteintrag.GültigBis, dbo.tblDokumenteintrag.Wichtigkeit, CAST(dbo.tblDokumenteintrag.IDOrdner AS Varchar(50)) AS IDOrdner, " +
+                        " dbo.tblOrdner.Bezeichnung AS BezeichnungOrdner, dbo.tblOrdner.Extern , dbo.tblDokumente.DateinameTyp " +
+                        " FROM dbo.Patient RIGHT OUTER JOIN " +
+                        " dbo.tblObjekt ON dbo.Patient.ID = dbo.tblObjekt.ID_guid RIGHT OUTER JOIN " +
+                        " dbo.tblDokumente INNER JOIN " +
+                        " dbo.tblDokumenteintrag ON dbo.tblDokumente.IDDokumenteintrag = dbo.tblDokumenteintrag.ID INNER JOIN " +
+                        " dbo.tblOrdner ON dbo.tblDokumenteintrag.IDOrdner = dbo.tblOrdner.ID ON dbo.tblObjekt.IDDokumenteintrag = dbo.tblDokumenteintrag.ID "
+                    End If
+
+                    If nurPapierkorb Then
+                        Dim sql_subIDSystemordner As String = " orSys.IDSystemordner = 1 "
+                        SQL_where += " where dbo.tblDokumenteintrag.IDOrdner IN ( SELECT distinct orSys.ID FROM  dbo.tblOrdner orSys where dbo.tblDokumenteintrag.IDOrdner = orSys.ID and ( " + sql_subIDSystemordner + " ))  "
+                    Else
+                        Dim sql_subIDSystemordner As String = " orSys.IDSystemordner = -1 "
+                        If Papierkorb Then sql_subIDSystemordner += " or orSys.IDSystemordner = 1 "
+                        If AnhangPlanungssystem Then sql_subIDSystemordner += " or orSys.IDSystemordner = 2 "
+                        SQL_where += " where dbo.tblDokumenteintrag.IDOrdner IN ( SELECT distinct orSys.ID FROM  dbo.tblOrdner orSys where dbo.tblDokumenteintrag.IDOrdner = orSys.ID and ( " + sql_subIDSystemordner + " ))  "
+
+                    End If
+
+                    If doInit Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.ID='" + System.Guid.NewGuid.ToString() + "' "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    If Not gen.IsNull(Bezeichnung) Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.Bezeichnung LIKE '%" + Bezeichnung + "%' "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    If Not gen.IsNull(Wichtigkeit) Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.Wichtigkeit = '" + Wichtigkeit + "' "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    If Not gen.IsNull(GültigVon) Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.GültigVon >= ? "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    If Not gen.IsNull(GültigBis) Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.GültigBis <= ? "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    If Not gen.IsNull(AbgelegtVon) Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltAm >= ? "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    If Not gen.IsNull(AbgelegtBis) Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltAm <= ? "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    If Not gen.IsNull(IDSchlagwörter) Then
+                        If IDSchlagwörter.Count > 0 Then
+                            Dim sql_id As String = ""
+                            For Each id As System.Guid In IDSchlagwörter
+                                Dim id_str As String = " ds.IDSchlagwort = '" + id.ToString + "' "
+                                sql_id += IIf(gen.IsNull(Trim(sql_id)), id_str, " or " + id_str)
+                            Next
+                            Dim sql_sub As String = " ( SELECT Count(*) FROM  dbo.tblDokumenteneintragSchlagwörter ds " +
+                                        " where ds.IDDokumenteneintrag = dbo.tblDokumente.IDDokumenteintrag and ( " + sql_id + ")) > 0 "
+                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
                         End If
-
-                        If nurPapierkorb Then
-                            Dim sql_subIDSystemordner As String = " orSys.IDSystemordner = 1 "
-                            SQL_where += " where dbo.tblDokumenteintrag.IDOrdner IN ( SELECT distinct orSys.ID FROM  dbo.tblOrdner orSys where dbo.tblDokumenteintrag.IDOrdner = orSys.ID and ( " + sql_subIDSystemordner + " ))  "
+                    End If
+                    If objects.Count > 0 Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.ID IN (Select IDDokumenteintrag from tblObjekt "
+                        Dim sql_ID As String = " "
+                        For Each ob As clObject In objects
+                            sql_ID += IIf(gen.IsNull(Trim(sql_ID)), " where ", " or ")
+                            If ob.id.GetType.ToString = "System.Int32" Then
+                                sql_ID += " ID_int = " + ob.id.ToString + " "
+                            ElseIf ob.id.GetType.ToString = "System.String" Then
+                                Try
+                                    Dim str As String = ""
+                                    Dim id As New System.Guid(ob.id.ToString)
+                                    sql_ID += " ID_guid = '" + id.ToString + "' "
+                                Catch ex As Exception
+                                    sql_ID += " ID_str = '" + ob.id + "' "
+                                End Try
+                            End If
+                        Next
+                        sql_sub += sql_ID + ") "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    Else
+                        If imGesamtsystemSuchen Then
+                            If Not gen.IsNull(Trim(benutzer)) Then
+                                Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltVon = '" + benutzer + "' "
+                                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                            End If
                         Else
-                            Dim sql_subIDSystemordner As String = " orSys.IDSystemordner = -1 "
-                            If Papierkorb Then sql_subIDSystemordner += " or orSys.IDSystemordner = 1 "
-                            If AnhangPlanungssystem Then sql_subIDSystemordner += " or orSys.IDSystemordner = 2 "
-                            SQL_where += " where dbo.tblDokumenteintrag.IDOrdner IN ( SELECT distinct orSys.ID FROM  dbo.tblOrdner orSys where dbo.tblDokumenteintrag.IDOrdner = orSys.ID and ( " + sql_subIDSystemordner + " ))  "
+                            Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltVon = '" + Me.gen.actUser + "' "
+                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                        End If
+                    End If
 
-                        End If
+                    If Ordner.Count > 0 Then
+                        Dim sql_sub As String = " dbo.tblDokumenteintrag.IDOrdner IN (Select ID from tblOrdner "
+                        Dim sql_ID As String = " "
+                        For Each IDOrdner As Object In Ordner
+                            Dim typ As New compSql.eTypObj
+                            sql_ID += IIf(gen.IsNull(Trim(sql_ID)), " where ", " or ")
+                            sql_ID += " ID = '" + IDOrdner.ToString + "' "
+                        Next
+                        sql_sub += sql_ID + ") "
+                        SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                    End If
+                    Sql += SQL_where
 
-                        If doInit Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.ID='" + System.Guid.NewGuid.ToString() + "' "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                        End If
-                        If Not gen.IsNull(Bezeichnung) Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.Bezeichnung LIKE '%" + Bezeichnung + "%' "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                        End If
-                        If Not gen.IsNull(Wichtigkeit) Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.Wichtigkeit = '" + Wichtigkeit + "' "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                        End If
+                    Using Command1 = New OleDbCommand(Sql, db.getConnDB)
+                        Command1.CommandTimeout = 0
                         If Not gen.IsNull(GültigVon) Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.GültigVon >= ? "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                            Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("GültigVon", System.Data.OleDb.OleDbType.Date, 8, "GültigVon")).Value = GültigVon
                         End If
                         If Not gen.IsNull(GültigBis) Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.GültigBis <= ? "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                            Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("GültigBis", System.Data.OleDb.OleDbType.Date, 8, "GültigBis")).Value = GültigBis
                         End If
                         If Not gen.IsNull(AbgelegtVon) Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltAm >= ? "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                            Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("ErstelltAm", System.Data.OleDb.OleDbType.Date, 8, "ErstelltAm")).Value = AbgelegtVon
                         End If
                         If Not gen.IsNull(AbgelegtBis) Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltAm <= ? "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
+                            Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("ErstelltAm", System.Data.OleDb.OleDbType.Date, 8, "ErstelltAm")).Value = AbgelegtBis
                         End If
-                        If Not gen.IsNull(IDSchlagwörter) Then
-                            If IDSchlagwörter.Count > 0 Then
-                                Dim sql_id As String = ""
-                                For Each id As System.Guid In IDSchlagwörter
-                                    Dim id_str As String = " ds.IDSchlagwort = '" + id.ToString + "' "
-                                    sql_id += IIf(gen.IsNull(Trim(sql_id)), id_str, " or " + id_str)
-                                Next
-                                Dim sql_sub As String = " ( SELECT Count(*) FROM  dbo.tblDokumenteneintragSchlagwörter ds " +
-                                            " where ds.IDDokumenteneintrag = dbo.tblDokumente.IDDokumenteintrag and ( " + sql_id + ")) > 0 "
-                                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                            End If
-                        End If
-                        If objects.Count > 0 Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.ID IN (Select IDDokumenteintrag from tblObjekt "
-                            Dim sql_ID As String = " "
-                            For Each ob As clObject In objects
-                                sql_ID += IIf(gen.IsNull(Trim(sql_ID)), " where ", " or ")
-                                If ob.id.GetType.ToString = "System.Int32" Then
-                                    sql_ID += " ID_int = " + ob.id.ToString + " "
-                                ElseIf ob.id.GetType.ToString = "System.String" Then
-                                    Try
-                                        Dim str As String = ""
-                                        Dim id As New System.Guid(ob.id.ToString)
-                                        sql_ID += " ID_guid = '" + id.ToString + "' "
-                                    Catch ex As Exception
-                                        sql_ID += " ID_str = '" + ob.id + "' "
-                                    End Try
-                                End If
-                            Next
-                            sql_sub += sql_ID + ") "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                        Else
-                            If imGesamtsystemSuchen Then
-                                If Not gen.IsNull(Trim(benutzer)) Then
-                                    Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltVon = '" + benutzer + "' "
-                                    SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                                End If
-                            Else
-                                Dim sql_sub As String = " dbo.tblDokumenteintrag.ErstelltVon = '" + Me.gen.actUser + "' "
-                                SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                            End If
-                        End If
+                        DataAdapter.SelectCommand = Command1
 
-                        If Ordner.Count > 0 Then
-                            Dim sql_sub As String = " dbo.tblDokumenteintrag.IDOrdner IN (Select ID from tblOrdner "
-                            Dim sql_ID As String = " "
-                            For Each IDOrdner As Object In Ordner
-                                Dim typ As New compSql.eTypObj
-                                sql_ID += IIf(gen.IsNull(Trim(sql_ID)), " where ", " or ")
-                                sql_ID += " ID = '" + IDOrdner.ToString + "' "
-                            Next
-                            sql_sub += sql_ID + ") "
-                            SQL_where += IIf(gen.IsNull(Trim(SQL_where)), " where " + sql_sub, " and " + sql_sub)
-                        End If
-                        Sql += SQL_where
-
-                        Using Command1 = New OleDbCommand(Sql, db.getConnDB)
-                            Command1.CommandTimeout = 0
-                            If Not gen.IsNull(GültigVon) Then
-                                Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("GültigVon", System.Data.OleDb.OleDbType.Date, 8, "GültigVon")).Value = GültigVon
-                            End If
-                            If Not gen.IsNull(GültigBis) Then
-                                Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("GültigBis", System.Data.OleDb.OleDbType.Date, 8, "GültigBis")).Value = GültigBis
-                            End If
-                            If Not gen.IsNull(AbgelegtVon) Then
-                                Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("ErstelltAm", System.Data.OleDb.OleDbType.Date, 8, "ErstelltAm")).Value = AbgelegtVon
-                            End If
-                            If Not gen.IsNull(AbgelegtBis) Then
-                                Command1.Parameters.Add(New System.Data.OleDb.OleDbParameter("ErstelltAm", System.Data.OleDb.OleDbType.Date, 8, "ErstelltAm")).Value = AbgelegtBis
-                            End If
-                            DataAdapter.SelectCommand = Command
-
-                            DataAdapter.Fill(data.tblDokumenteSuchen)
-                        End Using
+                        DataAdapter.Fill(data.tblDokumenteSuchen)
                     End Using
                 End Using
             End Using
