@@ -82,7 +82,7 @@ namespace PMDS.GUI.Verordnungen
 
         private void frmVOMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
+            e.Cancel = false;
             this.Visible = false;
         }
 

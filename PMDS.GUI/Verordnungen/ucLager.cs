@@ -90,7 +90,7 @@ namespace PMDS.GUI.Verordnungen
                     this.btnSearch.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
                     this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_OK, 32, 32);
 
-                    this.sqlVO1.initControl();
+                    this.sqlVO1.InitControl();
                     this.sqlManange1.initControl();
 
                     this.SelListChanged("", null, null);
@@ -206,7 +206,7 @@ namespace PMDS.GUI.Verordnungen
 
                 if (this._TypeUI == eTypeUI.IDVO)
                 {
-                    this.sqlVO1.getVOLager(this._IDVO.Value, sqlVO.eSelVOLager.IDVO, this.dsVO1, null, null, sZustand, "");
+                    this.sqlVO1.GetVOLager(this._IDVO.Value, sqlVO.ESelVOLager.IDVO, this.dsVO1, null, null, sZustand, "");
                     this.gridVOLager.Refresh();
                 }
                 else if (this._TypeUI == eTypeUI.All)
@@ -233,7 +233,7 @@ namespace PMDS.GUI.Verordnungen
                         dTo = this.udteTo.DateTime.Date;
                     }
 
-                    this.sqlVO1.getVOLager(this._IDVO, sqlVO.eSelVOLager.All, this.dsVO1, dFrom, dTo, sZustand2, sSeriennummer);
+                    this.sqlVO1.GetVOLager(this._IDVO, sqlVO.ESelVOLager.All, this.dsVO1, dFrom, dTo, sZustand2, sSeriennummer);
                     this.gridVOLager.Refresh();
                 }
 
@@ -473,7 +473,7 @@ namespace PMDS.GUI.Verordnungen
                     PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
                     DateTime dNow = DateTime.Now;
 
-                    dsVO.VO_LagerRow rNew = this.sqlVO1.getNewRowVOLager(ref this.dsVO1);
+                    dsVO.VO_LagerRow rNew = this.sqlVO1.GetNewRowVOLager(ref this.dsVO1);
                     rNew.Seriennummer = "";
                     rNew.Zustand = "";
                     rNew.IDVO = this._IDVO.Value;
@@ -512,7 +512,7 @@ namespace PMDS.GUI.Verordnungen
                                 DataRowView v = (DataRowView)rGrid.ListObject;
                                 dsVO.VO_LagerRow rSelRow = (dsVO.VO_LagerRow)v.Row;
 
-                                this.sqlVO1.delete_VOLager(rSelRow.ID);
+                                this.sqlVO1.DeleteVOLager(rSelRow.ID);
                             }
 
                             this.loadData(this._IDVO, this._sZustand);

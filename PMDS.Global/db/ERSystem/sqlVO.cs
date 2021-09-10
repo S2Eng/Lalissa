@@ -14,19 +14,18 @@ namespace PMDS.Global.db.ERSystem
     public partial class sqlVO : Component
     {
 
-        public string selVO = "";
-        public string selVO_Bestelldaten = "";
-        public string selVO_Bestellpostitionen = "";
-        public string selVOLager= "";
-
-        public bool isInitialized = false;
+        public string SelVO { get; set; } = "";
+        public string SelVOBestelldaten { get; set; } = "";
+        public string SelVOBestellpostitionen { get; set; } = "";
+        public string SelVOLager { get; set; } = "";
+        public bool IsInitialized { get; set; }
 
         public enum eSelVO
         {
             ID = 0,
             Search = 1
         }
-        public enum eSelVO_Bestelldaten
+        public enum ESelVOBestelldaten
         {
             ID = 0,
             AllsWhereIDVOVerordnung = 1,
@@ -34,24 +33,18 @@ namespace PMDS.Global.db.ERSystem
             search = 3,
             IDVO = 4
         }
-        public enum eSelVO_Bestellpostitionen
+        public enum ESelVOBestellpostitionen
         {
             ID = 0,
             Search = 1
         }
-        public enum eSelVOLager
+        public enum ESelVOLager
         {
             IDVO = 0,
             All = 1
         }
 
-        public PMDSBusiness b = new PMDSBusiness();
-
-
-
-
-
-
+        public PMDSBusiness b { get; set; } = new PMDSBusiness();
 
         public sqlVO()
         {
@@ -61,23 +54,21 @@ namespace PMDS.Global.db.ERSystem
         public sqlVO(IContainer container)
         {
             container.Add(this);
-
             InitializeComponent();
         }
 
-
-        public void initControl()
+        public void InitControl()
         {
             try
             {
-                if (!this.isInitialized)
+                if (!this.IsInitialized)
                 {
-                    this.selVO = this.daVO.SelectCommand.CommandText;
-                    this.selVO_Bestelldaten = this.daVO_Bestelldaten.SelectCommand.CommandText;
-                    this.selVO_Bestellpostitionen = this.daVO_Bestellpostitionen.SelectCommand.CommandText;
-                    this.selVOLager = this.da_VOLager.SelectCommand.CommandText;
+                    this.SelVO = this.daVO.SelectCommand.CommandText;
+                    this.SelVOBestelldaten = this.daVO_Bestelldaten.SelectCommand.CommandText;
+                    this.SelVOBestellpostitionen = this.daVO_Bestellpostitionen.SelectCommand.CommandText;
+                    this.SelVOLager = this.da_VOLager.SelectCommand.CommandText;
 
-                    this.isInitialized = true;
+                    this.IsInitialized = true;
                 }
             }
             catch (Exception ex)
@@ -86,23 +77,20 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-
-
-
-        public bool getVO(Nullable<System.Guid> ID, eSelVO selType, ref dsVO ds, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, Nullable<Guid> gTyp, string lstPatients,
+        public bool GetVO(Nullable<System.Guid> ID, eSelVO selType, ref dsVO ds, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, Nullable<Guid> gTyp, string lstPatients,
                             Nullable<Guid> IDAufenthalt, Nullable<Guid> IDPflegeplan, Nullable<Guid> IDMedDaten, Nullable<Guid> IDWundeKopf, bool NurAktuelle, PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI TypeUI, bool SearchForForVerknüpfungen, ref System.Collections.Generic.List<Guid> lstTyp,
                             ref List<Guid> lstIDVONotShow, string sLagerZustand)
         {
             try
             {
-                this.daVO.SelectCommand.CommandText = this.selVO;
-                this.daVO.SelectCommand.Parameters.Clear();
-                PMDS.Global.dbBase.setConnection(this.daVO, RBU.DataBase.CONNECTION);
+                daVO.SelectCommand.CommandText = SelVO;
+                daVO.SelectCommand.Parameters.Clear();
+                PMDS.Global.dbBase.setConnection(daVO, RBU.DataBase.CONNECTION);
 
                 if (selType == eSelVO.ID)
                 {
                     string sqlWhere = " where ID='" + ID.Value.ToString() + "'";
-                    this.daVO.SelectCommand.CommandText += sqlWhere;
+                    daVO.SelectCommand.CommandText += sqlWhere;
                 }
                 else if (selType == eSelVO.Search)
                 {
@@ -116,67 +104,67 @@ namespace PMDS.Global.db.ERSystem
                     {
                         if (NurAktuelle)
                         {
-                            sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumVerordnetAb<=? ";
+                            sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumVerordnetAb<=? ";
                         }
                         else
                         {
-                            sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumVerordnetAb>=? ";
+                            sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumVerordnetAb>=? ";
                         }
                     }
                     if (dTo != null)
                     {
                         if (NurAktuelle)
                         {
-                            sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " (DatumVerordnetBis>=? or DatumVerordnetBis is null)";
+                            sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " (DatumVerordnetBis>=? or DatumVerordnetBis is null)";
                         }
                         else
                         {
-                            sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " (DatumVerordnetBis<=? or DatumVerordnetBis is null) ";
+                            sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " (DatumVerordnetBis<=? or DatumVerordnetBis is null) ";
                         }
                     }
                     if (gTyp != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Typ='" + gTyp.ToString() + "' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " Typ='" + gTyp.ToString() + "' ";
                     }
-                    if (sLagerZustand.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sLagerZustand))
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " VO.ID IN (Select IDVO from VO_Lager where Zustand='" + sLagerZustand.Trim() + "') ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " VO.ID IN (Select IDVO from VO_Lager where Zustand='" + sLagerZustand.Trim() + "') ";
                     }
                     if (lstTyp != null && lstTyp.Count > 0)
                     {
                         string sWhereTmp = "";
                         foreach (Guid gGuidTmp in lstTyp)
                         {
-                            sWhereTmp += (sWhereTmp.Trim() == "" ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
+                            sWhereTmp += (String.IsNullOrWhiteSpace(sWhereTmp) ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
                         }
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " (" + sWhereTmp + ") ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " (" + sWhereTmp + ") ";
                     }
                     if (lstIDVONotShow != null && lstIDVONotShow.Count > 0)
                     {
                         string sWhereTmp = "";
                         foreach (Guid gGuidTmp in lstIDVONotShow)
                         {
-                            sWhereTmp += (sWhereTmp.Trim() == "" ? "" : " and ") + " ID<>'" + gGuidTmp.ToString() + "' ";
+                            sWhereTmp += (String.IsNullOrWhiteSpace(sqlWhere) ? "" : " and ") + " ID<>'" + gGuidTmp.ToString() + "' ";
                         }
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " (" + sWhereTmp + ") ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " (" + sWhereTmp + ") ";
                     }
-                    if (lstPatients.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(lstPatients))
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + lstPatients + " ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + lstPatients + " ";
                     }
 
                     if (SearchForForVerknüpfungen)
                     {
                         string sqlWhereIDsTmp = "";
-                        sqlWhereIDsTmp += (sqlWhereIDsTmp.Trim() == "" ? "" : " or ") + " IDAufenthalt='" + IDAufenthalt.ToString() + "' ";
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + sqlWhereIDsTmp + " ";
+                        sqlWhereIDsTmp += (String.IsNullOrWhiteSpace(sqlWhereIDsTmp) ? "" : " or ") + " IDAufenthalt='" + IDAufenthalt.ToString() + "' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + sqlWhereIDsTmp + " ";
                     }
                     else
                     {
                         string sqlWhereIDsTmp = "";
                         if (IDAufenthalt != null && IDPflegeplan == null && IDMedDaten == null && IDWundeKopf == null)
                         {
-                            sqlWhereIDsTmp += (sqlWhereIDsTmp.Trim() == "" ? "" : " or ") + " IDAufenthalt='" + IDAufenthalt.ToString() + "' ";
+                            sqlWhereIDsTmp += (String.IsNullOrWhiteSpace(sqlWhereIDsTmp) ? "" : " or ") + " IDAufenthalt='" + IDAufenthalt.ToString() + "' ";
                             //sqlWhereIDsTmp += (sqlWhereIDsTmp.Trim() == "" ? "" : " or ") + " (IDAufenthalt='" + IDAufenthalt.ToString() + "' and VO.ID not IN (Select IDVerordnung from VO_PflegeplanPDX)  and VO.ID not IN (Select IDVerordnung from VO_MedizinischeDaten)) ";
                         }
                         if (IDPflegeplan != null)
@@ -186,7 +174,7 @@ namespace PMDS.Global.db.ERSystem
                                 PMDS.db.Entities.PflegePlan rPflegeplan = this.b.getPflegeplan(IDPflegeplan.Value, db);
                                 //IQueryable<PMDS.db.Entities.PflegePlanPDx> tPflegePlanPDx = db.PflegePlanPDx.Where(o => o.IDPflegePlan == IDPflegeplan.Value);
                                 //PMDS.db.Entities.PflegePlanPDx rPflegePlanPDx = tPflegePlanPDx.First();
-                                if (rPflegeplan.EintragGruppe.Equals("T"))      //Keine VO zu Terminen möglich
+                                if (generic.sEquals(rPflegeplan.EintragGruppe, "T"))      //Keine VO zu Terminen möglich
                                     return true;
                                 
                                 
@@ -196,7 +184,7 @@ namespace PMDS.Global.db.ERSystem
                                     sqlWhereTmp += " and VO.IDAufenthalt='" + IDAufenthalt.ToString() + "' ";
                                 }
                                 sqlWhereTmp += ") ";
-                                sqlWhereIDsTmp += (sqlWhereIDsTmp.Trim() == "" ? "" : " or ") + sqlWhereTmp + " ";
+                                sqlWhereIDsTmp += (String.IsNullOrWhiteSpace(sqlWhereIDsTmp) ? "" : " or ") + sqlWhereTmp + " ";
                             }
                         }
                         if (IDMedDaten != null)
@@ -207,7 +195,7 @@ namespace PMDS.Global.db.ERSystem
                                 sqlWhereTmp += " and VO.IDAufenthalt='" + IDAufenthalt.ToString() + "' ";
                             }
                             sqlWhereTmp += ") ";
-                            sqlWhereIDsTmp += (sqlWhereIDsTmp.Trim() == "" ? "" : " or ") + sqlWhereTmp + " ";
+                            sqlWhereIDsTmp += (String.IsNullOrWhiteSpace(sqlWhereIDsTmp) ? "" : " or ") + sqlWhereTmp + " ";
                         }
                         if (IDWundeKopf != null)
                         {
@@ -217,11 +205,11 @@ namespace PMDS.Global.db.ERSystem
                                 sqlWhereTmp += " and VO.IDAufenthalt='" + IDAufenthalt.ToString() + "' ";
                             }
                             sqlWhereTmp += ") ";
-                            sqlWhereIDsTmp += (sqlWhereIDsTmp.Trim() == "" ? "" : " or ") + sqlWhereTmp + " ";
+                            sqlWhereIDsTmp += (String.IsNullOrWhiteSpace(sqlWhereIDsTmp) ? "" : " or ") + sqlWhereTmp + " ";
                         }
-                        if (sqlWhereIDsTmp.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(sqlWhereIDsTmp))
                         {
-                            sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + sqlWhereIDsTmp + " ";
+                            sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + sqlWhereIDsTmp + " ";
                         }
                     }
 
@@ -250,52 +238,53 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public dsVO.VORow getNewRowVO(ref dsVO ds)
+        //public dsVO.VORow getNewRowVO(ref dsVO ds)
+        //{
+        //    try
+        //    {
+        //        dsVO.VORow rNew = (dsVO.VORow)ds.VO.NewRow();
+        //        rNew.ID = System.Guid.NewGuid();
+        //        rNew.IDAufenthalt = System.Guid.NewGuid();
+        //        rNew.IDMedikament = System.Guid.NewGuid();
+        //        rNew.Typ = System.Guid.NewGuid();
+        //        rNew.Menge = 0;
+        //        rNew.Einheit = "";
+        //        rNew.Hinweis = "";
+        //        rNew.DatumVerordnetAb = DateTime.Now;
+        //        rNew.SetDatumVerordnetBisNull();
+        //        rNew.BestaetigtVon = "";
+        //        rNew.DatumErstellt = DateTime.Now;
+        //        rNew.IDBenutzerErstellt = System.Guid.NewGuid();
+        //        rNew.LoginNameFreiErstellt = "";
+        //        rNew.DatumGeaendert = DateTime.Now;
+        //        rNew.IDBenutzerGeaendert = System.Guid.NewGuid();
+        //        rNew.LoginNameFreiGeaendert = "";
+        //        rNew.SetLieferantNull();
+        //        rNew.HinweisLieferant = "";
+        //        rNew.Anmerkung = "";
+
+        //        ds.VO.Rows.Add(rNew);
+        //        return rNew;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("sqlVO.getNewRowVO: " + ex.ToString());
+        //    }
+        //}
+
+        public bool DeleteVO(Guid IDVO)
         {
             try
             {
-                dsVO.VORow rNew = (dsVO.VORow)ds.VO.NewRow();
-                rNew.ID = System.Guid.NewGuid();
-                rNew.IDAufenthalt = System.Guid.NewGuid();
-                rNew.IDMedikament = System.Guid.NewGuid();
-                rNew.Typ = System.Guid.NewGuid();
-                rNew.Menge = 0;
-                rNew.Einheit = "";
-                rNew.Hinweis = "";
-                rNew.DatumVerordnetAb = DateTime.Now;
-                rNew.SetDatumVerordnetBisNull();
-                rNew.BestaetigtVon = "";
-                rNew.DatumErstellt = DateTime.Now;
-                rNew.IDBenutzerErstellt = System.Guid.NewGuid();
-                rNew.LoginNameFreiErstellt = "";
-                rNew.DatumGeaendert = DateTime.Now;
-                rNew.IDBenutzerGeaendert = System.Guid.NewGuid();
-                rNew.LoginNameFreiGeaendert = "";
-                rNew.SetLieferantNull();
-                rNew.HinweisLieferant = "";
-                rNew.Anmerkung = "";
-
-                ds.VO.Rows.Add(rNew);
-                return rNew;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("sqlVO.getNewRowVO: " + ex.ToString());
-            }
-        }
-
-        public bool delete_VO(Guid IDVO)
-        {
-            try
-            {
-                System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                cmd.CommandText = " Delete from VO where ID='" + IDVO.ToString()  + "' ";
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                cmd.ExecuteNonQuery();
-                
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand())
+                {
+                    cmd.CommandText = " Delete from VO where ID='" + IDVO.ToString() + "' ";
+                    cmd.CommandTimeout = 0;
+                    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                        RBU.DataBase.CONNECTION.Open();
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -303,18 +292,19 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("sqlVO.delete_VO: " + ex.ToString());
             }
         }
-        public bool delete_VOMedDaten(Guid IDVO, Guid IDMedizinischeDaten)
+        public bool DeleteVOMedDaten(Guid IDVO, Guid IDMedizinischeDaten)
         {
             try
             {
-                System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                cmd.CommandText = " Delete from VO_MedizinischeDaten where IDVerordnung='" + IDVO.ToString() + "' and IDMedizinischeDaten='" + IDMedizinischeDaten.ToString() + "' ";
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                cmd.ExecuteNonQuery();
-
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand())
+                {
+                    cmd.CommandText = " Delete from VO_MedizinischeDaten where IDVerordnung='" + IDVO.ToString() + "' and IDMedizinischeDaten='" + IDMedizinischeDaten.ToString() + "' ";
+                    cmd.CommandTimeout = 0;
+                    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                        RBU.DataBase.CONNECTION.Open();
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -322,18 +312,19 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("sqlVO.delete_VOMedDaten: " + ex.ToString());
             }
         }
-        public bool delete_VOPflegeplanPDx(Guid IDVO, Guid IDUntertaegigeGruppe)
+        public bool DeleteVOPflegeplanPDx(Guid IDVO, Guid IDPflegeplan)
         {
             try
             {
-                System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                cmd.CommandText = " Delete from VO_PflegeplanPDX where IDVerordnung='" + IDVO .ToString() + "' and IDUntertaegigeGruppe='" + IDUntertaegigeGruppe.ToString() + "' ";
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                cmd.ExecuteNonQuery();
-
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand())
+                {
+                    cmd.CommandText = "Delete from VO_PflegeplanPDX where IDVerordnung='" + IDVO.ToString() + "' and IDUntertaegigeGruppe IN (SELECT IDUntertaegigeGruppe from PflegePlan WHERE ID = '" + IDPflegeplan.ToString() + "') ";
+                    cmd.CommandTimeout = 0;
+                    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                        RBU.DataBase.CONNECTION.Open();
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -341,18 +332,19 @@ namespace PMDS.Global.db.ERSystem
                 throw new Exception("sqlVO.delete_VOPflegeplanPDx: " + ex.ToString());
             }
         }
-        public bool delete_VOWundeKopf(Guid IDVO, Guid IDWundeKopf)
+        public bool DeleteVOWundeKopf(Guid IDVO, Guid IDWundeKopf)
         {
             try
             {
-                System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                cmd.CommandText = " Delete from VO_Wunde where IDVerordnung='" + IDVO.ToString() + "' and IDWundeKopf='" + IDWundeKopf.ToString() + "' ";
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                cmd.ExecuteNonQuery();
-
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand())
+                {
+                    cmd.CommandText = " Delete from VO_Wunde where IDVerordnung='" + IDVO.ToString() + "' and IDWundeKopf='" + IDWundeKopf.ToString() + "' ";
+                    cmd.CommandTimeout = 0;
+                    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                        RBU.DataBase.CONNECTION.Open();
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -361,29 +353,29 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public bool getVO_Bestelldaten(Nullable<System.Guid> ID, eSelVO_Bestelldaten selType, ref dsVO ds, string sWhereIDVO, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, Nullable<Guid> gTyp,
+        public bool GetVOBestelldaten(Nullable<System.Guid> ID, ESelVOBestelldaten selType, ref dsVO ds, string sWhereIDVO, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, Nullable<Guid> gTyp,
                                         string lstPatients, bool NurAktuelle, Nullable<Guid> IDAufenthalt, ref System.Collections.Generic.List<Guid> lstTyp)
         {
             try
             {
-                this.daVO_Bestelldaten.SelectCommand.CommandText = this.selVO_Bestelldaten;
+                this.daVO_Bestelldaten.SelectCommand.CommandText = this.SelVOBestelldaten;
                 this.daVO_Bestelldaten.SelectCommand.Parameters.Clear();
                 PMDS.Global.dbBase.setConnection(this.daVO_Bestelldaten, RBU.DataBase.CONNECTION);
 
-                if (selType == eSelVO_Bestelldaten.ID)
+                if (selType == ESelVOBestelldaten.ID)
                 {
                     string sqlWhere = " where ID='" + ID.Value.ToString() + "'";
                     this.daVO_Bestelldaten.SelectCommand.CommandText += sqlWhere;
                 }
-                else if (selType == eSelVO_Bestelldaten.IDVO)
+                else if (selType == ESelVOBestelldaten.IDVO)
                 {
                     string sqlWhere = " where IDVerordnung='" + ID.Value.ToString() + "'";
                     this.daVO_Bestelldaten.SelectCommand.CommandText += sqlWhere;
                 }
-                else if (selType == eSelVO_Bestelldaten.AllsWhereIDVOVerordnung)
+                else if (selType == ESelVOBestelldaten.AllsWhereIDVOVerordnung)
                 {
                     string sqlWhere = "";
-                    if (sWhereIDVO.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sWhereIDVO))
                     {
                         sqlWhere = " where (" + sWhereIDVO + ") ";
                     }
@@ -393,7 +385,7 @@ namespace PMDS.Global.db.ERSystem
                     }
                     this.daVO_Bestelldaten.SelectCommand.CommandText += sqlWhere;
                 }
-                else if (selType == eSelVO_Bestelldaten.search)
+                else if (selType == ESelVOBestelldaten.search)
                 {
                     string sqlWhere = "";
                     if (NurAktuelle)
@@ -403,39 +395,39 @@ namespace PMDS.Global.db.ERSystem
                     }
                     if (dFrom != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " GueltigAb>=? ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " GueltigAb>=? ";
                     }
                     if (dTo != null)
                     {
                         if (NurAktuelle)
                         {
-                            sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " GueltigBis>? ";
+                            sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " GueltigBis>? ";
                         }
                         else
                         {
-                            sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " GueltigBis<=? ";
+                            sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " GueltigBis<=? ";
                         }
                     }
                     if (gTyp != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Typ='" + gTyp.ToString() + "' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " Typ='" + gTyp.ToString() + "' ";
                     }
                     if (lstTyp.Count > 0)
                     {
                         string sWhereTmp = "";
                         foreach (Guid gGuidTmp in lstTyp)
                         {
-                            sWhereTmp += (sWhereTmp.Trim() == "" ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
+                            sWhereTmp += (String.IsNullOrWhiteSpace(sqlWhere) ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
                         }
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " VO_Bestellpostitionen.IDBestelldaten_VO IN (Select ID from VO_Bestelldaten where (" + sWhereTmp + ")) ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " VO_Bestellpostitionen.IDBestelldaten_VO IN (Select ID from VO_Bestelldaten where (" + sWhereTmp + ")) ";
                     }
-                    if (lstPatients.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(lstPatients))
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + lstPatients + " ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + lstPatients + " ";
                     }
                     if (IDAufenthalt != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + "  VO_Bestelldaten.IDVerordnung IN (Select VO.ID from VO where VO.IDAufenthalt='" + IDAufenthalt.ToString() + "') ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + "  VO_Bestelldaten.IDVerordnung IN (Select VO.ID from VO where VO.IDAufenthalt='" + IDAufenthalt.ToString() + "') ";
                     }
 
                     this.daVO_Bestelldaten.SelectCommand.CommandText += sqlWhere;
@@ -448,7 +440,7 @@ namespace PMDS.Global.db.ERSystem
                         this.daVO_Bestelldaten.SelectCommand.Parameters.Add(new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 16, "GueltigBis")).Value = dTo.Value.Date;
                     }
                 }
-                else if (selType == eSelVO_Bestelldaten.Bestellvorschläge)
+                else if (selType == ESelVOBestelldaten.Bestellvorschläge)
                 {
                     string sqlWhere = "";
 
@@ -458,29 +450,29 @@ namespace PMDS.Global.db.ERSystem
                     //sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Status='" + PMDSBusiness.IDVOStatusBestellt.ToString() + "' ";
                     if (dFrom != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumNaechsterAnspruch>=? ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumNaechsterAnspruch>=? ";
                     }
                     if (dTo != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumNaechsterAnspruch<=? ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumNaechsterAnspruch<=? ";
                     }
-                    if (sWhereIDVO.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sWhereIDVO))
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " " + sWhereIDVO + " ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " " + sWhereIDVO + " ";
                     }
                   
                     if (gTyp != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Typ='" + gTyp.ToString() + "' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " Typ='" + gTyp.ToString() + "' ";
                     }
                     if (lstTyp.Count > 0)
                     {
                         string sWhereTmp = "";
                         foreach (Guid gGuidTmp in lstTyp)
                         {
-                            sWhereTmp += (sWhereTmp.Trim() == "" ? "" : " or ") + " VO_Bestelldaten.Typ='" + gGuidTmp.ToString() + "' ";
+                            sWhereTmp += (String.IsNullOrWhiteSpace(sqlWhere) ? "" : " or ") + " VO_Bestelldaten.Typ='" + gGuidTmp.ToString() + "' ";
                         }
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " (" + sWhereTmp + ") ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " (" + sWhereTmp + ") ";
                     }
 
                     this.daVO_Bestelldaten.SelectCommand.CommandText += sqlWhere;
@@ -510,18 +502,19 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public bool delete_VOBestelldaten(Guid IDVO)
+        public bool DeleteVOBestelldaten(Guid IDVO)
         {
             try
             {
-                System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                cmd.CommandText = " Delete from VO_Bestelldaten where ID='" + IDVO.ToString() + "' ";
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                cmd.ExecuteNonQuery();
-
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand())
+                {
+                    cmd.CommandText = " Delete from VO_Bestelldaten where ID='" + IDVO.ToString() + "' ";
+                    cmd.CommandTimeout = 0;
+                    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                        RBU.DataBase.CONNECTION.Open();
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -530,97 +523,97 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public dsVO.VO_BestelldatenRow getNewRowVO_Bestelldaten(ref dsVO ds)
-        {
-            try
-            {
-                dsVO.VO_BestelldatenRow rNew = (dsVO.VO_BestelldatenRow)ds.VO_Bestelldaten.NewRow();
-                rNew.ID = System.Guid.NewGuid();
-                rNew.IDVerordnung = System.Guid.NewGuid();
-                rNew.GueltigAb = DateTime.Now;
-                rNew.GueltigBis = DateTime.Now;
-                rNew.Typ = System.Guid.NewGuid();
-                rNew.IDMedikament = System.Guid.NewGuid();
+        //public dsVO.VO_BestelldatenRow getNewRowVO_Bestelldaten(ref dsVO ds)
+        //{
+        //    try
+        //    {
+        //        dsVO.VO_BestelldatenRow rNew = (dsVO.VO_BestelldatenRow)ds.VO_Bestelldaten.NewRow();
+        //        rNew.ID = System.Guid.NewGuid();
+        //        rNew.IDVerordnung = System.Guid.NewGuid();
+        //        rNew.GueltigAb = DateTime.Now;
+        //        rNew.GueltigBis = DateTime.Now;
+        //        rNew.Typ = System.Guid.NewGuid();
+        //        rNew.IDMedikament = System.Guid.NewGuid();
                 
-                rNew.EigentumKlient = false;
-                rNew.Menge = 0;
-                rNew.Einheit = "";
-                rNew.Lieferant = System.Guid.NewGuid();
-                rNew.HinweisLieferant = "";
-                rNew.Anmerkung = "";
-                rNew.IDBenutzerErstellt = System.Guid.NewGuid();
-                rNew.LoginNameFreiErstellt = "";
-                rNew.DatumErstellt = DateTime.Now;
-                rNew.IDBenutzergeaendert = System.Guid.NewGuid();
-                rNew.LoginNameFreiGeaendert = "";
-                rNew.DatumGeaendert = DateTime.Now;
+        //        rNew.EigentumKlient = false;
+        //        rNew.Menge = 0;
+        //        rNew.Einheit = "";
+        //        rNew.Lieferant = System.Guid.NewGuid();
+        //        rNew.HinweisLieferant = "";
+        //        rNew.Anmerkung = "";
+        //        rNew.IDBenutzerErstellt = System.Guid.NewGuid();
+        //        rNew.LoginNameFreiErstellt = "";
+        //        rNew.DatumErstellt = DateTime.Now;
+        //        rNew.IDBenutzergeaendert = System.Guid.NewGuid();
+        //        rNew.LoginNameFreiGeaendert = "";
+        //        rNew.DatumGeaendert = DateTime.Now;
 
-                rNew.Dauerbestellung = false;
-                rNew.DatumNaechsterAnspruch = DateTime.Now;
-                rNew.SetSerienterminEndetAmNull();
-                rNew.SerienterminType = "";
-                rNew.SetWiedWertJedenNull();
-                rNew.TagWochenMonat = "";
-                rNew.SetnTenMonatNull();
-                rNew.Wochentage = "";
-                rNew.Dauer = -1;
-                rNew.EinmaligeAnforderung = false;
+        //        rNew.Dauerbestellung = false;
+        //        rNew.DatumNaechsterAnspruch = DateTime.Now;
+        //        rNew.SetSerienterminEndetAmNull();
+        //        rNew.SerienterminType = "";
+        //        rNew.SetWiedWertJedenNull();
+        //        rNew.TagWochenMonat = "";
+        //        rNew.SetnTenMonatNull();
+        //        rNew.Wochentage = "";
+        //        rNew.Dauer = -1;
+        //        rNew.EinmaligeAnforderung = false;
 
-                ds.VO_Bestelldaten.Rows.Add(rNew);
-                return rNew;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("sqlVO.getNewRowVO_Bestelldaten: " + ex.ToString());
-            }
-        }
+        //        ds.VO_Bestelldaten.Rows.Add(rNew);
+        //        return rNew;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("sqlVO.getNewRowVO_Bestelldaten: " + ex.ToString());
+        //    }
+        //}
 
-        public bool getVO_Bestellpostitionen(Nullable<System.Guid> ID, eSelVO_Bestellpostitionen selType, ref dsVO ds, string sWhereIDVO, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, Nullable<Guid> gTyp, Nullable<Guid> gStatus, 
+        public bool GetVOBestellpostitionen(Nullable<System.Guid> ID, ESelVOBestellpostitionen selType, ref dsVO ds, string sWhereIDVO, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, Nullable<Guid> gTyp, Nullable<Guid> gStatus, 
                                             ref System.Collections.Generic.List<Guid> lstTyp)
         {
             try
             {
-                this.daVO_Bestellpostitionen.SelectCommand.CommandText = this.selVO_Bestellpostitionen;
+                this.daVO_Bestellpostitionen.SelectCommand.CommandText = this.SelVOBestellpostitionen;
                 this.daVO_Bestellpostitionen.SelectCommand.Parameters.Clear();
                 PMDS.Global.dbBase.setConnection(this.daVO_Bestellpostitionen, RBU.DataBase.CONNECTION);
                 
-                if (selType == eSelVO_Bestellpostitionen.ID)
+                if (selType == ESelVOBestellpostitionen.ID)
                 {
                     string sqlWhere = " where ID='" + ID.Value.ToString() + "'";
                     this.daVO_Bestellpostitionen.SelectCommand.CommandText += sqlWhere;
                 }
-                else if (selType == eSelVO_Bestellpostitionen.Search)
+                else if (selType == ESelVOBestellpostitionen.Search)
                 {
                     string sqlWhere = "";
                     if (dFrom != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumBestellung>=? ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumBestellung>=? ";
                     }
                     if (dTo != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumBestellung<=? ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumBestellung<=? ";
                     }
                     if (sWhereIDVO.Trim() != "")
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " " + sWhereIDVO + " ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " " + sWhereIDVO + " ";
                     }
 
                     if (gTyp != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " VO_Bestellpostitionen.IDBestelldaten_VO IN (Select ID from VO_Bestelldaten where Typ='" + gTyp.ToString() + "') ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " VO_Bestellpostitionen.IDBestelldaten_VO IN (Select ID from VO_Bestelldaten where Typ='" + gTyp.ToString() + "') ";
                     }
                     if (lstTyp != null && lstTyp.Count > 0)
                     {
                         string sWhereTmp = "";
                         foreach (Guid gGuidTmp in lstTyp)
                         {
-                            sWhereTmp += (sWhereTmp.Trim() == "" ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
+                            sWhereTmp += (String.IsNullOrWhiteSpace(sqlWhere) ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
                         }
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " VO_Bestellpostitionen.IDBestelldaten_VO IN (Select ID from VO_Bestelldaten where (" + sWhereTmp + ")) ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " VO_Bestellpostitionen.IDBestelldaten_VO IN (Select ID from VO_Bestelldaten where (" + sWhereTmp + ")) ";
                     }
                     if (gStatus != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Status='" + gStatus.ToString() + "' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " Status='" + gStatus.ToString() + "' ";
                     }
 
                     this.daVO_Bestellpostitionen.SelectCommand.CommandText += sqlWhere;
@@ -647,18 +640,19 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public bool delete_IDVO_Bestellposition(Guid IDVOBestellposition)
+        public bool DeleteIDVOBestellposition(Guid IDVOBestellposition)
         {
             try
             {
-                System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                cmd.CommandText = " Delete from VO_Bestellpostitionen where ID='" + IDVOBestellposition.ToString() + "' ";
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                cmd.ExecuteNonQuery();
-
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand())
+                {
+                    cmd.CommandText = " Delete from VO_Bestellpostitionen where ID='" + IDVOBestellposition.ToString() + "' ";
+                    cmd.CommandTimeout = 0;
+                    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                        RBU.DataBase.CONNECTION.Open();
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -667,7 +661,7 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public dsVO.VO_BestellpostitionenRow getNewRowVO_Bestellpostitionen(ref dsVO ds)
+        public dsVO.VO_BestellpostitionenRow GetNewRowVOBestellpostitionen(ref dsVO ds)
         {
             try
             {
@@ -708,42 +702,42 @@ namespace PMDS.Global.db.ERSystem
         }
 
 
-        public bool getVOLager(Nullable<System.Guid> IDVO, eSelVOLager selType, dsVO ds, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, string sZustand, string sSeriennummer)
+        public bool GetVOLager(Nullable<System.Guid> IDVO, ESelVOLager selType, dsVO ds, Nullable<DateTime> dFrom, Nullable<DateTime> dTo, string sZustand, string sSeriennummer)
         {
             try
             {
-                this.da_VOLager.SelectCommand.CommandText = this.selVOLager;
+                this.da_VOLager.SelectCommand.CommandText = this.SelVOLager;
                 this.da_VOLager.SelectCommand.Parameters.Clear();
                 PMDS.Global.dbBase.setConnection(this.da_VOLager, RBU.DataBase.CONNECTION);
 
-                if (selType == eSelVOLager.IDVO)
+                if (selType == ESelVOLager.IDVO)
                 {
                     string sqlWhere = " where IDVO='" + IDVO.Value.ToString() + "'";
-                    if (sZustand.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sZustand))
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Zustand='" + sZustand.Trim() + "' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " Zustand='" + sZustand.Trim() + "' ";
                     }
 
                     this.da_VOLager.SelectCommand.CommandText += sqlWhere;
                 }
-                else if (selType == eSelVOLager.All)
+                else if (selType == ESelVOLager.All)
                 {
                     string sqlWhere = "";
-                    if (sSeriennummer.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sSeriennummer))
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Seriennummer like '%" + sSeriennummer.Trim() + "%' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " Seriennummer like '%" + sSeriennummer.Trim() + "%' ";
                     }
-                    if (sZustand.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(sZustand))
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " Zustand='" + sZustand.Trim() + "' ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " Zustand='" + sZustand.Trim() + "' ";
                     }
                     if (dFrom != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumErstellt>=? ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumErstellt>=? ";
                     }
                     if (dTo != null)
                     {
-                        sqlWhere += (sqlWhere.Trim() == "" ? " where " : " and ") + " DatumErstellt<=? ";
+                        sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " DatumErstellt<=? ";
                     }
                     this.da_VOLager.SelectCommand.CommandText += sqlWhere;
                     if (dFrom != null)
@@ -770,18 +764,19 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public bool delete_VOLager(Guid IDVOLager)
+        public bool DeleteVOLager(Guid IDVOLager)
         {
             try
             {
-                System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                cmd.CommandText = " Delete from VO_Lager where ID='" + IDVOLager.ToString() + "' ";
-                cmd.CommandTimeout = 0;
-                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                    RBU.DataBase.CONNECTION.Open();
-                cmd.Connection = RBU.DataBase.CONNECTION;
-                cmd.ExecuteNonQuery();
-
+                using (System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand())
+                {
+                    cmd.CommandText = " Delete from VO_Lager where ID='" + IDVOLager.ToString() + "' ";
+                    cmd.CommandTimeout = 0;
+                    if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                        RBU.DataBase.CONNECTION.Open();
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    cmd.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception ex)
@@ -790,7 +785,7 @@ namespace PMDS.Global.db.ERSystem
             }
         }
 
-        public dsVO.VO_LagerRow getNewRowVOLager(ref dsVO ds)
+        public dsVO.VO_LagerRow GetNewRowVOLager(ref dsVO ds)
         {
             try
             {

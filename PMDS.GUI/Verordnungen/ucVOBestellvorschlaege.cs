@@ -90,7 +90,7 @@ namespace PMDS.GUI.Verordnungen
                 this.gridVOErfBestell.UpdateMode = UpdateMode.OnCellChangeOrLostFocus;
                 this.gridVOErfBestell.UpdateData();
 
-                this.sqlVO1.initControl();
+                this.sqlVO1.InitControl();
                 this.sqlManange1.initControl();
 
                 if (this._TypeUI == ucVOBestellvorschlaegeDetail.eTypeUI.Bestellvorschläge)
@@ -269,8 +269,8 @@ namespace PMDS.GUI.Verordnungen
 
                 if (this._TypeUI == ucVOBestellvorschlaegeDetail.eTypeUI.Bestellvorschläge)
                 {
-                    this.sqlVO1.getVO_Bestellpostitionen(System.Guid.NewGuid(), sqlVO.eSelVO_Bestellpostitionen.ID, ref this.dsVO1, "", null, null, null, null, ref lstSelectedTyp);
-                    this.sqlVO1.getVO_Bestelldaten(null, sqlVO.eSelVO_Bestelldaten.Bestellvorschläge, ref this.dsVO1, sWherePatients, dFrom, dTo, null, "", false, null, ref lstSelectedTyp);
+                    this.sqlVO1.GetVOBestellpostitionen(System.Guid.NewGuid(), sqlVO.ESelVOBestellpostitionen.ID, ref this.dsVO1, "", null, null, null, null, ref lstSelectedTyp);
+                    this.sqlVO1.GetVOBestelldaten(null, sqlVO.ESelVOBestelldaten.Bestellvorschläge, ref this.dsVO1, sWherePatients, dFrom, dTo, null, "", false, null, ref lstSelectedTyp);
 
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
@@ -312,9 +312,9 @@ namespace PMDS.GUI.Verordnungen
                                                                         DatumBestellung = bp.DatumBestellung
                                                                     });
 
-                                if (tVO_Bestellpostitionen.Count() == 0)
+                                if (!tVO_Bestellpostitionen.Any())
                                 {
-                                    dsVO.VO_BestellpostitionenRow rNewVO_Bestellpostitionen = this.sqlVO1.getNewRowVO_Bestellpostitionen(ref this.dsVO1);
+                                    dsVO.VO_BestellpostitionenRow rNewVO_Bestellpostitionen = this.sqlVO1.GetNewRowVOBestellpostitionen(ref this.dsVO1);
                                     rNewVO_Bestellpostitionen.ID = System.Guid.NewGuid();
                                     rNewVO_Bestellpostitionen.IDBestelldaten_VO = rVO_BestelldatenAct.ID;
                                     rNewVO_Bestellpostitionen.IDMedikament = rVO_BestelldatenAct.IDMedikament;
@@ -350,7 +350,7 @@ namespace PMDS.GUI.Verordnungen
                         OleDbDataAdapter da = new OleDbDataAdapter();
                         OleDbCommand cmd = new OleDbCommand();
                         Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
-                        sqlVOHelp.initControl();
+                        sqlVOHelp.InitControl();
                         dsVO dsVOHelp = new dsVO();
                         int iInserted = 0;
                         bool doValidateBestellvorschläge = false;
@@ -383,7 +383,7 @@ namespace PMDS.GUI.Verordnungen
                 }
                 else if (this._TypeUI == ucVOBestellvorschlaegeDetail.eTypeUI.Lieferung)
                 {
-                    this.sqlVO1.getVO_Bestellpostitionen(null, sqlVO.eSelVO_Bestellpostitionen.Search, ref this.dsVO1, sWherePatients, dFrom, dTo, null, gStatus, ref lstSelectedTyp);
+                    this.sqlVO1.GetVOBestellpostitionen(null, sqlVO.ESelVOBestellpostitionen.Search, ref this.dsVO1, sWherePatients, dFrom, dTo, null, gStatus, ref lstSelectedTyp);
 
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
@@ -539,7 +539,7 @@ namespace PMDS.GUI.Verordnungen
 
                     System.Collections.Generic.List<Guid> lstTyp = new List<Guid>();
                     dsVOHelp.Clear();
-                    sqlVOHelp.getVO_Bestelldaten(rVO_BestellpostitionenAct.IDBestelldaten_VO, sqlVO.eSelVO_Bestelldaten.ID, ref dsVOHelp, "", null, null, null, "", false, null, ref lstTyp);
+                    sqlVOHelp.GetVOBestelldaten(rVO_BestellpostitionenAct.IDBestelldaten_VO, sqlVO.ESelVOBestelldaten.ID, ref dsVOHelp, "", null, null, null, "", false, null, ref lstTyp);
                     dsVO.VO_BestelldatenRow rVO_BestelldatenInDB = (dsVO.VO_BestelldatenRow)dsVOHelp.VO_Bestelldaten.Rows[0];
                     
                     List<PMDS.GUI.VB.General.cSerientermine> lstDatumNächsterAnspruch = new List<VB.General.cSerientermine>();
@@ -601,18 +601,18 @@ namespace PMDS.GUI.Verordnungen
                         if (!Dauerbestellung)
                         {
                             dsVOHelp.Clear();
-                            sqlVOHelp.getVO_Bestellpostitionen(System.Guid.NewGuid(), sqlVO.eSelVO_Bestellpostitionen.ID, ref dsVOHelp, "", null, null, null, null, ref lstTyp);
-                            dsVO.VO_BestellpostitionenRow rNewVO_Bestellpositionen = (dsVO.VO_BestellpostitionenRow)sqlVOHelp.getNewRowVO_Bestellpostitionen(ref dsVOHelp);
+                            sqlVOHelp.GetVOBestellpostitionen(System.Guid.NewGuid(), sqlVO.ESelVOBestellpostitionen.ID, ref dsVOHelp, "", null, null, null, null, ref lstTyp);
+                            dsVO.VO_BestellpostitionenRow rNewVO_Bestellpositionen = (dsVO.VO_BestellpostitionenRow)sqlVOHelp.GetNewRowVOBestellpostitionen(ref dsVOHelp);
                             rNewVO_Bestellpositionen.ItemArray = rVO_BestellpostitionenAct.ItemArray;
                             rNewVO_Bestellpositionen.DatumBestellung = dNow.Date;
                             sqlVOHelp.daVO_Bestellpostitionen.Update(dsVOHelp.VO_Bestellpostitionen);
 
-                            dsVO.VO_BestellpostitionenRow rNewVO_BestellpositionenForPrint = (dsVO.VO_BestellpostitionenRow)sqlVOHelp.getNewRowVO_Bestellpostitionen(ref dsVoPrint);
+                            dsVO.VO_BestellpostitionenRow rNewVO_BestellpositionenForPrint = (dsVO.VO_BestellpostitionenRow)sqlVOHelp.GetNewRowVOBestellpostitionen(ref dsVoPrint);
                             rNewVO_BestellpositionenForPrint.ItemArray = rNewVO_Bestellpositionen.ItemArray;
                         }
 
                         dsVOHelp.Clear();
-                        sqlVOHelp.getVO_Bestelldaten(rVO_BestellpostitionenAct.IDBestelldaten_VO, sqlVO.eSelVO_Bestelldaten.ID, ref dsVOHelp, "", null, null, null, "", false, null, ref lstTyp);
+                        sqlVOHelp.GetVOBestelldaten(rVO_BestellpostitionenAct.IDBestelldaten_VO, sqlVO.ESelVOBestelldaten.ID, ref dsVOHelp, "", null, null, null, "", false, null, ref lstTyp);
                         dsVO.VO_BestelldatenRow rVO_BestelldatenInDB = (dsVO.VO_BestelldatenRow)dsVOHelp.VO_Bestelldaten.Rows[0];
                         rVO_BestelldatenInDB.DatumNaechsterAnspruch = ((DateTime)rFoundInGrid.Cells[this.colDatumNächsterAnspruch.Trim()].Value).Date;
                         sqlVOHelp.daVO_Bestelldaten.Update(dsVOHelp.VO_Bestelldaten);
@@ -739,7 +739,7 @@ namespace PMDS.GUI.Verordnungen
                     if ((bool)rFoundInGrid.Cells[this.colSelect.Trim()].Value == true)
                     {
                         dsVOHelp.Clear();
-                        sqlVOHelp.getVO_Bestellpostitionen(rVO_BestellpostitionenAct.ID, sqlVO.eSelVO_Bestellpostitionen.ID, ref dsVOHelp, "", null, null, null, null, ref lstTyp);
+                        sqlVOHelp.GetVOBestellpostitionen(rVO_BestellpostitionenAct.ID, sqlVO.ESelVOBestellpostitionen.ID, ref dsVOHelp, "", null, null, null, null, ref lstTyp);
                         dsVO.VO_BestellpostitionenRow rVO_BestellpositionenInDB = (dsVO.VO_BestellpostitionenRow)dsVOHelp.VO_Bestellpostitionen.Rows[0];
                         rVO_BestellpositionenInDB.DatumLieferung = DateTime.Now.Date;
                         rVO_BestellpositionenInDB.EinheitLieferung = rVO_BestellpositionenInDB.EinheitBestellung;
@@ -854,7 +854,7 @@ namespace PMDS.GUI.Verordnungen
                         OleDbDataAdapter da = new OleDbDataAdapter();
                         OleDbCommand cmd = new OleDbCommand();
                         Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
-                        sqlVOHelp.initControl();
+                        sqlVOHelp.InitControl();
                         dsVO dsVOHelp = new dsVO();
                         bool doValidateBestellvorschläge = false;
                         bool bError = false;
@@ -1046,7 +1046,7 @@ namespace PMDS.GUI.Verordnungen
                                 DataRowView v = (DataRowView)rGrid.ListObject;
                                 dsVO.VO_BestellpostitionenRow rSelRow = (dsVO.VO_BestellpostitionenRow)v.Row;
 
-                                this.sqlVO1.delete_IDVO_Bestellposition(rSelRow.ID);
+                                this.sqlVO1.DeleteIDVOBestellposition(rSelRow.ID);
                             }
 
                             if (sMsgBoxInfoDelete.Trim() != "")

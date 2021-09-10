@@ -26,31 +26,31 @@ namespace PMDS.GUI.Verordnungen
 
     public partial class ucVOErfassen : UserControl
     {
-        public Nullable<Guid> _IDAufenthalt = null;
-        public Nullable<Guid> _IDPflegeplan = null;
-        public Nullable<Guid> _IDMedDaten = null;
-        public Nullable<Guid> _IDWundeKopf = null;
+        public Nullable<Guid> _IDAufenthalt;
+        public Nullable<Guid> _IDPflegeplan;
+        public Nullable<Guid> _IDMedDaten;
+        public Nullable<Guid> _IDWundeKopf;
         
-        List<Guid> _lstIDVONotShow = null;
-        public bool _Einzelansicht = false;
-        public bool _doVerknüpfungen = false;
+        List<Guid> _lstIDVONotShow;
+        public bool _Einzelansicht;
+        public bool _doVerknüpfungen;
 
         public bool abort = true;
-        public bool IsInitialized = false;
+        public bool IsInitialized;
         public PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI _TypeUI = new PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI();
 
-        public frmVOErfassen mainWindow = null;
-        public frmVOMain mainWindowVerwaltung = null;
+        public frmVOErfassen mainWindow;
+        public frmVOMain mainWindowVerwaltung;
 
-        public PMDSBusiness b = new PMDSBusiness();
-        public PMDSBusinessUI b2 = new PMDSBusinessUI();
-        public PMDS.GUI.PMDSBusinessUI PMDSBusinessUI2 = new PMDSBusinessUI();
-        public PMDS.Global.db.ERSystem.PMDSBusinessUI b3 = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
-        public PMDS.Global.db.ERSystem.sqlManange sqlManange1 = new Global.db.ERSystem.sqlManange();
-        public UIGlobal UIGlobal1 = new UIGlobal();
-        public PMDS.GUI.VB.buildUI buildUI1 = new PMDS.GUI.VB.buildUI();
+        public PMDSBusiness b { get; set; } = new PMDSBusiness();
+        public PMDSBusinessUI b2 { get; set; } = new PMDSBusinessUI();
+        public PMDS.GUI.PMDSBusinessUI PMDSBusinessUI2 { get; set; } = new PMDSBusinessUI();
+        public PMDS.Global.db.ERSystem.PMDSBusinessUI b3 { get; set; } = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
+        public PMDS.Global.db.ERSystem.sqlManange sqlManange1 { get; set; } = new Global.db.ERSystem.sqlManange();
+        public UIGlobal UIGlobal1 { get; set; } = new UIGlobal();
+        public PMDS.GUI.VB.buildUI buildUI1 { get; set; } = new PMDS.GUI.VB.buildUI();
 
-        public PMDS.GUI.VB.contSelectPatientenBenutzer contSelectPatientenBenutzer1 = null;
+        public PMDS.GUI.VB.contSelectPatientenBenutzer contSelectPatientenBenutzer1 { get; set; }
 
         public string colKlient = "Klient";
         public string colMedikament = "Medikament";
@@ -157,7 +157,7 @@ namespace PMDS.GUI.Verordnungen
                     }
 
 
-                    this.sqlVO1.initControl();
+                    this.sqlVO1.InitControl();
                     this.sqlManange1.initControl();
 
                     UltraToolTipInfo info = new UltraToolTipInfo();
@@ -281,14 +281,15 @@ namespace PMDS.GUI.Verordnungen
                     bool IDFoundInTree2 = false;
                     this.contSelectPatientenBenutzer1.autoSelectAllForAbtBereich(System.Guid.Empty, System.Guid.Empty, false, null, true, VB.contPlanungData.eTypeUI.PlansAll, ref IDFoundInTree2);
                     this.contSelectPatientenBenutzer1.SelectAllNoneBenutzerPatients(CheckState.Unchecked);
-                    //if (this._Einzelansicht && this._TypeUI == PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenVerwaltung)
-                    //{
-                    //    if (ENV.CurrentIDPatient != System.Guid.Empty)
-                    //    {
-                    //        this.contSelectPatientenBenutzer1.SelectListViewItemBenutzerPatient(ENV.CurrentIDPatient);
-                    //        this.contSelectPatientenBenutzer1.setLabelCount2();
-                    //    }
-                    //}
+                    if (this._Einzelansicht && this._TypeUI == PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenVerwaltung)
+                    {
+                        if (ENV.CurrentIDPatient != System.Guid.Empty)
+                        {
+                            bool IDFoundInTree = false;
+                            this.contSelectPatientenBenutzer1.SelectListViewItemBenutzerPatient(ENV.CurrentIDPatient, ref IDFoundInTree);
+                            this.contSelectPatientenBenutzer1.setLabelCount2();
+                        }
+                    }
 
                     //this.contSelectSelListTyp.MainPlanSearch = this;
                     this.contSelectSelListTyp.initControl("VOT", true, false, this.dropDownTyp, true, "Typ", "Typ wählen", false);
@@ -387,7 +388,19 @@ namespace PMDS.GUI.Verordnungen
 
                     this.IsInitialized = true;
                 }
-                
+                else
+                {
+                    if (this._Einzelansicht && this._TypeUI == PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenVerwaltung)
+                    {
+                        this.contSelectPatientenBenutzer1.SelectAllNoneBenutzerPatients(CheckState.Unchecked);
+                        if (ENV.CurrentIDPatient != System.Guid.Empty)
+                        {
+                            bool IDFoundInTree = false;
+                            this.contSelectPatientenBenutzer1.SelectListViewItemBenutzerPatient(ENV.CurrentIDPatient, ref IDFoundInTree);
+                            this.contSelectPatientenBenutzer1.setLabelCount2();
+                        }
+                    }
+                }                
             }
             catch (Exception ex)
             {
@@ -834,7 +847,7 @@ namespace PMDS.GUI.Verordnungen
                     //sWherePatients = " VO_Bestelldaten.IDVerordnung IN (Select VO.ID from VO where VO.IDAufenthalt IN (Select Aufenthalt.ID from Aufenthalt where Entlassungszeitpunkt is null and (" + sWherePatientsTmp + ")))";
                 }
 
-                this.sqlVO1.getVO(null, sqlVO.eSelVO.Search, ref this.dsVO1, dFrom, dTo, null, sWherePatients, this._IDAufenthalt, this._IDPflegeplan, this._IDMedDaten, this._IDWundeKopf, this.chkNurAktuelle.Checked, this._TypeUI, 
+                this.sqlVO1.GetVO(null, sqlVO.eSelVO.Search, ref this.dsVO1, dFrom, dTo, null, sWherePatients, this._IDAufenthalt, this._IDPflegeplan, this._IDMedDaten, this._IDWundeKopf, this.chkNurAktuelle.Checked, this._TypeUI, 
                                     this._doVerknüpfungen, ref lstSelectedTyp, ref this._lstIDVONotShow, sLagerZustand);
                 this.gridVO.Refresh();
                 
@@ -873,7 +886,7 @@ namespace PMDS.GUI.Verordnungen
                 throw new Exception("ucVOErfassen.search: " + ex.ToString());
             }
         }
-        public void searchVOBestelldaten(Guid IDVO)
+        public void SearchVOBestelldaten(Guid IDVO)
         {
             try
             {
@@ -881,7 +894,7 @@ namespace PMDS.GUI.Verordnungen
 
                 System.Collections.Generic.List<Guid> lstTyp = new List<Guid>();
                 string sWhereIDVO = "";
-                this.sqlVO1.getVO_Bestelldaten(IDVO, sqlVO.eSelVO_Bestelldaten.IDVO, ref this.dsVO1, sWhereIDVO, null, null, null, "", this.chkNurAktuelle.Checked, this._IDAufenthalt, ref lstTyp);
+                this.sqlVO1.GetVOBestelldaten(IDVO, sqlVO.ESelVOBestelldaten.IDVO, ref this.dsVO1, sWhereIDVO, null, null, null, "", this.chkNurAktuelle.Checked, this._IDAufenthalt, ref lstTyp);
                 this.gridVOBestelldaten.Refresh();
 
                 DataTable dt = new DataTable();
@@ -973,6 +986,7 @@ namespace PMDS.GUI.Verordnungen
         {
             try
             {
+
                 if (!SaveVerknüpfungen)
                 {
                     if (IsFirstBand)
@@ -986,7 +1000,6 @@ namespace PMDS.GUI.Verordnungen
                         rFoundInGrid.Cells[this.colKlient.Trim()].Value = this.b3.getPatientenData(ref dt, IDPatient, ref da, ref cmd, ref Krankenkasse, ref VersicherungsNr);
                         rFoundInGrid.Cells[this.colKrankenkasse.Trim()].Value = Krankenkasse.Trim();
                         rFoundInGrid.Cells[this.colSozVers.Trim()].Value = VersicherungsNr.Trim();
-                        rFoundInGrid.Cells[this.colSozVers.Trim()].Value = "";
                         rFoundInGrid.Cells[this.colMedikament.Trim()].Value = this.b3.getMedikamentName(ref dt, rVOAct.IDMedikament, ref da, ref cmd);
 
                         rFoundInGrid.Cells[this.colInfoMedDaten.Trim()].Value = this.b3.getVOInfoMedDaten(ref dt, rVOAct.ID, ref da, ref cmd);
@@ -999,7 +1012,7 @@ namespace PMDS.GUI.Verordnungen
                         if (!rVOAct.IsLieferantNull())
                         {
                             var tLieferantFound = lstLieferanten.Where(o => o.ID == rVOAct.Lieferant);
-                            if (tLieferantFound.Count() > 0)
+                            if (tLieferantFound.Any())
                             {
                                 rFoundInGrid.Cells[this.colLieferantBeschreibung.Trim()].Value = lstLieferanten.Where(o => o.ID == rVOAct.Lieferant).First().Beschreibung.Trim();
                             }
@@ -1028,7 +1041,7 @@ namespace PMDS.GUI.Verordnungen
                         if (!rVOActBestelldaten.IsLieferantNull())
                         {
                             var tLieferantFound = lstLieferanten.Where(o => o.ID == rVOActBestelldaten.Lieferant);
-                            if (tLieferantFound.Count() > 0)
+                            if (tLieferantFound.Any())
                             {
                                 rFoundInGrid.Cells[this.colLieferantBeschreibung.Trim()].Value = lstLieferanten.Where(o => o.ID == rVOActBestelldaten.Lieferant).First().Beschreibung.Trim();
                             }
@@ -1049,7 +1062,7 @@ namespace PMDS.GUI.Verordnungen
                         if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassungMedDaten && this._IDMedDaten != null)
                         {
                             IQueryable<PMDS.db.Entities.VO_MedizinischeDaten> tVO_MedizinischeDaten = db.VO_MedizinischeDaten.Where(o => o.IDMedizinischeDaten == this._IDMedDaten.Value && o.IDVerordnung == rVOAct.ID);
-                            if (tVO_MedizinischeDaten.Count() == 0)
+                            if (!tVO_MedizinischeDaten.Any())
                             {
                                 DateTime dNow = DateTime.Now;
                                 PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
@@ -1074,7 +1087,7 @@ namespace PMDS.GUI.Verordnungen
                         {
                             PMDS.db.Entities.PflegePlan rPflegeplan = this.b.getPflegeplan(this._IDPflegeplan.Value, db);
                             IQueryable<PMDS.db.Entities.VO_PflegeplanPDX> tVO_PflegeplanPDX = db.VO_PflegeplanPDX.Where(o => o.IDUntertaegigeGruppe == rPflegeplan.IDUntertaegigeGruppe.Value && o.IDVerordnung == rVOAct.ID);
-                            if (tVO_PflegeplanPDX.Count() == 0)
+                            if (!tVO_PflegeplanPDX.Any())
                             {
                                 DateTime dNow = DateTime.Now;
                                 PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
@@ -1098,11 +1111,11 @@ namespace PMDS.GUI.Verordnungen
                         else if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenWunde && this._IDWundeKopf != null)
                         {
                             IQueryable<PMDS.db.Entities.VO_Wunde> tVO_Wunde = db.VO_Wunde.Where(o => o.IDWundeKopf == this._IDWundeKopf.Value && o.IDVerordnung == rVOAct.ID);
-                            if (tVO_Wunde.Count() == 0)
+                            if (!tVO_Wunde.Any())
                             {
                                 DateTime dNow = DateTime.Now;
                                 PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
-                            
+
                                 PMDS.db.Entities.VO_Wunde newVO_Wunde = PMDS.Global.db.ERSystem.EFEntities.newVO_Wunde(db);
                                 //PMDS.db.Entities.VO_Wunde newVO_Wunde = new VO_Wunde();
                                 newVO_Wunde.ID = System.Guid.NewGuid();
@@ -1292,7 +1305,7 @@ namespace PMDS.GUI.Verordnungen
                         bool RowSelected = this.getSelectedRow(false, ref rGridSel, ref rVO);
                         if (RowSelected)
                         {
-                            this.searchVOBestelldaten(rVO.ID);
+                            this.SearchVOBestelldaten(rVO.ID);
                         }
                         else
                         {
@@ -1301,7 +1314,7 @@ namespace PMDS.GUI.Verordnungen
                     }
                     else
                     {
-                        this.searchVOBestelldaten(rSelRow.IDVerordnung);
+                        this.SearchVOBestelldaten(rSelRow.IDVerordnung);
                     }
                 }
 
@@ -1422,19 +1435,19 @@ namespace PMDS.GUI.Verordnungen
 
                                 if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenKlientStammdaten || this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenVerwaltung)
                                 {
-                                    this.sqlVO1.delete_VO(rSelRow.ID);
+                                    this.sqlVO1.DeleteVO(rSelRow.ID);
                                 }
                                 else if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassungMedDaten)
                                 {
-                                    this.sqlVO1.delete_VOMedDaten(rSelRow.ID, this._IDMedDaten.Value);
+                                    this.sqlVO1.DeleteVOMedDaten(rSelRow.ID, this._IDMedDaten.Value);
                                 }
                                 else if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenPlanung2)
                                 {
-                                    this.sqlVO1.delete_VOPflegeplanPDx(rSelRow.ID, this._IDPflegeplan.Value);
+                                    this.sqlVO1.DeleteVOPflegeplanPDx(rSelRow.ID, this._IDPflegeplan.Value);
                                 }
                                 else if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenWunde)
                                 {
-                                    this.sqlVO1.delete_VOWundeKopf(rSelRow.ID, this._IDWundeKopf.Value);
+                                    this.sqlVO1.DeleteVOWundeKopf(rSelRow.ID, this._IDWundeKopf.Value);
                                 }
                                 else if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenPlanungOnlyShow)
                                 {
@@ -1516,11 +1529,11 @@ namespace PMDS.GUI.Verordnungen
                             
                                 if (!rSelRow.EinmaligeAnforderung && this.rightAddVOBestelldaten)
                                 {
-                                    this.sqlVO1.delete_VOBestelldaten(rSelRow.ID);
+                                    this.sqlVO1.DeleteVOBestelldaten(rSelRow.ID);
                                 }
                                 else if (rSelRow.EinmaligeAnforderung && this.rightAddVOBestelldatenEinmaligeAnforderung)
                                 {
-                                    this.sqlVO1.delete_VOBestelldaten(rSelRow.ID);
+                                    this.sqlVO1.DeleteVOBestelldaten(rSelRow.ID);
                                 }
                                 else
                                 {
@@ -1534,7 +1547,7 @@ namespace PMDS.GUI.Verordnungen
                             }
                         }
 
-                        this.searchVOBestelldaten(rVO.ID);
+                        this.SearchVOBestelldaten(rVO.ID);
                         if (iNotDeletedNoRight > 0)
                         {
                             string sTxtMsgBoxTranslated = QS2.Desktop.ControlManagment.ControlManagment.getRes("{0} Verordnungen können nicht gelöscht werden, da kein Recht vorhanden!");
@@ -1800,7 +1813,7 @@ namespace PMDS.GUI.Verordnungen
                     bool RowSelected = this.getSelectedRow(false, ref rGridSel, ref rVO);
                     if (RowSelected)
                     {
-                        this.searchVOBestelldaten(rVO.ID);
+                        this.SearchVOBestelldaten(rVO.ID);
 
                         string sLagerZustand = "";
                         if (this.cboZustand.Text.ToString().Trim() != "")
