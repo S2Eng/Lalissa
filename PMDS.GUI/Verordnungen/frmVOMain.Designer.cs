@@ -51,8 +51,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Verordnungen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVOMain_FormClosing);
-            this.Load += new System.EventHandler(this.frmVOMain_Load);
-            this.VisibleChanged += new System.EventHandler(this.frmVOMain_VisibleChanged);
             this.ResumeLayout(false);
 
         }

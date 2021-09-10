@@ -255,7 +255,7 @@ namespace PMDS.GUI.Verordnungen
                     string sWherePatientsTmp = "";
                     foreach (Guid IDPatient in lstPatients)
                     {
-                        sWherePatientsTmp += (sWherePatientsTmp.Trim() == "" ? "" : " or ") + " Aufenthalt.IDPatient='" + IDPatient.ToString() + "' ";
+                        sWherePatientsTmp += (String.IsNullOrWhiteSpace(sWherePatientsTmp) ? "" : " or ") + " Aufenthalt.IDPatient='" + IDPatient.ToString() + "' ";
                     }
                     if (this._TypeUI == ucVOBestellvorschlaegeDetail.eTypeUI.Bestellvorschläge)
                     {
@@ -274,7 +274,7 @@ namespace PMDS.GUI.Verordnungen
 
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        db.Configuration.LazyLoadingEnabled = false;
+                        //db.Configuration.LazyLoadingEnabled = false;
                         PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
 
                         foreach (dsVO.VO_BestelldatenRow rVO_BestelldatenAct in this.dsVO1.VO_Bestelldaten)
@@ -328,10 +328,6 @@ namespace PMDS.GUI.Verordnungen
                                     {
                                         rNewVO_Bestellpostitionen.Lieferant = rVO_BestelldatenAct.Lieferant;
                                     }
-                                    else
-                                    {
-                                        //rNewVO_Bestellpostitionen.SetLieferantNull();              //lthxy
-                                    }
                                     rNewVO_Bestellpostitionen.HinweisLieferant = rVO_BestelldatenAct.HinweisLieferant;
 
                                     rNewVO_Bestellpostitionen.DatumErstellt = dNow;
@@ -346,26 +342,28 @@ namespace PMDS.GUI.Verordnungen
                         this.gridVOErfBestell.Refresh();
 
                         string sWhereIDVO = "";
-                        DataTable dt = new DataTable();
-                        OleDbDataAdapter da = new OleDbDataAdapter();
-                        OleDbCommand cmd = new OleDbCommand();
-                        Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
-                        sqlVOHelp.InitControl();
-                        dsVO dsVOHelp = new dsVO();
-                        int iInserted = 0;
-                        bool doValidateBestellvorschläge = false;
-                        bool bError = false;
-                        string ErrorTxt = "";
-                        dsVO dsVoPrint = new dsVO();
-                        foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
+                        using (DataTable dt = new DataTable())
                         {
-                            if (rGrid.IsGroupByRow)
+                            OleDbDataAdapter da = new OleDbDataAdapter();
+                            OleDbCommand cmd = new OleDbCommand();
+                            Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
+                            sqlVOHelp.InitControl();
+                            dsVO dsVOHelp = new dsVO();
+                            int iInserted = 0;
+                            bool doValidateBestellvorschläge = false;
+                            bool bError = false;
+                            string ErrorTxt = "";
+                            dsVO dsVoPrint = new dsVO();
+                            foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
                             {
-                                this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
-                            }
-                            else
-                            {
-                                this.showGridRow(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                                if (rGrid.IsGroupByRow)
+                                {
+                                    this.showGrid_rek(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                                }
+                                else
+                                {
+                                    this.showGridRow(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                                }
                             }
                         }
                     }
@@ -389,25 +387,27 @@ namespace PMDS.GUI.Verordnungen
                     {
                         PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
                         string sWhereIDVO = "";
-                        DataTable dt = new DataTable();
-                        OleDbDataAdapter da = new OleDbDataAdapter();
-                        OleDbCommand cmd = new OleDbCommand();
-                        Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
-                        dsVO dsVOHelp = new dsVO();
-                        int iInserted = 0;
-                        bool doValidateBestellvorschläge = false;
-                        bool bError = false;
-                        string ErrorTxt = "";
-                        dsVO dsVoPrint = new dsVO();
-                        foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
+                        using (DataTable dt = new DataTable())
                         {
-                            if (rGrid.IsGroupByRow)
+                            OleDbDataAdapter da = new OleDbDataAdapter();
+                            OleDbCommand cmd = new OleDbCommand();
+                            Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
+                            dsVO dsVOHelp = new dsVO();
+                            int iInserted = 0;
+                            bool doValidateBestellvorschläge = false;
+                            bool bError = false;
+                            string ErrorTxt = "";
+                            dsVO dsVoPrint = new dsVO();
+                            foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
                             {
-                                this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
-                            }
-                            else
-                            {
-                                this.showGridRow(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                                if (rGrid.IsGroupByRow)
+                                {
+                                    this.showGrid_rek(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                                }
+                                else
+                                {
+                                    this.showGridRow(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                                }
                             }
                         }
                     }
@@ -433,8 +433,8 @@ namespace PMDS.GUI.Verordnungen
                 throw new Exception("ucVOBestellvorschlaege.search: " + ex.ToString());
             }
         }
-        public void showGrid_rek(UltraGridRow rFoundInGridParent, ref DataTable dt, ref string sWhereIDVO, bool IsFirstBand, PMDS.db.Entities.ERModellPMDSEntities db, 
-                                DateTime dNow, Benutzer rBenutzer, ref OleDbDataAdapter da, ref OleDbCommand cmd, bool bSaveBestellvorschläge, ref Global.db.ERSystem.sqlVO sqlVOHelp, ref dsVO dsVOHelp,
+        public void showGrid_rek(UltraGridRow rFoundInGridParent, DataTable dt, ref string sWhereIDVO, bool IsFirstBand, PMDS.db.Entities.ERModellPMDSEntities db, 
+                                DateTime dNow, Benutzer rBenutzer, OleDbDataAdapter da, OleDbCommand cmd, bool bSaveBestellvorschläge, ref Global.db.ERSystem.sqlVO sqlVOHelp, ref dsVO dsVOHelp,
                                 ref int iInserted, ref bool bError, ref string ErrorTxt, bool doValidateBestellvorschläge, ref dsVO dsVoPrint, bool doSelectAllNone, bool bOn, bool LieferungBestätigen)
         {
             try
@@ -445,25 +445,24 @@ namespace PMDS.GUI.Verordnungen
                     {
                         if (rFoundInGrid.IsGroupByRow)
                         {
-                            this.showGrid_rek(rFoundInGrid, ref dt, ref sWhereIDVO, IsFirstBand, db, dNow, rBenutzer, ref da, ref cmd, bSaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, 
+                            this.showGrid_rek(rFoundInGrid, dt, ref sWhereIDVO, IsFirstBand, db, dNow, rBenutzer, da, cmd, bSaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, 
                                                 ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, doSelectAllNone, bOn, LieferungBestätigen);
                         }
                         else
                         {
-                            this.showGridRow(rFoundInGrid, ref dt, ref sWhereIDVO, IsFirstBand, db, dNow, rBenutzer, ref da, ref cmd, bSaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, 
+                            this.showGridRow(rFoundInGrid, dt, ref sWhereIDVO, IsFirstBand, db, dNow, rBenutzer, da, cmd, bSaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, 
                                                 ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, doSelectAllNone, bOn, LieferungBestätigen);
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("ucVOBestellvorschlaege.showGrid_rek: " + ex.ToString());
             }
         }
-        public void showGridRow(UltraGridRow rFoundInGrid, ref DataTable dt, ref string sWhereIDVO, bool IsFirstBand, PMDS.db.Entities.ERModellPMDSEntities db, 
-                                DateTime dNow, Benutzer rBenutzer, ref OleDbDataAdapter da, ref OleDbCommand cmd, bool bSaveBestellvorschläge, ref Global.db.ERSystem.sqlVO sqlVOHelp, ref dsVO dsVOHelp,
+        public void showGridRow(UltraGridRow rFoundInGrid, DataTable dt, ref string sWhereIDVO, bool IsFirstBand, PMDS.db.Entities.ERModellPMDSEntities db, 
+                                DateTime dNow, Benutzer rBenutzer, OleDbDataAdapter da, OleDbCommand cmd, bool bSaveBestellvorschläge, ref Global.db.ERSystem.sqlVO sqlVOHelp, ref dsVO dsVOHelp,
                                 ref int iInserted, ref bool bError, ref string ErrorTxt, bool doValidateBestellvorschläge, ref dsVO dsVoPrint, bool doSelectAllNone, bool bOn, bool LieferungBestätigen)
         {
             try
@@ -488,21 +487,21 @@ namespace PMDS.GUI.Verordnungen
                     if (!rVO_BestellpostitionenAct.IsLieferantNull())
                     {
                         var tLieferantFound = lstLieferanten.Where(o => o.ID == rVO_BestellpostitionenAct.Lieferant);
-                        if (tLieferantFound.Count() > 0)
+                        if (tLieferantFound.Any())
                         {
                             rFoundInGrid.Cells[this.colLieferantBeschreibung.Trim()].Value = lstLieferanten.Where(o => o.ID == rVO_BestellpostitionenAct.Lieferant).First().Beschreibung.Trim();
                         }
                     }
 
-                    var tAbteil = (from a2 in db.Aufenthalt
+                    var tAbteil = from a2 in db.Aufenthalt
                                       join abt in db.Abteilung on a2.IDAbteilung equals abt.ID
                                    where a2.ID == IDAufenthaltTmp.Value
                                       select new
                                       {
                                           IDAbteilung = abt.ID,
                                           Abteilung = abt.Bezeichnung
-                                      });
-                    if (tAbteil.Count() >= 1)
+                                      };
+                    if (tAbteil.Any())
                     {
                         var rAbteil = tAbteil.First();
                         rFoundInGrid.Cells[this.colAbteilung.Trim()].Value = rAbteil.Abteilung.Trim();
@@ -516,7 +515,7 @@ namespace PMDS.GUI.Verordnungen
                                         IDBereich = ber.ID,
                                         Bereich = ber.Bezeichnung
                                     });
-                    if (tBereich.Count() >= 1)
+                    if (tBereich.Any())
                     {
                         var rBereich = tBereich.First();
                         rFoundInGrid.Cells[this.colBereich.Trim()].Value = rBereich.Bereich.Trim();
@@ -530,7 +529,7 @@ namespace PMDS.GUI.Verordnungen
                                        BestaetigtVon = vo3.BestaetigtVon,
                                        Hinweis = vo3.Hinweis
                                    });
-                    if (tVO.Count() >= 1)
+                    if (tVO.Any())
                     {
                         var rVO = tVO.First();
                         rFoundInGrid.Cells[this.colVO_BestaetigtVon.Trim()].Value = rVO.BestaetigtVon.Trim();
@@ -669,7 +668,7 @@ namespace PMDS.GUI.Verordnungen
                     if (!rVO_BestellpostitionenAct.IsLieferantNull())
                     {
                         var tLieferantFound = lstLieferanten.Where(o => o.ID == rVO_BestellpostitionenAct.Lieferant);
-                        if (tLieferantFound.Count() > 0)
+                        if (tLieferantFound.Any())
                         {
                             rFoundInGrid.Cells[this.colLieferantBeschreibung.Trim()].Value = lstLieferanten.Where(o => o.ID == rVO_BestellpostitionenAct.Lieferant).First().Beschreibung.Trim();
                         }
@@ -683,7 +682,7 @@ namespace PMDS.GUI.Verordnungen
                                        IDAbteilung = abt.ID,
                                        Abteilung = abt.Bezeichnung
                                    });
-                    if (tAbteil.Count() >= 1)
+                    if (tAbteil.Any())
                     {
                         var rAbteil = tAbteil.First();
                         rFoundInGrid.Cells[this.colAbteilung.Trim()].Value = rAbteil.Abteilung.Trim();
@@ -697,7 +696,7 @@ namespace PMDS.GUI.Verordnungen
                                         IDBereich = ber.ID,
                                         Bereich = ber.Bezeichnung
                                     });
-                    if (tBereich.Count() >= 1)
+                    if (tBereich.Any())
                     {
                         var rBereich = tBereich.First();
                         rFoundInGrid.Cells[this.colBereich.Trim()].Value = rBereich.Bereich.Trim();
@@ -711,7 +710,7 @@ namespace PMDS.GUI.Verordnungen
                                    BestaetigtVon = vo3.BestaetigtVon,
                                    Hinweis = vo3.Hinweis
                                });
-                    if (tVO.Count() >= 1)
+                    if (tVO.Any())
                     {
                         var rVO = tVO.First();
                         rFoundInGrid.Cells[this.colVO_BestaetigtVon.Trim()].Value = rVO.BestaetigtVon.Trim();
@@ -753,7 +752,6 @@ namespace PMDS.GUI.Verordnungen
                         sqlVOHelp.daVO_Bestellpostitionen.Update(dsVOHelp.VO_Bestellpostitionen);
                         iInserted += 1;
                     }
-
                 }
                 else
                 {
@@ -777,29 +775,31 @@ namespace PMDS.GUI.Verordnungen
                 {
                     PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
                     string sWhereIDVO = "";
-                    DataTable dt = new DataTable();
-                    OleDbDataAdapter da = new OleDbDataAdapter();
-                    OleDbCommand cmd = new OleDbCommand();
-                    Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
-                    dsVO dsVOHelp = new dsVO();
-                    bool doValidateBestellvorschläge = true;
-                    bool bError = false;
-               
-                    dsVO dsVoPrint = new dsVO();
-                    foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
+                    using (DataTable dt = new DataTable())
                     {
-                        if (rGrid.IsGroupByRow)
+                        OleDbDataAdapter da = new OleDbDataAdapter();
+                        OleDbCommand cmd = new OleDbCommand();
+                        Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
+                        dsVO dsVOHelp = new dsVO();
+                        bool doValidateBestellvorschläge = true;
+                        bool bError = false;
+
+                        dsVO dsVoPrint = new dsVO();
+                        foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
                         {
-                            this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
-                        }
-                        else
-                        {
-                            this.showGridRow(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                            if (rGrid.IsGroupByRow)
+                            {
+                                this.showGrid_rek(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                            }
+                            else
+                            {
+                                this.showGridRow(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, false);
+                            }
                         }
                     }
                 }
 
-                if (ErrorTxt.Trim() != "")
+                if (!String.IsNullOrWhiteSpace(ErrorTxt))
                 {
                     string sTxtMsgBox = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Daten richtig ausfüllen!");
                     sTxtMsgBox += "\r\n" + "\r\n" + ErrorTxt;
@@ -850,24 +850,26 @@ namespace PMDS.GUI.Verordnungen
                     {
                         PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
                         string sWhereIDVO = "";
-                        DataTable dt = new DataTable();
-                        OleDbDataAdapter da = new OleDbDataAdapter();
-                        OleDbCommand cmd = new OleDbCommand();
-                        Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
-                        sqlVOHelp.InitControl();
-                        dsVO dsVOHelp = new dsVO();
-                        bool doValidateBestellvorschläge = false;
-                        bool bError = false;
-                        string ErrorTxt = "";
-                        foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
+                        using (DataTable dt = new DataTable())
                         {
-                            if (rGrid.IsGroupByRow)
+                            OleDbDataAdapter da = new OleDbDataAdapter();
+                            OleDbCommand cmd = new OleDbCommand();
+                            Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
+                            sqlVOHelp.InitControl();
+                            dsVO dsVOHelp = new dsVO();
+                            bool doValidateBestellvorschläge = false;
+                            bool bError = false;
+                            string ErrorTxt = "";
+                            foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
                             {
-                                this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, SaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, LieferungBestätigen);
-                            }
-                            else
-                            {
-                                this.showGridRow(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, SaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, LieferungBestätigen);
+                                if (rGrid.IsGroupByRow)
+                                {
+                                    this.showGrid_rek(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, SaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, LieferungBestätigen);
+                                }
+                                else
+                                {
+                                    this.showGridRow(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, SaveBestellvorschläge, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, false, false, LieferungBestätigen);
+                                }
                             }
                         }
                     }           
@@ -1189,23 +1191,25 @@ namespace PMDS.GUI.Verordnungen
                 {
                     PMDS.db.Entities.Benutzer rBenutzer = this.b.LogggedOnUser(db);
                     string sWhereIDVO = "";
-                    DataTable dt = new DataTable();
-                    OleDbDataAdapter da = new OleDbDataAdapter();
-                    OleDbCommand cmd = new OleDbCommand();
-                    Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
-                    dsVO dsVOHelp = new dsVO();
-                    bool doValidateBestellvorschläge = false;
-                    bool bError = false;
-                    string ErrorTxt = "";
-                    foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
+                    using (DataTable dt = new DataTable())
                     {
-                        if (rGrid.IsGroupByRow)
+                        OleDbDataAdapter da = new OleDbDataAdapter();
+                        OleDbCommand cmd = new OleDbCommand();
+                        Global.db.ERSystem.sqlVO sqlVOHelp = new sqlVO();
+                        dsVO dsVOHelp = new dsVO();
+                        bool doValidateBestellvorschläge = false;
+                        bool bError = false;
+                        string ErrorTxt = "";
+                        foreach (UltraGridRow rGrid in this.gridVOErfBestell.Rows)
                         {
-                            this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, true, bOn, false);
-                        }
-                        else
-                        {
-                            this.showGridRow(rGrid, ref dt, ref sWhereIDVO, true, db, dNow, rBenutzer, ref da, ref cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, true , bOn, false);
+                            if (rGrid.IsGroupByRow)
+                            {
+                                this.showGrid_rek(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, true, bOn, false);
+                            }
+                            else
+                            {
+                                this.showGridRow(rGrid, dt, ref sWhereIDVO, true, db, dNow, rBenutzer, da, cmd, false, ref sqlVOHelp, ref dsVOHelp, ref iInserted, ref bError, ref ErrorTxt, doValidateBestellvorschläge, ref dsVoPrint, true, bOn, false);
+                            }
                         }
                     }
                 }

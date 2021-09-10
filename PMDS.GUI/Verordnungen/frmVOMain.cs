@@ -14,21 +14,9 @@ namespace PMDS.GUI.Verordnungen
 
     public partial class frmVOMain : Form
     {
-
-        public bool _Einzelansicht = false;
-
-
-
-
-
         public frmVOMain()
         {
             InitializeComponent();
-        }
-
-        private void frmVOMain_Load(object sender, EventArgs e)
-        {
-
         }
 
         public void initControl(bool Einzelansicht)
@@ -40,43 +28,14 @@ namespace PMDS.GUI.Verordnungen
                     return;
                 }
 
-                this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
+                Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.PMDS2.ico_Verordnungen_03, 32, 32);
 
-                this.ucVOMain1.mainWindow = this;
-                this.ucVOMain1.initControl(Einzelansicht);
-
+                ucVOMain1.mainWindow = this;
+                ucVOMain1.initControl(Einzelansicht);
             }
             catch (Exception ex)
             {
                 throw new Exception("frmVOMain.initControl: " + ex.ToString());
-            }
-        }
-
-        public void loadData()
-        {
-            try
-            {
-                this.ucVOMain1.loadData();
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("frmVOMain.loadData: " + ex.ToString());
-            }
-        }
-
-        private void frmVOMain_VisibleChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (this.Visible)
-                {
-                }
-            
-            }
-            catch (Exception ex)
-            {
-                ENV.HandleException(ex);
             }
         }
 

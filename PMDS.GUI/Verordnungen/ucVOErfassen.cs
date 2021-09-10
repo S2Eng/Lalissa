@@ -126,63 +126,54 @@ namespace PMDS.GUI.Verordnungen
                     this.btnMedDaten.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS2.ico_Medizinische_Daten, QS2.Resources.getRes.ePicTyp.ico);
                     this.btnWunde.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.PMDS2.ico_Wunden_02, QS2.Resources.getRes.ePicTyp.ico);
 
-                    UltraToolTipInfo info2 = new UltraToolTipInfo();
-                    info2.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Verknüpfung hinzufügen");
-                    this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVOVerknüpfung, info2);
+                    using (UltraToolTipInfo info2 = new UltraToolTipInfo())
+                    {
+                        info2.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Verknüpfung hinzufügen");
+                        this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVOVerknüpfung, info2);
+                    }
 
                     this.ucLager1.initControl(ucLager.eTypeUI.IDVO);
 
                     this.SelListChanged("", null, null);
 
-                    if (this._TypeUI == Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenKlientStammdaten)
-                    {
-                        //int diff = 50;
-
-                        //this.btnAddVO.Size = new Size(157, 27);
-                        //this.btnAddVO.Location = new Point(870 - diff, 4);
-
-                        //this.btnAddVOBestelldaten.Size = new Size(157, 27);
-                        //this.btnAddVOBestelldaten.Location = new Point(870 - diff, 31);
-
-                        //this.btnDel.Size = new Size(28, 27);
-                        //this.btnDel.Location = new Point(1027 - diff, 4);
-
-                        //this.btnPrint.Size = new Size(79, 27);
-                        //this.btnPrint.Location = new Point(761 - diff, 31);
-
-                        //this.btnAddVO.Appearance.FontData.SizeInPoints = 8;
-                        //this.btnAddVOBestelldaten.Appearance.FontData.SizeInPoints = 8;
-                        //this.btnDel.Appearance.FontData.SizeInPoints = 8;
-                        //this.btnPrint.Appearance.FontData.SizeInPoints = 8;
-                    }
-
-
                     this.sqlVO1.InitControl();
                     this.sqlManange1.initControl();
 
-                    UltraToolTipInfo info = new UltraToolTipInfo();
-                    info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Verordnung hinzufügen");
-                    this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVO, info);
+                    using (UltraToolTipInfo info = new UltraToolTipInfo())
+                    {
+                        info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Verordnung hinzufügen");
+                        this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVO, info);
+                    }
 
-                    info = new UltraToolTipInfo();
-                    info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bestelldaten zur Verordnung hinzufügen");
-                    this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVOBestelldaten, info);
+                    using (UltraToolTipInfo info = new UltraToolTipInfo())
+                    {
+                        info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Bestelldaten zur Verordnung hinzufügen");
+                        this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVOBestelldaten, info);
+                    }
 
-                    info = new UltraToolTipInfo();
-                    info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Einmalige Anforderung zur Verordnung hinzufügen");
-                    this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVOBestelldatenEinmaligeAnforderung, info);
+                    using (UltraToolTipInfo info = new UltraToolTipInfo())
+                    {
+                        info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Einmalige Anforderung zur Verordnung hinzufügen");
+                        this.ultraToolTipManager1.SetUltraToolTip(this.btnAddVOBestelldatenEinmaligeAnforderung, info);
+                    }
 
-                    info = new UltraToolTipInfo();
-                    info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Medikamente");
-                    this.ultraToolTipManager1.SetUltraToolTip(this.btnMedikamente, info);
+                    using (UltraToolTipInfo info = new UltraToolTipInfo())
+                    {
+                        info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Medikamente");
+                        this.ultraToolTipManager1.SetUltraToolTip(this.btnMedikamente, info);
+                    }
 
-                    info = new UltraToolTipInfo();
-                    info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung medizinische Daten");
-                    this.ultraToolTipManager1.SetUltraToolTip(this.btnMedDaten, info);
+                    using (UltraToolTipInfo info = new UltraToolTipInfo())
+                    {
+                        info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung medizinische Daten");
+                        this.ultraToolTipManager1.SetUltraToolTip(this.btnMedDaten, info);
+                    }
 
-                    info = new UltraToolTipInfo();
-                    info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Wunden");
-                    this.ultraToolTipManager1.SetUltraToolTip(this.btnWunde, info);
+                    using (UltraToolTipInfo info = new UltraToolTipInfo())
+                    {
+                        info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Wunden");
+                        this.ultraToolTipManager1.SetUltraToolTip(this.btnWunde, info);
+                    }
 
                     this.gridVOBestelldaten.Name = "gridVObestellungenVerwaltung";
                     
@@ -270,7 +261,6 @@ namespace PMDS.GUI.Verordnungen
                     }
 
                     this.contSelectPatientenBenutzer1 = new VB.contSelectPatientenBenutzer();
-                    bool IsSearch = true;
                     bool isTxtTemplate = false;
                     this.contSelectPatientenBenutzer1.initControl(VB.contSelectPatientenBenutzer.eTypeUI.Patients,  false,  isTxtTemplate, this.dropDownPatienten);
                     this.uPopUpContPatienten.PopupControl = this.contSelectPatientenBenutzer1;
@@ -423,7 +413,6 @@ namespace PMDS.GUI.Verordnungen
                 this.lstLieferanten = new List<AuswahlListe>();
                 this.PMDSBusinessUI2.loadSelList("LFT", null, this.gridVO.DisplayLayout.ValueLists["Lieferant"], null, ref this.lstLieferanten);
                 this.PMDSBusinessUI2.loadSelList("LFT", null, this.gridVOBestelldaten.DisplayLayout.ValueLists["Lieferant"], null, ref lstEmpty);
-
             }
             catch (Exception ex)
             {
@@ -773,12 +762,15 @@ namespace PMDS.GUI.Verordnungen
                 throw new Exception("ucVOErfassen.DoLayoutVO: " + ex.ToString());
             }
         }
+
         public void doLayoutVOBestelldaten(ref bool LayoutFound)
         {
             try
             {
-                qs2.core.vb.compLayout compLayout1 = new qs2.core.vb.compLayout();
-                compLayout1.initControl();
+                using (qs2.core.vb.compLayout compLayout1 = new qs2.core.vb.compLayout())
+                {
+                    compLayout1.initControl();
+                }
 
                 QS2.Desktop.ControlManagment.cLayoutManager2 cLayoutManager1 = new QS2.Desktop.ControlManagment.cLayoutManager2();
                 cLayoutManager1.doLayoutGrid(this.gridVOBestelldaten, this.gridVOBestelldaten.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
@@ -826,7 +818,7 @@ namespace PMDS.GUI.Verordnungen
                 }
 
                 string sLagerZustand = "";
-                if (this.cboZustand.Text.ToString().Trim() != "")
+                if (!String.IsNullOrWhiteSpace(cboZustand.Text))
                 {
                     sLagerZustand = this.cboZustand.Text.Trim();
                 }
@@ -841,7 +833,7 @@ namespace PMDS.GUI.Verordnungen
                     string sWherePatientsTmp = "";
                     foreach (Guid IDPatient in lstPatients)
                     {
-                        sWherePatientsTmp += (sWherePatientsTmp.Trim() == "" ? "" : " or ") + " Aufenthalt.IDPatient='" + IDPatient.ToString() + "' ";
+                        sWherePatientsTmp += (String.IsNullOrWhiteSpace(sWherePatientsTmp) ? "" : " or ") + " Aufenthalt.IDPatient='" + IDPatient.ToString() + "' ";
                     }
                     sWherePatients = " VO.IDAufenthalt IN (Select Aufenthalt.ID from Aufenthalt where Entlassungszeitpunkt is null and (" + sWherePatientsTmp + "))";
                     //sWherePatients = " VO_Bestelldaten.IDVerordnung IN (Select VO.ID from VO where VO.IDAufenthalt IN (Select Aufenthalt.ID from Aufenthalt where Entlassungszeitpunkt is null and (" + sWherePatientsTmp + ")))";
@@ -852,21 +844,23 @@ namespace PMDS.GUI.Verordnungen
                 this.gridVO.Refresh();
                 
                 string sWhereIDVO = "";
-                DataTable dt = new DataTable();
-                OleDbDataAdapter da = new OleDbDataAdapter();
-                OleDbCommand cmd = new OleDbCommand();
-                int iCounter = 0;
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                using (DataTable dt = new DataTable())
                 {
-                    foreach (UltraGridRow rGrid in this.gridVO.Rows)
+                    OleDbDataAdapter da = new OleDbDataAdapter();
+                    OleDbCommand cmd = new OleDbCommand();
+                    int iCounter = 0;
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        if (rGrid.IsGroupByRow)
+                        foreach (UltraGridRow rGrid in this.gridVO.Rows)
                         {
-                            this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, true, ref da, ref cmd, false, db, ref iCounter);
-                        }
-                        else
-                        {
-                            this.showGridRow(rGrid, ref dt, ref sWhereIDVO, true, ref da, ref cmd, false, db, ref iCounter);
+                            if (rGrid.IsGroupByRow)
+                            {
+                                this.showGrid_rek(rGrid, dt, ref sWhereIDVO, true, da, cmd, false, db, ref iCounter);
+                            }
+                            else
+                            {
+                                this.showGridRow(rGrid, dt, ref sWhereIDVO, true, da, cmd, false, db, ref iCounter);
+                            }
                         }
                     }
                 }
@@ -897,29 +891,29 @@ namespace PMDS.GUI.Verordnungen
                 this.sqlVO1.GetVOBestelldaten(IDVO, sqlVO.ESelVOBestelldaten.IDVO, ref this.dsVO1, sWhereIDVO, null, null, null, "", this.chkNurAktuelle.Checked, this._IDAufenthalt, ref lstTyp);
                 this.gridVOBestelldaten.Refresh();
 
-                DataTable dt = new DataTable();
-                OleDbDataAdapter da = new OleDbDataAdapter();
-                OleDbCommand cmd = new OleDbCommand();
-                OleDbDataAdapter daSub = new OleDbDataAdapter();
-                OleDbCommand cmdSub = new OleDbCommand();
-                int iCounter = 0;
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                using (DataTable dt = new DataTable())
                 {
-                    foreach (UltraGridRow rGrid in this.gridVOBestelldaten.Rows)
+                    OleDbDataAdapter daSub = new OleDbDataAdapter();
+                    OleDbCommand cmdSub = new OleDbCommand();
+                    int iCounter = 0;
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        if (rGrid.IsGroupByRow)
+                        foreach (UltraGridRow rGrid in this.gridVOBestelldaten.Rows)
                         {
-                            this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, false, ref daSub, ref cmdSub, false, db, ref iCounter);
-                        }
-                        else
-                        {
-                            this.showGridRow(rGrid, ref dt, ref sWhereIDVO, false, ref daSub, ref cmdSub, false, db, ref iCounter);
+                            if (rGrid.IsGroupByRow)
+                            {
+                                this.showGrid_rek(rGrid, dt, ref sWhereIDVO, false, daSub, cmdSub, false, db, ref iCounter);
+                            }
+                            else
+                            {
+                                this.showGridRow(rGrid, dt, ref sWhereIDVO, false, daSub, cmdSub, false, db, ref iCounter);
+                            }
                         }
                     }
                 }
 
                 //this.lblFound.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Gefunden: ") + this.dsVO1.VO_Bestelldaten.Rows.Count.ToString();
-       
+
                 this.gridVOBestelldaten.Rows.ExpandAll(true);
                 bool LayoutFound = false;
                 this.doLayoutVOBestelldaten(ref LayoutFound);
@@ -932,7 +926,7 @@ namespace PMDS.GUI.Verordnungen
             }
         }
 
-        public void showGrid_rek(UltraGridRow rFoundInGridParent, ref DataTable dt, ref string sWhereIDVO, bool IsFirstBand, ref OleDbDataAdapter da, ref OleDbCommand cmd, bool SaveVerknüpfungen, PMDS.db.Entities.ERModellPMDSEntities db, ref int iCounter)
+        public void showGrid_rek(UltraGridRow rFoundInGridParent, DataTable dt, ref string sWhereIDVO, bool IsFirstBand, OleDbDataAdapter da, OleDbCommand cmd, bool SaveVerknüpfungen, PMDS.db.Entities.ERModellPMDSEntities db, ref int iCounter)
         {
             try
             {
@@ -942,11 +936,11 @@ namespace PMDS.GUI.Verordnungen
                     {
                         if (rFoundInGrid.IsGroupByRow)
                         {
-                            this.showGrid_rek(rFoundInGrid, ref dt, ref sWhereIDVO, IsFirstBand, ref da, ref cmd, SaveVerknüpfungen, db, ref iCounter);
+                            this.showGrid_rek(rFoundInGrid, dt, ref sWhereIDVO, IsFirstBand, da, cmd, SaveVerknüpfungen, db, ref iCounter);
                         }
                         else
                         {
-                            this.showGridRow(rFoundInGrid, ref dt, ref sWhereIDVO, IsFirstBand, ref da, ref cmd, SaveVerknüpfungen, db, ref iCounter);
+                            this.showGridRow(rFoundInGrid, dt, ref sWhereIDVO, IsFirstBand, da, cmd, SaveVerknüpfungen, db, ref iCounter);
                             if (rFoundInGrid.ChildBands.Count > 0)
                             {
                                 foreach (UltraGridChildBand bnd in rFoundInGrid.ChildBands)
@@ -955,19 +949,11 @@ namespace PMDS.GUI.Verordnungen
                                     {
                                         if (rFoundInGrid.IsGroupByRow)
                                         {
-                                            this.showGrid_rek(rFoundInGrid, ref dt, ref sWhereIDVO, IsFirstBand, ref da, ref cmd, SaveVerknüpfungen, db, ref iCounter);
+                                            this.showGrid_rek(rFoundInGrid, dt, ref sWhereIDVO, IsFirstBand, da, cmd, SaveVerknüpfungen, db, ref iCounter);
                                         }
                                         else
                                         {
-                                            this.showGridRow(rGridRowChild, ref dt, ref sWhereIDVO, IsFirstBand, ref da, ref cmd, SaveVerknüpfungen, db, ref iCounter);
-                                            //if (rGridRowChild.Band.Index == 0)
-                                            //{
-                                            //    this.showGridRow(rGridRowChild, ref dt, ref sWhereIDVO, IsFirstBand, ref da, ref cmd, SaveVerknüpfungen, db);
-                                            //}
-                                            //else
-                                            //{
-                                            //    this.showGridRowChild(rGridRowChild, ref dt, ref sWhereIDVO, IsFirstBand, ref da, ref cmd);
-                                            //}
+                                            this.showGridRow(rGridRowChild, dt, ref sWhereIDVO, IsFirstBand, da, cmd, SaveVerknüpfungen, db, ref iCounter);
                                         }
                                     }
                                 }
@@ -982,7 +968,7 @@ namespace PMDS.GUI.Verordnungen
                 throw new Exception("ucVOErfassen.showGrid_rek: " + ex.ToString());
             }
         }
-        public void showGridRow(UltraGridRow rFoundInGrid, ref DataTable dt, ref string sWhereIDVO, bool IsFirstBand, ref OleDbDataAdapter da, ref OleDbCommand cmd, bool SaveVerknüpfungen, PMDS.db.Entities.ERModellPMDSEntities db, ref int iCounter)
+        public void showGridRow(UltraGridRow rFoundInGrid, DataTable dt, ref string sWhereIDVO, bool IsFirstBand, OleDbDataAdapter da, OleDbCommand cmd, bool SaveVerknüpfungen, PMDS.db.Entities.ERModellPMDSEntities db, ref int iCounter)
         {
             try
             {
@@ -1145,19 +1131,19 @@ namespace PMDS.GUI.Verordnungen
                 throw new Exception("ucVOErfassen.showGridRow: " + ex.ToString());
             }
         }
-        public void showGridRowChild(UltraGridRow rFoundInGrid, ref DataTable dt, ref string sWhereIDVO, bool IsFirstBand, ref OleDbDataAdapter da, ref OleDbCommand cmd)
-        {
-            try
-            {
-                DataRowView v = (DataRowView)rFoundInGrid.ListObject;
-                dsVO.VO_BestelldatenRow rVOActBestelldaten = (dsVO.VO_BestelldatenRow)v.Row;
+        //public void showGridRowChild(UltraGridRow rFoundInGrid, ref DataTable dt, ref string sWhereIDVO, bool IsFirstBand, ref OleDbDataAdapter da, ref OleDbCommand cmd)
+        //{
+        //    try
+        //    {
+        //        DataRowView v = (DataRowView)rFoundInGrid.ListObject;
+        //        dsVO.VO_BestelldatenRow rVOActBestelldaten = (dsVO.VO_BestelldatenRow)v.Row;
  
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ucVOErfassen.showGridRowChild: " + ex.ToString());
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("ucVOErfassen.showGridRowChild: " + ex.ToString());
+        //    }
+        //}
 
         public bool validateData(ref string MessageTxt)
         {
@@ -1183,28 +1169,28 @@ namespace PMDS.GUI.Verordnungen
                 }
 
                 string sWhereIDVO = "";
-                DataTable dt = new DataTable();
-                OleDbDataAdapter da = new OleDbDataAdapter();
-                OleDbCommand cmd = new OleDbCommand();
-                OleDbDataAdapter daSub = new OleDbDataAdapter();
-                OleDbCommand cmdSub = new OleDbCommand();
-                bool doDelete = false;
-                int iCounter = 0;
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                using (DataTable dt = new DataTable())
                 {
-                    foreach (UltraGridRow rGrid in this.gridVO.Rows)
+
+                    OleDbDataAdapter daSub = new OleDbDataAdapter();
+                    OleDbCommand cmdSub = new OleDbCommand();
+                    int iCounter = 0;
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
-                        if (rGrid.IsGroupByRow)
+                        foreach (UltraGridRow rGrid in this.gridVO.Rows)
                         {
-                            this.showGrid_rek(rGrid, ref dt, ref sWhereIDVO, false, ref daSub, ref cmdSub, true, db, ref iCounter);
-                        }
-                        else
-                        {
-                            this.showGridRow(rGrid, ref dt, ref sWhereIDVO, false, ref daSub, ref cmdSub, true, db, ref iCounter);
+                            if (rGrid.IsGroupByRow)
+                            {
+                                this.showGrid_rek(rGrid, dt, ref sWhereIDVO, false, daSub, cmdSub, true, db, ref iCounter);
+                            }
+                            else
+                            {
+                                this.showGridRow(rGrid, dt, ref sWhereIDVO, false, daSub, cmdSub, true, db, ref iCounter);
+                            }
                         }
                     }
-                }
-                
+                }           
+
                 return true;
             }
             catch (Exception ex)

@@ -13,8 +13,8 @@ namespace PMDS.GUI.Verordnungen
 
     public partial class ucVOMain : UserControl
     {
-        public bool _Einzelansicht = false;
-        public frmVOMain mainWindow = null;
+        private bool _Einzelansicht;
+        public frmVOMain mainWindow { get; set; }
 
         public ucVOMain()
         {
@@ -26,49 +26,31 @@ namespace PMDS.GUI.Verordnungen
 
         }
 
-
-
         public void initControl(bool Einzelansicht)
         {
             try
             {
                 this._Einzelansicht = Einzelansicht;
 
-                //PMDSBusinessComm.checkMessageForClient(PMDSBusinessComm.eClientsMessage.MessageToAllClients, PMDSBusinessComm.eTypeMessage.ReloadRAMAll);
+                ucVOErfassen1.mainWindowVerwaltung = this.mainWindow;
+                ucVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenVerwaltung, this._Einzelansicht, false, null);
+                ucVOErfassen1.search2(this.ucVOErfassen1._IDAufenthalt, this.ucVOErfassen1._IDPflegeplan, this.ucVOErfassen1._IDMedDaten, this.ucVOErfassen1._IDWundeKopf);
 
-                this.ucVOErfassen1.mainWindowVerwaltung = this.mainWindow;
-                this.ucVOErfassen1.initControl(PMDS.Global.db.ERSystem.PMDSBusinessUI.eTypeUI.VOErfassenVerwaltung, this._Einzelansicht, false, null);
+                ucVOBestellvorschläge1.mainWindowVerwaltung = this.mainWindow;
+                ucVOBestellvorschläge1.initControl(ucVOBestellvorschlaegeDetail.eTypeUI.Bestellvorschläge, this._Einzelansicht);
 
-                this.ucVOBestellvorschläge1.mainWindowVerwaltung = this.mainWindow;
-                this.ucVOBestellvorschläge1.initControl(ucVOBestellvorschlaegeDetail.eTypeUI.Bestellvorschläge, this._Einzelansicht);
+                ucVOLieferung1.mainWindowVerwaltung = this.mainWindow;
+                ucVOLieferung1.initControl(ucVOBestellvorschlaegeDetail.eTypeUI.Lieferung, this._Einzelansicht);
 
-                this.ucVOLieferung1.mainWindowVerwaltung = this.mainWindow;
-                this.ucVOLieferung1.initControl(ucVOBestellvorschlaegeDetail.eTypeUI.Lieferung, this._Einzelansicht);
-
-                this.ucVOErfassen1.search2(this.ucVOErfassen1._IDAufenthalt, this.ucVOErfassen1._IDPflegeplan, this.ucVOErfassen1._IDMedDaten, this.ucVOErfassen1._IDWundeKopf);
-
-                this.ucLager1.initControl(ucLager.eTypeUI.All);
-
-                this.ultraTabControl1.Tabs["Lager"].Visible = PMDS.Global.ENV.lic_VOLager;
-                this.ucVOErfassen1.panelTop.Controls["grpSearch"].Controls["cboZustand"].Visible = PMDS.Global.ENV.lic_VOLager;
-                this.ucVOErfassen1.panelTop.Controls["grpSearch"].Controls["lblZustandLager"].Visible = PMDS.Global.ENV.lic_VOLager;
+                ucLager1.initControl(ucLager.eTypeUI.All);
+                
+                ultraTabControl1.Tabs["Lager"].Visible = PMDS.Global.ENV.lic_VOLager;
+                ucVOErfassen1.panelTop.Controls["grpSearch"].Controls["cboZustand"].Visible = PMDS.Global.ENV.lic_VOLager;
+                ucVOErfassen1.panelTop.Controls["grpSearch"].Controls["lblZustandLager"].Visible = PMDS.Global.ENV.lic_VOLager;
             }
             catch (Exception ex)
             {
                 throw new Exception("ucVOMain.initControl: " + ex.ToString());
-            }
-        }
-
-        public void loadData()
-        {
-            try
-            {
-
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ucVOMain.loadData: " + ex.ToString());
             }
         }
 
@@ -78,24 +60,23 @@ namespace PMDS.GUI.Verordnungen
             {
                 if (this.ultraTabControl1.Focused)
                 {
-                    if (this.ultraTabControl1.ActiveTab.Key.Trim().ToLower().Equals(("Erfassung").Trim().ToLower()))
+                    if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key,"Erfassung"))
                     {
                         this.ucVOErfassen1.search2(this.ucVOErfassen1._IDAufenthalt, this.ucVOErfassen1._IDPflegeplan, this.ucVOErfassen1._IDMedDaten, this.ucVOErfassen1._IDWundeKopf);
                     }
-                    else if (this.ultraTabControl1.ActiveTab.Key.Trim().ToLower().Equals(("Bestellvorschläge").Trim().ToLower()))
+                    else if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key, "Bestellvorschläge"))
                     {
                         this.ucVOBestellvorschläge1.search();
                     }
-                    else if (this.ultraTabControl1.ActiveTab.Key.Trim().ToLower().Equals(("Bestellungen").Trim().ToLower()))
+                    else if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key, "Bestellungen"))
                     {
                         this.ucVOLieferung1.search();
                     }
-                    else if (this.ultraTabControl1.ActiveTab.Key.Trim().ToLower().Equals(("Lager").Trim().ToLower()))
+                    else if (PMDS.Global.generic.sEquals(ultraTabControl1.ActiveTab.Key, "Lager"))
                     {
                         this.ucLager1.loadData(null, "");
                     }
                 }
-
             }
             catch (Exception ex)
             {

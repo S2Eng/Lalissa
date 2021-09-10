@@ -2490,12 +2490,8 @@ namespace PMDS
                         break;
                         
                     case "btnVerordnungen":
-                        //if (this.frmVOMain1 == null)
-                        //{
-                            this.frmVOMain1 = new GUI.Verordnungen.frmVOMain();
-                            frmVOMain1.initControl(!this._KlientenlisteOnTop);
-                            frmVOMain1.loadData();
-                        //}
+                        this.frmVOMain1 = new GUI.Verordnungen.frmVOMain();
+                        frmVOMain1.initControl(!this._KlientenlisteOnTop);
                         this.frmVOMain1.TopMost = true;
                         this.frmVOMain1.Show();
                         this.frmVOMain1.Visible = true;
@@ -2503,12 +2499,8 @@ namespace PMDS
                         break;
 
                     case "btnVerordnungen2":
-                        //if (this.frmVOMain2 == null)
-                        //{
-                            this.frmVOMain2 = new GUI.Verordnungen.frmVOMain();
-                            frmVOMain2.initControl(!this._KlientenlisteOnTop);
-                            frmVOMain2.loadData();
-                        //}
+                        this.frmVOMain2 = new GUI.Verordnungen.frmVOMain();
+                        frmVOMain2.initControl(!this._KlientenlisteOnTop);
                         this.frmVOMain2.TopMost = true;
                         this.frmVOMain2.Show();
                         this.frmVOMain2.Visible = true;

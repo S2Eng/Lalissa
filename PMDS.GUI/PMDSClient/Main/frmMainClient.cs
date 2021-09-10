@@ -2360,12 +2360,12 @@ namespace PMDS.GUI.PMDSClient
                         break;
                         
                     case "btnVerordnungen":
-                        if (this.frmVOMain1 == null)
-                        {
+                        //if (this.frmVOMain1 == null)
+                        //{
                             this.frmVOMain1 = new frmVOMain();
                             frmVOMain1.initControl(!this._KlientenlisteOnTop);
-                            frmVOMain1.loadData();
-                        }
+                        //    frmVOMain1.loadData();
+                        //}
                         this.frmVOMain1.TopMost = true;
                         this.frmVOMain1.Show();
                         this.frmVOMain1.Visible = true;
@@ -2373,12 +2373,12 @@ namespace PMDS.GUI.PMDSClient
                         break;
 
                     case "btnVerordnungen2":
-                        if (this.frmVOMain2 == null)
-                        {
+                        //if (this.frmVOMain2 == null)
+                        //{
                             this.frmVOMain2 = new frmVOMain();
                             frmVOMain2.initControl(!this._KlientenlisteOnTop);
-                            frmVOMain2.loadData();
-                        }
+                        //    frmVOMain2.loadData();
+                        //}
                         this.frmVOMain2.TopMost = true;
                         this.frmVOMain2.Show();
                         this.frmVOMain2.Visible = true;
@@ -2392,17 +2392,6 @@ namespace PMDS.GUI.PMDSClient
                         if (!frmPatientDelete1.contPatientDelete1.abort)
                         {
                             PMDS.GUI.GuiAction.refreshGridPatientenStart();
-
-                            //this._SitemapStart.RefreshPatientSearch(true);
-                            //this._SitemapStart.RefreshPatientSearch(true);
-                            //_RefreshShouldBeAfterVisible = true;
-                            //this._SitemapStart.ucPatientGroup1.RefreshGUI((true);
-                            //ucPatientGroupPicker1.SetPatientID(IDPatient);
-
-                            //PMDS.GUI.GuiAction.GuiActionDone(SiteEvents.Urlaub);
-
-                            //this._SitemapStart.setHistorieOnOff();
-                            //this._SitemapStart.ucPatientPicker1.RefreshList();
                         }
                         break;
                             
