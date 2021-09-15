@@ -623,7 +623,7 @@ namespace PMDS.DB
                 dsGUIDListe.IDListeDataTable dt = new dsGUIDListe.IDListeDataTable();
 
                 //string sCommand = "SELECT DISTINCT IDMedikament, Medikament.Bezeichnung, RezeptEintrag.Bemerkung FROM RezeptEintrag INNER JOIN Medikament ON RezeptEintrag.IDMedikament = Medikament.ID WHERE (RezeptEintrag.IDAufenthalt = ?) AND (BedarfsMedikationJN = 1) and  (RezeptEintrag.AbzugebenVon <= ?) AND (RezeptEintrag.AbzugebenBis >= ?)";
-                string sCommand = "SELECT DISTINCT RezeptEintrag.ID, Medikament.Bezeichnung, RezeptEintrag.Bemerkung FROM RezeptEintrag INNER JOIN Medikament ON RezeptEintrag.IDMedikament = Medikament.ID WHERE (RezeptEintrag.IDAufenthalt = ?) AND (BedarfsMedikationJN = 1) and  (RezeptEintrag.AbzugebenVon <= ?) AND (RezeptEintrag.AbzugebenBis >= ?)";
+                string sCommand = "SELECT DISTINCT RezeptEintrag.ID, Medikament.Bezeichnung, RezeptEintrag.Bemerkung, Rezepteintrag.Rezeptdaten FROM RezeptEintrag INNER JOIN Medikament ON RezeptEintrag.IDMedikament = Medikament.ID WHERE (RezeptEintrag.IDAufenthalt = ?) AND (BedarfsMedikationJN = 1) and  (RezeptEintrag.AbzugebenVon <= ?) AND (RezeptEintrag.AbzugebenBis >= ?)";
 
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandText = sCommand;
@@ -638,7 +638,7 @@ namespace PMDS.DB
                 da.Fill(dtSelect);
                 foreach(DataRow r in dtSelect.Rows)
                 {
-                    dt.AddIDListeRow(new Guid(r[0].ToString()), r[1].ToString().Replace("\r\n", " - ") + "||Hinweis: " + r[2].ToString());
+                    dt.AddIDListeRow(new Guid(r[0].ToString()), r[1].ToString().Replace("\r\n", " - ") + "||Hinweis: " + r[2].ToString() + "\n" + r[3].ToString());
                 }
                 return dt;
 

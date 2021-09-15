@@ -850,8 +850,10 @@ namespace PMDS.GUI
             }
 
 
-            frmEditDynReports frm = new frmEditDynReports(this.XMLFileAlternate);
-            frm.ShowDialog();
+            using (frmEditDynReports frm = new frmEditDynReports(this.XMLFileAlternate))
+            {
+                frm.ShowDialog();
+            }
             RefreshParameters();
             SignalParameterChanged();
         }

@@ -40,7 +40,7 @@ Public Class doBaseElements
                                           ByRef DoIDResAuto As Boolean, bDesignMode As Boolean) As cInfoControl
 
         Try
-            If bDesignMode Or Not ENV._ApplicationIsRunning Then
+            If System.Diagnostics.Process.GetCurrentProcess().ProcessName = "devenv" Then
                 Exit Function
             End If
 
@@ -59,7 +59,7 @@ Public Class doBaseElements
                 End If
 
                 Dim ContextMenüStripToTake As System.Windows.Forms.ContextMenuStrip = Nothing
-                If qs2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(qs2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
+                If QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.DesktopManagement.ToString().Trim().ToLower()) Then
                     If cont.ContextMenuStrip Is Nothing Then
                         cont.ContextMenuStrip = ContextMenuStripNew
                         ContextMenüStripToTake = cont.ContextMenuStrip
@@ -69,7 +69,7 @@ Public Class doBaseElements
                         'ContextMenüStripToTake = cont.ContextMenuStrip
                     End If
 
-                ElseIf qs2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(qs2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
+                ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveFull.ToString().Trim().ToLower()) Then
                     If cont.ContextMenuStrip Is Nothing Then
                         cont.ContextMenuStrip = ContextMenuStripNew
                         ContextMenüStripToTake = cont.ContextMenuStrip
@@ -79,7 +79,7 @@ Public Class doBaseElements
                         'ContextMenüStripToTake = cont.ContextMenuStrip
                     End If
 
-                ElseIf qs2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(qs2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
+                ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.ProductiveSmall.ToString().Trim().ToLower()) Then
                     If cont.ContextMenuStrip Is Nothing Then
                         cont.ContextMenuStrip = ContextMenuStripNew
                         ContextMenüStripToTake = cont.ContextMenuStrip
@@ -89,7 +89,7 @@ Public Class doBaseElements
                         'ContextMenüStripToTake = cont.ContextMenuStrip
                     End If
 
-                ElseIf qs2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(qs2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
+                ElseIf QS2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim().ToLower().Equals(QS2.Desktop.ControlManagment.ControlManagment.eTypeRessourcesRun.Off.ToString().Trim().ToLower()) Then
                     Exit Function
                 Else
                     Throw New Exception("doBaseElements.runControlManagment: ENV._TypeRessourcesRun.Trim() '" + qs2.Desktop.ControlManagment.ENV._TypeRessourcesRun.Trim() + "' not supported!")
