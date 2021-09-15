@@ -717,7 +717,7 @@ namespace PMDS.GUI
             }
         }
 
-        public void doUIDienstübergabe(ref System.Collections.Generic.List<PMDS.Global.UIGlobal.eSelectedNodes> lstPatienteSelected2 , ref System.Collections.Generic.List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl> lstÄrzteMehrfachauswahlReturn,
+        public void doUIDienstübergabe(System.Collections.Generic.List<PMDS.Global.UIGlobal.eSelectedNodes> lstPatienteSelected2 , ref System.Collections.Generic.List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl> lstÄrzteMehrfachauswahlReturn,
                                         Guid IDAertzeToAdd, dsPatientAerzte.PatientAerzteRow rNewPatientÄrzte, UltraGrid gridÄrzte)
         {
             try

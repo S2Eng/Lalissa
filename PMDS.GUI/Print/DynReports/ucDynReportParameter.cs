@@ -546,7 +546,22 @@ namespace PMDS.GUI
                 {
                     try
                     {
-                        sRet = sRet.Replace(sField1, u.VALUE_TEXT);
+                        if (generic.sEquals(u.BERICHTPARAMETER.Typ, "Datum"))
+                        {
+
+                            string sTemp = "=== PARSE('" + u.VALUE_TEXT + "' AS DATE USING '" + System.Globalization.CultureInfo.CurrentCulture  + "') ===";
+                            sRet = sRet.Replace(sField1, sTemp);
+                            sRet = sRet.Replace("'===", "").Replace("==='", "");
+                        }
+                        else if (generic.sEquals(u.BERICHTPARAMETER.Typ, "DatumZeit"))
+                        {
+
+                            string sTemp = "=== PARSE('" + u.VALUE_TEXT + "' AS DATETIME USING '" + System.Globalization.CultureInfo.CurrentCulture + "') ===";
+                            sRet = sRet.Replace(sField1, sTemp);
+                            sRet = sRet.Replace("'===", "").Replace("==='", "");
+                        }
+                        else
+                            sRet = sRet.Replace(sField1, u.VALUE_TEXT);
                     }
                     catch (Exception ex)
                     {
@@ -815,8 +830,10 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private void mnuShowParameter_Click(object sender, EventArgs e)
         {
-            frmShowBerichtParameter frm = new frmShowBerichtParameter(BERICHTPARAMETER);
-            frm.ShowDialog();
+            using (frmShowBerichtParameter frm = new frmShowBerichtParameter(BERICHTPARAMETER))
+            {
+                frm.ShowDialog();
+            }
         }
 
         //----------------------------------------------------------------------------

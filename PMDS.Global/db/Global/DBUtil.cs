@@ -102,8 +102,12 @@ namespace PMDS.DB
         {
             try
             {
-                PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext();
-                PMDS.db.Entities.DBLizenz rDBLizenz = PMDSBusiness1.GetDBLizenz(db);
+                PMDS.db.Entities.DBLizenz rDBLizenz;
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                {
+                    rDBLizenz = PMDSBusiness1.GetDBLizenz(db);
+
+                }
                 return rDBLizenz;
             }
             catch (Exception ex)

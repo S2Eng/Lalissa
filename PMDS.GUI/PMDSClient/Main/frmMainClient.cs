@@ -2344,18 +2344,20 @@ namespace PMDS.GUI.PMDSClient
                         break;
 
                     case "btnÄrzteverwaltung":
-                        System.Collections.Generic.List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl> lstÄrzteMehrfachauswahl = new List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl>();
-                        frmAerzteEdit frmAerzteEdit1 = new frmAerzteEdit();
-                        BusinessLogic.Aerzte aerzte = new BusinessLogic.Aerzte();
-                        aerzte.Read();
-                        frmAerzteEdit1.CLASS_AERZTE = aerzte;
-                        frmAerzteEdit1.btnKlientenMehrfachauswahl.Visible = true;
-                        DialogResult res = frmAerzteEdit1.ShowDialog();
-                        if (res == DialogResult.OK)
+                        using (frmAerzteEdit frmAerzteEdit1 = new frmAerzteEdit())
                         {
-                            KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
-                            KlientGuiAction1.doUIDienstübergabe(ref frmAerzteEdit1.lstPatienteSelected2, ref lstÄrzteMehrfachauswahl, frmAerzteEdit1.CurrentArztRow.ID, null, null);
-                            KlientGuiAction1.checkWriteÄrzteMehrfachauswahl(ref lstÄrzteMehrfachauswahl, null);
+                            System.Collections.Generic.List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl> lstÄrzteMehrfachauswahl = new List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl>();
+                            BusinessLogic.Aerzte aerzte = new BusinessLogic.Aerzte();
+                            aerzte.Read();
+                            frmAerzteEdit1.CLASS_AERZTE = aerzte;
+                            frmAerzteEdit1.btnKlientenMehrfachauswahl.Visible = true;
+                            DialogResult res = frmAerzteEdit1.ShowDialog();
+                            if (res == DialogResult.OK)
+                            {
+                                KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
+                                KlientGuiAction1.doUIDienstübergabe(frmAerzteEdit1.lstPatienteSelected2, ref lstÄrzteMehrfachauswahl, frmAerzteEdit1.CurrentArztRow.ID, null, null);
+                                KlientGuiAction1.checkWriteÄrzteMehrfachauswahl(ref lstÄrzteMehrfachauswahl, null);
+                            }
                         }
                         break;
                         

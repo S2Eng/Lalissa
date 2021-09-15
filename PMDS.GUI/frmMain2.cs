@@ -2475,17 +2475,19 @@ namespace PMDS
 
                     case "btnÄrzteverwaltung":
                         System.Collections.Generic.List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl> lstÄrzteMehrfachauswahl = new List<PMDS.DB.PMDSBusiness.cÄrzteMehrfachauswahl>();
-                        frmAerzteEdit frmAerzteEdit1 = new frmAerzteEdit();
-                        BusinessLogic.Aerzte aerzte = new BusinessLogic.Aerzte();
-                        aerzte.Read();
-                        frmAerzteEdit1.CLASS_AERZTE = aerzte;
-                        frmAerzteEdit1.btnKlientenMehrfachauswahl.Visible = true;
-                        DialogResult res = frmAerzteEdit1.ShowDialog();
-                        if (res == DialogResult.OK)
+                        using (frmAerzteEdit frmAerzteEdit1 = new frmAerzteEdit())
                         {
-                            KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
-                            KlientGuiAction1.doUIDienstübergabe(ref frmAerzteEdit1.lstPatienteSelected2, ref lstÄrzteMehrfachauswahl, frmAerzteEdit1.CurrentArztRow.ID, null, null);
-                            KlientGuiAction1.checkWriteÄrzteMehrfachauswahl(ref lstÄrzteMehrfachauswahl, null);
+                            BusinessLogic.Aerzte aerzte = new BusinessLogic.Aerzte();
+                            aerzte.Read();
+                            frmAerzteEdit1.CLASS_AERZTE = aerzte;
+                            frmAerzteEdit1.btnKlientenMehrfachauswahl.Visible = true;
+                            DialogResult res = frmAerzteEdit1.ShowDialog();
+                            if (res == DialogResult.OK)
+                            {
+                                KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
+                                KlientGuiAction1.doUIDienstübergabe(frmAerzteEdit1.lstPatienteSelected2, ref lstÄrzteMehrfachauswahl, frmAerzteEdit1.CurrentArztRow.ID, null, null);
+                                KlientGuiAction1.checkWriteÄrzteMehrfachauswahl(ref lstÄrzteMehrfachauswahl, null);
+                            }
                         }
                         break;
                         
@@ -2508,23 +2510,25 @@ namespace PMDS
                         break;
 
                     case "btnPatientAufenthalteLöschen":
-                        PMDS.GUI.Klient.frmPatientDelete frmPatientDelete1 = new GUI.Klient.frmPatientDelete();
-                        frmPatientDelete1.initControl(ENV.CurrentIDPatient);
-                        frmPatientDelete1.ShowDialog(this);
-                        if (!frmPatientDelete1.contPatientDelete1.abort)
+                        using (PMDS.GUI.Klient.frmPatientDelete frmPatientDelete1 = new GUI.Klient.frmPatientDelete())
                         {
-                            PMDS.GUI.GuiAction.refreshGridPatientenStart();
+                            frmPatientDelete1.initControl(ENV.CurrentIDPatient);
+                            frmPatientDelete1.ShowDialog(this);
+                            if (!frmPatientDelete1.contPatientDelete1.abort)
+                            {
+                                PMDS.GUI.GuiAction.refreshGridPatientenStart();
 
-                            //this._SitemapStart.RefreshPatientSearch(true);
-                            //this._SitemapStart.RefreshPatientSearch(true);
-                            //_RefreshShouldBeAfterVisible = true;
-                            //this._SitemapStart.ucPatientGroup1.RefreshGUI((true);
-                            //ucPatientGroupPicker1.SetPatientID(IDPatient);
+                                //this._SitemapStart.RefreshPatientSearch(true);
+                                //this._SitemapStart.RefreshPatientSearch(true);
+                                //_RefreshShouldBeAfterVisible = true;
+                                //this._SitemapStart.ucPatientGroup1.RefreshGUI((true);
+                                //ucPatientGroupPicker1.SetPatientID(IDPatient);
 
-                            //PMDS.GUI.GuiAction.GuiActionDone(SiteEvents.Urlaub);
+                                //PMDS.GUI.GuiAction.GuiActionDone(SiteEvents.Urlaub);
 
-                            //this._SitemapStart.setHistorieOnOff();
-                            //this._SitemapStart.ucPatientPicker1.RefreshList();
+                                //this._SitemapStart.setHistorieOnOff();
+                                //this._SitemapStart.ucPatientPicker1.RefreshList();
+                            }
                         }
                         break;
                         

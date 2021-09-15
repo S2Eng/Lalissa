@@ -1271,39 +1271,40 @@ namespace PMDS.GUI.Verordnungen
         {
             try
             {
-                frmVOBestellungErfassenDetail frmVOErfassenDetail1 = new frmVOBestellungErfassenDetail();
-                if (isNew)
-                {
-                    frmVOErfassenDetail1.initControl(true, null, IDVO, EinmaligeAnfoderung);
-                }
-                else
-                {
-                    frmVOErfassenDetail1.initControl(false, rSelRow.ID, null, EinmaligeAnfoderung);
-                }
-
-                frmVOErfassenDetail1.ShowDialog(this);
-                if (!frmVOErfassenDetail1.ucVOBestellungErfassenDetail1.abort)
+                using (frmVOBestellungErfassenDetail frmVOErfassenDetail1 = new frmVOBestellungErfassenDetail())
                 {
                     if (isNew)
                     {
-                        UltraGridRow rGridSel = null;
-                        dsVO.VORow rVO = null;
-                        bool RowSelected = this.getSelectedRow(false, ref rGridSel, ref rVO);
-                        if (RowSelected)
-                        {
-                            this.SearchVOBestelldaten(rVO.ID);
-                        }
-                        else
-                        {
-                            throw new Exception("addRowOpenVOBestelldaten: RowSelected==null not allowed!");
-                        }
+                        frmVOErfassenDetail1.initControl(true, null, IDVO, EinmaligeAnfoderung);
                     }
                     else
                     {
-                        this.SearchVOBestelldaten(rSelRow.IDVerordnung);
+                        frmVOErfassenDetail1.initControl(false, rSelRow.ID, null, EinmaligeAnfoderung);
+                    }
+
+                    frmVOErfassenDetail1.ShowDialog(this);
+                    if (!frmVOErfassenDetail1.ucVOBestellungErfassenDetail1.abort)
+                    {
+                        if (isNew)
+                        {
+                            UltraGridRow rGridSel = null;
+                            dsVO.VORow rVO = null;
+                            bool RowSelected = this.getSelectedRow(false, ref rGridSel, ref rVO);
+                            if (RowSelected)
+                            {
+                                this.SearchVOBestelldaten(rVO.ID);
+                            }
+                            else
+                            {
+                                throw new Exception("addRowOpenVOBestelldaten: RowSelected==null not allowed!");
+                            }
+                        }
+                        else
+                        {
+                            this.SearchVOBestelldaten(rSelRow.IDVerordnung);
+                        }
                     }
                 }
-
                 return true;
             }
             catch (Exception ex)
@@ -1397,18 +1398,20 @@ namespace PMDS.GUI.Verordnungen
                             }
                         }
 
-                        if (sMsgBoxInfoDelete.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(sMsgBoxInfoDelete))
                         {
                             string sMsgBox = "";        //QS2.Desktop.ControlManagment.ControlManagment.getRes("Es wurden Beziehungen zu den gewählten Zeilen gefunden!");
                             string sMsgBox2 = QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die Sätze trotzdem löschen?");
                             sMsgBoxInfoDelete = sMsgBox + "\r\n" + "\r\n" + sMsgBoxInfoDelete + "\r\n" + sMsgBox2;
 
-                            PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox();
-                            frmMessageBox1.initControl(sMsgBoxInfoDelete);
-                            frmMessageBox1.ShowDialog(this);
-                            if (frmMessageBox1.abort)
+                            using (PMDS.GUI.GenericControls.frmMessageBox frmMessageBox1 = new GenericControls.frmMessageBox())
                             {
-                                return false;
+                                frmMessageBox1.initControl(sMsgBoxInfoDelete);
+                                frmMessageBox1.ShowDialog(this);
+                                if (frmMessageBox1.abort)
+                                {
+                                    return false;
+                                }
                             }
                         }
 
@@ -1527,7 +1530,7 @@ namespace PMDS.GUI.Verordnungen
                                 }
                             }
 
-                            if (sMsgBoxInfoDelete.Trim() != "")
+                            if (!String.IsNullOrWhiteSpace(sMsgBoxInfoDelete))
                             {
                                 this.b.saveProtocol(db, "Delete Verordnungen", sMsgBoxInfoDelete);
                             }
@@ -1568,15 +1571,16 @@ namespace PMDS.GUI.Verordnungen
                     lstIDVONotShow.Add(rSelRow.ID);
                 }
 
-                PMDS.GUI.Verordnungen.frmVOErfassen frmVOErfassen1 = new Verordnungen.frmVOErfassen();
-                frmVOErfassen1.initControl(this._TypeUI, true, true, lstIDVONotShow);
-                frmVOErfassen1.ucVOErfassen1.search2(this._IDAufenthalt, this._IDPflegeplan, this._IDMedDaten, this._IDWundeKopf);
-                frmVOErfassen1.ShowDialog(this);
-                if (!frmVOErfassen1.ucVOErfassen1.abort)
+                using (PMDS.GUI.Verordnungen.frmVOErfassen frmVOErfassen1 = new Verordnungen.frmVOErfassen())
                 {
-                    this.search2(this._IDAufenthalt, this._IDPflegeplan, this._IDMedDaten, this._IDWundeKopf);
+                    frmVOErfassen1.initControl(this._TypeUI, true, true, lstIDVONotShow);
+                    frmVOErfassen1.ucVOErfassen1.search2(this._IDAufenthalt, this._IDPflegeplan, this._IDMedDaten, this._IDWundeKopf);
+                    frmVOErfassen1.ShowDialog(this);
+                    if (!frmVOErfassen1.ucVOErfassen1.abort)
+                    {
+                        this.search2(this._IDAufenthalt, this._IDPflegeplan, this._IDMedDaten, this._IDWundeKopf);
+                    }
                 }
-
             }
             catch (Exception ex)
             {
@@ -1613,8 +1617,9 @@ namespace PMDS.GUI.Verordnungen
                         lstIDs += rVO.ID.ToString() + ";";
                     }
 
-                    dsVO dsVPToPrint = new dsVO();
-                    dsVPToPrint = (dsVO)this.dsVO1.Copy();
+                    using (dsVO dsVPToPrint = (dsVO)this.dsVO1.Copy())
+                    {
+                    //dsVPToPrint = (dsVO)this.dsVO1.Copy();
                     dsVPToPrint.VO.Columns.Add("LieferantBeschreibung", typeof(string));
                     foreach (dsVO.VORow rVOToPrint in dsVPToPrint.VO)
                     {
@@ -1622,7 +1627,7 @@ namespace PMDS.GUI.Verordnungen
                         if (!rVOToPrint.IsLieferantNull())
                         {
                             var tLieferantFound = lstLieferanten.Where(o => o.ID == rVOToPrint.Lieferant);
-                            if (tLieferantFound.Count() > 0)
+                            if (tLieferantFound.Any())
                             {
                                 rVOToPrint["LieferantBeschreibung"] = lstLieferanten.Where(o => o.ID == rVOToPrint.Lieferant).First().Beschreibung.Trim();
                             }
@@ -1630,6 +1635,7 @@ namespace PMDS.GUI.Verordnungen
                     }
             
                     PMDS.Print.ReportManager.PrintVOErfassen(dsVPToPrint, ENV.IDKlinik, ENV.CurrentIDAbteilung, dFrom, dTo,lTyp, ENV.LoginInNameFrei.Trim(), exportDS, this.chkPrintDetailsJN.Checked, lstIDs);
+                    }
                 }
 
                 return true;
@@ -1759,7 +1765,7 @@ namespace PMDS.GUI.Verordnungen
                 }
                 else
                 {
-                    if (e.Cell.Column.ToString().Trim().ToLower().Equals((this.colSelect.Trim()).Trim().ToLower()))
+                    if (generic.sEquals(e.Cell.Column, colSelect))
                     {
                         e.Cell.Activation = Activation.AllowEdit;
                     }
@@ -1802,7 +1808,7 @@ namespace PMDS.GUI.Verordnungen
                         this.SearchVOBestelldaten(rVO.ID);
 
                         string sLagerZustand = "";
-                        if (this.cboZustand.Text.ToString().Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(cboZustand.Text))
                         {
                             sLagerZustand = this.cboZustand.Text.Trim();
                         }
@@ -1848,7 +1854,7 @@ namespace PMDS.GUI.Verordnungen
                 }
                 else
                 {
-                    if (e.Cell.Column.ToString().Trim().ToLower().Equals((this.colSelect.Trim()).Trim().ToLower()))
+                    if (generic.sEquals(e.Cell.Column, colSelect))
                     {
                         e.Cell.Activation = Activation.AllowEdit;
                     }
@@ -2249,47 +2255,12 @@ namespace PMDS.GUI.Verordnungen
                 bool bSelected = this.getSelectedRow(true, ref gridRow, ref rVO);
                 if (bSelected)
                 {
-                    PMDS.GUI.Medikament.frmRezeptEintragMedDaten frmRezeptEintragMedDaten1 = new Medikament.frmRezeptEintragMedDaten();
-                    frmRezeptEintragMedDaten1.initControl(rVO.ID, Medikament.ucRezeptEintragMedDaten.eTypeUI.VOToMedikamente);
-                    frmRezeptEintragMedDaten1.ShowDialog(this);
-                    if (!frmRezeptEintragMedDaten1.ucRezeptEintragMedDaten1.abort)
+                    using (PMDS.GUI.Medikament.frmRezeptEintragMedDaten frmRezeptEintragMedDaten1 = new Medikament.frmRezeptEintragMedDaten())
                     {
-                        //string lstRezepteinträge = "";
-                        //int NumberRezepteinträge = 0;
-                        //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                        //{
-                            //this.b2.saveAnzeigeGridMedDaten(rVO.ID, db, ref lstRezepteinträge, ref NumberRezepteinträge);
-                            //db.SaveChanges();
-
-                            //System.Linq.IQueryable<PMDS.db.Entities.RezeptEintragMedDaten> tRezeptEintragMedDaten = db.RezeptEintragMedDaten.Where(o => o.IDMedDaten == rVO.ID);
-                            //if (tRezeptEintragMedDaten.Count() > 0)
-                            //{
-                            //    foreach (PMDS.db.Entities.RezeptEintragMedDaten rRezeptEintragMedDaten2 in tRezeptEintragMedDaten)
-                            //    {
-                            //        string lstMedDaten = "";
-                            //        int NumberMedDaten = 0;
-                            //        string lstWunden = "";
-                            //        int NumberWunden = 0;
-                            //        this.b2.saveAnzeigeGridRezeptEintrag(rRezeptEintragMedDaten2.IDRezepteintrag, db, ref lstMedDaten, ref NumberMedDaten, ref lstWunden, ref NumberWunden);
-                            //    }
-                            //    db.SaveChanges();
-                            //}
-                        //}
-
-                        //rSelRow.lstRezepteinträge = lstRezepteinträge;
-                        //rSelRow.NumberRezepteinträge = NumberRezepteinträge;
-                        //this.grid.Refresh();
-
-                        //if (!rSelRow.IsBisNull())
-                        //{
-                        //    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                        //    {
-                        //        this.b2.checkMedDatenAbgesetzt2(null, db, ENV.CurrentIDPatient, 0);
-                        //    }
-                        //}
+                        frmRezeptEintragMedDaten1.initControl(rVO.ID, Medikament.ucRezeptEintragMedDaten.eTypeUI.VOToMedikamente);
+                        frmRezeptEintragMedDaten1.ShowDialog(this);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -2312,52 +2283,12 @@ namespace PMDS.GUI.Verordnungen
                 bool bSelected = this.getSelectedRow(true, ref gridRow, ref rVO);
                 if (bSelected)
                 {
-                    PMDS.GUI.Medikament.frmRezeptEintragMedDaten frmRezeptEintragMedDaten1 = new Medikament.frmRezeptEintragMedDaten();
-                    frmRezeptEintragMedDaten1.initControl(rVO.ID, Medikament.ucRezeptEintragMedDaten.eTypeUI.VOToMedDaten);
-                    frmRezeptEintragMedDaten1.ShowDialog(this);
-                    if (!frmRezeptEintragMedDaten1.ucRezeptEintragMedDaten1.abort)
+                    using (PMDS.GUI.Medikament.frmRezeptEintragMedDaten frmRezeptEintragMedDaten1 = new Medikament.frmRezeptEintragMedDaten())
                     {
-                        //string lstMedDaten = "";
-                        //int NumberMedDaten = 0;
-                        //string lstWunden = "";
-                        //int NumberWunden = 0;
-                        //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                        //{
-                        //    this.b2.saveAnzeigeGridRezeptEintrag(rVO.ID, db, ref lstMedDaten, ref NumberMedDaten, ref lstWunden, ref NumberWunden);
-                        //    db.SaveChanges();
-
-                        //    System.Linq.IQueryable<PMDS.db.Entities.RezeptEintragMedDaten> tRezeptEintragMedDaten = db.RezeptEintragMedDaten.Where(o => o.IDRezepteintrag == rVO.ID);
-                        //    if (tRezeptEintragMedDaten.Count() > 0)
-                        //    {
-                        //        foreach (PMDS.db.Entities.RezeptEintragMedDaten rRezeptEintragMedDaten2 in tRezeptEintragMedDaten)
-                        //        {
-                        //            if (rRezeptEintragMedDaten2.IDMedDaten != null)
-                        //            {
-                        //                int NumberRezepteinträge = 0;
-                        //                string lstRezepteinträge = "";
-                        //                this.b2.saveAnzeigeGridMedDaten(rRezeptEintragMedDaten2.IDMedDaten.Value, db, ref lstRezepteinträge, ref NumberRezepteinträge);
-                        //            }
-                        //        }
-                        //        db.SaveChanges();
-                        //    }
-                        //}
-
-                        //rSelRow.NumberMedDaten = NumberMedDaten;
-                        //rSelRow.lstMedDaten = lstMedDaten;
-                        //rSelRow.NumberWunden = NumberWunden;
-                        //rSelRow.lstWunden = lstWunden;
-                        //this.ucMed1VerschreibenDetailAll.dgEintraege.Refresh();
-
-                        ////if (rSelRow.AbzugebenBis.Year != 3000)
-                        ////{
-                        ////    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                        ////    {
-                        ////        b2.checkRezeptEintragAbgesetzt(rSelRow.ID, db);
-                        ////    }
-                        ////}
+                        frmRezeptEintragMedDaten1.initControl(rVO.ID, Medikament.ucRezeptEintragMedDaten.eTypeUI.VOToMedDaten);
+                        frmRezeptEintragMedDaten1.ShowDialog(this);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -2379,26 +2310,10 @@ namespace PMDS.GUI.Verordnungen
                 bool bSelected = this.getSelectedRow(true, ref gridRow, ref rVO);
                 if (bSelected)
                 {
-                    PMDS.GUI.Medikament.frmRezeptEintragMedDaten frmRezeptEintragMedDaten1 = new Medikament.frmRezeptEintragMedDaten();
-                    frmRezeptEintragMedDaten1.initControl(rVO.ID, Medikament.ucRezeptEintragMedDaten.eTypeUI.VOToWunde);
-                    frmRezeptEintragMedDaten1.ShowDialog(this);
-                    if (!frmRezeptEintragMedDaten1.ucRezeptEintragMedDaten1.abort)
+                    using (PMDS.GUI.Medikament.frmRezeptEintragMedDaten frmRezeptEintragMedDaten1 = new Medikament.frmRezeptEintragMedDaten())
                     {
-                        //string lstMedDaten = "";
-                        //int NumberMedDaten = 0;
-                        //string lstWunden = "";
-                        //int NumberWunden = 0;
-                        //using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                        //{
-                        //    this.b2.saveAnzeigeGridRezeptEintrag(rVO.ID, db, ref lstMedDaten, ref NumberMedDaten, ref lstWunden, ref NumberWunden);
-                        //    db.SaveChanges();
-                        //}
-
-                        //rSelRow.NumberMedDaten = NumberMedDaten;
-                        //rSelRow.lstMedDaten = lstMedDaten;
-                        //rSelRow.NumberWunden = NumberWunden;
-                        //rSelRow.lstWunden = lstWunden;
-                        //this.ucMed1VerschreibenDetailAll.dgEintraege.Refresh();
+                        frmRezeptEintragMedDaten1.initControl(rVO.ID, Medikament.ucRezeptEintragMedDaten.eTypeUI.VOToWunde);
+                        frmRezeptEintragMedDaten1.ShowDialog(this);
                     }
                 }
 
@@ -2437,10 +2352,12 @@ namespace PMDS.GUI.Verordnungen
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                if (e.Button.Key.Trim().ToLower().Equals(("Add").Trim().ToLower()))
+                if (generic.sEquals(e.Button.Key, "Add"))
                 {
-                    frmAuswahl frm = new frmAuswahl("LAZ");
-                    frm.ShowDialog();
+                    using (frmAuswahl frm = new frmAuswahl("LAZ"))
+                    {
+                        frm.ShowDialog();
+                    }
                     List<PMDS.db.Entities.AuswahlListe> lstEmpty = null;
                     this.PMDSBusinessUI2.loadSelList("LAZ", this.cboZustand, null, this.cboZustand.Value, ref lstEmpty);
                     PMDSBusinessUI.doSelListChanged("LAZ", this.cboZustand, null);

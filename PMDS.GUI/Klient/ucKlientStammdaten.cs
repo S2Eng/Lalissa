@@ -1732,7 +1732,7 @@ namespace PMDS.GUI
                     }
 
                     KlientGuiAction KlientGuiAction1 = new KlientGuiAction();
-                    KlientGuiAction1.doUIDienstübergabe(ref frm.lstPatienteSelected2, ref this.lstÄrzteMehrfachauswahl, frm.CurrentArztRow.ID, rNewPatientÄrzte, this.gridAerzte);
+                    KlientGuiAction1.doUIDienstübergabe(frm.lstPatienteSelected2, ref this.lstÄrzteMehrfachauswahl, frm.CurrentArztRow.ID, rNewPatientÄrzte, this.gridAerzte);
                     return true;
                 }
                 return false;

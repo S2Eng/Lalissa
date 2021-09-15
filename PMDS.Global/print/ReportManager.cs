@@ -13,6 +13,7 @@ using PMDS.Print;
 using PMDS.Global.db.ERSystem;
 using System.Linq;
 
+
 namespace PMDS.Print.CR
 {
     
@@ -27,315 +28,316 @@ namespace PMDS.Print.CR
                                                 PMDS.Global.db.ERSystem.UISitemaps.cParFormular cParFormular1, ref string sFileFullNameExported, bool ShowGroupTreeButton = true, string lstPatients = "", bool SaveToArchive = false)
         {
             CrystalDecisions.CrystalReports.Engine.ReportDocument rpt = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                rpt.Load(sReportFile);
+            rpt.Load(sReportFile);
 
-                TableLogOnInfo info = new TableLogOnInfo();
-                info.ConnectionInfo.DatabaseName = DB_DATABASE;
+            TableLogOnInfo info = new TableLogOnInfo();
 
-                if (INTEGRATED_SECURITY == null || INTEGRATED_SECURITY == "0")
+            info.ConnectionInfo.DatabaseName = DB_DATABASE;
+
+            if (INTEGRATED_SECURITY == null || INTEGRATED_SECURITY == "0")
+            {
+                info.ConnectionInfo.IntegratedSecurity = false;
+                info.ConnectionInfo.Password = DB_PASSWORD;
+                info.ConnectionInfo.UserID = DB_USER;
+            }
+            else
+            {
+                info.ConnectionInfo.IntegratedSecurity = true;
+                info.ConnectionInfo.Password = string.Empty;
+                info.ConnectionInfo.UserID = string.Empty;
+            }
+
+            info.ConnectionInfo.ServerName = DB_SERVER;
+
+            string sFile = Path.GetFileName(sReportFile).Trim();
+
+            bool bSourceIsDataSet = false;
+            if (IsInList(listds, sFile))                            // Dynamsche Datenquellen wenn es die Hauptdatenquelle ist muss der Reportdateiname konfiguriert sein
+            {
+                try
                 {
-                    info.ConnectionInfo.IntegratedSecurity = false;
-                    info.ConnectionInfo.Password = DB_PASSWORD;
-                    info.ConnectionInfo.UserID = DB_USER;
+                    bSourceIsDataSet = true;
+                    DataSet ds = GetDataSetFromList(listds, sFile);
+                    rpt.SetDataSource(ds);
                 }
-                else
+                catch (Exception ex)
                 {
-                    info.ConnectionInfo.IntegratedSecurity = true;
-                    info.ConnectionInfo.Password = string.Empty;
-                    info.ConnectionInfo.UserID = string.Empty;
+                    throw new Exception("PrintDynamicReport: Error SetDataSource: " + ex.ToString());
                 }
-
-                info.ConnectionInfo.ServerName = DB_SERVER;
-
-                string sFile = Path.GetFileName(sReportFile).Trim();
-
-                bool bSourceIsDataSet = false;
-                if (IsInList(listds, sFile))                            // Dynamsche Datenquellen wenn es die Hauptdatenquelle ist muss der Reportdateiname konfiguriert sein
+            }
+            else
+            {
+                foreach (Table t in rpt.Database.Tables)
                 {
-                    try
+                    t.ApplyLogOnInfo(info);
+
+                }
+            }
+            if (cParFormular1 != null)
+            {
+                rpt.SetDataSource(cParFormular1.dsFormularAssessment);
+            }
+
+            foreach (Section s in rpt.ReportDefinition.Sections)                            // jeden Subreport eine Connection zuweisen
+            {
+                foreach (ReportObject o in s.ReportObjects)
+                {
+                    if (o.Kind == ReportObjectKind.SubreportObject)
                     {
-                        bSourceIsDataSet = true;
-                        DataSet ds = GetDataSetFromList(listds, sFile);
-                        rpt.SetDataSource(ds);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("PrintDynamicReport: Error SetDataSource: " + ex.ToString());
-                    }
-                }
-                else
-                {
-                    foreach (Table t in rpt.Database.Tables)
-                    {
-                        t.ApplyLogOnInfo(info);
+                        SubreportObject so = (SubreportObject)o;
+                        ReportDocument doc = so.OpenSubreport(so.SubreportName);
 
-                    }
-                }
-                if (cParFormular1 != null)
-                {
-                    rpt.SetDataSource(cParFormular1.dsFormularAssessment);
-                }
+                        //if (PMDS.Global.generic.sEqualsList1(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
+                        //{
+                        //    doc.SetDataSource(listds[0].DATASET);
+                        //}
 
-                foreach (Section s in rpt.ReportDefinition.Sections)                            // jeden Subreport eine Connection zuweisen
-                {
-                    foreach (ReportObject o in s.ReportObjects)
-                    {
-                        if (o.Kind == ReportObjectKind.SubreportObject)
+                        if (IsInList(listds, so.SubreportName.Trim()))                                         // Dynamische Datenquelle in SubReport, wenn Hauptreport eine DB-Anbindung hat
+                        {                                                                                      // Pflegebegleitschreiben -> MedikamentenblattSub
+                            doc.SetDataSource(GetDataSetFromList(listds, so.SubreportName.Trim()));
+                        }
+
+                        else if (bSourceIsDataSet)                                                             // Dynamische Datenquelle ins Subreport, wenn Hauptreport ein Dataset hat.
+                        {                                                                                      // Mehr als eine Datenquelle bei Datasets wird nicht unterstützt.
+                            doc.SetDataSource(GetDataSetFromList(listds, sFile));                              // Medikamentenblatt.rpt -> MedDaten.rpt
+                        }                                                                                      // Wird unten nochenmal gesetzt. Hier nur, um ApplyLogOnInfo zu vermeiden
+
+                        else
                         {
-                            SubreportObject so = (SubreportObject)o;
-                            ReportDocument doc = so.OpenSubreport(so.SubreportName);
-
-                            //if (PMDS.Global.generic.sEqualsList1(doc.Name, new List<object>() { "MedikamentenblattSub", "MedDaten.rpt" }))
-                            //{
-                            //    doc.SetDataSource(listds[0].DATASET);
-                            //}
-
-                            if (IsInList(listds, so.SubreportName.Trim()))                                         // Dynamische Datenquelle in SubReport, wenn Hauptreport eine DB-Anbindung hat
-                            {                                                                                      // Pflegebegleitschreiben -> MedikamentenblattSub
-                                doc.SetDataSource(GetDataSetFromList(listds, so.SubreportName.Trim()));
-                            }
-
-                            else if (bSourceIsDataSet)                                                             // Dynamische Datenquelle ins Subreport, wenn Hauptreport ein Dataset hat.
-                            {                                                                                      // Mehr als eine Datenquelle bei Datasets wird nicht unterstützt.
-                                doc.SetDataSource(GetDataSetFromList(listds, sFile));                              // Medikamentenblatt.rpt -> MedDaten.rpt
-                            }                                                                                      // Wird unten nochenmal gesetzt. Hier nur, um ApplyLogOnInfo zu vermeiden
-
-                            else
+                            foreach (Table t in doc.Database.Tables)
                             {
-                                foreach (Table t in doc.Database.Tables)
-                                {
-                                    t.ApplyLogOnInfo(info);
-                                }
+                                t.ApplyLogOnInfo(info);
                             }
                         }
                     }
                 }
+            }
 
-                if (!bSourceIsDataSet)
+            if (!bSourceIsDataSet)
+            {
+                if (info.ConnectionInfo.IntegratedSecurity == true)
                 {
-                    if (info.ConnectionInfo.IntegratedSecurity == true)
-                    {
-                        rpt.SetDatabaseLogon(string.Empty, string.Empty, DB_SERVER, DB_DATABASE, true);
-                    }
-                    else
-                    {
-                        rpt.SetDatabaseLogon(DB_USER, DB_PASSWORD, DB_SERVER, DB_DATABASE, true);
-                    }
+                    rpt.SetDatabaseLogon(string.Empty, string.Empty, DB_SERVER, DB_DATABASE, true);
                 }
+                else
+                {
+                    rpt.SetDatabaseLogon(DB_USER, DB_PASSWORD, DB_SERVER, DB_DATABASE, true);
+                }
+            }
+            rpt.Refresh();
+            // 17.11.2010 - Steuerung des Ausdrucks mittels zusätzlicher Parameter
+            // ReportRoot: wenn nicht leer -> Ausdrucken als PDF in <ReportRoot>\Nachname_Vorname_GebDatum\<Berichtsname>.pdf
+            // PrintJN: wenn ja -> direkte Ausgabe auf den Drucker ohne Voransicht.
+
+            String IDKlient = "";
+            String ReportRoot = "";
+
+            Boolean PrintJN = false;
+            Guid IDAufenthalt_current = Guid.Empty;
+            Guid IDKlinik_current = Guid.Empty;
+            Guid IDAbteilung_current = Guid.Empty;
+            Guid IDKlient_current = Guid.Empty;
+            bool vabgesetzteMed = false;
+            string sAufenthaltNr = "";
+
+            if (list != null)
+            {
+                foreach (BerichtParameter p in list)  // Alle Berichtsparameter setzten
+                {
+                    AddCrystalParameter(rpt, p.Name, (object)p.Value);
+
+                    if (p.Name == "IDKlient")
+                        IDKlient = p.Value.ToString().Replace("{", "").Replace("}", "");
+
+                    if (p.Name == "ReportRoot")
+                        ReportRoot = p.Value.ToString();
+
+                    if (p.Name == "PrintJN")
+                        PrintJN = (bool)p.Value;
+
+                    if (p.Name == "IDAufenthalt_current")
+                        IDAufenthalt_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "IDKlinik_current")
+                        IDKlinik_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "IDKlient_current")
+                        IDKlient_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "IDAbteilung_current")
+                        IDAbteilung_current = new Guid(p.Value.ToString());
+
+                    if (p.Name == "vabgesetzeMed")
+                        vabgesetzteMed = (bool)p.Value;
+
+                    if (p.Name == "AufenthaltNr")
+                        sAufenthaltNr = p.Value.ToString();
+                }
+            }
+
+            //-----------------------------------------------------------------------
+            // Sonderbehandlung Medikamentenblatt.rpt
+            // Erweiterung des Datasets für Allergien und Unverträglichkeiten
+            // ist in Pflegebegleitschreiben micht erforderlich (ist da eigener Sub-Report)
+            //-----------------------------------------------------------------------
+            if (PMDS.Global.generic.sEquals(rpt.FileName, "Medikamentenblatt.rpt", Global.Enums.eCompareMode.Contains))
+            {
+                using (dsKlientenliste dsKlientenliste1 = new dsKlientenliste())
+                {
+                    using (sqlManange sqlManange1 = new sqlManange())
+                    {
+                        sqlManange1.initControl();
+                        System.Collections.Generic.List<int> lstMedDaten = new List<int>();
+                        lstMedDaten.Add(3);
+                        lstMedDaten.Add(6);
+                        sqlManange1.getMedizinischeDaten(dsKlientenliste1, IDKlient_current, lstMedDaten, sqlManange.eTypeMedDaten.MedDaten);
+                        sqlManange1.getMedizinischeDatenLayout(dsKlientenliste1, sqlManange.eTypeMedDaten.All);
+                    }
+                    DataTable dtMedDaten = new DataTable();
+                    DataTable dtMedDatenLayout = new DataTable();
+
+                    if (dsKlientenliste1.MedizinischeDaten.Any())    //os 19-02-22 - Sonst gibt es ein Exception, wenn keine Unverträglichkeit oder Allerige vorliegt
+                        dtMedDaten = dsKlientenliste1.MedizinischeDaten.CopyToDataTable();
+                    if (dsKlientenliste1.MedizinischeDatenLayout.Any())
+                        dtMedDatenLayout = dsKlientenliste1.MedizinischeDatenLayout.CopyToDataTable();
+
+                    dtMedDaten.TableName = "MedizinischeDaten";
+                    dtMedDatenLayout.TableName = "MedizinischeDatenLayout";
+
+                StartMedizinischeDaten:
+                    foreach (DataTable t in listds[0].DATASET.Tables)
+                    {
+                        if (t.TableName == dtMedDaten.TableName)
+                        {
+                            listds[0].DATASET.Tables.Remove(t);
+                            goto StartMedizinischeDaten;
+                        }
+                    }
+                    listds[0].DATASET.Tables.Add(dtMedDaten);
+
+                StartMedizinischeDatenLayout:
+                    foreach (DataTable t in listds[0].DATASET.Tables)
+                    {
+                        if (t.TableName == dtMedDatenLayout.TableName)
+                        {
+                            listds[0].DATASET.Tables.Remove(t);
+                            goto StartMedizinischeDatenLayout;
+                        }
+                    }
+                    listds[0].DATASET.Tables.Add(dtMedDatenLayout);
+                }
+
+                rpt.SetDataSource(listds[0].DATASET);
+                rpt.Subreports["MedDaten.rpt"].SetDataSource(listds[0].DATASET);
                 rpt.Refresh();
-                // 17.11.2010 - Steuerung des Ausdrucks mittels zusätzlicher Parameter
-                // ReportRoot: wenn nicht leer -> Ausdrucken als PDF in <ReportRoot>\Nachname_Vorname_GebDatum\<Berichtsname>.pdf
-                // PrintJN: wenn ja -> direkte Ausgabe auf den Drucker ohne Voransicht.
 
-                String IDKlient = "";
-                String ReportRoot = "";
+                //Nach dem Setzen des Datasets und refresh müssen die Parameter eneut gesetzt werden
+                AddCrystalParameter(rpt, "vabgesetzeMed", vabgesetzteMed);
+                AddCrystalParameter(rpt, "IDKlinik_current", IDKlinik_current.ToString("B"));
+                AddCrystalParameter(rpt, "IDAbteilung_current", IDAbteilung_current.ToString("B"));
 
-                Boolean PrintJN = false;
-                Guid IDAufenthalt_current = Guid.Empty;
-                Guid IDKlinik_current = Guid.Empty;
-                Guid IDAbteilung_current = Guid.Empty;
-                Guid IDKlient_current = Guid.Empty;
-                bool vabgesetzteMed = false;
-                string sAufenthaltNr = "";
+                //ds.WriteXml("C:\\Temp\\dsMedikamentenBlatt.xml", XmlWriteMode.WriteSchema);
+            }
 
-                if (list != null)
+
+            if (SaveToArchive)
+            {
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+
+                string tmpFullPath = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, "Pflegebegleitschreiben" + "_" + System.Guid.NewGuid().ToString() + ".pdf");
+                CrDiskFileDestinationOptions.DiskFileName = tmpFullPath;
+                CrExportOptions = rpt.ExportOptions;
                 {
-                    foreach (BerichtParameter p in list)  // Alle Berichtsparameter setzten
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                rpt.Export();
+                sFileFullNameExported = tmpFullPath;
+
+                if (!PrintPreview && !PrintJN)      //Wenn nur SaveToArchive gesetzt ist und kein Preview oder Ausdruck erforderlich ist
+                {
+                    return true;
+                }
+            }
+
+            if (PrintPreview && String.IsNullOrWhiteSpace(ReportRoot))
+            {
+                frmPrintPreview frm = new frmPrintPreview(rpt);
+                frm.crystalReportViewer1.ShowGroupTreeButton = ShowGroupTreeButton;
+                //frm.crystalReportViewer1.RefreshReport();
+                frm.Show();       //!= System.Windows.Forms.DialogResult.OK;
+                //System.Windows.Forms.Application.DoEvents();
+                if (!PrintJN && String.IsNullOrWhiteSpace(ReportRoot))
+                    return true;
+            }
+
+            if (PrintJN && String.IsNullOrWhiteSpace(ReportRoot))
+            {
+                using (PrintDialog printDialog1 = new PrintDialog())
+                {
+                    printDialog1.Document = new System.Drawing.Printing.PrintDocument();
+                    DialogResult result = printDialog1.ShowDialog();
+
+                    if (result == DialogResult.OK)
                     {
-                        AddCrystalParameter(rpt, p.Name, (object)p.Value);
-
-                        if (p.Name == "IDKlient")
-                            IDKlient = p.Value.ToString().Replace("{", "").Replace("}", "");
-
-                        if (p.Name == "ReportRoot")
-                            ReportRoot = p.Value.ToString();
-
-                        if (p.Name == "PrintJN")
-                            PrintJN = (bool)p.Value;
-
-                        if (p.Name == "IDAufenthalt_current")
-                            IDAufenthalt_current = new Guid(p.Value.ToString());
-
-                        if (p.Name == "IDKlinik_current")
-                            IDKlinik_current = new Guid(p.Value.ToString());
-
-                        if (p.Name == "IDKlient_current")
-                            IDKlient_current = new Guid(p.Value.ToString());
-
-                        if (p.Name == "IDAbteilung_current")
-                            IDAbteilung_current = new Guid(p.Value.ToString());
-
-                        if (p.Name == "vabgesetzeMed")
-                            vabgesetzteMed = (bool)p.Value;
-
-                        if (p.Name == "AufenthaltNr")
-                            sAufenthaltNr = p.Value.ToString();
+                        rpt.PrintOptions.PrinterName = printDialog1.PrinterSettings.PrinterName;
+                        rpt.PrintToPrinter(1, true, 0, 0);
                     }
                 }
 
-                //-----------------------------------------------------------------------
-                // Sonderbehandlung Medikamentenblatt.rpt
-                // Erweiterung des Datasets für Allergien und Unverträglichkeiten
-                // ist in Pflegebegleitschreiben micht erforderlich (ist da eigener Sub-Report)
-                //-----------------------------------------------------------------------
-                if (PMDS.Global.generic.sEquals(rpt.FileName, "Medikamentenblatt.rpt", Global.Enums.eCompareMode.Contains))
-                {
-                    using (dsKlientenliste dsKlientenliste1 = new dsKlientenliste())
-                    {
-                        using (sqlManange sqlManange1 = new sqlManange())
-                        {
-                            sqlManange1.initControl();
-                            System.Collections.Generic.List<int> lstMedDaten = new List<int>();
-                            lstMedDaten.Add(3);
-                            lstMedDaten.Add(6);
-                            sqlManange1.getMedizinischeDaten(dsKlientenliste1, IDKlient_current, lstMedDaten, sqlManange.eTypeMedDaten.MedDaten);
-                            sqlManange1.getMedizinischeDatenLayout(dsKlientenliste1, sqlManange.eTypeMedDaten.All);
-                        }
-                        DataTable dtMedDaten = new DataTable();
-                        DataTable dtMedDatenLayout = new DataTable();
+                if (String.IsNullOrWhiteSpace(ReportRoot))
+                    return true;
+            }
 
-                        if (dsKlientenliste1.MedizinischeDaten.Any())    //os 19-02-22 - Sonst gibt es ein Exception, wenn keine Unverträglichkeit oder Allerige vorliegt
-                            dtMedDaten = dsKlientenliste1.MedizinischeDaten.CopyToDataTable();
-                        if (dsKlientenliste1.MedizinischeDatenLayout.Any())
-                            dtMedDatenLayout = dsKlientenliste1.MedizinischeDatenLayout.CopyToDataTable();
-
-                        dtMedDaten.TableName = "MedizinischeDaten";
-                        dtMedDatenLayout.TableName = "MedizinischeDatenLayout";
-
-                    StartMedizinischeDaten:
-                        foreach (DataTable t in listds[0].DATASET.Tables)
-                        {
-                            if (t.TableName == dtMedDaten.TableName)
-                            {
-                                listds[0].DATASET.Tables.Remove(t);
-                                goto StartMedizinischeDaten;
-                            }
-                        }
-                        listds[0].DATASET.Tables.Add(dtMedDaten);
-
-                    StartMedizinischeDatenLayout:
-                        foreach (DataTable t in listds[0].DATASET.Tables)
-                        {
-                            if (t.TableName == dtMedDatenLayout.TableName)
-                            {
-                                listds[0].DATASET.Tables.Remove(t);
-                                goto StartMedizinischeDatenLayout;
-                            }
-                        }
-                        listds[0].DATASET.Tables.Add(dtMedDatenLayout);
-                    }
-
-                    rpt.SetDataSource(listds[0].DATASET);
-                    rpt.Subreports["MedDaten.rpt"].SetDataSource(listds[0].DATASET);
-                    rpt.Refresh();
-
-                    //Nach dem Setzen des Datasets und refresh müssen die Parameter eneut gesetzt werden
-                    AddCrystalParameter(rpt, "vabgesetzeMed", vabgesetzteMed);
-                    AddCrystalParameter(rpt, "IDKlinik_current", IDKlinik_current.ToString("B"));
-                    AddCrystalParameter(rpt, "IDAbteilung_current", IDAbteilung_current.ToString("B"));
-
-                    //ds.WriteXml("C:\\Temp\\dsMedikamentenBlatt.xml", XmlWriteMode.WriteSchema);
-                }
-
-
-                if (SaveToArchive)
+            else
+            {
+                // OS: Klientenbericht für Archivierung!!! Wenn Archivpfad gesetzt ist -> Ausgabeverzeichnis ermitteln und Bericht als PDF rausschreiben.
+                try
                 {
                     ExportOptions CrExportOptions;
                     DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
                     PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                    int cntTry = 0;
 
-                    string tmpFullPath = System.IO.Path.Combine(PMDS.Global.ENV.path_Temp, "Pflegebegleitschreiben" + "_" + System.Guid.NewGuid().ToString() + ".pdf");
-                    CrDiskFileDestinationOptions.DiskFileName = tmpFullPath;
-                    CrExportOptions = rpt.ExportOptions;
-                    {
-                        CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                        CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                        CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
-                        CrExportOptions.FormatOptions = CrFormatTypeOptions;
-                    }
-                    rpt.Export();
-                    sFileFullNameExported = tmpFullPath;
-
-                    if (!PrintPreview && !PrintJN)      //Wenn nur SaveToArchive gesetzt ist und kein Preview oder Ausdruck erforderlich ist
-                    {
-                        return true;
-                    }
-                }
-
-                if (PrintPreview && String.IsNullOrWhiteSpace(ReportRoot))
-                {
-                    frmPrintPreview frm = new frmPrintPreview(rpt);
-                    frm.crystalReportViewer1.ShowGroupTreeButton = ShowGroupTreeButton;
-                    //frm.crystalReportViewer1.RefreshReport();
-                    frm.Show();       //!= System.Windows.Forms.DialogResult.OK;
-                    System.Windows.Forms.Application.DoEvents();
-                    if (!PrintJN && String.IsNullOrWhiteSpace(ReportRoot))
-                        return true;
-                }
-
-                if (PrintJN && String.IsNullOrWhiteSpace(ReportRoot))
-                {
-                    using (PrintDialog printDialog1 = new PrintDialog())
-                    {
-                        printDialog1.Document = new System.Drawing.Printing.PrintDocument();
-                        DialogResult result = printDialog1.ShowDialog();
-
-                        if (result == DialogResult.OK)
-                        {
-                            rpt.PrintOptions.PrinterName = printDialog1.PrinterSettings.PrinterName;
-                            rpt.PrintToPrinter(1, true, 0, 0);
-                        }
-                    }
-
-                    if (String.IsNullOrWhiteSpace(ReportRoot))
-                        return true;
-                }
-
-                else
-                {
-                    // OS: Klientenbericht für Archivierung!!! Wenn Archivpfad gesetzt ist -> Ausgabeverzeichnis ermitteln und Bericht als PDF rausschreiben.
+                    Retry:
                     try
                     {
-                        ExportOptions CrExportOptions;
-                        DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-                        PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
-                        int cntTry = 0;
+                        cntTry++;
+                        string tmpFullPath = GetUniqueArchivFileName(KlientNameGebDat, ReportRoot, sReportFile, sAufenthaltNr);
+                        if (String.IsNullOrWhiteSpace(tmpFullPath))
+                            return false;
 
-                        Retry:
-                        try
+                        CrDiskFileDestinationOptions.DiskFileName = tmpFullPath;
+                        CrExportOptions = rpt.ExportOptions;
+
                         {
-                            cntTry++;
-                            string tmpFullPath = GetUniqueArchivFileName(KlientNameGebDat, ReportRoot, sReportFile, sAufenthaltNr);
-                            if (String.IsNullOrWhiteSpace(tmpFullPath))
-                                return false;
-
-                            CrDiskFileDestinationOptions.DiskFileName = tmpFullPath;
-                            CrExportOptions = rpt.ExportOptions;
-
-                            {
-                                CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                                CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                                CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
-                                CrExportOptions.FormatOptions = CrFormatTypeOptions;
-                            }
-                            rpt.Export();
-                            sFileFullNameExported = tmpFullPath;
-                            return true;
+                            CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                            CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                            CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                            CrExportOptions.FormatOptions = CrFormatTypeOptions;
                         }
-                        catch (Exception ex)
-                        {
-                            if (cntTry < 3)
-                                goto Retry;
-                            else
-                                throw new Exception(ex.ToString());
-                        }
+                        rpt.Export();
+                        sFileFullNameExported = tmpFullPath;
+                        return true;
                     }
                     catch (Exception ex)
                     {
-                        return false;
+                        if (cntTry < 3)
+                            goto Retry;
+                        else
+                            throw new Exception(ex.ToString());
                     }
                 }
-                return false;
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            return false;
             
         }
 
