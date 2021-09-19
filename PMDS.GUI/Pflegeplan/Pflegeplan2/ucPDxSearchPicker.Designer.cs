@@ -68,7 +68,7 @@
             this.btnPfDef.Size = new System.Drawing.Size(189, 21);
             this.btnPfDef.Style = Infragistics.Win.Misc.SplitButtonDisplayStyle.DropDownButtonOnly;
             this.btnPfDef.TabIndex = 90;
-            this.btnPfDef.Text = "&Pflegedefinitionen hinzufügen";
+            this.btnPfDef.Text = "&Pflegediagnosen hinzufügen";
             this.btnPfDef.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
             this.btnPfDef.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             // 

@@ -643,7 +643,7 @@ namespace PMDS.DB
             if (!ITEM[0].IsIDEintragNull())
             {
                 PMDS.db.Entities.Eintrag rEintrag = PMDSBusiness1.GetEintrag(dbER, ITEM[0].IDEintrag);
-                if (rEintrag != null)   //Im Maßnahmenkatalog ist die Klasse definiert (für Maßnahmen - geplant, ungeplant, Einzelvoerordnung)
+                if (rEintrag != null && rEintrag.EintragGruppe == "M")   //Im Maßnahmenkatalog ist die Klasse definiert (für Maßnahmen - geplant, ungeplant, Einzelvoerordnung)
                 {
                     ITEM[0].PSEKlasse = rEintrag.PSEKlasse;
 
@@ -652,12 +652,14 @@ namespace PMDS.DB
                         PMDS.db.Entities.Abteilung rAbteilungez = PMDSBusiness1.getAbteilung(ez.IDAbteilung, dbER);
                         if (ez.IDAbteilung == rAufenthalt.IDAbteilung)
                         {
-                            ITEM[0].PflegePlanDauer = (int)ez.Dauer;
+                            if (ez.Dauer != null)
+                                ITEM[0].PflegePlanDauer = (int)ez.Dauer;
                             break;
                         }
                         else if (rAbteilungez.IDKlinik == rAbteilung.IDKlinik && rAbteilungez.Basisabteilung)
                         {
-                            ITEM[0].PflegePlanDauer = (int)ez.Dauer;
+                            if (ez.Dauer != null)
+                                ITEM[0].PflegePlanDauer = (int)ez.Dauer;
                         }
                     }
                 }

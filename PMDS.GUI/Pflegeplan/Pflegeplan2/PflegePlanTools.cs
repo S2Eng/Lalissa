@@ -11,6 +11,7 @@ using PMDS.Data.Patient;
 using PMDS.GUI.BaseControls;
 using PMDS.Global.db.Global;
 using PMDS.Global.db.Pflegeplan;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -210,6 +211,7 @@ namespace PMDS.GUI
                 pdxArg.IDAufenthaltPDX = ar.ID;
                 pdxArg.ErledigtJN = ar.ErledigtJN;
                 pdxArg.Klartext = pdxRow.Klartext.Trim();
+                pdxArg.PDXGruppe = GetPDXGruppe(pdxRow.ID);
                 pdxArg.Text = pdxRow.Klartext.Trim();
                 pdxArg.StartDatum = ar.StartDatum;
                 pdxArg.Lokalisierung = ar.Lokalisierung.Trim();
@@ -242,7 +244,17 @@ namespace PMDS.GUI
 
             return list.ToArray();
         }
- 
+
+        private static int GetPDXGruppe(Guid IDPDX)
+        {
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                return (from pdx in db.PDX
+                        where pdx.ID == IDPDX
+                        select (int)pdx.Gruppe).FirstOrDefault();
+            }
+        }
+
         public static void AfterPflegePlanNodeSelected(ITreeview uc, ucASZMTransfer2 ucASZMTr, IWizardPage ucTrPDx, 
                                                     ref PDxSelectionArgs currentPDXSARG, Control ressourceControl, 
                                                     bool RessourceChanged, Control errorControl, Control defControl,

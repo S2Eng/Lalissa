@@ -868,10 +868,10 @@ namespace PMDS.GUI
                     pdx = new PDx();
                     sb = new StringBuilder();
                     lokalisierung = "";
-                    if (pdxSA.Lokalisierung.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(pdxSA.Lokalisierung))
                         sb.Append(pdxSA.Lokalisierung.Trim());
 
-                    if (pdxSA.LokalisierungSeite.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(pdxSA.LokalisierungSeite))
                         sb.Append(" " + pdxSA.LokalisierungSeite.Trim());
 
                     if (sb.Length > 0)
@@ -892,33 +892,37 @@ namespace PMDS.GUI
                     }
                     //TreeNode 2 Reihe einfügen
 
-                    foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
-                    {
-                        if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.A))
-                            break;
-                    }
-
-                    //Neu ab 16.2.2011, os
-                    //Bei Wunden Symptome und Ressourcen nicht anzeigen
-                    if (_PflegePlanModus == PflegePlanModus.Normal)
+                    //20201-09-19 os:  Bei PDXGruppe -1 (Maßnahmen ohne PDX keine ASZR-Nodes einfügen
+                    if (pdxSA.PDXGruppe != -1)
                     {
                         foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
                         {
-                            if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.S))
+                            if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.A))
                                 break;
+                        }
+
+                        //Neu ab 16.2.2011, os
+                        //Bei Wunden Symptome und Ressourcen nicht anzeigen
+                        if (_PflegePlanModus == PflegePlanModus.Normal)
+                        {
+                            foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
+                            {
+                                if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.S))
+                                    break;
+                            }
+
+                            foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
+                            {
+                                if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.R))
+                                    break;
+                            }
                         }
 
                         foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
                         {
-                            if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.R))
+                            if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.Z))
                                 break;
                         }
-                    }
-
-                    foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
-                    {
-                        if (InsertPDxEintragGruppeIntoTreeNode(i, aa, tn, pdxSA, EintragGruppe.Z))
-                            break;
                     }
 
                     foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
@@ -957,13 +961,16 @@ namespace PMDS.GUI
             EintragGruppe eintraggruppe;
             foreach (string name in names)
             {
-                if (name == "T" || name == "X") continue;
-                //Neu nach 16.09.2008 MDA
-                //Bei Wunden nur Beeinflussende Faktoren, Ziele und Maßnahmen anzeigen               
-                //Ab 16.2.2011, os
-                //Symptome und Ressourcen unterdrücken
+                if (name == "T" || name == "X") 
+                    continue;
+                //Neu nach 16.09.2008 MDA: Bei Wunden nur Beeinflussende Faktoren, Ziele und Maßnahmen anzeigen               
+                //Ab 16.2.2011, os: Bei WUnden Symptome und Ressourcen unterdrücken
+                if (_PflegePlanModus == PflegePlanModus.Wunde && (name == "S" || name == "R")) 
+                    continue;
 
-                if (_PflegePlanModus == PflegePlanModus.Wunde && (name == "S" || name == "R")) continue;
+                //2021-09-18: Für Maßnahmen ohne PD (PDXGruppe == -1) nur Maßnahmen anzeigen
+                if (pdxSA.PDXGruppe == -1 && _PflegePlanModus == PflegePlanModus.Normal && (name != "M")) 
+                    continue;
 
                 if (!UltraTreeTools.ExistPDxEintragGruppe(tv, name + "_" + anz + "_" + pdxSA.IDPDX.ToString()))
                 {
@@ -992,22 +999,24 @@ namespace PMDS.GUI
         private bool InsertPDxEintragGruppeIntoTreeNode(int anz, ASZMSelectionArgs aa, UltraTreeNode tn, PDxSelectionArgs pdxSA, EintragGruppe eintraggruppe)
         {
             //Neu nach 25.06.2007 MDA: TreeNodes A, S, Z und M immer anzeigen auch wenn keine Einträge vorhanden sind.
-            UltraTreeNode n;
+            UltraTreeNode n = new UltraTreeNode();
 
             if (!UltraTreeTools.ExistPDxEintragGruppe(tv, eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString()))
             {
-// Eintragen der Nodes ASZM        
-                if (_PflegePlanModus == PflegePlanModus.Wunde && eintraggruppe == EintragGruppe.A)
+                if (pdxSA.PDXGruppe != -1)
                 {
-                    // Ätiologie in Beeinflussende faktoren umbenennen
-                    n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString(), ENV.String("B"));
+                    if (_PflegePlanModus == PflegePlanModus.Wunde && eintraggruppe == EintragGruppe.A)
+                    {
+                        // Ätiologie in Beeinflussende faktoren umbenennen
+                        n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString(), ENV.String("B"));
+                    }
+                    else
+                    {
+                        n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
+                    }
+                    n.Tag = eintraggruppe;
                 }
-                else
-                {
-                    n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
-                }
-                n.Tag = eintraggruppe;
-           }
+            }
             else
                 n = UltraTreeTools.FindNodeKey(tv.Nodes, eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString());
 
@@ -1019,8 +1028,6 @@ namespace PMDS.GUI
                 {
                     if (arg.IDADependet != Guid.Empty)
                         continue;
-                     //&& aa.LokalisierungJN == pdxSA.LokalisierungJN &&
-                     //   aa.Lokalisierung == pdxSA.Lokalisierung && aa.LokalisierungSeite == pdxSA.LokalisierungSeite
                     if (arg.EintragGruppe == eintraggruppe)
                     {
                         //TreeNode 3 Reihe einfügen

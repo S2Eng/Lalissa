@@ -2080,8 +2080,6 @@ namespace PMDS.DB
                         rNewPEDekurs.TextHistorie = "";
                         rNewPEDekurs.TextHistorieRtf = "";
 
-                        rNewPEDekurs.PSEKlasse = peOriginal.PSEKlasse;
-
                         db.PflegeEintrag.Add(rNewPEDekurs);
                         db.SaveChanges();
                         lstPEToCopy.Add(rNewPEDekurs.ID);
@@ -2156,7 +2154,7 @@ namespace PMDS.DB
                     }
                     else
                     {
-                        if (SelectedNodes.Txt.Trim() != "" && !SelectedNodes.bDone)
+                        if (!String.IsNullOrWhiteSpace(SelectedNodes.Txt) && !SelectedNodes.bDone)
                         {
                             IQueryable<PflegeEintrag> lstPE = db.PflegeEintrag.Where(pe => pe.ID == IDPflegeEintrag);
                             PMDS.db.Entities.PflegeEintrag peOriginal = lstPE.First();
@@ -2275,7 +2273,7 @@ namespace PMDS.DB
                 rNewPE.LogInNameFrei = peOriginal.LogInNameFrei;
                 rNewPE.TextHistorie = peOriginal.TextHistorie;
                 rNewPE.TextHistorieRtf = peOriginal.TextHistorieRtf;
-
+                rNewPE.PSEKlasse = peOriginal.PSEKlasse;
             }
             catch (Exception ex)
             {
@@ -2323,8 +2321,7 @@ namespace PMDS.DB
                 rNewPEEntwurf.Startdatum_Neu = peOriginal.Startdatum_Neu;
                 rNewPEEntwurf.AbzeichnenJN = peOriginal.AbzeichnenJN;
                 rNewPEEntwurf.IDExtern = peOriginal.IDExtern;
-                rNewPEEntwurf.LogInNameFrei = peOriginal.LogInNameFrei;
-
+                rNewPEEntwurf.LogInNameFrei = peOriginal.LogInNameFrei;                
             }
             catch (Exception ex)
             {

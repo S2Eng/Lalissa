@@ -17,6 +17,7 @@ using PMDS.Data.Patient;
 using PMDS.GUI.BaseControls;
 using PMDS.Global.db.Pflegeplan;
 using PMDS.Global.db.Global;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -815,7 +816,32 @@ namespace PMDS.GUI
 
             tvGenerell.ListIDPDX = null;
             tvGenerell.PDX_SELARGS = listGenerell.ToArray();
-            tvGenerell.RemovePDxNodes(tvSpecific.GetPDxNodes());//Neu nach 18.05.2007 MDA
+            tvGenerell.RemovePDxNodes(tvSpecific.GetPDxNodes());
+
+/*
+            //ASZR aus Pflegediagnosen mit PDXGruppe = -1 entfernen
+            Infragistics.Win.UltraWinTree.TreeNodesCollection x = tvGenerell.GetPDxNodes();
+            int i = 0;
+            foreach (var y in x)            
+            {
+                if (tvGenerell.PDX_SELARGS[i].PDXGruppe == -1)     
+                {
+                    int j = 0;
+                    foreach (var z in y.Nodes)
+                    {
+                        if (z.Tag.ToString() != "M")
+                        {
+                            y.Nodes[j].Remove();
+                        }
+                        else
+                        {
+                            j++;
+                        }
+                    }
+                }
+                i++;
+            }
+*/
             tvGenerell.SelectAllTreeNodes(false);
             ShowHideTabs();
         }
@@ -862,6 +888,7 @@ namespace PMDS.GUI
                 specificPdxArg.StartDatum = DateTime.Now.Date;
                 specificPdxArg.IDPDX = r.ID;
                 specificPdxArg.Klartext = r.Text;
+                specificPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
                 specificPdxArg.ARGS = GetASZMArgs(r.ID, EnvPflegePlan.CurrentKlientenAbteilung, false);
 
                 if (specificPdxArg.ARGS != null && specificPdxArg.ARGS.Length > 0)
@@ -880,6 +907,7 @@ namespace PMDS.GUI
                 generellPdxArg.StartDatum = DateTime.Now.Date;
                 generellPdxArg.IDPDX = r.ID;
                 generellPdxArg.Klartext = r.Text;
+                generellPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
                 generellPdxArg.ARGS = GetASZMArgs(r.ID, Guid.Empty, true);
 
                 if (generellPdxArg.ARGS != null && generellPdxArg.ARGS.Length > 0)
@@ -917,6 +945,8 @@ namespace PMDS.GUI
                         specificPdxArg.StartDatum = DateTime.Now.Date;
                         specificPdxArg.IDPDX = r.ID;
                         specificPdxArg.Klartext = r.Text;
+                        specificPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
+                        specificPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
                         if (pdxArg != null)
                         {
                             specificPdxArg.LokalisierungJN = pdxArg.LokalisierungJN;
@@ -936,6 +966,7 @@ namespace PMDS.GUI
                         generellPdxArg.StartDatum = DateTime.Now.Date;
                         generellPdxArg.IDPDX = r.ID;
                         generellPdxArg.Klartext = r.Text;
+                        generellPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
 
                         if (pdxArg != null)
                         {
@@ -950,6 +981,18 @@ namespace PMDS.GUI
         }
         #endregion
         #region GetASZMArgs
+
+        private static int GetPDXGruppe(Guid IDPDX)
+        {
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                return  (from pdx in db.PDX
+                            where pdx.ID == IDPDX
+                            select (int)pdx.Gruppe).FirstOrDefault();
+            }
+        }
+
+
         //----------------------------------------------------------------------------
         /// <summary>
         /// Gibt alle ASZM's die zu eine bestimmte PDx gehören
@@ -1516,7 +1559,7 @@ namespace PMDS.GUI
 
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode == Keys.Return || e.KeyCode == Keys.F3) && tbSearch.Text.Trim() != "")
+            if ((e.KeyCode == Keys.Return || e.KeyCode == Keys.F3) && !String.IsNullOrWhiteSpace(tbSearch.Text))
             {
                 InitErrorProvider();
 
@@ -1677,33 +1720,33 @@ namespace PMDS.GUI
 
                 if (tabASZM.SelectedTab == TAB_SPECIFIC)
                         pdxArgs = tvSpecific.GetSelectedPDxSelectionArgs();
-                    else if (tabASZM.SelectedTab == TAB_GENERELL)
-                        pdxArgs = tvGenerell.GetSelectedPDxSelectionArgs();
+                else if (tabASZM.SelectedTab == TAB_GENERELL)
+                    pdxArgs = tvGenerell.GetSelectedPDxSelectionArgs();
 
-                    if (pdxArgs == null || pdxArgs.Length == 0)
+                if (pdxArgs == null || pdxArgs.Length == 0)
+                {
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden keine Einträge ausgewählt.");
+                    return;
+                }
+                else if (_PflegePlanModus == PflegePlanModus.Wunde)
+                {
+                    List<PDxSelectionArgs> list = new List<PDxSelectionArgs>();
+                    foreach (PDxSelectionArgs arg in pdxArgs)
                     {
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden keine Einträge ausgewählt.");
-                        return;
-                    }
-                    else if (_PflegePlanModus == PflegePlanModus.Wunde)
-                    {
-                        List<PDxSelectionArgs> list = new List<PDxSelectionArgs>();
-                        foreach (PDxSelectionArgs arg in pdxArgs)
-                        {
-                            if (arg.Lokalisierung == null || String.IsNullOrWhiteSpace(arg.Lokalisierung) ||
-                            arg.LokalisierungSeite == null || String.IsNullOrWhiteSpace(arg.LokalisierungSeite))
-                            list.Add(arg);
-                    }
+                        if (arg.Lokalisierung == null || String.IsNullOrWhiteSpace(arg.Lokalisierung) ||
+                        arg.LokalisierungSeite == null || String.IsNullOrWhiteSpace(arg.LokalisierungSeite))
+                        list.Add(arg);
+                }
 
-                    if (list.Count > 0)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Lokalisierung und Lokalisierungseite für folgende PDx'en hinzufügen.\n\t"));
-                        foreach (PDxSelectionArgs arg in list)
-                            sb.Append("- " + arg.Klartext + "\n\t");
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sb.ToString(), true);
-                        return;
-                    }
+                if (list.Count > 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Lokalisierung und Lokalisierungseite für folgende PDx'en hinzufügen.\n\t"));
+                    foreach (PDxSelectionArgs arg in list)
+                        sb.Append("- " + arg.Klartext + "\n\t");
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sb.ToString(), true);
+                    return;
+                }
              }
             
              if (PDXSelected != null)

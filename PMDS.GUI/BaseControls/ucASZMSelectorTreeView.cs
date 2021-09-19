@@ -606,12 +606,15 @@ namespace PMDS.GUI.BaseControls
         private bool InsertPDxEintragGruppeIntoTreeNode(ASZMSelectionArgs aa, UltraTreeNode tn, PDxSelectionArgs pdxSA, EintragGruppe eintraggruppe)
         {
             //Neu nach 25.06.2007 MDA: TreeNodes A, S, Z und M immer anzeigen auch wenn keine Einträge vorhanden sind.
-            UltraTreeNode n;
+            UltraTreeNode n = new UltraTreeNode();
 
             if (!UltraTreeTools.ExistPDxEintragGruppe(tv, eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString()))
             {
-                n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
-                n.Tag = eintraggruppe; //Änderung nach 15.05.2007 MDA
+                if (pdxSA.PDXGruppe != -1)
+                {
+                    n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
+                    n.Tag = eintraggruppe; //Änderung nach 15.05.2007 MDA
+                }
             }
             else
                 n = UltraTreeTools.FindNodeKey(tv.Nodes, eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString());

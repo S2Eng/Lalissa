@@ -17,6 +17,7 @@ using PMDS.Data.Patient;
 using PMDS.GUI.BaseControls;
 using PMDS.Global.db.Pflegeplan;
 using PMDS.Global.db.Global;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -658,6 +659,7 @@ namespace PMDS.GUI
                 specificPdxArg.StartDatum = DateTime.Now.Date;
                 specificPdxArg.IDPDX = r.ID;
                 specificPdxArg.Klartext = r.Text;
+                specificPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
                 specificPdxArg.ARGS = GetASZMArgs(r.ID, EnvPflegePlan.CurrentKlientenAbteilung, false);
 
                 if (specificPdxArg.ARGS != null && specificPdxArg.ARGS.Length > 0)
@@ -676,6 +678,7 @@ namespace PMDS.GUI
                 generellPdxArg.StartDatum = DateTime.Now.Date;
                 generellPdxArg.IDPDX = r.ID;
                 generellPdxArg.Klartext = r.Text;
+                generellPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
                 generellPdxArg.ARGS = GetASZMArgs(r.ID, Guid.Empty, true);
 
                 if (generellPdxArg.ARGS != null && generellPdxArg.ARGS.Length > 0)
@@ -689,6 +692,16 @@ namespace PMDS.GUI
 
                     listGenerell.Add(generellPdxArg);
                 }
+            }
+        }
+
+        private static int GetPDXGruppe(Guid IDPDX)
+        {
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                return (from pdx in db.PDX
+                        where pdx.ID == IDPDX
+                        select (int)pdx.Gruppe).FirstOrDefault();
             }
         }
 
@@ -708,6 +721,7 @@ namespace PMDS.GUI
                         specificPdxArg.StartDatum = DateTime.Now.Date;
                         specificPdxArg.IDPDX = r.ID;
                         specificPdxArg.Klartext = r.Text;
+                        specificPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
                         if (pdxArg != null)
                         {
                             specificPdxArg.LokalisierungJN = pdxArg.LokalisierungJN;
@@ -727,6 +741,7 @@ namespace PMDS.GUI
                         generellPdxArg.StartDatum = DateTime.Now.Date;
                         generellPdxArg.IDPDX = r.ID;
                         generellPdxArg.Klartext = r.Text;
+                        generellPdxArg.PDXGruppe = GetPDXGruppe(r.ID);
 
                         if (pdxArg != null)
                         {

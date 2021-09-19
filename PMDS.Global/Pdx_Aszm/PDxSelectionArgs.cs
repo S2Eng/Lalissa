@@ -12,6 +12,7 @@ namespace PMDS.Global
 
         private Guid _IDPDX = Guid.Empty;
         private String _Klartext;
+        private int _PDXGruppe;
         private String _Text;
         private DateTime _StartDatum = new DateTime(1900, 1, 1);
         private Boolean _LokalisierungJN;
@@ -20,18 +21,14 @@ namespace PMDS.Global
         private DateTime _EvalStartDatum = new DateTime(1900, 1, 1);   // Das Evaluierungsstartdatum
         private PDxLokalisierungsTypen _lokalisierungsTyp;
         private ASZMSelectionArgs[] _args;
-        private bool _pdx_EntferntJN = false;
-        //Neu nach 10.05.2007 MDA
+        private bool _pdx_EntferntJN;
         string _code = "";
         private string _resourceklient = "";
-        //Neu nach 23.04.2008 MDA
         private Guid _IDAufenthaltPDX = Guid.Empty;
-        private bool _ErledigtJN = false;
+        private bool _ErledigtJN;
+        private bool _WundeJN;
+        public bool IsEditedFromuser { get; set; }
 
-        public bool IsEditedFromuser = false;
-
-        //Neu nach 12.09.2008 MDA
-        private bool _WundeJN = false;
         
         public PDxSelectionArgs()
         {
@@ -90,6 +87,18 @@ namespace PMDS.Global
             set
             {
                 _Klartext = value;
+            }
+        }
+
+        public int PDXGruppe
+        {
+            get
+            {
+                return _PDXGruppe;
+            }
+            set
+            {
+                _PDXGruppe = value;
             }
         }
 
@@ -196,22 +205,24 @@ namespace PMDS.Global
 
         public PDxSelectionArgs CloneByType()
         {
-            PDxSelectionArgs arg = new PDxSelectionArgs();
-            arg._IDPDX = _IDPDX;
-            arg._Klartext = _Klartext;
-            arg._Text = _Text;
-            arg._StartDatum = _StartDatum;
-            arg._LokalisierungJN = _LokalisierungJN;
-            arg._Lokalisierung = _Lokalisierung;
-            arg._LokalisierungSeite = _LokalisierungSeite;
-            arg._EvalStartDatum = _EvalStartDatum;
-            arg._lokalisierungsTyp = _lokalisierungsTyp;
-            arg._code = _code;
-            arg._resourceklient = _resourceklient; //Neu nach 10.05.2007 MDA
-            //Neu nach 23.04.2008 MDA
-            arg._IDAufenthaltPDX = _IDAufenthaltPDX;
-            arg._ErledigtJN = _ErledigtJN;
-            arg._WundeJN = _WundeJN;
+            PDxSelectionArgs arg = new PDxSelectionArgs
+            {
+                _IDPDX = _IDPDX,
+                _Klartext = _Klartext,
+                _Text = _Text,
+                _PDXGruppe = _PDXGruppe,
+                _StartDatum = _StartDatum,
+                _LokalisierungJN = _LokalisierungJN,
+                _Lokalisierung = _Lokalisierung,
+                _LokalisierungSeite = _LokalisierungSeite,
+                _EvalStartDatum = _EvalStartDatum,
+                _lokalisierungsTyp = _lokalisierungsTyp,
+                _code = _code,
+                _resourceklient = _resourceklient,
+                _IDAufenthaltPDX = _IDAufenthaltPDX,
+                _ErledigtJN = _ErledigtJN,
+                _WundeJN = _WundeJN
+            };
 
             List<ASZMSelectionArgs> list = new List<ASZMSelectionArgs>();
             ASZMSelectionArgs a;

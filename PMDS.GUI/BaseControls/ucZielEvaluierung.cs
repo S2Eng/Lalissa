@@ -12,7 +12,7 @@ using PMDS.Data.PflegePlan;
 using Infragistics.Win.UltraWinTree;
 using Infragistics.Win.UltraWinGrid;
 using System.IO;
-
+using System.Linq;
 
 
 namespace PMDS.GUI
@@ -20,25 +20,26 @@ namespace PMDS.GUI
     public partial class ucZielEvaluierung : QS2.Desktop.ControlManagment.BaseControl
     {
         private Guid _CurrentIDAufenthalt = Guid.Empty;
-        private bool _wundejn = false;
-        public UIGlobal UIGlobal1 = new UIGlobal();
-        public bool IsInitialized = false;
-
-
-
-
-
+        private bool _wundejn;
+        private UIGlobal UIGlobal1 = new UIGlobal();
+        private bool IsInitialized;
 
         public ucZielEvaluierung()
         {
             InitializeComponent();
 
-            if (!ENV.AppRunning)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
                 
             UltraGridTools.AddBenutzerValueList(dgHistorie, "IDBenutzer");
             UltraGridTools.AddZielEvaluierungsstatusValueList(dgHistorie, "EvalStatus");
 
+            if (!ENV.lic_PflegestufenEinschätzung)
+            {
+                lblDauer.Visible = false;
+                nDauer.Visible = false;
+                nDauer.FormatString = "{##0}";
+            }
         }
 
 
@@ -56,70 +57,15 @@ namespace PMDS.GUI
         public  void setUIGrids2()
         {
 
+            this.dgMain.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
             this.dgMain.DisplayLayout.Appearance.BackColor = System.Drawing.Color.White;
             this.dgMain.DisplayLayout.Appearance.BackColor2 = System.Drawing.Color.White;
-            this.dgHistorie.DisplayLayout.Appearance.BackColor = System.Drawing.Color.White;
-            this.dgHistorie.DisplayLayout.Appearance.BackColor2 = System.Drawing.Color.White;
-
-            this.dgMain.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
-            this.dgHistorie.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
-
-            //if (!this.dgMain.DisplayLayout.Bands[0].Columns.Exists("ID")) return;
-                
-            //this.dgMain.DisplayLayout.Bands[0].Columns["ID"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDAufenthalt"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDEintrag"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDBenutzer_Erstellt"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDBerufsstand"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDBenutzer_Geaendert"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["OriginalJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["DatumErstellt"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["DatumGeaendert"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["StartDatum"].Hidden = true;
-            ////this.dgMain.DisplayLayout.Bands[0].Columns["EndeDatum"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["LetztesDatum"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["LetzteEvaluierung"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["Warnhinweis"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["Intervall"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["WochenTage"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IntervallTyp"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["EvalTage"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDBerufsstand"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["ParalellJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["LokalisierungJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["EinmaligJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["ErledigtJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["GeloeschtJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["Lokalisierung"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["UntertaegigeJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["LokalisierungSeite"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["SpenderAbgabeJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDUntertaegigeGruppe"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDLinkDokument"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["NaechsteEvaluierung"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["NaechsteEvaluierungBemerkung"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["LokalisierungSeite"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["IDZeitbereich"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["ZuErledigenBis"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["OhneZeitBezug"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["WundeJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["BarcodeID"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["RMOptionalJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["RMOptionalJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["Anmerkung"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["ErledigtGrund"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["EintragGruppe"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["PDXJN"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["EintragFlag"].Hidden = true;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["Dauer"].Hidden = true;
-
-            ////this.dgMain.DisplayLayout.Bands[0].Columns["LokalisierungsInfo"].Hidden = false;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["NaechsteEvaluierung"].Hidden = false;
-            //this.dgMain.DisplayLayout.Bands[0].Columns["Text"].Hidden = false;
-
             this.dgMain.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.dgMain.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
 
+            this.dgHistorie.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
+            this.dgHistorie.DisplayLayout.Appearance.BackColor = System.Drawing.Color.White;
+            this.dgHistorie.DisplayLayout.Appearance.BackColor2 = System.Drawing.Color.White;
         }
 
         //----------------------------------------------------------------------------
@@ -130,7 +76,6 @@ namespace PMDS.GUI
         private void os1_ValueChanged(object sender, EventArgs e)
         {
             EnableButtons(true);
-
         }
 
         //----------------------------------------------------------------------------
@@ -168,6 +113,7 @@ namespace PMDS.GUI
             optEvaluierungsStatus1.CheckedIndex        = -1;
             optEvaluierungsStatus2.CheckedIndex        = -1;
             dtpDate2.Value           = null;
+            nDauer.Value = 0;
         }
 
         //----------------------------------------------------------------------------
@@ -203,14 +149,15 @@ namespace PMDS.GUI
             dgMain.DataSource = ds;
             dgMain.DataBind();
 
-            PMDS.DB.DBPflegePlan GetTexte = new PMDS.DB.DBPflegePlan();
-
-            foreach (UltraGridRow rowGrid in this.dgMain.Rows)
+            using (PMDS.DB.DBPflegePlan GetTexte = new PMDS.DB.DBPflegePlan())
             {
+                foreach (UltraGridRow rowGrid in this.dgMain.Rows)
+                {
                     DataRowView v = (DataRowView)rowGrid.ListObject;
                     dsPflegePlan.PflegePlanRow rp = (dsPflegePlan.PflegePlanRow)v.Row;
                     rowGrid.ToolTipText = GetTexte.GetPDxZiele(rp.ID, rowGrid);
                     rowGrid.Cells[ds.PflegePlan.lstPDxBezeichnungColumn.ColumnName].Value = rowGrid.ToolTipText;
+                }
             }
 
             if (this._wundejn)
@@ -229,13 +176,12 @@ namespace PMDS.GUI
                         this.showGridRow(rGrid, ref this.dsPflegePlan2, ref rPflegePlanSelected, false);
                     }
                 }
-
             }
 
             this.dgMain.DisplayLayout.Appearance.BackColor = System.Drawing.Color.White;
-            this.dgHistorie.DisplayLayout.Appearance.BackColor = System.Drawing.Color.White;
-
             this.dgMain.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
+
+            this.dgHistorie.DisplayLayout.Appearance.BackColor = System.Drawing.Color.White;
             this.dgHistorie.UseOsThemes = Infragistics.Win.DefaultableBoolean.True;
 
             dgMain.Rows.Band.Columns["EndeDatum"].Hidden = !cballeZiele.Checked; //Gernot%% 
@@ -286,10 +232,10 @@ namespace PMDS.GUI
                     DataRowView v = (DataRowView)rFoundInGrid.ListObject;
                     dsPflegePlan.PflegePlanRow rp = (dsPflegePlan.PflegePlanRow)v.Row;
 
-                    if (!rp.IsLokalisierungNull() && rp.Lokalisierung.Trim() != "")
+                    if (!rp.IsLokalisierungNull() && !String.IsNullOrWhiteSpace(rp.Lokalisierung))
                     {
                         string sInfo = rp.Lokalisierung.Trim();
-                        if (!rp.IsLokalisierungSeiteNull() && rp.LokalisierungSeite.Trim() != "")
+                        if (!rp.IsLokalisierungSeiteNull() && !String.IsNullOrWhiteSpace(rp.LokalisierungSeite))
                             sInfo += ", " + rp.LokalisierungSeite.Trim();
                         rFoundInGrid.Cells["LokalisierungsInfo"].Value = sInfo;
                         rFoundInGrid.Update();
@@ -305,7 +251,6 @@ namespace PMDS.GUI
                         rPflegePlanSelected = rp;
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -317,17 +262,15 @@ namespace PMDS.GUI
         {
             if (!DesignMode && ENV.AppRunning)
             {
-                qs2.core.vb.compLayout compLayout1 = new qs2.core.vb.compLayout();
-                compLayout1.initControl();
-                bool LayoutFound = false;
-                //compLayout1.doLayoutGrid(this.dgMain, this.dgMain.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
-                //QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(this.dgMain);
-
-                QS2.Desktop.ControlManagment.cLayoutManager2 cLayoutManager1 = new QS2.Desktop.ControlManagment.cLayoutManager2();
-                cLayoutManager1.doLayoutGrid(this.dgMain, this.dgMain.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
-                QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(this.dgMain);
+                using (qs2.core.vb.compLayout compLayout1 = new qs2.core.vb.compLayout())
+                {
+                    compLayout1.initControl();
+                    bool LayoutFound = false;
+                    QS2.Desktop.ControlManagment.cLayoutManager2 cLayoutManager1 = new QS2.Desktop.ControlManagment.cLayoutManager2();
+                    cLayoutManager1.doLayoutGrid(this.dgMain, this.dgMain.Name.Trim(), null, ref LayoutFound, true, !PMDS.Global.ENV.IntDeactivated, PMDS.Global.ENV.AutoAddNewRessources);
+                    QS2.Desktop.ControlManagment.BaseGrid.doFormatDateTime(this.dgMain);
+                }
             }
-
         }
 
         public bool getSelectedRowPP(bool withMsgBox, ref Infragistics.Win.UltraWinGrid.UltraGridRow gridRow, ref dsPflegePlan.PflegePlanRow rPP)
@@ -450,7 +393,7 @@ namespace PMDS.GUI
             {
                 string PflegeplanTextTmp = QS2.Desktop.ControlManagment.ControlManagment.getRes("Evaluierung");
                 string TxtTmp = QS2.Desktop.ControlManagment.ControlManagment.getRes("Evaluierung für Ziel ") + rPESelected.Text.Trim();
-                this.speichernPflegeeintrag(PflegeEintragTyp.EVALUIERUNG, PflegeplanTextTmp, TxtTmp, STATUS, rPESelected);
+                this.speichernPflegeeintrag(PflegeEintragTyp.EVALUIERUNG, PflegeplanTextTmp, TxtTmp, STATUS, rPESelected, (int)this.nDauer.Value);
                 if (this.dtpDate2.Value != null)
                 {
                     PMDS.DB.PMDSBusiness PMDSBusiness1 = new DB.PMDSBusiness();
@@ -467,7 +410,7 @@ namespace PMDS.GUI
 
         }
 
-        public void speichernPflegeeintrag(PflegeEintragTyp typ,string PflegeplanText, string Txt, ZielEvaluierungsStatus Status2, dsPflegePlan.PflegePlanRow rPESelected)
+        public void speichernPflegeeintrag(PflegeEintragTyp typ,string PflegeplanText, string Txt, ZielEvaluierungsStatus Status2, dsPflegePlan.PflegePlanRow rPESelected, int IstDauer)
         {
             dsPflegePlan.PflegePlanRow r = rPESelected;
             {
@@ -489,6 +432,19 @@ namespace PMDS.GUI
                 pe.IDWichtig = Guid.Empty;                   
                 pe.IDBerufsstand = ENV.BERUFID;
                 pe.LogInNameFrei = ENV.LoginInNameFrei;
+                pe.PSEKlasse = "";
+                pe.IstDauer = 0;
+
+                if (ENV.lic_PflegestufenEinschätzung)
+                {
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                    {
+                        pe.PSEKlasse = (from al in db.AuswahlListe
+                                        where al.IDAuswahlListeGruppe == "PSE" && al.Reihenfolge == 0
+                                        select al.Bezeichnung).FirstOrDefault();
+                    }
+                    pe.IstDauer = IstDauer;
+                }
                 pe.Write();
             }
         }

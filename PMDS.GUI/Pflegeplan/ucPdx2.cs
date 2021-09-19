@@ -20,6 +20,7 @@ using PMDS.Data.PflegePlan;
 using PMDS.Data.Patient;
 using PMDS.Global.db.Patient;
 using PMDS.Global.db.Pflegeplan;
+using System.Linq;
 
 namespace PMDS.GUI
 {

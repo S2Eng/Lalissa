@@ -572,9 +572,10 @@ namespace PMDS.Global
     //----------------------------------------------------------------------------
     public enum PDXGruppe
     {
+        KeineDiagnose = -1,
         Pflegediagnose = 0,
         Risikodiagnose = 1,
-        Gesundheitsdiagnose = 2
+        Wellnessdiagnose = 2,
     }
 
     //----------------------------------------------------------------------------

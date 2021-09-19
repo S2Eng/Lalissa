@@ -764,8 +764,11 @@ namespace PMDS.GUI
             {
                 if (name == "T" || name == "X") continue;
                 
-                //Bei Wunden nur Ziele und Maﬂnahmen anzeigen
-                //if (_PflegePlanModus == PflegePlanModus.Wunde && (name == "A" || name == "S")) continue;
+                //Bei PDXGruppe == -1 nur Maﬂnahmen anzeigen
+                if (pdxSA.PDXGruppe == -1 && _PflegePlanModus != PflegePlanModus.Wunde && name != "M")
+                {               
+                        continue;
+                }
 
                 //Bei Wunden Symptome nicht anzeigen
                 if (_PflegePlanModus == PflegePlanModus.Wunde && name == "S") continue;
@@ -789,17 +792,19 @@ namespace PMDS.GUI
         private bool InsertPDxEintragGruppeIntoTreeNode(ASZMSelectionArgs aa, UltraTreeNode tn, PDxSelectionArgs pdxSA, EintragGruppe eintraggruppe)
         {
             //TreeNodes A, S, Z und M immer anzeigen auch wenn keine Eintr‰ge vorhanden sind.
-            UltraTreeNode n;
+            UltraTreeNode n = new UltraTreeNode();
 
             if (!UltraTreeTools.ExistPDxEintragGruppe(tv, eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString()))
             {
-                n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
-                n.Tag = eintraggruppe; 
+
+                if (pdxSA.PDXGruppe != -1)
+                {
+                    n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
+                    n.Tag = eintraggruppe;
+                }
             }
             else
                 n = UltraTreeTools.FindNodeKey(tv.Nodes, eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString());
-
-
 
 
             if (aa.IDPDX != null && aa.IDPDX == pdxSA.IDPDX && aa.EintragGruppe == eintraggruppe)
@@ -816,10 +821,8 @@ namespace PMDS.GUI
                         nn.Tag = arg;
                     }
                 }
-
                 return true;
             }
-
             return false;
         }
 

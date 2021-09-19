@@ -356,47 +356,53 @@ namespace PMDS.DB
         public dsPDxEintraege GetPDxZuordnugenFromSearchText(string sSearchCriteria, SearchCondition condition, PflegePlanModus modus, Guid IDAbteilung, bool PDxEntferntJN)
         {
             string sCriteria = "";
-            OleDbCommand cmd = new OleDbCommand();
-            StringBuilder sb = new StringBuilder();
-            sb.Append(daPDxEintragZuordnungen.SelectCommand.CommandText + " AND ");
-
-            cmd.Parameters.AddWithValue("EntferntJN", PDxEntferntJN ? 1 : 0);    
-            cmd.Parameters.AddWithValue("WundeJN", modus == PflegePlanModus.Wunde ? 1 : 0);
-            cmd.Parameters.AddWithValue("IDAbteilung", IDAbteilung);
-
-            string[] sa = sSearchCriteria.Split(' ');
-            bool bFirst = true;
-            foreach (string s in sa)							// Für jeden Suchbegriff das Statement zusammenbauen
+            using (OleDbCommand cmd = new OleDbCommand())
             {
-                sCriteria = s.Trim();
-                if (sCriteria.Length == 0)
-                    continue;
+                StringBuilder sb = new StringBuilder();
+                sb.Append(daPDxEintragZuordnungen.SelectCommand.CommandText + " AND ");
 
-                if (!bFirst)
+                cmd.Parameters.AddWithValue("EntferntJN", PDxEntferntJN ? 1 : 0);
+                cmd.Parameters.AddWithValue("WundeJN", modus == PflegePlanModus.Wunde ? 1 : 0);
+                cmd.Parameters.AddWithValue("IDAbteilung", IDAbteilung);
+
+                string[] sa = sSearchCriteria.Split(' ');
+                bool bFirst = true;
+                foreach (string s in sa)                            // Für jeden Suchbegriff das Statement zusammenbauen
                 {
-                    if (condition == SearchCondition.AND)
-                        sb.Append(" AND ");
-                    else
-                        sb.Append(" OR ");
+                    sCriteria = s.Trim();
+                    if (sCriteria.Length == 0)
+                        continue;
+
+                    if (!bFirst)
+                    {
+                        if (condition == SearchCondition.AND)
+                            sb.Append(" AND ");
+                        else
+                            sb.Append(" OR ");
+                    }
+
+                    sb.Append(" ( PDX.Klartext like ? OR PDX.Definition like ? )");
+                    OleDbParameter p1 = cmd.Parameters.Add(new OleDbParameter("Klartext", OleDbType.VarChar));
+                    OleDbParameter p2 = cmd.Parameters.Add(new OleDbParameter("Definition", OleDbType.VarChar));
+                    p1.Value = "%" + s + "%";
+                    p2.Value = "%" + s + "%";
+
+                    bFirst = false;
                 }
 
-                sb.Append(" ( PDX.Klartext like ? OR PDX.Definition like ? )");
-                OleDbParameter p1 = cmd.Parameters.Add(new OleDbParameter("Klartext", OleDbType.VarChar));
-                OleDbParameter p2 = cmd.Parameters.Add(new OleDbParameter("Definition", OleDbType.VarChar));
-                p1.Value = "%" + s + "%";
-                p2.Value = "%" + s + "%";
+                sb.Append(" ORDER BY PDX.Gruppe, PDX.Klartext, Eintrag.EintragGruppe, Eintrag.Text");
 
-                bFirst = false;
+                cmd.CommandText = sb.ToString();
+
+                using (OleDbDataAdapter da = new OleDbDataAdapter(cmd))
+                {
+                    using (dsPDxEintraege ds = new dsPDxEintraege())
+                    {
+                        DataBase.Fill(da, ds.PDXEintraege);
+                        return ds;
+                    }
+                }
             }
-
-            sb.Append(" ORDER BY PDX.Klartext, Eintrag.EintragGruppe, Eintrag.Text");
-
-            cmd.CommandText = sb.ToString();
-
-            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-            dsPDxEintraege ds = new dsPDxEintraege();
-            DataBase.Fill(da, ds.PDXEintraege);
-            return ds;
         }
 
         //Neu nach 13.10.2008 MDA

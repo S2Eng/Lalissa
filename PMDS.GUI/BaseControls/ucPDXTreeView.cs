@@ -406,23 +406,18 @@ namespace PMDS.GUI.BaseControls
         /// //----------------------------------------------------------------------------
         private bool InsertPDxEintragGruppeIntoTreeNode(int anz, ASZMSelectionArgs aa, UltraTreeNode tn, PDxSelectionArgs pdxSA, EintragGruppe eintraggruppe)
         {
-            // && aa.LokalisierungJN == pdxSA.LokalisierungJN &&
-            //    aa.Lokalisierung == pdxSA.Lokalisierung && aa.LokalisierungSeite == pdxSA.LokalisierungSeite
             if (aa.IDPDX != null && aa.IDPDX == pdxSA.IDPDX && aa.EintragGruppe == eintraggruppe)
             {
                 if (!UltraTreeTools.ExistPDxEintragGruppe(tv, eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString()))
                 {
                     UltraTreeNode n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
-                    //n.Tag = null;
-                    n.Tag = eintraggruppe; //Änderung nach 31.03.2008 MDA
+                    n.Tag = eintraggruppe; 
 
                     UltraTreeNode nn;
                     foreach (ASZMSelectionArgs arg in pdxSA.ARGS)
                     {
                         if (arg.IDADependet != Guid.Empty)
                             continue;
-                         //&& aa.LokalisierungJN == pdxSA.LokalisierungJN &&
-                         //   aa.Lokalisierung == pdxSA.Lokalisierung && aa.LokalisierungSeite == pdxSA.LokalisierungSeite
                         if (arg.EintragGruppe == eintraggruppe)
                         {
                             //TreeNode 3 Reihe einfügen

@@ -136,7 +136,6 @@
             this.textControlMessage.Name = "textControlMessage";
             this.textControlMessage.Size = new System.Drawing.Size(886, 291);
             this.textControlMessage.TabIndex = 1;
-            this.textControlMessage.TextBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.textControlMessage.UserNames = null;
             this.textControlMessage.ViewMode = TXTextControl.ViewMode.Normal;
             // 

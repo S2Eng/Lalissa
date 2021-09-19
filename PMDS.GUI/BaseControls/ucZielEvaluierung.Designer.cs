@@ -39,9 +39,9 @@ namespace PMDS.GUI
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucZielEvaluierung));
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucZielEvaluierung));
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PflegePlan", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -95,11 +95,12 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn75 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("lstPDxBezeichnung");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AnmerkungRtf");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn87 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBefund");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn91 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PSEKlasse");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BarcodeID", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn45 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LokalisierungsInfo", 1);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PflegeEintrag", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDAufenthalt");
@@ -138,13 +139,15 @@ namespace PMDS.GUI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn88 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("HAGPflichtigJN");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn89 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBefund");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn90 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LogInNameFrei");
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn92 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PSEKlasse");
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtpDate2 = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dsPflegeEintrag1 = new PMDS.Data.PflegePlan.dsPflegeEintrag();
-            this.dsPflegePlanPDx1 = new dsPflegePlanPDx();
-            this.dsPDx1 = new dsPDx();
+            this.dsPflegePlanPDx1 = new PMDS.Global.db.Pflegeplan.dsPflegePlanPDx();
+            this.dsPDx1 = new PMDS.Global.db.Pflegeplan.dsPDx();
             this.gbEvaluierung = new QS2.Desktop.ControlManagment.BaseGroupBox();
             this.panel3 = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraGridBagLayoutPanelAnmerkung = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
@@ -153,6 +156,8 @@ namespace PMDS.GUI
             this.optEvaluierungsStatus2 = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.optEvaluierungsStatus1 = new QS2.Desktop.ControlManagment.BaseOptionSet();
             this.panelButtonsUnten = new QS2.Desktop.ControlManagment.BasePanel();
+            this.lblDauer = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblNaechsteEvaluierung = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelButtons = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnCancel = new PMDS.GUI.ucButton(this.components);
             this.btnOk = new PMDS.GUI.ucButton(this.components);
@@ -164,6 +169,7 @@ namespace PMDS.GUI
             this.dgHistorie = new QS2.Desktop.ControlManagment.BaseGrid();
             this.splitContainerUnten = new System.Windows.Forms.SplitContainer();
             this.dsPflegegeldstufe1 = new PMDS.Abrechnung.Global.dsPflegegeldstufe();
+            this.nDauer = new QS2.Desktop.ControlManagment.BaseMaskEdit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpDate2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPflegeEintrag1)).BeginInit();
@@ -200,7 +206,7 @@ namespace PMDS.GUI
             this.dtpDate2.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDate2.FormatString = "";
             this.errorProvider1.SetIconAlignment(this.dtpDate2, System.Windows.Forms.ErrorIconAlignment.TopRight);
-            this.dtpDate2.Location = new System.Drawing.Point(7, 4);
+            this.dtpDate2.Location = new System.Drawing.Point(3, 27);
             this.dtpDate2.MaskInput = "";
             this.dtpDate2.Name = "dtpDate2";
             this.dtpDate2.ownFormat = "";
@@ -256,7 +262,7 @@ namespace PMDS.GUI
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 87);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(347, 207);
+            this.panel3.Size = new System.Drawing.Size(347, 182);
             this.panel3.TabIndex = 30;
             // 
             // ultraGridBagLayoutPanelAnmerkung
@@ -267,7 +273,7 @@ namespace PMDS.GUI
             this.ultraGridBagLayoutPanelAnmerkung.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanelAnmerkung.Location = new System.Drawing.Point(0, 0);
             this.ultraGridBagLayoutPanelAnmerkung.Name = "ultraGridBagLayoutPanelAnmerkung";
-            this.ultraGridBagLayoutPanelAnmerkung.Size = new System.Drawing.Size(347, 207);
+            this.ultraGridBagLayoutPanelAnmerkung.Size = new System.Drawing.Size(347, 182);
             this.ultraGridBagLayoutPanelAnmerkung.TabIndex = 27;
             // 
             // tbAnmerkung
@@ -286,7 +292,7 @@ namespace PMDS.GUI
             this.tbAnmerkung.Name = "tbAnmerkung";
             this.ultraGridBagLayoutPanelAnmerkung.SetPreferredSize(this.tbAnmerkung, new System.Drawing.Size(377, 190));
             this.tbAnmerkung.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-            this.tbAnmerkung.Size = new System.Drawing.Size(337, 197);
+            this.tbAnmerkung.Size = new System.Drawing.Size(337, 172);
             this.tbAnmerkung.TabIndex = 26;
             // 
             // panelStatusEingabe
@@ -345,40 +351,59 @@ namespace PMDS.GUI
             // 
             // panelButtonsUnten
             // 
+            this.panelButtonsUnten.Controls.Add(this.nDauer);
+            this.panelButtonsUnten.Controls.Add(this.lblDauer);
+            this.panelButtonsUnten.Controls.Add(this.lblNaechsteEvaluierung);
             this.panelButtonsUnten.Controls.Add(this.dtpDate2);
             this.panelButtonsUnten.Controls.Add(this.panelButtons);
             this.panelButtonsUnten.Controls.Add(this.ultraLabel3);
             this.panelButtonsUnten.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtonsUnten.Location = new System.Drawing.Point(3, 294);
+            this.panelButtonsUnten.Location = new System.Drawing.Point(3, 269);
             this.panelButtonsUnten.Name = "panelButtonsUnten";
-            this.panelButtonsUnten.Size = new System.Drawing.Size(347, 31);
+            this.panelButtonsUnten.Size = new System.Drawing.Size(347, 56);
             this.panelButtonsUnten.TabIndex = 28;
+            // 
+            // lblDauer
+            // 
+            this.lblDauer.Location = new System.Drawing.Point(122, 5);
+            this.lblDauer.Name = "lblDauer";
+            this.lblDauer.Size = new System.Drawing.Size(83, 19);
+            this.lblDauer.TabIndex = 24;
+            this.lblDauer.Text = "Dauer (Min.)";
+            // 
+            // lblNaechsteEvaluierung
+            // 
+            this.lblNaechsteEvaluierung.Location = new System.Drawing.Point(4, 5);
+            this.lblNaechsteEvaluierung.Name = "lblNaechsteEvaluierung";
+            this.lblNaechsteEvaluierung.Size = new System.Drawing.Size(105, 22);
+            this.lblNaechsteEvaluierung.TabIndex = 23;
+            this.lblNaechsteEvaluierung.Text = "Nächste Eval.";
             // 
             // panelButtons
             // 
             this.panelButtons.Controls.Add(this.btnCancel);
             this.panelButtons.Controls.Add(this.btnOk);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtons.Location = new System.Drawing.Point(155, 0);
+            this.panelButtons.Location = new System.Drawing.Point(211, 0);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(192, 31);
+            this.panelButtons.Size = new System.Drawing.Size(136, 56);
             this.panelButtons.TabIndex = 22;
             // 
             // btnCancel
             // 
-            appearance5.BackColor = System.Drawing.Color.Transparent;
-            appearance5.Image = ((object)(resources.GetObject("appearance5.Image")));
-            appearance5.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance5.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnCancel.Appearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.Transparent;
+            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
+            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnCancel.Appearance = appearance6;
             this.btnCancel.AutoWorkLayout = false;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.Enabled = false;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(24, 1);
+            this.btnCancel.Location = new System.Drawing.Point(3, 23);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(77, 28);
+            this.btnCancel.Size = new System.Drawing.Size(61, 28);
             this.btnCancel.TabIndex = 21;
             this.btnCancel.TabStop = false;
             this.btnCancel.TYPE = PMDS.GUI.ucButton.ButtonType.Cancel;
@@ -387,19 +412,19 @@ namespace PMDS.GUI
             // 
             // btnOk
             // 
-            appearance6.BackColor = System.Drawing.Color.Transparent;
-            appearance6.Image = ((object)(resources.GetObject("appearance6.Image")));
-            appearance6.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance6.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnOk.Appearance = appearance6;
+            appearance7.BackColor = System.Drawing.Color.Transparent;
+            appearance7.Image = ((object)(resources.GetObject("appearance7.Image")));
+            appearance7.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance7.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnOk.Appearance = appearance7;
             this.btnOk.AutoWorkLayout = false;
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnOk.DoOnClick = true;
             this.btnOk.Enabled = false;
             this.btnOk.IsStandardControl = true;
-            this.btnOk.Location = new System.Drawing.Point(107, 1);
+            this.btnOk.Location = new System.Drawing.Point(70, 22);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(80, 28);
+            this.btnOk.Size = new System.Drawing.Size(62, 28);
             this.btnOk.TabIndex = 20;
             this.btnOk.TabStop = false;
             this.btnOk.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
@@ -676,9 +701,11 @@ namespace PMDS.GUI
             ultraGridColumn75.Header.Editor = null;
             ultraGridColumn75.Header.VisiblePosition = 50;
             ultraGridColumn76.Header.Editor = null;
-            ultraGridColumn76.Header.VisiblePosition = 52;
+            ultraGridColumn76.Header.VisiblePosition = 53;
             ultraGridColumn87.Header.Editor = null;
             ultraGridColumn87.Header.VisiblePosition = 51;
+            ultraGridColumn91.Header.Editor = null;
+            ultraGridColumn91.Header.VisiblePosition = 52;
             ultraGridColumn44.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn44.Header.Editor = null;
             ultraGridColumn44.Header.VisiblePosition = 44;
@@ -745,6 +772,7 @@ namespace PMDS.GUI
             ultraGridColumn75,
             ultraGridColumn76,
             ultraGridColumn87,
+            ultraGridColumn91,
             ultraGridColumn44,
             ultraGridColumn45});
             ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
@@ -791,9 +819,9 @@ namespace PMDS.GUI
             this.dgHistorie.ContextMenuStrip = this.contextMenuStrip1;
             this.dgHistorie.DataMember = "PflegeEintrag";
             this.dgHistorie.DataSource = this.dsPflegeEintrag1;
-            appearance7.BackColor = System.Drawing.Color.White;
-            appearance7.BorderColor = System.Drawing.Color.DarkGray;
-            this.dgHistorie.DisplayLayout.Appearance = appearance7;
+            appearance8.BackColor = System.Drawing.Color.White;
+            appearance8.BorderColor = System.Drawing.Color.DarkGray;
+            this.dgHistorie.DisplayLayout.Appearance = appearance8;
             this.dgHistorie.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
             ultraGridBand2.AutoPreviewMaxLines = 1;
             ultraGridColumn46.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
@@ -942,6 +970,8 @@ namespace PMDS.GUI
             ultraGridColumn89.Header.VisiblePosition = 35;
             ultraGridColumn90.Header.Editor = null;
             ultraGridColumn90.Header.VisiblePosition = 36;
+            ultraGridColumn92.Header.Editor = null;
+            ultraGridColumn92.Header.VisiblePosition = 37;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn46,
             ultraGridColumn47,
@@ -979,12 +1009,13 @@ namespace PMDS.GUI
             ultraGridColumn86,
             ultraGridColumn88,
             ultraGridColumn89,
-            ultraGridColumn90});
+            ultraGridColumn90,
+            ultraGridColumn92});
             ultraGridBand2.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgHistorie.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.dgHistorie.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance8.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.dgHistorie.DisplayLayout.CaptionAppearance = appearance8;
+            appearance9.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.dgHistorie.DisplayLayout.CaptionAppearance = appearance9;
             this.dgHistorie.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFree;
             this.dgHistorie.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgHistorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1023,6 +1054,19 @@ namespace PMDS.GUI
             this.dsPflegegeldstufe1.DataSetName = "dsPflegegeldstufe";
             this.dsPflegegeldstufe1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsPflegegeldstufe1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // nDauer
+            // 
+            appearance5.TextHAlignAsString = "Right";
+            this.nDauer.Appearance = appearance5;
+            this.nDauer.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
+            this.nDauer.Location = new System.Drawing.Point(136, 28);
+            this.nDauer.MaxValue = 1440;
+            this.nDauer.MinValue = 0;
+            this.nDauer.Name = "nDauer";
+            this.nDauer.NonAutoSizeHeight = 20;
+            this.nDauer.Size = new System.Drawing.Size(48, 23);
+            this.nDauer.TabIndex = 25;
             // 
             // ucZielEvaluierung
             // 
@@ -1092,6 +1136,9 @@ namespace PMDS.GUI
         public QS2.Desktop.ControlManagment.BaseGroupBox gbEvaluierung;
         private Abrechnung.Global.dsPflegegeldstufe dsPflegegeldstufe1;
         private Data.PflegePlan.dsPflegePlan dsPflegePlan2;
+        private QS2.Desktop.ControlManagment.BaseLabel lblDauer;
+        private QS2.Desktop.ControlManagment.BaseLabel lblNaechsteEvaluierung;
+        private QS2.Desktop.ControlManagment.BaseMaskEdit nDauer;
     }
 
 }

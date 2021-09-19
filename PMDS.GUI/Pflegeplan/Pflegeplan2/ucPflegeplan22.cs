@@ -75,7 +75,7 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            if (DesignMode || !ENV.AppRunning)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
             UpdateLegend();
             ucPflegeplanTreeView1.ExpandAll = false;
@@ -100,15 +100,18 @@ namespace PMDS.GUI
             this.ucPflegeplanTreeView1.mainWindow = this;
             this.ucASZMTransfer21.mainWindow = this;
 
-            UltraToolTipInfo info = new UltraToolTipInfo();
-            info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Verordnungen");
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnVerordnungen, info);
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnVerordnungen2, info);
+            using (UltraToolTipInfo info = new UltraToolTipInfo())
+            {
+                info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Verordnungen");
+                this.ultraToolTipManager1.SetUltraToolTip(this.btnVerordnungen, info);
+                this.ultraToolTipManager1.SetUltraToolTip(this.btnVerordnungen2, info);
+            }
 
-            info = new UltraToolTipInfo();
-            info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Medikamente");
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnMedikamente, info);
-
+            using (UltraToolTipInfo info = new UltraToolTipInfo())
+            {
+                info.ToolTipText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Zuordnung Medikamente");
+                this.ultraToolTipManager1.SetUltraToolTip(this.btnMedikamente, info);
+            }
         }
 
         
@@ -166,7 +169,7 @@ namespace PMDS.GUI
                 _PfState = PflegePlanState.Bearbeiten;
                 ucASZMTransferPDx1.Visible = false;
                 ucWunde1.Visible = false;
-                this.btnPDx.Text = _PflegePlanModus == PflegePlanModus.Normal ? "&Pflegedefinitionen hinzufügen" : "&Wunden hinzufügen";
+                this.btnPDx.Text = _PflegePlanModus == PflegePlanModus.Normal ? "&Pflegediagnosen hinzufügen" : "&Wunden hinzufügen";
             }
         }
 
@@ -1272,8 +1275,6 @@ namespace PMDS.GUI
                             arg.ISPDX = false;
                         else
                             arg.ISPDX = true;
-
-
                     }
                 }
                 ucPflegeplanTreeView1.AddPDxArgs(pdxArgs);

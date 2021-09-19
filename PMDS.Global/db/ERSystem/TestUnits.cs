@@ -2382,7 +2382,7 @@ namespace PMDS.Global.db.ERSystem
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Suchmuster - drücken Sie ENTER um die Suche zu starten");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Favoriten");
 
-                QS2.Desktop.ControlManagment.ControlManagment.getRes("&Pflegedefinitionen hinzufügen");
+                QS2.Desktop.ControlManagment.ControlManagment.getRes("&Pflegediagnosen hinzufügen");
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("&Wunden hinzufügen");
 
                 QS2.Desktop.ControlManagment.ControlManagment.getRes("Uhrzeit");

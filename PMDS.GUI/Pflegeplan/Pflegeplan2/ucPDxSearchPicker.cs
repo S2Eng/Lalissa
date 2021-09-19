@@ -40,7 +40,7 @@ namespace PMDS.GUI
             set
             {
                 _PflegePlanModus = value;
-                btnPfDef.Text = _PflegePlanModus == PflegePlanModus.Normal ? QS2.Desktop.ControlManagment.ControlManagment.getRes("&Pflegedefinitionen hinzufügen") : QS2.Desktop.ControlManagment.ControlManagment.getRes("&Wunden hinzufügen");
+                btnPfDef.Text = _PflegePlanModus == PflegePlanModus.Normal ? QS2.Desktop.ControlManagment.ControlManagment.getRes("&Pflegediagnosen hinzufügen") : QS2.Desktop.ControlManagment.ControlManagment.getRes("&Wunden hinzufügen");
             }
         }
 

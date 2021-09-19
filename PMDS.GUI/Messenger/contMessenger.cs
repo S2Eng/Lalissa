@@ -374,7 +374,7 @@ namespace PMDS.GUI.Messenger
                 {
                     List<PMDS.db.Entities.Messages> tProtMessage = db.Messages.Where(o => o.ID == rSelMessage.IDProtocoll).ToList();
                     List<PMDS.db.Entities.MessagesToUsers> tMessagesToUsers = db.MessagesToUsers.Where(o => o.IDMessages == rSelMessage.IDProtocoll).ToList();
-                    if (tProtMessage.Count() == 1)
+                    if (tProtMessage.Count == 1)
                     {
                         PMDS.db.Entities.Messages rProtMessage = tProtMessage.First();
 
@@ -397,13 +397,13 @@ namespace PMDS.GUI.Messenger
 
                         this.setAllUsersMessageToUserPicker(tMessagesToUsers, rProtMessage, true, db);
 
-                        bool UIAusgang = false;
-                        if (this.optPostEinAusgang.Value.ToString().Trim().ToLower().Equals(("A").Trim().ToLower()))
+                        bool UIAusgang;
+                        if (generic.sEquals(this.optPostEinAusgang.Value, "A"))
                         {
                             var tMUNotReaded = (from mu in tMessagesToUsers
                                                 where !mu.Readed
                                                 select new { mu.ID, mu.Readed, mu.ReadedAt});
-                            if (tMUNotReaded.Count() > 0)
+                            if (tMUNotReaded.Any())
                             {
                                 rSelGridRow.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
                                 rSelMessage.Readed = false;
@@ -422,12 +422,12 @@ namespace PMDS.GUI.Messenger
                             sTransTxtInfomessageBottom = string.Format(sTransTxtInfomessageBottom, tMUReaded.Count().ToString(), tMessagesToUsers.Count.ToString());
                             this.lblInfoMessageBottom.Text = sTransTxtInfomessageBottom.Trim();
                         }
-                        else if (this.optPostEinAusgang.Value.ToString().Trim().ToLower().Equals(("E").Trim().ToLower()))
+                        else if (generic.sEquals(this.optPostEinAusgang.Value,"E"))
                         {
                             if (updateMessageReaded)
                             {
-                                IQueryable<PMDS.db.Entities.MessagesToUsers> tMUUpdate = db.MessagesToUsers.Where(a => a.IDMessages == rProtMessage.ID);
-                                if (tMUUpdate.Count() > 0)
+                                IQueryable<PMDS.db.Entities.MessagesToUsers> tMUUpdate = db.MessagesToUsers.Where(a => a.IDMessages == rProtMessage.ID && a.IDUser == ENV.USERID);
+                                if (tMUUpdate.Any())
                                 {
                                     foreach (var rMU in tMUUpdate)
                                     {
