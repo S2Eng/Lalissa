@@ -261,7 +261,7 @@ namespace PMDS.GUI
                         def.EntferntJN = r.EntferntJN;
                         def.ThematischeID = r.ThematischeID;
                         //if (!r.IsGruppeNull())
-                        def.PDXGruppe = (PDXGruppe)r.Gruppe;
+                        def.PDXGruppe = (ePDXGruppe)r.Gruppe;
                         def.PDXLokalisierungsTyp = (PDxLokalisierungsTypen)r.LokalisierungsTyp;
 
                         //Liste alle zugeordnete Pflegemodelle

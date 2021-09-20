@@ -570,12 +570,12 @@ namespace PMDS.Global
     /// Klassifiziert eine PDx in eine Gruppe
     /// </summary>
     //----------------------------------------------------------------------------
-    public enum PDXGruppe
+    public enum ePDXGruppe
     {
-        KeineDiagnose = -1,
         Pflegediagnose = 0,
         Risikodiagnose = 1,
         Wellnessdiagnose = 2,
+        KeineDiagnose = 3,
     }
 
     //----------------------------------------------------------------------------

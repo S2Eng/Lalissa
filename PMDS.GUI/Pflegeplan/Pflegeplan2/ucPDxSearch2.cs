@@ -818,30 +818,6 @@ namespace PMDS.GUI
             tvGenerell.PDX_SELARGS = listGenerell.ToArray();
             tvGenerell.RemovePDxNodes(tvSpecific.GetPDxNodes());
 
-/*
-            //ASZR aus Pflegediagnosen mit PDXGruppe = -1 entfernen
-            Infragistics.Win.UltraWinTree.TreeNodesCollection x = tvGenerell.GetPDxNodes();
-            int i = 0;
-            foreach (var y in x)            
-            {
-                if (tvGenerell.PDX_SELARGS[i].PDXGruppe == -1)     
-                {
-                    int j = 0;
-                    foreach (var z in y.Nodes)
-                    {
-                        if (z.Tag.ToString() != "M")
-                        {
-                            y.Nodes[j].Remove();
-                        }
-                        else
-                        {
-                            j++;
-                        }
-                    }
-                }
-                i++;
-            }
-*/
             tvGenerell.SelectAllTreeNodes(false);
             ShowHideTabs();
         }

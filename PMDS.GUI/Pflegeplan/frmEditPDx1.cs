@@ -261,7 +261,7 @@ namespace PMDS.GUI
                 _PDXDef.EntferntJN = chkEntferntJN.Checked;
                 _PDXDef.Definition = tbDefinition.Text;
                 _PDXDef.Klartext = tbText.Text;
-                _PDXDef.PDXGruppe = (PDXGruppe)cbGruppe.SelectedIndex;
+                _PDXDef.PDXGruppe = (ePDXGruppe)cbGruppe.SelectedIndex;
                 _PDXDef.PDXLokalisierungsTyp = (PDxLokalisierungsTypen)osLokalisierung.CheckedIndex;
 
                 _PDXDef.PDXPflegemodelle = GetPflgemodelle();
@@ -307,7 +307,7 @@ namespace PMDS.GUI
         //----------------------------------------------------------------------------
         private void InitGruppeCombo()
         {
-            foreach (string s in Enum.GetNames(typeof(PDXGruppe)))
+            foreach (string s in Enum.GetNames(typeof(ePDXGruppe)))
             {
                 cbGruppe.Items.Add(s, s);
             }

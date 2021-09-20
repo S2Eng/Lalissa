@@ -57,7 +57,7 @@ namespace PMDS.Global
 		private String    			    _Definition;
 		private object    			    _Tag;
 		private bool      			    _Changed;
-        private PDXGruppe               _PDXGruppe              = PDXGruppe.Pflegediagnose;
+        private ePDXGruppe               _PDXGruppe              = ePDXGruppe.Pflegediagnose;
         private PDxLokalisierungsTypen  _PDXLokalisierungsTyp   = PDxLokalisierungsTypen.Kann;
 
         //MDA am 13.04.2007
@@ -78,7 +78,7 @@ namespace PMDS.Global
             set { _PDXLokalisierungsTyp = value; }
         }
 
-        public PDXGruppe PDXGruppe
+        public ePDXGruppe PDXGruppe
         {
             get { return _PDXGruppe; }
             set { _PDXGruppe = value; }

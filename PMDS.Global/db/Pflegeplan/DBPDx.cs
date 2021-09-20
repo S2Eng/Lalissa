@@ -142,7 +142,7 @@ namespace PMDS.DB
 				def.ID				        = r.ID;
 				def.Klartext		        = r.Klartext;
 				def.ThematischeID	        = r.ThematischeID;
-                def.PDXGruppe               = (PDXGruppe)r.Gruppe;
+                def.PDXGruppe               = (ePDXGruppe)r.Gruppe;
                 def.PDXLokalisierungsTyp    = (PDxLokalisierungsTypen)r.LokalisierungsTyp;
                 def.PDXKuerzel              = r.PDXKuerzel;   //Gernot%%
 				al.Add(def);

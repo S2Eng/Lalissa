@@ -765,7 +765,7 @@ namespace PMDS.GUI
                 if (name == "T" || name == "X") continue;
                 
                 //Bei PDXGruppe == -1 nur Maﬂnahmen anzeigen
-                if (pdxSA.PDXGruppe == -1 && _PflegePlanModus != PflegePlanModus.Wunde && name != "M")
+                if (pdxSA.PDXGruppe == 3 && _PflegePlanModus != PflegePlanModus.Wunde && name != "M")
                 {               
                         continue;
                 }
@@ -797,7 +797,7 @@ namespace PMDS.GUI
             if (!UltraTreeTools.ExistPDxEintragGruppe(tv, eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString()))
             {
 
-                if (pdxSA.PDXGruppe != -1)
+                if (pdxSA.PDXGruppe != 3)
                 {
                     n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
                     n.Tag = eintraggruppe;

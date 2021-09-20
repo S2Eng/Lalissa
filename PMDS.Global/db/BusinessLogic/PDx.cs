@@ -148,7 +148,7 @@ namespace PMDS.BusinessLogic
 
         public dsPDxEintraege GetPDxZuordnugenFromSearchText(string sSearchCriteria, SearchCondition condition, PflegePlanModus modus, Guid IDAbteilung, bool PDxEntferntJN)
         {
-            if (sSearchCriteria.Trim().Length == 0)		
+            if (String.IsNullOrWhiteSpace(sSearchCriteria))		
                 sSearchCriteria = "%";
             return _DBPDx.GetPDxZuordnugenFromSearchText(sSearchCriteria, condition, modus, IDAbteilung, PDxEntferntJN);
         }

@@ -610,7 +610,7 @@ namespace PMDS.GUI.BaseControls
 
             if (!UltraTreeTools.ExistPDxEintragGruppe(tv, eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString()))
             {
-                if (pdxSA.PDXGruppe != -1)
+                if (pdxSA.PDXGruppe != 3)
                 {
                     n = tn.Nodes.Add(eintraggruppe.ToString() + "_" + pdxSA.IDPDX.ToString(), ENV.String(eintraggruppe.ToString()));
                     n.Tag = eintraggruppe; //Änderung nach 15.05.2007 MDA

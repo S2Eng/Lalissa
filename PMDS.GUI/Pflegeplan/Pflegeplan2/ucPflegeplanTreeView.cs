@@ -893,7 +893,7 @@ namespace PMDS.GUI
                     //TreeNode 2 Reihe einfügen
 
                     //20201-09-19 os:  Bei PDXGruppe -1 (Maßnahmen ohne PDX keine ASZR-Nodes einfügen
-                    if (pdxSA.PDXGruppe != -1)
+                    if (pdxSA.PDXGruppe != 3)
                     {
                         foreach (ASZMSelectionArgs aa in pdxSA.ARGS)
                         {
@@ -969,7 +969,7 @@ namespace PMDS.GUI
                     continue;
 
                 //2021-09-18: Für Maßnahmen ohne PD (PDXGruppe == -1) nur Maßnahmen anzeigen
-                if (pdxSA.PDXGruppe == -1 && _PflegePlanModus == PflegePlanModus.Normal && (name != "M")) 
+                if (pdxSA.PDXGruppe == 3 && _PflegePlanModus == PflegePlanModus.Normal && (name != "M")) 
                     continue;
 
                 if (!UltraTreeTools.ExistPDxEintragGruppe(tv, name + "_" + anz + "_" + pdxSA.IDPDX.ToString()))
@@ -1003,7 +1003,7 @@ namespace PMDS.GUI
 
             if (!UltraTreeTools.ExistPDxEintragGruppe(tv, eintraggruppe.ToString() + "_" + anz + "_" + pdxSA.IDPDX.ToString()))
             {
-                if (pdxSA.PDXGruppe != -1)
+                if (pdxSA.PDXGruppe != 3)
                 {
                     if (_PflegePlanModus == PflegePlanModus.Wunde && eintraggruppe == EintragGruppe.A)
                     {
