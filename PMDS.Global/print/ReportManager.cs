@@ -322,6 +322,7 @@ namespace PMDS.Print.CR
                         }
                         rpt.Export();
                         sFileFullNameExported = tmpFullPath;
+                        rpt.Dispose();
                         return true;
                     }
                     catch (Exception ex)

@@ -115,7 +115,9 @@ namespace PMDS.Print.CR
         private void frmPrintPreview_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (crystalReportViewer1.ReportSource != null)
+            {
                 crystalReportViewer1.Dispose();
+            }
         }
     }
 }
