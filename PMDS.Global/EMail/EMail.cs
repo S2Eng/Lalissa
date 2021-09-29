@@ -32,7 +32,7 @@ namespace ITSCont.logViewer
         }
         public void addMailParam(ref string sAllParam, string sParam)
         {
-            if (sAllParam == string.Empty)
+            if (sAllParam.Length == 0)
             {
                 sAllParam += "?" + sParam;
             }
