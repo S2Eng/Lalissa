@@ -15,7 +15,6 @@ using PMDS.DB;
 
 namespace PMDS.Calc.UI
 {
-
     public class ucCalcsSitemap : QS2.Desktop.ControlManagment.BaseControl
     {
         public PMDS.UI.Sitemap.UIFct sitemap;
@@ -24,7 +23,7 @@ namespace PMDS.Calc.UI
         public PMDS.Calc.Logic.doBill doBill;
         public PMDS.Calc.Logic.doRollung doRollung;
 
-        public bool _freigeben = false;
+        public bool _freigeben;
 
         public PMDS.Calc.Logic.print print;
 
@@ -33,13 +32,11 @@ namespace PMDS.Calc.UI
         public PMDS.Calc.Logic.doDepotgeld doDepot;
         
         public string  IDKost = "";
-        public bool isLoaded = false;
+        public bool isLoaded;
         public QS2.Desktop.Txteditor.doEditor doEditor;
         public PMDS.Calc.Logic.calcBase calcBase;
         public PMDS.Calc.Logic.dbBill dbBill;
         public PMDS.Calc.Logic.booking booking;
-
-
 
         public eTyp typ = new eTyp();
         public enum eTyp
@@ -49,8 +46,6 @@ namespace PMDS.Calc.UI
             depotgeld = 2,
             buchhaltung = 20
         }
-
-
 
         public void initControl(PMDS.Calc.UI.ucCalcs cont, bool doDeleg, eTyp typ, bool initEnv)
         {
@@ -154,9 +149,7 @@ namespace PMDS.Calc.UI
         { 
             try
             {
-
-                db.Clear();
-                    
+                db.Clear();                    
                     
                 if (this.typ == eTyp.calc)
                 {
@@ -286,8 +279,8 @@ namespace PMDS.Calc.UI
                     }
                 }
           
-                btnOffene.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorschau") + "" + " (" + dbVorschau.bills.Count().ToString() + ")";
-                btnFreigegebene.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Freigegeben") + "" + " (" + dbFreigegeben.bills.Count().ToString() + ")";
+                btnOffene.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorschau") + "" + " (" + dbVorschau.bills.Count.ToString() + ")";
+                btnFreigegebene.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Freigegeben") + "" + " (" + dbFreigegeben.bills.Count.ToString() + ")";
             }
             catch (Exception ex)
             {
@@ -351,7 +344,7 @@ namespace PMDS.Calc.UI
             PMDS.Calc.Logic.eBillStatus status = new PMDS.Calc.Logic.eBillStatus();
            
             if (this._freigeben)
-                if (sValCboBillStatus != null && sValCboBillStatus.ToString().Trim().ToLower().Equals(("s").Trim().ToLower()))
+                if (sValCboBillStatus != null && generic.sEquals(sValCboBillStatus, "s"))
                     status = PMDS.Calc.Logic.eBillStatus.storniert;
                 else
                     status = PMDS.Calc.Logic.eBillStatus.freigegeben;
@@ -363,7 +356,7 @@ namespace PMDS.Calc.UI
         {
             PMDS.Calc.Logic.eBillStatus status = new PMDS.Calc.Logic.eBillStatus();
 
-            if (sValCboBillStatus != null && sValCboBillStatus.ToString().Trim().ToLower().Equals(("s").Trim().ToLower()))
+            if (sValCboBillStatus != null && generic.sEquals(sValCboBillStatus,"s"))
                 status = PMDS.Calc.Logic.eBillStatus.storniert;
             else
                 status = PMDS.Calc.Logic.eBillStatus.freigegeben;
@@ -396,7 +389,7 @@ namespace PMDS.Calc.UI
         }
         public bool validSR(bool info)
         {
-            if (this.IDKost == "" )
+            if (String.IsNullOrWhiteSpace(this.IDKost))
             {
                 if (info) { QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keinen Kostenträger ausgewählt!", "Sammelabrechnung starten"); }
                 return false;
@@ -653,8 +646,7 @@ namespace PMDS.Calc.UI
                                 else if (this.typ == ucCalcsSitemap.eTyp.buchhaltung || this.typ == ucCalcsSitemap.eTyp.depotgeld)
                                 {
                                     throw new Exception("ucCalcsSitemap.doAction22: this.typ for eTyp.buchhaltung and eTyp.depotgeld not allowed!");
-                                }
-                                
+                                }                                
                             }
 
                             else if (typ == eAction.freigeben)
@@ -731,7 +723,6 @@ namespace PMDS.Calc.UI
                                     rToDel.Delete(false);
                                     anzDel += 1;
                                 }
-
                             }
                             else if (typ == eAction.printBill)
                             {
@@ -744,8 +735,7 @@ namespace PMDS.Calc.UI
                                 this.booking.saveBooking(PMDS.Calc.Logic.eKonto.Zahlungen, PMDS.Calc.Logic.eKonto.Kundenforderungen,
                                                        DateTime.Now, QS2.Desktop.ControlManagment.ControlManagment.getRes("Erlösbuchung"),
                                                         System.Convert.ToDecimal(r.betrag), -1, r.RechNr , r.IDKlient , r.IDKost ,
-                                                        ref calcData, true, PMDS.Calc.Logic.eCalcRun.month, PMDS.Global.ENV.IDKlinik);
- 
+                                                        ref calcData, true, PMDS.Calc.Logic.eCalcRun.month, PMDS.Global.ENV.IDKlinik); 
                             }
                             else if (typ == eAction.SperreRollungLöschen)
                             {
@@ -753,9 +743,7 @@ namespace PMDS.Calc.UI
                                 {
                                     this.sql.updateBillSet_IDBillStorno(r.ID, "");
                                 }
-                            }
-
-                          
+                            }                         
                         }
 
                         if (arrSelected.Count != 1)
@@ -767,17 +755,18 @@ namespace PMDS.Calc.UI
                         //this.sitemap.setUIAnzahl(ref lblCount, "Keine Rechnungen gefunden!");
                         if (typ == eAction.printBill)
                         {
-                            this.print.printSites(arrBillRows, this.form.editor, QS2.Desktop.ControlManagment.ControlManagment.getRes("PMDS - Rechnung/en"), arrBillRows.Count == 1 ? this : null, (object)rSelRow, typModify,
+                            this.print.printBills(arrBillRows, this.form.editor, QS2.Desktop.ControlManagment.ControlManagment.getRes("PMDS - Rechnung/en"), arrBillRows.Count == 1 ? this : null, (object)rSelRow, typModify, ENV.TextKlientenInfo,
                                                     Admin.frmMainCalc.editorTmp, IDBillStrTmp, (this.typ == eTyp.depotgeld ? true : false));
-                        }
-                       
+                        }                       
                         else
                             this.form.loadCalcs();
-                        if ( txtInfo != "") QS2.Desktop.ControlManagment.ControlManagment.MessageBox(txtInfo, QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnung/en"), true);
+
+                        if (!String.IsNullOrWhiteSpace(txtInfo)) 
+                            QS2.Desktop.ControlManagment.ControlManagment.MessageBox(txtInfo, QS2.Desktop.ControlManagment.ControlManagment.getRes("Rechnung/en"), true);
                     }
                 }
 
-                if (sProt.Trim() != "")
+                if (!String.IsNullOrWhiteSpace(sProt))
                 {
                     sProt = QS2.Desktop.ControlManagment.ControlManagment.getRes("Folgende bereits stornierte Rechnungen können nicht erneut storniert werden:") + "\r\n" + "\r\n" + sProt.Trim();
                     qs2.core.vb.frmProtocol frmProt = new qs2.core.vb.frmProtocol();
@@ -786,8 +775,6 @@ namespace PMDS.Calc.UI
                     frmProt.ContProtocol1.setText(sProt);
                     frmProt.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Warnung für Rechnungsstorno");
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -803,7 +790,7 @@ namespace PMDS.Calc.UI
         {
             try
             {
-                PMDS.Calc .Logic .Sql sql = new PMDS.Calc .Logic .Sql ();
+                PMDS.Calc.Logic.Sql sql = new PMDS.Calc.Logic.Sql();
                 sql.saveRechnung (selRow.Cells["ID"].Value.ToString (), rtf);
                 selRow.Cells["Rechnung"].Value = rtf;
                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die Rechnungsänderung wurde in PMDS gesichert!", "Rechnung sichern");

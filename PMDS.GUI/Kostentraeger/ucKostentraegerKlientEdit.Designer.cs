@@ -33,10 +33,11 @@
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             this.dtGueltigAb = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.lblGültigAb = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblGültigBis = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -63,6 +64,8 @@
             this.panelAuswahlRechnung = new QS2.Desktop.ControlManagment.BasePanel();
             this.uGridBagLayoutPanelElemente = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
             this.panelOben = new QS2.Desktop.ControlManagment.BasePanel();
+            this.lblRechnungsdruckTyp = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.cboRechnungsdruckTyp = new QS2.Desktop.ControlManagment.BaseComboEditor();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigAb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbKtrArt)).BeginInit();
@@ -82,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uGridBagLayoutPanelElemente)).BeginInit();
             this.uGridBagLayoutPanelElemente.SuspendLayout();
             this.panelOben.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRechnungsdruckTyp)).BeginInit();
             this.SuspendLayout();
             // 
             // dtGueltigAb
@@ -152,7 +156,7 @@
             // 
             // cbBetragErrechnet
             // 
-            this.cbBetragErrechnet.Location = new System.Drawing.Point(3, 0);
+            this.cbBetragErrechnet.Location = new System.Drawing.Point(3, 6);
             this.cbBetragErrechnet.Name = "cbBetragErrechnet";
             this.cbBetragErrechnet.Size = new System.Drawing.Size(105, 20);
             this.cbBetragErrechnet.TabIndex = 7;
@@ -164,7 +168,7 @@
             appearance4.BackColor = System.Drawing.Color.White;
             this.txtBetrag.Appearance = appearance4;
             this.txtBetrag.BackColor = System.Drawing.Color.White;
-            this.txtBetrag.Location = new System.Drawing.Point(59, 16);
+            this.txtBetrag.Location = new System.Drawing.Point(132, 3);
             this.txtBetrag.Name = "txtBetrag";
             this.txtBetrag.Size = new System.Drawing.Size(96, 21);
             this.txtBetrag.TabIndex = 8;
@@ -172,7 +176,7 @@
             // lblBetrag
             // 
             this.lblBetrag.AutoSize = true;
-            this.lblBetrag.Location = new System.Drawing.Point(20, 20);
+            this.lblBetrag.Location = new System.Drawing.Point(88, 9);
             this.lblBetrag.Name = "lblBetrag";
             this.lblBetrag.Size = new System.Drawing.Size(38, 14);
             this.lblBetrag.TabIndex = 15;
@@ -193,8 +197,8 @@
             // 
             // dtpErfasstAm
             // 
-            appearance6.BackColor = System.Drawing.Color.White;
-            this.dtpErfasstAm.Appearance = appearance6;
+            appearance7.BackColor = System.Drawing.Color.White;
+            this.dtpErfasstAm.Appearance = appearance7;
             this.dtpErfasstAm.BackColor = System.Drawing.Color.White;
             this.dtpErfasstAm.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpErfasstAm.Location = new System.Drawing.Point(67, 30);
@@ -216,8 +220,8 @@
             // 
             // cmbBenutzer
             // 
-            appearance7.BackColor = System.Drawing.Color.White;
-            this.cmbBenutzer.Appearance = appearance7;
+            appearance8.BackColor = System.Drawing.Color.White;
+            this.cmbBenutzer.Appearance = appearance8;
             this.cmbBenutzer.BackColor = System.Drawing.Color.White;
             this.cmbBenutzer.Location = new System.Drawing.Point(480, 6);
             this.cmbBenutzer.Name = "cmbBenutzer";
@@ -242,7 +246,7 @@
             // 
             // cbRechnungJN
             // 
-            this.cbRechnungJN.Location = new System.Drawing.Point(16, 6);
+            this.cbRechnungJN.Location = new System.Drawing.Point(3, 6);
             this.cbRechnungJN.Name = "cbRechnungJN";
             this.cbRechnungJN.Size = new System.Drawing.Size(80, 20);
             this.cbRechnungJN.TabIndex = 6;
@@ -251,7 +255,7 @@
             // 
             // cbVorauszahlungJN
             // 
-            this.cbVorauszahlungJN.Location = new System.Drawing.Point(424, 62);
+            this.cbVorauszahlungJN.Location = new System.Drawing.Point(729, 59);
             this.cbVorauszahlungJN.Name = "cbVorauszahlungJN";
             this.cbVorauszahlungJN.Size = new System.Drawing.Size(98, 20);
             this.cbVorauszahlungJN.TabIndex = 5;
@@ -259,11 +263,13 @@
             // 
             // panelRechnung
             // 
+            this.panelRechnung.Controls.Add(this.cboRechnungsdruckTyp);
+            this.panelRechnung.Controls.Add(this.lblRechnungsdruckTyp);
             this.panelRechnung.Controls.Add(this.lblRechnungstyp);
             this.panelRechnung.Controls.Add(this.cboRechnungTyp);
-            this.panelRechnung.Location = new System.Drawing.Point(76, 19);
+            this.panelRechnung.Location = new System.Drawing.Point(102, 0);
             this.panelRechnung.Name = "panelRechnung";
-            this.panelRechnung.Size = new System.Drawing.Size(206, 26);
+            this.panelRechnung.Size = new System.Drawing.Size(370, 61);
             this.panelRechnung.TabIndex = 47;
             // 
             // lblRechnungstyp
@@ -277,11 +283,11 @@
             // 
             // cboRechnungTyp
             // 
-            appearance5.BackColor = System.Drawing.Color.White;
-            this.cboRechnungTyp.Appearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.White;
+            this.cboRechnungTyp.Appearance = appearance6;
             this.cboRechnungTyp.BackColor = System.Drawing.Color.White;
             this.cboRechnungTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboRechnungTyp.Location = new System.Drawing.Point(84, 3);
+            this.cboRechnungTyp.Location = new System.Drawing.Point(85, 3);
             this.cboRechnungTyp.Name = "cboRechnungTyp";
             this.cboRechnungTyp.Size = new System.Drawing.Size(117, 21);
             this.cboRechnungTyp.TabIndex = 44;
@@ -316,7 +322,7 @@
             this.panelUnten.Location = new System.Drawing.Point(5, 5);
             this.panelUnten.Name = "panelUnten";
             this.uGridBagLayoutPanelElemente.SetPreferredSize(this.panelUnten, new System.Drawing.Size(872, 95));
-            this.panelUnten.Size = new System.Drawing.Size(862, 131);
+            this.panelUnten.Size = new System.Drawing.Size(862, 158);
             this.panelUnten.TabIndex = 48;
             // 
             // panelAuswahlRestzahler
@@ -324,18 +330,18 @@
             this.panelAuswahlRestzahler.Controls.Add(this.txtBetrag);
             this.panelAuswahlRestzahler.Controls.Add(this.lblBetrag);
             this.panelAuswahlRestzahler.Controls.Add(this.cbBetragErrechnet);
-            this.panelAuswahlRestzahler.Location = new System.Drawing.Point(8, 86);
+            this.panelAuswahlRestzahler.Location = new System.Drawing.Point(8, 90);
             this.panelAuswahlRestzahler.Name = "panelAuswahlRestzahler";
-            this.panelAuswahlRestzahler.Size = new System.Drawing.Size(178, 42);
+            this.panelAuswahlRestzahler.Size = new System.Drawing.Size(286, 63);
             this.panelAuswahlRestzahler.TabIndex = 49;
             // 
             // panelAuswahlRechnung
             // 
             this.panelAuswahlRechnung.Controls.Add(this.cbRechnungJN);
             this.panelAuswahlRechnung.Controls.Add(this.panelRechnung);
-            this.panelAuswahlRechnung.Location = new System.Drawing.Point(408, 79);
+            this.panelAuswahlRechnung.Location = new System.Drawing.Point(361, 90);
             this.panelAuswahlRechnung.Name = "panelAuswahlRechnung";
-            this.panelAuswahlRechnung.Size = new System.Drawing.Size(300, 44);
+            this.panelAuswahlRechnung.Size = new System.Drawing.Size(496, 61);
             this.panelAuswahlRechnung.TabIndex = 48;
             // 
             // uGridBagLayoutPanelElemente
@@ -346,7 +352,7 @@
             this.uGridBagLayoutPanelElemente.ExpandToFitWidth = true;
             this.uGridBagLayoutPanelElemente.Location = new System.Drawing.Point(0, 294);
             this.uGridBagLayoutPanelElemente.Name = "uGridBagLayoutPanelElemente";
-            this.uGridBagLayoutPanelElemente.Size = new System.Drawing.Size(872, 141);
+            this.uGridBagLayoutPanelElemente.Size = new System.Drawing.Size(872, 168);
             this.uGridBagLayoutPanelElemente.TabIndex = 50;
             // 
             // panelOben
@@ -358,6 +364,26 @@
             this.panelOben.Size = new System.Drawing.Size(872, 294);
             this.panelOben.TabIndex = 51;
             // 
+            // lblRechnungsdruckTyp
+            // 
+            this.lblRechnungsdruckTyp.AutoSize = true;
+            this.lblRechnungsdruckTyp.Location = new System.Drawing.Point(3, 30);
+            this.lblRechnungsdruckTyp.Name = "lblRechnungsdruckTyp";
+            this.lblRechnungsdruckTyp.Size = new System.Drawing.Size(75, 14);
+            this.lblRechnungsdruckTyp.TabIndex = 46;
+            this.lblRechnungsdruckTyp.Text = "Re-Druck-Typ";
+            // 
+            // cboRechnungsdruckTyp
+            // 
+            appearance5.BackColor = System.Drawing.Color.White;
+            this.cboRechnungsdruckTyp.Appearance = appearance5;
+            this.cboRechnungsdruckTyp.BackColor = System.Drawing.Color.White;
+            this.cboRechnungsdruckTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cboRechnungsdruckTyp.Location = new System.Drawing.Point(84, 28);
+            this.cboRechnungsdruckTyp.Name = "cboRechnungsdruckTyp";
+            this.cboRechnungsdruckTyp.Size = new System.Drawing.Size(283, 21);
+            this.cboRechnungsdruckTyp.TabIndex = 47;
+            // 
             // ucKostenträgerKlientEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,7 +392,7 @@
             this.Controls.Add(this.panelOben);
             this.Controls.Add(this.uGridBagLayoutPanelElemente);
             this.Name = "ucKostenträgerKlientEdit";
-            this.Size = new System.Drawing.Size(872, 435);
+            this.Size = new System.Drawing.Size(872, 462);
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigAb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGueltigBis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbKtrArt)).EndInit();
@@ -390,6 +416,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uGridBagLayoutPanelElemente)).EndInit();
             this.uGridBagLayoutPanelElemente.ResumeLayout(false);
             this.panelOben.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboRechnungsdruckTyp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -422,5 +449,7 @@
         private Infragistics.Win.Misc.UltraGridBagLayoutPanel uGridBagLayoutPanelElemente;
         private QS2.Desktop.ControlManagment.BasePanel panelOben;
         private QS2.Desktop.ControlManagment.BasePanel panelKostnträger;
+        private QS2.Desktop.ControlManagment.BaseComboEditor cboRechnungsdruckTyp;
+        private QS2.Desktop.ControlManagment.BaseLabel lblRechnungsdruckTyp;
     }
 }

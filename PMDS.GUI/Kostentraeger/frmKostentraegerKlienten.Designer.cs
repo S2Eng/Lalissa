@@ -40,6 +40,7 @@
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKostenträgerKlienten));
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint2 = new Infragistics.Win.Layout.GridBagConstraint();
             this.lblKostentäger = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -68,6 +69,8 @@
             this.lblRechnungstyp = new QS2.Desktop.ControlManagment.BaseLabel();
             this.cboRechnungTyp = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.panelRechnung = new QS2.Desktop.ControlManagment.BasePanel();
+            this.cboRechnungsdruckTyp = new QS2.Desktop.ControlManagment.BaseComboEditor();
+            this.lblRechnungsdruckTyp = new QS2.Desktop.ControlManagment.BaseLabel();
             this.panelOben = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelAuswahl = new QS2.Desktop.ControlManagment.BasePanel();
             this.ultraGridBagLayoutPanelTop = new Infragistics.Win.Misc.UltraGridBagLayoutPanel();
@@ -92,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRechnungTyp)).BeginInit();
             this.panelRechnung.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRechnungsdruckTyp)).BeginInit();
             this.panelOben.SuspendLayout();
             this.panelAuswahl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridBagLayoutPanelTop)).BeginInit();
@@ -138,8 +142,8 @@
             this.ultraGridBagLayoutPanelTop.SetGridBagConstraint(this.ucPicker1, gridBagConstraint1);
             this.ucPicker1.Location = new System.Drawing.Point(0, 0);
             this.ucPicker1.Name = "ucPicker1";
-            this.ultraGridBagLayoutPanelTop.SetPreferredSize(this.ucPicker1, new System.Drawing.Size(652, 121));
-            this.ucPicker1.Size = new System.Drawing.Size(596, 226);
+            this.ultraGridBagLayoutPanelTop.SetPreferredSize(this.ucPicker1, new System.Drawing.Size(727, 226));
+            this.ucPicker1.Size = new System.Drawing.Size(759, 354);
             this.ucPicker1.TabIndex = 37;
             this.ucPicker1.Value = null;
             this.ucPicker1.ValueMember = "";
@@ -171,6 +175,8 @@
             this.dtpErfasstAm.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpErfasstAm.Location = new System.Drawing.Point(74, 31);
             this.dtpErfasstAm.Name = "dtpErfasstAm";
+            this.dtpErfasstAm.ownFormat = "";
+            this.dtpErfasstAm.ownMaskInput = "";
             this.dtpErfasstAm.Size = new System.Drawing.Size(100, 21);
             this.dtpErfasstAm.TabIndex = 18;
             this.dtpErfasstAm.Value = null;
@@ -187,7 +193,7 @@
             // 
             // cbBetragErrechnet
             // 
-            this.cbBetragErrechnet.Location = new System.Drawing.Point(4, 0);
+            this.cbBetragErrechnet.Location = new System.Drawing.Point(3, 10);
             this.cbBetragErrechnet.Name = "cbBetragErrechnet";
             this.cbBetragErrechnet.Size = new System.Drawing.Size(105, 20);
             this.cbBetragErrechnet.TabIndex = 13;
@@ -199,7 +205,7 @@
             appearance4.BackColor = System.Drawing.Color.White;
             this.txtBetrag.Appearance = appearance4;
             this.txtBetrag.BackColor = System.Drawing.Color.White;
-            this.txtBetrag.Location = new System.Drawing.Point(63, 18);
+            this.txtBetrag.Location = new System.Drawing.Point(65, 36);
             this.txtBetrag.Name = "txtBetrag";
             this.txtBetrag.Size = new System.Drawing.Size(92, 21);
             this.txtBetrag.TabIndex = 14;
@@ -207,7 +213,7 @@
             // lblBetrag
             // 
             this.lblBetrag.AutoSize = true;
-            this.lblBetrag.Location = new System.Drawing.Point(21, 21);
+            this.lblBetrag.Location = new System.Drawing.Point(23, 40);
             this.lblBetrag.Name = "lblBetrag";
             this.lblBetrag.Size = new System.Drawing.Size(38, 14);
             this.lblBetrag.TabIndex = 15;
@@ -226,7 +232,7 @@
             this.panelDatum.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDatum.Location = new System.Drawing.Point(0, 0);
             this.panelDatum.Name = "panelDatum";
-            this.panelDatum.Size = new System.Drawing.Size(584, 58);
+            this.panelDatum.Size = new System.Drawing.Size(747, 58);
             this.panelDatum.TabIndex = 38;
             // 
             // lblGültigAb
@@ -246,6 +252,8 @@
             this.dtGueltigAb.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtGueltigAb.Location = new System.Drawing.Point(74, 7);
             this.dtGueltigAb.Name = "dtGueltigAb";
+            this.dtGueltigAb.ownFormat = "";
+            this.dtGueltigAb.ownMaskInput = "";
             this.dtGueltigAb.Size = new System.Drawing.Size(100, 21);
             this.dtGueltigAb.TabIndex = 7;
             this.dtGueltigAb.Value = null;
@@ -259,6 +267,8 @@
             this.dtGueltigBis.DateTime = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtGueltigBis.Location = new System.Drawing.Point(267, 7);
             this.dtGueltigBis.Name = "dtGueltigBis";
+            this.dtGueltigBis.ownFormat = "";
+            this.dtGueltigBis.ownMaskInput = "";
             this.dtGueltigBis.Size = new System.Drawing.Size(100, 21);
             this.dtGueltigBis.TabIndex = 9;
             this.dtGueltigBis.Value = null;
@@ -274,7 +284,7 @@
             // 
             // cbVorauszahlungJN
             // 
-            this.cbVorauszahlungJN.Location = new System.Drawing.Point(332, 7);
+            this.cbVorauszahlungJN.Location = new System.Drawing.Point(365, 8);
             this.cbVorauszahlungJN.Name = "cbVorauszahlungJN";
             this.cbVorauszahlungJN.Size = new System.Drawing.Size(100, 20);
             this.cbVorauszahlungJN.TabIndex = 16;
@@ -302,7 +312,7 @@
             // 
             // cbRechnungJN
             // 
-            this.cbRechnungJN.Location = new System.Drawing.Point(18, 6);
+            this.cbRechnungJN.Location = new System.Drawing.Point(3, 10);
             this.cbRechnungJN.Name = "cbRechnungJN";
             this.cbRechnungJN.Size = new System.Drawing.Size(102, 20);
             this.cbRechnungJN.TabIndex = 17;
@@ -322,7 +332,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(450, 0);
+            this.btnCancel.Location = new System.Drawing.Point(613, 0);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 32);
             this.btnCancel.TabIndex = 41;
@@ -345,7 +355,7 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(539, 0);
+            this.btnOK.Location = new System.Drawing.Point(702, 0);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(51, 32);
             this.btnOK.TabIndex = 42;
@@ -370,7 +380,7 @@
             // lblRechnungstyp
             // 
             this.lblRechnungstyp.AutoSize = true;
-            this.lblRechnungstyp.Location = new System.Drawing.Point(4, 5);
+            this.lblRechnungstyp.Location = new System.Drawing.Point(4, 8);
             this.lblRechnungstyp.Name = "lblRechnungstyp";
             this.lblRechnungstyp.Size = new System.Drawing.Size(77, 14);
             this.lblRechnungstyp.TabIndex = 45;
@@ -378,23 +388,45 @@
             // 
             // cboRechnungTyp
             // 
-            appearance10.BackColor = System.Drawing.Color.White;
-            this.cboRechnungTyp.Appearance = appearance10;
+            appearance11.BackColor = System.Drawing.Color.White;
+            this.cboRechnungTyp.Appearance = appearance11;
             this.cboRechnungTyp.BackColor = System.Drawing.Color.White;
             this.cboRechnungTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboRechnungTyp.Location = new System.Drawing.Point(82, 2);
+            this.cboRechnungTyp.Location = new System.Drawing.Point(82, 5);
             this.cboRechnungTyp.Name = "cboRechnungTyp";
             this.cboRechnungTyp.Size = new System.Drawing.Size(146, 21);
             this.cboRechnungTyp.TabIndex = 44;
             // 
             // panelRechnung
             // 
+            this.panelRechnung.Controls.Add(this.cboRechnungsdruckTyp);
+            this.panelRechnung.Controls.Add(this.lblRechnungsdruckTyp);
             this.panelRechnung.Controls.Add(this.lblRechnungstyp);
             this.panelRechnung.Controls.Add(this.cboRechnungTyp);
-            this.panelRechnung.Location = new System.Drawing.Point(31, 24);
+            this.panelRechnung.Location = new System.Drawing.Point(97, 7);
             this.panelRechnung.Name = "panelRechnung";
-            this.panelRechnung.Size = new System.Drawing.Size(231, 28);
+            this.panelRechnung.Size = new System.Drawing.Size(423, 58);
             this.panelRechnung.TabIndex = 46;
+            // 
+            // cboRechnungsdruckTyp
+            // 
+            appearance10.BackColor = System.Drawing.Color.White;
+            this.cboRechnungsdruckTyp.Appearance = appearance10;
+            this.cboRechnungsdruckTyp.BackColor = System.Drawing.Color.White;
+            this.cboRechnungsdruckTyp.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cboRechnungsdruckTyp.Location = new System.Drawing.Point(82, 32);
+            this.cboRechnungsdruckTyp.Name = "cboRechnungsdruckTyp";
+            this.cboRechnungsdruckTyp.Size = new System.Drawing.Size(338, 21);
+            this.cboRechnungsdruckTyp.TabIndex = 47;
+            // 
+            // lblRechnungsdruckTyp
+            // 
+            this.lblRechnungsdruckTyp.AutoSize = true;
+            this.lblRechnungsdruckTyp.Location = new System.Drawing.Point(4, 36);
+            this.lblRechnungsdruckTyp.Name = "lblRechnungsdruckTyp";
+            this.lblRechnungsdruckTyp.Size = new System.Drawing.Size(67, 14);
+            this.lblRechnungsdruckTyp.TabIndex = 46;
+            this.lblRechnungsdruckTyp.Text = "Re-Drucktyp";
             // 
             // panelOben
             // 
@@ -404,7 +436,7 @@
             this.panelOben.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelOben.Location = new System.Drawing.Point(0, 0);
             this.panelOben.Name = "panelOben";
-            this.panelOben.Size = new System.Drawing.Size(596, 47);
+            this.panelOben.Size = new System.Drawing.Size(759, 47);
             this.panelOben.TabIndex = 48;
             // 
             // panelAuswahl
@@ -413,7 +445,7 @@
             this.panelAuswahl.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelAuswahl.Location = new System.Drawing.Point(0, 47);
             this.panelAuswahl.Name = "panelAuswahl";
-            this.panelAuswahl.Size = new System.Drawing.Size(596, 226);
+            this.panelAuswahl.Size = new System.Drawing.Size(759, 354);
             this.panelAuswahl.TabIndex = 49;
             // 
             // ultraGridBagLayoutPanelTop
@@ -424,7 +456,7 @@
             this.ultraGridBagLayoutPanelTop.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanelTop.Location = new System.Drawing.Point(0, 0);
             this.ultraGridBagLayoutPanelTop.Name = "ultraGridBagLayoutPanelTop";
-            this.ultraGridBagLayoutPanelTop.Size = new System.Drawing.Size(596, 226);
+            this.ultraGridBagLayoutPanelTop.Size = new System.Drawing.Size(759, 354);
             this.ultraGridBagLayoutPanelTop.TabIndex = 38;
             // 
             // panelEmenete
@@ -444,7 +476,7 @@
             this.panelEmenete.Location = new System.Drawing.Point(5, 5);
             this.panelEmenete.Name = "panelEmenete";
             this.ultraGridBagLayoutPanelBottom.SetPreferredSize(this.panelEmenete, new System.Drawing.Size(580, 141));
-            this.panelEmenete.Size = new System.Drawing.Size(586, 143);
+            this.panelEmenete.Size = new System.Drawing.Size(749, 179);
             this.panelEmenete.TabIndex = 50;
             // 
             // panelDetail2
@@ -457,7 +489,7 @@
             this.panelDetail2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDetail2.Location = new System.Drawing.Point(0, 58);
             this.panelDetail2.Name = "panelDetail2";
-            this.panelDetail2.Size = new System.Drawing.Size(584, 83);
+            this.panelDetail2.Size = new System.Drawing.Size(747, 116);
             this.panelDetail2.TabIndex = 47;
             // 
             // panelAuswahlRestzahler
@@ -465,9 +497,9 @@
             this.panelAuswahlRestzahler.Controls.Add(this.lblBetrag);
             this.panelAuswahlRestzahler.Controls.Add(this.txtBetrag);
             this.panelAuswahlRestzahler.Controls.Add(this.cbBetragErrechnet);
-            this.panelAuswahlRestzahler.Location = new System.Drawing.Point(9, 33);
+            this.panelAuswahlRestzahler.Location = new System.Drawing.Point(9, 34);
             this.panelAuswahlRestzahler.Name = "panelAuswahlRestzahler";
-            this.panelAuswahlRestzahler.Size = new System.Drawing.Size(171, 42);
+            this.panelAuswahlRestzahler.Size = new System.Drawing.Size(171, 72);
             this.panelAuswahlRestzahler.TabIndex = 48;
             // 
             // panelAuswahlRechnung
@@ -475,9 +507,9 @@
             this.panelAuswahlRechnung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelAuswahlRechnung.Controls.Add(this.panelRechnung);
             this.panelAuswahlRechnung.Controls.Add(this.cbRechnungJN);
-            this.panelAuswahlRechnung.Location = new System.Drawing.Point(314, 27);
+            this.panelAuswahlRechnung.Location = new System.Drawing.Point(186, 34);
             this.panelAuswahlRechnung.Name = "panelAuswahlRechnung";
-            this.panelAuswahlRechnung.Size = new System.Drawing.Size(266, 52);
+            this.panelAuswahlRechnung.Size = new System.Drawing.Size(523, 72);
             this.panelAuswahlRechnung.TabIndex = 47;
             // 
             // ultraGridBagLayoutPanelBottom
@@ -488,7 +520,7 @@
             this.ultraGridBagLayoutPanelBottom.ExpandToFitWidth = true;
             this.ultraGridBagLayoutPanelBottom.Location = new System.Drawing.Point(0, 0);
             this.ultraGridBagLayoutPanelBottom.Name = "ultraGridBagLayoutPanelBottom";
-            this.ultraGridBagLayoutPanelBottom.Size = new System.Drawing.Size(596, 153);
+            this.ultraGridBagLayoutPanelBottom.Size = new System.Drawing.Size(759, 189);
             this.ultraGridBagLayoutPanelBottom.TabIndex = 51;
             // 
             // panelButtonsUnten
@@ -497,9 +529,9 @@
             this.panelButtonsUnten.Controls.Add(this.btnOK);
             this.panelButtonsUnten.Controls.Add(this.btnCancel);
             this.panelButtonsUnten.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtonsUnten.Location = new System.Drawing.Point(0, 426);
+            this.panelButtonsUnten.Location = new System.Drawing.Point(0, 602);
             this.panelButtonsUnten.Name = "panelButtonsUnten";
-            this.panelButtonsUnten.Size = new System.Drawing.Size(596, 36);
+            this.panelButtonsUnten.Size = new System.Drawing.Size(759, 36);
             this.panelButtonsUnten.TabIndex = 52;
             // 
             // lblFound
@@ -514,10 +546,10 @@
             // panelElment
             // 
             this.panelElment.Controls.Add(this.ultraGridBagLayoutPanelBottom);
-            this.panelElment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelElment.Location = new System.Drawing.Point(0, 273);
+            this.panelElment.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelElment.Location = new System.Drawing.Point(0, 413);
             this.panelElment.Name = "panelElment";
-            this.panelElment.Size = new System.Drawing.Size(596, 153);
+            this.panelElment.Size = new System.Drawing.Size(759, 189);
             this.panelElment.TabIndex = 53;
             // 
             // frmKostenträgerKlienten
@@ -527,7 +559,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(596, 462);
+            this.ClientSize = new System.Drawing.Size(759, 638);
             this.Controls.Add(this.panelElment);
             this.Controls.Add(this.panelButtonsUnten);
             this.Controls.Add(this.panelAuswahl);
@@ -555,6 +587,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboRechnungTyp)).EndInit();
             this.panelRechnung.ResumeLayout(false);
             this.panelRechnung.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRechnungsdruckTyp)).EndInit();
             this.panelOben.ResumeLayout(false);
             this.panelOben.PerformLayout();
             this.panelAuswahl.ResumeLayout(false);
@@ -614,5 +647,7 @@
         private QS2.Desktop.ControlManagment.BasePanel panelElment;
         private QS2.Desktop.ControlManagment.BasePanel panelButtonsUnten;
         private QS2.Desktop.ControlManagment.BaseLabel lblFound;
+        private QS2.Desktop.ControlManagment.BaseComboEditor cboRechnungsdruckTyp;
+        private QS2.Desktop.ControlManagment.BaseLabel lblRechnungsdruckTyp;
     }
 }

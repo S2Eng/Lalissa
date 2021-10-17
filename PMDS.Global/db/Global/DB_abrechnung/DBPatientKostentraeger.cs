@@ -38,13 +38,9 @@ namespace PMDS.Calc.Admin.DB
         private System.Data.OleDb.OleDbDataAdapter daAllgemKostentraeger;
         private System.Data.OleDb.OleDbCommand oleDbCommand8;
         private OleDbDataAdapter daAllEntries;
-        private OleDbCommand oleDbCommand10;
-        private OleDbDataAdapter daKostentraegerXXXX;
-        private OleDbCommand oleDbCommand6;
+        private OleDbCommand sel_AllEntries;
         private OleDbDataAdapter daByID;
-        private OleDbCommand oleDbCommand12;
-        private OleDbDataAdapter daDistinctPatientenMonatJahrAbrechnung;
-        private OleDbCommand oleDbCommand9;
+        private OleDbCommand sel_daByID;
         private OleDbDataAdapter daKlientenAlleSelbstzahler;
         private OleDbCommand oleDbCommand11;
         private OleDbCommand oleDbInsertPatientKostentraeger;
@@ -60,7 +56,9 @@ namespace PMDS.Calc.Admin.DB
         private OleDbCommand oleDbCommand18;
         private OleDbCommand oleDbCommand19;
         private OleDbCommand oleDbCommand20;
-		private System.ComponentModel.Container components = null;
+        private OleDbDataAdapter daPatientKostenträgerErweitert;
+        private OleDbCommand oleDbCommand9;
+        private System.ComponentModel.Container components = null;
 
 
         #region Component Designer generated code
@@ -88,13 +86,9 @@ namespace PMDS.Calc.Admin.DB
             this.daAllgemKostentraeger = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand8 = new System.Data.OleDb.OleDbCommand();
             this.daAllEntries = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbCommand10 = new System.Data.OleDb.OleDbCommand();
-            this.daKostentraegerXXXX = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbCommand6 = new System.Data.OleDb.OleDbCommand();
+            this.sel_AllEntries = new System.Data.OleDb.OleDbCommand();
             this.daByID = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbCommand12 = new System.Data.OleDb.OleDbCommand();
-            this.daDistinctPatientenMonatJahrAbrechnung = new System.Data.OleDb.OleDbDataAdapter();
-            this.oleDbCommand9 = new System.Data.OleDb.OleDbCommand();
+            this.sel_daByID = new System.Data.OleDb.OleDbCommand();
             this.daKlientenAlleSelbstzahler = new System.Data.OleDb.OleDbDataAdapter();
             this.oleDbCommand11 = new System.Data.OleDb.OleDbCommand();
             this.daPatKostenträgerGültigBis = new System.Data.OleDb.OleDbDataAdapter();
@@ -109,6 +103,8 @@ namespace PMDS.Calc.Admin.DB
             this.oleDbCommand18 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand19 = new System.Data.OleDb.OleDbCommand();
             this.oleDbCommand20 = new System.Data.OleDb.OleDbCommand();
+            this.daPatientKostenträgerErweitert = new System.Data.OleDb.OleDbDataAdapter();
+            this.oleDbCommand9 = new System.Data.OleDb.OleDbCommand();
             // 
             // daPatientKostentraeger
             // 
@@ -131,7 +127,8 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("VorauszahlungJN", "VorauszahlungJN"),
                         new System.Data.Common.DataColumnMapping("RechnungJN", "RechnungJN"),
                         new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp"),
-                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler")})});
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler"),
+                        new System.Data.Common.DataColumnMapping("RechnungsdruckTyp", "RechnungsdruckTyp")})});
             this.daPatientKostentraeger.UpdateCommand = this.oleDBUpdatePatientKostentraeger;
             // 
             // oleDbDeletePatientKostentraeger
@@ -143,8 +140,8 @@ namespace PMDS.Calc.Admin.DB
             // 
             // oleDbConnection1
             // 
-            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=STYSRV10V;Integrated Security=SSPI;Initial Catalog" +
-    "=PMDSDev";
+            this.oleDbConnection1.ConnectionString = "Provider=SQLNCLI11;Data Source=sty041;Integrated Security=SSPI;Initial Catalog=PM" +
+    "DS_DemoGross";
             // 
             // oleDbInsertPatientKostentraeger
             // 
@@ -165,7 +162,8 @@ namespace PMDS.Calc.Admin.DB
             new System.Data.OleDb.OleDbParameter("VorauszahlungJN", System.Data.OleDb.OleDbType.Boolean, 0, "VorauszahlungJN"),
             new System.Data.OleDb.OleDbParameter("RechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "RechnungJN"),
             new System.Data.OleDb.OleDbParameter("RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungTyp"),
-            new System.Data.OleDb.OleDbParameter("IDPatientIstZahler", System.Data.OleDb.OleDbType.Guid, 0, "IDPatientIstZahler")});
+            new System.Data.OleDb.OleDbParameter("IDPatientIstZahler", System.Data.OleDb.OleDbType.Guid, 0, "IDPatientIstZahler"),
+            new System.Data.OleDb.OleDbParameter("RechnungsdruckTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungsdruckTyp")});
             // 
             // oleDbSelectPatientKostentraeger
             // 
@@ -194,6 +192,7 @@ namespace PMDS.Calc.Admin.DB
             new System.Data.OleDb.OleDbParameter("RechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "RechnungJN"),
             new System.Data.OleDb.OleDbParameter("RechnungTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungTyp"),
             new System.Data.OleDb.OleDbParameter("IDPatientIstZahler", System.Data.OleDb.OleDbType.Guid, 0, "IDPatientIstZahler"),
+            new System.Data.OleDb.OleDbParameter("RechnungsdruckTyp", System.Data.OleDb.OleDbType.Integer, 0, "RechnungsdruckTyp"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
             // daPatientKostentraegerByID
@@ -219,7 +218,9 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("Kontonr", "Kontonr"),
                         new System.Data.Common.DataColumnMapping("Bank", "Bank"),
                         new System.Data.Common.DataColumnMapping("FIBUKonto", "FIBUKonto"),
-                        new System.Data.Common.DataColumnMapping("ErlagscheingebuehrJN", "ErlagscheingebuehrJN")})});
+                        new System.Data.Common.DataColumnMapping("ErlagscheingebuehrJN", "ErlagscheingebuehrJN"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler"),
+                        new System.Data.Common.DataColumnMapping("RechnungsdruckTyp", "RechnungsdruckTyp")})});
             // 
             // oleDbCommand3
             // 
@@ -245,7 +246,10 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("IDBenutzer", "IDBenutzer"),
                         new System.Data.Common.DataColumnMapping("AbgerechnetBis", "AbgerechnetBis"),
                         new System.Data.Common.DataColumnMapping("VorauszahlungJN", "VorauszahlungJN"),
-                        new System.Data.Common.DataColumnMapping("RechnungJN", "RechnungJN")})});
+                        new System.Data.Common.DataColumnMapping("RechnungJN", "RechnungJN"),
+                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler"),
+                        new System.Data.Common.DataColumnMapping("RechnungsdruckTyp", "RechnungsdruckTyp")})});
             // 
             // oleDbCommand4
             // 
@@ -275,7 +279,9 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("TransferleistungJN", "TransferleistungJN"),
                         new System.Data.Common.DataColumnMapping("TaschengeldJN", "TaschengeldJN"),
                         new System.Data.Common.DataColumnMapping("Zahlart", "Zahlart"),
-                        new System.Data.Common.DataColumnMapping("PatientbezogenJN", "PatientbezogenJN")})});
+                        new System.Data.Common.DataColumnMapping("PatientbezogenJN", "PatientbezogenJN"),
+                        new System.Data.Common.DataColumnMapping("IDKostentraegerSub", "IDKostentraegerSub"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler")})});
             // 
             // oleDbCommand5
             // 
@@ -328,7 +334,9 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("TransferleistungJN", "TransferleistungJN"),
                         new System.Data.Common.DataColumnMapping("TaschengeldJN", "TaschengeldJN"),
                         new System.Data.Common.DataColumnMapping("Zahlart", "Zahlart"),
-                        new System.Data.Common.DataColumnMapping("PatientbezogenJN", "PatientbezogenJN")})});
+                        new System.Data.Common.DataColumnMapping("PatientbezogenJN", "PatientbezogenJN"),
+                        new System.Data.Common.DataColumnMapping("IDKostentraegerSub", "IDKostentraegerSub"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler")})});
             // 
             // oleDbCommand8
             // 
@@ -337,7 +345,7 @@ namespace PMDS.Calc.Admin.DB
             // 
             // daAllEntries
             // 
-            this.daAllEntries.SelectCommand = this.oleDbCommand10;
+            this.daAllEntries.SelectCommand = this.sel_AllEntries;
             this.daAllEntries.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
             new System.Data.Common.DataTableMapping("Table", "PatientKostentraeger", new System.Data.Common.DataColumnMapping[] {
                         new System.Data.Common.DataColumnMapping("ID", "ID"),
@@ -353,56 +361,18 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("AbgerechnetBis", "AbgerechnetBis"),
                         new System.Data.Common.DataColumnMapping("VorauszahlungJN", "VorauszahlungJN"),
                         new System.Data.Common.DataColumnMapping("RechnungJN", "RechnungJN"),
-                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp")})});
+                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler"),
+                        new System.Data.Common.DataColumnMapping("RechnungsdruckTyp", "RechnungsdruckTyp")})});
             // 
-            // oleDbCommand10
+            // sel_AllEntries
             // 
-            this.oleDbCommand10.CommandText = resources.GetString("oleDbCommand10.CommandText");
-            this.oleDbCommand10.Connection = this.oleDbConnection1;
-            // 
-            // daKostentraegerXXXX
-            // 
-            this.daKostentraegerXXXX.SelectCommand = this.oleDbCommand6;
-            this.daKostentraegerXXXX.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
-            new System.Data.Common.DataTableMapping("Table", "Kostentraeger", new System.Data.Common.DataColumnMapping[] {
-                        new System.Data.Common.DataColumnMapping("ID", "ID"),
-                        new System.Data.Common.DataColumnMapping("Name", "Name"),
-                        new System.Data.Common.DataColumnMapping("Strasse", "Strasse"),
-                        new System.Data.Common.DataColumnMapping("PLZ", "PLZ"),
-                        new System.Data.Common.DataColumnMapping("Ort", "Ort"),
-                        new System.Data.Common.DataColumnMapping("Rechnungsempfaenger", "Rechnungsempfaenger"),
-                        new System.Data.Common.DataColumnMapping("Rechnungsanschrift", "Rechnungsanschrift"),
-                        new System.Data.Common.DataColumnMapping("BLZ", "BLZ"),
-                        new System.Data.Common.DataColumnMapping("Kontonr", "Kontonr"),
-                        new System.Data.Common.DataColumnMapping("Bank", "Bank"),
-                        new System.Data.Common.DataColumnMapping("FIBUKonto", "FIBUKonto"),
-                        new System.Data.Common.DataColumnMapping("ErlagscheingebuehrJN", "ErlagscheingebuehrJN"),
-                        new System.Data.Common.DataColumnMapping("Betrag", "Betrag"),
-                        new System.Data.Common.DataColumnMapping("TransferleistungJN", "TransferleistungJN"),
-                        new System.Data.Common.DataColumnMapping("TaschengeldJN", "TaschengeldJN"),
-                        new System.Data.Common.DataColumnMapping("Zahlart", "Zahlart"),
-                        new System.Data.Common.DataColumnMapping("PatientbezogenJN", "PatientbezogenJN")})});
-            // 
-            // oleDbCommand6
-            // 
-            this.oleDbCommand6.CommandText = resources.GetString("oleDbCommand6.CommandText");
-            this.oleDbCommand6.Connection = this.oleDbConnection1;
-            this.oleDbCommand6.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("GueltigAb", System.Data.OleDb.OleDbType.Date, 8, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis", System.Data.OleDb.OleDbType.Date, 8, "GueltigBis"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis1", System.Data.OleDb.OleDbType.Date, 8, "GueltigBis"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb1", System.Data.OleDb.OleDbType.Date, 8, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis2", System.Data.OleDb.OleDbType.Date, 8, "GueltigBis"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis3", System.Data.OleDb.OleDbType.Date, 8, "GueltigBis"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb2", System.Data.OleDb.OleDbType.Date, 8, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis4", System.Data.OleDb.OleDbType.Date, 8, "GueltigBis"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb3", System.Data.OleDb.OleDbType.Date, 8, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("GueltigAb4", System.Data.OleDb.OleDbType.Date, 8, "GueltigAb"),
-            new System.Data.OleDb.OleDbParameter("GueltigBis5", System.Data.OleDb.OleDbType.Date, 8, "GueltigBis")});
+            this.sel_AllEntries.CommandText = resources.GetString("sel_AllEntries.CommandText");
+            this.sel_AllEntries.Connection = this.oleDbConnection1;
             // 
             // daByID
             // 
-            this.daByID.SelectCommand = this.oleDbCommand12;
+            this.daByID.SelectCommand = this.sel_daByID;
             this.daByID.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
             new System.Data.Common.DataTableMapping("Table", "PatientKostentraeger", new System.Data.Common.DataColumnMapping[] {
                         new System.Data.Common.DataColumnMapping("ID", "ID"),
@@ -418,30 +388,17 @@ namespace PMDS.Calc.Admin.DB
                         new System.Data.Common.DataColumnMapping("AbgerechnetBis", "AbgerechnetBis"),
                         new System.Data.Common.DataColumnMapping("VorauszahlungJN", "VorauszahlungJN"),
                         new System.Data.Common.DataColumnMapping("RechnungJN", "RechnungJN"),
-                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp")})});
+                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler"),
+                        new System.Data.Common.DataColumnMapping("RechnungsdruckTyp", "RechnungsdruckTyp")})});
+            this.daByID.RowUpdated += new System.Data.OleDb.OleDbRowUpdatedEventHandler(this.daByID_RowUpdated);
             // 
-            // oleDbCommand12
+            // sel_daByID
             // 
-            this.oleDbCommand12.CommandText = resources.GetString("oleDbCommand12.CommandText");
-            this.oleDbCommand12.Connection = this.oleDbConnection1;
-            this.oleDbCommand12.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            this.sel_daByID.CommandText = resources.GetString("sel_daByID.CommandText");
+            this.sel_daByID.Connection = this.oleDbConnection1;
+            this.sel_daByID.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 16, "ID")});
-            // 
-            // daDistinctPatientenMonatJahrAbrechnung
-            // 
-            this.daDistinctPatientenMonatJahrAbrechnung.SelectCommand = this.oleDbCommand9;
-            this.daDistinctPatientenMonatJahrAbrechnung.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
-            new System.Data.Common.DataTableMapping("Table", "Abrechnung", new System.Data.Common.DataColumnMapping[] {
-                        new System.Data.Common.DataColumnMapping("IDPatient", "IDPatient")})});
-            // 
-            // oleDbCommand9
-            // 
-            this.oleDbCommand9.CommandText = "SELECT DISTINCT IDPatient\r\nFROM            Abrechnung\r\nWHERE        (Monat = ?) A" +
-    "ND (Jahr = ?) AND (GeloeschtJN = 0)";
-            this.oleDbCommand9.Connection = this.oleDbConnection1;
-            this.oleDbCommand9.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
-            new System.Data.OleDb.OleDbParameter("Monat", System.Data.OleDb.OleDbType.Integer, 4, "Monat"),
-            new System.Data.OleDb.OleDbParameter("Jahr", System.Data.OleDb.OleDbType.Integer, 4, "Jahr")});
             // 
             // daKlientenAlleSelbstzahler
             // 
@@ -602,6 +559,39 @@ namespace PMDS.Calc.Admin.DB
             new System.Data.OleDb.OleDbParameter("Original_IDPatient", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "IDPatient", System.Data.DataRowVersion.Original, null),
             new System.Data.OleDb.OleDbParameter("IsNull_GueltigBis", System.Data.OleDb.OleDbType.Integer, 0, System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GueltigBis", System.Data.DataRowVersion.Original, true, null),
             new System.Data.OleDb.OleDbParameter("Original_GueltigBis", System.Data.OleDb.OleDbType.Date, 16, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "GueltigBis", System.Data.DataRowVersion.Original, null)});
+            // 
+            // daPatientKostenträgerErweitert
+            // 
+            this.daPatientKostenträgerErweitert.SelectCommand = this.oleDbCommand9;
+            this.daPatientKostenträgerErweitert.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+            new System.Data.Common.DataTableMapping("Table", "Kostentraeger", new System.Data.Common.DataColumnMapping[] {
+                        new System.Data.Common.DataColumnMapping("ID", "ID"),
+                        new System.Data.Common.DataColumnMapping("IDPatient", "IDPatient"),
+                        new System.Data.Common.DataColumnMapping("IDKostentraeger", "IDKostentraeger"),
+                        new System.Data.Common.DataColumnMapping("GueltigAb", "GueltigAb"),
+                        new System.Data.Common.DataColumnMapping("GueltigBis", "GueltigBis"),
+                        new System.Data.Common.DataColumnMapping("enumKostentraegerart", "enumKostentraegerart"),
+                        new System.Data.Common.DataColumnMapping("BetragErrechnetJN", "BetragErrechnetJN"),
+                        new System.Data.Common.DataColumnMapping("Betrag", "Betrag"),
+                        new System.Data.Common.DataColumnMapping("ErfasstAm", "ErfasstAm"),
+                        new System.Data.Common.DataColumnMapping("IDBenutzer", "IDBenutzer"),
+                        new System.Data.Common.DataColumnMapping("AbgerechnetBis", "AbgerechnetBis"),
+                        new System.Data.Common.DataColumnMapping("VorauszahlungJN", "VorauszahlungJN"),
+                        new System.Data.Common.DataColumnMapping("RechnungJN", "RechnungJN"),
+                        new System.Data.Common.DataColumnMapping("RechnungTyp", "RechnungTyp"),
+                        new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler"),
+                        new System.Data.Common.DataColumnMapping("RechnungsdruckTyp", "RechnungsdruckTyp"),
+                        new System.Data.Common.DataColumnMapping("Vorname", "Vorname"),
+                        new System.Data.Common.DataColumnMapping("Rechnungsempfaenger", "Rechnungsempfaenger"),
+                        new System.Data.Common.DataColumnMapping("FIBUKonto", "FIBUKonto"),
+                        new System.Data.Common.DataColumnMapping("IDKostentraegerSub", "IDKostentraegerSub")})});
+            // 
+            // oleDbCommand9
+            // 
+            this.oleDbCommand9.CommandText = resources.GetString("oleDbCommand9.CommandText");
+            this.oleDbCommand9.Connection = this.oleDbConnection1;
+            this.oleDbCommand9.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
+            new System.Data.OleDb.OleDbParameter("IDPatient", System.Data.OleDb.OleDbType.Guid, 16, "IDPatient")});
 
         }
         #endregion
@@ -663,13 +653,34 @@ namespace PMDS.Calc.Admin.DB
             dt.AcceptChanges();
             return dt;
         }
-		public dsPatientKostentraeger.PatientKostentraegerDataTable Read(Guid IDPatient)
+
+        public dsPatientKostentraeger.PatientKostentraegerErweitertDataTable ReadErweitert(Guid IDPatient, bool TransferkostentraegerJN)
+        {
+            dsPatientKostentraeger.PatientKostentraegerErweitertDataTable dt = this.ReadErweitert(IDPatient);
+            string sWhere = TransferkostentraegerJN ? "enumKostentraegerart <> " + ((int)Kostentraegerart.Transferleistung).ToString() : "enumKostentraegerart = " + ((int)Kostentraegerart.Transferleistung).ToString();
+            dsPatientKostentraeger.PatientKostentraegerErweitertRow[] rows = (dsPatientKostentraeger.PatientKostentraegerErweitertRow[])dt.Select(sWhere);
+
+            foreach (dsPatientKostentraeger.PatientKostentraegerErweitertRow r in rows)
+                r.Delete();
+            dt.AcceptChanges();
+            return dt;
+        }
+
+        public dsPatientKostentraeger.PatientKostentraegerDataTable Read(Guid IDPatient)
 		{
 			dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
-			daPatientKostentraeger.SelectCommand.Parameters[0].Value = IDPatient;
+            daPatientKostentraeger.SelectCommand.Parameters[0].Value = IDPatient;
 			DataBase.Fill(daPatientKostentraeger, dt);
 			return dt;
 		}
+
+        public dsPatientKostentraeger.PatientKostentraegerErweitertDataTable ReadErweitert(Guid IDPatient)
+        {
+            dsPatientKostentraeger.PatientKostentraegerErweitertDataTable dt = new dsPatientKostentraeger.PatientKostentraegerErweitertDataTable();
+            daPatientKostenträgerErweitert.SelectCommand.Parameters[0].Value = IDPatient;
+            DataBase.Fill(daPatientKostenträgerErweitert, dt);
+            return dt;
+        }
 
         public dsPatientKostentraeger.PatientKostentraegerDataTable ReadByKostentraeger(Guid IDKostentraeger)
         {
@@ -767,44 +778,35 @@ namespace PMDS.Calc.Admin.DB
             da.SelectCommand.Parameters.AddWithValue("GueltigBis1", gueltigBis);
             return da;
         }
-        public void GetRestzahlerKlienten(dsKlientenKostentraeger ds, DateTime from, DateTime to, bool bEntlassene)
-        {
-            ds.Clear();
-            ds.AcceptChanges();
+        //public void GetRestzahlerKlienten(dsKlientenKostentraeger ds, DateTime from, DateTime to, bool bEntlassene)
+        //{
+        //    ds.Clear();
+        //    ds.AcceptChanges();
 
-            DataBase.Fill(daAllgemKostentraeger, ds.Kostentraeger);
-            OleDbDataAdapter da;
-            foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
-            {
-                da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, true);
-                DataBase.Fill(da, ds.PatientKostentraeger);
-            }
-        }
+        //    DataBase.Fill(daAllgemKostentraeger, ds.Kostentraeger);
+        //    OleDbDataAdapter da;
+        //    foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
+        //    {
+        //        da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, true);
+        //        DataBase.Fill(da, ds.PatientKostentraeger);
+        //    }
+        //}
 
-        public void GetRestzahlerKlienten(dsKlientenKostentraeger ds, Guid IDKostentraeger, DateTime from, DateTime to, bool bEntlassene)
-        {
-            ds.Clear();
-            ds.AcceptChanges();
+        //public void GetRestzahlerKlienten(dsKlientenKostentraeger ds, Guid IDKostentraeger, DateTime from, DateTime to, bool bEntlassene)
+        //{
+        //    ds.Clear();
+        //    ds.AcceptChanges();
 
-            daKostentraegerByID.SelectCommand.Parameters[0].Value = IDKostentraeger;
-            DataBase.Fill(daKostentraegerByID, ds.Kostentraeger);
-            OleDbDataAdapter da;
-            foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
-            {
-                da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, true);
-                DataBase.Fill(da, ds.PatientKostentraeger);
-            }
+        //    daKostentraegerByID.SelectCommand.Parameters[0].Value = IDKostentraeger;
+        //    DataBase.Fill(daKostentraegerByID, ds.Kostentraeger);
+        //    OleDbDataAdapter da;
+        //    foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
+        //    {
+        //        da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, true);
+        //        DataBase.Fill(da, ds.PatientKostentraeger);
+        //    }
 
-        }
-
-        public System.Data.DataTable getIDKlientDistinctAbrechMonatxy(DateTime from)
-        {
-            System.Data.DataTable dt = new System.Data.DataTable();
-            daDistinctPatientenMonatJahrAbrechnung.SelectCommand.Parameters[0].Value = from.Month;
-            daDistinctPatientenMonatJahrAbrechnung.SelectCommand.Parameters[1].Value = from.Year;
-            DataBase.Fill(daDistinctPatientenMonatJahrAbrechnung, dt);
-            return dt;
-        }
+        //}
 
         public dsPatientStation.PatientDataTable KlientenByKostentraeger(Guid IDKostentraeger, DateTime von, DateTime bis)
         {
@@ -837,10 +839,15 @@ namespace PMDS.Calc.Admin.DB
 		{
 			DataBase.Update(daPatientKostentraeger, dt);
 		}
-        
+
+        public void Update(dsPatientKostentraeger.PatientKostentraegerErweitertDataTable dtErweitert)
+        {
+            DataBase.Update(daPatientKostentraeger, dtErweitert);
+        }
+
         public dsPatientKostentraeger.PatientKostentraegerRow New(dsPatientKostentraeger.PatientKostentraegerDataTable dt, Guid IDPatient, Guid IDKostentraeger)
         {
-            dsPatientKostentraeger.PatientKostentraegerRow r = dt.AddPatientKostentraegerRow(Guid.NewGuid(), IDPatient, IDKostentraeger, DateTime.Now.Date, DateTime.Now.Date, 0, false, 0, DateTime.Now, Guid.Empty, DateTime.Now, false, false, (int)PMDS.Calc.Logic.eBillTyp.Rechnung);
+            dsPatientKostentraeger.PatientKostentraegerRow r = dt.AddPatientKostentraegerRow(Guid.NewGuid(), IDPatient, IDKostentraeger, DateTime.Now.Date, DateTime.Now.Date, 0, false, 0, DateTime.Now, Guid.Empty, DateTime.Now, false, false, (int)PMDS.Calc.Logic.eBillTyp.Rechnung, Guid.Empty, (int)PMDS.Global.RechnungsdruckTyp.NurZahler);
             r.SetGueltigBisNull();
             r.IDBenutzer = ENV.USERID;
             r.SetAbgerechnetBisNull();
@@ -896,5 +903,9 @@ namespace PMDS.Calc.Admin.DB
             //DataBase.EcecuteNonQuery(cmd);
         }
 
-	}
+        private void daByID_RowUpdated(object sender, OleDbRowUpdatedEventArgs e)
+        {
+
+        }
+    }
 }

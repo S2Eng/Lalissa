@@ -305,45 +305,54 @@ namespace PMDS.Calc.UI.Admin
                         break;
 
                     case "btnTransferCalcData":
-                        frmWorkCalcDb frmCopyCalcDb1 = new frmWorkCalcDb();
-                        frmCopyCalcDb1.typUI = PMDS.Calc.Logic.workCalcDb.eTypUI.CopyDb;
-                        frmCopyCalcDb1.initControl();
-                        frmCopyCalcDb1.ShowDialog();
+                        using (frmWorkCalcDb frmCopyCalcDb1 = new frmWorkCalcDb())
+                        {
+                            frmCopyCalcDb1.typUI = PMDS.Calc.Logic.workCalcDb.eTypUI.CopyDb;
+                            frmCopyCalcDb1.initControl();
+                            frmCopyCalcDb1.ShowDialog();
+                        }
                         break;
 
-                    case "btnExportCalculations":
+                    case "btnExportCalculations":       //BMD-Export
                         frmWorkCalcDb frmCopyCalcDb2 = new frmWorkCalcDb();
+                        frmCopyCalcDb2.BMDExportTyp = (PMDS.Calc.Logic.workCalcDb.eBMDExportTyp)ENV.BMDExportTyp;
+                        frmCopyCalcDb2.FSW_FiBuKonto = ENV.FSW_FiBuKonto;
                         frmCopyCalcDb2.typUI = PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs;
                         frmCopyCalcDb2.initControl();
                         frmCopyCalcDb2.Show();
                         break;
 
                     case "buttJahrAbBuch":
-                        frmJahresAb frmAbDepot = new frmJahresAb();
-                        frmAbDepot.typ = frmJahresAb.eTyp.booking;
-                        frmAbDepot.ShowDialog(this);
-                        if (frmAbDepot.apport)
-                            return;
-                        else
-                            this.jahresAbBooking(frmAbDepot.dtBis.DateTime);
+                        using (frmJahresAb frmAbDepot = new frmJahresAb())
+                        {
+                            frmAbDepot.typ = frmJahresAb.eTyp.booking;
+                            frmAbDepot.ShowDialog(this);
+                            if (frmAbDepot.apport)
+                                return;
+                            else
+                                this.jahresAbBooking(frmAbDepot.dtBis.DateTime);
+                        }
                         break;
 
                     case "buttJahrAbDepot":
-                        frmJahresAb frmAbBooking = new frmJahresAb();
-                        frmAbBooking.typ = frmJahresAb.eTyp.depot;
-                        frmAbBooking.ShowDialog(this);
-                        if (frmAbBooking.apport)
-                            return;
-                        else
-                            this.jahresAbDepot(frmAbBooking.dtBis.DateTime, frmAbBooking.chkNurAbgerech.Checked);
+                        using (frmJahresAb frmAbBooking = new frmJahresAb())
+                        {
+                            frmAbBooking.typ = frmJahresAb.eTyp.depot;
+                            frmAbBooking.ShowDialog(this);
+                            if (frmAbBooking.apport)
+                                return;
+                            else
+                                this.jahresAbDepot(frmAbBooking.dtBis.DateTime, frmAbBooking.chkNurAbgerech.Checked);
+                        }
                         break;
 
                     case "btnRechNrManage":
-                        PMDS.GUI.Calc.Calc.UI.Main.frmManageRechNr frmManageRechNr1 = new GUI.Calc.Calc.UI.Main.frmManageRechNr();
-                        frmManageRechNr1.initControl();
-                        frmManageRechNr1.ShowDialog(this);
+                        using (PMDS.GUI.Calc.Calc.UI.Main.frmManageRechNr frmManageRechNr1 = new GUI.Calc.Calc.UI.Main.frmManageRechNr())
+                        {
+                            frmManageRechNr1.initControl();
+                            frmManageRechNr1.ShowDialog(this);
+                        }
                         break;
-
 
                     case "admin_delDBAll":
                         if (this.sitemap.question2(QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie wirklich die gesamte Abrechnungs- und Buchungsdatenbank löschen?"), QS2.Desktop.ControlManagment.ControlManagment.getRes("Admin"))) this.sql.admin_clearCalcDB();

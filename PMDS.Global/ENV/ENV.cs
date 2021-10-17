@@ -199,7 +199,10 @@ namespace PMDS.Global
         public static string ZahlKondÜberweisung = "Wir ersuchen um Überweisung des Rechnungsbetrags auf unser Konto.";
         public static string ZahlKondBar = "Betrag dankend erhalten.";
         public static string ZahlKondFSW = "Bitte nicht einzahlen, Überweisung erfolgt durch den FSW.";
+        public static string TextKlientenInfo = "Information zu Kosten für erbrachte Leistungen";
+        public static int BMDExportTyp = 2;
 
+        public static string FSW_FiBuKonto = "";
         public static string FSW_FTPUser = "";
         public static string FSW_FTPIP = "";
         public static int FSW_FTPPort = 22;
@@ -340,6 +343,7 @@ namespace PMDS.Global
         public static decimal FSW_Prozent = 4M;
         public static bool FSW_SaveXLSX = false;
         public static bool FSW_SupressSubKostentraeger = true;
+        public static bool ForceUniqueFiBu = true;       
 
         public static string ELDA_Pfad = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
 
@@ -1373,7 +1377,10 @@ namespace PMDS.Global
                 SetENVValue("ZahlKondÜberweisung", ref ENV.ZahlKondÜberweisung);
                 SetENVValue("ZahlKondBar", ref ENV.ZahlKondBar);
                 SetENVValue("ZahlKondFSW", ref ENV.ZahlKondFSW);
+                SetENVValue("TextKlientenInfo", ref ENV.TextKlientenInfo);
+                SetENVValue("BMDExportTyp", ref ENV.BMDExportTyp);
 
+                SetENVValue("FSW_FiBuKonto", ref ENV.FSW_FiBuKonto);
                 SetENVValue("FSW_FTPUser", ref ENV.FSW_FTPUser);
                 SetENVValue("FSW_FTPIP", ref ENV.FSW_FTPIP);
                 SetENVValue("FSW_FTPPort", ref ENV.FSW_FTPPort);
@@ -1500,6 +1507,7 @@ namespace PMDS.Global
                 SetENVValue("FSW_Prozent", ref ENV.FSW_Prozent);
                 SetENVValue("FSW_SaveXLSX", ref ENV.FSW_SaveXLSX);
                 SetENVValue("FSW_SupressSubKostentraeger", ref ENV.FSW_SupressSubKostentraeger);
+                SetENVValue("ForceUniqueFiBu", ref ENV.ForceUniqueFiBu);
 
                 SetENVValue("ELDA_Pfad", ref ENV.ELDA_Pfad);
 

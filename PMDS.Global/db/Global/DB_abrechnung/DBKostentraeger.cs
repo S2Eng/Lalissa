@@ -58,29 +58,29 @@ namespace PMDS.DB.Global
             this.daKostentraeger.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
             new System.Data.Common.DataTableMapping("Table", "Kostentraeger", new System.Data.Common.DataColumnMapping[] {
                         new System.Data.Common.DataColumnMapping("ID", "ID"),
+                        new System.Data.Common.DataColumnMapping("FIBUKonto", "FIBUKonto"),
                         new System.Data.Common.DataColumnMapping("Name", "Name"),
+                        new System.Data.Common.DataColumnMapping("Vorname", "Vorname"),
+                        new System.Data.Common.DataColumnMapping("Anrede", "Anrede"),
                         new System.Data.Common.DataColumnMapping("Strasse", "Strasse"),
                         new System.Data.Common.DataColumnMapping("PLZ", "PLZ"),
                         new System.Data.Common.DataColumnMapping("Ort", "Ort"),
-                        new System.Data.Common.DataColumnMapping("Rechnungsempfaenger", "Rechnungsempfaenger"),
                         new System.Data.Common.DataColumnMapping("Rechnungsanschrift", "Rechnungsanschrift"),
-                        new System.Data.Common.DataColumnMapping("BLZ", "BLZ"),
-                        new System.Data.Common.DataColumnMapping("Kontonr", "Kontonr"),
-                        new System.Data.Common.DataColumnMapping("Bank", "Bank"),
-                        new System.Data.Common.DataColumnMapping("FIBUKonto", "FIBUKonto"),
+                        new System.Data.Common.DataColumnMapping("Rechnungsempfaenger", "Rechnungsempfaenger"),
+                        new System.Data.Common.DataColumnMapping("IDKostentraegerSub", "IDKostentraegerSub"),
+                        new System.Data.Common.DataColumnMapping("UIDNr", "UIDNr"),
+                        new System.Data.Common.DataColumnMapping("IDKlinik", "IDKlinik"),
+                        new System.Data.Common.DataColumnMapping("SammelabrechnungJN", "SammelabrechnungJN"),
+                        new System.Data.Common.DataColumnMapping("GSBG", "GSBG"),
+                        new System.Data.Common.DataColumnMapping("Zahlart", "Zahlart"),
                         new System.Data.Common.DataColumnMapping("ErlagscheingebuehrJN", "ErlagscheingebuehrJN"),
                         new System.Data.Common.DataColumnMapping("Betrag", "Betrag"),
-                        new System.Data.Common.DataColumnMapping("TransferleistungJN", "TransferleistungJN"),
+                        new System.Data.Common.DataColumnMapping("Bank", "Bank"),
+                        new System.Data.Common.DataColumnMapping("Kontonr", "Kontonr"),
+                        new System.Data.Common.DataColumnMapping("BLZ", "BLZ"),
                         new System.Data.Common.DataColumnMapping("TaschengeldJN", "TaschengeldJN"),
-                        new System.Data.Common.DataColumnMapping("Zahlart", "Zahlart"),
                         new System.Data.Common.DataColumnMapping("PatientbezogenJN", "PatientbezogenJN"),
-                        new System.Data.Common.DataColumnMapping("SammelabrechnungJN", "SammelabrechnungJN"),
-                        new System.Data.Common.DataColumnMapping("UIDNr", "UIDNr"),
-                        new System.Data.Common.DataColumnMapping("GSBG", "GSBG"),
-                        new System.Data.Common.DataColumnMapping("Anrede", "Anrede"),
-                        new System.Data.Common.DataColumnMapping("Vorname", "Vorname"),
-                        new System.Data.Common.DataColumnMapping("IDKlinik", "IDKlinik"),
-                        new System.Data.Common.DataColumnMapping("IDKostentraegerSub", "IDKostentraegerSub"),
+                        new System.Data.Common.DataColumnMapping("TransferleistungJN", "TransferleistungJN"),
                         new System.Data.Common.DataColumnMapping("IDPatientIstZahler", "IDPatientIstZahler")})});
             this.daKostentraeger.UpdateCommand = this.oleDbUpdateCommand_kost;
             // 
@@ -102,29 +102,29 @@ namespace PMDS.DB.Global
             this.oleDbInsertCommand_kostID.Connection = this.dbConn;
             this.oleDbInsertCommand_kostID.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("FIBUKonto", System.Data.OleDb.OleDbType.VarChar, 0, "FIBUKonto"),
             new System.Data.OleDb.OleDbParameter("Name", System.Data.OleDb.OleDbType.VarChar, 0, "Name"),
+            new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
+            new System.Data.OleDb.OleDbParameter("Anrede", System.Data.OleDb.OleDbType.VarChar, 0, "Anrede"),
             new System.Data.OleDb.OleDbParameter("Strasse", System.Data.OleDb.OleDbType.VarChar, 0, "Strasse"),
             new System.Data.OleDb.OleDbParameter("PLZ", System.Data.OleDb.OleDbType.VarChar, 0, "PLZ"),
             new System.Data.OleDb.OleDbParameter("Ort", System.Data.OleDb.OleDbType.VarChar, 0, "Ort"),
-            new System.Data.OleDb.OleDbParameter("Rechnungsempfaenger", System.Data.OleDb.OleDbType.VarChar, 0, "Rechnungsempfaenger"),
             new System.Data.OleDb.OleDbParameter("Rechnungsanschrift", System.Data.OleDb.OleDbType.VarChar, 0, "Rechnungsanschrift"),
-            new System.Data.OleDb.OleDbParameter("BLZ", System.Data.OleDb.OleDbType.VarChar, 0, "BLZ"),
-            new System.Data.OleDb.OleDbParameter("Kontonr", System.Data.OleDb.OleDbType.VarChar, 0, "Kontonr"),
-            new System.Data.OleDb.OleDbParameter("Bank", System.Data.OleDb.OleDbType.VarChar, 0, "Bank"),
-            new System.Data.OleDb.OleDbParameter("FIBUKonto", System.Data.OleDb.OleDbType.VarChar, 0, "FIBUKonto"),
+            new System.Data.OleDb.OleDbParameter("Rechnungsempfaenger", System.Data.OleDb.OleDbType.VarChar, 0, "Rechnungsempfaenger"),
+            new System.Data.OleDb.OleDbParameter("IDKostentraegerSub", System.Data.OleDb.OleDbType.Guid, 0, "IDKostentraegerSub"),
+            new System.Data.OleDb.OleDbParameter("UIDNr", System.Data.OleDb.OleDbType.VarChar, 0, "UIDNr"),
+            new System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"),
+            new System.Data.OleDb.OleDbParameter("SammelabrechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "SammelabrechnungJN"),
+            new System.Data.OleDb.OleDbParameter("GSBG", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(18)), ((byte)(3)), "GSBG", System.Data.DataRowVersion.Current, null),
+            new System.Data.OleDb.OleDbParameter("Zahlart", System.Data.OleDb.OleDbType.Integer, 0, "Zahlart"),
             new System.Data.OleDb.OleDbParameter("ErlagscheingebuehrJN", System.Data.OleDb.OleDbType.Boolean, 0, "ErlagscheingebuehrJN"),
             new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Double, 0, "Betrag"),
-            new System.Data.OleDb.OleDbParameter("TransferleistungJN", System.Data.OleDb.OleDbType.Boolean, 0, "TransferleistungJN"),
+            new System.Data.OleDb.OleDbParameter("Bank", System.Data.OleDb.OleDbType.VarChar, 0, "Bank"),
+            new System.Data.OleDb.OleDbParameter("Kontonr", System.Data.OleDb.OleDbType.VarChar, 0, "Kontonr"),
+            new System.Data.OleDb.OleDbParameter("BLZ", System.Data.OleDb.OleDbType.VarChar, 0, "BLZ"),
             new System.Data.OleDb.OleDbParameter("TaschengeldJN", System.Data.OleDb.OleDbType.Boolean, 0, "TaschengeldJN"),
-            new System.Data.OleDb.OleDbParameter("Zahlart", System.Data.OleDb.OleDbType.Integer, 0, "Zahlart"),
             new System.Data.OleDb.OleDbParameter("PatientbezogenJN", System.Data.OleDb.OleDbType.Boolean, 0, "PatientbezogenJN"),
-            new System.Data.OleDb.OleDbParameter("SammelabrechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "SammelabrechnungJN"),
-            new System.Data.OleDb.OleDbParameter("UIDNr", System.Data.OleDb.OleDbType.VarChar, 0, "UIDNr"),
-            new System.Data.OleDb.OleDbParameter("GSBG", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(18)), ((byte)(3)), "GSBG", System.Data.DataRowVersion.Current, null),
-            new System.Data.OleDb.OleDbParameter("Anrede", System.Data.OleDb.OleDbType.VarChar, 0, "Anrede"),
-            new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
-            new System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"),
-            new System.Data.OleDb.OleDbParameter("IDKostentraegerSub", System.Data.OleDb.OleDbType.Guid, 0, "IDKostentraegerSub"),
+            new System.Data.OleDb.OleDbParameter("TransferleistungJN", System.Data.OleDb.OleDbType.Boolean, 0, "TransferleistungJN"),
             new System.Data.OleDb.OleDbParameter("IDPatientIstZahler", System.Data.OleDb.OleDbType.Guid, 0, "IDPatientIstZahler")});
             // 
             // oleDbSelectCommand_kostID
@@ -138,29 +138,29 @@ namespace PMDS.DB.Global
             this.oleDbUpdateCommand_kost.Connection = this.dbConn;
             this.oleDbUpdateCommand_kost.Parameters.AddRange(new System.Data.OleDb.OleDbParameter[] {
             new System.Data.OleDb.OleDbParameter("ID", System.Data.OleDb.OleDbType.Guid, 0, "ID"),
+            new System.Data.OleDb.OleDbParameter("FIBUKonto", System.Data.OleDb.OleDbType.VarChar, 0, "FIBUKonto"),
             new System.Data.OleDb.OleDbParameter("Name", System.Data.OleDb.OleDbType.VarChar, 0, "Name"),
+            new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
+            new System.Data.OleDb.OleDbParameter("Anrede", System.Data.OleDb.OleDbType.VarChar, 0, "Anrede"),
             new System.Data.OleDb.OleDbParameter("Strasse", System.Data.OleDb.OleDbType.VarChar, 0, "Strasse"),
             new System.Data.OleDb.OleDbParameter("PLZ", System.Data.OleDb.OleDbType.VarChar, 0, "PLZ"),
             new System.Data.OleDb.OleDbParameter("Ort", System.Data.OleDb.OleDbType.VarChar, 0, "Ort"),
-            new System.Data.OleDb.OleDbParameter("Rechnungsempfaenger", System.Data.OleDb.OleDbType.VarChar, 0, "Rechnungsempfaenger"),
             new System.Data.OleDb.OleDbParameter("Rechnungsanschrift", System.Data.OleDb.OleDbType.VarChar, 0, "Rechnungsanschrift"),
-            new System.Data.OleDb.OleDbParameter("BLZ", System.Data.OleDb.OleDbType.VarChar, 0, "BLZ"),
-            new System.Data.OleDb.OleDbParameter("Kontonr", System.Data.OleDb.OleDbType.VarChar, 0, "Kontonr"),
-            new System.Data.OleDb.OleDbParameter("Bank", System.Data.OleDb.OleDbType.VarChar, 0, "Bank"),
-            new System.Data.OleDb.OleDbParameter("FIBUKonto", System.Data.OleDb.OleDbType.VarChar, 0, "FIBUKonto"),
+            new System.Data.OleDb.OleDbParameter("Rechnungsempfaenger", System.Data.OleDb.OleDbType.VarChar, 0, "Rechnungsempfaenger"),
+            new System.Data.OleDb.OleDbParameter("IDKostentraegerSub", System.Data.OleDb.OleDbType.Guid, 0, "IDKostentraegerSub"),
+            new System.Data.OleDb.OleDbParameter("UIDNr", System.Data.OleDb.OleDbType.VarChar, 0, "UIDNr"),
+            new System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"),
+            new System.Data.OleDb.OleDbParameter("SammelabrechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "SammelabrechnungJN"),
+            new System.Data.OleDb.OleDbParameter("GSBG", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(18)), ((byte)(3)), "GSBG", System.Data.DataRowVersion.Current, null),
+            new System.Data.OleDb.OleDbParameter("Zahlart", System.Data.OleDb.OleDbType.Integer, 0, "Zahlart"),
             new System.Data.OleDb.OleDbParameter("ErlagscheingebuehrJN", System.Data.OleDb.OleDbType.Boolean, 0, "ErlagscheingebuehrJN"),
             new System.Data.OleDb.OleDbParameter("Betrag", System.Data.OleDb.OleDbType.Double, 0, "Betrag"),
-            new System.Data.OleDb.OleDbParameter("TransferleistungJN", System.Data.OleDb.OleDbType.Boolean, 0, "TransferleistungJN"),
+            new System.Data.OleDb.OleDbParameter("Bank", System.Data.OleDb.OleDbType.VarChar, 0, "Bank"),
+            new System.Data.OleDb.OleDbParameter("Kontonr", System.Data.OleDb.OleDbType.VarChar, 0, "Kontonr"),
+            new System.Data.OleDb.OleDbParameter("BLZ", System.Data.OleDb.OleDbType.VarChar, 0, "BLZ"),
             new System.Data.OleDb.OleDbParameter("TaschengeldJN", System.Data.OleDb.OleDbType.Boolean, 0, "TaschengeldJN"),
-            new System.Data.OleDb.OleDbParameter("Zahlart", System.Data.OleDb.OleDbType.Integer, 0, "Zahlart"),
             new System.Data.OleDb.OleDbParameter("PatientbezogenJN", System.Data.OleDb.OleDbType.Boolean, 0, "PatientbezogenJN"),
-            new System.Data.OleDb.OleDbParameter("SammelabrechnungJN", System.Data.OleDb.OleDbType.Boolean, 0, "SammelabrechnungJN"),
-            new System.Data.OleDb.OleDbParameter("UIDNr", System.Data.OleDb.OleDbType.VarChar, 0, "UIDNr"),
-            new System.Data.OleDb.OleDbParameter("GSBG", System.Data.OleDb.OleDbType.Numeric, 0, System.Data.ParameterDirection.Input, false, ((byte)(18)), ((byte)(3)), "GSBG", System.Data.DataRowVersion.Current, null),
-            new System.Data.OleDb.OleDbParameter("Anrede", System.Data.OleDb.OleDbType.VarChar, 0, "Anrede"),
-            new System.Data.OleDb.OleDbParameter("Vorname", System.Data.OleDb.OleDbType.VarChar, 0, "Vorname"),
-            new System.Data.OleDb.OleDbParameter("IDKlinik", System.Data.OleDb.OleDbType.Guid, 0, "IDKlinik"),
-            new System.Data.OleDb.OleDbParameter("IDKostentraegerSub", System.Data.OleDb.OleDbType.Guid, 0, "IDKostentraegerSub"),
+            new System.Data.OleDb.OleDbParameter("TransferleistungJN", System.Data.OleDb.OleDbType.Boolean, 0, "TransferleistungJN"),
             new System.Data.OleDb.OleDbParameter("IDPatientIstZahler", System.Data.OleDb.OleDbType.Guid, 0, "IDPatientIstZahler"),
             new System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.Guid, 0, System.Data.ParameterDirection.Input, false, ((byte)(0)), ((byte)(0)), "ID", System.Data.DataRowVersion.Original, null)});
             // 
@@ -395,117 +395,102 @@ namespace PMDS.DB.Global
             return dt;
         }
 
-		public void Update(dsKostentraeger.KostentraegerDataTable dt)
-		{
-			DataBase.Update(daKostentraeger, dt);
-
-			// auskommentiert: Problem, wenn man den Kostenträger vom Klienten entfernt, wird er beim nächsten 
-			// Durchlaufen dieser Schleife wieder hinzugefügt.
-			//
-			// scf
-			// wenn ein Kostenträger mit PatientID gespeichert wird, automatisch eine Zuordnung speichern
-			//string sqlPattern = "if not exists (select ID from PatientKostentraeger where IDPatient='{0}' and IDKostentraeger='{1}')" +
-			//    "insert into PatientKostentraeger (ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag) " +
-			//    "values ('{2}', '{3}', '{4}', convert(datetime, '{5}',104), null, {6}, 0, 0)";
-			//string sql;
-			//System.Data.OleDb.OleDbCommand cmd;
-			//foreach (dsKostentraeger.KostentraegerRow row in dt)
-			//{
-			//    if ((!row.IsIDPatientNull()) && row.IDPatient != Guid.Empty)
-			//    {
-			//        Guid newGuid = Guid.NewGuid();
-			//        sql = String.Format(sqlPattern, row.IDPatient, row.ID, newGuid, row.IDPatient, row.ID, DateTime.Now.ToString("dd.MM.yyyy"), (int)PMDS.Global.Kostentraegerart.Grundkosten);
-			//        cmd = new System.Data.OleDb.OleDbCommand(sql);
-			//        DataBase.EcecuteNonQuery(cmd);
-			//    }
-			//}
-		}
+        public void Update(dsKostentraeger.KostentraegerDataTable dt)
+        {
+            DataBase.Update(daKostentraeger, dt);
+        }
 
         public dsKostentraeger.KostentraegerDataTable GetTransferKostentraeger(bool klinik, System.Guid IDKlinik)
         {
-            OleDbDataAdapter daRead = new OleDbDataAdapter();
-            OleDbCommand cmdRead = new OleDbCommand();
-            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                RBU.DataBase.CONNECTION.Open();
-            cmdRead.Connection = RBU.DataBase.CONNECTION;
-            cmdRead.CommandTimeout = 0;
-            daRead.SelectCommand = cmdRead;
-
-            string sWhere = "";
-            if (!klinik)
+            using (OleDbDataAdapter daRead = new OleDbDataAdapter())
             {
-                sWhere = " WHERE (TransferleistungJN = 1) ORDER BY Name ";
-            }
-            else
-            {
-                sWhere = " WHERE (TransferleistungJN = 1) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
-            }
-            daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
+                OleDbCommand cmdRead = new OleDbCommand();
+                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                    RBU.DataBase.CONNECTION.Open();
+                cmdRead.Connection = RBU.DataBase.CONNECTION;
+                cmdRead.CommandTimeout = 0;
+                daRead.SelectCommand = cmdRead;
 
-            dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
-            DataBase.Fill(daRead, dt);
-            return dt;
+                string sWhere = "";
+                if (!klinik)
+                {
+                    sWhere = " WHERE (TransferleistungJN = 1) ORDER BY Name ";
+                }
+                else
+                {
+                    sWhere = " WHERE (TransferleistungJN = 1) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
+                }
+                daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
+
+                dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
+                DataBase.Fill(daRead, dt);
+                return dt;
+            }
         }
 
         public dsKostentraeger.KostentraegerDataTable GetPatientTransferKostentraeger(bool klinik, System.Guid IDKlinik)
         {
-            OleDbDataAdapter daRead = new OleDbDataAdapter();
-            OleDbCommand cmdRead = new OleDbCommand();
-            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                RBU.DataBase.CONNECTION.Open();
-            cmdRead.Connection = RBU.DataBase.CONNECTION;
-            cmdRead.CommandTimeout = 0;
-            daRead.SelectCommand = cmdRead;
+            using (OleDbDataAdapter daRead = new OleDbDataAdapter())
+            {
+                OleDbCommand cmdRead = new OleDbCommand();
+                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                    RBU.DataBase.CONNECTION.Open();
+                cmdRead.Connection = RBU.DataBase.CONNECTION;
+                cmdRead.CommandTimeout = 0;
+                daRead.SelectCommand = cmdRead;
 
-            string sWhere = "";
-            if (!klinik)
-            {
-                sWhere = " where (PatientbezogenJN = 1) ";
-            }
-            else
-            {
-                sWhere = " where (PatientbezogenJN = 1) and IDKlinik = '" + IDKlinik.ToString() + "' ";
-            }
-            daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere + " Union ";
+                string sWhere = "";
+                if (!klinik)
+                {
+                    sWhere = " where (PatientbezogenJN = 1) ";
+                }
+                else
+                {
+                    sWhere = " where (PatientbezogenJN = 1) and IDKlinik = '" + IDKlinik.ToString() + "' ";
+                }
+                daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere + " Union ";
 
-            if (!klinik)
-            {
-                sWhere = " where (TransferleistungJN = 1) ORDER BY Name ";
-            }
-            else
-            {
-                sWhere = " where (TransferleistungJN = 1) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
-            }
-            daRead.SelectCommand.CommandText += this.seldaKostentraeger + sWhere;
+                if (!klinik)
+                {
+                    sWhere = " where (TransferleistungJN = 1) ORDER BY Name ";
+                }
+                else
+                {
+                    sWhere = " where (TransferleistungJN = 1) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
+                }
+                daRead.SelectCommand.CommandText += this.seldaKostentraeger + sWhere;
 
-            dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
-            DataBase.Fill(daRead, dt);
-            return dt;
+                dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
+                DataBase.Fill(daRead, dt);
+                return dt;
+            }
         }
 
         public dsKostentraeger.KostentraegerDataTable GetTaschengeldKostentraeger(bool klinik, System.Guid IDKlinik)
         {
-            OleDbDataAdapter daRead = new OleDbDataAdapter();
-            OleDbCommand cmdRead = new OleDbCommand();
-            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                RBU.DataBase.CONNECTION.Open();
-            cmdRead.Connection = RBU.DataBase.CONNECTION;
-            cmdRead.CommandTimeout = 0;
-            daRead.SelectCommand = cmdRead;
+            using (OleDbDataAdapter daRead = new OleDbDataAdapter())
+            {
+                OleDbCommand cmdRead = new OleDbCommand();
+                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                    RBU.DataBase.CONNECTION.Open();
+                cmdRead.Connection = RBU.DataBase.CONNECTION;
+                cmdRead.CommandTimeout = 0;
+                daRead.SelectCommand = cmdRead;
 
-            string sWhere = "";
-            if (!klinik)
-            {
-                sWhere = " WHERE (TaschengeldJN = 1) ORDER BY Name ";
+                string sWhere = "";
+                if (!klinik)
+                {
+                    sWhere = " WHERE (TaschengeldJN = 1) ORDER BY Name ";
+                }
+                else
+                {
+                    sWhere = " WHERE (TaschengeldJN = 1) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
+                }
+                daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
+                dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
+                DataBase.Fill(daRead, dt);
+                return dt;
             }
-            else
-            {
-                sWhere = " WHERE (TaschengeldJN = 1) and (IDKlinik = '" + IDKlinik.ToString() + "' or IDKlinik is null) ORDER BY Name ";
-            }
-            daRead.SelectCommand.CommandText = this.seldaKostentraeger + sWhere;
-            dsKostentraeger.KostentraegerDataTable dt = new dsKostentraeger.KostentraegerDataTable();
-            DataBase.Fill(daRead, dt);
-            return dt;
         }
         
         public dsKostentraeger.KostentraegerDataTable GetKostentraeger(bool Allgemein, bool Patientbezogene, bool Transfer, bool klinik, System.Guid  IDKlinik)
@@ -548,7 +533,7 @@ namespace PMDS.DB.Global
 
         public dsKostentraeger.KostentraegerRow New(dsKostentraeger.KostentraegerDataTable dt )
         {
-            dsKostentraeger.KostentraegerRow r = dt.AddKostentraegerRow(Guid.NewGuid(), "", "", "", "", "", "", "", "", "", "", false, 0, false, false, 0, false, false, "", 0, "", "", System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
+            dsKostentraeger.KostentraegerRow r = dt.AddKostentraegerRow(Guid.NewGuid(), "", "", "", "", "", "", "", "", "", System.Guid.Empty, "", System.Guid.Empty, false, 0, 0, false, 0, "", "", "", false, false, false, System.Guid.Empty);
             r.SetIDKlinikNull();
             r.SetZahlartNull();
             r.SetIDPatientIstZahlerNull();
@@ -557,15 +542,13 @@ namespace PMDS.DB.Global
         }
         public dsKostentraeger.KostentraegerRow NewPatientBetzogeneKostentraeger(dsKostentraeger.KostentraegerDataTable dt)
         {
-            dsKostentraeger.KostentraegerRow r = dt.AddKostentraegerRow(Guid.NewGuid(), "", "", "", "", "", "", "", "", "", "", false, 0, false, false, 0, true, false, "", 0, "", "", System.Guid.Empty, System.Guid.Empty, System.Guid.Empty);
+            dsKostentraeger.KostentraegerRow r = dt.AddKostentraegerRow(Guid.NewGuid(), "", "", "", "", "", "", "", "", "", System.Guid.Empty, "", System.Guid.Empty, false, 0, 0, false, 0, "", "", "", true, false, false, System.Guid.Empty);
             r.SetIDKlinikNull();
             r.SetZahlartNull();
             r.SetIDPatientIstZahlerNull();
             r.SetIDKostentraegerSubNull();
             return r;
         }
-
-
 
         public dsKostentraeger GetTransferPatientkostentraeger(Guid IDPatien, DateTime gueltigab, bool klinik, System.Guid IDKlinik)
         {
@@ -609,7 +592,6 @@ namespace PMDS.DB.Global
         }
 	}
 
-
     public class KostentraegerInfo
     {
         private static DBKostentraeger db = new DBKostentraeger();
@@ -633,5 +615,4 @@ namespace PMDS.DB.Global
             return _r.Name;
         }
     }
-
 }

@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klient als Zahler hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klient als Zahler hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo2 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("FSW für Zahlungsaufforderung hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Klient als Zahler hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("FSW für Zahlungsaufforderung hinzufügen", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("PatientKostentraeger", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ID");
@@ -49,8 +50,10 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDBenutzer");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AbgerechnetBis");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VorauszahlungJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechnungJN");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechnungTyp");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechnungJN");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechnungTyp");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IDPatientIstZahler");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RechnungsdruckTyp");
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
@@ -65,20 +68,23 @@
             Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(961928108);
             this.panelButtonsKost = new QS2.Desktop.ControlManagment.BasePanel();
             this.panelButtons = new QS2.Desktop.ControlManagment.BasePanel();
+            this.btnAddErwachsenenvertreter = new QS2.Desktop.ControlManagment.BaseButton();
+            this.btnAddFSW = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnAddKlient = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnAdd = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnUpdate = new QS2.Desktop.ControlManagment.BaseButton();
             this.btnDel = new QS2.Desktop.ControlManagment.BaseButton();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnAddFSW = new QS2.Desktop.ControlManagment.BaseButton();
             this.dgMain = new QS2.Desktop.ControlManagment.BaseGrid();
             this.dsPatientKostentraeger1 = new PMDS.Global.db.Global.ds_abrechnung.dsPatientKostentraeger();
+            this.dsPatientAbwesenheit1 = new PMDS.Abrechnung.Global.dsPatientAbwesenheit();
             this.panelButtonsKost.SuspendLayout();
             this.panelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPatientKostentraeger1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientAbwesenheit1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelButtonsKost
@@ -93,16 +99,45 @@
             // 
             // panelButtons
             // 
+            this.panelButtons.Controls.Add(this.btnAddErwachsenenvertreter);
             this.panelButtons.Controls.Add(this.btnAddFSW);
             this.panelButtons.Controls.Add(this.btnAddKlient);
             this.panelButtons.Controls.Add(this.btnAdd);
             this.panelButtons.Controls.Add(this.btnUpdate);
             this.panelButtons.Controls.Add(this.btnDel);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelButtons.Location = new System.Drawing.Point(473, 0);
+            this.panelButtons.Location = new System.Drawing.Point(285, 0);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(281, 27);
+            this.panelButtons.Size = new System.Drawing.Size(469, 27);
             this.panelButtons.TabIndex = 35;
+            // 
+            // btnAddErwachsenenvertreter
+            // 
+            this.btnAddErwachsenenvertreter.AutoWorkLayout = false;
+            this.btnAddErwachsenenvertreter.ImageSize = new System.Drawing.Size(12, 12);
+            this.btnAddErwachsenenvertreter.IsStandardControl = false;
+            this.btnAddErwachsenenvertreter.Location = new System.Drawing.Point(210, 3);
+            this.btnAddErwachsenenvertreter.Name = "btnAddErwachsenenvertreter";
+            this.btnAddErwachsenenvertreter.Size = new System.Drawing.Size(170, 21);
+            this.btnAddErwachsenenvertreter.TabIndex = 38;
+            this.btnAddErwachsenenvertreter.Text = "Erwachsenenvertreter=Zahler";
+            ultraToolTipInfo1.ToolTipText = "Klient als Zahler hinzufügen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnAddErwachsenenvertreter, ultraToolTipInfo1);
+            this.btnAddErwachsenenvertreter.Click += new System.EventHandler(this.btnAddErwachsenenvertreter_Click);
+            // 
+            // btnAddFSW
+            // 
+            this.btnAddFSW.AutoWorkLayout = false;
+            this.btnAddFSW.ImageSize = new System.Drawing.Size(12, 12);
+            this.btnAddFSW.IsStandardControl = false;
+            this.btnAddFSW.Location = new System.Drawing.Point(11, 3);
+            this.btnAddFSW.Name = "btnAddFSW";
+            this.btnAddFSW.Size = new System.Drawing.Size(93, 21);
+            this.btnAddFSW.TabIndex = 37;
+            this.btnAddFSW.Text = "FSW=Zahler";
+            ultraToolTipInfo2.ToolTipText = "FSW für Zahlungsaufforderung hinzufügen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnAddFSW, ultraToolTipInfo2);
+            this.btnAddFSW.Click += new System.EventHandler(this.btnAddFSW_Click);
             // 
             // btnAddKlient
             // 
@@ -114,8 +149,8 @@
             this.btnAddKlient.Size = new System.Drawing.Size(93, 21);
             this.btnAddKlient.TabIndex = 36;
             this.btnAddKlient.Text = "Klient=Zahler";
-            ultraToolTipInfo2.ToolTipText = "Klient als Zahler hinzufügen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnAddKlient, ultraToolTipInfo2);
+            ultraToolTipInfo3.ToolTipText = "Klient als Zahler hinzufügen";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnAddKlient, ultraToolTipInfo3);
             this.btnAddKlient.Click += new System.EventHandler(this.btnAddKlient_Click);
             // 
             // btnAdd
@@ -126,7 +161,7 @@
             this.btnAdd.AutoWorkLayout = false;
             this.btnAdd.ImageSize = new System.Drawing.Size(12, 12);
             this.btnAdd.IsStandardControl = false;
-            this.btnAdd.Location = new System.Drawing.Point(208, 3);
+            this.btnAdd.Location = new System.Drawing.Point(397, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(22, 21);
             this.btnAdd.TabIndex = 0;
@@ -140,7 +175,7 @@
             this.btnUpdate.AutoWorkLayout = false;
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnUpdate.IsStandardControl = false;
-            this.btnUpdate.Location = new System.Drawing.Point(252, 3);
+            this.btnUpdate.Location = new System.Drawing.Point(441, 3);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(22, 21);
             this.btnUpdate.TabIndex = 34;
@@ -154,7 +189,7 @@
             this.btnDel.AutoWorkLayout = false;
             this.btnDel.ImageSize = new System.Drawing.Size(12, 12);
             this.btnDel.IsStandardControl = false;
-            this.btnDel.Location = new System.Drawing.Point(230, 3);
+            this.btnDel.Location = new System.Drawing.Point(419, 3);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(22, 21);
             this.btnDel.TabIndex = 1;
@@ -170,20 +205,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // btnAddFSW
-            // 
-            this.btnAddFSW.AutoWorkLayout = false;
-            this.btnAddFSW.ImageSize = new System.Drawing.Size(12, 12);
-            this.btnAddFSW.IsStandardControl = false;
-            this.btnAddFSW.Location = new System.Drawing.Point(11, 3);
-            this.btnAddFSW.Name = "btnAddFSW";
-            this.btnAddFSW.Size = new System.Drawing.Size(93, 21);
-            this.btnAddFSW.TabIndex = 37;
-            this.btnAddFSW.Text = "FSW=Zahler";
-            ultraToolTipInfo1.ToolTipText = "FSW für Zahlungsaufforderung hinzufügen";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnAddFSW, ultraToolTipInfo1);
-            this.btnAddFSW.Click += new System.EventHandler(this.btnAddFSW_Click);
             // 
             // dgMain
             // 
@@ -295,21 +316,25 @@
             ultraGridColumn12.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn12.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn12.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn27.Header.Caption = "Rechnung J/N";
-            ultraGridColumn27.Header.Editor = null;
-            ultraGridColumn27.Header.VisiblePosition = 12;
-            ultraGridColumn27.RowLayoutColumnInfo.OriginX = 14;
-            ultraGridColumn27.RowLayoutColumnInfo.OriginY = 0;
-            ultraGridColumn27.RowLayoutColumnInfo.SpanX = 2;
-            ultraGridColumn27.RowLayoutColumnInfo.SpanY = 2;
-            ultraGridColumn28.Header.Caption = "Rechnungstyp";
-            ultraGridColumn28.Header.Editor = null;
-            ultraGridColumn28.Header.VisiblePosition = 13;
-            ultraGridColumn28.RowLayoutColumnInfo.OriginX = 16;
-            ultraGridColumn28.RowLayoutColumnInfo.OriginY = 0;
-            ultraGridColumn28.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(109, 0);
-            ultraGridColumn28.RowLayoutColumnInfo.SpanX = 2;
-            ultraGridColumn28.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn13.Header.Caption = "Rechnung J/N";
+            ultraGridColumn13.Header.Editor = null;
+            ultraGridColumn13.Header.VisiblePosition = 12;
+            ultraGridColumn13.RowLayoutColumnInfo.OriginX = 14;
+            ultraGridColumn13.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn13.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn13.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn14.Header.Caption = "Rechnungstyp";
+            ultraGridColumn14.Header.Editor = null;
+            ultraGridColumn14.Header.VisiblePosition = 13;
+            ultraGridColumn14.RowLayoutColumnInfo.OriginX = 16;
+            ultraGridColumn14.RowLayoutColumnInfo.OriginY = 0;
+            ultraGridColumn14.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(109, 0);
+            ultraGridColumn14.RowLayoutColumnInfo.SpanX = 2;
+            ultraGridColumn14.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn15.Header.Editor = null;
+            ultraGridColumn15.Header.VisiblePosition = 14;
+            ultraGridColumn16.Header.Editor = null;
+            ultraGridColumn16.Header.VisiblePosition = 15;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
@@ -323,8 +348,10 @@
             ultraGridColumn10,
             ultraGridColumn11,
             ultraGridColumn12,
-            ultraGridColumn27,
-            ultraGridColumn28});
+            ultraGridColumn13,
+            ultraGridColumn14,
+            ultraGridColumn15,
+            ultraGridColumn16});
             ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgMain.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.dgMain.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
@@ -390,14 +417,21 @@
             this.dgMain.Size = new System.Drawing.Size(747, 161);
             this.dgMain.TabIndex = 37;
             this.dgMain.Text = "ultraGrid1";
+            this.dgMain.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.dgMain_InitializeRow);
             this.dgMain.BeforeRowsDeleted += new Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventHandler(this.dgMain_BeforeRowsDeleted_1);
             this.dgMain.DoubleClick += new System.EventHandler(this.dgMain_DoubleClick_1);
             // 
             // dsPatientKostentraeger1
             // 
             this.dsPatientKostentraeger1.DataSetName = "dsPatientKostentraeger";
-            this.dsPatientKostentraeger1.Locale = new System.Globalization.CultureInfo("en-US");
+            this.dsPatientKostentraeger1.Locale = new System.Globalization.CultureInfo("de-DE");
             this.dsPatientKostentraeger1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dsPatientAbwesenheit1
+            // 
+            this.dsPatientAbwesenheit1.DataSetName = "dsPatientAbwesenheit";
+            this.dsPatientAbwesenheit1.Locale = new System.Globalization.CultureInfo("de-DE");
+            this.dsPatientAbwesenheit1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ucKostentraegerKlient2
             // 
@@ -412,6 +446,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsPatientKostentraeger1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsPatientAbwesenheit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -429,5 +464,7 @@
         private QS2.Desktop.ControlManagment.BaseButton btnAddKlient;
         private QS2.Desktop.ControlManagment.BaseGrid dgMain;
         private QS2.Desktop.ControlManagment.BaseButton btnAddFSW;
+        private QS2.Desktop.ControlManagment.BaseButton btnAddErwachsenenvertreter;
+        private Abrechnung.Global.dsPatientAbwesenheit dsPatientAbwesenheit1;
     }
 }

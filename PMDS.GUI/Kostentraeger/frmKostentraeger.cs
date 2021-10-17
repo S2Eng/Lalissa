@@ -127,7 +127,7 @@ namespace PMDS.Calc.UI.Admin
         public frmKostenträger()
 		{
 			InitializeComponent();
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

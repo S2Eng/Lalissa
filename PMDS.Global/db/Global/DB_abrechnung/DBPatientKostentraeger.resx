@@ -142,7 +142,7 @@
     <value>False</value>
   </metadata>
   <data name="oleDbInsertPatientKostentraeger.CommandText" xml:space="preserve">
-    <value>INSERT INTO [PatientKostentraeger] ([ID], [IDPatient], [IDKostentraeger], [GueltigAb], [GueltigBis], [enumKostentraegerart], [BetragErrechnetJN], [Betrag], [ErfasstAm], [IDBenutzer], [AbgerechnetBis], [VorauszahlungJN], [RechnungJN], [RechnungTyp], [IDPatientIstZahler]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+    <value>INSERT INTO [PatientKostentraeger] ([ID], [IDPatient], [IDKostentraeger], [GueltigAb], [GueltigBis], [enumKostentraegerart], [BetragErrechnetJN], [Betrag], [ErfasstAm], [IDBenutzer], [AbgerechnetBis], [VorauszahlungJN], [RechnungJN], [RechnungTyp], [IDPatientIstZahler], [RechnungsdruckTyp]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
   </data>
   <metadata name="oleDbSelectPatientKostentraeger.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -154,7 +154,8 @@
     <value>False</value>
   </metadata>
   <data name="oleDbSelectPatientKostentraeger.CommandText" xml:space="preserve">
-    <value>SELECT        ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, VorauszahlungJN, RechnungJN, RechnungTyp, IDPatientIstZahler
+    <value>SELECT        ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, VorauszahlungJN, RechnungJN, RechnungTyp, IDPatientIstZahler, 
+                         RechnungsdruckTyp
 FROM            PatientKostentraeger
 WHERE        (IDPatient = ?)
 ORDER BY GueltigAb</value>
@@ -169,7 +170,7 @@ ORDER BY GueltigAb</value>
     <value>False</value>
   </metadata>
   <data name="oleDBUpdatePatientKostentraeger.CommandText" xml:space="preserve">
-    <value>UPDATE [PatientKostentraeger] SET [ID] = ?, [IDPatient] = ?, [IDKostentraeger] = ?, [GueltigAb] = ?, [GueltigBis] = ?, [enumKostentraegerart] = ?, [BetragErrechnetJN] = ?, [Betrag] = ?, [ErfasstAm] = ?, [IDBenutzer] = ?, [AbgerechnetBis] = ?, [VorauszahlungJN] = ?, [RechnungJN] = ?, [RechnungTyp] = ?, [IDPatientIstZahler] = ? WHERE (([ID] = ?))</value>
+    <value>UPDATE [PatientKostentraeger] SET [ID] = ?, [IDPatient] = ?, [IDKostentraeger] = ?, [GueltigAb] = ?, [GueltigBis] = ?, [enumKostentraegerart] = ?, [BetragErrechnetJN] = ?, [Betrag] = ?, [ErfasstAm] = ?, [IDBenutzer] = ?, [AbgerechnetBis] = ?, [VorauszahlungJN] = ?, [RechnungJN] = ?, [RechnungTyp] = ?, [IDPatientIstZahler] = ?, [RechnungsdruckTyp] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daPatientKostentraegerByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 134</value>
@@ -184,14 +185,13 @@ ORDER BY GueltigAb</value>
     <value>False</value>
   </metadata>
   <data name="oleDbCommand3.CommandText" xml:space="preserve">
-    <value>SELECT     PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, 
-                      PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, 
-                      Kostentraeger.Name, Kostentraeger.Strasse, Kostentraeger.PLZ, Kostentraeger.Ort, Kostentraeger.Rechnungsempfaenger, 
-                      Kostentraeger.Rechnungsanschrift, Kostentraeger.BLZ, Kostentraeger.Kontonr, Kostentraeger.Bank, Kostentraeger.FIBUKonto, 
-                      Kostentraeger.ErlagscheingebuehrJN
-FROM         PatientKostentraeger INNER JOIN
-                      Kostentraeger ON PatientKostentraeger.IDKostentraeger = Kostentraeger.ID
-WHERE     (PatientKostentraeger.ID = ?)</value>
+    <value>SELECT        PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, 
+                         PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, Kostentraeger.Name, Kostentraeger.Strasse, Kostentraeger.PLZ, Kostentraeger.Ort, Kostentraeger.Rechnungsempfaenger, 
+                         Kostentraeger.Rechnungsanschrift, Kostentraeger.BLZ, Kostentraeger.Kontonr, Kostentraeger.Bank, Kostentraeger.FIBUKonto, Kostentraeger.ErlagscheingebuehrJN, PatientKostentraeger.IDPatientIstZahler, 
+                         PatientKostentraeger.RechnungsdruckTyp
+FROM            PatientKostentraeger INNER JOIN
+                         Kostentraeger ON PatientKostentraeger.IDKostentraeger = Kostentraeger.ID
+WHERE        (PatientKostentraeger.ID = ?)</value>
   </data>
   <metadata name="daByKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 173</value>
@@ -206,13 +206,12 @@ WHERE     (PatientKostentraeger.ID = ?)</value>
     <value>False</value>
   </metadata>
   <data name="oleDbCommand4.CommandText" xml:space="preserve">
-    <value>SELECT     PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, 
-                      PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, 
-                      PatientKostentraeger.ErfasstAm, PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis, PatientKostentraeger.VorauszahlungJN, 
-                      PatientKostentraeger.RechnungJN
-FROM         PatientKostentraeger INNER JOIN
-                      Patient ON PatientKostentraeger.IDPatient = Patient.ID
-WHERE     (PatientKostentraeger.IDKostentraeger = ?)
+    <value>SELECT        PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, 
+                         PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, PatientKostentraeger.ErfasstAm, PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis, PatientKostentraeger.VorauszahlungJN, 
+                         PatientKostentraeger.RechnungJN, PatientKostentraeger.RechnungTyp, PatientKostentraeger.IDPatientIstZahler, PatientKostentraeger.RechnungsdruckTyp
+FROM            PatientKostentraeger INNER JOIN
+                         Patient ON PatientKostentraeger.IDPatient = Patient.ID
+WHERE        (PatientKostentraeger.IDKostentraeger = ?)
 ORDER BY Patient.Nachname, Patient.Vorname, PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis</value>
   </data>
   <metadata name="daKostentraegerByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -228,10 +227,10 @@ ORDER BY Patient.Nachname, Patient.Vorname, PatientKostentraeger.GueltigAb, Pati
     <value>False</value>
   </metadata>
   <data name="oleDbCommand5.CommandText" xml:space="preserve">
-    <value>SELECT     ID, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, Betrag, 
-                      TransferleistungJN, TaschengeldJN, Zahlart, PatientbezogenJN
-FROM         Kostentraeger
-WHERE     (ID = ?)</value>
+    <value>SELECT        ID, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, Betrag, TransferleistungJN, TaschengeldJN, Zahlart, PatientbezogenJN, IDKostentraegerSub, 
+                         IDPatientIstZahler
+FROM            Kostentraeger
+WHERE        (ID = ?)</value>
   </data>
   <metadata name="daPatientStation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 251</value>
@@ -272,94 +271,53 @@ ORDER BY Name</value>
     <value>False</value>
   </metadata>
   <data name="oleDbCommand8.CommandText" xml:space="preserve">
-    <value>SELECT     ID, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, Betrag, 
-                      TransferleistungJN, TaschengeldJN, Zahlart, PatientbezogenJN
-FROM         Kostentraeger
-WHERE     (PatientbezogenJN = 0) AND (TransferleistungJN = 0)
+    <value>SELECT        ID, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, Betrag, TransferleistungJN, TaschengeldJN, Zahlart, PatientbezogenJN, IDKostentraegerSub, 
+                         IDPatientIstZahler
+FROM            Kostentraeger
+WHERE        (PatientbezogenJN = 0) AND (TransferleistungJN = 0)
 ORDER BY Name</value>
   </data>
   <metadata name="daAllEntries.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 329</value>
   </metadata>
-  <metadata name="oleDbCommand10.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="sel_AllEntries.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="oleDbCommand10.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="sel_AllEntries.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="oleDbCommand10.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="sel_AllEntries.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="oleDbCommand10.CommandText" xml:space="preserve">
-    <value>SELECT     PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, 
-                      PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, 
-                      PatientKostentraeger.ErfasstAm, PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis, PatientKostentraeger.VorauszahlungJN, 
-                      PatientKostentraeger.RechnungJN, RechnungTyp 
-FROM         PatientKostentraeger INNER JOIN
-                      Patient ON PatientKostentraeger.IDPatient = Patient.ID
+  <data name="sel_AllEntries.CommandText" xml:space="preserve">
+    <value>SELECT        PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, 
+                         PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, PatientKostentraeger.ErfasstAm, PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis, PatientKostentraeger.VorauszahlungJN, 
+                         PatientKostentraeger.RechnungJN, PatientKostentraeger.RechnungTyp, PatientKostentraeger.IDPatientIstZahler, PatientKostentraeger.RechnungsdruckTyp
+FROM            PatientKostentraeger INNER JOIN
+                       Patient ON PatientKostentraeger.IDPatient = Patient.ID INNER JOIN
+                       Kostentraeger ON PatientKostentraeger.IDKostentraeger = Kostentraeger.ID
 ORDER BY Patient.Nachname + ' ' + Patient.Vorname, PatientKostentraeger.GueltigAb</value>
   </data>
-  <metadata name="daKostentraegerXXXX.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="daByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 368</value>
   </metadata>
-  <metadata name="oleDbCommand6.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="sel_daByID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="oleDbCommand6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="sel_daByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="oleDbCommand6.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="sel_daByID.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="oleDbCommand6.CommandText" xml:space="preserve">
-    <value>SELECT DISTINCT 
-                      Kostentraeger.ID, Kostentraeger.Name, Kostentraeger.Strasse, Kostentraeger.PLZ, Kostentraeger.Ort, Kostentraeger.Rechnungsempfaenger, 
-                      Kostentraeger.Rechnungsanschrift, Kostentraeger.BLZ, Kostentraeger.Kontonr, Kostentraeger.Bank, Kostentraeger.FIBUKonto, 
-                      Kostentraeger.ErlagscheingebuehrJN, Kostentraeger.Betrag, Kostentraeger.TransferleistungJN, Kostentraeger.TaschengeldJN, Kostentraeger.Zahlart, 
-                      Kostentraeger.PatientbezogenJN
-FROM         Kostentraeger INNER JOIN
-                      PatientKostentraeger ON Kostentraeger.ID = PatientKostentraeger.IDKostentraeger
-WHERE     (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &lt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
-                      (PatientKostentraeger.GueltigBis &lt;= ?) AND (Kostentraeger.PatientbezogenJN = 0) OR
-                      (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &gt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
-                      (PatientKostentraeger.GueltigBis &lt;= ?) AND (Kostentraeger.PatientbezogenJN = 0) OR
-                      (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &gt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
-                      (Kostentraeger.PatientbezogenJN = 0) AND (PatientKostentraeger.GueltigAb &lt;= ?) OR
-                      (PatientKostentraeger.AbgerechnetBis IS NOT NULL) AND (PatientKostentraeger.GueltigAb &lt;= ?) AND (PatientKostentraeger.GueltigBis &gt;= ?) AND 
-                      (Kostentraeger.PatientbezogenJN = 0)</value>
-  </data>
-  <metadata name="daByID.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 407</value>
-  </metadata>
-  <metadata name="oleDbCommand12.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="oleDbCommand12.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="oleDbCommand12.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <data name="oleDbCommand12.CommandText" xml:space="preserve">
-    <value>SELECT        ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, 
-                         VorauszahlungJN, RechnungJN, RechnungTyp
+  <data name="sel_daByID.CommandText" xml:space="preserve">
+    <value>SELECT        ID, IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, VorauszahlungJN, RechnungJN, RechnungTyp, IDPatientIstZahler, 
+                         RechnungsdruckTyp
 FROM            PatientKostentraeger
 WHERE        (ID = ?)</value>
   </data>
-  <metadata name="daDistinctPatientenMonatJahrAbrechnung.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 446</value>
-  </metadata>
-  <metadata name="oleDbCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="oleDbCommand9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="oleDbCommand9.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
   <metadata name="daKlientenAlleSelbstzahler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 485</value>
+    <value>17, 407</value>
   </metadata>
   <metadata name="oleDbCommand11.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -390,7 +348,7 @@ GROUP BY Patient.ID, Patient.Nachname, Patient.Vorname, Patient.Geburtsdatum, Ab
 ORDER BY Name</value>
   </data>
   <metadata name="daPatKostenträgerGültigBis.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 524</value>
+    <value>17, 446</value>
   </metadata>
   <metadata name="oleDbCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -420,7 +378,7 @@ ORDER BY Name</value>
     <value>False</value>
   </metadata>
   <metadata name="daPatientLeistungsplanGültigBis.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 563</value>
+    <value>17, 485</value>
   </metadata>
   <metadata name="oleDbCommand15.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -450,7 +408,7 @@ ORDER BY Name</value>
     <value>False</value>
   </metadata>
   <metadata name="daPatientTaschengeldKostentraeger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 602</value>
+    <value>17, 524</value>
   </metadata>
   <metadata name="oleDbCommand18.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -479,6 +437,29 @@ ORDER BY Name</value>
   <metadata name="oleDbCommand20.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
+  <metadata name="daPatientKostenträgerErweitert.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>275, 53</value>
+  </metadata>
+  <metadata name="oleDbCommand9.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="oleDbCommand9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="oleDbCommand9.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <data name="oleDbCommand9.CommandText" xml:space="preserve">
+    <value>SELECT  PatientKostentraeger.ID, PatientKostentraeger.IDPatient, IDKostentraeger, GueltigAb, GueltigBis, enumKostentraegerart, BetragErrechnetJN, 
+		PatientKostentraeger.Betrag, ErfasstAm, IDBenutzer, AbgerechnetBis, VorauszahlungJN, RechnungJN, RechnungTyp, 
+		PatientKostentraeger.IDPatientIstZahler, RechnungsdruckTyp,
+		Vorname, Rechnungsempfaenger, FIBUKonto, IDKostentraegerSub
+
+FROM            PatientKostentraeger 
+INNER JOIN Kostentraeger ON PatientKostentraeger.IDKostentraeger = Kostentraeger.ID
+WHERE        (PatientKostentraeger.IDPatient = ?)
+ORDER BY GueltigAb</value>
+  </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>

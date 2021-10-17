@@ -35,7 +35,7 @@ namespace PMDS.Calc.UI.Admin.generic.Calc
                         throw new Exception("openBill: No Bill found for IDKostIntern '" + IDKostIntern.ToString() + "' found!");
                     }
                     arrBillRows.Add(rBill);
-                    print.printSites(arrBillRows, editor, "PMDS - Rechnung", arrBillRows.Count == 1 ? this : null, (object)gridRow, PMDS.Calc.Logic.eModify.openBillRechStor);
+                    print.printBills(arrBillRows, editor, "PMDS - Rechnung", arrBillRows.Count == 1 ? this : null, (object)gridRow, PMDS.Calc.Logic.eModify.openBillRechStor, "");
                 }
                 //else if (rExportBMD.TypBill == PMDS.Calc.Logic.eBillTyp.Sammelrechnung.ToString())
                 //{

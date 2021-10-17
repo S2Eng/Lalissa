@@ -142,7 +142,7 @@
     <value>False</value>
   </metadata>
   <data name="oleDbInsertCommand_kostID.CommandText" xml:space="preserve">
-    <value>INSERT INTO [Kostentraeger] ([ID], [Name], [Strasse], [PLZ], [Ort], [Rechnungsempfaenger], [Rechnungsanschrift], [BLZ], [Kontonr], [Bank], [FIBUKonto], [ErlagscheingebuehrJN], [Betrag], [TransferleistungJN], [TaschengeldJN], [Zahlart], [PatientbezogenJN], [SammelabrechnungJN], [UIDNr], [GSBG], [Anrede], [Vorname], [IDKlinik], [IDKostentraegerSub], [IDPatientIstZahler]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
+    <value>INSERT INTO [Kostentraeger] ([ID], [FIBUKonto], [Name], [Vorname], [Anrede], [Strasse], [PLZ], [Ort], [Rechnungsanschrift], [Rechnungsempfaenger], [IDKostentraegerSub], [UIDNr], [IDKlinik], [SammelabrechnungJN], [GSBG], [Zahlart], [ErlagscheingebuehrJN], [Betrag], [Bank], [Kontonr], [BLZ], [TaschengeldJN], [PatientbezogenJN], [TransferleistungJN], [IDPatientIstZahler]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</value>
   </data>
   <metadata name="oleDbSelectCommand_kostID.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -154,8 +154,8 @@
     <value>False</value>
   </metadata>
   <data name="oleDbSelectCommand_kostID.CommandText" xml:space="preserve">
-    <value>SELECT        ID, Name, Strasse, PLZ, Ort, Rechnungsempfaenger, Rechnungsanschrift, BLZ, Kontonr, Bank, FIBUKonto, ErlagscheingebuehrJN, Betrag, TransferleistungJN, TaschengeldJN, Zahlart, PatientbezogenJN, SammelabrechnungJN, 
-                         UIDNr, GSBG, Anrede, Vorname, IDKlinik, IDKostentraegerSub, IDPatientIstZahler
+    <value>SELECT        ID, FIBUKonto, Name, Vorname, Anrede, Strasse, PLZ, Ort, Rechnungsanschrift, Rechnungsempfaenger, IDKostentraegerSub, UIDNr, IDKlinik, SammelabrechnungJN, GSBG, Zahlart, ErlagscheingebuehrJN, Betrag, Bank, 
+                         Kontonr, BLZ, TaschengeldJN, PatientbezogenJN, TransferleistungJN, IDPatientIstZahler
 FROM            Kostentraeger</value>
   </data>
   <metadata name="oleDbUpdateCommand_kost.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -168,7 +168,7 @@ FROM            Kostentraeger</value>
     <value>False</value>
   </metadata>
   <data name="oleDbUpdateCommand_kost.CommandText" xml:space="preserve">
-    <value>UPDATE [Kostentraeger] SET [ID] = ?, [Name] = ?, [Strasse] = ?, [PLZ] = ?, [Ort] = ?, [Rechnungsempfaenger] = ?, [Rechnungsanschrift] = ?, [BLZ] = ?, [Kontonr] = ?, [Bank] = ?, [FIBUKonto] = ?, [ErlagscheingebuehrJN] = ?, [Betrag] = ?, [TransferleistungJN] = ?, [TaschengeldJN] = ?, [Zahlart] = ?, [PatientbezogenJN] = ?, [SammelabrechnungJN] = ?, [UIDNr] = ?, [GSBG] = ?, [Anrede] = ?, [Vorname] = ?, [IDKlinik] = ?, [IDKostentraegerSub] = ?, [IDPatientIstZahler] = ? WHERE (([ID] = ?))</value>
+    <value>UPDATE [Kostentraeger] SET [ID] = ?, [FIBUKonto] = ?, [Name] = ?, [Vorname] = ?, [Anrede] = ?, [Strasse] = ?, [PLZ] = ?, [Ort] = ?, [Rechnungsanschrift] = ?, [Rechnungsempfaenger] = ?, [IDKostentraegerSub] = ?, [UIDNr] = ?, [IDKlinik] = ?, [SammelabrechnungJN] = ?, [GSBG] = ?, [Zahlart] = ?, [ErlagscheingebuehrJN] = ?, [Betrag] = ?, [Bank] = ?, [Kontonr] = ?, [BLZ] = ?, [TaschengeldJN] = ?, [PatientbezogenJN] = ?, [TransferleistungJN] = ?, [IDPatientIstZahler] = ? WHERE (([ID] = ?))</value>
   </data>
   <metadata name="daKostSammJN.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 134</value>

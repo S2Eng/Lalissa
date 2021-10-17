@@ -541,7 +541,7 @@ namespace PMDS.GUI
 
                     Nullable<DateTime> dBis = null;
                     if (this.dtBis.Value != null)
-                        dBis = this.dtBis.DateTime.Date;
+                        dBis = this.dtBis.DateTime; //.DateTime.Date;
 
                     IQueryable<PMDS.db.Entities.s2_GetKlientenlisteAbrechnung_Result> ts2_GetKlientenlisteAbrechnung_Result = null;
                     ts2_GetKlientenlisteAbrechnung_Result = b.getKlientenlisteAbrechnung(ref sName, ref IDAllgKostenträger, ref dVon, ref dBis, ref NurSelbstzahlerJN, DBContext);

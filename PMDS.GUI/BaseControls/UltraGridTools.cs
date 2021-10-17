@@ -213,7 +213,12 @@ namespace PMDS.GUI
 			return QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zeile(n) löschen ?", "Löschen", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 		}
 
-		public static void SetTag(UltraGrid g, object oTag) 
+        public static DialogResult AskRowDelete(string sQuestion)
+        {
+            return QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sQuestion, "Löschen", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        }
+
+        public static void SetTag(UltraGrid g, object oTag) 
 		{
 			UltraGridRow[] ra = GetAllRowsFromGroupedUltraGrid(g, false);
 			foreach(UltraGridRow r in ra) 

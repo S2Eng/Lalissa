@@ -1390,6 +1390,42 @@ Public Class doBill
             calcBase.doExept(exept)
         End Try
     End Function
+
+    Public Function SetRechnungKopie(ByVal r As PMDS.Calc.Logic.dbPMDS.billsRow, ByRef editor As TXTextControl.TextControl)
+        Try
+            editor.Text = ""
+            Me.doEditor.showText(r.Rechnung, TXTextControl.StreamType.RichTextFormat, True, TXTextControl.ViewMode.PageView, editor)
+            Me.doBookmarks.setBookmark("[RechNr]", r.RechNr + " - KOPIE", editor)
+
+        Catch except As Exception
+            calcBase.doExept(except)
+        End Try
+    End Function
+
+    Public Function SetRechnungsadresseVersand(ByVal r As PMDS.Calc.Logic.dbPMDS.billsRow, ByRef editor As TXTextControl.TextControl, Titel As String, Nachname As String, Vorname As String, Plz As String, Ort As String, Strasse As String, Empfaenger As String, Betreff As String)
+        Try
+
+            editor.Text = ""
+            Me.doEditor.showText(r.Rechnung, TXTextControl.StreamType.RichTextFormat, True, TXTextControl.ViewMode.PageView, editor)
+            Me.doBookmarks.setBookmark("[RechNr]", Betreff, editor)
+            Me.doBookmarks.setBookmark("[KostAnrede]", Titel, editor)
+            Me.doBookmarks.setBookmark("[KostName]", (Vorname + " " + Nachname).Trim(), editor)
+            Me.doBookmarks.setBookmark("[KostEmpf]", Empfaenger, editor)
+            Me.doBookmarks.setBookmark("[KostStrasse]", Strasse, editor)
+            Me.doBookmarks.setBookmark("[KostAnschrift]", (Plz + " " + Ort).Trim(), editor)
+
+            'Me.doBookmarks.setBookmark("[RechDatum]", "------", editor)
+            Me.doBookmarks.setBookmark("[Zahlkond]", "", editor)
+            Me.doBookmarks.setBookmark("[BankKlinik]", "", editor)
+            Me.doBookmarks.setBookmark("[BankUID]", "", editor)
+            Me.doBookmarks.setBookmark("[ZVRHeim]", "", editor)
+            Me.doBookmarks.setBookmark("[RechFloskel]", "", editor)
+
+        Catch except As Exception
+            calcBase.doExept(except)
+        End Try
+    End Function
+
     Public Function modifyBill(ByVal r As PMDS.Calc.Logic.dbPMDS.billsRow, ByVal typ As eModify,
                                 ByVal fld As String, ByVal txt As String, ByVal saveToDB As Boolean,
                                 ByRef editor As TXTextControl.TextControl, ByVal dbCalc As dbCalc,
@@ -1403,7 +1439,7 @@ Public Class doBill
             Select Case typ
                 Case eModify.rechNr
                     Dim sRechNr As String = Me.getRechNr(r, typ, rMonat.RechDatum, TypRechNr)
-                    Me.doBookmarks.setBookmark(fld, "RechnungsNr: " + sRechNr, editor)
+                    Me.doBookmarks.setBookmark(fld, "Rechnung " + sRechNr, editor)
                     r.Rechnung = Me.doEditor.getText(TXTextControl.StreamType.RichTextFormat, editor)
                     If saveToDB Then
                         Me.sql.saveFreigabe(r.ID, sRechNr, r.Rechnung)
@@ -1411,7 +1447,7 @@ Public Class doBill
                     Return sRechNr
 
                 Case eModify.rechNrKopie
-                    Me.doBookmarks.setBookmark(fld, "RechnungsNr: " + TypRechNr, editor)
+                    Me.doBookmarks.setBookmark(fld, "Rechnung " + TypRechNr, editor)
                     r.Rechnung = Me.doEditor.getText(TXTextControl.StreamType.RichTextFormat, editor)
                     If saveToDB Then
                         Me.sql.saveFreigabe(r.ID, TypRechNr, r.Rechnung)
@@ -1463,6 +1499,7 @@ Public Class doBill
             calcBase.doExept(exept)
         End Try
     End Function
+
     Public Function getRechNr(ByVal r As PMDS.Calc.Logic.dbPMDS.billsRow, ByVal modifyTyp As eModify, _
                               ByVal RechDatum As Date, ByVal TypRechNr As String) As String
         Try

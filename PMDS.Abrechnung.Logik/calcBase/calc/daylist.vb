@@ -28,7 +28,7 @@ Public Class daylist
             calcBase.errTxt = ""
             editor.Text = ""
 
-            print.loadTempStream(daylist.daylistRTF)
+            print.loadTempStream(daylist.daylistRTF, False, False, True)
             Me.doEditor.showText(print.printTempStream, TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)
             Application.DoEvents()
 

@@ -28,6 +28,8 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         
         private PatientKostentraegerDataTable tablePatientKostentraeger;
         
+        private PatientKostentraegerErweitertDataTable tablePatientKostentraegerErweitert;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                 }
                 if ((ds.Tables["PatientKostentraeger"] != null)) {
                     base.Tables.Add(new PatientKostentraegerDataTable(ds.Tables["PatientKostentraeger"]));
+                }
+                if ((ds.Tables["PatientKostentraegerErweitert"] != null)) {
+                    base.Tables.Add(new PatientKostentraegerErweitertDataTable(ds.Tables["PatientKostentraegerErweitert"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         public PatientKostentraegerDataTable PatientKostentraeger {
             get {
                 return this.tablePatientKostentraeger;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public PatientKostentraegerErweitertDataTable PatientKostentraegerErweitert {
+            get {
+                return this.tablePatientKostentraegerErweitert;
             }
         }
         
@@ -173,6 +188,9 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                 if ((ds.Tables["PatientKostentraeger"] != null)) {
                     base.Tables.Add(new PatientKostentraegerDataTable(ds.Tables["PatientKostentraeger"]));
                 }
+                if ((ds.Tables["PatientKostentraegerErweitert"] != null)) {
+                    base.Tables.Add(new PatientKostentraegerErweitertDataTable(ds.Tables["PatientKostentraegerErweitert"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                     this.tablePatientKostentraeger.InitVars();
                 }
             }
+            this.tablePatientKostentraegerErweitert = ((PatientKostentraegerErweitertDataTable)(base.Tables["PatientKostentraegerErweitert"]));
+            if ((initTable == true)) {
+                if ((this.tablePatientKostentraegerErweitert != null)) {
+                    this.tablePatientKostentraegerErweitert.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             base.Tables.Add(this.tableKostentraeger);
             this.tablePatientKostentraeger = new PatientKostentraegerDataTable();
             base.Tables.Add(this.tablePatientKostentraeger);
+            this.tablePatientKostentraegerErweitert = new PatientKostentraegerErweitertDataTable();
+            base.Tables.Add(this.tablePatientKostentraegerErweitert);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializePatientKostentraeger() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializePatientKostentraegerErweitert() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void PatientKostentraegerRowChangeEventHandler(object sender, PatientKostentraegerRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void PatientKostentraegerErweitertRowChangeEventHandler(object sender, PatientKostentraegerErweitertRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -789,6 +824,10 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             
             private global::System.Data.DataColumn columnRechnungTyp;
             
+            private global::System.Data.DataColumn columnIDPatientIstZahler;
+            
+            private global::System.Data.DataColumn columnRechnungsdruckTyp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PatientKostentraegerDataTable() {
@@ -936,6 +975,22 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDPatientIstZahlerColumn {
+                get {
+                    return this.columnIDPatientIstZahler;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RechnungsdruckTypColumn {
+                get {
+                    return this.columnRechnungsdruckTyp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -971,7 +1026,23 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PatientKostentraegerRow AddPatientKostentraegerRow(System.Guid ID, System.Guid IDPatient, System.Guid IDKostentraeger, System.DateTime GueltigAb, System.DateTime GueltigBis, int enumKostentraegerart, bool BetragErrechnetJN, double Betrag, System.DateTime ErfasstAm, System.Guid IDBenutzer, System.DateTime AbgerechnetBis, bool VorauszahlungJN, bool RechnungJN, int RechnungTyp) {
+            public PatientKostentraegerRow AddPatientKostentraegerRow(
+                        System.Guid ID, 
+                        System.Guid IDPatient, 
+                        System.Guid IDKostentraeger, 
+                        System.DateTime GueltigAb, 
+                        System.DateTime GueltigBis, 
+                        int enumKostentraegerart, 
+                        bool BetragErrechnetJN, 
+                        decimal Betrag, 
+                        System.DateTime ErfasstAm, 
+                        System.Guid IDBenutzer, 
+                        System.DateTime AbgerechnetBis, 
+                        bool VorauszahlungJN, 
+                        bool RechnungJN, 
+                        int RechnungTyp, 
+                        System.Guid IDPatientIstZahler, 
+                        int RechnungsdruckTyp) {
                 PatientKostentraegerRow rowPatientKostentraegerRow = ((PatientKostentraegerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -987,7 +1058,9 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                         AbgerechnetBis,
                         VorauszahlungJN,
                         RechnungJN,
-                        RechnungTyp};
+                        RechnungTyp,
+                        IDPatientIstZahler,
+                        RechnungsdruckTyp};
                 rowPatientKostentraegerRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPatientKostentraegerRow);
                 return rowPatientKostentraegerRow;
@@ -1031,6 +1104,8 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                 this.columnVorauszahlungJN = base.Columns["VorauszahlungJN"];
                 this.columnRechnungJN = base.Columns["RechnungJN"];
                 this.columnRechnungTyp = base.Columns["RechnungTyp"];
+                this.columnIDPatientIstZahler = base.Columns["IDPatientIstZahler"];
+                this.columnRechnungsdruckTyp = base.Columns["RechnungsdruckTyp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1050,7 +1125,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                 base.Columns.Add(this.columnenumKostentraegerart);
                 this.columnBetragErrechnetJN = new global::System.Data.DataColumn("BetragErrechnetJN", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBetragErrechnetJN);
-                this.columnBetrag = new global::System.Data.DataColumn("Betrag", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnBetrag = new global::System.Data.DataColumn("Betrag", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBetrag);
                 this.columnErfasstAm = new global::System.Data.DataColumn("ErfasstAm", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnErfasstAm);
@@ -1064,6 +1139,10 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                 base.Columns.Add(this.columnRechnungJN);
                 this.columnRechnungTyp = new global::System.Data.DataColumn("RechnungTyp", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRechnungTyp);
+                this.columnIDPatientIstZahler = new global::System.Data.DataColumn("IDPatientIstZahler", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDPatientIstZahler);
+                this.columnRechnungsdruckTyp = new global::System.Data.DataColumn("RechnungsdruckTyp", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRechnungsdruckTyp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -1078,6 +1157,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                 this.columnRechnungTyp.AllowDBNull = false;
                 this.columnRechnungTyp.Caption = "RechnungJN";
                 this.columnRechnungTyp.DefaultValue = ((int)(1));
+                this.columnRechnungsdruckTyp.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1164,6 +1244,555 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "PatientKostentraegerDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class PatientKostentraegerErweitertDataTable : global::System.Data.TypedTableBase<PatientKostentraegerErweitertRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnIDPatient;
+            
+            private global::System.Data.DataColumn columnIDKostentraeger;
+            
+            private global::System.Data.DataColumn columnGueltigAb;
+            
+            private global::System.Data.DataColumn columnGueltigBis;
+            
+            private global::System.Data.DataColumn columnenumKostentraegerart;
+            
+            private global::System.Data.DataColumn columnBetragErrechnetJN;
+            
+            private global::System.Data.DataColumn columnBetrag;
+            
+            private global::System.Data.DataColumn columnErfasstAm;
+            
+            private global::System.Data.DataColumn columnIDBenutzer;
+            
+            private global::System.Data.DataColumn columnAbgerechnetBis;
+            
+            private global::System.Data.DataColumn columnVorauszahlungJN;
+            
+            private global::System.Data.DataColumn columnRechnungJN;
+            
+            private global::System.Data.DataColumn columnRechnungTyp;
+            
+            private global::System.Data.DataColumn columnIDPatientIstZahler;
+            
+            private global::System.Data.DataColumn columnRechnungsdruckTyp;
+            
+            private global::System.Data.DataColumn columnVorname;
+            
+            private global::System.Data.DataColumn columnRechnungsempfaenger;
+            
+            private global::System.Data.DataColumn columnFIBUKonto;
+            
+            private global::System.Data.DataColumn columnIDKostentraegerSub;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PatientKostentraegerErweitertDataTable() {
+                this.TableName = "PatientKostentraegerErweitert";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal PatientKostentraegerErweitertDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected PatientKostentraegerErweitertDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDPatientColumn {
+                get {
+                    return this.columnIDPatient;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDKostentraegerColumn {
+                get {
+                    return this.columnIDKostentraeger;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn GueltigAbColumn {
+                get {
+                    return this.columnGueltigAb;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn GueltigBisColumn {
+                get {
+                    return this.columnGueltigBis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn enumKostentraegerartColumn {
+                get {
+                    return this.columnenumKostentraegerart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BetragErrechnetJNColumn {
+                get {
+                    return this.columnBetragErrechnetJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BetragColumn {
+                get {
+                    return this.columnBetrag;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ErfasstAmColumn {
+                get {
+                    return this.columnErfasstAm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDBenutzerColumn {
+                get {
+                    return this.columnIDBenutzer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AbgerechnetBisColumn {
+                get {
+                    return this.columnAbgerechnetBis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn VorauszahlungJNColumn {
+                get {
+                    return this.columnVorauszahlungJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RechnungJNColumn {
+                get {
+                    return this.columnRechnungJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RechnungTypColumn {
+                get {
+                    return this.columnRechnungTyp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDPatientIstZahlerColumn {
+                get {
+                    return this.columnIDPatientIstZahler;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RechnungsdruckTypColumn {
+                get {
+                    return this.columnRechnungsdruckTyp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn VornameColumn {
+                get {
+                    return this.columnVorname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RechnungsempfaengerColumn {
+                get {
+                    return this.columnRechnungsempfaenger;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FIBUKontoColumn {
+                get {
+                    return this.columnFIBUKonto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDKostentraegerSubColumn {
+                get {
+                    return this.columnIDKostentraegerSub;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PatientKostentraegerErweitertRow this[int index] {
+                get {
+                    return ((PatientKostentraegerErweitertRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PatientKostentraegerErweitertRowChangeEventHandler PatientKostentraegerErweitertRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PatientKostentraegerErweitertRowChangeEventHandler PatientKostentraegerErweitertRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PatientKostentraegerErweitertRowChangeEventHandler PatientKostentraegerErweitertRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event PatientKostentraegerErweitertRowChangeEventHandler PatientKostentraegerErweitertRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddPatientKostentraegerErweitertRow(PatientKostentraegerErweitertRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PatientKostentraegerErweitertRow AddPatientKostentraegerErweitertRow(
+                        System.Guid ID, 
+                        System.Guid IDPatient, 
+                        System.Guid IDKostentraeger, 
+                        System.DateTime GueltigAb, 
+                        System.DateTime GueltigBis, 
+                        int enumKostentraegerart, 
+                        bool BetragErrechnetJN, 
+                        decimal Betrag, 
+                        System.DateTime ErfasstAm, 
+                        System.Guid IDBenutzer, 
+                        System.DateTime AbgerechnetBis, 
+                        bool VorauszahlungJN, 
+                        bool RechnungJN, 
+                        int RechnungTyp, 
+                        System.Guid IDPatientIstZahler, 
+                        int RechnungsdruckTyp, 
+                        string Vorname, 
+                        string Rechnungsempfaenger, 
+                        string FIBUKonto, 
+                        System.Guid IDKostentraegerSub) {
+                PatientKostentraegerErweitertRow rowPatientKostentraegerErweitertRow = ((PatientKostentraegerErweitertRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        IDPatient,
+                        IDKostentraeger,
+                        GueltigAb,
+                        GueltigBis,
+                        enumKostentraegerart,
+                        BetragErrechnetJN,
+                        Betrag,
+                        ErfasstAm,
+                        IDBenutzer,
+                        AbgerechnetBis,
+                        VorauszahlungJN,
+                        RechnungJN,
+                        RechnungTyp,
+                        IDPatientIstZahler,
+                        RechnungsdruckTyp,
+                        Vorname,
+                        Rechnungsempfaenger,
+                        FIBUKonto,
+                        IDKostentraegerSub};
+                rowPatientKostentraegerErweitertRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPatientKostentraegerErweitertRow);
+                return rowPatientKostentraegerErweitertRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                PatientKostentraegerErweitertDataTable cln = ((PatientKostentraegerErweitertDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new PatientKostentraegerErweitertDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnIDPatient = base.Columns["IDPatient"];
+                this.columnIDKostentraeger = base.Columns["IDKostentraeger"];
+                this.columnGueltigAb = base.Columns["GueltigAb"];
+                this.columnGueltigBis = base.Columns["GueltigBis"];
+                this.columnenumKostentraegerart = base.Columns["enumKostentraegerart"];
+                this.columnBetragErrechnetJN = base.Columns["BetragErrechnetJN"];
+                this.columnBetrag = base.Columns["Betrag"];
+                this.columnErfasstAm = base.Columns["ErfasstAm"];
+                this.columnIDBenutzer = base.Columns["IDBenutzer"];
+                this.columnAbgerechnetBis = base.Columns["AbgerechnetBis"];
+                this.columnVorauszahlungJN = base.Columns["VorauszahlungJN"];
+                this.columnRechnungJN = base.Columns["RechnungJN"];
+                this.columnRechnungTyp = base.Columns["RechnungTyp"];
+                this.columnIDPatientIstZahler = base.Columns["IDPatientIstZahler"];
+                this.columnRechnungsdruckTyp = base.Columns["RechnungsdruckTyp"];
+                this.columnVorname = base.Columns["Vorname"];
+                this.columnRechnungsempfaenger = base.Columns["Rechnungsempfaenger"];
+                this.columnFIBUKonto = base.Columns["FIBUKonto"];
+                this.columnIDKostentraegerSub = base.Columns["IDKostentraegerSub"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnIDPatient = new global::System.Data.DataColumn("IDPatient", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDPatient);
+                this.columnIDKostentraeger = new global::System.Data.DataColumn("IDKostentraeger", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDKostentraeger);
+                this.columnGueltigAb = new global::System.Data.DataColumn("GueltigAb", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGueltigAb);
+                this.columnGueltigBis = new global::System.Data.DataColumn("GueltigBis", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGueltigBis);
+                this.columnenumKostentraegerart = new global::System.Data.DataColumn("enumKostentraegerart", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnenumKostentraegerart);
+                this.columnBetragErrechnetJN = new global::System.Data.DataColumn("BetragErrechnetJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBetragErrechnetJN);
+                this.columnBetrag = new global::System.Data.DataColumn("Betrag", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBetrag);
+                this.columnErfasstAm = new global::System.Data.DataColumn("ErfasstAm", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnErfasstAm);
+                this.columnIDBenutzer = new global::System.Data.DataColumn("IDBenutzer", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDBenutzer);
+                this.columnAbgerechnetBis = new global::System.Data.DataColumn("AbgerechnetBis", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAbgerechnetBis);
+                this.columnVorauszahlungJN = new global::System.Data.DataColumn("VorauszahlungJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVorauszahlungJN);
+                this.columnRechnungJN = new global::System.Data.DataColumn("RechnungJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRechnungJN);
+                this.columnRechnungTyp = new global::System.Data.DataColumn("RechnungTyp", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRechnungTyp);
+                this.columnIDPatientIstZahler = new global::System.Data.DataColumn("IDPatientIstZahler", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDPatientIstZahler);
+                this.columnRechnungsdruckTyp = new global::System.Data.DataColumn("RechnungsdruckTyp", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRechnungsdruckTyp);
+                this.columnVorname = new global::System.Data.DataColumn("Vorname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVorname);
+                this.columnRechnungsempfaenger = new global::System.Data.DataColumn("Rechnungsempfaenger", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRechnungsempfaenger);
+                this.columnFIBUKonto = new global::System.Data.DataColumn("FIBUKonto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIBUKonto);
+                this.columnIDKostentraegerSub = new global::System.Data.DataColumn("IDKostentraegerSub", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDKostentraegerSub);
+                this.columnID.AllowDBNull = false;
+                this.columnIDPatient.AllowDBNull = false;
+                this.columnIDKostentraeger.AllowDBNull = false;
+                this.columnGueltigAb.AllowDBNull = false;
+                this.columnenumKostentraegerart.AllowDBNull = false;
+                this.columnBetragErrechnetJN.AllowDBNull = false;
+                this.columnVorauszahlungJN.AllowDBNull = false;
+                this.columnRechnungJN.AllowDBNull = false;
+                this.columnRechnungTyp.AllowDBNull = false;
+                this.columnRechnungsdruckTyp.AllowDBNull = false;
+                this.columnVorname.AllowDBNull = false;
+                this.columnVorname.MaxLength = 150;
+                this.columnRechnungsempfaenger.AllowDBNull = false;
+                this.columnRechnungsempfaenger.MaxLength = 50;
+                this.columnFIBUKonto.AllowDBNull = false;
+                this.columnFIBUKonto.MaxLength = 20;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PatientKostentraegerErweitertRow NewPatientKostentraegerErweitertRow() {
+                return ((PatientKostentraegerErweitertRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new PatientKostentraegerErweitertRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(PatientKostentraegerErweitertRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.PatientKostentraegerErweitertRowChanged != null)) {
+                    this.PatientKostentraegerErweitertRowChanged(this, new PatientKostentraegerErweitertRowChangeEvent(((PatientKostentraegerErweitertRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.PatientKostentraegerErweitertRowChanging != null)) {
+                    this.PatientKostentraegerErweitertRowChanging(this, new PatientKostentraegerErweitertRowChangeEvent(((PatientKostentraegerErweitertRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.PatientKostentraegerErweitertRowDeleted != null)) {
+                    this.PatientKostentraegerErweitertRowDeleted(this, new PatientKostentraegerErweitertRowChangeEvent(((PatientKostentraegerErweitertRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.PatientKostentraegerErweitertRowDeleting != null)) {
+                    this.PatientKostentraegerErweitertRowDeleting(this, new PatientKostentraegerErweitertRowChangeEvent(((PatientKostentraegerErweitertRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemovePatientKostentraegerErweitertRow(PatientKostentraegerErweitertRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsPatientKostentraeger ds = new dsPatientKostentraeger();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "PatientKostentraegerErweitertDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1477,10 +2106,10 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public double Betrag {
+            public decimal Betrag {
                 get {
                     try {
-                        return ((double)(this[this.tablePatientKostentraeger.BetragColumn]));
+                        return ((decimal)(this[this.tablePatientKostentraeger.BetragColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("Der Wert für Spalte Betrag in Tabelle PatientKostentraeger ist DBNull.", e);
@@ -1574,6 +2203,34 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDPatientIstZahler {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tablePatientKostentraeger.IDPatientIstZahlerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDPatientIstZahler in Tabelle PatientKostentraeger ist DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraeger.IDPatientIstZahlerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int RechnungsdruckTyp {
+                get {
+                    return ((int)(this[this.tablePatientKostentraeger.RechnungsdruckTypColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraeger.RechnungsdruckTypColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsGueltigBisNull() {
                 return this.IsNull(this.tablePatientKostentraeger.GueltigBisColumn);
             }
@@ -1631,6 +2288,378 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             public void SetAbgerechnetBisNull() {
                 this[this.tablePatientKostentraeger.AbgerechnetBisColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDPatientIstZahlerNull() {
+                return this.IsNull(this.tablePatientKostentraeger.IDPatientIstZahlerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDPatientIstZahlerNull() {
+                this[this.tablePatientKostentraeger.IDPatientIstZahlerColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class PatientKostentraegerErweitertRow : global::System.Data.DataRow {
+            
+            private PatientKostentraegerErweitertDataTable tablePatientKostentraegerErweitert;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal PatientKostentraegerErweitertRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablePatientKostentraegerErweitert = ((PatientKostentraegerErweitertDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid ID {
+                get {
+                    return ((global::System.Guid)(this[this.tablePatientKostentraegerErweitert.IDColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDPatient {
+                get {
+                    return ((global::System.Guid)(this[this.tablePatientKostentraegerErweitert.IDPatientColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.IDPatientColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDKostentraeger {
+                get {
+                    return ((global::System.Guid)(this[this.tablePatientKostentraegerErweitert.IDKostentraegerColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.IDKostentraegerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime GueltigAb {
+                get {
+                    return ((global::System.DateTime)(this[this.tablePatientKostentraegerErweitert.GueltigAbColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.GueltigAbColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime GueltigBis {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePatientKostentraegerErweitert.GueltigBisColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte GueltigBis in Tabelle PatientKostentraegerErweitert ist DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.GueltigBisColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int enumKostentraegerart {
+                get {
+                    return ((int)(this[this.tablePatientKostentraegerErweitert.enumKostentraegerartColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.enumKostentraegerartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool BetragErrechnetJN {
+                get {
+                    return ((bool)(this[this.tablePatientKostentraegerErweitert.BetragErrechnetJNColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.BetragErrechnetJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Betrag {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePatientKostentraegerErweitert.BetragColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Betrag in Tabelle PatientKostentraegerErweitert ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.BetragColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime ErfasstAm {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePatientKostentraegerErweitert.ErfasstAmColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte ErfasstAm in Tabelle PatientKostentraegerErweitert ist DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.ErfasstAmColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDBenutzer {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tablePatientKostentraegerErweitert.IDBenutzerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDBenutzer in Tabelle PatientKostentraegerErweitert ist DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.IDBenutzerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime AbgerechnetBis {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePatientKostentraegerErweitert.AbgerechnetBisColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte AbgerechnetBis in Tabelle PatientKostentraegerErweitert ist D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.AbgerechnetBisColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool VorauszahlungJN {
+                get {
+                    return ((bool)(this[this.tablePatientKostentraegerErweitert.VorauszahlungJNColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.VorauszahlungJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool RechnungJN {
+                get {
+                    return ((bool)(this[this.tablePatientKostentraegerErweitert.RechnungJNColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.RechnungJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int RechnungTyp {
+                get {
+                    return ((int)(this[this.tablePatientKostentraegerErweitert.RechnungTypColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.RechnungTypColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDPatientIstZahler {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tablePatientKostentraegerErweitert.IDPatientIstZahlerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDPatientIstZahler in Tabelle PatientKostentraegerErweitert i" +
+                                "st DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.IDPatientIstZahlerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int RechnungsdruckTyp {
+                get {
+                    return ((int)(this[this.tablePatientKostentraegerErweitert.RechnungsdruckTypColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.RechnungsdruckTypColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Vorname {
+                get {
+                    return ((string)(this[this.tablePatientKostentraegerErweitert.VornameColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.VornameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Rechnungsempfaenger {
+                get {
+                    return ((string)(this[this.tablePatientKostentraegerErweitert.RechnungsempfaengerColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.RechnungsempfaengerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FIBUKonto {
+                get {
+                    return ((string)(this[this.tablePatientKostentraegerErweitert.FIBUKontoColumn]));
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.FIBUKontoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDKostentraegerSub {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tablePatientKostentraegerErweitert.IDKostentraegerSubColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDKostentraegerSub in Tabelle PatientKostentraegerErweitert i" +
+                                "st DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatientKostentraegerErweitert.IDKostentraegerSubColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsGueltigBisNull() {
+                return this.IsNull(this.tablePatientKostentraegerErweitert.GueltigBisColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetGueltigBisNull() {
+                this[this.tablePatientKostentraegerErweitert.GueltigBisColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBetragNull() {
+                return this.IsNull(this.tablePatientKostentraegerErweitert.BetragColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBetragNull() {
+                this[this.tablePatientKostentraegerErweitert.BetragColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsErfasstAmNull() {
+                return this.IsNull(this.tablePatientKostentraegerErweitert.ErfasstAmColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetErfasstAmNull() {
+                this[this.tablePatientKostentraegerErweitert.ErfasstAmColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDBenutzerNull() {
+                return this.IsNull(this.tablePatientKostentraegerErweitert.IDBenutzerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDBenutzerNull() {
+                this[this.tablePatientKostentraegerErweitert.IDBenutzerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAbgerechnetBisNull() {
+                return this.IsNull(this.tablePatientKostentraegerErweitert.AbgerechnetBisColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAbgerechnetBisNull() {
+                this[this.tablePatientKostentraegerErweitert.AbgerechnetBisColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDPatientIstZahlerNull() {
+                return this.IsNull(this.tablePatientKostentraegerErweitert.IDPatientIstZahlerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDPatientIstZahlerNull() {
+                this[this.tablePatientKostentraegerErweitert.IDPatientIstZahlerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDKostentraegerSubNull() {
+                return this.IsNull(this.tablePatientKostentraegerErweitert.IDKostentraegerSubColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDKostentraegerSubNull() {
+                this[this.tablePatientKostentraegerErweitert.IDKostentraegerSubColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -1687,6 +2716,40 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PatientKostentraegerRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class PatientKostentraegerErweitertRowChangeEvent : global::System.EventArgs {
+            
+            private PatientKostentraegerErweitertRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PatientKostentraegerErweitertRowChangeEvent(PatientKostentraegerErweitertRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PatientKostentraegerErweitertRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -558,6 +558,10 @@ namespace PMDS.Calc.UI
             {
                 this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.printRechnungsKopie, true, null, null, false);
             }
+            else if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift))
+            {
+                this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.printRechnungsversand, true, null, null, false);
+            }
             else
             {
                 this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);

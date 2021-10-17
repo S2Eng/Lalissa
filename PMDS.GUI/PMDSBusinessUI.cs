@@ -885,11 +885,21 @@ namespace PMDS.GUI
 
         public void loadZahlartCbo(Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
         {
+            cbo.Items.Clear();
             ValueListItem itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Bankeinzug, PMDS.Calc.Logic.eZahlart.Bankeinzug.ToString());
             itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Bar, PMDS.Calc.Logic.eZahlart.Bar.ToString());
             itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Erlagschein, PMDS.Calc.Logic.eZahlart.Erlagschein.ToString());
             itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.Überweisung, PMDS.Calc.Logic.eZahlart.Überweisung.ToString());
             itm = cbo.Items.Add((int)PMDS.Calc.Logic.eZahlart.FSW, PMDS.Calc.Logic.eZahlart.FSW.ToString());
+        }
+
+        public void loadRechnungsdruckTypCbo(Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)
+        {
+            cbo.Items.Clear();
+            ValueListItem itm = cbo.Items.Add((int)PMDS.Global.RechnungsdruckTyp.NurZahler, generic.GetEnumDescription(PMDS.Global.RechnungsdruckTyp.NurZahler));
+            itm = cbo.Items.Add((int)PMDS.Global.RechnungsdruckTyp.KeinRechnungsdruck, generic.GetEnumDescription(PMDS.Global.RechnungsdruckTyp.KeinRechnungsdruck));
+            itm = cbo.Items.Add((int)PMDS.Global.RechnungsdruckTyp.NurKopieKontakte, generic.GetEnumDescription(PMDS.Global.RechnungsdruckTyp.NurKopieKontakte));
+            itm = cbo.Items.Add((int)PMDS.Global.RechnungsdruckTyp.ZahlerUndKopieKontakte, generic.GetEnumDescription(PMDS.Global.RechnungsdruckTyp.ZahlerUndKopieKontakte));
         }
 
         public static void getListHerrichtenMedikamente(Infragistics.Win.UltraWinEditors.UltraComboEditor cbo)

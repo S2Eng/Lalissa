@@ -764,8 +764,7 @@
             this.btnPrint.Size = new System.Drawing.Size(132, 22);
             this.btnPrint.TabIndex = 101;
             this.btnPrint.Text = "Rechnungen öffnen";
-            ultraToolTipInfo4.ToolTipText = "Rechnung ausdrucken. Für Kopien freigegebener Rechungen eine Steuerungstaste halt" +
-    "en und Klicken.";
+            ultraToolTipInfo4.ToolTipText = "Für Rechnungsversand = Umschalt-Taste | Für Rechnungskopie = Strg-Taste";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnPrint, ultraToolTipInfo4);
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 

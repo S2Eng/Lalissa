@@ -8,35 +8,32 @@ using System.Text;
 using System.Windows.Forms;
 using PMDS.DB;
 using Infragistics.Win.UltraWinEditors;
-using System.Linq;
 using PMDS.Global;
 
 
 namespace PMDS.GUI.Kostentraeger
-{   
+{
     public partial class ucKostentraegerKlientEditSingle : UserControl
     {
-        public Guid _IDPatient;
-        public Nullable<Guid> _IDKostenträger;
-        public Nullable<Guid> _IDPatientKostenträger;
-
-        public PMDS.db.Entities.Kostentraeger _rKostenträger;
-        public PMDS.db.Entities.PatientKostentraeger _rPatientKostentraeger;
-
-        public bool _isNew;
-
-        public bool abort = true;
-        public bool IsInitialized;
-        public eTypeUI _TypeUI;
-
-        public frmKostentraegerKlientEditSingle mainWindow;
-        public PMDS.db.Entities.ERModellPMDSEntities _db;
-
-        public PMDS.DB.PMDSBusiness b = new PMDSBusiness();
-        public PMDSBusinessUI b3 = new PMDSBusinessUI();
-        public PMDS.UI.Sitemap.UIFct UIFct1 = new PMDS.UI.Sitemap.UIFct();
-
+        public frmKostentraegerKlientEditSingle mainWindow { get; set; }
         public bool FSWMode { get; set; }
+        public bool abort { get; set; } = true;
+
+        private Guid _IDPatient;
+        private Nullable<Guid> _IDKostenträger;
+        private Nullable<Guid> _IDPatientKostenträger;
+
+        private PMDS.db.Entities.Kostentraeger _rKostenträger;
+        private PMDS.db.Entities.PatientKostentraeger _rPatientKostentraeger;
+
+        private bool _isNew;
+        private  bool IsInitialized;
+        private eTypeUI _TypeUI;
+
+        private PMDS.db.Entities.ERModellPMDSEntities _db;
+        private PMDS.DB.PMDSBusiness b = new PMDSBusiness();
+        private PMDSBusinessUI b3 = new PMDSBusinessUI();
+        private PMDS.UI.Sitemap.UIFct UIFct1 = new PMDS.UI.Sitemap.UIFct();
 
         public enum eTypeUI
         {
@@ -74,6 +71,7 @@ namespace PMDS.GUI.Kostentraeger
                     this.b3.getAllKostentraegerCbo(this.cboIDKostentraegerSub, this._db, true);
                     this.UIFct1.fillEnumBillTyp(this.cboRechnungTyp, false, false);
                     this.b3.loadZahlartCbo(this.cboZahlart);
+                    this.b3.loadRechnungsdruckTypCbo(this.cboRechnungsdruckTyp1);
 
                     this.clearUI();
                     this.setUI();
@@ -91,12 +89,14 @@ namespace PMDS.GUI.Kostentraeger
         {
             try
             {
+                this.txtKostentraeger.Text = "";
                 this.txtBank.Text = "";
                 this.txtKontonr.Text = "";
                 this.txtBLZ.Text = "";
                 this.txtFIBUKonto.Text = "";
                 this.cboZahlart.Value = null;
                 this.chkErlagscheingebuehrJN.Checked = false;
+                this.numErlagscheingebuehr.Value = 0;
 
                 this.udteGueltigAb.Value = null;
                 this.udteGueltigBis.Value = null;
@@ -109,8 +109,9 @@ namespace PMDS.GUI.Kostentraeger
                 this.chkVorauszahlungJN.Checked = false;
                 this.chkRechnungJN.Checked = false;
                 this.cboRechnungTyp.Value = null;
-                
+                this.cboRechnungsdruckTyp1.Value = null;
 
+                this.txtAnrede.Text = "";
                 this.txtStrasse.Text = "";
                 this.txtPLZ.Text = "";
                 this.txtOrt.Text = "";
@@ -125,6 +126,9 @@ namespace PMDS.GUI.Kostentraeger
         {
             try
             {
+
+                this.chkVorauszahlungJN.Visible = false;
+
                 if (this._TypeUI == eTypeUI.Klient)
                 {
                     this.txtBank.ReadOnly = false;
@@ -132,16 +136,14 @@ namespace PMDS.GUI.Kostentraeger
                     this.txtBLZ.ReadOnly = false;
                     this.txtFIBUKonto.ReadOnly = false;
                     this.cboZahlart.ReadOnly = false;
-                    this.chkErlagscheingebuehrJN.Enabled = false;
                 }
-                else if (this._TypeUI == eTypeUI.Klient)
+                else if (this._TypeUI == eTypeUI.Kostenträger)
                 {
                     this.txtBank.ReadOnly = true;
                     this.txtKontonr.ReadOnly = true;
                     this.txtBLZ.ReadOnly = true;
                     this.txtFIBUKonto.ReadOnly = true;
                     this.cboZahlart.ReadOnly = true;
-                    this.chkErlagscheingebuehrJN.Enabled = false;
                 }
                 else
                 {
@@ -155,11 +157,11 @@ namespace PMDS.GUI.Kostentraeger
                 this.cboIDBenutzer.ReadOnly = true;
                 this.cboIDKostentraegerSub.ReadOnly = false;
                 this.cboEnumKostentraegerart.ReadOnly = false;
-                this.chkBetragErrechnetJN.Enabled = false;
+                this.chkBetragErrechnetJN.Enabled = true;
                 this.numBetrag.ReadOnly = false;
-                this.chkVorauszahlungJN.Enabled = false;
-                this.chkRechnungJN.Enabled = false;
+                this.chkRechnungJN.Enabled = true;
                 this.cboRechnungTyp.ReadOnly = true;
+                this.cboRechnungsdruckTyp1.ReadOnly = false;
             }
             catch (Exception ex)
             {
@@ -167,7 +169,7 @@ namespace PMDS.GUI.Kostentraeger
             }
         }
 
-        public void loadData(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostenträger, bool isNew, bool FSWMode)
+        public bool loadData(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostenträger, bool isNew, bool FSWMode, bool EVMode)
         {
             try
             {
@@ -185,7 +187,7 @@ namespace PMDS.GUI.Kostentraeger
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für Klienten ohne aktuellen Aufenthalt ist diese Funktion nicht möglich. Bitte legen Sie einen Kostenträger an und ordnen Sie den Klienten zu.", "", MessageBoxButtons.OK);
                     this.mainWindow.Close();
                     this._abortNoAufenthalt = true;
-                    return;
+                    return false;
                 }
 
                 bool WohnungAbgemeldetJNTmp = false;
@@ -223,20 +225,22 @@ namespace PMDS.GUI.Kostentraeger
                     }
                 }
 
-                //this.cboIDKostentraegerSub.Enabled = !isNew;
-
                 if (isNew)
                 {                    
                     this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, true, false, false, this._db);
 
+                    //Klient selbst als Kostenträger
                     this._rKostenträger = PMDS.Global.db.ERSystem.EFEntities.newKostentraeger(this._db);
                     this._rPatientKostentraeger = PMDS.Global.db.ERSystem.EFEntities.newPatientKostentraeger(this._db);
 
                     this._rKostenträger.ID = System.Guid.NewGuid();
-                    this._rKostenträger.Name = (rPatient.Titel + " " + rPatient.Nachname.Trim() + " " + rPatient.Vorname.Trim() + " " + rPatient.TitelPost).Trim();
+                    this._rKostenträger.Anrede = rPatient.Titel.Trim();
+                    this._rKostenträger.Name = rPatient.Nachname.Trim();
+                    this._rKostenträger.Vorname = rPatient.Vorname.Trim();
+                    this.txtKostentraeger.Text = (this._rKostenträger.Anrede + " " + this._rKostenträger.Name + " " + this._rKostenträger.Vorname).Trim();
                     this._rKostenträger.FIBUKonto = rPatient.Klientennummer == null ? "" : rPatient.Klientennummer.Trim();
                     this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.Überweisung;
-                    this._rKostenträger.PatientbezogenJN = !FSWMode;            
+                    this._rKostenträger.PatientbezogenJN = true;
                     this._rKostenträger.IDPatient = this._IDPatient;
                     this._rKostenträger.IDKlinik = ENV.IDKlinik;
                     this._rKostenträger.PLZ = rAdresse.Plz.Trim();
@@ -244,6 +248,8 @@ namespace PMDS.GUI.Kostentraeger
                     this._rKostenträger.Strasse = rAdresse.Strasse.Trim();
                     this._rKostenträger.IDPatientIstZahler = null;
                     this._rKostenträger.GSBG = 0;
+                    this._rKostenträger.ErlagscheingebuehrJN = false;
+                    this._rKostenträger.Betrag = 0;
 
                     this._rPatientKostentraeger.ID = System.Guid.NewGuid();
                     this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Alles;
@@ -251,6 +257,7 @@ namespace PMDS.GUI.Kostentraeger
                     this._rPatientKostentraeger.BetragErrechnetJN = true;
                     this._rPatientKostentraeger.RechnungJN = true;
                     this._rPatientKostentraeger.RechnungTyp = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;
+                    this._rPatientKostentraeger.RechnungsdruckTyp = (int)PMDS.Global.RechnungsdruckTyp.NurZahler;
                     this._rPatientKostentraeger.Betrag = 0;
                     this._rPatientKostentraeger.IDPatient = this._IDPatient;
                     this._rPatientKostentraeger.IDKostentraeger = this._rKostenträger.ID;
@@ -258,14 +265,99 @@ namespace PMDS.GUI.Kostentraeger
                     this._rPatientKostentraeger.IDBenutzer = ENV.USERID;
                     this._rPatientKostentraeger.IDPatientIstZahler = rPatient.ID;
 
-                    if (FSWMode)
+                   if (FSWMode)    //Kostenträger = Klient mit Forderungsabtretung an FSW. 2021-11-10: wird nicht mehr verwendet
                     {
                         this._rKostenträger.GSBG = ENV.FSW_Prozent;
-                        this._rKostenträger.Name = "FSW für " + this._rKostenträger.Name;
+                        this._rKostenträger.PatientbezogenJN = false;
                         this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
-                        this._rKostenträger.Rechnungsempfaenger = "Fond Soziales Wien";
+                        this._rKostenträger.Rechnungsempfaenger = "(Fond Soziales Wien)";
                         this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;
                         this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.FSW;
+                        this._rPatientKostentraeger.IDPatientIstZahler = null;
+                    }
+
+                    else if (EVMode)     //Kostenträger ist Erwachsenenvertreter
+                    {
+                        using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                        {
+                            var lEV = (from rSach in db.Sachwalter
+                                       join rAdd in db.Adresse on rSach.IDAdresse equals rAdd.ID
+                                       join rKon in db.Kontakt on rSach.IDKontakt equals rKon.ID
+                                       where rSach.IDPatient == this._IDPatient && rSach.Von != null && rSach.Bis == null
+                                       select new { Nachname = rSach.Nachname.Trim(),
+                                           Vorname = rSach.Vorname.Trim(),
+                                           Titel = rSach.Titel.Trim(),
+                                           PLZ = rAdd.Plz.Trim(),
+                                           Ort = rAdd.Ort.Trim(),
+                                           Strasse = rAdd.Strasse.Trim(),
+                                           GueltigAb = rSach.Von,
+                                           Belange = rSach.Belange.Trim(),
+                                           Gericht = rSach.Gericht.Trim(),
+                                           FiBu = rKon.Zusatz3.Trim(),
+                                           Anrede = rSach.Titel.Trim()
+                                       }).ToList();
+                            if (lEV.Count == 1)
+                            {
+                                this._rKostenträger.Anrede = lEV.First().Titel;
+                                this._rKostenträger.Name = lEV.First().Nachname;
+                                this._rKostenträger.Vorname = lEV.First().Vorname;
+                                this.txtKostentraeger.Text = (this._rKostenträger.Vorname + " " + this._rKostenträger.Name).Trim();
+                                this._rKostenträger.FIBUKonto = lEV.First().FiBu;
+                                this._rKostenträger.PatientbezogenJN = true;
+                                this._rKostenträger.IDPatient = this._IDPatient;
+                                this._rKostenträger.IDKlinik = ENV.IDKlinik;
+                                this._rKostenträger.PLZ = lEV.First().PLZ.Trim();
+                                this._rKostenträger.Ort = lEV.First().Ort.Trim();
+                                this._rKostenträger.Strasse = lEV.First().Strasse.Trim();
+                                this._rKostenträger.IDPatientIstZahler = null;
+                                this._rKostenträger.GSBG = 0;
+                                this._rKostenträger.IDKostentraegerSub = null;
+
+                                string sPatName = (rPatient.Titel + " " + rPatient.Vorname.Trim() + " " + rPatient.Nachname.Trim()).Trim();
+                                this._rKostenträger.Rechnungsempfaenger = "(Erwachsenenvertreter für " + sPatName + ")";
+
+                                this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Alles;
+                                this._rPatientKostentraeger.RechnungTyp = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;
+                                this._rPatientKostentraeger.ID = System.Guid.NewGuid();
+                                this._rPatientKostentraeger.GueltigAb = (DateTime)lEV.First().GueltigAb;
+                                this._rPatientKostentraeger.BetragErrechnetJN = true;
+                                this._rPatientKostentraeger.RechnungJN = true;
+                                this._rPatientKostentraeger.Betrag = 0;
+                                this._rPatientKostentraeger.IDPatient = this._IDPatient;
+                                this._rPatientKostentraeger.IDKostentraeger = this._rKostenträger.ID;
+                                this._rPatientKostentraeger.ErfasstAm = dNow;
+                                this._rPatientKostentraeger.IDBenutzer = ENV.USERID;
+                                this._rPatientKostentraeger.IDPatientIstZahler = null;
+
+                                //if (ENV.FSW_IDIntern != Guid.Empty)   //automatische Forderungsabtretung an FSW, wenn FSW-ID angegeben ist
+                                //{
+                                //    this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;
+                                //    this._rKostenträger.PatientbezogenJN = false;
+                                //    this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.FSW;
+                                //    this._rKostenträger.GSBG = ENV.FSW_Prozent;
+                                //    this._rKostenträger.Rechnungsempfaenger = "(Fond Soziales Wien)";
+                                //    this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
+                                //}
+                                //else
+                                //{
+                                //    this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.Überweisung;
+                                //    this._rKostenträger.Rechnungsempfaenger = "";
+                                //}
+                                this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.Überweisung;
+                            }
+                            else
+                            {
+                                string sMessage = "";
+                                if (lEV.Count == 0)
+                                    sMessage = "Es wurde kein Erwachsenenvertreter mit befülltem Gültig-Ab und leerem Gültig-bis-Datum gefunden.";
+                                else
+                                    sMessage = "Es wurden " + lEV.Count.ToString() +  "Erwachsenenvertreter mit befülltem Gültig-Ab und leerem Gültig-bis-Datum gefunden.";
+                                sMessage += "\nDie Funktion kann nicht fortgesetzt werden.";
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMessage);
+                                this._db.Dispose();
+                                return false;
+                            }
+                        }
                     }
 
                     this._db.Kostentraeger.Add(this._rKostenträger);
@@ -278,8 +370,9 @@ namespace PMDS.GUI.Kostentraeger
                                             where pk.ID == IDPatientKostenträger && pk.IDPatient == IDPatient
                                             select new
                                             {
-                                                k.ID,
+                                                k.ID,                                                
                                                 k.Name,
+                                                k.Vorname,
                                                 pk.IDPatientIstZahler,
                                                 IDPatientKostenträger = pk.ID,
                                                 pk.IDPatient,
@@ -288,7 +381,8 @@ namespace PMDS.GUI.Kostentraeger
                                                 k.IDKostentraegerSub,
                                                 k.GSBG,
                                                 k.Rechnungsempfaenger,
-                                                k.Betrag
+                                                k.Betrag,
+                                                k.FIBUKonto
                                             }).First();
 
                     this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, rKostenträger.TransferleistungJN, rKostenträger.PatientbezogenJN, this._db);
@@ -298,8 +392,11 @@ namespace PMDS.GUI.Kostentraeger
 
                     IQueryable < PMDS.db.Entities.PatientKostentraeger > tPatientKostentraeger = this._db.PatientKostentraeger.Where(b => b.ID == IDPatientKostenträger);
                     this._rPatientKostentraeger = tPatientKostentraeger.First();
-                }                
+                }
 
+                //Controls füllen und setzen
+                this.txtAnrede.Text = _rKostenträger.Anrede.Trim();
+                this.txtKostentraeger.Text = _rKostenträger.Vorname + " " + _rKostenträger.Name;
                 this.txtBank.Text = this._rKostenträger.Bank.Trim();
                 this.txtKontonr.Text = this._rKostenträger.Kontonr.Trim();
                 this.txtBLZ.Text = this._rKostenträger.BLZ.Trim();
@@ -308,7 +405,11 @@ namespace PMDS.GUI.Kostentraeger
                 this.txtOrt.Text = this._rKostenträger.Ort.Trim();
                 this.txtStrasse.Text = this._rKostenträger.Strasse.Trim();
                 this.cboZahlart.Value = this._rKostenträger.Zahlart ??  null;
+                this.cboRechnungsdruckTyp1.Value = this._rPatientKostentraeger.RechnungsdruckTyp;
+
                 this.chkErlagscheingebuehrJN.Checked = this._rKostenträger.ErlagscheingebuehrJN;
+                this.numErlagscheingebuehr.Value = this._rKostenträger.Betrag;
+                this.setUIErlagscheingebührJN();
 
                 if (this._rPatientKostentraeger.GueltigAb != null)
                     this.udteGueltigAb.DateTime = this._rPatientKostentraeger.GueltigAb.Date;
@@ -326,13 +427,21 @@ namespace PMDS.GUI.Kostentraeger
                     this.udteErfasstAm.Value = null;
 
                 this.cboIDBenutzer.Value = this._rPatientKostentraeger.IDBenutzer;
-                
+                this.cboEnumKostentraegerart.Value = this._rPatientKostentraeger.enumKostentraegerart;
+
                 if (this._rPatientKostentraeger.Kostentraeger != null)
                     this.cboIDKostentraegerSub.Value = this._rPatientKostentraeger.Kostentraeger.IDKostentraegerSub;
                 else if (FSWMode)
+                {
                     this.cboIDKostentraegerSub.Value = ENV.FSW_IDIntern;
+                    this.cboEnumKostentraegerart.Value = (int)Kostentraegerart.Grundkosten;
+                }
+                //else if (EVMode && ENV.FSW_IDIntern != Guid.Empty)
+                //{
+                //    this.cboIDKostentraegerSub.Value = ENV.FSW_IDIntern;
+                //    this.cboEnumKostentraegerart.Value = (int)Kostentraegerart.Grundkosten;
+                //}
 
-                this.cboEnumKostentraegerart.Value = this._rPatientKostentraeger.enumKostentraegerart;
                 this.chkBetragErrechnetJN.Checked = this._rPatientKostentraeger.BetragErrechnetJN;
                 
                 if (this._rPatientKostentraeger.Betrag != null)
@@ -343,17 +452,26 @@ namespace PMDS.GUI.Kostentraeger
                 this.chkVorauszahlungJN.Checked = this._rPatientKostentraeger.VorauszahlungJN;
                 this.chkRechnungJN.Checked = this._rPatientKostentraeger.RechnungJN;
                 this.cboRechnungTyp.Value = this._rPatientKostentraeger.RechnungTyp;
+
+                return true;
             }
             catch (Exception ex)
             {
                 throw new Exception("ucKostentraegerKlientEditSingle.loadData: " + ex.ToString());
             }
         }
+
         public void setUIErlagscheingebührJN()
         {
             try
             {
-                this.chkErlagscheingebuehrJN.Checked = this.cboZahlart.Value.Equals((int)PMDS.Calc.Logic.eZahlart.Erlagschein);
+                this.chkErlagscheingebuehrJN.Visible = (int)this.cboZahlart.Value == (int)PMDS.Calc.Logic.eZahlart.Erlagschein;
+
+                if (!this.chkErlagscheingebuehrJN.Visible)
+                {
+                    this.chkErlagscheingebuehrJN.Checked = false;
+                }
+                this.chkErlagscheingebuehrJN_CheckedChanged(this, new EventArgs());                
             }
             catch (Exception ex)
             {
@@ -372,6 +490,7 @@ namespace PMDS.GUI.Kostentraeger
                 throw new Exception("ucKostentraegerKlientEditSingle.clearErrorProvider: " + ex.ToString());
             }
         }
+
         public bool validateData()
         {
             try
@@ -433,12 +552,52 @@ namespace PMDS.GUI.Kostentraeger
                                    FIBUKonto = k.FIBUKonto
                                });
 
-                    if (tKostentraeger.Count() > 0)
+                    if (tKostentraeger.Any())
                     {
                         this.errorProvider1.SetError(this.txtFIBUKonto, "Error");
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("FIBU existiert bereits!", "", MessageBoxButtons.OK);
+                        DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("FIBU existiert bereits!\nWollen Sie den Datensatz trotzdem speichern?", "", MessageBoxButtons.OKCancel);
                         this.txtFIBUKonto.Focus();
-                        return false;
+
+                        if (res == DialogResult.OK)
+                            return true;
+                        else
+                            return false;
+                    }
+
+                    //Prüfen, ob Rechnungsdrucktyp pro Kostenträger zu Klient eindeutig ist.
+                    var lRechnungsdrucktypenAll = (from pk in db.PatientKostentraeger
+                             where pk.IDKostentraeger == this._rKostenträger.ID && pk.IDPatient == this._rPatientKostentraeger.IDPatient                             
+                             select new
+                             {
+                                 pk.RechnungsdruckTyp
+                             }).ToList();
+                    var lRechnungsdrucktypen = lRechnungsdrucktypenAll.GroupBy(test => test.RechnungsdruckTyp).Select(grp => grp.First()).ToList();  //Distinct RechnungsdruckTyp
+
+                    if (lRechnungsdrucktypen.Count != 0)
+                    {
+                        if (lRechnungsdrucktypen.Count > 1)
+                        {
+                            this.errorProvider1.SetError(this.cboRechnungTyp, "Error");
+                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden unterschiedliche Rechnungsdrucktypen gefunden.\nBitte korrigieren Sie die Einträge, damit ein einheitlicher Rechnungsdrucktyp gewährleistet ist.\n\nWollen Sie den Datensatz trotzdem speichern?\nDies würde zu fehlenden oder zu vielen Rechnungen im Rechnungsversandmodus führen!", "", MessageBoxButtons.OKCancel);
+                            this.cboRechnungsdruckTyp1.Focus();
+
+                            if (res == DialogResult.OK)
+                                return true;
+                            else
+                                return false;
+                        }
+
+                        else if (lRechnungsdrucktypen.Count == 1 && lRechnungsdrucktypen.First().RechnungsdruckTyp != (int)this.cboRechnungsdruckTyp1.Value)
+                        {
+                            this.errorProvider1.SetError(this.cboRechnungsdruckTyp1, "Error");
+                            DialogResult res = QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Der angegebene Rechnungsdrucktyp unterscheidet sich von den bisher zugeordneten. Wollen Sie den Datensatz trotzdem speichern?\n\nDies würde zu fehlenden oder zu vielen Rechnungen im Rechnungsversandmodus führen!", "", MessageBoxButtons.OKCancel);
+                            this.cboRechnungsdruckTyp1.Focus();
+
+                            if (res == DialogResult.OK)
+                                return true;
+                            else
+                                return false;
+                        }
                     }
                 }
                 return true;
@@ -458,6 +617,7 @@ namespace PMDS.GUI.Kostentraeger
                     return false;
                 }
 
+                this._rKostenträger.Anrede = this.txtAnrede.Text.Trim();
                 this._rKostenträger.Bank = this.txtBank.Text.Trim();
                 this._rKostenträger.Kontonr =  this.txtKontonr.Text.Trim();
                 this._rKostenträger.BLZ = this.txtBLZ.Text.Trim();
@@ -468,6 +628,7 @@ namespace PMDS.GUI.Kostentraeger
 
                 this._rKostenträger.Zahlart = (int)this.cboZahlart.Value;
                 this._rKostenträger.ErlagscheingebuehrJN = this.chkErlagscheingebuehrJN.Checked;
+                this._rKostenträger.Betrag = Convert.ToDouble(this.numErlagscheingebuehr.Value);
 
                 this._rPatientKostentraeger.GueltigAb = this.udteGueltigAb.DateTime.Date;
                 if (this.udteGueltigBis.Value != null)
@@ -482,10 +643,11 @@ namespace PMDS.GUI.Kostentraeger
                 this._rPatientKostentraeger.IDBenutzer = (Guid)this.cboIDBenutzer.Value;
                 this._rPatientKostentraeger.enumKostentraegerart = (int)this.cboEnumKostentraegerart.Value;
                 this._rPatientKostentraeger.BetragErrechnetJN = this.chkBetragErrechnetJN.Checked;
-                this._rPatientKostentraeger.Betrag = this.numBetrag.Value;
+                this._rPatientKostentraeger.Betrag = (decimal)this.numBetrag.Value;
                 this._rPatientKostentraeger.VorauszahlungJN = this.chkVorauszahlungJN.Checked;
                 this._rPatientKostentraeger.RechnungJN = this.chkRechnungJN.Checked;
                 this._rPatientKostentraeger.RechnungTyp = (int)this.cboRechnungTyp.Value;
+                this._rPatientKostentraeger.RechnungsdruckTyp = (int)this.cboRechnungsdruckTyp1.Value;
 
                 this._db.SaveChanges();
 
@@ -563,12 +725,100 @@ namespace PMDS.GUI.Kostentraeger
             {
                 if (this.cboZahlart.Focused)
                 {
+
+                    if (ENV.FSW_IDIntern != Guid.Empty)
+                    {
+                        if ((int)cboZahlart.Value == (int)PMDS.Calc.Logic.eZahlart.FSW)
+                        {
+                            this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, false, false, this._db);
+
+                            this._rKostenträger.GSBG = ENV.FSW_Prozent;
+                            //this._rKostenträger.PatientbezogenJN = false;
+                            this._rKostenträger.PatientbezogenJN = true;
+                            this._rKostenträger.TransferleistungJN = false;
+                            this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
+                            this._rKostenträger.Rechnungsempfaenger = "(Fond Soziales Wien)";
+                            this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;
+                            this._rPatientKostentraeger.IDPatientIstZahler = null;
+                        }
+                        else
+                        {
+                            if (_rPatientKostentraeger.enumKostentraegerart == (int)Kostentraegerart.Transferleistung)
+                            {
+                                //Transferkostenträger
+                                this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, true, false, this._db);
+                                this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Transferleistung;
+                                this._rKostenträger.PatientbezogenJN = false;
+                                this._rKostenträger.TransferleistungJN = true;
+                            }
+                            else
+                            {
+                                //Klientenbezogener Kostenträger
+                                //IDSub = null
+                                this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, false, true, this._db);
+                                this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Alles;
+                                this._rKostenträger.PatientbezogenJN = true;
+                                this._rKostenträger.TransferleistungJN = false;
+                            }
+
+                            this._rKostenträger.GSBG = 0;
+                            this._rKostenträger.IDKostentraegerSub = null;
+                            this._rKostenträger.Rechnungsempfaenger = "";
+                            this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.Überweisung;
+                            this._rPatientKostentraeger.IDPatientIstZahler = null;
+                        }
+
+                        this.cboEnumKostentraegerart.Value = this._rPatientKostentraeger.enumKostentraegerart;
+                        this.cboIDKostentraegerSub.Value = this._rKostenträger.IDKostentraegerSub;
+                    }
                     this.setUIErlagscheingebührJN();
                 }
             }
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
+            }
+        }
+
+        private void panelKostenträger_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void chkVorauszahlungJN_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkErlagscheingebuehrJN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.chkErlagscheingebuehrJN.Checked)
+            {
+                this.numErlagscheingebuehr.Visible = true;
+                this.lblErlagscheingebuehr.Visible = true;
+                this.numErlagscheingebuehr.Value = _rKostenträger.Betrag;                
+            }
+            else
+            {
+                this.numErlagscheingebuehr.Visible = false;
+                this.numErlagscheingebuehr.Visible = this.numErlagscheingebuehr.Visible;
+                this.numErlagscheingebuehr.Value = 0;
+                this.lblErlagscheingebuehr.Visible = false;
+            }
+        }
+
+        private void chkBetragErrechnetJN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!this.chkBetragErrechnetJN.Checked)
+            {
+                this.lblRestzahlerBetrag.Visible = true;
+                this.numBetrag.Visible = true;
+            }
+            else
+            {
+                this.lblRestzahlerBetrag.Visible = false;
+                this.numBetrag.Visible = false;
+                this.numBetrag.Value = 0;
             }
         }
     }

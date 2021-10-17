@@ -1,5 +1,6 @@
-﻿Imports System.Collections.Generic
+﻿Option Strict Off
 
+Imports System.Collections.Generic
 
 
 
@@ -12,10 +13,17 @@ Public Class workCalcDb
                                                    "DROP TABLE [dbo].[{1}]" + vbNewLine
 
     Public Shared temp_sqlInsertRow As String = " INSERT {0} "
+    Private Shared BMDExportTyp As PMDS.Calc.Logic.workCalcDb.eBMDExportTyp = eBMDExportTyp.Standard
+    Private Shared FSW_FibuKonto As String
 
     Public Enum eTypUI
         CopyDb = 0
         ExportCalcs = 1
+    End Enum
+
+    Public Enum eBMDExportTyp
+        Standard = 1    'adcura)
+        MZ = 2
     End Enum
 
     Public tCalcDocu As String = "KostenKostenträger"
@@ -39,17 +47,29 @@ Public Class workCalcDb
 
     Public Class cSelObj
         Public db As String = ""
-        Public IDBill As String = Nothing
+        Public IDBill As Guid
         Public RechNr As String = ""
-        Public ExportiertJN As Boolean = False
+        Public ExportiertJN As Boolean
+        Public IDKost As Guid
+        Public FiBuKost = ""
+        Public IDKostSub As Guid = Guid.Empty
+        Public FiBuKostSub = ""
     End Class
 
+    Public Class cSelBillInfo
+        Public IDBill As String
+        Public RechNr As String
+        Public ExportiertJN As Boolean
+        Public IDKost As String
+        Public IDKlinik? As Guid
+        Public IDKlient As String
+    End Class
 
-
-
-
-
-
+    Public Class cSelKostentraegerInfo
+        Public IDKost As Guid
+        Public FiBuKost As String
+        Public IDKostSub? As Guid
+    End Class
 
 
 
@@ -157,7 +177,15 @@ Public Class workCalcDb
         End Try
     End Function
 
-    '<20120101>
+    Public Function SetBMDExportTyp(NewBMDExportTyp As PMDS.Calc.Logic.workCalcDb.eBMDExportTyp, FSW_FibuKonto As String)
+        Try
+            Me.FSW_FibuKonto = FSW_FibuKonto
+            BMDExportTyp = NewBMDExportTyp
+        Catch ex As Exception
+            calcBase.doExept(ex)
+        End Try
+    End Function
+
     Public Function doCalcDatabases(ByVal typ As eTypUI, ByRef dFrom As Object, ByRef dTo As Object, ByRef dFromRechDatum As Nullable(Of Date), ByRef dToRechDatum As Nullable(Of Date), ByRef dsExportResult As dsExport,
                                       ByRef sqlTotalResult As String,
                                       ByRef countRowsTotalCopied As Integer, ByRef countDbTotalCopied As Integer,
@@ -166,84 +194,89 @@ Public Class workCalcDb
                                       ByVal typRechNr As String,
                                       ByRef nErrors As Integer, IDKlinik As System.Guid, ByRef sProt As String, ByRef SumBruttoSRAll As Double, showExportierte As Boolean) As Boolean
         Try
-            Dim dbPMDSFound As New dbPMDS()
-            Dim lstCalcsFounded As New dbPMDS()
 
-            If dFrom = Nothing Then
-                dFrom = New Date(1900, 1, 1)
-            End If
-            If dTo = Nothing Then
-                dTo = New Date(2500, 1, 1)
-            End If
+            Using lstCalcsFounded As New dbPMDS()
+                Using dbPMDSFound As New dbPMDS()
 
-            Dim sqlCalc As New Sql()
-            sqlCalc.readBills("", dFrom, dTo, dFromRechDatum, dToRechDatum, dbPMDSFound, billTyp, billStatus, True, IDKlinik, False, showExportierte, "")
-            'Select Case typ
-            '    Case eTypUI.CopyDb
-            '    Case eTypUI.ExportCalcs
-            '    Case Else
-            '        Throw New Exception("doCalcDatabases: Type '" + typ.ToString() + "' does not exist!")
-            'End Select
+                    If dFrom = Nothing Then
+                        dFrom = New Date(1900, 1, 1)
+                    End If
 
-            For Each rBillFound As dbPMDS.billsRow In dbPMDSFound.bills
-                dbPMDSFound.billHeader.Rows.Clear()
-                Dim sqlCalcRead As New Sql()
-                sqlCalcRead.readBillHeader(rBillFound.IDAbrechnung, dbPMDSFound, IDKlinik)
-                If dbPMDSFound.billHeader.Rows.Count <> 1 Then
-                    'Throw New Exception("transferCalcDatabases: dbPMDSFound.billHeader.Rows.Count <> 1 for IDAbrechnung '" + rBillFound.ID + "' not found!")
-                    sqlTotalResult += "INFO: NO CALC-DB found for Header " + "" + "!" + vbNewLine + vbNewLine
-                Else
-                    Dim rBillHeaderFound As dbPMDS.billHeaderRow = dbPMDSFound.billHeader.Rows(0)
-                    Select Case typ
-                        Case eTypUI.CopyDb
-                            Dim bExists As Boolean = False
-                            For Each rBillHeaderExistsInLst As dbPMDS.billHeaderRow In lstCalcsFounded.billHeader
-                                If rBillHeaderExistsInLst.ID.Equals(rBillHeaderFound.ID) Then
-                                    bExists = True
-                                End If
-                            Next
-                            If Not bExists Then
-                                Dim rBillHeaderToAdd As dbPMDS.billHeaderRow = lstCalcsFounded.billHeader.NewRow()
-                                rBillHeaderToAdd.ItemArray = rBillHeaderFound.ItemArray
-                                lstCalcsFounded.billHeader.Rows.Add(rBillHeaderToAdd)
-                            End If
+                    If dTo = Nothing Then
+                        dTo = New Date(2049, 31, 12)
+                    End If
 
-                        Case eTypUI.ExportCalcs
-                            Dim xmlStringReader As New System.IO.StringReader(rBillHeaderFound.dbCalc)
-                            Dim xmlReader As New System.Xml.XmlTextReader(xmlStringReader)
+                    Using sqlCalc As New Sql()
+                        sqlCalc.readBills("", dFrom, dTo, dFromRechDatum, dToRechDatum, dbPMDSFound, billTyp, billStatus, True, IDKlinik, False, showExportierte, "")
+                    End Using
 
-                            Dim dbCalcFound As New DataSet()
-                            dbCalcFound.ReadXml(xmlReader)
-                            Me.doExportCalcDb(dbCalcFound, rBillFound, rBillHeaderFound, dsExportResult,
-                                              billTyp, billStatus, bereich, typRechNr,
-                                              nErrors, sProt, SumBruttoSRAll)
+                    For Each rBillFound As dbPMDS.billsRow In dbPMDSFound.bills
+                        dbPMDSFound.billHeader.Rows.Clear()
+                        Using sqlCalcRead As New Sql()
+                            sqlCalcRead.readBillHeader(rBillFound.IDAbrechnung, dbPMDSFound, IDKlinik)
+                        End Using
 
-                        Case Else
-                            Throw New Exception("doCalcDatabases: Type '" + typ.ToString() + "' does not exist!")
-                    End Select
-                End If
-            Next
+                        If dbPMDSFound.billHeader.Rows.Count <> 1 Then
+                            sqlTotalResult += "INFO: NO CALC-DB found for Header " + "" + "!" + vbNewLine + vbNewLine
+                        Else
+                            Dim rBillHeaderFound As dbPMDS.billHeaderRow = dbPMDSFound.billHeader.Rows(0)
+                            Select Case typ
+                                Case eTypUI.CopyDb
+                                    Dim bExists As Boolean
+                                    For Each rBillHeaderExistsInLst As dbPMDS.billHeaderRow In lstCalcsFounded.billHeader
+                                        If rBillHeaderExistsInLst.ID.Equals(rBillHeaderFound.ID) Then
+                                            bExists = True
+                                        End If
+                                    Next
+                                    If Not bExists Then
+                                        Dim rBillHeaderToAdd As dbPMDS.billHeaderRow = lstCalcsFounded.billHeader.NewRow()
+                                        rBillHeaderToAdd.ItemArray = rBillHeaderFound.ItemArray
+                                        lstCalcsFounded.billHeader.Rows.Add(rBillHeaderToAdd)
+                                    End If
 
-            If typ = eTypUI.CopyDb Then
-                If lstCalcsFounded.billHeader.Rows.Count > 0 Then
-                    Dim dbCalcTemp As New dbCalc()
-                    Me.deleteAllTables(dbCalcTemp, sqlTotalResult)
-                    For Each rBillHeaderFound As dbPMDS.billHeaderRow In lstCalcsFounded.billHeader
-                        Dim xmlStringReader As New System.IO.StringReader(rBillHeaderFound.dbCalc)
-                        Dim xmlReader As New System.Xml.XmlTextReader(xmlStringReader)
+                                Case eTypUI.ExportCalcs
+                                    Dim xmlStringReader As New System.IO.StringReader(rBillHeaderFound.dbCalc)
+                                    Using dbCalcFound As New DataSet()
+                                        Using xmlReader As New System.Xml.XmlTextReader(xmlStringReader)
+                                            dbCalcFound.ReadXml(xmlReader)
+                                        End Using
 
-                        Dim dbCalcFound As New DataSet()
-                        dbCalcFound.ReadXml(xmlReader)
+                                        Me.doExportCalcDb(dbCalcFound, rBillFound, rBillHeaderFound, dsExportResult,
+                                                  billTyp, billStatus, bereich, typRechNr,
+                                                  nErrors, sProt, SumBruttoSRAll)
+                                    End Using
 
-                        Me.copyDataToSqlServer(dbCalcFound, System.Guid.NewGuid, "", sqlTotalResult, countRowsTotalCopied, countDbTotalCopied,
-                                                rBillHeaderFound.ID)
-
+                                Case Else
+                                    Throw New Exception("doCalcDatabases: Type '" + typ.ToString() + "' does not exist!")
+                            End Select
+                        End If
                     Next
-                Else
-                    sqlTotalResult += "INFO: NO CALCS FOUND FOR TRANSFER!" + vbNewLine + vbNewLine
+                End Using
+
+                If typ = eTypUI.CopyDb Then
+                    If lstCalcsFounded.billHeader.Rows.Count > 0 Then
+                        Using dbCalcTemp As New dbCalc()
+                            Me.deleteAllTables(dbCalcTemp, sqlTotalResult)
+                        End Using
+
+                        For Each rBillHeaderFound As dbPMDS.billHeaderRow In lstCalcsFounded.billHeader
+                            Dim xmlStringReader As New System.IO.StringReader(rBillHeaderFound.dbCalc)
+
+                            Using dbCalcFound As New DataSet()
+                                Using xmlReader As New System.Xml.XmlTextReader(xmlStringReader)
+                                    dbCalcFound.ReadXml(xmlReader)
+                                End Using
+
+                                Me.copyDataToSqlServer(dbCalcFound, System.Guid.NewGuid, "", sqlTotalResult, countRowsTotalCopied, countDbTotalCopied,
+                                                    rBillHeaderFound.ID)
+                            End Using
+                        Next
+                    Else
+                        sqlTotalResult += "INFO: NO CALCS FOUND FOR TRANSFER!" + vbNewLine + vbNewLine
+                    End If
+                    sqlTotalResult += "INFO: " + countDbTotalCopied.ToString() + " DATABASES SUCCESSFULL TRANSFERED!" + vbNewLine + vbNewLine
                 End If
-                sqlTotalResult += "INFO: " + countDbTotalCopied.ToString() + " DATABASES SUCCESSFULL TRANSFERED!" + vbNewLine + vbNewLine
-            End If
+            End Using
 
             Return True
 
@@ -485,7 +518,7 @@ Public Class workCalcDb
                                                                          Join bh In db.billHeader On b.IDAbrechnung Equals bh.ID
                                                                          Where b.ID = IDBillOrig
                                                                          Select New cSelObj With {
-                                                                                    .IDBill = b.ID,
+                                                                                    .IDBill = New Guid(b.ID),
                                                                                     .RechNr = b.RechNr,
                                                                                     .db = bh.dbCalc
                                                                                  }).ToList()
@@ -675,29 +708,64 @@ Public Class workCalcDb
                                  rBill As PMDS.Calc.Logic.dbPMDS.billsRow) As dsExport.ExportBMDRow
         Try
             Me.dbPMDS.Clear()
-            Dim sqlCalc As New Sql()
 
-            Dim rNewRowExport As dsExport.ExportBMDRow = Me.dbExport1.getNewRowExportBMD(dsExportResult)
-            'rNewRowExport.Klient = NameKlient.Trim()
+            Dim rNewRowExport As dsExport.ExportBMDRow = Me.dbExport1.getNewRowExportBMD(dsExportResult, BMDExportTyp)
             rNewRowExport.IDBill = rBill.ID
 
             Using db As PMDS.db.Entities.ERModellPMDSEntities = calculation.delgetDBContext.Invoke()
-                Dim tBill As List(Of cSelObj) = (From b In db.bills
-                                                 Join bh In db.billHeader On b.IDAbrechnung Equals bh.ID
-                                                 Where b.ID = rBill.ID
-                                                 Select New cSelObj With {
-                                                                .IDBill = b.ID,
-                                                                .RechNr = b.RechNr,
-                                                                .ExportiertJN = b.ExportiertJN
-                                                            }).ToList()
-                Dim rBillFromDB As cSelObj = tBill.First()
-                rNewRowExport.ExportiertJN = rBillFromDB.ExportiertJN
+                Dim rB1 As cSelBillInfo = (From b In db.bills
+                                           Where b.ID = rBill.ID
+                                           Select New cSelBillInfo With {.IDBill = b.ID, .RechNr = b.RechNr, .ExportiertJN = b.ExportiertJN, .IDKost = b.IDKost, .IDKlinik = b.IDKlinik, .IDKlient = b.IDKlient}).FirstOrDefault()
+
+                If Not IsNothing(rB1) Then
+                    rNewRowExport.IDBill = rB1.IDBill
+                    rNewRowExport.ExportiertJN = rB1.ExportiertJN
+
+                    Dim IDKostBill As Guid = New Guid(rB1.IDKost)
+
+                    Dim rK1 As cSelKostentraegerInfo
+                    Dim rK1Sub As cSelKostentraegerInfo
+                    Try
+                        rK1 = (From k In db.Kostentraeger
+                               Where k.ID = IDKostBill
+                               Select New cSelKostentraegerInfo With {.IDKost = k.ID, .FiBuKost = k.FIBUKonto, .IDKostSub = k.IDKostentraegerSub}).FirstOrDefault()
+
+                        If Not IsNothing(rK1) Then
+                            rK1Sub = (From k In db.Kostentraeger
+                                      Where k.ID = rK1.IDKostSub
+                                      Select New cSelKostentraegerInfo With {.IDKost = k.ID, .FiBuKost = k.FIBUKonto}).FirstOrDefault()
+                        End If
+                    Catch ex As Exception
+                        rK1 = (From k In db.Kostentraeger
+                               Where k.ID = IDKostBill
+                               Select New cSelKostentraegerInfo With {.IDKost = k.ID, .FiBuKost = k.FIBUKonto}).FirstOrDefault()
+                    End Try
+
+                    If Not IsNothing(rK1) Then
+                        rNewRowExport.IDKost = rK1.IDKost
+                        rNewRowExport.FiBuKost = rK1.FiBuKost
+                        If Not IsNothing(rK1Sub) Then
+                            rNewRowExport.IDKostSub = rK1Sub.IDKost
+                            rNewRowExport.FiBuKostSub = rK1Sub.FiBuKost
+                        End If
+                    End If
+
+                    Dim IDPatient As Guid = New Guid(rB1.IDKlient)
+                    If BMDExportTyp = eBMDExportTyp.MZ Then     'interne Kostenstelle (Abteilung) des Klienten suchen
+                        Dim AbteilungKostenstelle = (From a In db.Aufenthalt
+                                                     Join abt In db.Abteilung On abt.ID Equals a.IDAbteilung
+                                                     Join kon In db.Kontakt On kon.ID Equals abt.IDKontakt
+                                                     Where a.IDPatient = IDPatient And abt.IDKlinik = rB1.IDKlinik
+                                                     Order By a.Aufnahmezeitpunkt Descending
+                                                     Select New With {.abtkost = kon.Zusatz3}).FirstOrDefault()
+
+                        If Not IsNothing(AbteilungKostenstelle) Then
+                            rNewRowExport.AbteilungCode = AbteilungKostenstelle.abtkost.ToString()
+                        End If
+                    End If
+                End If
             End Using
 
-            Dim rKostDat As dbPMDS.KostentraegerRow = Nothing
-            Dim NameKost As String = ""             '"Not found in Db"
-
-            NameKost = lineExport1.NameKost.Trim()
             rNewRowExport.konto = lineExport1.FIBUKost.Trim()
             rNewRowExport.gkonto = lineExport1.FIBU.Trim()
 
@@ -708,98 +776,64 @@ Public Class workCalcDb
                 StornoNr = rField.txt
             End If
 
-            'sqlCalc = New Sql()
-            'sqlCalc.readKostenräger(IDKost, dbPMDS, True)
-            'If dbPMDS.Kostentraeger.Rows.Count = 1 Then
-            '    rKostDat = dbPMDS.Kostentraeger.Rows(0)
-            '    rNewRowExport.konto = rKostDat.FIBUKonto.Trim()
-            '    NameKost = rKostDat.Name
-            'ElseIf dbPMDS.Kostentraeger.Rows.Count <> 1 Then
-            '    'Throw New Exception("Error: FIBU-Konto not found! dbPMDS.Kostentraeger.Rows.Count <> 1 for IDBillHeader '" + IDBillHeader.ToString() + "' and IDKost '" + rCalcDocu(Me.dbCalcTemp.KostenKostenträger.IDKostColumn.ColumnName).ToString() + "'!")
-            '    Dim sErrorKto As String = "FIBU-Konto not found! dbPMDS.Kostentraeger.Rows.Count <> 1 for IDBillHeader '" + IDBillHeader.ToString() + "' and IDKost '" + IDKost + "'!"
-            '    rNewRowExport.konto = sErrorKto
-            '    'rNewRowExport.Message += sErrorKto + workCalcDb.lineBreakHtml
-            '    nErrors += 1
-            'End If
-
             Dim calcBase1 As New calcBase()
-            Dim RechDat As Date = monat(Me.dbCalcTemp.Monate.RechDatumColumn.ColumnName)
+            'Dim RechDat As Date = monat(Me.dbCalcTemp.Monate.RechDatumColumn.ColumnName)
 
             rNewRowExport.buchdatum = rBill.RechDatum.Date.ToString(calcBase1.dateFormat)
             rNewRowExport.prozent = lineExport1.expMwst
-            'rNewRowExport.gkonto = lineExport1.expMWStSatzKonto
-
-            'Dim sError As String = "No gkto defined in Class PMDS.cGKonto!"
-            ''rNewRowExport.gkto = sError
-            'rNewRowExport.Message += sError + workCalcDb.lineBreakHtml
-            'nErrors += 1
 
             rNewRowExport.belegnr = rBill.RechNr.Trim()
             rNewRowExport.TypBill = calcBase.getBillTypAsString(rBill.Typ)
 
-            sqlCalc = New Sql()
-            'Dim rBill As PMDS.Calc.Logic.dbPMDS.billsRow = sqlCalc.readBillsIDKostIntern(IDKostIntern, False)
-            'If rBill Is Nothing Then
-            '    Dim sErrorBill As String = "rBill is null for IDKostIntern '" + IDKostIntern + "'!"
-            '    rNewRowExport.belegnr = "Not found"
-            '    rNewRowExport.koperiode = "Not found"
-            '    rNewRowExport.TypBill = "Not found"
-            '    rNewRowExport.StatusBill = "Not found"
-            '    rNewRowExport.Message += sErrorBill + workCalcDb.lineBreakHtml
-            '    nErrors += 1
-            'Else
-            '    'rNewRowExport.belegnr = rBill.RechNr.Trim()
-            '    'rNewRowExport.koperiode = rBill.datum.ToString("yyyyMM")
-            '    'rNewRowExport.TypBill = calcBase.getBillTypAsString(rBill.Typ)
-            '    'rNewRowExport.StatusBill = calcBase.getBillStatusAsString(rBill.Status)
-            'End If
-
-            'Änderung os 18-06-2018 lt. Wunsch Frau Brodik
-            'rNewRowExport.belegdatum = RechDat.ToString(calcBase1.dateFormat)      
             rNewRowExport.belegdatum = rBill.RechDatum.Date.ToString(calcBase1.dateFormat)
 
             rNewRowExport.buchcode = "1"
             rNewRowExport.betrag = lineExport1.expBetrag
             rNewRowExport.steuer = Math.Round(((lineExport1.expBetrag * -1) / (100 + lineExport1.expMwst)) * lineExport1.expMwst, 2, MidpointRounding.ToEven)
 
-            rNewRowExport.text = "RE " + NameKost.Trim()
-            If rNewRowExport.text.Length > 18 Then
-                rNewRowExport.text = rNewRowExport.text.Substring(0, 18)
-            Else
-                rNewRowExport.text = rNewRowExport.text.Trim()
-            End If
+            'Maximal 18 Zeichen des Kostenträgers
+            rNewRowExport.text = ("RE " + lineExport1.NameKost.Trim()).Substring(0, Math.Min(18, lineExport1.NameKost.Trim().Length + 3))
+
             rNewRowExport.zziel = "0"
             rNewRowExport.skontopz = "0"
             rNewRowExport.skontotage = "0"
-            rNewRowExport.buchsymbol = "AR"
 
             rNewRowExport.IDBillHeader = IDBillHeader
             rNewRowExport.IDKostIntern = IDKostIntern
             rNewRowExport.IDSR = ""
 
-            If rNewRowExport.prozent > 0 Then
-                rNewRowExport.steuercode = 1
-            Else
-                rNewRowExport.steuercode = 0
+            rNewRowExport.steuercode = IIf(rNewRowExport.prozent > 0, 1, 0)
+
+            If BMDExportTyp = eBMDExportTyp.MZ Then
+                'MZ-spezifische Spalten sezen
+                rNewRowExport.periode = rBill.RechDatum.Date.ToString("yyyyMM")
+                rNewRowExport.benutzer = "99"
+                rNewRowExport.text = ("ZIVK-" + lineExport1.NameKost.Trim()).Substring(0, Math.Min(18, lineExport1.NameKost.Trim().Length + 5))
+
+                If rNewRowExport.FiBuKostSub = Me.FSW_FibuKonto Then
+                    'Umbuchung hinzufügen
+                    Dim rUmbuchung As dsExport.ExportBMDRow = Me.dbExport1.getNewRowExportBMD(dsExportResult, BMDExportTyp)
+                    rUmbuchung.Satzart = rNewRowExport.Satzart
+                    rUmbuchung.konto = rNewRowExport.gkonto
+                    rUmbuchung.buchdatum = rNewRowExport.buchdatum
+                    rUmbuchung.belegnr = rNewRowExport.belegnr
+                    rUmbuchung.periode = rNewRowExport.periode
+                    rUmbuchung.belegdatum = rNewRowExport.belegdatum
+                    rUmbuchung.buchsymbol = rNewRowExport.buchsymbol
+                    rUmbuchung.gkonto = rNewRowExport.FiBuKostSub
+                    rUmbuchung.buchcode = rNewRowExport.buchcode
+                    rUmbuchung.betrag = rNewRowExport.betrag + rNewRowExport.steuer * -1
+                    rUmbuchung.prozent = 0
+                    rUmbuchung.steuer = 0
+                    rUmbuchung.text = ("FSW-" + lineExport1.NameKost.Trim()).Substring(0, Math.Min(18, lineExport1.NameKost.Trim().Length + 4))
+                    rUmbuchung.benutzer = rNewRowExport.benutzer
+                    rUmbuchung.steuercode = 0
+                    rUmbuchung.AbteilungCode = ""
+                    rUmbuchung.ExportiertJN = rNewRowExport.ExportiertJN
+                End If
             End If
 
             Return rNewRowExport
-
-
-            'Dim arrCalcKost() As dbCalc.KostenträgerRow = tableDbCalcFound.Select("IDKostIntern='" + rCalcDocu.IDKostIntern.ToString() + "'", "")
-            'If arrCalcKost.Length <> 1 Then
-            '    Throw New Exception("arrCalcKost.Length <> 1 for IDBillHeader '" + IDBillHeader.ToString() + "'!")
-            'End If
-            'sqlCalc.readBills(IDBillHeader.ToString(), Me.dbPMDS)
-            'If Me.dbPMDS.bills.Rows.Count = 0 Then
-            '    rNewRowExport.Klient = " Error: No Bill for IDBillHeader '" + IDBillHeader.ToString() + "' in Db found!"
-            'ElseIf Me.dbPMDS.bills.Rows.Count = 1 Then
-            '    Dim rBill As dbPMDS.billsRow = Me.dbPMDS.bills.Rows(0)
-            '    rNewRowExport.Klient = rBill.KlientName
-            'ElseIf Me.dbPMDS.bills.Rows.Count > 1 Then
-            '    Dim rBill As dbPMDS.billsRow = Me.dbPMDS.bills.Rows(0)
-            '    rNewRowExport.Klient = rBill.KlientName + " Error: More than one Bill for IDBillHeader '" + IDBillHeader.ToString() + "' in Db found!"
-            'End If
 
         Catch ex As Exception
             calcBase.doExept(ex)

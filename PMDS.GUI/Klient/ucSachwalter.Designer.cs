@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.lblSachwalter = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblBelange = new QS2.Desktop.ControlManagment.BaseLabel();
             this.SachwalterJN = new QS2.Desktop.ControlManagment.BaseCheckBox();
@@ -113,8 +113,8 @@
             // 
             // lblSachwalter
             // 
-            appearance4.FontData.SizeInPoints = 8F;
-            this.lblSachwalter.Appearance = appearance4;
+            appearance1.FontData.SizeInPoints = 8F;
+            this.lblSachwalter.Appearance = appearance1;
             this.lblSachwalter.AutoSize = true;
             this.lblSachwalter.Location = new System.Drawing.Point(5, 21);
             this.lblSachwalter.Name = "lblSachwalter";
@@ -141,8 +141,6 @@
             // 
             // grpKontaktdaten
             // 
-            this.grpKontaktdaten.Controls.Add(this.txtZusats3);
-            this.grpKontaktdaten.Controls.Add(this.lblZusatz3);
             this.grpKontaktdaten.Controls.Add(this.txtZusats2);
             this.grpKontaktdaten.Controls.Add(this.lblZusatz2);
             this.grpKontaktdaten.Controls.Add(this.txtZusats1);
@@ -161,26 +159,26 @@
             this.grpKontaktdaten.Controls.Add(this.lblFax);
             this.grpKontaktdaten.Location = new System.Drawing.Point(5, 371);
             this.grpKontaktdaten.Name = "grpKontaktdaten";
-            this.grpKontaktdaten.Size = new System.Drawing.Size(487, 185);
+            this.grpKontaktdaten.Size = new System.Drawing.Size(487, 159);
             this.grpKontaktdaten.TabIndex = 159;
             this.grpKontaktdaten.Text = "Kontaktdaten ";
             // 
             // txtZusats3
             // 
-            this.txtZusats3.Location = new System.Drawing.Point(127, 157);
+            this.txtZusats3.Location = new System.Drawing.Point(131, 536);
             this.txtZusats3.MaxLength = 75;
             this.txtZusats3.Name = "txtZusats3";
-            this.txtZusats3.Size = new System.Drawing.Size(345, 21);
+            this.txtZusats3.Size = new System.Drawing.Size(118, 21);
             this.txtZusats3.TabIndex = 23;
             // 
             // lblZusatz3
             // 
             this.lblZusatz3.AutoSize = true;
-            this.lblZusatz3.Location = new System.Drawing.Point(15, 161);
+            this.lblZusatz3.Location = new System.Drawing.Point(19, 540);
             this.lblZusatz3.Name = "lblZusatz3";
-            this.lblZusatz3.Size = new System.Drawing.Size(47, 14);
+            this.lblZusatz3.Size = new System.Drawing.Size(28, 14);
             this.lblZusatz3.TabIndex = 78;
-            this.lblZusatz3.Text = "Zusatz 3";
+            this.lblZusatz3.Text = "FiBu";
             // 
             // txtZusats2
             // 
@@ -338,14 +336,18 @@
             // 
             this.txtLand.AddEmptyEntry = false;
             this.txtLand.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.txtLand.AutoOpenCBO = false;
             this.txtLand.BerufsstandGruppeJNA = -1;
+            this.txtLand.ExactMatch = false;
             this.txtLand.Group = "LND";
             this.txtLand.ID_PEP = -1;
             this.txtLand.Location = new System.Drawing.Point(216, 68);
             this.txtLand.MaxLength = 20;
             this.txtLand.Name = "txtLand";
+            this.txtLand.PflichtJN = false;
             this.txtLand.ShowAddButton = true;
             this.txtLand.Size = new System.Drawing.Size(256, 21);
+            this.txtLand.sys = false;
             this.txtLand.TabIndex = 120;
             // 
             // lblLand
@@ -410,8 +412,8 @@
             // 
             // lblVorname
             // 
-            appearance5.FontData.SizeInPoints = 8F;
-            this.lblVorname.Appearance = appearance5;
+            appearance2.FontData.SizeInPoints = 8F;
+            this.lblVorname.Appearance = appearance2;
             this.lblVorname.AutoSize = true;
             this.lblVorname.Location = new System.Drawing.Point(131, 6);
             this.lblVorname.Name = "lblVorname";
@@ -437,8 +439,8 @@
             // 
             // lblNachname
             // 
-            appearance6.FontData.SizeInPoints = 8F;
-            this.lblNachname.Appearance = appearance6;
+            appearance3.FontData.SizeInPoints = 8F;
+            this.lblNachname.Appearance = appearance3;
             this.lblNachname.AutoSize = true;
             this.lblNachname.Location = new System.Drawing.Point(235, 6);
             this.lblNachname.Name = "lblNachname";
@@ -580,20 +582,26 @@
             // 
             this.cmbAkdGrad.AddEmptyEntry = false;
             this.cmbAkdGrad.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Append;
+            this.cmbAkdGrad.AutoOpenCBO = false;
             this.cmbAkdGrad.BerufsstandGruppeJNA = -1;
+            this.cmbAkdGrad.ExactMatch = false;
             this.cmbAkdGrad.Group = "TIT";
             this.cmbAkdGrad.ID_PEP = -1;
             this.cmbAkdGrad.Location = new System.Drawing.Point(384, 21);
             this.cmbAkdGrad.MaxLength = 40;
             this.cmbAkdGrad.Name = "cmbAkdGrad";
+            this.cmbAkdGrad.PflichtJN = false;
             this.cmbAkdGrad.ShowAddButton = true;
             this.cmbAkdGrad.Size = new System.Drawing.Size(94, 21);
+            this.cmbAkdGrad.sys = false;
             this.cmbAkdGrad.TabIndex = 3;
             // 
             // ucSachwalter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtZusats3);
+            this.Controls.Add(this.lblZusatz3);
             this.Controls.Add(this.lblBescheiddatum);
             this.Controls.Add(this.BestimmtAm);
             this.Controls.Add(this.lblBis);

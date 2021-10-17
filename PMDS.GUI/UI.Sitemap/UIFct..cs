@@ -21,7 +21,7 @@ using CrystalDecisions.Shared;
 using PMDS.Global.db.Patient;
 using PMDS.Global.db.Global;
 
-
+using System.Linq;
 
 namespace PMDS.UI.Sitemap
 {
@@ -675,38 +675,46 @@ namespace PMDS.UI.Sitemap
                 {
                     valueList.ValueListItems.Add(val, Enum.GetName(typeof(PMDS.Calc.Logic.eBillTyp), val));
                 }
-
-                //    itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillTyp.Rechnung.ToString());
-                //    itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_Buchungen;
-                   
-                //    itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Beilage, PMDS.Calc.Logic.eBillTyp.Beilage.ToString());
-                //    itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_ordner_durchsichtig;
-                   
-                //    itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung, PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung.ToString());
-                //    itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_StörfälleÜbernehmen;
-                   
-                //    itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Depotgeld, PMDS.Calc.Logic.eBillTyp.Depotgeld.ToString());
-                  
-                //    itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Sammelrechnung, PMDS.Calc.Logic.eBillTyp.Sammelrechnung.ToString());
-                //    itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.Sammelrechnung;
-
-                //    itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Alle, PMDS.Calc.Logic.eBillTyp.Alle.ToString());
-                //    itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.KeineRechnung, PMDS.Calc.Logic.eBillTyp.KeineRechnung.ToString());
-                }
+            }
             else
             {
                 valueList.ValueListItems.Clear();
                 
-                itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillTyp.Rechnung.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_Buchungen;
-            
+                itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillTyp.Rechnung.ToString());          
                 itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Beilage, PMDS.Calc.Logic.eBillTyp.Beilage.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_ordner_durchsichtig;
-            
                 itm = valueList.ValueListItems.Add((int)PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung, PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_StörfälleÜbernehmen;
             }
         }
+
+        public void fillEnumDruckTyp(Infragistics.Win.ValueList valueList)
+        {
+            Infragistics.Win.ValueListItem itm = null;
+            valueList.ValueListItems.Clear();
+            itm = valueList.ValueListItems.Add((int)RechnungsdruckTyp.NurZahler, generic.GetEnumDescription(RechnungsdruckTyp.NurZahler));
+            itm = valueList.ValueListItems.Add((int)RechnungsdruckTyp.KeinRechnungsdruck, generic.GetEnumDescription(RechnungsdruckTyp.KeinRechnungsdruck));
+            itm = valueList.ValueListItems.Add((int)RechnungsdruckTyp.NurKopieKontakte, generic.GetEnumDescription(RechnungsdruckTyp.NurKopieKontakte));
+            itm = valueList.ValueListItems.Add((int)RechnungsdruckTyp.ZahlerUndKopieKontakte, generic.GetEnumDescription(RechnungsdruckTyp.ZahlerUndKopieKontakte));
+        }
+
+        public void fillIDKostentraegerSub(Infragistics.Win.ValueList valueList)
+        {
+            Infragistics.Win.ValueListItem itm = null;
+            valueList.ValueListItems.Clear();
+
+            using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+            {
+                var KostentraegerSub = (from k in db.Kostentraeger
+                                        //where k.ID == IDKostentraegerSub
+                                        select new { k.ID, k.Name, k.Vorname, k.FIBUKonto }).FirstOrDefault();
+
+                if (KostentraegerSub != null)
+                {
+                    itm = valueList.ValueListItems.Add(KostentraegerSub.ID, (KostentraegerSub.Name + " " + KostentraegerSub.Vorname).Trim() + " (" + KostentraegerSub.FIBUKonto + ")");
+                }
+            }
+        }
+
+
         public void fillEnumBillTyp(Infragistics.Win.UltraWinEditors.UltraComboEditor cbo, bool all, bool srJN)
         {
             Infragistics.Win.ValueListItem itm = null;
@@ -721,38 +729,16 @@ namespace PMDS.UI.Sitemap
                     if ((srJN && (PMDS.Calc.Logic.eBillTyp)val == eBillTyp.Sammelrechnung))
                         cbo.Items.Add(val, Enum.GetName(typeof(PMDS.Calc.Logic.eBillTyp), val));
                 }
-
-                //itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Alle, PMDS.Calc.Logic.eBillTyp.Alle.ToString());
-              
-                //itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillTyp.Rechnung.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_Buchungen;
-
-                //itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Beilage, PMDS.Calc.Logic.eBillTyp.Beilage.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_ordner_durchsichtig;
-
-                //itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung, PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_StörfälleÜbernehmen;
-
-                //if (srJN)
-                //{
-                //    itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Sammelrechnung, PMDS.Calc.Logic.eBillTyp.Sammelrechnung.ToString());
-                //    itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.Sammelrechnung;
-                //}
             }
             else
             {
                 cbo.Items.Clear();
-
                 itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillTyp.Rechnung.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_Buchungen;
-
                 itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Beilage, PMDS.Calc.Logic.eBillTyp.Beilage.ToString());
-                //itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_ordner_durchsichtig;
-
                 itm = cbo.Items.Add((int)PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung, PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung.ToString());
-            //    itm.Appearance.Image = global::PMDS.UI.Sitemap.Properties.Resources.ICO_StörfälleÜbernehmen;
             }
         }
+
         public void fillEnumKonto(Infragistics.Win.ValueList valueList)
         {
             valueList.ValueListItems.Clear();

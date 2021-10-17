@@ -45,8 +45,16 @@ namespace PMDS.Global
         PeriodischeLeistungSonderleistung = 8,
         Alles = 9
 	}
-    
 
-
-
+    public enum RechnungsdruckTyp
+    {
+        [Description("Nur Zahler (Standard)")]
+        NurZahler = 0,
+        [Description("Kein Rechnungsdruck")]
+        KeinRechnungsdruck = 1,
+        [Description("Nur Kopie an Kontakte")]
+        NurKopieKontakte = 2,
+        [Description("Zahler und Kopie an Kontakte")]
+        ZahlerUndKopieKontakte = 3
+    }
 }

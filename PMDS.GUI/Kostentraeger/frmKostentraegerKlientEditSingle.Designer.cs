@@ -35,9 +35,10 @@
             // 
             this.ucKostentraegerKlientEditSingle1.BackColor = System.Drawing.Color.Transparent;
             this.ucKostentraegerKlientEditSingle1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucKostentraegerKlientEditSingle1.FSWMode = false;
             this.ucKostentraegerKlientEditSingle1.Location = new System.Drawing.Point(0, 0);
             this.ucKostentraegerKlientEditSingle1.Name = "ucKostentraegerKlientEditSingle1";
-            this.ucKostentraegerKlientEditSingle1.Size = new System.Drawing.Size(853, 267);
+            this.ucKostentraegerKlientEditSingle1.Size = new System.Drawing.Size(874, 360);
             this.ucKostentraegerKlientEditSingle1.TabIndex = 0;
             // 
             // frmKostentraegerKlientEditSingle
@@ -45,7 +46,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(853, 267);
+            this.ClientSize = new System.Drawing.Size(874, 360);
             this.Controls.Add(this.ucKostentraegerKlientEditSingle1);
             this.Name = "frmKostentraegerKlientEditSingle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

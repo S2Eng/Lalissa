@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.lblVorname = new QS2.Desktop.ControlManagment.BaseLabel();
             this.txtVorname = new QS2.Desktop.ControlManagment.BaseTextEditor();
             this.txtNachname = new QS2.Desktop.ControlManagment.BaseTextEditor();
@@ -132,8 +133,8 @@
             // 
             // lblNachname
             // 
-            appearance3.FontData.SizeInPoints = 8F;
-            this.lblNachname.Appearance = appearance3;
+            appearance4.FontData.SizeInPoints = 8F;
+            this.lblNachname.Appearance = appearance4;
             this.lblNachname.AutoSize = true;
             this.lblNachname.Location = new System.Drawing.Point(212, 9);
             this.lblNachname.Name = "lblNachname";
@@ -247,8 +248,6 @@
             // 
             // grpKontaktdaten
             // 
-            this.grpKontaktdaten.Controls.Add(this.txtZusats3);
-            this.grpKontaktdaten.Controls.Add(this.lblZusatz3);
             this.grpKontaktdaten.Controls.Add(this.txtZusats2);
             this.grpKontaktdaten.Controls.Add(this.lblZusatz2);
             this.grpKontaktdaten.Controls.Add(this.txtZusats1);
@@ -267,26 +266,29 @@
             this.grpKontaktdaten.Controls.Add(this.lblFax);
             this.grpKontaktdaten.Location = new System.Drawing.Point(14, 232);
             this.grpKontaktdaten.Name = "grpKontaktdaten";
-            this.grpKontaktdaten.Size = new System.Drawing.Size(447, 185);
+            this.grpKontaktdaten.Size = new System.Drawing.Size(447, 161);
             this.grpKontaktdaten.TabIndex = 122;
             this.grpKontaktdaten.Text = "Kontaktdaten ";
             // 
             // txtZusats3
             // 
-            this.txtZusats3.Location = new System.Drawing.Point(95, 157);
+            this.txtZusats3.Location = new System.Drawing.Point(108, 399);
             this.txtZusats3.MaxLength = 75;
             this.txtZusats3.Name = "txtZusats3";
+            this.txtZusats3.NullText = "RECHNUNGSKOPIE, um eine Kopie auszudrucken";
+            appearance2.ForeColor = System.Drawing.Color.Gray;
+            this.txtZusats3.NullTextAppearance = appearance2;
             this.txtZusats3.Size = new System.Drawing.Size(346, 21);
             this.txtZusats3.TabIndex = 20;
             // 
             // lblZusatz3
             // 
             this.lblZusatz3.AutoSize = true;
-            this.lblZusatz3.Location = new System.Drawing.Point(15, 161);
+            this.lblZusatz3.Location = new System.Drawing.Point(28, 403);
             this.lblZusatz3.Name = "lblZusatz3";
-            this.lblZusatz3.Size = new System.Drawing.Size(47, 14);
+            this.lblZusatz3.Size = new System.Drawing.Size(51, 14);
             this.lblZusatz3.TabIndex = 78;
-            this.lblZusatz3.Text = "Zusatz 3";
+            this.lblZusatz3.Text = "Re-Kopie";
             // 
             // txtZusats2
             // 
@@ -463,8 +465,8 @@
             // 
             // lblKontakt
             // 
-            appearance2.FontData.SizeInPoints = 8F;
-            this.lblKontakt.Appearance = appearance2;
+            appearance3.FontData.SizeInPoints = 8F;
+            this.lblKontakt.Appearance = appearance3;
             this.lblKontakt.AutoSize = true;
             this.lblKontakt.Location = new System.Drawing.Point(14, 24);
             this.lblKontakt.Name = "lblKontakt";
@@ -537,6 +539,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtZusats3);
+            this.Controls.Add(this.lblZusatz3);
             this.Controls.Add(this.cboVerwandschaft);
             this.Controls.Add(this.lblKontakt);
             this.Controls.Add(this.cbKontaktart);

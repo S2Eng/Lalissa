@@ -24,12 +24,14 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class dsKostentraeger : global::System.Data.DataSet {
         
+        private KostentraegerAltDataTable tableKostentraegerAlt;
+        
         private KostentraegerDataTable tableKostentraeger;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public dsKostentraeger() {
             this.BeginInit();
             this.InitClass();
@@ -40,7 +42,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected dsKostentraeger(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
@@ -54,6 +56,9 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["KostentraegerAlt"] != null)) {
+                    base.Tables.Add(new KostentraegerAltDataTable(ds.Tables["KostentraegerAlt"]));
+                }
                 if ((ds.Tables["Kostentraeger"] != null)) {
                     base.Tables.Add(new KostentraegerDataTable(ds.Tables["Kostentraeger"]));
                 }
@@ -76,7 +81,17 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public KostentraegerAltDataTable KostentraegerAlt {
+            get {
+                return this.tableKostentraegerAlt;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public KostentraegerDataTable Kostentraeger {
@@ -86,7 +101,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -99,7 +114,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataTableCollection Tables {
             get {
@@ -108,7 +123,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataRelationCollection Relations {
             get {
@@ -117,7 +132,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override void InitializeDerivedDataSet() {
             this.BeginInit();
             this.InitClass();
@@ -125,7 +140,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
             dsKostentraeger cln = ((dsKostentraeger)(base.Clone()));
             cln.InitVars();
@@ -134,24 +149,27 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override bool ShouldSerializeTables() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override bool ShouldSerializeRelations() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
             if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["KostentraegerAlt"] != null)) {
+                    base.Tables.Add(new KostentraegerAltDataTable(ds.Tables["KostentraegerAlt"]));
+                }
                 if ((ds.Tables["Kostentraeger"] != null)) {
                     base.Tables.Add(new KostentraegerDataTable(ds.Tables["Kostentraeger"]));
                 }
@@ -171,7 +189,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
@@ -180,14 +198,20 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars() {
             this.InitVars(true);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableKostentraegerAlt = ((KostentraegerAltDataTable)(base.Tables["KostentraegerAlt"]));
+            if ((initTable == true)) {
+                if ((this.tableKostentraegerAlt != null)) {
+                    this.tableKostentraegerAlt.InitVars();
+                }
+            }
             this.tableKostentraeger = ((KostentraegerDataTable)(base.Tables["Kostentraeger"]));
             if ((initTable == true)) {
                 if ((this.tableKostentraeger != null)) {
@@ -197,25 +221,33 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
             this.DataSetName = "dsKostentraeger";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/dsKostentraeger.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableKostentraegerAlt = new KostentraegerAltDataTable();
+            base.Tables.Add(this.tableKostentraegerAlt);
             this.tableKostentraeger = new KostentraegerDataTable();
             base.Tables.Add(this.tableKostentraeger);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeKostentraegerAlt() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeKostentraeger() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -223,7 +255,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
             dsKostentraeger ds = new dsKostentraeger();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
@@ -269,7 +301,10 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             return type;
         }
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void KostentraegerAltRowChangeEventHandler(object sender, KostentraegerAltRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void KostentraegerRowChangeEventHandler(object sender, KostentraegerRowChangeEvent e);
         
         /// <summary>
@@ -277,7 +312,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class KostentraegerDataTable : global::System.Data.TypedTableBase<KostentraegerRow> {
+        public partial class KostentraegerAltDataTable : global::System.Data.TypedTableBase<KostentraegerAltRow> {
             
             private global::System.Data.DataColumn columnID;
             
@@ -330,17 +365,17 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             private global::System.Data.DataColumn columnIDPatientIstZahler;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public KostentraegerDataTable() {
-                this.TableName = "Kostentraeger";
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerAltDataTable() {
+                this.TableName = "KostentraegerAlt";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal KostentraegerDataTable(global::System.Data.DataTable table) {
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal KostentraegerAltDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -356,14 +391,14 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected KostentraegerDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected KostentraegerAltDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn IDColumn {
                 get {
                     return this.columnID;
@@ -371,7 +406,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
@@ -379,7 +414,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StrasseColumn {
                 get {
                     return this.columnStrasse;
@@ -387,7 +422,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn PLZColumn {
                 get {
                     return this.columnPLZ;
@@ -395,7 +430,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn OrtColumn {
                 get {
                     return this.columnOrt;
@@ -403,7 +438,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn RechnungsempfaengerColumn {
                 get {
                     return this.columnRechnungsempfaenger;
@@ -411,7 +446,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn RechnungsanschriftColumn {
                 get {
                     return this.columnRechnungsanschrift;
@@ -419,7 +454,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn BLZColumn {
                 get {
                     return this.columnBLZ;
@@ -427,7 +462,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn KontonrColumn {
                 get {
                     return this.columnKontonr;
@@ -435,7 +470,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn BankColumn {
                 get {
                     return this.columnBank;
@@ -443,7 +478,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn FIBUKontoColumn {
                 get {
                     return this.columnFIBUKonto;
@@ -451,7 +486,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ErlagscheingebuehrJNColumn {
                 get {
                     return this.columnErlagscheingebuehrJN;
@@ -459,7 +494,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn BetragColumn {
                 get {
                     return this.columnBetrag;
@@ -467,7 +502,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TransferleistungJNColumn {
                 get {
                     return this.columnTransferleistungJN;
@@ -475,7 +510,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TaschengeldJNColumn {
                 get {
                     return this.columnTaschengeldJN;
@@ -483,7 +518,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ZahlartColumn {
                 get {
                     return this.columnZahlart;
@@ -491,7 +526,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn PatientbezogenJNColumn {
                 get {
                     return this.columnPatientbezogenJN;
@@ -499,7 +534,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn SammelabrechnungJNColumn {
                 get {
                     return this.columnSammelabrechnungJN;
@@ -507,7 +542,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn UIDNrColumn {
                 get {
                     return this.columnUIDNr;
@@ -515,7 +550,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn GSBGColumn {
                 get {
                     return this.columnGSBG;
@@ -523,7 +558,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn AnredeColumn {
                 get {
                     return this.columnAnrede;
@@ -531,7 +566,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn VornameColumn {
                 get {
                     return this.columnVorname;
@@ -539,7 +574,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn IDKlinikColumn {
                 get {
                     return this.columnIDKlinik;
@@ -547,7 +582,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn IDKostentraegerSubColumn {
                 get {
                     return this.columnIDKostentraegerSub;
@@ -555,7 +590,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn IDPatientIstZahlerColumn {
                 get {
                     return this.columnIDPatientIstZahler;
@@ -563,7 +598,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -572,34 +607,34 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public KostentraegerRow this[int index] {
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerAltRow this[int index] {
                 get {
-                    return ((KostentraegerRow)(this.Rows[index]));
+                    return ((KostentraegerAltRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event KostentraegerRowChangeEventHandler KostentraegerRowChanging;
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerAltRowChangeEventHandler KostentraegerAltRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event KostentraegerRowChangeEventHandler KostentraegerRowChanged;
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerAltRowChangeEventHandler KostentraegerAltRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event KostentraegerRowChangeEventHandler KostentraegerRowDeleting;
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerAltRowChangeEventHandler KostentraegerAltRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event KostentraegerRowChangeEventHandler KostentraegerRowDeleted;
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerAltRowChangeEventHandler KostentraegerAltRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddKostentraegerRow(KostentraegerRow row) {
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddKostentraegerAltRow(KostentraegerAltRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public KostentraegerRow AddKostentraegerRow(
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerAltRow AddKostentraegerAltRow(
                         System.Guid ID, 
                         string Name, 
                         string Strasse, 
@@ -625,7 +660,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                         System.Guid IDKlinik, 
                         System.Guid IDKostentraegerSub, 
                         System.Guid IDPatientIstZahler) {
-                KostentraegerRow rowKostentraegerRow = ((KostentraegerRow)(this.NewRow()));
+                KostentraegerAltRow rowKostentraegerAltRow = ((KostentraegerAltRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         Name,
@@ -652,34 +687,34 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
                         IDKlinik,
                         IDKostentraegerSub,
                         IDPatientIstZahler};
-                rowKostentraegerRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowKostentraegerRow);
-                return rowKostentraegerRow;
+                rowKostentraegerAltRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowKostentraegerAltRow);
+                return rowKostentraegerAltRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public KostentraegerRow FindByID(System.Guid ID) {
-                return ((KostentraegerRow)(this.Rows.Find(new object[] {
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerAltRow FindByID(System.Guid ID) {
+                return ((KostentraegerAltRow)(this.Rows.Find(new object[] {
                             ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                KostentraegerDataTable cln = ((KostentraegerDataTable)(base.Clone()));
+                KostentraegerAltDataTable cln = ((KostentraegerAltDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new KostentraegerDataTable();
+                return new KostentraegerAltDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnName = base.Columns["Name"];
@@ -709,7 +744,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
@@ -800,25 +835,676 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerAltRow NewKostentraegerAltRow() {
+                return ((KostentraegerAltRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new KostentraegerAltRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(KostentraegerAltRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.KostentraegerAltRowChanged != null)) {
+                    this.KostentraegerAltRowChanged(this, new KostentraegerAltRowChangeEvent(((KostentraegerAltRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.KostentraegerAltRowChanging != null)) {
+                    this.KostentraegerAltRowChanging(this, new KostentraegerAltRowChangeEvent(((KostentraegerAltRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.KostentraegerAltRowDeleted != null)) {
+                    this.KostentraegerAltRowDeleted(this, new KostentraegerAltRowChangeEvent(((KostentraegerAltRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.KostentraegerAltRowDeleting != null)) {
+                    this.KostentraegerAltRowDeleting(this, new KostentraegerAltRowChangeEvent(((KostentraegerAltRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveKostentraegerAltRow(KostentraegerAltRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsKostentraeger ds = new dsKostentraeger();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "KostentraegerAltDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class KostentraegerDataTable : global::System.Data.TypedTableBase<KostentraegerRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnFIBUKonto;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnVorname;
+            
+            private global::System.Data.DataColumn columnAnrede;
+            
+            private global::System.Data.DataColumn columnStrasse;
+            
+            private global::System.Data.DataColumn columnPLZ;
+            
+            private global::System.Data.DataColumn columnOrt;
+            
+            private global::System.Data.DataColumn columnRechnungsanschrift;
+            
+            private global::System.Data.DataColumn columnRechnungsempfaenger;
+            
+            private global::System.Data.DataColumn columnIDKostentraegerSub;
+            
+            private global::System.Data.DataColumn columnUIDNr;
+            
+            private global::System.Data.DataColumn columnIDKlinik;
+            
+            private global::System.Data.DataColumn columnSammelabrechnungJN;
+            
+            private global::System.Data.DataColumn columnGSBG;
+            
+            private global::System.Data.DataColumn columnZahlart;
+            
+            private global::System.Data.DataColumn columnErlagscheingebuehrJN;
+            
+            private global::System.Data.DataColumn columnBetrag;
+            
+            private global::System.Data.DataColumn columnBank;
+            
+            private global::System.Data.DataColumn columnKontonr;
+            
+            private global::System.Data.DataColumn columnBLZ;
+            
+            private global::System.Data.DataColumn columnTaschengeldJN;
+            
+            private global::System.Data.DataColumn columnPatientbezogenJN;
+            
+            private global::System.Data.DataColumn columnTransferleistungJN;
+            
+            private global::System.Data.DataColumn columnIDPatientIstZahler;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerDataTable() {
+                this.TableName = "Kostentraeger";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal KostentraegerDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected KostentraegerDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FIBUKontoColumn {
+                get {
+                    return this.columnFIBUKonto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn VornameColumn {
+                get {
+                    return this.columnVorname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AnredeColumn {
+                get {
+                    return this.columnAnrede;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StrasseColumn {
+                get {
+                    return this.columnStrasse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PLZColumn {
+                get {
+                    return this.columnPLZ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn OrtColumn {
+                get {
+                    return this.columnOrt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RechnungsanschriftColumn {
+                get {
+                    return this.columnRechnungsanschrift;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RechnungsempfaengerColumn {
+                get {
+                    return this.columnRechnungsempfaenger;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDKostentraegerSubColumn {
+                get {
+                    return this.columnIDKostentraegerSub;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UIDNrColumn {
+                get {
+                    return this.columnUIDNr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDKlinikColumn {
+                get {
+                    return this.columnIDKlinik;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SammelabrechnungJNColumn {
+                get {
+                    return this.columnSammelabrechnungJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn GSBGColumn {
+                get {
+                    return this.columnGSBG;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ZahlartColumn {
+                get {
+                    return this.columnZahlart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ErlagscheingebuehrJNColumn {
+                get {
+                    return this.columnErlagscheingebuehrJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BetragColumn {
+                get {
+                    return this.columnBetrag;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BankColumn {
+                get {
+                    return this.columnBank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KontonrColumn {
+                get {
+                    return this.columnKontonr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BLZColumn {
+                get {
+                    return this.columnBLZ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TaschengeldJNColumn {
+                get {
+                    return this.columnTaschengeldJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PatientbezogenJNColumn {
+                get {
+                    return this.columnPatientbezogenJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TransferleistungJNColumn {
+                get {
+                    return this.columnTransferleistungJN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDPatientIstZahlerColumn {
+                get {
+                    return this.columnIDPatientIstZahler;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerRow this[int index] {
+                get {
+                    return ((KostentraegerRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerRowChangeEventHandler KostentraegerRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerRowChangeEventHandler KostentraegerRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerRowChangeEventHandler KostentraegerRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KostentraegerRowChangeEventHandler KostentraegerRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddKostentraegerRow(KostentraegerRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerRow AddKostentraegerRow(
+                        System.Guid ID, 
+                        string FIBUKonto, 
+                        string Name, 
+                        string Vorname, 
+                        string Anrede, 
+                        string Strasse, 
+                        string PLZ, 
+                        string Ort, 
+                        string Rechnungsanschrift, 
+                        string Rechnungsempfaenger, 
+                        System.Guid IDKostentraegerSub, 
+                        string UIDNr, 
+                        System.Guid IDKlinik, 
+                        bool SammelabrechnungJN, 
+                        decimal GSBG, 
+                        int Zahlart, 
+                        bool ErlagscheingebuehrJN, 
+                        double Betrag, 
+                        string Bank, 
+                        string Kontonr, 
+                        string BLZ, 
+                        bool TaschengeldJN, 
+                        bool PatientbezogenJN, 
+                        bool TransferleistungJN, 
+                        System.Guid IDPatientIstZahler) {
+                KostentraegerRow rowKostentraegerRow = ((KostentraegerRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        FIBUKonto,
+                        Name,
+                        Vorname,
+                        Anrede,
+                        Strasse,
+                        PLZ,
+                        Ort,
+                        Rechnungsanschrift,
+                        Rechnungsempfaenger,
+                        IDKostentraegerSub,
+                        UIDNr,
+                        IDKlinik,
+                        SammelabrechnungJN,
+                        GSBG,
+                        Zahlart,
+                        ErlagscheingebuehrJN,
+                        Betrag,
+                        Bank,
+                        Kontonr,
+                        BLZ,
+                        TaschengeldJN,
+                        PatientbezogenJN,
+                        TransferleistungJN,
+                        IDPatientIstZahler};
+                rowKostentraegerRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowKostentraegerRow);
+                return rowKostentraegerRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerRow FindByID(System.Guid ID) {
+                return ((KostentraegerRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                KostentraegerDataTable cln = ((KostentraegerDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new KostentraegerDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnFIBUKonto = base.Columns["FIBUKonto"];
+                this.columnName = base.Columns["Name"];
+                this.columnVorname = base.Columns["Vorname"];
+                this.columnAnrede = base.Columns["Anrede"];
+                this.columnStrasse = base.Columns["Strasse"];
+                this.columnPLZ = base.Columns["PLZ"];
+                this.columnOrt = base.Columns["Ort"];
+                this.columnRechnungsanschrift = base.Columns["Rechnungsanschrift"];
+                this.columnRechnungsempfaenger = base.Columns["Rechnungsempfaenger"];
+                this.columnIDKostentraegerSub = base.Columns["IDKostentraegerSub"];
+                this.columnUIDNr = base.Columns["UIDNr"];
+                this.columnIDKlinik = base.Columns["IDKlinik"];
+                this.columnSammelabrechnungJN = base.Columns["SammelabrechnungJN"];
+                this.columnGSBG = base.Columns["GSBG"];
+                this.columnZahlart = base.Columns["Zahlart"];
+                this.columnErlagscheingebuehrJN = base.Columns["ErlagscheingebuehrJN"];
+                this.columnBetrag = base.Columns["Betrag"];
+                this.columnBank = base.Columns["Bank"];
+                this.columnKontonr = base.Columns["Kontonr"];
+                this.columnBLZ = base.Columns["BLZ"];
+                this.columnTaschengeldJN = base.Columns["TaschengeldJN"];
+                this.columnPatientbezogenJN = base.Columns["PatientbezogenJN"];
+                this.columnTransferleistungJN = base.Columns["TransferleistungJN"];
+                this.columnIDPatientIstZahler = base.Columns["IDPatientIstZahler"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnFIBUKonto = new global::System.Data.DataColumn("FIBUKonto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIBUKonto);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnVorname = new global::System.Data.DataColumn("Vorname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVorname);
+                this.columnAnrede = new global::System.Data.DataColumn("Anrede", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAnrede);
+                this.columnStrasse = new global::System.Data.DataColumn("Strasse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStrasse);
+                this.columnPLZ = new global::System.Data.DataColumn("PLZ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPLZ);
+                this.columnOrt = new global::System.Data.DataColumn("Ort", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrt);
+                this.columnRechnungsanschrift = new global::System.Data.DataColumn("Rechnungsanschrift", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRechnungsanschrift);
+                this.columnRechnungsempfaenger = new global::System.Data.DataColumn("Rechnungsempfaenger", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRechnungsempfaenger);
+                this.columnIDKostentraegerSub = new global::System.Data.DataColumn("IDKostentraegerSub", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDKostentraegerSub);
+                this.columnUIDNr = new global::System.Data.DataColumn("UIDNr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUIDNr);
+                this.columnIDKlinik = new global::System.Data.DataColumn("IDKlinik", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDKlinik);
+                this.columnSammelabrechnungJN = new global::System.Data.DataColumn("SammelabrechnungJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSammelabrechnungJN);
+                this.columnGSBG = new global::System.Data.DataColumn("GSBG", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGSBG);
+                this.columnZahlart = new global::System.Data.DataColumn("Zahlart", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZahlart);
+                this.columnErlagscheingebuehrJN = new global::System.Data.DataColumn("ErlagscheingebuehrJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnErlagscheingebuehrJN);
+                this.columnBetrag = new global::System.Data.DataColumn("Betrag", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBetrag);
+                this.columnBank = new global::System.Data.DataColumn("Bank", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBank);
+                this.columnKontonr = new global::System.Data.DataColumn("Kontonr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKontonr);
+                this.columnBLZ = new global::System.Data.DataColumn("BLZ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBLZ);
+                this.columnTaschengeldJN = new global::System.Data.DataColumn("TaschengeldJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaschengeldJN);
+                this.columnPatientbezogenJN = new global::System.Data.DataColumn("PatientbezogenJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPatientbezogenJN);
+                this.columnTransferleistungJN = new global::System.Data.DataColumn("TransferleistungJN", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransferleistungJN);
+                this.columnIDPatientIstZahler = new global::System.Data.DataColumn("IDPatientIstZahler", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDPatientIstZahler);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
+                this.columnFIBUKonto.AllowDBNull = false;
+                this.columnFIBUKonto.MaxLength = 20;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 100;
+                this.columnVorname.AllowDBNull = false;
+                this.columnVorname.MaxLength = 150;
+                this.columnAnrede.AllowDBNull = false;
+                this.columnAnrede.MaxLength = 50;
+                this.columnStrasse.AllowDBNull = false;
+                this.columnStrasse.MaxLength = 100;
+                this.columnPLZ.AllowDBNull = false;
+                this.columnPLZ.MaxLength = 6;
+                this.columnOrt.AllowDBNull = false;
+                this.columnOrt.MaxLength = 100;
+                this.columnRechnungsanschrift.AllowDBNull = false;
+                this.columnRechnungsanschrift.MaxLength = 100;
+                this.columnRechnungsempfaenger.AllowDBNull = false;
+                this.columnRechnungsempfaenger.MaxLength = 50;
+                this.columnUIDNr.AllowDBNull = false;
+                this.columnUIDNr.MaxLength = 12;
+                this.columnSammelabrechnungJN.AllowDBNull = false;
+                this.columnGSBG.AllowDBNull = false;
+                this.columnErlagscheingebuehrJN.AllowDBNull = false;
+                this.columnBank.AllowDBNull = false;
+                this.columnBank.MaxLength = 100;
+                this.columnKontonr.AllowDBNull = false;
+                this.columnKontonr.MaxLength = 255;
+                this.columnBLZ.AllowDBNull = false;
+                this.columnBLZ.MaxLength = 100;
+                this.columnTaschengeldJN.AllowDBNull = false;
+                this.columnPatientbezogenJN.AllowDBNull = false;
+                this.columnTransferleistungJN.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public KostentraegerRow NewKostentraegerRow() {
                 return ((KostentraegerRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new KostentraegerRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(KostentraegerRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.KostentraegerRowChanged != null)) {
@@ -827,7 +1513,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.KostentraegerRowChanging != null)) {
@@ -836,7 +1522,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.KostentraegerRowDeleted != null)) {
@@ -845,7 +1531,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.KostentraegerRowDeleting != null)) {
@@ -854,13 +1540,13 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void RemoveKostentraegerRow(KostentraegerRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -926,19 +1612,394 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class KostentraegerAltRow : global::System.Data.DataRow {
+            
+            private KostentraegerAltDataTable tableKostentraegerAlt;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal KostentraegerAltRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableKostentraegerAlt = ((KostentraegerAltDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid ID {
+                get {
+                    return ((global::System.Guid)(this[this.tableKostentraegerAlt.IDColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.NameColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Strasse {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.StrasseColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.StrasseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PLZ {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.PLZColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.PLZColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Ort {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.OrtColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.OrtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Rechnungsempfaenger {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.RechnungsempfaengerColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.RechnungsempfaengerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Rechnungsanschrift {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.RechnungsanschriftColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.RechnungsanschriftColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BLZ {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.BLZColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.BLZColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Kontonr {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.KontonrColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.KontonrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Bank {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.BankColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.BankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FIBUKonto {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.FIBUKontoColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.FIBUKontoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool ErlagscheingebuehrJN {
+                get {
+                    return ((bool)(this[this.tableKostentraegerAlt.ErlagscheingebuehrJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.ErlagscheingebuehrJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Betrag {
+                get {
+                    try {
+                        return ((double)(this[this.tableKostentraegerAlt.BetragColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Betrag in Tabelle KostentraegerAlt ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraegerAlt.BetragColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool TransferleistungJN {
+                get {
+                    return ((bool)(this[this.tableKostentraegerAlt.TransferleistungJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.TransferleistungJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool TaschengeldJN {
+                get {
+                    return ((bool)(this[this.tableKostentraegerAlt.TaschengeldJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.TaschengeldJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Zahlart {
+                get {
+                    try {
+                        return ((int)(this[this.tableKostentraegerAlt.ZahlartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Zahlart in Tabelle KostentraegerAlt ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraegerAlt.ZahlartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool PatientbezogenJN {
+                get {
+                    return ((bool)(this[this.tableKostentraegerAlt.PatientbezogenJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.PatientbezogenJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool SammelabrechnungJN {
+                get {
+                    return ((bool)(this[this.tableKostentraegerAlt.SammelabrechnungJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.SammelabrechnungJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string UIDNr {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.UIDNrColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.UIDNrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal GSBG {
+                get {
+                    return ((decimal)(this[this.tableKostentraegerAlt.GSBGColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.GSBGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Anrede {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.AnredeColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.AnredeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Vorname {
+                get {
+                    return ((string)(this[this.tableKostentraegerAlt.VornameColumn]));
+                }
+                set {
+                    this[this.tableKostentraegerAlt.VornameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDKlinik {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableKostentraegerAlt.IDKlinikColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDKlinik in Tabelle KostentraegerAlt ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraegerAlt.IDKlinikColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDKostentraegerSub {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableKostentraegerAlt.IDKostentraegerSubColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDKostentraegerSub in Tabelle KostentraegerAlt ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraegerAlt.IDKostentraegerSubColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDPatientIstZahler {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableKostentraegerAlt.IDPatientIstZahlerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDPatientIstZahler in Tabelle KostentraegerAlt ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraegerAlt.IDPatientIstZahlerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBetragNull() {
+                return this.IsNull(this.tableKostentraegerAlt.BetragColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBetragNull() {
+                this[this.tableKostentraegerAlt.BetragColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsZahlartNull() {
+                return this.IsNull(this.tableKostentraegerAlt.ZahlartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetZahlartNull() {
+                this[this.tableKostentraegerAlt.ZahlartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDKlinikNull() {
+                return this.IsNull(this.tableKostentraegerAlt.IDKlinikColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDKlinikNull() {
+                this[this.tableKostentraegerAlt.IDKlinikColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDKostentraegerSubNull() {
+                return this.IsNull(this.tableKostentraegerAlt.IDKostentraegerSubColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDKostentraegerSubNull() {
+                this[this.tableKostentraegerAlt.IDKostentraegerSubColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDPatientIstZahlerNull() {
+                return this.IsNull(this.tableKostentraegerAlt.IDPatientIstZahlerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDPatientIstZahlerNull() {
+                this[this.tableKostentraegerAlt.IDPatientIstZahlerColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class KostentraegerRow : global::System.Data.DataRow {
             
             private KostentraegerDataTable tableKostentraeger;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal KostentraegerRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableKostentraeger = ((KostentraegerDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.Guid ID {
                 get {
                     return ((global::System.Guid)(this[this.tableKostentraeger.IDColumn]));
@@ -949,106 +2010,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Name {
-                get {
-                    return ((string)(this[this.tableKostentraeger.NameColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Strasse {
-                get {
-                    return ((string)(this[this.tableKostentraeger.StrasseColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.StrasseColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string PLZ {
-                get {
-                    return ((string)(this[this.tableKostentraeger.PLZColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.PLZColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Ort {
-                get {
-                    return ((string)(this[this.tableKostentraeger.OrtColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.OrtColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Rechnungsempfaenger {
-                get {
-                    return ((string)(this[this.tableKostentraeger.RechnungsempfaengerColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.RechnungsempfaengerColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Rechnungsanschrift {
-                get {
-                    return ((string)(this[this.tableKostentraeger.RechnungsanschriftColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.RechnungsanschriftColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string BLZ {
-                get {
-                    return ((string)(this[this.tableKostentraeger.BLZColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.BLZColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Kontonr {
-                get {
-                    return ((string)(this[this.tableKostentraeger.KontonrColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.KontonrColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Bank {
-                get {
-                    return ((string)(this[this.tableKostentraeger.BankColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.BankColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string FIBUKonto {
                 get {
                     return ((string)(this[this.tableKostentraeger.FIBUKontoColumn]));
@@ -1059,127 +2021,18 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool ErlagscheingebuehrJN {
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Name {
                 get {
-                    return ((bool)(this[this.tableKostentraeger.ErlagscheingebuehrJNColumn]));
+                    return ((string)(this[this.tableKostentraeger.NameColumn]));
                 }
                 set {
-                    this[this.tableKostentraeger.ErlagscheingebuehrJNColumn] = value;
+                    this[this.tableKostentraeger.NameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Betrag {
-                get {
-                    try {
-                        return ((double)(this[this.tableKostentraeger.BetragColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Betrag in Tabelle Kostentraeger ist DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableKostentraeger.BetragColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool TransferleistungJN {
-                get {
-                    return ((bool)(this[this.tableKostentraeger.TransferleistungJNColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.TransferleistungJNColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool TaschengeldJN {
-                get {
-                    return ((bool)(this[this.tableKostentraeger.TaschengeldJNColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.TaschengeldJNColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Zahlart {
-                get {
-                    try {
-                        return ((int)(this[this.tableKostentraeger.ZahlartColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Zahlart in Tabelle Kostentraeger ist DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableKostentraeger.ZahlartColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool PatientbezogenJN {
-                get {
-                    return ((bool)(this[this.tableKostentraeger.PatientbezogenJNColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.PatientbezogenJNColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool SammelabrechnungJN {
-                get {
-                    return ((bool)(this[this.tableKostentraeger.SammelabrechnungJNColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.SammelabrechnungJNColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string UIDNr {
-                get {
-                    return ((string)(this[this.tableKostentraeger.UIDNrColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.UIDNrColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal GSBG {
-                get {
-                    return ((decimal)(this[this.tableKostentraeger.GSBGColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.GSBGColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Anrede {
-                get {
-                    return ((string)(this[this.tableKostentraeger.AnredeColumn]));
-                }
-                set {
-                    this[this.tableKostentraeger.AnredeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Vorname {
                 get {
                     return ((string)(this[this.tableKostentraeger.VornameColumn]));
@@ -1190,23 +2043,73 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.Guid IDKlinik {
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Anrede {
                 get {
-                    try {
-                        return ((global::System.Guid)(this[this.tableKostentraeger.IDKlinikColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDKlinik in Tabelle Kostentraeger ist DBNull.", e);
-                    }
+                    return ((string)(this[this.tableKostentraeger.AnredeColumn]));
                 }
                 set {
-                    this[this.tableKostentraeger.IDKlinikColumn] = value;
+                    this[this.tableKostentraeger.AnredeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Strasse {
+                get {
+                    return ((string)(this[this.tableKostentraeger.StrasseColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.StrasseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PLZ {
+                get {
+                    return ((string)(this[this.tableKostentraeger.PLZColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.PLZColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Ort {
+                get {
+                    return ((string)(this[this.tableKostentraeger.OrtColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.OrtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Rechnungsanschrift {
+                get {
+                    return ((string)(this[this.tableKostentraeger.RechnungsanschriftColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.RechnungsanschriftColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Rechnungsempfaenger {
+                get {
+                    return ((string)(this[this.tableKostentraeger.RechnungsempfaengerColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.RechnungsempfaengerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.Guid IDKostentraegerSub {
                 get {
                     try {
@@ -1222,7 +2125,165 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string UIDNr {
+                get {
+                    return ((string)(this[this.tableKostentraeger.UIDNrColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.UIDNrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.Guid IDKlinik {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableKostentraeger.IDKlinikColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte IDKlinik in Tabelle Kostentraeger ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraeger.IDKlinikColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool SammelabrechnungJN {
+                get {
+                    return ((bool)(this[this.tableKostentraeger.SammelabrechnungJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.SammelabrechnungJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal GSBG {
+                get {
+                    return ((decimal)(this[this.tableKostentraeger.GSBGColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.GSBGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Zahlart {
+                get {
+                    try {
+                        return ((int)(this[this.tableKostentraeger.ZahlartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Zahlart in Tabelle Kostentraeger ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraeger.ZahlartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool ErlagscheingebuehrJN {
+                get {
+                    return ((bool)(this[this.tableKostentraeger.ErlagscheingebuehrJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.ErlagscheingebuehrJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Betrag {
+                get {
+                    try {
+                        return ((double)(this[this.tableKostentraeger.BetragColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Betrag in Tabelle Kostentraeger ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKostentraeger.BetragColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Bank {
+                get {
+                    return ((string)(this[this.tableKostentraeger.BankColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.BankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Kontonr {
+                get {
+                    return ((string)(this[this.tableKostentraeger.KontonrColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.KontonrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BLZ {
+                get {
+                    return ((string)(this[this.tableKostentraeger.BLZColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.BLZColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool TaschengeldJN {
+                get {
+                    return ((bool)(this[this.tableKostentraeger.TaschengeldJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.TaschengeldJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool PatientbezogenJN {
+                get {
+                    return ((bool)(this[this.tableKostentraeger.PatientbezogenJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.PatientbezogenJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool TransferleistungJN {
+                get {
+                    return ((bool)(this[this.tableKostentraeger.TransferleistungJNColumn]));
+                }
+                set {
+                    this[this.tableKostentraeger.TransferleistungJNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.Guid IDPatientIstZahler {
                 get {
                     try {
@@ -1238,61 +2299,61 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsBetragNull() {
-                return this.IsNull(this.tableKostentraeger.BetragColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetBetragNull() {
-                this[this.tableKostentraeger.BetragColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsZahlartNull() {
-                return this.IsNull(this.tableKostentraeger.ZahlartColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetZahlartNull() {
-                this[this.tableKostentraeger.ZahlartColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIDKlinikNull() {
-                return this.IsNull(this.tableKostentraeger.IDKlinikColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIDKlinikNull() {
-                this[this.tableKostentraeger.IDKlinikColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsIDKostentraegerSubNull() {
                 return this.IsNull(this.tableKostentraeger.IDKostentraegerSubColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIDKostentraegerSubNull() {
                 this[this.tableKostentraeger.IDKostentraegerSubColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIDKlinikNull() {
+                return this.IsNull(this.tableKostentraeger.IDKlinikColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIDKlinikNull() {
+                this[this.tableKostentraeger.IDKlinikColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsZahlartNull() {
+                return this.IsNull(this.tableKostentraeger.ZahlartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetZahlartNull() {
+                this[this.tableKostentraeger.ZahlartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBetragNull() {
+                return this.IsNull(this.tableKostentraeger.BetragColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBetragNull() {
+                this[this.tableKostentraeger.BetragColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsIDPatientIstZahlerNull() {
                 return this.IsNull(this.tableKostentraeger.IDPatientIstZahlerColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIDPatientIstZahlerNull() {
                 this[this.tableKostentraeger.IDPatientIstZahlerColumn] = global::System.Convert.DBNull;
             }
@@ -1301,7 +2362,41 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class KostentraegerAltRowChangeEvent : global::System.EventArgs {
+            
+            private KostentraegerAltRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerAltRowChangeEvent(KostentraegerAltRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KostentraegerAltRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class KostentraegerRowChangeEvent : global::System.EventArgs {
             
             private KostentraegerRow eventRow;
@@ -1309,14 +2404,14 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public KostentraegerRowChangeEvent(KostentraegerRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public KostentraegerRow Row {
                 get {
                     return this.eventRow;
@@ -1324,7 +2419,7 @@ namespace PMDS.Global.db.Global.ds_abrechnung {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;

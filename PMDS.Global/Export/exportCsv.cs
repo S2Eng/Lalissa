@@ -11,12 +11,10 @@ namespace PMDS.Global.ExportCsv
 
     public class exportCsv
     {
-        public static string Separator = ";";
-        public static string lineBreak = "\r\n";
+        private string Separator = ";";
+        public static string lineBreak { get; set; } = "\r\n";        
 
-        
-
-        public bool doCSV(Infragistics.Win.UltraWinGrid.UltraGrid gridxy, Environment.SpecialFolder toFolder, 
+        public bool doCSV(Infragistics.Win.UltraWinGrid.UltraGrid grid, Environment.SpecialFolder toFolder, 
                         System.Data.DataSet dsToExport, string fileSelected , string  TableNameToExport, 
                         System.Collections.Generic.List<String> lstColsNotExport, 
                         string columnCheckIfRowExport)
@@ -27,7 +25,7 @@ namespace PMDS.Global.ExportCsv
                 foreach (System.Data.DataTable table in dsToExport.Tables)
                 {
                     bool exportTable = false;
-                    if (TableNameToExport.Trim() == "")
+                    if (String.IsNullOrWhiteSpace(TableNameToExport))
                     {
                         exportTable = true;
                     }
@@ -46,7 +44,11 @@ namespace PMDS.Global.ExportCsv
                             bool exportCol = this.exportColumn(lstColsNotExport, col.ColumnName);
                             if (exportCol)
                             {
-                                resultCsv += col.ColumnName + Separator;
+                                //Spaltennamen aus Grid holen
+                                resultCsv += grid.DisplayLayout.Bands[0].Columns[col.ColumnName].Header.Caption + Separator;
+
+                                //Spaltennamen aus Dataset
+                                //resultCsv += col.ColumnName + Separator;
                                 //resultCsv += "äöü" + Separator;
                             }
                         }
@@ -54,7 +56,7 @@ namespace PMDS.Global.ExportCsv
                         foreach (System.Data.DataRow r in table.Rows)
                         {
                             bool exportColOk = false;
-                            if (columnCheckIfRowExport.Trim() != "")
+                            if (!String.IsNullOrWhiteSpace(columnCheckIfRowExport))
                             {
                                 if ((bool)r[columnCheckIfRowExport.Trim()] == true)
                                     exportColOk = true;

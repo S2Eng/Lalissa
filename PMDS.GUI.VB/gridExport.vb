@@ -52,6 +52,8 @@ Public Class gridExport
                 '    Next
                 'End If
 
+                'grid.DataSource = dsToExport
+
                 If typ = eTyp.excel Then
                     Me.UltraGridExcelExporter1.Export(grid, filName)
                 ElseIf typ = eTyp.pdf Then

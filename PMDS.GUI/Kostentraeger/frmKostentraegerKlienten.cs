@@ -48,7 +48,7 @@ namespace PMDS.Calc.UI.Admin
             InitializeComponent();
         }
 
-        public void initControl(DataTable source, string displayMember, string valueMember)
+        public void initControl(DataTable source, string displayMember, string valueMember, dsKostentraeger.KostentraegerRow rKostSelected)
         {
             if (this.isLoaded)
                 return;
@@ -61,7 +61,10 @@ namespace PMDS.Calc.UI.Admin
 
             PMDS.UI.Sitemap.UIFct sitemap = new PMDS.UI.Sitemap.UIFct();
             sitemap.fillEnumBillTyp(this.cboRechnungTyp, false, false);
-            this.cboRechnungTyp.Value = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;
+
+            PMDSBusinessUI b3 = new PMDSBusinessUI();
+            b3.loadRechnungsdruckTypCbo(this.cboRechnungsdruckTyp);
+            this.cboRechnungsdruckTyp.Value = (int)Global.RechnungsdruckTyp.NurZahler;
 
             if (this.rKlinikActuell != null)
             {
@@ -104,6 +107,7 @@ namespace PMDS.Calc.UI.Admin
                 
                 SetReadOnly();
                 UpdateGUI();
+                Application.DoEvents();
             }
         }
 
@@ -152,12 +156,13 @@ namespace PMDS.Calc.UI.Admin
                 cbKtrArt.Value = (int)Kostentraegerart.Transferleistung;
                 cbBetragErrechnet.Checked = false;
                 txtBetrag.Value = 0;
-                this.cboRechnungTyp.Value = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;
+                this.cboRechnungTyp.Value = (int)PMDS.Calc.Logic.eBillTyp.Zahlungsbestätigung;
             }
             else
             {
                 cbKtrArt.Value = PatientKostentraegerRow != null ? PatientKostentraegerRow.enumKostentraegerart : (int)Kostentraegerart.Grundkosten;
-                cbVorauszahlungJN.Visible = KostentraegerRow.PatientbezogenJN;
+                //cbVorauszahlungJN.Visible = KostentraegerRow.PatientbezogenJN;
+                cbVorauszahlungJN.Visible = false;      //os 211003: Vorauszahlungsfunktion deaktiviert
                 this.cboRechnungTyp.Value = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;
             }
         }
@@ -201,7 +206,6 @@ namespace PMDS.Calc.UI.Admin
 
             if (this.neuanlage)
             {
-                this.cboRechnungTyp.Value = 1;
                 this.panelRechnung.Visible = true;
                 this.cbRechnungJN.Checked = true;
             }
@@ -231,10 +235,10 @@ namespace PMDS.Calc.UI.Admin
                 txtBetrag.Visible = false;
                 txtBetrag.Value = 0;
                 cbRechnungJN.Checked = true;
-                panelAuswahlRechnung.Visible = false;
+                this.panelDetail2.Visible = true;
+                panelAuswahlRechnung.Visible = true;
                 panelAuswahlRestzahler.Visible = false;
-                this.panelDetail2.Visible = false;
-                this.Height = 405;
+                //this.Height = 405;
             }
             else if (KostentraegerRow.TransferleistungJN  )
             {
@@ -244,11 +248,8 @@ namespace PMDS.Calc.UI.Admin
                 cbBetragErrechnet.Checked = false ;
                 panelAuswahlRestzahler.Visible = false;
                 txtBetrag.Value = 0;
-                this.panelDetail2.Height = 48;
-                this.Height = 455;
-
-                this.panelAuswahlRechnung.Left = 56;
-
+                this.panelDetail2.Visible = false;
+ 
                 lblKostenträgerart.Visible = false;
                 cbKtrArt.Visible = false;
             }
@@ -281,7 +282,7 @@ namespace PMDS.Calc.UI.Admin
             _PatientKostentraegerRow.RechnungJN = cbRechnungJN.Checked;
             _PatientKostentraegerRow.enumKostentraegerart = Convert.ToInt32(cbKtrArt.Value);
             _PatientKostentraegerRow.BetragErrechnetJN = cbBetragErrechnet.Checked;
-            _PatientKostentraegerRow.Betrag = (double)txtBetrag.Value;
+            _PatientKostentraegerRow.Betrag = (decimal)txtBetrag.Value;
             _PatientKostentraegerRow.ErfasstAm = (DateTime)dtpErfasstAm.Value;
             _PatientKostentraegerRow.IDBenutzer = (Guid)cmbBenutzer.Value;
             _PatientKostentraegerRow.RechnungTyp = (int)this.cboRechnungTyp.Value;

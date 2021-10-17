@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Infragistics.Win.UltraWinGrid;
 using PMDS.Calc.Logic;
 using PMDS.DB;
 using PMDS.Global.db.Patient;
@@ -21,7 +22,7 @@ namespace PMDS.Calc.UI.Admin
     {
 
         public PMDS.Calc.Logic.workCalcDb sqlOperations1 = new PMDS.Calc.Logic.workCalcDb();
-
+        
         public PMDS.Calc.Logic.workCalcDb.eTypUI typUI = PMDS.Calc.Logic.workCalcDb.eTypUI.CopyDb;
 
         public bool isKostLoaded = false;
@@ -36,10 +37,8 @@ namespace PMDS.Calc.UI.Admin
         public PMDS.UI.Sitemap.UIFct UIFct1 = null;
         public string _sProt = "";
 
-
-
-
-
+        public PMDS.Calc.Logic.workCalcDb.eBMDExportTyp BMDExportTyp { get; set; } = PMDS.Calc.Logic.workCalcDb.eBMDExportTyp.Standard;
+        public string FSW_FiBuKonto { get; set; } = "";
 
 
         public frmWorkCalcDb()
@@ -57,6 +56,7 @@ namespace PMDS.Calc.UI.Admin
         {
             try
             {
+                sqlOperations1.SetBMDExportTyp(BMDExportTyp, FSW_FiBuKonto);
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Allgemein2.ico_Editor, 32, 32);
                 if (!DesignMode)
                 {
@@ -109,7 +109,7 @@ namespace PMDS.Calc.UI.Admin
                 {
                     this.Size = new Size(1009, 578);
                     
-                    this.butStart.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Export Csv");
+                    this.butStart.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Export CSV");
                     this.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Export Abrechnungen für ") + rActuelKlinik.Bezeichnung.Trim() + "";
                     this.ultraTabControl1.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.Default;
                     this.gridCalcs.Visible = true;
@@ -143,17 +143,12 @@ namespace PMDS.Calc.UI.Admin
                 }
 
                 this.UIFct1 = new PMDS.UI.Sitemap.UIFct();
-                this.lstColsNotExportCalcs.Add("IDBill");
-                this.lstColsNotExportCalcs.Add("IDBillHeader");
-                this.lstColsNotExportCalcs.Add("IDKostIntern");
-                this.lstColsNotExportCalcs.Add("IDSR");
-                this.lstColsNotExportCalcs.Add("TypBill");
-                this.lstColsNotExportCalcs.Add("ExportiertJN");
+                if (this.BMDExportTyp == workCalcDb.eBMDExportTyp.MZ)
 
                 this.lstColsNotExportKost.Add("IDKostenträger");
                 this.lstColsNotExportKost.Add("Message");
 
-                this.erwAnsicht(true, 1);
+                //this.erwAnsicht(true, 1);
 
                 this.lblCountCalc.Text = "";
                 this.lblCountKost.Text = "";
@@ -209,7 +204,7 @@ namespace PMDS.Calc.UI.Admin
                     string sqlTotalResult = "";
                     if (this.sqlOperations1.createTablesFromDs(ref sqlTotalResult))
                     {
-                        if (sqlTotalResult.Trim() != "")
+                        if (!String.IsNullOrWhiteSpace(sqlTotalResult))
                         {
                             frmProtocoll frmProtocoll1 = new frmProtocoll();
                             frmProtocoll1.txtProtocoll.Text = sqlTotalResult.Trim();
@@ -265,39 +260,42 @@ namespace PMDS.Calc.UI.Admin
                     int countRowsTotalCopied = 0;
                     int countDbTotalCopied = 0;
 
-                    dsKlinik dsKlinik1 = new dsKlinik();
-                    PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
-                    dsKlinik.KlinikRow rKlinikActuell = DBKlinik1.loadKlinik(PMDS.Global.ENV.IDKlinik, true);
-
-                    this._sProt = "";
-                    double SumBruttoSRAll = 0;
-                    if (this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.CopyDb, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref this.dsExport1,
-                                                              ref sqlTotalResult, ref countRowsTotalCopied,
-                                                              ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillStatus.freigegeben,
-                                                              rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref iErrors, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked))
+                    using (dsKlinik dsKlinik1 = new dsKlinik())
                     {
-                        string sMsgBoxTranslate = "{0} Abrechnungen wurden überspielt!" + "\r\n" +
-                                                    "({1} Zeilen insgesamt!)";
-                        sMsgBoxTranslate = QS2.Desktop.ControlManagment.ControlManagment.getRes(sMsgBoxTranslate, countDbTotalCopied.ToString(), countRowsTotalCopied.ToString());
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTranslate, "Abrechnungen überspielen", MessageBoxButtons.OK);
-
-                        if (!String.IsNullOrWhiteSpace(sqlTotalResult))
+                        using (PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik())
                         {
-                            if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen das Überspielungsprotokoll öffnen?", "Abrechnungen überspielen", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            dsKlinik.KlinikRow rKlinikActuell = DBKlinik1.loadKlinik(PMDS.Global.ENV.IDKlinik, true);
+
+                            this._sProt = "";
+                            double SumBruttoSRAll = 0;
+                            if (this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.CopyDb, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref this.dsExport1,
+                                                                        ref sqlTotalResult, ref countRowsTotalCopied,
+                                                                        ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillStatus.freigegeben,
+                                                                        rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref iErrors, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked))
                             {
-                                using (frmProtocoll frmProtocoll1 = new frmProtocoll())
+                                string sMsgBoxTranslate = "{0} Abrechnungen wurden überspielt!" + "\r\n" +
+                                                            "({1} Zeilen insgesamt!)";
+                                sMsgBoxTranslate = QS2.Desktop.ControlManagment.ControlManagment.getRes(sMsgBoxTranslate, countDbTotalCopied.ToString(), countRowsTotalCopied.ToString());
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMsgBoxTranslate, "Abrechnungen überspielen", MessageBoxButtons.OK);
+
+                                if (!String.IsNullOrWhiteSpace(sqlTotalResult))
                                 {
-                                    frmProtocoll1.txtProtocoll.Text = sqlTotalResult.Trim();
-                                    frmProtocoll1.ShowDialog();
+                                    if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen das Überspielungsprotokoll öffnen?", "Abrechnungen überspielen", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                    {
+                                        using (frmProtocoll frmProtocoll1 = new frmProtocoll())
+                                        {
+                                            frmProtocoll1.txtProtocoll.Text = sqlTotalResult.Trim();
+                                            frmProtocoll1.ShowDialog();
+                                        }
+                                    }
                                 }
                             }
-                        }                       
+                            else
+                            {
+                                throw new Exception("transferDatabases: Error Transfer Calc-Data to Db!");
+                            }
+                        }
                     }
-                    else
-                    {
-                        throw new Exception("transferDatabases: Error Transfer Calc-Data to Db!");
-                    }
-
                 }
             }
             catch (Exception ex)
@@ -379,73 +377,70 @@ namespace PMDS.Calc.UI.Admin
 
                 double SumBruttoSRAll = 0;
                 string sqlTotalResult = "";
-                    int countRowsTotalCopied = 0;
-                    int countDbTotalCopied = 0;
-                    this._iErrorsReadCalcs = 0;
+                int countRowsTotalCopied = 0;
+                int countDbTotalCopied = 0;
+                this._iErrorsReadCalcs = 0;
                     
-                    this.dsExport1.ExportBMD.Rows.Clear();
-                    
-                    dsKlinik dsKlinik1 = new dsKlinik();
-                    PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
+                this.dsExport1.ExportBMD.Rows.Clear();
+
+                string KlinikBereich = "";
+
+                using (PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik())
+                {
                     dsKlinik.KlinikRow rKlinikActuell = DBKlinik1.loadKlinik(PMDS.Global.ENV.IDKlinik, true);
+                    KlinikBereich = rKlinikActuell.Bereich.Trim();
+                    this._sProt = "";
+                }
 
-                this._sProt = "";
-
-                    //<20120111-2> Storno integriert
+                //<20120111-2> Storno integriert
+                //freigegebene Rechungen
                 this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref this.dsExport1, 
                                                               ref sqlTotalResult, ref countRowsTotalCopied,
-                                                              ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Rechnung , PMDS.Calc.Logic.eBillStatus .freigegeben,
-                                                              rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
-                    this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
+                                                              ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Rechnung , PMDS.Calc.Logic.eBillStatus.freigegeben,
+                                                              KlinikBereich, PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
+                //stornierte Rechungen
+                this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
                                                               ref sqlTotalResult, ref countRowsTotalCopied,
                                                               ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Rechnung, PMDS.Calc.Logic.eBillStatus.storniert ,
-                                                              rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
-
-                    this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
+                                                              KlinikBereich, PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
+                //freigegebene Sammelrechnungnen
+                this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
                                                               ref sqlTotalResult, ref countRowsTotalCopied,
                                                               ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Sammelrechnung , PMDS.Calc.Logic.eBillStatus.freigegeben,
-                                                              rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
-                    this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
+                                                              KlinikBereich, PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
+                //stornierte SR
+                this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
                                                               ref sqlTotalResult, ref countRowsTotalCopied,
                                                               ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.Sammelrechnung, PMDS.Calc.Logic.eBillStatus.storniert ,
-                                                              rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
-
-                    this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
+                                                              KlinikBereich, PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
+                //freigegebene Freie Rechnungen
+                this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
                                                               ref sqlTotalResult, ref countRowsTotalCopied,
                                                               ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.FreieRechnung, PMDS.Calc.Logic.eBillStatus.freigegeben,
-                                                              rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
-                    this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
+                                                              KlinikBereich, PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
+                //stornierte Freie Rechnungen
+                this.sqlOperations1.doCalcDatabases(PMDS.Calc.Logic.workCalcDb.eTypUI.ExportCalcs, ref dFrom, ref dTo, ref dFromRechDatum, ref dToRechDatum, ref  this.dsExport1,
                                                               ref sqlTotalResult, ref countRowsTotalCopied,
                                                               ref countDbTotalCopied, PMDS.Calc.Logic.eBillTyp.FreieRechnung, PMDS.Calc.Logic.eBillStatus.storniert ,
-                                                              rKlinikActuell.Bereich.Trim(), PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
-
-                    this.gridCalcs.Refresh();
-                    
-                    
-                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDBillColumn.ColumnName].Hidden = true;
-                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDBillHeaderColumn.ColumnName].Hidden = true;
-                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDKostInternColumn.ColumnName].Hidden = true;
-                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDSRColumn.ColumnName].Hidden = true;
-                
+                                                              KlinikBereich, PMDS.Global.ENV.typRechNr, ref this._iErrorsReadCalcs, PMDS.Global.ENV.IDKlinik, ref this._sProt, ref SumBruttoSRAll, this.BillsExportiertJN.Checked);
+                                
+                this.gridCalcs.Refresh();                
                 this.setCountCalcs(this._iErrorsReadCalcs);
-                //string sTxtSumBruttoAllSR = "SR - Brutto all: " + SumBruttoSRAll.ToString();
-                //this._sProt += "\r\n" + sTxtSumBruttoAllSR + "\r\n";
-
                 this.selectAllNone(true);
 
-                if (this._sProt.Trim() != "")
+                if (!String.IsNullOrWhiteSpace(this._sProt))
                 {
                     frmProtocoll frmProtocoll1 = new frmProtocoll();
                     frmProtocoll1.txtProtocoll.Text = this._sProt.Trim();
                     frmProtocoll1.Show();
                 }
-
             }
             catch (Exception ex)
             {
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
+
         public void setCountCalcs(int iErrors)
         {
             try
@@ -467,6 +462,7 @@ namespace PMDS.Calc.UI.Admin
                 PMDS.Global.ENV.HandleException(ex);
             }
         }
+
         public void setCountKost()
         {
             try
@@ -485,34 +481,39 @@ namespace PMDS.Calc.UI.Admin
             {
                 this.Cursor = Cursors.WaitCursor;
 
-
-                dsExport dsExport1 = new dsExport();
-                foreach (Infragistics.Win.UltraWinGrid.UltraGridRow rGrid in this.gridCalcs.Rows)
+                using (dsExport dsExport1 = new dsExport())
                 {
-                    DataRowView v = (DataRowView)rGrid.ListObject;
-                    PMDS.Calc.Logic.dsExport.ExportBMDRow rSelExport = (PMDS.Calc.Logic.dsExport.ExportBMDRow)v.Row;
-
-                    if ((bool)rGrid.Cells["Select"].Value == true)
+                    foreach (Infragistics.Win.UltraWinGrid.UltraGridRow rGrid in this.gridCalcs.Rows)
                     {
-                        dsExport.ExportBMDRow rExportBMDRCopy = (dsExport.ExportBMDRow)dsExport1.ExportBMD.NewRow();
-                        rExportBMDRCopy.ItemArray = rSelExport.ItemArray;
-                        dsExport1.ExportBMD.Rows.Add(rExportBMDRCopy);
+                        DataRowView v = (DataRowView)rGrid.ListObject;
+                        PMDS.Calc.Logic.dsExport.ExportBMDRow rSelExport = (PMDS.Calc.Logic.dsExport.ExportBMDRow)v.Row;
+
+                        if ((bool)rGrid.Cells["Select"].Value == true)
+                        {
+                            dsExport.ExportBMDRow rExportBMDRCopy = (dsExport.ExportBMDRow)dsExport1.ExportBMD.NewRow();
+                            rExportBMDRCopy.ItemArray = rSelExport.ItemArray;
+                            dsExport1.ExportBMD.Rows.Add(rExportBMDRCopy);
+                        }
                     }
-                }
-
-                PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport();
-                export.exportGrid(this.gridCalcs, PMDS.GUI.VB.gridExport.eTyp.csv, dsExport1, this.dsExport1.ExportBMD.TableName, this.lstColsNotExportCalcs, "");
-
-                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
-                {
-                    foreach (dsExport.ExportBMDRow rExportBMD in dsExport1.ExportBMD)
+                    
+                    using (PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport())
                     {
-                        PMDS.db.Entities.bills rBills = db.bills.Where(b => b.ID == rExportBMD.IDBill).First();
-                        rBills.ExportiertJN = true;
-                        db.SaveChanges();
+                        export.exportGrid(this.gridCalcs, PMDS.GUI.VB.gridExport.eTyp.csv, dsExport1, this.dsExport1.ExportBMD.TableName, this.lstColsNotExportCalcs, "");
                     }
-                }
 
+                    using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                    {
+                        foreach (dsExport.ExportBMDRow rExportBMD in dsExport1.ExportBMD)
+                        {
+                            PMDS.db.Entities.bills rBills = db.bills.Where(b => b.ID == rExportBMD.IDBill).FirstOrDefault();
+                            if (rBills != null)
+                            {
+                                rBills.ExportiertJN = true;
+                                db.SaveChanges();
+                            }
+                        }
+                    }
+                }                    
             }
             catch (Exception ex)
             {
@@ -556,9 +557,11 @@ namespace PMDS.Calc.UI.Admin
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport();
-                export.exportGrid(this.gridKost, PMDS.GUI.VB.gridExport.eTyp.csv, this.dsExport1,
-                                    this.dsExport1.ExportKostentraeger.TableName, this.lstColsNotExportKost, "");
+                using (PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport())
+                {
+                    export.exportGrid(this.gridKost, PMDS.GUI.VB.gridExport.eTyp.csv, this.dsExport1,
+                                        this.dsExport1.ExportKostentraeger.TableName, this.lstColsNotExportKost, "");
+                }
             }
             catch (Exception ex)
             {
@@ -569,7 +572,6 @@ namespace PMDS.Calc.UI.Admin
                 this.Cursor = Cursors.Default;
             }
         }
-
 
         private void ultraTabControl1_ActiveTabChanged(object sender, Infragistics.Win.UltraWinTabControl.ActiveTabChangedEventArgs e)
         {
@@ -1189,6 +1191,73 @@ namespace PMDS.Calc.UI.Admin
             {
                 this.Cursor = Cursors.Default;
             }
+        }
+
+        private void gridCalcs_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+            if (this.BMDExportTyp == workCalcDb.eBMDExportTyp.MZ)
+            {
+                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.buchdatumColumn.ColumnName].Header.Caption = "buchdat";
+                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.prozentColumn.ColumnName].Header.Caption = "mwst";
+                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.buchsymbolColumn.ColumnName].Header.Caption = "symbol";
+                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.AbteilungCodeColumn.ColumnName].Header.Caption = "kost";
+                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.buchcodeColumn.ColumnName].Header.Caption = "bucode";
+                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.FiBuKostSubColumn.ColumnName].Header.Caption = "konto zahler";
+                this.gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.TypBillColumn.ColumnName].Header.Caption = "Belegart";
+
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.SatzartColumn.ColumnName].Header.VisiblePosition = 1;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.kontoColumn.ColumnName].Header.VisiblePosition = 2;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.buchdatumColumn.ColumnName].Header.VisiblePosition = 3;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.belegnrColumn.ColumnName].Header.VisiblePosition = 4;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.periodeColumn.ColumnName].Header.VisiblePosition = 5;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.belegdatumColumn.ColumnName].Header.VisiblePosition = 6;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.buchsymbolColumn.ColumnName].Header.VisiblePosition = 7;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.gkontoColumn.ColumnName].Header.VisiblePosition = 8;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.buchcodeColumn.ColumnName].Header.VisiblePosition = 9;       
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.betragColumn.ColumnName].Header.VisiblePosition = 10;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.prozentColumn.ColumnName].Header.VisiblePosition = 11;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.steuerColumn.ColumnName].Header.VisiblePosition = 12;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.textColumn.ColumnName].Header.VisiblePosition = 13;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.benutzerColumn.ColumnName].Header.VisiblePosition = 14;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.steuercodeColumn.ColumnName].Header.VisiblePosition = 15;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.AbteilungCodeColumn.ColumnName].Header.VisiblePosition = 16;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDKostSubColumn.ColumnName].Header.VisiblePosition = 17;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.FiBuKostSubColumn.ColumnName].Header.VisiblePosition = 18;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.TypBillColumn.ColumnName].Header.VisiblePosition = 19;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.ExportiertJNColumn.ColumnName].Header.VisiblePosition = 20;
+
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.periodeColumn.ColumnName].Width = 100;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.benutzerColumn.ColumnName].Width = 80;
+ 
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.zzielColumn.ColumnName].Hidden = true;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.skontopzColumn.ColumnName].Hidden = true;
+                gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.skontotageColumn.ColumnName].Hidden = true;
+            }
+
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDKostColumn.ColumnName].Hidden = true;
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDKostInternColumn.ColumnName].Hidden = true;
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDBillColumn.ColumnName].Hidden = true;
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDBillHeaderColumn.ColumnName].Hidden = true;
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDKostColumn.ColumnName].Hidden = true;
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.FiBuKostColumn.ColumnName].Hidden = true;
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDKostSubColumn.ColumnName].Hidden = true;
+            gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.IDSRColumn.ColumnName].Hidden = true;
+            //gridCalcs.DisplayLayout.Bands[0].Columns[this.dsExport1.ExportBMD.FiBuKostSubColumn.ColumnName].Hidden = true;
+
+
+            //Für den Export die nicht sichtbaren Spalten ausblenden
+            lstColsNotExportCalcs.Clear();
+            foreach (var x in gridCalcs.DisplayLayout.Bands[0].Columns)
+            {
+                if (x.Hidden)
+                {
+                    this.lstColsNotExportCalcs.Add(x.Key);
+                }
+            }
+            this.lstColsNotExportCalcs.Add("Select");
+            this.lstColsNotExportCalcs.Add("TypBill");
+            this.lstColsNotExportCalcs.Add("ExportiertJN");
+            this.lstColsNotExportCalcs.Add("FiBuKostSub");
         }
     }
 }

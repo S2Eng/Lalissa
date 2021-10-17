@@ -68,6 +68,7 @@ Public Enum eModify
     rechDatum = 4
     printRechnungsKopie = 5
     rechNrKopie = 6
+    printRechnungsversand = 7
 
     openBillRechStor = 20
     openBillRechStorStorno = 21

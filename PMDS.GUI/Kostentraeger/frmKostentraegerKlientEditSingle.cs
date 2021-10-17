@@ -30,17 +30,32 @@ namespace PMDS.GUI.Kostentraeger
         }
 
 
-        public void initControl(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostenträger, bool isNew, eTypeUI TypeUI, bool FSWMode)
+        public void initControl(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostenträger, bool isNew, eTypeUI TypeUI, bool FSWMode, bool EVMode)
         {
             try
             {
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
-                if (FSWMode)
-                    this.Text = "FSW-Zahlungsaufforderung definieren";
+
+                if (isNew)
+                {
+                    if (FSWMode)
+                        this.Text = "FSW-Zahlungsaufforderung für Klient hinzufügen";
+                    else if (EVMode)
+                        this.Text = "Erwachsenenvertreter als Zahler hinzufügen";
+                    else
+                        this.Text = "Kient als Zahler hinzufügen";
+                }
+                else
+                {
+                    this.Text = "Zahlerzuordnung ändern";
+                }
 
                 this.ucKostentraegerKlientEditSingle1.mainWindow = this;
                 this.ucKostentraegerKlientEditSingle1.initControl(TypeUI);
-                this.ucKostentraegerKlientEditSingle1.loadData(IDPatient, IDKostenträger, IDPatientKostenträger, isNew, FSWMode);
+                if (!this.ucKostentraegerKlientEditSingle1.loadData(IDPatient, IDKostenträger, IDPatientKostenträger, isNew, FSWMode, EVMode))
+                {
+                    this.Close();
+                }
 
             }
             catch (Exception ex)

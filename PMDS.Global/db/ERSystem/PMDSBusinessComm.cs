@@ -352,7 +352,7 @@ namespace PMDS.DB
 
                     var tMU3 = tMUnreaded2.GroupBy(i => i.ID);
 
-                    if (tMU3.Count() > 0)
+                    if (tMU3.Any())
                     {
                         //foreach (var rProt in tMU3)
                         //{

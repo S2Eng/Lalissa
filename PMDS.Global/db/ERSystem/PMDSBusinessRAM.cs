@@ -75,7 +75,7 @@ namespace PMDS.DB
                     thread_getPatientenStart.IsBackground = true;
                     thread_getPatientenStart.Start();
 
-                    if (PMDSBusinessComm.uniqueIDMachine.Trim() == "")
+                    if (String.IsNullOrWhiteSpace(PMDSBusinessComm.uniqueIDMachine))
                     {
                         throw new Exception("PMDSBusinessRAM.loadDataStart: PMDSBusinessRAM.uniqueIDMachine.Trim()=='' not allowed!");
                     }

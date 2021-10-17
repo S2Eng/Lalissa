@@ -21,6 +21,7 @@ namespace WCFServicePMDS.Models.DB
         public bool? RechnungJn { get; set; }
         public int RechnungTyp { get; set; }
         public Guid? IdpatientIstZahler { get; set; }
+        public int RechnungsdruckTyp { get; set; }
 
         public virtual Kostentraeger IdkostentraegerNavigation { get; set; }
         public virtual Patient IdpatientNavigation { get; set; }

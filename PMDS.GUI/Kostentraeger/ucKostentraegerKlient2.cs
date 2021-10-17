@@ -29,7 +29,7 @@ namespace PMDS.GUI.Kostentraeger
 
         private PMDS.Calc.Admin.DB.DBPatientKostentraeger _kost = new PMDS.Calc.Admin.DB.DBPatientKostentraeger();
         private dsPatientKostentraeger.PatientKostentraegerDataTable _dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
-
+        private dsPatientKostentraeger.PatientKostentraegerErweitertDataTable _dtErweitert = new dsPatientKostentraeger.PatientKostentraegerErweitertDataTable();
 
         public event EventHandler ValueChanged;
         private Guid _IDPatient = Guid.Empty;
@@ -55,10 +55,12 @@ namespace PMDS.GUI.Kostentraeger
             this.btnAdd.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
             this.btnAddKlient.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
             this.btnAddFSW.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
+            this.btnAddErwachsenenvertreter.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Plus, 32, 32);
             this.btnDel.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32);
             this.btnUpdate.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Bearbeiten, 32, 32);
 
-            this.btnAddFSW.Visible = ENV.FSW_IDIntern != Guid.Empty;
+            //this.btnAddFSW.Visible = ENV.FSW_IDIntern != Guid.Empty;
+            this.btnAddFSW.Visible = false; //Ersetzt durch Auswahl der Zahlart im normalen Modus
             RefreshValueLists();
         }
 
@@ -71,6 +73,7 @@ namespace PMDS.GUI.Kostentraeger
                 ShowHideColumns();
             }
         }
+
         public bool Save()
         {
             try
@@ -79,7 +82,8 @@ namespace PMDS.GUI.Kostentraeger
                     return false;
 
                 PMDS.GUI.UltraGridTools.EndCurrentEdit(dgMain);
-                _kost.Update(_dt);
+                //_kost.Update(_dtErweitert);
+                //_kost.Update(_dt);
 
                 _DataChenged = false;
                 return true;
@@ -105,7 +109,11 @@ namespace PMDS.GUI.Kostentraeger
             _dt.IDKostentraegerColumn.AllowDBNull = true;
             _dt.GueltigAbColumn.AllowDBNull = true;
 
-            dgMain.DataSource = _dt;
+            _dtErweitert = _kost.ReadErweitert(_IDPatient, TransferKostentraegerJN);
+            _dtErweitert.IDKostentraegerColumn.AllowDBNull = true;
+            _dtErweitert.GueltigAbColumn.AllowDBNull = true;
+
+            dgMain.DataSource = _dtErweitert;
             dgMain.Refresh();
 
             if (dgMain.ActiveRow != null)
@@ -113,16 +121,63 @@ namespace PMDS.GUI.Kostentraeger
                 dgMain.ActiveRow.Selected = true;
             }
 
-            Infragistics.Win.ValueList valList = new Infragistics.Win.ValueList();
-            valList.ValueListItems.Clear();
-            sitemap.fillEnumBillTyp(valList, false);
-
             dgMain.DisplayLayout.ValueLists.Clear();
+
+            Infragistics.Win.ValueList valList = new Infragistics.Win.ValueList();
+            sitemap.fillEnumBillTyp(valList, false);
             dgMain.DisplayLayout.ValueLists.Add(valList);
-            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungTyp"].ValueList = dgMain.DisplayLayout.ValueLists[0];
+
+            Infragistics.Win.ValueList valListDruckTyp = new Infragistics.Win.ValueList();
+            sitemap.fillEnumDruckTyp(valListDruckTyp);
+            dgMain.DisplayLayout.ValueLists.Add(valListDruckTyp);
+
+            Infragistics.Win.ValueList valListIDKostentraegerSub = new Infragistics.Win.ValueList();
+            sitemap.fillIDKostentraegerSub(valListIDKostentraegerSub);
+            dgMain.DisplayLayout.ValueLists.Add(valListIDKostentraegerSub);
 
             this.dgMain.DisplayLayout.Bands[0].Columns["ID"].Hidden = true;
             this.dgMain.DisplayLayout.Bands[0].Columns["IDPatientIstZahler"].Hidden = true;
+            this.dgMain.DisplayLayout.Bands[0].Columns["VorauszahlungJN"].Hidden = true;
+            this.dgMain.DisplayLayout.Bands[0].Columns["AbgerechnetBis"].Hidden = true;
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Hidden = true;
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungsdruckTyp"].Hidden = false;
+
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungTyp"].ValueList = dgMain.DisplayLayout.ValueLists[0];
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungsdruckTyp"].ValueList = dgMain.DisplayLayout.ValueLists[1];
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].ValueList = dgMain.DisplayLayout.ValueLists[2];
+
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraeger"].Header.VisiblePosition = 0;
+            this.dgMain.DisplayLayout.Bands[0].Columns["Vorname"].Header.VisiblePosition = 1;
+            this.dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Header.VisiblePosition = 2;
+            this.dgMain.DisplayLayout.Bands[0].Columns["FIBUKonto"].Header.VisiblePosition = 3;
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Header.VisiblePosition = 4;
+            this.dgMain.DisplayLayout.Bands[0].Columns["GueltigAb"].Header.VisiblePosition = 5;
+            this.dgMain.DisplayLayout.Bands[0].Columns["GueltigBis"].Header.VisiblePosition = 6;
+            this.dgMain.DisplayLayout.Bands[0].Columns["enumKostentraegerart"].Header.VisiblePosition = 7;
+            this.dgMain.DisplayLayout.Bands[0].Columns["BetragErrechnetJN"].Header.VisiblePosition = 8;
+            this.dgMain.DisplayLayout.Bands[0].Columns["Betrag"].Header.VisiblePosition = 9;
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungJN"].Header.VisiblePosition = 10;
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungTyp"].Header.VisiblePosition = 11;
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungsdruckTyp"].Header.VisiblePosition = 12;
+            this.dgMain.DisplayLayout.Bands[0].Columns["ErfasstAm"].Header.VisiblePosition = 13;
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDBenutzer"].Header.VisiblePosition = 14;
+
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraeger"].Header.Caption = "Kostenträger";
+            this.dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Header.Caption = "Rechnungsempfänger";
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Header.Caption = "Rechnung an";
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungsdruckTyp"].Header.Caption = "Rechnungsdrucktyp";
+
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraeger"].Width = 150;
+            this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Width = 200;
+            this.dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Width = 150;
+            this.dgMain.DisplayLayout.Bands[0].Columns["GueltigAb"].Width = 80;
+            this.dgMain.DisplayLayout.Bands[0].Columns["GueltigBis"].Width = 80;
+            this.dgMain.DisplayLayout.Bands[0].Columns["BetragErrechnetJN"].Width = 80;
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungTyp"].Width = 80;
+            this.dgMain.DisplayLayout.Bands[0].Columns["RechnungsdruckTyp"].Width = 150;
+
+            this.dgMain.DisplayLayout.Override.CellClickAction = CellClickAction.RowSelect;
+            Application.DoEvents();
             this.RefreshValueLists();
         }
 
@@ -165,7 +220,11 @@ namespace PMDS.GUI.Kostentraeger
             dgMain.DisplayLayout.Bands[0].Columns[_dt.BetragColumn.ColumnName].Hidden = _TransferKostentraegerJN;
             dgMain.DisplayLayout.Bands[0].Columns[_dt.IDBenutzerColumn.ColumnName].Hidden = true;
             dgMain.DisplayLayout.Bands[0].Columns[_dt.ErfasstAmColumn.ColumnName].Hidden = true;
+
+            this.btnAddErwachsenenvertreter.Visible = !_TransferKostentraegerJN;
+            this.btnAddKlient.Visible = !_TransferKostentraegerJN;
         }
+
         public bool ValidateFields()
         {
             //bool bError = false;
@@ -290,7 +349,6 @@ namespace PMDS.GUI.Kostentraeger
                 RefreshKostentraegerValueList();
                 GuiTools.AddKostentraegerArtValueList(dgMain, "enumKostentraegerart");
                 PMDS.GUI.UltraGridTools.AddBenutzerValueList(dgMain, "IDBenutzer");
-
             }
             catch (Exception ex)
             {
@@ -354,10 +412,10 @@ namespace PMDS.GUI.Kostentraeger
                 return;
             }
 
-            if (PMDS.GUI.UltraGridTools.AskRowDelete() != DialogResult.Yes)
+            if (PMDS.GUI.UltraGridTools.AskRowDelete("Wollen Sie diese Zuordnung(en) zum Kostenträger wirklich löschen?\n\nHinweis: Der Kostenträger wird dabei nicht gelöscht.\nUm auch den Kostenträger zu löschen, wechseln Sie zur Kostenträgerverwaltung.") != DialogResult.Yes)
                 return;
 
-            dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
+            //dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
             ArrayList al2 = new ArrayList();
             bool del = false;
             //PatientEinkommen pe = new PatientEinkommen();
@@ -370,10 +428,13 @@ namespace PMDS.GUI.Kostentraeger
 
             if (del)
             {
-                _DataChenged = true;
+                _kost.Update(_dtErweitert);
+                RefreshControl();
 
-                if (ValueChanged != null)
-                    ValueChanged(this, null);
+                //_DataChenged = true;
+
+                //if (ValueChanged != null)
+                //    ValueChanged(this, null);
             }
 
             if (dgMain.Rows.Count > 0)
@@ -382,15 +443,21 @@ namespace PMDS.GUI.Kostentraeger
                 dgMain.ActiveRow.Selected = true;
             }
             else
+            {
                 dgMain.ActiveRow = null;
+            }
+
         }
+
         private void AddElement(Guid IDKostentraeger, bool KlientIstZahler)
         {
             dsPatientKostentraeger.PatientKostentraegerRow r = _kost.New(_dt, _IDPatient, IDKostentraeger);
+            Application.DoEvents();
             if (TransferKostentraegerJN)
                 r.enumKostentraegerart = (int)Kostentraegerart.Transferleistung;
 
-            PMDS.GUI.UltraGridTools.SelectFieldInLastRowForEdit(dgMain, "IDKostentraeger");
+            if (dgMain.Rows.Count > 0)
+                PMDS.GUI.UltraGridTools.SelectFieldInLastRowForEdit(dgMain, "IDKostentraeger");
 
             frmKostenträger frm = new frmKostenträger();
             frm.mainWindow = this;
@@ -401,102 +468,121 @@ namespace PMDS.GUI.Kostentraeger
             frm.KostentraegerDataTable = _dt;
 
             DialogResult res = frm.ShowDialog();
+
             RefreshKostentraegerValueList();
 
             if (res == DialogResult.OK)
             {
-                _DataChenged = true;
-
-                ValidateField(dgMain.ActiveRow);
-
-                if (ValueChanged != null)
-                    ValueChanged(this, null);
+                _kost.Update(_dt);
+                RefreshControl();
             }
             else
+            {
                 r.Delete();
+                RefreshControl();
+            }
         }
         private void UpdateElement()
         {
             if (dgMain.ActiveRow == null)
                 return;
 
-            dsPatientKostentraeger.PatientKostentraegerRow r = (dsPatientKostentraeger.PatientKostentraegerRow)PMDS.GUI.UltraGridTools.CurrentSelectedRow(dgMain);
-            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+            dsPatientKostentraeger.PatientKostentraegerErweitertRow rErweitert = (dsPatientKostentraeger.PatientKostentraegerErweitertRow)PMDS.GUI.UltraGridTools.CurrentSelectedRow(dgMain);
+
+            using (dsPatientKostentraeger.PatientKostentraegerDataTable dtTemp = new dsPatientKostentraeger.PatientKostentraegerDataTable())
             {
-                var rKostenträger = (from pk in db.PatientKostentraeger
-                                     join k in db.Kostentraeger on pk.IDKostentraeger equals k.ID
-                                     where pk.ID == r.ID && pk.IDPatient == this.IDPatient
-                                     select new
-                                     {
-                                         k.ID,
-                                         k.Name,
-                                         pk.IDPatientIstZahler,
-                                         IDPatientKostenträger = pk.ID,
-                                         pk.IDPatient
-                                     }).FirstOrDefault();
+                dsPatientKostentraeger.PatientKostentraegerRow r = (dsPatientKostentraeger.PatientKostentraegerRow)dtTemp.NewRow();
 
-                if (rKostenträger != null && rKostenträger.IDPatientIstZahler != null && rKostenträger.IDPatientIstZahler == this.IDPatient)
+                if (!rErweitert.IsAbgerechnetBisNull()) r.AbgerechnetBis = rErweitert.AbgerechnetBis;
+                r.Betrag = rErweitert.Betrag;
+                r.BetragErrechnetJN = rErweitert.BetragErrechnetJN;
+                r.enumKostentraegerart = rErweitert.enumKostentraegerart;
+                if (!rErweitert.IsErfasstAmNull()) r.ErfasstAm = rErweitert.ErfasstAm;    
+                r.GueltigAb = rErweitert.GueltigAb;
+                if (!rErweitert.IsGueltigBisNull()) r.GueltigBis = rErweitert.GueltigBis;
+                r.ID = rErweitert.ID;
+                r.IDBenutzer = rErweitert.IDBenutzer;
+                r.IDKostentraeger = rErweitert.IDKostentraeger;
+                r.IDPatient = rErweitert.IDPatient;
+                if (!rErweitert.IsIDPatientIstZahlerNull()) r.IDPatientIstZahler = rErweitert.IDPatientIstZahler;
+                r.RechnungJN = rErweitert.RechnungJN;
+                r.RechnungsdruckTyp = rErweitert.RechnungsdruckTyp;
+                r.RechnungTyp = rErweitert.RechnungTyp;
+                r.VorauszahlungJN = rErweitert.VorauszahlungJN;
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
-                    this.addEditKlientAsZahler(rKostenträger.IDPatient, rKostenträger.ID, rKostenträger.IDPatientKostenträger, false, false);
-                }
-                else
-                {
-                    frmKostenträger frm = new frmKostenträger();
-                    frm.mainWindow = this;
-                    frm.ucPatientkostentraegerEdit1.ucKostenträger2.bKlientenzuordnung = true;
-                    frm.PatientKostentraegerRow = r;
-                    frm.KostentraegerDataTable = _dt;
+                    var rKostenträger = (from pk in db.PatientKostentraeger
+                                         join k in db.Kostentraeger on pk.IDKostentraeger equals k.ID
+                                         where pk.ID == r.ID && pk.IDPatient == this.IDPatient
+                                         select new
+                                         {
+                                             k.ID,
+                                             k.Name,
+                                             pk.IDPatientIstZahler,
+                                             IDPatientKostenträger = pk.ID,
+                                             pk.IDPatient
+                                         }).FirstOrDefault();
 
-                    DialogResult res = frm.ShowDialog();
-                    RefreshKostentraegerValueList();
-
-                    if (res == DialogResult.OK)
+                    if (rKostenträger != null && rKostenträger.IDPatientIstZahler != null && rKostenträger.IDPatientIstZahler == this.IDPatient)
                     {
-                        _DataChenged = true;
-                        ValidateField(dgMain.ActiveRow);
-                        if (ValueChanged != null)
-                            ValueChanged(this, null);
+                        this.addEditKlientAsZahler(rKostenträger.IDPatient, rKostenträger.ID, rKostenträger.IDPatientKostenträger, false, false, false);
+                    }
+
+                    else if (rKostenträger != null)
+                    {
+                        this.addEditKlientAsZahler(rKostenträger.IDPatient, rKostenträger.ID, rKostenträger.IDPatientKostenträger, false, false, false);
+                    }
+
+                    else
+                    {
+                        using (frmKostenträger frm = new frmKostenträger())
+                        {
+                            frm.mainWindow = this;
+                            frm.ucPatientkostentraegerEdit1.ucKostenträger2.bKlientenzuordnung = true;
+                            frm.PatientKostentraegerRow = r;
+                            frm.KostentraegerDataTable = _dt;
+
+                            DialogResult res = frm.ShowDialog();
+                            RefreshKostentraegerValueList();
+
+                            if (res == DialogResult.OK)
+                            {
+                                _DataChenged = true;
+                                //ValidateField(dgMain.ActiveRow);
+                                if (ValueChanged != null)
+                                    ValueChanged(this, null);
+                            }
+                        }
                     }
                 }
-
             }
         }
 
-        private void addEditKlientAsZahler(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostentraeger, bool IsNew, bool FSWMode)
+        private void addEditKlientAsZahler(Guid IDPatient, Nullable<Guid> IDKostenträger, Nullable<Guid> IDPatientKostentraeger, bool IsNew, bool FSWMode, bool EVMode)
         {
             try
             {
-                frmKostentraegerKlientEditSingle frmKostentraegerKlientEditSingle1 = new frmKostentraegerKlientEditSingle();
-                frmKostentraegerKlientEditSingle1.initControl(IDPatient, IDKostenträger, IDPatientKostentraeger, IsNew, ucKostentraegerKlientEditSingle.eTypeUI.Klient, FSWMode);
-                if (frmKostentraegerKlientEditSingle1.ucKostentraegerKlientEditSingle1._abortNoAufenthalt)
+                using (frmKostentraegerKlientEditSingle frmKostentraegerKlientEditSingle1 = new frmKostentraegerKlientEditSingle())
                 {
-                    return;
-                }
+                    frmKostentraegerKlientEditSingle1.initControl(IDPatient, IDKostenträger, IDPatientKostentraeger, IsNew, ucKostentraegerKlientEditSingle.eTypeUI.Klient, FSWMode, EVMode);
+                    if (frmKostentraegerKlientEditSingle1.ucKostentraegerKlientEditSingle1._abortNoAufenthalt)
+                    {
+                        return;
+                    }
 
-                frmKostentraegerKlientEditSingle1.ShowDialog(this);
-                if (!frmKostentraegerKlientEditSingle1.ucKostentraegerKlientEditSingle1.abort)
-                {
-                    this.RefreshControl();
+                    frmKostentraegerKlientEditSingle1.ShowDialog(this);
+                    if (!frmKostentraegerKlientEditSingle1.ucKostentraegerKlientEditSingle1.abort)
+                    {
+                        this.RefreshControl();
+                    }
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception("ucKostentraegerKlient2.addEditKlientAsZahler: " + ex.ToString());
             }
-        }
-        public void setControlsAktivDisablexy(bool bOn)
-        {
-            //if (bOn) this.panelButtonsKost.Height = 0; else this.panelButtonsKost.Height = 27;
-            //this.btnAdd.Enabled = !bOn;
-            //this.btnDel.Enabled = !bOn;
-            //this.btnUpdate.Enabled = !bOn;
-
-            //this.btnAdd.Visible = !bOn;
-            //this.btnDel.Visible = !bOn;
-            //this.btnUpdate.Visible = !bOn;
-        }
-                
+        }              
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -538,7 +624,7 @@ namespace PMDS.GUI.Kostentraeger
         {
             try
             {
-                this.addEditKlientAsZahler(this.IDPatient, null, null, true, false);
+                this.addEditKlientAsZahler(this.IDPatient, null, null, true, false, false);
 
             }
             catch (Exception ex)
@@ -551,12 +637,29 @@ namespace PMDS.GUI.Kostentraeger
         {
             try
             {
-                this.addEditKlientAsZahler(this.IDPatient, null, null, true, true);
+                this.addEditKlientAsZahler(this.IDPatient, null, null, true, true, false);
             }
             catch (Exception ex)
             {
                 ENV.HandleException(ex);
             }
+        }
+
+        private void btnAddErwachsenenvertreter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.addEditKlientAsZahler(this.IDPatient, null, null, true, false, true);
+            }
+            catch (Exception ex)
+            {
+                ENV.HandleException(ex);
+            }
+        }
+
+        private void dgMain_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+            e.Row.Activation = Activation.NoEdit;
         }
     }
 }

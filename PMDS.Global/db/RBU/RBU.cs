@@ -435,39 +435,10 @@ namespace RBU
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()) || PMDS.Global.ENV.checkExceptionAbfragetimeout(ex.ToString()))
                 {
                     Exception exTmp = new Exception("RBU.Update: 2'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                    //ENV.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
                     qs2.core.generic.WaitMilli(1000);
                     SetConnection(da);
                     int i2 = da.Update(dt);
-                    return i2;
-                    /*
-                    try
-                    {
-                        Exception exTmp2 = new Exception("RBU.Update: 3'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                        //ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
-                        qs2.core.generic.WaitMilli(1000);
-                        SetConnection(da);
-                        int i3 = da.Update(dt);
-                        return i3;
-                    }
-                    catch (Exception ex2)
-                    {
-                        try
-                        {
-                            Exception exTmp3 = new Exception("RBU.Update: 4'nd try" + "\r\n" + sInfoExcept + "\r\n");
-                            ENV.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
-                            qs2.core.generic.WaitMilli(1000);
-                            SetConnection(da);
-                            int i4 = da.Update(dt);
-                            return i4;
-                        }
-                        catch (Exception ex3)
-                        {
-                            PMDS.Global.ENV.checkExceptionDBNetLib(ex3.ToString());
-                            throw new Exception("RBU.Update: " + "\r\n" + sInfoExcept + "\r\n" + "\r\n" + ex.ToString());
-                        }
-                    }
-                    */
+                    return i2;                    
                 }
                 else
                 {

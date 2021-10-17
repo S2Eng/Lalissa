@@ -188,7 +188,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl1.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl1.Name = "ultraTabPageControl1";
-            this.ultraTabPageControl1.Size = new System.Drawing.Size(1153, 71);
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(1153, 115);
             // 
             // panelGrundleistung
             // 
@@ -196,7 +196,7 @@ namespace PMDS.GUI
             this.panelGrundleistung.Location = new System.Drawing.Point(0, 0);
             this.panelGrundleistung.Margin = new System.Windows.Forms.Padding(4);
             this.panelGrundleistung.Name = "panelGrundleistung";
-            this.panelGrundleistung.Size = new System.Drawing.Size(1153, 71);
+            this.panelGrundleistung.Size = new System.Drawing.Size(1153, 115);
             this.panelGrundleistung.TabIndex = 0;
             // 
             // ultraTabPageControl2
@@ -205,7 +205,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl2.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
-            this.ultraTabPageControl2.Size = new System.Drawing.Size(1153, 71);
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(1153, 115);
             // 
             // panelTransfer
             // 
@@ -213,7 +213,7 @@ namespace PMDS.GUI
             this.panelTransfer.Location = new System.Drawing.Point(0, 0);
             this.panelTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.panelTransfer.Name = "panelTransfer";
-            this.panelTransfer.Size = new System.Drawing.Size(1153, 71);
+            this.panelTransfer.Size = new System.Drawing.Size(1153, 115);
             this.panelTransfer.TabIndex = 1;
             // 
             // dtPensTeilAntrag
@@ -438,7 +438,7 @@ namespace PMDS.GUI
             this.gridPatPflegestufen.Location = new System.Drawing.Point(8, 30);
             this.gridPatPflegestufen.Margin = new System.Windows.Forms.Padding(4);
             this.gridPatPflegestufen.Name = "gridPatPflegestufen";
-            this.gridPatPflegestufen.Size = new System.Drawing.Size(1048, 123);
+            this.gridPatPflegestufen.Size = new System.Drawing.Size(1048, 77);
             this.gridPatPflegestufen.TabIndex = 4;
             this.gridPatPflegestufen.Text = "ultraGrid16";
             this.gridPatPflegestufen.DoubleClickCell += new Infragistics.Win.UltraWinGrid.DoubleClickCellEventHandler(this.gridPatPflegestufen_DoubleClickCell);
@@ -922,7 +922,7 @@ namespace PMDS.GUI
             this.panelMitte.Location = new System.Drawing.Point(0, 32);
             this.panelMitte.Margin = new System.Windows.Forms.Padding(4);
             this.panelMitte.Name = "panelMitte";
-            this.panelMitte.Size = new System.Drawing.Size(1157, 402);
+            this.panelMitte.Size = new System.Drawing.Size(1157, 366);
             this.panelMitte.TabIndex = 136;
             // 
             // baseGroupBox1
@@ -932,7 +932,7 @@ namespace PMDS.GUI
             this.baseGroupBox1.Location = new System.Drawing.Point(9, 243);
             this.baseGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.baseGroupBox1.Name = "baseGroupBox1";
-            this.baseGroupBox1.Size = new System.Drawing.Size(1064, 155);
+            this.baseGroupBox1.Size = new System.Drawing.Size(1064, 114);
             this.baseGroupBox1.TabIndex = 137;
             // 
             // ucVersichrungsdaten12
@@ -958,10 +958,10 @@ namespace PMDS.GUI
             this.panelUnten.Controls.Add(this.panelAufenthalshistorie);
             this.panelUnten.Controls.Add(this.uCheckEditorAbwesenheitenHändischBerech);
             this.panelUnten.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUnten.Location = new System.Drawing.Point(0, 434);
+            this.panelUnten.Location = new System.Drawing.Point(0, 398);
             this.panelUnten.Margin = new System.Windows.Forms.Padding(4);
             this.panelUnten.Name = "panelUnten";
-            this.panelUnten.Size = new System.Drawing.Size(1157, 44);
+            this.panelUnten.Size = new System.Drawing.Size(1157, 36);
             this.panelUnten.TabIndex = 138;
             // 
             // numTageAbweseneheitOhneKuerzung
@@ -993,7 +993,7 @@ namespace PMDS.GUI
             this.chkKürzungLetzterTagAnwesenheit.Appearance = appearance28;
             this.chkKürzungLetzterTagAnwesenheit.BackColor = System.Drawing.Color.Transparent;
             this.chkKürzungLetzterTagAnwesenheit.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkKürzungLetzterTagAnwesenheit.Location = new System.Drawing.Point(21, 23);
+            this.chkKürzungLetzterTagAnwesenheit.Location = new System.Drawing.Point(603, 3);
             this.chkKürzungLetzterTagAnwesenheit.Margin = new System.Windows.Forms.Padding(4);
             this.chkKürzungLetzterTagAnwesenheit.Name = "chkKürzungLetzterTagAnwesenheit";
             this.chkKürzungLetzterTagAnwesenheit.Size = new System.Drawing.Size(234, 19);
@@ -1008,7 +1008,7 @@ namespace PMDS.GUI
             this.panelAufenthalshistorie.Location = new System.Drawing.Point(928, 0);
             this.panelAufenthalshistorie.Margin = new System.Windows.Forms.Padding(4);
             this.panelAufenthalshistorie.Name = "panelAufenthalshistorie";
-            this.panelAufenthalshistorie.Size = new System.Drawing.Size(229, 44);
+            this.panelAufenthalshistorie.Size = new System.Drawing.Size(229, 36);
             this.panelAufenthalshistorie.TabIndex = 137;
             this.panelAufenthalshistorie.Visible = false;
             // 
@@ -1016,10 +1016,10 @@ namespace PMDS.GUI
             // 
             this.panelZahler.Controls.Add(this.ultraTabControlZahler);
             this.panelZahler.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelZahler.Location = new System.Drawing.Point(0, 478);
+            this.panelZahler.Location = new System.Drawing.Point(0, 434);
             this.panelZahler.Margin = new System.Windows.Forms.Padding(4);
             this.panelZahler.Name = "panelZahler";
-            this.panelZahler.Size = new System.Drawing.Size(1157, 98);
+            this.panelZahler.Size = new System.Drawing.Size(1157, 142);
             this.panelZahler.TabIndex = 139;
             // 
             // ultraTabControlZahler
@@ -1032,10 +1032,10 @@ namespace PMDS.GUI
             this.ultraTabControlZahler.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabControlZahler.Name = "ultraTabControlZahler";
             this.ultraTabControlZahler.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.ultraTabControlZahler.Size = new System.Drawing.Size(1157, 98);
+            this.ultraTabControlZahler.Size = new System.Drawing.Size(1157, 142);
             this.ultraTabControlZahler.TabIndex = 11;
             ultraTab1.TabPage = this.ultraTabPageControl1;
-            ultraTab1.Text = "Grundleistungszahler";
+            ultraTab1.Text = "Zahler";
             ultraTab2.TabPage = this.ultraTabPageControl2;
             ultraTab2.Text = "Transferleistungszahler";
             this.ultraTabControlZahler.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
@@ -1047,7 +1047,7 @@ namespace PMDS.GUI
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabSharedControlsPage1.Margin = new System.Windows.Forms.Padding(4);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1153, 71);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1153, 115);
             // 
             // errorProvider1
             // 

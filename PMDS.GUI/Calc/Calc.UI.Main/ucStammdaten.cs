@@ -21,7 +21,7 @@ namespace PMDS.Calc.UI.Admin
     
     public partial class ucStammdaten : QS2.Desktop.ControlManagment.BaseControl 
     {
-        private StammdatenMode _currentMode = StammdatenMode.Kostentraeger ;
+        private StammdatenMode _currentMode = StammdatenMode.Leistungskatalog ;
         private Control[] _aControls = { null, null, null, null, null };
         private UltraTab _CurrentTab;
         private bool _ContentChenged = false;
@@ -354,6 +354,7 @@ namespace PMDS.Calc.UI.Admin
             {
                 this.Cursor = Cursors.WaitCursor;
                 Save();
+                this.RefreshControl();
             }
             catch (Exception ex)
             {
@@ -392,7 +393,7 @@ namespace PMDS.Calc.UI.Admin
             itm.nr = Convert.ToInt32(this.btnEssen.Tag);
             this.listButt.Add(itm);
 
-            this._sitemap.aktivateButton(this.listButt, Convert.ToInt32(this.btnKostenträger.Tag));
+            this._sitemap.aktivateButton(this.listButt, Convert.ToInt32(this.btnLeistungskatalog.Tag));
         }
 
         private void btnClick(object sender, EventArgs e)
@@ -404,8 +405,8 @@ namespace PMDS.Calc.UI.Admin
                 this._sitemap.aktivateButton(this.listButt, Convert.ToInt32(((Infragistics.Win.Misc.UltraButton)sender).Tag));
                 StammdatenMode modus = new StammdatenMode();
                 modus = (StammdatenMode)Convert.ToInt32(((Infragistics.Win.Misc.UltraButton)sender).Tag);
-                Application.DoEvents();
                 this.SwitchTo(modus);
+                Application.DoEvents();
             }
             catch (Exception ex)
             {

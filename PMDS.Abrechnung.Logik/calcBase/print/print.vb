@@ -3,9 +3,8 @@ Option Explicit On
 Imports QS2.Desktop.Txteditor
 Imports QS2.Desktop.Txteditor.doFormat
 Imports VB = Microsoft.VisualBasic
-
-
-
+Imports System.Linq
+Imports System.Collections.Generic
 
 Public Class print
     Inherits calcBase
@@ -26,7 +25,7 @@ Public Class print
 
 
 
-    Public Sub loadTempStream(ByVal file As String, Optional IsDepotgeld As Boolean = False, Optional IsJahresabschluss As Boolean = False)
+    Public Sub loadTempStream(ByVal file As String, Optional IsDepotgeld As Boolean = False, Optional IsJahresabschluss As Boolean = False, Optional IsDayList As Boolean = False)
         Try
             Dim retMainSystem1 As New calculation.retMainSystem()
             Dim bOK As Boolean = calculation.delCallFctMainSystem(calculation.eTypeMainFct.getIDKlinik, retMainSystem1)
@@ -37,7 +36,7 @@ Public Class print
                 Dim rKlinik As PMDS.db.Entities.Klinik = tKlinik.First()
                 If Not IsJahresabschluss Then
                     If Not IsDepotgeld Then
-                        If rKlinik.Rechnungsformular.Trim() <> "" Then
+                        If rKlinik.Rechnungsformular.Trim() <> "" And Not IsDayList Then
                             fileTmp = rKlinik.Rechnungsformular.Trim()
                         End If
                     Else
@@ -220,10 +219,24 @@ Public Class print
             calcBase.doExept(exept)
         End Try
     End Sub
+
+    Public Sub doAutoSiteNummbering(ByRef editor As TXTextControl.TextControl, bPrintReferenz As Boolean)
+        Try
+            'Me.doBookmarks.setPageOf(editor, TXTextControl.HeaderFooterType.Footer, TXTextControl.HorizontalAlignment.Right, 7.5)
+            Me.setPageReference(editor, TXTextControl.HeaderFooterType.Footer, TXTextControl.HorizontalAlignment.Center, 6)
+
+        Catch exept As Exception
+            calcBase.doExept(exept)
+        End Try
+    End Sub
+
     Public Function setPageOf(ByRef textControl As TXTextControl.TextControl, ByVal HeaderFooter As TXTextControl.HeaderFooterType,
                            ByVal alignment As TXTextControl.HorizontalAlignment, ByVal fontSize As Double) As TXTextControl.TextField
         Try
             Dim oPageNumber As New TXTextControl.PageNumberField(1, TXTextControl.NumberFormat.ArabicNumbers)
+            Dim oPageNumberTotal As New TXTextControl.PageNumberField()
+            oPageNumberTotal.ShowNumberOfPages = True
+
             textControl.HeadersAndFooters.Add(HeaderFooter)
             Dim oHeader As TXTextControl.HeaderFooter = textControl.HeadersAndFooters.GetItem(HeaderFooter)
 
@@ -246,10 +259,15 @@ Public Class print
                 oHeader.Selection.Length = oHeader.Selection.Text.Length
                 oHeader.Selection.FontSize = fontSize * 20
 
-                oHeader.Selection.Text = "Seite" + " "
-                oHeader.Selection.Start += 6
+                oHeader.Selection.Text = "Seite  /"
+                oHeader.Selection.Start = 6
+                oHeader.Selection.Length = 0
                 oHeader.PageNumberFields.Add(oPageNumber)
-                oHeader.Selection.Text = "/" + textControl.Pages.ToString()
+
+                oHeader.Selection.Start = 8
+                oHeader.Selection.Length = 0
+                oHeader.PageNumberFields.Add(oPageNumberTotal)
+
                 oHeader.Selection.ParagraphFormat.Alignment = alignment
             End If
 
@@ -258,6 +276,36 @@ Public Class print
         Finally
         End Try
     End Function
+
+    Public Function setPageReference(ByRef textControl As TXTextControl.TextControl, ByVal HeaderFooter As TXTextControl.HeaderFooterType,
+                           ByVal alignment As TXTextControl.HorizontalAlignment, ByVal fontSize As Double) As TXTextControl.TextField
+        Try
+            Dim oPageNumber As New TXTextControl.PageNumberField(1, TXTextControl.NumberFormat.ArabicNumbers)
+            Dim oPageNumberTotal As New TXTextControl.PageNumberField()
+            oPageNumberTotal.ShowNumberOfPages = True
+
+            textControl.HeadersAndFooters.Add(HeaderFooter)
+            Dim oHeader As TXTextControl.HeaderFooter = textControl.HeadersAndFooters.GetItem(HeaderFooter)
+
+
+            Dim startSel As Integer = oHeader.Selection.Start
+            oHeader.Selection.Start = startSel
+            oHeader.Selection.Length = oHeader.Selection.Text.Length
+            oHeader.Selection.FontSize = fontSize * 20
+
+            oHeader.Selection.Text = "Ref #/" + DateTime.Now.ToString("yyMMddhhMMssFF") + "#"
+            oHeader.Selection.Start = 5
+            oHeader.Selection.Length = 0
+            oHeader.PageNumberFields.Add(oPageNumber)
+
+            oHeader.Selection.ParagraphFormat.Alignment = alignment
+
+        Catch ex As Exception
+            Throw New Exception("doBookmarks.setPageOf: " + vbNewLine + vbNewLine + ex.ToString())
+        Finally
+        End Try
+    End Function
+
     Public Function clearSiteNumbering(ByRef textControl As TXTextControl.TextControl, ByVal HeaderFooter As TXTextControl.HeaderFooterType,
                                         ByVal alignment As TXTextControl.HorizontalAlignment, ByVal fontSize As Double) As TXTextControl.TextField
         Try
@@ -266,10 +314,10 @@ Public Class print
             Dim oHeader As TXTextControl.HeaderFooter = textControl.HeadersAndFooters.GetItem(HeaderFooter)
 
             Dim sSitenumber As String = "[Pagenumber]"
-            If oHeader.Selection.Text.Trim().ToLower().Contains(("Seite").Trim().ToLower()) Then
+            If oHeader.Selection.Text.Trim().ToLower().Contains("seite") Then
                 Dim iPosVar As Integer = 0
                 While iPosVar <> -1
-                    iPosVar = oHeader.Find(("Seite").Trim(), iPosVar, TXTextControl.FindOptions.NoMessageBox)
+                    iPosVar = oHeader.Find("Seite", iPosVar, TXTextControl.FindOptions.NoMessageBox)
                     If iPosVar <> -1 Then
                         oHeader.Selection.Start = iPosVar
                         oHeader.Selection.Length = 60
@@ -393,52 +441,104 @@ Public Class print
         End Try
     End Function
 
-    Public Sub printSites(ByVal listSites As System.Collections.Generic.List(Of dbPMDS.billsRow), ByVal editor As TXTextControl.TextControl,
-                          ByVal title As String, ByVal parent As Object, ByVal selRow As Object, ByVal typ As eModify,
+    Public Sub printBills(ByVal listBills As System.Collections.Generic.List(Of dbPMDS.billsRow), ByVal editor As TXTextControl.TextControl,
+                          ByVal title As String, ByVal parent As Object, ByVal selRow As Object, ByVal typ As eModify, Betreff As String,
                           Optional editorTmp As TXTextControl.TextControl = Nothing, Optional IDBillStr As String = "", Optional IsDepot As Boolean = False)
         Try
             Dim frmPrint As frmPrint = Me.open("", QS2.Desktop.Txteditor.etyp.calc, editorTmp, IDBillStr)
-            frmPrint.Text = "PMDS - Text wird geladen ..."
+            frmPrint.Text = "PMDS - Rechnungen werden geladen ..."
             Dim anz As Integer = 1
-            For Each rBill As dbPMDS.billsRow In listSites
+            For Each rBill As dbPMDS.billsRow In listBills
 
                 Dim rHeader As dbPMDS.billHeaderRow = Me.getHeader(rBill.IDAbrechnung, rBill.IDKlinik)
 
                 Using dbCalc As dbCalc = Me.getDBCalc(rHeader.dbCalc)
                     Dim cBill As New doBill
 
-                    If typ = eModify.printRechnungsKopie And rBill.Freigegeben Then
-                        cBill.modifyBill(rBill, eModify.rechNrKopie, "[RechNr]", "", False, editor, dbCalc, rBill.RechNr + " - Kopie")
-                    End If
+                    'Aktuellen Rechnungsdrucktyp für Kostenträger (Rechnungsempfänger) holen
+                    Using db As PMDS.db.Entities.ERModellPMDSEntities = calculation.delgetDBContext.Invoke()
 
-                    Me.doEditor.showText(rBill.Rechnung, TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)
+                        'Aktuellen Rechnungsdrucktyp für Kostenträger (Rechnungsempfänger) holen
+                        Dim eRechnungsdruckTyp As Integer = (From pk In db.PatientKostentraeger
+                                                             Where pk.IDKostentraeger.ToString() = rBill.IDKost And pk.IDPatient.ToString() = rBill.IDKlient
+                                                             Select pk.RechnungsdruckTyp).FirstOrDefault()
 
-                    Select Case typ
-                        Case eModify.openBillRechStor
-                            Me.doBookmarks.setBookmark("[StornoNr]", "", editor)
-                            Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
-                        Case eModify.openBillRechStorStorno
-                            Me.doBookmarks.setBookmark("[RechNr]", "", editor)
-                            Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
-                            Me.doBookmarks.setBookmark("[ZahlBetragBez]", "Stornobetrag", editor)
-                    End Select
+                        'Rechnungsempfänger aus den Kontakten suchen
+                        Dim lRechungskopeEmpfaenger = (From kp In db.Kontaktperson
+                                                       Join Adr In db.Adresse On Adr.ID Equals kp.IDAdresse
+                                                       Join Kon In db.Kontakt On Kon.ID Equals kp.IDKontakt
+                                                       Where kp.IDPatient.ToString() = rBill.IDKlient And Kon.Zusatz3 = "RECHNUNGSDRUCK"
+                                                       Select New With {kp.Titel, kp.Nachname, kp.Vorname, Adr.Plz, Adr.Ort, Adr.Strasse, kp.Verwandtschaft}).ToList()
 
-                    If anz > 1 Then
-                        Me.doEditor.insertPagebreak(frmPrint.ucprint.editor.textControl1)
-                    End If
+                        'NurZahler = 0,                 [Description("Nur Zahler (Standard)")]  .. public enum RechnungsdruckTyp liegt außerhalb des Zugriffs
+                        'KeinRechnungsdruck = 1,        [Description("Kein Rechnungsdruck")]
+                        'NurKopieKontakte = 2,          [Description("Nur Kopie an Kontakte")]'
+                        'ZahlerUndKopieKontakte = 3,    [Description("Zahler und Kopie an Kontakte")]
 
-                    Me.doEditor.appendText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), frmPrint.ucprint.editor.textControl1)
-                    anz += 1
-                    If typ = eModify.printRechnungsKopie And rBill.Freigegeben Then
-                        cBill.modifyBill(rBill, eModify.rechNrKopie, "[RechNr]", "", False, editor, dbCalc, rBill.RechNr)    'Rechnungsnummer auf Original zurücksetzen
-                    End If
+                        If typ = eModify.printRechnungsversand And eRechnungsdruckTyp = 1 Then                        'keine Rechnung ausdrucken
+                            Continue For
+                        End If
+
+                        If typ = eModify.nichts Or
+                            typ = eModify.printRechnungsKopie Or
+                            typ = eModify.openBillRechStor Or
+                            typ = eModify.openBillRechStorStorno Or
+                           (typ = eModify.printRechnungsversand And (eRechnungsdruckTyp = 0 Or eRechnungsdruckTyp = 3)) Then            'Rechnung für Zahler
+
+                            If typ = eModify.printRechnungsKopie And rBill.Freigegeben Then
+                                cBill.SetRechnungKopie(rBill, editor)
+                                Me.doEditor.showText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)
+                            Else
+                                Me.doEditor.showText(rBill.Rechnung, TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)
+                            End If
+                            Me.doAutoSiteNummbering(editor, True)
+
+                            Select Case typ
+                                Case eModify.openBillRechStor
+                                    Me.doBookmarks.setBookmark("[StornoNr]", "", editor)
+                                    Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
+                                Case eModify.openBillRechStorStorno
+                                    Me.doBookmarks.setBookmark("[RechNr]", "", editor)
+                                    Me.doBookmarks.setBookmark("[RechTitel]", "", editor)
+                                    Me.doBookmarks.setBookmark("[ZahlBetragBez]", "Stornobetrag", editor)
+                            End Select
+
+                            If anz > 1 Then
+                                Me.doEditor.insertPagebreak(frmPrint.ucprint.editor.textControl1)
+                            End If
+
+                            Me.doEditor.appendText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), frmPrint.ucprint.editor.textControl1)
+                            anz += 1
+                        End If
+
+                        If typ = eModify.printRechnungsversand And (eRechnungsdruckTyp = 2 Or eRechnungsdruckTyp = 3) Then            'Kopien an Kontaktpersonen
+                            For Each rKopie As Object In lRechungskopeEmpfaenger
+
+                                If rBill.Freigegeben Then
+                                    cBill.SetRechnungsadresseVersand(rBill, editor, rKopie.Titel, rKopie.Nachname, rKopie.Vorname, rKopie.Plz, rKopie.Ort, rKopie.Strasse, "", Betreff)
+                                End If
+                                Me.doAutoSiteNummbering(editor, True)
+                                Me.doEditor.showText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), TXTextControl.StreamType.RichTextFormat, False, TXTextControl.ViewMode.PageView, editor)
+
+                                If anz > 1 Then
+                                    Me.doEditor.insertPagebreak(frmPrint.ucprint.editor.textControl1)
+                                End If
+
+                                Me.doEditor.appendText(Me.doEditor.getText(TXTextControl.StringStreamType.RichTextFormat, editor), frmPrint.ucprint.editor.textControl1)
+                                anz += 1
+
+                            Next
+                        End If
+
+                    End Using
                 End Using
                 Application.DoEvents()
             Next
 
-            If typ <> eModify.nichts And typ <> eModify.printRechnungsKopie Then
-                Me.doAutoSiteNummbering(frmPrint.ucprint.editor.textControl1)
-            End If
+            'If typ <> eModify.nichts And typ <> eModify.printRechnungsKopie Then
+            '    Me.doAutoSiteNummbering(frmPrint.ucprint.editor.textControl1)
+            'End If
+
             If IsDepot Then
                 Me.clearSiteNumbering(frmPrint.ucprint.editor.textControl1, TXTextControl.HeaderFooterType.Footer, TXTextControl.HorizontalAlignment.Right, 7.5)
             End If
