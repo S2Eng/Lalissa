@@ -861,11 +861,14 @@ namespace PMDS.Global
                     sftp.ConnectTimeoutMs = 15000;
                     sftp.IdleTimeoutMs = 15000;
                     success = false;
-                    using (Chilkat.SshKey sshKey = new Chilkat.SshKey())
+                    using (Chilkat.SshKey puttyKey = new Chilkat.SshKey())
                     {
-                        sshKey.LoadText(ENV.FSW_FTPZertifikat);
+                        string ppkText = puttyKey.LoadText(ENV.FSW_FTPZertifikat);
+                        puttyKey.Password = "Yaw2Xse3Cdr4";
+                        puttyKey.FromPuttyPrivateKey(ppkText);
+
                         if (sftp.Connect(ENV.FSW_FTPIP, ENV.FSW_FTPPort))
-                            if (sftp.AuthenticatePk(ENV.FSW_FTPUser, sshKey))
+                            if (sftp.AuthenticatePk(ENV.FSW_FTPUser, puttyKey))
                                 if (sftp.InitializeSftp())
                                     if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
                                     {
@@ -875,7 +878,7 @@ namespace PMDS.Global
                                     {
                                         return sftp.LastErrorText;
                                     }
-                    }
+                    }                        
                     return sftp.LastErrorText; ;
                 }
             }

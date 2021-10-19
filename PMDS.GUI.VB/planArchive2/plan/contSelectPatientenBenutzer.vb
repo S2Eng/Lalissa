@@ -166,10 +166,12 @@ Public Class contSelectPatientenBenutzer
                     Me.btnSelectSave.Visible = False
                 End If
 
-                Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
-                    Dim rUser As PMDS.db.Entities.Benutzer = Me.b.LogggedOnUser(db)
-                    Me.IDUserLoggedOn = rUser.ID
-                End Using
+                'Using db As PMDS.db.Entities.ERModellPMDSEntities = PMDS.db.PMDSBusiness.getDBContext()
+                '    Dim rUser As PMDS.db.Entities.Benutzer = Me.b.LogggedOnUser(db)
+                '    Me.IDUserLoggedOn = rUser.ID
+                'End Using
+
+                Me.IDUserLoggedOn = PMDS.Global.ENV.USERID
 
                 Me.initControlData()
 
@@ -399,9 +401,9 @@ Public Class contSelectPatientenBenutzer
                     Next
 
                 ElseIf Me._TypeUI = eTypeUI.Patients Then
-                    Dim dsKlientenliste1 As New dsKlientenliste()
-                    Dim sqlManangeWork As New sqlManange()
-                    sqlManangeWork.initControl()
+                    'Dim dsKlientenliste1 As New dsKlientenliste()
+                    'Dim sqlManangeWork As New sqlManange()
+                    'sqlManangeWork.initControl()
 
                     Dim IDAbteilungTmp As Guid = Guid.Empty
                     If Not IDAbteilung Is Nothing Then
@@ -414,11 +416,11 @@ Public Class contSelectPatientenBenutzer
                     End If
 
                     'sqlManangeWork.getPatientenStart(PMDS.Global.ENV.USERID, 0, System.Guid.Empty, dsKlientenliste1, IDAbteilungTmp, IDBereichTmp, System.Guid.Empty)
-                    'Dim arrKlientenliste() As dsKlientenliste.vKlientenlisteRow = dsKlientenliste1.vKlientenliste.Select("", dsKlientenliste1.vKlientenliste.PatientNameColumn.ColumnName + " asc")
+                    'Dim arrKlientenlisteOnline() As dsKlientenliste.vKlientenlisteRow = dsKlientenliste1.vKlientenliste.Select("", dsKlientenliste1.vKlientenliste.PatientNameColumn.ColumnName + " asc")
                     Dim arrKlientenliste As List(Of PMDSBusinessStructures.cPatients) = Me.bRAM.getPatientenStart(IDAbteilungTmp, IDBereichTmp, db2)
                     Dim listAbwesPatients As List(Of Guid) = Me.bRAM.getListAbwesendePatients()
-                    For Each rKlient As PMDSBusinessStructures.cPatients In arrKlientenliste
 
+                    For Each rKlient As PMDSBusinessStructures.cPatients In arrKlientenliste
                         Dim bShowPatient As Boolean = True
                         Dim PatientIsAbwesend As Boolean = False
                         If Me.chkShowOnlyAnwesendePatienten.Checked Then

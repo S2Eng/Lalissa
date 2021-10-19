@@ -41,19 +41,9 @@ namespace PMDS.DB
         public static List<PMDS.db.Entities.AuswahlListe> tAuswahlListe = null;
         public static List<Guid> lstPatAbw = new List<Guid>();
    
-
         public static List<cPatientsAll> tPatientsAufenthaltAllAct = null;
-        public static dsKlientenliste dsKlientenliste1 = new dsKlientenliste();
-        
+        public static dsKlientenliste dsKlientenliste1 = new dsKlientenliste();        
         public static bool IsInitialized = false;
-
-         
-
-
-
-
-
-
 
         public void loadDataStart(bool doRegisterClient, bool doAlways, bool WaitThreadsReady, bool startThreadLoadingData)
         {
@@ -164,7 +154,7 @@ namespace PMDS.DB
                     PMDSBusinessRAM.tPatientsAufenthaltAllAct = new List<cPatientsAll>();
 
                     PMDSBusinessRAM.lstPatAbw = new List<Guid>();
-                   var tPatientsAbwesendAct = (from p in db.Patient
+                    var tPatientsAbwesendAct = (from p in db.Patient
                                                 join a in db.Aufenthalt on p.ID equals a.IDPatient
                                                 from uv in db.UrlaubVerlauf.Where(uv => uv.IDAufenthalt == a.ID && uv.EndeDatum == null)
                                                 where a.IDKlinik == PMDS.Global.ENV.IDKlinik && a.Entlassungszeitpunkt == null
@@ -316,6 +306,7 @@ namespace PMDS.DB
             {
                 this.waitThreadsLoadingDataReady();
 
+                //thread_getPatientenStart();
                 if (IDAbteilung.Equals(System.Guid.Empty) && IDBereich.Equals(System.Guid.Empty))
                 {
                     List<cPatients> tPatients2 = (from p in PMDSBusinessRAM.tPatientsAufenthaltAllAct

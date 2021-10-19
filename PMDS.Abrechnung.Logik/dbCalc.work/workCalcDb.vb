@@ -814,13 +814,13 @@ Public Class workCalcDb
                     'Umbuchung hinzufügen
                     Dim rUmbuchung As dsExport.ExportBMDRow = Me.dbExport1.getNewRowExportBMD(dsExportResult, BMDExportTyp)
                     rUmbuchung.Satzart = rNewRowExport.Satzart
-                    rUmbuchung.konto = rNewRowExport.gkonto
+                    rUmbuchung.konto = rNewRowExport.FiBuKostSub
                     rUmbuchung.buchdatum = rNewRowExport.buchdatum
                     rUmbuchung.belegnr = rNewRowExport.belegnr
                     rUmbuchung.periode = rNewRowExport.periode
                     rUmbuchung.belegdatum = rNewRowExport.belegdatum
                     rUmbuchung.buchsymbol = rNewRowExport.buchsymbol
-                    rUmbuchung.gkonto = rNewRowExport.FiBuKostSub
+                    rUmbuchung.gkonto = rNewRowExport.konto
                     rUmbuchung.buchcode = rNewRowExport.buchcode
                     rUmbuchung.betrag = rNewRowExport.betrag + rNewRowExport.steuer * -1
                     rUmbuchung.prozent = 0

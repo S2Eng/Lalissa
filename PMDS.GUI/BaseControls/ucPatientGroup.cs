@@ -471,7 +471,7 @@ namespace PMDS.GUI
                             ENV.IDKlinik = CurrentSelectionFound.IDKlinik;
                             ENV.setIDBereich = CurrentSelectionFound.Bereich;
                         PMDSBusinessRAM bRAM = new PMDSBusinessRAM();
-                        bRAM.loadDataStart(true, false, false, true);
+                        bRAM.loadDataStart(true, true, true, true);
                     }
                     if (this.klinikHasChanged != null)
                             this.klinikHasChanged.Invoke(this.getSelKlinikRow());

@@ -1282,7 +1282,7 @@ namespace PMDS.GUI.PMDSClient
             this.btnMitverantwortlicherBereich.ShowOutline = false;
             this.btnMitverantwortlicherBereich.Size = new System.Drawing.Size(62, 42);
             this.btnMitverantwortlicherBereich.TabIndex = 25;
-            this.btnMitverantwortlicherBereich.Text = "Mitv. Bereich";
+            this.btnMitverantwortlicherBereich.Text = "§15 GuKG";
             this.btnMitverantwortlicherBereich.UseAppStyling = false;
             this.btnMitverantwortlicherBereich.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnMitverantwortlicherBereich.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
