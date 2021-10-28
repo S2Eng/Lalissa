@@ -308,23 +308,29 @@ namespace PMDS.Calc.UI
 
         public void setUI(string aktivButton)
         {
-            if (aktivButton == "F")
+            using (Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfoF = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("", Infragistics.Win.ToolTipImage.Info, "Hinweis", Infragistics.Win.DefaultableBoolean.True))
             {
-                PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
-            }
-            else
-            {
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnFreigeben, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
-            }
-            if (aktivButton == "O")
-            {
-                PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
-                this.btnRollung.Visible = true;
-            }
-            else
-            {
-                PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
-                this.btnRollung.Visible = false;
+                switch (aktivButton)
+                {
+                    case "F":
+                        PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
+                        ultraToolTipInfoF.ToolTipText = "\nFür Rechnungsversand = Umschalt-Taste\nFür Rechnungskopie = Strg-Taste";
+                        this.btnRollung.Visible = false;
+                        break;
+
+                    case "O":
+                        PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
+                        ultraToolTipInfoF.ToolTipText += "\nFür FSW-XLSX-Vorschau = Strg-Taste";
+                        this.btnRollung.Visible = true;
+                        break;
+
+                    default:
+                        PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
+                        ultraToolTipInfoF.ToolTipText += "";
+                        this.btnRollung.Visible = false;
+                        break;
+                }
+                this.ultraToolTipManager1.SetUltraToolTip(this.btnPrint, ultraToolTipInfoF);
             }
 
             this.freigegebenOn = aktivButton == "F" ? true : false;
@@ -554,18 +560,33 @@ namespace PMDS.Calc.UI
         private void btnPrint_Click(object sender, EventArgs e)
         {
 
-            if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftCtrl) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightCtrl))
+            if (this.freigegebenOn)
             {
-                this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.printRechnungsKopie, true, null, null, false);
-            }
-            else if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift))
-            {
-                this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.printRechnungsversand, true, null, null, false);
+                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftCtrl) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightCtrl))
+                {
+                    this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.printRechnungsKopie, true, null, null, false);
+                }
+                else if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightShift))
+                {
+                    this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.printRechnungsversand, true, null, null, false);
+                }
+                else
+                {
+                    this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
+                }
             }
             else
             {
-                this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
+                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftCtrl) || System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.RightCtrl))
+                {
+                    this.doAction(eAction.fswXlsVorschau, "", "", PMDS.Calc.Logic.eModify.printRechnungsKopie, true, null, null, false);
+                }
+                else
+                {
+                    this.doAction(eAction.printBill, "", "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
+                }
             }
+
         }
 
         private void btnRechEinAus_Click(object sender, EventArgs e)

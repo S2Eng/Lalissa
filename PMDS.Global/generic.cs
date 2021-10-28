@@ -362,6 +362,17 @@ namespace PMDS.Global
 
         //}
 
+        public static bool IsExcelInstalled()
+        {
+            try
+            {
+                Type officeType = Type.GetTypeFromProgID("Excel.Application");
+                return officeType != null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("cPflegestufenEinschaetzung.IsExcelInstalled: " + ex.ToString());
+            }
+        }
     }
-
 }

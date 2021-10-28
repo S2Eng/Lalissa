@@ -349,155 +349,117 @@ namespace PMDS.GUI
 
             try
             {
-                    tree.BeginUpdate();
-                    tree.Nodes.Clear();
+                tree.BeginUpdate();
+                tree.Nodes.Clear();
 
-                    // die Klinik
+                if (!allKliniken && !onlyKlinikenUsr && !adminModusAlleKliniken)
+                {
+                    if (loadComboKliniken)
+                        this.loadComboKlinikenUsr();
 
-                    //if (!ENVAbteilung)
-                    //{
-                    //    node = nodes.Add(rSelectKlinik.ID.ToString(), rSelectKlinik.Bezeichnung.Trim());
-                    //    node.Tag = new PatientGroupSelection(rSelectKlinik.Bezeichnung, true);
-                    //    //node.Override.NodeAppearance.Image = this.imageList1.Images[0];
-                    //    nodes = node.Nodes;
-
-                    //    //node = nodes.Add(k.ID.ToString(), k.Bezeichnung);
-                    //    //node.Tag = new PatientGroupSelection(k.Bezeichnung, true);
-                    //    //node.Override.NodeAppearance.Image = this.imageList1.Images[0];
-                    //    //nodes = node.Nodes;
-                    //}
-
-                    // Abteilungen einhängen
-                    //foreach(dsAbteilung.AbteilungRow ar in k.Abteilungen.Abteilungen)
-                    //{
-                    //foreach (PMDS.Data.Patient.dsKlinik.KlinikRow rKlinikFound in this.tKlinikenUser)
-                    //{
-                    //}
-                    
-                    //<20120202>
-                    if (!allKliniken && !onlyKlinikenUsr && !adminModusAlleKliniken)
+                if (this._IsMainHeaderPicker)
+                {
+                    foreach (Infragistics.Win.ValueListItem Itm in this.cbKlinik.Items)
                     {
-                        if (loadComboKliniken)
-                            this.loadComboKlinikenUsr();
-
-                    //if (this.mainWindow != null && !this._IsMainPicker)
-                    //{
-                    //    this.cbKlinik.Value = ENV.IDKlinik;
-                    //}
-                    //else
-                    //{
-
-                    //}
-                    ////if (this.mainWindow != null && this._IsMainPicker)
-                    ////{
-                    ////    ((frmMain)this.mainWindow.FRAMEWORK.HEADER).ucHeader1.ucPatientGroupPicker1.ucPatientGroup1.cbKlinik.Value = ENV.IDKlinik;
-                    ////}
-
-                    if (this._IsMainHeaderPicker)
-                    {
-                        foreach (Infragistics.Win.ValueListItem Itm in this.cbKlinik.Items)
+                        if (Itm.DataValue.Equals(ENV.IDKlinik))
                         {
-                            if (Itm.DataValue.Equals(ENV.IDKlinik))
+                            this.cbKlinik.SelectedItem = Itm;
+                        }
+                    }
+                }
+
+                dsKlinik.KlinikRow rSelectKlinik = this.getSelKlinik(false);
+                if (rSelectKlinik != null)
+                    {
+                        this.loadKlinik(rSelectKlinik, tree.Nodes, true);
+                    }
+                }
+
+                else if ((allKliniken && !onlyKlinikenUsr) || adminModusAlleKliniken)
+                {
+                    if (loadComboKliniken)
+                        this.loadComboAllKliniken();
+
+                    using (dsKlinik dsKlinik1 = new dsKlinik())
+                    {
+                        using (PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik())
+                        {
+                            DBKlinik1.loadAllKliniken(dsKlinik1.Klinik);
+                            foreach (dsKlinik.KlinikRow rKlinik in dsKlinik1.Klinik)
                             {
-                                this.cbKlinik.SelectedItem = Itm;
+                                this.loadKlinik(rKlinik, tree.Nodes, false);
                             }
                         }
                     }
+                }
+                else if (!allKliniken && onlyKlinikenUsr && !adminModusAlleKliniken)
+                {
+                    if (loadComboKliniken)
+                        this.loadComboKlinikenUsr();
 
-                    dsKlinik.KlinikRow rSelectKlinik = this.getSelKlinik(false);
-                    if (rSelectKlinik != null)
-                        {
-                            this.loadKlinik(rSelectKlinik, tree.Nodes, true);
-                        }
-                    }
-                    else if ((allKliniken && !onlyKlinikenUsr) || adminModusAlleKliniken)
+                    //this.panelTop.Visible = false;
+                    using (PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik())
                     {
-                        if (loadComboKliniken)
-                            this.loadComboAllKliniken();
-
-                        //this.panelTop.Visible = false;
-                       dsKlinik dsKlinik1 = new  dsKlinik();
-                        PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
-                        DBKlinik1.loadAllKliniken(dsKlinik1.Klinik);
-                        foreach (dsKlinik.KlinikRow rKlinik in dsKlinik1.Klinik)
-                        {
-                            this.loadKlinik(rKlinik, tree.Nodes, false);
-                        }
-                    }
-                    else if (!allKliniken && onlyKlinikenUsr && !adminModusAlleKliniken)
-                    {
-                        if (loadComboKliniken)
-                            this.loadComboKlinikenUsr();
-                        
-                        //this.panelTop.Visible = false;
-                        PMDS.DB.DBKlinik DBKlinik1 = new PMDS.DB.DBKlinik();
                         System.Collections.Generic.List<dsBenutzerEinrichtung.BenutzerEinrichtungRow> lstrBenutzerKlinikDistinct = new System.Collections.Generic.List<dsBenutzerEinrichtung.BenutzerEinrichtungRow>();
-                        dsBenutzerEinrichtung dsBenutzerEinrichtung1 = new dsBenutzerEinrichtung();
-                        PMDS.DB.Patient.DBBenutzerEinrichtung DBBenutzerEinrichtung1 = new PMDS.DB.Patient.DBBenutzerEinrichtung();
-                        DBBenutzerEinrichtung1.initControl();
-
-                        // IDKlinik default auslesen
-                        DBBenutzerEinrichtung1.getBenutzerEinrichtung(ENV.USERID, dsBenutzerEinrichtung1, PMDS.DB.Patient.DBBenutzerEinrichtung.eTypSelBenEinrichtung.IDBenutzer);
-                        foreach (dsBenutzerEinrichtung.BenutzerEinrichtungRow rBenEinr in dsBenutzerEinrichtung1.BenutzerEinrichtung)
+                        using (dsBenutzerEinrichtung dsBenutzerEinrichtung1 = new dsBenutzerEinrichtung())
                         {
-                            bool IDKlinikExists = false;
-                            foreach (dsBenutzerEinrichtung.BenutzerEinrichtungRow rBenutzerKlinik in lstrBenutzerKlinikDistinct)
+                            PMDS.DB.Patient.DBBenutzerEinrichtung DBBenutzerEinrichtung1 = new PMDS.DB.Patient.DBBenutzerEinrichtung();
+                            DBBenutzerEinrichtung1.initControl();
+
+                            // IDKlinik default auslesen
+                            DBBenutzerEinrichtung1.getBenutzerEinrichtung(ENV.USERID, dsBenutzerEinrichtung1, PMDS.DB.Patient.DBBenutzerEinrichtung.eTypSelBenEinrichtung.IDBenutzer);
+                            foreach (dsBenutzerEinrichtung.BenutzerEinrichtungRow rBenEinr in dsBenutzerEinrichtung1.BenutzerEinrichtung)
                             {
-                                if (rBenutzerKlinik.IDEinrichtung.Equals(rBenEinr.IDEinrichtung))
-                                    IDKlinikExists = true;
+                                bool IDKlinikExists = false;
+                                foreach (dsBenutzerEinrichtung.BenutzerEinrichtungRow rBenutzerKlinik in lstrBenutzerKlinikDistinct)
+                                {
+                                    if (rBenutzerKlinik.IDEinrichtung.Equals(rBenEinr.IDEinrichtung))
+                                        IDKlinikExists = true;
+                                }
+                                if (!IDKlinikExists)
+                                    lstrBenutzerKlinikDistinct.Add(rBenEinr);
                             }
-                            if (!IDKlinikExists)
-                                lstrBenutzerKlinikDistinct.Add(rBenEinr);
-                        }
 
-                        // Cbo Heime befüllen
-                        foreach (dsBenutzerEinrichtung.BenutzerEinrichtungRow rBenEinr in lstrBenutzerKlinikDistinct)
-                        {
-                            dsKlinik.KlinikRow rKlinik = DBKlinik1.loadKlinik(rBenEinr.IDEinrichtung, true);
-                            this.loadKlinik(rKlinik, tree.Nodes, false);
-                        }
-                        if (this.cbKlinik.SelectedItem != null)
-                        {
-                            string xy = "";
-                        }
-                    }
-                    //}
+                            // Cbo Heime befüllen
+                            foreach (dsBenutzerEinrichtung.BenutzerEinrichtungRow rBenEinr in lstrBenutzerKlinikDistinct)
+                            {
+                                dsKlinik.KlinikRow rKlinik = DBKlinik1.loadKlinik(rBenEinr.IDEinrichtung, true);
+                                this.loadKlinik(rKlinik, tree.Nodes, false);
+                            }
+                        }                            
+                    }                        
+                }
                     
-                    if (this.tree.ActiveNode != null)
-                    {
-                        PatientGroupSelection CurrentSelectionFound = (PatientGroupSelection)tree.ActiveNode.Tag;
-                        if (this.typUI == eTypUI.main)
-                        {
-                            ENV.IDKlinik = CurrentSelectionFound.IDKlinik;
-                            ENV.setIDBereich = CurrentSelectionFound.Bereich;
-                        PMDSBusinessRAM bRAM = new PMDSBusinessRAM();
-                        bRAM.loadDataStart(true, true, true, true);
-                    }
-                    if (this.klinikHasChanged != null)
-                            this.klinikHasChanged.Invoke(this.getSelKlinikRow());
-                        this.OnSelectionChanged(this.cbKlinik, CurrentSelectionFound);
-                    }
-                    else
-                    {
-                    }
-                   
-                }
-                catch (Exception e)
+                if (this.tree.ActiveNode != null)
                 {
-                    ENV.HandleException(e);
-                    this._lockSelectedKlinik = false;
+                    PatientGroupSelection CurrentSelectionFound = (PatientGroupSelection)tree.ActiveNode.Tag;
+                    if (this.typUI == eTypUI.main)
+                    {
+                        ENV.IDKlinik = CurrentSelectionFound.IDKlinik;
+                        ENV.setIDBereich = CurrentSelectionFound.Bereich;
+                    PMDSBusinessRAM bRAM = new PMDSBusinessRAM();
+                    bRAM.loadDataStart(true, true, true, true);
                 }
-                finally
-                {
-                    tree.EndUpdate();
-                    UltraTreeTools.ActivateNodeKeyOrFirst(tree, key);
-                    this._lockSelectedKlinik = false;
-                    this. _TreeRefreshed = true;
-                }
+                if (this.klinikHasChanged != null)
+                        this.klinikHasChanged.Invoke(this.getSelKlinikRow());
+                    this.OnSelectionChanged(this.cbKlinik, CurrentSelectionFound);
+                }                  
+            }
+            catch (Exception e)
+            {
+                ENV.HandleException(e);
+                this._lockSelectedKlinik = false;
+            }
+            finally
+            {
+                tree.EndUpdate();
+                UltraTreeTools.ActivateNodeKeyOrFirst(tree, key);
+                this._lockSelectedKlinik = false;
+                this. _TreeRefreshed = true;
+            }
 		}
 
-        private void loadKlinik( dsKlinik.KlinikRow rSelectKlinik, TreeNodesCollection nodes, 
-                                    bool expandNode)         //<20120202>
+        private void loadKlinik( dsKlinik.KlinikRow rSelectKlinik, TreeNodesCollection nodes, bool expandNode)         //<20120202>
         {
             try
             {
@@ -505,74 +467,64 @@ namespace PMDS.GUI
 
                 UltraTreeNode node;
                 TreeNodesCollection nodesA;
-                //<20120202-2>
-                //if (!ENVAbteilung)
-                //{
                 node = nodes.Add(rSelectKlinik.ID.ToString(), rSelectKlinik.Bezeichnung.Trim());
-                //node.Tag = new PatientGroupSelection(rSelectKlinik.Bezeichnung, true);
                 node.Tag = new PatientGroupSelection(rSelectKlinik.Bezeichnung, true, System.Guid.Empty, "", rSelectKlinik.ID, rSelectKlinik.Bezeichnung.Trim(), "", true);
                 //node.Override.NodeAppearance.Image = this.imageList1.Images[0];
                 node.Override.NodeAppearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
                 nodes = node.Nodes;
-                //}
-                
-                PMDS.DB.DBAbteilung DBAbteilung1 = new PMDS.DB.DBAbteilung();
-                dsAbteilung dsAbteilung1 = new dsAbteilung();
-                DBAbteilung1.getAbteilungenByKlinik(rSelectKlinik.ID, dsAbteilung1);
-                foreach (dsAbteilung.AbteilungRow rAbt in dsAbteilung1.Abteilung)
-                {
-                    if (!rAbt.ID.Equals(System.Guid.Empty))
-                    {
-                        bool hasRigth = false;
-                        dsBenutzerAbteilung dsBenutzerAbteilungWork = new dsBenutzerAbteilung();
-                        PMDS.DB.DBBenutzer DBBenutzerWork = new PMDS.DB.DBBenutzer();
-                        DBBenutzerWork.getAbteilungByUser(dsBenutzerAbteilungWork, ENV.USERID);
-                        foreach (dsBenutzerAbteilung.BenutzerAbteilungRow rAbtUsr in dsBenutzerAbteilungWork.BenutzerAbteilung)
-                        {
-                            if (rAbtUsr.IDAbteilung.Equals(rAbt.ID))
-                            {
-                                hasRigth = true;
-                            }
-                        }
-                        if (hasRigth)
-                        {
-                            node = nodes.Add(System.Guid.NewGuid().ToString(), rAbt.Bezeichnung);      //rAbt.ID.ToString()
-                            ////node.Override.NodeAppearance.Image = this.imageList1.Images[1];
-                            node.Tag = new PatientGroupSelection(rAbt.Bezeichnung, true, rAbt.ID, rAbt.Bezeichnung, rSelectKlinik.ID, rSelectKlinik.Bezeichnung.Trim(), "", false);
-                            nodesA = node.Nodes;
-                            if (!rAbt.IsReihenfolgeNull() &&  rAbt.Reihenfolge > 100 && rAbt.Reihenfolge.ToString().Substring(rAbt.Reihenfolge.ToString().Length - 1) == "1")
-                            {
-                                lstSupressChildsOf.Add(node.FullPath);
-                            }
 
-                            // Bereiche einhängen
-                            foreach (dsBereich.BereichRow br in KlinikBereiche.ByAbteilung(rAbt.ID))
+                using (dsAbteilung dsAbteilung1 = new dsAbteilung())
+                {
+                    using (PMDS.DB.DBAbteilung DBAbteilung1 = new PMDS.DB.DBAbteilung())
+                    {
+                        DBAbteilung1.getAbteilungenByKlinik(rSelectKlinik.ID, dsAbteilung1);
+                    }
+
+                    foreach (dsAbteilung.AbteilungRow rAbt in dsAbteilung1.Abteilung)
+                    {
+                        if (!rAbt.ID.Equals(System.Guid.Empty))
+                        {
+                            using (PMDS.DB.DBBenutzer DBBenutzerWork = new PMDS.DB.DBBenutzer())
                             {
-                                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                                using (dsBenutzerAbteilung dsBenutzerAbteilungWork = new dsBenutzerAbteilung()) 
                                 {
-                                    bool bRigthForBereich = false;
-                                    System.Linq.IQueryable<PMDS.db.Entities.BereichBenutzer> tBereichBenutzer = null;
-                                    this.PMDSBusiness1.getRechtBereichUserForAbteilung(br.ID, ENV.USERID, ref tBereichBenutzer, db);
-                                    foreach (PMDS.db.Entities.BereichBenutzer rBereichBenutzer in tBereichBenutzer)
+                                    DBBenutzerWork.getAbteilungByUser(dsBenutzerAbteilungWork, ENV.USERID);
+
+                                    if (dsBenutzerAbteilungWork.BenutzerAbteilung.Any(r => r.IDAbteilung == rAbt.ID))
                                     {
-                                        if (rBereichBenutzer.IDBereich.Equals(br.ID))
+                                        node = nodes.Add(System.Guid.NewGuid().ToString(), rAbt.Bezeichnung);      //rAbt.ID.ToString()
+                                                                                                                   ////node.Override.NodeAppearance.Image = this.imageList1.Images[1];
+                                        node.Tag = new PatientGroupSelection(rAbt.Bezeichnung, true, rAbt.ID, rAbt.Bezeichnung, rSelectKlinik.ID, rSelectKlinik.Bezeichnung.Trim(), "", false);
+                                        nodesA = node.Nodes;
+                                        if (!rAbt.IsReihenfolgeNull() && rAbt.Reihenfolge > 100 && rAbt.Reihenfolge.ToString().Substring(rAbt.Reihenfolge.ToString().Length - 1) == "1")
                                         {
-                                            bRigthForBereich = true;
+                                            lstSupressChildsOf.Add(node.FullPath);
+                                        }
+
+                                        // Bereiche einhängen
+                                        foreach (dsBereich.BereichRow br in KlinikBereiche.ByAbteilung(rAbt.ID))
+                                        {
+                                            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                                            {
+                                                System.Linq.IQueryable<PMDS.db.Entities.BereichBenutzer> tBereichBenutzer = null;
+                                                this.PMDSBusiness1.getRechtBereichUserForAbteilung(br.ID, ENV.USERID, ref tBereichBenutzer, db);
+
+                                                if (tBereichBenutzer.Any(r => r.IDBereich == br.ID))
+                                                {
+                                                    node = nodesA.Add(System.Guid.NewGuid().ToString(), br.Bezeichnung);
+                                                    node.Tag = new PatientGroupSelection(br.Bezeichnung, true, rAbt.ID, br.ID, rAbt.Bezeichnung, br.Bezeichnung, rSelectKlinik.ID, rSelectKlinik.Bezeichnung.Trim(), "", false);
+                                                    //node.Override.NodeAppearance.Image = this.imageList1.Images[2];
+                                                }
+                                            }
                                         }
                                     }
-                                    if (bRigthForBereich)
-                                    {
-                                        node = nodesA.Add(System.Guid.NewGuid().ToString(), br.Bezeichnung);
-                                        node.Tag = new PatientGroupSelection(br.Bezeichnung, true, rAbt.ID, br.ID, rAbt.Bezeichnung, br.Bezeichnung, rSelectKlinik.ID, rSelectKlinik.Bezeichnung.Trim(), "", false);
-                                        //node.Override.NodeAppearance.Image = this.imageList1.Images[2];
-                                    }
                                 }
-                            } 
+                            }
                         }
                     }
                 }
 
-                
+
                 if (expandNode)
                 {
                     tree.ExpandAll();                    

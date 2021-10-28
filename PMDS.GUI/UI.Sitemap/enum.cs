@@ -3,8 +3,6 @@
 
 namespace PMDS.UI.Sitemap
 {
-
-
     public enum eAction
     {
         delete = 0,
@@ -17,8 +15,7 @@ namespace PMDS.UI.Sitemap
         fsw = 7,
         fswreset = 8,
         fswNoUpload = 9,
-        rollen = 10
+        rollen = 10,
+        fswXlsVorschau = 11
     }
-
-
 }

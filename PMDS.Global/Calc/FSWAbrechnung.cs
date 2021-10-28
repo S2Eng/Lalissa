@@ -12,6 +12,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using System.Drawing;
 using Syncfusion.XlsIO;
+using System.Linq;
 
 namespace PMDS.Global
 {
@@ -54,6 +55,22 @@ namespace PMDS.Global
 
         private eAction _RunAction;
 
+        private List<XlsVorschauZeile> lstXlsVorschauZeilen = new List<XlsVorschauZeile>();
+
+        private class XlsVorschauZeile
+        {
+            public string Nachname;
+            public string Vorname;
+            public string Text;
+            public double Netto;
+            public double MwStSatz;
+            public int Anzahl;
+            public string FiBu;
+            public DateTime ReDatum;
+            public DateTime Monat;
+            public string SVNr;
+        }
+
         public eAction RunAction
         {
             get { return _RunAction;  }
@@ -76,7 +93,8 @@ namespace PMDS.Global
         {
             fsw = 7,
             fswreset = 8,
-            fswNoUpload = 9
+            fswNoUpload = 9,
+            fswXlsVorschau = 10
         }
 
         //------------------------ ebInterface / Abrechnungsschittstelle zum FSW -----------------------------
@@ -110,6 +128,9 @@ namespace PMDS.Global
                         case eAction.fswreset:
                             MsgBoxTitle = "FSW-Status für Zahlungsaufforderung zurücksetzen";
                             break;
+                        case eAction.fswXlsVorschau:
+                            MsgBoxTitle = "Excel-Vorschau für FSW-Abrechnung erstellen";
+                            break;
                     }
 
                     decimal Rechnungsbetrag = 0;
@@ -124,20 +145,21 @@ namespace PMDS.Global
                         billHeader rHeader = readBillHeader(rBill.IDAbrechnung, IDKlinik);
                         using (dbCalc dbCalc = getDBCalc(rHeader.dbCalc))
                         {
-                            //Prüfungen
-                            if (!rBill.Freigegeben)
-                            {
-                                //Dieser Fall wird in der Oberfläche ausgeschlossen. Ist nur sicherheitshalber im Code.
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Nicht freigegebene Rechnungen können nicht an den FSW gesendet werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
-                                return;
-                            }
-
                             if (rBill.IDSR.Length > 0  && !rBill.IDSR.Any(c => Guid.TryParse(rBill.IDSR, out Guid guidID)) && RunAction == eAction.fsw)
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bereits gesendete Rechnungen können nicht nocheinmal gesendet werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                 return;
                             }
 
+                            string VersicherungsNr = "";
+                            using (PMDS.db.Entities.ERModellPMDSEntities db2 = calculation.delgetDBContext.Invoke())
+                            {
+                                using (PMDS.db.Entities.ERModellPMDSEntities db3 = DB.PMDSBusiness.getDBContext())
+                                {
+                                    Guid IDKlient = new Guid((from kl in dbCalc.Klient select kl).FirstOrDefault().ID.ToString());
+                                    VersicherungsNr = (from kl in db3.Patient where kl.ID == IDKlient select kl.VersicherungsNr).FirstOrDefault().ToString();
+                                }
+                            }
                             PMDS.Global.db.cEBInterfaceDB FSWRechnung = new db.cEBInterfaceDB();
                             PMDS.Global.db.cEBInterfaceDB.Invoice Invoice = PMDS.Global.db.cEBInterfaceDB.Init(IDKlinik, new Guid(rBill.IDKlient));
                             PMDS.Global.db.cEBInterfaceDB.Invoice InvoiceBW = PMDS.Global.db.cEBInterfaceDB.Init(IDKlinik, new Guid(rBill.IDKlient));
@@ -236,6 +258,22 @@ namespace PMDS.Global
                                                 InvoiceBW.Details.ItemList.Add(FSWRechnung.MakeNewLineItem(rBill.RechNr, ZeileBW, Rechnungszeile.Bezeichnung, (decimal)Rechnungszeile.Anzahl, Rechnungszeile.Netto / Rechnungszeile.Anzahl, Rechnungszeile.Netto, Rechnungszeile.Netto, Rechnungszeile.MWSt));
                                         }
                                         lstZeilen.Add(new Leistungszeile() { IDRechnungszeile = new Guid(Rechnungszeile.ID), IDRechnung = new Guid(rBill.ID) });      // new Guid(Rechnungszeile.ID), new Guid(rBill.ID));
+
+
+                                        lstXlsVorschauZeilen.Add(new XlsVorschauZeile()
+                                        {
+                                            Nachname = rBill.KlientName,
+                                            Vorname = "",
+                                            //Text = (from la in dbCalc.Leistungen where la.IDLeistungskatalog == Rechnungszeile.IDLeistungsKatalog select la.LeistungBezeichnung).FirstOrDefault(),
+                                            Text = Rechnungszeile.Bezeichnung,
+                                            Netto = (double)Rechnungszeile.Netto,
+                                            MwStSatz = (double)Rechnungszeile.MWSt,
+                                            Anzahl = Rechnungszeile.Anzahl,
+                                            FiBu = Rechnungszeile.FIBU,
+                                            ReDatum = (DateTime)rBill.RechDatum,
+                                            Monat = Rechnungszeile.KostenträgerRow.von,
+                                            SVNr = VersicherungsNr
+                                        });
                                     }
 
                                     else if (generic.sEquals(Rechnungszeile.Kennung, "MWstSatz"))
@@ -282,6 +320,101 @@ namespace PMDS.Global
                             InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
                             TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
                         }
+                    }
+
+                    if (Action == eAction.fswXlsVorschau && lstXlsVorschauZeilen.Count > 0)
+                    {
+                    //Excel anlegen
+                        string xlsWorking = System.IO.Path.Combine(ENV.FSW_EZAUF, "FSW_Vorschau_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".xlsx");
+                        using (ExcelEngine excelEngine = new ExcelEngine())
+                        {
+
+                            IApplication application = excelEngine.Excel;
+                            application.DefaultVersion = ExcelVersion.Xlsx;
+                            IWorkbook workbook = application.Workbooks.Create(1);
+                            IWorksheet workSheet = workbook.Worksheets.Create("Übersicht");
+                            workbook.Worksheets[0].Remove();  //Standard-Worksheet entfernen
+
+                            workSheet.Range[1, 1].Text = "Name";
+                            workSheet.Range[1, 2].Text = "SV-Nr";
+                            workSheet.Range[1, 3].Text = "Leistung";
+                            workSheet.Range[1, 4].Text = "Netto";
+                            workSheet.Range[1, 5].Text ="MwSt-Satz";
+                            workSheet.Range[1, 6].Text = "Anzahl Tage";
+                            workSheet.Range[1, 7].Text = "FiBu";
+                            workSheet.Range[1, 8].Text = "Datum erstellt";
+                            workSheet.Range[1, 9].Text = "Monat/Jahr";
+
+                            int i = 1;
+                            foreach(XlsVorschauZeile lz in lstXlsVorschauZeilen)
+                            {
+                                i++;
+                                workSheet.Range[i, 1].Text = lz.Nachname;
+                                workSheet.Range[i, 2].Text = lz.SVNr;
+                                workSheet.Range[i, 3].Text = lz.Text;
+                                workSheet.Range[i, 4].Number = lz.Netto;
+                                workSheet.Range[i, 4].NumberFormat = "€#,##0.00";
+                                workSheet.Range[i, 5].Number =  lz.MwStSatz;
+                                workSheet.Range[i, 6].Number = lz.Anzahl;
+                                workSheet.Range[i, 7].Text = lz.FiBu;
+                                workSheet.Range[i, 8].DateTime = lz.ReDatum;
+                                workSheet.Range[i, 8].NumberFormat = "dd.mm.yyyy";
+                                workSheet.Range[i, 9].DateTime = lz.Monat;
+                                workSheet.Range[i, 9].NumberFormat = "mm/yyyy";
+                            }
+                            workbook.SetPaletteColor(8, Color.FromArgb(255, 174, 33));
+
+                            //Header style
+                            IStyle headerStyle = workbook.Styles.Add("HeaderStyle");
+                            headerStyle.BeginUpdate();
+                            headerStyle.Color = Color.FromArgb(255, 174, 33);
+                            headerStyle.Font.Bold = true;
+                            headerStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
+                            headerStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
+                            headerStyle.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Thin;
+                            headerStyle.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Thin;
+                            headerStyle.EndUpdate();
+
+                            //Body style
+                            IStyle bodyStyle = workbook.Styles.Add("BodyStyle");
+                            bodyStyle.BeginUpdate();
+                            bodyStyle.Color = Color.FromArgb(239, 243, 247);
+                            bodyStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Thin;
+                            bodyStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Thin;
+                            bodyStyle.EndUpdate();
+
+                            workSheet.Rows[0].CellStyle = headerStyle;
+                            workSheet.Range["A2:I" +i.ToString()].CellStyle = bodyStyle;
+
+                            workSheet.UsedRange.AutofitColumns();
+
+                            workbook.SaveAs(xlsWorking);
+                            if (File.Exists(xlsWorking))
+                            {
+                                if (generic.IsExcelInstalled())
+                                {
+                                    System.Diagnostics.Process.Start(xlsWorking);
+                                    return;
+                                }
+                                else
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei wurde gespeichert (" + xlsWorking + "), kann aber nicht geöffnet werden, weil Excel nicht installiert ist.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
+                            }
+                            else
+                            {                                                               
+                                {
+                                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Datei " + xlsWorking + "konnte nicht gespeichert werden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden keine Leistungen mit FSW als Zahler gefunden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                        return;
                     }
 
                     //Transactions updaten
@@ -812,7 +945,7 @@ namespace PMDS.Global
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                 {
                     bool b =  (from kt in db.Kostentraeger
-                            select kt).Where(kt => kt.ID == IDKostentraeger && kt.IDKostentraegerSub == IDFSW && kt.PatientbezogenJN == false).Any();
+                            select kt).Where(kt => kt.ID == IDKostentraeger && kt.IDKostentraegerSub == IDFSW).Any();
 
                     if (b)
                     {

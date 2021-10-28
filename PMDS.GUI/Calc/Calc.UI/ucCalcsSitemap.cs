@@ -428,7 +428,7 @@ namespace PMDS.Calc.UI
                         db.Configuration.LazyLoadingEnabled = false;
 
                         int anzDel = 0;
-                        if (typ == eAction.freigeben || typ == eAction.stornieren || typ == eAction.fsw || typ == eAction.fswreset || typ == eAction.fswNoUpload || typ == eAction.rollen)
+                        if (typ == eAction.freigeben || typ == eAction.stornieren || typ == eAction.fsw || typ == eAction.fswreset || typ == eAction.fswNoUpload || typ == eAction.rollen || typ == eAction.fswXlsVorschau)
                         {
                             List<String> listIDBills = new List<String>();
                             foreach (UltraGridRow rToDel in arrSelected)
@@ -658,6 +658,12 @@ namespace PMDS.Calc.UI
                             {
                                 PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
                                 FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills, FSWAbrechnung.eAction.fsw);
+                            }
+
+                            else if (typ == eAction.fswXlsVorschau)
+                            {
+                                PMDS.Global.FSWAbrechnung FSWAbrechnung = new FSWAbrechnung();
+                                FSWAbrechnung.GenerateFSWStructure(ENV.IDKlinik, listIDBills, FSWAbrechnung.eAction.fswXlsVorschau);
                             }
 
                             else if (typ == eAction.fswNoUpload)

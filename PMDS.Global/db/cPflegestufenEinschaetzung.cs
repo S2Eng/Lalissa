@@ -306,7 +306,7 @@ namespace PMDS.Global.db
                                 worksheets[0].Range["E3"].Value = "am: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm");
 
                                 workbook.Save();                                
-                                if (IsExcelInstalled())
+                                if (generic.IsExcelInstalled())
                                 {
                                     System.Diagnostics.Process.Start(xlsWorking);
                                     SetResult(ref p);
@@ -351,20 +351,6 @@ namespace PMDS.Global.db
             {
                 throw new Exception("cPflegestufenEinschaetzung.SetResult: " + ex.ToString());
             }
-        }
-
-        private static bool IsExcelInstalled()
-        {
-            try
-            {
-                Type officeType = Type.GetTypeFromProgID("Excel.Application");
-                return officeType != null;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("cPflegestufenEinschaetzung.IsExcelInstalled: " + ex.ToString());
-            }
-        }
-
+        }      
     }
 }
