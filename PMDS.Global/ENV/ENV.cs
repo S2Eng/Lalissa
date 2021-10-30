@@ -207,6 +207,7 @@ namespace PMDS.Global
         public static string FSW_FTPIP = "";
         public static int FSW_FTPPort = 22;
         public static string FSW_FTPZertifikat = "";
+        public static string FSW_FTPMode = "Test";
 
         public static bool AbwesenheitenAnzeigen = true;
 
@@ -1385,6 +1386,7 @@ namespace PMDS.Global
                 SetENVValue("FSW_FTPIP", ref ENV.FSW_FTPIP);
                 SetENVValue("FSW_FTPPort", ref ENV.FSW_FTPPort);
                 SetENVValue("FSW_FTPZertifikat", ref ENV.FSW_FTPZertifikat);
+                SetENVValue("FSW_FTPMode", ref ENV.FSW_FTPMode);
 
                 SetENVValue("AbwesenheitenAnzeigen", ref ENV.AbwesenheitenAnzeigen, "0");
 

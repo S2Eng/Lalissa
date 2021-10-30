@@ -314,7 +314,8 @@ namespace PMDS.GUI.Kostentraeger
                                 this._rKostenträger.IDKostentraegerSub = null;
 
                                 string sPatName = (rPatient.Titel + " " + rPatient.Vorname.Trim() + " " + rPatient.Nachname.Trim()).Trim();
-                                this._rKostenträger.Rechnungsempfaenger = "(Erwachsenenvertreter für " + sPatName + ")";
+                                //this._rKostenträger.Rechnungsempfaenger = "(Erwachsenenvertreter für " + sPatName + ")";
+                                this._rKostenträger.Rechnungsempfaenger = "(Erwachsenenvertreter)";
 
                                 this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Alles;
                                 this._rPatientKostentraeger.RechnungTyp = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;

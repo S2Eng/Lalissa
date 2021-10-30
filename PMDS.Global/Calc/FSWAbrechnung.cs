@@ -411,7 +411,7 @@ namespace PMDS.Global
                             }
                         }
                     }
-                    else
+                    else if (lstXlsVorschauZeilen.Count == 0)
                     {
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Es wurden keine Leistungen mit FSW als Zahler gefunden.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                         return;
@@ -514,7 +514,7 @@ namespace PMDS.Global
                                         continue;
 
                                     bool bIsPflegeZAUFF = f.Transaction.bIsPflegeZAUFF;
-                                    FilenameXML = f.Transaction.bIsPflegeZAUFF ? FilenameXML : FilenameXLSXBW;
+                                    FilenameXML = f.Transaction.bIsPflegeZAUFF ? FilenameXML : FilenameXMLBW;
                                     ListIDs = f.Transaction.bIsPflegeZAUFF ? ListIDBillsFSW : ListIDBillsFSWBW;
 
                                     ret = Upload(FilenameXML, f.FQFileXML);
@@ -527,7 +527,7 @@ namespace PMDS.Global
                                     ret = SetIDSR(ListIDs, FilenameXML, db);
                                     if (ret.Length == 0)
                                     {
-                                        string sBWExt = f.Transaction.bIsPflegeZAUFF ? "(BW)" : "";
+                                        string sBWExt = f.Transaction.bIsPflegeZAUFF ? "" : "(BW) ";
                                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Zahlungsaufforderung " + sBWExt + "für " + ListIDs.Count.ToString() + " Rechnung(en) an FSW gesendet.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                                     }
                                     else
@@ -543,7 +543,7 @@ namespace PMDS.Global
                             //Sammelrechnung-ID (ZAUF) setzen
                             ret = SetIDSR(ListIDBills, "", db);
                             if (ret.Length == 0)
-                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDs.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
+                                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Status Zahlungsaufforderung für " + ListIDBills.Count.ToString() + " Rechnung(en) zurückgesetzt.", MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
                             else
                             {
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Zurücksetzen des ZAUF-Zustands: " + ret, MsgBoxTitle, System.Windows.Forms.MessageBoxButtons.OK);
@@ -1003,16 +1003,23 @@ namespace PMDS.Global
                         if (sftp.Connect(ENV.FSW_FTPIP, ENV.FSW_FTPPort))
                             if (sftp.AuthenticatePk(ENV.FSW_FTPUser, puttyKey))
                                 if (sftp.InitializeSftp())
-                                    if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
+//                                    if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
+                                    if (sftp.UploadFileByName( ENV.FSW_FTPMode.ToLower() + "/put/" + RemoteFilename, LocalFQFilename))
                                     {
-                                        return "";
+
+                                        if (sftp.LastErrorXml.Contains("failed status"))
+                                        {
+                                            return sftp.LastErrorText;
+                                        }
+                                        else
+                                            return "";
                                     }
                                     else
                                     {
                                         return sftp.LastErrorText;
                                     }
-                    }                        
-                    return sftp.LastErrorText; ;
+                    }
+                    return "";
                 }
             }
             catch (Exception ex)
