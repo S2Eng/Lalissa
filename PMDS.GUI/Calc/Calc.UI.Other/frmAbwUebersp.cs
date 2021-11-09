@@ -260,7 +260,7 @@ namespace PMDS.Calc.UI.Admin
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            this.export.exportGrid(this.uGridAbw, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "");
+            this.export.exportGrid(this.uGridAbw, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "", "");
         }
 
         private void chkHändischJN_CheckedChanged(object sender, EventArgs e)
@@ -272,7 +272,7 @@ namespace PMDS.Calc.UI.Admin
         private void uGridAbw_DoubleClick(object sender, EventArgs e)
         {
 
-        }
+        }   
         private void uGridAbw_BeforeRowRegionScroll(object sender, Infragistics.Win.UltraWinGrid.BeforeRowRegionScrollEventArgs e)
         {
 

@@ -38,14 +38,7 @@ namespace PMDS.BusinessLogic
 
         public PMDSBusiness b = new PMDSBusiness();
 
-        public static bool searchLastEntlassenenAufenthalt = false;
-
-
-
-
-
-
-
+        public static bool searchLastEntlassenenAufenthalt;
 
 
         public KlientDetails()
@@ -97,18 +90,13 @@ namespace PMDS.BusinessLogic
                     _AufenthaltZusatz.New(_dsAufenthaltZusatz, _idAufenthalt);
                 }
             }
-            else
-            {
-                string xy = "yx";
-            }
 
             _medDaten = new KlientMedizinischeDaten(idPatient, ENV.USERID);
             _pateintPflegestufe = new KlientPflegestufe(_idPatient);
             _rehabilitation = new Rehabilitation(_idPatient);
             _gegenstaende = new Gegenstaende(_idAufenthalt);
             _unterbringung = new Unterbringung(_idAufenthalt);
-            _klinik = new KlientKlinik(idAufenthalt);
-            
+            _klinik = new KlientKlinik(idAufenthalt);            
         }
 
         public Guid IDPatient
@@ -241,10 +229,9 @@ namespace PMDS.BusinessLogic
         }
 
         public void Write(bool mainSystm, bool isAbrechnung, bool isBewerberJN)
-        {
-            
+        {           
             //Änderung nach 28.06.2007 MDA
-            //Bei neues Klient muß zuerst Adresse und Kontakt angelegt werden.
+            //Bei neuem Klient muß zuerst Adresse und Kontakt angelegt werden.
             Adresse.Write();
             Kontakt.Write();
 
@@ -297,10 +284,8 @@ namespace PMDS.BusinessLogic
             }
 
             PATIENTPFLEGESTUFE.Write();
-
-            //if (Aufenthalt != null)
-            //    _AufenthaltZusatz.Update(_dsAufenthaltZusatz, AufenthaltZusatzMode.Klient);
         }
+
         public void WriteAufenthalt(bool bewerberbeuanlage)
         {
             if (bewerberbeuanlage)
@@ -309,6 +294,7 @@ namespace PMDS.BusinessLogic
                 Aufenthalt.Write();
             _AufenthaltZusatz.Update(_dsAufenthaltZusatz, AufenthaltZusatzMode.Klient);
         }
+
         public dsKontaktpersonen GetkontalPersonen(bool ExternerDienstleister)
         {
             if (ExternerDienstleister)
@@ -333,30 +319,30 @@ namespace PMDS.BusinessLogic
             
                 sbName.Append(Kontaktperson.Nachname + " " + Kontaktperson.Vorname);
 
-                if (Kontaktperson.Titel != "")
+                if (!String.IsNullOrWhiteSpace(Kontaktperson.Titel))
                     sbName.Append(", " + Kontaktperson.Titel);
                 
-                if (Kontaktperson.Kontakt.Tel != "")
+                if (!String.IsNullOrWhiteSpace(Kontaktperson.Kontakt.Tel))
                     sbAdresse.Append("Tel:" + Kontaktperson.Kontakt.Tel + " /");
                 
-                if(Kontaktperson.Kontakt.Mobil !="")
+                if(!String.IsNullOrWhiteSpace(Kontaktperson.Kontakt.Mobil))
                 {
-                    if(Kontaktperson.Kontakt.Tel != "")
+                    if(!String.IsNullOrWhiteSpace(Kontaktperson.Kontakt.Tel))
                         sbAdresse.Append(" ");
                     sbAdresse.Append("Mobil" +Kontaktperson.Kontakt.Mobil+" /");
                 }
                 
-                if (Kontaktperson.Adresse.Strasse != "")
+                if (!String.IsNullOrWhiteSpace(Kontaktperson.Adresse.Strasse))
                     sbAdresse.Append(" " + Kontaktperson.Adresse.Strasse);
                 
-                if (Kontaktperson.Adresse.Plz != "")
+                if (!String.IsNullOrWhiteSpace(Kontaktperson.Adresse.Plz))
                     sbAdresse.Append(" " + Kontaktperson.Adresse.Plz);
                 
-                if (Kontaktperson.Adresse.Ort != "")
+                if (!String.IsNullOrWhiteSpace(Kontaktperson.Adresse.Ort))
                     sbAdresse.Append(" " + Kontaktperson.Adresse.Ort);
 
                 StringBuilder sMail = new StringBuilder();
-                if (Kontaktperson.Kontakt.Email != null && Kontaktperson.Kontakt.Email.Trim() != "")
+                if (Kontaktperson.Kontakt.Email != null && !String.IsNullOrWhiteSpace(Kontaktperson.Kontakt.Email))
                     sMail.Append(" " + Kontaktperson.Kontakt.Email.Trim());
                 
 
@@ -391,7 +377,7 @@ namespace PMDS.BusinessLogic
 
                 sbName.Append(Sachwalter.Nachname + " " + Sachwalter.Vorname);
 
-                if (Sachwalter.Titel != "")
+                if (!String.IsNullOrWhiteSpace(Sachwalter.Titel))
                     sbName.Append(", " + Sachwalter.Titel);
                 
                 if (r.SachwalterJN)
@@ -399,7 +385,7 @@ namespace PMDS.BusinessLogic
                 else
                     sbBelange.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("Vorsorgebevollmächtigte "));
                 
-                if (r.Belange != "")
+                if (!String.IsNullOrWhiteSpace(r.Belange))
                     sbBelange.Append(QS2.Desktop.ControlManagment.ControlManagment.getRes("für ") + r.Belange.Trim());
                 
                 if (!r.IsVonNull())
@@ -507,8 +493,7 @@ namespace PMDS.BusinessLogic
                 age = years.ToString();
             }
 
-            return string.Format(sFormat, Titel, Nachname, Vorname,
-                                    Sexus, gebDatum, age);
+            return string.Format(sFormat, Titel, Nachname, Vorname, Sexus, gebDatum, age);
         }
 
         #region PROPERTIES
@@ -956,11 +941,13 @@ namespace PMDS.BusinessLogic
             get { return DB_KLIENT_ROW.PflegegeldantragJN; }
             set { DB_KLIENT_ROW.PflegegeldantragJN = value; }
         }
+
         public bool Verstorben
         {
             get { return DB_KLIENT_ROW.Verstorben; }
             set { DB_KLIENT_ROW.Verstorben = value; }
         }
+
         public object Todeszeitpunkt
         {
             get
@@ -984,7 +971,6 @@ namespace PMDS.BusinessLogic
             get { return DB_KLIENT_ROW.DNR; }
             set { DB_KLIENT_ROW.DNR = value; }
         }
-
 
         public object DatumPflegegeldantrag
         {
@@ -1010,7 +996,6 @@ namespace PMDS.BusinessLogic
             get { return DB_KLIENT_ROW.PensionsteilungsantragJN; }
             set { DB_KLIENT_ROW.PensionsteilungsantragJN = value; }
         }
-
 
         public object DatumPensionsteilungsantrag
         {

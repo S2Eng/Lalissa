@@ -928,8 +928,11 @@ namespace PMDS.UI.Sitemap
                                                 PMDS.Global.ENV.TageOhneKuerzungGrundleistung,
                                                 PMDS.Global.ENV.KuerzungGrundleistungLetzterTag,
                                                 PMDS.Global.ENV.RechErwAbwesenheit, PMDS.Global.ENV.SrErwAbwesenheit, 
-                                                PMDS.Global.ENV.ZahlKondBankeinzug, PMDS.Global.ENV.ZahlKondErlagschein, PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, PMDS.Global.ENV.ZahlKondFSW, PMDS.Global.ENV.AbwesenheitenAnzeigen, ENV.RechTitelDepotGeld);
-
+                                                PMDS.Global.ENV.ZahlKondBankeinzug, PMDS.Global.ENV.ZahlKondErlagschein, PMDS.Global.ENV.ZahlKondÜberweisung, PMDS.Global.ENV.ZahlKondBar, 
+                                                PMDS.Global.ENV.ZahlKondFSW, 
+                                                PMDS.Global.ENV.AbwesenheitenAnzeigen, 
+                                                ENV.RechTitelDepotGeld,
+                                                PMDS.Global.ENV.RechnungBankdaten);
             }
             catch (Exception exch)
             {

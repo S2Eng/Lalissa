@@ -968,10 +968,11 @@ namespace PMDS.GUI
             // 
             this.numTageAbweseneheitOhneKuerzung.FormatString = "##0";
             this.numTageAbweseneheitOhneKuerzung.Location = new System.Drawing.Point(509, 0);
-            this.numTageAbweseneheitOhneKuerzung.MaskInput = "nnnnn";
+            this.numTageAbweseneheitOhneKuerzung.MaskInput = "-nn";
             this.numTageAbweseneheitOhneKuerzung.Name = "numTageAbweseneheitOhneKuerzung";
             this.numTageAbweseneheitOhneKuerzung.Size = new System.Drawing.Size(69, 24);
             this.numTageAbweseneheitOhneKuerzung.TabIndex = 139;
+            this.numTageAbweseneheitOhneKuerzung.Value = -1;
             this.numTageAbweseneheitOhneKuerzung.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
             // lblTageAbweseneheitOhneKuerzung

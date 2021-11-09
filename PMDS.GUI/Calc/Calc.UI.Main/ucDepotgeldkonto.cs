@@ -493,7 +493,7 @@ namespace PMDS.GUI
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            this.export.exportGrid(this.gridTaschengeld, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "");
+            this.export.exportGrid(this.gridTaschengeld, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "", "");
         }
 
 

@@ -22,6 +22,7 @@ using PMDS.Global.db.Global;
 using System.Data.Entity.Infrastructure;
 
 using PMDS.db.Entities;
+using System.Linq;
 
 
 
@@ -455,15 +456,18 @@ namespace PMDS.GUI
 
                 if (dbPar.ZeitbezugJN && dbPar.Zeitbezug.Count > 0)
                 {
-                    bool MitpflegediagnosAbzeichnenJa = false;
-                    foreach (int IDZeitbezug in dbPar.Zeitbezug)
-                    {
-                        if (IDZeitbezug == (int)PMDS.Global.eModusTermine.MitPflegediagnoseAbzeichnen)
-                        {
-                            MitpflegediagnosAbzeichnenJa = true;
-                        }
-                    }
-                    this.MainWindow.btnPDxRückmelden.Visible = MitpflegediagnosAbzeichnenJa;
+                    //bool MitpflegediagnosAbzeichnenJa = false;
+                    //foreach (int IDZeitbezug in dbPar.Zeitbezug)
+                    //{
+                    //    if (IDZeitbezug == (int)PMDS.Global.eModusTermine.MitPflegediagnoseAbzeichnen)
+                    //    {
+                    //        MitpflegediagnosAbzeichnenJa = true;
+                    //        break;
+                    //    }
+                    //}
+                    //this.MainWindow.btnPDxRückmelden.Visible = MitpflegediagnosAbzeichnenJa;
+
+                    this.MainWindow.btnPDxRückmelden.Visible = dbPar.Zeitbezug.Any(rm => rm == (int)PMDS.Global.eModusTermine.MitPflegediagnoseAbzeichnen);
                 }
                 else
                 {

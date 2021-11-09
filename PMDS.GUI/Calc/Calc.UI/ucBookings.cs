@@ -356,7 +356,7 @@ namespace PMDS.Calc.UI
             {
                 this.Cursor = Cursors.WaitCursor;
                 if (!this.checkConboSel()) return;
-                this.export.exportGrid(this.uGridBookings, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "");
+                this.export.exportGrid(this.uGridBookings, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "", "");
             }
             catch (Exception ex)
             {

@@ -498,7 +498,7 @@ namespace PMDS.Calc.UI.Admin
                     
                     using (PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport())
                     {
-                        export.exportGrid(this.gridCalcs, PMDS.GUI.VB.gridExport.eTyp.csv, dsExport1, this.dsExport1.ExportBMD.TableName, this.lstColsNotExportCalcs, "");
+                        export.exportGrid(this.gridCalcs, PMDS.GUI.VB.gridExport.eTyp.csv, dsExport1, this.dsExport1.ExportBMD.TableName, this.lstColsNotExportCalcs, "", PMDS.Global.ENV.BMDExportPath);
                     }
 
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
@@ -535,7 +535,7 @@ namespace PMDS.Calc.UI.Admin
                 this.erwAnsicht(false, 0);
 
                 PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport();
-                export.exportGrid(this.gridKost, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", this.lstColsNotExportKost, "");
+                export.exportGrid(this.gridKost, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", this.lstColsNotExportKost, "", "");
 
                 if (erwAnsichtLastStatus)
                 {
@@ -559,8 +559,7 @@ namespace PMDS.Calc.UI.Admin
 
                 using (PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport())
                 {
-                    export.exportGrid(this.gridKost, PMDS.GUI.VB.gridExport.eTyp.csv, this.dsExport1,
-                                        this.dsExport1.ExportKostentraeger.TableName, this.lstColsNotExportKost, "");
+                    export.exportGrid(this.gridKost, PMDS.GUI.VB.gridExport.eTyp.csv, this.dsExport1, this.dsExport1.ExportKostentraeger.TableName, this.lstColsNotExportKost, "", "");
                 }
             }
             catch (Exception ex)
@@ -1176,7 +1175,7 @@ namespace PMDS.Calc.UI.Admin
                 this.erwAnsicht(false, 0);
 
                 PMDS.GUI.VB.gridExport export = new PMDS.GUI.VB.gridExport();
-                export.exportGrid(this.gridCalcs, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", this.lstColsNotExportCalcs, "");
+                export.exportGrid(this.gridCalcs, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", this.lstColsNotExportCalcs, "", "");
 
                 if (erwAnsichtLastStatus)
                 {

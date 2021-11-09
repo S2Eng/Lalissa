@@ -13,6 +13,7 @@ Public Class bill
 
     Public Shared header As Boolean = True
     Public Shared rechFloskel As Boolean = True
+    Public Shared bankdaten As Boolean = True
     Public Shared zahlTage As String = ""
     Public Shared MyDepotgeldKontoTxt As String = ""
 
@@ -25,6 +26,7 @@ Public Class bill
     Public doBookmarks As New QS2.Desktop.Txteditor.doBookmarks()
     Public print As New print()
     Public dbBill As New dbBill()
+    Private bReplaceRechnungsemfaenger As Boolean = True
 
     Public tKostKostenträger As New PMDS.Calc.Logic.dbCalc.KostenKostenträgerDataTable
 
@@ -84,7 +86,14 @@ Public Class bill
 
                 Me.doBookmarks.setBookmark("[KostAnrede]", rKostDat.Anrede, editor)
                 Me.doBookmarks.setBookmark("[KostName]", If(rKostDat.Vorname = "", "", rKostDat.Vorname + " ") + rKostDat.Name, editor)
-                Me.doBookmarks.setBookmark("[KostEmpf]", rKostDat.Rechnungsempfaenger, editor)
+
+                If bReplaceRechnungsemfaenger Then
+                    Dim tmpRechnungsempfaenger As String = rKostDat.Rechnungsempfaenger.Replace("(FSW)", "").Replace("(EV)", "").Replace("(EV->FSW)", "").Replace(" | ", "")
+                    Me.doBookmarks.setBookmark("[KostEmpf]", tmpRechnungsempfaenger, editor)
+                Else
+                    Me.doBookmarks.setBookmark("[KostEmpf]", rKostDat.Rechnungsempfaenger, editor)
+                End If
+
                 Me.doBookmarks.setBookmark("[KostStrasse]", rKostDat.Strasse, editor)
                 Me.doBookmarks.setBookmark("[KostAnschrift]", rKostDat.PLZ + " " + rKostDat.Ort, editor)
                 strExcep += "6.2;"
@@ -200,7 +209,9 @@ Public Class bill
                 End If
             End If
             strExcep += "10.0;"
-            Me.doBookmarks.setBookmark("[BankKlinik]", bankKlinik, editor)
+            If bill.bankdaten Then
+                Me.doBookmarks.setBookmark("[BankKlinik]", bankKlinik, editor)
+            End If
 
             Me.doBookmarks.setBookmark("[StornoNr]", "", editor)
             Me.doBookmarks.setBookmark("[RechTitel]", "", editor)

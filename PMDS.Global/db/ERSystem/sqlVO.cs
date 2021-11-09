@@ -607,7 +607,7 @@ namespace PMDS.Global.db.ERSystem
                         string sWhereTmp = "";
                         foreach (Guid gGuidTmp in lstTyp)
                         {
-                            sWhereTmp += (String.IsNullOrWhiteSpace(sqlWhere) ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
+                            sWhereTmp += (!String.IsNullOrWhiteSpace(sqlWhere) ? "" : " or ") + " Typ='" + gGuidTmp.ToString() + "' ";
                         }
                         sqlWhere += (String.IsNullOrWhiteSpace(sqlWhere) ? " where " : " and ") + " VO_Bestellpostitionen.IDBestelldaten_VO IN (Select ID from VO_Bestelldaten where (" + sWhereTmp + ")) ";
                     }

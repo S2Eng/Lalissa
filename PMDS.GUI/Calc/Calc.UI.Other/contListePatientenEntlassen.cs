@@ -110,7 +110,7 @@ namespace PMDS.GUI.Calc.Calc.UI.Other
         {
             try
             {
-                this.export.exportGrid(this.gridPatientenEntlassen, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "");
+                this.export.exportGrid(this.gridPatientenEntlassen, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "", "");
 
             }
             catch (Exception ex)

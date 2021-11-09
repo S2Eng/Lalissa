@@ -822,11 +822,11 @@ namespace PMDS.Calc.UI
 
             if (asPdf)
             {
-                this.export.exportGrid(this.uGridAbrech2, PMDS.GUI.VB.gridExport.eTyp.pdf, null, "", null, "");
+                this.export.exportGrid(this.uGridAbrech2, PMDS.GUI.VB.gridExport.eTyp.pdf, null, "", null, "", "");
             }
             else
             {
-                this.export.exportGrid(this.uGridAbrech2, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "");
+                this.export.exportGrid(this.uGridAbrech2, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "", "");
             }
             
             this.uGridAbrech2.DisplayLayout.Bands[0].Summaries.Remove(summarySettings1);

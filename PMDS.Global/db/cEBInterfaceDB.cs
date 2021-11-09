@@ -247,7 +247,12 @@ namespace PMDS.Global.db
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "Language", AttributeValue = "ger" });
                     ret.AddAtributeToList(new cAttribute() { AttributeName = "xsi:schemaLocation", AttributeValue = @"http://www.ebinterface.at/schema/5p0/Invoice.xsd" });
 
-                    ret.Biller.VATIdentificationNumber = (rKlinik.UID.Substring(rKlinik.UID.ToUpper().IndexOf("ATU"))).Replace(" ", "");
+
+                    if (rKlinik.UID.ToUpper().Contains("ATU"))
+                        ret.Biller.VATIdentificationNumber = (rKlinik.UID.Substring(rKlinik.UID.ToUpper().IndexOf("ATU"))).Replace(" ", "");
+                    else
+                        ret.Biller.VATIdentificationNumber = rKlinik.UID;
+
                     ret.Biller.Address.Name = rKlinik.Bezeichnung;
                     ret.Biller.Address.Street = rKlinik.Strasse;
                     ret.Biller.Address.ZIP = rKlinik.PLZ;

@@ -36,6 +36,7 @@ namespace PMDS.DB
         public static List<PMDS.db.Entities.Benutzer> tBenutzer = null;
         public static List<PMDS.db.Entities.Abteilung> tAbteilung = null;
         public static List<PMDS.db.Entities.BenutzerAbteilung> tBenutzerAbteilung = null;
+        public static List<PMDS.db.Entities.BenutzerEinrichtung> tBenutzerEinrichtung = null;
         public static List<PMDS.db.Entities.Bereich> tBereich = null;
         public static List<PMDS.db.Entities.BereichBenutzer> tBereichBenutzer = null;
         public static List<PMDS.db.Entities.AuswahlListe> tAuswahlListe = null;
@@ -49,7 +50,7 @@ namespace PMDS.DB
         {
             try
             {
-                if (!PMDSBusinessRAM.IsInitialized || doAlways)
+                    if (!PMDSBusinessRAM.IsInitialized || doAlways)
                 {
                     PMDSBusinessComm.threadsRunning = true;
 
@@ -119,8 +120,8 @@ namespace PMDS.DB
                     PMDSBusinessRAM.tBenutzer = db.Benutzer.OrderBy(o => o.Nachname).ToList();
                     PMDSBusinessRAM.tAbteilung = db.Abteilung.OrderBy(o => o.Bezeichnung).ToList();
                     PMDSBusinessRAM.tBenutzerAbteilung = db.BenutzerAbteilung.OrderBy(o => o.IDBenutzer).ToList();
+                    PMDSBusinessRAM.tBenutzerEinrichtung = db.BenutzerEinrichtung.OrderBy(o => o.IDBenutzer).ToList();
                 }
-
             }
             catch (Exception ex)
             {
@@ -414,17 +415,18 @@ namespace PMDS.DB
             {
                 this.waitThreadsLoadingDataReady();
 
-                var tBenutzer4 = (from b in PMDSBusinessRAM.tBenutzer
+                lstBenutzerReturn = (from b in PMDSBusinessRAM.tBenutzer
                                   join ba in PMDSBusinessRAM.tBenutzerAbteilung on b.ID equals ba.IDBenutzer
+                                  join be in PMDSBusinessRAM.tBenutzerEinrichtung on b.ID equals be.IDBenutzer
                                   join a in PMDSBusinessRAM.tAbteilung on ba.IDAbteilung equals a.ID
-                                  where a.IDKlinik == IDKlinik
+                                  where a.IDKlinik == IDKlinik && be.IDEinrichtung == IDKlinik
                                   orderby b.Nachname ascending, b.Vorname ascending
-                                  select new { IDBenutzer = b.ID }).Distinct().ToList();
+                                  select (b.ID)).Distinct().ToList();
 
-                foreach (var rBenutzer in tBenutzer4)
-                {
-                    lstBenutzerReturn.Add(rBenutzer.IDBenutzer);
-                }
+                //foreach (var rBenutzer in tBenutzer4)
+                //{
+                //    lstBenutzerReturn.Add(rBenutzer.IDBenutzer);
+                //}
 
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
@@ -443,18 +445,19 @@ namespace PMDS.DB
             {
                 this.waitThreadsLoadingDataReady();
 
-                var tUsers = (from ba in PMDSBusinessRAM.tBenutzerAbteilung
+                lstBenutzerReturn = (from ba in PMDSBusinessRAM.tBenutzerAbteilung
                               join a in PMDSBusinessRAM.tAbteilung on ba.IDAbteilung equals a.ID
                               join ben in PMDSBusinessRAM.tBenutzer on ba.IDBenutzer equals ben.ID
+                              join be in PMDSBusinessRAM.tBenutzerEinrichtung on ben.ID equals be.IDBenutzer
                               orderby ben.Nachname ascending, ben.Vorname ascending
-                              where a.IDKlinik == IDKlinik && a.ID == IDAbteilung
-                              select new { IDBenutzer = ba.IDBenutzer }).Distinct().ToList();
+                              where a.IDKlinik == IDKlinik && a.ID == IDAbteilung && be.IDEinrichtung == IDKlinik
+//                              select new { IDBenutzer = ba.IDBenutzer }).Distinct().ToList();
+                              select (ba.IDBenutzer)).Distinct().ToList();
 
-                foreach (var ben in tUsers)
-                {
-                    lstBenutzerReturn.Add(ben.IDBenutzer);
-                }
-
+                //foreach (var ben in tUsers)
+                //{
+                //    lstBenutzerReturn.Add(ben.IDBenutzer);
+                //}
 
                 return true;
             }
@@ -475,18 +478,19 @@ namespace PMDS.DB
             {
                 this.waitThreadsLoadingDataReady();
 
-                var tBenutzer4 = (from bb in PMDSBusinessRAM.tBereichBenutzer
+                lstBenutzerReturn = (from bb in PMDSBusinessRAM.tBereichBenutzer
                                   join b in PMDSBusinessRAM.tBereich on bb.IDBereich equals b.ID
                                   join a in PMDSBusinessRAM.tAbteilung on b.IDAbteilung equals a.ID
                                   join ben in PMDSBusinessRAM.tBenutzer on bb.IDBenutzer equals ben.ID
-                                  where a.IDKlinik == IDKlinik && b.ID == IDBereich
+                                  join be in PMDSBusinessRAM.tBenutzerEinrichtung on ben.ID equals be.IDBenutzer
+                                  where a.IDKlinik == IDKlinik && b.ID == IDBereich && be.IDEinrichtung == IDKlinik
                                   orderby ben.Nachname ascending, ben.Vorname ascending
-                                  select new { IDBenutzer = bb.IDBenutzer }).Distinct().ToList();
+                                  select (bb.IDBenutzer )).Distinct().ToList();
 
-                foreach (var rBenutzer in tBenutzer4)
-                {
-                    lstBenutzerReturn.Add(rBenutzer.IDBenutzer);
-                }
+                //foreach (var rBenutzer in tBenutzer4)
+                //{
+                //    lstBenutzerReturn.Add(rBenutzer.IDBenutzer);
+                //}
 
                 return true;
             }
@@ -544,30 +548,21 @@ namespace PMDS.DB
                 throw new Exception("PMDSBusinessRAM.GetAuswahlliste: " + ex.ToString());
             }
         }
+
         public bool checkRightAbteilungenUser(Guid IDAbteilung, System.Guid IDKlinik, Guid IDUser, PMDS.db.Entities.ERModellPMDSEntities db)
         {
             try
             {
                 this.waitThreadsLoadingDataReady();
 
-                var tBenutzerAbteilung = (from a in PMDSBusinessRAM.tAbteilung
+                return (from a in PMDSBusinessRAM.tAbteilung
                                           join ba in PMDSBusinessRAM.tBenutzerAbteilung on a.ID equals ba.IDAbteilung
                                           where ba.IDBenutzer == IDUser && a.IDKlinik == IDKlinik && a.ID == IDAbteilung
                                           select new
                                           {
                                               IDBenutzer = ba.IDBenutzer,
                                               IDAbteilung = ba.IDAbteilung
-                                          });
-
-                if (tBenutzerAbteilung.Count() >= 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
+                                          }).Any();
             }
             catch (Exception ex)
             {

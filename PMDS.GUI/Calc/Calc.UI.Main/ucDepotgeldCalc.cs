@@ -423,7 +423,7 @@ namespace PMDS.Calc.UI
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            this.export.exportGrid(this.uGridAbrech, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "");
+            this.export.exportGrid(this.uGridAbrech, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "", "");
         }
 
         private void uGridAbrech_BeforeRowRegionScroll(object sender, BeforeRowRegionScrollEventArgs e)

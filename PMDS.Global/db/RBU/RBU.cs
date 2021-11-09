@@ -250,7 +250,7 @@ namespace RBU
             {
                 if (PMDS.Global.ENV.checkExceptionDBNetLib2(ex.ToString()))
                 {
-                    Exception exTmp = new Exception("RBU.Fill (DataSet): 2'nd try" + "\r\n" + sInfoExcept + "\r\n");
+                    Exception exTmp = new Exception("RBU.Fill (DataSet): 2nd try" + "\r\n" + sInfoExcept + "\r\n");
                     //ENV.HandleException(exTmp, "ExceptionDBNetLibNextCall", false);
                     qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                     SetConnection(da);
@@ -259,7 +259,7 @@ namespace RBU
                     /*
                     try
                     {
-                        Exception exTmp2 = new Exception("RBU.Fill (DataSet): 3'nd try" + "\r\n" + sInfoExcept + "\r\n");
+                        Exception exTmp2 = new Exception("RBU.Fill (DataSet): 3rd try" + "\r\n" + sInfoExcept + "\r\n");
                         //ENV.HandleException(exTmp2, "ExceptionDBNetLibNextCall", false);
                         qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                         SetConnection(da);
@@ -270,7 +270,7 @@ namespace RBU
                     {
                         try
                         {
-                            Exception exTmp3 = new Exception("RBU.Fill (DataSet): 4'nd try" + "\r\n" + sInfoExcept + "\r\n");
+                            Exception exTmp3 = new Exception("RBU.Fill (DataSet): 4th try" + "\r\n" + sInfoExcept + "\r\n");
                             ENV.HandleException(exTmp3, "ExceptionDBNetLibNextCall", false);
                             qs2.core.generic.WaitMilli(RBU.DataBase.WaitMSException);
                             SetConnection(da);

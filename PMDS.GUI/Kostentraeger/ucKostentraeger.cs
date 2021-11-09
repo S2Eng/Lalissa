@@ -1121,7 +1121,14 @@ namespace PMDS.Calc.UI.Admin
                     aK.Add(r);
                 }
                 _kostentraeger.Update(_dt);
-                
+
+                foreach (var r in _dsPatientKostentraeger.PatientKostentraeger)
+                {
+                    if (r.RowState != DataRowState.Deleted && !r.IsIDPatientIstZahlerNull())
+                    {
+                        r.SetIDPatientIstZahlerNull();
+                    }
+                }
                 _PatientKostentraeger.Update(_dsPatientKostentraeger.PatientKostentraeger);
 
                 //Gelöschte Kostenträger löschen
@@ -2459,7 +2466,7 @@ namespace PMDS.Calc.UI.Admin
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            this.export.exportGrid(this.dgMain, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "");
+            this.export.exportGrid(this.dgMain, PMDS.GUI.VB.gridExport.eTyp.excel, null, "", null, "", "");
         }
 
         private void dgMain_BeforeRowsDeleted(object sender, BeforeRowsDeletedEventArgs e)

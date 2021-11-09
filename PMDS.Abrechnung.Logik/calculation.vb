@@ -75,7 +75,7 @@ Public Class calculation
                         ByVal KuerzungGrundleistungLetzterTag As Boolean,
                         ByVal RechErwAbwesenheit As Boolean, ByVal SrErwAbwesenheit As Boolean,
                         ZahlKondBankeinzug As String, ZahlKondErlagschein As String, ZahlKond‹berweisung As String, ZahlKondBar As String, ZahlKondFSW As String,
-                        AbwesenheitenAnzeigen As Boolean, RechTitelDepotGeld As String)
+                        AbwesenheitenAnzeigen As Boolean, RechTitelDepotGeld As String, bankdaten As Boolean)
         Try
             Sql.CONNECTION = connection
 
@@ -92,6 +92,7 @@ Public Class calculation
             bill.typRechNr = typRechNr
             bill.zahlTage = ZAHLUNG_TAGE
             bill.header = header
+            bill.bankdaten = bankdaten
             bill.rechFloskel = rechFloskel
             bill.DepotgeldKontoTxt = DepotgeldKontoTxt
             bill.RechTitelDepotGeld = RechTitelDepotGeld

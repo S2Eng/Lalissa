@@ -196,7 +196,13 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance88 = new Infragistics.Win.Appearance();
             PMDS.DB.PMDSBusiness pmdsBusiness1 = new PMDS.DB.PMDSBusiness();
+            PMDS.GUI.PMDSBusinessUI pmdsBusinessUI1 = new PMDS.GUI.PMDSBusinessUI();
+            PMDS.Global.db.ERSystem.PMDSBusinessUI pmdsBusinessUI2 = new PMDS.Global.db.ERSystem.PMDSBusinessUI();
+            PMDS.GUI.VB.buildUI buildUI1 = new PMDS.GUI.VB.buildUI();
+            PMDS.GUI.PMDSBusinessUI pmdsBusinessUI3 = new PMDS.GUI.PMDSBusinessUI();
             PMDS.Global.UIGlobal uiGlobal1 = new PMDS.Global.UIGlobal();
+            PMDS.DB.PMDSBusiness pmdsBusiness2 = new PMDS.DB.PMDSBusiness();
+            PMDS.Global.UIGlobal uiGlobal2 = new PMDS.Global.UIGlobal();
             //PMDSClient.Sitemap.WCFServiceClient wcfServiceClient1 = new PMDSClient.Sitemap.WCFServiceClient();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
@@ -1114,7 +1120,7 @@ namespace PMDS.GUI
             this.ultraTabPageControl2.Controls.Add(this.lblVorname);
             this.ultraTabPageControl2.Controls.Add(this.chkMilieubetreuung);
             this.ultraTabPageControl2.Controls.Add(this.chkAnatomie);
-            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(1, 24);
             this.ultraTabPageControl2.Name = "ultraTabPageControl2";
             this.ultraTabPageControl2.Size = new System.Drawing.Size(1028, 606);
             this.ultraTabPageControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.ultraTabPageControl2_Paint);
@@ -1774,7 +1780,7 @@ namespace PMDS.GUI
             this.txtKliNr.Location = new System.Drawing.Point(121, 369);
             this.txtKliNr.MaxLength = 20;
             this.txtKliNr.Name = "txtKliNr";
-            this.txtKliNr.Size = new System.Drawing.Size(68, 24);
+            this.txtKliNr.Size = new System.Drawing.Size(86, 24);
             this.txtKliNr.TabIndex = 28;
             this.txtKliNr.ValueChanged += new System.EventHandler(this.OnValueChanged);
             // 
@@ -2246,7 +2252,7 @@ namespace PMDS.GUI
             this.chkAbwesenheitBeendet.Appearance = appearance129;
             this.chkAbwesenheitBeendet.BackColor = System.Drawing.Color.Transparent;
             this.chkAbwesenheitBeendet.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkAbwesenheitBeendet.Location = new System.Drawing.Point(805, 580);
+            this.chkAbwesenheitBeendet.Location = new System.Drawing.Point(754, 591);
             this.chkAbwesenheitBeendet.Name = "chkAbwesenheitBeendet";
             this.chkAbwesenheitBeendet.Size = new System.Drawing.Size(205, 18);
             this.chkAbwesenheitBeendet.TabIndex = 211;
@@ -2268,7 +2274,7 @@ namespace PMDS.GUI
             this.chkMilieubetreuung.Appearance = appearance130;
             this.chkMilieubetreuung.BackColor = System.Drawing.Color.Transparent;
             this.chkMilieubetreuung.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkMilieubetreuung.Location = new System.Drawing.Point(675, 579);
+            this.chkMilieubetreuung.Location = new System.Drawing.Point(624, 589);
             this.chkMilieubetreuung.Name = "chkMilieubetreuung";
             this.chkMilieubetreuung.Size = new System.Drawing.Size(124, 20);
             this.chkMilieubetreuung.TabIndex = 204;
@@ -2283,7 +2289,7 @@ namespace PMDS.GUI
             this.chkAnatomie.Appearance = appearance131;
             this.chkAnatomie.BackColor = System.Drawing.Color.Transparent;
             this.chkAnatomie.BackColorInternal = System.Drawing.Color.Transparent;
-            this.chkAnatomie.Location = new System.Drawing.Point(573, 579);
+            this.chkAnatomie.Location = new System.Drawing.Point(624, 569);
             this.chkAnatomie.Name = "chkAnatomie";
             this.chkAnatomie.Size = new System.Drawing.Size(87, 20);
             this.chkAnatomie.TabIndex = 206;
@@ -2308,7 +2314,7 @@ namespace PMDS.GUI
             // ultraTabPageControl3
             // 
             this.ultraTabPageControl3.Controls.Add(this.splitContainer1);
-            this.ultraTabPageControl3.Location = new System.Drawing.Point(1, 24);
+            this.ultraTabPageControl3.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraTabPageControl3.Name = "ultraTabPageControl3";
             this.ultraTabPageControl3.Size = new System.Drawing.Size(1028, 606);
             // 
@@ -3352,12 +3358,20 @@ namespace PMDS.GUI
             // 
             // ucVOErfassen1
             // 
+            pmdsBusiness1.isinitialized = false;
+            this.ucVOErfassen1.b = pmdsBusiness1;
+            this.ucVOErfassen1.b2 = pmdsBusinessUI1;
+            this.ucVOErfassen1.b3 = pmdsBusinessUI2;
+            this.ucVOErfassen1.buildUI1 = buildUI1;
+            this.ucVOErfassen1.contSelectPatientenBenutzer1 = null;
             this.ucVOErfassen1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucVOErfassen1.Location = new System.Drawing.Point(0, 0);
             this.ucVOErfassen1.Margin = new System.Windows.Forms.Padding(4);
             this.ucVOErfassen1.Name = "ucVOErfassen1";
+            this.ucVOErfassen1.PMDSBusinessUI2 = pmdsBusinessUI3;
             this.ucVOErfassen1.Size = new System.Drawing.Size(1028, 606);
             this.ucVOErfassen1.TabIndex = 0;
+            this.ucVOErfassen1.UIGlobal1 = uiGlobal1;
             // 
             // ultraTabPageControl10
             // 
@@ -3368,7 +3382,8 @@ namespace PMDS.GUI
             // 
             // contELGAKlient1
             // 
-            this.contELGAKlient1.b = pmdsBusiness1;
+            pmdsBusiness2.isinitialized = false;
+            this.contELGAKlient1.b = pmdsBusiness2;
             this.contELGAKlient1.BackColor = System.Drawing.Color.White;
             this.contELGAKlient1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contELGAKlient1.IDAufenthalt = new System.Guid("00000000-0000-0000-0000-000000000000");
@@ -3382,8 +3397,7 @@ namespace PMDS.GUI
             this.contELGAKlient1.Name = "contELGAKlient1";
             this.contELGAKlient1.Size = new System.Drawing.Size(1028, 606);
             this.contELGAKlient1.TabIndex = 0;
-            this.contELGAKlient1.UIGlobal1 = uiGlobal1;
-            //this.contELGAKlient1.WCFServiceClient1 = wcfServiceClient1;
+            this.contELGAKlient1.UIGlobal1 = uiGlobal2;
             // 
             // contextMenuStripÄrzte
             // 

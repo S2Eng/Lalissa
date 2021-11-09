@@ -29,11 +29,14 @@ namespace PMDS.GUI.Kostentraeger
         private bool _isNew;
         private  bool IsInitialized;
         private eTypeUI _TypeUI;
+        private bool _EVMode;
 
         private PMDS.db.Entities.ERModellPMDSEntities _db;
         private PMDS.DB.PMDSBusiness b = new PMDSBusiness();
         private PMDSBusinessUI b3 = new PMDSBusinessUI();
         private PMDS.UI.Sitemap.UIFct UIFct1 = new PMDS.UI.Sitemap.UIFct();
+
+        private string tmpCompany = "";
 
         public enum eTypeUI
         {
@@ -178,6 +181,7 @@ namespace PMDS.GUI.Kostentraeger
                 this._IDKostenträger = IDKostenträger;
                 this._isNew = isNew;
                 this.FSWMode = FSWMode;
+                this._EVMode = EVMode;
 
                 DateTime dNow = DateTime.Now;
                 PMDS.db.Entities.Patient rPatient = this.b.getPatient(IDPatient, this._db);
@@ -265,12 +269,12 @@ namespace PMDS.GUI.Kostentraeger
                     this._rPatientKostentraeger.IDBenutzer = ENV.USERID;
                     this._rPatientKostentraeger.IDPatientIstZahler = rPatient.ID;
 
-                   if (FSWMode)    //Kostenträger = Klient mit Forderungsabtretung an FSW. 2021-11-10: wird nicht mehr verwendet
+                   if (FSWMode)    //Kostenträger = Klient mit Forderungsabtretung an FSW. 2021-10-11: wird nicht mehr verwendet
                     {
                         this._rKostenträger.GSBG = ENV.FSW_Prozent;
                         this._rKostenträger.PatientbezogenJN = false;
                         this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
-                        this._rKostenträger.Rechnungsempfaenger = "(Fond Soziales Wien)";
+                        this._rKostenträger.Rechnungsempfaenger = "(FSW)";
                         this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;
                         this._rKostenträger.Zahlart = (int)PMDS.Calc.Logic.eZahlart.FSW;
                         this._rPatientKostentraeger.IDPatientIstZahler = null;
@@ -283,7 +287,7 @@ namespace PMDS.GUI.Kostentraeger
                             var lEV = (from rSach in db.Sachwalter
                                        join rAdd in db.Adresse on rSach.IDAdresse equals rAdd.ID
                                        join rKon in db.Kontakt on rSach.IDKontakt equals rKon.ID
-                                       where rSach.IDPatient == this._IDPatient && rSach.Von != null && rSach.Bis == null
+                                       where rSach.IDPatient == this._IDPatient && rSach.Von != null && !String.IsNullOrEmpty(rKon.Zusatz3)
                                        select new { Nachname = rSach.Nachname.Trim(),
                                            Vorname = rSach.Vorname.Trim(),
                                            Titel = rSach.Titel.Trim(),
@@ -294,7 +298,8 @@ namespace PMDS.GUI.Kostentraeger
                                            Belange = rSach.Belange.Trim(),
                                            Gericht = rSach.Gericht.Trim(),
                                            FiBu = rKon.Zusatz3.Trim(),
-                                           Anrede = rSach.Titel.Trim()
+                                           Anrede = rSach.Titel.Trim(),
+                                           Company = rKon.Zusatz1.ToString().Trim()
                                        }).ToList();
                             if (lEV.Count == 1)
                             {
@@ -312,10 +317,10 @@ namespace PMDS.GUI.Kostentraeger
                                 this._rKostenträger.IDPatientIstZahler = null;
                                 this._rKostenträger.GSBG = 0;
                                 this._rKostenträger.IDKostentraegerSub = null;
+                                tmpCompany = lEV.First().Company;
 
                                 string sPatName = (rPatient.Titel + " " + rPatient.Vorname.Trim() + " " + rPatient.Nachname.Trim()).Trim();
                                 //this._rKostenträger.Rechnungsempfaenger = "(Erwachsenenvertreter für " + sPatName + ")";
-                                this._rKostenträger.Rechnungsempfaenger = "(Erwachsenenvertreter)";
 
                                 this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Alles;
                                 this._rPatientKostentraeger.RechnungTyp = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;
@@ -350,9 +355,9 @@ namespace PMDS.GUI.Kostentraeger
                             {
                                 string sMessage = "";
                                 if (lEV.Count == 0)
-                                    sMessage = "Es wurde kein Erwachsenenvertreter mit befülltem Gültig-Ab und leerem Gültig-bis-Datum gefunden.";
+                                    sMessage = "Es wurde kein Erwachsenenvertreter mit befülltem Gültig-Ab und FiBu-Konto gefunden.";
                                 else
-                                    sMessage = "Es wurden " + lEV.Count.ToString() +  "Erwachsenenvertreter mit befülltem Gültig-Ab und leerem Gültig-bis-Datum gefunden.";
+                                    sMessage = "Es wurden " + lEV.Count.ToString() +  "Erwachsenenvertreter mit befülltem Gültig-Ab und FiBu-Konto gefunden.";
                                 sMessage += "\nDie Funktion kann nicht fortgesetzt werden.";
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMessage);
                                 this._db.Dispose();
@@ -385,6 +390,16 @@ namespace PMDS.GUI.Kostentraeger
                                                 k.Betrag,
                                                 k.FIBUKonto
                                             }).First();
+
+                    tmpCompany = "";
+                    string[] arr = rKostenträger.Rechnungsempfaenger.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (arr.Length == 2 && generic.sEquals(arr[0], "(EV", Enums.eCompareMode.StartsWith))   //Erwachsenenvertreter bei Company: Company einlesen
+                    {
+                        tmpCompany = arr[1].Trim();                            
+                    }
+
+                    this._EVMode = generic.sEquals(rKostenträger.Rechnungsempfaenger, "(EV", Enums.eCompareMode.StartsWith);
+
 
                     this.b3.InitListKostentraegerart(this.cboEnumKostentraegerart, false, rKostenträger.TransferleistungJN, rKostenträger.PatientbezogenJN, this._db);
 
@@ -618,6 +633,35 @@ namespace PMDS.GUI.Kostentraeger
                     return false;
                 }
 
+                //Rechnungsempfänger festlegen                 
+                if (!this._EVMode)  //Klient = Zahler
+                {
+                    if ((int)cboZahlart.Value == (int)PMDS.Calc.Logic.eZahlart.FSW)
+                    {
+                        this._rKostenträger.Rechnungsempfaenger = "(FSW)";
+                    }
+                    else
+                    {
+                        this._rKostenträger.Rechnungsempfaenger = "";
+                    }
+                }
+                else    //Erwachsenenvertreter ist Zahler
+                {
+                    string tmpRechnungsempfänger = "";
+                    if (!String.IsNullOrWhiteSpace(tmpCompany))
+                    {
+                        tmpRechnungsempfänger = " | " + tmpCompany;
+                    }
+
+                    string tmpFSW = "(EV)";
+
+                    if ((int)cboZahlart.Value == (int)PMDS.Calc.Logic.eZahlart.FSW)
+                    {
+                        tmpFSW = "(EV->FSW)";
+                    }
+                    this._rKostenträger.Rechnungsempfaenger = (tmpFSW + tmpRechnungsempfänger).Substring(0,Math.Min(50, (tmpFSW + tmpRechnungsempfänger).Length));  //Feldlänge max. 50 Zeichen in DB
+                }
+
                 this._rKostenträger.Anrede = this.txtAnrede.Text.Trim();
                 this._rKostenträger.Bank = this.txtBank.Text.Trim();
                 this._rKostenträger.Kontonr =  this.txtKontonr.Text.Trim();
@@ -738,7 +782,6 @@ namespace PMDS.GUI.Kostentraeger
                             this._rKostenträger.PatientbezogenJN = true;
                             this._rKostenträger.TransferleistungJN = false;
                             this._rKostenträger.IDKostentraegerSub = ENV.FSW_IDIntern;
-                            this._rKostenträger.Rechnungsempfaenger = "(Fond Soziales Wien)";
                             this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Grundkosten;
                             this._rPatientKostentraeger.IDPatientIstZahler = null;
                         }

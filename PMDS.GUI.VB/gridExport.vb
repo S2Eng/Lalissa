@@ -29,18 +29,18 @@ Public Class gridExport
     Public Function exportGrid(ByVal grid As Infragistics.Win.UltraWinGrid.UltraGrid, ByVal typ As eTyp,
                                ByVal dsToExport As System.Data.DataSet, ByVal TableNameToExport As String,
                                ByVal lstColsNotExport As System.Collections.Generic.List(Of String),
-                               ByVal columnCheckIfRowExport As String) As Boolean
+                               ByVal columnCheckIfRowExport As String, ByVal ExportPath As String) As Boolean
         Try
             Dim clFold As New GeneralArchiv
             Dim filName As String = ""
             If typ = eTyp.excel Then
-                filName = clFold.SelectSaveFileDialog(False, "Microsoft Excel Dateien (*.xls)|*.xls", "")
+                filName = clFold.SelectSaveFileDialog(False, "Microsoft Excel Dateien (*.xls)|*.xls", ExportPath)
             ElseIf typ = eTyp.pdf Then
-                filName = clFold.SelectSaveFileDialog(False, "Acrobat Reader Dateien (*.pdf)|*.pdf", "")
+                filName = clFold.SelectSaveFileDialog(False, "Acrobat Reader Dateien (*.pdf)|*.pdf", ExportPath)
             ElseIf typ = eTyp.xps Then
-                filName = clFold.SelectSaveFileDialog(False, "XPS Dateien (*.xps)|*.xps", "")
+                filName = clFold.SelectSaveFileDialog(False, "XPS Dateien (*.xps)|*.xps", ExportPath)
             ElseIf typ = eTyp.csv Then
-                filName = clFold.SelectSaveFileDialog(False, "Csv Dateien (*.csv)|*.csv", "")
+                filName = clFold.SelectSaveFileDialog(False, "Csv Dateien (*.csv)|*.csv", ExportPath)
             End If
             If filName <> "" Then
                 'If columnCheckIfRowExport.Trim() <> "" Then

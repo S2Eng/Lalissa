@@ -99,7 +99,7 @@
             // 
             this.cboImportType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cboImportType.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            valueListItem1.DataValue = "APGDA.001 ";
+            valueListItem1.DataValue = "APGDA.001";
             valueListItem1.DisplayText = "Gesamtdaten";
             valueListItem2.DataValue = "APVDA.001";
             valueListItem2.DisplayText = "Veränderungsdaten";

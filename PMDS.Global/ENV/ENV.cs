@@ -201,6 +201,7 @@ namespace PMDS.Global
         public static string ZahlKondFSW = "Bitte nicht einzahlen, Überweisung erfolgt durch den FSW.";
         public static string TextKlientenInfo = "Information zu Kosten für erbrachte Leistungen";
         public static int BMDExportTyp = 2;
+        public static string BMDExportPath = Path.GetTempPath();    //Default-Pfad für BMD-Excel-Export
 
         public static string FSW_FiBuKonto = "";
         public static string FSW_FTPUser = "";
@@ -219,6 +220,7 @@ namespace PMDS.Global
 
         public static bool ActivateKliententermine;
         public static bool ActivateBereichstermine;
+        public static bool AcceptNoPBS;              //Abweseneheiten ohne PBS/PSB beginnen erlauben. Standard = nein.
 
         private static ResourceManager _resources;
 
@@ -344,7 +346,7 @@ namespace PMDS.Global
         public static decimal FSW_Prozent = 4M;
         public static bool FSW_SaveXLSX = false;
         public static bool FSW_SupressSubKostentraeger = true;
-        public static bool ForceUniqueFiBu = true;       
+        public static bool ForceUniqueFiBu = true;
 
         public static string ELDA_Pfad = Path.GetTempPath();    //Default-Pfad für FSW-EZAUF-XML-Datei
 
@@ -365,6 +367,7 @@ namespace PMDS.Global
 
 
         public static bool RechnungKopfzeileEin;
+        public static bool RechnungBankdaten = true;
 
         private static bool _ShowPPToolTip = true;                 // Ob der Tooltip im Pflegeplanbutton angezeigt werden soll oder nicht
         public static int _PPToolTipDelay = 1000;                 // Verzögerung zum aufklappen
@@ -1363,6 +1366,7 @@ namespace PMDS.Global
                 SetENVValue("bookingJN", ref ENV._bookingJN);
                 SetENVValue("typRechNr", ref ENV.typRechNr);
                 SetENVValue("RechnungKopfzeileEin", ref ENV.RechnungKopfzeileEin);
+                SetENVValue("RechnungBankdaten", ref ENV.RechnungBankdaten, "0");
                 SetENVValue("RechFloskel", ref ENV._RechFloskel);
                 SetENVValue("KuerzungGrundleistungLetzterTag", ref ENV._KuerzungGrundleistungLetzterTag);
                 SetENVValue("TageOhneKuerzungGrundleistung", ref ENV._TageOhneKuerzungGrundleistung);
@@ -1380,6 +1384,7 @@ namespace PMDS.Global
                 SetENVValue("ZahlKondFSW", ref ENV.ZahlKondFSW);
                 SetENVValue("TextKlientenInfo", ref ENV.TextKlientenInfo);
                 SetENVValue("BMDExportTyp", ref ENV.BMDExportTyp);
+                SetENVValue("BMDExportPath", ref ENV.BMDExportPath);
 
                 SetENVValue("FSW_FiBuKonto", ref ENV.FSW_FiBuKonto);
                 SetENVValue("FSW_FTPUser", ref ENV.FSW_FTPUser);
@@ -1509,7 +1514,7 @@ namespace PMDS.Global
                 SetENVValue("FSW_Prozent", ref ENV.FSW_Prozent);
                 SetENVValue("FSW_SaveXLSX", ref ENV.FSW_SaveXLSX);
                 SetENVValue("FSW_SupressSubKostentraeger", ref ENV.FSW_SupressSubKostentraeger);
-                SetENVValue("ForceUniqueFiBu", ref ENV.ForceUniqueFiBu);
+                SetENVValue("ForceUniqueFiBu", ref ENV.ForceUniqueFiBu, "0");
 
                 SetENVValue("ELDA_Pfad", ref ENV.ELDA_Pfad);
 
@@ -1535,6 +1540,7 @@ namespace PMDS.Global
 
                 SetENVValue("ActivateKliententermine", ref ENV.ActivateKliententermine);
                 SetENVValue("ActivateBereichstermine", ref ENV.ActivateBereichstermine);
+                SetENVValue("AcceptNoPBS", ref ENV.AcceptNoPBS);
 
                 SetENVValue("WCFServiceOnOff", ref ENV.WCFServiceOnOff);
                 SetENVValue("WCFServiceDebugMode", ref ENV.WCFServiceDebugMode);

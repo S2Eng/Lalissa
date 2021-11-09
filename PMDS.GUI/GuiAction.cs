@@ -1199,7 +1199,21 @@ namespace PMDS.GUI
                             ucDynReportParameter1.ProcessPreview(true, ENV.ReportPath + @"\Pflegebegleitschreiben.rpt", db, ref abortWindow, ref IDEinrichtungEmpfänger, ref bSaveToArchiv, true, ref IDDokumenteneintrag);
                             if (abortWindow)
                             {
-                                return false;
+                                string ELGA_OrganizationOID = "";
+                                if (IDEinrichtungEmpfänger != null)
+                                {
+                                    ELGA_OrganizationOID = (from ein in db.Einrichtung
+                                                            where ein.ID == IDEinrichtungEmpfänger
+                                                            select ein.ELGA_OrganizationOID).FirstOrDefault();
+
+                                    if (!generic.sEquals(ELGA_OrganizationOID, "DischLoctn", Enums.eCompareMode.Contains))
+                                        return false;
+                                }
+                                else
+                                {
+                                    if (!ENV.AcceptNoPBS)
+                                        return false;
+                                }
                             }
                         }
                     }

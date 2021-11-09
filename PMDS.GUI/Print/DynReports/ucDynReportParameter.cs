@@ -196,6 +196,8 @@ namespace PMDS.GUI
                             }
                             else if (!PSB.ResumeWithPBS)
                             {
+                                if  (PSB.cbETo.Value != null) 
+                                    IDEinrichtungEmpfänger = (Guid)PSB.cbETo.Value;
                                 abortWindow = true;
                                 return;
                             }
@@ -209,6 +211,8 @@ namespace PMDS.GUI
                         DialogResult res = frmPrintPflegebegleitschreibenInfo1.ShowDialog();
                         if (res != DialogResult.OK)
                         {
+                            if (frmPrintPflegebegleitschreibenInfo1.cbETo.Value != null)
+                                IDEinrichtungEmpfänger = (Guid)frmPrintPflegebegleitschreibenInfo1.cbETo.Value;
                             abortWindow = true;   //Abwesenheitsprozess sofort beenden
                             return;
                         }
