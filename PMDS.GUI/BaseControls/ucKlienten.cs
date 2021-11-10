@@ -554,7 +554,7 @@ namespace PMDS.GUI
                         elExists.Visible = false;
                     }
 
-                    foreach (PMDS.db.Entities.s2_GetKlientenlisteAbrechnung_Result rS2_GetKlientenlisteAbrechnung_Result in ts2_GetKlientenlisteAbrechnung_Result)
+                    foreach (PMDS.db.Entities.s2_GetKlientenlisteAbrechnung_Result rS2_GetKlientenlisteAbrechnung_Result in ts2_GetKlientenlisteAbrechnung_Result.OrderByDescending(k => k.KlientName))
                     {
                         PMDS.GUI.BaseControls.ucKlientenElement el;
                         if (anzKlienten < this.panelButtons.Controls.Count)
