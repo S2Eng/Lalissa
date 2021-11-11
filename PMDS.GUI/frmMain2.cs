@@ -1186,8 +1186,8 @@ namespace PMDS
             buttonTool22.SharedPropsInternal.Caption = "Historische Daten";
             buttonTool31.SharedPropsInternal.Caption = "Datenarchivierung alle Klienten";
             buttonTool110.SharedPropsInternal.Caption = "Datenarchivierung";
-            buttonTool121.SharedPropsInternal.Caption = "Abrechnungen überspielen";
-            buttonTool132.SharedPropsInternal.Caption = "Abrechnungen exportieren";
+            buttonTool121.SharedPropsInternal.Caption = "Abrechnungen als SQL-Tabellen überspielen";
+            buttonTool132.SharedPropsInternal.Caption = "Abrechnungen -> BMD exportieren";
             buttonTool23.SharedPropsInternal.Caption = "Import Gibodat";
             buttonTool134.SharedPropsInternal.Caption = "UI Designer";
             buttonTool136.SharedPropsInternal.Caption = "QS2-Abfragen";

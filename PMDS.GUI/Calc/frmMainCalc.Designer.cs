@@ -274,8 +274,8 @@
             buttonTool26.SharedPropsInternal.Caption = "daylist.rtf";
             buttonTool27.SharedPropsInternal.Caption = "bookings.rtf";
             buttonTool28.SharedPropsInternal.Caption = "jahresAb.rtf";
-            buttonTool33.SharedPropsInternal.Caption = "Abrechnungen überspielen";
-            buttonTool34.SharedPropsInternal.Caption = "Abrechnungen exportieren";
+            buttonTool33.SharedPropsInternal.Caption = "Abrechnungen als SQL-Tabellen überspielen";
+            buttonTool34.SharedPropsInternal.Caption = "Abrechnungen -> BMD exportieren";
             buttonTool36.SharedPropsInternal.Caption = "UI Designer";
             buttonTool39.SharedPropsInternal.Caption = "Liste Patienten entlassen";
             buttonTool41.SharedPropsInternal.Caption = "Verwaltung Rechnungs-Nr";

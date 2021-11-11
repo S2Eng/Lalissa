@@ -520,6 +520,7 @@ namespace PMDS.GUI
         {
             try
             {
+                generic.BeginSuspendLayout(panelButtons);
                 PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
                 using (PMDS.db.Entities.ERModellPMDSEntities DBContext = PMDS.DB.PMDSBusiness.getDBContext())
                 {
@@ -547,81 +548,71 @@ namespace PMDS.GUI
                     ts2_GetKlientenlisteAbrechnung_Result = b.getKlientenlisteAbrechnung(ref sName, ref IDAllgKostenträger, ref dVon, ref dBis, ref NurSelbstzahlerJN, DBContext);
 
                     anzKlienten = 0;
-                    this.doVisibleAllTabs(false, false);
-                    this.doVisibleAllTabs(true, false);
-                    foreach (PMDS.GUI.BaseControls.ucKlientenElement elExists in panelButtons.Controls)
-                    {
-                        elExists.Visible = false;
-                    }
-
+                    panelButtons.Controls.Clear();
+                    //this.doVisibleAllTabs(false, false);
+                    //this.doVisibleAllTabs(true, false);
+                    //foreach (PMDS.GUI.BaseControls.ucKlientenElement elExists in panelButtons.Controls)
+                    //{
+                    //    elExists.Visible = false;
+                    //}
+                    string sGebDat = "";
                     foreach (PMDS.db.Entities.s2_GetKlientenlisteAbrechnung_Result rS2_GetKlientenlisteAbrechnung_Result in ts2_GetKlientenlisteAbrechnung_Result.OrderByDescending(k => k.KlientName))
                     {
-                        PMDS.GUI.BaseControls.ucKlientenElement el;
-                        if (anzKlienten < this.panelButtons.Controls.Count)
+                        //PMDS.GUI.BaseControls.ucKlientenElement el;
+                        //if (anzKlienten < this.panelButtons.Controls.Count)
+                        //{
+                        //    el = (PMDS.GUI.BaseControls.ucKlientenElement)panelButtons.Controls[anzKlienten];
+
+                        //}
+                        //else
+                        //{
+                        PMDS.GUI.BaseControls.ucKlientenElement el = new PMDS.GUI.BaseControls.ucKlientenElement
                         {
-                            el = (PMDS.GUI.BaseControls.ucKlientenElement)panelButtons.Controls[anzKlienten];
-
-                        }
-                        else
-                        {
-                            el = new PMDS.GUI.BaseControls.ucKlientenElement();
-                            el.mainContr = this;
-                            el.btnClick.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Transparent, 32, 32);
-
-                            el.Dock = DockStyle.Top;
-                            el.Height = 31;
-                            PMDS.Global.UIGlobal.setAktivDisable(el.btnClick, anzKlienten, System.Drawing.Color.Black,
-                                            System.Drawing.Color.Gainsboro, System.Drawing.Color.Gainsboro,
-                                            System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.FlatBorderless);
-                            this.panelButtons.Controls.Add(el);
-                        }
-
-                        if (this.typ == eSendMain.abrechnung)
-                            el.ContextMenuStrip = el.contextMenuStrip1;
-                        else
-                            el.ContextMenuStrip = null;
-
-                        el.id = (Guid)rS2_GetKlientenlisteAbrechnung_Result.IDKlient;
-
-                        string sGebDat = "";
+                            mainContr = this,
+                            id = (Guid)rS2_GetKlientenlisteAbrechnung_Result.IDKlient,
+                            activiertForSearch = true,
+                            Visible = true,
+                            isVisible = true,
+                            isOn = false
+                        };
+                        sGebDat = "";
                         if (rS2_GetKlientenlisteAbrechnung_Result.Geburtsdatum != null)
                         {
                             DateTime dGebDat = rS2_GetKlientenlisteAbrechnung_Result.Geburtsdatum.Value;
                             sGebDat = "\n\r       - " + dGebDat.ToString("dd.MM.yyyy");
                         }
                         el.btnClick.Text = rS2_GetKlientenlisteAbrechnung_Result.KlientName.Trim() + sGebDat;
-                        el.activiertForSearch = true;
-                        el.Visible = true;
-                        el.isVisible = true;
-                        el.isOn = false;
+                        el.btnClick.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Transparent, 32, 32);
+                        el.Dock = DockStyle.Top;
+                        el.Height = 31;
+                        PMDS.Global.UIGlobal.setAktivDisable(el.btnClick, anzKlienten, System.Drawing.Color.Black,
+                                        System.Drawing.Color.Gainsboro, System.Drawing.Color.Gainsboro,
+                                        System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.FlatBorderless);
+                        this.panelButtons.Controls.Add(el);
+                        //}
+
+                        if (this.typ == eSendMain.abrechnung)
+                            el.ContextMenuStrip = el.contextMenuStrip1;
+                        else
+                            el.ContextMenuStrip = null;
 
                         anzKlienten += 1;
                     }
 
                     this.lblTitelKlienten.Text = "";
                     this.SavedSelectedTab = null;
-                    //this.setModusTxt(modusTxt, anzKlienten);
 
-                    //if (doAllTabs)
-                    //{
-                    //    this.uButtonAlleKeine.Text = "Keine";
-                    //    this.uButtonAlleKeine.Tag = "K";
-                    //    this.SetAllTabSelected(false);
-                    //    ENV.selKlientenChanged(eSendMain.setIDMultiElement, this.getFilterStr(), true, null);
-                    //}
-                    //else
-                    //{
                     this.uButtonAlleKeine.Text = "Alle";
                     this.uButtonAlleKeine.Tag = "A";
-                    //}
-
-                    //this.doVisibleAllTabs(true, true);
                 }
-
             }
             catch (Exception exch)
             {
                 throw new Exception("LoadListklienten: " + exch.ToString());
+            }
+            finally
+            {
+                generic.EndSuspendLayout(panelButtons);
             }
         }
 

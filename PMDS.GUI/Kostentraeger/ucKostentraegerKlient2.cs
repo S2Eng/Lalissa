@@ -23,32 +23,23 @@ using PMDS.DB;
 namespace PMDS.GUI.Kostentraeger
 {
 
-
     public partial class ucKostentraegerKlient2 : UserControl
     {
+        public event EventHandler ValueChanged;
 
         private PMDS.Calc.Admin.DB.DBPatientKostentraeger _kost = new PMDS.Calc.Admin.DB.DBPatientKostentraeger();
         private dsPatientKostentraeger.PatientKostentraegerDataTable _dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
         private dsPatientKostentraeger.PatientKostentraegerErweitertDataTable _dtErweitert = new dsPatientKostentraeger.PatientKostentraegerErweitertDataTable();
-
-        public event EventHandler ValueChanged;
         private Guid _IDPatient = Guid.Empty;
-        private bool _DataChenged = false;
-        private bool _TransferKostentraegerJN = false;
-        private bool _readOnly = false;
-
-        public PMDS.UI.Sitemap.UIFct sitemap = new PMDS.UI.Sitemap.UIFct();
-
-
-
-
-        
+        private bool _DataChenged;
+        private bool _TransferKostentraegerJN;
+        private bool _readOnly;
+        private PMDS.UI.Sitemap.UIFct sitemap = new PMDS.UI.Sitemap.UIFct();
 
         public ucKostentraegerKlient2()
         {
             InitializeComponent();
         }
-
 
         public void initControl()
         {
@@ -169,7 +160,7 @@ namespace PMDS.GUI.Kostentraeger
 
             this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraeger"].Width = 150;
             this.dgMain.DisplayLayout.Bands[0].Columns["IDKostentraegerSub"].Width = 200;
-            this.dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Width = 150;
+            this.dgMain.DisplayLayout.Bands[0].Columns["Rechnungsempfaenger"].Width = 200;
             this.dgMain.DisplayLayout.Bands[0].Columns["GueltigAb"].Width = 80;
             this.dgMain.DisplayLayout.Bands[0].Columns["GueltigBis"].Width = 80;
             this.dgMain.DisplayLayout.Bands[0].Columns["BetragErrechnetJN"].Width = 80;
@@ -361,9 +352,13 @@ namespace PMDS.GUI.Kostentraeger
             try
             {
                 if (dgMain.DisplayLayout.ValueLists.Exists("KST"))
+                {
                     dgMain.DisplayLayout.ValueLists.Remove("KST");
-                dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
-                this.AddKostentraegerValueList(dgMain, dt.IDKostentraegerColumn.ColumnName);
+                }
+                using (dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable())
+                {
+                    this.AddKostentraegerValueList(dgMain, dt.IDKostentraegerColumn.ColumnName);
+                }
             }
             catch (Exception ex)
             {
@@ -381,11 +376,15 @@ namespace PMDS.GUI.Kostentraeger
             else
             {
                 vl = vlc.Add("KST");
-                PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger();
-                vl.ValueListItems.Add(Guid.Empty, QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Kostenträger wählen."));
+                using (PMDS.DB.Global.DBKostentraeger k = new PMDS.DB.Global.DBKostentraeger())
+                {
+                    vl.ValueListItems.Add(Guid.Empty, QS2.Desktop.ControlManagment.ControlManagment.getRes("Bitte Kostenträger wählen."));
 
-                foreach (dsKostentraeger.KostentraegerRow r in k.Read(true, ENV.IDKlinik))
-                    vl.ValueListItems.Add(r.ID, r.Name);
+                    foreach (dsKostentraeger.KostentraegerRow r in k.Read(true, ENV.IDKlinik))
+                    {
+                        vl.ValueListItems.Add(r.ID, r.Name);
+                    }
+                }
             }
 
             UltraGridColumn c = g.DisplayLayout.Bands[0].Columns[sBoundGridColumn];
@@ -393,7 +392,9 @@ namespace PMDS.GUI.Kostentraeger
             c.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
 
             if (g.ActiveCell != null && g.ActiveCell.Column.Key == sBoundGridColumn)
+            {
                 g.ActiveCell.Value = g.ActiveCell.Value;
+            }
         }
 
         private void RemoveSelected()

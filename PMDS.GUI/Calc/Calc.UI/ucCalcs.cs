@@ -313,18 +313,21 @@ namespace PMDS.Calc.UI
                 switch (aktivButton)
                 {
                     case "F":
+                        this.btnPrint.Text = "Rechnung(en) öffnen";
                         PMDS.Global.UIGlobal.setAktiv(this.btnFreigeben, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
                         ultraToolTipInfoF.ToolTipText = "\nFür Rechnungsversand = Umschalt-Taste\nFür Rechnungskopie = Strg-Taste";
                         this.btnRollung.Visible = false;
                         break;
 
                     case "O":
+                        this.btnPrint.Text = "Vorschau(en) öffnen";
                         PMDS.Global.UIGlobal.setAktiv(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.White);
                         ultraToolTipInfoF.ToolTipText += "\nFür FSW-XLSX-Vorschau = Strg-Taste";
                         this.btnRollung.Visible = true;
                         break;
 
                     default:
+                        this.btnPrint.Text = "Beleg(e) öffnen";
                         PMDS.Global.UIGlobal.setAktivDisable(this.btnVorschau, -1, System.Drawing.Color.Black, System.Drawing.Color.Orange, System.Drawing.Color.Black, System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.Flat);
                         ultraToolTipInfoF.ToolTipText += "";
                         this.btnRollung.Visible = false;
@@ -497,7 +500,7 @@ namespace PMDS.Calc.UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            this.doAction(eAction.delete, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die selektierten Rechnungen wirklich löschen?"), "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
+            this.doAction(eAction.delete, QS2.Desktop.ControlManagment.ControlManagment.getRes("Wollen Sie die markeirten Zeilen wirklich löschen?"), "", PMDS.Calc.Logic.eModify.nichts, true, null, null, false);
         }
 
         private void uOptSetAbrechTyp_ValueChanged(object sender, EventArgs e)
@@ -525,7 +528,7 @@ namespace PMDS.Calc.UI
             }
             else
             {
-                if (msgBox) QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Rechnung ausgewählt!", "Aktivität ausführen");
+                if (msgBox) QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Keine Zeile ausgewählt!", "Aktivität ausführen");
                 return null;
             }
         }

@@ -20,6 +20,8 @@ namespace PMDS.Global
     public class generic
     {
 
+        private const int WM_SETREDRAW = 11;
+
         public enum eAction
         {
             delete = 0,
@@ -372,6 +374,31 @@ namespace PMDS.Global
             catch (Exception ex)
             {
                 throw new Exception("cPflegestufenEinschaetzung.IsExcelInstalled: " + ex.ToString());
+            }
+        }
+
+
+        public static void BeginSuspendLayout(Control control)
+        {
+            if (control != null)
+            {
+                Message msgSuspendUpdate = Message.Create(control.Handle, WM_SETREDRAW, IntPtr.Zero, IntPtr.Zero);
+                NativeWindow window = NativeWindow.FromHandle(control.Handle);
+                window.DefWndProc(ref msgSuspendUpdate);
+            }
+        }
+
+        public static void EndSuspendLayout(Control control)
+        {
+            // Create a C "true" boolean as an IntPtr
+            if (control != null)
+            {
+                IntPtr wparam = new IntPtr(1);
+                Message msgResumeUpdate = Message.Create(control.Handle, WM_SETREDRAW, wparam, IntPtr.Zero);
+                NativeWindow window = NativeWindow.FromHandle(control.Handle);
+                window.DefWndProc(ref msgResumeUpdate);
+                control.Invalidate();
+                control.Refresh();
             }
         }
     }

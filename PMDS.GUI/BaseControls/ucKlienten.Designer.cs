@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             this.cbAllgemeineKostenträger = new QS2.Desktop.ControlManagment.BaseComboEditor();
             this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.lblTitelKlienten = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -83,8 +83,8 @@
             // lblTitelKlienten
             // 
             this.lblTitelKlienten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance7.TextHAlignAsString = "Right";
-            this.lblTitelKlienten.Appearance = appearance7;
+            appearance1.TextHAlignAsString = "Right";
+            this.lblTitelKlienten.Appearance = appearance1;
             this.lblTitelKlienten.Location = new System.Drawing.Point(185, 8);
             this.lblTitelKlienten.Name = "lblTitelKlienten";
             this.lblTitelKlienten.Size = new System.Drawing.Size(99, 14);
@@ -103,9 +103,9 @@
             // 
             // uButtonAlleKeine
             // 
-            appearance8.ImageHAlign = Infragistics.Win.HAlign.Left;
-            appearance8.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.uButtonAlleKeine.Appearance = appearance8;
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Left;
+            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.uButtonAlleKeine.Appearance = appearance2;
             this.uButtonAlleKeine.AutoWorkLayout = false;
             this.uButtonAlleKeine.IsStandardControl = false;
             this.uButtonAlleKeine.Location = new System.Drawing.Point(3, 3);
@@ -147,8 +147,8 @@
             // 
             // btnSearchKlienten
             // 
-            appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearchKlienten.Appearance = appearance2;
+            appearance3.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearchKlienten.Appearance = appearance3;
             this.btnSearchKlienten.AutoWorkLayout = false;
             this.btnSearchKlienten.IsStandardControl = false;
             this.btnSearchKlienten.Location = new System.Drawing.Point(116, 109);
@@ -165,9 +165,9 @@
             this.lblNameKlient.AutoSize = true;
             this.lblNameKlient.Location = new System.Drawing.Point(5, 4);
             this.lblNameKlient.Name = "lblNameKlient";
-            this.lblNameKlient.Size = new System.Drawing.Size(33, 14);
+            this.lblNameKlient.Size = new System.Drawing.Size(115, 14);
             this.lblNameKlient.TabIndex = 154;
-            this.lblNameKlient.Text = "Klient";
+            this.lblNameKlient.Text = "Klient (Familienname)";
             // 
             // txtKlient
             // 
@@ -181,8 +181,8 @@
             // 
             // dtBis
             // 
-            appearance3.TextHAlignAsString = "Center";
-            this.dtBis.Appearance = appearance3;
+            appearance4.TextHAlignAsString = "Center";
+            this.dtBis.Appearance = appearance4;
             this.dtBis.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtBis.Location = new System.Drawing.Point(33, 126);
             this.dtBis.MaskInput = "{LOC}mm.yyyy";
@@ -196,8 +196,8 @@
             // 
             // dtVon
             // 
-            appearance9.TextHAlignAsString = "Center";
-            this.dtVon.Appearance = appearance9;
+            appearance5.TextHAlignAsString = "Center";
+            this.dtVon.Appearance = appearance5;
             this.dtVon.DateTime = new System.DateTime(2009, 11, 2, 0, 0, 0, 0);
             this.dtVon.Location = new System.Drawing.Point(33, 103);
             this.dtVon.MaskInput = "{LOC}mm.yyyy";
@@ -227,8 +227,8 @@
             // 
             // lblAllgemeineKostenträger
             // 
-            appearance10.ForeColor = System.Drawing.Color.Black;
-            this.lblAllgemeineKostenträger.Appearance = appearance10;
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            this.lblAllgemeineKostenträger.Appearance = appearance6;
             this.lblAllgemeineKostenträger.Location = new System.Drawing.Point(3, 41);
             this.lblAllgemeineKostenträger.Name = "lblAllgemeineKostenträger";
             this.lblAllgemeineKostenträger.Size = new System.Drawing.Size(192, 13);

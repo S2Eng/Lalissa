@@ -40,10 +40,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCalcs));
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Freigegebene Rechnungen anzeigen", Infragistics.Win.ToolTipImage.Default, "Freigegeben", Infragistics.Win.DefaultableBoolean.Default);
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo6 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Freigegebene Rechnungen anzeigen", Infragistics.Win.ToolTipImage.Default, "Freigegeben", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo3 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Vorschau Rechnungen", Infragistics.Win.ToolTipImage.Default, "Vorschau", Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo5 = new Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("STRG-Tase halten = Rollung gegen NICHT FREIGEGEBENE Rechnung", Infragistics.Win.ToolTipImage.Default, null, Infragistics.Win.DefaultableBoolean.Default);
             Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
@@ -523,7 +524,7 @@
             this.btnExportAsExcel.Appearance = appearance9;
             this.btnExportAsExcel.AutoWorkLayout = false;
             this.btnExportAsExcel.IsStandardControl = false;
-            this.btnExportAsExcel.Location = new System.Drawing.Point(159, 5);
+            this.btnExportAsExcel.Location = new System.Drawing.Point(198, 5);
             this.btnExportAsExcel.Name = "btnExportAsExcel";
             this.btnExportAsExcel.Size = new System.Drawing.Size(26, 22);
             this.btnExportAsExcel.TabIndex = 105;
@@ -552,9 +553,9 @@
             this.btnFreigeben.TabIndex = 20;
             this.btnFreigeben.Tag = "2";
             this.btnFreigeben.Text = "Freigegeben";
-            ultraToolTipInfo5.ToolTipText = "Freigegebene Rechnungen anzeigen";
-            ultraToolTipInfo5.ToolTipTitle = "Freigegeben";
-            this.ultraToolTipManager1.SetUltraToolTip(this.btnFreigeben, ultraToolTipInfo5);
+            ultraToolTipInfo6.ToolTipText = "Freigegebene Rechnungen anzeigen";
+            ultraToolTipInfo6.ToolTipTitle = "Freigegeben";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnFreigeben, ultraToolTipInfo6);
             this.btnFreigeben.UseAppStyling = false;
             this.btnFreigeben.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.btnFreigeben.UseHotTracking = Infragistics.Win.DefaultableBoolean.True;
@@ -619,6 +620,8 @@
             this.btnRollung.Size = new System.Drawing.Size(86, 27);
             this.btnRollung.TabIndex = 105;
             this.btnRollung.Text = "Rollung";
+            ultraToolTipInfo5.ToolTipText = "STRG-Tase halten = Rollung gegen NICHT FREIGEGEBENE Rechnung";
+            this.ultraToolTipManager1.SetUltraToolTip(this.btnRollung, ultraToolTipInfo5);
             this.btnRollung.Click += new System.EventHandler(this.btnRollung_Click);
             // 
             // butRechFreigeb
@@ -723,7 +726,7 @@
             this.btnFSW.Appearance = appearance30;
             this.btnFSW.AutoWorkLayout = false;
             this.btnFSW.IsStandardControl = false;
-            this.btnFSW.Location = new System.Drawing.Point(105, 6);
+            this.btnFSW.Location = new System.Drawing.Point(65, 6);
             this.btnFSW.Name = "btnFSW";
             this.btnFSW.Size = new System.Drawing.Size(87, 22);
             this.btnFSW.TabIndex = 100;
@@ -741,7 +744,7 @@
             this.btnFSWReset.Appearance = appearance29;
             this.btnFSWReset.AutoWorkLayout = false;
             this.btnFSWReset.IsStandardControl = false;
-            this.btnFSWReset.Location = new System.Drawing.Point(48, 6);
+            this.btnFSWReset.Location = new System.Drawing.Point(8, 6);
             this.btnFSWReset.Name = "btnFSWReset";
             this.btnFSWReset.Size = new System.Drawing.Size(49, 22);
             this.btnFSWReset.TabIndex = 101;
@@ -760,9 +763,9 @@
             this.btnPrint.IsStandardControl = false;
             this.btnPrint.Location = new System.Drawing.Point(27, 5);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(132, 22);
+            this.btnPrint.Size = new System.Drawing.Size(169, 22);
             this.btnPrint.TabIndex = 101;
-            this.btnPrint.Text = "Rechnungen öffnen";
+            this.btnPrint.Text = "Beleg öffnen";
             ultraToolTipInfo4.ToolTipText = "Für Rechnungsversand = Umschalt-Taste | Für Rechnungskopie = Strg-Taste";
             this.ultraToolTipManager1.SetUltraToolTip(this.btnPrint, ultraToolTipInfo4);
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -1066,9 +1069,9 @@
             this.panelFSW.Controls.Add(this.btnFSWReset);
             this.panelFSW.Controls.Add(this.btnFSW);
             this.panelFSW.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFSW.Location = new System.Drawing.Point(602, 0);
+            this.panelFSW.Location = new System.Drawing.Point(585, 0);
             this.panelFSW.Name = "panelFSW";
-            this.panelFSW.Size = new System.Drawing.Size(198, 35);
+            this.panelFSW.Size = new System.Drawing.Size(166, 35);
             this.panelFSW.TabIndex = 111;
             // 
             // panelAuswahlFreigStornoAll
@@ -1149,9 +1152,9 @@
             // 
             this.paneStorno.Controls.Add(this.btnStorno);
             this.paneStorno.Dock = System.Windows.Forms.DockStyle.Right;
-            this.paneStorno.Location = new System.Drawing.Point(800, 0);
+            this.paneStorno.Location = new System.Drawing.Point(751, 0);
             this.paneStorno.Name = "paneStorno";
-            this.paneStorno.Size = new System.Drawing.Size(56, 35);
+            this.paneStorno.Size = new System.Drawing.Size(60, 35);
             this.paneStorno.TabIndex = 107;
             // 
             // btnStorno
@@ -1161,7 +1164,7 @@
             this.btnStorno.Appearance = appearance32;
             this.btnStorno.AutoWorkLayout = false;
             this.btnStorno.IsStandardControl = false;
-            this.btnStorno.Location = new System.Drawing.Point(0, 5);
+            this.btnStorno.Location = new System.Drawing.Point(6, 6);
             this.btnStorno.Name = "btnStorno";
             this.btnStorno.Size = new System.Drawing.Size(52, 22);
             this.btnStorno.TabIndex = 100;
@@ -1172,9 +1175,9 @@
             // 
             this.panelDelete.Controls.Add(this.btnDelete);
             this.panelDelete.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDelete.Location = new System.Drawing.Point(856, 0);
+            this.panelDelete.Location = new System.Drawing.Point(811, 0);
             this.panelDelete.Name = "panelDelete";
-            this.panelDelete.Size = new System.Drawing.Size(30, 35);
+            this.panelDelete.Size = new System.Drawing.Size(35, 35);
             this.panelDelete.TabIndex = 106;
             // 
             // btnDelete
@@ -1206,9 +1209,9 @@
             this.panelPrint.Controls.Add(this.btnExportAsExcel);
             this.panelPrint.Controls.Add(this.btnPrint);
             this.panelPrint.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelPrint.Location = new System.Drawing.Point(886, 0);
+            this.panelPrint.Location = new System.Drawing.Point(846, 0);
             this.panelPrint.Name = "panelPrint";
-            this.panelPrint.Size = new System.Drawing.Size(220, 35);
+            this.panelPrint.Size = new System.Drawing.Size(260, 35);
             this.panelPrint.TabIndex = 105;
             // 
             // btnRollungSperreLöschen
@@ -1232,7 +1235,7 @@
             this.btnExportAsPdf.Appearance = appearance35;
             this.btnExportAsPdf.AutoWorkLayout = false;
             this.btnExportAsPdf.IsStandardControl = false;
-            this.btnExportAsPdf.Location = new System.Drawing.Point(185, 5);
+            this.btnExportAsPdf.Location = new System.Drawing.Point(224, 5);
             this.btnExportAsPdf.Name = "btnExportAsPdf";
             this.btnExportAsPdf.Size = new System.Drawing.Size(26, 22);
             this.btnExportAsPdf.TabIndex = 164;

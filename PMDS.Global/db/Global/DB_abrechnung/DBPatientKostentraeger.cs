@@ -58,7 +58,7 @@ namespace PMDS.Calc.Admin.DB
         private OleDbCommand oleDbCommand20;
         private OleDbDataAdapter daPatientKostenträgerErweitert;
         private OleDbCommand oleDbCommand9;
-        private System.ComponentModel.Container components = null;
+        private System.ComponentModel.Container components;
 
 
         #region Component Designer generated code
@@ -596,52 +596,50 @@ namespace PMDS.Calc.Admin.DB
         }
         #endregion
 
-
-
-
-		public DBPatientKostentraeger(System.ComponentModel.IContainer container)
-		{
-			container.Add(this);
-			InitializeComponent();
-
-		}
+		//public DBPatientKostentraeger(System.ComponentModel.IContainer container)
+		//{
+		//	container.Add(this);
+		//	InitializeComponent();
+		//}
 
 		public DBPatientKostentraeger()
 		{
 			InitializeComponent();
-
 		}
 
-        public dsPatientKostentraeger.PatientKostentraegerDataTable Read()
-        {
-            dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
-            DataBase.Fill(daAllEntries, dt);
-            return dt;
-        }
+        //public dsPatientKostentraeger.PatientKostentraegerDataTable Read()
+        //{
+        //    dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
+        //    DataBase.Fill(daAllEntries, dt);
+        //    return dt;
+        //}
+
         public dsPatientKostentraeger Read2()
         {
             dsPatientKostentraeger ds = new dsPatientKostentraeger();
             DataBase.Fill(daAllEntries, ds.PatientKostentraeger);
             return ds;
         }
-        public Abrechnung.Global.dsPatientKostentraegerByID.KostentraegerRow ReadByID(Guid IDPatientKostentraeger)
-        {
-            Abrechnung.Global.dsPatientKostentraegerByID.KostentraegerDataTable dt = new Abrechnung.Global.dsPatientKostentraegerByID.KostentraegerDataTable();
-            daPatientKostentraegerByID.SelectCommand.Parameters[0].Value = IDPatientKostentraeger;
-            DataBase.Fill(daPatientKostentraegerByID, dt);
-            
-            if (dt.Count == 0)
-                return null;
-            return dt[0];
-        }
 
-        public dsPatientKostentraeger.PatientKostentraegerRow GetByID(Guid ID)
-        {
-            dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
-            daByID.SelectCommand.Parameters[0].Value = ID;
-            DataBase.Fill(daByID, dt);
-            return dt.Count > 0 ? dt[0] : null;
-        }
+        //public Abrechnung.Global.dsPatientKostentraegerByID.KostentraegerRow ReadByID(Guid IDPatientKostentraeger)
+        //{
+        //    Abrechnung.Global.dsPatientKostentraegerByID.KostentraegerDataTable dt = new Abrechnung.Global.dsPatientKostentraegerByID.KostentraegerDataTable();
+        //    daPatientKostentraegerByID.SelectCommand.Parameters[0].Value = IDPatientKostentraeger;
+        //    DataBase.Fill(daPatientKostentraegerByID, dt);
+            
+        //    if (dt.Count == 0)
+        //        return null;
+        //    return dt[0];
+        //}
+
+        //public dsPatientKostentraeger.PatientKostentraegerRow GetByID(Guid ID)
+        //{
+        //    dsPatientKostentraeger.PatientKostentraegerDataTable dt = new dsPatientKostentraeger.PatientKostentraegerDataTable();
+        //    daByID.SelectCommand.Parameters[0].Value = ID;
+        //    DataBase.Fill(daByID, dt);
+        //    return dt.Count > 0 ? dt[0] : null;
+        //}
+
         public dsPatientKostentraeger.PatientKostentraegerDataTable Read(Guid IDPatient, bool TransferkostentraegerJN)
         {
             dsPatientKostentraeger.PatientKostentraegerDataTable dt = this.Read(IDPatient);
@@ -690,29 +688,29 @@ namespace PMDS.Calc.Admin.DB
             return dt;
         }
 
-        public void GetKlientenKostentraeger(dsKlientenKostentraeger ds, DateTime from, DateTime to)
-        {
-            GetKlientenKostentraeger(ds, from, to, true);
-        }
+        //public void GetKlientenKostentraeger(dsKlientenKostentraeger ds, DateTime from, DateTime to)
+        //{
+        //    GetKlientenKostentraeger(ds, from, to, true);
+        //}
 
         public void GetKlientenKostentraeger(dsKlientenKostentraeger ds, Guid IDKostentraeger, DateTime from, DateTime to)
         {
             GetKlientenKostentraeger(ds, IDKostentraeger, from, to, true);
         }
 
-        public void GetKlientenKostentraeger(dsKlientenKostentraeger ds, DateTime from, DateTime to, bool bEntlassene)
-        {
-            ds.Clear();
-            ds.AcceptChanges();
+        //public void GetKlientenKostentraeger(dsKlientenKostentraeger ds, DateTime from, DateTime to, bool bEntlassene)
+        //{
+        //    ds.Clear();
+        //    ds.AcceptChanges();
 
-            DataBase.Fill(daAllgemKostentraeger, ds.Kostentraeger);
-            OleDbDataAdapter da;
-            foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
-            {
-                da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, false);
-                DataBase.Fill(da, ds.PatientKostentraeger);
-            }
-        }
+        //    DataBase.Fill(daAllgemKostentraeger, ds.Kostentraeger);
+        //    OleDbDataAdapter da;
+        //    foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
+        //    {
+        //        da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, false);
+        //        DataBase.Fill(da, ds.PatientKostentraeger);
+        //    }
+        //}
 
         public void GetKlientenKostentraeger(dsKlientenKostentraeger ds, Guid IDKostentraeger, DateTime from, DateTime to, bool bEntlassene)
         {
@@ -731,109 +729,84 @@ namespace PMDS.Calc.Admin.DB
 
         private OleDbDataAdapter GetDaKlientenByKostentraeger(Guid IDKostentraeger, DateTime gueltigab, DateTime gueltigBis, bool bEntlassene, bool Restzahler)
         {
-            OleDbCommand cmd = new OleDbCommand();
-            StringBuilder sb = new StringBuilder();
-
-            //Änderung nach 02.09.2008 MDA
-            sb.Append("SELECT  PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, ");
-            sb.Append("PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, ");
-            sb.Append("PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, PatientKostentraeger.ErfasstAm, ");
-            sb.Append("PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis ");
-
-            if (bEntlassene)
+            using (OleDbCommand cmd = new OleDbCommand())
             {
-                sb.Append("FROM PatientKostentraeger INNER JOIN Patient ON PatientKostentraeger.IDPatient = Patient.ID ");
-                sb.Append("WHERE (PatientKostentraeger.IDKostentraeger = ?) AND ");
+                StringBuilder sb = new StringBuilder();
+
+                //Änderung nach 02.09.2008 MDA
+                sb.Append("SELECT  PatientKostentraeger.ID, PatientKostentraeger.IDPatient, PatientKostentraeger.IDKostentraeger, ");
+                sb.Append("PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis, PatientKostentraeger.enumKostentraegerart, ");
+                sb.Append("PatientKostentraeger.BetragErrechnetJN, PatientKostentraeger.Betrag, PatientKostentraeger.ErfasstAm, ");
+                sb.Append("PatientKostentraeger.IDBenutzer, PatientKostentraeger.AbgerechnetBis ");
+
+                if (bEntlassene)
+                {
+                    sb.Append("FROM PatientKostentraeger INNER JOIN Patient ON PatientKostentraeger.IDPatient = Patient.ID ");
+                    sb.Append("WHERE (PatientKostentraeger.IDKostentraeger = ?) AND ");
+                }
+                else
+                {
+                    sb.Append("FROM UrlaubVerlauf RIGHT OUTER JOIN ");
+                    sb.Append("Aufenthalt ON UrlaubVerlauf.ID = Aufenthalt.IDUrlaub LEFT OUTER JOIN ");
+                    sb.Append("AufenthaltVerlauf INNER JOIN ");
+                    sb.Append("Abteilung ON AufenthaltVerlauf.IDAbteilung_Nach = Abteilung.ID LEFT OUTER JOIN ");
+                    sb.Append("Bereich ON AufenthaltVerlauf.IDBereich = Bereich.ID ON Aufenthalt.IDAufenthaltVerlauf = AufenthaltVerlauf.ID RIGHT OUTER JOIN ");
+                    sb.Append("Patient ON Aufenthalt.IDPatient = Patient.ID INNER JOIN ");
+                    sb.Append("PatientKostentraeger ON Patient.ID = PatientKostentraeger.IDPatient INNER JOIN ");
+                    sb.Append("Kostentraeger ON Kostentraeger.ID =PatientKostentraeger.IDKostentraeger ");
+                    sb.Append("WHERE AufenthaltVerlauf.IDAufenthalt is not null and Aufenthalt.Entlassungszeitpunkt is null AND (PatientKostentraeger.IDKostentraeger = ?) AND ");
+                }
+
+                sb.Append(" ((PatientKostentraeger.GueltigBis is null and PatientKostentraeger.GueltigAb <=  ?) or ");
+                sb.Append("(PatientKostentraeger.GueltigBis is not null AND not (");
+                sb.Append("(PatientKostentraeger.GueltigAb < ? and PatientKostentraeger.GueltigBis < ?) or ");
+                sb.Append("(PatientKostentraeger.GueltigAb > ? and PatientKostentraeger.GueltigBis > ?)))) ");
+
+                if (Restzahler)
+                    sb.Append(" AND PatientKostentraeger.BetragErrechnetJN = 1 ");
+
+                sb.Append("ORDER BY Patient.Nachname, Patient.Vorname, PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis");
+
+                cmd.CommandText = sb.ToString();
+                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                da.SelectCommand.Parameters.AddWithValue("IDKostentraeger", IDKostentraeger);
+                da.SelectCommand.Parameters.AddWithValue("GueltigAb", gueltigBis);
+                da.SelectCommand.Parameters.AddWithValue("GueltigAb1", gueltigab);
+                da.SelectCommand.Parameters.AddWithValue("GueltigBis", gueltigab);
+                da.SelectCommand.Parameters.AddWithValue("GueltigAb2", gueltigBis);
+                da.SelectCommand.Parameters.AddWithValue("GueltigBis1", gueltigBis);
+                return da;
             }
-            else
-            {
-                sb.Append("FROM UrlaubVerlauf RIGHT OUTER JOIN ");
-                sb.Append("Aufenthalt ON UrlaubVerlauf.ID = Aufenthalt.IDUrlaub LEFT OUTER JOIN ");
-                sb.Append("AufenthaltVerlauf INNER JOIN ");
-                sb.Append("Abteilung ON AufenthaltVerlauf.IDAbteilung_Nach = Abteilung.ID LEFT OUTER JOIN ");
-                sb.Append("Bereich ON AufenthaltVerlauf.IDBereich = Bereich.ID ON Aufenthalt.IDAufenthaltVerlauf = AufenthaltVerlauf.ID RIGHT OUTER JOIN ");
-                sb.Append("Patient ON Aufenthalt.IDPatient = Patient.ID INNER JOIN ");
-                sb.Append("PatientKostentraeger ON Patient.ID = PatientKostentraeger.IDPatient INNER JOIN ");
-                sb.Append("Kostentraeger ON Kostentraeger.ID =PatientKostentraeger.IDKostentraeger ");
-                sb.Append("WHERE AufenthaltVerlauf.IDAufenthalt is not null and Aufenthalt.Entlassungszeitpunkt is null AND (PatientKostentraeger.IDKostentraeger = ?) AND ");
-            }
-            
-            sb.Append(" ((PatientKostentraeger.GueltigBis is null and PatientKostentraeger.GueltigAb <=  ?) or ");
-            sb.Append("(PatientKostentraeger.GueltigBis is not null AND not (");
-            sb.Append("(PatientKostentraeger.GueltigAb < ? and PatientKostentraeger.GueltigBis < ?) or ");
-            sb.Append("(PatientKostentraeger.GueltigAb > ? and PatientKostentraeger.GueltigBis > ?)))) "); 
-
-            if (Restzahler)
-                sb.Append(" AND PatientKostentraeger.BetragErrechnetJN = 1 ");
-
-            sb.Append("ORDER BY Patient.Nachname, Patient.Vorname, PatientKostentraeger.GueltigAb, PatientKostentraeger.GueltigBis");
-
-            cmd.CommandText = sb.ToString();
-            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-            da.SelectCommand.Parameters.AddWithValue("IDKostentraeger", IDKostentraeger);
-            da.SelectCommand.Parameters.AddWithValue("GueltigAb", gueltigBis);
-            da.SelectCommand.Parameters.AddWithValue("GueltigAb1", gueltigab);
-            da.SelectCommand.Parameters.AddWithValue("GueltigBis", gueltigab);
-            da.SelectCommand.Parameters.AddWithValue("GueltigAb2", gueltigBis);
-            da.SelectCommand.Parameters.AddWithValue("GueltigBis1", gueltigBis);
-            return da;
         }
-        //public void GetRestzahlerKlienten(dsKlientenKostentraeger ds, DateTime from, DateTime to, bool bEntlassene)
+
+        //public dsPatientStation.PatientDataTable KlientenByKostentraeger(Guid IDKostentraeger, DateTime von, DateTime bis)
         //{
-        //    ds.Clear();
-        //    ds.AcceptChanges();
-
-        //    DataBase.Fill(daAllgemKostentraeger, ds.Kostentraeger);
-        //    OleDbDataAdapter da;
-        //    foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
-        //    {
-        //        da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, true);
-        //        DataBase.Fill(da, ds.PatientKostentraeger);
-        //    }
+        //    dsPatientStation.PatientDataTable dt = new dsPatientStation.PatientDataTable();
+        //    daPatientStation.SelectCommand.Parameters[0].Value = IDKostentraeger;
+        //    DataBase.Fill(daPatientStation, dt);
+        //    return dt;
         //}
-
-        //public void GetRestzahlerKlienten(dsKlientenKostentraeger ds, Guid IDKostentraeger, DateTime from, DateTime to, bool bEntlassene)
-        //{
-        //    ds.Clear();
-        //    ds.AcceptChanges();
-
-        //    daKostentraegerByID.SelectCommand.Parameters[0].Value = IDKostentraeger;
-        //    DataBase.Fill(daKostentraegerByID, ds.Kostentraeger);
-        //    OleDbDataAdapter da;
-        //    foreach (dsKlientenKostentraeger.KostentraegerRow r in ds.Kostentraeger)
-        //    {
-        //        da = GetDaKlientenByKostentraeger(r.ID, from, to, bEntlassene, true);
-        //        DataBase.Fill(da, ds.PatientKostentraeger);
-        //    }
-
-        //}
-
-        public dsPatientStation.PatientDataTable KlientenByKostentraeger(Guid IDKostentraeger, DateTime von, DateTime bis)
-        {
-            //osxy 140701 - Table und da austauschen - SQL im OneNote
-            dsPatientStation.PatientDataTable dt = new dsPatientStation.PatientDataTable();
-            daPatientStation.SelectCommand.Parameters[0].Value = IDKostentraeger;
-            DataBase.Fill(daPatientStation, dt);
-            return dt;
-        }
 
         public bool deletePatientKostenträger(Guid IDKost)
         {
-            OleDbCommand cmd = new OleDbCommand();
-            if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
-                RBU.DataBase.CONNECTION.Open();
-            cmd.Connection = RBU.DataBase.CONNECTION;
-            cmd.CommandText = " Delete from  PatientKostentraeger  WHERE IDKostentraeger = ? ";
-            cmd.Parameters.Add("IDKostentraeger", System.Data.OleDb.OleDbType.Guid, 16, "IDKostentraeger").Value = IDKost;
-            cmd.ExecuteNonQuery();
+            using (OleDbCommand cmd = new OleDbCommand())
+            {
+                if (RBU.DataBase.CONNECTION.State == ConnectionState.Closed)
+                    RBU.DataBase.CONNECTION.Open();
+                cmd.Connection = RBU.DataBase.CONNECTION;
+                cmd.CommandText = " Delete from  PatientKostentraeger  WHERE IDKostentraeger = ? ";
+                cmd.Parameters.Add("IDKostentraeger", System.Data.OleDb.OleDbType.Guid, 16, "IDKostentraeger").Value = IDKost;
+                cmd.ExecuteNonQuery();
+            }
             return true;
         }
-        public dsPatientStation.PatientDataTable klientenAlleSelbstzahler(bool TransferleistungJN, bool PatientbezogenJN  )
-        {
-            dsPatientStation.PatientDataTable dt = new dsPatientStation.PatientDataTable();
-            DataBase.Fill(daKlientenAlleSelbstzahler, dt);
-            return dt;
-        }
+
+        //public dsPatientStation.PatientDataTable klientenAlleSelbstzahler(bool TransferleistungJN, bool PatientbezogenJN  )
+        //{
+        //    dsPatientStation.PatientDataTable dt = new dsPatientStation.PatientDataTable();
+        //    DataBase.Fill(daKlientenAlleSelbstzahler, dt);
+        //    return dt;
+        //}
 
 		public void Update(dsPatientKostentraeger.PatientKostentraegerDataTable dt)
 		{
@@ -853,59 +826,55 @@ namespace PMDS.Calc.Admin.DB
             r.SetAbgerechnetBisNull();
             return r;
         }
+
         public bool gültigBisAufEntl_alleLeistKost(Guid IDPatient, DateTime dtEntlassung)
         {
             DateTime dtEntlassungRead0 = new DateTime(dtEntlassung.Year, dtEntlassung.Month, dtEntlassung.Day, 0, 0, 0);
             DateTime dtEntlassungRead23 = new DateTime(dtEntlassung.Year, dtEntlassung.Month, dtEntlassung.Day, 23, 59, 59);
 
-            PMDS.Global.db.Global.ds_abrechnung.dsPatientKostenträgerGültigBis dsPatKost = new PMDS.Global.db.Global.ds_abrechnung.dsPatientKostenträgerGültigBis();
-            daPatKostenträgerGültigBis.SelectCommand.Parameters[0].Value = IDPatient;
-            // daPatKostenträgerGültigBis.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
-            daPatKostenträgerGültigBis.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
-            DataBase.Fill(this.daPatKostenträgerGültigBis, dsPatKost);
-            foreach (PMDS.Global.db.Global.ds_abrechnung.dsPatientKostenträgerGültigBis.PatientKostentraegerRow r in dsPatKost.PatientKostentraeger.Rows)
+            using (PMDS.Global.db.Global.ds_abrechnung.dsPatientKostenträgerGültigBis dsPatKost = new PMDS.Global.db.Global.ds_abrechnung.dsPatientKostenträgerGültigBis())
             {
-                r.GueltigBis = dtEntlassungRead0;
+                daPatKostenträgerGültigBis.SelectCommand.Parameters[0].Value = IDPatient;
+                // daPatKostenträgerGültigBis.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
+                daPatKostenträgerGültigBis.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
+                DataBase.Fill(this.daPatKostenträgerGültigBis, dsPatKost);
+                foreach (PMDS.Global.db.Global.ds_abrechnung.dsPatientKostenträgerGültigBis.PatientKostentraegerRow r in dsPatKost.PatientKostentraeger.Rows)
+                {
+                    r.GueltigBis = dtEntlassungRead0;
+                }
+                this.daPatKostenträgerGültigBis.Update(dsPatKost);
             }
-            this.daPatKostenträgerGültigBis.Update(dsPatKost);
 
-            PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraegerGültigBis dsPatTaschKost = new PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraegerGültigBis();
-            daPatientTaschengeldKostentraeger.SelectCommand.Parameters[0].Value = IDPatient;
-            //daPatientTaschengeldKostentraeger.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
-            daPatientTaschengeldKostentraeger.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
-            DataBase.Fill(this.daPatientTaschengeldKostentraeger, dsPatTaschKost);
-            foreach (PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraegerGültigBis.PatientTaschengeldKostentraegerRow r in dsPatTaschKost.PatientTaschengeldKostentraeger.Rows)
+            using (PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraegerGültigBis dsPatTaschKost = new PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraegerGültigBis())
             {
-                r.GueltigBis = dtEntlassungRead0;
+                daPatientTaschengeldKostentraeger.SelectCommand.Parameters[0].Value = IDPatient;
+                daPatientTaschengeldKostentraeger.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
+                DataBase.Fill(this.daPatientTaschengeldKostentraeger, dsPatTaschKost);
+                foreach (PMDS.Global.db.Global.ds_abrechnung.dsPatientTaschengeldKostentraegerGültigBis.PatientTaschengeldKostentraegerRow r in dsPatTaschKost.PatientTaschengeldKostentraeger.Rows)
+                {
+                    r.GueltigBis = dtEntlassungRead0;
+                }
+                this.daPatientTaschengeldKostentraeger.Update(dsPatTaschKost);
             }
-            this.daPatientTaschengeldKostentraeger.Update(dsPatTaschKost);
 
-            PMDS.Global.db.Global.ds_abrechnung.dsPatientLeistungsplanGültigBis dsPatLeist = new PMDS.Global.db.Global.ds_abrechnung.dsPatientLeistungsplanGültigBis();
-            daPatientLeistungsplanGültigBis.SelectCommand.Parameters[0].Value = IDPatient;
-            //daPatientLeistungsplanGültigBis.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
-            daPatientLeistungsplanGültigBis.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
-            DataBase.Fill(this.daPatientLeistungsplanGültigBis, dsPatLeist);
-            foreach (PMDS.Global.db.Global.ds_abrechnung.dsPatientLeistungsplanGültigBis.PatientLeistungsplanRow r in dsPatLeist.PatientLeistungsplan.Rows)
+            using (PMDS.Global.db.Global.ds_abrechnung.dsPatientLeistungsplanGültigBis dsPatLeist = new PMDS.Global.db.Global.ds_abrechnung.dsPatientLeistungsplanGültigBis())
             {
-                r.GueltigBis = dtEntlassungRead0;
+                daPatientLeistungsplanGültigBis.SelectCommand.Parameters[0].Value = IDPatient;
+                daPatientLeistungsplanGültigBis.SelectCommand.Parameters[1].Value = dtEntlassungRead23;
+                DataBase.Fill(this.daPatientLeistungsplanGültigBis, dsPatLeist);
+                foreach (PMDS.Global.db.Global.ds_abrechnung.dsPatientLeistungsplanGültigBis.PatientLeistungsplanRow r in dsPatLeist.PatientLeistungsplan.Rows)
+                {
+                    r.GueltigBis = dtEntlassungRead0;
+                }
+                this.daPatientLeistungsplanGültigBis.Update(dsPatLeist);
             }
-            this.daPatientLeistungsplanGültigBis.Update(dsPatLeist);
 
             return true;
-
-            //OleDbCommand cmd = new OleDbCommand();
-            //cmd.CommandText = "Update PatientKostentraeger set bis = ?, Beendigungsgrund = ?, Beschreibung = ? where IDPatient = ? and Medizinischertyp = ? and not von is null and bis is null";
-            //cmd.Parameters.AddWithValue("bis", dtEnde);
-            //cmd.Parameters.AddWithValue("Beendigungsgrund", sEndegrund);
-            //cmd.Parameters.AddWithValue("Beschreibung", sBeschreibung);
-            //cmd.Parameters.AddWithValue("IDPatient", IDPatient);
-            //cmd.Parameters.AddWithValue("Medizinischertyp", Medizinischertyp);
-            //DataBase.EcecuteNonQuery(cmd);
         }
 
         private void daByID_RowUpdated(object sender, OleDbRowUpdatedEventArgs e)
         {
-
+            //Wird für Eventhandler benötigt.
         }
     }
 }
