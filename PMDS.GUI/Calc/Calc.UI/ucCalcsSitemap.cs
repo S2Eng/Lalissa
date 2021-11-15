@@ -481,8 +481,8 @@ namespace PMDS.Calc.UI
                                                                                 b.IDKlient == rBill2.IDKlient &&
                                                                                 b.Typ == (int)eBillTyp.Rechnung &&
                                                                                 b.Freigegeben == true &&
-                                                                                b.Status == (int)eBillStatus.freigegeben &&
-                                                                                b.IDSR.Length == 0
+                                                                                b.Status == (int)eBillStatus.freigegeben //&&
+                                                                                //b.IDSR.Length == 0
                                                                                 ).OrderByDescending(p => p.ErstellAm);
                                                     }
                                                     else

@@ -572,11 +572,15 @@ namespace PMDS.GUI.Kostentraeger
                         return;
                     }
 
-                    frmKostentraegerKlientEditSingle1.ShowDialog(this);
-                    if (!frmKostentraegerKlientEditSingle1.ucKostentraegerKlientEditSingle1.abort)
+                    if (frmKostentraegerKlientEditSingle1 != null)
                     {
-                        this.RefreshControl();
+                        frmKostentraegerKlientEditSingle1.ShowDialog(this);
+                        if (!frmKostentraegerKlientEditSingle1.ucKostentraegerKlientEditSingle1.abort)
+                        {
+                            this.RefreshControl();
+                        }
                     }
+
                 }
             }
             catch (Exception ex)

@@ -188,10 +188,10 @@ namespace PMDS.GUI.Kostentraeger
                 PMDS.db.Entities.Aufenthalt rAufenthaltAct = this.b.getAktuellerAufenthaltPatient(IDPatient, true, this._db);
                 if (this._isNew &&  rAufenthaltAct == null)
                 {
-                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Für Klienten ohne aktuellen Aufenthalt ist diese Funktion nicht möglich. Bitte legen Sie einen Kostenträger an und ordnen Sie den Klienten zu.", "", MessageBoxButtons.OK);
-                    this.mainWindow.Close();
-                    this._abortNoAufenthalt = true;
-                    return false;
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Dieser Klient hat keinen aktuellen Aufenthalt!\nDas Gültig-Ab-Datum kann daher nicht ermittelt werden.\nBitte überschreiben Sie den Wert 1.1.1900 mit einem gültigen Datum.", "WICHTIGER HINWEIS", MessageBoxButtons.OK);
+                    //this.mainWindow.Close();
+                    //this._abortNoAufenthalt = true;
+                    //return false;
                 }
 
                 bool WohnungAbgemeldetJNTmp = false;
@@ -257,7 +257,9 @@ namespace PMDS.GUI.Kostentraeger
 
                     this._rPatientKostentraeger.ID = System.Guid.NewGuid();
                     this._rPatientKostentraeger.enumKostentraegerart = (int)Kostentraegerart.Alles;
-                    this._rPatientKostentraeger.GueltigAb = rAufenthaltAct.Aufnahmezeitpunkt.Value.Date;
+
+                    if (rAufenthaltAct != null)
+                        this._rPatientKostentraeger.GueltigAb = rAufenthaltAct.Aufnahmezeitpunkt.Value.Date;
                     this._rPatientKostentraeger.BetragErrechnetJN = true;
                     this._rPatientKostentraeger.RechnungJN = true;
                     this._rPatientKostentraeger.RechnungTyp = (int)PMDS.Calc.Logic.eBillTyp.Rechnung;
@@ -361,6 +363,7 @@ namespace PMDS.GUI.Kostentraeger
                                 sMessage += "\nDie Funktion kann nicht fortgesetzt werden.";
                                 QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sMessage);
                                 this._db.Dispose();
+                                this._abortNoAufenthalt = true;
                                 return false;
                             }
                         }

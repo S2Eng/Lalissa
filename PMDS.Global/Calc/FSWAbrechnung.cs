@@ -602,8 +602,8 @@ namespace PMDS.Global
                             res.IDSR = "";
                         else if (IDSR.Length == 58 )
                             res.IDSR = IDSR.Substring(IDSR.Length -18, 18);
-                        else if (IDSR.Length == 61)
-                            res.IDSR = IDSR.Substring(IDSR.Length - 22, 22);
+                        else if (IDSR.Length == 60)
+                            res.IDSR = IDSR.Substring(IDSR.Length - 21, 21);
                         else
                         {
                             return "Ungültige eZAUF-Nummer: " + IDSR;

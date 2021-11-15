@@ -542,7 +542,7 @@ namespace PMDS.DB.Global
         }
         public dsKostentraeger.KostentraegerRow NewPatientBetzogeneKostentraeger(dsKostentraeger.KostentraegerDataTable dt)
         {
-            dsKostentraeger.KostentraegerRow r = dt.AddKostentraegerRow(Guid.NewGuid(), "", "", "", "", "", "", "", "", "", System.Guid.Empty, "", System.Guid.Empty, false, 0, 0, false, 0, "", "", "", true, false, false, System.Guid.Empty);
+            dsKostentraeger.KostentraegerRow r = dt.AddKostentraegerRow(Guid.NewGuid(), "", "", "", "", "", "", "", "", "", System.Guid.Empty, "", System.Guid.Empty, false, 0, 0, false, 0, "", "", "", true, true, false, System.Guid.Empty);
             r.SetIDKlinikNull();
             r.SetZahlartNull();
             r.SetIDPatientIstZahlerNull();

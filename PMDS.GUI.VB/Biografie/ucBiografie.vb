@@ -226,6 +226,11 @@ Public Class ucBiografie
                 doBookmarks.setBookmark("Nachname", p.Nachname, Me.contTxtEditor1.textControl1)
                 doBookmarks.setBookmark("Geburtsdatum", gebdat.ToString("dd.MM.yyyy"), Me.contTxtEditor1.textControl1)
 
+                doBookmarks.setBookmark("[Vorname]", p.Vorname, Me.contTxtEditor1.textControl1)
+                doBookmarks.setBookmark("[Nachname]", p.Nachname, Me.contTxtEditor1.textControl1)
+                doBookmarks.setBookmark("[Geburtsdatum]", gebdat.ToString("dd.MM.yyyy"), Me.contTxtEditor1.textControl1)
+
+
                 'Me.contTxtEditor1.textControl1.Text = Me.contTxtEditor1.textControl1.Text.Replace("[Vorname]", p.Vorname.Trim())
                 'Me.contTxtEditor1.textControl1.Text = Me.contTxtEditor1.textControl1.Text.Replace("[Nachname]", p.Nachname.Trim())
                 'Me.contTxtEditor1.textControl1.Text = Me.contTxtEditor1.textControl1.Text.Replace("[Geburtsdatum]", p.Geburtsdatum.ToString("dd.MM.yyyy"))
