@@ -1006,7 +1006,7 @@ namespace PMDS.Global
 //                                    if (sftp.UploadFileByName(RemoteFilename, LocalFQFilename))
                                     if (sftp.UploadFileByName( ENV.FSW_FTPMode.ToLower() + "/put/" + RemoteFilename, LocalFQFilename))
                                     {
-
+                                        WriteLogToFile(sftp.LastErrorText);
                                         if (sftp.LastErrorXml.Contains("failed status"))
                                         {
                                             return sftp.LastErrorText;
@@ -1016,10 +1016,11 @@ namespace PMDS.Global
                                     }
                                     else
                                     {
+                                        WriteLogToFile(sftp.LastErrorText);
                                         return sftp.LastErrorText;
                                     }
                     }
-                    return "";
+                    return "Undefiniertes Ende der Funktion erkannt.";
                 }
             }
             catch (Exception ex)
@@ -1028,6 +1029,22 @@ namespace PMDS.Global
             }
         }
 
+        private static void WriteLogToFile(string txtLog)
+        {
+            try
+            {
+                string sLogFile = Path.Combine(ENV.FSW_EZAUF, DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".LOG");
+                if (!File.Exists(sLogFile))
+                {
+                    File.WriteAllText(sLogFile, txtLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("FSWAbrechnung.cs.WriteLogToFile: " + ex.Message);
+            }
+
+        }
 
         private static string CopyXSLT(string sFileName)
         {
