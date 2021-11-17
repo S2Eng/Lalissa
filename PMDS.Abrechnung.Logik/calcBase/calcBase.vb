@@ -210,6 +210,16 @@ Public Class calcBase
         End Try
     End Function
 
+    Public Function decWithProzent(ByVal Zahl As Decimal) As String
+        'Rückgabe einer Dezimalzahl als Euro-String
+        Try
+            'Return String.Format("{0:c}", Zahl)
+            Return (Math.Round(Zahl, 2)).ToString(Me.decFormat) + "%"
+
+        Catch exept As Exception
+            calcBase.doExept(exept)
+        End Try
+    End Function
 
     Public ReadOnly Property int99999999() As Integer
         Get

@@ -132,7 +132,7 @@ Public Class doRollung
                     If cMwst.sum <> 0 Then
                         Dim Mwst As Double = Math.Round((Math.Round(cMwst.sum, 2) / 100) * cMwst.MwstSatz, 2)
                         sumMwSt += Mwst
-                        bill.setPrintColumn(IDNewIDRechZ, eTypProt.MWStSatz, 0, "+ " + Me.decWithEuro(cMwst.MwstSatz) + "%  MwSt von " + Me.decWithEuro(cMwst.sum), Mwst, 0, 0, cMwst.MwstSatz, billFormat)
+                        bill.setPrintColumn(IDNewIDRechZ, eTypProt.MWStSatz, 0, "+ " + Me.decWithProzent(cMwst.MwstSatz) + "  MwSt von " + Me.decWithEuro(cMwst.sum), Mwst, 0, 0, cMwst.MwstSatz, billFormat)
                         bill.add(IDNewIDRechZ, eTypProt.MWStSatz, billFormat, dbCalcNew, rBillsNew.IDKostIntern, rBillsNew.IDKost, eCalcTyp.abrechnung,
                                     Me.decWithEuro(cMwst.sum), 0, Me.decWithEuro(cMwst.MwstSatz), "", editor, False, False, "", "", "", "", "", True)
                     End If

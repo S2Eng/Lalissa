@@ -609,7 +609,7 @@ Public Class doBill
                 If r.NettoBetrag <> 0 Then
                     'If r.MWSt <> 0 Then                    '<20120111>   Auch 0 Mwst wird in RechZeiel angedruckt für Export
                     Dim IDBillRtfRZ As System.Guid = System.Guid.NewGuid()
-                    bill.setPrintColumn(IDBillRtfRZ, eTypProt.MWStSatz, 0, "+ " + Me.decWithEuro(r.MWStSatz) + "%  MwSt von " + Me.decWithEuro(r.NettoBetrag), r.MWSt, 0, 0, r.MWStSatz, billFormat)
+                    bill.setPrintColumn(IDBillRtfRZ, eTypProt.MWStSatz, 0, "+ " + Me.decWithProzent(r.MWStSatz) + " MwSt von " + Me.decWithEuro(r.NettoBetrag), r.MWSt, 0, 0, r.MWStSatz, billFormat)
                     bill.add(IDBillRtfRZ, eTypProt.MWStSatz, billFormat, Calc.dbCalc, IDKostIntern, IDKost, Me.rowKlient(Calc.dbCalc).calcTyp,
                              Me.decWithEuro(r.NettoBetrag), Me.decWithEuro(r.BruttoBetrag), Me.decWithEuro(r.MWSt), r.KontoExport, editor)
                 End If
