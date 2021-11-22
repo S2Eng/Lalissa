@@ -25,16 +25,15 @@ namespace PMDS.GUI
             InitializeComponent();
             //this.btnImportFromHttp.Text = "Importieren";
             //this.btnImportFromHttp.Appearance .Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Ausschneiden, 32, 32);
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
-            }
-            if (!DesignMode)
-            {
                 this.btnImport.Visible = PMDS.Global.ENV.APVDA;
             }
 
+            cboMonat.SelectedIndex = 0;
+            pnlMonat.Visible = PMDS.Global.generic.sEquals(PMDS.Global.ENV.MedikamenteImportType, "service");
             this.btnImport.Appearance.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.btnImport.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Aktualisieren, 32, 32);
             this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Speichern, 32, 32);
@@ -44,7 +43,7 @@ namespace PMDS.GUI
 
             this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Allgemein.ico_Table , 32, 32);
 
-            this.cboImportType.SelectedItem = this.cboImportType.Items[0];
+            this.cboImportType.SelectedItem = this.cboImportType.Items[1];
         }
 
         public PMDS.Global.db.Patient.dsMedikament.MedikamentRow GetMedikamentRow()
@@ -141,26 +140,35 @@ namespace PMDS.GUI
                 PMDS.Global.ImportMedDaten ImportMedDaten1 = new PMDS.Global.ImportMedDaten();
                 if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie die Medikamente wirklich neu importieren?", "Importieren", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    DateTime datStart = new DateTime();
-                    DateTime datEnd = new DateTime();
                     int CountUpdated = 0;
                     int CountDeactivated = 0;
-
                     string SelFileName = this.cboImportType.SelectedItem.DataValue.ToString();
-                    if (ImportMedDaten1.run(this.chkELGATranslate.Checked, ref this.lblStatus, ref datStart, ref datEnd, out CountUpdated, out CountDeactivated, ref SelFileName, ref PMDS.Global.ENV.MedikamenteImportType))
+
+
+                    DateTime datStart = DateTime.Now;
+                    bool bImportGesamtdaten = (bool)this.cboImportType.SelectedItem.Tag;
+
+                    if (ImportMedDaten1.run(bImportGesamtdaten, this.chkELGATranslate.Checked, ref this.lblStatus, out CountUpdated, out CountDeactivated, SelFileName, 
+                        PMDS.Global.ENV.MedikamenteImportType, out string sMsg, PMDS.Global.ENV.MedikamenteImportType == "service" ? (int)cboMonat.SelectedItem.DataValue : 0))
                     {
-                        this.ucVerwaltungMedTabelle1.ProcessSearch();
+                        using (DB.DBMedikament DBMedikament1 = new DB.DBMedikament())
+                        {
+                            DBMedikament1.LoadAllMedikamente(true);
+                        }
+
+                        DateTime datEnd = DateTime.Now;
+                        //this.ucVerwaltungMedTabelle1.ProcessSearch();
 
                         string txtInfo = "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente eingespielt: ") + CountUpdated.ToString();
                         txtInfo += "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente deaktiviert: ") + CountDeactivated.ToString() + "\r\n" + "\r\n";
 
                         txtInfo += QS2.Desktop.ControlManagment.ControlManagment.getRes("Start: ") + datStart.ToString() + "\r\n";
                         txtInfo += QS2.Desktop.ControlManagment.ControlManagment.getRes("Ende: ") + datEnd.ToString() + "";
-
-                        DB.DBMedikament DBMedikament1 = new DB.DBMedikament();
-                        DBMedikament1.LoadAllMedikamente(true);
-
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox(QS2.Desktop.ControlManagment.ControlManagment.getRes("Medikamente wurden importiert!") + txtInfo, "Importieren");
+                    }
+                    else
+                    {
+                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Laden der Medikamentendaten: " + sMsg, "Importieren");
                     }
                 }
 

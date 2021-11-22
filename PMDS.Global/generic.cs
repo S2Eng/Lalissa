@@ -157,6 +157,7 @@ namespace PMDS.Global
                 generic.GetAllRowsFromGroupedUltraGrid(r, ref al, bSelectedOnly, bUseChildBands);
             return (UltraGridRow[])al.ToArray(typeof(UltraGridRow));
         }
+
         public static void GetAllRowsFromGroupedUltraGrid(UltraGridRow r, ref ArrayList al, bool bSelectedOnly, bool bUseChildBands)
         {
             if (r is UltraGridGroupByRow)
@@ -376,7 +377,6 @@ namespace PMDS.Global
                 throw new Exception("cPflegestufenEinschaetzung.IsExcelInstalled: " + ex.ToString());
             }
         }
-
 
         public static void BeginSuspendLayout(Control control)
         {

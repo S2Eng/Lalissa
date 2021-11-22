@@ -202,17 +202,11 @@ namespace PMDS.GUI
 
         private void RefreshMedikamentValueList(bool removeValueList)
         {
-            ValueListsCollection vlc = dgEintraege.DisplayLayout.ValueLists;
-
-            if (removeValueList)
+            using (PMDS.DB.DBMedikament medik = new PMDS.DB.DBMedikament())
             {
-                if (vlc.Exists("MED"))
-                    vlc.Remove("MED");
+                medik.LoadAllMedikamente(false);
             }
-        
-            PMDS.DB.DBMedikament medik = new PMDS.DB.DBMedikament();
-            medik.LoadAllMedikamente(false);
-            UltraGridTools.AddValueList(dgEintraege, "IDMedikament", "MED", PMDS.DB.DBMedikament._dsMedikament.MedikamentSmall, "ID", "Bezeichnung");
+            UltraGridTools.AddValueList(dgEintraege, "IDMedikament", PMDS.DB.DBMedikament._dsMedikament.MedikamentSmall);
         }
 
         private void InitRezeptEintraege(bool bSetFirstRow)
@@ -780,15 +774,18 @@ namespace PMDS.GUI
                     if (PMDS.Global.historie.HistorieOn) return;
                     if ((e.Cell.Column.Key == "IDMedikament") && (PMDS.DB.DBMedikament._dsMedikament != null))
                     {
-                        frmMedikamentenVerwaltung frm = new frmMedikamentenVerwaltung();
-                        DialogResult res = frm.ShowDialog();
-                        PMDS.Global.db.Patient.dsMedikament.MedikamentRow row = frm.GetMedikamentRow();
-                        if (res == DialogResult.OK && row != null)
+                        using (frmMedikamentenVerwaltung frm = new frmMedikamentenVerwaltung())
                         {
-                            e.Cell.Value = row.ID;
-                            e.Cell.Row.Cells["Einheit"].Value = row.Einheit.Trim();
-                            OnValueChanged(sender, EventArgs.Empty);
-                            RefreshMedikamentValueList(true);
+                            DialogResult res = frm.ShowDialog();
+                            PMDS.Global.db.Patient.dsMedikament.MedikamentRow row = frm.GetMedikamentRow();
+                            if (res == DialogResult.OK && row != null)
+                            {
+                                e.Cell.Value = row.ID;
+                                e.Cell.Row.Cells["Einheit"].Value = row.Einheit.Trim();
+                                OnValueChanged(sender, EventArgs.Empty);
+                                RefreshMedikamentValueList(true);
+                            }
+
                         }
                     }
                 }

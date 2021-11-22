@@ -30,11 +30,11 @@ namespace PMDS.GUI
         
         private dsRezeptEintrag.RezeptEintragRow _newRezeptEintrag;          // != null ==> nachfolgeprozess muss den neuen Eintrag nehmen und verarbeiten
         
-        private bool _UpdateGuiInProgress = false;
+        private bool _UpdateGuiInProgress;
         private object temp_dtpAbgebenVon_Value;
 
-        public PMDS.Global.db.ERSystem.PMDSBusinessUI PMDSBusinessUI1 = new Global.db.ERSystem.PMDSBusinessUI();
-        public bool _bIsStorno = false;
+        private PMDS.Global.db.ERSystem.PMDSBusinessUI PMDSBusinessUI1 = new Global.db.ERSystem.PMDSBusinessUI();
+        public bool _bIsStorno;
 
         private DateTime dtFrom;
         private DateTime dtBis;
@@ -43,13 +43,23 @@ namespace PMDS.GUI
         public ucRezeptEintrag()
         {
             InitializeComponent();
-            RequiredFields();
-            if (!DesignMode && ENV.AppRunning)
-            {
 
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                //Wenn es noch keine Auswahlliste PEH gibt -> MEH verwenden
+                if (!(from ausw in db.AuswahlListe
+                    where ausw.IDAuswahlListeGruppe == "PEH"
+                    select ausw).Any())
+                {
+                    this.cbPackungsEinheit.Group = "MEH";
+                }
+            }
+
+            RequiredFields();
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
+            {
                 if (ENV.RezeptUseTimeOfDay)
                 {
-
                     dtpAbgebenVon.MaskInput = "dd.mm.yyyy hh:mm:ss";
                     dtpAbgebenVon.Size = new Size(145, 21);
                     dtStartAction = DateTime.Now;
@@ -73,7 +83,6 @@ namespace PMDS.GUI
                     lblTagesende.Visible = false;
                 }
 
-
                 this.cbImportant._SupressLevelHierarchie = PMDSBusinessUI.SupressLevelHierarchieActiveInUI;
                 this.cbImportant.Group = "BER";
                 this.cbImportant.RefreshList();
@@ -93,7 +102,6 @@ namespace PMDS.GUI
             }
 
             this.btnSearchMedikament.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Suche, 32, 32);
-
         }
 
         //----------------------------------------------------------------------------
@@ -183,6 +191,7 @@ namespace PMDS.GUI
                 {
                     PMDS.db.Entities.Medikament rMedikament = PMDSBusiness1.GetMedikament(db, RezeptEintrag.IDMedikament);
                     this.txtMedikament.Text = rMedikament.Bezeichnung.Trim();
+                    this.pnlPackungBeschreibung.Enabled = !rMedikament.Importiert;
                 }
             }
             else
@@ -191,7 +200,7 @@ namespace PMDS.GUI
                 this.txtMedikament.Text = "";
             }
 
-            dtpAbgebenVon.Value = RezeptEintrag.AbzugebenVon; // {{{Eng}}} 7.7.2009
+            dtpAbgebenVon.Value = RezeptEintrag.AbzugebenVon; 
             temp_dtpAbgebenVon_Value = RezeptEintrag.AbzugebenVon;
             cmbApplikationsform.Text = RezeptEintrag.Applikationsform.Trim();
             txtPackGr.Value = RezeptEintrag.IsPackunggroesseNull() ? (object)DBNull.Value : (object)RezeptEintrag.Packunggroesse;
@@ -439,10 +448,6 @@ namespace PMDS.GUI
             //QS2.Desktop.ControlManagment.ControlManagment.MessageBox(EintragBearbeitungsmodus.ToString());
             if ((!(EintragBearbeitungsmodus == BearbeitungsModus.neu)) && (BedarfChange || DetailsChanged))         // einen neuen DS erzeugen und das alte bis Datum setzen
             {
-
-
-
-
                 if (this.cbBis.Checked)         //Beim Absetzen den bestehenden Datensatz verändern
                 {
                     //os191220
@@ -456,8 +461,10 @@ namespace PMDS.GUI
                 }
                 else                            //Bei Änderung der Dosierung neuen Datensatz anlegen und bestehenden beenden.
                 {
-                    dsRezeptEintrag.RezeptEintragDataTable dt = new dsRezeptEintrag.RezeptEintragDataTable();
-                    _newRezeptEintrag = (dsRezeptEintrag.RezeptEintragRow)dt.Rows.Add(RezeptEintrag.ItemArray);
+                    using (dsRezeptEintrag.RezeptEintragDataTable dt = new dsRezeptEintrag.RezeptEintragDataTable())
+                    {
+                        _newRezeptEintrag = (dsRezeptEintrag.RezeptEintragRow)dt.Rows.Add(RezeptEintrag.ItemArray);
+                    }
                     rToUpdate = _newRezeptEintrag;
                     _newRezeptEintrag.ID = Guid.NewGuid();
 
@@ -905,12 +912,9 @@ namespace PMDS.GUI
             GuiUtil.ValidateRequired(txtWiedWertJeden);
             GuiUtil.ValidateRequired(cmbVerabreichungsart);
             GuiUtil.ValidateRequired(cmbHerrichten);
-            //GuiUtil.ValidateRequired(cmbApplikationsform);
             GuiUtil.ValidateRequired(ucPatientAerzte1.cmbArzt);
-            GuiUtil.ValidateRequired(this.cmbApplikationsform);
+            GuiUtil.ValidateRequired(cmbApplikationsform);
         }
-
-
 
         public void InitCmbMedikament(System.Guid IDMed)
         {
@@ -926,10 +930,12 @@ namespace PMDS.GUI
             {
                 AktuMedikamente = -1;
             }
-            PMDS.DB.DBMedikament m = new PMDS.DB.DBMedikament();
-            m.LoadAllMedikamente(false);
-            dsMedikament.MedikamentSmallRow[] arrMed = m.GetMedikamente(AktuMedikamente, IDMed);
-            arrMed.CopyToDataTable(this.dsMedikament1.MedikamentSmall, LoadOption.Upsert);
+            using (PMDS.DB.DBMedikament m = new PMDS.DB.DBMedikament())
+            {
+                m.LoadAllMedikamente(false);
+                dsMedikament.MedikamentSmallRow[] arrMed = m.GetMedikamente(AktuMedikamente, IDMed);
+                arrMed.CopyToDataTable(this.dsMedikament1.MedikamentSmall, LoadOption.Upsert);
+            }            
         }
         
         private void opWiederholungstyp_ValueChanged(object sender, EventArgs e)
@@ -1028,6 +1034,9 @@ namespace PMDS.GUI
 
                         cbPackungsanzahl.Value = (((dsMedikament.MedikamentRow)t.Rows[0]).Packungsanzahl == 0 ? 1 : ((dsMedikament.MedikamentRow)t.Rows[0]).Packungsanzahl);
                         cbPackungsEinheit.Text = ((dsMedikament.MedikamentRow)t.Rows[0]).Packungseinheit.Trim();
+
+                        txtRezeptDaten.Text = (((dsMedikament.MedikamentRow)t.Rows[0]).Lagervorschrift + "\n" + ((dsMedikament.MedikamentRow)t.Rows[0]).LangText).Trim();
+                        txtAnmerkung.Text = "";
 
                         errorProvider1.Clear();
                     }

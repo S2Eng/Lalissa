@@ -72,6 +72,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Aktuell");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Erstattungscode");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Kassenzeichen");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Lieferant");
             Infragistics.Win.Layout.GridBagConstraint gridBagConstraint1 = new Infragistics.Win.Layout.GridBagConstraint();
             this.pnlFilter = new QS2.Desktop.ControlManagment.BasePanel();
             this.btnUpdate = new QS2.Desktop.ControlManagment.BaseButton();
@@ -269,14 +270,18 @@
             // cbEinheit
             // 
             this.cbEinheit.AddEmptyEntry = false;
+            this.cbEinheit.AutoOpenCBO = false;
             this.cbEinheit.BerufsstandGruppeJNA = -1;
             this.cbEinheit.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbEinheit.ExactMatch = false;
             this.cbEinheit.Group = "MEH";
             this.cbEinheit.ID_PEP = -1;
             this.cbEinheit.Location = new System.Drawing.Point(481, 46);
             this.cbEinheit.Name = "cbEinheit";
+            this.cbEinheit.PflichtJN = false;
             this.cbEinheit.ShowAddButton = true;
             this.cbEinheit.Size = new System.Drawing.Size(220, 21);
+            this.cbEinheit.sys = false;
             this.cbEinheit.TabIndex = 3;
             // 
             // lblLangtext
@@ -290,6 +295,7 @@
             this.lblLangtext.Size = new System.Drawing.Size(64, 21);
             this.lblLangtext.TabIndex = 8;
             this.lblLangtext.Text = "Langtext";
+            this.lblLangtext.Visible = false;
             // 
             // lblDareichungsform
             // 
@@ -310,6 +316,7 @@
             this.tbLangText.Name = "tbLangText";
             this.tbLangText.Size = new System.Drawing.Size(220, 21);
             this.tbLangText.TabIndex = 1;
+            this.tbLangText.Visible = false;
             // 
             // lblGruppe
             // 
@@ -326,14 +333,18 @@
             // cbGroup
             // 
             this.cbGroup.AddEmptyEntry = false;
+            this.cbGroup.AutoOpenCBO = false;
             this.cbGroup.BerufsstandGruppeJNA = -1;
             this.cbGroup.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
+            this.cbGroup.ExactMatch = false;
             this.cbGroup.Group = "MGR";
             this.cbGroup.ID_PEP = -1;
             this.cbGroup.Location = new System.Drawing.Point(90, 46);
             this.cbGroup.Name = "cbGroup";
+            this.cbGroup.PflichtJN = false;
             this.cbGroup.ShowAddButton = true;
             this.cbGroup.Size = new System.Drawing.Size(275, 21);
+            this.cbGroup.sys = false;
             this.cbGroup.TabIndex = 2;
             // 
             // btnDel
@@ -403,11 +414,13 @@
             this.dgMain.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn;
             ultraGridColumn21.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn21.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn21.Header.Editor = null;
             ultraGridColumn21.Header.VisiblePosition = 0;
             ultraGridColumn21.Hidden = true;
             ultraGridColumn22.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn22.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn22.Header.Caption = "Externe ID";
+            ultraGridColumn22.Header.Editor = null;
             ultraGridColumn22.Header.VisiblePosition = 19;
             ultraGridColumn22.RowLayoutColumnInfo.OriginX = 4;
             ultraGridColumn22.RowLayoutColumnInfo.OriginY = 0;
@@ -417,6 +430,7 @@
             ultraGridColumn22.Width = 150;
             ultraGridColumn23.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn23.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn23.Header.Editor = null;
             ultraGridColumn23.Header.VisiblePosition = 1;
             ultraGridColumn23.Hidden = true;
             ultraGridColumn23.RowLayoutColumnInfo.OriginX = 10;
@@ -425,6 +439,7 @@
             ultraGridColumn23.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn24.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn24.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn24.Header.Editor = null;
             ultraGridColumn24.Header.VisiblePosition = 2;
             ultraGridColumn24.Hidden = true;
             ultraGridColumn24.RowLayoutColumnInfo.OriginX = 8;
@@ -433,6 +448,7 @@
             ultraGridColumn24.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn25.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn25.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn25.Header.Editor = null;
             ultraGridColumn25.Header.VisiblePosition = 3;
             ultraGridColumn25.RowLayoutColumnInfo.OriginX = 2;
             ultraGridColumn25.RowLayoutColumnInfo.OriginY = 0;
@@ -442,6 +458,7 @@
             ultraGridColumn26.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn26.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn26.Header.Caption = "Langtext";
+            ultraGridColumn26.Header.Editor = null;
             ultraGridColumn26.Header.VisiblePosition = 4;
             ultraGridColumn26.Hidden = true;
             ultraGridColumn26.RowLayoutColumnInfo.OriginX = 2;
@@ -451,6 +468,7 @@
             ultraGridColumn26.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn27.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn27.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn27.Header.Editor = null;
             ultraGridColumn27.Header.VisiblePosition = 5;
             ultraGridColumn27.RowLayoutColumnInfo.OriginX = 8;
             ultraGridColumn27.RowLayoutColumnInfo.OriginY = 0;
@@ -459,6 +477,7 @@
             ultraGridColumn27.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn28.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn28.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn28.Header.Editor = null;
             ultraGridColumn28.Header.VisiblePosition = 6;
             ultraGridColumn28.Hidden = true;
             ultraGridColumn28.RowLayoutColumnInfo.OriginX = 6;
@@ -466,36 +485,44 @@
             ultraGridColumn28.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn28.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn29.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn29.Header.Editor = null;
             ultraGridColumn29.Header.VisiblePosition = 7;
             ultraGridColumn29.Hidden = true;
             ultraGridColumn30.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn30.Header.Editor = null;
             ultraGridColumn30.Header.VisiblePosition = 8;
             ultraGridColumn30.Hidden = true;
             ultraGridColumn31.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn31.Header.Editor = null;
             ultraGridColumn31.Header.VisiblePosition = 9;
             ultraGridColumn31.Hidden = true;
             ultraGridColumn32.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn32.Header.Editor = null;
             ultraGridColumn32.Header.VisiblePosition = 10;
             ultraGridColumn32.Hidden = true;
             ultraGridColumn33.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn33.Header.Editor = null;
             ultraGridColumn33.Header.VisiblePosition = 11;
             ultraGridColumn33.RowLayoutColumnInfo.OriginX = 12;
             ultraGridColumn33.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn33.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn33.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn34.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn34.Header.Editor = null;
             ultraGridColumn34.Header.VisiblePosition = 12;
             ultraGridColumn34.RowLayoutColumnInfo.OriginX = 10;
             ultraGridColumn34.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn34.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn34.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn35.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn35.Header.Editor = null;
             ultraGridColumn35.Header.VisiblePosition = 13;
             ultraGridColumn35.RowLayoutColumnInfo.OriginX = 14;
             ultraGridColumn35.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn35.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn35.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn36.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn36.Header.Editor = null;
             ultraGridColumn36.Header.VisiblePosition = 14;
             ultraGridColumn36.RowLayoutColumnInfo.OriginX = 6;
             ultraGridColumn36.RowLayoutColumnInfo.OriginY = 0;
@@ -503,6 +530,7 @@
             ultraGridColumn36.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn36.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn37.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn37.Header.Editor = null;
             ultraGridColumn37.Header.VisiblePosition = 15;
             ultraGridColumn37.RowLayoutColumnInfo.OriginX = 20;
             ultraGridColumn37.RowLayoutColumnInfo.OriginY = 0;
@@ -511,6 +539,7 @@
             ultraGridColumn37.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn38.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn38.Header.Caption = "Importiert am";
+            ultraGridColumn38.Header.Editor = null;
             ultraGridColumn38.Header.VisiblePosition = 16;
             ultraGridColumn38.RowLayoutColumnInfo.OriginX = 18;
             ultraGridColumn38.RowLayoutColumnInfo.OriginY = 0;
@@ -519,20 +548,26 @@
             ultraGridColumn38.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn38.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;
             ultraGridColumn39.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn39.Header.Editor = null;
             ultraGridColumn39.Header.VisiblePosition = 17;
             ultraGridColumn39.RowLayoutColumnInfo.OriginX = 16;
             ultraGridColumn39.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn39.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn39.RowLayoutColumnInfo.SpanY = 2;
             ultraGridColumn40.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn40.Header.Editor = null;
             ultraGridColumn40.Header.VisiblePosition = 18;
             ultraGridColumn40.RowLayoutColumnInfo.OriginX = 0;
             ultraGridColumn40.RowLayoutColumnInfo.OriginY = 0;
             ultraGridColumn40.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(54, 0);
             ultraGridColumn40.RowLayoutColumnInfo.SpanX = 2;
             ultraGridColumn40.RowLayoutColumnInfo.SpanY = 2;
+            ultraGridColumn1.Header.Editor = null;
             ultraGridColumn1.Header.VisiblePosition = 20;
+            ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 21;
+            ultraGridColumn3.Header.Editor = null;
+            ultraGridColumn3.Header.VisiblePosition = 22;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn21,
             ultraGridColumn22,
@@ -555,7 +590,8 @@
             ultraGridColumn39,
             ultraGridColumn40,
             ultraGridColumn1,
-            ultraGridColumn2});
+            ultraGridColumn2,
+            ultraGridColumn3});
             ultraGridBand1.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
             ultraGridBand1.RowLayoutStyle = Infragistics.Win.UltraWinGrid.RowLayoutStyle.ColumnLayout;
             this.dgMain.DisplayLayout.BandsSerializer.Add(ultraGridBand1);

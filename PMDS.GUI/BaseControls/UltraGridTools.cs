@@ -941,32 +941,33 @@ namespace PMDS.GUI
 			c.MaskInput = "";
 		}
 
-		public static UltraGridColumn AddValueList(UltraGrid g, string sBound, string sGrp,
-			DataTable table, string key, string val) 
-		{
-			ValueListsCollection vlc = g.DisplayLayout.ValueLists;
+        //Durch public static UltraGridColumn AddValueList(UltraGrid g, string sColumnBound, DataTable table) ersetzt - schneller, weniger Speicher, einfacher zu verstehen
+  //      public static UltraGridColumn AddValueList(UltraGrid g, string sBound, string sGrp, DataTable table, string key, string val) 
+		//{
+  //          ValueListsCollection vlc = g.DisplayLayout.ValueLists;
 
-			ValueList vl = null;
-			if(vlc.Exists(sGrp))
-				vl = vlc[sGrp];
-			else 
-			{
-				vl = vlc.Add(sGrp);
-				foreach(DataRow r in table.Rows)
-					vl.ValueListItems.Add(r[key], (string)r[val]);
-			}
+  //          ValueList vl = null;
+  //          if (vlc.Exists(sGrp))
+  //              vl = vlc[sGrp];
+  //          else
+  //          {
+  //              vl = vlc.Add(sGrp);
+  //              foreach (DataRow r in table.Rows)
+  //                  vl.ValueListItems.Add(r[key], (string)r[val]);
+  //          }
+  //          UltraGridColumn c = g.DisplayLayout.Bands[0].Columns[sBound];
+  //          c.ValueList = vl;
+  //          c.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
+		//	return c;
+		//}
 
-			UltraGridColumn c = g.DisplayLayout.Bands[0].Columns[sBound];
-			c.ValueList = vl;
+        public static UltraGridColumn AddValueList(UltraGrid g, string sColumnBound, DataTable table)
+        {
+            UltraGridColumn c = g.DisplayLayout.Bands[0].Columns[sColumnBound];
+            c.ValueList = new BindableValueList(table, "", "Bezeichnung", "ID", g);
             c.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;
-			return c;
-		}
-
-		public static void AddButtonValueList(UltraGrid g, string sBound, string sGrp,
-			DataTable table, string key, string val) 
-		{
-            AddValueList(g, sBound, sGrp, table, key, val).Style = Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
-		}
+            return c;
+        }
 
 		public static void AddNoZeroValueList(UltraGrid g, string sBoundGridColumn) 
 		{

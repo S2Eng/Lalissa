@@ -58,7 +58,7 @@ namespace PMDS.GUI
                                                     cbGroup.Text.Trim(), true, false, (int)this.optAktuellYN.Value);
             }
             else
-                dgMain.DataSource = _Medikament.AllMedikamenteBig((int)this.optAktuellYN.Value);
+                dgMain.DataSource = _Medikament.AllMedikamenteBig((int)this.optAktuellYN.Value, true);
 
             this.SetLabelCount();
 
@@ -223,7 +223,7 @@ namespace PMDS.GUI
             UltraGridTools.AddTextTextValuListFromAuswahlGruppe("MGR", dgMain, "Gruppe");
             UltraGridTools.AddTextTextValuListFromAuswahlGruppe("MEH", dgMain, "Einheit");
 
-            dgMain.DataSource = _Medikament.AllMedikamenteBig((int)this.optAktuellYN.Value);
+            dgMain.DataSource = _Medikament.AllMedikamenteBig((int)this.optAktuellYN.Value, false);
             this.SetLabelCount();
         }
         public void SetLabelCount()

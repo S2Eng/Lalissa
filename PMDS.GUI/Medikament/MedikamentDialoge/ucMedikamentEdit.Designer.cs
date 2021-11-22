@@ -270,9 +270,9 @@
             // 
             this.cbAerztVorbereitung.Location = new System.Drawing.Point(24, 402);
             this.cbAerztVorbereitung.Name = "cbAerztVorbereitung";
-            this.cbAerztVorbereitung.Size = new System.Drawing.Size(78, 41);
+            this.cbAerztVorbereitung.Size = new System.Drawing.Size(106, 41);
             this.cbAerztVorbereitung.TabIndex = 24;
-            this.cbAerztVorbereitung.Text = "Ärztlichevorbereitung";
+            this.cbAerztVorbereitung.Text = "Ärztliche Vorbereitung";
             this.cbAerztVorbereitung.Visible = false;
             // 
             // lblVerabreichung
@@ -487,7 +487,7 @@
             this.cbPackungsEinheit.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cbPackungsEinheit.BerufsstandGruppeJNA = -1;
             this.cbPackungsEinheit.ExactMatch = true;
-            this.cbPackungsEinheit.Group = "MEH";
+            this.cbPackungsEinheit.Group = "PEH";
             this.cbPackungsEinheit.ID_PEP = -1;
             this.cbPackungsEinheit.Location = new System.Drawing.Point(136, 217);
             this.cbPackungsEinheit.MaxLength = 15;

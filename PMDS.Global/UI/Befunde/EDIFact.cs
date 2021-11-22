@@ -636,18 +636,19 @@ namespace EDIFact
                             if (Befund.IsDicomStudy)
                             {
                                 FileIn = System.IO.Path.Combine(Befund.Verzeichnis, Befund.BezeichnungFile);
-                                Chilkat.Zip zip = new Chilkat.Zip();
-                                zip.UnlockComponent("S2ENGINEERZIP_SBV9zXKx4T55");
-
-                                FileInfo fi = new FileInfo(FileIn);
-                                //Befund.DateiType = ENV.BefundTypText(eBefundTyp.ZIP);    //os 150998 warum?
-                                Befund.SizeDoku = Befund.byteDicomSeriesFile.Length;
-                                Dateiname = fi.Name + ENV.BefundTypText(eBefundTyp.DICOMDIR) + ENV.BefundTypText(eBefundTyp.ZIP);
-                                BezeichnungFile += ENV.BefundTypText(eBefundTyp.DICOM);
-                                string FileOut = System.IO.Path.Combine(fi.DirectoryName, Dateiname);
-                                zip.NewZip(FileOut);
-                                zip.OpenFromByteData(Befund.byteDicomSeriesFile);
-                                zip.WriteZipAndClose();
+                                using (Chilkat.Zip zip = new Chilkat.Zip())
+                                {
+                                    zip.UnlockComponent("S2ENG.CB1032020_S4CwQSty6L2t");
+                                    FileInfo fi = new FileInfo(FileIn);
+                                    //Befund.DateiType = ENV.BefundTypText(eBefundTyp.ZIP);    //os 150998 warum?
+                                    Befund.SizeDoku = Befund.byteDicomSeriesFile.Length;
+                                    Dateiname = fi.Name + ENV.BefundTypText(eBefundTyp.DICOMDIR) + ENV.BefundTypText(eBefundTyp.ZIP);
+                                    BezeichnungFile += ENV.BefundTypText(eBefundTyp.DICOM);
+                                    string FileOut = System.IO.Path.Combine(fi.DirectoryName, Dateiname);
+                                    zip.NewZip(FileOut);
+                                    zip.OpenFromByteData(Befund.byteDicomSeriesFile);
+                                    zip.WriteZipAndClose();
+                                }
                             }
 
                             string tmpDateiType = Befund.IsDicomStudy ? ENV.BefundTypText(eBefundTyp.ZIP) : Befund.DateiType;
@@ -921,7 +922,7 @@ namespace EDIFact
                         using (Chilkat.Zip zip = new Chilkat.Zip())
                         {
                             //Verzeichnis inkl. Unterverzeichnisse in Zip-File speichern
-                            zip.UnlockComponent("S2ENGINEERZIP_SBV9zXKx4T55");
+                            zip.UnlockComponent("S2ENG.CB1032020_S4CwQSty6L2t");
                             zip.NewZip("not_used.zip");
                             FileInfo fi = new FileInfo(Datei);
                             zip.AppendFiles(System.IO.Path.Combine(fi.DirectoryName, "*.*"), true);
@@ -969,7 +970,7 @@ namespace EDIFact
                     //ZIP temporär entpacken
                     using (Chilkat.Zip zip = new Chilkat.Zip())
                     {
-                        zip.UnlockComponent("S2ENGINEERZIP_SBV9zXKx4T55");
+                        zip.UnlockComponent("S2ENG.CB1032020_S4CwQSty6L2t");
                         zip.OpenZip(Datei);
                         zip.Unzip(tmpDir);
                     }

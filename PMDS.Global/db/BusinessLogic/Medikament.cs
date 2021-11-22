@@ -38,9 +38,9 @@ namespace PMDS.BusinessLogic
 			_db.Write(dt);
 		}
 
-        public PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable AllMedikamenteBig(int Aktuell) 
+        public PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable AllMedikamenteBig(int Aktuell, bool ReadAll) 
 		{
-            return _db.AllMedikamenteBig(Aktuell);
+            return _db.AllMedikamenteBig(Aktuell, ReadAll);
 		}
         
 		/// Ermittelt den Datensatz zur ID und liefert einen Datatable zurück

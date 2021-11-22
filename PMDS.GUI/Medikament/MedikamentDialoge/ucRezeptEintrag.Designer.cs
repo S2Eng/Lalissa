@@ -51,18 +51,20 @@
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.lblVerschreibungVon = new QS2.Desktop.ControlManagment.BaseLabel();
             this.dtpAbgebenVon = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.dtpAbgebenBis = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -118,6 +120,8 @@
             this.cmbEinheit = new PMDS.GUI.BaseControls.AuswahlGruppeCombo();
             this.ucStandardZeiten1 = new PMDS.GUI.ucStandardZeiten();
             this.ucWochenTage21 = new PMDS.GUI.ucWochenTage2();
+            this.lblSignatur = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.pnlPackungBeschreibung = new Infragistics.Win.Misc.UltraPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenVon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpAbgebenBis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.opWiederholungstyp)).BeginInit();
@@ -141,6 +145,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).BeginInit();
+            this.pnlPackungBeschreibung.ClientArea.SuspendLayout();
+            this.pnlPackungBeschreibung.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblVerschreibungVon
@@ -148,7 +154,7 @@
             appearance1.FontData.SizeInPoints = 8F;
             this.lblVerschreibungVon.Appearance = appearance1;
             this.lblVerschreibungVon.AutoSize = true;
-            this.lblVerschreibungVon.Location = new System.Drawing.Point(11, 35);
+            this.lblVerschreibungVon.Location = new System.Drawing.Point(12, 76);
             this.lblVerschreibungVon.Name = "lblVerschreibungVon";
             this.lblVerschreibungVon.Size = new System.Drawing.Size(96, 14);
             this.lblVerschreibungVon.TabIndex = 140;
@@ -158,7 +164,7 @@
             // 
             this.dtpAbgebenVon.DateTime = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
             this.dtpAbgebenVon.FormatString = "";
-            this.dtpAbgebenVon.Location = new System.Drawing.Point(116, 31);
+            this.dtpAbgebenVon.Location = new System.Drawing.Point(117, 72);
             this.dtpAbgebenVon.MaskInput = "dd.mm.yyyy hh:mm:ss";
             this.dtpAbgebenVon.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
             this.dtpAbgebenVon.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
@@ -166,7 +172,7 @@
             this.dtpAbgebenVon.ownFormat = "";
             this.dtpAbgebenVon.ownMaskInput = "";
             this.dtpAbgebenVon.Size = new System.Drawing.Size(145, 21);
-            this.dtpAbgebenVon.TabIndex = 1;
+            this.dtpAbgebenVon.TabIndex = 5;
             this.dtpAbgebenVon.Value = new System.DateTime(2007, 6, 11, 0, 0, 0, 0);
             this.dtpAbgebenVon.ValueChanged += new System.EventHandler(this.dtpAbgebenVon_ValueChanged);
             // 
@@ -174,13 +180,13 @@
             // 
             this.dtpAbgebenBis.DateTime = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpAbgebenBis.FormatString = "";
-            this.dtpAbgebenBis.Location = new System.Drawing.Point(115, 58);
+            this.dtpAbgebenBis.Location = new System.Drawing.Point(116, 99);
             this.dtpAbgebenBis.MaskInput = "dd.mm.yyyy hh:mm:ss";
             this.dtpAbgebenBis.Name = "dtpAbgebenBis";
             this.dtpAbgebenBis.ownFormat = "";
             this.dtpAbgebenBis.ownMaskInput = "";
             this.dtpAbgebenBis.Size = new System.Drawing.Size(146, 21);
-            this.dtpAbgebenBis.TabIndex = 4;
+            this.dtpAbgebenBis.TabIndex = 8;
             this.dtpAbgebenBis.Value = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpAbgebenBis.ValueChanged += new System.EventHandler(this.dtpAbgebenBis_ValueChanged);
             // 
@@ -189,7 +195,7 @@
             appearance2.FontData.SizeInPoints = 8F;
             this.lblApplikationsform.Appearance = appearance2;
             this.lblApplikationsform.AutoSize = true;
-            this.lblApplikationsform.Location = new System.Drawing.Point(10, 89);
+            this.lblApplikationsform.Location = new System.Drawing.Point(11, 130);
             this.lblApplikationsform.Name = "lblApplikationsform";
             this.lblApplikationsform.Size = new System.Drawing.Size(85, 14);
             this.lblApplikationsform.TabIndex = 142;
@@ -210,7 +216,7 @@
             valueListItem2,
             valueListItem3});
             this.opWiederholungstyp.ItemSpacingVertical = 5;
-            this.opWiederholungstyp.Location = new System.Drawing.Point(116, 166);
+            this.opWiederholungstyp.Location = new System.Drawing.Point(116, 163);
             this.opWiederholungstyp.Name = "opWiederholungstyp";
             this.opWiederholungstyp.Size = new System.Drawing.Size(57, 61);
             this.opWiederholungstyp.TabIndex = 100;
@@ -225,10 +231,10 @@
             this.txtWiedWertAlle.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.txtWiedWertAlle.Enabled = false;
             this.txtWiedWertAlle.InputMask = "                 nnn";
-            this.txtWiedWertAlle.Location = new System.Drawing.Point(184, 183);
+            this.txtWiedWertAlle.Location = new System.Drawing.Point(168, 180);
             this.txtWiedWertAlle.Name = "txtWiedWertAlle";
             this.txtWiedWertAlle.NonAutoSizeHeight = 20;
-            this.txtWiedWertAlle.Size = new System.Drawing.Size(77, 20);
+            this.txtWiedWertAlle.Size = new System.Drawing.Size(80, 20);
             this.txtWiedWertAlle.TabIndex = 101;
             this.txtWiedWertAlle.Text = "                 ";
             // 
@@ -240,12 +246,12 @@
             this.txtWiedWertJeden.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.txtWiedWertJeden.Enabled = false;
             this.txtWiedWertJeden.InputMask = "                   nn";
-            this.txtWiedWertJeden.Location = new System.Drawing.Point(184, 205);
+            this.txtWiedWertJeden.Location = new System.Drawing.Point(168, 202);
             this.txtWiedWertJeden.MaxValue = ((short)(31));
             this.txtWiedWertJeden.MinValue = ((short)(1));
             this.txtWiedWertJeden.Name = "txtWiedWertJeden";
             this.txtWiedWertJeden.NonAutoSizeHeight = 20;
-            this.txtWiedWertJeden.Size = new System.Drawing.Size(77, 20);
+            this.txtWiedWertJeden.Size = new System.Drawing.Size(80, 20);
             this.txtWiedWertJeden.TabIndex = 103;
             this.txtWiedWertJeden.Text = "                   ";
             // 
@@ -264,7 +270,7 @@
             valueListItem4,
             valueListItem5,
             valueListItem8});
-            this.opWiedheinheit.Location = new System.Drawing.Point(268, 186);
+            this.opWiedheinheit.Location = new System.Drawing.Point(252, 183);
             this.opWiedheinheit.Name = "opWiedheinheit";
             this.opWiedheinheit.Size = new System.Drawing.Size(177, 16);
             this.opWiedheinheit.TabIndex = 102;
@@ -276,7 +282,7 @@
             appearance5.FontData.SizeInPoints = 8F;
             this.lblNTenDesMonats.Appearance = appearance5;
             this.lblNTenDesMonats.AutoSize = true;
-            this.lblNTenDesMonats.Location = new System.Drawing.Point(268, 208);
+            this.lblNTenDesMonats.Location = new System.Drawing.Point(252, 205);
             this.lblNTenDesMonats.Name = "lblNTenDesMonats";
             this.lblNTenDesMonats.Size = new System.Drawing.Size(82, 14);
             this.lblNTenDesMonats.TabIndex = 104;
@@ -287,7 +293,7 @@
             appearance6.FontData.SizeInPoints = 8F;
             this.ultraLabel5.Appearance = appearance6;
             this.ultraLabel5.AutoSize = true;
-            this.ultraLabel5.Location = new System.Drawing.Point(59, 293);
+            this.ultraLabel5.Location = new System.Drawing.Point(59, 280);
             this.ultraLabel5.Name = "ultraLabel5";
             this.ultraLabel5.Size = new System.Drawing.Size(38, 14);
             this.ultraLabel5.TabIndex = 163;
@@ -300,7 +306,7 @@
             this.zp4.Appearance = appearance7;
             this.zp4.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp4.InputMask = "nnnnn.nn";
-            this.zp4.Location = new System.Drawing.Point(335, 290);
+            this.zp4.Location = new System.Drawing.Point(335, 277);
             this.zp4.Name = "zp4";
             this.zp4.NonAutoSizeHeight = 20;
             this.zp4.Size = new System.Drawing.Size(53, 20);
@@ -313,7 +319,7 @@
             this.zp3.Appearance = appearance8;
             this.zp3.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp3.InputMask = "nnnnn.nn";
-            this.zp3.Location = new System.Drawing.Point(280, 290);
+            this.zp3.Location = new System.Drawing.Point(280, 277);
             this.zp3.Name = "zp3";
             this.zp3.NonAutoSizeHeight = 20;
             this.zp3.Size = new System.Drawing.Size(53, 20);
@@ -326,7 +332,7 @@
             this.zp2.Appearance = appearance9;
             this.zp2.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp2.InputMask = "nnnnn.nn";
-            this.zp2.Location = new System.Drawing.Point(225, 290);
+            this.zp2.Location = new System.Drawing.Point(225, 277);
             this.zp2.Name = "zp2";
             this.zp2.NonAutoSizeHeight = 20;
             this.zp2.Size = new System.Drawing.Size(53, 20);
@@ -339,7 +345,7 @@
             this.zp1.Appearance = appearance10;
             this.zp1.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp1.InputMask = "nnnnn.nn";
-            this.zp1.Location = new System.Drawing.Point(170, 290);
+            this.zp1.Location = new System.Drawing.Point(170, 277);
             this.zp1.Name = "zp1";
             this.zp1.NonAutoSizeHeight = 20;
             this.zp1.Size = new System.Drawing.Size(53, 20);
@@ -353,7 +359,7 @@
             this.zp0.Appearance = appearance11;
             this.zp0.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp0.InputMask = "nnnnn.nn";
-            this.zp0.Location = new System.Drawing.Point(115, 290);
+            this.zp0.Location = new System.Drawing.Point(115, 277);
             this.zp0.Name = "zp0";
             this.zp0.NonAutoSizeHeight = 20;
             this.zp0.Size = new System.Drawing.Size(53, 20);
@@ -362,11 +368,11 @@
             // cbBeaufsichtigungJN
             // 
             this.cbBeaufsichtigungJN.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbBeaufsichtigungJN.Location = new System.Drawing.Point(11, 322);
+            this.cbBeaufsichtigungJN.Location = new System.Drawing.Point(11, 307);
             this.cbBeaufsichtigungJN.Name = "cbBeaufsichtigungJN";
-            this.cbBeaufsichtigungJN.Size = new System.Drawing.Size(118, 17);
+            this.cbBeaufsichtigungJN.Size = new System.Drawing.Size(118, 28);
             this.cbBeaufsichtigungJN.TabIndex = 114;
-            this.cbBeaufsichtigungJN.Text = "Beaufsichtigt";
+            this.cbBeaufsichtigungJN.Text = "Einnahme beaufsichtigt";
             this.cbBeaufsichtigungJN.CheckedChanged += new System.EventHandler(this.cbBeaufsichtigungJN_CheckedChanged);
             // 
             // lblHerrichten
@@ -385,11 +391,11 @@
             appearance13.TextHAlignAsString = "Left";
             appearance13.TextVAlignAsString = "Middle";
             this.lblVerabreichung.Appearance = appearance13;
-            this.lblVerabreichung.Location = new System.Drawing.Point(300, 344);
+            this.lblVerabreichung.Location = new System.Drawing.Point(310, 344);
             this.lblVerabreichung.Name = "lblVerabreichung";
-            this.lblVerabreichung.Size = new System.Drawing.Size(87, 21);
+            this.lblVerabreichung.Size = new System.Drawing.Size(82, 21);
             this.lblVerabreichung.TabIndex = 170;
-            this.lblVerabreichung.Text = "Verabreichung";
+            this.lblVerabreichung.Text = "Verabreichen";
             // 
             // txtAnmerkung
             // 
@@ -397,7 +403,7 @@
             this.txtAnmerkung.MaxLength = 255;
             this.txtAnmerkung.Multiline = true;
             this.txtAnmerkung.Name = "txtAnmerkung";
-            this.txtAnmerkung.Size = new System.Drawing.Size(553, 50);
+            this.txtAnmerkung.Size = new System.Drawing.Size(523, 50);
             this.txtAnmerkung.TabIndex = 117;
             // 
             // lblIndikationAnmerkung
@@ -416,7 +422,7 @@
             appearance15.FontData.SizeInPoints = 8F;
             this.lblPackungsgrösse.Appearance = appearance15;
             this.lblPackungsgrösse.AutoSize = true;
-            this.lblPackungsgrösse.Location = new System.Drawing.Point(10, 118);
+            this.lblPackungsgrösse.Location = new System.Drawing.Point(3, 6);
             this.lblPackungsgrösse.Name = "lblPackungsgrösse";
             this.lblPackungsgrösse.Size = new System.Drawing.Size(81, 14);
             this.lblPackungsgrösse.TabIndex = 173;
@@ -425,15 +431,15 @@
             // txtPackGr
             // 
             appearance16.BackColorDisabled = System.Drawing.Color.White;
-            appearance16.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance16.ForeColorDisabled = System.Drawing.Color.DimGray;
             this.txtPackGr.Appearance = appearance16;
             this.txtPackGr.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.txtPackGr.InputMask = "nnnnnn";
-            this.txtPackGr.Location = new System.Drawing.Point(114, 114);
+            this.txtPackGr.Location = new System.Drawing.Point(107, 2);
             this.txtPackGr.Name = "txtPackGr";
             this.txtPackGr.NonAutoSizeHeight = 20;
             this.txtPackGr.Size = new System.Drawing.Size(50, 20);
-            this.txtPackGr.TabIndex = 7;
+            this.txtPackGr.TabIndex = 2;
             // 
             // errorProvider1
             // 
@@ -441,10 +447,10 @@
             // 
             // ultraLabel10
             // 
-            appearance27.FontData.SizeInPoints = 8F;
-            this.ultraLabel10.Appearance = appearance27;
+            appearance29.FontData.SizeInPoints = 8F;
+            this.ultraLabel10.Appearance = appearance29;
             this.ultraLabel10.AutoSize = true;
-            this.ultraLabel10.Location = new System.Drawing.Point(570, 267);
+            this.ultraLabel10.Location = new System.Drawing.Point(570, 256);
             this.ultraLabel10.Name = "ultraLabel10";
             this.ultraLabel10.Size = new System.Drawing.Size(38, 14);
             this.ultraLabel10.TabIndex = 175;
@@ -452,10 +458,10 @@
             // 
             // lblWochentage
             // 
-            appearance26.TextHAlignAsString = "Left";
-            appearance26.TextVAlignAsString = "Middle";
-            this.lblWochentage.Appearance = appearance26;
-            this.lblWochentage.Location = new System.Drawing.Point(447, 185);
+            appearance28.TextHAlignAsString = "Left";
+            appearance28.TextVAlignAsString = "Middle";
+            this.lblWochentage.Appearance = appearance28;
+            this.lblWochentage.Location = new System.Drawing.Point(429, 182);
             this.lblWochentage.Name = "lblWochentage";
             this.lblWochentage.Size = new System.Drawing.Size(69, 16);
             this.lblWochentage.TabIndex = 176;
@@ -463,8 +469,8 @@
             // 
             // lblMedikament
             // 
-            appearance25.FontData.SizeInPoints = 8F;
-            this.lblMedikament.Appearance = appearance25;
+            appearance27.FontData.SizeInPoints = 8F;
+            this.lblMedikament.Appearance = appearance27;
             this.lblMedikament.AutoSize = true;
             this.lblMedikament.Location = new System.Drawing.Point(11, 8);
             this.lblMedikament.Name = "lblMedikament";
@@ -474,7 +480,7 @@
             // 
             // cbNuechtern
             // 
-            this.cbNuechtern.Location = new System.Drawing.Point(11, 245);
+            this.cbNuechtern.Location = new System.Drawing.Point(11, 234);
             this.cbNuechtern.Name = "cbNuechtern";
             this.cbNuechtern.Size = new System.Drawing.Size(106, 20);
             this.cbNuechtern.TabIndex = 106;
@@ -483,9 +489,9 @@
             // 
             // lblGändertBeendet
             // 
-            appearance24.TextHAlignAsString = "Left";
-            appearance24.TextVAlignAsString = "Middle";
-            this.lblGändertBeendet.Appearance = appearance24;
+            appearance26.TextHAlignAsString = "Left";
+            appearance26.TextVAlignAsString = "Middle";
+            this.lblGändertBeendet.Appearance = appearance26;
             this.lblGändertBeendet.Location = new System.Drawing.Point(11, 504);
             this.lblGändertBeendet.Name = "lblGändertBeendet";
             this.lblGändertBeendet.Size = new System.Drawing.Size(103, 29);
@@ -494,9 +500,9 @@
             // 
             // lblRezeptdaten
             // 
-            appearance23.TextHAlignAsString = "Left";
-            appearance23.TextVAlignAsString = "Middle";
-            this.lblRezeptdaten.Appearance = appearance23;
+            appearance25.TextHAlignAsString = "Left";
+            appearance25.TextVAlignAsString = "Middle";
+            this.lblRezeptdaten.Appearance = appearance25;
             this.lblRezeptdaten.Location = new System.Drawing.Point(11, 430);
             this.lblRezeptdaten.Name = "lblRezeptdaten";
             this.lblRezeptdaten.Size = new System.Drawing.Size(81, 18);
@@ -509,24 +515,24 @@
             this.txtRezeptDaten.MaxLength = 255;
             this.txtRezeptDaten.Multiline = true;
             this.txtRezeptDaten.Name = "txtRezeptDaten";
-            this.txtRezeptDaten.Size = new System.Drawing.Size(553, 47);
+            this.txtRezeptDaten.Size = new System.Drawing.Size(523, 47);
             this.txtRezeptDaten.TabIndex = 119;
             // 
             // cbBis
             // 
-            this.cbBis.Location = new System.Drawing.Point(10, 58);
+            this.cbBis.Location = new System.Drawing.Point(11, 99);
             this.cbBis.Name = "cbBis";
             this.cbBis.Size = new System.Drawing.Size(43, 20);
-            this.cbBis.TabIndex = 3;
+            this.cbBis.TabIndex = 7;
             this.cbBis.Text = "bis";
             this.cbBis.CheckedChanged += new System.EventHandler(this.cbBis_CheckedChanged);
             // 
             // lblPackungseinheit
             // 
-            appearance22.FontData.SizeInPoints = 8F;
-            this.lblPackungseinheit.Appearance = appearance22;
+            appearance18.FontData.SizeInPoints = 8F;
+            this.lblPackungseinheit.Appearance = appearance18;
             this.lblPackungseinheit.AutoSize = true;
-            this.lblPackungseinheit.Location = new System.Drawing.Point(184, 118);
+            this.lblPackungseinheit.Location = new System.Drawing.Point(177, 6);
             this.lblPackungseinheit.Name = "lblPackungseinheit";
             this.lblPackungseinheit.Size = new System.Drawing.Size(44, 14);
             this.lblPackungseinheit.TabIndex = 187;
@@ -534,10 +540,10 @@
             // 
             // lblArztAngeordnet
             // 
-            appearance21.FontData.SizeInPoints = 8F;
-            this.lblArztAngeordnet.Appearance = appearance21;
+            appearance24.FontData.SizeInPoints = 8F;
+            this.lblArztAngeordnet.Appearance = appearance24;
             this.lblArztAngeordnet.AutoSize = true;
-            this.lblArztAngeordnet.Location = new System.Drawing.Point(299, 34);
+            this.lblArztAngeordnet.Location = new System.Drawing.Point(300, 75);
             this.lblArztAngeordnet.Name = "lblArztAngeordnet";
             this.lblArztAngeordnet.Size = new System.Drawing.Size(82, 14);
             this.lblArztAngeordnet.TabIndex = 189;
@@ -546,17 +552,17 @@
             // cbPackungsanzahl
             // 
             this.cbPackungsanzahl.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cbPackungsanzahl.Location = new System.Drawing.Point(599, 114);
+            this.cbPackungsanzahl.Location = new System.Drawing.Point(569, 33);
             this.cbPackungsanzahl.Name = "cbPackungsanzahl";
             this.cbPackungsanzahl.Size = new System.Drawing.Size(69, 21);
-            this.cbPackungsanzahl.TabIndex = 9;
+            this.cbPackungsanzahl.TabIndex = 4;
             // 
             // lblPackungsanzahl
             // 
-            appearance20.FontData.SizeInPoints = 8F;
-            this.lblPackungsanzahl.Appearance = appearance20;
+            appearance23.FontData.SizeInPoints = 8F;
+            this.lblPackungsanzahl.Appearance = appearance23;
             this.lblPackungsanzahl.AutoSize = true;
-            this.lblPackungsanzahl.Location = new System.Drawing.Point(573, 118);
+            this.lblPackungsanzahl.Location = new System.Drawing.Point(543, 37);
             this.lblPackungsanzahl.Name = "lblPackungsanzahl";
             this.lblPackungsanzahl.Size = new System.Drawing.Size(20, 14);
             this.lblPackungsanzahl.TabIndex = 191;
@@ -565,7 +571,7 @@
             // lblTagesbeginn
             // 
             this.lblTagesbeginn.AutoSize = true;
-            this.lblTagesbeginn.Location = new System.Drawing.Point(209, 35);
+            this.lblTagesbeginn.Location = new System.Drawing.Point(210, 76);
             this.lblTagesbeginn.Name = "lblTagesbeginn";
             this.lblTagesbeginn.Size = new System.Drawing.Size(69, 13);
             this.lblTagesbeginn.TabIndex = 192;
@@ -575,7 +581,7 @@
             // lblTagesende
             // 
             this.lblTagesende.AutoSize = true;
-            this.lblTagesende.Location = new System.Drawing.Point(209, 63);
+            this.lblTagesende.Location = new System.Drawing.Point(210, 104);
             this.lblTagesende.Name = "lblTagesende";
             this.lblTagesende.Size = new System.Drawing.Size(69, 13);
             this.lblTagesende.TabIndex = 193;
@@ -584,9 +590,11 @@
             // 
             // txtMedikament
             // 
-            appearance19.BackColor = System.Drawing.Color.White;
-            appearance19.BackColorDisabled2 = System.Drawing.Color.White;
-            this.txtMedikament.Appearance = appearance19;
+            appearance22.BackColor = System.Drawing.Color.White;
+            appearance22.BackColorDisabled = System.Drawing.Color.White;
+            appearance22.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance22.ForeColorDisabled = System.Drawing.Color.DimGray;
+            this.txtMedikament.Appearance = appearance22;
             this.txtMedikament.BackColor = System.Drawing.Color.White;
             this.txtMedikament.Enabled = false;
             this.txtMedikament.Location = new System.Drawing.Point(116, 4);
@@ -600,24 +608,24 @@
             // btnSearchMedikament
             // 
             this.btnSearchMedikament.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance18.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance18.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearchMedikament.Appearance = appearance18;
+            appearance21.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearchMedikament.Appearance = appearance21;
             this.btnSearchMedikament.AutoWorkLayout = false;
             this.btnSearchMedikament.ImageSize = new System.Drawing.Size(12, 12);
             this.btnSearchMedikament.IsStandardControl = false;
             this.btnSearchMedikament.Location = new System.Drawing.Point(641, 1);
             this.btnSearchMedikament.Name = "btnSearchMedikament";
             this.btnSearchMedikament.Size = new System.Drawing.Size(28, 27);
-            this.btnSearchMedikament.TabIndex = 0;
+            this.btnSearchMedikament.TabIndex = 1;
             this.btnSearchMedikament.Click += new System.EventHandler(this.btnSearchMedikament_Click);
             // 
             // lblArztAbgesetzt
             // 
-            appearance17.FontData.SizeInPoints = 8F;
-            this.lblArztAbgesetzt.Appearance = appearance17;
+            appearance20.FontData.SizeInPoints = 8F;
+            this.lblArztAbgesetzt.Appearance = appearance20;
             this.lblArztAbgesetzt.AutoSize = true;
-            this.lblArztAbgesetzt.Location = new System.Drawing.Point(298, 62);
+            this.lblArztAbgesetzt.Location = new System.Drawing.Point(299, 103);
             this.lblArztAbgesetzt.Name = "lblArztAbgesetzt";
             this.lblArztAbgesetzt.Size = new System.Drawing.Size(74, 14);
             this.lblArztAbgesetzt.TabIndex = 195;
@@ -627,10 +635,10 @@
             // cboAerzteAbgesetzt
             // 
             this.cboAerzteAbgesetzt.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cboAerzteAbgesetzt.Location = new System.Drawing.Point(387, 58);
+            this.cboAerzteAbgesetzt.Location = new System.Drawing.Point(393, 99);
             this.cboAerzteAbgesetzt.Name = "cboAerzteAbgesetzt";
-            this.cboAerzteAbgesetzt.Size = new System.Drawing.Size(281, 21);
-            this.cboAerzteAbgesetzt.TabIndex = 5;
+            this.cboAerzteAbgesetzt.Size = new System.Drawing.Size(246, 21);
+            this.cboAerzteAbgesetzt.TabIndex = 9;
             this.cboAerzteAbgesetzt.Visible = false;
             // 
             // chkGegenzeichnen
@@ -687,30 +695,33 @@
             // 
             // ucPatientAerzte1
             // 
-            this.ucPatientAerzte1.Location = new System.Drawing.Point(388, 31);
+            this.ucPatientAerzte1.Location = new System.Drawing.Point(393, 72);
             this.ucPatientAerzte1.Name = "ucPatientAerzte1";
             this.ucPatientAerzte1.SelctedIDAerzte = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.ucPatientAerzte1.Size = new System.Drawing.Size(280, 24);
-            this.ucPatientAerzte1.TabIndex = 2;
+            this.ucPatientAerzte1.Size = new System.Drawing.Size(249, 24);
+            this.ucPatientAerzte1.TabIndex = 6;
             // 
             // cbPackungsEinheit
             // 
             this.cbPackungsEinheit.AddEmptyEntry = false;
+            appearance17.BackColorDisabled = System.Drawing.Color.White;
+            appearance17.ForeColorDisabled = System.Drawing.Color.DimGray;
+            this.cbPackungsEinheit.Appearance = appearance17;
             this.cbPackungsEinheit.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cbPackungsEinheit.AutoOpenCBO = true;
             this.cbPackungsEinheit.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cbPackungsEinheit.BerufsstandGruppeJNA = -1;
             this.cbPackungsEinheit.ExactMatch = true;
-            this.cbPackungsEinheit.Group = "MEH";
+            this.cbPackungsEinheit.Group = "PEH";
             this.cbPackungsEinheit.ID_PEP = -1;
-            this.cbPackungsEinheit.Location = new System.Drawing.Point(234, 114);
+            this.cbPackungsEinheit.Location = new System.Drawing.Point(227, 2);
             this.cbPackungsEinheit.MaxLength = 15;
             this.cbPackungsEinheit.Name = "cbPackungsEinheit";
             this.cbPackungsEinheit.PflichtJN = false;
             this.cbPackungsEinheit.ShowAddButton = true;
-            this.cbPackungsEinheit.Size = new System.Drawing.Size(332, 21);
+            this.cbPackungsEinheit.Size = new System.Drawing.Size(270, 21);
             this.cbPackungsEinheit.sys = false;
-            this.cbPackungsEinheit.TabIndex = 8;
+            this.cbPackungsEinheit.TabIndex = 3;
             // 
             // userCombo1
             // 
@@ -724,7 +735,7 @@
             // 
             this.cmbVerabreichungsart.Location = new System.Drawing.Point(393, 344);
             this.cmbVerabreichungsart.Name = "cmbVerabreichungsart";
-            this.cmbVerabreichungsart.Size = new System.Drawing.Size(276, 21);
+            this.cmbVerabreichungsart.Size = new System.Drawing.Size(245, 21);
             this.cmbVerabreichungsart.TabIndex = 116;
             // 
             // cmbHerrichten
@@ -738,8 +749,8 @@
             // cmbApplikationsform
             // 
             this.cmbApplikationsform.AddEmptyEntry = false;
-            appearance28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.cmbApplikationsform.Appearance = appearance28;
+            appearance30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cmbApplikationsform.Appearance = appearance30;
             this.cmbApplikationsform.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
             this.cmbApplikationsform.AutoOpenCBO = true;
             this.cmbApplikationsform.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
@@ -748,12 +759,12 @@
             this.cmbApplikationsform.ExactMatch = true;
             this.cmbApplikationsform.Group = "APF";
             this.cmbApplikationsform.ID_PEP = -1;
-            this.cmbApplikationsform.Location = new System.Drawing.Point(114, 85);
+            this.cmbApplikationsform.Location = new System.Drawing.Point(115, 126);
             this.cmbApplikationsform.MaxLength = 15;
             this.cmbApplikationsform.Name = "cmbApplikationsform";
             this.cmbApplikationsform.PflichtJN = true;
             this.cmbApplikationsform.ShowAddButton = true;
-            this.cmbApplikationsform.Size = new System.Drawing.Size(452, 21);
+            this.cmbApplikationsform.Size = new System.Drawing.Size(524, 21);
             this.cmbApplikationsform.sys = false;
             this.cmbApplikationsform.TabIndex = 5;
             // 
@@ -767,37 +778,64 @@
             this.cmbEinheit.ExactMatch = true;
             this.cmbEinheit.Group = "MEH";
             this.cmbEinheit.ID_PEP = -1;
-            this.cmbEinheit.Location = new System.Drawing.Point(393, 289);
+            this.cmbEinheit.Location = new System.Drawing.Point(393, 276);
             this.cmbEinheit.MaxLength = 20;
             this.cmbEinheit.Name = "cmbEinheit";
             this.cmbEinheit.PflichtJN = false;
             this.cmbEinheit.ShowAddButton = true;
-            this.cmbEinheit.Size = new System.Drawing.Size(276, 21);
+            this.cmbEinheit.Size = new System.Drawing.Size(246, 21);
             this.cmbEinheit.sys = false;
             this.cmbEinheit.TabIndex = 113;
             // 
             // ucStandardZeiten1
             // 
             this.ucStandardZeiten1.BkeepStandardzeiten = false;
-            this.ucStandardZeiten1.Location = new System.Drawing.Point(8, 261);
+            this.ucStandardZeiten1.Location = new System.Drawing.Point(8, 250);
             this.ucStandardZeiten1.Name = "ucStandardZeiten1";
             this.ucStandardZeiten1.Size = new System.Drawing.Size(605, 56);
             this.ucStandardZeiten1.TabIndex = 107;
             // 
             // ucWochenTage21
             // 
-            this.ucWochenTage21.Location = new System.Drawing.Point(517, 157);
+            this.ucWochenTage21.Location = new System.Drawing.Point(497, 154);
             this.ucWochenTage21.Name = "ucWochenTage21";
             this.ucWochenTage21.Size = new System.Drawing.Size(157, 49);
             this.ucWochenTage21.TabIndex = 105;
             this.ucWochenTage21.WOCHENTAGE = 127;
             this.ucWochenTage21.ValueChanged += new System.EventHandler(this.ucWochenTage21_ValueChanged);
             // 
+            // lblSignatur
+            // 
+            appearance19.FontData.SizeInPoints = 8F;
+            this.lblSignatur.Appearance = appearance19;
+            this.lblSignatur.AutoSize = true;
+            this.lblSignatur.Location = new System.Drawing.Point(12, 165);
+            this.lblSignatur.Name = "lblSignatur";
+            this.lblSignatur.Size = new System.Drawing.Size(45, 14);
+            this.lblSignatur.TabIndex = 199;
+            this.lblSignatur.Text = "Signatur";
+            // 
+            // pnlPackungBeschreibung
+            // 
+            // 
+            // pnlPackungBeschreibung.ClientArea
+            // 
+            this.pnlPackungBeschreibung.ClientArea.Controls.Add(this.cbPackungsEinheit);
+            this.pnlPackungBeschreibung.ClientArea.Controls.Add(this.lblPackungsgrösse);
+            this.pnlPackungBeschreibung.ClientArea.Controls.Add(this.txtPackGr);
+            this.pnlPackungBeschreibung.ClientArea.Controls.Add(this.lblPackungseinheit);
+            this.pnlPackungBeschreibung.Location = new System.Drawing.Point(10, 31);
+            this.pnlPackungBeschreibung.Name = "pnlPackungBeschreibung";
+            this.pnlPackungBeschreibung.Size = new System.Drawing.Size(499, 25);
+            this.pnlPackungBeschreibung.TabIndex = 200;
+            // 
             // ucRezeptEintrag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this.pnlPackungBeschreibung);
+            this.Controls.Add(this.lblSignatur);
             this.Controls.Add(this.chkHAGPflichtigJN);
             this.Controls.Add(this.chkGegenzeichnen);
             this.Controls.Add(this.cbImportant);
@@ -813,8 +851,6 @@
             this.Controls.Add(this.cbPackungsanzahl);
             this.Controls.Add(this.lblArztAngeordnet);
             this.Controls.Add(this.ucPatientAerzte1);
-            this.Controls.Add(this.lblPackungseinheit);
-            this.Controls.Add(this.cbPackungsEinheit);
             this.Controls.Add(this.cbBis);
             this.Controls.Add(this.txtRezeptDaten);
             this.Controls.Add(this.lblRezeptdaten);
@@ -827,8 +863,6 @@
             this.Controls.Add(this.zp0);
             this.Controls.Add(this.cmbVerabreichungsart);
             this.Controls.Add(this.cmbHerrichten);
-            this.Controls.Add(this.txtPackGr);
-            this.Controls.Add(this.lblPackungsgrösse);
             this.Controls.Add(this.cmbApplikationsform);
             this.Controls.Add(this.txtAnmerkung);
             this.Controls.Add(this.lblIndikationAnmerkung);
@@ -876,6 +910,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbHerrichten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbApplikationsform)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEinheit)).EndInit();
+            this.pnlPackungBeschreibung.ClientArea.ResumeLayout(false);
+            this.pnlPackungBeschreibung.ClientArea.PerformLayout();
+            this.pnlPackungBeschreibung.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -938,5 +975,7 @@
         public QS2.Desktop.ControlManagment.BaseCheckBox chkHAGPflichtigJN;
         public QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpAbgebenVon;
         public QS2.Desktop.ControlManagment.BaseDateTimeEditor dtpAbgebenBis;
+        private QS2.Desktop.ControlManagment.BaseLabel lblSignatur;
+        private Infragistics.Win.Misc.UltraPanel pnlPackungBeschreibung;
     }
 }

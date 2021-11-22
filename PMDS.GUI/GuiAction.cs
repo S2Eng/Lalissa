@@ -1669,10 +1669,12 @@ namespace PMDS.GUI
 		//----------------------------------------------------------------------------
 		public static bool Auswahllisten() 
 		{
-			new frmAuswahl().ShowDialog();
-			return true;
-		}
-
+            using (frmAuswahl frm = new frmAuswahl())
+            {
+                frm.ShowDialog();
+                return true;
+            }
+        }
 
 		//----------------------------------------------------------------------------
 		/// <summary>
@@ -1703,10 +1705,13 @@ namespace PMDS.GUI
 		//----------------------------------------------------------------------------
 		public static bool MedikamentenVerwaltung()
 		{
-			//new frmMedikamentenVerwaltung().ShowDialog();
-            new frmMedikamentenVerwaltung().ShowDialog(); // Neu nach 21.05.2007 MDA
-			return true;
-		}
+            //new frmMedikamentenVerwaltung().ShowDialog();
+            using (frmMedikamentenVerwaltung frm = new frmMedikamentenVerwaltung())
+            {
+                frm.ShowDialog();
+                return true;
+            }
+        }
 
 		//----------------------------------------------------------------------------
 		/// <summary>
@@ -1730,20 +1735,11 @@ namespace PMDS.GUI
 		//----------------------------------------------------------------------------
 		public static bool QuickFilter()
 		{
-
-            //frmQuickfilter2 frmQuickfilter21 = new frmQuickfilter2();
-            //frmQuickfilter21.initControl();
-            //frmQuickfilter21.Show();
-            //return true;
-
-            DialogResult res = new frmManageQuickFilter().ShowDialog();
-            if (res == DialogResult.OK)
+            using (frmManageQuickFilter frm = new frmManageQuickFilter())
             {
-                //ENV.SignalQuickfilterChanged(null);
-                return true;
+                DialogResult res = frm.ShowDialog();
+                return res == DialogResult.OK;
             }
-            else
-                return false;
         }
 
 		//----------------------------------------------------------------------------

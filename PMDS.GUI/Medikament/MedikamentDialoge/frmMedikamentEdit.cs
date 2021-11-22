@@ -80,8 +80,10 @@ namespace PMDS.GUI
             if (ucMedikamentEdit1.ValidateFields())
             {
                 ucMedikamentEdit1.Write();
-                DB.DBMedikament DBMedikament1 = new DB.DBMedikament();
-                DBMedikament1.LoadAllMedikamente(true);
+                using (DB.DBMedikament DBMedikament1 = new DB.DBMedikament())
+                {
+                    DBMedikament1.LoadAllMedikamente(true);
+                }
                 _CanClose = true;
             }
         }

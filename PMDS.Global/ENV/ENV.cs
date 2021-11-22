@@ -120,10 +120,11 @@ namespace PMDS.Global
         public static string MainCaption = "PMDS";
         public static PMDS.db.Entities.Benutzer ActiveUser;
 
-        public static string MedikamenteImportType = "ftp";
-        public static string ftpFileImportMedikamente = "";
-        public static string ftpUserName = "";
-        public static string ftpPassword = "";
+        public static string MedikamenteImportType = "ftp";         //oder file, oder service
+        public static string ApoToken = "";                         //bei service
+        public static string ftpFileImportMedikamente = "";         //bei file
+        public static string ftpUserName = "";                      //bei ftp
+        public static string ftpPassword = "";                      //bei ftp
 
         public static string ImportBefundeVerzeichnis = "";
         public static string ImportBefundeArchivOrdner = "";
@@ -1410,6 +1411,8 @@ namespace PMDS.Global
                 SetENVValue("ftpFileImportMedikamente", ref ENV.ftpFileImportMedikamente);
                 SetENVValue("ftpUserName", ref ENV.ftpUserName);
                 SetENVValue("ftpPassword", ref ENV.ftpPassword, eTrim.no, eDecrypt.PMDSMode);
+                SetENVValue("ApoToken", ref ENV.ApoToken);
+
                 SetENVValue("ProxyJN", ref ENV.ProxyJN);
                 SetENVValue("ProxyUserName", ref ENV.ProxyUserName);
                 SetENVValue("ProxyPassword", ref ENV.ProxyPassword, eTrim.no, eDecrypt.PMDSMode);

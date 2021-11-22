@@ -146,18 +146,23 @@ namespace PMDS.DB
 		/// Liefert alle Ds sortiert nach Bezeichnung
 		/// </summary>
 		//----------------------------------------------------------------------------
-		public dsMedikament.MedikamentDataTable AllMedikamenteBig(int Aktuell) 
+		public dsMedikament.MedikamentDataTable AllMedikamenteBig(int Aktuell, bool ReadAll) 
 		{
             dsMedikament.MedikamentDataTable dt = new  dsMedikament.MedikamentDataTable();
 			try 
 			{
 				daMedikament.SelectCommand.CommandText = _OriginalQueryBig;
                 //string sWhere = this.GetWhereAktuell(true);
-                string sWhereAktuell = "";
+                string sWhereAktuell = " where 1 = 1";
                 if (Aktuell != -1)
                 {
-                    sWhereAktuell = " where Aktuell=" + Aktuell.ToString()  +  " ";
+                    sWhereAktuell += " and Aktuell=" + Aktuell.ToString()  +  " ";
                 }
+                if (!ReadAll)
+                {
+                    sWhereAktuell += " and ID = '" + Guid.Empty.ToString() + "'";
+                }
+
                 daMedikament.SelectCommand.CommandText += sWhereAktuell + " order by bezeichnung ";
 				DataBase.Fill(daMedikament, dt);
 			}
@@ -167,7 +172,6 @@ namespace PMDS.DB
 			}
 			return dt;
 		}
-
 
         public void LoadAllMedikamente(bool loadnew)
         {
@@ -189,6 +193,21 @@ namespace PMDS.DB
                 throw new Exception("LoadAllMedikamente: " + ex.ToString());
             }
         }
+
+        public void ClearMedikamente(bool loadnew)
+        {
+            try
+            {
+                DBMedikament._dsMedikament = new dsMedikament();
+                DBMedikament._dsMedikament.MedikamentSmall.Clear();
+                DBMedikament._MedikamenteLoaded = true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ClearMedikamente: " + ex.ToString());
+            }
+        }
+
         public dsMedikament.MedikamentSmallRow[] GetMedikamente(int aktuell, System.Guid IDMed)
         {
             try

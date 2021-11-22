@@ -12,6 +12,7 @@ using PMDS.GUI.BaseControls;
 using PMDS.Data.Global;
 using PMDS.Data.Patient;
 
+using System.Linq;
 
 
 
@@ -27,18 +28,26 @@ namespace PMDS.GUI
         private Guid _ID = Guid.Empty;
         private PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable _dt;
         private PMDS.BusinessLogic.Medikament _m = new PMDS.BusinessLogic.Medikament();
-        private bool _preventValueChanged = false;
+        private bool _preventValueChanged;
 
         public event EventHandler ValueChanged;
         PMDS.Global.db.ERSystem.PMDSBusinessUI PMDSBusinessUI1 = new Global.db.ERSystem.PMDSBusinessUI();
 
 
-
-
-
         public ucMedikamentEdit()
         {
             InitializeComponent();
+
+            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            {
+                //Wenn es noch keine Auswahlliste PEH gibt -> MEH verwenden
+                if (!(from ausw in db.AuswahlListe
+                      where ausw.IDAuswahlListeGruppe == "PEH"
+                      select ausw).Any())
+                {
+                    this.cbPackungsEinheit.Group = "MEH";
+                }
+            }
 
             cbEinheit.Text = "";
             cbGroup.Text = "";
