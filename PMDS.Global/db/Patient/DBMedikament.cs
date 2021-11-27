@@ -194,13 +194,14 @@ namespace PMDS.DB
             }
         }
 
-        public void ClearMedikamente(bool loadnew)
+        public bool ClearMedikamente()
         {
             try
             {
                 DBMedikament._dsMedikament = new dsMedikament();
                 DBMedikament._dsMedikament.MedikamentSmall.Clear();
                 DBMedikament._MedikamenteLoaded = true;
+                return true;
             }
             catch (Exception ex)
             {

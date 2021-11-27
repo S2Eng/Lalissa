@@ -58,7 +58,10 @@ namespace PMDS.GUI
                                                     cbGroup.Text.Trim(), true, false, (int)this.optAktuellYN.Value);
             }
             else
-                dgMain.DataSource = _Medikament.AllMedikamenteBig((int)this.optAktuellYN.Value, true);
+            {
+                _Medikament.ClearMedikamente();
+                //dgMain.DataSource = _Medikament.AllMedikamenteBig((int)this.optAktuellYN.Value, true);
+            }
 
             this.SetLabelCount();
 
@@ -287,5 +290,29 @@ namespace PMDS.GUI
             }
         }
 
+        private void tbBezeichnung_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (System.Windows.Input.Keyboard.IsKeyUp(System.Windows.Input.Key.Return))
+            {
+                //this.Cursor = Cursors.WaitCursor;
+                //ProcessSearch();
+            }
+        }
+
+        private void tbBezeichnung_ValueChanged(object sender, EventArgs e)
+        {
+            this.timer1.Stop();
+            this.timer1.Interval = 500;
+            this.timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.timer1.Stop();
+            if (!String.IsNullOrWhiteSpace(this.tbBezeichnung.Text))
+            {
+                ProcessSearch();
+            }
+        }
     }
 }

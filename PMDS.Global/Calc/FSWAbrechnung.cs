@@ -421,13 +421,13 @@ namespace PMDS.Global
                     Transaction.SenderAdresse = ENV.FSW_SenderAdresse;
                     Transaction.TransactionID = eZAUFID;
                     Transaction.ArDocument.Referenz = eZAUFID;
-                    Transaction.ArDocument.Rechnungsbetrag = Rechnungsbetrag;
+                    Transaction.ArDocument.Rechnungsbetrag = Rechnungsbetrag + Steuern;
                     Transaction.ArDocument.Anzahl_Rechnungen = ListIDBillsFSW.Count;
 
                     TransactionBW.SenderAdresse = ENV.FSW_SenderAdresse;
                     TransactionBW.TransactionID = eZAUFIDBW;
                     TransactionBW.ArDocument.Referenz = eZAUFIDBW;
-                    TransactionBW.ArDocument.Rechnungsbetrag = RechnungsbetragBW;
+                    TransactionBW.ArDocument.Rechnungsbetrag = RechnungsbetragBW + SteuernBW;
                     TransactionBW.ArDocument.Anzahl_Rechnungen = ListIDBillsFSWBW.Count;
 
                     //lTransactions.Add(Transaction);
@@ -1009,17 +1009,37 @@ namespace PMDS.Global
                                         WriteLogToFile(sftp.LastErrorText);
                                         if (sftp.LastErrorXml.Contains("failed status"))
                                         {
+                                            WriteLogToFile(sftp.LastErrorText);
                                             return sftp.LastErrorText;
                                         }
                                         else
+                                        {
+                                            WriteLogToFile(sftp.LastErrorText);
                                             return "";
+                                        }
                                     }
                                     else
                                     {
                                         WriteLogToFile(sftp.LastErrorText);
                                         return sftp.LastErrorText;
                                     }
+                                else
+                                {
+                                    WriteLogToFile(sftp.LastErrorText);
+                                    return "sFTP-Client-Initialisierung fehlgeschlagen: " + sftp.LastErrorText;
+                                }
+                            else
+                            {
+                                WriteLogToFile(sftp.LastErrorText);
+                                return "sFTP-Client-Authentifizierung fehlgeschlagen: " + sftp.LastErrorText;
+                            }
+                        else
+                        {
+                            WriteLogToFile(sftp.LastErrorText);
+                            return "sFTP-Client-Connect fehlgeschlagen: " + sftp.LastErrorText;
+                        }
                     }
+                    WriteLogToFile(sftp.LastErrorText);
                     return "Undefiniertes Ende der Funktion erkannt.";
                 }
             }

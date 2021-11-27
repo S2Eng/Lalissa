@@ -21,9 +21,6 @@ namespace PMDS.BusinessLogic
 
 		}
 
-
-
-
 		/// Ermittelt sämtliche Datensätze welchen den übergebenen Kriterien entsprechen
 		/// Leere Strings werden nicht ausgewertet
         public PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable ReadMedikament(string LikeforBezeichnung, string LikeforLangText, 
@@ -42,10 +39,15 @@ namespace PMDS.BusinessLogic
 		{
             return _db.AllMedikamenteBig(Aktuell, ReadAll);
 		}
-        
+
+		public bool ClearMedikamente()
+		{
+			return _db.ClearMedikamente();
+		}
+
 		/// Ermittelt den Datensatz zur ID und liefert einen Datatable zurück
 		/// der ist leer wenn der Datensatz nicht gefunden wurde
-        public PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable ReadMedikament(Guid IDMedikament) 
+		public PMDS.Global.db.Patient.dsMedikament.MedikamentDataTable ReadMedikament(Guid IDMedikament) 
 		{
             return _db.ReadMedikament(IDMedikament);
 		}

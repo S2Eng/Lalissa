@@ -122,6 +122,8 @@ namespace PMDS.Global
 
         public static string MedikamenteImportType = "ftp";         //oder file, oder service
         public static string ApoToken = "";                         //bei service
+        public static bool ApoZusatzdaten;                             //oder file, oder service
+        public static string ApoKHIX = "165664200";                   //"165663200" = Modul L, "165664200" = Modul L + A;;
         public static string ftpFileImportMedikamente = "";         //bei file
         public static string ftpUserName = "";                      //bei ftp
         public static string ftpPassword = "";                      //bei ftp
@@ -1412,6 +1414,8 @@ namespace PMDS.Global
                 SetENVValue("ftpUserName", ref ENV.ftpUserName);
                 SetENVValue("ftpPassword", ref ENV.ftpPassword, eTrim.no, eDecrypt.PMDSMode);
                 SetENVValue("ApoToken", ref ENV.ApoToken);
+                SetENVValue("ApoZusatzdaten", ref ENV.ApoZusatzdaten);
+                SetENVValue("ApoKHIX", ref ENV.ApoKHIX);
 
                 SetENVValue("ProxyJN", ref ENV.ProxyJN);
                 SetENVValue("ProxyUserName", ref ENV.ProxyUserName);

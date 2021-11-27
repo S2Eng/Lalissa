@@ -33,7 +33,7 @@ namespace PMDS.GUI
             }
 
             cboMonat.SelectedIndex = 0;
-            pnlMonat.Visible = PMDS.Global.generic.sEquals(PMDS.Global.ENV.MedikamenteImportType, "service");
+            pnlMonat.Visible = PMDS.Global.generic.sEquals(PMDS.Global.ENV.MedikamenteImportType, "service") && PMDS.Global.ENV.ApoZusatzdaten;
             this.btnImport.Appearance.ImageHAlign = Infragistics.Win.HAlign.Right;
             this.btnImport.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Aktualisieren, 32, 32);
             this.btnSave.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Speichern, 32, 32);

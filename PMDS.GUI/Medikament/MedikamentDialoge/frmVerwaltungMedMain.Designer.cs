@@ -201,6 +201,7 @@
             // 
             // pnlMonat
             // 
+            this.pnlMonat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             // 
             // pnlMonat.ClientArea
             // 
