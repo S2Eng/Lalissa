@@ -8,6 +8,8 @@ using Infragistics.Win.UltraWinEditors;
 using System.ComponentModel;
 using Infragistics.Win;
 using PMDS.Global.db.Global;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PMDS.GUI.BaseControls
 {
@@ -16,7 +18,9 @@ namespace PMDS.GUI.BaseControls
 	{
 		private EditorButton _addBtn = new EditorButton("");
 		private string _group = "";
-        private bool    _addEmptyEnry = false;
+        private bool    _addEmptyEnry;
+        private bool _ignoreUnterdruecken = true;     //Column Unterdruecken aus Auswahlliste igonorieren: standardm‰ﬂig alle anzeigen
+        private bool _selectdistinct;
 
         private int _BerufsstandGruppeJNA = -1;
 
@@ -53,12 +57,12 @@ namespace PMDS.GUI.BaseControls
 
         public AuswahlGruppeCombo()
 		{
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
-                if (Group == "FAM")
-                {
-                    bool bStop2 = true;
-                }
+                //if (Group == "FAM")
+                //{
+                //    bool bStop2 = true;
+                //}
 
                 //if (ENV.AppRunning && Group.Trim() != "")
                 //{
@@ -86,10 +90,10 @@ namespace PMDS.GUI.BaseControls
 
         public void initControl()
         {
-            if (Group == "WAT")
-            {
-                bool bStop2 = true;
-            }
+            //if (Group == "WAT")
+            //{
+            //    bool bStop2 = true;
+            //}
 
             if (!this.IsInitialized && System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
@@ -134,9 +138,9 @@ namespace PMDS.GUI.BaseControls
                 this.IsInitialized = true;
             }
         }
+
         public override void RefreshList()
         {
-
             if (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv")
                 return;
 
@@ -149,47 +153,67 @@ namespace PMDS.GUI.BaseControls
 
                 if (ENV.StartupTyp != "auswpep")
                 {
+
+                    List<string> lItems = new List<string>();   //¸fr distinct
+
                     dsAuswahlGruppe.AuswahlListeDataTable t = _grp.AuswahlListe;
                     foreach (dsAuswahlGruppe.AuswahlListeRow r in new AuswahlGruppe(Group).AuswahlListe)
                     {
-                        if (r.IDAuswahlListeGruppe.Trim().Equals("BER", StringComparison.CurrentCultureIgnoreCase))
+                        if (r.IDAuswahlListeGruppe.Trim().Equals("BER", StringComparison.CurrentCultureIgnoreCase))         //Berufsgruppen - Sonderbehandlung
                         {
-                            if (r.Hierarche >= this._SupressLevelHierarchie && ((!r.IstGruppe && this._BerufsstandGruppeJNA == 0) ||
-                                (r.IstGruppe && this._BerufsstandGruppeJNA == 1) ||
-                                (this._BerufsstandGruppeJNA == -1)))
+                            if (r.Hierarche >= this._SupressLevelHierarchie && 
+                                ((!r.IstGruppe && this._BerufsstandGruppeJNA == 0) || (r.IstGruppe && this._BerufsstandGruppeJNA == 1) || this._BerufsstandGruppeJNA == -1)
+                               )
                             {
                                 this.Items.Add(r.ID, r.Bezeichnung);
                             }
                         }
                         else
                         {
-                            this.Items.Add(r.ID, r.Bezeichnung);
+                            if (this._ignoreUnterdruecken)
+                            {
+                                this.Items.Add(r.ID, r.Bezeichnung);
+                                lItems.Add(r.Bezeichnung);
+                            }
+                            else if (!r.Unterdruecken)          //unterdr¸ckte nicht anzeigen
+                            {
+                                if (_selectdistinct && !lItems.Where(a => a == r.Bezeichnung).Any())        //nur eindeutige Rows
+                                {
+                                    this.Items.Add(r.ID, r.Bezeichnung);
+                                    lItems.Add(r.Bezeichnung);
+                                }
+                                else if (!_selectdistinct) 
+                                {
+                                    this.Items.Add(r.ID, r.Bezeichnung);
+                                }
+                            }
                         }
                     }
                 }
                 else
                 {
-                    System.Data.OleDb.OleDbDataAdapter da = new System.Data.OleDb.OleDbDataAdapter();
-                    System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                    cmd.Connection = DBPep.ConnPep;
-                    cmd.CommandText = Group;
-                    da.SelectCommand = cmd;
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    da.Fill(dt);
-                    foreach (System.Data.DataRow r in dt.Rows)
+                    using (System.Data.OleDb.OleDbDataAdapter da = new System.Data.OleDb.OleDbDataAdapter())
                     {
-                        this.Items.Add(r[0].ToString(), r[1].ToString());
+                        System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
+                        cmd.Connection = DBPep.ConnPep;
+                        cmd.CommandText = Group;
+                        da.SelectCommand = cmd;
+                        using (System.Data.DataTable dt = new System.Data.DataTable())
+                        {
+                            da.Fill(dt);
+                            foreach (System.Data.DataRow r in dt.Rows)
+                            {
+                                this.Items.Add(r[0].ToString(), r[1].ToString());
+                            }
+                        }
                     }
                 }
-
             }
             catch (Exception e)
             {
                 ENV.HandleException(e);
             }
         }
-
-
 
         void ENV_AuswahlGruppeListChanged(string Grop)
         {
@@ -267,6 +291,42 @@ namespace PMDS.GUI.BaseControls
                 }
 			}
 		}
+
+        public bool IgnoreUnterdruecken
+        {
+            get { return _ignoreUnterdruecken; }
+            set
+            {
+                try
+                {
+                    _ignoreUnterdruecken = value;
+                    if (!DesignMode)
+                        RefreshList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("IgnoreUnterdruecken: " + ex.ToString());
+                }
+            }
+        }
+
+        public bool SelectDistinct
+        {
+            get { return _selectdistinct; }
+            set
+            {
+                try
+                {
+                    _selectdistinct = value;
+                    if (!DesignMode)
+                        RefreshList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Selectdistinct: " + ex.ToString());
+                }
+            }
+        }
 
         public int BerufsstandGruppeJNA
         {

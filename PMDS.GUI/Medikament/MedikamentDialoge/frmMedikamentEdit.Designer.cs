@@ -49,7 +49,7 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(699, 646);
+            this.btnOK.Location = new System.Drawing.Point(1113, 647);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(103, 34);
@@ -72,7 +72,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(595, 646);
+            this.btnCancel.Location = new System.Drawing.Point(1009, 647);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 34);
@@ -89,11 +89,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucMedikamentEdit1.BEZEICHNUNG = "";
-            this.ucMedikamentEdit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ucMedikamentEdit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ucMedikamentEdit1.Location = new System.Drawing.Point(0, 10);
             this.ucMedikamentEdit1.Margin = new System.Windows.Forms.Padding(4);
             this.ucMedikamentEdit1.Name = "ucMedikamentEdit1";
-            this.ucMedikamentEdit1.Size = new System.Drawing.Size(820, 633);
+            this.ucMedikamentEdit1.Size = new System.Drawing.Size(1235, 634);
             this.ucMedikamentEdit1.TabIndex = 0;
             this.ucMedikamentEdit1.ValueChanged += new System.EventHandler(this.ucMedikamentEdit1_ValueChanged);
             // 
@@ -104,7 +104,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(821, 686);
+            this.ClientSize = new System.Drawing.Size(1235, 687);
             this.ControlBox = false;
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);

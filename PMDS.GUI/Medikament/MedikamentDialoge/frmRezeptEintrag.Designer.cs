@@ -40,17 +40,20 @@
             // ucRezeptEintrag1
             // 
             this.ucRezeptEintrag1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ucRezeptEintrag1.bIsStorno = false;
             this.ucRezeptEintrag1.EintragBearbeitungsmodus = PMDS.Global.BearbeitungsModus.neu;
+            this.ucRezeptEintrag1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucRezeptEintrag1.Location = new System.Drawing.Point(1, 1);
+            this.ucRezeptEintrag1.Margin = new System.Windows.Forms.Padding(4);
             this.ucRezeptEintrag1.Name = "ucRezeptEintrag1";
-            this.ucRezeptEintrag1.Size = new System.Drawing.Size(684, 578);
+            this.ucRezeptEintrag1.Size = new System.Drawing.Size(905, 679);
             this.ucRezeptEintrag1.TabIndex = 0;
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             appearance1.Image = ((object)(resources.GetObject("appearance1.Image")));
-            appearance1.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance1.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnOK.Appearance = appearance1;
             this.btnOK.AutoWorkLayout = false;
@@ -58,11 +61,12 @@
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(621, 585);
+            this.btnOK.Location = new System.Drawing.Point(780, 692);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(51, 32);
+            this.btnOK.Size = new System.Drawing.Size(108, 32);
             this.btnOK.TabIndex = 1;
             this.btnOK.TabStop = false;
+            this.btnOK.Text = "Speichern";
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
             this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -79,9 +83,9 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(522, 585);
+            this.btnCancel.Location = new System.Drawing.Point(666, 692);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(93, 32);
+            this.btnCancel.Size = new System.Drawing.Size(108, 32);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Abbrechen";
@@ -94,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(695, 630);
+            this.ClientSize = new System.Drawing.Size(911, 732);
             this.Controls.Add(this.ucRezeptEintrag1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);

@@ -345,7 +345,7 @@ namespace PMDS.GUI
                 foreach (dsRezeptEintrag.RezeptEintragRow r in lRows)
                 {
                     string sAktion = "";
-                    if (frm.ucRezeptEintrag1._bIsStorno)
+                    if (frm.ucRezeptEintrag1.bIsStorno)
                     {
                         sAktion = QS2.Desktop.ControlManagment.ControlManagment.getRes("STORNIERT") + " (" + r.Bemerkung.Trim() + ")";
                     }
@@ -489,6 +489,18 @@ namespace PMDS.GUI
             }
         }
 
+        private string TruncString(string txt, int maxLength)
+        {
+            if (txt.Length > maxLength)
+            {
+                return txt.Substring(0, maxLength - 3) + "...";
+            }
+            else
+            {
+                return txt.Trim();
+            }
+        }
+
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
             try
@@ -504,6 +516,12 @@ namespace PMDS.GUI
                 if (res == DialogResult.OK)
                 {
                     row.Packungsanzahl = Math.Max(1, row.Packungsanzahl);
+
+                    row.Rezeptdaten = TruncString(row.Rezeptdaten, 255);
+                    row.Packungeinheit = TruncString(row.Packungeinheit, 255);
+                    row.Bemerkung = TruncString(row.Bemerkung, 255);
+                    row.Applikationsform = TruncString(row.Applikationsform, 255);
+                    row.Rezeptdaten = TruncString(row.Rezeptdaten, 255);
                     REZEPTEINTRAEGE.Rows.Add(row);
                     SetActiveRow(row.ID);
                     InitDosierung(dgEintraege.ActiveRow);

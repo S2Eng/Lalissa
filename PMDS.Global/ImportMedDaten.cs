@@ -30,7 +30,7 @@ namespace PMDS.Global
         private dsMedikament dsMedikamentUpdateExisting = new dsMedikament();
         private DBMedikament DBMedikamentUpdateExisting = new DBMedikament();
 
-        private DataTable tKennzeichen, tEinheiten, tMEH, tATCCodes;
+        private DataTable tKennzeichen, tEinheiten, tAppliationsarten, tMEH, tAPF;
 
         private List<string> lRecordsToDelete = new List<string>();
         private string sFile = "";
@@ -308,9 +308,11 @@ namespace PMDS.Global
                         string sGeltungsdatum = xelement.Elements("Ausgabe").First().Attributes("geltungsDatum").First().Value;
                         DateTime Geltungsdatum = new DateTime(Convert.ToInt32(sGeltungsdatum.Substring(0, 4)), Convert.ToInt32(sGeltungsdatum.Substring(sGeltungsdatum.Length - 2, 2)), 1);
 
-                        ManageMEH();
+                        LoadMEH();
+                        LoadAPF();
                         ManageEinheiten(xelement);
                         ManageKennzeichen(xelement);
+                        ManageDarreichungsarten(xelement);
 
                         var vProdukte = from produkt in xProduktdaten.Elements("Produkt") select produkt;
                         int iNew = 0;
@@ -325,6 +327,11 @@ namespace PMDS.Global
                             {
                                 string Aenderungskennzeichen = vArtikel.Attribute("aendKennzeichen").Value;                         //0 = unverändert (wird nicht verarbeitet), 1 = neu, 2 = Änderung (streichen und neu hinzufügen), 3 = Streichung
                                 string Zulassungnummer = vArtikel.Attribute("artikelID").Value;
+
+                                if (Zulassungnummer == "0308005300")
+                                {
+                                    string x = "x";
+                                }
 
                                 if (Aenderungskennzeichen == "2" || Aenderungskennzeichen == "3")
                                 {
@@ -343,15 +350,7 @@ namespace PMDS.Global
                                                         "";
 
                                     NewRow.Zulassungsnummer = Zulassungnummer;
-
-                                    if (vArtikel.Elements("Langtext").Any())
-                                    {
-                                        NewRow.Bezeichnung = vArtikel.Element("Langtext").Value;            //Modul A
-                                    }
-                                    else
-                                    {
-                                        NewRow.Bezeichnung = vArtikel.Element("Kurztext").Value;            //Modul L
-                                    }
+                                    NewRow.Bezeichnung = vArtikel.Element("Kurztext").Value;            
 
                                     if (vArtikel.Elements("Referenzartikel").Any())
                                     {
@@ -360,18 +359,34 @@ namespace PMDS.Global
 
                                     NewRow.Einheit = "";
                                     NewRow.Gruppe = "";
-                                    NewRow.Herrichten = 0;
+                                    NewRow.Herrichten = (int)medHerrichten.langfristig;
                                     NewRow.AerztlichevorbereitungJN = false;
                                     NewRow.Verabreichungsart = ENV.MedVerabreichenDefault;  //(int)medVerabreichung.einzeln;
-                                    NewRow.Applikationsform = "";
-                                    NewRow.Packungsanzahl = 1;
 
-                                    if (vArtikel.Element("Packung").Elements("Fuellmenge").Any())          //Modul L
+                                    XElement Applikationsarten = prod.Element("Klassifikation").Element("Applikationsarten");
+                                    if (Applikationsarten != null && Applikationsarten.HasElements)
+                                    {
+                                        foreach (XElement element in Applikationsarten.Elements())
+                                        {
+                                            if (element.Name == "Applikationsart")
+                                            {
+                                                NewRow.Applikationsform = LookupInTable(tAppliationsarten, "ID", element.Value, "Bezeichnung");
+                                                if (TranslateELGA)
+                                                {
+                                                    NewRow.Applikationsform = LookupInTable(tAPF, "ELGA_DisplayName", NewRow.Applikationsform, "Bezeichnung");
+                                                }
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    NewRow.Packungsanzahl = 1;
+                                    if (vArtikel.Element("Packung").Elements("Fuellmenge").Any())
                                     {
                                         NewRow.Packungsgroesse = Convert.ToDouble(vArtikel.Element("Packung").Elements("Fuellmenge").First().Value);
                                         NewRow.Packungseinheit = LookupInTable(tEinheiten, "ID", vArtikel.Element("Packung").Elements("Fuellmenge").First().Attribute("einheitID").Value, "Beschreibung");
                                     }
-                                    else
+                                    else if (vArtikel.Element("Packung").Elements("Gebinde").Any())
                                     {
                                         NewRow.Packungsgroesse = Convert.ToDouble(vArtikel.Element("Packung").Elements("Gebinde").First().Value);
                                         NewRow.Packungseinheit = LookupInTable(tEinheiten, "ID", vArtikel.Element("Packung").Elements("Gebinde").First().Attribute("einheitID").Value, "Beschreibung");
@@ -379,23 +394,20 @@ namespace PMDS.Global
 
                                     if (TranslateELGA)
                                     {
-                                        string ELGAPackungseinheit = "";
-                                        if (vArtikel.Element("Packung").Elements("Fuellmenge").Any())
+                                        string PEH = "";
+                                        PEH = LookupInTable(tMEH, "ELGA_DisplayName", NewRow.Packungseinheit.ToLower(), "Bezeichnung");
+                                        if (String.IsNullOrWhiteSpace(PEH))
                                         {
-                                            ELGAPackungseinheit = LookupInTable(tMEH, "ELGA_DisplayName", vArtikel.Element("Packung").Elements("Fuellmenge").First().Attribute("einheitID").Value, "Bezeichnung");
+                                            PEH = LookupInTable(tMEH, "Bezeichnung", NewRow.Packungseinheit, "Bezeichnung", false);
                                         }
-                                        else
+                                        if (!String.IsNullOrWhiteSpace(PEH))
                                         {
-                                            ELGAPackungseinheit = LookupInTable(tMEH, "ELGA_DisplayName", vArtikel.Element("Packung").Elements("Gebinde").First().Attribute("einheitID").Value, "Bezeichnung");
+                                            NewRow.Packungseinheit = PEH;
                                         }
-                                        if (!String.IsNullOrWhiteSpace(ELGAPackungseinheit))
-                                        {
-                                            NewRow.Packungseinheit = ELGAPackungseinheit;
-                                        }                                        
                                     }
 
                                     NewRow.Gültigkeitsdatum = prod.Attribute("letzteAenderung") != null ? Convert.ToDateTime(prod.Attribute("letzteAenderung").Value) : Geltungsdatum;
-
+                                    
                                     NewRow.Kassenzeichen = "";
                                     if (vArtikel.Elements("Abgabe").Any())
                                     {
@@ -405,34 +417,17 @@ namespace PMDS.Global
                                         }
                                     }
 
-                                    //Lagerungsvorschrift und Langtext 
-                                    string LangText = "";                                    
                                     string Lagervorschrift = "";
-
-                                    //Modul L
-                                    if (prod.Elements("Lagerung").Any())
-                                    {
-                                        foreach(XElement lv in prod.Elements("Lagerung"))
-                                        {
-                                            foreach (XElement zeichen in lv.Elements("Zeichen"))
-                                            {
-                                                Lagervorschrift += LookupInTable(tKennzeichen, "ID", zeichen.Value, "BeschreibungKurz") + "\n";
-                                            }
-                                        }
-                                    }
-
-                                    //Modul A
                                     if (prod.Elements("Lagerung").Elements("Haltbarkeit").Any())
                                     {
-                                        Lagervorschrift = "";
+                                        //Lagervorschrift = "";       //Daten aus Zeichen zurücksetzen
                                         Lagervorschrift += "Haltbarkeit: " + prod.Element("Lagerung").Element("Haltbarkeit").Attribute("dauerWert").Value + " ";
                                         Lagervorschrift += LookupInTable(tEinheiten, "ID", prod.Element("Lagerung").Element("Haltbarkeit").Attribute("dauerEinheit").Value, "Beschreibung") + " ";
                                     }
 
-                                    //Modul L
                                     if (prod.Elements("Lagerung").Elements("Lagerungsbedingung").Any())
                                     {
-                                        Lagervorschrift += "Lagerungsbedingungen: ";
+                                        Lagervorschrift += String.IsNullOrWhiteSpace(Lagervorschrift) ? "" : "\n" + "Lagerungsbedingungen: ";
                                         if (prod.Elements("Lagerung").Elements("Lagerungsbedingung").First().Attributes("tempMin").Any())
                                         {
                                             if (prod.Elements("Lagerung").Elements("Lagerungsbedingung").First().Attribute("tempMin") != null)
@@ -447,19 +442,25 @@ namespace PMDS.Global
                                             {
                                                 Lagervorschrift += LookupInTable(tEinheiten, "ID", prod.Elements("Lagerung").Elements("Lagerungsbedingung").First().Attribute("tempEinheit").Value, "Beschreibung");
                                             }
-                                            Lagervorschrift += "\n";
                                         }
                                     }
+                                    NewRow.Lagervorschrift = Lagervorschrift;
+                
+                                    //Langtext (nur bei Modul A)
+                                    string LangText = "";
+                                    if (vArtikel.Elements("Langtext").Any())
+                                    {
+                                        LangText = vArtikel.Element("Langtext").Value;            //Modul A
+                                    }
 
-                                    if (vArtikel.Element("Abgabe") != null && vArtikel.Element("Abgabe").Elements("Zeichen").Any())
+                                    if (vArtikel.Elements("Abgabe").Any() && vArtikel.Element("Abgabe").Elements("Zeichen").Any())
                                     {
                                         foreach (XElement abg in vArtikel.Element("Abgabe").Elements("Zeichen"))
                                         {
-                                            LangText += LookupInTable(tKennzeichen, "ID", abg.Attribute("zeichenID").Value, "BeschreibungKurz") + "\n";
-                                            LangText += vArtikel.Element("Abgabe").Elements("Zeichen").First().Value + "\n";
+                                            LangText += String.IsNullOrWhiteSpace(LangText) ? "" : "\n" +  LookupInTable(tKennzeichen, "ID", abg.Attribute("zeichenID").Value, "BeschreibungKurz");
+                                            LangText += String.IsNullOrWhiteSpace(LangText) ? "" : "\n" + abg.Value;
                                         }                                            
                                     }                                        
-                                    NewRow.Lagervorschrift = Lagervorschrift;
                                     NewRow.LangText = LangText;
 
                                     NewRow.ImportiertAm = dNow;
@@ -545,13 +546,22 @@ namespace PMDS.Global
             }
         }
 
-        private string LookupInTable(DataTable table, string LookupIndex, string LookupValue, string returnFieldName)
+        private string LookupInTable(DataTable table, string LookupIndex, string LookupValue, string returnFieldName, bool bCaseSensitive = true)
         {
             try
             {
-                return (from row in table.AsEnumerable()
-                     where row.Field<string>(LookupIndex) == LookupValue
-                     select row.Field<string>(returnFieldName)).FirstOrDefault() ?? "";
+                if (!bCaseSensitive)
+                {
+                    return (from row in table.AsEnumerable()
+                            where row.Field<string>(LookupIndex) == LookupValue
+                            select row.Field<string>(returnFieldName)).FirstOrDefault() ?? "";
+                }
+                else
+                {
+                    return (from row in table.AsEnumerable()
+                            where row.Field<string>(LookupIndex).ToLower() == LookupValue.ToLower()
+                            select row.Field<string>(returnFieldName)).FirstOrDefault() ?? "";
+                }
             }
             catch (Exception ex)
             {
@@ -678,7 +688,7 @@ namespace PMDS.Global
             }
         }
 
-        private void ManageMEH()
+        private void LoadMEH()
         {
             try
             {
@@ -686,7 +696,7 @@ namespace PMDS.Global
                 tMEH = new DataTable();
                 tMEH.Columns.Add("ELGA_DisplayName", typeof(string));
                 tMEH.Columns.Add("Bezeichnung", typeof(string));
-                tMEH.PrimaryKey = new DataColumn[] { tMEH.Columns["Term"] };
+                tMEH.PrimaryKey = new DataColumn[] { tMEH.Columns["ELGA_DisplayName"] };
                 using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
                 {
                     var MEHs = (from al in db.AuswahlListe
@@ -696,7 +706,7 @@ namespace PMDS.Global
 
                     foreach (var MEH in MEHs)
                     {
-                        tMEH.Rows.Add(MEH.ELGA_DisplayName,
+                        tMEH.Rows.Add(MEH.ELGA_DisplayName.ToLower(),
                                       MEH.Bezeichnung);
                     }
                 }
@@ -707,16 +717,49 @@ namespace PMDS.Global
             }
         }
 
+        private void LoadAPF()
+        {
+            try
+            {
+                //Auswahlliste Mengeneinheiten laden (für Umsetzung ELGA-Mengeneinheiten über 
+                tAPF = new DataTable();
+                tAPF.Columns.Add("ELGA_DisplayName", typeof(string));
+                tAPF.Columns.Add("Bezeichnung", typeof(string));
+                tAPF.PrimaryKey = new DataColumn[] { tAPF.Columns["ELGA_DiplayName"] };
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var APFs = (from al in db.AuswahlListe
+                                where al.IDAuswahlListeGruppe == "APF"
+                                orderby al.Reihenfolge
+                                select al);
+
+                    foreach (var APF in APFs)
+                    {
+                        tAPF.Rows.Add(APF.ELGA_DisplayName.ToLower(),
+                                      APF.Bezeichnung);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ImportMedDaten.ManageMEH: " + ex.ToString());
+            }
+        }
+
+
         private void ManageEinheiten(XElement xelement )
         {
+
+            //Achtung: tBezeichnung = Auswahlliste.Beschreibung
+            //Achtung: tBeschriebung = Auswahlliste.Bezeichnung
             try
             {
                 IEnumerable<XElement> xEinheiten = xelement.Elements("Katalogdaten").Elements("Einheiten");
                 tEinheiten = new DataTable();
                 tEinheiten.Columns.Add("ID", typeof(string));                                     //GehörtZuGruppe
-                tEinheiten.Columns.Add("Bezeichnung", typeof(string));                            //Bezeichnung
+                tEinheiten.Columns.Add("Bezeichnung", typeof(string));                            //Beschreibung!!!!!!
                 tEinheiten.Columns.Add("Synonym", typeof(string));                                //ELGA_Code
-                tEinheiten.Columns.Add("Beschreibung", typeof(string));                           //Beschreibung
+                tEinheiten.Columns.Add("Beschreibung", typeof(string));                           //Bezeichnung!!!!!
                 tEinheiten.Columns.Add("Term", typeof(string));                                   //ELGA_DisplayName   
                 tEinheiten.PrimaryKey = new DataColumn[] { tEinheiten.Columns["ID"] };
 
@@ -773,9 +816,9 @@ namespace PMDS.Global
                             sqlCmd += "WHERE IDAuswahllisteGruppe = 'AEH' AND GehörtZuGruppe = '{4}'\n";
 
                             sqlCmd = String.Format(sqlCmd,
-                                                einheit.Field<string>("Bezeichnung"),
+                                                einheit.Field<string>("Beschreibung").Replace("'", "").PadRight(255, ' ').Substring(0,255).Trim(),
                                                 einheit.Field<string>("Synonym"),
-                                                einheit.Field<string>("Beschreibung").Replace("'", ""),
+                                                einheit.Field<string>("Bezeichnung"),
                                                 einheit.Field<string>("Term").Replace("'", ""),
                                                 einheit.Field<string>("ID")
                                                 );
@@ -784,14 +827,14 @@ namespace PMDS.Global
                         {
                             iReihenfolge++;
                             sqlCmd += "INSERT INTO Auswahlliste (ID, IDAuswahllisteGruppe, Reihenfolge, Bezeichnung, IstGruppe, GehörtzuGruppe, Hierarche, Beschreibung, Unterdruecken, ELGA_ID, ELGA_Code, ELGA_CodeSystem, ELGA_Displayname, ELGA_Version) ";
-                            sqlCmd += "SELECT '{0}', 'AEH', {1}, '{2}', 0, '{3}', 0, '{4}', 0, 0, '', '{5}', '{6}', ''\n";
+                            sqlCmd += "SELECT '{0}', 'AEH', {1}, '{2}', 0, '{3}', 0, '{4}', 0, 0, '{5}', '', '{6}', ''\n";
 
                             sqlCmd = String.Format(sqlCmd,
                                     "00000000-0000-0000-0051-" + iReihenfolge.ToString().PadLeft(12, '0'),  //ID {0}
                                     iReihenfolge,                                                           //Reichenfolge {1}
-                                    einheit.Field<string>("Bezeichnung"),                                   //Bezeichnung {2}
+                                    einheit.Field<string>("Beschreibung").Replace("'", "").PadRight(255, ' ').Substring(0, 255).Trim(),                 //Beschreibung {2}
                                     einheit.Field<string>("ID"),                                            //GehörtZuGruppe {3}
-                                    einheit.Field<string>("Beschreibung").Replace("'", ""),                 //Beschreibung {4}
+                                    einheit.Field<string>("Bezeichnung"),                                   //Bezeichnung {4}
                                     einheit.Field<string>("Synonym"),                                       //ELGA_Code {5}
                                     einheit.Field<string>("Term").Replace("'", "")                          //ELGA_DisplayName {6}
                                     );
@@ -809,10 +852,110 @@ namespace PMDS.Global
                     foreach (var einheit in AEHs)
                     {
                         tEinheiten.Rows.Add(einheit.GehörtzuGruppe,
-                                                einheit.Bezeichnung,
-                                                einheit.ELGA_Code,
                                                 einheit.Beschreibung,
+                                                einheit.ELGA_Code,
+                                                einheit.Bezeichnung,
                                                 einheit.ELGA_DisplayName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ImportMedDaten.ManageMengeneinheiten: " + ex.ToString());
+            }
+        }
+
+        private void ManageDarreichungsarten(XElement xelement)
+        {
+            try
+            {
+                IEnumerable<XElement> xApplikationsarten = xelement.Elements("Katalogdaten").Elements("Applikationsarten");
+                tAppliationsarten = new DataTable();
+                tAppliationsarten.Columns.Add("ID", typeof(string));                                     //GehörtZuGruppe  : XML Applikationsarten->Appliktionsart.appCode
+                tAppliationsarten.Columns.Add("Bezeichnung", typeof(string));                            //Bezeichnung     : XML Applikationsarten->Appliktionsart->Zuordnungen->Term  
+                tAppliationsarten.PrimaryKey = new DataColumn[] { tAppliationsarten.Columns["ID"] };
+
+                //Aktuelle Werte einlesen und in interne Tabelle tDarreichungsarten speichern
+                var vAppliationsarten = from applikationsart in xApplikationsarten.Elements("Applikationsart") select applikationsart;
+                foreach (var Applikationsart in vAppliationsarten)
+                {
+                    if (Applikationsart.Attribute("appNiveau").Value == "5")
+                    {
+                        string Bezeichnung = "";
+                        if (Applikationsart.Elements("Zuordnungen").Any())
+                        {
+                            Bezeichnung = Applikationsart.Elements("Zuordnungen").First().Elements("Term").First().Value;
+                        }
+                        else
+                        {
+                            Bezeichnung = Applikationsart.Element("Methode").Value.ToLower();
+                        }
+
+                        tAppliationsarten.Rows.Add(Applikationsart.Attribute("appCode").Value,
+                            Bezeichnung
+                            );
+                    }
+                }
+
+                //Mit aktueller Auswahlliste AEH abgleichen
+                using (PMDS.db.Entities.ERModellPMDSEntities db = DB.PMDSBusiness.getDBContext())
+                {
+                    var AAFs = (from al in db.AuswahlListe
+                                where al.IDAuswahlListeGruppe == "AAF"
+                                orderby al.Reihenfolge
+                                select al);
+
+                    int iReihenfolge = 0;
+                    if (AAFs.Any())
+                    {
+                        iReihenfolge = (int)(from x in AAFs orderby x.Reihenfolge descending select x.Reihenfolge).FirstOrDefault();
+                    }
+
+                    //Neue Kennzeichen aus Apo-Import -> Auswahlliste übertragen
+                    string sqlCmd = "";
+                    foreach (var applikationsart in tAppliationsarten.AsEnumerable())
+                    {
+                        string ID = applikationsart.Field<string>("ID");
+
+                        if ((from ap in AAFs
+                             where ap.GehörtzuGruppe == ID
+                             select ap).Any())                                                      //Schon enthalten -> Update
+                        {
+                            sqlCmd += "UPDATE Auswahlliste SET Bezeichnung = '{0}' ";
+                            sqlCmd += "WHERE IDAuswahllisteGruppe = 'AAF' AND GehörtZuGruppe = '{1}'\n";
+
+                            sqlCmd = String.Format(sqlCmd,
+                                                applikationsart.Field<string>("Bezeichnung"),
+                                                applikationsart.Field<string>("ID")
+                                                );
+                        }
+                        else                                                                            //Insert
+                        {
+                            iReihenfolge++;
+                            sqlCmd += "INSERT INTO Auswahlliste (ID, IDAuswahllisteGruppe, Reihenfolge, Bezeichnung, IstGruppe, GehörtzuGruppe, Hierarche, Beschreibung, Unterdruecken, ELGA_ID, ELGA_Code, ELGA_CodeSystem, ELGA_Displayname, ELGA_Version) ";
+                            sqlCmd += "SELECT '{0}', 'AAF', {1}, '{2}', 0, '{3}', 0, '', 0, 0, '', '', '', ''\n";
+
+                            sqlCmd = String.Format(sqlCmd,
+                                    "00000000-0000-0000-0049-" + iReihenfolge.ToString().PadLeft(12, '0'),  //ID {0}
+                                    iReihenfolge,                                                           //Reichenfolge {1}
+                                    applikationsart.Field<string>("Bezeichnung"),                           //Beschreibung {2}
+                                    applikationsart.Field<string>("ID")                                     //GehörtZuGruppe {3}
+                                    );
+                        }
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(sqlCmd))
+                    {
+                        db.Database.ExecuteSqlCommand(sqlCmd);
+                        db.SaveChanges();
+                    }
+
+                    //interne Einheitentabelle aus PMDS-Auswahlliste aktualisieren
+                    tAppliationsarten.Clear();
+                    foreach (var einheit in AAFs)
+                    {
+                        tAppliationsarten.Rows.Add(einheit.GehörtzuGruppe,
+                                                einheit.Bezeichnung);
                     }
                 }
             }

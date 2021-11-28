@@ -10,22 +10,17 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-
-
 namespace PMDS.GUI
 {
-    public partial class frmMedikamentEdit : QS2.Desktop.ControlManagment.baseForm 
+    public partial class frmMedikamentEdit : QS2.Desktop.ControlManagment.baseForm
     {
-
-
-
-        private bool _CanClose = false;
+        private bool _CanClose;
 
         public frmMedikamentEdit()
         {
             InitializeComponent();
 
-            if (!DesignMode)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);

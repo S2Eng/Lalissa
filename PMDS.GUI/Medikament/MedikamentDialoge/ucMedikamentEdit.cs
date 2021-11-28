@@ -38,14 +38,25 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
-                //Wenn es noch keine Auswahlliste PEH gibt -> MEH verwenden
-                if (!(from ausw in db.AuswahlListe
-                      where ausw.IDAuswahlListeGruppe == "PEH"
-                      select ausw).Any())
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
-                    this.cbPackungsEinheit.Group = "MEH";
+                    //Wenn es noch keine Auswahlliste AEH gibt -> MEH verwenden
+                    if (!(from ausw in db.AuswahlListe
+                          where ausw.IDAuswahlListeGruppe == "AEH"
+                          select ausw).Any())
+                    {
+                        this.cbPackungsEinheit.Group = "MEH";
+                    }
+
+                    //Wenn es noch keine Auswahlliste AAF gibt -> APF verwenden
+                    if (!(from ausw in db.AuswahlListe
+                          where ausw.IDAuswahlListeGruppe == "AAF"
+                          select ausw).Any())
+                    {
+                        this.cmbApplikationsform.Group = "APF";
+                    }
                 }
             }
 
@@ -336,6 +347,11 @@ namespace PMDS.GUI
 
             if (ValueChanged != null && _preventValueChanged == false)
                 ValueChanged(this, null);
+        }
+
+        private void lblErstattungscode_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

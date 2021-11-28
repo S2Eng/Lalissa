@@ -41,7 +41,7 @@
             editorButton1.Text = "+";
             this.cmbArzt.ButtonsRight.Add(editorButton1);
             this.cmbArzt.DropDownStyle = Infragistics.Win.DropDownStyle.DropDownList;
-            this.cmbArzt.Location = new System.Drawing.Point(0, 0);
+            this.cmbArzt.Location = new System.Drawing.Point(2, 2);
             this.cmbArzt.Name = "cmbArzt";
             this.cmbArzt.Size = new System.Drawing.Size(294, 21);
             this.cmbArzt.TabIndex = 2;

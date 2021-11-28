@@ -34,7 +34,7 @@ namespace PMDS.GUI
         private object temp_dtpAbgebenVon_Value;
 
         private PMDS.Global.db.ERSystem.PMDSBusinessUI PMDSBusinessUI1 = new Global.db.ERSystem.PMDSBusinessUI();
-        public bool _bIsStorno;
+        public bool bIsStorno { get; set; }
 
         private DateTime dtFrom;
         private DateTime dtBis;
@@ -44,20 +44,20 @@ namespace PMDS.GUI
         {
             InitializeComponent();
 
-            using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
-            {
-                //Wenn es noch keine Auswahlliste PEH gibt -> MEH verwenden
-                if (!(from ausw in db.AuswahlListe
-                    where ausw.IDAuswahlListeGruppe == "PEH"
-                    select ausw).Any())
-                {
-                    this.cbPackungsEinheit.Group = "MEH";
-                }
-            }
-
             RequiredFields();
             if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
+                {
+                    //Wenn es noch keine Auswahlliste AEH gibt -> MEH verwenden
+                    if (!(from ausw in db.AuswahlListe
+                          where ausw.IDAuswahlListeGruppe == "AEH"
+                          select ausw).Any())
+                    {
+                        this.cbPackungsEinheit.Group = "MEH";
+                    }
+                }
+
                 if (ENV.RezeptUseTimeOfDay)
                 {
                     dtpAbgebenVon.MaskInput = "dd.mm.yyyy hh:mm:ss";
@@ -600,7 +600,7 @@ namespace PMDS.GUI
             bool bInfo = true;
             this.errorProvider1.SetError(this.cmbApplikationsform, "");
 
-            _bIsStorno = false;
+            bIsStorno = false;
             bool bRechtStorno = ENV.adminSecure || (PMDS.Global.ENV.HasRight(PMDS.Global.UserRights.RezepteintragLöschen) && ENV.lic_RezepteintragStorno);
 
             int diff = (int) (this.RezeptEintrag.AbzugebenVon - dtpAbgebenBis.DateTime).TotalSeconds;
@@ -644,7 +644,7 @@ namespace PMDS.GUI
                 dsRezeptEintrag.RezeptEintragRow r = RezeptEintrag;
                 if (dtpAbgebenVon.Value != null && diff == 1 && bRechtStorno)
                 {
-                        _bIsStorno = true;
+                        bIsStorno = true;
                 }
                 else if ((int)((DateTime)dtpAbgebenVon.Value - dtStartAction).TotalSeconds < 0 && r.AbzugebenVon != (DateTime)dtpAbgebenVon.Value)
                 {
@@ -714,7 +714,7 @@ namespace PMDS.GUI
                 return false;
             }            
 
-            if (!_bIsStorno)
+            if (!bIsStorno)
             {
                 //os191220
                 GuiUtil.ValidateField(dtpAbgebenBis, (((DateTime)dtpAbgebenBis.Value) >= ((DateTime)dtpAbgebenVon.Value)),
