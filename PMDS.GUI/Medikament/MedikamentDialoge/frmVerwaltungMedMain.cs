@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using PMDS.Data.Patient;
 using PMDS.DB;
+using System.Linq;
 
 namespace PMDS.GUI
 {
@@ -17,21 +18,26 @@ namespace PMDS.GUI
     {
         public PMDSBusiness b = new PMDSBusiness();
 
-
-
-
         public frmMedikamentenVerwaltung()
         {
             InitializeComponent();
-            //this.btnImportFromHttp.Text = "Importieren";
-            //this.btnImportFromHttp.Appearance .Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Ausschneiden, 32, 32);
             if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                 ControlManagment1.autoTranslateForm(this);
-                this.btnImport.Visible = PMDS.Global.ENV.APVDA;
+
+                using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
+                {
+                    //Wenn mindestens eine aktive ELGA-Mengeneinheit verwendet wird -> ELGA-Meneinheiten auf Ja setzen
+                    this.chkELGATranslate.Checked = (from al in db.AuswahlListe
+                                                        where al.IDAuswahlListeGruppe == "MEH" && !String.IsNullOrWhiteSpace(al.ELGA_Version) && al.Unterdruecken == false
+                                                        select al).Any();
+                }
             }
 
+            this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Allgemein.ico_Table, 32, 32);
+
+            pnlImport.Visible = PMDS.Global.ENV.APVDA;
             cboMonat.SelectedIndex = 0;
             pnlMonat.Visible = PMDS.Global.generic.sEquals(PMDS.Global.ENV.MedikamenteImportType, "service") && PMDS.Global.ENV.ApoZusatzdaten;
             this.btnImport.Appearance.ImageHAlign = Infragistics.Win.HAlign.Right;
@@ -40,9 +46,6 @@ namespace PMDS.GUI
             this.btnAbort.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Rückgängig, 32, 32);
             this.btnClose.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Beenden, 32, 32);
             this.btnDeleteMedikamenteNotUsed.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein.ico_Loeschen, 32, 32);
-
-            this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Allgemein.ico_Table , 32, 32);
-
             this.cboImportType.SelectedItem = this.cboImportType.Items[1];
         }
 
@@ -55,9 +58,6 @@ namespace PMDS.GUI
         {
 
         }
-
- 
-
 
         private void btnImportFromHttp_Click(object sender, EventArgs e)
         {
@@ -157,8 +157,6 @@ namespace PMDS.GUI
                         }
 
                         DateTime datEnd = DateTime.Now;
-                        //this.ucVerwaltungMedTabelle1.ProcessSearch();
-
                         string txtInfo = "\r\n" + "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente eingespielt: ") + CountUpdated.ToString();
                         txtInfo += "\r\n" + QS2.Desktop.ControlManagment.ControlManagment.getRes("Anzahl Medikamente deaktiviert: ") + CountDeactivated.ToString() + "\r\n" + "\r\n";
 
@@ -171,7 +169,6 @@ namespace PMDS.GUI
                         QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Fehler beim Laden der Medikamentendaten: " + sMsg, "Importieren");
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -179,6 +176,7 @@ namespace PMDS.GUI
             }
             finally
             {
+                this.ucVerwaltungMedTabelle1.SetSearchText("");     //Liste leeren
                 this.Cursor = Cursors.Default;
             }
         }
@@ -187,10 +185,9 @@ namespace PMDS.GUI
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-
                 if (QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Wollen Sie wirklich alle nicht verwendeten Medikamente löschen?", "PMDS", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    this.Cursor = Cursors.WaitCursor;
                     int iCounterDeleted = 0;
                     using (PMDS.db.Entities.ERModellPMDSEntities db = PMDSBusiness.getDBContext())
                     {
@@ -203,8 +200,6 @@ namespace PMDS.GUI
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox(txtmsgBox, "PMDS", MessageBoxButtons.OK, true);
                     lblStatus.Text = "";
                 }   
-
-
             }
             catch (Exception ex)
             {

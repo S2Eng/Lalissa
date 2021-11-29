@@ -1404,7 +1404,6 @@ namespace PMDS.Global
                     System.Windows.Forms.MessageBox.Show("Kritischer Fehler beim Einlesen der Pflegemodelle!");
                     return false;
                 }
-
                 string stemp = "";
                 SetENVValue("APVDA", ref stemp, eTrim.yes, eDecrypt.PMDSMode);
                 ENV.APVDA = stemp == "1" ? true : false;

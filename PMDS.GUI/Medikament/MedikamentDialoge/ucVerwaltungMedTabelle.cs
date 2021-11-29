@@ -49,6 +49,10 @@ namespace PMDS.GUI
             ProcessSave();
         }
 
+        public void SetSearchText (string txt)
+        {
+            this.tbBezeichnung.Text = txt;     //Löst eine Neusuche aus
+        }
 
         public void ProcessSearch()
         {

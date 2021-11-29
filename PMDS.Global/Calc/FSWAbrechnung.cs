@@ -305,18 +305,17 @@ namespace PMDS.Global
                             if (ZeileBW > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
                                 ListIDBillsFSWBW.Add(IDBill);
 
-
-                            Invoice.TotalGrossAmount = Math.Round(rBill.betrag * dPercentPflege, 2, MidpointRounding.AwayFromZero);
-                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
                             Steuern += Invoice.Tax;
                             Rechnungsbetrag += Invoice.PayableAmount;
+                            Invoice.TotalGrossAmount = Rechnungsbetrag;
+                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
                             Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
                             Transaction.ArDocument.AddInvoiceToList(Invoice);
  
-                            InvoiceBW.TotalGrossAmount = Math.Round(rBill.betrag * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
-                            InvoiceBW.PayableAmount = InvoiceBW.TotalGrossAmount;
                             SteuernBW += InvoiceBW.Tax;
                             RechnungsbetragBW += InvoiceBW.PayableAmount;
+                            InvoiceBW.TotalGrossAmount = RechnungsbetragBW;
+                            InvoiceBW.PayableAmount = Invoice.TotalGrossAmount;
                             InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
                             TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
                         }
@@ -421,13 +420,13 @@ namespace PMDS.Global
                     Transaction.SenderAdresse = ENV.FSW_SenderAdresse;
                     Transaction.TransactionID = eZAUFID;
                     Transaction.ArDocument.Referenz = eZAUFID;
-                    Transaction.ArDocument.Rechnungsbetrag = Rechnungsbetrag + Steuern;
+                    Transaction.ArDocument.Rechnungsbetrag = Rechnungsbetrag;
                     Transaction.ArDocument.Anzahl_Rechnungen = ListIDBillsFSW.Count;
 
                     TransactionBW.SenderAdresse = ENV.FSW_SenderAdresse;
                     TransactionBW.TransactionID = eZAUFIDBW;
                     TransactionBW.ArDocument.Referenz = eZAUFIDBW;
-                    TransactionBW.ArDocument.Rechnungsbetrag = RechnungsbetragBW + SteuernBW;
+                    TransactionBW.ArDocument.Rechnungsbetrag = RechnungsbetragBW;
                     TransactionBW.ArDocument.Anzahl_Rechnungen = ListIDBillsFSWBW.Count;
 
                     //lTransactions.Add(Transaction);

@@ -9,6 +9,7 @@ using PMDS.Data.Global;
 using PMDS.Global;
 using PMDS.Global.db.Global;
 using PMDSClient.Sitemap;
+using System.Data.OleDb;
 
 namespace PMDS.GUI
 {
@@ -17,8 +18,8 @@ namespace PMDS.GUI
 
 	public class frmLogin : QS2.Desktop.ControlManagment.baseForm 
 	{
-		private Benutzer _ben = null;
-        private bool _bCanclose = false;
+		private Benutzer _ben;
+        private bool _bCanclose;
         protected QS2.Desktop.ControlManagment.BaseLabel lblBenutzer;
         protected QS2.Desktop.ControlManagment.BaseLabel lblPasswort;
         protected QS2.Desktop.ControlManagment.BaseTextEditor txtBenutzer;
@@ -27,14 +28,13 @@ namespace PMDS.GUI
 		protected PMDS.GUI.ucButton btnCancel;
         protected PMDS.GUI.ucButton btnOK;
         private QS2.Desktop.ControlManagment.BaseLabel lblInfo;
-		private System.ComponentModel.IContainer components;
-
-
+        private QS2.Desktop.ControlManagment.BaseLabel lblConnection;
+        private Timer timer1;
+        private System.ComponentModel.IContainer components;
 
 		public frmLogin()
 		{
 			InitializeComponent();
-
             RequiredFields();
 		}
 
@@ -43,7 +43,7 @@ namespace PMDS.GUI
 			bool bRet = ProcessLogin(new frmLogin());
 			ENV.SignalQuickfilterChanged(null);
 
-            PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
+            //PMDS.DB.PMDSBusiness b = new DB.PMDSBusiness();
             QS2.Desktop.ControlManagment.ENV.initRigth(ENV.HasRight(UserRights.Layout), ENV.adminSecure);
 
             if (!bRet)
@@ -151,7 +151,7 @@ namespace PMDS.GUI
 			try
 			{
                 this.Icon = QS2.Resources.getRes.getIcon(QS2.Resources.getRes.Launcher.ico_PMDS, 32, 32);
-                if (!DesignMode)
+                if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
                 {
                     QS2.Desktop.ControlManagment.ControlManagment ControlManagment1 = new QS2.Desktop.ControlManagment.ControlManagment();
                     //ControlManagment1.autoTranslateForm(this);
@@ -176,9 +176,18 @@ namespace PMDS.GUI
 #if DEBUG
                 //txtBenutzer.Text = "admin";
                 //txtPasswort.Text = "admin";
-#endif 
+#endif
 
-				UpdateGUI();
+                using (OleDbCommand cmd = new OleDbCommand())
+                {
+                    cmd.Connection = RBU.DataBase.CONNECTION;
+                    this.lblConnection.Text = "Verbunden mit " + cmd.Connection.Database + " auf " + cmd.Connection.DataSource;
+                    this.lblConnection.Visible = true;
+                    this.timer1.Interval = 2000;
+                    this.timer1.Start();
+                }
+
+                UpdateGUI();
 
                 this.TopMost = true;
 			}
@@ -216,6 +225,7 @@ namespace PMDS.GUI
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.lblBenutzer = new QS2.Desktop.ControlManagment.BaseLabel();
             this.lblPasswort = new QS2.Desktop.ControlManagment.BaseLabel();
@@ -225,6 +235,8 @@ namespace PMDS.GUI
             this.btnOK = new PMDS.GUI.ucButton(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblInfo = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.lblConnection = new QS2.Desktop.ControlManagment.BaseLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtBenutzer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -233,7 +245,7 @@ namespace PMDS.GUI
             // lblBenutzer
             // 
             this.lblBenutzer.AutoSize = true;
-            this.lblBenutzer.Location = new System.Drawing.Point(9, 70);
+            this.lblBenutzer.Location = new System.Drawing.Point(9, 100);
             this.lblBenutzer.Margin = new System.Windows.Forms.Padding(4);
             this.lblBenutzer.Name = "lblBenutzer";
             this.lblBenutzer.Size = new System.Drawing.Size(60, 17);
@@ -243,7 +255,7 @@ namespace PMDS.GUI
             // lblPasswort
             // 
             this.lblPasswort.AutoSize = true;
-            this.lblPasswort.Location = new System.Drawing.Point(9, 100);
+            this.lblPasswort.Location = new System.Drawing.Point(9, 130);
             this.lblPasswort.Margin = new System.Windows.Forms.Padding(4);
             this.lblPasswort.Name = "lblPasswort";
             this.lblPasswort.Size = new System.Drawing.Size(61, 17);
@@ -252,7 +264,7 @@ namespace PMDS.GUI
             // 
             // txtBenutzer
             // 
-            this.txtBenutzer.Location = new System.Drawing.Point(105, 66);
+            this.txtBenutzer.Location = new System.Drawing.Point(105, 96);
             this.txtBenutzer.Margin = new System.Windows.Forms.Padding(4);
             this.txtBenutzer.MaxLength = 25;
             this.txtBenutzer.Name = "txtBenutzer";
@@ -262,7 +274,7 @@ namespace PMDS.GUI
             // 
             // txtPasswort
             // 
-            this.txtPasswort.Location = new System.Drawing.Point(105, 96);
+            this.txtPasswort.Location = new System.Drawing.Point(105, 126);
             this.txtPasswort.Margin = new System.Windows.Forms.Padding(4);
             this.txtPasswort.MaxLength = 25;
             this.txtPasswort.Name = "txtPasswort";
@@ -279,14 +291,14 @@ namespace PMDS.GUI
             appearance1.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnCancel.Appearance = appearance1;
             this.btnCancel.AutoWorkLayout = false;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.DoOnClick = true;
             this.btnCancel.IsStandardControl = true;
-            this.btnCancel.Location = new System.Drawing.Point(105, 133);
+            this.btnCancel.Location = new System.Drawing.Point(105, 163);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(116, 34);
+            this.btnCancel.Size = new System.Drawing.Size(97, 34);
             this.btnCancel.TabIndex = 14;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Abbrechen";
@@ -300,20 +312,21 @@ namespace PMDS.GUI
             // 
             appearance2.BackColor = System.Drawing.Color.Transparent;
             appearance2.Image = ((object)(resources.GetObject("appearance2.Image")));
-            appearance2.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance2.ImageHAlign = Infragistics.Win.HAlign.Right;
             appearance2.ImageVAlign = Infragistics.Win.VAlign.Middle;
             this.btnOK.Appearance = appearance2;
             this.btnOK.AutoWorkLayout = false;
-            this.btnOK.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnOK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.DoOnClick = true;
             this.btnOK.IsStandardControl = true;
-            this.btnOK.Location = new System.Drawing.Point(229, 133);
+            this.btnOK.Location = new System.Drawing.Point(210, 163);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(81, 34);
+            this.btnOK.Size = new System.Drawing.Size(100, 34);
             this.btnOK.TabIndex = 15;
             this.btnOK.TabStop = false;
+            this.btnOK.Text = "OK";
             this.btnOK.TYPE = PMDS.GUI.ucButton.ButtonType.OK;
             this.btnOK.TYPEPlacement = PMDS.Global.UIGlobal.ButtonPlacement.normal;
             this.btnOK.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
@@ -326,15 +339,32 @@ namespace PMDS.GUI
             // 
             // lblInfo
             // 
-            appearance3.ForeColor = System.Drawing.Color.Black;
-            this.lblInfo.Appearance = appearance3;
+            appearance4.ForeColor = System.Drawing.Color.Black;
+            this.lblInfo.Appearance = appearance4;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(9, 21);
+            this.lblInfo.Location = new System.Drawing.Point(9, 25);
             this.lblInfo.Margin = new System.Windows.Forms.Padding(4);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(301, 28);
+            this.lblInfo.Size = new System.Drawing.Size(301, 22);
             this.lblInfo.TabIndex = 17;
             this.lblInfo.Text = "Anmeldung an PMDS";
+            // 
+            // lblConnection
+            // 
+            appearance3.BackColor = System.Drawing.Color.White;
+            appearance3.ForeColor = System.Drawing.Color.Gray;
+            this.lblConnection.Appearance = appearance3;
+            this.lblConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.lblConnection.Location = new System.Drawing.Point(9, 55);
+            this.lblConnection.Margin = new System.Windows.Forms.Padding(4);
+            this.lblConnection.Name = "lblConnection";
+            this.lblConnection.Size = new System.Drawing.Size(301, 27);
+            this.lblConnection.TabIndex = 18;
+            this.lblConnection.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmLogin
             // 
@@ -342,7 +372,8 @@ namespace PMDS.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.BackColor = System.Drawing.Color.Snow;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(337, 182);
+            this.ClientSize = new System.Drawing.Size(337, 218);
+            this.Controls.Add(this.lblConnection);
             this.Controls.Add(this.lblBenutzer);
             this.Controls.Add(this.lblPasswort);
             this.Controls.Add(this.lblInfo);
@@ -501,6 +532,11 @@ namespace PMDS.GUI
         private void txtPasswort_KeyDown(object sender, KeyEventArgs e)
         {
             PMDS.Global.generic.TogglePassword(sender);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.lblConnection.Visible = false;
         }
     }
 }
