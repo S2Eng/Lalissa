@@ -278,8 +278,22 @@ namespace PMDS.Global
 
                                     else if (generic.sEquals(Rechnungszeile.Kennung, "MWstSatz"))
                                     {
-                                        Invoice.Tax += Math.Round(Rechnungszeile.Netto * dPercentPflege, 2, MidpointRounding.AwayFromZero);
-                                        InvoiceBW.Tax += Math.Round(Rechnungszeile.Netto * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
+                                        //Steuern werden als Surcharge verrechnet!!!!
+                                        decimal Tax = Math.Round(Rechnungszeile.Netto * dPercentPflege, 2, MidpointRounding.AwayFromZero);
+                                        Invoice.Tax += Tax;
+
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dPflegeNetto;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Percentage = Rechnungszeile.MWStSatz;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.Amount = Tax;
+                                        Invoice.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = dPflegeNetto;
+
+                                        decimal TaxBW = Math.Round(Rechnungszeile.Netto * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
+                                        InvoiceBW.Tax += TaxBW;
+
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.BaseAmount = dBWNetto;
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Percentage = Rechnungszeile.MWStSatz;
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.Amount = TaxBW;
+                                        InvoiceBW.ReductionAndSurchargeDetails.Surcharge.TaxItem.TaxableAmount = dBWNetto;
                                     }
 
                                     else if (generic.sEquals(Rechnungszeile.Kennung, "GSGB"))
@@ -305,17 +319,18 @@ namespace PMDS.Global
                             if (ZeileBW > 0)                     //Wenn mindestens eine Rechnungszeile vom FSW bezahlt wird -> Rechnungsnummer in neuer Liste merken (fürs Update)
                                 ListIDBillsFSWBW.Add(IDBill);
 
+
+                            Invoice.TotalGrossAmount = Math.Round(rBill.betrag * dPercentPflege, 2, MidpointRounding.AwayFromZero);
+                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
                             Steuern += Invoice.Tax;
                             Rechnungsbetrag += Invoice.PayableAmount;
-                            Invoice.TotalGrossAmount = Rechnungsbetrag;
-                            Invoice.PayableAmount = Invoice.TotalGrossAmount;
                             Invoice.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFID;
                             Transaction.ArDocument.AddInvoiceToList(Invoice);
- 
+
+                            InvoiceBW.TotalGrossAmount = Math.Round(rBill.betrag * (1 - dPercentPflege), 2, MidpointRounding.AwayFromZero);
+                            InvoiceBW.PayableAmount = InvoiceBW.TotalGrossAmount;
                             SteuernBW += InvoiceBW.Tax;
                             RechnungsbetragBW += InvoiceBW.PayableAmount;
-                            InvoiceBW.TotalGrossAmount = RechnungsbetragBW;
-                            InvoiceBW.PayableAmount = Invoice.TotalGrossAmount;
                             InvoiceBW.PaymentMethod.UniversalBankTransaction.PaymentReference = eZAUFIDBW;
                             TransactionBW.ArDocument.AddInvoiceToList(InvoiceBW);
                         }
@@ -434,8 +449,11 @@ namespace PMDS.Global
 
                     List<XMLInfo> ListXMLInfos = new List<XMLInfo>();
                     XMLInfo XMLInfoPflege = new XMLInfo() { Transaction = Transaction };
-                    XMLInfo XMLInfoBW = new XMLInfo() { Transaction = TransactionBW };
+                    XMLInfoPflege.bIsvalid = Transaction.ArDocument.Anzahl_Rechnungen > 0;
                     ListXMLInfos.Add(XMLInfoPflege);
+
+                    XMLInfo XMLInfoBW = new XMLInfo() { Transaction = TransactionBW };
+                    XMLInfoBW.bIsvalid = TransactionBW.ArDocument.Anzahl_Rechnungen > 0;
                     ListXMLInfos.Add(XMLInfoBW);
 
                     string ret = "";
@@ -657,16 +675,12 @@ namespace PMDS.Global
                 nfi.NumberDecimalSeparator = ".";
                 CultureInfo ci = new CultureInfo("de-DE");
 
-
                 foreach (XMLInfo Info in lTransactions)
                 {
-                    db.cEBInterfaceDB.Transaction Transaction = Info.Transaction;
-
-                    if (Transaction.ArDocument.Anzahl_Rechnungen == 0)  //Keine leeren Transactions
-                    {
-                        Info.bIsvalid = false;
+                    if (!Info.bIsvalid)     //Keine leeren Transactions
                         continue;
-                    }
+
+                    db.cEBInterfaceDB.Transaction Transaction = Info.Transaction;
 
                     Info.Xml.Clear();
                     Info.Xml.Encoding = "utf-8";
@@ -757,7 +771,8 @@ namespace PMDS.Global
                                     Chilkat.Xml xListLineItemBillerOrdersReferenceOrderID = xListLineItemBillerOrdersReference.NewChild("OrderID", item.BillersOrderReferenz.OrderID);
                                     Chilkat.Xml xListLineItemTaxItem = xListLineItem.NewChild("TaxItem", "");
                                     Chilkat.Xml xListLineItemTaxItemTaxableAmount = xListLineItemTaxItem.NewChild("TaxableAmount", item.TaxItem.TaxableAmount.ToString(nfi));
-                                    Chilkat.Xml xListLineItemTaxItemTaxPercent = xListLineItemTaxItem.NewChild("TaxPercent", item.TaxItem.TaxPercent.Value.ToString(nfi));
+                                    string TaxPercentage = item.TaxItem.TaxPercent.AttributeValue == "O" ? "0": item.TaxItem.TaxPercent.Value.ToString(nfi);
+                                    Chilkat.Xml xListLineItemTaxItemTaxPercent = xListLineItemTaxItem.NewChild("TaxPercent", TaxPercentage);
                                     xListLineItemTaxItemTaxPercent.AddAttribute(item.TaxItem.TaxPercent.AttributeName, item.TaxItem.TaxPercent.AttributeValue);
                                     Chilkat.Xml xListLineItemAmount = xListLineItem.NewChild("LineItemAmount", item.LineItemAmount.ToString(nfi));
                                     xDetailsItemList.AddChildTree(xListLineItem);
