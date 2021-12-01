@@ -484,13 +484,16 @@ namespace PMDS.GUI.Kostentraeger
         {
             try
             {
-                this.chkErlagscheingebuehrJN.Visible = (int)this.cboZahlart.Value == (int)PMDS.Calc.Logic.eZahlart.Erlagschein;
-
-                if (!this.chkErlagscheingebuehrJN.Visible)
+                if (this.cboZahlart.Value != null)
                 {
-                    this.chkErlagscheingebuehrJN.Checked = false;
+                    this.chkErlagscheingebuehrJN.Visible = (int)this.cboZahlart.Value == (int)PMDS.Calc.Logic.eZahlart.Erlagschein;
+
+                    if (!this.chkErlagscheingebuehrJN.Visible)
+                    {
+                        this.chkErlagscheingebuehrJN.Checked = false;
+                    }
+                    this.chkErlagscheingebuehrJN_CheckedChanged(this, new EventArgs());
                 }
-                this.chkErlagscheingebuehrJN_CheckedChanged(this, new EventArgs());                
             }
             catch (Exception ex)
             {

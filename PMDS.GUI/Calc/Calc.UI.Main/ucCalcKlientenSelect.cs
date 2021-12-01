@@ -80,7 +80,7 @@ namespace PMDS.Calc.UI.Admin
 
         public void klinikChanged( dsKlinik.KlinikRow rSelectedKlinik, bool allKliniken)
         {
-            this.ucKlienten2.LoadListklienten();
+            this.ucKlienten2.LoadListklienten(false);
         }
         public bool  setFilterKlienten(eSendMain typ, List<string> filterString, bool suche,   object obj)
         {

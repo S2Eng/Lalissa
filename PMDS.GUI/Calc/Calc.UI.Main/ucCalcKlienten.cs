@@ -775,8 +775,17 @@ namespace PMDS.Calc.UI.Admin
 
             if (on)
             {
+
+
+
                 Patient pat = new Patient (new System.Guid ( id));
-                this.lblInfoKlientSingle.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Gewählt: ") + pat.FullName;
+                this.lblInfoKlientSingle.Text = QS2.Desktop.ControlManagment.ControlManagment.getRes("Gewählt: ") + pat.FullName + ", * " + ((DateTime)pat.Geburtsdatum).ToString("dd.MM.yyyy");
+
+                if (pat.Verstorben)
+                    this.lblInfoKlientSingle.Text += ", + ";
+
+                if (pat.Todeszeitpunkt != null)
+                    this.lblInfoKlientSingle.Text += pat.Todeszeitpunkt.Value.ToString("dd.MM.yyyy");
             }
             else
             {

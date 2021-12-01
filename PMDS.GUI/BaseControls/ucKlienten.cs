@@ -19,7 +19,7 @@ namespace PMDS.GUI
     {
 
         private List<Guid> _lIDKlienten = new List<Guid>();
-        private int anzKlienten = 0;
+        private int anzKlienten;
         public eSendMain typ = new eSendMain();
         public bool _singleSelect = false;
         public List<PMDS.GUI.BaseControls.ucKlientenElement > SavedSelectedTabsxy = new List<PMDS.GUI.BaseControls.ucKlientenElement >();
@@ -30,7 +30,7 @@ namespace PMDS.GUI
         public DataTable tControls = new DataTable();
         public string colControl = "Control";
         public string colKey = "Key";
-
+        public bool CalcAutoLoadKlienten { get; set; } = ENV.CalcAutoLoadKlienten;
 
         private string tmpSearchKlient = "";
         private Guid tmpSearchKostenträger = Guid.Empty;
@@ -504,7 +504,7 @@ namespace PMDS.GUI
             try
             {
                 Cursor = Cursors.WaitCursor;
-                this.LoadListklienten();   
+                this.LoadListklienten(false);   
             }
             catch (Exception exch)
             {
@@ -516,11 +516,18 @@ namespace PMDS.GUI
             }
         }
 
-        public void LoadListklienten()
+        public void LoadListklienten(bool bClearList)
         {
             try
             {
                 generic.BeginSuspendLayout(panelButtons);
+                this.panelButtons.Visible = false;
+
+                this.lblTitelKlienten.Text = "";
+                this.SavedSelectedTab = null;
+                this.uButtonAlleKeine.Text = "Alle";
+                this.uButtonAlleKeine.Tag = "A";
+
                 PMDS.DB.PMDSBusiness b = new PMDS.DB.PMDSBusiness();
                 using (PMDS.db.Entities.ERModellPMDSEntities DBContext = PMDS.DB.PMDSBusiness.getDBContext())
                 {
@@ -544,28 +551,24 @@ namespace PMDS.GUI
                     if (this.dtBis.Value != null)
                         dBis = this.dtBis.DateTime; //.DateTime.Date;
 
+                    anzKlienten = 0;
+                    panelButtons.Controls.Clear();
+
+                    if (bClearList || dVon > dBis)
+                    {
+                        ENV.selKlientenChanged(eSendMain.setIDMultiElement, this.getFilterStr(), false, null);          //Liste der Rechnungen zurücksetzen
+                        ENV.selKlientenChanged(eSendMain.singleElementActivated, new List<string>(), false, null);      //gewählten Klienten zurücksetzen
+                        return;
+                    }
+
+                    this.btnSearchKlienten.Visible = false;
+
                     IQueryable<PMDS.db.Entities.s2_GetKlientenlisteAbrechnung_Result> ts2_GetKlientenlisteAbrechnung_Result = null;
                     ts2_GetKlientenlisteAbrechnung_Result = b.getKlientenlisteAbrechnung(ref sName, ref IDAllgKostenträger, ref dVon, ref dBis, ref NurSelbstzahlerJN, DBContext);
 
-                    anzKlienten = 0;
-                    panelButtons.Controls.Clear();
-                    //this.doVisibleAllTabs(false, false);
-                    //this.doVisibleAllTabs(true, false);
-                    //foreach (PMDS.GUI.BaseControls.ucKlientenElement elExists in panelButtons.Controls)
-                    //{
-                    //    elExists.Visible = false;
-                    //}
                     string sGebDat = "";
                     foreach (PMDS.db.Entities.s2_GetKlientenlisteAbrechnung_Result rS2_GetKlientenlisteAbrechnung_Result in ts2_GetKlientenlisteAbrechnung_Result.OrderByDescending(k => k.KlientName))
                     {
-                        //PMDS.GUI.BaseControls.ucKlientenElement el;
-                        //if (anzKlienten < this.panelButtons.Controls.Count)
-                        //{
-                        //    el = (PMDS.GUI.BaseControls.ucKlientenElement)panelButtons.Controls[anzKlienten];
-
-                        //}
-                        //else
-                        //{
                         PMDS.GUI.BaseControls.ucKlientenElement el = new PMDS.GUI.BaseControls.ucKlientenElement
                         {
                             mainContr = this,
@@ -579,7 +582,7 @@ namespace PMDS.GUI
                         if (rS2_GetKlientenlisteAbrechnung_Result.Geburtsdatum != null)
                         {
                             DateTime dGebDat = rS2_GetKlientenlisteAbrechnung_Result.Geburtsdatum.Value;
-                            sGebDat = "\n\r       - " + dGebDat.ToString("dd.MM.yyyy");
+                            sGebDat = "\n\r    * " + dGebDat.ToString("dd.MM.yyyy");
                         }
                         el.btnClick.Text = rS2_GetKlientenlisteAbrechnung_Result.KlientName.Trim() + sGebDat;
                         el.btnClick.Appearance.Image = QS2.Resources.getRes.getImage(QS2.Resources.getRes.Allgemein2.ico_Transparent, 32, 32);
@@ -589,7 +592,6 @@ namespace PMDS.GUI
                                         System.Drawing.Color.Gainsboro, System.Drawing.Color.Gainsboro,
                                         System.Drawing.Color.Transparent, Infragistics.Win.UIElementButtonStyle.FlatBorderless);
                         this.panelButtons.Controls.Add(el);
-                        //}
 
                         if (this.typ == eSendMain.abrechnung)
                             el.ContextMenuStrip = el.contextMenuStrip1;
@@ -598,12 +600,6 @@ namespace PMDS.GUI
 
                         anzKlienten += 1;
                     }
-
-                    this.lblTitelKlienten.Text = "";
-                    this.SavedSelectedTab = null;
-
-                    this.uButtonAlleKeine.Text = "Alle";
-                    this.uButtonAlleKeine.Tag = "A";
                 }
             }
             catch (Exception exch)
@@ -612,6 +608,7 @@ namespace PMDS.GUI
             }
             finally
             {
+                this.panelButtons.Visible = true;
                 generic.EndSuspendLayout(panelButtons);
             }
         }
@@ -653,9 +650,10 @@ namespace PMDS.GUI
                 if (!bNoSearch && ENV._IDKlinik != ENV._IDKlinikNoKlinikSelected)
                 {
                     Cursor = Cursors.WaitCursor;
-                    this.LoadListklienten();
+                    this.LoadListklienten(false);
                 }
                 this.timer1.Stop();
+                this.btnSearchKlienten.Visible = false;
             }
             catch (Exception exch)
             {
@@ -678,24 +676,59 @@ namespace PMDS.GUI
 
         private void dtVon_ValueChanged(object sender, EventArgs e)
         {
-            this.timer1.Interval = 300;
-            this.timer1.Stop();
             if (dtVon.DateTime != tmpSearchVon)
-                tmpSearchVon = dtVon.DateTime;
-            this.timer1.Start();
+            {
+                checkVonBis(false, true);
+            }
+
+            if (dtBis.DateTime > dtVon.DateTime)
+            {
+                if (this.CalcAutoLoadKlienten)
+                {
+                    this.timer1.Stop();
+                    this.timer1.Interval = 300;
+                    this.timer1.Start();
+                }
+                else
+                {
+                    this.btnSearchKlienten.Visible = true;
+                    this.LoadListklienten(true);
+                }
+            }
+            else
+            {
+                this.btnSearchKlienten.Visible = false;
+                this.LoadListklienten(true);
+            }
         }
 
         private void dtBis_ValueChanged(object sender, EventArgs e)
         {
-            this.timer1.Interval = 300;
-            this.timer1.Stop();
+
             if (dtBis.DateTime != tmpSearchBis)
             {
                 checkVonBis(false, true);
-                tmpSearchBis = dtBis.DateTime;
-
             }
-            this.timer1.Start();
+
+            if (dtBis.DateTime > dtVon.DateTime)
+            {
+                if (this.CalcAutoLoadKlienten) 
+                {
+                    this.timer1.Stop();
+                    this.timer1.Interval = 300;
+                    this.timer1.Start();
+                }
+                else
+                {
+                    this.btnSearchKlienten.Visible = true;
+                    this.LoadListklienten(true);
+                }
+            }
+            else
+            {
+                this.btnSearchKlienten.Visible = false;
+                this.LoadListklienten(true);
+            }
         }
     }
 }

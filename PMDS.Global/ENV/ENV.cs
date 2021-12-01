@@ -205,6 +205,7 @@ namespace PMDS.Global
         public static string TextKlientenInfo = "Information zu Kosten für erbrachte Leistungen";
         public static int BMDExportTyp = 2;
         public static string BMDExportPath = Path.GetTempPath();    //Default-Pfad für BMD-Excel-Export
+        public static bool CalcAutoLoadKlienten = true;
 
         public static string FSW_FiBuKonto = "";
         public static string FSW_FTPUser = "";
@@ -1388,6 +1389,7 @@ namespace PMDS.Global
                 SetENVValue("TextKlientenInfo", ref ENV.TextKlientenInfo);
                 SetENVValue("BMDExportTyp", ref ENV.BMDExportTyp);
                 SetENVValue("BMDExportPath", ref ENV.BMDExportPath);
+                SetENVValue("CalcAutoLoadKlienten", ref ENV.CalcAutoLoadKlienten, "0");
 
                 SetENVValue("FSW_FiBuKonto", ref ENV.FSW_FiBuKonto);
                 SetENVValue("FSW_FTPUser", ref ENV.FSW_FTPUser);
