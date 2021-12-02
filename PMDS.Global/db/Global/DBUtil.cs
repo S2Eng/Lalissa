@@ -212,16 +212,19 @@ namespace PMDS.DB
 		/// Genau eine Datenzeile zurückliefern
 		/// </summary>
 		//----------------------------------------------------------------------------
-		public static void OneRowByID(object owner, DataTable t, OleDbDataAdapter da, bool IsDesignMode)
+		public static void OneRowByID(object owner, DataTable t, OleDbDataAdapter da)
 		{
 
-            if (!IsDesignMode && ENV.AppRunning)
+            if (System.Diagnostics.Process.GetCurrentProcess().ProcessName != "devenv")
             {
                 // Daten erfolgreich gelesen ?
                 if (DataBase.Fill(da, t) != 1)
                 {
-                    throw new DBException(ENV.String("DB.E_ID_NOT_FOUND", owner.GetType().ToString(), da.SelectCommand.Parameters[0].Value.ToString()));
+                    string ID = (string)da.SelectCommand.Parameters[0].Value;
+                    QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Ein eindeutiger Eintrag aus der Liste " + ID + " konnte nicht gefunden werden!", "ACHTUNG - Fehlerhafte Verarbeitung!", System.Windows.Forms.MessageBoxButtons.OK);
+                    return;
 
+                    //throw new DBException(ENV.String("DB.E_ID_NOT_FOUND", owner.GetType().ToString(), da.SelectCommand.Parameters[0].Value.ToString()));
                 } 
             }
 	    }

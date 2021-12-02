@@ -49,12 +49,9 @@ namespace PMDS.GUI
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
-                    //Wenn es noch keine Auswahlliste AEH gibt -> MEH verwenden
-                    if (!(from ausw in db.AuswahlListe
-                          where ausw.IDAuswahlListeGruppe == "AEH"
-                          select ausw).Any())
+                    if (generic.sEquals(ENV.MedikamenteImportType, "service"))
                     {
-                        this.cbPackungsEinheit.Group = "MEH";
+                        this.cbPackungsEinheit.Group = "AEH";
                     }
                 }
 

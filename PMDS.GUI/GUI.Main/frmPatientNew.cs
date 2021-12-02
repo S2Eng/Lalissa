@@ -44,8 +44,15 @@ namespace PMDS.GUI
 			{
 				if(components != null)
 				{
-					components.Dispose();
-				}
+                    if (lblInfo1 != null) lblInfo1.Dispose();
+                    if (lblInfo2 != null) lblInfo2.Dispose();
+                    if (ucPatientNew1 != null) ucPatientNew1.Dispose();
+                    if (btnCancel != null) btnCancel.Dispose();
+                    if (btnCancel != null) btnCancel.Dispose();
+                    if (btnOK != null) btnOK.Dispose();
+                    if (labInfo != null) labInfo.Dispose();
+                    components.Dispose();
+                }
 			}
 			base.Dispose( disposing );
 		}

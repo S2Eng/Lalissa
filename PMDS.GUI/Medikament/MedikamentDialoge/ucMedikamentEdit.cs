@@ -42,20 +42,11 @@ namespace PMDS.GUI
             {
                 using (PMDS.db.Entities.ERModellPMDSEntities db = PMDS.DB.PMDSBusiness.getDBContext())
                 {
-                    //Wenn es noch keine Auswahlliste AEH gibt -> MEH verwenden
-                    if (!(from ausw in db.AuswahlListe
-                          where ausw.IDAuswahlListeGruppe == "AEH"
-                          select ausw).Any())
-                    {
-                        this.cbPackungsEinheit.Group = "MEH";
-                    }
 
-                    //Wenn es noch keine Auswahlliste AAF gibt -> APF verwenden
-                    if (!(from ausw in db.AuswahlListe
-                          where ausw.IDAuswahlListeGruppe == "AAF"
-                          select ausw).Any())
+                    if (generic.sEquals(ENV.MedikamenteImportType, "service"))
                     {
-                        this.cmbApplikationsform.Group = "APF";
+                        this.cbPackungsEinheit.Group = "AEH";
+                        this.cmbApplikationsform.Group = "AAF";
                     }
                 }
             }

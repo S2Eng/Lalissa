@@ -546,7 +546,7 @@
             this.cbPackungsEinheit.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cbPackungsEinheit.BerufsstandGruppeJNA = -1;
             this.cbPackungsEinheit.ExactMatch = true;
-            this.cbPackungsEinheit.Group = "AEH";
+            this.cbPackungsEinheit.Group = "MEH";
             this.cbPackungsEinheit.ID_PEP = -1;
             this.cbPackungsEinheit.IgnoreUnterdruecken = false;
             this.cbPackungsEinheit.Location = new System.Drawing.Point(456, 165);
@@ -595,7 +595,7 @@
             this.cmbApplikationsform.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cmbApplikationsform.BerufsstandGruppeJNA = -1;
             this.cmbApplikationsform.ExactMatch = true;
-            this.cmbApplikationsform.Group = "AAF";
+            this.cmbApplikationsform.Group = "APF";
             this.cmbApplikationsform.ID_PEP = -1;
             this.cmbApplikationsform.IgnoreUnterdruecken = false;
             this.cmbApplikationsform.Location = new System.Drawing.Point(181, 200);

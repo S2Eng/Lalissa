@@ -30,7 +30,7 @@ namespace PMDS.GUI
                 {
                     //Wenn mindestens eine aktive ELGA-Mengeneinheit verwendet wird -> ELGA-Meneinheiten auf Ja setzen
                     this.chkELGATranslate.Checked = (from al in db.AuswahlListe
-                                                        where al.IDAuswahlListeGruppe == "MEH" && !String.IsNullOrWhiteSpace(al.ELGA_Version) && al.Unterdruecken == false
+                                                        where al.IDAuswahlListeGruppe == "MEH" && al.ELGA_Version != "" && al.Unterdruecken == false
                                                         select al).Any();
                 }
             }

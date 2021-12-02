@@ -158,8 +158,7 @@ namespace PMDS.DB
 			((IDBBase)this).ITEM.Clear();
 
 			if (IsSingleEntry)
-				DBUtil.OneRowByID(this, ((IDBBase)this).ITEM, daFilterEntry,
-					DesignMode);
+				DBUtil.OneRowByID(this, ((IDBBase)this).ITEM, daFilterEntry);
 			else
 				DataBase.Fill(daFilterEntry, ((IDBBase)this).ITEM);
 		}

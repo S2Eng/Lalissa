@@ -29,42 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance57 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance72 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance82 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance81 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance80 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance79 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance78 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance77 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance76 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance75 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance74 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.lblVerschreibungVon = new QS2.Desktop.ControlManagment.BaseLabel();
             this.dtpAbgebenVon = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
             this.dtpAbgebenBis = new QS2.Desktop.ControlManagment.BaseDateTimeEditor();
@@ -151,8 +151,8 @@
             // 
             // lblVerschreibungVon
             // 
-            appearance57.FontData.SizeInPoints = 8F;
-            this.lblVerschreibungVon.Appearance = appearance57;
+            appearance1.FontData.SizeInPoints = 8F;
+            this.lblVerschreibungVon.Appearance = appearance1;
             this.lblVerschreibungVon.AutoSize = true;
             this.lblVerschreibungVon.Location = new System.Drawing.Point(16, 94);
             this.lblVerschreibungVon.Margin = new System.Windows.Forms.Padding(4);
@@ -195,8 +195,8 @@
             // 
             // lblApplikationsform
             // 
-            appearance58.FontData.SizeInPoints = 8F;
-            this.lblApplikationsform.Appearance = appearance58;
+            appearance2.FontData.SizeInPoints = 8F;
+            this.lblApplikationsform.Appearance = appearance2;
             this.lblApplikationsform.AutoSize = true;
             this.lblApplikationsform.Location = new System.Drawing.Point(16, 160);
             this.lblApplikationsform.Margin = new System.Windows.Forms.Padding(4);
@@ -230,9 +230,9 @@
             // 
             // txtWiedWertAlle
             // 
-            appearance59.BackColorDisabled = System.Drawing.SystemColors.Control;
-            appearance59.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtWiedWertAlle.Appearance = appearance59;
+            appearance3.BackColorDisabled = System.Drawing.SystemColors.Control;
+            appearance3.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtWiedWertAlle.Appearance = appearance3;
             this.txtWiedWertAlle.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.txtWiedWertAlle.Enabled = false;
             this.txtWiedWertAlle.InputMask = "                 nnn";
@@ -246,9 +246,9 @@
             // 
             // txtWiedWertJeden
             // 
-            appearance60.BackColorDisabled = System.Drawing.SystemColors.Control;
-            appearance60.ForeColorDisabled = System.Drawing.Color.Black;
-            this.txtWiedWertJeden.Appearance = appearance60;
+            appearance4.BackColorDisabled = System.Drawing.SystemColors.Control;
+            appearance4.ForeColorDisabled = System.Drawing.Color.Black;
+            this.txtWiedWertJeden.Appearance = appearance4;
             this.txtWiedWertJeden.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Integer;
             this.txtWiedWertJeden.Enabled = false;
             this.txtWiedWertJeden.InputMask = "                   nn";
@@ -287,8 +287,8 @@
             // 
             // lblNTenDesMonats
             // 
-            appearance61.FontData.SizeInPoints = 8F;
-            this.lblNTenDesMonats.Appearance = appearance61;
+            appearance5.FontData.SizeInPoints = 8F;
+            this.lblNTenDesMonats.Appearance = appearance5;
             this.lblNTenDesMonats.AutoSize = true;
             this.lblNTenDesMonats.Location = new System.Drawing.Point(336, 252);
             this.lblNTenDesMonats.Margin = new System.Windows.Forms.Padding(4);
@@ -299,8 +299,8 @@
             // 
             // ultraLabel5
             // 
-            appearance62.FontData.SizeInPoints = 8F;
-            this.ultraLabel5.Appearance = appearance62;
+            appearance6.FontData.SizeInPoints = 8F;
+            this.ultraLabel5.Appearance = appearance6;
             this.ultraLabel5.AutoSize = true;
             this.ultraLabel5.Location = new System.Drawing.Point(79, 345);
             this.ultraLabel5.Margin = new System.Windows.Forms.Padding(4);
@@ -311,9 +311,9 @@
             // 
             // zp4
             // 
-            appearance63.BackColorDisabled = System.Drawing.Color.White;
-            appearance63.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp4.Appearance = appearance63;
+            appearance7.BackColorDisabled = System.Drawing.Color.White;
+            appearance7.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp4.Appearance = appearance7;
             this.zp4.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp4.InputMask = "nnnnn.nn";
             this.zp4.Location = new System.Drawing.Point(447, 341);
@@ -325,9 +325,9 @@
             // 
             // zp3
             // 
-            appearance64.BackColorDisabled = System.Drawing.Color.White;
-            appearance64.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp3.Appearance = appearance64;
+            appearance8.BackColorDisabled = System.Drawing.Color.White;
+            appearance8.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp3.Appearance = appearance8;
             this.zp3.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp3.InputMask = "nnnnn.nn";
             this.zp3.Location = new System.Drawing.Point(373, 341);
@@ -339,9 +339,9 @@
             // 
             // zp2
             // 
-            appearance65.BackColorDisabled = System.Drawing.Color.White;
-            appearance65.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp2.Appearance = appearance65;
+            appearance9.BackColorDisabled = System.Drawing.Color.White;
+            appearance9.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp2.Appearance = appearance9;
             this.zp2.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp2.InputMask = "nnnnn.nn";
             this.zp2.Location = new System.Drawing.Point(300, 341);
@@ -353,9 +353,9 @@
             // 
             // zp1
             // 
-            appearance66.BackColorDisabled = System.Drawing.Color.White;
-            appearance66.ForeColorDisabled = System.Drawing.Color.Black;
-            this.zp1.Appearance = appearance66;
+            appearance10.BackColorDisabled = System.Drawing.Color.White;
+            appearance10.ForeColorDisabled = System.Drawing.Color.Black;
+            this.zp1.Appearance = appearance10;
             this.zp1.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp1.InputMask = "nnnnn.nn";
             this.zp1.Location = new System.Drawing.Point(227, 341);
@@ -367,10 +367,10 @@
             // 
             // zp0
             // 
-            appearance67.BackColorDisabled = System.Drawing.Color.White;
-            appearance67.ForeColorDisabled = System.Drawing.Color.Black;
-            appearance67.TextHAlignAsString = "Right";
-            this.zp0.Appearance = appearance67;
+            appearance11.BackColorDisabled = System.Drawing.Color.White;
+            appearance11.ForeColorDisabled = System.Drawing.Color.Black;
+            appearance11.TextHAlignAsString = "Right";
+            this.zp0.Appearance = appearance11;
             this.zp0.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.zp0.InputMask = "nnnnn.nn";
             this.zp0.Location = new System.Drawing.Point(153, 341);
@@ -393,9 +393,9 @@
             // 
             // lblHerrichten
             // 
-            appearance68.TextHAlignAsString = "Left";
-            appearance68.TextVAlignAsString = "Middle";
-            this.lblHerrichten.Appearance = appearance68;
+            appearance12.TextHAlignAsString = "Left";
+            appearance12.TextVAlignAsString = "Middle";
+            this.lblHerrichten.Appearance = appearance12;
             this.lblHerrichten.Location = new System.Drawing.Point(16, 423);
             this.lblHerrichten.Margin = new System.Windows.Forms.Padding(4);
             this.lblHerrichten.Name = "lblHerrichten";
@@ -405,9 +405,9 @@
             // 
             // lblVerabreichung
             // 
-            appearance69.TextHAlignAsString = "Left";
-            appearance69.TextVAlignAsString = "Middle";
-            this.lblVerabreichung.Appearance = appearance69;
+            appearance13.TextHAlignAsString = "Left";
+            appearance13.TextVAlignAsString = "Middle";
+            this.lblVerabreichung.Appearance = appearance13;
             this.lblVerabreichung.Location = new System.Drawing.Point(413, 423);
             this.lblVerabreichung.Margin = new System.Windows.Forms.Padding(4);
             this.lblVerabreichung.Name = "lblVerabreichung";
@@ -427,8 +427,8 @@
             // 
             // lblIndikationAnmerkung
             // 
-            appearance70.FontData.SizeInPoints = 8F;
-            this.lblIndikationAnmerkung.Appearance = appearance70;
+            appearance14.FontData.SizeInPoints = 8F;
+            this.lblIndikationAnmerkung.Appearance = appearance14;
             this.lblIndikationAnmerkung.AutoSize = true;
             this.lblIndikationAnmerkung.Location = new System.Drawing.Point(16, 460);
             this.lblIndikationAnmerkung.Margin = new System.Windows.Forms.Padding(4);
@@ -439,8 +439,8 @@
             // 
             // lblPackungsgrösse
             // 
-            appearance71.FontData.SizeInPoints = 8F;
-            this.lblPackungsgrösse.Appearance = appearance71;
+            appearance15.FontData.SizeInPoints = 8F;
+            this.lblPackungsgrösse.Appearance = appearance15;
             this.lblPackungsgrösse.AutoSize = true;
             this.lblPackungsgrösse.Location = new System.Drawing.Point(4, 7);
             this.lblPackungsgrösse.Margin = new System.Windows.Forms.Padding(4);
@@ -451,9 +451,9 @@
             // 
             // txtPackGr
             // 
-            appearance72.BackColorDisabled = System.Drawing.Color.White;
-            appearance72.ForeColorDisabled = System.Drawing.Color.DimGray;
-            this.txtPackGr.Appearance = appearance72;
+            appearance16.BackColorDisabled = System.Drawing.Color.White;
+            appearance16.ForeColorDisabled = System.Drawing.Color.DimGray;
+            this.txtPackGr.Appearance = appearance16;
             this.txtPackGr.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
             this.txtPackGr.InputMask = "nnnnnn";
             this.txtPackGr.Location = new System.Drawing.Point(143, 2);
@@ -469,8 +469,8 @@
             // 
             // ultraLabel10
             // 
-            appearance82.FontData.SizeInPoints = 8F;
-            this.ultraLabel10.Appearance = appearance82;
+            appearance29.FontData.SizeInPoints = 8F;
+            this.ultraLabel10.Appearance = appearance29;
             this.ultraLabel10.AutoSize = true;
             this.ultraLabel10.Location = new System.Drawing.Point(760, 315);
             this.ultraLabel10.Margin = new System.Windows.Forms.Padding(4);
@@ -481,9 +481,9 @@
             // 
             // lblWochentage
             // 
-            appearance81.TextHAlignAsString = "Left";
-            appearance81.TextVAlignAsString = "Middle";
-            this.lblWochentage.Appearance = appearance81;
+            appearance28.TextHAlignAsString = "Left";
+            appearance28.TextVAlignAsString = "Middle";
+            this.lblWochentage.Appearance = appearance28;
             this.lblWochentage.Location = new System.Drawing.Point(572, 224);
             this.lblWochentage.Margin = new System.Windows.Forms.Padding(4);
             this.lblWochentage.Name = "lblWochentage";
@@ -493,8 +493,8 @@
             // 
             // lblMedikament
             // 
-            appearance80.FontData.SizeInPoints = 8F;
-            this.lblMedikament.Appearance = appearance80;
+            appearance27.FontData.SizeInPoints = 8F;
+            this.lblMedikament.Appearance = appearance27;
             this.lblMedikament.AutoSize = true;
             this.lblMedikament.Location = new System.Drawing.Point(15, 10);
             this.lblMedikament.Margin = new System.Windows.Forms.Padding(4);
@@ -515,9 +515,9 @@
             // 
             // lblGändertBeendet
             // 
-            appearance79.TextHAlignAsString = "Left";
-            appearance79.TextVAlignAsString = "Middle";
-            this.lblGändertBeendet.Appearance = appearance79;
+            appearance26.TextHAlignAsString = "Left";
+            appearance26.TextVAlignAsString = "Middle";
+            this.lblGändertBeendet.Appearance = appearance26;
             this.lblGändertBeendet.Location = new System.Drawing.Point(16, 677);
             this.lblGändertBeendet.Margin = new System.Windows.Forms.Padding(4);
             this.lblGändertBeendet.Name = "lblGändertBeendet";
@@ -527,9 +527,9 @@
             // 
             // lblRezeptdaten
             // 
-            appearance78.TextHAlignAsString = "Left";
-            appearance78.TextVAlignAsString = "Middle";
-            this.lblRezeptdaten.Appearance = appearance78;
+            appearance25.TextHAlignAsString = "Left";
+            appearance25.TextVAlignAsString = "Middle";
+            this.lblRezeptdaten.Appearance = appearance25;
             this.lblRezeptdaten.Location = new System.Drawing.Point(16, 524);
             this.lblRezeptdaten.Margin = new System.Windows.Forms.Padding(4);
             this.lblRezeptdaten.Name = "lblRezeptdaten";
@@ -559,8 +559,8 @@
             // 
             // lblPackungseinheit
             // 
-            appearance73.FontData.SizeInPoints = 8F;
-            this.lblPackungseinheit.Appearance = appearance73;
+            appearance18.FontData.SizeInPoints = 8F;
+            this.lblPackungseinheit.Appearance = appearance18;
             this.lblPackungseinheit.AutoSize = true;
             this.lblPackungseinheit.Location = new System.Drawing.Point(236, 7);
             this.lblPackungseinheit.Margin = new System.Windows.Forms.Padding(4);
@@ -571,8 +571,8 @@
             // 
             // lblArztAngeordnet
             // 
-            appearance77.FontData.SizeInPoints = 8F;
-            this.lblArztAngeordnet.Appearance = appearance77;
+            appearance24.FontData.SizeInPoints = 8F;
+            this.lblArztAngeordnet.Appearance = appearance24;
             this.lblArztAngeordnet.AutoSize = true;
             this.lblArztAngeordnet.Location = new System.Drawing.Point(400, 92);
             this.lblArztAngeordnet.Margin = new System.Windows.Forms.Padding(4);
@@ -592,8 +592,8 @@
             // 
             // lblPackungsanzahl
             // 
-            appearance50.FontData.SizeInPoints = 8F;
-            this.lblPackungsanzahl.Appearance = appearance50;
+            appearance23.FontData.SizeInPoints = 8F;
+            this.lblPackungsanzahl.Appearance = appearance23;
             this.lblPackungsanzahl.AutoSize = true;
             this.lblPackungsanzahl.Location = new System.Drawing.Point(724, 46);
             this.lblPackungsanzahl.Margin = new System.Windows.Forms.Padding(4);
@@ -626,11 +626,11 @@
             // 
             // txtMedikament
             // 
-            appearance21.BackColor = System.Drawing.Color.White;
-            appearance21.BackColorDisabled = System.Drawing.Color.White;
-            appearance21.BackColorDisabled2 = System.Drawing.Color.White;
-            appearance21.ForeColorDisabled = System.Drawing.Color.DimGray;
-            this.txtMedikament.Appearance = appearance21;
+            appearance22.BackColor = System.Drawing.Color.White;
+            appearance22.BackColorDisabled = System.Drawing.Color.White;
+            appearance22.BackColorDisabled2 = System.Drawing.Color.White;
+            appearance22.ForeColorDisabled = System.Drawing.Color.DimGray;
+            this.txtMedikament.Appearance = appearance22;
             this.txtMedikament.BackColor = System.Drawing.Color.White;
             this.txtMedikament.Enabled = false;
             this.txtMedikament.Location = new System.Drawing.Point(155, 5);
@@ -645,9 +645,9 @@
             // btnSearchMedikament
             // 
             this.btnSearchMedikament.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            appearance76.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance76.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.btnSearchMedikament.Appearance = appearance76;
+            appearance21.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance21.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.btnSearchMedikament.Appearance = appearance21;
             this.btnSearchMedikament.AutoWorkLayout = false;
             this.btnSearchMedikament.ImageSize = new System.Drawing.Size(12, 12);
             this.btnSearchMedikament.IsStandardControl = false;
@@ -660,8 +660,8 @@
             // 
             // lblArztAbgesetzt
             // 
-            appearance75.FontData.SizeInPoints = 8F;
-            this.lblArztAbgesetzt.Appearance = appearance75;
+            appearance20.FontData.SizeInPoints = 8F;
+            this.lblArztAbgesetzt.Appearance = appearance20;
             this.lblArztAbgesetzt.AutoSize = true;
             this.lblArztAbgesetzt.Location = new System.Drawing.Point(399, 127);
             this.lblArztAbgesetzt.Margin = new System.Windows.Forms.Padding(4);
@@ -755,7 +755,7 @@
             this.cbPackungsEinheit.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
             this.cbPackungsEinheit.BerufsstandGruppeJNA = -1;
             this.cbPackungsEinheit.ExactMatch = true;
-            this.cbPackungsEinheit.Group = "AEH";
+            this.cbPackungsEinheit.Group = "MEH";
             this.cbPackungsEinheit.ID_PEP = -1;
             this.cbPackungsEinheit.IgnoreUnterdruecken = false;
             this.cbPackungsEinheit.Location = new System.Drawing.Point(303, 2);
@@ -863,8 +863,8 @@
             // 
             // lblSignatur
             // 
-            appearance74.FontData.SizeInPoints = 8F;
-            this.lblSignatur.Appearance = appearance74;
+            appearance19.FontData.SizeInPoints = 8F;
+            this.lblSignatur.Appearance = appearance19;
             this.lblSignatur.AutoSize = true;
             this.lblSignatur.Location = new System.Drawing.Point(16, 203);
             this.lblSignatur.Margin = new System.Windows.Forms.Padding(4);

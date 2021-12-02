@@ -756,11 +756,11 @@ namespace PMDS.Global
             {
                 IEnumerable<XElement> xEinheiten = xelement.Elements("Katalogdaten").Elements("Einheiten");
                 tEinheiten = new DataTable();
-                tEinheiten.Columns.Add("ID", typeof(string));                                     //GehörtZuGruppe
-                tEinheiten.Columns.Add("Bezeichnung", typeof(string));                            //Beschreibung!!!!!!
-                tEinheiten.Columns.Add("Synonym", typeof(string));                                //ELGA_Code
-                tEinheiten.Columns.Add("Beschreibung", typeof(string));                           //Bezeichnung!!!!!
-                tEinheiten.Columns.Add("Term", typeof(string));                                   //ELGA_DisplayName   
+                tEinheiten.Columns.Add("ID", typeof(string));                                     //AEH->GehörtZuGruppe
+                tEinheiten.Columns.Add("Bezeichnung", typeof(string));                            //AEH->Beschreibung!!!!!!
+                tEinheiten.Columns.Add("Synonym", typeof(string));                                //AEH->ELGA_Code
+                tEinheiten.Columns.Add("Beschreibung", typeof(string));                           //AEH->Bezeichnung!!!!!
+                tEinheiten.Columns.Add("Term", typeof(string));                                   //AEH->ELGA_DisplayName   
                 tEinheiten.PrimaryKey = new DataColumn[] { tEinheiten.Columns["ID"] };
 
                 //Aktuelle Werte einlesen und in interne Tabelle tEinheiten speichern
@@ -830,13 +830,13 @@ namespace PMDS.Global
                             sqlCmd += "SELECT '{0}', 'AEH', {1}, '{2}', 0, '{3}', 0, '{4}', 0, 0, '{5}', '', '{6}', ''\n";
 
                             sqlCmd = String.Format(sqlCmd,
-                                    "00000000-0000-0000-0051-" + iReihenfolge.ToString().PadLeft(12, '0'),  //ID {0}
-                                    iReihenfolge,                                                           //Reichenfolge {1}
-                                    einheit.Field<string>("Beschreibung").Replace("'", "").PadRight(255, ' ').Substring(0, 255).Trim(),                 //Beschreibung {2}
-                                    einheit.Field<string>("ID"),                                            //GehörtZuGruppe {3}
-                                    einheit.Field<string>("Bezeichnung"),                                   //Bezeichnung {4}
-                                    einheit.Field<string>("Synonym"),                                       //ELGA_Code {5}
-                                    einheit.Field<string>("Term").Replace("'", "")                          //ELGA_DisplayName {6}
+                                    "00000000-0000-0000-0051-" + iReihenfolge.ToString().PadLeft(12, '0'),                                  //ID {0}
+                                    iReihenfolge,                                                                                           //Reichenfolge {1}
+                                    einheit.Field<string>("Beschreibung").Replace("'", "").PadRight(255, ' ').Substring(0, 255).Trim(),     //Beschreibung {2}
+                                    einheit.Field<string>("ID"),                                                                            //GehörtZuGruppe {3}
+                                    einheit.Field<string>("Bezeichnung"),                                                                   //Bezeichnung {4}
+                                    einheit.Field<string>("Synonym"),                                                                       //ELGA_Code {5}
+                                    einheit.Field<string>("Term").Replace("'", "")                                                          //ELGA_DisplayName {6}
                                     );
                         }
                     }
@@ -972,11 +972,11 @@ namespace PMDS.Global
                 IEnumerable<XElement> xKennzeichen = xelement.Elements("Katalogdaten").Elements("Kennzeichen");
                 //------------------- Kennzeichen ------------------
                 tKennzeichen = new DataTable();                                                     //Feld in Auswahl-Tabelle
-                tKennzeichen.Columns.Add("ID", typeof(string));                                     //GehörtZuGruppe
-                tKennzeichen.Columns.Add("Bezeichnung", typeof(string));                            //Bezeichnung
-                tKennzeichen.Columns.Add("Synonym", typeof(string));                                //ELGA_Code
-                tKennzeichen.Columns.Add("BeschreibungKurz", typeof(string));                       //Beschreibung
-                tKennzeichen.Columns.Add("zeichenKategorie", typeof(string));                       //Hierarchie    (int)!
+                tKennzeichen.Columns.Add("ID", typeof(string));                                     //APO->GehörtZuGruppe
+                tKennzeichen.Columns.Add("Bezeichnung", typeof(string));                            //APO->Bezeichnung
+                tKennzeichen.Columns.Add("Synonym", typeof(string));                                //APO->ELGA_Code
+                tKennzeichen.Columns.Add("BeschreibungKurz", typeof(string));                       //APO->Beschreibung
+                tKennzeichen.Columns.Add("zeichenKategorie", typeof(string));                       //APO->Hierarchie    (int)!
                 tKennzeichen.PrimaryKey = new DataColumn[] { tKennzeichen.Columns["ID"] };
 
                 //Aktuelle Werte einlesen und in interne Tabelle tKennzeichen speichern

@@ -423,8 +423,7 @@ namespace PMDS.DB
                 foreach (int e in Enum.GetValues(typeof(UserRights)))
                 {
                     daRechtByID.SelectCommand.Parameters[0].Value = e;
-                    DBUtil.OneRowByID(this, ds.INTListe, daRechtByID,
-                        DesignMode);
+                    DBUtil.OneRowByID(this, ds.INTListe, daRechtByID);
                 }
             }
 			return ds.INTListe;
