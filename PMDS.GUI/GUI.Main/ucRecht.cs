@@ -27,15 +27,13 @@ namespace PMDS.GUI
 	//----------------------------------------------------------------------------
 	public class ucRecht : QS2.Desktop.ControlManagment.BaseControl,  IReadOnly
 	{
-		private bool							_readonly = false;
-		private bool							_binit = true;
 		public event EventHandler ValueChanged;
 
-		private dsINTListe.INTListeDataTable	_rechte;
-		private GuiMarkers						_markersxy;
+		public bool ReadOnly { get; set; }
+		private dsINTListe.INTListeDataTable _rechte;
         private Gruppe _Gruppe;
         private Infragistics.Win.UltraWinTree.UltraTree treeRecht;
-		private System.ComponentModel.Container components = null;
+		private System.ComponentModel.Container components;
 
 		//----------------------------------------------------------------------------
 		/// <summary>
@@ -48,7 +46,7 @@ namespace PMDS.GUI
 
 			InitializeComponent();
 			InitRechte();
-			_binit = false;
+			//_binit = false;
 		}
 
 		//----------------------------------------------------------------------------
@@ -68,8 +66,7 @@ namespace PMDS.GUI
                 {
                     Infragistics.Win.UltraWinTree.UltraTreeNode itm = this.treeRecht.Nodes.Add(System.Guid.NewGuid().ToString(), r.TEXT.Trim());
                     itm.Tag = r;
-                }
-					
+                }					
 			}
 			catch(Exception ex)
 			{
@@ -86,9 +83,12 @@ namespace PMDS.GUI
 		{
 			if( disposing )
 			{
-				if(components != null)
+                if (_rechte != null) _rechte.Dispose();
+                if (treeRecht != null) treeRecht.Dispose();
+
+                if (components != null)
 				{
-					components.Dispose();
+                    components.Dispose();
 				}
 			}
 			base.Dispose( disposing );
@@ -142,7 +142,7 @@ namespace PMDS.GUI
 		//----------------------------------------------------------------------------
 		public void SetGruppe(Gruppe grp, bool ClearChecked)
 		{
-            _binit = true;
+            //_binit = true;
 
             if (ClearChecked)
                 this.clearCheckBoxes();
@@ -159,7 +159,7 @@ namespace PMDS.GUI
                     }
                 }
             }
-			_binit = false;
+			//_binit = false;
 		}
         public void clearCheckBoxes()
         {
@@ -289,28 +289,11 @@ namespace PMDS.GUI
 
 		#endregion
 
-		#region IReadOnly Members
-
-		public bool ReadOnly
-		{
-			get
-			{
-				return _readonly;
-			}
-			set
-			{
-				_readonly = value;
-
-			}
-		}
-
-		#endregion
-
         private void ultraTree1_BeforeCheck(object sender, Infragistics.Win.UltraWinTree.BeforeCheckEventArgs e)
         {
             if (treeRecht.Focused)
             {
-                if (this._readonly)
+                if (this.ReadOnly)
                 {
                     e.Cancel = true;
                 }
@@ -319,7 +302,6 @@ namespace PMDS.GUI
                     this.OnValueChanged(sender, e);
                 } 
             }
-
         }
 	}
 }

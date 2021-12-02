@@ -20,8 +20,8 @@ namespace PMDS.Global
     {
         private static string DateFormat = "yyyy-MM-dd";
         private static string DateTimeFormat = "yyyyMMddHHmmss";
-        private string eZAUFID = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff");
-        private string eZAUFIDBW = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff") + "BW";
+        private string eZAUFID = DateTime.Now.ToString("yyMMddHHmmss");
+        private string eZAUFIDBW = DateTime.Now.ToString("yyMMddHHmmss") + "BW";
         private string Msg = "";
 
         private class Leistungszeile
