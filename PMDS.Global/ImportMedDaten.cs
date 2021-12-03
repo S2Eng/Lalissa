@@ -120,7 +120,7 @@ namespace PMDS.Global
                 }
                 else if (generic.sEquals(MedikamenteImportType, "service"))
                 {
-                    
+                    setStatus(0, lbl, "Daten werden vom Apo-Verlag per Service heruntergeladen ....", true);
                     if (!this.GetXMLFromApoVerlag(out sFile, out string sMsgService, bImportGesamtdaten, iMonat))
                     {
                         sMsg = sMsgService;
@@ -652,7 +652,7 @@ namespace PMDS.Global
                         XmlDocument myDownloads = new XmlDocument();
                         myDownloads.LoadXml(result_allowedDLs);
                         XmlNodeList myProdukt = myDownloads.SelectNodes(@"*/*");
-
+                        //ENV.ApoKHIX = "165664900";
                         var myDL = client.DownloadData(String.Format(@"https://services.apoverlag.at/download_svc/1.0/downloadoeavdata?tk={0}&prdid={1}&date={2}&vgda={3}", token, ENV.ApoKHIX, DateTime.Now.AddMonths(iMonat).ToString("yyMM"), bImportGesamtDaten.ToString().ToLower()));
                         string filename = client.ResponseHeaders["Content-Disposition"];
                         XMLFile = Path.Combine(ENV.ftpFileImportMedikamente, filename.Substring(filename.IndexOf('=') + 1));
@@ -673,20 +673,20 @@ namespace PMDS.Global
             }
         }
 
-        public string bytesToString(byte[] bytes)
-        {
-            try
-            {
-                string s = string.Empty;
-                for (int i = 0; i < bytes.Length; ++i)
-                    s += (char)bytes[i];
-                return s;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("ImportMedDaten.bytesToString: " + ex.ToString());
-            }
-        }
+        //public string bytesToString(byte[] bytes)
+        //{
+        //    try
+        //    {
+        //        string s = string.Empty;
+        //        for (int i = 0; i < bytes.Length; ++i)
+        //            s += (char)bytes[i];
+        //        return s;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("ImportMedDaten.bytesToString: " + ex.ToString());
+        //    }
+        //}
 
         private void LoadMEH()
         {
@@ -746,10 +746,8 @@ namespace PMDS.Global
             }
         }
 
-
         private void ManageEinheiten(XElement xelement )
         {
-
             //Achtung: tBezeichnung = Auswahlliste.Beschreibung
             //Achtung: tBeschriebung = Auswahlliste.Bezeichnung
             try
@@ -1070,6 +1068,4 @@ namespace PMDS.Global
         }
 
     }
-    
-
 }

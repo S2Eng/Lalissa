@@ -166,7 +166,8 @@ namespace PMDS.BusinessLogic
             }
             else
             {
-                if (!bnuechtern) sb.Append("Dosierung beachten!");
+                if (!bnuechtern) 
+                    sb.Append("Dosierung beachten!");
             }
 
             sb.Append(" ");
@@ -174,7 +175,15 @@ namespace PMDS.BusinessLogic
             if (bAppendWiederholungen)
             {
                 if (bBedarfsMedikationJN)
+                {
                     sb.Append("Einzelverordnung");
+
+                    if (ENV.UseEinzelverordnungEinfach)
+                    {
+                        sb.Clear();
+                        sb.Append("Einzelverordnung: Einzeldosis = " + ConvertFractalsToString((double)row["ZP5"]) + " " + row["Einheit"] +  ", maximal " + ConvertFractalsToString((double)row["ZP6"]) + " " + row["Einheit"] + " in 24 Stunden");
+                    }
+                }
                 else
                     AppendWiederholungen(row_Wiederholungstyp, row_Wiederholungseinheit, row_Wiederholungswert, row_Wochentage, sb);
             }
@@ -198,7 +207,11 @@ namespace PMDS.BusinessLogic
             try
             {
                 string strMenge = "";
-                if (dMenge == 0.25)
+                if (dMenge == 0.125)
+                {
+                    strMenge = "1/8";
+                }
+                else if (dMenge == 0.25)
                 {
                     strMenge = "1/4";
                 }

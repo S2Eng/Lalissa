@@ -623,7 +623,7 @@ namespace PMDS.DB
                 dsGUIDListe.IDListeDataTable dt = new dsGUIDListe.IDListeDataTable();
 
                 //string sCommand = "SELECT DISTINCT IDMedikament, Medikament.Bezeichnung, RezeptEintrag.Bemerkung FROM RezeptEintrag INNER JOIN Medikament ON RezeptEintrag.IDMedikament = Medikament.ID WHERE (RezeptEintrag.IDAufenthalt = ?) AND (BedarfsMedikationJN = 1) and  (RezeptEintrag.AbzugebenVon <= ?) AND (RezeptEintrag.AbzugebenBis >= ?)";
-                string sCommand = "SELECT DISTINCT RezeptEintrag.ID, Medikament.Bezeichnung, RezeptEintrag.Bemerkung, Rezepteintrag.Rezeptdaten FROM RezeptEintrag INNER JOIN Medikament ON RezeptEintrag.IDMedikament = Medikament.ID WHERE (RezeptEintrag.IDAufenthalt = ?) AND (BedarfsMedikationJN = 1) and  (RezeptEintrag.AbzugebenVon <= ?) AND (RezeptEintrag.AbzugebenBis >= ?)";
+                string sCommand = "SELECT DISTINCT RezeptEintrag.ID, Medikament.Bezeichnung, RezeptEintrag.Bemerkung, Rezepteintrag.Rezeptdaten, Rezepteintrag.DosierungAsString FROM RezeptEintrag INNER JOIN Medikament ON RezeptEintrag.IDMedikament = Medikament.ID WHERE (RezeptEintrag.IDAufenthalt = ?) AND (BedarfsMedikationJN = 1) and  (RezeptEintrag.AbzugebenVon <= ?) AND (RezeptEintrag.AbzugebenBis >= ?)";
 
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandText = sCommand;
@@ -631,17 +631,34 @@ namespace PMDS.DB
                 cmd.Parameters.AddWithValue("@von", Tag);
                 cmd.Parameters.AddWithValue("@bis", Tag);
                 cmd.Connection = PMDS.Global.dbBase.getConn();
-                DataTable dtSelect = new DataTable();
-                OleDbDataAdapter da = new OleDbDataAdapter();
-                da.SelectCommand = cmd;
-                da.SelectCommand.CommandTimeout = 0;
-                da.Fill(dtSelect);
-                foreach(DataRow r in dtSelect.Rows)
+                using (DataTable dtSelect = new DataTable())
                 {
-                    dt.AddIDListeRow(new Guid(r[0].ToString()), r[1].ToString().Replace("\r\n", " - ") + "||Hinweis: " + r[2].ToString() + "\n" + r[3].ToString());
+                    using (OleDbDataAdapter da = new OleDbDataAdapter())
+                    {
+                        da.SelectCommand = cmd;
+                        da.SelectCommand.CommandTimeout = 0;
+                        da.Fill(dtSelect);
+                        foreach (DataRow r in dtSelect.Rows)
+                        {
+                            if (ENV.UseEinzelverordnungEinfach)
+                            {
+                                dt.AddIDListeRow(new Guid(r[0].ToString()), r[1].ToString().Replace("\r\n", " - ") + "||" + r[4].ToString() + "\n" + r[2].ToString());
+                            }
+                            else
+                            {
+                                if (ENV.MedikamenteImportType != "service")
+                                {
+                                    dt.AddIDListeRow(new Guid(r[0].ToString()), r[1].ToString().Replace("\r\n", " - ") + "||Hinweis: " + r[2].ToString() + "\n" + r[3].ToString());
+                                }
+                                else
+                                {
+                                    dt.AddIDListeRow(new Guid(r[0].ToString()), r[1].ToString().Replace("\r\n", " - ") + "||Hinweis: " + r[2].ToString());
+                                }
+                            }
+                        }
+                    }
                 }
                 return dt;
-
               }
             catch(Exception ex)
             {
@@ -662,7 +679,5 @@ namespace PMDS.DB
             cmd.Parameters.AddWithValue("IDRezeptEintrag", IDRezeptEintrag);
             DataBase.EcecuteNonQuery(cmd);
         }
-
 	}
-
 }

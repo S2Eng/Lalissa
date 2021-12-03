@@ -237,6 +237,8 @@
             // 
             // cbStandardzeitenJN
             // 
+            this.cbStandardzeitenJN.Checked = true;
+            this.cbStandardzeitenJN.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbStandardzeitenJN.Location = new System.Drawing.Point(3, 3);
             this.cbStandardzeitenJN.Name = "cbStandardzeitenJN";
             this.cbStandardzeitenJN.Size = new System.Drawing.Size(106, 20);

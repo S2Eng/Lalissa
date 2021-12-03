@@ -89,7 +89,7 @@ namespace PMDS.GUI
                 this.txtMedikament.Text = "";
                 cmbHerrichten.Text = "";
                 cmbVerabreichungsart.Text = "";
-                zp0.Visible = false;
+                //zp1.Visible = false;
                 cbBis.Checked = false;
 
                 //os191220
@@ -246,6 +246,18 @@ namespace PMDS.GUI
             zp2.Value = RezeptEintrag.ZP2 != 0 ? (object)RezeptEintrag.ZP2 : (object)DBNull.Value;
             zp3.Value = RezeptEintrag.ZP3 != 0 ? (object)RezeptEintrag.ZP3 : (object)DBNull.Value;
             zp4.Value = RezeptEintrag.ZP4 != 0 ? (object)RezeptEintrag.ZP4 : (object)DBNull.Value;
+            zp5.Value = RezeptEintrag.ZP5 != 0 ? (object)RezeptEintrag.ZP5 : (object)DBNull.Value;
+            zp6.Value = RezeptEintrag.ZP6 != 0 ? (object)RezeptEintrag.ZP6 : (object)DBNull.Value;
+
+            if (RezeptEintrag.BedarfsMedikationJN &&   zp1.Value != DBNull.Value && zp5.Value == DBNull.Value)
+            {
+                zp5.Appearance.BackColor = Color.LightGoldenrodYellow;
+                QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Die Menge für die Einzeldosis wurde aus den vorigen Daten übernommen.\nBitte überprüfen Sie die Menge.", "Wichtiger Hinweis", MessageBoxButtons.OK);
+
+
+                zp5.Value = zp1.Value;
+                zp1.Value = 0;
+            }
 
             if (RezeptEintrag.IDMedikament != Guid.Empty)
             {
@@ -356,6 +368,9 @@ namespace PMDS.GUI
                 double dzp2; if (zp2.Value == DBNull.Value) dzp2 = 0; else dzp2 = Convert.ToDouble(zp2.Value);
                 double dzp3; if (zp3.Value == DBNull.Value) dzp3 = 0; else dzp3 = Convert.ToDouble(zp3.Value);
                 double dzp4; if (zp4.Value == DBNull.Value) dzp4 = 0; else dzp4 = Convert.ToDouble(zp4.Value);
+                double dzp5; if (zp5.Value == DBNull.Value) dzp5 = 0; else dzp5 = Convert.ToDouble(zp5.Value);
+                double dzp6; if (zp6.Value == DBNull.Value) dzp6 = 0; else dzp6 = Convert.ToDouble(zp6.Value);
+
                 double dwiederholwert; if (txtWiedWertAlle.Value == DBNull.Value) dwiederholwert = 0; else dwiederholwert = Convert.ToDouble(txtWiedWertAlle.Value);
 
                 bool bIDArztAbgesetztChanged = false;
@@ -396,6 +411,8 @@ namespace PMDS.GUI
                     RezeptEintrag.ZP2 != dzp2 ||
                     RezeptEintrag.ZP3 != dzp3 ||
                     RezeptEintrag.ZP4 != dzp4 ||
+                    RezeptEintrag.ZP5 != dzp5 ||
+                    RezeptEintrag.ZP6 != dzp6 ||
                     RezeptEintrag.IDAerzte != ucPatientAerzte1.SelctedIDAerzte ||
                     bIDArztAbgesetztChanged ||
                     //Zusätzliche Prüfung ab 27.7.2018
@@ -566,6 +583,8 @@ namespace PMDS.GUI
             row.ZP2 = zp2.Value != DBNull.Value ? Convert.ToDouble(zp2.Value) : 0.0;
             row.ZP3 = zp3.Value != DBNull.Value ? Convert.ToDouble(zp3.Value) : 0.0;
             row.ZP4 = zp4.Value != DBNull.Value ? Convert.ToDouble(zp4.Value) : 0.0;
+            row.ZP5 = zp5.Value != DBNull.Value ? Convert.ToDouble(zp5.Value) : 0.0;
+            row.ZP6 = zp6.Value != DBNull.Value ? Convert.ToDouble(zp6.Value) : 0.0;
 
             if (cmbHerrichten.Value != DBNull.Value && (int)cmbHerrichten.Value == (int)medHerrichten.beiBedarf)
                 row.BedarfsMedikationJN = true;
@@ -682,27 +701,6 @@ namespace PMDS.GUI
                 }
             }
 
-            /*
-            if (this.EintragBearbeitungsmodus == BearbeitungsModus.edit)
-            {
-                if (dtpAbgebenVon.Value != null && diff == 1)
-                {
-
-                    if (bRechtStorno && diff == 1 )
-                    {
-                        _bIsStorno = true;
-                    }
-                    else
-                    {
-                        string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Rückdatieren nicht erlaubt. Bitte beenden Sie die Anordnung und legen Sie eine neue an."); ;
-                        this.errorProvider1.SetError(this.dtpAbgebenVon, sText);
-                        QS2.Desktop.ControlManagment.ControlManagment.MessageBox(sText, "PMDS", MessageBoxButtons.OK);
-                        return false;
-                    }
-                }
-            }
-            */
-
             if (this.cmbApplikationsform.Value == null)
             {
                 string sText = QS2.Desktop.ControlManagment.ControlManagment.getRes("Applikationsform: Auswahl erforderlich!"); 
@@ -729,14 +727,14 @@ namespace PMDS.GUI
                 frm.ShowDialog(this);
                 string sReason = frm.txtText.Text.Trim();
 
-                if (sReason == "")
+                if (String.IsNullOrWhiteSpace(sReason))
                 {
                     QS2.Desktop.ControlManagment.ControlManagment.MessageBox("Bei Storno ist eine Anmerkung erforderlich!", "", MessageBoxButtons.OK);
                     return false;
                 }
                 else
                 {
-                    if (this.txtAnmerkung.Text.Trim() != "")
+                    if (!String.IsNullOrWhiteSpace(this.txtAnmerkung.Text))
                         this.txtAnmerkung.Text += "\r\n";
                     this.txtAnmerkung.Text += sReason;
                 }
@@ -794,14 +792,27 @@ namespace PMDS.GUI
             else
             {
                 GuiUtil.ValidateField(txtAnmerkung, txtAnmerkung.Text.Trim().Length > 0,
-                                 ENV.String("GUI.E_NO_TEXT"), ref bError, bInfo, errorProvider1);
+                                 "Bitte geben Sie eine Indikation ein.", ref bError, bInfo, errorProvider1);
+                if (ENV.UseEinzelverordnungEinfach)
+                {
+                    //zp5 UND zp6 müssen einen Wert haben
+                    if (zp5.Value == DBNull.Value || (double)zp5.Value == 0)
+                    {
+                        GuiUtil.ValidateField(zp5, false, "Bitte geben Sie einen Wert für eine Einzeldosis an.", ref bError, bInfo, errorProvider1);
+                    }
+
+                    if (zp6.Value == DBNull.Value || (double)zp6.Value == 0)
+                    {
+                        GuiUtil.ValidateField(zp6, false, "Bitte geben Sie die maximale Menge in 24 Stunden an.", ref bError, bInfo, errorProvider1);
+                    }
+                }
             }
 
 
             //Zusammenhang Sonderzeiten,Dosierung  wird auch bein Bedarfsmedikation berüchsichtigt
             if (!bError)
             {
-                int[] Dosierung = { zp0.Text.Trim().Length, zp1.Text.Trim().Length, zp2.Text.Trim().Length, zp3.Text.Trim().Length, zp4.Text.Trim().Length };
+                int[] Dosierung = { zp0.Text.Trim().Length, zp1.Text.Trim().Length, zp2.Text.Trim().Length, zp3.Text.Trim().Length, zp4.Text.Trim().Length, zp5.Text.Trim().Length, zp6.Text.Trim().Length };
                 bError = !ucStandardZeiten1.ValidateFields(Dosierung);
             }
 
@@ -1078,20 +1089,43 @@ namespace PMDS.GUI
             if ((medHerrichten)cmbHerrichten.Value == medHerrichten.beiBedarf)
             {
                 _bHerrichtenBedarf = true;
+
                 zp0.Appearance.BackColor = Color.White;
                 zp1.Appearance.BackColor = Color.White;
                 zp2.Appearance.BackColor = Color.White;
                 zp3.Appearance.BackColor = Color.White;
                 zp4.Appearance.BackColor = Color.White;
                 ucStandardZeiten1.setZeitenBackcolor(Color.White);
-            }
 
+                if (ENV.UseEinzelverordnungEinfach) 
+                {
+                    pnlSignatur.Visible = false;
+                    pnlSignaturEV.Left = pnlSignatur.Left;
+                    pnlSignaturEV.Visible = true;
+
+                    cmbVerabreichungsart.Value = (int)medVerabreichung.einzeln;
+                    lblVerabreichung.Visible = false;
+                    cmbVerabreichungsart.Visible = false;
+                }
+                else
+                {
+                    pnlSignaturEV.Visible = false;
+                    pnlSignatur.Visible = true;
+                    lblVerabreichung.Visible = true;
+                    cmbVerabreichungsart.Visible = true;
+                }
+            }
             else
             {
                 _bHerrichtenBedarf = false;
                 txtAnmerkung.Appearance.BackColor = Color.White;
-            }
 
+                pnlSignaturEV.Visible = false;
+                pnlSignatur.Visible = true;
+                lblVerabreichung.Visible = true;
+                cmbVerabreichungsart.Visible = true;
+            }
+            ucStandardZeiten1.setStandardZeitenCheckbox(cbNuechtern.Checked);
         }
 
         private void cbBis_CheckedChanged(object sender, EventArgs e)
